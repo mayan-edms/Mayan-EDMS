@@ -9,7 +9,7 @@ from .classes import MetadataLookup
 from .models import MetadataType
 
 
-class MetadataForm(forms.Form):
+class DocumentMetadataForm(forms.Form):
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 
     name = forms.CharField(
@@ -22,7 +22,7 @@ class MetadataForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(MetadataForm, self).__init__(*args, **kwargs)
+        super(DocumentMetadataForm, self).__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
@@ -104,22 +104,33 @@ class MetadataForm(forms.Form):
         return self.cleaned_data
 
 
-MetadataFormSet = formset_factory(MetadataForm, extra=0)
+DocumentMetadataFormSet = formset_factory(DocumentMetadataForm, extra=0)
 
 
-class AddMetadataForm(forms.Form):
-    metadata_type = forms.ModelChoiceField(
-        queryset=MetadataType.objects.all(), label=_('Metadata type')
+class DocumentAddMetadataForm(forms.Form):
+    metadata_type = forms.ModelMultipleChoiceField(
+        help_text=_('Metadata types to be added to the selected documents.'),
+        label=_('Metadata type'), queryset=MetadataType.objects.all(),
+        widget=forms.SelectMultiple(
+            attrs={'class': 'select2'},
+        )
     )
 
     def __init__(self, *args, **kwargs):
-        document_type = kwargs.pop('document_type')
-        super(AddMetadataForm, self).__init__(*args, **kwargs)
-        self.fields['metadata_type'].queryset = MetadataType.objects.filter(
-            pk__in=document_type.metadata.values_list(
-                'metadata_type', flat=True
+        document_type = kwargs.pop('document_type', None)
+
+        if document_type:
+            queryset = kwargs.pop(
+                'queryset', MetadataType.objects.get_for_document_type(
+                    document_type=document_type
+                )
             )
-        )
+        else:
+            queryset = MetadataType.objects.none()
+
+        super(DocumentAddMetadataForm, self).__init__(*args, **kwargs)
+
+        self.fields['metadata_type'].queryset = queryset
 
 
 class MetadataTypeForm(forms.ModelForm):
@@ -136,14 +147,16 @@ class MetadataTypeForm(forms.ModelForm):
         model = MetadataType
 
 
-class MetadataRemoveForm(MetadataForm):
+class DocumentMetadataRemoveForm(DocumentMetadataForm):
     update = forms.BooleanField(
         initial=False, label=_('Remove'), required=False
     )
 
     def __init__(self, *args, **kwargs):
-        super(MetadataRemoveForm, self).__init__(*args, **kwargs)
+        super(DocumentMetadataRemoveForm, self).__init__(*args, **kwargs)
         self.fields.pop('value')
 
 
-MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
+DocumentMetadataRemoveFormSet = formset_factory(
+    DocumentMetadataRemoveForm, extra=0
+)

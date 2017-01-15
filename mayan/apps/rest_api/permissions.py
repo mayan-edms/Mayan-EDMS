@@ -33,23 +33,19 @@ class MayanPermission(BasePermission):
 
         if required_permission:
             try:
-                Permission.check_permissions(request.user, required_permission)
-            except PermissionDenied:
-                try:
-                    if hasattr(view, 'mayan_permission_attribute_check'):
-                        AccessControlList.objects.check_access(
-                            permissions=required_permission,
-                            user=request.user, obj=obj,
-                            related=view.mayan_permission_attribute_check
-                        )
-                    else:
-                        AccessControlList.objects.check_access(
-                            required_permission, request.user, obj
-                        )
-                except PermissionDenied:
-                    return False
+                if hasattr(view, 'mayan_permission_attribute_check'):
+                    AccessControlList.objects.check_access(
+                        permissions=required_permission,
+                        user=request.user, obj=obj,
+                        related=view.mayan_permission_attribute_check
+                    )
                 else:
-                    return True
+                    AccessControlList.objects.check_access(
+                        permissions=required_permission, user=request.user,
+                        obj=obj
+                    )
+            except PermissionDenied:
+                return False
             else:
                 return True
         else:

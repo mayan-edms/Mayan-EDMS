@@ -49,21 +49,3 @@ class LockManager(models.Manager):
         else:
             logger.debug('acquired lock: %s', name)
             return lock
-
-    def check_existing(self, **kwargs):
-        try:
-            existing_lock = self.get(**kwargs)
-        except self.model.DoesNotExist:
-            return False
-        else:
-            # Lock exists, try to re-acquire it in case it is a stale lock
-            try:
-                lock = self.acquire_lock(existing_lock.name)
-            except LockError:
-                # This is expected, try to acquire it to force it to
-                # timeout in case it is a stale lock.
-                return True
-            else:
-                # Able to re-acquire anothers lock, so we release it now
-                lock.release()
-                return False

@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
 from django import forms
 from django.forms.utils import flatatt
 from django.utils.encoding import force_unicode, force_text
@@ -127,13 +125,6 @@ class TextAreaDiv(forms.widgets.Widget):
         content = conditional_escape(force_unicode(value))
         result = '<pre%s>%s</pre>' % (flat_attrs, content)
         return mark_safe(result)
-
-
-def exists_widget(path):
-    try:
-        return two_state_template(os.path.exists(path))
-    except Exception as exception:
-        return exception
 
 
 def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):

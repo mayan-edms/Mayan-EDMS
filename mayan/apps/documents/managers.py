@@ -98,17 +98,6 @@ class DocumentTypeManager(models.Manager):
         return self.get(label=label)
 
 
-class NewVersionBlockManager(models.Manager):
-    def block(self, document):
-        self.get_or_create(document=document)
-
-    def unblock(self, document):
-        self.filter(document=document).delete()
-
-    def is_blocked(self, document):
-        return self.filter(document=document).exists()
-
-
 class PassthroughManager(models.Manager):
     pass
 

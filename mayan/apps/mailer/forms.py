@@ -15,13 +15,20 @@ class DocumentMailForm(forms.Form):
         as_attachment = kwargs.pop('as_attachment', False)
         super(DocumentMailForm, self).__init__(*args, **kwargs)
         if as_attachment:
-            self.fields['subject'].initial = setting_document_subject_template.value
-            self.fields['body'].initial = setting_document_body_template.value % {
+            self.fields[
+                'subject'
+            ].initial = setting_document_subject_template.value
+
+            self.fields[
+                'body'
+            ].initial = setting_document_body_template.value % {
                 'project_title': settings.PROJECT_TITLE,
                 'project_website': settings.PROJECT_WEBSITE
             }
         else:
-            self.fields['subject'].initial = setting_link_subject_template.value
+            self.fields[
+                'subject'
+            ].initial = setting_link_subject_template.value
             self.fields['body'].initial = setting_link_body_template.value % {
                 'project_title': settings.PROJECT_TITLE,
                 'project_website': settings.PROJECT_WEBSITE

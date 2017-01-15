@@ -2,18 +2,18 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
-from filetransfers.api import serve_file
+from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
 from rest_framework.response import Response
 
 from acls.models import AccessControlList
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
     Document, DocumentPage, DocumentType, DocumentVersion, RecentDocument
 )
@@ -26,13 +26,14 @@ from .permissions import (
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view
 )
+from .runtime import cache_storage_backend
 from .serializers import (
-    DeletedDocumentSerializer, DocumentPageImageSerializer,
-    DocumentPageSerializer, DocumentSerializer,
+    DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
     DocumentVersionRevertSerializer, NewDocumentSerializer,
     NewDocumentVersionSerializer, RecentDocumentSerializer
 )
+from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +88,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class APIDocumentDownloadView(generics.RetrieveAPIView):
+class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
     Download the latest version of a document.
     ---
@@ -105,17 +106,15 @@ class APIDocumentDownloadView(generics.RetrieveAPIView):
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
+    def get_file(self):
+        instance = self.get_object()
+        return VirtualFile(instance.latest_version.file, name=instance.label)
+
     def get_serializer_class(self):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        return serve_file(
-            request,
-            instance.latest_version.file,
-            save_as='"%s"' % instance.label,
-            content_type=instance.latest_version.mimetype if instance.latest_version.mimetype else 'application/octet-stream'
-        )
+        return self.render_to_response()
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
@@ -146,7 +145,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         return super(APIDocumentListView, self).post(*args, **kwargs)
 
 
-class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
+class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
     Download a document version.
     ---
@@ -164,17 +163,15 @@ class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
     permission_classes = (MayanPermission,)
     queryset = DocumentVersion.objects.all()
 
+    def get_file(self):
+        instance = self.get_object()
+        return VirtualFile(instance.file, name=unicode(instance))
+
     def get_serializer_class(self):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        return serve_file(
-            request,
-            instance.file,
-            save_as='"%s"' % instance.document.label,
-            content_type=instance.mimetype if instance.mimetype else 'application/octet-stream'
-        )
+        return self.render_to_response()
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
@@ -224,8 +221,18 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
 class APIDocumentPageImageView(generics.RetrieveAPIView):
     """
     Returns an image representation of the selected document.
-    size -- 'x' seprated width and height of the desired image representation.
-    zoom -- Zoom level of the image to be generated, numeric value only.
+    ---
+    GET:
+        omit_serializer: true
+        parameters:
+            - name: size
+              description: 'x' seprated width and height of the desired image representation.
+              paramType: query
+              type: number
+            - name: zoom
+              description: Zoom level of the image to be generated, numeric value only.
+              paramType: query
+              type: number
     """
 
     mayan_object_permissions = {
@@ -234,7 +241,32 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
     queryset = DocumentPage.objects.all()
-    serializer_class = DocumentPageImageSerializer
+
+    def get_serializer_class(self):
+        return None
+
+    def retrieve(self, request, *args, **kwargs):
+        size = request.GET.get('size')
+        zoom = request.GET.get('zoom')
+
+        if zoom:
+            zoom = int(zoom)
+
+        rotation = request.GET.get('rotation')
+
+        if rotation:
+            rotation = int(rotation)
+
+        task = task_generate_document_page_image.apply_async(
+            kwargs=dict(
+                document_page_id=self.kwargs['pk'], size=size, zoom=zoom,
+                rotation=rotation
+            )
+        )
+
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+        with cache_storage_backend.open(cache_filename) as file_object:
+            return HttpResponse(file_object.read(), content_type='image')
 
 
 class APIDocumentPageView(generics.RetrieveUpdateAPIView):
@@ -352,15 +384,10 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
 
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_type_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_view, self.request.user,
-                document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_view, user=self.request.user,
+            obj=document_type
+        )
 
         return document_type.documents.all()
 

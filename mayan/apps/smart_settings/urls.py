@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import NamespaceDetailView, NamespaceListView
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^namespace/all/$', NamespaceListView.as_view(),
         name='namespace_list'
@@ -14,4 +13,4 @@ urlpatterns = patterns(
         r'^namespace/(?P<namespace_name>\w+)/$',
         NamespaceDetailView.as_view(), name='namespace_detail'
     ),
-)
+]

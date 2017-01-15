@@ -7,6 +7,7 @@ from django.db import OperationalError
 
 from mayan.celery import app
 from lock_manager import LockError
+from lock_manager.runtime import locking_backend
 
 from .literals import RETRY_DELAY
 
@@ -18,12 +19,9 @@ def task_delete_empty_index_nodes(self):
     IndexInstanceNode = apps.get_model(
         app_label='document_indexing', model_name='IndexInstanceNode'
     )
-    Lock = apps.get_model(
-        app_label='lock_manager', model_name='Lock'
-    )
 
     try:
-        rebuild_lock = Lock.objects.acquire_lock(
+        rebuild_lock = locking_backend.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:
@@ -46,12 +44,8 @@ def task_index_document(self, document_id):
         app_label='document_indexing', model_name='IndexInstanceNode'
     )
 
-    Lock = apps.get_model(
-        app_label='lock_manager', model_name='Lock'
-    )
-
     try:
-        rebuild_lock = Lock.objects.acquire_lock(
+        rebuild_lock = locking_backend.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:
@@ -59,7 +53,7 @@ def task_index_document(self, document_id):
         raise self.retry(exc=exception)
     else:
         try:
-            lock = Lock.objects.acquire_lock(
+            lock = locking_backend.acquire_lock(
                 'document_indexing_task_update_index_document_%d' % document_id
             )
         except LockError as exception:
@@ -96,16 +90,8 @@ def task_do_rebuild_all_indexes(self):
         app_label='document_indexing', model_name='IndexInstanceNode'
     )
 
-    Lock = apps.get_model(
-        app_label='lock_manager', model_name='Lock'
-    )
-
-    if Lock.objects.check_existing(name__startswith='document_indexing_task_update_index_document'):
-        # A document index update is happening, wait
-        raise self.retry()
-
     try:
-        lock = Lock.objects.acquire_lock(
+        lock = locking_backend.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:

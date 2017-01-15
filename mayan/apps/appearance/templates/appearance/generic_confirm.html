@@ -44,7 +44,10 @@
                         <input name="previous" type="hidden" value="{{ previous }}" />
                     {% endif %}
 
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal">{% trans 'Yes' %}</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                        <i class="{{ submit_icon|default:'fa fa-check' }}"></i> {% if submit_label %}{{ submit_label }}{% else %}{% trans 'Yes' %}{% endif %}
+                    </button>
+
                     {% if previous %}
                         <a class="btn btn-primary" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>{% trans 'No' %}</a>
                     {% endif %}

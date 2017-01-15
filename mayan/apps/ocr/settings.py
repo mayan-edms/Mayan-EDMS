@@ -5,10 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from smart_settings import Namespace
 
 namespace = Namespace(name='ocr', label=_('OCR'))
-setting_tesseract_path = namespace.add_setting(
-    global_name='OCR_TESSERACT_PATH', default='/usr/bin/tesseract',
-    help_text=_('File path to tesseract program.'), is_path=True
-)
+
 setting_pdftotext_path = namespace.add_setting(
     global_name='OCR_PDFTOTEXT_PATH', default='/usr/bin/pdftotext',
     help_text=_(
@@ -18,7 +15,7 @@ setting_pdftotext_path = namespace.add_setting(
     is_path=True
 )
 setting_ocr_backend = namespace.add_setting(
-    global_name='OCR_BACKEND', default='ocr.backends.tesseract.Tesseract',
+    global_name='OCR_BACKEND', default='ocr.backends.pyocr.PyOCR',
     help_text=_('Full path to the backend to be used to do OCR.')
 )
 setting_auto_ocr = namespace.add_setting(

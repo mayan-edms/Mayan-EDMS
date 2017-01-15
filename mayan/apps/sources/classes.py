@@ -71,7 +71,7 @@ class StagingFile(object):
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
 
-    def get_image(self, size=None, as_base64=True, transformations=None):
+    def get_image(self, size=None, as_base64=False, transformations=None):
         converter = converter_class(file_object=open(self.get_full_path()))
 
         if size:

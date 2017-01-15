@@ -221,6 +221,26 @@ class BaseTransformation(object):
 
     _registry = {}
 
+    @staticmethod
+    def encode_hash(decoded_value):
+        return hex(abs(decoded_value))[2:]
+
+    @staticmethod
+    def decode_hash(encoded_value):
+        return int(encoded_value, 16)
+
+    @staticmethod
+    def combine(transformations):
+        result = None
+
+        for index, transformation in enumerate(transformations):
+            if not result:
+                result = hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
+            else:
+                result ^= hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
+
+        return BaseTransformation.encode_hash(result)
+
     @classmethod
     def register(cls, transformation):
         cls._registry[transformation.name] = transformation
@@ -240,8 +260,17 @@ class BaseTransformation(object):
         return string_concat(cls.label, ': ', ', '.join(cls.arguments))
 
     def __init__(self, **kwargs):
+        self.kwargs = {}
         for argument_name in self.arguments:
             setattr(self, argument_name, kwargs.get(argument_name))
+            self.kwargs[argument_name] = kwargs.get(argument_name)
+
+    def cache_hash(self):
+        result = unicode.__hash__(self.name)
+        for index, (key, value) in enumerate(self.kwargs.items()):
+            result ^= hash((key, index)) ^ hash((value, index))
+
+        return BaseTransformation.encode_hash(result)
 
     def execute_on(self, image):
         self.image = image
@@ -255,7 +284,6 @@ class TransformationResize(BaseTransformation):
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
-        fit = False
 
         width = int(self.width)
         height = int(self.height or 1.0 * width / self.aspect)
@@ -263,25 +291,12 @@ class TransformationResize(BaseTransformation):
         factor = 1
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:
             factor *= 2
+
         if factor > 1:
             self.image.thumbnail(
                 (self.image.size[0] / factor, self.image.size[1] / factor),
                 Image.NEAREST
             )
-
-        # calculate the cropping box and get the cropped part
-        if fit:
-            x1 = y1 = 0
-            x2, y2 = self.image.size
-            wRatio = 1.0 * x2 / width
-            hRatio = 1.0 * y2 / height
-            if hRatio > wRatio:
-                y1 = y2 / 2 - height * wRatio / 2
-                y2 = y2 / 2 + height * wRatio / 2
-            else:
-                x1 = x2 / 2 - width * hRatio / 2
-                x2 = x2 / 2 + width * hRatio / 2
-            self.image = self.image.crop((x1, y1, x2, y2))
 
         # Resize the image with best quality algorithm ANTI-ALIAS
         self.image.thumbnail((width, height), Image.ANTIALIAS)

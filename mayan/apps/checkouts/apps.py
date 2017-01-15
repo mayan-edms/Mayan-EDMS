@@ -5,13 +5,17 @@ from datetime import timedelta
 from kombu import Exchange, Queue
 
 from django.apps import apps
+from django.core.urlresolvers import reverse_lazy
+from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
+from common.classes import DashboardWidget
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
+from .handlers import check_new_version_creation
 from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
     link_checkout_list
@@ -38,8 +42,18 @@ class CheckoutsApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
 
         DocumentCheckout = self.get_model('DocumentCheckout')
+
+        DashboardWidget(
+            icon='fa fa-shopping-cart',
+            queryset=DocumentCheckout.objects.all(),
+            label=_('Checkedout documents'),
+            link=reverse_lazy('checkouts:checkout_list')
+        )
 
         Document.add_to_class(
             'check_in',
@@ -100,11 +114,17 @@ class CheckoutsApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(links=(link_checkout_info,), sources=(Document,))
-        menu_main.bind_links(links=(link_checkout_list,))
+        menu_main.bind_links(links=(link_checkout_list,), position=98)
         menu_sidebar.bind_links(
             links=(link_checkout_document, link_checkin_document),
             sources=(
                 'checkouts:checkout_info', 'checkouts:checkout_document',
                 'checkouts:checkin_document'
             )
+        )
+
+        pre_save.connect(
+            check_new_version_creation,
+            dispatch_uid='check_new_version_creation',
+            sender=DocumentVersion
         )

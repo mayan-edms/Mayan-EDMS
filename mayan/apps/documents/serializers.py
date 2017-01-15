@@ -4,30 +4,11 @@ from rest_framework import serializers
 
 from common.models import SharedUploadedFile
 
-from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
     Document, DocumentVersion, DocumentPage, DocumentType, RecentDocument
 )
 from .settings import setting_language
-from .tasks import task_get_document_page_image, task_upload_new_version
-
-
-class DocumentPageImageSerializer(serializers.Serializer):
-    data = serializers.SerializerMethodField()
-
-    def get_data(self, instance):
-        request = self.context['request']
-        size = request.GET.get('size')
-        zoom = request.GET.get('zoom')
-        rotation = request.GET.get('rotation')
-
-        task = task_get_document_page_image.apply_async(
-            kwargs=dict(
-                document_page_id=instance.pk, size=size, zoom=zoom,
-                rotation=rotation, as_base64=True
-            )
-        )
-        return task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+from .tasks import task_upload_new_version
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):

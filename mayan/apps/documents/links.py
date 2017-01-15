@@ -85,7 +85,7 @@ link_document_document_type_edit = Link(
 )
 link_document_download = Link(
     permissions=(permission_document_download,), text=_('Download'),
-    view='documents:document_download', args='resolved_object.id'
+    view='documents:document_download_form', args='resolved_object.id'
 )
 link_document_print = Link(
     permissions=(permission_document_print,), text=_('Print'),
@@ -118,7 +118,7 @@ link_document_multiple_document_type_edit = Link(
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    text=_('Download'), view='documents:document_multiple_download'
+    text=_('Download'), view='documents:document_multiple_download_form'
 )
 link_document_multiple_update_page_count = Link(
     text=_('Recalculate page count'),
@@ -129,7 +129,7 @@ link_document_multiple_restore = Link(
 )
 link_document_version_download = Link(
     args='resolved_object.pk', permissions=(permission_document_download,),
-    text=_('Download version'), view='documents:document_version_download'
+    text=_('Download version'), view='documents:document_version_download_form'
 )
 
 # Views
@@ -141,7 +141,7 @@ link_document_list_recent = Link(
     view='documents:document_list_recent'
 )
 link_document_list_deleted = Link(
-    icon='fa fa-trash', text=_('Trash'),
+    icon='fa fa-trash', text=_('Trash can'),
     view='documents:document_list_deleted'
 )
 
@@ -194,12 +194,12 @@ link_document_page_return = Link(
 link_document_page_rotate_left = Link(
     icon='fa fa-rotate-left', permissions=(permission_document_view,),
     text=_('Rotate left'), view='documents:document_page_rotate_left',
-    args='resolved_object.pk'
+    args='resolved_object.pk', keep_query=True
 )
 link_document_page_rotate_right = Link(
     icon='fa fa-rotate-right', permissions=(permission_document_view,),
     text=_('Rotate right'), view='documents:document_page_rotate_right',
-    args='resolved_object.pk'
+    args='resolved_object.pk', keep_query=True
 )
 link_document_page_view = Link(
     permissions=(permission_document_view,), text=_('Page image'),
@@ -212,12 +212,14 @@ link_document_page_view_reset = Link(
 link_document_page_zoom_in = Link(
     conditional_disable=is_max_zoom, icon='fa fa-search-plus',
     permissions=(permission_document_view,), text=_('Zoom in'),
-    view='documents:document_page_zoom_in', args='resolved_object.pk'
+    view='documents:document_page_zoom_in', args='resolved_object.pk',
+    keep_query=True
 )
 link_document_page_zoom_out = Link(
     conditional_disable=is_min_zoom, icon='fa fa-search-minus',
     permissions=(permission_document_view,), text=_('Zoom out'),
-    view='documents:document_page_zoom_out', args='resolved_object.pk'
+    view='documents:document_page_zoom_out', args='resolved_object.pk',
+    keep_query=True
 )
 
 # Document versions

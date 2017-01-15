@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     DocumentSmartLinkListView, ResolvedSmartLinkView,
@@ -10,8 +10,7 @@ from .views import (
     SmartLinkEditView, SmartLinkListView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^document/(?P<pk>\d+)/list/$', DocumentSmartLinkListView.as_view(),
         name='smart_link_instances_for_document'
@@ -60,4 +59,4 @@ urlpatterns = patterns(
         SmartLinkConditionDeleteView.as_view(),
         name='smart_link_condition_delete'
     ),
-)
+]

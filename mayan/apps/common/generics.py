@@ -10,12 +10,11 @@ from django.views.generic import (
 )
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
-    CreateView, DeleteView, ModelFormMixin, UpdateView
+    CreateView, DeleteView, FormMixin, ModelFormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
-from django_downloadview import VirtualDownloadView
-from django_downloadview import VirtualFile
+from django_downloadview import VirtualDownloadView, VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
@@ -24,10 +23,32 @@ from .settings import setting_paginate_by
 
 __all__ = (
     'AssignRemoveView', 'ConfirmView', 'FormView', 'MultiFormView',
+    'MultipleObjectConfirmActionView', 'MultipleObjectFormActionView',
     'SingleObjectCreateView', 'SingleObjectDeleteView',
     'SingleObjectDetailView', 'SingleObjectEditView', 'SingleObjectListView',
-    'SimpleView',
+    'SimpleView'
 )
+
+
+class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+    """
+    This view will present a form and upon receiving a POST request will
+    perform an action on an object or queryset
+    """
+
+    template_name = 'appearance/generic_form.html'
+
+    def form_valid(self, form):
+        self.view_action(form=form)
+        return super(MultipleObjectFormActionView, self).form_valid(form=form)
+
+
+class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+    template_name = 'appearance/generic_confirm.html'
+
+    def post(self, request, *args, **kwargs):
+        self.view_action()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
@@ -207,6 +228,16 @@ class MultiFormView(DjangoFormView):
         else:
             form = klass(**form_kwargs)
         return form
+
+    def get_context_data(self, **kwargs):
+        """
+        Insert the form into the context dict.
+        """
+        if 'forms' not in kwargs:
+            kwargs['forms'] = self.get_forms(
+                form_classes=self.get_form_classes()
+            )
+        return super(FormMixin, self).get_context_data(**kwargs)
 
     def get_forms(self, form_classes):
         return dict(

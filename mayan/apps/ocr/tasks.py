@@ -4,12 +4,12 @@ import logging
 import sys
 import traceback
 
-from django.apps import apps
 from django.conf import settings
 from django.db import OperationalError
 
 from documents.models import DocumentVersion
 from lock_manager import LockError
+from lock_manager.runtime import locking_backend
 from mayan.celery import app
 
 from .classes import TextExtractor
@@ -22,16 +22,12 @@ logger = logging.getLogger(__name__)
 
 @app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)
 def task_do_ocr(self, document_version_pk):
-    Lock = apps.get_model(
-        app_label='lock_manager', model_name='Lock'
-    )
-
     lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
         # Acquire lock to avoid doing OCR on the same document version more than
         # once concurrently
-        lock = Lock.objects.acquire_lock(lock_id, LOCK_EXPIRE)
+        lock = locking_backend.acquire_lock(lock_id, LOCK_EXPIRE)
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:

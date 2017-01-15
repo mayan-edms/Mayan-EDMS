@@ -34,7 +34,7 @@ class ContentTypeCheckMixin(object):
 
 class TempfileCheckMixin(object):
     # Ignore the jvmstat instrumentation and GitLab's CI .config files
-    ignore_globs = ('hsperfdata_*', '.config')
+    ignore_globs = ('hsperfdata_*', '.config', '.cache')
 
     def _get_temporary_entries(self):
         ignored_result = []
@@ -66,7 +66,7 @@ class TempfileCheckMixin(object):
             msg='Orphan temporary file. The number of temporary files and/or '
             'directories at the start and at the end of the test are not the '
             'same. Orphan entries: {}'.format(
-                ','.join(final_temporary_items-self._temporary_items)
+                ','.join(final_temporary_items - self._temporary_items)
             )
         )
         super(TempfileCheckMixin, self).tearDown()

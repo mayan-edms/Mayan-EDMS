@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
@@ -11,7 +10,6 @@ from actstream.models import Action, any_stream
 from acls.models import AccessControlList
 from common.utils import encapsulate
 from common.views import SingleObjectListView
-from permissions import Permission
 
 from .classes import Event
 from .permissions import permission_events_view
@@ -55,14 +53,10 @@ class ObjectEventListView(EventListView):
         except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, permissions=(permission_events_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_events_view, request.user, self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_events_view, user=request.user,
+            obj=self.content_object
+        )
 
         return super(
             ObjectEventListView, self

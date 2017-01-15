@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -9,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions import Permission
 
 from .managers import FolderManager
 
@@ -45,14 +43,9 @@ class Folder(models.Model):
         verbose_name_plural = _('Folders')
 
     def get_document_count(self, user):
-        queryset = self.documents
-
-        try:
-            Permission.check_permissions(user, (permission_document_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_view, user, queryset=self.documents
+        )
 
         return queryset.count()
 

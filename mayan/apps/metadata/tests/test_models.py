@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
-from django.core.files.base import File
 from django.core.exceptions import ValidationError
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
@@ -18,8 +18,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MetadataTestCase(TestCase):
+class MetadataTestCase(BaseTestCase):
     def setUp(self):
+        super(MetadataTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -32,11 +33,12 @@ class MetadataTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
         self.document_type.delete()
+        super(MetadataTestCase, self).tearDown()
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

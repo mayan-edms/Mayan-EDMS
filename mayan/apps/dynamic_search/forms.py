@@ -5,6 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class AdvancedSearchForm(forms.Form):
+    _match_all = forms.BooleanField(
+        label=_('Match all'), help_text=_(
+            'When checked, only results that match all fields will be '
+            'returned. When unchecked results that match at least one field '
+            'will be returned.'
+        ), required=False
+    )
+
     def __init__(self, *args, **kwargs):
         self.search_model = kwargs.pop('search_model')
         super(AdvancedSearchForm, self).__init__(*args, **kwargs)

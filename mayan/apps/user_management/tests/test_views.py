@@ -17,102 +17,98 @@ from ..permissions import (
     permission_user_delete, permission_user_edit, permission_user_view
 )
 
-from .literals import (
-    TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME
-)
+from .literals import TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME
 
 TEST_USER_TO_DELETE_USERNAME = 'user_to_delete'
 
 
 class UserManagementViewTestCase(GenericViewTestCase):
-    def test_user_set_password_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def setUp(self):
+        super(UserManagementViewTestCase, self).setUp()
+        self.login_user()
 
-        self.role.permissions.add(permission_user_view.stored_permission)
-
-        response = self.post(
+    def _set_password(self, password):
+        return self.post(
             'user_management:user_set_password', args=(self.user.pk,), data={
-                'new_password_1': TEST_USER_PASSWORD_EDITED,
-                'new_password_2': TEST_USER_PASSWORD_EDITED
+                'new_password_1': password, 'new_password_2': password
             }
         )
 
+    def test_user_set_password_view_no_permissions(self):
+        self.grant(permission=permission_user_view)
+
+        response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
+
         self.assertEqual(response.status_code, 403)
 
-        self.client.logout()
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
+        self.logout()
+
+        with self.assertRaises(AssertionError):
+            self.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
+            )
 
         response = self.get('common:current_user_details')
 
         self.assertEqual(response.status_code, 302)
 
     def test_user_set_password_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.grant(permission=permission_user_edit)
+        self.grant(permission=permission_user_view)
 
-        self.role.permissions.add(permission_user_edit.stored_permission)
-        self.role.permissions.add(permission_user_view.stored_permission)
+        response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
 
-        response = self.post(
-            'user_management:user_set_password', args=(self.user.pk,), data={
-                'new_password_1': TEST_USER_PASSWORD_EDITED,
-                'new_password_2': TEST_USER_PASSWORD_EDITED
-            }, follow=True
-        )
+        self.assertEqual(response.status_code, 302)
 
-        self.assertContains(response, text='Successfull', status_code=200)
-
-        self.client.logout()
-        self.client.login(
+        self.logout()
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
         response = self.get('common:current_user_details')
 
         self.assertEqual(response.status_code, 200)
 
-    def test_user_multiple_set_password_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_user_view.stored_permission)
-
-        response = self.post(
+    def _multiple_user_set_password(self, password):
+        return self.post(
             'user_management:user_multiple_set_password', data={
                 'id_list': self.user.pk,
-                'new_password_1': TEST_USER_PASSWORD_EDITED,
-                'new_password_2': TEST_USER_PASSWORD_EDITED
-            }
+                'new_password_1': password,
+                'new_password_2': password
+            }, follow=True
+        )
+
+    def test_user_multiple_set_password_view_no_permissions(self):
+        self.grant(permission=permission_user_view)
+
+        response = self._multiple_user_set_password(
+            password=TEST_USER_PASSWORD_EDITED
         )
 
         self.assertEqual(response.status_code, 403)
 
-        self.client.logout()
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
+        self.logout()
+
+        with self.assertRaises(AssertionError):
+            self.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
+            )
 
         response = self.get('common:current_user_details')
 
         self.assertEqual(response.status_code, 302)
 
     def test_user_multiple_set_password_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.grant(permission=permission_user_edit)
+        self.grant(permission=permission_user_view)
 
-        self.role.permissions.add(permission_user_edit.stored_permission)
-        self.role.permissions.add(permission_user_view.stored_permission)
-
-        response = self.post(
-            'user_management:user_multiple_set_password', data={
-                'id_list': self.user.pk,
-                'new_password_1': TEST_USER_PASSWORD_EDITED,
-                'new_password_2': TEST_USER_PASSWORD_EDITED
-            }, follow=True
+        response = self._multiple_user_set_password(
+            password=TEST_USER_PASSWORD_EDITED
         )
 
-        self.assertContains(response, text='Successfull', status_code=200)
+        self.assertEqual(response.status_code, 200)
 
-        self.client.logout()
-        self.client.login(
+        self.logout()
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
         response = self.get('common:current_user_details')
@@ -124,9 +120,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_user_view.stored_permission)
+        self.grant(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_delete', args=(user.pk,)
@@ -140,10 +134,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_user_delete.stored_permission)
-        self.role.permissions.add(permission_user_view.stored_permission)
+        self.grant(permission=permission_user_delete)
+        self.grant(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_delete', args=(user.pk,), follow=True
@@ -157,9 +149,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_user_view.stored_permission)
+        self.grant(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_multiple_delete', data={
@@ -175,10 +165,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_user_delete.stored_permission)
-        self.role.permissions.add(permission_user_view.stored_permission)
+        self.grant(permission=permission_user_delete)
+        self.grant(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_multiple_delete', data={
@@ -200,11 +188,9 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 
-    def test_user_list_lookup_render(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
+    def test_user_list_lookup_render(self):
         self.metadata_type.lookup = '{{ users }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
@@ -223,10 +209,6 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         )
 
     def test_group_list_lookup_render(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
         self.metadata_type.lookup = '{{ groups }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)

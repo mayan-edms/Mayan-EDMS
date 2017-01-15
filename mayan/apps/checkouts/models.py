@@ -10,11 +10,11 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document, NewVersionBlock
+from documents.models import Document
 
 from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
-from .managers import DocumentCheckoutManager
+from .managers import DocumentCheckoutManager, NewVersionBlockManager
 
 logger = logging.getLogger(__name__)
 
@@ -86,3 +86,13 @@ class DocumentCheckout(models.Model):
     class Meta:
         verbose_name = _('Document checkout')
         verbose_name_plural = _('Document checkouts')
+
+
+class NewVersionBlock(models.Model):
+    document = models.ForeignKey(Document, verbose_name=_('Document'))
+
+    objects = NewVersionBlockManager()
+
+    class Meta:
+        verbose_name = _('New version block')
+        verbose_name_plural = _('New version blocks')

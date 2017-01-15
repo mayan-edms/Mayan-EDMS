@@ -5,7 +5,6 @@ import logging
 import uuid
 
 from django.conf import settings
-from django.core.exceptions import PermissionDenied
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
@@ -16,39 +15,40 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from acls.models import AccessControlList
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from converter import (
-    converter_class, TransformationResize, TransformationRotate,
-    TransformationZoom
+    converter_class, BaseTransformation, TransformationResize,
+    TransformationRotate, TransformationZoom
 )
 from converter.exceptions import InvalidOfficeFormat, PageCountError
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
-from permissions import Permission
 
 from .events import (
     event_document_create, event_document_new_version,
     event_document_properties_edit, event_document_type_change,
     event_document_version_revert
 )
-from .exceptions import NewDocumentVersionNotAllowed
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, NewVersionBlockManager,
-    PassthroughManager, RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentTypeManager, PassthroughManager,
+    RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
-    setting_display_size, setting_language, setting_language_choices,
-    setting_zoom_max_level, setting_zoom_min_level
+    setting_display_size, setting_language, setting_zoom_max_level,
+    setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
 )
 
-# document image cache name hash function
-HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 logger = logging.getLogger(__name__)
+
+
+# document image cache name hash function
+def HASH_FUNCTION(data):
+    return hashlib.sha256(data).hexdigest()
 
 
 def UUID_FUNCTION(*args, **kwargs):
@@ -110,14 +110,9 @@ class DocumentType(models.Model):
         return DeletedDocument.objects.filter(document_type=self)
 
     def get_document_count(self, user):
-        queryset = self.documents
-
-        try:
-            Permission.check_permissions(user, (permission_document_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_view, user, queryset=self.documents
+        )
 
         return queryset.count()
 
@@ -164,8 +159,7 @@ class Document(models.Model):
         auto_now_add=True, db_index=True, verbose_name=_('Added')
     )
     language = models.CharField(
-        blank=True, choices=setting_language_choices.value,
-        default=setting_language.value, max_length=8,
+        blank=True, default=setting_language.value, max_length=8,
         verbose_name=_('Language')
     )
     in_trash = models.BooleanField(
@@ -394,8 +388,6 @@ class DocumentVersion(models.Model):
 
         if new_document_version:
             logger.info('Creating new version for document: %s', self.document)
-            if NewVersionBlock.objects.is_blocked(self.document):
-                raise NewDocumentVersionNotAllowed
 
         try:
             with transaction.atomic():
@@ -680,16 +672,15 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
-    def get_image(self, *args, **kwargs):
-        as_base64 = kwargs.pop('as_base64', False)
-        transformations = kwargs.pop('transformations', [])
-        size = kwargs.pop('size', setting_display_size.value)
-        rotation = int(
-            kwargs.pop('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
-        )
-        zoom_level = int(
-            kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
-        )
+    def generate_image(self, *args, **kwargs):
+        # Convert arguments into transformations
+        transformations = kwargs.get('transformations', [])
+
+        # Set sensible defaults if the argument is not specified or if the
+        # argument is None
+        size = kwargs.get('size', setting_display_size.value) or setting_display_size.value
+        rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
+        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
 
         if zoom_level < setting_zoom_min_level.value:
             zoom_level = setting_zoom_min_level.value
@@ -697,8 +688,54 @@ class DocumentPage(models.Model):
         if zoom_level > setting_zoom_max_level.value:
             zoom_level = setting_zoom_max_level.value
 
-        rotation = rotation % 360
+        # Generate transformation hash
 
+        transformation_list = []
+
+        # Stored transformations first
+        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
+            transformation_list.append(stored_transformation)
+
+        # Interactive transformations second
+        for transformation in transformations:
+            transformation_list.append(transformation)
+
+        if rotation:
+            transformation_list.append(
+                TransformationRotate(degrees=rotation)
+            )
+
+        if size:
+            transformation_list.append(
+                TransformationResize(
+                    **dict(zip(('width', 'height'), (size.split('x'))))
+                )
+            )
+
+        if zoom_level:
+            transformation_list.append(TransformationZoom(percent=zoom_level))
+
+        cache_filename = '{}-{}'.format(
+            self.cache_filename, BaseTransformation.combine(transformation_list)
+        )
+
+        # Check is transformed image is available
+        logger.debug('transformations cache filename: %s', cache_filename)
+
+        if cache_storage_backend.exists(cache_filename):
+            logger.debug(
+                'transformations cache file "%s" found', cache_filename
+            )
+        else:
+            image = self.get_image(transformations=transformation_list)
+            with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+                file_object.write(image.getvalue())
+
+            self.cached_images.create(filename=cache_filename)
+
+        return cache_filename
+
+    def get_image(self, transformations=None):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
@@ -731,33 +768,15 @@ class DocumentPage(models.Model):
                 cache_storage_backend.delete(cache_filename)
                 raise
 
-        # Stored transformations
-        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
-            converter.transform(transformation=stored_transformation)
-
-        # Interactive transformations
         for transformation in transformations:
             converter.transform(transformation=transformation)
 
-        if rotation:
-            converter.transform(transformation=TransformationRotate(
-                degrees=rotation)
-            )
-
-        if size:
-            converter.transform(transformation=TransformationResize(
-                **dict(zip(('width', 'height'), (size.split('x')))))
-            )
-
-        if zoom_level:
-            converter.transform(
-                transformation=TransformationZoom(percent=zoom_level)
-            )
-
-        return converter.get_page(as_base64=as_base64)
+        return converter.get_page()
 
     def invalidate_cache(self):
         cache_storage_backend.delete(self.cache_filename)
+        for cached_image in self.cached_images.all():
+            cached_image.delete()
 
     @property
     def siblings(self):
@@ -774,14 +793,28 @@ class DocumentPage(models.Model):
         return '{}-{}'.format(self.document_version.uuid, self.pk)
 
 
-class NewVersionBlock(models.Model):
-    document = models.ForeignKey(Document, verbose_name=_('Document'))
-
-    objects = NewVersionBlockManager()
+class DocumentPageCachedImage(models.Model):
+    document_page = models.ForeignKey(
+        DocumentPage, related_name='cached_images',
+        verbose_name=_('Document page')
+    )
+    filename = models.CharField(max_length=128, verbose_name=_('Filename'))
 
     class Meta:
-        verbose_name = _('New version block')
-        verbose_name_plural = _('New version blocks')
+        verbose_name = _('Document page cached image')
+        verbose_name_plural = _('Document page cached images')
+
+    def delete(self, *args, **kwargs):
+        cache_storage_backend.delete(self.filename)
+        return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
+
+
+class DocumentPageResult(DocumentPage):
+    class Meta:
+        ordering = ('document_version__document', 'page_number')
+        proxy = True
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
 
 
 @python_2_unicode_compatible

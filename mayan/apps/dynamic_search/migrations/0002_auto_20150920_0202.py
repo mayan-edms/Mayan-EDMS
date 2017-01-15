@@ -15,7 +15,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='recentsearch',
             name='user',
-            field=models.ForeignKey(editable=False, to=settings.AUTH_USER_MODEL, verbose_name='User'),
+            field=models.ForeignKey(
+                editable=False, to=settings.AUTH_USER_MODEL,
+                verbose_name='User'
+            ),
             preserve_default=True,
         ),
     ]

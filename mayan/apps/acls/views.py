@@ -4,7 +4,6 @@ import itertools
 import logging
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -14,7 +13,7 @@ from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from permissions import Permission, PermissionNamespace
+from permissions import PermissionNamespace
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -41,14 +40,10 @@ class ACLCreateView(SingleObjectCreateView):
         except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, permissions=(permission_acl_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_edit, request.user, self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_edit, user=request.user,
+            obj=self.content_object
+        )
 
         return super(ACLCreateView, self).dispatch(request, *args, **kwargs)
 
@@ -92,14 +87,10 @@ class ACLDeleteView(SingleObjectDeleteView):
     def dispatch(self, request, *args, **kwargs):
         acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, permissions=(permission_acl_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_edit, request.user, acl.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_edit, user=request.user,
+            obj=acl.content_object
+        )
 
         return super(ACLDeleteView, self).dispatch(request, *args, **kwargs)
 
@@ -133,14 +124,10 @@ class ACLListView(SingleObjectListView):
         except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, permissions=(permission_acl_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_view, request.user, self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_view, user=request.user,
+            obj=self.content_object
+        )
 
         return super(ACLListView, self).dispatch(request, *args, **kwargs)
 
@@ -183,14 +170,10 @@ class ACLPermissionsView(AssignRemoveView):
     def dispatch(self, request, *args, **kwargs):
         acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, permissions=(permission_acl_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_edit, request.user, acl.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_edit, user=request.user,
+            obj=acl.content_object
+        )
 
         return super(
             ACLPermissionsView, self

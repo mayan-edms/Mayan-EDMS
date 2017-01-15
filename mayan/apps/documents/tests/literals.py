@@ -36,37 +36,39 @@ afc7fd6d4c02124879a'
 
 # File paths
 TEST_COMPRESSED_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_COMPRESSED_DOCUMENTS_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_COMPRESSED_DOCUMENTS_FILENAME
 )
 TEST_DEU_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_DEU_DOCUMENT_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_DEU_DOCUMENT_FILENAME
 )
 TEST_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents', TEST_DOCUMENT_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_DOCUMENT_FILENAME
 )
 TEST_DOCUMENT_TYPE_QUICK_LABEL = 'test quick label'
 TEST_HYBRID_DOCUMENT_PATH = os.path.join(
-    'contrib', 'sample_documents', TEST_HYBRID_DOCUMENT
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_HYBRID_DOCUMENT
 )
 TEST_MULTI_PAGE_TIFF_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_MULTI_PAGE_TIFF
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_MULTI_PAGE_TIFF
 )
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME
 )
 TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_NON_ASCII_DOCUMENT_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_NON_ASCII_DOCUMENT_FILENAME
 )
 TEST_OFFICE_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_OFFICE_DOCUMENT
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_OFFICE_DOCUMENT
 )
 TEST_SMALL_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    TEST_SMALL_DOCUMENT_FILENAME
+    settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+    'sample_documents', TEST_SMALL_DOCUMENT_FILENAME
 )

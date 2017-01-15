@@ -1,13 +1,12 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
 )
 
-urlpatterns = patterns(
-    'acls.views',
+urlpatterns = [
     url(
         r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/create/$',
         ACLCreateView.as_view(), name='acl_create'
@@ -21,4 +20,4 @@ urlpatterns = patterns(
         r'^(?P<pk>\d+)/permissions/$', ACLPermissionsView.as_view(),
         name='acl_permissions'
     ),
-)
+]

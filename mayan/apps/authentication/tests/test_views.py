@@ -3,9 +3,10 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from django.test import TestCase, override_settings
-from django.test.client import Client
+from django.test import override_settings
 
+from common.tests import BaseTestCase
+from smart_settings.classes import Namespace
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -13,20 +14,22 @@ from user_management.tests.literals import (
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
 
 
-class UserLoginTestCase(TestCase):
+class UserLoginTestCase(BaseTestCase):
     """
     Test that users can login via the supported authentication methods
     """
 
     def setUp(self):
+        super(UserLoginTestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
-        self.client = Client()
+        Namespace.invalidate_cache_all()
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
-    def test_normal_behaviour(self):
+    def test_normal_behavior(self):
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(
             response,

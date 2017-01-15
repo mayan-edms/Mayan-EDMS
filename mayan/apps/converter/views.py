@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -14,7 +13,6 @@ from common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
 )
-from permissions import Permission
 
 from .models import Transformation
 from .permissions import (
@@ -33,15 +31,10 @@ class TransformationDeleteView(SingleObjectDeleteView):
             Transformation, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_delete,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_delete, request.user,
-                self.transformation.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_delete, user=request.user,
+            obj=self.transformation.content_object
+        )
 
         return super(TransformationDeleteView, self).dispatch(
             request, *args, **kwargs
@@ -94,15 +87,10 @@ class TransformationCreateView(SingleObjectCreateView):
         except content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_create,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_create, request.user,
-                self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_create, user=request.user,
+            obj=self.content_object
+        )
 
         return super(TransformationCreateView, self).dispatch(
             request, *args, **kwargs
@@ -150,15 +138,10 @@ class TransformationEditView(SingleObjectEditView):
             Transformation, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_edit, request.user,
-                self.transformation.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_edit, user=request.user,
+            obj=self.transformation.content_object
+        )
 
         return super(TransformationEditView, self).dispatch(
             request, *args, **kwargs
@@ -212,15 +195,10 @@ class TransformationListView(SingleObjectListView):
         except content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_view, request.user,
-                self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_view, user=request.user,
+            obj=self.content_object
+        )
 
         return super(TransformationListView, self).dispatch(
             request, *args, **kwargs

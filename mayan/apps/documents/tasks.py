@@ -9,8 +9,7 @@ from django.db import OperationalError
 from mayan.celery import app
 
 from .literals import (
-    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
-    NEW_DOCUMENT_RETRY_DELAY
+    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
 
 logger = logging.getLogger(__name__)
@@ -56,14 +55,15 @@ def task_delete_stubs():
     logger.info('Finshed')
 
 
-@app.task(compression='zlib')
-def task_get_document_page_image(document_page_id, *args, **kwargs):
+@app.task()
+def task_generate_document_page_image(document_page_id, *args, **kwargs):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
 
     document_page = DocumentPage.objects.get(pk=document_page_id)
-    return document_page.get_image(*args, **kwargs)
+
+    return document_page.generate_image(*args, **kwargs)
 
 
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
@@ -82,56 +82,6 @@ def task_update_page_count(self, version_id):
             exception
         )
         raise self.retry(exc=exception)
-
-
-@app.task(bind=True, default_retry_delay=NEW_DOCUMENT_RETRY_DELAY, ignore_result=True)
-def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, user_id=None):
-    SharedUploadedFile = apps.get_model(
-        app_label='common', model_name='SharedUploadedFile'
-    )
-
-    DocumentType = apps.get_model(
-        app_label='documents', model_name='DocumentType'
-    )
-
-    try:
-        document_type = DocumentType.objects.get(pk=document_type_id)
-        shared_file = SharedUploadedFile.objects.get(
-            pk=shared_uploaded_file_id
-        )
-        if user_id:
-            user = get_user_model().objects.get(pk=user_id)
-        else:
-            user = None
-
-    except OperationalError as exception:
-        logger.warning(
-            'Operational error during attempt to gather data for new '
-            'document: %s; Retrying.', exception
-        )
-        raise self.retry(exc=exception)
-
-    try:
-        with shared_file.open as file_object:
-            document_version = document_type.new_document(
-                self, file_object=file_object, label=label,
-                description=description, language=language, _user=user
-            )
-    except OperationalError as exception:
-        logger.warning(
-            'Operational error during attempt to gather data for new '
-            'document: %s; Retrying.', exception
-        )
-        raise self.retry(exc=exception)
-
-    try:
-        shared_file.delete()
-    except OperationalError as exception:
-        logger.warning(
-            'Operational error while trying to delete shared file used to '
-            'upload new document: %s; %s. Retrying.',
-            document_version.document, exception
-        )
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)

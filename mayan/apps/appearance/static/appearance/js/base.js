@@ -1,37 +1,67 @@
 'use strict';
 
-function resizeFullHeight() {
+var resizeFullHeight = function () {
     $('.full-height').height($(window).height() - $('.full-height').data('height-difference'));
-}
+};
 
-function set_image_noninteractive(image) {
+var set_image_noninteractive = function (image) {
     // Remove border to indicate non interactive image
     image.removeClass('thin_border');
-    container = image.parent().parent();
+    var container = image.parent().parent();
     // Save img HTML
-    html = image.parent().html();
+    var html = image.parent().html();
     // Remove anchor
     image.parent().remove();
     // Place again img
     container.html(html);
-}
+};
 
-function load_document_image(image) {
-    $.get( image.attr('data-src'), function(result) {
-        image.attr('src', result.data);
-        image.addClass(image.attr('data-post-load-class'));
-    })
-    .fail(function() {
-        image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
-        set_image_noninteractive(image);
-    })
-}
-
-function dismissAlert(element) {
+var dismissAlert = function (element) {
     element.addClass('fadeOutUp').fadeOut('slow');
-}
+};
+
+var onImageError = function (image) {
+    image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+    set_image_noninteractive(image);
+};
+
+var loadImage = function (image) {
+    image.error(function(event) {
+        onImageError(image);
+    });
+
+    image.attr('src', image.attr('data-url'));
+};
+
+
+var tagSelectionTemplate = function (tag, container) {
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  container[0].style.background = tag.element.style.color;
+  return $tag;
+};
+
+
+var tagResultTemplate = function (tag) {
+  if (!tag.element) { return ''; }
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  return $tag;
+};
 
 jQuery(document).ready(function() {
+    $('.lazy-load').on('load', function() {
+        $(this).siblings('.spinner').remove();
+        $(this).removeClass('lazy-load');
+    });
+
+    $('.lazy-load-carousel').on('load', function() {
+        $(this).siblings('.spinner').remove();
+        $(this).removeClass('lazy-load-carousel');
+    });
+
     resizeFullHeight();
 
     $(window).resize(function() {
@@ -53,43 +83,18 @@ jQuery(document).ready(function() {
         autoResize  : true,
     });
 
-    $('a.fancybox-staging').click(function(e) {
-        var $this = $(this);
-
-            $.get($this.attr('href'), function( result ) {
-                if (result.status == 'success') {
-                    $.fancybox.open([
-                        {
-                            href : result.data,
-                            title : $this.attr('title'),
-                            openEffect  : 'elastic',
-                            closeEffect : 'elastic',
-                            prevEffect  : 'none',
-                            nextEffect  : 'none',
-                            titleShow   : true,
-                            type        : 'image',
-                            autoResize  : true,
-                        },
-                    ]);
-                }
-            })
-        e.preventDefault();
-    })
-
    $('img.lazy-load').lazyload({
         appear: function(elements_left, settings) {
-            load_document_image($(this));
+            loadImage($(this));
         },
     });
 
     $('img.lazy-load-carousel').lazyload({
-        threshold : 400,
-        container: $("#carousel-container"),
         appear: function(elements_left, settings) {
-            var $this = $(this);
-            $this.removeClass('lazy-load-carousel');
-            load_document_image($this);
+            loadImage($(this));
         },
+        container: $("#carousel-container"),
+        threshold: 400
     });
 
     $('th input:checkbox').click(function(e) {
@@ -114,4 +119,13 @@ jQuery(document).ready(function() {
         });
 
     }, 3000);
+
+    $('.select2').select2();
+
+    $('.select2-tags').select2({
+        templateSelection: tagSelectionTemplate,
+        templateResult: tagResultTemplate
+    });
+
+
 });

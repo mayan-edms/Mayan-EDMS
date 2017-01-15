@@ -1,3 +1,22 @@
+2.2 (2016-XX-XX)
+================
+- Remove the installation app (GitLab #301).
+- Add support for document page search
+- Remove recent searches feature
+- Remove dependency on the django-filetransfer library
+- Fix height calculation in resize transformation
+- Improve upgrade instructions
+- New image caching pipeline
+- New drop down menus for the documents, folders and tags app as well as for
+the user links
+- New Dashboard view
+- Moved licenses to their own module in every app
+- Update project to work with Django 1.10.4.
+- Tags are alphabetically ordered by label (GitLab #342).
+- Stop loading theme fonts from the web (GitLab #343).
+- Add support for attaching multiple tags (GitLab #307).
+
+
 2.1.6 (2016-11-23)
 =================
 - Fix variable name typo in the rotation transformation class.

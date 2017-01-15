@@ -4,18 +4,17 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-
-from actstream import registry
 
 from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
-    MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
+    MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from common.classes import ModelAttribute
+from common.classes import DashboardWidget, ModelAttribute
 from common.signals import post_initial_setup
 from common.widgets import two_state_template
 from converter.links import link_transformation_list
@@ -60,6 +59,7 @@ from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
     DELETE_STALE_STUBS_INTERVAL
 )
+from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_edit,
@@ -68,13 +68,15 @@ from .permissions import (
     permission_document_trash, permission_document_version_revert,
     permission_document_view
 )
-from .settings import setting_thumbnail_size
+# Just import to initialize the search models
+from .search import document_search, document_page_search  # NOQA
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
+    new_document_pages_this_month, new_documents_this_month,
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import document_thumbnail
+from .widgets import DocumentThumbnailWidget, DocumentPageThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -84,15 +86,52 @@ class DocumentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentsApp, self).ready()
+        from actstream import registry
 
         APIEndPoint(app=self, version_string='1')
 
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')
         DocumentPage = self.get_model('DocumentPage')
+        DocumentPageResult = self.get_model('DocumentPageResult')
         DocumentType = self.get_model('DocumentType')
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
+
+        DashboardWidget(
+            func=new_document_pages_this_month, icon='fa fa-calendar',
+            label=_('New pages this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-document-pages-per-month',)
+            )
+        )
+        DashboardWidget(
+            func=new_documents_this_month, icon='fa fa-calendar',
+            label=_('New documents this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-documents-per-month',)
+            )
+        )
+
+        DashboardWidget(
+            icon='fa fa-file', queryset=Document.objects.all(),
+            label=_('Total documents'),
+            link=reverse_lazy('documents:document_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-book', queryset=DocumentType.objects.all(),
+            label=_('Document types'),
+            link=reverse_lazy('documents:document_type_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-trash', queryset=DeletedDocument.objects.all(),
+            label=_('Documents in trash'),
+            link=reverse_lazy('documents:document_list_deleted')
+        )
 
         MissingItem(
             label=_('Create a document type'),
@@ -147,16 +186,37 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentPage, related='document',
         )
 
+        # Document and document page thumbnail widget
+        document_thumbnail_widget = DocumentThumbnailWidget()
+        document_page_thumbnail_widget = DocumentPageThumbnailWidget()
+
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail(
-                context['object'], gallery_name='documents:document_list',
-                size=setting_thumbnail_size.value,
-                title=getattr(context['object'], 'label', None),
+            func=lambda context: document_thumbnail_widget.render(
+                instance=context['object']
             )
         )
         SourceColumn(
             source=Document, label=_('Type'), attribute='document_type'
+        )
+
+        SourceColumn(
+            source=DocumentPage, label=_('Thumbnail'),
+            func=lambda context: document_page_thumbnail_widget.render(
+                instance=context['object']
+            )
+        )
+
+        SourceColumn(
+            source=DocumentPageResult, label=_('Thumbnail'),
+            func=lambda context: document_page_thumbnail_widget.render(
+                instance=context['object']
+            )
+        )
+
+        SourceColumn(
+            source=DocumentPageResult, label=_('Type'),
+            attribute='document_version.document.document_type'
         )
 
         SourceColumn(
@@ -173,14 +233,11 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail(
-                context['object'],
-                gallery_name='documents:delete_document_list',
-                size=setting_thumbnail_size.value,
-                title=getattr(context['object'], 'label', None),
-                disable_title_link=True
+            func=lambda context: document_thumbnail_widget.render(
+                instance=context['object']
             )
         )
+
         SourceColumn(
             source=DeletedDocument, label=_('Type'), attribute='document_type'
         )
@@ -253,7 +310,7 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
                 },
-                'documents.tasks.task_get_document_page_image': {
+                'documents.tasks.task_generate_document_page_image': {
                     'queue': 'converter'
                 },
                 'documents.tasks.task_update_page_count': {
@@ -265,12 +322,15 @@ class DocumentsApp(MayanAppConfig):
             }
         )
 
-        menu_front_page.bind_links(
+        menu_documents.bind_links(
             links=(
                 link_document_list_recent, link_document_list,
                 link_document_list_deleted
             )
         )
+
+        menu_main.bind_links(links=(menu_documents,), position=0)
+
         menu_setup.bind_links(links=(link_document_type_setup,))
         menu_tools.bind_links(links=(link_clear_image_cache,))
 

@@ -55,11 +55,13 @@ class Menu(object):
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, name):
+    def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
+        self.icon = icon
         self.name = name
+        self.label = label
         self.bound_links = {}
         self.unbound_links = {}
         self.link_positions = {}
@@ -88,7 +90,37 @@ class Menu(object):
                 links=links, position=position, source=sources
             )
 
+    def get_resolved_navigation_object_list(self, context, source):
+        resolved_navigation_object_list = []
+
+        if source:
+            resolved_navigation_object_list = [source]
+        else:
+            navigation_object_list = context.get(
+                'navigation_object_list', ('object',)
+            )
+
+            logger.debug('navigation_object_list: %s', navigation_object_list)
+
+            # Multiple objects
+            for navigation_object in navigation_object_list:
+                try:
+                    resolved_navigation_object_list.append(
+                        Variable(navigation_object).resolve(context)
+                    )
+                except VariableDoesNotExist:
+                    pass
+
+        logger.debug(
+            'resolved_navigation_object_list: %s',
+            resolved_navigation_object_list
+        )
+
+        return resolved_navigation_object_list
+
     def resolve(self, context, source=None):
+        result = []
+
         try:
             request = Variable('request').resolve(context)
         except VariableDoesNotExist:
@@ -101,25 +133,10 @@ class Menu(object):
 
         # Get sources: view name, view objects
         current_view = resolve(current_path).view_name
-        resolved_navigation_object_list = []
 
-        result = []
-
-        if source:
-            resolved_navigation_object_list = [source]
-        else:
-            navigation_object_list = context.get(
-                'navigation_object_list', ('object',)
-            )
-
-            # Multiple objects
-            for navigation_object in navigation_object_list:
-                try:
-                    resolved_navigation_object_list.append(
-                        Variable(navigation_object).resolve(context)
-                    )
-                except VariableDoesNotExist:
-                    pass
+        resolved_navigation_object_list = self.get_resolved_navigation_object_list(
+            context=context, source=source
+        )
 
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
@@ -138,7 +155,7 @@ class Menu(object):
                             # No need for further content object match testing
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
-                        # Second try for objects using .defer() or .only()
+                            # Second try for objects using .defer() or .only()
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -148,7 +165,6 @@ class Menu(object):
                                     resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
-
                 except TypeError:
                     # When source is a dictionary
                     pass
@@ -170,7 +186,11 @@ class Menu(object):
 
         # Main menu links
         for link in self.bound_links.get(None, []):
-            resolved_link = link.resolve(context)
+            if isinstance(link, Menu):
+                resolved_link = link
+            else:
+                resolved_link = link.resolve(context)
+
             if resolved_link:
                 resolved_links.append(resolved_link)
 
@@ -183,12 +203,16 @@ class Menu(object):
             unbound_links.extend(self.unbound_links.get(current_view, ()))
 
             for resolved_link in result[0]:
-                if resolved_link.link in unbound_links:
-                    result[0].remove(resolved_link)
+                try:
+                    if resolved_link.link in unbound_links:
+                        result[0].remove(resolved_link)
+                except AttributeError:
+                    # It's a menu, ignore
+                    pass
 
             # Sort links by position value passed during bind
             result[0] = sorted(
-                result[0], key=lambda item: self.link_positions.get(item.link)
+                result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
             )
 
         return result
@@ -250,21 +274,20 @@ class Link(object):
         # If this link has a required permission check that the user have it
         # too
         if self.permissions:
-            try:
-                Permission.check_permissions(request.user, self.permissions)
-            except PermissionDenied:
-                # If the user doesn't have the permission, and we are passed
-                # an instance, check to see if the user has at least ACL
-                # access to the instance.
-                if resolved_object:
-                    try:
-                        AccessControlList.objects.check_access(
-                            self.permissions, request.user, resolved_object,
-                            related=self.permissions_related
-                        )
-                    except PermissionDenied:
-                        return None
-                else:
+            if resolved_object:
+                try:
+                    AccessControlList.objects.check_access(
+                        permissions=self.permissions, user=request.user,
+                        obj=resolved_object, related=self.permissions_related
+                    )
+                except PermissionDenied:
+                    return None
+            else:
+                try:
+                    Permission.check_permissions(
+                        requester=request.user, permissions=self.permissions
+                    )
+                except PermissionDenied:
                     return None
 
         # Check to see if link has conditional display function and only
@@ -349,6 +372,18 @@ class Link(object):
         return resolved_link
 
 
+class Separator(Link):
+    def __init__(self, *args, **kwargs):
+        self.icon = None
+        self.text = None
+        self.view = None
+
+    def resolve(self, *args, **kwargs):
+        result = ResolvedLink(current_view=None, link=self)
+        result.separator = True
+        return result
+
+
 class SourceColumn(object):
     _registry = {}
 
@@ -358,9 +393,11 @@ class SourceColumn(object):
             return cls._registry[source]
         except KeyError:
             try:
+                # Try it as a queryset
                 return cls._registry[source.model]
             except AttributeError:
                 try:
+                    # It seems to be an instance, try its class
                     return cls._registry[source.__class__]
                 except KeyError:
                     try:

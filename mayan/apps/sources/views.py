@@ -1,13 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from checkouts.models import NewVersionBlock
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
@@ -16,14 +16,13 @@ from common.views import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
-from documents.models import DocumentType, Document, NewVersionBlock
+from documents.models import DocumentType, Document
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url
 from navigation import Link
-from permissions import Permission
 
 from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm,
@@ -195,15 +194,10 @@ class UploadInteractiveView(UploadBaseView):
             )
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_create,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_create, request.user,
-                self.document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_create, user=request.user,
+            obj=self.document_type
+        )
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
@@ -333,15 +327,10 @@ class UploadInteractiveVersionView(UploadBaseView):
                 )
             )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_new_version,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_new_version, self.request.user,
-                self.document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_new_version,
+            user=self.request.user, obj=self.document
+        )
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 

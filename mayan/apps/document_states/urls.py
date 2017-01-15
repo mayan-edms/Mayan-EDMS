@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
@@ -14,8 +14,7 @@ from .views import (
     WorkflowInstanceTransitionView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^document/(?P<pk>\d+)/workflows/$',
         DocumentWorkflowInstanceListView.as_view(),
@@ -96,4 +95,4 @@ urlpatterns = patterns(
         SetupWorkflowTransitionEditView.as_view(),
         name='setup_workflow_transition_edit'
     ),
-)
+]

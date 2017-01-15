@@ -2,9 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from documents.permissions import permission_document_view
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..models import Folder
 from ..permissions import (
@@ -16,235 +13,195 @@ from .literals import TEST_FOLDER_LABEL, TEST_FOLDER_EDITED_LABEL
 
 
 class FolderViewTestCase(GenericDocumentViewTestCase):
-    def test_folder_create_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def setUp(self):
+        super(FolderViewTestCase, self).setUp()
+        self.login_user()
 
-        response = self.post(
+    def _create_folder(self, label):
+        return self.post(
             'folders:folder_create', data={
                 'label': TEST_FOLDER_LABEL
             }
         )
 
+    def test_folder_create_view_no_permission(self):
+        response = self._create_folder(label=TEST_FOLDER_LABEL)
+
         self.assertEquals(response.status_code, 403)
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_create_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.grant(permission=permission_folder_create)
 
-        self.role.permissions.add(
-            permission_folder_create.stored_permission
-        )
+        response = self._create_folder(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_create', data={
-                'label': TEST_FOLDER_LABEL
-            }, follow=True
-        )
-        self.assertContains(response, text='created', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(Folder.objects.first().label, TEST_FOLDER_LABEL)
 
     def test_folder_create_duplicate_view_with_permission(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.grant(permission=permission_folder_create)
 
-        self.role.permissions.add(
-            permission_folder_create.stored_permission
-        )
-
-        response = self.post(
-            'folders:folder_create', data={
-                'label': TEST_FOLDER_LABEL
-            }
-        )
+        response = self._create_folder(label=TEST_FOLDER_LABEL)
 
         self.assertContains(response, text='exists', status_code=200)
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(Folder.objects.first().pk, folder.pk)
 
-    def test_folder_delete_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def _delete_folder(self, folder):
+        return self.post('folders:folder_delete', args=(folder.pk,))
 
+    def test_folder_delete_view_no_permission(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post('folders:folder_delete', args=(folder.pk,))
+        response = self._delete_folder(folder=folder)
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Folder.objects.count(), 1)
 
     def test_folder_delete_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(
-            permission_folder_delete.stored_permission
-        )
+        self.grant(permission=permission_folder_delete)
 
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_delete', args=(folder.pk,), follow=True
-        )
+        response = self._delete_folder(folder=folder)
 
-        self.assertContains(response, text='deleted', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Folder.objects.count(), 0)
 
-    def test_folder_edit_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
-
-        response = self.post(
+    def _edit_folder(self, folder, label):
+        return self.post(
             'folders:folder_edit', args=(folder.pk,), data={
-                'label': TEST_FOLDER_EDITED_LABEL
+                'label': label
             }
         )
+
+    def test_folder_edit_view_no_permission(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+
+        response = self._edit_folder(
+            folder=folder, label=TEST_FOLDER_EDITED_LABEL
+        )
         self.assertEqual(response.status_code, 403)
-        folder = Folder.objects.get(pk=folder.pk)
+        folder.refresh_from_db()
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)
 
     def test_folder_edit_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(
-            permission_folder_edit.stored_permission
-        )
-
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_edit', args=(folder.pk,), data={
-                'label': TEST_FOLDER_EDITED_LABEL
-            }, follow=True
-        )
+        self.grant(permission=permission_folder_edit)
 
-        folder = Folder.objects.get(pk=folder.pk)
-        self.assertContains(response, text='update', status_code=200)
-        self.assertEqual(folder.label, TEST_FOLDER_EDITED_LABEL)
-
-    def test_folder_add_document_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_folder_view.stored_permission)
-
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
-
-        response = self.post(
-            'folders:folder_add_document', args=(self.document.pk,), data={
-                'folder': folder.pk,
-            }
+        response = self._edit_folder(
+            folder=folder, label=TEST_FOLDER_EDITED_LABEL
         )
 
         self.assertEqual(response.status_code, 302)
+        folder.refresh_from_db()
+        self.assertEqual(folder.label, TEST_FOLDER_EDITED_LABEL)
+
+    def _add_document_to_folder(self, folder):
+        return self.post(
+            'folders:folder_add_document', args=(self.document.pk,), data={
+                'folders': folder.pk
+            }
+        )
+
+    def test_folder_add_document_view_no_permission(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+
+        self.grant(permission=permission_folder_view)
+
+        response = self._add_document_to_folder(folder=folder)
+
+        self.assertContains(
+            response, text='Select a valid choice.', status_code=200
+        )
+        folder.refresh_from_db()
         self.assertEqual(folder.documents.count(), 0)
 
     def test_folder_add_document_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_folder_view.stored_permission)
-
-        self.role.permissions.add(
-            permission_folder_add_document.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_add_document', args=(self.document.pk,), data={
-                'folder': folder.pk,
-            }, follow=True
-        )
+        self.grant(permission=permission_folder_view)
+        self.grant(permission=permission_folder_add_document)
+        self.grant(permission=permission_document_view)
 
-        folder = Folder.objects.get(pk=folder.pk)
-        self.assertContains(response, text='added', status_code=200)
+        response = self._add_document_to_folder(folder=folder)
+
+        folder.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(folder.documents.count(), 1)
         self.assertQuerysetEqual(
             folder.documents.all(), (repr(self.document),)
+        )
+
+    def _add_multiple_documents_to_folder(self, folder):
+        return self.post(
+            'folders:folder_add_multiple_documents', data={
+                'id_list': (self.document.pk,), 'folders': folder.pk
+            }
         )
 
     def test_folder_add_multiple_documents_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_folder_view.stored_permission)
-
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_add_multiple_documents', data={
-                'id_list': (self.document.pk,), 'folder': folder.pk
-            }
-        )
+        self.grant(permission=permission_folder_view)
 
-        self.assertEqual(response.status_code, 302)
+        response = self._add_multiple_documents_to_folder(folder=folder)
+
+        self.assertContains(
+            response, text='Select a valid choice', status_code=200
+        )
+        folder.refresh_from_db()
         self.assertEqual(folder.documents.count(), 0)
 
     def test_folder_add_multiple_documents_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(permission_folder_view.stored_permission)
-
-        self.role.permissions.add(
-            permission_folder_add_document.stored_permission
-        )
-
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
-        response = self.post(
-            'folders:folder_add_multiple_documents', data={
-                'id_list': (self.document.pk,), 'folder': folder.pk
-            }, follow=True
-        )
+        self.grant(permission=permission_folder_view)
+        self.grant(permission=permission_folder_add_document)
 
-        folder = Folder.objects.get(pk=folder.pk)
-        self.assertContains(response, text='added', status_code=200)
+        response = self._add_multiple_documents_to_folder(folder=folder)
+
+        self.assertEqual(response.status_code, 302)
+        folder.refresh_from_db()
         self.assertEqual(folder.documents.count(), 1)
         self.assertQuerysetEqual(
             folder.documents.all(), (repr(self.document),)
         )
 
-    def test_folder_remove_document_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
-
-        folder.documents.add(self.document)
-
-        self.assertEqual(folder.documents.count(), 1)
-
-        response = self.post(
-            'folders:folder_document_multiple_remove', args=(folder.pk,),
+    def _remove_document_from_folder(self, folder):
+        return self.post(
+            'folders:document_folder_remove', args=(self.document.pk,),
             data={
-                'id_list': (self.document.pk,),
+                'folders': (folder.pk,),
             }
         )
 
-        self.assertEqual(response.status_code, 302)
-
-        folder = Folder.objects.get(pk=folder.pk)
-        self.assertEqual(folder.documents.count(), 1)
-
-    def test_folder_remove_document_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.role.permissions.add(
-            permission_folder_remove_document.stored_permission
-        )
-
+    def test_folder_remove_document_view_no_permission(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         folder.documents.add(self.document)
-        self.assertEqual(folder.documents.count(), 1)
 
-        response = self.post(
-            'folders:folder_document_multiple_remove', args=(folder.pk,),
-            data={
-                'id_list': (self.document.pk,),
-            }, follow=True
+        response = self._remove_document_from_folder(folder=folder)
+
+        self.assertContains(
+            response, text='Select a valid choice', status_code=200
         )
 
-        folder = Folder.objects.get(pk=folder.pk)
-        self.assertContains(response, text='removed', status_code=200)
+        folder.refresh_from_db()
+        self.assertEqual(folder.documents.count(), 1)
+
+    def test_folder_remove_document_view_with_permission(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+
+        folder.documents.add(self.document)
+
+        self.grant(permission=permission_folder_remove_document)
+
+        response = self._remove_document_from_folder(folder=folder)
+
+        self.assertEqual(response.status_code, 302)
+        folder.refresh_from_db()
         self.assertEqual(folder.documents.count(), 0)

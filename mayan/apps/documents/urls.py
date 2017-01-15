@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
@@ -12,23 +12,30 @@ from .api_views import (
     APIDocumentVersionRevertView, APIDocumentVersionView,
     APIRecentDocumentListView
 )
-from .settings import setting_print_size, setting_display_size
 from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
-    DeletedDocumentDeleteManyView, DeletedDocumentListView, DocumentEditView,
-    DocumentListView, DocumentPageView, DocumentPageListView,
-    DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
-    DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
+    DeletedDocumentDeleteManyView, DeletedDocumentListView,
+    DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    DocumentDownloadView, DocumentEditView, DocumentListView,
+    DocumentPageListView, DocumentPageRotateLeftView,
+    DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
+    DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
+    DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
+    DocumentTransformationsClearView, DocumentTrashView, DocumentTrashManyView,
     DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView
+    DocumentUpdatePageCountView, DocumentVersionDownloadFormView,
+    DocumentVersionDownloadView, DocumentVersionListView,
+    DocumentVersionRevertView, DocumentView, EmptyTrashCanView,
+    RecentDocumentListView, document_page_navigation_first,
+    document_page_navigation_last, document_page_navigation_next,
+    document_page_navigation_previous
 )
 
-urlpatterns = patterns(
-    'documents.views',
+
+urlpatterns = [
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(
         r'^list/recent/$', RecentDocumentListView.as_view(),
@@ -64,11 +71,11 @@ urlpatterns = patterns(
         name='document_multiple_delete'
     ),
     url(
-        r'^(?P<document_id>\d+)/type/$', 'document_document_type_edit',
+        r'^(?P<pk>\d+)/type/$', DocumentDocumentTypeEditView.as_view(),
         name='document_document_type_edit'
     ),
     url(
-        r'^multiple/type/$', 'document_multiple_document_type_edit',
+        r'^multiple/type/$', DocumentDocumentTypeEditView.as_view(),
         name='document_multiple_document_type_edit'
     ),
     url(
@@ -84,41 +91,38 @@ urlpatterns = patterns(
         name='document_edit'
     ),
     url(
-        r'^(?P<document_id>\d+)/print/$', 'document_print',
+        r'^(?P<pk>\d+)/print/$', DocumentPrint.as_view(),
         name='document_print'
     ),
     url(
-        r'^(?P<document_id>\d+)/reset_page_count/$',
-        'document_update_page_count', name='document_update_page_count'
+        r'^(?P<pk>\d+)/reset_page_count/$',
+        DocumentUpdatePageCountView.as_view(),
+        name='document_update_page_count'
     ),
     url(
         r'^multiple/reset_page_count/$',
-        'document_multiple_update_page_count',
+        DocumentUpdatePageCountView.as_view(),
         name='document_multiple_update_page_count'
     ),
-
     url(
-        r'^(?P<document_id>\d+)/display/$', 'get_document_image', {
-            'size': setting_display_size.value
-        }, 'document_display'
+        r'^(?P<pk>\d+)/download/form/$',
+        DocumentDownloadFormView.as_view(), name='document_download_form'
     ),
     url(
-        r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {
-            'size': setting_print_size.value
-        }, 'document_display_print'
-    ),
-
-    url(
-        r'^(?P<document_id>\d+)/download/$', 'document_download',
+        r'^(?P<pk>\d+)/download/$', DocumentDownloadView.as_view(),
         name='document_download'
     ),
     url(
-        r'^multiple/download/$', 'document_multiple_download',
+        r'^multiple/download/form/$', DocumentDownloadFormView.as_view(),
+        name='document_multiple_download_form'
+    ),
+    url(
+        r'^multiple/download/$', DocumentDownloadView.as_view(),
         name='document_multiple_download'
     ),
     url(
-        r'^(?P<document_id>\d+)/clear_transformations/$',
-        'document_clear_transformations',
+        r'^(?P<pk>\d+)/clear_transformations/$',
+        DocumentTransformationsClearView.as_view(),
         name='document_clear_transformations'
     ),
 
@@ -127,8 +131,13 @@ urlpatterns = patterns(
         name='document_version_list'
     ),
     url(
-        r'^document/version/(?P<document_version_pk>\d+)/download/$',
-        'document_download', name='document_version_download'
+        r'^document/version/(?P<pk>\d+)/download/form/$',
+        DocumentVersionDownloadFormView.as_view(),
+        name='document_version_download_form'
+    ),
+    url(
+        r'^document/version/(?P<pk>\d+)/download/$',
+        DocumentVersionDownloadView.as_view(), name='document_version_download'
     ),
     url(
         r'^document/version/(?P<pk>\d+)/revert/$',
@@ -142,7 +151,7 @@ urlpatterns = patterns(
 
     url(
         r'^multiple/clear_transformations/$',
-        'document_multiple_clear_transformations',
+        DocumentTransformationsClearView.as_view(),
         name='document_multiple_clear_transformations'
     ),
     url(
@@ -160,36 +169,37 @@ urlpatterns = patterns(
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/next/$',
-        'document_page_navigation_next', name='document_page_navigation_next'
+        document_page_navigation_next, name='document_page_navigation_next'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/previous/$',
-        'document_page_navigation_previous',
+        document_page_navigation_previous,
         name='document_page_navigation_previous'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/first/$',
-        'document_page_navigation_first', name='document_page_navigation_first'
+        document_page_navigation_first, name='document_page_navigation_first'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/last/$',
-        'document_page_navigation_last', name='document_page_navigation_last'
+        document_page_navigation_last, name='document_page_navigation_last'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/zoom/in/$',
-        'document_page_zoom_in', name='document_page_zoom_in'
+        r'^page/(?P<pk>\d+)/zoom/in/$',
+        DocumentPageZoomInView.as_view(), name='document_page_zoom_in'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/zoom/out/$',
-        'document_page_zoom_out', name='document_page_zoom_out'
+        r'^page/(?P<pk>\d+)/zoom/out/$',
+        DocumentPageZoomOutView.as_view(), name='document_page_zoom_out'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/rotate/right/$',
-        'document_page_rotate_right', name='document_page_rotate_right'
+        r'^page/(?P<pk>\d+)/rotate/left/$',
+        DocumentPageRotateLeftView.as_view(), name='document_page_rotate_left'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/rotate/left/$',
-        'document_page_rotate_left', name='document_page_rotate_left'
+        r'^page/(?P<pk>\d+)/rotate/right/$',
+        DocumentPageRotateRightView.as_view(),
+        name='document_page_rotate_right'
     ),
     url(
         r'^page/(?P<pk>\d+)/reset/$', DocumentPageViewResetView.as_view(),
@@ -238,10 +248,9 @@ urlpatterns = patterns(
         DocumentTypeFilenameCreateView.as_view(),
         name='document_type_filename_create'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^trashed_documents/$', APIDeletedDocumentListView.as_view(),
         name='trasheddocument-list'
@@ -304,4 +313,4 @@ api_urls = patterns(
         r'^document_types/$', APIDocumentTypeListView.as_view(),
         name='documenttype-list'
     ),
-)
+]

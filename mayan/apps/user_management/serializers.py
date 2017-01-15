@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.contrib.auth.password_validation import validate_password
 
 from rest_framework import serializers
 
@@ -59,3 +60,9 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         instance.save()
 
         return instance
+
+    def validate(self, data):
+        if 'password' in data:
+            validate_password(data['password'], self.instance)
+
+        return data

@@ -1,24 +1,21 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-from operator import itemgetter
 
 from django import forms
-from django.core.exceptions import PermissionDenied
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.forms import DetailForm, ModelForm
-from permissions import Permission
+from common.forms import DetailForm
 
 from .models import (
     Document, DocumentType, DocumentPage, DocumentTypeFilename
 )
-from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_CHOICES
+from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 from .permissions import permission_document_create
+from .settings import setting_language_choices
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
-
 logger = logging.getLogger(__name__)
 
 
@@ -29,8 +26,8 @@ class DocumentPageForm(DetailForm):
         model = DocumentPage
 
     def __init__(self, *args, **kwargs):
-        zoom = kwargs.pop('zoom', 100)
-        rotation = kwargs.pop('rotation', 0)
+        zoom = kwargs.pop('zoom', None)
+        rotation = kwargs.pop('rotation', None)
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
         self.fields['page_image'].widget.attrs.update({
@@ -44,8 +41,6 @@ class DocumentPageForm(DetailForm):
 
 
 # Document forms
-
-
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document = kwargs.pop('instance', None)
@@ -61,14 +56,21 @@ class DocumentPreviewForm(forms.Form):
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
 
-class DocumentForm(ModelForm):
+class DocumentForm(forms.ModelForm):
     """
     Form sub classes from DocumentForm used only when editing a document
     """
     class Meta:
         fields = ('label', 'description', 'language')
         model = Document
-        sorted_fields = {'language': itemgetter(1)}
+        widgets = {
+            'language': forms.Select(
+                choices=setting_language_choices.value, attrs={
+                    'class': 'select2'
+                }
+            )
+
+        }
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
@@ -114,6 +116,12 @@ class DocumentPropertiesForm(DetailForm):
                 'widget': forms.widgets.DateTimeInput
             },
             {'label': _('UUID'), 'field': 'uuid'},
+            {
+                'label': _('Language'),
+                'field': lambda x: dict(setting_language_choices.value).get(
+                    document.language, _('Unknown')
+                )
+            },
         ]
 
         if document.latest_version:
@@ -147,7 +155,7 @@ class DocumentPropertiesForm(DetailForm):
         super(DocumentPropertiesForm, self).__init__(*args, **kwargs)
 
     class Meta:
-        fields = ('document_type', 'description', 'language')
+        fields = ('document_type', 'description')
         model = Document
 
 
@@ -162,13 +170,10 @@ class DocumentTypeSelectForm(forms.Form):
         logger.debug('user: %s', user)
         super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
 
-        queryset = DocumentType.objects.all()
-        try:
-            Permission.check_permissions(user, (permission_document_create,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_create, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_create, user,
+            queryset=DocumentType.objects.all()
+        )
 
         self.fields['document_type'] = forms.ModelChoiceField(
             empty_label=None, label=_('Document type'), queryset=queryset,
@@ -212,8 +217,9 @@ class DocumentDownloadForm(forms.Form):
             self.fields['compressed'].widget.attrs.update({'disabled': True})
 
 
-class PrintForm(forms.Form):
+class DocumentPrintForm(forms.Form):
     page_group = forms.ChoiceField(
-        widget=forms.RadioSelect, choices=PAGE_RANGE_CHOICES
+        choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,
+        widget=forms.RadioSelect
     )
     page_range = forms.CharField(label=_('Page range'), required=False)

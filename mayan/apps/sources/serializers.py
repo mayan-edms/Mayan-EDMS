@@ -46,11 +46,6 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
         model = StagingFolderSource
 
 
-class StagingSourceFileImageSerializer(serializers.Serializer):
-    status = serializers.CharField()
-    data = serializers.CharField()
-
-
 class WebFormSourceSerializer(serializers.Serializer):
     class Meta:
         model = WebFormSource

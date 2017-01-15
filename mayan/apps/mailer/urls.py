@@ -1,20 +1,27 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-from .views import LogEntryListView
+from .views import LogEntryListView, MailDocumentLinkView, MailDocumentView
 
-urlpatterns = patterns(
-    'mailer.views',
+urlpatterns = [
     url(
-        r'^(?P<document_id>\d+)/send/link/$', 'send_document_link',
+        r'^(?P<pk>\d+)/send/link/$', MailDocumentLinkView.as_view(),
         name='send_document_link'
     ),
     url(
-        r'^(?P<document_id>\d+)/send/document/$', 'send_document_link',
-        {'as_attachment': True}, name='send_document'
+        r'^multiple/send/link/$', MailDocumentLinkView.as_view(),
+        name='send_multiple_document_link'
+    ),
+    url(
+        r'^(?P<pk>\d+)/send/document/$', MailDocumentView.as_view(),
+        name='send_document'
+    ),
+    url(
+        r'^multiple/send/document/$', MailDocumentView.as_view(),
+        name='send_multiple_document'
     ),
     url(
         r'^log/$', LogEntryListView.as_view(), name='error_log'
     ),
-)
+]

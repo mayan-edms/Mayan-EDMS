@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Django==1.8.15
+Django==1.9.11
 Pillow==3.1.2
 PyYAML==3.11
 celery==3.1.19

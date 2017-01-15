@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -12,7 +11,6 @@ from mptt.models import MPTTModel
 from acls.models import AccessControlList
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
-from permissions import Permission
 
 from .managers import (
     DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager
@@ -177,14 +175,9 @@ class IndexInstanceNode(MPTTModel):
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
-            queryset = self.documents
-
-            try:
-                Permission.check_permissions(user, (permission_document_view,))
-            except PermissionDenied:
-                queryset = AccessControlList.objects.filter_by_access(
-                    permission_document_view, user, queryset
-                )
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset=self.documents
+            )
 
             return queryset.count()
         else:

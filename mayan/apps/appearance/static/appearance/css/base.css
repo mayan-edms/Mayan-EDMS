@@ -70,10 +70,6 @@ body {
     border: 1px solid black;
 }
 
-.lazy-load-carousel-loaded {
-    width: 100%;
-}
-
 .mayan-page-wrapper-interactive {
     overflow: auto;
 }
@@ -82,12 +78,28 @@ body {
     overflow-x: scroll; height: 500px;
 }
 
+#carousel-container img {
+    width: 100%;
+}
+
 .carousel-item {
-    margin: 5px 10px 10px 10px
+    margin: 5px 10px 10px 10px;
 }
 
 .carousel-item-page-number {
     text-align: center;
+}
+
+img.lazy-load {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+img.lazy-load-carousel {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
 }
 
 .img-nolazyload {
@@ -104,6 +116,10 @@ body {
 
 .fancybox-nav span {
     visibility: visible;
+}
+
+.instance-image-widget {
+    text-align: center;
 }
 
 hr {
@@ -127,14 +143,27 @@ hr {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-.a-caption {
-    color: white;
-}
-
 .radio ul li {
     list-style-type:none;
 }
 
 a i {
     padding-right: 3px;
+}
+
+.panel-dashboard-widget {
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    border: 1px solid black;
+}
+
+.panel-dashboard-widget .panel-heading i {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice .label {
+    padding-bottom: 1px;
+}
+
+.tag-container .label {
+    margin-right: 2px;
 }

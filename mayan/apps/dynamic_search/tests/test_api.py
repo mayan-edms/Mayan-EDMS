@@ -9,6 +9,7 @@ from django.test import override_settings
 from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
+from documents.search import document_search
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
@@ -42,7 +43,13 @@ class SearchAPITestCase(APITestCase):
             )
 
         response = self.client.get(
-            '{}?q={}'.format(reverse('rest_api:search-view'), document.label)
+            '{}?q={}'.format(
+                reverse(
+                    'rest_api:search-view', args=(
+                        document_search.get_full_name(),
+                    )
+                ), document.label
+            )
         )
 
         content = loads(response.content)

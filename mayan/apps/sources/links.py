@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import NewVersionBlock
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
@@ -19,6 +19,10 @@ from .permissions import (
 
 
 def document_new_version_not_blocked(context):
+    NewVersionBlock = apps.get_model(
+        app_label='checkouts', model_name='NewVersionBlock'
+    )
+
     return not NewVersionBlock.objects.is_blocked(context['object'])
 
 

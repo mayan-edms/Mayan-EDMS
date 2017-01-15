@@ -10,6 +10,7 @@ from django.template.loader import get_template
 
 import mayan
 
+from ..classes import Collection, DashboardWidget
 from ..utils import return_attrib
 
 register = Library()
@@ -20,6 +21,16 @@ try:
 except sh.CommandNotFound:
     BUILD = None
     DATE = None
+
+
+@register.assignment_tag
+def get_collections():
+    return Collection.get_all()
+
+
+@register.assignment_tag
+def get_dashboard_widgets():
+    return DashboardWidget.get_all()
 
 
 @register.filter
@@ -35,9 +46,19 @@ def object_property(value, arg):
     return return_attrib(value, arg)
 
 
+@register.simple_tag
+def project_copyright():
+    return settings.PROJECT_COPYRIGHT
+
+
 @register.assignment_tag
 def project_description():
     return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
+
+
+@register.simple_tag
+def project_license():
+    return settings.PROJECT_LICENSE
 
 
 @register.simple_tag
@@ -71,8 +92,13 @@ def render_subtemplate(context, template_name, template_context):
 def build():
     if BUILD:
         try:
-            return '{} {}'.format(BUILD(), DATE().decode())
+            return '{} {}'.format(BUILD(), DATE())
         except sh.ErrorReturnCode_128:
             return ''
     else:
         return ''
+
+
+@register.filter
+def get_type(value):
+    return unicode(type(value))

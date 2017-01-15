@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -9,7 +8,6 @@ from rest_framework.response import Response
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -37,14 +35,10 @@ class APIDocumentFolderListView(generics.ListAPIView):
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
         queryset = document.document_folders().all()
         return queryset
@@ -147,18 +141,10 @@ class APIFolderDocumentListView(generics.ListCreateAPIView):
     def get_queryset(self):
         folder = self.get_folder()
 
-        documents = folder.documents.all()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            documents = AccessControlList.objects.filter_by_access(
-                permission_document_view, self.request.user, documents
-            )
-
-        return documents
+        return AccessControlList.objects.filter_by_access(
+            permission_document_view, self.request.user,
+            queryset=folder.documents.all()
+        )
 
     def perform_create(self, serializer):
         serializer.save(folder=self.get_folder())
@@ -215,14 +201,10 @@ class APIFolderDocumentView(generics.RetrieveDestroyAPIView):
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, instance
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=instance
+        )
 
         serializer = self.get_serializer(instance)
         return Response(serializer.data)

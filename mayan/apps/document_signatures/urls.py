@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     AllDocumentSignatureVerifyView, DocumentVersionDetachedSignatureCreateView,
@@ -10,8 +10,7 @@ from .views import (
     DocumentVersionSignatureUploadView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<pk>\d+)/details/$',
         DocumentVersionSignatureDetailView.as_view(),
@@ -52,4 +51,4 @@ urlpatterns = patterns(
         AllDocumentSignatureVerifyView.as_view(),
         name='all_document_version_signature_verify'
     ),
-)
+]

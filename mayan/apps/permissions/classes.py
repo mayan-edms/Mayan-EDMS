@@ -54,8 +54,13 @@ class Permission(object):
 
     @classmethod
     def check_permissions(cls, requester, permissions):
-        for permission in permissions:
-            if permission.stored_permission.requester_has_this(requester):
+        try:
+            for permission in permissions:
+                if permission.stored_permission.requester_has_this(requester):
+                    return True
+        except TypeError:
+            # Not a list of permissions, just one
+            if permissions.stored_permission.requester_has_this(requester):
                 return True
 
         logger.debug('no permission')

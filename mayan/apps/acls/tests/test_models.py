@@ -3,12 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-from permissions.classes import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP
@@ -19,8 +19,9 @@ TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class PermissionTestCase(TestCase):
+class PermissionTestCase(BaseTestCase):
     def setUp(self):
+        super(PermissionTestCase, self).setUp()
         self.document_type_1 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -53,11 +54,10 @@ class PermissionTestCase(TestCase):
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
 
-        Permission.invalidate_cache()
-
     def tearDown(self):
         for document_type in DocumentType.objects.all():
             document_type.delete()
+        super(PermissionTestCase, self).tearDown()
 
     def test_check_access_without_permissions(self):
         with self.assertRaises(PermissionDenied):
@@ -89,8 +89,6 @@ class PermissionTestCase(TestCase):
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_permissions(self):
-        self.role.permissions.add(permission_document_view.stored_permission)
-
         acl = AccessControlList.objects.create(
             content_object=self.document_1, role=self.role
         )
@@ -137,8 +135,6 @@ class PermissionTestCase(TestCase):
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_inherited_permissions(self):
-        self.role.permissions.add(permission_document_view.stored_permission)
-
         acl = AccessControlList.objects.create(
             content_object=self.document_type_1, role=self.role
         )
@@ -148,6 +144,10 @@ class PermissionTestCase(TestCase):
             permission=permission_document_view, user=self.user,
             queryset=Document.objects.all()
         )
+
+        # Since document_1 and document_2 are of document_type_1
+        # they are the only ones that should be returned
+
         self.assertTrue(self.document_1 in result)
         self.assertTrue(self.document_2 in result)
         self.assertTrue(self.document_3 not in result)

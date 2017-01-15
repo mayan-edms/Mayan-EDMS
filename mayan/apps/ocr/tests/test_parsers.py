@@ -1,11 +1,8 @@
 from __future__ import unicode_literals
 
-import psutil
-
 from django.core.files.base import File
 from django.test import override_settings
 
-from common.settings import setting_temporary_directory
 from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests import (

@@ -1,11 +1,64 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext
 
-from permissions import Permission
+
+class Collection(object):
+    _registry = []
+
+    @classmethod
+    def get_all(cls):
+        return sorted(cls._registry, key=lambda entry: entry._order)
+
+    def __init__(self, label, icon=None, link=None, queryset=None, model=None, order=None):
+        self._label = label
+        self._icon = icon
+        self._link = link
+        self._queryset = queryset
+        self._model = model
+        self._order = order or 99
+        self.__class__._registry.append(self)
+
+    def __unicode__(self):
+        return unicode(self.label)
+
+    def resolve(self):
+        self.children = self._get_children()
+        self.icon = self._icon
+        self.label = self._label
+        self.url = None
+        if self._link:
+            self.icon = getattr(self._link, 'icon', self._icon)
+            self.url = reverse(viewname=self._link.view, args=self._link.args)
+        return ''
+
+    def _get_children(self):
+        if self._queryset:
+            return self._queryset
+        else:
+            if self._model:
+                return self._model.objects.all()
+
+
+class DashboardWidget(object):
+    _registry = []
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry
+
+    def __init__(self, label, func=None, icon=None, link=None, queryset=None, statistic_slug=None):
+        self.label = label
+        self.icon = icon
+        self.link = link
+        self.queryset = queryset
+        self.func = func
+        self.statistic_slug = statistic_slug
+
+        self.__class__._registry.append(self)
 
 
 class ModelAttribute(object):
@@ -137,20 +190,9 @@ class Filter(object):
         queryset = queryset.distinct()
 
         if self.object_permission:
-            try:
-                # Check to see if the user has the permissions globally
-                Permission.check_permissions(
-                    user, (self.object_permission,)
-                )
-            except PermissionDenied:
-                # No global permission, filter ther queryset per object +
-                # permission
-                return AccessControlList.objects.filter_by_access(
-                    self.object_permission, user, queryset
-                )
-            else:
-                # Has the permission globally, return all results
-                return queryset
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, user, queryset=queryset
+            )
         else:
             return queryset
 

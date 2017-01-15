@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import logging
 
 from kombu import Exchange, Queue
-import sh
 
 from django.apps import apps
 from django.db.models.signals import post_save
@@ -15,10 +14,9 @@ from common import (
     menu_tools
 )
 from common.settings import settings_db_sync_task_delay
-from documents.search import document_search
+from documents.search import document_search, document_page_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
-from installation import PropertyNamespace
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -30,9 +28,6 @@ from .links import (
     link_document_type_submit, link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
-from .settings import (
-    setting_pdftotext_path, setting_tesseract_path
-)
 
 logger = logging.getLogger(__name__)
 
@@ -116,6 +111,10 @@ class OCRApp(MayanAppConfig):
             field='versions__pages__ocr_content__content', label=_('OCR')
         )
 
+        document_page_search.add_model_field(
+            field='ocr_content__content', label=_('OCR')
+        )
+
         menu_facet.bind_links(
             links=(link_document_content,), sources=(Document,)
         )
@@ -150,41 +149,3 @@ class OCRApp(MayanAppConfig):
             post_version_upload_ocr, dispatch_uid='post_version_upload_ocr',
             sender=DocumentVersion
         )
-
-        namespace = PropertyNamespace('ocr', _('OCR'))
-
-        try:
-            pdftotext = sh.Command(setting_pdftotext_path.value)
-        except sh.CommandNotFound:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'), _('not found'),
-                report=True
-            )
-        except Exception:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'),
-                _('error getting version'), report=True
-            )
-        else:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'), pdftotext('-v').stderr,
-                report=True
-            )
-
-        try:
-            tesseract = sh.Command(setting_tesseract_path.value)
-        except sh.CommandNotFound:
-            namespace.add_property(
-                'tesseract', _('tesseract version'), _('not found'),
-                report=True
-            )
-        except Exception:
-            namespace.add_property(
-                'tesseract', _('tesseract version'),
-                _('error getting version'), report=True
-            )
-        else:
-            namespace.add_property(
-                'tesseract', _('tesseract version'), tesseract('-v').stderr,
-                report=True
-            )

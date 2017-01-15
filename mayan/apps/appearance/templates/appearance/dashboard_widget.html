@@ -1,0 +1,32 @@
+{% load i18n %}
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-secondary panel-dashboard-widget">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-2">
+                    <i class="fa fa-{{ widget.icon }} fa-2x"></i>
+                </div>
+                <div class="col-xs-10 text-right">
+                    <strong>{{ widget.label }}</strong>
+                    <div class="huge">
+                        {% if widget.func %}
+                            {{ widget.func }}
+                        {% else %}
+                            {{ widget.queryset.count }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if widget.link %}
+            <a href="{{ widget.link }}">
+                <div class="panel-footer">
+                    <span class="pull-left">{% trans 'View details' %}</span>
+                    <span class="pull-right"><i class="fa fa-external-link"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</div>

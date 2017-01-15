@@ -87,3 +87,14 @@ class DocumentCheckoutManager(models.Manager):
             return True
         else:
             return not checkout_info.block_new_version
+
+
+class NewVersionBlockManager(models.Manager):
+    def block(self, document):
+        self.get_or_create(document=document)
+
+    def unblock(self, document):
+        self.filter(document=document).delete()
+
+    def is_blocked(self, document):
+        return self.filter(document=document).exists()

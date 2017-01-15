@@ -1,19 +1,14 @@
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
-from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.settings import setting_display_size
-
 from .models import StagingFolderSource
-from .serializers import (
-    StagingFolderFileSerializer,
-    StagingFolderSerializer, StagingSourceFileImageSerializer
-)
+from .serializers import StagingFolderFileSerializer, StagingFolderSerializer
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):
@@ -51,47 +46,37 @@ class APIStagingSourceView(generics.RetrieveAPIView):
     queryset = StagingFolderSource.objects.all()
 
 
-class APIStagingSourceFileImageView(generics.GenericAPIView):
+class APIStagingSourceFileImageView(generics.RetrieveAPIView):
     """
-    Image of the selected staging file.
-    size -- 'x' seprated width and height of the desired image representation.
-    page -- Page number of the staging file to be imaged.
-    zoom -- Zoom level of the image to be generated, numeric value only.
+    Returns an image representation of the selected document.
+    ---
+    GET:
+        omit_serializer: true
+        parameters:
+            - name: size
+              description: 'x' seprated width and height of the desired image representation.
+              paramType: query
+              type: number
     """
 
-    serializer_class = StagingSourceFileImageSerializer
+    def get_serializer_class(self):
+        return None
 
-    def get(self, request, staging_folder_pk, encoded_filename):
+    def retrieve(self, request, *args, **kwargs):
         staging_folder = get_object_or_404(
-            StagingFolderSource, pk=staging_folder_pk
+            StagingFolderSource, pk=self.kwargs['staging_folder_pk']
         )
         staging_file = staging_folder.get_file(
-            encoded_filename=encoded_filename
+            encoded_filename=self.kwargs['encoded_filename']
         )
 
-        size = request.GET.get('size', setting_display_size.value)
+        size = request.GET.get('size')
 
-        try:
-            return Response({
-                'status': 'success',
-                'data': staging_file.get_image(
-                    as_base64=True, size=size,
-                    transformations=Transformation.objects.get_for_model(
-                        staging_folder, as_classes=True
-                    )
+        return HttpResponse(
+            staging_file.get_image(
+                size=size,
+                transformations=Transformation.objects.get_for_model(
+                    staging_folder, as_classes=True
                 )
-            })
-        except UnknownFileFormat as exception:
-            return Response(
-                {
-                    'status': 'error', 'detail': 'unknown_file_format',
-                    'message': unicode(exception)
-                }
-            )
-        except UnkownConvertError as exception:
-            return Response(
-                {
-                    'status': 'error', 'detail': 'converter_error',
-                    'message': unicode(exception)
-                }
-            )
+            ), content_type='image'
+        )
