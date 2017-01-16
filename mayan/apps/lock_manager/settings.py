@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
 
-DEFAULT_BACKEND = 'lock_manager.backends.model_lock.ModelLock'
+DEFAULT_BACKEND = 'lock_manager.backends.file_lock.FileLock'
 DEFAULT_LOCK_TIMEOUT_VALUE = 30
 
 namespace = Namespace(name='lock_manager', label=_('Lock manager'))

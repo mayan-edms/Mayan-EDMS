@@ -47,6 +47,8 @@ calling the Tesseract executable.
   - API endpoint to view or change a role's groups.
   - API endpoint to view or change a role's permissions.
 
+- Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
+
 Removals
 --------
 - Removal of the OCR_TESSERACT_PATH configuration setting.
