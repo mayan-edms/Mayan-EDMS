@@ -2,7 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from converter.permissions import permission_transformation_delete
+from converter.permissions import (
+    permission_transformation_delete, permission_transformation_edit
+)
 from navigation import Link
 
 from .permissions import (
@@ -63,6 +65,11 @@ link_document_clear_transformations = Link(
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_clear_transformations', args='resolved_object.id'
+)
+link_document_clone_transformations = Link(
+    permissions=(permission_transformation_edit,),
+    text=_('Clone transformations'),
+    view='documents:document_clone_transformations', args='resolved_object.id'
 )
 link_document_delete = Link(
     permissions=(permission_document_delete,), tags='dangerous',

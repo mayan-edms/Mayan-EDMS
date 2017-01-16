@@ -33,7 +33,8 @@ from statistics.classes import StatisticNamespace, CharJSLine
 from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
-    link_document_delete, link_document_document_type_edit,
+    link_document_clone_transformations, link_document_delete,
+    link_document_document_type_edit,
     link_document_multiple_document_type_edit, link_document_download,
     link_document_edit, link_document_list, link_document_list_deleted,
     link_document_list_recent, link_document_multiple_delete,
@@ -374,6 +375,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
                 link_document_download, link_document_clear_transformations,
+                link_document_clone_transformations,
                 link_document_update_page_count
             ), sources=(Document,)
         )

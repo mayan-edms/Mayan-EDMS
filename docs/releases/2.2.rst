@@ -48,6 +48,7 @@ calling the Tesseract executable.
   - API endpoint to view or change a role's permissions.
 
 - Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
+- Add view to clone a document page transformation to other pages.
 
 Removals
 --------

@@ -30,27 +30,6 @@ __all__ = (
 )
 
 
-class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
-    """
-    This view will present a form and upon receiving a POST request will
-    perform an action on an object or queryset
-    """
-
-    template_name = 'appearance/generic_form.html'
-
-    def form_valid(self, form):
-        self.view_action(form=form)
-        return super(MultipleObjectFormActionView, self).form_valid(form=form)
-
-
-class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
-    template_name = 'appearance/generic_confirm.html'
-
-    def post(self, request, *args, **kwargs):
-        self.view_action()
-        return HttpResponseRedirect(self.get_success_url())
-
-
 class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
     decode_content_type = False
     right_list_help_text = None
@@ -198,7 +177,7 @@ class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, V
         return HttpResponseRedirect(self.get_success_url())
 
 
-class FormView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class FormView(FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
     template_name = 'appearance/generic_form.html'
 
 
@@ -285,6 +264,27 @@ class MultiFormView(DjangoFormView):
             return self.forms_valid(forms)
         else:
             return self.forms_invalid(forms)
+
+
+class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+    """
+    This view will present a form and upon receiving a POST request will
+    perform an action on an object or queryset
+    """
+
+    template_name = 'appearance/generic_form.html'
+
+    def form_valid(self, form):
+        self.view_action(form=form)
+        return super(MultipleObjectFormActionView, self).form_valid(form=form)
+
+
+class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+    template_name = 'appearance/generic_confirm.html'
+
+    def post(self, request, *args, **kwargs):
+        self.view_action()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):

@@ -19,12 +19,15 @@ from common.generics import (
 )
 from common.mixins import MultipleInstanceActionMixin
 from converter.models import Transformation
-from converter.permissions import permission_transformation_delete
+from converter.permissions import (
+    permission_transformation_delete, permission_transformation_edit
+)
 
 from ..events import event_document_download, event_document_view
 from ..forms import (
-    DocumentDownloadForm, DocumentForm, DocumentPreviewForm,
-    DocumentPrintForm, DocumentPropertiesForm, DocumentTypeSelectForm,
+    DocumentDownloadForm, DocumentForm, DocumentPageNumberForm,
+    DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
+    DocumentTypeSelectForm,
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import DeletedDocument, Document, RecentDocument
@@ -597,6 +600,70 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
             )
 
 
+class DocumentTransformationsCloneView(FormView):
+    form_class = DocumentPageNumberForm
+
+    def form_valid(self, form):
+        instance = self.get_object()
+
+        try:
+            target_pages = instance.pages.exclude(
+                pk=form.cleaned_data['page'].pk
+            )
+
+            for page in target_pages:
+                Transformation.objects.get_for_model(page).delete()
+
+            Transformation.objects.copy(
+                source=form.cleaned_data['page'], targets=target_pages
+            )
+        except Exception as exception:
+            messages.error(
+                self.request, _(
+                    'Error deleting the page transformations for '
+                    'document: %(document)s; %(error)s.'
+                ) % {
+                    'document': instance, 'error': exception
+                }
+            )
+        else:
+            messages.success(
+                self.request, _('Transformations cloned successfully.')
+            )
+
+        return super(DocumentTransformationsCloneView, self).form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {
+            'document': self.get_object()
+        }
+
+    def get_extra_context(self):
+        instance = self.get_object()
+
+        context = {
+            'object': instance,
+            'submit_label': _('Submit'),
+            'title': _(
+                'Clone page transformations for document: %s'
+            ) % instance,
+        }
+
+        return context
+
+    def get_object(self):
+        instance = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_edit,
+            user=self.request.user, obj=instance
+        )
+
+        instance.add_as_recent_document_for_user(self.request.user)
+
+        return instance
+
+
 class DocumentPrint(FormView):
     form_class = DocumentPrintForm
 
@@ -631,7 +698,6 @@ class DocumentPrint(FormView):
 
         context = {
             'object': instance,
-            'submit_method': 'POST',
             'submit_label': _('Submit'),
             'title': _('Print: %s') % instance,
         }

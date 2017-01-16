@@ -21,15 +21,15 @@ from .views import (
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
     DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
-    DocumentTransformationsClearView, DocumentTrashView, DocumentTrashManyView,
-    DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
-    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    DocumentUpdatePageCountView, DocumentVersionDownloadFormView,
-    DocumentVersionDownloadView, DocumentVersionListView,
-    DocumentVersionRevertView, DocumentView, EmptyTrashCanView,
-    RecentDocumentListView, document_page_navigation_first,
+    DocumentTransformationsClearView, DocumentTransformationsCloneView,
+    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
+    DocumentTypeDeleteView, DocumentTypeDocumentListView,
+    DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView, DocumentTypeEditView, DocumentUpdatePageCountView,
+    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
+    DocumentVersionListView, DocumentVersionRevertView, DocumentView,
+    EmptyTrashCanView, RecentDocumentListView, document_page_navigation_first,
     document_page_navigation_last, document_page_navigation_next,
     document_page_navigation_previous
 )
@@ -125,7 +125,11 @@ urlpatterns = [
         DocumentTransformationsClearView.as_view(),
         name='document_clear_transformations'
     ),
-
+    url(
+        r'^(?P<pk>\d+)/clone_transformations/$',
+        DocumentTransformationsCloneView.as_view(),
+        name='document_clone_transformations'
+    ),
     url(
         r'^(?P<pk>\d+)/version/all/$', DocumentVersionListView.as_view(),
         name='document_version_list'

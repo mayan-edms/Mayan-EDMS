@@ -223,3 +223,17 @@ class DocumentPrintForm(forms.Form):
         widget=forms.RadioSelect
     )
     page_range = forms.CharField(label=_('Page range'), required=False)
+
+
+class DocumentPageNumberForm(forms.Form):
+    page = forms.ModelChoiceField(
+        queryset=None,
+        help_text=_('Page number from which all the transformation will be '
+        'cloned. Existing transformations will be lost.'
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.document = kwargs.pop('document')
+        super(DocumentPageNumberForm, self).__init__(*args, **kwargs)
+        self.fields['page'].queryset = self.document.pages.all()
