@@ -76,7 +76,7 @@ class RoleNewPermissionSerializer(serializers.Serializer):
 
 class RoleSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True, read_only=True)
-    permissions = PermissionSerializer(many=True)
+    permissions = PermissionSerializer(many=True, read_only=True)
 
     class Meta:
         fields = ('id', 'label', 'groups', 'permissions')
