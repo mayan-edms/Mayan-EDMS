@@ -105,10 +105,9 @@ wheel: clean
 # Dev server
 
 runserver:
-	./manage.py runserver
+	./manage.py runserver --settings=mayan.settings.development
 
 runserver_plus:
-	$(BROWSER) http://127.0.0.1:8000
 	./manage.py runserver_plus --settings=mayan.settings.development
 
 shell_plus:
