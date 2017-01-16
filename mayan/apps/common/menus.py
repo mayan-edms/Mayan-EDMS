@@ -1,12 +1,15 @@
 from __future__ import unicode_literals
 
+from django.utils.translation import ugettext_lazy as _
+
 from navigation import Menu
 
 __all__ = (
-    'menu_facet', 'menu_object', 'menu_main', 'menu_multi_item',
+    'menu_about', 'menu_facet', 'menu_object', 'menu_main', 'menu_multi_item',
     'menu_secondary', 'menu_setup', 'menu_sidebar', 'menu_tools', 'menu_user'
 )
 
+menu_about = Menu(icon='fa fa-info', label=_('About'), name='about menu')
 menu_facet = Menu(name='object facet')
 menu_object = Menu(name='object menu')
 menu_main = Menu(name='main menu')

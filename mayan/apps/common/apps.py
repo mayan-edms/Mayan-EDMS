@@ -13,17 +13,19 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
+from navigation.classes import Separator
 
 from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
 )
 from .links import (
-    link_about, link_current_user_details, link_current_user_edit,
-    link_current_user_locale_profile_edit, link_filters, link_license,
-    link_packages_licenses, link_setup, link_tools
+    link_about, link_code, link_current_user_details, link_current_user_edit,
+    link_current_user_locale_profile_edit, link_documentation, link_filters,
+    link_forum, link_license, link_packages_licenses, link_setup, link_support,
+    link_tools
 )
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
-from .menus import menu_facet, menu_main, menu_tools, menu_user
+from .menus import menu_about, menu_facet, menu_main, menu_tools, menu_user
 from .licenses import *  # NOQA
 from .settings import setting_auto_logging
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
@@ -106,7 +108,6 @@ class CommonApp(MayanAppConfig):
                 },
             }
         )
-        from navigation.classes import Separator
         menu_user.bind_links(
             links=(
                 link_current_user_details, link_current_user_edit,
@@ -115,14 +116,14 @@ class CommonApp(MayanAppConfig):
             )
         )
 
-        menu_facet.bind_links(
-            links=(link_about, link_license, link_packages_licenses),
-            sources=(
-                'common:about_view', 'common:license_view',
-                'common:packages_licenses_view'
+        menu_about.bind_links(
+            links=(
+                link_about, link_support, link_documentation, link_forum,
+                link_code, link_license, link_packages_licenses,
             )
         )
-        menu_main.bind_links(links=(link_about,), position=99)
+
+        menu_main.bind_links(links=(menu_about,), position=99)
 
         menu_tools.bind_links(
             links=(link_filters,)

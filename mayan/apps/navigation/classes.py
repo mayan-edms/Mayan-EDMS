@@ -236,10 +236,11 @@ class Menu(object):
 
 
 class Link(object):
-    def __init__(self, text, view, args=None, condition=None,
+    def __init__(self, text, view=None, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
                  keep_query=False, kwargs=None, permissions=None,
-                 permissions_related=None, remove_from_query=None, tags=None):
+                 permissions_related=None, remove_from_query=None, tags=None,
+                 url=None):
 
         self.args = args or []
         self.condition = condition
@@ -254,6 +255,7 @@ class Link(object):
         self.tags = tags
         self.text = text
         self.view = view
+        self.url = url
 
     def resolve(self, context, resolved_object=None):
         AccessControlList = apps.get_model(
@@ -299,40 +301,42 @@ class Link(object):
 
         resolved_link = ResolvedLink(current_view=current_view, link=self)
 
-        view_name = Variable('"{}"'.format(self.view))
-        if isinstance(self.args, list) or isinstance(self.args, tuple):
-            # TODO: Don't check for instance check for iterable in try/except
-            # block. This update required changing all 'args' argument in
-            # links.py files to be iterables and not just strings.
-            args = [Variable(arg) for arg in self.args]
-        else:
-            args = [Variable(self.args)]
+        if self.view:
+            view_name = Variable('"{}"'.format(self.view))
+            if isinstance(self.args, list) or isinstance(self.args, tuple):
+                # TODO: Don't check for instance check for iterable in try/except
+                # block. This update required changing all 'args' argument in
+                # links.py files to be iterables and not just strings.
+                args = [Variable(arg) for arg in self.args]
+            else:
+                args = [Variable(self.args)]
 
-        # If we were passed an instance of the view context object we are
-        # resolving, inject it into the context. This help resolve links for
-        # object lists.
-        if resolved_object:
-            context['resolved_object'] = resolved_object
+            # If we were passed an instance of the view context object we are
+            # resolving, inject it into the context. This help resolve links for
+            # object lists.
+            if resolved_object:
+                context['resolved_object'] = resolved_object
 
-        try:
-            kwargs = self.kwargs(context)
-        except TypeError:
-            # Is not a callable
-            kwargs = self.kwargs
+            try:
+                kwargs = self.kwargs(context)
+            except TypeError:
+                # Is not a callable
+                kwargs = self.kwargs
 
-        kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
+            kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
 
-        # Use Django's exact {% url %} code to resolve the link
-        node = URLNode(
-            view_name=view_name, args=args, kwargs=kwargs, asvar=None
-        )
-
-        try:
-            resolved_link.url = node.render(context)
-        except Exception as exception:
-            logger.error(
-                'Error resolving link "%s" URL; %s', self.text, exception
+            # Use Django's exact {% url %} code to resolve the link
+            node = URLNode(
+                view_name=view_name, args=args, kwargs=kwargs, asvar=None
             )
+            try:
+                resolved_link.url = node.render(context)
+            except Exception as exception:
+                logger.error(
+                    'Error resolving link "%s" URL; %s', self.text, exception
+                )
+        elif self.url:
+            resolved_link.url = self.url
 
         # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
