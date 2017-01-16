@@ -1,24 +1,22 @@
-=========
-Deploying
-=========
+===================
+Advanced deployment
+===================
 
-Below are some ways to deploye and use Mayan EDMS. Do use more than one method.
+Mayan EDMS should be deployed like any other Django_ project and
+preferably using virtualenv_.
 
-OS "bare metal" method
-======================
+Being a Django_ and a Python_ project, familiarity with these technologies is
+recommended to better understand why Mayan EDMS does some of the things it
+does.
 
-Like other Django based projects Mayan EDMS can be deployed in a wide variety
-of ways. The method provided below is only a bare minimum example.
-These instructions are independent of the instructions mentioned in the
-:doc:`installation` chapter but assume you have already made a test install to
-test the compatibility of your operating system. These instruction are for
-Ubuntu 16.10.
+Binary dependencies
+===================
 
-Switch to superuser::
+Ubuntu
+------
 
-    sudo -i
-
-Install all system dependencies::
+If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
+requirements using::
 
     apt-get install nginx supervisor redis-server postgresql \
     libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice \
@@ -28,6 +26,79 @@ Install all system dependencies::
 If using Ubuntu 16.10 also install GPG version 1 (as GPG version 2 is the new default for this distribution and not yet supported by Mayan EDMS) ::
 
     apt-get install gnupg1 -y
+
+
+Mac OSX
+-------
+
+Mayan EDMS is dependent on a number of binary packages and the recommended
+way is to use a package manager such as `MacPorts <https://www.macports.org/>`_
+or `Homebrew <http://brew.sh/>`_.
+
+
+Use MacPorts to install binary dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With MacPorts installed run the command:
+
+.. code-block:: bash
+
+    sudo port install python-dev gcc tesseract-ocr unpaper \
+    python-virtualenv ghostscript libjpeg-dev libpng-dev \
+    poppler-utils
+
+Set the Binary paths
+********************
+
+Mayan EDMS by default will look in /usr/bin/ for the binary files it needs
+so either you can symlink the binaries installed via MacPorts in /opt/local/bin/
+to /usr/bin/ with ...
+
+.. code-block:: bash
+
+    sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract
+
+... alternatively set the paths in the ``settings/locals.py``
+
+.. code-block:: python
+
+    LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
+
+Or Use Homebrew
+~~~~~~~~~~~~~~~
+
+With Homebrew installed run the command:
+
+.. code-block:: bash
+
+    brew install python gcc tesseract unpaper poppler libpng postgresql
+
+Set the Binary paths
+********************
+
+Mayan EDMS by default will look in /usr/bin/ for the binary files it needs
+so either you can symlink the binaries installed via brew in /usr/local/bin/
+to /usr/bin/ with ...
+
+.. code-block:: bash
+
+    sudo ln -s /usr/local/bin/tesseract /usr/bin/tesseract  && \
+    sudo ln -s /usr/local/bin/unpaper /usr/bin/unpaper && \
+    sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext && \
+    sudo ln -s /usr/local/bin/gs /usr/bin/gs
+
+... alternatively set the paths in the ``settings/locals.py``
+
+.. code-block:: python
+
+    LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
+
+
+Common steps
+------------
+Switch to superuser::
+
+    sudo -i
 
 Change to the directory where the project will be deployed::
 
@@ -200,70 +271,9 @@ Restart the services::
     systemctl restart supervisor
     systemctl restart nginx
 
-Docker method
-=============
-
-Deploy the Docker image stack::
-
-    docker run --name postgres -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /var/lib/postgresql/data -d postgres
-    docker run --name redis -d redis
-    docker run --name mayan-edms -p 80:80 --link postgres:postgres --link redis:redis -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /usr/local/lib/python2.7/dist-packages/mayan/media -d mayanedms/monolithic
-
-After the Mayan EDMS container finishes initializing (about 5 minutes), it will
-be available by browsing to http://127.0.0.1. You can inspect the initialization
-with::
-
-    docker logs mayan-edms
-
-
-Docker Compose method
-=====================
-
-Create a file named ``environment`` with the following content::
-
-    POSTGRES_DB=mayan
-    POSTGRES_PASSWORD=mayanpassword
-    POSTGRES_USER=mayan
-
-Create a file named ``docker-compose.yml`` with the content::
-
-    postgres:
-        env_file:
-            - ./environment
-        image: postgres
-        volumes:
-            - /var/lib/postgresql/data
-
-    redis:
-        image: redis
-
-    mayan-edms:
-        env_file:
-            - ./environment
-        image: mayanedms/monolithic
-        links:
-            - postgres
-            - redis
-        ports:
-            - "80:80"
-        volumes:
-            - /usr/local/lib/python2.7/dist-packages/mayan/media
-
-Launch the entire stack (Postgres, Redis, and Mayan EDMS) using::
-
-    docker-compose -f docker-compose.yml -p mayanedms up -d
-
-After the Mayan EDMS container finishes initializing (about 5 minutes), it will
-be available by browsing to http://127.0.0.1. You can inspect the initialization
-with::
-
-    docker logs mayanedms_mayan-edms_1
-
-Vagrant method
-==============
-Make sure you have Vagrant and a provider properly installed as per
-https://docs.vagrantup.com/v2/installation/index.html
-Clone the repository and execute::
-
-    vagrant up production
-
+.. _Debian: http://www.debian.org/
+.. _Django: http://www.djangoproject.com/
+.. _Python: http://www.python.org/
+.. _SQLite: https://www.sqlite.org/
+.. _Ubuntu: http://www.ubuntu.com/
+.. _virtualenv: http://www.virtualenv.org/en/latest/index.html

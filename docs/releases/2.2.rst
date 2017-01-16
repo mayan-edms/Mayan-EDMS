@@ -18,7 +18,7 @@ Other changes
 - Improve upgrade instructions
 - New image caching pipeline
 - New drop down menus for the documents, folders and tags app as well as for
-the user links
+  the user links
 - Dashboard
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.10.4
@@ -30,14 +30,14 @@ the user links
 - Sample documents moved to distribution to allow running all tests in production.
 - DEBUG now defaults to False.
 - Production settings don't override the DEBUG variable. DEBUG can be set to True
-on production install to debug errors live.
+  on production install to debug errors live.
 - Refactor add document to folder view to allow adding a documents to multiple folders at the same time.
 - Refactor the remove document from folder view to allow removing documents from multiple folders at the same time.
 - Refactor the document mailing views and add support for sending multiple documents via email at the same time.
 - Refactor the document metadata views and add support for adding multiple metadata types to a document at the same time.
 - Addition of a new OCR backend using PyOCR. This backend tries first to do OCR
-using libtesseract. If libtesseract is not available the backend defaults to
-calling the Tesseract executable.
+  using libtesseract. If libtesseract is not available the backend defaults to
+  calling the Tesseract executable.
 - Language list moved from document model to document form.
 - Enable password validation for the user password change view, user password change API endpoint, current user view and current user API endpoint.
 - New API endpoints (initial work by @lokeshmanmode):
