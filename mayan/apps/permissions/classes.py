@@ -45,12 +45,15 @@ class PermissionNamespace(object):
 
 
 class Permission(object):
-    _stored_permissions_cache = {}
     _permissions = {}
+    _stored_permissions_cache = {}
 
     @classmethod
-    def invalidate_cache(cls):
-        cls._stored_permissions_cache = {}
+    def all(cls):
+        # Return sorted permisions by namespace.name
+        return sorted(
+            cls._permissions.values(), key=lambda x: x.namespace.name
+        )
 
     @classmethod
     def check_permissions(cls, requester, permissions):
@@ -68,6 +71,13 @@ class Permission(object):
         raise PermissionDenied(_('Insufficient permissions.'))
 
     @classmethod
+    def get(cls, pk, proxy_only=False):
+        if proxy_only:
+            return cls._permissions[pk]
+        else:
+            return cls._permissions[pk].stored_permission
+
+    @classmethod
     def get_for_holder(cls, holder):
         StoredPermission = apps.get_model(
             app_label='permissions', model_name='StoredPermission'
@@ -76,19 +86,13 @@ class Permission(object):
         return StoredPermission.get_for_holder(holder)
 
     @classmethod
-    def all(cls):
-        # Return sorted permisions by namespace.name
-        return sorted(
-            cls._permissions.values(), key=lambda x: x.namespace.name
-        )
+    def invalidate_cache(cls):
+        cls._stored_permissions_cache = {}
 
     @classmethod
-    def get(cls, get_dict, proxy_only=False):
-        if 'pk' in get_dict:
-            if proxy_only:
-                return cls._permissions[get_dict['pk']]
-            else:
-                return cls._permissions[get_dict['pk']].stored_permission
+    def refresh(cls):
+        for permission in cls.all():
+            permission.stored_permission
 
     def __init__(self, namespace, name, label):
         self.namespace = namespace
@@ -97,15 +101,14 @@ class Permission(object):
         self.pk = self.uuid
         self.__class__._permissions[self.uuid] = self
 
+    def __repr__(self):
+        return self.pk
+
     def __unicode__(self):
         return unicode(self.label)
 
     def __str__(self):
         return str(self.__unicode__())
-
-    @property
-    def uuid(self):
-        return '%s.%s' % (self.namespace.name, self.name)
 
     @property
     def stored_permission(self):
@@ -125,3 +128,7 @@ class Permission(object):
                 self.uuid
             ] = stored_permission
             return stored_permission
+
+    @property
+    def uuid(self):
+        return '%s.%s' % (self.namespace.name, self.name)

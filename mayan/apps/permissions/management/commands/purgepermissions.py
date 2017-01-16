@@ -13,7 +13,7 @@ class Command(BaseCommand):
         for permission in StoredPermission.objects.all():
             try:
                 Permission.get(
-                    {'pk': '%s.%s' % (permission.namespace, permission.name)},
+                    pk='{}.{}'.format(permission.namespace, permission.name),
                     proxy_only=True
                 )
             except KeyError:

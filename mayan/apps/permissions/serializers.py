@@ -63,8 +63,7 @@ class RoleNewPermissionSerializer(serializers.Serializer):
 
         try:
             for pk in validated_data['permission_pk_list'].split(','):
-                get_dict = {'pk': pk}
-                stored_permission = Permission.get(get_dict=get_dict)
+                stored_permission = Permission.get(pk=pk)
 
                 validated_data['role'].permissions.add(stored_permission)
         except KeyError as exception:

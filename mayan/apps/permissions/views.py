@@ -97,7 +97,9 @@ class SetupRolePermissionsView(AssignRemoveView):
         return get_object_or_404(Role, pk=self.kwargs['pk'])
 
     def left_list(self):
+        Permission.refresh()
         results = []
+
         for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
             permission_options = [
                 (unicode(permission.pk), permission) for permission in permissions

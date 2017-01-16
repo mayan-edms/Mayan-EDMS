@@ -13,7 +13,7 @@ from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from permissions import PermissionNamespace
+from permissions import PermissionNamespace, Permission
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -228,6 +228,7 @@ class ACLPermissionsView(AssignRemoveView):
         return None
 
     def left_list(self):
+        Permission.refresh()
         return ACLPermissionsView.generate_choices(self.get_available_list())
 
     def remove(self, item):

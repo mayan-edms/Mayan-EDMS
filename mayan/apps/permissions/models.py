@@ -26,7 +26,7 @@ class StoredPermission(models.Model):
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
             self.volatile_permission = Permission.get(
-                {'pk': '%s.%s' % (self.namespace, self.name)},
+                pk='{}.{}'.format(self.namespace, self.name),
                 proxy_only=True
             )
         except KeyError:
