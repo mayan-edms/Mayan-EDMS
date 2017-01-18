@@ -45,7 +45,7 @@ class UserGroupListSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    groups = GroupSerializer(many=True)
+    groups = GroupSerializer(many=True, read_only=True)
 
     password = serializers.CharField(
         required=False, style={'input_type': 'password'}
@@ -64,15 +64,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         write_only_fields = ('password',)
 
     def create(self, validated_data):
-        validated_data.pop('groups')
         validated_data.pop('is_active')
         user = get_user_model().objects.create_user(**validated_data)
 
         return user
 
     def update(self, instance, validated_data):
-        validated_data.pop('groups')
-
         if 'password' in validated_data:
             instance.set_password(validated_data['password'])
             validated_data.pop('password')
