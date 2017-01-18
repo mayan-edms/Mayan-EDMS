@@ -17,7 +17,9 @@ from .views import (
     DeletedDocumentDeleteManyView, DeletedDocumentListView,
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentEditView, DocumentListView,
-    DocumentPageListView, DocumentPageRotateLeftView,
+    DocumentPageListView, DocumentPageNavigationFirst,
+    DocumentPageNavigationLast, DocumentPageNavigationNext,
+    DocumentPageNavigationPrevious, DocumentPageRotateLeftView,
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
     DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
@@ -29,9 +31,7 @@ from .views import (
     DocumentTypeListView, DocumentTypeEditView, DocumentUpdatePageCountView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView, document_page_navigation_first,
-    document_page_navigation_last, document_page_navigation_next,
-    document_page_navigation_previous
+    EmptyTrashCanView, RecentDocumentListView
 )
 
 
@@ -172,21 +172,24 @@ urlpatterns = [
         name='document_page_view'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/navigation/next/$',
-        document_page_navigation_next, name='document_page_navigation_next'
+        r'^page/(?P<pk>\d+)/navigation/next/$',
+        DocumentPageNavigationNext.as_view(),
+        name='document_page_navigation_next'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/navigation/previous/$',
-        document_page_navigation_previous,
+        r'^page/(?P<pk>\d+)/navigation/previous/$',
+        DocumentPageNavigationPrevious.as_view(),
         name='document_page_navigation_previous'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/navigation/first/$',
-        document_page_navigation_first, name='document_page_navigation_first'
+        r'^page/(?P<pk>\d+)/navigation/first/$',
+        DocumentPageNavigationFirst.as_view(),
+        name='document_page_navigation_first'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/navigation/last/$',
-        document_page_navigation_last, name='document_page_navigation_last'
+        r'^page/(?P<pk>\d+)/navigation/last/$',
+        DocumentPageNavigationLast.as_view(),
+        name='document_page_navigation_last'
     ),
     url(
         r'^page/(?P<pk>\d+)/zoom/in/$',

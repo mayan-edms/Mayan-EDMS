@@ -49,6 +49,7 @@ Other changes
 
 - Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
 - Add view to clone a document page transformation to other pages.
+- Document page transformation navigation bug fixed. 
 
 Removals
 --------
