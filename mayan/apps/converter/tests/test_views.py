@@ -2,13 +2,12 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from converter.models import Transformation
-from converter.permissions import permission_transformation_delete
 from documents.tests.test_views import GenericDocumentViewTestCase
 
 from ..models import Transformation
 from ..permissions import (
-    permission_transformation_create, permission_transformation_view
+    permission_transformation_create, permission_transformation_delete,
+    permission_transformation_view
 )
 
 from .literals import TEST_TRANSFORMATION_NAME, TEST_TRANSFORMATION_ARGUMENT
@@ -46,7 +45,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
                 'app_label': 'documents', 'model': 'document',
                 'object_id': self.document.pk
             }, data={
-                'name':TEST_TRANSFORMATION_NAME,
+                'name': TEST_TRANSFORMATION_NAME,
                 'arguments': TEST_TRANSFORMATION_ARGUMENT
             }
         )

@@ -12,7 +12,7 @@ class DocumentUtilsTestCase(BaseTestCase):
         )
 
         self.assertEqual(
-            parse_range('1-5'), [1, 2, 3, 4 ,5]
+            parse_range('1-5'), [1, 2, 3, 4, 5]
         )
 
         self.assertEqual(

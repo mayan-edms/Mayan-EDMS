@@ -25,7 +25,7 @@ from .links import (
     link_tools
 )
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
-from .menus import menu_about, menu_facet, menu_main, menu_tools, menu_user
+from .menus import menu_about, menu_main, menu_tools, menu_user
 from .licenses import *  # NOQA
 from .settings import setting_auto_logging
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration

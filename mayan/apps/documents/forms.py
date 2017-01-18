@@ -227,10 +227,10 @@ class DocumentPrintForm(forms.Form):
 
 class DocumentPageNumberForm(forms.Form):
     page = forms.ModelChoiceField(
-        queryset=None,
-        help_text=_('Page number from which all the transformation will be '
-        'cloned. Existing transformations will be lost.'
-        )
+        help_text=_(
+            'Page number from which all the transformation will be cloned. '
+            'Existing transformations will be lost.'
+        ), queryset=None
     )
 
     def __init__(self, *args, **kwargs):
