@@ -52,7 +52,15 @@ Other changes
 - Document page transformation navigation bug fixed. 
 - Move test total to 359.
 - Increase test coverage to 81%.
-- 3 new "prepared" transformations added: Rotate 90 degrees, Rotate 180 degrees, and Rotate 270 degrees.
+- New transformations added:
+
+  - Rotate 90 degrees
+  - Rotate 180 degrees
+  - Rotate 270 degrees
+  - Mirror (horizontal)
+  - Flip (vertical)
+  - Gaussian blur
+  - Unsharp masking
 
 Removals
 --------

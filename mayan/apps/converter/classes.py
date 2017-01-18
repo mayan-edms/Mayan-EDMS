@@ -9,7 +9,7 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from PIL import Image
+from PIL import Image, ImageFilter
 import sh
 
 from django.utils.translation import string_concat, ugettext_lazy as _
@@ -281,6 +281,52 @@ class BaseTransformation(object):
         self.aspect = 1.0 * image.size[0] / image.size[1]
 
 
+class TransformationCrop(BaseTransformation):
+    arguments = ('left', 'top', 'right', 'bottom',)
+    label = _('Crop')
+    name = 'crop'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationCrop, self).execute_on(*args, **kwargs)
+
+        return self.image.crop(
+            (self.left, self.top, self.right, self.bottom)
+        )
+
+
+class TransformationFlip(BaseTransformation):
+    arguments = ()
+    label = _('Flip')
+    name = 'flip'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationFlip, self).execute_on(*args, **kwargs)
+
+        return self.image.transpose(Image.FLIP_TOP_BOTTOM)
+
+
+class TransformationGaussianBlur(BaseTransformation):
+    arguments = ('radius',)
+    label = _('Gaussian blur')
+    name = 'gaussianblur'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationGaussianBlur, self).execute_on(*args, **kwargs)
+
+        return self.image.filter(ImageFilter.GaussianBlur(radius=self.radius))
+
+
+class TransformationMirror(BaseTransformation):
+    arguments = ()
+    label = _('Mirror')
+    name = 'mirror'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationMirror, self).execute_on(*args, **kwargs)
+
+        return self.image.transpose(Image.FLIP_LEFT_RIGHT)
+
+
 class TransformationResize(BaseTransformation):
     arguments = ('width', 'height')
     label = _('Resize')
@@ -359,6 +405,22 @@ class TransformationRotate270(TransformationRotate):
         self.kwargs['degrees'] = 270
 
 
+class TransformationUnsharpMask(BaseTransformation):
+    arguments = ('radius', 'percent', 'threshold')
+    label = _('Unsharp masking')
+    name = 'unsharpmask'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationUnsharpMask, self).execute_on(*args, **kwargs)
+
+        return self.image.filter(
+            ImageFilter.UnsharpMask(
+                radius=self.radius, percent=self.percent,
+                threshold=self.threshold
+            )
+        )
+
+
 class TransformationZoom(BaseTransformation):
     arguments = ('percent',)
     label = _('Zoom')
@@ -379,23 +441,14 @@ class TransformationZoom(BaseTransformation):
         )
 
 
-class TransformationCrop(BaseTransformation):
-    arguments = ('left', 'top', 'right', 'bottom',)
-    label = _('Crop')
-    name = 'crop'
-
-    def execute_on(self, *args, **kwargs):
-        super(TransformationCrop, self).execute_on(*args, **kwargs)
-
-        return self.image.crop(
-            (self.left, self.top, self.right, self.bottom)
-        )
-
-
+BaseTransformation.register(TransformationCrop)
+BaseTransformation.register(TransformationFlip)
+BaseTransformation.register(TransformationGaussianBlur)
+BaseTransformation.register(TransformationMirror)
 BaseTransformation.register(TransformationResize)
 BaseTransformation.register(TransformationRotate)
 BaseTransformation.register(TransformationRotate90)
 BaseTransformation.register(TransformationRotate180)
 BaseTransformation.register(TransformationRotate270)
+BaseTransformation.register(TransformationUnsharpMask)
 BaseTransformation.register(TransformationZoom)
-BaseTransformation.register(TransformationCrop)
