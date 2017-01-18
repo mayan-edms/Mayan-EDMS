@@ -50,6 +50,9 @@ Other changes
 - Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
 - Add view to clone a document page transformation to other pages.
 - Document page transformation navigation bug fixed. 
+- Move test total to 359.
+- Increase test coverage to 81%.
+- 3 new "prepared" transformations added: Rotate 90 degrees, Rotate 180 degrees, and Rotate 270 degrees.
 
 Removals
 --------

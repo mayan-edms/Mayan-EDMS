@@ -216,9 +216,8 @@ class ConverterBase(object):
 
 
 class BaseTransformation(object):
-    name = 'base_transformation'
     arguments = ()
-
+    name = 'base_transformation'
     _registry = {}
 
     @staticmethod
@@ -247,9 +246,11 @@ class BaseTransformation(object):
 
     @classmethod
     def get_transformation_choices(cls):
-        return [
-            (name, klass.get_label()) for name, klass in cls._registry.items()
-        ]
+        return sorted(
+            [
+                (name, klass.get_label()) for name, klass in cls._registry.items()
+            ]
+        )
 
     @classmethod
     def get(cls, name):
@@ -257,7 +258,10 @@ class BaseTransformation(object):
 
     @classmethod
     def get_label(cls):
-        return string_concat(cls.label, ': ', ', '.join(cls.arguments))
+        if cls.arguments:
+            return string_concat(cls.label, ': ', ', '.join(cls.arguments))
+        else:
+            return cls.label
 
     def __init__(self, **kwargs):
         self.kwargs = {}
@@ -278,9 +282,9 @@ class BaseTransformation(object):
 
 
 class TransformationResize(BaseTransformation):
-    name = 'resize'
     arguments = ('width', 'height')
     label = _('Resize')
+    name = 'resize'
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
@@ -305,9 +309,9 @@ class TransformationResize(BaseTransformation):
 
 
 class TransformationRotate(BaseTransformation):
-    name = 'rotate'
     arguments = ('degrees',)
     label = _('Rotate')
+    name = 'rotate'
 
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
@@ -322,10 +326,43 @@ class TransformationRotate(BaseTransformation):
         )
 
 
+class TransformationRotate90(TransformationRotate):
+    arguments = ()
+    degrees = 90
+    label = _('Rotate 90 degrees')
+    name = 'rotate90'
+
+    def __init__(self, **kwargs):
+        super(TransformationRotate90, self).__init__()
+        self.kwargs['degrees'] = 90
+
+
+class TransformationRotate180(TransformationRotate):
+    arguments = ()
+    degrees = 180
+    label = _('Rotate 180 degrees')
+    name = 'rotate180'
+
+    def __init__(self, **kwargs):
+        super(TransformationRotate180, self).__init__()
+        self.kwargs['degrees'] = 180
+
+
+class TransformationRotate270(TransformationRotate):
+    arguments = ()
+    degrees = 270
+    label = _('Rotate 270 degrees')
+    name = 'rotate270'
+
+    def __init__(self, **kwargs):
+        super(TransformationRotate270, self).__init__()
+        self.kwargs['degrees'] = 270
+
+
 class TransformationZoom(BaseTransformation):
-    name = 'zoom'
     arguments = ('percent',)
     label = _('Zoom')
+    name = 'zoom'
 
     def execute_on(self, *args, **kwargs):
         super(TransformationZoom, self).execute_on(*args, **kwargs)
@@ -343,9 +380,9 @@ class TransformationZoom(BaseTransformation):
 
 
 class TransformationCrop(BaseTransformation):
-    name = 'crop'
     arguments = ('left', 'top', 'right', 'bottom',)
     label = _('Crop')
+    name = 'crop'
 
     def execute_on(self, *args, **kwargs):
         super(TransformationCrop, self).execute_on(*args, **kwargs)
@@ -357,5 +394,8 @@ class TransformationCrop(BaseTransformation):
 
 BaseTransformation.register(TransformationResize)
 BaseTransformation.register(TransformationRotate)
+BaseTransformation.register(TransformationRotate90)
+BaseTransformation.register(TransformationRotate180)
+BaseTransformation.register(TransformationRotate270)
 BaseTransformation.register(TransformationZoom)
 BaseTransformation.register(TransformationCrop)

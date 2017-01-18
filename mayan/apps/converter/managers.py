@@ -79,9 +79,16 @@ class TransformationManager(models.Manager):
                     )
                 else:
                     try:
+                        # Some transformations don't require arguments
+                        # return an empty dictionary as ** doesn't allow None
+                        if transformation.arguments:
+                            kwargs = yaml.safe_load(transformation.arguments)
+                        else:
+                            kwargs = {}
+
                         result.append(
                             transformation_class(
-                                **yaml.safe_load(transformation.arguments)
+                                **kwargs
                             )
                         )
                     except Exception as exception:
