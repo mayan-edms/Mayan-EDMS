@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-
+from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 
 from rest_framework.test import APITestCase
@@ -47,6 +47,43 @@ class UserManagementAPITestCase(APITestCase):
         user = get_user_model().objects.get(pk=response.data['id'])
         self.assertEqual(user.username, TEST_USER_USERNAME)
 
+    def test_user_create_with_group(self):
+        group_1 = Group.objects.create(name='test group 1')
+
+        response = self.client.post(
+            reverse('rest_api:user-list'), data={
+                'email': TEST_USER_EMAIL, 'password': TEST_USER_PASSWORD,
+                'username': TEST_USER_USERNAME,
+                'groups_pk_list': '{}'.format(group_1.pk)
+            }
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        user = get_user_model().objects.get(pk=response.data['id'])
+        self.assertEqual(user.username, TEST_USER_USERNAME)
+        self.assertQuerysetEqual(user.groups.all(), (repr(group_1),))
+
+    def test_user_create_with_groups(self):
+        group_1 = Group.objects.create(name='test group 1')
+        group_2 = Group.objects.create(name='test group 2')
+
+        response = self.client.post(
+            reverse('rest_api:user-list'), data={
+                'email': TEST_USER_EMAIL, 'password': TEST_USER_PASSWORD,
+                'username': TEST_USER_USERNAME,
+                'groups_pk_list': '{},{}'.format(group_1.pk, group_2.pk)
+            }
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        user = get_user_model().objects.get(pk=response.data['id'])
+        self.assertEqual(user.username, TEST_USER_USERNAME)
+        self.assertQuerysetEqual(
+            user.groups.all().order_by('name'), (repr(group_1), repr(group_2))
+        )
+
     def test_user_create_login(self):
         response = self.client.post(
             reverse('rest_api:user-list'), data={
@@ -57,7 +94,35 @@ class UserManagementAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 201)
 
-        get_user_model().objects.get(pk=response.data['id'])
+        self.assertTrue(
+            self.client.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+            )
+        )
+
+    def test_user_create_login_password_change(self):
+        response = self.client.post(
+            reverse('rest_api:user-list'), data={
+                'email': TEST_USER_EMAIL, 'password': 'bad_password',
+                'username': TEST_USER_USERNAME,
+            }
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        self.assertFalse(
+            self.client.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+            )
+        )
+
+        user = get_user_model().objects.get(pk=response.data['id'])
+
+        response = self.client.patch(
+            reverse('rest_api:user-detail', args=(user.pk,)), data={
+                'password': TEST_USER_PASSWORD,
+            }
+        )
 
         self.assertTrue(
             self.client.login(
@@ -81,7 +146,7 @@ class UserManagementAPITestCase(APITestCase):
         user.refresh_from_db()
         self.assertEqual(user.username, TEST_USER_USERNAME_EDITED)
 
-    def test_document_type_edit_via_patch(self):
+    def test_user_edit_via_patch(self):
         user = get_user_model().objects.create_user(
             email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
             username=TEST_USER_USERNAME
@@ -97,7 +162,45 @@ class UserManagementAPITestCase(APITestCase):
         user.refresh_from_db()
         self.assertEqual(user.username, TEST_USER_USERNAME_EDITED)
 
-    def test_document_type_delete(self):
+    def test_user_edit_remove_groups_via_patch(self):
+        user = get_user_model().objects.create_user(
+            email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
+            username=TEST_USER_USERNAME
+        )
+        group_1 = Group.objects.create(name='test group 1')
+        user.groups.add(group_1)
+
+        response = self.client.patch(
+            reverse('rest_api:user-detail', args=(user.pk,)),
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        user.refresh_from_db()
+        self.assertQuerysetEqual(
+            user.groups.all().order_by('name'), (repr(group_1),)
+        )
+
+    def test_user_edit_add_groups_via_patch(self):
+        user = get_user_model().objects.create_user(
+            email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
+            username=TEST_USER_USERNAME
+        )
+        group_1 = Group.objects.create(name='test group 1')
+
+        response = self.client.patch(
+            reverse('rest_api:user-detail', args=(user.pk,)),
+            data={'groups_pk_list': '{}'.format(group_1.pk)}
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        user.refresh_from_db()
+        self.assertQuerysetEqual(
+            user.groups.all().order_by('name'), (repr(group_1),)
+        )
+
+    def test_user_delete(self):
         user = get_user_model().objects.create_user(
             email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
             username=TEST_USER_USERNAME
