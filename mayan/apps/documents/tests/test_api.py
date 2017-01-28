@@ -20,9 +20,9 @@ from user_management.tests.literals import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
-    TEST_DOCUMENT_VERSION_COMMENT_EDITED
+    TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_DESCRIPTION_EDITED,
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM,
+    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_VERSION_COMMENT_EDITED
 )
 from ..models import Document, DocumentType, HASH_FUNCTION
 
@@ -300,17 +300,14 @@ class DocumentAPITestCase(APITestCase):
 
         del(buf)
 
-    def _edit_document_version(self):
-        return self.client.patch(
+    def test_document_version_edit_via_patch(self):
+        self._upload_document()
+        response = self.client.patch(
             reverse(
                 'rest_api:documentversion-detail',
                 args=(self.document.latest_version.pk,)
             ), data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
-
-    def test_document_version_edit_via_patch(self):
-        self._upload_document()
-        response = self._edit_document_version()
 
         self.assertEqual(response.status_code, 200)
         self.document.latest_version.refresh_from_db()
@@ -322,7 +319,12 @@ class DocumentAPITestCase(APITestCase):
 
     def test_document_version_edit_via_put(self):
         self._upload_document()
-        response = self._edit_document_version()
+        response = self.client.put(
+            reverse(
+                'rest_api:documentversion-detail',
+                args=(self.document.latest_version.pk,)
+            ), data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
 
         self.assertEqual(response.status_code, 200)
         self.document.latest_version.refresh_from_db()
@@ -330,6 +332,38 @@ class DocumentAPITestCase(APITestCase):
         self.assertEqual(
             self.document.latest_version.comment,
             TEST_DOCUMENT_VERSION_COMMENT_EDITED
+        )
+
+    def test_document_comment_edit_via_patch(self):
+        self._upload_document()
+        response = self.client.patch(
+            reverse(
+                'rest_api:document-detail',
+                args=(self.document.pk,)
+            ), data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.document.refresh_from_db()
+        self.assertEqual(
+            self.document.description,
+            TEST_DOCUMENT_DESCRIPTION_EDITED
+        )
+
+    def test_document_comment_edit_via_put(self):
+        self._upload_document()
+        response = self.client.put(
+            reverse(
+                'rest_api:document-detail',
+                args=(self.document.pk,)
+            ), data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.document.refresh_from_db()
+        self.assertEqual(
+            self.document.description,
+            TEST_DOCUMENT_DESCRIPTION_EDITED
         )
 
     # TODO: def test_document_set_document_type(self):

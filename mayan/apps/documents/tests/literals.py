@@ -23,6 +23,7 @@ __all__ = (
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
 TEST_DOCUMENT_DESCRIPTION = 'test description'
+TEST_DOCUMENT_DESCRIPTION_EDITED = 'test document description edited'
 TEST_DOCUMENT_FILENAME = 'mayan_11_1.pdf'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 TEST_DOCUMENT_TYPE_2 = 'test document type 2'
