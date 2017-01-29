@@ -6,7 +6,6 @@ from django.contrib.auth.models import Group
 from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
-from django.test import TestCase
 
 from permissions import Permission
 from permissions.models import Role

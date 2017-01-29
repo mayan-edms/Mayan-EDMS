@@ -66,7 +66,7 @@ class TempfileCheckMixin(object):
             msg='Orphan temporary file. The number of temporary files and/or '
             'directories at the start and at the end of the test are not the '
             'same. Orphan entries: {}'.format(
-                ','.join(final_temporary_items-self._temporary_items)
+                ','.join(final_temporary_items - self._temporary_items)
             )
         )
         super(TempfileCheckMixin, self).tearDown()
