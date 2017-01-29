@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from rest_framework import serializers
-from rest_framework.serializers import ValidationError
 
 from common.models import SharedUploadedFile
 
@@ -81,16 +80,6 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
         }
         model = DocumentVersion
         read_only_fields = ('document', 'file')
-
-    def update(self, instance, validated_data):
-        try:
-            super(DocumentVersionSerializer, self).update(
-                instance, validated_data
-            )
-        except Exception as exception:
-            raise ValidationError(unicode(exception))
-
-        return instance
 
 
 class DocumentVersionRevertSerializer(DocumentVersionSerializer):
