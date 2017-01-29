@@ -29,6 +29,7 @@ from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
+from rest_api.fields import DynamicSerializerField
 from statistics.classes import StatisticNamespace, CharJSLine
 
 from .handlers import create_default_document_type
@@ -94,6 +95,10 @@ class DocumentsApp(MayanAppConfig):
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
 
+        DynamicSerializerField.add_serializer(
+            klass=Document,
+            serializer_class='documents.serializers.DocumentSerializer'
+        )
         MissingItem(
             label=_('Create a document type'),
             description=_(
