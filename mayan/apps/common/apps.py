@@ -15,6 +15,7 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
+from rest_api.classes import APIEndPoint
 
 from .classes import Package
 from .handlers import (
@@ -73,6 +74,8 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         Package(label='Django', license_text='''
 Copyright (c) Django Software Foundation and individual contributors.
