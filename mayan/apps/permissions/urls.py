@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import APIRoleListView, APIRoleView
+from .api_views import APIPermissionList, APIRoleListView, APIRoleView
 from .views import (
     RoleCreateView, RoleDeleteView, RoleEditView, RoleListView,
     SetupRoleMembersView, SetupRolePermissionsView
@@ -31,4 +31,5 @@ api_urls = patterns(
     '',
     url(r'^roles/$', APIRoleListView.as_view(), name='role-list'),
     url(r'^roles/(?P<pk>[0-9]+)/$', APIRoleView.as_view(), name='role-detail'),
+    url(r'^permissions/$', APIPermissionList.as_view(), name='permission-list'),
 )

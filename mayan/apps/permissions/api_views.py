@@ -5,12 +5,25 @@ from rest_framework import generics
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .classes import Permission
 from .models import Role
 from .permissions import (
     permission_role_create, permission_role_delete, permission_role_edit,
     permission_role_view
 )
-from .serializers import RoleSerializer
+from .serializers import PermissionSerializer, RoleSerializer
+
+
+class APIPermissionList(generics.ListAPIView):
+    serializer_class = PermissionSerializer
+    queryset = Permission.all()
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the available permissions.
+        """
+
+        return super(APIPermissionList, self).get(*args, **kwargs)
 
 
 class APIRoleListView(generics.ListCreateAPIView):
