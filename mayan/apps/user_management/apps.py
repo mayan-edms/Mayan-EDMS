@@ -12,6 +12,7 @@ from common.widgets import two_state_template
 from metadata import MetadataLookup
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
+from rest_api.fields import DynamicSerializerField
 
 from .links import (
     link_group_add, link_group_delete, link_group_edit, link_group_list,
@@ -42,6 +43,10 @@ class UserManagementApp(MayanAppConfig):
         User = get_user_model()
 
         APIEndPoint(app=self, version_string='1')
+        DynamicSerializerField.add_serializer(
+            klass=get_user_model(),
+            serializer_class='user_management.serializers.UserSerializer'
+        )
 
         MetadataLookup(
             description=_('All the groups.'), name='groups',

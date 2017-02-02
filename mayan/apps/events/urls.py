@@ -2,6 +2,9 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
+from .api_views import (
+    APIEventListView, APIEventTypeListView, APIObjectEventListView
+)
 from .views import EventListView, ObjectEventListView, VerbEventListView
 
 urlpatterns = patterns(
@@ -16,3 +19,12 @@ urlpatterns = patterns(
         name='events_by_verb'
     ),
 )
+
+api_urls = [
+    url(r'^types/$', APIEventTypeListView.as_view(), name='event-type-list'),
+    url(r'^events/$', APIEventListView.as_view(), name='event-list'),
+    url(
+        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
+        APIObjectEventListView.as_view(), name='object-event-list'
+    ),
+]

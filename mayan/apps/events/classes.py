@@ -7,26 +7,48 @@ from actstream import action
 
 
 class Event(object):
-    _labels = {}
+    _registry = {}
+
+    @classmethod
+    def all(cls):
+        return cls._registry.values()
+
+    @classmethod
+    def get(cls, name):
+        try:
+            return cls._registry[name]
+        except KeyError:
+            raise KeyError(
+                _('Unknown or obsolete event type: {0}'.format(name))
+            )
 
     @classmethod
     def get_label(cls, name):
         try:
-            return cls._labels[name]
-        except KeyError:
-            return _('Unknown or obsolete event type: {0}'.format(name))
+            return cls.get(name=name).label
+        except KeyError as exception:
+            return unicode(exception)
 
     def __init__(self, name, label):
         self.name = name
         self.label = label
         self.event_type = None
-        self.__class__._labels[name] = label
+        self.__class__._registry[name] = self
+
+    def get_type(self):
+        if not self.event_type:
+            EventType = apps.get_model('events', 'EventType')
+
+            self.event_type, created = EventType.objects.get_or_create(
+                name=self.name
+            )
+
+        return self.event_type
 
     def commit(self, actor=None, action_object=None, target=None):
-        model = apps.get_model('events', 'EventType')
-
         if not self.event_type:
-            self.event_type, created = model.objects.get_or_create(
+            EventType = apps.get_model('events', 'EventType')
+            self.event_type, created = EventType.objects.get_or_create(
                 name=self.name
             )
 

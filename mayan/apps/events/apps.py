@@ -6,8 +6,8 @@ from actstream.models import Action
 
 from common import MayanAppConfig, menu_tools
 from common.classes import Package
-
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .links import link_events_list
 from .widgets import event_type_link
@@ -20,6 +20,8 @@ class EventsApp(MayanAppConfig):
 
     def ready(self):
         super(EventsApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         Package(label='django-activity-stream', license_text='''
 Copyright (c) 2010-2015, Justin Quick
