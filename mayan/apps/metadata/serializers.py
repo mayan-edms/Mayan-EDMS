@@ -9,7 +9,9 @@ from .models import DocumentMetadata, MetadataType, DocumentTypeMetadataType
 
 class MetadataTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'name', 'label', 'default', 'lookup')
+        fields = (
+            'id', 'name', 'label', 'default', 'lookup', 'parser', 'validation'
+        )
         model = MetadataType
 
 

@@ -11,7 +11,7 @@ from documents.permissions import permission_document_view
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
-from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP
+from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP_NAME
 
 from ..models import AccessControlList
 
@@ -48,7 +48,7 @@ class PermissionTestCase(BaseTestCase):
         self.user = get_user_model().objects.create(
             username=TEST_USER_USERNAME
         )
-        self.group = Group.objects.create(name=TEST_GROUP)
+        self.group = Group.objects.create(name=TEST_GROUP_NAME)
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
 
         self.group.user_set.add(self.user)

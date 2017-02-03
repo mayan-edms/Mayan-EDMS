@@ -5,6 +5,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 from django.views.i18n import javascript_catalog, set_language
 
+from api_views import APIContentTypeList
 from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
@@ -65,5 +66,12 @@ urlpatterns += [
     ),
     url(
         r'^set_language/$', set_language, name='set_language'
+    ),
+]
+
+api_urls = [
+    url(
+        r'^content_types/$', APIContentTypeList.as_view(),
+        name='content-type-list'
     ),
 ]

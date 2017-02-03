@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
 
 from common.tests import BaseTestCase
-from user_management.tests import TEST_GROUP, TEST_USER_USERNAME
+from user_management.tests import TEST_GROUP_NAME, TEST_USER_USERNAME
 
 from ..classes import Permission
 from ..models import Role
@@ -20,7 +20,7 @@ class PermissionTestCase(BaseTestCase):
         self.user = get_user_model().objects.create(
             username=TEST_USER_USERNAME
         )
-        self.group = Group.objects.create(name=TEST_GROUP)
+        self.group = Group.objects.create(name=TEST_GROUP_NAME)
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
 
     def test_no_permissions(self):

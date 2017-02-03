@@ -11,8 +11,8 @@ from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
-    TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
+    TEST_GROUP_NAME, TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
 from .base import BaseTestCase
@@ -33,7 +33,7 @@ class GenericViewTestCase(BaseTestCase):
             password=TEST_USER_PASSWORD
         )
 
-        self.group = Group.objects.create(name=TEST_GROUP)
+        self.group = Group.objects.create(name=TEST_GROUP_NAME)
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)

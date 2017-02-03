@@ -28,50 +28,8 @@ class PermissionSerializer(serializers.Serializer):
             )
 
 
-class RoleNewGroupListSerializer(serializers.Serializer):
-    group_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of group primary keys to assign to a '
-            'selected role.'
-        )
-    )
-
-    def create(self, validated_data):
-        validated_data['role'].groups.clear()
-
-        try:
-            pk_list = validated_data['group_pk_list'].split(',')
-
-            for group in Group.objects.filter(pk__in=pk_list):
-                validated_data['role'].groups.add(group)
-        except Exception as exception:
-            raise ValidationError(exception)
-
-        return {'group_pk_list': validated_data['group_pk_list']}
-
-
-class RoleNewPermissionSerializer(serializers.Serializer):
-    permission_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of permission primary keys to grant to this '
-            'role.'
-        )
-    )
-
-    def create(self, validated_data):
-        validated_data['role'].permissions.clear()
-
-        try:
-            for pk in validated_data['permission_pk_list'].split(','):
-                stored_permission = Permission.get(pk=pk)
-
-                validated_data['role'].permissions.add(stored_permission)
-        except KeyError as exception:
-            raise ValidationError(_('No such permission: %s') % pk)
-        except Exception as exception:
-            raise ValidationError(exception)
-
-        return {'permission_pk_list': validated_data['permission_pk_list']}
+class RoleSerializer(serializers.HyperlinkedModelSerializer):
+    groups = GroupSerializer(many=True)
 
 
 class RoleSerializer(serializers.ModelSerializer):
@@ -81,3 +39,77 @@ class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('id', 'label', 'groups', 'permissions')
         model = Role
+
+
+class WritableRoleSerializer(serializers.HyperlinkedModelSerializer):
+    groups_pk_list = serializers.CharField(
+        help_text=_(
+            'Comma separated list of groups primary keys to add to, or replace'
+            ' in this role.'
+        ), required=False
+    )
+
+    permissions_pk_list = serializers.CharField(
+        help_text=_(
+            'Comma separated list of permission primary keys to grant to this '
+            'role.'
+        ), required=False
+    )
+
+    class Meta:
+        fields = ('groups_pk_list', 'id', 'label', 'permissions_pk_list')
+        model = Role
+
+    def create(self, validated_data):
+        result = validated_data.copy()
+
+        self.groups_pk_list = validated_data.pop('groups_pk_list', '')
+        self.permissions_pk_list = validated_data.pop(
+            'permissions_pk_list', ''
+        )
+
+        instance = super(WritableRoleSerializer, self).create(validated_data)
+
+        if self.groups_pk_list:
+            self._add_groups(instance=instance)
+
+        if self.permissions_pk_list:
+            self._add_permissions(instance=instance)
+
+        return result
+
+    def _add_groups(self, instance):
+        instance.groups.add(
+            *Group.objects.filter(pk__in=self.groups_pk_list.split(','))
+        )
+
+    def _add_permissions(self, instance):
+        for pk in self.permissions_pk_list.split(','):
+            try:
+                stored_permission = Permission.get(pk=pk)
+                instance.permissions.add(stored_permission)
+                instance.save()
+            except KeyError:
+                raise ValidationError(_('No such permission: %s') % pk)
+
+    def update(self, instance, validated_data):
+        result = validated_data.copy()
+
+        self.groups_pk_list = validated_data.pop('groups_pk_list', '')
+        self.permissions_pk_list = validated_data.pop(
+            'permissions_pk_list', ''
+        )
+
+        result = super(WritableRoleSerializer, self).update(
+            instance, validated_data
+        )
+
+        if self.groups_pk_list:
+            instance.groups.clear()
+            self._add_groups(instance=instance)
+
+        if self.permissions_pk_list:
+            instance.permissions.clear()
+            self._add_permissions(instance=instance)
+
+        return result

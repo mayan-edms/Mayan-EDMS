@@ -131,6 +131,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
             'latest_version', 'url', 'uuid', 'versions',
         )
         model = Document
+        read_only_fields = ('document_type',)
 
 
 class NewDocumentSerializer(serializers.ModelSerializer):

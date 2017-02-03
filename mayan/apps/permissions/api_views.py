@@ -17,8 +17,7 @@ from .permissions import (
     permission_role_view
 )
 from .serializers import (
-    PermissionSerializer, RoleNewGroupListSerializer,
-    RoleNewPermissionSerializer, RoleSerializer,
+    PermissionSerializer, RoleSerializer, WritableRoleSerializer
 )
 
 
@@ -34,64 +33,12 @@ class APIPermissionList(generics.ListAPIView):
         return super(APIPermissionList, self).get(*args, **kwargs)
 
 
-class APIRoleGroupList(generics.ListCreateAPIView):
-    """
-    Returns a list of all the groups that belong to selected role.
-    """
-
-    mayan_object_permissions = {
-        'GET': (permission_role_view,),
-        'POST': (permission_role_edit,)
-    }
-    permission_classes = (MayanPermission,)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return GroupSerializer
-        elif self.request.method == 'POST':
-            return RoleNewGroupListSerializer
-
-    def get_serializer_context(self):
-        """
-        Extra context provided to the serializer class.
-        """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'role': self.get_role(),
-            'view': self
-        }
-
-    def get_queryset(self):
-        role = self.get_role()
-
-        return AccessControlList.objects.filter_by_access(
-            permission_group_view, self.request.user,
-            queryset=role.groups.all()
-        )
-
-    def get_role(self):
-        return get_object_or_404(Role, pk=self.kwargs['pk'])
-
-    def perform_create(self, serializer):
-        serializer.save(role=self.get_role())
-
-    def post(self, request, *args, **kwargs):
-        """
-        Add a list of groups to the selected role.
-        """
-
-        return super(APIRoleGroupList, self).post(request, *args, **kwargs)
-
-
 class APIRoleListView(generics.ListCreateAPIView):
-    serializer_class = RoleSerializer
-    queryset = Role.objects.all()
-
-    permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_role_view,)}
     mayan_view_permissions = {'POST': (permission_role_create,)}
+    permission_classes = (MayanPermission,)
+    queryset = Role.objects.all()
 
     def get(self, *args, **kwargs):
         """
@@ -99,6 +46,12 @@ class APIRoleListView(generics.ListCreateAPIView):
         """
 
         return super(APIRoleListView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return RoleSerializer
+        elif self.request.method == 'POST':
+            return WritableRoleSerializer
 
     def post(self, *args, **kwargs):
         """
@@ -157,16 +110,14 @@ class APIRolePermissionList(generics.ListCreateAPIView):
 
 
 class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = RoleSerializer
-    queryset = Role.objects.all()
-
-    permission_classes = (MayanPermission,)
     mayan_object_permissions = {
         'GET': (permission_role_view,),
         'PUT': (permission_role_edit,),
         'PATCH': (permission_role_edit,),
         'DELETE': (permission_role_delete,)
     }
+    permission_classes = (MayanPermission,)
+    queryset = Role.objects.all()
 
     def delete(self, *args, **kwargs):
         """
@@ -181,6 +132,12 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIRoleView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return RoleSerializer
+        elif self.request.method in ('PATCH', 'PUT'):
+            return WritableRoleSerializer
 
     def patch(self, *args, **kwargs):
         """

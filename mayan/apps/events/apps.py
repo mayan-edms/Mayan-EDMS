@@ -4,8 +4,8 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_tools
-
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .links import link_events_list
 from .licenses import *  # NOQA
@@ -20,6 +20,8 @@ class EventsApp(MayanAppConfig):
     def ready(self):
         super(EventsApp, self).ready()
         Action = apps.get_model(app_label='actstream', model_name='Action')
+
+        APIEndPoint(app=self, version_string='1')
 
         SourceColumn(
             source=Action, label=_('Timestamp'), attribute='timestamp'

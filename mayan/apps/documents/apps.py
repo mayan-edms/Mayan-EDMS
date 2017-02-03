@@ -28,6 +28,7 @@ from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
+from rest_api.fields import DynamicSerializerField
 from statistics.classes import StatisticNamespace, CharJSLine
 
 from .handlers import create_default_document_type
@@ -99,39 +100,9 @@ class DocumentsApp(MayanAppConfig):
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
 
-        DashboardWidget(
-            func=new_document_pages_this_month, icon='fa fa-calendar',
-            label=_('New pages this month'),
-            link=reverse_lazy(
-                'statistics:statistic_detail',
-                args=('new-document-pages-per-month',)
-            )
-        )
-        DashboardWidget(
-            func=new_documents_this_month, icon='fa fa-calendar',
-            label=_('New documents this month'),
-            link=reverse_lazy(
-                'statistics:statistic_detail',
-                args=('new-documents-per-month',)
-            )
-        )
-
-        DashboardWidget(
-            icon='fa fa-file', queryset=Document.objects.all(),
-            label=_('Total documents'),
-            link=reverse_lazy('documents:document_list')
-        )
-
-        DashboardWidget(
-            icon='fa fa-book', queryset=DocumentType.objects.all(),
-            label=_('Document types'),
-            link=reverse_lazy('documents:document_type_list')
-        )
-
-        DashboardWidget(
-            icon='fa fa-trash', queryset=DeletedDocument.objects.all(),
-            label=_('Documents in trash'),
-            link=reverse_lazy('documents:document_list_deleted')
+        DynamicSerializerField.add_serializer(
+            klass=Document,
+            serializer_class='documents.serializers.DocumentSerializer'
         )
 
         MissingItem(

@@ -8,6 +8,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from .classes import Permission
 from .managers import RoleManager, StoredPermissionManager
 
 logger = logging.getLogger(__name__)
@@ -21,8 +22,6 @@ class StoredPermission(models.Model):
     objects = StoredPermissionManager()
 
     def __init__(self, *args, **kwargs):
-        from .classes import Permission
-
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
             self.volatile_permission = Permission.get(

@@ -16,15 +16,18 @@ __all__ = (
     'TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH',
     'TEST_NON_ASCII_DOCUMENT_FILENAME', 'TEST_NON_ASCII_DOCUMENT_PATH',
     'TEST_SMALL_DOCUMENT_FILENAME', 'TEST_SMALL_DOCUMENT_PATH',
+    'TEST_DOCUMENT_VERSION_COMMENT_EDITED',
 )
 
 # Filenames
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
 TEST_DOCUMENT_DESCRIPTION = 'test description'
+TEST_DOCUMENT_DESCRIPTION_EDITED = 'test document description edited'
 TEST_DOCUMENT_FILENAME = 'mayan_11_1.pdf'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 TEST_DOCUMENT_TYPE_2 = 'test document type 2'
+TEST_DOCUMENT_VERSION_COMMENT_EDITED = 'test document version comment edited'
 TEST_HYBRID_DOCUMENT = 'hybrid_text_and_image.pdf'
 TEST_MULTI_PAGE_TIFF = 'multi_page.tiff'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'

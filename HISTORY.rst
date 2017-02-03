@@ -16,6 +16,14 @@ the user links
 - Stop loading theme fonts from the web (GitLab #343).
 - Add support for attaching multiple tags (GitLab #307).
 
+2.1.7 (2017-02-01)
+==================
+- Improved user management API endpoints.
+- Improved permissions API endpoints.
+- Improvements in the API tests of a few apps.
+- Addition Content type list API view to the common app.
+- Add API endpoints to the events app.
+- Enable the parser and validation fields of the metadata serializer.
 
 2.1.6 (2016-11-23)
 =================
