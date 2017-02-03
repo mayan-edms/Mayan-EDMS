@@ -5,7 +5,7 @@ import shlex
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.template import Context, Template
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -97,7 +97,7 @@ class MetadataType(models.Model):
         splitter.whitespace = ','.encode('utf-8')
         splitter.whitespace_split = True
         splitter.commenters = ''.encode('utf-8')
-        return list(splitter)
+        return [force_text(e) for e in splitter]
 
     def get_default_value(self):
         template = Template(self.default)
@@ -126,6 +126,7 @@ class MetadataType(models.Model):
 
         if self.lookup:
             lookup_options = self.get_lookup_values()
+
             if value and value not in lookup_options:
                 raise ValidationError(
                     _('Value is not one of the provided options.')

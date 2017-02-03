@@ -49,7 +49,7 @@ Other changes
 
 - Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
 - Add view to clone a document page transformation to other pages.
-- Document page transformation navigation bug fixed. 
+- Document page transformation navigation bug fixed.
 - Move test total to 359.
 - Increase test coverage to 81%.
 - New transformations added:
@@ -128,6 +128,7 @@ Bugs fixed or issues closed
 * `GitLab issue #303 <https://gitlab.com/mayan-edms/mayan-edms/issues/303>`_ Update urlpatterns in urls.py files to be a list of django.conf.urls.url() instances instead.
 * `GitLab issue #304 <https://gitlab.com/mayan-edms/mayan-edms/issues/304>`_ Remove string view arguments of url() in urls.py files.
 * `GitLab issue #307 <https://gitlab.com/mayan-edms/mayan-edms/issues/307>`_ Enter multiple Tags at once
+* `GitLab issue #310 <https://gitlab.com/mayan-edms/mayan-edms/issues/310>`_ Metadata's lookup with chinese messages when new document
 * `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
 * `GitLab issue #328 <https://gitlab.com/mayan-edms/mayan-edms/issues/328>`_ Upgrade Warning/Error during performupgrade (v2.1.3 to v2.1.4)
