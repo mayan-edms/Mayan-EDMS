@@ -8,19 +8,28 @@ import json
 import logging
 import os
 import poplib
+import subprocess
 
+import sh
 import yaml
+
+try:
+    scanimage = sh.Command('/usr/bin/scanimage')
+except sh.CommandNotFound:
+    scanimage = None
 
 from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
 from common.compressed_files import CompressedFile, NotACompressedFile
+from common.utils import TemporaryFile
 from converter.literals import DIMENSION_SEPARATOR
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
@@ -30,15 +39,17 @@ from metadata.api import save_metadata_list, set_bulk_metadata
 from metadata.models import MetadataType
 from tags.models import Tag
 
-from .classes import Attachment, SourceUploadedFile, StagingFile
+from .classes import Attachment, PseudoFile, SourceUploadedFile, StagingFile
 from .literals import (
     DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
-    DEFAULT_METADATA_ATTACHMENT_NAME, SOURCE_CHOICES, SOURCE_CHOICE_STAGING,
-    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_WEB_FORM,
-    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
-    SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
+    DEFAULT_METADATA_ATTACHMENT_NAME, SCANNER_MODE_COLOR, SCANNER_MODE_CHOICES,
+    SOURCE_CHOICES,SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+    SOURCE_CHOICE_WEB_FORM, SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
+    SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_N,
+    SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_CHOICE_EMAIL_IMAP,
+    SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_SANE_SCANNER
 )
+from .settings import setting_scanimage_path
 
 logger = logging.getLogger(__name__)
 
@@ -153,7 +164,64 @@ class InteractiveSource(Source):
         verbose_name_plural = _('Interactive sources')
 
 
+class SaneScanner(InteractiveSource):
+    can_compress = False
+    is_interactive = True
+    source_type = SOURCE_CHOICE_SANE_SCANNER
+
+    device_name = models.CharField(
+        max_length=255,
+        help_text=_('Device name as returned by the SANE backend.'),
+        verbose_name=_('Device name')
+    )
+    mode = models.CharField(
+        choices=SCANNER_MODE_CHOICES, default=SCANNER_MODE_COLOR,
+        max_length=16, verbose_name=_('Mode')
+    )
+    resolution = models.PositiveIntegerField(
+        default=300, help_text=_(
+            'Sets the resolution of the scanned image in DPI (dots per inch).'
+        ), verbose_name=_('Resolution')
+    )
+
+    class Meta:
+        verbose_name = _('SANE Scanner')
+        verbose_name_plural = _('SANE Scanners')
+
+    def clean_up_upload_file(self, upload_file_object):
+        pass
+
+    def get_upload_file_object(self, form_data):
+        temporary_file_object = TemporaryFile()
+
+        try:
+            command_line = [
+                setting_scanimage_path.value, '-d', self.device_name,
+                '--resolution', '{}'.format(self.resolution), '--mode',
+                self.mode, '--format', 'tiff'
+            ]
+            logger.debug('Scan command line: %s', command_line)
+            result = subprocess.check_call(
+                command_line, stdout=temporary_file_object
+            )
+        except subprocess.CalledProcessError as exception:
+            logger.error(
+                'Exception while scanning from source:%s ; %s', self,
+                exception
+            )
+            self.logs.create(
+                message=_('Error while scanning; %s') % exception
+            )
+
+        return SourceUploadedFile(
+            source=self, file=PseudoFile(
+                file=temporary_file_object, name='scan {}'.format(now())
+            )
+        )
+
+
 class StagingFolderSource(InteractiveSource):
+    can_compress = True
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
 
@@ -234,6 +302,7 @@ class StagingFolderSource(InteractiveSource):
 
 
 class WebFormSource(InteractiveSource):
+    can_compress = True
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 

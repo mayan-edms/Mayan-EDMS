@@ -25,16 +25,17 @@ from metadata.api import decode_metadata_from_url
 from navigation import Link
 
 from .forms import (
-    NewDocumentForm, NewVersionForm, WebFormUploadForm,
+    NewDocumentForm, NewVersionForm, SaneScannerUploadForm, WebFormUploadForm,
     WebFormUploadFormHTML5
 )
 from .literals import (
-    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
+    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_SANE_SCANNER, SOURCE_CHOICE_WEB_FORM,
     SOURCE_UNCOMPRESS_CHOICE_ASK,
     SOURCE_UNCOMPRESS_CHOICE_Y
 )
 from .models import (
-    InteractiveSource, Source, StagingFolderSource, WebFormSource
+    InteractiveSource, Source, SaneScanner, StagingFolderSource,
+    WebFormSource
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -88,27 +89,10 @@ class UploadBaseView(MultiFormView):
 
     @staticmethod
     def get_active_tab_links(document=None):
-        tab_links = []
-
-        web_forms = WebFormSource.objects.filter(enabled=True)
-        for web_form in web_forms:
-            tab_links.append(
-                UploadBaseView.get_tab_link_for_source(web_form, document)
-            )
-
-        staging_folders = StagingFolderSource.objects.filter(enabled=True)
-        for staging_folder in staging_folders:
-            tab_links.append(
-                UploadBaseView.get_tab_link_for_source(
-                    staging_folder, document
-                )
-            )
-
-        return {
-            'tab_links': tab_links,
-            SOURCE_CHOICE_WEB_FORM: web_forms,
-            SOURCE_CHOICE_STAGING: staging_folders,
-        }
+        return [
+            UploadBaseView.get_tab_link_for_source(source, document)
+            for source in InteractiveSource.objects.filter(enabled=True).select_subclasses()
+        ]
 
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
@@ -163,6 +147,16 @@ class UploadBaseView(MultiFormView):
                         }
                     },
                 ]
+        elif isinstance(self.source, SaneScanner):
+            subtemplates_list.append({
+                'name': 'sources/upload_multiform_subtemplate.html',
+                'context': {
+                    'forms': context['forms'],
+                    'is_multipart': True,
+                    'title': _('Document properties'),
+                    'submit_label': _('Scan'),
+                },
+            })
         else:
             subtemplates_list.append({
                 'name': 'sources/upload_multiform_subtemplate.html',
@@ -173,8 +167,8 @@ class UploadBaseView(MultiFormView):
                 },
             })
 
-        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links['tab_links']
-        menu_facet.bound_links['sources:upload_version'] = self.tab_links['tab_links']
+        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links
+        menu_facet.bound_links['sources:upload_version'] = self.tab_links
 
         context.update({
             'subtemplates_list': subtemplates_list,
@@ -206,13 +200,16 @@ class UploadInteractiveView(UploadBaseView):
         ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
-        if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-            expand = forms['source_form'].cleaned_data.get('expand')
-        else:
-            if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                expand = True
+        if self.source.can_compress:
+            if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                expand = forms['source_form'].cleaned_data.get('expand')
             else:
-                expand = False
+                if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                    expand = True
+                else:
+                    expand = False
+        else:
+            expand = False
 
         uploaded_file = self.source.get_upload_file_object(
             forms['source_form'].cleaned_data
@@ -260,12 +257,15 @@ class UploadInteractiveView(UploadBaseView):
         return HttpResponseRedirect(self.request.get_full_path())
 
     def create_source_form_form(self, **kwargs):
+        if hasattr(self.source, 'uncompress'):
+            show_expand = self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
+        else:
+            show_expand = False
+
         return self.get_form_classes()['source_form'](
             prefix=kwargs['prefix'],
             source=self.source,
-            show_expand=(
-                self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
-            ),
+            show_expand=show_expand,
             data=kwargs.get('data', None),
             files=kwargs.get('files', None),
         )
@@ -295,7 +295,7 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
-        if not isinstance(self.source, StagingFolderSource):
+        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner) :
             context['subtemplates_list'][0]['context'].update(
                 {
                     'form_action': self.request.get_full_path(),

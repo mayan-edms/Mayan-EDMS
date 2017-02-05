@@ -24,6 +24,7 @@ from .handlers import (
 from .links import (
     link_document_create_multiple, link_setup_sources,
     link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
+    link_setup_source_create_sane_scanner,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
@@ -44,6 +45,7 @@ class SourcesApp(MayanAppConfig):
         IMAPEmail = self.get_model('IMAPEmail')
         Source = self.get_model('Source')
         SourceLog = self.get_model('SourceLog')
+        SaneScanner = self.get_model('SaneScanner')
         StagingFolderSource = self.get_model('StagingFolderSource')
         WatchFolderSource = self.get_model('WatchFolderSource')
         WebFormSource = self.get_model('WebFormSource')
@@ -119,8 +121,8 @@ class SourcesApp(MayanAppConfig):
                 link_setup_source_edit, link_setup_source_delete,
                 link_transformation_list, link_setup_source_logs
             ), sources=(
-                POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
-                WebFormSource
+                POP3Email, IMAPEmail, SaneScanner, StagingFolderSource,
+                WatchFolderSource, WebFormSource
             )
         )
         menu_object.bind_links(
@@ -129,6 +131,7 @@ class SourcesApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(
                 link_setup_sources, link_setup_source_create_webform,
+                link_setup_source_create_sane_scanner,
                 link_setup_source_create_staging_folder,
                 link_setup_source_create_pop3_email,
                 link_setup_source_create_imap_email,
