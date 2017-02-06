@@ -2,6 +2,22 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+SCANNER_SOURCE_FLATBED = 'flatbed'
+SCANNER_SOURCE_ADF = 'Automatic Document Feeder'
+
+SCANNER_SOURCE_CHOICES = (
+    (SCANNER_SOURCE_FLATBED, _('Flatbed')),
+    (SCANNER_SOURCE_ADF, _('Document feeder')),
+)
+
+SCANNER_ADF_MODE_SIMPLEX = 'simplex'
+SCANNER_ADF_MODE_DUPLEX = 'duplex'
+
+SCANNER_ADF_MODE_CHOICES = (
+    (SCANNER_ADF_MODE_SIMPLEX, _('Simplex')),
+    (SCANNER_ADF_MODE_DUPLEX, _('Duplex')),
+)
+
 SCANNER_MODE_LINEART = 'lineart'
 SCANNER_MODE_MONOCHROME = 'monochrome'
 SCANNER_MODE_COLOR = 'color'

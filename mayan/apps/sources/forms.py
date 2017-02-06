@@ -85,7 +85,10 @@ class SaneScannerUploadForm(UploadBaseForm):
 
 class SaneScannerSetupForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'device_name', 'mode', 'resolution', 'enabled')
+        fields = (
+            'label', 'device_name', 'mode', 'resolution', 'source',
+            'adf_mode', 'enabled'
+        )
         model = SaneScanner
 
 

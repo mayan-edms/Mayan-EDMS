@@ -40,14 +40,17 @@ from metadata.models import MetadataType
 from tags.models import Tag
 
 from .classes import Attachment, PseudoFile, SourceUploadedFile, StagingFile
+from .exceptions import SourceException
 from .literals import (
     DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
-    DEFAULT_METADATA_ATTACHMENT_NAME, SCANNER_MODE_COLOR, SCANNER_MODE_CHOICES,
-    SOURCE_CHOICES,SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+    DEFAULT_METADATA_ATTACHMENT_NAME, SCANNER_ADF_MODE_CHOICES,
+    SCANNER_ADF_MODE_SIMPLEX, SCANNER_MODE_COLOR, SCANNER_MODE_CHOICES,
+    SCANNER_SOURCE_CHOICES, SCANNER_SOURCE_FLATBED,
+    SOURCE_CHOICES, SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
     SOURCE_CHOICE_WEB_FORM, SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
     SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_N,
     SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_CHOICE_EMAIL_IMAP,
-    SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_SANE_SCANNER
+    SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_SANE_SCANNER,
 )
 from .settings import setting_scanimage_path
 
@@ -175,13 +178,33 @@ class SaneScanner(InteractiveSource):
         verbose_name=_('Device name')
     )
     mode = models.CharField(
-        choices=SCANNER_MODE_CHOICES, default=SCANNER_MODE_COLOR,
-        max_length=16, verbose_name=_('Mode')
+        blank=True, choices=SCANNER_MODE_CHOICES, default=SCANNER_MODE_COLOR,
+        help_text=_(
+            'Selects the scan mode (e.g., lineart, monochrome, or color). '
+            'If this option is not supported by your scanner, leave it blank.'
+        ), max_length=16, verbose_name=_('Mode')
     )
     resolution = models.PositiveIntegerField(
-        default=300, help_text=_(
-            'Sets the resolution of the scanned image in DPI (dots per inch).'
+        blank=True, help_text=_(
+            'Sets the resolution of the scanned image in DPI (dots per inch). '
+            'Typical value is 200. If this option is not supported by your '
+            'scanner, leave it blank.'
         ), verbose_name=_('Resolution')
+    )
+    source = models.CharField(
+        blank=True, choices=SCANNER_SOURCE_CHOICES,
+        default=SCANNER_SOURCE_FLATBED, help_text=_(
+            'Selects the scan source (such as a document-feeder). If this '
+            'option is not supported by your scanner, leave it blank.'
+        ), max_length=32,
+        verbose_name=_('Paper source')
+    )
+    adf_mode = models.CharField(
+        blank=True, choices=SCANNER_ADF_MODE_CHOICES,
+        default=SCANNER_ADF_MODE_SIMPLEX, help_text=_(
+            'Selects the document feeder mode (simplex/duplex). If this '
+            'option is not supported by your scanner, leave it blank.'
+        ), max_length=16, verbose_name=_('ADF mode')
     )
 
     class Meta:
@@ -193,31 +216,55 @@ class SaneScanner(InteractiveSource):
 
     def get_upload_file_object(self, form_data):
         temporary_file_object = TemporaryFile()
+        command_line = [
+            setting_scanimage_path.value, '-d', self.device_name,
+            '--format', 'tiff',
+        ]
+
+        if self.resolution:
+            command_line.extend(
+                ['--resolution', '{}'.format(self.resolution)]
+            )
+
+        if self.mode:
+            command_line.extend(
+                ['--mode', self.mode]
+            )
+
+        if self.source:
+            command_line.extend(
+                ['--source', self.source]
+            )
+
+        if self.adf_mode:
+            command_line.extend(
+                ['--adf-mode', self.adf_mode]
+            )
+
+        filestderr = TemporaryFile()
 
         try:
-            command_line = [
-                setting_scanimage_path.value, '-d', self.device_name,
-                '--resolution', '{}'.format(self.resolution), '--mode',
-                self.mode, '--format', 'tiff'
-            ]
             logger.debug('Scan command line: %s', command_line)
-            result = subprocess.check_call(
-                command_line, stdout=temporary_file_object
+            subprocess.check_call(
+                command_line, stdout=temporary_file_object, stderr=filestderr
             )
-        except subprocess.CalledProcessError as exception:
+        except subprocess.CalledProcessError:
+            filestderr.seek(0)
+            error_message = filestderr.read()
             logger.error(
                 'Exception while scanning from source:%s ; %s', self,
-                exception
-            )
-            self.logs.create(
-                message=_('Error while scanning; %s') % exception
+                error_message
             )
 
-        return SourceUploadedFile(
-            source=self, file=PseudoFile(
-                file=temporary_file_object, name='scan {}'.format(now())
+            message = _('Error while scanning; %s') % error_message
+            self.logs.create(message=message)
+            raise SourceException(message)
+        else:
+            return SourceUploadedFile(
+                source=self, file=PseudoFile(
+                    file=temporary_file_object, name='scan {}'.format(now())
+                )
             )
-        )
 
 
 class StagingFolderSource(InteractiveSource):

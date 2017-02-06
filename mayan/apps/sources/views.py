@@ -24,18 +24,13 @@ from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url
 from navigation import Link
 
+from .exceptions import SourceException
 from .forms import (
-    NewDocumentForm, NewVersionForm, SaneScannerUploadForm, WebFormUploadForm,
-    WebFormUploadFormHTML5
+    NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
-from .literals import (
-    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_SANE_SCANNER, SOURCE_CHOICE_WEB_FORM,
-    SOURCE_UNCOMPRESS_CHOICE_ASK,
-    SOURCE_UNCOMPRESS_CHOICE_Y
-)
+from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .models import (
-    InteractiveSource, Source, SaneScanner, StagingFolderSource,
-    WebFormSource
+    InteractiveSource, Source, SaneScanner, StagingFolderSource
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -211,49 +206,53 @@ class UploadInteractiveView(UploadBaseView):
         else:
             expand = False
 
-        uploaded_file = self.source.get_upload_file_object(
-            forms['source_form'].cleaned_data
-        )
-
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=uploaded_file.file
-        )
-
-        label = None
-
-        if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
-            if forms['document_form'].cleaned_data['document_type_available_filenames']:
-                label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
-
-        if not self.request.user.is_anonymous():
-            user_id = self.request.user.pk
-        else:
-            user_id = None
-
         try:
-            self.source.clean_up_upload_file(uploaded_file)
-        except Exception as exception:
-            messages.error(self.request, exception)
-
-        task_source_handle_upload.apply_async(kwargs=dict(
-            description=forms['document_form'].cleaned_data.get('description'),
-            document_type_id=self.document_type.pk,
-            expand=expand,
-            label=label,
-            language=forms['document_form'].cleaned_data.get('language'),
-            metadata_dict_list=decode_metadata_from_url(self.request.GET),
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            source_id=self.source.pk,
-            tag_ids=self.request.GET.getlist('tags'),
-            user_id=user_id,
-        ))
-        messages.success(
-            self.request,
-            _(
-                'New document queued for uploaded and will be available '
-                'shortly.'
+            uploaded_file = self.source.get_upload_file_object(
+                forms['source_form'].cleaned_data
             )
-        )
+        except SourceException as exception:
+            messages.error(self.request, exception)
+        else:
+            shared_uploaded_file = SharedUploadedFile.objects.create(
+                file=uploaded_file.file
+            )
+
+            label = None
+
+            if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
+                if forms['document_form'].cleaned_data['document_type_available_filenames']:
+                    label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
+
+            if not self.request.user.is_anonymous():
+                user_id = self.request.user.pk
+            else:
+                user_id = None
+
+            try:
+                self.source.clean_up_upload_file(uploaded_file)
+            except Exception as exception:
+                messages.error(self.request, exception)
+
+            task_source_handle_upload.apply_async(kwargs=dict(
+                description=forms['document_form'].cleaned_data.get('description'),
+                document_type_id=self.document_type.pk,
+                expand=expand,
+                label=label,
+                language=forms['document_form'].cleaned_data.get('language'),
+                metadata_dict_list=decode_metadata_from_url(self.request.GET),
+                shared_uploaded_file_id=shared_uploaded_file.pk,
+                source_id=self.source.pk,
+                tag_ids=self.request.GET.getlist('tags'),
+                user_id=user_id,
+            ))
+            messages.success(
+                self.request,
+                _(
+                    'New document queued for uploaded and will be available '
+                    'shortly.'
+                )
+            )
+
         return HttpResponseRedirect(self.request.get_full_path())
 
     def create_source_form_form(self, **kwargs):
@@ -295,7 +294,7 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
-        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner) :
+        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context['subtemplates_list'][0]['context'].update(
                 {
                     'form_action': self.request.get_full_path(),
@@ -339,38 +338,42 @@ class UploadInteractiveVersionView(UploadBaseView):
         ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
-        uploaded_file = self.source.get_upload_file_object(
-            forms['source_form'].cleaned_data
-        )
-
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=uploaded_file.file
-        )
-
         try:
-            self.source.clean_up_upload_file(uploaded_file)
-        except Exception as exception:
-            messages.error(self.request, exception)
-
-        if not self.request.user.is_anonymous():
-            user_id = self.request.user.pk
-        else:
-            user_id = None
-
-        task_upload_new_version.apply_async(kwargs=dict(
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            document_id=self.document.pk,
-            user_id=user_id,
-            comment=forms['document_form'].cleaned_data.get('comment')
-        ))
-
-        messages.success(
-            self.request,
-            _(
-                'New document version queued for uploaded and will be '
-                'available shortly.'
+            uploaded_file = self.source.get_upload_file_object(
+                forms['source_form'].cleaned_data
             )
-        )
+        except SourceException as exception:
+            messages.error(self.request, exception)
+        else:
+            shared_uploaded_file = SharedUploadedFile.objects.create(
+                file=uploaded_file.file
+            )
+
+            try:
+                self.source.clean_up_upload_file(uploaded_file)
+            except Exception as exception:
+                messages.error(self.request, exception)
+
+            if not self.request.user.is_anonymous():
+                user_id = self.request.user.pk
+            else:
+                user_id = None
+
+            task_upload_new_version.apply_async(kwargs=dict(
+                shared_uploaded_file_id=shared_uploaded_file.pk,
+                document_id=self.document.pk,
+                user_id=user_id,
+                comment=forms['document_form'].cleaned_data.get('comment')
+            ))
+
+            messages.success(
+                self.request,
+                _(
+                    'New document version queued for uploaded and will be '
+                    'available shortly.'
+                )
+            )
+
         return HttpResponseRedirect(
             reverse(
                 'documents:document_version_list', args=(self.document.pk,)
