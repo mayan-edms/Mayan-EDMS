@@ -20,6 +20,7 @@ from .literals import (
 )
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class TagAPITestCase(APITestCase):
     """
     Test the tag API endpoints
@@ -37,6 +38,20 @@ class TagAPITestCase(APITestCase):
 
     def tearDown(self):
         self.admin_user.delete()
+        if hasattr(self, 'document_type'):
+            self.document_type.delete()
+
+    def _document_create(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+            file_object=file_object,
+        )
+
+        return document
 
     def test_tag_create(self):
         response = self.client.post(
@@ -46,7 +61,22 @@ class TagAPITestCase(APITestCase):
         )
 
         tag = Tag.objects.first()
+        self.assertEqual(response.data['id'], tag.pk)
+        self.assertEqual(response.data['label'], TEST_TAG_LABEL)
+        self.assertEqual(response.data['color'], TEST_TAG_COLOR)
 
+        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(tag.label, TEST_TAG_LABEL)
+        self.assertEqual(tag.color, TEST_TAG_COLOR)
+
+    def test_tag_create_with_documents(self):
+        response = self.client.post(
+            reverse('rest_api:tag-list'), {
+                'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
+            }
+        )
+
+        tag = Tag.objects.first()
         self.assertEqual(response.data['id'], tag.pk)
         self.assertEqual(response.data['label'], TEST_TAG_LABEL)
         self.assertEqual(response.data['color'], TEST_TAG_COLOR)
@@ -62,7 +92,23 @@ class TagAPITestCase(APITestCase):
 
         self.assertEqual(Tag.objects.count(), 0)
 
-    def test_tag_edit(self):
+    def test_tag_edit_via_patch(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
+        self.client.patch(
+            reverse('rest_api:tag-detail', args=(tag.pk,)),
+            {
+                'label': TEST_TAG_LABEL_EDITED,
+                'color': TEST_TAG_COLOR_EDITED
+            }
+        )
+
+        tag = Tag.objects.first()
+
+        self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
+        self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
+
+    def test_tag_edit_via_put(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
         self.client.put(
@@ -78,18 +124,10 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
-    @override_settings(OCR_AUTO_OCR=False)
-    def test_tag_add_document(self):
+    def test_tag_document_add(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
-        document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._document_create()
 
         self.client.post(
             reverse('rest_api:document-tag-list', args=(document.pk,)),
@@ -98,19 +136,10 @@ class TagAPITestCase(APITestCase):
 
         self.assertEqual(tag.documents.count(), 1)
 
-    @override_settings(OCR_AUTO_OCR=False)
-    def test_tag_remove_document(self):
+    def test_tag_document_remove(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
-        document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = document_type.new_document(
-                file_object=file_object,
-            )
-
+        document = self._document_create()
         tag.documents.add(document)
 
         self.client.delete(

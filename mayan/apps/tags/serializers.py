@@ -8,6 +8,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from acls.models import AccessControlList
+from documents.models import Document
 from permissions import Permission
 
 from .models import Tag
@@ -15,7 +16,7 @@ from .permissions import permission_tag_attach
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
-    documents = serializers.HyperlinkedIdentityField(
+    documents_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:tag-document-list'
     )
     documents_count = serializers.SerializerMethodField()
@@ -25,7 +26,7 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:tag-detail'},
         }
         fields = (
-            'color', 'documents', 'documents_count', 'id', 'label', 'url'
+            'color', 'documents_count', 'documents_url', 'id', 'label', 'url'
         )
         model = Tag
 
@@ -33,12 +34,51 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
         return instance.documents.count()
 
 
-class NewTagSerializer(serializers.ModelSerializer):
+class WritableTagSerializer(serializers.ModelSerializer):
+    documents_pk_list = serializers.CharField(
+        help_text=_(
+            'Comma separated list of document primary keys to which this tag '
+            'will be attached.'
+        ), required=False
+    )
+
     class Meta:
         fields = (
-            'color', 'label', 'id'
+            'color', 'documents_pk_list', 'id', 'label',
         )
         model = Tag
+
+    def _add_documents(self, documents_pk_list, instance):
+        instance.documents.add(
+            *Document.objects.filter(pk__in=documents_pk_list.split(','))
+        )
+
+    def create(self, validated_data):
+        documents_pk_list = validated_data.pop('documents_pk_list', '')
+
+        instance = super(WritableTagSerializer, self).create(validated_data)
+
+        if documents_pk_list:
+            self._add_documents(
+                documents_pk_list=documents_pk_list, instance=instance
+            )
+
+        return instance
+
+    def update(self, instance, validated_data):
+        documents_pk_list = validated_data.pop('documents_pk_list', '')
+
+        instance = super(WritableTagSerializer, self).update(
+            instance, validated_data
+        )
+
+        if documents_pk_list:
+            instance.documents.clear()
+            self._add_documents(
+                documents_pk_list=documents_pk_list, instance=instance
+            )
+
+        return instance
 
 
 class NewDocumentTagSerializer(serializers.Serializer):
