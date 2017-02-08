@@ -17,8 +17,8 @@ from rest_api.permissions import MayanPermission
 
 from .models import Tag
 from .permissions import (
-    permission_tag_create, permission_tag_delete, permission_tag_edit,
-    permission_tag_remove, permission_tag_view
+    permission_tag_attach, permission_tag_create, permission_tag_delete,
+    permission_tag_edit, permission_tag_remove, permission_tag_view
 )
 from .serializers import (
     DocumentTagSerializer, NewDocumentTagSerializer, TagSerializer,
@@ -123,15 +123,21 @@ class APITagDocumentListView(generics.ListAPIView):
 
 
 class APIDocumentTagListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the tags attached to a document.
-    """
-
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': (permission_tag_view,)}
+    mayan_object_permissions = {
+        'GET': (permission_tag_view,),
+        'POST': (permission_tag_attach,)
+    }
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the tags attached to a document.
+        """
+
+        return super(APIDocumentTagListView, self).get(*args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
 
     def get_queryset(self):
         document = self.get_document()
@@ -146,6 +152,12 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
 
         return document.attached_tags().all()
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentTagSerializer
+        elif self.request.method == 'POST':
+            return NewDocumentTagSerializer
+
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
@@ -156,12 +168,6 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
             'document': self.get_document(),
             'view': self
         }
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTagSerializer
-        elif self.request.method == 'POST':
-            return NewDocumentTagSerializer
 
     def perform_create(self, serializer):
         serializer.save(document=self.get_document())

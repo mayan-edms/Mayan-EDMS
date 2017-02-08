@@ -81,14 +81,35 @@ class WritableTagSerializer(serializers.ModelSerializer):
         return instance
 
 
+class DocumentTagSerializer(TagSerializer):
+    document_tag_url = serializers.SerializerMethodField(
+        help_text=_(
+            'API URL pointing to a tag in relation to the document '
+            'attached to it. This URL is different than the canonical '
+            'tag URL.'
+        )
+    )
+
+    class Meta(TagSerializer.Meta):
+        fields = TagSerializer.Meta.fields + ('document_tag_url',)
+        read_only_fields = TagSerializer.Meta.fields
+
+    def get_document_tag_url(self, instance):
+        return reverse(
+            'rest_api:document-tag-detail', args=(
+                self.context['document'].pk, instance.pk
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+
 class NewDocumentTagSerializer(serializers.Serializer):
-    tag = serializers.IntegerField(
+    tag_pk = serializers.IntegerField(
         help_text=_('Primary key of the tag to be added.')
     )
 
     def create(self, validated_data):
         try:
-            tag = Tag.objects.get(pk=validated_data['tag'])
+            tag = Tag.objects.get(pk=validated_data['tag_pk'])
 
             try:
                 Permission.check_permissions(
@@ -103,19 +124,4 @@ class NewDocumentTagSerializer(serializers.Serializer):
         except Exception as exception:
             raise ValidationError(exception)
 
-        return {'tag': tag.pk}
-
-
-class DocumentTagSerializer(TagSerializer):
-    remove = serializers.SerializerMethodField()
-
-    def get_remove(self, instance):
-        return reverse(
-            'rest_api:document-tag', args=(
-                self.context['document'].pk, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
-        )
-
-    class Meta(TagSerializer.Meta):
-        fields = TagSerializer.Meta.fields + ('remove',)
-        read_only_fields = TagSerializer.Meta.fields
+        return {'tag_pk': tag.pk}

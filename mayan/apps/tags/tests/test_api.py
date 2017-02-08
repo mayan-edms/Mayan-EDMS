@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.utils.encoding import force_text
 
 from rest_framework.test import APITestCase
 
@@ -92,6 +93,19 @@ class TagAPITestCase(APITestCase):
 
         self.assertEqual(Tag.objects.count(), 0)
 
+    def test_tag_document_list_view(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        document = self._document_create()
+        tag.documents.add(document)
+
+        response = self.client.get(
+            reverse('rest_api:tag-document-list', args=(tag.pk,))
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['uuid'], force_text(document.uuid)
+        )
+
     def test_tag_edit_via_patch(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
@@ -124,26 +138,46 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
-    def test_tag_document_add(self):
+    def test_document_attach_tag_view(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
-
         document = self._document_create()
 
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:document-tag-list', args=(document.pk,)),
-            {'tag': tag.pk}
+            {'tag_pk': tag.pk}
+        )
+        self.assertQuerysetEqual(document.tags.all(), (repr(tag),))
+
+    def test_document_tag_detail_view(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        document = self._document_create()
+        tag.documents.add(document)
+
+        response = self.client.get(
+            reverse('rest_api:document-tag-detail', args=(document.pk, tag.pk))
         )
 
-        self.assertEqual(tag.documents.count(), 1)
+        self.assertEqual(response.data['label'], tag.label)
 
-    def test_tag_document_remove(self):
+    def test_document_tag_list_view(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        document = self._document_create()
+        tag.documents.add(document)
 
+        response = self.client.get(
+            reverse('rest_api:document-tag-list', args=(document.pk,))
+        )
+        self.assertEqual(response.data['results'][0]['label'], tag.label)
+
+    def test_document_tag_remove_view(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
         document = self._document_create()
         tag.documents.add(document)
 
         self.client.delete(
-            reverse('rest_api:document-tag', args=(document.pk, tag.pk)),
+            reverse(
+                'rest_api:document-tag-detail', args=(document.pk, tag.pk)
+            ),
         )
 
         self.assertEqual(tag.documents.count(), 0)
