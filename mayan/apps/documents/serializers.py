@@ -106,7 +106,7 @@ class NewDocumentVersionSerializer(serializers.Serializer):
 class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
     document_type_label = serializers.SerializerMethodField()
     restore = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:deleteddocument-restore'
+        view_name='rest_api:trasheddocument-restore'
     )
 
     def get_document_type_label(self, instance):
@@ -115,7 +115,7 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'document_type': {'view_name': 'rest_api:documenttype-detail'},
-            'url': {'view_name': 'rest_api:deleteddocument-detail'}
+            'url': {'view_name': 'rest_api:trasheddocument-detail'}
         }
         fields = (
             'date_added', 'deleted_date_time', 'description', 'document_type',
