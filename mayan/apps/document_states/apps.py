@@ -10,6 +10,7 @@ from common import (
 )
 from common.widgets import two_state_template
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .handlers import launch_workflow
 from .links import (
@@ -32,6 +33,8 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

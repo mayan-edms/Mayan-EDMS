@@ -2,6 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
+from .api_views import (
+    APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
+    APIWorkflowListView, APIWorkflowView
+)
 from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
     SetupWorkflowDeleteView, SetupWorkflowDocumentTypesView,
@@ -97,3 +101,21 @@ urlpatterns = patterns(
         name='setup_workflow_transition_edit'
     ),
 )
+
+api_urls = [
+    url(r'^workflows/$', APIWorkflowListView.as_view(), name='workflow-list'),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/$', APIWorkflowView.as_view(),
+        name='workflow-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/document_types/$',
+        APIWorkflowDocumentTypeList.as_view(),
+        name='workflow-document-type-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_pk>[0-9]+)/$',
+        APIWorkflowDocumentTypeView.as_view(),
+        name='workflow-document-type-detail'
+    ),
+]
