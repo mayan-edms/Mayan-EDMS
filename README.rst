@@ -60,6 +60,6 @@ account.
    :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 .. |Documentation| image:: https://readthedocs.org/projects/mayan/badge/?version=latest
    :target: http://mayan.readthedocs.io/en/latest
-.. |Python version| images:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
+.. |Python version| image:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 
 |Analytics|
