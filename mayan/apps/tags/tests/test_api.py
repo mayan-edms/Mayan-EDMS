@@ -38,7 +38,6 @@ class TagAPITestCase(APITestCase):
         )
 
     def tearDown(self):
-        self.admin_user.delete()
         if hasattr(self, 'document_type'):
             self.document_type.delete()
 
@@ -49,8 +48,8 @@ class TagAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-            file_object=file_object,
-        )
+                file_object=file_object,
+            )
 
         return document
 
@@ -142,7 +141,7 @@ class TagAPITestCase(APITestCase):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
         document = self._document_create()
 
-        response = self.client.post(
+        self.client.post(
             reverse('rest_api:document-tag-list', args=(document.pk,)),
             {'tag_pk': tag.pk}
         )
