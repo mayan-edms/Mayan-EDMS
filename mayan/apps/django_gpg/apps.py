@@ -10,6 +10,7 @@ from common import (
 )
 from common.classes import Package
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .classes import KeyStub
 from .links import (
@@ -32,6 +33,7 @@ class DjangoGPGApp(MayanAppConfig):
     def ready(self):
         super(DjangoGPGApp, self).ready()
 
+        APIEndPoint(app=self, version_string='1')
         Key = self.get_model('Key')
 
         ModelPermission.register(
