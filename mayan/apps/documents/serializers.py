@@ -46,7 +46,7 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    documents = serializers.HyperlinkedIdentityField(
+    documents_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:documenttype-document-list',
     )
     documents_count = serializers.SerializerMethodField()
@@ -59,7 +59,7 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:documenttype-detail'},
         }
         fields = (
-            'delete_time_period', 'delete_time_unit', 'documents',
+            'delete_time_period', 'delete_time_unit', 'documents_url',
             'documents_count', 'id', 'label', 'trash_time_period',
             'trash_time_unit', 'url'
         )
