@@ -18,7 +18,10 @@ from user_management.tests.literals import (
 
 from ..models import Workflow
 
-from .literals import TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED
+from .literals import (
+    TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
+    TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL
+)
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -208,15 +211,68 @@ class WorkflowStatesAPITestCase(APITestCase):
             self.document_type.delete()
 
     def _create_workflow(self):
-        return Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
 
-    def test_workflow_create_view(self):
+    def _create_workflow_state(self):
+        self._create_workflow()
+        self.workflow_state = self.workflow.states.create(
+            completion=TEST_WORKFLOW_STATE_COMPLETION,
+            label=TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def test_workflow_state_create_view(self):
+        self._create_workflow()
+
         response = self.client.post(
-            reverse('rest_api:workflow-list'), {
-                'label': TEST_WORKFLOW_LABEL
+            reverse(
+                'rest_api:workflowstate-list', args=(self.workflow.pk,)
+            ), data={
+                'completion': TEST_WORKFLOW_STATE_COMPLETION,
+                'label': TEST_WORKFLOW_STATE_LABEL
             }
         )
 
-        workflow = Workflow.objects.first()
-        self.assertEqual(Workflow.objects.count(), 1)
-        self.assertEqual(response.data['id'], workflow.pk)
+        self.workflow.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow.states.first().label, TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def test_workflow_state_delete_view(self):
+        self._create_workflow_state()
+
+        response = self.client.delete(
+            reverse(
+                'rest_api:workflowstate-detail',
+                args=(self.workflow.pk, self.workflow_state.pk)
+            ),
+        )
+
+        self.workflow.refresh_from_db()
+
+        self.assertEqual(self.workflow.states.count(), 0)
+
+    def test_workflow_state_detail_view(self):
+        self._create_workflow_state()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowstate-detail',
+                args=(self.workflow.pk, self.workflow_state.pk)
+            ),
+        )
+
+        self.assertEqual(
+            response.data['label'], TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def test_workflow_state_list_view(self):
+        self._create_workflow_state()
+
+        response = self.client.get(
+            reverse('rest_api:workflowstate-list', args=(self.workflow.pk,)),
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['label'], TEST_WORKFLOW_STATE_LABEL
+        )

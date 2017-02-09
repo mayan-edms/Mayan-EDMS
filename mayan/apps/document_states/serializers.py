@@ -49,13 +49,32 @@ class WorkflowDocumentTypeSerializer(DocumentTypeSerializer):
 
 
 class WorkflowStateSerializer(serializers.HyperlinkedModelSerializer):
+    workflow_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
+
     class Meta:
-        extra_kwargs = {
-            'url': {'view_name': 'rest_api:workflowstate-detail'},
-            'workflow': {'view_name': 'rest_api:workflow-detail'},
-        }
-        fields = ('completion', 'id', 'initial', 'label', 'workflow', 'url')
+        fields = (
+            'completion', 'id', 'initial', 'label', 'url', 'workflow_url',
+        )
         model = WorkflowState
+
+    def create(self, validated_data):
+        validated_data['workflow'] = self.context['workflow']
+        return super(WorkflowStateSerializer, self).create(validated_data)
+
+    def get_url(self, instance):
+        return reverse(
+            'rest_api:workflowstate-detail', args=(
+                instance.workflow.pk, instance.pk
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_workflow_url(self, instance):
+        return reverse(
+            'rest_api:workflow-detail', args=(
+                instance.workflow.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
 
 
 class WorkflowSerializer(serializers.HyperlinkedModelSerializer):

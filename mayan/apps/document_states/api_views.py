@@ -250,13 +250,45 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIWorkflowStateListView(generics.ListCreateAPIView):
     serializer_class = WorkflowStateSerializer
-    queryset = WorkflowState.objects.all()
 
     def get(self, *args, **kwargs):
         """
         Returns a list of all the workflow states.
         """
         return super(APIWorkflowStateListView, self).get(*args, **kwargs)
+
+    def get_queryset(self):
+        return self.get_workflow().states.all()
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'workflow': self.get_workflow(),
+            'view': self
+        }
+
+    def get_workflow(self):
+        if self.request.method == 'GET':
+            permission_required = permission_workflow_view
+        else:
+            permission_required = permission_workflow_edit
+
+        workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_required,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_required, self.request.user, workflow
+            )
+
+        return workflow
 
     def post(self, *args, **kwargs):
         """
@@ -265,6 +297,74 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
         return super(APIWorkflowStateListView, self).post(*args, **kwargs)
 
 
-class APIWorkflowStateView(generics.RetrieveAPIView):
-    queryset = WorkflowState.objects.all()
-    serializer_class = WorkflowStateSerializer
+class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
+    lookup_url_kwarg = 'state_pk'
+
+    def delete(self, *args, **kwargs):
+        """
+        Delete the selected workflow state.
+        """
+
+        return super(APIWorkflowStateView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """
+        Return the details of the selected workflow state.
+        """
+
+        return super(APIWorkflowStateView, self).get(*args, **kwargs)
+
+    def get_queryset(self):
+        return self.get_workflow().states.all()
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return WorkflowStateSerializer
+        else:
+            return WorkflowStateSerializer # TODO: Writable
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'workflow': self.get_workflow(),
+            'view': self
+        }
+
+    def get_workflow(self):
+        if self.request.method == 'GET':
+            permission_required = permission_workflow_view
+        else:
+            permission_required = permission_workflow_edit
+
+        workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_required,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_required, self.request.user, workflow
+            )
+
+        return workflow
+
+    def patch(self, *args, **kwargs):
+        """
+        Edit the selected workflow state.
+        """
+
+        return super(APIWorkflowStateView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """
+        Edit the selected workflow state.
+        """
+
+        return super(APIWorkflowStateView, self).put(*args, **kwargs)
+
+

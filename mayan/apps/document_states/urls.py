@@ -105,13 +105,12 @@ urlpatterns = patterns(
 
 api_urls = [
     url(
-        r'^states/$', APIWorkflowStateListView.as_view(),
-        name='workflowstate-list'
+        r'^workflows/(?P<pk>[0-9]+)/states/$',
+        APIWorkflowStateListView.as_view(), name='workflowstate-list'
     ),
     url(
-        r'^states/(?P<pk>[0-9]+)/$',
-        APIWorkflowStateView.as_view(),
-        name='workflowstate-detail'
+        r'^workflows/(?P<pk>[0-9]+)/states/(?P<state_pk>[0-9]+)/$',
+        APIWorkflowStateView.as_view(), name='workflowstate-detail'
     ),
     url(r'^workflows/$', APIWorkflowListView.as_view(), name='workflow-list'),
     url(
