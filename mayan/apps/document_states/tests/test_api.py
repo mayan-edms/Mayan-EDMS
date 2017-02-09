@@ -8,7 +8,6 @@ from django.utils.encoding import force_text
 from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
-from documents.permissions import permission_document_type_view
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
@@ -20,7 +19,10 @@ from ..models import Workflow
 
 from .literals import (
     TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
-    TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL
+    TEST_WORKFLOW_INITIAL_STATE_COMPLETION, TEST_WORKFLOW_INITIAL_STATE_LABEL,
+    TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL,
+    TEST_WORKFLOW_STATE_LABEL_EDITED, TEST_WORKFLOW_TRANSITION_LABEL,
+    TEST_WORKFLOW_TRANSITION_LABEL_EDITED
 )
 
 
@@ -99,7 +101,7 @@ class WorkflowAPITestCase(APITestCase):
     def test_workflow_document_type_create_view(self):
         workflow = self._create_workflow()
 
-        response = self.client.post(
+        self.client.post(
             reverse(
                 'rest_api:workflow-document-type-list',
                 args=(workflow.pk,)
@@ -114,7 +116,7 @@ class WorkflowAPITestCase(APITestCase):
         workflow = self._create_workflow()
         workflow.document_types.add(self.document_type)
 
-        response = self.client.delete(
+        self.client.delete(
             reverse(
                 'rest_api:workflow-document-type-detail',
                 args=(workflow.pk, self.document_type.pk)
@@ -147,8 +149,9 @@ class WorkflowAPITestCase(APITestCase):
         workflow.document_types.add(self.document_type)
 
         response = self.client.get(
-            reverse('rest_api:workflow-document-type-list',
-            args=(workflow.pk,))
+            reverse(
+                'rest_api:workflow-document-type-list', args=(workflow.pk,)
+            )
         )
 
         self.assertEqual(
@@ -165,7 +168,7 @@ class WorkflowAPITestCase(APITestCase):
     def test_workflow_put_view(self):
         workflow = self._create_workflow()
 
-        response = self.client.put(
+        self.client.put(
             reverse('rest_api:workflow-detail', args=(workflow.pk,)),
             data={'label': TEST_WORKFLOW_LABEL_EDITED}
         )
@@ -176,7 +179,7 @@ class WorkflowAPITestCase(APITestCase):
     def test_workflow_patch_view(self):
         workflow = self._create_workflow()
 
-        response = self.client.patch(
+        self.client.patch(
             reverse('rest_api:workflow-detail', args=(workflow.pk,)),
             data={'label': TEST_WORKFLOW_LABEL_EDITED}
         )
@@ -223,7 +226,7 @@ class WorkflowStatesAPITestCase(APITestCase):
     def test_workflow_state_create_view(self):
         self._create_workflow()
 
-        response = self.client.post(
+        self.client.post(
             reverse(
                 'rest_api:workflowstate-list', args=(self.workflow.pk,)
             ), data={
@@ -241,7 +244,7 @@ class WorkflowStatesAPITestCase(APITestCase):
     def test_workflow_state_delete_view(self):
         self._create_workflow_state()
 
-        response = self.client.delete(
+        self.client.delete(
             reverse(
                 'rest_api:workflowstate-detail',
                 args=(self.workflow.pk, self.workflow_state.pk)
@@ -275,4 +278,210 @@ class WorkflowStatesAPITestCase(APITestCase):
 
         self.assertEqual(
             response.data['results'][0]['label'], TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def test_workflow_state_patch_view(self):
+        self._create_workflow_state()
+
+        self.client.patch(
+            reverse(
+                'rest_api:workflowstate-detail',
+                args=(self.workflow.pk, self.workflow_state.pk)
+            ),
+            data={'label': TEST_WORKFLOW_STATE_LABEL_EDITED}
+        )
+
+        self.workflow_state.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow_state.label,
+            TEST_WORKFLOW_STATE_LABEL_EDITED
+        )
+
+    def test_workflow_state_put_view(self):
+        self._create_workflow_state()
+
+        self.client.put(
+            reverse(
+                'rest_api:workflowstate-detail',
+                args=(self.workflow.pk, self.workflow_state.pk)
+            ),
+            data={'label': TEST_WORKFLOW_STATE_LABEL_EDITED}
+        )
+
+        self.workflow_state.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow_state.label,
+            TEST_WORKFLOW_STATE_LABEL_EDITED
+        )
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class WorkflowTransitionsAPITestCase(APITestCase):
+    def setUp(self):
+        self.admin_user = get_user_model().objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+    def tearDown(self):
+        if hasattr(self, 'document_type'):
+            self.document_type.delete()
+
+    def _create_workflow(self):
+        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+
+    def _create_workflow_states(self):
+        self._create_workflow()
+        self.workflow_state_1 = self.workflow.states.create(
+            completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
+            label=TEST_WORKFLOW_INITIAL_STATE_LABEL
+        )
+        self.workflow_state_2 = self.workflow.states.create(
+            completion=TEST_WORKFLOW_STATE_COMPLETION,
+            label=TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def _create_workflow_transition(self):
+        self._create_workflow_states()
+        self.workflow_transition = self.workflow.transitions.create(
+            label=TEST_WORKFLOW_TRANSITION_LABEL,
+            origin_state=self.workflow_state_1,
+            destination_state=self.workflow_state_2,
+        )
+
+    def test_workflow_transition_create_view(self):
+        self._create_workflow_states()
+
+        self.client.post(
+            reverse(
+                'rest_api:workflowtransition-list', args=(self.workflow.pk,)
+            ), data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL,
+                'origin_state_pk': self.workflow_state_1.pk,
+                'destination_state_pk': self.workflow_state_2.pk,
+            }
+        )
+
+        self.workflow.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow.transitions.first().label,
+            TEST_WORKFLOW_TRANSITION_LABEL
+        )
+
+    def test_workflow_transition_delete_view(self):
+        self._create_workflow_transition()
+
+        self.client.delete(
+            reverse(
+                'rest_api:workflowtransition-detail',
+                args=(self.workflow.pk, self.workflow_transition.pk)
+            ),
+        )
+
+        self.workflow.refresh_from_db()
+
+        self.assertEqual(self.workflow.transitions.count(), 0)
+
+    def test_workflow_transition_detail_view(self):
+        self._create_workflow_transition()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowtransition-detail',
+                args=(self.workflow.pk, self.workflow_transition.pk)
+            ),
+        )
+
+        self.assertEqual(
+            response.data['label'], TEST_WORKFLOW_TRANSITION_LABEL
+        )
+
+    def test_workflow_transition_list_view(self):
+        self._create_workflow_transition()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowtransition-list', args=(self.workflow.pk,)
+            ),
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['label'],
+            TEST_WORKFLOW_TRANSITION_LABEL
+        )
+
+    def test_workflow_transition_patch_view(self):
+        self._create_workflow_transition()
+
+        self.client.patch(
+            reverse(
+                'rest_api:workflowtransition-detail',
+                args=(self.workflow.pk, self.workflow_transition.pk)
+            ),
+            data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
+                'origin_state_pk': self.workflow_state_2.pk,
+                'destination_state_pk': self.workflow_state_1.pk,
+            }
+        )
+
+        self.workflow_transition.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow_transition.label,
+            TEST_WORKFLOW_TRANSITION_LABEL_EDITED
+        )
+        self.assertEqual(
+            self.workflow_transition.origin_state,
+            self.workflow_state_2
+        )
+        self.assertEqual(
+            self.workflow_transition.destination_state,
+            self.workflow_state_1
+        )
+
+    def test_workflow_transition_put_view(self):
+        self._create_workflow_transition()
+
+        self.client.put(
+            reverse(
+                'rest_api:workflowtransition-detail',
+                args=(self.workflow.pk, self.workflow_transition.pk)
+            ),
+            data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
+                'origin_state_pk': self.workflow_state_2.pk,
+                'destination_state_pk': self.workflow_state_1.pk,
+            }
+        )
+
+        self.workflow_transition.refresh_from_db()
+
+        self.assertEqual(
+            self.workflow_transition.label,
+            TEST_WORKFLOW_TRANSITION_LABEL_EDITED
+        )
+        self.assertEqual(
+            self.workflow_transition.origin_state,
+            self.workflow_state_2
+        )
+        self.assertEqual(
+            self.workflow_transition.destination_state,
+            self.workflow_state_1
         )

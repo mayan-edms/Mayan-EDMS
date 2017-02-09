@@ -5,6 +5,7 @@ from django.conf.urls import patterns, url
 from .api_views import (
     APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
     APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowTransitionListView, APIWorkflowTransitionView,
     APIWorkflowView
 )
 from .views import (
@@ -104,14 +105,6 @@ urlpatterns = patterns(
 )
 
 api_urls = [
-    url(
-        r'^workflows/(?P<pk>[0-9]+)/states/$',
-        APIWorkflowStateListView.as_view(), name='workflowstate-list'
-    ),
-    url(
-        r'^workflows/(?P<pk>[0-9]+)/states/(?P<state_pk>[0-9]+)/$',
-        APIWorkflowStateView.as_view(), name='workflowstate-detail'
-    ),
     url(r'^workflows/$', APIWorkflowListView.as_view(), name='workflow-list'),
     url(
         r'^workflows/(?P<pk>[0-9]+)/$', APIWorkflowView.as_view(),
@@ -126,5 +119,21 @@ api_urls = [
         r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
         APIWorkflowDocumentTypeView.as_view(),
         name='workflow-document-type-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/states/$',
+        APIWorkflowStateListView.as_view(), name='workflowstate-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/states/(?P<state_pk>[0-9]+)/$',
+        APIWorkflowStateView.as_view(), name='workflowstate-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/transitions/$',
+        APIWorkflowTransitionListView.as_view(), name='workflowtransition-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<transition_pk>[0-9]+)/$',
+        APIWorkflowTransitionView.as_view(), name='workflowtransition-detail'
     ),
 ]
