@@ -114,7 +114,7 @@ api_urls = [
         name='workflow-document-type-list'
     ),
     url(
-        r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_pk>[0-9]+)/$',
+        r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
         APIWorkflowDocumentTypeView.as_view(),
         name='workflow-document-type-detail'
     ),

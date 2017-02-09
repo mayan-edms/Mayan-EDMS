@@ -108,7 +108,7 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
 
 class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
-    lookup_url_kwarg = 'document_pk'
+    lookup_url_kwarg = 'document_type_pk'
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
     }
@@ -177,8 +177,8 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         RESEARCH: Move this kind of methods to the serializer instead it that
         ability becomes available in Django REST framework
         """
-        print "DESTROY!"
-        self.get_workflow().documents.remove(instance)
+
+        self.get_workflow().document_types.remove(instance)
 
 
 class APIWorkflowListView(generics.ListCreateAPIView):

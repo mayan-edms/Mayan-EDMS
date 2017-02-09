@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.utils.encoding import force_text
 
 from rest_framework.test import APITestCase
 
@@ -92,6 +93,60 @@ class WorkflowAPITestCase(APITestCase):
 
         self.assertEqual(response.data['label'], workflow.label)
 
+    def test_workflow_document_type_create_view(self):
+        workflow = self._create_workflow()
+
+        response = self.client.post(
+            reverse(
+                'rest_api:workflow-document-type-list',
+                args=(workflow.pk,)
+            ), data={'document_type_pk': self.document_type.pk}
+        )
+
+        self.assertQuerysetEqual(
+            workflow.document_types.all(), (repr(self.document_type),)
+        )
+
+    def test_workflow_document_type_delete_view(self):
+        workflow = self._create_workflow()
+        workflow.document_types.add(self.document_type)
+
+        response = self.client.delete(
+            reverse(
+                'rest_api:workflow-document-type-detail',
+                args=(workflow.pk, self.document_type.pk)
+            )
+        )
+
+        workflow.refresh_from_db()
+        self.assertQuerysetEqual(workflow.document_types.all(), ())
+
+    def test_workflow_document_type_detail_view(self):
+        workflow = self._create_workflow()
+        workflow.document_types.add(self.document_type)
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflow-document-type-detail',
+                args=(workflow.pk, self.document_type.pk)
+            )
+        )
+
+        self.assertEqual(response.data['label'], self.document_type.label)
+
+    def test_workflow_document_type_list_view(self):
+        workflow = self._create_workflow()
+        workflow.document_types.add(self.document_type)
+
+        response = self.client.get(
+            reverse('rest_api:workflow-document-type-list',
+            args=(workflow.pk,))
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['label'], self.document_type.label
+        )
+
     def test_workflow_list_view(self):
         workflow = self._create_workflow()
 
@@ -120,4 +175,3 @@ class WorkflowAPITestCase(APITestCase):
 
         workflow.refresh_from_db()
         self.assertEqual(workflow.label, TEST_WORKFLOW_LABEL_EDITED)
-
