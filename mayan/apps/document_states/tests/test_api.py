@@ -120,6 +120,11 @@ class WorkflowAPITestCase(APITestCase):
 
         workflow.refresh_from_db()
         self.assertQuerysetEqual(workflow.document_types.all(), ())
+        # The workflow document type entry was deleted and not the document
+        # type itself.
+        self.assertQuerysetEqual(
+            DocumentType.objects.all(), (repr(self.document_type),)
+        )
 
     def test_workflow_document_type_detail_view(self):
         workflow = self._create_workflow()
@@ -175,3 +180,43 @@ class WorkflowAPITestCase(APITestCase):
 
         workflow.refresh_from_db()
         self.assertEqual(workflow.label, TEST_WORKFLOW_LABEL_EDITED)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class WorkflowStatesAPITestCase(APITestCase):
+    def setUp(self):
+        self.admin_user = get_user_model().objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+    def tearDown(self):
+        if hasattr(self, 'document_type'):
+            self.document_type.delete()
+
+    def _create_workflow(self):
+        return Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+
+    def test_workflow_create_view(self):
+        response = self.client.post(
+            reverse('rest_api:workflow-list'), {
+                'label': TEST_WORKFLOW_LABEL
+            }
+        )
+
+        workflow = Workflow.objects.first()
+        self.assertEqual(Workflow.objects.count(), 1)
+        self.assertEqual(response.data['id'], workflow.pk)

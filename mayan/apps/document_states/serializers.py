@@ -8,7 +8,7 @@ from rest_framework.reverse import reverse
 from documents.models import DocumentType
 from documents.serializers import DocumentTypeSerializer
 
-from .models import Workflow
+from .models import Workflow, WorkflowState
 
 
 class NewWorkflowDocumentTypeSerializer(serializers.Serializer):
@@ -48,17 +48,28 @@ class WorkflowDocumentTypeSerializer(DocumentTypeSerializer):
         )
 
 
+class WorkflowStateSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:workflowstate-detail'},
+            'workflow': {'view_name': 'rest_api:workflow-detail'},
+        }
+        fields = ('completion', 'id', 'initial', 'label', 'workflow', 'url')
+        model = WorkflowState
+
+
 class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
     document_types_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:workflow-document-type-list'
     )
+    states = WorkflowStateSerializer(many=True, required=False)
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:workflow-detail'},
         }
         fields = (
-            'document_types_url', 'get_initial_state', 'id', 'label', 'url'
+            'document_types_url', 'id', 'label', 'states', 'url'
         )
         model = Workflow
 

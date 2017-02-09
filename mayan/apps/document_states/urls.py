@@ -4,7 +4,8 @@ from django.conf.urls import patterns, url
 
 from .api_views import (
     APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
-    APIWorkflowListView, APIWorkflowView
+    APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowView
 )
 from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
@@ -103,6 +104,15 @@ urlpatterns = patterns(
 )
 
 api_urls = [
+    url(
+        r'^states/$', APIWorkflowStateListView.as_view(),
+        name='workflowstate-list'
+    ),
+    url(
+        r'^states/(?P<pk>[0-9]+)/$',
+        APIWorkflowStateView.as_view(),
+        name='workflowstate-detail'
+    ),
     url(r'^workflows/$', APIWorkflowListView.as_view(), name='workflow-list'),
     url(
         r'^workflows/(?P<pk>[0-9]+)/$', APIWorkflowView.as_view(),

@@ -12,14 +12,14 @@ from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .models import Workflow
+from .models import Workflow, WorkflowState
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_view
 )
 from .serializers import (
     NewWorkflowDocumentTypeSerializer, WorkflowDocumentTypeSerializer,
-    WorkflowSerializer, WritableWorkflowSerializer
+    WorkflowSerializer, WorkflowStateSerializer, WritableWorkflowSerializer
 )
 
 
@@ -86,15 +86,6 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
             )
 
         return workflow
-
-    #def perform_create(self, serializer):
-    #    """
-    #    RESEARCH: This is not needed if the serializer uses the context
-    #    dictionary instead. However is that an acceptable "proper" way
-    #    to do it?
-    #   """
-    #
-    #    serializer.save(workflow=self.get_workflow())
 
     def post(self, request, *args, **kwargs):
         """
@@ -252,3 +243,28 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIWorkflowView, self).put(*args, **kwargs)
+
+
+## Workflow state views
+
+
+class APIWorkflowStateListView(generics.ListCreateAPIView):
+    serializer_class = WorkflowStateSerializer
+    queryset = WorkflowState.objects.all()
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the workflow states.
+        """
+        return super(APIWorkflowStateListView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        """
+        Create a new workflow state.
+        """
+        return super(APIWorkflowStateListView, self).post(*args, **kwargs)
+
+
+class APIWorkflowStateView(generics.RetrieveAPIView):
+    queryset = WorkflowState.objects.all()
+    serializer_class = WorkflowStateSerializer
