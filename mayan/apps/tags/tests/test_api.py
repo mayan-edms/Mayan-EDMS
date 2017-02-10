@@ -41,6 +41,9 @@ class TagAPITestCase(APITestCase):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
 
+    def _create_tag(self):
+        return Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
     def _document_create(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -53,7 +56,7 @@ class TagAPITestCase(APITestCase):
 
         return document
 
-    def test_tag_create(self):
+    def test_tag_create_view(self):
         response = self.client.post(
             reverse('rest_api:tag-list'), {
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
@@ -69,7 +72,7 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
-    def test_tag_create_with_documents(self):
+    def test_tag_create_with_documents_view(self):
         response = self.client.post(
             reverse('rest_api:tag-list'), {
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
@@ -85,15 +88,15 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
-    def test_tag_delete(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+    def test_tag_delete_view(self):
+        tag = self._create_tag()
 
         self.client.delete(reverse('rest_api:tag-detail', args=(tag.pk,)))
 
         self.assertEqual(Tag.objects.count(), 0)
 
     def test_tag_document_list_view(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
         document = self._document_create()
         tag.documents.add(document)
 
@@ -106,7 +109,7 @@ class TagAPITestCase(APITestCase):
         )
 
     def test_tag_edit_via_patch(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
 
         self.client.patch(
             reverse('rest_api:tag-detail', args=(tag.pk,)),
@@ -116,13 +119,13 @@ class TagAPITestCase(APITestCase):
             }
         )
 
-        tag = Tag.objects.first()
+        tag.refresh_from_db()
 
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
     def test_tag_edit_via_put(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
 
         self.client.put(
             reverse('rest_api:tag-detail', args=(tag.pk,)),
@@ -132,13 +135,13 @@ class TagAPITestCase(APITestCase):
             }
         )
 
-        tag = Tag.objects.first()
+        tag.refresh_from_db()
 
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
     def test_document_attach_tag_view(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
         document = self._document_create()
 
         self.client.post(
@@ -148,7 +151,7 @@ class TagAPITestCase(APITestCase):
         self.assertQuerysetEqual(document.tags.all(), (repr(tag),))
 
     def test_document_tag_detail_view(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
         document = self._document_create()
         tag.documents.add(document)
 
@@ -159,7 +162,7 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(response.data['label'], tag.label)
 
     def test_document_tag_list_view(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
         document = self._document_create()
         tag.documents.add(document)
 
@@ -169,7 +172,7 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(response.data['results'][0]['label'], tag.label)
 
     def test_document_tag_remove_view(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = self._create_tag()
         document = self._document_create()
         tag.documents.add(document)
 
