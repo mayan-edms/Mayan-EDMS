@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
@@ -166,7 +167,18 @@ class WorkflowInstance(models.Model):
             return None
 
     def get_transition_choices(self):
-        return self.get_current_state().origin_transitions.all()
+        current_state = self.get_current_state()
+
+        if current_state:
+            return current_state.origin_transitions.all()
+        else:
+            """
+            This happens when a workflow has no initial state and a document
+            whose document type has this workflow is created. We return an
+            empty transition queryset.
+            """
+
+            return WorkflowTransition.objects.none()
 
     class Meta:
         unique_together = ('document', 'workflow')
@@ -195,3 +207,7 @@ class WorkflowInstanceLogEntry(models.Model):
     class Meta:
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
+
+    def clean(self):
+        if self.transition not in self.workflow_instance.get_transition_choices():
+            raise ValidationError(_('Not a valid transition choice.'))

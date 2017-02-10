@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
-from django.utils.encoding import force_text
 
 from rest_framework.test import APITestCase
 
@@ -20,9 +19,9 @@ from ..models import Workflow
 from .literals import (
     TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
     TEST_WORKFLOW_INITIAL_STATE_COMPLETION, TEST_WORKFLOW_INITIAL_STATE_LABEL,
-    TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL,
-    TEST_WORKFLOW_STATE_LABEL_EDITED, TEST_WORKFLOW_TRANSITION_LABEL,
-    TEST_WORKFLOW_TRANSITION_LABEL_EDITED
+    TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_STATE_COMPLETION,
+    TEST_WORKFLOW_STATE_LABEL, TEST_WORKFLOW_STATE_LABEL_EDITED,
+    TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED
 )
 
 
@@ -484,4 +483,131 @@ class WorkflowTransitionsAPITestCase(APITestCase):
         self.assertEqual(
             self.workflow_transition.destination_state,
             self.workflow_state_1
+        )
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentWorkflowsAPITestCase(APITestCase):
+    def setUp(self):
+        self.admin_user = get_user_model().objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+    def tearDown(self):
+        if hasattr(self, 'document_type'):
+            self.document_type.delete()
+
+    def _create_document(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+    def _create_workflow(self):
+        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow.document_types.add(self.document_type)
+
+    def _create_workflow_states(self):
+        self._create_workflow()
+        self.workflow_state_1 = self.workflow.states.create(
+            completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
+            initial=True, label=TEST_WORKFLOW_INITIAL_STATE_LABEL
+        )
+        self.workflow_state_2 = self.workflow.states.create(
+            completion=TEST_WORKFLOW_STATE_COMPLETION,
+            label=TEST_WORKFLOW_STATE_LABEL
+        )
+
+    def _create_workflow_transition(self):
+        self._create_workflow_states()
+        self.workflow_transition = self.workflow.transitions.create(
+            label=TEST_WORKFLOW_TRANSITION_LABEL,
+            origin_state=self.workflow_state_1,
+            destination_state=self.workflow_state_2,
+        )
+
+    def _create_workflow_instance_log_entry(self):
+        self.document.workflows.first().log_entries.create(
+            comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, transition=self.workflow_transition,
+            user=self.admin_user
+        )
+
+    def test_workflow_instance_detail_view(self):
+        self._create_workflow_transition()
+        self._create_document()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowinstance-detail', args=(
+                    self.document.pk, self.document.workflows.first().pk
+                )
+            ),
+        )
+
+        self.assertEqual(
+            response.data['workflow']['label'],
+            TEST_WORKFLOW_LABEL
+        )
+
+    def test_workflow_instance_list_view(self):
+        self._create_workflow_transition()
+        self._create_document()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowinstance-list', args=(self.document.pk,)
+            ),
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['workflow']['label'],
+            TEST_WORKFLOW_LABEL
+        )
+
+    def test_workflow_instance_log_entries_create_view(self):
+        self._create_workflow_transition()
+        self._create_document()
+
+        workflow_instance = self.document.workflows.first()
+
+        self.client.post(
+            reverse(
+                'rest_api:workflowinstancelogentry-list', args=(
+                    self.document.pk, workflow_instance.pk
+                ),
+            ), data={'transition_pk': self.workflow_transition.pk}
+        )
+
+        workflow_instance.refresh_from_db()
+
+        self.assertEqual(
+            workflow_instance.log_entries.first().transition.label,
+            TEST_WORKFLOW_TRANSITION_LABEL
+        )
+
+    def test_workflow_instance_log_entries_list_view(self):
+        self._create_workflow_transition()
+        self._create_document()
+        self._create_workflow_instance_log_entry()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:workflowinstancelogentry-list', args=(
+                    self.document.pk, self.document.workflows.first().pk
+                )
+            ),
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['transition']['label'],
+            TEST_WORKFLOW_TRANSITION_LABEL
         )

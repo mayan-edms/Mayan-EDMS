@@ -4,9 +4,10 @@ from django.conf.urls import patterns, url
 
 from .api_views import (
     APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
-    APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
-    APIWorkflowTransitionListView, APIWorkflowTransitionView,
-    APIWorkflowView
+    APIWorkflowInstanceListView, APIWorkflowInstanceView,
+    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
+    APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
 )
 from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
@@ -135,5 +136,18 @@ api_urls = [
     url(
         r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<transition_pk>[0-9]+)/$',
         APIWorkflowTransitionView.as_view(), name='workflowtransition-detail'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/$',
+        APIWorkflowInstanceListView.as_view(), name='workflowinstance-list'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/$',
+        APIWorkflowInstanceView.as_view(), name='workflowinstance-detail'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
+        APIWorkflowInstanceLogEntryListView.as_view(),
+        name='workflowinstancelogentry-list'
     ),
 ]

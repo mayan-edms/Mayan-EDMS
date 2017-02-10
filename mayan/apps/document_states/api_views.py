@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
 from acls.models import AccessControlList
+from documents.models import Document
 from documents.permissions import permission_document_type_view
 from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
@@ -14,12 +15,15 @@ from rest_api.permissions import MayanPermission
 from .models import Workflow
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_view
+    permission_workflow_edit, permission_workflow_transition,
+    permission_workflow_view
 )
 from .serializers import (
     NewWorkflowDocumentTypeSerializer, WorkflowDocumentTypeSerializer,
+    WorkflowInstanceSerializer, WorkflowInstanceLogEntrySerializer,
     WorkflowSerializer, WorkflowStateSerializer, WorkflowTransitionSerializer,
-    WritableWorkflowSerializer, WritableWorkflowTransitionSerializer
+    WritableWorkflowInstanceLogEntrySerializer, WritableWorkflowSerializer,
+    WritableWorkflowTransitionSerializer
 )
 
 
@@ -488,3 +492,122 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIWorkflowTransitionView, self).put(*args, **kwargs)
+
+
+# Document workflow views
+
+
+class APIWorkflowInstanceListView(generics.ListAPIView):
+    serializer_class = WorkflowInstanceSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the document workflows.
+        """
+        return super(APIWorkflowInstanceListView, self).get(*args, **kwargs)
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_workflow_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_workflow_view, self.request.user, document
+            )
+
+        return document
+
+    def get_queryset(self):
+        return self.get_document().workflows.all()
+
+
+class APIWorkflowInstanceView(generics.RetrieveAPIView):
+    lookup_url_kwarg = 'workflow_pk'
+    serializer_class = WorkflowInstanceSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Return the details of the selected document workflow.
+        """
+
+        return super(APIWorkflowInstanceView, self).get(*args, **kwargs)
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_workflow_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_workflow_view, self.request.user, document
+            )
+
+        return document
+
+    def get_queryset(self):
+        return self.get_document().workflows.all()
+
+
+class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the document workflows log entries.
+        """
+        return super(APIWorkflowInstanceLogEntryListView, self).get(
+            *args, **kwargs
+        )
+
+    def get_document(self):
+        if self.request.method == 'GET':
+            permission_required = permission_workflow_view
+        else:
+            permission_required = permission_workflow_transition
+
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_required,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_required, self.request.user, document
+            )
+
+        return document
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return WorkflowInstanceLogEntrySerializer
+        else:
+            return WritableWorkflowInstanceLogEntrySerializer
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'workflow_instance': self.get_workflow_instance(),
+            'view': self
+        }
+
+    def get_queryset(self):
+        return self.get_workflow_instance().log_entries.all()
+
+    def get_workflow_instance(self):
+        workflow = get_object_or_404(
+            self.get_document().workflows, pk=self.kwargs['workflow_pk']
+        )
+
+        return workflow
+
+    def post(self, *args, **kwargs):
+        """
+        Transition a document workflow by creating a new document workflow
+        log entry.
+        """
+        return super(APIWorkflowInstanceLogEntryListView, self).post(*args, **kwargs)

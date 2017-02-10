@@ -3,12 +3,17 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from documents.models import DocumentType
 from documents.serializers import DocumentTypeSerializer
+from user_management.serializers import UserSerializer
 
-from .models import Workflow, WorkflowState, WorkflowTransition
+from .models import (
+    Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
+    WorkflowTransition
+)
 
 
 class NewWorkflowDocumentTypeSerializer(serializers.Serializer):
@@ -182,6 +187,71 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
         model = Workflow
 
 
+class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
+    document_workflow_url = serializers.SerializerMethodField()
+    transition = WorkflowTransitionSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        fields = (
+            'comment', 'datetime', 'document_workflow_url', 'transition',
+            'user'
+        )
+        model = WorkflowInstanceLogEntry
+
+    def get_document_workflow_url(self, instance):
+        return reverse(
+            'rest_api:workflowinstance-detail', args=(
+                instance.workflow_instance.document.pk,
+                instance.workflow_instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+
+class WorkflowInstanceSerializer(serializers.ModelSerializer):
+    current_state = WorkflowStateSerializer(
+        read_only=True, source='get_current_state'
+    )
+    document_workflow_url = serializers.SerializerMethodField(
+        help_text=_(
+            'API URL pointing to a workflow in relation to the '
+            'document to which it is attached. This URL is different than '
+            'the canonical workflow URL.'
+        )
+    )
+    last_log_entry = WorkflowInstanceLogEntrySerializer(
+        read_only=True, source='get_last_log_entry'
+    )
+    log_entries_url = serializers.SerializerMethodField(
+        help_text=_('A link to the entire history of this workflow.')
+    )
+    transition_choices = WorkflowTransitionSerializer(
+        many=True, read_only=True, source='get_transition_choices'
+    )
+    workflow = WorkflowSerializer(read_only=True)
+
+    class Meta:
+        fields = (
+            'current_state', 'document_workflow_url', 'last_log_entry',
+            'log_entries_url', 'transition_choices', 'workflow',
+        )
+        model = WorkflowInstance
+
+    def get_document_workflow_url(self, instance):
+        return reverse(
+            'rest_api:workflowinstance-detail', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_log_entries_url(self, instance):
+        return reverse(
+            'rest_api:workflowinstancelogentry-list', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+
 class WritableWorkflowSerializer(serializers.ModelSerializer):
     document_types_pk_list = serializers.CharField(
         help_text=_(
@@ -240,3 +310,46 @@ class WritableWorkflowSerializer(serializers.ModelSerializer):
             )
 
         return instance
+
+
+class WritableWorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
+    document_workflow_url = serializers.SerializerMethodField()
+    transition_pk = serializers.IntegerField(
+        help_text=_('Primary key of the transition to be added.'),
+        write_only=True
+    )
+    transition = WorkflowTransitionSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        fields = (
+            'comment', 'datetime', 'document_workflow_url', 'transition',
+            'transition_pk', 'user'
+        )
+        model = WorkflowInstanceLogEntry
+
+    def create(self, validated_data):
+        validated_data['transition'] = WorkflowTransition.objects.get(
+            pk=validated_data.pop('transition_pk')
+        )
+        validated_data['user'] = self.context['request'].user
+        validated_data['workflow_instance'] = self.context['workflow_instance']
+
+        if validated_data['transition'] not in validated_data['workflow_instance'].get_transition_choices():
+            raise ValidationError(
+                {
+                    'transition_pk': _('Not a valid transition choice.')
+                }
+            )
+
+        return super(WritableWorkflowInstanceLogEntrySerializer, self).create(
+            validated_data
+        )
+
+    def get_document_workflow_url(self, instance):
+        return reverse(
+            'rest_api:workflowinstance-detail', args=(
+                instance.workflow_instance.document.pk,
+                instance.workflow_instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
