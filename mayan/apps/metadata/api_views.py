@@ -266,7 +266,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
                 document_type
             )
 
-        serializer = self.get_serializer(data=self.request.POST)
+        serializer = self.get_serializer(data=self.request.data)
 
         if serializer.is_valid():
             metadata_type = get_object_or_404(

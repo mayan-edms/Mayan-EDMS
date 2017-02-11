@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 
+from django.db import IntegrityError
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from .models import DocumentMetadata, MetadataType, DocumentTypeMetadataType
 
@@ -26,7 +28,7 @@ class DocumentMetadataSerializer(serializers.ModelSerializer):
 
 class DocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('metadata_type', )
+        fields = ('metadata_type',)
         model = DocumentTypeMetadataType
 
 
@@ -52,10 +54,15 @@ class DocumentNewMetadataSerializer(serializers.Serializer):
         metadata_type = MetadataType.objects.get(
             pk=validated_data['metadata_type_pk']
         )
-        instance = self.document.metadata.create(
-            metadata_type=metadata_type, value=validated_data['value']
-        )
-        return instance
+        try:
+            instance = self.document.metadata.create(
+                metadata_type=metadata_type, value=validated_data['value']
+            )
+            return instance
+        except IntegrityError:
+            detail = 'Metadata type with pk {} is already defined for Document with pk {}'.format(metadata_type.pk,
+                                                                                                  self.document.pk)
+            raise ValidationError(detail)
 
 
 class DocumentTypeNewMetadataTypeSerializer(serializers.Serializer):
