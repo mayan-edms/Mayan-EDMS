@@ -1,3 +1,16 @@
+2.1.8 (2017-02-12)
+==================
+- Fixes in the trashed document API endpoints.
+- Improved tags API PUT and PATCH endpoints.
+- Bulk document adding when creating and editing tags.
+- The version of django-mptt is preserved in case mayan-cabinets is installed.
+- Add Django GPG API endpoints for singing keys.
+- Add API endpoints for the document states (workflows) app.
+- Add API endpoints for the messsage of the day (MOTD) app.
+- Add Smart link API endpoints.
+- Add writable versions of the Document and Document Type serializers (GitLab issues #348 and #349).
+- Close GitLab issue #310 "Metadata's lookup with chinese messages when new document"
+
 2.1.7 (2017-02-01)
 ==================
 - Improved user management API endpoints.
