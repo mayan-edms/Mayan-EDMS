@@ -20,7 +20,7 @@ Changes
 - Add Django GPG API endpoints for singing keys.
 - Add API endpoints for the document states app.
 - Add API endpoints for the messsage of the day (MOTD) app.
-
+- Add Smart link API endpoints.
 
 Removals
 --------

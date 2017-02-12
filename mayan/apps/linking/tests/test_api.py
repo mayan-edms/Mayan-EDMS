@@ -163,6 +163,56 @@ class SmartLinkConditionAPITestCase(APITestCase):
             operator=TEST_SMART_LINK_CONDITION_OPERATOR
         )
 
+    def test_resolved_smart_link_detail_view(self):
+        self._create_document_type()
+        self._create_smart_link()
+        self._create_smart_link_condition()
+        self._create_document()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:resolvedsmartlink-detail',
+                args=(self.document.pk, self.smart_link.pk)
+            )
+        )
+
+        self.assertEqual(
+            response.data['label'], TEST_SMART_LINK_LABEL
+        )
+
+    def test_resolved_smart_link_list_view(self):
+        self._create_document_type()
+        self._create_smart_link()
+        self._create_smart_link_condition()
+        self._create_document()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:resolvedsmartlink-list', args=(self.document.pk,)
+            )
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['label'], TEST_SMART_LINK_LABEL
+        )
+
+    def test_resolved_smart_link_document_list_view(self):
+        self._create_document_type()
+        self._create_smart_link()
+        self._create_smart_link_condition()
+        self._create_document()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:resolvedsmartlinkdocument-list',
+                args=(self.document.pk, self.smart_link.pk)
+            )
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['label'], self.document.label
+        )
+
     def test_smart_link_condition_create_view(self):
         self._create_document_type()
         self._create_smart_link()

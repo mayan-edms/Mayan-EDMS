@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
 from acls.models import AccessControlList
+from documents.models import Document
+from documents.permissions import permission_document_view
 from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -15,7 +17,159 @@ from .permissions import (
     permission_smart_link_create, permission_smart_link_delete,
     permission_smart_link_edit, permission_smart_link_view
 )
-from .serializers import SmartLinkConditionSerializer, SmartLinkSerializer
+from .serializers import (
+    ResolvedSmartLinkDocumentSerializer, ResolvedSmartLinkSerializer,
+    SmartLinkConditionSerializer, SmartLinkSerializer,
+    WritableSmartLinkSerializer
+)
+
+
+class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': (permission_document_view,)}
+    permission_classes = (MayanPermission,)
+    serializer_class = ResolvedSmartLinkDocumentSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of the smart link documents that apply to the document.
+        """
+        return super(APIResolvedSmartLinkDocumentListView, self).get(
+            *args, **kwargs
+        )
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
+
+        return document
+
+    def get_smart_link(self):
+        smart_link = get_object_or_404(
+            SmartLink.objects.get_for(document=self.get_document()),
+            pk=self.kwargs['smart_link_pk']
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_smart_link_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_smart_link_view, self.request.user, smart_link
+            )
+
+        return smart_link
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'document': self.get_document(),
+            'format': self.format_kwarg,
+            'request': self.request,
+            'smart_link': self.get_smart_link(),
+            'view': self
+        }
+
+    def get_queryset(self):
+        return self.get_smart_link().get_linked_document_for(
+            document=self.get_document()
+        )
+
+
+class APIResolvedSmartLinkView(generics.RetrieveAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
+    lookup_url_kwarg = 'smart_link_pk'
+    mayan_object_permissions = {'GET': (permission_smart_link_view,)}
+    permission_classes = (MayanPermission,)
+    serializer_class = ResolvedSmartLinkSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Return the details of the selected resolved smart link.
+        """
+        return super(APIResolvedSmartLinkView, self).get(*args, **kwargs)
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
+
+        return document
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'document': self.get_document(),
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+    def get_queryset(self):
+        return SmartLink.objects.get_for(document=self.get_document())
+
+
+class APIResolvedSmartLinkListView(generics.ListAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': (permission_smart_link_view,)}
+    permission_classes = (MayanPermission,)
+    serializer_class = ResolvedSmartLinkSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of the smart links that apply to the document.
+        """
+        return super(APIResolvedSmartLinkListView, self).get(*args, **kwargs)
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
+
+        return document
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'document': self.get_document(),
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+    def get_queryset(self):
+        return SmartLink.objects.filter(
+            document_types=self.get_document().document_type
+        )
 
 
 class APISmartLinkConditionListView(generics.ListCreateAPIView):
@@ -139,7 +293,6 @@ class APISmartLinkListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_smart_link_create,)}
     permission_classes = (MayanPermission,)
     queryset = SmartLink.objects.all()
-    serializer_class = SmartLinkSerializer
 
     def get(self, *args, **kwargs):
         """
@@ -147,6 +300,12 @@ class APISmartLinkListView(generics.ListCreateAPIView):
         """
 
         return super(APISmartLinkListView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return SmartLinkSerializer
+        else:
+            return WritableSmartLinkSerializer
 
     def post(self, *args, **kwargs):
         """
@@ -165,7 +324,6 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_smart_link_edit,)
     }
     queryset = SmartLink.objects.all()
-    serializer_class = SmartLinkSerializer
 
     def delete(self, *args, **kwargs):
         """
@@ -180,6 +338,12 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APISmartLinkView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return SmartLinkSerializer
+        else:
+            return WritableSmartLinkSerializer
 
     def patch(self, *args, **kwargs):
         """
