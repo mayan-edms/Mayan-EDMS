@@ -31,7 +31,9 @@ from .serializers import (
     DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
     DocumentVersionRevertSerializer, NewDocumentSerializer,
-    NewDocumentVersionSerializer, RecentDocumentSerializer
+    NewDocumentVersionSerializer, RecentDocumentSerializer,
+    WritableDocumentSerializer, WritableDocumentTypeSerializer,
+    WritableDocumentVersionSerializer
 )
 
 logger = logging.getLogger(__name__)
@@ -190,7 +192,6 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
     }
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
-    serializer_class = DocumentSerializer
 
     def delete(self, *args, **kwargs):
         """
@@ -205,6 +206,12 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIDocumentView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentSerializer
+        else:
+            return WritableDocumentSerializer
 
     def patch(self, *args, **kwargs):
         """
@@ -289,6 +296,12 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
 
         return super(APIDocumentTypeListView, self).get(*args, **kwargs)
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentTypeSerializer
+        else:
+            return WritableDocumentTypeSerializer
+
     def post(self, *args, **kwargs):
         """
         Create a new document type.
@@ -310,7 +323,6 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
     }
     permission_classes = (MayanPermission,)
     queryset = DocumentType.objects.all()
-    serializer_class = DocumentTypeSerializer
 
     def delete(self, *args, **kwargs):
         """
@@ -325,6 +337,12 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIDocumentTypeView, self).get(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentTypeSerializer
+        else:
+            return WritableDocumentTypeSerializer
 
     def patch(self, *args, **kwargs):
         """
@@ -436,7 +454,12 @@ class APIDocumentVersionView(generics.RetrieveUpdateAPIView):
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
     queryset = DocumentVersion.objects.all()
-    serializer_class = DocumentVersionSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentVersionSerializer
+        else:
+            return WritableDocumentVersionSerializer
 
     def patch(self, *args, **kwargs):
         """

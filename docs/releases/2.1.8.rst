@@ -21,6 +21,7 @@ Changes
 - Add API endpoints for the document states app.
 - Add API endpoints for the messsage of the day (MOTD) app.
 - Add Smart link API endpoints.
+- Add writable versions of the Document and Document Type serializers (GitLab issues #348 and #349).
 
 Removals
 --------
@@ -75,6 +76,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* None
+* `GitLab issue #348 <https://gitlab.com/mayan-edms/mayan-edms/issues/348>`_ REST API: Document version comments are not getting updated
+* `GitLab issue #349 <https://gitlab.com/mayan-edms/mayan-edms/issues/349>`_ REST API: Document Label, Description are not able to update
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

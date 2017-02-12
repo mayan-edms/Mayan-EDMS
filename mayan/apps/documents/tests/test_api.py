@@ -49,12 +49,13 @@ class DocumentTypeAPITestCase(APITestCase):
     def test_document_type_create(self):
         self.assertEqual(DocumentType.objects.all().count(), 0)
 
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:documenttype-list'), data={
                 'label': TEST_DOCUMENT_TYPE
             }
         )
 
+        self.assertEqual(response.status_code, 201)
         self.assertEqual(DocumentType.objects.all().count(), 1)
         self.assertEqual(
             DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE
