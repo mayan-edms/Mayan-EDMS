@@ -1,3 +1,8 @@
+2.1.10 (2017-02-13)
+==================
+- Update Makefile to use twine for releases.
+- Add Makefile target to make test releases.
+
 2.1.9 (2017-02-13)
 ==================
 - Update make file to Workaround long standing pypa wheel bug #99
