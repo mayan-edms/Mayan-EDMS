@@ -87,8 +87,8 @@ requirements_testing:
 
 # Releases
 
-release: clean
-	python setup.py sdist bdist_wheel upload
+release: clean wheel
+	python setup.py upload
 
 sdist: clean
 	python setup.py sdist
