@@ -94,8 +94,8 @@ sdist: clean
 	python setup.py sdist
 	ls -l dist
 
-wheel: clean
-	python setup.py bdist_wheel
+wheel: clean sdist
+	pip wheel --no-index --no-deps --wheel-dir dist dist/*.tar.gz
 	ls -l dist
 
 
