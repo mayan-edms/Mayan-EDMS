@@ -63,20 +63,14 @@ Step 3- Open a browser and go to http://localhost
 
 <h2 align="center">Important links</h2>
 
-<a href="http://www.mayan-edms.com">Homepage</a>
 
-<a href="https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw">Videos</a>
+- [Homepage](http://www.mayan-edms.com)
+- [Videos](https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw)
+- [Documentation](http://mayan.readthedocs.io/en/stable/)
+- [Paid support](http://www.mayan-edms.com/providers/)
+- [Community forum](https://groups.google.com/forum/#!forum/mayan-edms)
+- [Community forum archive](http://mayan-edms.1003.x6.nabble.com/)
+- [Source code, issues, bugs](https://gitlab.com/mayan-edms/mayan-edms)
+- [Plug-ins, other related projects](https://gitlab.com/mayan-edms/)
+- [Translations](https://www.transifex.com/rosarior/mayan-edms/)
 
-<a href="http://mayan.readthedocs.io/en/stable/">Documentation</a>
-
-<a href="http://www.mayan-edms.com/providers/">Paid support</a>
-
-<a href="https://groups.google.com/forum/#!forum/mayan-edms">Community forum</a>
-
-<a href="http://mayan-edms.1003.x6.nabble.com/">Community forum archive</a>
-
-<a href="https://gitlab.com/mayan-edms/mayan-edms">Source code, issues, bugs</a>
-
-<a href="https://gitlab.com/mayan-edms/">Plug-ins, other related projects</a>
-
-<a href="https://www.transifex.com/rosarior/mayan-edms/">Translations</a>
