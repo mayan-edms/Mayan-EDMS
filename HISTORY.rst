@@ -1,3 +1,7 @@
+2.1.9 (2017-02-13)
+==================
+- Update make file to Workaround long standing pypa wheel bug #99
+
 2.1.8 (2017-02-12)
 ==================
 - Fixes in the trashed document API endpoints.
