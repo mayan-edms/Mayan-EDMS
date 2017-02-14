@@ -10,7 +10,6 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.encoding import force_text
-from django.utils.six import BytesIO
 
 from django_downloadview import assert_download_response
 from rest_framework import status
@@ -201,17 +200,18 @@ class DocumentAPITestCase(APITestCase):
 
         self.assertEqual(document.versions.count(), 2)
 
-        document_version = document.versions.first()
+        last_version = document.versions.last()
 
-        self.client.post(
+        self.client.delete(
             reverse(
-                'rest_api:documentversion-revert', args=(document_version.pk,)
+                'rest_api:documentversion-detail',
+                args=(document.pk, last_version.pk,)
             )
         )
 
         self.assertEqual(document.versions.count(), 1)
 
-        self.assertEqual(document_version, document.latest_version)
+        self.assertEqual(document.versions.first(), document.latest_version)
 
     def test_document_download(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -242,7 +242,7 @@ class DocumentAPITestCase(APITestCase):
         response = self.client.get(
             reverse(
                 'rest_api:documentversion-download',
-                args=(latest_version.pk,)
+                args=(document.pk, latest_version.pk,)
             )
         )
 
@@ -260,7 +260,7 @@ class DocumentAPITestCase(APITestCase):
         response = self.client.patch(
             reverse(
                 'rest_api:documentversion-detail',
-                args=(self.document.latest_version.pk,)
+                args=(self.document.pk, self.document.latest_version.pk,)
             ), data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
@@ -277,7 +277,7 @@ class DocumentAPITestCase(APITestCase):
         response = self.client.put(
             reverse(
                 'rest_api:documentversion-detail',
-                args=(self.document.latest_version.pk,)
+                args=(self.document.pk, self.document.latest_version.pk,)
             ), data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
@@ -313,7 +313,6 @@ class DocumentAPITestCase(APITestCase):
                 args=(self.document.pk,)
             ), data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
-
         self.assertEqual(response.status_code, 200)
         self.document.refresh_from_db()
         self.assertEqual(

@@ -7,6 +7,36 @@ Released: XX, 2017
 What's new
 ==========
 
+API changes
+-----------
+Document API URLs updated to use the resource/sub resource paradigm.
+Before:
+
+/api/documents/document_version<pk>
+/api/documents/document_pages<pk>
+
+After:
+/api/documents/<pk>/version/<version_pk>
+/api/documents/<pk>/version/<version_pk>/pages/<page_pk>
+
+Fields that reference a resource by URL now have the suffix '_url' to differentiate
+then from fields include the resource.
+
+Before:
+
+'document': '/api/documents/10'
+
+After:
+
+'document_url': '/api/documents/10'
+
+Removal of the document version revert API endpoint. To revert a document to a
+previous version using the API, use the DELETE verb to delete the most recent
+document version to be discarded.
+
+Pages data is no longer included as part of the version data. Instead a link to
+the document version's pages has been added by the name 'pages_url'. This
+resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------

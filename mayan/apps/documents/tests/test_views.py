@@ -84,7 +84,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
     def test_document_list_view_with_permissions(self):
         self.grant(permission=permission_document_view)
         response = self.get('documents:document_list')
-        self.assertContains(response, 'Total: 1', status_code=200)
+        self.assertContains(response, self.document.label, status_code=200)
 
     def _edit_document_type(self, document_type):
         return self.post(

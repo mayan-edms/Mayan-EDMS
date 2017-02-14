@@ -102,7 +102,9 @@ class InstanceImageWidget(object):
     # Click view
     def get_click_view_kwargs(self, instance):
         return {
-            'pk': instance.pk
+            'pk': instance.document.pk,
+            'version_pk': instance.document_version.pk,
+            'page_pk': instance.pk
         }
 
     def get_click_view_query_dict(self, instance):
@@ -141,7 +143,9 @@ class InstanceImageWidget(object):
     # Preview view
     def get_preview_view_kwargs(self, instance):
         return {
-            'pk': instance.pk
+            'pk': instance.document.pk,
+            'version_pk': instance.document_version.pk,
+            'page_pk': instance.pk
         }
 
     def get_preview_view_query_dict(self, instance):
@@ -255,12 +259,16 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_click_view_kwargs(self, instance):
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.latest_version.pages.first().pk
         }
 
     def get_preview_view_kwargs(self, instance):
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.latest_version.pages.first().pk
         }
 
     def get_title(self, instance):

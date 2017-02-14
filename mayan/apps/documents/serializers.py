@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from rest_framework import serializers
+from rest_framework.reverse import reverse
 
 from common.models import SharedUploadedFile
 
@@ -12,18 +13,36 @@ from .tasks import task_upload_new_version
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
-    image = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:documentpage-image'
-    )
+    document_version_url = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     class Meta:
-        extra_kwargs = {
-            'url': {'view_name': 'rest_api:documentpage-detail'},
-            'document_version': {
-                'view_name': 'rest_api:documentversion-detail'
-            }
-        }
+        fields = ('document_version_url', 'image_url', 'page_number', 'url')
         model = DocumentPage
+
+    def get_document_version_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-detail', args=(
+                instance.document.pk, instance.document_version.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_image_url(self, instance):
+        return reverse(
+            'rest_api:documentpage-image', args=(
+                instance.document.pk, instance.document_version.pk,
+                instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_url(self, instance):
+        return reverse(
+            'rest_api:documentpage-detail', args=(
+                instance.document.pk, instance.document_version.pk,
+                instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -69,44 +88,96 @@ class WritableDocumentTypeSerializer(serializers.ModelSerializer):
 
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
-    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
-    revert = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:documentversion-revert'
-    )
+    document_url = serializers.SerializerMethodField()
+    download_url = serializers.SerializerMethodField()
+    pages_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
             'document': {'view_name': 'rest_api:document-detail'},
             'file': {'use_url': False},
-            'url': {'view_name': 'rest_api:documentversion-detail'},
         }
+        fields = (
+            'checksum', 'comment', 'document_url', 'download_url', 'encoding',
+            'file', 'mimetype', 'pages_url', 'timestamp', 'url'
+        )
         model = DocumentVersion
         read_only_fields = ('document', 'file')
 
+    def get_document_url(self, instance):
+        return reverse(
+            'rest_api:document-detail', args=(
+                instance.document.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_download_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-download', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_pages_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-page-list', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-detail', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
 
 class WritableDocumentVersionSerializer(serializers.ModelSerializer):
-    document = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:document-detail'
-    )
-    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
-    revert = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:documentversion-revert'
-    )
-    url = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:documentversion-detail'
-    )
+    document_url = serializers.SerializerMethodField()
+    download_url = serializers.SerializerMethodField()
+    pages_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
             'file': {'use_url': False},
         }
+        fields = (
+            'checksum', 'comment', 'document_url', 'download_url', 'encoding',
+            'file', 'mimetype', 'pages_url', 'timestamp', 'url'
+        )
         model = DocumentVersion
         read_only_fields = ('document', 'file')
 
+    def get_document_url(self, instance):
+        return reverse(
+            'rest_api:document-detail', args=(
+                instance.document.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
 
-class DocumentVersionRevertSerializer(DocumentVersionSerializer):
-    class Meta(DocumentVersionSerializer.Meta):
-        read_only_fields = ('comment', 'document',)
+    def get_download_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-download', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_pages_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-page-list', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
+
+    def get_url(self, instance):
+        return reverse(
+            'rest_api:documentversion-detail', args=(
+                instance.document.pk, instance.pk,
+            ), request=self.context['request'], format=self.context['format']
+        )
 
 
 class NewDocumentVersionSerializer(serializers.Serializer):
@@ -152,9 +223,9 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type_label = serializers.SerializerMethodField()
+    document_type = DocumentTypeSerializer()
     latest_version = DocumentVersionSerializer(many=False, read_only=True)
-    versions = serializers.HyperlinkedIdentityField(
+    versions_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:document-version-list',
     )
 
@@ -164,19 +235,15 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:document-detail'}
         }
         fields = (
-            'date_added', 'description', 'document_type',
-            'document_type_label', 'id', 'label', 'language',
-            'latest_version', 'url', 'uuid', 'versions',
+            'date_added', 'description', 'document_type', 'id', 'label',
+            'language', 'latest_version', 'url', 'uuid', 'versions_url',
         )
         model = Document
         read_only_fields = ('document_type',)
 
-    def get_document_type_label(self, instance):
-        return instance.document_type.label
-
 
 class WritableDocumentSerializer(serializers.ModelSerializer):
-    document_type_label = serializers.SerializerMethodField()
+    document_type = DocumentTypeSerializer(read_only=True)
     latest_version = DocumentVersionSerializer(many=False, read_only=True)
     versions = serializers.HyperlinkedIdentityField(
         view_name='rest_api:document-version-list',
@@ -187,15 +254,11 @@ class WritableDocumentSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'date_added', 'description', 'document_type',
-            'document_type_label', 'id', 'label', 'language',
-            'latest_version', 'url', 'uuid', 'versions',
+            'date_added', 'description', 'document_type', 'id', 'label',
+            'language', 'latest_version', 'url', 'uuid', 'versions',
         )
         model = Document
         read_only_fields = ('document_type',)
-
-    def get_document_type_label(self, instance):
-        return instance.document_type.label
 
 
 class NewDocumentSerializer(serializers.ModelSerializer):
