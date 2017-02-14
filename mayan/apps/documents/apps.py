@@ -105,6 +105,42 @@ class DocumentsApp(MayanAppConfig):
             serializer_class='documents.serializers.DocumentSerializer'
         )
 
+        DashboardWidget(
+            func=new_document_pages_this_month, icon='fa fa-calendar',
+            label=_('New pages this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-document-pages-per-month',)
+            )
+        )
+
+        DashboardWidget(
+            func=new_documents_this_month, icon='fa fa-calendar',
+            label=_('New documents this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-documents-per-month',)
+            )
+        )
+
+        DashboardWidget(
+            icon='fa fa-file', queryset=Document.objects.all(),
+            label=_('Total documents'),
+            link=reverse_lazy('documents:document_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-book', queryset=DocumentType.objects.all(),
+            label=_('Document types'),
+            link=reverse_lazy('documents:document_type_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-trash', queryset=DeletedDocument.objects.all(),
+            label=_('Documents in trash'),
+            link=reverse_lazy('documents:document_list_deleted')
+        )
+
         MissingItem(
             label=_('Create a document type'),
             description=_(
