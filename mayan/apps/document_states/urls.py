@@ -2,6 +2,13 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
+from .api_views import (
+    APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
+    APIWorkflowInstanceListView, APIWorkflowInstanceView,
+    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
+    APIWorkflowStateListView, APIWorkflowStateView,
+    APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
+)
 from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
     SetupWorkflowDeleteView, SetupWorkflowDocumentTypesView,
@@ -94,5 +101,52 @@ urlpatterns = [
         r'^setup/workflow/transitions/(?P<pk>\d+)/edit/$',
         SetupWorkflowTransitionEditView.as_view(),
         name='setup_workflow_transition_edit'
+    ),
+]
+
+api_urls = [
+    url(r'^workflows/$', APIWorkflowListView.as_view(), name='workflow-list'),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/$', APIWorkflowView.as_view(),
+        name='workflow-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/document_types/$',
+        APIWorkflowDocumentTypeList.as_view(),
+        name='workflow-document-type-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
+        APIWorkflowDocumentTypeView.as_view(),
+        name='workflow-document-type-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/states/$',
+        APIWorkflowStateListView.as_view(), name='workflowstate-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/states/(?P<state_pk>[0-9]+)/$',
+        APIWorkflowStateView.as_view(), name='workflowstate-detail'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/transitions/$',
+        APIWorkflowTransitionListView.as_view(), name='workflowtransition-list'
+    ),
+    url(
+        r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<transition_pk>[0-9]+)/$',
+        APIWorkflowTransitionView.as_view(), name='workflowtransition-detail'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/$',
+        APIWorkflowInstanceListView.as_view(), name='workflowinstance-list'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/$',
+        APIWorkflowInstanceView.as_view(), name='workflowinstance-detail'
+    ),
+    url(
+        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
+        APIWorkflowInstanceLogEntryListView.as_view(),
+        name='workflowinstancelogentry-list'
     ),
 ]

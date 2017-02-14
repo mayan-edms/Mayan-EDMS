@@ -72,7 +72,7 @@ django-filetransfers==0.1.0
 django-formtools==1.0
 django-pure-pagination==0.3.0
 django-model-utils==2.4
-django-mptt==0.8.0
+django-mptt>=0.8.0
 django-qsstats-magic==0.7.2
 django-rest-swagger==0.3.4
 django-stronghold==0.2.7
@@ -91,8 +91,13 @@ pytz==2015.4
 sh==1.11
 """.split()
 
-with open('README.rst') as f:
-    readme = f.read()
+try:
+    import pypandoc
+    readme = pypandoc.convert_file('README.md', 'rst')
+except (IOError, ImportError):
+    with open('README.md') as f:
+        readme = f.read()
+
 with open('HISTORY.rst') as f:
     history = f.read()
 

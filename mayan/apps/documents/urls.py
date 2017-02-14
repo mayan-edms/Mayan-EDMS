@@ -297,7 +297,8 @@ api_urls = [
     ),
     url(
         r'^document_version/(?P<pk>[0-9]+)/download/$',
-        APIDocumentVersionDownloadView.as_view(), name='documentversion-download'
+        APIDocumentVersionDownloadView.as_view(),
+        name='documentversion-download'
     ),
     url(
         r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(),

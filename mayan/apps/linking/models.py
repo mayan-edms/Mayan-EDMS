@@ -11,6 +11,7 @@ from documents.models import Document, DocumentType
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
 )
+from .managers import SmartLinkManager
 
 
 @python_2_unicode_compatible
@@ -28,6 +29,8 @@ class SmartLink(models.Model):
     document_types = models.ManyToManyField(
         DocumentType, verbose_name=_('Document types')
     )
+
+    objects = SmartLinkManager()
 
     def __str__(self):
         return self.label
