@@ -6,7 +6,8 @@ from common.models import SharedUploadedFile
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
-    Document, DocumentVersion, DocumentPage, DocumentType, RecentDocument
+    Document, DocumentVersion, DocumentPage, DocumentType,
+    DocumentTypeFilename, RecentDocument
 )
 from .settings import setting_language
 from .tasks import task_get_document_page_image, task_upload_new_version
@@ -45,11 +46,18 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
         model = DocumentPage
 
 
+class DocumentTypeFilenameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DocumentTypeFilename
+        fields = ('filename',)
+
+
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
     documents_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:documenttype-document-list',
     )
     documents_count = serializers.SerializerMethodField()
+    filenames = DocumentTypeFilenameSerializer(many=True, read_only=True)
 
     class Meta:
         extra_kwargs = {
@@ -57,7 +65,7 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'delete_time_period', 'delete_time_unit', 'documents_url',
-            'documents_count', 'id', 'label', 'trash_time_period',
+            'documents_count', 'id', 'label', 'filenames', 'trash_time_period',
             'trash_time_unit', 'url'
         )
         model = DocumentType
