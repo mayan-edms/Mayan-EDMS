@@ -68,6 +68,8 @@ Step 3- Open a browser and go to http://localhost
 - [Videos](https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw)
 - [Documentation](http://mayan.readthedocs.io/en/stable/)
 - [Paid support](http://www.mayan-edms.com/providers/)
+- [Roadmap](https://gitlab.com/mayan-edms/mayan-edms/wikis/roadmap)
+- [Contributing](https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md)
 - [Community forum](https://groups.google.com/forum/#!forum/mayan-edms)
 - [Community forum archive](http://mayan-edms.1003.x6.nabble.com/)
 - [Source code, issues, bugs](https://gitlab.com/mayan-edms/mayan-edms)
