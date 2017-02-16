@@ -186,6 +186,19 @@ class WorkflowAPITestCase(APITestCase):
         workflow.refresh_from_db()
         self.assertEqual(workflow.label, TEST_WORKFLOW_LABEL_EDITED)
 
+    def test_document_type_workflow_list(self):
+        workflow = self._create_workflow()
+        workflow.document_types.add(self.document_type)
+
+        response = self.client.get(
+            reverse(
+                'rest_api:documenttype-workflow-list',
+                args=(self.document_type.pk,)
+            ),
+        )
+
+        self.assertEqual(response.data['results'][0]['label'], workflow.label)
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class WorkflowStatesAPITestCase(APITestCase):
