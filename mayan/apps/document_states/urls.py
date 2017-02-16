@@ -3,10 +3,10 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import (
-    APIWorkflowDocumentTypeList, APIWorkflowDocumentTypeView,
-    APIWorkflowInstanceListView, APIWorkflowInstanceView,
-    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
-    APIWorkflowStateListView, APIWorkflowStateView,
+    APIDocumentTypeWorkflowListView, APIWorkflowDocumentTypeList,
+    APIWorkflowDocumentTypeView, APIWorkflowInstanceListView,
+    APIWorkflowInstanceView, APIWorkflowInstanceLogEntryListView,
+    APIWorkflowListView, APIWorkflowStateListView, APIWorkflowStateView,
     APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
 )
 from .views import (
@@ -149,5 +149,10 @@ api_urls = [
         r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
         APIWorkflowInstanceLogEntryListView.as_view(),
         name='workflowinstancelogentry-list'
+    ),
+    url(
+        r'^document_type/(?P<pk>[0-9]+)/workflows/$',
+        APIDocumentTypeWorkflowListView.as_view(),
+        name='documenttype-workflow-list'
     ),
 ]
