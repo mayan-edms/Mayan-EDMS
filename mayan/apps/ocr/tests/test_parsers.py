@@ -63,6 +63,7 @@ class TextExtractorTestCase(BaseTestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(TextExtractorTestCase, self).tearDown()
 
     def test_text_extractor(self):
         TextExtractor.process_document_version(
