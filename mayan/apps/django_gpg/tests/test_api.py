@@ -4,8 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -16,8 +15,9 @@ from .literals import TEST_KEY_DATA, TEST_KEY_FINGERPRINT
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class KeyAPITestCase(APITestCase):
+class KeyAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(KeyAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD

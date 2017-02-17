@@ -13,8 +13,8 @@ from django.utils.encoding import force_text
 
 from django_downloadview import assert_download_response
 from rest_framework import status
-from rest_framework.test import APITestCase
 
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -28,12 +28,9 @@ from .literals import (
 from ..models import Document, DocumentType
 
 
-class DocumentTypeAPITestCase(APITestCase):
-    """
-    Test the document type API endpoints
-    """
-
+class DocumentTypeAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(DocumentTypeAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -45,6 +42,7 @@ class DocumentTypeAPITestCase(APITestCase):
 
     def tearDown(self):
         self.admin_user.delete()
+        super(DocumentTypeAPITestCase, self).tearDown()
 
     def test_document_type_create(self):
         self.assertEqual(DocumentType.objects.all().count(), 0)
@@ -94,8 +92,9 @@ class DocumentTypeAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentAPITestCase(APITestCase):
+class DocumentAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(DocumentAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -112,6 +111,7 @@ class DocumentAPITestCase(APITestCase):
     def tearDown(self):
         self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentAPITestCase, self).tearDown()
 
     def _upload_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -322,8 +322,9 @@ class DocumentAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TrashedDocumentAPITestCase(APITestCase):
+class TrashedDocumentAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(TrashedDocumentAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -340,6 +341,7 @@ class TrashedDocumentAPITestCase(APITestCase):
     def tearDown(self):
         self.admin_user.delete()
         self.document_type.delete()
+        super(TrashedDocumentAPITestCase, self).tearDown()
 
     def _upload_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:

@@ -4,10 +4,9 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -21,8 +20,10 @@ from .literals import (
 )
 
 
-class MetadataTypeAPITestCase(APITestCase):
+class MetadataTypeAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(MetadataTypeAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -125,8 +126,10 @@ class MetadataTypeAPITestCase(APITestCase):
         )
 
 
-class DocumentTypeMetadataTypeAPITestCase(APITestCase):
+class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -147,6 +150,7 @@ class DocumentTypeMetadataTypeAPITestCase(APITestCase):
     def tearDown(self):
         self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentTypeMetadataTypeAPITestCase, self).tearDown()
 
     def test_document_type_metadata_type_optional_create(self):
         response = self.client.post(
@@ -205,9 +209,11 @@ class DocumentTypeMetadataTypeAPITestCase(APITestCase):
         self.assertEqual(self.document_type.metadata.all().count(), 0)
 
 
-class DocumentMetadataAPITestCase(APITestCase):
+class DocumentMetadataAPITestCase(BaseAPITestCase):
     @override_settings(OCR_AUTO_OCR=False)
     def setUp(self):
+        super(DocumentMetadataAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -237,6 +243,7 @@ class DocumentMetadataAPITestCase(APITestCase):
     def tearDown(self):
         self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentMetadataAPITestCase, self).tearDown()
 
     def test_document_metadata_create(self):
         response = self.client.post(

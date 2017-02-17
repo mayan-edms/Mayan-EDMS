@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 
-from rest_framework.test import APITestCase
+from rest_api.tests import BaseAPITestCase
 
 from ..tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
@@ -16,12 +16,10 @@ from .literals import (
 )
 
 
-class UserManagementUserAPITestCase(APITestCase):
-    """
-    Test the user API endpoints
-    """
-
+class UserManagementUserAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(UserManagementUserAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -33,6 +31,7 @@ class UserManagementUserAPITestCase(APITestCase):
 
     def tearDown(self):
         get_user_model().objects.all().delete()
+        super(UserManagementUserAPITestCase, self).tearDown()
 
     def test_user_create(self):
         response = self.client.post(
@@ -249,12 +248,9 @@ class UserManagementUserAPITestCase(APITestCase):
         self.assertEqual(group.user_set.first(), user)
 
 
-class UserManagementGroupAPITestCase(APITestCase):
-    """
-    Test the groups API endpoints
-    """
-
+class UserManagementGroupAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(UserManagementGroupAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -266,6 +262,7 @@ class UserManagementGroupAPITestCase(APITestCase):
 
     def tearDown(self):
         get_user_model().objects.all().delete()
+        super(UserManagementGroupAPITestCase, self).tearDown()
 
     def test_group_create(self):
         response = self.client.post(

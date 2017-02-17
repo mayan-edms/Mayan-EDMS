@@ -4,12 +4,11 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -26,8 +25,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class WorkflowAPITestCase(APITestCase):
+class WorkflowAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(WorkflowAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -49,6 +49,7 @@ class WorkflowAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(WorkflowAPITestCase, self).tearDown()
 
     def _create_workflow(self):
         return Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
@@ -188,8 +189,10 @@ class WorkflowAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class WorkflowStatesAPITestCase(APITestCase):
+class WorkflowStatesAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(WorkflowStatesAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -211,6 +214,7 @@ class WorkflowStatesAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(WorkflowStatesAPITestCase, self).tearDown()
 
     def _create_workflow(self):
         self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
@@ -317,8 +321,10 @@ class WorkflowStatesAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class WorkflowTransitionsAPITestCase(APITestCase):
+class WorkflowTransitionsAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(WorkflowTransitionsAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -340,6 +346,7 @@ class WorkflowTransitionsAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(WorkflowTransitionsAPITestCase, self).tearDown()
 
     def _create_workflow(self):
         self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
@@ -487,8 +494,10 @@ class WorkflowTransitionsAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentWorkflowsAPITestCase(APITestCase):
+class DocumentWorkflowsAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(DocumentWorkflowsAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -505,6 +514,7 @@ class DocumentWorkflowsAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(DocumentWorkflowsAPITestCase, self).tearDown()
 
     def _create_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:

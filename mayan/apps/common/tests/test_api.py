@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 
-from rest_framework.test import APITestCase
+from rest_api.tests import BaseAPITestCase
 
 
-class CommonAPITestCase(APITestCase):
+class CommonAPITestCase(BaseAPITestCase):
     def test_content_type_list_view(self):
         response = self.client.get(reverse('rest_api:content-type-list'))
         self.assertEqual(response.status_code, 200)

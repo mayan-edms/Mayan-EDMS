@@ -4,12 +4,11 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -26,8 +25,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class SmartLinkAPITestCase(APITestCase):
+class SmartLinkAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(SmartLinkAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -40,6 +40,7 @@ class SmartLinkAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(SmartLinkAPITestCase, self).tearDown()
 
     def _create_document_type(self):
         self.document_type = DocumentType.objects.create(
@@ -122,8 +123,10 @@ class SmartLinkAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class SmartLinkConditionAPITestCase(APITestCase):
+class SmartLinkConditionAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(SmartLinkConditionAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -136,6 +139,7 @@ class SmartLinkConditionAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(SmartLinkConditionAPITestCase, self).tearDown()
 
     def _create_document_type(self):
         self.document_type = DocumentType.objects.create(

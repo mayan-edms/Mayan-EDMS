@@ -5,10 +5,9 @@ from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.encoding import force_text
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -22,12 +21,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TagAPITestCase(APITestCase):
-    """
-    Test the tag API endpoints
-    """
-
+class TagAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(TagAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -40,6 +36,7 @@ class TagAPITestCase(APITestCase):
     def tearDown(self):
         if hasattr(self, 'document_type'):
             self.document_type.delete()
+        super(TagAPITestCase, self).tearDown()
 
     def _create_tag(self):
         return Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)

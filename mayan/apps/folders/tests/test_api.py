@@ -4,10 +4,9 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -17,12 +16,9 @@ from ..models import Folder
 from .literals import TEST_FOLDER_EDITED_LABEL, TEST_FOLDER_LABEL
 
 
-class FolderAPITestCase(APITestCase):
-    """
-    Test the folder API endpoints
-    """
-
+class FolderAPITestCase(BaseAPITestCase):
     def setUp(self):
+        super(FolderAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
