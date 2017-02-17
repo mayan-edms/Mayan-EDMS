@@ -52,6 +52,8 @@ class ParserTestCase(BaseTestCase):
 @override_settings(OCR_AUTO_OCR=False)
 class TextExtractorTestCase(BaseTestCase):
     def setUp(self):
+        super(TextExtractorTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
