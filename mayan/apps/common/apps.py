@@ -148,7 +148,7 @@ class CommonApp(MayanAppConfig):
             if settings.DEBUG:
                 level = 'DEBUG'
             else:
-                level = 'INFO'
+                level = 'ERROR'
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
