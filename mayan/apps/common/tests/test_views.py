@@ -7,7 +7,6 @@ from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 
-from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (

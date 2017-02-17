@@ -29,10 +29,6 @@ class PermissionSerializer(serializers.Serializer):
 
 
 class RoleSerializer(serializers.HyperlinkedModelSerializer):
-    groups = GroupSerializer(many=True)
-
-
-class RoleSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True, read_only=True)
     permissions = PermissionSerializer(many=True, read_only=True)
 
