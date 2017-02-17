@@ -37,7 +37,6 @@ class GenericViewTestCase(BaseTestCase):
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
-        Permission.invalidate_cache()
 
     def tearDown(self):
         from mayan.urls import urlpatterns
