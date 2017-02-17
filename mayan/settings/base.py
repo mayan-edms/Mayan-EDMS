@@ -234,6 +234,8 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+TEST_RUNNER = 'common.tests.runner.MayanTestRunner'
+
 # --------- Django compressor -------------
 COMPRESS_CSS_FILTERS = (
     'compressor.filters.css_default.CssAbsoluteFilter',
@@ -272,7 +274,6 @@ CELERY_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----

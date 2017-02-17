@@ -92,6 +92,9 @@ Other changes
   - Gaussian blur
   - Unsharp masking
 
+- Add custom test runner replacing the custom management command runtests.
+  The 'test-all' Makefile target that called the `runtests` command has been removed too.
+
 Removals
 --------
 - Removal of the OCR_TESSERACT_PATH configuration setting.

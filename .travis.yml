@@ -17,9 +17,9 @@ before_script:
   - mysql -e 'create database mayan_edms;'
   - psql -c 'create database mayan_edms;' -U postgres
 script:
-  - if [[ $DB == mysql ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.travis.db_mysql --nomigrations; fi
-  - if [[ $DB == postgres ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.travis.db_postgres --nomigrations; fi
-  - if [[ $DB == sqlite ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.base --nomigrations; fi
+  - if [[ $DB == mysql ]]; then coverage run manage.py test --settings=mayan.settings.testing.travis.db_mysql --nomigrations; fi
+  - if [[ $DB == postgres ]]; then coverage run manage.py test --settings=mayan.settings.testing.travis.db_postgres --nomigrations; fi
+  - if [[ $DB == sqlite ]]; then coverage run manage.py test --settings=mayan.settings.testing.base --nomigrations; fi
 after_success:
   - coveralls
 branches:
