@@ -95,6 +95,9 @@ Other changes
 - Add custom test runner replacing the custom management command runtests.
   The 'test-all' Makefile target that called the `runtests` command has been removed too.
 
+- Testing for orphaned temporary files and orphaned file handles is now optional and 
+  controlled by the COMMON_TEST_FILE_HANDLES and COMMON_TEST_FILE_HANDLES settings.
+
 Removals
 --------
 - Removal of the OCR_TESSERACT_PATH configuration setting.
