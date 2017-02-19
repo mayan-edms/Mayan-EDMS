@@ -3,6 +3,7 @@ from __future__ import unicode_literals, absolute_import
 import logging
 
 from django.apps import apps
+from django.contrib.contenttypes.fields import GenericRelation
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,12 @@ class ModelPermission(object):
         cls._registry.setdefault(model, [])
         for permission in permissions:
             cls._registry[model].append(permission)
+
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        model.add_to_class('acls', GenericRelation(AccessControlList))
 
     @classmethod
     def get_for_instance(cls, instance):
