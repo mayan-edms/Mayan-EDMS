@@ -32,7 +32,10 @@ class RoleSerializer(serializers.HyperlinkedModelSerializer):
     groups = GroupSerializer(many=True)
 
     class Meta:
-        fields = ('groups', 'id', 'label')
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:role-detail'},
+        }
+        fields = ('groups', 'id', 'label', 'url')
         model = Role
 
 
