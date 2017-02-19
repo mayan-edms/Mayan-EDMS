@@ -1,0 +1,202 @@
+from __future__ import absolute_import, unicode_literals
+
+from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
+
+from rest_framework import generics
+
+from permissions import Permission
+
+from .models import AccessControlList
+from .permissions import permission_acl_edit, permission_acl_view
+from .serializers import (
+    AccessControlListPermissionSerializer, AccessControlListSerializer
+)
+
+
+class APIObjectACLListView(generics.ListAPIView):
+    serializer_class = AccessControlListSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the object's access control lists
+        """
+
+        return super(APIObjectACLListView, self).get(*args, **kwargs)
+
+    def get_content_object(self):
+        content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        content_object = get_object_or_404(
+            content_type.model_class(), pk=self.kwargs['object_pk']
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, permissions=(permission_acl_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_acl_view, self.request.user, content_object
+            )
+
+        return content_object
+
+    def get_queryset(self):
+        return self.get_content_object().acls.all()
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+
+class APIObjectACLView(generics.RetrieveAPIView):
+    serializer_class = AccessControlListSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns the details of the selected access control list.
+        """
+
+        return super(APIObjectACLView, self).get(*args, **kwargs)
+
+    def get_content_object(self):
+        if self.request.method == 'GET':
+            permission_required = permission_acl_view
+        else:
+            permission_required = permission_acl_edit
+
+        content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        content_object = get_object_or_404(
+            content_type.model_class(), pk=self.kwargs['object_pk']
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, permissions=(permission_required,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_required, self.request.user, content_object
+            )
+
+        return content_object
+
+    def get_queryset(self):
+        return self.get_content_object().acls.all()
+
+
+class APIObjectACLPermissionListView(generics.ListAPIView):
+    serializer_class = AccessControlListPermissionSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns the access control list permission list.
+        """
+
+        return super(
+            APIObjectACLPermissionListView, self
+        ).get(*args, **kwargs)
+
+    def get_acl(self):
+        return get_object_or_404(
+            self.get_content_object().acls, pk=self.kwargs['pk']
+        )
+
+    def get_content_object(self):
+        content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        content_object = get_object_or_404(
+            content_type.model_class(), pk=self.kwargs['object_pk']
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, permissions=(permission_acl_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_acl_view, self.request.user, content_object
+            )
+
+        return content_object
+
+    def get_queryset(self):
+        return self.get_acl().permissions.all()
+
+    def get_serializer_context(self):
+        return {
+            'acl': self.get_acl(),
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+
+class APIObjectACLPermissionView(generics.RetrieveAPIView):
+    lookup_url_kwarg = 'permission_pk'
+    serializer_class = AccessControlListPermissionSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns the details of the selected access control list permission.
+        """
+
+        return super(
+            APIObjectACLPermissionView, self
+        ).get(*args, **kwargs)
+
+    def get_acl(self):
+        return get_object_or_404(
+            self.get_content_object().acls, pk=self.kwargs['pk']
+        )
+
+    def get_content_object(self):
+        content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        content_object = get_object_or_404(
+            content_type.model_class(), pk=self.kwargs['object_pk']
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, permissions=(permission_acl_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_acl_view, self.request.user, content_object
+            )
+
+        return content_object
+
+    def get_queryset(self):
+        return self.get_acl().permissions.all()
+
+    def get_serializer_context(self):
+        return {
+            'acl': self.get_acl(),
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
