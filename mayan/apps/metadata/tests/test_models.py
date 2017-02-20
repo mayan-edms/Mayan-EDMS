@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.core.files.base import File
@@ -175,3 +176,15 @@ class MetadataTestCase(TestCase):
         self.assertTrue(
             self.metadata_type.get_required_for(self.document_type)
         )
+
+    def test_unicode_lookup(self):
+        # Should NOT return a ValidationError, otherwise test fails
+        self.metadata_type.lookup = '测试1,测试2,test1,test2'
+        self.metadata_type.save()
+        self.metadata_type.validate_value(document_type=None, value='测试1')
+
+    def test_non_unicode_lookup(self):
+        # Should NOT return a ValidationError, otherwise test fails
+        self.metadata_type.lookup = 'test1,test2'
+        self.metadata_type.save()
+        self.metadata_type.validate_value(document_type=None, value='test1')

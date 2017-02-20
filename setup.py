@@ -91,8 +91,13 @@ pytz==2015.4
 sh==1.11
 """.split()
 
-with open('README.rst') as f:
-    readme = f.read()
+try:
+    import pypandoc
+    readme = pypandoc.convert_file('README.md', 'rst')
+except (IOError, ImportError):
+    with open('README.md') as f:
+        readme = f.read()
+
 with open('HISTORY.rst') as f:
     history = f.read()
 

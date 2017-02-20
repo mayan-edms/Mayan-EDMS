@@ -174,9 +174,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
         }
 
     def get_smart_link_queryset(self):
-        return ResolvedSmartLink.objects.filter(
-            document_types=self.document.document_type, enabled=True
-        )
+        return ResolvedSmartLink.objects.get_for(document=self.document)
 
 
 class SmartLinkCreateView(SingleObjectCreateView):

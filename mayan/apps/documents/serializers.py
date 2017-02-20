@@ -6,7 +6,8 @@ from common.models import SharedUploadedFile
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
-    Document, DocumentVersion, DocumentPage, DocumentType, RecentDocument
+    Document, DocumentVersion, DocumentPage, DocumentType,
+    DocumentTypeFilename, RecentDocument
 )
 from .settings import setting_language
 from .tasks import task_get_document_page_image, task_upload_new_version
@@ -45,14 +46,39 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
         model = DocumentPage
 
 
+class DocumentTypeFilenameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DocumentTypeFilename
+        fields = ('filename',)
+
+
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
     documents_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:documenttype-document-list',
     )
     documents_count = serializers.SerializerMethodField()
+    filenames = DocumentTypeFilenameSerializer(many=True, read_only=True)
+
+    class Meta:
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:documenttype-detail'},
+        }
+        fields = (
+            'delete_time_period', 'delete_time_unit', 'documents_url',
+            'documents_count', 'id', 'label', 'filenames', 'trash_time_period',
+            'trash_time_unit', 'url'
+        )
+        model = DocumentType
 
     def get_documents_count(self, obj):
         return obj.documents.count()
+
+
+class WritableDocumentTypeSerializer(serializers.ModelSerializer):
+    documents_url = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documenttype-document-list',
+    )
+    documents_count = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
@@ -64,6 +90,9 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
             'trash_time_unit', 'url'
         )
         model = DocumentType
+
+    def get_documents_count(self, obj):
+        return obj.documents.count()
 
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
@@ -77,6 +106,26 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
             'document': {'view_name': 'rest_api:document-detail'},
             'file': {'use_url': False},
             'url': {'view_name': 'rest_api:documentversion-detail'},
+        }
+        model = DocumentVersion
+        read_only_fields = ('document', 'file')
+
+
+class WritableDocumentVersionSerializer(serializers.ModelSerializer):
+    document = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:document-detail'
+    )
+    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
+    revert = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documentversion-revert'
+    )
+    url = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documentversion-detail'
+    )
+
+    class Meta:
+        extra_kwargs = {
+            'file': {'use_url': False},
         }
         model = DocumentVersion
         read_only_fields = ('document', 'file')
@@ -136,9 +185,6 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:document-version-list',
     )
 
-    def get_document_type_label(self, instance):
-        return instance.document_type.label
-
     class Meta:
         extra_kwargs = {
             'document_type': {'view_name': 'rest_api:documenttype-detail'},
@@ -151,6 +197,32 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         )
         model = Document
         read_only_fields = ('document_type',)
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
+
+
+class WritableDocumentSerializer(serializers.ModelSerializer):
+    document_type_label = serializers.SerializerMethodField()
+    latest_version = DocumentVersionSerializer(many=False, read_only=True)
+    versions = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:document-version-list',
+    )
+    url = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:document-detail',
+    )
+
+    class Meta:
+        fields = (
+            'date_added', 'description', 'document_type',
+            'document_type_label', 'id', 'label', 'language',
+            'latest_version', 'url', 'uuid', 'versions',
+        )
+        model = Document
+        read_only_fields = ('document_type',)
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
 
 
 class NewDocumentSerializer(serializers.ModelSerializer):

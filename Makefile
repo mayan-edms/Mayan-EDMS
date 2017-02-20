@@ -87,15 +87,20 @@ requirements_testing:
 
 # Releases
 
-release: clean
-	python setup.py sdist bdist_wheel upload
+
+test_release: clean wheel
+	twine upload dist/* -r testpypi
+	@echo "Test with: pip install -i https://testpypi.python.org/pypi mayan-edms"
+
+release: clean wheel
+	twine upload dist/* -r pypi
 
 sdist: clean
 	python setup.py sdist
 	ls -l dist
 
-wheel: clean
-	python setup.py bdist_wheel
+wheel: clean sdist
+	pip wheel --no-index --no-deps --wheel-dir dist dist/*.tar.gz
 	ls -l dist
 
 
@@ -106,5 +111,3 @@ runserver:
 
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
-
-

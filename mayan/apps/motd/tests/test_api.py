@@ -70,7 +70,7 @@ class MOTDAPITestCase(APITestCase):
             response.data['label'], TEST_LABEL
         )
 
-    def test_message_path_view(self):
+    def test_message_patch_view(self):
         message = self._create_message()
 
         self.client.patch(
