@@ -9,4 +9,5 @@ TEST_WORKFLOW_STATE_LABEL = 'test state label'
 TEST_WORKFLOW_STATE_LABEL_EDITED = 'test state label edited'
 TEST_WORKFLOW_STATE_COMPLETION = 66
 TEST_WORKFLOW_TRANSITION_LABEL = 'test transtition label'
+TEST_WORKFLOW_TRANSITION_LABEL_2 = 'test transtition label 2'
 TEST_WORKFLOW_TRANSITION_LABEL_EDITED = 'test transtition label edited'

@@ -7,12 +7,11 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView
 
 from acls.models import AccessControlList
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, FormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from documents.views import DocumentListView
@@ -25,8 +24,7 @@ from .forms import (
 from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view,
+    permission_workflow_edit, permission_workflow_view,
 )
 
 
@@ -130,28 +128,10 @@ class WorkflowInstanceTransitionView(FormView):
     form_class = WorkflowInstanceTransitionForm
     template_name = 'appearance/generic_form.html'
 
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_transition,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_transition, request.user,
-                self.get_workflow_instance().document
-            )
-
-        return super(
-            WorkflowInstanceTransitionView, self
-        ).dispatch(request, *args, **kwargs)
-
     def form_valid(self, form):
-        transition = self.get_workflow_instance().workflow.transitions.get(
-            pk=form.cleaned_data['transition']
-        )
         self.get_workflow_instance().do_transition(
-            comment=form.cleaned_data['comment'], transition=transition,
-            user=self.request.user
+            comment=form.cleaned_data['comment'],
+            transition=form.cleaned_data['transition'], user=self.request.user
         )
         return HttpResponseRedirect(self.get_success_url())
 
@@ -166,10 +146,11 @@ class WorkflowInstanceTransitionView(FormView):
             'workflow_instance': self.get_workflow_instance(),
         }
 
-    def get_form_kwargs(self):
-        kwargs = super(WorkflowInstanceTransitionView, self).get_form_kwargs()
-        kwargs['workflow'] = self.get_workflow_instance()
-        return kwargs
+    def get_form_extra_kwargs(self):
+        return {
+            'user': self.request.user,
+            'workflow_instance': self.get_workflow_instance()
+        }
 
     def get_success_url(self):
         return self.get_workflow_instance().get_absolute_url()
