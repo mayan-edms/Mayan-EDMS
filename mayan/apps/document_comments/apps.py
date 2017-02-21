@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
@@ -20,10 +21,13 @@ class DocumentCommentsApp(MayanAppConfig):
     app_namespace = 'comments'
     app_url = 'comments'
     name = 'document_comments'
+    test = True
     verbose_name = _('Document comments')
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
