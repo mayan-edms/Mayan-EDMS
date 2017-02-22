@@ -18,7 +18,14 @@ from django_downloadview import VirtualDownloadView, VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
-from .mixins import *  # NOQA
+from .mixins import (
+    DeleteExtraDataMixin, ExtraContextMixin, FormExtraKwargsMixin,
+    MultipleObjectMixin, ObjectActionMixin,
+    ObjectListPermissionFilterMixin, ObjectNameMixin,
+    ObjectPermissionCheckMixin, RedirectionMixin,
+    ViewPermissionCheckMixin
+)
+
 from .settings import setting_paginate_by
 
 __all__ = (

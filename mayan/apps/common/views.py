@@ -17,7 +17,13 @@ from .forms import (
     FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
 )
-from .generics import *  # NOQA
+from .generics import (  # NOQA
+    AssignRemoveView, ConfirmView, FormView, MultiFormView,
+    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView,
+    SimpleView
+)
 from .menus import menu_tools, menu_setup
 
 
