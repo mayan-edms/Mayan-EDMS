@@ -60,8 +60,10 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self._create_metadata_type()
 
         response = self.client.delete(
-            reverse('rest_api:metadatatype-detail',
-            args=(self.metadata_type.pk,))
+            reverse(
+                'rest_api:metadatatype-detail',
+                args=(self.metadata_type.pk,)
+            )
         )
 
         self.assertEqual(response.status_code, 204)
@@ -72,8 +74,10 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self._create_metadata_type()
 
         response = self.client.get(
-            reverse('rest_api:metadatatype-detail',
-            args=(self.metadata_type.pk,))
+            reverse(
+                'rest_api:metadatatype-detail',
+                args=(self.metadata_type.pk,)
+            )
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
@@ -84,8 +88,10 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self._create_metadata_type()
 
         response = self.client.patch(
-            reverse('rest_api:metadatatype-detail',
-            args=(self.metadata_type.pk,)), data={
+            reverse(
+                'rest_api:metadatatype-detail',
+                args=(self.metadata_type.pk,)
+            ), data={
                 'label': TEST_METADATA_TYPE_LABEL_2,
                 'name': TEST_METADATA_TYPE_NAME_2
             }
@@ -102,8 +108,10 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self._create_metadata_type()
 
         response = self.client.put(
-            reverse('rest_api:metadatatype-detail',
-            args=(self.metadata_type.pk,)), data={
+            reverse(
+                'rest_api:metadatatype-detail',
+                args=(self.metadata_type.pk,)
+            ), data={
                 'label': TEST_METADATA_TYPE_LABEL_2,
                 'name': TEST_METADATA_TYPE_NAME_2
             }

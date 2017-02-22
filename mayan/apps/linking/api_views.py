@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -8,7 +7,6 @@ from rest_framework import generics
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -41,14 +39,10 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
         return document
 
@@ -58,14 +52,10 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
             pk=self.kwargs['smart_link_pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_smart_link_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_smart_link_view, self.request.user, smart_link
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_smart_link_view, user=self.request.user,
+            obj=smart_link
+        )
 
         return smart_link
 
@@ -103,14 +93,10 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
         return document
 
@@ -144,14 +130,10 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
         return document
 
@@ -203,14 +185,10 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
 
         smart_link = get_object_or_404(SmartLink, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, smart_link
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=smart_link
+        )
 
         return smart_link
 
@@ -261,14 +239,10 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
 
         smart_link = get_object_or_404(SmartLink, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, smart_link
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=smart_link
+        )
 
         return smart_link
 

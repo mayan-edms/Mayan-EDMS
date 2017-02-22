@@ -8,7 +8,6 @@ from rest_framework.reverse import reverse
 
 from acls.models import AccessControlList
 from documents.models import Document
-from permissions import Permission
 
 from .models import Tag
 from .permissions import permission_tag_attach

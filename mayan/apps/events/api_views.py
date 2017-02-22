@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
@@ -9,7 +8,6 @@ from actstream.models import Action, any_stream
 from rest_framework import generics
 
 from acls.models import AccessControlList
-from permissions import Permission
 from rest_api.permissions import MayanPermission
 
 from .classes import Event
@@ -38,18 +36,14 @@ class APIObjectEventListView(generics.ListAPIView):
             raise Http404
 
     def get_queryset(self):
-        object = self.get_object()
+        obj = self.get_object()
 
-        try:
-            Permission.check_permissions(
-                self.request.user, permissions=(permission_events_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_events_view, self.request.user, object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_events_view, user=self.request.user,
+            obj=obj
+        )
 
-        return any_stream(object)
+        return any_stream(obj)
 
 
 class APIEventTypeListView(generics.ListAPIView):

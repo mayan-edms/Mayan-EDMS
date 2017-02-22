@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -8,7 +7,6 @@ from rest_framework import generics
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_type_view
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -80,14 +78,10 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -156,14 +150,10 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -283,14 +273,10 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -341,14 +327,10 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -405,14 +387,10 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -468,14 +446,10 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
 
         workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=workflow
+        )
 
         return workflow
 
@@ -509,14 +483,10 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=self.request.user,
+            obj=document
+        )
 
         return document
 
@@ -538,14 +508,10 @@ class APIWorkflowInstanceView(generics.RetrieveAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=self.request.user,
+            obj=document
+        )
 
         return document
 
@@ -570,14 +536,10 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=document
+        )
 
         return document
 

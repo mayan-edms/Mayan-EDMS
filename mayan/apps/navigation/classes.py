@@ -273,7 +273,7 @@ class Link(object):
             except VariableDoesNotExist:
                 pass
 
-        # If this link has a required permission check that the user have it
+        # If this link has a required permission check that the user has it
         # too
         if self.permissions:
             if resolved_object:
