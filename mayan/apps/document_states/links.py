@@ -76,7 +76,7 @@ link_workflow_instance_detail = Link(
     view='document_states:workflow_instance_detail', args='resolved_object.pk'
 )
 link_workflow_instance_transition = Link(
-    permissions=(permission_workflow_transition,), text=_('Transition'),
+    text=_('Transition'),
     view='document_states:workflow_instance_transition',
     args='resolved_object.pk'
 )
