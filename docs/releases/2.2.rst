@@ -9,6 +9,27 @@ What's new
 
 API changes
 -----------
+Refactor of the metadata API URLs to use the resource/sub resource paradigm.
+
+Before:
+
+/api/metadata/metadata_types/
+/api/metadata/metadata_types/{pk}/
+/api/metadata/document/metadata/{pk}/
+/api/metadata/document/{pk}/metadata/
+/api/metadata/document_type/{document_type_pk}/metadata_types/optional/
+/api/metadata/document_type/{document_type_pk}/metadata_types/required/
+
+After:
+
+/api/metadata/metadata_types/
+/api/metadata/metadata_types/{metadata_type_pk}/
+/api/metadata/document_types/{document_type_pk}/metadata_types/
+/api/metadata/document_types/{document_type_pk}/metadata_types/{metadata_type_pk}/
+/api/metadata/documents/{document_pk}/metadata/
+/api/metadata/documents/{document_pk}/metadata/{metadata_pk}/
+
+
 Document API URLs updated to use the resource/sub resource paradigm.
 Before:
 
@@ -95,7 +116,7 @@ Other changes
 - Add custom test runner replacing the custom management command runtests.
   The 'test-all' Makefile target that called the `runtests` command has been removed too.
 
-- Testing for orphaned temporary files and orphaned file handles is now optional and 
+- Testing for orphaned temporary files and orphaned file handles is now optional and
   controlled by the COMMON_TEST_FILE_HANDLES and COMMON_TEST_FILE_HANDLES settings.
 
 Removals

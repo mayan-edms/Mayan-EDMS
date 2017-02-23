@@ -11,7 +11,7 @@ from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
-from ..models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
+from ..models import DocumentTypeMetadataType, MetadataType
 
 from .literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_2,
@@ -84,7 +84,7 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
             response.data['label'], TEST_METADATA_TYPE_LABEL
         )
 
-    def test_metadata_type_edit_via_patch_view(self):
+    def test_metadata_type_patch_view(self):
         self._create_metadata_type()
 
         response = self.client.patch(
@@ -104,7 +104,7 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         self.assertEqual(self.metadata_type.label, TEST_METADATA_TYPE_LABEL_2)
         self.assertEqual(self.metadata_type.name, TEST_METADATA_TYPE_NAME_2)
 
-    def test_metadata_type_edit_via_put_view(self):
+    def test_metadata_type_put_view(self):
         self._create_metadata_type()
 
         response = self.client.put(
@@ -160,61 +160,114 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         self.document_type.delete()
         super(DocumentTypeMetadataTypeAPITestCase, self).tearDown()
 
-    def test_document_type_metadata_type_optional_create(self):
+    def _create_document_type_metadata_type(self):
+        self.document_type_metadata_type = self.document_type.metadata.create(
+            metadata_type=self.metadata_type, required=False
+        )
+
+    def test_document_type_metadata_type_create_view(self):
         response = self.client.post(
             reverse(
-                'rest_api:documenttypeoptionalmetadatatype-list',
+                'rest_api:documenttypemetadatatype-list',
                 args=(self.document_type.pk,)
-            ), data={'metadata_type_pk': self.metadata_type.pk}
+            ), data={
+                'metadata_type_pk': self.metadata_type.pk, 'required': False
+            }
         )
 
         self.assertEqual(response.status_code, 201)
 
-        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(
-            document_type=self.document_type, required=False
-        ).first()
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
 
-        self.assertEqual(response.data['pk'], document_type_metadata_type.pk)
+        self.assertEqual(response.data['id'], document_type_metadata_type.pk)
 
-        self.assertEqual(
-            document_type_metadata_type.metadata_type, self.metadata_type
-        )
+    def test_document_type_metadata_type_create_dupicate_view(self):
+        self._create_document_type_metadata_type()
 
-    def test_document_type_metadata_type_required_create(self):
         response = self.client.post(
             reverse(
-                'rest_api:documenttyperequiredmetadatatype-list',
+                'rest_api:documenttypemetadatatype-list',
                 args=(self.document_type.pk,)
-            ), data={'metadata_type_pk': self.metadata_type.pk}
+            ), data={
+                'metadata_type_pk': self.metadata_type.pk, 'required': False
+            }
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.keys()[0], 'non_field_errors')
 
-        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(
-            document_type=self.document_type, required=True
-        ).first()
-
-        self.assertEqual(response.data['pk'], document_type_metadata_type.pk)
-
-        self.assertEqual(
-            document_type_metadata_type.metadata_type, self.metadata_type
-        )
-
-    def test_document_type_metadata_type_delete(self):
-        document_type_metadata_type = self.document_type.metadata.create(
-            metadata_type=self.metadata_type, required=True
-        )
+    def test_document_type_metadata_type_delete_view(self):
+        self._create_document_type_metadata_type()
 
         response = self.client.delete(
             reverse(
                 'rest_api:documenttypemetadatatype-detail',
-                args=(document_type_metadata_type.pk,)
+                args=(
+                    self.document_type.pk, self.document_type_metadata_type.pk,
+                ),
             ),
         )
 
         self.assertEqual(response.status_code, 204)
 
         self.assertEqual(self.document_type.metadata.all().count(), 0)
+
+    def test_document_type_metadata_type_list_view(self):
+        self._create_document_type_metadata_type()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:documenttypemetadatatype-list',
+                args=(
+                    self.document_type.pk,
+                ),
+            ),
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            response.data['results'][0]['id'],
+            self.document_type_metadata_type.pk
+        )
+
+    def test_document_type_metadata_type_patch_view(self):
+        self._create_document_type_metadata_type()
+
+        response = self.client.patch(
+            reverse(
+                'rest_api:documenttypemetadatatype-detail',
+                args=(
+                    self.document_type.pk, self.document_type_metadata_type.pk,
+                )
+            ), data={
+                'required': True
+            }
+        )
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(document_type_metadata_type.required, True)
+
+    def test_document_type_metadata_type_put_view(self):
+        self._create_document_type_metadata_type()
+
+        response = self.client.put(
+            reverse(
+                'rest_api:documenttypemetadatatype-detail',
+                args=(
+                    self.document_type.pk, self.document_type_metadata_type.pk,
+                )
+            ), data={
+                'required': True
+            }
+        )
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(document_type_metadata_type.required, True)
 
 
 class DocumentMetadataAPITestCase(BaseAPITestCase):
@@ -253,7 +306,12 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self.document_type.delete()
         super(DocumentMetadataAPITestCase, self).tearDown()
 
-    def test_document_metadata_create(self):
+    def _create_document_metadata(self):
+        self.document_metadata = self.document.metadata.create(
+            metadata_type=self.metadata_type, value=TEST_METADATA_VALUE
+        )
+
+    def test_document_metadata_create_view(self):
         response = self.client.post(
             reverse(
                 'rest_api:documentmetadata-list',
@@ -264,21 +322,63 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
             }
         )
 
-        document_metadata = DocumentMetadata.objects.get(
-            document=self.document
-        )
+        document_metadata = self.document.metadata.first()
 
         self.assertEqual(response.status_code, 201)
 
-        self.assertEqual(response.data['pk'], document_metadata.pk)
+        self.assertEqual(response.data['id'], document_metadata.pk)
 
         self.assertEqual(document_metadata.metadata_type, self.metadata_type)
         self.assertEqual(document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_list(self):
-        document_metadata = self.document.metadata.create(
-            metadata_type=self.metadata_type, value=TEST_METADATA_VALUE
+    def test_document_metadata_create_duplicate_view(self):
+        self._create_document_metadata()
+
+        response = self.client.post(
+            reverse(
+                'rest_api:documentmetadata-list',
+                args=(self.document.pk,)
+            ), data={
+                'metadata_type_pk': self.metadata_type.pk,
+                'value': TEST_METADATA_VALUE
+            }
         )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.keys()[0], 'non_field_errors')
+
+    def test_document_metadata_create_invalid_lookup_value_view(self):
+        self.metadata_type.lookup = 'invalid,lookup,values,on,purpose'
+        self.metadata_type.save()
+
+        response = self.client.post(
+            reverse(
+                'rest_api:documentmetadata-list',
+                args=(self.document.pk,)
+            ), data={
+                'metadata_type_pk': self.metadata_type.pk,
+                'value': TEST_METADATA_VALUE
+            }
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data.keys()[0], 'non_field_errors')
+
+    def test_document_metadata_delete_view(self):
+        self._create_document_metadata()
+
+        response = self.client.delete(
+            reverse(
+                'rest_api:documentmetadata-detail',
+                args=(self.document.pk, self.document_metadata.pk,)
+            )
+        )
+
+        self.assertEqual(response.status_code, 204)
+
+        self.assertEqual(self.document.metadata.all().count(), 0)
+
+    def test_document_metadata_list_view(self):
+        self._create_document_metadata()
 
         response = self.client.get(
             reverse(
@@ -289,56 +389,49 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            response.data['results'][0]['document'], self.document.pk
+            response.data['results'][0]['document']['id'], self.document.pk
         )
         self.assertEqual(
-            response.data['results'][0]['metadata_type'], self.metadata_type.pk
+            response.data['results'][0]['metadata_type']['id'],
+            self.metadata_type.pk
         )
         self.assertEqual(
             response.data['results'][0]['value'], TEST_METADATA_VALUE
         )
         self.assertEqual(
-            response.data['results'][0]['id'], document_metadata.pk
+            response.data['results'][0]['id'], self.document_metadata.pk
         )
 
-    def test_document_metadata_edit(self):
-        document_metadata = self.document.metadata.create(
-            metadata_type=self.metadata_type, value=TEST_METADATA_VALUE
-        )
+    def test_document_metadata_patch_view(self):
+        self._create_document_metadata()
 
-        response = self.client.put(
+        response = self.client.patch(
             reverse(
                 'rest_api:documentmetadata-detail',
-                args=(document_metadata.pk,)
+                args=(self.document.pk, self.document_metadata.pk,)
             ), data={
                 'value': TEST_METADATA_VALUE_EDITED
             }
         )
 
         self.assertEqual(response.status_code, 200)
-
-        self.assertEqual(
-            response.data['document'], self.document.pk
-        )
-        self.assertEqual(
-            response.data['metadata_type'], self.metadata_type.pk
-        )
         self.assertEqual(
             response.data['value'], TEST_METADATA_VALUE_EDITED
         )
 
-    def test_document_metadata_delete(self):
-        document_metadata = self.document.metadata.create(
-            metadata_type=self.metadata_type, value=TEST_METADATA_VALUE
-        )
+    def test_document_metadata_put_view(self):
+        self._create_document_metadata()
 
-        response = self.client.delete(
+        response = self.client.put(
             reverse(
                 'rest_api:documentmetadata-detail',
-                args=(document_metadata.pk,)
-            )
+                args=(self.document.pk, self.document_metadata.pk,)
+            ), data={
+                'value': TEST_METADATA_VALUE_EDITED
+            }
         )
 
-        self.assertEqual(response.status_code, 204)
-
-        self.assertEqual(self.document.metadata.all().count(), 0)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.data['value'], TEST_METADATA_VALUE_EDITED
+        )
