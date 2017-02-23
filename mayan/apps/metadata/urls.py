@@ -4,10 +4,8 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentMetadataListView, APIDocumentMetadataView,
-    APIDocumentTypeMetadataTypeOptionalListView,
-    APIDocumentTypeMetadataTypeRequiredListView,
-    APIDocumentTypeMetadataTypeView, APIMetadataTypeListView,
-    APIMetadataTypeView
+    APIDocumentTypeMetadataTypeListView, APIDocumentTypeMetadataTypeView,
+    APIMetadataTypeListView, APIMetadataTypeView
 )
 from .views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
@@ -82,30 +80,25 @@ api_urls = [
         name='metadatatype-list'
     ),
     url(
-        r'^metadata_types/(?P<pk>[0-9]+)/$', APIMetadataTypeView.as_view(),
-        name='metadatatype-detail'
+        r'^metadata_types/(?P<metadata_type_pk>\d+)/$',
+        APIMetadataTypeView.as_view(), name='metadatatype-detail'
     ),
     url(
-        r'^document/metadata/(?P<pk>[0-9]+)/$',
-        APIDocumentMetadataView.as_view(), name='documentmetadata-detail'
+        r'^document_types/(?P<document_type_pk>\d+)/metadata_types/$',
+        APIDocumentTypeMetadataTypeListView.as_view(),
+        name='documenttypemetadatatype-list'
     ),
     url(
-        r'^document/(?P<pk>\d+)/metadata/$',
+        r'^document_types/(?P<document_type_pk>\d+)/metadata_types/(?P<metadata_type_pk>\d+)/$',
+        APIDocumentTypeMetadataTypeView.as_view(),
+        name='documenttypemetadatatype-detail'
+    ),
+    url(
+        r'^documents/(?P<document_pk>\d+)/metadata/$',
         APIDocumentMetadataListView.as_view(), name='documentmetadata-list'
     ),
     url(
-        r'^document_type/(?P<document_type_pk>[0-9]+)/metadata_types/optional/$',
-        APIDocumentTypeMetadataTypeOptionalListView.as_view(),
-        name='documenttypeoptionalmetadatatype-list'
-    ),
-    url(
-        r'^document_type/(?P<document_type_pk>[0-9]+)/metadata_types/required/$',
-        APIDocumentTypeMetadataTypeRequiredListView.as_view(),
-        name='documenttyperequiredmetadatatype-list'
-    ),
-    url(
-        r'^document_type_metadata_type/(?P<pk>\d+)/$',
-        APIDocumentTypeMetadataTypeView.as_view(),
-        name='documenttypemetadatatype-detail'
+        r'^documents/(?P<document_pk>\d+)/metadata/(?P<metadata_pk>\d+)/$',
+        APIDocumentMetadataView.as_view(), name='documentmetadata-detail'
     ),
 ]
