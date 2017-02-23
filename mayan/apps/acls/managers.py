@@ -48,6 +48,10 @@ class AccessControlListManager(models.Manager):
 
     def check_access(self, permissions, user, obj, related=None):
         if user.is_superuser or user.is_staff:
+            logger.debug('Permissions "%s" on "%s" granted to user "%s" as superuser or staff',
+                         permissions,
+                         obj,
+                         user)
             return True
 
         try:
@@ -77,15 +81,31 @@ class AccessControlListManager(models.Manager):
         for group in user.groups.all():
             for role in group.roles.all():
                 if set(stored_permissions).intersection(set(self.get_inherited_permissions(role=role, obj=obj))):
+                    logger.debug('Permissions "%s" on "%s" granted to user "%s" through role "%s" via inherited ACL',
+                                 permissions,
+                                 obj,
+                                 user,
+                                 role)
                     return True
 
                 user_roles.append(role)
 
         if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
+            logger.debug('Permissions "%s" on "%s" denied for user "%s"',
+                         permissions,
+                         obj,
+                         user)
             raise PermissionDenied(ugettext('Insufficient access.'))
+        logger.debug('Permissions "%s" on "%s" granted to user "%s" through roles "%s" by direct ACL',
+                     permissions,
+                     obj,
+                     user,
+                     user_roles)
 
     def filter_by_access(self, permission, user, queryset):
         if user.is_superuser or user.is_staff:
+            logger.debug('Unfiltered queryset returned to user "%s" as superuser or staff',
+                         user)
             return queryset
 
         user_roles = []
@@ -124,5 +144,8 @@ class AccessControlListManager(models.Manager):
             content_type=content_type, role__in=user_roles,
             permissions=permission.stored_permission
         ).values_list('object_id', flat=True))
+        logger.debug('Filtered queryset returned to user "%s" based on roles "%s"',
+                     user,
+                     user_roles)
 
         return queryset.filter(parent_acl_query | acl_query)
