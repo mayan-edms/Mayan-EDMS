@@ -119,6 +119,8 @@ Other changes
 - Testing for orphaned temporary files and orphaned file handles is now optional and
   controlled by the COMMON_TEST_FILE_HANDLES and COMMON_TEST_FILE_HANDLES settings.
 
+- Add tool to launch all workflows. GitLab issue #355
+
 Removals
 --------
 - Removal of the OCR_TESSERACT_PATH configuration setting.
@@ -191,5 +193,6 @@ Bugs fixed or issues closed
 * `GitLab issue #328 <https://gitlab.com/mayan-edms/mayan-edms/issues/328>`_ Upgrade Warning/Error during performupgrade (v2.1.3 to v2.1.4)
 * `GitLab issue #342 <https://gitlab.com/mayan-edms/mayan-edms/issues/342>`_ Tags should be of unordered / unsorted data type
 * `GitLab issue #343 <https://gitlab.com/mayan-edms/mayan-edms/issues/343>`_ Bootstrap's dependency on fonts.googleapis.com causes Mayan EDMS web interface load slowly if public internet is unreachable
+* `GitLab issue #355 <https://gitlab.com/mayan-edms/mayan-edms/issues/355>`_ Workflow changes only on new added documents
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

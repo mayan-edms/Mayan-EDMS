@@ -7,7 +7,7 @@ from navigation import Link
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view,
+    permission_workflow_tools, permission_workflow_view,
 )
 
 link_document_workflow_instance_list = Link(
@@ -70,6 +70,12 @@ link_setup_workflow_transition_edit = Link(
 link_setup_workflow_transitions = Link(
     permissions=(permission_workflow_view,), text=_('Transitions'),
     view='document_states:setup_workflow_transitions', args='object.pk'
+)
+link_tool_launch_all_workflows = Link(
+    icon='fa fa-sitemap',
+    permissions=(permission_workflow_tools,),
+    text=_('Launch all workflows'),
+    view='document_states:tool_launch_all_workflows'
 )
 link_workflow_instance_detail = Link(
     permissions=(permission_workflow_view,), text=_('Detail'),

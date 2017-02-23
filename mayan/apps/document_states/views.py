@@ -10,8 +10,8 @@ from django.views.generic import FormView
 
 from acls.models import AccessControlList
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, ConfirmView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from documents.views import DocumentListView
@@ -24,8 +24,9 @@ from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransitio
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view,
+    permission_workflow_tools, permission_workflow_view,
 )
+from .tasks import task_launch_all_workflows
 
 
 class DocumentWorkflowInstanceListView(SingleObjectListView):
@@ -428,4 +429,17 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
         return reverse(
             'document_states:setup_workflow_transitions',
             args=(self.get_object().workflow.pk,)
+        )
+
+
+class ToolLaunchAllWorkflows(ConfirmView):
+    extra_context = {
+        'title': _('Launch all workflows?')
+    }
+    view_permission = permission_workflow_tools
+
+    def view_action(self):
+        task_launch_all_workflows.apply_async()
+        messages.success(
+            self.request, _('Workflow launch queued successfully.')
         )

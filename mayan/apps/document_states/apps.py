@@ -4,11 +4,14 @@ from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
+from kombu import Exchange, Queue
+
 from common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
-    menu_sidebar
+    menu_sidebar, menu_tools
 )
 from common.widgets import two_state_template
+from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -21,7 +24,8 @@ from .links import (
     link_setup_workflow_state_delete, link_setup_workflow_state_edit,
     link_setup_workflow_transitions, link_setup_workflow_transition_create,
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
-    link_workflow_instance_detail, link_workflow_instance_transition
+    link_tool_launch_all_workflows, link_workflow_instance_detail,
+    link_workflow_instance_transition
 )
 
 
@@ -111,6 +115,23 @@ class DocumentStatesApp(MayanAppConfig):
             attribute='destination_state'
         )
 
+        app.conf.CELERY_QUEUES.extend(
+            (
+                Queue(
+                    'document_states', Exchange('document_states'),
+                    routing_key='converter'
+                ),
+            )
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'document_states.tasks.task_launch_all_workflows': {
+                    'queue': 'document_states'
+                },
+            }
+        )
+
         menu_facet.bind_links(
             links=(link_document_workflow_instance_list,), sources=(Document,)
         )
@@ -153,6 +174,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_setup_workflow_transition_create
             ), sources=(Workflow,)
         )
+        menu_tools.bind_links(links=(link_tool_launch_all_workflows,))
 
         post_save.connect(
             launch_workflow, dispatch_uid='launch_workflow', sender=Document

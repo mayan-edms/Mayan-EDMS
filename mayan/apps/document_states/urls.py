@@ -17,8 +17,8 @@ from .views import (
     SetupWorkflowStateEditView, SetupWorkflowStateListView,
     SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
     SetupWorkflowTransitionDeleteView, SetupWorkflowTransitionEditView,
-    WorkflowDocumentListView, WorkflowInstanceDetailView,
-    WorkflowInstanceTransitionView
+    ToolLaunchAllWorkflows, WorkflowDocumentListView,
+    WorkflowInstanceDetailView, WorkflowInstanceTransitionView
 )
 
 urlpatterns = [
@@ -101,6 +101,11 @@ urlpatterns = [
         r'^setup/workflow/transitions/(?P<pk>\d+)/edit/$',
         SetupWorkflowTransitionEditView.as_view(),
         name='setup_workflow_transition_edit'
+    ),
+    url(
+        r'^tools/workflow/all/launch/$',
+        ToolLaunchAllWorkflows.as_view(),
+        name='tool_launch_all_workflows'
     ),
 ]
 
