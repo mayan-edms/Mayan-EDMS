@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 
 from acls.models import AccessControlList
-from documents.models import Document
+from documents.models import Document, DocumentType
 from documents.permissions import permission_document_type_view
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -23,6 +23,29 @@ from .serializers import (
     WritableWorkflowInstanceLogEntrySerializer, WritableWorkflowSerializer,
     WritableWorkflowTransitionSerializer
 )
+
+
+class APIDocumentTypeWorkflowListView(generics.ListAPIView):
+    serializer_class = WorkflowSerializer
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the document type workflows.
+        """
+        return super(APIDocumentTypeWorkflowListView, self).get(*args, **kwargs)
+
+    def get_document_type(self):
+        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=self.request.user,
+            obj=document_type
+        )
+
+        return document_type
+
+    def get_queryset(self):
+        return self.get_document_type().workflows.all()
 
 
 class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
