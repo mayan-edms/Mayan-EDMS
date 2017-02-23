@@ -294,7 +294,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
         task = task_generate_document_page_image.apply_async(
             kwargs=dict(
-                document_page_id=self.kwargs['pk'], size=size, zoom=zoom,
+                document_page_id=self.kwargs['page_pk'], size=size, zoom=zoom,
                 rotation=rotation
             )
         )
