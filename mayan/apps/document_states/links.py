@@ -86,3 +86,21 @@ link_workflow_instance_transition = Link(
     view='document_states:workflow_instance_transition',
     args='resolved_object.pk'
 )
+link_workflow_document_list = Link(
+    permissions=(permission_workflow_view,), text=_('Workflow documents'),
+    view='document_states:workflow_document_list', args='resolved_object.pk'
+)
+link_workflow_list = Link(
+    permissions=(permission_workflow_view,), icon='fa fa-sitemap',
+    text=_('Workflows'), view='document_states:workflow_list'
+)
+link_workflow_state_document_list = Link(
+    permissions=(permission_workflow_view,),
+    text=_('State documents'), view='document_states:workflow_state_document_list',
+    args='resolved_object.pk'
+)
+link_workflow_state_list = Link(
+    permissions=(permission_workflow_view,),
+    text=_('States'), view='document_states:workflow_state_list',
+    args='resolved_object.pk'
+)

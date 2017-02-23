@@ -7,8 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from kombu import Exchange, Queue
 
 from common import (
-    MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
-    menu_sidebar, menu_tools
+    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
+    menu_setup, menu_sidebar, menu_tools
 )
 from common.widgets import two_state_template
 from mayan.celery import app
@@ -25,7 +25,9 @@ from .links import (
     link_setup_workflow_transitions, link_setup_workflow_transition_create,
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
     link_tool_launch_all_workflows, link_workflow_instance_detail,
-    link_workflow_instance_transition
+    link_workflow_instance_transition, link_workflow_document_list,
+    link_workflow_list, link_workflow_state_document_list,
+    link_workflow_state_list
 )
 
 
@@ -47,7 +49,9 @@ class DocumentStatesApp(MayanAppConfig):
         Workflow = self.get_model('Workflow')
         WorkflowInstance = self.get_model('WorkflowInstance')
         WorkflowInstanceLogEntry = self.get_model('WorkflowInstanceLogEntry')
+        WorkflowRuntimeProxy = self.get_model('WorkflowRuntimeProxy')
         WorkflowState = self.get_model('WorkflowState')
+        WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
 
         SourceColumn(
@@ -135,6 +139,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_workflow_instance_list,), sources=(Document,)
         )
+        menu_main.bind_links(links=(link_workflow_list,), position=10)
         menu_object.bind_links(
             links=(
                 link_setup_workflow_states, link_setup_workflow_transitions,
@@ -160,11 +165,27 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_instance_transition
             ), sources=(WorkflowInstance,)
         )
+        menu_object.bind_links(
+            links=(
+                link_workflow_document_list, link_workflow_state_list,
+            ), sources=(WorkflowRuntimeProxy,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_workflow_state_document_list,
+            ), sources=(WorkflowStateRuntimeProxy,)
+        )
         menu_secondary.bind_links(
             links=(link_setup_workflow_list, link_setup_workflow_create),
             sources=(
                 Workflow, 'document_states:setup_workflow_create',
                 'document_states:setup_workflow_list'
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_workflow_list,),
+            sources=(
+                WorkflowRuntimeProxy,
             )
         )
         menu_setup.bind_links(links=(link_setup_workflow_list,))

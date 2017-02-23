@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.db.models import F, Max
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -20,7 +21,10 @@ from .forms import (
     WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
     WorkflowTransitionForm
 )
-from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
+from .models import (
+    Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
+    WorkflowTransition, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
+)
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_transition,
@@ -56,36 +60,10 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         return self.get_document().workflows.all()
 
 
-class WorkflowDocumentListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.workflow
-        )
-
-        return super(
-            WorkflowDocumentListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document_queryset(self):
-        return Document.objects.filter(
-            document_type__in=self.workflow.document_types.all()
-        )
-
-    def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.workflow,
-            'title': _('Documents with the workflow: %s') % self.workflow
-        }
-
-
 class WorkflowInstanceDetailView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, users=request.user,
+            permissions=permission_workflow_view, user=request.user,
             obj=self.get_workflow_instance().document
         )
 
@@ -430,6 +408,121 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
             'document_states:setup_workflow_transitions',
             args=(self.get_object().workflow.pk,)
         )
+
+
+class WorkflowListView(SingleObjectListView):
+    view_permission = permission_workflow_view
+
+    def get_queryset(self):
+        return WorkflowRuntimeProxy.objects.all()
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'title': _('Workflows')
+        }
+
+
+class WorkflowDocumentListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.workflow = get_object_or_404(
+            WorkflowRuntimeProxy, pk=self.kwargs['pk']
+        )
+
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.workflow
+        )
+
+        return super(
+            WorkflowDocumentListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        return Document.objects.filter(workflows__workflow=self.workflow)
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.workflow,
+            'title': _('Documents with the workflow: %s') % self.workflow
+        }
+
+
+class WorkflowStateDocumentListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.workflow_state = get_object_or_404(
+            WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
+        )
+
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.workflow_state.workflow
+        )
+
+        return super(
+            WorkflowStateDocumentListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        latest_entries = WorkflowInstanceLogEntry.objects.annotate(
+            max_datetime=Max(
+                'workflow_instance__log_entries__datetime'
+            )
+        ).filter(
+            datetime=F('max_datetime')
+        )
+
+        state_latest_entries = latest_entries.filter(
+            transition__destination_state=self.workflow_state
+        )
+
+        return Document.objects.filter(
+            workflows__pk__in=state_latest_entries.values_list(
+                'workflow_instance', flat=True
+            )
+        )
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.workflow_state,
+            'navigation_object_list': ('object', 'workflow'),
+            'workflow': WorkflowRuntimeProxy.objects.get(
+                pk=self.workflow_state.workflow.pk
+            ),
+            'title': _(
+                'Documents in the workflow "%s", state "%s"'
+            ) % (self.workflow_state.workflow, self.workflow_state)
+        }
+
+
+class WorkflowStateListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.get_workflow()
+        )
+
+        return super(
+            WorkflowStateListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'hide_columns': True,
+            'hide_link': True,
+            'object': self.get_workflow(),
+            'title': _('States of workflow: %s') % self.get_workflow()
+        }
+
+    def get_queryset(self):
+        return WorkflowStateRuntimeProxy.objects.filter(
+            workflow=self.get_workflow()
+        )
+
+    def get_workflow(self):
+        return get_object_or_404(WorkflowRuntimeProxy, pk=self.kwargs['pk'])
 
 
 class ToolLaunchAllWorkflows(ConfirmView):

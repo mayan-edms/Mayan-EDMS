@@ -120,6 +120,8 @@ Other changes
   controlled by the COMMON_TEST_FILE_HANDLES and COMMON_TEST_FILE_HANDLES settings.
 
 - Add tool to launch all workflows. GitLab issue #355
+- New workflow view that lists documents currently executing a workflow and
+  documents by their specific current workflow state.
 
 Removals
 --------

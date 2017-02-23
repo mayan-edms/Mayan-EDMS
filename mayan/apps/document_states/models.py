@@ -56,6 +56,7 @@ class Workflow(models.Model):
             )
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Workflow')
         verbose_name_plural = _('Workflows')
 
@@ -89,6 +90,7 @@ class WorkflowState(models.Model):
         return super(WorkflowState, self).save(*args, **kwargs)
 
     class Meta:
+        ordering = ('label',)
         unique_together = ('workflow', 'label')
         verbose_name = _('Workflow state')
         verbose_name_plural = _('Workflow states')
@@ -114,6 +116,7 @@ class WorkflowTransition(models.Model):
         return self.label
 
     class Meta:
+        ordering = ('label',)
         unique_together = (
             'workflow', 'label', 'origin_state', 'destination_state'
         )
@@ -211,3 +214,17 @@ class WorkflowInstanceLogEntry(models.Model):
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices():
             raise ValidationError(_('Not a valid transition choice.'))
+
+
+class WorkflowRuntimeProxy(Workflow):
+    class Meta:
+        proxy = True
+        verbose_name = _('Workflow runtime proxy')
+        verbose_name_plural = _('Workflow runtime proxies')
+
+
+class WorkflowStateRuntimeProxy(WorkflowState):
+    class Meta:
+        proxy = True
+        verbose_name = _('Workflow state runtime proxy')
+        verbose_name_plural = _('Workflow state runtime proxies')
