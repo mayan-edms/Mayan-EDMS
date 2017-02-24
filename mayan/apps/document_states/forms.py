@@ -40,29 +40,9 @@ class WorkflowInstanceTransitionForm(forms.Form):
         user = kwargs.pop('user')
         workflow_instance = kwargs.pop('workflow_instance')
         super(WorkflowInstanceTransitionForm, self).__init__(*args, **kwargs)
-        queryset = workflow_instance.get_transition_choices().all()
-
-        try:
-            Permission.check_permissions(
-                requester=user, permissions=(permission_workflow_transition,)
-            )
-        except PermissionDenied:
-            try:
-                # Check for ACL access to the workflow, if true, allow all
-                # transition options.
-                AccessControlList.objects.check_access(
-                    permissions=permission_workflow_transition, user=user,
-                    obj=workflow_instance.workflow
-                )
-            except PermissionDenied:
-                # If not ACL access to the workflow, filter transition options
-                # by each transition ACL access
-                queryset = AccessControlList.objects.filter_by_access(
-                    permission=permission_workflow_transition, user=user,
-                    queryset=queryset
-                )
-
-        self.fields['transition'].queryset = queryset
+        self.fields[
+            'transition'
+        ].queryset = workflow_instance.get_transition_choices(_user=user)
 
     transition = forms.ModelChoiceField(
         label=_('Transition'), queryset=WorkflowTransition.objects.none()
