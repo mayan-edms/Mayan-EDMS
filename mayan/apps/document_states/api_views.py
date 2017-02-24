@@ -15,8 +15,7 @@ from rest_api.permissions import MayanPermission
 from .models import Workflow
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view
+    permission_workflow_edit, permission_workflow_view
 )
 from .serializers import (
     NewWorkflowDocumentTypeSerializer, WorkflowDocumentTypeSerializer,

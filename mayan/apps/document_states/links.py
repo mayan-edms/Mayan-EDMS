@@ -6,8 +6,7 @@ from navigation import Link
 
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view,
+    permission_workflow_edit, permission_workflow_view,
 )
 
 link_document_workflow_instance_list = Link(
