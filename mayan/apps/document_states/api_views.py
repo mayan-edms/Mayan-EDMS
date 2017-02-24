@@ -590,21 +590,27 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
         )
 
     def get_document(self):
-        if self.request.method == 'GET':
-            permission_required = permission_workflow_view
-        else:
-            permission_required = permission_workflow_transition
-
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, document
-            )
+        if self.request.method == 'GET':
+            """
+            Only test for permission if reading. If writing, the permission
+            will be checked in the serializer
+
+            IMPROVEMENT:
+            When writing, add check for permission or ACL for the workflow.
+            Failing that, check for ACLs for any of the workflow's transitions.
+            Failing that, then raise PermissionDenied
+            """
+
+            try:
+                Permission.check_permissions(
+                    self.request.user, (permission_workflow_view,)
+                )
+            except PermissionDenied:
+                AccessControlList.objects.check_access(
+                    permission_workflow_view, self.request.user, document
+                )
 
         return document
 
