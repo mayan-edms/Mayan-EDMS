@@ -263,7 +263,13 @@ class UploadInteractiveView(UploadBaseView):
                 'shortly.'
             )
         )
-        return HttpResponseRedirect(self.request.get_full_path())
+
+        return HttpResponseRedirect(
+            '{}?{}'.format(
+                reverse(self.request.resolver_match.view_name),
+                self.request.META['QUERY_STRING']
+            ),
+        )
 
     def create_source_form_form(self, **kwargs):
         return self.get_form_classes()['source_form'](
@@ -304,7 +310,10 @@ class UploadInteractiveView(UploadBaseView):
         if not isinstance(self.source, StagingFolderSource):
             context['subtemplates_list'][0]['context'].update(
                 {
-                    'form_action': self.request.get_full_path(),
+                    'form_action': '{}?{}'.format(
+                        reverse(self.request.resolver_match.view_name),
+                        self.request.META['QUERY_STRING']
+                    ),
                     'form_class': 'dropzone',
                     'form_disable_submit': True,
                     'form_id': 'html5upload',
