@@ -4,13 +4,14 @@ from json import dumps
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ugettext
-from django.views.generic import TemplateView
+from django.views.generic import RedirectView, TemplateView
 
 from .classes import Filter
 from .forms import (
@@ -104,6 +105,11 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 
     def get_object(self):
         return self.request.user.locale_profile
+
+
+class FaviconRedirectView(RedirectView):
+    permanent=True
+    url=static('appearance/images/favicon.ico')
 
 
 class FilterSelectView(SimpleView):
