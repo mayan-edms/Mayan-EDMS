@@ -423,3 +423,16 @@ Wheel package
     $ pip install <path of the Git repository>/dist/mayan_edms-x.y.z-py2-none-any.whl
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
+
+
+Version numbering
+~~~~~~~~~~~~~~~~~
+
+Mayan EDMS uses the Semantic Versioning (http://semver.org/) method to choose
+version numbers along with Python's PEP-0440 (https://www.python.org/dev/peps/pep-0440/)
+to format them.
+
+X.YaN   # Alpha release
+X.YbN   # Beta release
+X.YrcN  # Release Candidate
+X.Y     # Final release
