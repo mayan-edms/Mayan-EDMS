@@ -201,7 +201,7 @@ class DocumentStateToolViewTestCase(GenericDocumentViewTestCase):
         response = self.post(
             'document_states:tool_launch_all_workflows',
         )
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
             self.document.workflows.first().workflow, self.workflow
