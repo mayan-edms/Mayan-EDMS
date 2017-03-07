@@ -87,3 +87,7 @@ link_setup_source_logs = Link(
     text=_('Logs'), view='sources:setup_source_logs',
     args=('resolved_object.pk',), permissions=(permission_sources_setup_view,)
 )
+link_setup_source_check_now = Link(
+    text=_('Check now'), view='sources:setup_source_check',
+    args=('resolved_object.pk',), permissions=(permission_sources_setup_view,)
+)

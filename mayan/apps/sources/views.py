@@ -12,8 +12,8 @@ from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import (
-    MultiFormView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    ConfirmView, MultiFormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
 from documents.models import DocumentType, Document
@@ -41,7 +41,7 @@ from .permissions import (
     permission_sources_setup_edit, permission_sources_setup_view,
     permission_staging_file_delete
 )
-from .tasks import task_source_handle_upload
+from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
@@ -435,6 +435,32 @@ class StagingFileDeleteView(SingleObjectDeleteView):
 
 
 # Setup views
+class SetupSourceCheckView(ConfirmView):
+    """
+    Trigger the task_check_interval_source task for a given source to
+    test/debug their configuration irrespective of the schedule task setup.
+    """
+    view_permission = permission_sources_setup_view
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Trigger check for source "%s"?') % self.get_object(),
+        }
+
+    def get_object(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+
+    def view_action(self):
+        task_check_interval_source.apply_async(
+            kwargs={
+                'source_id': self.get_object().pk
+            }
+        )
+
+        messages.success(self.request, _('Source check queued.'))
+
+
 class SetupSourceCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_create
@@ -490,9 +516,6 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
-    view_permission = permission_sources_setup_view
-    queryset = Source.objects.select_subclasses()
-
     extra_context = {
         'extra_columns': (
             {
@@ -509,3 +532,5 @@ class SetupSourceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Sources'),
     }
+    queryset = Source.objects.select_subclasses()
+    view_permission = permission_sources_setup_view

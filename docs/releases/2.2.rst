@@ -2,7 +2,7 @@
 Mayan EDMS v2.2 release notes
 =============================
 
-Released: XX, 2017
+Released: April XX, 2017
 
 What's new
 ==========
@@ -61,6 +61,7 @@ resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------
+- Add "Check now" button to interval sources.
 - Remove the installation app
 - Add support for page search
 - Remove recent searches feature
