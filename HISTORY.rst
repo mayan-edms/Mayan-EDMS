@@ -17,7 +17,7 @@ the user links
 - Add support for attaching multiple tags (GitLab #307).
 
 2.1.10 (2017-02-13)
-==================
+===================
 - Update Makefile to use twine for releases.
 - Add Makefile target to make test releases.
 
@@ -48,7 +48,7 @@ the user links
 - Enable the parser and validation fields of the metadata serializer.
 
 2.1.6 (2016-11-23)
-=================
+==================
 - Fix variable name typo in the rotation transformation class.
 - Update translations
 
