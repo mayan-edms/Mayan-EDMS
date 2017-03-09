@@ -15,6 +15,7 @@ the user links
 - Tags are alphabetically ordered by label (GitLab #342).
 - Stop loading theme fonts from the web (GitLab #343).
 - Add support for attaching multiple tags (GitLab #307).
+- Integrate the Cabinets app.
 
 2.1.10 (2017-02-13)
 ===================

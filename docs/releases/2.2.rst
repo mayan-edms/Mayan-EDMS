@@ -61,6 +61,7 @@ resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------
+- The Cabinets app integration.
 - Add "Check now" button to interval sources.
 - Remove the installation app
 - Add support for page search

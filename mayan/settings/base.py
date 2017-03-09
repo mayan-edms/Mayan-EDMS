@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'smart_settings',
     'user_management',
     # Mayan EDMS
+    'cabinets',
     'checkouts',
     'document_comments',
     'document_indexing',
