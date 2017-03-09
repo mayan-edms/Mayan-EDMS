@@ -4,7 +4,6 @@ from json import dumps
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
@@ -108,8 +107,15 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 
 
 class FaviconRedirectView(RedirectView):
-    permanent=True
-    url=static('appearance/images/favicon.ico')
+    permanent = True
+
+    def get_redirect_url(self, *args, **kwargs):
+        """
+        Hide the static tag import to avoid errors with static file
+        processors
+        """
+        from django.contrib.staticfiles.templatetags.staticfiles import static
+        return static('appearance/images/favicon.ico')
 
 
 class FilterSelectView(SimpleView):
