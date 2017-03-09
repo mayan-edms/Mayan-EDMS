@@ -115,6 +115,23 @@ runserver_plus:
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
 
+docker_services_on:
+	docker run -d --name redis -p 6379:6379 redis
+	docker run -d --name postgres -p 5432:5432 postgres
+	while ! nc -z 127.0.0.1 6379; do sleep 1; done
+	while ! nc -z 127.0.0.1 5432; do sleep 1; done
+	sleep 1
+	./manage.py initialsetup --settings=mayan.settings.testing.docker
+
+docker_services_off:
+	docker stop postgres redis
+	docker rm postgres redis
+
+docker_services_frontend:
+	./manage.py runserver --settings=mayan.settings.testing.docker
+
+docker_services_worker:
+	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO
 
 # Security
 
