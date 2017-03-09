@@ -157,12 +157,12 @@ Manually upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
-Common steps
-~~~~~~~~~~~~
-
 Remove deprecated requirements::
 
     $ pip uninstall -y -r removals.txt
+
+Common steps
+~~~~~~~~~~~~
 
 Migrate existing database schema with::
 
