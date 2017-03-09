@@ -100,6 +100,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     revert = serializers.HyperlinkedIdentityField(
         view_name='rest_api:documentversion-revert'
     )
+    size = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
@@ -108,7 +109,10 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:documentversion-detail'},
         }
         model = DocumentVersion
-        read_only_fields = ('document', 'file')
+        read_only_fields = ('document', 'file', 'size')
+
+    def get_size(self, instance):
+        return instance.size
 
 
 class WritableDocumentVersionSerializer(serializers.ModelSerializer):
