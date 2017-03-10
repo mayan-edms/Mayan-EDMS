@@ -144,3 +144,20 @@ class ACLAPITestCase(APITestCase):
         self.assertEqual(
             response.data['pk'], permission_document_view.pk
         )
+
+    def test_object_acl_post_no_permissions_added_view(self):
+        response = self.client.post(
+            reverse(
+                'rest_api:accesscontrollist-list',
+                args=(
+                    self.document_content_type.app_label,
+                    self.document_content_type.model,
+                    self.document.pk
+                )
+            ), data={'role_pk': self.role.pk}
+        )
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            self.document.acls.first().content_object, self.document
+        )

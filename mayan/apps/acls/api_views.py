@@ -11,13 +11,12 @@ from permissions import Permission
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 from .serializers import (
-    AccessControlListPermissionSerializer, AccessControlListSerializer
+    AccessControlListPermissionSerializer, AccessControlListSerializer,
+    WritableAccessControlListSerializer
 )
 
 
-class APIObjectACLListView(generics.ListAPIView):
-    serializer_class = AccessControlListSerializer
-
+class APIObjectACLListView(generics.ListCreateAPIView):
     def get(self, *args, **kwargs):
         """
         Returns a list of all the object's access control lists
@@ -35,13 +34,18 @@ class APIObjectACLListView(generics.ListAPIView):
             content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
+        if self.request.method == 'GET':
+            permission_required = permission_acl_view
+        else:
+            permission_required = permission_acl_edit
+
         try:
             Permission.check_permissions(
-                self.request.user, permissions=(permission_acl_view,)
+                self.request.user, permissions=(permission_required,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_acl_view, self.request.user, content_object
+                permission_required, self.request.user, content_object
             )
 
         return content_object
@@ -55,10 +59,24 @@ class APIObjectACLListView(generics.ListAPIView):
         """
 
         return {
+            'content_object': self.get_content_object(),
             'format': self.format_kwarg,
             'request': self.request,
             'view': self
         }
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return AccessControlListSerializer
+        else:
+            return WritableAccessControlListSerializer
+
+    def post(self, *args, **kwargs):
+        """
+        Create a new access control list for the selected object.
+        """
+
+        return super(APIObjectACLListView, self).post(*args, **kwargs)
 
 
 class APIObjectACLView(generics.RetrieveAPIView):
