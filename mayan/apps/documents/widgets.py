@@ -82,10 +82,15 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(
-        document.latest_version.pages.first(),
-        click_view='documents:document_display', **kwargs
-    )
+    if document.latest_version:
+        return document_html_widget(
+            document.latest_version.pages.first(),
+            click_view='documents:document_display', **kwargs
+        )
+    else:
+        return mark_safe(
+            '<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-close fa-stack-1x text-danger"></i></span>'
+        )
 
 
 def document_link(document):
