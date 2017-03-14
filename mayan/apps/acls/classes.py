@@ -43,7 +43,9 @@ class ModelPermission(object):
         if proxy:
             permissions.extend(cls._registry.get(proxy))
 
-        pks = [permission.stored_permission.pk for permission in set(permissions)]
+        pks = [
+            permission.stored_permission.pk for permission in set(permissions)
+        ]
         return StoredPermission.objects.filter(pk__in=pks)
 
     @classmethod

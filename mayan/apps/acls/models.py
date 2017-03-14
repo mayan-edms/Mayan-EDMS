@@ -45,7 +45,9 @@ class AccessControlList(models.Model):
         verbose_name_plural = _('Access entries')
 
     def __str__(self):
-        return _('Permissions "%(permissions)s" to role "%(role)s" for "%(object)s"') % {
+        return _(
+            'Permissions "%(permissions)s" to role "%(role)s" for "%(object)s"'
+        ) % {
             'permissions': self.get_permission_titles(),
             'object': self.content_object,
             'role': self.role

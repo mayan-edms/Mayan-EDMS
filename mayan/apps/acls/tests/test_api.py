@@ -20,6 +20,7 @@ from user_management.tests.literals import (
 )
 
 from ..models import AccessControlList
+from ..permissions import permission_acl_view
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -84,6 +85,23 @@ class ACLAPITestCase(APITestCase):
             response.data['results'][0]['role']['label'], TEST_ROLE_LABEL
         )
 
+    def test_object_acl_delete_view(self):
+        self._create_acl()
+
+        response = self.client.delete(
+            reverse(
+                'rest_api:accesscontrollist-detail',
+                args=(
+                    self.document_content_type.app_label,
+                    self.document_content_type.model,
+                    self.document.pk, self.acl.pk
+                )
+            )
+        )
+
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(AccessControlList.objects.count(), 0)
+
     def test_object_acl_detail_view(self):
         self._create_acl()
 
@@ -97,7 +115,6 @@ class ACLAPITestCase(APITestCase):
                 )
             )
         )
-
         self.assertEqual(
             response.data['content_type']['app_label'],
             self.document_content_type.app_label
@@ -106,24 +123,23 @@ class ACLAPITestCase(APITestCase):
             response.data['role']['label'], TEST_ROLE_LABEL
         )
 
-    def test_object_acl_permission_list_view(self):
+    def test_object_acl_permission_delete_view(self):
         self._create_acl()
+        permission = self.acl.permissions.first()
 
-        response = self.client.get(
+        response = self.client.delete(
             reverse(
-                'rest_api:accesscontrollist-permission-list',
+                'rest_api:accesscontrollist-permission-detail',
                 args=(
                     self.document_content_type.app_label,
                     self.document_content_type.model,
-                    self.document.pk, self.acl.pk
+                    self.document.pk, self.acl.pk,
+                    permission.pk
                 )
             )
         )
-
-        self.assertEqual(
-            response.data['results'][0]['pk'],
-            permission_document_view.pk
-        )
+        self.assertEqual(response.status_code, 204)
+        self.assertEqual(self.acl.permissions.count(), 0)
 
     def test_object_acl_permission_detail_view(self):
         self._create_acl()
@@ -145,6 +161,47 @@ class ACLAPITestCase(APITestCase):
             response.data['pk'], permission_document_view.pk
         )
 
+    def test_object_acl_permission_list_view(self):
+        self._create_acl()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:accesscontrollist-permission-list',
+                args=(
+                    self.document_content_type.app_label,
+                    self.document_content_type.model,
+                    self.document.pk, self.acl.pk
+                )
+            )
+        )
+
+        self.assertEqual(
+            response.data['results'][0]['pk'],
+            permission_document_view.pk
+        )
+
+    def test_object_acl_permission_list_post_view(self):
+        self._create_acl()
+
+        response = self.client.post(
+            reverse(
+                'rest_api:accesscontrollist-permission-list',
+                args=(
+                    self.document_content_type.app_label,
+                    self.document_content_type.model,
+                    self.document.pk, self.acl.pk
+                )
+            ), data={'permission_pk': permission_acl_view.pk}
+        )
+
+        self.assertEqual(response.status_code, 201)
+        self.assertQuerysetEqual(
+            ordered=False, qs=self.acl.permissions.all(), values=(
+                repr(permission_document_view.stored_permission),
+                repr(permission_acl_view.stored_permission)
+            )
+        )
+
     def test_object_acl_post_no_permissions_added_view(self):
         response = self.client.post(
             reverse(
@@ -159,5 +216,39 @@ class ACLAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(
+            self.document.acls.first().role, self.role
+        )
+        self.assertEqual(
             self.document.acls.first().content_object, self.document
+        )
+        self.assertEqual(
+            self.document.acls.first().permissions.count(), 0
+        )
+
+    def test_object_acl_post_with_permissions_added_view(self):
+        response = self.client.post(
+            reverse(
+                'rest_api:accesscontrollist-list',
+                args=(
+                    self.document_content_type.app_label,
+                    self.document_content_type.model,
+                    self.document.pk
+                )
+            ), data={
+                'role_pk': self.role.pk,
+                'permissions_pk_list': permission_acl_view.pk
+
+            }
+        )
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            self.document.acls.first().content_object, self.document
+        )
+        self.assertEqual(
+            self.document.acls.first().role, self.role
+        )
+        self.assertEqual(
+            self.document.acls.first().permissions.first(),
+            permission_acl_view.stored_permission
         )
