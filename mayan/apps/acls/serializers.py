@@ -106,7 +106,7 @@ class WritableAccessControlListPermissionSerializer(AccessControlListPermissionS
         if permissions_pk_list:
             for pk in permissions_pk_list.split(','):
                 try:
-                    permission = Permission.get(get_dict={'pk': pk})
+                    permission = Permission.get(pk=pk)
                 except KeyError:
                     raise ValidationError(_('No such permission: %s') % pk)
                 else:
@@ -182,7 +182,7 @@ class WritableAccessControlListSerializer(serializers.ModelSerializer):
         if permissions_pk_list:
             for pk in permissions_pk_list.split(','):
                 try:
-                    permission = Permission.get(get_dict={'pk': pk})
+                    permission = Permission.get(pk=pk)
                 except KeyError:
                     raise ValidationError(_('No such permission: %s') % pk)
                 else:
