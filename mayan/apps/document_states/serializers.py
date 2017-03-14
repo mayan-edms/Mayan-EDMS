@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -328,24 +329,6 @@ class WritableWorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
         )
         model = WorkflowInstanceLogEntry
 
-    def create(self, validated_data):
-        validated_data['transition'] = WorkflowTransition.objects.get(
-            pk=validated_data.pop('transition_pk')
-        )
-        validated_data['user'] = self.context['request'].user
-        validated_data['workflow_instance'] = self.context['workflow_instance']
-
-        if validated_data['transition'] not in validated_data['workflow_instance'].get_transition_choices():
-            raise ValidationError(
-                {
-                    'transition_pk': _('Not a valid transition choice.')
-                }
-            )
-
-        return super(WritableWorkflowInstanceLogEntrySerializer, self).create(
-            validated_data
-        )
-
     def get_document_workflow_url(self, instance):
         return reverse(
             'rest_api:workflowinstance-detail', args=(
@@ -353,3 +336,19 @@ class WritableWorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
                 instance.workflow_instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
+
+    def validate(self, attrs):
+        attrs['user'] = self.context['request'].user
+        attrs['workflow_instance'] = self.context['workflow_instance']
+        attrs['transition'] = WorkflowTransition.objects.get(
+            pk=attrs.pop('transition_pk')
+        )
+
+        instance = WorkflowInstanceLogEntry(**attrs)
+
+        try:
+            instance.full_clean()
+        except DjangoValidationError as exception:
+            raise ValidationError(exception)
+
+        return attrs

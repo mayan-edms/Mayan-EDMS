@@ -1,17 +1,20 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
 from django.conf import settings
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
 from documents.models import Document, DocumentType
+from permissions import Permission
 
 from .managers import WorkflowManager
+from .permissions import permission_workflow_transition
 
 logger = logging.getLogger(__name__)
 
@@ -166,11 +169,41 @@ class WorkflowInstance(models.Model):
         except AttributeError:
             return None
 
-    def get_transition_choices(self):
+    def get_transition_choices(self, _user=None):
         current_state = self.get_current_state()
 
         if current_state:
-            return current_state.origin_transitions.all()
+            queryset = current_state.origin_transitions.all()
+
+            if _user:
+                try:
+                    Permission.check_permissions(
+                        requester=_user, permissions=(
+                            permission_workflow_transition,
+                        )
+                    )
+                except PermissionDenied:
+                    try:
+                        """
+                        Check for ACL access to the workflow, if true, allow
+                        all transition options.
+                        """
+
+                        AccessControlList.objects.check_access(
+                            permissions=permission_workflow_transition,
+                            user=_user, obj=self.workflow
+                        )
+                    except PermissionDenied:
+                        """
+                        If not ACL access to the workflow, filter transition
+                        options by each transition ACL access
+                        """
+
+                        queryset = AccessControlList.objects.filter_by_access(
+                            permission=permission_workflow_transition,
+                            user=_user, queryset=queryset
+                        )
+            return queryset
         else:
             """
             This happens when a workflow has no initial state and a document
@@ -209,5 +242,5 @@ class WorkflowInstanceLogEntry(models.Model):
         verbose_name_plural = _('Workflow instance log entries')
 
     def clean(self):
-        if self.transition not in self.workflow_instance.get_transition_choices():
+        if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
             raise ValidationError(_('Not a valid transition choice.'))

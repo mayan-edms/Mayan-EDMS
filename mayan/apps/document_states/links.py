@@ -6,8 +6,7 @@ from navigation import Link
 
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view,
+    permission_workflow_edit, permission_workflow_view,
 )
 
 link_document_workflow_instance_list = Link(
@@ -76,7 +75,7 @@ link_workflow_instance_detail = Link(
     view='document_states:workflow_instance_detail', args='resolved_object.pk'
 )
 link_workflow_instance_transition = Link(
-    permissions=(permission_workflow_transition,), text=_('Transition'),
+    text=_('Transition'),
     view='document_states:workflow_instance_transition',
     args='resolved_object.pk'
 )
