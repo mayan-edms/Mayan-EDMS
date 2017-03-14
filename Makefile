@@ -7,8 +7,8 @@ help:
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
 
+	@echo "test - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single App, module or test class."
-	@echo "test-all - Run all tests."
 	@echo "docs_serve - Run the livehtml documentation generator."
 
 	@echo "translations_make - Refresh all translation files."
@@ -27,6 +27,11 @@ help:
 	@echo "runserver - Run the development server."
 	@echo "runserver_plus - Run the Django extension's development server."
 	@echo "shell_plus - Run the shell_plus command."
+
+	@echo "docker_services_on - Launch and initialize production-like services using Docker (Postgres and Redis)."
+	@echo "docker_services_off - Stop and delete the Docker production-like services."
+	@echo "docker_services_frontend - Launch a front end instance that uses the production-like services."
+	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
 
 	@echo "safety_check - Run a package safety check."
 
@@ -131,7 +136,7 @@ docker_services_frontend:
 	./manage.py runserver --settings=mayan.settings.testing.docker
 
 docker_services_worker:
-	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO
+	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO -O fair
 
 # Security
 
