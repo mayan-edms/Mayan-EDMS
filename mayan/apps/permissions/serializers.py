@@ -13,9 +13,9 @@ from .models import Role, StoredPermission
 
 
 class PermissionSerializer(serializers.Serializer):
-    namespace = serializers.CharField()
-    pk = serializers.CharField()
-    label = serializers.CharField()
+    namespace = serializers.CharField(read_only=True)
+    pk = serializers.CharField(read_only=True)
+    label = serializers.CharField(read_only=True)
 
     def to_representation(self, instance):
         if isinstance(instance, StoredPermission):
