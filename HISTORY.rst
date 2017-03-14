@@ -1,4 +1,4 @@
-2.2 (2016-XX-XX)
+2.2 (2017-04-XX)
 ================
 - Remove the installation app (GitLab #301).
 - Add support for document page search
@@ -16,6 +16,24 @@ the user links
 - Stop loading theme fonts from the web (GitLab #343).
 - Add support for attaching multiple tags (GitLab #307).
 - Integrate the Cabinets app.
+
+2.1.11 (2017-03-14)
+===================
+- Added a quick rename serializer to the document type API serializer.
+- Added per document type, workflow list API view.
+- Mayan EDMS was adopted a version 1.1 of the Linux Foundation Developer Certificate of Origin.
+- Added the detail url of a permission in the permission serializer.
+- Added endpoints for the ACL app API.
+- Implemented document workflows transition ACLs. GitLab issue #321.
+- Add document comments API endpoints. GitHub issue #249.
+- Add support for overriding the Celery class.
+- Changed the document upload view in source app to not use the HTTP referer
+  URL blindly, but instead recompose the URL using known view name. Needed
+  when integrating Mayan EDMS into other app via using iframes.
+- Addes size field to the document version serializer.
+- Removed the serializer from the deleted document restore API endpoint.
+- Added support for adding or editing document types to smart links via the
+  API.
 
 2.1.10 (2017-02-13)
 ===================

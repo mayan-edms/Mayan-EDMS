@@ -66,8 +66,9 @@ class Permission(object):
             if permissions.stored_permission.requester_has_this(requester):
                 return True
 
-        logger.debug('no permission')
-
+        logger.debug('User "%s" does not have permissions "%s"',
+                     requester,
+                     permissions)
         raise PermissionDenied(_('Insufficient permissions.'))
 
     @classmethod

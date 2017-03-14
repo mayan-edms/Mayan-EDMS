@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
 
+from acls import ModelPermission
+from acls.links import link_acl_list
 from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
@@ -29,6 +31,7 @@ from .links import (
     link_workflow_list, link_workflow_state_document_list,
     link_workflow_state_list
 )
+from .permissions import permission_workflow_transition
 
 
 class DocumentStatesApp(MayanAppConfig):
@@ -53,6 +56,15 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowState = self.get_model('WorkflowState')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+
+        ModelPermission.register(
+            model=Workflow, permissions=(permission_workflow_transition,)
+        )
+
+        ModelPermission.register(
+            model=WorkflowTransition,
+            permissions=(permission_workflow_transition,)
+        )
 
         SourceColumn(
             source=Workflow, label=_('Initial state'),
@@ -144,7 +156,7 @@ class DocumentStatesApp(MayanAppConfig):
             links=(
                 link_setup_workflow_states, link_setup_workflow_transitions,
                 link_setup_workflow_document_types, link_setup_workflow_edit,
-                link_setup_workflow_delete
+                link_acl_list, link_setup_workflow_delete
             ), sources=(Workflow,)
         )
         menu_object.bind_links(
@@ -155,7 +167,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_setup_workflow_transition_edit,
+                link_setup_workflow_transition_edit, link_acl_list,
                 link_setup_workflow_transition_delete
             ), sources=(WorkflowTransition,)
         )

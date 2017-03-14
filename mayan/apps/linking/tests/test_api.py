@@ -73,6 +73,26 @@ class SmartLinkAPITestCase(BaseAPITestCase):
         self.assertEqual(SmartLink.objects.count(), 1)
         self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL)
 
+    def test_smart_link_create_with_document_types_view(self):
+        self._create_document_type()
+
+        response = self.client.post(
+            reverse('rest_api:smartlink-list'), data={
+                'label': TEST_SMART_LINK_LABEL,
+                'document_types_pk_list': self.document_type.pk
+            },
+        )
+
+        smart_link = SmartLink.objects.first()
+        self.assertEqual(response.data['id'], smart_link.pk)
+        self.assertEqual(response.data['label'], TEST_SMART_LINK_LABEL)
+
+        self.assertEqual(SmartLink.objects.count(), 1)
+        self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL)
+        self.assertQuerysetEqual(
+            smart_link.document_types.all(), (repr(self.document_type),)
+        )
+
     def test_smart_link_delete_view(self):
         smart_link = self._create_smart_link()
 
@@ -94,18 +114,23 @@ class SmartLinkAPITestCase(BaseAPITestCase):
         )
 
     def test_smart_link_patch_view(self):
+        self._create_document_type()
         smart_link = self._create_smart_link()
 
         self.client.patch(
             reverse('rest_api:smartlink-detail', args=(smart_link.pk,)),
             data={
                 'label': TEST_SMART_LINK_LABEL_EDITED,
+                'document_types_pk_list': self.document_type.pk
             }
         )
 
         smart_link.refresh_from_db()
 
         self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL_EDITED)
+        self.assertQuerysetEqual(
+            smart_link.document_types.all(), (repr(self.document_type),)
+        )
 
     def test_smart_link_put_view(self):
         smart_link = self._create_smart_link()

@@ -13,8 +13,7 @@ from rest_api.permissions import MayanPermission
 from .models import Workflow
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
-    permission_workflow_view
+    permission_workflow_edit, permission_workflow_view
 )
 from .serializers import (
     NewWorkflowDocumentTypeSerializer, WorkflowDocumentTypeSerializer,
@@ -552,17 +551,23 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
         )
 
     def get_document(self):
-        if self.request.method == 'GET':
-            permission_required = permission_workflow_view
-        else:
-            permission_required = permission_workflow_transition
-
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document
-        )
+        if self.request.method == 'GET':
+            """
+            Only test for permission if reading. If writing, the permission
+            will be checked in the serializer
+
+            IMPROVEMENT:
+            When writing, add check for permission or ACL for the workflow.
+            Failing that, check for ACLs for any of the workflow's transitions.
+            Failing that, then raise PermissionDenied
+            """
+
+            AccessControlList.objects.check_access(
+                permissions=permission_workflow_view, user=self.request.user,
+                obj=document
+            )
 
         return document
 

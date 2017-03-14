@@ -1,9 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
-from documents.serializers import DocumentSerializer
+from documents.models import DocumentType
+from documents.serializers import DocumentSerializer, DocumentTypeSerializer
 
 from .models import SmartLink, SmartLinkCondition
 
@@ -41,13 +45,15 @@ class SmartLinkSerializer(serializers.HyperlinkedModelSerializer):
     conditions_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:smartlinkcondition-list'
     )
+    document_types = DocumentTypeSerializer(read_only=True, many=True)
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:smartlink-detail'},
         }
         fields = (
-            'conditions_url', 'dynamic_label', 'enabled', 'label', 'id', 'url'
+            'conditions_url', 'document_types', 'dynamic_label', 'enabled',
+            'label', 'id', 'url'
         )
         model = SmartLink
 
@@ -104,12 +110,38 @@ class WritableSmartLinkSerializer(serializers.ModelSerializer):
     conditions_url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:smartlinkcondition-list'
     )
+    document_types_pk_list = serializers.CharField(
+        help_text=_(
+            'Comma separated list of document type primary keys to which this '
+            'smart link will be attached.'
+        ), required=False
+    )
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:smartlink-detail'},
         }
         fields = (
-            'conditions_url', 'dynamic_label', 'enabled', 'label', 'id', 'url'
+            'conditions_url', 'document_types_pk_list', 'dynamic_label',
+            'enabled', 'label', 'id', 'url'
         )
         model = SmartLink
+
+    def validate(self, attrs):
+        document_types_pk_list = attrs.pop('document_types_pk_list', None)
+        document_types_result = []
+
+        if document_types_pk_list:
+            for pk in document_types_pk_list.split(','):
+                try:
+                    document_type = DocumentType.objects.get(pk=pk)
+                except DocumentType.DoesNotExist:
+                    raise ValidationError(_('No such document type: %s') % pk)
+                else:
+                    # Accumulate valid stored document_type pks
+                    document_types_result.append(document_type.pk)
+
+        attrs['document_types'] = DocumentType.objects.filter(
+            pk__in=document_types_result
+        )
+        return attrs

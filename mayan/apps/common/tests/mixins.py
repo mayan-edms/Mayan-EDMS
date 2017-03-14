@@ -64,6 +64,7 @@ class OpenFileCheckMixin(object):
 
 class TempfileCheckMixin(object):
     # Ignore the jvmstat instrumentation and GitLab's CI .config files
+    # Ignore LibreOffice fontconfig cache dir
     ignore_globs = ('hsperfdata_*', '.config', '.cache')
 
     def _get_temporary_entries(self):
