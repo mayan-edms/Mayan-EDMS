@@ -162,9 +162,6 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:trasheddocument-restore'
     )
 
-    def get_document_type_label(self, instance):
-        return instance.document_type.label
-
     class Meta:
         extra_kwargs = {
             'document_type': {'view_name': 'rest_api:documenttype-detail'},
@@ -180,6 +177,9 @@ class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
             'deleted_date_time', 'description', 'document_type', 'label',
             'language'
         )
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):

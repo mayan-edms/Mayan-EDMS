@@ -79,10 +79,11 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_document_restore,)
     }
-
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
-    serializer_class = DeletedDocumentSerializer
+
+    def get_serializer_class(self):
+        return None
 
     def post(self, *args, **kwargs):
         self.get_object().restore()
