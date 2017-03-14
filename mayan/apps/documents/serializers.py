@@ -109,7 +109,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'checksum', 'comment', 'document_url', 'download_url', 'encoding',
-            'file', 'mimetype', 'pages_url', 'timestamp', 'url'
+            'file', 'mimetype', 'pages_url', 'size', 'timestamp', 'url'
         )
         model = DocumentVersion
         read_only_fields = ('document', 'file', 'size')
