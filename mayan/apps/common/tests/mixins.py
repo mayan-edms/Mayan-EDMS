@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 import glob
 import os
 
-import psutil
-
 from django.conf import settings
+if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
+    import psutil
 
 from ..settings import setting_temporary_directory
 
