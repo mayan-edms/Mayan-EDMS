@@ -61,22 +61,28 @@ resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------
-- The Cabinets app integration.
+- Simplify test runner by adding a new option '--mayan-apps' that automatically
+  tests all Mayan apps that report to have tests.
+- Change the app flag that indicates when an app has test from 'test' to the
+  more explicit 'has_test'.
+- The packaging manifest now includes test files. Test can now be executed
+  in production.
+- The Cabinets app integration as core app.
 - Add "Check now" button to interval sources.
-- Remove the installation app
-- Add support for page search
-- Remove recent searches feature
-- Remove dependency on the django-filetransfer library
-- Fix height calculation in resize transformation
-- Improve upgrade instructions
-- New image caching pipeline
+- Remove the installation app.
+- Add support for page search.
+- Remove recent searches feature.
+- Remove dependency on the django-filetransfer library.
+- Fix height calculation in resize transformation.
+- Improve upgrade instructions.
+- New image caching pipeline.
 - New drop down menus for the documents, folders and tags app as well as for
-  the user links
-- Dashboard
-- Moved licenses to their own module in every app
-- Update project to work with Django 1.10.4
-- Tags are alphabetically ordered by label
-- Stop loading theme fonts from the web
+  the user links.
+- Add support for a dashboard with default widgets.
+- Moved licenses to their own module in every app.
+- Update project to work with Django 1.10.
+- Tags are alphabetically ordered by label.
+- Stop loading theme fonts from the web.
 - Add support for attaching multiple tags to single or multiple documents.
 - Refactor the workflow for removing tags from single and multiple documents.
 - Move new version creation blocking from the documents app to the checkouts app.
