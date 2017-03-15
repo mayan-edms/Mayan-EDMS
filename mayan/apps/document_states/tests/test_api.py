@@ -17,8 +17,8 @@ from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from rest_api.tests import BaseAPITestCase
 from user_management.tests import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_GROUP,
-    TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_GROUP_NAME, TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
 from ..models import Workflow
@@ -661,7 +661,7 @@ class DocumentWorkflowsTransitionACLsAPITestCase(APITestCase):
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.group = Group.objects.create(name=TEST_GROUP)
+        self.group = Group.objects.create(name=TEST_GROUP_NAME)
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
