@@ -28,8 +28,8 @@ from .permissions import (
 
 
 class CabinetsApp(MayanAppConfig):
+    has_tests = True
     name = 'cabinets'
-    test = True
     verbose_name = _('Cabinets')
 
     def ready(self):

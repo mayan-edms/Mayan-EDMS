@@ -33,8 +33,8 @@ from .widgets import StagingFileThumbnailWidget
 
 
 class SourcesApp(MayanAppConfig):
+    has_tests = True
     name = 'sources'
-    test = True
     verbose_name = _('Sources')
 
     def ready(self):

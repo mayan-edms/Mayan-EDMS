@@ -48,8 +48,8 @@ def document_version_ocr_submit(self):
 
 
 class OCRApp(MayanAppConfig):
+    has_tests = True
     name = 'ocr'
-    test = True
     verbose_name = _('OCR')
 
     def ready(self):

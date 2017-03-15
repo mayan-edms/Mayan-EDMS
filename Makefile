@@ -7,7 +7,7 @@ help:
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
 
-	@echo "test - Run all tests."
+	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single App, module or test class."
 	@echo "docs_serve - Run the livehtml documentation generator."
 
@@ -55,6 +55,9 @@ clean-pyc:
 
 test:
 	./manage.py test $(MODULE) --settings=mayan.settings.testing --nomigrations
+
+test-all:
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --nomigrations
 
 
 # Documentation

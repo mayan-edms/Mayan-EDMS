@@ -11,8 +11,8 @@ from .links import link_search, link_search_advanced, link_search_again
 class DynamicSearchApp(MayanAppConfig):
     app_namespace = 'search'
     app_url = 'search'
+    has_tests = True
     name = 'dynamic_search'
-    test = True
     verbose_name = _('Dynamic search')
 
     def ready(self):

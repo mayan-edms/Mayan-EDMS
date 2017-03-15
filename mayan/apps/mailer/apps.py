@@ -21,8 +21,8 @@ from .permissions import (
 
 
 class MailerApp(MayanAppConfig):
+    has_tests = True
     name = 'mailer'
-    test = True
     verbose_name = _('Mailer')
 
     def ready(self):

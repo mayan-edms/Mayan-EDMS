@@ -29,8 +29,8 @@ from .permissions import (
 
 
 class LinkingApp(MayanAppConfig):
+    has_tests = True
     name = 'linking'
-    test = True
     verbose_name = _('Linking')
 
     def ready(self):

@@ -82,8 +82,8 @@ from .widgets import DocumentThumbnailWidget, DocumentPageThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
+    has_tests = True
     name = 'documents'
-    test = True
     verbose_name = _('Documents')
 
     def ready(self):

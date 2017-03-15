@@ -10,8 +10,8 @@ from .links import link_acl_create, link_acl_delete, link_acl_permissions
 
 
 class ACLsApp(MayanAppConfig):
+    has_tests = True
     name = 'acls'
-    test = True
     verbose_name = _('ACLs')
 
     def ready(self):

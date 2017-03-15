@@ -17,8 +17,8 @@ from .links import (
 
 
 class PermissionsApp(MayanAppConfig):
+    has_tests = True
     name = 'permissions'
-    test = True
     verbose_name = _('Permissions')
 
     def ready(self):

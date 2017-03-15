@@ -36,8 +36,8 @@ from .permissions import permission_workflow_transition
 
 class DocumentStatesApp(MayanAppConfig):
     app_url = 'states'
+    has_tests = True
     name = 'document_states'
-    test = True
     verbose_name = _('Document states')
 
     def ready(self):

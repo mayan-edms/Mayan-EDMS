@@ -26,8 +26,8 @@ from .permissions import (
 
 class DjangoGPGApp(MayanAppConfig):
     app_url = 'gpg'
+    has_tests = True
     name = 'django_gpg'
-    test = True
     verbose_name = _('Django GPG')
 
     def ready(self):

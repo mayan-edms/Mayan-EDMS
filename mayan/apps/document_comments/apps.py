@@ -20,8 +20,8 @@ from .permissions import (
 class DocumentCommentsApp(MayanAppConfig):
     app_namespace = 'comments'
     app_url = 'comments'
+    has_tests = True
     name = 'document_comments'
-    test = True
     verbose_name = _('Document comments')
 
     def ready(self):

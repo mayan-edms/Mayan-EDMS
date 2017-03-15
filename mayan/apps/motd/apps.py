@@ -17,8 +17,8 @@ logger = logging.getLogger(__name__)
 
 
 class MOTDApp(MayanAppConfig):
+    has_tests = True
     name = 'motd'
-    test = True
     verbose_name = _('Message of the day')
 
     def ready(self):
