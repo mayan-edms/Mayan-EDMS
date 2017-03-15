@@ -7,6 +7,7 @@ from django.test.runner import DiscoverRunner
 class MayanTestRunner(DiscoverRunner):
     @classmethod
     def add_arguments(cls, parser):
+        DiscoverRunner.add_arguments(parser)
         parser.add_argument(
             '--mayan-apps', action='store_true', default=False,
             dest='mayan_apps',
