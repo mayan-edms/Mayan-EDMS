@@ -72,14 +72,19 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                    {% if not request.user.is_authenticated %}
-                                        {% trans 'Anonymous' %}
-                                    {% else %}
-                                        {{ request.user.get_full_name|default:request.user }} <i class="fa fa-user-circle-o"></i>
-                                    {% endif %}
+                                    {% trans 'Profile' %} <i class="fa fa-user-circle-o"></i>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li class="text-center" style="padding-left: 10px; padding-right: 20px;">
+                                        {% if not request.user.is_authenticated %}
+                                            {% trans 'Anonymous' %}
+                                        {% else %}
+                                            {{ request.user.get_full_name|default:request.user }}
+                                        {% endif %}
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+
                                     {% get_menu_links 'user menu' as menu_links %}
                                     {% for link_set in menu_links %}
                                         {% for link in link_set %}

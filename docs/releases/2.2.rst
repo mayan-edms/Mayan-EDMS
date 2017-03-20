@@ -61,6 +61,10 @@ resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------
+- The user's full name or username is no longer displayed in the main menu.
+  Instead the work "Profile" is displayed. The users's full name or username
+  will be displayed when the "Profile" icon is clicked. This avoid menu
+  style breakable on long full names or usernames.
 - Simplify test runner by adding a new option '--mayan-apps' that automatically
   tests all Mayan apps that report to have tests.
 - Change the app flag that indicates when an app has test from 'test' to the
