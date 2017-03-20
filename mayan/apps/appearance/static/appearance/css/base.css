@@ -151,13 +151,17 @@ a i {
     padding-right: 3px;
 }
 
-.panel-dashboard-widget {
+.dashboard-widget {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     border: 1px solid black;
 }
 
-.panel-dashboard-widget .panel-heading i {
+.dashboard-widget .panel-heading i {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.dashboard-widget-icon {
+    font-size: 200%;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice .label {

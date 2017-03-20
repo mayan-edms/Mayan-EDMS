@@ -22,7 +22,7 @@
         </title>
 
         {% compress css %}
-            <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/font-awesome-4.7.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             {# Disable base Bootstrap CSS, Flatly seems to include it already #}
             {#<link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />#}
             <link href="{% static 'appearance/packages/bootswatch.com/flatly/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@
                                     {% if not request.user.is_authenticated %}
                                         {% trans 'Anonymous' %}
                                     {% else %}
-                                        {{ request.user.get_full_name|default:request.user }} <i class="fa fa-user"></i>
+                                        {{ request.user.get_full_name|default:request.user }} <i class="fa fa-user-circle-o"></i>
                                     {% endif %}
                                     <span class="caret"></span>
                                 </a>
