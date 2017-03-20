@@ -84,19 +84,29 @@ class Setting(object):
     def __unicode__(self):
         return unicode(self.global_name)
 
+    def cache_value(self):
+        self.raw_value = getattr(settings, self.global_name, self.default)
+        self.yaml = Setting.serialize_value(self.raw_value)
+        self.loaded = True
+
     def invalidate_cache(self):
         self.loaded = False
 
     @property
     def serialized_value(self):
+        """
+        YAML serialize value of the setting.
+        Used for UI display.
+        """
+        if not self.loaded:
+            self.cache_value()
+
         return self.yaml
 
     @property
     def value(self):
         if not self.loaded:
-            self.raw_value = getattr(settings, self.global_name, self.default)
-            self.yaml = Setting.serialize_value(self.raw_value)
-            self.loaded = True
+            self.cache_value()
 
         return self.raw_value
 
