@@ -87,7 +87,9 @@ INSTALLED_APPS = (
     'document_states',
     'documents',
     'events',
-    'folders',
+    # Disable the folders app by default
+    # Will be removed in the next version
+    # 'folders',
     'linking',
     'mailer',
     'metadata',

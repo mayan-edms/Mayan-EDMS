@@ -61,6 +61,13 @@ resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
 Other changes
 -------------
+- Cabinets app is now integrated as a core app.
+- Now that the Cabinets app is included, the Folders app has been disabled 
+  by default. To enable the Folders apps add the following line to your 
+  settings/local.py file::
+
+    INSTALLED_APPS += ('folders',)
+
 - The user's full name or username is no longer displayed in the main menu.
   Instead the work "Profile" is displayed. The users's full name or username
   will be displayed when the "Profile" icon is clicked. This avoid menu
@@ -71,7 +78,6 @@ Other changes
   more explicit 'has_test'.
 - The packaging manifest now includes test files. Test can now be executed
   in production.
-- The Cabinets app integration as core app.
 - Add "Check now" button to interval sources.
 - Remove the installation app.
 - Add support for page search.
