@@ -16,17 +16,18 @@ class PyOCR(OCRBackendBase):
     def __init__(self, *args, **kwargs):
         super(PyOCR, self).__init__(*args, **kwargs)
 
+        self.languages = ()
+
         tools = pyocr.get_available_tools()
         if len(tools) == 0:
             raise OCRError('No OCR tool found')
+
+        self.tool = tools[0]
 
         # The tools are returned in the recommended order of usage
         for tool in tools:
             if tool.__name__ == 'pyocr.libtesseract':
                 self.tool = tool
-
-        if not self.tool:
-            self.tool = tools[0]
 
         logger.debug('Will use tool \'%s\'', self.tool.get_name())
 
