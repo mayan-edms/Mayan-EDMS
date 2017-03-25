@@ -376,7 +376,7 @@ class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissi
             return result
 
 
-class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, ModelFormMixin, DetailView):
+class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, FormExtraKwargsMixin, ExtraContextMixin, ModelFormMixin, DetailView):
     template_name = 'appearance/generic_form.html'
 
     def get_context_data(self, **kwargs):
