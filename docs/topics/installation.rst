@@ -9,7 +9,7 @@ Being a Django_ and a Python_ project, familiarity with these technologies is
 recommended to better understand why Mayan EDMS does some of the things it
 does.
 
-Bellow are the step needed for a test install.
+Bellow are the steps needed for a test install.
 
 Binary dependencies
 ===================
@@ -45,15 +45,15 @@ With MacPorts installed run the command:
 Set the Binary paths
 ********************
 
-Mayan EDMS by default will look in /usr/bin/ for the binary files it needs
-so either you can symlink the binaries installed via MacPorts in /opt/local/bin/
-to /usr/bin/ with ...
+Mayan EDMS by default will look in /usr/bin/ for the binary files it needs.
+You can symlink the binaries installed via MacPorts in /opt/local/bin/
+to /usr/bin/ with:
 
 .. code-block:: bash
 
     sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract
 
-... alternatively set the paths in the ``settings/locals.py``
+Alternatively, set the paths in the ``settings/locals.py``
 
 .. code-block:: python
 
@@ -71,9 +71,9 @@ With Homebrew installed run the command:
 Set the Binary paths
 ********************
 
-Mayan EDMS by default will look in /usr/bin/ for the binary files it needs
-so either you can symlink the binaries installed via brew in /usr/local/bin/
-to /usr/bin/ with ...
+Mayan EDMS by default will look in /usr/bin/ for the binary files it needs.
+You can symlink the binaries installed via brew in /usr/local/bin/
+to /usr/bin/ with:
 
 .. code-block:: bash
 
@@ -82,7 +82,7 @@ to /usr/bin/ with ...
     sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext && \
     sudo ln -s /usr/local/bin/gs /usr/bin/gs
 
-... alternatively set the paths in the ``settings/locals.py``
+Alternatively, set the paths in the ``settings/locals.py``
 
 .. code-block:: python
 
@@ -99,7 +99,7 @@ Initialize a ``virtualenv`` to deploy the project:
     source venv/bin/activate
     pip install mayan-edms
 
-By default Mayan EDMS will create a single file SQLite_ database, which makes
+By default, Mayan EDMS will create a single file SQLite_ database, which makes
 it very easy to start using Mayan EDMS. Populate the database with the
 project's schema doing:
 
@@ -117,11 +117,13 @@ Background tasks and scheduled tasks will not run when using the test server.
 The ``runserver`` command is only meant for testing, do not use in a production
 server.
 
-Note that the default IP address, 127.0.0.1, is not accessible from other
+Note that the default 127.0.0.1 IP address is not accessible from other
 machines on your network. To make your test server viewable to other
-machines on the network, use its own IP address (e.g. 192.168.2.1) or 0.0.0.0 or :: (with IPv6 enabled).
+machines on the network, use its own IP address like 192.168.2.1 or 0.0.0.0 or 
+:: (with IPv6 enabled).
 
-You can provide an IPv6 address surrounded by brackets (e.g. [200a::1]:8000). This will automatically enable IPv6 support.
+You can provide an IPv6 address surrounded by brackets (e.g. [200a::1]:8000). 
+This will automatically enable IPv6 support.
 
 Production use
 ==============
@@ -129,7 +131,7 @@ Production use
 After making sure everything is running correctly, stop the ``runserver`` command.
 Deploy Mayan EDMS using the webserver of your preference. For more information
 on deployment instructions and examples, checkout Django's official documentation
-on the topic https://docs.djangoproject.com/en/1.7/howto/deployment/
+on the topic at https://docs.djangoproject.com/en/1.7/howto/deployment/
 For a simple production deployment setup follow the instructions in the
 :doc:`deploying` chapter.
 
