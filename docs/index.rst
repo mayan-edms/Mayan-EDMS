@@ -19,7 +19,7 @@ and install it from PyPI with the following commands:
     (venv) mayan-edms.py initialsetup
     (venv) mayan-edms.py runserver
 
-Point your browser to 127.0.0.1:8000 and use the automatically created admin
+Point your browser to http://127.0.0.1:8000 and use the automatically created admin
 account.
 
 .. image:: /_static/overview.gif
