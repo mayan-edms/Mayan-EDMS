@@ -16,8 +16,8 @@ request on GitLab_.
 Project philosophies
 --------------------
 
-How to think about Mayan EDMS when doing changes or adding new features,
-why things are the way they are in Mayan EDMS.
+How to think about Mayan EDMS when doing changes or adding new features;
+why things are the way they are in Mayan EDMS:
 
 - Functionality must be as market/sector independent as possible, code for the
   95% of use cases.
@@ -36,7 +36,7 @@ why things are the way they are in Mayan EDMS.
   not viable/mature/efficient.
 - Each app is as independent and self contained as possible. Exceptions, the
   basic requirements: navigation, permissions, common, main.
-- If an app is meant to be used by more than one other app it should be as
+- If an app is meant to be used by more than one other app, it should be as
   generic as possible in regard to the project and another app will bridge the functionality.
 
   - Example: since indexing (document_indexing) only applies to documents, the
@@ -48,7 +48,7 @@ Coding conventions
 
 Follow PEP8
 ~~~~~~~~~~~
-Whenever possible, but don't obsess over things like line length.
+Whenever possible, but don't obsess over things like line length:
 
 .. code-block:: bash
 
@@ -103,9 +103,9 @@ Example:
     )
     from .models import Index, IndexInstanceNode, DocumentRenameCount
 
-All local app module imports are in relative form, local app module name is to
+All local app module imports are in relative form. Local app module name is to
 be referenced as little as possible, unless required by a specific feature,
-trick, restriction, ie: Runtime modification of the module's attributes.
+trick, restriction (e.g., Runtime modification of the module's attributes).
 
 Incorrect:
 
@@ -128,7 +128,7 @@ Dependencies
 Mayan EDMS apps follow a hierarchical model of dependency. Apps import from
 their parents or siblings, never from their children. Think plugins. A parent
 app must never assume anything about a possible existing child app. The
-documents app and the Document model are the basic entities they must never
+documents app and the Document model are the basic entities; they must never
 import anything else. The common and main apps are the base apps.
 
 
