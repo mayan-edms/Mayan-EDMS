@@ -2,7 +2,7 @@
 Deploying
 =========
 
-Below are some ways to deploye and use Mayan EDMS. Do use more than one method.
+Below are some ways to deploy and use Mayan EDMS. Do not use more than one method.
 
 OS "bare metal" method
 ======================
