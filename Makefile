@@ -23,6 +23,7 @@ help:
 	@echo "sdist - Build the source distribution package."
 	@echo "wheel - Build the wheel distribution package."
 	@echo "release - Package (sdist and wheel) and upload a release."
+	@echo "test_release - Package (sdist and wheel) and upload to the PyPI test server."
 
 	@echo "runserver - Run the development server."
 	@echo "runserver_plus - Run the Django extension's development server."
