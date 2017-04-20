@@ -323,6 +323,7 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
 
+        # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
                 self.request,
