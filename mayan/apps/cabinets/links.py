@@ -28,7 +28,7 @@ link_document_cabinet_remove = Link(
 )
 link_cabinet_add_document = Link(
     permissions=(permission_cabinet_add_document,),
-    text=_('Add to a cabinets'), view='cabinets:cabinet_add_document',
+    text=_('Add to cabinets'), view='cabinets:cabinet_add_document',
     args='object.pk'
 )
 link_cabinet_add_multiple_documents = Link(
