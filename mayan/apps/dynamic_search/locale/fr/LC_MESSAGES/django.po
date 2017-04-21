@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014-2015
@@ -11,75 +11,90 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
 "PO-Revision-Date: 2016-03-21 21:02+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:16
 msgid "Dynamic search"
 msgstr "Recherche dynamique"
 
-#: forms.py:21
+#: classes.py:26
+msgid "No search model matching the query"
+msgstr ""
+
+#: forms.py:9
+msgid "Match all"
+msgstr ""
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+
+#: forms.py:29
 msgid "Search terms"
 msgstr "Termes de recherche"
 
-#: links.py:7 settings.py:8 views.py:56 views.py:70
+#: links.py:8 settings.py:8 views.py:51 views.py:62
 msgid "Search"
 msgstr "Recherche"
 
-#: links.py:9 views.py:77
+#: links.py:11 views.py:76
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
-#: links.py:11
+#: links.py:15
 msgid "Search again"
 msgstr "Rechercher à nouveau"
 
-#: models.py:24
-msgid "User"
-msgstr "Utilisateur"
-
-#: models.py:26
-msgid "Query"
-msgstr "Requête"
-
-#: models.py:28
-msgid "Datetime created"
-msgstr "Date et heure de création"
-
-#: models.py:30
-msgid "Hits"
-msgstr "Nombre de vues"
-
-#: models.py:74
-msgid "Recent search"
-msgstr "Recherche récente"
-
-#: models.py:75
-msgid "Recent searches"
-msgstr "Recherches récentes"
-
-#: settings.py:14
+#: settings.py:11
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Nombre maximum de résultats de recherche à traiter et afficher."
 
-#: settings.py:18
-msgid "Maximum number of search queries to remember per user."
-msgstr "Nombre maximal de recherches à mémoriser par utilisateur"
-
-#: views.py:25
-msgid "Search results"
+#: views.py:24
+#, fuzzy, python-format
+#| msgid "Search results"
+msgid "Search results for: %s"
 msgstr "Résultats de la recherche"
 
-#: views.py:32
-msgid "Type"
-msgstr "Type"
+#: views.py:64
+#, fuzzy, python-format
+#| msgid "Search error: %s"
+msgid "Search for: %s"
+msgstr "Search error: %s"
+
+#~ msgid "User"
+#~ msgstr "Utilisateur"
+
+#~ msgid "Query"
+#~ msgstr "Requête"
+
+#~ msgid "Datetime created"
+#~ msgstr "Date et heure de création"
+
+#~ msgid "Hits"
+#~ msgstr "Nombre de vues"
+
+#~ msgid "Recent search"
+#~ msgstr "Recherche récente"
+
+#~ msgid "Recent searches"
+#~ msgstr "Recherches récentes"
+
+#~ msgid "Maximum number of search queries to remember per user."
+#~ msgstr "Nombre maximal de recherches à mémoriser par utilisateur"
+
+#~ msgid "Type"
+#~ msgstr "Type"
 
 #~ msgid "Results"
 #~ msgstr "results"
@@ -90,7 +105,8 @@ msgstr "Type"
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 
@@ -115,6 +131,3 @@ msgstr "Type"
 #~ msgstr ""
 #~ "Enter the desired search keywords separated by space.  Only the top "
 #~ "%(search_results_limit)s results will be available."
-
-#~ msgid "Search error: %s"
-#~ msgstr "Search error: %s"

@@ -1,76 +1,79 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-11-02 04:15+0000\n"
 "Last-Translator: lilo.panic\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:31
+#: apps.py:41
 msgid "Document states"
 msgstr "Статусы документа"
 
-#: apps.py:47
+#: apps.py:70
 msgid "Initial state"
 msgstr "Исходное состояние"
 
-#: apps.py:48 apps.py:58 apps.py:68 apps.py:74
+#: apps.py:71 apps.py:81 apps.py:91 apps.py:97
 msgid "None"
 msgstr "Ничего"
 
-#: apps.py:52
+#: apps.py:75
 msgid "Current state"
 msgstr "Текущее состояние"
 
-#: apps.py:56 apps.py:83 models.py:189
+#: apps.py:79 apps.py:106 models.py:237
 msgid "User"
 msgstr "Пользователь"
 
-#: apps.py:62
+#: apps.py:85
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:66 apps.py:79
+#: apps.py:89 apps.py:102
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:72 apps.py:99 models.py:79
+#: apps.py:95 apps.py:122 models.py:84
 msgid "Completion"
 msgstr "Завершение"
 
-#: apps.py:86 forms.py:39 links.py:79 models.py:187
+#: apps.py:109 forms.py:43 links.py:85 models.py:235
 msgid "Transition"
 msgstr "Переход"
 
-#: apps.py:90 forms.py:41 models.py:190
+#: apps.py:113 forms.py:46 models.py:238
 msgid "Comment"
 msgstr "Комментарий"
 
-#: apps.py:95
+#: apps.py:118
 msgid "Is initial state?"
 msgstr ""
 
-#: apps.py:103 models.py:105
+#: apps.py:126 models.py:111
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:107 models.py:109
+#: apps.py:130 models.py:115
 msgid "Destination state"
 msgstr ""
 
-#: links.py:15 links.py:38 models.py:59 views.py:185
+#: links.py:15 links.py:38 links.py:95 models.py:64 views.py:130 views.py:409
 msgid "Workflows"
 msgstr ""
 
@@ -82,7 +85,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:29 models.py:25
+#: links.py:29 models.py:29
 msgid "Document types"
 msgstr "Типы документов"
 
@@ -94,7 +97,7 @@ msgstr "Редактировать"
 msgid "Create state"
 msgstr ""
 
-#: links.py:54
+#: links.py:54 links.py:104
 msgid "States"
 msgstr ""
 
@@ -106,72 +109,106 @@ msgstr ""
 msgid "Transitions"
 msgstr ""
 
-#: links.py:75
+#: links.py:77
+msgid "Launch all workflows"
+msgstr ""
+
+#: links.py:81
 msgid "Detail"
 msgstr ""
 
-#: models.py:21 models.py:67 models.py:101
+#: links.py:90
+msgid "Workflow documents"
+msgstr ""
+
+#: links.py:99
+#, fuzzy
+#| msgid "Available document types"
+msgid "State documents"
+msgstr "Доступные типы документов"
+
+#: models.py:25 models.py:72 models.py:107
 msgid "Label"
 msgstr "Надпись"
 
-#: models.py:58 models.py:65 models.py:99 models.py:126
+#: models.py:63 models.py:70 models.py:105 models.py:133
 msgid "Workflow"
 msgstr ""
 
-#: models.py:71
+#: models.py:76
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
 msgstr ""
 
-#: models.py:73
+#: models.py:78
 msgid "Initial"
 msgstr ""
 
-#: models.py:77
+#: models.py:82
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
 msgstr ""
 
-#: models.py:92
+#: models.py:98
 msgid "Workflow state"
 msgstr ""
 
-#: models.py:93
+#: models.py:99
 msgid "Workflow states"
 msgstr ""
 
-#: models.py:119
+#: models.py:126
 msgid "Workflow transition"
 msgstr ""
 
-#: models.py:120
+#: models.py:127
 msgid "Workflow transitions"
 msgstr ""
 
-#: models.py:129
+#: models.py:136
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:173 models.py:181
+#: models.py:221 models.py:229
 msgid "Workflow instance"
 msgstr ""
 
-#: models.py:174
+#: models.py:222
 msgid "Workflow instances"
 msgstr ""
 
-#: models.py:184
+#: models.py:232
 msgid "Datetime"
 msgstr ""
 
-#: models.py:196
+#: models.py:244
 msgid "Workflow instance log entry"
 msgstr ""
 
-#: models.py:197
+#: models.py:245
 msgid "Workflow instance log entries"
+msgstr ""
+
+#: models.py:249
+msgid "Not a valid transition choice."
+msgstr ""
+
+#: models.py:255
+msgid "Workflow runtime proxy"
+msgstr ""
+
+#: models.py:256
+msgid "Workflow runtime proxies"
+msgstr ""
+
+#: models.py:262
+msgid "Workflow state runtime proxy"
+msgstr ""
+
+#: models.py:263
+msgid "Workflow state runtime proxies"
 msgstr ""
 
 #: permissions.py:7
@@ -194,67 +231,122 @@ msgstr ""
 msgid "View workflows"
 msgstr ""
 
-#: permissions.py:26
+#: permissions.py:25
 msgid "Transition workflows"
 msgstr ""
 
-#: views.py:57
+#: permissions.py:28
+msgid "Execute workflow tools"
+msgstr ""
+
+#: serializers.py:22
+msgid "Primary key of the document type to be added."
+msgstr ""
+
+#: serializers.py:37
+msgid ""
+"API URL pointing to a document type in relation to the workflow to which it "
+"is attached. This URL is different than the canonical document type URL."
+msgstr ""
+
+#: serializers.py:116
+msgid "Primary key of the destination state to be added."
+msgstr ""
+
+#: serializers.py:120
+msgid "Primary key of the origin state to be added."
+msgstr ""
+
+#: serializers.py:218
+msgid ""
+"API URL pointing to a workflow in relation to the document to which it is "
+"attached. This URL is different than the canonical workflow URL."
+msgstr ""
+
+#: serializers.py:227
+msgid "A link to the entire history of this workflow."
+msgstr ""
+
+#: serializers.py:259
+msgid ""
+"Comma separated list of document type primary keys to which this workflow "
+"will be attached."
+msgstr ""
+
+#: serializers.py:319
+msgid "Primary key of the transition to be added."
+msgstr ""
+
+#: views.py:54
 #, python-format
 msgid "Workflows for document: %s"
 msgstr ""
 
-#: views.py:91
-#, python-format
-msgid "Documents with the workflow: %s"
-msgstr ""
-
-#: views.py:116
+#: views.py:78
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr ""
 
-#: views.py:162
+#: views.py:106
 msgid "Submit"
 msgstr "Подтвердить"
 
-#: views.py:164
+#: views.py:108
 #, python-format
 msgid "Do transition for workflow: %s"
 msgstr ""
 
-#: views.py:215
+#: views.py:160
 msgid "Available document types"
 msgstr "Доступные типы документов"
 
-#: views.py:216
+#: views.py:161
 msgid "Document types assigned this workflow"
 msgstr ""
 
-#: views.py:226
+#: views.py:171
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr ""
 
-#: views.py:269
+#: views.py:210 views.py:503
 #, python-format
 msgid "States of workflow: %s"
 msgstr ""
 
-#: views.py:287
+#: views.py:228
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr ""
 
-#: views.py:363
+#: views.py:304
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr ""
 
-#: views.py:376
+#: views.py:317
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr ""
 
-#: views.py:406
+#: views.py:347
 msgid "Unable to save transition; integrity error."
+msgstr ""
+
+#: views.py:435
+#, python-format
+msgid "Documents with the workflow: %s"
+msgstr ""
+
+#: views.py:482
+#, python-format
+msgid "Documents in the workflow \"%s\", state \"%s\""
+msgstr ""
+
+#: views.py:517
+msgid "Launch all workflows?"
+msgstr ""
+
+#: views.py:524
+msgid "Workflow launch queued successfully."
 msgstr ""

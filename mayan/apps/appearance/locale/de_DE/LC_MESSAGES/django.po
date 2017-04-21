@@ -1,28 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11
+#: apps.py:12
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: templates/403.html:5 templates/403.html.py:9
+#: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "Unzureichende Berechtigungen"
 
@@ -30,7 +31,7 @@ msgstr "Unzureichende Berechtigungen"
 msgid "You don't have enough permissions for this operation."
 msgstr "Sie haben unzureichende Berechtigungen für diesen Vorgang."
 
-#: templates/404.html:5 templates/404.html.py:9
+#: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
@@ -38,23 +39,27 @@ msgstr "Seite nicht gefunden"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Die angeforderte Seite konnte leider nicht gefunden werden"
 
-#: templates/500.html:5 templates/500.html.py:9
+#: templates/500.html:5 templates/500.html:9
 msgid "Server error"
 msgstr "Serverfehler"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren "
+"gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Wenn Sie Hilfe brauchen, können Sie den Fehler über folgende Kennung referenzieren: "
+msgstr ""
+"Wenn Sie Hilfe brauchen, können Sie den Fehler über folgende Kennung "
+"referenzieren: "
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
 msgstr "Über"
 
@@ -67,47 +72,47 @@ msgstr "Version"
 msgid "Build number: %(build_number)s"
 msgstr "Build Nummer: %(build_number)s"
 
-#: templates/appearance/about.html:88
+#: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
 msgstr "Veröffentlicht unter der Apache 2.0 Lizenz"
 
-#: templates/appearance/about.html:100
+#: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "Copyright &copy; 2011-2015 Roberto Rosario."
 
-#: templates/appearance/base.html:43
+#: templates/appearance/base.html:45
 msgid "Toggle navigation"
 msgstr "Navigation ein-/ausschalten"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+msgid "Profile"
+msgstr ""
+
+#: templates/appearance/base.html:81
 msgid "Anonymous"
 msgstr "Anonymer Benutzer"
 
-#: templates/appearance/base.html:74
-msgid "User details"
-msgstr "Benutzerdetails"
-
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Success"
 msgstr "Erfolg"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Information"
 msgstr "Information"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Warning"
 msgstr "Warnung"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Error"
 msgstr "Fehler"
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:144
 msgid "Actions"
 msgstr "Aktionen"
 
-#: templates/appearance/base.html:117
+#: templates/appearance/base.html:146
 msgid "Toggle Dropdown"
 msgstr "Ausklappmenü ein-/ausschalten"
 
@@ -125,6 +130,12 @@ msgstr "%(object)s bearbeiten"
 msgid "Create"
 msgstr "Erstellen"
 
+#: templates/appearance/dashboard_widget.html:25
+#, fuzzy
+#| msgid "User details"
+msgid "View details"
+msgstr "Benutzerdetails"
+
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
 msgid "Confirm"
@@ -139,39 +150,39 @@ msgstr "Löschen bestätigen"
 msgid "Delete: %(object)s?"
 msgstr "%(object)s löschen?"
 
-#: templates/appearance/generic_confirm.html:47
+#: templates/appearance/generic_confirm.html:48
 msgid "Yes"
 msgstr "Ja"
 
-#: templates/appearance/generic_confirm.html:49
+#: templates/appearance/generic_confirm.html:52
 msgid "No"
 msgstr "Nein"
 
 #: templates/appearance/generic_form_instance.html:39
 #: templates/appearance/generic_form_instance.html:46
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:43
+#: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
 msgstr "erforderlich"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr "Speichern"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_subtemplate.html:31
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "Absenden"
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:69
+#: templates/appearance/generic_multiform_subtemplate.html:68
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_subtemplate.html:108
+#: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr "Kein Ergebnis"
 
@@ -180,7 +191,9 @@ msgstr "Kein Ergebnis"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
+msgstr ""
+"Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -188,33 +201,39 @@ msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(
 msgid "Total: %(total)s"
 msgstr "Gesamt: %(total)s"
 
-#: templates/appearance/generic_list_subtemplate.html:51
+#: templates/appearance/generic_list_subtemplate.html:53
 msgid "Identifier"
 msgstr "Bezeichner"
 
-#: templates/appearance/home.html:8 templates/appearance/home.html.py:12
-msgid "Home"
-msgstr "Start"
+#: templates/appearance/home.html:9 templates/appearance/home.html:13
+msgid "Dashboard"
+msgstr ""
 
-#: templates/appearance/home.html:21
+#: templates/appearance/home.html:22
 msgid "Getting started"
 msgstr "Erste Schritte"
 
-#: templates/appearance/home.html:24
+#: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Bevor Mayan EDMS voll genutzt werden kann, muss folgendes passieren:"
 
-#: templates/appearance/home.html:57
-msgid "Space separated terms"
-msgstr "Begriffe durch Leerzeichen getrennt"
+#: templates/appearance/home.html:46
+#, fuzzy
+#| msgid "Search"
+msgid "Search pages"
+msgstr "Suche"
 
-#: templates/appearance/home.html:59
+#: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
 msgstr "Suche"
 
-#: templates/appearance/home.html:60
+#: templates/appearance/home.html:49 templates/appearance/home.html:59
 msgid "Advanced"
 msgstr "Erweitert"
+
+#: templates/appearance/home.html:56
+msgid "Search documents"
+msgstr ""
 
 #: templates/appearance/login.html:10
 msgid "Login"
@@ -228,7 +247,9 @@ msgstr "Erstanmeldung"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "Herzlichen Glückwunsch! Sie haben die Installation von <strong>Mayan EDMS</strong> erfolgreich abgeschlossen. "
+msgstr ""
+"Herzlichen Glückwunsch! Sie haben die Installation von <strong>Mayan EDMS</"
+"strong> erfolgreich abgeschlossen. "
 
 #: templates/appearance/login.html:25
 msgid "Login using the following credentials:"
@@ -253,12 +274,20 @@ msgstr "Passwort: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese Nachricht zu deaktivieren."
+msgstr ""
+"Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese "
+"Nachricht zu deaktivieren."
 
-#: templates/appearance/login.html:45 templates/appearance/login.html.py:54
+#: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Keine"
+
+#~ msgid "Home"
+#~ msgstr "Start"
+
+#~ msgid "Space separated terms"
+#~ msgstr "Begriffe durch Leerzeichen getrennt"

@@ -1,102 +1,125 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-10-28 07:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:83 apps.py:163 apps.py:384 models.py:231 permissions.py:7
-#: settings.py:17
+#: apps.py:87 apps.py:231 apps.py:453 menus.py:8 models.py:225 permissions.py:7
+#: settings.py:13
 msgid "Documents"
 msgstr "Документи"
 
-#: apps.py:98
+#: apps.py:110
+msgid "New pages this month"
+msgstr ""
+
+#: apps.py:119
+#, fuzzy
+#| msgid "documents of this type"
+msgid "New documents this month"
+msgstr "documents of this type"
+
+#: apps.py:128
+#, fuzzy
+#| msgid "Edit documents"
+msgid "Total documents"
+msgstr "Редактиране на документи"
+
+#: apps.py:134 links.py:273 links.py:278 views/document_type_views.py:49
+msgid "Document types"
+msgstr ""
+
+#: apps.py:140 views/document_views.py:69
+msgid "Documents in trash"
+msgstr ""
+
+#: apps.py:145
 msgid "Create a document type"
 msgstr ""
 
-#: apps.py:100
+#: apps.py:147
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
+#: apps.py:154 models.py:65 models.py:153 models.py:618 search.py:21
+#: search.py:39
 msgid "Label"
 msgstr ""
 
-#: apps.py:112
+#: apps.py:159
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:113 apps.py:197 search.py:18 views.py:829
+#: apps.py:160 apps.py:262 search.py:19 search.py:36
 msgid "MIME type"
 msgstr ""
 
-#: apps.py:151 apps.py:175
+#: apps.py:202 apps.py:212 apps.py:219 apps.py:243
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:159 apps.py:185
+#: apps.py:208 apps.py:226 apps.py:250
 msgid "Type"
 msgstr ""
 
-#: apps.py:170 models.py:628
+#: apps.py:238 models.py:620
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:188
+#: apps.py:253
 msgid "Date time trashed"
 msgstr ""
 
-#: apps.py:193
+#: apps.py:258
 msgid "Time and date"
 msgstr ""
 
-#: apps.py:201 views.py:830
+#: apps.py:266
 msgid "Encoding"
 msgstr ""
 
-#: apps.py:205 models.py:357
+#: apps.py:270 models.py:351
 msgid "Comment"
 msgstr "Коментар"
 
-#: apps.py:387
-#| msgid "New document filename"
+#: apps.py:456
 msgid "New documents per month"
 msgstr ""
 
-#: apps.py:394
-#| msgid "Document version reverted successfully"
+#: apps.py:463
 msgid "New document versions per month"
 msgstr ""
 
-#: apps.py:401
-#| msgid "View document types"
+#: apps.py:470
 msgid "New document pages per month"
 msgstr ""
 
-#: apps.py:408
+#: apps.py:477
 msgid "Total documents at each month"
 msgstr ""
 
-#: apps.py:415
+#: apps.py:484
 msgid "Total document versions at each month"
 msgstr ""
 
-#: apps.py:422
+#: apps.py:491
 msgid "Total document pages at each month"
 msgstr ""
 
@@ -117,12 +140,10 @@ msgid "Document type changed"
 msgstr ""
 
 #: events.py:21
-#| msgid "Version update"
 msgid "New version uploaded"
 msgstr ""
 
 #: events.py:25
-#| msgid "Document version reverted successfully"
 msgid "Document version reverted"
 msgstr ""
 
@@ -130,248 +151,262 @@ msgstr ""
 msgid "Document viewed"
 msgstr ""
 
-#: forms.py:42 links.py:205
+#: forms.py:39 links.py:212
 msgid "Page image"
 msgstr "Изображение на страница"
 
-#: forms.py:56 forms.py:59
+#: forms.py:51 forms.py:54
 #, python-format
 msgid "Document pages (%d)"
 msgstr ""
 
-#: forms.py:90
+#: forms.py:92
 msgid "Quick document rename"
 msgstr "Бързо преименуване на документ"
 
-#: forms.py:112
+#: forms.py:114
 msgid "Date added"
 msgstr "Дата на добавяне"
 
-#: forms.py:116
+#: forms.py:118
 msgid "UUID"
 msgstr "UUID"
 
+#: forms.py:120 models.py:163
+msgid "Language"
+msgstr ""
+
 #: forms.py:122
+msgid "Unknown"
+msgstr ""
+
+#: forms.py:130
 msgid "File mimetype"
 msgstr "mimetype на файла"
 
-#: forms.py:123 forms.py:128
+#: forms.py:131 forms.py:136
 msgid "None"
 msgstr "Няма"
 
-#: forms.py:126
+#: forms.py:134
 msgid "File encoding"
 msgstr ""
 
-#: forms.py:132
+#: forms.py:140
 msgid "File size"
 msgstr "Размер на файла"
 
-#: forms.py:137
+#: forms.py:145
 msgid "Exists in storage"
 msgstr "Съществува в склада"
 
-#: forms.py:139
+#: forms.py:147
 msgid "File path in storage"
 msgstr "Файлов път до склада"
 
-#: forms.py:142 models.py:372
+#: forms.py:150 models.py:366
 msgid "Checksum"
 msgstr "Контролна сума"
 
-#: forms.py:143 links.py:58
+#: forms.py:151 links.py:60
 msgid "Pages"
 msgstr "Страници"
 
-#: forms.py:174 models.py:105 models.py:154 models.py:623 search.py:15
+#: forms.py:179 models.py:105 models.py:149 models.py:615 search.py:16
+#: search.py:32
 msgid "Document type"
 msgstr "Вид на документа"
 
-#: forms.py:190
+#: forms.py:195
 msgid "Compress"
 msgstr "Компресиране"
 
-#: forms.py:192
-#| msgid ""
-#| "ad the document in the original format or in a compressed manner.  s ion is "
-#| "selectable only when downloading one document, for tiple uments, the bundle "
-#| "will always be downloads as a compressed e."
+#: forms.py:197
 msgid ""
-"Download the document in the original format or in a compressed manner. This"
-" option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This "
+"option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
-#: forms.py:199
+#: forms.py:204
 msgid "Compressed filename"
 msgstr "Име на компресирания архив"
 
-#: forms.py:202
+#: forms.py:207
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr "Името на компресирания архив, съдържащ документите за сваляне, ако предишната опция е избрана."
+msgstr ""
+"Името на компресирания архив, съдържащ документите за сваляне, ако "
+"предишната опция е избрана."
 
-#: forms.py:219 literals.py:24
+#: forms.py:225 literals.py:23
 msgid "Page range"
 msgstr "Поредица от страници"
 
-#: links.py:43
+#: forms.py:231
+msgid ""
+"Page number from which all the transformation will be cloned. Existing "
+"transformations will be lost."
+msgstr ""
+
+#: links.py:45
 msgid "Preview"
 msgstr ""
 
-#: links.py:48
+#: links.py:50
 msgid "Properties"
 msgstr ""
 
-#: links.py:53
+#: links.py:55
 msgid "Versions"
 msgstr ""
 
-#: links.py:64 links.py:105
+#: links.py:66 links.py:112
 msgid "Clear transformations"
 msgstr ""
 
-#: links.py:69 links.py:113 links.py:238 links.py:252
+#: links.py:71
+#, fuzzy
+#| msgid "Page transformations"
+msgid "Clone transformations"
+msgstr "page transformations"
+
+#: links.py:76 links.py:120 links.py:247 links.py:261
 msgid "Delete"
 msgstr ""
 
-#: links.py:74 links.py:109
+#: links.py:81 links.py:116
 msgid "Move to trash"
 msgstr ""
 
-#: links.py:79
+#: links.py:86
 msgid "Edit properties"
 msgstr ""
 
-#: links.py:83 links.py:117
+#: links.py:90 links.py:124
 msgid "Change type"
 msgstr ""
 
-#: links.py:87 links.py:121 views.py:901
+#: links.py:94 links.py:128 views/document_views.py:380
 msgid "Download"
 msgstr "Сваляне"
 
-#: links.py:91
+#: links.py:98
 msgid "Print"
 msgstr ""
 
-#: links.py:96 links.py:124
+#: links.py:103 links.py:131
 msgid "Recalculate page count"
 msgstr ""
 
-#: links.py:100 links.py:128
+#: links.py:107 links.py:135
 msgid "Restore"
 msgstr ""
 
-#: links.py:132
+#: links.py:139
 msgid "Download version"
 msgstr ""
 
-#: links.py:137 views.py:82
+#: links.py:144 views/document_views.py:51
 msgid "All documents"
 msgstr ""
 
-#: links.py:140 models.py:815 views.py:656
+#: links.py:147 models.py:848 views/document_views.py:341
 msgid "Recent documents"
 msgstr ""
 
-#: links.py:144
-msgid "Trash"
+#: links.py:151
+msgid "Trash can"
 msgstr ""
 
-#: links.py:152
+#: links.py:159
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr "Изчистване на графичното представяне, използвано да ускори изобразяването на документите и интерактивните промени."
+msgstr ""
+"Изчистване на графичното представяне, използвано да ускори изобразяването на "
+"документите и интерактивните промени."
 
-#: links.py:155
-#| msgid "Clear the document image cache"
+#: links.py:162
 msgid "Clear document image cache"
 msgstr ""
 
-#: links.py:159 permissions.py:47
+#: links.py:166 permissions.py:47
 msgid "Empty trash"
 msgstr ""
 
-#: links.py:167
+#: links.py:174
 msgid "First page"
 msgstr ""
 
-#: links.py:172
+#: links.py:179
 msgid "Last page"
 msgstr ""
 
-#: links.py:179
+#: links.py:186
 msgid "Previous page"
 msgstr ""
 
-#: links.py:185
+#: links.py:192
 msgid "Next page"
 msgstr ""
 
-#: links.py:191 models.py:230 models.py:351 models.py:778 models.py:797
-#: views.py:827
+#: links.py:198 models.py:224 models.py:345 models.py:830
 msgid "Document"
 msgstr ""
 
-#: links.py:196
+#: links.py:203
 msgid "Rotate left"
 msgstr ""
 
-#: links.py:201
+#: links.py:208
 msgid "Rotate right"
 msgstr ""
 
-#: links.py:209
+#: links.py:216
 msgid "Reset view"
 msgstr ""
 
-#: links.py:214
+#: links.py:221
 msgid "Zoom in"
 msgstr ""
 
-#: links.py:219
+#: links.py:227
 msgid "Zoom out"
 msgstr ""
 
-#: links.py:227
+#: links.py:236
 msgid "Revert"
 msgstr ""
 
-#: links.py:234 views.py:419
+#: links.py:243 views/document_type_views.py:64
 msgid "Create document type"
 msgstr ""
 
-#: links.py:242 links.py:256
+#: links.py:251 links.py:265
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:247
+#: links.py:256
 msgid "Add quick label to document type"
 msgstr ""
 
-#: links.py:260 models.py:634
+#: links.py:269 models.py:626
 msgid "Quick labels"
-msgstr ""
-
-#: links.py:264 links.py:269 views.py:404
-msgid "Document types"
 msgstr ""
 
 #: literals.py:14
 msgid "Default"
 msgstr "По подразбиране"
 
-#: literals.py:24
+#: literals.py:23
 msgid "All pages"
 msgstr ""
 
 #: models.py:69
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
+"Amount of time after which documents of this type will be moved to the trash."
 msgstr ""
 
 #: models.py:71
@@ -389,12 +424,10 @@ msgid ""
 msgstr ""
 
 #: models.py:81
-#| msgid "Delete document types"
 msgid "Delete time period"
 msgstr ""
 
 #: models.py:86
-#| msgid "Delete documents"
 msgid "Delete time unit"
 msgstr ""
 
@@ -402,99 +435,102 @@ msgstr ""
 msgid "Documents types"
 msgstr ""
 
-#: models.py:158
+#: models.py:153
 msgid "The name of the document"
 msgstr ""
 
-#: models.py:161 search.py:21
+#: models.py:156 search.py:22 search.py:42
 msgid "Description"
 msgstr "Описание"
 
-#: models.py:164
+#: models.py:159
 msgid "Added"
 msgstr ""
 
-#: models.py:169
-msgid "Language"
-msgstr ""
-
-#: models.py:173
+#: models.py:167
 msgid "In trash?"
 msgstr ""
 
-#: models.py:178
+#: models.py:172
 msgid "Date and time trashed"
 msgstr ""
 
-#: models.py:182
+#: models.py:176
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
 
-#: models.py:185
+#: models.py:179
 msgid "Is stub?"
 msgstr ""
 
-#: models.py:193
+#: models.py:187
 #, python-format
-#| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr ""
 
-#: models.py:354
+#: models.py:348
 msgid "Timestamp"
 msgstr ""
 
-#: models.py:363
+#: models.py:357
 msgid "File"
 msgstr "Файл"
 
-#: models.py:445 models.py:446 models.py:647
+#: models.py:437 models.py:438 models.py:639
 msgid "Document version"
 msgstr ""
 
-#: models.py:633
+#: models.py:625
 msgid "Quick label"
 msgstr ""
 
-#: models.py:651
+#: models.py:643
 msgid "Page number"
 msgstr ""
 
-#: models.py:656
+#: models.py:648
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
-msgstr "Страница %(page_num)d от общо %(total_pages)d страници от %(document)s документи."
+msgstr ""
+"Страница %(page_num)d от общо %(total_pages)d страници от %(document)s "
+"документи."
 
-#: models.py:672
+#: models.py:664 models.py:799 models.py:816
 msgid "Document page"
 msgstr ""
 
-#: models.py:673
+#: models.py:665 models.py:817
 msgid "Document pages"
 msgstr ""
 
-#: models.py:783
-#| msgid "Version update"
-msgid "New version block"
-msgstr ""
+#: models.py:801
+msgid "Filename"
+msgstr "Filename"
 
-#: models.py:784
-#| msgid "Version update"
-msgid "New version blocks"
-msgstr ""
+#: models.py:804
+#, fuzzy
+#| msgid "Document edited"
+msgid "Document page cached image"
+msgstr "Document edited"
 
-#: models.py:794
+#: models.py:805
+#, fuzzy
+#| msgid "Document page transformations"
+msgid "Document page cached images"
+msgstr "document page transformations"
+
+#: models.py:827
 msgid "User"
 msgstr "Потребител"
 
-#: models.py:800
+#: models.py:833
 msgid "Accessed"
 msgstr ""
 
-#: models.py:814
+#: models.py:847
 msgid "Recent document"
 msgstr ""
 
@@ -507,11 +543,10 @@ msgid "Delete documents"
 msgstr "Изтриване на документи"
 
 #: permissions.py:16
-#| msgid "Transform documents"
 msgid "Trash documents"
 msgstr ""
 
-#: permissions.py:19 views.py:903
+#: permissions.py:19 views/document_views.py:382
 msgid "Download documents"
 msgstr "Изтегляне на документи"
 
@@ -528,12 +563,10 @@ msgid "Edit document properties"
 msgstr "Редактиране на свойства на документа"
 
 #: permissions.py:31
-#| msgid "Edit documents"
 msgid "Print documents"
 msgstr ""
 
 #: permissions.py:34
-#| msgid "Delete documents"
 msgid "Restore trashed document"
 msgstr ""
 
@@ -569,287 +602,345 @@ msgstr "Редактиране на вида документи"
 msgid "View document types"
 msgstr "Преглед на типовете документи"
 
-#: settings.py:37
+#: settings.py:29
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per"
-" user."
-msgstr "Максимален брой от скорошни (създадени, редактирани, прегледани) документи, които да се показват на потребителя"
+"Maximum number of recent (created, edited, viewed) documents to remember per "
+"user."
+msgstr ""
+"Максимален брой от скорошни (създадени, редактирани, прегледани) документи, "
+"които да се показват на потребителя"
 
-#: settings.py:44
+#: settings.py:40
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr "Процент приближавани или отдалечаване на страницата на документа, приложен за потребителя"
+msgstr ""
+"Процент приближавани или отдалечаване на страницата на документа, приложен "
+"за потребителя"
 
-#: settings.py:51
+#: settings.py:47
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr "Максимален процент (%) допустим за интерактивно увеличаване страницата от потребителя"
+msgstr ""
+"Максимален процент (%) допустим за интерактивно увеличаване страницата от "
+"потребителя"
 
-#: settings.py:58
+#: settings.py:54
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr "Минимален процент (%) допустим за интерактивно смаляване страницата от потребителя"
+msgstr ""
+"Минимален процент (%) допустим за интерактивно смаляване страницата от "
+"потребителя"
 
-#: settings.py:65
+#: settings.py:61
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr "Градуси на завъртане на страница от документ, при потребителско действие"
+msgstr ""
+"Градуси на завъртане на страница от документ, при потребителско действие"
 
-#: settings.py:74
+#: settings.py:70
 msgid "Default documents language (in ISO639-2 format)."
 msgstr ""
 
-#: settings.py:78
+#: settings.py:74
 msgid "List of supported document languages."
 msgstr ""
 
-#: views.py:68
-#| msgid "Clear the document image cache"
-msgid "Clear the document image cache?"
-msgstr ""
-
-#: views.py:75
-msgid "Document cache clearing queued successfully."
-msgstr ""
-
-#: views.py:100
-#| msgid "Documents in storage: %d"
-msgid "Documents in trash"
-msgstr ""
-
-#: views.py:122
-msgid "Delete the selected document?"
-msgstr ""
-
-#: views.py:145
-#, python-format
-#| msgid "Document \"%(document)s\" deleted by %(fullname)s."
-msgid "Document: %(document)s deleted."
-msgstr ""
-
-#: views.py:153
-msgid "Delete the selected documents?"
-msgstr ""
-
-#: views.py:175
-#, python-format
-msgid "Edit properties of document: %s"
-msgstr ""
-
-#: views.py:191
-msgid "Restore the selected document?"
-msgstr ""
-
-#: views.py:216
-#, python-format
-#| msgid "Document: %(document)s delete error: %(error)s"
-msgid "Document: %(document)s restored."
-msgstr ""
-
-#: views.py:224
-msgid "Restore the selected documents?"
-msgstr ""
-
-#: views.py:256
+#: views/document_page_views.py:49
 #, python-format
 msgid "Pages for document: %s"
 msgstr ""
 
-#: views.py:284
+#: views/document_page_views.py:101
+msgid "Unknown view keyword argument schema, unable to redirect."
+msgstr ""
+
+#: views/document_page_views.py:133
+msgid "There are no more pages in this document"
+msgstr "Няма повече страници в този документ"
+
+#: views/document_page_views.py:150
+msgid "You are already at the first page of this document"
+msgstr "Вече сте на първа страница на този документ"
+
+#: views/document_page_views.py:178
 #, python-format
 msgid "Image of: %s"
 msgstr ""
 
-#: views.py:330
+#: views/document_type_views.py:38
 #, python-format
-msgid "Preview of document: %s"
-msgstr ""
-
-#: views.py:338
-#, python-format
-msgid "Move \"%s\" to the trash?"
-msgstr ""
-
-#: views.py:365
-#, python-format
-#| msgid "Document deleted successfully."
-msgid "Document: %(document)s moved to trash successfully."
-msgstr ""
-
-#: views.py:378
-msgid "Move the selected documents to the trash?"
-msgstr ""
-
-#: views.py:393
-#, python-format
-#| msgid "documents of type \"%s\""
 msgid "Documents of type: %s"
 msgstr ""
 
-#: views.py:430
+#: views/document_type_views.py:75
 msgid "All documents of this type will be deleted too."
 msgstr ""
 
-#: views.py:432
+#: views/document_type_views.py:77
 #, python-format
-#| msgid "Delete document types"
 msgid "Delete the document type: %s?"
 msgstr ""
 
-#: views.py:448
+#: views/document_type_views.py:93
 #, python-format
 msgid "Edit document type: %s"
 msgstr ""
 
-#: views.py:478
+#: views/document_type_views.py:118
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr ""
 
-#: views.py:499
+#: views/document_type_views.py:139
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
-#: views.py:524
+#: views/document_type_views.py:164
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
 
-#: views.py:552
+#: views/document_type_views.py:192
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr ""
 
-#: views.py:583
+#: views/document_version_views.py:42
 #, python-format
 msgid "Versions of document: %s"
 msgstr ""
 
-#: views.py:597
+#: views/document_version_views.py:56
 msgid "All later version after this one will be deleted too."
 msgstr "Всички версии, следващи тази, ще бъдат изтрити."
 
-#: views.py:600
-#| msgid "Revert documents to a previous version"
+#: views/document_version_views.py:59
 msgid "Revert to this version?"
 msgstr ""
 
-#: views.py:610
+#: views/document_version_views.py:69
 msgid "Document version reverted successfully"
 msgstr "Документа е върнат успешно към предна версия"
 
-#: views.py:615
+#: views/document_version_views.py:74
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Грешка при връщане на версията на документа; %s"
 
-#: views.py:633
+#: views/document_views.py:81
+msgid "Delete the selected document?"
+msgstr ""
+
+#: views/document_views.py:100
 #, python-format
-msgid "Properties for document: %s"
+msgid "Document: %(document)s deleted."
 msgstr ""
 
-#: views.py:639
-msgid "Empty trash?"
+#: views/document_views.py:108
+msgid "Delete the selected documents?"
 msgstr ""
 
-#: views.py:650
-#| msgid "Document deleted successfully."
-msgid "Trash emptied successfully"
+#: views/document_views.py:120
+#, python-format
+msgid "Document type change request performed on %(count)d document"
 msgstr ""
 
-#: views.py:685 views.py:996
-msgid "Must provide at least one document."
-msgstr "Трябва да посочите поне един документ."
+#: views/document_views.py:123
+#, python-format
+msgid "Document type change request performed on %(count)d documents"
+msgstr ""
 
-#: views.py:704
+#: views/document_views.py:130
+msgid "Change"
+msgstr ""
+
+#: views/document_views.py:132
+#, fuzzy
+#| msgid "Are you sure you wish to delete the selected document?"
+#| msgid_plural "Are you sure you wish to delete the selected documents?"
+msgid "Change the type of the selected document"
+msgid_plural "Change the type of the selected documents"
+msgstr[0] "ee02f3189246f97d6734a407f6f9040b_pl_0"
+msgstr[1] "ee02f3189246f97d6734a407f6f9040b_pl_1"
+
+#: views/document_views.py:143
+#, fuzzy, python-format
+#| msgid "Content of document: %s"
+msgid "Change the type of the document: %s"
+msgstr "versions for document: %s"
+
+#: views/document_views.py:164
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr ""
 
-#: views.py:716 views.py:1235
-msgid "Submit"
-msgstr "Подаване"
-
-#: views.py:720
-msgid "Change the type of the selected document."
-msgid_plural "Change the type of the selected documents."
-msgstr[0] ""
-msgstr[1] ""
-
-#: views.py:799
-#| msgid "Must provide at least one document."
-msgid "Must provide at least one document or version."
+#: views/document_views.py:184
+#, python-format
+msgid "Edit properties of document: %s"
 msgstr ""
 
-#: views.py:819
-msgid "Documents to be downloaded"
+#: views/document_views.py:200
+msgid "Restore the selected document?"
 msgstr ""
 
-#: views.py:828
-msgid "Date and time"
+#: views/document_views.py:221
+#, python-format
+msgid "Document: %(document)s restored."
 msgstr ""
 
-#: views.py:931
-msgid "At least one document must be selected."
+#: views/document_views.py:229
+msgid "Restore the selected documents?"
 msgstr ""
 
-#: views.py:954
-msgid "Document queued for page count recalculation."
+#: views/document_views.py:256
+#, python-format
+msgid "Preview of document: %s"
 msgstr ""
 
-#: views.py:955
-msgid "Documents queued for page count recalculation."
+#: views/document_views.py:264
+#, python-format
+msgid "Move \"%s\" to the trash?"
 msgstr ""
 
-#: views.py:964
+#: views/document_views.py:287
+#, python-format
+msgid "Document: %(document)s moved to trash successfully."
+msgstr ""
+
+#: views/document_views.py:300
+msgid "Move the selected documents to the trash?"
+msgstr ""
+
+#: views/document_views.py:318
+#, python-format
+msgid "Properties for document: %s"
+msgstr ""
+
+#: views/document_views.py:324
+msgid "Empty trash?"
+msgstr ""
+
+#: views/document_views.py:335
+msgid "Trash emptied successfully"
+msgstr ""
+
+#: views/document_views.py:519
+#, python-format
+msgid "%(count)d document queued for page count recalculation"
+msgstr ""
+
+#: views/document_views.py:522
+#, python-format
+msgid "%(count)d documents queued for page count recalculation"
+msgstr ""
+
+#: views/document_views.py:530
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:1023
+#: views/document_views.py:541
+#, fuzzy, python-format
+#| msgid "Are you sure you wish to reset the page count of this document?"
+msgid "Recalculate the page count of the document: %s?"
+msgstr ""
+"Are you sure you wish to update the page count for the office documents (%d)?"
+
+#: views/document_views.py:558
+#, python-format
+msgid "Transformation clear request processed for %(count)d document"
+msgstr ""
+
+#: views/document_views.py:561
+#, python-format
+msgid "Transformation clear request processed for %(count)d documents"
+msgstr ""
+
+#: views/document_views.py:569
+msgid "Clear all the page transformations for the selected document?"
+msgid_plural "Clear all the page transformations for the selected document?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/document_views.py:580
+#, fuzzy, python-format
+#| msgid ""
+#| "Are you sure you wish to clear all the page transformations for "
+#| "documents: %s?"
+msgid "Clear all the page transformations for the document: %s?"
+msgstr ""
+"Are you sure you wish to clear all the page transformations for documents: "
+"%s?"
+
+#: views/document_views.py:595 views/document_views.py:623
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr "Грешка при изтриването на преобразования на страница на документ %(document)s, %(error)s."
+msgstr ""
+"Грешка при изтриването на преобразования на страница на документ "
+"%(document)s, %(error)s."
 
-#: views.py:1032
-#, python-format
-msgid ""
-"All the page transformations for document: %s, have been deleted "
-"successfully."
-msgstr "Всички преобразования на страницата на документ %s бяха изтрити успешно."
+#: views/document_views.py:631
+#, fuzzy
+#| msgid "Document page transformation created successfully."
+msgid "Transformations cloned successfully."
+msgstr "Document page transformation created successfully."
 
-#: views.py:1044
-msgid "Clear all the page transformations for the selected document?"
-msgid_plural "Clear all the page transformations for the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+#: views/document_views.py:646 views/document_views.py:701
+msgid "Submit"
+msgstr "Подаване"
 
-#: views.py:1078
-msgid "There are no more pages in this document"
-msgstr "Няма повече страници в този документ"
+#: views/document_views.py:648
+#, fuzzy, python-format
+#| msgid ""
+#| "Error deleting the page transformations for document: %(document)s; "
+#| "%(error)s."
+msgid "Clone page transformations for document: %s"
+msgstr ""
+"Грешка при изтриването на преобразования на страница на документ "
+"%(document)s, %(error)s."
 
-#: views.py:1096
-msgid "You are already at the first page of this document"
-msgstr "Вече сте на първа страница на този документ"
-
-#: views.py:1225 views.py:1234
+#: views/document_views.py:702
 #, python-format
 msgid "Print: %s"
 msgstr ""
 
-#: widgets.py:71
+#: views/misc_views.py:18
+msgid "Clear the document image cache?"
+msgstr ""
+
+#: views/misc_views.py:25
+msgid "Document cache clearing queued successfully."
+msgstr ""
+
+#: widgets.py:64
 #, python-format
 msgid "Page %(page_number)d of %(total_pages)d"
 msgstr ""
 
-#: widgets.py:100
+#: widgets.py:87
+#, fuzzy
+#| msgid "Page image"
+msgid "Clickable image"
+msgstr "Изображение на страница"
+
+#: widgets.py:242
 msgid "Document page image"
 msgstr ""
+
+#~ msgid "Must provide at least one document."
+#~ msgstr "Трябва да посочите поне един документ."
+
+#~ msgid ""
+#~ "All the page transformations for document: %s, have been deleted "
+#~ "successfully."
+#~ msgstr ""
+#~ "Всички преобразования на страницата на документ %s бяха изтрити успешно."
 
 #~ msgid "Document type changed successfully."
 #~ msgstr "Document type created successfully"
@@ -914,9 +1005,6 @@ msgstr ""
 #~ msgid "Filenames"
 #~ msgstr "Filename"
 
-#~ msgid "Filename"
-#~ msgstr "Filename"
-
 #~ msgid "Document type quick rename filename"
 #~ msgstr "document type quick rename filename"
 
@@ -927,11 +1015,11 @@ msgstr ""
 #~ msgstr "Create documents"
 
 #~ msgid ""
-#~ "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
-#~ " bytes"
+#~ "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), "
+#~ "%(bytes)d bytes"
 #~ msgstr ""
-#~ "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
-#~ " bytes"
+#~ "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), "
+#~ "%(bytes)d bytes"
 
 #~ msgid "Time added"
 #~ msgstr "Time added"
@@ -959,9 +1047,6 @@ msgstr ""
 
 #~ msgid "Page %(page_number)d"
 #~ msgstr "page number"
-
-#~ msgid "Page transformations"
-#~ msgstr "page transformations"
 
 #~ msgid "Create new transformation"
 #~ msgstr "create new transformation"
@@ -1000,19 +1085,8 @@ msgstr ""
 #~ msgid "Use dictionaries to indentify arguments, example: {'degrees':90}"
 #~ msgstr "Use dictionaries to indentify arguments, example: %s"
 
-#~ msgid "Document page transformations"
-#~ msgstr "document page transformations"
-
 #~ msgid "documents"
 #~ msgstr "documents"
-
-#~ msgid "Content of document: %s"
-#~ msgstr "versions for document: %s"
-
-#~ msgid "Are you sure you wish to delete the selected document?"
-#~ msgid_plural "Are you sure you wish to delete the selected documents?"
-#~ msgstr[0] "ee02f3189246f97d6734a407f6f9040b_pl_0"
-#~ msgstr[1] "ee02f3189246f97d6734a407f6f9040b_pl_1"
 
 #~ msgid "Document page edited successfully."
 #~ msgstr "Document page edited successfully."
@@ -1060,10 +1134,8 @@ msgstr ""
 #~ msgid "Transformations for: %s"
 #~ msgstr "transformations for: %s"
 
-#~ msgid "Document page transformation created successfully."
-#~ msgstr "Document page transformation created successfully."
-
-#~ msgid "Create new transformation for page: %(page)s of document: %(document)s"
+#~ msgid ""
+#~ "Create new transformation for page: %(page)s of document: %(document)s"
 #~ msgstr ""
 #~ "Create new transformation for page: %(page)s of document: %(document)s"
 
@@ -1077,11 +1149,11 @@ msgstr ""
 #~ msgstr "Document page transformation deleted successfully."
 
 #~ msgid ""
-#~ "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
-#~ "%(document_page)s"
+#~ "Are you sure you wish to delete transformation \"%(transformation)s\" "
+#~ "for: %(document_page)s"
 #~ msgstr ""
-#~ "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
-#~ "%(document_page)s"
+#~ "Are you sure you wish to delete transformation \"%(transformation)s\" "
+#~ "for: %(document_page)s"
 
 #~ msgid "Document properties"
 #~ msgstr "Edit document properties"
@@ -1098,21 +1170,6 @@ msgstr ""
 #~ msgid "Are you sure you wish to change the type of the documents: %s?"
 #~ msgstr "Are you sure you wish to delete the documents: %s?"
 
-#~ msgid "Are you sure you wish to reset the page count of this document?"
-#~ msgstr ""
-#~ "Are you sure you wish to update the page count for the office documents "
-#~ "(%d)?"
-
-#~ msgid ""
-#~ "Are you sure you wish to clear all the page transformations for documents: "
-#~ "%s?"
-#~ msgstr ""
-#~ "Are you sure you wish to clear all the page transformations for documents: "
-#~ "%s?"
-
-#~ msgid "Document edited"
-#~ msgstr "Document edited"
-
 #~ msgid "Version"
 #~ msgstr "version"
 
@@ -1125,15 +1182,19 @@ msgstr ""
 #~ msgid "Document \"%(content_object)s\" created by %(fullname)s."
 #~ msgstr "Document \"%(content_object)s\" created by %(fullname)s."
 
-#~ msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
-#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+#~ msgid ""
+#~ "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+#~ msgstr ""
+#~ "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document \"%(content_object)s\" edited by %(fullname)s."
 #~ msgstr "Document \"%(content_object)s\" edited by %(fullname)s."
 
 #~ msgid ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
-#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
+#~ "%(fullname)s."
+#~ msgstr ""
+#~ "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document deleted"
 #~ msgstr "Document deleted"
@@ -1190,11 +1251,11 @@ msgstr ""
 #~ msgstr "Click on the image for full size preview"
 
 #~ msgid ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
-#~ "  The following changes took place: %(changes)s."
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
+#~ "%(fullname)s.  The following changes took place: %(changes)s."
 #~ msgstr ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
-#~ "  The following changes took place: %(changes)s."
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
+#~ "%(fullname)s.  The following changes took place: %(changes)s."
 
 #~ msgid "document"
 #~ msgstr "document"
@@ -1218,11 +1279,11 @@ msgstr ""
 #~ "documents in the database."
 
 #~ msgid ""
-#~ "Page count update complete.  Documents processed: %(total)d, documents with "
-#~ "changed page count: %(change)d"
+#~ "Page count update complete.  Documents processed: %(total)d, documents "
+#~ "with changed page count: %(change)d"
 #~ msgstr ""
-#~ "Page count update complete.  Documents processed: %(total)d, documents with "
-#~ "changed page count: %(change)d"
+#~ "Page count update complete.  Documents processed: %(total)d, documents "
+#~ "with changed page count: %(change)d"
 
 #~ msgid "Error clearing document image cache; %s"
 #~ msgstr "Error clearing document image cache; %s"
@@ -1243,9 +1304,11 @@ msgstr ""
 #~ msgstr "find all duplicates"
 
 #~ msgid ""
-#~ "Search all the documents' checksums and return a list of the exact matches."
+#~ "Search all the documents' checksums and return a list of the exact "
+#~ "matches."
 #~ msgstr ""
-#~ "Search all the documents' checksums and return a list of the exact matches."
+#~ "Search all the documents' checksums and return a list of the exact "
+#~ "matches."
 
 #~ msgid "Document type list"
 #~ msgstr "document type list"
@@ -1275,11 +1338,11 @@ msgstr ""
 #~ msgstr "duplicated documents"
 
 #~ msgid ""
-#~ "The document type of all documents using this document type will be set to "
-#~ "none."
+#~ "The document type of all documents using this document type will be set "
+#~ "to none."
 #~ msgstr ""
-#~ "The document type of all documents using this document type will be set to "
-#~ "none."
+#~ "The document type of all documents using this document type will be set "
+#~ "to none."
 
 #~ msgid "details"
 #~ msgstr "details"
@@ -1336,15 +1399,17 @@ msgstr ""
 #~ msgstr "What are document types?"
 
 #~ msgid ""
-#~ "Document types define a class that represents a broard group of documents, "
-#~ "such as: invoices, regulations or manuals.  The advantage of using document "
-#~ "types are: assigning a list of typical filenames for quick renaming during "
-#~ "creation, as well as assigning default metadata types and sets to it."
+#~ "Document types define a class that represents a broard group of "
+#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
+#~ "using document types are: assigning a list of typical filenames for quick "
+#~ "renaming during creation, as well as assigning default metadata types and "
+#~ "sets to it."
 #~ msgstr ""
-#~ "Document types define a class that represents a broard group of documents, "
-#~ "such as: invoices, regulations or manuals.  The advantage of using document "
-#~ "types are: assigning a list of typical filenames for quick renaming during "
-#~ "creation, as well as assigning default metadata types and sets to it."
+#~ "Document types define a class that represents a broard group of "
+#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
+#~ "using document types are: assigning a list of typical filenames for quick "
+#~ "renaming during creation, as well as assigning default metadata types and "
+#~ "sets to it."
 
 #~ msgid "What are recent documents?"
 #~ msgstr "What are recent documents?"
@@ -1364,9 +1429,6 @@ msgstr ""
 
 #~ msgid "clone metadata"
 #~ msgstr "clone metadata"
-
-#~ msgid "documents of this type"
-#~ msgstr "documents of this type"
 
 #~ msgid "step 1 of 3: Document type"
 #~ msgstr "step 1 of 3: Document type"

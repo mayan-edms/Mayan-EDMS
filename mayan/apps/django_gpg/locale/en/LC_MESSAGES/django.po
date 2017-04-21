@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,38 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30
+#: apps.py:31
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:73 apps.py:76 forms.py:17
+#: apps.py:47 apps.py:50 forms.py:17
 msgid "Key ID"
 msgstr "Key ID"
 
-#: apps.py:74 apps.py:87 forms.py:19 models.py:47
+#: apps.py:48 apps.py:61 forms.py:19 models.py:47
 msgid "User ID"
 msgstr ""
 
-#: apps.py:77 forms.py:34 models.py:50
+#: apps.py:51 forms.py:34 models.py:50
 msgid "Type"
 msgstr ""
 
-#: apps.py:79 forms.py:23 models.py:31
+#: apps.py:53 forms.py:23 models.py:31
 #, fuzzy
 msgid "Creation date"
 msgstr "creation date"
 
-#: apps.py:82 forms.py:27 models.py:35
+#: apps.py:56 forms.py:27 models.py:35
 #, fuzzy
 msgid "Expiration date"
 msgstr "expiration date"
 
-#: apps.py:83
+#: apps.py:57
 #, fuzzy
 msgid "No expiration"
 msgstr "expiration date"
 
-#: apps.py:85 forms.py:32 models.py:42
+#: apps.py:59 forms.py:32 models.py:42
 #, fuzzy
 msgid "Length"
 msgstr "length"

@@ -1,28 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-07-14 11:22+0000\n"
 "Last-Translator: lilo.panic\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:11
+#: apps.py:12
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: templates/403.html:5 templates/403.html.py:9
+#: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "Недостаточно прав"
 
@@ -30,7 +33,7 @@ msgstr "Недостаточно прав"
 msgid "You don't have enough permissions for this operation."
 msgstr "У вас недостаточно прав для этой операции."
 
-#: templates/404.html:5 templates/404.html.py:9
+#: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
 msgstr "Страница не найдена"
 
@@ -38,23 +41,27 @@ msgstr "Страница не найдена"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Извините, но запрашиваемая страница не найдена."
 
-#: templates/500.html:5 templates/500.html.py:9
+#: templates/500.html:5 templates/500.html:9
 msgid "Server error"
 msgstr "Ошибка сервера"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной почте, и она будет исправлена. Спасибо за терпение."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной "
+"почте, и она будет исправлена. Спасибо за терпение."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему идентификатору:"
+msgstr ""
+"Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему "
+"идентификатору:"
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
 msgstr "Инфо"
 
@@ -67,47 +74,47 @@ msgstr "Версия"
 msgid "Build number: %(build_number)s"
 msgstr "Версия сборки: %(build_number)s"
 
-#: templates/appearance/about.html:88
+#: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
 msgstr "Выпущено под лицензией Apache 2.0"
 
-#: templates/appearance/about.html:100
+#: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "&copy; 2011-2015 Roberto Rosario, все права защищены."
 
-#: templates/appearance/base.html:43
+#: templates/appearance/base.html:45
 msgid "Toggle navigation"
 msgstr "Переключение навигации"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+msgid "Profile"
+msgstr ""
+
+#: templates/appearance/base.html:81
 msgid "Anonymous"
 msgstr "Анонимно"
 
-#: templates/appearance/base.html:74
-msgid "User details"
-msgstr "сведения о пользователе"
-
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Success"
 msgstr "Успех"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Information"
 msgstr "Информация"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Error"
 msgstr "Ошибка"
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:144
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/appearance/base.html:117
+#: templates/appearance/base.html:146
 msgid "Toggle Dropdown"
 msgstr "Переключение выпадающего списка"
 
@@ -125,6 +132,12 @@ msgstr "Редактировать: %(object)s"
 msgid "Create"
 msgstr "Создать"
 
+#: templates/appearance/dashboard_widget.html:25
+#, fuzzy
+#| msgid "User details"
+msgid "View details"
+msgstr "сведения о пользователе"
+
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
 msgid "Confirm"
@@ -139,39 +152,39 @@ msgstr "Подтвердить удаление"
 msgid "Delete: %(object)s?"
 msgstr "Удалить: %(object)s?"
 
-#: templates/appearance/generic_confirm.html:47
+#: templates/appearance/generic_confirm.html:48
 msgid "Yes"
 msgstr "Да"
 
-#: templates/appearance/generic_confirm.html:49
+#: templates/appearance/generic_confirm.html:52
 msgid "No"
 msgstr "Нет"
 
 #: templates/appearance/generic_form_instance.html:39
 #: templates/appearance/generic_form_instance.html:46
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:43
+#: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
 msgstr "требуется"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr "Сохранить"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_subtemplate.html:31
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "Подтвердить"
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:69
+#: templates/appearance/generic_multiform_subtemplate.html:68
 msgid "Cancel"
 msgstr "Отменить"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_subtemplate.html:108
+#: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr "Нет результатов"
 
@@ -180,7 +193,9 @@ msgstr "Нет результатов"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из %(total_pages)s)"
+msgstr ""
+"Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -188,33 +203,41 @@ msgstr "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page
 msgid "Total: %(total)s"
 msgstr "Всего: %(total)s"
 
-#: templates/appearance/generic_list_subtemplate.html:51
+#: templates/appearance/generic_list_subtemplate.html:53
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: templates/appearance/home.html:8 templates/appearance/home.html.py:12
-msgid "Home"
-msgstr "Начало"
+#: templates/appearance/home.html:9 templates/appearance/home.html:13
+msgid "Dashboard"
+msgstr ""
 
-#: templates/appearance/home.html:21
+#: templates/appearance/home.html:22
 msgid "Getting started"
 msgstr "Приступая к работе"
 
-#: templates/appearance/home.html:24
+#: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan EDMS:"
+msgstr ""
+"Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan "
+"EDMS:"
 
-#: templates/appearance/home.html:57
-msgid "Space separated terms"
-msgstr "Поисковые запросы через пробел"
+#: templates/appearance/home.html:46
+#, fuzzy
+#| msgid "Search"
+msgid "Search pages"
+msgstr "Поиск"
 
-#: templates/appearance/home.html:59
+#: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/appearance/home.html:60
+#: templates/appearance/home.html:49 templates/appearance/home.html:59
 msgid "Advanced"
 msgstr "Дополнительно"
+
+#: templates/appearance/home.html:56
+msgid "Search documents"
+msgstr ""
 
 #: templates/appearance/login.html:10
 msgid "Login"
@@ -228,7 +251,8 @@ msgstr "Первое время входа в систему"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "Вы только что закончили установку <strong>Mayan EDMS</strong>, поздравляем!"
+msgstr ""
+"Вы только что закончили установку <strong>Mayan EDMS</strong>, поздравляем!"
 
 #: templates/appearance/login.html:25
 msgid "Login using the following credentials:"
@@ -253,12 +277,20 @@ msgstr "Пароль: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Обязательно измените пароль для повышения безопасности и отключения этого сообщения."
+msgstr ""
+"Обязательно измените пароль для повышения безопасности и отключения этого "
+"сообщения."
 
-#: templates/appearance/login.html:45 templates/appearance/login.html.py:54
+#: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
 msgstr "Вход"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Ни один"
+
+#~ msgid "Home"
+#~ msgstr "Начало"
+
+#~ msgid "Space separated terms"
+#~ msgstr "Поисковые запросы через пробел"

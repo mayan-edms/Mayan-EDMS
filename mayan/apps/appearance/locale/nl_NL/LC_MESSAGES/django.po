@@ -1,28 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Justin Albstbstmeijer <justin@albstmeijer.nl>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11
+#: apps.py:12
 msgid "Appearance"
 msgstr "Uiterlijk"
 
-#: templates/403.html:5 templates/403.html.py:9
+#: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "Permissies zijn ontoereikend"
 
@@ -30,7 +31,7 @@ msgstr "Permissies zijn ontoereikend"
 msgid "You don't have enough permissions for this operation."
 msgstr "U heeft niet genoeg permissies voor deze operatie."
 
-#: templates/404.html:5 templates/404.html.py:9
+#: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
 msgstr "Pagina niet gevonden"
 
@@ -38,23 +39,28 @@ msgstr "Pagina niet gevonden"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Excuses, maar de opgevraagde pagina kan niet worden gevonden."
 
-#: templates/500.html:5 templates/500.html.py:9
+#: templates/500.html:5 templates/500.html:9
 msgid "Server error"
 msgstr "Server fout"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor uw geduld."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de "
+"beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor "
+"uw geduld."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Als u hulp nodig heeft, kunt u naar deze fout refereren via de volgende identifier:"
+msgstr ""
+"Als u hulp nodig heeft, kunt u naar deze fout refereren via de volgende "
+"identifier:"
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
 msgstr "Informatie"
 
@@ -67,47 +73,47 @@ msgstr "Versie"
 msgid "Build number: %(build_number)s"
 msgstr "Build nummer: %(build_number)s"
 
-#: templates/appearance/about.html:88
+#: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
 msgstr "Vrijgegeven onder de Apache 2.0 licentie"
 
-#: templates/appearance/about.html:100
+#: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "Copyright &copy; 2011-2015 Roberto Rosario."
 
-#: templates/appearance/base.html:43
+#: templates/appearance/base.html:45
 msgid "Toggle navigation"
 msgstr "Toggle navigatie"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+msgid "Profile"
+msgstr ""
+
+#: templates/appearance/base.html:81
 msgid "Anonymous"
 msgstr "Anoniem"
 
-#: templates/appearance/base.html:74
-msgid "User details"
-msgstr "gebruiker gegevens"
-
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Success"
 msgstr "Succes"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Information"
 msgstr "Informatie"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Error"
 msgstr "Fout"
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:144
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/appearance/base.html:117
+#: templates/appearance/base.html:146
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
@@ -125,6 +131,12 @@ msgstr "Aanpassen: %(object)s"
 msgid "Create"
 msgstr "Maak aan"
 
+#: templates/appearance/dashboard_widget.html:25
+#, fuzzy
+#| msgid "User details"
+msgid "View details"
+msgstr "gebruiker gegevens"
+
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
 msgid "Confirm"
@@ -139,39 +151,39 @@ msgstr "Bevestig verwijdering"
 msgid "Delete: %(object)s?"
 msgstr "Verwijder: %(object)s?"
 
-#: templates/appearance/generic_confirm.html:47
+#: templates/appearance/generic_confirm.html:48
 msgid "Yes"
 msgstr "Ja"
 
-#: templates/appearance/generic_confirm.html:49
+#: templates/appearance/generic_confirm.html:52
 msgid "No"
 msgstr "Nee"
 
 #: templates/appearance/generic_form_instance.html:39
 #: templates/appearance/generic_form_instance.html:46
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:43
+#: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
 msgstr "Verplicht"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr "Opslaan"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_subtemplate.html:31
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "Verstuur"
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:69
+#: templates/appearance/generic_multiform_subtemplate.html:68
 msgid "Cancel"
 msgstr "Onderbreek"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_subtemplate.html:108
+#: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr "Geen resultaten"
 
@@ -180,7 +192,9 @@ msgstr "Geen resultaten"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %(total_pages)s)"
+msgstr ""
+"Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -188,33 +202,41 @@ msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %
 msgid "Total: %(total)s"
 msgstr "Totaal: %(total)s"
 
-#: templates/appearance/generic_list_subtemplate.html:51
+#: templates/appearance/generic_list_subtemplate.html:53
 msgid "Identifier"
 msgstr "Identifier"
 
-#: templates/appearance/home.html:8 templates/appearance/home.html.py:12
-msgid "Home"
-msgstr "Thuis"
+#: templates/appearance/home.html:9 templates/appearance/home.html:13
+msgid "Dashboard"
+msgstr ""
 
-#: templates/appearance/home.html:21
+#: templates/appearance/home.html:22
 msgid "Getting started"
 msgstr "Beginnen"
 
-#: templates/appearance/home.html:24
+#: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende nodig:"
+msgstr ""
+"Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende "
+"nodig:"
 
-#: templates/appearance/home.html:57
-msgid "Space separated terms"
-msgstr "Door spatie onderbroken voorwaarden"
+#: templates/appearance/home.html:46
+#, fuzzy
+#| msgid "Search"
+msgid "Search pages"
+msgstr "Zoek"
 
-#: templates/appearance/home.html:59
+#: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
 msgstr "Zoek"
 
-#: templates/appearance/home.html:60
+#: templates/appearance/home.html:49 templates/appearance/home.html:59
 msgid "Advanced"
 msgstr "Geavanceerd"
+
+#: templates/appearance/home.html:56
+msgid "Search documents"
+msgstr ""
 
 #: templates/appearance/login.html:10
 msgid "Login"
@@ -228,7 +250,8 @@ msgstr "Eerste aanmelding"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "U heeft de installatie volbracht <strong>Mayan EDMS</strong>, gefeliciteerd!"
+msgstr ""
+"U heeft de installatie volbracht <strong>Mayan EDMS</strong>, gefeliciteerd!"
 
 #: templates/appearance/login.html:25
 msgid "Login using the following credentials:"
@@ -253,12 +276,20 @@ msgstr "Wachtwoord: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding uit te schakelen."
+msgstr ""
+"Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding "
+"uit te schakelen."
 
-#: templates/appearance/login.html:45 templates/appearance/login.html.py:54
+#: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
 msgstr "Meld u aan"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Geen"
+
+#~ msgid "Home"
+#~ msgstr "Thuis"
+
+#~ msgid "Space separated terms"
+#~ msgstr "Door spatie onderbroken voorwaarden"

@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:11
+#: apps.py:12
 msgid "Appearance"
 msgstr ""
 
-#: templates/403.html:5 templates/403.html.py:9
+#: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
 msgstr "مجوز ناکافی"
 
@@ -29,7 +30,7 @@ msgstr "مجوز ناکافی"
 msgid "You don't have enough permissions for this operation."
 msgstr "مجوزهای لازم برای انجام این عملیات را ندارید."
 
-#: templates/404.html:5 templates/404.html.py:9
+#: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
 msgstr "صفحه پیدا نشد."
 
@@ -37,14 +38,14 @@ msgstr "صفحه پیدا نشد."
 msgid "Sorry, but the requested page could not be found."
 msgstr "متاسفانه صفحه درخواستی پیدا نشد."
 
-#: templates/500.html:5 templates/500.html.py:9
+#: templates/500.html:5 templates/500.html:9
 msgid "Server error"
 msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -53,7 +54,7 @@ msgid ""
 "identifier:"
 msgstr ""
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
 msgstr "درباره"
 
@@ -66,47 +67,47 @@ msgstr "نسخه"
 msgid "Build number: %(build_number)s"
 msgstr ""
 
-#: templates/appearance/about.html:88
+#: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
 msgstr "تحت لیسانس Apache 2.0"
 
-#: templates/appearance/about.html:100
+#: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "کپی رایت و کپی"
 
-#: templates/appearance/base.html:43
+#: templates/appearance/base.html:45
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+msgid "Profile"
+msgstr ""
+
+#: templates/appearance/base.html:81
 msgid "Anonymous"
 msgstr "ناشناس"
 
-#: templates/appearance/base.html:74
-msgid "User details"
-msgstr "جزئیات کاربر"
-
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Information"
 msgstr ""
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:115
 msgid "Error"
 msgstr ""
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:144
 msgid "Actions"
 msgstr "عملیات"
 
-#: templates/appearance/base.html:117
+#: templates/appearance/base.html:146
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -124,6 +125,12 @@ msgstr "ویرایش :  %(object)s"
 msgid "Create"
 msgstr "ایجاد"
 
+#: templates/appearance/dashboard_widget.html:25
+#, fuzzy
+#| msgid "User details"
+msgid "View details"
+msgstr "جزئیات کاربر"
+
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
 msgid "Confirm"
@@ -138,39 +145,39 @@ msgstr "تائید حذف"
 msgid "Delete: %(object)s?"
 msgstr ""
 
-#: templates/appearance/generic_confirm.html:47
+#: templates/appearance/generic_confirm.html:48
 msgid "Yes"
 msgstr "بلی"
 
-#: templates/appearance/generic_confirm.html:49
+#: templates/appearance/generic_confirm.html:52
 msgid "No"
 msgstr "خیر"
 
 #: templates/appearance/generic_form_instance.html:39
 #: templates/appearance/generic_form_instance.html:46
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:43
+#: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
 msgstr "الزامی"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr "ذخیره"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_subtemplate.html:31
-#: templates/appearance/generic_multiform_subtemplate.html:65
+#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "ارسال"
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:69
+#: templates/appearance/generic_multiform_subtemplate.html:68
 msgid "Cancel"
 msgstr "لغو"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_subtemplate.html:108
+#: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr "بی جواب و یا بی جواب"
 
@@ -187,32 +194,38 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:51
+#: templates/appearance/generic_list_subtemplate.html:53
 msgid "Identifier"
 msgstr "مشخصه Identifier"
 
-#: templates/appearance/home.html:8 templates/appearance/home.html.py:12
-msgid "Home"
-msgstr "خانه"
+#: templates/appearance/home.html:9 templates/appearance/home.html:13
+msgid "Dashboard"
+msgstr ""
 
-#: templates/appearance/home.html:21
+#: templates/appearance/home.html:22
 msgid "Getting started"
 msgstr ""
 
-#: templates/appearance/home.html:24
+#: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 
-#: templates/appearance/home.html:57
-msgid "Space separated terms"
-msgstr "عبارات جداکننده فضا"
+#: templates/appearance/home.html:46
+#, fuzzy
+#| msgid "Search"
+msgid "Search pages"
+msgstr "جستجو"
 
-#: templates/appearance/home.html:59
+#: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
 msgstr "جستجو"
 
-#: templates/appearance/home.html:60
+#: templates/appearance/home.html:49 templates/appearance/home.html:59
 msgid "Advanced"
+msgstr ""
+
+#: templates/appearance/home.html:56
+msgid "Search documents"
 msgstr ""
 
 #: templates/appearance/login.html:10
@@ -227,7 +240,9 @@ msgstr "دفعه اول لاگین "
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!"
+msgstr ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
 
 #: templates/appearance/login.html:25
 msgid "Login using the following credentials:"
@@ -254,10 +269,16 @@ msgid ""
 "message."
 msgstr "برای امنیت بیشتر پسورد خود را تغییر دهید"
 
-#: templates/appearance/login.html:45 templates/appearance/login.html.py:54
+#: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
 msgstr ""
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "هیچکدام."
+
+#~ msgid "Home"
+#~ msgstr "خانه"
+
+#~ msgid "Space separated terms"
+#~ msgstr "عبارات جداکننده فضا"

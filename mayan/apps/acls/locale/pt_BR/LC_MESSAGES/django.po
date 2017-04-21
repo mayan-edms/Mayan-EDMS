@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -9,39 +9,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: 2016-11-17 22:31+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:14 links.py:31
+#: apps.py:15 links.py:35
 msgid "ACLs"
 msgstr "ACLs"
 
-#: apps.py:22 links.py:40 models.py:36
+#: apps.py:25 links.py:44 models.py:36
 msgid "Permissions"
 msgstr "Permissões"
 
-#: apps.py:26 models.py:38
-#| msgid "Roles"
+#: apps.py:29 models.py:38
 msgid "Role"
 msgstr "Regras"
 
-#: links.py:27
+#: links.py:31
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:35
-#| msgid "View ACLs"
+#: links.py:39
 msgid "New ACL"
 msgstr "Nova ACL"
 
-#: managers.py:85
+#: managers.py:109
 msgid "Insufficient access."
 msgstr "Acesso insuficiente."
 
@@ -53,13 +52,13 @@ msgstr "Acesso entrada"
 msgid "Access entries"
 msgstr "Entradas de acesso"
 
-#: models.py:48
+#: models.py:49
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr "Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
+msgstr ""
+"Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
 
-#: models.py:64
+#: models.py:66
 msgid "None"
 msgstr "Nenhum"
 
@@ -75,36 +74,66 @@ msgstr "Editar ACLs"
 msgid "View ACLs"
 msgstr "Visualizar ACLs"
 
-#: views.py:78
+#: serializers.py:24 serializers.py:132
+msgid ""
+"API URL pointing to the list of permissions for this access control list."
+msgstr ""
+
+#: serializers.py:57
+msgid ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
+msgstr ""
+
+#: serializers.py:87
+msgid "Primary key of the new permission to grant to the access control list."
+msgstr ""
+
+#: serializers.py:111 serializers.py:187
+#, fuzzy, python-format
+#| msgid "permission"
+msgid "No such permission: %s"
+msgstr "permission"
+
+#: serializers.py:126
+msgid ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
+msgstr ""
+
+#: serializers.py:138
+msgid "Primary keys of the role to which this access control list binds to."
+msgstr ""
+
+#: views.py:73
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nova lista de controle de acesso para: %s"
 
-#: views.py:109
+#: views.py:100
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "Apagar ACL: %s"
 
-#: views.py:151
+#: views.py:138
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "listas de controle de acesso para: %s"
 
-#: views.py:162
+#: views.py:150
 msgid "Available permissions"
 msgstr "Permissões disponíveis"
 
-#: views.py:163
+#: views.py:151
 msgid "Granted permissions"
 msgstr "Permissões outorgadas"
 
-#: views.py:222
+#: views.py:206
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permissões do papel \"%(role)s\" para \"%(object)s\""
 
-#: views.py:242
+#: views.py:226
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "As permissões inativas foram herdadas de um objeto precedente."
 
@@ -199,8 +228,10 @@ msgstr "As permissões inativas foram herdadas de um objeto precedente."
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"
@@ -222,9 +253,6 @@ msgstr "As permissões inativas foram herdadas de um objeto precedente."
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"
-
-#~ msgid "permission"
-#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"
