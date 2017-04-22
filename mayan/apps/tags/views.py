@@ -126,7 +126,7 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
 
         result = {
             'message': _('Will be removed from all documents.'),
-            'submit_icon': _('fa fa-times'),
+            'submit_icon': 'fa fa-times',
             'submit_label': _('Delete'),
             'title': ungettext(
                 'Delete the selected tag?',
