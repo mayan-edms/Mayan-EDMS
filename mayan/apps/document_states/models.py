@@ -21,6 +21,11 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Workflow(models.Model):
+    """
+    Fields:
+    * label - Identifier. A name/label to call the workflow
+    """
+
     label = models.CharField(
         max_length=255, unique=True, verbose_name=_('Label')
     )
@@ -66,6 +71,16 @@ class Workflow(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
+    """
+    Fields:
+    * completion - Completion Amount - A user defined numerical value to help
+    determine if the workflow of the document is nearing completion (100%).
+    The Completion Amount will be determined by the completion value of the
+    Actual State. Example: If the workflow has 3 states: registered, approved,
+    archived; the admin could give the follow completion values to the
+    states: 33%, 66%, 100%. If the Actual State of the document if approved,
+    the Completion Amount will show 66%.
+    """
     workflow = models.ForeignKey(
         Workflow, related_name='states', verbose_name=_('Workflow')
     )
@@ -155,6 +170,12 @@ class WorkflowInstance(models.Model):
             pass
 
     def get_current_state(self):
+        """
+        Actual State - The current state of the workflow. If there are
+        multiple states available, for example: registered, approved,
+        archived; this field will tell at the current state where the
+        document is right now.
+        """
         try:
             return self.get_last_transition().destination_state
         except AttributeError:
@@ -167,6 +188,10 @@ class WorkflowInstance(models.Model):
             return None
 
     def get_last_transition(self):
+        """
+        Last Transition - The last transition used by the last user to put
+        the document in the actual state.
+        """
         try:
             return self.get_last_log_entry().transition
         except AttributeError:
@@ -224,6 +249,13 @@ class WorkflowInstance(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
+    """
+    Fields:
+    * user - The user who last transitioned the document from a state to the
+    Actual State.
+    * datetime - Date Time - The date and time when the last user transitioned
+    the document state to the Actual state.
+    """
     workflow_instance = models.ForeignKey(
         WorkflowInstance, related_name='log_entries',
         verbose_name=_('Workflow instance')
