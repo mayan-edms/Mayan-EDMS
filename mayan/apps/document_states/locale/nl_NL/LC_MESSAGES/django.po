@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-10-28 12:43+0000\n"
-"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41
@@ -108,26 +107,20 @@ msgid "Transitions"
 msgstr "Transities"
 
 #: links.py:77
-#, fuzzy
-#| msgid "Document workflows"
 msgid "Launch all workflows"
-msgstr "Documentworkflows"
+msgstr ""
 
 #: links.py:81
 msgid "Detail"
 msgstr "Detai"
 
 #: links.py:90
-#, fuzzy
-#| msgid "Workflows for document: %s"
 msgid "Workflow documents"
-msgstr "Workflows voor document: %s"
+msgstr ""
 
 #: links.py:99
-#, fuzzy
-#| msgid "Available document types"
 msgid "State documents"
-msgstr "Beschikbare documentsoorten"
+msgstr ""
 
 #: models.py:25 models.py:72 models.py:107
 msgid "Label"
@@ -198,28 +191,20 @@ msgid "Not a valid transition choice."
 msgstr ""
 
 #: models.py:255
-#, fuzzy
-#| msgid "Workflow transition"
 msgid "Workflow runtime proxy"
-msgstr "Workflowtransitie"
+msgstr ""
 
 #: models.py:256
-#, fuzzy
-#| msgid "Workflow transitions"
 msgid "Workflow runtime proxies"
-msgstr "Workflowtransities"
+msgstr ""
 
 #: models.py:262
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow state runtime proxy"
-msgstr "Workflowstaat"
+msgstr ""
 
 #: models.py:263
-#, fuzzy
-#| msgid "Workflow states"
 msgid "Workflow state runtime proxies"
-msgstr "Workflowstaten"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document workflows"
@@ -246,10 +231,8 @@ msgid "Transition workflows"
 msgstr ""
 
 #: permissions.py:28
-#, fuzzy
-#| msgid "Create workflows"
 msgid "Execute workflow tools"
-msgstr "Workflows aanmaken"
+msgstr ""
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -351,16 +334,13 @@ msgid "Documents with the workflow: %s"
 msgstr "Documenten met de workflow: %s"
 
 #: views.py:482
-#, fuzzy, python-format
-#| msgid "Documents with the workflow: %s"
+#, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr "Documenten met de workflow: %s"
+msgstr ""
 
 #: views.py:517
-#, fuzzy
-#| msgid "Document workflows"
 msgid "Launch all workflows?"
-msgstr "Documentworkflows"
+msgstr ""
 
 #: views.py:524
 msgid "Workflow launch queued successfully."

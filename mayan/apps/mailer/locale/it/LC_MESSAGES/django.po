@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-09-24 10:09+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:26
@@ -62,11 +61,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Allegato a questa mail è il documento: {{ document }}\n"
-"\n"
-" --------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Allegato a questa mail è il documento: {{ document }}\n\n --------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -75,11 +70,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Per accedere al documento fai click sul seguente link: {{ link }}\n"
-"\n"
-"--------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Per accedere al documento fai click sul seguente link: {{ link }}\n\n--------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -115,15 +106,11 @@ msgstr "Link per il documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Template per l'oggetto del modulo e-mail per l'invio del collegamento al "
-"documento."
+msgstr "Template per l'oggetto del modulo e-mail per l'invio del collegamento al documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Template per il corpo del modulo e-mail per l'invio del collegamento al "
-"documento."
+msgstr "Template per il corpo del modulo e-mail per l'invio del collegamento al documento."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -160,21 +147,3 @@ msgstr ""
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr ""
-
-#~ msgid "Must provide at least one document."
-#~ msgstr "Fornire almeno un documento "
-
-#~ msgid "Successfully queued for delivery via email."
-#~ msgstr "Messo in coda per il recapito via email."
-
-#~ msgid "Email document: %s"
-#~ msgstr "Email documento: %s"
-
-#~ msgid "Email link for document: %s"
-#~ msgstr "Email link per il documento: %s"
-
-#~ msgid "Email documents: %s"
-#~ msgstr "Email documenti: %s"
-
-#~ msgid "Email links for documents: %s"
-#~ msgstr "Email link per i documenti: %s"

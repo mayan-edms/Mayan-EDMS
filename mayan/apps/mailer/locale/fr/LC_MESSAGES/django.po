@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:07+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:26
@@ -62,11 +61,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Attaché à ce courriel , voici le - document: {{ document }}\n"
-"\n"
-" --------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Attaché à ce courriel , voici le - document: {{ document }}\n\n --------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -75,11 +70,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Pour acceder à ce document cliquer sur le lien suivant: {{ link }}\n"
-"\n"
-"--------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Pour acceder à ce document cliquer sur le lien suivant: {{ link }}\n\n--------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -156,21 +147,3 @@ msgstr ""
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr ""
-
-#~ msgid "Must provide at least one document."
-#~ msgstr "Vous devez fournir au moins un document."
-
-#~ msgid "Successfully queued for delivery via email."
-#~ msgstr "Ajouter à la file d'attente avec succès pour l'envoi via courriel."
-
-#~ msgid "Email document: %s"
-#~ msgstr "Document du courriel: %s"
-
-#~ msgid "Email link for document: %s"
-#~ msgstr "Lien du courriel pour ce document: %s"
-
-#~ msgid "Email documents: %s"
-#~ msgstr "Documents du courriel: %s"
-
-#~ msgid "Email links for documents: %s"
-#~ msgstr "Liens de courriel pour le document: %s"

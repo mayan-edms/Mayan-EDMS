@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:41
@@ -108,26 +107,20 @@ msgid "Transitions"
 msgstr "Transitions"
 
 #: links.py:77
-#, fuzzy
-#| msgid "Document workflows"
 msgid "Launch all workflows"
-msgstr "Flux de travail du document"
+msgstr ""
 
 #: links.py:81
 msgid "Detail"
 msgstr "Détail"
 
 #: links.py:90
-#, fuzzy
-#| msgid "Workflows for document: %s"
 msgid "Workflow documents"
-msgstr "Flux de travail du document: %s"
+msgstr ""
 
 #: links.py:99
-#, fuzzy
-#| msgid "Available document types"
 msgid "State documents"
-msgstr "Types de document disponible"
+msgstr ""
 
 #: models.py:25 models.py:72 models.py:107
 msgid "Label"
@@ -141,9 +134,7 @@ msgstr "Flux de travail"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de "
-"travail pour démarrer. Un seul état peut être à l'état initial."
+msgstr "Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de travail pour démarrer. Un seul état peut être à l'état initial."
 
 #: models.py:78
 msgid "Initial"
@@ -153,9 +144,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Entrer le pourcentage de finalisation que cet état représente dans la "
-"relation du flux de travail. Saisir un nombre sans le signe pourcentage."
+msgstr "Entrer le pourcentage de finalisation que cet état représente dans la relation du flux de travail. Saisir un nombre sans le signe pourcentage."
 
 #: models.py:98
 msgid "Workflow state"
@@ -202,28 +191,20 @@ msgid "Not a valid transition choice."
 msgstr ""
 
 #: models.py:255
-#, fuzzy
-#| msgid "Workflow transition"
 msgid "Workflow runtime proxy"
-msgstr "Transition du flux de travail"
+msgstr ""
 
 #: models.py:256
-#, fuzzy
-#| msgid "Workflow transitions"
 msgid "Workflow runtime proxies"
-msgstr "Transitions du flux de travail"
+msgstr ""
 
 #: models.py:262
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow state runtime proxy"
-msgstr "État du flux de travail"
+msgstr ""
 
 #: models.py:263
-#, fuzzy
-#| msgid "Workflow instance log entries"
 msgid "Workflow state runtime proxies"
-msgstr "Entrées de la journlisation du flux de travail"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document workflows"
@@ -250,10 +231,8 @@ msgid "Transition workflows"
 msgstr "Transition des flux de travails"
 
 #: permissions.py:28
-#, fuzzy
-#| msgid "Create workflows"
 msgid "Execute workflow tools"
-msgstr "Créer des flux de travail"
+msgstr ""
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
@@ -355,16 +334,13 @@ msgid "Documents with the workflow: %s"
 msgstr "Documents avec le flux de travail: %s"
 
 #: views.py:482
-#, fuzzy, python-format
-#| msgid "Documents with the workflow: %s"
+#, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr "Documents avec le flux de travail: %s"
+msgstr ""
 
 #: views.py:517
-#, fuzzy
-#| msgid "Document workflows"
 msgid "Launch all workflows?"
-msgstr "Flux de travail du document"
+msgstr ""
 
 #: views.py:524
 msgid "Workflow launch queued successfully."

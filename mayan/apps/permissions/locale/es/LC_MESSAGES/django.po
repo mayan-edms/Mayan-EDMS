@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-11-23 06:40+0000\n"
+"PO-Revision-Date: 2017-04-23 03:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 models.py:46 models.py:77 permissions.py:7
@@ -121,10 +120,9 @@ msgid "Comma separated list of permission primary keys to grant to this role."
 msgstr ""
 
 #: serializers.py:92
-#, fuzzy, python-format
-#| msgid "Role permissions"
+#, python-format
 msgid "No such permission: %s"
-msgstr "Autorizaciones por rol"
+msgstr "No existe el permiso: %s"
 
 #: views.py:45
 msgid "Available groups"
@@ -144,6 +142,7 @@ msgid "Available permissions"
 msgstr "Permisos disponibles"
 
 #: views.py:80
+#| msgid "Grant permissions"
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
@@ -180,10 +179,8 @@ msgstr "Permisos para el rol: %s"
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
@@ -199,17 +196,13 @@ msgstr "Permisos para el rol: %s"
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 #~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
 #~ msgid "Users"
 #~ msgstr "Users"

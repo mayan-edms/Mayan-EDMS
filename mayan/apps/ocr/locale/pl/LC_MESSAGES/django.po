@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -11,16 +11,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-03-22 07:14+0000\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
 #: settings.py:7
@@ -49,6 +47,7 @@ msgid "Contents"
 msgstr "Zawartość"
 
 #: links.py:18 links.py:25
+#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
 msgstr "Zgłoś do OCR"
 
@@ -113,6 +112,7 @@ msgid "Document page content"
 msgstr ""
 
 #: models.py:63
+#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
 msgstr ""
 
@@ -140,7 +140,8 @@ msgstr ""
 
 #: settings.py:12
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 
 #: settings.py:19
@@ -152,6 +153,7 @@ msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
 #: views.py:26
+#| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
 msgstr ""
 
@@ -171,17 +173,18 @@ msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Dokument : %(document)s dodany do kolejki OCR"
 
 #: views.py:81
+#| msgid "Submit documents for OCR"
 msgid "Submit the selected documents to the OCR queue?"
 msgstr ""
 
 #: views.py:88
+#| msgid "Submit documents for OCR"
 msgid "Submit all documents of a type for OCR"
 msgstr ""
 
 #: views.py:102
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr ""
 
 #: views.py:125
@@ -191,17 +194,18 @@ msgstr ""
 
 #: views.py:147
 #, python-format
+#| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr ""
 
 #~ msgid "pdftotext version"
-#~ msgstr "wersja pdftotext"
+#~ msgstr "document queues"
 
-#~ msgid "not found"
-#~ msgstr "nie znaleziono"
+#~ msgid "tesseract version"
+#~ msgstr "document queues"
 
-#~ msgid "error getting version"
-#~ msgstr "błąd pobierania wersji"
+#~ msgid "File path to tesseract program."
+#~ msgstr "File path to unpaper program."
 
 #~ msgid "Delete"
 #~ msgstr "delete"
@@ -226,6 +230,7 @@ msgstr ""
 #~ msgstr[0] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_0"
 #~ msgstr[1] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_1"
 #~ msgstr[2] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_2"
+#~ msgstr[3] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_3"
 
 #~ msgid "Entry: %(entry)s was re-queued for OCR."
 #~ msgstr "Document: %(document)s is already queued."
@@ -238,6 +243,7 @@ msgstr ""
 #~ msgstr[0] "3d821f1679e8cdd3b5844ba5a01a969b_pl_0"
 #~ msgstr[1] "3d821f1679e8cdd3b5844ba5a01a969b_pl_1"
 #~ msgstr[2] "3d821f1679e8cdd3b5844ba5a01a969b_pl_2"
+#~ msgstr[3] "3d821f1679e8cdd3b5844ba5a01a969b_pl_3"
 
 #~ msgid "Submit the selected document for OCR?"
 #~ msgstr "Submit documents for OCR"
@@ -373,11 +379,11 @@ msgstr ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -434,11 +440,9 @@ msgstr ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

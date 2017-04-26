@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-04-17 09:43+0000\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
 #: views.py:95
@@ -35,22 +33,16 @@ msgid "Documents"
 msgstr "Documente"
 
 #: links.py:24 links.py:34
-#, fuzzy
-#| msgid "Remove documents from folders"
 msgid "Remove from folders"
-msgstr "Scoateți documentele din directoare"
+msgstr ""
 
 #: links.py:27
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add to a folders"
-msgstr "Add document to a folder"
+msgstr ""
 
 #: links.py:31
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add to folders"
-msgstr "Add document to a folder"
+msgstr ""
 
 #: links.py:42 views.py:37
 msgid "Create folder"
@@ -97,6 +89,7 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -105,6 +98,7 @@ msgid "Remove documents from folders"
 msgstr "Scoateți documentele din directoare"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -118,6 +112,7 @@ msgstr ""
 
 #: views.py:49
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
@@ -148,22 +143,19 @@ msgstr ""
 
 #: views.py:137
 msgid "Add"
-msgstr ""
+msgstr "Adaugă"
 
 #: views.py:139
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add document to folders"
 msgid_plural "Add documents to folders"
-msgstr[0] "Add document to a folder"
-msgstr[1] "Add document to a folder"
-msgstr[2] "Add document to a folder"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:150
-#, fuzzy, python-format
-#| msgid "Add document: %s to folder."
+#, python-format
 msgid "Add document \"%s\" to folders"
-msgstr "Add document: %s to folder."
+msgstr ""
 
 #: views.py:161
 msgid "Folders to which the selected documents will be added."
@@ -177,8 +169,7 @@ msgstr "Documentul: %(document)s  este deja în directorul : %(folder)s."
 #: views.py:200
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
-"Documentul:%(document)s  a fost adăugat la directorul :%(folder)s cu succes."
+msgstr "Documentul:%(document)s  a fost adăugat la directorul :%(folder)s cu succes."
 
 #: views.py:212
 #, python-format
@@ -192,50 +183,61 @@ msgstr ""
 
 #: views.py:222
 msgid "Remove"
-msgstr ""
+msgstr "Şterge"
 
 #: views.py:224
-#, fuzzy
 #| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
-msgstr[0] "Scoateți documentele din directoare"
-msgstr[1] "Scoateți documentele din directoare"
-msgstr[2] "Scoateți documentele din directoare"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:235
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
-msgstr "Scoateți documentele din directoare"
+msgstr ""
 
 #: views.py:246
 msgid "Folders from which the selected documents will be removed."
 msgstr ""
 
 #: views.py:273
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
-msgstr "Documentul: %(document)s  este deja în directorul : %(folder)s."
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
-msgstr "Documentul: %(document)s  este deja în directorul : %(folder)s."
+msgstr ""
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "Trebuie selectat cel puțin un document."
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Add document to folder"
+#~ msgid_plural "Add documents to folder"
+#~ msgstr[0] "97c0d1f6a737e93c542fd20ae2682559_pl_0"
+#~ msgstr[1] "97c0d1f6a737e93c542fd20ae2682559_pl_1"
+#~ msgstr[2] "97c0d1f6a737e93c542fd20ae2682559_pl_2"
 
 #~ msgid "Must provide at least one folder document."
-#~ msgstr "Trebuie selectat cel puțin un director."
+#~ msgstr "Must provide at least one folder document."
 
 #~ msgid "Document: %s removed successfully."
-#~ msgstr "Document: % s eliminat cu succes."
+#~ msgstr "Document: %s removed successfully."
 
 #~ msgid "Document: %(document)s delete error: %(error)s"
-#~ msgstr "Eroare %(error)s ştergere document %(document)s"
+#~ msgstr "Document: %(document)s delete error: %(error)s"
+
+#~ msgid "Remove the selected document from the folder: %(folder)s?"
+#~ msgid_plural "Remove the selected documents from the folder: %(folder)s?"
+#~ msgstr[0] "81c6b0124b038e876c41a6794709629b_pl_0"
+#~ msgstr[1] "81c6b0124b038e876c41a6794709629b_pl_1"
+#~ msgstr[2] "81c6b0124b038e876c41a6794709629b_pl_2"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -273,15 +275,21 @@ msgstr "Documentul: %(document)s  este deja în directorul : %(folder)s."
 #~ msgid "Are you sure you with to delete the folder: %s?"
 #~ msgstr "Are you sure you with to delete the folder: %s?"
 
+#~ msgid "Add document to a folder"
+#~ msgstr "Add document to a folder"
+
+#~ msgid "Add document: %s to folder."
+#~ msgstr "Add document: %s to folder."
+
 #~ msgid "Add documents: %s to folder."
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -314,12 +322,12 @@ msgstr "Documentul: %(document)s  este deja în directorul : %(folder)s."
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

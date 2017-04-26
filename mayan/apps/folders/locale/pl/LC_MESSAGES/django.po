@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -12,16 +12,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
 #: views.py:95
@@ -37,22 +35,16 @@ msgid "Documents"
 msgstr "Dokumenty"
 
 #: links.py:24 links.py:34
-#, fuzzy
-#| msgid "Remove from folder"
 msgid "Remove from folders"
-msgstr "Usuń z folderu"
+msgstr ""
 
 #: links.py:27
-#, fuzzy
-#| msgid "Add to a folder"
 msgid "Add to a folders"
-msgstr "Dodaj do folderu"
+msgstr ""
 
 #: links.py:31
-#, fuzzy
-#| msgid "Add to folder"
 msgid "Add to folders"
-msgstr "Dodaj do folderu"
+msgstr ""
 
 #: links.py:42 views.py:37
 msgid "Create folder"
@@ -99,6 +91,7 @@ msgid "Edit folders"
 msgstr "Edytuj foldery"
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr "Usuń foldery"
 
@@ -107,6 +100,7 @@ msgid "Remove documents from folders"
 msgstr "Usuń dokumenty z folderów"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
 msgstr "Przeglądaj foldery"
 
@@ -120,6 +114,7 @@ msgstr ""
 
 #: views.py:49
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Usunąć folder: %s?"
 
@@ -150,22 +145,20 @@ msgstr ""
 
 #: views.py:137
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #: views.py:139
-#, fuzzy
-#| msgid "Add documents to folders"
 msgid "Add document to folders"
 msgid_plural "Add documents to folders"
-msgstr[0] "Dodaj dokumenty do folderów"
-msgstr[1] "Dodaj dokumenty do folderów"
-msgstr[2] "Dodaj dokumenty do folderów"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:150
-#, fuzzy, python-format
-#| msgid "Add documents to folders"
+#, python-format
 msgid "Add document \"%s\" to folders"
-msgstr "Dodaj dokumenty do folderów"
+msgstr ""
 
 #: views.py:161
 msgid "Folders to which the selected documents will be added."
@@ -193,62 +186,64 @@ msgstr ""
 
 #: views.py:222
 msgid "Remove"
-msgstr ""
+msgstr "Usuń"
 
 #: views.py:224
-#, fuzzy
 #| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
-msgstr[0] "Usuń dokumenty z folderów"
-msgstr[1] "Usuń dokumenty z folderów"
-msgstr[2] "Usuń dokumenty z folderów"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:235
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
-msgstr "Usuń dokumenty z folderów"
+msgstr ""
 
 #: views.py:246
 msgid "Folders from which the selected documents will be removed."
 msgstr ""
 
 #: views.py:273
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
-msgstr "Dokument: %(document)s jest już w folderze: %(folder)s."
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
-msgstr "Dokument: %(document)s jest już w folderze: %(folder)s."
+msgstr ""
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "Musisz dodać co najmniej jeden dokument."
+#~ msgstr "Must provide at least one document."
 
 #~ msgid "Add document to folder"
 #~ msgid_plural "Add documents to folder"
-#~ msgstr[0] "Dodaj dokument do folderu"
-#~ msgstr[1] "Dodaj dokumenty do folderu"
-#~ msgstr[2] "Dodaj dokumenty do folderu"
+#~ msgstr[0] "97c0d1f6a737e93c542fd20ae2682559_pl_0"
+#~ msgstr[1] "97c0d1f6a737e93c542fd20ae2682559_pl_1"
+#~ msgstr[2] "97c0d1f6a737e93c542fd20ae2682559_pl_2"
+#~ msgstr[3] "97c0d1f6a737e93c542fd20ae2682559_pl_3"
 
 #~ msgid "Must provide at least one folder document."
-#~ msgstr "Musisz dodać co najmiej jeden katalog dokumentów."
+#~ msgstr "Must provide at least one folder document."
 
 #~ msgid "Document: %s removed successfully."
-#~ msgstr "Pomyślnie usunięto dokument: %s. "
+#~ msgstr "Document: %s removed successfully."
 
 #~ msgid "Document: %(document)s delete error: %(error)s"
-#~ msgstr "Błąd %(error)s podczas usuwania dokumentu %(document)s"
+#~ msgstr "Document: %(document)s delete error: %(error)s"
 
 #~ msgid "Remove the selected document from the folder: %(folder)s?"
 #~ msgid_plural "Remove the selected documents from the folder: %(folder)s?"
-#~ msgstr[0] "Usunąć wybrany dokument z folderu: %(folder)s?"
-#~ msgstr[1] "Usunąć wybrane dokumenty z folderu: %(folder)s?"
-#~ msgstr[2] "Usunąć wybrane dokumenty z folderu: %(folder)s?"
+#~ msgstr[0] "81c6b0124b038e876c41a6794709629b_pl_0"
+#~ msgstr[1] "81c6b0124b038e876c41a6794709629b_pl_1"
+#~ msgstr[2] "81c6b0124b038e876c41a6794709629b_pl_2"
+#~ msgstr[3] "81c6b0124b038e876c41a6794709629b_pl_3"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -296,11 +291,11 @@ msgstr "Dokument: %(document)s jest już w folderze: %(folder)s."
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -333,12 +328,12 @@ msgstr "Dokument: %(document)s jest już w folderze: %(folder)s."
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

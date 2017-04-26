@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-05-09 01:47+0000\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:19 permissions.py:7 settings.py:7
@@ -43,6 +42,7 @@ msgid "Exception determining PDF page count; %s"
 msgstr "Excepción determinando el número de páginas del PDF; %s"
 
 #: classes.py:97
+#| msgid "suported file formats"
 msgid "Not an office file format."
 msgstr "No es un formato de archivo de la oficina."
 
@@ -76,22 +76,19 @@ msgid "Rotate"
 msgstr "Girar"
 
 #: classes.py:378
-#, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
-msgstr "Rotate by n degress."
+msgstr ""
 
 #: classes.py:389
-#, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
-msgstr "Rotate by n degress."
+msgstr ""
 
 #: classes.py:400
-#, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
-msgstr "Rotate by n degress."
+msgstr ""
 
 #: classes.py:410
 msgid "Unsharp masking"
@@ -121,9 +118,7 @@ msgstr "Transformaciones"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Orden de ejecución de las transformaciones. Si lo deja en blanco, un valor "
-"de orden sera asignado automáticamente. "
+msgstr "Orden de ejecución de las transformaciones. Si lo deja en blanco, un valor de orden sera asignado automáticamente. "
 
 #: models.py:38
 msgid "Name"
@@ -133,9 +128,7 @@ msgstr "Nombre"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Entre el argumento de la transformación como un diccionario YAML. Ejemplo: "
-"{\"degrees\": 180}"
+msgstr "Entre el argumento de la transformación como un diccionario YAML. Ejemplo: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -150,6 +143,7 @@ msgid "Edit transformations"
 msgstr "Editar transformaciones"
 
 #: permissions.py:19
+#| msgid "Raw application information"
 msgid "View existing transformations"
 msgstr "Ver transformaciones existentes"
 
@@ -172,8 +166,7 @@ msgstr "Entre un valor YAML."
 #: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
+msgstr "¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
 
 #: views.py:127
 #, python-format
@@ -224,13 +217,14 @@ msgstr "Transformaciones para: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -543,11 +537,9 @@ msgstr "Transformaciones para: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -663,8 +655,7 @@ msgstr "Transformaciones para: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

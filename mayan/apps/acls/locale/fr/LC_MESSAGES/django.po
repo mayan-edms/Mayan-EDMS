@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-10-28 07:32+0000\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 links.py:35
@@ -29,6 +29,7 @@ msgid "Permissions"
 msgstr "Permissions"
 
 #: apps.py:29 models.py:38
+#| msgid "Roles"
 msgid "Role"
 msgstr "Rôle"
 
@@ -37,6 +38,7 @@ msgid "Delete"
 msgstr "Suppression"
 
 #: links.py:39
+#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Nouveau droit"
 
@@ -54,8 +56,9 @@ msgstr "Entrées d'accès"
 
 #: models.py:49
 #, python-format
+#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
+msgstr "Permissions \"%(permissions)s\" du rôle \"%(role)s\" pour \"%(object)s\""
 
 #: models.py:66
 msgid "None"
@@ -89,10 +92,10 @@ msgid "Primary key of the new permission to grant to the access control list."
 msgstr ""
 
 #: serializers.py:111 serializers.py:187
-#, fuzzy, python-format
+#, python-format
 #| msgid "permission"
 msgid "No such permission: %s"
-msgstr "permission"
+msgstr ""
 
 #: serializers.py:126
 msgid ""
@@ -111,6 +114,7 @@ msgstr "Nouvelle liste de contrôle d'accès pour: %s"
 
 #: views.py:100
 #, python-format
+#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "Supprimer le droit: %s"
 
@@ -227,10 +231,8 @@ msgstr "La désactivation de permission est hérité de l'objet parent"
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

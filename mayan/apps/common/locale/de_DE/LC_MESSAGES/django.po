@@ -1,10 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
+# Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014,2016
@@ -13,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-10-31 19:01+0000\n"
-"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2017-04-24 23:12+0000\n"
+"Last-Translator: Jesaja Everling <jeverling@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:76 settings.py:9
@@ -83,10 +83,8 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s erfolgreich aktualisiert."
 
 #: links.py:9
-#, fuzzy
-#| msgid "About"
 msgid "About this"
-msgstr "Über"
+msgstr "Über Mayan"
 
 #: links.py:12
 msgid "User details"
@@ -106,11 +104,11 @@ msgstr "Lokalisierungsprofil bearbeiten"
 
 #: links.py:27
 msgid "Source code"
-msgstr ""
+msgstr "Quelltext"
 
 #: links.py:31
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentation"
 
 #: links.py:35
 msgid "Data filters"
@@ -118,7 +116,7 @@ msgstr "Datenfilter"
 
 #: links.py:39
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:43 views.py:168
 msgid "License"
@@ -216,27 +214,26 @@ msgstr "Protokollierung für alle Apps automatisch freischalten."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung "
-"auf einen Datenbankcommit warten."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung auf einen Datenbankcommit warten."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
+msgstr "Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
 msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen"
 
 #: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschauen "
-"und temporären Dateien. "
+msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschauen und temporären Dateien. "
 
 #: views.py:43
 msgid "Current user details"
@@ -255,6 +252,7 @@ msgid "Edit current user locale profile details"
 msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"
 
 #: views.py:131
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Filterauswahl"
 
@@ -264,6 +262,7 @@ msgid "Results for filter: %s"
 msgstr "Ergebnis für Filter %s"
 
 #: views.py:154
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filter nicht gefunden"
 
@@ -317,11 +316,11 @@ msgstr "Kein(e)"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -330,11 +329,11 @@ msgstr "Kein(e)"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

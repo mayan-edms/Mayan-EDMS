@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
-"mayan-edms/language/vi_VN/)\n"
-"Language: vi_VN\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:16
@@ -59,22 +58,31 @@ msgid "Maximum amount search hits to fetch and display."
 msgstr ""
 
 #: views.py:24
-#, fuzzy, python-format
+#, python-format
 #| msgid "Search results"
 msgid "Search results for: %s"
-msgstr "Kết quả tìm kiếm"
+msgstr ""
 
 #: views.py:64
-#, fuzzy, python-format
+#, python-format
 #| msgid "Search error: %s"
 msgid "Search for: %s"
-msgstr "Search error: %s"
+msgstr ""
 
-#~ msgid "User"
-#~ msgstr "Người dùng"
+#~ msgid "Query"
+#~ msgstr "query"
+
+#~ msgid "Datetime created"
+#~ msgstr "datetime created"
+
+#~ msgid "Recent search"
+#~ msgstr "recent search"
+
+#~ msgid "Recent searches"
+#~ msgstr "recent searches"
 
 #~ msgid "Maximum number of search queries to remember per user."
-#~ msgstr "Số truy vấn lớn nhất cần nhớ cho mỗi người dùng"
+#~ msgstr "Maximum number of search queries to remember per user."
 
 #~ msgid "Results"
 #~ msgstr "results"
@@ -85,8 +93,7 @@ msgstr "Search error: %s"
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid ""
-#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:42 permissions.py:7
@@ -134,6 +133,7 @@ msgstr ""
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
@@ -166,17 +166,16 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#, fuzzy
-#| msgid "create new user"
+#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "create new user"
+msgstr[0] ""
 
 #: views.py:156
-#, fuzzy, python-format
-#| msgid "Delete the groups: %s?"
+#, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
-msgstr "Delete existing groups"
+msgstr ""
 
 #: views.py:168
 msgid ""
@@ -232,10 +231,10 @@ msgid_plural "Change users passwords"
 msgstr[0] ""
 
 #: views.py:274
-#, fuzzy, python-format
-#| msgid "Non groups of user: %s"
+#, python-format
+#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
-msgstr "non groups of user: %s"
+msgstr ""
 
 #: views.py:294
 msgid ""
@@ -252,6 +251,18 @@ msgstr ""
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
+
+#~ msgid "Must provide at least one user."
+#~ msgstr "Must provide at least one user."
+
+#~ msgid "Delete the users: %s?"
+#~ msgstr "Delete existing users"
+
+#~ msgid "Passwords do not match, try again."
+#~ msgstr "Passwords do not match, try again."
+
+#~ msgid "Reseting password for users: %s"
+#~ msgstr "Reseting password for users: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "
@@ -272,11 +283,17 @@ msgstr ""
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
 #~ msgstr "Error deleting group \"%(group)s\": %(error)s"
 
+#~ msgid "Delete the groups: %s?"
+#~ msgstr "Delete existing groups"
+
 #~ msgid "Are you sure you wish to delete the user: %s?"
 #~ msgstr "Are you sure you wish to delete the user: %s?"
 
 #~ msgid "Are you sure you wish to delete the users: %s?"
 #~ msgstr "Are you sure you wish to delete the users: %s?"
+
+#~ msgid "Non groups of user: %s"
+#~ msgstr "non groups of user: %s"
 
 #~ msgid "Group \"%s\" updated successfully."
 #~ msgstr "Group \"%s\" updated successfully."
@@ -304,6 +321,9 @@ msgstr ""
 
 #~ msgid "edit"
 #~ msgstr "edit"
+
+#~ msgid "create new user"
+#~ msgstr "create new user"
 
 #~ msgid "create new group"
 #~ msgstr "create new group"

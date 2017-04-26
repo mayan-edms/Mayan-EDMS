@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2016
+# Roberto Rosario, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-05-09 01:33+0000\n"
+"PO-Revision-Date: 2017-04-23 03:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42 permissions.py:7
@@ -89,10 +88,8 @@ msgid "Users"
 msgstr "Usuarios"
 
 #: links.py:62 links.py:66
-#, fuzzy
-#| msgid "Reset password"
 msgid "Set password"
-msgstr "Restablecer contraseña"
+msgstr "Asignar contraseña"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -128,7 +125,7 @@ msgstr "Ver usuarios existentes"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
+msgstr "Lista separada por comas de llaves primarias de grupos a ser asignados a este usuario."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
@@ -141,6 +138,7 @@ msgstr "Editar grupo: %s"
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "¿Borrar el grupo: %s?"
 
@@ -173,26 +171,23 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#, fuzzy
-#| msgid "Delete the user: %s?"
+#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "¿Borrar el usuario: %s?"
-msgstr[1] "¿Borrar el usuario: %s?"
+msgstr[0] "Borrar usuario"
+msgstr[1] "Borrar usuarios"
 
 #: views.py:156
-#, fuzzy, python-format
-#| msgid "Delete the user: %s?"
+#, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
-msgstr "¿Borrar el usuario: %s?"
+msgstr "Borrar usuario: %s"
 
 #: views.py:168
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:176
 #, python-format
@@ -234,29 +229,25 @@ msgstr ""
 
 #: views.py:262
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: views.py:264
-#, fuzzy
-#| msgid "Reset password"
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Restablecer contraseña"
-msgstr[1] "Restablecer contraseña"
+msgstr[0] "Cambiar contraseña de usuario"
+msgstr[1] "Cambiar contraseñas de usuarios"
 
 #: views.py:274
-#, fuzzy, python-format
+#, python-format
 #| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
-msgstr "Restaurando contraseña del usuario: %s"
+msgstr "Cambiar contraseñas para el usuario: %s"
 
 #: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y del usuario de "
-"personal. Use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:304
 #, python-format
@@ -266,21 +257,19 @@ msgstr "Contraseña restablecida para el usuario: %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
 #~ msgid "Must provide at least one user."
-#~ msgstr "Debe indicar al menos un usuario."
+#~ msgstr "Must provide at least one user."
 
-#~| msgid "Delete existing users"
 #~ msgid "Delete the users: %s?"
-#~ msgstr "¿Borrar los usuarios: %s?"
+#~ msgstr "Delete existing users"
 
 #~ msgid "Passwords do not match, try again."
-#~ msgstr "Las contraseñas no coinciden. Vuelva a intentarlo."
+#~ msgstr "Passwords do not match, try again."
 
 #~ msgid "Reseting password for users: %s"
-#~ msgstr "Restaurando la contraseña de los usuarios: %s"
+#~ msgstr "Reseting password for users: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "

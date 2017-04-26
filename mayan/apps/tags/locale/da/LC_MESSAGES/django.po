@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:34 apps.py:78 apps.py:85 apps.py:104 apps.py:106 forms.py:31
@@ -38,10 +37,8 @@ msgid "Remove tag"
 msgstr ""
 
 #: links.py:17 links.py:24
-#, fuzzy
-#| msgid "Attach tags to documents"
 msgid "Attach tags"
-msgstr "Vedhæft tags til dokumenter"
+msgstr ""
 
 #: links.py:20
 msgid "Remove tags"
@@ -138,18 +135,17 @@ msgid "Attach"
 msgstr ""
 
 #: views.py:44
-#, fuzzy
 #| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
-msgstr[0] "Vedhæft tags til dokumenter"
-msgstr[1] "Vedhæft tags til dokumenter"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:54
-#, fuzzy, python-format
+#, python-format
 #| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
-msgstr "Attach tag to document: %s."
+msgstr ""
 
 #: views.py:63
 msgid "Tags to be attached."
@@ -194,10 +190,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: views.py:142
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete tags"
 msgid "Delete tag: %s"
-msgstr "Slet tags"
+msgstr ""
 
 #: views.py:152
 #, python-format
@@ -239,28 +235,27 @@ msgid "Remove"
 msgstr ""
 
 #: views.py:246
-#, fuzzy
 #| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
-msgstr[0] "Fjern tags fra dokumenter"
-msgstr[1] "Fjern tags fra dokumenter"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:256
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
-msgstr "Fjern tag fra dokument: %s."
+msgstr ""
 
 #: views.py:265
 msgid "Tags to be removed."
 msgstr ""
 
 #: views.py:290
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "Dokumentet \"%(document)s\" ikke blev kodet som \"%(tag)s\""
+msgstr ""
 
 #: views.py:300
 #, python-format
@@ -268,16 +263,41 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" blev fjernet fra dokumentet \"%(document)s\"."
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "Skal angive mindst ét ​​dokument."
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Attach tag to document"
+#~ msgid_plural "Attach tag to documents"
+#~ msgstr[0] "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+#~ msgstr[1] "2b1f894eebfe4fd9c93a2a121387867c_pl_1"
 
 #~ msgid "Must provide at least one tag."
-#~ msgstr "Der skal angives mindst én tag."
+#~ msgstr "Must provide at least one tag."
 
 #~ msgid "Must provide at least one tagged document."
-#~ msgstr "Skal angive mindst ét tagget dokument."
+#~ msgstr "Must provide at least one tagged document."
 
 #~ msgid "Remove tag from documents: %s."
-#~ msgstr "Fjern tag fra dokumenter: %s."
+#~ msgstr "Remove tag from documents: %s."
+
+#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+#~ "%(documents)s?"
+
+#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
+#~ "%(documents)s?"
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -10,17 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:76 settings.py:9
 msgid "Common"
@@ -82,10 +79,8 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."
 
 #: links.py:9
-#, fuzzy
-#| msgid "About"
 msgid "About this"
-msgstr "Инфо"
+msgstr ""
 
 #: links.py:12
 msgid "User details"
@@ -211,29 +206,26 @@ msgstr "Профили локали пользователей"
 
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
-msgstr ""
-"Автоматически разрешать всем установленным приложениям делать записи в "
-"журнале."
+msgstr "Автоматически разрешать всем установленным приложениям делать записи в журнале."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Время задержки фоновых задач зависящих от процесса распространения "
-"записанных в БД данных."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Числовое значение указывающее как много объектов может быть отображено на "
-"одной странице."
+msgstr "Числовое значение указывающее как много объектов может быть отображено на одной странице."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Бекенд хранения, который каждый может использовать для хранения файлов."
+msgstr "Бекенд хранения, который каждый может использовать для хранения файлов."
 
 #: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
@@ -256,6 +248,7 @@ msgid "Edit current user locale profile details"
 msgstr "Редактировать настройки локали текущего пользователя"
 
 #: views.py:131
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Фильтр по выбранным"
 
@@ -265,6 +258,7 @@ msgid "Results for filter: %s"
 msgstr "Результаты для фильтра: %s"
 
 #: views.py:154
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Фильтр не найден"
 
@@ -318,11 +312,11 @@ msgstr "Ни один"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -331,11 +325,11 @@ msgstr "Ни один"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

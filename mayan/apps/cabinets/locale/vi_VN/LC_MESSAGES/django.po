@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,13 +10,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: Trung Phan Minh <navmobile@gmail.com>, 2017\n"
+"Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/rosarior/teams/13584/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33 forms.py:30 links.py:21 menus.py:8 models.py:34 permissions.py:7
 #: views.py:153
@@ -49,7 +49,7 @@ msgstr ""
 
 #: links.py:67
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: links.py:71
 msgid "All"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: links.py:74
 msgid "Details"
-msgstr ""
+msgstr "Chi tiết"
 
 #: models.py:22
 msgid "Label"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: models.py:25
 msgid "Documents"
-msgstr ""
+msgstr "Tài liệu"
 
 #: models.py:33 models.py:66 serializers.py:134
 msgid "Cabinet"
@@ -125,7 +125,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:175
@@ -179,13 +180,12 @@ msgstr ""
 
 #: views.py:198
 msgid "Add"
-msgstr ""
+msgstr "Thêm"
 
 #: views.py:200
 msgid "Add document to cabinets"
 msgid_plural "Add documents to cabinets"
 msgstr[0] ""
-msgstr[1] ""
 
 #: views.py:211
 #, python-format
@@ -218,13 +218,12 @@ msgstr ""
 
 #: views.py:282
 msgid "Remove"
-msgstr ""
+msgstr "Xóa"
 
 #: views.py:284
 msgid "Remove document from cabinets"
 msgid_plural "Remove documents from cabinets"
 msgstr[0] ""
-msgstr[1] ""
 
 #: views.py:295
 #, python-format

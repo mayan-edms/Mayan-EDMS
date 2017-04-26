@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:34 apps.py:78 apps.py:85 apps.py:104 apps.py:106 forms.py:31
 #: links.py:40 menus.py:8 models.py:34 permissions.py:7 views.py:181
@@ -39,10 +37,8 @@ msgid "Remove tag"
 msgstr ""
 
 #: links.py:17 links.py:24
-#, fuzzy
-#| msgid "Attach tags to documents"
 msgid "Attach tags"
-msgstr "إضافة كلمات استدلالية للوثائق"
+msgstr ""
 
 #: links.py:20
 msgid "Remove tags"
@@ -139,22 +135,21 @@ msgid "Attach"
 msgstr ""
 
 #: views.py:44
-#, fuzzy
 #| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
-msgstr[0] "إضافة كلمات استدلالية للوثائق"
-msgstr[1] "إضافة كلمات استدلالية للوثائق"
-msgstr[2] "إضافة كلمات استدلالية للوثائق"
-msgstr[3] "إضافة كلمات استدلالية للوثائق"
-msgstr[4] "إضافة كلمات استدلالية للوثائق"
-msgstr[5] "إضافة كلمات استدلالية للوثائق"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:54
-#, fuzzy, python-format
+#, python-format
 #| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
-msgstr "Attach tag to document: %s."
+msgstr ""
 
 #: views.py:63
 msgid "Tags to be attached."
@@ -203,10 +198,10 @@ msgstr[4] ""
 msgstr[5] ""
 
 #: views.py:142
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete tags"
 msgid "Delete tag: %s"
-msgstr "حذف الكلمات الاستدلالية"
+msgstr ""
 
 #: views.py:152
 #, python-format
@@ -245,53 +240,80 @@ msgstr ""
 
 #: views.py:244
 msgid "Remove"
-msgstr ""
+msgstr "إزالة"
 
 #: views.py:246
-#, fuzzy
 #| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
-msgstr[0] "إزالة الكلمات الاستدلالية من الوثائق"
-msgstr[1] "إزالة الكلمات الاستدلالية من الوثائق"
-msgstr[2] "إزالة الكلمات الاستدلالية من الوثائق"
-msgstr[3] "إزالة الكلمات الاستدلالية من الوثائق"
-msgstr[4] "إزالة الكلمات الاستدلالية من الوثائق"
-msgstr[5] "إزالة الكلمات الاستدلالية من الوثائق"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:256
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
-msgstr "ازالة الكلمة الاستدلالية من الوثيقة: %s"
+msgstr ""
 
 #: views.py:265
 msgid "Tags to be removed."
 msgstr ""
 
 #: views.py:290
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "الوثيقة \"%(document)s\" لم تربط مع:  \"%(tag)s\""
+msgstr ""
 
 #: views.py:300
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
+msgstr "الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "يجب توفير وثيقة واحدة عالاقل."
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Attach tag to document"
+#~ msgid_plural "Attach tag to documents"
+#~ msgstr[0] "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+#~ msgstr[1] "2b1f894eebfe4fd9c93a2a121387867c_pl_1"
+#~ msgstr[2] "2b1f894eebfe4fd9c93a2a121387867c_pl_2"
+#~ msgstr[3] "2b1f894eebfe4fd9c93a2a121387867c_pl_3"
+#~ msgstr[4] "2b1f894eebfe4fd9c93a2a121387867c_pl_4"
+#~ msgstr[5] "2b1f894eebfe4fd9c93a2a121387867c_pl_5"
 
 #~ msgid "Must provide at least one tag."
-#~ msgstr "يجب توفير كلمة استدلالية واحدة عالاقل"
+#~ msgstr "Must provide at least one tag."
 
 #~ msgid "Must provide at least one tagged document."
-#~ msgstr "يجب توفير وثيقة واحد عالاقل مربوطة بكلمات استدلالية"
+#~ msgstr "Must provide at least one tagged document."
 
 #~ msgid "Remove tag from documents: %s."
-#~ msgstr "ازالة الكلمة الاستدلالية من الوثائق: %s"
+#~ msgstr "Remove tag from documents: %s."
+
+#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+#~ "%(documents)s?"
+
+#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
+#~ "%(documents)s?"
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"

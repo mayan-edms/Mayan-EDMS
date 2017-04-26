@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:42 permissions.py:7
@@ -85,10 +84,8 @@ msgid "Users"
 msgstr "用户"
 
 #: links.py:62 links.py:66
-#, fuzzy
-#| msgid "New password"
 msgid "Set password"
-msgstr "新密码"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -137,6 +134,7 @@ msgstr ""
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
@@ -169,17 +167,16 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#, fuzzy
 #| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "删除现有用户"
+msgstr[0] ""
 
 #: views.py:156
-#, fuzzy, python-format
-#| msgid "Delete the groups: %s?"
+#, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
-msgstr "Delete existing groups"
+msgstr ""
 
 #: views.py:168
 msgid ""
@@ -227,20 +224,18 @@ msgstr ""
 
 #: views.py:262
 msgid "Submit"
-msgstr ""
+msgstr "提交"
 
 #: views.py:264
-#, fuzzy
-#| msgid "Confirm password"
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "确认密码"
+msgstr[0] ""
 
 #: views.py:274
-#, fuzzy, python-format
+#, python-format
 #| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
-msgstr "重置用户%s的密码"
+msgstr ""
 
 #: views.py:294
 msgid ""
@@ -259,13 +254,16 @@ msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "重置用户\"%(user)s\"密码出错：%(error)s"
 
 #~ msgid "Must provide at least one user."
-#~ msgstr "必须提供至少一个用户"
+#~ msgstr "Must provide at least one user."
+
+#~ msgid "Delete the users: %s?"
+#~ msgstr "Delete existing users"
 
 #~ msgid "Passwords do not match, try again."
-#~ msgstr "密码不匹配，请再试一次"
+#~ msgstr "Passwords do not match, try again."
 
 #~ msgid "Reseting password for users: %s"
-#~ msgstr "重置用户：%s的密码"
+#~ msgstr "Reseting password for users: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "
@@ -285,6 +283,9 @@ msgstr "重置用户\"%(user)s\"密码出错：%(error)s"
 
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
 #~ msgstr "Error deleting group \"%(group)s\": %(error)s"
+
+#~ msgid "Delete the groups: %s?"
+#~ msgstr "Delete existing groups"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
 #~ msgstr "Are you sure you wish to delete the user: %s?"

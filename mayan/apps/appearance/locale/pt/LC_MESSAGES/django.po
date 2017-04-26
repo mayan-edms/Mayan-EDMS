@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-03-21 21:06+0000\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12
@@ -44,8 +43,8 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -126,10 +125,8 @@ msgid "Create"
 msgstr "Criar"
 
 #: templates/appearance/dashboard_widget.html:25
-#, fuzzy
-#| msgid "User details"
 msgid "View details"
-msgstr "Detalhes do utilizador"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
@@ -211,10 +208,8 @@ msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 
 #: templates/appearance/home.html:46
-#, fuzzy
-#| msgid "Search"
 msgid "Search pages"
-msgstr "Procurar"
+msgstr ""
 
 #: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
@@ -265,9 +260,7 @@ msgstr "Senha: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Certifique-se de que altera a senha para aumentar a segurança e que desativa "
-"esta mensagem."
+msgstr "Certifique-se de que altera a senha para aumentar a segurança e que desativa esta mensagem."
 
 #: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
@@ -276,6 +269,3 @@ msgstr ""
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Nenhum"
-
-#~ msgid "Home"
-#~ msgstr "início"

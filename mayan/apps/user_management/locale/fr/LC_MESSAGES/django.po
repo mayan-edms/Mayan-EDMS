@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-04-28 15:12+0000\n"
-"Last-Translator: Baptiste GAILLET <baptiste.gaillet@cstb.fr>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42 permissions.py:7
@@ -89,10 +88,8 @@ msgid "Users"
 msgstr "Utilisateurs"
 
 #: links.py:62 links.py:66
-#, fuzzy
-#| msgid "Reset password"
 msgid "Set password"
-msgstr "Reinitialiser le mot de passe"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -141,6 +138,7 @@ msgstr "Modification du groupe : %s"
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Supprimer le groupe : %s ?"
 
@@ -173,26 +171,23 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#, fuzzy
-#| msgid "Delete the user: %s?"
+#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "Supprimer l'utilisateur : %s ?"
-msgstr[1] "Supprimer l'utilisateur : %s ?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:156
-#, fuzzy, python-format
-#| msgid "Delete the user: %s?"
+#, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
-msgstr "Supprimer l'utilisateur : %s ?"
+msgstr ""
 
 #: views.py:168
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La suppression des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'administration."
+msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:176
 #, python-format
@@ -202,8 +197,7 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:182
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:198
 #, python-format
@@ -235,30 +229,25 @@ msgstr ""
 
 #: views.py:262
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: views.py:264
-#, fuzzy
-#| msgid "Reset password"
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Reinitialiser le mot de passe"
-msgstr[1] "Reinitialiser le mot de passe"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:274
-#, fuzzy, python-format
+#, python-format
 #| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
-msgstr "Ré-initialisation du mot de passe pour l'utilisateur : %s"
+msgstr ""
 
 #: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"La réinitialisation des mots de passe pour les comptes super utilisateur et "
-"staff n'est pas autorisée ici, veuillez le faire via l'interface "
-"d'administration."
+msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:304
 #, python-format
@@ -268,22 +257,19 @@ msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur : %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
-"\"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\" : %(error)s"
 
 #~ msgid "Must provide at least one user."
-#~ msgstr "Vous devez indiquer au moins un utilisateur."
+#~ msgstr "Must provide at least one user."
 
-#~| msgid "Delete existing users"
 #~ msgid "Delete the users: %s?"
-#~ msgstr "Supprimer les utilisateurs : %s ?"
+#~ msgstr "Delete existing users"
 
 #~ msgid "Passwords do not match, try again."
-#~ msgstr "Les mots de passe ne correspondent pas, veuillez réessayer."
+#~ msgstr "Passwords do not match, try again."
 
 #~ msgid "Reseting password for users: %s"
-#~ msgstr "Ré-initialisation du mot de passe pour les utilisateurs : %s"
+#~ msgstr "Reseting password for users: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "

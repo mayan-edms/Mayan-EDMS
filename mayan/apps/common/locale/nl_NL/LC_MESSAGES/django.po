@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# Johan Braeken, 2017
 # woei <root@ipaddr.nl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-11-09 15:54+0000\n"
-"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:76 settings.py:9
 msgid "Common"
-msgstr ""
+msgstr "Gemeenschappelijk"
 
 #: classes.py:106
 msgid "Available attributes: "
@@ -40,7 +40,7 @@ msgstr "Filter"
 #: generics.py:133
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "Niet mogelijk om selectie over te dragen: %s."
 
 #: generics.py:157
 msgid "Add"
@@ -53,7 +53,7 @@ msgstr "Verwijder"
 #: generics.py:327
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
 
 #: generics.py:338
 #, python-format
@@ -63,7 +63,7 @@ msgstr "%(object)s succesvol aangemaakt."
 #: generics.py:363
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
 
 #: generics.py:374
 #, python-format
@@ -73,18 +73,16 @@ msgstr "%(object)s succesbol verwijderd."
 #: generics.py:419
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s niet geupdate, foutmelding: %(error)s."
 
 #: generics.py:430
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s werden succesvol geupdate."
 
 #: links.py:9
-#, fuzzy
-#| msgid "About"
 msgid "About this"
-msgstr "Informatie"
+msgstr ""
 
 #: links.py:12
 msgid "User details"
@@ -96,11 +94,11 @@ msgstr "Bewerk details"
 
 #: links.py:19
 msgid "Locale profile"
-msgstr "Lokaal profiel"
+msgstr "Landsinstellingen"
 
 #: links.py:23
 msgid "Edit locale profile"
-msgstr "bewerk lokaal profiel"
+msgstr "Wijzig landsinstellingen"
 
 #: links.py:27
 msgid "Source code"
@@ -112,7 +110,7 @@ msgstr ""
 
 #: links.py:35
 msgid "Data filters"
-msgstr ""
+msgstr "Gegevensfilters"
 
 #: links.py:39
 msgid "Forum"
@@ -128,7 +126,7 @@ msgstr "Andere pakketlicensies"
 
 #: links.py:50
 msgid "Setup"
-msgstr "Setu"
+msgstr "Setup"
 
 #: links.py:53
 msgid "Support"
@@ -202,11 +200,11 @@ msgstr "Taal"
 
 #: models.py:67
 msgid "User locale profile"
-msgstr ""
+msgstr "Gebruikerslandsinstelling"
 
 #: models.py:68
 msgid "User locale profiles"
-msgstr ""
+msgstr "Gebruikerslandinstellingen"
 
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
@@ -214,22 +212,26 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "Een natuurlijk getal om aan te geven hoeveel objecten per pagina weergegeven worden."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
 
 #: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "Globale instelling voor een tijdelijke folder om miniaturen, voorvertoningen en tijdelijke bestanden in op te slaan."
 
 #: views.py:43
 msgid "Current user details"
@@ -241,28 +243,30 @@ msgstr "Bewerk gegevens van huidige gebruiker"
 
 #: views.py:68
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Details landinstellingen huidige gebruiker"
 
 #: views.py:75
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Wijzig landsinstellingen van de huidige gebruiker"
 
 #: views.py:131
+#| msgid "Selection"
 msgid "Filter selection"
-msgstr ""
+msgstr "Filterselectie"
 
 #: views.py:147
 #, python-format
 msgid "Results for filter: %s"
-msgstr ""
+msgstr "Resultaten voor filter: %s"
 
 #: views.py:154
+#| msgid "Page not found"
 msgid "Filter not found"
-msgstr ""
+msgstr "Filter niet gevonden"
 
 #: views.py:195
 msgid "Setup items"
-msgstr ""
+msgstr "Setup items"
 
 #: views.py:239
 msgid "No action selected."
@@ -310,11 +314,11 @@ msgstr "Geen"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -323,11 +327,11 @@ msgstr "Geen"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
@@ -34,22 +33,16 @@ msgid "Documents"
 msgstr "文档"
 
 #: links.py:24 links.py:34
-#, fuzzy
-#| msgid "Remove documents from folders"
 msgid "Remove from folders"
-msgstr "从文件夹中移除文档"
+msgstr ""
 
 #: links.py:27
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add to a folders"
-msgstr "Add document to a folder"
+msgstr ""
 
 #: links.py:31
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add to folders"
-msgstr "Add document to a folder"
+msgstr ""
 
 #: links.py:42 views.py:37
 msgid "Create folder"
@@ -96,6 +89,7 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -104,6 +98,7 @@ msgid "Remove documents from folders"
 msgstr "从文件夹中移除文档"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -117,6 +112,7 @@ msgstr ""
 
 #: views.py:49
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
@@ -147,20 +143,17 @@ msgstr ""
 
 #: views.py:137
 msgid "Add"
-msgstr ""
+msgstr "新增"
 
 #: views.py:139
-#, fuzzy
-#| msgid "Add document to a folder"
 msgid "Add document to folders"
 msgid_plural "Add documents to folders"
-msgstr[0] "Add document to a folder"
+msgstr[0] ""
 
 #: views.py:150
-#, fuzzy, python-format
-#| msgid "Add document: %s to folder."
+#, python-format
 msgid "Add document \"%s\" to folders"
-msgstr "Add document: %s to folder."
+msgstr ""
 
 #: views.py:161
 msgid "Folders to which the selected documents will be added."
@@ -188,48 +181,55 @@ msgstr ""
 
 #: views.py:222
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: views.py:224
-#, fuzzy
 #| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
-msgstr[0] "从文件夹中移除文档"
+msgstr[0] ""
 
 #: views.py:235
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
-msgstr "从文件夹中移除文档"
+msgstr ""
 
 #: views.py:246
 msgid "Folders from which the selected documents will be removed."
 msgstr ""
 
 #: views.py:273
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
-msgstr "文档: %(document)s已经存在于文件夹: %(folder)s."
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
-msgstr "文档: %(document)s已经存在于文件夹: %(folder)s."
+msgstr ""
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "至少要有一个文档"
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Add document to folder"
+#~ msgid_plural "Add documents to folder"
+#~ msgstr[0] "97c0d1f6a737e93c542fd20ae2682559_pl_0"
 
 #~ msgid "Must provide at least one folder document."
-#~ msgstr "必须提供至少一个文件夹文档"
+#~ msgstr "Must provide at least one folder document."
 
 #~ msgid "Document: %s removed successfully."
-#~ msgstr "文档：%s移除成功"
+#~ msgstr "Document: %s removed successfully."
 
 #~ msgid "Document: %(document)s delete error: %(error)s"
-#~ msgstr "文档： %(document)s 删除错误：%(error)s"
+#~ msgstr "Document: %(document)s delete error: %(error)s"
+
+#~ msgid "Remove the selected document from the folder: %(folder)s?"
+#~ msgid_plural "Remove the selected documents from the folder: %(folder)s?"
+#~ msgstr[0] "81c6b0124b038e876c41a6794709629b_pl_0"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -267,15 +267,21 @@ msgstr "文档: %(document)s已经存在于文件夹: %(folder)s."
 #~ msgid "Are you sure you with to delete the folder: %s?"
 #~ msgstr "Are you sure you with to delete the folder: %s?"
 
+#~ msgid "Add document to a folder"
+#~ msgstr "Add document to a folder"
+
+#~ msgid "Add document: %s to folder."
+#~ msgstr "Add document: %s to folder."
+
 #~ msgid "Add documents: %s to folder."
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -308,12 +314,12 @@ msgstr "文档: %(document)s已经存在于文件夹: %(folder)s."
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

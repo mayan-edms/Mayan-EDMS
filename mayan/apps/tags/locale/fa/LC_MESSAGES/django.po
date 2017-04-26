@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:34 apps.py:78 apps.py:85 apps.py:104 apps.py:106 forms.py:31
@@ -38,10 +37,8 @@ msgid "Remove tag"
 msgstr "برداشتن برچسب"
 
 #: links.py:17 links.py:24
-#, fuzzy
-#| msgid "Attach tag"
 msgid "Attach tags"
-msgstr "الصاق برچسب"
+msgstr ""
 
 #: links.py:20
 msgid "Remove tags"
@@ -134,23 +131,20 @@ msgid "Tag attach request performed on %(count)d documents"
 msgstr ""
 
 #: views.py:42
-#, fuzzy
-#| msgid "Attach tag"
 msgid "Attach"
-msgstr "الصاق برچسب"
+msgstr ""
 
 #: views.py:44
-#, fuzzy
 #| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
-msgstr[0] "الصاق برچسبها به اسناد"
+msgstr[0] ""
 
 #: views.py:54
-#, fuzzy, python-format
+#, python-format
 #| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
-msgstr "Attach tag to document: %s."
+msgstr ""
 
 #: views.py:63
 msgid "Tags to be attached."
@@ -194,10 +188,10 @@ msgid_plural "Delete the selected tags?"
 msgstr[0] ""
 
 #: views.py:142
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete tags"
 msgid "Delete tag: %s"
-msgstr "حذف برچسبها"
+msgstr ""
 
 #: views.py:152
 #, python-format
@@ -235,33 +229,30 @@ msgid "Tag remove request performed on %(count)d documents"
 msgstr ""
 
 #: views.py:244
-#, fuzzy
-#| msgid "Remove tag"
 msgid "Remove"
-msgstr "برداشتن برچسب"
+msgstr "حذف"
 
 #: views.py:246
-#, fuzzy
 #| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
-msgstr[0] "حذف برچسبهای سند"
+msgstr[0] ""
 
 #: views.py:256
-#, fuzzy, python-format
+#, python-format
 #| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
-msgstr "حذف برچسب از سند: %s"
+msgstr ""
 
 #: views.py:265
 msgid "Tags to be removed."
 msgstr ""
 
 #: views.py:290
-#, fuzzy, python-format
+#, python-format
 #| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "سند  \"%(document)s\"  دارای  برچسب  \"%(tag)s\" نمیباشد."
+msgstr ""
 
 #: views.py:300
 #, python-format
@@ -269,20 +260,40 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند  \"%(document)s\" برداشته شد."
 
 #~ msgid "Must provide at least one document."
-#~ msgstr "حداقل یک سند باید ارایه شود"
+#~ msgstr "Must provide at least one document."
 
 #~ msgid "Attach tag to document"
 #~ msgid_plural "Attach tag to documents"
-#~ msgstr[0] "اتصال برچسب به سند"
+#~ msgstr[0] "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
 
 #~ msgid "Must provide at least one tag."
-#~ msgstr "حداقل یک برچسب باید ارایه شود."
+#~ msgstr "Must provide at least one tag."
 
 #~ msgid "Must provide at least one tagged document."
-#~ msgstr "باید حداقل یک سند برچسب دار ارایه شود."
+#~ msgstr "Must provide at least one tagged document."
 
 #~ msgid "Remove tag from documents: %s."
-#~ msgstr "حذف برچسب از اسناد: %s"
+#~ msgstr "Remove tag from documents: %s."
+
+#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
+#~ "%(documents)s?"
+
+#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
+#~ "%(document)s?"
+
+#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
+#~ "%(documents)s?"
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"
