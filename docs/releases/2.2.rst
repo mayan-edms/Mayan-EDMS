@@ -2,7 +2,7 @@
 Mayan EDMS v2.2 release notes
 =============================
 
-Released: April XX, 2017
+Released: April 26, 2017
 
 What's new
 ==========
@@ -59,44 +59,103 @@ Pages data is no longer included as part of the version data. Instead a link to
 the document version's pages has been added by the name 'pages_url'. This
 resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
 
+- New API endpoints (initial work by @lokeshmanmode):
+
+  - API endpoint to change an user's groups subscription.
+  - API endpoint that list all available permissions types.
+  - API endpoint to view or change a role's groups.
+  - API endpoint to view or change a role's permissions.
+
+Code cleanups
+-------------
+As with every release time was dedicated to improve the organization, size, and
+readability of code. To this end the licenses of each app were moved to their
+own module in every app, called licenses.py. As part of the code cleanup the
+seldom used app called 'installation' which tracked runtime Python packages
+installed alongside Mayan EDMS for debugging purposes has been removed. The
+dependency on django-filetransfer has been removed by using
+django-downloadviews which allows the creation of class based download views.
+
+Performance
+-----------
+The document language list has been moved from the document model to the
+document form. This change speeds up loading time, document properties views
+and API documentation views. This version includes the new image caching
+pipeline which stores transformed (rotated, scaled, etc) versions of the
+document's images resulting in an overall display loading speed up. The fonts
+used are now loaded from Mayan EDMS itself and not from the web. This change
+also allow Mayan EDMS to work in a completely off-line manner.
+
+Searching
+---------
+Support for searching pages as well as documents has been added. This
+functionality has been exposed in the API too.
+
+Security
+--------
+This release enables the password validation for the user password validation
+support provided by Django. This change allows administrator to set password
+policies limiting the minimum amount of characters needed for example. For
+more information on how to configure the password validation feature refer
+to Django's documentation at: https://docs.djangoproject.com/en/1.11/topics/auth/passwords/#enabling-password-validation
+
+Sources
+-------
+To help test the interval sources (POP3 Email, IMAP Email, Watch folders) a
+"Check now" button was added that allows users to trigger the source's
+document fetching code instantly. Previously users had to wait until the next
+scheduled interval to verify if their source's settings were correct.
+
+Testing
+-------
+The testing process has been simplified by adding a new option '--mayan-apps'
+to the test runner that automatically tests all Mayan EDMS apps that report to
+include tests. The app flag that indicates when an app has test was changed
+from 'test' to the more explicit 'has_test'. The packaging manifest now
+includes test files, this means that tests can now be executed in production.
+The total number of tests was raised to 359 and the total coverage increased
+to 81%.
+
+A custom test runner replacing the previous custom management command
+called `runtests`. Testing for orphaned temporary files and orphaned file
+handles is now optional and controlled by the COMMON_TEST_FILE_HANDLES and
+COMMON_TEST_FILE_HANDLES settings.
+
+User interface
+--------------
+To avoid warping on long full names or usernames, the user's full name or
+username is no longer displayed in the main menu. Instead the word "Profile"
+is displayed and the users's full name or username is displayed when the
+"Profile" icon is clicked. Drop down menus support has been added and enabled
+for several apps like documents, folders, and tags. This change make navigation
+much faster and required less mouse travel.
+
+Support was added for a dashboard widgets and several default widgets are
+included and enabled.
+
+A view to clone a document page transformation to other pages has been added.
+A document page transformation navigation bug has been fixed. To aid visual
+lookup, tags are now alphabetically ordered by label.
+
+A new workflow view that lists documents currently executing a workflow and
+documents by their specific current workflow state has been added to the
+main menu.
+
 Other changes
 -------------
 - Cabinets app is now integrated as a core app.
-- Now that the Cabinets app is included, the Folders app has been disabled 
-  by default. To enable the Folders apps add the following line to your 
+- Now that the Cabinets app is included, the Folders app has been disabled
+  by default. To enable the Folders apps add the following line to your
   settings/local.py file::
 
     INSTALLED_APPS += ('folders',)
 
-- The user's full name or username is no longer displayed in the main menu.
-  Instead the work "Profile" is displayed. The users's full name or username
-  will be displayed when the "Profile" icon is clicked. This avoid menu
-  style breakable on long full names or usernames.
-- Simplify test runner by adding a new option '--mayan-apps' that automatically
-  tests all Mayan apps that report to have tests.
-- Change the app flag that indicates when an app has test from 'test' to the
-  more explicit 'has_test'.
-- The packaging manifest now includes test files. Test can now be executed
-  in production.
-- Add "Check now" button to interval sources.
-- Remove the installation app.
-- Add support for page search.
-- Remove recent searches feature.
-- Remove dependency on the django-filetransfer library.
 - Fix height calculation in resize transformation.
 - Improve upgrade instructions.
-- New image caching pipeline.
-- New drop down menus for the documents, folders and tags app as well as for
-  the user links.
-- Add support for a dashboard with default widgets.
-- Moved licenses to their own module in every app.
 - Update project to work with Django 1.10.
-- Tags are alphabetically ordered by label.
-- Stop loading theme fonts from the web.
 - Add support for attaching multiple tags to single or multiple documents.
 - Refactor the workflow for removing tags from single and multiple documents.
 - Move new version creation blocking from the documents app to the checkouts app.
-- Sample documents moved to distribution to allow running all tests in production.
 - DEBUG now defaults to False.
 - Production settings don't override the DEBUG variable. DEBUG can be set to True
   on production install to debug errors live.
@@ -107,20 +166,7 @@ Other changes
 - Addition of a new OCR backend using PyOCR. This backend tries first to do OCR
   using libtesseract. If libtesseract is not available the backend defaults to
   calling the Tesseract executable.
-- Language list moved from document model to document form.
-- Enable password validation for the user password change view, user password change API endpoint, current user view and current user API endpoint.
-- New API endpoints (initial work by @lokeshmanmode):
-
-  - API endpoint to change an user's groups subscription.
-  - API endpoint that list all available permissions types.
-  - API endpoint to view or change a role's groups.
-  - API endpoint to view or change a role's permissions.
-
 - Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
-- Add view to clone a document page transformation to other pages.
-- Document page transformation navigation bug fixed.
-- Move test total to 359.
-- Increase test coverage to 81%.
 - New transformations added:
 
   - Rotate 90 degrees
@@ -131,21 +177,15 @@ Other changes
   - Gaussian blur
   - Unsharp masking
 
-- Add custom test runner replacing the custom management command runtests.
-  The 'test-all' Makefile target that called the `runtests` command has been removed too.
-
-- Testing for orphaned temporary files and orphaned file handles is now optional and
-  controlled by the COMMON_TEST_FILE_HANDLES and COMMON_TEST_FILE_HANDLES settings.
-
 - Add tool to launch all workflows. GitLab issue #355
-- New workflow view that lists documents currently executing a workflow and
-  documents by their specific current workflow state.
 
 Removals
 --------
 - Removal of the OCR_TESSERACT_PATH configuration setting.
 - Removal of the Tesseract OCR backend. Replaced with a PyOCR backend.
 - Remove usage of pytesseract Python library.
+- Installation app.
+- Recent searches feature.
 
 Upgrading from a previous version
 ---------------------------------
