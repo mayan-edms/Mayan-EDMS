@@ -1,4 +1,4 @@
-2.2 (2017-04-XX)
+2.2 (2017-04-26)
 ================
 - Remove the installation app (GitLab #301).
 - Add support for document page search
