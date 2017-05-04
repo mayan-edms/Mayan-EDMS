@@ -1,8 +1,9 @@
 2.5.3 (2017-07-XX)
 ==================
 - Fix HTML mark up in window title. GitLab #397.
-- Add support for emailing documents to a recipient list. GitLab #396
-  
+- Add support for emailing documents to a recipient list. GitLab #396.
+- Backport metadata widget changes from @Macrobb. GitLab #378.
+
 2.5.2 (2017-07-08)
 ==================
 - Improve new document creation signal handling.

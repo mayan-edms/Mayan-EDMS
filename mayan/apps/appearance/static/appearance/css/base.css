@@ -172,10 +172,12 @@ a i {
     margin-right: 2px;
 }
 
+/* Notifications */
 #toast-container > div {
   opacity: 1;
 }
 
+/* User menu */
 .link-text-span {
     padding-left: 10px;
     padding-right: 20px;
@@ -231,4 +233,19 @@ a i {
   .collapse.in{
       display:block !important;
   }
+}
+
+/* Metadata */
+.metadata-display {
+    display: inline-block;
+    min-width: 200px;
+    padding-right: 10px;
+    width: 49%;
+}
+
+/* Content */
+@media (min-width:1200px) {
+    .container-fluid {
+        width: 95%;
+    }
 }
