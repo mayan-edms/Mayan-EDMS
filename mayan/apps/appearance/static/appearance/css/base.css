@@ -171,3 +171,19 @@ a i {
 .tag-container .label {
     margin-right: 2px;
 }
+
+/* Metadata */
+.metadata-display {
+    display: inline-block;
+    min-width: 200px;
+    padding-right: 10px;
+    width: 49%;
+}
+
+/* Content */
+@media (min-width:1200px) {
+    .container {
+        min-width: 1170px;
+        width: 95%;
+    }
+}
