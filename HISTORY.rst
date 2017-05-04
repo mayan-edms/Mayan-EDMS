@@ -1,3 +1,9 @@
+3.0 (2017-XX-XX)
+================
+- Metadat widget appearance changes
+- Content windows appearance changes
+- Add new document's version list view permission
+      
 2.2 (2017-04-26)
 ================
 - Remove the installation app (GitLab #301).

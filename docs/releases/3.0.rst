@@ -12,6 +12,7 @@ Other changes
 -------------
 - Metadat widget appearance changes
 - Content windows appearance changes
+- Add new document's version list view permission
 
 Removals
 --------
@@ -71,5 +72,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #378 <https://gitlab.com/mayan-edms/mayan-edms/issues/378>`_ Add metadata widget changes from @Macrobb
+* `GitLab issue #379 <https://gitlab.com/mayan-edms/mayan-edms/issues/379>`_ Add new document version list view permission.
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
