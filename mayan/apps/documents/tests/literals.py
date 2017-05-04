@@ -75,3 +75,4 @@ TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
     'sample_documents', TEST_SMALL_DOCUMENT_FILENAME
 )
+TEST_VERSION_COMMENT = 'test version comment'

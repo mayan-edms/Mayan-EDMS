@@ -15,6 +15,7 @@
 - The permission to add or remove documents to cabinets now applies to documents too.
 - Equalize dashboard widgets heights.
 - Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
+- Backport document's version list view permission.
 
 2.5.2 (2017-07-08)
 ==================

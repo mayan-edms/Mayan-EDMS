@@ -12,7 +12,7 @@ from common.generics import ConfirmView, SingleObjectListView
 from ..models import Document, DocumentVersion
 from ..permissions import (
     permission_document_download, permission_document_version_revert,
-    permission_document_view
+    permission_document_version_view, permission_document_view
 )
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView
@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 class DocumentVersionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
+            permissions=permission_document_version_view, user=request.user,
             obj=self.get_document()
         )
 

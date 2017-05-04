@@ -14,7 +14,8 @@ from .permissions import (
     permission_document_version_revert, permission_document_view,
     permission_document_trash, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_empty_trash
+    permission_document_type_view, permission_empty_trash,
+    permission_document_version_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -58,7 +59,7 @@ link_document_properties = Link(
     args='resolved_object.id'
 )
 link_document_version_list = Link(
-    icon='fa fa-code-fork', permissions=(permission_document_view,),
+    icon='fa fa-code-fork', permissions=(permission_document_version_view,),
     text=_('Versions'), view='documents:document_version_list',
     args='resolved_object.pk'
 )

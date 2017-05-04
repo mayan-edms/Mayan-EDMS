@@ -213,6 +213,32 @@ class DocumentAPITestCase(BaseAPITestCase):
 
         self.assertEqual(document.versions.first(), document.latest_version)
 
+    def test_document_version_list(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object,
+            )
+
+        # Needed by MySQL as milliseconds value is not store in timestamp field
+        time.sleep(1)
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document.new_version(file_object=file_object)
+
+        self.assertEqual(document.versions.count(), 2)
+
+        last_version = document.versions.last()
+
+        response = self.client.get(
+            reverse(
+                'rest_api:document-version-list',
+                args=(document.pk,)
+            )
+        )
+        self.assertEqual(
+            response.data['results'][1]['checksum'], last_version.checksum
+        )
+
     def test_document_download(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(

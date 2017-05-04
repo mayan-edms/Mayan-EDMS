@@ -40,6 +40,10 @@ permission_document_version_revert = namespace.add_permission(
     name='document_version_revert',
     label=_('Revert documents to a previous version')
 )
+permission_document_version_view = namespace.add_permission(
+    name='document_version_view',
+    label=_('View documents\' versions list')
+)
 permission_document_view = namespace.add_permission(
     name='document_view', label=_('View documents')
 )
