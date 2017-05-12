@@ -26,11 +26,11 @@ urlpatterns = [
 
 api_urls = [
     url(
-        r'^documents/$', APICheckedoutDocumentListView.as_view(),
+        r'^checkouts/$', APICheckedoutDocumentListView.as_view(),
         name='checkout-document-list'
     ),
     url(
-        r'^documents/(?P<pk>[0-9]+)/$', APICheckedoutDocumentView.as_view(),
+        r'^checkouts/(?P<pk>[0-9]+)/$', APICheckedoutDocumentView.as_view(),
         name='checkedout-document-view'
     ),
 ]

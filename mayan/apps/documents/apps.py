@@ -27,7 +27,7 @@ from events.links import link_events_for_object
 from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
+from rest_api.classes import APIEndPoint, APIResource
 from rest_api.fields import DynamicSerializerField
 from statistics.classes import StatisticNamespace, CharJSLine
 
@@ -91,6 +91,9 @@ class DocumentsApp(MayanAppConfig):
         from actstream import registry
 
         APIEndPoint(app=self, version_string='1')
+        APIResource(label=_('Document types'), name='document_types')
+        APIResource(label=_('Documents'), name='documents')
+        APIResource(label=_('Trashed documents'), name='trashed_documents')
 
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')

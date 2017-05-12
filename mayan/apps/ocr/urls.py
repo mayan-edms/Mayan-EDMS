@@ -43,16 +43,16 @@ urlpatterns = [
 
 api_urls = [
     url(
-        r'^document/(?P<pk>\d+)/submit/$', APIDocumentOCRView.as_view(),
+        r'^documents/(?P<pk>\d+)/ocr/$', APIDocumentOCRView.as_view(),
         name='document-ocr-submit-view'
     ),
     url(
-        r'^document_version/(?P<pk>\d+)/submit/$',
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/ocr/$',
         APIDocumentVersionOCRView.as_view(),
         name='document-version-ocr-submit-view'
     ),
     url(
-        r'^page/(?P<pk>\d+)/content/$', APIDocumentPageContentView.as_view(),
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$', APIDocumentPageContentView.as_view(),
         name='document-page-content-view'
     ),
 ]

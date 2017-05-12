@@ -115,8 +115,10 @@ class AccessControlListManager(models.Manager):
 
     def filter_by_access(self, permission, user, queryset):
         if user.is_superuser or user.is_staff:
-            logger.debug('Unfiltered queryset returned to user "%s" as superuser or staff',
-                         user)
+            logger.debug(
+                'Unfiltered queryset returned to user "%s" as superuser '
+                'or staff', user
+            )
             return queryset
 
         try:

@@ -13,13 +13,6 @@ class APIBase(SwaggerResourcesView):
     renderer_classes = (renderers.BrowsableAPIRenderer, renderers.JSONRenderer)
 
 
-class APIAppView(SwaggerApiView):
-    """
-    Entry points of the selected app.
-    """
-    renderer_classes = (renderers.BrowsableAPIRenderer, renderers.JSONRenderer)
-
-
 class BrowseableObtainAuthToken(ObtainAuthToken):
     """
     Obtain an API authentication token.

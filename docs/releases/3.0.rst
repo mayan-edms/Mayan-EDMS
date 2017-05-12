@@ -71,7 +71,8 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `GitLab issue #378 <https://gitlab.com/mayan-edms/mayan-edms/issues/378>`_ Add metadata widget changes from @Macrobb
+* `GitLab issue #366 <https://gitlab.com/mayan-edms/mayan-edms/issues/366>`_ Proofread documentation
+* `GitLab issue #379 <https://gitlab.com/mayan-edms/mayan-edms/issues/379>`_ Add new document version list view permission.
 * `GitLab issue #379 <https://gitlab.com/mayan-edms/mayan-edms/issues/379>`_ Add new document version list view permission.
 
 

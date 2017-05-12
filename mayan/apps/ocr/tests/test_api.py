@@ -63,7 +63,9 @@ class OCRAPITestCase(BaseAPITestCase):
         response = self.client.post(
             reverse(
                 'rest_api:document-version-ocr-submit-view',
-                args=(self.document.latest_version.pk,)
+                args=(
+                    self.document.pk, self.document.latest_version.pk,
+                )
             )
         )
 
@@ -77,7 +79,10 @@ class OCRAPITestCase(BaseAPITestCase):
         response = self.client.get(
             reverse(
                 'rest_api:document-page-content-view',
-                args=(self.document.latest_version.pages.first().pk,)
+                args=(
+                    self.document.pk, self.document.latest_version.pk,
+                    self.document.latest_version.pages.first().pk,
+                )
             ),
         )
 
