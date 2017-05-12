@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:57-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"POT-Creation-Date: 2017-04-21 12:24-0400\n"
+"PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -22,47 +22,47 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37 permissions.py:7
+#: apps.py:42 permissions.py:7
 msgid "User management"
 msgstr "Gestão de utilizadores"
 
-#: apps.py:47
+#: apps.py:58
 msgid "All the groups."
 msgstr "Todos os grupos."
 
-#: apps.py:51
+#: apps.py:62
 msgid "All the users."
 msgstr "Todos os utilziadores."
 
-#: apps.py:56 links.py:30
+#: apps.py:67 links.py:30
 msgid "Members"
 msgstr "Membros"
 
-#: apps.py:60
+#: apps.py:71
 msgid "Full name"
 msgstr "Nome completo"
 
-#: apps.py:63
+#: apps.py:74
 msgid "Email"
 msgstr "Correio eletrónico"
 
-#: apps.py:66
+#: apps.py:77
 msgid "Active"
 msgstr "Ativo"
 
-#: apps.py:72
+#: apps.py:83
 msgid "Has usable password?"
 msgstr ""
 
-#: forms.py:16
+#: forms.py:18
 msgid "New password"
 msgstr "Nova senha"
 
-#: forms.py:19
+#: forms.py:21
 msgid "Confirm password"
 msgstr "Contrassenha"
 
-#: links.py:14 views.py:29
+#: links.py:14 views.py:27
 msgid "Create new group"
 msgstr "Criar novo grupo"
 
@@ -74,21 +74,21 @@ msgstr "Eliminar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:26 links.py:34 links.py:50 views.py:52
+#: links.py:26 links.py:34 links.py:50 views.py:50
 msgid "Groups"
 msgstr "Grupos"
 
-#: links.py:38 views.py:197
+#: links.py:38 views.py:116
 msgid "Create new user"
 msgstr "Criar novo utilziador"
 
-#: links.py:54 links.py:70 views.py:169
+#: links.py:54 links.py:70 views.py:240
 msgid "Users"
 msgstr "Utilizadores"
 
 #: links.py:62 links.py:66
-msgid "Reset password"
-msgstr "Repor senha"
+msgid "Set password"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -122,114 +122,153 @@ msgstr "Editar utilizadores existentes"
 msgid "View existing users"
 msgstr "Ver utilizadores existentes"
 
-#: views.py:45
+#: serializers.py:29
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr ""
+
+#: serializers.py:51
+msgid "List of group primary keys to which to add the user."
+msgstr ""
+
+#: views.py:43
 #, python-format
 msgid "Edit group: %s"
 msgstr "Editar grupo: %s"
 
-#: views.py:66
+#: views.py:64
 #, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Eliminar o grupo: %s?"
 
-#: views.py:72
+#: views.py:70
 msgid "Available users"
 msgstr ""
 
-#: views.py:73
+#: views.py:71
 msgid "Members of groups"
 msgstr "Membros de grupos"
 
-#: views.py:94
+#: views.py:92
 #, python-format
 msgid "Members of group: %s"
 msgstr "Membros do grupo: %s"
 
-#: views.py:127
-#, python-format
-msgid "Edit user: %s"
-msgstr "Editar utilizador: %s"
-
-#: views.py:133
-msgid "Available groups"
-msgstr "Grupos disponíveis"
-
-#: views.py:134
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:143
-#, python-format
-msgid "Groups of user: %s"
-msgstr "Grupos do utilizador: %s"
-
-#: views.py:188
+#: views.py:126
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Utilizador \"%s\" criado com sucesso."
 
-#: views.py:213 views.py:284
-msgid "Must provide at least one user."
-msgstr "Deve indicar pelo menos um utilizador."
+#: views.py:135
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr ""
 
-#: views.py:230
+#: views.py:137
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr ""
+
+#: views.py:146
+#| msgid "Delete existing users"
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:156
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete user: %s"
+msgstr ""
+
+#: views.py:168
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Não é permitida a eliminação de administradores ou membros da equipa, utilize a interface de administrador para estes casos."
 
-#: views.py:237
+#: views.py:176
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Utilizador \"%s\" eliminado com sucesso."
 
-#: views.py:241
+#: views.py:182
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao eliminar o utilizador \"%(user)s\": %(error)s "
 
-#: views.py:255
+#: views.py:198
 #, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
-msgstr "Eliminar o utilizador: %s?"
+msgid "Edit user: %s"
+msgstr "Editar utilizador: %s"
 
-#: views.py:257
+#: views.py:204
+msgid "Available groups"
+msgstr "Grupos disponíveis"
+
+#: views.py:205
+msgid "Groups joined"
+msgstr ""
+
+#: views.py:214
 #, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
-msgstr "Eliminar os utilizadores: %s?"
+msgid "Groups of user: %s"
+msgstr "Grupos do utilizador: %s"
 
-#: views.py:300
-msgid "Passwords do not match, try again."
-msgstr "As senhas não coincidem, tente novamente."
+#: views.py:252
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr ""
 
-#: views.py:309
+#: views.py:254
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr ""
+
+#: views.py:262
+msgid "Submit"
+msgstr "Submeter"
+
+#: views.py:264
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:274
+#, python-format
+#| msgid "Reseting password for user: %s"
+msgid "Change password for user: %s"
+msgstr ""
+
+#: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Não é permitido redefinir a senha de administradores ou de membros da equipa, utilize a interface de administrador para estes casos."
 
-#: views.py:319
+#: views.py:304
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Reposição de senha bem sucedida para o utilizador: %s."
 
-#: views.py:325
+#: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro ao redefinir a senha para o utilizador \"%(user)s\": %(error)s "
 
-#: views.py:342
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "A redefinir a senha para o utilizador: %s"
+#~ msgid "Must provide at least one user."
+#~ msgstr "Must provide at least one user."
 
-#: views.py:344
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "A redefinir a senha para os utilizadores: %s"
+#~ msgid "Delete the users: %s?"
+#~ msgstr "Delete existing users"
+
+#~ msgid "Passwords do not match, try again."
+#~ msgstr "Passwords do not match, try again."
+
+#~ msgid "Reseting password for users: %s"
+#~ msgstr "Reseting password for users: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "

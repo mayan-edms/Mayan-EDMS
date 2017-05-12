@@ -34,22 +34,6 @@ class DeleteExtraDataMixin(object):
         return HttpResponseRedirect(success_url)
 
 
-class FormExtraKwargsMixin(object):
-    """
-    Mixin that allows a view to pass extra keyword arguments to forms
-    """
-
-    form_extra_kwargs = {}
-
-    def get_form_extra_kwargs(self):
-        return self.form_extra_kwargs
-
-    def get_form_kwargs(self):
-        result = super(FormExtraKwargsMixin, self).get_form_kwargs()
-        result.update(self.get_form_extra_kwargs())
-        return result
-
-
 class ExtraContextMixin(object):
     """
     Mixin that allows views to pass extra context to the template
@@ -64,6 +48,22 @@ class ExtraContextMixin(object):
         context = super(ExtraContextMixin, self).get_context_data(**kwargs)
         context.update(self.get_extra_context())
         return context
+
+
+class FormExtraKwargsMixin(object):
+    """
+    Mixin that allows a view to pass extra keyword arguments to forms
+    """
+
+    form_extra_kwargs = {}
+
+    def get_form_extra_kwargs(self):
+        return self.form_extra_kwargs
+
+    def get_form_kwargs(self):
+        result = super(FormExtraKwargsMixin, self).get_form_kwargs()
+        result.update(self.get_form_extra_kwargs())
+        return result
 
 
 class MultipleInstanceActionMixin(object):

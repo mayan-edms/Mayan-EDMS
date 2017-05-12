@@ -6,7 +6,7 @@ from navigation import Link
 
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_transition,
+    permission_workflow_edit, permission_workflow_tools,
     permission_workflow_view,
 )
 
@@ -71,12 +71,36 @@ link_setup_workflow_transitions = Link(
     permissions=(permission_workflow_view,), text=_('Transitions'),
     view='document_states:setup_workflow_transitions', args='object.pk'
 )
+link_tool_launch_all_workflows = Link(
+    icon='fa fa-sitemap',
+    permissions=(permission_workflow_tools,),
+    text=_('Launch all workflows'),
+    view='document_states:tool_launch_all_workflows'
+)
 link_workflow_instance_detail = Link(
     permissions=(permission_workflow_view,), text=_('Detail'),
     view='document_states:workflow_instance_detail', args='resolved_object.pk'
 )
 link_workflow_instance_transition = Link(
-    permissions=(permission_workflow_transition,), text=_('Transition'),
+    text=_('Transition'),
     view='document_states:workflow_instance_transition',
+    args='resolved_object.pk'
+)
+link_workflow_document_list = Link(
+    permissions=(permission_workflow_view,), text=_('Workflow documents'),
+    view='document_states:workflow_document_list', args='resolved_object.pk'
+)
+link_workflow_list = Link(
+    permissions=(permission_workflow_view,), icon='fa fa-sitemap',
+    text=_('Workflows'), view='document_states:workflow_list'
+)
+link_workflow_state_document_list = Link(
+    permissions=(permission_workflow_view,),
+    text=_('State documents'), view='document_states:workflow_state_document_list',
+    args='resolved_object.pk'
+)
+link_workflow_state_list = Link(
+    permissions=(permission_workflow_view,),
+    text=_('States'), view='document_states:workflow_state_list',
     args='resolved_object.pk'
 )

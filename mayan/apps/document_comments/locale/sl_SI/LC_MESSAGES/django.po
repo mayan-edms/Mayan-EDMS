@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"PO-Revision-Date: 2017-04-23 16:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +18,27 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:23
+#: apps.py:26
 #| msgid "Delete comments"
 msgid "Document comments"
 msgstr ""
 
-#: apps.py:41
+#: apps.py:46
 msgid "Date"
 msgstr ""
 
-#: apps.py:43 models.py:27
+#: apps.py:48 models.py:27
 msgid "User"
 msgstr ""
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:46 models.py:30 models.py:72 views.py:25
+#: apps.py:51 models.py:30 models.py:72 views.py:23
 msgid "Comment"
 msgstr "Komentar"
+
+#: apps.py:55 apps.py:59 links.py:22 models.py:73 permissions.py:7
+msgid "Comments"
+msgstr "Komentarji"
 
 #: events.py:9
 #| msgid "Delete comments"
@@ -54,13 +58,9 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:22 models.py:73 permissions.py:7
-msgid "Comments"
-msgstr "Komentarji"
-
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:33
 msgid "Date time submitted"
@@ -78,18 +78,18 @@ msgstr "Izbriši komentarje"
 msgid "View comments"
 msgstr "Poglej komentarje"
 
-#: views.py:47
+#: views.py:41
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Dodaj komentar datotekei: %s"
 
-#: views.py:90
+#: views.py:79
 #, python-format
 #| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:122
+#: views.py:106
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

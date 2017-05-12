@@ -13,9 +13,9 @@ from .models import Role, StoredPermission
 
 
 class PermissionSerializer(serializers.Serializer):
-    namespace = serializers.CharField()
-    pk = serializers.CharField()
-    label = serializers.CharField()
+    namespace = serializers.CharField(read_only=True)
+    pk = serializers.CharField(read_only=True)
+    label = serializers.CharField(read_only=True)
 
     def to_representation(self, instance):
         if isinstance(instance, StoredPermission):
@@ -29,15 +29,14 @@ class PermissionSerializer(serializers.Serializer):
 
 
 class RoleSerializer(serializers.HyperlinkedModelSerializer):
-    groups = GroupSerializer(many=True)
-
-
-class RoleSerializer(serializers.ModelSerializer):
     groups = GroupSerializer(many=True, read_only=True)
     permissions = PermissionSerializer(many=True, read_only=True)
 
     class Meta:
-        fields = ('id', 'label', 'groups', 'permissions')
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:role-detail'},
+        }
+        fields = ('groups', 'id', 'label', 'permissions', 'url')
         model = Role
 
 

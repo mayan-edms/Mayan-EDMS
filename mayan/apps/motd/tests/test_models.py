@@ -7,8 +7,7 @@ from django.utils import timezone
 
 from ..models import Message
 
-TEST_LABEL = 'test label'
-TEST_MESSAGE = 'test message'
+from .literals import TEST_LABEL, TEST_MESSAGE
 
 
 class MOTDTestCase(TestCase):

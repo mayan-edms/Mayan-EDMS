@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from .. import *  # NOQA
 
-DEBUG = True
 INSTALLED_APPS += ('test_without_migrations',)
 TEMPLATES[0]['OPTIONS']['loaders'] = (
     'django.template.loaders.filesystem.Loader',

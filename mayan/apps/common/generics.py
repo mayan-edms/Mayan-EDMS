@@ -18,7 +18,14 @@ from django_downloadview import VirtualDownloadView, VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
-from .mixins import *  # NOQA
+from .mixins import (
+    DeleteExtraDataMixin, ExtraContextMixin, FormExtraKwargsMixin,
+    MultipleObjectMixin, ObjectActionMixin,
+    ObjectListPermissionFilterMixin, ObjectNameMixin,
+    ObjectPermissionCheckMixin, RedirectionMixin,
+    ViewPermissionCheckMixin
+)
+
 from .settings import setting_paginate_by
 
 __all__ = (
@@ -182,9 +189,49 @@ class FormView(FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin
 
 
 class MultiFormView(DjangoFormView):
+    prefix = None
     prefixes = {}
 
-    prefix = None
+    def _create_form(self, form_name, klass):
+        form_kwargs = self.get_form_kwargs(form_name)
+        form_create_method = 'create_%s_form' % form_name
+        if hasattr(self, form_create_method):
+            form = getattr(self, form_create_method)(**form_kwargs)
+        else:
+            form = klass(**form_kwargs)
+        return form
+
+    def forms_valid(self, forms):
+        for form_name, form in forms.items():
+            form_valid_method = '%s_form_valid' % form_name
+
+            if hasattr(self, form_valid_method):
+                return getattr(self, form_valid_method)(form)
+
+        self.all_forms_valid(forms)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def forms_invalid(self, forms):
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def get(self, request, *args, **kwargs):
+        form_classes = self.get_form_classes()
+        forms = self.get_forms(form_classes)
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def get_context_data(self, **kwargs):
+        """
+        Insert the form into the context dict.
+        """
+        if 'forms' not in kwargs:
+            kwargs['forms'] = self.get_forms(
+                form_classes=self.get_form_classes()
+            )
+        return super(FormMixin, self).get_context_data(**kwargs)
+
+    def get_form_classes(self):
+        return self.form_classes
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
@@ -198,25 +245,6 @@ class MultiFormView(DjangoFormView):
             })
 
         return kwargs
-
-    def _create_form(self, form_name, klass):
-        form_kwargs = self.get_form_kwargs(form_name)
-        form_create_method = 'create_%s_form' % form_name
-        if hasattr(self, form_create_method):
-            form = getattr(self, form_create_method)(**form_kwargs)
-        else:
-            form = klass(**form_kwargs)
-        return form
-
-    def get_context_data(self, **kwargs):
-        """
-        Insert the form into the context dict.
-        """
-        if 'forms' not in kwargs:
-            kwargs['forms'] = self.get_forms(
-                form_classes=self.get_form_classes()
-            )
-        return super(FormMixin, self).get_context_data(**kwargs)
 
     def get_forms(self, form_classes):
         return dict(
@@ -236,25 +264,6 @@ class MultiFormView(DjangoFormView):
 
     def get_prefix(self, form_name):
         return self.prefixes.get(form_name, self.prefix)
-
-    def get(self, request, *args, **kwargs):
-        form_classes = self.get_form_classes()
-        forms = self.get_forms(form_classes)
-        return self.render_to_response(self.get_context_data(forms=forms))
-
-    def forms_valid(self, forms):
-        for form_name, form in forms.items():
-            form_valid_method = '%s_form_valid' % form_name
-
-            if hasattr(self, form_valid_method):
-                return getattr(self, form_valid_method)(form)
-
-        self.all_forms_valid(forms)
-
-        return HttpResponseRedirect(self.get_success_url())
-
-    def forms_invalid(self, forms):
-        return self.render_to_response(self.get_context_data(forms=forms))
 
     def post(self, request, *args, **kwargs):
         form_classes = self.get_form_classes()
@@ -369,7 +378,7 @@ class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissi
             return result
 
 
-class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, ModelFormMixin, DetailView):
+class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, FormExtraKwargsMixin, ExtraContextMixin, ModelFormMixin, DetailView):
     template_name = 'appearance/generic_form.html'
 
     def get_context_data(self, **kwargs):

@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-05-23 20:06+0000\n"
-"Last-Translator: Bruno CAPELETO <bruno.capeleto@abcreseau.com>\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,27 +22,27 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:37 links.py:31 models.py:145 views.py:521
+#: apps.py:38 links.py:35 models.py:145 views.py:543
 msgid "Sources"
 msgstr "Sources"
 
-#: apps.py:53
+#: apps.py:54
 #| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr "Créer un document source"
 
-#: apps.py:55
+#: apps.py:56
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Les sources de document seront la façon pour lesquels les nouveaux documents seront suivis dans Mayan EDMS, créer par au moins un formulaire web pour téléverser le document depuis le navigateur"
 
-#: apps.py:65
+#: apps.py:66
 msgid "Created"
 msgstr "Créé"
 
-#: apps.py:71
+#: apps.py:73
 msgid "Thumbnail"
 msgstr "Vignette"
 
@@ -66,7 +66,7 @@ msgstr "Décompresser les fichiers"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
-#: forms.py:67 views.py:432
+#: forms.py:67 views.py:431
 msgid "Staging file"
 msgstr "fichier en cours de modification"
 
@@ -74,53 +74,57 @@ msgstr "fichier en cours de modification"
 msgid "File"
 msgstr "Fichier"
 
-#: handlers.py:14
+#: handlers.py:16
 msgid "Default"
 msgstr "Défaut"
 
-#: links.py:26
+#: links.py:30
 msgid "New document"
 msgstr "Nouveau document"
 
-#: links.py:35
+#: links.py:39
 msgid "Add new IMAP email"
 msgstr "Ajouter un nouveau compte mail IMAP"
 
-#: links.py:40
+#: links.py:44
 msgid "Add new POP3 email"
 msgstr "Ajouter un nouveau compte mail POP3"
 
-#: links.py:45
+#: links.py:49
 msgid "Add new staging folder"
 msgstr "Ajouter un nouveau répertoire d'indexation"
 
-#: links.py:50
+#: links.py:54
 msgid "Add new watch folder"
 msgstr "Ajouter une nouvelle surveillance de dossier"
 
-#: links.py:55
+#: links.py:59
 msgid "Add new webform source"
 msgstr "Ajouter une nouvelle source de formulaire web"
 
-#: links.py:60 links.py:74
+#: links.py:64 links.py:78
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:64
+#: links.py:68
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:68
+#: links.py:72
 msgid "Document sources"
 msgstr "Sources du document"
 
-#: links.py:80
+#: links.py:84
 msgid "Upload new version"
 msgstr "Importer une nouvelle version"
 
-#: links.py:83
+#: links.py:87
 msgid "Logs"
 msgstr "Journaux évènement"
+
+#: links.py:91
+msgid "Check now"
+msgstr ""
 
 #: literals.py:10 literals.py:15
 msgid "Always"
@@ -158,7 +162,7 @@ msgstr "email IMAP"
 msgid "Label"
 msgstr "Libellé"
 
-#: models.py:49 views.py:514
+#: models.py:49 views.py:536
 msgid "Enabled"
 msgstr "Activé"
 
@@ -419,27 +423,27 @@ msgstr "Erreur lors du traitement de la source: %s"
 msgid "Clear"
 msgstr "Effacer"
 
-#: views.py:64
+#: views.py:63
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Entrée du journal pour la source: %s"
 
-#: views.py:129 wizards.py:49
+#: views.py:128 wizards.py:52
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Aucune source de document interactifs n'a été définie ou/ni activée, créer en une avant de continuer."
 
-#: views.py:155 views.py:173
+#: views.py:154 views.py:172
 #| msgid "Document sources"
 msgid "Document properties"
 msgstr "Propriété du document"
 
-#: views.py:163
+#: views.py:162
 msgid "Files in staging path"
 msgstr "Fichiers dans l'index, en cours de modification"
 
-#: views.py:262
+#: views.py:256
 msgid "New document queued for uploaded and will be available shortly."
 msgstr "Nouveau document ajouter dans la file d'attente pour transfert et disponible dans les plus bref délai."
 
@@ -448,64 +452,76 @@ msgstr "Nouveau document ajouter dans la file d'attente pour transfert et dispon
 msgid "Upload a local document from source: %s"
 msgstr "importer un document local à partir de la source: %s"
 
-#: views.py:327
+#: views.py:331
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "L'ajout d'une nouvelle version pour le document \"%s\" est bloqué."
 
-#: views.py:381
+#: views.py:380
 msgid ""
 "New document version queued for uploaded and will be available shortly."
 msgstr "Une nouvelle version du document mis en fille d'attente pour importation qui sera disponible dans les plus brefs délai."
 
-#: views.py:419
+#: views.py:418
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Importer une nouvelle version à partir de la source: %s"
 
-#: views.py:460
+#: views.py:458
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr ""
+
+#: views.py:471
+msgid "Source check queued."
+msgstr ""
+
+#: views.py:485
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Créer une nouvelle source de type:%s"
 
-#: views.py:480
+#: views.py:505
 #, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr "Supprimer la source: %s?"
 
-#: views.py:499
+#: views.py:524
 #, python-format
 msgid "Edit source: %s"
 msgstr "Modifier la source: %s"
 
-#: views.py:510
+#: views.py:532
 msgid "Type"
 msgstr "Type"
 
-#: widgets.py:26
-msgid "Staging file page image"
-msgstr "Affichage sous forme d'image de la page de fichier"
-
-#: wizards.py:38
+#: wizards.py:41
 msgid "Step 1 of 3: Select document type"
 msgstr "Etape 1 sur 3: Sélectionner le type du document"
 
-#: wizards.py:39
+#: wizards.py:42
 msgid "Step 2 of 3: Enter document metadata"
 msgstr "Etape 2 sur 3: Entrer les metadonnées"
 
-#: wizards.py:40
+#: wizards.py:43
 msgid "Step 3 of 3: Select tags"
 msgstr "Etape 3 sur 3: Sélectionner les tags"
 
-#: wizards.py:66
+#: wizards.py:69
 msgid "Next step"
 msgstr "Prochaine étape"
 
-#: wizards.py:68
+#: wizards.py:71
 msgid "Document upload wizard"
 msgstr "Assistant d'envoi de document"
+
+#: wizards.py:98
+msgid "Tags to be attached."
+msgstr ""
+
+#~ msgid "Staging file page image"
+#~ msgstr "Staging file"
 
 #~ msgid "Staging file delete successfully."
 #~ msgstr "Staging file delete successfully."

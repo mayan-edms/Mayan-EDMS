@@ -14,8 +14,8 @@ from .licenses import *  # NOQA
 
 
 class ConverterApp(MayanAppConfig):
+    has_tests = True
     name = 'converter'
-    test = True
     verbose_name = _('Converter')
 
     def ready(self):

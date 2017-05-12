@@ -17,7 +17,7 @@ same properties that can trigger the issue and upload that file instead.
 - Add steps that trigger the issue in a **repeatable manner**.
 - **Screenshots** go a long way in helping understand problems.
 - The issue must be related to the code only, do not open issues for problems
-with webservers, cloud providers, etc.
+with deployments, webservers, cloud providers, etc.
 - Do not open issues asking for **support or consulting**.
 
 Code
@@ -40,7 +40,19 @@ following branches:
     are unstable and should not be used in production.
 
 1. Start making your changes in your own separate branch.
-1. Write a test which shows that the bug was fixed or that the feature works as expected.
+1. Write a test which shows that the bug was fixed or that the feature works as
+   expected.
+1. Sign your work. Your signature certifies your submission according to the
+   articles of the [Developer Certificate of Origin](https://gitlab.com/mayan-edms/mayan-edms/blob/master/DCO).
+   The sign-off should be in the form:
+
+    ````
+    Signed-off-by: John Doe <john.doe@example.com>
+    ````
+
+    You must use your real name and email, pseudonyms or anonymous contributions
+    are not allowed. If you set your user.name and user.email git configs, you can
+    sign your commit automatically with git commit -s.
 1. Submit a merge request for your changes.
 
 Feature requests
@@ -64,8 +76,3 @@ Code style
 ----------
 - Refer to the [Development](http://mayan.readthedocs.io/en/latest/topics/development.html)
 chapter for information and examples of the code style.
-
-License
--------
-By contributing your code, you agree to license your contribution under the
-terms of the project's license.

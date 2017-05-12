@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.utils.encoding import smart_str, smart_unicode
+from django.utils.encoding import force_text, smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
 
 from common.utils import return_attrib
@@ -113,9 +113,8 @@ class Menu(object):
 
         logger.debug(
             'resolved_navigation_object_list: %s',
-            resolved_navigation_object_list
+            force_text(resolved_navigation_object_list)
         )
-
         return resolved_navigation_object_list
 
     def resolve(self, context, source=None):
@@ -273,7 +272,7 @@ class Link(object):
             except VariableDoesNotExist:
                 pass
 
-        # If this link has a required permission check that the user have it
+        # If this link has a required permission check that the user has it
         # too
         if self.permissions:
             if resolved_object:

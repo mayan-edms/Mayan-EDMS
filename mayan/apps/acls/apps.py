@@ -4,17 +4,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_sidebar
 from navigation import SourceColumn
+from rest_api.classes import APIEndPoint
 
 from .links import link_acl_create, link_acl_delete, link_acl_permissions
 
 
 class ACLsApp(MayanAppConfig):
+    has_tests = True
     name = 'acls'
-    test = True
     verbose_name = _('ACLs')
 
     def ready(self):
         super(ACLsApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         AccessControlList = self.get_model('AccessControlList')
 

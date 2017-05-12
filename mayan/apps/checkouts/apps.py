@@ -30,8 +30,8 @@ from .tasks import task_check_expired_check_outs  # NOQA
 
 
 class CheckoutsApp(MayanAppConfig):
+    has_tests = True
     name = 'checkouts'
-    test = True
     verbose_name = _('Checkouts')
 
     def ready(self):
@@ -57,7 +57,10 @@ class CheckoutsApp(MayanAppConfig):
 
         Document.add_to_class(
             'check_in',
-            lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user)
+            lambda document,
+            user=None: DocumentCheckout.objects.check_in_document(
+                document, user
+            )
         )
         Document.add_to_class(
             'checkout_info',

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-07-13 21:33+0000\n"
-"Last-Translator: lilo.panic\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,38 +19,22 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:58 apps.py:116 apps.py:154 links.py:14 permissions.py:7
+#: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "Распознавание текста"
 
-#: apps.py:91
+#: apps.py:86
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:95
+#: apps.py:90
 msgid "Added"
 msgstr "Добавлено"
 
-#: apps.py:99 models.py:36
+#: apps.py:94 models.py:36
 msgid "Result"
 msgstr "Результат"
-
-#: apps.py:160 apps.py:165 apps.py:170
-msgid "pdftotext version"
-msgstr "версия pdftotext"
-
-#: apps.py:160 apps.py:178
-msgid "not found"
-msgstr "не найдено"
-
-#: apps.py:166 apps.py:184
-msgid "error getting version"
-msgstr "Ошибка при получении версии"
-
-#: apps.py:178 apps.py:183 apps.py:188
-msgid "tesseract version"
-msgstr "tesseract version"
 
 #: forms.py:40
 #, python-format
@@ -78,7 +62,7 @@ msgstr "Настройки распознавания"
 msgid "OCR documents per type"
 msgstr "Распознавание документов с определенным типом"
 
-#: links.py:37 views.py:161
+#: links.py:37 views.py:154
 msgid "OCR errors"
 msgstr "Ошибки распознавания"
 
@@ -131,12 +115,12 @@ msgstr "Содержимое страницы документа"
 msgid "Document pages contents"
 msgstr "Содержимое страниц документа"
 
-#: parsers.py:102
+#: parsers.py:101
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Ошибка при чтении страницы; %s"
 
-#: parsers.py:129
+#: parsers.py:128
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Не удаётся найти исполняемый файл pdftotext: %s"
@@ -153,70 +137,74 @@ msgstr "Просмотр распознанного текста докумен�
 msgid "Change document type OCR settings"
 msgstr "Изменить настройки распознавания документа"
 
-#: settings.py:10
-#| msgid "File path to unpaper program."
-msgid "File path to tesseract program."
-msgstr "Путь до программы tesseract."
-
-#: settings.py:15
+#: settings.py:12
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
 msgstr "Путь к файлу программы pdftotext Poppler, используемой для извлечения текста из PDF файлов."
 
-#: settings.py:22
+#: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Полный путь до бекенда, выполняющего OCR."
 
-#: settings.py:27
+#: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
 
-#: views.py:28
+#: views.py:26
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
 msgstr "Отправить все документы на распознавание?"
 
-#: views.py:40
+#: views.py:38
 #, python-format
 msgid "%d documents added to the OCR queue."
 msgstr "%d документов помещено в очередь распознавания."
 
-#: views.py:48
+#: views.py:46
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr "Отправить \"%s\" в очередь распознавания?"
 
-#: views.py:73
+#: views.py:67
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Документ: %(document)s добавлен в очередь распознавания."
 
-#: views.py:87
+#: views.py:81
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected documents to the OCR queue?"
 msgstr "Отправить выделенные документы в очедерь распознавания?"
 
-#: views.py:94
+#: views.py:88
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents of a type for OCR"
 msgstr "Отправить все документы определённого типа на распознавание"
 
-#: views.py:109
+#: views.py:102
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d документов с типом \"%(document_type)s\" помещены в очередь распознавания."
 
-#: views.py:132
+#: views.py:125
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Редактировать настройки распознавания для типа документов: %s"
 
-#: views.py:154
+#: views.py:147
 #, python-format
 #| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr "Результат распозанвания для документа: %s"
+
+#~ msgid "pdftotext version"
+#~ msgstr "document queues"
+
+#~ msgid "tesseract version"
+#~ msgstr "document queues"
+
+#~ msgid "File path to tesseract program."
+#~ msgstr "File path to unpaper program."
 
 #~ msgid "Delete"
 #~ msgstr "delete"

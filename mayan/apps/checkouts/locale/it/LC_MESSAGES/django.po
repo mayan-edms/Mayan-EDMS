@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
-"PO-Revision-Date: 2016-09-24 10:31+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,9 +19,14 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:31 links.py:30
+#: apps.py:35 links.py:30
 msgid "Checkouts"
 msgstr "Uscite"
+
+#: apps.py:54
+#| msgid "checked out documents"
+msgid "Checkedout documents"
+msgstr ""
 
 #: events.py:9
 msgid "Document automatically checked in"
@@ -39,7 +44,7 @@ msgstr "Documento in uscita"
 msgid "Document forcefully checked in"
 msgstr "Forza documento in entrata"
 
-#: exceptions.py:25 views.py:55
+#: exceptions.py:25 views.py:49
 msgid "Document already checked out."
 msgstr "Documento già uscito"
 
@@ -47,7 +52,7 @@ msgstr "Documento già uscito"
 msgid "Document status"
 msgstr "Stato documento"
 
-#: forms.py:37 models.py:37 views.py:85
+#: forms.py:37 models.py:37 views.py:79
 #| msgid "User: %s"
 msgid "User"
 msgstr "Utente"
@@ -94,7 +99,7 @@ msgstr "Uscito"
 msgid "Checked in/available"
 msgstr "Check-in / disponibile"
 
-#: models.py:27
+#: models.py:27 models.py:92
 msgid "Document"
 msgstr "Documento"
 
@@ -131,6 +136,16 @@ msgstr "Documento uscito"
 msgid "Document checkouts"
 msgstr "Documenti usciti"
 
+#: models.py:97
+#| msgid "New versions allowed: %s"
+msgid "New version block"
+msgstr "Nuovo blocco versione"
+
+#: models.py:98
+#| msgid "New versions allowed: %s"
+msgid "New version blocks"
+msgstr "Nuovi blocchi versione"
+
 #: permissions.py:10
 msgid "Check in documents"
 msgstr "Check in documenti"
@@ -147,39 +162,39 @@ msgstr "Check out dei documenti"
 msgid "Check out details view"
 msgstr "Visualizzazione in dettaglio dell'uscita"
 
-#: views.py:59
+#: views.py:53
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Errore nel cercare il check out del documento; %s"
 
-#: views.py:64
+#: views.py:58
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Il documento\"%s\" è uscito con successo"
 
-#: views.py:72
+#: views.py:66
 #, python-format
 msgid "Check out document: %s"
 msgstr "Check out documento: %s"
 
-#: views.py:81
+#: views.py:75
 msgid "Documents checked out"
 msgstr "Documenti estratti"
 
-#: views.py:91
+#: views.py:85
 msgid "Checkout time and date"
 msgstr "Ora e data checkout "
 
-#: views.py:97
+#: views.py:91
 msgid "Checkout expiration"
 msgstr "Scadenza checkout "
 
-#: views.py:118
+#: views.py:112
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Dettaglio del check out per il documento: %s"
 
-#: views.py:136
+#: views.py:130
 #, python-format
 #| msgid ""
 #| "dn't originally checked out this document.  Are you sure you wish cefully "
@@ -189,22 +204,22 @@ msgid ""
 "document: %s?"
 msgstr "Non hai originariamente fatto il checkout di questo documento. Forzare nel documento: %s?"
 
-#: views.py:140
+#: views.py:134
 #, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Accetti il documento: %s?"
 
-#: views.py:177
+#: views.py:162
 msgid "Document has not been checked out."
 msgstr "Il documento non è stato fatto uscire"
 
-#: views.py:182
+#: views.py:167
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Errore nel tentare il check out del documento; %s"
 
-#: views.py:187
+#: views.py:172
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Il documento \"%s\" è entrato con successo"
@@ -282,9 +297,6 @@ msgstr "Periodo"
 
 #~ msgid "document checkouts"
 #~ msgstr "document checkouts"
-
-#~ msgid "checked out documents"
-#~ msgstr "checked out documents"
 
 #~ msgid "no"
 #~ msgstr "no"

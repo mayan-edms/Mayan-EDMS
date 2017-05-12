@@ -6,6 +6,6 @@ from common.apps import MayanAppConfig
 
 
 class NavigationApp(MayanAppConfig):
+    has_tests = True
     name = 'navigation'
-    test = True
     verbose_name = _('Navigation')

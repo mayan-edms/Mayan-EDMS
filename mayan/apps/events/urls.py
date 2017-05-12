@@ -20,10 +20,10 @@ urlpatterns = [
 ]
 
 api_urls = [
-    url(r'^types/$', APIEventTypeListView.as_view(), name='event-type-list'),
+    url(r'^event_types/$', APIEventTypeListView.as_view(), name='event-type-list'),
     url(r'^events/$', APIEventListView.as_view(), name='event-list'),
     url(
-        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
+        r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
         APIObjectEventListView.as_view(), name='object-event-list'
     ),
 ]

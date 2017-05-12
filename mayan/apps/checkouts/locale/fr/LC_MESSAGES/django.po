@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
-"PO-Revision-Date: 2016-05-23 20:04+0000\n"
-"Last-Translator: Bruno CAPELETO <bruno.capeleto@abcreseau.com>\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,9 +20,14 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:31 links.py:30
+#: apps.py:35 links.py:30
 msgid "Checkouts"
 msgstr "Verrous"
+
+#: apps.py:54
+#| msgid "checked out documents"
+msgid "Checkedout documents"
+msgstr ""
 
 #: events.py:9
 msgid "Document automatically checked in"
@@ -40,7 +45,7 @@ msgstr "Document verrouillé"
 msgid "Document forcefully checked in"
 msgstr "Document déverrouillé de force"
 
-#: exceptions.py:25 views.py:55
+#: exceptions.py:25 views.py:49
 msgid "Document already checked out."
 msgstr "Document déjà verrouillé."
 
@@ -48,7 +53,7 @@ msgstr "Document déjà verrouillé."
 msgid "Document status"
 msgstr "Status du document"
 
-#: forms.py:37 models.py:37 views.py:85
+#: forms.py:37 models.py:37 views.py:79
 #| msgid "User: %s"
 msgid "User"
 msgstr "Utilisateur"
@@ -95,7 +100,7 @@ msgstr "Verrouillé"
 msgid "Checked in/available"
 msgstr "Déverrouillé/disponible"
 
-#: models.py:27
+#: models.py:27 models.py:92
 msgid "Document"
 msgstr "Document"
 
@@ -132,6 +137,16 @@ msgstr "Verrouillage du document"
 msgid "Document checkouts"
 msgstr "Verrouillages du document"
 
+#: models.py:97
+#| msgid "New versions allowed: %s"
+msgid "New version block"
+msgstr "Bloc de la nouvelle version"
+
+#: models.py:98
+#| msgid "New versions allowed: %s"
+msgid "New version blocks"
+msgstr "Blocs de la nouvelle version"
+
 #: permissions.py:10
 msgid "Check in documents"
 msgstr "Déverrouiller les documents"
@@ -148,39 +163,39 @@ msgstr "Verrouiller les documents"
 msgid "Check out details view"
 msgstr "Afficher la vue détaillée"
 
-#: views.py:59
+#: views.py:53
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Erreur lors de la tentative de verrouillage du document : %s"
 
-#: views.py:64
+#: views.py:58
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Document \"%s\" verouillé avec succès."
 
-#: views.py:72
+#: views.py:66
 #, python-format
 msgid "Check out document: %s"
 msgstr "Verrouiller le document : %s"
 
-#: views.py:81
+#: views.py:75
 msgid "Documents checked out"
 msgstr "Documents verrouillés"
 
-#: views.py:91
+#: views.py:85
 msgid "Checkout time and date"
 msgstr "Date et heure du verrouillage"
 
-#: views.py:97
+#: views.py:91
 msgid "Checkout expiration"
 msgstr "Expiration du verrou"
 
-#: views.py:118
+#: views.py:112
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Détails du verrou pour le document : %s"
 
-#: views.py:136
+#: views.py:130
 #, python-format
 #| msgid ""
 #| "dn't originally checked out this document.  Are you sure you wish cefully "
@@ -190,22 +205,22 @@ msgid ""
 "document: %s?"
 msgstr "Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain de vouloir forcer le déverrouillage de : %s?"
 
-#: views.py:140
+#: views.py:134
 #, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Verrouiller le document : %s ?"
 
-#: views.py:177
+#: views.py:162
 msgid "Document has not been checked out."
 msgstr "Ce document n'a pas été verrouillé."
 
-#: views.py:182
+#: views.py:167
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Erreur lors de la tentative de déverrouillage du document : %s  "
 
-#: views.py:187
+#: views.py:172
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" déverrouillé avec succès."
@@ -283,9 +298,6 @@ msgstr "Période"
 
 #~ msgid "document checkouts"
 #~ msgstr "document checkouts"
-
-#~ msgid "checked out documents"
-#~ msgstr "checked out documents"
 
 #~ msgid "no"
 #~ msgstr "no"

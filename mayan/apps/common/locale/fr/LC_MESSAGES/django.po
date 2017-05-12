@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
 # Franck Boucher <boucher.fk@gmail.com>, 2016
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -23,68 +24,68 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:72 settings.py:9
+#: apps.py:76 settings.py:9
 msgid "Common"
 msgstr "Commun"
 
-#: classes.py:53
+#: classes.py:106
 msgid "Available attributes: "
 msgstr "Options disponibles"
 
-#: forms.py:27
+#: forms.py:26
 msgid "Selection"
 msgstr "Sélection"
 
-#: forms.py:106
+#: forms.py:105
 msgid "Filter"
 msgstr "Filtre"
 
-#: generics.py:126
+#: generics.py:133
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Impossible de transférer la sélection: %s."
 
-#: generics.py:150
+#: generics.py:157
 msgid "Add"
 msgstr "Ajouter"
 
-#: generics.py:161
+#: generics.py:168
 msgid "Remove"
 msgstr "Supprimer"
 
-#: generics.py:287
+#: generics.py:327
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s n'a pas été créé, erreur: %(error)s"
 
-#: generics.py:298
+#: generics.py:338
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s, creation réussi."
 
-#: generics.py:323
+#: generics.py:363
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s non supprimé, erreur: %(error)s."
 
-#: generics.py:334
+#: generics.py:374
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s, suppression réussie."
 
-#: generics.py:379
+#: generics.py:419
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s n'a pas été mis à jour, erreur: %(error)s."
 
-#: generics.py:390
+#: generics.py:430
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s, mise à jour réussie."
 
 #: links.py:9
-msgid "About"
-msgstr "À propos"
+msgid "About this"
+msgstr ""
 
 #: links.py:12
 msgid "User details"
@@ -103,22 +104,38 @@ msgid "Edit locale profile"
 msgstr "Éditer les paramètres régionaux du profil"
 
 #: links.py:27
+msgid "Source code"
+msgstr ""
+
+#: links.py:31
+msgid "Documentation"
+msgstr ""
+
+#: links.py:35
 msgid "Data filters"
 msgstr "Filtres de données"
 
-#: links.py:31 views.py:150
+#: links.py:39
+msgid "Forum"
+msgstr ""
+
+#: links.py:43 views.py:168
 msgid "License"
 msgstr "Licence"
 
-#: links.py:34 views.py:164
+#: links.py:46 views.py:182
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"
 
-#: links.py:38
+#: links.py:50
 msgid "Setup"
 msgstr "Configuration"
 
-#: links.py:41 views.py:194
+#: links.py:53
+msgid "Support"
+msgstr ""
+
+#: links.py:57 views.py:212
 msgid "Tools"
 msgstr "Outils"
 
@@ -134,7 +151,21 @@ msgstr "Heures"
 msgid "Minutes"
 msgstr "Minutes"
 
-#: mixins.py:125
+#: menus.py:12
+msgid "About"
+msgstr "À propos"
+
+#: mixins.py:74
+#, python-format
+msgid "Operation performed on %(count)d object"
+msgstr ""
+
+#: mixins.py:75
+#, python-format
+msgid "Operation performed on %(count)d objects"
+msgstr ""
+
+#: mixins.py:235
 msgid "Object"
 msgstr "Objet"
 
@@ -179,76 +210,76 @@ msgid "User locale profiles"
 msgstr "Paramètres régionaux des profils utilisateur"
 
 #: settings.py:13
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
-msgid ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files."
-msgstr ""
+msgid "Automatically enable logging to all apps."
+msgstr "Activation automatique de la trace pour toutes les applications."
 
-#: settings.py:21
-msgid "A storage backend that all workers can use to share files."
-msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
+#: settings.py:19
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Durée pendant laquelle les tâches d'arrière plan sont différées pour les tâches dépendant d'une mise à jour de la base de données."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Valeur entière indiquant combien d'objets sont affichés sur chaque page."
 
 #: settings.py:33
-msgid "Automatically enable logging to all apps."
-msgstr "Activation automatique de la trace pour toutes les applications."
+msgid "A storage backend that all workers can use to share files."
+msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
 
-#: settings.py:39
+#: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Durée pendant laquelle les tâches d'arrière plan sont différées pour les tâches dépendant d'une mise à jour de la base de données."
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr "Le dossier temporaire est utilisé pour stocker les vignettes, aperçus et fichiers temporaires."
 
-#: views.py:37
+#: views.py:43
 msgid "Current user details"
 msgstr "Détails de l'utilisateur courant"
 
-#: views.py:42
+#: views.py:48
 msgid "Edit current user details"
 msgstr "Modifier les détails des utilisateurs actuels"
 
-#: views.py:62
+#: views.py:68
 msgid "Current user locale profile details"
 msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:69
+#: views.py:75
 msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:113
+#: views.py:131
 #| msgid "Selection"
 msgid "Filter selection"
 msgstr "Sélection du filtre"
 
-#: views.py:129
+#: views.py:147
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Résultats pour le filtre : %s"
 
-#: views.py:136
+#: views.py:154
 #| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtre non trouvé"
 
-#: views.py:177
+#: views.py:195
 msgid "Setup items"
 msgstr "Paramètres de configuration"
 
-#: views.py:221
+#: views.py:239
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:229
+#: views.py:247
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."
 
-#: widgets.py:50
+#: widgets.py:48
 msgid "None"
 msgstr "Aucun"
 

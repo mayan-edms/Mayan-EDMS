@@ -27,7 +27,7 @@ from events.links import link_events_for_object
 from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
+from rest_api.classes import APIEndPoint, APIResource
 from rest_api.fields import DynamicSerializerField
 from statistics.classes import StatisticNamespace, CharJSLine
 
@@ -82,8 +82,8 @@ from .widgets import DocumentThumbnailWidget, DocumentPageThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
+    has_tests = True
     name = 'documents'
-    test = True
     verbose_name = _('Documents')
 
     def ready(self):
@@ -91,6 +91,9 @@ class DocumentsApp(MayanAppConfig):
         from actstream import registry
 
         APIEndPoint(app=self, version_string='1')
+        APIResource(label=_('Document types'), name='document_types')
+        APIResource(label=_('Documents'), name='documents')
+        APIResource(label=_('Trashed documents'), name='trashed_documents')
 
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')
@@ -103,6 +106,42 @@ class DocumentsApp(MayanAppConfig):
         DynamicSerializerField.add_serializer(
             klass=Document,
             serializer_class='documents.serializers.DocumentSerializer'
+        )
+
+        DashboardWidget(
+            func=new_document_pages_this_month, icon='fa fa-calendar',
+            label=_('New pages this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-document-pages-per-month',)
+            )
+        )
+
+        DashboardWidget(
+            func=new_documents_this_month, icon='fa fa-calendar',
+            label=_('New documents this month'),
+            link=reverse_lazy(
+                'statistics:statistic_detail',
+                args=('new-documents-per-month',)
+            )
+        )
+
+        DashboardWidget(
+            icon='fa fa-file', queryset=Document.objects.all(),
+            label=_('Total documents'),
+            link=reverse_lazy('documents:document_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-book', queryset=DocumentType.objects.all(),
+            label=_('Document types'),
+            link=reverse_lazy('documents:document_type_list')
+        )
+
+        DashboardWidget(
+            icon='fa fa-trash', queryset=DeletedDocument.objects.all(),
+            label=_('Documents in trash'),
+            link=reverse_lazy('documents:document_list_deleted')
         )
 
         MissingItem(

@@ -13,8 +13,8 @@ from .widgets import event_type_link
 
 
 class EventsApp(MayanAppConfig):
+    has_tests = True
     name = 'events'
-    test = True
     verbose_name = _('Events')
 
     def ready(self):

@@ -19,6 +19,10 @@ from .managers import (
 
 @python_2_unicode_compatible
 class Index(models.Model):
+    """
+    Parent model that defines an index and hold all the relationship for its
+    template and instance when resolved.
+    """
     label = models.CharField(
         max_length=128, unique=True, verbose_name=_('Label')
     )
@@ -65,7 +69,6 @@ class Index(models.Model):
         """
         Automatically create the root index template node
         """
-
         super(Index, self).save(*args, **kwargs)
         IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
@@ -102,6 +105,11 @@ class IndexInstance(Index):
 
 @python_2_unicode_compatible
 class IndexTemplateNode(MPTTModel):
+    """
+    The template to generate an index. Each entry represents a level in a
+    hierarchy of levels. Each level can contain further levels or a list of
+    documents but not both.
+    """
     parent = TreeForeignKey('self', blank=True, null=True)
     index = models.ForeignKey(
         Index, related_name='node_templates', verbose_name=_('Index')

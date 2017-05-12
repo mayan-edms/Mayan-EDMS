@@ -14,13 +14,21 @@ from .permissions import (
     permission_document_version_revert, permission_document_view,
     permission_document_trash, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_empty_trash
+    permission_document_type_view, permission_empty_trash,
+    permission_document_version_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
-    return context['resolved_object'].document.latest_version.timestamp != context['resolved_object'].timestamp
+    # Use the 'object' key when the document version is an object in a list,
+    # such as when showing the version list view and use the 'resolved_object'
+    # when the document version is the context object, such as when showing the
+    # signatures list of a documern version. This can be fixed by updating
+    # the navigations app object resolution logic to use 'resolved_object' even
+    # for objects in a list.
+    document_version = context.get('object', context['resolved_object'])
+    return document_version.document.latest_version.timestamp != document_version.timestamp
 
 
 def is_first_page(context):
@@ -51,7 +59,7 @@ link_document_properties = Link(
     args='resolved_object.id'
 )
 link_document_version_list = Link(
-    icon='fa fa-code-fork', permissions=(permission_document_view,),
+    icon='fa fa-code-fork', permissions=(permission_document_version_view,),
     text=_('Versions'), view='documents:document_version_list',
     args='resolved_object.pk'
 )

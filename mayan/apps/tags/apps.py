@@ -29,8 +29,8 @@ from .widgets import widget_document_tags, widget_single_tag
 
 
 class TagsApp(MayanAppConfig):
+    has_tests = True
     name = 'tags'
-    test = True
     verbose_name = _('Tags')
 
     def ready(self):

@@ -1,20 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
-import pytz
-
-from django.shortcuts import get_object_or_404
-
-from rest_framework import generics, status
-from rest_framework.response import Response
+from rest_framework import generics
 
 from acls.models import AccessControlList
-from documents.models import Document
 from documents.permissions import permission_document_view
 
 from .models import DocumentCheckout
 from .permissions import (
-    permission_document_checkout, permission_document_checkin,
-    permission_document_checkin_override
+    permission_document_checkin, permission_document_checkin_override
 )
 from .serializers import (
     DocumentCheckoutSerializer, NewDocumentCheckoutSerializer
@@ -47,12 +40,23 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             APICheckedoutDocumentListView, self
         ).get(request, *args, **kwargs)
 
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+    '''
     def post(self, request, *args, **kwargs):
         """
         Checkout a document.
         """
 
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        serializer = self.get_serializer(data=request.data, files=request.file)
 
         if serializer.is_valid():
             document = get_object_or_404(
@@ -83,6 +87,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             return Response(status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    '''
 
 
 class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):

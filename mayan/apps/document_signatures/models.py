@@ -26,6 +26,16 @@ def upload_to(*args, **kwargs):
 
 @python_2_unicode_compatible
 class SignatureBaseModel(models.Model):
+    """
+    Fields:
+    * key_id - Key Identifier - This is what identifies uniquely a key. Not
+    two keys in the world have the same Key ID. The Key ID is also used to
+    locate a key in the key servers: http://pgp.mit.edu
+    * signature_id - Signature ID - Every time a key is used to sign something
+    it will generate a unique signature ID. No two signature IDs are the same,
+    even when using the same key.
+    """
+
     document_version = models.ForeignKey(
         DocumentVersion, editable=False, related_name='signatures',
         verbose_name=_('Document version')

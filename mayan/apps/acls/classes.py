@@ -14,9 +14,17 @@ class ModelPermission(object):
 
     @classmethod
     def register(cls, model, permissions):
+        from django.contrib.contenttypes.fields import GenericRelation
+
         cls._registry.setdefault(model, [])
         for permission in permissions:
             cls._registry[model].append(permission)
+
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        model.add_to_class('acls', GenericRelation(AccessControlList))
 
     @classmethod
     def get_for_instance(cls, instance):
@@ -36,7 +44,9 @@ class ModelPermission(object):
         if proxy:
             permissions.extend(cls._registry.get(proxy))
 
-        pks = [permission.stored_permission.pk for permission in set(permissions)]
+        pks = [
+            permission.stored_permission.pk for permission in set(permissions)
+        ]
         return StoredPermission.objects.filter(pk__in=pks)
 
     @classmethod

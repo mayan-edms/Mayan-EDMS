@@ -44,8 +44,8 @@ from .widgets import get_instance_link, index_instance_item_link, node_level
 class DocumentIndexingApp(MayanAppConfig):
     app_namespace = 'indexing'
     app_url = 'indexing'
+    has_tests = True
     name = 'document_indexing'
-    test = True
     verbose_name = _('Document indexing')
 
     def ready(self):

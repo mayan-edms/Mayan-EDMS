@@ -37,8 +37,8 @@ def get_users():
 
 class UserManagementApp(MayanAppConfig):
     app_url = 'accounts'
+    has_tests = True
     name = 'user_management'
-    test = True
     verbose_name = _('User management')
 
     def ready(self):

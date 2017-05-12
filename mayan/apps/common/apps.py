@@ -71,8 +71,8 @@ class MayanAppConfig(apps.AppConfig):
 
 class CommonApp(MayanAppConfig):
     app_url = ''
+    has_tests = True
     name = 'common'
-    test = True
     verbose_name = _('Common')
 
     def ready(self):
@@ -148,7 +148,7 @@ class CommonApp(MayanAppConfig):
             if settings.DEBUG:
                 level = 'DEBUG'
             else:
-                level = 'INFO'
+                level = 'ERROR'
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():

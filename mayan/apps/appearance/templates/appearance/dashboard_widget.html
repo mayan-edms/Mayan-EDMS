@@ -1,11 +1,11 @@
 {% load i18n %}
 
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <div class="panel panel-secondary panel-dashboard-widget">
+    <div class="panel panel-secondary dashboard-widget">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-2">
-                    <i class="fa fa-{{ widget.icon }} fa-2x"></i>
+                    <i class="dashboard-widget-icon {{ widget.icon }}"></i>
                 </div>
                 <div class="col-xs-10 text-right">
                     <strong>{{ widget.label }}</strong>

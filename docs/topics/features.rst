@@ -30,7 +30,7 @@ Features
 * Dynamic default values for metadata.
 
   * Metadata fields can have an initial value, which can be static or determined
-    by an user provided template code snippet.
+    by a template code snippet provided by the user.
 
 * Documents can be uploaded from different sources.
 
@@ -68,7 +68,7 @@ Features
 
 * Multi page document support.
 
-  * Multiple page PDFs and TIFFs files are supported.
+  * Multiple page PDF and TIFF files are supported.
 
 * Automatic OCR processing.
 

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
+from .api_views import APIKeyListView, APIKeyView
 from .views import (
     KeyDeleteView, KeyDetailView, KeyDownloadView, KeyQueryView,
     KeyQueryResultView, KeyReceive, KeyUploadView, PrivateKeyListView,
@@ -37,4 +38,12 @@ urlpatterns = [
     url(
         r'^receive/(?P<key_id>.+)/$', KeyReceive.as_view(), name='key_receive'
     ),
+]
+
+api_urls = [
+    url(
+        r'^keys/(?P<pk>[0-9]+)/$', APIKeyView.as_view(),
+        name='key-detail'
+    ),
+    url(r'^keys/$', APIKeyListView.as_view(), name='key-list'),
 ]

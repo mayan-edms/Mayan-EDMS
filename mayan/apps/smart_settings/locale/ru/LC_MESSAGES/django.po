@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-07-19 20:00+0000\n"
-"Last-Translator: lilo.panic\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,14 +34,6 @@ msgstr "Имя"
 #: apps.py:34
 msgid "Value"
 msgstr "Значение"
-
-#: apps.py:37
-msgid "Found in path"
-msgstr "Найдено в пути"
-
-#: apps.py:40
-msgid "n/a"
-msgstr "не задано"
 
 #: links.py:11 links.py:14
 msgid "Settings"

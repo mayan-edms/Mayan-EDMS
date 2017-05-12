@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-04-17 13:16+0000\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -20,27 +20,27 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:37 links.py:31 models.py:145 views.py:521
+#: apps.py:38 links.py:35 models.py:145 views.py:543
 msgid "Sources"
 msgstr ""
 
-#: apps.py:53
+#: apps.py:54
 #| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:55
+#: apps.py:56
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:65
+#: apps.py:66
 msgid "Created"
 msgstr ""
 
-#: apps.py:71
+#: apps.py:73
 msgid "Thumbnail"
 msgstr "Iconiță"
 
@@ -64,7 +64,7 @@ msgstr "Dezarhivare fișiere comprimate"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Încărcați fișiere de fișier comprimat care sunt incluse ca documente individuale"
 
-#: forms.py:67 views.py:432
+#: forms.py:67 views.py:431
 msgid "Staging file"
 msgstr "Structura fisier"
 
@@ -72,52 +72,56 @@ msgstr "Structura fisier"
 msgid "File"
 msgstr "Fișier"
 
-#: handlers.py:14
+#: handlers.py:16
 msgid "Default"
 msgstr "Iniţial"
 
-#: links.py:26
+#: links.py:30
 msgid "New document"
 msgstr ""
 
-#: links.py:35
+#: links.py:39
 msgid "Add new IMAP email"
 msgstr ""
 
-#: links.py:40
+#: links.py:44
 msgid "Add new POP3 email"
 msgstr ""
 
-#: links.py:45
+#: links.py:49
 msgid "Add new staging folder"
 msgstr ""
 
-#: links.py:50
+#: links.py:54
 msgid "Add new watch folder"
 msgstr ""
 
-#: links.py:55
+#: links.py:59
 msgid "Add new webform source"
 msgstr ""
 
-#: links.py:60 links.py:74
+#: links.py:64 links.py:78
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:64
+#: links.py:68
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:68
+#: links.py:72
 msgid "Document sources"
 msgstr "Sursa documentului"
 
-#: links.py:80
+#: links.py:84
 msgid "Upload new version"
 msgstr ""
 
-#: links.py:83
+#: links.py:87
 msgid "Logs"
+msgstr ""
+
+#: links.py:91
+msgid "Check now"
 msgstr ""
 
 #: literals.py:10 literals.py:15
@@ -156,7 +160,7 @@ msgstr ""
 msgid "Label"
 msgstr "Etichetă"
 
-#: models.py:49 views.py:514
+#: models.py:49 views.py:536
 msgid "Enabled"
 msgstr ""
 
@@ -417,27 +421,27 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: views.py:64
+#: views.py:63
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:129 wizards.py:49
+#: views.py:128 wizards.py:52
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr ""
 
-#: views.py:155 views.py:173
+#: views.py:154 views.py:172
 #| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
-#: views.py:163
+#: views.py:162
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:262
+#: views.py:256
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
@@ -446,64 +450,76 @@ msgstr ""
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:327
+#: views.py:331
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:381
+#: views.py:380
 msgid ""
 "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:419
+#: views.py:418
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:460
+#: views.py:458
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr ""
+
+#: views.py:471
+msgid "Source check queued."
+msgstr ""
+
+#: views.py:485
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Creați o nouă sursă de tipul:% s"
 
-#: views.py:480
+#: views.py:505
 #, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:499
+#: views.py:524
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:510
+#: views.py:532
 msgid "Type"
 msgstr "Tip"
 
-#: widgets.py:26
-msgid "Staging file page image"
-msgstr ""
-
-#: wizards.py:38
+#: wizards.py:41
 msgid "Step 1 of 3: Select document type"
 msgstr ""
 
-#: wizards.py:39
+#: wizards.py:42
 msgid "Step 2 of 3: Enter document metadata"
 msgstr ""
 
-#: wizards.py:40
+#: wizards.py:43
 msgid "Step 3 of 3: Select tags"
 msgstr ""
 
-#: wizards.py:66
+#: wizards.py:69
 msgid "Next step"
 msgstr "Următorul pas"
 
-#: wizards.py:68
+#: wizards.py:71
 msgid "Document upload wizard"
 msgstr ""
+
+#: wizards.py:98
+msgid "Tags to be attached."
+msgstr ""
+
+#~ msgid "Staging file page image"
+#~ msgstr "Staging file"
 
 #~ msgid "Staging file delete successfully."
 #~ msgstr "Staging file delete successfully."

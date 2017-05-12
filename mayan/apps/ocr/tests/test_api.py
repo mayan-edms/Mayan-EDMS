@@ -6,21 +6,23 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 
 from rest_framework import status
-from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import BaseAPITestCase
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 
-class OCRAPITestCase(APITestCase):
+class OCRAPITestCase(BaseAPITestCase):
     """
     Test the OCR app API endpoints
     """
 
     def setUp(self):
+        super(OCRAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -41,6 +43,7 @@ class OCRAPITestCase(APITestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OCRAPITestCase, self).tearDown()
 
     def test_submit_document(self):
         response = self.client.post(
@@ -60,7 +63,9 @@ class OCRAPITestCase(APITestCase):
         response = self.client.post(
             reverse(
                 'rest_api:document-version-ocr-submit-view',
-                args=(self.document.latest_version.pk,)
+                args=(
+                    self.document.pk, self.document.latest_version.pk,
+                )
             )
         )
 
@@ -74,7 +79,10 @@ class OCRAPITestCase(APITestCase):
         response = self.client.get(
             reverse(
                 'rest_api:document-page-content-view',
-                args=(self.document.latest_version.pages.first().pk,)
+                args=(
+                    self.document.pk, self.document.latest_version.pk,
+                    self.document.latest_version.pages.first().pk,
+                )
             ),
         )
 

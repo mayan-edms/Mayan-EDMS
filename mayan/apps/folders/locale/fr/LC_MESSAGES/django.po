@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:54-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
-#: views.py:104
+#: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
+#: views.py:95
 msgid "Folders"
 msgstr "Répertoires"
 
@@ -30,51 +30,55 @@ msgstr "Répertoires"
 msgid "Created"
 msgstr "Créé"
 
-#: apps.py:71 links.py:47 models.py:26
+#: apps.py:71 links.py:56 models.py:24
 msgid "Documents"
 msgstr "Documents"
 
-#: forms.py:34 models.py:44
-msgid "Folder"
-msgstr "Répertoire"
+#: links.py:24 links.py:34
+msgid "Remove from folders"
+msgstr ""
 
-#: links.py:20
-msgid "Add to a folder"
-msgstr "Ajouter à un dossier"
+#: links.py:27
+msgid "Add to a folders"
+msgstr ""
 
-#: links.py:24
-msgid "Add to folder"
-msgstr "Ajouter au dossier"
+#: links.py:31
+msgid "Add to folders"
+msgstr ""
 
-#: links.py:27 views.py:42
+#: links.py:42 views.py:37
 msgid "Create folder"
 msgstr "Créer un dossier"
 
-#: links.py:32
+#: links.py:46
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:36
-msgid "Remove from folder"
-msgstr "Supprimer du dossier"
-
-#: links.py:40
+#: links.py:49
 msgid "Edit"
 msgstr "Modifier"
 
-#: models.py:20
+#: links.py:53
+msgid "All"
+msgstr ""
+
+#: models.py:18
 msgid "Label"
 msgstr "Libellé"
 
-#: models.py:23
+#: models.py:21
 msgid "Datetime created"
 msgstr "Date et heure de création"
 
-#: models.py:63
+#: models.py:42
+msgid "Folder"
+msgstr "Répertoire"
+
+#: models.py:56
 msgid "Document folder"
 msgstr "Dossier du document"
 
-#: models.py:64
+#: models.py:57
 msgid "Document folders"
 msgstr "Dossiers"
 
@@ -108,67 +112,130 @@ msgstr "Ajouter des documents aux dossiers"
 msgid "Primary key of the document to be added."
 msgstr "Clé primaire du document à ajouter."
 
-#: views.py:54
+#: views.py:49
 #, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Supprimer les dossier : %s ?"
 
-#: views.py:66
+#: views.py:61
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "Documents du dossier: %s"
 
-#: views.py:93
+#: views.py:84
 #, python-format
 msgid "Edit folder: %s"
 msgstr "Modifier le répertoire: %s"
 
-#: views.py:127
+#: views.py:116
 #, python-format
 msgid "Folders containing document: %s"
 msgstr "Dossiers contenant le document: %s"
 
-#: views.py:141
-msgid "Must provide at least one document."
-msgstr "Il est nécessaire de fournir au moins un document."
-
-#: views.py:175
+#: views.py:127
 #, python-format
-msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
+msgid "Add to folder request performed on %(count)d document"
+msgstr ""
 
-#: views.py:184
+#: views.py:130
+#, python-format
+msgid "Add to folder request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:137
+msgid "Add"
+msgstr "Ajouter"
+
+#: views.py:139
+msgid "Add document to folders"
+msgid_plural "Add documents to folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:150
+#, python-format
+msgid "Add document \"%s\" to folders"
+msgstr ""
+
+#: views.py:161
+msgid "Folders to which the selected documents will be added."
+msgstr ""
+
+#: views.py:190
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
 
-#: views.py:205
-msgid "Add document to folder"
-msgid_plural "Add documents to folder"
-msgstr[0] "Ajouter un document au répertoire"
-msgstr[1] "Ajouter les documents au répertoire"
-
-#: views.py:227
-msgid "Must provide at least one folder document."
-msgstr "Vous devez fournir au moins un document pour le répertoire."
-
-#: views.py:248
+#: views.py:200
 #, python-format
-msgid "Document: %s removed successfully."
-msgstr "Document: %s supprimé avec succès."
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 
-#: views.py:254
+#: views.py:212
 #, python-format
-msgid "Document: %(document)s delete error: %(error)s"
-msgstr "Document: %(document)s erreur de suppression: %(error)s"
+msgid "Remove from folder request performed on %(count)d document"
+msgstr ""
 
-#: views.py:267
+#: views.py:215
 #, python-format
-msgid "Remove the selected document from the folder: %(folder)s?"
-msgid_plural "Remove the selected documents from the folder: %(folder)s?"
-msgstr[0] "Êtes vous certain de vouloir supprimer le document sélectionné du dossier %(folder)s ?"
-msgstr[1] "Êtes vous certain de vouloir supprimer les documents sélectionnés du dossier %(folder)s ?"
+msgid "Remove from folder request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:222
+msgid "Remove"
+msgstr "Supprimer"
+
+#: views.py:224
+#| msgid "Remove documents from folders"
+msgid "Remove document from folders"
+msgid_plural "Remove documents from folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:235
+#, python-format
+#| msgid "Remove documents from folders"
+msgid "Remove document \"%s\" to folders"
+msgstr ""
+
+#: views.py:246
+msgid "Folders from which the selected documents will be removed."
+msgstr ""
+
+#: views.py:273
+#, python-format
+#| msgid "Document: %(document)s is already in folder: %(folder)s."
+msgid "Document: %(document)s is not in folder: %(folder)s."
+msgstr ""
+
+#: views.py:282
+#, python-format
+#| msgid "Document: %(document)s is already in folder: %(folder)s."
+msgid "Document: %(document)s removed from folder: %(folder)s."
+msgstr ""
+
+#~ msgid "Must provide at least one document."
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Add document to folder"
+#~ msgid_plural "Add documents to folder"
+#~ msgstr[0] "97c0d1f6a737e93c542fd20ae2682559_pl_0"
+#~ msgstr[1] "97c0d1f6a737e93c542fd20ae2682559_pl_1"
+
+#~ msgid "Must provide at least one folder document."
+#~ msgstr "Must provide at least one folder document."
+
+#~ msgid "Document: %s removed successfully."
+#~ msgstr "Document: %s removed successfully."
+
+#~ msgid "Document: %(document)s delete error: %(error)s"
+#~ msgstr "Document: %(document)s delete error: %(error)s"
+
+#~ msgid "Remove the selected document from the folder: %(folder)s?"
+#~ msgid_plural "Remove the selected documents from the folder: %(folder)s?"
+#~ msgstr[0] "81c6b0124b038e876c41a6794709629b_pl_0"
+#~ msgstr[1] "81c6b0124b038e876c41a6794709629b_pl_1"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."

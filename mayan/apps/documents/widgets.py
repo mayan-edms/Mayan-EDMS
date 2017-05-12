@@ -101,9 +101,21 @@ class InstanceImageWidget(object):
 
     # Click view
     def get_click_view_kwargs(self, instance):
-        return {
-            'pk': instance.pk
-        }
+        """
+        Determine if the view is a template or API view and vary the view
+        keyword arguments
+        """
+
+        if self.click_view_name.startswith('rest_api'):
+            return {
+                'pk': instance.document.pk,
+                'version_pk': instance.document_version.pk,
+                'page_pk': instance.pk
+            }
+        else:
+            return {
+                'pk': instance.pk,
+            }
 
     def get_click_view_query_dict(self, instance):
         return self.click_view_query_dict
@@ -141,7 +153,9 @@ class InstanceImageWidget(object):
     # Preview view
     def get_preview_view_kwargs(self, instance):
         return {
-            'pk': instance.pk
+            'pk': instance.document.pk,
+            'version_pk': instance.document_version.pk,
+            'page_pk': instance.pk
         }
 
     def get_preview_view_query_dict(self, instance):
@@ -255,12 +269,16 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_click_view_kwargs(self, instance):
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.latest_version.pages.first().pk
         }
 
     def get_preview_view_kwargs(self, instance):
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.latest_version.pages.first().pk
         }
 
     def get_title(self, instance):

@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,14 +36,6 @@ msgstr "Name"
 #: apps.py:34
 msgid "Value"
 msgstr "Wert"
-
-#: apps.py:37
-msgid "Found in path"
-msgstr "Gefunden in Pfad"
-
-#: apps.py:40
-msgid "n/a"
-msgstr "unbekannt"
 
 #: links.py:11 links.py:14
 msgid "Settings"

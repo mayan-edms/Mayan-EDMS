@@ -60,7 +60,7 @@ api_urls = [
     ),
     url(r'^folders/$', APIFolderListView.as_view(), name='folder-list'),
     url(
-        r'^document/(?P<pk>[0-9]+)/folders/$',
+        r'^documents/(?P<pk>[0-9]+)/folders/$',
         APIDocumentFolderListView.as_view(), name='document-folder-list'
     ),
 ]

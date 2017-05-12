@@ -151,13 +151,17 @@ a i {
     padding-right: 3px;
 }
 
-.panel-dashboard-widget {
+.dashboard-widget {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     border: 1px solid black;
 }
 
-.panel-dashboard-widget .panel-heading i {
+.dashboard-widget .panel-heading i {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+}
+
+.dashboard-widget-icon {
+    font-size: 200%;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice .label {
@@ -166,4 +170,20 @@ a i {
 
 .tag-container .label {
     margin-right: 2px;
+}
+
+/* Metadata */
+.metadata-display {
+    display: inline-block;
+    min-width: 200px;
+    padding-right: 10px;
+    width: 49%;
+}
+
+/* Content */
+@media (min-width:1200px) {
+    .container {
+        min-width: 1170px;
+        width: 95%;
+    }
 }

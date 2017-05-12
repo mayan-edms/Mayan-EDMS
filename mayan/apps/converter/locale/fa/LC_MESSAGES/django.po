@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
-"PO-Revision-Date: 2016-03-21 21:06+0000\n"
+"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:18 permissions.py:7 settings.py:7
+#: apps.py:19 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr ""
 
-#: apps.py:38 models.py:34
+#: apps.py:26 models.py:34
 msgid "Order"
 msgstr "ترتیب"
 
-#: apps.py:40 models.py:64
+#: apps.py:28 models.py:64
 msgid "Transformation"
 msgstr "تبدیلات"
 
-#: apps.py:44 models.py:44
+#: apps.py:32 models.py:44
 msgid "Arguments"
 msgstr "آرگومانها"
 
@@ -49,35 +49,66 @@ msgstr ""
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
-#: classes.py:254
-msgid "Resize"
-msgstr "تغییر اندازه"
-
-#: classes.py:295
-msgid "Rotate"
-msgstr "چرخاندن"
-
-#: classes.py:313
-msgid "Zoom"
-msgstr "بزرگ/کوچک نمایی"
-
-#: classes.py:333
+#: classes.py:286
 msgid "Crop"
 msgstr ""
 
-#: links.py:31
+#: classes.py:299
+msgid "Flip"
+msgstr ""
+
+#: classes.py:310
+msgid "Gaussian blur"
+msgstr ""
+
+#: classes.py:321
+msgid "Mirror"
+msgstr ""
+
+#: classes.py:332
+msgid "Resize"
+msgstr "تغییر اندازه"
+
+#: classes.py:359
+msgid "Rotate"
+msgstr "چرخاندن"
+
+#: classes.py:378
+#| msgid "Rotate by n degress."
+msgid "Rotate 90 degrees"
+msgstr ""
+
+#: classes.py:389
+#| msgid "Rotate by n degress."
+msgid "Rotate 180 degrees"
+msgstr ""
+
+#: classes.py:400
+#| msgid "Rotate by n degress."
+msgid "Rotate 270 degrees"
+msgstr ""
+
+#: classes.py:410
+msgid "Unsharp masking"
+msgstr ""
+
+#: classes.py:426
+msgid "Zoom"
+msgstr "بزرگ/کوچک نمایی"
+
+#: links.py:35
 msgid "Create new transformation"
 msgstr "ایجاد تبدیلات چدید"
 
-#: links.py:35
+#: links.py:39
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:39
+#: links.py:43
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:43 models.py:65
+#: links.py:47 models.py:65
 msgid "Transformations"
 msgstr "تبدیلات"
 
@@ -130,22 +161,22 @@ msgstr "محل  Popple نرم افزار pdftoppm."
 msgid "Enter a valid YAML value."
 msgstr ""
 
-#: views.py:71
+#: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 
-#: views.py:139
+#: views.py:127
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr ""
 
-#: views.py:192
+#: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 
-#: views.py:238
+#: views.py:216
 #, python-format
 msgid "Transformations for: %s"
 msgstr "تبدیلات برای : %s"
@@ -158,9 +189,6 @@ msgstr "تبدیلات برای : %s"
 
 #~ msgid "Height"
 #~ msgstr "height"
-
-#~ msgid "Rotate by n degress."
-#~ msgstr "Rotate by n degress."
 
 #~ msgid "Degrees"
 #~ msgstr "degrees"

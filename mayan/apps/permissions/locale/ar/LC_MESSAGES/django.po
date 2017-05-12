@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
-"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:22 models.py:47 models.py:70 permissions.py:7
+#: apps.py:22 models.py:46 models.py:77 permissions.py:7
 msgid "Permissions"
 msgstr "الصلاحيات"
 
-#: classes.py:63
+#: classes.py:72
 msgid "Insufficient permissions."
 msgstr "صلاحيات غير كافية."
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Edit"
 msgstr "تحرير"
 
-#: links.py:35 models.py:91 views.py:134
+#: links.py:35 models.py:98 views.py:136
 msgid "Roles"
 msgstr "Roles"
 
@@ -59,27 +59,27 @@ msgstr ""
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:18
+#: models.py:19
 msgid "Namespace"
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Name"
 msgstr "اسم"
 
-#: models.py:46
+#: models.py:45
 msgid "Permission"
 msgstr ""
 
-#: models.py:67
+#: models.py:74
 msgid "Label"
 msgstr ""
 
-#: models.py:73
+#: models.py:80
 msgid "Groups"
 msgstr "مجموعات"
 
-#: models.py:90
+#: models.py:97
 msgid "Role"
 msgstr ""
 
@@ -106,6 +106,21 @@ msgstr "منح الصلاحيات"
 #: permissions.py:25
 msgid "Revoke permissions"
 msgstr "إبطال الصلاحيات"
+
+#: serializers.py:46
+msgid ""
+"Comma separated list of groups primary keys to add to, or replace in this "
+"role."
+msgstr ""
+
+#: serializers.py:53
+msgid "Comma separated list of permission primary keys to grant to this role."
+msgstr ""
+
+#: serializers.py:92
+#, python-format
+msgid "No such permission: %s"
+msgstr ""
 
 #: views.py:45
 msgid "Available groups"

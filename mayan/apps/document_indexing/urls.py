@@ -72,12 +72,12 @@ urlpatterns = [
 
 api_urls = [
     url(
-        r'^index/node/(?P<pk>[0-9]+)/documents/$',
+        r'^indexes/node/(?P<pk>[0-9]+)/documents/$',
         APIIndexNodeInstanceDocumentListView.as_view(),
         name='index-node-documents'
     ),
     url(
-        r'^index/template/(?P<pk>[0-9]+)/$', APIIndexTemplateView.as_view(),
+        r'^indexes/template/(?P<pk>[0-9]+)/$', APIIndexTemplateView.as_view(),
         name='index-template-detail'
     ),
     url(
@@ -85,12 +85,12 @@ api_urls = [
         name='index-detail'
     ),
     url(
-        r'^index/(?P<pk>[0-9]+)/template/$',
+        r'^indexes/(?P<pk>[0-9]+)/template/$',
         APIIndexTemplateListView.as_view(), name='index-template-detail'
     ),
     url(r'^indexes/$', APIIndexListView.as_view(), name='index-list'),
     url(
-        r'^document/(?P<pk>[0-9]+)/indexes/$',
+        r'^documents/(?P<pk>[0-9]+)/indexes/$',
         APIDocumentIndexListView.as_view(), name='document-index-list'
     ),
 ]
