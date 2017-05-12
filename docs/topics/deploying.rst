@@ -266,11 +266,13 @@ Make the installation directory readable and writable by the webserver user::
 
     chown www-data:www-data /usr/share/mayan-edms -R
 
-Restart the services::
+Enable and restart the services [1_]::
 
     systemctl enable supervisor
     systemctl restart supervisor
     systemctl restart nginx
+
+[1]: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740
 
 .. _Debian: http://www.debian.org/
 .. _Django: http://www.djangoproject.com/
@@ -278,3 +280,4 @@ Restart the services::
 .. _SQLite: https://www.sqlite.org/
 .. _Ubuntu: http://www.ubuntu.com/
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html
+.. _1: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740
