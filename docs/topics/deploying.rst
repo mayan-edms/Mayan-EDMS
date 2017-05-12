@@ -3,7 +3,8 @@ Advanced deployment
 ===================
 
 Mayan EDMS should be deployed like any other Django_ project and
-preferably using virtualenv_.
+preferably using virtualenv_. Below are some ways to deploy and use Mayan EDMS.
+Do not use more than one method.
 
 Being a Django_ and a Python_ project, familiarity with these technologies is
 recommended to better understand why Mayan EDMS does some of the things it
@@ -58,7 +59,7 @@ to /usr/bin/ with ...
 
     sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract
 
-... alternatively set the paths in the ``settings/locals.py``
+Alternatively, set the paths in the ``settings/locals.py``
 
 .. code-block:: python
 
@@ -76,9 +77,9 @@ With Homebrew installed run the command:
 Set the Binary paths
 ********************
 
-Mayan EDMS by default will look in /usr/bin/ for the binary files it needs
-so either you can symlink the binaries installed via brew in /usr/local/bin/
-to /usr/bin/ with ...
+Mayan EDMS by default will look in /usr/bin/ for the binary files it needs.
+You can symlink the binaries installed via brew in /usr/local/bin/
+to /usr/bin/ with:
 
 .. code-block:: bash
 
@@ -87,7 +88,7 @@ to /usr/bin/ with ...
     sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext && \
     sudo ln -s /usr/local/bin/gs /usr/bin/gs
 
-... alternatively set the paths in the ``settings/locals.py``
+Alternatively, set the paths in the ``settings/locals.py``
 
 .. code-block:: python
 
