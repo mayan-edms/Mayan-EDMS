@@ -15,6 +15,7 @@ Other changes
 - Add new document's version list view permission
 - Resource based API endpoints
 - SANE scanner document source
+- Update required versions of Pillow to 4.1.1, django-compressor to 2.1.1, django-suit to 0.2.25, pyocr to 0.4.7, sh to 1.12.13
 
 Removals
 --------
