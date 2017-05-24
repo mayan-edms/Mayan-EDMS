@@ -3,7 +3,14 @@
 - Metadat widget appearance changes
 - Content windows appearance changes
 - Add new document's version list view permission
-      
+
+2.2.1 (2017-05-25)
+==================
+- Allow for bigger indexing expression templates.
+- Auto select checkbox when updating metadata values. GitLab issue #371.
+- Added support for passing the options allow-other and allow-root to the
+  FUSE index mirror. GitLab issue #385
+
 2.2 (2017-04-26)
 ================
 - Remove the installation app (GitLab #301).

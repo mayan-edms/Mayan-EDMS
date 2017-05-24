@@ -114,8 +114,7 @@ class IndexTemplateNode(MPTTModel):
     index = models.ForeignKey(
         Index, related_name='node_templates', verbose_name=_('Index')
     )
-    expression = models.CharField(
-        max_length=128,
+    expression = models.TextField(
         help_text=_(
             'Enter a template to render. '
             'Use Django\'s default templating language '
