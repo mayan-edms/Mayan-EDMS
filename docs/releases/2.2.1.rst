@@ -14,6 +14,8 @@ Changes
 -------------
 - Index node expression template field changed from a 128 character field to an
   unlimited size text field to allow for complex indexing expressions.
+- When updating the metadata of a document, any input in the value form field
+  will select the adjacent checkbox.
 
 Removals
 --------
@@ -68,6 +70,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `GitLab issue #357 <https://gitlab.com/mayan-edms/mayan-edms/issues/357>`_ It should be possible to retrieve all workflows for a given DocumentType from the API
+* `GitLab issue #371 <https://gitlab.com/mayan-edms/mayan-edms/issues/371>`_ Auto select checkbox when updating metadata
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

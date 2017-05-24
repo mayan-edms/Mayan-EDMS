@@ -1,6 +1,7 @@
 2.2.1 (2017-05-25)
 ==================
 - Allow for bigger indexing expression templates.
+- Auto select checkbox when updating metadata values. GitLab issue #371.
 
 2.2 (2017-04-26)
 ================
