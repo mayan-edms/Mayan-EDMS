@@ -9,7 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
-from common.compressed_files import CompressedFile, NotACompressedFile
+from common.compressed_files import Archive
+from common.exceptions import NoMIMETypeMatch
 from lock_manager import LockError
 from lock_manager.runtime import locking_backend
 
@@ -138,7 +139,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
     with shared_upload.open() as file_object:
         if expand:
             try:
-                compressed_file = CompressedFile(file_object)
+                compressed_file = Archive.open(file_object=file_object)
                 for compressed_file_child in compressed_file.children():
                     # TODO: find way to uniquely identify child files
                     # Use filename in the mean time.
@@ -187,8 +188,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                         'upload file: %s; %s. Retrying.', shared_upload,
                         exception
                     )
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
+            except NoMIMETypeMatch:
+                logging.debug('Exception: NoMIMETypeMatch')
                 task_upload_document.delay(
                     shared_uploaded_file_id=shared_upload.pk, **kwargs
                 )

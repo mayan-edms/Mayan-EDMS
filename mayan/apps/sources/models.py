@@ -21,7 +21,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from common.compressed_files import CompressedFile, NotACompressedFile
+from common.compressed_files import Archive
+from common.exceptions import NoMIMETypeMatch
 from common.utils import TemporaryFile
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
@@ -88,24 +89,24 @@ class Source(models.Model):
 
         kwargs = {
             'description': description, 'document_type': document_type,
-            'label': label, 'language': language,
-            'user': user
+            'label': label, 'language': language, 'user': user
         }
 
         if expand:
             try:
-                compressed_file = CompressedFile(file_object)
-                for compressed_file_child in compressed_file.children():
-                    kwargs.update({'label': force_text(compressed_file_child)})
-                    documents.append(
-                        self.upload_document(
-                            file_object=File(compressed_file_child), **kwargs
+                compressed_file = Archive.open(file_object=file_object)
+                for compressed_file_child in compressed_file.members():
+                    with compressed_file.open_member(filename=compressed_file_child) as file_object:
+                        kwargs.update(
+                            {'label': force_text(compressed_file_child)}
                         )
-                    )
-                    compressed_file_child.close()
-
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
+                        documents.append(
+                            self.upload_document(
+                                file_object=file_object, **kwargs
+                            )
+                        )
+            except NoMIMETypeMatch:
+                logging.debug('Exception: NoMIMETypeMatch')
                 documents.append(
                     self.upload_document(file_object=file_object, **kwargs)
                 )

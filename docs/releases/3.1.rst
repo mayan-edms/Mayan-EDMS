@@ -424,6 +424,7 @@ must be changed::
 Bugs fixed or issues closed
 ===========================
 
+* `GitLab issue #7 <https://gitlab.com/mayan-edms/mayan-edms/issues/7>`_ Feature: other compressors than zip for compressed documents
 * `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -11,7 +11,7 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
-from common.compressed_files import CompressedFile
+from common.compressed_files import ZipArchive
 from common.exceptions import ActionError
 from common.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
@@ -553,22 +553,22 @@ class DocumentDownloadView(SingleObjectDownloadView):
         )
 
         if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
-            compressed_file = CompressedFile()
+            compressed_file = ZipArchive()
+            compressed_file.create()
             for item in queryset:
-                descriptor = DocumentDownloadView.get_item_file(item=item)
-                compressed_file.add_file(
-                    descriptor, arcname=self.get_item_label(item=item)
-                )
-                descriptor.close()
-                DocumentDownloadView.commit_event(
-                    item=item, request=self.request
-                )
+                with DocumentDownloadView.get_item_file(item=item) as file_object:
+                    compressed_file.add_file(
+                        file_object=file_object,
+                        filename=self.get_item_label(item=item)
+                    )
+                    DocumentDownloadView.commit_event(
+                        item=item, request=self.request
+                    )
 
             compressed_file.close()
 
             return DocumentDownloadView.VirtualFile(
-                compressed_file.as_file(zip_filename),
-                name=zip_filename
+                compressed_file.as_file(zip_filename), name=zip_filename
             )
         else:
             item = queryset.first()

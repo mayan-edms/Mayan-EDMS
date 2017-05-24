@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from io import BytesIO
+import tarfile
 import zipfile
 
 try:
@@ -11,98 +12,154 @@ except ImportError:
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
+from mimetype.api import get_mimetype
 
-class NotACompressedFile(Exception):
-    pass
+from .exceptions import NoMIMETypeMatch
 
 
-class CompressedFile(object):
-    def __init__(self, file_input=None):
-        if file_input:
-            try:
-                # Is it a file like object?
-                file_input.seek(0)
-            except AttributeError:
-                # If not, try open it.
-                self._open(file_input)
-            else:
-                self.file_object = file_input
-        else:
-            self._create()
+class Archive(object):
+    _registry = {}
 
-    def _create(self):
-        self.descriptor = BytesIO()
-        self.zf = zipfile.ZipFile(self.descriptor, mode='w')
+    @classmethod
+    def register(cls, mime_types, archive_classes):
+        for mime_type in mime_types:
+            for archive_class in archive_classes:
+                cls._registry.setdefault(
+                    mime_type, []
+                ).append(archive_class)
 
-    def _open(self, file_input):
-        try:
-            # Is it a file like object?
-            file_input.seek(0)
-        except AttributeError:
-            # If not, try open it.
-            self.descriptor = open(file_input, 'r+b')
-        else:
-            self.descriptor = file_input
+    @classmethod
+    def open(cls, file_object):
+        mime_type = get_mimetype(
+            file_object=file_object, mimetype_only=True
+        )[0]
 
         try:
-            test = zipfile.ZipFile(self.descriptor, mode='r')
-        except zipfile.BadZipfile:
-            raise NotACompressedFile
-        else:
-            test.close()
-            self.descriptor.seek(0)
-            self.zf = zipfile.ZipFile(self.descriptor, mode='a')
+            for archive_class in cls._registry[mime_type]:
+                instance = archive_class()
+                instance._open(file_object=file_object)
+                return instance
+        except KeyError:
+            raise NoMIMETypeMatch
 
-    def add_file(self, file_input, arcname=None):
-        try:
-            # Is it a file like object?
-            file_input.seek(0)
-        except AttributeError:
-            # If not, keep it
-            self.zf.write(
-                file_input, arcname=arcname, compress_type=COMPRESSION
-            )
-        else:
-            self.zf.writestr(arcname, file_input.read())
+    def _open(self, file_object):
+        raise NotImplementedError
 
-    def contents(self):
+    def add_file(self, file_object, filename):
+        """
+        Add a file as a member of an archive
+        """
+        raise NotImplementedError
+
+    def close(self):
+        self._archive.close()
+
+    def create(self):
+        """
+        Create an empty archive
+        """
+        raise NotImplementedError
+
+    def get_members(self):
+        return (
+            SimpleUploadedFile(
+                name=filename, content=self.member_contents(filename)
+            ) for filename in self.members()
+        )
+
+    def member_contents(self, filename):
+        """
+        Return the content of a member
+        """
+        raise NotImplementedError
+
+    def members(self):
+        """
+        Return a list of all the elements inside the archive
+        """
+        raise NotImplementedError
+
+    def open_member(self, filename):
+        """
+        Return a file-like object to a member of the archive
+        """
+        raise NotImplemented
+
+
+class TarArchive(Archive):
+    def _open(self, file_object):
+        self._archive = tarfile.open(fileobj=file_object)
+
+    def add_file(self, file_object, filename):
+        self._archive.addfile(
+            tarfile.TarInfo(), fileobj=file_object
+        )
+
+    def create(self):
+        self.string_buffer = BytesIO()
+        self._archive = tarfile.TarFile(fileobj=self.string_buffer, mode='w')
+
+    def member_contents(self, filename):
+        return self._archive.extractfile(filename).read()
+
+    def members(self):
+        return self._archive.getnames()
+
+    def open_member(self, filename):
+        return self._archive.extractfile(filename)
+
+
+class ZipArchive(Archive):
+    def _open(self, file_object):
+        self._archive = zipfile.ZipFile(file_object)
+
+    def add_file(self, file_object, filename):
+        self._archive.writestr(
+            zinfo_or_arcname=filename, bytes=file_object.read(),
+            compress_type=COMPRESSION
+        )
+
+    def create(self):
+        self.string_buffer = BytesIO()
+        self._archive = zipfile.ZipFile(self.string_buffer, mode='w')
+
+    def member_contents(self, filename):
+        return self._archive.read(filename)
+
+    def members(self):
         return [
-            filename for filename in self.zf.namelist() if not filename.endswith('/')
+            filename for filename in self._archive.namelist() if not filename.endswith('/')
         ]
 
-    def get_content(self, filename):
-        return self.zf.read(filename)
+    def open_member(self, filename):
+        return self._archive.open(filename)
 
     def write(self, filename=None):
         # fix for Linux zip files read in Windows
-        for file in self.zf.filelist:
-            file.create_system = 0
+        for entry in self._archive.filelist:
+            entry.create_system = 0
 
-        self.descriptor.seek(0)
+        self.string_buffer.seek(0)
 
         if filename:
-            descriptor = open(filename, 'w')
-            descriptor.write(self.descriptor.read())
+            with open(filename, 'w') as file_object:
+                file_object.write(self.string_buffer.read())
         else:
-            return self.descriptor
+            return self.string_buffer
 
     def as_file(self, filename):
         return SimpleUploadedFile(name=filename, content=self.write().read())
 
-    def children(self):
-        try:
-            # Try for a ZIP file
-            zfobj = zipfile.ZipFile(self.file_object)
-            filenames = [
-                filename for filename in zfobj.namelist() if not filename.endswith('/')
-            ]
-            return (
-                SimpleUploadedFile(
-                    name=filename, content=zfobj.read(filename)
-                ) for filename in filenames
-            )
-        except zipfile.BadZipfile:
-            raise NotACompressedFile
 
-    def close(self):
-        self.zf.close()
+Archive.register(
+    mime_types=('application/zip',), archive_classes=(ZipArchive,)
+)
+Archive.register(
+    mime_types=('application/x-tar',), archive_classes=(TarArchive,)
+)
+Archive.register(
+    mime_types=('application/gzip',), archive_classes=(TarArchive,)
+)
+Archive.register(
+    mime_types=('application/x-bzip2',), archive_classes=(TarArchive,)
+)
