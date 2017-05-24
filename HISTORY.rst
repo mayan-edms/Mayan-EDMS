@@ -1,3 +1,7 @@
+2.2.1 (2017-05-25)
+==================
+- Allow for bigger indexing expression templates.
+
 2.2 (2017-04-26)
 ================
 - Remove the installation app (GitLab #301).
