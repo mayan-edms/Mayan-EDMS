@@ -2,6 +2,8 @@
 ==================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
+- Added support for passing the options allow-other and allow-root to the
+  FUSE index mirror. GitLab issue #385
 
 2.2 (2017-04-26)
 ================

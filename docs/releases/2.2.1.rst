@@ -16,6 +16,8 @@ Changes
   unlimited size text field to allow for complex indexing expressions.
 - When updating the metadata of a document, any input in the value form field
   will select the adjacent checkbox.
+- Support for passing the FUSE option `allow-other` and `allow-root` was added
+  to the index mirroring management command.
 
 Removals
 --------
@@ -71,5 +73,6 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #371 <https://gitlab.com/mayan-edms/mayan-edms/issues/371>`_ Auto select checkbox when updating metadata
+* `GitLab issue #385 <https://gitlab.com/mayan-edms/mayan-edms/issues/385>`_ mountindex: how to specify FUSE mount option allow_other?
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
