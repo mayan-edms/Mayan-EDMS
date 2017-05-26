@@ -13,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 from django.views.generic import RedirectView, TemplateView
 
 from .classes import Filter
+from .exceptions import NotLatestVersion
 from .forms import (
     FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
@@ -25,10 +26,31 @@ from .generics import (  # NOQA
     SimpleView
 )
 from .menus import menu_tools, menu_setup
+from .utils import check_version
 
 
 class AboutView(TemplateView):
     template_name = 'appearance/about.html'
+
+
+class CheckVersionView(SimpleView):
+    template_name = 'appearance/generic_template.html'
+
+    def get_extra_context(self):
+        try:
+            check_version()
+        except NotLatestVersion as exception:
+            message = _(
+                'The version you are using is outdated. The latest version '
+                'is {}'.format(exception.upstream_version)
+            )
+        else:
+            message = _('Your version is up-to-date.')
+
+        return {
+            'title': _('Check for updates'),
+            'content': message
+        }
 
 
 class CurrentUserDetailsView(SingleObjectDetailView):

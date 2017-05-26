@@ -20,10 +20,10 @@ from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
 )
 from .links import (
-    link_about, link_code, link_current_user_details, link_current_user_edit,
-    link_current_user_locale_profile_edit, link_documentation, link_filters,
-    link_forum, link_license, link_packages_licenses, link_setup, link_support,
-    link_tools
+    link_about, link_check_version, link_code, link_current_user_details,
+    link_current_user_edit, link_current_user_locale_profile_edit,
+    link_documentation, link_filters, link_forum, link_license,
+    link_packages_licenses, link_setup, link_support, link_tools
 )
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_about, menu_main, menu_tools, menu_user
@@ -123,6 +123,7 @@ class CommonApp(MayanAppConfig):
             links=(
                 link_about, link_support, link_documentation, link_forum,
                 link_code, link_license, link_packages_licenses,
+                link_check_version
             )
         )
 
