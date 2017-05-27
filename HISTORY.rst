@@ -4,6 +4,8 @@
 - Auto select checkbox when updating metadata values. GitLab issue #371.
 - Added support for passing the options allow-other and allow-root to the
   FUSE index mirror. GitLab issue #385
+- Add support for check for the latest released version of Mayan from the
+  About menu.
 
 2.2 (2017-04-26)
 ================

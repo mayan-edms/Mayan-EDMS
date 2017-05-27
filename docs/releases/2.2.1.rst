@@ -18,6 +18,9 @@ Changes
   will select the adjacent checkbox.
 - Support for passing the FUSE option `allow-other` and `allow-root` was added
   to the index mirroring management command.
+- Add support for check for the latest released version of Mayan from the
+  About menu.
+
 
 Removals
 --------
