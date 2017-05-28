@@ -6,6 +6,7 @@
   FUSE index mirror. GitLab issue #385
 - Add support for check for the latest released version of Mayan from the
   About menu.
+- Rewrite document indexing code to be faster and use less locking.
 
 2.2 (2017-04-26)
 ================

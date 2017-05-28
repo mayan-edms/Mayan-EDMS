@@ -20,7 +20,9 @@ Changes
   to the index mirroring management command.
 - Add support for check for the latest released version of Mayan from the
   About menu.
-
+- Add support for rebuilding specific indexes instead of only being able to
+  rebuild all index.
+- Rewrite document indexing code to be faster and use less locking.
 
 Removals
 --------

@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save, post_delete, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -21,9 +21,9 @@ from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
-    document_created_index_update, create_default_document_index,
-    document_index_delete, document_metadata_index_update,
-    document_metadata_index_post_delete
+    create_default_document_index, document_metadata_index_update,
+    document_metadata_index_post_delete, handler_delete_empty,
+    handler_index_document, handler_remove_document
 )
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_setup,
@@ -145,13 +145,16 @@ class DocumentIndexingApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_indexing.tasks.task_delete_empty_index_nodes': {
+                'document_indexing.tasks.task_delete_empty': {
+                    'queue': 'indexing'
+                },
+                'document_indexing.tasks.task_remove_document': {
                     'queue': 'indexing'
                 },
                 'document_indexing.tasks.task_index_document': {
                     'queue': 'indexing'
                 },
-                'document_indexing.tasks.task_do_rebuild_all_indexes': {
+                'document_indexing.tasks.task_rebuild_index': {
                     'queue': 'tools'
                 },
             }
@@ -185,7 +188,11 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_rebuild_index_instances,))
 
         post_delete.connect(
-            document_index_delete, dispatch_uid='document_index_delete',
+            handler_delete_empty, dispatch_uid='handler_delete_empty',
+            sender=Document
+        )
+        pre_delete.connect(
+            handler_remove_document, dispatch_uid='handler_remove_document',
             sender=Document
         )
         post_delete.connect(
@@ -194,8 +201,8 @@ class DocumentIndexingApp(MayanAppConfig):
             sender=DocumentMetadata
         )
         post_document_created.connect(
-            document_created_index_update,
-            dispatch_uid='document_created_index_update', sender=Document
+            handler_index_document,
+            dispatch_uid='handler_index_document', sender=Document
         )
         post_initial_document_type.connect(
             create_default_document_index,

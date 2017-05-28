@@ -5,7 +5,7 @@ from user_management.tests import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
-from ..models import Index, IndexInstanceNode
+from ..models import Index
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit, permission_document_indexing_view
@@ -128,7 +128,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         )
 
         # Rebuild indexes
-        IndexInstanceNode.objects.rebuild_all_indexes()
+        Index.objects.rebuild()
 
         return index
 
