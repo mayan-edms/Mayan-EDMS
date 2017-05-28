@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -9,15 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:12
 msgid "Appearance"
@@ -45,15 +48,19 @@ msgstr "Błąd serwera"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i "
+"wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez następujący identyfikator:"
+msgstr ""
+"Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez "
+"następujący identyfikator:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -76,39 +83,39 @@ msgstr "Wydano na licencji Apache 2.0 License"
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "Prawa autorskie &copy; 2011-2015 Roberto Rosario."
 
-#: templates/appearance/base.html:45
+#: templates/appearance/base.html:56
 msgid "Toggle navigation"
 msgstr "Rozwiń nawigację"
 
-#: templates/appearance/base.html:75
+#: templates/appearance/base.html:86
 msgid "Profile"
 msgstr ""
 
-#: templates/appearance/base.html:81
+#: templates/appearance/base.html:92
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Success"
 msgstr "Sukces"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Information"
 msgstr "Informacja"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Error"
 msgstr "Błąd"
 
-#: templates/appearance/base.html:144
+#: templates/appearance/base.html:155
 msgid "Actions"
 msgstr "Akcje"
 
-#: templates/appearance/base.html:146
+#: templates/appearance/base.html:157
 msgid "Toggle Dropdown"
 msgstr "Rozwiń listę"
 
@@ -185,7 +192,9 @@ msgstr "Brak wyników"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(total_pages)s)"
+msgstr ""
+"Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -262,7 +271,9 @@ msgstr "Hasło: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić hasła."
+msgstr ""
+"Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić "
+"hasła."
 
 #: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"

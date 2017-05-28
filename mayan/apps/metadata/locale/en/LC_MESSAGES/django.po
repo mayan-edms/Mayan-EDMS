@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"POT-Creation-Date: 2017-05-28 15:50-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -62,12 +62,12 @@ msgstr ""
 msgid "Value"
 msgstr "Value"
 
-#: apps.py:161 forms.py:39 models.py:209
+#: apps.py:161 forms.py:44 models.py:209
 #, fuzzy
 msgid "Required"
 msgstr "required"
 
-#: apps.py:183 apps.py:191 forms.py:113 models.py:91 models.py:207
+#: apps.py:183 apps.py:191 forms.py:118 models.py:91 models.py:207
 msgid "Metadata type"
 msgstr "Metadata type"
 
@@ -89,37 +89,37 @@ msgstr ""
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:21
+#: forms.py:23
 msgid "Update"
 msgstr "Update"
 
-#: forms.py:65
+#: forms.py:70
 #, python-format
 msgid "Lookup value error: %s"
 msgstr ""
 
-#: forms.py:78
+#: forms.py:83
 #, python-format
 msgid "Default value error: %s"
 msgstr ""
 
-#: forms.py:94 models.py:124
+#: forms.py:99 models.py:124
 #, fuzzy, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: forms.py:112
+#: forms.py:117
 #, fuzzy
 msgid "Metadata types to be added to the selected documents."
 msgstr "Add metadata type to document: %s"
 
-#: forms.py:141
+#: forms.py:146
 #, fuzzy
 #| msgid " Available models: %s"
 msgid " Available template context variables: "
 msgstr " Available models: %s"
 
-#: forms.py:152 views.py:395
+#: forms.py:157 views.py:395
 msgid "Remove"
 msgstr "Remove"
 

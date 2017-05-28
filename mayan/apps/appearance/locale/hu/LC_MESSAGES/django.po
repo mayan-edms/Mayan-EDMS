@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12
@@ -43,8 +44,8 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -74,39 +75,39 @@ msgstr ""
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr ""
 
-#: templates/appearance/base.html:45
+#: templates/appearance/base.html:56
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:75
+#: templates/appearance/base.html:86
 msgid "Profile"
 msgstr ""
 
-#: templates/appearance/base.html:81
+#: templates/appearance/base.html:92
 msgid "Anonymous"
 msgstr "névtelen felhasználó"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Information"
 msgstr ""
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Error"
 msgstr ""
 
-#: templates/appearance/base.html:144
+#: templates/appearance/base.html:155
 msgid "Actions"
 msgstr "Műveletek"
 
-#: templates/appearance/base.html:146
+#: templates/appearance/base.html:157
 msgid "Toggle Dropdown"
 msgstr ""
 

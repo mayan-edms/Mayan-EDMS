@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2013-11-20 11:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:87 apps.py:231 apps.py:453 menus.py:8 models.py:225 permissions.py:7
+#: apps.py:87 apps.py:231 apps.py:453 menus.py:8 models.py:229 permissions.py:7
 #: settings.py:13
 msgid "Documents"
 msgstr "Documents"
@@ -41,7 +41,7 @@ msgstr "New document filename"
 msgid "Total documents"
 msgstr "Transform documents"
 
-#: apps.py:134 links.py:273 links.py:278 views/document_type_views.py:49
+#: apps.py:134 links.py:280 links.py:285 views/document_type_views.py:49
 #, fuzzy
 msgid "Document types"
 msgstr "Document type"
@@ -63,7 +63,7 @@ msgid ""
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:154 models.py:65 models.py:153 models.py:618 search.py:21
+#: apps.py:154 models.py:65 models.py:157 models.py:639 search.py:21
 #: search.py:39
 msgid "Label"
 msgstr ""
@@ -85,7 +85,7 @@ msgstr "thumbnail"
 msgid "Type"
 msgstr ""
 
-#: apps.py:238 models.py:620
+#: apps.py:238 models.py:641
 #, fuzzy
 msgid "Enabled"
 msgstr "enabled"
@@ -105,7 +105,7 @@ msgstr "time and date"
 msgid "Encoding"
 msgstr "encoding"
 
-#: apps.py:270 models.py:351
+#: apps.py:270 models.py:367
 msgid "Comment"
 msgstr "Comment"
 
@@ -176,7 +176,7 @@ msgstr "Document version reverted successfully"
 msgid "Document viewed"
 msgstr "Document edited"
 
-#: forms.py:39 links.py:212
+#: forms.py:39 links.py:219
 msgid "Page image"
 msgstr "Page image"
 
@@ -197,7 +197,7 @@ msgstr "Date added"
 msgid "UUID"
 msgstr "UUID"
 
-#: forms.py:120 models.py:163
+#: forms.py:120 models.py:167
 msgid "Language"
 msgstr ""
 
@@ -230,15 +230,15 @@ msgstr "Exists in storage"
 msgid "File path in storage"
 msgstr "File path in storage"
 
-#: forms.py:150 models.py:366
+#: forms.py:150 models.py:382
 msgid "Checksum"
 msgstr "Checksum"
 
-#: forms.py:151 links.py:60
+#: forms.py:151 links.py:67
 msgid "Pages"
 msgstr "Pages"
 
-#: forms.py:179 models.py:105 models.py:149 models.py:615 search.py:16
+#: forms.py:179 models.py:105 models.py:153 models.py:636 search.py:16
 #: search.py:32
 msgid "Document type"
 msgstr "Document type"
@@ -285,89 +285,89 @@ msgid ""
 "transformations will be lost."
 msgstr ""
 
-#: links.py:45
+#: links.py:52
 #, fuzzy
 msgid "Preview"
 msgstr "preview"
 
-#: links.py:50
+#: links.py:57
 #, fuzzy
 msgid "Properties"
 msgstr "properties"
 
-#: links.py:55
+#: links.py:62
 #, fuzzy
 msgid "Versions"
 msgstr "versions"
 
-#: links.py:66 links.py:112
+#: links.py:73 links.py:119
 #, fuzzy
 msgid "Clear transformations"
 msgstr "clear transformations"
 
-#: links.py:71
+#: links.py:78
 #, fuzzy
 msgid "Clone transformations"
 msgstr "clear transformations"
 
-#: links.py:76 links.py:120 links.py:247 links.py:261
+#: links.py:83 links.py:127 links.py:254 links.py:268
 #, fuzzy
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:81 links.py:116
+#: links.py:88 links.py:123
 msgid "Move to trash"
 msgstr ""
 
-#: links.py:86
+#: links.py:93
 #, fuzzy
 msgid "Edit properties"
 msgstr "Edit document properties"
 
-#: links.py:90 links.py:124
+#: links.py:97 links.py:131
 #, fuzzy
 msgid "Change type"
 msgstr "page text"
 
-#: links.py:94 links.py:128 views/document_views.py:380
+#: links.py:101 links.py:135 views/document_views.py:380
 msgid "Download"
 msgstr "Download"
 
-#: links.py:98
+#: links.py:105
 #, fuzzy
 msgid "Print"
 msgstr "print"
 
-#: links.py:103 links.py:131
+#: links.py:110 links.py:138
 msgid "Recalculate page count"
 msgstr ""
 
-#: links.py:107 links.py:135
+#: links.py:114 links.py:142
 msgid "Restore"
 msgstr ""
 
-#: links.py:139
+#: links.py:146
 #, fuzzy
 msgid "Download version"
 msgstr "document version"
 
-#: links.py:144 views/document_views.py:51
+#: links.py:151 views/document_views.py:51
 #, fuzzy
 msgid "All documents"
 msgstr "all documents"
 
-#: links.py:147 models.py:848 views/document_views.py:341
+#: links.py:154 models.py:869 views/document_views.py:341
 #, fuzzy
 msgid "Recent documents"
 msgstr "recent documents"
 
-#: links.py:151
+#: links.py:158
 #, fuzzy
 #| msgid "Transform documents"
 msgid "Trash can"
 msgstr "Transform documents"
 
-#: links.py:159
+#: links.py:166
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
@@ -375,86 +375,86 @@ msgstr ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
 
-#: links.py:162
+#: links.py:169
 #, fuzzy
 #| msgid "Clear the document image cache"
 msgid "Clear document image cache"
 msgstr "Clear the document image cache"
 
-#: links.py:166 permissions.py:47
+#: links.py:173 permissions.py:47
 msgid "Empty trash"
 msgstr ""
 
-#: links.py:174
+#: links.py:181
 #, fuzzy
 msgid "First page"
 msgstr "first page"
 
-#: links.py:179
+#: links.py:186
 #, fuzzy
 msgid "Last page"
 msgstr "last page"
 
-#: links.py:186
+#: links.py:193
 #, fuzzy
 msgid "Previous page"
 msgstr "previous page"
 
-#: links.py:192
+#: links.py:199
 #, fuzzy
 msgid "Next page"
 msgstr "next page"
 
-#: links.py:198 models.py:224 models.py:345 models.py:830
+#: links.py:205 models.py:228 models.py:361 models.py:851
 #, fuzzy
 msgid "Document"
 msgstr "Documents"
 
-#: links.py:203
+#: links.py:210
 #, fuzzy
 msgid "Rotate left"
 msgstr "rotate left"
 
-#: links.py:208
+#: links.py:215
 #, fuzzy
 msgid "Rotate right"
 msgstr "rotate right"
 
-#: links.py:216
+#: links.py:223
 #, fuzzy
 msgid "Reset view"
 msgstr "reset view"
 
-#: links.py:221
+#: links.py:228
 #, fuzzy
 msgid "Zoom in"
 msgstr "zoom in"
 
-#: links.py:227
+#: links.py:234
 #, fuzzy
 msgid "Zoom out"
 msgstr "zoom out"
 
-#: links.py:236
+#: links.py:243
 #, fuzzy
 msgid "Revert"
 msgstr "revert"
 
-#: links.py:243 views/document_type_views.py:64
+#: links.py:250 views/document_type_views.py:64
 #, fuzzy
 msgid "Create document type"
 msgstr "Create document types"
 
-#: links.py:251 links.py:265
+#: links.py:258 links.py:272
 msgid "Edit"
 msgstr ""
 
-#: links.py:256
+#: links.py:263
 #, fuzzy
 msgid "Add quick label to document type"
 msgstr "add filename to document type"
 
-#: links.py:269 models.py:626
+#: links.py:276 models.py:647
 msgid "Quick labels"
 msgstr ""
 
@@ -504,109 +504,109 @@ msgstr "Delete documents"
 msgid "Documents types"
 msgstr "documents types"
 
-#: models.py:153
+#: models.py:157
 #, fuzzy
 msgid "The name of the document"
 msgstr "Create documents"
 
-#: models.py:156 search.py:22 search.py:42
+#: models.py:160 search.py:22 search.py:42
 msgid "Description"
 msgstr "Description"
 
-#: models.py:159
+#: models.py:163
 #, fuzzy
 msgid "Added"
 msgstr "added"
 
-#: models.py:167
+#: models.py:171
 msgid "In trash?"
 msgstr ""
 
-#: models.py:172
+#: models.py:176
 #, fuzzy
 msgid "Date and time trashed"
 msgstr "Date added"
 
-#: models.py:176
+#: models.py:180
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
 
-#: models.py:179
+#: models.py:183
 msgid "Is stub?"
 msgstr ""
 
-#: models.py:187
+#: models.py:191
 #, fuzzy, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr "Document types: %d"
 
-#: models.py:348
+#: models.py:364
 #, fuzzy
 msgid "Timestamp"
 msgstr "timestamp"
 
-#: models.py:357
+#: models.py:373
 #, fuzzy
 msgid "File"
 msgstr "Filename"
 
-#: models.py:437 models.py:438 models.py:639
+#: models.py:453 models.py:454 models.py:660
 #, fuzzy
 msgid "Document version"
 msgstr "document version"
 
-#: models.py:625
+#: models.py:646
 msgid "Quick label"
 msgstr ""
 
-#: models.py:643
+#: models.py:664
 #, fuzzy
 msgid "Page number"
 msgstr "page number"
 
-#: models.py:648
+#: models.py:669
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
-#: models.py:664 models.py:799 models.py:816
+#: models.py:685 models.py:820 models.py:837
 #, fuzzy
 msgid "Document page"
 msgstr "document page"
 
-#: models.py:665 models.py:817
+#: models.py:686 models.py:838
 #, fuzzy
 msgid "Document pages"
 msgstr "document pages"
 
-#: models.py:801
+#: models.py:822
 msgid "Filename"
 msgstr "Filename"
 
-#: models.py:804
+#: models.py:825
 #, fuzzy
 msgid "Document page cached image"
 msgstr "document page image"
 
-#: models.py:805
+#: models.py:826
 #, fuzzy
 msgid "Document page cached images"
 msgstr "document page image"
 
-#: models.py:827
+#: models.py:848
 msgid "User"
 msgstr ""
 
-#: models.py:833
+#: models.py:854
 #, fuzzy
 msgid "Accessed"
 msgstr "accessed"
 
-#: models.py:847
+#: models.py:868
 #, fuzzy
 msgid "Recent document"
 msgstr "recent document"

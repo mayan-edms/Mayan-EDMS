@@ -5,13 +5,13 @@
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:23-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-05-28 15:50-0400\n"
+"PO-Revision-Date: 2017-05-28 19:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -129,12 +129,12 @@ msgstr "Plantilla para la línea de cuerpo del correo electrónico para envío d
 #: views.py:35
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "%(count)d documento en sometido para entrega por correo electrónico"
 
 #: views.py:37
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "%(count)d documentos sometidos para entrega por correo electrónico"
 
 #: views.py:48
 msgid "Send"
@@ -143,9 +143,9 @@ msgstr "Enviar"
 #: views.py:100
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "%(count)d enlace de documento sometido para entrega por correo electrónico"
 
 #: views.py:102
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)d enlaces de documento sometido para entrega por correo electrónico"

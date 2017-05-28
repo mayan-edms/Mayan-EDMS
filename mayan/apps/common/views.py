@@ -42,8 +42,8 @@ class CheckVersionView(SimpleView):
         except NotLatestVersion as exception:
             message = _(
                 'The version you are using is outdated. The latest version '
-                'is {}'.format(exception.upstream_version)
-            )
+                'is %s'
+            ) % exception.upstream_version
         else:
             message = _('Your version is up-to-date.')
 

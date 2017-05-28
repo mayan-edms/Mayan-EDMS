@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"POT-Creation-Date: 2017-05-28 15:51-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:38 links.py:35 models.py:145 views.py:543
@@ -26,7 +27,6 @@ msgid "Sources"
 msgstr "Sorgenti"
 
 #: apps.py:54
-#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr "Crea una sorgente documento"
 
@@ -35,7 +35,9 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
+msgstr ""
+"Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan "
+"EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
 
 #: apps.py:66
 msgid "Created"
@@ -45,11 +47,11 @@ msgstr "Creato"
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: apps.py:81 models.py:606
+#: apps.py:81 models.py:648
 msgid "Date time"
 msgstr "Data e ora"
 
-#: apps.py:86 models.py:609
+#: apps.py:86 models.py:651
 msgid "Message"
 msgstr "Messaggio"
 
@@ -137,15 +139,15 @@ msgstr "Mai"
 msgid "Ask user"
 msgstr "Chiedi all'utente"
 
-#: literals.py:27 models.py:252
+#: literals.py:27 models.py:275
 msgid "Web form"
 msgstr "Form web"
 
-#: literals.py:28 models.py:232
+#: literals.py:28 models.py:247
 msgid "Staging folder"
 msgstr "Cartella di stage"
 
-#: literals.py:29 models.py:597
+#: literals.py:29 models.py:639
 msgid "Watch folder"
 msgstr "Cartella monitorata"
 
@@ -153,7 +155,7 @@ msgstr "Cartella monitorata"
 msgid "POP3 email"
 msgstr "Email POP3"
 
-#: literals.py:31 models.py:570 models.py:571
+#: literals.py:31 models.py:602 models.py:603
 msgid "IMAP email"
 msgstr "Email IMAP"
 
@@ -165,7 +167,7 @@ msgstr "Etichetta"
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:144 models.py:603
+#: models.py:144 models.py:645
 msgid "Source"
 msgstr "Sorgente"
 
@@ -177,214 +179,228 @@ msgstr "Sorgente interattiva"
 msgid "Interactive sources"
 msgstr "Sorgenti interattive"
 
-#: models.py:161 models.py:578
+#: models.py:176 models.py:620
 msgid "Server side filesystem path."
 msgstr "Path sul filesystem del server"
 
-#: models.py:162 models.py:579
+#: models.py:177 models.py:621
 msgid "Folder path"
 msgstr "Percorso cartella"
 
-#: models.py:165
+#: models.py:180
 msgid "Width value to be passed to the converter backend."
-msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore della larghezza da passare per le operazioni di conversione in backend"
 
-#: models.py:166
+#: models.py:181
 msgid "Preview width"
 msgstr "Larghezza anteprima"
 
-#: models.py:170
+#: models.py:185
 msgid "Height value to be passed to the converter backend."
-msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore dell'altezza da passare per le operazioni di conversione in backend"
 
-#: models.py:171
+#: models.py:186
 msgid "Preview height"
 msgstr "Altezza anteprima"
 
-#: models.py:175 models.py:243
+#: models.py:190 models.py:266
 msgid "Whether to expand or not compressed archives."
 msgstr "Se espandere o meno degli archivi compressi."
 
-#: models.py:176 models.py:244 models.py:280
+#: models.py:191 models.py:267 models.py:303
 msgid "Uncompress"
 msgstr "Decomprimi"
 
-#: models.py:181
+#: models.py:196
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Cancella il file dopo essere stato caricato"
 
-#: models.py:183
+#: models.py:198
 msgid "Delete after upload"
 msgstr "Cancella dopo aver caricato"
 
-#: models.py:207
+#: models.py:222
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Impossibile ottenere lista dei file di gestione temporanea: %s"
 
-#: models.py:228
+#: models.py:243
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Errore cancellando il file di stage; %s"
 
-#: models.py:233
+#: models.py:248
 msgid "Staging folders"
 msgstr "Cartelle di stage"
 
-#: models.py:253
+#: models.py:276
 msgid "Web forms"
 msgstr "Form web"
 
-#: models.py:260 models.py:261
+#: models.py:283 models.py:284
 msgid "Out of process"
 msgstr "Fuori dal processo"
 
-#: models.py:267
+#: models.py:290
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervallo in secondi tra le ricerche dei nuovi documenti."
 
-#: models.py:268
+#: models.py:291
 msgid "Interval"
 msgstr "Intervallo"
 
-#: models.py:273
+#: models.py:296
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Assegna un tipo documento ai documenti caricati da questa sorgente."
 
-#: models.py:275
+#: models.py:298
 msgid "Document type"
 msgstr "Tipo documento "
 
-#: models.py:279
+#: models.py:302
 msgid "Whether to expand or not, compressed archives."
 msgstr "Determina se espandere o no gli archivi compressi."
 
-#: models.py:329
+#: models.py:352
 msgid "Interval source"
 msgstr "Intervallo sorgente"
 
-#: models.py:330
+#: models.py:353
 msgid "Interval sources"
 msgstr "Intervallo sorgenti"
 
-#: models.py:334
+#: models.py:366
 msgid "Host"
 msgstr "Host"
 
-#: models.py:335
+#: models.py:367
 msgid "SSL"
 msgstr "SSL"
 
-#: models.py:337
+#: models.py:369
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 per IMAP su SSL."
+msgstr ""
+"Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 "
+"per IMAP su SSL."
 
-#: models.py:338
+#: models.py:370
 msgid "Port"
 msgstr "Porta"
 
-#: models.py:340
+#: models.py:372
 msgid "Username"
 msgstr "Nome utente"
 
-#: models.py:341
+#: models.py:373
 msgid "Password"
 msgstr "Password"
 
-#: models.py:345
+#: models.py:377
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Nome degli allegati che possono contenere i nomi dei tipi metadati e le coppie di valori che saranno assegnate al resto degli allegati caricati. Nota: Questo allegato sarà il primo degli allegati."
+msgstr ""
+"Nome degli allegati che possono contenere i nomi dei tipi metadati e le "
+"coppie di valori che saranno assegnate al resto degli allegati caricati. "
+"Nota: Questo allegato sarà il primo degli allegati."
 
-#: models.py:349
+#: models.py:381
 msgid "Metadata attachment name"
 msgstr "Nome allegato metadati"
 
-#: models.py:353
+#: models.py:385
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare l'oggetto della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare l'oggetto della mail."
 
-#: models.py:356
-#| msgid "Current metadata"
+#: models.py:388
 msgid "Subject metadata type"
 msgstr "Tipo metadato oggetto"
 
-#: models.py:360
+#: models.py:392
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare il mittente della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare il mittente della mail."
 
-#: models.py:363
+#: models.py:395
 msgid "From metadata type"
 msgstr "Tipo metadato mittente"
 
-#: models.py:367
+#: models.py:399
 msgid "Store the body of the email as a text document."
 msgstr "Salva il contenuto della mail in un documento di testo"
 
-#: models.py:368
+#: models.py:400
 msgid "Store email body"
 msgstr "Salva il contenuto della mail"
 
-#: models.py:377
+#: models.py:409
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
-#: models.py:391
+#: models.py:423
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
-#: models.py:441
+#: models.py:473
 #, python-format
 msgid "attachment-%i"
 msgstr "allegato-%i"
 
-#: models.py:480
+#: models.py:512
 msgid "Email source"
 msgstr "Email sorgente"
 
-#: models.py:481
+#: models.py:513
 msgid "Email sources"
 msgstr "Email sorgenti"
 
-#: models.py:488
+#: models.py:520
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models.py:525 models.py:526
+#: models.py:557 models.py:558
 msgid "POP email"
 msgstr "Email POP"
 
-#: models.py:534
+#: models.py:566
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Casella di posta IMAP dove controllare i messaggi."
 
-#: models.py:535
+#: models.py:567
 msgid "Mailbox"
 msgstr "Casella"
 
-#: models.py:598
+#: models.py:640
 msgid "Watch folders"
 msgstr "Cartelle monitorate"
 
-#: models.py:615
+#: models.py:657
 msgid "Log entry"
 msgstr "Elementi log"
 
-#: models.py:616
+#: models.py:658
 msgid "Log entries"
 msgstr "Elementi log"
 
@@ -414,7 +430,6 @@ msgstr "Cancella i file temporanei"
 
 #: tasks.py:31
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr "Errore processando la sorgente: %s"
 
@@ -429,12 +444,13 @@ msgstr "Log per la sorgente: %s"
 
 #: views.py:128 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nessuna fonte interattiva dei documenti è stata definita o non ne sono state attivate."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
+"attivate."
 
 #: views.py:154 views.py:172
-#| msgid "Document sources"
 msgid "Document properties"
 msgstr "Proprietà documento"
 
@@ -444,7 +460,8 @@ msgstr "File nel percorso di stage"
 
 #: views.py:256
 msgid "New document queued for uploaded and will be available shortly."
-msgstr "Il nuovo documento pronto in coda per il carico e sarà disponibile a breve."
+msgstr ""
+"Il nuovo documento pronto in coda per il carico e sarà disponibile a breve."
 
 #: views.py:302
 #, python-format
@@ -457,9 +474,10 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Il documento \"%s\" è bloccato per il caricamento di nuove versioni."
 
 #: views.py:380
-msgid ""
-"New document version queued for uploaded and will be available shortly."
-msgstr "La nuova versione del documento è in coda per il caricamento e sarà disponibile a breve."
+msgid "New document version queued for uploaded and will be available shortly."
+msgstr ""
+"La nuova versione del documento è in coda per il caricamento e sarà "
+"disponibile a breve."
 
 #: views.py:418
 #, python-format
@@ -482,7 +500,6 @@ msgstr "Crea nuovo tipo di sorgente:%s"
 
 #: views.py:505
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr "Cancellare la sorgente: %s?"
 
@@ -604,9 +621,11 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

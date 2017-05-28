@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -27,19 +27,19 @@ msgstr ""
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:48 apps.py:61 forms.py:19 models.py:47
+#: apps.py:48 apps.py:61 forms.py:19 models.py:52
 msgid "User ID"
 msgstr ""
 
-#: apps.py:51 forms.py:34 models.py:50
+#: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
 msgstr ""
 
-#: apps.py:53 forms.py:23 models.py:31
+#: apps.py:53 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr ""
 
-#: apps.py:56 forms.py:27 models.py:35
+#: apps.py:56 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:59 forms.py:32 models.py:42
+#: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
 msgstr ""
 
@@ -55,11 +55,11 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: forms.py:31 models.py:39
+#: forms.py:31 models.py:44
 msgid "Fingerprint"
 msgstr ""
 
-#: forms.py:33 models.py:45
+#: forms.py:33 models.py:50
 msgid "Algorithm"
 msgstr ""
 
@@ -151,27 +151,27 @@ msgstr ""
 msgid "Document is signed with a valid signature."
 msgstr ""
 
-#: models.py:27
+#: models.py:32
 msgid "ASCII armored version of the key."
 msgstr ""
 
-#: models.py:28
+#: models.py:33
 msgid "Key data"
 msgstr ""
 
-#: models.py:56
+#: models.py:61
 msgid "Key"
 msgstr ""
 
-#: models.py:57
+#: models.py:62
 msgid "Keys"
 msgstr ""
 
-#: models.py:63
+#: models.py:68
 msgid "Invalid key data"
 msgstr ""
 
-#: models.py:66
+#: models.py:71
 msgid "Key already exists."
 msgstr ""
 

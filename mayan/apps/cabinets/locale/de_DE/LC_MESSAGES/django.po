@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2017\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -27,11 +27,7 @@ msgstr "Aktenschrank"
 msgid "Remove from cabinets"
 msgstr "Aus Aktenschrank entfernen"
 
-#: links.py:31
-msgid "Add to a cabinets"
-msgstr "Zu Aktenschrank hinzufügen"
-
-#: links.py:35
+#: links.py:31 links.py:35
 msgid "Add to cabinets"
 msgstr "Zu Aktenschrank hinzufügen"
 
@@ -114,11 +110,11 @@ msgstr "Aktenschränke ansehen"
 
 #: serializers.py:20
 msgid "List of children cabinets."
-msgstr ""
+msgstr "Liste der Unter-Aktenschränke."
 
 #: serializers.py:23
 msgid "Number of documents on this cabinet level."
-msgstr ""
+msgstr "Anzahl der Dokumente in dieser Aktenschrank-Ebene."
 
 #: serializers.py:27
 msgid "The name of this cabinet level appended to the names of its ancestors."
@@ -141,32 +137,32 @@ msgstr ""
 
 #: templates/cabinets/cabinet_details.html:21
 msgid "Navigation:"
-msgstr ""
+msgstr "Navigation:"
 
 #: views.py:70
 #, python-format
 msgid "Add new level to: %s"
-msgstr ""
+msgstr "Neue Ebene hinzufügen zu: %s"
 
 #: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
-msgstr ""
+msgstr "Aktenschrank löschen: %s?"
 
 #: views.py:111
 #, python-format
 msgid "Details of cabinet: %s"
-msgstr ""
+msgstr "Details für Aktenschrank: %s"
 
 #: views.py:142
 #, python-format
 msgid "Edit cabinet: %s"
-msgstr ""
+msgstr "Aktenschrank bearbeiten: %s"
 
 #: views.py:177
 #, python-format
 msgid "Cabinets containing document: %s"
-msgstr ""
+msgstr "Aktenschränke mit Dokument: %s"
 
 #: views.py:188
 #, python-format
@@ -191,11 +187,11 @@ msgstr[1] ""
 #: views.py:211
 #, python-format
 msgid "Add document \"%s\" to cabinets"
-msgstr ""
+msgstr "Dokument \"%s\" zu Aktenschrank hinzufügen"
 
 #: views.py:222
 msgid "Cabinets to which the selected documents will be added."
-msgstr ""
+msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."
 
 #: views.py:250
 #, python-format
@@ -230,18 +226,18 @@ msgstr[1] ""
 #: views.py:295
 #, python-format
 msgid "Remove document \"%s\" to cabinets"
-msgstr ""
+msgstr "Dokument \"%s\" aus Aktenschränken entfernen"
 
 #: views.py:306
 msgid "Cabinets from which the selected documents will be removed."
-msgstr ""
+msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."
 
 #: views.py:333
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Dokument: %(document)s ist nicht im Aktenschrank: %(cabinet)s."
 
 #: views.py:343
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Dokument: %(document)s entfernt aus Aktenschrank: %(cabinet)s."

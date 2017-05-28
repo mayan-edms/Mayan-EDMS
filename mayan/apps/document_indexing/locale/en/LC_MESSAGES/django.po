@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: admin.py:26 apps.py:99 links.py:48 models.py:39
+#: admin.py:26 apps.py:99 links.py:48 models.py:49
 #, fuzzy
 msgid "Document types"
 msgstr "document types"
@@ -33,15 +33,15 @@ msgstr "document types"
 msgid "Document indexing"
 msgstr "document indexes"
 
-#: apps.py:85 models.py:23
+#: apps.py:85 models.py:33
 msgid "Label"
 msgstr ""
 
-#: apps.py:86 models.py:28
+#: apps.py:86 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:88 apps.py:108 models.py:36 models.py:124
+#: apps.py:88 apps.py:108 models.py:46 models.py:165
 #, fuzzy
 msgid "Enabled"
 msgstr "enabled"
@@ -65,15 +65,19 @@ msgstr "has document links?"
 msgid "Node"
 msgstr ""
 
-#: handlers.py:18
+#: forms.py:14
+msgid "Indexes to be queued for rebuilding."
+msgstr ""
+
+#: forms.py:15 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
+#: views.py:73 views.py:220
+msgid "Indexes"
+msgstr "Indexes"
+
+#: handlers.py:20
 #, fuzzy
 msgid "Creation date"
 msgstr "create index"
-
-#: links.py:18 links.py:22 links.py:25 links.py:28 models.py:81 views.py:73
-#: views.py:220
-msgid "Indexes"
-msgstr "Indexes"
 
 #: links.py:31 views.py:34
 #, fuzzy
@@ -98,7 +102,7 @@ msgstr "tree template"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Deletes and creates from scratch all the document indexes."
 
-#: links.py:57
+#: links.py:57 views.py:319
 #, fuzzy
 msgid "Rebuild indexes"
 msgstr "rebuild indexes"
@@ -108,7 +112,65 @@ msgstr "rebuild indexes"
 msgid "New child node"
 msgstr "new child node"
 
-#: managers.py:56
+#: models.py:37
+#, fuzzy
+#| msgid "Internal name used to reference this index."
+msgid "This values will be used by other apps to reference this index."
+msgstr "Internal name used to reference this index."
+
+#: models.py:43
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Causes this index to be visible and updated when document data changes."
+
+#: models.py:117 models.py:149
+#, fuzzy
+msgid "Index"
+msgstr "Indexes"
+
+#: models.py:136
+#, fuzzy
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:137
+#, fuzzy
+msgid "Index instances"
+msgstr "index instance"
+
+#: models.py:153
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+
+#: models.py:157
+#, fuzzy
+msgid "Indexing expression"
+msgstr "indexing expression"
+
+#: models.py:162
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr "Causes this node to be visible and updated when document data changes."
+
+#: models.py:170
+msgid ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+
+#: models.py:173
+#, fuzzy
+msgid "Link documents"
+msgstr "link documents"
+
+#: models.py:178
+msgid "Root"
+msgstr ""
+
+#: models.py:236
 #, fuzzy, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -116,105 +178,47 @@ msgid ""
 msgstr ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
 
-#: models.py:27
-#, fuzzy
-#| msgid "Internal name used to reference this index."
-msgid "This values will be used by other apps to reference this index."
-msgstr "Internal name used to reference this index."
-
-#: models.py:33
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Causes this index to be visible and updated when document data changes."
-
-#: models.py:80 models.py:107
-#, fuzzy
-msgid "Index"
-msgstr "Indexes"
-
-#: models.py:99
-#, fuzzy
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:100
-#, fuzzy
-msgid "Index instances"
-msgstr "index instance"
-
-#: models.py:112
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-
-#: models.py:116
-#, fuzzy
-msgid "Indexing expression"
-msgstr "indexing expression"
-
-#: models.py:121
-msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Causes this node to be visible and updated when document data changes."
-
-#: models.py:129
-msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-
-#: models.py:132
-#, fuzzy
-msgid "Link documents"
-msgstr "link documents"
-
-#: models.py:137
-msgid "Root"
-msgstr ""
-
-#: models.py:142
+#: models.py:261
 #, fuzzy
 msgid "Index node template"
 msgstr "index template node"
 
-#: models.py:143
+#: models.py:262
 #, fuzzy
 msgid "Indexes node template"
 msgstr "indexes template nodes"
 
-#: models.py:151
+#: models.py:270
 #, fuzzy
 msgid "Index template node"
 msgstr "index template node"
 
-#: models.py:154
+#: models.py:273
 #, fuzzy
 msgid "Value"
 msgstr "value"
 
-#: models.py:157
+#: models.py:277
 #, fuzzy
 msgid "Documents"
 msgstr "documents"
 
-#: models.py:197
+#: models.py:363
 #, fuzzy
 msgid "Index node instance"
 msgstr "index instance"
 
-#: models.py:198
+#: models.py:364
 #, fuzzy
 msgid "Indexes node instances"
 msgstr "index instance"
 
-#: models.py:206
+#: models.py:372
 #, fuzzy
 msgid "Document index node instance"
 msgstr "index instance"
 
-#: models.py:207
+#: models.py:373
 #, fuzzy
 msgid "Document indexes node instances"
 msgstr "index instance"
@@ -289,34 +293,32 @@ msgstr "edit index template node: %s"
 msgid "Edit the index template node: %s?"
 msgstr "edit index template node: %s"
 
-#: views.py:266
+#: views.py:268
 #, python-format
 msgid "Navigation: %s"
 msgstr ""
 
-#: views.py:271
+#: views.py:273
 #, fuzzy, python-format
 msgid "Contents for index: %s"
 msgstr "contents for index: %s"
 
-#: views.py:307
+#: views.py:309
 #, fuzzy, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "indexes containing: %s"
 
-#: views.py:317
-msgid "On large databases this operation may take some time to execute."
-msgstr "On large databases this operation may take some time to execute."
-
-#: views.py:318
-#, fuzzy
-msgid "Rebuild all indexes?"
-msgstr "rebuild indexes"
-
-#: views.py:327
+#: views.py:328
 #, fuzzy
 msgid "Index rebuild queued successfully."
 msgstr "Index rebuild completed successfully."
+
+#~ msgid "On large databases this operation may take some time to execute."
+#~ msgstr "On large databases this operation may take some time to execute."
+
+#, fuzzy
+#~ msgid "Rebuild all indexes?"
+#~ msgstr "rebuild indexes"
 
 #, fuzzy
 #~ msgid "Index list"
