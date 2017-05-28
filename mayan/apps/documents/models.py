@@ -319,7 +319,7 @@ class Document(models.Model):
             return self.latest_version.pages
         except AttributeError:
             # Document has no version yet
-            return 0
+            return DocumentPage.objects.none()
 
 
 class DeletedDocument(Document):
