@@ -285,7 +285,7 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
         return getattr(instance, 'label', None)
 
     def is_valid(self, instance):
-        return instance.latest_version.pages.all()
+        return instance.pages
 
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
