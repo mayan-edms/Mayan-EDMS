@@ -7,6 +7,8 @@
 - Add support for check for the latest released version of Mayan from the
   About menu.
 - Rewrite document indexing code to be faster and use less locking.
+- Use a predefined file path for the file lock.
+- Catch documents with not document version when displaying their thumbnails.
 
 2.2 (2017-04-26)
 ================

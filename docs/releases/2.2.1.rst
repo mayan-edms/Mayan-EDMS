@@ -23,6 +23,8 @@ Changes
 - Add support for rebuilding specific indexes instead of only being able to
   rebuild all index.
 - Rewrite document indexing code to be faster and use less locking.
+- Use a predefined file path for the file lock.
+- Catch documents with not document version when displaying their thumbnails.
 
 Removals
 --------
