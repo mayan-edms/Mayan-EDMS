@@ -1,5 +1,5 @@
-2.2.1 (2017-05-XX)
-==================
+2.3 (2017-05-XX)
+================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
 - Added support for passing the options allow-other and allow-root to the
