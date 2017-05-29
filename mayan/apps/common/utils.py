@@ -8,6 +8,8 @@ import types
 import xmlrpclib
 
 from django.conf import settings
+from django.core.urlresolvers import resolve as django_resolve
+from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
@@ -106,6 +108,11 @@ def mkdtemp(*args, **kwargs):
 def mkstemp(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkstemp(*args, **kwargs)
+
+
+def resolve(path, urlconf=None):
+    path = '/{}'.format(path.replace(get_script_prefix(), '', 1))
+    return django_resolve(path=path, urlconf=urlconf)
 
 
 def return_attrib(obj, attrib, arguments=None):

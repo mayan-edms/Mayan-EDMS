@@ -22,9 +22,15 @@ Changes
   About menu.
 - Add support for rebuilding specific indexes instead of only being able to
   rebuild all index.
-- Rewrite document indexing code to be faster and use less locking.
+- Rewrite document indexing code to be faster and use less locking. Thanks to
+  Macrobb Simpson (@Macrobb) for the initial implementation.
 - Use a predefined file path for the file lock.
 - Catch documents with not document version when displaying their thumbnails.
+- Add custom script_prefix aware resolve function and use it for the
+  document page navigation views. Fixes an issue when Mayan is installed
+  as a sub URL app. Thanks to Gustavo Teixeira(@gsteixei) for the issue and
+  investigation.
+
 
 Removals
 --------
@@ -80,6 +86,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #371 <https://gitlab.com/mayan-edms/mayan-edms/issues/371>`_ Auto select checkbox when updating metadata
+* `GitLab issue #383 <https://gitlab.com/mayan-edms/mayan-edms/issues/383>`_ Page not found when deployed to sub-uri
 * `GitLab issue #385 <https://gitlab.com/mayan-edms/mayan-edms/issues/385>`_ mountindex: how to specify FUSE mount option allow_other?
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

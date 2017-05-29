@@ -1,4 +1,4 @@
-2.2.1 (2017-05-25)
+2.2.1 (2017-05-XX)
 ==================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
@@ -9,6 +9,7 @@
 - Rewrite document indexing code to be faster and use less locking.
 - Use a predefined file path for the file lock.
 - Catch documents with not document version when displaying their thumbnails.
+- Document page navigation fix when using Mayan as a sub URL app.
 
 2.2 (2017-04-26)
 ================
