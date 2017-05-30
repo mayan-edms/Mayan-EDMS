@@ -104,7 +104,7 @@ class DocumentPageNavigationBase(RedirectView):
                 )
             )
 
-        return '{}?{}'.format(url, urlencode(query_dict))
+        return '{}?{}'.format(url, urlencode(query_dict, doseq=True))
 
 
 class DocumentPageNavigationFirst(DocumentPageNavigationBase):
