@@ -142,6 +142,14 @@ docker_services_frontend:
 docker_services_worker:
 	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO -O fair
 
+docker_service_mysql_on:
+	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
+	while ! nc -z 127.0.0.1 3306; do sleep 1; done
+
+docker_service_mysql_off:
+	docker stop mysql
+	docker rm mysql
+
 # Security
 
 safety_check:
