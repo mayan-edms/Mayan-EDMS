@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2016-05-09 01:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -30,19 +30,19 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "Identificador de clave"
 
-#: apps.py:48 apps.py:61 forms.py:19 models.py:47
+#: apps.py:48 apps.py:61 forms.py:19 models.py:52
 msgid "User ID"
 msgstr "ID de usuario"
 
-#: apps.py:51 forms.py:34 models.py:50
+#: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:53 forms.py:23 models.py:31
+#: apps.py:53 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: apps.py:56 forms.py:27 models.py:35
+#: apps.py:56 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "Fecha de expiración"
 
@@ -50,7 +50,7 @@ msgstr "Fecha de expiración"
 msgid "No expiration"
 msgstr "No expira"
 
-#: apps.py:59 forms.py:32 models.py:42
+#: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
 msgstr "Largo"
 
@@ -58,11 +58,11 @@ msgstr "Largo"
 msgid "None"
 msgstr "Ninguno"
 
-#: forms.py:31 models.py:39
+#: forms.py:31 models.py:44
 msgid "Fingerprint"
 msgstr "Huella"
 
-#: forms.py:33 models.py:45
+#: forms.py:33 models.py:50
 msgid "Algorithm"
 msgstr "Algoritmo"
 
@@ -158,27 +158,27 @@ msgstr "El documento ha sido firmado y la firma está en buen estado."
 msgid "Document is signed with a valid signature."
 msgstr "El documento ha sido firmado y la firma ha sido validada."
 
-#: models.py:27
+#: models.py:32
 msgid "ASCII armored version of the key."
 msgstr "Versión ASCII de la llave"
 
-#: models.py:28
+#: models.py:33
 msgid "Key data"
 msgstr "Datos de llave"
 
-#: models.py:56
+#: models.py:61
 msgid "Key"
 msgstr "Llave"
 
-#: models.py:57
+#: models.py:62
 msgid "Keys"
 msgstr "Llaves"
 
-#: models.py:63
+#: models.py:68
 msgid "Invalid key data"
 msgstr "Datos de llave invalidos"
 
-#: models.py:66
+#: models.py:71
 msgid "Key already exists."
 msgstr "Llave ya existe."
 

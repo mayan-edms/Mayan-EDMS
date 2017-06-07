@@ -8,7 +8,7 @@ from .models import Workflow, WorkflowState, WorkflowTransition
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
-        fields = ('label',)
+        fields = ('label', 'internal_name')
         model = Workflow
 
 

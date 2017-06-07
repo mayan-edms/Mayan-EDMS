@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:48-0400\n"
 "PO-Revision-Date: 2012-02-02 18:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,12 +22,12 @@ msgstr ""
 msgid "ACLs"
 msgstr "ACLs"
 
-#: apps.py:25 links.py:44 models.py:36
+#: apps.py:25 links.py:44 models.py:44
 #, fuzzy
 msgid "Permissions"
 msgstr "permissions"
 
-#: apps.py:29 models.py:38
+#: apps.py:29 models.py:46
 #, fuzzy
 #| msgid "Roles"
 msgid "Role"
@@ -47,23 +47,23 @@ msgstr "View ACLs"
 msgid "Insufficient access."
 msgstr "Insufficient access."
 
-#: models.py:44
+#: models.py:52
 #, fuzzy
 msgid "Access entry"
 msgstr "access entry"
 
-#: models.py:45
+#: models.py:53
 #, fuzzy
 msgid "Access entries"
 msgstr "access entries"
 
-#: models.py:49
+#: models.py:57
 #, fuzzy, python-format
 #| msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 
-#: models.py:66
+#: models.py:74
 msgid "None"
 msgstr ""
 

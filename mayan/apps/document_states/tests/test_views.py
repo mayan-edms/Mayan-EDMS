@@ -11,10 +11,10 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_WORKFLOW_LABEL, TEST_WORKFLOW_INITIAL_STATE_LABEL,
-    TEST_WORKFLOW_INITIAL_STATE_COMPLETION, TEST_WORKFLOW_STATE_LABEL,
-    TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_TRANSITION_LABEL,
-    TEST_WORKFLOW_TRANSITION_LABEL_2
+    TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
+    TEST_WORKFLOW_INTERNAL_NAME, TEST_WORKFLOW_LABEL,
+    TEST_WORKFLOW_STATE_LABEL, TEST_WORKFLOW_STATE_COMPLETION,
+    TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_2
 )
 
 
@@ -25,7 +25,10 @@ class DocumentStateViewTestCase(GenericViewTestCase):
         self.login_admin_user()
 
     def _create_workflow(self):
-        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
 
     def _create_workflow_states(self):
         self.workflow_initial_state = WorkflowState.objects.create(
@@ -49,6 +52,7 @@ class DocumentStateViewTestCase(GenericViewTestCase):
             'document_states:setup_workflow_create',
             data={
                 'label': TEST_WORKFLOW_LABEL,
+                'internal_name': TEST_WORKFLOW_INTERNAL_NAME,
             }, follow=True
         )
 

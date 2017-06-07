@@ -175,4 +175,4 @@ class APIDocumentIndexListView(generics.ListAPIView):
             obj=document
         )
 
-        return document.node_instances.all()
+        return document.index_instance_nodes.all()

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -10,15 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"POT-Creation-Date: 2017-05-28 15:50-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:34
 msgid "Linking"
@@ -144,9 +147,12 @@ msgstr "jest w wyrażeniu regularnym (wielkość liter ma znaczenie)"
 #: models.py:22 models.py:117
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
-msgstr "Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Zmienna kontekstowa {{ document }} jest dostępna."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
+msgstr ""
+"Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Zmienna "
+"kontekstowa {{ document }} jest dostępna."
 
 #: models.py:46
 #, python-format
@@ -232,7 +238,8 @@ msgstr "Dokumenty w łączu: %s"
 
 #: views.py:71
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Dokumenty w łączu \"%(smart_link)s\" powiązane z \"%(document)s\""
 
 #: views.py:87
@@ -260,7 +267,6 @@ msgstr "Edytuj łącze: %s"
 
 #: views.py:194
 #, python-format
-#| msgid "Delete smart links"
 msgid "Delete smart link: %s"
 msgstr "Usuń łącze: %s"
 
@@ -280,7 +286,6 @@ msgstr "Edycja warunku łącza"
 
 #: views.py:304
 #, python-format
-#| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Usunąć warunek łącza: \"%s\"?"
 
@@ -388,14 +393,14 @@ msgstr "Usunąć warunek łącza: \"%s\"?"
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query the "
-#~ "database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate in "
-#~ "some manner to the document being displayed and allow users the ability to "
-#~ "jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query "
+#~ "the database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate "
+#~ "in some manner to the document being displayed and allow users the "
+#~ "ability to jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query the "
-#~ "database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate in "
-#~ "some manner to the document being displayed and allow users the ability to "
-#~ "jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query "
+#~ "the database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate "
+#~ "in some manner to the document being displayed and allow users the "
+#~ "ability to jump to and from linked documents very easily."

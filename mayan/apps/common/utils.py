@@ -5,15 +5,32 @@ import os
 import shutil
 import tempfile
 import types
+import xmlrpclib
 
 from django.conf import settings
+from django.core.urlresolvers import resolve as django_resolve
+from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 
+import mayan
+
+from .exceptions import NotLatestVersion
+from .literals import MAYAN_PYPI_NAME, PYPI_URL
 from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
+
+
+def check_version():
+    pypi = xmlrpclib.ServerProxy(PYPI_URL)
+    versions = pypi.package_releases(MAYAN_PYPI_NAME)
+
+    if versions[0] != mayan.__version__:
+        raise NotLatestVersion(upstream_version=versions[0])
+    else:
+        return True
 
 
 # http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
@@ -91,6 +108,11 @@ def mkdtemp(*args, **kwargs):
 def mkstemp(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkstemp(*args, **kwargs)
+
+
+def resolve(path, urlconf=None):
+    path = '/{}'.format(path.replace(get_script_prefix(), '', 1))
+    return django_resolve(path=path, urlconf=urlconf)
 
 
 def return_attrib(obj, attrib, arguments=None):

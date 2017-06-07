@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Roberto Rosario, 2012
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2017-04-21 16:27+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"POT-Creation-Date: 2017-05-28 15:51-0400\n"
+"PO-Revision-Date: 2017-05-28 19:33+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34 apps.py:78 apps.py:85 apps.py:104 apps.py:106 forms.py:31
@@ -40,7 +42,7 @@ msgstr "Remover Etiqueta"
 
 #: links.py:17 links.py:24
 msgid "Attach tags"
-msgstr ""
+msgstr "Anexar etiquetas"
 
 #: links.py:20
 msgid "Remove tags"
@@ -60,7 +62,7 @@ msgstr "Editar"
 
 #: links.py:43
 msgid "All"
-msgstr ""
+msgstr "Todos"
 
 #: models.py:18
 msgid "Label"
@@ -111,12 +113,17 @@ msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr ""
+"Lista separada por vírgulas das chaves primárias do documento para as quais "
+"essa etiqueta será anexada."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr ""
+"API URL que aponta para uma tag em relação ao documento anexado a ela. Esse "
+"URL é diferente do URL da etiqueta que está de acordo com as normas "
+"estabelecidas."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -125,33 +132,31 @@ msgstr "Chave primária da etiqueta a ser adicionada."
 #: views.py:33
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr ""
+msgstr "Solicitação de anexo de etiqueta realizada no documento %(count)d"
 
 #: views.py:35
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr ""
+msgstr "Solicitação de anexo de etiqueta realizada em %(count)d documentos"
 
 #: views.py:42
 msgid "Attach"
-msgstr ""
+msgstr "Anexar"
 
 #: views.py:44
-#| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Anexar etiquetas para documentos"
+msgstr[1] "Anexar etiquetas para documentos"
 
 #: views.py:54
 #, python-format
-#| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
-msgstr ""
+msgstr "Anexar etiquetas ao documento: %s"
 
 #: views.py:63
 msgid "Tags to be attached."
-msgstr ""
+msgstr "Etiquetas a serem anexadas."
 
 #: views.py:88
 #, python-format
@@ -161,7 +166,8 @@ msgstr "Documento \"%(document)s\" já está marcado como  \"%(tag)s\""
 #: views.py:99
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s\"."
 
 #: views.py:108
 msgid "Create tag"
@@ -170,20 +176,16 @@ msgstr "Criar Etiqueta"
 #: views.py:119
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
-msgstr ""
+msgstr "Solicitação de exclusão de etiqueta executada na etiqueta %(count)d"
 
 #: views.py:121
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr ""
+msgstr "Solicitação de exclusão de etiquetas executada em %(count)d etiquetas"
 
 #: views.py:128
 msgid "Will be removed from all documents."
 msgstr "Será removido de todos os documentos."
-
-#: views.py:129
-msgid "fa fa-times"
-msgstr ""
 
 #: views.py:132
 msgid "Delete the selected tag?"
@@ -193,9 +195,8 @@ msgstr[1] "Apagar as etiquetas selecionadas?"
 
 #: views.py:142
 #, python-format
-#| msgid "Delete tags"
 msgid "Delete tag: %s"
-msgstr ""
+msgstr "Excluir etiqueta: %s"
 
 #: views.py:152
 #, python-format
@@ -225,44 +226,42 @@ msgstr "Etiqueta para documento: %s"
 #: views.py:235
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr ""
+msgstr "Solicitação de remoção de etiqueta realizado em %(count)d documento"
 
 #: views.py:237
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr ""
+msgstr "Solicitação de remoção de etiqueta executada em  %(count)d documentos"
 
 #: views.py:244
 msgid "Remove"
 msgstr "Remover"
 
 #: views.py:246
-#| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Remover etiquetas de documentos"
+msgstr[1] "Remover etiquetas de documentos"
 
 #: views.py:256
 #, python-format
-#| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
-msgstr ""
+msgstr "Remover etiquetas de documentos: %s"
 
 #: views.py:265
 msgid "Tags to be removed."
-msgstr ""
+msgstr "Etiquetas a serem removidas."
 
 #: views.py:290
 #, python-format
-#| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr ""
+msgstr "Documento \"%(document)s\" não estava etiquetado como \"%(tag)s"
 
 #: views.py:300
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" removida com sucesso do documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" removida com sucesso do documento \"%(document)s\"."
 
 #~ msgid "Must provide at least one document."
 #~ msgstr "Must provide at least one document."

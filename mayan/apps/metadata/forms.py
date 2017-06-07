@@ -16,8 +16,10 @@ class DocumentMetadataForm(forms.Form):
         label=_('Name'), required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
-    value = forms.CharField(label=_('Value'), required=False,
-        widget=forms.TextInput(attrs={'class': 'metadata-value'})
+    value = forms.CharField(
+        label=_('Value'), required=False, widget=forms.TextInput(
+            attrs={'class': 'metadata-value'}
+        )
     )
     update = forms.BooleanField(
         initial=True, label=_('Update'), required=False

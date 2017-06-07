@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:23-0400\n"
+"POT-Creation-Date: 2017-05-28 15:51-0400\n"
 "PO-Revision-Date: 2013-11-20 13:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Thumbnail"
 msgstr "thumbnail"
 
-#: apps.py:81 models.py:606
+#: apps.py:81 models.py:648
 msgid "Date time"
 msgstr ""
 
-#: apps.py:86 models.py:609
+#: apps.py:86 models.py:651
 msgid "Message"
 msgstr ""
 
@@ -143,17 +143,17 @@ msgstr "Never"
 msgid "Ask user"
 msgstr "Ask user"
 
-#: literals.py:27 models.py:252
+#: literals.py:27 models.py:275
 #, fuzzy
 msgid "Web form"
 msgstr "web form"
 
-#: literals.py:28 models.py:232
+#: literals.py:28 models.py:247
 #, fuzzy
 msgid "Staging folder"
 msgstr "staging folder"
 
-#: literals.py:29 models.py:597
+#: literals.py:29 models.py:639
 #, fuzzy
 msgid "Watch folder"
 msgstr "watch folder"
@@ -162,7 +162,7 @@ msgstr "watch folder"
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:31 models.py:570 models.py:571
+#: literals.py:31 models.py:602 models.py:603
 msgid "IMAP email"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Enabled"
 msgstr "enabled"
 
-#: models.py:144 models.py:603
+#: models.py:144 models.py:645
 #, fuzzy
 msgid "Source"
 msgstr "source"
@@ -188,234 +188,234 @@ msgstr ""
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:161 models.py:578
+#: models.py:176 models.py:620
 msgid "Server side filesystem path."
 msgstr "Server side filesystem path."
 
-#: models.py:162 models.py:579
+#: models.py:177 models.py:621
 #, fuzzy
 msgid "Folder path"
 msgstr "folder path"
 
-#: models.py:165
+#: models.py:180
 msgid "Width value to be passed to the converter backend."
 msgstr "Width value to be passed to the converter backend."
 
-#: models.py:166
+#: models.py:181
 #, fuzzy
 msgid "Preview width"
 msgstr "preview width"
 
-#: models.py:170
+#: models.py:185
 msgid "Height value to be passed to the converter backend."
 msgstr "Height value to be passed to the converter backend."
 
-#: models.py:171
+#: models.py:186
 #, fuzzy
 msgid "Preview height"
 msgstr "preview height"
 
-#: models.py:175 models.py:243
+#: models.py:190 models.py:266
 msgid "Whether to expand or not compressed archives."
 msgstr "Whether to expand or not compressed archives."
 
-#: models.py:176 models.py:244 models.py:280
+#: models.py:191 models.py:267 models.py:303
 #, fuzzy
 msgid "Uncompress"
 msgstr "uncompress"
 
-#: models.py:181
+#: models.py:196
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Delete the file after is has been successfully uploaded."
 
-#: models.py:183
+#: models.py:198
 #, fuzzy
 msgid "Delete after upload"
 msgstr "delete after upload"
 
-#: models.py:207
+#: models.py:222
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Unable get list of staging files: %s"
 
-#: models.py:228
+#: models.py:243
 #, fuzzy, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Unable to delete staging file: %s"
 
-#: models.py:233
+#: models.py:248
 #, fuzzy
 msgid "Staging folders"
 msgstr "staging folders"
 
-#: models.py:253
+#: models.py:276
 #, fuzzy
 msgid "Web forms"
 msgstr "web forms"
 
-#: models.py:260 models.py:261
+#: models.py:283 models.py:284
 #, fuzzy
 msgid "Out of process"
 msgstr "out of process"
 
-#: models.py:267
+#: models.py:290
 #, fuzzy
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
 "Inverval in seconds where the watch folder path is checked for new documents."
 
-#: models.py:268
+#: models.py:291
 #, fuzzy
 msgid "Interval"
 msgstr "interval"
 
-#: models.py:273
+#: models.py:296
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models.py:275
+#: models.py:298
 #, fuzzy
 msgid "Document type"
 msgstr "Current document type"
 
-#: models.py:279
+#: models.py:302
 #, fuzzy
 msgid "Whether to expand or not, compressed archives."
 msgstr "Whether to expand or not compressed archives."
 
-#: models.py:329
+#: models.py:352
 #, fuzzy
 msgid "Interval source"
 msgstr "interval"
 
-#: models.py:330
+#: models.py:353
 #, fuzzy
 msgid "Interval sources"
 msgstr "interval"
 
-#: models.py:334
+#: models.py:366
 msgid "Host"
 msgstr ""
 
-#: models.py:335
+#: models.py:367
 msgid "SSL"
 msgstr ""
 
-#: models.py:337
+#: models.py:369
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models.py:338
+#: models.py:370
 msgid "Port"
 msgstr ""
 
-#: models.py:340
+#: models.py:372
 msgid "Username"
 msgstr ""
 
-#: models.py:341
+#: models.py:373
 msgid "Password"
 msgstr ""
 
-#: models.py:345
+#: models.py:377
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
 msgstr ""
 
-#: models.py:349
+#: models.py:381
 msgid "Metadata attachment name"
 msgstr ""
 
-#: models.py:353
+#: models.py:385
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
 msgstr ""
 
-#: models.py:356
+#: models.py:388
 #, fuzzy
 #| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr "Current metadata"
 
-#: models.py:360
+#: models.py:392
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
 msgstr ""
 
-#: models.py:363
+#: models.py:395
 #, fuzzy
 msgid "From metadata type"
 msgstr "Current metadata"
 
-#: models.py:367
+#: models.py:399
 msgid "Store the body of the email as a text document."
 msgstr ""
 
-#: models.py:368
+#: models.py:400
 msgid "Store email body"
 msgstr ""
 
-#: models.py:377
+#: models.py:409
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models.py:391
+#: models.py:423
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
 
-#: models.py:441
+#: models.py:473
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:480
+#: models.py:512
 #, fuzzy
 msgid "Email source"
 msgstr "edit source: %s"
 
-#: models.py:481
+#: models.py:513
 #, fuzzy
 msgid "Email sources"
 msgstr "edit source: %s"
 
-#: models.py:488
+#: models.py:520
 msgid "Timeout"
 msgstr ""
 
-#: models.py:525 models.py:526
+#: models.py:557 models.py:558
 msgid "POP email"
 msgstr ""
 
-#: models.py:534
+#: models.py:566
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models.py:535
+#: models.py:567
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:598
+#: models.py:640
 #, fuzzy
 msgid "Watch folders"
 msgstr "watch folders"
 
-#: models.py:615
+#: models.py:657
 msgid "Log entry"
 msgstr ""
 
-#: models.py:616
+#: models.py:658
 msgid "Log entries"
 msgstr ""
 

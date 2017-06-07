@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -27,11 +27,7 @@ msgstr "Archivadores"
 msgid "Remove from cabinets"
 msgstr "Remover de archivador"
 
-#: links.py:31
-msgid "Add to a cabinets"
-msgstr "Agregar a archivadores"
-
-#: links.py:35
+#: links.py:31 links.py:35
 msgid "Add to cabinets"
 msgstr "Agregar a archivadores"
 
@@ -73,7 +69,7 @@ msgstr "Archivador"
 
 #: models.py:67 serializers.py:135
 msgid "Parent and Label"
-msgstr ""
+msgstr "Padre y etiqueta"
 
 #: models.py:74 serializers.py:141
 #, python-format
@@ -114,7 +110,7 @@ msgstr "Ver archivadores"
 
 #: serializers.py:20
 msgid "List of children cabinets."
-msgstr ""
+msgstr "Lista de los gabinetes subsiguientes."
 
 #: serializers.py:23
 msgid "Number of documents on this cabinet level."
@@ -177,12 +173,12 @@ msgstr "Archivadores que contienen el documento: %s"
 #: views.py:188
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
-msgstr ""
+msgstr "Solicitud de añadir a gabinete realizada en %(count)d documento"
 
 #: views.py:191
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
-msgstr ""
+msgstr "Solicitud de añadir a gabinete realizada en %(count)d documentos"
 
 #: views.py:198
 msgid "Add"
@@ -206,12 +202,13 @@ msgstr "Archivador a los cuales el documento seleccionado va a ser agregado."
 #: views.py:250
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Documento: %(document)s ya está en gabinete: %(cabinet)s."
 
 #: views.py:260
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
+"Documento: %(document)s añadido al gabinete: %(cabinet)s correctamente."
 
 #: views.py:272
 #, python-format
@@ -240,14 +237,14 @@ msgstr "Remover documento \"%s\" de archivadores"
 
 #: views.py:306
 msgid "Cabinets from which the selected documents will be removed."
-msgstr ""
+msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
 
 #: views.py:333
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Documento: %(document)s no está en el gabinete: %(cabinet)s."
 
 #: views.py:343
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Documento: %(document)s retirado del gabinete: %(cabinet)s."

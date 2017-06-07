@@ -5,13 +5,13 @@
 # Translators:
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"PO-Revision-Date: 2017-05-28 19:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -24,15 +24,15 @@ msgstr ""
 msgid "Converter"
 msgstr "Convertidor"
 
-#: apps.py:26 models.py:34
+#: apps.py:26 models.py:40
 msgid "Order"
 msgstr "Orden"
 
-#: apps.py:28 models.py:64
+#: apps.py:28 models.py:70
 msgid "Transformation"
 msgstr "Transformación"
 
-#: apps.py:32 models.py:44
+#: apps.py:32 models.py:50
 msgid "Arguments"
 msgstr "Argumentos"
 
@@ -51,50 +51,50 @@ msgstr "No es un formato de archivo de la oficina."
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr "LibreOffice no instalado o no encontrado en: %s"
 
-#: classes.py:286
+#: classes.py:290
 msgid "Crop"
 msgstr "Recortar"
 
-#: classes.py:299
+#: classes.py:303
 msgid "Flip"
-msgstr ""
+msgstr "Dar la vuelta"
 
-#: classes.py:310
+#: classes.py:314
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Desenfoque gaussiano"
 
-#: classes.py:321
+#: classes.py:325
 msgid "Mirror"
-msgstr ""
+msgstr "Espejo"
 
-#: classes.py:332
+#: classes.py:336
 msgid "Resize"
 msgstr "Cambiar el tamaño"
 
-#: classes.py:359
+#: classes.py:363
 msgid "Rotate"
 msgstr "Girar"
 
-#: classes.py:378
+#: classes.py:382
 #| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Girar 90 grados"
 
-#: classes.py:389
+#: classes.py:393
 #| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Girar 180 grados"
 
-#: classes.py:400
+#: classes.py:404
 #| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Girar 270 grados"
 
-#: classes.py:410
+#: classes.py:414
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Unsharp masking"
 
-#: classes.py:426
+#: classes.py:430
 msgid "Zoom"
 msgstr "Ampliar"
 
@@ -110,21 +110,21 @@ msgstr "Borrar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:47 models.py:65
+#: links.py:47 models.py:71
 msgid "Transformations"
 msgstr "Transformaciones"
 
-#: models.py:32
+#: models.py:38
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr "Orden de ejecución de las transformaciones. Si lo deja en blanco, un valor de orden sera asignado automáticamente. "
 
-#: models.py:38
+#: models.py:44
 msgid "Name"
 msgstr "Nombre"
 
-#: models.py:42
+#: models.py:48
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"

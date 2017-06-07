@@ -16,6 +16,25 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
+class GenericDocumentTestCase(BaseTestCase):
+    def setUp(self):
+        super(GenericDocumentTestCase, self).setUp()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(GenericDocumentTestCase, self).tearDown()
+
+
+@override_settings(OCR_AUTO_OCR=False)
 class DocumentTestCase(BaseTestCase):
     def setUp(self):
         super(DocumentTestCase, self).setUp()
@@ -194,23 +213,7 @@ class MultiPageTiffTestCase(BaseTestCase):
         self.assertEqual(self.document.page_count, 2)
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentVersionTestCase(BaseTestCase):
-    def setUp(self):
-        super(DocumentVersionTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentVersionTestCase, self).setUp()
-
+class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 

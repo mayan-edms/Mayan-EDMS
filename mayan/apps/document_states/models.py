@@ -10,6 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
 from permissions import Permission
 
@@ -25,7 +26,13 @@ class Workflow(models.Model):
     Fields:
     * label - Identifier. A name/label to call the workflow
     """
-
+    internal_name = models.CharField(
+        db_index=True, help_text=_(
+            'This value will be used by other apps to reference this '
+            'workflow. Can only contain letters, numbers, and underscores.'
+        ), max_length=255, unique=True, validators=[validate_internal_name],
+        verbose_name=_('Internal name')
+    )
     label = models.CharField(
         max_length=255, unique=True, verbose_name=_('Label')
     )
@@ -159,11 +166,11 @@ class WorkflowInstance(models.Model):
             'document_states:workflow_instance_detail', args=(str(self.pk),)
         )
 
-    def do_transition(self, comment, transition, user):
+    def do_transition(self, transition, user, comment=None):
         try:
             if transition in self.get_current_state().origin_transitions.all():
                 self.log_entries.create(
-                    comment=comment, transition=transition, user=user
+                    comment=comment or '', transition=transition, user=user
                 )
         except AttributeError:
             # No initial state has been set for this workflow

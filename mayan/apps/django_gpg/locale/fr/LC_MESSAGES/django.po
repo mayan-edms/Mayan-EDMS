@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2016-05-23 20:02+0000\n"
 "Last-Translator: Bruno CAPELETO <bruno.capeleto@abcreseau.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -30,19 +30,19 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "ID de la clé"
 
-#: apps.py:48 apps.py:61 forms.py:19 models.py:47
+#: apps.py:48 apps.py:61 forms.py:19 models.py:52
 msgid "User ID"
 msgstr "Id Utilisateur"
 
-#: apps.py:51 forms.py:34 models.py:50
+#: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:53 forms.py:23 models.py:31
+#: apps.py:53 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "Date de création"
 
-#: apps.py:56 forms.py:27 models.py:35
+#: apps.py:56 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "Date d'expiration"
 
@@ -50,7 +50,7 @@ msgstr "Date d'expiration"
 msgid "No expiration"
 msgstr "Pas d'expiration"
 
-#: apps.py:59 forms.py:32 models.py:42
+#: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
 msgstr "Durée"
 
@@ -58,11 +58,11 @@ msgstr "Durée"
 msgid "None"
 msgstr "Aucun"
 
-#: forms.py:31 models.py:39
+#: forms.py:31 models.py:44
 msgid "Fingerprint"
 msgstr "Emprunte"
 
-#: forms.py:33 models.py:45
+#: forms.py:33 models.py:50
 msgid "Algorithm"
 msgstr "Algorithme"
 
@@ -156,27 +156,27 @@ msgstr "Le document est signé et la signature est bonne."
 msgid "Document is signed with a valid signature."
 msgstr "Le document est signé avec une signature valide."
 
-#: models.py:27
+#: models.py:32
 msgid "ASCII armored version of the key."
 msgstr "Version ASCII de la clef"
 
-#: models.py:28
+#: models.py:33
 msgid "Key data"
 msgstr "Contenu de la clef"
 
-#: models.py:56
+#: models.py:61
 msgid "Key"
 msgstr "Clé"
 
-#: models.py:57
+#: models.py:62
 msgid "Keys"
 msgstr "Clés"
 
-#: models.py:63
+#: models.py:68
 msgid "Invalid key data"
 msgstr "Contenu de clef incorrecte"
 
-#: models.py:66
+#: models.py:71
 msgid "Key already exists."
 msgstr "Clé déjà existante"
 

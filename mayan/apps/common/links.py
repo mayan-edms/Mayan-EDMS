@@ -8,6 +8,10 @@ from navigation import Link
 link_about = Link(
     icon='fa fa-info', text=_('About this'), view='common:about_view'
 )
+link_check_version = Link(
+    icon='fa fa-refresh', text=_('Check for updates'),
+    view='common:check_version_view'
+)
 link_current_user_details = Link(
     icon='fa fa-user', text=_('User details'),
     view='common:current_user_details'

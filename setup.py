@@ -60,7 +60,7 @@ Pillow==4.1.1
 PyYAML==3.12
 celery==3.1.24
 cssmin==0.2.0
-Django==1.10.6
+Django==1.10.7
 django-activity-stream==0.6.3
 django-autoadmin==1.1.1
 django-celery==3.2.1

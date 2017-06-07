@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"PO-Revision-Date: 2017-05-28 19:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
 "language/zh_CN/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "None"
 msgstr "无"
 
-#: admin.py:26 apps.py:99 links.py:48 models.py:39
+#: admin.py:26 apps.py:99 links.py:48 models.py:49
 msgid "Document types"
 msgstr ""
 
@@ -32,15 +32,15 @@ msgstr ""
 msgid "Document indexing"
 msgstr ""
 
-#: apps.py:85 models.py:23
+#: apps.py:85 models.py:33
 msgid "Label"
 msgstr ""
 
-#: apps.py:86 models.py:28
+#: apps.py:86 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:88 apps.py:108 models.py:36 models.py:124
+#: apps.py:88 apps.py:108 models.py:46 models.py:165
 msgid "Enabled"
 msgstr ""
 
@@ -60,14 +60,18 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-#: handlers.py:18
-msgid "Creation date"
+#: forms.py:14
+msgid "Indexes to be queued for rebuilding."
 msgstr ""
 
-#: links.py:18 links.py:22 links.py:25 links.py:28 models.py:81 views.py:73
-#: views.py:220
+#: forms.py:15 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
+#: views.py:73 views.py:220
 msgid "Indexes"
 msgstr "索引"
+
+#: handlers.py:20
+msgid "Creation date"
+msgstr ""
 
 #: links.py:31 views.py:34
 msgid "Create index"
@@ -89,7 +93,7 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "从所有的文档索引中删除并创建。"
 
-#: links.py:57
+#: links.py:57 views.py:319
 msgid "Rebuild indexes"
 msgstr ""
 
@@ -97,94 +101,94 @@ msgstr ""
 msgid "New child node"
 msgstr ""
 
-#: managers.py:56
+#: models.py:37
+msgid "This values will be used by other apps to reference this index."
+msgstr ""
+
+#: models.py:43
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr "当文档数据变化时，将导致索引被更新和可见。"
+
+#: models.py:117 models.py:149
+msgid "Index"
+msgstr ""
+
+#: models.py:136
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:137
+msgid "Index instances"
+msgstr ""
+
+#: models.py:153
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+
+#: models.py:157
+msgid "Indexing expression"
+msgstr ""
+
+#: models.py:162
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr "当文档数据变化时，导致节点被更新和可见。"
+
+#: models.py:170
+msgid ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr "检查当前节点是否为文档容器，而不是作为别处节点的父节点。"
+
+#: models.py:173
+msgid "Link documents"
+msgstr ""
+
+#: models.py:178
+msgid "Root"
+msgstr ""
+
+#: models.py:236
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:27
-msgid "This values will be used by other apps to reference this index."
-msgstr ""
-
-#: models.py:33
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr "当文档数据变化时，将导致索引被更新和可见。"
-
-#: models.py:80 models.py:107
-msgid "Index"
-msgstr ""
-
-#: models.py:99
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:100
-msgid "Index instances"
-msgstr ""
-
-#: models.py:112
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-
-#: models.py:116
-msgid "Indexing expression"
-msgstr ""
-
-#: models.py:121
-msgid "Causes this node to be visible and updated when document data changes."
-msgstr "当文档数据变化时，导致节点被更新和可见。"
-
-#: models.py:129
-msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr "检查当前节点是否为文档容器，而不是作为别处节点的父节点。"
-
-#: models.py:132
-msgid "Link documents"
-msgstr ""
-
-#: models.py:137
-msgid "Root"
-msgstr ""
-
-#: models.py:142
+#: models.py:261
 msgid "Index node template"
 msgstr ""
 
-#: models.py:143
+#: models.py:262
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:151
+#: models.py:270
 msgid "Index template node"
 msgstr ""
 
-#: models.py:154
+#: models.py:273
 msgid "Value"
 msgstr "值"
 
-#: models.py:157
+#: models.py:277
 msgid "Documents"
 msgstr "文档"
 
-#: models.py:197
+#: models.py:363
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:198
+#: models.py:364
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:206
+#: models.py:372
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:207
+#: models.py:373
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -255,32 +259,30 @@ msgstr ""
 msgid "Edit the index template node: %s?"
 msgstr ""
 
-#: views.py:266
+#: views.py:268
 #, python-format
 msgid "Navigation: %s"
 msgstr ""
 
-#: views.py:271
+#: views.py:273
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:307
+#: views.py:309
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:317
-msgid "On large databases this operation may take some time to execute."
-msgstr "在大数据库中，此操作将比较耗时。"
-
-#: views.py:318
-msgid "Rebuild all indexes?"
-msgstr ""
-
-#: views.py:327
+#: views.py:328
 msgid "Index rebuild queued successfully."
 msgstr ""
+
+#~ msgid "On large databases this operation may take some time to execute."
+#~ msgstr "On large databases this operation may take some time to execute."
+
+#~ msgid "Rebuild all indexes?"
+#~ msgstr "rebuild indexes"
 
 #~ msgid "Index list"
 #~ msgstr "index list"

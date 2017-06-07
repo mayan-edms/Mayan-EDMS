@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # kontrabant <kontrabant@gmail.com>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:24-0400\n"
-"PO-Revision-Date: 2017-04-21 16:27+0000\n"
+"POT-Creation-Date: 2017-05-28 15:51-0400\n"
+"PO-Revision-Date: 2017-05-28 19:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/sl_SI/)\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl_SI\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: apps.py:34 apps.py:78 apps.py:85 apps.py:104 apps.py:106 forms.py:31
 #: links.py:40 menus.py:8 models.py:34 permissions.py:7 views.py:181
@@ -135,7 +137,6 @@ msgid "Attach"
 msgstr ""
 
 #: views.py:44
-#| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
 msgstr[0] ""
@@ -145,7 +146,6 @@ msgstr[3] ""
 
 #: views.py:54
 #, python-format
-#| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
 msgstr ""
 
@@ -181,10 +181,6 @@ msgstr ""
 msgid "Will be removed from all documents."
 msgstr ""
 
-#: views.py:129
-msgid "fa fa-times"
-msgstr ""
-
 #: views.py:132
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
@@ -195,7 +191,6 @@ msgstr[3] ""
 
 #: views.py:142
 #, python-format
-#| msgid "Delete tags"
 msgid "Delete tag: %s"
 msgstr ""
 
@@ -239,7 +234,6 @@ msgid "Remove"
 msgstr ""
 
 #: views.py:246
-#| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
 msgstr[0] ""
@@ -249,7 +243,6 @@ msgstr[3] ""
 
 #: views.py:256
 #, python-format
-#| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
 msgstr ""
 
@@ -259,7 +252,6 @@ msgstr ""
 
 #: views.py:290
 #, python-format
-#| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr ""
 

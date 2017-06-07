@@ -103,7 +103,7 @@ class ModelAttribute(object):
             )
 
         return ' '.join(
-            [ugettext('Available attributes: '), ', '.join(result)]
+            [ugettext('Available attributes: \n'), ', \n'.join(result)]
         )
 
     def get_display(self, show_name=False):
@@ -208,3 +208,28 @@ class Package(object):
         self.label = label
         self.license_text = license_text
         self.__class__._registry.append(self)
+
+
+class PropertyHelper(object):
+    """
+    Makes adding fields using __class__.add_to_class easier.
+    Each subclass must implement the `constructor` and the `get_result`
+    method.
+    """
+    @staticmethod
+    @property
+    def constructor(source_object):
+        return PropertyHelper(source_object)
+
+    def __init__(self, instance):
+        self.instance = instance
+
+    def __getattr__(self, name):
+        return self.get_result(name=name)
+
+    def get_result(self, name):
+        """
+        The method that produces the actual result. Must be implemented
+        by each subclass.
+        """
+        raise NotImplementedError

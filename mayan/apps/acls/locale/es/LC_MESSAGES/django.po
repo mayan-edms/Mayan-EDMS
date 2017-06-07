@@ -6,13 +6,13 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Roberto Rosario, 2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2017-04-23 03:03+0000\n"
+"POT-Creation-Date: 2017-05-28 15:48-0400\n"
+"PO-Revision-Date: 2017-05-28 19:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "ACLs"
 msgstr "LCAs"
 
-#: apps.py:25 links.py:44 models.py:36
+#: apps.py:25 links.py:44 models.py:44
 msgid "Permissions"
 msgstr "Permisos"
 
-#: apps.py:29 models.py:38
+#: apps.py:29 models.py:46
 #| msgid "Roles"
 msgid "Role"
 msgstr "Rol"
@@ -47,21 +47,21 @@ msgstr "Nueva LCA"
 msgid "Insufficient access."
 msgstr "Acceso insuficiente."
 
-#: models.py:44
+#: models.py:52
 msgid "Access entry"
 msgstr "Entrada de acceso"
 
-#: models.py:45
+#: models.py:53
 msgid "Access entries"
 msgstr "Entradas de acceso"
 
-#: models.py:49
+#: models.py:57
 #, python-format
 #| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "Permisos \"%(permissions)s\" para el rol \"%(role)s\" para \"%(object)s\""
 
-#: models.py:66
+#: models.py:74
 msgid "None"
 msgstr "Ninguno"
 
@@ -80,17 +80,17 @@ msgstr "Ver LCAs"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "URL de la API que apunta a la lista de permisos para esta lista de control de acceso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL de la API  que apunta a un permiso en relación con la lista de control de acceso a la que está conectado. Esta URL es diferente de la URL canónica de flujo de trabajo."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Llave primaria del nuevo permiso para conceder a la lista de control de acceso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -102,11 +102,11 @@ msgstr "No existe el permiso: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Lista separada por comas de las llaves primarias de permisos para conceder a esta lista de control de acceso."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Las llaves primarias de los roles a los que se vincula esta lista de control de acceso."
 
 #: views.py:73
 #, python-format

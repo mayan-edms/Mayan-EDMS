@@ -9,9 +9,9 @@ from .api_views import (
 )
 from .views import (
     DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
-    RebuildIndexesConfirmView, SetupIndexDocumentTypesView,
-    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeCreateView,
+    RebuildIndexesView, SetupIndexDocumentTypesView, SetupIndexCreateView,
+    SetupIndexDeleteView, SetupIndexEditView, SetupIndexListView,
+    SetupIndexTreeTemplateListView, TemplateNodeCreateView,
     TemplateNodeDeleteView, TemplateNodeEditView
 )
 
@@ -61,7 +61,7 @@ urlpatterns = [
     ),
 
     url(
-        r'^rebuild/all/$', RebuildIndexesConfirmView.as_view(),
+        r'^rebuild/all/$', RebuildIndexesView.as_view(),
         name='rebuild_index_instances'
     ),
     url(

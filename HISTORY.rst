@@ -4,12 +4,21 @@
 - Content windows appearance changes
 - Add new document's version list view permission
 
-2.2.1 (2017-05-25)
-==================
+2.3 (2017-05-XX)
+================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
 - Added support for passing the options allow-other and allow-root to the
   FUSE index mirror. GitLab issue #385
+- Add support for check for the latest released version of Mayan from the
+  About menu.
+- Support for rebuilding specific indexes. GitLab issue #372.
+- Rewrite document indexing code to be faster and use less locking.
+- Use a predefined file path for the file lock.
+- Catch documents with not document version when displaying their thumbnails.
+- Document page navigation fix when using Mayan as a sub URL app.
+- Add support for indexing on workflow state changes.
+- Add search model list API endpoint.
 
 2.2 (2017-04-26)
 ================

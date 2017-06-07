@@ -5,7 +5,7 @@ from django.views.i18n import javascript_catalog, set_language
 
 from .api_views import APIContentTypeList
 from .views import (
-    AboutView, CurrentUserDetailsView, CurrentUserEditView,
+    AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
     LicenseView, PackagesLicensesView, SetupListView, ToolsListView,
@@ -15,6 +15,10 @@ from .views import (
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
+    url(
+        r'^check_version/$', CheckVersionView.as_view(),
+        name='check_version_view'
+    ),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
     url(
         r'^packages/licenses/$', PackagesLicensesView.as_view(),

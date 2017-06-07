@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,15 +22,15 @@ msgstr ""
 msgid "Converter"
 msgstr ""
 
-#: apps.py:26 models.py:34
+#: apps.py:26 models.py:40
 msgid "Order"
 msgstr ""
 
-#: apps.py:28 models.py:64
+#: apps.py:28 models.py:70
 msgid "Transformation"
 msgstr ""
 
-#: apps.py:32 models.py:44
+#: apps.py:32 models.py:50
 msgid "Arguments"
 msgstr ""
 
@@ -50,53 +50,53 @@ msgstr "suported file formats"
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
-#: classes.py:286
+#: classes.py:290
 msgid "Crop"
 msgstr ""
 
-#: classes.py:299
+#: classes.py:303
 msgid "Flip"
 msgstr ""
 
-#: classes.py:310
+#: classes.py:314
 msgid "Gaussian blur"
 msgstr ""
 
-#: classes.py:321
+#: classes.py:325
 msgid "Mirror"
 msgstr ""
 
-#: classes.py:332
+#: classes.py:336
 msgid "Resize"
 msgstr "Resize"
 
-#: classes.py:359
+#: classes.py:363
 msgid "Rotate"
 msgstr "Rotate"
 
-#: classes.py:378
+#: classes.py:382
 #, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
 msgstr "Rotate by n degress."
 
-#: classes.py:389
+#: classes.py:393
 #, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
 msgstr "Rotate by n degress."
 
-#: classes.py:400
+#: classes.py:404
 #, fuzzy
 #| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
 msgstr "Rotate by n degress."
 
-#: classes.py:410
+#: classes.py:414
 msgid "Unsharp masking"
 msgstr ""
 
-#: classes.py:426
+#: classes.py:430
 msgid "Zoom"
 msgstr "Zoom"
 
@@ -112,21 +112,21 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:47 models.py:65
+#: links.py:47 models.py:71
 msgid "Transformations"
 msgstr ""
 
-#: models.py:32
+#: models.py:38
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
 
-#: models.py:38
+#: models.py:44
 msgid "Name"
 msgstr ""
 
-#: models.py:42
+#: models.py:48
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"

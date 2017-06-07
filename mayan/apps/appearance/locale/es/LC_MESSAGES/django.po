@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 12:22-0400\n"
-"PO-Revision-Date: 2017-04-23 03:05+0000\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"PO-Revision-Date: 2017-05-28 19:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr "Ha habido un error. Se ha informado a los administradores del sitio vía
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
+msgstr "Si necesita ayuda, puede hacer referencia a este error mediante el siguiente identificador:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -75,39 +75,39 @@ msgstr "Liberado bajo la licencia Apache 2.0 License"
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "Todos los derechos reservados &copy; 2011-2015 Roberto Rosario."
 
-#: templates/appearance/base.html:45
+#: templates/appearance/base.html:56
 msgid "Toggle navigation"
 msgstr "Activar/Desactivar navegación"
 
-#: templates/appearance/base.html:75
+#: templates/appearance/base.html:86
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/appearance/base.html:81
+#: templates/appearance/base.html:92
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Success"
 msgstr "Exitoso"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Information"
 msgstr "Información"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Warning"
 msgstr "Advertencia"
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:126
 msgid "Error"
 msgstr "Error"
 
-#: templates/appearance/base.html:144
+#: templates/appearance/base.html:155
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/appearance/base.html:146
+#: templates/appearance/base.html:157
 msgid "Toggle Dropdown"
 msgstr "Alternar desplegable"
 

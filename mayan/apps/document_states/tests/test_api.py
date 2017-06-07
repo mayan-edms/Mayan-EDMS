@@ -25,9 +25,10 @@ from ..models import Workflow
 from ..permissions import permission_workflow_transition
 
 from .literals import (
-    TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
-    TEST_WORKFLOW_INITIAL_STATE_COMPLETION, TEST_WORKFLOW_INITIAL_STATE_LABEL,
-    TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_STATE_COMPLETION,
+    TEST_WORKFLOW_INTERNAL_NAME, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
+    TEST_WORKFLOW_INITIAL_STATE_LABEL,
+    TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_LABEL,
+    TEST_WORKFLOW_LABEL_EDITED, TEST_WORKFLOW_STATE_COMPLETION,
     TEST_WORKFLOW_STATE_LABEL, TEST_WORKFLOW_STATE_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED
 )
@@ -61,7 +62,10 @@ class WorkflowAPITestCase(BaseAPITestCase):
         super(WorkflowAPITestCase, self).tearDown()
 
     def _create_workflow(self):
-        return Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        return Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
 
     def test_workflow_create_view(self):
         response = self.client.post(
@@ -239,7 +243,10 @@ class WorkflowStatesAPITestCase(BaseAPITestCase):
         super(WorkflowStatesAPITestCase, self).tearDown()
 
     def _create_workflow(self):
-        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
 
     def _create_workflow_state(self):
         self._create_workflow()
@@ -371,7 +378,10 @@ class WorkflowTransitionsAPITestCase(BaseAPITestCase):
         super(WorkflowTransitionsAPITestCase, self).tearDown()
 
     def _create_workflow(self):
-        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
 
     def _create_workflow_states(self):
         self._create_workflow()
@@ -545,7 +555,10 @@ class DocumentWorkflowsAPITestCase(BaseAPITestCase):
             )
 
     def _create_workflow(self):
-        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
         self.workflow.document_types.add(self.document_type)
 
     def _create_workflow_states(self):
@@ -678,7 +691,10 @@ class DocumentWorkflowsTransitionACLsAPITestCase(APITestCase):
             )
 
     def _create_workflow(self):
-        self.workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
+        self.workflow = Workflow.objects.create(
+            label=TEST_WORKFLOW_LABEL,
+            internal_name=TEST_WORKFLOW_INTERNAL_NAME
+        )
         self.workflow.document_types.add(self.document_type)
 
     def _create_workflow_states(self):

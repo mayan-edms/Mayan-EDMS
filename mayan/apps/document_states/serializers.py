@@ -182,8 +182,8 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:workflow-detail'},
         }
         fields = (
-            'document_types_url', 'id', 'label', 'states', 'transitions',
-            'url'
+            'document_types_url', 'id', 'internal_name', 'label', 'states',
+            'transitions', 'url'
         )
         model = Workflow
 
