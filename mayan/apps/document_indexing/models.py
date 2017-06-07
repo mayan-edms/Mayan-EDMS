@@ -34,7 +34,7 @@ class Index(models.Model):
     )
     slug = models.SlugField(
         help_text=_(
-            'This values will be used by other apps to reference this index.'
+            'This value will be used by other apps to reference this index.'
         ), max_length=128, unique=True, verbose_name=_('Slug')
     )
     enabled = models.BooleanField(

@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.db.models.signals import post_save
+from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
@@ -12,12 +12,14 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
 )
+from common.classes import ModelAttribute
 from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
-from .handlers import launch_workflow
+from .classes import DocumentStateHelper
+from .handlers import handler_index_document, launch_workflow
 from .links import (
     link_document_workflow_instance_list, link_setup_workflow_document_types,
     link_setup_workflow_create, link_setup_workflow_delete,
@@ -49,6 +51,10 @@ class DocumentStatesApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
+        Document.add_to_class(
+            'workflow', DocumentStateHelper.constructor
+        )
+
         Workflow = self.get_model('Workflow')
         WorkflowInstance = self.get_model('WorkflowInstance')
         WorkflowInstanceLogEntry = self.get_model('WorkflowInstanceLogEntry')
@@ -56,6 +62,21 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowState = self.get_model('WorkflowState')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+
+        ModelAttribute(
+            Document, 'workflow.< workflow internal name >.get_current_state',
+            label=_('Current state of a workflow'), description=_(
+                'Return the current state of the selected workflow'
+            ), type_name=['property', 'indexing']
+        )
+        ModelAttribute(
+            Document,
+            'workflow.< workflow internal name >.get_current_state.completion',
+            label=_('Current state of a workflow'), description=_(
+                'Return the completion value of the current state of the '
+                'selected workflow'
+            ), type_name=['property', 'indexing']
+        )
 
         ModelPermission.register(
             model=Workflow, permissions=(permission_workflow_transition,)
@@ -66,6 +87,13 @@ class DocumentStatesApp(MayanAppConfig):
             permissions=(permission_workflow_transition,)
         )
 
+        SourceColumn(
+            source=Workflow, label=_('Label'), attribute='label'
+        )
+        SourceColumn(
+            source=Workflow, label=_('Internal name'),
+            attribute='internal_name'
+        )
         SourceColumn(
             source=Workflow, label=_('Initial state'),
             func=lambda context: context['object'].get_initial_state() or _('None')
@@ -211,4 +239,17 @@ class DocumentStatesApp(MayanAppConfig):
 
         post_save.connect(
             launch_workflow, dispatch_uid='launch_workflow', sender=Document
+        )
+
+        # Index updating
+
+        post_delete.connect(
+            handler_index_document,
+            dispatch_uid='handler_index_document_delete',
+            sender=WorkflowInstanceLogEntry
+        )
+        post_save.connect(
+            handler_index_document,
+            dispatch_uid='handler_index_document_save',
+            sender=WorkflowInstanceLogEntry
         )

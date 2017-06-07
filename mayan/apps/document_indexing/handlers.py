@@ -47,15 +47,3 @@ def handler_remove_document(sender, **kwargs):
     task_remove_document.apply_async(
         kwargs=dict(document_id=kwargs['instance'].pk)
     )
-
-
-def document_metadata_index_update(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
-    )
-
-
-def document_metadata_index_post_delete(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
-    )

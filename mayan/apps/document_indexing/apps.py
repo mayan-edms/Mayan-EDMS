@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.db.models.signals import post_save, post_delete, pre_delete
+from django.db.models.signals import post_delete, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -21,8 +21,7 @@ from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
-    create_default_document_index, document_metadata_index_update,
-    document_metadata_index_post_delete, handler_delete_empty,
+    create_default_document_index, handler_delete_empty,
     handler_index_document, handler_remove_document
 )
 from .links import (
@@ -57,10 +56,6 @@ class DocumentIndexingApp(MayanAppConfig):
 
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
-        )
-
-        DocumentMetadata = apps.get_model(
-            app_label='metadata', model_name='DocumentMetadata'
         )
 
         DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
@@ -195,11 +190,6 @@ class DocumentIndexingApp(MayanAppConfig):
             handler_remove_document, dispatch_uid='handler_remove_document',
             sender=Document
         )
-        post_delete.connect(
-            document_metadata_index_post_delete,
-            dispatch_uid='document_metadata_index_post_delete',
-            sender=DocumentMetadata
-        )
         post_document_created.connect(
             handler_index_document,
             dispatch_uid='handler_index_document', sender=Document
@@ -207,9 +197,4 @@ class DocumentIndexingApp(MayanAppConfig):
         post_initial_document_type.connect(
             create_default_document_index,
             dispatch_uid='create_default_document_index', sender=DocumentType
-        )
-        post_save.connect(
-            document_metadata_index_update,
-            dispatch_uid='document_metadata_index_update',
-            sender=DocumentMetadata
         )

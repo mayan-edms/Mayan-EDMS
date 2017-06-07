@@ -18,10 +18,10 @@ Changes
   will select the adjacent checkbox.
 - Support for passing the FUSE option `allow-other` and `allow-root` was added
   to the index mirroring management command.
-- Add support for check for the latest released version of Mayan from the
+- Added support for checking for the latest released version of Mayan from the
   About menu.
-- Add support for rebuilding specific indexes instead of only being able to
-  rebuild all index.
+- Added support for rebuilding specific indexes instead of only being able to
+  rebuild all index. GitLab issue #372.
 - Rewrite document indexing code to be faster and use less locking. Thanks to
   Macrobb Simpson (@Macrobb) for the initial implementation.
 - Use a predefined file path for the file lock.
@@ -30,7 +30,14 @@ Changes
   document page navigation views. Fixes an issue when Mayan is installed
   as a sub URL app. Thanks to Gustavo Teixeira(@gsteixei) for the issue and
   investigation.
-
+- Support was added to update document indexes after workflow state changes.
+- An helper was added to access a documents workflow by name. To this end
+  a new field was added to the Workflow class called `Internal name`.
+  This new field makes it much easier to get a document's workflow instance.
+  If for example a document has a workflow called `Publish` with the internal
+  name `publish_workflow`, it will be accessible in the indexing template as
+  {{ document.workflow.publish_workflow }}. The latest state of the workflow
+  can be accessed using {{ document.workflow.publish_workflow.get_current_state }}.
 
 Removals
 --------
@@ -86,6 +93,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #371 <https://gitlab.com/mayan-edms/mayan-edms/issues/371>`_ Auto select checkbox when updating metadata
+* `GitLab issue #372 <https://gitlab.com/mayan-edms/mayan-edms/issues/372>`_ (Feature request) Allow 'rebuild index' to rebuild only a selected index
 * `GitLab issue #383 <https://gitlab.com/mayan-edms/mayan-edms/issues/383>`_ Page not found when deployed to sub-uri
 * `GitLab issue #385 <https://gitlab.com/mayan-edms/mayan-edms/issues/385>`_ mountindex: how to specify FUSE mount option allow_other?
 

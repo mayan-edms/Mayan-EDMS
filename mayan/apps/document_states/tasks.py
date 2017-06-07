@@ -18,7 +18,7 @@ def task_launch_all_workflows():
 
     logger.info('Start launching workflows')
     for document in Document.objects.all():
-        print 'document :', document
+        logger.debug('Lauching workflows for document ID: %d', document.pk)
         Workflow.objects.launch_for(document=document)
 
     logger.info('Finished launching workflows')

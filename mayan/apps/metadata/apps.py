@@ -24,7 +24,7 @@ from rest_api.classes import APIEndPoint
 
 from .classes import DocumentMetadataHelper
 from .handlers import (
-    post_document_type_metadata_type_add,
+    handler_index_document, post_document_type_metadata_type_add,
     post_document_type_metadata_type_delete,
     post_post_document_type_change_metadata
 )
@@ -247,4 +247,17 @@ class MetadataApp(MayanAppConfig):
             post_document_type_metadata_type_add,
             dispatch_uid='post_document_type_metadata_type_add',
             sender=DocumentTypeMetadataType
+        )
+
+        # Index updating
+
+        post_delete.connect(
+            handler_index_document,
+            dispatch_uid='handler_index_document_delete',
+            sender=DocumentMetadata
+        )
+        post_save.connect(
+            handler_index_document,
+            dispatch_uid='handler_index_document_save',
+            sender=DocumentMetadata
         )

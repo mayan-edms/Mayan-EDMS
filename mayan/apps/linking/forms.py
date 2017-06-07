@@ -17,7 +17,7 @@ class SmartLinkForm(forms.ModelForm):
                 unicode(self.fields['dynamic_label'].help_text),
                 ModelAttribute.help_text_for(
                     Document, type_names=['field', 'related', 'property']
-                )
+                ).replace('\n', '<br>')
             ]
         )
 
@@ -39,7 +39,7 @@ class SmartLinkConditionForm(forms.ModelForm):
                 unicode(self.fields['expression'].help_text),
                 ModelAttribute.help_text_for(
                     Document, type_names=['field', 'related', 'property']
-                )
+                ).replace('\n', '<br>')
             ]
         )
 

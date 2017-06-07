@@ -28,7 +28,9 @@ class IndexTemplateNodeForm(forms.ModelForm):
         self.fields['expression'].help_text = ' '.join(
             [
                 unicode(self.fields['expression'].help_text),
-                ModelAttribute.help_text_for(Document, type_names=['indexing'])
+                ModelAttribute.help_text_for(
+                    Document, type_names=['indexing']
+                ).replace('\n', '<br>')
             ]
         )
 

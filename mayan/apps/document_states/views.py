@@ -128,7 +128,7 @@ class WorkflowInstanceTransitionView(FormView):
 class SetupWorkflowListView(SingleObjectListView):
     extra_context = {
         'title': _('Workflows'),
-        'hide_link': True,
+        'hide_object': True,
     }
     model = Workflow
     view_permission = permission_workflow_view

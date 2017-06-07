@@ -1,25 +1,16 @@
 from __future__ import unicode_literals
 
-from django.core.exceptions import ObjectDoesNotExist
-from django.utils.translation import ugettext_lazy as _
+from common.classes import PropertyHelper
 
 
-class DocumentMetadataHelper(object):
+class DocumentMetadataHelper(PropertyHelper):
     @staticmethod
     @property
-    def constructor(source_object):
-        return DocumentMetadataHelper(source_object)
+    def constructor(*args, **kwargs):
+        return DocumentMetadataHelper(*args, **kwargs)
 
-    def __init__(self, instance):
-        self.instance = instance
-
-    def __getattr__(self, name):
-        try:
-            return self.instance.metadata.get(metadata_type__name=name).value
-        except ObjectDoesNotExist:
-            raise AttributeError(
-                _('\'metadata\' object has no attribute \'%s\'') % name
-            )
+    def get_result(self, name):
+        return self.instance.metadata.get(metadata_type__name=name).value
 
 
 class MetadataLookup(object):
