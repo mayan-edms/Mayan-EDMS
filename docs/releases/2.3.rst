@@ -38,6 +38,7 @@ Changes
   name `publish_workflow`, it will be accessible in the indexing template as
   {{ document.workflow.publish_workflow }}. The latest state of the workflow
   can be accessed using {{ document.workflow.publish_workflow.get_current_state }}.
+- Added a new API endpoint to display a list of all the available search models.
 
 Removals
 --------

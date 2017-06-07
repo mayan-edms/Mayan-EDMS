@@ -14,6 +14,8 @@ from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
+from ..classes import SearchModel
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class SearchAPITestCase(BaseAPITestCase):
@@ -52,3 +54,13 @@ class SearchAPITestCase(BaseAPITestCase):
         content = loads(response.content)
         self.assertEqual(content['results'][0]['label'], document.label)
         self.assertEqual(content['count'], 1)
+
+    def test_search_models_view(self):
+        response = self.client.get(
+            reverse('rest_api:searchmodel-list')
+        )
+
+        self.assertEqual(
+            [search_model['pk'] for search_model in response.data['results']],
+            [search_model.pk for search_model in SearchModel.all()]
+        )

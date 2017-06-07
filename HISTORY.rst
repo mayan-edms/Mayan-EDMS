@@ -12,6 +12,7 @@
 - Catch documents with not document version when displaying their thumbnails.
 - Document page navigation fix when using Mayan as a sub URL app.
 - Add support for indexing on workflow state changes.
+- Add search model list API endpoint.
 
 2.2 (2017-04-26)
 ================

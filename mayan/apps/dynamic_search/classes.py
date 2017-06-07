@@ -48,6 +48,10 @@ class SearchModel(object):
         self.__class__.registry[self.get_full_name()] = self
 
     @property
+    def pk(self):
+        return self.get_full_name()
+
+    @property
     def model(self):
         if not self._model:
             self._model = apps.get_model(self.app_label, self.model_name)
