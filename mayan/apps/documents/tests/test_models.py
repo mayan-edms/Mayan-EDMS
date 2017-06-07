@@ -34,7 +34,24 @@ class GenericDocumentTestCase(BaseTestCase):
         super(GenericDocumentTestCase, self).tearDown()
 
 
-class DocumentTestCase(GenericDocumentTestCase):
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentTestCase(BaseTestCase):
+    def setUp(self):
+        super(DocumentTestCase, self).setUp()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object, label='mayan_11_1.pdf'
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(DocumentTestCase, self).tearDown()
+
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
 
