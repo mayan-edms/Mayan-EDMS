@@ -1,4 +1,4 @@
-2.3 (2017-05-XX)
+2.3 (2017-06-08)
 ================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
