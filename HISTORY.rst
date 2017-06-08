@@ -24,7 +24,7 @@
 - Improve upgrade instructions
 - New image caching pipeline
 - New drop down menus for the documents, folders and tags app as well as for
-the user links
+  the user links.
 - New Dashboard view
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.10.4.
