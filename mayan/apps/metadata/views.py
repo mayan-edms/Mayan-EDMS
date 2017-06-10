@@ -139,33 +139,52 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 
     def object_action(self, form, instance):
         for metadata_type in form.cleaned_data['metadata_type']:
-            document_metadata, created = DocumentMetadata.objects.get_or_create(
-                document=instance,
-                metadata_type=metadata_type,
-                defaults={'value': ''}
-            )
-
-            if created:
-                messages.success(
+            try:
+                document_metadata, created = DocumentMetadata.objects.get_or_create(
+                    document=instance,
+                    metadata_type=metadata_type,
+                    defaults={'value': ''}
+                )
+            except Exception as exception:
+                #if getattr(settings, 'DEBUG', False):
+                #    raise
+                #else:
+                messages.error(
                     self.request,
                     _(
-                        'Metadata type: %(metadata_type)s '
-                        'successfully added to document %(document)s.'
+                        'Error adding metadata type '
+                        '"%(metadata_type)s" to document: '
+                        '%(document)s; %(exception)s'
                     ) % {
                         'metadata_type': metadata_type,
-                        'document': instance
+                        'document': instance,
+                        'exception': ', '.join(
+                            getattr(exception, 'messages', exception)
+                        )
                     }
                 )
             else:
-                messages.warning(
-                    self.request, _(
-                        'Metadata type: %(metadata_type)s already '
-                        'present in document %(document)s.'
-                    ) % {
-                        'metadata_type': metadata_type,
-                        'document': instance
-                    }
-                )
+                if created:
+                    messages.success(
+                        self.request,
+                        _(
+                            'Metadata type: %(metadata_type)s '
+                            'successfully added to document %(document)s.'
+                        ) % {
+                            'metadata_type': metadata_type,
+                            'document': instance
+                        }
+                    )
+                else:
+                    messages.warning(
+                        self.request, _(
+                            'Metadata type: %(metadata_type)s already '
+                            'present in document %(document)s.'
+                        ) % {
+                            'metadata_type': metadata_type,
+                            'document': instance
+                        }
+                    )
 
 
 class DocumentMetadataEditView(MultipleObjectFormActionView):
