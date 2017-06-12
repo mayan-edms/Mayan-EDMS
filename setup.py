@@ -70,6 +70,7 @@ django-cors-headers==1.2.2
 django-downloadview==1.9
 django-formtools==2.0
 django-pure-pagination==0.3.0
+django-mathfilters==0.4.0
 django-model-utils==2.6.1
 django-mptt>=0.8.7
 django-qsstats-magic==0.7.2

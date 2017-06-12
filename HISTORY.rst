@@ -1,3 +1,7 @@
+XX (2017-XX-XX)
+===============
+- Add Django-mathfilters.
+
 2.3 (2017-06-08)
 ================
 - Allow for bigger indexing expression templates.
