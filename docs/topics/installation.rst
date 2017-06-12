@@ -17,7 +17,7 @@ After the image finishes downloading, initialize a Mayan EDMS container.
 .. code-block:: bash
 
     $ docker run -d --name mayan-edms --restart=always -p 80:80 \
-    -v mayan_data:/var/lib/mayan mayanedms/mayanedms
+    -v mayan_data:/var/lib/mayan mayanedms/mayanedms:2.3
 
 Point your browser to the IP address 127.0.0.1 (or the alternate port chosen,
 ie: 127.0.0.1:81) and use the automatically created admin account.
