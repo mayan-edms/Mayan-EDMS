@@ -147,10 +147,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                     metadata_type=metadata_type,
                     defaults={'value': ''}
                 )
-            except Exception as exception:
-                #if getattr(settings, 'DEBUG', False):
-                #    raise
-                #else:
+            except ValidationError as exception:
                 messages.error(
                     self.request,
                     _(
