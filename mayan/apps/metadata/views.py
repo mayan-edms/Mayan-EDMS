@@ -127,7 +127,9 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
         if queryset.count() == 1:
             result.update(
                 {
-                    'queryset': MetadataType.objects.exclude(
+                    'queryset': MetadataType.objects.get_for_document_type(
+                        document_type=queryset.first().document_type
+                    ).exclude(
                         pk__in=MetadataType.objects.get_for_document(
                             document=queryset.first()
                         )
