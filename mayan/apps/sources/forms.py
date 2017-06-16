@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.forms import DocumentForm
 
 from .models import (
-    IMAPEmail, POP3Email, StagingFolderSource, WebFormSource,
+    IMAPEmail, POP3Email, SaneScanner, StagingFolderSource, WebFormSource,
     WatchFolderSource
 )
 
@@ -77,6 +77,19 @@ class WebFormUploadFormHTML5(WebFormUploadForm):
             attrs={'class': 'hidden', 'hidden': True}
         )
     )
+
+
+class SaneScannerUploadForm(UploadBaseForm):
+    pass
+
+
+class SaneScannerSetupForm(forms.ModelForm):
+    class Meta:
+        fields = (
+            'label', 'device_name', 'mode', 'resolution', 'source',
+            'adf_mode', 'enabled'
+        )
+        model = SaneScanner
 
 
 class WebFormSetupForm(forms.ModelForm):

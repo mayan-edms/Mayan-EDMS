@@ -10,7 +10,7 @@ from navigation import Link
 
 from .literals import (
     SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
-    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH
+    SOURCE_CHOICE_SANE_SCANNER, SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -58,6 +58,11 @@ link_setup_source_create_webform = Link(
     permissions=(permission_sources_setup_create,),
     text=_('Add new webform source'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_WEB_FORM
+)
+link_setup_source_create_sane_scanner = Link(
+    permissions=(permission_sources_setup_create,),
+    text=_('Add new SANE scanner'), view='sources:setup_source_create',
+    args='"%s"' % SOURCE_CHOICE_SANE_SCANNER
 )
 link_setup_source_delete = Link(
     permissions=(permission_sources_setup_delete,), tags='dangerous',
