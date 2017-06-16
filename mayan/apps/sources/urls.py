@@ -7,9 +7,9 @@ from .api_views import (
     APIStagingSourceListView, APIStagingSourceView
 )
 from .views import (
-    SetupSourceCreateView, SetupSourceDeleteView, SetupSourceEditView,
-    SetupSourceListView, SourceLogListView, StagingFileDeleteView,
-    UploadInteractiveVersionView, UploadInteractiveView
+    SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
+    SetupSourceEditView, SetupSourceListView, SourceLogListView,
+    StagingFileDeleteView, UploadInteractiveVersionView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
@@ -58,6 +58,10 @@ urlpatterns = [
     url(
         r'^setup/(?P<source_type>\w+)/create/$',
         SetupSourceCreateView.as_view(), name='setup_source_create'
+    ),
+    url(
+        r'^setup/(?P<pk>\d+)/check/$', SetupSourceCheckView.as_view(),
+        name='setup_source_check'
     ),
 
     # Document create views

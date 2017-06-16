@@ -1,4 +1,25 @@
-2.2 (2016-XX-XX)
+XX (2017-XX-XX)
+===============
+- Add Django-mathfilters.
+- Improve render of documents with no pages.
+
+2.3 (2017-06-08)
+================
+- Allow for bigger indexing expression templates.
+- Auto select checkbox when updating metadata values. GitLab issue #371.
+- Added support for passing the options allow-other and allow-root to the
+  FUSE index mirror. GitLab issue #385
+- Add support for check for the latest released version of Mayan from the
+  About menu.
+- Support for rebuilding specific indexes. GitLab issue #372.
+- Rewrite document indexing code to be faster and use less locking.
+- Use a predefined file path for the file lock.
+- Catch documents with not document version when displaying their thumbnails.
+- Document page navigation fix when using Mayan as a sub URL app.
+- Add support for indexing on workflow state changes.
+- Add search model list API endpoint.
+
+2.2 (2017-04-26)
 ================
 - Remove the installation app (GitLab #301).
 - Add support for document page search
@@ -8,13 +29,54 @@
 - Improve upgrade instructions
 - New image caching pipeline
 - New drop down menus for the documents, folders and tags app as well as for
-the user links
+  the user links.
 - New Dashboard view
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.10.4.
 - Tags are alphabetically ordered by label (GitLab #342).
 - Stop loading theme fonts from the web (GitLab #343).
 - Add support for attaching multiple tags (GitLab #307).
+- Integrate the Cabinets app.
+
+2.1.11 (2017-03-14)
+===================
+- Added a quick rename serializer to the document type API serializer.
+- Added per document type, workflow list API view.
+- Mayan EDMS was adopted a version 1.1 of the Linux Foundation Developer Certificate of Origin.
+- Added the detail url of a permission in the permission serializer.
+- Added endpoints for the ACL app API.
+- Implemented document workflows transition ACLs. GitLab issue #321.
+- Add document comments API endpoints. GitHub issue #249.
+- Add support for overriding the Celery class.
+- Changed the document upload view in source app to not use the HTTP referer
+  URL blindly, but instead recompose the URL using known view name. Needed
+  when integrating Mayan EDMS into other app via using iframes.
+- Addes size field to the document version serializer.
+- Removed the serializer from the deleted document restore API endpoint.
+- Added support for adding or editing document types to smart links via the
+  API.
+
+2.1.10 (2017-02-13)
+===================
+- Update Makefile to use twine for releases.
+- Add Makefile target to make test releases.
+
+2.1.9 (2017-02-13)
+==================
+- Update make file to Workaround long standing pypa wheel bug #99
+
+2.1.8 (2017-02-12)
+==================
+- Fixes in the trashed document API endpoints.
+- Improved tags API PUT and PATCH endpoints.
+- Bulk document adding when creating and editing tags.
+- The version of django-mptt is preserved in case mayan-cabinets is installed.
+- Add Django GPG API endpoints for singing keys.
+- Add API endpoints for the document states (workflows) app.
+- Add API endpoints for the messsage of the day (MOTD) app.
+- Add Smart link API endpoints.
+- Add writable versions of the Document and Document Type serializers (GitLab issues #348 and #349).
+- Close GitLab issue #310 "Metadata's lookup with chinese messages when new document"
 
 2.1.7 (2017-02-01)
 ==================
@@ -26,7 +88,7 @@ the user links
 - Enable the parser and validation fields of the metadata serializer.
 
 2.1.6 (2016-11-23)
-=================
+==================
 - Fix variable name typo in the rotation transformation class.
 - Update translations
 

@@ -52,6 +52,8 @@ class ParserTestCase(BaseTestCase):
 @override_settings(OCR_AUTO_OCR=False)
 class TextExtractorTestCase(BaseTestCase):
     def setUp(self):
+        super(TextExtractorTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -63,6 +65,7 @@ class TextExtractorTestCase(BaseTestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(TextExtractorTestCase, self).tearDown()
 
     def test_text_extractor(self):
         TextExtractor.process_document_version(

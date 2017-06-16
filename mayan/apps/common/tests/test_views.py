@@ -7,7 +7,6 @@ from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 
-from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
@@ -37,7 +36,6 @@ class GenericViewTestCase(BaseTestCase):
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
-        Permission.invalidate_cache()
 
     def tearDown(self):
         from mayan.urls import urlpatterns

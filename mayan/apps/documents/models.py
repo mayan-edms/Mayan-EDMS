@@ -141,6 +141,10 @@ class DocumentType(models.Model):
 class Document(models.Model):
     """
     Defines a single document with it's fields and properties
+    Fields:
+    * uuid - UUID of a document, universally Unique ID. An unique identifier
+    generated for each document. No two documents can ever have the same UUID.
+    This ID is generated automatically.
     """
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -315,7 +319,7 @@ class Document(models.Model):
             return self.latest_version.pages
         except AttributeError:
             # Document has no version yet
-            return 0
+            return DocumentPage.objects.none()
 
 
 class DeletedDocument(Document):
@@ -329,6 +333,18 @@ class DeletedDocument(Document):
 class DocumentVersion(models.Model):
     """
     Model that describes a document version and its properties
+    Fields:
+    * mimetype - File mimetype. MIME types are a standard way to describe the
+    format of a file, in this case the file format of the document.
+    Some examples: "text/plain" or "image/jpeg". Mayan uses this to determine
+    how to render a document's file. More information:
+    http://www.freeformatter.com/mime-types-list.html
+    * encoding - File Encoding. The filesystem encoding of the document's
+    file: binary 7-bit, binary 8-bit, text, base64, etc.
+    * checksum - A hash/checkdigit/fingerprint generated from the document's
+    binary data. Only identical documents will have the same checksum. If a
+    document is modified after upload it's checksum will not match, used for
+    detecting file tampering among other things.
     """
     _pre_open_hooks = {}
     _post_save_hooks = {}
@@ -444,7 +460,9 @@ class DocumentVersion(models.Model):
     def exists(self):
         """
         Returns a boolean value that indicates if the document's file
-        exists in storage
+        exists in storage. Returns True if the document's file is verified to
+        be in the document storage. This is a diagnostic flag to help users
+        detect if the storage has desynchronized (ie: Amazon's S3).
         """
         return self.file.storage.exists(self.file.name)
 
@@ -502,6 +520,9 @@ class DocumentVersion(models.Model):
 
     @property
     def page_count(self):
+        """
+        The number of pages that the document posses.
+        """
         return self.pages.count()
 
     def revert(self, _user=None):

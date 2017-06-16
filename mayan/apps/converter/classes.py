@@ -216,6 +216,10 @@ class ConverterBase(object):
 
 
 class BaseTransformation(object):
+    """
+    Transformation can modify the appearance of the document's page preview.
+    Some transformation available are: Rotate, zoom, resize and crop.
+    """
     arguments = ()
     name = 'base_transformation'
     _registry = {}

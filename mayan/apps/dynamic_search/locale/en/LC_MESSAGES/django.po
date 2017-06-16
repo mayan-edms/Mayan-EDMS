@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,67 +23,72 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "advanced search"
 
-#: forms.py:21
+#: classes.py:26
+msgid "No search model matching the query"
+msgstr ""
+
+#: forms.py:9
+msgid "Match all"
+msgstr ""
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+
+#: forms.py:29
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:7 settings.py:8 views.py:56 views.py:70
+#: links.py:8 settings.py:8 views.py:51 views.py:62
 msgid "Search"
 msgstr "Search"
 
-#: links.py:9 views.py:77
+#: links.py:11 views.py:76
 #, fuzzy
 msgid "Advanced search"
 msgstr "advanced search"
 
-#: links.py:11
+#: links.py:15
 #, fuzzy
 msgid "Search again"
 msgstr "search again"
 
-#: models.py:24
-msgid "User"
-msgstr ""
-
-#: models.py:26
-#, fuzzy
-msgid "Query"
-msgstr "query"
-
-#: models.py:28
-#, fuzzy
-msgid "Datetime created"
-msgstr "datetime created"
-
-#: models.py:30
-msgid "Hits"
-msgstr ""
-
-#: models.py:74
-#, fuzzy
-msgid "Recent search"
-msgstr "recent search"
-
-#: models.py:75
-#, fuzzy
-msgid "Recent searches"
-msgstr "recent searches"
-
-#: settings.py:14
+#: settings.py:11
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Maximum amount search hits to fetch and display."
 
-#: settings.py:18
-msgid "Maximum number of search queries to remember per user."
-msgstr "Maximum number of search queries to remember per user."
-
-#: views.py:25
-msgid "Search results"
+#: views.py:24
+#, fuzzy, python-format
+#| msgid "Search results"
+msgid "Search results for: %s"
 msgstr "Search results"
 
-#: views.py:32
-msgid "Type"
-msgstr ""
+#: views.py:64
+#, fuzzy, python-format
+#| msgid "Search error: %s"
+msgid "Search for: %s"
+msgstr "Search error: %s"
+
+#, fuzzy
+#~ msgid "Query"
+#~ msgstr "query"
+
+#, fuzzy
+#~ msgid "Datetime created"
+#~ msgstr "datetime created"
+
+#, fuzzy
+#~ msgid "Recent search"
+#~ msgstr "recent search"
+
+#, fuzzy
+#~ msgid "Recent searches"
+#~ msgstr "recent searches"
+
+#~ msgid "Maximum number of search queries to remember per user."
+#~ msgstr "Maximum number of search queries to remember per user."
 
 #, fuzzy
 #~ msgid "Results"
@@ -123,6 +128,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Enter the desired search keywords separated by space.  Only the top "
 #~ "%(search_results_limit)s results will be available."
-
-#~ msgid "Search error: %s"
-#~ msgstr "Search error: %s"

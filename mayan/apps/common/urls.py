@@ -1,22 +1,24 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import url
-from django.contrib.staticfiles.templatetags.staticfiles import static
-from django.views.generic import RedirectView
 from django.views.i18n import javascript_catalog, set_language
 
-from api_views import APIContentTypeList
+from .api_views import APIContentTypeList
 from .views import (
-    AboutView, CurrentUserDetailsView, CurrentUserEditView,
+    AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FilterResultListView, FilterSelectView, HomeView, LicenseView,
-    PackagesLicensesView, SetupListView, ToolsListView,
+    FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
+    LicenseView, PackagesLicensesView, SetupListView, ToolsListView,
     multi_object_action_view
 )
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
+    url(
+        r'^check_version/$', CheckVersionView.as_view(),
+        name='check_version_view'
+    ),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
     url(
         r'^packages/licenses/$', PackagesLicensesView.as_view(),
@@ -56,9 +58,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(
-        r'^favicon\.ico$', RedirectView.as_view(
-            permanent=True, url=static('appearance/images/favicon.ico')
-        )
+        r'^favicon\.ico$', FaviconRedirectView.as_view()
     ),
     url(
         r'^jsi18n/(?P<packages>\S+?)/$', javascript_catalog,

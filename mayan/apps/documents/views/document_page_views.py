@@ -5,7 +5,7 @@ import urlparse
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.urlresolvers import resolve, reverse
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
@@ -13,6 +13,7 @@ from django.views.generic import RedirectView
 
 from acls.models import AccessControlList
 from common.generics import SimpleView, SingleObjectListView
+from common.utils import resolve
 from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
 from ..forms import DocumentPageForm
@@ -103,7 +104,7 @@ class DocumentPageNavigationBase(RedirectView):
                 )
             )
 
-        return '{}?{}'.format(url, urlencode(query_dict))
+        return '{}?{}'.format(url, urlencode(query_dict, doseq=True))
 
 
 class DocumentPageNavigationFirst(DocumentPageNavigationBase):

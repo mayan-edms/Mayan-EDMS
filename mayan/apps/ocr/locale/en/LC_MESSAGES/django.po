@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:56-0400\n"
+"POT-Creation-Date: 2017-05-28 15:50-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,42 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:58 apps.py:116 apps.py:154 links.py:14 permissions.py:7
+#: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:91
+#: apps.py:86
 #, fuzzy
 msgid "Document"
 msgstr "document"
 
-#: apps.py:95
+#: apps.py:90
 msgid "Added"
 msgstr ""
 
-#: apps.py:99 models.py:36
+#: apps.py:94 models.py:36
 #, fuzzy
 msgid "Result"
 msgstr "result"
-
-#: apps.py:160 apps.py:165 apps.py:170
-#, fuzzy
-msgid "pdftotext version"
-msgstr "document queues"
-
-#: apps.py:160 apps.py:178
-msgid "not found"
-msgstr ""
-
-#: apps.py:166 apps.py:184
-msgid "error getting version"
-msgstr ""
-
-#: apps.py:178 apps.py:183 apps.py:188
-#, fuzzy
-msgid "tesseract version"
-msgstr "document queues"
 
 #: forms.py:40
 #, python-format
@@ -84,7 +66,7 @@ msgstr ""
 msgid "OCR documents per type"
 msgstr "document"
 
-#: links.py:37 views.py:161
+#: links.py:37 views.py:154
 #, fuzzy
 msgid "OCR errors"
 msgstr "error"
@@ -146,12 +128,12 @@ msgstr "clean up pages content"
 msgid "Document pages contents"
 msgstr "Document pages content clean up error: %s"
 
-#: parsers.py:102
+#: parsers.py:101
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr ""
 
-#: parsers.py:129
+#: parsers.py:128
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr ""
@@ -168,75 +150,82 @@ msgstr ""
 msgid "Change document type OCR settings"
 msgstr ""
 
-#: settings.py:10
-#, fuzzy
-#| msgid "File path to unpaper program."
-msgid "File path to tesseract program."
-msgstr "File path to unpaper program."
-
-#: settings.py:15
+#: settings.py:12
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 "File path to poppler's pdftotext program used to extract text from PDF files."
 
-#: settings.py:22
+#: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
-#: settings.py:27
+#: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
-#: views.py:28
+#: views.py:26
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
 msgstr "Submit documents for OCR"
 
-#: views.py:40
+#: views.py:38
 #, fuzzy, python-format
 msgid "%d documents added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:48
+#: views.py:46
 #, fuzzy, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr "submit to OCR queue"
 
-#: views.py:73
+#: views.py:67
 #, fuzzy, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:87
+#: views.py:81
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected documents to the OCR queue?"
 msgstr "Submit documents for OCR"
 
-#: views.py:94
+#: views.py:88
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents of a type for OCR"
 msgstr "Submit documents for OCR"
 
-#: views.py:109
+#: views.py:102
 #, fuzzy, python-format
 msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:132
+#: views.py:125
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
-#: views.py:154
+#: views.py:147
 #, fuzzy, python-format
 #| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr "Queued documents: %d"
+
+#, fuzzy
+#~ msgid "pdftotext version"
+#~ msgstr "document queues"
+
+#, fuzzy
+#~ msgid "tesseract version"
+#~ msgstr "document queues"
+
+#, fuzzy
+#~| msgid "File path to unpaper program."
+#~ msgid "File path to tesseract program."
+#~ msgstr "File path to unpaper program."
 
 #, fuzzy
 #~ msgid "Delete"

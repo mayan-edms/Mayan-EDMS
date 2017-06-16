@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,24 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23
+#: apps.py:26
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Delete comments"
 
-#: apps.py:41
+#: apps.py:46
 msgid "Date"
 msgstr ""
 
-#: apps.py:43 models.py:27
+#: apps.py:48 models.py:27
 msgid "User"
 msgstr ""
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:46 models.py:30 models.py:72 views.py:25
+#: apps.py:51 models.py:30 models.py:72 views.py:23
 #, fuzzy
 msgid "Comment"
+msgstr "Comments"
+
+#: apps.py:55 apps.py:59 links.py:22 models.py:73 permissions.py:7
+msgid "Comments"
 msgstr "Comments"
 
 #: events.py:9
@@ -60,10 +64,6 @@ msgstr "add comment"
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:22 models.py:73 permissions.py:7
-msgid "Comments"
-msgstr "Comments"
-
 #: models.py:23
 #, fuzzy
 msgid "Document"
@@ -85,18 +85,18 @@ msgstr "Delete comments"
 msgid "View comments"
 msgstr "View comments"
 
-#: views.py:47
+#: views.py:41
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Add comment to document: %s"
 
-#: views.py:90
+#: views.py:79
 #, fuzzy, python-format
 #| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr "Delete comments"
 
-#: views.py:122
+#: views.py:106
 #, fuzzy, python-format
 msgid "Comments for document: %s"
 msgstr "Add comment to document: %s"

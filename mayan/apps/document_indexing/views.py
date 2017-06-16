@@ -8,14 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.views import (
-    AssignRemoveView, ConfirmView, SingleObjectCreateView,
+    AssignRemoveView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import DocumentListView
 
-from .forms import IndexTemplateNodeForm
+from .forms import IndexListForm, IndexTemplateNodeForm
 from .models import (
     DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
     IndexTemplateNode
@@ -25,7 +25,7 @@ from .permissions import (
     permission_document_indexing_edit, permission_document_indexing_rebuild,
     permission_document_indexing_view
 )
-from .tasks import task_do_rebuild_all_indexes
+from .tasks import task_rebuild_index
 from .widgets import node_tree
 
 
@@ -248,7 +248,9 @@ class IndexInstanceNodeView(DocumentListView):
                 return DocumentListView.get_queryset(self)
             else:
                 self.object_permission = None
-                return self.index_instance_node.get_children().order_by('value')
+                return self.index_instance_node.get_children().order_by(
+                    'value'
+                )
         else:
             self.object_permission = None
             return IndexInstanceNode.objects.none()
@@ -312,16 +314,20 @@ class DocumentIndexNodeListView(SingleObjectListView):
         return DocumentIndexInstanceNode.objects.get_for(self.get_document())
 
 
-class RebuildIndexesConfirmView(ConfirmView):
+class RebuildIndexesView(FormView):
     extra_context = {
-        'message': _('On large databases this operation may take some time to execute.'),
-        'title': _('Rebuild all indexes?'),
+        'title': _('Rebuild indexes'),
     }
+    form_class = IndexListForm
     view_permission = permission_document_indexing_rebuild
+
+    def form_valid(self, form):
+        for index in form.cleaned_data['indexes']:
+            task_rebuild_index(index_id=index.pk)
+
+        messages.success(self.request, _('Index rebuild queued successfully.'))
+
+        return super(RebuildIndexesView, self).form_valid(form=form)
 
     def get_post_action_redirect(self):
         return reverse('common:tools_list')
-
-    def view_action(self):
-        task_do_rebuild_all_indexes.apply_async()
-        messages.success(self.request, _('Index rebuild queued successfully.'))

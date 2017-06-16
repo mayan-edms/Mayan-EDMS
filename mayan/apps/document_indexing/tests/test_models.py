@@ -116,7 +116,7 @@ class IndexTestCase(BaseTestCase):
             ), ['', '0003']
         )
 
-        # Document deleted from, index structure should update
+        # Document deleted, index structure should update
         self.document.delete()
         self.assertEqual(
             list(
@@ -162,7 +162,7 @@ class IndexTestCase(BaseTestCase):
         self.assertEqual(list(IndexInstanceNode.objects.all()), [])
 
         # Rebuild all indexes
-        IndexInstanceNode.objects.rebuild_all_indexes()
+        Index.objects.rebuild()
 
         # Check that document is in instance node
         instance_node = IndexInstanceNode.objects.get(value='0001')

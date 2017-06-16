@@ -53,9 +53,11 @@
                                             <th>{% trans 'Identifier' %}</th>
                                         {% endif %}
 
-                                        {% for column in object_list|get_source_columns %}
-                                            <th>{{ column.label }}</th>
-                                        {% endfor %}
+                                        {% if not hide_columns %}
+                                            {% for column in object_list|get_source_columns %}
+                                                <th>{{ column.label }}</th>
+                                            {% endfor %}
+                                        {% endif %}
 
                                         {% for column in extra_columns %}
                                             <th>{{ column.name }}</th>

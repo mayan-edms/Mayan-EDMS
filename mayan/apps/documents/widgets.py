@@ -101,9 +101,21 @@ class InstanceImageWidget(object):
 
     # Click view
     def get_click_view_kwargs(self, instance):
-        return {
-            'pk': instance.pk
-        }
+        """
+        Determine if the view is a template or API view and vary the view
+        keyword arguments
+        """
+
+        if self.click_view_name.startswith('rest_api'):
+            return {
+                'pk': instance.document.pk,
+                'version_pk': instance.document_version.pk,
+                'page_pk': instance.pk
+            }
+        else:
+            return {
+                'pk': instance.pk,
+            }
 
     def get_click_view_query_dict(self, instance):
         return self.click_view_query_dict
@@ -141,7 +153,9 @@ class InstanceImageWidget(object):
     # Preview view
     def get_preview_view_kwargs(self, instance):
         return {
-            'pk': instance.pk
+            'pk': instance.document.pk,
+            'version_pk': instance.document_version.pk,
+            'page_pk': instance.pk
         }
 
     def get_preview_view_query_dict(self, instance):
@@ -254,20 +268,46 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_click_view_kwargs(self, instance):
+        #first_page = instance.pages.first()
+        #if first_page:
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.pages.first().pk
         }
 
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_click_view_url(
+                instance=instance
+            )
+        else:
+            return '#'
+
     def get_preview_view_kwargs(self, instance):
+        #first_page = instance.pages.first()
+        #if first_page:
         return {
-            'pk': instance.latest_version.pages.first().pk
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.pages.first().pk
         }
+
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_preview_view_url(
+                instance=instance
+            )
+        else:
+            return ''
 
     def get_title(self, instance):
         return getattr(instance, 'label', None)
 
     def is_valid(self, instance):
-        return instance.latest_version.pages.all()
+        return instance.pages
 
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):

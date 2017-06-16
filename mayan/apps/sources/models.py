@@ -268,6 +268,21 @@ class SaneScanner(InteractiveSource):
 
 
 class StagingFolderSource(InteractiveSource):
+    """
+    The Staging folder source is interactive but instead of displaying an
+    HTML form (like the Webform source) that allows users to freely choose a
+    file from their computers, shows a list of files from a filesystem folder.
+    When creating staging folders administrators choose a folder in the same
+    machine where Mayan is installed. This folder is then used as the
+    destination location of networked scanners or multifunctional copiers.
+    The scenario for staging folders is as follows: An user walks up to the
+    networked copier, scan several papers documents, returns to their
+    computer, open Mayan, select to upload a new document but choose the
+    previously defined staging folder source, now they see the list of
+    documents with a small preview and can proceed to process one by one and
+    convert the scanned files into Mayan EDMS documents. Staging folders are
+    useful when many users share a few networked scanners.
+    """
     can_compress = True
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
@@ -349,6 +364,14 @@ class StagingFolderSource(InteractiveSource):
 
 
 class WebFormSource(InteractiveSource):
+    """
+    The webform source is an HTML form with a drag and drop window that opens
+    a file browser on the user's computer. This Source is interactive, meaning
+    users control live what documents they want to upload. This source is
+    useful when admins want to allow users to upload any kind of file as
+    documents from their own computers such as when each user has their own
+    scanner.
+    """
     can_compress = True
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
@@ -447,6 +470,15 @@ class IntervalBaseModel(OutOfProcessSource):
 
 
 class EmailBaseModel(IntervalBaseModel):
+    """
+    POP3 email and IMAP email sources are non-interactive sources that
+    periodically fetch emails from an email account using either the POP3 or
+    IMAP email protocol. These sources are useful when users need to scan
+    documents outside their office, they can photograph a paper document with
+    their phones and send the image to a designated email that is setup as a
+    Mayan POP3 or IMAP source. Mayan will periodically download the emails
+    and process them as Mayan documents.
+    """
     host = models.CharField(max_length=128, verbose_name=_('Host'))
     ssl = models.BooleanField(default=True, verbose_name=_('SSL'))
     port = models.PositiveIntegerField(blank=True, null=True, help_text=_(
@@ -688,6 +720,16 @@ class IMAPEmail(EmailBaseModel):
 
 
 class WatchFolderSource(IntervalBaseModel):
+    """
+    The watch folder is another non-interactive source that like the email
+    source, works by periodically checking and processing documents. This
+    source instead of using an email account, monitors a filesystem folder.
+    Administrators can define watch folders, examples /home/mayan/watch_bills
+    or /home/mayan/watch_invoices and users just need to copy the documents
+    they want to upload as a bill or invoice to the respective filesystem
+    folder. Mayan will periodically scan these filesystem locations and
+    upload the files as documents, deleting them if configured.
+    """
     source_type = SOURCE_CHOICE_WATCH
 
     folder_path = models.CharField(

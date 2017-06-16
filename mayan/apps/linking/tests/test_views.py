@@ -10,7 +10,7 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_EDITED_LABEL,
+    TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_LABEL_EDITED,
     TEST_SMART_LINK_LABEL
 )
 
@@ -80,7 +80,7 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'linking:smart_link_edit', args=(smart_link.pk,), data={
-                'label': TEST_SMART_LINK_EDITED_LABEL
+                'label': TEST_SMART_LINK_LABEL_EDITED
             }
         )
         self.assertEqual(response.status_code, 403)
@@ -98,13 +98,13 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'linking:smart_link_edit', args=(smart_link.pk,), data={
-                'label': TEST_SMART_LINK_EDITED_LABEL
+                'label': TEST_SMART_LINK_LABEL_EDITED
             }, follow=True
         )
 
         smart_link = SmartLink.objects.get(pk=smart_link.pk)
         self.assertContains(response, text='update', status_code=200)
-        self.assertEqual(smart_link.label, TEST_SMART_LINK_EDITED_LABEL)
+        self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL_EDITED)
 
     def setup_smart_links(self):
         smart_link = SmartLink.objects.create(

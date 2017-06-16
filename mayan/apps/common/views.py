@@ -10,19 +10,47 @@ from django.template import RequestContext
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ugettext
-from django.views.generic import TemplateView
+from django.views.generic import RedirectView, TemplateView
 
 from .classes import Filter
+from .exceptions import NotLatestVersion
 from .forms import (
     FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
 )
-from .generics import *  # NOQA
+from .generics import (  # NOQA
+    AssignRemoveView, ConfirmView, FormView, MultiFormView,
+    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView,
+    SimpleView
+)
 from .menus import menu_tools, menu_setup
+from .utils import check_version
 
 
 class AboutView(TemplateView):
     template_name = 'appearance/about.html'
+
+
+class CheckVersionView(SimpleView):
+    template_name = 'appearance/generic_template.html'
+
+    def get_extra_context(self):
+        try:
+            check_version()
+        except NotLatestVersion as exception:
+            message = _(
+                'The version you are using is outdated. The latest version '
+                'is %s'
+            ) % exception.upstream_version
+        else:
+            message = _('Your version is up-to-date.')
+
+        return {
+            'title': _('Check for updates'),
+            'content': message
+        }
 
 
 class CurrentUserDetailsView(SingleObjectDetailView):
@@ -98,6 +126,18 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 
     def get_object(self):
         return self.request.user.locale_profile
+
+
+class FaviconRedirectView(RedirectView):
+    permanent = True
+
+    def get_redirect_url(self, *args, **kwargs):
+        """
+        Hide the static tag import to avoid errors with static file
+        processors
+        """
+        from django.contrib.staticfiles.templatetags.staticfiles import static
+        return static('appearance/images/favicon.ico')
 
 
 class FilterSelectView(SimpleView):

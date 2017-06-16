@@ -22,6 +22,8 @@ permission_workflow_view = namespace.add_permission(
 # 'transition workflows' from one state to another, to move the workflow
 # forwards
 permission_workflow_transition = namespace.add_permission(
-    name='workflow_transition',
-    label=_('Transition workflows')
+    name='workflow_transition', label=_('Transition workflows')
+)
+permission_workflow_tools = namespace.add_permission(
+    name='workflow_tools', label=_('Execute workflow tools')
 )

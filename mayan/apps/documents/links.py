@@ -20,7 +20,14 @@ from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
-    return context['resolved_object'].document.latest_version.timestamp != context['resolved_object'].timestamp
+    # Use the 'object' key when the document version is an object in a list,
+    # such as when showing the version list view and use the 'resolved_object'
+    # when the document version is the context object, such as when showing the
+    # signatures list of a documern version. This can be fixed by updating
+    # the navigations app object resolution logic to use 'resolved_object' even
+    # for objects in a list.
+    document_version = context.get('object', context['resolved_object'])
+    return document_version.document.latest_version.timestamp != document_version.timestamp
 
 
 def is_first_page(context):

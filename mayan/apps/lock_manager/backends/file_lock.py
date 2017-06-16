@@ -2,24 +2,30 @@ from __future__ import unicode_literals
 
 import logging
 import json
+import os
 import threading
 import time
 import uuid
 
 from django.core.files import locks
 
-from common.utils import mkstemp
+from common.settings import setting_temporary_directory
 
 from ..exceptions import LockError
 
 lock = threading.Lock()
 logger = logging.getLogger(__name__)
 
-temporary_file = mkstemp()[1]
-logger.debug('temporary_file: %s', temporary_file)
+lock_file = os.path.join(
+    setting_temporary_directory.value, 'mayan_locks.tmp'
+)
+open(lock_file, 'a').close()
+logger.debug('lock_file: %s', lock_file)
 
 
 class FileLock(object):
+    lock_file = lock_file
+
     @classmethod
     def acquire_lock(cls, name, timeout=None):
         instance = FileLock(name=name, timeout=timeout)
@@ -45,7 +51,7 @@ class FileLock(object):
         self.uuid = uuid.uuid4().get_hex()
 
         lock.acquire()
-        with open(temporary_file, 'r+') as file_object:
+        with open(self.__class__.lock_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
 
             data = file_object.read()
@@ -73,7 +79,7 @@ class FileLock(object):
 
     def release(self):
         lock.acquire()
-        with open(temporary_file, 'r+') as file_object:
+        with open(self.__class__.lock_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             try:
                 file_locks = json.loads(file_object.read())

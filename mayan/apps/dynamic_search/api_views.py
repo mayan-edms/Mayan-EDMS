@@ -5,7 +5,9 @@ from rest_framework.exceptions import ParseError
 
 from rest_api.filters import MayanObjectPermissionsFilter
 
+from .classes import SearchModel
 from .mixins import SearchModelMixin
+from .serializers import SearchModelSerializer
 
 
 class APISearchView(SearchModelMixin, generics.ListAPIView):
@@ -15,11 +17,6 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
     GET:
         omit_serializer: true
         parameters:
-            - name: search_model
-              paramType: path
-              type: string
-              required: true
-              description: Possible values are "documents.Document" or "document.DocumentPageResult"
             - name: q
               paramType: query
               type: string
@@ -55,11 +52,6 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
     GET:
         omit_serializer: true
         parameters:
-            - name: search_model
-              paramType: path
-              type: string
-              required: true
-              description: Possible values are "documents.Document" or "document.DocumentPageResult"
             - name: _match_all
               paramType: query
               type: string
@@ -94,3 +86,15 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
             raise ParseError(unicode(exception))
 
         return queryset
+
+
+class APISearchModelList(generics.ListAPIView):
+    serializer_class = SearchModelSerializer
+    queryset = SearchModel.all()
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the available search models.
+        """
+
+        return super(APISearchModelList, self).get(*args, **kwargs)

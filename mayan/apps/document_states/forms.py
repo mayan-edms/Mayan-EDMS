@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -8,7 +8,7 @@ from .models import Workflow, WorkflowState, WorkflowTransition
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
-        fields = ('label',)
+        fields = ('label', 'internal_name')
         model = Workflow
 
 
@@ -32,11 +32,16 @@ class WorkflowTransitionForm(forms.ModelForm):
 
 class WorkflowInstanceTransitionForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        workflow = kwargs.pop('workflow')
+        user = kwargs.pop('user')
+        workflow_instance = kwargs.pop('workflow_instance')
         super(WorkflowInstanceTransitionForm, self).__init__(*args, **kwargs)
-        self.fields['transition'].choices = workflow.get_transition_choices().values_list('pk', 'label')
+        self.fields[
+            'transition'
+        ].queryset = workflow_instance.get_transition_choices(_user=user)
 
-    transition = forms.ChoiceField(label=_('Transition'))
+    transition = forms.ModelChoiceField(
+        label=_('Transition'), queryset=WorkflowTransition.objects.none()
+    )
     comment = forms.CharField(
         label=_('Comment'), required=False, widget=forms.widgets.Textarea()
     )

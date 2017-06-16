@@ -4,6 +4,8 @@ from django.apps import apps
 
 import logging
 
+from document_indexing.tasks import task_index_document
+
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
 logger = logging.getLogger(__name__)
@@ -49,3 +51,9 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
             metadata_type=document_type_metadata_type.metadata_type,
             value=None
         )
+
+
+def handler_index_document(sender, **kwargs):
+    task_index_document.apply_async(
+        kwargs=dict(document_id=kwargs['instance'].document.pk)
+    )

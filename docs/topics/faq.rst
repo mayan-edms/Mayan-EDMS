@@ -126,3 +126,10 @@ dependent support Python 3 then will the project move to fully support Python 3.
 
 Make sure that the Celery BEAT scheduler is running correctly as it is the element
 that triggers the periodics tasks.
+
+**Q: How to do LDAP authentication**
+
+A sample settings file called ldap_connection_settings.py is included in the
+contrib/settings/ folder of the repository showing how to setup LDAP
+authentication.
+

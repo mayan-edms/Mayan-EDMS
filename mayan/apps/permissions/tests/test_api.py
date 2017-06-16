@@ -4,8 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 
-from rest_framework.test import APITestCase
-
+from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
     TEST_GROUP_NAME
@@ -18,7 +17,7 @@ from ..permissions import permission_role_view
 from .literals import TEST_ROLE_LABEL, TEST_ROLE_LABEL_EDITED
 
 
-class PermissionAPITestCase(APITestCase):
+class PermissionAPITestCase(BaseAPITestCase):
     def setUp(self):
         super(PermissionAPITestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(

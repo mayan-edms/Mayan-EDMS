@@ -1,0 +1,57 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load navigation_tags %}
+
+{% block title %}{% include 'appearance/calculate_form_title.html' %}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'cabinets/packages/jstree/dist/themes/default/style.min.css' %}" />
+{% endblock %}
+
+{% block content %}
+    {% if title %}
+        <h3>{{ title }}</h3>
+        <hr>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <h4>{% trans 'Navigation:' %}</h4>
+            <div class="jstree"></div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            {% with document_list as object_list %}
+                {% include 'appearance/generic_list_subtemplate.html' %}
+            {% endwith %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'cabinets/packages/jstree/dist/jstree.min.js' %}"></script>
+    <script>
+        $(function () {
+            var jstreeElement = $('.jstree');
+            jstreeElement
+                .on("select_node.jstree", function (e, data) {
+                    if(data.selected.length) {
+                        window.location.href=data.instance.get_node(data.selected[0]).data.href;
+                    }
+                })
+                .jstree({
+                    'core' : {
+                        'data' : [
+                            {{ jstree_data|safe }}
+
+                        ],
+                        'themes' : {
+                            'responsive' : true,
+                        }
+                    },
+                });
+        });
+    </script>
+{% endblock %}

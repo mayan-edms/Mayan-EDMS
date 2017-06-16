@@ -1,22 +1,38 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
 from django.conf import settings
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
+from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
+from permissions import Permission
 
 from .managers import WorkflowManager
+from .permissions import permission_workflow_transition
 
 logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
 class Workflow(models.Model):
+    """
+    Fields:
+    * label - Identifier. A name/label to call the workflow
+    """
+    internal_name = models.CharField(
+        db_index=True, help_text=_(
+            'This value will be used by other apps to reference this '
+            'workflow. Can only contain letters, numbers, and underscores.'
+        ), max_length=255, unique=True, validators=[validate_internal_name],
+        verbose_name=_('Internal name')
+    )
     label = models.CharField(
         max_length=255, unique=True, verbose_name=_('Label')
     )
@@ -55,12 +71,23 @@ class Workflow(models.Model):
             )
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Workflow')
         verbose_name_plural = _('Workflows')
 
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
+    """
+    Fields:
+    * completion - Completion Amount - A user defined numerical value to help
+    determine if the workflow of the document is nearing completion (100%).
+    The Completion Amount will be determined by the completion value of the
+    Actual State. Example: If the workflow has 3 states: registered, approved,
+    archived; the admin could give the follow completion values to the
+    states: 33%, 66%, 100%. If the Actual State of the document if approved,
+    the Completion Amount will show 66%.
+    """
     workflow = models.ForeignKey(
         Workflow, related_name='states', verbose_name=_('Workflow')
     )
@@ -88,6 +115,7 @@ class WorkflowState(models.Model):
         return super(WorkflowState, self).save(*args, **kwargs)
 
     class Meta:
+        ordering = ('label',)
         unique_together = ('workflow', 'label')
         verbose_name = _('Workflow state')
         verbose_name_plural = _('Workflow states')
@@ -113,6 +141,7 @@ class WorkflowTransition(models.Model):
         return self.label
 
     class Meta:
+        ordering = ('label',)
         unique_together = (
             'workflow', 'label', 'origin_state', 'destination_state'
         )
@@ -137,17 +166,23 @@ class WorkflowInstance(models.Model):
             'document_states:workflow_instance_detail', args=(str(self.pk),)
         )
 
-    def do_transition(self, comment, transition, user):
+    def do_transition(self, transition, user, comment=None):
         try:
             if transition in self.get_current_state().origin_transitions.all():
                 self.log_entries.create(
-                    comment=comment, transition=transition, user=user
+                    comment=comment or '', transition=transition, user=user
                 )
         except AttributeError:
             # No initial state has been set for this workflow
             pass
 
     def get_current_state(self):
+        """
+        Actual State - The current state of the workflow. If there are
+        multiple states available, for example: registered, approved,
+        archived; this field will tell at the current state where the
+        document is right now.
+        """
         try:
             return self.get_last_transition().destination_state
         except AttributeError:
@@ -160,13 +195,58 @@ class WorkflowInstance(models.Model):
             return None
 
     def get_last_transition(self):
+        """
+        Last Transition - The last transition used by the last user to put
+        the document in the actual state.
+        """
         try:
             return self.get_last_log_entry().transition
         except AttributeError:
             return None
 
-    def get_transition_choices(self):
-        return self.get_current_state().origin_transitions.all()
+    def get_transition_choices(self, _user=None):
+        current_state = self.get_current_state()
+
+        if current_state:
+            queryset = current_state.origin_transitions.all()
+
+            if _user:
+                try:
+                    Permission.check_permissions(
+                        requester=_user, permissions=(
+                            permission_workflow_transition,
+                        )
+                    )
+                except PermissionDenied:
+                    try:
+                        """
+                        Check for ACL access to the workflow, if true, allow
+                        all transition options.
+                        """
+
+                        AccessControlList.objects.check_access(
+                            permissions=permission_workflow_transition,
+                            user=_user, obj=self.workflow
+                        )
+                    except PermissionDenied:
+                        """
+                        If not ACL access to the workflow, filter transition
+                        options by each transition ACL access
+                        """
+
+                        queryset = AccessControlList.objects.filter_by_access(
+                            permission=permission_workflow_transition,
+                            user=_user, queryset=queryset
+                        )
+            return queryset
+        else:
+            """
+            This happens when a workflow has no initial state and a document
+            whose document type has this workflow is created. We return an
+            empty transition queryset.
+            """
+
+            return WorkflowTransition.objects.none()
 
     class Meta:
         unique_together = ('document', 'workflow')
@@ -176,6 +256,13 @@ class WorkflowInstance(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
+    """
+    Fields:
+    * user - The user who last transitioned the document from a state to the
+    Actual State.
+    * datetime - Date Time - The date and time when the last user transitioned
+    the document state to the Actual state.
+    """
     workflow_instance = models.ForeignKey(
         WorkflowInstance, related_name='log_entries',
         verbose_name=_('Workflow instance')
@@ -195,3 +282,21 @@ class WorkflowInstanceLogEntry(models.Model):
     class Meta:
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
+
+    def clean(self):
+        if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
+            raise ValidationError(_('Not a valid transition choice.'))
+
+
+class WorkflowRuntimeProxy(Workflow):
+    class Meta:
+        proxy = True
+        verbose_name = _('Workflow runtime proxy')
+        verbose_name_plural = _('Workflow runtime proxies')
+
+
+class WorkflowStateRuntimeProxy(WorkflowState):
+    class Meta:
+        proxy = True
+        verbose_name = _('Workflow state runtime proxy')
+        verbose_name_plural = _('Workflow state runtime proxies')

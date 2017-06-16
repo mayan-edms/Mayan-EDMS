@@ -23,6 +23,11 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Key(models.Model):
+    """
+    Fields:
+    * key_type - Will show private or public, the only two types of keys in
+    a public key infrastructure, the kind used in Mayan.
+    """
     key_data = models.TextField(
         help_text=_('ASCII armored version of the key.'),
         verbose_name=_('Key data')

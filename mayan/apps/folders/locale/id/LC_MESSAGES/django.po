@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:54-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
+"POT-Creation-Date: 2017-05-28 15:50-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
-#: views.py:104
+#: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
+#: views.py:95
 msgid "Folders"
 msgstr ""
 
@@ -27,51 +28,55 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: apps.py:71 links.py:47 models.py:26
+#: apps.py:71 links.py:56 models.py:24
 msgid "Documents"
 msgstr "Dokumen"
 
-#: forms.py:34 models.py:44
-msgid "Folder"
+#: links.py:24 links.py:34
+msgid "Remove from folders"
 msgstr ""
 
-#: links.py:20
-msgid "Add to a folder"
+#: links.py:27
+msgid "Add to a folders"
 msgstr ""
 
-#: links.py:24
-msgid "Add to folder"
+#: links.py:31
+msgid "Add to folders"
 msgstr ""
 
-#: links.py:27 views.py:42
+#: links.py:42 views.py:37
 msgid "Create folder"
 msgstr ""
 
-#: links.py:32
+#: links.py:46
 msgid "Delete"
 msgstr ""
 
-#: links.py:36
-msgid "Remove from folder"
-msgstr ""
-
-#: links.py:40
+#: links.py:49
 msgid "Edit"
 msgstr ""
 
-#: models.py:20
+#: links.py:53
+msgid "All"
+msgstr ""
+
+#: models.py:18
 msgid "Label"
 msgstr ""
 
-#: models.py:23
+#: models.py:21
 msgid "Datetime created"
 msgstr ""
 
-#: models.py:63
+#: models.py:42
+msgid "Folder"
+msgstr ""
+
+#: models.py:56
 msgid "Document folder"
 msgstr ""
 
-#: models.py:64
+#: models.py:57
 msgid "Document folders"
 msgstr ""
 
@@ -84,7 +89,6 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
-#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -93,7 +97,6 @@ msgid "Remove documents from folders"
 msgstr ""
 
 #: permissions.py:22
-#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -105,65 +108,121 @@ msgstr ""
 msgid "Primary key of the document to be added."
 msgstr ""
 
-#: views.py:54
+#: views.py:49
 #, python-format
-#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
-#: views.py:66
+#: views.py:61
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:93
+#: views.py:84
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:116
 #, python-format
 msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:141
-msgid "Must provide at least one document."
-msgstr "Harus memberikan setidaknya satu dokumen."
-
-#: views.py:175
+#: views.py:127
 #, python-format
-msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgid "Add to folder request performed on %(count)d document"
 msgstr ""
 
-#: views.py:184
+#: views.py:130
+#, python-format
+msgid "Add to folder request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:137
+msgid "Add"
+msgstr "tambah"
+
+#: views.py:139
+msgid "Add document to folders"
+msgid_plural "Add documents to folders"
+msgstr[0] ""
+
+#: views.py:150
+#, python-format
+msgid "Add document \"%s\" to folders"
+msgstr ""
+
+#: views.py:161
+msgid "Folders to which the selected documents will be added."
+msgstr ""
+
+#: views.py:190
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 
-#: views.py:205
-msgid "Add document to folder"
-msgid_plural "Add documents to folder"
-msgstr[0] ""
-
-#: views.py:227
-msgid "Must provide at least one folder document."
+#: views.py:200
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 
-#: views.py:248
+#: views.py:212
 #, python-format
-msgid "Document: %s removed successfully."
+msgid "Remove from folder request performed on %(count)d document"
 msgstr ""
 
-#: views.py:254
+#: views.py:215
 #, python-format
-msgid "Document: %(document)s delete error: %(error)s"
-msgstr "Dokumen: %(document)s penghapusan bermasalah: %(error)s"
+msgid "Remove from folder request performed on %(count)d documents"
+msgstr ""
 
-#: views.py:267
-#, python-format
-msgid "Remove the selected document from the folder: %(folder)s?"
-msgid_plural "Remove the selected documents from the folder: %(folder)s?"
+#: views.py:222
+msgid "Remove"
+msgstr "hapus"
+
+#: views.py:224
+msgid "Remove document from folders"
+msgid_plural "Remove documents from folders"
 msgstr[0] ""
+
+#: views.py:235
+#, python-format
+msgid "Remove document \"%s\" to folders"
+msgstr ""
+
+#: views.py:246
+msgid "Folders from which the selected documents will be removed."
+msgstr ""
+
+#: views.py:273
+#, python-format
+msgid "Document: %(document)s is not in folder: %(folder)s."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "Document: %(document)s removed from folder: %(folder)s."
+msgstr ""
+
+#~ msgid "Must provide at least one document."
+#~ msgstr "Must provide at least one document."
+
+#~ msgid "Add document to folder"
+#~ msgid_plural "Add documents to folder"
+#~ msgstr[0] "97c0d1f6a737e93c542fd20ae2682559_pl_0"
+
+#~ msgid "Must provide at least one folder document."
+#~ msgstr "Must provide at least one folder document."
+
+#~ msgid "Document: %s removed successfully."
+#~ msgstr "Document: %s removed successfully."
+
+#~ msgid "Document: %(document)s delete error: %(error)s"
+#~ msgstr "Document: %(document)s delete error: %(error)s"
+
+#~ msgid "Remove the selected document from the folder: %(folder)s?"
+#~ msgid_plural "Remove the selected documents from the folder: %(folder)s?"
+#~ msgstr[0] "81c6b0124b038e876c41a6794709629b_pl_0"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -211,11 +270,11 @@ msgstr[0] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -248,12 +307,12 @@ msgstr[0] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."

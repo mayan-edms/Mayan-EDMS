@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"POT-Creation-Date: 2017-05-28 15:49-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 permissions.py:7 settings.py:7
+#: apps.py:19 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr ""
 
-#: apps.py:38 models.py:34
+#: apps.py:26 models.py:40
 msgid "Order"
 msgstr ""
 
-#: apps.py:40 models.py:64
+#: apps.py:28 models.py:70
 msgid "Transformation"
 msgstr ""
 
-#: apps.py:44 models.py:44
+#: apps.py:32 models.py:50
 msgid "Arguments"
 msgstr ""
 
@@ -50,49 +50,83 @@ msgstr "suported file formats"
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
-#: classes.py:254
-msgid "Resize"
-msgstr "Resize"
-
-#: classes.py:295
-msgid "Rotate"
-msgstr "Rotate"
-
-#: classes.py:313
-msgid "Zoom"
-msgstr "Zoom"
-
-#: classes.py:333
+#: classes.py:290
 msgid "Crop"
 msgstr ""
 
-#: links.py:31
+#: classes.py:303
+msgid "Flip"
+msgstr ""
+
+#: classes.py:314
+msgid "Gaussian blur"
+msgstr ""
+
+#: classes.py:325
+msgid "Mirror"
+msgstr ""
+
+#: classes.py:336
+msgid "Resize"
+msgstr "Resize"
+
+#: classes.py:363
+msgid "Rotate"
+msgstr "Rotate"
+
+#: classes.py:382
+#, fuzzy
+#| msgid "Rotate by n degress."
+msgid "Rotate 90 degrees"
+msgstr "Rotate by n degress."
+
+#: classes.py:393
+#, fuzzy
+#| msgid "Rotate by n degress."
+msgid "Rotate 180 degrees"
+msgstr "Rotate by n degress."
+
+#: classes.py:404
+#, fuzzy
+#| msgid "Rotate by n degress."
+msgid "Rotate 270 degrees"
+msgstr "Rotate by n degress."
+
+#: classes.py:414
+msgid "Unsharp masking"
+msgstr ""
+
+#: classes.py:430
+msgid "Zoom"
+msgstr "Zoom"
+
+#: links.py:35
 msgid "Create new transformation"
 msgstr ""
 
-#: links.py:35
+#: links.py:39
 msgid "Delete"
 msgstr ""
 
-#: links.py:39
+#: links.py:43
 msgid "Edit"
 msgstr ""
 
-#: links.py:43 models.py:65
+#: links.py:47 models.py:71
 msgid "Transformations"
 msgstr ""
 
-#: models.py:32
+#: models.py:38
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
 
-#: models.py:38
+#: models.py:44
 msgid "Name"
 msgstr ""
 
-#: models.py:42
+#: models.py:48
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -133,22 +167,22 @@ msgstr "Path to the libreoffice program."
 msgid "Enter a valid YAML value."
 msgstr ""
 
-#: views.py:71
+#: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 
-#: views.py:139
+#: views.py:127
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr ""
 
-#: views.py:192
+#: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 
-#: views.py:238
+#: views.py:216
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
@@ -163,9 +197,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Height"
 #~ msgstr "height"
-
-#~ msgid "Rotate by n degress."
-#~ msgstr "Rotate by n degress."
 
 #, fuzzy
 #~ msgid "Degrees"

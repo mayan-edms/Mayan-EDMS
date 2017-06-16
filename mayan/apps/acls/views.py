@@ -140,7 +140,8 @@ class ACLListView(SingleObjectListView):
 
     def get_queryset(self):
         return AccessControlList.objects.filter(
-            content_type=self.object_content_type, object_id=self.content_object.pk
+            content_type=self.object_content_type,
+            object_id=self.content_object.pk
         )
 
 

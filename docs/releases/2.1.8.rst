@@ -1,0 +1,83 @@
+===============================
+Mayan EDMS v2.1.8 release notes
+===============================
+
+Released: February 12, 2017
+
+What's new
+==========
+
+This is a bug-fix release and all users are encouraged to upgrade. The focus
+of this micro release was REST API improvement.
+
+Changes
+-------------
+
+- Fixes in the trashed document API endpoints.
+- Improved tags API PUT and PATCH endpoints.
+- Bulk document adding when creating and editing tags.
+- The version of django-mptt is preserved in case mayan-cabinets is installed.
+- Add Django GPG API endpoints for singing keys.
+- Add API endpoints for the document states app.
+- Add API endpoints for the messsage of the day (MOTD) app.
+- Add Smart link API endpoints.
+- Add writable versions of the Document and Document Type serializers (GitLab issues #348 and #349).
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #310 <https://gitlab.com/mayan-edms/mayan-edms/issues/310>`_ Metadata's lookup with chinese messages when new document
+* `GitLab issue #348 <https://gitlab.com/mayan-edms/mayan-edms/issues/348>`_ REST API: Document version comments are not getting updated
+* `GitLab issue #349 <https://gitlab.com/mayan-edms/mayan-edms/issues/349>`_ REST API: Document Label, Description are not able to update
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

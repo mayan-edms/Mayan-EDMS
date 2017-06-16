@@ -1,64 +1,62 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-23 02:52-0400\n"
-"PO-Revision-Date: 2016-10-28 07:32+0000\n"
+"POT-Creation-Date: 2017-05-28 15:48-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:14 links.py:31
+#: apps.py:15 links.py:35
 msgid "ACLs"
 msgstr "ACL-ek"
 
-#: apps.py:22 links.py:40 models.py:36
+#: apps.py:25 links.py:44 models.py:44
 msgid "Permissions"
 msgstr ""
 
-#: apps.py:26 models.py:38
-#| msgid "Roles"
+#: apps.py:29 models.py:46
 msgid "Role"
 msgstr ""
 
-#: links.py:27
+#: links.py:31
 msgid "Delete"
 msgstr ""
 
-#: links.py:35
-#| msgid "View ACLs"
+#: links.py:39
 msgid "New ACL"
 msgstr ""
 
-#: managers.py:85
+#: managers.py:109
 msgid "Insufficient access."
 msgstr ""
 
-#: models.py:44
+#: models.py:52
 msgid "Access entry"
 msgstr ""
 
-#: models.py:45
+#: models.py:53
 msgid "Access entries"
 msgstr ""
 
-#: models.py:48
+#: models.py:57
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr ""
 
-#: models.py:64
+#: models.py:74
 msgid "None"
 msgstr "Semmi"
 
@@ -74,36 +72,65 @@ msgstr ""
 msgid "View ACLs"
 msgstr ""
 
-#: views.py:78
+#: serializers.py:24 serializers.py:132
+msgid ""
+"API URL pointing to the list of permissions for this access control list."
+msgstr ""
+
+#: serializers.py:57
+msgid ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
+msgstr ""
+
+#: serializers.py:87
+msgid "Primary key of the new permission to grant to the access control list."
+msgstr ""
+
+#: serializers.py:111 serializers.py:187
+#, python-format
+msgid "No such permission: %s"
+msgstr ""
+
+#: serializers.py:126
+msgid ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
+msgstr ""
+
+#: serializers.py:138
+msgid "Primary keys of the role to which this access control list binds to."
+msgstr ""
+
+#: views.py:73
 #, python-format
 msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:109
+#: views.py:100
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:151
+#: views.py:138
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:162
+#: views.py:150
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:163
+#: views.py:151
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:222
+#: views.py:206
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
-#: views.py:242
+#: views.py:226
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
@@ -198,8 +225,10 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"
@@ -221,9 +250,6 @@ msgstr ""
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"
-
-#~ msgid "permission"
-#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"

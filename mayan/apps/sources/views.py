@@ -12,8 +12,8 @@ from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import (
-    MultiFormView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    ConfirmView, MultiFormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
 from documents.models import DocumentType, Document
@@ -37,7 +37,7 @@ from .permissions import (
     permission_sources_setup_edit, permission_sources_setup_view,
     permission_staging_file_delete
 )
-from .tasks import task_source_handle_upload
+from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
@@ -253,7 +253,12 @@ class UploadInteractiveView(UploadBaseView):
                 )
             )
 
-        return HttpResponseRedirect(self.request.get_full_path())
+        return HttpResponseRedirect(
+            '{}?{}'.format(
+                reverse(self.request.resolver_match.view_name),
+                self.request.META['QUERY_STRING']
+            ),
+        )
 
     def create_source_form_form(self, **kwargs):
         if hasattr(self.source, 'uncompress'):
@@ -297,7 +302,10 @@ class UploadInteractiveView(UploadBaseView):
         if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context['subtemplates_list'][0]['context'].update(
                 {
-                    'form_action': self.request.get_full_path(),
+                    'form_action': '{}?{}'.format(
+                        reverse(self.request.resolver_match.view_name),
+                        self.request.META['QUERY_STRING']
+                    ),
                     'form_class': 'dropzone',
                     'form_disable_submit': True,
                     'form_id': 'html5upload',
@@ -313,6 +321,7 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
 
+        # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
                 self.request,
@@ -438,6 +447,32 @@ class StagingFileDeleteView(SingleObjectDeleteView):
 
 
 # Setup views
+class SetupSourceCheckView(ConfirmView):
+    """
+    Trigger the task_check_interval_source task for a given source to
+    test/debug their configuration irrespective of the schedule task setup.
+    """
+    view_permission = permission_sources_setup_view
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Trigger check for source "%s"?') % self.get_object(),
+        }
+
+    def get_object(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+
+    def view_action(self):
+        task_check_interval_source.apply_async(
+            kwargs={
+                'source_id': self.get_object().pk
+            }
+        )
+
+        messages.success(self.request, _('Source check queued.'))
+
+
 class SetupSourceCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_create
@@ -493,9 +528,6 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
-    view_permission = permission_sources_setup_view
-    queryset = Source.objects.select_subclasses()
-
     extra_context = {
         'extra_columns': (
             {
@@ -512,3 +544,5 @@ class SetupSourceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Sources'),
     }
+    queryset = Source.objects.select_subclasses()
+    view_permission = permission_sources_setup_view

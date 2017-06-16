@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from .tasks import task_delete_empty_index_nodes, task_index_document
+from .tasks import (
+    task_delete_empty, task_index_document, task_remove_document
+)
 
 
 def create_default_document_index(sender, **kwargs):
@@ -31,23 +33,17 @@ def create_default_document_index(sender, **kwargs):
     )
 
 
-def document_created_index_update(sender, **kwargs):
+def handler_delete_empty(sender, **kwargs):
+    task_delete_empty.apply_async()
+
+
+def handler_index_document(sender, **kwargs):
     task_index_document.apply_async(
         kwargs=dict(document_id=kwargs['instance'].pk)
     )
 
 
-def document_index_delete(sender, **kwargs):
-    task_delete_empty_index_nodes.apply_async()
-
-
-def document_metadata_index_update(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
-    )
-
-
-def document_metadata_index_post_delete(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
+def handler_remove_document(sender, **kwargs):
+    task_remove_document.apply_async(
+        kwargs=dict(document_id=kwargs['instance'].pk)
     )
