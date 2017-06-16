@@ -268,18 +268,40 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_click_view_kwargs(self, instance):
+        #first_page = instance.pages.first()
+        #if first_page:
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,
-            'page_pk': instance.latest_version.pages.first().pk
+            'page_pk': instance.pages.first().pk
         }
 
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_click_view_url(
+                instance=instance
+            )
+        else:
+            return '#'
+
     def get_preview_view_kwargs(self, instance):
+        #first_page = instance.pages.first()
+        #if first_page:
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,
-            'page_pk': instance.latest_version.pages.first().pk
+            'page_pk': instance.pages.first().pk
         }
+
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_preview_view_url(
+                instance=instance
+            )
+        else:
+            return ''
 
     def get_title(self, instance):
         return getattr(instance, 'label', None)
