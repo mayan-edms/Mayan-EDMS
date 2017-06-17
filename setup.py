@@ -82,6 +82,7 @@ djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
 fusepy==2.0.4
 pdfminer==20140328
+PyPDF2==1.26.0
 pycountry==1.20
 pyocr==0.4.5
 python-dateutil==2.5.3

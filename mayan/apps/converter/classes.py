@@ -214,6 +214,10 @@ class ConverterBase(object):
         except InvalidOfficeFormat as exception:
             logger.debug('Is not an office format document; %s', exception)
 
+    def detect_orientation(self, page_number):
+        # Must be overrided by subclass
+        pass
+
 
 class BaseTransformation(object):
     """

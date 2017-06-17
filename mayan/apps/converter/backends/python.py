@@ -10,6 +10,7 @@ except ImportError:
     from StringIO import StringIO
 
 from PIL import Image
+import PyPDF2
 from pdfminer.pdfpage import PDFPage
 import sh
 
@@ -66,6 +67,19 @@ class Python(ConverterBase):
                 return Image.open(image_buffer)
             finally:
                 fs_cleanup(input_filepath)
+
+    def detect_orientation(self, page_number):
+        # Use different ways depending on the file type
+        if self.mime_type == 'application/pdf':
+            pdf = PyPDF2.PdfFileReader(self.file_object)
+            result = pdf.getPage(page_number - 1).get('/Rotate')
+
+            self.file_object.seek(0)
+
+            return result
+
+        # Default rotation: 0 degrees
+        return 0
 
     def get_page_count(self):
         super(Python, self).get_page_count()

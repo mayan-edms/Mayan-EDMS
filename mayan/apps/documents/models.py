@@ -420,6 +420,7 @@ class DocumentVersion(models.Model):
                     self.update_mimetype(save=False)
                     self.save()
                     self.update_page_count(save=False)
+                    self.fix_orientation()
 
                     logger.info(
                         'New document version "%s" created for document: %s',
@@ -465,6 +466,15 @@ class DocumentVersion(models.Model):
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
         return self.file.storage.exists(self.file.name)
+
+    def fix_orientation(self):
+        for page in self.pages.all():
+            degrees = page.detect_orientation()
+            if degrees:
+                Transformation.objects.add_for_model(
+                    obj=page, transformation=TransformationRotate,
+                    arguments='{{"degrees": {}}}'.format(360-degrees)
+                )
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename
@@ -692,6 +702,16 @@ class DocumentPage(models.Model):
     @property
     def document(self):
         return self.document_version.document
+
+    def detect_orientation(self):
+        with self.document_version.open() as file_object:
+            converter = converter_class(
+                file_object=file_object,
+                mime_type=self.document_version.mimetype
+            )
+            return converter.detect_orientation(
+                page_number=self.page_number
+            )
 
     def generate_image(self, *args, **kwargs):
         # Convert arguments into transformations

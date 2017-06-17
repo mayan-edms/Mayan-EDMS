@@ -28,6 +28,7 @@ fusepy==2.0.4
 
 pdfminer==20140328
 pycountry==1.20
+PyPDF2==1.26.0
 pyocr==0.4.5
 python-dateutil==2.5.3
 python-gnupg==0.3.9
