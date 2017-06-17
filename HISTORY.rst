@@ -6,6 +6,7 @@ XX (2017-XX-XX)
 - Added PDF orientation detection. GitLab issue #387.
 - Fix repeated permission list API URL. GitLab issue #389.
 - Fix role creation API endpoint not returning id. GitLab issue #390.
+- Make tags, metadata types and cabinets searchable via the dynamic search API. GitLab issue #344.
 
 2.3 (2017-06-08)
 ================

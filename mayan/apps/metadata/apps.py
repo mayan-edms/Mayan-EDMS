@@ -41,6 +41,7 @@ from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view
 )
+from .search import metadata_type_search  # NOQA
 from .widgets import get_metadata_string
 
 logger = logging.getLogger(__name__)
