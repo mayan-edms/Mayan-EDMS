@@ -9,6 +9,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_multi_item, menu_object,
     menu_sidebar
 )
+from documents.search import document_page_search, document_search
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -62,6 +63,14 @@ class CabinetsApp(MayanAppConfig):
                 permission_cabinet_delete, permission_cabinet_edit,
                 permission_cabinet_view
             )
+        )
+
+        document_page_search.add_model_field(
+            field='document_version__document__cabinets__label',
+            label=_('Cabinets')
+        )
+        document_search.add_model_field(
+            field='cabinets__label', label=_('Cabinets')
         )
 
         menu_facet.bind_links(
