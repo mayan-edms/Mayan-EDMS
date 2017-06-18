@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from importlib import import_module
 import logging
+import os
 
 import yaml
 
@@ -85,7 +86,11 @@ class Setting(object):
         return unicode(self.global_name)
 
     def cache_value(self):
-        self.raw_value = getattr(settings, self.global_name, self.default)
+        environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))
+        if environment_value:
+            self.raw_value = yaml.safe_load(environment_value)
+        else:
+            self.raw_value = getattr(settings, self.global_name, self.default)
         self.yaml = Setting.serialize_value(self.raw_value)
         self.loaded = True
 
