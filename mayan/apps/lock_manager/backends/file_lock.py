@@ -12,6 +12,7 @@ from django.core.files import locks
 from common.settings import setting_temporary_directory
 
 from ..exceptions import LockError
+from ..settings import setting_default_lock_timeout
 
 from .base import LockingBackend
 
@@ -30,7 +31,9 @@ class FileLock(LockingBackend):
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        instance = FileLock(name=name, timeout=timeout)
+        instance = FileLock(
+            name=name, timeout=timeout or setting_default_lock_timeout.value
+        )
         return instance
 
     @classmethod
@@ -56,9 +59,9 @@ class FileLock(LockingBackend):
 
         return result
 
-    def __init__(self, name, timeout):
+    def __init__(self, name, timeout=None):
         self.name = name
-        self.timeout = timeout or 0
+        self.timeout = timeout or setting_default_lock_timeout.value
         self.uuid = uuid.uuid4().get_hex()
 
         lock.acquire()
