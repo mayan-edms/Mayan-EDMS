@@ -64,6 +64,8 @@ class Namespace(object):
 
 
 class Setting(object):
+    _registry = {}
+
     @staticmethod
     def deserialize_value(value):
         return yaml.safe_load(value)
@@ -75,12 +77,17 @@ class Setting(object):
 
         return yaml.safe_dump(value, allow_unicode=True)
 
+    @classmethod
+    def get(cls, global_name):
+        return cls._registry[global_name].value
+
     def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
         self.loaded = False
         namespace.settings.append(self)
+        self.__class__._registry[global_name] = self
 
     def __unicode__(self):
         return unicode(self.global_name)
