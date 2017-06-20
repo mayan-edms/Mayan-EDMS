@@ -1,5 +1,5 @@
-codecov==2.0.5
-coverage==3.7.1
+codecov==2.0.9
+coverage==4.4.1
 coveralls==1.1
 django-test-without-migrations==0.6
 mock==2.0.0
