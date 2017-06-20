@@ -13,6 +13,8 @@ from common.settings import setting_temporary_directory
 
 from ..exceptions import LockError
 
+from .base import LockingBackend
+
 lock = threading.Lock()
 logger = logging.getLogger(__name__)
 
@@ -23,13 +25,22 @@ open(lock_file, 'a').close()
 logger.debug('lock_file: %s', lock_file)
 
 
-class FileLock(object):
+class FileLock(LockingBackend):
     lock_file = lock_file
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):
         instance = FileLock(name=name, timeout=timeout)
         return instance
+
+    @classmethod
+    def purge_locks(cls):
+        lock.acquire()
+        with open(cls.lock_file, 'r+') as file_object:
+            locks.lock(f=file_object, flags=locks.LOCK_EX)
+            file_object.seek(0)
+            file_object.truncate()
+            lock.release()
 
     def _get_lock_dictionary(self):
         if self.timeout:
