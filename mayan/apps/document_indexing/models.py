@@ -179,8 +179,8 @@ class IndexTemplateNode(MPTTModel):
         else:
             return self.expression
 
-    def index_document(self, document, acquire_lock=True):
-        # Avoid another process to index this same document for the same
+    def index_document(self, document, acquire_lock=True, index_instance_node_parent=None):
+        # Avoid another process indexing this same document for the same
         # template node. This prevents this template node's index instance
         # nodes from being deleted while the template is evaluated and
         # documents added to it.
@@ -211,16 +211,20 @@ class IndexTemplateNode(MPTTModel):
                 index_instance_node, created = self.index_instance_nodes.get_or_create()
 
                 for child in self.get_children():
-                    child.index_document(document=document, acquire_lock=False)
+                    child.index_document(
+                        document=document, acquire_lock=False,
+                        index_instance_node_parent=index_instance_node
+                    )
 
                 if acquire_lock:
                     lock.release()
 
             elif self.enabled:
                 logger.debug('IndexTemplateNode; non parent: evaluating')
-                logger.debug('My parent is: %s', self.parent)
+                logger.debug('My parent template is: %s', self.parent)
                 logger.debug(
-                    'My parent nodes: %s', self.parent.index_instance_nodes.all()
+                    'My parent instance node is: %s',
+                    index_instance_node_parent
                 )
                 logger.debug(
                     'IndexTemplateNode; Evaluating template: %s', self.expression
@@ -245,14 +249,17 @@ class IndexTemplateNode(MPTTModel):
                     logger.debug('Evaluation result: %s', result)
                     if result:
                         index_instance_node, created = self.index_instance_nodes.get_or_create(
-                            parent=self.parent.index_instance_nodes.get(),
+                            parent=index_instance_node_parent,
                             value=result
                         )
                         if self.link_documents:
                             index_instance_node.documents.add(document)
 
                     for child in self.get_children():
-                        child.index_document(document=document, acquire_lock=False)
+                        child.index_document(
+                            document=document, acquire_lock=False,
+                            index_instance_node_parent=index_instance_node
+                        )
                 finally:
                     if acquire_lock:
                         lock.release()

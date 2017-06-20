@@ -9,7 +9,8 @@ XX (2017-XX-XX)
 - Make tags, metadata types and cabinets searchable via the dynamic search API. GitLab issue #344.
 - Add support for updating configuration options from environment variables.
 - Add purgelocks management command. GitLab issue #221.
- 
+- Fix index rebuilding for multi value first levels. GitLab issue #391. 
+
 2.3 (2017-06-08)
 ================
 - Allow for bigger indexing expression templates.

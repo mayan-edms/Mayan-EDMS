@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.test import override_settings
+from django.utils.encoding import force_text
 
 from common.tests import BaseTestCase
 from documents.models import DocumentType
@@ -168,4 +169,43 @@ class IndexTestCase(BaseTestCase):
         instance_node = IndexInstanceNode.objects.get(value='0001')
         self.assertQuerysetEqual(
             instance_node.documents.all(), [repr(self.document)]
+        )
+
+    def test_dual_level_dual_document_index(self):
+        """
+        Test creation of an index instance with two first levels with different
+        values and two second levels with the same value but as separate
+        children of each of the first levels.
+        """
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_2 = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        # Create empty index
+        index = Index.objects.create(label=TEST_INDEX_LABEL)
+
+        # Add our document type to the new index
+        index.document_types.add(self.document_type)
+
+        # Create simple index template
+        root = index.template_root
+        level_1 = index.node_templates.create(
+            parent=root, expression='{{ document.uuid }}',
+            link_documents=False
+        )
+
+        index.node_templates.create(
+            parent=level_1, expression='{{ document.label }}',
+            link_documents=True
+        )
+
+        Index.objects.rebuild()
+
+        self.assertEqual(
+            [instance.value for instance in IndexInstanceNode.objects.all()],
+            [
+                '', force_text(self.document_2.uuid), self.document_2.label,
+                force_text(self.document.uuid), self.document.label
+            ]
         )
