@@ -10,6 +10,7 @@ XX (2017-XX-XX)
 - Add support for updating configuration options from environment variables.
 - Add purgelocks management command. GitLab issue #221.
 - Fix index rebuilding for multi value first levels. GitLab issue #391. 
+- Truncate views titles via the APPEARANCE_MAXIMUM_TITLE_LENGTH setting. GitLab issue #217.
 
 2.3 (2017-06-08)
 ================

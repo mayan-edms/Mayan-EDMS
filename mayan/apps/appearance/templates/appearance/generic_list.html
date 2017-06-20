@@ -8,7 +8,7 @@
 
 {% block content %}
     {% if title %}
-        <h3>{{ title }}</h3>
+        <h3>{% include 'appearance/calculate_form_title.html' %}</h3>
         <hr>
     {% endif %}
 
