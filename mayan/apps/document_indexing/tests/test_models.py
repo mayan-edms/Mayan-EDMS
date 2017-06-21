@@ -175,7 +175,7 @@ class IndexTestCase(BaseTestCase):
         """
         Test creation of an index instance with two first levels with different
         values and two second levels with the same value but as separate
-        children of each of the first levels.
+        children of each of the first levels. GitLab issue #391
         """
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document_2 = self.document_type.new_document(
@@ -203,9 +203,30 @@ class IndexTestCase(BaseTestCase):
         Index.objects.rebuild()
 
         self.assertEqual(
-            [instance.value for instance in IndexInstanceNode.objects.all()],
+            [instance.value for instance in IndexInstanceNode.objects.all().order_by('pk')],
             [
                 '', force_text(self.document_2.uuid), self.document_2.label,
                 force_text(self.document.uuid), self.document.label
             ]
         )
+
+    def test_multi_level_template_with_no_result_parent(self):
+        """
+        On a two level template if the first level doesn't return a result
+        the indexing should stop. GitLab issue #391.
+        """
+        index = Index.objects.create(label=TEST_INDEX_LABEL)
+        index.document_types.add(self.document_type)
+
+        level_1 = index.node_templates.create(
+            parent=index.template_root,
+            expression='',
+            link_documents=True
+        )
+
+        index.node_templates.create(
+            parent=level_1, expression='{{ document.label }}',
+            link_documents=True
+        )
+
+        Index.objects.rebuild()

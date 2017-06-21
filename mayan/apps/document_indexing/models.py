@@ -255,11 +255,11 @@ class IndexTemplateNode(MPTTModel):
                         if self.link_documents:
                             index_instance_node.documents.add(document)
 
-                    for child in self.get_children():
-                        child.index_document(
-                            document=document, acquire_lock=False,
-                            index_instance_node_parent=index_instance_node
-                        )
+                        for child in self.get_children():
+                            child.index_document(
+                                document=document, acquire_lock=False,
+                                index_instance_node_parent=index_instance_node
+                            )
                 finally:
                     if acquire_lock:
                         lock.release()
