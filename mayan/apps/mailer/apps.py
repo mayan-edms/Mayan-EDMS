@@ -18,6 +18,7 @@ from .links import (
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document
 )
+from .queues import *  # NOQA
 
 
 class MailerApp(MayanAppConfig):

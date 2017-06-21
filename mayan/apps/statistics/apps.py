@@ -15,6 +15,7 @@ from .links import (
     link_statistics, link_view
 )
 from .licenses import *  # NOQA
+from .queues import *  # NOQA
 from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 

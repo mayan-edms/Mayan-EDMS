@@ -30,6 +30,7 @@ from .links import (
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_upload_version
 )
+from .queues import *  # NOQA
 from .widgets import StagingFileThumbnailWidget
 
 

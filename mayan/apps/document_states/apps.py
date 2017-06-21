@@ -34,6 +34,7 @@ from .links import (
     link_workflow_state_list
 )
 from .permissions import permission_workflow_transition
+from .queues import *  # NOQA
 
 
 class DocumentStatesApp(MayanAppConfig):
@@ -163,7 +164,7 @@ class DocumentStatesApp(MayanAppConfig):
             (
                 Queue(
                     'document_states', Exchange('document_states'),
-                    routing_key='converter'
+                    routing_key='document_states'
                 ),
             )
         )

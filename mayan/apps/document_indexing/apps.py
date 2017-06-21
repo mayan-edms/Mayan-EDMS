@@ -37,6 +37,7 @@ from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit, permission_document_indexing_view
 )
+from .queues import *  # NOQA
 from .widgets import get_instance_link, index_instance_item_link, node_level
 
 
@@ -49,6 +50,8 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
+
+        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -64,8 +67,6 @@ class DocumentIndexingApp(MayanAppConfig):
         IndexInstance = self.get_model('IndexInstance')
         IndexInstanceNode = self.get_model('IndexInstanceNode')
         IndexTemplateNode = self.get_model('IndexTemplateNode')
-
-        APIEndPoint(app=self, version_string='1')
 
         ModelPermission.register(
             model=Index, permissions=(

@@ -28,6 +28,7 @@ from .links import (
     link_document_type_submit, link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
+from .queues import *  # NOQA
 
 logger = logging.getLogger(__name__)
 
@@ -55,6 +56,8 @@ class OCRApp(MayanAppConfig):
     def ready(self):
         super(OCRApp, self).ready()
 
+        APIEndPoint(app=self, version_string='1')
+
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -68,8 +71,6 @@ class OCRApp(MayanAppConfig):
         )
 
         DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
-
-        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class(

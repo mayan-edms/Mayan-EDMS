@@ -25,6 +25,7 @@ from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
     permission_document_checkout, permission_document_checkout_detail_view
 )
+from .queues import *  # NOQA
 from .tasks import task_check_expired_check_outs  # NOQA
 # This import is required so that celerybeat can find the task
 

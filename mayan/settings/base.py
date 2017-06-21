@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     # 'folders',
     'linking',
     'mailer',
+    'mayan_task_manager',
     'metadata',
     'mirroring',
     'motd',
