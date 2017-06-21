@@ -45,7 +45,7 @@ class GenericDocumentViewTestCase(GenericViewTestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=file_object
+                file_object=file_object, label=TEST_SMALL_DOCUMENT_FILENAME
             )
 
     def tearDown(self):
