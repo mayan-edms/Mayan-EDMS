@@ -23,9 +23,10 @@ from rest_api.classes import APIEndPoint
 
 from .handlers import initialize_new_ocr_settings, post_version_upload_ocr
 from .links import (
-    link_document_content, link_document_submit, link_document_submit_all,
-    link_document_submit_multiple, link_document_type_ocr_settings,
-    link_document_type_submit, link_entry_list
+    link_document_content, link_document_ocr_erros_list, link_document_submit,
+    link_document_submit_all, link_document_submit_multiple,
+    link_document_type_ocr_settings, link_document_type_submit,
+    link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .queues import *  # NOQA
@@ -127,6 +128,12 @@ class OCRApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
+        )
+        menu_secondary.bind_links(
+            links=(link_document_content, link_document_ocr_erros_list,),
+            sources=(
+                'ocr:document_content', 'ocr:document_ocr_error_list'
+            )
         )
         menu_secondary.bind_links(
             links=(link_entry_list,),

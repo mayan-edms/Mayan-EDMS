@@ -28,7 +28,8 @@ class DocumentTypeSettings(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionOCRError(models.Model):
     document_version = models.ForeignKey(
-        DocumentVersion, verbose_name=_('Document version')
+        DocumentVersion, related_name='ocr_errors',
+        verbose_name=_('Document version')
     )
     datetime_submitted = models.DateTimeField(
         auto_now=True, db_index=True, verbose_name=_('Date time submitted')

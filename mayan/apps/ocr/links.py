@@ -36,3 +36,8 @@ link_entry_list = Link(
     icon='fa fa-file-text-o', permissions=(permission_ocr_document,),
     text=_('OCR errors'), view='ocr:entry_list'
 )
+link_document_ocr_erros_list = Link(
+    args='resolved_object.id', icon='fa fa-file-text-o',
+    permissions=(permission_ocr_content_view,), text=_('OCR errors'),
+    view='ocr:document_ocr_error_list'
+)

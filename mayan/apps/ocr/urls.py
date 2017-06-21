@@ -6,8 +6,8 @@ from .api_views import (
     APIDocumentOCRView, APIDocumentPageContentView, APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentAllSubmitView, DocumentOCRContent, DocumentSubmitView,
-    DocumentSubmitManyView, DocumentTypeSettingsEditView,
+    DocumentAllSubmitView, DocumentOCRContent, DocumentOCRErrorsListView,
+    DocumentSubmitView, DocumentSubmitManyView, DocumentTypeSettingsEditView,
     DocumentTypeSubmitView, EntryListView
 )
 
@@ -37,7 +37,10 @@ urlpatterns = [
         DocumentTypeSettingsEditView.as_view(),
         name='document_type_ocr_settings'
     ),
-
+    url(
+        r'^documents/(?P<pk>\d+)/ocr/errors/$',
+        DocumentOCRErrorsListView.as_view(), name='document_ocr_error_list'
+    ),
     url(r'^all/$', EntryListView.as_view(), name='entry_list'),
 ]
 
