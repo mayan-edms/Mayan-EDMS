@@ -268,8 +268,6 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_click_view_kwargs(self, instance):
-        #first_page = instance.pages.first()
-        #if first_page:
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,
@@ -286,8 +284,6 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
             return '#'
 
     def get_preview_view_kwargs(self, instance):
-        #first_page = instance.pages.first()
-        #if first_page:
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,

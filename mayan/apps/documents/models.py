@@ -473,7 +473,7 @@ class DocumentVersion(models.Model):
             if degrees:
                 Transformation.objects.add_for_model(
                     obj=page, transformation=TransformationRotate,
-                    arguments='{{"degrees": {}}}'.format(360-degrees)
+                    arguments='{{"degrees": {}}}'.format(360 - degrees)
                 )
 
     def get_intermidiate_file(self):
