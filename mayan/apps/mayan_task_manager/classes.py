@@ -40,7 +40,11 @@ class Task(object):
         return force_text(self.task_type)
 
     def get_time_started(self):
-        return now() - timedelta(seconds=monotonic() - self.kwargs['time_start'])
+        time_start = self.kwargs.get('time_start')
+        if time_start:
+            return now() - timedelta(seconds=monotonic() - self.kwargs['time_start'])
+        else:
+            return None
 
 
 @python_2_unicode_compatible
