@@ -2,7 +2,7 @@
 Mayan EDMS v2.4 release notes
 =============================
 
-Released: June XX, 2017
+Released: June 23, 2017
 
 What's new
 ==========
@@ -61,7 +61,7 @@ Index by workflow state
 Support was added to update the a document indexes from workflow state changes.
 To make workflow referencing easier from the index template, a new fields was
 added to the workflow model called internal_name. For example, for a workflow
-called `Publishing Workflow` with an internal name of `publishing_workflow',
+called `Publishing Workflow` with an internal name of `publishing_workflow`,
 use the following string to reference the current state in an index::
 
     {{ document.workflow.publishing_workflow.get_current_state }}

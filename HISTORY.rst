@@ -1,5 +1,5 @@
-XX (2017-XX-XX)
-===============
+2.4 (2017-06-23)
+================
 - Add Django-mathfilters.
 - Improve render of documents with no pages.
 - Add SANE scanner document source.
