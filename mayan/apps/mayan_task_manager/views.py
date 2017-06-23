@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import SingleObjectListView
@@ -32,8 +33,18 @@ class QueueActiveTaskListView(SingleObjectListView):
     def get_object(self):
         return CeleryQueue.get(queue_name=self.kwargs['queue_name'])
 
-    def get_queryset(self):
+    def get_task_list(self):
         return self.get_object().get_active_tasks()
+
+    def get_queryset(self):
+        try:
+            return self.get_task_list()
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _('Unable to retrieve task list; %s') % exception
+            )
+            return ()
 
 
 class QueueScheduledTaskListView(QueueActiveTaskListView):
@@ -44,7 +55,7 @@ class QueueScheduledTaskListView(QueueActiveTaskListView):
             'title': _('Scheduled tasks in queue: %s') % self.get_object()
         }
 
-    def get_queryset(self):
+    def get_task_list(self):
         return self.get_object().get_scheduled_tasks()
 
 
@@ -56,5 +67,5 @@ class QueueReservedTaskListView(QueueActiveTaskListView):
             'title': _('Reserved tasks in queue: %s') % self.get_object()
         }
 
-    def get_queryset(self):
+    def get_task_list(self):
         return self.get_object().get_reserved_tasks()
