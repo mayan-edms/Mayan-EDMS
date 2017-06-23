@@ -445,25 +445,25 @@ Release checklist
 
     $ make translations_compile
 
-3. Bump version in `mayan/__init__.py`
-4. Update requirements version in `setup.py`
-5. Write release notes.
-6. Update changelog.
-7. Tag version::
-
-    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
-
-8. Push tag upstream::
-
-    $ git push --tags
-
-9. Build source package and test::
+3. Write release notes.
+4. Update changelog.
+5. Update requirements version in `setup.py`
+6. Bump version in `mayan/__init__.py`
+7. Build source package and test::
 
     $ make test_sdist_via_docker_ubuntu
 
-10. Build wheel package and test::
+8. Build wheel package and test::
 
     $ make test_whell_via_docker_ubuntu
+
+9. Tag version::
+
+    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
+
+10. Push tag upstream::
+
+    $ git push --tags
 
 11. Build and upload a test release::
 
