@@ -176,7 +176,7 @@ docker_services_on:
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
-	sleep 1
+	sleep 2
 	./manage.py initialsetup --settings=mayan.settings.testing.docker
 
 docker_services_off:
