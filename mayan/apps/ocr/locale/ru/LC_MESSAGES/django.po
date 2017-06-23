@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:50-0400\n"
+"POT-Creation-Date: 2017-06-23 01:40-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -22,20 +22,20 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
+#: apps.py:55 apps.py:113 apps.py:117 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "Распознавание текста"
 
-#: apps.py:86
+#: apps.py:88
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:90
+#: apps.py:92
 msgid "Added"
 msgstr "Добавлено"
 
-#: apps.py:94 models.py:36
+#: apps.py:96 models.py:37
 msgid "Result"
 msgstr "Результат"
 
@@ -64,7 +64,7 @@ msgstr "Настройки распознавания"
 msgid "OCR documents per type"
 msgstr "Распознавание документов с определенным типом"
 
-#: links.py:37 views.py:154
+#: links.py:37 links.py:41 views.py:154
 msgid "OCR errors"
 msgstr "Ошибки распознавания"
 
@@ -84,35 +84,35 @@ msgstr "Настройки типа документа"
 msgid "Document types settings"
 msgstr "Настройки типов документа"
 
-#: models.py:31
+#: models.py:32
 msgid "Document version"
 msgstr "Версия документа"
 
-#: models.py:34
+#: models.py:35
 msgid "Date time submitted"
 msgstr "Дата и время отправления"
 
-#: models.py:43
+#: models.py:44
 msgid "Document Version OCR Error"
 msgstr "Ошибка распознавания для версии документа"
 
-#: models.py:44
+#: models.py:45
 msgid "Document Version OCR Errors"
 msgstr "Ошибки распознавания для версий документов"
 
-#: models.py:54
+#: models.py:55
 msgid "Document page"
 msgstr "Страница документа"
 
-#: models.py:56
+#: models.py:57
 msgid "Content"
 msgstr "Содержимое"
 
-#: models.py:62
+#: models.py:63
 msgid "Document page content"
 msgstr "Содержимое страницы документа"
 
-#: models.py:63
+#: models.py:64
 msgid "Document pages contents"
 msgstr "Содержимое страниц документа"
 
@@ -137,6 +137,12 @@ msgstr "Просмотр распознанного текста докумен�
 #: permissions.py:18
 msgid "Change document type OCR settings"
 msgstr "Изменить настройки распознавания документа"
+
+#: queues.py:9
+#, fuzzy
+#| msgid "Document version"
+msgid "Document version OCR"
+msgstr "Версия документа"
 
 #: settings.py:12
 msgid ""
@@ -198,6 +204,12 @@ msgstr "Редактировать настройки распознавания
 #: views.py:147
 #, python-format
 msgid "OCR result for document: %s"
+msgstr "Результат распозанвания для документа: %s"
+
+#: views.py:172
+#, fuzzy, python-format
+#| msgid "OCR result for document: %s"
+msgid "OCR errors for document: %s"
 msgstr "Результат распозанвания для документа: %s"
 
 #~ msgid "pdftotext version"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,31 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:51 permissions.py:8 settings.py:7
+#: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Document signatures"
 
-#: apps.py:91
+#: apps.py:92
 msgid "Date"
 msgstr ""
 
-#: apps.py:94 models.py:47
+#: apps.py:95 models.py:47
 #, fuzzy
 #| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr "Key ID: %s"
 
-#: apps.py:98 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:51
 #, fuzzy
 #| msgid "Signature ID: %s"
 msgid "Signature ID"
 msgstr "Signature ID: %s"
 
-#: apps.py:99 forms.py:76
+#: apps.py:100 forms.py:76
 msgid "None"
 msgstr ""
 
-#: apps.py:102
+#: apps.py:103
 msgid "Type"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Verify all documents"
 msgstr "Verify document signatures"
 
-#: links.py:39
+#: links.py:39 queues.py:8
 #, fuzzy
 msgid "Signatures"
 msgstr "signatures"
@@ -249,6 +249,29 @@ msgstr "Verify document signatures"
 #| msgid "Verify document signatures"
 msgid "View details of document signatures"
 msgstr "Verify document signatures"
+
+#: queues.py:11
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify key signatures"
+msgstr "Verify document signatures"
+
+#: queues.py:15
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Unverify key signatures"
+msgstr "Verify document signatures"
+
+#: queues.py:19
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify document version"
+msgstr "Verify document signatures"
+
+#: queues.py:24
+#, fuzzy
+msgid "Verify missing embedded signature"
+msgstr "document version signature"
 
 #: views.py:60 views.py:155
 msgid "Passphrase is needed to unlock this key."

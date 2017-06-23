@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2016-05-20 22:09+0000\n"
 "Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -24,27 +24,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:51 permissions.py:8 settings.py:7
+#: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Dokumentenunterschriften"
 
-#: apps.py:91
+#: apps.py:92
 msgid "Date"
 msgstr "Datum"
 
-#: apps.py:94 models.py:47
+#: apps.py:95 models.py:47
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
-#: apps.py:98 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:51
 msgid "Signature ID"
 msgstr "Unterschrifts-ID"
 
-#: apps.py:99 forms.py:76
+#: apps.py:100 forms.py:76
 msgid "None"
 msgstr "Nichts"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Type"
 msgstr "Typ"
 
@@ -104,7 +104,7 @@ msgstr "Schlüssel-Typ"
 msgid "Verify all documents"
 msgstr "Alle Dokumente überprüfen"
 
-#: links.py:39
+#: links.py:39 queues.py:8
 msgid "Signatures"
 msgstr "Unterschriften"
 
@@ -215,6 +215,30 @@ msgstr "Dokumentenunterschriften überprüfen"
 #: permissions.py:37
 msgid "View details of document signatures"
 msgstr "Details der Unterschriften des Dokuments"
+
+#: queues.py:11
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify key signatures"
+msgstr "Dokumentenunterschriften überprüfen"
+
+#: queues.py:15
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Unverify key signatures"
+msgstr "Dokumentenunterschriften überprüfen"
+
+#: queues.py:19
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify document version"
+msgstr "Dokumentenunterschriften überprüfen"
+
+#: queues.py:24
+#, fuzzy
+#| msgid "Document version embedded signature"
+msgid "Verify missing embedded signature"
+msgstr "Dokumentenversion der eingebetteten Unterschrift"
 
 #: views.py:60 views.py:155
 msgid "Passphrase is needed to unlock this key."

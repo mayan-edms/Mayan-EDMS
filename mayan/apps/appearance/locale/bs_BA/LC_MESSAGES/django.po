@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:48-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:12
+#: apps.py:12 settings.py:9
 msgid "Appearance"
 msgstr ""
 
@@ -112,17 +112,17 @@ msgstr "Akcije"
 msgid "Toggle Dropdown"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:7
+#: templates/appearance/calculate_form_title.html:11
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "Detalji o: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/calculate_form_title.html:14
 #, python-format
 msgid "Edit: %(object)s"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:12
+#: templates/appearance/calculate_form_title.html:16
 msgid "Create"
 msgstr "Kreirati"
 

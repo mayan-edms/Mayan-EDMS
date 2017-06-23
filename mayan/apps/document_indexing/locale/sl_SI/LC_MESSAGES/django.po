@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2017-05-28 19:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "None"
 msgstr "Brez"
 
-#: admin.py:26 apps.py:99 links.py:48 models.py:49
+#: admin.py:26 apps.py:95 links.py:48 models.py:49
 msgid "Document types"
 msgstr ""
 
@@ -32,31 +32,31 @@ msgstr ""
 msgid "Document indexing"
 msgstr ""
 
-#: apps.py:85 models.py:33
+#: apps.py:81 models.py:33
 msgid "Label"
 msgstr "Oznaka"
 
-#: apps.py:86 models.py:38
+#: apps.py:82 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:88 apps.py:108 models.py:46 models.py:165
+#: apps.py:84 apps.py:104 models.py:46 models.py:165
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:93 apps.py:123 apps.py:136
+#: apps.py:89 apps.py:119 apps.py:132
 msgid "Items"
 msgstr ""
 
-#: apps.py:104
+#: apps.py:100
 msgid "Level"
 msgstr ""
 
-#: apps.py:112
+#: apps.py:108
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:119 apps.py:130
+#: apps.py:115 apps.py:126
 msgid "Node"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgid "New child node"
 msgstr ""
 
 #: models.py:37
-msgid "This values will be used by other apps to reference this index."
+msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:43
@@ -149,50 +149,50 @@ msgstr ""
 msgid "Root"
 msgstr ""
 
-#: models.py:236
+#: models.py:240
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:261
+#: models.py:268
 msgid "Index node template"
 msgstr ""
 
-#: models.py:262
+#: models.py:269
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:270
+#: models.py:277
 msgid "Index template node"
 msgstr ""
 
-#: models.py:273
+#: models.py:280
 msgid "Value"
 msgstr ""
 
-#: models.py:277
+#: models.py:284
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: models.py:363
+#: models.py:370
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:364
+#: models.py:371
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:372
+#: models.py:379
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:373
+#: models.py:380
 msgid "Document indexes node instances"
 msgstr ""
 
-#: permissions.py:7
+#: permissions.py:7 queues.py:8
 msgid "Indexing"
 msgstr ""
 
@@ -215,6 +215,28 @@ msgstr ""
 #: permissions.py:22
 msgid "Rebuild document indexes"
 msgstr ""
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr ""
+
+#: queues.py:16
+#, fuzzy
+#| msgid "Document"
+msgid "Remove document"
+msgstr "document"
+
+#: queues.py:20
+#, fuzzy
+#| msgid "Document"
+msgid "Index document"
+msgstr "document"
+
+#: queues.py:24
+#, fuzzy
+#| msgid "Rebuild all indexes?"
+msgid "Rebuild index"
+msgstr "rebuild indexes"
 
 #: views.py:49
 #, python-format
@@ -280,9 +302,6 @@ msgstr ""
 
 #~ msgid "On large databases this operation may take some time to execute."
 #~ msgstr "On large databases this operation may take some time to execute."
-
-#~ msgid "Rebuild all indexes?"
-#~ msgstr "rebuild indexes"
 
 #~ msgid "Index list"
 #~ msgstr "index list"
@@ -375,9 +394,6 @@ msgstr ""
 
 #~ msgid "Available functions: %s"
 #~ msgstr "Available functions: %s"
-
-#~ msgid "Document"
-#~ msgstr "document"
 
 #~ msgid "Document rename count"
 #~ msgstr "document rename count"

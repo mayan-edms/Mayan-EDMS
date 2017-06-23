@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:12
+#: apps.py:12 settings.py:9
 msgid "Appearance"
 msgstr ""
 
@@ -111,17 +111,17 @@ msgstr ""
 msgid "Toggle Dropdown"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:7
+#: templates/appearance/calculate_form_title.html:11
 #, python-format
 msgid "Details for: %(object)s"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/calculate_form_title.html:14
 #, python-format
 msgid "Edit: %(object)s"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:12
+#: templates/appearance/calculate_form_title.html:16
 msgid "Create"
 msgstr ""
 

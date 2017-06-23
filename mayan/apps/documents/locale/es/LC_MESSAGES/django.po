@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2017-04-21 17:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,103 +20,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:87 apps.py:231 apps.py:453 menus.py:8 models.py:229 permissions.py:7
+#: apps.py:88 apps.py:232 apps.py:454 menus.py:8 models.py:229 permissions.py:7
 #: settings.py:13
 msgid "Documents"
 msgstr "Documentos"
 
-#: apps.py:110
+#: apps.py:111
 msgid "New pages this month"
 msgstr "Nuevas páginas este mes"
 
-#: apps.py:119
+#: apps.py:120
 msgid "New documents this month"
 msgstr "Nuevos documentos este mes"
 
-#: apps.py:128
+#: apps.py:129
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:134 links.py:280 links.py:285 views/document_type_views.py:49
+#: apps.py:135 links.py:280 links.py:285 views/document_type_views.py:49
 msgid "Document types"
 msgstr "Tipos de documentos"
 
-#: apps.py:140 views/document_views.py:69
+#: apps.py:141 views/document_views.py:69
 msgid "Documents in trash"
 msgstr "Documentos en la papelera"
 
-#: apps.py:145
+#: apps.py:146
 msgid "Create a document type"
 msgstr "Crear tipo un tipo de documento"
 
-#: apps.py:147
+#: apps.py:148
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:154 models.py:65 models.py:157 models.py:639 search.py:21
+#: apps.py:155 models.py:65 models.py:157 models.py:649 search.py:21
 #: search.py:39
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:159
+#: apps.py:160
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:160 apps.py:262 search.py:19 search.py:36
+#: apps.py:161 apps.py:263 search.py:19 search.py:36
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: apps.py:202 apps.py:212 apps.py:219 apps.py:243
+#: apps.py:203 apps.py:213 apps.py:220 apps.py:244
 msgid "Thumbnail"
 msgstr "Foto miniatura"
 
-#: apps.py:208 apps.py:226 apps.py:250
+#: apps.py:209 apps.py:227 apps.py:251
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:238 models.py:641
+#: apps.py:239 models.py:651
 msgid "Enabled"
 msgstr "Activado"
 
-#: apps.py:253
+#: apps.py:254
 msgid "Date time trashed"
 msgstr "Fecha y hora de envío a papelera  "
 
-#: apps.py:258
+#: apps.py:259
 msgid "Time and date"
 msgstr "Hora y fecha"
 
-#: apps.py:266
+#: apps.py:267
 msgid "Encoding"
 msgstr "Codificación"
 
-#: apps.py:270 models.py:367
+#: apps.py:271 models.py:367
 msgid "Comment"
 msgstr "Comentario"
 
-#: apps.py:456
+#: apps.py:457
 msgid "New documents per month"
 msgstr "Nuevos documentos por mes"
 
-#: apps.py:463
+#: apps.py:464
 msgid "New document versions per month"
 msgstr "Nuevas versiones de documentos por mes"
 
-#: apps.py:470
+#: apps.py:471
 msgid "New document pages per month"
 msgstr "Nuevas páginas de documentos por mes"
 
-#: apps.py:477
+#: apps.py:478
 msgid "Total documents at each month"
 msgstr "Total de documentos cada mes"
 
-#: apps.py:484
+#: apps.py:485
 msgid "Total document versions at each month"
 msgstr "Total de versiones de documentos cada mes"
 
-#: apps.py:491
+#: apps.py:492
 msgid "Total document pages at each month"
 msgstr "Total de páginas de documentos cada mes"
 
@@ -209,7 +209,7 @@ msgstr "Suma de comprobación"
 msgid "Pages"
 msgstr "Páginas"
 
-#: forms.py:179 models.py:105 models.py:153 models.py:636 search.py:16
+#: forms.py:179 models.py:105 models.py:153 models.py:646 search.py:16
 #: search.py:32
 msgid "Document type"
 msgstr "Tipo de documento"
@@ -311,7 +311,7 @@ msgstr "Descarga de versión"
 msgid "All documents"
 msgstr "Todos los documentos"
 
-#: links.py:154 models.py:869 views/document_views.py:341
+#: links.py:154 models.py:889 views/document_views.py:341
 msgid "Recent documents"
 msgstr "Documentos recientes"
 
@@ -352,7 +352,7 @@ msgstr "Página previa"
 msgid "Next page"
 msgstr "Próxima página"
 
-#: links.py:205 models.py:228 models.py:361 models.py:851
+#: links.py:205 models.py:228 models.py:361 models.py:871
 msgid "Document"
 msgstr "Documento"
 
@@ -392,7 +392,7 @@ msgstr "Editar"
 msgid "Add quick label to document type"
 msgstr "Añadir nombre típico al tipo de documento"
 
-#: links.py:276 models.py:647
+#: links.py:276 models.py:657
 msgid "Quick labels"
 msgstr "Nombres típicos "
 
@@ -483,52 +483,52 @@ msgstr "Marca de tiempo"
 msgid "File"
 msgstr "Archivo"
 
-#: models.py:453 models.py:454 models.py:660
+#: models.py:454 models.py:455 models.py:670
 msgid "Document version"
 msgstr "Versión de documento"
 
-#: models.py:646
+#: models.py:656
 msgid "Quick label"
 msgstr "Etiqueta rapida"
 
-#: models.py:664
+#: models.py:674
 msgid "Page number"
 msgstr "Número de página"
 
-#: models.py:669
+#: models.py:679
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Página %(page_num)d de %(total_pages)d de %(document)s "
 
-#: models.py:685 models.py:820 models.py:837
+#: models.py:695 models.py:840 models.py:857
 msgid "Document page"
 msgstr "Página de documento"
 
-#: models.py:686 models.py:838
+#: models.py:696 models.py:858
 msgid "Document pages"
 msgstr "Páginas de documento"
 
-#: models.py:822
+#: models.py:842
 msgid "Filename"
 msgstr "Nombre del archivo"
 
-#: models.py:825
+#: models.py:845
 msgid "Document page cached image"
 msgstr ""
 
-#: models.py:826
+#: models.py:846
 msgid "Document page cached images"
 msgstr ""
 
-#: models.py:848
+#: models.py:868
 msgid "User"
 msgstr "Usuario"
 
-#: models.py:854
+#: models.py:874
 msgid "Accessed"
 msgstr "Accedido"
 
-#: models.py:868
+#: models.py:888
 msgid "Recent document"
 msgstr "Documento reciente"
 
@@ -600,6 +600,62 @@ msgstr "Editar tipos de documentos"
 msgid "View document types"
 msgstr "Ver los tipos de documentos"
 
+#: queues.py:9
+msgid "Converter"
+msgstr ""
+
+#: queues.py:12
+#, fuzzy
+#| msgid "Document version"
+msgid "Documents periodic"
+msgstr "Versión de documento"
+
+#: queues.py:15
+msgid "Uploads"
+msgstr ""
+
+#: queues.py:20
+#, fuzzy
+#| msgid "Change document type of: %s"
+msgid "Check document type delete periods"
+msgstr "Create document types"
+
+#: queues.py:24
+#, fuzzy
+#| msgid "Change document type of: %s"
+msgid "Check document type trash periods"
+msgstr "Create document types"
+
+#: queues.py:28
+#, fuzzy
+#| msgid "Delete documents"
+msgid "Delete document stubs"
+msgstr "Eliminar documentos"
+
+#: queues.py:33
+#, fuzzy
+#| msgid "Clear document image cache"
+msgid "Clear image cache"
+msgstr "Borrar la caché de imágenes de documentos"
+
+#: queues.py:38
+#, fuzzy
+#| msgid "Document page image"
+msgid "Generate document page image"
+msgstr "Imagen de página de documento"
+
+#: queues.py:43
+#, fuzzy
+#| msgid "Update office documents' page count"
+msgid "Update document page count"
+msgstr "update office documents' page count"
+
+#: queues.py:47
+#, fuzzy
+#| msgid "upload new documents"
+msgid "Upload new document version"
+msgstr "upload new documents"
+
 #: settings.py:29
 msgid ""
 "Maximum number of recent (created, edited, viewed) documents to remember per "
@@ -644,24 +700,24 @@ msgstr "Idioma por defecto para documentos (en formato ISO639-2)."
 msgid "List of supported document languages."
 msgstr "Lista de idiomas de documento apoyados."
 
-#: views/document_page_views.py:49
+#: views/document_page_views.py:50
 #, python-format
 msgid "Pages for document: %s"
 msgstr "Pagínas para documento: %s"
 
-#: views/document_page_views.py:101
+#: views/document_page_views.py:102
 msgid "Unknown view keyword argument schema, unable to redirect."
 msgstr ""
 
-#: views/document_page_views.py:133
+#: views/document_page_views.py:134
 msgid "There are no more pages in this document"
 msgstr "No hay más páginas en este documento"
 
-#: views/document_page_views.py:150
+#: views/document_page_views.py:151
 msgid "You are already at the first page of this document"
 msgstr "Usted ya está en la primera página de este documento"
 
-#: views/document_page_views.py:178
+#: views/document_page_views.py:179
 #, python-format
 msgid "Image of: %s"
 msgstr "Imágen de: %s"
@@ -1262,9 +1318,6 @@ msgstr "Imagen de página de documento"
 #~ msgid "Document data"
 #~ msgstr "document data"
 
-#~ msgid "Change document type of: %s"
-#~ msgstr "Create document types"
-
 #~ msgid "On large databases this operation may take some time to execute."
 #~ msgstr "On large databases this operation may take some time to execute."
 
@@ -1289,9 +1342,6 @@ msgstr "Imagen de página de documento"
 
 #~ msgid "Use the new version filename as the document filename"
 #~ msgstr "Use the new version filename as the document filename"
-
-#~ msgid "Update office documents' page count"
-#~ msgstr "update office documents' page count"
 
 #~ msgid ""
 #~ "Update the page count of the office type documents.  This is useful when "
@@ -1447,9 +1497,6 @@ msgstr "Imagen de página de documento"
 
 #~ msgid "Document statistics"
 #~ msgstr "Document statistics"
-
-#~ msgid "upload new documents"
-#~ msgstr "upload new documents"
 
 #~ msgid "clone metadata"
 #~ msgstr "clone metadata"

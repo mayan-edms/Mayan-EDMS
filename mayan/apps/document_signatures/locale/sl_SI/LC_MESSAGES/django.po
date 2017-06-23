@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2016-04-27 18:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -20,27 +20,27 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
-#: apps.py:51 permissions.py:8 settings.py:7
+#: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr ""
 
-#: apps.py:91
+#: apps.py:92
 msgid "Date"
 msgstr ""
 
-#: apps.py:94 models.py:47
+#: apps.py:95 models.py:47
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:98 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:51
 msgid "Signature ID"
 msgstr ""
 
-#: apps.py:99 forms.py:76
+#: apps.py:100 forms.py:76
 msgid "None"
 msgstr "Brez"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Type"
 msgstr ""
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Verify all documents"
 msgstr ""
 
-#: links.py:39
+#: links.py:39 queues.py:8
 msgid "Signatures"
 msgstr ""
 
@@ -210,6 +210,22 @@ msgstr ""
 
 #: permissions.py:37
 msgid "View details of document signatures"
+msgstr ""
+
+#: queues.py:11
+msgid "Verify key signatures"
+msgstr ""
+
+#: queues.py:15
+msgid "Unverify key signatures"
+msgstr ""
+
+#: queues.py:19
+msgid "Verify document version"
+msgstr ""
+
+#: queues.py:24
+msgid "Verify missing embedded signature"
 msgstr ""
 
 #: views.py:60 views.py:155

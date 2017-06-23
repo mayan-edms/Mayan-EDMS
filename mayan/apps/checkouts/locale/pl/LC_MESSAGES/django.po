@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -22,11 +22,11 @@ msgstr ""
 "%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:35 links.py:30
+#: apps.py:36 links.py:30
 msgid "Checkouts"
 msgstr "Blokady"
 
-#: apps.py:54
+#: apps.py:55
 msgid "Checkedout documents"
 msgstr ""
 
@@ -159,6 +159,18 @@ msgstr "Zablokuj dokumenty"
 msgid "Check out details view"
 msgstr ""
 
+#: queues.py:8
+#, fuzzy
+#| msgid "Checkout user"
+msgid "Checkouts periodic"
+msgstr "checkout user"
+
+#: queues.py:12
+#, fuzzy
+#| msgid "Checked out"
+msgid "Check expired checkouts"
+msgstr "Zablokowany"
+
 #: views.py:53
 #, python-format
 msgid "Error trying to check out document; %s"
@@ -234,9 +246,6 @@ msgstr "Okres"
 
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
-
-#~ msgid "Checkout user"
-#~ msgstr "checkout user"
 
 #~ msgid "Are you sure you wish to check in document: %s?"
 #~ msgstr "Are you sure you wish to check in document: %s?"

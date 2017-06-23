@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "Arguments"
 msgstr ""
 
-#: backends/python.py:86 backends/python.py:100
+#: backends/python.py:100 backends/python.py:114
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr ""
@@ -50,47 +50,47 @@ msgstr ""
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
-#: classes.py:290
+#: classes.py:294
 msgid "Crop"
 msgstr ""
 
-#: classes.py:303
+#: classes.py:307
 msgid "Flip"
 msgstr ""
 
-#: classes.py:314
+#: classes.py:318
 msgid "Gaussian blur"
 msgstr ""
 
-#: classes.py:325
+#: classes.py:329
 msgid "Mirror"
 msgstr ""
 
-#: classes.py:336
+#: classes.py:340
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: classes.py:363
+#: classes.py:367
 msgid "Rotate"
 msgstr "Завъртете"
 
-#: classes.py:382
+#: classes.py:386
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: classes.py:393
+#: classes.py:397
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: classes.py:404
+#: classes.py:408
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: classes.py:414
+#: classes.py:418
 msgid "Unsharp masking"
 msgstr ""
 
-#: classes.py:430
+#: classes.py:434
 msgid "Zoom"
 msgstr "Увеличаване"
 

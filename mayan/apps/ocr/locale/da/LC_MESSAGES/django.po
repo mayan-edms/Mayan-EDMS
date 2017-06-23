@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:50-0400\n"
+"POT-Creation-Date: 2017-06-23 01:40-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -21,20 +21,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
+#: apps.py:55 apps.py:113 apps.py:117 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:86
+#: apps.py:88
 msgid "Document"
 msgstr ""
 
-#: apps.py:90
+#: apps.py:92
 msgid "Added"
 msgstr ""
 
-#: apps.py:94 models.py:36
+#: apps.py:96 models.py:37
 msgid "Result"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "OCR documents per type"
 msgstr ""
 
-#: links.py:37 views.py:154
+#: links.py:37 links.py:41 views.py:154
 msgid "OCR errors"
 msgstr ""
 
@@ -83,35 +83,35 @@ msgstr ""
 msgid "Document types settings"
 msgstr ""
 
-#: models.py:31
+#: models.py:32
 msgid "Document version"
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "Date time submitted"
 msgstr ""
 
-#: models.py:43
+#: models.py:44
 msgid "Document Version OCR Error"
 msgstr ""
 
-#: models.py:44
+#: models.py:45
 msgid "Document Version OCR Errors"
 msgstr ""
 
-#: models.py:54
+#: models.py:55
 msgid "Document page"
 msgstr ""
 
-#: models.py:56
+#: models.py:57
 msgid "Content"
 msgstr "Indhold"
 
-#: models.py:62
+#: models.py:63
 msgid "Document page content"
 msgstr ""
 
-#: models.py:63
+#: models.py:64
 msgid "Document pages contents"
 msgstr ""
 
@@ -136,6 +136,12 @@ msgstr ""
 #: permissions.py:18
 msgid "Change document type OCR settings"
 msgstr ""
+
+#: queues.py:9
+#, fuzzy
+#| msgid "Document queues: %d"
+msgid "Document version OCR"
+msgstr "Document queues: %d"
 
 #: settings.py:12
 msgid ""
@@ -193,6 +199,11 @@ msgstr ""
 #: views.py:147
 #, python-format
 msgid "OCR result for document: %s"
+msgstr ""
+
+#: views.py:172
+#, python-format
+msgid "OCR errors for document: %s"
 msgstr ""
 
 #~ msgid "pdftotext version"
@@ -301,9 +312,6 @@ msgstr ""
 
 #~ msgid "OCR queue statistics"
 #~ msgstr "OCR statistics"
-
-#~ msgid "Document queues: %d"
-#~ msgstr "Document queues: %d"
 
 #~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 #~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"

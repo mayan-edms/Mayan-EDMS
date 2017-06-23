@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,54 +11,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2017-05-28 19:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "Ninguno"
 
-#: admin.py:26 apps.py:99 links.py:48 models.py:49
+#: admin.py:26 apps.py:95 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Tipos de documento"
 
 #: apps.py:49
-#| msgid "document indexes"
 msgid "Document indexing"
 msgstr "Indexación de documentos"
 
-#: apps.py:85 models.py:33
+#: apps.py:81 models.py:33
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:86 models.py:38
+#: apps.py:82 models.py:38
 msgid "Slug"
 msgstr "Identificador"
 
-#: apps.py:88 apps.py:108 models.py:46 models.py:165
+#: apps.py:84 apps.py:104 models.py:46 models.py:165
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps.py:93 apps.py:123 apps.py:136
+#: apps.py:89 apps.py:119 apps.py:132
 msgid "Items"
 msgstr "Elementos"
 
-#: apps.py:104
+#: apps.py:100
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:112
+#: apps.py:108
 msgid "Has document links?"
 msgstr "El documento tiene enlaces?"
 
-#: apps.py:119 apps.py:130
+#: apps.py:115 apps.py:126
 msgid "Node"
 msgstr "Nodo"
 
@@ -104,14 +104,18 @@ msgid "New child node"
 msgstr "nuevo nodo secundario"
 
 #: models.py:37
-#| msgid "Internal name used to reference this index."
-msgid "This values will be used by other apps to reference this index."
-msgstr "Estos valores serán utilizados por otras aplicaciones para hacer referencia a este índice."
+#, fuzzy
+#| msgid "This values will be used by other apps to reference this index."
+msgid "This value will be used by other apps to reference this index."
+msgstr ""
+"Estos valores serán utilizados por otras aplicaciones para hacer referencia "
+"a este índice."
 
 #: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Hace que este índice sea visible y actualizado cuando los datos de "
+"documentos cambien."
 
 #: models.py:117 models.py:149
 msgid "Index"
@@ -129,7 +133,9 @@ msgstr "Instancias de índices"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
+msgstr ""
+"Introduzca una plantilla para generar. Use el lenguaje de plantillas de "
+"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:157
 msgid "Indexing expression"
@@ -137,13 +143,17 @@ msgstr "expresión de indexación"
 
 #: models.py:162
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
+msgstr ""
+"Hace que este nodo sea visible y actualizado cuando los datos de los "
+"documentos son cambiados."
 
 #: models.py:170
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
+"no como un padre para otros nodos secundarios."
 
 #: models.py:173
 msgid "Link documents"
@@ -153,50 +163,52 @@ msgstr "enlace de documentos"
 msgid "Root"
 msgstr "raíz"
 
-#: models.py:236
+#: models.py:240
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
+msgstr ""
+"Error indexando documento: %(document)s; expresión: %(expression)s; "
+"%(exception)s"
 
-#: models.py:261
+#: models.py:268
 msgid "Index node template"
 msgstr "nodo de plantilla de indice"
 
-#: models.py:262
+#: models.py:269
 msgid "Indexes node template"
 msgstr "nodos de plantillas de índices"
 
-#: models.py:270
+#: models.py:277
 msgid "Index template node"
 msgstr "nodo de plantilla de indice"
 
-#: models.py:273
+#: models.py:280
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:277
+#: models.py:284
 msgid "Documents"
 msgstr "Documentos"
 
-#: models.py:363
+#: models.py:370
 msgid "Index node instance"
 msgstr "índice de nodo de instancia"
 
-#: models.py:364
+#: models.py:371
 msgid "Indexes node instances"
 msgstr "nodos de instancias de indices"
 
-#: models.py:372
+#: models.py:379
 msgid "Document index node instance"
 msgstr "Instancia del nodo del índice de documentos"
 
-#: models.py:373
+#: models.py:380
 msgid "Document indexes node instances"
 msgstr "Instancias de nodos de índices de documentos"
 
-#: permissions.py:7
+#: permissions.py:7 queues.py:8
 msgid "Indexing"
 msgstr "Indexación"
 
@@ -220,9 +232,32 @@ msgstr "Ver los índices de documentos"
 msgid "Rebuild document indexes"
 msgstr "Generar índices de documentos"
 
+#: queues.py:12
+#, fuzzy
+#| msgid "Delete document indexes"
+msgid "Delete empty index nodes"
+msgstr "Eliminar los índices de documentos"
+
+#: queues.py:16
+#, fuzzy
+#| msgid "Link documents"
+msgid "Remove document"
+msgstr "enlace de documentos"
+
+#: queues.py:20
+#, fuzzy
+#| msgid "Link documents"
+msgid "Index document"
+msgstr "enlace de documentos"
+
+#: queues.py:24
+#, fuzzy
+#| msgid "Rebuild indexes"
+msgid "Rebuild index"
+msgstr "reconstruir índices"
+
 #: views.py:49
 #, python-format
-#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr "¿Borrar el indice: %s?"
 
@@ -350,9 +385,11 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -389,11 +426,11 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

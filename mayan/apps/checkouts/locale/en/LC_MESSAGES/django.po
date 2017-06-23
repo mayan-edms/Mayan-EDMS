@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2012-07-10 15:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 links.py:30
+#: apps.py:36 links.py:30
 #, fuzzy
 msgid "Checkouts"
 msgstr "checkouts"
 
-#: apps.py:54
+#: apps.py:55
 #, fuzzy
 #| msgid "checked out documents"
 msgid "Checkedout documents"
@@ -182,6 +182,16 @@ msgstr "Check out documents"
 msgid "Check out details view"
 msgstr "check out date and time"
 
+#: queues.py:8
+#, fuzzy
+msgid "Checkouts periodic"
+msgstr "checkout user"
+
+#: queues.py:12
+#, fuzzy
+msgid "Check expired checkouts"
+msgstr "checked out"
+
 #: views.py:53
 #, python-format
 msgid "Error trying to check out document; %s"
@@ -266,10 +276,6 @@ msgstr ""
 
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
-
-#, fuzzy
-#~ msgid "Checkout user"
-#~ msgstr "checkout user"
 
 #~ msgid "Are you sure you wish to check in document: %s?"
 #~ msgstr "Are you sure you wish to check in document: %s?"

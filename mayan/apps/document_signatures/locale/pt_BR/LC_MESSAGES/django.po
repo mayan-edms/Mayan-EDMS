@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2016-11-17 22:53+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -21,27 +21,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:51 permissions.py:8 settings.py:7
+#: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Assinaturas de documentos"
 
-#: apps.py:91
+#: apps.py:92
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:94 models.py:47
+#: apps.py:95 models.py:47
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: apps.py:98 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:51
 msgid "Signature ID"
 msgstr "ID da assinatura"
 
-#: apps.py:99 forms.py:76
+#: apps.py:100 forms.py:76
 msgid "None"
 msgstr "Nenhum"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Type"
 msgstr "Tipo"
 
@@ -101,7 +101,7 @@ msgstr "Tipo de chave"
 msgid "Verify all documents"
 msgstr "Verificar todos os documentos"
 
-#: links.py:39
+#: links.py:39 queues.py:8
 msgid "Signatures"
 msgstr "assinaturas"
 
@@ -212,6 +212,30 @@ msgstr "Verificar as assinaturas de documentos"
 #: permissions.py:37
 msgid "View details of document signatures"
 msgstr "Ver detalhes da assinatura de documentos"
+
+#: queues.py:11
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify key signatures"
+msgstr "Verificar as assinaturas de documentos"
+
+#: queues.py:15
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Unverify key signatures"
+msgstr "Verificar as assinaturas de documentos"
+
+#: queues.py:19
+#, fuzzy
+#| msgid "Verify document signatures"
+msgid "Verify document version"
+msgstr "Verificar as assinaturas de documentos"
+
+#: queues.py:24
+#, fuzzy
+#| msgid "Document version embedded signature"
+msgid "Verify missing embedded signature"
+msgstr "Versão do documento da assinatura integrada"
 
 #: views.py:60 views.py:155
 msgid "Passphrase is needed to unlock this key."

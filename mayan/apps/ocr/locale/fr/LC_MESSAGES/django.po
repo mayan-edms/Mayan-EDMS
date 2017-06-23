@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:50-0400\n"
+"POT-Creation-Date: 2017-06-23 01:40-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -24,20 +24,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:53 apps.py:111 apps.py:115 links.py:14 permissions.py:7
+#: apps.py:55 apps.py:113 apps.py:117 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "OCR - Reconnaissance de caractères"
 
-#: apps.py:86
+#: apps.py:88
 msgid "Document"
 msgstr "Document"
 
-#: apps.py:90
+#: apps.py:92
 msgid "Added"
 msgstr "Ajouté"
 
-#: apps.py:94 models.py:36
+#: apps.py:96 models.py:37
 msgid "Result"
 msgstr "Résultat"
 
@@ -66,7 +66,7 @@ msgstr "Paramétrage de l'OCR"
 msgid "OCR documents per type"
 msgstr "OCR documents par type"
 
-#: links.py:37 views.py:154
+#: links.py:37 links.py:41 views.py:154
 msgid "OCR errors"
 msgstr "Erreurs OCR"
 
@@ -87,35 +87,35 @@ msgstr "Paramétrages de type de document"
 msgid "Document types settings"
 msgstr "Paramétrages de types de documents"
 
-#: models.py:31
+#: models.py:32
 msgid "Document version"
 msgstr "Version du document"
 
-#: models.py:34
+#: models.py:35
 msgid "Date time submitted"
 msgstr "Date et heure de soumission"
 
-#: models.py:43
+#: models.py:44
 msgid "Document Version OCR Error"
 msgstr "Erreur OCR sur la version du document"
 
-#: models.py:44
+#: models.py:45
 msgid "Document Version OCR Errors"
 msgstr "Erreurs OCR sur la version du document"
 
-#: models.py:54
+#: models.py:55
 msgid "Document page"
 msgstr "Pages du document"
 
-#: models.py:56
+#: models.py:57
 msgid "Content"
 msgstr "Contenu"
 
-#: models.py:62
+#: models.py:63
 msgid "Document page content"
 msgstr "Contenu de la page du document"
 
-#: models.py:63
+#: models.py:64
 msgid "Document pages contents"
 msgstr "Contenu des pages du document"
 
@@ -140,6 +140,12 @@ msgstr "Afficher la transcription du texte depuis le document"
 #: permissions.py:18
 msgid "Change document type OCR settings"
 msgstr "Modifier les paramétrages OCR du type de document"
+
+#: queues.py:9
+#, fuzzy
+#| msgid "Document version"
+msgid "Document version OCR"
+msgstr "Version du document"
 
 #: settings.py:12
 msgid ""
@@ -199,6 +205,12 @@ msgstr "Modifier les paramètres OCR pour le type de document : %s"
 #: views.py:147
 #, python-format
 msgid "OCR result for document: %s"
+msgstr "Résultats de l'OCR pour le document: %s"
+
+#: views.py:172
+#, fuzzy, python-format
+#| msgid "OCR result for document: %s"
+msgid "OCR errors for document: %s"
 msgstr "Résultats de l'OCR pour le document: %s"
 
 #~ msgid "pdftotext version"
