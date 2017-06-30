@@ -1,30 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
-"language/en/)\n"
-"Language: en\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:77 settings.py:9
 msgid "Common"
-msgstr ""
+msgstr "Common"
 
 #: classes.py:106
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Available attributes: \n"
 
 #: forms.py:26
 msgid "Selection"
@@ -32,12 +32,12 @@ msgstr "Selection"
 
 #: forms.py:105
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: generics.py:133
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "Unable to add %(selection)s to %(right_list_title)s."
+msgstr "Unable to transfer selection: %s."
 
 #: generics.py:157
 msgid "Add"
@@ -50,75 +50,72 @@ msgstr "Remove"
 #: generics.py:327
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s not created, error: %(error)s"
 
 #: generics.py:338
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s created successfully."
 
 #: generics.py:363
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s not deleted, error: %(error)s."
 
 #: generics.py:374
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s deleted successfully."
 
 #: generics.py:419
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s not updated, error: %(error)s."
 
 #: generics.py:430
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s updated successfully."
 
 #: links.py:9
-#, fuzzy
 msgid "About this"
-msgstr "about"
+msgstr "About this"
 
 #: links.py:12 views.py:51
 msgid "Check for updates"
-msgstr ""
+msgstr "Check for updates"
 
 #: links.py:16
-#, fuzzy
 msgid "User details"
-msgstr "user details"
+msgstr "User details"
 
 #: links.py:20
-#, fuzzy
 msgid "Edit details"
-msgstr "edit details"
+msgstr "Edit details"
 
 #: links.py:23
 msgid "Locale profile"
-msgstr ""
+msgstr "Locale profile"
 
 #: links.py:27
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Edit locale profile"
 
 #: links.py:31
 msgid "Source code"
-msgstr ""
+msgstr "Source code"
 
 #: links.py:35
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: links.py:39
 msgid "Data filters"
-msgstr ""
+msgstr "Data filters"
 
 #: links.py:43
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:47 views.py:190
 msgid "License"
@@ -126,189 +123,178 @@ msgstr "License"
 
 #: links.py:50 views.py:204
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Other packages licenses"
 
 #: links.py:54
 msgid "Setup"
-msgstr ""
+msgstr "Setup"
 
 #: links.py:57
 msgid "Support"
-msgstr ""
+msgstr "Support"
 
 #: links.py:61 queues.py:10 views.py:234
 msgid "Tools"
-msgstr ""
+msgstr "Tools"
 
 #: literals.py:14
 msgid "Days"
-msgstr ""
+msgstr "Days"
 
 #: literals.py:15
 msgid "Hours"
-msgstr ""
+msgstr "Hours"
 
 #: literals.py:16
 msgid "Minutes"
-msgstr ""
+msgstr "Minutes"
 
 #: menus.py:12
-#, fuzzy
 msgid "About"
-msgstr "about"
+msgstr "About"
 
 #: mixins.py:74
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr ""
+msgstr "Operation performed on %(count)d object"
 
 #: mixins.py:75
 #, python-format
 msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgstr "Operation performed on %(count)d objects"
 
 #: mixins.py:235
 msgid "Object"
-msgstr ""
+msgstr "Object"
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: models.py:25
 msgid "Filename"
-msgstr ""
+msgstr "Filename"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Date time"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Shared uploaded file"
 
 #: models.py:32
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Shared uploaded files"
 
 #: models.py:53
 msgid "User"
-msgstr ""
+msgstr "User"
 
 #: models.py:57
 msgid "Timezone"
-msgstr ""
+msgstr "Timezone"
 
 #: models.py:60
 msgid "Language"
-msgstr ""
+msgstr "Language"
 
 #: models.py:67
 msgid "User locale profile"
-msgstr ""
+msgstr "User locale profile"
 
 #: models.py:68
 msgid "User locale profiles"
-msgstr ""
+msgstr "User locale profiles"
 
 #: queues.py:8
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "Common periodic"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Delete stale uploads"
 
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Automatically enable logging to all apps."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Time to delay background tasks that depend on a database commit to propagate."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "An integer specifying how many objects should be displayed per page."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "A storage backend that all workers can use to share files."
 
 #: settings.py:38
-#, fuzzy
 #| msgid ""
-#| "Temporary directory used site wide to store thumbnails, previews and "
-#| "temporary files.  If none is specified, one will be created using "
-#| "tempfile.mkdtemp()"
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+msgstr "Temporary directory used site wide to store thumbnails, previews and temporary files."
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Enter a valid 'internal name' consisting of letters, numbers, and underscores."
 
 #: views.py:44
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "The version you are using is outdated. The latest version is %s"
 
 #: views.py:48
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Your version is up-to-date."
 
 #: views.py:65
-#, fuzzy
 msgid "Current user details"
-msgstr "current user details"
+msgstr "Current user details"
 
 #: views.py:70
-#, fuzzy
 msgid "Edit current user details"
-msgstr "edit current user details"
+msgstr "Edit current user details"
 
 #: views.py:90
-#, fuzzy
 msgid "Current user locale profile details"
-msgstr "current user details"
+msgstr "Current user locale profile details"
 
 #: views.py:97
-#, fuzzy
 msgid "Edit current user locale profile details"
-msgstr "edit current user details"
+msgstr "Edit current user locale profile details"
 
 #: views.py:153
-#, fuzzy
 #| msgid "Selection"
 msgid "Filter selection"
-msgstr "Selection"
+msgstr "Filter selection"
 
 #: views.py:169
 #, python-format
 msgid "Results for filter: %s"
-msgstr ""
+msgstr "Results for filter: %s"
 
 #: views.py:176
-#, fuzzy
 #| msgid "Page not found"
 msgid "Filter not found"
-msgstr "Page not found"
+msgstr "Filter not found"
 
 #: views.py:217
 msgid "Setup items"
-msgstr ""
+msgstr "Setup items"
 
 #: views.py:261
 msgid "No action selected."
@@ -325,27 +311,21 @@ msgstr "None"
 #~ msgid "Anonymous user"
 #~ msgstr "Anonymous user"
 
-#, fuzzy
 #~ msgid "Account"
 #~ msgstr "account"
 
-#, fuzzy
 #~ msgid "Password"
 #~ msgstr "password"
 
-#, fuzzy
 #~ msgid "Password hash"
 #~ msgstr "password hash"
 
-#, fuzzy
 #~ msgid "Auto admin properties"
 #~ msgstr "auto admin properties"
 
-#, fuzzy
 #~ msgid "Function found"
 #~ msgstr "function found"
 
-#, fuzzy
 #~ msgid "Unable to remove %(selection)s."
 #~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
@@ -355,34 +335,31 @@ msgstr "None"
 #~ msgid "Current user's details updated."
 #~ msgstr "Current user's details updated."
 
-#, fuzzy
 #~ msgid "Current user's locale profile details updated."
 #~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
 #~ msgstr "Email"
 
-#, fuzzy
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
 
-#, fuzzy
 #~ msgid "Change password"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"
@@ -453,11 +430,9 @@ msgstr "None"
 #~ msgid "Details for: %(object)s"
 #~ msgstr "Details for: %(object)s"
 
-#, fuzzy
 #~ msgid "Edit %(object_name)s: %(object)s"
 #~ msgstr "Details for %(object_name)s: %(object)s"
 
-#, fuzzy
 #~ msgid "Edit: %(object)s"
 #~ msgstr "Edit %(object_name)s:"
 
@@ -503,7 +478,6 @@ msgstr "None"
 #~ msgid "Cancel"
 #~ msgstr "Cancel"
 
-#, fuzzy
 #~ msgid "List of %(title)s"
 #~ msgstr "List of %(stripped_title)s"
 
@@ -520,7 +494,6 @@ msgstr "None"
 #~ msgid "Identifier"
 #~ msgstr "Identifier"
 
-#, fuzzy
 #~ msgid "There are no %(title)s"
 #~ msgstr "There are no %(stripped_title)s"
 

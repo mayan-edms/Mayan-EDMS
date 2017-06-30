@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,12 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34 apps.py:70 apps.py:73 forms.py:30 links.py:21 menus.py:8
@@ -122,7 +121,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "O nome deste nível de pasta anexado aos nomes de seus antepassados."
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL do ponto de extremidade da API mostrando os documentos da lista dentro "
 "desta pasta."
@@ -138,8 +138,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"API URL que aponta para um documento em relação à pasta que o armazena. Este "
-"URL é diferente do URL do documento que está de acordo com as normas "
+"API URL que aponta para um documento em relação à pasta que o armazena. Este"
+" URL é diferente do URL do documento que está de acordo com as normas "
 "estabelecidas."
 
 #: templates/cabinets/cabinet_details.html:21

@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27
@@ -62,11 +61,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Allegato a questa mail è il documento: {{ document }}\n"
-"\n"
-" --------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Allegato a questa mail è il documento: {{ document }}\n\n --------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -75,11 +70,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Per accedere al documento fai click sul seguente link: {{ link }}\n"
-"\n"
-"--------\n"
-"Questa mail è stata inviata da %(project_title)s (%(project_website)s)"
+msgstr "Per accedere al documento fai click sul seguente link: {{ link }}\n\n--------\nQuesta mail è stata inviata da %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -110,10 +101,8 @@ msgid "View document mailing error log"
 msgstr "Vedi i log di errore del mailing documenti"
 
 #: queues.py:12
-#, fuzzy
-#| msgid "Send document via email"
 msgid "Send document"
-msgstr "Invia il documento via mail"
+msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
@@ -121,15 +110,11 @@ msgstr "Link per il documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Template per l'oggetto del modulo e-mail per l'invio del collegamento al "
-"documento."
+msgstr "Template per l'oggetto del modulo e-mail per l'invio del collegamento al documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Template per il corpo del modulo e-mail per l'invio del collegamento al "
-"documento."
+msgstr "Template per il corpo del modulo e-mail per l'invio del collegamento al documento."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -146,12 +131,12 @@ msgstr "Template per il corpo del modulo e-mail per l'invio documento."
 #: views.py:35
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "%(count)ddocumento in coda per la consegna via mail"
 
 #: views.py:37
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "%(count)d documenti in coda per la consegna via mail"
 
 #: views.py:48
 msgid "Send"
@@ -160,9 +145,9 @@ msgstr "Invia"
 #: views.py:100
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "%(count)d link documento in coda per la consegna via mail"
 
 #: views.py:102
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)dlink documenti in coda per la consegna via mail"

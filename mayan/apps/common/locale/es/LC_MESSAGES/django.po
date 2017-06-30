@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-05-28 19:52+0000\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:77 settings.py:9
@@ -28,10 +27,8 @@ msgid "Common"
 msgstr "Común"
 
 #: classes.py:106
-#, fuzzy
-#| msgid "Available attributes: "
 msgid "Available attributes: \n"
-msgstr "Atributos disponibles:"
+msgstr ""
 
 #: forms.py:26
 msgid "Selection"
@@ -216,7 +213,7 @@ msgstr "Perfiles de localización de usuario"
 
 #: queues.py:8
 msgid "Default"
-msgstr ""
+msgstr "Por defecto"
 
 #: queues.py:12
 msgid "Common periodic"
@@ -232,29 +229,26 @@ msgstr "Activar bitácoras automáticamente a todas las aplicaciones."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Tiempo para retrasar las tareas de fondo que dependen de la propagación de "
-"información en la base de datos."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Tiempo para retrasar las tareas de fondo que dependen de la propagación de información en la base de datos."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Un número entero que especifica cuántos objetos se debe mostrar por página."
+msgstr "Un número entero que especifica cuántos objetos se debe mostrar por página."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un soporte de almacenamiento que todos los 'workers' puedan utilizar para "
-"compartir archivos."
+msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
 
 #: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Directorio temporero utilizado en todo el sitio para almacenar imágenes en "
-"miniatura, visualizaciones y archivos temporeros."
+msgstr "Directorio temporero utilizado en todo el sitio para almacenar imágenes en miniatura, visualizaciones y archivos temporeros."
 
 #: validators.py:29
 msgid ""
@@ -288,6 +282,7 @@ msgid "Edit current user locale profile details"
 msgstr "Editar los detalles del perfil del usuario local"
 
 #: views.py:153
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Selección de filtro"
 
@@ -297,6 +292,7 @@ msgid "Results for filter: %s"
 msgstr "Resultados para el filtro: %s"
 
 #: views.py:176
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtro no encontrado"
 
@@ -350,11 +346,11 @@ msgstr "Ninguno"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -363,11 +359,11 @@ msgstr "Ninguno"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

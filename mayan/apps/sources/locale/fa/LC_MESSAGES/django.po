@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:40 links.py:35 models.py:159 queues.py:8 settings.py:7 views.py:545
@@ -25,6 +24,7 @@ msgid "Sources"
 msgstr "سورس"
 
 #: apps.py:57
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -100,10 +100,8 @@ msgid "Add new webform source"
 msgstr "اضافه کردن سورس جدید یک وب فرم"
 
 #: links.py:64
-#, fuzzy
-#| msgid "Add new staging folder"
 msgid "Add new SANE scanner"
-msgstr "ایجتد پرونده مرحله ای"
+msgstr ""
 
 #: links.py:69 links.py:83
 msgid "Delete"
@@ -134,10 +132,8 @@ msgid "Flatbed"
 msgstr ""
 
 #: literals.py:10
-#, fuzzy
-#| msgid "Document type"
 msgid "Document feeder"
-msgstr "نوع سند"
+msgstr ""
 
 #: literals.py:17
 msgid "Simplex"
@@ -157,7 +153,7 @@ msgstr ""
 
 #: literals.py:28
 msgid "Color"
-msgstr ""
+msgstr "رنگ"
 
 #: literals.py:36 literals.py:41
 msgid "Always"
@@ -177,9 +173,7 @@ msgstr ""
 
 #: literals.py:55 models.py:391
 msgid "Web form"
-msgstr ""
-"وب فرم "
-"ا                                                                                                                                                                                                                                                                                                                                                                                                          "
+msgstr "وب فرم ا                                                                                                                                                                                                                                                                                                                                                                                                          "
 
 #: literals.py:56 models.py:362
 msgid "Staging folder"
@@ -253,10 +247,8 @@ msgid ""
 msgstr ""
 
 #: models.py:200
-#, fuzzy
-#| msgid "Interval source"
 msgid "Paper source"
-msgstr "فاصله سورس"
+msgstr ""
 
 #: models.py:205
 msgid ""
@@ -277,10 +269,9 @@ msgid "SANE Scanners"
 msgstr ""
 
 #: models.py:259
-#, fuzzy, python-format
-#| msgid "Error deleting staging file; %s"
+#, python-format
 msgid "Error while scanning; %s"
-msgstr "خطای حذف فایل مرحله ای : %s"
+msgstr ""
 
 #: models.py:291 models.py:736
 msgid "Server side filesystem path."
@@ -384,9 +375,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
+msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
 #: models.py:486
 msgid "Port"
@@ -418,6 +407,7 @@ msgid ""
 msgstr ""
 
 #: models.py:504
+#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -519,26 +509,22 @@ msgid "Delete staging files"
 msgstr ""
 
 #: queues.py:11
-#, fuzzy
 #| msgid "Sources setup"
 msgid "Sources periodic"
-msgstr "راه اندازی ویا نصب منابع "
+msgstr ""
 
 #: queues.py:16
-#, fuzzy
-#| msgid "Interval source"
 msgid "Check interval source"
-msgstr "فاصله سورس"
+msgstr ""
 
 #: queues.py:21
 msgid "Handle upload"
 msgstr ""
 
 #: queues.py:25
-#, fuzzy
 #| msgid "Upload sources"
 msgid "Upload document"
-msgstr "Upload sources"
+msgstr ""
 
 #: settings.py:12
 msgid "File path to the scanimage program used to control image scanners."
@@ -546,6 +532,7 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -560,13 +547,12 @@ msgstr ""
 
 #: views.py:107 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
-"بسازید."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
 
 #: views.py:133 views.py:151 views.py:161
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -593,7 +579,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr "نسخه سند جدید که جهت آپلود وارد صف شد بزودی قابل دسترس خواهد بود."
 
 #: views.py:420
@@ -617,6 +604,7 @@ msgstr "ایجاد سورس جدید از نوع %s."
 
 #: views.py:507
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -738,11 +726,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:27
@@ -62,11 +61,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Attaché à ce courriel , voici le - document: {{ document }}\n"
-"\n"
-" --------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Attaché à ce courriel , voici le - document: {{ document }}\n\n --------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -75,11 +70,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Pour acceder à ce document cliquer sur le lien suivant: {{ link }}\n"
-"\n"
-"--------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Pour acceder à ce document cliquer sur le lien suivant: {{ link }}\n\n--------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -110,10 +101,8 @@ msgid "View document mailing error log"
 msgstr "Voir le journal d'erreur du document envoyé"
 
 #: queues.py:12
-#, fuzzy
-#| msgid "Send document via email"
 msgid "Send document"
-msgstr "Envoyer le document par courriel"
+msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -14,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
@@ -92,6 +91,7 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -100,6 +100,7 @@ msgid "Remove documents from folders"
 msgstr "Remover documentos das pastas"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -113,6 +114,7 @@ msgstr ""
 
 #: views.py:49
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
@@ -185,6 +187,7 @@ msgid "Remove"
 msgstr "Remover"
 
 #: views.py:224
+#| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
 msgstr[0] ""
@@ -192,6 +195,7 @@ msgstr[1] ""
 
 #: views.py:235
 #, python-format
+#| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
 msgstr ""
 
@@ -201,11 +205,13 @@ msgstr ""
 
 #: views.py:273
 #, python-format
+#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
 msgstr ""
 
 #: views.py:282
 #, python-format
+#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
 msgstr ""
 
@@ -277,11 +283,11 @@ msgstr ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -314,12 +320,12 @@ msgstr ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

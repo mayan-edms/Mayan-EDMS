@@ -1,57 +1,57 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27
 msgid "Mailer"
-msgstr ""
+msgstr "Mailer"
 
 #: apps.py:39
 msgid "Date and time"
-msgstr ""
+msgstr "Date and time"
 
 #: apps.py:43 models.py:16
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: forms.py:36
 msgid "Email address"
-msgstr ""
+msgstr "Email address"
 
 #: forms.py:37
 msgid "Subject"
-msgstr ""
+msgstr "Subject"
 
 #: forms.py:39
 msgid "Body"
-msgstr ""
+msgstr "Body"
 
 #: links.py:14 links.py:21
 msgid "Email document"
-msgstr ""
+msgstr "Email document"
 
 #: links.py:18 links.py:24
 msgid "Email link"
-msgstr ""
+msgstr "Email link"
 
 #: links.py:28 views.py:23
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Document mailing error log"
 
 #: literals.py:7
 #, python-format
@@ -60,7 +60,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Attached to this email is the document: {{ document }}\n\n --------\n This email has been sent from %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -69,84 +69,84 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "To access this document click on the following link: {{ link }}\n\n--------\n This email has been sent from %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
-msgstr ""
+msgstr "Date time"
 
 #: models.py:22
 msgid "Log entry"
-msgstr ""
+msgstr "Log entry"
 
 #: models.py:23
 msgid "Log entries"
-msgstr ""
+msgstr "Log entries"
 
 #: permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
-msgstr ""
+msgstr "Mailing"
 
 #: permissions.py:10
 msgid "Send document link via email"
-msgstr ""
+msgstr "Send document link via email"
 
 #: permissions.py:13
 msgid "Send document via email"
-msgstr ""
+msgstr "Send document via email"
 
 #: permissions.py:16
 msgid "View document mailing error log"
-msgstr ""
+msgstr "View document mailing error log"
 
 #: queues.py:12
 msgid "Send document"
-msgstr ""
+msgstr "Send document"
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
-msgstr ""
+msgstr "Link for document: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "Template for the document link email form subject line."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
+msgstr "Template for the document link email form body line."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
-msgstr ""
+msgstr "Document: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
+msgstr "Template for the document email form subject line."
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr ""
+msgstr "Template for the document email form body line."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "%(count)d document queued for email delivery"
 
 #: views.py:37
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "%(count)d documents queued for email delivery"
 
 #: views.py:48
 msgid "Send"
-msgstr ""
+msgstr "Send"
 
 #: views.py:100
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "%(count)d document link queued for email delivery"
 
 #: views.py:102
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)d document links queued for email delivery"

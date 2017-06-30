@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:35 models.py:159 queues.py:8 settings.py:7 views.py:545
@@ -27,6 +26,7 @@ msgid "Sources"
 msgstr "Sorgenti"
 
 #: apps.py:57
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr "Crea una sorgente documento"
 
@@ -35,9 +35,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan "
-"EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
+msgstr "Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
 
 #: apps.py:69
 msgid "Created"
@@ -104,10 +102,8 @@ msgid "Add new webform source"
 msgstr "Aggiungi nuova sorgente webform"
 
 #: links.py:64
-#, fuzzy
-#| msgid "Add new staging folder"
 msgid "Add new SANE scanner"
-msgstr "Aggiungi una nuova cartella di stage"
+msgstr ""
 
 #: links.py:69 links.py:83
 msgid "Delete"
@@ -131,17 +127,15 @@ msgstr "Log"
 
 #: links.py:96
 msgid "Check now"
-msgstr ""
+msgstr "Controlla adesso"
 
 #: literals.py:9
 msgid "Flatbed"
 msgstr ""
 
 #: literals.py:10
-#, fuzzy
-#| msgid "Document type"
 msgid "Document feeder"
-msgstr "Tipo documento "
+msgstr ""
 
 #: literals.py:17
 msgid "Simplex"
@@ -161,7 +155,7 @@ msgstr ""
 
 #: literals.py:28
 msgid "Color"
-msgstr ""
+msgstr "Colori"
 
 #: literals.py:36 literals.py:41
 msgid "Always"
@@ -255,10 +249,8 @@ msgid ""
 msgstr ""
 
 #: models.py:200
-#, fuzzy
-#| msgid "Interval source"
 msgid "Paper source"
-msgstr "Intervallo sorgente"
+msgstr ""
 
 #: models.py:205
 msgid ""
@@ -279,10 +271,9 @@ msgid "SANE Scanners"
 msgstr ""
 
 #: models.py:259
-#, fuzzy, python-format
-#| msgid "Error deleting staging file; %s"
+#, python-format
 msgid "Error while scanning; %s"
-msgstr "Errore cancellando il file di stage; %s"
+msgstr ""
 
 #: models.py:291 models.py:736
 msgid "Server side filesystem path."
@@ -294,8 +285,7 @@ msgstr "Percorso cartella"
 
 #: models.py:295
 msgid "Width value to be passed to the converter backend."
-msgstr ""
-"valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models.py:296
 msgid "Preview width"
@@ -303,8 +293,7 @@ msgstr "Larghezza anteprima"
 
 #: models.py:300
 msgid "Height value to be passed to the converter backend."
-msgstr ""
-"valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models.py:301
 msgid "Preview height"
@@ -388,9 +377,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 "
-"per IMAP su SSL."
+msgstr "Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 per IMAP su SSL."
 
 #: models.py:486
 msgid "Port"
@@ -409,10 +396,7 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr ""
-"Nome degli allegati che possono contenere i nomi dei tipi metadati e le "
-"coppie di valori che saranno assegnate al resto degli allegati caricati. "
-"Nota: Questo allegato sarà il primo degli allegati."
+msgstr "Nome degli allegati che possono contenere i nomi dei tipi metadati e le coppie di valori che saranno assegnate al resto degli allegati caricati. Nota: Questo allegato sarà il primo degli allegati."
 
 #: models.py:497
 msgid "Metadata attachment name"
@@ -422,11 +406,10 @@ msgstr "Nome allegato metadati"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Selezionare il tipo metadato valido per il documento selezionato dove "
-"impostare l'oggetto della mail."
+msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare l'oggetto della mail."
 
 #: models.py:504
+#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr "Tipo metadato oggetto"
 
@@ -434,9 +417,7 @@ msgstr "Tipo metadato oggetto"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Selezionare il tipo metadato valido per il documento selezionato dove "
-"impostare il mittente della mail."
+msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare il mittente della mail."
 
 #: models.py:511
 msgid "From metadata type"
@@ -455,18 +436,14 @@ msgstr "Salva il contenuto della mail"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo "
-"documento: %(document_type)s"
+msgstr "Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
 
 #: models.py:539
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
-"documento: %(document_type)s"
+msgstr "Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
 
 #: models.py:589
 #, python-format
@@ -534,26 +511,22 @@ msgid "Delete staging files"
 msgstr "Cancella i file temporanei"
 
 #: queues.py:11
-#, fuzzy
 #| msgid "Sources setup"
 msgid "Sources periodic"
-msgstr "Setup sorgente"
+msgstr ""
 
 #: queues.py:16
-#, fuzzy
-#| msgid "Interval source"
 msgid "Check interval source"
-msgstr "Intervallo sorgente"
+msgstr ""
 
 #: queues.py:21
 msgid "Handle upload"
 msgstr ""
 
 #: queues.py:25
-#, fuzzy
 #| msgid "Upload sources"
 msgid "Upload document"
-msgstr "Upload sources"
+msgstr ""
 
 #: settings.py:12
 msgid "File path to the scanimage program used to control image scanners."
@@ -561,6 +534,7 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr "Errore processando la sorgente: %s"
 
@@ -575,13 +549,12 @@ msgstr "Log per la sorgente: %s"
 
 #: views.py:107 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
-"attivate."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nessuna fonte interattiva dei documenti è stata definita o non ne sono state attivate."
 
 #: views.py:133 views.py:151 views.py:161
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr "Proprietà documento"
 
@@ -595,8 +568,7 @@ msgstr ""
 
 #: views.py:251
 msgid "New document queued for uploaded and will be available shortly."
-msgstr ""
-"Il nuovo documento pronto in coda per il carico e sarà disponibile a breve."
+msgstr "Il nuovo documento pronto in coda per il carico e sarà disponibile a breve."
 
 #: views.py:300
 #, python-format
@@ -609,10 +581,9 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Il documento \"%s\" è bloccato per il caricamento di nuove versioni."
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
-msgstr ""
-"La nuova versione del documento è in coda per il caricamento e sarà "
-"disponibile a breve."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
+msgstr "La nuova versione del documento è in coda per il caricamento e sarà disponibile a breve."
 
 #: views.py:420
 #, python-format
@@ -622,11 +593,11 @@ msgstr "Carica la nuova versione dalla sorgente: %s"
 #: views.py:460
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr ""
+msgstr "Controllo trigger per il sorgente \"%s\"?"
 
 #: views.py:473
 msgid "Source check queued."
-msgstr ""
+msgstr "Controllo del sorgente in coda."
 
 #: views.py:487
 #, python-format
@@ -635,6 +606,7 @@ msgstr "Crea nuovo tipo di sorgente:%s"
 
 #: views.py:507
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr "Cancellare la sorgente: %s?"
 
@@ -669,7 +641,7 @@ msgstr "Procedura guidata carico documenti"
 
 #: wizards.py:98
 msgid "Tags to be attached."
-msgstr ""
+msgstr "Tag che saranno allegati."
 
 #~ msgid "Staging file page image"
 #~ msgstr "Staging file"
@@ -756,11 +728,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

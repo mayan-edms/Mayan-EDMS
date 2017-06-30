@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-05-28 19:52+0000\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:77 settings.py:9
@@ -29,10 +28,8 @@ msgid "Common"
 msgstr "Comune"
 
 #: classes.py:106
-#, fuzzy
-#| msgid "Available attributes: "
 msgid "Available attributes: \n"
-msgstr "Attributi disponibili:"
+msgstr ""
 
 #: forms.py:26
 msgid "Selection"
@@ -91,7 +88,7 @@ msgstr "A questo proposito"
 
 #: links.py:12 views.py:51
 msgid "Check for updates"
-msgstr ""
+msgstr "Controlla aggiornamenti"
 
 #: links.py:16
 msgid "User details"
@@ -164,7 +161,7 @@ msgstr "About"
 #: mixins.py:74
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr "Operazione eseguita su  %(count)d oggetti"
+msgstr "Operazione eseguita su  %(count)d oggetto"
 
 #: mixins.py:75
 #, python-format
@@ -217,7 +214,7 @@ msgstr "Profili dell'utente locale"
 
 #: queues.py:8
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: queues.py:12
 msgid "Common periodic"
@@ -233,29 +230,26 @@ msgstr "Abilita automaticamente i log per tutte le app."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Il ritardo per i task in background dipende dalla propagazione del commit su "
-"database."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Il ritardo per i task in background dipende dalla propagazione del commit su database."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Un intero che specifica quanti oggetti devono essere visualizzati per pagina."
+msgstr "Un intero che specifica quanti oggetti devono essere visualizzati per pagina."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
-"condividere i file."
+msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
 #: settings.py:38
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, "
-"anteprime e files temporanei"
+msgstr "Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, anteprime e files temporanei"
 
 #: validators.py:29
 msgid ""
@@ -266,11 +260,11 @@ msgstr ""
 #: views.py:44
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "La versione che stai usando non è l'ultima. L'ultima versione è %s"
 
 #: views.py:48
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Sei alla versione più recente"
 
 #: views.py:65
 msgid "Current user details"
@@ -289,6 +283,7 @@ msgid "Edit current user locale profile details"
 msgstr "Modificare i dettagli del profilo corrente dell'utente"
 
 #: views.py:153
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Scegli il filtro"
 
@@ -298,6 +293,7 @@ msgid "Results for filter: %s"
 msgstr "Risultati per il filtro: %s"
 
 #: views.py:176
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtro non trovato"
 
@@ -351,11 +347,11 @@ msgstr "Nessuno"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -364,11 +360,11 @@ msgstr "Nessuno"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

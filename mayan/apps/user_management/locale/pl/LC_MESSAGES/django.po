@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
 # mic <winterfall24@gmail.com>, 2012
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:27+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2017-06-23 14:20+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:42 permissions.py:7
 msgid "User management"
@@ -90,7 +88,7 @@ msgstr "Użytkownicy"
 
 #: links.py:62 links.py:66
 msgid "Set password"
-msgstr ""
+msgstr "Ustaw hasło"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -139,6 +137,7 @@ msgstr "Edycja grupy: %s"
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Usunąć grupę: %s?"
 
@@ -163,23 +162,25 @@ msgstr "Użytkownik \"%s\" został utworzony pomyślnie."
 #: views.py:135
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
+msgstr "Żądanie usunięcia użytkownika zrealizowano na %(count)d użytkowniku"
 
 #: views.py:137
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
+msgstr "Żądanie usunięcia użytkowników zrealizowano na %(count)d użytkownikach"
 
 #: views.py:146
+#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Usuń użytkownika"
+msgstr[1] "Usuń użytkownika"
+msgstr[2] "Usuń użytkownika"
+msgstr[3] "Usuń użytkowników"
 
 #: views.py:156
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr ""
 
@@ -187,9 +188,7 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user usuwanie nie jest możliwa , należy użyć "
-"interfejsu administratora w takich przypadkach."
+msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:176
 #, python-format
@@ -243,6 +242,7 @@ msgstr[3] ""
 
 #: views.py:274
 #, python-format
+#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr ""
 
@@ -250,9 +250,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:304
 #, python-format

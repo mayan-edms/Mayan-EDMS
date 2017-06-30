@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2016-04-27 18:23+0000\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/sl_SI/)\n"
-"Language: sl_SI\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
@@ -29,10 +27,12 @@ msgid "Date"
 msgstr ""
 
 #: apps.py:95 models.py:47
+#| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr ""
 
 #: apps.py:99 forms.py:64 models.py:51
+#| msgid "Signature ID: %s"
 msgid "Signature ID"
 msgstr ""
 
@@ -53,18 +53,22 @@ msgid "Passphrase"
 msgstr ""
 
 #: forms.py:46
+#| msgid "Signature file"
 msgid "Signature is embedded?"
 msgstr ""
 
 #: forms.py:48
+#| msgid "Signature file"
 msgid "Signature date"
 msgstr ""
 
 #: forms.py:51
+#| msgid "Signature ID: %s"
 msgid "Signature key ID"
 msgstr ""
 
 #: forms.py:53
+#| msgid "Signature type: %s"
 msgid "Signature key present?"
 msgstr ""
 
@@ -97,6 +101,7 @@ msgid "Key type"
 msgstr ""
 
 #: links.py:32
+#| msgid "Verify document signatures"
 msgid "Verify all documents"
 msgstr ""
 
@@ -197,10 +202,12 @@ msgid "Delete detached signatures"
 msgstr ""
 
 #: permissions.py:25
+#| msgid "Download detached signatures"
 msgid "Download detached document signatures"
 msgstr ""
 
 #: permissions.py:29
+#| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
 msgstr ""
 
@@ -209,18 +216,22 @@ msgid "Verify document signatures"
 msgstr ""
 
 #: permissions.py:37
+#| msgid "Verify document signatures"
 msgid "View details of document signatures"
 msgstr ""
 
 #: queues.py:11
+#| msgid "Verify document signatures"
 msgid "Verify key signatures"
 msgstr ""
 
 #: queues.py:15
+#| msgid "Verify document signatures"
 msgid "Unverify key signatures"
 msgstr ""
 
 #: queues.py:19
+#| msgid "Verify document signatures"
 msgid "Verify document version"
 msgstr ""
 
@@ -257,6 +268,7 @@ msgstr ""
 
 #: views.py:270
 #, python-format
+#| msgid "Document signatures"
 msgid "Details for signature: %s"
 msgstr ""
 
@@ -275,6 +287,7 @@ msgid "On large databases this operation may take some time to execute."
 msgstr "Če je baza velika lahko operacija zahteva nekaj več časa da se izvrši."
 
 #: views.py:361
+#| msgid "Verify document signatures"
 msgid "Verify all document for signatures?"
 msgstr ""
 

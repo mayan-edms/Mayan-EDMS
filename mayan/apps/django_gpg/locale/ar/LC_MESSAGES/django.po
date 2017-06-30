@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
 "PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:31
 msgid "Django GPG"
@@ -98,6 +96,7 @@ msgid "Key management"
 msgstr "Key management"
 
 #: links.py:37
+#| msgid "Import key"
 msgid "Upload key"
 msgstr ""
 
@@ -162,6 +161,7 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:61
+#| msgid "Key ID"
 msgid "Key"
 msgstr ""
 
@@ -194,6 +194,7 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
+#| msgid "public keys"
 msgid "Upload keys"
 msgstr ""
 
@@ -202,6 +203,7 @@ msgid "View keys"
 msgstr "View keys"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
 msgstr ""
 
@@ -214,11 +216,13 @@ msgid "Path to the GPG binary."
 msgstr ""
 
 #: settings.py:25
+#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
+#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -229,6 +233,7 @@ msgstr ""
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -238,6 +243,7 @@ msgstr "Import key"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -281,12 +287,12 @@ msgstr ""
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/"
-#~ "private pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#~ "key that is part of a public/private pair the private key will be deleted "
-#~ "as well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,231 +12,236 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:34 apps.py:70 apps.py:73 forms.py:30 links.py:21 menus.py:8
 #: models.py:36 permissions.py:7 views.py:153
 msgid "Cabinets"
-msgstr ""
+msgstr "Cabinets"
 
 #: links.py:27 links.py:38
 msgid "Remove from cabinets"
-msgstr ""
+msgstr "Remove from cabinets"
 
 #: links.py:31 links.py:35
 msgid "Add to cabinets"
-msgstr ""
+msgstr "Add to cabinets"
 
 #: links.py:55
 msgid "Add new level"
-msgstr ""
+msgstr "Add new level"
 
 #: links.py:60 views.py:39
 msgid "Create cabinet"
-msgstr ""
+msgstr "Create cabinet"
 
 #: links.py:64
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: links.py:67
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: links.py:71
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #: links.py:74
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: models.py:24 search.py:16
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:27
 msgid "Documents"
-msgstr ""
+msgstr "Documents"
 
 #: models.py:35 models.py:68 serializers.py:134
 msgid "Cabinet"
-msgstr ""
+msgstr "Cabinet"
 
 #: models.py:69 serializers.py:135
 msgid "Parent and Label"
-msgstr ""
+msgstr "Parent and Label"
 
 #: models.py:76 serializers.py:141
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
+msgstr "%(model_name)s with this %(field_labels)s already exists."
 
 #: models.py:88
 msgid "Document cabinet"
-msgstr ""
+msgstr "Document cabinet"
 
 #: models.py:89
 msgid "Document cabinets"
-msgstr ""
+msgstr "Document cabinets"
 
 #: permissions.py:12
 msgid "Add documents to cabinets"
-msgstr ""
+msgstr "Add documents to cabinets"
 
 #: permissions.py:15
 msgid "Create cabinets"
-msgstr ""
+msgstr "Create cabinets"
 
 #: permissions.py:18
 msgid "Delete cabinets"
-msgstr ""
+msgstr "Delete cabinets"
 
 #: permissions.py:21
 msgid "Edit cabinets"
-msgstr ""
+msgstr "Edit cabinets"
 
 #: permissions.py:24
 msgid "Remove documents from cabinets"
-msgstr ""
+msgstr "Remove documents from cabinets"
 
 #: permissions.py:27
 msgid "View cabinets"
-msgstr ""
+msgstr "View cabinets"
 
 #: serializers.py:20
 msgid "List of children cabinets."
-msgstr ""
+msgstr "List of children cabinets."
 
 #: serializers.py:23
 msgid "Number of documents on this cabinet level."
-msgstr ""
+msgstr "Number of documents on this cabinet level."
 
 #: serializers.py:27
 msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
+"The name of this cabinet level appended to the names of its ancestors."
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 
 #: serializers.py:69 serializers.py:175
 msgid "Comma separated list of document primary keys to add to this cabinet."
-msgstr ""
+msgstr "Comma separated list of document primary keys to add to this cabinet."
 
 #: serializers.py:154
 msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
+"API URL pointing to a document in relation to the cabinet storing it. This "
+"URL is different than the canonical document URL."
 
 #: templates/cabinets/cabinet_details.html:21
 msgid "Navigation:"
-msgstr ""
+msgstr "Navigation:"
 
 #: views.py:70
 #, python-format
 msgid "Add new level to: %s"
-msgstr ""
+msgstr "Add new level to: %s"
 
 #: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
-msgstr ""
+msgstr "Delete the cabinet: %s?"
 
 #: views.py:111
 #, python-format
 msgid "Details of cabinet: %s"
-msgstr ""
+msgstr "Details of cabinet: %s"
 
 #: views.py:142
 #, python-format
 msgid "Edit cabinet: %s"
-msgstr ""
+msgstr "Edit cabinet: %s"
 
 #: views.py:177
 #, python-format
 msgid "Cabinets containing document: %s"
-msgstr ""
+msgstr "Cabinets containing document: %s"
 
 #: views.py:188
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
-msgstr ""
+msgstr "Add to cabinet request performed on %(count)d document"
 
 #: views.py:191
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
-msgstr ""
+msgstr "Add to cabinet request performed on %(count)d documents"
 
 #: views.py:198
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: views.py:200
 msgid "Add document to cabinets"
 msgid_plural "Add documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Add document to cabinets"
+msgstr[1] "Add documents to cabinets"
 
 #: views.py:211
 #, python-format
 msgid "Add document \"%s\" to cabinets"
-msgstr ""
+msgstr "Add document \"%s\" to cabinets"
 
 #: views.py:222
 msgid "Cabinets to which the selected documents will be added."
-msgstr ""
+msgstr "Cabinets to which the selected documents will be added."
 
 #: views.py:250
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Document: %(document)s is already in cabinet: %(cabinet)s."
 
 #: views.py:260
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
-msgstr ""
+msgstr "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 
 #: views.py:272
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
-msgstr ""
+msgstr "Remove from cabinet request performed on %(count)d document"
 
 #: views.py:275
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
-msgstr ""
+msgstr "Remove from cabinet request performed on %(count)d documents"
 
 #: views.py:282
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: views.py:284
 msgid "Remove document from cabinets"
 msgid_plural "Remove documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Remove document from cabinets"
+msgstr[1] "Remove documents from cabinets"
 
 #: views.py:295
 #, python-format
 msgid "Remove document \"%s\" to cabinets"
-msgstr ""
+msgstr "Remove document \"%s\" to cabinets"
 
 #: views.py:306
 msgid "Cabinets from which the selected documents will be removed."
-msgstr ""
+msgstr "Cabinets from which the selected documents will be removed."
 
 #: views.py:333
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Document: %(document)s is not in cabinet: %(cabinet)s."
 
 #: views.py:343
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."

@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-05-28 19:32+0000\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -32,6 +31,7 @@ msgid "Document types"
 msgstr "Tipi di documento"
 
 #: apps.py:49
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr "Indicizzazione documento"
 
@@ -65,7 +65,7 @@ msgstr "Nodo"
 
 #: forms.py:14
 msgid "Indexes to be queued for rebuilding."
-msgstr ""
+msgstr "Gli indici sono in coda per la ricostruzione."
 
 #: forms.py:15 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
 #: views.py:73 views.py:220
@@ -105,17 +105,14 @@ msgid "New child node"
 msgstr "Novo nodo figlio"
 
 #: models.py:37
-#, fuzzy
-#| msgid "This values will be used by other apps to reference this index."
+#| msgid "Internal name used to reference this index."
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
-"Questo valore è utilizzato dalle altre apps per riferirsi a questo indice."
 
 #: models.py:43
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo indice possa essere visibile e aggiornato quando i dati del "
-"documento cambiano."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Fa sì che questo indice possa essere visibile e aggiornato quando i dati del documento cambiano."
 
 #: models.py:117 models.py:149
 msgid "Index"
@@ -133,9 +130,7 @@ msgstr "Instanze indice"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-"Inserisci il template da renderizzare. Usa il linguaggio di template di "
-"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr "Inserisci il template da renderizzare. Usa il linguaggio di template di Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:157
 msgid "Indexing expression"
@@ -143,17 +138,13 @@ msgstr "Espressione di indicizzazione"
 
 #: models.py:162
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del "
-"documento cambiano."
+msgstr "Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del documento cambiano."
 
 #: models.py:170
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Selezionare questa opzione per questo specifico nodo quale contenitore per i "
-"documenti e non come un genitore per ulteriori nodi."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selezionare questa opzione per questo specifico nodo quale contenitore per i documenti e non come un genitore per ulteriori nodi."
 
 #: models.py:173
 msgid "Link documents"
@@ -168,9 +159,7 @@ msgstr "Principale"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Errore nell'ndicizzazione del documento: %(document)s; espressione: "
-"%(expression)s; %(exception)s"
+msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
 #: models.py:268
 msgid "Index node template"
@@ -233,31 +222,25 @@ msgid "Rebuild document indexes"
 msgstr "Ricostruisci indici documento"
 
 #: queues.py:12
-#, fuzzy
 #| msgid "Delete document indexes"
 msgid "Delete empty index nodes"
-msgstr "Eliminare gli indici dei documenti"
+msgstr ""
 
 #: queues.py:16
-#, fuzzy
-#| msgid "Link documents"
 msgid "Remove document"
-msgstr "Documenti di collegamento"
+msgstr ""
 
 #: queues.py:20
-#, fuzzy
-#| msgid "Link documents"
 msgid "Index document"
-msgstr "Documenti di collegamento"
+msgstr ""
 
 #: queues.py:24
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index"
-msgstr "Ricostruisci indici"
+msgstr ""
 
 #: views.py:49
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr "Cancellare l'indice: %s?"
 
@@ -385,11 +368,9 @@ msgstr "Ricostruzione dell'indice messo in coda."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -426,11 +407,11 @@ msgstr "Ricostruzione dell'indice messo in coda."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2017-05-12 07:25+0000\n"
+"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:31
@@ -29,7 +29,7 @@ msgstr "شناسه کلید"
 
 #: apps.py:48 apps.py:61 forms.py:19 models.py:52
 msgid "User ID"
-msgstr ""
+msgstr "شناسه کاربری"
 
 #: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
@@ -45,7 +45,7 @@ msgstr "تاریخ انقضا"
 
 #: apps.py:57
 msgid "No expiration"
-msgstr ""
+msgstr "بدون انقضا"
 
 #: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
@@ -57,11 +57,11 @@ msgstr "هیچکدام."
 
 #: forms.py:31 models.py:44
 msgid "Fingerprint"
-msgstr ""
+msgstr "اثر انگشت"
 
 #: forms.py:33 models.py:50
 msgid "Algorithm"
-msgstr ""
+msgstr "الگوریتم"
 
 #: forms.py:47
 msgid "Term"
@@ -96,8 +96,9 @@ msgid "Key management"
 msgstr "مدیریت کلید"
 
 #: links.py:37
+#| msgid "Import key"
 msgid "Upload key"
-msgstr ""
+msgstr "کلید آپلود"
 
 #: links.py:41 views.py:160
 msgid "Private keys"
@@ -160,12 +161,13 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:61
+#| msgid "Key ID"
 msgid "Key"
-msgstr ""
+msgstr "کلید"
 
 #: models.py:62
 msgid "Keys"
-msgstr ""
+msgstr "کلیدها"
 
 #: models.py:68
 msgid "Invalid key data"
@@ -173,7 +175,7 @@ msgstr ""
 
 #: models.py:71
 msgid "Key already exists."
-msgstr ""
+msgstr "این کلید از قبل وجود دارد."
 
 #: permissions.py:10
 msgid "Delete keys"
@@ -181,7 +183,7 @@ msgstr "پاک و یا حذف کلیدها"
 
 #: permissions.py:13
 msgid "Download keys"
-msgstr ""
+msgstr "دانلود کلیدها"
 
 #: permissions.py:16
 msgid "Import keys from keyservers"
@@ -192,14 +194,16 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
+#| msgid "public keys"
 msgid "Upload keys"
-msgstr ""
+msgstr "آپلود کلیدها"
 
 #: permissions.py:25
 msgid "View keys"
 msgstr "دیدن کلیدها"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
 msgstr "امضاها"
 
@@ -212,11 +216,13 @@ msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
 #: settings.py:25
+#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
+#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -227,6 +233,7 @@ msgstr ""
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -236,6 +243,7 @@ msgstr "وارد کردن کلید"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -279,12 +287,12 @@ msgstr ""
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/"
-#~ "private pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#~ "key that is part of a public/private pair the private key will be deleted "
-#~ "as well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"

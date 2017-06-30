@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -16,12 +16,11 @@ msgstr ""
 "POT-Creation-Date: 2017-06-23 01:40-0400\n"
 "PO-Revision-Date: 2017-05-28 19:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42 permissions.py:7
@@ -126,9 +125,7 @@ msgstr "Ver usuarios existentes"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Lista separada por comas de llaves primarias de grupos a ser asignados a "
-"este usuario."
+msgstr "Lista separada por comas de llaves primarias de grupos a ser asignados a este usuario."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
@@ -141,6 +138,7 @@ msgstr "Editar grupo: %s"
 
 #: views.py:64
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "¿Borrar el grupo: %s?"
 
@@ -173,6 +171,7 @@ msgid "User delete request performed on %(count)d users"
 msgstr "Solicitud de eliminación de usuario realizada a %(count)d usuarios"
 
 #: views.py:146
+#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Borrar usuario"
@@ -180,6 +179,7 @@ msgstr[1] "Borrar usuarios"
 
 #: views.py:156
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr "Borrar usuario: %s"
 
@@ -187,9 +187,7 @@ msgstr "Borrar usuario: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:176
 #, python-format
@@ -241,6 +239,7 @@ msgstr[1] "Cambiar contraseñas de usuarios"
 
 #: views.py:274
 #, python-format
+#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr "Cambiar contraseñas para el usuario: %s"
 
@@ -248,9 +247,7 @@ msgstr "Cambiar contraseñas para el usuario: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y del usuario de "
-"personal. Use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:304
 #, python-format
@@ -260,8 +257,7 @@ msgstr "Contraseña restablecida para el usuario: %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
 #~ msgid "Must provide at least one user."
 #~ msgstr "Must provide at least one user."

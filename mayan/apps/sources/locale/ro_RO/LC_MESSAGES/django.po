@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Abalaru Paul <paul.abalaru@hotmail.com>, 2013
@@ -11,22 +11,21 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:40 links.py:35 models.py:159 queues.py:8 settings.py:7 views.py:545
 msgid "Sources"
 msgstr ""
 
 #: apps.py:57
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -63,9 +62,7 @@ msgstr "Dezarhivare fișiere comprimate"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Încărcați fișiere de fișier comprimat care sunt incluse ca documente "
-"individuale"
+msgstr "Încărcați fișiere de fișier comprimat care sunt incluse ca documente individuale"
 
 #: forms.py:67 views.py:433
 msgid "Staging file"
@@ -136,10 +133,8 @@ msgid "Flatbed"
 msgstr ""
 
 #: literals.py:10
-#, fuzzy
-#| msgid "Document type"
 msgid "Document feeder"
-msgstr "Tip document"
+msgstr ""
 
 #: literals.py:17
 msgid "Simplex"
@@ -159,7 +154,7 @@ msgstr ""
 
 #: literals.py:28
 msgid "Color"
-msgstr ""
+msgstr "Culoare"
 
 #: literals.py:36 literals.py:41
 msgid "Always"
@@ -253,10 +248,8 @@ msgid ""
 msgstr ""
 
 #: models.py:200
-#, fuzzy
-#| msgid "Upload sources"
 msgid "Paper source"
-msgstr "Upload sources"
+msgstr ""
 
 #: models.py:205
 msgid ""
@@ -415,6 +408,7 @@ msgid ""
 msgstr ""
 
 #: models.py:504
+#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -516,10 +510,9 @@ msgid "Delete staging files"
 msgstr ""
 
 #: queues.py:11
-#, fuzzy
 #| msgid "Sources setup"
 msgid "Sources periodic"
-msgstr "Configurare surse"
+msgstr ""
 
 #: queues.py:16
 msgid "Check interval source"
@@ -530,10 +523,9 @@ msgid "Handle upload"
 msgstr ""
 
 #: queues.py:25
-#, fuzzy
 #| msgid "Upload sources"
 msgid "Upload document"
-msgstr "Upload sources"
+msgstr ""
 
 #: settings.py:12
 msgid "File path to the scanimage program used to control image scanners."
@@ -541,6 +533,7 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -555,11 +548,12 @@ msgstr ""
 
 #: views.py:107 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:133 views.py:151 views.py:161
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -586,7 +580,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:420
@@ -610,6 +605,7 @@ msgstr "Creați o nouă sursă de tipul:% s"
 
 #: views.py:507
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -731,11 +727,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

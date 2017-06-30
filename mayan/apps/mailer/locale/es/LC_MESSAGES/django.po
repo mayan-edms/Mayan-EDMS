@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-05-28 19:53+0000\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27
@@ -64,13 +63,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Se adjunta a este correo electrónico es el documento: {{ document }}\n"
-"\n"
-"\n"
-"--------\n"
-"Este correo electrónico ha sido enviado desde %(project_title)s "
-"(%(project_website)s)"
+msgstr "Se adjunta a este correo electrónico es el documento: {{ document }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -79,13 +72,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n"
-"\n"
-"\n"
-"--------\n"
-"Este correo electrónico ha sido enviado desde %(project_title)s "
-"(%(project_website)s)"
+msgstr "Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -116,10 +103,8 @@ msgid "View document mailing error log"
 msgstr "Ver bitácora de errores de envío"
 
 #: queues.py:12
-#, fuzzy
-#| msgid "Send document via email"
 msgid "Send document"
-msgstr "Enviar documento por correo electrónico"
+msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
@@ -127,15 +112,11 @@ msgstr "Enlace para el documento: {{ documento }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Plantilla para la línea de asunto del correo electrónico para envío de "
-"enlace del documento."
+msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Plantilla para el cuerpo del correo electrónico de envío de enlace de "
-"documento."
+msgstr "Plantilla para el cuerpo del correo electrónico de envío de enlace de documento."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -143,15 +124,11 @@ msgstr "Documento: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
-"Plantilla para la línea de sujeto del correo electrónico de envio de "
-"documento."
+msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr ""
-"Plantilla para la línea de cuerpo del correo electrónico para envío de "
-"documento."
+msgstr "Plantilla para la línea de cuerpo del correo electrónico para envío de documento."
 
 #: views.py:35
 #, python-format
@@ -170,11 +147,9 @@ msgstr "Enviar"
 #: views.py:100
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
-"%(count)d enlace de documento sometido para entrega por correo electrónico"
+msgstr "%(count)d enlace de documento sometido para entrega por correo electrónico"
 
 #: views.py:102
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
-"%(count)d enlaces de documento sometido para entrega por correo electrónico"
+msgstr "%(count)d enlaces de documento sometido para entrega por correo electrónico"
