@@ -185,7 +185,7 @@ class SaneScanner(InteractiveSource):
         ), max_length=16, verbose_name=_('Mode')
     )
     resolution = models.PositiveIntegerField(
-        blank=True, help_text=_(
+        blank=True, null=True, help_text=_(
             'Sets the resolution of the scanned image in DPI (dots per inch). '
             'Typical value is 200. If this option is not supported by your '
             'scanner, leave it blank.'
