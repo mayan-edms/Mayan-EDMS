@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common.queues import queue_tools
-from mayan_task_manager.classes import CeleryQueue
+from task_manager.classes import CeleryQueue
 
 queue_indexing = CeleryQueue(name='indexing', label=_('Indexing'))
 

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan_task_manager.classes import CeleryQueue
+from task_manager.classes import CeleryQueue
 
 queue_sources = CeleryQueue(
     name='sources', label=_('Sources'), transient=True

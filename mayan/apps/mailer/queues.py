@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan_task_manager.classes import CeleryQueue
+from task_manager.classes import CeleryQueue
 
 queue_mailing = CeleryQueue(
     name='mailing', label=_('Mailing')

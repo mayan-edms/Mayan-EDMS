@@ -19,7 +19,7 @@ from .links import (
 class TaskManagerApp(MayanAppConfig):
     app_namespace = 'task_manager'
     app_url = 'task_manager'
-    name = 'mayan_task_manager'
+    name = 'task_manager'
     verbose_name = _('Task manager')
 
     def ready(self):

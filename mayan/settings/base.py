@@ -93,7 +93,6 @@ INSTALLED_APPS = (
     # 'folders',
     'linking',
     'mailer',
-    'mayan_task_manager',
     'metadata',
     'mirroring',
     'motd',
@@ -103,6 +102,7 @@ INSTALLED_APPS = (
     'statistics',
     'storage',
     'tags',
+    'task_manager',
     # Placed after rest_api to allow template overriding
     'rest_framework_swagger',
 )
