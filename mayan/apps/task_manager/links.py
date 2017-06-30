@@ -12,7 +12,7 @@ link_task_manager = Link(
 )
 link_queue_list = Link(
     icon='fa fa-braille', permissions=(permission_task_view,),
-    text=_('Backgroun task queues'), view='task_manager:queue_list'
+    text=_('Background task queues'), view='task_manager:queue_list'
 )
 link_queue_active_task_list = Link(
     args='resolved_object.name', permissions=(permission_task_view,),
