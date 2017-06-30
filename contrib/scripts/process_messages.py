@@ -4,6 +4,7 @@ import optparse
 
 import sh
 
+
 APP_LIST = (
     'acls', 'appearance', 'authentication', 'cabinets', 'checkouts', 'common',
     'converter', 'django_gpg', 'document_comments', 'document_indexing',
@@ -11,7 +12,7 @@ APP_LIST = (
     'events', 'folders', 'linking', 'lock_manager', 'mailer',
     'metadata', 'mirroring', 'motd', 'navigation', 'ocr', 'permissions',
     'rest_api', 'smart_settings', 'sources', 'statistics', 'storage', 'tags',
-    'user_management'
+    'task_manager', 'user_management'
 )
 
 LANGUAGE_LIST = (
