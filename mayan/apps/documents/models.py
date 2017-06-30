@@ -237,7 +237,11 @@ class Document(models.Model):
         Returns a boolean value that indicates if the document's
         latest version file exists in storage
         """
-        return self.latest_version.exists()
+        latest_version = self.latest_version
+        if latest_version:
+            return latest_version.exists()
+        else:
+            return False
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
