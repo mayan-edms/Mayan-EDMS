@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'djcelery',
     'formtools',
+    'mathfilters',
     'mptt',
     'pure_pagination',
     'rest_framework',
