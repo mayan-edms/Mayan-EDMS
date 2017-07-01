@@ -179,11 +179,15 @@ jQuery(document).ready(function() {
 
     }, 3000);
 
-    $('.select2').select2();
+    $('.select2').select2({
+        dropdownAutoWidth: true,
+        width: '100%'
+    });
 
     $('.select2-tags').select2({
         templateSelection: tagSelectionTemplate,
-        templateResult: tagResultTemplate
+        templateResult: tagResultTemplate,
+        width: '100%'
     });
 
 
