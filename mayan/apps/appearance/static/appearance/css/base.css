@@ -171,3 +171,7 @@ a i {
 .tag-container .label {
     margin-right: 2px;
 }
+
+#toast-container > div {
+  opacity: 1;
+}

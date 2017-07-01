@@ -51,7 +51,66 @@ var tagResultTemplate = function (tag) {
   return $tag;
 };
 
+toastr.options = {
+    'closeButton': true,
+    'debug': false,
+    'newestOnTop': true,
+    'positionClass': 'toast-top-right',
+    'preventDuplicates': false,
+    'onclick': null,
+    'showDuration': '300',
+    'hideDuration': '1000',
+    'timeOut': '5000',
+    'extendedTimeOut': '1000',
+    'showEasing': 'swing',
+    'hideEasing': 'linear',
+    'showMethod': 'fadeIn',
+    'hideMethod': 'fadeOut'
+}
+
+var doToastrMessages = function () {
+    // Add invisible bootstrap messages to copy the styles to toastr.js
+
+    $('body').append('\
+        <div class="hidden alert alert-success alert-sample">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-info alert-sample">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-danger alert-sample">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-warning alert-sample">\
+            <p>text</p>\
+        </div>\
+    ');
+
+    $('head').append('\
+        <style>\
+            .toast-success {\
+                background-color: ' + $('.alert-success').css('background-color') +'\
+            }\
+            .toast-info {\
+                background-color: ' + $('.alert-info').css('background-color') +'\
+            }\
+            .toast-error {\
+                background-color: ' + $('.alert-danger').css('background-color') +'\
+            }\
+            .toast-warning {\
+                background-color: ' + $('.alert-warning').css('background-color') +'\
+            }\
+        </style>\
+    ');
+
+    $.each(DjangoMessages, function (index, value) {
+        toastr[value.tags](value.message);
+    });
+}
+
 jQuery(document).ready(function() {
+    doToastrMessages();
+
     $('.lazy-load').on('load', function() {
         $(this).siblings('.spinner').remove();
         $(this).removeClass('lazy-load');

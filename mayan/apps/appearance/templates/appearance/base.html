@@ -29,9 +29,9 @@
             <link href="{% static 'appearance/packages/animate/animate.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/select2-4.0.3/dist/css/select2.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
             {% block stylesheets %}{% endblock %}
-
         {% endcompress %}
         <script>
             function waitForJQuery(func) {
@@ -120,14 +120,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        {% for message in messages %}
-                            <div class="animated fadeInDown alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
-                                <button type="button" class="close">×</button>
-                                <h4>{% if 'success' in message.tags %}{% trans 'Success' %}{% elif 'info' in message.tags %}{% trans 'Information' %}{% elif 'warning' in message.tags %}{% trans 'Warning' %}{% else %}{% trans 'Error' %}{% endif %}</h4>
-                                <p>{{ message }}</p>
-                            </div>
-                        {% endfor %}
-
                         {% block messages %}{% endblock %}
                     </div>
                 </div>
@@ -208,9 +200,21 @@
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/lib/jquery.mousewheel.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/select2-4.0.3/dist/js/select2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/js/base.js' %}"></script>
-        {% block javascript %}{% endblock %}
         {% endcompress %}
+
+        <script>
+        var DjangoMessages = [
+            {% for message in messages %}
+                {
+                    tags: '{{ message.tags }}',
+                    message: '{{ message.message }}'
+                },
+            {% endfor %}
+        ];
+        </script>
+        {% block javascript %}{% endblock %}
     </body>
 </html>
 {% endspaceless %}
