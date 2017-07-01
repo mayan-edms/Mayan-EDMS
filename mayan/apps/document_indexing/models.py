@@ -191,78 +191,78 @@ class IndexTemplateNode(MPTTModel):
 
         # Start transaction after the lock in case the locking backend uses
         # the database.
-        with transaction.atomic():
-            logger.debug('IndexTemplateNode; Indexing document: %s', document)
-
-            logger.debug(
-                'Removing document "%s" from all index instance nodes',
-                document
-            )
-            for index_template_node in self.index_instance_nodes.all():
-                index_template_node.remove_document(
-                    document=document, acquire_lock=False
-                )
-
-            if not self.parent:
+        try:
+            with transaction.atomic():
                 logger.debug(
-                    'IndexTemplateNode; parent: creating empty root index '
-                    'instance node'
+                    'IndexTemplateNode; Indexing document: %s', document
                 )
-                index_instance_node, created = self.index_instance_nodes.get_or_create()
 
-                for child in self.get_children():
-                    child.index_document(
-                        document=document, acquire_lock=False,
-                        index_instance_node_parent=index_instance_node
+                logger.debug(
+                    'Removing document "%s" from all index instance nodes',
+                    document
+                )
+                for index_template_node in self.index_instance_nodes.all():
+                    index_template_node.remove_document(
+                        document=document, acquire_lock=False
                     )
 
-                if acquire_lock:
-                    lock.release()
+                if not self.parent:
+                    logger.debug(
+                        'IndexTemplateNode; parent: creating empty root index '
+                        'instance node'
+                    )
+                    index_instance_node, created = self.index_instance_nodes.get_or_create()
 
-            elif self.enabled:
-                logger.debug('IndexTemplateNode; non parent: evaluating')
-                logger.debug('My parent template is: %s', self.parent)
-                logger.debug(
-                    'My parent instance node is: %s',
-                    index_instance_node_parent
-                )
-                logger.debug(
-                    'IndexTemplateNode; Evaluating template: %s', self.expression
-                )
-
-                try:
-                    context = Context({'document': document})
-                    template = Template(self.expression)
-                    result = template.render(context=context)
-                except Exception as exception:
-                    logger.debug('Evaluating error: %s', exception)
-                    error_message = _(
-                        'Error indexing document: %(document)s; expression: '
-                        '%(expression)s; %(exception)s'
-                    ) % {
-                        'document': document,
-                        'expression': self.expression,
-                        'exception': exception
-                    }
-                    logger.debug(error_message)
-                else:
-                    logger.debug('Evaluation result: %s', result)
-                    if result:
-                        index_instance_node, created = self.index_instance_nodes.get_or_create(
-                            parent=index_instance_node_parent,
-                            value=result
+                    for child in self.get_children():
+                        child.index_document(
+                            document=document, acquire_lock=False,
+                            index_instance_node_parent=index_instance_node
                         )
-                        if self.link_documents:
-                            index_instance_node.documents.add(document)
+                elif self.enabled:
+                    logger.debug('IndexTemplateNode; non parent: evaluating')
+                    logger.debug('My parent template is: %s', self.parent)
+                    logger.debug(
+                        'My parent instance node is: %s',
+                        index_instance_node_parent
+                    )
+                    logger.debug(
+                        'IndexTemplateNode; Evaluating template: %s', self.expression
+                    )
 
-                        for child in self.get_children():
-                            child.index_document(
-                                document=document, acquire_lock=False,
-                                index_instance_node_parent=index_instance_node
+                    try:
+                        context = Context({'document': document})
+                        template = Template(self.expression)
+                        result = template.render(context=context)
+                    except Exception as exception:
+                        logger.debug('Evaluating error: %s', exception)
+                        error_message = _(
+                            'Error indexing document: %(document)s; expression: '
+                            '%(expression)s; %(exception)s'
+                        ) % {
+                            'document': document,
+                            'expression': self.expression,
+                            'exception': exception
+                        }
+                        logger.debug(error_message)
+                    else:
+                        logger.debug('Evaluation result: %s', result)
+
+                        if result:
+                            index_instance_node, created = self.index_instance_nodes.get_or_create(
+                                parent=index_instance_node_parent,
+                                value=result
                             )
-                finally:
-                    if acquire_lock:
-                        lock.release()
+                            if self.link_documents:
+                                index_instance_node.documents.add(document)
+
+                            for child in self.get_children():
+                                child.index_document(
+                                    document=document, acquire_lock=False,
+                                    index_instance_node_parent=index_instance_node
+                                )
+        finally:
+            if acquire_lock:
+                lock.release()
 
     class Meta:
         verbose_name = _('Index node template')
