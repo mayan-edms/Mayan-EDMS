@@ -14,7 +14,9 @@ from django.views.generic.edit import (
 )
 from django.views.generic.list import ListView
 
-from django_downloadview import VirtualDownloadView, VirtualFile
+from django_downloadview import (
+    TextIteratorIO, VirtualDownloadView, VirtualFile
+)
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
@@ -388,6 +390,7 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 
 
 class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
+    TextIteratorIO = TextIteratorIO
     VirtualFile = VirtualFile
 
 

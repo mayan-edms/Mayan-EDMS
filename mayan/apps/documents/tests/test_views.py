@@ -5,8 +5,6 @@ from __future__ import unicode_literals
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
 
-from django_downloadview import assert_download_response
-
 from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
@@ -208,7 +206,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
+            self.assert_download_response(
                 self, response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
@@ -238,7 +236,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
+            self.assert_download_response(
                 self, response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
@@ -268,7 +266,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
+            self.assert_download_response(
                 self, response, content=file_object.read(),
                 basename='{} - {}'.format(
                     TEST_SMALL_DOCUMENT_FILENAME,

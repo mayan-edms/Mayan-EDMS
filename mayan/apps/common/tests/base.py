@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django.test import TestCase
 
+from django_downloadview import assert_download_response
+
 from permissions.classes import Permission
 from smart_settings.classes import Namespace
 
@@ -14,6 +16,7 @@ class BaseTestCase(ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin
     """
     This is the most basic test case class any test in the project should use.
     """
+    assert_download_response = assert_download_response
 
     def setUp(self):
         super(BaseTestCase, self).setUp()
