@@ -1,3 +1,8 @@
+2.5 (2017-07-XX)
+===============
+- Add view to download a document's OCR text. GitLab #215
+
+
 2.4 (2017-06-23)
 ================
 - Add Django-mathfilters.
@@ -9,7 +14,7 @@
 - Make tags, metadata types and cabinets searchable via the dynamic search API. GitLab issue #344.
 - Add support for updating configuration options from environment variables.
 - Add purgelocks management command. GitLab issue #221.
-- Fix index rebuilding for multi value first levels. GitLab issue #391. 
+- Fix index rebuilding for multi value first levels. GitLab issue #391.
 - Truncate views titles via the APPEARANCE_MAXIMUM_TITLE_LENGTH setting. GitLab issue #217.
 - Add background task manager app. GitLab issue #132.
 - Add link to show a document's OCR errors. GitLab issue #291.
