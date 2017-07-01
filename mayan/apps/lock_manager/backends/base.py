@@ -1,5 +1,9 @@
 from __future__ import unicode_literals
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class LockingBackend(object):
     """
@@ -8,8 +12,11 @@ class LockingBackend(object):
     """
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        raise NotImplementedError
+        logger.debug('acquiring lock: %s, timeout: %s', name, timeout)
 
     @classmethod
     def purge_locks(cls):
-        raise NotImplementedError
+        logger.debug('purging locks')
+
+    def release(self):
+        logger.debug('releasing lock: %s', self.name)
