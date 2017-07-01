@@ -2,8 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -190,9 +191,17 @@ class UploadInteractiveView(UploadBaseView):
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
-        return super(
-            UploadInteractiveView, self
-        ).dispatch(request, *args, **kwargs)
+        try:
+            return super(
+                UploadInteractiveView, self
+            ).dispatch(request, *args, **kwargs)
+        except Exception as exception:
+            if request.is_ajax():
+                return JsonResponse(
+                    data={'error': force_text(exception)}, status=500
+                )
+            else:
+                raise
 
     def forms_valid(self, forms):
         if self.source.can_compress:
