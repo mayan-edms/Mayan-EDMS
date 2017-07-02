@@ -207,7 +207,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                self, response, content=file_object.read(),
+                response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
@@ -237,7 +237,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                self, response, content=file_object.read(),
+                response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
@@ -267,7 +267,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                self, response, content=file_object.read(),
+                response, content=file_object.read(),
                 basename='{} - {}'.format(
                     TEST_SMALL_DOCUMENT_FILENAME,
                     self.document.latest_version.timestamp
