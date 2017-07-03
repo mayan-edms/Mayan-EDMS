@@ -324,6 +324,16 @@ class TransformationGaussianBlur(BaseTransformation):
         return self.image.filter(ImageFilter.GaussianBlur(radius=self.radius))
 
 
+class TransformationLineArt(BaseTransformation):
+    label = _('Line art')
+    name = 'lineart'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationLineArt, self).execute_on(*args, **kwargs)
+
+        return self.image.convert('L').point(lambda x: 0 if x < 128 else 255, '1')
+
+
 class TransformationMirror(BaseTransformation):
     arguments = ()
     label = _('Mirror')
@@ -452,6 +462,7 @@ class TransformationZoom(BaseTransformation):
 BaseTransformation.register(TransformationCrop)
 BaseTransformation.register(TransformationFlip)
 BaseTransformation.register(TransformationGaussianBlur)
+BaseTransformation.register(TransformationLineArt)
 BaseTransformation.register(TransformationMirror)
 BaseTransformation.register(TransformationResize)
 BaseTransformation.register(TransformationRotate)
@@ -460,3 +471,7 @@ BaseTransformation.register(TransformationRotate180)
 BaseTransformation.register(TransformationRotate270)
 BaseTransformation.register(TransformationUnsharpMask)
 BaseTransformation.register(TransformationZoom)
+
+
+
+

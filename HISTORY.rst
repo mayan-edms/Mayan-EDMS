@@ -2,6 +2,9 @@
 ===============
 - Add view to download a document's OCR text. GitLab #215
 - Add user configurable mailer. GitLab #286.
+- Use Toasts library for screen messages.
+- Reduce verbosity of some debug messages.
+- Add new lineart transformation.
 
 2.4 (2017-06-23)
 ================

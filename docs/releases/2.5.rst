@@ -24,6 +24,10 @@ Other Changes
 - Make the task manager translatable.
 - Add Turkish to the list of processes languages.
 - Add user configurable mailer support. GitLab issue #286.
+- Use Toastr libary for screen messages.
+- Reduce verbosity of some debug messages.
+- New lineart transformation. Useful to increase the OCR accuracy on some kind
+  of documents.
 
 Removals
 --------
