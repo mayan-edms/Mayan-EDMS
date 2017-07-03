@@ -23,7 +23,7 @@ Other Changes
 - Rename the mayan_task_manager app to task_manager.
 - Make the task manager translatable.
 - Add Turkish to the list of processes languages.
-
+- Add user configurable mailer support. GitLab issue #286.
 
 Removals
 --------
@@ -79,6 +79,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #215 <https://gitlab.com/mayan-edms/mayan-edms/issues/215>`_ Download text contents
+* `GitLab issue #286 <https://gitlab.com/mayan-edms/mayan-edms/issues/286>`_ User configurable mailer
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

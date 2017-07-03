@@ -1,7 +1,7 @@
 2.5 (2017-07-XX)
 ===============
 - Add view to download a document's OCR text. GitLab #215
-
+- Add user configurable mailer. GitLab #286.
 
 2.4 (2017-06-23)
 ================
