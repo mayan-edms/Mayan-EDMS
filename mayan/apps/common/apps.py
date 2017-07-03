@@ -10,6 +10,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
@@ -58,11 +59,7 @@ class MayanAppConfig(apps.AppConfig):
                 )
             ),
         except ImportError as exception:
-            logger.debug(
-                'App %s doesn\'t have URLs defined. Exception: %s', self.name,
-                exception
-            )
-            if 'No module named urls' not in unicode(exception):
+            if force_text(exception) != 'No module named urls':
                 logger.error(
                     'Import time error when running AppConfig.ready(). Check '
                     'apps.py, urls.py, views.py, etc.'
