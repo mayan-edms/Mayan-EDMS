@@ -19,10 +19,10 @@ from django_downloadview import (
 )
 from pure_pagination.mixins import PaginationMixin
 
-from .forms import ChoiceForm
+from .forms import ChoiceForm, DynamicForm
 from .mixins import (
-    DeleteExtraDataMixin, ExtraContextMixin, FormExtraKwargsMixin,
-    MultipleObjectMixin, ObjectActionMixin,
+    DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
+    FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,
     ObjectListPermissionFilterMixin, ObjectNameMixin,
     ObjectPermissionCheckMixin, RedirectionMixin,
     ViewPermissionCheckMixin
@@ -186,8 +186,12 @@ class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, V
         return HttpResponseRedirect(self.get_success_url())
 
 
-class FormView(FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class FormView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, DjangoFormView):
     template_name = 'appearance/generic_form.html'
+
+
+class DynamicFormView(DynamicFormViewMixin, FormView):
+    pass
 
 
 class MultiFormView(DjangoFormView):
@@ -302,7 +306,7 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -342,6 +346,10 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
             )
 
         return HttpResponseRedirect(self.get_success_url())
+
+
+class SingleObjectDynamicFormCreateView(DynamicFormViewMixin, SingleObjectCreateView):
+    pass
 
 
 class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
@@ -394,7 +402,7 @@ class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMi
     VirtualFile = VirtualFile
 
 
-class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, FormExtraKwargsMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -444,6 +452,10 @@ class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPerm
                 setattr(obj, key, value)
 
         return obj
+
+
+class SingleObjectDynamicFormEditView(DynamicFormViewMixin, SingleObjectEditView):
+    pass
 
 
 class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):

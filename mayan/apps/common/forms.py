@@ -6,6 +6,7 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Filter, Package
@@ -81,6 +82,35 @@ class DetailForm(forms.ModelForm):
             self.fields[field_name].widget.attrs.update(
                 {'readonly': 'readonly'}
             )
+
+
+class DynamicFormMixin(object):
+    def __init__(self, *args, **kwargs):
+        self.schema = kwargs.pop('schema')
+        super(DynamicFormMixin, self).__init__(*args, **kwargs)
+        for field in self.schema['fields']:
+            field_class = import_string(field['class'])
+            kwargs = {
+                'label': field['label'],
+                'required': field.get('required', True),
+                'initial': field.get('default', None),
+                'help_text': field.get('help_text'),
+            }
+            kwargs.update(field.get('kwargs', {}))
+            self.fields[field['name']] = field_class(**kwargs)
+
+        for field, widget in self.schema.get('widgets', {}).items():
+            self.fields[field].widget = import_string(
+                widget['class']
+            )(**widget.get('kwargs', {}))
+
+
+class DynamicForm(DynamicFormMixin, forms.Form):
+    pass
+
+
+class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
+    pass
 
 
 class FileDisplayForm(forms.Form):
