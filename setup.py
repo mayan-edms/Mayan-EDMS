@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Pillow==4.0.0
+Pillow==4.2.0
 PyYAML==3.12
 celery==3.1.24
 cssmin==0.2.0
@@ -76,7 +76,7 @@ django-mptt>=0.8.7
 django-qsstats-magic==0.7.2
 django-rest-swagger==0.3.10
 django-stronghold==0.2.8
-django-suit==0.2.23
+django-suit==0.2.25
 django-widget-tweaks==1.4.1
 djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
