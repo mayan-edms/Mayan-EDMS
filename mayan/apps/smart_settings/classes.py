@@ -22,12 +22,12 @@ class Namespace(object):
         for app in apps.get_app_configs():
             try:
                 import_module('{}.settings'.format(app.name))
-            except ImportError:
-                logger.debug('App %s has no settings.py file', app.name)
-            else:
-                logger.debug(
-                    'Imported settings.py file for app %s', app.name
-                )
+            except ImportError as exception:
+                if force_text(exception) != 'No module named settings':
+                    logger.error(
+                        'Error importing %s settings.py file; %s', app.name,
+                        exception
+                    )
 
     @classmethod
     def get_all(cls):
