@@ -18,7 +18,7 @@ def get_menus_links(context, names, source=None):
     result = []
 
     for name in names.split(','):
-        for links in Menu.get(name=name).resolve(context):
+        for links in Menu.get(name=name).resolve(context=context):
             if links:
                 result.append(links)
 

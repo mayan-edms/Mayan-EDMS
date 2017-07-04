@@ -14,7 +14,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
-from navigation.classes import Separator
+from navigation.classes import Separator, Text
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
@@ -73,6 +73,13 @@ class CommonApp(MayanAppConfig):
     name = 'common'
     verbose_name = _('Common')
 
+    @staticmethod
+    def get_user_label_text(context):
+        if not context['request'].user.is_authenticated:
+            return _('Anonymous')
+        else:
+            return context['request'].user.get_full_name() or context['request'].user
+
     def ready(self):
         super(CommonApp, self).ready()
 
@@ -111,21 +118,22 @@ class CommonApp(MayanAppConfig):
         )
         menu_user.bind_links(
             links=(
+                Text(text=CommonApp.get_user_label_text), Separator(),
                 link_current_user_details, link_current_user_edit,
-                link_current_user_locale_profile_edit, link_tools, link_setup,
+                link_current_user_locale_profile_edit,
                 Separator()
             )
         )
 
         menu_about.bind_links(
             links=(
-                link_about, link_support, link_documentation, link_forum,
-                link_code, link_license, link_packages_licenses,
-                link_check_version
+                link_tools, link_setup, link_about, link_support,
+                link_documentation, link_forum, link_code, link_license,
+                link_packages_licenses, link_check_version
             )
         )
 
-        menu_main.bind_links(links=(menu_about,), position=99)
+        menu_main.bind_links(links=(menu_about, menu_user,), position=99)
 
         menu_tools.bind_links(
             links=(link_filters,)

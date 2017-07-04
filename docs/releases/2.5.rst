@@ -30,7 +30,10 @@ Other Changes
   of documents.
 - Make sure lookup selection widgets also trigger the metadata update
   checkbox on change.
-
+- Menu reorganization. The "About" menu has been renamed to "System". The
+  "Tools" and "Setup" sub menus, were moved from the "Profile" menu to the
+  "System" menu. The "Profile" menu has been renamed to "User".
+- Usability improvements on small displays.
 
 
 Removals

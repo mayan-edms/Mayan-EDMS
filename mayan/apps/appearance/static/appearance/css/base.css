@@ -175,3 +175,8 @@ a i {
 #toast-container > div {
   opacity: 1;
 }
+
+.link-text-span {
+    padding-left: 10px;
+    padding-right: 20px;
+}
