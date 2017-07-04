@@ -28,6 +28,10 @@ Other Changes
 - Reduce verbosity of some debug messages.
 - New lineart transformation. Useful to increase the OCR accuracy on some kind
   of documents.
+- Make sure lookup selection widgets also trigger the metadata update
+  checkbox on change.
+
+
 
 Removals
 --------

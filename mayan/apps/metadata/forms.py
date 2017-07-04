@@ -67,6 +67,9 @@ class DocumentMetadataForm(forms.Form):
                         choices.insert(0, ('', '------'))
                     self.fields['value'].choices = choices
                     self.fields['value'].required = required
+                    self.fields['value'].widget.attrs.update(
+                        {'class': 'metadata-value'}
+                    )
                 except Exception as exception:
                     self.fields['value'].initial = _(
                         'Lookup value error: %s'
