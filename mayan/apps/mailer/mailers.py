@@ -25,6 +25,28 @@ class DjangoSMTP(MailerBackend):
             'required': False
         },
         {
+            'name': 'use_tls', 'label': _('Use TLS'),
+            'class': 'django.forms.BooleanField', 'default': False,
+            'help_text': _(
+                'Whether to use a TLS (secure) connection when talking to '
+                'the SMTP server. This is used for explicit TLS connections, '
+                'generally on port 587.'
+            ), 'required': False
+        },
+        {
+            'name': 'use_ssl', 'label': _('Use SSL'),
+            'class': 'django.forms.BooleanField', 'default': False,
+            'help_text': _(
+                'Whether to use an implicit TLS (secure) connection when '
+                'talking to the SMTP server. In most email documentation '
+                'this type of TLS connection is referred to as SSL. It is '
+                'generally used on port 465. If you are experiencing '
+                'problems, see the explicit TLS setting "Use TLS". Note '
+                'that "Use TLS" and "Use SSL" are mutually exclusive, '
+                'so only set one of those settings to True.'
+            ), 'required': False
+        },
+        {
             'name': 'user', 'label': _('Username'),
             'class': 'django.forms.CharField', 'default': '',
             'help_text': _(
