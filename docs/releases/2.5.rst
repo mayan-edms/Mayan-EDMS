@@ -34,6 +34,10 @@ Other Changes
   "Tools" and "Setup" sub menus, were moved from the "Profile" menu to the
   "System" menu. The "Profile" menu has been renamed to "User".
 - Usability improvements on small displays.
+- Removal of the CONVERTER_LIBREOFFICE_PATH and CONVERTER_PDFTOPPM_PATH
+  settings. These setting have been consolidated into
+  CONVERTER_GRAPHICS_BACKEND_CONFIG.
+- PDF compatibility improvements.
 
 
 Removals

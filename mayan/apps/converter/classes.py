@@ -11,6 +11,7 @@ except ImportError:
 
 from PIL import Image, ImageFilter
 import sh
+import yaml
 
 from django.utils.translation import string_concat, ugettext_lazy as _
 
@@ -19,15 +20,19 @@ from common.utils import fs_cleanup, mkstemp
 from mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
-from .literals import DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
-from .settings import setting_libreoffice_path
+from .literals import (
+    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
+)
+from .settings import setting_graphics_backend_config
 
 CHUNK_SIZE = 1024
 logger = logging.getLogger(__name__)
 
 try:
     LIBREOFFICE = sh.Command(
-        setting_libreoffice_path.value
+        yaml.load(setting_graphics_backend_config.value).get(
+            'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
+        )
     ).bake('--headless', '--convert-to', 'pdf')
 except sh.CommandNotFound:
     LIBREOFFICE = None
@@ -114,11 +119,9 @@ class ConverterBase(object):
         Executes LibreOffice as a subprocess
         """
 
-        if not os.path.exists(setting_libreoffice_path.value):
+        if not LIBREOFFICE:
             raise OfficeConversionError(
-                _(
-                    'LibreOffice not installed or not found at path: %s'
-                ) % setting_libreoffice_path.value
+                _('LibreOffice not installed or not found.')
             )
 
         new_file_object, input_filepath = mkstemp()
@@ -471,7 +474,3 @@ BaseTransformation.register(TransformationRotate180)
 BaseTransformation.register(TransformationRotate270)
 BaseTransformation.register(TransformationUnsharpMask)
 BaseTransformation.register(TransformationZoom)
-
-
-
-

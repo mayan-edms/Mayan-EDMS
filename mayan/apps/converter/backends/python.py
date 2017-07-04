@@ -11,23 +11,39 @@ except ImportError:
 
 from PIL import Image
 import PyPDF2
-from pdfminer.pdfpage import PDFPage
 import sh
+import yaml
 
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import fs_cleanup, mkstemp
 
 from ..classes import ConverterBase
 from ..exceptions import PageCountError
-from ..settings import setting_pdftoppm_path
+from ..settings import setting_graphics_backend_config
+
+from .literals import DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH
 
 try:
-    pdftoppm = sh.Command(setting_pdftoppm_path.value)
+    pdftoppm = sh.Command(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
+        )
+    )
 except sh.CommandNotFound:
     pdftoppm = None
 else:
     pdftoppm = pdftoppm.bake('-jpeg')
+
+try:
+    pdfinfo = sh.Command(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdfinfo_path', DEFAULT_PDFINFO_PATH
+        )
+    )
+except sh.CommandNotFound:
+    pdfinfo = None
 
 Image.init()
 logger = logging.getLogger(__name__)
@@ -69,17 +85,34 @@ class Python(ConverterBase):
                 fs_cleanup(input_filepath)
 
     def detect_orientation(self, page_number):
+        # Default rotation: 0 degrees
+        result = 0
+
         # Use different ways depending on the file type
         if self.mime_type == 'application/pdf':
             pdf = PyPDF2.PdfFileReader(self.file_object)
-            result = pdf.getPage(page_number - 1).get('/Rotate')
+            try:
+                result = pdf.getPage(page_number - 1).get('/Rotate')
+            except Exception as exception:
+                self.file_object.seek(0)
+                pdf = PyPDF2.PdfFileReader(self.file_object)
+                if force_text(exception) == 'File has not been decrypted':
+                    # File is encrypted, try to decrypt using a blank
+                    # password.
+                    try:
+                        pdf.decrypt(password=b'')
+                    except Exception as exception:
+                        logger.error(
+                            'Unable to detect PDF orientation; %s', exception
+                        )
+                else:
+                    logger.error(
+                        'Unable to detect PDF orientation; %s', exception
+                    )
+            finally:
+                self.file_object.seek(0)
 
-            self.file_object.seek(0)
-
-            return result
-
-        # Default rotation: 0 degrees
-        return 0
+        return result
 
     def get_page_count(self):
         super(Python, self).get_page_count()
@@ -87,20 +120,57 @@ class Python(ConverterBase):
         page_count = 1
 
         if self.mime_type == 'application/pdf' or self.soffice_file:
-            # If file is a PDF open it with slate to determine the page count
             if self.soffice_file:
                 file_object = IteratorIO(self.soffice_file).file_buffer
             else:
                 file_object = self.file_object
 
             try:
-                page_count = len(list(PDFPage.get_pages(file_object)))
+                # Try PyPDF to determine the page number
+                pdf_reader = PyPDF2.PdfFileReader(
+                    stream=file_object, strict=False
+                )
+                page_count = pdf_reader.getNumPages()
             except Exception as exception:
-                error_message = _(
-                    'Exception determining PDF page count; %s'
-                ) % exception
-                logger.error(error_message)
-                raise PageCountError(error_message)
+                if force_text(exception) == 'File has not been decrypted':
+                    # File is encrypted, try to decrypt using a blank
+                    # password.
+                    file_object.seek(0)
+                    pdf_reader = PyPDF2.PdfFileReader(
+                        stream=file_object, strict=False
+                    )
+                    try:
+                        pdf_reader.decrypt(password=b'')
+                        page_count = pdf_reader.getNumPages()
+                    except Exception as exception:
+                        file_object.seek(0)
+                        if force_text(exception) == 'only algorithm code 1 and 2 are supported':
+                            # PDF uses an unsupported encryption
+                            # Try poppler-util's pdfinfo
+                            process = pdfinfo('-', _in=file_object)
+                            page_count = int(
+                                filter(
+                                    lambda line: line.startswith('Pages:'),
+                                    process.stdout.split(b'\n')
+                                )[0].replace('Pages:', '')
+                            )
+                            file_object.seek(0)
+                            logger.debug(
+                                'Document contains %d pages', page_count
+                            )
+                            return page_count
+                        else:
+                            error_message = _(
+                                'Exception determining PDF page count; %s'
+                            ) % exception
+                            logger.error(error_message)
+                            raise PageCountError(error_message)
+                else:
+                    error_message = _(
+                        'Exception determining PDF page count; %s'
+                    ) % exception
+                    logger.error(error_message)
+                    raise PageCountError(error_message)
             else:
                 logger.debug('Document contains %d pages', page_count)
                 return page_count
@@ -111,7 +181,7 @@ class Python(ConverterBase):
                 image = Image.open(self.file_object)
             except IOError as exception:
                 error_message = _(
-                    'Exception determining PDF page count; %s'
+                    'Exception determining page count using Pillow; %s'
                 ) % exception
                 logger.error(error_message)
                 raise PageCountError(error_message)
