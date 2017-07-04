@@ -47,11 +47,11 @@ link_user_mailer_log_list = Link(
 )
 link_user_mailer_list = Link(
     icon='fa fa-envelope', permissions=(permission_user_mailer_view,),
-    text=_('User mailer list'), view='mailer:user_mailer_list',
+    text=_('Mailing profiles list'), view='mailer:user_mailer_list',
 )
 link_user_mailer_setup = Link(
     icon='fa fa-envelope', permissions=(permission_user_mailer_view,),
-    text=_('User mailers'), view='mailer:user_mailer_list',
+    text=_('Mailing profiles'), view='mailer:user_mailer_list',
 )
 link_user_mailer_test = Link(
     args='object.pk', permissions=(permission_user_mailer_use,),
