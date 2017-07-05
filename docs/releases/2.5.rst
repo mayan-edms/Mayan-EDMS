@@ -52,7 +52,7 @@ Other Changes
 - It is now possible to change the relationship between metadata types and
   document types from either the metadata type list or document type list.
   GitLab issue #373.
-
+- Add support to search documents by their checksums.
 
 Removals
 --------

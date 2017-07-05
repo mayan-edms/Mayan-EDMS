@@ -20,6 +20,9 @@ document_search.add_model_field(
 )
 document_search.add_model_field(field='label', label=_('Label'))
 document_search.add_model_field(field='description', label=_('Description'))
+document_search.add_model_field(
+    field='versions__checksum', label=_('Checksum')
+)
 
 document_page_search = SearchModel(
     app_label='documents', model_name='DocumentPageResult',
@@ -40,4 +43,7 @@ document_page_search.add_model_field(
 )
 document_page_search.add_model_field(
     field='document_version__document__description', label=_('Description')
+)
+document_page_search.add_model_field(
+    field='document_version__checksum', label=_('Checksum')
 )
