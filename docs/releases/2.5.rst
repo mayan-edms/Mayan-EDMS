@@ -38,7 +38,8 @@ Other Changes
   settings. These setting have been consolidated into
   CONVERTER_GRAPHICS_BACKEND_CONFIG.
 - PDF compatibility improvements.
-
+- Improve the documentation of the document creation API endpoint.
+  GitHub issue #255. Thanks to @lcerliani opening the issue.
 
 Removals
 --------
@@ -93,8 +94,8 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
+* `GitHub issue #255 <https://github.com/mayan-edms/mayan-edms/issues/255>`_ Uploading a local file via api
 * `GitLab issue #215 <https://gitlab.com/mayan-edms/mayan-edms/issues/215>`_ Download text contents
 * `GitLab issue #286 <https://gitlab.com/mayan-edms/mayan-edms/issues/286>`_ User configurable mailer
-
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
