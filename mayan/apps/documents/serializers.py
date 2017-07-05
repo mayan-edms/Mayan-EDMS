@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_text
+
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
@@ -281,7 +283,7 @@ class NewDocumentSerializer(serializers.ModelSerializer):
             description=self.validated_data.get('description', ''),
             document_type=self.validated_data['document_type'],
             label=self.validated_data.get(
-                'label', unicode(self.validated_data['file'])
+                'label', force_text(self.validated_data['file'])
             ),
             language=self.validated_data.get(
                 'language', setting_language.value

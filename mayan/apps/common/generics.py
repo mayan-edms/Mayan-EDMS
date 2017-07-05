@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
@@ -56,7 +57,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         results = []
         for choice in choices:
             ct = ContentType.objects.get_for_model(choice)
-            label = unicode(choice)
+            label = force_text(choice)
 
             results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 

@@ -5,7 +5,7 @@ import logging
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.template import Context, Template
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
@@ -81,7 +81,7 @@ class Index(models.Model):
     def get_document_types_names(self):
         return ', '.join(
             [
-                unicode(document_type) for document_type in self.document_types.all()
+                force_text(document_type) for document_type in self.document_types.all()
             ] or ['None']
         )
 
@@ -314,9 +314,9 @@ class IndexInstanceNode(MPTTModel):
         result = []
         for node in self.get_ancestors(include_self=True):
             if node.is_root_node():
-                result.append(unicode(self.index()))
+                result.append(force_text(self.index()))
             else:
-                result.append(unicode(node))
+                result.append(force_text(node))
 
         return ' / '.join(result)
 

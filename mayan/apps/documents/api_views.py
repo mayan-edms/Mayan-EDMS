@@ -4,6 +4,7 @@ import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 
 from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
@@ -198,7 +199,7 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
 
     def get_file(self):
         instance = self.get_object()
-        return VirtualFile(instance.file, name=unicode(instance))
+        return VirtualFile(instance.file, name=force_text(instance))
 
     def get_serializer_class(self):
         return None

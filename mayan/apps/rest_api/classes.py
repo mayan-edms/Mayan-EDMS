@@ -2,9 +2,11 @@ from __future__ import unicode_literals
 
 from django.conf.urls import include, url
 from django.conf import settings
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 
 
+@python_2_unicode_compatible
 class APIEndPoint(object):
     _registry = {}
 
@@ -16,8 +18,8 @@ class APIEndPoint(object):
     def get(cls, name):
         return cls._registry[name]
 
-    def __unicode__(self):
-        return unicode(self.app.name)
+    def __str__(self):
+        return force_text(self.app.name)
 
     def __init__(self, app, version_string, name=None):
         self.app = app

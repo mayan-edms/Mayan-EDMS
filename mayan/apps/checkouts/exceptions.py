@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext
 
 
@@ -17,11 +18,12 @@ class DocumentNotCheckedOut(DocumentCheckoutError):
     pass
 
 
+@python_2_unicode_compatible
 class DocumentAlreadyCheckedOut(DocumentCheckoutError):
     """
     Raised when trying to checkout an already checkedout document
     """
-    def __unicode__(self):
+    def __str__(self):
         return ugettext('Document already checked out.')
 
 

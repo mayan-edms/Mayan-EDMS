@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import DocumentPage, DocumentType, DocumentVersion
@@ -37,7 +37,7 @@ class DocumentVersionOCRError(models.Model):
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 
     def __str__(self):
-        return unicode(self.document_version)
+        return force_text(self.document_version)
 
     class Meta:
         ordering = ('datetime_submitted',)
@@ -57,7 +57,7 @@ class DocumentPageContent(models.Model):
     content = models.TextField(blank=True, verbose_name=_('Content'))
 
     def __str__(self):
-        return unicode(self.document_page)
+        return force_text(self.document_page)
 
     class Meta:
         verbose_name = _('Document page content')

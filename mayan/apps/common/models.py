@@ -6,7 +6,7 @@ from pytz import common_timezones
 
 from django.conf import settings
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .runtime import shared_storage_backend
@@ -35,7 +35,7 @@ class SharedUploadedFile(models.Model):
         return self.filename
 
     def save(self, *args, **kwargs):
-        self.filename = unicode(self.file)
+        self.filename = force_text(self.file)
         super(SharedUploadedFile, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
@@ -61,7 +61,7 @@ class UserLocaleProfile(models.Model):
     )
 
     def __str__(self):
-        return unicode(self.user)
+        return force_text(self.user)
 
     class Meta:
         verbose_name = _('User locale profile')

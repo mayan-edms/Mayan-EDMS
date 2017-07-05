@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.utils.encoding import force_text
 from django.utils.html import mark_safe, escape
 
 
@@ -50,7 +51,7 @@ def node_level(node):
             [
                 '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * node.get_level(),
                 '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
-                unicode(node)
+                force_text(node)
             ]
         )
     )

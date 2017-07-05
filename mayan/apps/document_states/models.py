@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -159,7 +159,7 @@ class WorkflowInstance(models.Model):
     )
 
     def __str__(self):
-        return unicode(self.workflow)
+        return force_text(self.workflow)
 
     def get_absolute_url(self):
         return reverse(
@@ -277,7 +277,7 @@ class WorkflowInstanceLogEntry(models.Model):
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     def __str__(self):
-        return unicode(self.transition)
+        return force_text(self.transition)
 
     class Meta:
         verbose_name = _('Workflow instance log entry')

@@ -7,6 +7,7 @@ import sh
 from django.conf import settings
 from django.template import Context, Library
 from django.template.loader import get_template
+from django.utils.encoding import force_text
 
 import mayan
 
@@ -101,4 +102,4 @@ def build():
 
 @register.filter
 def get_type(value):
-    return unicode(type(value))
+    return force_text(type(value))

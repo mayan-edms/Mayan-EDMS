@@ -3,9 +3,11 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext
 
 
+@python_2_unicode_compatible
 class Collection(object):
     _registry = []
 
@@ -22,8 +24,8 @@ class Collection(object):
         self._order = order or 99
         self.__class__._registry.append(self)
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def resolve(self):
         self.children = self._get_children()
@@ -61,6 +63,7 @@ class DashboardWidget(object):
         self.__class__._registry.append(self)
 
 
+@python_2_unicode_compatible
 class ModelAttribute(object):
     __registry = {}
 
@@ -98,7 +101,7 @@ class ModelAttribute(object):
         for count, attribute in enumerate(cls.get_for(model, type_names), 1):
             result.append(
                 '{}) {}'.format(
-                    count, unicode(attribute.get_display(show_name=True))
+                    count, force_text(attribute.get_display(show_name=True))
                 )
             )
 
@@ -112,9 +115,9 @@ class ModelAttribute(object):
                 self.name if show_name else self.label, self.description
             )
         else:
-            return unicode(self.name if show_name else self.label)
+            return force_text(self.name if show_name else self.label)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.get_display()
 
     def __init__(self, model, name, label=None, description=None, type_name=None):
@@ -154,6 +157,7 @@ class MissingItem(object):
         self.__class__._registry.append(self)
 
 
+@python_2_unicode_compatible
 class Filter(object):
     _registry = {}
 
@@ -175,8 +179,8 @@ class Filter(object):
 
         self.__class__._registry[self.slug] = self
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def get_queryset(self, user):
         AccessControlList = apps.get_model(

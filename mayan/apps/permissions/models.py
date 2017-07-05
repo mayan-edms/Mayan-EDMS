@@ -5,7 +5,7 @@ import logging
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Permission
@@ -34,7 +34,7 @@ class StoredPermission(models.Model):
             pass
 
     def __str__(self):
-        return unicode(getattr(self, 'volatile_permission', self.name))
+        return force_text(getattr(self, 'volatile_permission', self.name))
 
     def natural_key(self):
         return (self.namespace, self.name)

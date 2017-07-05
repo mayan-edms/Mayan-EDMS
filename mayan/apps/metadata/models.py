@@ -160,7 +160,7 @@ class DocumentMetadata(models.Model):
     )
 
     def __str__(self):
-        return unicode(self.metadata_type)
+        return force_text(self.metadata_type)
 
     def delete(self, enforce_required=True, *args, **kwargs):
         if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
@@ -209,7 +209,7 @@ class DocumentTypeMetadataType(models.Model):
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 
     def __str__(self):
-        return unicode(self.metadata_type)
+        return force_text(self.metadata_type)
 
     class Meta:
         unique_together = ('document_type', 'metadata_type')

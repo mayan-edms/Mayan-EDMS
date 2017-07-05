@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
@@ -33,7 +33,7 @@ class DocumentContentForm(forms.Form):
             except DocumentPageContent.DoesNotExist:
                 pass
             else:
-                content.append(conditional_escape(force_unicode(page_content)))
+                content.append(conditional_escape(force_text(page_content)))
                 content.append(
                     '\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (
                         ugettext(

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.core.urlresolvers import reverse
+from django.utils.encoding import force_text
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
@@ -308,7 +309,7 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_title(self, instance):
-        return unicode(instance)
+        return force_text(instance)
 
 
 class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):

@@ -8,7 +8,7 @@ from django.conf import settings
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -52,7 +52,7 @@ def HASH_FUNCTION(data):
 
 
 def UUID_FUNCTION(*args, **kwargs):
-    return unicode(uuid.uuid4())
+    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible
@@ -433,7 +433,7 @@ class DocumentVersion(models.Model):
 
                     self.document.is_stub = False
                     if not self.document.label:
-                        self.document.label = unicode(self.file)
+                        self.document.label = force_text(self.file)
 
                     self.document.save()
         except Exception as exception:
@@ -584,7 +584,7 @@ class DocumentVersion(models.Model):
         """
         if self.exists():
             source = self.open()
-            self.checksum = unicode(HASH_FUNCTION(source.read()))
+            self.checksum = force_text(HASH_FUNCTION(source.read()))
             source.close()
             if save:
                 self.save()
@@ -682,7 +682,7 @@ class DocumentPage(models.Model):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
         ) % {
-            'document': unicode(self.document),
+            'document': force_text(self.document),
             'page_num': self.page_number,
             'total_pages': self.document_version.pages.count()
         }
@@ -881,7 +881,7 @@ class RecentDocument(models.Model):
     objects = RecentDocumentManager()
 
     def __str__(self):
-        return unicode(self.document)
+        return force_text(self.document)
 
     def natural_key(self):
         return self.document.natural_key() + self.user.natural_key()

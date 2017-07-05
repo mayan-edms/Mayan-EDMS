@@ -5,7 +5,7 @@ import uuid
 
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 def upload_to(*args, **kwargs):
-    return unicode(uuid.uuid4())
+    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible

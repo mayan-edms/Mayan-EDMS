@@ -313,7 +313,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
                 if isinstance(error, ValidationError):
                     exception_message = ', '.join(error.messages)
                 else:
-                    exception_message = unicode(error)
+                    exception_message = force_text(error)
 
                 messages.error(
                     self.request, _(

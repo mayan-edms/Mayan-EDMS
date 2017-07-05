@@ -11,6 +11,7 @@ except ImportError:
     from StringIO import StringIO
 
 from django.core.files import File
+from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from converter import TransformationResize, converter_class
 
@@ -39,6 +40,7 @@ class Attachment(File):
         )
 
 
+@python_2_unicode_compatible
 class StagingFile(object):
     """
     Simple class to extend the File class to add preview capabilities
@@ -57,8 +59,8 @@ class StagingFile(object):
                 filename.encode('utf8')
             )
 
-    def __unicode__(self):
-        return unicode(self.filename)
+    def __str__(self):
+        return force_text(self.filename)
 
     def as_file(self):
         return File(

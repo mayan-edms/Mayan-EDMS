@@ -9,11 +9,12 @@ import yaml
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
-from django.utils.encoding import force_text
+from django.utils.encoding import force_text, python_2_unicode_compatible
 
 logger = logging.getLogger(__name__)
 
 
+@python_2_unicode_compatible
 class Namespace(object):
     _registry = {}
 
@@ -42,8 +43,8 @@ class Namespace(object):
         for namespace in cls.get_all():
             namespace.invalidate_cache()
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def __init__(self, name, label):
         if name in self.__class__._registry:
@@ -63,6 +64,7 @@ class Namespace(object):
             setting.invalidate_cache()
 
 
+@python_2_unicode_compatible
 class Setting(object):
     _registry = {}
 
@@ -89,8 +91,8 @@ class Setting(object):
         namespace.settings.append(self)
         self.__class__._registry[global_name] = self
 
-    def __unicode__(self):
-        return unicode(self.global_name)
+    def __str__(self):
+        return force_text(self.global_name)
 
     def cache_value(self):
         environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))

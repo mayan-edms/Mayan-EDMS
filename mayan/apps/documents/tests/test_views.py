@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
+from django.utils.encoding import force_text
 
 from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
@@ -482,7 +483,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(
-            response, unicode(self.document.pages.first()), status_code=200
+            response, force_text(self.document.pages.first()), status_code=200
         )
 
 

@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import (
@@ -156,7 +157,7 @@ class ACLPermissionsView(AssignRemoveView):
 
         for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
             permission_options = [
-                (unicode(permission.pk), permission) for permission in permissions
+                (force_text(permission.pk), permission) for permission in permissions
             ]
             results.append(
                 (PermissionNamespace.get(namespace), permission_options)

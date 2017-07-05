@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Q
 from django.template import Context, Template
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
@@ -43,7 +43,9 @@ class SmartLink(models.Model):
                 return template.render(context=context)
             except Exception as exception:
                 return _(
-                    'Error generating dynamic label; %s' % unicode(exception)
+                    'Error generating dynamic label; %s' % force_text(
+                        exception
+                    )
                 )
         else:
             return None

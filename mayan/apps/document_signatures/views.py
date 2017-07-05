@@ -7,6 +7,7 @@ from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -284,7 +285,7 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
         signature = self.get_object()
 
         return DocumentVersionSignatureDownloadView.VirtualFile(
-            signature.signature_file, name=unicode(signature)
+            signature.signature_file, name=force_text(signature)
         )
 
 

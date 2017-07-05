@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.utils.encoding import force_text, smart_str, smart_unicode
+from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
 
 from common.utils import return_attrib
@@ -351,11 +351,11 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
-            previous_path = smart_unicode(
+            previous_path = force_text(
                 urllib.unquote_plus(
-                    smart_str(
+                    force_text(
                         request.get_full_path()
-                    ) or smart_str(
+                    ) or force_text(
                         request.META.get(
                             'HTTP_REFERER',
                             reverse(settings.LOGIN_REDIRECT_URL)
