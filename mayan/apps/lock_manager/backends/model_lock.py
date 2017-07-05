@@ -24,6 +24,7 @@ class ModelLock(LockingBackend):
 
     def __init__(self, model_instance):
         self.model_instance = model_instance
+        self.name = model_instance.name
 
     def release(self):
         super(ModelLock, self).release()
