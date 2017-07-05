@@ -184,27 +184,25 @@ class ConverterBase(object):
         fs_cleanup(converted_output)
 
     def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
-        image_buffer = StringIO()
-
         if not self.image:
             self.seek(0)
-            self.convert(page_number=self.page_number)
+
+        image_buffer = StringIO()
+        new_mode = self.image.mode
+
+        if output_format.upper() == 'JPEG':
+            # JPEG doesn't support transparency channel, convert the image to
+            # RGB. Removes modes: P and RGBA
+            new_mode = 'RGB'
+
+        self.image.convert(new_mode).save(image_buffer, format=output_format)
+
+        if as_base64:
+            return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
         else:
-            new_mode = self.image.mode
+            image_buffer.seek(0)
 
-            if output_format.upper() == 'JPEG':
-                # JPEG doesn't support transparency channel, convert the image to
-                # RGB. Removes modes: P and RGBA
-                new_mode = 'RGB'
-
-            self.image.convert(new_mode).save(image_buffer, format=output_format)
-
-            if as_base64:
-                return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
-            else:
-                image_buffer.seek(0)
-
-            return image_buffer
+        return image_buffer
 
     def convert(self, page_number=DEFAULT_PAGE_NUMBER):
         self.page_number = page_number
