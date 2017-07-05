@@ -40,6 +40,12 @@ Other Changes
 - PDF compatibility improvements.
 - Improve the documentation of the document creation API endpoint.
   GitHub issue #255. Thanks to @lcerliani opening the issue.
+- Libre Office conversion improvements. Give every libreoffice instance
+  its own separate $HOME directory. Additionally give every libreoffice
+  its own UserInstallation file in the $HOME directory. Works around
+  Libre Office issue: https://bugs.documentfoundation.org/show_bug.cgi?id=37531
+  Solves or affects GitLab issues #393 #258 #198 #175 
+
 
 Removals
 --------

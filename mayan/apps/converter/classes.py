@@ -16,7 +16,7 @@ import yaml
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
-from common.utils import fs_cleanup, mkstemp
+from common.utils import fs_cleanup, mkdtemp, mkstemp
 from mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
@@ -33,7 +33,7 @@ try:
         yaml.load(setting_graphics_backend_config.value).get(
             'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
         )
-    ).bake('--headless', '--convert-to', 'pdf')
+    ).bake('--headless', '--convert-to', 'pdf:writer_pdf_Export')
 except sh.CommandNotFound:
     LIBREOFFICE = None
 
@@ -118,7 +118,6 @@ class ConverterBase(object):
         """
         Executes LibreOffice as a subprocess
         """
-
         if not LIBREOFFICE:
             raise OfficeConversionError(
                 _('LibreOffice not installed or not found.')
@@ -135,9 +134,17 @@ class ConverterBase(object):
         if self.mime_type == 'text/plain':
             libreoffice_filter = 'Text (encoded):UTF8,LF,,,'
 
-        args = (input_filepath, '--outdir', setting_temporary_directory.value)
+        libreoffice_home_directory = mkdtemp()
+        args = (
+            input_filepath, '--outdir', setting_temporary_directory.value,
+            '-env:UserInstallation=file://{}'.format(
+                os.path.join(
+                    libreoffice_home_directory, 'LibreOffice_Conversion'
+                )
+            ),
+        )
 
-        kwargs = {'_env': {'HOME': setting_temporary_directory.value}}
+        kwargs = {'_env': {'HOME': libreoffice_home_directory}}
 
         if libreoffice_filter:
             kwargs.update({'infilter': libreoffice_filter})
@@ -146,8 +153,12 @@ class ConverterBase(object):
             LIBREOFFICE(*args, **kwargs)
         except sh.ErrorReturnCode as exception:
             raise OfficeConversionError(exception)
+        except Exception as exception:
+            logger.error('Exception launching Libre Office; %s', exception)
+            raise
         finally:
             fs_cleanup(input_filepath)
+            fs_cleanup(libreoffice_home_directory)
 
         filename, extension = os.path.splitext(
             os.path.basename(input_filepath)
@@ -173,25 +184,25 @@ class ConverterBase(object):
         fs_cleanup(converted_output)
 
     def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
-        if not self.image:
-            self.seek(0)
-
         image_buffer = StringIO()
 
-        new_mode = self.image.mode
-
-        if output_format.upper() == 'JPEG':
-            if self.image.mode == 'P':
-                new_mode = 'RGB'
-                if 'transparency' in self.image.info:
-                    new_mode = 'RGBA'
-
-        self.image.convert(new_mode).save(image_buffer, format=output_format)
-
-        if as_base64:
-            return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
+        if not self.image:
+            self.seek(0)
+            self.convert(page_number=self.page_number)
         else:
-            image_buffer.seek(0)
+            new_mode = self.image.mode
+
+            if output_format.upper() == 'JPEG':
+                # JPEG doesn't support transparency channel, convert the image to
+                # RGB. Removes modes: P and RGBA
+                new_mode = 'RGB'
+
+            self.image.convert(new_mode).save(image_buffer, format=output_format)
+
+            if as_base64:
+                return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
+            else:
+                image_buffer.seek(0)
 
             return image_buffer
 
