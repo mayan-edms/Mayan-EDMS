@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-05-28 19:52+0000\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:76 settings.py:9
+#: apps.py:77 settings.py:9
 msgid "Common"
 msgstr "Общий"
 
 #: classes.py:106
-msgid "Available attributes: "
-msgstr "Доступные атрибуты:"
+msgid "Available attributes: \n"
+msgstr ""
 
 #: forms.py:26
 msgid "Selection"
@@ -134,7 +134,7 @@ msgstr "Настройки"
 msgid "Support"
 msgstr ""
 
-#: links.py:61 views.py:234
+#: links.py:61 queues.py:10 views.py:234
 msgid "Tools"
 msgstr "Инструменты"
 
@@ -208,6 +208,18 @@ msgstr "Профиль локали пользователя"
 msgid "User locale profiles"
 msgstr "Профили локали пользователей"
 
+#: queues.py:8
+msgid "Default"
+msgstr "Умолчание"
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
 msgstr "Автоматически разрешать всем установленным приложениям делать записи в журнале."
@@ -233,6 +245,12 @@ msgstr "Бекенд хранения, который каждый может и
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+msgstr ""
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
 msgstr ""
 
 #: views.py:44

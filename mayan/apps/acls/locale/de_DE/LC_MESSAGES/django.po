@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:48-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-04-24 23:10+0000\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 links.py:35
@@ -31,6 +30,7 @@ msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: apps.py:29 models.py:46
+#| msgid "Roles"
 msgid "Role"
 msgstr "Rolle"
 
@@ -39,6 +39,7 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: links.py:39
+#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Neue Berechtigung"
 
@@ -56,9 +57,9 @@ msgstr "Berechtigungseinträge"
 
 #: models.py:57
 #, python-format
+#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-"Berechtigungen \"%(permissions)s\" zur Rolle \"%(role)s\" für \"%(object)s\""
+msgstr "Berechtigungen \"%(permissions)s\" zur Rolle \"%(role)s\" für \"%(object)s\""
 
 #: models.py:74
 msgid "None"
@@ -85,9 +86,7 @@ msgstr "API URL für die Liste der Berechtigungen dieser ACL"
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL für die Berechtigung in Relation zur ACL zu der sie zugeordnet ist. "
-"Diese URL unterscheidet sich von der normalen Workflow URL."
+msgstr "API URL für die Berechtigung in Relation zur ACL zu der sie zugeordnet ist. Diese URL unterscheidet sich von der normalen Workflow URL."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
@@ -95,6 +94,7 @@ msgstr "Primary key der zur ACL hinzuzufügenden Berechtigung."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
+#| msgid "permission"
 msgid "No such permission: %s"
 msgstr "Keine solche Berechtigung: %s"
 
@@ -102,9 +102,7 @@ msgstr "Keine solche Berechtigung: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Durch Komma getrennte Liste von Primary Keys der zu dieser ACL "
-"hinzuzufügenden Berechtigungen."
+msgstr "Durch Komma getrennte Liste von Primary Keys der zu dieser ACL hinzuzufügenden Berechtigungen."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
@@ -117,6 +115,7 @@ msgstr "Neue Zugriffsberechtigung für %s"
 
 #: views.py:100
 #, python-format
+#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "ACL \"%s\" löschen"
 
@@ -140,8 +139,7 @@ msgstr "Berechtigungen von Rolle \"%(role)s\" für \"%(object)s\""
 
 #: views.py:226
 msgid "Disabled permissions are inherited from a parent object."
-msgstr ""
-"Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererbt."
+msgstr "Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererbt."
 
 #~ msgid "New holder"
 #~ msgstr "New holder"
@@ -234,10 +232,8 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

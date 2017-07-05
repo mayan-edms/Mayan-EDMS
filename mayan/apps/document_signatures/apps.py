@@ -39,6 +39,7 @@ from .permissions import (
     permission_document_version_signature_upload,
     permission_document_version_signature_view,
 )
+from .queues import *  # NOQA
 
 logger = logging.getLogger(__name__)
 

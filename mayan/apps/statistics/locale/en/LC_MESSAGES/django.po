@@ -1,98 +1,102 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:51-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2017-06-23 01:40-0400\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24 links.py:28 permissions.py:7
+#: apps.py:25 links.py:28 permissions.py:7 queues.py:8
 msgid "Statistics"
-msgstr ""
+msgstr "Statistics"
 
 #. Translators: Schedule here is a verb, the 'schedule' at which the
 #. statistic will be updated
-#: apps.py:33
+#: apps.py:34
 msgid "Schedule"
-msgstr ""
+msgstr "Schedule"
 
 #: links.py:11
 msgid "Queue"
-msgstr ""
+msgstr "Queue"
 
 #: links.py:15
 msgid "View"
-msgstr ""
+msgstr "View"
 
 #: links.py:19
 msgid "Namespace details"
-msgstr ""
+msgstr "Namespace details"
 
 #: links.py:23
 msgid "Namespace list"
-msgstr ""
+msgstr "Namespace list"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:14
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:16
 msgid "Date time"
-msgstr ""
+msgstr "Date time"
 
 #: models.py:18
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 #: models.py:31
 msgid "Statistics result"
-msgstr ""
+msgstr "Statistics result"
 
 #: models.py:32
 msgid "Statistics results"
-msgstr ""
+msgstr "Statistics results"
 
 #: permissions.py:10
 msgid "View statistics"
-msgstr ""
+msgstr "View statistics"
+
+#: queues.py:13
+msgid "Execute statistic"
+msgstr "Execute statistic"
 
 #: templates/statistics/backends/chartjs/line.html:19
 msgid "No data available yet"
-msgstr ""
+msgstr "No data available yet"
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Statistics namespaces"
 
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Namespace details for: %s"
 
 #: views.py:53
 #, python-format
 msgid "Results for: %s"
-msgstr ""
+msgstr "Results for: %s"
 
 #: views.py:60 views.py:85
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "Statistic \"%s\" not found."
 
 #: views.py:77
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Queue statistic \"%s\" to be updated?"

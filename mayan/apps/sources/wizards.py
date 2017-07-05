@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
@@ -118,7 +119,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             pass
 
         try:
-            query_dict['tags'] = ([unicode(tag.pk) for tag in self.get_cleaned_data_for_step(STEP_TAGS)['tags']])
+            query_dict['tags'] = ([force_text(tag.pk) for tag in self.get_cleaned_data_for_step(STEP_TAGS)['tags']])
 
         except AttributeError:
             pass

@@ -24,6 +24,12 @@ help:
 	@echo "wheel - Build the wheel distribution package."
 	@echo "release - Package (sdist and wheel) and upload a release."
 	@echo "test_release - Package (sdist and wheel) and upload to the PyPI test server."
+	@echo "release_test_via_docker_ubuntu - Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder."
+	@echo "release_test_via_docker_alpine - Package (sdist and wheel) and upload to the PyPI test server using an Alpine Docker builder."
+	@echo "release_via_docker_ubuntu - Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder."
+	@echo "release_via_docker_alpine - Package (sdist and wheel) and upload to PyPI using an Alpine Docker builder."
+	@echo "test_sdist_via_docker_ubuntu - Make an sdist packange and test it using an Ubuntu Docker container."
+	@echo "test_wheel_via_docker_ubuntu - Make a wheel package and test it using an Ubuntu Docker container."
 
 	@echo "runserver - Run the development server."
 	@echo "runserver_plus - Run the Django extension's development server."
@@ -33,6 +39,8 @@ help:
 	@echo "docker_services_off - Stop and delete the Docker production-like services."
 	@echo "docker_services_frontend - Launch a front end instance that uses the production-like services."
 	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
+	@echo "docker_service_mysql_on - Launch and initialize a MySQL Docker container."
+	@echo "docker_service_mysql_off - Stop and delete the MySQL Docker container."
 
 	@echo "safety_check - Run a package safety check."
 
@@ -112,6 +120,45 @@ wheel: clean sdist
 	pip wheel --no-index --no-deps --wheel-dir dist dist/*.tar.gz
 	ls -l dist
 
+release_test_via_docker_ubuntu:
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip -y && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make test_release"
+
+release_via_docker_ubuntu:
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip -y && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make release"
+
+release_test_via_docker_alpine:
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "cp -r /host_source/* . && apk update && apk add python2 py2-pip make && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make test_release"
+
+release_via_docker_alpine:
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "cp -r /host_source/* . && apk update && apk add python2 py2-pip make && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make release"
+
+test_sdist_via_docker_ubuntu:
+	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make sdist_test_suit"
+
+test_wheel_via_docker_ubuntu:
+	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make wheel_test_suit"
+
+sdist_test_suit: sdist
+	rm -f -R _virtualenv
+	virtualenv _virtualenv
+	sh -c '\
+	. _virtualenv/bin/activate; \
+	pip install `ls dist/*.gz`; \
+	_virtualenv/bin/mayan-edms.py initialsetup; \
+	pip install mock==2.0.0; \
+	_virtualenv/bin/mayan-edms.py test --mayan-apps \
+	'
+
+wheel_test_suit: wheel
+	rm -f -R _virtualenv
+	virtualenv _virtualenv
+	sh -c '\
+	. _virtualenv/bin/activate; \
+	pip install `ls dist/*.whl`; \
+	_virtualenv/bin/mayan-edms.py initialsetup; \
+	pip install mock==2.0.0; \
+	_virtualenv/bin/mayan-edms.py test --mayan-apps \
+	'
 
 # Dev server
 
@@ -129,7 +176,7 @@ docker_services_on:
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
-	sleep 1
+	sleep 2
 	./manage.py initialsetup --settings=mayan.settings.testing.docker
 
 docker_services_off:

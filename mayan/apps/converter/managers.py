@@ -102,3 +102,11 @@ class TransformationManager(models.Manager):
             return result
         else:
             return transformations
+
+    def add_for_model(self, obj, transformation, arguments=None):
+        content_type = ContentType.objects.get_for_model(obj)
+
+        self.create(
+            content_type=content_type, object_id=obj.pk,
+            name=transformation.name, arguments=arguments
+        )

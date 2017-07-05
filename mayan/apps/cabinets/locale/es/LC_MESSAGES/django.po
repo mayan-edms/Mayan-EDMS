@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 forms.py:30 links.py:21 menus.py:8 models.py:34 permissions.py:7
-#: views.py:153
+#: apps.py:34 apps.py:70 apps.py:73 forms.py:30 links.py:21 menus.py:8
+#: models.py:36 permissions.py:7 views.py:153
 msgid "Cabinets"
 msgstr "Archivadores"
 
@@ -55,32 +55,32 @@ msgstr "Todos"
 msgid "Details"
 msgstr "Detalles"
 
-#: models.py:22
+#: models.py:24 search.py:16
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models.py:25
+#: models.py:27
 msgid "Documents"
 msgstr "Documentos"
 
-#: models.py:33 models.py:66 serializers.py:134
+#: models.py:35 models.py:68 serializers.py:134
 msgid "Cabinet"
 msgstr "Archivador"
 
-#: models.py:67 serializers.py:135
+#: models.py:69 serializers.py:135
 msgid "Parent and Label"
 msgstr "Padre y etiqueta"
 
-#: models.py:74 serializers.py:141
+#: models.py:76 serializers.py:141
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s con este %(field_labels)s ya existe."
 
-#: models.py:86
+#: models.py:88
 msgid "Document cabinet"
 msgstr "Archivador de documento"
 
-#: models.py:87
+#: models.py:89
 msgid "Document cabinets"
 msgstr "Archivadores de documento"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -9,24 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:35 links.py:30
+#: apps.py:36 links.py:30
 msgid "Checkouts"
 msgstr "Забронированные документы"
 
-#: apps.py:54
+#: apps.py:55
+#| msgid "checked out documents"
 msgid "Checkedout documents"
 msgstr ""
 
@@ -55,10 +53,12 @@ msgid "Document status"
 msgstr "Статус документа"
 
 #: forms.py:37 models.py:37 views.py:79
+#| msgid "User: %s"
 msgid "User"
 msgstr "Пользователь"
 
 #: forms.py:41
+#| msgid "Check out time: %s"
 msgid "Check out time"
 msgstr "Время бронивания"
 
@@ -67,6 +67,7 @@ msgid "Check out expiration"
 msgstr "Окончание бронирования"
 
 #: forms.py:51
+#| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
 msgstr "Новые версии разрешены?"
 
@@ -123,6 +124,7 @@ msgid "Block new version upload"
 msgstr "Заблокировать загрузку новых версий"
 
 #: models.py:54
+#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
 msgstr "Время окончания брованирования должно быть в будущем."
 
@@ -135,10 +137,12 @@ msgid "Document checkouts"
 msgstr "Забронированные документы"
 
 #: models.py:97
+#| msgid "New versions allowed: %s"
 msgid "New version block"
 msgstr "Блокировка добавления новых версий"
 
 #: models.py:98
+#| msgid "New versions allowed: %s"
 msgid "New version blocks"
 msgstr "Блокировки добавления новых версий"
 
@@ -157,6 +161,14 @@ msgstr "Бронирование документов"
 #: permissions.py:19
 msgid "Check out details view"
 msgstr "Подробности бронирования"
+
+#: queues.py:8
+msgid "Checkouts periodic"
+msgstr ""
+
+#: queues.py:12
+msgid "Check expired checkouts"
+msgstr ""
 
 #: views.py:53
 #, python-format
@@ -192,6 +204,9 @@ msgstr "Подробности бронирования %s"
 
 #: views.py:130
 #, python-format
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
@@ -199,6 +214,7 @@ msgstr "Документ был забронирован не вами. Осво
 
 #: views.py:134
 #, python-format
+#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Освободить документ: %s?"
 
@@ -232,9 +248,6 @@ msgstr "Интервал"
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
 
-#~ msgid "Checkout user"
-#~ msgstr "checkout user"
-
 #~ msgid "Are you sure you wish to check in document: %s?"
 #~ msgstr "Are you sure you wish to check in document: %s?"
 
@@ -260,11 +273,11 @@ msgstr "Интервал"
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

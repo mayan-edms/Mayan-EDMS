@@ -70,6 +70,7 @@ from .permissions import (
     permission_document_trash, permission_document_version_revert,
     permission_document_view
 )
+from .queues import *  # NOQA
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
 from .statistics import (

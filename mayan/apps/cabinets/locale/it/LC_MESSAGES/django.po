@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 forms.py:30 links.py:21 menus.py:8 models.py:34 permissions.py:7
-#: views.py:153
+#: apps.py:34 apps.py:70 apps.py:73 forms.py:30 links.py:21 menus.py:8
+#: models.py:36 permissions.py:7 views.py:153
 msgid "Cabinets"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 
 #: links.py:55
 msgid "Add new level"
-msgstr ""
+msgstr "Aggiungi nuovo livello"
 
 #: links.py:60 views.py:39
 msgid "Create cabinet"
@@ -55,32 +55,32 @@ msgstr "Tutti"
 msgid "Details"
 msgstr "Dettagli"
 
-#: models.py:22
+#: models.py:24 search.py:16
 msgid "Label"
 msgstr "Etichetta"
 
-#: models.py:25
+#: models.py:27
 msgid "Documents"
 msgstr "Documenti"
 
-#: models.py:33 models.py:66 serializers.py:134
+#: models.py:35 models.py:68 serializers.py:134
 msgid "Cabinet"
 msgstr ""
 
-#: models.py:67 serializers.py:135
+#: models.py:69 serializers.py:135
 msgid "Parent and Label"
 msgstr ""
 
-#: models.py:74 serializers.py:141
+#: models.py:76 serializers.py:141
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr ""
 
-#: models.py:86
+#: models.py:88
 msgid "Document cabinet"
 msgstr ""
 
-#: models.py:87
+#: models.py:89
 msgid "Document cabinets"
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 #: views.py:70
 #, python-format
 msgid "Add new level to: %s"
-msgstr ""
+msgstr "Aggiungi un nuovo livello a: %s"
 
 #: views.py:83
 #, python-format

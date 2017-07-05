@@ -75,7 +75,7 @@ class WritableRoleSerializer(serializers.HyperlinkedModelSerializer):
         if self.permissions_pk_list:
             self._add_permissions(instance=instance)
 
-        return result
+        return instance
 
     def _add_groups(self, instance):
         instance.groups.add(

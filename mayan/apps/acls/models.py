@@ -5,7 +5,7 @@ import logging
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Role, StoredPermission
@@ -68,7 +68,7 @@ class AccessControlList(models.Model):
 
     def get_permission_titles(self):
         result = ', '.join(
-            [unicode(permission) for permission in self.permissions.all()]
+            [force_text(permission) for permission in self.permissions.all()]
         )
 
         return result or _('None')

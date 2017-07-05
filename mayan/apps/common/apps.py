@@ -10,10 +10,11 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
-from navigation.classes import Separator
+from navigation.classes import Separator, Text
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
@@ -28,6 +29,7 @@ from .links import (
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_about, menu_main, menu_tools, menu_user
 from .licenses import *  # NOQA
+from .queues import *  # NOQA - Force queues registration
 from .settings import setting_auto_logging
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
@@ -57,11 +59,7 @@ class MayanAppConfig(apps.AppConfig):
                 )
             ),
         except ImportError as exception:
-            logger.debug(
-                'App %s doesn\'t have URLs defined. Exception: %s', self.name,
-                exception
-            )
-            if 'No module named urls' not in unicode(exception):
+            if force_text(exception) != 'No module named urls':
                 logger.error(
                     'Import time error when running AppConfig.ready(). Check '
                     'apps.py, urls.py, views.py, etc.'
@@ -74,6 +72,13 @@ class CommonApp(MayanAppConfig):
     has_tests = True
     name = 'common'
     verbose_name = _('Common')
+
+    @staticmethod
+    def get_user_label_text(context):
+        if not context['request'].user.is_authenticated:
+            return _('Anonymous')
+        else:
+            return context['request'].user.get_full_name() or context['request'].user
 
     def ready(self):
         super(CommonApp, self).ready()
@@ -113,21 +118,22 @@ class CommonApp(MayanAppConfig):
         )
         menu_user.bind_links(
             links=(
+                Text(text=CommonApp.get_user_label_text), Separator(),
                 link_current_user_details, link_current_user_edit,
-                link_current_user_locale_profile_edit, link_tools, link_setup,
+                link_current_user_locale_profile_edit,
                 Separator()
             )
         )
 
         menu_about.bind_links(
             links=(
-                link_about, link_support, link_documentation, link_forum,
-                link_code, link_license, link_packages_licenses,
-                link_check_version
+                link_tools, link_setup, link_about, link_support,
+                link_documentation, link_forum, link_code, link_license,
+                link_packages_licenses, link_check_version
             )
         )
 
-        menu_main.bind_links(links=(menu_about,), position=99)
+        menu_main.bind_links(links=(menu_about, menu_user,), position=99)
 
         menu_tools.bind_links(
             links=(link_filters,)

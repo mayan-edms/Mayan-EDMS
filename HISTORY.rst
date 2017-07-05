@@ -4,7 +4,31 @@
 - Content windows appearance changes
 - Add new document's version list view permission
 
-2.3 (2017-05-XX)
+2.5 (2017-07-XX)
+===============
+- Add view to download a document's OCR text. GitLab #215
+- Add user configurable mailer. GitLab #286.
+- Use Toasts library for screen messages.
+- Reduce verbosity of some debug messages.
+- Add new lineart transformation.
+
+2.4 (2017-06-23)
+================
+- Add Django-mathfilters.
+- Improve render of documents with no pages.
+- Add SANE scanner document source.
+- Added PDF orientation detection. GitLab issue #387.
+- Fix repeated permission list API URL. GitLab issue #389.
+- Fix role creation API endpoint not returning id. GitLab issue #390.
+- Make tags, metadata types and cabinets searchable via the dynamic search API. GitLab issue #344.
+- Add support for updating configuration options from environment variables.
+- Add purgelocks management command. GitLab issue #221.
+- Fix index rebuilding for multi value first levels. GitLab issue #391.
+- Truncate views titles via the APPEARANCE_MAXIMUM_TITLE_LENGTH setting. GitLab issue #217.
+- Add background task manager app. GitLab issue #132.
+- Add link to show a document's OCR errors. GitLab issue #291.
+
+2.3 (2017-06-08)
 ================
 - Allow for bigger indexing expression templates.
 - Auto select checkbox when updating metadata values. GitLab issue #371.
@@ -30,7 +54,7 @@
 - Improve upgrade instructions
 - New image caching pipeline
 - New drop down menus for the documents, folders and tags app as well as for
-the user links
+  the user links.
 - New Dashboard view
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.10.4.

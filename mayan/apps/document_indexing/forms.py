@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django import forms
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common.classes import ModelAttribute
@@ -27,7 +28,7 @@ class IndexTemplateNodeForm(forms.ModelForm):
         self.fields['parent'].widget = forms.widgets.HiddenInput()
         self.fields['expression'].help_text = ' '.join(
             [
-                unicode(self.fields['expression'].help_text),
+                force_text(self.fields['expression'].help_text),
                 ModelAttribute.help_text_for(
                     Document, type_names=['indexing']
                 ).replace('\n', '<br>')

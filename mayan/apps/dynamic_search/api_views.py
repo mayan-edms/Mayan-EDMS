@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_text
+
 from rest_framework import generics
 from rest_framework.exceptions import ParseError
 
@@ -40,7 +42,7 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
                 query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(unicode(exception))
+            raise ParseError(force_text(exception))
 
         return queryset
 
@@ -83,7 +85,7 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
                 global_and_search=global_and_search
             )
         except Exception as exception:
-            raise ParseError(unicode(exception))
+            raise ParseError(force_text(exception))
 
         return queryset
 

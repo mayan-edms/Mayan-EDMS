@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Pillow==4.1.1
+Pillow==4.2.0
 PyYAML==3.12
 celery==3.1.24
 cssmin==0.2.0
@@ -70,6 +70,7 @@ django-cors-headers==1.2.2
 django-downloadview==1.9
 django-formtools==2.0
 django-pure-pagination==0.3.0
+django-mathfilters==0.4.0
 django-model-utils==2.6.1
 django-mptt>=0.8.7
 django-qsstats-magic==0.7.2
@@ -81,6 +82,7 @@ djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
 fusepy==2.0.4
 pdfminer==20140328
+PyPDF2==1.26.0
 pycountry==1.20
 pyocr==0.4.7
 python-dateutil==2.5.3
@@ -90,12 +92,8 @@ pytz==2016.7
 sh==1.12.13
 """.split()
 
-try:
-    import pypandoc
-    readme = pypandoc.convert_file('README.md', 'rst')
-except (IOError, ImportError):
-    with open('README.md') as f:
-        readme = f.read()
+with open('README.rst') as f:
+    readme = f.read()
 
 with open('HISTORY.rst') as f:
     history = f.read()

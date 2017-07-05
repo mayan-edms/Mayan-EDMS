@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: 2017-05-28 19:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -36,7 +36,7 @@ msgstr "Transformación"
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: backends/python.py:86 backends/python.py:100
+#: backends/python.py:100 backends/python.py:114
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Excepción determinando el número de páginas del PDF; %s"
@@ -51,50 +51,50 @@ msgstr "No es un formato de archivo de la oficina."
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr "LibreOffice no instalado o no encontrado en: %s"
 
-#: classes.py:290
+#: classes.py:294
 msgid "Crop"
 msgstr "Recortar"
 
-#: classes.py:303
+#: classes.py:307
 msgid "Flip"
 msgstr "Dar la vuelta"
 
-#: classes.py:314
+#: classes.py:318
 msgid "Gaussian blur"
 msgstr "Desenfoque gaussiano"
 
-#: classes.py:325
+#: classes.py:329
 msgid "Mirror"
 msgstr "Espejo"
 
-#: classes.py:336
+#: classes.py:340
 msgid "Resize"
 msgstr "Cambiar el tamaño"
 
-#: classes.py:363
+#: classes.py:367
 msgid "Rotate"
 msgstr "Girar"
 
-#: classes.py:382
+#: classes.py:386
 #| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 grados"
 
-#: classes.py:393
+#: classes.py:397
 #| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 grados"
 
-#: classes.py:404
+#: classes.py:408
 #| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 grados"
 
-#: classes.py:414
+#: classes.py:418
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: classes.py:430
+#: classes.py:434
 msgid "Zoom"
 msgstr "Ampliar"
 

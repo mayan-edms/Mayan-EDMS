@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.utils.encoding import force_text, smart_str, smart_unicode
+from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
 
 from common.utils import return_attrib
@@ -26,6 +26,8 @@ class ResolvedLink(object):
         self.disabled = False
         self.link = link
         self.url = '#'
+        self.context = None
+        self.request = None
 
     @property
     def active(self):
@@ -45,7 +47,10 @@ class ResolvedLink(object):
 
     @property
     def text(self):
-        return self.link.text
+        try:
+            return self.link.text(context=self.context)
+        except TypeError:
+            return self.link.text
 
 
 class Menu(object):
@@ -174,7 +179,7 @@ class Menu(object):
         resolved_links = []
         # View links
         for link in self.bound_links.get(current_view, []):
-            resolved_link = link.resolve(context)
+            resolved_link = link.resolve(context=context)
             if resolved_link:
                 resolved_links.append(resolved_link)
 
@@ -188,7 +193,7 @@ class Menu(object):
             if isinstance(link, Menu):
                 resolved_link = link
             else:
-                resolved_link = link.resolve(context)
+                resolved_link = link.resolve(context=context)
 
             if resolved_link:
                 resolved_links.append(resolved_link)
@@ -346,11 +351,11 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
-            previous_path = smart_unicode(
+            previous_path = force_text(
                 urllib.unquote_plus(
-                    smart_str(
+                    force_text(
                         request.get_full_path()
-                    ) or smart_str(
+                    ) or force_text(
                         request.META.get(
                             'HTTP_REFERER',
                             reverse(settings.LOGIN_REDIRECT_URL)
@@ -372,10 +377,14 @@ class Link(object):
                 urlencode(parsed_query_string, doseq=True)
             )
 
+        resolved_link.context = context
         return resolved_link
 
 
 class Separator(Link):
+    """
+    Menu separator. Renders to an <hr> tag
+    """
     def __init__(self, *args, **kwargs):
         self.icon = None
         self.text = None
@@ -427,4 +436,20 @@ class SourceColumn(object):
         elif self.func:
             result = self.func(context=context)
 
+        return result
+
+
+class Text(Link):
+    """
+    Menu text. Renders to a plain <li> tag
+    """
+    def __init__(self, *args, **kwargs):
+        self.icon = None
+        self.text = kwargs.get('text')
+        self.view = None
+
+    def resolve(self, *args, **kwargs):
+        result = ResolvedLink(current_view=None, link=self)
+        result.context = kwargs.get('context')
+        result.text_span = True
         return result

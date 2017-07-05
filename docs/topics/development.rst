@@ -203,7 +203,7 @@ Mayan EDMS source is controlled with Git_.
 
 The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
 
 
 Git branch structure
@@ -235,14 +235,14 @@ Steps to deploy a development version
 -------------------------------------
 .. code-block:: bash
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
-    cd mayan-edms
-    git checkout development
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ./manage.py initialsetup
-    ./manage.py runserver
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ cd mayan-edms
+    $ git checkout development
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
+    $ ./manage.py initialsetup
+    $ ./manage.py runserver
 
 
 Setting up a development version using Vagrant
@@ -254,36 +254,36 @@ Start and provision a machine using:
 
 .. code-block:: bash
 
-    vagrant up development
+    $ vagrant up development
 
 To launch a standalone development server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
 
 To launch a development server with a celery worker and Redis as broker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
 
 Then on a separate console launch a celery worker from the same provisioned Vagrant machine:
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
 
 
 Contributing changes
@@ -361,12 +361,12 @@ The documentation is written in `reStructured Text`_ format, processed with
 Sphinx_, and resides in the ``docs`` directory. In order to build it, you will
 first need to install the documentation editing dependencies with::
 
-    pip install -r requirements/documentation.txt
+    $ pip install -r requirements/documentation.txt
 
 Then, to build an HTML version of the documentation, run the following command
 from the **docs** directory::
 
-    make livehtml
+    $ make docs_serve
 
 The generated documentation can be viewed by browsing to http://127.0.0.1:8000
 or by browsing to the ``docs/_build/html`` directory.
@@ -386,22 +386,18 @@ Source file package
 
 This is the sequence of step used to produce an installable package:
 
-1. Make sure there are no lingering packages from previous attempts::
+1. Generate the packaged version (will produce dist/mayan-edms-x.y.z.tar.gz)::
 
-    rm dist -R
+    $ make sdist
 
-2. Generate the packaged version (will produce dist/mayan-edms-x.y.z.tar.gz)::
+2. Do a test install::
 
-    python setup.py sdist
-
-3. Do a test install::
-
-    cd /tmp
-    virtualenv venv
-    source venv/bin/activate
-    pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
-    mayan-edms.py initialsetup
-    mayan-edms.py runserver
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py runserver
 
 
 Wheel package
@@ -411,9 +407,9 @@ Wheel package
 
     $ pip install -r requirements/development.txt
 
-2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
+2. Create wheel package using the makefile::
 
-    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-x.y.z.tar.gz
+    $ make wheel
 
 3. Do a test install::
 
@@ -436,3 +432,43 @@ X.YaN   # Alpha release
 X.YbN   # Beta release
 X.YrcN  # Release Candidate
 X.Y     # Final release
+
+
+Release checklist
+~~~~~~~~~~~~~~~~~
+
+1. Synchronize translations::
+
+    $ make translations_pull
+
+2. Compile translations::
+
+    $ make translations_compile
+
+3. Write release notes.
+4. Update changelog.
+5. Update requirements version in `setup.py`
+6. Bump version in `mayan/__init__.py`
+7. Build source package and test::
+
+    $ make test_sdist_via_docker_ubuntu
+
+8. Build wheel package and test::
+
+    $ make test_whell_via_docker_ubuntu
+
+9. Tag version::
+
+    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
+
+10. Push tag upstream::
+
+    $ git push --tags
+
+11. Build and upload a test release::
+
+    $ make release_test_via_docker_ubuntu
+
+12. Build and upload a final release::
+
+    $ make release_via_docker_ubuntu

@@ -4,8 +4,7 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
-
-from django_downloadview import assert_download_response
+from django.utils.encoding import force_text
 
 from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
@@ -47,7 +46,7 @@ class GenericDocumentViewTestCase(GenericViewTestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=file_object
+                file_object=file_object, label=TEST_SMALL_DOCUMENT_FILENAME
             )
 
     def tearDown(self):
@@ -210,8 +209,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
+            self.assert_download_response(
+                response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
@@ -240,8 +239,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
+            self.assert_download_response(
+                response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
@@ -270,8 +269,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
-            assert_download_response(
-                self, response, content=file_object.read(),
+            self.assert_download_response(
+                response, content=file_object.read(),
                 basename='{} - {}'.format(
                     TEST_SMALL_DOCUMENT_FILENAME,
                     self.document.latest_version.timestamp
@@ -453,7 +452,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(
-            response, unicode(self.document.pages.first()), status_code=200
+            response, force_text(self.document.pages.first()), status_code=200
         )
 
 

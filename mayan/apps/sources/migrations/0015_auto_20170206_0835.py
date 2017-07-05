@@ -15,6 +15,14 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sanescanner',
             name='source',
-            field=models.CharField(blank=True, choices=[('flatbed', 'Flatbed'), ('Automatic Document Feeder', 'Document feeder')], default='flatbed', help_text='Selects the scan source (such as a document-feeder). If this option is not supported by your scanner, leave it blank.', max_length=32, verbose_name='Paper source'),
+            field=models.CharField(
+                blank=True, choices=[
+                    ('flatbed', 'Flatbed'),
+                    ('Automatic Document Feeder', 'Document feeder')
+                ], default='flatbed', help_text='Selects the scan source '
+                '(such as a document-feeder). If this option is not '
+                'supported by your scanner, leave it blank.', max_length=32,
+                verbose_name='Paper source'
+            ),
         ),
     ]

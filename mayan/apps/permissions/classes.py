@@ -4,6 +4,7 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import InvalidNamespace
@@ -11,6 +12,7 @@ from .exceptions import InvalidNamespace
 logger = logging.getLogger(__name__)
 
 
+@python_2_unicode_compatible
 class PermissionNamespace(object):
     _registry = {}
 
@@ -35,8 +37,8 @@ class PermissionNamespace(object):
         self.permissions = []
         self.__class__._registry[name] = self
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def add_permission(self, name, label):
         permission = Permission(namespace=self, name=name, label=label)
@@ -44,6 +46,7 @@ class PermissionNamespace(object):
         return permission
 
 
+@python_2_unicode_compatible
 class Permission(object):
     _permissions = {}
     _stored_permissions_cache = {}
@@ -105,11 +108,8 @@ class Permission(object):
     def __repr__(self):
         return self.pk
 
-    def __unicode__(self):
-        return unicode(self.label)
-
     def __str__(self):
-        return str(self.__unicode__())
+        return force_text(self.label)
 
     @property
     def stored_permission(self):

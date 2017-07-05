@@ -1,6 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
-from rest_framework import generics
+import pytz
+
+from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
+
+from rest_framework import generics, status
+from rest_framework.response import Response
 
 from acls.models import AccessControlList
 from documents.permissions import permission_document_view
@@ -80,7 +86,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
                 )
             except Exception as exception:
                 return Response(
-                    data={'exception': unicode(exception)},
+                    data={'exception': force_text(exception)},
                     status=status.HTTP_400_BAD_REQUEST
                 )
 

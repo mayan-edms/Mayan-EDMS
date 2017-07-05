@@ -186,4 +186,12 @@ a i {
         min-width: 1170px;
         width: 95%;
     }
+
+#toast-container > div {
+  opacity: 1;
+}
+
+.link-text-span {
+    padding-left: 10px;
+    padding-right: 20px;
 }

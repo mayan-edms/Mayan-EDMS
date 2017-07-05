@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'corsheaders',
     'djcelery',
     'formtools',
+    'mathfilters',
     'mptt',
     'pure_pagination',
     'rest_framework',
@@ -101,6 +102,7 @@ INSTALLED_APPS = (
     'statistics',
     'storage',
     'tags',
+    'task_manager',
     # Placed after rest_api to allow template overriding
     'rest_framework_swagger',
 )

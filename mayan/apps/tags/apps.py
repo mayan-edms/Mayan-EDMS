@@ -25,6 +25,7 @@ from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
 )
+from .search import tag_search  # NOQA
 from .widgets import widget_document_tags, widget_single_tag
 
 

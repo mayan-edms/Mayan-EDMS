@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:50-0400\n"
-"PO-Revision-Date: 2017-05-28 19:53+0000\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:26
+#: apps.py:27
 msgid "Mailer"
 msgstr "Correspondencia"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:42 models.py:16
+#: apps.py:43 models.py:16
 msgid "Message"
 msgstr "Mensaje"
 
@@ -86,7 +86,7 @@ msgstr "Entrada de bitácora"
 msgid "Log entries"
 msgstr "Entradas de bitácora"
 
-#: permissions.py:7 settings.py:11
+#: permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Correspondencia"
 
@@ -101,6 +101,10 @@ msgstr "Enviar documento por correo electrónico"
 #: permissions.py:16
 msgid "View document mailing error log"
 msgstr "Ver bitácora de errores de envío"
+
+#: queues.py:12
+msgid "Send document"
+msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"

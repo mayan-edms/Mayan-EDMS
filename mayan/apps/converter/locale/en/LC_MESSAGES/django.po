@@ -1,204 +1,195 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
-"language/en/)\n"
-"Language: en\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:19 permissions.py:7 settings.py:7
 msgid "Converter"
-msgstr ""
+msgstr "Converter"
 
 #: apps.py:26 models.py:40
 msgid "Order"
-msgstr ""
+msgstr "Order"
 
 #: apps.py:28 models.py:70
 msgid "Transformation"
-msgstr ""
+msgstr "Transformation"
 
 #: apps.py:32 models.py:50
 msgid "Arguments"
-msgstr ""
+msgstr "Arguments"
 
-#: backends/python.py:86 backends/python.py:100
+#: backends/python.py:100 backends/python.py:114
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Exception determining PDF page count; %s"
 
 #: classes.py:97
-#, fuzzy
 #| msgid "suported file formats"
 msgid "Not an office file format."
-msgstr "suported file formats"
+msgstr "Not an office file format."
 
 #: classes.py:120
 #, python-format
 msgid "LibreOffice not installed or not found at path: %s"
-msgstr ""
+msgstr "LibreOffice not installed or not found at path: %s"
 
-#: classes.py:290
+#: classes.py:294
 msgid "Crop"
-msgstr ""
+msgstr "Crop"
 
-#: classes.py:303
+#: classes.py:307
 msgid "Flip"
-msgstr ""
+msgstr "Flip"
 
-#: classes.py:314
+#: classes.py:318
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussian blur"
 
-#: classes.py:325
+#: classes.py:329
 msgid "Mirror"
-msgstr ""
+msgstr "Mirror"
 
-#: classes.py:336
+#: classes.py:340
 msgid "Resize"
 msgstr "Resize"
 
-#: classes.py:363
+#: classes.py:367
 msgid "Rotate"
 msgstr "Rotate"
 
-#: classes.py:382
-#, fuzzy
+#: classes.py:386
 #| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
-msgstr "Rotate by n degress."
+msgstr "Rotate 90 degrees"
 
-#: classes.py:393
-#, fuzzy
+#: classes.py:397
 #| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
-msgstr "Rotate by n degress."
+msgstr "Rotate 180 degrees"
 
-#: classes.py:404
-#, fuzzy
+#: classes.py:408
 #| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
-msgstr "Rotate by n degress."
+msgstr "Rotate 270 degrees"
 
-#: classes.py:414
+#: classes.py:418
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Unsharp masking"
 
-#: classes.py:430
+#: classes.py:434
 msgid "Zoom"
 msgstr "Zoom"
 
 #: links.py:35
 msgid "Create new transformation"
-msgstr ""
+msgstr "Create new transformation"
 
 #: links.py:39
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: links.py:43
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: links.py:47 models.py:71
 msgid "Transformations"
-msgstr ""
+msgstr "Transformations"
 
 #: models.py:38
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Order in which the transformations will be executed. If left unchanged, an automatic order value will be assigned."
 
 #: models.py:44
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: models.py:48
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Enter the arguments for the transformation as a YAML dictionary. ie: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Create new transformations"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Delete transformations"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Edit transformations"
 
 #: permissions.py:19
-#, fuzzy
 #| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr "Raw application information"
+msgstr "View existing transformations"
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Graphics conversion backend to use."
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
 msgstr "Path to the libreoffice program."
 
 #: settings.py:20
-#, fuzzy
 msgid "Path to the Popple program pdftoppm."
-msgstr "Path to the libreoffice program."
+msgstr "Path to the Popple program pdftoppm."
 
 #: validators.py:22
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Enter a valid YAML value."
 
 #: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 
 #: views.py:127
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Create new transformation for: %s"
 
 #: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 
 #: views.py:216
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformations for: %s"
 
 #~ msgid "Resize."
 #~ msgstr "Resize."
 
-#, fuzzy
 #~ msgid "Width"
 #~ msgstr "width"
 
-#, fuzzy
 #~ msgid "Height"
 #~ msgstr "height"
 
-#, fuzzy
 #~ msgid "Degrees"
 #~ msgstr "degrees"
 
@@ -211,7 +202,6 @@ msgstr ""
 #~ msgid "Zoom by n percent."
 #~ msgstr "Zoom by n percent."
 
-#, fuzzy
 #~ msgid "Percent"
 #~ msgstr "percent"
 
@@ -224,15 +214,15 @@ msgstr ""
 #~ msgid "File path to graphicsmagick's program."
 #~ msgstr "File path to graphicsmagick's program."
 
-#, fuzzy
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -545,11 +535,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -665,8 +653,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

@@ -1,34 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:50-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:26
+#: apps.py:27
 msgid "Mailer"
 msgstr "Envio de emails"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: apps.py:42 models.py:16
+#: apps.py:43 models.py:16
 msgid "Message"
 msgstr "Mensagem"
 
@@ -63,10 +63,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Se anexa a este documento de e-mail: {{ document }}\n"
-"--------\n"
-"Este e-mail foi enviado por %(project_title)s (%(project_website)s)"
+msgstr "Se anexa a este documento de e-mail: {{ document }}\n--------\nEste e-mail foi enviado por %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -75,10 +72,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Para acessar este documento clique na ligação a seguir: {{ link }}\n"
-"--------\n"
-"Este email foi enviado por %(project_title)s (%(project_website)s)"
+msgstr "Para acessar este documento clique na ligação a seguir: {{ link }}\n--------\nEste email foi enviado por %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -92,7 +86,7 @@ msgstr "Entrada de registro"
 msgid "Log entries"
 msgstr "As entradas de log"
 
-#: permissions.py:7 settings.py:11
+#: permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
 msgstr "Envio de e-mails"
 
@@ -108,20 +102,21 @@ msgstr "Enviar documento por  e-mail"
 msgid "View document mailing error log"
 msgstr "Visualizar registro de erros de envio de e-mails"
 
+#: queues.py:12
+msgid "Send document"
+msgstr ""
+
 #: settings.py:14
 msgid "Link for document: {{ document }}"
 msgstr "Link para o documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Modelo para a linha de assunto do e-mail para envio do link do documento."
+msgstr "Modelo para a linha de assunto do e-mail para envio do link do documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Modelo para a linha do corpo do formulário do e-mail para envio do link do "
-"documento"
+msgstr "Modelo para a linha do corpo do formulário do e-mail para envio do link do documento"
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -138,12 +133,12 @@ msgstr "Modelo para a linha de corpo do e-mail para envio de documento."
 #: views.py:35
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "%(count)d documento em fila para entrega de e-mail"
 
 #: views.py:37
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "%(count)d documentos em fila para entrega de e-mail"
 
 #: views.py:48
 msgid "Send"
@@ -152,9 +147,9 @@ msgstr "Enviar"
 #: views.py:100
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "%(count)d link de documento em fila para entrega de e-mail"
 
 #: views.py:102
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)d links de documentos em fila para entrega de e-mail"

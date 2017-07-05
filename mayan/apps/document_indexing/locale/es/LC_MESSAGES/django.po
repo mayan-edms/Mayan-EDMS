@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-05-28 19:56+0000\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "None"
 msgstr "Ninguno"
 
-#: admin.py:26 apps.py:99 links.py:48 models.py:49
+#: admin.py:26 apps.py:95 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Tipos de documento"
 
@@ -34,31 +34,31 @@ msgstr "Tipos de documento"
 msgid "Document indexing"
 msgstr "Indexación de documentos"
 
-#: apps.py:85 models.py:33
+#: apps.py:81 models.py:33
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:86 models.py:38
+#: apps.py:82 models.py:38
 msgid "Slug"
 msgstr "Identificador"
 
-#: apps.py:88 apps.py:108 models.py:46 models.py:165
+#: apps.py:84 apps.py:104 models.py:46 models.py:165
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps.py:93 apps.py:123 apps.py:136
+#: apps.py:89 apps.py:119 apps.py:132
 msgid "Items"
 msgstr "Elementos"
 
-#: apps.py:104
+#: apps.py:100
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:112
+#: apps.py:108
 msgid "Has document links?"
 msgstr "El documento tiene enlaces?"
 
-#: apps.py:119 apps.py:130
+#: apps.py:115 apps.py:126
 msgid "Node"
 msgstr "Nodo"
 
@@ -105,8 +105,8 @@ msgstr "nuevo nodo secundario"
 
 #: models.py:37
 #| msgid "Internal name used to reference this index."
-msgid "This values will be used by other apps to reference this index."
-msgstr "Estos valores serán utilizados por otras aplicaciones para hacer referencia a este índice."
+msgid "This value will be used by other apps to reference this index."
+msgstr ""
 
 #: models.py:43
 msgid ""
@@ -153,50 +153,50 @@ msgstr "enlace de documentos"
 msgid "Root"
 msgstr "raíz"
 
-#: models.py:236
+#: models.py:240
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
 
-#: models.py:261
+#: models.py:268
 msgid "Index node template"
 msgstr "nodo de plantilla de indice"
 
-#: models.py:262
+#: models.py:269
 msgid "Indexes node template"
 msgstr "nodos de plantillas de índices"
 
-#: models.py:270
+#: models.py:277
 msgid "Index template node"
 msgstr "nodo de plantilla de indice"
 
-#: models.py:273
+#: models.py:280
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:277
+#: models.py:284
 msgid "Documents"
 msgstr "Documentos"
 
-#: models.py:363
+#: models.py:370
 msgid "Index node instance"
 msgstr "índice de nodo de instancia"
 
-#: models.py:364
+#: models.py:371
 msgid "Indexes node instances"
 msgstr "nodos de instancias de indices"
 
-#: models.py:372
+#: models.py:379
 msgid "Document index node instance"
 msgstr "Instancia del nodo del índice de documentos"
 
-#: models.py:373
+#: models.py:380
 msgid "Document indexes node instances"
 msgstr "Instancias de nodos de índices de documentos"
 
-#: permissions.py:7
+#: permissions.py:7 queues.py:8
 msgid "Indexing"
 msgstr "Indexación"
 
@@ -219,6 +219,23 @@ msgstr "Ver los índices de documentos"
 #: permissions.py:22
 msgid "Rebuild document indexes"
 msgstr "Generar índices de documentos"
+
+#: queues.py:12
+#| msgid "Delete document indexes"
+msgid "Delete empty index nodes"
+msgstr ""
+
+#: queues.py:16
+msgid "Remove document"
+msgstr ""
+
+#: queues.py:20
+msgid "Index document"
+msgstr ""
+
+#: queues.py:24
+msgid "Rebuild index"
+msgstr ""
 
 #: views.py:49
 #, python-format

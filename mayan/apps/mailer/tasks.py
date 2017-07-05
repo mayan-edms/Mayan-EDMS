@@ -1,17 +1,25 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.core.mail import EmailMultiAlternatives
 
 from documents.models import Document
 from mayan.celery import app
 
-from .models import LogEntry
-
 
 @app.task(ignore_result=True)
-def task_send_document(subject_text, body_text_content, sender, recipient, document_id, as_attachment=False):
+def task_send_document(subject_text, body_text_content, sender, recipient, document_id, user_mailer_id, as_attachment=False):
+    UserMailer = apps.get_model(
+        app_label='mailer', model_name='UserMailer'
+    )
+
+    user_mailer = UserMailer.objects.get(pk=user_mailer_id)
+
+    connection = user_mailer.get_connection()
+
     email_msg = EmailMultiAlternatives(
-        subject_text, body_text_content, sender, [recipient]
+        subject_text, body_text_content, sender, [recipient],
+        connection=connection,
     )
 
     if as_attachment:
@@ -24,6 +32,6 @@ def task_send_document(subject_text, body_text_content, sender, recipient, docum
     try:
         email_msg.send()
     except Exception as exception:
-        LogEntry.objects.create(message=exception)
+        user_mailer.error_log.create(message=exception)
     else:
-        LogEntry.objects.all().delete()
+        user_mailer.error_log.all().delete()

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
@@ -27,7 +28,7 @@ class Event(object):
         try:
             return cls.get(name=name).label
         except KeyError as exception:
-            return unicode(exception)
+            return force_text(exception)
 
     def __init__(self, name, label):
         self.name = name

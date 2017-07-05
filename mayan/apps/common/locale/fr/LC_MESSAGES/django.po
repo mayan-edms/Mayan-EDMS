@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-05-28 19:52+0000\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,13 +24,13 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:76 settings.py:9
+#: apps.py:77 settings.py:9
 msgid "Common"
 msgstr "Commun"
 
 #: classes.py:106
-msgid "Available attributes: "
-msgstr "Options disponibles"
+msgid "Available attributes: \n"
+msgstr ""
 
 #: forms.py:26
 msgid "Selection"
@@ -139,7 +139,7 @@ msgstr "Configuration"
 msgid "Support"
 msgstr ""
 
-#: links.py:61 views.py:234
+#: links.py:61 queues.py:10 views.py:234
 msgid "Tools"
 msgstr "Outils"
 
@@ -213,6 +213,18 @@ msgstr "Paramètres régionaux du profil utilisateur"
 msgid "User locale profiles"
 msgstr "Paramètres régionaux des profils utilisateur"
 
+#: queues.py:8
+msgid "Default"
+msgstr "Défaut"
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
 msgstr "Activation automatique de la trace pour toutes les applications."
@@ -239,6 +251,12 @@ msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Le dossier temporaire est utilisé pour stocker les vignettes, aperçus et fichiers temporaires."
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
 
 #: views.py:44
 #, python-format

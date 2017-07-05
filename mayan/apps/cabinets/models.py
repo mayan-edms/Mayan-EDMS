@@ -13,6 +13,8 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 
+from .search import cabinet_search  # NOQA
+
 
 @python_2_unicode_compatible
 class Cabinet(MPTTModel):

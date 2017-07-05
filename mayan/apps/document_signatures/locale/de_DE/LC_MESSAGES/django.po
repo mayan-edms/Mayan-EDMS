@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -13,38 +13,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2016-05-20 22:09+0000\n"
-"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:51 permissions.py:8 settings.py:7
+#: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Dokumentenunterschriften"
 
-#: apps.py:91
+#: apps.py:92
 msgid "Date"
 msgstr "Datum"
 
-#: apps.py:94 models.py:47
+#: apps.py:95 models.py:47
+#| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
-#: apps.py:98 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:51
+#| msgid "Signature ID: %s"
 msgid "Signature ID"
 msgstr "Unterschrifts-ID"
 
-#: apps.py:99 forms.py:76
+#: apps.py:100 forms.py:76
 msgid "None"
 msgstr "Nichts"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Type"
 msgstr "Typ"
 
@@ -57,18 +58,22 @@ msgid "Passphrase"
 msgstr "Passphrase"
 
 #: forms.py:46
+#| msgid "Signature file"
 msgid "Signature is embedded?"
 msgstr "Eingebettete Unterschrift?"
 
 #: forms.py:48
+#| msgid "Signature file"
 msgid "Signature date"
 msgstr "Datum der Unterschrift"
 
 #: forms.py:51
+#| msgid "Signature ID: %s"
 msgid "Signature key ID"
 msgstr "Unterschrifts-Schlüssel-ID"
 
 #: forms.py:53
+#| msgid "Signature type: %s"
 msgid "Signature key present?"
 msgstr "Unterschrifts-Schlüssel vorhanden?"
 
@@ -101,10 +106,11 @@ msgid "Key type"
 msgstr "Schlüssel-Typ"
 
 #: links.py:32
+#| msgid "Verify document signatures"
 msgid "Verify all documents"
 msgstr "Alle Dokumente überprüfen"
 
-#: links.py:39
+#: links.py:39 queues.py:8
 msgid "Signatures"
 msgstr "Unterschriften"
 
@@ -201,10 +207,12 @@ msgid "Delete detached signatures"
 msgstr "Separate Unterschriften löschen"
 
 #: permissions.py:25
+#| msgid "Download detached signatures"
 msgid "Download detached document signatures"
 msgstr "Separate Unterschriften der Dokumente herunterladen"
 
 #: permissions.py:29
+#| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
 msgstr "Separate Unterschriften der Dokumente hochladen"
 
@@ -213,8 +221,28 @@ msgid "Verify document signatures"
 msgstr "Dokumentenunterschriften überprüfen"
 
 #: permissions.py:37
+#| msgid "Verify document signatures"
 msgid "View details of document signatures"
 msgstr "Details der Unterschriften des Dokuments"
+
+#: queues.py:11
+#| msgid "Verify document signatures"
+msgid "Verify key signatures"
+msgstr ""
+
+#: queues.py:15
+#| msgid "Verify document signatures"
+msgid "Unverify key signatures"
+msgstr ""
+
+#: queues.py:19
+#| msgid "Verify document signatures"
+msgid "Verify document version"
+msgstr ""
+
+#: queues.py:24
+msgid "Verify missing embedded signature"
+msgstr ""
 
 #: views.py:60 views.py:155
 msgid "Passphrase is needed to unlock this key."
@@ -245,6 +273,7 @@ msgstr "Separate Unterschrift löschen: %s"
 
 #: views.py:270
 #, python-format
+#| msgid "Document signatures"
 msgid "Details for signature: %s"
 msgstr "Details für Signatur: %s"
 
@@ -260,10 +289,10 @@ msgstr "Seperate Unterschrift für Dokumentenversion hochladen: %s"
 
 #: views.py:360
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
+msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
 #: views.py:361
+#| msgid "Verify document signatures"
 msgid "Verify all document for signatures?"
 msgstr "Alle Unterschriften der Dokumente überprüfen?"
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-05-28 19:52+0000\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:76 settings.py:9
+#: apps.py:77 settings.py:9
 msgid "Common"
 msgstr ""
 
 #: classes.py:106
-msgid "Available attributes: "
+msgid "Available attributes: \n"
 msgstr ""
 
 #: forms.py:26
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: links.py:61 views.py:234
+#: links.py:61 queues.py:10 views.py:234
 msgid "Tools"
 msgstr ""
 
@@ -208,6 +208,18 @@ msgstr ""
 msgid "User locale profiles"
 msgstr ""
 
+#: queues.py:8
+msgid "Default"
+msgstr "По подразбиране"
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
 #: settings.py:13
 msgid "Automatically enable logging to all apps."
 msgstr ""
@@ -233,6 +245,12 @@ msgstr ""
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+msgstr ""
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
 msgstr ""
 
 #: views.py:44

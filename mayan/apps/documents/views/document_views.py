@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -454,7 +455,7 @@ class DocumentDownloadView(SingleObjectDownloadView):
         if isinstance(item, Document):
             return item.label
         else:
-            return unicode(item)
+            return force_text(item)
 
     def get_document_queryset(self):
         id_list = self.request.GET.get(

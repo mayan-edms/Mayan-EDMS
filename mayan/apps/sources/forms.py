@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 
 from django import forms
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
@@ -59,7 +60,7 @@ class StagingUploadForm(UploadBaseForm):
 
         try:
             self.fields['staging_file_id'].choices = [
-                (staging_file.encoded_filename, unicode(staging_file)) for staging_file in self.source.get_files()
+                (staging_file.encoded_filename, force_text(staging_file)) for staging_file in self.source.get_files()
             ]
         except Exception as exception:
             logger.error('exception: %s', exception)

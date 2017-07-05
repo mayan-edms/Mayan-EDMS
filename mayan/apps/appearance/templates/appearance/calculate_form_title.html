@@ -1,7 +1,11 @@
 {% load i18n %}
 
+{% load smart_settings_tags %}
+
+{% smart_setting 'APPEARANCE_MAXIMUM_TITLE_LENGTH' as maximum_title_length %}
+
 {% if title %}
-    {{ title }}
+    {{ title|truncatechars:maximum_title_length }}
 {% else %}
     {% if read_only %}
         {% blocktrans %}Details for: {{ object }}{% endblocktrans %}

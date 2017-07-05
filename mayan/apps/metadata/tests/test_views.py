@@ -59,8 +59,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             'metadata:metadata_add', args=(self.document.pk,),
             data={'metadata_type': self.metadata_type.pk}, follow=True
         )
-
-        self.assertContains(response, 'Success', status_code=200)
+        self.assertContains(response, 'successfully', status_code=200)
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 

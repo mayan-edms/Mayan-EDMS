@@ -22,7 +22,7 @@ from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
@@ -66,7 +66,7 @@ class Source(models.Model):
 
     @classmethod
     def class_fullname(cls):
-        return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
+        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
 
     def __str__(self):
         return '%s' % self.label
@@ -133,7 +133,7 @@ class Source(models.Model):
             try:
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
-                    kwargs.update({'label': unicode(compressed_file_child)})
+                    kwargs.update({'label': force_text(compressed_file_child)})
                     self.upload_document(
                         file_object=File(compressed_file_child), **kwargs
                     )
@@ -185,7 +185,7 @@ class SaneScanner(InteractiveSource):
         ), max_length=16, verbose_name=_('Mode')
     )
     resolution = models.PositiveIntegerField(
-        blank=True, help_text=_(
+        blank=True, null=True, help_text=_(
             'Sets the resolution of the scanned image in DPI (dots per inch). '
             'Typical value is 200. If this option is not supported by your '
             'scanner, leave it blank.'
@@ -315,9 +315,9 @@ class StagingFolderSource(InteractiveSource):
 
     def get_preview_size(self):
         dimensions = []
-        dimensions.append(unicode(self.preview_width))
+        dimensions.append(force_text(self.preview_width))
         if self.preview_height:
-            dimensions.append(unicode(self.preview_height))
+            dimensions.append(force_text(self.preview_height))
 
         return DIMENSION_SEPARATOR.join(dimensions)
 
@@ -556,7 +556,7 @@ class EmailBaseModel(IntervalBaseModel):
 
         headers = decode_header(header_text)
         header_sections = [
-            unicode(text, charset or default) for text, charset in headers
+            force_text(text, charset or default) for text, charset in headers
         ]
         return ''.join(header_sections)
 
@@ -740,7 +740,7 @@ class WatchFolderSource(IntervalBaseModel):
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning
         # str for non-latin filenames, gh-issue #163
-        for file_name in os.listdir(unicode(self.folder_path)):
+        for file_name in os.listdir(force_text(self.folder_path)):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
                 with File(file=open(full_path, mode='rb')) as file_object:

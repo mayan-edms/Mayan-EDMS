@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_sidebar
@@ -26,7 +27,7 @@ class ConverterApp(MayanAppConfig):
         SourceColumn(source=Transformation, label=_('Order'), attribute='order')
         SourceColumn(
             source=Transformation, label=_('Transformation'),
-            func=lambda context: unicode(context['object'])
+            func=lambda context: force_text(context['object'])
         )
         SourceColumn(
             source=Transformation, label=_('Arguments'), attribute='arguments'

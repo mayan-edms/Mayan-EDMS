@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.core.urlresolvers import reverse
+from django.utils.encoding import force_text
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
@@ -271,15 +272,33 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,
-            'page_pk': instance.latest_version.pages.first().pk
+            'page_pk': instance.pages.first().pk
         }
+
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_click_view_url(
+                instance=instance
+            )
+        else:
+            return '#'
 
     def get_preview_view_kwargs(self, instance):
         return {
             'pk': instance.pk,
             'version_pk': instance.latest_version.pk,
-            'page_pk': instance.latest_version.pages.first().pk
+            'page_pk': instance.pages.first().pk
         }
+
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_preview_view_url(
+                instance=instance
+            )
+        else:
+            return ''
 
     def get_title(self, instance):
         return getattr(instance, 'label', None)
@@ -290,7 +309,7 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
     def get_title(self, instance):
-        return unicode(instance)
+        return force_text(instance)
 
 
 class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):

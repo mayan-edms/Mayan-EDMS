@@ -12,10 +12,11 @@ from permissions import Permission
 
 from acls.models import AccessControlList
 
+from .forms import DynamicForm
 
 __all__ = (
-    'DeleteExtraDataMixin', 'ExtraContextMixin', 'FormExtraKwargsMixin',
-    'MultipleObjectMixin', 'ObjectActionMixin',
+    'DeleteExtraDataMixin', 'DynamicFormViewMixin', 'ExtraContextMixin',
+    'FormExtraKwargsMixin', 'MultipleObjectMixin', 'ObjectActionMixin',
     'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
     'ObjectPermissionCheckMixin', 'RedirectionMixin',
     'ViewPermissionCheckMixin'
@@ -32,6 +33,15 @@ class DeleteExtraDataMixin(object):
             self.object.delete()
 
         return HttpResponseRedirect(success_url)
+
+
+class DynamicFormViewMixin(object):
+    form_class = DynamicForm
+
+    def get_form_kwargs(self):
+        data = super(DynamicFormViewMixin, self).get_form_kwargs()
+        data.update({'schema': self.get_form_schema()})
+        return data
 
 
 class ExtraContextMixin(object):

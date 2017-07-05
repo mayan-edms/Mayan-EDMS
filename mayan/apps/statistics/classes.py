@@ -3,12 +3,14 @@ from __future__ import unicode_literals
 import json
 
 from django.apps import apps
+from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from celery.schedules import crontab
 
 from mayan.celery import app
 
 
+@python_2_unicode_compatible
 class StatisticNamespace(object):
     _registry = {}
 
@@ -26,8 +28,8 @@ class StatisticNamespace(object):
         self._statistics = []
         self.__class__._registry[slug] = self
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def add_statistic(self, *args, **kwargs):
         statistic = Statistic(*args, **kwargs)
@@ -39,6 +41,7 @@ class StatisticNamespace(object):
         return self._statistics
 
 
+@python_2_unicode_compatible
 class Statistic(object):
     _registry = {}
 
@@ -108,8 +111,8 @@ class Statistic(object):
 
         self.__class__._registry[slug] = self
 
-    def __unicode__(self):
-        return unicode(self.label)
+    def __str__(self):
+        return force_text(self.label)
 
     def execute(self):
         self.store_results(results=self.func())

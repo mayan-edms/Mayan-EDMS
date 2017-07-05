@@ -59,9 +59,12 @@ class PermissionAPITestCase(BaseAPITestCase):
 
     def test_role_create_view(self):
         response = self._role_create_request()
+        role = Role.objects.first()
+
         self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.data, {'label': role.label, 'id': role.pk})
         self.assertEqual(Role.objects.count(), 1)
-        self.assertEqual(Role.objects.first().label, TEST_ROLE_LABEL)
+        self.assertEqual(role.label, TEST_ROLE_LABEL)
 
     def _create_group(self):
         self.group = Group.objects.create(name=TEST_GROUP_NAME)

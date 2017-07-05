@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
@@ -14,13 +15,15 @@ from django.views.generic.edit import (
 )
 from django.views.generic.list import ListView
 
-from django_downloadview import VirtualDownloadView, VirtualFile
+from django_downloadview import (
+    TextIteratorIO, VirtualDownloadView, VirtualFile
+)
 from pure_pagination.mixins import PaginationMixin
 
-from .forms import ChoiceForm
+from .forms import ChoiceForm, DynamicForm
 from .mixins import (
-    DeleteExtraDataMixin, ExtraContextMixin, FormExtraKwargsMixin,
-    MultipleObjectMixin, ObjectActionMixin,
+    DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
+    FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,
     ObjectListPermissionFilterMixin, ObjectNameMixin,
     ObjectPermissionCheckMixin, RedirectionMixin,
     ViewPermissionCheckMixin
@@ -54,7 +57,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         results = []
         for choice in choices:
             ct = ContentType.objects.get_for_model(choice)
-            label = unicode(choice)
+            label = force_text(choice)
 
             results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 
@@ -184,8 +187,12 @@ class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, V
         return HttpResponseRedirect(self.get_success_url())
 
 
-class FormView(FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class FormView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, DjangoFormView):
     template_name = 'appearance/generic_form.html'
+
+
+class DynamicFormView(DynamicFormViewMixin, FormView):
+    pass
 
 
 class MultiFormView(DjangoFormView):
@@ -300,7 +307,7 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, FormExtraKwargsMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -340,6 +347,10 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
             )
 
         return HttpResponseRedirect(self.get_success_url())
+
+
+class SingleObjectDynamicFormCreateView(DynamicFormViewMixin, SingleObjectCreateView):
+    pass
 
 
 class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
@@ -388,10 +399,11 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 
 
 class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
+    TextIteratorIO = TextIteratorIO
     VirtualFile = VirtualFile
 
 
-class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, FormExtraKwargsMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -441,6 +453,10 @@ class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPerm
                 setattr(obj, key, value)
 
         return obj
+
+
+class SingleObjectDynamicFormEditView(DynamicFormViewMixin, SingleObjectEditView):
+    pass
 
 
 class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):

@@ -4,6 +4,7 @@ import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 
 from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
@@ -120,15 +121,17 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the documents.
-    """
-
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     mayan_view_permissions = {'POST': (permission_document_create,)}
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the documents.
+        """
+        return super(APIDocumentListView, self).get(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -142,8 +145,34 @@ class APIDocumentListView(generics.ListCreateAPIView):
     def post(self, *args, **kwargs):
         """
         Create a new document.
+        Endpoint returns a 202 status code to indicate that a document is not
+        immediately created at request. From the request data, the creation of
+        a document is instead queued as a background task. An ID that
+        represents the eventual document is returned.
+        ---
+        omit_serializer: false
+        parameters:
+            - name: description
+              paramType: form
+              type: file string
+            - name: document_type
+              paramType: form
+              required: true
+              type: file string
+            - name: file
+              paramType: form
+              required: true
+              type: file object
+            - name: label
+              paramType: form
+              type: file string
+            - name: language
+              paramType: form
+              type: file string
+        responseMessages:
+            - code: 202
+              message: Accepted
         """
-
         return super(APIDocumentListView, self).post(*args, **kwargs)
 
 
@@ -170,7 +199,7 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
 
     def get_file(self):
         instance = self.get_object()
-        return VirtualFile(instance.file, name=unicode(instance))
+        return VirtualFile(instance.file, name=force_text(instance))
 
     def get_serializer_class(self):
         return None

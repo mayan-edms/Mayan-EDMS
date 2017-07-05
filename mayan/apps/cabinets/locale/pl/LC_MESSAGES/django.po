@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:33 forms.py:30 links.py:21 menus.py:8 models.py:34 permissions.py:7
-#: views.py:153
+#: apps.py:34 apps.py:70 apps.py:73 forms.py:30 links.py:21 menus.py:8
+#: models.py:36 permissions.py:7 views.py:153
 msgid "Cabinets"
-msgstr ""
+msgstr "Szafki"
 
 #: links.py:27 links.py:38
 msgid "Remove from cabinets"
-msgstr ""
+msgstr "Usuń z szafek"
 
 #: links.py:31 links.py:35
 msgid "Add to cabinets"
-msgstr ""
+msgstr "Dodaj do szafek"
 
 #: links.py:55
 msgid "Add new level"
-msgstr ""
+msgstr "Dodaj nowy poziom"
 
 #: links.py:60 views.py:39
 msgid "Create cabinet"
-msgstr ""
+msgstr "Utwórz szafkę"
 
 #: links.py:64
 msgid "Delete"
@@ -49,64 +49,64 @@ msgstr "Edytuj"
 
 #: links.py:71
 msgid "All"
-msgstr ""
+msgstr "Wszystkie"
 
 #: links.py:74
 msgid "Details"
 msgstr "Szczegóły"
 
-#: models.py:22
+#: models.py:24 search.py:16
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:25
+#: models.py:27
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: models.py:33 models.py:66 serializers.py:134
+#: models.py:35 models.py:68 serializers.py:134
 msgid "Cabinet"
-msgstr ""
+msgstr "Szafka"
 
-#: models.py:67 serializers.py:135
+#: models.py:69 serializers.py:135
 msgid "Parent and Label"
 msgstr ""
 
-#: models.py:74 serializers.py:141
+#: models.py:76 serializers.py:141
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
+msgstr "%(model_name)s z etykietą %(field_labels)s już istnieje."
 
-#: models.py:86
+#: models.py:88
 msgid "Document cabinet"
-msgstr ""
+msgstr "Szafka na dokumenty"
 
-#: models.py:87
+#: models.py:89
 msgid "Document cabinets"
-msgstr ""
+msgstr "Szafki na dokumenty"
 
 #: permissions.py:12
 msgid "Add documents to cabinets"
-msgstr ""
+msgstr "Dodaj dokumenty do szafek"
 
 #: permissions.py:15
 msgid "Create cabinets"
-msgstr ""
+msgstr "Utwórz szafki"
 
 #: permissions.py:18
 msgid "Delete cabinets"
-msgstr ""
+msgstr "Usuń szafki"
 
 #: permissions.py:21
 msgid "Edit cabinets"
-msgstr ""
+msgstr "Edytuj szafki"
 
 #: permissions.py:24
 msgid "Remove documents from cabinets"
-msgstr ""
+msgstr "Usuń dokumenty z szafek"
 
 #: permissions.py:27
 msgid "View cabinets"
-msgstr ""
+msgstr "Przeglądaj szafki"
 
 #: serializers.py:20
 msgid "List of children cabinets."
@@ -114,7 +114,7 @@ msgstr ""
 
 #: serializers.py:23
 msgid "Number of documents on this cabinet level."
-msgstr ""
+msgstr "Liczba dokumentów na tym poziomie w szafce."
 
 #: serializers.py:27
 msgid "The name of this cabinet level appended to the names of its ancestors."
@@ -137,32 +137,32 @@ msgstr ""
 
 #: templates/cabinets/cabinet_details.html:21
 msgid "Navigation:"
-msgstr ""
+msgstr "Nawigacja:"
 
 #: views.py:70
 #, python-format
 msgid "Add new level to: %s"
-msgstr ""
+msgstr "Dodaj nowy poziom do: %s"
 
 #: views.py:83
 #, python-format
 msgid "Delete the cabinet: %s?"
-msgstr ""
+msgstr "Usunąć tę szafkę: %s?"
 
 #: views.py:111
 #, python-format
 msgid "Details of cabinet: %s"
-msgstr ""
+msgstr "Szczegóły szafki: %s"
 
 #: views.py:142
 #, python-format
 msgid "Edit cabinet: %s"
-msgstr ""
+msgstr "Edytuj szafkę: %s"
 
 #: views.py:177
 #, python-format
 msgid "Cabinets containing document: %s"
-msgstr ""
+msgstr "Szafki zawierające dokument: %s"
 
 #: views.py:188
 #, python-format
@@ -181,29 +181,29 @@ msgstr "Dodaj"
 #: views.py:200
 msgid "Add document to cabinets"
 msgid_plural "Add documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Dodaj dokument do szafek"
+msgstr[1] "Dodaj dokument do szafek"
+msgstr[2] "Dodaj dokument do szafek"
+msgstr[3] "Dodaj dokumenty do szafek"
 
 #: views.py:211
 #, python-format
 msgid "Add document \"%s\" to cabinets"
-msgstr ""
+msgstr "Dodaj dokument \"%s\" do szafek"
 
 #: views.py:222
 msgid "Cabinets to which the selected documents will be added."
-msgstr ""
+msgstr "Szafki, w których zostaną umieszczone wybrane dokumenty."
 
 #: views.py:250
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Dokument %(document)s jest już w szafce %(cabinet)s."
 
 #: views.py:260
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
-msgstr ""
+msgstr "Dokument %(document)s dodano pomyślnie do szafki %(cabinet)s."
 
 #: views.py:272
 #, python-format
@@ -222,26 +222,26 @@ msgstr "Usuń"
 #: views.py:284
 msgid "Remove document from cabinets"
 msgid_plural "Remove documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Usuń dokument z szaf"
+msgstr[1] "Usuń dokument z szaf"
+msgstr[2] "Usuń dokument z szaf"
+msgstr[3] "Usuń dokumenty z szafek"
 
 #: views.py:295
 #, python-format
 msgid "Remove document \"%s\" to cabinets"
-msgstr ""
+msgstr "Usuń dokument \"%s\" z szafek"
 
 #: views.py:306
 msgid "Cabinets from which the selected documents will be removed."
-msgstr ""
+msgstr "Szafki, z których wybrane dokumenty zostaną usunięte."
 
 #: views.py:333
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Dokument %(document)s nie znajduje się w szafce %(cabinet)s."
 
 #: views.py:343
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
-msgstr ""
+msgstr "Dokument %(document)s usunięto z szafki %(cabinet)s."

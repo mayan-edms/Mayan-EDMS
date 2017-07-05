@@ -8,7 +8,7 @@ from django.conf import settings
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -52,7 +52,7 @@ def HASH_FUNCTION(data):
 
 
 def UUID_FUNCTION(*args, **kwargs):
-    return unicode(uuid.uuid4())
+    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible
@@ -237,7 +237,11 @@ class Document(models.Model):
         Returns a boolean value that indicates if the document's
         latest version file exists in storage
         """
-        return self.latest_version.exists()
+        latest_version = self.latest_version
+        if latest_version:
+            return latest_version.exists()
+        else:
+            return False
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
@@ -379,7 +383,8 @@ class DocumentVersion(models.Model):
         blank=True, editable=False, max_length=64, null=True
     )
     checksum = models.TextField(
-        blank=True, editable=False, null=True, verbose_name=_('Checksum')
+        blank=True, db_index=True, editable=False, null=True,
+        verbose_name=_('Checksum')
     )
 
     def __str__(self):
@@ -420,6 +425,7 @@ class DocumentVersion(models.Model):
                     self.update_mimetype(save=False)
                     self.save()
                     self.update_page_count(save=False)
+                    self.fix_orientation()
 
                     logger.info(
                         'New document version "%s" created for document: %s',
@@ -428,7 +434,7 @@ class DocumentVersion(models.Model):
 
                     self.document.is_stub = False
                     if not self.document.label:
-                        self.document.label = unicode(self.file)
+                        self.document.label = force_text(self.file)
 
                     self.document.save()
         except Exception as exception:
@@ -465,6 +471,15 @@ class DocumentVersion(models.Model):
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
         return self.file.storage.exists(self.file.name)
+
+    def fix_orientation(self):
+        for page in self.pages.all():
+            degrees = page.detect_orientation()
+            if degrees:
+                Transformation.objects.add_for_model(
+                    obj=page, transformation=TransformationRotate,
+                    arguments='{{"degrees": {}}}'.format(360 - degrees)
+                )
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename
@@ -570,7 +585,7 @@ class DocumentVersion(models.Model):
         """
         if self.exists():
             source = self.open()
-            self.checksum = unicode(HASH_FUNCTION(source.read()))
+            self.checksum = force_text(HASH_FUNCTION(source.read()))
             source.close()
             if save:
                 self.save()
@@ -668,7 +683,7 @@ class DocumentPage(models.Model):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
         ) % {
-            'document': unicode(self.document),
+            'document': force_text(self.document),
             'page_num': self.page_number,
             'total_pages': self.document_version.pages.count()
         }
@@ -692,6 +707,16 @@ class DocumentPage(models.Model):
     @property
     def document(self):
         return self.document_version.document
+
+    def detect_orientation(self):
+        with self.document_version.open() as file_object:
+            converter = converter_class(
+                file_object=file_object,
+                mime_type=self.document_version.mimetype
+            )
+            return converter.detect_orientation(
+                page_number=self.page_number
+            )
 
     def generate_image(self, *args, **kwargs):
         # Convert arguments into transformations
@@ -857,7 +882,7 @@ class RecentDocument(models.Model):
     objects = RecentDocumentManager()
 
     def __str__(self):
-        return unicode(self.document)
+        return force_text(self.document)
 
     def natural_key(self):
         return self.document.natural_key() + self.user.natural_key()

@@ -1,271 +1,271 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:12 settings.py:9
 msgid "Appearance"
-msgstr ""
+msgstr "Appearance"
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
-msgstr ""
+msgstr "Insufficient permissions"
 
 #: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
-msgstr ""
+msgstr "You don't have enough permissions for this operation."
 
 #: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
-msgstr ""
+msgstr "Page not found"
 
 #: templates/404.html:11
 msgid "Sorry, but the requested page could not be found."
-msgstr ""
+msgstr "Sorry, but the requested page could not be found."
 
 #: templates/500.html:5 templates/500.html:9
 msgid "Server error"
-msgstr ""
+msgstr "Server error"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "There's been an error. It's been reported to the site administrators via e-mail and should be fixed shortly. Thanks for your patience."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
+msgstr "If you need assistance, you may reference this error via the following identifier:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #: templates/appearance/about.html:62
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: templates/appearance/about.html:64
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr ""
+msgstr "Build number: %(build_number)s"
 
 #: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
-msgstr ""
+msgstr "Released under the Apache 2.0 License"
 
 #: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-msgstr ""
+msgstr "Copyright &copy; 2011-2015 Roberto Rosario."
 
 #: templates/appearance/base.html:56
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Toggle navigation"
 
 #: templates/appearance/base.html:86
 msgid "Profile"
-msgstr ""
+msgstr "Profile"
 
 #: templates/appearance/base.html:92
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonymous"
 
 #: templates/appearance/base.html:126
 msgid "Success"
-msgstr ""
+msgstr "Success"
 
 #: templates/appearance/base.html:126
 msgid "Information"
-msgstr ""
+msgstr "Information"
 
 #: templates/appearance/base.html:126
 msgid "Warning"
-msgstr ""
+msgstr "Warning"
 
 #: templates/appearance/base.html:126
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: templates/appearance/base.html:155
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: templates/appearance/base.html:157
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Toggle Dropdown"
 
-#: templates/appearance/calculate_form_title.html:7
+#: templates/appearance/calculate_form_title.html:11
 #, python-format
 msgid "Details for: %(object)s"
-msgstr ""
+msgstr "Details for: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/calculate_form_title.html:14
 #, python-format
 msgid "Edit: %(object)s"
-msgstr ""
+msgstr "Edit: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:12
+#: templates/appearance/calculate_form_title.html:16
 msgid "Create"
-msgstr ""
+msgstr "Create"
 
 #: templates/appearance/dashboard_widget.html:25
 msgid "View details"
-msgstr ""
+msgstr "View details"
 
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
 msgid "Confirm"
-msgstr ""
+msgstr "Confirm"
 
 #: templates/appearance/generic_confirm.html:11
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirm delete"
 
 #: templates/appearance/generic_confirm.html:27
 #, python-format
 msgid "Delete: %(object)s?"
-msgstr ""
+msgstr "Delete: %(object)s?"
 
 #: templates/appearance/generic_confirm.html:48
 msgid "Yes"
-msgstr ""
+msgstr "Yes"
 
 #: templates/appearance/generic_confirm.html:52
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: templates/appearance/generic_form_instance.html:39
 #: templates/appearance/generic_form_instance.html:46
 #: templates/appearance/generic_form_subtemplate.html:51
 #: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
-msgstr ""
+msgstr "required"
 
 #: templates/appearance/generic_form_subtemplate.html:71
 #: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Save"
-msgstr ""
+msgstr "Save"
 
 #: templates/appearance/generic_form_subtemplate.html:71
 #: templates/appearance/generic_list_subtemplate.html:33
 #: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 #: templates/appearance/generic_form_subtemplate.html:74
 #: templates/appearance/generic_multiform_subtemplate.html:68
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: templates/appearance/generic_list_horizontal.html:21
 #: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
-msgstr ""
+msgstr "No results"
 
 #: templates/appearance/generic_list_subtemplate.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
+msgstr "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
 msgid "Total: %(total)s"
-msgstr ""
+msgstr "Total: %(total)s"
 
 #: templates/appearance/generic_list_subtemplate.html:53
 msgid "Identifier"
-msgstr ""
+msgstr "Identifier"
 
 #: templates/appearance/home.html:9 templates/appearance/home.html:13
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: templates/appearance/home.html:22
 msgid "Getting started"
-msgstr ""
+msgstr "Getting started"
 
 #: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "Before you can fully use Mayan EDMS you need the following:"
 
 #: templates/appearance/home.html:46
 msgid "Search pages"
-msgstr ""
+msgstr "Search pages"
 
 #: templates/appearance/home.html:48 templates/appearance/home.html:58
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: templates/appearance/home.html:49 templates/appearance/home.html:59
 msgid "Advanced"
-msgstr ""
+msgstr "Advanced"
 
 #: templates/appearance/home.html:56
 msgid "Search documents"
-msgstr ""
+msgstr "Search documents"
 
 #: templates/appearance/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: templates/appearance/login.html:21
 msgid "First time login"
-msgstr ""
+msgstr "First time login"
 
 #: templates/appearance/login.html:24
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
+msgstr "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!"
 
 #: templates/appearance/login.html:25
 msgid "Login using the following credentials:"
-msgstr ""
+msgstr "Login using the following credentials:"
 
 #: templates/appearance/login.html:26
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
+msgstr "Username: <strong>%(account)s</strong>"
 
 #: templates/appearance/login.html:27
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "Email: <strong>%(email)s</strong>"
 
 #: templates/appearance/login.html:28
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
-msgstr ""
+msgstr "Password: <strong>%(password)s</strong>"
 
 #: templates/appearance/login.html:29
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
+msgstr "Be sure to change the password to increase security and to disable this message."
 
 #: templates/appearance/login.html:45 templates/appearance/login.html:54
 msgid "Sign in"
-msgstr ""
+msgstr "Sign in"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
-msgstr ""
+msgstr "None"

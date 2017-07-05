@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    ConfirmView, FormView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    ConfirmView, FormView, SingleObjectDetailView, SingleObjectDownloadView,
+    SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
@@ -20,6 +20,7 @@ from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
 )
+from .utils import get_document_ocr_content
 
 
 class DocumentAllSubmitView(ConfirmView):
@@ -157,3 +158,33 @@ class EntryListView(SingleObjectListView):
 
     def get_queryset(self):
         return DocumentVersionOCRError.objects.all()
+
+
+class DocumentOCRErrorsListView(SingleObjectListView):
+    view_permission = permission_ocr_document
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.get_document(),
+            'title': _('OCR errors for document: %s') % self.get_document(),
+        }
+
+    def get_queryset(self):
+        return self.get_document().latest_version.ocr_errors.all()
+
+
+class DocumentOCRDownloadView(SingleObjectDownloadView):
+    model = Document
+    object_permission = permission_ocr_content_view
+
+    def get_file(self):
+        file_object = DocumentOCRDownloadView.TextIteratorIO(
+            iterator=get_document_ocr_content(document=self.get_object())
+        )
+        return DocumentOCRDownloadView.VirtualFile(
+            file=file_object, name='{}-OCR'.format(self.get_object())
+        )

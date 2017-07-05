@@ -42,24 +42,18 @@
 
 <h2 align="center">Installation</h2>
 
-The installation procedure uses the <a href="https://www.docker.com">Docker container manager (docker.com)</a>. Make sure Docker is properly installed and working before attempting to install Mayan EDMS.
+The easiest way to use Mayan EDMS is by using the official
+[Docker](https://www.docker.com/) image. Make sure Docker is properly installed
+and working before attempting to install Mayan EDMS.
 
-Step 1- Initialize the installation
+For the complete set of installation, configuration, upgrade, and backup
+instructions visit the Mayan EDMS Docker Hub page at:
+https://hub.docker.com/r/mayanedms/mayanedms/
 
-```bash
-docker run --rm -v mayan_media:/var/lib/mayan \
--v mayan_settings:/etc/mayan mayanedms/mayanedms mayan:init
-```
+<h2 align="center">Hardware requirements</h2>
 
-Step 2- Deploy a container
-
-```bash
-docker run -d --name mayan-edms --restart=always -p 80:80 \
--v mayan_media:/var/lib/mayan -v mayan_settings:/etc/mayan mayanedms/mayanedms
-```
-
-Step 3- Open a browser and go to http://localhost
-
+- 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
+- Multiple core CPU (64 bit, faster than 1 GHz recommended).
 
 <h2 align="center">Important links</h2>
 

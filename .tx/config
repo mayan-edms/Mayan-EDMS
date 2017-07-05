@@ -181,6 +181,12 @@ source_lang = en
 source_file = mayan/apps/tags/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.task_manager-2-0]
+file_filter = mayan/apps/task_manager/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/task_manager/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.user_management-2-0]
 file_filter = mayan/apps/user_management/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en

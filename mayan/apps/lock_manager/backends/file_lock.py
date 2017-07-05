@@ -12,6 +12,9 @@ from django.core.files import locks
 from common.settings import setting_temporary_directory
 
 from ..exceptions import LockError
+from ..settings import setting_default_lock_timeout
+
+from .base import LockingBackend
 
 lock = threading.Lock()
 logger = logging.getLogger(__name__)
@@ -23,13 +26,26 @@ open(lock_file, 'a').close()
 logger.debug('lock_file: %s', lock_file)
 
 
-class FileLock(object):
+class FileLock(LockingBackend):
     lock_file = lock_file
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        instance = FileLock(name=name, timeout=timeout)
+        super(FileLock, cls).acquire_lock(name=name, timeout=timeout)
+        instance = FileLock(
+            name=name, timeout=timeout or setting_default_lock_timeout.value
+        )
         return instance
+
+    @classmethod
+    def purge_locks(cls):
+        super(FileLock, cls).purge_locks()
+        lock.acquire()
+        with open(cls.lock_file, 'r+') as file_object:
+            locks.lock(f=file_object, flags=locks.LOCK_EX)
+            file_object.seek(0)
+            file_object.truncate()
+            lock.release()
 
     def _get_lock_dictionary(self):
         if self.timeout:
@@ -45,9 +61,9 @@ class FileLock(object):
 
         return result
 
-    def __init__(self, name, timeout):
+    def __init__(self, name, timeout=None):
         self.name = name
-        self.timeout = timeout or 0
+        self.timeout = timeout or setting_default_lock_timeout.value
         self.uuid = uuid.uuid4().get_hex()
 
         lock.acquire()
@@ -78,6 +94,8 @@ class FileLock(object):
             lock.release()
 
     def release(self):
+        super(FileLock, self).release()
+
         lock.acquire()
         with open(self.__class__.lock_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)

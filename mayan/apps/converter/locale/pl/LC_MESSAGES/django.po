@@ -1,27 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 15:49-0400\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"PO-Revision-Date: 2017-06-02 17:23+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:19 permissions.py:7 settings.py:7
 msgid "Converter"
@@ -33,18 +31,19 @@ msgstr "Kolejność"
 
 #: apps.py:28 models.py:70
 msgid "Transformation"
-msgstr "Transformacja"
+msgstr "Przekształcenie"
 
 #: apps.py:32 models.py:50
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: backends/python.py:86 backends/python.py:100
+#: backends/python.py:100 backends/python.py:114
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Wyjątek określający liczbę stron PDF: %s"
 
 #: classes.py:97
+#| msgid "suported file formats"
 msgid "Not an office file format."
 msgstr "Format niezgodny z formatem plików LibreOffice."
 
@@ -53,53 +52,56 @@ msgstr "Format niezgodny z formatem plików LibreOffice."
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr "LibreOffice nie został zainstalowany lub nie znaleziono ścieżki: %s"
 
-#: classes.py:290
+#: classes.py:294
 msgid "Crop"
 msgstr "Przycięcie"
 
-#: classes.py:303
+#: classes.py:307
 msgid "Flip"
-msgstr ""
+msgstr "Odbicie"
 
-#: classes.py:314
+#: classes.py:318
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Rozmycie Gaussa"
 
-#: classes.py:325
+#: classes.py:329
 msgid "Mirror"
-msgstr ""
+msgstr "Odbicie lustrzane"
 
-#: classes.py:336
+#: classes.py:340
 msgid "Resize"
 msgstr "Zmiana rozmiaru"
 
-#: classes.py:363
+#: classes.py:367
 msgid "Rotate"
 msgstr "Obrócenie"
 
-#: classes.py:382
+#: classes.py:386
+#| msgid "Rotate by n degress."
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Obrócenie o 90 stopni"
 
-#: classes.py:393
+#: classes.py:397
+#| msgid "Rotate by n degress."
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Obrócenie o 180 stopni"
 
-#: classes.py:404
+#: classes.py:408
+#| msgid "Rotate by n degress."
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Obrócenie o 270 stopni"
 
-#: classes.py:414
+#: classes.py:418
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Maska wyostrzająca"
 
-#: classes.py:430
+#: classes.py:434
 msgid "Zoom"
 msgstr "Powiększenie"
 
 #: links.py:35
 msgid "Create new transformation"
-msgstr "Utwórz nową transformację"
+msgstr "Utwórz nowe przekształcenie"
 
 #: links.py:39
 msgid "Delete"
@@ -111,15 +113,13 @@ msgstr "Edytuj"
 
 #: links.py:47 models.py:71
 msgid "Transformations"
-msgstr "Transformacje"
+msgstr "Przekształcenia"
 
 #: models.py:38
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Kolejność wykonywania transformacji. Jeśli nie zostanie zmieniona, przyjmie "
-"wartość automatyczną."
+msgstr "Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie wartość automatyczną."
 
 #: models.py:44
 msgid "Name"
@@ -129,25 +129,24 @@ msgstr "Nazwa"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Wprowadź argumenty dla transformacji w postaci słownika YAML np.: {\"degrees"
-"\": 180}"
+msgstr "Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr "Utwórz nowe transformacje"
+msgstr "Utwórz nowe przekształcenia"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr "Usuń transformacje"
+msgstr "Usuń przekształcenia"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr "Edytuj transformacje"
+msgstr "Edytuj przekształcenia"
 
 #: permissions.py:19
+#| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr "Przeglądaj istniejące transformacje"
+msgstr "Przeglądaj utworzone przekształcenia"
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
@@ -168,22 +167,22 @@ msgstr "Wprowadź poprawną wartość YAML."
 #: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Usunąć transformację \"%(transformation)s\" dla: %(content_object)s?"
+msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
 
 #: views.py:127
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr "Utwórz nową transformację dla: %s"
+msgstr "Utwórz nowe przekształcenie dla %s"
 
 #: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Edycja transformacji \"%(transformation)s\" dla: %(content_object)s"
+msgstr "Edycja przekształcenia \"%(transformation)s\" dla %(content_object)s"
 
 #: views.py:216
 #, python-format
 msgid "Transformations for: %s"
-msgstr "Transformacje dla: %s"
+msgstr "Przekształcenia dla %s"
 
 #~ msgid "Resize."
 #~ msgstr "Resize."
@@ -219,13 +218,14 @@ msgstr "Transformacje dla: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -538,11 +538,9 @@ msgstr "Transformacje dla: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -658,8 +656,7 @@ msgstr "Transformacje dla: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

@@ -29,9 +29,9 @@
             <link href="{% static 'appearance/packages/animate/animate.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/select2-4.0.3/dist/css/select2.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
             {% block stylesheets %}{% endblock %}
-
         {% endcompress %}
         <script>
             function waitForJQuery(func) {
@@ -59,7 +59,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         {# TODO: don't use hardcoded main:home use settings.LOGIN_REDIRECT_URL #}
-                        <a class="navbar-brand" href="{% url 'common:home' %}">{% project_name %}{% if debug %} <i class="fa fa-bug"></i>{% endif %}</a>
+                        <a class="navbar-brand" href="{% url 'common:home' %}">{% project_name %}</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -80,39 +80,6 @@
                                 {% endfor %}
                             {% endfor %}
                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                    {% trans 'Profile' %} <i class="fa fa-user-circle-o"></i>
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="text-center" style="padding-left: 10px; padding-right: 20px;">
-                                        {% if not request.user.is_authenticated %}
-                                            {% trans 'Anonymous' %}
-                                        {% else %}
-                                            {{ request.user.get_full_name|default:request.user }}
-                                        {% endif %}
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-
-                                    {% get_menu_links 'user menu' as menu_links %}
-                                    {% for link_set in menu_links %}
-                                        {% for link in link_set %}
-                                            {% with 'true' as as_li %}
-                                            {% with 'true' as hide_active_anchor %}
-                                            {% with 'first' as li_class_first %}
-                                            {% with ' ' as link_classes %}
-                                                {% include 'navigation/generic_subnavigation.html' %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                        {% endfor %}
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </nav>
@@ -120,14 +87,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        {% for message in messages %}
-                            <div class="animated fadeInDown alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
-                                <button type="button" class="close">×</button>
-                                <h4>{% if 'success' in message.tags %}{% trans 'Success' %}{% elif 'info' in message.tags %}{% trans 'Information' %}{% elif 'warning' in message.tags %}{% trans 'Warning' %}{% else %}{% trans 'Error' %}{% endif %}</h4>
-                                <p>{{ message }}</p>
-                            </div>
-                        {% endfor %}
-
                         {% block messages %}{% endblock %}
                     </div>
                 </div>
@@ -208,9 +167,21 @@
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/lib/jquery.mousewheel.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/select2-4.0.3/dist/js/select2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/js/base.js' %}"></script>
-        {% block javascript %}{% endblock %}
         {% endcompress %}
+
+        <script>
+        var DjangoMessages = [
+            {% for message in messages %}
+                {
+                    tags: '{{ message.tags }}',
+                    message: '{{ message.message }}'
+                },
+            {% endfor %}
+        ];
+        </script>
+        {% block javascript %}{% endblock %}
     </body>
 </html>
 {% endspaceless %}
