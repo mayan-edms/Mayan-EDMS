@@ -383,7 +383,8 @@ class DocumentVersion(models.Model):
         blank=True, editable=False, max_length=64, null=True
     )
     checksum = models.TextField(
-        blank=True, editable=False, null=True, verbose_name=_('Checksum')
+        blank=True, db_index=True, editable=False, null=True,
+        verbose_name=_('Checksum')
     )
 
     def __str__(self):
