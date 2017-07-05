@@ -44,7 +44,14 @@ Other Changes
   its own separate $HOME directory. Additionally give every libreoffice
   its own UserInstallation file in the $HOME directory. Works around
   Libre Office issue: https://bugs.documentfoundation.org/show_bug.cgi?id=37531
-  Solves or affects GitLab issues #393 #258 #198 #175 
+  Solves or affects GitLab issues #393 #258 #198 #175
+- Document type-metadata type relationship. Add new UI method to switch between
+  required metadata and optional metadata for a document type. This new
+  method does not forces users to remove a metadata type before making the
+  switch and thus avoid deletion of existing metadata entries. GitLab issue #337.
+- It is now possible to change the relationship between metadata types and
+  document types from either the metadata type list or document type list.
+  GitLab issue #373.
 
 
 Removals
@@ -103,5 +110,7 @@ Bugs fixed or issues closed
 * `GitHub issue #255 <https://github.com/mayan-edms/mayan-edms/issues/255>`_ Uploading a local file via api
 * `GitLab issue #215 <https://gitlab.com/mayan-edms/mayan-edms/issues/215>`_ Download text contents
 * `GitLab issue #286 <https://gitlab.com/mayan-edms/mayan-edms/issues/286>`_ User configurable mailer
+* `GitLab issue #337 <https://gitlab.com/mayan-edms/mayan-edms/issues/337>`_ Better way to switch Optional to Required Metadata
+* `GitLab issue #373 <https://gitlab.com/mayan-edms/mayan-edms/issues/373>`_ (feature request) Allow selecting document types for metadata
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.generics import (
-    AssignRemoveView, MultipleObjectFormActionView, SingleObjectCreateView,
+    FormView, MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document, DocumentType
@@ -23,7 +23,8 @@ from documents.permissions import (
 from .api import save_metadata_list
 from .forms import (
     DocumentAddMetadataForm, DocumentMetadataFormSet,
-    DocumentMetadataRemoveFormSet, MetadataTypeForm
+    DocumentMetadataRemoveFormSet,
+    DocumentTypeMetadataTypeRelationshipFormSet, MetadataTypeForm
 )
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
@@ -44,7 +45,9 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
     )
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentMetadataAddView, self).dispatch(request, *args, **kwargs)
+        result = super(
+            DocumentMetadataAddView, self
+        ).dispatch(request, *args, **kwargs)
 
         queryset = self.get_queryset()
 
@@ -198,7 +201,9 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
     )
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentMetadataEditView, self).dispatch(request, *args, **kwargs)
+        result = super(
+            DocumentMetadataEditView, self
+        ).dispatch(request, *args, **kwargs)
 
         queryset = self.get_queryset()
 
@@ -274,7 +279,9 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
             document.add_as_recent_document_for_user(self.request.user)
 
             for document_metadata in document.metadata.all():
-                metadata_dict.setdefault(document_metadata.metadata_type, set())
+                metadata_dict.setdefault(
+                    document_metadata.metadata_type, set()
+                )
 
                 if document_metadata.value:
                     metadata_dict[
@@ -364,7 +371,9 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
     )
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentMetadataRemoveView, self).dispatch(request, *args, **kwargs)
+        result = super(
+            DocumentMetadataRemoveView, self
+        ).dispatch(request, *args, **kwargs)
 
         queryset = self.get_queryset()
 
@@ -543,59 +552,87 @@ class MetadataTypeListView(SingleObjectListView):
         }
 
 
-class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
-    decode_content_type = True
+class SetupDocumentTypeMetadataTypes(FormView):
+    form_class = DocumentTypeMetadataTypeRelationshipFormSet
+    main_model = 'document_type'
+    model = DocumentType
+    submodel = MetadataType
     view_permission = permission_document_type_edit
-    left_list_title = _('Available metadata types')
-    right_list_title = _('Metadata types assigned')
 
-    def add(self, item):
-        self.get_object().metadata.create(metadata_type=item, required=False)
+    def form_valid(self, form):
+        try:
+            for instance in form:
+                instance.save()
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _('Error updating relationship; %s') % exception
+            )
+        else:
+            messages.success(
+                self.request, _('Relationships updated successfully')
+            )
+
+        return super(
+            SetupDocumentTypeMetadataTypes, self
+        ).form_valid(form=form)
 
     def get_object(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            set(MetadataType.objects.all()) - set(
-                MetadataType.objects.filter(
-                    id__in=self.get_object().metadata.values_list(
-                        'metadata_type', flat=True
-                    )
-                )
-            )
-        )
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().metadata.filter(required=False)
-        )
-
-    def remove(self, item):
-        item.delete()
+        return get_object_or_404(self.model, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
+            'form_display_mode_table': True,
             'object': self.get_object(),
             'title': _(
-                'Optional metadata types for document type: %s'
-            ) % self.get_object(),
+                'Metadata types for document type: %s'
+            ) % self.get_object()
         }
 
+    def get_initial(self):
+        obj = self.get_object()
+        initial = []
 
-class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalView):
-    def add(self, item):
-        self.get_object().metadata.create(metadata_type=item, required=True)
+        for element in self.get_queryset():
+            initial.append({
+                'document_type': obj,
+                'main_model': self.main_model,
+                'metadata_type': element,
+            })
+        return initial
 
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().metadata.filter(required=True)
-        )
+    def get_post_action_redirect(self):
+        return reverse('documents:document_type_list')
+
+    def get_queryset(self):
+        return self.submodel.objects.all()
+
+
+class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):
+    main_model = 'metadata_type'
+    model = MetadataType
+    submodel = DocumentType
 
     def get_extra_context(self):
         return {
+            'form_display_mode_table': True,
             'object': self.get_object(),
             'title': _(
-                'Required metadata types for document type: %s'
-            ) % self.get_object(),
+                'Document types for metadata type: %s'
+            ) % self.get_object()
         }
+
+    def get_initial(self):
+        obj = self.get_object()
+        initial = []
+
+        for element in self.get_queryset():
+            initial.append({
+                'document_type': element,
+                'main_model': self.main_model,
+                'metadata_type': obj,
+            })
+        return initial
+
+    def get_post_action_redirect(self):
+        return reverse('metadata:setup_metadata_type_list')

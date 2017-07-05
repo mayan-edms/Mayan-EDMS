@@ -11,8 +11,8 @@ from .views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
     DocumentMetadataListView, DocumentMetadataRemoveView,
     MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
-    MetadataTypeListView, SetupDocumentTypeMetadataOptionalView,
-    SetupDocumentTypeMetadataRequiredView
+    MetadataTypeListView, SetupDocumentTypeMetadataTypes,
+    SetupMetadataTypesDocumentTypes
 )
 
 urlpatterns = [
@@ -61,16 +61,15 @@ urlpatterns = [
         r'^setup/type/(?P<pk>\d+)/delete/$',
         MetadataTypeDeleteView.as_view(), name='setup_metadata_type_delete'
     ),
-
     url(
-        r'^setup/document/type/(?P<pk>\d+)/metadata/edit/$',
-        SetupDocumentTypeMetadataOptionalView.as_view(),
-        name='setup_document_type_metadata'
+        r'^setup/document_types/(?P<pk>\d+)/metadata_types/$',
+        SetupDocumentTypeMetadataTypes.as_view(),
+        name='setup_document_type_metadata_types'
     ),
     url(
-        r'^setup/document/type/(?P<pk>\d+)/metadata/edit/required/$',
-        SetupDocumentTypeMetadataRequiredView.as_view(),
-        name='setup_document_type_metadata_required'
+        r'^setup/metadata_types/(?P<pk>\d+)/document_types/$',
+        SetupMetadataTypesDocumentTypes.as_view(),
+        name='setup_metadata_type_document_types'
     ),
 ]
 

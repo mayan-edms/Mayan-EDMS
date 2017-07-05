@@ -32,9 +32,8 @@ from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
     link_metadata_remove, link_metadata_view,
-    link_setup_document_type_metadata,
-    link_setup_document_type_metadata_required,
-    link_setup_metadata_type_create, link_setup_metadata_type_delete,
+    link_setup_document_type_metadata_types, link_setup_metadata_type_create,
+    link_setup_metadata_type_delete, link_setup_metadata_type_document_types,
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
 )
 from .permissions import (
@@ -206,13 +205,13 @@ class MetadataApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_setup_document_type_metadata,
-                link_setup_document_type_metadata_required
+                link_setup_document_type_metadata_types,
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(
             links=(
                 link_setup_metadata_type_edit,
+                link_setup_metadata_type_document_types,
                 link_setup_metadata_type_delete
             ), sources=(MetadataType,)
         )
