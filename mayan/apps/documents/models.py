@@ -382,8 +382,8 @@ class DocumentVersion(models.Model):
     encoding = models.CharField(
         blank=True, editable=False, max_length=64, null=True
     )
-    checksum = models.TextField(
-        blank=True, db_index=True, editable=False, null=True,
+    checksum = models.CharField(
+        blank=True, db_index=True, editable=False, max_length=64, null=True,
         verbose_name=_('Checksum')
     )
 
