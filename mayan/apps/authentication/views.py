@@ -10,8 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from stronghold.decorators import public
 
-from .forms import EmailAuthenticationForm
-from .settings import setting_login_method
+from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
+from .settings import setting_login_method, setting_maximum_session_length
 
 
 @public
@@ -24,10 +24,23 @@ def login_view(request):
 
     if setting_login_method.value == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
+    else:
+        kwargs['authentication_form'] = UsernameAuthenticationForm
 
     if not request.user.is_authenticated():
         context = {'appearance_type': 'plain'}
-        return login(request, extra_context=context, **kwargs)
+
+        result = login(request, extra_context=context, **kwargs)
+        if request.method == 'POST':
+            form = kwargs['authentication_form'](request, data=request.POST)
+            if form.is_valid():
+                if form.cleaned_data['remember_me']:
+                    request.session.set_expiry(
+                        setting_maximum_session_length.value
+                    )
+                else:
+                    request.session.set_expiry(0)
+        return result
     else:
         return HttpResponseRedirect(reverse(settings.LOGIN_REDIRECT_URL))
 

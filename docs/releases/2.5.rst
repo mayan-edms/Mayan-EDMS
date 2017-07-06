@@ -62,6 +62,9 @@ Other Changes
   in the tools menu. Finally a new tab in the document view has been added
   called "Duplicates" that will list all duplicates of the currently
   selected document.
+- Add "Remember me" checkbox in the login form.
+- Add AUTHENTICATION_MAXIMUM_SESSION_LENGTH configuration setting for the maximum
+  time an user's login session will remain valid. Defaults to 30 days.
 
 Removals
 --------
