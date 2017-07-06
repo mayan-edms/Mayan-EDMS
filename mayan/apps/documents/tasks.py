@@ -66,6 +66,29 @@ def task_generate_document_page_image(document_page_id, *args, **kwargs):
     return document_page.generate_image(*args, **kwargs)
 
 
+@app.task(ignore_result=True)
+def task_scan_duplicates_all():
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+
+    DuplicatedDocument.objects.scan()
+
+
+@app.task(ignore_result=True)
+def task_scan_duplicates_for(document_id):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+
+    document = Document.objects.get(pk=document_id)
+
+    DuplicatedDocument.objects.scan_for(document=document)
+
+
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
 def task_update_page_count(self, version_id):
     DocumentVersion = apps.get_model(

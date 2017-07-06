@@ -30,8 +30,8 @@ from .events import (
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, PassthroughManager,
-    RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentTypeManager, DuplicatedDocumentManager,
+    PassthroughManager, RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
@@ -892,3 +892,25 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _('Recent document')
         verbose_name_plural = _('Recent documents')
+
+
+@python_2_unicode_compatible
+class DuplicatedDocument(models.Model):
+    document = models.ForeignKey(
+        Document, related_name='duplicates', verbose_name=_('Document')
+    )
+    documents = models.ManyToManyField(
+        Document, verbose_name=_('Duplicated documents')
+    )
+    datetime_added = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Added')
+    )
+
+    objects = DuplicatedDocumentManager()
+
+    def __str__(self):
+        return force_text(self.document)
+
+    class Meta:
+        verbose_name = _('Duplicated document')
+        verbose_name_plural = _('Duplicated documents')

@@ -735,3 +735,55 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         response = self.get('documents:document_list_deleted')
 
         self.assertContains(response, self.document.label, status_code=200)
+
+
+class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(DuplicatedDocumentsViewsTestCase, self).setUp()
+        self.login_user()
+
+    def _upload_duplicate_document(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_duplicate = self.document_type.new_document(
+                file_object=file_object, label=TEST_SMALL_DOCUMENT_FILENAME
+            )
+
+    def _request_duplicated_document_list(self):
+        return self.get('documents:duplicated_document_list')
+
+    def _request_document_duplicates_list(self):
+        return self.get(
+            'documents:document_duplicates_list', args=(self.document.pk,)
+        )
+
+    def test_duplicated_document_list_no_permissions(self):
+        self._upload_duplicate_document()
+        response = self._request_duplicated_document_list()
+
+        self.assertNotContains(
+            response, text=self.document.label, status_code=200
+        )
+
+    def test_duplicated_document_list_with_permissions(self):
+        self._upload_duplicate_document()
+        self.grant(permission=permission_document_view)
+        response = self._request_duplicated_document_list()
+
+        self.assertContains(
+            response, text=self.document.label, status_code=200
+        )
+
+    def test_document_duplicates_list_no_permissions(self):
+        self._upload_duplicate_document()
+        response = self._request_document_duplicates_list()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_duplicates_list_with_permissions(self):
+        self._upload_duplicate_document()
+        self.grant(permission=permission_document_view)
+        response = self._request_document_duplicates_list()
+
+        self.assertContains(
+            response, text=self.document.label, status_code=200
+        )

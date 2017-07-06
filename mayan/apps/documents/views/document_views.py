@@ -19,6 +19,7 @@ from common.generics import (
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
+from common.utils import encapsulate
 from converter.models import Transformation
 from converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
@@ -31,7 +32,9 @@ from ..forms import (
     DocumentTypeSelectForm,
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-from ..models import DeletedDocument, Document, RecentDocument
+from ..models import (
+    DeletedDocument, Document, DuplicatedDocument, RecentDocument
+)
 from ..permissions import (
     permission_document_delete, permission_document_download,
     permission_document_print, permission_document_properties_edit,
@@ -165,6 +168,36 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
                 'Document type for "%s" changed successfully.'
             ) % instance
         )
+
+
+class DocumentDuplicatesListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=self.get_document()
+        )
+
+        return super(
+            DocumentDuplicatesListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_queryset(self):
+        try:
+            return DuplicatedDocument.objects.get(
+                document=self.get_document()
+            ).documents.all()
+        except DuplicatedDocument.DoesNotExist:
+            return Document.objects.none()
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.get_document(),
+            'title': _('Duplicates for document: %s') % self.get_document(),
+        }
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -722,3 +755,27 @@ class DocumentPrint(FormView):
             return ['documents/document_print.html']
         else:
             return [self.template_name]
+
+
+class DuplicatedDocumentListView(DocumentListView):
+    extra_context = {
+        'extra_columns': (
+            {
+                'name': _('Duplicates'),
+                'attribute': encapsulate(
+                    lambda document: DuplicatedDocument.objects.get(
+                        document=document
+                    ).documents.count()
+                )
+            },
+        ),
+        'hide_links': True,
+        'title': _('Duplicated documents')
+    }
+
+    def get_document_queryset(self):
+        return Document.objects.filter(
+            pk__in=DuplicatedDocument.objects.values_list(
+                'document_id', flat=True
+            )
+        )

@@ -16,8 +16,8 @@ from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
     DeletedDocumentDeleteManyView, DeletedDocumentListView,
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
-    DocumentDownloadView, DocumentEditView, DocumentListView,
-    DocumentPageListView, DocumentPageNavigationFirst,
+    DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
+    DocumentListView, DocumentPageListView, DocumentPageNavigationFirst,
     DocumentPageNavigationLast, DocumentPageNavigationNext,
     DocumentPageNavigationPrevious, DocumentPageRotateLeftView,
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
@@ -31,7 +31,8 @@ from .views import (
     DocumentTypeListView, DocumentTypeEditView, DocumentUpdatePageCountView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView
+    DuplicatedDocumentListView, EmptyTrashCanView, RecentDocumentListView,
+    ScanDuplicatedDocuments
 )
 
 
@@ -45,7 +46,11 @@ urlpatterns = [
         r'^list/deleted/$', DeletedDocumentListView.as_view(),
         name='document_list_deleted'
     ),
-
+    url(
+        r'^list/duplicated/$',
+        DuplicatedDocumentListView.as_view(),
+        name='duplicated_document_list'
+    ),
     url(
         r'^(?P<pk>\d+)/preview/$', DocumentPreviewView.as_view(),
         name='document_preview'
@@ -53,6 +58,10 @@ urlpatterns = [
     url(
         r'^(?P<pk>\d+)/properties/$', DocumentView.as_view(),
         name='document_properties'
+    ),
+    url(
+        r'^(?P<pk>\d+)/duplicates/$', DocumentDuplicatesListView.as_view(),
+        name='document_duplicates_list'
     ),
     url(
         r'^(?P<pk>\d+)/restore/$', DocumentRestoreView.as_view(),
@@ -254,6 +263,14 @@ urlpatterns = [
         r'^type/(?P<pk>\d+)/filename/create/$',
         DocumentTypeFilenameCreateView.as_view(),
         name='document_type_filename_create'
+    ),
+
+    # Tools
+
+    url(
+        r'^tools/documents/duplicated/scan/$',
+        ScanDuplicatedDocuments.as_view(),
+        name='duplicated_document_scan'
     ),
 ]
 

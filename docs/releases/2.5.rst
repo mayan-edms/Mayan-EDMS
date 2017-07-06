@@ -54,6 +54,14 @@ Other Changes
   GitLab issue #373.
 - Add support to search documents by their checksums.
 - The document checksum field is now indexed for faster searches by checksum.
+- Add support for duplicated document scanning. Every time a document is
+  uploaded, a document scan will be triggered to determine if the new document
+  is a duplicate of an existing document. Duplicate documents will be listed
+  in a new "Duplicated documents" link in the main menu. A full document list
+  scan can also be triggered by using the new "Duplicated document scan" button
+  in the tools menu. Finally a new tab in the document view has been added
+  called "Duplicates" that will list all duplicates of the currently
+  selected document.
 
 Removals
 --------
