@@ -14,6 +14,9 @@ queue_documents_periodic = CeleryQueue(
 queue_uploads = CeleryQueue(
     name='uploads', label=_('Uploads')
 )
+queue_uploads = CeleryQueue(
+    name='documents', label=_('Documents')
+)
 
 queue_documents_periodic.add_task_type(
     name='documents.tasks.task_check_delete_periods',
@@ -45,4 +48,8 @@ queue_uploads.add_task_type(
 queue_uploads.add_task_type(
     name='documents.tasks.task_upload_new_version',
     label=_('Upload new document version')
+)
+queue_uploads.add_task_type(
+    name='documents.tasks.task_delete_document',
+    label=_('Delete a document')
 )

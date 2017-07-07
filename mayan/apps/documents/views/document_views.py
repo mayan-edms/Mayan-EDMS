@@ -43,7 +43,7 @@ from ..permissions import (
     permission_empty_trash
 )
 from ..settings import setting_print_size
-from ..tasks import task_update_page_count
+from ..tasks import task_delete_document, task_update_page_count
 from ..utils import parse_range
 
 logger = logging.getLogger(__name__)
@@ -95,7 +95,9 @@ class DeletedDocumentDeleteView(ConfirmView):
             obj=source_document
         )
 
-        instance.delete()
+        task_delete_document.apply_async(
+            kwargs={'deleted_document_id': instance.pk}
+        )
 
     def view_action(self):
         instance = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
@@ -364,7 +366,9 @@ class EmptyTrashCanView(ConfirmView):
 
     def view_action(self):
         for deleted_document in DeletedDocument.objects.all():
-            deleted_document.delete()
+            task_delete_document.apply_async(
+                kwargs={'deleted_document_id': deleted_document.pk}
+            )
 
         messages.success(self.request, _('Trash emptied successfully'))
 

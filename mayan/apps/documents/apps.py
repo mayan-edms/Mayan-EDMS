@@ -317,6 +317,9 @@ class DocumentsApp(MayanAppConfig):
                     routing_key='documents_periodic', delivery_mode=1
                 ),
                 Queue('uploads', Exchange('uploads'), routing_key='uploads'),
+                Queue(
+                    'documents', Exchange('documents'), routing_key='documents'
+                ),
             )
         )
 
@@ -348,6 +351,9 @@ class DocumentsApp(MayanAppConfig):
                 },
                 'documents.tasks.task_scan_duplicates_for': {
                     'queue': 'uploads'
+                },
+                'documents.tasks.task_delete_document': {
+                    'queue': 'documents'
                 },
             }
         )

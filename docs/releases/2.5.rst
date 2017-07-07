@@ -76,7 +76,9 @@ Other Changes
   images of document pages. The settings can be used together or separately 
   depending on how much disk space saving is desired. These settings give control
   over the trade-off between disk space savings and higher CPU utilization.
- 
+- The trashed document deletion action is now a background task. This
+  feature results is much faster trashed document deletion and trash
+  can emptying.
 
 Removals
 --------
