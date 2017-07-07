@@ -2,12 +2,14 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.views import login, password_change
+from django.contrib.auth.views import (
+    login, password_change, password_reset, password_reset_confirm,
+    password_reset_complete, password_reset_done
+)
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
-
 from stronghold.decorators import public
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
@@ -28,9 +30,9 @@ def login_view(request):
         kwargs['authentication_form'] = UsernameAuthenticationForm
 
     if not request.user.is_authenticated():
-        context = {'appearance_type': 'plain'}
+        extra_context = {'appearance_type': 'plain'}
 
-        result = login(request, extra_context=context, **kwargs)
+        result = login(request, extra_context=extra_context, **kwargs)
         if request.method == 'POST':
             form = kwargs['authentication_form'](request, data=request.POST)
             if form.is_valid():
@@ -49,11 +51,10 @@ def password_change_view(request):
     """
     Password change wrapper for better control
     """
-    context = {'title': _('Current user password change')}
+    extra_context = {'title': _('Current user password change')}
 
     return password_change(
-        request,
-        extra_context=context,
+        request, extra_context=extra_context,
         template_name='appearance/generic_form.html',
         post_change_redirect=reverse('authentication:password_change_done'),
     )
@@ -63,8 +64,77 @@ def password_change_done(request):
     """
     View called when the new user password has been accepted
     """
-
     messages.success(
         request, _('Your password has been successfully changed.')
     )
     return redirect('common:current_user_details')
+
+
+@public
+def password_reset_complete_view(request):
+    extra_context = {
+        'appearance_type': 'plain'
+    }
+
+    kwargs = {
+        'template_name': 'authentication/password_reset_complete.html'
+    }
+
+    return password_reset_complete(
+        request, extra_context=extra_context, **kwargs
+    )
+
+
+@public
+def password_reset_confirm_view(request, uidb64=None, token=None):
+    extra_context = {
+        'appearance_type': 'plain'
+    }
+
+    kwargs = {
+        'template_name': 'authentication/password_reset_confirm.html',
+        'post_reset_redirect': reverse('authentication:password_reset_complete_view'),
+        'uidb64': uidb64,
+        'token': token
+    }
+
+    return password_reset_confirm(
+        request, extra_context=extra_context, **kwargs
+    )
+
+
+@public
+def password_reset_done_view(request):
+    extra_context = {
+        'appearance_type': 'plain'
+    }
+
+    kwargs = {
+        'template_name': 'authentication/password_reset_done.html'
+    }
+
+    return password_reset_done(request, extra_context=extra_context, **kwargs)
+
+
+@public
+def password_reset_view(request):
+    extra_context = {
+        'appearance_type': 'plain'
+    }
+
+    kwargs = {
+        'email_template_name': 'authentication/password_reset_email.html',
+        'extra_email_context': {
+            'project_title': settings.PROJECT_TITLE,
+            'project_website': settings.PROJECT_WEBSITE,
+            'project_copyright': settings.PROJECT_COPYRIGHT,
+            'project_license': settings.PROJECT_LICENSE,
+        },
+        'subject_template_name': 'authentication/password_reset_subject.txt',
+        'template_name': 'authentication/password_reset_form.html',
+        'post_reset_redirect': reverse(
+            'authentication:password_reset_done_view'
+        )
+    }
+
+    return password_reset(request, extra_context=extra_context, **kwargs)

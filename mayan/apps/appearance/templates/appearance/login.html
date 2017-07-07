@@ -49,12 +49,14 @@
                             <div class="group wat-cf">
                                 {% include 'appearance/generic_form_instance.html' %}
                                 <input type="hidden" name="next" value="{{ next|escape }}" />
-
                             <div class="form-group">
                                 <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-sign-in"></i> {% trans 'Sign in' %}</button>
                             </div>
-
                         </form>
+                        <hr>
+                        <div>
+                            <a class="pull-right" href="{% url 'authentication:password_reset_view' %}">{% trans 'Forgot your password?' %}</a>
+                        </div>
                     </div>
                 </div>
             </div>
