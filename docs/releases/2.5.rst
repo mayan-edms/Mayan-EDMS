@@ -85,6 +85,8 @@ Other Changes
   loads. This change avoids "jumping" effect when loading many thumbnails.
 - Increase lazy load thresholds. More thumbnails and document pages
   will be loaded and visible by default when a view loads.
+- Improve usability and appearance on medium and small devices like 
+  tablets and smartphones.
 
 Removals
 --------
