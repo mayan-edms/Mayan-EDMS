@@ -79,6 +79,12 @@ Other Changes
 - The trashed document deletion action is now a background task. This
   feature results is much faster trashed document deletion and trash
   can emptying.
+- Remove animated spinners to lower browser memory usage and increase
+  responsiveness.
+- Render a document page place holder while the real document page
+  loads. This change avoids "jumping" effect when loading many thumbnails.
+- Increase lazy load thresholds. More thumbnails and document pages
+  will be loaded and visible by default when a view loads.
 
 Removals
 --------
