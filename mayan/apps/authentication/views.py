@@ -76,12 +76,9 @@ def password_reset_complete_view(request):
         'appearance_type': 'plain'
     }
 
-    kwargs = {
-        'template_name': 'authentication/password_reset_complete.html'
-    }
-
     return password_reset_complete(
-        request, extra_context=extra_context, **kwargs
+        request, extra_context=extra_context,
+        template_name= 'authentication/password_reset_complete.html'
     )
 
 
@@ -91,15 +88,12 @@ def password_reset_confirm_view(request, uidb64=None, token=None):
         'appearance_type': 'plain'
     }
 
-    kwargs = {
-        'template_name': 'authentication/password_reset_confirm.html',
-        'post_reset_redirect': reverse('authentication:password_reset_complete_view'),
-        'uidb64': uidb64,
-        'token': token
-    }
-
     return password_reset_confirm(
-        request, extra_context=extra_context, **kwargs
+        request, extra_context=extra_context,
+        template_name='authentication/password_reset_confirm.html',
+        post_reset_redirect=reverse(
+            'authentication:password_reset_complete_view'
+        ), uidb64=uidb64, token=token
     )
 
 
@@ -109,11 +103,10 @@ def password_reset_done_view(request):
         'appearance_type': 'plain'
     }
 
-    kwargs = {
-        'template_name': 'authentication/password_reset_done.html'
-    }
-
-    return password_reset_done(request, extra_context=extra_context, **kwargs)
+    return password_reset_done(
+        request, extra_context=extra_context,
+        template_name='authentication/password_reset_done.html'
+    )
 
 
 @public
@@ -122,19 +115,17 @@ def password_reset_view(request):
         'appearance_type': 'plain'
     }
 
-    kwargs = {
-        'email_template_name': 'authentication/password_reset_email.html',
-        'extra_email_context': {
+    return password_reset(
+        request, extra_context=extra_context,
+        email_template_name='authentication/password_reset_email.html',
+        extra_email_context={
             'project_title': settings.PROJECT_TITLE,
             'project_website': settings.PROJECT_WEBSITE,
             'project_copyright': settings.PROJECT_COPYRIGHT,
             'project_license': settings.PROJECT_LICENSE,
-        },
-        'subject_template_name': 'authentication/password_reset_subject.txt',
-        'template_name': 'authentication/password_reset_form.html',
-        'post_reset_redirect': reverse(
+        }, subject_template_name='authentication/password_reset_subject.txt',
+        template_name='authentication/password_reset_form.html',
+        post_reset_redirect=reverse(
             'authentication:password_reset_done_view'
         )
-    }
-
-    return password_reset(request, extra_context=extra_context, **kwargs)
+    )
