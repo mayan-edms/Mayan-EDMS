@@ -65,6 +65,18 @@ Other Changes
 - Add "Remember me" checkbox in the login form.
 - Add AUTHENTICATION_MAXIMUM_SESSION_LENGTH configuration setting for the maximum
   time an user's login session will remain valid. Defaults to 30 days.
+- Ability to disable the document page image caching. This feature is controlled
+  by two new settings: DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE and 
+  DOCUMENTS_DISABLE_BASE_IMAGE_CACHE. DOCUMENTS_DISABLE_BASE_IMAGE_CACHE
+  disables the first layer of caching, the generation of a master image file
+  for each document page. This means that subsequent request for a page's
+  image will trigger the conversion of the document from its original
+  uploaded file. The second option, DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE,
+  disables just the caching of the transformed (rotated, resized, zoomed)
+  images of document pages. The settings can be used together or separately 
+  depending on how much disk space saving is desired. These settings give control
+  over the trade-off between disk space savings and higher CPU utilization.
+ 
 
 Removals
 --------

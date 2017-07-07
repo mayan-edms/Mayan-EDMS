@@ -36,6 +36,7 @@ from .managers import (
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
+    setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_size, setting_language, setting_zoom_max_level,
     setting_zoom_min_level
 )
@@ -768,11 +769,14 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', cache_filename)
 
-        if cache_storage_backend.exists(cache_filename):
+        if not setting_disable_transformed_image_cache.value and cache_storage_backend.exists(cache_filename):
             logger.debug(
                 'transformations cache file "%s" found', cache_filename
             )
         else:
+            logger.debug(
+                'transformations cache file "%s" not found', cache_filename
+            )
             image = self.get_image(transformations=transformation_list)
             with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
                 file_object.write(image.getvalue())
@@ -785,7 +789,7 @@ class DocumentPage(models.Model):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
-        if cache_storage_backend.exists(cache_filename):
+        if not setting_disable_base_image_cache.value and cache_storage_backend.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
             converter = converter_class(
                 file_object=cache_storage_backend.open(cache_filename)
