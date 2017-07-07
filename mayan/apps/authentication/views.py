@@ -22,7 +22,7 @@ def login_view(request):
     Control how the use is to be authenticated, options are 'email' and
     'username'
     """
-    kwargs = {'template_name': 'appearance/login.html'}
+    kwargs = {'template_name': 'authentication/login.html'}
 
     if setting_login_method.value == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
