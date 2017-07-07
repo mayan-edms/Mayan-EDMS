@@ -31,7 +31,9 @@ class APIDocumentTypeWorkflowListView(generics.ListAPIView):
         """
         Returns a list of all the document type workflows.
         """
-        return super(APIDocumentTypeWorkflowListView, self).get(*args, **kwargs)
+        return super(
+            APIDocumentTypeWorkflowListView, self
+        ).get(*args, **kwargs)
 
     def get_document_type(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
@@ -600,4 +602,6 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
         Transition a document workflow by creating a new document workflow
         log entry.
         """
-        return super(APIWorkflowInstanceLogEntryListView, self).post(*args, **kwargs)
+        return super(
+            APIWorkflowInstanceLogEntryListView, self
+        ).post(*args, **kwargs)

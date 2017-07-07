@@ -87,6 +87,7 @@ Other Changes
   will be loaded and visible by default when a view loads.
 - Improve usability and appearance on medium and small devices like 
   tablets and smartphones.
+- Improve document detection by initial workflow state.
 
 Removals
 --------

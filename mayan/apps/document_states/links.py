@@ -96,7 +96,8 @@ link_workflow_list = Link(
 )
 link_workflow_state_document_list = Link(
     permissions=(permission_workflow_view,),
-    text=_('State documents'), view='document_states:workflow_state_document_list',
+    text=_('State documents'),
+    view='document_states:workflow_state_document_list',
     args='resolved_object.pk'
 )
 link_workflow_state_list = Link(

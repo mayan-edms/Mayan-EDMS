@@ -36,14 +36,24 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='workflow',
-            options={'ordering': ('label',), 'verbose_name': 'Workflow', 'verbose_name_plural': 'Workflows'},
+            options={
+                'ordering': ('label',),
+                'verbose_name': 'Workflow', 'verbose_name_plural': 'Workflows'
+            },
         ),
         migrations.AlterModelOptions(
             name='workflowstate',
-            options={'ordering': ('label',), 'verbose_name': 'Workflow state', 'verbose_name_plural': 'Workflow states'},
+            options={
+                'ordering': ('label',),
+                'verbose_name': 'Workflow state',
+                'verbose_name_plural': 'Workflow states'
+            },
         ),
         migrations.AlterModelOptions(
             name='workflowtransition',
-            options={'ordering': ('label',), 'verbose_name': 'Workflow transition', 'verbose_name_plural': 'Workflow transitions'},
+            options={
+                'ordering': ('label',), 'verbose_name': 'Workflow transition',
+                'verbose_name_plural': 'Workflow transitions'
+            },
         ),
     ]

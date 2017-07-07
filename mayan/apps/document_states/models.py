@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
+from django.db.models import F, Max, Q
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -106,6 +107,12 @@ class WorkflowState(models.Model):
         ), verbose_name=_('Completion')
     )
 
+    class Meta:
+        ordering = ('label',)
+        unique_together = ('workflow', 'label')
+        verbose_name = _('Workflow state')
+        verbose_name_plural = _('Workflow states')
+
     def __str__(self):
         return self.label
 
@@ -114,11 +121,30 @@ class WorkflowState(models.Model):
             self.workflow.states.all().update(initial=False)
         return super(WorkflowState, self).save(*args, **kwargs)
 
-    class Meta:
-        ordering = ('label',)
-        unique_together = ('workflow', 'label')
-        verbose_name = _('Workflow state')
-        verbose_name_plural = _('Workflow states')
+    def get_documents(self):
+        latest_entries = WorkflowInstanceLogEntry.objects.annotate(
+            max_datetime=Max(
+                'workflow_instance__log_entries__datetime'
+            )
+        ).filter(
+            datetime=F('max_datetime')
+        )
+
+        state_latest_entries = latest_entries.filter(
+            transition__destination_state=self
+        )
+
+        return Document.objects.filter(
+            Q(
+                workflows__pk__in=state_latest_entries.values_list(
+                    'workflow_instance', flat=True
+                )
+            ) | Q(
+                    workflows__log_entries__isnull=True,
+                    workflows__workflow__states=self,
+                    workflows__workflow__states__initial=True
+                )
+        ).distinct()
 
 
 @python_2_unicode_compatible

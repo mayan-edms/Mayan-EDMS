@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.db.models.signals import pre_delete, post_delete, post_save
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue

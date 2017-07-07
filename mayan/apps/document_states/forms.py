@@ -22,8 +22,17 @@ class WorkflowTransitionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         workflow = kwargs.pop('workflow')
         super(WorkflowTransitionForm, self).__init__(*args, **kwargs)
-        self.fields['origin_state'].queryset = self.fields['origin_state'].queryset.filter(workflow=workflow)
-        self.fields['destination_state'].queryset = self.fields['destination_state'].queryset.filter(workflow=workflow)
+        self.fields[
+            'origin_state'
+        ].queryset = self.fields[
+            'origin_state'
+        ].queryset.filter(workflow=workflow)
+
+        self.fields[
+            'destination_state'
+        ].queryset = self.fields[
+            'destination_state'
+        ].queryset.filter(workflow=workflow)
 
     class Meta:
         fields = ('label', 'origin_state', 'destination_state')
