@@ -5,6 +5,23 @@
 - Use Toasts library for screen messages.
 - Reduce verbosity of some debug messages.
 - Add new lineart transformation.
+- Fix SANE source resolution field.
+- About and Profile menu reorganization.
+- PDF compatibility improvements.
+- Office document coversion improvements.
+- New metadata type setup UI.
+- Duplicated document scan support.
+- "Remember me" login support.
+- Forgotten password restore via email.
+- Document cache disabling.
+- Translation improvements.
+- Image loading improvements.
+- Lower Javascript memory utilization.
+- HTML reponsive layout improvements.
+- Make document deletion a background task.
+- Unicode handling improvements.
+- Python3 compatilibyt improvements.
+- New screen messages using Toastr.
 
 2.4 (2017-06-23)
 ================
