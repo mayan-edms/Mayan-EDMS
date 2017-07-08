@@ -1,3 +1,8 @@
+2.5.2 (2017-07-08)
+==================
+- Improve new document creation signal handling.
+  Fixes issue with duplicate scanning at upload.
+
 2.5.1 (2017-07-08)
 ==================
 - Update release target due to changes in PyPI.
