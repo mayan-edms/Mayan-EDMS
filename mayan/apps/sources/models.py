@@ -83,7 +83,15 @@ class Source(models.Model):
                     language=language or setting_language.value
                 )
                 document.save(_user=user)
-
+        except Exception as exception:
+            logger.critical(
+                'Unexpected exception while trying to create new document '
+                '"%s" from source "%s"; %s',
+                label or file_object.name, self, exception
+            )
+            raise
+        else:
+            try:
                 document_version = document.new_version(
                     file_object=file_object, _user=user
                 )
@@ -109,14 +117,15 @@ class Source(models.Model):
                 if tag_ids:
                     for tag in Tag.objects.filter(pk__in=tag_ids):
                         tag.documents.add(document)
+            except Exception as exception:
+                logger.critical(
+                    'Unexpected exception while trying to create version for '
+                    'new document "%s" from source "%s"; %s',
+                    label or file_object.name, self, exception
+                )
+                document.delete(to_trash=False)
+                raise
 
-        except Exception as exception:
-            logger.critical(
-                'Unexpected exception while trying to create new document '
-                '"%s" from source "%s"; %s',
-                label or file_object.name, self, exception
-            )
-            raise
 
     def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
         if not document_type:
