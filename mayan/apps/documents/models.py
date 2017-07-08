@@ -449,11 +449,11 @@ class DocumentVersion(models.Model):
                 event_document_new_version.commit(
                     actor=user, target=self.document
                 )
-                post_version_upload.send(sender=self.__class__, instance=self)
+                post_version_upload.send(sender=DocumentVersion, instance=self)
 
                 if tuple(self.document.versions.all()) == (self,):
                     post_document_created.send(
-                        sender=self.document.__class__, instance=self.document
+                        sender=Document, instance=self.document
                     )
 
     class Meta:
