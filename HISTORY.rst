@@ -1,5 +1,5 @@
-2.5 (2017-07-XX)
-===============
+2.5 (2017-07-07)
+================
 - Add view to download a document's OCR text. GitLab #215
 - Add user configurable mailer. GitLab #286.
 - Use Toasts library for screen messages.
