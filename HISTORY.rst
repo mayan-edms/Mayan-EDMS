@@ -1,3 +1,7 @@
+2.5.1 (2017-07-08)
+==================
+- Update release target due to changes in PyPI.
+
 2.5 (2017-07-07)
 ================
 - Add view to download a document's OCR text. GitLab #215
