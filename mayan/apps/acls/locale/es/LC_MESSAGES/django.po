@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2015
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-05-28 19:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 links.py:35
@@ -30,7 +31,6 @@ msgid "Permissions"
 msgstr "Permisos"
 
 #: apps.py:29 models.py:46
-#| msgid "Roles"
 msgid "Role"
 msgstr "Rol"
 
@@ -39,7 +39,6 @@ msgid "Delete"
 msgstr "Borrar"
 
 #: links.py:39
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Nueva LCA"
 
@@ -57,9 +56,9 @@ msgstr "Entradas de acceso"
 
 #: models.py:57
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr "Permisos \"%(permissions)s\" para el rol \"%(role)s\" para \"%(object)s\""
+msgstr ""
+"Permisos \"%(permissions)s\" para el rol \"%(role)s\" para \"%(object)s\""
 
 #: models.py:74
 msgid "None"
@@ -80,21 +79,27 @@ msgstr "Ver LCAs"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr "URL de la API que apunta a la lista de permisos para esta lista de control de acceso."
+msgstr ""
+"URL de la API que apunta a la lista de permisos para esta lista de control "
+"de acceso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "URL de la API  que apunta a un permiso en relación con la lista de control de acceso a la que está conectado. Esta URL es diferente de la URL canónica de flujo de trabajo."
+msgstr ""
+"URL de la API  que apunta a un permiso en relación con la lista de control "
+"de acceso a la que está conectado. Esta URL es diferente de la URL canónica "
+"de flujo de trabajo."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Llave primaria del nuevo permiso para conceder a la lista de control de acceso."
+msgstr ""
+"Llave primaria del nuevo permiso para conceder a la lista de control de "
+"acceso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
-#| msgid "permission"
 msgid "No such permission: %s"
 msgstr "No existe el permiso: %s"
 
@@ -102,42 +107,45 @@ msgstr "No existe el permiso: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Lista separada por comas de las llaves primarias de permisos para conceder a esta lista de control de acceso."
+msgstr ""
+"Lista separada por comas de las llaves primarias de permisos para conceder a "
+"esta lista de control de acceso."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr "Las llaves primarias de los roles a los que se vincula esta lista de control de acceso."
+msgstr ""
+"Las llaves primarias de los roles a los que se vincula esta lista de control "
+"de acceso."
 
-#: views.py:73
+#: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nueva lista de control de acceso para: %s"
 
-#: views.py:100
+#: views.py:101
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "Borrar LCA: %s"
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Listas de control de acceso para: %s"
 
-#: views.py:150
+#: views.py:151
 msgid "Available permissions"
 msgstr "Permisos disponibles"
 
-#: views.py:151
+#: views.py:152
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
-#: views.py:206
+#: views.py:207
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""
 
-#: views.py:226
+#: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Los permisos inactivos se heredan de un objeto precedente."
 
@@ -232,8 +240,10 @@ msgstr "Los permisos inactivos se heredan de un objeto precedente."
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

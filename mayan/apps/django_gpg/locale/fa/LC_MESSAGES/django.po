@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
 "PO-Revision-Date: 2017-05-12 07:25+0000\n"
 "Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:31
@@ -96,7 +97,6 @@ msgid "Key management"
 msgstr "مدیریت کلید"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "کلید آپلود"
 
@@ -161,7 +161,6 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "کلید"
 
@@ -194,7 +193,6 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "آپلود کلیدها"
 
@@ -203,7 +201,6 @@ msgid "View keys"
 msgstr "دیدن کلیدها"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "امضاها"
 
@@ -216,13 +213,11 @@ msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -233,7 +228,6 @@ msgstr ""
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -243,7 +237,6 @@ msgstr "وارد کردن کلید"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -287,12 +280,12 @@ msgstr ""
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/private "
-#~ "pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/"
+#~ "private pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
-#~ "that is part of a public/private pair the private key will be deleted as "
-#~ "well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
+#~ "key that is part of a public/private pair the private key will be deleted "
+#~ "as well."
 
 #~ msgid "results"
 #~ msgstr "results"

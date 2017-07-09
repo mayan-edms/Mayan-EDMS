@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps.py:74 settings.py:9
+msgid "Common"
+msgstr ""
+
+#: apps.py:79
+msgid "Anonymous"
+msgstr ""
+
+#: classes.py:109
+msgid "Available attributes: \n"
+msgstr ""
+
+#: forms.py:27
+msgid "Selection"
+msgstr ""
+
+#: forms.py:135
+msgid "Filter"
+msgstr ""
+
+#: generics.py:136
+#, python-format
+msgid "Unable to transfer selection: %s."
+msgstr ""
+
+#: generics.py:160
+msgid "Add"
+msgstr ""
+
+#: generics.py:171
+msgid "Remove"
+msgstr ""
+
+#: generics.py:334
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
+
+#: generics.py:345
+#, python-format
+msgid "%(object)s created successfully."
+msgstr ""
+
+#: generics.py:374
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
+
+#: generics.py:385
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr ""
+
+#: generics.py:431
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
+
+#: generics.py:442
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr ""
+
+#: links.py:9
+msgid "About this"
+msgstr ""
+
+#: links.py:12 views.py:51
+msgid "Check for updates"
+msgstr ""
+
+#: links.py:16
+msgid "User details"
+msgstr ""
+
+#: links.py:20
+msgid "Edit details"
+msgstr ""
+
+#: links.py:23
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:27
+msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:31
+msgid "Source code"
+msgstr ""
+
+#: links.py:35
+msgid "Documentation"
+msgstr ""
+
+#: links.py:39
+msgid "Data filters"
+msgstr ""
+
+#: links.py:43
+msgid "Forum"
+msgstr ""
+
+#: links.py:47 views.py:190
+msgid "License"
+msgstr ""
+
+#: links.py:50 views.py:204
+msgid "Other packages licenses"
+msgstr ""
+
+#: links.py:54
+msgid "Setup"
+msgstr ""
+
+#: links.py:57
+msgid "Support"
+msgstr ""
+
+#: links.py:61 queues.py:10 views.py:234
+msgid "Tools"
+msgstr ""
+
+#: literals.py:13
+msgid "Days"
+msgstr ""
+
+#: literals.py:14
+msgid "Hours"
+msgstr ""
+
+#: literals.py:15
+msgid "Minutes"
+msgstr ""
+
+#: menus.py:12
+msgid "System"
+msgstr ""
+
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr ""
+
+#: mixins.py:84
+#, python-format
+msgid "Operation performed on %(count)d object"
+msgstr ""
+
+#: mixins.py:85
+#, python-format
+msgid "Operation performed on %(count)d objects"
+msgstr ""
+
+#: mixins.py:245
+msgid "Object"
+msgstr ""
+
+#: models.py:23
+msgid "File"
+msgstr ""
+
+#: models.py:25
+msgid "Filename"
+msgstr ""
+
+#: models.py:27
+msgid "Date time"
+msgstr ""
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:32
+msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:57
+msgid "Timezone"
+msgstr ""
+
+#: models.py:60
+msgid "Language"
+msgstr ""
+
+#: models.py:67
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:68
+msgid "User locale profiles"
+msgstr ""
+
+#: queues.py:8
+msgid "Default"
+msgstr ""
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
+#: settings.py:13
+msgid "Automatically enable logging to all apps."
+msgstr ""
+
+#: settings.py:19
+msgid ""
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+
+#: settings.py:27
+msgid "An integer specifying how many objects should be displayed per page."
+msgstr ""
+
+#: settings.py:33
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: settings.py:38
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr ""
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "The version you are using is outdated. The latest version is %s"
+msgstr ""
+
+#: views.py:48
+msgid "Your version is up-to-date."
+msgstr ""
+
+#: views.py:65
+msgid "Current user details"
+msgstr ""
+
+#: views.py:70
+msgid "Edit current user details"
+msgstr ""
+
+#: views.py:90
+msgid "Current user locale profile details"
+msgstr ""
+
+#: views.py:97
+msgid "Edit current user locale profile details"
+msgstr ""
+
+#: views.py:153
+msgid "Filter selection"
+msgstr ""
+
+#: views.py:169
+#, python-format
+msgid "Results for filter: %s"
+msgstr ""
+
+#: views.py:176
+msgid "Filter not found"
+msgstr ""
+
+#: views.py:217
+msgid "Setup items"
+msgstr ""
+
+#: views.py:261
+msgid "No action selected."
+msgstr ""
+
+#: views.py:269
+msgid "Must select at least one item."
+msgstr ""
+
+#: widgets.py:48
+msgid "None"
+msgstr ""

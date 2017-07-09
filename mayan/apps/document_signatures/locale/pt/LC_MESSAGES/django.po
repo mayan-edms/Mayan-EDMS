@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -28,12 +29,10 @@ msgid "Date"
 msgstr "Data"
 
 #: apps.py:95 models.py:47
-#| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr "ID da chave"
 
 #: apps.py:99 forms.py:64 models.py:51
-#| msgid "Signature ID: %s"
 msgid "Signature ID"
 msgstr ""
 
@@ -54,22 +53,18 @@ msgid "Passphrase"
 msgstr ""
 
 #: forms.py:46
-#| msgid "Signature file"
 msgid "Signature is embedded?"
 msgstr ""
 
 #: forms.py:48
-#| msgid "Signature file"
 msgid "Signature date"
 msgstr ""
 
 #: forms.py:51
-#| msgid "Signature ID: %s"
 msgid "Signature key ID"
 msgstr ""
 
 #: forms.py:53
-#| msgid "Signature type: %s"
 msgid "Signature key present?"
 msgstr ""
 
@@ -102,7 +97,6 @@ msgid "Key type"
 msgstr ""
 
 #: links.py:32
-#| msgid "Verify document signatures"
 msgid "Verify all documents"
 msgstr ""
 
@@ -203,12 +197,10 @@ msgid "Delete detached signatures"
 msgstr ""
 
 #: permissions.py:25
-#| msgid "Download detached signatures"
 msgid "Download detached document signatures"
 msgstr ""
 
 #: permissions.py:29
-#| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
 msgstr ""
 
@@ -217,22 +209,18 @@ msgid "Verify document signatures"
 msgstr "Verificar as assinaturas do documento"
 
 #: permissions.py:37
-#| msgid "Verify document signatures"
 msgid "View details of document signatures"
 msgstr ""
 
 #: queues.py:11
-#| msgid "Verify document signatures"
 msgid "Verify key signatures"
 msgstr ""
 
 #: queues.py:15
-#| msgid "Verify document signatures"
 msgid "Unverify key signatures"
 msgstr ""
 
 #: queues.py:19
-#| msgid "Verify document signatures"
 msgid "Verify document version"
 msgstr ""
 
@@ -240,59 +228,57 @@ msgstr ""
 msgid "Verify missing embedded signature"
 msgstr ""
 
-#: views.py:60 views.py:155
+#: views.py:61 views.py:156
 msgid "Passphrase is needed to unlock this key."
 msgstr ""
 
-#: views.py:70 views.py:165
+#: views.py:71 views.py:166
 msgid "Passphrase is incorrect."
 msgstr ""
 
-#: views.py:91 views.py:185
+#: views.py:92 views.py:186
 msgid "Document version signed successfully."
 msgstr ""
 
-#: views.py:117
+#: views.py:118
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:218
+#: views.py:219
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:245
+#: views.py:246
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr ""
 
-#: views.py:270
+#: views.py:271
 #, python-format
-#| msgid "Document signatures"
 msgid "Details for signature: %s"
 msgstr ""
 
-#: views.py:312
+#: views.py:313
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr ""
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr ""
 
-#: views.py:360
+#: views.py:361
 msgid "On large databases this operation may take some time to execute."
 msgstr "Esta operação pode levar algum tempo em bases de dados grandes."
 
-#: views.py:361
-#| msgid "Verify document signatures"
+#: views.py:362
 msgid "Verify all document for signatures?"
 msgstr ""
 
-#: views.py:371
+#: views.py:372
 msgid "Signature verification queued successfully."
 msgstr ""
 

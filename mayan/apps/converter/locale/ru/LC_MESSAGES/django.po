@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -9,91 +9,101 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:19 permissions.py:7 settings.py:7
+#: apps.py:20 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr "Конвертер"
 
-#: apps.py:26 models.py:40
+#: apps.py:27 models.py:40
 msgid "Order"
 msgstr "Порядок"
 
-#: apps.py:28 models.py:70
+#: apps.py:29 models.py:70
 msgid "Transformation"
 msgstr "Преобразование"
 
-#: apps.py:32 models.py:50
+#: apps.py:33 models.py:50
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: backends/python.py:100 backends/python.py:114
+#: backends/python.py:164 backends/python.py:170
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Ошибка при определении числа страниц PDF; %s"
 
-#: classes.py:97
-#| msgid "suported file formats"
+#: backends/python.py:184
+#, fuzzy, python-format
+#| msgid "Exception determining PDF page count; %s"
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Ошибка при определении числа страниц PDF; %s"
+
+#: classes.py:102
 msgid "Not an office file format."
 msgstr "Не является файлом офисного формата."
 
-#: classes.py:120
-#, python-format
-msgid "LibreOffice not installed or not found at path: %s"
+#: classes.py:123
+#, fuzzy
+#| msgid "LibreOffice not installed or not found at path: %s"
+msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice не установлен, или не найден по пути: %s"
 
-#: classes.py:294
+#: classes.py:306
 msgid "Crop"
 msgstr "Кадрировать"
 
-#: classes.py:307
+#: classes.py:319
 msgid "Flip"
 msgstr ""
 
-#: classes.py:318
+#: classes.py:330
 msgid "Gaussian blur"
 msgstr ""
 
-#: classes.py:329
+#: classes.py:340
+msgid "Line art"
+msgstr ""
+
+#: classes.py:351
 msgid "Mirror"
 msgstr ""
 
-#: classes.py:340
+#: classes.py:362
 msgid "Resize"
 msgstr "Изменение размера"
 
-#: classes.py:367
+#: classes.py:389
 msgid "Rotate"
 msgstr "Вращать"
 
-#: classes.py:386
-#| msgid "Rotate by n degress."
+#: classes.py:408
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: classes.py:397
-#| msgid "Rotate by n degress."
+#: classes.py:419
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: classes.py:408
-#| msgid "Rotate by n degress."
+#: classes.py:430
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: classes.py:418
+#: classes.py:440
 msgid "Unsharp masking"
 msgstr ""
 
-#: classes.py:434
+#: classes.py:456
 msgid "Zoom"
 msgstr "Увеличить"
 
@@ -117,7 +127,9 @@ msgstr "Преобразования"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Порядок выполнения преобразований. Если оставить неизменным, будет установлен флаг автоматического выставления порядка."
+msgstr ""
+"Порядок выполнения преобразований. Если оставить неизменным, будет "
+"установлен флаг автоматического выставления порядка."
 
 #: models.py:44
 msgid "Name"
@@ -127,7 +139,9 @@ msgstr "Имя"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Введите аргументы для преобразования в формате YAML-словаря, например: {\"degrees\": 180}"
+msgstr ""
+"Введите аргументы для преобразования в формате YAML-словаря, например: "
+"{\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -142,7 +156,6 @@ msgid "Edit transformations"
 msgstr "Изменить преобразования"
 
 #: permissions.py:19
-#| msgid "Raw application information"
 msgid "View existing transformations"
 msgstr "Просмотр существующих преобразований"
 
@@ -150,13 +163,9 @@ msgstr "Просмотр существующих преобразований"
 msgid "Graphics conversion backend to use."
 msgstr "Бекенд, который будет использован для графических преобразований."
 
-#: settings.py:16
-msgid "Path to the libreoffice program."
-msgstr "Путь к программе LibreOffice."
-
-#: settings.py:20
-msgid "Path to the Popple program pdftoppm."
-msgstr "Путь до программы Popple pdftoppm."
+#: settings.py:17
+msgid "Configuration options for the graphics conversion backend."
+msgstr ""
 
 #: validators.py:22
 msgid "Enter a valid YAML value."
@@ -175,12 +184,20 @@ msgstr "Создать новое преобразование для: %s"
 #: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Изменить преобразование \"%(transformation)s\" for: %(content_object)sjavascript:;"
+msgstr ""
+"Изменить преобразование \"%(transformation)s\" for: "
+"%(content_object)sjavascript:;"
 
 #: views.py:216
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Преобразования для: %s"
+
+#~ msgid "Path to the libreoffice program."
+#~ msgstr "Путь к программе LibreOffice."
+
+#~ msgid "Path to the Popple program pdftoppm."
+#~ msgstr "Путь до программы Popple pdftoppm."
 
 #~ msgid "Resize."
 #~ msgstr "Resize."
@@ -216,14 +233,13 @@ msgstr "Преобразования для: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick.ImageMagick, "
-#~ "converter.backends.graphicsmagick.GraphicsMagick and "
-#~ "converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+#~ "and converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
-#~ "converter.backends.python."
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
+#~ "python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -536,9 +552,11 @@ msgstr "Преобразования для: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -654,7 +672,8 @@ msgstr "Преобразования для: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

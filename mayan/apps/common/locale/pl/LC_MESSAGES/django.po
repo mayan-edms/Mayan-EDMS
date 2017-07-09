@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -14,71 +14,80 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-06-23 14:10+0000\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:77 settings.py:9
+#: apps.py:74 settings.py:9
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
-#: classes.py:106
+#: apps.py:79
+#, fuzzy
+#| msgid "Anonymous user"
+msgid "Anonymous"
+msgstr "Anonymous user"
+
+#: classes.py:109
 msgid "Available attributes: \n"
 msgstr "Dostępne atrybuty: \n"
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Zaznaczenie"
 
-#: forms.py:105
+#: forms.py:135
 msgid "Filter"
 msgstr "Filtr"
 
-#: generics.py:133
+#: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Nie można przenieść zaznaczenia: %s."
 
-#: generics.py:157
+#: generics.py:160
 msgid "Add"
 msgstr "Dodaj"
 
-#: generics.py:168
+#: generics.py:171
 msgid "Remove"
 msgstr "Usuń"
 
-#: generics.py:327
+#: generics.py:334
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nie utworzono, błąd: %(error)s"
 
-#: generics.py:338
+#: generics.py:345
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s utworzono pomyślnie."
 
-#: generics.py:363
+#: generics.py:374
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nie usunięto, błąd: %(error)s."
 
-#: generics.py:374
+#: generics.py:385
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s usunięto pomyślnie."
 
-#: generics.py:419
+#: generics.py:431
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nie zaktualizowano, błąd: %(error)s."
 
-#: generics.py:430
+#: generics.py:442
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s zaktualizowano pomyślnie."
@@ -143,33 +152,37 @@ msgstr "Wsparcie"
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: literals.py:14
+#: literals.py:13
 msgid "Days"
 msgstr "Dni"
 
-#: literals.py:15
+#: literals.py:14
 msgid "Hours"
 msgstr "Godziny"
 
-#: literals.py:16
+#: literals.py:15
 msgid "Minutes"
 msgstr "Minuty"
 
 #: menus.py:12
-msgid "About"
-msgstr "Informacje o"
+msgid "System"
+msgstr ""
 
-#: mixins.py:74
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr "Użytkownik"
+
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operację przeprowadzono na %(count)d obiekcie"
 
-#: mixins.py:75
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operację przeprowadzono na %(count)d obiektach"
 
-#: mixins.py:235
+#: mixins.py:245
 msgid "Object"
 msgstr "Obiekt"
 
@@ -192,10 +205,6 @@ msgstr "Udostępniony plik"
 #: models.py:32
 msgid "Shared uploaded files"
 msgstr "Pliki udostępnione"
-
-#: models.py:53
-msgid "User"
-msgstr "Użytkownik"
 
 #: models.py:57
 msgid "Timezone"
@@ -231,8 +240,7 @@ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
 #: settings.py:27
@@ -241,22 +249,24 @@ msgstr "Liczba określająca ile obiektów będzie wyświetlane na stronie."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
-msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
+msgstr ""
+"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
+"plików."
 
 #: settings.py:38
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików poglądowych i plików tymczasowych."
+msgstr ""
+"Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików "
+"poglądowych i plików tymczasowych."
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
+msgstr ""
+"Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
 #: views.py:44
 #, python-format
@@ -284,7 +294,6 @@ msgid "Edit current user locale profile details"
 msgstr "Edycja ustawień regionalnych użytkownika"
 
 #: views.py:153
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Wybór filtru"
 
@@ -294,7 +303,6 @@ msgid "Results for filter: %s"
 msgstr "Wyniki dla filtru: %s"
 
 #: views.py:176
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Nie znaleziono filtru"
 
@@ -314,8 +322,8 @@ msgstr "Musisz wybrać co najmniej jeden element."
 msgid "None"
 msgstr "Brak"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Anonymous user"
+#~ msgid "About"
+#~ msgstr "Informacje o"
 
 #~ msgid "Account"
 #~ msgstr "account"
@@ -348,11 +356,11 @@ msgstr "Brak"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -361,11 +369,11 @@ msgstr "Brak"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

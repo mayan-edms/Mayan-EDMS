@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -27,7 +28,6 @@ msgid "Document types"
 msgstr "Document types"
 
 #: apps.py:49
-#| msgid "document indexes"
 msgid "Document indexing"
 msgstr "Document indexing"
 
@@ -59,11 +59,11 @@ msgstr "Has document links?"
 msgid "Node"
 msgstr "Node"
 
-#: forms.py:14
+#: forms.py:15
 msgid "Indexes to be queued for rebuilding."
 msgstr "Indexes to be queued for rebuilding."
 
-#: forms.py:15 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
+#: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
 #: views.py:73 views.py:220
 msgid "Indexes"
 msgstr "Indexes"
@@ -101,14 +101,13 @@ msgid "New child node"
 msgstr "New child node"
 
 #: models.py:37
-#| msgid "Internal name used to reference this index."
 msgid "This value will be used by other apps to reference this index."
 msgstr "This value will be used by other apps to reference this index."
 
 #: models.py:43
-msgid ""
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
 "Causes this index to be visible and updated when document data changes."
-msgstr "Causes this index to be visible and updated when document data changes."
 
 #: models.py:117 models.py:149
 msgid "Index"
@@ -126,7 +125,9 @@ msgstr "Index instances"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "Enter a template to render. Use Django's default templating language (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:157
 msgid "Indexing expression"
@@ -138,9 +139,11 @@ msgstr "Causes this node to be visible and updated when document data changes."
 
 #: models.py:170
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
 #: models.py:173
 msgid "Link documents"
@@ -150,12 +153,14 @@ msgstr "Link documents"
 msgid "Root"
 msgstr "Root"
 
-#: models.py:240
+#: models.py:239
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexing document: %(document)s; expression: %(expression)s; %(exception)s"
+msgstr ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
 
 #: models.py:268
 msgid "Index node template"
@@ -218,7 +223,6 @@ msgid "Rebuild document indexes"
 msgstr "Rebuild document indexes"
 
 #: queues.py:12
-#| msgid "Delete document indexes"
 msgid "Delete empty index nodes"
 msgstr "Delete empty index nodes"
 
@@ -236,7 +240,6 @@ msgstr "Rebuild index"
 
 #: views.py:49
 #, python-format
-#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr "Delete the index: %s?"
 
@@ -364,9 +367,11 @@ msgstr "Index rebuild queued successfully."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -403,11 +408,11 @@ msgstr "Index rebuild queued successfully."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

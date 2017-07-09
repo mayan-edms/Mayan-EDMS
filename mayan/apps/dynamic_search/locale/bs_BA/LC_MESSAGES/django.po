@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,21 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:16
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:26
+#: classes.py:27
 msgid "No search model matching the query"
 msgstr ""
 
@@ -59,13 +61,11 @@ msgstr "Maksimalni broj pretražnih hitova da se rezultati prikažu."
 
 #: views.py:24
 #, python-format
-#| msgid "Search results"
 msgid "Search results for: %s"
 msgstr ""
 
 #: views.py:64
 #, python-format
-#| msgid "Search error: %s"
 msgid "Search for: %s"
 msgstr ""
 
@@ -93,7 +93,8 @@ msgstr ""
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
@@ -13,71 +13,78 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:77 settings.py:9
+#: apps.py:74 settings.py:9
 msgid "Common"
 msgstr "Allgemein"
 
-#: classes.py:106
+#: apps.py:79
+#, fuzzy
+#| msgid "Anonymous user"
+msgid "Anonymous"
+msgstr "Anonymous user"
+
+#: classes.py:109
 msgid "Available attributes: \n"
 msgstr ""
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Auswahl"
 
-#: forms.py:105
+#: forms.py:135
 msgid "Filter"
 msgstr "Filter"
 
-#: generics.py:133
+#: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Auswahl %s kann nicht übertragen werden"
 
-#: generics.py:157
+#: generics.py:160
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: generics.py:168
+#: generics.py:171
 msgid "Remove"
 msgstr "Entfernen"
 
-#: generics.py:327
+#: generics.py:334
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nicht erstellt, Fehler: %(error)s"
 
-#: generics.py:338
+#: generics.py:345
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s erfolgreich erstellt."
 
-#: generics.py:363
+#: generics.py:374
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nicht gelöscht, Fehler: %(error)s."
 
-#: generics.py:374
+#: generics.py:385
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s erfolgreich gelöscht."
 
-#: generics.py:419
+#: generics.py:431
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nicht aktualisiert, Fehler: %(error)s."
 
-#: generics.py:430
+#: generics.py:442
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s erfolgreich aktualisiert."
@@ -142,33 +149,37 @@ msgstr "Hilfe"
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: literals.py:14
+#: literals.py:13
 msgid "Days"
 msgstr "Tage"
 
-#: literals.py:15
+#: literals.py:14
 msgid "Hours"
 msgstr "Stunden"
 
-#: literals.py:16
+#: literals.py:15
 msgid "Minutes"
 msgstr "Minuten"
 
 #: menus.py:12
-msgid "About"
-msgstr "Über"
+msgid "System"
+msgstr ""
 
-#: mixins.py:74
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr "Benutzer"
+
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operation durchgeführt für %(count)d Objekte"
 
-#: mixins.py:75
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operation durchgeführt für %(count)d Objekte"
 
-#: mixins.py:235
+#: mixins.py:245
 msgid "Object"
 msgstr "Objekt"
 
@@ -191,10 +202,6 @@ msgstr "Geteilte hochgeladene Datei"
 #: models.py:32
 msgid "Shared uploaded files"
 msgstr "Geteilte hochgeladene Dateien"
-
-#: models.py:53
-msgid "User"
-msgstr "Benutzer"
 
 #: models.py:57
 msgid "Timezone"
@@ -230,26 +237,27 @@ msgstr "Protokollierung für alle Apps automatisch freischalten."
 
 #: settings.py:19
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung auf einen Datenbankcommit warten."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung "
+"auf einen Datenbankcommit warten."
 
 #: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
+msgstr ""
+"Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
 
 #: settings.py:33
 msgid "A storage backend that all workers can use to share files."
 msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen"
 
 #: settings.py:38
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschauen und temporären Dateien. "
+msgstr ""
+"Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschauen "
+"und temporären Dateien. "
 
 #: validators.py:29
 msgid ""
@@ -283,7 +291,6 @@ msgid "Edit current user locale profile details"
 msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"
 
 #: views.py:153
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Filterauswahl"
 
@@ -293,7 +300,6 @@ msgid "Results for filter: %s"
 msgstr "Ergebnis für Filter %s"
 
 #: views.py:176
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filter nicht gefunden"
 
@@ -313,8 +319,8 @@ msgstr "Es muss mindestens ein Element ausgewählt werden."
 msgid "None"
 msgstr "Kein(e)"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Anonymous user"
+#~ msgid "About"
+#~ msgstr "Über"
 
 #~ msgid "Account"
 #~ msgstr "account"
@@ -347,11 +353,11 @@ msgstr "Kein(e)"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -360,11 +366,11 @@ msgstr "Kein(e)"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

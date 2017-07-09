@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-09 02:27-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: apps.py:33 forms.py:30 links.py:18 menus.py:8 models.py:43 permissions.py:7
+#: views.py:95
+msgid "Folders"
+msgstr ""
+
+#: apps.py:68
+msgid "Created"
+msgstr ""
+
+#: apps.py:71 links.py:56 models.py:24
+msgid "Documents"
+msgstr ""
+
+#: links.py:24 links.py:34
+msgid "Remove from folders"
+msgstr ""
+
+#: links.py:27
+msgid "Add to a folders"
+msgstr ""
+
+#: links.py:31
+msgid "Add to folders"
+msgstr ""
+
+#: links.py:42 views.py:37
+msgid "Create folder"
+msgstr ""
+
+#: links.py:46
+msgid "Delete"
+msgstr ""
+
+#: links.py:49
+msgid "Edit"
+msgstr ""
+
+#: links.py:53
+msgid "All"
+msgstr ""
+
+#: models.py:18
+msgid "Label"
+msgstr ""
+
+#: models.py:21
+msgid "Datetime created"
+msgstr ""
+
+#: models.py:42
+msgid "Folder"
+msgstr ""
+
+#: models.py:56
+msgid "Document folder"
+msgstr ""
+
+#: models.py:57
+msgid "Document folders"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create folders"
+msgstr ""
+
+#: permissions.py:13
+msgid "Edit folders"
+msgstr ""
+
+#: permissions.py:16
+msgid "Delete folders"
+msgstr ""
+
+#: permissions.py:19
+msgid "Remove documents from folders"
+msgstr ""
+
+#: permissions.py:22
+msgid "View folders"
+msgstr ""
+
+#: permissions.py:27
+msgid "Add documents to folders"
+msgstr ""
+
+#: serializers.py:58
+msgid "Primary key of the document to be added."
+msgstr ""
+
+#: views.py:49
+#, python-format
+msgid "Delete the folder: %s?"
+msgstr ""
+
+#: views.py:61
+#, python-format
+msgid "Documents in folder: %s"
+msgstr ""
+
+#: views.py:84
+#, python-format
+msgid "Edit folder: %s"
+msgstr ""
+
+#: views.py:116
+#, python-format
+msgid "Folders containing document: %s"
+msgstr ""
+
+#: views.py:127
+#, python-format
+msgid "Add to folder request performed on %(count)d document"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Add to folder request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:137
+msgid "Add"
+msgstr ""
+
+#: views.py:139
+msgid "Add document to folders"
+msgid_plural "Add documents to folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:150
+#, python-format
+msgid "Add document \"%s\" to folders"
+msgstr ""
+
+#: views.py:161
+msgid "Folders to which the selected documents will be added."
+msgstr ""
+
+#: views.py:190
+#, python-format
+msgid "Document: %(document)s is already in folder: %(folder)s."
+msgstr ""
+
+#: views.py:200
+#, python-format
+msgid "Document: %(document)s added to folder: %(folder)s successfully."
+msgstr ""
+
+#: views.py:212
+#, python-format
+msgid "Remove from folder request performed on %(count)d document"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Remove from folder request performed on %(count)d documents"
+msgstr ""
+
+#: views.py:222
+msgid "Remove"
+msgstr ""
+
+#: views.py:224
+msgid "Remove document from folders"
+msgid_plural "Remove documents from folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:235
+#, python-format
+msgid "Remove document \"%s\" to folders"
+msgstr ""
+
+#: views.py:246
+msgid "Folders from which the selected documents will be removed."
+msgstr ""
+
+#: views.py:273
+#, python-format
+msgid "Document: %(document)s is not in folder: %(folder)s."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "Document: %(document)s removed from folder: %(folder)s."
+msgstr ""

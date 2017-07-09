@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
+"POT-Creation-Date: 2017-07-09 02:29-0400\n"
 "PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42 permissions.py:7
@@ -133,7 +134,6 @@ msgstr "Edit group: %s"
 
 #: views.py:64
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Delete the group: %s?"
 
@@ -166,7 +166,6 @@ msgid "User delete request performed on %(count)d users"
 msgstr "User delete request performed on %(count)d users"
 
 #: views.py:146
-#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Delete user"
@@ -174,7 +173,6 @@ msgstr[1] "Delete users"
 
 #: views.py:156
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr "Delete user: %s"
 
@@ -182,7 +180,9 @@ msgstr "Delete user: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super user and staff user deleting is not allowed, use the admin interface for these cases."
+msgstr ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
 
 #: views.py:176
 #, python-format
@@ -234,7 +234,6 @@ msgstr[1] "Change users passwords"
 
 #: views.py:274
 #, python-format
-#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr "Change password for user: %s"
 
@@ -242,7 +241,9 @@ msgstr "Change password for user: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
+msgstr ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
 
 #: views.py:304
 #, python-format

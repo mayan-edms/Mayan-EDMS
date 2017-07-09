@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
+"POT-Creation-Date: 2017-07-09 02:28-0400\n"
 "PO-Revision-Date: 2017-05-28 19:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 apps.py:79 apps.py:86 apps.py:105 apps.py:107 forms.py:31
@@ -109,7 +110,9 @@ msgstr "Tags von Dokumenten entfernen"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag zugeordnet werden soll"
+msgstr ""
+"Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag "
+"zugeordnet werden soll"
 
 #: serializers.py:85
 msgid ""
@@ -136,7 +139,6 @@ msgid "Attach"
 msgstr "Hinzufügen"
 
 #: views.py:44
-#| msgid "Attach tags to documents"
 msgid "Attach tags to document"
 msgid_plural "Attach tags to documents"
 msgstr[0] ""
@@ -144,7 +146,6 @@ msgstr[1] ""
 
 #: views.py:54
 #, python-format
-#| msgid "Attach tag to document: %s."
 msgid "Attach tags to document: %s"
 msgstr "Tags Dokument zuweisen: %s"
 
@@ -188,7 +189,6 @@ msgstr[1] "Die ausgwählten Tags löschen?"
 
 #: views.py:142
 #, python-format
-#| msgid "Delete tags"
 msgid "Delete tag: %s"
 msgstr "Tag löschen: %s"
 
@@ -232,7 +232,6 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: views.py:246
-#| msgid "Remove tags from documents"
 msgid "Remove tags from document"
 msgid_plural "Remove tags from documents"
 msgstr[0] ""
@@ -240,7 +239,6 @@ msgstr[1] ""
 
 #: views.py:256
 #, python-format
-#| msgid "Remove tag from document: %s."
 msgid "Remove tags from document: %s"
 msgstr "Tags entfernen für Dokument: %s"
 
@@ -250,7 +248,6 @@ msgstr "Zu entfernende Tags."
 
 #: views.py:290
 #, python-format
-#| msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Dokument \"%(document)s\" wurde nicht als \"%(tag)s getaggt"
 

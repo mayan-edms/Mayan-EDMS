@@ -1,42 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2016-03-21 21:10+0000\n"
 "Last-Translator: Justin Albstbstmeijer <justin@albstmeijer.nl>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:17 settings.py:7
+#: apps.py:17 settings.py:9
 msgid "Authentication"
 msgstr "Authenticatie"
 
-#: forms.py:17
+#: forms.py:18
 msgid "Email"
 msgstr "Email"
 
-#: forms.py:20
+#: forms.py:21
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: forms.py:24
+#: forms.py:23 forms.py:72
+msgid "Remember me"
+msgstr ""
+
+#: forms.py:26
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het wachtwoord-invulveld hoofdlettergevoelig is."
+msgstr ""
+"Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het "
+"wachtwoord-invulveld hoofdlettergevoelig is."
 
-#: forms.py:26
+#: forms.py:28
 msgid "This account is inactive."
 msgstr "Deze gebruiker is in-actief."
 
@@ -48,16 +55,24 @@ msgstr "Afmelden"
 msgid "Change password"
 msgstr "Pas wachtwoord aan"
 
-#: settings.py:11
+#: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: gebruikersnaam, email"
+msgstr ""
+"Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: "
+"gebruikersnaam, email"
 
-#: views.py:39
+#: settings.py:20
+msgid ""
+"Maximum type an user clicking the \"Remember me\" checkbox will remain "
+"logged in. Value is time in seconds."
+msgstr ""
+
+#: views.py:54
 msgid "Current user password change"
 msgstr "Pas wachtwoord aan van huidige gebruiker"
 
-#: views.py:55
+#: views.py:68
 msgid "Your password has been successfully changed."
 msgstr "Uw wachtwoord is succesvol aangepast,"

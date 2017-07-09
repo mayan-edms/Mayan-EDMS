@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
@@ -44,15 +47,19 @@ msgstr "Ошибка сервера"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной почте, и она будет исправлена. Спасибо за терпение."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной "
+"почте, и она будет исправлена. Спасибо за терпение."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему идентификатору:"
+msgstr ""
+"Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему "
+"идентификатору:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -79,49 +86,25 @@ msgstr "&copy; 2011-2015 Roberto Rosario, все права защищены."
 msgid "Toggle navigation"
 msgstr "Переключение навигации"
 
-#: templates/appearance/base.html:86
-msgid "Profile"
-msgstr ""
-
-#: templates/appearance/base.html:92
-msgid "Anonymous"
-msgstr "Анонимно"
-
-#: templates/appearance/base.html:126
-msgid "Success"
-msgstr "Успех"
-
-#: templates/appearance/base.html:126
-msgid "Information"
-msgstr "Информация"
-
-#: templates/appearance/base.html:126
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: templates/appearance/base.html:126
-msgid "Error"
-msgstr "Ошибка"
-
-#: templates/appearance/base.html:155
+#: templates/appearance/base.html:114
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/appearance/base.html:157
+#: templates/appearance/base.html:116
 msgid "Toggle Dropdown"
 msgstr "Переключение выпадающего списка"
 
-#: templates/appearance/calculate_form_title.html:11
+#: templates/appearance/calculate_form_title.html:13
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "Подробности: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:14
+#: templates/appearance/calculate_form_title.html:16
 #, python-format
 msgid "Edit: %(object)s"
 msgstr "Редактировать: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:16
+#: templates/appearance/calculate_form_title.html:18
 msgid "Create"
 msgstr "Создать"
 
@@ -151,8 +134,8 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
-#: templates/appearance/generic_form_instance.html:39
-#: templates/appearance/generic_form_instance.html:46
+#: templates/appearance/generic_form_instance.html:49
+#: templates/appearance/generic_form_instance.html:55
 #: templates/appearance/generic_form_subtemplate.html:51
 #: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
@@ -166,6 +149,8 @@ msgstr "Сохранить"
 #: templates/appearance/generic_form_subtemplate.html:71
 #: templates/appearance/generic_list_subtemplate.html:33
 #: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Подтвердить"
 
@@ -184,7 +169,9 @@ msgstr "Нет результатов"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из %(total_pages)s)"
+msgstr ""
+"Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -206,7 +193,9 @@ msgstr "Приступая к работе"
 
 #: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan EDMS:"
+msgstr ""
+"Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan "
+"EDMS:"
 
 #: templates/appearance/home.html:46
 msgid "Search pages"
@@ -224,49 +213,95 @@ msgstr "Дополнительно"
 msgid "Search documents"
 msgstr ""
 
-#: templates/appearance/login.html:10
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "Войти"
 
-#: templates/appearance/login.html:21
+#: templates/authentication/login.html:21
 msgid "First time login"
 msgstr "Первое время входа в систему"
 
-#: templates/appearance/login.html:24
+#: templates/authentication/login.html:24
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "Вы только что закончили установку <strong>Mayan EDMS</strong>, поздравляем!"
+msgstr ""
+"Вы только что закончили установку <strong>Mayan EDMS</strong>, поздравляем!"
 
-#: templates/appearance/login.html:25
+#: templates/authentication/login.html:25
 msgid "Login using the following credentials:"
 msgstr "Войти, используя следующие учетные данные:"
 
-#: templates/appearance/login.html:26
+#: templates/authentication/login.html:26
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "Имя пользователя: <strong>%(account)s</strong>"
 
-#: templates/appearance/login.html:27
+#: templates/authentication/login.html:27
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr "Адрес электронной почты: <strong>%(email)s</strong>"
 
-#: templates/appearance/login.html:28
+#: templates/authentication/login.html:28
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Пароль: <strong>%(password)s</strong>"
 
-#: templates/appearance/login.html:29
+#: templates/authentication/login.html:29
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Обязательно измените пароль для повышения безопасности и отключения этого сообщения."
+msgstr ""
+"Обязательно измените пароль для повышения безопасности и отключения этого "
+"сообщения."
 
-#: templates/appearance/login.html:45 templates/appearance/login.html:54
+#: templates/authentication/login.html:45
+#: templates/authentication/login.html:53
 msgid "Sign in"
 msgstr "Вход"
+
+#: templates/authentication/login.html:58
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:17
+#, fuzzy
+#| msgid "Login"
+msgid "Login page"
+msgstr "Войти"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr ""
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Ни один"
+
+#~ msgid "Anonymous"
+#~ msgstr "Анонимно"
+
+#~ msgid "Success"
+#~ msgstr "Успех"
+
+#~ msgid "Information"
+#~ msgstr "Информация"
+
+#~ msgid "Warning"
+#~ msgstr "Предупреждение"
+
+#~ msgid "Error"
+#~ msgstr "Ошибка"

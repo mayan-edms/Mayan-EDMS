@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -9,15 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:15 links.py:35
 msgid "ACLs"
@@ -28,7 +31,6 @@ msgid "Permissions"
 msgstr "Разрешения"
 
 #: apps.py:29 models.py:46
-#| msgid "Roles"
 msgid "Role"
 msgstr "Роль"
 
@@ -37,7 +39,6 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: links.py:39
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Создать СУД"
 
@@ -55,7 +56,6 @@ msgstr "Элементы доступа"
 
 #: models.py:57
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr ""
 
@@ -92,7 +92,6 @@ msgstr ""
 
 #: serializers.py:111 serializers.py:187
 #, python-format
-#| msgid "permission"
 msgid "No such permission: %s"
 msgstr ""
 
@@ -106,36 +105,35 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr ""
 
-#: views.py:73
+#: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Новый СУД для: %s"
 
-#: views.py:100
+#: views.py:101
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "Удалить СУД: %s"
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "СУДы для: %s"
 
-#: views.py:150
+#: views.py:151
 msgid "Available permissions"
 msgstr "Доступные разрешения"
 
-#: views.py:151
+#: views.py:152
 msgid "Granted permissions"
 msgstr "Предоставленные разрешения"
 
-#: views.py:206
+#: views.py:207
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Права роли \"%(role)s\" для \"%(object)s\""
 
-#: views.py:226
+#: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Отключенные права наследуются от родительского объекта."
 
@@ -230,8 +228,10 @@ msgstr "Отключенные права наследуются от родит
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

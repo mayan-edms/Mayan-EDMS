@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Johan Braeken, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-09 02:26-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -45,15 +46,20 @@ msgstr "Server fout"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor uw geduld."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de "
+"beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor "
+"uw geduld."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Als u hulp nodig heeft, kunt u naar deze fout refereren via de volgende identifier:"
+msgstr ""
+"Als u hulp nodig heeft, kunt u naar deze fout refereren via de volgende "
+"identifier:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -80,49 +86,25 @@ msgstr "Copyright &copy; 2011-2015 Roberto Rosario."
 msgid "Toggle navigation"
 msgstr "Toggle navigatie"
 
-#: templates/appearance/base.html:86
-msgid "Profile"
-msgstr ""
-
-#: templates/appearance/base.html:92
-msgid "Anonymous"
-msgstr "Anoniem"
-
-#: templates/appearance/base.html:126
-msgid "Success"
-msgstr "Succes"
-
-#: templates/appearance/base.html:126
-msgid "Information"
-msgstr "Informatie"
-
-#: templates/appearance/base.html:126
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: templates/appearance/base.html:126
-msgid "Error"
-msgstr "Fout"
-
-#: templates/appearance/base.html:155
+#: templates/appearance/base.html:114
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/appearance/base.html:157
+#: templates/appearance/base.html:116
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
-#: templates/appearance/calculate_form_title.html:11
+#: templates/appearance/calculate_form_title.html:13
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "Details voor: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:14
+#: templates/appearance/calculate_form_title.html:16
 #, python-format
 msgid "Edit: %(object)s"
 msgstr "Aanpassen: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:16
+#: templates/appearance/calculate_form_title.html:18
 msgid "Create"
 msgstr "Maak aan"
 
@@ -152,8 +134,8 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: templates/appearance/generic_form_instance.html:39
-#: templates/appearance/generic_form_instance.html:46
+#: templates/appearance/generic_form_instance.html:49
+#: templates/appearance/generic_form_instance.html:55
 #: templates/appearance/generic_form_subtemplate.html:51
 #: templates/appearance/generic_multiform_subtemplate.html:42
 msgid "required"
@@ -167,6 +149,8 @@ msgstr "Opslaan"
 #: templates/appearance/generic_form_subtemplate.html:71
 #: templates/appearance/generic_list_subtemplate.html:33
 #: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Verstuur"
 
@@ -185,7 +169,9 @@ msgstr "Geen resultaten"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %(total_pages)s)"
+msgstr ""
+"Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -207,7 +193,9 @@ msgstr "Beginnen"
 
 #: templates/appearance/home.html:25
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende nodig:"
+msgstr ""
+"Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende "
+"nodig:"
 
 #: templates/appearance/home.html:46
 msgid "Search pages"
@@ -225,49 +213,95 @@ msgstr "Geavanceerd"
 msgid "Search documents"
 msgstr ""
 
-#: templates/appearance/login.html:10
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "Aanmelden"
 
-#: templates/appearance/login.html:21
+#: templates/authentication/login.html:21
 msgid "First time login"
 msgstr "Eerste aanmelding"
 
-#: templates/appearance/login.html:24
+#: templates/authentication/login.html:24
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "U heeft de installatie volbracht <strong>Mayan EDMS</strong>, gefeliciteerd!"
+msgstr ""
+"U heeft de installatie volbracht <strong>Mayan EDMS</strong>, gefeliciteerd!"
 
-#: templates/appearance/login.html:25
+#: templates/authentication/login.html:25
 msgid "Login using the following credentials:"
 msgstr "Meld u aan met de volgende gegevens:"
 
-#: templates/appearance/login.html:26
+#: templates/authentication/login.html:26
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "Gebruikersnaam: <strong>%(account)s</strong>"
 
-#: templates/appearance/login.html:27
+#: templates/authentication/login.html:27
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr "Email: <strong>%(email)s</strong>"
 
-#: templates/appearance/login.html:28
+#: templates/authentication/login.html:28
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Wachtwoord: <strong>%(password)s</strong>"
 
-#: templates/appearance/login.html:29
+#: templates/authentication/login.html:29
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding uit te schakelen."
+msgstr ""
+"Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding "
+"uit te schakelen."
 
-#: templates/appearance/login.html:45 templates/appearance/login.html:54
+#: templates/authentication/login.html:45
+#: templates/authentication/login.html:53
 msgid "Sign in"
 msgstr "Meld u aan"
+
+#: templates/authentication/login.html:58
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:17
+#, fuzzy
+#| msgid "Login"
+msgid "Login page"
+msgstr "Aanmelden"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr ""
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Geen"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anoniem"
+
+#~ msgid "Success"
+#~ msgstr "Succes"
+
+#~ msgid "Information"
+#~ msgstr "Informatie"
+
+#~ msgid "Warning"
+#~ msgstr "Waarschuwing"
+
+#~ msgid "Error"
+#~ msgstr "Fout"
