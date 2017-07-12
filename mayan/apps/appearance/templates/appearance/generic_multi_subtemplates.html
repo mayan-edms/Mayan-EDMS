@@ -2,7 +2,7 @@
 
 {% load common_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
 
 {% block content %}
     {% if main_title %}

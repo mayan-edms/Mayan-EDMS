@@ -1,3 +1,7 @@
+2.5.3 (2017-07-XX)
+==================
+- Fix HTML mark up in window title. GitLab issue #397.
+
 2.5.2 (2017-07-08)
 ==================
 - Improve new document creation signal handling.
