@@ -19,6 +19,7 @@ from .links import (
     link_user_multiple_delete, link_user_multiple_set_password,
     link_user_set_password, link_user_setup
 )
+from .search import *  # NOQA
 
 
 def get_groups():
