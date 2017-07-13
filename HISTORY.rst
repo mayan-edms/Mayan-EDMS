@@ -4,6 +4,10 @@
 - Add support for emailing documents to a recipient list. GitLab #396.
 - Backport metadata widget changes from @Macrobb. GitLab #377.
 - Make users and group searchable.
+- Add support for logging errors during in production mode.
+  Add COMMON_PRODUCTION_ERROR_LOG_PATH to control path of log file.
+  Defaults to mayan/error.log.
+- Add support logging request exceptions.
 
 2.5.2 (2017-07-08)
 ==================

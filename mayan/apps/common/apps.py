@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 import logging
+import os
 
 from kombu import Exchange, Queue
 
@@ -30,7 +31,7 @@ from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_about, menu_main, menu_tools, menu_user
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
-from .settings import setting_auto_logging
+from .settings import setting_auto_logging, setting_production_error_log_path
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
 logger = logging.getLogger(__name__)
@@ -154,13 +155,15 @@ class CommonApp(MayanAppConfig):
         if setting_auto_logging.value:
             if settings.DEBUG:
                 level = 'DEBUG'
+                handlers = ['console']
             else:
                 level = 'ERROR'
+                handlers = ['console', 'logfile']
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
                 loggers[project_app.name] = {
-                    'handlers': ['console'],
+                    'handlers': handlers,
                     'propagate': True,
                     'level': level,
                 }
@@ -179,7 +182,11 @@ class CommonApp(MayanAppConfig):
                             'level': 'DEBUG',
                             'class': 'logging.StreamHandler',
                             'formatter': 'intermediate'
-                        }
+                        },
+                        'logfile': {
+                            'class': 'logging.handlers.WatchedFileHandler',
+                            'filename': setting_production_error_log_path.value,
+                        },
                     },
                     'loggers': loggers
                 }
