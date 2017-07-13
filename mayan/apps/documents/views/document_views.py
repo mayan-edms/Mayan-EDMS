@@ -769,9 +769,9 @@ class DocumentPrint(FormView):
 
     def get_template_names(self):
         if self.request.method == 'POST':
-            return ['documents/document_print.html']
+            return ('documents/document_print.html',)
         else:
-            return [self.template_name]
+            return (self.template_name,)
 
 
 class DuplicatedDocumentListView(DocumentListView):

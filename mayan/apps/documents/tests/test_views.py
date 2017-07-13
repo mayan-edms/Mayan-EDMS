@@ -10,16 +10,19 @@ from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
 
-from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
+from ..literals import (
+    DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT, PAGE_RANGE_ALL
+)
 from ..models import DeletedDocument, Document, DocumentType
 from ..permissions import (
     permission_document_create, permission_document_delete,
-    permission_document_download, permission_document_properties_edit,
-    permission_document_restore, permission_document_tools,
-    permission_document_trash, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_version_revert,
-    permission_document_view, permission_empty_trash
+    permission_document_download, permission_document_print,
+    permission_document_properties_edit, permission_document_restore,
+    permission_document_tools, permission_document_trash,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_version_revert, permission_document_view,
+    permission_empty_trash
 )
 
 from .literals import (
@@ -485,6 +488,24 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(
             response, force_text(self.document.pages.first()), status_code=200
         )
+
+    def _request_print_view(self):
+        return self.post(
+            'documents:document_print', args=(
+                self.document.pk,
+            ), data={
+                'page_group': PAGE_RANGE_ALL
+            }, follow=True
+        )
+
+    def test_document_print_view_no_permissions(self):
+        response = self._request_print_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_print_view_with_permissions(self):
+        self.grant(permission=permission_document_print)
+        response = self._request_print_view()
+        self.assertEqual(response.status_code, 200)
 
 
 class DocumentPageViewTestCase(GenericDocumentViewTestCase):
