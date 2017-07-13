@@ -12,8 +12,8 @@ from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
-    TEST_DOCUMENT_TYPE
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
 
@@ -40,16 +40,19 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.document.delete()
 
-    def test_upload_wizard_without_permission(self):
-        self.login_user()
-
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            response = self.post(
+    def _request_upload_wizard(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            return self.post(
                 'sources:upload_interactive', args=(self.source.pk,), data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
-                }
+                }, follow=True
             )
+
+    def test_upload_wizard_without_permission(self):
+        self.login_user()
+
+        response = self._request_upload_wizard()
 
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Document.objects.count(), 0)
@@ -59,16 +62,13 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.grant(permission_document_create)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            response = self.post(
-                'sources:upload_interactive', args=(self.source.pk,), data={
-                    'source-file': file_object,
-                    'document_type_id': self.document_type.pk,
-                }, follow=True
-            )
+        response = self._request_upload_wizard()
 
         self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(
+            Document.objects.first().checksum, TEST_SMALL_DOCUMENT_CHECKSUM
+        )
 
     def test_upload_wizard_with_document_type_access(self):
         """
