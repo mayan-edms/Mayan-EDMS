@@ -37,7 +37,6 @@ class CheckVersionView(SimpleView):
     template_name = 'appearance/generic_template.html'
 
     def get_extra_context(self):
-        raise Exception('asd')
         try:
             check_version()
         except NotLatestVersion as exception:
