@@ -50,15 +50,17 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentListView(SingleObjectListView):
-    extra_context = {
-        'hide_links': True,
-        'title': _('All documents'),
-    }
-
     object_permission = permission_document_view
 
     def get_document_queryset(self):
         return Document.objects.defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'list_as_items': True,
+            'title': _('All documents'),
+        }
 
     def get_queryset(self):
         self.queryset = self.get_document_queryset().filter(is_stub=False)
@@ -68,16 +70,20 @@ class DocumentListView(SingleObjectListView):
 class DeletedDocumentListView(DocumentListView):
     object_permission = None
 
-    extra_context = {
-        'hide_link': True,
-        'title': _('Documents in trash'),
-    }
-
     def get_document_queryset(self):
         return AccessControlList.objects.filter_by_access(
             permission_document_view, self.request.user,
             queryset=DeletedDocument.trash.all()
         )
+
+    def get_extra_context(self):
+        context = super(DeletedDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Documents in trash'),
+            }
+        )
+        return context
 
 
 class DeletedDocumentDeleteView(ConfirmView):
@@ -186,6 +192,16 @@ class DocumentDuplicatesListView(DocumentListView):
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
+    def get_extra_context(self):
+        context = super(DocumentDuplicatesListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.get_document(),
+                'title': _('Duplicates for document: %s') % self.get_document(),
+            }
+        )
+        return context
+
     def get_queryset(self):
         try:
             return DuplicatedDocument.objects.get(
@@ -193,13 +209,6 @@ class DocumentDuplicatesListView(DocumentListView):
             ).documents.all()
         except DuplicatedDocument.DoesNotExist:
             return Document.objects.none()
-
-    def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.get_document(),
-            'title': _('Duplicates for document: %s') % self.get_document(),
-        }
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -374,13 +383,17 @@ class EmptyTrashCanView(ConfirmView):
 
 
 class RecentDocumentListView(DocumentListView):
-    extra_context = {
-        'hide_links': True,
-        'title': _('Recent documents'),
-    }
-
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
+
+    def get_extra_context(self):
+        context = super(RecentDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Recent documents'),
+            }
+        )
+        return context
 
 
 class DocumentDownloadFormView(FormView):
@@ -762,24 +775,28 @@ class DocumentPrint(FormView):
 
 
 class DuplicatedDocumentListView(DocumentListView):
-    extra_context = {
-        'extra_columns': (
-            {
-                'name': _('Duplicates'),
-                'attribute': encapsulate(
-                    lambda document: DuplicatedDocument.objects.get(
-                        document=document
-                    ).documents.count()
-                )
-            },
-        ),
-        'hide_links': True,
-        'title': _('Duplicated documents')
-    }
-
     def get_document_queryset(self):
         return Document.objects.filter(
             pk__in=DuplicatedDocument.objects.values_list(
                 'document_id', flat=True
             )
         )
+
+    def get_extra_context(self):
+        context = super(DuplicatedDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'extra_columns': (
+                    {
+                        'name': _('Duplicates'),
+                        'attribute': encapsulate(
+                            lambda document: DuplicatedDocument.objects.get(
+                                document=document
+                            ).documents.count()
+                        )
+                    },
+                ),
+                'title': _('Duplicated documents')
+            }
+        )
+        return context

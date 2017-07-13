@@ -32,11 +32,14 @@ class DocumentTypeDocumentListView(DocumentListView):
         return self.get_document_type().documents.all()
 
     def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.get_document_type(),
-            'title': _('Documents of type: %s') % self.get_document_type()
-        }
+        context = super(DocumentTypeDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.get_document_type(),
+                'title': _('Documents of type: %s') % self.get_document_type()
+            }
+        )
+        return context
 
 
 class DocumentTypeListView(SingleObjectListView):

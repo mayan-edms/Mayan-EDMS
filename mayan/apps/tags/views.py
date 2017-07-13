@@ -197,11 +197,14 @@ class TagTaggedItemListView(DocumentListView):
         return self.get_tag().documents.all()
 
     def get_extra_context(self):
-        return {
-            'title': _('Documents with the tag: %s') % self.get_tag(),
-            'hide_links': True,
-            'object': self.get_tag(),
-        }
+        context = super(TagTaggedItemListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.get_tag(),
+                'title': _('Documents with the tag: %s') % self.get_tag(),
+            }
+        )
+        return context
 
 
 class DocumentTagListView(TagListView):

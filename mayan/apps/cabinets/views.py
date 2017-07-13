@@ -107,6 +107,7 @@ class CabinetDetailView(TemplateView):
                 ),
                 'document_list': self.get_document_queryset(),
                 'hide_links': True,
+                'list_as_items': True,
                 'object': cabinet,
                 'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
             }

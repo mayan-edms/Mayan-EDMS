@@ -433,11 +433,14 @@ class WorkflowDocumentListView(DocumentListView):
         return Document.objects.filter(workflows__workflow=self.workflow)
 
     def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.workflow,
-            'title': _('Documents with the workflow: %s') % self.workflow
-        }
+        context = super(WorkflowDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.workflow,
+                'title': _('Documents with the workflow: %s') % self.workflow
+            }
+        )
+        return context
 
 
 class WorkflowStateDocumentListView(DocumentListView):
@@ -446,19 +449,22 @@ class WorkflowStateDocumentListView(DocumentListView):
 
     def get_extra_context(self):
         workflow_state = self.get_workflow_state()
-        return {
-            'hide_links': True,
-            'object': workflow_state,
-            'navigation_object_list': ('object', 'workflow'),
-            'workflow': WorkflowRuntimeProxy.objects.get(
-                pk=workflow_state.workflow.pk
-            ),
-            'title': _(
-                'Documents in the workflow "%s", state "%s"'
-            ) % (
-                workflow_state.workflow, workflow_state
-            )
-        }
+        context = super(WorkflowStateDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': workflow_state,
+                'navigation_object_list': ('object', 'workflow'),
+                'workflow': WorkflowRuntimeProxy.objects.get(
+                    pk=workflow_state.workflow.pk
+                ),
+                'title': _(
+                    'Documents in the workflow "%s", state "%s"'
+                ) % (
+                    workflow_state.workflow, workflow_state
+                )
+            }
+        )
+        return context
 
     def get_workflow_state(self):
         workflow_state = get_object_or_404(

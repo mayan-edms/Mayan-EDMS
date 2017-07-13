@@ -12,6 +12,10 @@
         <hr>
     {% endif %}
 
-    {% include 'appearance/generic_list_subtemplate.html' %}
-{% endblock %}
+    {% if list_as_items %}
+        {% include 'appearance/generic_list_items_subtemplate.html' %}
+    {% else %}
+        {% include 'appearance/generic_list_subtemplate.html' %}
+    {% endif %}
+{% endblock content %}
 

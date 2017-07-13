@@ -17,14 +17,18 @@
         <hr>
     {% endif %}
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
             <h4>{% trans 'Navigation:' %}</h4>
             <div class="jstree"></div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
             {% with document_list as object_list %}
-                {% include 'appearance/generic_list_subtemplate.html' %}
+                {% if list_as_items %}
+                    {% include 'appearance/generic_list_items_subtemplate.html' %}
+                {% else %}
+                    {% include 'appearance/generic_list_subtemplate.html' %}
+                {% endif %}
             {% endwith %}
         </div>
     </div>

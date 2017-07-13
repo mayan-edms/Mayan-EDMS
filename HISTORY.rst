@@ -8,6 +8,7 @@
   Add COMMON_PRODUCTION_ERROR_LOG_PATH to control path of log file.
   Defaults to mayan/error.log.
 - Add support logging request exceptions.
+- Add document list item view.
 
 2.5.2 (2017-07-08)
 ==================

@@ -225,13 +225,13 @@ class InstanceImageWidget(object):
                 )
 
             result.append(
-                '<div class="spinner-container text-primary" style="margin: auto; width: {width}px; height: {height}px; border:1px solid lightgray;">'
-                '<span class="fa-stack fa-lg" style="margin-left: 4px; margin-top: 3px;">'
+                '<div class="spinner-container text-primary" style="height: {height}px;">'
+                '<span class="spinner-icon fa-stack fa-lg">'
                 '<i class="fa fa-file-o fa-stack-2x"></i>'
                 '<i class="fa fa-clock-o fa-stack-1x"></i>'
                 '</span>'
                 '</div>'
-                '<img class="thin_border {image_class} pull-left"'
+                '<img class="thin_border {image_class} pull-left" style="width: 100%;"'
                 'data-url="{preview_full_url}" src="#" '
                 '/> '.format(
                     width=self.width or '32', height=self.height or '32',

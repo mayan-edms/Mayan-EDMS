@@ -197,6 +197,8 @@ MayanImage.prototype.load = function () {
     });
 
     this.element.attr('src', this.element.attr('data-url'));
+    $.fn.matchHeight._update();
+    $.fn.matchHeight._maintainScroll = true;
 };
 
 jQuery(document).ready(function() {

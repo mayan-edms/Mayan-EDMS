@@ -75,11 +75,14 @@ class ResolvedSmartLinkView(DocumentListView):
                 'smart_link': self.smart_link.label,
             }
 
-        return {
-            'hide_links': True,
-            'object': self.document,
-            'title': title,
-        }
+        context = super(ResolvedSmartLinkView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.document,
+                'title': title,
+            }
+        )
+        return context
 
 
 class SetupSmartLinkDocumentTypesView(AssignRemoveView):
