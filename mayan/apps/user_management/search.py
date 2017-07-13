@@ -7,7 +7,6 @@ from dynamic_search.classes import SearchModel
 
 from .permissions import permission_group_view, permission_user_view
 
-print settings.AUTH_USER_MODEL
 user_app, user_model = settings.AUTH_USER_MODEL.split('.')
 
 user_search = SearchModel(
