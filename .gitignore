@@ -10,7 +10,7 @@
 .tox/
 .vagrant
 _build/
-build/
+/build/
 coverage.xml
 document_storage/
 gpg_home/
