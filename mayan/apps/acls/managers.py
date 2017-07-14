@@ -37,7 +37,7 @@ class AccessControlListManager(models.Manager):
         except KeyError:
             return StoredPermission.objects.none()
         else:
-            parent_object = getattr(instance, parent_accessor)
+            parent_object = return_attrib(instance, parent_accessor)
             content_type = ContentType.objects.get_for_model(parent_object)
             try:
                 return self.get(
@@ -139,22 +139,41 @@ class AccessControlListManager(models.Manager):
                 instance = queryset.first()
                 if instance:
                     parent_object = getattr(instance, parent_accessor)
-                    parent_content_type = ContentType.objects.get_for_model(
-                        parent_object
-                    )
-                    parent_queryset = self.filter(
-                        content_type=parent_content_type, role__in=user_roles,
-                        permissions=permission.stored_permission
-                    )
-                    parent_acl_query = Q(
-                        **{
-                            '{}__pk__in'.format(
-                                parent_accessor
-                            ): parent_queryset.values_list(
-                                'object_id', flat=True
-                            )
-                        }
-                    )
+
+                    try:
+                        # Try to see if parent_object is a function
+                        parent_object()
+                    except TypeError:
+                        # Is not a function, try it as a field
+                        parent_content_type = ContentType.objects.get_for_model(
+                            parent_object
+                        )
+                        parent_queryset = self.filter(
+                            content_type=parent_content_type, role__in=user_roles,
+                            permissions=permission.stored_permission
+                        )
+                        parent_acl_query = Q(
+                            **{
+                                '{}__pk__in'.format(
+                                    parent_accessor
+                                ): parent_queryset.values_list(
+                                    'object_id', flat=True
+                                )
+                            }
+                        )
+                    else:
+                        # Is a function. Can't perform Q object filtering.
+                        # Perform iterative filtering.
+                        result = []
+                        for entry in queryset:
+                            try:
+                                self.check_access(permissions=permission, user=user, obj=entry)
+                            except PermissionDenied:
+                                pass
+                            else:
+                                result.append(entry.pk)
+
+                        return queryset.filter(pk__in=result)
                 else:
                     parent_acl_query = Q()
 
