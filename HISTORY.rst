@@ -13,6 +13,7 @@
 - Sort indexes by label.
 - Fix cabinets permission and access control checking.
 - The permission to add or remove documents to cabinets now applies to documents too.
+- Equalize dashboard widgets heights.
 
 2.5.2 (2017-07-08)
 ==================

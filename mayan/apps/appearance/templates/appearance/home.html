@@ -8,6 +8,14 @@
 
 {% block title %}{% trans 'Dashboard' %}{% endblock %}
 
+{% block javascript %}
+    <script>
+        $(function() {
+            $('.match-height').matchHeight();
+        });
+    </script>
+{% endblock javascript %}
+
 {% block content %}
     <h3>
         {% trans 'Dashboard' %}
