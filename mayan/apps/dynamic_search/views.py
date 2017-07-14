@@ -19,6 +19,7 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
     def get_extra_context(self):
         context = {
             'hide_links': True,
+            'list_as_items': True,
             'search_model': self.search_model,
             'search_results_limit': setting_limit.value,
             'title': _('Search results for: %s') % self.search_model.label,
