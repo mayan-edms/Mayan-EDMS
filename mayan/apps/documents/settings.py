@@ -21,7 +21,7 @@ setting_print_size = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_SIZE', default='3600'
 )
 setting_thumbnail_size = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='300'
+    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='800'
 )
 setting_recent_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_COUNT', default=40,
