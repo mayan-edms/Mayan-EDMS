@@ -51,6 +51,11 @@ class Index(models.Model):
 
     objects = IndexManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Index')
+        verbose_name_plural = _('Indexes')
+
     def __str__(self):
         return self.label
 
@@ -113,10 +118,6 @@ class Index(models.Model):
             # associated with this index.
             self.index_document(document=document)
 
-    class Meta:
-        verbose_name = _('Index')
-        verbose_name_plural = _('Indexes')
-
 
 class IndexInstance(Index):
     def get_instance_node_count(self):
@@ -172,6 +173,10 @@ class IndexTemplateNode(MPTTModel):
         ),
         verbose_name=_('Link documents')
     )
+
+    class Meta:
+        verbose_name = _('Index node template')
+        verbose_name_plural = _('Indexes node template')
 
     def __str__(self):
         if self.is_root_node():
@@ -264,10 +269,6 @@ class IndexTemplateNode(MPTTModel):
             if acquire_lock:
                 lock.release()
 
-    class Meta:
-        verbose_name = _('Index node template')
-        verbose_name_plural = _('Indexes node template')
-
 
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
@@ -285,6 +286,10 @@ class IndexInstanceNode(MPTTModel):
     )
 
     objects = IndexInstanceNodeManager()
+
+    class Meta:
+        verbose_name = _('Index node instance')
+        verbose_name_plural = _('Indexes node instances')
 
     def __str__(self):
         return self.value
@@ -365,10 +370,6 @@ class IndexInstanceNode(MPTTModel):
 
         if acquire_lock:
             lock.release()
-
-    class Meta:
-        verbose_name = _('Index node instance')
-        verbose_name_plural = _('Indexes node instances')
 
 
 class DocumentIndexInstanceNode(IndexInstanceNode):
