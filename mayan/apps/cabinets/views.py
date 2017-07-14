@@ -145,7 +145,6 @@ class CabinetEditView(SingleObjectEditView):
 
 
 class CabinetListView(SingleObjectListView):
-    model = Cabinet
     object_permission = permission_cabinet_view
 
     def get_extra_context(self):
@@ -185,6 +184,7 @@ class DocumentCabinetListView(CabinetListView):
 class DocumentAddToCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
+    object_permission = permission_cabinet_add_document
     success_message = _(
         'Add to cabinet request performed on %(count)d document'
     )
@@ -198,10 +198,12 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Add'),
             'title': ungettext(
-                'Add document to cabinets',
-                'Add documents to cabinets',
-                queryset.count()
-            )
+                singular='Add %(count)d document to cabinets',
+                plural='Add %(count)d documents to cabinets',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -269,6 +271,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
 class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
+    object_permission = permission_cabinet_remove_document
     success_message = _(
         'Remove from cabinet request performed on %(count)d document'
     )
@@ -282,10 +285,12 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Remove'),
             'title': ungettext(
-                'Remove document from cabinets',
-                'Remove documents from cabinets',
-                queryset.count()
-            )
+                singular='Remove %(count)d document from cabinets',
+                plural='Remove %(count)d documents from cabinets',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -293,7 +298,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                 {
                     'object': queryset.first(),
                     'title': _(
-                        'Remove document "%s" to cabinets'
+                        'Remove document "%s" from cabinets'
                     ) % queryset.first()
                 }
             )
