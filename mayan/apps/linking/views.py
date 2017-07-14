@@ -133,8 +133,7 @@ class SmartLinkListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        self.queryset = self.get_smart_link_queryset()
-        return super(SmartLinkListView, self).get_queryset()
+        return self.get_smart_link_queryset()
 
     def get_smart_link_queryset(self):
         return SmartLink.objects.all()

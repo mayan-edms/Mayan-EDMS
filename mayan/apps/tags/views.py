@@ -182,8 +182,7 @@ class TagListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        self.queryset = self.get_tag_queryset()
-        return super(TagListView, self).get_queryset()
+        return self.get_tag_queryset()
 
     def get_tag_queryset(self):
         return Tag.objects.all()

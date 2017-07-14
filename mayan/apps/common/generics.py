@@ -25,7 +25,7 @@ from .mixins import (
     DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
     FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,
     ObjectListPermissionFilterMixin, ObjectNameMixin,
-    ObjectPermissionCheckMixin, RedirectionMixin,
+    ObjectPermissionCheckMixin, PreserveGetQuerysetMixin, RedirectionMixin,
     ViewPermissionCheckMixin
 )
 
@@ -282,12 +282,11 @@ class MultiFormView(DjangoFormView):
             return self.forms_invalid(forms)
 
 
-class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class MultipleObjectFormActionView(PreserveGetQuerysetMixin, ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
     """
     This view will present a form and upon receiving a POST request will
     perform an action on an object or queryset
     """
-
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -295,7 +294,7 @@ class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormE
         return super(MultipleObjectFormActionView, self).form_valid(form=form)
 
 
-class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
     template_name = 'appearance/generic_confirm.html'
 
     def post(self, request, *args, **kwargs):
@@ -459,7 +458,7 @@ class SingleObjectDynamicFormEditView(DynamicFormViewMixin, SingleObjectEditView
     pass
 
 
-class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+class SingleObjectListView(PreserveGetQuerysetMixin, PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
     template_name = 'appearance/generic_list.html'
 
     def get_paginate_by(self, queryset):

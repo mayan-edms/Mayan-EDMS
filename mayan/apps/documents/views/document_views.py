@@ -63,8 +63,7 @@ class DocumentListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        self.queryset = self.get_document_queryset().filter(is_stub=False)
-        return super(DocumentListView, self).get_queryset()
+        return self.get_document_queryset().filter(is_stub=False)
 
 
 class DeletedDocumentListView(DocumentListView):
