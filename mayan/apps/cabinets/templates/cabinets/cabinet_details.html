@@ -5,7 +5,7 @@
 
 {% load navigation_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'cabinets/packages/jstree/dist/themes/default/style.min.css' %}" />
