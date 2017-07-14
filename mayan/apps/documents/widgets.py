@@ -234,7 +234,7 @@ class InstanceImageWidget(object):
                 '<img class="thin_border {image_class} pull-left" style="width: 100%;"'
                 'data-url="{preview_full_url}" src="#" '
                 '/> '.format(
-                    width=self.width or '32', height=self.height or '32',
+                    height=self.height or '150',
                     image_class=self.image_class,
                     preview_full_url=self.get_preview_view_url(instance=instance),
                     alt_text=self.alt_text
@@ -264,10 +264,7 @@ class BaseDocumentThumbnailWidget(InstanceImageWidget):
         'size': setting_thumbnail_size.value
     }
     width = setting_thumbnail_size.value.split('x')[0]
-    height = index_or_default(
-        instance=setting_thumbnail_size.value.split('x'),
-        index=1, default=setting_thumbnail_size.value.split('x')[0]
-    )
+    height = 150
 
     def get_destination_url(self, instance):
         return instance.get_absolute_url()
