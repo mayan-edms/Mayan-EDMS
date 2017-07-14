@@ -61,8 +61,12 @@ class CabinetsApp(MayanAppConfig):
             model=Cabinet, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_cabinet_delete, permission_cabinet_edit,
-                permission_cabinet_view
+                permission_cabinet_view, permission_cabinet_add_document,
+                permission_cabinet_remove_document
             )
+        )
+        ModelPermission.register_inheritance(
+            model=Cabinet, related='get_root',
         )
 
         document_page_search.add_model_field(
