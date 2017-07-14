@@ -9,6 +9,7 @@
   Defaults to mayan/error.log.
 - Add support logging request exceptions.
 - Add document list item view.
+- Sort setting by namespace label and by global name second.
 
 2.5.2 (2017-07-08)
 ==================

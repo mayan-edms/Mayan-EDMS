@@ -32,7 +32,7 @@ class Namespace(object):
 
     @classmethod
     def get_all(cls):
-        return cls._registry.values()
+        return sorted(cls._registry.values(), key=lambda x: x.label)
 
     @classmethod
     def get(cls, name):
@@ -54,14 +54,18 @@ class Namespace(object):
         self.name = name
         self.label = label
         self.__class__._registry[name] = self
-        self.settings = []
+        self._settings = []
 
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
 
     def invalidate_cache(self):
-        for setting in self.settings:
+        for setting in self._settings:
             setting.invalidate_cache()
+
+    @property
+    def settings(self):
+        return sorted(self._settings, key=lambda x: x.global_name)
 
 
 @python_2_unicode_compatible
@@ -88,7 +92,7 @@ class Setting(object):
         self.default = default
         self.help_text = help_text
         self.loaded = False
-        namespace.settings.append(self)
+        namespace._settings.append(self)
         self.__class__._registry[global_name] = self
 
     def __str__(self):
