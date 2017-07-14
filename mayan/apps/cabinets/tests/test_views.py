@@ -17,7 +17,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
         super(CabinetViewTestCase, self).setUp()
         self.login_user()
 
-    def _create_cabinet(self, label):
+    def _request_create_cabinet(self, label):
         return self.post(
             'cabinets:cabinet_create', data={
                 'label': TEST_CABINET_LABEL
@@ -25,7 +25,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_cabinet_create_view_no_permission(self):
-        response = self._create_cabinet(label=TEST_CABINET_LABEL)
+        response = self._request_create_cabinet(label=TEST_CABINET_LABEL)
 
         self.assertEquals(response.status_code, 403)
         self.assertEqual(Cabinet.objects.count(), 0)
@@ -33,7 +33,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_create_view_with_permission(self):
         self.grant(permission=permission_cabinet_create)
 
-        response = self._create_cabinet(label=TEST_CABINET_LABEL)
+        response = self._request_create_cabinet(label=TEST_CABINET_LABEL)
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Cabinet.objects.count(), 1)
@@ -42,7 +42,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_create_duplicate_view_with_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
         self.grant(permission=permission_cabinet_create)
-        response = self._create_cabinet(label=TEST_CABINET_LABEL)
+        response = self._request_create_cabinet(label=TEST_CABINET_LABEL)
 
         # HTTP 200 with error message
         self.assertEqual(response.status_code, 200)
@@ -205,3 +205,25 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
         cabinet.refresh_from_db()
         self.assertEqual(cabinet.documents.count(), 0)
+
+    def _create_cabinet(self):
+        self.cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+
+    def _request_cabinet_list(self):
+        return self.get('cabinets:cabinet_list')
+
+    def test_cabinet_list_view_no_permission(self):
+        self._create_cabinet()
+        response = self._request_cabinet_list()
+        self.assertNotContains(
+            response, text=self.cabinet.label, status_code=200
+        )
+
+    def test_cabinet_list_view_with_permission(self):
+        self._create_cabinet()
+        self.grant(permission=permission_cabinet_view)
+        response = self._request_cabinet_list()
+
+        self.assertContains(
+            response, text=self.cabinet.label, status_code=200
+        )
