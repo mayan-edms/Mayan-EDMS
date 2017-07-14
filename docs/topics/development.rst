@@ -437,38 +437,42 @@ X.Y     # Final release
 Release checklist
 ~~~~~~~~~~~~~~~~~
 
-1. Synchronize translations::
+1. Check for missing migrations::
+
+    $ ./manage.py makemigrations
+
+2. Synchronize translations::
 
     $ make translations_pull
 
-2. Compile translations::
+3. Compile translations::
 
     $ make translations_compile
 
-3. Write release notes.
-4. Update changelog.
-5. Update requirements version in `setup.py`
-6. Bump version in `mayan/__init__.py`
-7. Build source package and test::
+4. Write release notes.
+5. Update changelog.
+6. Update requirements version in `setup.py`
+7. Bump version in `mayan/__init__.py`
+8. Build source package and test::
 
     $ make test_sdist_via_docker_ubuntu
 
-8. Build wheel package and test::
+9. Build wheel package and test::
 
     $ make test_whell_via_docker_ubuntu
 
-9. Tag version::
+10. Tag version::
 
     $ git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-10. Push tag upstream::
+11. Push tag upstream::
 
     $ git push --tags
 
-11. Build and upload a test release::
+12. Build and upload a test release::
 
     $ make release_test_via_docker_ubuntu
 
-12. Build and upload a final release::
+13. Build and upload a final release::
 
     $ make release_via_docker_ubuntu
