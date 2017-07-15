@@ -87,7 +87,7 @@ translations_push:
 	tx push -s
 
 translations_pull:
-	tx pull
+	tx pull -f
 
 
 # Requirements
