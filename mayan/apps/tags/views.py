@@ -41,10 +41,12 @@ class TagAttachActionView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Attach'),
             'title': ungettext(
-                'Attach tags to document',
-                'Attach tags to documents',
-                queryset.count()
-            )
+                singular='Attach tags to %(count)d document',
+                plural='Attach tags to %(count)d documents',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -78,7 +80,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
 
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(
-                obj=tag, permissions=permission_tag_view,
+                obj=tag, permissions=permission_tag_attach,
                 user=self.request.user
             )
 
@@ -245,10 +247,12 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Remove'),
             'title': ungettext(
-                'Remove tags from document',
-                'Remove tags from documents',
-                queryset.count()
-            )
+                singular='Remove tags to %(count)d document',
+                plural='Remove tags to %(count)d documents',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -282,7 +286,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
 
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(
-                obj=tag, permissions=permission_tag_view,
+                obj=tag, permissions=permission_tag_remove,
                 user=self.request.user
             )
 
