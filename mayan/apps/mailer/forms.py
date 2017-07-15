@@ -54,13 +54,20 @@ class DocumentMailForm(forms.Form):
         except UserMailer.DoesNotExist:
             pass
 
-    email = forms.EmailField(label=_('Email address'))
+    email = forms.EmailField(
+        help_text=_(
+            'Email address of the recipient. Can be multiple addresses '
+            'separated by comma or semicolon.'
+        ), label=_('Email address')
+    )
     subject = forms.CharField(label=_('Subject'), required=False)
     body = forms.CharField(
         label=_('Body'), widget=forms.widgets.Textarea(), required=False
     )
     user_mailer = forms.ModelChoiceField(
-        label=_('Mailing profile'), queryset=UserMailer.objects.none()
+        help_text=_(
+            'The email profile that will be used to send this email.'
+        ), label=_('Mailing profile'), queryset=UserMailer.objects.none()
     )
 
 
