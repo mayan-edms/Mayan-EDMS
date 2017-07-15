@@ -65,6 +65,7 @@ Other Changes
 - Sort setting by namespace label and by global name second.
 - Sort indexes by label.
 - Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
+- Improve code to unbind menu entries.
 
 Removals
 --------

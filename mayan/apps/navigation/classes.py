@@ -206,13 +206,15 @@ class Menu(object):
             unbound_links.extend(self.unbound_links.get(source, ()))
             unbound_links.extend(self.unbound_links.get(current_view, ()))
 
+            new_result = []
             for resolved_link in result[0]:
                 try:
-                    if resolved_link.link in unbound_links:
-                        result[0].remove(resolved_link)
+                    if resolved_link.link not in unbound_links:
+                        new_result.append(resolved_link)
                 except AttributeError:
-                    # It's a menu, ignore
-                    pass
+                    new_result.append(resolved_link)
+
+            result[0] = new_result
 
             # Sort links by position value passed during bind
             result[0] = sorted(

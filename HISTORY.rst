@@ -16,6 +16,7 @@
 - Equalize dashboard widgets heights.
 - Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
 - Backport document's version list view permission.
+- Improve code to unbind menu entries.
 
 2.5.2 (2017-07-08)
 ==================
