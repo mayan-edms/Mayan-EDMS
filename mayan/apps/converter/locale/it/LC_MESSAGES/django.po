@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -10,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-05-30 07:55+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-10 07:19+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:7
@@ -43,20 +43,19 @@ msgid "Exception determining PDF page count; %s"
 msgstr "Eccezione che determina il conteggio pagine PDF: %s"
 
 #: backends/python.py:184
-#, fuzzy, python-format
+#, python-format
 #| msgid "Exception determining PDF page count; %s"
 msgid "Exception determining page count using Pillow; %s"
-msgstr "Eccezione che determina il conteggio pagine PDF: %s"
+msgstr "Eccezione sollevata dal conteggio pagine usando Pillow: %s"
 
 #: classes.py:102
 msgid "Not an office file format."
 msgstr "Non è un formato di file office"
 
 #: classes.py:123
-#, fuzzy
 #| msgid "LibreOffice not installed or not found at path: %s"
 msgid "LibreOffice not installed or not found."
-msgstr "LibreOffice non installato o non trovato nel percorso: %s"
+msgstr "LibreOffice non installato o non trovato."
 
 #: classes.py:306
 msgid "Crop"
@@ -72,7 +71,7 @@ msgstr "Sfocatura gaussiana"
 
 #: classes.py:340
 msgid "Line art"
-msgstr ""
+msgstr "Line art"
 
 #: classes.py:351
 msgid "Mirror"
@@ -126,9 +125,7 @@ msgstr "Trasformazioni"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Ordine delle trasformazioni da eseguire. Se resta invariato verrà assegnato "
-"l'ordine automatico."
+msgstr "Ordine delle trasformazioni da eseguire. Se resta invariato verrà assegnato l'ordine automatico."
 
 #: models.py:44
 msgid "Name"
@@ -138,9 +135,7 @@ msgstr "Nome "
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Scrivi gli argomenti per la trasformazione come dizionario YAML. es: "
-"{\"degrees\": 180}"
+msgstr "Scrivi gli argomenti per la trasformazione come dizionario YAML. es: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -164,7 +159,7 @@ msgstr "Conversioni grafiche di backend da utilizzare."
 
 #: settings.py:17
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Opzioni di configurazione per il backend di conversione grafica."
 
 #: validators.py:22
 msgid "Enter a valid YAML value."
@@ -173,8 +168,7 @@ msgstr "Inserisci un valore YAML valido."
 #: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Cancellare le trasformazioni \"%(transformation)s\" per: %(content_object)s?"
+msgstr "Cancellare le trasformazioni \"%(transformation)s\" per: %(content_object)s?"
 
 #: views.py:127
 #, python-format
@@ -184,8 +178,7 @@ msgstr "Crea una nuove trasformazioni per: %s"
 #: views.py:175
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)s"
+msgstr "Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)s"
 
 #: views.py:216
 #, python-format
@@ -193,10 +186,10 @@ msgid "Transformations for: %s"
 msgstr "Trasformazione per: %s"
 
 #~ msgid "Path to the libreoffice program."
-#~ msgstr "Percorso per il programma libreoffice."
+#~ msgstr "Path to the libreoffice program."
 
 #~ msgid "Path to the Popple program pdftoppm."
-#~ msgstr "Percorso per il programma Popple"
+#~ msgstr "Path to the Popple program pdftoppm."
 
 #~ msgid "Resize."
 #~ msgstr "Resize."
@@ -232,13 +225,14 @@ msgstr "Trasformazione per: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -551,11 +545,9 @@ msgstr "Trasformazione per: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -671,8 +663,7 @@ msgstr "Trasformazione per: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

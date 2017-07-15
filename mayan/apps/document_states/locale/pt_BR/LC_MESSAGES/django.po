@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -10,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:44 queues.py:8
@@ -160,9 +160,7 @@ msgstr "Fluxo de trabalho"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Selecione se este será o estado com o qual você deseja que o fluxo de "
-"trabalho para começar em. Apenas um Estado pode ser o estado inicial."
+msgstr "Selecione se este será o estado com o qual você deseja que o fluxo de trabalho para começar em. Apenas um Estado pode ser o estado inicial."
 
 #: models.py:101
 msgid "Initial"
@@ -172,9 +170,7 @@ msgstr "Inicial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Entre com a porcentagem de finalização que este estado representa em relação "
-"com o fluxo de trabalho. Utilize números sem o sinal de porcentagem."
+msgstr "Entre com a porcentagem de finalização que este estado representa em relação com o fluxo de trabalho. Utilize números sem o sinal de porcentagem."
 
 #: models.py:113
 msgid "Workflow state"
@@ -272,10 +268,7 @@ msgstr "Chave primária do tipo de documento a ser adicionado."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"API URL que aponta para um tipo de documento em relação ao fluxo de trabalho "
-"ao qual está anexado. Esse URL é diferente do URL do tipo de documento "
-"canônico."
+msgstr "API URL que aponta para um tipo de documento em relação ao fluxo de trabalho ao qual está anexado. Esse URL é diferente do URL do tipo de documento canônico."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -289,9 +282,7 @@ msgstr "Chave primária do estado de origem a ser adicionado."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL que aponta para um fluxo de trabalho em relação ao documento ao qual "
-"está anexado. Esse URL é diferente do URL de fluxo de trabalho canônico."
+msgstr "API URL que aponta para um fluxo de trabalho em relação ao documento ao qual está anexado. Esse URL é diferente do URL de fluxo de trabalho canônico."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -301,9 +292,7 @@ msgstr "Um link para todo o histórico deste fluxo de trabalho."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"Lista separada por vírgulas do tipo de documento chaves primárias às quais "
-"este fluxo de trabalho será anexado."
+msgstr "Lista separada por vírgulas do tipo de documento chaves primárias às quais este fluxo de trabalho será anexado."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -346,7 +335,7 @@ msgstr "Tipos de documentos atribuídos a este fluxo de trabalho"
 msgid "Document types assigned the workflow: %s"
 msgstr "Os tipos de documento atribuído ao workflow: %s"
 
-#: views.py:214 views.py:492
+#: views.py:214 views.py:498
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Estado do workflow: %s"
@@ -370,20 +359,20 @@ msgstr "Criar Transição para  Workflow: %s"
 msgid "Unable to save transition; integrity error."
 msgstr "Não foi possível salvar transição; erro de integridade."
 
-#: views.py:439
+#: views.py:440
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr "Documentos com o fluxo de trabalho: %s"
 
-#: views.py:457
+#: views.py:461
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documentos no fluxo de trabalho \"%s\", digite \"%s\""
 
-#: views.py:506
+#: views.py:512
 msgid "Launch all workflows?"
 msgstr "Lançar todos os fluxos de trabalho?"
 
-#: views.py:513
+#: views.py:519
 msgid "Workflow launch queued successfully."
 msgstr "O lançamento do fluxo de trabalho foi enfileirado com êxito."

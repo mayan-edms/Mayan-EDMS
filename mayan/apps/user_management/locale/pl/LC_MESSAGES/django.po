@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -12,48 +13,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:29-0400\n"
-"PO-Revision-Date: 2017-06-23 14:20+0000\n"
-"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Zarządzanie użytkownikami"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr "Wszystkie grupy."
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr "Wszyscy użytkownicy."
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr "Członkowie"
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr "Pełna nazwa"
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr "Aktywny"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr "Posiada hasło?"
 
@@ -77,7 +75,7 @@ msgstr "Usunąć"
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Grupy"
 
@@ -124,6 +122,24 @@ msgstr "Edycja istniejących użytkowników"
 #: permissions.py:31
 msgid "View existing users"
 msgstr "Zobacz istniejących użytkowników"
+
+#: search.py:19
+#| msgid "Full name"
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+#| msgid "user"
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr "Nazwa"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
@@ -188,9 +204,7 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user usuwanie nie jest możliwa , należy użyć "
-"interfejsu administratora w takich przypadkach."
+msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:176
 #, python-format
@@ -251,9 +265,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:304
 #, python-format
@@ -340,6 +352,3 @@ msgstr "Błąd podczas resetowania hasło użytkownika \" %(user)s \": %(error)s
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -10,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:26-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-05-04 19:12+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 links.py:35
@@ -56,8 +56,7 @@ msgstr "Entradas de acesso"
 #: models.py:57
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-"Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
+msgstr "Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
 
 #: models.py:74
 msgid "None"
@@ -78,23 +77,17 @@ msgstr "Visualizar regras"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
-"API URL apontando para a lista de permissões para esta lista de controle de "
-"acesso."
+msgstr "API URL apontando para a lista de permissões para esta lista de controle de acesso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL apontando para uma permissão em relação à lista de controle de "
-"acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de "
-"trabalho canônico."
+msgstr "API URL apontando para uma permissão em relação à lista de controle de acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de trabalho canônico."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
-"Chave primária da nova permissão para conceder à lista de controle de acesso."
+msgstr "Chave primária da nova permissão para conceder à lista de controle de acesso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -105,14 +98,11 @@ msgstr "Sem permissão: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Lista de chaves primárias de permissão separadas por vírgulas para conceder "
-"a esta lista de controle de acesso."
+msgstr "Lista de chaves primárias de permissão separadas por vírgulas para conceder a esta lista de controle de acesso."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
-"As chaves primárias da função a que esta lista de controle de acesso se liga."
+msgstr "As chaves primárias da função a que esta lista de controle de acesso se liga."
 
 #: views.py:74
 #, python-format
@@ -237,10 +227,8 @@ msgstr "As permissões inativas foram herdadas de um objeto precedente."
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

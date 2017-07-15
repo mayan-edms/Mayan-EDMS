@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:28-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:36
 msgid "Mailer"
@@ -29,13 +27,13 @@ msgstr "Электронный почтальон"
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:54 models.py:19 models.py:126
+#: apps.py:54 models.py:21 models.py:120
 msgid "Message"
 msgstr "Сообщение"
 
-#: apps.py:57 apps.py:72 models.py:31
+#: apps.py:57 apps.py:72 models.py:33
 msgid "Label"
-msgstr ""
+msgstr "Ярлык"
 
 #: apps.py:60
 msgid "Default?"
@@ -45,23 +43,34 @@ msgstr ""
 msgid "Enabled?"
 msgstr ""
 
-#: forms.py:57 forms.py:111
+#: forms.py:59
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr ""
+
+#: forms.py:61 forms.py:118
 msgid "Email address"
 msgstr "Адрес электронной почты"
 
-#: forms.py:58
+#: forms.py:63
 msgid "Subject"
 msgstr "Тема"
 
-#: forms.py:60
+#: forms.py:65
 msgid "Body"
 msgstr "Тело письма"
 
-#: forms.py:63 views.py:226
+#: forms.py:69
+msgid "The email profile that will be used to send this email."
+msgstr ""
+
+#: forms.py:70 views.py:226
+#| msgid "Mailing"
 msgid "Mailing profile"
 msgstr ""
 
-#: forms.py:68
+#: forms.py:75
 msgid "Backend"
 msgstr ""
 
@@ -74,10 +83,9 @@ msgid "Email link"
 msgstr ""
 
 #: links.py:30
-#, fuzzy
 #| msgid "Document mailing error log"
 msgid "System mailer error log"
-msgstr "Журнал ошибок отправки электронной почты"
+msgstr ""
 
 #: links.py:34
 msgid "User mailer create"
@@ -85,11 +93,11 @@ msgstr ""
 
 #: links.py:38
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:42
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 #: links.py:46
 msgid "Log"
@@ -100,6 +108,7 @@ msgid "Mailing profiles list"
 msgstr ""
 
 #: links.py:54
+#| msgid "Mailing"
 msgid "Mailing profiles"
 msgstr ""
 
@@ -127,7 +136,7 @@ msgstr ""
 
 #: mailers.py:14
 msgid "Host"
-msgstr ""
+msgstr "Хост"
 
 #: mailers.py:16
 msgid "The host to use for sending email."
@@ -135,7 +144,7 @@ msgstr ""
 
 #: mailers.py:22
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 #: mailers.py:24
 msgid "Port to use for the SMTP server."
@@ -161,13 +170,13 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 
 #: mailers.py:50
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: mailers.py:53
 msgid ""
@@ -177,13 +186,13 @@ msgstr ""
 
 #: mailers.py:60
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: mailers.py:63
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:80
@@ -198,61 +207,61 @@ msgstr ""
 msgid "Django file based backend"
 msgstr ""
 
-#: models.py:16 models.py:123
+#: models.py:18 models.py:117
 msgid "Date time"
 msgstr "Дата и время"
 
-#: models.py:25
+#: models.py:27
 msgid "Log entry"
 msgstr "Запись журнала"
 
-#: models.py:26
+#: models.py:28
 msgid "Log entries"
 msgstr "Записи журнала"
 
-#: models.py:35
+#: models.py:37
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
 
-#: models.py:37
-msgid "Default"
-msgstr ""
-
 #: models.py:39
-msgid "Enabled"
-msgstr ""
+msgid "Default"
+msgstr "Умолчание"
 
-#: models.py:42
+#: models.py:41
+msgid "Enabled"
+msgstr "Доступно"
+
+#: models.py:44
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:43
+#: models.py:45
 msgid "Backend path"
 msgstr ""
 
-#: models.py:46
+#: models.py:48
 msgid "Backend data"
 msgstr ""
 
-#: models.py:51 models.py:120
+#: models.py:53 models.py:114
 msgid "User mailer"
 msgstr ""
 
-#: models.py:52
+#: models.py:54
 msgid "User mailers"
 msgstr ""
 
-#: models.py:115
+#: models.py:109
 msgid "Test email from Mayan EDMS"
 msgstr ""
 
-#: models.py:132
+#: models.py:126
 msgid "User mailer log entry"
 msgstr ""
 
-#: models.py:133
+#: models.py:127
 msgid "User mailer log entries"
 msgstr ""
 
@@ -269,10 +278,9 @@ msgid "Send document via email"
 msgstr "Отослать документ по электронной почте"
 
 #: permissions.py:16
-#, fuzzy
 #| msgid "View document mailing error log"
 msgid "View system mailing error log"
-msgstr "Просмотр журнала ошибок отправки почты"
+msgstr ""
 
 #: permissions.py:19
 msgid "Create an user mailer"

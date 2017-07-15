@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:26-0400\n"
-"PO-Revision-Date: 2016-07-14 02:03+0000\n"
-"Last-Translator: lilo.panic\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 03:48+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:17 settings.py:9
 msgid "Authentication"
@@ -41,9 +39,7 @@ msgstr ""
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Пожалуйста, введите правильный адрес электронной почты и пароль с учетом "
-"регистра."
+msgstr "Пожалуйста, введите правильный адрес электронной почты и пароль с учетом регистра."
 
 #: forms.py:28
 msgid "This account is inactive."
@@ -61,13 +57,11 @@ msgstr "Изменить пароль"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
-"Управление механизмом, используемым для аутентификации пользователя. "
-"Возможные варианты: имя пользователя, адрес электронной почты"
+msgstr "Управление механизмом, используемым для аутентификации пользователя. Возможные варианты: имя пользователя, адрес электронной почты"
 
 #: settings.py:20
 msgid ""
-"Maximum type an user clicking the \"Remember me\" checkbox will remain "
+"Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
 msgstr ""
 

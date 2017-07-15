@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:28-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -26,11 +26,11 @@ msgstr "Mailer"
 msgid "Date and time"
 msgstr "Date and time"
 
-#: apps.py:54 models.py:19 models.py:126
+#: apps.py:54 models.py:21 models.py:120
 msgid "Message"
 msgstr "Message"
 
-#: apps.py:57 apps.py:72 models.py:31
+#: apps.py:57 apps.py:72 models.py:33
 msgid "Label"
 msgstr ""
 
@@ -42,25 +42,35 @@ msgstr ""
 msgid "Enabled?"
 msgstr ""
 
-#: forms.py:57 forms.py:111
+#: forms.py:59
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+
+#: forms.py:61 forms.py:118
 msgid "Email address"
 msgstr "Email address"
 
-#: forms.py:58
+#: forms.py:63
 msgid "Subject"
 msgstr "Subject"
 
-#: forms.py:60
+#: forms.py:65
 msgid "Body"
 msgstr "Body"
 
-#: forms.py:63 views.py:226
+#: forms.py:69
+msgid "The email profile that will be used to send this email."
+msgstr ""
+
+#: forms.py:70 views.py:226
 #, fuzzy
 #| msgid "Mailing"
 msgid "Mailing profile"
 msgstr "Mailing"
 
-#: forms.py:68
+#: forms.py:75
 msgid "Backend"
 msgstr ""
 
@@ -207,61 +217,61 @@ msgstr ""
 msgid "Django file based backend"
 msgstr ""
 
-#: models.py:16 models.py:123
+#: models.py:18 models.py:117
 msgid "Date time"
 msgstr "Date time"
 
-#: models.py:25
+#: models.py:27
 msgid "Log entry"
 msgstr "Log entry"
 
-#: models.py:26
+#: models.py:28
 msgid "Log entries"
 msgstr "Log entries"
 
-#: models.py:35
+#: models.py:37
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
 
-#: models.py:37
+#: models.py:39
 msgid "Default"
 msgstr ""
 
-#: models.py:39
+#: models.py:41
 msgid "Enabled"
 msgstr ""
 
-#: models.py:42
+#: models.py:44
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:43
+#: models.py:45
 msgid "Backend path"
 msgstr ""
 
-#: models.py:46
+#: models.py:48
 msgid "Backend data"
 msgstr ""
 
-#: models.py:51 models.py:120
+#: models.py:53 models.py:114
 msgid "User mailer"
 msgstr ""
 
-#: models.py:52
+#: models.py:54
 msgid "User mailers"
 msgstr ""
 
-#: models.py:115
+#: models.py:109
 msgid "Test email from Mayan EDMS"
 msgstr ""
 
-#: models.py:132
+#: models.py:126
 msgid "User mailer log entry"
 msgstr ""
 
-#: models.py:133
+#: models.py:127
 msgid "User mailer log entries"
 msgstr ""
 

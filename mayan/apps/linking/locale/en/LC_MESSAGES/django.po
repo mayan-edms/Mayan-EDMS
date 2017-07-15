@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -55,7 +55,7 @@ msgstr "Edit"
 msgid "Conditions"
 msgstr "Conditions"
 
-#: links.py:32 views.py:167
+#: links.py:32 views.py:169
 msgid "Create new smart link"
 msgstr "Create new smart link"
 
@@ -68,7 +68,7 @@ msgid "Documents"
 msgstr "Documents"
 
 #: links.py:54 links.py:58 links.py:63 models.py:94 permissions.py:7
-#: views.py:129
+#: views.py:132
 msgid "Smart links"
 msgstr "Smart links"
 
@@ -241,49 +241,49 @@ msgid ""
 msgstr ""
 "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 
-#: views.py:87
+#: views.py:90
 msgid "Available document types"
 msgstr "Available document types"
 
-#: views.py:89
+#: views.py:92
 msgid "Document types enabled"
 msgstr "Document types enabled"
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Document type for which to enable smart link: %s"
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Smart links for document: %s"
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Edit smart link: %s"
 
-#: views.py:194
+#: views.py:196
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Delete smart link: %s"
 
-#: views.py:206
+#: views.py:208
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Conditions for smart link: %s"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Add new conditions to smart link: \"%s\""
 
-#: views.py:274
+#: views.py:276
 msgid "Edit smart link condition"
 msgstr "Edit smart link condition"
 
-#: views.py:304
+#: views.py:306
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Delete smart link condition: \"%s\"?"

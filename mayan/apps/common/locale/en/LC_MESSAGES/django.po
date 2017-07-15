@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:26-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:74 settings.py:9
+#: apps.py:75 settings.py:11
 msgid "Common"
 msgstr "Common"
 
-#: apps.py:79
+#: apps.py:80
 #, fuzzy
 #| msgid "Anonymous user"
 msgid "Anonymous"
@@ -54,32 +54,32 @@ msgstr "Add"
 msgid "Remove"
 msgstr "Remove"
 
-#: generics.py:334
+#: generics.py:333
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s not created, error: %(error)s"
 
-#: generics.py:345
+#: generics.py:344
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s created successfully."
 
-#: generics.py:374
+#: generics.py:373
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s not deleted, error: %(error)s."
 
-#: generics.py:385
+#: generics.py:384
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s deleted successfully."
 
-#: generics.py:431
+#: generics.py:430
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s not updated, error: %(error)s."
 
-#: generics.py:442
+#: generics.py:441
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s updated successfully."
@@ -226,31 +226,35 @@ msgstr "Common periodic"
 msgid "Delete stale uploads"
 msgstr "Delete stale uploads"
 
-#: settings.py:13
+#: settings.py:15
 msgid "Automatically enable logging to all apps."
 msgstr "Automatically enable logging to all apps."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 "Time to delay background tasks that depend on a database commit to propagate."
 
-#: settings.py:27
+#: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "An integer specifying how many objects should be displayed per page."
 
-#: settings.py:33
+#: settings.py:35
 msgid "A storage backend that all workers can use to share files."
 msgstr "A storage backend that all workers can use to share files."
 
-#: settings.py:38
+#: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+
+#: settings.py:48
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
 
 #: validators.py:29
 msgid ""

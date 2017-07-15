@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -43,11 +43,11 @@ msgstr ""
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:8 settings.py:8 views.py:51 views.py:62
+#: links.py:8 settings.py:8 views.py:52 views.py:63
 msgid "Search"
 msgstr "Search"
 
-#: links.py:11 views.py:76
+#: links.py:11 views.py:77
 msgid "Advanced search"
 msgstr "Advanced search"
 
@@ -59,12 +59,12 @@ msgstr "Search again"
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Maximum amount search hits to fetch and display."
 
-#: views.py:24
+#: views.py:25
 #, python-format
 msgid "Search results for: %s"
 msgstr "Search results for: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Search for: %s"
 msgstr "Search for: %s"

@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -12,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-05-28 19:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16
@@ -39,20 +39,17 @@ msgstr "Parear todos"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
-"Cuando se selecciona, sólo se devolverán los resultados que coincidan con "
-"todos los campos. Si no se selecciona los resultados que coincidan con al "
-"menos un campo se devolverá."
+msgstr "Cuando se selecciona, sólo se devolverán los resultados que coincidan con todos los campos. Si no se selecciona los resultados que coincidan con al menos un campo se devolverá."
 
 #: forms.py:29
 msgid "Search terms"
 msgstr "Términos de búsqueda"
 
-#: links.py:8 settings.py:8 views.py:51 views.py:62
+#: links.py:8 settings.py:8 views.py:52 views.py:63
 msgid "Search"
 msgstr "Búsqueda"
 
-#: links.py:11 views.py:76
+#: links.py:11 views.py:77
 msgid "Advanced search"
 msgstr "Búsqueda avanzada"
 
@@ -64,12 +61,12 @@ msgstr "Volver a buscar"
 msgid "Maximum amount search hits to fetch and display."
 msgstr "La cantidad máxima de resultados de búsqueda a recabar y mostrar."
 
-#: views.py:24
+#: views.py:25
 #, python-format
 msgid "Search results for: %s"
 msgstr "Resultados de la búsqueda para: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Search for: %s"
 msgstr "Búsqueda para: %s"
@@ -98,8 +95,7 @@ msgstr "Búsqueda para: %s"
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid ""
-#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

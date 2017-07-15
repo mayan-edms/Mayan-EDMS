@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-10 07:25+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -216,19 +216,19 @@ msgstr "Vedi dettagli delle firme documento"
 
 #: queues.py:11
 msgid "Verify key signatures"
-msgstr ""
+msgstr "Verifica chiavi firma "
 
 #: queues.py:15
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "Annulla verifica chiavi firma"
 
 #: queues.py:19
 msgid "Verify document version"
-msgstr ""
+msgstr "Verifica versione documento"
 
 #: queues.py:24
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Verifica firma incorporata mancante"
 
 #: views.py:61 views.py:156
 msgid "Passphrase is needed to unlock this key."
@@ -274,9 +274,7 @@ msgstr "Carica la firma scollegata per la versione documento: %s"
 
 #: views.py:361
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di "
-"tempo."
+msgstr "Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di tempo."
 
 #: views.py:362
 msgid "Verify all document for signatures?"

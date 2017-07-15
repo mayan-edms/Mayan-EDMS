@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -11,46 +12,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:29-0400\n"
-"PO-Revision-Date: 2017-05-30 08:19+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Gestione utenti"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr "Tutti i gruppi"
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr "Tutti gli utenti"
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr "Membri "
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr "Nome completo"
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr "Attivo"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr "La password è utilizzabile?"
 
@@ -74,7 +74,7 @@ msgstr "Cancella"
 msgid "Edit"
 msgstr "Modifica"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Gruppi"
 
@@ -121,6 +121,24 @@ msgstr "Modifica utenti "
 #: permissions.py:31
 msgid "View existing users"
 msgstr "Visualizza utenti"
+
+#: search.py:19
+#| msgid "Full name"
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+#| msgid "user"
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr "Nome "
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
@@ -183,9 +201,7 @@ msgstr "Cancella utente: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Al super utente e utente non è consentito la cancellazione del personale, "
-"utilizzare l'interfaccia di amministrazione per questi casi."
+msgstr "Al super utente e utente non è consentito la cancellazione del personale, utilizzare l'interfaccia di amministrazione per questi casi."
 
 #: views.py:176
 #, python-format
@@ -244,9 +260,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Al super utente e utente non è consentito di reimpostare la password "
-"personale, utilizzare l'interfaccia di amministrazione per questi casi."
+msgstr "Al super utente e utente non è consentito di reimpostare la password personale, utilizzare l'interfaccia di amministrazione per questi casi."
 
 #: views.py:304
 #, python-format
@@ -256,9 +270,7 @@ msgstr "Password reimpostata per l'utente: %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Errore per il reimpostamento della password per l'utente \"%(user)s\": "
-"%(error)s"
+msgstr "Errore per il reimpostamento della password per l'utente \"%(user)s\": %(error)s"
 
 #~ msgid "Must provide at least one user."
 #~ msgstr "Must provide at least one user."
@@ -335,6 +347,3 @@ msgstr ""
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

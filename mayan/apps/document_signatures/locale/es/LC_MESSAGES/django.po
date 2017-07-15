@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 04:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -217,19 +217,19 @@ msgstr "Ver detalles de firma de documentos"
 
 #: queues.py:11
 msgid "Verify key signatures"
-msgstr ""
+msgstr "Verificar las firmas con llave"
 
 #: queues.py:15
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "Anular la verificación de las firmas con llave"
 
 #: queues.py:19
 msgid "Verify document version"
-msgstr ""
+msgstr "Verificar la versión del documento"
 
 #: queues.py:24
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Verificar la firma integrada que falta"
 
 #: views.py:61 views.py:156
 msgid "Passphrase is needed to unlock this key."
@@ -275,9 +275,7 @@ msgstr "Subir firma aparte para la versión de documento: %s"
 
 #: views.py:361
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:362
 msgid "Verify all document for signatures?"

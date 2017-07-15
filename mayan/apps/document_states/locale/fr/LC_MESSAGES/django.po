@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:44 queues.py:8
@@ -158,9 +158,7 @@ msgstr "Flux de travail"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de "
-"travail pour démarrer. Un seul état peut être à l'état initial."
+msgstr "Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de travail pour démarrer. Un seul état peut être à l'état initial."
 
 #: models.py:101
 msgid "Initial"
@@ -170,9 +168,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Entrer le pourcentage de finalisation que cet état représente dans la "
-"relation du flux de travail. Saisir un nombre sans le signe pourcentage."
+msgstr "Entrer le pourcentage de finalisation que cet état représente dans la relation du flux de travail. Saisir un nombre sans le signe pourcentage."
 
 #: models.py:113
 msgid "Workflow state"
@@ -337,7 +333,7 @@ msgstr "Types de document associé à ce flux de travail"
 msgid "Document types assigned the workflow: %s"
 msgstr "Types de document assignés au flux de travail: %s"
 
-#: views.py:214 views.py:492
+#: views.py:214 views.py:498
 #, python-format
 msgid "States of workflow: %s"
 msgstr "États du flux de travail: %s"
@@ -361,20 +357,20 @@ msgstr "Créer des transitions du flux de travail: %s"
 msgid "Unable to save transition; integrity error."
 msgstr "Impossible de sauvegarder la transition; erreur d'intégrité."
 
-#: views.py:439
+#: views.py:440
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr "Documents avec le flux de travail: %s"
 
-#: views.py:457
+#: views.py:461
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views.py:506
+#: views.py:512
 msgid "Launch all workflows?"
 msgstr ""
 
-#: views.py:513
+#: views.py:519
 msgid "Workflow launch queued successfully."
 msgstr ""

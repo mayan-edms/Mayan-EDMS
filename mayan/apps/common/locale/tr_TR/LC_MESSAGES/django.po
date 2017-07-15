@@ -1,156 +1,161 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Translators:
+# Translators:
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
+# serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:26-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 03:49+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:74 settings.py:9
+#: apps.py:75 settings.py:11
 msgid "Common"
-msgstr ""
+msgstr "Ortak"
 
-#: apps.py:79
+#: apps.py:80
+#| msgid "Anonymous user"
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonim"
 
 #: classes.py:109
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Kullanılabilir özellikler:\n"
 
 #: forms.py:27
 msgid "Selection"
-msgstr ""
+msgstr "Seçim"
 
 #: forms.py:135
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"
 
 #: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "Seçim aktarımı yapılamadı: %s."
 
 #: generics.py:160
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: generics.py:171
 msgid "Remove"
-msgstr ""
+msgstr "Çıkar"
 
-#: generics.py:334
+#: generics.py:333
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s oluşturulamadı, hata: %(error)s"
 
-#: generics.py:345
+#: generics.py:344
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s başarıyla oluşturuldu."
 
-#: generics.py:374
+#: generics.py:373
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s silinemedi, hata: %(error)s."
 
-#: generics.py:385
+#: generics.py:384
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s başarıyla silindi."
 
-#: generics.py:431
+#: generics.py:430
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s güncellenemedi, hata: %(error)s."
 
-#: generics.py:442
+#: generics.py:441
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s başarıyla güncellendi."
 
 #: links.py:9
 msgid "About this"
-msgstr ""
+msgstr "Bunun hakkında"
 
 #: links.py:12 views.py:51
 msgid "Check for updates"
-msgstr ""
+msgstr "Güncellemeleri kontrol et"
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "Kullanıcı detayları"
 
 #: links.py:20
 msgid "Edit details"
-msgstr ""
+msgstr "Detayları düzenle"
 
 #: links.py:23
 msgid "Locale profile"
-msgstr ""
+msgstr "Yerel profil ayarı"
 
 #: links.py:27
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Yerel profili düzenle"
 
 #: links.py:31
 msgid "Source code"
-msgstr ""
+msgstr "Kaynak kodu"
 
 #: links.py:35
 msgid "Documentation"
-msgstr ""
+msgstr "Belgeleme"
 
 #: links.py:39
 msgid "Data filters"
-msgstr ""
+msgstr "Veri filtreleri"
 
 #: links.py:43
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:47 views.py:190
 msgid "License"
-msgstr ""
+msgstr "Lisans"
 
 #: links.py:50 views.py:204
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Diğer paket lisansları"
 
 #: links.py:54
 msgid "Setup"
-msgstr ""
+msgstr "Yükleme"
 
 #: links.py:57
 msgid "Support"
-msgstr ""
+msgstr "Destek"
 
 #: links.py:61 queues.py:10 views.py:234
 msgid "Tools"
-msgstr ""
+msgstr "Araçlar"
 
 #: literals.py:13
 msgid "Days"
-msgstr ""
+msgstr "Günler"
 
 #: literals.py:14
 msgid "Hours"
-msgstr ""
+msgstr "Saatler"
 
 #: literals.py:15
 msgid "Minutes"
-msgstr ""
+msgstr "Dakikalar"
 
 #: menus.py:12
 msgid "System"
@@ -158,149 +163,355 @@ msgstr ""
 
 #: menus.py:22 models.py:53
 msgid "User"
-msgstr ""
+msgstr "Kullanıcı"
 
 #: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr ""
+msgstr "İşlem %(count)d nesnesi üzerinde gerçekleştirildi"
 
 #: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgstr "İşlem %(count)d nesneleri üzerinde gerçekleştirildi"
 
 #: mixins.py:245
 msgid "Object"
-msgstr ""
+msgstr "Nesne"
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 #: models.py:25
 msgid "Filename"
-msgstr ""
+msgstr "Dosya adı"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Tarih saat"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Paylaşılan yüklenen dosya"
 
 #: models.py:32
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Paylaşılan yüklenen dosyalar"
 
 #: models.py:57
 msgid "Timezone"
-msgstr ""
+msgstr "Saat dilimi"
 
 #: models.py:60
 msgid "Language"
-msgstr ""
+msgstr "Dil"
 
 #: models.py:67
 msgid "User locale profile"
-msgstr ""
+msgstr "Kullanıcı yerel ayar profili"
 
 #: models.py:68
 msgid "User locale profiles"
-msgstr ""
+msgstr "Kullanıcı yerel ayar profilleri"
 
 #: queues.py:8
 msgid "Default"
-msgstr ""
+msgstr "Varsayılan"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "Ortak periyodik"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Eski yüklemeleri sil"
 
-#: settings.py:13
+#: settings.py:15
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Tüm uygulamalara günlük kaydını otomatik olarak etkinleştirin."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Veritabanına bağımlı arka plan görevlerini geciktirme zamanını oluşturmak için kullanılır."
 
-#: settings.py:27
+#: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "Sayfa başına kaç tane nesnenin görüntüleneceğini belirten bir tam sayı."
 
-#: settings.py:33
+#: settings.py:35
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Tüm çalışanların dosyaları paylaşmak için kullanabileceği bir depolama alanı."
 
-#: settings.py:38
+#: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+msgstr "Geçici dizin, küçük resimleri, önizlemeleri ve geçici dosyaları saklamak için site genelinde kullanılır."
+
+#: settings.py:48
+msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Harfler, rakamlar ve alt çizgilerden oluşan geçerli bir 'dahili ad' girin."
 
 #: views.py:44
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Kullandığınız sürüm güncelliğini yitirmiştir. En son sürümü %s"
 
 #: views.py:48
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Sürümünüz güncel."
 
 #: views.py:65
 msgid "Current user details"
-msgstr ""
+msgstr "Geçerli kullanıcı ayrıntıları"
 
 #: views.py:70
 msgid "Edit current user details"
-msgstr ""
+msgstr "Geçerli kullanıcı ayrıntılarını düzenle"
 
 #: views.py:90
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Geçerli kullanıcı yerel ayarları profil ayrıntıları"
 
 #: views.py:97
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Geçerli kullanıcı yerel ayarları ayrıntılarını düzenle"
 
 #: views.py:153
 msgid "Filter selection"
-msgstr ""
+msgstr "Filtre seçimi"
 
 #: views.py:169
 #, python-format
 msgid "Results for filter: %s"
-msgstr ""
+msgstr "Filtre için sonuçlar: %s"
 
 #: views.py:176
 msgid "Filter not found"
-msgstr ""
+msgstr "Filtre bulunamadı"
 
 #: views.py:217
 msgid "Setup items"
-msgstr ""
+msgstr "Kurulum öğeleri"
 
 #: views.py:261
 msgid "No action selected."
-msgstr ""
+msgstr "İşlem seçilmedi."
 
 #: views.py:269
 msgid "Must select at least one item."
-msgstr ""
+msgstr "En az bir öğe seçmelisiniz."
 
 #: widgets.py:48
 msgid "None"
-msgstr ""
+msgstr "Yok"
+
+#~ msgid "About"
+#~ msgstr "About"
+
+#~ msgid "Account"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
+
+#~ msgid "Password hash"
+#~ msgstr "password hash"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "auto admin properties"
+
+#~ msgid "Function found"
+#~ msgstr "function found"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr "E-mail conflict, another user has that same email."
+
+#~ msgid "Current user's details updated."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
+
+#~ msgid "This account is inactive."
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+#~ msgstr ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "Allow non authenticated users, access to all views"
+
+#~ msgid "Current user password change"
+#~ msgstr "Current user password change"
+
+#~ msgid "Your password has been successfully changed."
+#~ msgstr "Your password has been successfully changed."
+
+#~ msgid "%(selection)s added successfully added to %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
+
+#~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
+
+#~ msgid "A5"
+#~ msgstr "A5"
+
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgid "B5"
+#~ msgstr "B5"
+
+#~ msgid "B4"
+#~ msgstr "B4"
+
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgid "Ledger"
+#~ msgstr "Ledger"
+
+#~ msgid "Portrait"
+#~ msgstr "Portrait"
+
+#~ msgid "Landscape"
+#~ msgstr "Landscape"
+
+#~ msgid "license"
+#~ msgstr "license"
+
+#~ msgid "anonymous user"
+#~ msgstr "anonymous user"
+
+#~ msgid "password"
+#~ msgstr "password"
+
+#~ msgid "Insufficient permissions"
+#~ msgstr "Insufficient permissions"
+
+#~ msgid "You don't have enough permissions for this operation."
+#~ msgstr "You don't have enough permissions for this operation."
+
+#~ msgid "Sorry, but the requested page could not be found."
+#~ msgstr "Sorry, but the requested page could not be found."
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Details for %(object_name)s: %(object)s"
+
+#~ msgid "Details for: %(object)s"
+#~ msgstr "Details for: %(object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Details for %(object_name)s: %(object)s"
+
+#~ msgid "Edit: %(object)s"
+#~ msgstr "Edit %(object_name)s:"
+
+#~ msgid "Create new %(object_name)s"
+#~ msgstr "Create new %(object_name)s"
+
+#~ msgid "Create"
+#~ msgstr "Create"
+
+#~ msgid "Assign %(title)s %(object)s"
+#~ msgstr "Assign %(title)s %(object)s"
+
+#~ msgid "Confirm"
+#~ msgstr "Confirm"
+
+#~ msgid "Confirm delete"
+#~ msgstr "Confirm delete"
+
+#~ msgid "form icon"
+#~ msgstr "form icon"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Are you sure you wish to delete %(object_name)s: %(object)s?"
+
+#~ msgid "Are you sure you wish to delete: %(object)s?"
+#~ msgstr "Are you sure you wish to delete: %(object)s?"
+
+#~ msgid "Yes"
+#~ msgstr "Yes"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "required"
+#~ msgstr "required"
+
+#~ msgid "Save"
+#~ msgstr "Save"
+
+#~ msgid "Submit"
+#~ msgstr "Submit"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
+
+#~ msgid "List of %(title)s"
+#~ msgstr "List of %(stripped_title)s"
+
+#~ msgid ""
+#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+#~ "%(page_number)s of %(total_pages)s)"
+#~ msgstr ""
+#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+#~ "%(page_number)s of %(total_pages)s)"
+
+#~ msgid "List of %(title)s (%(total)s)"
+#~ msgstr "List of %(title)s (%(total)s)"
+
+#~ msgid "Identifier"
+#~ msgstr "Identifier"
+
+#~ msgid "There are no %(title)s"
+#~ msgstr "There are no %(stripped_title)s"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Password change"
+#~ msgstr "Password change"
+
+#~ msgid "lock field"
+#~ msgstr "lock field"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"

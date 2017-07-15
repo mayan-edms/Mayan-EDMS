@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -9,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:44 queues.py:8
@@ -159,9 +159,7 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein "
-"Status kann initial sein."
+msgstr "Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein Status kann initial sein."
 
 #: models.py:101
 msgid "Initial"
@@ -171,9 +169,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der "
-"Fertigstellung in Bezug auf den Workflow angibt."
+msgstr "Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der Fertigstellung in Bezug auf den Workflow angibt."
 
 #: models.py:113
 msgid "Workflow state"
@@ -338,7 +334,7 @@ msgstr "Dokumententypen zugeordnet zu diesem Workflow"
 msgid "Document types assigned the workflow: %s"
 msgstr "Dokumententypen zugeordnet zu Workflow %s"
 
-#: views.py:214 views.py:492
+#: views.py:214 views.py:498
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Status für Workflow %s"
@@ -362,20 +358,20 @@ msgstr "Übergänge für Workflow %s erstellen"
 msgid "Unable to save transition; integrity error."
 msgstr "Integritätsfehler beim Speichern des Übergangs"
 
-#: views.py:439
+#: views.py:440
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr "Dokumente mit Workflow %s"
 
-#: views.py:457
+#: views.py:461
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Dokumente im Workflow \"%s\", Status \"%s\""
 
-#: views.py:506
+#: views.py:512
 msgid "Launch all workflows?"
 msgstr "Alle Workflows starten?"
 
-#: views.py:513
+#: views.py:519
 msgid "Workflow launch queued successfully."
 msgstr "Workflow-Start wurde erfolgreich vorgemerkt."

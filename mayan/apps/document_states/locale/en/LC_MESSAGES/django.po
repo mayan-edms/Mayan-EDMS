@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:27-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -345,7 +345,7 @@ msgstr "Document types assigned this workflow"
 msgid "Document types assigned the workflow: %s"
 msgstr "Document types assigned the workflow: %s"
 
-#: views.py:214 views.py:492
+#: views.py:214 views.py:498
 #, python-format
 msgid "States of workflow: %s"
 msgstr "States of workflow: %s"
@@ -369,20 +369,20 @@ msgstr "Create transitions for workflow: %s"
 msgid "Unable to save transition; integrity error."
 msgstr "Unable to save transition; integrity error."
 
-#: views.py:439
+#: views.py:440
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr "Documents with the workflow: %s"
 
-#: views.py:457
+#: views.py:461
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documents in the workflow \"%s\", state \"%s\""
 
-#: views.py:506
+#: views.py:512
 msgid "Launch all workflows?"
 msgstr "Launch all workflows?"
 
-#: views.py:513
+#: views.py:519
 msgid "Workflow launch queued successfully."
 msgstr "Workflow launch queued successfully."

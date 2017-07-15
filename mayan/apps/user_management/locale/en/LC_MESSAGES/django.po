@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:29-0400\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
 "PO-Revision-Date: 2017-04-21 16:27+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,35 +19,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "User management"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr "All the groups."
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr "All the users."
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr "Members"
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr "Full name"
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr "Active"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr "Has usable password?"
 
@@ -71,7 +71,7 @@ msgstr "Delete"
 msgid "Edit"
 msgstr "Edit"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Groups"
 
@@ -118,6 +118,26 @@ msgstr "Edit existing users"
 #: permissions.py:31
 msgid "View existing users"
 msgstr "View existing users"
+
+#: search.py:19
+#, fuzzy
+#| msgid "Full name"
+msgid "First name"
+msgstr "Full name"
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+#, fuzzy
+#| msgid "user"
+msgid "username"
+msgstr "user"
+
+#: search.py:41
+msgid "Name"
+msgstr ""
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
@@ -330,6 +350,3 @@ msgstr "Error reseting password for user \"%(user)s\": %(error)s"
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

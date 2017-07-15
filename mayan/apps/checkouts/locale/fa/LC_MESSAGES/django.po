@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-09 02:26-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:36 links.py:30
@@ -51,7 +51,7 @@ msgstr "سند در حال حاضر خارج و یا checked out شده است."
 msgid "Document status"
 msgstr ""
 
-#: forms.py:37 models.py:37 views.py:79
+#: forms.py:37 models.py:37 views.py:84
 msgid "User"
 msgstr "کاربر"
 
@@ -178,45 +178,45 @@ msgstr "سند \"%s\" بالاجبار خارج ویا checked out شد."
 msgid "Check out document: %s"
 msgstr "خروج و یا check out سند: %s"
 
-#: views.py:75
+#: views.py:81
 msgid "Documents checked out"
 msgstr "اسناد خارج شده check out"
 
-#: views.py:85
+#: views.py:90
 msgid "Checkout time and date"
 msgstr "زمان و تاریخ خروج"
 
-#: views.py:91
+#: views.py:96
 msgid "Checkout expiration"
 msgstr "زمان پایان خارج بودن Checkout"
 
-#: views.py:112
+#: views.py:116
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "جزئیات خروج و یا Checkout سند: %s"
 
-#: views.py:130
+#: views.py:134
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr ""
 
-#: views.py:134
+#: views.py:138
 #, python-format
 msgid "Check in the document: %s?"
 msgstr ""
 
-#: views.py:162
+#: views.py:166
 msgid "Document has not been checked out."
 msgstr "سند خارج و یا checked out نشده است."
 
-#: views.py:167
+#: views.py:171
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "خطا در زمان خروج و یا checkout سند: %s"
 
-#: views.py:172
+#: views.py:176
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "سند \"%s\" با موفقیت وارد و یا  checked in شد."
@@ -262,11 +262,11 @@ msgstr ""
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
