@@ -183,7 +183,7 @@ class Menu(object):
         for link in self.bound_links.get(current_view, []):
             resolved_link = link.resolve(context=context)
             if resolved_link:
-                if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                if resolved_link.link not in self.unbound_links.get(current_view, ()):
                     resolved_links.append(resolved_link)
 
         if resolved_links:
@@ -199,8 +199,9 @@ class Menu(object):
             else:
                 # "Always show" links
                 resolved_link = link.resolve(context=context)
-                if resolved_link.link not in self.unbound_links.get(None, ()):
-                    resolved_links.append(resolved_link)
+                if resolved_link:
+                    if resolved_link.link not in self.unbound_links.get(None, ()):
+                        resolved_links.append(resolved_link)
 
         if resolved_links:
             result.append(resolved_links)
