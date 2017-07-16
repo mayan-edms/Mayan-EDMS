@@ -155,7 +155,8 @@ class Menu(object):
                                     resolved_object=resolved_navigation_object
                                 )
                                 if resolved_link:
-                                    resolved_links.append(resolved_link)
+                                    if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                                        resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
@@ -166,7 +167,8 @@ class Menu(object):
                                     resolved_object=resolved_navigation_object
                                 )
                                 if resolved_link:
-                                    resolved_links.append(resolved_link)
+                                    if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                                        resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
                 except TypeError:
@@ -181,7 +183,8 @@ class Menu(object):
         for link in self.bound_links.get(current_view, []):
             resolved_link = link.resolve(context=context)
             if resolved_link:
-                resolved_links.append(resolved_link)
+                if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                    resolved_links.append(resolved_link)
 
         if resolved_links:
             result.append(resolved_links)
@@ -192,30 +195,17 @@ class Menu(object):
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
                 resolved_link = link
-            else:
-                resolved_link = link.resolve(context=context)
-
-            if resolved_link:
                 resolved_links.append(resolved_link)
+            else:
+                # "Always show" links
+                resolved_link = link.resolve(context=context)
+                if resolved_link.link not in self.unbound_links.get(None, ()):
+                    resolved_links.append(resolved_link)
 
         if resolved_links:
             result.append(resolved_links)
 
         if result:
-            unbound_links = []
-            unbound_links.extend(self.unbound_links.get(source, ()))
-            unbound_links.extend(self.unbound_links.get(current_view, ()))
-
-            new_result = []
-            for resolved_link in result[0]:
-                try:
-                    if resolved_link.link not in unbound_links:
-                        new_result.append(resolved_link)
-                except AttributeError:
-                    new_result.append(resolved_link)
-
-            result[0] = new_result
-
             # Sort links by position value passed during bind
             result[0] = sorted(
                 result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
