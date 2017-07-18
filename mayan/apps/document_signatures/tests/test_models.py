@@ -10,7 +10,7 @@ from common.tests import BaseTestCase
 from django_gpg.models import Key
 from django_gpg.tests.literals import TEST_KEY_DATA, TEST_KEY_PASSPHRASE
 from documents.models import DocumentType, DocumentVersion
-from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
@@ -26,7 +26,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
     def setUp(self):
         super(DocumentSignaturesTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -255,7 +255,7 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
         super(EmbeddedSignaturesTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):

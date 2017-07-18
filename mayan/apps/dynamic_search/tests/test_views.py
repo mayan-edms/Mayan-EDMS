@@ -5,7 +5,7 @@ from django.test import override_settings
 from common.tests.test_views import GenericViewTestCase
 from documents.models import DocumentType
 from documents.search import document_search
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -21,7 +21,7 @@ class Issue46TestCase(GenericViewTestCase):
         self.document_count = 4
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         # Upload many instances of the same test document

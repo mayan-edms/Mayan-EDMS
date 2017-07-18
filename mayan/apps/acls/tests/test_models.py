@@ -8,14 +8,15 @@ from django.test import override_settings
 from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
-from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.tests import (
+    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_TYPE_2_LABEL
+)
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP_NAME
 
 from ..models import AccessControlList
-
-TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -23,11 +24,11 @@ class PermissionTestCase(BaseTestCase):
     def setUp(self):
         super(PermissionTestCase, self).setUp()
         self.document_type_1 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.document_type_2 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_2
+            label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:

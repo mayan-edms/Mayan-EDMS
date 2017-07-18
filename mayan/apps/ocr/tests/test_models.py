@@ -6,7 +6,7 @@ from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.settings import setting_language_choices
 from documents.tests import (
-    TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+    TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -19,7 +19,7 @@ class DocumentOCRTestCase(BaseTestCase):
         super(DocumentOCRTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -46,7 +46,7 @@ class GermanOCRSupportTestCase(BaseTestCase):
         super(GermanOCRSupportTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         # Get corresponding language code for German from the default language

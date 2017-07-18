@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.test import override_settings
 
 from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
@@ -148,7 +148,7 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.metadata_type = MetadataType.objects.create(
@@ -285,7 +285,7 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.metadata_type = MetadataType.objects.create(

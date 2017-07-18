@@ -6,7 +6,7 @@ from documents.permissions import (
     permission_document_properties_edit, permission_document_view
 )
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE_2, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
 
@@ -73,7 +73,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_metadata_document_edit)
 
         document_type_2 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_2
+            label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
         metadata_type_2 = MetadataType.objects.create(

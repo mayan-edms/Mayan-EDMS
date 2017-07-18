@@ -12,7 +12,7 @@ from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
-    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
+    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
@@ -102,7 +102,7 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
     def setUp(self):
         super(DocumentUploadIssueTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):

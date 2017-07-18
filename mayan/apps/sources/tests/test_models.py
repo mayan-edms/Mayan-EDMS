@@ -9,7 +9,7 @@ from common.utils import mkdtemp
 from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.tests import (
-    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
@@ -30,7 +30,7 @@ class UploadDocumentTestCase(BaseTestCase):
     def setUp(self):
         super(UploadDocumentTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.admin_user = get_user_model().objects.create_superuser(
@@ -97,7 +97,7 @@ class CompressedUploadsTestCase(BaseTestCase):
     def setUp(self):
         super(CompressedUploadsTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):

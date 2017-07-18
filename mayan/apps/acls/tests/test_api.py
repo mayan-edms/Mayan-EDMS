@@ -10,7 +10,7 @@ from rest_framework.test import APITestCase
 from documents.models import DocumentType
 from documents.permissions import permission_document_view
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 from permissions.classes import Permission
 from permissions.models import Role
@@ -36,7 +36,7 @@ class ACLAPITestCase(APITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:

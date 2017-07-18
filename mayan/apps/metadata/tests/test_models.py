@@ -6,7 +6,7 @@ from django.test import override_settings
 
 from common.tests import BaseTestCase
 from documents.models import DocumentType
-from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 
 from ..models import MetadataType, DocumentMetadata
 
@@ -23,7 +23,7 @@ class MetadataTestCase(BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.metadata_type = MetadataType.objects.create(
