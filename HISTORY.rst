@@ -21,6 +21,7 @@
 - Add support for granting the document type edit, document type delete, and document type view
   permissions to individual document type instances.
 - Improved tests by testing for accesses.
+- Increase the size of the mailing profile label field to 128 characters.
 
 2.5.2 (2017-07-08)
 ==================

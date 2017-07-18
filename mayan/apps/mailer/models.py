@@ -30,7 +30,7 @@ class LogEntry(models.Model):
 
 class UserMailer(models.Model):
     label = models.CharField(
-        max_length=32, unique=True, verbose_name=_('Label')
+        max_length=128, unique=True, verbose_name=_('Label')
     )
     default = models.BooleanField(
         default=True, help_text=_(

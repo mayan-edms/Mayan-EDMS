@@ -80,6 +80,7 @@ Other Changes
 - Sort indexes by label.
 - Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
 - Improve code to unbind menu entries.
+- Increase the size of the mailing profile label field to 128 characters.
 
 Removals
 --------
