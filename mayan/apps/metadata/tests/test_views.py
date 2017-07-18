@@ -19,7 +19,7 @@ from ..permissions import (
 from .literals import (
     TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL,
     TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_NAME,
-    TEST_METADATA_TYPE_NAME_2
+    TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
 )
 
 
@@ -195,7 +195,9 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
                 file_object=File(file_object)
             )
 
-        self.document.metadata.create(metadata_type=self.metadata_type)
+        document_metadata = self.document.metadata.create(
+            metadata_type=self.metadata_type
+        )
         document_2.metadata.create(metadata_type=self.metadata_type)
 
         response = self.get(
@@ -205,6 +207,69 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, 'Edit', status_code=200)
+
+        # Test post to metadata removal view
+        response = self.post(
+            'metadata:metadata_multiple_edit', data={
+                'id_list': '{},{}'.format(self.document.pk, document_2.pk),
+                'form-0-id': document_metadata.pk,
+                'form-0-value': TEST_METADATA_VALUE_EDITED,
+                'form-0-update': True,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }, follow=True
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.document.metadata.first().value, TEST_METADATA_VALUE_EDITED
+        )
+        self.assertEqual(
+            document_2.metadata.first().value, TEST_METADATA_VALUE_EDITED
+        )
+
+    def test_multiple_document_metadata_remove(self):
+        self.login_user()
+
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_remove)
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document_2 = self.document_type.new_document(
+                file_object=File(file_object)
+            )
+
+        document_metadata = self.document.metadata.create(
+            metadata_type=self.metadata_type
+        )
+        document_2.metadata.create(metadata_type=self.metadata_type)
+
+        response = self.get(
+            'metadata:metadata_multiple_remove', data={
+                'id_list': '{},{}'.format(self.document.pk, document_2.pk)
+            }
+        )
+
+        self.assertEquals(response.status_code, 200)
+
+        # Test post to metadata removal view
+        response = self.post(
+            'metadata:metadata_multiple_remove', data={
+                'id_list': '{},{}'.format(self.document.pk, document_2.pk),
+                'form-0-id': document_metadata.pk,
+                'form-0-update': True,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }, follow=True
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(self.document.metadata.count(), 0)
+        self.assertEqual(document_2.metadata.count(), 0)
 
     def test_multiple_document_metadata_add(self):
         self.login_user()

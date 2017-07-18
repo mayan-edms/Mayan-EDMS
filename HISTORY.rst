@@ -1,3 +1,7 @@
+2.6.1 (2017-07-18)
+==================
+- Fix issue when editing or removing metadata from multiple documents.
+
 2.6 (2017-07-18)
 ================
 - Fix HTML mark up in window title. GitLab #397.
