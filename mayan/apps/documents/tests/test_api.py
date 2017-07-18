@@ -21,9 +21,9 @@ from user_management.tests.literals import (
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from ..models import Document, DocumentType
 
@@ -49,40 +49,46 @@ class DocumentTypeAPITestCase(BaseAPITestCase):
 
         response = self.client.post(
             reverse('rest_api:documenttype-list'), data={
-                'label': TEST_DOCUMENT_TYPE
+                'label': TEST_DOCUMENT_TYPE_LABEL
             }
         )
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(DocumentType.objects.all().count(), 1)
         self.assertEqual(
-            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE
+            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE_LABEL
         )
 
     def test_document_type_edit_via_put(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.put(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
         document_type = DocumentType.objects.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED)
 
     def test_document_type_edit_via_patch(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.patch(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
         document_type = DocumentType.objects.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED)
 
     def test_document_type_delete(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.delete(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,))
@@ -105,7 +111,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -361,7 +367,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -430,6 +436,3 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
 
         self.assertEqual(Document.trash.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
-
-    # TODO: def test_document_set_document_type(self):
-    #    pass

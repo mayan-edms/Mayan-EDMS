@@ -17,6 +17,10 @@
 - Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
 - Backport document's version list view permission.
 - Improve code to unbind menu entries.
+- Renamed the document type permission namespace from "Document setup" to "Document types".
+- Add support for granting the document type edit, document type delete, and document type view
+  permissions to individual document type instances.
+- Improved tests by testing for accesses.
 
 2.5.2 (2017-07-08)
 ==================

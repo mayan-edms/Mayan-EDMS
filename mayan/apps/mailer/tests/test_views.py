@@ -62,8 +62,8 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         self._create_user_mailer()
         self.login_user()
 
-        self.grant(permission_mailing_link)
-        self.grant(permission_user_mailer_use)
+        self.grant_permission(permission=permission_mailing_link)
+        self.grant_permission(permission=permission_user_mailer_use)
 
         self._request_document_link_send()
 
@@ -83,8 +83,8 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         self._create_user_mailer()
         self.login_user()
 
-        self.grant(permission_mailing_send_document)
-        self.grant(permission_user_mailer_use)
+        self.grant_permission(permission=permission_mailing_send_document)
+        self.grant_permission(permission=permission_user_mailer_use)
 
         self._request_document_send()
 
@@ -113,7 +113,7 @@ class UserMailerViewTestCase(MailerTestMixin, GenericViewTestCase):
         self._create_user_mailer()
         self.login_user()
 
-        self.grant(permission_user_mailer_view)
+        self.grant_permission(permission=permission_user_mailer_view)
 
         response = self.get(
             'mailer:user_mailer_list',
@@ -137,7 +137,7 @@ class UserMailerViewTestCase(MailerTestMixin, GenericViewTestCase):
         self._create_user_mailer()
         self.login_user()
 
-        self.grant(permission_user_mailer_view)
+        self.grant_permission(permission=permission_user_mailer_view)
 
         self._request_user_mailer_delete()
 

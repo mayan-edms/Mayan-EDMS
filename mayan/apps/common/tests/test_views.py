@@ -7,6 +7,7 @@ from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 
+from acls.models import AccessControlList
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
@@ -74,7 +75,12 @@ class GenericViewTestCase(BaseTestCase):
             data=data, follow=follow
         )
 
-    def grant(self, permission):
+    def grant_access(self, permission, obj):
+        AccessControlList.objects.grant(
+            permission=permission, role=self.role, obj=obj
+        )
+
+    def grant_permission(self, permission):
         self.role.permissions.add(
             permission.stored_permission
         )

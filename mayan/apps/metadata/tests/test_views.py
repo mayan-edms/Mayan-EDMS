@@ -36,7 +36,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_metadata_add_view_no_permission(self):
         self.login_user()
 
-        self.grant(permission_document_view)
+        self.grant_permission(permission=permission_document_view)
 
         response = self.post(
             'metadata:metadata_add', args=(self.document.pk,),
@@ -51,9 +51,9 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_metadata_add_view_with_permission(self):
         self.login_user()
 
-        self.grant(permission_document_view)
-        self.grant(permission_metadata_document_add)
-        self.grant(permission_metadata_document_edit)
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_add)
+        self.grant_permission(permission=permission_metadata_document_edit)
 
         response = self.post(
             'metadata:metadata_add', args=(self.document.pk,),
@@ -69,8 +69,8 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        self.grant(permission_document_properties_edit)
-        self.grant(permission_metadata_document_edit)
+        self.grant_permission(permission=permission_document_properties_edit)
+        self.grant_permission(permission=permission_metadata_document_edit)
 
         document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2
@@ -119,7 +119,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
-        self.grant(permission_document_view)
+        self.grant_permission(permission=permission_document_view)
 
         # Test display of metadata removal form
         response = self.get(
@@ -154,8 +154,8 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
-        self.grant(permission_document_view)
-        self.grant(permission_metadata_document_remove)
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_remove)
 
         # Test display of metadata removal form
         response = self.get(
@@ -186,9 +186,9 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_multiple_document_metadata_edit(self):
         self.login_user()
 
-        self.grant(permission_document_view)
-        self.grant(permission_metadata_document_add)
-        self.grant(permission_metadata_document_edit)
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_add)
+        self.grant_permission(permission=permission_metadata_document_edit)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
@@ -209,9 +209,9 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_multiple_document_metadata_add(self):
         self.login_user()
 
-        self.grant(permission_document_view)
-        self.grant(permission_metadata_document_add)
-        self.grant(permission_metadata_document_edit)
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_add)
+        self.grant_permission(permission=permission_metadata_document_edit)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(

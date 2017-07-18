@@ -32,7 +32,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_transformation_list_view_with_permissions(self):
-        self.grant(permission=permission_transformation_view)
+        self.grant_permission(permission=permission_transformation_view)
         response = self._transformation_list_view()
 
         self.assertContains(
@@ -57,7 +57,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Transformation.objects.count(), 0)
 
     def test_transformation_create_view_with_permissions(self):
-        self.grant(permission=permission_transformation_create)
+        self.grant_permission(permission=permission_transformation_create)
         response = self._transformation_create_view()
 
         self.assertEqual(response.status_code, 302)
@@ -85,7 +85,7 @@ class TransformationViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Transformation.objects.count(), 1)
 
     def test_transformation_delete_view_with_permissions(self):
-        self.grant(permission=permission_transformation_delete)
+        self.grant_permission(permission=permission_transformation_delete)
         response = self._transformation_delete_view()
 
         self.assertEqual(response.status_code, 302)

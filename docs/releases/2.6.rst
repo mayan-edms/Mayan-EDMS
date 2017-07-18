@@ -59,6 +59,20 @@ access control now works on two levels. Now to attach a tag to a document,
 the permission to attach tags must be granted to the tag to attach and to the
 document that will receive the tag.
 
+ACL changes
+-----------
+The document type permissions namespace was renamed from "Document setup" to
+"Document types" for clarity. Along with that change, support was added 
+for granting the document type edit, document type delete, and document type view
+permissions to individual document type instances instead of just globally.
+
+Testing
+-------
+The documents app view tests now test for view access and not just permission.
+Testing against access is more robust and also tests for permissions
+implicitly.
+
+
 Other Changes
 -------------
 - Fix HTML mark up in window title. GitLab #397.

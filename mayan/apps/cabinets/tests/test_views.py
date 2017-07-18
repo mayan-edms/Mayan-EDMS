@@ -31,7 +31,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Cabinet.objects.count(), 0)
 
     def test_cabinet_create_view_with_permission(self):
-        self.grant(permission=permission_cabinet_create)
+        self.grant_permission(permission=permission_cabinet_create)
 
         response = self._request_create_cabinet(label=TEST_CABINET_LABEL)
 
@@ -41,7 +41,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
 
     def test_cabinet_create_duplicate_view_with_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
-        self.grant(permission=permission_cabinet_create)
+        self.grant_permission(permission=permission_cabinet_create)
         response = self._request_create_cabinet(label=TEST_CABINET_LABEL)
 
         # HTTP 200 with error message
@@ -60,7 +60,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Cabinet.objects.count(), 1)
 
     def test_cabinet_delete_view_with_permission(self):
-        self.grant(permission=permission_cabinet_delete)
+        self.grant_permission(permission=permission_cabinet_delete)
 
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
@@ -89,7 +89,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_edit_view_with_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.grant(permission=permission_cabinet_edit)
+        self.grant_permission(permission=permission_cabinet_edit)
 
         response = self._edit_cabinet(
             cabinet=cabinet, label=TEST_CABINET_EDITED_LABEL
@@ -109,7 +109,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_add_document_view_no_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.grant(permission=permission_cabinet_view)
+        self.grant_permission(permission=permission_cabinet_view)
 
         response = self._add_document_to_cabinet(cabinet=cabinet)
 
@@ -122,9 +122,9 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_add_document_view_with_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.grant(permission=permission_cabinet_view)
-        self.grant(permission=permission_cabinet_add_document)
-        self.grant(permission=permission_document_view)
+        self.grant_permission(permission=permission_cabinet_view)
+        self.grant_permission(permission=permission_cabinet_add_document)
+        self.grant_permission(permission=permission_document_view)
 
         response = self._add_document_to_cabinet(cabinet=cabinet)
 
@@ -146,7 +146,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_add_multiple_documents_view_no_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.grant(permission=permission_cabinet_view)
+        self.grant_permission(permission=permission_cabinet_view)
 
         response = self._add_multiple_documents_to_cabinet(cabinet=cabinet)
 
@@ -159,8 +159,8 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
     def test_cabinet_add_multiple_documents_view_with_permission(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.grant(permission=permission_cabinet_view)
-        self.grant(permission=permission_cabinet_add_document)
+        self.grant_permission(permission=permission_cabinet_view)
+        self.grant_permission(permission=permission_cabinet_add_document)
 
         response = self._add_multiple_documents_to_cabinet(cabinet=cabinet)
 
@@ -198,7 +198,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
 
         cabinet.documents.add(self.document)
 
-        self.grant(permission=permission_cabinet_remove_document)
+        self.grant_permission(permission=permission_cabinet_remove_document)
 
         response = self._remove_document_from_cabinet(cabinet=cabinet)
 
@@ -221,7 +221,7 @@ class CabinetViewTestCase(GenericDocumentViewTestCase):
 
     def test_cabinet_list_view_with_permission(self):
         self._create_cabinet()
-        self.grant(permission=permission_cabinet_view)
+        self.grant_permission(permission=permission_cabinet_view)
         response = self._request_cabinet_list()
 
         self.assertContains(

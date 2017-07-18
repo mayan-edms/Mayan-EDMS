@@ -30,7 +30,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_document_content_view_with_permission(self):
-        self.grant(permission_ocr_content_view)
+        self.grant_permission(permission=permission_ocr_content_view)
 
         response = self._document_content_view()
 
@@ -48,7 +48,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
     def test_document_download_view_with_permission(self):
         self.expected_content_type = 'application/octet-stream; charset=utf-8'
 
-        self.grant(permission=permission_ocr_content_view)
+        self.grant_permission(permission=permission_ocr_content_view)
         response = self.get(
             'ocr:document_ocr_download', args=(self.document.pk,)
         )

@@ -44,7 +44,7 @@ class DocumentTypeDocumentListView(DocumentListView):
 
 class DocumentTypeListView(SingleObjectListView):
     model = DocumentType
-    view_permission = permission_document_type_view
+    object_permission = permission_document_type_view
 
     def get_extra_context(self):
         return {
@@ -70,8 +70,8 @@ class DocumentTypeCreateView(SingleObjectCreateView):
 
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
+    object_permission = permission_document_type_delete
     post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_delete
 
     def get_extra_context(self):
         return {
@@ -87,8 +87,8 @@ class DocumentTypeEditView(SingleObjectEditView):
         'delete_time_unit'
     )
     model = DocumentType
+    object_permission = permission_document_type_edit
     post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
@@ -129,7 +129,7 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
 class DocumentTypeFilenameEditView(SingleObjectEditView):
     fields = ('enabled', 'filename',)
     model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
+    object_permission = permission_document_type_edit
 
     def get_extra_context(self):
         document_type_filename = self.get_object()
@@ -156,7 +156,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
 
 class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
     model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
+    object_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
@@ -181,7 +181,7 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
 
 class DocumentTypeFilenameListView(SingleObjectListView):
     model = DocumentType
-    view_permission = permission_document_type_view
+    object_permission = permission_document_type_view
 
     def get_document_type(self):
         return get_object_or_404(DocumentType, pk=self.kwargs['pk'])

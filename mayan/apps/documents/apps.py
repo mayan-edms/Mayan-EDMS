@@ -70,7 +70,9 @@ from .permissions import (
     permission_document_download, permission_document_edit,
     permission_document_new_version, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_version_revert,
+    permission_document_trash, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_version_revert, permission_document_version_view,
     permission_document_view
 )
 from .queues import *  # NOQA
@@ -173,7 +175,8 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
                 permission_document_restore, permission_document_trash,
-                permission_document_version_revert, permission_document_view,
+                permission_document_version_revert,
+                permission_document_version_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
@@ -181,7 +184,10 @@ class DocumentsApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=DocumentType, permissions=(permission_document_create,)
+            model=DocumentType, permissions=(
+                permission_document_create, permission_document_type_delete,
+                permission_document_type_edit, permission_document_type_view
+            )
         )
 
         ModelPermission.register_proxy(
@@ -191,13 +197,14 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )
-
-        ModelPermission.register_inheritance(
-            model=DocumentVersion, related='document',
-        )
-
         ModelPermission.register_inheritance(
             model=DocumentPage, related='document',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentTypeFilename, related='document_type',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentVersion, related='document',
         )
 
         # Document and document page thumbnail widget

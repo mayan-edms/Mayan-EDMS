@@ -21,7 +21,7 @@ class SmartSettingViewPermissionsTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_view_access_permitted(self):
-        self.grant(permission_settings_view)
+        self.grant_permission(permission=permission_settings_view)
 
         response = self.get('settings:namespace_list')
         self.assertEqual(response.status_code, 200)

@@ -35,7 +35,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
     def test_user_set_password_view_no_permissions(self):
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_view)
 
         response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
 
@@ -53,8 +53,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_user_set_password_view_with_permissions(self):
-        self.grant(permission=permission_user_edit)
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_edit)
+        self.grant_permission(permission=permission_user_view)
 
         response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
 
@@ -78,7 +78,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
     def test_user_multiple_set_password_view_no_permissions(self):
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_view)
 
         response = self._multiple_user_set_password(
             password=TEST_USER_PASSWORD_EDITED
@@ -98,8 +98,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_user_multiple_set_password_view_with_permissions(self):
-        self.grant(permission=permission_user_edit)
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_edit)
+        self.grant_permission(permission=permission_user_view)
 
         response = self._multiple_user_set_password(
             password=TEST_USER_PASSWORD_EDITED
@@ -120,7 +120,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_delete', args=(user.pk,)
@@ -134,8 +134,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.grant(permission=permission_user_delete)
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_delete)
+        self.grant_permission(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_delete', args=(user.pk,), follow=True
@@ -149,7 +149,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_multiple_delete', data={
@@ -165,8 +165,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
-        self.grant(permission=permission_user_delete)
-        self.grant(permission=permission_user_view)
+        self.grant_permission(permission=permission_user_delete)
+        self.grant_permission(permission=permission_user_view)
 
         response = self.post(
             'user_management:user_multiple_delete', data={
