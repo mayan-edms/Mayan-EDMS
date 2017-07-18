@@ -2,7 +2,7 @@
 Mayan EDMS v2.6 release notes
 =============================
 
-Released: July XX, 2017
+Released: July 18, 2017
 
 What's new
 ==========

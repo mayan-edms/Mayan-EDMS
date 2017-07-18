@@ -1,4 +1,4 @@
-2.6 (2017-07-XX)
+2.6 (2017-07-18)
 ================
 - Fix HTML mark up in window title. GitLab #397.
 - Add support for emailing documents to a recipient list. GitLab #396.
