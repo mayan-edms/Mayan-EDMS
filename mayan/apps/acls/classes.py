@@ -27,6 +27,10 @@ class ModelPermission(object):
         model.add_to_class('acls', GenericRelation(AccessControlList))
 
     @classmethod
+    def get_for_class(cls, klass):
+        return cls._registry.get(klass, ())
+
+    @classmethod
     def get_for_instance(cls, instance):
         StoredPermission = apps.get_model(
             app_label='permissions', model_name='StoredPermission'

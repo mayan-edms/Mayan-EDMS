@@ -12,6 +12,7 @@ from common.utils import return_attrib
 from permissions import Permission
 from permissions.models import StoredPermission
 
+from .exceptions import PermissionNotValidForClass
 from .classes import ModelPermission
 
 logger = logging.getLogger(__name__)
@@ -22,31 +23,6 @@ class AccessControlListManager(models.Manager):
     Implement a 3 tier permission system, involving a permissions, an actor
     and an object
     """
-
-    def get_inherited_permissions(self, role, obj):
-        try:
-            instance = obj.first()
-        except AttributeError:
-            instance = obj
-        else:
-            if not instance:
-                return StoredPermission.objects.none()
-
-        try:
-            parent_accessor = ModelPermission.get_inheritance(type(instance))
-        except KeyError:
-            return StoredPermission.objects.none()
-        else:
-            parent_object = return_attrib(instance, parent_accessor)
-            content_type = ContentType.objects.get_for_model(parent_object)
-            try:
-                return self.get(
-                    role=role, content_type=content_type,
-                    object_id=parent_object.pk
-                ).permissions.all()
-            except self.model.DoesNotExist:
-                return StoredPermission.objects.none()
-
     def check_access(self, permissions, user, obj, related=None):
         if user.is_superuser or user.is_staff:
             logger.debug(
@@ -191,3 +167,52 @@ class AccessControlListManager(models.Manager):
             return queryset.filter(parent_acl_query | acl_query)
         else:
             return queryset
+
+    def get_inherited_permissions(self, role, obj):
+        try:
+            instance = obj.first()
+        except AttributeError:
+            instance = obj
+        else:
+            if not instance:
+                return StoredPermission.objects.none()
+
+        try:
+            parent_accessor = ModelPermission.get_inheritance(type(instance))
+        except KeyError:
+            return StoredPermission.objects.none()
+        else:
+            parent_object = return_attrib(instance, parent_accessor)
+            content_type = ContentType.objects.get_for_model(parent_object)
+            try:
+                return self.get(
+                    role=role, content_type=content_type,
+                    object_id=parent_object.pk
+                ).permissions.all()
+            except self.model.DoesNotExist:
+                return StoredPermission.objects.none()
+
+    def grant(self, permission, role, obj):
+        class_permissions = ModelPermission.get_for_class(klass=obj.__class__)
+        if permission not in class_permissions:
+            raise PermissionNotValidForClass
+
+        content_type = ContentType.objects.get_for_model(model=obj)
+        acl, created = self.get_or_create(
+            content_type=content_type, object_id=obj.pk,
+            role=role
+        )
+
+        acl.permissions.add(permission.stored_permission)
+
+    def revoke(self, permission, role, obj):
+        content_type = ContentType.objects.get_for_model(model=obj)
+        acl, created = self.get_or_create(
+            content_type=content_type, object_id=obj.pk,
+            role=role
+        )
+
+        acl.permissions.remove(permission.stored_permission)
+
+        if acl.permissions.count() == 0:
+            acl.delete()
