@@ -133,10 +133,30 @@ release_via_docker_alpine:
 	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "cp -r /host_source/* . && apk update && apk add python2 py2-pip make && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make release"
 
 test_sdist_via_docker_ubuntu:
-	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make sdist_test_suit"
+	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	cp -r /host_source/* . && \
+	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+	locale-gen en_US.UTF-8 && \
+	update-locale LANG=en_US.UTF-8 && \
+	export LC_ALL=en_US.UTF-8 && \
+	apt-get update && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
+	pip install -r requirements/development.txt && \
+	make sdist_test_suit \
+	"
 
 test_wheel_via_docker_ubuntu:
-	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make wheel_test_suit"
+	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	cp -r /host_source/* . && \
+	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+	locale-gen en_US.UTF-8 && \
+	update-locale LANG=en_US.UTF-8 && \
+	export LC_ALL=en_US.UTF-8 && \
+	apt-get update && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
+	pip install -r requirements/development.txt && \
+	make wheel_test_suit \
+	"
 
 sdist_test_suit: sdist
 	rm -f -R _virtualenv
