@@ -416,7 +416,7 @@ class DocumentDownloadFormView(FormView):
     def get_extra_context(self):
         subtemplates_list = [
             {
-                'name': 'appearance/generic_list_subtemplate.html',
+                'name': 'appearance/generic_list_items_subtemplate.html',
                 'context': {
                     'object_list': self.queryset,
                     'hide_link': True,
