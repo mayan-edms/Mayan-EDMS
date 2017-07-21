@@ -1,3 +1,8 @@
+2.6.2 (2017-07-XX)
+==================
+- Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
+- Fix document page zoom.
+
 2.6.1 (2017-07-18)
 ==================
 - Fix issue when editing or removing metadata from multiple documents.
