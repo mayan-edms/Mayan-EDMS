@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django import forms
 from django.apps import apps
+from django.template.loader import render_to_string
 from django.utils.html import escape
 from django.utils.encoding import force_text
 from django.utils.html import format_html
@@ -58,8 +59,4 @@ def widget_document_tags(document, user):
 
 
 def widget_single_tag(tag):
-    return mark_safe(
-        '''
-            <span class="label label-tag" style="background: {}">{}</span>
-        '''.format(tag.color, escape(tag.label).replace(' ', '&nbsp;'))
-    )
+    return render_to_string('tags/tag_widget.html', {'tag': tag})
