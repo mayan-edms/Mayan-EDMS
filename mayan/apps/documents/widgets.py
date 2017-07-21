@@ -327,6 +327,8 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
 
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
     def get_title(self, instance):
         return force_text(instance)
 
