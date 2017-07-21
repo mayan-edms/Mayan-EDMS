@@ -231,10 +231,10 @@ class InstanceImageWidget(object):
                 '<i class="fa fa-clock-o fa-stack-1x"></i>'
                 '</span>'
                 '</div>'
-                '<img class="thin_border {image_class} pull-left" style="width: 100%;"'
+                '<img class="thin_border {image_class} pull-left" style="width: {width};"'
                 'data-url="{preview_full_url}" src="#" '
                 '/> '.format(
-                    height=self.height or '150',
+                    width=self.width or '100%', height=self.height or '150',
                     image_class=self.image_class,
                     preview_full_url=self.get_preview_view_url(instance=instance),
                     alt_text=self.alt_text
@@ -285,6 +285,8 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
 
 
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
     def get_click_view_kwargs(self, instance):
         return {
             'pk': instance.pk,
