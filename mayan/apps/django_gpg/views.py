@@ -4,7 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.core.files.base import ContentFile
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (

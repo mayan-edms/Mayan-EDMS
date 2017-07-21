@@ -8,12 +8,12 @@ from ..forms import MultiItemForm
 register = Library()
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menu_links(context, name, source=None):
     return Menu.get(name).resolve(context=context, source=source)
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menus_links(context, names, source=None):
     result = []
 

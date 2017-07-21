@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission

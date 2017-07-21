@@ -4,9 +4,9 @@ from json import dumps
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ugettext

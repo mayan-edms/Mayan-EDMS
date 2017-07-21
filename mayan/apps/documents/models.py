@@ -6,8 +6,8 @@ import uuid
 
 from django.conf import settings
 from django.core.files import File
-from django.core.urlresolvers import reverse
 from django.db import models, transaction
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -150,7 +150,7 @@ class Document(models.Model):
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
-        DocumentType, related_name='documents',
+        DocumentType, on_delete=models.CASCADE, related_name='documents',
         verbose_name=_('Document type')
     )
     label = models.CharField(
@@ -363,7 +363,8 @@ class DocumentVersion(models.Model):
         cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(
-        Document, related_name='versions', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='versions',
+        verbose_name=_('Document')
     )
     timestamp = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Timestamp')
@@ -648,7 +649,7 @@ class DocumentTypeFilename(models.Model):
     quick rename functionality
     """
     document_type = models.ForeignKey(
-        DocumentType, related_name='filenames',
+        DocumentType, on_delete=models.CASCADE, related_name='filenames',
         verbose_name=_('Document type')
     )
     filename = models.CharField(
@@ -672,7 +673,7 @@ class DocumentPage(models.Model):
     Model that describes a document version page
     """
     document_version = models.ForeignKey(
-        DocumentVersion, related_name='pages',
+        DocumentVersion, on_delete=models.CASCADE, related_name='pages',
         verbose_name=_('Document version')
     )
     page_number = models.PositiveIntegerField(
@@ -845,7 +846,7 @@ class DocumentPage(models.Model):
 
 class DocumentPageCachedImage(models.Model):
     document_page = models.ForeignKey(
-        DocumentPage, related_name='cached_images',
+        DocumentPage, on_delete=models.CASCADE, related_name='cached_images',
         verbose_name=_('Document page')
     )
     filename = models.CharField(max_length=128, verbose_name=_('Filename'))
@@ -874,10 +875,12 @@ class RecentDocument(models.Model):
     a given user
     """
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, editable=False, verbose_name=_('User')
+        settings.AUTH_USER_MODEL, db_index=True, editable=False,
+        on_delete=models.CASCADE, verbose_name=_('User')
     )
     document = models.ForeignKey(
-        Document, editable=False, verbose_name=_('Document')
+        Document, editable=False, on_delete=models.CASCADE,
+        verbose_name=_('Document')
     )
     datetime_accessed = models.DateTimeField(
         auto_now=True, db_index=True, verbose_name=_('Accessed')
@@ -901,7 +904,8 @@ class RecentDocument(models.Model):
 @python_2_unicode_compatible
 class DuplicatedDocument(models.Model):
     document = models.ForeignKey(
-        Document, related_name='duplicates', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='duplicates',
+        verbose_name=_('Document')
     )
     documents = models.ManyToManyField(
         Document, verbose_name=_('Duplicated documents')

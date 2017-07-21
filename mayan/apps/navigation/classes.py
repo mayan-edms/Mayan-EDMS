@@ -8,9 +8,9 @@ import urlparse
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import resolve, reverse
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
+from django.urls import resolve, reverse
 from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
 

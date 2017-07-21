@@ -12,8 +12,8 @@ class DocumentTypeSettings(models.Model):
     Define for OCR for a specific document should behave
     """
     document_type = models.OneToOneField(
-        DocumentType, related_name='ocr_settings', unique=True,
-        verbose_name=_('Document type')
+        DocumentType, on_delete=models.CASCADE, related_name='ocr_settings',
+        unique=True, verbose_name=_('Document type')
     )
     auto_ocr = models.BooleanField(
         default=True,
@@ -28,7 +28,7 @@ class DocumentTypeSettings(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionOCRError(models.Model):
     document_version = models.ForeignKey(
-        DocumentVersion, related_name='ocr_errors',
+        DocumentVersion, on_delete=models.CASCADE, related_name='ocr_errors',
         verbose_name=_('Document version')
     )
     datetime_submitted = models.DateTimeField(
@@ -51,7 +51,7 @@ class DocumentPageContent(models.Model):
     Model that describes a document page content
     """
     document_page = models.OneToOneField(
-        DocumentPage, related_name='ocr_content',
+        DocumentPage, on_delete=models.CASCADE, related_name='ocr_content',
         verbose_name=_('Document page')
     )
     content = models.TextField(blank=True, verbose_name=_('Content'))

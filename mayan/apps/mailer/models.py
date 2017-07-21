@@ -111,7 +111,8 @@ class UserMailer(models.Model):
 
 class UserMailerLogEntry(models.Model):
     user_mailer = models.ForeignKey(
-        UserMailer, related_name='error_log', verbose_name=_('User mailer')
+        UserMailer, on_delete=models.CASCADE, related_name='error_log',
+        verbose_name=_('User mailer')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_('Date time')

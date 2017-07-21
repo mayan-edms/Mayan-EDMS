@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
-from django.core.urlresolvers import reverse
 from django.db import models, transaction
+from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,7 +19,8 @@ from .search import cabinet_search  # NOQA
 @python_2_unicode_compatible
 class Cabinet(MPTTModel):
     parent = TreeForeignKey(
-        'self', blank=True, db_index=True, null=True, related_name='children'
+        'self', blank=True, db_index=True, null=True,
+        on_delete=models.CASCADE, related_name='children'
     )
     label = models.CharField(max_length=128, verbose_name=_('Label'))
     documents = models.ManyToManyField(

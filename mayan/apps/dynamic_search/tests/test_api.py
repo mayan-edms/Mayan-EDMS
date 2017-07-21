@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from json import loads
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.urls import reverse
 
 from documents.models import DocumentType
 from documents.search import document_search

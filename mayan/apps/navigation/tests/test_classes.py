@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.urlresolvers import reverse
 from django.template import Context
+from django.urls import reverse
 
 from acls.models import AccessControlList
 from common.tests.literals import TEST_VIEW_NAME

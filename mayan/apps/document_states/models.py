@@ -4,9 +4,9 @@ import logging
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
-from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
 from django.db.models import F, Max, Q
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -90,7 +90,8 @@ class WorkflowState(models.Model):
     the Completion Amount will show 66%.
     """
     workflow = models.ForeignKey(
-        Workflow, related_name='states', verbose_name=_('Workflow')
+        Workflow, on_delete=models.CASCADE, related_name='states',
+        verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     initial = models.BooleanField(
@@ -150,16 +151,18 @@ class WorkflowState(models.Model):
 @python_2_unicode_compatible
 class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(
-        Workflow, related_name='transitions', verbose_name=_('Workflow')
+        Workflow, on_delete=models.CASCADE, related_name='transitions',
+        verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
 
     origin_state = models.ForeignKey(
-        WorkflowState, related_name='origin_transitions',
-        verbose_name=_('Origin state')
+        WorkflowState, on_delete=models.CASCADE,
+        related_name='origin_transitions', verbose_name=_('Origin state')
     )
     destination_state = models.ForeignKey(
-        WorkflowState, related_name='destination_transitions',
+        WorkflowState, on_delete=models.CASCADE,
+        related_name='destination_transitions',
         verbose_name=_('Destination state')
     )
 
@@ -178,10 +181,12 @@ class WorkflowTransition(models.Model):
 @python_2_unicode_compatible
 class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(
-        Workflow, related_name='instances', verbose_name=_('Workflow')
+        Workflow, on_delete=models.CASCADE, related_name='instances',
+        verbose_name=_('Workflow')
     )
     document = models.ForeignKey(
-        Document, related_name='workflows', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='workflows',
+        verbose_name=_('Document')
     )
 
     def __str__(self):
@@ -290,16 +295,20 @@ class WorkflowInstanceLogEntry(models.Model):
     the document state to the Actual state.
     """
     workflow_instance = models.ForeignKey(
-        WorkflowInstance, related_name='log_entries',
-        verbose_name=_('Workflow instance')
+        WorkflowInstance, on_delete=models.CASCADE,
+        related_name='log_entries', verbose_name=_('Workflow instance')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Datetime')
     )
     transition = models.ForeignKey(
-        WorkflowTransition, verbose_name=_('Transition')
+        WorkflowTransition, on_delete=models.CASCADE,
+        verbose_name=_('Transition')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        verbose_name=_('User')
+    )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     def __str__(self):

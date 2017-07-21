@@ -419,7 +419,7 @@ class IntervalBaseModel(OutOfProcessSource):
         DocumentType,
         help_text=_(
             'Assign a document type to documents uploaded from this source.'
-        ),
+        ), on_delete=models.CASCADE,
         verbose_name=_('Document type')
     )
     uncompress = models.CharField(
@@ -509,14 +509,14 @@ class EmailBaseModel(IntervalBaseModel):
         MetadataType, blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s subject.'
-        ), null=True, related_name='email_subject',
+        ), on_delete=models.CASCADE, null=True, related_name='email_subject',
         verbose_name=_('Subject metadata type')
     )
     from_metadata_type = models.ForeignKey(
         MetadataType, blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s "from" value.'
-        ), null=True, related_name='email_from',
+        ), on_delete=models.CASCADE, null=True, related_name='email_from',
         verbose_name=_('From metadata type')
     )
     store_body = models.BooleanField(
@@ -767,7 +767,8 @@ class WatchFolderSource(IntervalBaseModel):
 
 class SourceLog(models.Model):
     source = models.ForeignKey(
-        Source, related_name='logs', verbose_name=_('Source')
+        Source, on_delete=models.CASCADE, related_name='logs',
+        verbose_name=_('Source')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_('Date time')

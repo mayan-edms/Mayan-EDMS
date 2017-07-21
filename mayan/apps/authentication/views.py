@@ -6,10 +6,11 @@ from django.contrib.auth.views import (
     login, password_change, password_reset, password_reset_confirm,
     password_reset_complete, password_reset_done
 )
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+
 from stronghold.decorators import public
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
@@ -29,7 +30,7 @@ def login_view(request):
     else:
         kwargs['authentication_form'] = UsernameAuthenticationForm
 
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         extra_context = {'appearance_type': 'plain'}
 
         result = login(request, extra_context=extra_context, **kwargs)

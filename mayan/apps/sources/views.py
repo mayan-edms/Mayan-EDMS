@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
@@ -232,7 +232,7 @@ class UploadInteractiveView(UploadBaseView):
                 if forms['document_form'].cleaned_data['document_type_available_filenames']:
                     label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
 
-            if not self.request.user.is_anonymous():
+            if not self.request.user.is_anonymous:
                 user_id = self.request.user.pk
             else:
                 user_id = None
@@ -372,7 +372,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             except Exception as exception:
                 messages.error(self.request, exception)
 
-            if not self.request.user.is_anonymous():
+            if not self.request.user.is_anonymous:
                 user_id = self.request.user.pk
             else:
                 user_id = None

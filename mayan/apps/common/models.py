@@ -49,8 +49,8 @@ class SharedUploadedFile(models.Model):
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, related_name='locale_profile',
-        verbose_name=_('User')
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name='locale_profile', verbose_name=_('User')
     )
     timezone = models.CharField(
         choices=zip(common_timezones, common_timezones), max_length=48,

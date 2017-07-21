@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.urls import reverse
 
 from documents.models import DocumentType
 from documents.tests.literals import (

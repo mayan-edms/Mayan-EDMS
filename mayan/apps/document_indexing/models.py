@@ -2,9 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.template import Context, Template
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -145,9 +145,12 @@ class IndexTemplateNode(MPTTModel):
     hierarchy of levels. Each level can contain further levels or a list of
     documents but not both.
     """
-    parent = TreeForeignKey('self', blank=True, null=True)
+    parent = TreeForeignKey(
+        'self', blank=True, null=True, on_delete=models.CASCADE
+    )
     index = models.ForeignKey(
-        Index, related_name='node_templates', verbose_name=_('Index')
+        Index, on_delete=models.CASCADE, related_name='node_templates',
+        verbose_name=_('Index')
     )
     expression = models.TextField(
         help_text=_(
@@ -272,9 +275,12 @@ class IndexTemplateNode(MPTTModel):
 
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True)
+    parent = TreeForeignKey(
+        'self', blank=True, null=True, on_delete=models.CASCADE
+    )
     index_template_node = models.ForeignKey(
-        IndexTemplateNode, related_name='index_instance_nodes',
+        IndexTemplateNode, on_delete=models.CASCADE,
+        related_name='index_instance_nodes',
         verbose_name=_('Index template node')
     )
     value = models.CharField(

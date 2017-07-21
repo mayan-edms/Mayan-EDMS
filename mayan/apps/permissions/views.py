@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 import itertools
 
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 

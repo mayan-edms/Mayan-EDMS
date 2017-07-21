@@ -144,7 +144,7 @@ class PassthroughManager(models.Manager):
 
 class RecentDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
-        if user.is_authenticated():
+        if user.is_authenticated:
             new_recent, created = self.model.objects.get_or_create(
                 user=user, document=document
             )
@@ -160,7 +160,7 @@ class RecentDocumentManager(models.Manager):
     def get_for_user(self, user):
         document_model = apps.get_model('documents', 'document')
 
-        if user.is_authenticated():
+        if user.is_authenticated:
             return document_model.objects.filter(
                 recentdocument__user=user
             ).order_by('-recentdocument__datetime_accessed')
