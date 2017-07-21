@@ -231,9 +231,9 @@ class DocumentAPITestCase(BaseAPITestCase):
         with open(TEST_DOCUMENT_PATH) as file_object:
             document.new_version(file_object=file_object)
 
-        self.assertEqual(document.versions.count(), 2)
+        document.refresh_from_db()
 
-        last_version = document.versions.last()
+        self.assertEqual(document.versions.count(), 2)
 
         response = self.client.get(
             reverse(
@@ -241,8 +241,10 @@ class DocumentAPITestCase(BaseAPITestCase):
                 args=(document.pk,)
             )
         )
+
         self.assertEqual(
-            response.data['results'][1]['checksum'], last_version.checksum
+            response.data['results'][1]['checksum'],
+            document.latest_version.checksum
         )
 
     def test_document_download(self):

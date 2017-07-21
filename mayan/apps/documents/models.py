@@ -389,6 +389,11 @@ class DocumentVersion(models.Model):
         verbose_name=_('Checksum')
     )
 
+    class Meta:
+        ordering = ('timestamp',)
+        verbose_name = _('Document version')
+        verbose_name_plural = _('Document version')
+
     def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)
 
@@ -456,10 +461,6 @@ class DocumentVersion(models.Model):
                     post_document_created.send(
                         sender=Document, instance=self.document
                     )
-
-    class Meta:
-        verbose_name = _('Document version')
-        verbose_name_plural = _('Document version')
 
     @property
     def cache_filename(self):
