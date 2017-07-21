@@ -200,6 +200,29 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             Document.objects.first().document_type, document_type_2
         )
 
+    def _request_document_download_form_view(self):
+        return self.get(
+            'documents:document_download_form', args=(self.document.pk,),
+            follow=True,
+        )
+
+    def test_document_download_form_view_no_permission(self):
+        response = self._request_document_download_form_view()
+
+        self.assertNotContains(
+            response, text=self.document.label, status_code=200
+        )
+
+    def test_document_download_form_view_with_access(self):
+        self.grant_access(
+            obj=self.document, permission=permission_document_download
+        )
+        response = self._request_document_download_form_view()
+
+        self.assertContains(
+            response, text=self.document.label, status_code=200
+        )
+
     def test_document_download_view_no_permission(self):
         response = self.get(
             'documents:document_download', args=(self.document.pk,)
