@@ -96,6 +96,31 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
 
+    def _request_upload_interactive_view(self):
+        return self.get(
+            'sources:upload_interactive', data={
+                'document_type_id': self.document_type.pk,
+            }
+        )
+
+    def test_upload_interactive_view_no_permission(self):
+        self.login_user()
+
+        response = self._request_upload_interactive_view()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_upload_interactive_view_with_access(self):
+        self.login_user()
+        self.grant_access(
+            permission=permission_document_create, obj=self.document_type
+        )
+        response = self._request_upload_interactive_view()
+
+        self.assertContains(
+            response, text=self.source.label, status_code=200
+        )
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentUploadIssueTestCase(GenericViewTestCase):
