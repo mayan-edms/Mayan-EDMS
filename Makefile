@@ -68,6 +68,29 @@ test:
 test-all:
 	./manage.py test --mayan-apps --settings=mayan.settings.testing --nomigrations
 
+test-launch-postgres:
+	@docker rm -f test-postgres || true
+	docker run -d --name test-postgres -p 5432:5432 postgres
+	while ! nc -z 127.0.0.1 5432; do sleep 1; done
+	sleep 2
+
+test-postgres: test-launch-postgres
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+
+test-postgres-all: test-launch-postgres
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+
+test-launch-mysql:
+	@docker rm -f test-mysql || true
+	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan mysql
+	while ! nc -z 127.0.0.1 3306; do sleep 1; done
+	sleep 10
+
+test-mysql: test-launch-mysql
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+
+test-mysql-all: test-launch-mysql
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
 
 # Documentation
 
@@ -197,17 +220,17 @@ docker_services_on:
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 2
-	./manage.py initialsetup --settings=mayan.settings.testing.docker
+	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 docker_services_off:
 	docker stop postgres redis
 	docker rm postgres redis
 
 docker_services_frontend:
-	./manage.py runserver --settings=mayan.settings.testing.docker
+	./manage.py runserver --settings=mayan.settings.staging.docker
 
 docker_services_worker:
-	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO -O fair
+	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
 
 docker_service_mysql_on:
 	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
