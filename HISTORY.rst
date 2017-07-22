@@ -1,4 +1,4 @@
-2.6.2 (2017-07-XX)
+2.6.2 (2017-07-19)
 ==================
 - Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
 - Fix document page zoom.
