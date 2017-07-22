@@ -7,6 +7,7 @@
 - Fix document page widget appearance in the document page list view.
 - Make document version order deterministic.
 - Allow total page number instrospection of encrypted PDF with non ASCII user properties. GitLab issue #411.
+- Oracle database compatibility update in the cabinets app. GitHub #258.
 
 2.6.1 (2017-07-18)
 ==================
