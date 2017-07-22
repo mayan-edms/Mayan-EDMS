@@ -151,7 +151,7 @@ class Python(ConverterBase):
                             page_count = int(
                                 filter(
                                     lambda line: line.startswith('Pages:'),
-                                    process.stdout.split(b'\n')
+                                    force_text(process.stdout).split('\n')
                                 )[0].replace('Pages:', '')
                             )
                             file_object.seek(0)

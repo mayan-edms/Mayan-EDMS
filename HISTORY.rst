@@ -6,6 +6,7 @@
 - Improve tag widget customization by moving the markup to its own template.
 - Fix document page widget appearance in the document page list view.
 - Make document version order deterministic.
+- Allow total page number instrospection of encrypted PDF with non ASCII user properties. GitLab issue #411.
 
 2.6.1 (2017-07-18)
 ==================
