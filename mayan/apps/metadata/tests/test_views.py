@@ -212,7 +212,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         response = self.post(
             'metadata:metadata_multiple_edit', data={
                 'id_list': '{},{}'.format(self.document.pk, document_2.pk),
-                'form-0-id': document_metadata.pk,
+                'form-0-id': document_metadata.metadata_type.pk,
                 'form-0-value': TEST_METADATA_VALUE_EDITED,
                 'form-0-update': True,
                 'form-TOTAL_FORMS': '1',
@@ -258,7 +258,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         response = self.post(
             'metadata:metadata_multiple_remove', data={
                 'id_list': '{},{}'.format(self.document.pk, document_2.pk),
-                'form-0-id': document_metadata.pk,
+                'form-0-id': document_metadata.metadata_type.pk,
                 'form-0-update': True,
                 'form-TOTAL_FORMS': '1',
                 'form-INITIAL_FORMS': '0',
