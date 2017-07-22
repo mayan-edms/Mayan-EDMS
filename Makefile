@@ -71,6 +71,8 @@ test-all:
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	docker run -d --name test-postgres -p 5432:5432 healthcheck/postgres
+	sudo apt-get install -qq libpq-dev
+	pip install psycopg2
 	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
 
 test-postgres: test-launch-postgres
@@ -82,7 +84,10 @@ test-postgres-all: test-launch-postgres
 test-launch-mysql:
 	@docker rm -f test-mysql || true
 	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan healthcheck/mysql
+	sudo apt-get install -qq libmysqlclient-dev mysql-client
+	pip install mysql-python
 	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
+	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
 test-mysql: test-launch-mysql
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
