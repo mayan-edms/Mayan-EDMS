@@ -110,6 +110,25 @@ test-mysql-all: test-launch-mysql
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
+test-launch-oracle:
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
+	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle wnameless/oracle-xe-11g
+	# https://gist.github.com/kimus/10012910
+	pip install cx_Oracle
+	while ! nc -z 127.0.0.1 49161; do sleep 1; done
+	sleep 10
+
+test-oracle: test-launch-oracle
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
+
+test-oracle-all: test-launch-oracle
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
+
 # Documentation
 
 docs_serve:

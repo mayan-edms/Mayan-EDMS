@@ -2,7 +2,7 @@
 ==================
 - Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
 - Fix document page zoom.
-- Add support to run tests against a MySQL or Postgres container.
+- Add support to run tests against a MySQL, Postgres or Oracle container.
 - Improve tag widget customization by moving the markup to its own template.
 - Fix document page widget appearance in the document page list view.
 - Make document version order deterministic.
