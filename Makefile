@@ -8,7 +8,12 @@ help:
 	@echo "clean - Remove Python and build artifacts."
 
 	@echo "test-all - Run all tests."
-	@echo "test MODULE=<python module name> - Run tests for a single App, module or test class."
+	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
+	@echo "test-postgres-all - Run all tests against a Postgres database container."
+	@echo "test-postgres MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container."
+	@echo "test-mysql-all - Run all tests against a MySQL database container."
+	@echo "test-mysql MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container."
+
 	@echo "docs_serve - Run the livehtml documentation generator."
 
 	@echo "translations_make - Refresh all translation files."
@@ -70,20 +75,26 @@ test-all:
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true
-	docker run -d --name test-postgres -p 5432:5432 healthcheck/postgres
+	@docker volume rm test-postgres || true
+	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data healthcheck/postgres
 	sudo apt-get install -qq libpq-dev
 	pip install psycopg2
 	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
 
 test-postgres: test-launch-postgres
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
 
 test-postgres-all: test-launch-postgres
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
 
 test-launch-mysql:
 	@docker rm -f test-mysql || true
-	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan healthcheck/mysql
+	@docker volume rm test-mysql || true
+	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql healthcheck/mysql
 	sudo apt-get install -qq libmysqlclient-dev mysql-client
 	pip install mysql-python
 	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
@@ -91,9 +102,13 @@ test-launch-mysql:
 
 test-mysql: test-launch-mysql
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
 
 test-mysql-all: test-launch-mysql
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
 
 # Documentation
 
