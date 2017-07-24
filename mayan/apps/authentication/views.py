@@ -2,12 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import (
     login, password_change, password_reset, password_reset_confirm,
     password_reset_complete, password_reset_done
 )
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, resolve_url
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -31,7 +32,10 @@ def login_view(request):
         kwargs['authentication_form'] = UsernameAuthenticationForm
 
     if not request.user.is_authenticated:
-        extra_context = {'appearance_type': 'plain'}
+        extra_context = {
+            'appearance_type': 'plain',
+            REDIRECT_FIELD_NAME: resolve_url(settings.LOGIN_REDIRECT_URL)
+        }
 
         result = login(request, extra_context=extra_context, **kwargs)
         if request.method == 'POST':
@@ -45,7 +49,7 @@ def login_view(request):
                     request.session.set_expiry(0)
         return result
     else:
-        return HttpResponseRedirect(reverse(settings.LOGIN_REDIRECT_URL))
+        return HttpResponseRedirect(resolve_url(settings.LOGIN_REDIRECT_URL))
 
 
 def password_change_view(request):
