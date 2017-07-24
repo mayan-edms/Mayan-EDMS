@@ -46,6 +46,8 @@ help:
 	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
 	@echo "docker_service_mysql_on - Launch and initialize a MySQL Docker container."
 	@echo "docker_service_mysql_off - Stop and delete the MySQL Docker container."
+        @echo "docker_service_postgres_on - Launch and initialize a PostgreSQL Docker container."
+        @echo "docker_service_postgres_off - Stop and delete the PostgreSQL Docker container."
 
 	@echo "safety_check - Run a package safety check."
 
@@ -276,6 +278,15 @@ docker_service_mysql_on:
 docker_service_mysql_off:
 	docker stop mysql
 	docker rm mysql
+
+docker_service_postgres_on:
+	docker run -d --name postgres -p 5432:5432 postgres
+	while ! nc -z 127.0.0.1 5432; do sleep 1; done
+
+docker_service_postgres_off:
+	docker stop postgres
+	docker rm postgres
+
 
 # Security
 
