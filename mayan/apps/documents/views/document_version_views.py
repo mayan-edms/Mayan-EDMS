@@ -12,7 +12,7 @@ from common.generics import ConfirmView, SingleObjectListView
 from ..models import Document, DocumentVersion
 from ..permissions import (
     permission_document_download, permission_document_version_revert,
-    permission_document_version_view, permission_document_view
+    permission_document_version_view
 )
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView

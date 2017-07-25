@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from .classes import SearchField, SearchModel
-
 
 class SearchFieldSerializer(serializers.Serializer):
     field = serializers.CharField(read_only=True)

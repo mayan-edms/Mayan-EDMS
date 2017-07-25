@@ -126,7 +126,6 @@ class Source(models.Model):
                 document.delete(to_trash=False)
                 raise
 
-
     def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
         if not document_type:
             document_type = self.document_type

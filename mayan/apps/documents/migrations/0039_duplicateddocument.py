@@ -19,19 +19,22 @@ class Migration(migrations.Migration):
                 (
                     'id', models.AutoField(
                         auto_created=True, primary_key=True, serialize=False,
-                        verbose_name='ID')
-                    ),
+                        verbose_name='ID'
+                    )
+                ),
                 (
                     'datetime_added', models.DateTimeField(
                         auto_now_add=True, db_index=True,
-                        verbose_name='Added')
-                    ),
+                        verbose_name='Added'
+                    )
+                ),
                 (
                     'document', models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name='duplicates', to='documents.Document',
-                        verbose_name='Document')
-                    ),
+                        verbose_name='Document'
+                    )
+                ),
                 (
                     'documents', models.ManyToManyField(
                         to='documents.Document',

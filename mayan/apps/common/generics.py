@@ -20,7 +20,7 @@ from django_downloadview import (
 )
 from pure_pagination.mixins import PaginationMixin
 
-from .forms import ChoiceForm, DynamicForm
+from .forms import ChoiceForm
 from .mixins import (
     DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
     FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,

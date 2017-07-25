@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.core import management
-from django.db.utils import OperationalError
 
 from ...signals import post_initial_setup, pre_initial_setup
 

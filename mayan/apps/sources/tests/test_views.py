@@ -12,7 +12,7 @@ from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
-    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase

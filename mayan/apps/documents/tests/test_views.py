@@ -33,6 +33,7 @@ from .literals import (
     TEST_TRANSFORMATION_NAME, TEST_VERSION_COMMENT
 )
 
+
 @override_settings(OCR_AUTO_OCR=False)
 class GenericDocumentViewTestCase(GenericViewTestCase):
     def setUp(self):
@@ -606,7 +607,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         # Grant the document type view permission so that the post create
         # redirect works
         self.grant_permission(permission=permission_document_type_view)
-        response = self._request_document_type_create()
+        self._request_document_type_create()
 
         self.assertEqual(DocumentType.objects.count(), 0)
 
@@ -669,7 +670,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_type_edit_view_no_permission(self):
-        response = self._request_document_type_edit()
+        self._request_document_type_edit()
 
         self.assertEqual(
             DocumentType.objects.get(pk=self.document_type.pk).label,
@@ -781,7 +782,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.grant_access(
             obj=self.document_type, permission=permission_document_type_view
         )
-        response = self._request_quick_label_delete()
+        self._request_quick_label_delete()
 
         self.assertEqual(
             self.document_type.filenames.count(), 1
@@ -806,6 +807,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             self.document_type.filenames.count(), 0
         )
+
 
 class DocumentVersionTestCase(GenericDocumentViewTestCase):
     def setUp(self):

@@ -30,6 +30,3 @@ class Command(management.BaseCommand):
             raise CommandError(
                 'Error during post_upgrade signal; %s' % exception
             )
-
-
-

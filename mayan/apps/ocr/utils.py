@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 
+from .models import DocumentPageContent
+
 
 def get_document_ocr_content(document):
     for page in document.pages.all():

@@ -141,10 +141,10 @@ class WorkflowState(models.Model):
                     'workflow_instance', flat=True
                 )
             ) | Q(
-                    workflows__log_entries__isnull=True,
-                    workflows__workflow__states=self,
-                    workflows__workflow__states__initial=True
-                )
+                workflows__log_entries__isnull=True,
+                workflows__workflow__states=self,
+                workflows__workflow__states__initial=True
+            )
         ).distinct()
 
 

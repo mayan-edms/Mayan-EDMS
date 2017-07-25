@@ -83,7 +83,7 @@ def password_reset_complete_view(request):
 
     return password_reset_complete(
         request, extra_context=extra_context,
-        template_name= 'authentication/password_reset_complete.html'
+        template_name='authentication/password_reset_complete.html'
     )
 
 
