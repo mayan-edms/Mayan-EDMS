@@ -184,18 +184,22 @@ class CommonApp(MayanAppConfig):
                     'disable_existing_loggers': True,
                     'formatters': {
                         'intermediate': {
-                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
+                        },
+                        'logfile': {
+                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                         },
                     },
                     'handlers': {
                         'console': {
-                            'level': 'DEBUG',
                             'class': 'logging.StreamHandler',
-                            'formatter': 'intermediate'
+                            'formatter': 'intermediate',
+                            'level': 'DEBUG',
                         },
                         'logfile': {
                             'class': 'logging.handlers.WatchedFileHandler',
                             'filename': setting_production_error_log_path.value,
+                            'formatter': 'logfile'
                         },
                     },
                     'loggers': loggers
