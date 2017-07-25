@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
+from django.shortcuts import resolve_url
 from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 
@@ -297,14 +298,14 @@ class RedirectionMixin(object):
         self.next_url = self.request.POST.get(
             'next', self.request.GET.get(
                 'next', post_action_redirect if post_action_redirect else self.request.META.get(
-                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                 )
             )
         )
         self.previous_url = self.request.POST.get(
             'previous', self.request.GET.get(
                 'previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get(
-                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                 )
             )
         )

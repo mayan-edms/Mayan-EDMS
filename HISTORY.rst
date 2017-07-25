@@ -1,3 +1,7 @@
+2.6.4 (2017-07-26)
+==================
+- Add missing replacements of reverse to resolve_url.
+
 2.6.3 (2017-07-25)
 ==================
 - Add makefile target to launch a PostgreSQL container.

@@ -8,6 +8,7 @@ import urlparse
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
@@ -351,7 +352,7 @@ class Link(object):
                     ) or force_text(
                         request.META.get(
                             'HTTP_REFERER',
-                            reverse(settings.LOGIN_REDIRECT_URL)
+                            resolve_url(settings.LOGIN_REDIRECT_URL)
                         )
                     )
                 )
