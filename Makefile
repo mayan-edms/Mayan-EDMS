@@ -6,6 +6,7 @@ help:
 	@echo "clean-build - Remove build artifacts."
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
+	@echo "generate_setup - Create and updated setup.py"
 
 	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
@@ -163,6 +164,9 @@ requirements_docs:
 requirements_testing:
 	pip install -r requirements/testing.txt
 
+generate_setup:
+	@./generate_setup.py
+	@echo "Complete."
 
 # Releases
 
