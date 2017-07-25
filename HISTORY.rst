@@ -1,3 +1,19 @@
+2.6.3 (2017-07-25)
+==================
+- Add makefile target to launch a PostgreSQL container.
+- Use resolve_url instead of redirect to resolve the post login URL.
+- Make the intialsetup and performupgrade management tasks work
+  with signals to allow customization from 3rd party apps.
+- PEP8 cleanups.
+- Add tag_ids keyword argument to the Source.handle_upload
+  model method. GitLab issue #413.
+- Add overflow wrapping so wrap long titles in Firefox too.
+- Makes Roles searchable. GitLab issue #402.
+- Add line numbers to the debug and production loggers.
+  Add date and time to the production logger.
+- Add support for generating setup.py from a template. GitLab
+  #149 #200.
+
 2.6.2 (2017-07-19)
 ==================
 - Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
