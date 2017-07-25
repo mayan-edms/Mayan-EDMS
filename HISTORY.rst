@@ -13,6 +13,7 @@
   Add date and time to the production logger.
 - Add support for generating setup.py from a template. GitLab
   #149 #200.
+- Add fade in animation to document images.
 
 2.6.2 (2017-07-19)
 ==================

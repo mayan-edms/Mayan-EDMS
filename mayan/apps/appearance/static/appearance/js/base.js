@@ -153,7 +153,7 @@ MayanImage.intialize = function () {
         appear: function(elements_left, settings) {
             new MayanImage({element: $(this)});
         },
-        threshold: 400
+        threshold: 400,
     });
 
     $('img.lazy-load-carousel').lazyload({
@@ -165,11 +165,15 @@ MayanImage.intialize = function () {
     });
 
     $('.lazy-load').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
         $(this).siblings('.spinner-container').remove();
         $(this).removeClass('lazy-load pull-left');
     });
 
     $('.lazy-load-carousel').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
         $(this).siblings('.spinner-container').remove();
         $(this).removeClass('lazy-load-carousel pull-left');
     });
