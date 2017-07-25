@@ -75,6 +75,9 @@ class Source(models.Model):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
     def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        """
+        Upload an individual document
+        """
         try:
             with transaction.atomic():
                 document = Document.objects.create(
@@ -126,7 +129,11 @@ class Source(models.Model):
                 document.delete(to_trash=False)
                 raise
 
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        """
+        Handle an upload request from a file object which may be an individual
+        document or a compressed file containing multiple documents.
+        """
         if not document_type:
             document_type = self.document_type
 
@@ -134,7 +141,8 @@ class Source(models.Model):
             'description': description, 'document_type': document_type,
             'label': label, 'language': language,
             'metadata_dict_list': metadata_dict_list,
-            'metadata_dictionary': metadata_dictionary, 'user': user
+            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
+            'user': user
         }
 
         if expand:
@@ -155,11 +163,11 @@ class Source(models.Model):
 
     def get_upload_file_object(self, form_data):
         pass
-        # TODO: Should raise NotImplementedError()?
+        # TODO: Should raise NotImplementedError?
 
     def clean_up_upload_file(self, upload_file_object):
         pass
-        # TODO: Should raise NotImplementedError()?
+        # TODO: Should raise NotImplementedError?
 
     class Meta:
         ordering = ('label',)
