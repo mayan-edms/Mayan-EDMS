@@ -896,7 +896,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_document_version_list_with_permission(self):
-        self.grant(permission=permission_document_version_view)
+        self.grant_permission(permission=permission_document_version_view)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document.new_version(
@@ -932,7 +932,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
                 file_object=file_object
             )
 
-        self.grant(permission=permission_document_version_revert)
+        self.grant_permission(permission=permission_document_version_revert)
 
         response = self.post(
             'documents:document_version_revert', args=(first_version.pk,),
