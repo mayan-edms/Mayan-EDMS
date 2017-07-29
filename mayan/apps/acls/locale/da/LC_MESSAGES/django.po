@@ -4,11 +4,12 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
@@ -27,7 +28,6 @@ msgid "Permissions"
 msgstr ""
 
 #: apps.py:29 models.py:46
-#| msgid "Roles"
 msgid "Role"
 msgstr ""
 
@@ -36,7 +36,6 @@ msgid "Delete"
 msgstr ""
 
 #: links.py:39
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr ""
 
@@ -54,7 +53,6 @@ msgstr ""
 
 #: models.py:57
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr ""
 
@@ -91,7 +89,6 @@ msgstr ""
 
 #: serializers.py:111 serializers.py:187
 #, python-format
-#| msgid "permission"
 msgid "No such permission: %s"
 msgstr ""
 
@@ -105,36 +102,35 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr ""
 
-#: views.py:73
+#: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:100
+#: views.py:101
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:150
+#: views.py:151
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:151
+#: views.py:152
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:206
+#: views.py:207
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
-#: views.py:226
+#: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 

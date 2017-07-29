@@ -1,7 +1,9 @@
 from __future__ import unicode_literals
 
+import os
 import tempfile
 
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
@@ -37,6 +39,13 @@ setting_temporary_directory = namespace.add_setting(
     help_text=_(
         'Temporary directory used site wide to store thumbnails, previews '
         'and temporary files.'
+    ),
+    is_path=True
+)
+setting_production_error_log_path = namespace.add_setting(
+    global_name='COMMON_PRODUCTION_ERROR_LOG_PATH',
+    default=os.path.join(settings.BASE_DIR, 'error.log'), help_text=_(
+        'Path to the logfile that will track errors during production.'
     ),
     is_path=True
 )

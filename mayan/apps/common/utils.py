@@ -8,7 +8,7 @@ import types
 import xmlrpclib
 
 from django.conf import settings
-from django.core.urlresolvers import resolve as django_resolve
+from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
 from django.utils.encoding import force_text
@@ -94,6 +94,13 @@ def get_descriptor(file_input, read=True):
             return open(file_input, 'wb')
     else:
         return file_input
+
+
+def index_or_default(instance, index, default):
+    try:
+        return instance[index]
+    except IndexError:
+        return default
 
 
 def TemporaryFile(*args, **kwargs):

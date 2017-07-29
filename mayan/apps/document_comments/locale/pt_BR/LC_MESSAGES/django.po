@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-11-17 22:54+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -20,7 +21,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:26
-#| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Comentários de documento"
 
@@ -42,12 +42,10 @@ msgid "Comments"
 msgstr "Comentários"
 
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr "Comentário de documento criado"
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr "Comentário de documento apagado"
 
@@ -86,7 +84,6 @@ msgstr "Adicionar comentário ao documento: %s"
 
 #: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr "Apagar comentário: %s?"
 

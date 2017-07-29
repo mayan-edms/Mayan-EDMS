@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +35,11 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:92 models.py:37 models.py:94 models.py:129
+#: apps.py:92 models.py:38 models.py:95 models.py:155
 msgid "Label"
 msgstr ""
 
-#: apps.py:95 models.py:34
+#: apps.py:95 models.py:35
 msgid "Internal name"
 msgstr ""
 
@@ -54,7 +55,7 @@ msgstr "None"
 msgid "Current state"
 msgstr ""
 
-#: apps.py:108 apps.py:135 models.py:276
+#: apps.py:108 apps.py:135 models.py:302
 msgid "User"
 msgstr "Người dùng"
 
@@ -66,15 +67,15 @@ msgstr ""
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:124 apps.py:151 models.py:106
+#: apps.py:124 apps.py:151 models.py:107
 msgid "Completion"
 msgstr ""
 
-#: apps.py:138 forms.py:43 links.py:85 models.py:274
+#: apps.py:138 forms.py:52 links.py:85 models.py:300
 msgid "Transition"
 msgstr ""
 
-#: apps.py:142 forms.py:46 models.py:277
+#: apps.py:142 forms.py:55 models.py:303
 msgid "Comment"
 msgstr "Chú thích"
 
@@ -82,15 +83,15 @@ msgstr "Chú thích"
 msgid "Is initial state?"
 msgstr ""
 
-#: apps.py:155 models.py:133
+#: apps.py:155 models.py:159
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:159 models.py:137
+#: apps.py:159 models.py:163
 msgid "Destination state"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:95 models.py:76 views.py:130 views.py:409
+#: links.py:15 links.py:38 links.py:95 models.py:77 views.py:134 views.py:413
 msgid "Workflows"
 msgstr ""
 
@@ -102,7 +103,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:29 models.py:41
+#: links.py:29 models.py:42
 msgid "Document types"
 msgstr ""
 
@@ -114,7 +115,7 @@ msgstr "Sửa"
 msgid "Create state"
 msgstr ""
 
-#: links.py:54 links.py:104
+#: links.py:54 links.py:105
 msgid "States"
 msgstr ""
 
@@ -142,89 +143,89 @@ msgstr ""
 msgid "State documents"
 msgstr ""
 
-#: models.py:31
+#: models.py:32
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:75 models.py:92 models.py:127 models.py:155
+#: models.py:76 models.py:93 models.py:153 models.py:181
 msgid "Workflow"
 msgstr ""
 
-#: models.py:98
+#: models.py:99
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
 msgstr ""
 
-#: models.py:100
+#: models.py:101
 msgid "Initial"
 msgstr ""
 
-#: models.py:104
+#: models.py:105
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
 msgstr ""
 
-#: models.py:120
+#: models.py:113
 msgid "Workflow state"
 msgstr ""
 
-#: models.py:121
+#: models.py:114
 msgid "Workflow states"
 msgstr ""
 
-#: models.py:148
+#: models.py:174
 msgid "Workflow transition"
 msgstr ""
 
-#: models.py:149
+#: models.py:175
 msgid "Workflow transitions"
 msgstr ""
 
-#: models.py:158
+#: models.py:184
 msgid "Document"
 msgstr ""
 
-#: models.py:253 models.py:268
+#: models.py:279 models.py:294
 msgid "Workflow instance"
 msgstr ""
 
-#: models.py:254
+#: models.py:280
 msgid "Workflow instances"
 msgstr ""
 
-#: models.py:271
+#: models.py:297
 msgid "Datetime"
 msgstr ""
 
-#: models.py:283
+#: models.py:309
 msgid "Workflow instance log entry"
 msgstr ""
 
-#: models.py:284
+#: models.py:310
 msgid "Workflow instance log entries"
 msgstr ""
 
-#: models.py:288
+#: models.py:314
 msgid "Not a valid transition choice."
 msgstr ""
 
-#: models.py:294
+#: models.py:320
 msgid "Workflow runtime proxy"
 msgstr ""
 
-#: models.py:295
+#: models.py:321
 msgid "Workflow runtime proxies"
 msgstr ""
 
-#: models.py:301
+#: models.py:327
 msgid "Workflow state runtime proxy"
 msgstr ""
 
-#: models.py:302
+#: models.py:328
 msgid "Workflow state runtime proxies"
 msgstr ""
 
@@ -294,76 +295,81 @@ msgstr ""
 msgid "Primary key of the transition to be added."
 msgstr ""
 
-#: views.py:54
+#: views.py:53
 #, python-format
 msgid "Workflows for document: %s"
 msgstr ""
 
-#: views.py:78
+#: views.py:77
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr ""
 
-#: views.py:106
+#: views.py:101
+#, python-format
+msgid "Document \"%s\" transitioned successfully"
+msgstr ""
+
+#: views.py:110
 msgid "Submit"
 msgstr ""
 
-#: views.py:108
+#: views.py:112
 #, python-format
 msgid "Do transition for workflow: %s"
 msgstr ""
 
-#: views.py:160
+#: views.py:164
 msgid "Available document types"
 msgstr ""
 
-#: views.py:161
+#: views.py:165
 msgid "Document types assigned this workflow"
 msgstr ""
 
-#: views.py:171
+#: views.py:175
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr ""
 
-#: views.py:210 views.py:503
+#: views.py:214 views.py:498
 #, python-format
 msgid "States of workflow: %s"
 msgstr ""
 
-#: views.py:228
+#: views.py:232
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr ""
 
-#: views.py:304
+#: views.py:308
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr ""
 
-#: views.py:317
+#: views.py:321
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr ""
 
-#: views.py:347
+#: views.py:351
 msgid "Unable to save transition; integrity error."
 msgstr ""
 
-#: views.py:435
+#: views.py:440
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr ""
 
-#: views.py:482
+#: views.py:461
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views.py:517
+#: views.py:512
 msgid "Launch all workflows?"
 msgstr ""
 
-#: views.py:524
+#: views.py:519
 msgid "Workflow launch queued successfully."
 msgstr ""

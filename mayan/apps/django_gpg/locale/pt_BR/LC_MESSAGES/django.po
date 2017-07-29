@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Roberto Rosario, 2012
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-11-25 02:01+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -98,7 +99,6 @@ msgid "Key management"
 msgstr "Gerenciar  chaves"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "Envio da chave"
 
@@ -163,7 +163,6 @@ msgid "Key data"
 msgstr "Dados da chave"
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "Chave"
 
@@ -196,7 +195,6 @@ msgid "Use keys to sign content"
 msgstr "Usar chaves para assinar conteúdo"
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Enviar chaves"
 
@@ -205,7 +203,6 @@ msgid "View keys"
 msgstr "Ver as chaves"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Assinaturas"
 
@@ -218,13 +215,11 @@ msgid "Path to the GPG binary."
 msgstr "Caminho para o binário GPG."
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para procurar chaves."
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Apagar chave: %s"
 
@@ -235,7 +230,6 @@ msgstr "Detalhes para chave: %s"
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Importar ID da chave: %s?"
 
@@ -245,7 +239,6 @@ msgstr "Importar chave"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Não foi possível importar chave: %(key_id)s; %(error)s"
 

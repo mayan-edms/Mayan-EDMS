@@ -8,9 +8,10 @@ import urlparse
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import resolve, reverse
+from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
+from django.urls import resolve, reverse
 from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
 
@@ -155,7 +156,8 @@ class Menu(object):
                                     resolved_object=resolved_navigation_object
                                 )
                                 if resolved_link:
-                                    resolved_links.append(resolved_link)
+                                    if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                                        resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
@@ -166,7 +168,8 @@ class Menu(object):
                                     resolved_object=resolved_navigation_object
                                 )
                                 if resolved_link:
-                                    resolved_links.append(resolved_link)
+                                    if resolved_link.link not in self.unbound_links.get(bound_source, ()):
+                                        resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
                 except TypeError:
@@ -181,7 +184,8 @@ class Menu(object):
         for link in self.bound_links.get(current_view, []):
             resolved_link = link.resolve(context=context)
             if resolved_link:
-                resolved_links.append(resolved_link)
+                if resolved_link.link not in self.unbound_links.get(current_view, ()):
+                    resolved_links.append(resolved_link)
 
         if resolved_links:
             result.append(resolved_links)
@@ -192,28 +196,18 @@ class Menu(object):
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
                 resolved_link = link
-            else:
-                resolved_link = link.resolve(context=context)
-
-            if resolved_link:
                 resolved_links.append(resolved_link)
+            else:
+                # "Always show" links
+                resolved_link = link.resolve(context=context)
+                if resolved_link:
+                    if resolved_link.link not in self.unbound_links.get(None, ()):
+                        resolved_links.append(resolved_link)
 
         if resolved_links:
             result.append(resolved_links)
 
         if result:
-            unbound_links = []
-            unbound_links.extend(self.unbound_links.get(source, ()))
-            unbound_links.extend(self.unbound_links.get(current_view, ()))
-
-            for resolved_link in result[0]:
-                try:
-                    if resolved_link.link in unbound_links:
-                        result[0].remove(resolved_link)
-                except AttributeError:
-                    # It's a menu, ignore
-                    pass
-
             # Sort links by position value passed during bind
             result[0] = sorted(
                 result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
@@ -358,7 +352,7 @@ class Link(object):
                     ) or force_text(
                         request.META.get(
                             'HTTP_REFERER',
-                            reverse(settings.LOGIN_REDIRECT_URL)
+                            resolve_url(settings.LOGIN_REDIRECT_URL)
                         )
                     )
                 )

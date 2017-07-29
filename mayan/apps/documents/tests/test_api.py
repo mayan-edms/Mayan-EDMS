@@ -7,8 +7,8 @@ import time
 from json import loads
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.urls import reverse
 from django.utils.encoding import force_text
 
 from django_downloadview import assert_download_response
@@ -21,9 +21,9 @@ from user_management.tests.literals import (
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from ..models import Document, DocumentType
 
@@ -49,40 +49,46 @@ class DocumentTypeAPITestCase(BaseAPITestCase):
 
         response = self.client.post(
             reverse('rest_api:documenttype-list'), data={
-                'label': TEST_DOCUMENT_TYPE
+                'label': TEST_DOCUMENT_TYPE_LABEL
             }
         )
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(DocumentType.objects.all().count(), 1)
         self.assertEqual(
-            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE
+            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE_LABEL
         )
 
     def test_document_type_edit_via_put(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.put(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
         document_type = DocumentType.objects.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED)
 
     def test_document_type_edit_via_patch(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.patch(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
         document_type = DocumentType.objects.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED)
 
     def test_document_type_delete(self):
-        document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
         self.client.delete(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,))
@@ -105,7 +111,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -225,9 +231,9 @@ class DocumentAPITestCase(BaseAPITestCase):
         with open(TEST_DOCUMENT_PATH) as file_object:
             document.new_version(file_object=file_object)
 
-        self.assertEqual(document.versions.count(), 2)
+        document.refresh_from_db()
 
-        last_version = document.versions.last()
+        self.assertEqual(document.versions.count(), 2)
 
         response = self.client.get(
             reverse(
@@ -235,8 +241,10 @@ class DocumentAPITestCase(BaseAPITestCase):
                 args=(document.pk,)
             )
         )
+
         self.assertEqual(
-            response.data['results'][1]['checksum'], last_version.checksum
+            response.data['results'][1]['checksum'],
+            document.latest_version.checksum
         )
 
     def test_document_download(self):
@@ -361,7 +369,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -430,6 +438,3 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
 
         self.assertEqual(Document.trash.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
-
-    # TODO: def test_document_set_document_type(self):
-    #    pass

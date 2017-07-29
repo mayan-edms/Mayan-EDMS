@@ -285,3 +285,16 @@ link_document_type_setup = Link(
     icon='fa fa-file', permissions=(permission_document_type_view,),
     text=_('Document types'), view='documents:document_type_list'
 )
+link_duplicated_document_list = Link(
+    icon='fa fa-clone', text=_('Duplicated documents'),
+    view='documents:duplicated_document_list'
+)
+link_document_duplicates_list = Link(
+    args='resolved_object.id', icon='fa fa-clone',
+    permissions=(permission_document_view,), text=_('Duplicates'),
+    view='documents:document_duplicates_list',
+)
+link_duplicated_document_scan = Link(
+    icon='fa fa-clone', text=_('Duplicated document scan'),
+    view='documents:duplicated_document_scan'
+)

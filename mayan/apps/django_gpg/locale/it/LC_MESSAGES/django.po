@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-09-24 10:33+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -97,7 +98,6 @@ msgid "Key management"
 msgstr "Gestione delle chiavi"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "Carica chiave"
 
@@ -162,7 +162,6 @@ msgid "Key data"
 msgstr "Dati chiave"
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "Chiave"
 
@@ -195,7 +194,6 @@ msgid "Use keys to sign content"
 msgstr "Usa la chiave per formare i contenuti"
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Carica chiavi"
 
@@ -204,7 +202,6 @@ msgid "View keys"
 msgstr "Vista delle chiavi"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Firme"
 
@@ -217,13 +214,11 @@ msgid "Path to the GPG binary."
 msgstr "Percorso per il programma GPG"
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver utilizzato per richiedere le chiavi."
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Cancellare la chiave: %s"
 
@@ -234,7 +229,6 @@ msgstr "Dettagli della chiave: %s."
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Importare ID chiave: %s?"
 
@@ -244,7 +238,6 @@ msgstr "Importa chiave"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Impossibile importare la chiave: %(key_id)s; %(error)s"
 

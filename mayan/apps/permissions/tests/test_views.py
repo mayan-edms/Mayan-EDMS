@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
 from django.test.client import Client
+from django.urls import reverse
 
 from common.tests import BaseTestCase
 from user_management.tests import (
@@ -27,7 +27,7 @@ class PermissionsViewsTestCase(BaseTestCase):
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
         self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
+        self.assertTrue(self.admin_user.is_authenticated)
 
     def test_role_creation_view(self):
         response = self.client.post(

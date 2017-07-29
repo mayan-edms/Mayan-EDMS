@@ -3,9 +3,9 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList

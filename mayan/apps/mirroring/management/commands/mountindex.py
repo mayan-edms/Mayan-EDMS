@@ -240,7 +240,7 @@ class Command(management.BaseCommand):
                 allow_other=options['allow_other'],
                 allow_root=options['allow_root']
             )
-        except RuntimeError as exception:
+        except RuntimeError:
             if options['allow_other'] or options['allow_root']:
                 raise CommandError(
                     'Make sure \'user_allow_other\' is set in /etc/fuse.conf'

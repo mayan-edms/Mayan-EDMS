@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-10 08:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +37,7 @@ msgstr "Vrijednost"
 
 #: links.py:11 links.py:14
 msgid "Settings"
-msgstr ""
+msgstr "Postavke"
 
 #: permissions.py:10
 msgid "View settings"

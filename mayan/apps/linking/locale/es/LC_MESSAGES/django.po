@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2016
+# Roberto Rosario, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"PO-Revision-Date: 2017-07-09 06:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -33,11 +34,11 @@ msgstr "Etiqueta"
 msgid "Dynamic label"
 msgstr "Etiqueta dinámica"
 
-#: apps.py:69 apps.py:74 models.py:28 models.py:127
+#: apps.py:69 apps.py:74 models.py:28 models.py:129
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: forms.py:35 models.py:112
+#: forms.py:36 models.py:114
 msgid "Foreign document attribute"
 msgstr "Datos de documento foráneo"
 
@@ -57,7 +58,7 @@ msgstr "Editar"
 msgid "Conditions"
 msgstr "Condiciones"
 
-#: links.py:32 views.py:167
+#: links.py:32 views.py:169
 msgid "Create new smart link"
 msgstr "Crear un enlace inteligente nuevo"
 
@@ -69,8 +70,8 @@ msgstr "Tipos de documento"
 msgid "Documents"
 msgstr "Documentos"
 
-#: links.py:54 links.py:58 links.py:63 models.py:92 permissions.py:7
-#: views.py:129
+#: links.py:54 links.py:58 links.py:63 models.py:94 permissions.py:7
+#: views.py:132
 msgid "Smart links"
 msgstr "Enlaces inteligentes"
 
@@ -142,7 +143,7 @@ msgstr "está en la expresión regular"
 msgid "is in regular expression (case insensitive)"
 msgstr "está en la expresión regular (no sensible a mayúsculas)"
 
-#: models.py:22 models.py:117
+#: models.py:22 models.py:119
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
@@ -154,43 +155,43 @@ msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de 
 msgid "Error generating dynamic label; %s"
 msgstr "Error generando etiqueta dinámica; %s"
 
-#: models.py:55
+#: models.py:57
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Este enlace inteligente no está permitido para el tipo de documento seleccionado."
 
-#: models.py:91 models.py:103
+#: models.py:93 models.py:105
 msgid "Smart link"
 msgstr "Enlace inteligente"
 
-#: models.py:107
+#: models.py:109
 msgid "The inclusion is ignored for the first item."
 msgstr "La inclusión es ignorada para el primer artículo."
 
-#: models.py:111
+#: models.py:113
 msgid "This represents the metadata of all other documents."
 msgstr "Esto representa los meta datos de los documentos foráneos."
 
-#: models.py:121
+#: models.py:123
 msgid "Expression"
 msgstr "Expresión"
 
-#: models.py:124
+#: models.py:126
 msgid "Inverts the logic of the operator."
 msgstr "Invierte la lógica del operador."
 
-#: models.py:125
+#: models.py:127
 msgid "Negated"
 msgstr "Negado"
 
-#: models.py:132
+#: models.py:134
 msgid "not"
 msgstr "no"
 
-#: models.py:137
+#: models.py:139
 msgid "Link condition"
 msgstr "Condición de enlace"
 
-#: models.py:138
+#: models.py:140
 msgid "Link conditions"
 msgstr "Condiciones de enlace"
 
@@ -214,12 +215,12 @@ msgstr "Editar enlaces inteligentes"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
+msgstr "Lista separada por comas de las llaves principales de tipos de documentos a las que se vinculará este enlace inteligente."
 
 #: serializers.py:139
 #, python-format
 msgid "No such document type: %s"
-msgstr ""
+msgstr "No existe tal tipo de documento: %s"
 
 #: views.py:60
 #, python-format
@@ -236,52 +237,50 @@ msgstr "Documentos en enlace inteligente: %s"
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Los documentos en enlace inteligente \"%(smart_link)s\" en relación con \"%(document)s\""
 
-#: views.py:87
+#: views.py:90
 msgid "Available document types"
 msgstr "Tipos de documentos disponibles"
 
-#: views.py:89
+#: views.py:92
 msgid "Document types enabled"
 msgstr "Tipos de documentos seleccionados"
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Tipo de documento para el cual habilitar el enlace inteligente: %s"
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Enlaces inteligentes para el documento: %s"
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Editar enlace inteligente: %s"
 
-#: views.py:194
+#: views.py:196
 #, python-format
-#| msgid "Delete smart links"
 msgid "Delete smart link: %s"
 msgstr "Borrar enlace inteligente: %s"
 
-#: views.py:206
+#: views.py:208
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Condiciones para enlace inteligente: %s"
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Añadir nuevas condiciones de enlace inteligente: \"%s\""
 
-#: views.py:274
+#: views.py:276
 msgid "Edit smart link condition"
 msgstr "Editar condición de enlace inteligente"
 
-#: views.py:304
+#: views.py:306
 #, python-format
-#| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "¿Borrar condición de enlace inteligente: \"%s\"?"
 

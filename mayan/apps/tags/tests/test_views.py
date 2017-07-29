@@ -50,7 +50,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.tag.delete()
         self.assertEqual(Tag.objects.count(), 0)
 
-        self.grant(permission_tag_create)
+        self.grant_permission(permission=permission_tag_create)
 
         response = self.post(
             'tags:tag_create', data={
@@ -83,7 +83,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(Tag.objects.count(), 1)
 
-        self.grant(permission_tag_delete)
+        self.grant_permission(permission=permission_tag_delete)
 
         response = self.post(
             'tags:tag_delete', args=(self.tag.pk,), follow=True
@@ -110,7 +110,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(Tag.objects.count(), 1)
 
-        self.grant(permission_tag_delete)
+        self.grant_permission(permission=permission_tag_delete)
 
         response = self.post(
             'tags:tag_multiple_delete', data={'id_list': self.tag.pk},
@@ -138,7 +138,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
     def test_tag_edit_view_with_permissions(self):
         self.login_user()
 
-        self.grant(permission_tag_edit)
+        self.grant_permission(permission=permission_tag_edit)
 
         response = self.post(
             'tags:tag_edit', args=(self.tag.pk,), data={
@@ -163,8 +163,8 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.tag.documents.add(self.document)
 
-        self.grant(permission_tag_view)
-        self.grant(permission_document_view)
+        self.grant_permission(permission=permission_tag_view)
+        self.grant_permission(permission=permission_document_view)
 
         response = self.get('documents:document_list')
 
@@ -175,7 +175,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(self.document.tags.count(), 0)
 
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:tag_attach', args=(self.document.pk,), data={
@@ -194,10 +194,10 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(self.document.tags.count(), 0)
 
-        self.grant(permission_tag_attach)
+        self.grant_permission(permission=permission_tag_attach)
         # permission_tag_view is needed because the form filters the
         # choices
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:tag_attach', args=(self.document.pk,), data={
@@ -216,7 +216,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.login_user()
 
         self.assertEqual(self.document.tags.count(), 0)
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:multiple_documents_tag_attach', data={
@@ -233,11 +233,11 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(self.document.tags.count(), 0)
 
-        self.grant(permission_tag_attach)
+        self.grant_permission(permission=permission_tag_attach)
 
         # permission_tag_view is needed because the form filters the
         # choices
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:multiple_documents_tag_attach', data={
@@ -258,7 +258,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.document.tags.add(self.tag)
         self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
 
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:single_document_multiple_tag_remove',
@@ -277,8 +277,8 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.document.tags.add(self.tag)
         self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
 
-        self.grant(permission_tag_remove)
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_remove)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:single_document_multiple_tag_remove',
@@ -297,7 +297,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.document.tags.add(self.tag)
         self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
 
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:multiple_documents_selection_tag_remove',
@@ -316,8 +316,8 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.document.tags.add(self.tag)
         self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
 
-        self.grant(permission_tag_remove)
-        self.grant(permission_tag_view)
+        self.grant_permission(permission=permission_tag_remove)
+        self.grant_permission(permission=permission_tag_view)
 
         response = self.post(
             'tags:multiple_documents_selection_tag_remove',

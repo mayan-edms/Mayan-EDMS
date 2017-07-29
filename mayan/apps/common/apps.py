@@ -18,6 +18,7 @@ from navigation.classes import Separator, Text
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
+    handler_pre_initial_setup, handler_pre_upgrade,
     user_locale_profile_session_config, user_locale_profile_create
 )
 from .links import (
@@ -30,7 +31,8 @@ from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_about, menu_main, menu_tools, menu_user
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
-from .settings import setting_auto_logging
+from .settings import setting_auto_logging, setting_production_error_log_path
+from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
 logger = logging.getLogger(__name__)
@@ -144,6 +146,15 @@ class CommonApp(MayanAppConfig):
             dispatch_uid='user_locale_profile_create',
             sender=settings.AUTH_USER_MODEL
         )
+        pre_initial_setup.connect(
+            handler_pre_initial_setup,
+            dispatch_uid='common_handler_pre_initial_setup'
+        )
+        pre_upgrade.connect(
+            handler_pre_upgrade,
+            dispatch_uid='common_handler_pre_upgrade',
+        )
+
         user_logged_in.connect(
             user_locale_profile_session_config,
             dispatch_uid='user_locale_profile_session_config'
@@ -154,13 +165,15 @@ class CommonApp(MayanAppConfig):
         if setting_auto_logging.value:
             if settings.DEBUG:
                 level = 'DEBUG'
+                handlers = ['console']
             else:
                 level = 'ERROR'
+                handlers = ['console', 'logfile']
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
                 loggers[project_app.name] = {
-                    'handlers': ['console'],
+                    'handlers': handlers,
                     'propagate': True,
                     'level': level,
                 }
@@ -171,15 +184,23 @@ class CommonApp(MayanAppConfig):
                     'disable_existing_loggers': True,
                     'formatters': {
                         'intermediate': {
-                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
+                        },
+                        'logfile': {
+                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                         },
                     },
                     'handlers': {
                         'console': {
-                            'level': 'DEBUG',
                             'class': 'logging.StreamHandler',
-                            'formatter': 'intermediate'
-                        }
+                            'formatter': 'intermediate',
+                            'level': 'DEBUG',
+                        },
+                        'logfile': {
+                            'class': 'logging.handlers.WatchedFileHandler',
+                            'filename': setting_production_error_log_path.value,
+                            'formatter': 'logfile'
+                        },
                     },
                     'loggers': loggers
                 }

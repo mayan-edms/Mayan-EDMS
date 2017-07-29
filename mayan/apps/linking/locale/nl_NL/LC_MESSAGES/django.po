@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -32,11 +33,11 @@ msgstr "Label"
 msgid "Dynamic label"
 msgstr "Dynamisch label"
 
-#: apps.py:69 apps.py:74 models.py:28 models.py:127
+#: apps.py:69 apps.py:74 models.py:28 models.py:129
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: forms.py:35 models.py:112
+#: forms.py:36 models.py:114
 msgid "Foreign document attribute"
 msgstr ""
 
@@ -56,7 +57,7 @@ msgstr "bewerken"
 msgid "Conditions"
 msgstr "Conditie"
 
-#: links.py:32 views.py:167
+#: links.py:32 views.py:169
 msgid "Create new smart link"
 msgstr "Nieuwe 'smartlink' aanmaken"
 
@@ -68,8 +69,8 @@ msgstr "Documentsoorten"
 msgid "Documents"
 msgstr "Documenten"
 
-#: links.py:54 links.py:58 links.py:63 models.py:92 permissions.py:7
-#: views.py:129
+#: links.py:54 links.py:58 links.py:63 models.py:94 permissions.py:7
+#: views.py:132
 msgid "Smart links"
 msgstr "'Smartlinks'"
 
@@ -141,7 +142,7 @@ msgstr "komt overeen met 'reguliere expressie'"
 msgid "is in regular expression (case insensitive)"
 msgstr "komt overeen met 'reguliere expressie (hoofdletter ongevoelig)"
 
-#: models.py:22 models.py:117
+#: models.py:22 models.py:119
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
@@ -153,43 +154,43 @@ msgstr ""
 msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:55
+#: models.py:57
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:91 models.py:103
+#: models.py:93 models.py:105
 msgid "Smart link"
 msgstr "Slimme link"
 
-#: models.py:107
+#: models.py:109
 msgid "The inclusion is ignored for the first item."
 msgstr "De berekening is genegeerd voor het eerste item"
 
-#: models.py:111
+#: models.py:113
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:121
+#: models.py:123
 msgid "Expression"
 msgstr "Uitdrukking"
 
-#: models.py:124
+#: models.py:126
 msgid "Inverts the logic of the operator."
 msgstr "Inverteerd de operatorlogica"
 
-#: models.py:125
+#: models.py:127
 msgid "Negated"
 msgstr ""
 
-#: models.py:132
+#: models.py:134
 msgid "not"
 msgstr "niet"
 
-#: models.py:137
+#: models.py:139
 msgid "Link condition"
 msgstr ""
 
-#: models.py:138
+#: models.py:140
 msgid "Link conditions"
 msgstr ""
 
@@ -235,52 +236,50 @@ msgstr ""
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 
-#: views.py:87
+#: views.py:90
 msgid "Available document types"
 msgstr "Beschikbare documentsoorten"
 
-#: views.py:89
+#: views.py:92
 msgid "Document types enabled"
 msgstr ""
 
-#: views.py:98
+#: views.py:101
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr ""
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Smart links for document: %s"
 msgstr ""
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "'smartlink': %s bewerken."
 
-#: views.py:194
+#: views.py:196
 #, python-format
-#| msgid "Delete smart links"
 msgid "Delete smart link: %s"
 msgstr ""
 
-#: views.py:206
+#: views.py:208
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:233
+#: views.py:235
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Nieuwe condities aan 'smartlink': \"%s\" toevoegen."
 
-#: views.py:274
+#: views.py:276
 msgid "Edit smart link condition"
 msgstr "Bewerk 'smartlink' conditie."
 
-#: views.py:304
+#: views.py:306
 #, python-format
-#| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr ""
 

@@ -4,11 +4,12 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
@@ -88,7 +89,6 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
-#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -97,7 +97,6 @@ msgid "Remove documents from folders"
 msgstr ""
 
 #: permissions.py:22
-#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -111,7 +110,6 @@ msgstr ""
 
 #: views.py:49
 #, python-format
-#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
@@ -186,7 +184,6 @@ msgid "Remove"
 msgstr ""
 
 #: views.py:224
-#| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
 msgstr[0] ""
@@ -196,7 +193,6 @@ msgstr[3] ""
 
 #: views.py:235
 #, python-format
-#| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
 msgstr ""
 
@@ -206,13 +202,11 @@ msgstr ""
 
 #: views.py:273
 #, python-format
-#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
 msgstr ""
 
 #: views.py:282
 #, python-format
-#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
 msgstr ""
 

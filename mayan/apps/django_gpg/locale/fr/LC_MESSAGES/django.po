@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-05-23 20:02+0000\n"
 "Last-Translator: Bruno CAPELETO <bruno.capeleto@abcreseau.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -98,7 +99,6 @@ msgid "Key management"
 msgstr "Gestion des clés"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "Uploader la clé"
 
@@ -163,7 +163,6 @@ msgid "Key data"
 msgstr "Contenu de la clef"
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "Clé"
 
@@ -196,7 +195,6 @@ msgid "Use keys to sign content"
 msgstr "Utiliser des clefs pour signer le document"
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Uploader les clés"
 
@@ -205,7 +203,6 @@ msgid "View keys"
 msgstr "Afficher les clés"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Signatures"
 
@@ -218,13 +215,11 @@ msgid "Path to the GPG binary."
 msgstr "Chemin du binaire GPG"
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Serveur de clefs à contacter"
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Effacer la clé: %s"
 
@@ -235,7 +230,6 @@ msgstr "Détails de la clé: %s"
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Importer l'identifiant de clé : %s ?"
 
@@ -245,7 +239,6 @@ msgstr "Importer la clé"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Impossible d'importer la clé : %(key_id)s; %(error)s"
 

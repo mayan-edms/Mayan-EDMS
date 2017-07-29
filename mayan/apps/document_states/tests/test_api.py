@@ -2,15 +2,15 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.urls import reverse
 
 from rest_framework.test import APITestCase
 
 from acls.models import AccessControlList
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 from permissions import Permission
 from permissions.models import Role
@@ -48,7 +48,7 @@ class WorkflowAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -229,7 +229,7 @@ class WorkflowStatesAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -364,7 +364,7 @@ class WorkflowTransitionsAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -540,7 +540,7 @@ class DocumentWorkflowsAPITestCase(BaseAPITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -671,7 +671,7 @@ class DocumentWorkflowsTransitionACLsAPITestCase(APITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         self.group = Group.objects.create(name=TEST_GROUP_NAME)

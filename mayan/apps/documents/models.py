@@ -6,8 +6,8 @@ import uuid
 
 from django.conf import settings
 from django.core.files import File
-from django.core.urlresolvers import reverse
 from django.db import models, transaction
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -30,12 +30,13 @@ from .events import (
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, PassthroughManager,
-    RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentTypeManager, DuplicatedDocumentManager,
+    PassthroughManager, RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
+    setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_size, setting_language, setting_zoom_max_level,
     setting_zoom_min_level
 )
@@ -149,7 +150,7 @@ class Document(models.Model):
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
-        DocumentType, related_name='documents',
+        DocumentType, on_delete=models.CASCADE, related_name='documents',
         verbose_name=_('Document type')
     )
     label = models.CharField(
@@ -362,7 +363,8 @@ class DocumentVersion(models.Model):
         cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(
-        Document, related_name='versions', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='versions',
+        verbose_name=_('Document')
     )
     timestamp = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Timestamp')
@@ -382,10 +384,15 @@ class DocumentVersion(models.Model):
     encoding = models.CharField(
         blank=True, editable=False, max_length=64, null=True
     )
-    checksum = models.TextField(
-        blank=True, db_index=True, editable=False, null=True,
+    checksum = models.CharField(
+        blank=True, db_index=True, editable=False, max_length=64, null=True,
         verbose_name=_('Checksum')
     )
+
+    class Meta:
+        ordering = ('timestamp',)
+        verbose_name = _('Document version')
+        verbose_name_plural = _('Document version')
 
     def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)
@@ -448,16 +455,12 @@ class DocumentVersion(models.Model):
                 event_document_new_version.commit(
                     actor=user, target=self.document
                 )
-                post_version_upload.send(sender=self.__class__, instance=self)
+                post_version_upload.send(sender=DocumentVersion, instance=self)
 
                 if tuple(self.document.versions.all()) == (self,):
                     post_document_created.send(
-                        sender=self.document.__class__, instance=self.document
+                        sender=Document, instance=self.document
                     )
-
-    class Meta:
-        verbose_name = _('Document version')
-        verbose_name_plural = _('Document version')
 
     @property
     def cache_filename(self):
@@ -647,7 +650,7 @@ class DocumentTypeFilename(models.Model):
     quick rename functionality
     """
     document_type = models.ForeignKey(
-        DocumentType, related_name='filenames',
+        DocumentType, on_delete=models.CASCADE, related_name='filenames',
         verbose_name=_('Document type')
     )
     filename = models.CharField(
@@ -671,7 +674,7 @@ class DocumentPage(models.Model):
     Model that describes a document version page
     """
     document_version = models.ForeignKey(
-        DocumentVersion, related_name='pages',
+        DocumentVersion, on_delete=models.CASCADE, related_name='pages',
         verbose_name=_('Document version')
     )
     page_number = models.PositiveIntegerField(
@@ -768,11 +771,14 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', cache_filename)
 
-        if cache_storage_backend.exists(cache_filename):
+        if not setting_disable_transformed_image_cache.value and cache_storage_backend.exists(cache_filename):
             logger.debug(
                 'transformations cache file "%s" found', cache_filename
             )
         else:
+            logger.debug(
+                'transformations cache file "%s" not found', cache_filename
+            )
             image = self.get_image(transformations=transformation_list)
             with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
                 file_object.write(image.getvalue())
@@ -785,7 +791,7 @@ class DocumentPage(models.Model):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
-        if cache_storage_backend.exists(cache_filename):
+        if not setting_disable_base_image_cache.value and cache_storage_backend.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
             converter = converter_class(
                 file_object=cache_storage_backend.open(cache_filename)
@@ -841,7 +847,7 @@ class DocumentPage(models.Model):
 
 class DocumentPageCachedImage(models.Model):
     document_page = models.ForeignKey(
-        DocumentPage, related_name='cached_images',
+        DocumentPage, on_delete=models.CASCADE, related_name='cached_images',
         verbose_name=_('Document page')
     )
     filename = models.CharField(max_length=128, verbose_name=_('Filename'))
@@ -870,10 +876,12 @@ class RecentDocument(models.Model):
     a given user
     """
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, editable=False, verbose_name=_('User')
+        settings.AUTH_USER_MODEL, db_index=True, editable=False,
+        on_delete=models.CASCADE, verbose_name=_('User')
     )
     document = models.ForeignKey(
-        Document, editable=False, verbose_name=_('Document')
+        Document, editable=False, on_delete=models.CASCADE,
+        verbose_name=_('Document')
     )
     datetime_accessed = models.DateTimeField(
         auto_now=True, db_index=True, verbose_name=_('Accessed')
@@ -892,3 +900,26 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _('Recent document')
         verbose_name_plural = _('Recent documents')
+
+
+@python_2_unicode_compatible
+class DuplicatedDocument(models.Model):
+    document = models.ForeignKey(
+        Document, on_delete=models.CASCADE, related_name='duplicates',
+        verbose_name=_('Document')
+    )
+    documents = models.ManyToManyField(
+        Document, verbose_name=_('Duplicated documents')
+    )
+    datetime_added = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Added')
+    )
+
+    objects = DuplicatedDocumentManager()
+
+    def __str__(self):
+        return force_text(self.document)
+
+    class Meta:
+        verbose_name = _('Duplicated document')
+        verbose_name_plural = _('Duplicated documents')

@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-05-04 02:24+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -26,7 +27,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Busca dinâmica"
 
-#: classes.py:26
+#: classes.py:27
 msgid "No search model matching the query"
 msgstr "Nenhum modelo de pesquisa que corresponda à consulta"
 
@@ -44,11 +45,11 @@ msgstr "Quando marcado, somente os resultados que correspondem a todos os campos
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
-#: links.py:8 settings.py:8 views.py:51 views.py:62
+#: links.py:8 settings.py:8 views.py:52 views.py:63
 msgid "Search"
 msgstr "Pesquisa"
 
-#: links.py:11 views.py:76
+#: links.py:11 views.py:77
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
@@ -60,15 +61,13 @@ msgstr "pesquisar novamente"
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Quantidade máxima acessos para a pesquisa buscar e mostrar."
 
-#: views.py:24
+#: views.py:25
 #, python-format
-#| msgid "Search results"
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
-#| msgid "Search error: %s"
 msgid "Search for: %s"
 msgstr "Pesquisar por: %s"
 

@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2016
+# Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"PO-Revision-Date: 2017-07-09 06:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -21,20 +22,20 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:55 apps.py:113 apps.py:117 links.py:14 permissions.py:7 queues.py:7
+#: apps.py:56 apps.py:114 apps.py:118 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:88
+#: apps.py:89
 msgid "Document"
 msgstr "Documento"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Added"
 msgstr "Añadido"
 
-#: apps.py:96 models.py:37
+#: apps.py:97 models.py:37
 msgid "Result"
 msgstr "Resultado"
 
@@ -48,7 +49,6 @@ msgid "Contents"
 msgstr "Contenido"
 
 #: links.py:18 links.py:25
-#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
 msgstr "Enviar para OCR"
 
@@ -64,9 +64,13 @@ msgstr "Configurar OCR"
 msgid "OCR documents per type"
 msgstr "Realizar OCR por tipo de documento"
 
-#: links.py:37 links.py:41 views.py:154
+#: links.py:37 links.py:41 views.py:155
 msgid "OCR errors"
 msgstr "Errores de OCR"
+
+#: links.py:46
+msgid "Download OCR text"
+msgstr "Descargar texto OCR"
 
 #: models.py:16
 msgid "Document type"
@@ -113,7 +117,6 @@ msgid "Document page content"
 msgstr "Contenido de página de documento"
 
 #: models.py:64
-#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
 msgstr "Contenido de página de documento"
 
@@ -141,7 +144,7 @@ msgstr "Cambiar opciones OCR por tipo de documento"
 
 #: queues.py:9
 msgid "Document version OCR"
-msgstr ""
+msgstr "OCR de versión de documento"
 
 #: settings.py:12
 msgid ""
@@ -157,57 +160,52 @@ msgstr "Ruta completa a la aplicación que se usará para OCR."
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Realizar OCR a nuevo tipos de documentos por defecto."
 
-#: views.py:26
-#| msgid "Submit documents for OCR"
+#: views.py:27
 msgid "Submit all documents for OCR?"
 msgstr "¿Enviar todos los documentos para OCR?"
 
-#: views.py:38
+#: views.py:39
 #, python-format
 msgid "%d documents added to the OCR queue."
 msgstr "%d documentos enviados para OCR."
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr "¿Enviar \"%s\" para OCR?"
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Documento: %(document)s fue añadido a la lista de espera de OCR"
 
-#: views.py:81
-#| msgid "Submit documents for OCR"
+#: views.py:82
 msgid "Submit the selected documents to the OCR queue?"
 msgstr "¿Enviar los documentos seleccionados para OCR?"
 
-#: views.py:88
-#| msgid "Submit documents for OCR"
+#: views.py:89
 msgid "Submit all documents of a type for OCR"
 msgstr "Enviar todos los documentos de un tipo para OCR"
 
-#: views.py:102
+#: views.py:103
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d documentos de tipo \"%(document_type)s\" enviados para OCR."
 
-#: views.py:125
+#: views.py:126
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Editar opciones OCR para el tipo de documento: %s"
 
-#: views.py:147
+#: views.py:148
 #, python-format
-#| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr "Resultados del OCR para documento: %s"
 
-#: views.py:172
+#: views.py:173
 #, python-format
-#| msgid "Queued documents: %d"
 msgid "OCR errors for document: %s"
-msgstr ""
+msgstr "Errores OCR para documento: %s"
 
 #~ msgid "pdftotext version"
 #~ msgstr "document queues"

@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015-2017
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
 "PO-Revision-Date: 2017-05-28 19:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -25,7 +26,7 @@ msgstr ""
 msgid "Permissions"
 msgstr "Permisos"
 
-#: classes.py:72
+#: classes.py:75
 msgid "Insufficient permissions."
 msgstr "Permisos insuficientes."
 
@@ -49,7 +50,7 @@ msgstr "Borrar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:35 models.py:98 views.py:136
+#: links.py:35 models.py:98 views.py:137
 msgid "Roles"
 msgstr "Roles"
 
@@ -124,29 +125,28 @@ msgstr "Separación por comas de las llaves primarias de permiso para otorgar a 
 msgid "No such permission: %s"
 msgstr "No existe el permiso: %s"
 
-#: views.py:45
+#: views.py:46
 msgid "Available groups"
 msgstr "Grupos disponibles"
 
-#: views.py:46
+#: views.py:47
 msgid "Role groups"
 msgstr "Grupos del rol"
 
-#: views.py:56
+#: views.py:57
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupos del rol: %s"
 
-#: views.py:79
+#: views.py:80
 msgid "Available permissions"
 msgstr "Permisos disponibles"
 
-#: views.py:80
-#| msgid "Grant permissions"
+#: views.py:81
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
-#: views.py:93
+#: views.py:94
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permisos para el rol: %s"

@@ -5,8 +5,8 @@ import urlparse
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, resolve_url
+from django.urls import reverse
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
@@ -46,6 +46,7 @@ class DocumentPageListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'list_as_items': True,
             'object': self.get_document(),
             'title': _('Pages for document: %s') % self.get_document(),
         }
@@ -70,7 +71,7 @@ class DocumentPageNavigationBase(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         parse_result = urlparse.urlparse(
             self.request.META.get(
-                'HTTP_REFERER', reverse(
+                'HTTP_REFERER', resolve_url(
                     settings.LOGIN_REDIRECT_URL
                 )
             )

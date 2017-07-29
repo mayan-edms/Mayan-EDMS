@@ -79,7 +79,7 @@ body {
 }
 
 #carousel-container img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .carousel-item {
@@ -172,26 +172,102 @@ a i {
     margin-right: 2px;
 }
 
-/* Metadata */
-.metadata-display {
-    display: inline-block;
-    min-width: 200px;
-    padding-right: 10px;
-    width: 49%;
-}
-
-/* Content */
-@media (min-width:1200px) {
-    .container {
-        min-width: 1170px;
-        width: 95%;
-    }
-
+/* Notifications */
 #toast-container > div {
   opacity: 1;
 }
 
+/* User menu */
 .link-text-span {
     padding-left: 10px;
     padding-right: 20px;
+}
+
+
+/* Make facet list group horizontal on small or smaller */
+@media (max-width: 767px) {
+    ul.list-group:after {
+      clear: both;
+      display: block;
+      content: "";
+    }
+
+    .list-group-item {
+        float: left;
+    }
+}
+
+/* Collapse navigation on medium or smaller */
+@media (max-width: 991px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+
+/* List item view */
+
+.panel-item {
+    box-shadow: 2px 2px 18px rgba(0, 0, 0, .2);
+}
+
+.panel-item > .panel-heading {
+    padding: 1px 10px;
+}
+
+.panel-item > .panel-body {
+    padding: 10px;
+}
+
+.list-extra-column-label {
+    font-weight: bold;
+}
+
+/* Content */
+@media (min-width:1200px) {
+    .container-fluid {
+        width: 95%;
+    }
+}
+
+/* Document widget */
+.spinner-container {
+    margin: auto;
+    width: 100%;
+    border: 1px solid lightgray;
+}
+
+.spinner-container > .spinner-icon {
+    margin-left: 4px;
+    margin-top: 3px;
 }

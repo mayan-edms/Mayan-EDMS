@@ -3,10 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from django.conf.urls import url
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
+from django.urls import clear_url_caches, reverse
 
+from acls.models import AccessControlList
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
@@ -74,7 +75,12 @@ class GenericViewTestCase(BaseTestCase):
             data=data, follow=follow
         )
 
-    def grant(self, permission):
+    def grant_access(self, permission, obj):
+        AccessControlList.objects.grant(
+            permission=permission, role=self.role, obj=obj
+        )
+
+    def grant_permission(self, permission):
         self.role.permissions.add(
             permission.stored_permission
         )
@@ -85,7 +91,7 @@ class GenericViewTestCase(BaseTestCase):
         user = get_user_model().objects.get(username=username)
 
         self.assertTrue(logged_in)
-        self.assertTrue(user.is_authenticated())
+        self.assertTrue(user.is_authenticated)
 
     def login_user(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)

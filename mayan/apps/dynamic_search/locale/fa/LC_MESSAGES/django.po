@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-05-04 08:02+0000\n"
 "Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -24,7 +25,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "جستجوی پویا"
 
-#: classes.py:26
+#: classes.py:27
 msgid "No search model matching the query"
 msgstr "هیچ مدل جستجویی با این عبارت جستجو پیدا نشد."
 
@@ -42,11 +43,11 @@ msgstr "با انتخاب این گزینه، فقط نتایجی که با هم
 msgid "Search terms"
 msgstr "عبارات جستجو"
 
-#: links.py:8 settings.py:8 views.py:51 views.py:62
+#: links.py:8 settings.py:8 views.py:52 views.py:63
 msgid "Search"
 msgstr "جستجو"
 
-#: links.py:11 views.py:76
+#: links.py:11 views.py:77
 msgid "Advanced search"
 msgstr "جستجوی پیشرفته"
 
@@ -58,15 +59,13 @@ msgstr "جستجوی دوباره"
 msgid "Maximum amount search hits to fetch and display."
 msgstr "جداکثر نتایج قابل نمایش"
 
-#: views.py:24
+#: views.py:25
 #, python-format
-#| msgid "Search results"
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:64
+#: views.py:65
 #, python-format
-#| msgid "Search error: %s"
 msgid "Search for: %s"
 msgstr ""
 

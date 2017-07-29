@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -78,49 +79,25 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:86
-msgid "Profile"
-msgstr ""
-
-#: templates/appearance/base.html:92
-msgid "Anonymous"
-msgstr "匿名用户"
-
-#: templates/appearance/base.html:126
-msgid "Success"
-msgstr ""
-
-#: templates/appearance/base.html:126
-msgid "Information"
-msgstr ""
-
-#: templates/appearance/base.html:126
-msgid "Warning"
-msgstr ""
-
-#: templates/appearance/base.html:126
-msgid "Error"
-msgstr ""
-
-#: templates/appearance/base.html:155
+#: templates/appearance/base.html:114
 msgid "Actions"
 msgstr "操作"
 
-#: templates/appearance/base.html:157
+#: templates/appearance/base.html:116
 msgid "Toggle Dropdown"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:11
+#: templates/appearance/calculate_form_title.html:16
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "详细信息：%(object)s"
 
-#: templates/appearance/calculate_form_title.html:14
+#: templates/appearance/calculate_form_title.html:19
 #, python-format
 msgid "Edit: %(object)s"
 msgstr "编辑：%(object)s"
 
-#: templates/appearance/calculate_form_title.html:16
+#: templates/appearance/calculate_form_title.html:21
 msgid "Create"
 msgstr "创建"
 
@@ -150,34 +127,39 @@ msgstr "是"
 msgid "No"
 msgstr "否"
 
-#: templates/appearance/generic_form_instance.html:39
-#: templates/appearance/generic_form_instance.html:46
+#: templates/appearance/generic_form_instance.html:49
+#: templates/appearance/generic_form_instance.html:55
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:42
+#: templates/appearance/generic_multiform_subtemplate.html:41
 msgid "required"
 msgstr "必填"
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Save"
 msgstr "保存"
 
 #: templates/appearance/generic_form_subtemplate.html:71
+#: templates/appearance/generic_list_items_subtemplate.html:45
 #: templates/appearance/generic_list_subtemplate.html:33
-#: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "提交"
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:68
+#: templates/appearance/generic_multiform_subtemplate.html:67
 msgid "Cancel"
 msgstr "取消"
 
 #: templates/appearance/generic_list_horizontal.html:21
+#: templates/appearance/generic_list_items_subtemplate.html:124
 #: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr ""
 
+#: templates/appearance/generic_list_items_subtemplate.html:24
 #: templates/appearance/generic_list_subtemplate.html:12
 #, python-format
 msgid ""
@@ -185,6 +167,8 @@ msgid ""
 "%(total_pages)s)"
 msgstr ""
 
+#: templates/appearance/generic_list_items_subtemplate.html:26
+#: templates/appearance/generic_list_items_subtemplate.html:29
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
@@ -195,77 +179,122 @@ msgstr ""
 msgid "Identifier"
 msgstr "标识"
 
-#: templates/appearance/home.html:9 templates/appearance/home.html:13
+#: templates/appearance/home.html:9 templates/appearance/home.html:21
 msgid "Dashboard"
 msgstr ""
 
-#: templates/appearance/home.html:22
+#: templates/appearance/home.html:30
 msgid "Getting started"
 msgstr ""
 
-#: templates/appearance/home.html:25
+#: templates/appearance/home.html:33
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 
-#: templates/appearance/home.html:46
+#: templates/appearance/home.html:54
 msgid "Search pages"
 msgstr ""
 
-#: templates/appearance/home.html:48 templates/appearance/home.html:58
+#: templates/appearance/home.html:56 templates/appearance/home.html:66
 msgid "Search"
 msgstr "搜索"
 
-#: templates/appearance/home.html:49 templates/appearance/home.html:59
+#: templates/appearance/home.html:57 templates/appearance/home.html:67
 msgid "Advanced"
 msgstr ""
 
-#: templates/appearance/home.html:56
+#: templates/appearance/home.html:64
 msgid "Search documents"
 msgstr ""
 
-#: templates/appearance/login.html:10
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "登录"
 
-#: templates/appearance/login.html:21
+#: templates/authentication/login.html:21
 msgid "First time login"
 msgstr "第一次登录"
 
-#: templates/appearance/login.html:24
+#: templates/authentication/login.html:24
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
 msgstr "恭喜您！您已经成功安装 <strong>Mayan EDMS</strong>。"
 
-#: templates/appearance/login.html:25
+#: templates/authentication/login.html:25
 msgid "Login using the following credentials:"
 msgstr "使用如下凭证登录："
 
-#: templates/appearance/login.html:26
+#: templates/authentication/login.html:26
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "用户名：<strong>%(account)s</strong>"
 
-#: templates/appearance/login.html:27
+#: templates/authentication/login.html:27
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr "邮箱：<strong>%(email)s</strong>"
 
-#: templates/appearance/login.html:28
+#: templates/authentication/login.html:28
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "密码：<strong>%(password)s</strong>"
 
-#: templates/appearance/login.html:29
+#: templates/authentication/login.html:29
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr "请修改密码以提高安全性，并且禁止显示此信息。"
 
-#: templates/appearance/login.html:45 templates/appearance/login.html:54
+#: templates/authentication/login.html:45
+#: templates/authentication/login.html:53
 msgid "Sign in"
+msgstr ""
+
+#: templates/authentication/login.html:58
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:17
+#| msgid "Login"
+msgid "Login page"
+msgstr ""
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
 msgstr ""
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "无"
+
+#~ msgid "Profile"
+#~ msgstr "Profile"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anonymous"
+
+#~ msgid "Success"
+#~ msgstr "Success"
+
+#~ msgid "Information"
+#~ msgstr "Information"
+
+#~ msgid "Warning"
+#~ msgstr "Warning"
+
+#~ msgid "Error"
+#~ msgstr "Error"

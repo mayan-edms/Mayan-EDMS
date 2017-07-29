@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Jesaja Everling <jeverling@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -25,7 +26,6 @@ msgid "Checkouts"
 msgstr "Ausbuchungen"
 
 #: apps.py:55
-#| msgid "checked out documents"
 msgid "Checkedout documents"
 msgstr "Ausgebuchte Dokumente"
 
@@ -45,7 +45,7 @@ msgstr "Dokument ausgebucht"
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
-#: exceptions.py:25 views.py:49
+#: exceptions.py:27 views.py:49
 msgid "Document already checked out."
 msgstr "Dokument bereits ausgebucht"
 
@@ -53,13 +53,11 @@ msgstr "Dokument bereits ausgebucht"
 msgid "Document status"
 msgstr "Dokumentenstatus"
 
-#: forms.py:37 models.py:37 views.py:79
-#| msgid "User: %s"
+#: forms.py:37 models.py:37 views.py:84
 msgid "User"
 msgstr "Benutzer"
 
 #: forms.py:41
-#| msgid "Check out time: %s"
 msgid "Check out time"
 msgstr "Ausbuchungszeit"
 
@@ -68,7 +66,6 @@ msgid "Check out expiration"
 msgstr "Ausbuchungsende"
 
 #: forms.py:51
-#| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
 msgstr "Neue Versionen erlaubt?"
 
@@ -125,7 +122,6 @@ msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen sperren"
 
 #: models.py:54
-#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
 msgstr "Ausbuchungsende muss in der Zukunft liegen."
 
@@ -138,12 +134,10 @@ msgid "Document checkouts"
 msgstr "Ausbuchungen"
 
 #: models.py:97
-#| msgid "New versions allowed: %s"
 msgid "New version block"
 msgstr "Akutialisierungsschutz"
 
 #: models.py:98
-#| msgid "New versions allowed: %s"
 msgid "New version blocks"
 msgstr "Aktualisierungsschutz"
 
@@ -186,49 +180,45 @@ msgstr "Dokument \"%s\" erfolgreich ausgebucht"
 msgid "Check out document: %s"
 msgstr "Dokument %s ausbuchen "
 
-#: views.py:75
+#: views.py:81
 msgid "Documents checked out"
 msgstr "Ausgebuchte Dokumente"
 
-#: views.py:85
+#: views.py:90
 msgid "Checkout time and date"
 msgstr "Ausbuchungszeit"
 
-#: views.py:91
+#: views.py:96
 msgid "Checkout expiration"
 msgstr "Ausbuchungsende"
 
-#: views.py:112
+#: views.py:116
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Ausbuchungsdetails für Dokument %s"
 
-#: views.py:130
+#: views.py:134
 #, python-format
-#| msgid ""
-#| "dn't originally checked out this document.  Are you sure you wish cefully "
-#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Soll Dokument %s trotzdem zwingend eingebucht werden?"
 
-#: views.py:134
+#: views.py:138
 #, python-format
-#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Dokument %s einbuchen?"
 
-#: views.py:162
+#: views.py:166
 msgid "Document has not been checked out."
 msgstr "Dokument wurde nicht ausgebucht."
 
-#: views.py:167
+#: views.py:171
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Fehler bei der Einbuchung von Dokument %s"
 
-#: views.py:172
+#: views.py:176
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht"

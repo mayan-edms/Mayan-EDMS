@@ -10,7 +10,7 @@ from django.utils.timezone import now
 from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 from user_management.tests.literals import (
     TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
@@ -33,7 +33,7 @@ class DocumentCheckoutTestCase(BaseTestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -136,7 +136,7 @@ class NewVersionBlockTestCase(BaseTestCase):
         super(NewVersionBlockTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:

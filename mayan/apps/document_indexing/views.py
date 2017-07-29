@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -261,21 +261,28 @@ class IndexInstanceNodeView(DocumentListView):
                 return self.index_instance_node.documents.all()
 
     def get_extra_context(self):
-        context = {
-            'hide_links': True,
-            'object': self.index_instance_node,
-            'navigation': mark_safe(
-                _('Navigation: %s') % node_tree(
-                    node=self.index_instance_node, user=self.request.user
-                )
-            ),
-            'title': _(
-                'Contents for index: %s'
-            ) % self.index_instance_node.get_full_path(),
-        }
+        context = super(IndexInstanceNodeView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.index_instance_node,
+                'navigation': mark_safe(
+                    _('Navigation: %s') % node_tree(
+                        node=self.index_instance_node, user=self.request.user
+                    )
+                ),
+                'title': _(
+                    'Contents for index: %s'
+                ) % self.index_instance_node.get_full_path(),
+            }
+        )
 
         if self.index_instance_node and not self.index_instance_node.index_template_node.link_documents:
-            context.update({'hide_object': True})
+            context.update(
+                {
+                    'hide_object': True,
+                    'list_as_items': False,
+                }
+            )
 
         return context
 

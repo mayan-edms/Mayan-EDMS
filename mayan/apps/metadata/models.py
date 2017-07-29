@@ -151,9 +151,12 @@ class DocumentMetadata(models.Model):
     """
 
     document = models.ForeignKey(
-        Document, related_name='metadata', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='metadata',
+        verbose_name=_('Document')
     )
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Type'))
+    metadata_type = models.ForeignKey(
+        MetadataType, on_delete=models.CASCADE, verbose_name=_('Type')
+    )
     value = models.CharField(
         blank=True, db_index=True, max_length=255, null=True,
         verbose_name=_('Value')
@@ -200,11 +203,12 @@ class DocumentMetadata(models.Model):
 @python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(
-        DocumentType, related_name='metadata',
+        DocumentType, on_delete=models.CASCADE, related_name='metadata',
         verbose_name=_('Document type')
     )
     metadata_type = models.ForeignKey(
-        MetadataType, verbose_name=_('Metadata type')
+        MetadataType, on_delete=models.CASCADE,
+        verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 

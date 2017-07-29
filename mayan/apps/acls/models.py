@@ -30,7 +30,7 @@ class AccessControlList(models.Model):
     in the Setup menu.
     """
     content_type = models.ForeignKey(
-        ContentType,
+        ContentType, on_delete=models.CASCADE,
         related_name='object_content_type'
     )
     object_id = models.PositiveIntegerField()
@@ -43,7 +43,10 @@ class AccessControlList(models.Model):
         StoredPermission, blank=True, related_name='acls',
         verbose_name=_('Permissions')
     )
-    role = models.ForeignKey(Role, related_name='acls', verbose_name=_('Role'))
+    role = models.ForeignKey(
+        Role, on_delete=models.CASCADE, related_name='acls',
+        verbose_name=_('Role')
+    )
 
     objects = AccessControlListManager()
 

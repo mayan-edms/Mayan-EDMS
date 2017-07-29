@@ -3,9 +3,9 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -234,7 +234,11 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
                     urlencode(
                         {
                             'id_list': ','.join(
-                                queryset.value_list('pk', flat=True)
+                                map(
+                                    force_text, queryset.values_list(
+                                        'pk', flat=True
+                                    )
+                                )
                             )
                         }
                     )
@@ -404,7 +408,10 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
                     urlencode(
                         {
                             'id_list': ','.join(
-                                queryset.value_list('pk', flat=True)
+                                map(
+                                    force_text,
+                                    queryset.values_list('pk', flat=True)
+                                )
                             )
                         }
                     )
@@ -446,13 +453,15 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
         for document in queryset:
             document.add_as_recent_document_for_user(self.request.user)
 
-            for item in document.metadata.all():
-                value = item.value
-                if item.metadata_type in metadata:
-                    if value not in metadata[item.metadata_type]:
-                        metadata[item.metadata_type].append(value)
+            for document_metadata in document.metadata.all():
+                # Metadata value cannot be None here, fallback to an empty
+                # string
+                value = document_metadata.value or ''
+                if document_metadata.metadata_type in metadata:
+                    if value not in metadata[document_metadata.metadata_type]:
+                        metadata[document_metadata.metadata_type].append(value)
                 else:
-                    metadata[item.metadata_type] = [value] if value else ''
+                    metadata[document_metadata.metadata_type] = [value] if value else ''
 
         initial = []
         for key, value in metadata.items():

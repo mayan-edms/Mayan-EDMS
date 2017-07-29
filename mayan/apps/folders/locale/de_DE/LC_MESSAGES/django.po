@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -14,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
 "PO-Revision-Date: 2017-04-26 15:54+0000\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -94,7 +95,6 @@ msgid "Edit folders"
 msgstr "Ordner bearbeiten"
 
 #: permissions.py:16
-#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr "Ordner löschen"
 
@@ -103,7 +103,6 @@ msgid "Remove documents from folders"
 msgstr "Dokumente aus Ordnern entfernen"
 
 #: permissions.py:22
-#| msgid "Edit new folders"
 msgid "View folders"
 msgstr "Ordner anzeigen"
 
@@ -117,7 +116,6 @@ msgstr "Primärschlüssel des hinzuzufügenden Dokuments."
 
 #: views.py:49
 #, python-format
-#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Ordner %s löschen?"
 
@@ -190,7 +188,6 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: views.py:224
-#| msgid "Remove documents from folders"
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
 msgstr[0] ""
@@ -198,7 +195,6 @@ msgstr[1] ""
 
 #: views.py:235
 #, python-format
-#| msgid "Remove documents from folders"
 msgid "Remove document \"%s\" to folders"
 msgstr "Dokument \"%s\" aus Ordnern entfernen"
 
@@ -208,13 +204,11 @@ msgstr "Ordner aus denen das ausgewählte Dokument entfernt wird."
 
 #: views.py:273
 #, python-format
-#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s is not in folder: %(folder)s."
 msgstr ""
 
 #: views.py:282
 #, python-format
-#| msgid "Document: %(document)s is already in folder: %(folder)s."
 msgid "Document: %(document)s removed from folder: %(folder)s."
 msgstr ""
 

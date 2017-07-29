@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 import logging
 import uuid
 
-from django.core.urlresolvers import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -37,8 +37,8 @@ class SignatureBaseModel(models.Model):
     """
 
     document_version = models.ForeignKey(
-        DocumentVersion, editable=False, related_name='signatures',
-        verbose_name=_('Document version')
+        DocumentVersion, editable=False, on_delete=models.CASCADE,
+        related_name='signatures', verbose_name=_('Document version')
     )
     # Basic fields
     date = models.DateField(

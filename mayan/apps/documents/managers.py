@@ -5,6 +5,7 @@ import logging
 
 from django.apps import apps
 from django.db import models
+from django.db.models import F, Max
 from django.utils.timezone import now
 
 from .literals import STUB_EXPIRATION_INTERVAL
@@ -98,13 +99,52 @@ class DocumentTypeManager(models.Manager):
         return self.get(label=label)
 
 
+class DuplicatedDocumentManager(models.Manager):
+    def scan(self):
+        """
+        Find duplicates by iterating over all documents and then
+        find matching latest version checksums
+        """
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        for document in Document.objects.all():
+            self.scan_for(document=document, scan_children=False)
+
+    def scan_for(self, document, scan_children=True):
+        """
+        Find duplicates by matching latest version checksums
+        """
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        # Get the documents whose latest version matches the checksum
+        # of the current document and exclude the current document
+        duplicates = Document.objects.annotate(
+            max_timestamp=Max('versions__timestamp')
+        ).filter(
+            versions__timestamp=F('max_timestamp'),
+            versions__checksum=document.checksum
+        ).exclude(pk=document.pk)
+
+        if duplicates.exists():
+            instance, created = self.get_or_create(document=document)
+            instance.documents.add(*duplicates)
+
+        if scan_children:
+            for document in duplicates:
+                self.scan_for(document=document, scan_children=False)
+
+
 class PassthroughManager(models.Manager):
     pass
 
 
 class RecentDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
-        if user.is_authenticated():
+        if user.is_authenticated:
             new_recent, created = self.model.objects.get_or_create(
                 user=user, document=document
             )
@@ -120,7 +160,7 @@ class RecentDocumentManager(models.Manager):
     def get_for_user(self, user):
         document_model = apps.get_model('documents', 'document')
 
-        if user.is_authenticated():
+        if user.is_authenticated:
             return document_model.objects.filter(
                 recentdocument__user=user
             ).order_by('-recentdocument__datetime_accessed')

@@ -58,54 +58,17 @@ App.prototype.setupSelect2 = function () {
 }
 
 App.prototype.setupFullHeightResizing = function () {
+    var self = this;
+
     this.resizeFullHeight();
 
     this.window.resize(function() {
-        app.resizeFullHeight();
+        self.resizeFullHeight();
     });
 }
 
 App.prototype.resizeFullHeight = function () {
     $('.full-height').height(this.window.height() - $('.full-height').data('height-difference'));
-}
-
-App.prototype.doMayanImages = function () {
-    $('a.fancybox').fancybox({
-        beforeShow : function(){
-            this.title =  $(this.element).data('caption');
-        },
-        openEffect  : 'elastic',
-        closeEffect : 'elastic',
-        prevEffect  : 'none',
-        nextEffect  : 'none',
-        titleShow   : true,
-        type        : 'image',
-        autoResize  : true,
-    });
-
-   $('img.lazy-load').lazyload({
-        appear: function(elements_left, settings) {
-            new MayanImage({element: $(this)});
-        },
-    });
-
-    $('img.lazy-load-carousel').lazyload({
-        appear: function(elements_left, settings) {
-            new MayanImage({element: $(this)});
-        },
-        container: $('#carousel-container'),
-        threshold: 400
-    });
-
-    $('.lazy-load').on('load', function() {
-        $(this).siblings('.spinner').remove();
-        $(this).removeClass('lazy-load');
-    });
-
-    $('.lazy-load-carousel').on('load', function() {
-        $(this).siblings('.spinner').remove();
-        $(this).removeClass('lazy-load-carousel');
-    });
 }
 
 App.prototype.doToastrMessages = function () {
@@ -165,9 +128,55 @@ App.prototype.doToastrMessages = function () {
     });
 }
 
+/* MayanImage class */
+
 var MayanImage = function (options) {
     this.element = options.element;
     this.load();
+}
+
+MayanImage.intialize = function () {
+    $('a.fancybox').fancybox({
+        beforeShow : function(){
+            this.title = $(this.element).data('caption');
+        },
+        openEffect  : 'elastic',
+        closeEffect : 'elastic',
+        prevEffect  : 'none',
+        nextEffect  : 'none',
+        titleShow   : true,
+        type        : 'image',
+        autoResize  : true,
+    });
+
+   $('img.lazy-load').lazyload({
+        appear: function(elements_left, settings) {
+            new MayanImage({element: $(this)});
+        },
+        threshold: 400,
+    });
+
+    $('img.lazy-load-carousel').lazyload({
+        appear: function(elements_left, settings) {
+            new MayanImage({element: $(this)});
+        },
+        container: $('#carousel-container'),
+        threshold: 2000
+    });
+
+    $('.lazy-load').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
+        $(this).siblings('.spinner-container').remove();
+        $(this).removeClass('lazy-load pull-left');
+    });
+
+    $('.lazy-load-carousel').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
+        $(this).siblings('.spinner-container').remove();
+        $(this).removeClass('lazy-load-carousel pull-left');
+    });
 }
 
 MayanImage.prototype.onImageError = function () {
@@ -192,6 +201,8 @@ MayanImage.prototype.load = function () {
     });
 
     this.element.attr('src', this.element.attr('data-url'));
+    $.fn.matchHeight._update();
+    $.fn.matchHeight._maintainScroll = true;
 };
 
 jQuery(document).ready(function() {
@@ -199,7 +210,7 @@ jQuery(document).ready(function() {
 
     app.setupFullHeightResizing();
 
-    app.doMayanImages();
+    MayanImage.intialize();
 
     app.doToastrMessages();
 

@@ -65,8 +65,9 @@ class TagsApp(MayanAppConfig):
         ModelPermission.register(
             model=Tag, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_tag_delete, permission_tag_edit,
-                permission_tag_view,
+                permission_tag_attach, permission_tag_delete,
+                permission_tag_edit, permission_tag_remove,
+                permission_tag_view
             )
         )
 

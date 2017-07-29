@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -31,11 +31,13 @@ from rest_api.classes import APIEndPoint, APIResource
 from rest_api.fields import DynamicSerializerField
 from statistics.classes import StatisticNamespace, CharJSLine
 
-from .handlers import create_default_document_type
+from .handlers import (
+    create_default_document_type, handler_scan_duplicates_for
+)
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
     link_document_clone_transformations, link_document_delete,
-    link_document_document_type_edit,
+    link_document_document_type_edit, link_document_duplicates_list,
     link_document_multiple_document_type_edit, link_document_download,
     link_document_edit, link_document_list, link_document_list_deleted,
     link_document_list_recent, link_document_multiple_delete,
@@ -55,7 +57,8 @@ from .links import (
     link_document_type_filename_list, link_document_type_list,
     link_document_type_setup, link_document_update_page_count,
     link_document_version_download, link_document_version_list,
-    link_document_version_revert, link_trash_can_empty
+    link_document_version_revert, link_duplicated_document_list,
+    link_duplicated_document_scan, link_trash_can_empty
 )
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
@@ -67,12 +70,15 @@ from .permissions import (
     permission_document_download, permission_document_edit,
     permission_document_new_version, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_version_revert,
+    permission_document_trash, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_version_revert, permission_document_version_view,
     permission_document_view
 )
 from .queues import *  # NOQA
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
+from .signals import post_version_upload
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
     new_document_pages_this_month, new_documents_this_month,
@@ -103,6 +109,7 @@ class DocumentsApp(MayanAppConfig):
         DocumentType = self.get_model('DocumentType')
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
+        DuplicatedDocument = self.get_model('DuplicatedDocument')
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -171,7 +178,8 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
                 permission_document_restore, permission_document_trash,
-                permission_document_version_revert, permission_document_view,
+                permission_document_version_revert,
+                permission_document_version_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
@@ -179,7 +187,10 @@ class DocumentsApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=DocumentType, permissions=(permission_document_create,)
+            model=DocumentType, permissions=(
+                permission_document_create, permission_document_type_delete,
+                permission_document_type_edit, permission_document_type_view
+            )
         )
 
         ModelPermission.register_proxy(
@@ -189,13 +200,14 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )
-
-        ModelPermission.register_inheritance(
-            model=DocumentVersion, related='document',
-        )
-
         ModelPermission.register_inheritance(
             model=DocumentPage, related='document',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentTypeFilename, related='document_type',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentVersion, related='document',
         )
 
         # Document and document page thumbnail widget
@@ -274,6 +286,16 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentVersion, label=_('Comment'),
             attribute='comment'
         )
+        SourceColumn(
+            source=DuplicatedDocument, label=_('Thumbnail'),
+            func=lambda context: document_thumbnail_widget.render(
+                instance=context['object'].document
+            )
+        )
+        SourceColumn(
+            source=DuplicatedDocument, label=_('Duplicates'),
+            func=lambda context: context['object'].documents.count()
+        )
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
@@ -305,6 +327,9 @@ class DocumentsApp(MayanAppConfig):
                     routing_key='documents_periodic', delivery_mode=1
                 ),
                 Queue('uploads', Exchange('uploads'), routing_key='uploads'),
+                Queue(
+                    'documents', Exchange('documents'), routing_key='documents'
+                ),
             )
         )
 
@@ -331,20 +356,31 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_upload_new_version': {
                     'queue': 'uploads'
                 },
+                'documents.tasks.task_scan_duplicates_all': {
+                    'queue': 'tools'
+                },
+                'documents.tasks.task_scan_duplicates_for': {
+                    'queue': 'uploads'
+                },
+                'documents.tasks.task_delete_document': {
+                    'queue': 'documents'
+                },
             }
         )
 
         menu_documents.bind_links(
             links=(
                 link_document_list_recent, link_document_list,
-                link_document_list_deleted
+                link_document_list_deleted, link_duplicated_document_list
             )
         )
 
         menu_main.bind_links(links=(menu_documents,), position=0)
 
         menu_setup.bind_links(links=(link_document_type_setup,))
-        menu_tools.bind_links(links=(link_clear_image_cache,))
+        menu_tools.bind_links(
+            links=(link_clear_image_cache, link_duplicated_document_scan)
+        )
 
         # Document type links
         menu_object.bind_links(
@@ -387,7 +423,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_print, link_document_trash,
                 link_document_download, link_document_clear_transformations,
                 link_document_clone_transformations,
-                link_document_update_page_count
+                link_document_update_page_count,
             ), sources=(Document,)
         )
         menu_object.bind_links(
@@ -396,7 +432,10 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document facet links
-        menu_facet.bind_links(links=(link_acl_list,), sources=(Document,))
+        menu_facet.bind_links(
+            links=(link_document_duplicates_list, link_acl_list,),
+            sources=(Document,)
+        )
         menu_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
         )
@@ -501,6 +540,10 @@ class DocumentsApp(MayanAppConfig):
         post_initial_setup.connect(
             create_default_document_type,
             dispatch_uid='create_default_document_type'
+        )
+        post_version_upload.connect(
+            handler_scan_duplicates_for,
+            dispatch_uid='handler_scan_duplicates_for',
         )
 
         registry.register(DeletedDocument)

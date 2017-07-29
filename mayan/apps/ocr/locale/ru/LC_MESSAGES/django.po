@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,20 +20,20 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:55 apps.py:113 apps.py:117 links.py:14 permissions.py:7 queues.py:7
+#: apps.py:56 apps.py:114 apps.py:118 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "Распознавание текста"
 
-#: apps.py:88
+#: apps.py:89
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Added"
 msgstr "Добавлено"
 
-#: apps.py:96 models.py:37
+#: apps.py:97 models.py:37
 msgid "Result"
 msgstr "Результат"
 
@@ -46,7 +47,6 @@ msgid "Contents"
 msgstr "Содержание"
 
 #: links.py:18 links.py:25
-#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
 msgstr "Отправить на распознавание"
 
@@ -62,9 +62,13 @@ msgstr "Настройки распознавания"
 msgid "OCR documents per type"
 msgstr "Распознавание документов с определенным типом"
 
-#: links.py:37 links.py:41 views.py:154
+#: links.py:37 links.py:41 views.py:155
 msgid "OCR errors"
 msgstr "Ошибки распознавания"
+
+#: links.py:46
+msgid "Download OCR text"
+msgstr ""
 
 #: models.py:16
 msgid "Document type"
@@ -111,7 +115,6 @@ msgid "Document page content"
 msgstr "Содержимое страницы документа"
 
 #: models.py:64
-#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
 msgstr "Содержимое страниц документа"
 
@@ -155,55 +158,50 @@ msgstr "Полный путь до бекенда, выполняющего OCR.
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
 
-#: views.py:26
-#| msgid "Submit documents for OCR"
+#: views.py:27
 msgid "Submit all documents for OCR?"
 msgstr "Отправить все документы на распознавание?"
 
-#: views.py:38
+#: views.py:39
 #, python-format
 msgid "%d documents added to the OCR queue."
 msgstr "%d документов помещено в очередь распознавания."
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr "Отправить \"%s\" в очередь распознавания?"
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Документ: %(document)s добавлен в очередь распознавания."
 
-#: views.py:81
-#| msgid "Submit documents for OCR"
+#: views.py:82
 msgid "Submit the selected documents to the OCR queue?"
 msgstr "Отправить выделенные документы в очедерь распознавания?"
 
-#: views.py:88
-#| msgid "Submit documents for OCR"
+#: views.py:89
 msgid "Submit all documents of a type for OCR"
 msgstr "Отправить все документы определённого типа на распознавание"
 
-#: views.py:102
+#: views.py:103
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d документов с типом \"%(document_type)s\" помещены в очередь распознавания."
 
-#: views.py:125
+#: views.py:126
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Редактировать настройки распознавания для типа документов: %s"
 
-#: views.py:147
+#: views.py:148
 #, python-format
-#| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr "Результат распозанвания для документа: %s"
 
-#: views.py:172
+#: views.py:173
 #, python-format
-#| msgid "Queued documents: %d"
 msgid "OCR errors for document: %s"
 msgstr ""
 

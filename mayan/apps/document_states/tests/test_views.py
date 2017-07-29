@@ -197,7 +197,7 @@ class DocumentStateToolViewTestCase(GenericDocumentViewTestCase):
         self._create_workflow_transition()
 
         self.login_user()
-        self.grant(permission_workflow_tools)
+        self.grant_permission(permission=permission_workflow_tools)
 
         self.assertEqual(self.document.workflows.count(), 0)
 
@@ -287,7 +287,7 @@ class DocumentStateTransitionViewTestCase(GenericDocumentViewTestCase):
 
         workflow_instance = self.document_2.workflows.first()
 
-        self.grant(permission_workflow_transition)
+        self.grant_permission(permission=permission_workflow_transition)
         response = self._request_workflow_transition(
             workflow_instance=workflow_instance
         )

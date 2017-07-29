@@ -1,12 +1,14 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext, ugettext_lazy as _
+
+from common.utils import index_or_default
 
 from .settings import (
     setting_display_size, setting_preview_size, setting_thumbnail_size
@@ -99,6 +101,8 @@ class InstanceImageWidget(object):
     preview_query_dict = {}
     image_class = 'lazy-load'
     title = None
+    width = None
+    height = None
 
     # Click view
     def get_click_view_kwargs(self, instance):
@@ -221,10 +225,16 @@ class InstanceImageWidget(object):
                 )
 
             result.append(
-                '<i class="spinner fa fa-spinner fa-pulse fa-3x fa-fw"></i> '
-                '<img class="thin_border {image_class}" '
+                '<div class="spinner-container text-primary" style="height: {height}px;">'
+                '<span class="spinner-icon fa-stack fa-lg">'
+                '<i class="fa fa-file-o fa-stack-2x"></i>'
+                '<i class="fa fa-clock-o fa-stack-1x"></i>'
+                '</span>'
+                '</div>'
+                '<img class="thin_border {image_class} pull-left" style="width: {width};"'
                 'data-url="{preview_full_url}" src="#" '
-                'alt="{alt_text}" /> '.format(
+                '/> '.format(
+                    width=self.width or '100%', height=self.height or '150',
                     image_class=self.image_class,
                     preview_full_url=self.get_preview_view_url(instance=instance),
                     alt_text=self.alt_text
@@ -253,6 +263,8 @@ class BaseDocumentThumbnailWidget(InstanceImageWidget):
     preview_view_query_dict = {
         'size': setting_thumbnail_size.value
     }
+    width = setting_thumbnail_size.value.split('x')[0]
+    height = 150
 
     def get_destination_url(self, instance):
         return instance.get_absolute_url()
@@ -265,9 +277,16 @@ class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
     preview_view_query_dict = {
         'size': setting_display_size.value
     }
+    width = setting_preview_size.value.split('x')[0]
+    height = index_or_default(
+        instance=setting_preview_size.value.split('x'),
+        index=1, default=setting_preview_size.value.split('x')[0]
+    )
 
 
 class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
     def get_click_view_kwargs(self, instance):
         return {
             'pk': instance.pk,
@@ -308,6 +327,8 @@ class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
 
 
 class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
     def get_title(self, instance):
         return force_text(instance)
 

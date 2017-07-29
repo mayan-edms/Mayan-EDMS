@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-05-04 19:12+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -29,7 +30,6 @@ msgid "Permissions"
 msgstr "Permissões"
 
 #: apps.py:29 models.py:46
-#| msgid "Roles"
 msgid "Role"
 msgstr "Regras"
 
@@ -38,7 +38,6 @@ msgid "Delete"
 msgstr "Excluir"
 
 #: links.py:39
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Nova regra"
 
@@ -56,7 +55,6 @@ msgstr "Entradas de acesso"
 
 #: models.py:57
 #, python-format
-#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
 
@@ -93,7 +91,6 @@ msgstr "Chave primária da nova permissão para conceder à lista de controle de
 
 #: serializers.py:111 serializers.py:187
 #, python-format
-#| msgid "permission"
 msgid "No such permission: %s"
 msgstr "Sem permissão: %s"
 
@@ -107,36 +104,35 @@ msgstr "Lista de chaves primárias de permissão separadas por vírgulas para co
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr "As chaves primárias da função a que esta lista de controle de acesso se liga."
 
-#: views.py:73
+#: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nova lista de controle de acesso para: %s"
 
-#: views.py:100
+#: views.py:101
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "Apagar ACL: %s"
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "listas de controle de acesso para: %s"
 
-#: views.py:150
+#: views.py:151
 msgid "Available permissions"
 msgstr "Permissões disponíveis"
 
-#: views.py:151
+#: views.py:152
 msgid "Granted permissions"
 msgstr "Permissões outorgadas"
 
-#: views.py:206
+#: views.py:207
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permissões do papel \"%(role)s\" para \"%(object)s\""
 
-#: views.py:226
+#: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "As permissões inativas foram herdadas de um objeto precedente."
 

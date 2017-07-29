@@ -11,7 +11,7 @@ class ModelLock(LockingBackend):
         super(ModelLock, cls).acquire_lock(name=name, timeout=timeout)
         Lock = apps.get_model(app_label='lock_manager', model_name='Lock')
         return ModelLock(
-            model_instance = Lock.objects.acquire_lock(
+            model_instance=Lock.objects.acquire_lock(
                 name=name, timeout=timeout
             )
         )

@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Stefaniu Criste <gupi@hangar.ro>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:27+0000\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-15 03:50+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +21,35 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Management utilizatori"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr "Toate grupurile."
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr "Toți utilizatorii."
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr "Membri"
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr "Numele întreg"
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "email"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr "Activ"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr ""
 
@@ -72,7 +73,7 @@ msgstr "Șterge"
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Grupuri"
 
@@ -120,6 +121,24 @@ msgstr "Editați utilizatorii existenți"
 msgid "View existing users"
 msgstr "Vizualizați utilizatorii existenți"
 
+#: search.py:19
+#| msgid "Full name"
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+#| msgid "user"
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr "Nume"
+
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr ""
@@ -135,7 +154,6 @@ msgstr "Modificați grupul: %s"
 
 #: views.py:64
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Ștergeți grupul: %s?"
 
@@ -168,7 +186,6 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] ""
@@ -177,7 +194,6 @@ msgstr[2] ""
 
 #: views.py:156
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr ""
 
@@ -238,7 +254,6 @@ msgstr[2] ""
 
 #: views.py:274
 #, python-format
-#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr ""
 
@@ -333,6 +348,3 @@ msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

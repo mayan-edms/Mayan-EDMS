@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario, 2015
+# Translators:
+# Roberto Rosario, 2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2016-03-21 21:10+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 04:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,25 +19,29 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:17 settings.py:7
+#: apps.py:17 settings.py:9
 msgid "Authentication"
 msgstr "Autenticación  "
 
-#: forms.py:17
+#: forms.py:18
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: forms.py:20
+#: forms.py:21
 msgid "Password"
 msgstr "Contraseña"
 
-#: forms.py:24
+#: forms.py:23 forms.py:72
+msgid "Remember me"
+msgstr "Recuérdame"
+
+#: forms.py:26
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr "Introduzca una dirección de correo y contraseña válidos. Recuerde que la contraseña es sensible a mayúsculas."
 
-#: forms.py:26
+#: forms.py:28
 msgid "This account is inactive."
 msgstr "Esta cuenta está inactiva."
 
@@ -48,16 +53,22 @@ msgstr "Cerrar sesión"
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: settings.py:11
+#: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
 
-#: views.py:39
+#: settings.py:20
+msgid ""
+"Maximum time an user clicking the \"Remember me\" checkbox will remain "
+"logged in. Value is time in seconds."
+msgstr "Tiempo máximo que un usuario haciendo clic en la casilla \"Recuérdeme\" permanecerá registrado. Valor es el tiempo en segundos."
+
+#: views.py:54
 msgid "Current user password change"
 msgstr "Cambio de contraseña de usuario actual"
 
-#: views.py:55
+#: views.py:68
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña ha sido actualizada con éxito."

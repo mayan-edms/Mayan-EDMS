@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.core.files import File
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase

@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
@@ -96,7 +97,6 @@ msgid "Key management"
 msgstr "密钥管理"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr ""
 
@@ -161,7 +161,6 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr ""
 
@@ -194,7 +193,6 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr ""
 
@@ -203,7 +201,6 @@ msgid "View keys"
 msgstr "查看密钥"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr ""
 
@@ -216,13 +213,11 @@ msgid "Path to the GPG binary."
 msgstr ""
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -233,7 +228,6 @@ msgstr ""
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -243,7 +237,6 @@ msgstr "导入密钥"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 

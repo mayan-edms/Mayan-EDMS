@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
@@ -19,6 +19,7 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
     def get_extra_context(self):
         context = {
             'hide_links': True,
+            'list_as_items': True,
             'search_model': self.search_model,
             'search_results_limit': setting_limit.value,
             'title': _('Search results for: %s') % self.search_model.label,

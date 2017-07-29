@@ -14,3 +14,5 @@ DEFAULT_LINK_BODY_TEMPLATE = _(
     '{{ link }}\n\n--------\n '
     'This email has been sent from %(project_title)s (%(project_website)s)'
 )
+
+EMAIL_SEPARATORS = (',', ';')

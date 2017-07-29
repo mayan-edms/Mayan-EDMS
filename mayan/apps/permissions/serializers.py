@@ -60,8 +60,6 @@ class WritableRoleSerializer(serializers.HyperlinkedModelSerializer):
         model = Role
 
     def create(self, validated_data):
-        result = validated_data.copy()
-
         self.groups_pk_list = validated_data.pop('groups_pk_list', '')
         self.permissions_pk_list = validated_data.pop(
             'permissions_pk_list', ''

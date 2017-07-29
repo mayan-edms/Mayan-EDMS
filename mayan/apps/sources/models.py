@@ -75,6 +75,9 @@ class Source(models.Model):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
     def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        """
+        Upload an individual document
+        """
         try:
             with transaction.atomic():
                 document = Document.objects.create(
@@ -83,7 +86,15 @@ class Source(models.Model):
                     language=language or setting_language.value
                 )
                 document.save(_user=user)
-
+        except Exception as exception:
+            logger.critical(
+                'Unexpected exception while trying to create new document '
+                '"%s" from source "%s"; %s',
+                label or file_object.name, self, exception
+            )
+            raise
+        else:
+            try:
                 document_version = document.new_version(
                     file_object=file_object, _user=user
                 )
@@ -109,16 +120,20 @@ class Source(models.Model):
                 if tag_ids:
                     for tag in Tag.objects.filter(pk__in=tag_ids):
                         tag.documents.add(document)
+            except Exception as exception:
+                logger.critical(
+                    'Unexpected exception while trying to create version for '
+                    'new document "%s" from source "%s"; %s',
+                    label or file_object.name, self, exception
+                )
+                document.delete(to_trash=False)
+                raise
 
-        except Exception as exception:
-            logger.critical(
-                'Unexpected exception while trying to create new document '
-                '"%s" from source "%s"; %s',
-                label or file_object.name, self, exception
-            )
-            raise
-
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        """
+        Handle an upload request from a file object which may be an individual
+        document or a compressed file containing multiple documents.
+        """
         if not document_type:
             document_type = self.document_type
 
@@ -126,7 +141,8 @@ class Source(models.Model):
             'description': description, 'document_type': document_type,
             'label': label, 'language': language,
             'metadata_dict_list': metadata_dict_list,
-            'metadata_dictionary': metadata_dictionary, 'user': user
+            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
+            'user': user
         }
 
         if expand:
@@ -147,11 +163,11 @@ class Source(models.Model):
 
     def get_upload_file_object(self, form_data):
         pass
-        # TODO: Should raise NotImplementedError()?
+        # TODO: Should raise NotImplementedError?
 
     def clean_up_upload_file(self, upload_file_object):
         pass
-        # TODO: Should raise NotImplementedError()?
+        # TODO: Should raise NotImplementedError?
 
     class Meta:
         ordering = ('label',)
@@ -410,7 +426,7 @@ class IntervalBaseModel(OutOfProcessSource):
         DocumentType,
         help_text=_(
             'Assign a document type to documents uploaded from this source.'
-        ),
+        ), on_delete=models.CASCADE,
         verbose_name=_('Document type')
     )
     uncompress = models.CharField(
@@ -500,14 +516,14 @@ class EmailBaseModel(IntervalBaseModel):
         MetadataType, blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s subject.'
-        ), null=True, related_name='email_subject',
+        ), on_delete=models.CASCADE, null=True, related_name='email_subject',
         verbose_name=_('Subject metadata type')
     )
     from_metadata_type = models.ForeignKey(
         MetadataType, blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s "from" value.'
-        ), null=True, related_name='email_from',
+        ), on_delete=models.CASCADE, null=True, related_name='email_from',
         verbose_name=_('From metadata type')
     )
     store_body = models.BooleanField(
@@ -758,7 +774,8 @@ class WatchFolderSource(IntervalBaseModel):
 
 class SourceLog(models.Model):
     source = models.ForeignKey(
-        Source, related_name='logs', verbose_name=_('Source')
+        Source, on_delete=models.CASCADE, related_name='logs',
+        verbose_name=_('Source')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_('Date time')

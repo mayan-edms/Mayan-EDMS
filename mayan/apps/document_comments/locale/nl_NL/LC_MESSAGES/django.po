@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-04-10 12:13+0000\n"
 "Last-Translator: Johan Braeken\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -21,7 +22,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:26
-#| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Documentopmerkingen"
 
@@ -43,12 +43,10 @@ msgid "Comments"
 msgstr "Opmerkingen"
 
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr "Documentopmerking aangemaakt"
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr "Documentopmerking verwijderd"
 
@@ -87,7 +85,6 @@ msgstr "Opmerking toevoegen aan document: %s"
 
 #: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr "Verwijder opmerking: %s?"
 

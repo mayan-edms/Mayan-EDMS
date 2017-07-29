@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -32,16 +32,19 @@ class DocumentTypeDocumentListView(DocumentListView):
         return self.get_document_type().documents.all()
 
     def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.get_document_type(),
-            'title': _('Documents of type: %s') % self.get_document_type()
-        }
+        context = super(DocumentTypeDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.get_document_type(),
+                'title': _('Documents of type: %s') % self.get_document_type()
+            }
+        )
+        return context
 
 
 class DocumentTypeListView(SingleObjectListView):
     model = DocumentType
-    view_permission = permission_document_type_view
+    object_permission = permission_document_type_view
 
     def get_extra_context(self):
         return {
@@ -67,8 +70,8 @@ class DocumentTypeCreateView(SingleObjectCreateView):
 
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
+    object_permission = permission_document_type_delete
     post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_delete
 
     def get_extra_context(self):
         return {
@@ -84,8 +87,8 @@ class DocumentTypeEditView(SingleObjectEditView):
         'delete_time_unit'
     )
     model = DocumentType
+    object_permission = permission_document_type_edit
     post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
@@ -126,7 +129,7 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
 class DocumentTypeFilenameEditView(SingleObjectEditView):
     fields = ('enabled', 'filename',)
     model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
+    object_permission = permission_document_type_edit
 
     def get_extra_context(self):
         document_type_filename = self.get_object()
@@ -153,7 +156,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
 
 class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
     model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
+    object_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
@@ -178,7 +181,7 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
 
 class DocumentTypeFilenameListView(SingleObjectListView):
     model = DocumentType
-    view_permission = permission_document_type_view
+    object_permission = permission_document_type_view
 
     def get_document_type(self):
         return get_object_or_404(DocumentType, pk=self.kwargs['pk'])

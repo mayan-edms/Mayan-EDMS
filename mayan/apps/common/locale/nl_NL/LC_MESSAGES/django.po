@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
 # woei <root@ipaddr.nl>, 2014
@@ -11,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,61 +22,66 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:77 settings.py:9
+#: apps.py:75 settings.py:11
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
-#: classes.py:106
+#: apps.py:80
+#| msgid "Anonymous user"
+msgid "Anonymous"
+msgstr "Anoniem"
+
+#: classes.py:109
 msgid "Available attributes: \n"
 msgstr ""
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Selectie"
 
-#: forms.py:105
+#: forms.py:135
 msgid "Filter"
 msgstr "Filter"
 
-#: generics.py:133
+#: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Niet mogelijk om selectie over te dragen: %s."
 
-#: generics.py:157
+#: generics.py:160
 msgid "Add"
 msgstr "Voeg toe"
 
-#: generics.py:168
+#: generics.py:171
 msgid "Remove"
 msgstr "Verwijder"
 
-#: generics.py:327
+#: generics.py:333
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
 
-#: generics.py:338
+#: generics.py:344
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s succesvol aangemaakt."
 
-#: generics.py:363
+#: generics.py:373
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
 
-#: generics.py:374
+#: generics.py:384
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s succesbol verwijderd."
 
-#: generics.py:419
+#: generics.py:430
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s niet geupdate, foutmelding: %(error)s."
 
-#: generics.py:430
+#: generics.py:441
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s werden succesvol geupdate."
@@ -140,33 +146,37 @@ msgstr ""
 msgid "Tools"
 msgstr "Gereedschappen"
 
-#: literals.py:14
+#: literals.py:13
 msgid "Days"
 msgstr "Dagen"
 
-#: literals.py:15
+#: literals.py:14
 msgid "Hours"
 msgstr "Uren"
 
-#: literals.py:16
+#: literals.py:15
 msgid "Minutes"
 msgstr "Minuten"
 
 #: menus.py:12
-msgid "About"
-msgstr "Informatie"
+msgid "System"
+msgstr ""
 
-#: mixins.py:74
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr "Gebruiker"
+
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr ""
 
-#: mixins.py:75
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
-#: mixins.py:235
+#: mixins.py:245
 msgid "Object"
 msgstr "Object"
 
@@ -189,10 +199,6 @@ msgstr "Deel geüpload document"
 #: models.py:32
 msgid "Shared uploaded files"
 msgstr "Deel geüploade bestanden"
-
-#: models.py:53
-msgid "User"
-msgstr "Gebruiker"
 
 #: models.py:57
 msgid "Timezone"
@@ -222,32 +228,33 @@ msgstr ""
 msgid "Delete stale uploads"
 msgstr ""
 
-#: settings.py:13
+#: settings.py:15
 msgid "Automatically enable logging to all apps."
 msgstr ""
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
 
-#: settings.py:27
+#: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Een natuurlijk getal om aan te geven hoeveel objecten per pagina weergegeven worden."
 
-#: settings.py:33
+#: settings.py:35
 msgid "A storage backend that all workers can use to share files."
 msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
 
-#: settings.py:38
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
+#: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Globale instelling voor een tijdelijke folder om miniaturen, voorvertoningen en tijdelijke bestanden in op te slaan."
+
+#: settings.py:48
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
 
 #: validators.py:29
 msgid ""
@@ -281,7 +288,6 @@ msgid "Edit current user locale profile details"
 msgstr "Wijzig landsinstellingen van de huidige gebruiker"
 
 #: views.py:153
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Filterselectie"
 
@@ -291,7 +297,6 @@ msgid "Results for filter: %s"
 msgstr "Resultaten voor filter: %s"
 
 #: views.py:176
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filter niet gevonden"
 
@@ -311,8 +316,8 @@ msgstr "Selecteer minimaal een item."
 msgid "None"
 msgstr "Geen"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Anonymous user"
+#~ msgid "About"
+#~ msgstr "About"
 
 #~ msgid "Account"
 #~ msgstr "account"

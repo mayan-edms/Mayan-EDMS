@@ -10,7 +10,7 @@ from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import DeletedDocument, Document, DocumentType
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
+    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 
@@ -21,7 +21,7 @@ class GenericDocumentTestCase(BaseTestCase):
         super(GenericDocumentTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -40,7 +40,7 @@ class DocumentTestCase(BaseTestCase):
         super(DocumentTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_DOCUMENT_PATH) as file_object:
@@ -53,7 +53,7 @@ class DocumentTestCase(BaseTestCase):
         super(DocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
-        self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
+        self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE_LABEL)
 
         self.assertEqual(self.document.exists(), True)
         self.assertEqual(self.document.size, 272213)
@@ -162,7 +162,7 @@ class OfficeDocumentTestCase(BaseTestCase):
         super(OfficeDocumentTestCase, self).setUp()
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
@@ -191,7 +191,7 @@ class MultiPageTiffTestCase(BaseTestCase):
     def setUp(self):
         super(MultiPageTiffTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
@@ -253,7 +253,7 @@ class DocumentManagerTestCase(BaseTestCase):
     def setUp(self):
         super(DocumentManagerTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):

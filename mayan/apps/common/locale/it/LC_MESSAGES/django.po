@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -23,61 +24,66 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:77 settings.py:9
+#: apps.py:75 settings.py:11
 msgid "Common"
 msgstr "Comune"
 
-#: classes.py:106
-msgid "Available attributes: \n"
-msgstr ""
+#: apps.py:80
+#| msgid "Anonymous user"
+msgid "Anonymous"
+msgstr "Anonimo"
 
-#: forms.py:26
+#: classes.py:109
+msgid "Available attributes: \n"
+msgstr "Attributi disponibili:\n"
+
+#: forms.py:27
 msgid "Selection"
 msgstr "Selezione"
 
-#: forms.py:105
+#: forms.py:135
 msgid "Filter"
 msgstr "Filtro"
 
-#: generics.py:133
+#: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Impossibile trasferire la selezione: %s."
 
-#: generics.py:157
+#: generics.py:160
 msgid "Add"
 msgstr "Aggiungi"
 
-#: generics.py:168
+#: generics.py:171
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: generics.py:327
+#: generics.py:333
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s non creato, errore: %(error)s"
 
-#: generics.py:338
+#: generics.py:344
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s creato con successo.."
 
-#: generics.py:363
+#: generics.py:373
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s non cancellato, errore: %(error)s."
 
-#: generics.py:374
+#: generics.py:384
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s cancellato con successo.."
 
-#: generics.py:419
+#: generics.py:430
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s non aggiornato, errore: %(error)s."
 
-#: generics.py:430
+#: generics.py:441
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s aggiornato con successo."
@@ -142,33 +148,37 @@ msgstr "Supporto"
 msgid "Tools"
 msgstr "Strumenti"
 
-#: literals.py:14
+#: literals.py:13
 msgid "Days"
 msgstr "Giorni"
 
-#: literals.py:15
+#: literals.py:14
 msgid "Hours"
 msgstr "Orario"
 
-#: literals.py:16
+#: literals.py:15
 msgid "Minutes"
 msgstr "Minuti"
 
 #: menus.py:12
-msgid "About"
-msgstr "About"
+msgid "System"
+msgstr ""
 
-#: mixins.py:74
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr "Utente"
+
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operazione eseguita su  %(count)d oggetto"
 
-#: mixins.py:75
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operazione eseguita su  %(count)d oggetti"
 
-#: mixins.py:235
+#: mixins.py:245
 msgid "Object"
 msgstr "Oggetto"
 
@@ -191,10 +201,6 @@ msgstr "Condividi file caricato"
 #: models.py:32
 msgid "Shared uploaded files"
 msgstr "Condividi files caricati"
-
-#: models.py:53
-msgid "User"
-msgstr "Utente"
 
 #: models.py:57
 msgid "Timezone"
@@ -222,40 +228,41 @@ msgstr ""
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Cancella upload in sospeso"
 
-#: settings.py:13
+#: settings.py:15
 msgid "Automatically enable logging to all apps."
 msgstr "Abilita automaticamente i log per tutte le app."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Il ritardo per i task in background dipende dalla propagazione del commit su database."
 
-#: settings.py:27
+#: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Un intero che specifica quanti oggetti devono essere visualizzati per pagina."
 
-#: settings.py:33
+#: settings.py:35
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
-#: settings.py:38
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
+#: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, anteprime e files temporanei"
 
+#: settings.py:48
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
+
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
 
 #: views.py:44
 #, python-format
@@ -283,7 +290,6 @@ msgid "Edit current user locale profile details"
 msgstr "Modificare i dettagli del profilo corrente dell'utente"
 
 #: views.py:153
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Scegli il filtro"
 
@@ -293,7 +299,6 @@ msgid "Results for filter: %s"
 msgstr "Risultati per il filtro: %s"
 
 #: views.py:176
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtro non trovato"
 
@@ -313,8 +318,8 @@ msgstr "Devi selezionare un elemento"
 msgid "None"
 msgstr "Nessuno"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Anonymous user"
+#~ msgid "About"
+#~ msgstr "About"
 
 #~ msgid "Account"
 #~ msgstr "account"

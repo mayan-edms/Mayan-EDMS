@@ -3,8 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
@@ -107,6 +107,7 @@ class CabinetDetailView(TemplateView):
                 ),
                 'document_list': self.get_document_queryset(),
                 'hide_links': True,
+                'list_as_items': True,
                 'object': cabinet,
                 'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
             }
@@ -144,7 +145,6 @@ class CabinetEditView(SingleObjectEditView):
 
 
 class CabinetListView(SingleObjectListView):
-    model = Cabinet
     object_permission = permission_cabinet_view
 
     def get_extra_context(self):
@@ -184,6 +184,7 @@ class DocumentCabinetListView(CabinetListView):
 class DocumentAddToCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
+    object_permission = permission_cabinet_add_document
     success_message = _(
         'Add to cabinet request performed on %(count)d document'
     )
@@ -197,10 +198,12 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Add'),
             'title': ungettext(
-                'Add document to cabinets',
-                'Add documents to cabinets',
-                queryset.count()
-            )
+                singular='Add %(count)d document to cabinets',
+                plural='Add %(count)d documents to cabinets',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -268,6 +271,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
 class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     model = Document
+    object_permission = permission_cabinet_remove_document
     success_message = _(
         'Remove from cabinet request performed on %(count)d document'
     )
@@ -281,10 +285,12 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
         result = {
             'submit_label': _('Remove'),
             'title': ungettext(
-                'Remove document from cabinets',
-                'Remove documents from cabinets',
-                queryset.count()
-            )
+                singular='Remove %(count)d document from cabinets',
+                plural='Remove %(count)d documents from cabinets',
+                number=queryset.count()
+            ) % {
+                'count': queryset.count(),
+            }
         }
 
         if queryset.count() == 1:
@@ -292,7 +298,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                 {
                     'object': queryset.first(),
                     'title': _(
-                        'Remove document "%s" to cabinets'
+                        'Remove document "%s" from cabinets'
                     ) % queryset.first()
                 }
             )

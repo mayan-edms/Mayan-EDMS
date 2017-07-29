@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
+from django.shortcuts import resolve_url
+from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from permissions import Permission
@@ -18,8 +19,8 @@ __all__ = (
     'DeleteExtraDataMixin', 'DynamicFormViewMixin', 'ExtraContextMixin',
     'FormExtraKwargsMixin', 'MultipleObjectMixin', 'ObjectActionMixin',
     'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
-    'ObjectPermissionCheckMixin', 'RedirectionMixin',
-    'ViewPermissionCheckMixin'
+    'ObjectPermissionCheckMixin', 'PreserveGetQuerysetMixin',
+    'RedirectionMixin', 'ViewPermissionCheckMixin'
 )
 
 
@@ -266,6 +267,26 @@ class ObjectPermissionCheckMixin(object):
         ).dispatch(request, *args, **kwargs)
 
 
+class PreserveGetQuerysetMixin(object):
+    """
+    Allows class based views to define a get_queryset method that doesn't
+    overrided the parent classe's get_queryset method
+    """
+    def __init__(self, *args, **kwargs):
+        result = super(PreserveGetQuerysetMixin, self).__init__(*args, **kwargs)
+        if not hasattr(self.__class__, 'original_get_queryset'):
+            if not self.__class__.mro()[0].get_queryset == PreserveGetQuerysetMixin.get_queryset:
+                setattr(self.__class__, 'original_get_queryset', self.__class__.mro()[0].get_queryset)
+                self.__class__.mro()[0].get_queryset = PreserveGetQuerysetMixin.get_queryset
+        return result
+
+    def get_queryset(self, *args, **kwargs):
+        if hasattr(self.__class__, 'original_get_queryset'):
+            self.queryset = self.__class__.original_get_queryset(self, *args, **kwargs)
+
+        return super(PreserveGetQuerysetMixin, self).get_queryset(*args, **kwargs)
+
+
 class RedirectionMixin(object):
     post_action_redirect = None
     action_cancel_redirect = None
@@ -277,14 +298,14 @@ class RedirectionMixin(object):
         self.next_url = self.request.POST.get(
             'next', self.request.GET.get(
                 'next', post_action_redirect if post_action_redirect else self.request.META.get(
-                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                 )
             )
         )
         self.previous_url = self.request.POST.get(
             'previous', self.request.GET.get(
                 'previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get(
-                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                    'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                 )
             )
         )

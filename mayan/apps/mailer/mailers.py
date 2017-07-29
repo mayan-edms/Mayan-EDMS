@@ -16,7 +16,7 @@ class DjangoSMTP(MailerBackend):
             'help_text': _('The host to use for sending email.'),
             'kwargs': {
                 'max_length': 48
-            },  'required': False
+            }, 'required': False
         },
         {
             'name': 'port', 'label': _('Port'),

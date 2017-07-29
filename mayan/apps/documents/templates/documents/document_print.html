@@ -4,6 +4,6 @@
 
 {% block content_plain %}
     {% for page in pages %}
-        <img src="{% url 'rest_api:documentpage-image' page.id %}?size={{ size }}" />
+        <img src="{% url 'rest_api:documentpage-image' page.document.pk page.document.latest_version.pk page.pk %}?size={{ size }}" />
     {% endfor %}
 {% endblock %}

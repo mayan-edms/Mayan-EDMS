@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
@@ -71,33 +71,37 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
 
 class CheckoutListView(DocumentListView):
-    extra_context = {
-        'title': _('Documents checked out'),
-        'hide_links': True,
-        'extra_columns': (
-            {
-                'name': _('User'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
-                )
-            },
-            {
-                'name': _('Checkout time and date'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().checkout_datetime
-                )
-            },
-            {
-                'name': _('Checkout expiration'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().expiration_datetime
-                )
-            },
-        ),
-    }
-
     def get_document_queryset(self):
         return DocumentCheckout.objects.checked_out_documents()
+
+    def get_extra_context(self):
+        context = super(CheckoutListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Documents checked out'),
+                'extra_columns': (
+                    {
+                        'name': _('User'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
+                        )
+                    },
+                    {
+                        'name': _('Checkout time and date'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().checkout_datetime
+                        )
+                    },
+                    {
+                        'name': _('Checkout expiration'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().expiration_datetime
+                        )
+                    },
+                ),
+            }
+        )
+        return context
 
 
 class CheckoutDetailView(SingleObjectDetailView):

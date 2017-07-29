@@ -8,6 +8,8 @@ from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from .utils import split_recipient_list
+
 logger = logging.getLogger(__name__)
 
 
@@ -28,7 +30,7 @@ class LogEntry(models.Model):
 
 class UserMailer(models.Model):
     label = models.CharField(
-        max_length=32, unique=True, verbose_name=_('Label')
+        max_length=128, unique=True, verbose_name=_('Label')
     )
     default = models.BooleanField(
         default=True, help_text=_(
@@ -80,36 +82,28 @@ class UserMailer(models.Model):
         self.backend_data = json.dumps(data)
         self.save()
 
-    def send(self, **kwargs):
-        """
-        https://docs.djangoproject.com/en/1.11/topics/email
-        #django.core.mail.EmailMessage
-        subject: The subject line of the email.
-        body: The body text. This should be a plain text message.
-        from_email: The sender's address. Both fred@example.com and Fred
-        <fred@example.com> forms are legal. If omitted,
-        the DEFAULT_FROM_EMAIL setting is used.
-        to: A list or tuple of recipient addresses.
-        bcc: A list or tuple of addresses used in the "Bcc" header when
-        sending the email.
-        connection: An email backend instance. Use this parameter if you want
-        to use the same connection for multiple messages. If omitted, a new
-        connection is created when send() is called.
-        attachments: A list of attachments to put on the message. These can be
-        either email.MIMEBase.MIMEBase instances, or (filename, content,
-        mimetype) triples.
-        headers: A dictionary of extra headers to put on the message. The
-        keys are the header name, values are the header values. It's up to
-        the caller to ensure header names and values are in the correct
-        format for an email message. The corresponding attribute is
-        extra_headers.
-        cc: A list or tuple of recipient addresses used in the "Cc"
-        header when sending the email.
-        reply_to: A list or tuple of recipient addresses used in the
-        "Reply-To" header when sending the email.
-        """
+    def send(self, subject='', body='', to=None, document=None, as_attachment=False):
+        recipient_list = split_recipient_list(recipients=[to])
+
         with self.get_connection() as connection:
-            mail.EmailMessage(connection=connection, **kwargs).send()
+            email_message = mail.EmailMultiAlternatives(
+                subject=subject, body=body, to=recipient_list,
+                connection=connection
+            )
+
+            if as_attachment:
+                with document.open() as descriptor:
+                    email_message.attach(
+                        filename=document.label, content=descriptor.read(),
+                        mimetype=document.file_mimetype
+                    )
+
+            try:
+                email_message.send()
+            except Exception as exception:
+                self.error_log.create(message=exception)
+            else:
+                self.error_log.all().delete()
 
     def test(self, to):
         self.send(to=to, subject=_('Test email from Mayan EDMS'))
@@ -117,7 +111,8 @@ class UserMailer(models.Model):
 
 class UserMailerLogEntry(models.Model):
     user_mailer = models.ForeignKey(
-        UserMailer, related_name='error_log', verbose_name=_('User mailer')
+        UserMailer, on_delete=models.CASCADE, related_name='error_log',
+        verbose_name=_('User mailer')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, editable=False, verbose_name=_('Date time')

@@ -5,8 +5,8 @@ from datetime import timedelta
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.core.urlresolvers import reverse_lazy
 from django.db.models.signals import pre_save
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission

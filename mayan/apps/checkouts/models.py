@@ -4,8 +4,8 @@ import logging
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
 from django.db import models
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
@@ -24,7 +24,9 @@ class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout
     """
-    document = models.OneToOneField(Document, verbose_name=_('Document'))
+    document = models.OneToOneField(
+        Document, on_delete=models.CASCADE, verbose_name=_('Document')
+    )
     checkout_datetime = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Check out date and time')
     )
@@ -34,7 +36,10 @@ class DocumentCheckout(models.Model):
         ),
         verbose_name=_('Check out expiration date and time')
     )
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        verbose_name=_('User')
+    )
     block_new_version = models.BooleanField(
         default=True,
         help_text=_(
@@ -89,7 +94,9 @@ class DocumentCheckout(models.Model):
 
 
 class NewVersionBlock(models.Model):
-    document = models.ForeignKey(Document, verbose_name=_('Document'))
+    document = models.ForeignKey(
+        Document, on_delete=models.CASCADE, verbose_name=_('Document')
+    )
 
     objects = NewVersionBlockManager()
 

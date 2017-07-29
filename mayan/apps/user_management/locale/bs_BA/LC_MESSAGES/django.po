@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:27+0000\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-15 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -19,35 +20,35 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Upravljanje korisnicima"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr ""
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr ""
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr ""
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr ""
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr ""
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr ""
 
@@ -71,7 +72,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Grupe"
 
@@ -119,6 +120,24 @@ msgstr "Izmjeni postojeće korisnike"
 msgid "View existing users"
 msgstr "Pregledaj postojeće korisnike"
 
+#: search.py:19
+#| msgid "Full name"
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+#| msgid "user"
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr "Ime"
+
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr ""
@@ -134,7 +153,6 @@ msgstr ""
 
 #: views.py:64
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
@@ -167,7 +185,6 @@ msgid "User delete request performed on %(count)d users"
 msgstr ""
 
 #: views.py:146
-#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] ""
@@ -176,7 +193,6 @@ msgstr[2] ""
 
 #: views.py:156
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr ""
 
@@ -237,7 +253,6 @@ msgstr[2] ""
 
 #: views.py:274
 #, python-format
-#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr ""
 
@@ -332,6 +347,3 @@ msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

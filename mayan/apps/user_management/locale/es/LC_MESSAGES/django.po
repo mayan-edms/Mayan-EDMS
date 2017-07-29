@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-05-28 19:39+0000\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-15 03:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -23,35 +24,35 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:42 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Administración de usuarios"
 
-#: apps.py:58
+#: apps.py:59
 msgid "All the groups."
 msgstr "Todos los grupos."
 
-#: apps.py:62
+#: apps.py:63
 msgid "All the users."
 msgstr "Todos los usuarios."
 
-#: apps.py:67 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
 msgstr "Miembros"
 
-#: apps.py:71
+#: apps.py:72
 msgid "Full name"
 msgstr "Nombre completo"
 
-#: apps.py:74
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: apps.py:77
+#: apps.py:78
 msgid "Active"
 msgstr "Activo"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Has usable password?"
 msgstr "¿Tiene contraseña utilizable?"
 
@@ -75,7 +76,7 @@ msgstr "Borrar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:26 links.py:34 links.py:50 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Grupos"
 
@@ -123,6 +124,24 @@ msgstr "Editar usuarios existentes"
 msgid "View existing users"
 msgstr "Ver usuarios existentes"
 
+#: search.py:19
+#| msgid "Full name"
+msgid "First name"
+msgstr "Nombre de pila"
+
+#: search.py:28
+msgid "Last name"
+msgstr "Apellido"
+
+#: search.py:31
+#| msgid "user"
+msgid "username"
+msgstr "Nombre de usuario"
+
+#: search.py:41
+msgid "Name"
+msgstr "Nombre"
+
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr "Lista separada por comas de llaves primarias de grupos a ser asignados a este usuario."
@@ -138,7 +157,6 @@ msgstr "Editar grupo: %s"
 
 #: views.py:64
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "¿Borrar el grupo: %s?"
 
@@ -171,7 +189,6 @@ msgid "User delete request performed on %(count)d users"
 msgstr "Solicitud de eliminación de usuario realizada a %(count)d usuarios"
 
 #: views.py:146
-#| msgid "Delete existing users"
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Borrar usuario"
@@ -179,7 +196,6 @@ msgstr[1] "Borrar usuarios"
 
 #: views.py:156
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete user: %s"
 msgstr "Borrar usuario: %s"
 
@@ -239,7 +255,6 @@ msgstr[1] "Cambiar contraseñas de usuarios"
 
 #: views.py:274
 #, python-format
-#| msgid "Reseting password for user: %s"
 msgid "Change password for user: %s"
 msgstr "Cambiar contraseñas para el usuario: %s"
 
@@ -334,6 +349,3 @@ msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s
 
 #~ msgid "create new group"
 #~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

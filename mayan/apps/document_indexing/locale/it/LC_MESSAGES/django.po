@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-06 08:26+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,6 @@ msgid "Document types"
 msgstr "Tipi di documento"
 
 #: apps.py:49
-#| msgid "document indexes"
 msgid "Document indexing"
 msgstr "Indicizzazione documento"
 
@@ -43,7 +43,7 @@ msgstr "etichetta"
 msgid "Slug"
 msgstr "Slug"
 
-#: apps.py:84 apps.py:104 models.py:46 models.py:165
+#: apps.py:84 apps.py:104 models.py:46 models.py:166
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -63,11 +63,11 @@ msgstr "Il documento ha un collegamento?"
 msgid "Node"
 msgstr "Nodo"
 
-#: forms.py:14
+#: forms.py:15
 msgid "Indexes to be queued for rebuilding."
 msgstr "Gli indici sono in coda per la ricostruzione."
 
-#: forms.py:15 links.py:18 links.py:22 links.py:25 links.py:28 models.py:118
+#: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:57
 #: views.py:73 views.py:220
 msgid "Indexes"
 msgstr "Indici"
@@ -96,104 +96,103 @@ msgstr "Template Principale"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Cancellazione e ricostruzione di tutti gli indici documento"
 
-#: links.py:57 views.py:319
+#: links.py:57 views.py:326
 msgid "Rebuild indexes"
 msgstr "Ricostruisci indici"
 
 #: links.py:60
 msgid "New child node"
-msgstr "Novo nodo figlio"
+msgstr "Nuovo nodo figlio"
 
 #: models.py:37
-#| msgid "Internal name used to reference this index."
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
+msgstr "Questo valore sarà usato dalle altre app per riferirirsi a questo indice"
 
 #: models.py:43
 msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Fa sì che questo indice possa essere visibile e aggiornato quando i dati del documento cambiano."
 
-#: models.py:117 models.py:149
+#: models.py:56 models.py:150
 msgid "Index"
 msgstr "Indice"
 
-#: models.py:136
+#: models.py:137
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:137
+#: models.py:138
 msgid "Index instances"
 msgstr "Instanze indice"
 
-#: models.py:153
+#: models.py:154
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 msgstr "Inserisci il template da renderizzare. Usa il linguaggio di template di Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
-#: models.py:157
+#: models.py:158
 msgid "Indexing expression"
 msgstr "Espressione di indicizzazione"
 
-#: models.py:162
+#: models.py:163
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del documento cambiano."
 
-#: models.py:170
+#: models.py:171
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Selezionare questa opzione per questo specifico nodo quale contenitore per i documenti e non come un genitore per ulteriori nodi."
 
-#: models.py:173
+#: models.py:174
 msgid "Link documents"
 msgstr "Documenti di collegamento"
 
 #: models.py:178
+msgid "Index node template"
+msgstr "Indice del nodo Template "
+
+#: models.py:179
+msgid "Indexes node template"
+msgstr "Indici dei nodi Template"
+
+#: models.py:183
 msgid "Root"
 msgstr "Principale"
 
-#: models.py:240
+#: models.py:244
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
-#: models.py:268
-msgid "Index node template"
-msgstr "Indice del nodo Template "
-
-#: models.py:269
-msgid "Indexes node template"
-msgstr "Indici dei nodi Template"
-
-#: models.py:277
+#: models.py:278
 msgid "Index template node"
 msgstr "Indice del nodo Template"
 
-#: models.py:280
+#: models.py:281
 msgid "Value"
 msgstr "Valore"
 
-#: models.py:284
+#: models.py:285
 msgid "Documents"
 msgstr "Documenti"
 
-#: models.py:370
+#: models.py:291
 msgid "Index node instance"
 msgstr "Istanza nodo Indice"
 
-#: models.py:371
+#: models.py:292
 msgid "Indexes node instances"
 msgstr "Istanze nodo indici"
 
-#: models.py:379
+#: models.py:380
 msgid "Document index node instance"
 msgstr "Istanza del nodo indice del documento"
 
-#: models.py:380
+#: models.py:381
 msgid "Document indexes node instances"
 msgstr "Istanze dei nodi indice del documento"
 
@@ -222,25 +221,23 @@ msgid "Rebuild document indexes"
 msgstr "Ricostruisci indici documento"
 
 #: queues.py:12
-#| msgid "Delete document indexes"
 msgid "Delete empty index nodes"
-msgstr ""
+msgstr "Cancella i nodi indice vuoti"
 
 #: queues.py:16
 msgid "Remove document"
-msgstr ""
+msgstr "Cancella dcumento"
 
 #: queues.py:20
 msgid "Index document"
-msgstr ""
+msgstr "Indice documento"
 
 #: queues.py:24
 msgid "Rebuild index"
-msgstr ""
+msgstr "Ricostruisci l'indice"
 
 #: views.py:49
 #, python-format
-#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr "Cancellare l'indice: %s?"
 
@@ -282,22 +279,22 @@ msgstr "Cancellare il template del nodo indice: %s?"
 msgid "Edit the index template node: %s?"
 msgstr "Modificare il template del nodo indice: %s?"
 
-#: views.py:268
+#: views.py:269
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigazione: %s"
 
-#: views.py:273
+#: views.py:274
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenuti per l'indice: %s"
 
-#: views.py:309
+#: views.py:316
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Indici contenuti nel documento: %s"
 
-#: views.py:328
+#: views.py:335
 msgid "Index rebuild queued successfully."
 msgstr "Ricostruzione dell'indice messo in coda."
 

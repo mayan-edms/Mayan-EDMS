@@ -50,7 +50,7 @@
             {% block content_plain %}{% endblock %}
         {% else %}
             <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                             <span class="sr-only">{% trans 'Toggle navigation' %}</span>
@@ -84,7 +84,7 @@
                 </div>
             </nav>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12">
                         {% block messages %}{% endblock %}
@@ -96,7 +96,7 @@
 
                 <div class="row">
                     {% if links or form_navigation_links %}
-                        <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
                     {% else %}
                         <div class="col-xs-12">
                     {% endif %}
@@ -105,7 +105,7 @@
                     </div>
 
                     {% if links or form_navigation_links %}
-                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
                     {% endif %}
 
                     {% if links %}
@@ -168,6 +168,7 @@
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/lib/jquery.mousewheel.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/select2-4.0.3/dist/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/jquery.matchHeight-min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/js/base.js' %}"></script>
         {% endcompress %}
 

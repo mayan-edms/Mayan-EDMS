@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:38-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,61 +20,66 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:77 settings.py:9
+#: apps.py:75 settings.py:11
 msgid "Common"
 msgstr "Общий"
 
-#: classes.py:106
+#: apps.py:80
+#| msgid "Anonymous user"
+msgid "Anonymous"
+msgstr "Анонимно"
+
+#: classes.py:109
 msgid "Available attributes: \n"
 msgstr ""
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Выбор"
 
-#: forms.py:105
+#: forms.py:135
 msgid "Filter"
 msgstr "Фильтр"
 
-#: generics.py:133
+#: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Невозможно передать выделение: %s."
 
-#: generics.py:157
+#: generics.py:160
 msgid "Add"
 msgstr "Добавить"
 
-#: generics.py:168
+#: generics.py:171
 msgid "Remove"
 msgstr "Удалить"
 
-#: generics.py:327
+#: generics.py:333
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s не создан, ошибка: %(error)s"
 
-#: generics.py:338
+#: generics.py:344
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s успешно создан."
 
-#: generics.py:363
+#: generics.py:373
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s не удалён, ошибка: %(error)s."
 
-#: generics.py:374
+#: generics.py:384
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s успешно удалён."
 
-#: generics.py:419
+#: generics.py:430
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s не обновлён, ошибка: %(error)s."
 
-#: generics.py:430
+#: generics.py:441
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."
@@ -138,33 +144,37 @@ msgstr ""
 msgid "Tools"
 msgstr "Инструменты"
 
-#: literals.py:14
+#: literals.py:13
 msgid "Days"
 msgstr "Дней"
 
-#: literals.py:15
+#: literals.py:14
 msgid "Hours"
 msgstr "Часов"
 
-#: literals.py:16
+#: literals.py:15
 msgid "Minutes"
 msgstr "Минут"
 
 #: menus.py:12
-msgid "About"
-msgstr "Инфо"
+msgid "System"
+msgstr ""
 
-#: mixins.py:74
+#: menus.py:22 models.py:53
+msgid "User"
+msgstr "Пользователь"
+
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr ""
 
-#: mixins.py:75
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
-#: mixins.py:235
+#: mixins.py:245
 msgid "Object"
 msgstr "Объект"
 
@@ -187,10 +197,6 @@ msgstr "Загруженный файл совместного пользова�
 #: models.py:32
 msgid "Shared uploaded files"
 msgstr "Загруженные файлы совместного пользования"
-
-#: models.py:53
-msgid "User"
-msgstr "Пользователь"
 
 #: models.py:57
 msgid "Timezone"
@@ -220,31 +226,32 @@ msgstr ""
 msgid "Delete stale uploads"
 msgstr ""
 
-#: settings.py:13
+#: settings.py:15
 msgid "Automatically enable logging to all apps."
 msgstr "Автоматически разрешать всем установленным приложениям делать записи в журнале."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
 
-#: settings.py:27
+#: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Числовое значение указывающее как много объектов может быть отображено на одной странице."
 
-#: settings.py:33
+#: settings.py:35
 msgid "A storage backend that all workers can use to share files."
 msgstr "Бекенд хранения, который каждый может использовать для хранения файлов."
 
-#: settings.py:38
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
+#: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+msgstr ""
+
+#: settings.py:48
+msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
 #: validators.py:29
@@ -279,7 +286,6 @@ msgid "Edit current user locale profile details"
 msgstr "Редактировать настройки локали текущего пользователя"
 
 #: views.py:153
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Фильтр по выбранным"
 
@@ -289,7 +295,6 @@ msgid "Results for filter: %s"
 msgstr "Результаты для фильтра: %s"
 
 #: views.py:176
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Фильтр не найден"
 
@@ -309,8 +314,8 @@ msgstr "Необходимо выбрать хотя бы один элемен�
 msgid "None"
 msgstr "Ни один"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Anonymous user"
+#~ msgid "About"
+#~ msgstr "About"
 
 #~ msgid "Account"
 #~ msgstr "account"

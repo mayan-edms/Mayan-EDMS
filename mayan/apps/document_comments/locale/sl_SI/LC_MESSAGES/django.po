@@ -4,11 +4,12 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2017-04-23 16:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
@@ -19,7 +20,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:26
-#| msgid "Delete comments"
 msgid "Document comments"
 msgstr ""
 
@@ -41,12 +41,10 @@ msgid "Comments"
 msgstr "Komentarji"
 
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr ""
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr ""
 
@@ -85,7 +83,6 @@ msgstr "Dodaj komentar datotekei: %s"
 
 #: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr ""
 

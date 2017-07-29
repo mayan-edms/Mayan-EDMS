@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.db import transaction
+from django.db import connection, transaction
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -129,7 +129,12 @@ class WritableCabinetSerializer(serializers.ModelSerializer):
         # when there is a FK in the unique_together tuple
         # https://code.djangoproject.com/ticket/1751
         with transaction.atomic():
-            if Cabinet.objects.select_for_update().filter(parent=data['parent'], label=data['label']).exists():
+            if connection.vendor == 'oracle':
+                queryset = Cabinet.objects.filter(parent=data['parent'], label=data['label'])
+            else:
+                queryset = Cabinet.objects.select_for_update().filter(parent=data['parent'], label=data['label'])
+
+            if queryset.exists():
                 params = {
                     'model_name': _('Cabinet'),
                     'field_labels': _('Parent and Label')

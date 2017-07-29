@@ -56,11 +56,11 @@ def find_packages(directory):
     return packages
 
 install_requires = """
+Django==1.10.7
 Pillow==4.2.0
 PyYAML==3.12
 celery==3.1.24
 cssmin==0.2.0
-Django==1.10.7
 django-activity-stream==0.6.3
 django-autoadmin==1.1.1
 django-celery==3.2.1
@@ -82,8 +82,8 @@ djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
 fusepy==2.0.4
 pdfminer==20140328
-PyPDF2==1.26.0
 pycountry==1.20
+PyPDF2==1.26.0
 pyocr==0.4.7
 python-dateutil==2.5.3
 python-gnupg==0.3.9
@@ -111,7 +111,6 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',

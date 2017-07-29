@@ -3,8 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -75,11 +75,14 @@ class ResolvedSmartLinkView(DocumentListView):
                 'smart_link': self.smart_link.label,
             }
 
-        return {
-            'hide_links': True,
-            'object': self.document,
-            'title': title,
-        }
+        context = super(ResolvedSmartLinkView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.document,
+                'title': title,
+            }
+        )
+        return context
 
 
 class SetupSmartLinkDocumentTypesView(AssignRemoveView):
@@ -130,8 +133,7 @@ class SmartLinkListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        self.queryset = self.get_smart_link_queryset()
-        return super(SmartLinkListView, self).get_queryset()
+        return self.get_smart_link_queryset()
 
     def get_smart_link_queryset(self):
         return SmartLink.objects.all()

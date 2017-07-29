@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 import time
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from acls.models import AccessControlList
 from user_management.tests.literals import (

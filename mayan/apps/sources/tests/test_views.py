@@ -12,8 +12,8 @@ from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
-    TEST_DOCUMENT_TYPE
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
 
@@ -40,16 +40,19 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.document.delete()
 
-    def test_upload_wizard_without_permission(self):
-        self.login_user()
-
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            response = self.post(
+    def _request_upload_wizard(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            return self.post(
                 'sources:upload_interactive', args=(self.source.pk,), data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
-                }
+                }, follow=True
             )
+
+    def test_upload_wizard_without_permission(self):
+        self.login_user()
+
+        response = self._request_upload_wizard()
 
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Document.objects.count(), 0)
@@ -57,18 +60,15 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
     def test_upload_wizard_with_permission(self):
         self.login_user()
 
-        self.grant(permission_document_create)
+        self.grant_permission(permission=permission_document_create)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            response = self.post(
-                'sources:upload_interactive', args=(self.source.pk,), data={
-                    'source-file': file_object,
-                    'document_type_id': self.document_type.pk,
-                }, follow=True
-            )
+        response = self._request_upload_wizard()
 
         self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(
+            Document.objects.first().checksum, TEST_SMALL_DOCUMENT_CHECKSUM
+        )
 
     def test_upload_wizard_with_document_type_access(self):
         """
@@ -85,7 +85,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         )
         acl.permissions.add(permission_document_create.stored_permission)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             response = self.post(
                 'sources:upload_interactive', args=(self.source.pk,), data={
                     'source-file': file_object,
@@ -96,13 +96,38 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
 
+    def _request_upload_interactive_view(self):
+        return self.get(
+            'sources:upload_interactive', data={
+                'document_type_id': self.document_type.pk,
+            }
+        )
+
+    def test_upload_interactive_view_no_permission(self):
+        self.login_user()
+
+        response = self._request_upload_interactive_view()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_upload_interactive_view_with_access(self):
+        self.login_user()
+        self.grant_access(
+            permission=permission_document_create, obj=self.document_type
+        )
+        response = self._request_upload_interactive_view()
+
+        self.assertContains(
+            response, text=self.source.label, status_code=200
+        )
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentUploadIssueTestCase(GenericViewTestCase):
     def setUp(self):
         super(DocumentUploadIssueTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
@@ -227,7 +252,7 @@ class StagingFolderTestCase(GenericViewTestCase):
     def test_staging_folder_delete_with_permission(self):
         self.login_user()
 
-        self.grant(permission_staging_file_delete)
+        self.grant_permission(permission=permission_staging_file_delete)
 
         staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
@@ -262,7 +287,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        self.grant(permission_sources_setup_view)
+        self.grant_permission(permission=permission_sources_setup_view)
 
         response = self.get(viewname='sources:setup_source_list')
 
@@ -280,8 +305,8 @@ class SourcesTestCase(GenericDocumentViewTestCase):
     def test_source_create_view_with_permission(self):
         self.login_user()
 
-        self.grant(permission_sources_setup_create)
-        self.grant(permission_sources_setup_view)
+        self.grant_permission(permission=permission_sources_setup_create)
+        self.grant_permission(permission=permission_sources_setup_view)
 
         response = self.post(
             args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
@@ -301,7 +326,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
     def test_source_create_view_no_permission(self):
         self.login_user()
 
-        self.grant(permission_sources_setup_view)
+        self.grant_permission(permission=permission_sources_setup_view)
 
         response = self.post(
             args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
@@ -319,8 +344,8 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        self.grant(permission_sources_setup_delete)
-        self.grant(permission_sources_setup_view)
+        self.grant_permission(permission=permission_sources_setup_delete)
+        self.grant_permission(permission=permission_sources_setup_view)
 
         response = self.post(
             args=(self.source.pk,), follow=True,
@@ -335,7 +360,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        self.grant(permission_sources_setup_view)
+        self.grant_permission(permission=permission_sources_setup_view)
 
         response = self.post(
             args=(self.source.pk,), follow=True,

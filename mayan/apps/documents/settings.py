@@ -21,7 +21,7 @@ setting_print_size = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_SIZE', default='3600'
 )
 setting_thumbnail_size = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='50x50'
+    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='800'
 )
 setting_recent_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_COUNT', default=40,
@@ -72,4 +72,19 @@ setting_language = namespace.add_setting(
 setting_language_choices = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE_CHOICES', default=LANGUAGE_CHOICES,
     help_text=_('List of supported document languages.')
+)
+setting_disable_base_image_cache = namespace.add_setting(
+    global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
+    help_text=_(
+        'Disables the first cache tier which stores high resolution, '
+        'non transformed versions of documents\'s pages.'
+    )
+)
+setting_disable_transformed_image_cache = namespace.add_setting(
+    global_name='DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE', default=False,
+    help_text=_(
+        'Disables the second cache tier which stores medium to low '
+        'resolution, transformed (rotated, zoomed, etc) versions '
+        'of documents\' pages.'
+    )
 )

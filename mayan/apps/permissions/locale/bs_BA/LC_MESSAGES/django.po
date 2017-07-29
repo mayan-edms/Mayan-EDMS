@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:40-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"PO-Revision-Date: 2017-07-10 07:58+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +24,7 @@ msgstr ""
 msgid "Permissions"
 msgstr "Dozvole"
 
-#: classes.py:72
+#: classes.py:75
 msgid "Insufficient permissions."
 msgstr "Nedovoljne dozvole."
 
@@ -47,7 +48,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:35 models.py:98 views.py:136
+#: links.py:35 models.py:98 views.py:137
 msgid "Roles"
 msgstr "Role"
 
@@ -61,7 +62,7 @@ msgstr ""
 
 #: models.py:19
 msgid "Namespace"
-msgstr ""
+msgstr "Imenovani prostor"
 
 #: models.py:20
 msgid "Name"
@@ -69,11 +70,11 @@ msgstr "Ime"
 
 #: models.py:45
 msgid "Permission"
-msgstr ""
+msgstr "Permisija"
 
 #: models.py:74
 msgid "Label"
-msgstr ""
+msgstr "Labela"
 
 #: models.py:80
 msgid "Groups"
@@ -122,29 +123,28 @@ msgstr ""
 msgid "No such permission: %s"
 msgstr ""
 
-#: views.py:45
+#: views.py:46
 msgid "Available groups"
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 msgid "Role groups"
 msgstr ""
 
-#: views.py:56
+#: views.py:57
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:79
+#: views.py:80
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:80
-#| msgid "Grant permissions"
+#: views.py:81
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:93
+#: views.py:94
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""

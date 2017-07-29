@@ -4,6 +4,7 @@ import warnings
 
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import EmailInput
@@ -19,6 +20,7 @@ class EmailAuthenticationForm(forms.Form):
     password = forms.CharField(
         label=_('Password'), widget=forms.PasswordInput
     )
+    remember_me = forms.BooleanField(label=_('Remember me'), required=False)
 
     error_messages = {
         'invalid_login': _('Please enter a correct email and password. '
@@ -64,3 +66,7 @@ class EmailAuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
+
+
+class UsernameAuthenticationForm(AuthenticationForm):
+    remember_me = forms.BooleanField(label=_('Remember me'), required=False)

@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
-from django.core.urlresolvers import reverse
-from django.db import models, transaction
+from django.db import connection, models, transaction
+from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,7 +19,8 @@ from .search import cabinet_search  # NOQA
 @python_2_unicode_compatible
 class Cabinet(MPTTModel):
     parent = TreeForeignKey(
-        'self', blank=True, db_index=True, null=True, related_name='children'
+        'self', blank=True, db_index=True, null=True,
+        on_delete=models.CASCADE, related_name='children'
     )
     label = models.CharField(max_length=128, verbose_name=_('Label'))
     documents = models.ManyToManyField(
@@ -63,7 +64,12 @@ class Cabinet(MPTTModel):
         # https://code.djangoproject.com/ticket/1751
 
         with transaction.atomic():
-            if Cabinet.objects.select_for_update().filter(parent=self.parent, label=self.label).exists():
+            if connection.vendor == 'oracle':
+                queryset = Cabinet.objects.filter(parent=self.parent, label=self.label)
+            else:
+                queryset = Cabinet.objects.select_for_update().filter(parent=self.parent, label=self.label)
+
+            if queryset.exists():
                 params = {
                     'model_name': _('Cabinet'),
                     'field_labels': _('Parent and Label')

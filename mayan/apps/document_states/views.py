@@ -1,11 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.db.models import F, Max
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -21,8 +20,8 @@ from .forms import (
     WorkflowTransitionForm
 )
 from .models import (
-    Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowTransition, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
+    Workflow, WorkflowInstance, WorkflowState, WorkflowTransition,
+    WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 )
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -96,6 +95,11 @@ class WorkflowInstanceTransitionView(FormView):
         self.get_workflow_instance().do_transition(
             comment=form.cleaned_data['comment'],
             transition=form.cleaned_data['transition'], user=self.request.user
+        )
+        messages.success(
+            self.request, _(
+                'Document "%s" transitioned successfully'
+            ) % self.get_workflow_instance().document
         )
         return HttpResponseRedirect(self.get_success_url())
 
@@ -405,7 +409,7 @@ class WorkflowListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'hide_link': True,
+            'hide_object': True,
             'title': _('Workflows')
         }
 
@@ -429,59 +433,50 @@ class WorkflowDocumentListView(DocumentListView):
         return Document.objects.filter(workflows__workflow=self.workflow)
 
     def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.workflow,
-            'title': _('Documents with the workflow: %s') % self.workflow
-        }
+        context = super(WorkflowDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': self.workflow,
+                'title': _('Documents with the workflow: %s') % self.workflow
+            }
+        )
+        return context
 
 
 class WorkflowStateDocumentListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.workflow_state = get_object_or_404(
+    def get_document_queryset(self):
+        return self.get_workflow_state().get_documents()
+
+    def get_extra_context(self):
+        workflow_state = self.get_workflow_state()
+        context = super(WorkflowStateDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'object': workflow_state,
+                'navigation_object_list': ('object', 'workflow'),
+                'workflow': WorkflowRuntimeProxy.objects.get(
+                    pk=workflow_state.workflow.pk
+                ),
+                'title': _(
+                    'Documents in the workflow "%s", state "%s"'
+                ) % (
+                    workflow_state.workflow, workflow_state
+                )
+            }
+        )
+        return context
+
+    def get_workflow_state(self):
+        workflow_state = get_object_or_404(
             WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.workflow_state.workflow
+            permissions=permission_workflow_view, user=self.request.user,
+            obj=workflow_state.workflow
         )
 
-        return super(
-            WorkflowStateDocumentListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document_queryset(self):
-        latest_entries = WorkflowInstanceLogEntry.objects.annotate(
-            max_datetime=Max(
-                'workflow_instance__log_entries__datetime'
-            )
-        ).filter(
-            datetime=F('max_datetime')
-        )
-
-        state_latest_entries = latest_entries.filter(
-            transition__destination_state=self.workflow_state
-        )
-
-        return Document.objects.filter(
-            workflows__pk__in=state_latest_entries.values_list(
-                'workflow_instance', flat=True
-            )
-        )
-
-    def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.workflow_state,
-            'navigation_object_list': ('object', 'workflow'),
-            'workflow': WorkflowRuntimeProxy.objects.get(
-                pk=self.workflow_state.workflow.pk
-            ),
-            'title': _(
-                'Documents in the workflow "%s", state "%s"'
-            ) % (self.workflow_state.workflow, self.workflow_state)
-        }
+        return workflow_state
 
 
 class WorkflowStateListView(SingleObjectListView):

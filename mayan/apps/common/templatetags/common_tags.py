@@ -24,12 +24,12 @@ except sh.CommandNotFound:
     DATE = None
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_collections():
     return Collection.get_all()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_dashboard_widgets():
     return DashboardWidget.get_all()
 
@@ -52,7 +52,7 @@ def project_copyright():
     return settings.PROJECT_COPYRIGHT
 
 
-@register.assignment_tag
+@register.simple_tag
 def project_description():
     return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
 
@@ -77,7 +77,7 @@ def project_version():
     return mayan.__version__
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def render_subtemplate(context, template_name, template_context):
     """
     Renders the specified template with the mixed parent and
@@ -89,7 +89,7 @@ def render_subtemplate(context, template_name, template_context):
     return get_template(template_name).render(new_context)
 
 
-@register.assignment_tag
+@register.simple_tag
 def build():
     if BUILD:
         try:

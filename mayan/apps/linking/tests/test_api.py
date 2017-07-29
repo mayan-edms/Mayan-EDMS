@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.urls import reverse
 
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 from rest_api.tests import BaseAPITestCase
 from user_management.tests.literals import (
@@ -44,7 +44,7 @@ class SmartLinkAPITestCase(BaseAPITestCase):
 
     def _create_document_type(self):
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def _create_document(self):
@@ -168,7 +168,7 @@ class SmartLinkConditionAPITestCase(BaseAPITestCase):
 
     def _create_document_type(self):
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def _create_document(self):

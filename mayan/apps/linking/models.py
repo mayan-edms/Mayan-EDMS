@@ -102,7 +102,8 @@ class ResolvedSmartLink(SmartLink):
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     smart_link = models.ForeignKey(
-        SmartLink, related_name='conditions', verbose_name=_('Smart link')
+        SmartLink, on_delete=models.CASCADE, related_name='conditions',
+        verbose_name=_('Smart link')
     )
     inclusion = models.CharField(
         choices=INCLUSION_CHOICES, default=INCLUSION_AND,

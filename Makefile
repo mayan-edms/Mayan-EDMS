@@ -6,9 +6,15 @@ help:
 	@echo "clean-build - Remove build artifacts."
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
+	@echo "generate_setup - Create and updated setup.py"
 
 	@echo "test-all - Run all tests."
-	@echo "test MODULE=<python module name> - Run tests for a single App, module or test class."
+	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
+	@echo "test-postgres-all - Run all tests against a Postgres database container."
+	@echo "test-postgres MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container."
+	@echo "test-mysql-all - Run all tests against a MySQL database container."
+	@echo "test-mysql MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container."
+
 	@echo "docs_serve - Run the livehtml documentation generator."
 
 	@echo "translations_make - Refresh all translation files."
@@ -41,6 +47,8 @@ help:
 	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
 	@echo "docker_service_mysql_on - Launch and initialize a MySQL Docker container."
 	@echo "docker_service_mysql_off - Stop and delete the MySQL Docker container."
+	@echo "docker_service_postgres_on - Launch and initialize a PostgreSQL Docker container."
+	@echo "docker_service_postgres_off - Stop and delete the PostgreSQL Docker container."
 
 	@echo "safety_check - Run a package safety check."
 
@@ -68,6 +76,61 @@ test:
 test-all:
 	./manage.py test --mayan-apps --settings=mayan.settings.testing --nomigrations
 
+test-launch-postgres:
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
+	docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data healthcheck/postgres
+	sudo apt-get install -qq libpq-dev
+	pip install psycopg2
+	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
+
+test-postgres: test-launch-postgres
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
+
+test-postgres-all: test-launch-postgres
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	@docker rm -f test-postgres || true
+	@docker volume rm test-postgres || true
+
+test-launch-mysql:
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
+	docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql healthcheck/mysql
+	sudo apt-get install -qq libmysqlclient-dev mysql-client
+	pip install mysql-python
+	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
+	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
+
+test-mysql: test-launch-mysql
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
+
+test-mysql-all: test-launch-mysql
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	@docker rm -f test-mysql || true
+	@docker volume rm test-mysql || true
+
+test-launch-oracle:
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
+	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle wnameless/oracle-xe-11g
+	# https://gist.github.com/kimus/10012910
+	pip install cx_Oracle
+	while ! nc -z 127.0.0.1 49161; do sleep 1; done
+	sleep 10
+
+test-oracle: test-launch-oracle
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
+
+test-oracle-all: test-launch-oracle
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	@docker rm -f test-oracle || true
+	@docker volume rm test-oracle || true
 
 # Documentation
 
@@ -87,7 +150,7 @@ translations_push:
 	tx push -s
 
 translations_pull:
-	tx pull
+	tx pull -f
 
 
 # Requirements
@@ -101,6 +164,9 @@ requirements_docs:
 requirements_testing:
 	pip install -r requirements/testing.txt
 
+generate_setup:
+	@./generate_setup.py
+	@echo "Complete."
 
 # Releases
 
@@ -133,10 +199,30 @@ release_via_docker_alpine:
 	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "cp -r /host_source/* . && apk update && apk add python2 py2-pip make && pip install -r requirements/build.txt && cp -r /host_home/.pypirc ~/.pypirc && make release"
 
 test_sdist_via_docker_ubuntu:
-	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make sdist_test_suit"
+	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	cp -r /host_source/* . && \
+	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+	locale-gen en_US.UTF-8 && \
+	update-locale LANG=en_US.UTF-8 && \
+	export LC_ALL=en_US.UTF-8 && \
+	apt-get update && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
+	pip install -r requirements/development.txt && \
+	make sdist_test_suit \
+	"
 
 test_wheel_via_docker_ubuntu:
-	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "cp -r /host_source/* . && apt-get update && apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && pip install -r requirements/development.txt && make wheel_test_suit"
+	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	cp -r /host_source/* . && \
+	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+	locale-gen en_US.UTF-8 && \
+	update-locale LANG=en_US.UTF-8 && \
+	export LC_ALL=en_US.UTF-8 && \
+	apt-get update && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
+	pip install -r requirements/development.txt && \
+	make wheel_test_suit \
+	"
 
 sdist_test_suit: sdist
 	rm -f -R _virtualenv
@@ -177,17 +263,17 @@ docker_services_on:
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 2
-	./manage.py initialsetup --settings=mayan.settings.testing.docker
+	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 docker_services_off:
 	docker stop postgres redis
 	docker rm postgres redis
 
 docker_services_frontend:
-	./manage.py runserver --settings=mayan.settings.testing.docker
+	./manage.py runserver --settings=mayan.settings.staging.docker
 
 docker_services_worker:
-	./manage.py celery worker --settings=mayan.settings.testing.docker -B -l INFO -O fair
+	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
 
 docker_service_mysql_on:
 	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
@@ -196,6 +282,15 @@ docker_service_mysql_on:
 docker_service_mysql_off:
 	docker stop mysql
 	docker rm mysql
+
+docker_service_postgres_on:
+	docker run -d --name postgres -p 5432:5432 postgres
+	while ! nc -z 127.0.0.1 5432; do sleep 1; done
+
+docker_service_postgres_off:
+	docker stop postgres
+	docker rm postgres
+
 
 # Security
 

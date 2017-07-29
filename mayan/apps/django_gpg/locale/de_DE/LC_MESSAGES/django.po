@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-05-20 21:54+0000\n"
 "Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -99,7 +100,6 @@ msgid "Key management"
 msgstr "Schlüssel-Management"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "Schlüssel hochladen"
 
@@ -164,7 +164,6 @@ msgid "Key data"
 msgstr "Schlüssel-Daten"
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "Schlüssel"
 
@@ -197,7 +196,6 @@ msgid "Use keys to sign content"
 msgstr "Schlüssel benutzen um Inhalt zu signieren"
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Schlüssel hochladen"
 
@@ -206,7 +204,6 @@ msgid "View keys"
 msgstr "Schlüssel anzeigen"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Unterschriften"
 
@@ -219,13 +216,11 @@ msgid "Path to the GPG binary."
 msgstr "Pfad zum Programm GPG"
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Server, der nach unbekannten Schlüsseln durchsucht wird."
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Schlüssel löschen: %s"
 
@@ -236,7 +231,6 @@ msgstr "Details für Schlüssel %s"
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Schlüssel-ID %s importieren?"
 
@@ -246,7 +240,6 @@ msgstr "Schlüssel importieren"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
 

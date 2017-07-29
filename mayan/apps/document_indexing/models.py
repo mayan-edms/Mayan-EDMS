@@ -2,9 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.template import Context, Template
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
 
@@ -50,6 +50,11 @@ class Index(models.Model):
     )
 
     objects = IndexManager()
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Index')
+        verbose_name_plural = _('Indexes')
 
     def __str__(self):
         return self.label
@@ -113,10 +118,6 @@ class Index(models.Model):
             # associated with this index.
             self.index_document(document=document)
 
-    class Meta:
-        verbose_name = _('Index')
-        verbose_name_plural = _('Indexes')
-
 
 class IndexInstance(Index):
     def get_instance_node_count(self):
@@ -144,9 +145,12 @@ class IndexTemplateNode(MPTTModel):
     hierarchy of levels. Each level can contain further levels or a list of
     documents but not both.
     """
-    parent = TreeForeignKey('self', blank=True, null=True)
+    parent = TreeForeignKey(
+        'self', blank=True, null=True, on_delete=models.CASCADE
+    )
     index = models.ForeignKey(
-        Index, related_name='node_templates', verbose_name=_('Index')
+        Index, on_delete=models.CASCADE, related_name='node_templates',
+        verbose_name=_('Index')
     )
     expression = models.TextField(
         help_text=_(
@@ -172,6 +176,10 @@ class IndexTemplateNode(MPTTModel):
         ),
         verbose_name=_('Link documents')
     )
+
+    class Meta:
+        verbose_name = _('Index node template')
+        verbose_name_plural = _('Indexes node template')
 
     def __str__(self):
         if self.is_root_node():
@@ -264,16 +272,15 @@ class IndexTemplateNode(MPTTModel):
             if acquire_lock:
                 lock.release()
 
-    class Meta:
-        verbose_name = _('Index node template')
-        verbose_name_plural = _('Indexes node template')
-
 
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True)
+    parent = TreeForeignKey(
+        'self', blank=True, null=True, on_delete=models.CASCADE
+    )
     index_template_node = models.ForeignKey(
-        IndexTemplateNode, related_name='index_instance_nodes',
+        IndexTemplateNode, on_delete=models.CASCADE,
+        related_name='index_instance_nodes',
         verbose_name=_('Index template node')
     )
     value = models.CharField(
@@ -285,6 +292,10 @@ class IndexInstanceNode(MPTTModel):
     )
 
     objects = IndexInstanceNodeManager()
+
+    class Meta:
+        verbose_name = _('Index node instance')
+        verbose_name_plural = _('Indexes node instances')
 
     def __str__(self):
         return self.value
@@ -365,10 +376,6 @@ class IndexInstanceNode(MPTTModel):
 
         if acquire_lock:
             lock.release()
-
-    class Meta:
-        verbose_name = _('Index node instance')
-        verbose_name_plural = _('Indexes node instances')
 
 
 class DocumentIndexInstanceNode(IndexInstanceNode):

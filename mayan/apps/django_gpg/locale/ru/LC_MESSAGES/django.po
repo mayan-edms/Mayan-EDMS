@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-07-19 20:20+0000\n"
 "Last-Translator: lilo.panic\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -96,7 +97,6 @@ msgid "Key management"
 msgstr "Управление ключами"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr "Загрузить ключ"
 
@@ -161,7 +161,6 @@ msgid "Key data"
 msgstr "Содержимое ключа"
 
 #: models.py:61
-#| msgid "Key ID"
 msgid "Key"
 msgstr "Ключ"
 
@@ -194,7 +193,6 @@ msgid "Use keys to sign content"
 msgstr "Использовать ключи для подписи контента"
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Загрузить ключи"
 
@@ -203,7 +201,6 @@ msgid "View keys"
 msgstr "Просмотр ключей"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Подписи"
 
@@ -216,13 +213,11 @@ msgid "Path to the GPG binary."
 msgstr "Путь к GPG исходникам."
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Сервер ключей используемый для запроса ключей."
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Удалить ключ: %s"
 
@@ -233,7 +228,6 @@ msgstr "Подробности для ключа: %s"
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Получить ключ ID: %s?"
 
@@ -243,7 +237,6 @@ msgstr "Получить ключ"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Невозможно импортировать ключ %(key_id)s; %(error)s"
 

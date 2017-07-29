@@ -4,13 +4,100 @@
 - Content windows appearance changes
 - Add new document's version list view permission
 
-2.5 (2017-07-XX)
-===============
+2.6.4 (2017-07-26)
+==================
+- Add missing replacements of reverse to resolve_url.
+
+2.6.3 (2017-07-25)
+==================
+- Add makefile target to launch a PostgreSQL container.
+- Use resolve_url instead of redirect to resolve the post login URL.
+- Make the intialsetup and performupgrade management tasks work
+  with signals to allow customization from 3rd party apps.
+- PEP8 cleanups.
+- Add tag_ids keyword argument to the Source.handle_upload
+  model method. GitLab issue #413.
+- Add overflow wrapping so wrap long titles in Firefox too.
+- Makes Roles searchable. GitLab issue #402.
+- Add line numbers to the debug and production loggers.
+  Add date and time to the production logger.
+- Add support for generating setup.py from a template. GitLab
+  #149 #200.
+- Add fade in animation to document images.
+
+2.6.2 (2017-07-19)
+==================
+- Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
+- Fix document page zoom.
+- Add support to run tests against a MySQL, Postgres or Oracle container.
+- Improve tag widget customization by moving the markup to its own template.
+- Fix document page widget appearance in the document page list view.
+- Make document version order deterministic.
+- Allow total page number instrospection of encrypted PDF with non ASCII user properties. GitLab issue #411.
+- Oracle database compatibility update in the cabinets app. GitHub #258.
+
+2.6.1 (2017-07-18)
+==================
+- Fix issue when editing or removing metadata from multiple documents.
+
+2.6 (2017-07-18)
+================
+- Fix HTML mark up in window title. GitLab #397.
+- Add support for emailing documents to a recipient list. GitLab #396.
+- Backport metadata widget changes from @Macrobb. GitLab #377.
+- Make users and group searchable.
+- Add support for logging errors during in production mode.
+  Add COMMON_PRODUCTION_ERROR_LOG_PATH to control path of log file.
+  Defaults to mayan/error.log.
+- Add support logging request exceptions.
+- Add document list item view.
+- Sort setting by namespace label and by global name second.
+- Sort indexes by label.
+- Fix cabinets permission and access control checking.
+- The permission to add or remove documents to cabinets now applies to documents too.
+- Equalize dashboard widgets heights.
+- Switch the order of the DEFAULT_AUTHENTICATION_CLASSES of DRF. GitLab #400.
+- Backport document's version list view permission.
+- Improve code to unbind menu entries.
+- Renamed the document type permission namespace from "Document setup" to "Document types".
+- Add support for granting the document type edit, document type delete, and document type view
+  permissions to individual document type instances.
+- Improved tests by testing for accesses.
+- Increase the size of the mailing profile label field to 128 characters.
+
+2.5.2 (2017-07-08)
+==================
+- Improve new document creation signal handling.
+  Fixes issue with duplicate scanning at upload.
+
+2.5.1 (2017-07-08)
+==================
+- Update release target due to changes in PyPI.
+
+2.5 (2017-07-07)
+================
 - Add view to download a document's OCR text. GitLab #215
 - Add user configurable mailer. GitLab #286.
 - Use Toasts library for screen messages.
 - Reduce verbosity of some debug messages.
 - Add new lineart transformation.
+- Fix SANE source resolution field.
+- About and Profile menu reorganization.
+- PDF compatibility improvements.
+- Office document coversion improvements.
+- New metadata type setup UI.
+- Duplicated document scan support.
+- "Remember me" login support.
+- Forgotten password restore via email.
+- Document cache disabling.
+- Translation improvements.
+- Image loading improvements.
+- Lower Javascript memory utilization.
+- HTML reponsive layout improvements.
+- Make document deletion a background task.
+- Unicode handling improvements.
+- Python3 compatilibyt improvements.
+- New screen messages using Toastr.
 
 2.4 (2017-06-23)
 ================

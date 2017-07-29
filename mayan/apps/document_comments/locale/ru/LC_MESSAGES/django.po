@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-23 01:39-0400\n"
+"POT-Creation-Date: 2017-07-14 23:46-0400\n"
 "PO-Revision-Date: 2016-07-14 01:35+0000\n"
 "Last-Translator: lilo.panic\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -20,7 +21,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:26
-#| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Комментарии документа"
 
@@ -42,12 +42,10 @@ msgid "Comments"
 msgstr "Комментарии"
 
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr "Комментарий документа создан"
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr "Комментарий документа удалён"
 
@@ -86,7 +84,6 @@ msgstr "Добавить комментарий на документ: %s"
 
 #: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr "Удалить комментарий: %s?"
 
