@@ -92,7 +92,9 @@ class Python(ConverterBase):
         if self.mime_type == 'application/pdf':
             pdf = PyPDF2.PdfFileReader(self.file_object)
             try:
-                result = pdf.getPage(page_number - 1).get('/Rotate')
+                result = pdf.getPage(page_number - 1).get('/Rotate', 0)
+                if isinstance(result, PyPDF2.generic.IndirectObject):
+                    result = result.getObject()
             except Exception as exception:
                 self.file_object.seek(0)
                 pdf = PyPDF2.PdfFileReader(self.file_object)

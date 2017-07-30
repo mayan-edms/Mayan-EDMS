@@ -1,3 +1,8 @@
+2.6.5 (2017-XX-XX)
+==================
+- Add workaround for PDF with IndirectObject as the 
+  rotation value. GitHub #261.
+
 2.6.4 (2017-07-26)
 ==================
 - Add missing replacements of reverse to resolve_url.
