@@ -11,7 +11,8 @@ from ..models import DeletedDocument, Document, DocumentType
 
 from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
-    TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -154,6 +155,23 @@ class DocumentTestCase(BaseTestCase):
 
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 0)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class PDFCompatibilityTestCase(BaseTestCase):
+    def test_indirect_rotate(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+        with open(TEST_PDF_INDIRECT_ROTATE_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertQuerysetEqual(
+            qs=Document.objects.all(), values=(repr(self.document),)
+        )
 
 
 @override_settings(OCR_AUTO_OCR=False)
