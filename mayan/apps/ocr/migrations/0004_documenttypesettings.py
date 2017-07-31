@@ -11,7 +11,7 @@ def create_ocr_setting_for_existing_document_types(apps, schema_editor):
     for document_type in DocumentType.objects.all():
         try:
             DocumentTypeSettings.objects.create(document_type=document_type)
-        except DocumentTypeSettings.DoesNotExists:
+        except DocumentTypeSettings.DoesNotExist:
             pass
 
 
