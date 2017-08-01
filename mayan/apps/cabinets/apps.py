@@ -10,6 +10,7 @@ from common import (
     menu_sidebar
 )
 from documents.search import document_page_search, document_search
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -26,6 +27,7 @@ from .permissions import (
     permission_cabinet_edit, permission_cabinet_remove_document,
     permission_cabinet_view
 )
+from .widgets import widget_document_cabinets
 
 
 class CabinetsApp(MayanAppConfig):
@@ -115,5 +117,12 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_list',
                 'cabinets:cabinet_add_document',
                 'cabinets:document_cabinet_remove'
+            )
+        )
+
+        SourceColumn(
+            source=Document, label=_('XCabinets'),
+            func=lambda context: widget_document_cabinets(
+                document=context['object'], user=context['request'].user
             )
         )
