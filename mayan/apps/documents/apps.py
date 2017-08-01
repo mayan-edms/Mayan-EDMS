@@ -23,7 +23,11 @@ from converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from events.links import link_events_for_object
+from events import ModelEventType
+from events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+    link_object_event_types_user_subcriptions_list_with_icon
+)
 from events.permissions import permission_events_view
 from mayan.celery import app
 from mayan_statistics.classes import StatisticNamespace, CharJSLine
@@ -35,6 +39,12 @@ from .dashboard_widgets import (
     widget_document_types, widget_documents_in_trash,
     widget_new_documents_this_month, widget_pages_per_month,
     widget_total_documents
+)
+from .events import (
+    event_document_create, event_document_download,
+    event_document_properties_edit, event_document_type_change,
+    event_document_new_version, event_document_version_revert,
+    event_document_view
 )
 from .handlers import (
     create_default_document_type, handler_scan_duplicates_for
@@ -140,6 +150,19 @@ class DocumentsApp(MayanAppConfig):
             Document,
             description=_('The MIME type of any of the versions of a document'),
             label=_('MIME type'), name='versions__mimetype', type_name='field'
+        )
+
+        ModelEventType.register(
+            model=DocumentType, event_types=(
+                event_document_create,
+            )
+        )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_download, event_document_properties_edit,
+                event_document_type_change, event_document_new_version,
+                event_document_version_revert, event_document_view
+            )
         )
 
         ModelPermission.register(
@@ -389,7 +412,8 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_type_edit, link_document_type_filename_list,
-                link_acl_list, link_document_type_delete
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_document_type_delete
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(
@@ -446,8 +470,11 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_properties,), sources=(Document,), position=2
         )
         menu_facet.bind_links(
-            links=(link_events_for_object, link_document_version_list,),
-            sources=(Document,), position=2
+            links=(
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list_with_icon,
+                link_document_version_list,
+            ), sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
 

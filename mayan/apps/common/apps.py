@@ -67,8 +67,8 @@ class MayanAppConfig(apps.AppConfig):
         except ImportError as exception:
             if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
                 logger.error(
-                    'Import time error when running AppConfig.ready(). Check '
-                    'apps.py, urls.py, views.py, etc.'
+                    'Import time error when running AppConfig.ready() of app '
+                    '"%s".', self.name
                 )
                 raise exception
 
@@ -127,7 +127,6 @@ class CommonApp(MayanAppConfig):
                 Text(text=CommonApp.get_user_label_text), Separator(),
                 link_current_user_details, link_current_user_edit,
                 link_current_user_locale_profile_edit,
-                Separator()
             )
         )
 

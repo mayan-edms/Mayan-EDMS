@@ -5,6 +5,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_user
+from navigation.classes import Separator, Text
 
 from .links import link_logout, link_password_change
 
@@ -21,6 +22,6 @@ class AuthenticationApp(MayanAppConfig):
 
         menu_user.bind_links(
             links=(
-                link_password_change, link_logout
+                Separator(), link_password_change, link_logout
             ), position=99
         )
