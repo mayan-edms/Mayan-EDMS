@@ -12,9 +12,14 @@ from django.utils.translation import ugettext_lazy as _
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
 from common.classes import DashboardWidget
+from events import ModelEventType
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
+from .events import (
+    event_document_auto_check_in, event_document_check_in,
+    event_document_check_out, event_document_forceful_check_in
+)
 from .handlers import check_new_version_creation
 from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
@@ -79,6 +84,13 @@ class CheckoutsApp(MayanAppConfig):
             'is_checked_out',
             lambda document: DocumentCheckout.objects.is_document_checked_out(
                 document
+            )
+        )
+
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_auto_check_in, event_document_check_in,
+                event_document_check_out, event_document_forceful_check_in
             )
         )
 

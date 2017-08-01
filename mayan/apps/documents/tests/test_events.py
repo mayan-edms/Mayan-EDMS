@@ -64,7 +64,7 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
 
         event = Action.objects.any(obj=self.document).first()
 
-        self.assertEqual(event.verb, event_document_download.name)
+        self.assertEqual(event.verb, event_document_download.id)
         self.assertEqual(event.target, self.document)
         self.assertEqual(event.actor, self.user)
 
@@ -98,6 +98,6 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
 
         event = Action.objects.any(obj=self.document).first()
 
-        self.assertEqual(event.verb, event_document_view.name)
+        self.assertEqual(event.verb, event_document_view.id)
         self.assertEqual(event.target, self.document)
         self.assertEqual(event.actor, self.user)

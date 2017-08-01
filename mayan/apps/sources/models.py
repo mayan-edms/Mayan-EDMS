@@ -124,7 +124,7 @@ class Source(models.Model):
                 logger.critical(
                     'Unexpected exception while trying to create version for '
                     'new document "%s" from source "%s"; %s',
-                    label or file_object.name, self, exception
+                    label or file_object.name, self, exception, exc_info=True
                 )
                 document.delete(to_trash=False)
                 raise

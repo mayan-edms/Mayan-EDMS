@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
-from .classes import Event
+from .classes import EventType
 
 
 def event_object_link(entry):
@@ -16,5 +16,5 @@ def event_object_link(entry):
 def event_type_link(entry):
     return mark_safe('<a href="%(url)s">%(label)s</a>' % {
         'url': reverse('events:events_by_verb', kwargs={'verb': entry.verb}),
-        'label': Event.get_label(entry.verb)}
+        'label': EventType.get(name=entry.verb)}
     )

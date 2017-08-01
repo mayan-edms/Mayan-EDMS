@@ -24,7 +24,10 @@ class DynamicSerializerField(serializers.ReadOnlyField):
         for klass, serializer_class in self.serializers.items():
             if isinstance(value, klass):
                 return serializer_class(
-                    context={'request': self.context['request']}
+                    context={
+                        'format': self.context['format'],
+                        'request': self.context['request']
+                    }
                 ).to_representation(instance=value)
 
         return _('Unable to find serializer class for: %s') % value

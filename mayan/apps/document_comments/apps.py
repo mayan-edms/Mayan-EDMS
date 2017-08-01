@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
@@ -6,9 +6,13 @@ from django.utils.translation import ugettext_lazy as _
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from documents.search import document_page_search, document_search
+from events import ModelEventType
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
+from .events import (
+    event_document_comment_create, event_document_comment_delete
+)
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
@@ -35,6 +39,12 @@ class DocumentCommentsApp(MayanAppConfig):
         )
 
         Comment = self.get_model('Comment')
+
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_comment_create, event_document_comment_delete
+            )
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
