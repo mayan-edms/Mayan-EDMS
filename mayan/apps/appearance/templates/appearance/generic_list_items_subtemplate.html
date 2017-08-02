@@ -103,7 +103,7 @@
                                         <p class="text-center">
                                             {% get_menu_links 'object menu' source=object as resolved_links %}
                                             {% for object_navigation_links in resolved_links %}
-                                                {% with 'true' as horizontal %}
+                                                {% with 'true' as as_dropdown %}
                                                     {% include 'navigation/generic_navigation.html' %}
                                                 {% endwith %}
                                             {% endfor %}

@@ -24,14 +24,14 @@
     </li>
 {% else %}
 
-{% if as_li %}
-    <li class="{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
-{% endif %}
+    {% if as_li %}
+        <li class="{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
+    {% endif %}
 
-    {% include link_template|default:'navigation/generic_link_instance.html' %}
+        {% include link_template|default:'navigation/generic_link_instance.html' %}
 
-{% if as_li %}
-    </li>
-{% endif %}
+    {% if as_li %}
+        </li>
+    {% endif %}
 
 {% endif %}
