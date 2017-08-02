@@ -7,8 +7,12 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.generics import ConfirmView, SingleObjectListView
+from common.generics import (
+    ConfirmView, SingleObjectDetailView, SingleObjectListView
+)
 
+from ..events import event_document_view
+from ..forms import DocumentVersionPreviewForm
 from ..models import Document, DocumentVersion
 from ..permissions import (
     permission_document_download, permission_document_version_revert,
@@ -38,7 +42,8 @@ class DocumentVersionListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'hide_object': True, 'object': self.get_document(),
+            'list_as_items': True,
+            'object': self.get_document(),
             'title': _('Versions of document: %s') % self.get_document(),
         }
 
@@ -96,3 +101,29 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
 class DocumentVersionDownloadView(DocumentDownloadView):
     model = DocumentVersion
     object_permission = permission_document_download
+
+
+class DocumentVersionView(SingleObjectDetailView):
+    form_class = DocumentVersionPreviewForm
+    model = DocumentVersion
+    object_permission = permission_document_version_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentVersionView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().document.add_as_recent_document_for_user(
+            request.user
+        )
+        event_document_view.commit(
+            actor=request.user, target=self.get_object().document
+        )
+
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('Preview of document version: %s') % self.get_object(),
+        }

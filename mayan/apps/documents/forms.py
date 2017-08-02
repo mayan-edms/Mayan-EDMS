@@ -56,6 +56,22 @@ class DocumentPreviewForm(forms.Form):
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
 
+class DocumentVersionPreviewForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        document_version = kwargs.pop('instance', None)
+        super(DocumentVersionPreviewForm, self).__init__(*args, **kwargs)
+
+        self.fields['preview'].initial = document_version
+        try:
+            self.fields['preview'].label = _(
+                'Document pages (%d)'
+            ) % document_version.pages.count()
+        except AttributeError:
+            self.fields['preview'].label = _('Document version pages (%d)') % 0
+
+    preview = forms.CharField(widget=DocumentPagesCarouselWidget())
+
+
 class DocumentForm(forms.ModelForm):
     """
     Form sub classes from DocumentForm used only when editing a document

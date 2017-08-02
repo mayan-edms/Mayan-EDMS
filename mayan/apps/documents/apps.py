@@ -62,8 +62,10 @@ from .links import (
     link_document_type_filename_list, link_document_type_list,
     link_document_type_setup, link_document_update_page_count,
     link_document_version_download, link_document_version_list,
-    link_document_version_revert, link_duplicated_document_list,
-    link_duplicated_document_scan, link_trash_can_empty
+    link_document_version_return_document, link_document_version_return_list,
+    link_document_version_revert, link_document_version_view,
+    link_duplicated_document_list, link_duplicated_document_scan,
+    link_trash_can_empty
 )
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
@@ -89,7 +91,10 @@ from .statistics import (
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import DocumentThumbnailWidget, DocumentPageThumbnailWidget
+from .widgets import (
+    DocumentThumbnailWidget, DocumentPageThumbnailWidget,
+    DocumentVersionThumbnailWidget
+)
 
 
 class DocumentsApp(MayanAppConfig):
@@ -176,9 +181,11 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document and document page thumbnail widget
-        document_thumbnail_widget = DocumentThumbnailWidget()
         document_page_thumbnail_widget = DocumentPageThumbnailWidget()
+        document_thumbnail_widget = DocumentThumbnailWidget()
+        document_version_thumbnail_widget = DocumentVersionThumbnailWidget()
 
+        # Document
         SourceColumn(
             source=Document, label=_('Thumbnail'),
             func=lambda context: document_thumbnail_widget.render(
@@ -189,6 +196,7 @@ class DocumentsApp(MayanAppConfig):
             source=Document, label=_('Type'), attribute='document_type'
         )
 
+        # DocumentPage
         SourceColumn(
             source=DocumentPage, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
@@ -208,6 +216,7 @@ class DocumentsApp(MayanAppConfig):
             attribute='document_version.document.document_type'
         )
 
+        # DocumentType
         SourceColumn(
             source=DocumentType, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
@@ -220,6 +229,7 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: two_state_template(context['object'].enabled)
         )
 
+        # DeletedDocument
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
             func=lambda context: document_thumbnail_widget.render(
@@ -235,6 +245,7 @@ class DocumentsApp(MayanAppConfig):
             attribute='deleted_date_time'
         )
 
+        # DocumentVersion
         SourceColumn(
             source=DocumentVersion, label=_('Time and date'),
             attribute='timestamp'
@@ -251,6 +262,14 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentVersion, label=_('Comment'),
             attribute='comment'
         )
+        SourceColumn(
+            source=DocumentVersion, label=_('Thumbnail'),
+            func=lambda context: document_version_thumbnail_widget.render(
+                instance=context['object']
+            )
+        )
+
+        # DuplicatedDocument
         SourceColumn(
             source=DuplicatedDocument, label=_('Thumbnail'),
             func=lambda context: document_thumbnail_widget.render(
@@ -422,7 +441,8 @@ class DocumentsApp(MayanAppConfig):
         # Document actions
         menu_object.bind_links(
             links=(
-                link_document_version_revert, link_document_version_download
+                link_document_version_view, link_document_version_revert,
+                link_document_version_download
             ),
             sources=(DocumentVersion,)
         )
@@ -462,6 +482,14 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
+        )
+
+        # Document versions
+        menu_facet.bind_links(
+            links=(
+                link_document_version_return_document,
+                link_document_version_return_list
+            ), sources=(DocumentVersion,)
         )
 
         namespace = StatisticNamespace(slug='documents', label=_('Documents'))
@@ -519,3 +547,5 @@ class DocumentsApp(MayanAppConfig):
 
         registry.register(DeletedDocument)
         registry.register(Document)
+        registry.register(DocumentType)
+        registry.register(DocumentVersion)

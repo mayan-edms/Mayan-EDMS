@@ -30,9 +30,9 @@ from .views import (
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentUpdatePageCountView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
-    DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    DuplicatedDocumentListView, EmptyTrashCanView, RecentDocumentListView,
-    ScanDuplicatedDocuments
+    DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
+    DocumentView, DuplicatedDocumentListView, EmptyTrashCanView,
+    RecentDocumentListView, ScanDuplicatedDocuments
 )
 
 
@@ -147,6 +147,10 @@ urlpatterns = [
         r'^document/version/(?P<pk>\d+)/download/form/$',
         DocumentVersionDownloadFormView.as_view(),
         name='document_version_download_form'
+    ),
+    url(
+        r'^document/version/(?P<pk>\d+)/$', DocumentVersionView.as_view(),
+        name='document_version_view'
     ),
     url(
         r'^document/version/(?P<pk>\d+)/download/$',

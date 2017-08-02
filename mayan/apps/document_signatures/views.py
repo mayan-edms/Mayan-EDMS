@@ -111,9 +111,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Sign document version "%s" with a detached signature'
             ) % self.get_document_version(),
@@ -212,9 +210,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Sign document version "%s" with a embedded signature'
             ) % self.get_document_version(),
@@ -237,11 +233,7 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_object().document_version.document,
-            'document_version': self.get_object().document_version,
-            'navigation_object_list': (
-                'document', 'document_version', 'signature'
-            ),
+            'object': self.get_object().document_version,
             'signature': self.get_object(),
             'title': _('Delete detached signature: %s') % self.get_object()
         }
@@ -260,13 +252,9 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_object().document_version.document,
-            'document_version': self.get_object().document_version,
-            'signature': self.get_object(),
-            'navigation_object_list': (
-                'document', 'document_version', 'signature'
-            ),
             'hide_object': True,
+            'object': self.get_object().document_version,
+            'signature': self.get_object(),
             'title': _(
                 'Details for signature: %s'
             ) % self.get_object(),
@@ -305,10 +293,8 @@ class DocumentVersionSignatureListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
             'hide_object': True,
+            'object': self.get_document_version(),
             'title': _(
                 'Signatures for document version: %s'
             ) % self.get_document_version(),
@@ -337,9 +323,7 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Upload detached signature for document version: %s'
             ) % self.get_document_version(),
