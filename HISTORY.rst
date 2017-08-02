@@ -4,7 +4,11 @@
 - Content windows appearance changes
 - Add new document's version list view permission
 - Add support for notifications. GitLab #262.
-- Add quota support.
+- Add quota support. GitLab #284.
+- Convert document version view to item list view.
+- Add support for browsing individual document versions.
+- Add support for dropdown menus to the item list view template.
+- Add ACLs support to the mailer app.
 
 2.6.4 (2017-07-26)
 ==================
