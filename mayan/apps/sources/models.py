@@ -80,7 +80,7 @@ class Source(models.Model):
         """
         try:
             with transaction.atomic():
-                document = Document.objects.create(
+                document = Document(
                     description=description or '', document_type=document_type,
                     label=label or file_object.name,
                     language=language or setting_language.value
