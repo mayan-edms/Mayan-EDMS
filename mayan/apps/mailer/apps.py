@@ -6,6 +6,8 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, menu_object, menu_multi_item, menu_secondary, menu_setup,
     menu_tools
@@ -80,6 +82,7 @@ class MailerApp(MayanAppConfig):
 
         ModelPermission.register(
             model=UserMailer, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_user_mailer_delete, permission_user_mailer_edit,
                 permission_user_mailer_view, permission_user_mailer_use
             )
@@ -112,7 +115,7 @@ class MailerApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_user_mailer_edit, link_user_mailer_log_list,
-                link_user_mailer_test, link_user_mailer_delete,
+                link_user_mailer_test, link_acl_list, link_user_mailer_delete,
             ), sources=(UserMailer,)
         )
 
