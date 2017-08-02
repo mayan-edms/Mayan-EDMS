@@ -14,7 +14,7 @@ from documents.tests import (
 )
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import WatchFolderSource, WebFormSource
+from ..models import WatchFolderSource, WebFormSource, EmailBaseModel
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -117,3 +117,55 @@ class CompressedUploadsTestCase(BaseTestCase):
                 'label', flat=True
             )
         )
+
+
+test_email = """From: noreply@example.com
+To: test@example.com
+Subject: Scan to E-mail Server Job
+Date: Tue, 23 May 2017 23:03:37 +0200
+Message-Id: <00000001.465619c9.1.00@BRN30055CCF4D76>
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+    boundary="RS1tYWlsIENsaWVudA=="
+X-Mailer: E-mail Client
+
+This is multipart message.
+
+--RS1tYWlsIENsaWVudA==
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Sending device cannot receive e-mail replies.
+--RS1tYWlsIENsaWVudA==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
+
+SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
+
+--RS1tYWlsIENsaWVudA==--"""
+
+
+class SourceStub():
+    subject_metadata_type = None
+    from_metadata_type = None
+    metadata_attachment_name = None
+    document_type = None
+    uncompress = None
+    store_body = False
+    label = ""
+
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None,
+                      metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        self.label = label
+
+
+class EmailFilenameDecodingTestCase(BaseTestCase):
+    """
+    Test decoding of base64 encoded e-mail attachment filename.
+    """
+
+    def test_decode_email_encoded_filename(self):
+        source_stub = SourceStub()
+        EmailBaseModel.process_message(source_stub, test_email)
+        self.assertEqual(source_stub.label, u'Ampelm\xe4nnchen.txt')
