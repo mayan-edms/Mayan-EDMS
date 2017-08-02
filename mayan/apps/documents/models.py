@@ -7,6 +7,7 @@ import uuid
 from django.conf import settings
 from django.core.files import File
 from django.db import models, transaction
+from django.template import Template, Context
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
@@ -399,7 +400,9 @@ class DocumentVersion(models.Model):
         verbose_name_plural = _('Document version')
 
     def __str__(self):
-        return '{0} - {1}'.format(self.document, self.timestamp)
+        return Template(
+            '{{ instance.document }} - {{ instance.timestamp }}'
+        ).render(context=Context({'instance': self}))
 
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
@@ -408,6 +411,9 @@ class DocumentVersion(models.Model):
         self.file.storage.delete(self.file.name)
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('documents:document_version_view', args=(self.pk,))
 
     def save(self, *args, **kwargs):
         """
@@ -457,7 +463,7 @@ class DocumentVersion(models.Model):
         else:
             if new_document_version:
                 event_document_new_version.commit(
-                    actor=user, target=self.document
+                    actor=user, target=self, action_object=self.document
                 )
                 post_version_upload.send(sender=DocumentVersion, instance=self)
 

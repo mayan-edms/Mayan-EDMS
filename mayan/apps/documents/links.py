@@ -142,9 +142,25 @@ link_document_multiple_update_page_count = Link(
 link_document_multiple_restore = Link(
     text=_('Restore'), view='documents:document_multiple_restore'
 )
+
+# Versions
 link_document_version_download = Link(
     args='resolved_object.pk', permissions=(permission_document_download,),
     text=_('Download version'), view='documents:document_version_download_form'
+)
+link_document_version_return_document = Link(
+    icon='fa fa-file', permissions=(permission_document_view,),
+    text=_('Document'), view='documents:document_preview',
+    args='resolved_object.document.pk'
+)
+link_document_version_return_list = Link(
+    icon='fa fa-code-fork', permissions=(permission_document_version_view,),
+    text=_('Versions'), view='documents:document_version_list',
+    args='resolved_object.document.pk'
+)
+link_document_version_view = Link(
+    args='resolved_object.pk', permissions=(permission_document_version_view,),
+    text=_('Details'), view='documents:document_version_view'
 )
 
 # Views

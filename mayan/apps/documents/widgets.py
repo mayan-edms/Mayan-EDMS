@@ -333,6 +333,48 @@ class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
         return force_text(instance)
 
 
+class DocumentVersionThumbnailWidget(DocumentThumbnailWidget):
+    width = '100%'
+
+    def get_click_view_kwargs(self, instance):
+        return {
+            'pk': instance.document.pk,
+            'version_pk': instance.pk,
+            'page_pk': instance.pages.first().pk
+        }
+
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentVersionThumbnailWidget, self).get_click_view_url(
+                instance=instance
+            )
+        else:
+            return '#'
+
+    def get_preview_view_kwargs(self, instance):
+        return {
+            'pk': instance.document.pk,
+            'version_pk': instance.pk,
+            'page_pk': instance.pages.first().pk
+        }
+
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentVersionThumbnailWidget, self).get_preview_view_url(
+                instance=instance
+            )
+        else:
+            return ''
+
+    def get_title(self, instance):
+        return getattr(instance, 'label', None)
+
+    def is_valid(self, instance):
+        return instance.pages
+
+
 class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):
     click_view_name = None
 
