@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'mirroring',
     'motd',
     'ocr',
+    'quotas',
     'rest_api',
     'sources',
     'statistics',

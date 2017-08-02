@@ -4,6 +4,7 @@
 - Content windows appearance changes
 - Add new document's version list view permission
 - Add support for notifications. GitLab #262.
+- Add quota support.
 
 2.6.4 (2017-07-26)
 ==================
