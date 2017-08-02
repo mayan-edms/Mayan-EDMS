@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
-from acls.links import link_acl_list
+from acls.links import link_acl_list, link_acl_list_with_icon
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
@@ -476,7 +476,7 @@ class DocumentsApp(MayanAppConfig):
 
         # Document facet links
         menu_facet.bind_links(
-            links=(link_document_duplicates_list, link_acl_list,),
+            links=(link_document_duplicates_list, link_acl_list_with_icon,),
             sources=(Document,)
         )
         menu_facet.bind_links(
