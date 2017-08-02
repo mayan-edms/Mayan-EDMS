@@ -2,6 +2,10 @@
 ==================
 - Add workaround for PDF with IndirectObject as the 
   rotation value. GitHub #261.
+- Add ACL list link with icon and use it for the document facet menu.
+- Fix mailing app permissions labels.
+- Add ACLs link and ACLs permissions to the mailer profile model.
+- Improve mailer URL regex.
 
 2.6.4 (2017-07-26)
 ==================
