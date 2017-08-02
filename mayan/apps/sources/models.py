@@ -617,6 +617,12 @@ class EmailBaseModel(IntervalBaseModel):
 
                 if raw_filename:
                     filename = collapse_rfc2231_value(raw_filename)
+
+                    # Decode base64 encoded filename
+                    # https://stackoverflow.com/a/21859258/1364435
+                    if decode_header(filename)[0][1] is not None:
+                        filename = str(decode_header(filename)[0][0]).decode(decode_header(filename)[0][1])
+
                 else:
                     filename = _('attachment-%i') % counter
                     counter += 1
