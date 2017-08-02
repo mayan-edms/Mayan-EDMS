@@ -31,7 +31,7 @@ urlpatterns = [
         name='system_mailer_error_log'
     ),
     url(
-        r'^user_mailers/backend/selection',
+        r'^user_mailers/backend/selection/$',
         UserMailerBackendSelectionView.as_view(),
         name='user_mailer_backend_selection'
     ),
