@@ -16,17 +16,17 @@ permission_view_error_log = namespace.add_permission(
     name='view_error_log', label=_('View system mailing error log')
 )
 permission_user_mailer_create = namespace.add_permission(
-    name='user_mailer_create', label=_('Create an user mailer')
+    name='user_mailer_create', label=_('Create a mailing profile')
 )
 permission_user_mailer_delete = namespace.add_permission(
-    name='user_mailer_delete', label=_('Delete an user mailer')
+    name='user_mailer_delete', label=_('Delete a mailing profile')
 )
 permission_user_mailer_edit = namespace.add_permission(
-    name='user_mailer_edit', label=_('Edit an user mailer')
+    name='user_mailer_edit', label=_('Edit a mailing profile')
 )
 permission_user_mailer_view = namespace.add_permission(
-    name='user_mailer_view', label=_('View an user mailer')
+    name='user_mailer_view', label=_('View a mailing profile')
 )
 permission_user_mailer_use = namespace.add_permission(
-    name='user_mailer_use', label=_('Use an user mailer')
+    name='user_mailer_use', label=_('Use a mailing profile')
 )
