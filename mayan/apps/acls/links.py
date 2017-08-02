@@ -35,6 +35,10 @@ link_acl_list = Link(
     permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list',
     kwargs=get_kwargs_factory('resolved_object')
 )
+link_acl_list_with_icon = Link(
+    icon='fa fa-lock', permissions=(permission_acl_view,), text=_('ACLs'),
+    view='acls:acl_list', kwargs=get_kwargs_factory('resolved_object')
+)
 link_acl_create = Link(
     permissions=(permission_acl_edit,), text=_('New ACL'),
     view='acls:acl_create', kwargs=get_kwargs_factory('resolved_object')
