@@ -86,8 +86,16 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstance, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=IndexInstance, label=_('Total nodes'),
+            func=lambda context: context[
+                'object'
+            ].instance_root.get_descendants_count()
+        )
+        SourceColumn(
+            source=IndexInstance, label=_('Total documents'),
+            func=lambda context: context[
+                'object'
+            ].instance_root.get_descendants_document_count(
                 user=context['request'].user
             )
         )
@@ -116,8 +124,14 @@ class DocumentIndexingApp(MayanAppConfig):
             func=lambda context: index_instance_item_link(context['object'])
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=IndexInstanceNode, label=_('Nodes'),
+            func=lambda context: context['object'].get_descendants_count()
+        )
+        SourceColumn(
+            source=IndexInstanceNode, label=_('Documents'),
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
                 user=context['request'].user
             )
         )
@@ -129,8 +143,14 @@ class DocumentIndexingApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=DocumentIndexInstanceNode, label=_('Nodes'),
+            func=lambda context: context['object'].get_descendants_count()
+        )
+        SourceColumn(
+            source=DocumentIndexInstanceNode, label=_('Documents'),
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
                 user=context['request'].user
             )
         )
