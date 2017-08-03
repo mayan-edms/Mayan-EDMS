@@ -7,6 +7,7 @@
 - Add ACLs link and ACLs permissions to the mailer profile model.
 - Improve mailer URL regex.
 - Add ordering support to the SourceColumn class. GitLab issue #417.
+- Shows the cabinets in the document list. GitLab #417 @corneliusludmann
 
 2.6.4 (2017-07-26)
 ==================
