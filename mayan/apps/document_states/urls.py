@@ -17,9 +17,10 @@ from .views import (
     SetupWorkflowStateEditView, SetupWorkflowStateListView,
     SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
     SetupWorkflowTransitionDeleteView, SetupWorkflowTransitionEditView,
-    ToolLaunchAllWorkflows, WorkflowDocumentListView,
-    WorkflowInstanceDetailView, WorkflowInstanceTransitionView,
-    WorkflowListView, WorkflowStateDocumentListView, WorkflowStateListView
+    SetupWorkflowTransitionTriggerEventListView, ToolLaunchAllWorkflows,
+    WorkflowDocumentListView, WorkflowInstanceDetailView,
+    WorkflowInstanceTransitionView, WorkflowListView,
+    WorkflowStateDocumentListView, WorkflowStateListView,
 )
 
 urlpatterns = [
@@ -37,7 +38,6 @@ urlpatterns = [
         WorkflowInstanceTransitionView.as_view(),
         name='workflow_instance_transition'
     ),
-
     url(
         r'^setup/all/$', SetupWorkflowListView.as_view(),
         name='setup_workflow_list'
@@ -82,6 +82,11 @@ urlpatterns = [
         r'^setup/(?P<pk>\d+)/transitions/create/$',
         SetupWorkflowTransitionCreateView.as_view(),
         name='setup_workflow_transition_create'
+    ),
+    url(
+        r'^setup/(?P<pk>\d+)/transitions/events/$',
+        SetupWorkflowTransitionTriggerEventListView.as_view(),
+        name='setup_workflow_instance_transition_events'
     ),
     url(
         r'^setup/workflow/state/(?P<pk>\d+)/delete/$',

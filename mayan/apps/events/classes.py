@@ -12,7 +12,7 @@ class Event(object):
 
     @classmethod
     def all(cls):
-        return cls._registry.values()
+        return Event.sort(event_type_list=cls._registry.values())
 
     @classmethod
     def get(cls, name):
@@ -29,6 +29,17 @@ class Event(object):
             return cls.get(name=name).label
         except KeyError as exception:
             return force_text(exception)
+
+    @classmethod
+    def refresh(cls):
+        for event_type in cls.all():
+            event_type.get_type()
+
+    @staticmethod
+    def sort(event_type_list):
+        return sorted(
+            event_type_list, key=lambda x: x.label
+        )
 
     def __init__(self, name, label):
         self.name = name

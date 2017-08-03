@@ -21,4 +21,8 @@ class EventType(models.Model):
         return self.get_class().label
 
     def get_class(self):
-        return Event.get_label(self.name)
+        return Event.get(name=self.name)
+
+    @property
+    def label(self):
+        return self.get_class().label

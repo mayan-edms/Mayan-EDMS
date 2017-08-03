@@ -14,14 +14,16 @@ from common.views import (
 )
 from documents.models import Document
 from documents.views import DocumentListView
+from events.classes import Event
+from events.models import EventType
 
 from .forms import (
     WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
-    WorkflowTransitionForm
+    WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
 )
 from .models import (
     Workflow, WorkflowInstance, WorkflowState, WorkflowTransition,
-    WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
+    WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
 )
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -505,6 +507,79 @@ class WorkflowStateListView(SingleObjectListView):
 
     def get_workflow(self):
         return get_object_or_404(WorkflowRuntimeProxy, pk=self.kwargs['pk'])
+
+
+class SetupWorkflowTransitionTriggerEventListView(FormView):
+    form_class = WorkflowTransitionTriggerEventRelationshipFormSet
+    submodel = EventType
+
+    def dispatch(self, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_edit,
+            user=self.request.user, obj=self.get_object().workflow
+        )
+
+        Event.refresh()
+        return super(
+            SetupWorkflowTransitionTriggerEventListView, self
+        ).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        try:
+            for instance in form:
+                instance.save()
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _(
+                    'Error updating workflow transition trigger events; %s'
+                ) % exception
+            )
+        else:
+            messages.success(
+                self.request, _(
+                    'Workflow transition trigger events updated successfully'
+                )
+            )
+
+        return super(
+            SetupWorkflowTransitionTriggerEventListView, self
+        ).form_valid(form=form)
+
+    def get_object(self):
+        return get_object_or_404(WorkflowTransition, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'form_display_mode_table': True,
+            'navigation_object_list': ('object', 'workflow'),
+            'object': self.get_object(),
+            'title': _(
+                'Workflow transition trigger events for: %s'
+            ) % self.get_object(),
+            'workflow': self.get_object().workflow,
+        }
+
+    def get_initial(self):
+        obj = self.get_object()
+        initial = []
+
+        # Return the queryset by name from the sorted list of the class
+        event_type_ids = [event_type.name for event_type in Event.all()]
+        event_type_queryset = EventType.objects.filter(name__in=event_type_ids)
+
+        for event_type in event_type_queryset:
+            initial.append({
+                'transition': obj,
+                'event_type': event_type,
+            })
+        return initial
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'document_states:setup_workflow_transitions',
+            args=(self.get_object().workflow.pk,)
+        )
 
 
 class ToolLaunchAllWorkflows(ConfirmView):

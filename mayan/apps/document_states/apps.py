@@ -19,7 +19,9 @@ from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .classes import DocumentStateHelper
-from .handlers import handler_index_document, launch_workflow
+from .handlers import (
+    handler_index_document, handler_trigger_transition, launch_workflow
+)
 from .links import (
     link_document_workflow_instance_list, link_setup_workflow_document_types,
     link_setup_workflow_create, link_setup_workflow_delete,
@@ -31,10 +33,11 @@ from .links import (
     link_tool_launch_all_workflows, link_workflow_instance_detail,
     link_workflow_instance_transition, link_workflow_document_list,
     link_workflow_list, link_workflow_state_document_list,
-    link_workflow_state_list
+    link_workflow_state_list, link_workflow_instance_transition_events
 )
 from .permissions import permission_workflow_transition
 from .queues import *  # NOQA
+from .widgets import widget_transition_events
 
 
 class DocumentStatesApp(MayanAppConfig):
@@ -48,6 +51,9 @@ class DocumentStatesApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
+        Action = apps.get_model(
+            app_label='actstream', model_name='Action'
+        )
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -159,6 +165,12 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransition, label=_('Destination state'),
             attribute='destination_state'
         )
+        SourceColumn(
+            source=WorkflowTransition, label=_('Triggers'),
+            func=lambda context: widget_transition_events(
+                transition=context['object']
+            )
+        )
 
         app.conf.CELERY_QUEUES.extend(
             (
@@ -196,7 +208,8 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_setup_workflow_transition_edit, link_acl_list,
+                link_setup_workflow_transition_edit,
+                link_workflow_instance_transition_events, link_acl_list,
                 link_setup_workflow_transition_delete
             ), sources=(WorkflowTransition,)
         )
@@ -248,4 +261,9 @@ class DocumentStatesApp(MayanAppConfig):
             handler_index_document,
             dispatch_uid='handler_index_document_save',
             sender=WorkflowInstanceLogEntry
+        )
+        post_save.connect(
+            handler_trigger_transition,
+            dispatch_uid='document_states_handler_trigger_transition',
+            sender=Action
         )

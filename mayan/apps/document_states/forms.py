@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django import forms
+from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Workflow, WorkflowState, WorkflowTransition
@@ -37,6 +38,54 @@ class WorkflowTransitionForm(forms.ModelForm):
     class Meta:
         fields = ('label', 'origin_state', 'destination_state')
         model = WorkflowTransition
+
+
+class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
+    label = forms.CharField(
+        label=_('Label'), required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    )
+    relationship = forms.ChoiceField(
+        label=_('Enabled'),
+        widget=forms.RadioSelect(), choices=(
+            ('no', _('No')),
+            ('yes', _('Yes')),
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(WorkflowTransitionTriggerEventRelationshipForm, self).__init__(
+            *args, **kwargs
+        )
+
+        self.fields['label'].initial = self.initial['event_type'].label
+
+        relationship = self.initial['transition'].trigger_events.filter(
+            event_type=self.initial['event_type'],
+        )
+
+        if relationship.exists():
+            self.fields['relationship'].initial = 'yes'
+        else:
+            self.fields['relationship'].initial = 'no'
+
+    def save(self):
+        relationship = self.initial['transition'].trigger_events.filter(
+            event_type=self.initial['event_type'],
+        )
+
+        if self.cleaned_data['relationship'] == 'no':
+            relationship.delete()
+        elif self.cleaned_data['relationship'] == 'yes':
+            if not relationship.exists():
+                self.initial['transition'].trigger_events.create(
+                    event_type=self.initial['event_type'],
+                )
+
+
+WorkflowTransitionTriggerEventRelationshipFormSet = formset_factory(
+    WorkflowTransitionTriggerEventRelationshipForm, extra=0
+)
 
 
 class WorkflowInstanceTransitionForm(forms.Form):

@@ -13,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
+from events.models import EventType
 from permissions import Permission
 
 from .managers import WorkflowManager
@@ -179,6 +180,24 @@ class WorkflowTransition(models.Model):
 
 
 @python_2_unicode_compatible
+class WorkflowTransitionTriggerEvent(models.Model):
+    transition = models.ForeignKey(
+        WorkflowTransition, on_delete=models.CASCADE,
+        related_name='trigger_events', verbose_name=_('Transition')
+    )
+    event_type = models.ForeignKey(
+        EventType, on_delete=models.CASCADE, verbose_name=_('Event type')
+    )
+
+    class Meta:
+        verbose_name = _('Workflow transition trigger event')
+        verbose_name_plural = _('Workflow transitions trigger events')
+
+    def __str__(self):
+        return force_text(self.transition)
+
+
+@python_2_unicode_compatible
 class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(
         Workflow, on_delete=models.CASCADE, related_name='instances',
@@ -197,7 +216,7 @@ class WorkflowInstance(models.Model):
             'document_states:workflow_instance_detail', args=(str(self.pk),)
         )
 
-    def do_transition(self, transition, user, comment=None):
+    def do_transition(self, transition, user=None, comment=None):
         try:
             if transition in self.get_current_state().origin_transitions.all():
                 self.log_entries.create(
@@ -306,8 +325,8 @@ class WorkflowInstanceLogEntry(models.Model):
         verbose_name=_('Transition')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-        verbose_name=_('User')
+        settings.AUTH_USER_MODEL, blank=True, null=True,
+        on_delete=models.CASCADE, verbose_name=_('User')
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 

@@ -105,3 +105,8 @@ link_workflow_state_list = Link(
     text=_('States'), view='document_states:workflow_state_list',
     args='resolved_object.pk'
 )
+link_workflow_instance_transition_events = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Transition events'),
+    view='document_states:setup_workflow_instance_transition_events'
+)
