@@ -21,7 +21,7 @@ from mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (
-    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
+    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
 )
 from .settings import setting_graphics_backend_config
 
@@ -183,7 +183,13 @@ class ConverterBase(object):
         fs_cleanup(input_filepath)
         fs_cleanup(converted_output)
 
-    def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
+    def get_page(self, output_format=None, as_base64=False):
+        output_format = output_format or yaml.load(
+            setting_graphics_backend_config.value
+        ).get(
+            'pillow_format', DEFAULT_PILLOW_FORMAT
+        )
+
         if not self.image:
             self.seek(0)
 

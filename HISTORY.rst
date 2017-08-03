@@ -11,6 +11,9 @@
 - Add workaround for pycountry versions without the bibliographical key.
   GitHub issue #250.
 - Skip UUID migration on Oracle backends. GitHub issue #251.
+- Allow changing the output format, DPI of the pdftoppm command, and
+  the output format of the converter via the CONVERTER_GRAPHICS_BACKEND_CONFIG
+  setting. GitHub issues #256 #257 GitLab issue #416.
 
 2.6.4 (2017-07-26)
 ==================

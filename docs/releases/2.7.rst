@@ -23,7 +23,10 @@ Other Changes
 - Add workaround for pycountry versions without the bibliographical key.
   GitHub issue #250.
 - Skip UUID migration on Oracle backends. GitHub issue #251.
-
+- Allow changing the output format, DPI of the pdftoppm command, and
+  the output format of the converter via the CONVERTER_GRAPHICS_BACKEND_CONFIG
+  setting sub options: pdftoppm_dpi: 300, pdftoppm_format: jpeg, pillow_format: jpeg
+  GitHub issues #256 #257 GitLab issue #416.
 
 Removals
 --------
@@ -80,8 +83,11 @@ Bugs fixed or issues closed
 
 * `GitHub issue #250 <https://github.com/mayan-edms/mayan-edms/issues/250>`_ migrate fails on documents.0025_auto_20150718_0742
 * `GitHub issue #251 <https://github.com/mayan-edms/mayan-edms/issues/251>`_ migrate fails on documents.0032_auto_20160315_0537
+* `GitHub issue #256 <https://github.com/mayan-edms/mayan-edms/issues/256>`_ Make it possible to adjust values in apps\converter\literals.py from Settings
+* `GitHub issue #257 <https://github.com/mayan-edms/mayan-edms/issues/257>`_ Use the DEFAULT_FILE_FORMAT from literals.py in python.py
 * `GitHub issue #261 <https://github.com/mayan-edms/mayan-edms/issues/261>`_ fix_orientation method causes document add to crash
 * `GitHub issue #263 <https://github.com/mayan-edms/mayan-edms/issues/263>`_ Typo in mayan/apps/ocr/migrations/0004_documenttypesettings.py
-* `GitLab issue #400 <https://gitlab.com/mayan-edms/mayan-edms/issues/400>`_ Django REST framework's BasicAuthentication doesn't work with Oauth2_proxy
+* `GitLab issue #416 <https://gitlab.com/mayan-edms/mayan-edms/issues/416>`_ DPI value for OCR not taken from document metadata
+* `GitLab issue #417 <https://gitlab.com/mayan-edms/mayan-edms/issues/400>`_ Display document cabinets in documents list
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

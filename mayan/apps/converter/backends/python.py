@@ -23,7 +23,10 @@ from ..classes import ConverterBase
 from ..exceptions import PageCountError
 from ..settings import setting_graphics_backend_config
 
-from .literals import DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH
+from ..literals import (
+    DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT, DEFAULT_PDFTOPPM_PATH,
+    DEFAULT_PDFINFO_PATH
+)
 
 try:
     pdftoppm = sh.Command(
@@ -34,7 +37,19 @@ try:
 except sh.CommandNotFound:
     pdftoppm = None
 else:
-    pdftoppm = pdftoppm.bake('-jpeg')
+    pdftoppm_format = '-{}'.format(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdftoppm_format', DEFAULT_PDFTOPPM_FORMAT
+        )
+    )
+
+    pdftoppm_dpi = format(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdftoppm_dpi', DEFAULT_PDFTOPPM_DPI
+        )
+    )
+
+    pdftoppm = pdftoppm.bake(pdftoppm_format, '-r', pdftoppm_dpi)
 
 try:
     pdfinfo = sh.Command(
