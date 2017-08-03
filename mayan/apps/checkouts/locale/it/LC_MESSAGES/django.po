@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -52,7 +52,7 @@ msgstr "Documento già uscito"
 msgid "Document status"
 msgstr "Stato documento"
 
-#: forms.py:37 models.py:37 views.py:84
+#: forms.py:37 models.py:41 views.py:84
 msgid "User"
 msgstr "Utente"
 
@@ -96,47 +96,47 @@ msgstr "Uscito"
 msgid "Checked in/available"
 msgstr "Check-in / disponibile"
 
-#: models.py:27 models.py:92
+#: models.py:28 models.py:98
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:29
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Uscito in data e ora"
 
-#: models.py:33
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Minuti disponibili per fermare il documento in checked out"
 
-#: models.py:35
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Scopri la data e l'ora di scadenza"
 
-#: models.py:41
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Non permettere che la nuova versione di questo documento sia caricata."
 
-#: models.py:43
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Blocca la nuova versione in caricamento"
 
-#: models.py:54
+#: models.py:59
 msgid "Check out expiration date and time must be in the future."
 msgstr "La data e ora di uscita deve essere nel futuro."
 
-#: models.py:87 permissions.py:7
+#: models.py:92 permissions.py:7
 msgid "Document checkout"
 msgstr "Documento uscito"
 
-#: models.py:88
+#: models.py:93
 msgid "Document checkouts"
 msgstr "Documenti usciti"
 
-#: models.py:97
+#: models.py:104
 msgid "New version block"
 msgstr "Nuova versione blocco"
 
-#: models.py:98
+#: models.py:105
 msgid "New version blocks"
 msgstr "Nuove versioni blocco"
 

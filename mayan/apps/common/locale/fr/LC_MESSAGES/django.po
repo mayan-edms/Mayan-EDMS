@@ -5,7 +5,7 @@
 # Translators:
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
 # Franck Boucher <boucher.fk@gmail.com>, 2016
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-07-15 03:49+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-07-25 13:11+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,18 +25,18 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:75 settings.py:11
+#: apps.py:76 settings.py:11
 msgid "Common"
 msgstr "Commun"
 
-#: apps.py:80
+#: apps.py:81
 #| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anonyme"
 
 #: classes.py:109
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Attributs disponibles: \n"
 
 #: forms.py:27
 msgid "Selection"
@@ -91,11 +91,11 @@ msgstr "%(object)s, mise à jour réussie."
 
 #: links.py:9
 msgid "About this"
-msgstr ""
+msgstr "À propos de"
 
-#: links.py:12 views.py:51
+#: links.py:12 views.py:52
 msgid "Check for updates"
-msgstr ""
+msgstr "Vérifiez les mises à jour"
 
 #: links.py:16
 msgid "User details"
@@ -115,11 +115,11 @@ msgstr "Éditer les paramètres régionaux du profil"
 
 #: links.py:31
 msgid "Source code"
-msgstr ""
+msgstr "Code source"
 
 #: links.py:35
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: links.py:39
 msgid "Data filters"
@@ -127,13 +127,13 @@ msgstr "Filtres de données"
 
 #: links.py:43
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
-#: links.py:47 views.py:190
+#: links.py:47 views.py:191
 msgid "License"
 msgstr "Licence"
 
-#: links.py:50 views.py:204
+#: links.py:50 views.py:205
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"
 
@@ -143,9 +143,9 @@ msgstr "Configuration"
 
 #: links.py:57
 msgid "Support"
-msgstr ""
+msgstr "Support"
 
-#: links.py:61 queues.py:10 views.py:234
+#: links.py:61 queues.py:10 views.py:235
 msgid "Tools"
 msgstr "Outils"
 
@@ -163,23 +163,23 @@ msgstr "Minutes"
 
 #: menus.py:12
 msgid "System"
-msgstr ""
+msgstr "Système"
 
 #: menus.py:22 models.py:53
 msgid "User"
 msgstr "Uitlisateur"
 
-#: mixins.py:84
-#, python-format
-msgid "Operation performed on %(count)d object"
-msgstr ""
-
 #: mixins.py:85
 #, python-format
-msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgid "Operation performed on %(count)d object"
+msgstr "Opération effectuée sur %(count)d objet"
 
-#: mixins.py:245
+#: mixins.py:86
+#, python-format
+msgid "Operation performed on %(count)d objects"
+msgstr "Opération effectuée sur  %(count)d objets"
+
+#: mixins.py:246
 msgid "Object"
 msgstr "Objet"
 
@@ -225,11 +225,11 @@ msgstr "Défaut"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "Période commune"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Supprimer les téléchargements périmées"
 
 #: settings.py:15
 msgid "Automatically enable logging to all apps."
@@ -257,61 +257,61 @@ msgstr "Le dossier temporaire est utilisé pour stocker les vignettes, aperçus 
 
 #: settings.py:48
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Chemin d'accès au fichier journal qui enregistrera les erreurs pendant la production."
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Entrez un 'nom interne' valide composé de lettres, de chiffres et de soulignement."
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
 
-#: views.py:48
+#: views.py:49
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Votre version est à jour"
 
-#: views.py:65
+#: views.py:66
 msgid "Current user details"
 msgstr "Détails de l'utilisateur courant"
 
-#: views.py:70
+#: views.py:71
 msgid "Edit current user details"
 msgstr "Modifier les détails des utilisateurs actuels"
 
-#: views.py:90
+#: views.py:91
 msgid "Current user locale profile details"
 msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:97
+#: views.py:98
 msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:153
+#: views.py:154
 msgid "Filter selection"
 msgstr "Sélection du filtre"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Résultats pour le filtre : %s"
 
-#: views.py:176
+#: views.py:177
 msgid "Filter not found"
 msgstr "Filtre non trouvé"
 
-#: views.py:217
+#: views.py:218
 msgid "Setup items"
 msgstr "Paramètres de configuration"
 
-#: views.py:261
+#: views.py:262
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:269
+#: views.py:270
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."
 

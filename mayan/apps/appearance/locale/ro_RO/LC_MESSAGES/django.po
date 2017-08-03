@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:21-0400\n"
 "PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -155,7 +155,7 @@ msgid "Cancel"
 msgstr "Anulează"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_items_subtemplate.html:124
+#: templates/appearance/generic_list_items_subtemplate.html:118
 #: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr ""

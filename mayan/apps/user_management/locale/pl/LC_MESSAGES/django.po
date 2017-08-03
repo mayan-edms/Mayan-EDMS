@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"PO-Revision-Date: 2017-08-01 14:52+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,16 +126,16 @@ msgstr "Zobacz istniejących użytkowników"
 #: search.py:19
 #| msgid "Full name"
 msgid "First name"
-msgstr ""
+msgstr "Imię"
 
 #: search.py:28
 msgid "Last name"
-msgstr ""
+msgstr "Nazwisko"
 
 #: search.py:31
 #| msgid "user"
 msgid "username"
-msgstr ""
+msgstr "nazwa użytkownika"
 
 #: search.py:41
 msgid "Name"
@@ -143,11 +143,11 @@ msgstr "Nazwa"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
+msgstr "Rozdzielona przecinkami lista kluczy głównych grup, do których użytkownik zostanie przydzielony."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
-msgstr ""
+msgstr "Lista kluczy głównych grup, do których użytkownik zostanie dodany."
 
 #: views.py:43
 #, python-format
@@ -198,7 +198,7 @@ msgstr[3] "Usuń użytkowników"
 #: views.py:156
 #, python-format
 msgid "Delete user: %s"
-msgstr ""
+msgstr "Usuń użytkownika: %s"
 
 #: views.py:168
 msgid ""
@@ -227,7 +227,7 @@ msgstr "Dostępne grupy"
 
 #: views.py:205
 msgid "Groups joined"
-msgstr ""
+msgstr "Członek grup"
 
 #: views.py:214
 #, python-format
@@ -237,12 +237,12 @@ msgstr "Grupy użytkownika: %s"
 #: views.py:252
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Zmieniono hasło dla %(count)d użytkownika"
 
 #: views.py:254
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Zmieniono hasła dla %(count)d użytkowników"
 
 #: views.py:262
 msgid "Submit"
@@ -251,15 +251,15 @@ msgstr "Wykonaj"
 #: views.py:264
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Zmień hasło użytkownika"
+msgstr[1] "Zmień hasło użytkownika"
+msgstr[2] "Zmień hasło użytkownika"
+msgstr[3] "Zmień hasła użytkowników"
 
 #: views.py:274
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Zmień hasło użytkownika: %s"
 
 #: views.py:294
 msgid ""

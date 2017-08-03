@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:75 settings.py:11
+#: apps.py:76 settings.py:11
 msgid "Common"
 msgstr ""
 
-#: apps.py:80
+#: apps.py:81
 #| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anonymous"
@@ -88,7 +88,7 @@ msgstr ""
 msgid "About this"
 msgstr ""
 
-#: links.py:12 views.py:51
+#: links.py:12 views.py:52
 msgid "Check for updates"
 msgstr ""
 
@@ -124,11 +124,11 @@ msgstr ""
 msgid "Forum"
 msgstr ""
 
-#: links.py:47 views.py:190
+#: links.py:47 views.py:191
 msgid "License"
 msgstr "Bản quyền"
 
-#: links.py:50 views.py:204
+#: links.py:50 views.py:205
 msgid "Other packages licenses"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: links.py:61 queues.py:10 views.py:234
+#: links.py:61 queues.py:10 views.py:235
 msgid "Tools"
 msgstr ""
 
@@ -164,17 +164,17 @@ msgstr ""
 msgid "User"
 msgstr "Người dùng"
 
-#: mixins.py:84
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr ""
 
-#: mixins.py:85
+#: mixins.py:86
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
-#: mixins.py:245
+#: mixins.py:246
 msgid "Object"
 msgstr "Đối tượng"
 
@@ -260,53 +260,53 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:48
+#: views.py:49
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:65
+#: views.py:66
 msgid "Current user details"
 msgstr ""
 
-#: views.py:70
+#: views.py:71
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:90
+#: views.py:91
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:97
+#: views.py:98
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:153
+#: views.py:154
 msgid "Filter selection"
 msgstr ""
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Results for filter: %s"
 msgstr ""
 
-#: views.py:176
+#: views.py:177
 msgid "Filter not found"
 msgstr ""
 
-#: views.py:217
+#: views.py:218
 msgid "Setup items"
 msgstr ""
 
-#: views.py:261
+#: views.py:262
 msgid "No action selected."
 msgstr "Không thao tác nào được chọn."
 
-#: views.py:269
+#: views.py:270
 msgid "Must select at least one item."
 msgstr "Cần chọn ít nhất một phần tử."
 

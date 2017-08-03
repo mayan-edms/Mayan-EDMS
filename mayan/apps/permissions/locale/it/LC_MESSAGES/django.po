@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
-"PO-Revision-Date: 2017-05-30 08:06+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-08-03 06:00+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:77 permissions.py:7
 msgid "Permissions"
 msgstr "Permessi"
 
@@ -74,7 +74,7 @@ msgstr "Nome "
 msgid "Permission"
 msgstr "Autorizzazione "
 
-#: models.py:74
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr "Etichetta "
 
@@ -110,6 +110,11 @@ msgstr "Concedere le autorizzazioni"
 msgid "Revoke permissions"
 msgstr "Revoca le autorizzazioni"
 
+#: search.py:20
+#| msgid "Groups"
+msgid "Group name"
+msgstr ""
+
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
@@ -120,7 +125,7 @@ msgstr "Lista separata da virgole di ID gruppi da aggiungere o sostituire in que
 msgid "Comma separated list of permission primary keys to grant to this role."
 msgstr "Lista separata da virgole di ID permessi da assegnare a questo ruolo"
 
-#: serializers.py:92
+#: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr "Nessun permesso: %s"

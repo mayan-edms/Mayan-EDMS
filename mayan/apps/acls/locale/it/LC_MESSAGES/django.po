@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:21-0400\n"
 "PO-Revision-Date: 2017-04-28 07:26+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 links.py:35
+#: apps.py:15 links.py:35 links.py:39
 msgid "ACLs"
 msgstr "ACLs"
 
-#: apps.py:25 links.py:44 models.py:44
+#: apps.py:25 links.py:48 models.py:44
 msgid "Permissions"
 msgstr "Permessi"
 
-#: apps.py:29 models.py:46
+#: apps.py:29 models.py:48
 msgid "Role"
 msgstr "Ruolo"
 
@@ -36,28 +36,28 @@ msgstr "Ruolo"
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:39
+#: links.py:43
 msgid "New ACL"
 msgstr "Nuova ACL"
 
-#: managers.py:109
+#: managers.py:85
 msgid "Insufficient access."
 msgstr "Accesso insufficiente."
 
-#: models.py:52
+#: models.py:55
 msgid "Access entry"
 msgstr "Voce di accesso"
 
-#: models.py:53
+#: models.py:56
 msgid "Access entries"
 msgstr "Voci di accesso"
 
-#: models.py:57
+#: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "Permessi \"%(permissions)s\" del ruolo \"%(role)s\" per \"%(object)s\""
 
-#: models.py:74
+#: models.py:77
 msgid "None"
 msgstr "Nessuna "
 

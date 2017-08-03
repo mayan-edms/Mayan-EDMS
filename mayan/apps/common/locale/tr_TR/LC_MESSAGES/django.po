@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-07-15 03:49+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-07-30 19:11+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:75 settings.py:11
+#: apps.py:76 settings.py:11
 msgid "Common"
 msgstr "Ortak"
 
-#: apps.py:80
+#: apps.py:81
 #| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anonim"
@@ -89,7 +89,7 @@ msgstr "%(object)s başarıyla güncellendi."
 msgid "About this"
 msgstr "Bunun hakkında"
 
-#: links.py:12 views.py:51
+#: links.py:12 views.py:52
 msgid "Check for updates"
 msgstr "Güncellemeleri kontrol et"
 
@@ -125,11 +125,11 @@ msgstr "Veri filtreleri"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:47 views.py:190
+#: links.py:47 views.py:191
 msgid "License"
 msgstr "Lisans"
 
-#: links.py:50 views.py:204
+#: links.py:50 views.py:205
 msgid "Other packages licenses"
 msgstr "Diğer paket lisansları"
 
@@ -141,7 +141,7 @@ msgstr "Yükleme"
 msgid "Support"
 msgstr "Destek"
 
-#: links.py:61 queues.py:10 views.py:234
+#: links.py:61 queues.py:10 views.py:235
 msgid "Tools"
 msgstr "Araçlar"
 
@@ -159,23 +159,23 @@ msgstr "Dakikalar"
 
 #: menus.py:12
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: menus.py:22 models.py:53
 msgid "User"
 msgstr "Kullanıcı"
 
-#: mixins.py:84
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "İşlem %(count)d nesnesi üzerinde gerçekleştirildi"
 
-#: mixins.py:85
+#: mixins.py:86
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "İşlem %(count)d nesneleri üzerinde gerçekleştirildi"
 
-#: mixins.py:245
+#: mixins.py:246
 msgid "Object"
 msgstr "Nesne"
 
@@ -253,7 +253,7 @@ msgstr "Geçici dizin, küçük resimleri, önizlemeleri ve geçici dosyaları s
 
 #: settings.py:48
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Üretim sırasında hataları izleyecek olan günlük dosyasının yolu."
 
 #: validators.py:29
 msgid ""
@@ -261,53 +261,53 @@ msgid ""
 "underscores."
 msgstr "Harfler, rakamlar ve alt çizgilerden oluşan geçerli bir 'dahili ad' girin."
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "Kullandığınız sürüm güncelliğini yitirmiştir. En son sürümü %s"
 
-#: views.py:48
+#: views.py:49
 msgid "Your version is up-to-date."
 msgstr "Sürümünüz güncel."
 
-#: views.py:65
+#: views.py:66
 msgid "Current user details"
 msgstr "Geçerli kullanıcı ayrıntıları"
 
-#: views.py:70
+#: views.py:71
 msgid "Edit current user details"
 msgstr "Geçerli kullanıcı ayrıntılarını düzenle"
 
-#: views.py:90
+#: views.py:91
 msgid "Current user locale profile details"
 msgstr "Geçerli kullanıcı yerel ayarları profil ayrıntıları"
 
-#: views.py:97
+#: views.py:98
 msgid "Edit current user locale profile details"
 msgstr "Geçerli kullanıcı yerel ayarları ayrıntılarını düzenle"
 
-#: views.py:153
+#: views.py:154
 msgid "Filter selection"
 msgstr "Filtre seçimi"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Filtre için sonuçlar: %s"
 
-#: views.py:176
+#: views.py:177
 msgid "Filter not found"
 msgstr "Filtre bulunamadı"
 
-#: views.py:217
+#: views.py:218
 msgid "Setup items"
 msgstr "Kurulum öğeleri"
 
-#: views.py:261
+#: views.py:262
 msgid "No action selected."
 msgstr "İşlem seçilmedi."
 
-#: views.py:269
+#: views.py:270
 msgid "Must select at least one item."
 msgstr "En az bir öğe seçmelisiniz."
 

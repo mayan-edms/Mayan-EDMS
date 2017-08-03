@@ -6,14 +6,15 @@
 # Translators:
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-07-24 19:29+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Verrous"
 
 #: apps.py:55
 msgid "Checkedout documents"
-msgstr ""
+msgstr "Documents vérifiés"
 
 #: events.py:9
 msgid "Document automatically checked in"
@@ -53,7 +54,7 @@ msgstr "Document déjà verrouillé."
 msgid "Document status"
 msgstr "Status du document"
 
-#: forms.py:37 models.py:37 views.py:84
+#: forms.py:37 models.py:41 views.py:84
 msgid "User"
 msgstr "Utilisateur"
 
@@ -97,47 +98,47 @@ msgstr "Verrouillé"
 msgid "Checked in/available"
 msgstr "Déverrouillé/disponible"
 
-#: models.py:27 models.py:92
+#: models.py:28 models.py:98
 msgid "Document"
 msgstr "Document"
 
-#: models.py:29
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Date et heure du verrouillage"
 
-#: models.py:33
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Durée en minutes pendant laquelle le document doit être verrouillé."
 
-#: models.py:35
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Date et heure de l'expiration du verrou"
 
-#: models.py:41
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Ne pas autoriser l'import d'une nouvelle version de ce document."
 
-#: models.py:43
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Empêcher l'import d'une nouvelle version"
 
-#: models.py:54
+#: models.py:59
 msgid "Check out expiration date and time must be in the future."
 msgstr "La date et l'heure d'expiration du verrou doit se situer dans le futur."
 
-#: models.py:87 permissions.py:7
+#: models.py:92 permissions.py:7
 msgid "Document checkout"
 msgstr "Verrouillage du document"
 
-#: models.py:88
+#: models.py:93
 msgid "Document checkouts"
 msgstr "Verrouillages du document"
 
-#: models.py:97
+#: models.py:104
 msgid "New version block"
 msgstr "Bloc de la nouvelle version"
 
-#: models.py:98
+#: models.py:105
 msgid "New version blocks"
 msgstr "Blocs de la nouvelle version"
 
@@ -159,11 +160,11 @@ msgstr "Afficher la vue détaillée"
 
 #: queues.py:8
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Coûts périodiques"
 
 #: queues.py:12
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Vérifier les paiements expirés"
 
 #: views.py:53
 #, python-format

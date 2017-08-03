@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-07-24 20:16+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,15 +38,15 @@ msgstr "Documents"
 
 #: links.py:24 links.py:34
 msgid "Remove from folders"
-msgstr ""
+msgstr "Supprimer des dossiers"
 
 #: links.py:27
 msgid "Add to a folders"
-msgstr ""
+msgstr "Ajouter à un dossier"
 
 #: links.py:31
 msgid "Add to folders"
-msgstr ""
+msgstr "Ajouter aux dossiers"
 
 #: links.py:42 views.py:37
 msgid "Create folder"
@@ -61,7 +62,7 @@ msgstr "Modifier"
 
 #: links.py:53
 msgid "All"
-msgstr ""
+msgstr "Tout"
 
 #: models.py:18
 msgid "Label"
@@ -134,12 +135,12 @@ msgstr "Dossiers contenant le document: %s"
 #: views.py:127
 #, python-format
 msgid "Add to folder request performed on %(count)d document"
-msgstr ""
+msgstr "Ajouter à la demande de dossier effectuée sur %(count)d document"
 
 #: views.py:130
 #, python-format
 msgid "Add to folder request performed on %(count)d documents"
-msgstr ""
+msgstr "Ajouter à la demande de dossier effectuée sur %(count)d documents"
 
 #: views.py:137
 msgid "Add"
@@ -148,17 +149,17 @@ msgstr "Ajouter"
 #: views.py:139
 msgid "Add document to folders"
 msgid_plural "Add documents to folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ajouter un document aux dossiers"
+msgstr[1] "Ajouter des documents aux dossiers"
 
 #: views.py:150
 #, python-format
 msgid "Add document \"%s\" to folders"
-msgstr ""
+msgstr "Ajouter le document \"%s\" aux dossiers"
 
 #: views.py:161
 msgid "Folders to which the selected documents will be added."
-msgstr ""
+msgstr "Les dossiers auxquels les documents sélectionnés seront ajoutés."
 
 #: views.py:190
 #, python-format
@@ -173,12 +174,12 @@ msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 #: views.py:212
 #, python-format
 msgid "Remove from folder request performed on %(count)d document"
-msgstr ""
+msgstr "Supprimer de la demande de dossier effectuée sur %(count)d document"
 
 #: views.py:215
 #, python-format
 msgid "Remove from folder request performed on %(count)d documents"
-msgstr ""
+msgstr "Supprimer de la demande de dossier effectuée sur %(count)d documents"
 
 #: views.py:222
 msgid "Remove"
@@ -187,27 +188,27 @@ msgstr "Supprimer"
 #: views.py:224
 msgid "Remove document from folders"
 msgid_plural "Remove documents from folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer le document des dossiers"
+msgstr[1] "Supprimer les documents des dossiers"
 
 #: views.py:235
 #, python-format
 msgid "Remove document \"%s\" to folders"
-msgstr ""
+msgstr "Suppression du document \"%s\" des dossiers"
 
 #: views.py:246
 msgid "Folders from which the selected documents will be removed."
-msgstr ""
+msgstr "Dossiers à partir desquels les documents sélectionnés seront supprimés."
 
 #: views.py:273
 #, python-format
 msgid "Document: %(document)s is not in folder: %(folder)s."
-msgstr ""
+msgstr "Le document: %(document)s n'est pas dans le dossier: %(folder)s."
 
 #: views.py:282
 #, python-format
 msgid "Document: %(document)s removed from folder: %(folder)s."
-msgstr ""
+msgstr "Le document: %(document)s a été supprimé du dossier: %(folder)s."
 
 #~ msgid "Must provide at least one document."
 #~ msgstr "Must provide at least one document."

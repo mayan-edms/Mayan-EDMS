@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
 "PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -56,15 +56,15 @@ msgstr "Value of a metadata"
 msgid "Return the value of a specific document metadata"
 msgstr "Return the value of a specific document metadata"
 
-#: apps.py:158 forms.py:20 models.py:159
+#: apps.py:158 forms.py:20 models.py:162
 msgid "Value"
 msgstr "Value"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:209
+#: apps.py:162 forms.py:46 forms.py:185 models.py:213
 msgid "Required"
 msgstr "Required"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:207
+#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:211
 msgid "Metadata type"
 msgstr "Metadata type"
 
@@ -107,7 +107,7 @@ msgstr "Metadata types to be added to the selected documents."
 msgid " Available template context variables: "
 msgstr " Available template context variables: "
 
-#: forms.py:162 views.py:422
+#: forms.py:162 views.py:429
 msgid "Remove"
 msgstr "Remove"
 
@@ -141,7 +141,7 @@ msgstr "Edit metadata"
 msgid "Remove metadata"
 msgstr "Remove metadata"
 
-#: links.py:43 links.py:66 models.py:92 views.py:551
+#: links.py:43 links.py:66 models.py:92 views.py:560
 msgid "Metadata types"
 msgstr "Metadata types"
 
@@ -159,7 +159,7 @@ msgstr "Create new"
 msgid "Delete"
 msgstr "Delete"
 
-#: links.py:61 views.py:252
+#: links.py:61 views.py:256
 msgid "Edit"
 msgstr "Edit"
 
@@ -223,35 +223,35 @@ msgstr "Parser"
 msgid "Value is not one of the provided options."
 msgstr "Value is not one of the provided options."
 
-#: models.py:154
+#: models.py:155
 msgid "Document"
 msgstr "Document"
 
-#: models.py:156
+#: models.py:158
 msgid "Type"
 msgstr "Type"
 
-#: models.py:168
+#: models.py:171
 msgid "Metadata type is required for this document type."
 msgstr "Metadata type is required for this document type."
 
-#: models.py:176
+#: models.py:179
 msgid "Metadata type is not valid for this document type."
 msgstr "Metadata type is not valid for this document type."
 
-#: models.py:190 models.py:191
+#: models.py:193 models.py:194
 msgid "Document metadata"
 msgstr "Document metadata"
 
-#: models.py:204
+#: models.py:207
 msgid "Document type"
 msgstr "Document type"
 
-#: models.py:216
+#: models.py:220
 msgid "Document type metadata type options"
 msgstr "Document type metadata type options"
 
-#: models.py:217
+#: models.py:221
 msgid "Document type metadata types options"
 msgstr "Document type metadata types options"
 
@@ -317,7 +317,7 @@ msgstr "Metadata add request performed on %(count)d document"
 msgid "Metadata add request performed on %(count)d documents"
 msgstr "Metadata add request performed on %(count)d documents"
 
-#: views.py:59 views.py:215 views.py:385
+#: views.py:59 views.py:215 views.py:389
 msgid "Selected documents must be of the same type."
 msgstr "Selected documents must be of the same type."
 
@@ -369,54 +369,54 @@ msgstr "Metadata edit request performed on %(count)d document"
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "Metadata edit request performed on %(count)d documents"
 
-#: views.py:254
+#: views.py:258
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Edit document metadata"
 msgstr[1] "Edit documents metadata"
 
-#: views.py:265
+#: views.py:269
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Edit metadata for document: %s"
 
-#: views.py:320
+#: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "Error editing metadata for document: %(document)s; %(exception)s."
 
-#: views.py:331
+#: views.py:335
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadata for document %s edited successfully."
 
-#: views.py:355
+#: views.py:359
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metadata for document: %s"
 
-#: views.py:367
+#: views.py:371
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "Metadata remove request performed on %(count)d document"
 
-#: views.py:370
+#: views.py:374
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "Metadata remove request performed on %(count)d documents"
 
-#: views.py:424
+#: views.py:431
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Remove metadata types from the document"
 msgstr[1] "Remove metadata types from the documents"
 
-#: views.py:435
+#: views.py:442
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Remove metadata types from the document: %s"
 
-#: views.py:482
+#: views.py:491
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
@@ -425,7 +425,7 @@ msgstr ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 
-#: views.py:492
+#: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
@@ -434,43 +434,43 @@ msgstr ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 
-#: views.py:503
+#: views.py:512
 msgid "Create metadata type"
 msgstr "Create metadata type"
 
-#: views.py:519
+#: views.py:528
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Delete the metadata type: %s?"
 
-#: views.py:532
+#: views.py:541
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Edit metadata type: %s"
 
-#: views.py:546
+#: views.py:555
 msgid "Internal name"
 msgstr "Internal name"
 
-#: views.py:569
+#: views.py:578
 #, fuzzy, python-format
 #| msgid "Error updating document indexes; %s"
 msgid "Error updating relationship; %s"
 msgstr "Error updating document indexes; %s"
 
-#: views.py:573
+#: views.py:582
 #, fuzzy
 #| msgid "Document indexes updated successfully."
 msgid "Relationships updated successfully"
 msgstr "Document indexes updated successfully."
 
-#: views.py:588
+#: views.py:597
 #, fuzzy, python-format
 #| msgid "Optional metadata types for document type: %s"
 msgid "Metadata types for document type: %s"
 msgstr "Optional metadata types for document type: %s"
 
-#: views.py:621
+#: views.py:630
 #, fuzzy, python-format
 #| msgid "Document type metadata type options"
 msgid "Document types for metadata type: %s"

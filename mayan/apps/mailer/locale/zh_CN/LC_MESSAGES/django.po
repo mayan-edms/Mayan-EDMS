@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2017-07-15 03:49+0000\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:36
+#: apps.py:38
 msgid "Mailer"
 msgstr ""
 
-#: apps.py:51
+#: apps.py:53
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:54 models.py:21 models.py:120
+#: apps.py:56 models.py:21 models.py:121
 msgid "Message"
 msgstr ""
 
-#: apps.py:57 apps.py:72 models.py:33
+#: apps.py:59 apps.py:74 models.py:33
 msgid "Label"
 msgstr ""
 
-#: apps.py:60
+#: apps.py:62
 msgid "Default?"
 msgstr ""
 
-#: apps.py:66
+#: apps.py:68
 msgid "Enabled?"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "Django file based backend"
 msgstr ""
 
-#: models.py:18 models.py:117
+#: models.py:18 models.py:118
 msgid "Date time"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Backend data"
 msgstr ""
 
-#: models.py:53 models.py:114
+#: models.py:53 models.py:115
 msgid "User mailer"
 msgstr ""
 
@@ -256,11 +256,11 @@ msgstr ""
 msgid "Test email from Mayan EDMS"
 msgstr ""
 
-#: models.py:126
+#: models.py:127
 msgid "User mailer log entry"
 msgstr ""
 
-#: models.py:127
+#: models.py:128
 msgid "User mailer log entries"
 msgstr ""
 
@@ -282,23 +282,28 @@ msgid "View system mailing error log"
 msgstr ""
 
 #: permissions.py:19
-msgid "Create an user mailer"
+#| msgid "Mailing"
+msgid "Create a mailing profile"
 msgstr ""
 
 #: permissions.py:22
-msgid "Delete an user mailer"
+#| msgid "Mailing"
+msgid "Delete a mailing profile"
 msgstr ""
 
 #: permissions.py:25
-msgid "Edit an user mailer"
+#| msgid "Mailing"
+msgid "Edit a mailing profile"
 msgstr ""
 
 #: permissions.py:28
-msgid "View an user mailer"
+#| msgid "Mailing"
+msgid "View a mailing profile"
 msgstr ""
 
 #: permissions.py:31
-msgid "Use an user mailer"
+#| msgid "Mailing"
+msgid "Use a mailing profile"
 msgstr ""
 
 #: queues.py:12

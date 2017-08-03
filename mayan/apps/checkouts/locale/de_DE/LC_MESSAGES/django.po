@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -53,7 +53,7 @@ msgstr "Dokument bereits ausgebucht"
 msgid "Document status"
 msgstr "Dokumentenstatus"
 
-#: forms.py:37 models.py:37 views.py:84
+#: forms.py:37 models.py:41 views.py:84
 msgid "User"
 msgstr "Benutzer"
 
@@ -97,47 +97,47 @@ msgstr "Ausgebucht"
 msgid "Checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:27 models.py:92
+#: models.py:28 models.py:98
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:29
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Ausbuchungszeit"
 
-#: models.py:33
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Zeitdauer, die das Dokument ausgebucht bleiben soll."
 
-#: models.py:35
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Ausbuchungsende"
 
-#: models.py:41
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Hochladen neuer Versionen dieses Dokuments nicht erlauben."
 
-#: models.py:43
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen sperren"
 
-#: models.py:54
+#: models.py:59
 msgid "Check out expiration date and time must be in the future."
 msgstr "Ausbuchungsende muss in der Zukunft liegen."
 
-#: models.py:87 permissions.py:7
+#: models.py:92 permissions.py:7
 msgid "Document checkout"
 msgstr "Ausbuchung"
 
-#: models.py:88
+#: models.py:93
 msgid "Document checkouts"
 msgstr "Ausbuchungen"
 
-#: models.py:97
+#: models.py:104
 msgid "New version block"
 msgstr "Akutialisierungsschutz"
 
-#: models.py:98
+#: models.py:105
 msgid "New version blocks"
 msgstr "Aktualisierungsschutz"
 

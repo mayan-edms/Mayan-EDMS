@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-07-24 19:52+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,17 +29,17 @@ msgstr "Recherche dynamique"
 
 #: classes.py:27
 msgid "No search model matching the query"
-msgstr ""
+msgstr "Aucun modèle de recherche correspondant à la requête"
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Correspond à tous"
 
 #: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
+msgstr "Lorsqu'il est vérifié, seuls les résultats correspondant à tous les champs seront renvoyés. Lorsque les résultats non vérifiés qui correspondent à au moins un champ seront retournés."
 
 #: forms.py:29
 msgid "Search terms"
@@ -63,12 +64,12 @@ msgstr "Nombre maximum de résultats de recherche à traiter et afficher."
 #: views.py:25
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Résultats de recherche pour: %s"
 
 #: views.py:65
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Recherche pour: %s"
 
 #~ msgid "Query"
 #~ msgstr "query"

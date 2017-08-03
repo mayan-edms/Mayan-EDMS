@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -32,11 +32,11 @@ msgstr "برچسب"
 msgid "Dynamic label"
 msgstr ""
 
-#: apps.py:69 apps.py:74 models.py:28 models.py:129
+#: apps.py:69 apps.py:74 models.py:28 models.py:130
 msgid "Enabled"
 msgstr "فعال شده"
 
-#: forms.py:36 models.py:114
+#: forms.py:36 models.py:115
 msgid "Foreign document attribute"
 msgstr "مختصات سند خارجی"
 
@@ -141,7 +141,7 @@ msgstr "موجود در عبارات منظم"
 msgid "is in regular expression (case insensitive)"
 msgstr "موجود در عبارات منظم  (case insensitive)"
 
-#: models.py:22 models.py:119
+#: models.py:22 models.py:120
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
@@ -157,39 +157,39 @@ msgstr ""
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "این لینک هوشمند برای نوع سند منتخب مجاز نیست"
 
-#: models.py:93 models.py:105
+#: models.py:93 models.py:106
 msgid "Smart link"
 msgstr "پیوند هوشمند"
 
-#: models.py:109
+#: models.py:110
 msgid "The inclusion is ignored for the first item."
 msgstr "ورود اولین آیتم در نطر گرفته نشد."
 
-#: models.py:113
+#: models.py:114
 msgid "This represents the metadata of all other documents."
 msgstr "این مورد نشانگر متا داده تمامی اسناد می باشد."
 
-#: models.py:123
+#: models.py:124
 msgid "Expression"
 msgstr "عبارت"
 
-#: models.py:126
+#: models.py:127
 msgid "Inverts the logic of the operator."
 msgstr "منطق عملگر را برعکس میکند."
 
-#: models.py:127
+#: models.py:128
 msgid "Negated"
 msgstr "منفی شده"
 
-#: models.py:134
+#: models.py:135
 msgid "not"
 msgstr "نه "
 
-#: models.py:139
+#: models.py:140
 msgid "Link condition"
 msgstr "شرط پیوند"
 
-#: models.py:140
+#: models.py:141
 msgid "Link conditions"
 msgstr "شرایط پیوند"
 

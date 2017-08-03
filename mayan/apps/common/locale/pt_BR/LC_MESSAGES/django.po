@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:75 settings.py:11
+#: apps.py:76 settings.py:11
 msgid "Common"
 msgstr "Comúm"
 
-#: apps.py:80
+#: apps.py:81
 #| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anônimo"
@@ -92,7 +92,7 @@ msgstr "%(object)s atualizado com sucesso."
 msgid "About this"
 msgstr "Sobre isso"
 
-#: links.py:12 views.py:51
+#: links.py:12 views.py:52
 msgid "Check for updates"
 msgstr ""
 
@@ -128,11 +128,11 @@ msgstr "Filtro de dados"
 msgid "Forum"
 msgstr "Fórum"
 
-#: links.py:47 views.py:190
+#: links.py:47 views.py:191
 msgid "License"
 msgstr "Licença"
 
-#: links.py:50 views.py:204
+#: links.py:50 views.py:205
 msgid "Other packages licenses"
 msgstr "Licenças de outros pacotes"
 
@@ -144,7 +144,7 @@ msgstr "Configurações"
 msgid "Support"
 msgstr "Suporte"
 
-#: links.py:61 queues.py:10 views.py:234
+#: links.py:61 queues.py:10 views.py:235
 msgid "Tools"
 msgstr "Ferramentas"
 
@@ -168,17 +168,17 @@ msgstr ""
 msgid "User"
 msgstr "Usuário"
 
-#: mixins.py:84
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operação executada em %(count)d objeto"
 
-#: mixins.py:85
+#: mixins.py:86
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operação executada em %(count)d objetos"
 
-#: mixins.py:245
+#: mixins.py:246
 msgid "Object"
 msgstr "Objeto"
 
@@ -264,53 +264,53 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:48
+#: views.py:49
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:65
+#: views.py:66
 msgid "Current user details"
 msgstr "Detalhes do usuário atual"
 
-#: views.py:70
+#: views.py:71
 msgid "Edit current user details"
 msgstr "Editar detalhes do usuário atual"
 
-#: views.py:90
+#: views.py:91
 msgid "Current user locale profile details"
 msgstr "Detalhes do perfil de localidade do usuário atual"
 
-#: views.py:97
+#: views.py:98
 msgid "Edit current user locale profile details"
 msgstr "Editar detalhes do perfil de localização do usuário atual"
 
-#: views.py:153
+#: views.py:154
 msgid "Filter selection"
 msgstr "Seleção de filtro"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Resultados para o filtro: %s"
 
-#: views.py:176
+#: views.py:177
 msgid "Filter not found"
 msgstr "Filtro não encontrado"
 
-#: views.py:217
+#: views.py:218
 msgid "Setup items"
 msgstr "Itens da Configuração"
 
-#: views.py:261
+#: views.py:262
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:269
+#: views.py:270
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
 

@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2017-07-15 03:49+0000\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -23,108 +23,109 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:92 apps.py:237 apps.py:486 menus.py:8 models.py:230
+#: apps.py:94 apps.py:244 apps.py:493 menus.py:8 models.py:230
 #: permissions.py:7 queues.py:18 settings.py:13
 msgid "Documents"
 msgstr "Dokumente"
 
-#: apps.py:116
+#: apps.py:118
 msgid "New pages this month"
 msgstr "Neue Seiten in diesem Monat"
 
-#: apps.py:125
+#: apps.py:127
 msgid "New documents this month"
 msgstr "Neue Dokumente in diesem Monat"
 
-#: apps.py:134
+#: apps.py:136
 msgid "Total documents"
 msgstr "Alle Dokumente"
 
-#: apps.py:140 links.py:281 links.py:286 views/document_type_views.py:52
+#: apps.py:142 links.py:281 links.py:286 permissions.py:56
+#: views/document_type_views.py:52
 msgid "Document types"
 msgstr "Dokumententypen"
 
-#: apps.py:146 views/document_views.py:82
+#: apps.py:148 views/document_views.py:82
 msgid "Documents in trash"
 msgstr "Dokumente im Papierkorb"
 
-#: apps.py:151
+#: apps.py:153
 msgid "Create a document type"
 msgstr "Dokumententyp erstellen"
 
-#: apps.py:153
+#: apps.py:155
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert. "
 
-#: apps.py:160 models.py:66 models.py:158 models.py:655 search.py:21
+#: apps.py:162 models.py:66 models.py:158 models.py:657 search.py:21
 #: search.py:42
 msgid "Label"
 msgstr "Bezeichner"
 
-#: apps.py:165
+#: apps.py:167
 msgid "The MIME type of any of the versions of a document"
 msgstr "Der MIME-Typ der jeweiligen Dokumentenversion"
 
-#: apps.py:166 apps.py:268 search.py:19 search.py:39
+#: apps.py:168 apps.py:275 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "MIME Typ"
 
-#: apps.py:208 apps.py:218 apps.py:225 apps.py:249 apps.py:280
+#: apps.py:215 apps.py:225 apps.py:232 apps.py:256 apps.py:287
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: apps.py:214 apps.py:232 apps.py:256
+#: apps.py:221 apps.py:239 apps.py:263
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:244 models.py:657
+#: apps.py:251 models.py:659
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: apps.py:259
+#: apps.py:266
 msgid "Date time trashed"
 msgstr "Zeitpunkt der Löschung"
 
-#: apps.py:264
+#: apps.py:271
 msgid "Time and date"
 msgstr "Zeit und Datum"
 
-#: apps.py:272
+#: apps.py:279
 msgid "Encoding"
 msgstr "Kodierung"
 
-#: apps.py:276 models.py:372
+#: apps.py:283 models.py:373
 msgid "Comment"
 msgstr "Kommentar"
 
-#: apps.py:286 links.py:294 views/document_views.py:790
+#: apps.py:293 links.py:294 views/document_views.py:790
 #| msgid "Find duplicates"
 msgid "Duplicates"
 msgstr ""
 
-#: apps.py:489
+#: apps.py:496
 msgid "New documents per month"
 msgstr "Neue Dokumente pro Monat"
 
-#: apps.py:496
+#: apps.py:503
 msgid "New document versions per month"
 msgstr "Neue Dokumentenversionen pro Monat"
 
-#: apps.py:503
+#: apps.py:510
 msgid "New document pages per month"
 msgstr "Neue Dokumentenseiten pro Monat"
 
-#: apps.py:510
+#: apps.py:517
 msgid "Total documents at each month"
 msgstr "Summe der Dokumente im Monat"
 
-#: apps.py:517
+#: apps.py:524
 msgid "Total document versions at each month"
 msgstr "Summe der Dokumentenversionen im Monat"
 
-#: apps.py:524
+#: apps.py:531
 msgid "Total document pages at each month"
 msgstr "Summe der Dokumentenseiten im Monat"
 
@@ -209,7 +210,7 @@ msgstr "Im Dateispeicher"
 msgid "File path in storage"
 msgstr "Pfad im Dateispeicher"
 
-#: forms.py:150 models.py:388 search.py:24 search.py:48
+#: forms.py:150 models.py:389 search.py:24 search.py:48
 msgid "Checksum"
 msgstr "Prüfsumme"
 
@@ -217,7 +218,7 @@ msgstr "Prüfsumme"
 msgid "Pages"
 msgstr "Seiten"
 
-#: forms.py:179 models.py:106 models.py:154 models.py:652 search.py:16
+#: forms.py:179 models.py:106 models.py:154 models.py:654 search.py:16
 #: search.py:35
 msgid "Document type"
 msgstr "Dokumententyp"
@@ -313,7 +314,7 @@ msgstr "Version herunterladen"
 msgid "All documents"
 msgstr "Alle Dokumente"
 
-#: links.py:155 models.py:898 views/document_views.py:392
+#: links.py:155 models.py:902 views/document_views.py:392
 msgid "Recent documents"
 msgstr "Letzte Dokumente"
 
@@ -351,7 +352,7 @@ msgstr "Vorherige Seite"
 msgid "Next page"
 msgstr "Nächste Seite"
 
-#: links.py:206 models.py:229 models.py:366 models.py:880 models.py:904
+#: links.py:206 models.py:229 models.py:367 models.py:884 models.py:909
 msgid "Document"
 msgstr "Dokument"
 
@@ -391,11 +392,11 @@ msgstr "Bearbeiten"
 msgid "Add quick label to document type"
 msgstr "Schnellbezeichner zu Dokumententyp hinzufügen"
 
-#: links.py:277 models.py:663
+#: links.py:277 models.py:665
 msgid "Quick labels"
 msgstr "Schnellbezeichner"
 
-#: links.py:289 models.py:907 models.py:920 views/document_views.py:798
+#: links.py:289 models.py:912 models.py:925 views/document_views.py:798
 msgid "Duplicated documents"
 msgstr "Duplikate"
 
@@ -452,7 +453,7 @@ msgstr "Name des Dokuments"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: models.py:164 models.py:910
+#: models.py:164 models.py:915
 msgid "Added"
 msgstr "Hinzugefügt"
 
@@ -480,64 +481,64 @@ msgstr "Inkomplett"
 msgid "Document stub, id: %d"
 msgstr "Fragment, ID: %d"
 
-#: models.py:369
+#: models.py:370
 msgid "Timestamp"
 msgstr "Zeitstempel"
 
-#: models.py:378
+#: models.py:379
 msgid "File"
 msgstr "Datei"
 
-#: models.py:460 models.py:461 models.py:676
+#: models.py:394 models.py:395 models.py:678
 msgid "Document version"
 msgstr "Dokumentenversion"
 
-#: models.py:662
+#: models.py:664
 msgid "Quick label"
 msgstr "Schnellbezeichner"
 
-#: models.py:680
+#: models.py:682
 msgid "Page number"
 msgstr "Seitennummer"
 
-#: models.py:685
+#: models.py:687
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Seite %(page_num)d von %(total_pages)d des Dokuments %(document)s"
 
-#: models.py:701 models.py:849 models.py:866
+#: models.py:703 models.py:851 models.py:868
 msgid "Document page"
 msgstr "Dokumentenseite"
 
-#: models.py:702 models.py:867
+#: models.py:704 models.py:869
 msgid "Document pages"
 msgstr "Dokumentenseiten"
 
-#: models.py:851
+#: models.py:853
 msgid "Filename"
 msgstr "Dateiname"
 
-#: models.py:854
+#: models.py:856
 msgid "Document page cached image"
 msgstr "Zwischengespeichertes Bild für Dokumentenseite"
 
-#: models.py:855
+#: models.py:857
 msgid "Document page cached images"
 msgstr "Zwischengespeicherte Bilder für Dokumentenseite"
 
-#: models.py:877
+#: models.py:880
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:883
+#: models.py:887
 msgid "Accessed"
 msgstr "Letzter Zugriff"
 
-#: models.py:897
+#: models.py:901
 msgid "Recent document"
 msgstr "Letztes Dokument"
 
-#: models.py:919
+#: models.py:924
 #| msgid "Duplicated documents"
 msgid "Duplicated document"
 msgstr ""
@@ -595,23 +596,19 @@ msgstr ""
 msgid "View documents"
 msgstr "Dokumente anzeigen"
 
-#: permissions.py:55
-msgid "Documents setup"
-msgstr "Dokumententypen"
-
-#: permissions.py:58
+#: permissions.py:59
 msgid "Create document types"
 msgstr "Dokumententypen erstellen"
 
-#: permissions.py:61
+#: permissions.py:62
 msgid "Delete document types"
 msgstr "Dokumententypen löschen"
 
-#: permissions.py:64
+#: permissions.py:65
 msgid "Edit document types"
 msgstr "Dokumententypen bearbeiten"
 
-#: permissions.py:67
+#: permissions.py:68
 msgid "View document types"
 msgstr "Dokumententypen anzeigen"
 
@@ -986,6 +983,9 @@ msgstr "Anklickbares Bild"
 #: widgets.py:253
 msgid "Document page image"
 msgstr "Dokumentenseitenbild"
+
+#~ msgid "Documents setup"
+#~ msgstr "Documents setup"
 
 #~ msgid "New version block"
 #~ msgstr "Version update"

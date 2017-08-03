@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2017-07-15 03:55+0000\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -21,27 +21,27 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36
+#: apps.py:38
 msgid "Mailer"
 msgstr "Correspondencia"
 
-#: apps.py:51
+#: apps.py:53
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:54 models.py:21 models.py:120
+#: apps.py:56 models.py:21 models.py:121
 msgid "Message"
 msgstr "Mensaje"
 
-#: apps.py:57 apps.py:72 models.py:33
+#: apps.py:59 apps.py:74 models.py:33
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:60
+#: apps.py:62
 msgid "Default?"
 msgstr "¿Por defecto?"
 
-#: apps.py:66
+#: apps.py:68
 msgid "Enabled?"
 msgstr "¿Habilitado?"
 
@@ -209,7 +209,7 @@ msgstr "Ruta de archivo"
 msgid "Django file based backend"
 msgstr "Backend de Django basado en archivos"
 
-#: models.py:18 models.py:117
+#: models.py:18 models.py:118
 msgid "Date time"
 msgstr "Fecha y hora"
 
@@ -247,7 +247,7 @@ msgstr "Ruta del backend"
 msgid "Backend data"
 msgstr "Datos del backend"
 
-#: models.py:53 models.py:114
+#: models.py:53 models.py:115
 msgid "User mailer"
 msgstr "Correo del usuario"
 
@@ -259,11 +259,11 @@ msgstr "Correos de usuarios"
 msgid "Test email from Mayan EDMS"
 msgstr "Correo electrónico de prueba de Mayan EDMS"
 
-#: models.py:126
+#: models.py:127
 msgid "User mailer log entry"
 msgstr "Entrada del registro de correo del usuario"
 
-#: models.py:127
+#: models.py:128
 msgid "User mailer log entries"
 msgstr "Entradas del registro de correo del usuario"
 
@@ -285,24 +285,29 @@ msgid "View system mailing error log"
 msgstr "Ver registro de errores de correo del sistema"
 
 #: permissions.py:19
-msgid "Create an user mailer"
-msgstr "Crear un perfil de correo"
+#| msgid "Mailing"
+msgid "Create a mailing profile"
+msgstr ""
 
 #: permissions.py:22
-msgid "Delete an user mailer"
-msgstr "Eliminar un perfil de correo"
+#| msgid "Mailing"
+msgid "Delete a mailing profile"
+msgstr ""
 
 #: permissions.py:25
-msgid "Edit an user mailer"
-msgstr "Editar un perfil de correo"
+#| msgid "Mailing"
+msgid "Edit a mailing profile"
+msgstr ""
 
 #: permissions.py:28
-msgid "View an user mailer"
-msgstr "Ver un perfil de correo"
+#| msgid "Mailing"
+msgid "View a mailing profile"
+msgstr ""
 
 #: permissions.py:31
-msgid "Use an user mailer"
-msgstr "Utilizar un perfil de correo"
+#| msgid "Mailing"
+msgid "Use a mailing profile"
+msgstr ""
 
 #: queues.py:12
 msgid "Send document"

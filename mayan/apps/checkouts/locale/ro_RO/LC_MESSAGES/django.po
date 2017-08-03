@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -51,7 +51,7 @@ msgstr "Document deja aprobat."
 msgid "Document status"
 msgstr ""
 
-#: forms.py:37 models.py:37 views.py:84
+#: forms.py:37 models.py:41 views.py:84
 msgid "User"
 msgstr "utilizator"
 
@@ -95,47 +95,47 @@ msgstr ""
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:27 models.py:92
+#: models.py:28 models.py:98
 msgid "Document"
 msgstr ""
 
-#: models.py:29
+#: models.py:31
 msgid "Check out date and time"
 msgstr ""
 
-#: models.py:33
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Total timp alocat pentru a deține documentul pentru aprobare în minute."
 
-#: models.py:35
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Verifică data şi ora de expirare"
 
-#: models.py:41
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Nu se permite actualizarea documentului."
 
-#: models.py:43
+#: models.py:48
 msgid "Block new version upload"
 msgstr ""
 
-#: models.py:54
+#: models.py:59
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:87 permissions.py:7
+#: models.py:92 permissions.py:7
 msgid "Document checkout"
 msgstr "Document aprobat"
 
-#: models.py:88
+#: models.py:93
 msgid "Document checkouts"
 msgstr ""
 
-#: models.py:97
+#: models.py:104
 msgid "New version block"
 msgstr ""
 
-#: models.py:98
+#: models.py:105
 msgid "New version blocks"
 msgstr ""
 

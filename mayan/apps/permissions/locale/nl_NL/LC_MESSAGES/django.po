@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
-"PO-Revision-Date: 2017-04-21 16:26+0000\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:77 permissions.py:7
 msgid "Permissions"
 msgstr "Permissies"
 
@@ -73,7 +73,7 @@ msgstr "Naam"
 msgid "Permission"
 msgstr "Permissies"
 
-#: models.py:74
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr "Label"
 
@@ -109,6 +109,11 @@ msgstr "permissies toestaan"
 msgid "Revoke permissions"
 msgstr "permissies intrekken"
 
+#: search.py:20
+#| msgid "Groups"
+msgid "Group name"
+msgstr ""
+
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
@@ -119,7 +124,7 @@ msgstr ""
 msgid "Comma separated list of permission primary keys to grant to this role."
 msgstr ""
 
-#: serializers.py:92
+#: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr ""

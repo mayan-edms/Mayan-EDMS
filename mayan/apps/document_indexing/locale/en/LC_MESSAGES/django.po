@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "None"
 msgstr "None"
 
-#: admin.py:26 apps.py:95 links.py:48 models.py:49
+#: admin.py:26 apps.py:103 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Document types"
 
@@ -39,25 +39,39 @@ msgstr "Label"
 msgid "Slug"
 msgstr "Slug"
 
-#: apps.py:84 apps.py:104 models.py:46 models.py:166
+#: apps.py:84 apps.py:112 models.py:46 models.py:169
 msgid "Enabled"
 msgstr "Enabled"
 
-#: apps.py:89 apps.py:119 apps.py:132
-msgid "Items"
-msgstr "Items"
+#: apps.py:89
+msgid "Total nodes"
+msgstr ""
 
-#: apps.py:100
+#: apps.py:95
+#, fuzzy
+#| msgid "Link documents"
+msgid "Total documents"
+msgstr "Link documents"
+
+#: apps.py:108
 msgid "Level"
 msgstr "Level"
 
-#: apps.py:108
+#: apps.py:116
 msgid "Has document links?"
 msgstr "Has document links?"
 
-#: apps.py:115 apps.py:126
+#: apps.py:123 apps.py:140
 msgid "Node"
 msgstr "Node"
+
+#: apps.py:127 apps.py:146
+msgid "Nodes"
+msgstr "nodes"
+
+#: apps.py:131 apps.py:150 models.py:291
+msgid "Documents"
+msgstr "Documents"
 
 #: forms.py:15
 msgid "Indexes to be queued for rebuilding."
@@ -109,7 +123,7 @@ msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Causes this index to be visible and updated when document data changes."
 
-#: models.py:56 models.py:150
+#: models.py:56 models.py:153
 msgid "Index"
 msgstr "Index"
 
@@ -121,7 +135,7 @@ msgstr "Index instance"
 msgid "Index instances"
 msgstr "Index instances"
 
-#: models.py:154
+#: models.py:157
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
@@ -129,15 +143,15 @@ msgstr ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
-#: models.py:158
+#: models.py:161
 msgid "Indexing expression"
 msgstr "Indexing expression"
 
-#: models.py:163
+#: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Causes this node to be visible and updated when document data changes."
 
-#: models.py:171
+#: models.py:174
 msgid ""
 "Check this option to have this node act as a container for documents and not "
 "as a parent for further nodes."
@@ -145,23 +159,23 @@ msgstr ""
 "Check this option to have this node act as a container for documents and not "
 "as a parent for further nodes."
 
-#: models.py:174
+#: models.py:177
 msgid "Link documents"
 msgstr "Link documents"
 
-#: models.py:178
+#: models.py:181
 msgid "Index node template"
 msgstr "Index node template"
 
-#: models.py:179
+#: models.py:182
 msgid "Indexes node template"
 msgstr "Indexes node template"
 
-#: models.py:183
+#: models.py:186
 msgid "Root"
 msgstr "Root"
 
-#: models.py:244
+#: models.py:247
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -170,31 +184,27 @@ msgstr ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 
-#: models.py:278
+#: models.py:284
 msgid "Index template node"
 msgstr "Index template node"
 
-#: models.py:281
+#: models.py:287
 msgid "Value"
 msgstr "Value"
 
-#: models.py:285
-msgid "Documents"
-msgstr "Documents"
-
-#: models.py:291
+#: models.py:297
 msgid "Index node instance"
 msgstr "Index node instance"
 
-#: models.py:292
+#: models.py:298
 msgid "Indexes node instances"
 msgstr "Indexes node instances"
 
-#: models.py:380
+#: models.py:402
 msgid "Document index node instance"
 msgstr "Document index node instance"
 
-#: models.py:381
+#: models.py:403
 msgid "Document indexes node instances"
 msgstr "Document indexes node instances"
 
@@ -300,6 +310,9 @@ msgstr "Indexes nodes containing document: %s"
 msgid "Index rebuild queued successfully."
 msgstr "Index rebuild queued successfully."
 
+#~ msgid "Items"
+#~ msgstr "Items"
+
 #~ msgid "On large databases this operation may take some time to execute."
 #~ msgstr "On large databases this operation may take some time to execute."
 
@@ -359,9 +372,6 @@ msgstr "Index rebuild queued successfully."
 
 #~ msgid "Are you sure you wish to rebuild all indexes?"
 #~ msgstr "Are you sure you wish to rebuild all indexes?"
-
-#~ msgid "Nodes"
-#~ msgstr "nodes"
 
 #~ msgid "Maximum suffix (%s) count reached."
 #~ msgstr "Maximum suffix (%s) count reached."

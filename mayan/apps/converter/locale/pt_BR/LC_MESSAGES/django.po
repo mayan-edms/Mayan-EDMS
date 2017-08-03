@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:20 permissions.py:7 settings.py:7
+#: apps.py:20 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Conversor"
 
@@ -39,12 +39,12 @@ msgstr "Transformação"
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: backends/python.py:164 backends/python.py:170
+#: backends/python.py:181 backends/python.py:187
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Exceção ao determinar o número de páginas do PDF; %s"
 
-#: backends/python.py:184
+#: backends/python.py:201
 #, python-format
 #| msgid "Exception determining PDF page count; %s"
 msgid "Exception determining page count using Pillow; %s"
@@ -59,51 +59,51 @@ msgstr "Não é um formato de arquivo de escritório."
 msgid "LibreOffice not installed or not found."
 msgstr ""
 
-#: classes.py:306
+#: classes.py:312
 msgid "Crop"
 msgstr "Recortar"
 
-#: classes.py:319
+#: classes.py:325
 msgid "Flip"
 msgstr "Giro"
 
-#: classes.py:330
+#: classes.py:336
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: classes.py:340
+#: classes.py:346
 msgid "Line art"
 msgstr ""
 
-#: classes.py:351
+#: classes.py:357
 msgid "Mirror"
 msgstr "Espelho"
 
-#: classes.py:362
+#: classes.py:368
 msgid "Resize"
 msgstr "Redimensionar"
 
-#: classes.py:389
+#: classes.py:395
 msgid "Rotate"
 msgstr "Rotacionar"
 
-#: classes.py:408
+#: classes.py:414
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 graus"
 
-#: classes.py:419
+#: classes.py:425
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 graus"
 
-#: classes.py:430
+#: classes.py:436
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 graus"
 
-#: classes.py:440
+#: classes.py:446
 msgid "Unsharp masking"
 msgstr "Unsharp mascaramento"
 
-#: classes.py:456
+#: classes.py:462
 msgid "Zoom"
 msgstr "Ampliar"
 
@@ -155,11 +155,11 @@ msgstr "Editar transformações"
 msgid "View existing transformations"
 msgstr "Visualizar transformações existentes"
 
-#: settings.py:10
+#: settings.py:15
 msgid "Graphics conversion backend to use."
 msgstr "Módulo de conversão de gráficos a ser usado."
 
-#: settings.py:17
+#: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
 msgstr ""
 

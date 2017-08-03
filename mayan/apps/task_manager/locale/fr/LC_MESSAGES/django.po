@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"POT-Creation-Date: 2017-08-03 01:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2017\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:23 links.py:11 permissions.py:7
 msgid "Task manager"
-msgstr ""
+msgstr "Gestionnaire de tâche"
 
 #: apps.py:29
 msgid "Label"
@@ -32,11 +32,11 @@ msgstr "Nom"
 
 #: apps.py:35
 msgid "Default queue?"
-msgstr ""
+msgstr "File d'attente par défaut ?"
 
 #: apps.py:41
 msgid "Is transient?"
-msgstr ""
+msgstr "Est-il transitoire?"
 
 #: apps.py:47
 msgid "Type"
@@ -44,15 +44,15 @@ msgstr "Type"
 
 #: apps.py:50
 msgid "Start time"
-msgstr ""
+msgstr "Heure de début"
 
 #: apps.py:53
 msgid "Host"
-msgstr "Hote"
+msgstr "Hôte"
 
 #: apps.py:57
 msgid "Acknowledged"
-msgstr ""
+msgstr "Reconnu"
 
 #: apps.py:63
 msgid "Arguments"
@@ -60,48 +60,48 @@ msgstr "Arguments"
 
 #: apps.py:67
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Arguments relatifs aux mots-clés"
 
 #: apps.py:71
 msgid "Worker process ID"
-msgstr ""
+msgstr "ID du processus de travail"
 
 #: links.py:15 views.py:15
 msgid "Background task queues"
-msgstr ""
+msgstr "Tâche de fond les files d'attente"
 
 #: links.py:19
 msgid "Active tasks"
-msgstr ""
+msgstr "Tâches actives"
 
 #: links.py:23
 msgid "Reserved tasks"
-msgstr ""
+msgstr "Tâches reservées"
 
 #: links.py:27
 msgid "Scheduled tasks"
-msgstr ""
+msgstr "Tâches planifiées"
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr ""
+msgstr "Visualiser les tâches"
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr ""
+msgstr "Tâches actives dans la file d'attente: %s"
 
 #: views.py:45
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr ""
+msgstr "Impossible de récupérer la liste des tâches; %s"
 
 #: views.py:55
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr ""
+msgstr "Tâches planifiées dans la file d'attente: %s"
 
 #: views.py:67
 #, python-format
 msgid "Reserved tasks in queue: %s"
-msgstr ""
+msgstr "Tâches réservées dans la file d'attente: %s"

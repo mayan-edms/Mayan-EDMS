@@ -6,16 +6,16 @@
 # Translators:
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"PO-Revision-Date: 2017-07-25 13:10+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -217,19 +217,19 @@ msgstr "Voir le détails des signatures du document"
 
 #: queues.py:11
 msgid "Verify key signatures"
-msgstr ""
+msgstr "Vérifier les signatures des clés"
 
 #: queues.py:15
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "Signature de clé non vérifiée"
 
 #: queues.py:19
 msgid "Verify document version"
-msgstr ""
+msgstr "Vérifier la version du document"
 
 #: queues.py:24
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Vérifier la signature incorporée manquante"
 
 #: views.py:61 views.py:156
 msgid "Passphrase is needed to unlock this key."

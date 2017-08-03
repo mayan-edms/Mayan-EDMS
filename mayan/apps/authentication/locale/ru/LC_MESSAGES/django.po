@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-03 01:22-0400\n"
 "PO-Revision-Date: 2017-07-15 03:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -65,10 +65,10 @@ msgid ""
 "logged in. Value is time in seconds."
 msgstr ""
 
-#: views.py:54
+#: views.py:59
 msgid "Current user password change"
 msgstr "Изменить пароль пользователя"
 
-#: views.py:68
+#: views.py:73
 msgid "Your password has been successfully changed."
 msgstr "Ваш пароль был изменен."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
 "PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
@@ -56,15 +56,15 @@ msgstr "Waarde van een metadata"
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:158 forms.py:20 models.py:159
+#: apps.py:158 forms.py:20 models.py:162
 msgid "Value"
 msgstr "Waarde"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:209
+#: apps.py:162 forms.py:46 forms.py:185 models.py:213
 msgid "Required"
 msgstr "Verplicht"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:207
+#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:211
 msgid "Metadata type"
 msgstr "Metadata type"
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid " Available template context variables: "
 msgstr ""
 
-#: forms.py:162 views.py:422
+#: forms.py:162 views.py:429
 msgid "Remove"
 msgstr "Verwijder"
 
@@ -140,7 +140,7 @@ msgstr "Bewerk metadata"
 msgid "Remove metadata"
 msgstr "Verwijder metadata"
 
-#: links.py:43 links.py:66 models.py:92 views.py:551
+#: links.py:43 links.py:66 models.py:92 views.py:560
 msgid "Metadata types"
 msgstr "Metadatasoorten"
 
@@ -157,7 +157,7 @@ msgstr "Maak nieuwe aan"
 msgid "Delete"
 msgstr "Verwijder"
 
-#: links.py:61 views.py:252
+#: links.py:61 views.py:256
 msgid "Edit"
 msgstr "bewerken"
 
@@ -212,35 +212,35 @@ msgstr ""
 msgid "Value is not one of the provided options."
 msgstr ""
 
-#: models.py:154
+#: models.py:155
 msgid "Document"
 msgstr "Document"
 
-#: models.py:156
+#: models.py:158
 msgid "Type"
 msgstr "Type"
 
-#: models.py:168
+#: models.py:171
 msgid "Metadata type is required for this document type."
 msgstr ""
 
-#: models.py:176
+#: models.py:179
 msgid "Metadata type is not valid for this document type."
 msgstr ""
 
-#: models.py:190 models.py:191
+#: models.py:193 models.py:194
 msgid "Document metadata"
 msgstr "Document metadata"
 
-#: models.py:204
+#: models.py:207
 msgid "Document type"
 msgstr "Documentsoort"
 
-#: models.py:216
+#: models.py:220
 msgid "Document type metadata type options"
 msgstr ""
 
-#: models.py:217
+#: models.py:221
 msgid "Document type metadata types options"
 msgstr ""
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "Metadata add request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:59 views.py:215 views.py:385
+#: views.py:59 views.py:215 views.py:389
 msgid "Selected documents must be of the same type."
 msgstr ""
 
@@ -355,103 +355,103 @@ msgstr ""
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:254
+#: views.py:258
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:265
+#: views.py:269
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr ""
 
-#: views.py:320
+#: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
 
-#: views.py:331
+#: views.py:335
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr ""
 
-#: views.py:355
+#: views.py:359
 #, python-format
 msgid "Metadata for document: %s"
 msgstr ""
 
-#: views.py:367
+#: views.py:371
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr ""
 
-#: views.py:370
+#: views.py:374
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:424
+#: views.py:431
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:435
+#: views.py:442
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr ""
 
-#: views.py:482
+#: views.py:491
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
 
-#: views.py:492
+#: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr ""
 
-#: views.py:503
+#: views.py:512
 msgid "Create metadata type"
 msgstr ""
 
-#: views.py:519
+#: views.py:528
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr ""
 
-#: views.py:532
+#: views.py:541
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr ""
 
-#: views.py:546
+#: views.py:555
 msgid "Internal name"
 msgstr ""
 
-#: views.py:569
+#: views.py:578
 #, python-format
 #| msgid "Error updating document indexes; %s"
 msgid "Error updating relationship; %s"
 msgstr ""
 
-#: views.py:573
+#: views.py:582
 #| msgid "Document indexes updated successfully."
 msgid "Relationships updated successfully"
 msgstr ""
 
-#: views.py:588
+#: views.py:597
 #, python-format
 #| msgid "Optional metadata types for document type: %s"
 msgid "Metadata types for document type: %s"
 msgstr ""
 
-#: views.py:621
+#: views.py:630
 #, python-format
 #| msgid "Document type metadata type options"
 msgid "Document types for metadata type: %s"

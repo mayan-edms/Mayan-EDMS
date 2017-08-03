@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
-"PO-Revision-Date: 2017-05-12 07:21+0000\n"
+"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:22 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:77 permissions.py:7
 msgid "Permissions"
 msgstr "مجوزها"
 
@@ -73,7 +73,7 @@ msgstr "نام"
 msgid "Permission"
 msgstr "مجوز"
 
-#: models.py:74
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr "برچسب"
 
@@ -109,6 +109,11 @@ msgstr "دادن مجوز"
 msgid "Revoke permissions"
 msgstr "لغو مجوز"
 
+#: search.py:20
+#| msgid "Groups"
+msgid "Group name"
+msgstr ""
+
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
@@ -119,7 +124,7 @@ msgstr ""
 msgid "Comma separated list of permission primary keys to grant to this role."
 msgstr ""
 
-#: serializers.py:92
+#: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr ""
