@@ -71,6 +71,13 @@ class CabinetsApp(MayanAppConfig):
             model=Cabinet, related='get_root',
         )
 
+        SourceColumn(
+            source=Document, label=_('Cabinets'),
+            func=lambda context: widget_document_cabinets(
+                document=context['object'], user=context['request'].user
+            ), order=1
+        )
+
         document_page_search.add_model_field(
             field='document_version__document__cabinets__label',
             label=_('Cabinets')
@@ -117,12 +124,5 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_list',
                 'cabinets:cabinet_add_document',
                 'cabinets:document_cabinet_remove'
-            )
-        )
-
-        SourceColumn(
-            source=Document, label=_('XCabinets'),
-            func=lambda context: widget_document_cabinets(
-                document=context['object'], user=context['request'].user
             )
         )
