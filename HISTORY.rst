@@ -1,6 +1,6 @@
 2.7 (2017-XX-XX)
 ================
-- Add workaround for PDF with IndirectObject as the 
+- Add workaround for PDF with IndirectObject as the
   rotation value. GitHub #261.
 - Add ACL list link with icon and use it for the document facet menu.
 - Fix mailing app permissions labels.
@@ -8,6 +8,9 @@
 - Improve mailer URL regex.
 - Add ordering support to the SourceColumn class. GitLab issue #417.
 - Shows the cabinets in the document list. GitLab #417 @corneliusludmann
+- Add workaround for pycountry versions without the bibliographical key.
+  GitHub issue #250.
+- Skip UUID migration on Oracle backends. GitHub issue #251.
 
 2.6.4 (2017-07-26)
 ==================

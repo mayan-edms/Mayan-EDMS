@@ -1,0 +1,87 @@
+=============================
+Mayan EDMS v2.7 release notes
+=============================
+
+Released: August xx, 2017
+
+What's new
+==========
+
+
+Other Changes
+-------------
+- Add workaround for PDF with IndirectObject as the
+  rotation value. GitHub #261.
+- Add ACL list link with icon and use it for the document facet menu.
+- Fix mailing app permissions labels.
+- Add ACLs link and ACLs permissions to the mailer profile model.
+- Improve mailer URL regex.
+- Add ordering support to the SourceColumn class. GitLab issue #417.
+- Shows the cabinets in the document list. GitLab #417 @corneliusludmann
+- Update the index information colums to show the
+  total number of documents and nodes contained in a level.
+- Add workaround for pycountry versions without the bibliographical key.
+  GitHub issue #250.
+- Skip UUID migration on Oracle backends. GitHub issue #251.
+
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitHub issue #250 <https://github.com/mayan-edms/mayan-edms/issues/250>`_ migrate fails on documents.0025_auto_20150718_0742
+* `GitHub issue #251 <https://github.com/mayan-edms/mayan-edms/issues/251>`_ migrate fails on documents.0032_auto_20160315_0537
+* `GitHub issue #261 <https://github.com/mayan-edms/mayan-edms/issues/261>`_ fix_orientation method causes document add to crash
+* `GitHub issue #263 <https://github.com/mayan-edms/mayan-edms/issues/263>`_ Typo in mayan/apps/ocr/migrations/0004_documenttypesettings.py
+* `GitLab issue #400 <https://gitlab.com/mayan-edms/mayan-edms/issues/400>`_ Django REST framework's BasicAuthentication doesn't work with Oauth2_proxy
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
