@@ -393,34 +393,39 @@ class Separator(Link):
 class SourceColumn(object):
     _registry = {}
 
+    @staticmethod
+    def sort(columns):
+        return sorted(columns, key=lambda x: x.order)
+
     @classmethod
     def get_for_source(cls, source):
         try:
-            return cls._registry[source]
+            return SourceColumn.sort(columns=cls._registry[source])
         except KeyError:
             try:
                 # Try it as a queryset
-                return cls._registry[source.model]
+                return SourceColumn.sort(columns=cls._registry[source.model])
             except AttributeError:
                 try:
                     # It seems to be an instance, try its class
-                    return cls._registry[source.__class__]
+                    return SourceColumn.sort(columns=cls._registry[source.__class__])
                 except KeyError:
                     try:
                         # Special case for queryset items produced from
                         # .defer() or .only() optimizations
-                        return cls._registry[source._meta.parents.items()[0][0]]
+                        return SourceColumn.sort(columns=cls._registry[source._meta.parents.items()[0][0]])
                     except (AttributeError, KeyError, IndexError):
                         return ()
         except TypeError:
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label, attribute=None, func=None):
+    def __init__(self, source, label, attribute=None, func=None, order=None):
         self.source = source
         self.label = label
         self.attribute = attribute
         self.func = func
+        self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
 
