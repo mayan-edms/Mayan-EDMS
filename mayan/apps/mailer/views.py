@@ -187,9 +187,6 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
     model = UserMailer
     object_permission = permission_user_mailer_edit
 
-    def form_valid(self, form):
-        return super(UserMailingEditView, self).form_valid(form)
-
     def get_extra_context(self):
         return {
             'title': _('Edit mailing profile: %s') % self.get_object(),
