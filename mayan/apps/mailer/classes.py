@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 logger = logging.getLogger(__name__)
 
 
-__ALL__ = ('MailerBackend',)
+__all__ = ('MailerBackend',)
 
 
 class MailerBackendMetaclass(type):
