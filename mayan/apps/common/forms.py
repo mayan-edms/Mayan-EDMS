@@ -88,6 +88,8 @@ class DynamicFormMixin(object):
     def __init__(self, *args, **kwargs):
         self.schema = kwargs.pop('schema')
         super(DynamicFormMixin, self).__init__(*args, **kwargs)
+        widgets = self.schema.get('widgets', {})
+
         for field in self.schema['fields']:
             field_class = import_string(field['class'])
             kwargs = {
@@ -96,13 +98,14 @@ class DynamicFormMixin(object):
                 'initial': field.get('default', None),
                 'help_text': field.get('help_text'),
             }
+            if widgets and field['name'] in widgets:
+                widget = widgets[field['name']]
+                kwargs['widget'] = import_string(
+                    widget['class']
+                )(**widget.get('kwargs', {}))
+
             kwargs.update(field.get('kwargs', {}))
             self.fields[field['name']] = field_class(**kwargs)
-
-        for field, widget in self.schema.get('widgets', {}).items():
-            self.fields[field].widget = import_string(
-                widget['class']
-            )(**widget.get('kwargs', {}))
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):
