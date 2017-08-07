@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.db.utils import IntegrityError
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -10,20 +10,24 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.views import (
     AssignRemoveView, ConfirmView, FormView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    SingleObjectDeleteView, SingleObjectDynamicFormCreateView,
+    SingleObjectDynamicFormEditView, SingleObjectEditView,
+    SingleObjectListView
 )
 from documents.models import Document
 from documents.views import DocumentListView
 from events.classes import Event
 from events.models import EventType
 
+from .classes import WorkflowAction
 from .forms import (
-    WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
-    WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
+    WorkflowActionSelectionForm, WorkflowForm, WorkflowInstanceTransitionForm,
+    WorkflowStateActionDynamicForm, WorkflowStateForm, WorkflowTransitionForm,
+    WorkflowTransitionTriggerEventRelationshipFormSet
 )
 from .models import (
-    Workflow, WorkflowInstance, WorkflowState, WorkflowTransition,
-    WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
+    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
+    WorkflowTransition, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
 )
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -221,6 +225,142 @@ class SetupWorkflowStateListView(SingleObjectListView):
 
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+
+class SetupWorkflowStateActionCreateView(SingleObjectDynamicFormCreateView):
+    form_class = WorkflowStateActionDynamicForm
+    object_permission = permission_workflow_edit
+
+    def get_class(self):
+        try:
+            return WorkflowAction.get(name=self.kwargs['class_path'])
+        except KeyError:
+            raise Http404(
+                '{} class not found'.format(self.kwargs['class_path'])
+            )
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow'),
+            'object': self.get_object(),
+            'title': _(
+                'Create a "%s" workflow action'
+            ) % self.get_class().label,
+            'workflow': self.get_object().workflow
+        }
+
+    def get_form_schema(self):
+        return self.get_class()().get_form_schema(request=self.request)
+
+    def get_instance_extra_data(self):
+        return {
+            'action_path': self.kwargs['class_path'],
+            'state': self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(WorkflowState, pk=self.kwargs['pk'])
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'document_states:setup_workflow_state_action_list',
+            args=(self.get_object().pk,)
+        )
+
+
+class SetupWorkflowStateActionDeleteView(SingleObjectDeleteView):
+    model = WorkflowStateAction
+    object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow_state', 'workflow'
+            ),
+            'object': self.get_object(),
+            'title': _('Delete workflow state action: %s') % self.get_object(),
+            'workflow': self.get_object().state.workflow,
+            'workflow_state': self.get_object().state,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'document_states:setup_workflow_state_action_list',
+            args=(self.get_object().state.pk,)
+        )
+
+
+class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
+    form_class = WorkflowStateActionDynamicForm
+    model = WorkflowStateAction
+    object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow_state', 'workflow'
+            ),
+            'object': self.get_object(),
+            'title': _('Edit workflow state action: %s') % self.get_object(),
+            'workflow': self.get_object().state.workflow,
+            'workflow_state': self.get_object().state,
+        }
+
+    def get_form_schema(self):
+        return self.get_object().get_class_instance().get_form_schema(
+            request=self.request
+        )
+
+
+class SetupWorkflowStateActionListView(SingleObjectListView):
+    object_permission = permission_workflow_edit
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'navigation_object_list': ('object', 'workflow'),
+            'object': self.get_workflow_state(),
+            'title': _(
+                'Actions for workflow state: %s'
+            ) % self.get_workflow_state(),
+            'workflow': self.get_workflow_state().workflow,
+        }
+
+    def get_form_schema(self):
+        return {'fields': self.get_class().fields}
+
+    def get_queryset(self):
+        return self.get_workflow_state().actions.all()
+
+    def get_workflow_state(self):
+        return get_object_or_404(WorkflowState, pk=self.kwargs['pk'])
+
+
+class SetupWorkflowStateActionSelectionView(FormView):
+    form_class = WorkflowActionSelectionForm
+    #TODO: access check via workflow edit perm
+
+    def form_valid(self, form):
+        klass = form.cleaned_data['klass']
+        return HttpResponseRedirect(
+            reverse(
+                'document_states:setup_workflow_state_action_create',
+                args=(self.get_object().pk, klass,),
+            )
+        )
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow'
+            ),
+            'object': self.get_object(),
+            'title': _('New workflow state action selection'),
+            'workflow': self.get_object().workflow,
+        }
+
+    def get_object(self):
+        return get_object_or_404(WorkflowState, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowStateCreateView(SingleObjectCreateView):

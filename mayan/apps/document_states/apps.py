@@ -18,7 +18,7 @@ from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
-from .classes import DocumentStateHelper
+from .classes import DocumentStateHelper, WorkflowAction
 from .handlers import (
     handler_index_document, handler_trigger_transition, launch_workflow
 )
@@ -26,9 +26,13 @@ from .links import (
     link_document_workflow_instance_list, link_setup_workflow_document_types,
     link_setup_workflow_create, link_setup_workflow_delete,
     link_setup_workflow_edit, link_setup_workflow_list,
-    link_setup_workflow_states, link_setup_workflow_state_create,
-    link_setup_workflow_state_delete, link_setup_workflow_state_edit,
-    link_setup_workflow_transitions, link_setup_workflow_transition_create,
+    link_setup_workflow_states, link_setup_workflow_state_action_delete,
+    link_setup_workflow_state_action_edit,
+    link_setup_workflow_state_action_list,
+    link_setup_workflow_state_action_selection,
+    link_setup_workflow_state_create, link_setup_workflow_state_delete,
+    link_setup_workflow_state_edit, link_setup_workflow_transitions,
+    link_setup_workflow_transition_create,
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
     link_tool_launch_all_workflows, link_workflow_instance_detail,
     link_workflow_instance_transition, link_workflow_document_list,
@@ -67,8 +71,11 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowInstanceLogEntry = self.get_model('WorkflowInstanceLogEntry')
         WorkflowRuntimeProxy = self.get_model('WorkflowRuntimeProxy')
         WorkflowState = self.get_model('WorkflowState')
+        WorkflowStateAction = self.get_model('WorkflowStateAction')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+
+        WorkflowAction.initialize()
 
         ModelAttribute(
             Document, 'workflow.< workflow internal name >.get_current_state',
@@ -158,6 +165,22 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
+            source=WorkflowStateAction, label=_('Label'), attribute='label'
+        )
+        SourceColumn(
+            source=WorkflowStateAction, label=_('Enabled?'),
+            func=lambda context: two_state_template(context['object'].enabled)
+        )
+        SourceColumn(
+            source=WorkflowStateAction, label=_('When?'),
+            attribute='get_when_display'
+        )
+        SourceColumn(
+            source=WorkflowStateAction, label=_('Action type'),
+            attribute='get_class_label'
+        )
+
+        SourceColumn(
             source=WorkflowTransition, label=_('Origin state'),
             attribute='origin_state'
         )
@@ -203,6 +226,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_workflow_state_edit,
+                link_setup_workflow_state_action_list,
                 link_setup_workflow_state_delete
             ), sources=(WorkflowState,)
         )
@@ -229,6 +253,13 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_state_document_list,
             ), sources=(WorkflowStateRuntimeProxy,)
         )
+        menu_object.bind_links(
+            links=(
+                link_setup_workflow_state_action_edit,
+                link_setup_workflow_state_action_delete,
+            ), sources=(WorkflowStateAction,)
+        )
+
         menu_secondary.bind_links(
             links=(link_setup_workflow_list, link_setup_workflow_create),
             sources=(
@@ -240,6 +271,12 @@ class DocumentStatesApp(MayanAppConfig):
             links=(link_workflow_list,),
             sources=(
                 WorkflowRuntimeProxy,
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_setup_workflow_state_action_selection,),
+            sources=(
+                WorkflowState,
             )
         )
         menu_setup.bind_links(links=(link_setup_workflow_list,))

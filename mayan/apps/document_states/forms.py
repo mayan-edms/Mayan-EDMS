@@ -1,16 +1,70 @@
 from __future__ import absolute_import, unicode_literals
 
+import json
+
 from django import forms
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Workflow, WorkflowState, WorkflowTransition
+from common.forms import DynamicModelForm
+
+from .classes import WorkflowAction
+from .models import (
+    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
+)
+
+
+class WorkflowActionSelectionForm(forms.Form):
+    klass = forms.ChoiceField(choices=(), label=_('Action'))
+
+    def __init__(self, *args, **kwargs):
+        super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)
+
+        self.fields['klass'].choices = [
+            (
+                key, klass.label
+            ) for key, klass in WorkflowAction.get_all().items()
+        ]
 
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
         fields = ('label', 'internal_name')
         model = Workflow
+
+
+class WorkflowStateActionDynamicForm(DynamicModelForm):
+    class Meta:
+        fields = ('label', 'when', 'enabled', 'action_data')
+        model = WorkflowStateAction
+        widgets = {'action_data': forms.widgets.HiddenInput}
+
+    def __init__(self, *args, **kwargs):
+        result = super(
+            WorkflowStateActionDynamicForm, self
+        ).__init__(*args, **kwargs)
+        if self.instance.action_data:
+            for key, value in json.loads(self.instance.action_data).items():
+                self.fields[key].initial = value
+
+        return result
+
+    def clean(self):
+        data = super(WorkflowStateActionDynamicForm, self).clean()
+
+        # Consolidate the dynamic fields into a single JSON field called
+        # 'action_data'.
+        action_data = {}
+
+        for field in self.schema['fields']:
+            action_data[field['name']] = data.pop(
+                field['name'], field.get('default', None)
+            )
+
+        # Flatten the queryset to a list of ids
+        action_data['tags'] = list(action_data['tags'].values_list('id', flat=True))
+        data['action_data'] = json.dumps(action_data)
+        return data
 
 
 class WorkflowStateForm(forms.ModelForm):

@@ -94,7 +94,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                tag.documents.add(instance)
+                tag.attach_to(instance)
                 messages.success(
                     self.request,
                     _(
@@ -299,7 +299,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                tag.documents.remove(instance)
+                tag.remove_from(instance)
                 messages.success(
                     self.request,
                     _(

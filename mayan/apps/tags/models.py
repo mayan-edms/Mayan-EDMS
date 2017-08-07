@@ -33,12 +33,18 @@ class Tag(models.Model):
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
 
+    def attach_to(self, document):
+        self.documents.add(document)
+
     def get_document_count(self, user):
         queryset = AccessControlList.objects.filter_by_access(
             permission_document_view, user, queryset=self.documents
         )
 
         return queryset.count()
+
+    def remove_from(self, document):
+        self.documents.remove(document)
 
 
 class DocumentTag(Tag):
