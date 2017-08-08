@@ -53,7 +53,10 @@ class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
 
     def get_document_queryset(self):
-        return Document.objects.defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
+        return Document.objects.defer(
+            'description', 'uuid', 'date_added', 'language', 'in_trash',
+            'deleted_date_time'
+        ).all()
 
     def get_extra_context(self):
         return {

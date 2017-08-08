@@ -24,8 +24,8 @@ from .generics import (  # NOQA
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDynamicFormCreateView,
-    SingleObjectDynamicFormEditView, SingleObjectEditView,
-    SingleObjectListView, SimpleView
+    SingleObjectDynamicFormEditView, SingleObjectDownloadView,
+    SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .menus import menu_tools, menu_setup
 from .utils import check_version
