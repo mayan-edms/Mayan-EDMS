@@ -36,8 +36,9 @@ from .links import (
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
     link_tool_launch_all_workflows, link_workflow_instance_detail,
     link_workflow_instance_transition, link_workflow_document_list,
-    link_workflow_list, link_workflow_state_document_list,
-    link_workflow_state_list, link_workflow_instance_transition_events
+    link_workflow_list, link_workflow_preview,
+    link_workflow_state_document_list, link_workflow_state_list,
+    link_workflow_instance_transition_events
 )
 from .permissions import permission_workflow_transition
 from .queues import *  # NOQA
@@ -220,7 +221,8 @@ class DocumentStatesApp(MayanAppConfig):
             links=(
                 link_setup_workflow_states, link_setup_workflow_transitions,
                 link_setup_workflow_document_types, link_setup_workflow_edit,
-                link_acl_list, link_setup_workflow_delete
+                link_acl_list, link_workflow_preview,
+                link_setup_workflow_delete
             ), sources=(Workflow,)
         )
         menu_object.bind_links(

@@ -37,6 +37,25 @@ link_setup_workflow_list = Link(
     permissions=(permission_workflow_view,), icon='fa fa-sitemap',
     text=_('Workflows'), view='document_states:setup_workflow_list'
 )
+link_setup_workflow_state_action_delete = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:setup_workflow_state_action_delete',
+)
+link_setup_workflow_state_action_edit = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Edit'), view='document_states:setup_workflow_state_action_edit',
+)
+link_setup_workflow_state_action_list = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Actions'),
+    view='document_states:setup_workflow_state_action_list',
+)
+link_setup_workflow_state_action_selection = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Create action'),
+    view='document_states:setup_workflow_state_action_selection',
+)
 link_setup_workflow_state_create = Link(
     permissions=(permission_workflow_edit,), text=_('Create state'),
     view='document_states:setup_workflow_state_create', args='object.pk'
@@ -110,28 +129,7 @@ link_workflow_instance_transition_events = Link(
     text=_('Transition events'),
     view='document_states:setup_workflow_instance_transition_events'
 )
-
-###
-
-link_setup_workflow_state_action_list = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Actions'),
-    view='document_states:setup_workflow_state_action_list',
-)
-
-link_setup_workflow_state_action_selection = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Create action'),
-    view='document_states:setup_workflow_state_action_selection',
-)
-
-
-link_setup_workflow_state_action_delete = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    tags='dangerous', text=_('Delete'),
-    view='document_states:setup_workflow_state_action_delete',
-)
-link_setup_workflow_state_action_edit = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Edit'), view='document_states:setup_workflow_state_action_edit',
+link_workflow_preview = Link(
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
+    text=_('Preview'), view='document_states:workflow_preview'
 )

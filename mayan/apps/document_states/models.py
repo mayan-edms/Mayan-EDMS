@@ -3,6 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import json
 import logging
 
+from graphviz import Digraph
+
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, models
@@ -77,6 +79,48 @@ class Workflow(models.Model):
             logger.info(
                 'Workflow %s launched for document %s', self, document
             )
+
+    def render(self):
+        diagram = Digraph(
+            name='finite_state_machine', graph_attr={
+                'rankdir': 'LR', 'size': '8,5'
+            }, format='png'
+        )
+
+        state_cache = {}
+        transition_cache = []
+
+        for state in self.states.all():
+            state_cache['s{}'.format(state.pk)] = {
+                'name': 's{}'.format(state.pk),
+                'label': state.label,
+                'initial': state.initial,
+                'connections': {'origin': 0, 'destination': 0}
+            }
+
+        for transition in self.transitions.all():
+            transition_cache.append(
+                {
+                    'tail_name': 's{}'.format(transition.origin_state.pk),
+                    'head_name': 's{}'.format(transition.destination_state.pk),
+                    'label': transition.label
+                }
+            )
+            state_cache['s{}'.format(transition.origin_state.pk)]['connections']['origin'] = state_cache['s{}'.format(transition.origin_state.pk)]['connections']['origin'] + 1
+            state_cache['s{}'.format(transition.destination_state.pk)]['connections']['destination'] += 1
+
+        for key, value in state_cache.items():
+            kwargs = {
+                'name': value['name'],
+                'label': value['label'],
+                'shape': 'doublecircle' if value['connections']['origin'] == 0 or value['connections']['destination'] == 0 or value['initial'] else 'circle',
+            }
+            diagram.node(**kwargs)
+
+        for transition in transition_cache:
+            diagram.edge(**transition)
+
+        return diagram.pipe()
 
     class Meta:
         ordering = ('label',)

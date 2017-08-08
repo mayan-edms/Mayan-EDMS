@@ -12,6 +12,7 @@ from .classes import WorkflowAction
 from .models import (
     Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
 )
+from .widgets import WorkflowImageWidget
 
 
 class WorkflowActionSelectionForm(forms.Form):
@@ -157,3 +158,12 @@ class WorkflowInstanceTransitionForm(forms.Form):
     comment = forms.CharField(
         label=_('Comment'), required=False, widget=forms.widgets.Textarea()
     )
+
+
+class WorkflowPreviewForm(forms.Form):
+    preview = forms.CharField(widget=WorkflowImageWidget())
+
+    def __init__(self, *args, **kwargs):
+        instance = kwargs.pop('instance', None)
+        super(WorkflowPreviewForm, self).__init__(*args, **kwargs)
+        self.fields['preview'].initial = instance
