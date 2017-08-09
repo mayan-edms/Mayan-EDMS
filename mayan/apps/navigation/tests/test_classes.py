@@ -9,13 +9,13 @@ from common.tests.test_views import GenericViewTestCase
 from permissions import Permission, PermissionNamespace
 from user_management.tests import TEST_USER_PASSWORD, TEST_USER_USERNAME
 
-from ..classes import Link
+from ..classes import Link, Menu
 
-TEST_PERMISSION_NAMESPACE_NAME = 'test namespace name'
-TEST_PERMISSION_NAMESPACE_TEXT = 'test namespace text'
-TEST_PERMISSION_NAME = 'test permission name'
-TEST_PERMISSION_LABEL = 'test permission label'
-TEST_LINK_TEXT = 'test link text'
+from .literals import (
+    TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT,
+    TEST_PERMISSION_NAME, TEST_PERMISSION_LABEL, TEST_LINK_TEXT,
+    TEST_MENU_NAME, TEST_SUBMENU_NAME
+)
 
 
 class LinkClassTestCase(GenericViewTestCase):
@@ -105,3 +105,50 @@ class LinkClassTestCase(GenericViewTestCase):
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
+
+
+class MenuClassTestCase(GenericViewTestCase):
+    def setUp(self):
+        super(MenuClassTestCase, self).setUp()
+
+        self.add_test_view(test_object=self.group)
+
+        self.namespace = PermissionNamespace(
+            TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT
+        )
+
+        self.permission = self.namespace.add_permission(
+            name=TEST_PERMISSION_NAME, label=TEST_PERMISSION_LABEL
+        )
+
+        Menu.reset()
+        self.menu = Menu(name=TEST_MENU_NAME)
+        self.sub_menu = Menu(name=TEST_SUBMENU_NAME)
+        self.link = Link(text=TEST_LINK_TEXT, view=TEST_VIEW_NAME)
+        Permission.invalidate_cache()
+
+    def test_null_source_link_unbinding(self):
+        self.menu.bind_links(links=(self.link,))
+
+        response = self.get(TEST_VIEW_NAME)
+        context = Context({'request': response.wsgi_request})
+
+        self.assertEqual(
+            self.menu.resolve(context=context)[0][0].link, self.link
+        )
+
+        self.menu.unbind_links(links=(self.link,))
+
+        self.assertEqual(self.menu.resolve(context=context), [])
+
+    def test_null_source_submenu_unbinding(self):
+        self.menu.bind_links(links=(self.sub_menu,))
+
+        response = self.get(TEST_VIEW_NAME)
+        context = Context({'request': response.wsgi_request})
+
+        self.assertEqual(self.menu.resolve(context=context), [[self.sub_menu]])
+
+        self.menu.unbind_links(links=(self.sub_menu,))
+
+        self.assertEqual(self.menu.resolve(context=context), [])

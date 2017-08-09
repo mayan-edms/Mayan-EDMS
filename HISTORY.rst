@@ -14,6 +14,7 @@
 - Allow changing the output format, DPI of the pdftoppm command, and
   the output format of the converter via the CONVERTER_GRAPHICS_BACKEND_CONFIG
   setting. GitHub issues #256 #257 GitLab issue #416.
+- Add support for unbinding sub menus.
 
 2.6.4 (2017-07-26)
 ==================

@@ -61,6 +61,10 @@ class Menu(object):
     def get(cls, name):
         return cls._registry[name]
 
+    @classmethod
+    def reset(cls):
+        cls._registry={}
+
     def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
@@ -196,7 +200,8 @@ class Menu(object):
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
                 resolved_link = link
-                resolved_links.append(resolved_link)
+                if resolved_link not in self.unbound_links.get(None, ()):
+                    resolved_links.append(resolved_link)
             else:
                 # "Always show" links
                 resolved_link = link.resolve(context=context)
