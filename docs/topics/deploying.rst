@@ -19,7 +19,7 @@ Ubuntu
 If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
 requirements using::
 
-    apt-get install nginx supervisor redis-server postgresql \
+    apt-get install graphviz nginx supervisor redis-server postgresql \
     libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice \
     libtiff-dev gcc ghostscript gnupg python-dev python-virtualenv \
     tesseract-ocr poppler-utils -y

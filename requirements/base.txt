@@ -25,6 +25,7 @@ djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
 
 fusepy==2.0.4
+graphviz==0.8
 
 pdfminer==20140328
 pycountry==1.20
