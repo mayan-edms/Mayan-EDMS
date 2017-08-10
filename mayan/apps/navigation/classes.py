@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.urls import resolve, reverse
+from django.urls import resolve
 from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
 
@@ -63,7 +63,7 @@ class Menu(object):
 
     @classmethod
     def reset(cls):
-        cls._registry={}
+        cls._registry = {}
 
     def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:

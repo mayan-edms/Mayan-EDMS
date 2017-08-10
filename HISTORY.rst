@@ -20,6 +20,8 @@
 - Add support for unbinding sub menus.
 - Fix mailing profile test view.
 - Disregard the last 3 dots that mark the end of the YAML document.
+- Add support for multiple dashboards.
+- Add support for removing dashboard widgets.
 
 2.6.4 (2017-07-26)
 ==================

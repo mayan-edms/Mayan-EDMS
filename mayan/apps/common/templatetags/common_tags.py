@@ -11,7 +11,7 @@ from django.utils.encoding import force_text
 
 import mayan
 
-from ..classes import Collection, DashboardWidget
+from ..classes import Collection, Dashboard
 from ..utils import return_attrib
 
 register = Library()
@@ -30,8 +30,8 @@ def get_collections():
 
 
 @register.simple_tag
-def get_dashboard_widgets():
-    return DashboardWidget.get_all()
+def get_dashboard(name):
+    return Dashboard.get(name=name)
 
 
 @register.filter

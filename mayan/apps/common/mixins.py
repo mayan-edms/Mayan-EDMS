@@ -6,7 +6,6 @@ from django.core.exceptions import PermissionDenied
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
-from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from permissions import Permission
