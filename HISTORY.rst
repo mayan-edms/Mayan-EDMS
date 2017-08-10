@@ -19,6 +19,7 @@
 - Add support for rendering workflows.
 - Add support for unbinding sub menus.
 - Fix mailing profile test view.
+- Disregard the last 3 dots that mark the end of the YAML document.
 
 2.6.4 (2017-07-26)
 ==================

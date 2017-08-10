@@ -81,7 +81,13 @@ class Setting(object):
         if isinstance(value, Promise):
             value = force_text(value)
 
-        return yaml.safe_dump(value, allow_unicode=True)
+        result = yaml.safe_dump(value, allow_unicode=True)
+        # safe_dump returns bytestrings
+        # Disregard the last 3 dots that mark the end of the YAML document
+        if result.endswith(b'...\n'):
+            result = result[:-4]
+
+        return result
 
     @classmethod
     def get(cls, global_name):
