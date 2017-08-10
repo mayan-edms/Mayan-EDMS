@@ -121,11 +121,15 @@ class MenuClassTestCase(GenericViewTestCase):
             name=TEST_PERMISSION_NAME, label=TEST_PERMISSION_LABEL
         )
 
-        Menu.reset()
         self.menu = Menu(name=TEST_MENU_NAME)
         self.sub_menu = Menu(name=TEST_SUBMENU_NAME)
         self.link = Link(text=TEST_LINK_TEXT, view=TEST_VIEW_NAME)
         Permission.invalidate_cache()
+
+    def tearDown(self):
+        Menu.remove(name=TEST_MENU_NAME)
+        Menu.remove(name=TEST_SUBMENU_NAME)
+        super(MenuClassTestCase, self).tearDown()
 
     def test_null_source_link_unbinding(self):
         self.menu.bind_links(links=(self.link,))

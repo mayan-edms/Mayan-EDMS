@@ -62,8 +62,8 @@ class Menu(object):
         return cls._registry[name]
 
     @classmethod
-    def reset(cls):
-        cls._registry = {}
+    def remove(cls, name):
+        del cls._registry[name]
 
     def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:
