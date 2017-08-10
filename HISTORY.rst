@@ -18,6 +18,7 @@
 - Add support for workflow actions.
 - Add support for rendering workflows.
 - Add support for unbinding sub menus.
+- Fix mailing profile test view.
 
 2.6.4 (2017-07-26)
 ==================

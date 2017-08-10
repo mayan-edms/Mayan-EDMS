@@ -231,20 +231,21 @@ class UserMailerListView(SingleObjectListView):
 
 class UserMailerTestView(FormView):
     form_class = UserMailerTestForm
+    object_permission = permission_user_mailer_edit
 
     def form_valid(self, form):
-        self.get_user_mailer().test(to=(form.cleaned_data['email'],))
+        self.get_object().test(to=form.cleaned_data['email'])
         return super(UserMailerTestView, self).form_valid(form=form)
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_user_mailer(),
+            'object': self.get_object(),
             'submit_label': _('Test'),
-            'title': _('Test mailing profile: %s') % self.get_user_mailer(),
+            'title': _('Test mailing profile: %s') % self.get_object(),
         }
 
-    def get_user_mailer(self):
+    def get_object(self):
         user_mailer = get_object_or_404(UserMailer, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
             permissions=permission_user_mailer_use, user=self.request.user,

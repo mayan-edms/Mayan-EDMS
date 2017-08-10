@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 from django.core import mail
 
-from documents.tests.test_views import (
-    GenericDocumentViewTestCase, GenericViewTestCase
-)
+from documents.tests.test_views import GenericDocumentViewTestCase
 
 from ..models import UserMailer
 from ..permissions import (
@@ -91,8 +89,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
-
-class UserMailerViewTestCase(MailerTestMixin, GenericViewTestCase):
     def _request_user_mailer_delete(self):
         return self.post(
             'mailer:user_mailer_delete', args=(self.user_mailer.pk,)
@@ -144,3 +140,34 @@ class UserMailerViewTestCase(MailerTestMixin, GenericViewTestCase):
         self.assertNotEqual(
             [UserMailer.objects.all()], [self.user_mailer]
         )
+
+    def _request_user_mailer_test(self):
+        return self.post(
+            'mailer:user_mailer_test', args=(self.user_mailer.pk,), data={
+                'email': TEST_EMAIL_ADDRESS
+            }, follow=True
+        )
+
+    def test_user_mailer_test_view_no_permissions(self):
+        self._create_user_mailer()
+        self.login_user()
+
+        response = self._request_user_mailer_test()
+
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(len(mail.outbox), 0)
+
+    def test_user_mailer_test_view_with_access(self):
+        self._create_user_mailer()
+        self.login_user()
+
+        self.grant_access(
+            obj=self.user_mailer, permission=permission_user_mailer_use
+        )
+
+        response = self._request_user_mailer_test()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
