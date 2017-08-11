@@ -437,12 +437,14 @@ class DocumentsApp(MayanAppConfig):
             sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
+        menu_facet.bind_links(
+            links=(link_document_version_view,), sources=(DocumentVersion,)
+        )
 
         # Document actions
         menu_object.bind_links(
             links=(
-                link_document_version_view, link_document_version_revert,
-                link_document_version_download
+                link_document_version_revert, link_document_version_download
             ),
             sources=(DocumentVersion,)
         )

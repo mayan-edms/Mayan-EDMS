@@ -132,9 +132,14 @@ class DocumentSignaturesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_signature_list,), sources=(Document,)
         )
-        menu_object.bind_links(
+        menu_facet.bind_links(
             links=(
                 link_document_version_signature_list,
+            ), sources=(DocumentVersion,)
+        )
+
+        menu_object.bind_links(
+            links=(
                 link_document_version_signature_detached_create,
                 link_document_version_signature_embedded_create
             ), sources=(DocumentVersion,)
