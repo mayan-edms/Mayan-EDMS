@@ -22,6 +22,9 @@
 - Disregard the last 3 dots that mark the end of the YAML document.
 - Add support for multiple dashboards.
 - Add support for removing dashboard widgets.
+- Convert document version view to item list view.
+- Add support for browsing individual document versions.
+- Add support for dropdown menus to the item list view template.
 
 2.6.4 (2017-07-26)
 ==================
