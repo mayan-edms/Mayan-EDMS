@@ -233,6 +233,17 @@ class DocumentDownloadForm(forms.Form):
             self.fields['compressed'].widget.attrs.update({'disabled': True})
 
 
+class DocumentVersionDownloadForm(DocumentDownloadForm):
+    preserve_extension = forms.BooleanField(
+        label=_('Preserve extension'), required=False,
+        help_text=_(
+            'Takes the file extension and moves it to the end of the '
+            'filename allowing operating systems that rely on file '
+            'extensions to open the downloaded document version correctly.'
+        )
+    )
+
+
 class DocumentPrintForm(forms.Form):
     page_group = forms.ChoiceField(
         choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,

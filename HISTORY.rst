@@ -25,6 +25,8 @@
 - Convert document version view to item list view.
 - Add support for browsing individual document versions.
 - Add support for dropdown menus to the item list view template.
+- Add support for preserving the file extenstion when downloading a document
+  version. GitLab #415.
 
 2.6.4 (2017-07-26)
 ==================

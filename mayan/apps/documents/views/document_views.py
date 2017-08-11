@@ -402,6 +402,7 @@ class DocumentDownloadFormView(FormView):
     form_class = DocumentDownloadForm
     model = Document
     multiple_download_view = 'documents:document_multiple_download'
+    querystring_form_fields = ('compressed', 'zip_filename')
     single_download_view = 'documents:document_download'
 
     def get_document_queryset(self):
@@ -447,15 +448,22 @@ class DocumentDownloadFormView(FormView):
         return kwargs
 
     def form_valid(self, form):
-        querystring = urlencode(
+        querystring_dictionary = {}
+
+        for field in self.querystring_form_fields:
+            data = form.cleaned_data[field]
+            if data:
+                querystring_dictionary[field] = data
+
+        querystring_dictionary.update(
             {
-                'compressed': form.cleaned_data['compressed'],
-                'zip_filename': form.cleaned_data['zip_filename'],
                 'id_list': ','.join(
                     map(str, self.queryset.values_list('pk', flat=True))
                 )
-            }, doseq=True
+            }
         )
+
+        querystring = urlencode(querystring_dictionary, doseq=True)
 
         if self.queryset.count() > 1:
             url = reverse(self.multiple_download_view)
@@ -497,17 +505,7 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
     @staticmethod
     def get_item_file(item):
-        if isinstance(item, Document):
-            return item.open()
-        else:
-            return item.file
-
-    @staticmethod
-    def get_item_label(item):
-        if isinstance(item, Document):
-            return item.label
-        else:
-            return force_text(item)
+        return item.open()
 
     def get_document_queryset(self):
         id_list = self.request.GET.get(
@@ -532,10 +530,9 @@ class DocumentDownloadView(SingleObjectDownloadView):
         if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
             compressed_file = CompressedFile()
             for item in queryset:
-                descriptor = item.open()
+                descriptor = DocumentDownloadView.get_item_file(item=item)
                 compressed_file.add_file(
-                    descriptor,
-                    arcname=DocumentDownloadView.get_item_label(item=item)
+                    descriptor, arcname=self.get_item_label(item=item)
                 )
                 descriptor.close()
                 DocumentDownloadView.commit_event(
@@ -559,10 +556,11 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
             return DocumentDownloadView.VirtualFile(
                 DocumentDownloadView.get_item_file(item=item),
-                name=DocumentDownloadView.get_item_label(
-                    item=item
-                )
+                name=self.get_item_label(item=item)
             )
+
+    def get_item_label(self, item):
+        return item.label
 
 
 class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):

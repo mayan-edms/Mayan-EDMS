@@ -1,9 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+import os
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -12,7 +14,7 @@ from common.generics import (
 )
 
 from ..events import event_document_view
-from ..forms import DocumentVersionPreviewForm
+from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
 from ..models import Document, DocumentVersion
 from ..permissions import (
     permission_document_download, permission_document_version_revert,
@@ -81,9 +83,22 @@ class DocumentVersionRevertView(ConfirmView):
 
 
 class DocumentVersionDownloadFormView(DocumentDownloadFormView):
+    form_class = DocumentVersionDownloadForm
     model = DocumentVersion
     multiple_download_view = None
+    querystring_form_fields = (
+        'compressed', 'zip_filename', 'preserve_extension'
+    )
     single_download_view = 'documents:document_version_download'
+
+    def get_extra_context(self):
+        result = super(
+            DocumentVersionDownloadFormView, self
+        ).get_extra_context()
+
+        result['title'] = _('Download document version')
+
+        return result
 
     def get_document_queryset(self):
         id_list = self.request.GET.get(
@@ -101,6 +116,25 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
 class DocumentVersionDownloadView(DocumentDownloadView):
     model = DocumentVersion
     object_permission = permission_document_download
+
+    @staticmethod
+    def get_item_file(item):
+        return item.file
+
+    def get_item_label(self, item):
+        preserve_extension = self.request.GET.get(
+            'preserve_extension', self.request.POST.get(
+                'preserve_extension', False
+            )
+        )
+
+        if preserve_extension:
+            filename, extension = os.path.splitext(item.document.label)
+            return '{} ({}){}'.format(
+                filename, item.get_rendered_timestamp(), extension
+            )
+        else:
+            return force_text(item)
 
 
 class DocumentVersionView(SingleObjectDetailView):
