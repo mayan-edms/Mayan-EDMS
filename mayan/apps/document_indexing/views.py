@@ -330,7 +330,9 @@ class RebuildIndexesView(FormView):
 
     def form_valid(self, form):
         for index in form.cleaned_data['indexes']:
-            task_rebuild_index(index_id=index.pk)
+            task_rebuild_index.apply_async(
+                kwargs=dict(index_id=index.pk)
+            )
 
         messages.success(self.request, _('Index rebuild queued successfully.'))
 
