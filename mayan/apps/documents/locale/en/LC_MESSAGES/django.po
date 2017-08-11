@@ -99,10 +99,8 @@ msgid "Comment"
 msgstr "Comment"
 
 #: apps.py:293 links.py:294 views/document_views.py:790
-#, fuzzy
-#| msgid "Find duplicates"
 msgid "Duplicates"
-msgstr "find duplicates"
+msgstr "Duplicates"
 
 #: apps.py:496
 msgid "New documents per month"
@@ -406,13 +404,11 @@ msgstr "Quick labels"
 
 #: links.py:289 models.py:912 models.py:925 views/document_views.py:798
 msgid "Duplicated documents"
-msgstr "duplicated documents"
+msgstr "Duplicated documents"
 
 #: links.py:298
-#, fuzzy
-#| msgid "Duplicated documents"
 msgid "Duplicated document scan"
-msgstr "duplicated documents"
+msgstr "Duplicated document scan"
 
 #: literals.py:14
 msgid "Default"
@@ -553,10 +549,8 @@ msgid "Recent document"
 msgstr "Recent document"
 
 #: models.py:924
-#, fuzzy
-#| msgid "Duplicated documents"
 msgid "Duplicated document"
-msgstr "duplicated documents"
+msgstr "Duplicated documents"
 
 #: permissions.py:10
 msgid "Create documents"
@@ -603,10 +597,8 @@ msgid "Revert documents to a previous version"
 msgstr "Revert documents to a previous version"
 
 #: permissions.py:45
-#, fuzzy
-#| msgid "New document versions per month"
 msgid "View documents' versions list"
-msgstr "New document versions per month"
+msgstr "View documents' versions list"
 
 #: permissions.py:48
 msgid "View documents"
@@ -669,10 +661,8 @@ msgid "Upload new document version"
 msgstr "Upload new document version"
 
 #: queues.py:54
-#, fuzzy
-#| msgid "Delete documents"
 msgid "Delete a document"
-msgstr "Delete documents"
+msgstr "Delete a document"
 
 #: settings.py:29
 msgid ""
@@ -857,10 +847,8 @@ msgid "Document type for \"%s\" changed successfully."
 msgstr "Document type for \"%s\" changed successfully."
 
 #: views/document_views.py:199
-#, fuzzy, python-format
-#| msgid "Pages for document: %s"
 msgid "Duplicates for document: %s"
-msgstr "Pages for document: %s"
+msgstr "Duplicates for document: %s"
 
 #: views/document_views.py:228
 #, python-format
@@ -990,16 +978,12 @@ msgid "Document cache clearing queued successfully."
 msgstr "Document cache clearing queued successfully."
 
 #: views/misc_views.py:31
-#, fuzzy
-#| msgid "Duplicated documents"
 msgid "Scan for duplicated documents?"
-msgstr "duplicated documents"
+msgstr "Scan for duplicated documents?"
 
 #: views/misc_views.py:38
-#, fuzzy
-#| msgid "Document cache clearing queued successfully."
 msgid "Duplicated document scan queued successfully."
-msgstr "Document cache clearing queued successfully."
+msgstr "Duplicated document scan queued successfully."
 
 #: widgets.py:67
 #, python-format
