@@ -87,6 +87,7 @@ Bugs fixed or issues closed
 * `GitHub issue #257 <https://github.com/mayan-edms/mayan-edms/issues/257>`_ Use the DEFAULT_FILE_FORMAT from literals.py in python.py
 * `GitHub issue #261 <https://github.com/mayan-edms/mayan-edms/issues/261>`_ fix_orientation method causes document add to crash
 * `GitHub issue #263 <https://github.com/mayan-edms/mayan-edms/issues/263>`_ Typo in mayan/apps/ocr/migrations/0004_documenttypesettings.py
+* `GitLab issue #415 <https://gitlab.com/mayan-edms/mayan-edms/issues/415>`_ Wrong filename when downloading document version
 * `GitLab issue #416 <https://gitlab.com/mayan-edms/mayan-edms/issues/416>`_ DPI value for OCR not taken from document metadata
 * `GitLab issue #417 <https://gitlab.com/mayan-edms/mayan-edms/issues/400>`_ Display document cabinets in documents list
 
