@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.http import HttpResponse
 from django.template import Context, Template
+from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
 
 from acls.models import AccessControlList
@@ -62,9 +63,16 @@ class GenericViewTestCase(BaseTestCase):
 
     def get_test_view(self):
         response = self.get(TEST_VIEW_NAME)
-        response.context.update({'request': response.wsgi_request})
-        context = Context(response.context)
-        return context
+        if isinstance(response.context, ContextList):
+            # template widget rendering causes test client response to be
+            # ContextList rather than RequestContext. Typecast to dictionary
+            # before updating.
+            result = dict(response.context).copy()
+            result.update({'request': response.wsgi_request})
+            return Context(result)
+        else:
+            response.context.update({'request': response.wsgi_request})
+            return Context(response.context)
 
     def get(self, viewname, *args, **kwargs):
         data = kwargs.pop('data', {})
