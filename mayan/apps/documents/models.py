@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import hashlib
 import logging
+import os
 import uuid
 
 from django.conf import settings
@@ -409,10 +410,16 @@ class DocumentVersion(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_version_view', args=(self.pk,))
 
-    def get_rendered_string(self):
-        return Template(
-            '{{ instance.document }} - {{ instance.timestamp }}'
-        ).render(context=Context({'instance': self}))
+    def get_rendered_string(self, preserve_extension=False):
+        if preserve_extension:
+            filename, extension = os.path.splitext(self.document.label)
+            return '{} ({}){}'.format(
+                filename, self.get_rendered_timestamp(), extension
+            )
+        else:
+            return Template(
+                '{{ instance.document }} - {{ instance.timestamp }}'
+            ).render(context=Context({'instance': self}))
 
     def get_rendered_timestamp(self):
         return Template('{{ instance.timestamp }}').render(

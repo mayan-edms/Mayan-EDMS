@@ -1,11 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import os
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -121,6 +119,9 @@ class DocumentVersionDownloadView(DocumentDownloadView):
     def get_item_file(item):
         return item.file
 
+    def get_encoding(self):
+        return self.get_object().encoding
+
     def get_item_label(self, item):
         preserve_extension = self.request.GET.get(
             'preserve_extension', self.request.POST.get(
@@ -128,13 +129,12 @@ class DocumentVersionDownloadView(DocumentDownloadView):
             )
         )
 
-        if preserve_extension:
-            filename, extension = os.path.splitext(item.document.label)
-            return '{} ({}){}'.format(
-                filename, item.get_rendered_timestamp(), extension
-            )
-        else:
-            return force_text(item)
+        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+
+        return item.get_rendered_string(preserve_extension=preserve_extension)
+
+    def get_mimetype(self):
+        return self.get_object().mimetype
 
 
 class DocumentVersionView(SingleObjectDetailView):

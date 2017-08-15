@@ -286,27 +286,54 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
                 mime_type=self.document.file_mimetype
             )
 
-    def test_document_version_download_view_no_permission(self):
-        response = self.get(
+    def _request_document_version_download(self, data=None):
+        data = data or {}
+        return self.get(
             'documents:document_version_download', args=(
                 self.document.latest_version.pk,
-            )
+            ), data=data
         )
+
+    def test_document_version_download_view_no_permission(self):
+        response = self._request_document_version_download()
 
         self.assertEqual(response.status_code, 403)
 
     def test_document_version_download_view_with_permission(self):
         # Set the expected_content_type for
         # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+        self.expected_content_type = '{}; charset=utf-8'.format(
+            self.document.latest_version.mimetype
+        )
 
         self.grant_access(
             obj=self.document, permission=permission_document_download
         )
-        response = self.get(
-            'documents:document_version_download', args=(
-                self.document.latest_version.pk,
+        response = self._request_document_version_download()
+
+        self.assertEqual(response.status_code, 200)
+
+        with self.document.open() as file_object:
+            self.assert_download_response(
+                response, content=file_object.read(),
+                basename=force_text(self.document.latest_version),
+                mime_type='{}; charset=utf-8'.format(
+                    self.document.latest_version.mimetype
+                )
             )
+
+    def test_document_version_download_preserve_extension_view_with_permission(self):
+        # Set the expected_content_type for
+        # common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = '{}; charset=utf-8'.format(
+            self.document.latest_version.mimetype
+        )
+
+        self.grant_access(
+            obj=self.document, permission=permission_document_download
+        )
+        response = self._request_document_version_download(
+            data={'preserve_extension': True}
         )
 
         self.assertEqual(response.status_code, 200)
@@ -314,10 +341,11 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         with self.document.open() as file_object:
             self.assert_download_response(
                 response, content=file_object.read(),
-                basename='{} - {}'.format(
-                    TEST_SMALL_DOCUMENT_FILENAME,
-                    self.document.latest_version.timestamp
-                ), mime_type='application/octet-stream; charset=utf-8'
+                basename=self.document.latest_version.get_rendered_string(
+                    preserve_extension=True
+                ), mime_type='{}; charset=utf-8'.format(
+                    self.document.latest_version.mimetype
+                )
             )
 
     def test_document_update_page_count_view_no_permission(self):
