@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -13,14 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-07-15 04:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -103,7 +104,7 @@ msgstr "Tipo de llave"
 msgid "Verify all documents"
 msgstr "Verificar todos los documents"
 
-#: links.py:39 queues.py:8
+#: links.py:39 links.py:57 queues.py:8
 msgid "Signatures"
 msgstr "Firma"
 
@@ -114,10 +115,6 @@ msgstr "Borrar"
 #: links.py:51
 msgid "Details"
 msgstr "Detalles"
-
-#: links.py:57
-msgid "Signature list"
-msgstr "Lista de firmas"
 
 #: links.py:63
 msgid "Download"
@@ -231,59 +228,64 @@ msgstr "Verificar la versión del documento"
 msgid "Verify missing embedded signature"
 msgstr "Verificar la firma integrada que falta"
 
-#: views.py:61 views.py:156
+#: views.py:61 views.py:154
 msgid "Passphrase is needed to unlock this key."
 msgstr "Se necesita contraseña para acceder a esta llave."
 
-#: views.py:71 views.py:166
+#: views.py:71 views.py:164
 msgid "Passphrase is incorrect."
 msgstr "Contraseña incorrecta."
 
-#: views.py:92 views.py:186
+#: views.py:92 views.py:184
 msgid "Document version signed successfully."
 msgstr "Versión de documento firmada con éxito."
 
-#: views.py:118
+#: views.py:116
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Firmar versión de documento \"%s\" con una firma aparte "
 
-#: views.py:219
+#: views.py:215
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Firmar versión de documento \"%s\" con una firma integrada"
 
-#: views.py:246
+#: views.py:238
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Borrar firma aparte: %s"
 
-#: views.py:271
+#: views.py:259
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Detalles para la firma: %s"
 
-#: views.py:313
+#: views.py:299
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Firmas para la versión de documento: %s"
 
-#: views.py:344
+#: views.py:328
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Subir firma aparte para la versión de documento: %s"
 
-#: views.py:361
+#: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
+msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
-#: views.py:362
+#: views.py:346
 msgid "Verify all document for signatures?"
 msgstr "¿Verificar todos los documentos para firmas?"
 
-#: views.py:372
+#: views.py:356
 msgid "Signature verification queued successfully."
 msgstr "Verificación de firmas colocada en la cola."
+
+#~ msgid "Signature list"
+#~ msgstr "Lista de firmas"
 
 #~ msgid "Signature status: %s"
 #~ msgstr "Signature type: %s"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin.py:24
@@ -50,7 +51,6 @@ msgid "Total nodes"
 msgstr ""
 
 #: apps.py:95
-#| msgid "Link documents"
 msgid "Total documents"
 msgstr ""
 
@@ -117,12 +117,14 @@ msgstr "Yeni alt düğüm"
 
 #: models.py:37
 msgid "This value will be used by other apps to reference this index."
-msgstr "Bu değer, bu dizine atıfta bulunmak için diğer uygulamalar tarafından kullanılacaktır."
+msgstr ""
+"Bu değer, bu dizine atıfta bulunmak için diğer uygulamalar tarafından "
+"kullanılacaktır."
 
 #: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Belge verileri değiştiğinde bu dizin görünür ve güncellenmesine neden olur."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Belge verileri değiştiğinde bu dizin görünür ve güncellenmesine neden olur."
 
 #: models.py:56 models.py:153
 msgid "Index"
@@ -140,7 +142,9 @@ msgstr "Dizin örnekleri"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+"İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili "
+"kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:161
 msgid "Indexing expression"
@@ -148,13 +152,16 @@ msgstr "Dizinleme ifadesi"
 
 #: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Belge verileri değiştiğinde bu düğümün görünür ve güncellenmesine neden olur."
+msgstr ""
+"Belge verileri değiştiğinde bu düğümün görünür ve güncellenmesine neden olur."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Bu düğümün belgeler için bir kap olarak hareket ettirilmesi ve diğer düğümler için üst öğe olmaması için bu seçeneği işaretleyin."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Bu düğümün belgeler için bir kap olarak hareket ettirilmesi ve diğer "
+"düğümler için üst öğe olmaması için bu seçeneği işaretleyin."
 
 #: models.py:177
 msgid "Link documents"
@@ -301,7 +308,7 @@ msgstr "Dizin içeriği: %s"
 msgid "Indexes nodes containing document: %s"
 msgstr "Belgeyi içeren düğümlerin dizinleri: %s"
 
-#: views.py:335
+#: views.py:337
 msgid "Index rebuild queued successfully."
 msgstr "Dizin yeniden oluşturma başarıyla sıraya girdi."
 
@@ -372,9 +379,11 @@ msgstr "Dizin yeniden oluşturma başarıyla sıraya girdi."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -411,11 +420,11 @@ msgstr "Dizin yeniden oluşturma başarıyla sıraya girdi."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

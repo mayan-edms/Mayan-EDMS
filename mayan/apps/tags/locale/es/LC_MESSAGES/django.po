@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -12,18 +12,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-07-15 03:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 apps.py:80 apps.py:87 apps.py:106 apps.py:108 forms.py:31
 #: links.py:40 menus.py:8 models.py:34 permissions.py:7 views.py:183
+#: workflow_actions.py:19
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -75,11 +77,11 @@ msgstr "Color"
 msgid "Tag"
 msgstr "Etiqueta"
 
-#: models.py:47
+#: models.py:53
 msgid "Document tag"
 msgstr "Etiqueta de documento"
 
-#: models.py:48
+#: models.py:54
 msgid "Document tags"
 msgstr "Etiquetas de documentos"
 
@@ -111,13 +113,17 @@ msgstr "Quitar etiquetas de los documentos"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Lista separada por comas de los ID primarios de documentos a los que se adjuntará esta etiqueta."
+msgstr ""
+"Lista separada por comas de los ID primarios de documentos a los que se "
+"adjuntará esta etiqueta."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "URL de la API  que apunta a una etiqueta en relación con el documento adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
+msgstr ""
+"URL de la API  que apunta a una etiqueta en relación con el documento "
+"adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -139,8 +145,6 @@ msgstr "Anejar"
 
 #: views.py:44
 #, python-format
-#| msgid "Attach tags to document"
-#| msgid_plural "Attach tags to documents"
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
 msgstr[0] "Adjuntar etiquetas a %(count)d documento"
@@ -222,12 +226,14 @@ msgstr "Etiquetas del documento: %s"
 #: views.py:239
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr "Solicitud de eliminación de etiquetas realizada en %(count)d documento "
+msgstr ""
+"Solicitud de eliminación de etiquetas realizada en %(count)d documento "
 
 #: views.py:241
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr "Solicitud de eliminación de etiquetas realizada en %(count)d documentos"
+msgstr ""
+"Solicitud de eliminación de etiquetas realizada en %(count)d documentos"
 
 #: views.py:248
 msgid "Remove"
@@ -235,8 +241,6 @@ msgstr "Eliminar"
 
 #: views.py:250
 #, python-format
-#| msgid "Remove tags from document"
-#| msgid_plural "Remove tags from documents"
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Eliminar etiquetas a %(count)d documento"
@@ -259,15 +263,24 @@ msgstr "Documento \"%(document)s\" no esta etiquetado con \"%(tag)s"
 #: views.py:306
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+
+#: workflow_actions.py:21
+#, fuzzy
+#| msgid "Attach tag to document"
+#| msgid_plural "Attach tag to documents"
+msgid "Tags to attach to the document"
+msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+
+#: workflow_actions.py:26
+#, fuzzy
+#| msgid "Attach tags"
+msgid "Attach tag"
+msgstr "Anejar etiqueta"
 
 #~ msgid "Must provide at least one document."
 #~ msgstr "Must provide at least one document."
-
-#~ msgid "Attach tag to document"
-#~ msgid_plural "Attach tag to documents"
-#~ msgstr[0] "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
-#~ msgstr[1] "2b1f894eebfe4fd9c93a2a121387867c_pl_1"
 
 #~ msgid "Must provide at least one tag."
 #~ msgstr "Must provide at least one tag."

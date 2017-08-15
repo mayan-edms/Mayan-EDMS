@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -12,15 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: admin.py:24
 msgid "None"
@@ -51,7 +54,6 @@ msgid "Total nodes"
 msgstr ""
 
 #: apps.py:95
-#| msgid "Link documents"
 msgid "Total documents"
 msgstr "Razem dokumenty"
 
@@ -121,9 +123,10 @@ msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany danych dokumentów."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany "
+"danych dokumentów."
 
 #: models.py:56 models.py:153
 msgid "Index"
@@ -141,7 +144,9 @@ msgstr ""
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+"Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:161
 msgid "Indexing expression"
@@ -153,9 +158,11 @@ msgstr "Causes this node to be visible and updated when document data changes."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
 #: models.py:177
 msgid "Link documents"
@@ -302,7 +309,7 @@ msgstr "Zawartość indeksu: %s"
 msgid "Indexes nodes containing document: %s"
 msgstr "Węzły indeksów zawierające dokument: %s"
 
-#: views.py:335
+#: views.py:337
 msgid "Index rebuild queued successfully."
 msgstr ""
 
@@ -373,9 +380,11 @@ msgstr ""
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -412,11 +421,11 @@ msgstr ""
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

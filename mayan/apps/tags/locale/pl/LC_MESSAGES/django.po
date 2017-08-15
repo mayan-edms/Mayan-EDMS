@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -13,18 +13,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-08-01 15:13+0000\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:35 apps.py:80 apps.py:87 apps.py:106 apps.py:108 forms.py:31
 #: links.py:40 menus.py:8 models.py:34 permissions.py:7 views.py:183
+#: workflow_actions.py:19
 msgid "Tags"
 msgstr "Tagi"
 
@@ -76,11 +80,11 @@ msgstr "Kolor"
 msgid "Tag"
 msgstr "Tag"
 
-#: models.py:47
+#: models.py:53
 msgid "Document tag"
 msgstr "Tag dokumentu"
 
-#: models.py:48
+#: models.py:54
 msgid "Document tags"
 msgstr "Tagi dokumentu"
 
@@ -112,13 +116,17 @@ msgstr "Usuń tagi z dokumentów"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Rozdzielona przecinkami lista kluczy głównych dokumentu, do którego ten tag zostanie dołączony."
+msgstr ""
+"Rozdzielona przecinkami lista kluczy głównych dokumentu, do którego ten tag "
+"zostanie dołączony."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "API URL wskazujący na tag w relacji do dokumentu, do którego został dołączony. URL ten różni się od kanonicznego URL-a taga."
+msgstr ""
+"API URL wskazujący na tag w relacji do dokumentu, do którego został "
+"dołączony. URL ten różni się od kanonicznego URL-a taga."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -140,8 +148,6 @@ msgstr "Załącz"
 
 #: views.py:44
 #, python-format
-#| msgid "Attach tags to document"
-#| msgid_plural "Attach tags to documents"
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
 msgstr[0] "Dołącz tagi do %(count)d dokumentu"
@@ -240,8 +246,6 @@ msgstr "Usuń"
 
 #: views.py:250
 #, python-format
-#| msgid "Remove tags from document"
-#| msgid_plural "Remove tags from documents"
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Usunięto tagi z %(count)d dokumentu"
@@ -268,15 +272,21 @@ msgstr "Dokument \"%(document)s\" nie zawiera tagów \"%(tag)s\""
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" usunięty z dokumentu \"%(document)s\"."
 
+#: workflow_actions.py:21
+#, fuzzy
+#| msgid "Attach tag to document"
+#| msgid_plural "Attach tag to documents"
+msgid "Tags to attach to the document"
+msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+
+#: workflow_actions.py:26
+#, fuzzy
+#| msgid "Attach tags"
+msgid "Attach tag"
+msgstr "Załącz tagi"
+
 #~ msgid "Must provide at least one document."
 #~ msgstr "Must provide at least one document."
-
-#~ msgid "Attach tag to document"
-#~ msgid_plural "Attach tag to documents"
-#~ msgstr[0] "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
-#~ msgstr[1] "2b1f894eebfe4fd9c93a2a121387867c_pl_1"
-#~ msgstr[2] "2b1f894eebfe4fd9c93a2a121387867c_pl_2"
-#~ msgstr[3] "2b1f894eebfe4fd9c93a2a121387867c_pl_3"
 
 #~ msgid "Must provide at least one tag."
 #~ msgstr "Must provide at least one tag."

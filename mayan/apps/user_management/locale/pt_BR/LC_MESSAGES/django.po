@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -15,14 +15,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-07-15 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 permissions.py:7
@@ -126,7 +127,6 @@ msgid "View existing users"
 msgstr "Ver os usuários existentes"
 
 #: search.py:19
-#| msgid "Full name"
 msgid "First name"
 msgstr ""
 
@@ -135,7 +135,6 @@ msgid "Last name"
 msgstr ""
 
 #: search.py:31
-#| msgid "user"
 msgid "username"
 msgstr ""
 
@@ -145,7 +144,9 @@ msgstr "Nome"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Lista separada por vírgulas de chaves primárias de grupo para atribuir esse usuário."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de grupo para atribuir esse "
+"usuário."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
@@ -204,7 +205,9 @@ msgstr "Excluir usuário: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Excluir super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
+msgstr ""
+"Excluir super usuário e usuário pessoal não é permitido, use a interface de "
+"administração para esses casos."
 
 #: views.py:176
 #, python-format
@@ -263,7 +266,9 @@ msgstr "Alterar senha para o usuário: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Redefinir senha de super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
+msgstr ""
+"Redefinir senha de super usuário e usuário pessoal não é permitido, use a "
+"interface de administração para esses casos."
 
 #: views.py:304
 #, python-format

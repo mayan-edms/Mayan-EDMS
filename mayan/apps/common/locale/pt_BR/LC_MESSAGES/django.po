@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:76 settings.py:11
@@ -29,19 +30,22 @@ msgid "Common"
 msgstr "Comúm"
 
 #: apps.py:81
-#| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anônimo"
 
-#: classes.py:109
+#: classes.py:146
 msgid "Available attributes: \n"
+msgstr ""
+
+#: dashboards.py:7
+msgid "Main"
 msgstr ""
 
 #: forms.py:27
 msgid "Selection"
 msgstr "Seleção"
 
-#: forms.py:135
+#: forms.py:138
 msgid "Filter"
 msgstr "Filtro"
 
@@ -92,7 +96,7 @@ msgstr "%(object)s atualizado com sucesso."
 msgid "About this"
 msgstr "Sobre isso"
 
-#: links.py:12 views.py:52
+#: links.py:12 views.py:53
 msgid "Check for updates"
 msgstr ""
 
@@ -128,11 +132,11 @@ msgstr "Filtro de dados"
 msgid "Forum"
 msgstr "Fórum"
 
-#: links.py:47 views.py:191
+#: links.py:47 views.py:192
 msgid "License"
 msgstr "Licença"
 
-#: links.py:50 views.py:205
+#: links.py:50 views.py:206
 msgid "Other packages licenses"
 msgstr "Licenças de outros pacotes"
 
@@ -144,7 +148,7 @@ msgstr "Configurações"
 msgid "Support"
 msgstr "Suporte"
 
-#: links.py:61 queues.py:10 views.py:235
+#: links.py:61 queues.py:10 views.py:236
 msgid "Tools"
 msgstr "Ferramentas"
 
@@ -168,17 +172,17 @@ msgstr ""
 msgid "User"
 msgstr "Usuário"
 
-#: mixins.py:85
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operação executada em %(count)d objeto"
 
-#: mixins.py:86
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operação executada em %(count)d objetos"
 
-#: mixins.py:246
+#: mixins.py:245
 msgid "Object"
 msgstr "Objeto"
 
@@ -236,23 +240,29 @@ msgstr "Ativar automaticamente o registro de todos os aplicativos."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Tempo para atrasar as tarefas de fundo que dependem da propagação de informação na base de dados."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Tempo para atrasar as tarefas de fundo que dependem da propagação de "
+"informação na base de dados."
 
 #: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Um número inteiro que especifica quantos objetos se deve mostrar por página."
+msgstr ""
+"Um número inteiro que especifica quantos objetos se deve mostrar por página."
 
 #: settings.py:35
 msgid "A storage backend that all workers can use to share files."
-msgstr "Um suporte de armazenamento que todos os trabalhadores podem usar para compartilhar arquivos."
+msgstr ""
+"Um suporte de armazenamento que todos os trabalhadores podem usar para "
+"compartilhar arquivos."
 
 #: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Pasta temporária utilizada em todo o site para armazenar imagens em miniatura, visualizações e arquivos temporários."
+msgstr ""
+"Pasta temporária utilizada em todo o site para armazenar imagens em "
+"miniatura, visualizações e arquivos temporários."
 
 #: settings.py:48
 msgid "Path to the logfile that will track errors during production."
@@ -264,53 +274,53 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:45
+#: views.py:46
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:49
+#: views.py:50
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:66
+#: views.py:67
 msgid "Current user details"
 msgstr "Detalhes do usuário atual"
 
-#: views.py:71
+#: views.py:72
 msgid "Edit current user details"
 msgstr "Editar detalhes do usuário atual"
 
-#: views.py:91
+#: views.py:92
 msgid "Current user locale profile details"
 msgstr "Detalhes do perfil de localidade do usuário atual"
 
-#: views.py:98
+#: views.py:99
 msgid "Edit current user locale profile details"
 msgstr "Editar detalhes do perfil de localização do usuário atual"
 
-#: views.py:154
+#: views.py:155
 msgid "Filter selection"
 msgstr "Seleção de filtro"
 
-#: views.py:170
+#: views.py:171
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Resultados para o filtro: %s"
 
-#: views.py:177
+#: views.py:178
 msgid "Filter not found"
 msgstr "Filtro não encontrado"
 
-#: views.py:218
+#: views.py:219
 msgid "Setup items"
 msgstr "Itens da Configuração"
 
-#: views.py:262
+#: views.py:263
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:270
+#: views.py:271
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
 
@@ -352,11 +362,11 @@ msgstr "Nenhum"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -365,11 +375,11 @@ msgstr "Nenhum"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

@@ -2,20 +2,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 apps.py:75 apps.py:83 apps.py:86 forms.py:30 links.py:21
@@ -121,8 +121,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Le nom de ce niveau d'armoire a été ajouté au nom de ses ancêtres."
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL du point de terminaison de l'API montrant la liste des documents à "
 "l'intérieur de cette armoire."
@@ -138,8 +137,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"URL de l'API indiquant un document par rapport à l'armoire qui l'enregistre."
-" Cette URL est différente de l'URL du document canonique."
+"URL de l'API indiquant un document par rapport à l'armoire qui l'enregistre. "
+"Cette URL est différente de l'URL du document canonique."
 
 #: templates/cabinets/cabinet_details.html:21
 msgid "Navigation:"
@@ -184,6 +183,14 @@ msgstr "Demande d'ajout à l'armoire effectuée sur %(count)d documents"
 msgid "Add"
 msgstr "Ajouter"
 
+#: views.py:201
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Ajouter des documents à l'armoire"
+msgstr[1] "Ajouter des documents à l'armoire"
+
 #: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -207,8 +214,7 @@ msgstr ""
 #: views.py:276
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
-msgstr ""
-"Demande de suppression dans l'armoire effectuée sur %(count)d document"
+msgstr "Demande de suppression dans l'armoire effectuée sur %(count)d document"
 
 #: views.py:279
 #, python-format
@@ -219,6 +225,20 @@ msgstr ""
 #: views.py:286
 msgid "Remove"
 msgstr "Supprimer"
+
+#: views.py:288
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Supprimer des documents de l'armoire"
+msgstr[1] "Supprimer des documents de l'armoire"
+
+#: views.py:301
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Supprimer des documents de l'armoire"
 
 #: views.py:312
 msgid "Cabinets from which the selected documents will be removed."

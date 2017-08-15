@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-08-01 07:21+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:43 permissions.py:7
@@ -121,7 +122,6 @@ msgid "View existing users"
 msgstr "Mevcut kullanıcıları görüntüle"
 
 #: search.py:19
-#| msgid "Full name"
 msgid "First name"
 msgstr "Ad"
 
@@ -130,7 +130,6 @@ msgid "Last name"
 msgstr "Soyad"
 
 #: search.py:31
-#| msgid "user"
 msgid "username"
 msgstr "kullanıcı adı"
 
@@ -144,7 +143,8 @@ msgstr "Bu kullanıcıya atamak için virgülle ayrılmış birincil gruplar lis
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
-msgstr "Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
+msgstr ""
+"Kullanıcının hangi gruba ekleneceğini belirten birincil anahtarların listesi."
 
 #: views.py:43
 #, python-format
@@ -198,7 +198,9 @@ msgstr "Kullanıcıyı sil: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda admin arayüzünü kullanın."
+msgstr ""
+"Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda "
+"admin arayüzünü kullanın."
 
 #: views.py:176
 #, python-format
@@ -256,7 +258,9 @@ msgstr "Kullanıcı için şifre değiştir: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Süper kullanıcı ve çalışanların parola sıfırlamasına izin verilmez, bu durumlarda admin arayüzünü kullanın."
+msgstr ""
+"Süper kullanıcı ve çalışanların parola sıfırlamasına izin verilmez, bu "
+"durumlarda admin arayüzünü kullanın."
 
 #: views.py:304
 #, python-format

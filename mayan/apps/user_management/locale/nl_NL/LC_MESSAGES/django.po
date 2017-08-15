@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-07-15 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 permissions.py:7
@@ -122,7 +123,6 @@ msgid "View existing users"
 msgstr "Bekijk bestaande gebruikers"
 
 #: search.py:19
-#| msgid "Full name"
 msgid "First name"
 msgstr ""
 
@@ -131,7 +131,6 @@ msgid "Last name"
 msgstr ""
 
 #: search.py:31
-#| msgid "user"
 msgid "username"
 msgstr "gebruikersnaam"
 
@@ -200,7 +199,9 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de "
+"admin gebruiker voor deze zaken."
 
 #: views.py:176
 #, python-format
@@ -259,7 +260,9 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
+"gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:304
 #, python-format
@@ -269,7 +272,9 @@ msgstr "Succesvol wachtwoord aangepast voor gebruiker: %s"
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"
+msgstr ""
+"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
+"%(error)s"
 
 #~ msgid "Must provide at least one user."
 #~ msgstr "Must provide at least one user."

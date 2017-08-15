@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -51,7 +52,6 @@ msgid "Total nodes"
 msgstr ""
 
 #: apps.py:95
-#| msgid "Link documents"
 msgid "Total documents"
 msgstr "Total de documentos"
 
@@ -118,12 +118,15 @@ msgstr "nuevo nodo secundario"
 
 #: models.py:37
 msgid "This value will be used by other apps to reference this index."
-msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este índice."
+msgstr ""
+"Este valor será utilizado por otras aplicaciones para hacer referencia a "
+"este índice."
 
 #: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Hace que este índice sea visible y actualizado cuando los datos de "
+"documentos cambien."
 
 #: models.py:56 models.py:153
 msgid "Index"
@@ -141,7 +144,9 @@ msgstr "Instancias de índices"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
+msgstr ""
+"Introduzca una plantilla para generar. Use el lenguaje de plantillas de "
+"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:161
 msgid "Indexing expression"
@@ -149,13 +154,17 @@ msgstr "expresión de indexación"
 
 #: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
+msgstr ""
+"Hace que este nodo sea visible y actualizado cuando los datos de los "
+"documentos son cambiados."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
+"no como un padre para otros nodos secundarios."
 
 #: models.py:177
 msgid "Link documents"
@@ -178,7 +187,9 @@ msgstr "raíz"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
+msgstr ""
+"Error indexando documento: %(document)s; expresión: %(expression)s; "
+"%(exception)s"
 
 #: models.py:284
 msgid "Index template node"
@@ -302,7 +313,7 @@ msgstr "contenido del indice: %s"
 msgid "Indexes nodes containing document: %s"
 msgstr "Nodos de indices que contienen el documento: %s"
 
-#: views.py:335
+#: views.py:337
 msgid "Index rebuild queued successfully."
 msgstr "Reconstrucción de Índices en espera de forma exitosa."
 
@@ -373,9 +384,11 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -412,11 +425,11 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

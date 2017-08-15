@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:23-0400\n"
+"POT-Creation-Date: 2017-08-15 01:59-0400\n"
 "PO-Revision-Date: 2017-07-30 19:40+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:53 apps.py:146 apps.py:151 links.py:39 permissions.py:7 queues.py:8
@@ -38,7 +39,9 @@ msgstr "İsteğe bağlı meta verileri eksik belgeler"
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr "Bir MetadataType örnek başvurusu ve bu meta veri türü için bir değer içeren bir sorgu"
+msgstr ""
+"Bir MetadataType örnek başvurusu ve bu meta veri türü için bir değer içeren "
+"bir sorgu"
 
 #: apps.py:122
 msgid "Metadata type name"
@@ -124,7 +127,6 @@ msgid "None"
 msgstr "Yok"
 
 #: forms.py:184
-#| msgid "Optional metadata"
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
@@ -145,7 +147,6 @@ msgid "Metadata types"
 msgstr "Meta veri türleri"
 
 #: links.py:48
-#| msgid "Document type"
 msgid "Document types"
 msgstr "Doküman türleri"
 
@@ -165,13 +166,17 @@ msgstr "Düzenle"
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
-msgstr "Bu değere referans vermek için diğer uygulamalar tarafından kullanılan ad. Python için  ayrılmış kelimeler veya boşluklar kullanmayın."
+msgstr ""
+"Bu değere referans vermek için diğer uygulamalar tarafından kullanılan ad. "
+"Python için  ayrılmış kelimeler veya boşluklar kullanmayın."
 
 #: models.py:51
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+"İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili "
+"kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:55 search.py:22
 msgid "Default"
@@ -180,9 +185,12 @@ msgstr "Varsayılan"
 #: models.py:60
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
-msgstr "İşlemek için bir şablon girin. Virgülle ayrılmış bir dizge ile sonuçlanmalıdır. Django'nun varsayılan şablonlama dili (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/) kullanın."
+"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
+"ref/templates/builtins/)."
+msgstr ""
+"İşlemek için bir şablon girin. Virgülle ayrılmış bir dizge ile "
+"sonuçlanmalıdır. Django'nun varsayılan şablonlama dili (https://docs."
+"djangoproject.com/en/1.7/ref/templates/builtins/) kullanın."
 
 #: models.py:65 search.py:25
 msgid "Lookup"
@@ -192,7 +200,9 @@ msgstr "Yukarı Bak"
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi reddedecektir."
+msgstr ""
+"Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi "
+"reddedecektir."
 
 #: models.py:72 search.py:28
 msgid "Validator"
@@ -200,9 +210,10 @@ msgstr "Doğrulayıcı"
 
 #: models.py:76
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
-msgstr "Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden biçimlendirir."
+"The parser will reformat the value entered to conform to the expected format."
+msgstr ""
+"Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden "
+"biçimlendirir."
 
 #: models.py:78 search.py:31
 msgid "Parser"
@@ -329,14 +340,16 @@ msgstr "Belgeye meta veri türleri ekleyin: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: %(document)s; %(exception)s"
+msgstr ""
+"Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: "
+"%(document)s; %(exception)s"
 
 #: views.py:173
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
 
 #: views.py:183
 #, python-format
@@ -367,7 +380,8 @@ msgstr "Dokümanın meta verilerini düzenleme: %s"
 #: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
+msgstr ""
+"Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
 
 #: views.py:335
 #, python-format
@@ -404,14 +418,18 @@ msgstr "Metadaki veri türlerini belgeden kaldırın: %s"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: %(document)s."
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: "
+"%(document)s."
 
 #: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: %(document)s; %(exception)s"
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: "
+"%(document)s; %(exception)s"
 
 #: views.py:512
 msgid "Create metadata type"
@@ -433,24 +451,20 @@ msgstr "Dahili adı"
 
 #: views.py:578
 #, python-format
-#| msgid "Error updating document indexes; %s"
 msgid "Error updating relationship; %s"
 msgstr "İlişki güncelleme hatası; %s"
 
 #: views.py:582
-#| msgid "Document indexes updated successfully."
 msgid "Relationships updated successfully"
 msgstr "İlişkiler başarıyla güncellendi"
 
 #: views.py:597
 #, python-format
-#| msgid "Optional metadata types for document type: %s"
 msgid "Metadata types for document type: %s"
 msgstr "Doküman türü için meta veri türleri: %s"
 
 #: views.py:630
 #, python-format
-#| msgid "Document type metadata type options"
 msgid "Document types for metadata type: %s"
 msgstr "Meta veri türü için doküman türleri: %s"
 
@@ -633,47 +647,47 @@ msgstr "Meta veri türü için doküman türleri: %s"
 #~ msgstr "What are metadata sets?"
 
 #~ msgid ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
-#~ "useful when creating new documents; selecing a metadata set automatically "
-#~ "attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
+#~ "are useful when creating new documents; selecing a metadata set "
+#~ "automatically attaches it's member metadata types to said document."
 #~ msgstr ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
-#~ "useful when creating new documents; selecing a metadata set automatically "
-#~ "attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
+#~ "are useful when creating new documents; selecing a metadata set "
+#~ "automatically attaches it's member metadata types to said document."
 
 #~ msgid "What are metadata types?"
 #~ msgstr "What are metadata types?"
 
 #~ msgid ""
-#~ "A metadata type defines the characteristics of a value of some kind that can"
-#~ " be attached to a document.  Examples of metadata types are: a client name, "
-#~ "a date, or a project to which several documents belong.  A metadata type's "
-#~ "name is the internal identifier with which it can be referenced to by other "
-#~ "modules such as the indexing module, the title is the value that is shown to"
-#~ " the users, the default value is the value an instance of this metadata type"
-#~ " will have initially, and the lookup value turns an instance of a metadata "
-#~ "of this type into a choice list which options are the result of the lookup's"
-#~ " code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that "
+#~ "can be attached to a document.  Examples of metadata types are: a client "
+#~ "name, a date, or a project to which several documents belong.  A metadata "
+#~ "type's name is the internal identifier with which it can be referenced to "
+#~ "by other modules such as the indexing module, the title is the value that "
+#~ "is shown to the users, the default value is the value an instance of this "
+#~ "metadata type will have initially, and the lookup value turns an instance "
+#~ "of a metadata of this type into a choice list which options are the "
+#~ "result of the lookup's code execution."
 #~ msgstr ""
-#~ "A metadata type defines the characteristics of a value of some kind that can"
-#~ " be attached to a document.  Examples of metadata types are: a client name, "
-#~ "a date, or a project to which several documents belong.  A metadata type's "
-#~ "name is the internal identifier with which it can be referenced to by other "
-#~ "modules such as the indexing module, the title is the value that is shown to"
-#~ " the users, the default value is the value an instance of this metadata type"
-#~ " will have initially, and the lookup value turns an instance of a metadata "
-#~ "of this type into a choice list which options are the result of the lookup's"
-#~ " code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that "
+#~ "can be attached to a document.  Examples of metadata types are: a client "
+#~ "name, a date, or a project to which several documents belong.  A metadata "
+#~ "type's name is the internal identifier with which it can be referenced to "
+#~ "by other modules such as the indexing module, the title is the value that "
+#~ "is shown to the users, the default value is the value an instance of this "
+#~ "metadata type will have initially, and the lookup value turns an instance "
+#~ "of a metadata of this type into a choice list which options are the "
+#~ "result of the lookup's code execution."
 
 #~ msgid " Available functions: %s"
 #~ msgstr " Available functions: %s"
 
 #~ msgid ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
-#~ "User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
+#~ "in User.objects.all()].%s"
 #~ msgstr ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
-#~ "User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
+#~ "in User.objects.all()].%s"
 
 #~ msgid "Error deleting document indexes; %s"
 #~ msgstr "Error deleting document indexes; %s"

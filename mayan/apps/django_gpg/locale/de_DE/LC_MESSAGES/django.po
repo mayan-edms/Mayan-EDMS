@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -13,14 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2016-05-20 21:54+0000\n"
 "Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -73,7 +74,9 @@ msgstr "Begriff"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird"
+msgstr ""
+"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
+"wird"
 
 #: links.py:13
 msgid "Delete"
@@ -145,7 +148,9 @@ msgstr "Signaturfehler"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+msgstr ""
+"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
+"verfügbar."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -283,12 +288,12 @@ msgstr "Neuen Schlüssel hochladen"
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/private "
-#~ "pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/"
+#~ "private pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
-#~ "that is part of a public/private pair the private key will be deleted as "
-#~ "well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
+#~ "key that is part of a public/private pair the private key will be deleted "
+#~ "as well."
 
 #~ msgid "results"
 #~ msgstr "results"

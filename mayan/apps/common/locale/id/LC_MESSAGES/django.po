@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-07-15 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:76 settings.py:11
@@ -24,19 +25,22 @@ msgid "Common"
 msgstr ""
 
 #: apps.py:81
-#| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr ""
 
-#: classes.py:109
+#: classes.py:146
 msgid "Available attributes: \n"
+msgstr ""
+
+#: dashboards.py:7
+msgid "Main"
 msgstr ""
 
 #: forms.py:27
 msgid "Selection"
 msgstr ""
 
-#: forms.py:135
+#: forms.py:138
 msgid "Filter"
 msgstr ""
 
@@ -87,7 +91,7 @@ msgstr ""
 msgid "About this"
 msgstr ""
 
-#: links.py:12 views.py:52
+#: links.py:12 views.py:53
 msgid "Check for updates"
 msgstr ""
 
@@ -123,11 +127,11 @@ msgstr ""
 msgid "Forum"
 msgstr ""
 
-#: links.py:47 views.py:191
+#: links.py:47 views.py:192
 msgid "License"
 msgstr "Lisensi"
 
-#: links.py:50 views.py:205
+#: links.py:50 views.py:206
 msgid "Other packages licenses"
 msgstr ""
 
@@ -139,7 +143,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: links.py:61 queues.py:10 views.py:235
+#: links.py:61 queues.py:10 views.py:236
 msgid "Tools"
 msgstr ""
 
@@ -163,17 +167,17 @@ msgstr ""
 msgid "User"
 msgstr "Pengguna"
 
-#: mixins.py:85
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr ""
 
-#: mixins.py:86
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
-#: mixins.py:246
+#: mixins.py:245
 msgid "Object"
 msgstr ""
 
@@ -231,8 +235,7 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 
 #: settings.py:29
@@ -259,53 +262,53 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:45
+#: views.py:46
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:49
+#: views.py:50
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:66
+#: views.py:67
 msgid "Current user details"
 msgstr ""
 
-#: views.py:71
+#: views.py:72
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:91
+#: views.py:92
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:98
+#: views.py:99
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:154
+#: views.py:155
 msgid "Filter selection"
 msgstr ""
 
-#: views.py:170
+#: views.py:171
 #, python-format
 msgid "Results for filter: %s"
 msgstr ""
 
-#: views.py:177
+#: views.py:178
 msgid "Filter not found"
 msgstr ""
 
-#: views.py:218
+#: views.py:219
 msgid "Setup items"
 msgstr ""
 
-#: views.py:262
+#: views.py:263
 msgid "No action selected."
 msgstr "tidak ada aksi yang dipilih"
 
-#: views.py:270
+#: views.py:271
 msgid "Must select at least one item."
 msgstr "pilih salah satu item"
 
@@ -347,11 +350,11 @@ msgstr ""
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -360,11 +363,11 @@ msgstr ""
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

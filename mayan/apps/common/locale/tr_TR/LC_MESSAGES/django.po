@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:22-0400\n"
+"POT-Creation-Date: 2017-08-15 01:58-0400\n"
 "PO-Revision-Date: 2017-07-30 19:11+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:76 settings.py:11
@@ -26,19 +27,22 @@ msgid "Common"
 msgstr "Ortak"
 
 #: apps.py:81
-#| msgid "Anonymous user"
 msgid "Anonymous"
 msgstr "Anonim"
 
-#: classes.py:109
+#: classes.py:146
 msgid "Available attributes: \n"
 msgstr "Kullanılabilir özellikler:\n"
+
+#: dashboards.py:7
+msgid "Main"
+msgstr ""
 
 #: forms.py:27
 msgid "Selection"
 msgstr "Seçim"
 
-#: forms.py:135
+#: forms.py:138
 msgid "Filter"
 msgstr "Filtre"
 
@@ -89,7 +93,7 @@ msgstr "%(object)s başarıyla güncellendi."
 msgid "About this"
 msgstr "Bunun hakkında"
 
-#: links.py:12 views.py:52
+#: links.py:12 views.py:53
 msgid "Check for updates"
 msgstr "Güncellemeleri kontrol et"
 
@@ -125,11 +129,11 @@ msgstr "Veri filtreleri"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:47 views.py:191
+#: links.py:47 views.py:192
 msgid "License"
 msgstr "Lisans"
 
-#: links.py:50 views.py:205
+#: links.py:50 views.py:206
 msgid "Other packages licenses"
 msgstr "Diğer paket lisansları"
 
@@ -141,7 +145,7 @@ msgstr "Yükleme"
 msgid "Support"
 msgstr "Destek"
 
-#: links.py:61 queues.py:10 views.py:235
+#: links.py:61 queues.py:10 views.py:236
 msgid "Tools"
 msgstr "Araçlar"
 
@@ -165,17 +169,17 @@ msgstr "Sistem"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: mixins.py:85
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "İşlem %(count)d nesnesi üzerinde gerçekleştirildi"
 
-#: mixins.py:86
+#: mixins.py:85
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "İşlem %(count)d nesneleri üzerinde gerçekleştirildi"
 
-#: mixins.py:246
+#: mixins.py:245
 msgid "Object"
 msgstr "Nesne"
 
@@ -233,23 +237,28 @@ msgstr "Tüm uygulamalara günlük kaydını otomatik olarak etkinleştirin."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Veritabanına bağımlı arka plan görevlerini geciktirme zamanını oluşturmak için kullanılır."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Veritabanına bağımlı arka plan görevlerini geciktirme zamanını oluşturmak "
+"için kullanılır."
 
 #: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Sayfa başına kaç tane nesnenin görüntüleneceğini belirten bir tam sayı."
+msgstr ""
+"Sayfa başına kaç tane nesnenin görüntüleneceğini belirten bir tam sayı."
 
 #: settings.py:35
 msgid "A storage backend that all workers can use to share files."
-msgstr "Tüm çalışanların dosyaları paylaşmak için kullanabileceği bir depolama alanı."
+msgstr ""
+"Tüm çalışanların dosyaları paylaşmak için kullanabileceği bir depolama alanı."
 
 #: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Geçici dizin, küçük resimleri, önizlemeleri ve geçici dosyaları saklamak için site genelinde kullanılır."
+msgstr ""
+"Geçici dizin, küçük resimleri, önizlemeleri ve geçici dosyaları saklamak "
+"için site genelinde kullanılır."
 
 #: settings.py:48
 msgid "Path to the logfile that will track errors during production."
@@ -259,55 +268,56 @@ msgstr "Üretim sırasında hataları izleyecek olan günlük dosyasının yolu.
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Harfler, rakamlar ve alt çizgilerden oluşan geçerli bir 'dahili ad' girin."
+msgstr ""
+"Harfler, rakamlar ve alt çizgilerden oluşan geçerli bir 'dahili ad' girin."
 
-#: views.py:45
+#: views.py:46
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "Kullandığınız sürüm güncelliğini yitirmiştir. En son sürümü %s"
 
-#: views.py:49
+#: views.py:50
 msgid "Your version is up-to-date."
 msgstr "Sürümünüz güncel."
 
-#: views.py:66
+#: views.py:67
 msgid "Current user details"
 msgstr "Geçerli kullanıcı ayrıntıları"
 
-#: views.py:71
+#: views.py:72
 msgid "Edit current user details"
 msgstr "Geçerli kullanıcı ayrıntılarını düzenle"
 
-#: views.py:91
+#: views.py:92
 msgid "Current user locale profile details"
 msgstr "Geçerli kullanıcı yerel ayarları profil ayrıntıları"
 
-#: views.py:98
+#: views.py:99
 msgid "Edit current user locale profile details"
 msgstr "Geçerli kullanıcı yerel ayarları ayrıntılarını düzenle"
 
-#: views.py:154
+#: views.py:155
 msgid "Filter selection"
 msgstr "Filtre seçimi"
 
-#: views.py:170
+#: views.py:171
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Filtre için sonuçlar: %s"
 
-#: views.py:177
+#: views.py:178
 msgid "Filter not found"
 msgstr "Filtre bulunamadı"
 
-#: views.py:218
+#: views.py:219
 msgid "Setup items"
 msgstr "Kurulum öğeleri"
 
-#: views.py:262
+#: views.py:263
 msgid "No action selected."
 msgstr "İşlem seçilmedi."
 
-#: views.py:270
+#: views.py:271
 msgid "Must select at least one item."
 msgstr "En az bir öğe seçmelisiniz."
 
@@ -349,11 +359,11 @@ msgstr "Yok"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -362,11 +372,11 @@ msgstr "Yok"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

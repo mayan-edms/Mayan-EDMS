@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Translators:
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-03 01:24-0400\n"
+"POT-Creation-Date: 2017-08-15 02:00-0400\n"
 "PO-Revision-Date: 2017-07-24 19:19+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 permissions.py:7
@@ -125,7 +126,6 @@ msgid "View existing users"
 msgstr "Afficher les utilisateurs existants"
 
 #: search.py:19
-#| msgid "Full name"
 msgid "First name"
 msgstr "Prénom"
 
@@ -134,7 +134,6 @@ msgid "Last name"
 msgstr "Nom"
 
 #: search.py:31
-#| msgid "user"
 msgid "username"
 msgstr "utilisateur"
 
@@ -144,7 +143,9 @@ msgstr "Nom"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Liste séparée par des virgules des clés primaires de groupe pour attribuer cet utilisateur à."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de groupe pour attribuer "
+"cet utilisateur à."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
@@ -181,12 +182,14 @@ msgstr "Utilisateur \"%s\" créé avec succès."
 #: views.py:135
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
+msgstr ""
+"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
 
 #: views.py:137
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
+msgstr ""
+"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
 
 #: views.py:146
 msgid "Delete user"
@@ -203,7 +206,9 @@ msgstr "Supprimer l'utilisateur: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
+msgstr ""
+"La suppression des comptes super utilisateur et staff n'est pas autorisée "
+"ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:176
 #, python-format
@@ -213,7 +218,8 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:182
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr ""
+"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:198
 #, python-format
@@ -236,12 +242,14 @@ msgstr "Membre des groupes : %s"
 #: views.py:252
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
+msgstr ""
+"Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
 
 #: views.py:254
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
+msgstr ""
+"Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
 
 #: views.py:262
 msgid "Submit"
@@ -262,7 +270,10 @@ msgstr "Changer le mot de passe pour l'utilisateur: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
+msgstr ""
+"La réinitialisation des mots de passe pour les comptes super utilisateur et "
+"staff n'est pas autorisée ici, veuillez le faire via l'interface "
+"d'administration."
 
 #: views.py:304
 #, python-format
@@ -272,7 +283,9 @@ msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur : %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\" : %(error)s"
+msgstr ""
+"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
+"\"%(user)s\" : %(error)s"
 
 #~ msgid "Must provide at least one user."
 #~ msgstr "Must provide at least one user."
