@@ -97,7 +97,7 @@ msgstr "Apri dropdown"
 #: templates/appearance/calculate_form_title.html:16
 #, python-format
 msgid "Details for: %(object)s"
-msgstr "Detaglio per: %(object)s"
+msgstr "Dettaglio per: %(object)s"
 
 #: templates/appearance/calculate_form_title.html:19
 #, python-format
