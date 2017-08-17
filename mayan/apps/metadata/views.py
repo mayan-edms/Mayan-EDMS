@@ -359,7 +359,7 @@ class DocumentMetadataListView(SingleObjectListView):
             'title': _('Metadata for document: %s') % document,
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().metadata.all()
 
 
@@ -545,9 +545,6 @@ class MetadataTypeEditView(SingleObjectEditView):
 class MetadataTypeListView(SingleObjectListView):
     view_permission = permission_metadata_type_view
 
-    def get_queryset(self):
-        return MetadataType.objects.all()
-
     def get_extra_context(self):
         return {
             'extra_columns': (
@@ -559,6 +556,9 @@ class MetadataTypeListView(SingleObjectListView):
             'hide_link': True,
             'title': _('Metadata types'),
         }
+
+    def get_object_list(self):
+        return MetadataType.objects.all()
 
 
 class SetupDocumentTypeMetadataTypes(FormView):

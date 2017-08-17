@@ -210,7 +210,7 @@ class UserMailerLogEntryListView(SingleObjectListView):
             'title': _('%s error log') % self.get_user_mailer(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_user_mailer().error_log.all()
 
     def get_user_mailer(self):

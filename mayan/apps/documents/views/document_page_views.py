@@ -41,15 +41,15 @@ class DocumentPageListView(SingleObjectListView):
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    def get_queryset(self):
-        return self.get_document().pages.all()
-
     def get_extra_context(self):
         return {
             'list_as_items': True,
             'object': self.get_document(),
             'title': _('Pages for document: %s') % self.get_document(),
         }
+
+    def get_object_list(self):
+        return self.get_document().pages.all()
 
 
 class DocumentPageNavigationBase(RedirectView):

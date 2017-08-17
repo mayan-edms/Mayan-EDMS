@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.core.files import File
 
 from django_downloadview.test import assert_download_response
@@ -8,9 +10,6 @@ from django_gpg.models import Key
 from documents.models import DocumentVersion
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
@@ -45,7 +44,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.get(
             'signatures:document_version_signature_list',
@@ -54,7 +53,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 403)
 
-    def test_signature_list_view_with_permission(self):
+    def test_signature_list_view_with_access(self):
         with open(TEST_KEY_FILE) as file_object:
             Key.objects.create(key_data=file_object.read())
 
@@ -69,10 +68,11 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_view.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_view
         )
 
         response = self.get(
@@ -97,7 +97,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.get(
             'signatures:document_version_signature_details',
@@ -106,7 +106,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 403)
 
-    def test_signature_detail_view_with_permission(self):
+    def test_signature_detail_view_with_access(self):
         with open(TEST_KEY_FILE) as file_object:
             Key.objects.create(key_data=file_object.read())
 
@@ -121,10 +121,11 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_view.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_view
         )
 
         response = self.get(
@@ -140,7 +141,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 file_object=file_object
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         with open(TEST_SIGNATURE_FILE_PATH) as file_object:
             response = self.post(
@@ -152,16 +153,17 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
-    def test_signature_upload_view_with_permission(self):
+    def test_signature_upload_view_with_access(self):
         with open(TEST_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_upload.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_upload
         )
 
         with open(TEST_SIGNATURE_FILE_PATH) as file_object:
@@ -186,7 +188,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.get(
             'signatures:document_version_signature_download',
@@ -195,7 +197,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 403)
 
-    def test_signature_download_view_with_permission(self):
+    def test_signature_download_view_with_access(self):
         with open(TEST_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
@@ -207,10 +209,11 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_download.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_download
         )
 
         self.expected_content_type = 'application/octet-stream; charset=utf-8'
@@ -240,10 +243,11 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_view.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_view
         )
 
         response = self.post(
@@ -254,7 +258,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
-    def test_signature_delete_view_with_permission(self):
+    def test_signature_delete_view_with_access(self):
         with open(TEST_KEY_FILE) as file_object:
             Key.objects.create(key_data=file_object.read())
 
@@ -269,13 +273,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_delete.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_delete
         )
-        self.role.permissions.add(
-            permission_document_version_signature_view.stored_permission
+        self.grant_access(
+            obj=document,
+            permission=permission_document_version_signature_view
         )
 
         response = self.post(
@@ -287,6 +293,9 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_missing_signature_verify_view_no_permission(self):
+        # Silence converter logging
+        logging.getLogger('converter.backends').setLevel(logging.CRITICAL)
+
         for document in self.document_type.documents.all():
             document.delete(to_trash=False)
 
@@ -311,7 +320,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         DocumentVersion._post_save_hooks = old_hooks
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.post(
             'signatures:all_document_version_signature_verify', follow=True
@@ -325,6 +334,9 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_missing_signature_verify_view_with_permission(self):
+        # Silence converter logging
+        logging.getLogger('converter.backends').setLevel(logging.CRITICAL)
+
         for document in self.document_type.documents.all():
             document.delete(to_trash=False)
 
@@ -349,10 +361,10 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         DocumentVersion._post_save_hooks = old_hooks
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_version_signature_verify.stored_permission
+        self.grant_permission(
+            permission=permission_document_version_signature_verify
         )
 
         response = self.post(

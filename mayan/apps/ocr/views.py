@@ -156,7 +156,7 @@ class EntryListView(SingleObjectListView):
     }
     view_permission = permission_ocr_document
 
-    def get_queryset(self):
+    def get_object_list(self):
         return DocumentVersionOCRError.objects.all()
 
 
@@ -173,7 +173,7 @@ class DocumentOCRErrorsListView(SingleObjectListView):
             'title': _('OCR errors for document: %s') % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().latest_version.ocr_errors.all()
 
 

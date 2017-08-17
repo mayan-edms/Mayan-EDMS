@@ -183,7 +183,7 @@ class TagListView(SingleObjectListView):
             'title': _('Tags'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_tag_queryset()
 
     def get_tag_queryset(self):

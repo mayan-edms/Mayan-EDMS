@@ -153,7 +153,7 @@ class CabinetListView(SingleObjectListView):
             'title': _('Cabinets'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return Cabinet.objects.root_nodes()
 
 
@@ -177,7 +177,7 @@ class DocumentCabinetListView(CabinetListView):
             'title': _('Cabinets containing document: %s') % self.document,
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.document.document_cabinets().all()
 
 

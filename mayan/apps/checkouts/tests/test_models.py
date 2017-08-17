@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import datetime
+import logging
 import time
 
 from django.contrib.auth import get_user_model
@@ -61,6 +62,9 @@ class DocumentCheckoutTestCase(BaseTestCase):
         )
 
     def test_version_creation_blocking(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
         expiration_datetime = now() + datetime.timedelta(days=1)
 
         DocumentCheckout.objects.checkout_document(
@@ -123,6 +127,9 @@ class DocumentCheckoutTestCase(BaseTestCase):
         self.assertFalse(self.document.is_checked_out())
 
     def test_blocking_new_versions(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
         NewVersionBlock.objects.block(document=self.document)
 
         with self.assertRaises(NewDocumentVersionNotAllowed):

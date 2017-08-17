@@ -24,7 +24,7 @@ class TagMultipleSelectionForm(forms.Form):
         super(TagMultipleSelectionForm, self).__init__(*args, **kwargs)
 
         queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_view, user, queryset=queryset
+            permission=permission_tag_view, queryset=queryset, user=user
         )
 
         self.fields['tags'] = forms.ModelMultipleChoiceField(

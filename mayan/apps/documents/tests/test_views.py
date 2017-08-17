@@ -82,7 +82,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self.get('documents:document_list')
         self.assertContains(response, 'Total: 0', status_code=200)
 
-    def test_document_list_view_with_permissions(self):
+    def test_document_list_view_with_access(self):
         self.grant_access(
             obj=self.document, permission=permission_document_view
         )

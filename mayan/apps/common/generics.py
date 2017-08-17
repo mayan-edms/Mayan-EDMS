@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponseRedirect
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -25,8 +26,7 @@ from .mixins import (
     DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
     FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,
     ObjectListPermissionFilterMixin, ObjectNameMixin,
-    ObjectPermissionCheckMixin, PreserveGetQuerysetMixin, RedirectionMixin,
-    ViewPermissionCheckMixin
+    ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
 
 from .settings import setting_paginate_by
@@ -282,16 +282,36 @@ class MultiFormView(DjangoFormView):
             return self.forms_invalid(forms)
 
 
-class MultipleObjectFormActionView(PreserveGetQuerysetMixin, ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+class MultipleObjectFormActionView(ObjectActionMixin, MultipleObjectMixin, FormExtraKwargsMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
     """
     This view will present a form and upon receiving a POST request will
     perform an action on an object or queryset
     """
     template_name = 'appearance/generic_form.html'
 
+    def __init__(self, *args, **kwargs):
+        result = super(MultipleObjectFormActionView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != MultipleObjectFormActionView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_object_list method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
+
     def form_valid(self, form):
         self.view_action(form=form)
         return super(MultipleObjectFormActionView, self).form_valid(form=form)
+
+    def get_queryset(self):
+        try:
+            return super(MultipleObjectFormActionView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_object_list()
+            return super(MultipleObjectFormActionView, self).get_queryset()
 
 
 class MultipleObjectConfirmActionView(ObjectActionMixin, MultipleObjectMixin, ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
@@ -458,8 +478,28 @@ class SingleObjectDynamicFormEditView(DynamicFormViewMixin, SingleObjectEditView
     pass
 
 
-class SingleObjectListView(PreserveGetQuerysetMixin, PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
     template_name = 'appearance/generic_list.html'
+
+    def __init__(self, *args, **kwargs):
+        result = super(SingleObjectListView, self).__init__(*args, **kwargs)
+
+        if self.__class__.mro()[0].get_queryset != SingleObjectListView.get_queryset:
+            raise ImproperlyConfigured(
+                '%(cls)s is overloading the get_queryset method. Subclasses '
+                'should implement the get_object_list method instead. ' % {
+                    'cls': self.__class__.__name__
+                }
+            )
+
+        return result
 
     def get_paginate_by(self, queryset):
         return setting_paginate_by.value
+
+    def get_queryset(self):
+        try:
+            return super(SingleObjectListView, self).get_queryset()
+        except ImproperlyConfigured:
+            self.queryset = self.get_object_list()
+            return super(SingleObjectListView, self).get_queryset()

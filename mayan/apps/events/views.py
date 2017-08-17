@@ -19,9 +19,6 @@ from .widgets import event_object_link
 class EventListView(SingleObjectListView):
     view_permission = permission_events_view
 
-    def get_queryset(self):
-        return Action.objects.all()
-
     def get_extra_context(self):
         return {
             'extra_columns': (
@@ -35,6 +32,9 @@ class EventListView(SingleObjectListView):
             'hide_object': True,
             'title': _('Events'),
         }
+
+    def get_object_list(self):
+        return Action.objects.all()
 
 
 class ObjectEventListView(EventListView):
@@ -69,14 +69,11 @@ class ObjectEventListView(EventListView):
             'title': _('Events for: %s') % self.content_object,
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return any_stream(self.content_object)
 
 
 class VerbEventListView(SingleObjectListView):
-    def get_queryset(self):
-        return Action.objects.filter(verb=self.kwargs['verb'])
-
     def get_extra_context(self):
         return {
             'extra_columns': (
@@ -92,3 +89,6 @@ class VerbEventListView(SingleObjectListView):
                 'Events of type: %s'
             ) % Event.get_label(self.kwargs['verb']),
         }
+
+    def get_object_list(self):
+        return Action.objects.filter(verb=self.kwargs['verb'])

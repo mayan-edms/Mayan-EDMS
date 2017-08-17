@@ -196,5 +196,5 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             ) % self.get_document_type(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document_type().filenames.all()

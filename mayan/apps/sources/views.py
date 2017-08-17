@@ -45,20 +45,20 @@ from .utils import get_class, get_form_class, get_upload_form_class
 class SourceLogListView(SingleObjectListView):
     view_permission = permission_sources_setup_view
 
-    def get_source(self):
-        return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
-    def get_queryset(self):
-        return self.get_source().logs.all()
-
     def get_extra_context(self):
         return {
             'hide_object': True,
             'object': self.get_source(),
             'title': _('Log entries for source: %s') % self.get_source(),
         }
+
+    def get_object_list(self):
+        return self.get_source().logs.all()
+
+    def get_source(self):
+        return get_object_or_404(
+            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
 
 class UploadBaseView(MultiFormView):

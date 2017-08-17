@@ -5,7 +5,6 @@ import shutil
 
 from django.test import override_settings
 
-from acls.models import AccessControlList
 from checkouts.models import NewVersionBlock
 from common.tests.test_views import GenericViewTestCase
 from common.utils import fs_cleanup, mkdtemp
@@ -80,10 +79,9 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
-        acl = AccessControlList.objects.create(
-            content_object=self.document_type, role=self.role
+        self.grant_access(
+            obj=self.document_type, permission=permission_document_create
         )
-        acl.permissions.add(permission_document_create.stored_permission)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             response = self.post(

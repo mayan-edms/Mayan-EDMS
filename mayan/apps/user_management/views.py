@@ -240,7 +240,7 @@ class UserListView(SingleObjectListView):
             'title': _('Users'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return get_user_model().objects.exclude(
             is_superuser=True
         ).exclude(is_staff=True).order_by('last_name', 'first_name')

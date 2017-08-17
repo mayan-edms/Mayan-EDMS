@@ -64,7 +64,7 @@ class DocumentListView(SingleObjectListView):
             'title': _('All documents'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document_queryset().filter(is_stub=False)
 
 
@@ -203,7 +203,7 @@ class DocumentDuplicatesListView(DocumentListView):
         )
         return context
 
-    def get_queryset(self):
+    def get_object_list(self):
         try:
             return DuplicatedDocument.objects.get(
                 document=self.get_document()

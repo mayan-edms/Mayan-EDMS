@@ -47,7 +47,7 @@ class DocumentVersionListView(SingleObjectListView):
             'title': _('Versions of document: %s') % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().versions.order_by('-timestamp')
 
 

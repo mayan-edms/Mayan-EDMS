@@ -61,7 +61,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
             ) % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().workflows.all()
 
 
@@ -87,7 +87,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'workflow_instance': self.get_workflow_instance(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_workflow_instance(self):
@@ -221,7 +221,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
             'title': _('States of workflow: %s') % self.get_workflow()
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_workflow().states.all()
 
     def get_workflow(self):
@@ -330,7 +330,7 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
     def get_form_schema(self):
         return {'fields': self.get_class().fields}
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_workflow_state().actions.all()
 
     def get_workflow_state(self):
@@ -379,7 +379,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_workflow().states.all()
 
     def get_success_url(self):
@@ -437,12 +437,6 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
 class SetupWorkflowTransitionListView(SingleObjectListView):
     view_permission = permission_workflow_view
 
-    def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
-
-    def get_queryset(self):
-        return self.get_workflow().transitions.all()
-
     def get_extra_context(self):
         return {
             'hide_link': True,
@@ -452,10 +446,31 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
             ) % self.get_workflow()
         }
 
+    def get_object_list(self):
+        return self.get_workflow().transitions.all()
+
+    def get_workflow(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
 
 class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
     form_class = WorkflowTransitionForm
     view_permission = permission_workflow_edit
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.workflow = self.get_workflow()
+        try:
+            self.object.save()
+        except IntegrityError:
+            messages.error(
+                self.request, _('Unable to save transition; integrity error.')
+            )
+            return super(
+                SetupWorkflowTransitionCreateView, self
+            ).form_invalid(form)
+        else:
+            return HttpResponseRedirect(self.get_success_url())
 
     def get_extra_context(self):
         return {
@@ -472,10 +487,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         kwargs['workflow'] = self.get_workflow()
         return kwargs
 
-    def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
-
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_workflow().transitions.all()
 
     def get_success_url(self):
@@ -484,20 +496,8 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
             args=(self.kwargs['pk'],)
         )
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.workflow = self.get_workflow()
-        try:
-            self.object.save()
-        except IntegrityError:
-            messages.error(
-                self.request, _('Unable to save transition; integrity error.')
-            )
-            return super(
-                SetupWorkflowTransitionCreateView, self
-            ).form_invalid(form)
-        else:
-            return HttpResponseRedirect(self.get_success_url())
+    def get_workflow(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
@@ -547,14 +547,14 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
 class WorkflowListView(SingleObjectListView):
     view_permission = permission_workflow_view
 
-    def get_queryset(self):
-        return WorkflowRuntimeProxy.objects.all()
-
     def get_extra_context(self):
         return {
             'hide_object': True,
             'title': _('Workflows')
         }
+
+    def get_object_list(self):
+        return WorkflowRuntimeProxy.objects.all()
 
 
 class WorkflowDocumentListView(DocumentListView):
@@ -641,7 +641,7 @@ class WorkflowStateListView(SingleObjectListView):
             'title': _('States of workflow: %s') % self.get_workflow()
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return WorkflowStateRuntimeProxy.objects.filter(
             workflow=self.get_workflow()
         )

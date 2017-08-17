@@ -177,7 +177,7 @@ class FilterResultListView(SingleObjectListView):
         except KeyError:
             raise Http404(ugettext('Filter not found'))
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_filter().get_queryset(user=self.request.user)
 
 
