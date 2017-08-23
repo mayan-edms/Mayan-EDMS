@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentOCRView, APIDocumentPageContentView, APIDocumentVersionOCRView
+    APIDocumentOCRView, APIDocumentPageOCRContentView,
+    APIDocumentVersionOCRView
 )
 from .views import (
     DocumentAllSubmitView, DocumentOCRContent, DocumentOCRDownloadView,
@@ -59,7 +60,8 @@ api_urls = [
         name='document-version-ocr-submit-view'
     ),
     url(
-        r'^page/(?P<pk>\d+)/content/$', APIDocumentPageContentView.as_view(),
+        r'^page/(?P<pk>\d+)/content/$',
+        APIDocumentPageOCRContentView.as_view(),
         name='document-page-content-view'
     ),
 ]

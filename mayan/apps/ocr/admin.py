@@ -3,12 +3,12 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    DocumentPageContent, DocumentTypeSettings, DocumentVersionOCRError
+    DocumentPageOCRContent, DocumentTypeSettings, DocumentVersionOCRError
 )
 
 
-@admin.register(DocumentPageContent)
-class DocumentPageContentAdmin(admin.ModelAdmin):
+@admin.register(DocumentPageOCRContent)
+class DocumentPageOCRContentAdmin(admin.ModelAdmin):
     list_display = ('document_page',)
 
 

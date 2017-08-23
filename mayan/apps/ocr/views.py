@@ -14,7 +14,7 @@ from common.generics import (
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
 
-from .forms import DocumentContentForm, DocumentTypeSelectForm
+from .forms import DocumentOCRContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -38,6 +38,27 @@ class DocumentAllSubmitView(ConfirmView):
         messages.success(
             self.request, _('%d documents added to the OCR queue.') % count
         )
+
+
+class DocumentOCRContent(SingleObjectDetailView):
+    form_class = DocumentOCRContentForm
+    model = Document
+    object_permission = permission_ocr_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentOCRContent, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_object(),
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('OCR result for document: %s') % self.get_object(),
+        }
 
 
 class DocumentSubmitView(ConfirmView):
@@ -125,27 +146,6 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
             'title': _(
                 'Edit OCR settings for document type: %s'
             ) % self.get_object().document_type
-        }
-
-
-class DocumentOCRContent(SingleObjectDetailView):
-    form_class = DocumentContentForm
-    model = Document
-    object_permission = permission_ocr_content_view
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentOCRContent, self).dispatch(
-            request, *args, **kwargs
-        )
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'document': self.get_object(),
-            'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('OCR result for document: %s') % self.get_object(),
         }
 
 
