@@ -84,6 +84,7 @@ INSTALLED_APPS = (
     'checkouts',
     'document_comments',
     'document_indexing',
+    'document_parsing',
     'document_signatures',
     'document_states',
     'documents',
