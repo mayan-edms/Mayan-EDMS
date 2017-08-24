@@ -23,7 +23,7 @@ class DocumentPageContentManager(models.Manager):
         try:
             Parser.parse_document_version(document_version=document_version)
         except Exception as exception:
-            logger.exception(
+            logger.error(
                 'Parsing error for document version: %d; %s',
                 document_version.pk, exception,
             )
