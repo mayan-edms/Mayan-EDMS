@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import DocumentPage, DocumentType, DocumentVersion
+from documents.models import DocumentPage, DocumentVersion
 
 from .managers import DocumentPageContentManager
 
@@ -30,11 +30,11 @@ class DocumentPageContent(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionParseError(models.Model):
     document_version = models.ForeignKey(
-        DocumentVersion, on_delete=models.CASCADE, related_name='parse_errors',
-        verbose_name=_('Document version')
+        DocumentVersion, on_delete=models.CASCADE,
+        related_name='parsing_errors', verbose_name=_('Document version')
     )
     datetime_submitted = models.DateTimeField(
-        auto_add_now=True, db_index=True, verbose_name=_('Date time submitted')
+        auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
     )
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 

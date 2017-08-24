@@ -1,75 +1,19 @@
 from __future__ import absolute_import, unicode_literals
 
-from rest_framework import generics, status
+from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.models import Document, DocumentPage, DocumentVersion
+from documents.models import DocumentPage
 from rest_api.permissions import MayanPermission
 
 from .models import DocumentPageContent
-from .permissions import permission_ocr_content_view, permission_ocr_document
+from .permissions import permission_content_view
 from .serializers import DocumentPageContentSerializer
-
-
-class APIDocumentOCRView(generics.GenericAPIView):
-    mayan_object_permissions = {
-        'POST': (permission_ocr_document,)
-    }
-    permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
-
-    def get_serializer_class(self):
-        return None
-
-    def post(self, request, *args, **kwargs):
-        """
-        Submit a document for OCR.
-        ---
-        omit_serializer: true
-        parameters:
-            - name: pk
-              paramType: path
-              type: number
-        responseMessages:
-            - code: 202
-              message: Accepted
-        """
-
-        self.get_object().submit_for_ocr()
-        return Response(status=status.HTTP_202_ACCEPTED)
-
-
-class APIDocumentVersionOCRView(generics.GenericAPIView):
-    mayan_object_permissions = {
-        'POST': (permission_ocr_document,)
-    }
-    permission_classes = (MayanPermission,)
-    queryset = DocumentVersion.objects.all()
-
-    def get_serializer_class(self):
-        return None
-
-    def post(self, request, *args, **kwargs):
-        """
-        Submit a document version for OCR.
-        ---
-        omit_serializer: true
-        parameters:
-            - name: pk
-              paramType: path
-              type: number
-        responseMessages:
-            - code: 202
-              message: Accepted
-        """
-
-        self.get_object().submit_for_ocr()
-        return Response(status=status.HTTP_202_ACCEPTED)
 
 
 class APIDocumentPageContentView(generics.RetrieveAPIView):
     """
-    Returns the OCR content of the selected document page.
+    Returns the content of the selected document page.
     ---
     GET:
         parameters:
@@ -79,7 +23,7 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
     """
 
     mayan_object_permissions = {
-        'GET': (permission_ocr_content_view,),
+        'GET': (permission_content_view,),
     }
     permission_classes = (MayanPermission,)
     serializer_class = DocumentPageContentSerializer
@@ -89,9 +33,9 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
         instance = self.get_object()
 
         try:
-            ocr_content = instance.ocr_content
+            content = instance.content
         except DocumentPageContent.DoesNotExist:
-            ocr_content = DocumentPageContent.objects.none()
+            content = DocumentPageContent.objects.none()
 
-        serializer = self.get_serializer(ocr_content)
+        serializer = self.get_serializer(content)
         return Response(serializer.data)

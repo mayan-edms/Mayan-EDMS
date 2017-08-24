@@ -6,10 +6,10 @@ from django.utils.html import conditional_escape
 from .models import DocumentPageContent
 
 
-def get_document_ocr_content(document):
+def get_document_content(document):
     for page in document.pages.all():
         try:
-            page_content = page.ocr_content.content
+            page_content = page.content.content
         except DocumentPageContent.DoesNotExist:
             pass
         else:

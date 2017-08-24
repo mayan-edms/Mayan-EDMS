@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
+from datetime import timedelta
 import logging
 
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.db.models.signals import post_save
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -21,14 +22,36 @@ from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
+from .events import event_parsing_document_version_submit
 from .handlers import handler_parse_document_version
 from .links import (
-    link_document_content, link_entry_list, link_document_content_errors_list,
-    link_document_content_download
+    link_document_content, link_document_content_download,
+    link_document_parsing_errors_list, link_document_submit_multiple,
+    link_document_submit, link_document_type_submit, link_error_list
 )
 from .permissions import permission_content_view
 
 logger = logging.getLogger(__name__)
+
+
+def document_parsing_submit(self):
+    latest_version = self.latest_version
+    # Don't error out if document has no version
+    if latest_version:
+        latest_version.submit_for_parsing()
+
+
+def document_version_parsing_submit(self):
+    from .tasks import task_parse_document_version
+
+    event_parsing_document_version_submit.commit(
+        action_object=self.document, target=self
+    )
+
+    task_parse_document_version.apply_async(
+        eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
+        kwargs={'document_version_pk': self.pk},
+    )
 
 
 class DocumentParsingApp(MayanAppConfig):
@@ -45,15 +68,16 @@ class DocumentParsingApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        DocumentType = apps.get_model(
-            app_label='documents', model_name='DocumentType'
-        )
-
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
 
         DocumentVersionParseError = self.get_model('DocumentVersionParseError')
+
+        Document.add_to_class('submit_for_parsing', document_parsing_submit)
+        DocumentVersion.add_to_class(
+            'submit_for_parsing', document_version_parsing_submit
+        )
 
         ModelPermission.register(
             model=Document, permissions=(permission_content_view,)
@@ -70,6 +94,18 @@ class DocumentParsingApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersionParseError, label=_('Result'),
             attribute='result'
+        )
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('parsing', Exchange('parsing'), routing_key='parsing'),
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'document_parsing.tasks.task_parse_document_version': {
+                    'queue': 'parsing'
+                },
+            }
         )
 
         document_search.add_model_field(
@@ -89,32 +125,20 @@ class DocumentParsingApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_document_submit,), sources=(Document,)
         )
-        menu_object.bind_links(
-            links=(link_document_type_ocr_settings,), sources=(DocumentType,)
-        )
         menu_secondary.bind_links(
             links=(
-                link_document_content, link_document_ocr_erros_list,
-                link_document_ocr_download
+                link_document_content, link_document_parsing_errors_list,
+                link_document_content_download
             ),
             sources=(
                 'document_parsing:document_content',
-                'document_parsing:document_ocr_error_list',
-                'document_parsing:document_ocr_download',
-            )
-        )
-        menu_secondary.bind_links(
-            links=(link_entry_list,),
-            sources=(
-                'document_parsing:entry_list',
-                'document_parsing:entry_delete_multiple',
-                'document_parsing:entry_re_queue_multiple',
-                DocumentVersionParseError
+                'document_parsing:document_content_download',
+                'document_parsing:document_parsing_error_list',
             )
         )
         menu_tools.bind_links(
             links=(
-                link_entry_list
+                link_document_type_submit, link_error_list,
             )
         )
 
