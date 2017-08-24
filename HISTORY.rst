@@ -27,6 +27,12 @@
 - Add support for dropdown menus to the item list view template.
 - Add support for preserving the file extenstion when downloading a document
   version. GitLab #415.
+- Split OCR app into OCR and parsing.
+- Remove Folders app.
+- Use the literal 'System' instead of the target name when
+  the action user in unknown.
+- Remove the view to submit all document for OCR.
+
 
 2.6.4 (2017-07-26)
 ==================
