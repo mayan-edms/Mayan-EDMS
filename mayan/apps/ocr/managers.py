@@ -47,7 +47,10 @@ class DocumentPageOCRContentManager(models.Manager):
             )
             document_version.ocr_errors.all().delete()
 
-            event_ocr_document_version_finish.commit(target=document_version)
+            event_ocr_document_version_finish.commit(
+                action_object=document_version.document,
+                target=document_version
+            )
 
             post_document_version_ocr.send(
                 sender=document_version.__class__, instance=document_version

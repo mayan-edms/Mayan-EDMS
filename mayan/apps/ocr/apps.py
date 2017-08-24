@@ -41,13 +41,18 @@ logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
-    self.latest_version.submit_for_ocr()
+    latest_version = self.latest_version
+    # Don't error out if document has no version
+    if latest_version:
+        latest_version.submit_for_ocr()
 
 
 def document_version_ocr_submit(self):
     from .tasks import task_do_ocr
 
-    event_ocr_document_version_submit.commit(target=self)
+    event_ocr_document_version_submit.commit(
+        action_object=self.document, target=self
+    )
 
     task_do_ocr.apply_async(
         eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
