@@ -17,10 +17,6 @@ link_document_submit = Link(
     args='resolved_object.id', permissions=(permission_ocr_document,),
     text=_('Submit for OCR'), view='ocr:document_submit'
 )
-link_document_submit_all = Link(
-    icon='fa fa-font', permissions=(permission_ocr_document,),
-    text=_('OCR all documents'), view='ocr:document_submit_all'
-)
 link_document_submit_multiple = Link(
     text=_('Submit for OCR'), view='ocr:document_submit_multiple'
 )

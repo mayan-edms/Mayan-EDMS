@@ -30,9 +30,8 @@ from .handlers import (
 from .links import (
     link_document_content, link_document_ocr_download,
     link_document_ocr_erros_list, link_document_submit,
-    link_document_submit_all, link_document_submit_multiple,
-    link_document_type_ocr_settings, link_document_type_submit,
-    link_entry_list
+    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_document_type_submit, link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .queues import *  # NOQA
@@ -159,8 +158,7 @@ class OCRApp(MayanAppConfig):
         )
         menu_tools.bind_links(
             links=(
-                link_document_submit_all, link_document_type_submit,
-                link_entry_list
+                link_document_type_submit, link_entry_list
             )
         )
 

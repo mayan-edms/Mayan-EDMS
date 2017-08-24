@@ -7,9 +7,9 @@ from .api_views import (
     APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentAllSubmitView, DocumentOCRContent, DocumentOCRDownloadView,
-    DocumentOCRErrorsListView, DocumentSubmitView, DocumentSubmitManyView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
+    DocumentOCRContent, DocumentOCRDownloadView, DocumentOCRErrorsListView,
+    DocumentSubmitView, DocumentSubmitManyView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView, EntryListView
 )
 
 urlpatterns = [
@@ -20,10 +20,6 @@ urlpatterns = [
     url(
         r'^document/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(),
         name='document_submit'
-    ),
-    url(
-        r'^document/all/submit/$', DocumentAllSubmitView.as_view(),
-        name='document_submit_all'
     ),
     url(
         r'^document/type/submit/$', DocumentTypeSubmitView.as_view(),

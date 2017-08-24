@@ -23,23 +23,6 @@ from .permissions import (
 from .utils import get_document_ocr_content
 
 
-class DocumentAllSubmitView(ConfirmView):
-    extra_context = {'title': _('Submit all documents for OCR?')}
-
-    def get_post_action_redirect(self):
-        return reverse('common:tools_list')
-
-    def view_action(self):
-        count = 0
-        for document in Document.objects.all():
-            document.submit_for_ocr()
-            count += 1
-
-        messages.success(
-            self.request, _('%d documents added to the OCR queue.') % count
-        )
-
-
 class DocumentOCRContent(SingleObjectDetailView):
     form_class = DocumentOCRContentForm
     model = Document
