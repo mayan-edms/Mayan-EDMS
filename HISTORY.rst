@@ -32,7 +32,8 @@
 - Use the literal 'System' instead of the target name when
   the action user in unknown.
 - Remove the view to submit all document for OCR.
-
+- When changing document types, don't delete the old metadata that is
+  also found in the new document type. GitLab issue #421.
 
 2.6.4 (2017-07-26)
 ==================

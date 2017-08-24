@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document, DocumentType
 
 from .classes import MetadataLookup
-from .managers import MetadataTypeManager
+from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
 from .settings import setting_available_parsers, setting_available_validators
 
 
@@ -166,6 +166,11 @@ class DocumentMetadata(models.Model):
         return force_text(self.metadata_type)
 
     def delete(self, enforce_required=True, *args, **kwargs):
+        """
+        enforce_required prevents deletion of required metadata at the
+        model level. It used set to False when deleting document metadata
+        on document type change.
+        """
         if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
             raise ValidationError(
                 _('Metadata type is required for this document type.')
@@ -211,6 +216,8 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
+
+    objects = DocumentTypeMetadataTypeManager()
 
     def __str__(self):
         return force_text(self.metadata_type)
