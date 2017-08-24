@@ -1,10 +1,13 @@
 from __future__ import unicode_literals
 
 from datetime import timedelta
+import os
 import time
 
-from common.tests import BaseTestCase
+from django.conf import settings
 from django.test import override_settings
+
+from common.tests import BaseTestCase
 
 from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import DeletedDocument, Document, DocumentType
@@ -12,22 +15,28 @@ from ..models import DeletedDocument, Document, DocumentType
 from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 
 
 @override_settings(OCR_AUTO_OCR=False)
 class GenericDocumentTestCase(BaseTestCase):
+    test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
+
     def setUp(self):
         super(GenericDocumentTestCase, self).setUp()
+        self.test_document_path = os.path.join(
+            settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+            'sample_documents', self.test_document_filename
+        )
 
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(self.test_document_path) as file_object:
             self.document = self.document_type.new_document(
-                file_object=file_object
+                file_object=file_object, label=self.test_document_filename
             )
 
     def tearDown(self):
