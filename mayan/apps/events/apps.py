@@ -12,6 +12,10 @@ from .licenses import *  # NOQA
 from .widgets import event_type_link
 
 
+def event_actor(action):
+    return _('System') if action.actor == action.target else action.actor
+
+
 class EventsApp(MayanAppConfig):
     has_tests = True
     name = 'events'
@@ -26,7 +30,10 @@ class EventsApp(MayanAppConfig):
         SourceColumn(
             source=Action, label=_('Timestamp'), attribute='timestamp'
         )
-        SourceColumn(source=Action, label=_('Actor'), attribute='actor')
+        SourceColumn(
+            source=Action, label=_('Actor'),
+            func=lambda context: event_actor(context['object'])
+        )
         SourceColumn(
             source=Action, label=_('Verb'),
             func=lambda context: event_type_link(context['object'])
