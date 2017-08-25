@@ -25,7 +25,6 @@ from .permissions import (
 )
 from .widgets import jstree_data
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -257,7 +256,9 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                cabinet.documents.add(instance)
+                cabinet.add_document(
+                    document=instance, user=self.request.user
+                )
                 messages.success(
                     self.request, _(
                         'Document: %(document)s added to cabinet: '
@@ -343,7 +344,9 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                cabinet.documents.remove(instance)
+                cabinet.remove_document(
+                    document=instance, user=self.request.user
+                )
                 messages.success(
                     self.request, _(
                         'Document: %(document)s removed from cabinet: '

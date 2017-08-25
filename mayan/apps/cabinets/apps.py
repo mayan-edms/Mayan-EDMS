@@ -37,6 +37,7 @@ class CabinetsApp(MayanAppConfig):
 
     def ready(self):
         super(CabinetsApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -126,3 +127,5 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_remove'
             )
         )
+
+        registry.register(Cabinet)

@@ -13,6 +13,7 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 
+from .events import event_cabinets_add_document, event_cabinets_remove_document
 from .search import cabinet_search  # NOQA
 
 
@@ -39,6 +40,12 @@ class Cabinet(MPTTModel):
     def __str__(self):
         return self.get_full_path()
 
+    def add_document(self, document, user=None):
+        self.documents.add(document)
+        event_cabinets_add_document.commit(
+            action_object=self, actor=user, target=document
+        )
+
     def get_absolute_url(self):
         return reverse('cabinets:cabinet_view', args=(self.pk,))
 
@@ -56,6 +63,12 @@ class Cabinet(MPTTModel):
             result.append(node.label)
 
         return ' / '.join(result)
+
+    def remove_document(self, document, user=None):
+        self.documents.remove(document)
+        event_cabinets_remove_document.commit(
+            action_object=self, actor=user, target=document
+        )
 
     def validate_unique(self, exclude=None):
         # Explicit validation of uniqueness of parent+label as the provided
