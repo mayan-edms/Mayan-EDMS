@@ -9,11 +9,15 @@ from rest_api.classes import APIEndPoint
 
 from .links import link_events_list
 from .licenses import *  # NOQA
-from .widgets import event_type_link
+from .widgets import event_object_link, event_type_link
 
 
 def event_actor(action):
     return _('System') if action.actor == action.target else action.actor
+
+
+def event_action_object(action):
+    return action.action_object if action.action_object != action.target and action.action_object else ''
 
 
 class EventsApp(MayanAppConfig):
@@ -37,6 +41,12 @@ class EventsApp(MayanAppConfig):
         SourceColumn(
             source=Action, label=_('Verb'),
             func=lambda context: event_type_link(context['object'])
+        )
+        SourceColumn(
+            source=Action, label=_('Action object'),
+            func=lambda context: event_object_link(
+                entry=context['object'], attribute='action_object'
+            )
         )
 
         menu_tools.bind_links(links=(link_events_list,))
