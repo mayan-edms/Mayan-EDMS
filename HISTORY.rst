@@ -34,6 +34,7 @@
 - Remove the view to submit all document for OCR.
 - When changing document types, don't delete the old metadata that is
   also found in the new document type. GitLab issue #421.
+- Add tag attach and tag remove events.
 
 2.6.4 (2017-07-26)
 ==================

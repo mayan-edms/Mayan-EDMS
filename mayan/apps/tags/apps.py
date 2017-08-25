@@ -36,6 +36,7 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super(TagsApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -143,3 +144,4 @@ class TagsApp(MayanAppConfig):
                 'tags:single_document_multiple_tag_remove'
             )
         )
+        registry.register(Tag)

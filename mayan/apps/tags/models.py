@@ -11,6 +11,8 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 
+from .events import event_tag_attach, event_tag_remove
+
 
 @python_2_unicode_compatible
 class Tag(models.Model):
@@ -33,8 +35,11 @@ class Tag(models.Model):
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
 
-    def attach_to(self, document):
+    def attach_to(self, document, user=None):
         self.documents.add(document)
+        event_tag_attach.commit(
+            action_object=self, actor=user, target=document
+        )
 
     def get_document_count(self, user):
         queryset = AccessControlList.objects.filter_by_access(
@@ -43,8 +48,11 @@ class Tag(models.Model):
 
         return queryset.count()
 
-    def remove_from(self, document):
+    def remove_from(self, document, user=None):
         self.documents.remove(document)
+        event_tag_remove.commit(
+            action_object=self, actor=user, target=document
+        )
 
 
 class DocumentTag(Tag):
