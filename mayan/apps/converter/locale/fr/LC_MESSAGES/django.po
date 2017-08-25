@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-07-24 19:36+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -176,18 +176,18 @@ msgstr ""
 "Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s"
 "\" pour : %(content_object)s ?"
 
-#: views.py:127
+#: views.py:116
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "Créer une nouvelle transformation pour : %s"
 
-#: views.py:175
+#: views.py:166
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 "Modifier la transformation \"%(transformation)s\" pour : %(content_object)s"
 
-#: views.py:216
+#: views.py:213
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Transformations pour : %s"

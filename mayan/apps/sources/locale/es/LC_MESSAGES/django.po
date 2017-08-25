@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 02:00-0400\n"
+"POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-07-09 06:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -570,7 +570,7 @@ msgstr "Error procesando fuente: %s"
 msgid "Clear"
 msgstr "Limpiar"
 
-#: views.py:60
+#: views.py:52
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Entradas de bitácora para fuente: %s"

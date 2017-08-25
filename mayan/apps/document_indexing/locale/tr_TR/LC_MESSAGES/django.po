@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -273,7 +273,7 @@ msgstr "Bağlı doküman türleri"
 msgid "Document types linked to index: %s"
 msgstr "Dizine bağlı doküman türleri: %s"
 
-#: views.py:135
+#: views.py:127
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr "Dizin için ağaç şablonu düğümleri: %s"
@@ -293,12 +293,12 @@ msgstr "Dizin şablonu düğümünü silin: %s?"
 msgid "Edit the index template node: %s?"
 msgstr "Dizin şablonu düğümünü düzenle: %s?"
 
-#: views.py:269
+#: views.py:256
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigasyon: %s"
 
-#: views.py:274
+#: views.py:261
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Dizin içeriği: %s"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2015-08-20 19:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -19,19 +19,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 links.py:31 links.py:35 permissions.py:7 views.py:36
+#: apps.py:16
+msgid "System"
+msgstr ""
+
+#: apps.py:22 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
 msgstr ""
 
-#: apps.py:27
+#: apps.py:31
 msgid "Timestamp"
 msgstr ""
 
-#: apps.py:29
+#: apps.py:34
 msgid "Actor"
 msgstr ""
 
-#: apps.py:31
+#: apps.py:38
 msgid "Verb"
 msgstr ""
 
@@ -56,7 +60,7 @@ msgstr ""
 msgid "Access the events of an object"
 msgstr ""
 
-#: views.py:29 views.py:84
+#: views.py:26 views.py:81
 msgid "Target"
 msgstr ""
 
@@ -65,7 +69,7 @@ msgstr ""
 msgid "Events for: %s"
 msgstr ""
 
-#: views.py:92
+#: views.py:89
 #, python-format
 msgid "Events of type: %s"
 msgstr ""

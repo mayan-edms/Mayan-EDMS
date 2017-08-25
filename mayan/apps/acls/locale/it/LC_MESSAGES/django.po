@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:21-0400\n"
 "PO-Revision-Date: 2017-04-28 07:26+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -41,7 +41,7 @@ msgstr "Cancella"
 msgid "New ACL"
 msgstr "Nuova ACL"
 
-#: managers.py:85
+#: managers.py:86
 msgid "Insufficient access."
 msgstr "Accesso insufficiente."
 

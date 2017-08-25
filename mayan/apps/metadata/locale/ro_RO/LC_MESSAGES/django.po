@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -61,11 +61,11 @@ msgstr ""
 msgid "Value"
 msgstr "Valoare"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:213
+#: apps.py:162 forms.py:46 forms.py:185 models.py:218
 msgid "Required"
 msgstr ""
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:211
+#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:216
 msgid "Metadata type"
 msgstr "Metadate de tip"
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Remove metadata"
 msgstr ""
 
-#: links.py:43 links.py:66 models.py:92 views.py:560
+#: links.py:43 links.py:66 models.py:92 views.py:557
 msgid "Metadata types"
 msgstr "Metadate tipuri de"
 
@@ -218,27 +218,27 @@ msgstr ""
 msgid "Type"
 msgstr "Tip"
 
-#: models.py:171
+#: models.py:176
 msgid "Metadata type is required for this document type."
 msgstr ""
 
-#: models.py:179
+#: models.py:184
 msgid "Metadata type is not valid for this document type."
 msgstr ""
 
-#: models.py:193 models.py:194
+#: models.py:198 models.py:199
 msgid "Document metadata"
 msgstr ""
 
-#: models.py:207
+#: models.py:212
 msgid "Document type"
 msgstr "Tip document"
 
-#: models.py:220
+#: models.py:227
 msgid "Document type metadata type options"
 msgstr ""
 
-#: models.py:221
+#: models.py:228
 msgid "Document type metadata types options"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgstr ""
 msgid "Edit metadata type: %s"
 msgstr ""
 
-#: views.py:555
+#: views.py:552
 msgid "Internal name"
 msgstr ""
 

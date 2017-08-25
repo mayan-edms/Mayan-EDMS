@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-07-30 19:40+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -63,11 +63,11 @@ msgstr "Belge metadata sının değerini döndür"
 msgid "Value"
 msgstr "Değer"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:213
+#: apps.py:162 forms.py:46 forms.py:185 models.py:218
 msgid "Required"
 msgstr "Gereklidir"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:211
+#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:216
 msgid "Metadata type"
 msgstr "Meta veri türü"
 
@@ -142,7 +142,7 @@ msgstr "Meta verileri düzenle"
 msgid "Remove metadata"
 msgstr "Meta verileri kaldır"
 
-#: links.py:43 links.py:66 models.py:92 views.py:560
+#: links.py:43 links.py:66 models.py:92 views.py:557
 msgid "Metadata types"
 msgstr "Meta veri türleri"
 
@@ -231,27 +231,27 @@ msgstr "belge"
 msgid "Type"
 msgstr "tip"
 
-#: models.py:171
+#: models.py:176
 msgid "Metadata type is required for this document type."
 msgstr "Bu belge türü için meta veri türü gerekiyor."
 
-#: models.py:179
+#: models.py:184
 msgid "Metadata type is not valid for this document type."
 msgstr "Meta veri türü, bu doküman türü için geçerli değil."
 
-#: models.py:193 models.py:194
+#: models.py:198 models.py:199
 msgid "Document metadata"
 msgstr "Belge meta verileri"
 
-#: models.py:207
+#: models.py:212
 msgid "Document type"
 msgstr "Belge Türü"
 
-#: models.py:220
+#: models.py:227
 msgid "Document type metadata type options"
 msgstr "Belge türü meta veri türü seçenekleri"
 
-#: models.py:221
+#: models.py:228
 msgid "Document type metadata types options"
 msgstr "Belge türü meta veri türleri seçenekleri"
 
@@ -445,7 +445,7 @@ msgstr "Metadata türünü silin: %s?"
 msgid "Edit metadata type: %s"
 msgstr "Meta veri türü düzenleme: %s"
 
-#: views.py:555
+#: views.py:552
 msgid "Internal name"
 msgstr "Dahili adı"
 

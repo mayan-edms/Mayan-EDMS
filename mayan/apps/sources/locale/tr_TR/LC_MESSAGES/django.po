@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 02:00-0400\n"
+"POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-07-31 20:10+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -565,7 +565,7 @@ msgstr "Kaynak işleme sırasında hata oluştu: %s"
 msgid "Clear"
 msgstr "Açık"
 
-#: views.py:60
+#: views.py:52
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Kaynak için günlük girdileri: %s"

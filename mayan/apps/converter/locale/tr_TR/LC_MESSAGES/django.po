@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-07-31 19:17+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -173,17 +173,17 @@ msgstr "Geçerli bir YAML değeri girin."
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "\"%(transformation)s\" dönüşümünü sil: %(content_object)s?"
 
-#: views.py:127
+#: views.py:116
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "%s için yeni bir dönüşüm oluştur: "
 
-#: views.py:175
+#: views.py:166
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "\"%(transformation)s\" için dönüşüm değiştir: %(content_object)s"
 
-#: views.py:216
+#: views.py:213
 #, python-format
 msgid "Transformations for: %s"
 msgstr "%sIçin dönüşümler: "

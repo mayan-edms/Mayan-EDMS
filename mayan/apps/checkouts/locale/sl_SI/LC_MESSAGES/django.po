@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
-#: apps.py:37 links.py:30
+#: apps.py:36 links.py:30
 msgid "Checkouts"
 msgstr "Odjave"
 

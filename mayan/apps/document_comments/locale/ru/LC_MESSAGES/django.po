@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2016-07-14 01:35+0000\n"
 "Last-Translator: lilo.panic\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -90,7 +90,7 @@ msgstr "Добавить комментарий на документ: %s"
 msgid "Delete comment: %s?"
 msgstr "Удалить комментарий: %s?"
 
-#: views.py:106
+#: views.py:98
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Комментарии для документа: %s"

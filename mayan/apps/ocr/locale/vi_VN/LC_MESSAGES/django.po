@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
@@ -21,21 +21,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:56 apps.py:114 apps.py:118 links.py:14 permissions.py:7 queues.py:7
+#: apps.py:65 apps.py:123 apps.py:127 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:89
+#: apps.py:98
 msgid "Document"
 msgstr ""
 
-#: apps.py:93
+#: apps.py:102
 msgid "Added"
 msgstr ""
 
-#: apps.py:97 models.py:37
+#: apps.py:106 models.py:57
 msgid "Result"
+msgstr ""
+
+#: events.py:9
+msgid "Document version submitted for OCR"
+msgstr ""
+
+#: events.py:13
+msgid "Document version OCR finished"
 msgstr ""
 
 #: forms.py:40
@@ -47,87 +55,79 @@ msgstr ""
 msgid "Contents"
 msgstr "Nội dung"
 
-#: links.py:18 links.py:25
+#: links.py:18 links.py:21
 msgid "Submit for OCR"
 msgstr ""
 
-#: links.py:22
-msgid "OCR all documents"
-msgstr ""
-
-#: links.py:28
+#: links.py:24
 msgid "Setup OCR"
 msgstr ""
 
-#: links.py:33
+#: links.py:29
 msgid "OCR documents per type"
 msgstr ""
 
-#: links.py:37 links.py:41 views.py:155
+#: links.py:33 links.py:37 views.py:138
 msgid "OCR errors"
 msgstr ""
 
-#: links.py:46
+#: links.py:42
 msgid "Download OCR text"
 msgstr ""
 
-#: models.py:16
+#: models.py:18
 msgid "Document type"
 msgstr "Kiểu tài liệu"
 
-#: models.py:20
+#: models.py:22
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automatically queue newly created documents for OCR."
 
-#: models.py:24
+#: models.py:26
 msgid "Document type settings"
 msgstr ""
 
-#: models.py:25
+#: models.py:27
 msgid "Document types settings"
 msgstr ""
 
-#: models.py:32
-msgid "Document version"
-msgstr ""
-
-#: models.py:35
-msgid "Date time submitted"
-msgstr ""
-
-#: models.py:44
-msgid "Document Version OCR Error"
-msgstr ""
-
-#: models.py:45
-msgid "Document Version OCR Errors"
-msgstr ""
-
-#: models.py:55
+#: models.py:34
 msgid "Document page"
 msgstr ""
 
-#: models.py:57
+#: models.py:36
 msgid "Content"
 msgstr "Nội dung"
 
-#: models.py:63
-msgid "Document page content"
+#: models.py:44
+#, fuzzy
+#| msgid "Document pages content clean up complete."
+msgid "Document page OCR content"
+msgstr "Document pages content clean up complete."
+
+#: models.py:45
+#, fuzzy
+#| msgid "Document pages content clean up complete."
+msgid "Document pages OCR contents"
+msgstr "Document pages content clean up complete."
+
+#: models.py:52
+msgid "Document version"
+msgstr ""
+
+#: models.py:55
+msgid "Date time submitted"
 msgstr ""
 
 #: models.py:64
-msgid "Document pages contents"
+msgid "Document version OCR error"
 msgstr ""
 
-#: parsers.py:101
-#, python-format
-msgid "Exception parsing page; %s"
-msgstr ""
-
-#: parsers.py:128
-#, python-format
-msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+#: models.py:65
+#, fuzzy
+#| msgid "Document version id#: %d, no longer exists."
+msgid "Document version OCR errors"
+msgstr "Document id#: %d, no longer exists."
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -158,50 +158,41 @@ msgstr ""
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
-#: views.py:27
-msgid "Submit all documents for OCR?"
-msgstr ""
-
-#: views.py:39
+#: views.py:43
 #, python-format
-msgid "%d documents added to the OCR queue."
+msgid "OCR result for document: %s"
 msgstr ""
 
-#: views.py:47
+#: views.py:51
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr ""
 
-#: views.py:68
+#: views.py:72
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:82
+#: views.py:86
 msgid "Submit the selected documents to the OCR queue?"
 msgstr ""
 
-#: views.py:89
+#: views.py:93
 msgid "Submit all documents of a type for OCR"
 msgstr ""
 
-#: views.py:103
+#: views.py:107
 #, python-format
 msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr ""
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
-#: views.py:148
-#, python-format
-msgid "OCR result for document: %s"
-msgstr ""
-
-#: views.py:173
+#: views.py:156
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""
@@ -240,9 +231,6 @@ msgstr ""
 #~ msgid "Entry: %(entry)s was re-queued for OCR."
 #~ msgstr "Document: %(document)s is already queued."
 
-#~ msgid "Document version id#: %d, no longer exists."
-#~ msgstr "Document id#: %d, no longer exists."
-
 #~ msgid "Re-queue the selected entry?"
 #~ msgid_plural "Re-queue the selected entries?"
 #~ msgstr[0] "3d821f1679e8cdd3b5844ba5a01a969b_pl_0"
@@ -268,9 +256,6 @@ msgstr ""
 
 #~ msgid "On large databases this operation may take some time to execute."
 #~ msgstr "On large databases this operation may take some time to execute."
-
-#~ msgid "Document pages content clean up complete."
-#~ msgstr "Document pages content clean up complete."
 
 #~ msgid "Text extracted from PDF"
 #~ msgstr "Text extracted from PDF"

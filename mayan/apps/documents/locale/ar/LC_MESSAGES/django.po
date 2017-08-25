@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -719,7 +719,7 @@ msgid ""
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr ""
 
-#: views/document_page_views.py:51
+#: views/document_page_views.py:48
 #, python-format
 msgid "Pages for document: %s"
 msgstr ""

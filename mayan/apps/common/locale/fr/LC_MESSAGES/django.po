@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-07-25 13:11+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -63,32 +63,32 @@ msgstr "Ajouter"
 msgid "Remove"
 msgstr "Supprimer"
 
-#: generics.py:333
+#: generics.py:353
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s n'a pas été créé, erreur: %(error)s"
 
-#: generics.py:344
+#: generics.py:364
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s, creation réussi."
 
-#: generics.py:373
+#: generics.py:393
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s non supprimé, erreur: %(error)s."
 
-#: generics.py:384
+#: generics.py:404
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s, suppression réussie."
 
-#: generics.py:430
+#: generics.py:450
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s n'a pas été mis à jour, erreur: %(error)s."
 
-#: generics.py:441
+#: generics.py:461
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s, mise à jour réussie."

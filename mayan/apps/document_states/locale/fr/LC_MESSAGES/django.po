@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-07-25 13:10+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -131,12 +131,12 @@ msgstr "Aucun"
 msgid "Yes"
 msgstr ""
 
-#: handlers.py:31
+#: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:556
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
 msgid "Workflows"
 msgstr "Flux de travail"
 
@@ -507,19 +507,19 @@ msgstr ""
 msgid "Create states for workflow: %s"
 msgstr "Créer des états pour le flux de travail: %s"
 
-#: views.py:451
+#: views.py:445
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Transitions du flux de travail: %s "
 
-#: views.py:464
+#: views.py:467
+msgid "Unable to save transition; integrity error."
+msgstr "Impossible de sauvegarder la transition; erreur d'intégrité."
+
+#: views.py:479
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Créer des transitions du flux de travail: %s"
-
-#: views.py:494
-msgid "Unable to save transition; integrity error."
-msgstr "Impossible de sauvegarder la transition; erreur d'intégrité."
 
 #: views.py:583
 #, python-format

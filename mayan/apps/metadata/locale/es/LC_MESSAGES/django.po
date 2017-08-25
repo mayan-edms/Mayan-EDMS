@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-07-09 06:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -65,11 +65,11 @@ msgstr "Retornar al valor de metadata de un documento específico"
 msgid "Value"
 msgstr "Valor"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:213
+#: apps.py:162 forms.py:46 forms.py:185 models.py:218
 msgid "Required"
 msgstr "Requerido"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:211
+#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:216
 msgid "Metadata type"
 msgstr "Tipo de metadato"
 
@@ -144,7 +144,7 @@ msgstr "Editar metadatos"
 msgid "Remove metadata"
 msgstr "Remover metadatos"
 
-#: links.py:43 links.py:66 models.py:92 views.py:560
+#: links.py:43 links.py:66 models.py:92 views.py:557
 msgid "Metadata types"
 msgstr "Tipos de metadatos"
 
@@ -233,27 +233,27 @@ msgstr "Documento"
 msgid "Type"
 msgstr "Tipo"
 
-#: models.py:171
+#: models.py:176
 msgid "Metadata type is required for this document type."
 msgstr "El tipo de metadatos es requerido para este tipo de documento."
 
-#: models.py:179
+#: models.py:184
 msgid "Metadata type is not valid for this document type."
 msgstr "El tipo de metadato no es válido para este tipo de documento."
 
-#: models.py:193 models.py:194
+#: models.py:198 models.py:199
 msgid "Document metadata"
 msgstr "Metadatos de documentos"
 
-#: models.py:207
+#: models.py:212
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: models.py:220
+#: models.py:227
 msgid "Document type metadata type options"
 msgstr "Opciones de tipo de meta datos de tipo de documento "
 
-#: models.py:221
+#: models.py:228
 msgid "Document type metadata types options"
 msgstr "Opciones de tipos de meta datos de tipo de documento "
 
@@ -454,7 +454,7 @@ msgstr "¿Borrar el tipo de metadato: %s?"
 msgid "Edit metadata type: %s"
 msgstr "Editar tipo de metadatos: %s"
 
-#: views.py:555
+#: views.py:552
 msgid "Internal name"
 msgstr "Nombre interno"
 

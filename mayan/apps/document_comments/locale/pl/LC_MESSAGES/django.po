@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-06-02 17:23+0000\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -90,7 +90,7 @@ msgstr "Dodanie komentarza do dokumentu: %s"
 msgid "Delete comment: %s?"
 msgstr "Usunąć komentarz: %s?"
 
-#: views.py:106
+#: views.py:98
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Komentarze do dokumentu: %s"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -23,22 +23,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:56 apps.py:114 apps.py:118 links.py:14 permissions.py:7 queues.py:7
+#: apps.py:65 apps.py:123 apps.py:127 links.py:14 permissions.py:7 queues.py:7
 #: settings.py:7
 msgid "OCR"
 msgstr "Enviar para a  fila de OCR"
 
-#: apps.py:89
+#: apps.py:98
 msgid "Document"
 msgstr "Documento"
 
-#: apps.py:93
+#: apps.py:102
 msgid "Added"
 msgstr "adicionado"
 
-#: apps.py:97 models.py:37
+#: apps.py:106 models.py:57
 msgid "Result"
 msgstr "resultado"
+
+#: events.py:9
+#, fuzzy
+#| msgid "Document version"
+msgid "Document version submitted for OCR"
+msgstr "Versão do Documento"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Document Version OCR Errors"
+msgid "Document version OCR finished"
+msgstr "OCR erros: Versão do documento"
 
 #: forms.py:40
 #, python-format
@@ -49,87 +61,81 @@ msgstr "Pagina: %(page_number)d"
 msgid "Contents"
 msgstr "Conteúdos"
 
-#: links.py:18 links.py:25
+#: links.py:18 links.py:21
 msgid "Submit for OCR"
 msgstr "Enviar para OCR"
 
-#: links.py:22
-msgid "OCR all documents"
-msgstr "Realizar OCR para todos os documentos"
-
-#: links.py:28
+#: links.py:24
 msgid "Setup OCR"
 msgstr "Configurar OCR"
 
-#: links.py:33
+#: links.py:29
 msgid "OCR documents per type"
 msgstr "Realizar OCR de documentos por tipo"
 
-#: links.py:37 links.py:41 views.py:155
+#: links.py:33 links.py:37 views.py:138
 msgid "OCR errors"
 msgstr "Erros de OCR"
 
-#: links.py:46
+#: links.py:42
 msgid "Download OCR text"
 msgstr ""
 
-#: models.py:16
+#: models.py:18
 msgid "Document type"
 msgstr "Tipo de Documento"
 
-#: models.py:20
+#: models.py:22
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automatically queue newly created documents for OCR."
 
-#: models.py:24
+#: models.py:26
 msgid "Document type settings"
 msgstr "Configuração do tipo de documento"
 
-#: models.py:25
+#: models.py:27
 msgid "Document types settings"
 msgstr "Configurações de tipos de documentos"
 
-#: models.py:32
-msgid "Document version"
-msgstr "Versão do Documento"
-
-#: models.py:35
-msgid "Date time submitted"
-msgstr "Data e Hora Submetida"
-
-#: models.py:44
-msgid "Document Version OCR Error"
-msgstr "OCR erro: Versão do documento  "
-
-#: models.py:45
-msgid "Document Version OCR Errors"
-msgstr "OCR erros: Versão do documento"
-
-#: models.py:55
+#: models.py:34
 msgid "Document page"
 msgstr "página do documento"
 
-#: models.py:57
+#: models.py:36
 msgid "Content"
 msgstr "Conteúdo"
 
-#: models.py:63
-msgid "Document page content"
+#: models.py:44
+#, fuzzy
+#| msgid "Document page content"
+msgid "Document page OCR content"
 msgstr "Conteúdo de página de documento"
 
-#: models.py:64
-msgid "Document pages contents"
+#: models.py:45
+#, fuzzy
+#| msgid "Document pages contents"
+msgid "Document pages OCR contents"
 msgstr "Conteúdo de páginas de documento"
 
-#: parsers.py:101
-#, python-format
-msgid "Exception parsing page; %s"
-msgstr "Erro interpretando página; %s"
+#: models.py:52
+msgid "Document version"
+msgstr "Versão do Documento"
 
-#: parsers.py:128
-#, python-format
-msgid "Cannot find pdftotext executable at: %s"
-msgstr "Executável pdftotext não foi encontrado em: %s"
+#: models.py:55
+msgid "Date time submitted"
+msgstr "Data e Hora Submetida"
+
+#: models.py:64
+#, fuzzy
+#| msgid "Document Version OCR Error"
+msgid "Document version OCR error"
+msgstr "OCR erro: Versão do documento  "
+
+#: models.py:65
+#, fuzzy
+#| msgid "Document Version OCR Errors"
+msgid "Document version OCR errors"
+msgstr "OCR erros: Versão do documento"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -162,53 +168,59 @@ msgstr "Caminho completo para o servidor a ser usado para fazer OCR."
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Definir novos tipos de documentos para realizar OCR automaticamente"
 
-#: views.py:27
-msgid "Submit all documents for OCR?"
-msgstr "Enviar todos os documentos para OCR?"
-
-#: views.py:39
+#: views.py:43
 #, python-format
-msgid "%d documents added to the OCR queue."
-msgstr "%d documentos enviados para OCR."
+msgid "OCR result for document: %s"
+msgstr "Resultados de OCR para documento: %s"
 
-#: views.py:47
+#: views.py:51
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr "Enviar \"%s\" para OCR?"
 
-#: views.py:68
+#: views.py:72
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Documento: %(document)s foi adicionado à fila de OCR."
 
-#: views.py:82
+#: views.py:86
 msgid "Submit the selected documents to the OCR queue?"
 msgstr "Enviar os documentos selecionados para OCR?"
 
-#: views.py:89
+#: views.py:93
 msgid "Submit all documents of a type for OCR"
 msgstr "Enviar todos os documentos do tipo para OCR"
 
-#: views.py:103
+#: views.py:107
 #, python-format
 msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d documentos do tipo \"%(document_type)s\" enviados para OCR."
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Editar configurações de OCR para documento de tipo: %s"
 
-#: views.py:148
-#, python-format
-msgid "OCR result for document: %s"
-msgstr "Resultados de OCR para documento: %s"
-
-#: views.py:173
+#: views.py:156
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""
+
+#~ msgid "OCR all documents"
+#~ msgstr "Realizar OCR para todos os documentos"
+
+#~ msgid "Exception parsing page; %s"
+#~ msgstr "Erro interpretando página; %s"
+
+#~ msgid "Cannot find pdftotext executable at: %s"
+#~ msgstr "Executável pdftotext não foi encontrado em: %s"
+
+#~ msgid "Submit all documents for OCR?"
+#~ msgstr "Enviar todos os documentos para OCR?"
+
+#~ msgid "%d documents added to the OCR queue."
+#~ msgstr "%d documentos enviados para OCR."
 
 #~ msgid "pdftotext version"
 #~ msgstr "document queues"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 01:58-0400\n"
+"POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -280,7 +280,7 @@ msgstr "Types de document liés"
 msgid "Document types linked to index: %s"
 msgstr "Types de documents liés à l'indexe : %s"
 
-#: views.py:135
+#: views.py:127
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr "Noeuds de modèles arborescentes pour l'index: %s"
@@ -300,12 +300,12 @@ msgstr "Supprimer le noeud du modèle d'indexe: %s ?"
 msgid "Edit the index template node: %s?"
 msgstr "Modifier le noeud du modèle d'index: %s"
 
-#: views.py:269
+#: views.py:256
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigation: %s"
 
-#: views.py:274
+#: views.py:261
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenu de l'index:%s"
