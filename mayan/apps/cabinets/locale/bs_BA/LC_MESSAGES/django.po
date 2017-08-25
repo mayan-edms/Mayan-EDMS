@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,14 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: www.ping.ba <jomer@ping.ba>, 2017\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/"
-"rosarior/teams/13584/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:36 apps.py:75 apps.py:83 apps.py:86 forms.py:30 links.py:21
 #: menus.py:8 models.py:37 permissions.py:7 views.py:153
@@ -123,7 +121,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:180
@@ -179,14 +178,6 @@ msgstr ""
 msgid "Add"
 msgstr "Dodati"
 
-#: views.py:201
-#, python-format
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
 #: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -219,19 +210,6 @@ msgstr ""
 #: views.py:286
 msgid "Remove"
 msgstr "Ukloniti"
-
-#: views.py:288
-#, python-format
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: views.py:301
-#, python-format
-msgid "Remove document \"%s\" from cabinets"
-msgstr ""
 
 #: views.py:312
 msgid "Cabinets from which the selected documents will be removed."

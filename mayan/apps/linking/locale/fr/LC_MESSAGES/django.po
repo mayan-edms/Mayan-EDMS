@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -15,12 +13,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-07-24 20:01+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
@@ -147,12 +144,9 @@ msgstr "est une expression régulière (insensible à la casse)"
 #: models.py:22 models.py:120
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
-msgstr ""
-"Indiquez un modèle à restituer. Utilise le langage de rendu de Django par "
-"défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La "
-"variable de contexte {{ document }} est disponible."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
+msgstr "Indiquez un modèle à restituer. Utilise le langage de rendu de Django par défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La variable de contexte {{ document }} est disponible."
 
 #: models.py:46
 #, python-format
@@ -161,8 +155,7 @@ msgstr "Erreur de génération de l'étiquette dynamique : %s"
 
 #: models.py:57
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:93 models.py:106
 msgid "Smart link"
@@ -220,9 +213,7 @@ msgstr "Modifier les liens intelligents"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Liste séparée par des virgules des clés primaires de type de document "
-"auxquelles ce lien intelligent sera attaché."
+msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:139
 #, python-format
@@ -241,11 +232,8 @@ msgstr "Lien inetlligent du document: %s"
 
 #: views.py:71
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
 
 #: views.py:90
 msgid "Available document types"
@@ -293,119 +281,3 @@ msgstr "Modifier la condition sur le lien intelligent"
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Supprimer la condition du lien intelligent : \"%s\" ?"
-
-#~ msgid "Smart link condition: \"%s\" created successfully."
-#~ msgstr "Smart link condition: \"%s\" created successfully."
-
-#~ msgid "Smart link condition: \"%s\" edited successfully."
-#~ msgstr "Smart link condition: \"%s\" edited successfully."
-
-#~ msgid "Smart link condition: \"%s\" deleted successfully."
-#~ msgstr "Smart link condition: \"%s\" deleted successfully."
-
-#~ msgid ""
-#~ "Error deleting smart link condition: %(smart_link_condition)s; "
-#~ "%(exception)s."
-#~ msgstr ""
-#~ "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
-
-#~ msgid "Smart link: %s deleted successfully."
-#~ msgstr "Smart link: %s deleted successfully."
-
-#~ msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
-
-#~ msgid "Smart link: %s created successfully."
-#~ msgstr "Smart link: %s created successfully."
-
-#~ msgid "Smart link: %s edited successfully."
-#~ msgstr "Smart link: %s edited successfully."
-
-#~ msgid "ACLs"
-#~ msgstr "ACLs"
-
-#~ msgid "Title"
-#~ msgstr "title"
-
-#~ msgid "This expression will be evaluated against the current document."
-#~ msgstr "There no defined smart links for the current document."
-
-#~ msgid "Error calculating smart link for: %(document)s; %(exception)s."
-#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
-
-#~ msgid "Are you sure you wish to delete smart link: %s?"
-#~ msgstr "Are you sure you wish to delete smart link: %s?"
-
-#~ msgid "Condition"
-#~ msgstr "condition"
-
-#~ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-#~ msgstr "Are you sure you wish to delete smart link condition: \"%s\"?"
-
-#~ msgid "Pages"
-#~ msgstr "Pages"
-
-#~ msgid "Select"
-#~ msgstr "Select"
-
-#~ msgid "Click on the image for full size view of the first page."
-#~ msgstr "Click on the image for full size view of the first page."
-
-#~ msgid "Smart links actions"
-#~ msgstr "smart links actions"
-
-#~ msgid ""
-#~ "This expression will be evaluated against the current selected document.  "
-#~ "The document metadata is available as variables `metadata` and document "
-#~ "properties under the variable `document`."
-#~ msgstr ""
-#~ "This expression will be evaluated against the current selected document.  "
-#~ "The document metadata is available as variables `metadata` and document "
-#~ "properties under the variable `document`."
-
-#~ msgid ""
-#~ "This represents the metadata of all other documents.  Available objects: "
-#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
-#~ msgstr ""
-#~ "This represents the metadata of all other documents.  Available objects: "
-#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
-
-#~ msgid "Show smart link that don't return any documents."
-#~ msgstr "Show smart link that don't return any documents."
-
-#~ msgid "No action selected."
-#~ msgstr "No action selected."
-
-#~ msgid "Smart links (0)"
-#~ msgstr "smart links (%s)"
-
-#~ msgid "Smart links list"
-#~ msgstr "smart links list"
-
-#~ msgid "smart links"
-#~ msgstr "smart links"
-
-#~ msgid "create new smart link"
-#~ msgstr "create new smart link"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "smart link"
-#~ msgstr "smart link"
-
-#~ msgid "What are smart links?"
-#~ msgstr "What are smart links?"
-
-#~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
-#~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."

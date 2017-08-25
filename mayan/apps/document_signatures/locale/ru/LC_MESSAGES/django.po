@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # lilo.panic, 2016
 # Sergey Glita <gsv70@mail.ru>, 2012
@@ -12,17 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"PO-Revision-Date: 2017-08-15 06:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
@@ -272,9 +267,7 @@ msgstr "Выгрузить отделённую подпись для верси
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
 #: views.py:346
 msgid "Verify all document for signatures?"
@@ -283,30 +276,3 @@ msgstr "Проверить подписи во всех документах?"
 #: views.py:356
 msgid "Signature verification queued successfully."
 msgstr "Верификация сигнатуры добавлена в очередь."
-
-#~ msgid "Signature list"
-#~ msgstr "Список подписей"
-
-#~ msgid "Signature status: %s"
-#~ msgstr "Signature type: %s"
-
-#~ msgid "Timestamp: %s"
-#~ msgstr "Timestamp: %s"
-
-#~ msgid "Signee: %s"
-#~ msgstr "Signee: %s"
-
-#~ msgid "Detached signature uploaded successfully."
-#~ msgstr "Detached signature uploaded successfully."
-
-#~ msgid "Error while deleting the detached signature; %s"
-#~ msgstr "Download detached signatures"
-
-#~ msgid "Delete the detached signature from document: %s?"
-#~ msgstr "Upload detached signature for: %s"
-
-#~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "Signature status: %(widget)s %(text)s"
-
-#~ msgid "signature file"
-#~ msgstr "signature file"

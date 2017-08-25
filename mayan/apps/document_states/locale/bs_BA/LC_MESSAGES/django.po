@@ -1,24 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-10 07:58+0000\n"
+"PO-Revision-Date: 2017-08-15 06:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:52 queues.py:8
 msgid "Document states"
@@ -119,21 +116,20 @@ msgid "Enabled"
 msgstr ""
 
 #: forms.py:106
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Nijedno"
+msgstr "Ne"
 
 #: forms.py:107
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141
+#: views.py:553
 msgid "Workflows"
 msgstr ""
 
@@ -155,7 +151,7 @@ msgstr "Urediti"
 
 #: links.py:51
 msgid "Actions"
-msgstr ""
+msgstr "Akcije"
 
 #: links.py:56
 msgid "Create action"
@@ -281,7 +277,7 @@ msgstr ""
 
 #: models.py:298
 msgid "Event type"
-msgstr ""
+msgstr "Tip događaja"
 
 #: models.py:302
 msgid "Workflow transition trigger event"

@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
 # malijie <tonymlj2008@126.com>, 2014
@@ -12,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"PO-Revision-Date: 2017-08-15 06:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:35 apps.py:80 apps.py:87 apps.py:106 apps.py:108 forms.py:31
@@ -256,137 +253,9 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "标签\"%(tag)s\"成功从文档\"%(document)s\"移除"
 
 #: workflow_actions.py:21
-#, fuzzy
-#| msgid "Attach tag to document"
-#| msgid_plural "Attach tag to documents"
 msgid "Tags to attach to the document"
-msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+msgstr ""
 
 #: workflow_actions.py:26
-#, fuzzy
-#| msgid "Attach tag to document"
-#| msgid_plural "Attach tag to documents"
 msgid "Attach tag"
-msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
-
-#~ msgid "Must provide at least one document."
-#~ msgstr "Must provide at least one document."
-
-#~ msgid "Must provide at least one tag."
-#~ msgstr "Must provide at least one tag."
-
-#~ msgid "Must provide at least one tagged document."
-#~ msgstr "Must provide at least one tagged document."
-
-#~ msgid "Remove tag from documents: %s."
-#~ msgstr "Remove tag from documents: %s."
-
-#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "remove tags"
-#~ msgstr "remove tags"
-
-#~ msgid "Tagged items"
-#~ msgstr "tagged items"
-
-#~ msgid "ACLs"
-#~ msgstr "ACLs"
-
-#~ msgid "Blue"
-#~ msgstr "Blue"
-
-#~ msgid "Cyan"
-#~ msgstr "Cyan"
-
-#~ msgid "Coral"
-#~ msgstr "Coral"
-
-#~ msgid "Green-Yellow"
-#~ msgstr "Green-Yellow"
-
-#~ msgid "Khaki"
-#~ msgstr "Khaki"
-
-#~ msgid "LightGrey"
-#~ msgstr "LightGrey"
-
-#~ msgid "Magenta"
-#~ msgstr "Magenta"
-
-#~ msgid "Red"
-#~ msgstr "Red"
-
-#~ msgid "Orange"
-#~ msgstr "Orange"
-
-#~ msgid "Yellow"
-#~ msgstr "Yellow"
-
-#~ msgid "Tag created succesfully."
-#~ msgstr "Tag created succesfully."
-
-#~ msgid "Tag updated succesfully."
-#~ msgstr "Tag updated succesfully."
-
-#~ msgid "Add tag to document"
-#~ msgstr "Add tag to document"
-
-#~ msgid "Document created"
-#~ msgstr "document"
-
-#~ msgid "Attach tag to documents: %s."
-#~ msgstr "Attach tag to documents: %s."
-
-#~ msgid "Are you sure you wish to delete the tags: %s?"
-#~ msgstr "Are you sure you wish to delete the tags: %s?"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Tag list"
-#~ msgstr "tag list"
-
-#~ msgid "Tagged documents"
-#~ msgstr "tagged documents"
-
-#~ msgid "Tag properties"
-#~ msgstr "tag properties"
-
-#~ msgid "Tags properties"
-#~ msgstr "tags properties"
-
-#~ msgid "Tag already exists."
-#~ msgstr "Tag already exists."
-
-#~ msgid "tags"
-#~ msgstr "tags"
-
-#~ msgid "create new tag"
-#~ msgstr "create new tag"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "tag"
-#~ msgstr "tag"
-
-#~ msgid "color"
-#~ msgstr "color"
+msgstr ""

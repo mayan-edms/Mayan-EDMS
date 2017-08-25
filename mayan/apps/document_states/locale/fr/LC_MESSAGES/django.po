@@ -1,8 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
@@ -11,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-25 13:10+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2017-08-15 06:31+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:52 queues.py:8
@@ -36,9 +34,7 @@ msgstr "Renvoie l'état actuel du flux de travail sélectionné"
 #: apps.py:91
 msgid ""
 "Return the completion value of the current state of the selected workflow"
-msgstr ""
-"Renvoie la valeur d'achèvement de l'état actuel du flux de travail "
-"sélectionné"
+msgstr "Renvoie la valeur d'achèvement de l'état actuel du flux de travail sélectionné"
 
 #: apps.py:106 apps.py:169 forms.py:100 models.py:47 models.py:147
 #: models.py:216 models.py:268
@@ -91,7 +87,7 @@ msgstr "Est ce l'état initial?"
 
 #: apps.py:172
 msgid "Enabled?"
-msgstr ""
+msgstr "Activé?"
 
 #: apps.py:176
 msgid "When?"
@@ -119,24 +115,23 @@ msgstr ""
 
 #: forms.py:104 models.py:217
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: forms.py:106
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Aucun"
+msgstr "Non"
 
 #: forms.py:107
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141
+#: views.py:553
 msgid "Workflows"
 msgstr "Flux de travail"
 
@@ -158,13 +153,11 @@ msgstr "Modifier"
 
 #: links.py:51
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: links.py:56
-#, fuzzy
-#| msgid "Create transition"
 msgid "Create action"
-msgstr "Créer une transition"
+msgstr ""
 
 #: links.py:60
 msgid "Create state"
@@ -199,14 +192,12 @@ msgid "State documents"
 msgstr "Documents d'état"
 
 #: links.py:129
-#, fuzzy
-#| msgid "Transitions"
 msgid "Transition events"
-msgstr "Transitions"
+msgstr ""
 
 #: links.py:134
 msgid "Preview"
-msgstr ""
+msgstr "Prévisualiser"
 
 #: literals.py:9
 msgid "On entry"
@@ -220,10 +211,7 @@ msgstr ""
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"Cette valeur sera utilisée par d'autres applications pour faire référence à "
-"ce flux de travail. Ne peut contenir que des lettres, des chiffres et des "
-"caractères de soulignement."
+msgstr "Cette valeur sera utilisée par d'autres applications pour faire référence à ce flux de travail. Ne peut contenir que des lettres, des chiffres et des caractères de soulignement."
 
 #: models.py:127 models.py:145 models.py:266 models.py:313
 msgid "Workflow"
@@ -233,9 +221,7 @@ msgstr "Flux de travail"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de "
-"travail pour démarrer. Un seul état peut être à l'état initial."
+msgstr "Sélectionnez si ceci sera l'état avec lequel vous voulez que le flux de travail pour démarrer. Un seul état peut être à l'état initial."
 
 #: models.py:153
 msgid "Initial"
@@ -245,9 +231,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Entrer le pourcentage de finalisation que cet état représente dans la "
-"relation du flux de travail. Saisir un nombre sans le signe pourcentage."
+msgstr "Entrer le pourcentage de finalisation que cet état représente dans la relation du flux de travail. Saisir un nombre sans le signe pourcentage."
 
 #: models.py:165 models.py:214
 msgid "Workflow state"
@@ -278,16 +262,12 @@ msgid "Entry action data"
 msgstr ""
 
 #: models.py:239
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow state action"
-msgstr "État du flux de travail"
+msgstr ""
 
 #: models.py:240
-#, fuzzy
-#| msgid "Workflow states"
 msgid "Workflow state actions"
-msgstr "États du flux de travail"
+msgstr ""
 
 #: models.py:287
 msgid "Workflow transition"
@@ -298,22 +278,16 @@ msgid "Workflow transitions"
 msgstr "Transitions du flux de travail"
 
 #: models.py:298
-#, fuzzy
-#| msgid "Document types"
 msgid "Event type"
-msgstr "Types de document"
+msgstr "Type d'évènement"
 
 #: models.py:302
-#, fuzzy
-#| msgid "Workflow transition"
 msgid "Workflow transition trigger event"
-msgstr "Transition du flux de travail"
+msgstr ""
 
 #: models.py:303
-#, fuzzy
-#| msgid "Workflow transitions"
 msgid "Workflow transitions trigger events"
-msgstr "Transitions du flux de travail"
+msgstr ""
 
 #: models.py:317
 msgid "Document"
@@ -395,10 +369,7 @@ msgstr "Clé principale du type de document à ajouter."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"URL de l'API indiquant un type de document par rapport au flux de travail "
-"auquel il est joint. Cette URL est différente de l'URL du type de document "
-"canonique."
+msgstr "URL de l'API indiquant un type de document par rapport au flux de travail auquel il est joint. Cette URL est différente de l'URL du type de document canonique."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -412,9 +383,7 @@ msgstr "Clé principale de l'état d'origine à ajouter."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"URL de l'API indiquant un flux de travail par rapport au document auquel il "
-"est joint. Cette URL est différente de l'URL du flux de travail canonique."
+msgstr "URL de l'API indiquant un flux de travail par rapport au document auquel il est joint. Cette URL est différente de l'URL du flux de travail canonique."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -424,9 +393,7 @@ msgstr "Un lien vers l'historique complet de ce flux de travail."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"Liste séparée par des virgules des clés primaires de type de document "
-"auxquelles ce flux de travail sera joint."
+msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce flux de travail sera joint."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -475,28 +442,24 @@ msgid "States of workflow: %s"
 msgstr "États du flux de travail: %s"
 
 #: views.py:248
-#, fuzzy, python-format
-#| msgid "Create workflow"
+#, python-format
 msgid "Create a \"%s\" workflow action"
-msgstr "Créer un flux de travail"
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
-#| msgid "Delete workflows"
+#, python-format
 msgid "Delete workflow state action: %s"
-msgstr "Supprimer des flux de travail"
+msgstr ""
 
 #: views.py:305
-#, fuzzy, python-format
-#| msgid "Edit workflows"
+#, python-format
 msgid "Edit workflow state action: %s"
-msgstr "Modifier des flux de travail"
+msgstr ""
 
 #: views.py:325
-#, fuzzy, python-format
-#| msgid "Transitions of workflow: %s"
+#, python-format
 msgid "Actions for workflow state: %s"
-msgstr "Transitions du flux de travail: %s "
+msgstr ""
 
 #: views.py:359
 msgid "New workflow state action selection"
@@ -537,16 +500,13 @@ msgid "Error updating workflow transition trigger events; %s"
 msgstr ""
 
 #: views.py:682
-#, fuzzy
-#| msgid "Workflow launch queued successfully."
 msgid "Workflow transition trigger events updated successfully"
-msgstr "Le lancement de Workflow a été mis en file d'attente avec succès."
+msgstr ""
 
 #: views.py:699
-#, fuzzy, python-format
-#| msgid "Workflow transitions"
+#, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Transitions du flux de travail"
+msgstr ""
 
 #: views.py:728
 msgid "Launch all workflows?"

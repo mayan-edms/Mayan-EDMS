@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -13,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
-"PO-Revision-Date: 2017-07-09 06:35+0000\n"
+"PO-Revision-Date: 2017-08-25 00:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:65 apps.py:123 apps.py:127 links.py:14 permissions.py:7 queues.py:7
@@ -102,16 +99,12 @@ msgid "Content"
 msgstr "Conteúdo"
 
 #: models.py:44
-#, fuzzy
-#| msgid "Document pages content clean up complete."
 msgid "Document page OCR content"
-msgstr "Document pages content clean up complete."
+msgstr ""
 
 #: models.py:45
-#, fuzzy
-#| msgid "Document pages content clean up complete."
 msgid "Document pages OCR contents"
-msgstr "Document pages content clean up complete."
+msgstr ""
 
 #: models.py:52
 msgid "Document version"
@@ -126,10 +119,8 @@ msgid "Document version OCR error"
 msgstr ""
 
 #: models.py:65
-#, fuzzy
-#| msgid "Document version id#: %d, no longer exists."
 msgid "Document version OCR errors"
-msgstr "Document id#: %d, no longer exists."
+msgstr ""
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -149,10 +140,9 @@ msgstr ""
 
 #: settings.py:12
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Caminho para o programa pdftotext de poppler, usado para extrair texto de "
-"ficheiros PDF."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Caminho para o programa pdftotext de poppler, usado para extrair texto de ficheiros PDF."
 
 #: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
@@ -187,8 +177,7 @@ msgstr ""
 
 #: views.py:107
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr ""
 
 #: views.py:130
@@ -200,250 +189,3 @@ msgstr ""
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""
-
-#~ msgid "pdftotext version"
-#~ msgstr "document queues"
-
-#~ msgid "tesseract version"
-#~ msgstr "document queues"
-
-#~ msgid "File path to tesseract program."
-#~ msgstr "File path to unpaper program."
-
-#~ msgid "Delete"
-#~ msgstr "delete"
-
-#~ msgid "Re-queue"
-#~ msgstr "re-queue"
-
-#~ msgid "Delete documents from OCR queue"
-#~ msgstr "Delete documents from OCR queue"
-
-#~ msgid "Make at least one selection."
-#~ msgstr "Must provide at least one queue document."
-
-#~ msgid "Entry: %(entry)s deleted successfully."
-#~ msgstr "Queue document: %(document)s deleted successfully."
-
-#~ msgid "Error entry: %(entry)s; %(error)s"
-#~ msgstr "Error deleting document: %(document)s; %(error)s"
-
-#~ msgid "Delete the selected entry?"
-#~ msgid_plural "Delete the selected entries?"
-#~ msgstr[0] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_0"
-#~ msgstr[1] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_1"
-
-#~ msgid "Entry: %(entry)s was re-queued for OCR."
-#~ msgstr "Document: %(document)s is already queued."
-
-#~ msgid "Re-queue the selected entry?"
-#~ msgid_plural "Re-queue the selected entries?"
-#~ msgstr[0] "3d821f1679e8cdd3b5844ba5a01a969b_pl_0"
-#~ msgstr[1] "3d821f1679e8cdd3b5844ba5a01a969b_pl_1"
-
-#~ msgid "Submit the selected document for OCR?"
-#~ msgstr "Submit documents for OCR"
-
-#~ msgid "Text from OCR"
-#~ msgstr "Text from OCR"
-
-#~ msgid ""
-#~ "Runs a language filter to remove common OCR mistakes from document pages "
-#~ "content."
-#~ msgstr ""
-#~ "Runs a language filter to remove common OCR mistakes from document pages "
-#~ "content."
-
-#~ msgid "Can execute the OCR clean up on all document pages"
-#~ msgstr "Can execute the OCR clean up on all document pages"
-
-#~ msgid "Are you sure you wish to clean up all the pages content?"
-#~ msgstr "Are you sure you wish to clean up all the pages content?"
-
-#~ msgid "On large databases this operation may take some time to execute."
-#~ msgstr "On large databases this operation may take some time to execute."
-
-#~ msgid "Text extracted from PDF"
-#~ msgstr "Text extracted from PDF"
-
-#~ msgid "Queue document list"
-#~ msgstr "queue document list"
-
-#~ msgid "Label"
-#~ msgstr "label"
-
-#~ msgid "Document queue"
-#~ msgstr "document queue"
-
-#~ msgid "Node name"
-#~ msgstr "node name"
-
-#~ msgid "Queue document"
-#~ msgstr "queue document"
-
-#~ msgid "Missing document."
-#~ msgstr "Missing document."
-
-#~ msgid "Documents in queue: %s"
-#~ msgstr "documents in queue: %s"
-
-#~ msgid "Thumbnail"
-#~ msgstr "thumbnail"
-
-#~ msgid "Are you sure you wish to delete queue documents: %s?"
-#~ msgstr "Are you sure you wish to delete queue documents: %s?"
-
-#~ msgid "Are you sure you wish to re-queue documents: %s?"
-#~ msgstr "Are you sure you wish to re-queue documents: %s?"
-
-#~ msgid "Can edit an OCR queue properties"
-#~ msgstr "Can edit an OCR queue properties"
-
-#~ msgid "OCR queue statistics"
-#~ msgstr "OCR statistics"
-
-#~ msgid "Document queues: %d"
-#~ msgstr "Document queues: %d"
-
-#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-
-#~ msgid "Document: %s is already being processed and can't be re-queded."
-#~ msgstr "Document: %s is already being processed and can't be re-queded."
-
-#~ msgid "Checks the OCR queue for pending documents."
-#~ msgstr "Checks the OCR queue for pending documents."
-
-#~ msgid "stop queue"
-#~ msgstr "stop queue"
-
-#~ msgid "activate queue"
-#~ msgstr "activate queue"
-
-#~ msgid "stopped"
-#~ msgstr "stopped"
-
-#~ msgid "active"
-#~ msgstr "active"
-
-#~ msgid "pending"
-#~ msgstr "pending"
-
-#~ msgid "processing"
-#~ msgstr "processing"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "state"
-#~ msgstr "state"
-
-#~ msgid "delay ocr"
-#~ msgstr "delay ocr"
-
-#~ msgid "Can enable/disable the OCR queue"
-#~ msgstr "Can enable/disable the OCR queue"
-
-#~ msgid "document queue properties"
-#~ msgstr "document queue properties"
-
-#~ msgid "Current state: %s"
-#~ msgstr "Current state: %s"
-
-#~ msgid "Document: %s is being processed and can't be deleted."
-#~ msgstr "Document: %s is being processed and can't be deleted."
-
-#~ msgid "Document queue: %s, already stopped."
-#~ msgstr "Document queue: %s, already stopped."
-
-#~ msgid "Document queue: %s, stopped successfully."
-#~ msgstr "Document queue: %s, stopped successfully."
-
-#~ msgid "Are you sure you wish to disable document queue: %s"
-#~ msgstr "Are you sure you wish to disable document queue: %s"
-
-#~ msgid "Document queue: %s, already active."
-#~ msgstr "Document queue: %s, already active."
-
-#~ msgid "Document queue: %s, activated successfully."
-#~ msgstr "Document queue: %s, activated successfully."
-
-#~ msgid "Are you sure you wish to activate document queue: %s"
-#~ msgstr "Are you sure you wish to activate document queue: %s"
-
-#~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
-#~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
-
-#~ msgid "Maximum amount of concurrent document OCRs a node can perform."
-#~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
-
-#~ msgid "transformations"
-#~ msgstr "transformations"
-
-#~ msgid "add transformation"
-#~ msgstr "add transformation"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "Default"
-#~ msgstr "Default"
-
-#~ msgid "Enter a valid value."
-#~ msgstr "Enter a valid value."
-
-#~ msgid "order"
-#~ msgstr "order"
-
-#~ msgid "transformation"
-#~ msgstr "transformation"
-
-#~ msgid "arguments"
-#~ msgstr "arguments"
-
-#~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Use dictionaries to indentify arguments, example: %s"
-
-#~ msgid "document queue transformation"
-#~ msgstr "document queue transformation"
-
-#~ msgid "document queue transformations"
-#~ msgstr "document queue transformations"
-
-#~ msgid "transformations for: %s"
-#~ msgstr "transformations for: %s"
-
-#~ msgid "Queue transformation edited successfully"
-#~ msgstr "Queue transformation edited successfully"
-
-#~ msgid "Error editing queue transformation; %s"
-#~ msgstr "Error editing queue transformation; %s"
-
-#~ msgid "Edit transformation: %s"
-#~ msgstr "Edit transformation: %s"
-
-#~ msgid "Queue transformation deleted successfully."
-#~ msgstr "Queue transformation deleted successfully."
-
-#~ msgid "Error deleting queue transformation; %(error)s"
-#~ msgstr "Error deleting queue transformation; %(error)s"
-
-#~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
-#~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
-
-#~ msgid "Queue transformation created successfully"
-#~ msgstr "Queue transformation created successfully"
-
-#~ msgid "Error creating queue transformation; %s"
-#~ msgstr "Error creating queue transformation; %s"
-
-#~ msgid "Create new transformation for queue: %s"
-#~ msgstr "Create new transformation for queue: %s"

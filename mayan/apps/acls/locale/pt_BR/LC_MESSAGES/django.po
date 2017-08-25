@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -14,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:21-0400\n"
 "PO-Revision-Date: 2017-05-04 19:12+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 links.py:35 links.py:39
@@ -57,8 +54,7 @@ msgstr "Entradas de acesso"
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-"Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
+msgstr "Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -79,23 +75,17 @@ msgstr "Visualizar regras"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
-"API URL apontando para a lista de permissões para esta lista de controle de "
-"acesso."
+msgstr "API URL apontando para a lista de permissões para esta lista de controle de acesso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL apontando para uma permissão em relação à lista de controle de "
-"acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de "
-"trabalho canônico."
+msgstr "API URL apontando para uma permissão em relação à lista de controle de acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de trabalho canônico."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
-"Chave primária da nova permissão para conceder à lista de controle de acesso."
+msgstr "Chave primária da nova permissão para conceder à lista de controle de acesso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -106,14 +96,11 @@ msgstr "Sem permissão: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
-"Lista de chaves primárias de permissão separadas por vírgulas para conceder "
-"a esta lista de controle de acesso."
+msgstr "Lista de chaves primárias de permissão separadas por vírgulas para conceder a esta lista de controle de acesso."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
-"As chaves primárias da função a que esta lista de controle de acesso se liga."
+msgstr "As chaves primárias da função a que esta lista de controle de acesso se liga."
 
 #: views.py:74
 #, python-format
@@ -146,123 +133,3 @@ msgstr "Permissões do papel \"%(role)s\" para \"%(object)s\""
 #: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "As permissões inativas foram herdadas de um objeto precedente."
-
-#~ msgid "New holder"
-#~ msgstr "New holder"
-
-#~ msgid "Users"
-#~ msgstr "Users"
-
-#~ msgid "Groups"
-#~ msgstr "Groups"
-
-#~ msgid "Special"
-#~ msgstr "Special"
-
-#~ msgid "Details"
-#~ msgstr "details"
-
-#~ msgid "Grant"
-#~ msgstr "grant"
-
-#~ msgid "Revoke"
-#~ msgstr "revoke"
-
-#~ msgid "Classes"
-#~ msgstr "classes"
-
-#~ msgid "ACLs for class"
-#~ msgstr "ACLs for class"
-
-#~ msgid "Permission"
-#~ msgstr "permissions"
-
-#~ msgid "Default access entry"
-#~ msgstr "default access entry"
-
-#~ msgid "Default access entries"
-#~ msgstr "default access entries"
-
-#~ msgid "Creator"
-#~ msgstr "Creator"
-
-#~ msgid "Edit class default ACLs"
-#~ msgstr "Edit class default ACLs"
-
-#~ msgid "View class default ACLs"
-#~ msgstr "View class default ACLs"
-
-#~ msgid "Holder"
-#~ msgstr "holder"
-
-#~ msgid "Permissions available to: %(actor)s for %(obj)s"
-#~ msgstr "permissions available to: %(actor)s for %(obj)s"
-
-#~ msgid "Namespace"
-#~ msgstr "namespace"
-
-#~ msgid "Label"
-#~ msgstr "label"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid " for %s"
-#~ msgstr " for %s"
-
-#~ msgid " to %s"
-#~ msgstr " to %s"
-
-#~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
-
-#~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
-
-#~ msgid ""
-#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
-#~ "%(object)s."
-#~ msgstr ""
-#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
-#~ "%(object)s."
-
-#~ msgid " from %s"
-#~ msgstr " from %s"
-
-#~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
-
-#~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-
-#~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-
-#~ msgid "Add new holder for: %s"
-#~ msgstr "add new holder for: %s"
-
-#~ msgid "Select"
-#~ msgstr "Select"
-
-#~ msgid "Class"
-#~ msgstr "class"
-
-#~ msgid "Default access control lists for class: %s"
-#~ msgstr "default access control lists for class: %s"
-
-#~ msgid "Permissions available to: %(actor)s for class %(class)s"
-#~ msgstr "permissions available to: %(actor)s for class %(class)s"
-
-#~ msgid "Add new holder for class: %s"
-#~ msgstr "add new holder for class: %s"
-
-#~ msgid "List of classes"
-#~ msgstr "List of classes"
-
-#~ msgid "creator"
-#~ msgstr "creator"

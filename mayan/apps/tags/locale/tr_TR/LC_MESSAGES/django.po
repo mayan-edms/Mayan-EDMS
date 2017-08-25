@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -12,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
-"PO-Revision-Date: 2017-08-01 07:18+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"PO-Revision-Date: 2017-08-15 07:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:35 apps.py:80 apps.py:87 apps.py:106 apps.py:108 forms.py:31
@@ -112,16 +109,13 @@ msgstr "Dokümanlardan etiketleri kaldır"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Bu etiketin ekleneceği birincil anahtarların virgülle ayrılmış listesi."
+msgstr "Bu etiketin ekleneceği birincil anahtarların virgülle ayrılmış listesi."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"Eklenmiş belgeyle ilişkili olarak bir etiketi işaret eden API URL'si. Bu "
-"URL, kanuni etiket URL'sinden farklı."
+msgstr "Eklenmiş belgeyle ilişkili olarak bir etiketi işaret eden API URL'si. Bu URL, kanuni etiket URL'sinden farklı."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -256,140 +250,12 @@ msgstr "\"%(document)s\" dokümanı \"%(tag)s\" olarak etiketlenemedi"
 #: views.py:306
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"\"%(tag)s\" Etiketi \"%(document)s\" dokümanından başarıyla kaldırıldı."
+msgstr "\"%(tag)s\" Etiketi \"%(document)s\" dokümanından başarıyla kaldırıldı."
 
 #: workflow_actions.py:21
-#, fuzzy
-#| msgid "Attach tag to document"
-#| msgid_plural "Attach tag to documents"
 msgid "Tags to attach to the document"
-msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+msgstr ""
 
 #: workflow_actions.py:26
-#, fuzzy
-#| msgid "Attach tags"
 msgid "Attach tag"
-msgstr "Etiketleri ekle"
-
-#~ msgid "Must provide at least one document."
-#~ msgstr "Must provide at least one document."
-
-#~ msgid "Must provide at least one tag."
-#~ msgstr "Must provide at least one tag."
-
-#~ msgid "Must provide at least one tagged document."
-#~ msgstr "Must provide at least one tagged document."
-
-#~ msgid "Remove tag from documents: %s."
-#~ msgstr "Remove tag from documents: %s."
-
-#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "remove tags"
-#~ msgstr "remove tags"
-
-#~ msgid "Tagged items"
-#~ msgstr "tagged items"
-
-#~ msgid "ACLs"
-#~ msgstr "ACLs"
-
-#~ msgid "Blue"
-#~ msgstr "Blue"
-
-#~ msgid "Cyan"
-#~ msgstr "Cyan"
-
-#~ msgid "Coral"
-#~ msgstr "Coral"
-
-#~ msgid "Green-Yellow"
-#~ msgstr "Green-Yellow"
-
-#~ msgid "Khaki"
-#~ msgstr "Khaki"
-
-#~ msgid "LightGrey"
-#~ msgstr "LightGrey"
-
-#~ msgid "Magenta"
-#~ msgstr "Magenta"
-
-#~ msgid "Red"
-#~ msgstr "Red"
-
-#~ msgid "Orange"
-#~ msgstr "Orange"
-
-#~ msgid "Yellow"
-#~ msgstr "Yellow"
-
-#~ msgid "Tag created succesfully."
-#~ msgstr "Tag created succesfully."
-
-#~ msgid "Tag updated succesfully."
-#~ msgstr "Tag updated succesfully."
-
-#~ msgid "Add tag to document"
-#~ msgstr "Add tag to document"
-
-#~ msgid "Document created"
-#~ msgstr "document"
-
-#~ msgid "Attach tag to documents: %s."
-#~ msgstr "Attach tag to documents: %s."
-
-#~ msgid "Are you sure you wish to delete the tags: %s?"
-#~ msgstr "Are you sure you wish to delete the tags: %s?"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Tag list"
-#~ msgstr "tag list"
-
-#~ msgid "Tagged documents"
-#~ msgstr "tagged documents"
-
-#~ msgid "Tag properties"
-#~ msgstr "tag properties"
-
-#~ msgid "Tags properties"
-#~ msgstr "tags properties"
-
-#~ msgid "Tag already exists."
-#~ msgstr "Tag already exists."
-
-#~ msgid "tags"
-#~ msgstr "tags"
-
-#~ msgid "create new tag"
-#~ msgstr "create new tag"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "tag"
-#~ msgstr "tag"
-
-#~ msgid "color"
-#~ msgstr "color"
+msgstr "Etiket ekle"

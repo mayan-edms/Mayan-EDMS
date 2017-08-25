@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -16,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-05-28 19:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16
@@ -40,10 +37,7 @@ msgstr "Parear todos"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
-"Cuando se selecciona, sólo se devolverán los resultados que coincidan con "
-"todos los campos. Si no se selecciona los resultados que coincidan con al "
-"menos un campo se devolverá."
+msgstr "Cuando se selecciona, sólo se devolverán los resultados que coincidan con todos los campos. Si no se selecciona los resultados que coincidan con al menos un campo se devolverá."
 
 #: forms.py:29
 msgid "Search terms"
@@ -74,54 +68,3 @@ msgstr "Resultados de la búsqueda para: %s"
 #, python-format
 msgid "Search for: %s"
 msgstr "Búsqueda para: %s"
-
-#~ msgid "Query"
-#~ msgstr "query"
-
-#~ msgid "Datetime created"
-#~ msgstr "datetime created"
-
-#~ msgid "Recent search"
-#~ msgstr "recent search"
-
-#~ msgid "Recent searches"
-#~ msgstr "recent searches"
-
-#~ msgid "Maximum number of search queries to remember per user."
-#~ msgstr "Maximum number of search queries to remember per user."
-
-#~ msgid "Results"
-#~ msgstr "results"
-
-#~ msgid "Elapsed time: %(time_delta)s seconds"
-#~ msgstr "Elapsed time: %(time_delta)s seconds"
-
-#~ msgid "Recent searches (maximum of %d)"
-#~ msgstr "recent searches (maximum of %d)"
-
-#~ msgid ""
-#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
-#~ msgstr ""
-#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-
-#~ msgid "search"
-#~ msgstr "search"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "hits"
-#~ msgstr "hits"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."
-#~ msgstr ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."

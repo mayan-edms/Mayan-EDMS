@@ -1,39 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Translators:
+# Szabolcs Molnar <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:23-0400\n"
-"PO-Revision-Date: 2017-08-03 05:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"PO-Revision-Date: 2017-08-05 14:41+0000\n"
+"Last-Translator: Szabolcs Molnar <szabolcs.molnar@gmail.com>\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:38
 msgid "Mailer"
-msgstr ""
+msgstr "Levelező"
 
 #: apps.py:53
 msgid "Date and time"
-msgstr ""
+msgstr "Dátum és idő"
 
 #: apps.py:56 models.py:21 models.py:121
 msgid "Message"
-msgstr ""
+msgstr "Üzenet"
 
 #: apps.py:59 apps.py:74 models.py:33
 msgid "Label"
-msgstr ""
+msgstr "Cimke"
 
 #: apps.py:62
 msgid "Default?"
@@ -45,21 +44,21 @@ msgstr ""
 
 #: forms.py:59
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 
 #: forms.py:61 forms.py:118
 msgid "Email address"
-msgstr ""
+msgstr "Emailcím"
 
 #: forms.py:63
 msgid "Subject"
-msgstr ""
+msgstr "Tárgy"
 
 #: forms.py:65
 msgid "Body"
-msgstr ""
+msgstr "Szövegtörzs"
 
 #: forms.py:69
 msgid "The email profile that will be used to send this email."
@@ -79,7 +78,7 @@ msgstr ""
 
 #: links.py:20 links.py:26
 msgid "Email link"
-msgstr ""
+msgstr "email hivatkozás"
 
 #: links.py:30
 msgid "System mailer error log"
@@ -91,11 +90,11 @@ msgstr ""
 
 #: links.py:38
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: links.py:42
 msgid "Edit"
-msgstr ""
+msgstr "Szerkesztés"
 
 #: links.py:46
 msgid "Log"
@@ -133,7 +132,7 @@ msgstr ""
 
 #: mailers.py:14
 msgid "Host"
-msgstr ""
+msgstr "Kiszolgáló"
 
 #: mailers.py:16
 msgid "The host to use for sending email."
@@ -167,8 +166,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 
 #: mailers.py:50
@@ -183,13 +182,13 @@ msgstr ""
 
 #: mailers.py:60
 msgid "Password"
-msgstr ""
+msgstr "Jelszó"
 
 #: mailers.py:63
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:80
@@ -206,7 +205,7 @@ msgstr ""
 
 #: models.py:18 models.py:118
 msgid "Date time"
-msgstr ""
+msgstr "Dátum idő"
 
 #: models.py:27
 msgid "Log entry"
@@ -224,11 +223,11 @@ msgstr ""
 
 #: models.py:39
 msgid "Default"
-msgstr ""
+msgstr "Alapéretelmezett"
 
 #: models.py:41
 msgid "Enabled"
-msgstr ""
+msgstr "Bekapcsolt"
 
 #: models.py:44
 msgid "The dotted Python path to the backend class."

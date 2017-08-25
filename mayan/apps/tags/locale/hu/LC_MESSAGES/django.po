@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Translators:
-# Translators:
+# Szabolcs Molnar <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"PO-Revision-Date: 2017-08-15 06:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 apps.py:80 apps.py:87 apps.py:106 apps.py:108 forms.py:31
@@ -28,366 +26,238 @@ msgstr "Címkék"
 
 #: apps.py:75 apps.py:95
 msgid "Preview"
-msgstr ""
+msgstr "Előnézet"
 
 #: apps.py:99 models.py:22
 msgid "Documents"
-msgstr "dokumentumok"
+msgstr "Dokumentumok"
 
 #: links.py:14
 msgid "Remove tag"
-msgstr ""
+msgstr "Címke levétele"
 
 #: links.py:17 links.py:24
 msgid "Attach tags"
-msgstr ""
+msgstr "Címke hozzárendelése"
 
 #: links.py:20
 msgid "Remove tags"
-msgstr ""
+msgstr "Címkék levétele"
 
 #: links.py:29
 msgid "Create new tag"
-msgstr ""
+msgstr "Új címke készítése"
 
 #: links.py:32 links.py:45 views.py:132
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: links.py:36
 msgid "Edit"
-msgstr ""
+msgstr "Szerkesztés"
 
 #: links.py:43
 msgid "All"
-msgstr ""
+msgstr "Mind"
 
 #: models.py:18 search.py:16
 msgid "Label"
-msgstr ""
+msgstr "Cimke"
 
 #: models.py:20 search.py:20
 msgid "Color"
-msgstr ""
+msgstr "Szín"
 
 #: models.py:33
 msgid "Tag"
-msgstr ""
+msgstr "Címke"
 
 #: models.py:53
 msgid "Document tag"
-msgstr ""
+msgstr "Dokumentum címke"
 
 #: models.py:54
 msgid "Document tags"
-msgstr ""
+msgstr "Dokumentum címkék"
 
 #: permissions.py:10
 msgid "Create new tags"
-msgstr ""
+msgstr "Új címkék készítése"
 
 #: permissions.py:13
 msgid "Delete tags"
-msgstr ""
+msgstr "Címkék tölrése"
 
 #: permissions.py:16
 msgid "View tags"
-msgstr ""
+msgstr "Címkék megtekintése"
 
 #: permissions.py:19
 msgid "Edit tags"
-msgstr ""
+msgstr "Címkék szerkesztése"
 
 #: permissions.py:22
 msgid "Attach tags to documents"
-msgstr ""
+msgstr "Címkék dokumentumokhoz rendelése"
 
 #: permissions.py:25
 msgid "Remove tags from documents"
-msgstr ""
+msgstr "Címkék levétele a dokumentumokról"
 
 #: serializers.py:38
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
+msgstr "Vesszővel elválasztott lista az elsődleges dokumentum kulcsokkal amihez ez a címke hozzá lesz rendelve."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
+msgstr "A dokumentumhoz kapcsolt címke API URL hivatkozása. Ez az URL más a kanonikus címke URL-től. "
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
-msgstr ""
+msgstr "A hozzáadandó címke elsődleges kulcsa."
 
 #: views.py:33
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr ""
+msgstr "Címke hozzárendelés elvégezve %(count)d dokumentumra"
 
 #: views.py:35
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr ""
+msgstr "Címke hozzárendelés elvégezve %(count)d dokumentumokon"
 
 #: views.py:42
 msgid "Attach"
-msgstr ""
+msgstr "Hozzárendel"
 
 #: views.py:44
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cimkék hozzárendelése %(count)d dokumentumhoz"
+msgstr[1] "Cimkék hozzárendelése %(count)d dokumentumhoz"
 
 #: views.py:56
 #, python-format
 msgid "Attach tags to document: %s"
-msgstr ""
+msgstr "Cimkék hozzárendelése dokumentumhoz: %s"
 
 #: views.py:65
 msgid "Tags to be attached."
-msgstr ""
+msgstr "Hozzárendelendő címkék."
 
 #: views.py:90
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr ""
+msgstr "A \"%(document)s\" dokumentum már meg van címkézve mint \"%(tag)s\""
 
 #: views.py:101
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr ""
+msgstr "A \"%(tag)s\" címke sikeresen hozzárendelve a \"%(document)s\" dokumentumhoz."
 
 #: views.py:110
 msgid "Create tag"
-msgstr ""
+msgstr "Címke készítése"
 
 #: views.py:121
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
-msgstr ""
+msgstr "Címke tölrési kérés végrehajtva %(count)d címkén"
 
 #: views.py:123
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr ""
+msgstr "Címke tölrési kérés végrehajtva %(count)d címkén"
 
 #: views.py:130
 msgid "Will be removed from all documents."
-msgstr ""
+msgstr "Minden dokumentumról el lesz távolítva."
 
 #: views.py:134
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Törli a kiválasztott címkét?"
+msgstr[1] "Törli a kiválasztott címkét?"
 
 #: views.py:144
 #, python-format
 msgid "Delete tag: %s"
-msgstr ""
+msgstr "Címke tölrése? %s"
 
 #: views.py:154
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr ""
+msgstr "\"%s\" címke sikeres törlése."
 
 #: views.py:158
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
+msgstr "Hiba a \"%(tag)s\" címke törlése közben: %(error)s"
 
 #: views.py:173
 #, python-format
 msgid "Edit tag: %s"
-msgstr ""
+msgstr "Címke szerkesztése: %s"
 
 #: views.py:205
 #, python-format
 msgid "Documents with the tag: %s"
-msgstr ""
+msgstr "Dokumentumok a címkével: %s"
 
 #: views.py:228
 #, python-format
 msgid "Tags for document: %s"
-msgstr ""
+msgstr "Címkék a dokumentumon: %s"
 
 #: views.py:239
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr ""
+msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
 
 #: views.py:241
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr ""
+msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
 
 #: views.py:248
 msgid "Remove"
-msgstr ""
+msgstr "Levétel"
 
 #: views.py:250
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Címkék levétele %(count)d dokumentumról"
+msgstr[1] "Címkék levétele %(count)d dokumentumról"
 
 #: views.py:262
 #, python-format
 msgid "Remove tags from document: %s"
-msgstr ""
+msgstr "Címkék levétele %s dokumentumról"
 
 #: views.py:271
 msgid "Tags to be removed."
-msgstr ""
+msgstr "Leszedendő címkék."
 
 #: views.py:296
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr ""
+msgstr "A \"%(document)s\" dokumentum nem lett \"%(tag)s\"-el megcímkézve"
 
 #: views.py:306
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
+msgstr "A \"%(tag)s\" címke sikeresen leszedésre került a \"%(document)s\" dokumentumról."
 
 #: workflow_actions.py:21
-#, fuzzy
-#| msgid "Attach tag to document"
-#| msgid_plural "Attach tag to documents"
 msgid "Tags to attach to the document"
-msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
+msgstr ""
 
 #: workflow_actions.py:26
-#, fuzzy
-#| msgid "Attach tag to document"
-#| msgid_plural "Attach tag to documents"
 msgid "Attach tag"
-msgstr "2b1f894eebfe4fd9c93a2a121387867c_pl_0"
-
-#~ msgid "Must provide at least one document."
-#~ msgstr "Must provide at least one document."
-
-#~ msgid "Must provide at least one tag."
-#~ msgstr "Must provide at least one tag."
-
-#~ msgid "Must provide at least one tagged document."
-#~ msgstr "Must provide at least one tagged document."
-
-#~ msgid "Remove tag from documents: %s."
-#~ msgstr "Remove tag from documents: %s."
-
-#~ msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags: %(tags)s from the document: "
-#~ "%(document)s?"
-
-#~ msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the tags %(tag)s from the documents: "
-#~ "%(documents)s?"
-
-#~ msgid "remove tags"
-#~ msgstr "remove tags"
-
-#~ msgid "Tagged items"
-#~ msgstr "tagged items"
-
-#~ msgid "ACLs"
-#~ msgstr "ACLs"
-
-#~ msgid "Blue"
-#~ msgstr "Blue"
-
-#~ msgid "Cyan"
-#~ msgstr "Cyan"
-
-#~ msgid "Coral"
-#~ msgstr "Coral"
-
-#~ msgid "Green-Yellow"
-#~ msgstr "Green-Yellow"
-
-#~ msgid "Khaki"
-#~ msgstr "Khaki"
-
-#~ msgid "LightGrey"
-#~ msgstr "LightGrey"
-
-#~ msgid "Magenta"
-#~ msgstr "Magenta"
-
-#~ msgid "Red"
-#~ msgstr "Red"
-
-#~ msgid "Orange"
-#~ msgstr "Orange"
-
-#~ msgid "Yellow"
-#~ msgstr "Yellow"
-
-#~ msgid "Tag created succesfully."
-#~ msgstr "Tag created succesfully."
-
-#~ msgid "Tag updated succesfully."
-#~ msgstr "Tag updated succesfully."
-
-#~ msgid "Add tag to document"
-#~ msgstr "Add tag to document"
-
-#~ msgid "Document created"
-#~ msgstr "document"
-
-#~ msgid "Attach tag to documents: %s."
-#~ msgstr "Attach tag to documents: %s."
-
-#~ msgid "Are you sure you wish to delete the tags: %s?"
-#~ msgstr "Are you sure you wish to delete the tags: %s?"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Tag list"
-#~ msgstr "tag list"
-
-#~ msgid "Tagged documents"
-#~ msgstr "tagged documents"
-
-#~ msgid "Tag properties"
-#~ msgstr "tag properties"
-
-#~ msgid "Tags properties"
-#~ msgstr "tags properties"
-
-#~ msgid "Tag already exists."
-#~ msgstr "Tag already exists."
-
-#~ msgid "tags"
-#~ msgstr "tags"
-
-#~ msgid "create new tag"
-#~ msgstr "create new tag"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "tag"
-#~ msgstr "tag"
-
-#~ msgid "color"
-#~ msgstr "color"
+msgstr ""

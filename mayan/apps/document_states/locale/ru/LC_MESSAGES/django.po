@@ -1,8 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 # lilo.panic, 2016
 msgid ""
@@ -10,17 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
+"PO-Revision-Date: 2017-08-15 06:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:52 queues.py:8
 msgid "Document states"
@@ -118,24 +114,23 @@ msgstr ""
 
 #: forms.py:104 models.py:217
 msgid "Enabled"
-msgstr ""
+msgstr "Доступно"
 
 #: forms.py:106
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Ничего"
+msgstr "Нет"
 
 #: forms.py:107
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141
+#: views.py:553
 msgid "Workflows"
 msgstr ""
 
@@ -157,7 +152,7 @@ msgstr "Редактировать"
 
 #: links.py:51
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 #: links.py:56
 msgid "Create action"
@@ -196,14 +191,12 @@ msgid "State documents"
 msgstr ""
 
 #: links.py:129
-#, fuzzy
-#| msgid "Transition"
 msgid "Transition events"
-msgstr "Переход"
+msgstr ""
 
 #: links.py:134
 msgid "Preview"
-msgstr ""
+msgstr "Предварительный просмотр"
 
 #: literals.py:9
 msgid "On entry"
@@ -284,10 +277,8 @@ msgid "Workflow transitions"
 msgstr ""
 
 #: models.py:298
-#, fuzzy
-#| msgid "Document types"
 msgid "Event type"
-msgstr "Типы документов"
+msgstr "Тип события"
 
 #: models.py:302
 msgid "Workflow transition trigger event"

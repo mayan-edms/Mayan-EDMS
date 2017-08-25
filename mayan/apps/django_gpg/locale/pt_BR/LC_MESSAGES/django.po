@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Roberto Rosario, 2012
@@ -15,12 +13,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
 "PO-Revision-Date: 2016-11-25 02:01+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:31
@@ -209,9 +206,7 @@ msgstr "Assinaturas"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Diretório inicial usado para armazenar as chaves, assim como os arquivos de "
-"configuração."
+msgstr "Diretório inicial usado para armazenar as chaves, assim como os arquivos de configuração."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
@@ -265,59 +260,3 @@ msgstr "Resultados de busca de chave"
 #: views.py:138
 msgid "Upload new key"
 msgstr "Carregar nova chave"
-
-#~ msgid "Unknown"
-#~ msgstr "unknown"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Owner"
-#~ msgstr "Owner"
-
-#~ msgid "Identities"
-#~ msgstr "Identifies"
-
-#~ msgid "Key: %s, deleted successfully."
-#~ msgstr "Key: %s, deleted successfully."
-
-#~ msgid "Delete key"
-#~ msgstr "Delete key"
-
-#~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/"
-#~ "private pair the private key will be deleted as well."
-#~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#~ "key that is part of a public/private pair the private key will be deleted "
-#~ "as well."
-
-#~ msgid "results"
-#~ msgstr "results"
-
-#~ msgid "Key: %s, imported successfully."
-#~ msgstr "Key: %s, imported successfully."
-
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Are you sure you wish to import key id: %s?"
-
-#~ msgid "Disabled"
-#~ msgstr "disabled"
-
-#~ msgid "Expired"
-#~ msgstr "expired"
-
-#~ msgid "Revoked"
-#~ msgstr "revoked"
-
-#~ msgid "private keys"
-#~ msgstr "private keys"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "query keyservers"
-#~ msgstr "query keyservers"
-
-#~ msgid "key management"
-#~ msgstr "key management"

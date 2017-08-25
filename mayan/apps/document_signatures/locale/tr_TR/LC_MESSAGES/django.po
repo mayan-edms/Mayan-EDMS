@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
@@ -11,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-03 19:02+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"PO-Revision-Date: 2017-08-15 06:30+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -278,30 +275,3 @@ msgstr "İmzalar için tüm belgeleri doğruluyor musunuz?"
 #: views.py:356
 msgid "Signature verification queued successfully."
 msgstr "İmza doğrulama işlemi başarıyla sıraya alındı."
-
-#~ msgid "Signature list"
-#~ msgstr "İmza listesi"
-
-#~ msgid "Signature status: %s"
-#~ msgstr "Signature type: %s"
-
-#~ msgid "Timestamp: %s"
-#~ msgstr "Timestamp: %s"
-
-#~ msgid "Signee: %s"
-#~ msgstr "Signee: %s"
-
-#~ msgid "Detached signature uploaded successfully."
-#~ msgstr "Detached signature uploaded successfully."
-
-#~ msgid "Error while deleting the detached signature; %s"
-#~ msgstr "Download detached signatures"
-
-#~ msgid "Delete the detached signature from document: %s?"
-#~ msgstr "Upload detached signature for: %s"
-
-#~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "Signature status: %(widget)s %(text)s"
-
-#~ msgid "signature file"
-#~ msgstr "signature file"

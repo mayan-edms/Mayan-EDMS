@@ -1,8 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 # Jesaja Everling <jeverling@gmail.com>, 2017
 msgid ""
@@ -12,12 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:23-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:38
@@ -46,8 +44,8 @@ msgstr ""
 
 #: forms.py:59
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 
 #: forms.py:61 forms.py:118
@@ -121,11 +119,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Anlagen: {{ document }}\n"
-"\n"
-" --------\n"
-" Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
+msgstr "Anlagen: {{ document }}\n\n --------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -134,12 +128,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: "
-"{{ link }}\n"
-"\n"
-"--------\n"
-" Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
+msgstr "Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: {{ link }}\n\n--------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: mailers.py:14
 msgid "Host"
@@ -177,8 +166,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 
 #: mailers.py:50
@@ -198,8 +187,8 @@ msgstr "Passwort"
 #: mailers.py:63
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:80
@@ -318,14 +307,11 @@ msgstr "Link für Dokument: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Vorlage für den Nachrichtenteil des Formulars für die "
-"Dokumentenlinkversendung"
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenlinkversendung"
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -333,13 +319,11 @@ msgstr "Dokument: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
-"Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr ""
-"Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
 
 #: views.py:37
 msgid "Document mailing error log"

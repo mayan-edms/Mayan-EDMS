@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Translators:
+# Szabolcs Molnar <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:23-0400\n"
-"PO-Revision-Date: 2015-08-20 19:07+0000\n"
+"PO-Revision-Date: 2017-08-25 00:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16
@@ -25,32 +24,32 @@ msgstr ""
 
 #: apps.py:22 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
-msgstr ""
+msgstr "Események"
 
 #: apps.py:31
 msgid "Timestamp"
-msgstr ""
+msgstr "Időbélyeg"
 
 #: apps.py:34
 msgid "Actor"
-msgstr ""
+msgstr "Szereplő"
 
 #: apps.py:38
 msgid "Verb"
-msgstr ""
+msgstr "Ige"
 
 #: classes.py:23
 #, python-brace-format
 msgid "Unknown or obsolete event type: {0}"
-msgstr ""
+msgstr "Unknown or obsolete event type: {0}"
 
 #: models.py:13
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #: models.py:17
 msgid "Event type"
-msgstr ""
+msgstr "Esemény típus"
 
 #: models.py:18
 msgid "Event types"

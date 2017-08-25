@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -16,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:23 models.py:46 models.py:77 permissions.py:7
@@ -120,9 +117,7 @@ msgstr ""
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Komma getrennte Liste der Primary Keys der Gruppen die zu dieser Rolle "
-"hinzugefügt oder ersetzt werden sollen."
+msgstr "Komma getrennte Liste der Primary Keys der Gruppen die zu dieser Rolle hinzugefügt oder ersetzt werden sollen."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
@@ -158,86 +153,3 @@ msgstr "Erteilte Berechtigungen"
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Berechtigungen der Rolle %s"
-
-#~ msgid "Permission holder"
-#~ msgstr "permission holder"
-
-#~ msgid "Role member"
-#~ msgstr "role member"
-
-#~ msgid "Role members"
-#~ msgstr "role members"
-
-#~ msgid ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-#~ msgstr ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-
-#~ msgid "Has permission"
-#~ msgstr "has permission"
-
-#~ msgid " and "
-#~ msgstr " and "
-
-#~ msgid "%(permissions)s to %(requester)s"
-#~ msgstr "%(permissions)s to %(requester)s"
-
-#~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
-
-#~ msgid ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-
-#~ msgid "permission"
-#~ msgstr "permission"
-
-#~ msgid "permissions"
-#~ msgstr "permissions"
-
-#~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
-
-#~ msgid ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
-
-#~ msgid "Users"
-#~ msgstr "Users"
-
-#~ msgid "Special"
-#~ msgstr "Special"
-
-#~ msgid "Members of role: %s"
-#~ msgstr "members of role: %s"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "grant"
-#~ msgstr "grant"
-
-#~ msgid "revoke"
-#~ msgstr "revoke"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "role"
-#~ msgstr "role"

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,27 +10,26 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Dezső József <dejo60@gmail.com>, 2017\n"
-"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
-"hu/)\n"
-"Language: hu\n"
+"Last-Translator: Szabolcs Molnar <szabolcs.molnar@gmail.com>, 2017\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 apps.py:75 apps.py:83 apps.py:86 forms.py:30 links.py:21
 #: menus.py:8 models.py:37 permissions.py:7 views.py:153
 msgid "Cabinets"
-msgstr ""
+msgstr "Fiók"
 
 #: links.py:27 links.py:38
 msgid "Remove from cabinets"
-msgstr ""
+msgstr "Fiókból törlés"
 
 #: links.py:31 links.py:35
 msgid "Add to cabinets"
-msgstr ""
+msgstr "Fiókhoz adás"
 
 #: links.py:55
 msgid "Add new level"
@@ -42,15 +41,15 @@ msgstr ""
 
 #: links.py:64
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: links.py:67
 msgid "Edit"
-msgstr ""
+msgstr "Szerkesztés"
 
 #: links.py:71
 msgid "All"
-msgstr ""
+msgstr "Mind"
 
 #: links.py:74
 msgid "Details"
@@ -58,7 +57,7 @@ msgstr "Részletek"
 
 #: models.py:25 search.py:16
 msgid "Label"
-msgstr ""
+msgstr "Cimke"
 
 #: models.py:28
 msgid "Documents"
@@ -122,7 +121,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:180
@@ -178,13 +178,6 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: views.py:201
-#, python-format
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-
 #: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -216,19 +209,7 @@ msgstr ""
 
 #: views.py:286
 msgid "Remove"
-msgstr ""
-
-#: views.py:288
-#, python-format
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
-
-#: views.py:301
-#, python-format
-msgid "Remove document \"%s\" from cabinets"
-msgstr ""
+msgstr "Levétel"
 
 #: views.py:312
 msgid "Cabinets from which the selected documents will be removed."

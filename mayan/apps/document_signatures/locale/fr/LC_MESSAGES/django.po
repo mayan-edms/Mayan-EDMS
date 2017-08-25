@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
@@ -14,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-25 13:10+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2017-08-15 06:30+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -272,9 +269,7 @@ msgstr "Transférer une signature détachée pour la version du document: %s"
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Sur de grosses bases de données, cette opération peut prendre un certain "
-"temps."
+msgstr "Sur de grosses bases de données, cette opération peut prendre un certain temps."
 
 #: views.py:346
 msgid "Verify all document for signatures?"
@@ -283,30 +278,3 @@ msgstr "Vérifier la signature des documents?"
 #: views.py:356
 msgid "Signature verification queued successfully."
 msgstr "Vérification de la signature ajoutée à la file d'attente"
-
-#~ msgid "Signature list"
-#~ msgstr "Liste des signatures"
-
-#~ msgid "Signature status: %s"
-#~ msgstr "Signature type: %s"
-
-#~ msgid "Timestamp: %s"
-#~ msgstr "Timestamp: %s"
-
-#~ msgid "Signee: %s"
-#~ msgstr "Signee: %s"
-
-#~ msgid "Detached signature uploaded successfully."
-#~ msgstr "Detached signature uploaded successfully."
-
-#~ msgid "Error while deleting the detached signature; %s"
-#~ msgstr "Download detached signatures"
-
-#~ msgid "Delete the detached signature from document: %s?"
-#~ msgstr "Upload detached signature for: %s"
-
-#~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "Signature status: %(widget)s %(text)s"
-
-#~ msgid "signature file"
-#~ msgstr "signature file"

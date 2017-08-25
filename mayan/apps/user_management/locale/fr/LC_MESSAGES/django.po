@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
@@ -17,12 +15,11 @@ msgstr ""
 "POT-Creation-Date: 2017-08-24 20:24-0400\n"
 "PO-Revision-Date: 2017-07-24 19:19+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 permissions.py:7
@@ -143,9 +140,7 @@ msgstr "Nom"
 
 #: serializers.py:29
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Liste séparée par des virgules des clés primaires de groupe pour attribuer "
-"cet utilisateur à."
+msgstr "Liste séparée par des virgules des clés primaires de groupe pour attribuer cet utilisateur à."
 
 #: serializers.py:51
 msgid "List of group primary keys to which to add the user."
@@ -182,14 +177,12 @@ msgstr "Utilisateur \"%s\" créé avec succès."
 #: views.py:135
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
-"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
+msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
 
 #: views.py:137
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
-"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
+msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
 
 #: views.py:146
 msgid "Delete user"
@@ -206,9 +199,7 @@ msgstr "Supprimer l'utilisateur: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La suppression des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'administration."
+msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:176
 #, python-format
@@ -218,8 +209,7 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:182
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:198
 #, python-format
@@ -242,14 +232,12 @@ msgstr "Membre des groupes : %s"
 #: views.py:252
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
-"Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
+msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
 
 #: views.py:254
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
-"Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
+msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
 
 #: views.py:262
 msgid "Submit"
@@ -270,10 +258,7 @@ msgstr "Changer le mot de passe pour l'utilisateur: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"La réinitialisation des mots de passe pour les comptes super utilisateur et "
-"staff n'est pas autorisée ici, veuillez le faire via l'interface "
-"d'administration."
+msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
 
 #: views.py:304
 #, python-format
@@ -283,82 +268,4 @@ msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur : %s."
 #: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
-"\"%(user)s\" : %(error)s"
-
-#~ msgid "Must provide at least one user."
-#~ msgstr "Must provide at least one user."
-
-#~ msgid "Delete the users: %s?"
-#~ msgstr "Delete existing users"
-
-#~ msgid "Passwords do not match, try again."
-#~ msgstr "Passwords do not match, try again."
-
-#~ msgid "Reseting password for users: %s"
-#~ msgstr "Reseting password for users: %s"
-
-#~ msgid ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-#~ msgstr ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-
-#~ msgid "User \"%s\" updated successfully."
-#~ msgstr "User \"%s\" updated successfully."
-
-#~ msgid "Must provide at least one group."
-#~ msgstr "Must provide at least one group."
-
-#~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Group \"%s\" deleted successfully."
-
-#~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
-
-#~ msgid "Delete the groups: %s?"
-#~ msgstr "Delete existing groups"
-
-#~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Are you sure you wish to delete the user: %s?"
-
-#~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Are you sure you wish to delete the users: %s?"
-
-#~ msgid "Non groups of user: %s"
-#~ msgstr "non groups of user: %s"
-
-#~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Group \"%s\" updated successfully."
-
-#~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Group \"%s\" created successfully."
-
-#~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Are you sure you wish to delete the group: %s?"
-
-#~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Are you sure you wish to delete the groups: %s?"
-
-#~ msgid "Non members of group: %s"
-#~ msgstr "non members of group: %s"
-
-#~ msgid "Group"
-#~ msgstr "group"
-
-#~ msgid "User list"
-#~ msgstr "user list"
-
-#~ msgid "Group list"
-#~ msgstr "group list"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "create new user"
-#~ msgstr "create new user"
-
-#~ msgid "create new group"
-#~ msgstr "create new group"
+msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\" : %(error)s"

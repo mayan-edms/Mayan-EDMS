@@ -1,9 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
-# Translators:
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -13,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-15 03:49+0000\n"
+"PO-Revision-Date: 2017-08-15 06:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:76 settings.py:11
@@ -238,29 +235,23 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van "
-"een database commit."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
 
 #: settings.py:29
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Een natuurlijk getal om aan te geven hoeveel objecten per pagina weergegeven "
-"worden."
+msgstr "Een natuurlijk getal om aan te geven hoeveel objecten per pagina weergegeven worden."
 
 #: settings.py:35
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
+msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
 
 #: settings.py:40
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Globale instelling voor een tijdelijke folder om miniaturen, voorvertoningen "
-"en tijdelijke bestanden in op te slaan."
+msgstr "Globale instelling voor een tijdelijke folder om miniaturen, voorvertoningen en tijdelijke bestanden in op te slaan."
 
 #: settings.py:48
 msgid "Path to the logfile that will track errors during production."
@@ -325,204 +316,3 @@ msgstr "Selecteer minimaal een item."
 #: widgets.py:48
 msgid "None"
 msgstr "Geen"
-
-#~ msgid "About"
-#~ msgstr "About"
-
-#~ msgid "Account"
-#~ msgstr "account"
-
-#~ msgid "Password"
-#~ msgstr "password"
-
-#~ msgid "Password hash"
-#~ msgstr "password hash"
-
-#~ msgid "Auto admin properties"
-#~ msgstr "auto admin properties"
-
-#~ msgid "Function found"
-#~ msgstr "function found"
-
-#~ msgid "Unable to remove %(selection)s."
-#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
-
-#~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "E-mail conflict, another user has that same email."
-
-#~ msgid "Current user's details updated."
-#~ msgstr "Current user's details updated."
-
-#~ msgid "Current user's locale profile details updated."
-#~ msgstr "Current user's details updated."
-
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
-#~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
-
-#~ msgid "This account is inactive."
-#~ msgstr "This account is inactive."
-
-#~ msgid "Change password"
-#~ msgstr "change password"
-
-#~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-#~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-
-#~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "Allow non authenticated users, access to all views"
-
-#~ msgid "Current user password change"
-#~ msgstr "Current user password change"
-
-#~ msgid "Your password has been successfully changed."
-#~ msgstr "Your password has been successfully changed."
-
-#~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
-
-#~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
-
-#~ msgid "A5"
-#~ msgstr "A5"
-
-#~ msgid "A4"
-#~ msgstr "A4"
-
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgid "B5"
-#~ msgstr "B5"
-
-#~ msgid "B4"
-#~ msgstr "B4"
-
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Ledger"
-#~ msgstr "Ledger"
-
-#~ msgid "Portrait"
-#~ msgstr "Portrait"
-
-#~ msgid "Landscape"
-#~ msgstr "Landscape"
-
-#~ msgid "license"
-#~ msgstr "license"
-
-#~ msgid "anonymous user"
-#~ msgstr "anonymous user"
-
-#~ msgid "password"
-#~ msgstr "password"
-
-#~ msgid "Insufficient permissions"
-#~ msgstr "Insufficient permissions"
-
-#~ msgid "You don't have enough permissions for this operation."
-#~ msgstr "You don't have enough permissions for this operation."
-
-#~ msgid "Sorry, but the requested page could not be found."
-#~ msgstr "Sorry, but the requested page could not be found."
-
-#~ msgid "Details for %(object_name)s: %(object)s"
-#~ msgstr "Details for %(object_name)s: %(object)s"
-
-#~ msgid "Details for: %(object)s"
-#~ msgstr "Details for: %(object)s"
-
-#~ msgid "Edit %(object_name)s: %(object)s"
-#~ msgstr "Details for %(object_name)s: %(object)s"
-
-#~ msgid "Edit: %(object)s"
-#~ msgstr "Edit %(object_name)s:"
-
-#~ msgid "Create new %(object_name)s"
-#~ msgstr "Create new %(object_name)s"
-
-#~ msgid "Create"
-#~ msgstr "Create"
-
-#~ msgid "Assign %(title)s %(object)s"
-#~ msgstr "Assign %(title)s %(object)s"
-
-#~ msgid "Confirm"
-#~ msgstr "Confirm"
-
-#~ msgid "Confirm delete"
-#~ msgstr "Confirm delete"
-
-#~ msgid "form icon"
-#~ msgstr "form icon"
-
-#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-#~ msgstr "Are you sure you wish to delete %(object_name)s: %(object)s?"
-
-#~ msgid "Are you sure you wish to delete: %(object)s?"
-#~ msgstr "Are you sure you wish to delete: %(object)s?"
-
-#~ msgid "Yes"
-#~ msgstr "Yes"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "required"
-#~ msgstr "required"
-
-#~ msgid "Save"
-#~ msgstr "Save"
-
-#~ msgid "Submit"
-#~ msgstr "Submit"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancel"
-
-#~ msgid "List of %(title)s"
-#~ msgstr "List of %(stripped_title)s"
-
-#~ msgid ""
-#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
-#~ "%(page_number)s of %(total_pages)s)"
-#~ msgstr ""
-#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
-#~ "%(page_number)s of %(total_pages)s)"
-
-#~ msgid "List of %(title)s (%(total)s)"
-#~ msgstr "List of %(title)s (%(total)s)"
-
-#~ msgid "Identifier"
-#~ msgstr "Identifier"
-
-#~ msgid "There are no %(title)s"
-#~ msgstr "There are no %(stripped_title)s"
-
-#~ msgid "Login"
-#~ msgstr "Login"
-
-#~ msgid "Password change"
-#~ msgstr "Password change"
-
-#~ msgid "lock field"
-#~ msgstr "lock field"
-
-#~ msgid "Edit"
-#~ msgstr "Edit"

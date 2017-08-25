@@ -1,8 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
@@ -10,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-10 07:37+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2017-08-15 06:31+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 queues.py:8
@@ -88,7 +86,7 @@ msgstr "Stato iniziale?"
 
 #: apps.py:172
 msgid "Enabled?"
-msgstr ""
+msgstr "Abilitato?"
 
 #: apps.py:176
 msgid "When?"
@@ -116,24 +114,23 @@ msgstr ""
 
 #: forms.py:104 models.py:217
 msgid "Enabled"
-msgstr ""
+msgstr "Abilitato"
 
 #: forms.py:106
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Nessuna "
+msgstr "No"
 
 #: forms.py:107
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141
+#: views.py:553
 msgid "Workflows"
 msgstr "I workflow"
 
@@ -155,13 +152,11 @@ msgstr "Modifica"
 
 #: links.py:51
 msgid "Actions"
-msgstr ""
+msgstr "Azioni "
 
 #: links.py:56
-#, fuzzy
-#| msgid "Create transition"
 msgid "Create action"
-msgstr "Crea transizione"
+msgstr ""
 
 #: links.py:60
 msgid "Create state"
@@ -196,14 +191,12 @@ msgid "State documents"
 msgstr ""
 
 #: links.py:129
-#, fuzzy
-#| msgid "Transitions"
 msgid "Transition events"
-msgstr "Transizioni"
+msgstr ""
 
 #: links.py:134
 msgid "Preview"
-msgstr ""
+msgstr "Anteprima "
 
 #: literals.py:9
 msgid "On entry"
@@ -227,9 +220,7 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Seleziona se questo è lo stato da utilizzare quando il workflow inizia. Solo "
-"uno stato può essere quello iniziale."
+msgstr "Seleziona se questo è lo stato da utilizzare quando il workflow inizia. Solo uno stato può essere quello iniziale."
 
 #: models.py:153
 msgid "Initial"
@@ -239,9 +230,7 @@ msgstr "Iniziale"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Inserisci la percentuale di completamento che questo stato rappresenta in "
-"relazione al workflow. Usa i numeri senza segno di percentuale."
+msgstr "Inserisci la percentuale di completamento che questo stato rappresenta in relazione al workflow. Usa i numeri senza segno di percentuale."
 
 #: models.py:165 models.py:214
 msgid "Workflow state"
@@ -272,16 +261,12 @@ msgid "Entry action data"
 msgstr ""
 
 #: models.py:239
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow state action"
-msgstr "Stato workflow"
+msgstr ""
 
 #: models.py:240
-#, fuzzy
-#| msgid "Workflow states"
 msgid "Workflow state actions"
-msgstr "Stati workflow"
+msgstr ""
 
 #: models.py:287
 msgid "Workflow transition"
@@ -292,22 +277,16 @@ msgid "Workflow transitions"
 msgstr "Transizioni workflow"
 
 #: models.py:298
-#, fuzzy
-#| msgid "Document types"
 msgid "Event type"
-msgstr "Tipi di documento"
+msgstr "Tipo evento"
 
 #: models.py:302
-#, fuzzy
-#| msgid "Workflow transition"
 msgid "Workflow transition trigger event"
-msgstr "Transizione workflow"
+msgstr ""
 
 #: models.py:303
-#, fuzzy
-#| msgid "Workflow transitions"
 msgid "Workflow transitions trigger events"
-msgstr "Transizioni workflow"
+msgstr ""
 
 #: models.py:317
 msgid "Document"
@@ -462,28 +441,24 @@ msgid "States of workflow: %s"
 msgstr "Stati del workflow: %s"
 
 #: views.py:248
-#, fuzzy, python-format
-#| msgid "Create workflow"
+#, python-format
 msgid "Create a \"%s\" workflow action"
-msgstr "Crea workflow"
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
-#| msgid "Delete workflows"
+#, python-format
 msgid "Delete workflow state action: %s"
-msgstr "Cancella workflows"
+msgstr ""
 
 #: views.py:305
-#, fuzzy, python-format
-#| msgid "Edit workflows"
+#, python-format
 msgid "Edit workflow state action: %s"
-msgstr "Modifica workflows"
+msgstr ""
 
 #: views.py:325
-#, fuzzy, python-format
-#| msgid "Transitions of workflow: %s"
+#, python-format
 msgid "Actions for workflow state: %s"
-msgstr "Trasizioni per il workflow: %s"
+msgstr ""
 
 #: views.py:359
 msgid "New workflow state action selection"
@@ -528,10 +503,9 @@ msgid "Workflow transition trigger events updated successfully"
 msgstr ""
 
 #: views.py:699
-#, fuzzy, python-format
-#| msgid "Workflow transitions"
+#, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Transizioni workflow"
+msgstr ""
 
 #: views.py:728
 msgid "Launch all workflows?"

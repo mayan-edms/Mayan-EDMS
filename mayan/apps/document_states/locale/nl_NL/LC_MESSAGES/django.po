@@ -1,8 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
@@ -10,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
+"PO-Revision-Date: 2017-08-15 06:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 queues.py:8
@@ -116,24 +114,23 @@ msgstr ""
 
 #: forms.py:104 models.py:217
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 #: forms.py:106
-#, fuzzy
-#| msgid "None"
 msgid "No"
-msgstr "Geen"
+msgstr "Nee"
 
 #: forms.py:107
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141 views.py:553
+#: links.py:15 links.py:38 links.py:114 models.py:128 views.py:141
+#: views.py:553
 msgid "Workflows"
 msgstr ""
 
@@ -155,13 +152,11 @@ msgstr "bewerken"
 
 #: links.py:51
 msgid "Actions"
-msgstr ""
+msgstr "Acties"
 
 #: links.py:56
-#, fuzzy
-#| msgid "Create transition"
 msgid "Create action"
-msgstr "Transitie aanmaken"
+msgstr ""
 
 #: links.py:60
 msgid "Create state"
@@ -196,14 +191,12 @@ msgid "State documents"
 msgstr ""
 
 #: links.py:129
-#, fuzzy
-#| msgid "Transitions"
 msgid "Transition events"
-msgstr "Transities"
+msgstr ""
 
 #: links.py:134
 msgid "Preview"
-msgstr ""
+msgstr "Preview"
 
 #: literals.py:9
 msgid "On entry"
@@ -268,16 +261,12 @@ msgid "Entry action data"
 msgstr ""
 
 #: models.py:239
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow state action"
-msgstr "Workflowstaat"
+msgstr ""
 
 #: models.py:240
-#, fuzzy
-#| msgid "Workflow states"
 msgid "Workflow state actions"
-msgstr "Workflowstaten"
+msgstr ""
 
 #: models.py:287
 msgid "Workflow transition"
@@ -288,22 +277,16 @@ msgid "Workflow transitions"
 msgstr "Workflowtransities"
 
 #: models.py:298
-#, fuzzy
-#| msgid "Document types"
 msgid "Event type"
-msgstr "Documentsoorten"
+msgstr "Evenementsoort"
 
 #: models.py:302
-#, fuzzy
-#| msgid "Workflow transition"
 msgid "Workflow transition trigger event"
-msgstr "Workflowtransitie"
+msgstr ""
 
 #: models.py:303
-#, fuzzy
-#| msgid "Workflow transitions"
 msgid "Workflow transitions trigger events"
-msgstr "Workflowtransities"
+msgstr ""
 
 #: models.py:317
 msgid "Document"
@@ -458,28 +441,24 @@ msgid "States of workflow: %s"
 msgstr ""
 
 #: views.py:248
-#, fuzzy, python-format
-#| msgid "Create workflows"
+#, python-format
 msgid "Create a \"%s\" workflow action"
-msgstr "Workflows aanmaken"
+msgstr ""
 
 #: views.py:282
-#, fuzzy, python-format
-#| msgid "Delete workflows"
+#, python-format
 msgid "Delete workflow state action: %s"
-msgstr "Workflows verwijderen"
+msgstr ""
 
 #: views.py:305
-#, fuzzy, python-format
-#| msgid "Edit workflows"
+#, python-format
 msgid "Edit workflow state action: %s"
-msgstr "Workflows verwijderen"
+msgstr ""
 
 #: views.py:325
-#, fuzzy, python-format
-#| msgid "Workflow states"
+#, python-format
 msgid "Actions for workflow state: %s"
-msgstr "Workflowstaten"
+msgstr ""
 
 #: views.py:359
 msgid "New workflow state action selection"
@@ -524,10 +503,9 @@ msgid "Workflow transition trigger events updated successfully"
 msgstr ""
 
 #: views.py:699
-#, fuzzy, python-format
-#| msgid "Workflow transitions"
+#, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Workflowtransities"
+msgstr ""
 
 #: views.py:728
 msgid "Launch all workflows?"
