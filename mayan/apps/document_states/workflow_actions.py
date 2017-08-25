@@ -65,20 +65,38 @@ class HTTPPostAction(WorkflowAction):
         }
 
     def execute(self, context):
-        url = Template(self.url).render(
-            context=Context(context)
-        )
+        try:
+            url = Template(self.url).render(
+                context=Context(context)
+            )
+        except Exception as exception:
+            context['action'].error_logs.create(
+                result='URL template error: {}'.format(exception)
+            )
+            return
 
         logger.debug('URL template result: %s', url)
 
-        result = Template(self.payload or '{}').render(
-            context=Context(context)
-        )
+        try:
+            result = Template(self.payload or '{}').render(
+                context=Context(context)
+            )
+        except Exception as exception:
+            context['action'].error_logs.create(
+                result='Payload template error: {}'.format(exception)
+            )
+            return
 
         logger.debug('payload template result: %s', result)
 
-        payload = json.loads(result)
+        try:
+            payload = json.loads(result, strict=False)
+        except Exception as exception:
+            context['action'].error_logs.create(
+                result='Payload JSON error: {}'.format(exception)
+            )
+            return
 
         logger.debug('payload json result: %s', payload)
 
-        response = requests.post(url=url, data=payload)
+        requests.post(url=url, data=payload)

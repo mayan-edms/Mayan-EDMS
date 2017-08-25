@@ -454,10 +454,10 @@ class WorkflowInstanceLogEntry(models.Model):
         result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
 
         for action in self.transition.origin_state.exit_actions.all():
-            action.execute(context={'entry_log': self})
+            action.execute(context={'action': action, 'entry_log': self})
 
         for action in self.transition.destination_state.entry_actions.all():
-            action.execute(context={'entry_log': self})
+            action.execute(context={'action': action, 'entry_log': self})
 
         return result
 

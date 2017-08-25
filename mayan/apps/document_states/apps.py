@@ -12,7 +12,8 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
 )
-from common.classes import ModelAttribute
+from common.classes import ErrorLogNamespace, ModelAttribute
+from common.links import link_error_list
 from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
@@ -62,9 +63,8 @@ class DocumentStatesApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-
-        Document.add_to_class(
-            'workflow', DocumentStateHelper.constructor
+        ErrorLogEntry = apps.get_model(
+            app_label='common', model_name='ErrorLogEntry'
         )
 
         Workflow = self.get_model('Workflow')
@@ -75,6 +75,12 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowStateAction = self.get_model('WorkflowStateAction')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+
+        Document.add_to_class(
+            'workflow', DocumentStateHelper.constructor
+        )
+
+        ErrorLogEntry.objects.register(model=WorkflowStateAction)
 
         WorkflowAction.initialize()
 
@@ -258,6 +264,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_workflow_state_action_edit,
+                link_error_list,
                 link_setup_workflow_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )
