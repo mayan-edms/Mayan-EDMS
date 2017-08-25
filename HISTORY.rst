@@ -36,6 +36,7 @@
   also found in the new document type. GitLab issue #421.
 - Add tag attach and tag remove events.
 - Change the permission needed to attach and remove tags.
+- Add HTTP POST workflow state action.
 
 2.6.4 (2017-07-26)
 ==================
