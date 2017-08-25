@@ -316,6 +316,17 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
 class SetupWorkflowStateActionListView(SingleObjectListView):
     object_permission = permission_workflow_edit
 
+    def dispatch(self, request, *args, **kwargs):
+        messages.warning(
+            request, _(
+                'This is a feature preview. Things might not work as expect.'
+            )
+        )
+
+        return super(
+            SetupWorkflowStateActionListView, self
+        ).dispatch(request, *args, **kwargs)
+
     def get_extra_context(self):
         return {
             'hide_object': True,
@@ -655,6 +666,12 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
     submodel = EventType
 
     def dispatch(self, *args, **kwargs):
+        messages.warning(
+            self.request, _(
+                'This is a feature preview. Things might not work as expect.'
+            )
+        )
+
         AccessControlList.objects.check_access(
             permissions=permission_workflow_edit,
             user=self.request.user, obj=self.get_object().workflow
