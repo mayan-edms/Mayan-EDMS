@@ -35,6 +35,7 @@ from .links import (
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .queues import *  # NOQA
+from .utils import get_document_ocr_content
 
 logger = logging.getLogger(__name__)
 
@@ -84,6 +85,9 @@ class OCRApp(MayanAppConfig):
         DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
+        DocumentVersion.add_to_class(
+            'ocr_content', get_document_ocr_content
+        )
         DocumentVersion.add_to_class(
             'submit_for_ocr', document_version_ocr_submit
         )
