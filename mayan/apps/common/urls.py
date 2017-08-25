@@ -7,9 +7,9 @@ from .api_views import APIContentTypeList
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
-    LicenseView, PackagesLicensesView, SetupListView, ToolsListView,
-    multi_object_action_view
+    ErrorLogEntryListView, FaviconRedirectView, FilterResultListView,
+    FilterSelectView, HomeView, LicenseView, PackagesLicensesView,
+    SetupListView, ToolsListView, multi_object_action_view
 )
 
 urlpatterns = [
@@ -53,6 +53,10 @@ urlpatterns = [
     url(
         r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
         name='filter_results'
+    ),
+    url(
+        r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
+        ErrorLogEntryListView.as_view(), name='error_list'
     ),
 ]
 

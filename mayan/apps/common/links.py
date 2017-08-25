@@ -1,8 +1,29 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
+
+from .permissions_runtime import permission_error_log_view
+
+
+def get_kwargs_factory(variable_name):
+    def get_kwargs(context):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        content_type = ContentType.objects.get_for_model(
+            context[variable_name]
+        )
+        return {
+            'app_label': '"{}"'.format(content_type.app_label),
+            'model': '"{}"'.format(content_type.model),
+            'object_id': '{}.pk'.format(variable_name)
+        }
+
+    return get_kwargs
 
 
 link_about = Link(
@@ -34,6 +55,15 @@ link_code = Link(
 link_documentation = Link(
     icon='fa fa-book', tags='new_window', text=_('Documentation'),
     url='https://mayan.readthedocs.io/en/stable/'
+)
+link_error_list = Link(
+    permissions=(permission_error_log_view,), text=_('Errors'),
+    view='common:error_list', kwargs=get_kwargs_factory('resolved_object')
+)
+link_error_list_with_icon = Link(
+    icon='fa fa-lock', permissions=(permission_error_log_view,),
+    text=_('Erros'), view='common:error_list',
+    kwargs=get_kwargs_factory('resolved_object')
 )
 link_filters = Link(
     icon='fa fa-filter', text=_('Data filters'),

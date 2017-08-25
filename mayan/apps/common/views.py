@@ -4,14 +4,17 @@ from json import dumps
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import resolve_url
+from django.shortcuts import get_object_or_404, resolve_url
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.views.generic import RedirectView, TemplateView
+
+from acls.models import AccessControlList
 
 from .classes import Filter
 from .exceptions import NotLatestVersion
@@ -28,6 +31,8 @@ from .generics import (  # NOQA
     SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .menus import menu_tools, menu_setup
+from .models import ErrorLogEntry
+from .permissions_runtime import permission_error_log_view
 from .utils import check_version
 
 
@@ -128,6 +133,43 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 
     def get_object(self):
         return self.request.user.locale_profile
+
+
+class ErrorLogEntryListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.object_content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        try:
+            self.content_object = self.object_content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
+        except self.object_content_type.model_class().DoesNotExist:
+            raise Http404
+
+        AccessControlList.objects.check_access(
+            obj=self.content_object, permissions=permission_error_log_view,
+            user=request.user
+        )
+
+        return super(ErrorLogEntryListView, self).dispatch(
+            request, *args, **kwargs
+        )
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.content_object,
+            'title': _('Error log entries for: %s' % self.content_object),
+        }
+
+    def get_object_list(self):
+        return ErrorLogEntry.objects.filter(
+            content_type=self.object_content_type,
+            object_id=self.content_object.pk
+        )
 
 
 class FaviconRedirectView(RedirectView):

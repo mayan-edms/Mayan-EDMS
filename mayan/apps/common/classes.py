@@ -101,6 +101,82 @@ class DashboardWidget(object):
 
 
 @python_2_unicode_compatible
+class ErrorLogNamespace(object):
+    def __init__(self, name, label=None):
+        self.name = name
+        self.label = label or name
+
+    def __str__(self):
+        return force_text(self.label)
+
+    def all(self):
+        ErrorLogEntry = apps.get_model(
+            app_label='common', model_name='ErrorLogEntry'
+        )
+
+        return ErrorLogEntry.objects.filter(namespace=self.name)
+
+
+@python_2_unicode_compatible
+class Filter(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, slug):
+        return cls._registry[slug]
+
+    @classmethod
+    def all(cls):
+        return cls._registry
+
+    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
+        self.label = label
+        self.slug = slug
+        self.filter_kwargs = filter_kwargs
+        self.model = model
+        self.object_permission = object_permission
+        self.hide_links = hide_links
+
+        self.__class__._registry[self.slug] = self
+
+    def __str__(self):
+        return force_text(self.label)
+
+    def get_queryset(self, user):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        queryset = self.model.objects.all()
+        for kwargs in self.filter_kwargs:
+            queryset = queryset.filter(**kwargs)
+
+        queryset = queryset.distinct()
+
+        if self.object_permission:
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, user, queryset=queryset
+            )
+        else:
+            return queryset
+
+
+class MissingItem(object):
+    _registry = []
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry
+
+    def __init__(self, label, condition, description, view):
+        self.label = label
+        self.condition = condition
+        self.description = description
+        self.view = view
+        self.__class__._registry.append(self)
+
+
+@python_2_unicode_compatible
 class ModelAttribute(object):
     __registry = {}
 
@@ -177,65 +253,6 @@ class ModelAttribute(object):
         else:
             self.__registry[model].setdefault(type_name, [])
             self.__registry[model][type_name].append(self)
-
-
-class MissingItem(object):
-    _registry = []
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry
-
-    def __init__(self, label, condition, description, view):
-        self.label = label
-        self.condition = condition
-        self.description = description
-        self.view = view
-        self.__class__._registry.append(self)
-
-
-@python_2_unicode_compatible
-class Filter(object):
-    _registry = {}
-
-    @classmethod
-    def get(cls, slug):
-        return cls._registry[slug]
-
-    @classmethod
-    def all(cls):
-        return cls._registry
-
-    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
-        self.label = label
-        self.slug = slug
-        self.filter_kwargs = filter_kwargs
-        self.model = model
-        self.object_permission = object_permission
-        self.hide_links = hide_links
-
-        self.__class__._registry[self.slug] = self
-
-    def __str__(self):
-        return force_text(self.label)
-
-    def get_queryset(self, user):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        queryset = self.model.objects.all()
-        for kwargs in self.filter_kwargs:
-            queryset = queryset.filter(**kwargs)
-
-        queryset = queryset.distinct()
-
-        if self.object_permission:
-            return AccessControlList.objects.filter_by_access(
-                self.object_permission, user, queryset=queryset
-            )
-        else:
-            return queryset
 
 
 class Package(object):
