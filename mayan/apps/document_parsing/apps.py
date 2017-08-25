@@ -30,6 +30,7 @@ from .links import (
     link_document_submit, link_document_type_submit, link_error_list
 )
 from .permissions import permission_content_view
+from .utils import get_document_content
 
 logger = logging.getLogger(__name__)
 
@@ -75,6 +76,9 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentVersionParseError = self.get_model('DocumentVersionParseError')
 
         Document.add_to_class('submit_for_parsing', document_parsing_submit)
+        DocumentVersion.add_to_class(
+            'content', get_document_content
+        )
         DocumentVersion.add_to_class(
             'submit_for_parsing', document_version_parsing_submit
         )

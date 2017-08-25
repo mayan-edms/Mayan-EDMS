@@ -1,12 +1,15 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 
-from .models import DocumentPageContent
-
 
 def get_document_content(document):
+    DocumentPageContent = apps.get_model(
+        app_label='document_parsing', model_name='DocumentPageContent'
+    )
+
     for page in document.pages.all():
         try:
             page_content = page.content.content
