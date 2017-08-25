@@ -24,8 +24,8 @@ class WorkflowActionSelectionForm(forms.Form):
 
         self.fields['klass'].choices = [
             (
-                key, klass.label
-            ) for key, klass in WorkflowAction.get_all().items()
+                klass.id(), klass.label
+            ) for klass in WorkflowAction.get_all()
         ]
 
 

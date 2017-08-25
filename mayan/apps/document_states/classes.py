@@ -50,7 +50,11 @@ class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionB
 
     @classmethod
     def get_all(cls):
-        return cls._registry
+        return sorted(cls._registry.values(), key=lambda x: x.label)
+
+    @classmethod
+    def id(cls):
+        return '{}.{}'.format(cls.__module__, cls.__name__)
 
     @staticmethod
     def initialize():
