@@ -68,6 +68,9 @@ class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionB
                         app.name, exception
                     )
 
+    def __init__(self, form_data=None):
+        self.form_data = form_data
+
     def get_form_schema(self, request=None):
         return {
             'fields': self.fields or (),

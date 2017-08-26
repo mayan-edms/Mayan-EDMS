@@ -253,7 +253,7 @@ class WorkflowStateAction(models.Model):
         return self.get_class().label
 
     def get_class_instance(self):
-        return self.get_class()(**self.loads())
+        return self.get_class()(form_data=self.loads())
 
     def loads(self):
         return json.loads(self.action_data)

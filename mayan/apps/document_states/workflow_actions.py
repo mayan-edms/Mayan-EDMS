@@ -54,17 +54,10 @@ class HTTPPostAction(WorkflowAction):
         }
     }
 
-    def __init__(self, url=None, payload=None):
-        self.url = url
-        self.payload = payload
-
-    def get_form_schema(self, request):
-        return {
-            'fields': self.fields,
-            'widgets': self.widgets
-        }
-
     def execute(self, context):
+        self.url = self.form_data.get('url')
+        self.payload = self.form_data.get('payload')
+
         try:
             url = Template(self.url).render(
                 context=Context(context)
