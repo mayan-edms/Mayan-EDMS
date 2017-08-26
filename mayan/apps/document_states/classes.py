@@ -45,6 +45,10 @@ class WorkflowActionBase(object):
 
 class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)):
     @classmethod
+    def clean(cls, request, form_data=None):
+        return form_data
+
+    @classmethod
     def get(cls, name):
         return cls._registry[name]
 

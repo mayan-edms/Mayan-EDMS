@@ -43,6 +43,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         widgets = {'action_data': forms.widgets.HiddenInput}
 
     def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
         result = super(
             WorkflowStateActionDynamicForm, self
         ).__init__(*args, **kwargs)
@@ -72,7 +73,12 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
                 # Store only the ID of a model instance
                 action_data[field['name']] = action_data[field['name']].pk
 
+        data['action_data'] = action_data
+        data = self.instance.get_class().clean(
+            form_data=data, request=self.request
+        )
         data['action_data'] = json.dumps(action_data)
+
         return data
 
 

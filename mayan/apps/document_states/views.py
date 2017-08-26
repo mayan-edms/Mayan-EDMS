@@ -250,6 +250,11 @@ class SetupWorkflowStateActionCreateView(SingleObjectDynamicFormCreateView):
             'workflow': self.get_object().workflow
         }
 
+    def get_form_extra_kwargs(self):
+        return {
+            'request': self.request
+        }
+
     def get_form_schema(self):
         return self.get_class()().get_form_schema(request=self.request)
 
@@ -307,6 +312,11 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
             'workflow_state': self.get_object().state,
         }
 
+    def get_form_extra_kwargs(self):
+        return {
+            'request': self.request
+        }
+
     def get_form_schema(self):
         return self.get_object().get_class_instance().get_form_schema(
             request=self.request
@@ -350,7 +360,7 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
 
 class SetupWorkflowStateActionSelectionView(FormView):
     form_class = WorkflowActionSelectionForm
-    #TODO: access check via workflow edit perm
+    view_permission = permission_workflow_edit
 
     def form_valid(self, form):
         klass = form.cleaned_data['klass']
