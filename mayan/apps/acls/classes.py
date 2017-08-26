@@ -27,6 +27,22 @@ class ModelPermission(object):
         model.add_to_class('acls', GenericRelation(AccessControlList))
 
     @classmethod
+    def get_classes(cls, as_content_type=False):
+        from django.contrib.contenttypes.models import ContentType
+
+        if as_content_type:
+            content_type_dictionary = ContentType.objects.get_for_models(
+                *cls._registry.keys()
+            )
+            content_type_ids = [
+                content_type.pk for content_type in content_type_dictionary.values()
+            ]
+
+            return ContentType.objects.filter(pk__in=content_type_ids)
+        else:
+            return cls._registry.keys()
+
+    @classmethod
     def get_for_class(cls, klass):
         return cls._registry.get(klass, ())
 
