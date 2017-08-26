@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 
 from django import forms
+from django.db.models import Model
 from django.db.models.query import QuerySet
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
@@ -64,7 +65,12 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
             )
             if isinstance(action_data[field['name']], QuerySet):
                 # Flatten the queryset to a list of ids
-                action_data[field['name']] = list(action_data[field['name']].values_list('id', flat=True))
+                action_data[field['name']] = list(
+                    action_data[field['name']].values_list('id', flat=True)
+                )
+            elif isinstance(action_data[field['name']], Model):
+                # Store only the ID of a model instance
+                action_data[field['name']] = action_data[field['name']].pk
 
         data['action_data'] = json.dumps(action_data)
         return data
