@@ -86,7 +86,7 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstance, label=_('Total nodes'),
+            source=IndexInstance, label=_('Total levels'),
             func=lambda context: context[
                 'object'
             ].instance_root.get_descendants_count()
@@ -120,11 +120,11 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstanceNode, label=_('Node'),
+            source=IndexInstanceNode, label=_('Level'),
             func=lambda context: index_instance_item_link(context['object'])
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Nodes'),
+            source=IndexInstanceNode, label=_('Levels'),
             func=lambda context: context['object'].get_descendants_count()
         )
         SourceColumn(
@@ -137,13 +137,13 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Node'),
+            source=DocumentIndexInstanceNode, label=_('Level'),
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
             )
         )
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Nodes'),
+            source=DocumentIndexInstanceNode, label=_('Levels'),
             func=lambda context: context['object'].get_descendants_count()
         )
         SourceColumn(
