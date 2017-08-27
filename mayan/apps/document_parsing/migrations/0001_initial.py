@@ -18,9 +18,24 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentPageContent',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField(blank=True, verbose_name='Content')),
-                ('document_page', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='content', to='documents.DocumentPage', verbose_name='Document page')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'content', models.TextField(
+                        blank=True, verbose_name='Content'
+                    )
+                ),
+                (
+                    'document_page', models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='content', to='documents.DocumentPage',
+                        verbose_name='Document page'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Document page content',
@@ -30,10 +45,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentVersionParseError',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('datetime_submitted', models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date time submitted')),
-                ('result', models.TextField(blank=True, null=True, verbose_name='Result')),
-                ('document_version', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parse_errors', to='documents.DocumentVersion', verbose_name='Document version')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'datetime_submitted', models.DateTimeField(
+                        auto_now_add=True, db_index=True,
+                        verbose_name='Date time submitted'
+                    )
+                ),
+                (
+                    'result', models.TextField(
+                        blank=True, null=True, verbose_name='Result'
+                    )
+                ),
+                (
+                    'document_version', models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='parse_errors',
+                        to='documents.DocumentVersion',
+                        verbose_name='Document version'
+                    )
+                ),
             ],
             options={
                 'ordering': ('datetime_submitted',),

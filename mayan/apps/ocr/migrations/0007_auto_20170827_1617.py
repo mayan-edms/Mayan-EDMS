@@ -16,6 +16,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentpageocrcontent',
             name='document_page',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='ocr_content', to='documents.DocumentPage', verbose_name='Document page'),
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='ocr_content', to='documents.DocumentPage',
+                verbose_name='Document page'
+            ),
         ),
     ]
