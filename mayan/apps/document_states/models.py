@@ -244,7 +244,15 @@ class WorkflowStateAction(models.Model):
         self.save()
 
     def execute(self, context):
-        self.get_class_instance().execute(context=context)
+        try:
+            self.get_class_instance().execute(context=context)
+        except Exception as exception:
+            self.error_logs.create(
+                result='{}; {}'.format(exception.__class__.__name__, exception)
+            )
+
+            if settings.DEBUG:
+                raise
 
     def get_class(self):
         return import_string(self.action_path)
@@ -453,10 +461,10 @@ class WorkflowInstanceLogEntry(models.Model):
     def save(self, *args, **kwargs):
         result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
 
-        for action in self.transition.origin_state.exit_actions.all():
+        for action in self.transition.origin_state.exit_actions.filter(enabled=True):
             action.execute(context={'action': action, 'entry_log': self})
 
-        for action in self.transition.destination_state.entry_actions.all():
+        for action in self.transition.destination_state.entry_actions.filter(enabled=True):
             action.execute(context={'action': action, 'entry_log': self})
 
         return result
