@@ -28,7 +28,9 @@ class ModelPermission(object):
 
     @classmethod
     def get_classes(cls, as_content_type=False):
-        from django.contrib.contenttypes.models import ContentType
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
 
         if as_content_type:
             content_type_dictionary = ContentType.objects.get_for_models(
