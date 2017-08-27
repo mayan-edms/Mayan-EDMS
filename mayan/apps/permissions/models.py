@@ -59,8 +59,8 @@ class StoredPermission(models.Model):
                 if self in role.permissions.all():
                     logger.debug(
                         'Permission "%s" granted to user "%s" through role "%s"',
-                         self, user, role
-                     )
+                        self, user, role
+                    )
                     return True
 
         logger.debug(

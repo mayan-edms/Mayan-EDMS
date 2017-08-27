@@ -5,7 +5,6 @@ from django.contrib.contenttypes.models import ContentType
 from document_states.tests.test_actions import ActionTestCase
 from documents.permissions import permission_document_view
 
-from ..models import AccessControlList
 from ..workflow_actions import GrantAccessAction, RevokeAccessAction
 
 

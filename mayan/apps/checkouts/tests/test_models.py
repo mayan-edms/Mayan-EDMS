@@ -4,7 +4,6 @@ import datetime
 import logging
 import time
 
-from django.contrib.auth import get_user_model
 from django.test import override_settings
 from django.utils.timezone import now
 
@@ -12,9 +11,6 @@ from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
-)
-from user_management.tests.literals import (
-    TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
 )
 
 from ..exceptions import (
@@ -28,11 +24,6 @@ from ..models import DocumentCheckout, NewVersionBlock
 class DocumentCheckoutTestCase(BaseTestCase):
     def setUp(self):
         super(DocumentCheckoutTestCase, self).setUp()
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )

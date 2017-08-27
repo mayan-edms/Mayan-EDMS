@@ -15,7 +15,8 @@ logger = logging.getLogger(__name__)
 
 class AttachTagAction(WorkflowAction):
     fields = {
-        'tags': {'label': _('Tags'),
+        'tags': {
+            'label': _('Tags'),
             'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
                 'help_text': _('Tags to attach to the document'),
                 'queryset': Tag.objects.none(), 'required': False
@@ -31,13 +32,14 @@ class AttachTagAction(WorkflowAction):
             }
         }
     }
+    permission = permission_tag_attach
 
     def get_form_schema(self, request):
         user = request.user
         logger.debug('user: %s', user)
 
         queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_attach, user, queryset=Tag.objects.all()
+            self.permission, user, queryset=Tag.objects.all()
         )
 
         self.fields['tags']['kwargs']['queryset'] = queryset
@@ -69,6 +71,7 @@ class RemoveTagAction(AttachTagAction):
         },
     }
     label = _('Remove tag')
+    permission = permission_tag_remove
 
     def execute(self, context):
         for tag in self.get_tags():

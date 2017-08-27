@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-from collections import OrderedDict
 
 from django.apps import apps
 from django.contrib.contenttypes.models import ContentType
