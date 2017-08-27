@@ -20,7 +20,7 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentStateIndexingTestCase(UserMixin, BaseTestCase):
+class DocumentStateIndexingTestCase(BaseTestCase):
     def tearDown(self):
         self.document_type.delete()
         super(DocumentStateIndexingTestCase, self).tearDown()

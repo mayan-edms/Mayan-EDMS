@@ -6,7 +6,6 @@ from django.test import TestCase
 
 from django_downloadview import assert_download_response
 
-from acls.models import AccessControlList
 from permissions.classes import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
@@ -17,11 +16,11 @@ from user_management.tests import (
 )
 
 from .mixins import (
-    ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin
+    ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, UserMixin
 )
 
 
-class BaseTestCase(ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, TestCase):
+class BaseTestCase(UserMixin, ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, TestCase):
     """
     This is the most basic test case class any test in the project should use.
     """
@@ -31,28 +30,3 @@ class BaseTestCase(ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin
         super(BaseTestCase, self).setUp()
         Namespace.invalidate_cache_all()
         Permission.invalidate_cache()
-
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.user = get_user_model().objects.create_user(
-            username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
-            password=TEST_USER_PASSWORD
-        )
-
-        self.group = Group.objects.create(name=TEST_GROUP_NAME)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-        self.group.user_set.add(self.user)
-        self.role.groups.add(self.group)
-
-    def grant_access(self, permission, obj):
-        AccessControlList.objects.grant(
-            permission=permission, role=self.role, obj=obj
-        )
-
-    def grant_permission(self, permission):
-        self.role.permissions.add(
-            permission.stored_permission
-        )
