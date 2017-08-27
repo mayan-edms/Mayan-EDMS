@@ -2,15 +2,11 @@
 
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.test import override_settings
 
 from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
-from user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 
 from ..models import SmartLink
 
@@ -29,11 +25,6 @@ class SmartLinkTestCase(BaseTestCase):
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
-
-        self.user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
 
     def tearDown(self):
         self.document_type.delete()
