@@ -81,7 +81,7 @@ django-widget-tweaks==1.4.1
 djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
 fusepy==2.0.4
-pdfminer==20140328
+graphviz==0.8
 pycountry==1.20
 PyPDF2==1.26.0
 pyocr==0.4.5
@@ -89,6 +89,7 @@ python-dateutil==2.5.3
 python-gnupg==0.3.9
 python-magic==0.4.13
 pytz==2016.7
+requests==2.18.4 
 sh==1.12.11
 """.split()
 
