@@ -76,7 +76,12 @@ class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionB
         self.form_data = form_data
 
     def get_form_schema(self, request=None):
-        return {
+        result = {
             'fields': self.fields or (),
             'widgets': getattr(self, 'widgets', {})
         }
+
+        if hasattr(self, 'field_order'):
+            result['field_order'] = self.field_order
+
+        return result

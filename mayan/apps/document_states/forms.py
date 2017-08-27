@@ -6,6 +6,7 @@ from django import forms
 from django.db.models import Model
 from django.db.models.query import QuerySet
 from django.forms.formsets import formset_factory
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from common.forms import DynamicModelForm
@@ -44,6 +45,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
+        self.action_path = kwargs.pop('action_path')
         result = super(
             WorkflowStateActionDynamicForm, self
         ).__init__(*args, **kwargs)
@@ -60,23 +62,28 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         # 'action_data'.
         action_data = {}
 
-        for field in self.schema['fields']:
-            action_data[field['name']] = data.pop(
-                field['name'], field.get('default', None)
+        for field_name, field_data in self.schema['fields'].items():
+            action_data[field_name] = data.pop(
+                field_name, field_data.get('default', None)
             )
-            if isinstance(action_data[field['name']], QuerySet):
+            if isinstance(action_data[field_name], QuerySet):
                 # Flatten the queryset to a list of ids
-                action_data[field['name']] = list(
-                    action_data[field['name']].values_list('id', flat=True)
+                action_data[field_name] = list(
+                    action_data[field_name].values_list('id', flat=True)
                 )
-            elif isinstance(action_data[field['name']], Model):
+            elif isinstance(action_data[field_name], Model):
                 # Store only the ID of a model instance
-                action_data[field['name']] = action_data[field['name']].pk
+                action_data[field_name] = action_data[field_name].pk
 
         data['action_data'] = action_data
-        data = self.instance.get_class().clean(
+        #data = self.instance.get_class().clean(
+        #    form_data=data, request=self.request
+        #)
+
+        data = import_string(self.action_path).clean(
             form_data=data, request=self.request
         )
+        self.action_path
         data['action_data'] = json.dumps(action_data)
 
         return data
