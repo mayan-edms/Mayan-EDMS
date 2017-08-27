@@ -24,20 +24,6 @@ class GenericViewTestCase(BaseTestCase):
     def setUp(self):
         super(GenericViewTestCase, self).setUp()
         self.has_test_view = False
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.user = get_user_model().objects.create_user(
-            username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
-            password=TEST_USER_PASSWORD
-        )
-
-        self.group = Group.objects.create(name=TEST_GROUP_NAME)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-        self.group.user_set.add(self.user)
-        self.role.groups.add(self.group)
 
     def tearDown(self):
         from mayan.urls import urlpatterns
@@ -81,16 +67,6 @@ class GenericViewTestCase(BaseTestCase):
         return self.client.get(
             reverse(viewname=viewname, *args, **kwargs),
             data=data, follow=follow
-        )
-
-    def grant_access(self, permission, obj):
-        AccessControlList.objects.grant(
-            permission=permission, role=self.role, obj=obj
-        )
-
-    def grant_permission(self, permission):
-        self.role.permissions.add(
-            permission.stored_permission
         )
 
     def login(self, username, password):

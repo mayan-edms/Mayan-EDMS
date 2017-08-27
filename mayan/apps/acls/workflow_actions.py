@@ -16,7 +16,7 @@ from permissions.models import Role
 from .classes import ModelPermission
 from .permissions import permission_acl_edit
 
-__all__ = ('GrantAccessAction', 'RemoveAccessAction')
+__all__ = ('GrantAccessAction', 'RevokeAccessAction')
 logger = logging.getLogger(__name__)
 
 
@@ -126,7 +126,7 @@ class GrantAccessAction(WorkflowAction):
                 )
 
 
-class RemoveAccessAction(GrantAccessAction):
+class RevokeAccessAction(GrantAccessAction):
     label = _('Revoke access')
 
     def execute(self, context):
