@@ -236,8 +236,8 @@ class IndexInstanceNodeView(DocumentListView):
 
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return DocumentListView.dispatch(
-                    self, request, *args, **kwargs
+                return super(IndexInstanceNodeView, self).dispatch(
+                    request, *args, **kwargs
                 )
 
         return SingleObjectListView.dispatch(self, request, *args, **kwargs)
@@ -276,7 +276,7 @@ class IndexInstanceNodeView(DocumentListView):
     def get_object_list(self):
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return DocumentListView.get_queryset(self)
+                return super(IndexInstanceNodeView, self).get_object_list()
             else:
                 self.object_permission = None
                 return self.index_instance_node.get_children().order_by(
