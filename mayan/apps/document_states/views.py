@@ -252,7 +252,8 @@ class SetupWorkflowStateActionCreateView(SingleObjectDynamicFormCreateView):
 
     def get_form_extra_kwargs(self):
         return {
-            'request': self.request
+            'request': self.request,
+            'action_path': self.kwargs['class_path']
         }
 
     def get_form_schema(self):
@@ -314,7 +315,8 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
 
     def get_form_extra_kwargs(self):
         return {
-            'request': self.request
+            'request': self.request,
+            'action_path': self.get_object().action_path,
         }
 
     def get_form_schema(self):
