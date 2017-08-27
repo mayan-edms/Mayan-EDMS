@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import MailerBackend
@@ -9,32 +11,29 @@ __all__ = ('DjangoSMTP', 'DjangoFileBased')
 
 class DjangoSMTP(MailerBackend):
     class_path = 'django.core.mail.backends.smtp.EmailBackend'
-    fields = (
-        {
-            'name': 'host', 'label': _('Host'),
+    fields = {
+        'host': {
+            'label': _('Host'),
             'class': 'django.forms.CharField', 'default': 'localhost',
             'help_text': _('The host to use for sending email.'),
             'kwargs': {
                 'max_length': 48
             }, 'required': False
-        },
-        {
-            'name': 'port', 'label': _('Port'),
+        }, 'port': {
+            'label': _('Port'),
             'class': 'django.forms.IntegerField', 'default': 25,
             'help_text': _('Port to use for the SMTP server.'),
             'required': False
-        },
-        {
-            'name': 'use_tls', 'label': _('Use TLS'),
+        }, 'use_tls': {
+            'label': _('Use TLS'),
             'class': 'django.forms.BooleanField', 'default': False,
             'help_text': _(
                 'Whether to use a TLS (secure) connection when talking to '
                 'the SMTP server. This is used for explicit TLS connections, '
                 'generally on port 587.'
             ), 'required': False
-        },
-        {
-            'name': 'use_ssl', 'label': _('Use SSL'),
+        }, 'use_ssl': {
+            'label': _('Use SSL'),
             'class': 'django.forms.BooleanField', 'default': False,
             'help_text': _(
                 'Whether to use an implicit TLS (secure) connection when '
@@ -45,9 +44,8 @@ class DjangoSMTP(MailerBackend):
                 'that "Use TLS" and "Use SSL" are mutually exclusive, '
                 'so only set one of those settings to True.'
             ), 'required': False
-        },
-        {
-            'name': 'user', 'label': _('Username'),
+        }, 'user': {
+            'label': _('Username'),
             'class': 'django.forms.CharField', 'default': '',
             'help_text': _(
                 'Username to use for the SMTP server. If empty, '
@@ -55,9 +53,8 @@ class DjangoSMTP(MailerBackend):
             ), 'kwargs': {
                 'max_length': 48
             }, 'required': False
-        },
-        {
-            'name': 'password', 'label': _('Password'),
+        }, 'password': {
+            'label': _('Password'),
             'class': 'django.forms.CharField', 'default': '',
             'help_text': _(
                 'Password to use for the SMTP server. This setting is used '
@@ -68,7 +65,8 @@ class DjangoSMTP(MailerBackend):
                 'max_length': 48
             }, 'required': False
         },
-    )
+    }
+    field_order = ('host', 'port', 'use_tls', 'use_ssl', 'user', 'password')
     widgets = {
         'password': {
             'class': 'django.forms.widgets.PasswordInput',
@@ -82,12 +80,12 @@ class DjangoSMTP(MailerBackend):
 
 class DjangoFileBased(MailerBackend):
     class_path = 'django.core.mail.backends.filebased.EmailBackend'
-    fields = (
-        {
-            'name': 'file_path', 'label': _('File path'),
+    fields = {
+        'file_path': {
+            'label': _('File path'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'max_length': 48
             }
         },
-    )
+    }
     label = _('Django file based backend')

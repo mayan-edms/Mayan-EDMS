@@ -14,15 +14,14 @@ logger = logging.getLogger(__name__)
 
 
 class AttachTagAction(WorkflowAction):
-    fields = (
-        {
-            'name': 'tags', 'label': _('Tags'),
+    fields = {
+        'tags': {'label': _('Tags'),
             'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
                 'help_text': _('Tags to attach to the document'),
                 'queryset': Tag.objects.none(), 'required': False
             }
         },
-    )
+    }
     label = _('Attach tag')
     widgets = {
         'tags': {
@@ -41,7 +40,7 @@ class AttachTagAction(WorkflowAction):
             permission_tag_attach, user, queryset=Tag.objects.all()
         )
 
-        self.fields[0]['kwargs']['queryset'] = queryset
+        self.fields['tags']['kwargs']['queryset'] = queryset
         self.widgets['tags']['kwargs']['queryset'] = queryset
 
         return {
@@ -60,15 +59,15 @@ class AttachTagAction(WorkflowAction):
 
 
 class RemoveTagAction(AttachTagAction):
-    fields = (
-        {
-            'name': 'tags', 'label': _('Tags'),
+    fields = {
+        'tags': {
+            'label': _('Tags'),
             'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
                 'help_text': _('Tags to remove from the document'),
                 'queryset': Tag.objects.none(), 'required': False
             }
         },
-    )
+    }
     label = _('Remove tag')
 
     def execute(self, context):

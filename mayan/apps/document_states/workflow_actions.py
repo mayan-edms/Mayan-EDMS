@@ -9,15 +9,17 @@ from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
+from .exceptions import WorkflowStateActionError
 
 __all__ = ('HTTPPostAction',)
 logger = logging.getLogger(__name__)
+DEFAULT_TIMEOUT = 4  # 4 seconds
 
 
 class HTTPPostAction(WorkflowAction):
-    fields = (
-        {
-            'name': 'url', 'label': _('URL'),
+    fields = {
+        'url': {
+            'label': _('URL'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'Can be an IP address, a domain or a template. Templates '
@@ -29,8 +31,14 @@ class HTTPPostAction(WorkflowAction):
                 ),
                 'required': True
             },
-        }, {
-            'name': 'payload', 'label': _('Payload'),
+        }, 'timeout': {
+            'label': _('Timeout'),
+            'class': 'django.forms.IntegerField', 'default': DEFAULT_TIMEOUT,
+            'help_text': _('Time in seconds to wait for a response.'),
+            'required': True
+
+        }, 'payload': {
+            'label': _('Payload'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'A JSON document to include in the request. Can also be '
@@ -44,7 +52,8 @@ class HTTPPostAction(WorkflowAction):
             }
 
         },
-    )
+    }
+    field_order = ('url', 'timeout', 'payload')
     label = _('Perform a POST request')
     widgets = {
         'payload': {
@@ -63,10 +72,9 @@ class HTTPPostAction(WorkflowAction):
                 context=Context(context)
             )
         except Exception as exception:
-            context['action'].error_logs.create(
-                result='URL template error: {}'.format(exception)
+            raise WorkflowStateActionError(
+                _('URL template error: {}'.format(exception))
             )
-            return
 
         logger.debug('URL template result: %s', url)
 
@@ -75,21 +83,19 @@ class HTTPPostAction(WorkflowAction):
                 context=Context(context)
             )
         except Exception as exception:
-            context['action'].error_logs.create(
-                result='Payload template error: {}'.format(exception)
+            raise WorkflowStateActionError(
+                _('Payload template error: {}'.format(exception))
             )
-            return
 
         logger.debug('payload template result: %s', result)
 
         try:
             payload = json.loads(result, strict=False)
         except Exception as exception:
-            context['action'].error_logs.create(
-                result='Payload JSON error: {}'.format(exception)
+            raise WorkflowStateActionError(
+                _('Payload JSON error: {}'.format(exception))
             )
-            return
 
         logger.debug('payload json result: %s', payload)
 
-        requests.post(url=url, data=payload)
+        requests.post(url=url, data=payload, timeout=self.form_data['timeout'])

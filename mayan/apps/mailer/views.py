@@ -162,10 +162,15 @@ class UserMailingCreateView(SingleObjectDynamicFormCreateView):
         }
 
     def get_form_schema(self):
-        return {
-            'fields': self.get_backend().fields,
-            'widgets': getattr(self.get_backend(), 'widgets', {})
+        backend = self.get_backend()
+        result = {
+            'fields': backend.fields,
+            'widgets': getattr(backend, 'widgets', {})
         }
+        if hasattr(backend, 'field_order'):
+            result['field_order'] = backend.field_order
+
+        return result
 
     def get_instance_extra_data(self):
         return {'backend_path': self.kwargs['class_path']}
@@ -193,10 +198,15 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
         }
 
     def get_form_schema(self):
-        return {
-            'fields': self.get_object().get_backend().fields,
-            'widgets': getattr(self.get_object().get_backend(), 'widgets', {})
+        backend = self.get_object().get_backend()
+        result = {
+            'fields': backend.fields,
+            'widgets': getattr(backend, 'widgets', {})
         }
+        if hasattr(backend, 'field_order'):
+            result['field_order'] = backend.field_order
+
+        return result
 
 
 class UserMailerLogEntryListView(SingleObjectListView):
