@@ -55,18 +55,14 @@ class Permission(object):
     @classmethod
     def all(cls, as_choices=False):
         if as_choices:
-            StoredPermission = apps.get_model(
-                app_label='permissions', model_name='StoredPermission'
-            )
-
             results = []
 
-            for namespace, permissions in itertools.groupby(StoredPermission.objects.all(), lambda entry: entry.namespace):
+            for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.pk), permission) for permission in permissions
+                    (force_text(permission.uuid), permission) for permission in permissions
                 ]
                 results.append(
-                    (PermissionNamespace.get(namespace), permission_options)
+                    (namespace, permission_options)
                 )
 
             return results
