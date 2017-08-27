@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+from collections import OrderedDict
 
 from django.apps import apps
 from django.contrib.contenttypes.models import ContentType
@@ -15,45 +16,47 @@ from permissions.models import Role
 from .classes import ModelPermission
 from .permissions import permission_acl_edit
 
-__all__ = ('GrantAccessAction',)
+__all__ = ('GrantAccessAction', 'RemoveAccessAction')
 logger = logging.getLogger(__name__)
 
 
 class GrantAccessAction(WorkflowAction):
-    fields = (
-        {
-            'name': 'content_type', 'label': _('Object type'),
+    fields = {
+        'content_type': {
+            'label': _('Object type'),
             'class': 'django.forms.ModelChoiceField', 'kwargs': {
                 'help_text': _(
-                    'Type of the object for which the access will be granted.'
+                    'Type of the object for which the access will be modified.'
                 ),
-                'queryset': ModelPermission.get_classes(as_content_type=True),
+                'queryset': ContentType.objects.none(),
                 'required': True
             }
-        }, {
-            'name': 'object_id', 'label': _('Object ID'),
+        }, 'object_id': {
+            'label': _('Object ID'),
             'class': 'django.forms.IntegerField', 'kwargs': {
                 'help_text': _(
                     'Numeric identifier of the object for which the access '
-                    'will be granted.'
+                    'will be modified.'
                 ), 'required': True
             }
-        }, {
-            'name': 'roles', 'label': _('Roles'),
+        }, 'roles': {
+            'label': _('Roles'),
             'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
-                'help_text': _('Roles that will be granted access.'),
+                'help_text': _('Roles whose access will be modified.'),
                 'queryset': Role.objects.all(), 'required': True
             }
-        }, {
-            'name': 'permissions', 'label': _('Permissions'),
+        }, 'permissions': {
+            'label': _('Permissions'),
             'class': 'django.forms.MultipleChoiceField', 'kwargs': {
                 'help_text': _(
-                    'Permissions to grant to the role for the object.'
-                ), 'choices': Permission.all(as_choices=True),
+                    'Permissions to grant/revoke to/from the role for the '
+                    'object selected above.'
+                ), 'choices': (),
                 'required': True
             }
-        },
-    )
+        }
+    }
+    field_order = ('content_type', 'object_id', 'roles', 'permissions')
     label = _('Grant access')
     widgets = {
         'roles': {
@@ -70,6 +73,10 @@ class GrantAccessAction(WorkflowAction):
 
     @classmethod
     def clean(cls, request, form_data=None):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -90,18 +97,43 @@ class GrantAccessAction(WorkflowAction):
         else:
             return form_data
 
-    def execute(self, context):
+    def get_form_schema(self, *args, **kwargs):
+        self.fields['content_type']['kwargs']['queryset'] = ModelPermission.get_classes(as_content_type=True)
+        self.fields['permissions']['kwargs']['choices'] = Permission.all(as_choices=True)
+        return super(GrantAccessAction, self).get_form_schema(*args, **kwargs)
+
+    def get_execute_data(self):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
         content_type = ContentType.objects.get(
             pk=self.form_data['content_type']
         )
-        obj = content_type.get_object_for_this_type(
+        self.obj = content_type.get_object_for_this_type(
             pk=self.form_data['object_id']
         )
-        roles = Role.objects.filter(pk__in=self.form_data['roles'])
-        permissions = [Permission.get(pk=permission.uuid) for permission in self.form_data['permissions']]
+        self.roles = Role.objects.filter(pk__in=self.form_data['roles'])
+        self.permissions = [Permission.get(pk=permission, proxy_only=True) for permission in self.form_data['permissions']]
 
-        for role in roles:
-            for permission in permissions:
+    def execute(self, context):
+        self.get_execute_data()
+
+        for role in self.roles:
+            for permission in self.permissions:
                 AccessControlList.objects.grant(
-                    permission=permission, role=role, obj=obj
+                    obj=self.obj, permission=permission, role=role
+                )
+
+
+class RemoveAccessAction(GrantAccessAction):
+    label = _('Revoke access')
+
+    def execute(self, context):
+        self.get_execute_data()
+
+        for role in self.roles:
+            for permission in self.permissions:
+                AccessControlList.objects.revoke(
+                    obj=self.obj, permission=permission, role=role
                 )
