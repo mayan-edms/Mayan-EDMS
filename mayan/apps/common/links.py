@@ -62,7 +62,7 @@ link_error_list = Link(
 )
 link_error_list_with_icon = Link(
     icon='fa fa-lock', permissions=(permission_error_log_view,),
-    text=_('Erros'), view='common:error_list',
+    text=_('Errors'), view='common:error_list',
     kwargs=get_kwargs_factory('resolved_object')
 )
 link_filters = Link(

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:23-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2017-08-07 12:44+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -65,7 +65,7 @@ msgstr "Corps"
 msgid "The email profile that will be used to send this email."
 msgstr "Le profil de messagerie qui sera utilisé pour envoyer ce courrier électronique."
 
-#: forms.py:70 views.py:223
+#: forms.py:70 views.py:233
 msgid "Mailing profile"
 msgstr "Profil de la liste de diffusion"
 
@@ -109,7 +109,7 @@ msgstr "Liste des profils de diffusion"
 msgid "Mailing profiles"
 msgstr "Profil de diffusion"
 
-#: links.py:58 views.py:244
+#: links.py:58 views.py:254
 msgid "Test"
 msgstr "Test"
 
@@ -139,29 +139,29 @@ msgstr "Hote"
 msgid "The host to use for sending email."
 msgstr "L'hôte à utiliser pour envoyer les mails"
 
-#: mailers.py:22
+#: mailers.py:21
 msgid "Port"
 msgstr "Port"
 
-#: mailers.py:24
+#: mailers.py:23
 msgid "Port to use for the SMTP server."
 msgstr "Port à utiliser pour le serveur SMTP"
 
-#: mailers.py:28
+#: mailers.py:26
 msgid "Use TLS"
 msgstr "Utiliser TLS"
 
-#: mailers.py:31
+#: mailers.py:29
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr "Que ce soit pour utiliser une connexion TLS (sécurisée) lorsque vous parlez au serveur SMTP. Ceci est utilisé pour les connexions TLS explicites, généralement sur le port 587."
 
-#: mailers.py:37
+#: mailers.py:34
 msgid "Use SSL"
 msgstr "Utiliser SSL"
 
-#: mailers.py:40
+#: mailers.py:37
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -171,36 +171,36 @@ msgid ""
 " True."
 msgstr "Que ce soit pour utiliser une connexion implicite TLS (sécurisée) lorsque vous parlez au serveur SMTP. Dans la plupart des documents électroniques, ce type de connexion TLS est appelé SSL. Il est généralement utilisé sur le port 465. Si vous rencontrez des problèmes, consultez le paramètre TLS explicite \"Utiliser TLS\". Notez que \"Utiliser TLS\" et \"Utiliser SSL\" sont mutuellement exclusifs, donc ne cocher que l'un de ces paramètres."
 
-#: mailers.py:50
+#: mailers.py:46
 msgid "Username"
 msgstr "Identifiant"
 
-#: mailers.py:53
+#: mailers.py:49
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr "Nom d'utilisateur à utiliser pour le serveur SMTP. Si vide, l'authentification ne sera pas tentée."
 
-#: mailers.py:60
+#: mailers.py:55
 msgid "Password"
 msgstr "Mot de passe"
 
-#: mailers.py:63
+#: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr "Mot de passe à utiliser pour le serveur SMTP. Ce paramètre est utilisé conjointement avec le nom d'utilisateur lors de l'authentification sur le serveur SMTP. Si l'un de ces paramètres est vide, l'authentification ne sera pas tentée."
 
-#: mailers.py:80
+#: mailers.py:76
 msgid "Django SMTP backend"
 msgstr "Django SMTP backend"
 
-#: mailers.py:87
+#: mailers.py:83
 msgid "File path"
 msgstr "Chemin du fichier"
 
-#: mailers.py:93
+#: mailers.py:89
 msgid "Django file based backend"
 msgstr "Support Django basée sur un fichier "
 
@@ -363,22 +363,22 @@ msgstr "Nouvelle sélection du support de profil de liste de diffusion"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Créer un profil de diffusion \"%s\""
 
-#: views.py:181
+#: views.py:186
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Supprimer un profil de diffusion %s"
 
-#: views.py:192
+#: views.py:197
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Modifier un profile de liste de diffusion %s"
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "%s error log"
 msgstr "%s journal d'erreur"
 
-#: views.py:245
+#: views.py:255
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Tester le profil de diffusion: %s"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-08-25 03:16+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -45,14 +45,14 @@ msgid "Enabled"
 msgstr "Habilitado"
 
 #: apps.py:89
-msgid "Total nodes"
-msgstr "Nodos totales"
+msgid "Total levels"
+msgstr "Niveles totales"
 
 #: apps.py:95
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:108
+#: apps.py:108 apps.py:123 apps.py:140
 msgid "Level"
 msgstr "Nível"
 
@@ -60,13 +60,9 @@ msgstr "Nível"
 msgid "Has document links?"
 msgstr "El documento tiene enlaces?"
 
-#: apps.py:123 apps.py:140
-msgid "Node"
-msgstr "Nodo"
-
 #: apps.py:127 apps.py:146
-msgid "Nodes"
-msgstr "Nodos"
+msgid "Levels"
+msgstr "Niveles"
 
 #: apps.py:131 apps.py:150 models.py:291
 msgid "Documents"

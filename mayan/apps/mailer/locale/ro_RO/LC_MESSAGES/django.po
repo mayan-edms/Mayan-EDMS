@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:23-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:70 views.py:223
+#: forms.py:70 views.py:233
 msgid "Mailing profile"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Mailing profiles"
 msgstr ""
 
-#: links.py:58 views.py:244
+#: links.py:58 views.py:254
 msgid "Test"
 msgstr ""
 
@@ -137,29 +137,29 @@ msgstr ""
 msgid "The host to use for sending email."
 msgstr ""
 
-#: mailers.py:22
+#: mailers.py:21
 msgid "Port"
 msgstr ""
 
-#: mailers.py:24
+#: mailers.py:23
 msgid "Port to use for the SMTP server."
 msgstr ""
 
-#: mailers.py:28
+#: mailers.py:26
 msgid "Use TLS"
 msgstr ""
 
-#: mailers.py:31
+#: mailers.py:29
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr ""
 
-#: mailers.py:37
+#: mailers.py:34
 msgid "Use SSL"
 msgstr ""
 
-#: mailers.py:40
+#: mailers.py:37
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -169,36 +169,36 @@ msgid ""
 " True."
 msgstr ""
 
-#: mailers.py:50
+#: mailers.py:46
 msgid "Username"
 msgstr ""
 
-#: mailers.py:53
+#: mailers.py:49
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr ""
 
-#: mailers.py:60
+#: mailers.py:55
 msgid "Password"
 msgstr ""
 
-#: mailers.py:63
+#: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr ""
 
-#: mailers.py:80
+#: mailers.py:76
 msgid "Django SMTP backend"
 msgstr ""
 
-#: mailers.py:87
+#: mailers.py:83
 msgid "File path"
 msgstr ""
 
-#: mailers.py:93
+#: mailers.py:89
 msgid "Django file based backend"
 msgstr ""
 
@@ -361,22 +361,22 @@ msgstr ""
 msgid "Create a \"%s\" mailing profile"
 msgstr ""
 
-#: views.py:181
+#: views.py:186
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr ""
 
-#: views.py:192
+#: views.py:197
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr ""
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "%s error log"
 msgstr ""
 
-#: views.py:245
+#: views.py:255
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr ""

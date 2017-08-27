@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:23-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2017-08-25 03:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -66,7 +66,7 @@ msgstr "Cuerpo"
 msgid "The email profile that will be used to send this email."
 msgstr "El perfil de correo electrónico que se utilizará para enviar este correo electrónico."
 
-#: forms.py:70 views.py:223
+#: forms.py:70 views.py:233
 msgid "Mailing profile"
 msgstr "Perfil de correo"
 
@@ -110,7 +110,7 @@ msgstr "Lista de perfiles de correo"
 msgid "Mailing profiles"
 msgstr "Perfiles de correo"
 
-#: links.py:58 views.py:244
+#: links.py:58 views.py:254
 msgid "Test"
 msgstr "Probar"
 
@@ -140,29 +140,29 @@ msgstr "Host"
 msgid "The host to use for sending email."
 msgstr "El host a utilizar para enviar correo electrónico."
 
-#: mailers.py:22
+#: mailers.py:21
 msgid "Port"
 msgstr "Puerto"
 
-#: mailers.py:24
+#: mailers.py:23
 msgid "Port to use for the SMTP server."
 msgstr "Puerto para utilizar en el servidor SMTP."
 
-#: mailers.py:28
+#: mailers.py:26
 msgid "Use TLS"
 msgstr "Utilizar TLS"
 
-#: mailers.py:31
+#: mailers.py:29
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr "Si desea utilizar una conexión TLS (segura) al hablar con el servidor SMTP. Se utiliza para conexiones TLS explícitas, generalmente en el puerto 587."
 
-#: mailers.py:37
+#: mailers.py:34
 msgid "Use SSL"
 msgstr "Usar SSL"
 
-#: mailers.py:40
+#: mailers.py:37
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -172,36 +172,36 @@ msgid ""
 " True."
 msgstr "Si desea utilizar una conexión implícita TLS (segura) al hablar con el servidor SMTP. En la mayoría de la documentación de correo electrónico, este tipo de conexión TLS se denomina SSL. Generalmente se utiliza en el puerto 465. Si experimenta problemas, consulte la configuración TLS explícita \"Usar TLS\". Tenga en cuenta que \"Usar TLS\" y \"Usar SSL\" son mutuamente excluyentes, por lo que solo debe activar  una de esas configuraciones."
 
-#: mailers.py:50
+#: mailers.py:46
 msgid "Username"
 msgstr "Usuario"
 
-#: mailers.py:53
+#: mailers.py:49
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr "Nombre de usuario para usar para el servidor SMTP. Si está vacío, no se intentará la autenticación."
 
-#: mailers.py:60
+#: mailers.py:55
 msgid "Password"
 msgstr "Contraseña"
 
-#: mailers.py:63
+#: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr "Contraseña para usar para el servidor SMTP. Esta configuración se utiliza junto con el nombre de usuario al autenticarse en el servidor SMTP. Si cualquiera de estos ajustes está vacío, no se intentará la autenticación."
 
-#: mailers.py:80
+#: mailers.py:76
 msgid "Django SMTP backend"
 msgstr "Backend de Django SMTP"
 
-#: mailers.py:87
+#: mailers.py:83
 msgid "File path"
 msgstr "Ruta de archivo"
 
-#: mailers.py:93
+#: mailers.py:89
 msgid "Django file based backend"
 msgstr "Backend de Django basado en archivos"
 
@@ -364,22 +364,22 @@ msgstr "Nueva selección de backend de perfil de correo"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Crear un perfil de correo tipo \"%s\""
 
-#: views.py:181
+#: views.py:186
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Eliminar el perfil de correo: %s"
 
-#: views.py:192
+#: views.py:197
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Editar perfil de publicación: %s"
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "%s error log"
 msgstr "registro de errores para %s "
 
-#: views.py:245
+#: views.py:255
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Probar perfil de correo: %s"

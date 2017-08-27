@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:21-0400\n"
-"PO-Revision-Date: 2017-07-31 19:16+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: 2017-08-27 16:32+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "ACLs"
 msgstr "Erişim Kontrol Listeleri"
 
-#: apps.py:25 links.py:48 models.py:44
+#: apps.py:25 links.py:48 models.py:43 workflow_actions.py:48
 msgid "Permissions"
 msgstr "İzinler"
 
-#: apps.py:29 models.py:48
+#: apps.py:29 models.py:47
 msgid "Role"
 msgstr "Rol"
 
@@ -38,24 +38,25 @@ msgstr "Sil"
 msgid "New ACL"
 msgstr "Yeni Erişim Kontrol Listesi"
 
-#: managers.py:86
-msgid "Insufficient access."
-msgstr "Yetersiz yetki"
+#: managers.py:57 managers.py:86
+#, python-format
+msgid "Insufficient access for: %s"
+msgstr ""
 
-#: models.py:55
+#: models.py:54
 msgid "Access entry"
 msgstr "Erişim Girişi"
 
-#: models.py:56
+#: models.py:55
 msgid "Access entries"
 msgstr "Erişim Girişleri"
 
-#: models.py:60
+#: models.py:59
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "\"%(permissions)s\", \"%(object)s\" için \"%(role)s\" rolüne izinler"
 
-#: models.py:77
+#: models.py:76
 msgid "None"
 msgstr "Yok"
 
@@ -132,3 +133,41 @@ msgstr "\"%(role)s\" yetkisi \"%(object)s\" için rol"
 #: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Devre Dışı İzinler üst nesneden devralınır."
+
+#: workflow_actions.py:25
+msgid "Object type"
+msgstr ""
+
+#: workflow_actions.py:28
+msgid "Type of the object for which the access will be modified."
+msgstr ""
+
+#: workflow_actions.py:34
+msgid "Object ID"
+msgstr ""
+
+#: workflow_actions.py:37
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr ""
+
+#: workflow_actions.py:42
+msgid "Roles"
+msgstr "Roller"
+
+#: workflow_actions.py:44
+msgid "Roles whose access will be modified."
+msgstr ""
+
+#: workflow_actions.py:51
+msgid ""
+"Permissions to grant/revoke to/from the role for the object selected above."
+msgstr ""
+
+#: workflow_actions.py:59
+msgid "Grant access"
+msgstr ""
+
+#: workflow_actions.py:129
+msgid "Revoke access"
+msgstr ""

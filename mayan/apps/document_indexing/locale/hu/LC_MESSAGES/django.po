@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Szabolcs Molnar <szabolcs.molnar@gmail.com>, 2017
+# molnars <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-08-15 06:30+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -43,14 +43,14 @@ msgid "Enabled"
 msgstr "Bekapcsolt"
 
 #: apps.py:89
-msgid "Total nodes"
+msgid "Total levels"
 msgstr ""
 
 #: apps.py:95
 msgid "Total documents"
 msgstr "Dokumentumok száma"
 
-#: apps.py:108
+#: apps.py:108 apps.py:123 apps.py:140
 msgid "Level"
 msgstr ""
 
@@ -58,12 +58,8 @@ msgstr ""
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:123 apps.py:140
-msgid "Node"
-msgstr ""
-
 #: apps.py:127 apps.py:146
-msgid "Nodes"
+msgid "Levels"
 msgstr ""
 
 #: apps.py:131 apps.py:150 models.py:291

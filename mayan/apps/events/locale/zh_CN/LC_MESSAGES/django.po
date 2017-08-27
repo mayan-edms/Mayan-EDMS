@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:23-0400\n"
-"PO-Revision-Date: 2017-08-25 00:50+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -21,20 +21,24 @@ msgstr ""
 msgid "System"
 msgstr ""
 
-#: apps.py:22 links.py:31 links.py:35 permissions.py:7 views.py:33
+#: apps.py:26 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
 msgstr ""
 
-#: apps.py:31
+#: apps.py:35
 msgid "Timestamp"
 msgstr ""
 
-#: apps.py:34
+#: apps.py:38
 msgid "Actor"
 msgstr ""
 
-#: apps.py:38
+#: apps.py:42
 msgid "Verb"
+msgstr ""
+
+#: apps.py:46
+msgid "Action object"
 msgstr ""
 
 #: classes.py:23

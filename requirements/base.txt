@@ -28,7 +28,6 @@ fusepy==2.0.4
 
 graphviz==0.8
 
-pdfminer==20140328
 pycountry==1.20
 PyPDF2==1.26.0
 pyocr==0.4.5

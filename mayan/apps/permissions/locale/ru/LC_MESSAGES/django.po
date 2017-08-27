@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:24-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:23 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: classes.py:75
+#: classes.py:89
 msgid "Insufficient permissions."
 msgstr "Недостаточно разрешений."
 
@@ -46,7 +46,7 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:35 models.py:98 views.py:137
+#: links.py:35 models.py:99 views.py:137
 msgid "Roles"
 msgstr "Роли"
 
@@ -70,15 +70,15 @@ msgstr "Имя"
 msgid "Permission"
 msgstr "Разрешение"
 
-#: models.py:74 search.py:16
+#: models.py:75 search.py:16
 msgid "Label"
 msgstr "Надпись"
 
-#: models.py:80
+#: models.py:81
 msgid "Groups"
 msgstr "Группы"
 
-#: models.py:97
+#: models.py:98
 msgid "Role"
 msgstr "Роль"
 

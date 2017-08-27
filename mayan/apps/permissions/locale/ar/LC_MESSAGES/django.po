@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:24-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:23 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "الصلاحيات"
 
-#: classes.py:75
+#: classes.py:89
 msgid "Insufficient permissions."
 msgstr "صلاحيات غير كافية."
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Edit"
 msgstr "تحرير"
 
-#: links.py:35 models.py:98 views.py:137
+#: links.py:35 models.py:99 views.py:137
 msgid "Roles"
 msgstr "Roles"
 
@@ -70,15 +70,15 @@ msgstr "اسم"
 msgid "Permission"
 msgstr ""
 
-#: models.py:74 search.py:16
+#: models.py:75 search.py:16
 msgid "Label"
 msgstr ""
 
-#: models.py:80
+#: models.py:81
 msgid "Groups"
 msgstr "مجموعات"
 
-#: models.py:97
+#: models.py:98
 msgid "Role"
 msgstr ""
 

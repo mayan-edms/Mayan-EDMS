@@ -73,7 +73,7 @@ class HTTPPostAction(WorkflowAction):
             )
         except Exception as exception:
             raise WorkflowStateActionError(
-                _('URL template error: {}'.format(exception))
+                _('URL template error: %s') % exception
             )
 
         logger.debug('URL template result: %s', url)
@@ -84,7 +84,7 @@ class HTTPPostAction(WorkflowAction):
             )
         except Exception as exception:
             raise WorkflowStateActionError(
-                _('Payload template error: {}'.format(exception))
+                _('Payload template error: %s') % exception
             )
 
         logger.debug('payload template result: %s', result)
@@ -93,7 +93,7 @@ class HTTPPostAction(WorkflowAction):
             payload = json.loads(result, strict=False)
         except Exception as exception:
             raise WorkflowStateActionError(
-                _('Payload JSON error: {}'.format(exception))
+                _('Payload JSON error: %s') % exception
             )
 
         logger.debug('payload json result: %s', payload)

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:23-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -65,7 +65,7 @@ msgstr "Gövde"
 msgid "The email profile that will be used to send this email."
 msgstr "Bu e-postayı göndermek için kullanılacak e-posta profili."
 
-#: forms.py:70 views.py:223
+#: forms.py:70 views.py:233
 msgid "Mailing profile"
 msgstr "Posta profili"
 
@@ -109,7 +109,7 @@ msgstr "Posta profilleri listesi"
 msgid "Mailing profiles"
 msgstr "Posta profilleri"
 
-#: links.py:58 views.py:244
+#: links.py:58 views.py:254
 msgid "Test"
 msgstr "Test"
 
@@ -139,29 +139,29 @@ msgstr "Sunucu"
 msgid "The host to use for sending email."
 msgstr "E-posta göndermek için kullanılacak sunucu."
 
-#: mailers.py:22
+#: mailers.py:21
 msgid "Port"
 msgstr "Port"
 
-#: mailers.py:24
+#: mailers.py:23
 msgid "Port to use for the SMTP server."
 msgstr "SMTP sunucusu için kullanılacak bağlantı noktası."
 
-#: mailers.py:28
+#: mailers.py:26
 msgid "Use TLS"
 msgstr "TLS kullanın"
 
-#: mailers.py:31
+#: mailers.py:29
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr "SMTP sunucusuyla konuşurken bir TLS (güvenli) bağlantı kullanıp kullanmamak. Bu, genellikle 587 numaralı bağlantı noktasındaki açık TLS bağlantıları için kullanılır."
 
-#: mailers.py:37
+#: mailers.py:34
 msgid "Use SSL"
 msgstr "SSL'yi kullan"
 
-#: mailers.py:40
+#: mailers.py:37
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
@@ -171,36 +171,36 @@ msgid ""
 " True."
 msgstr "SMTP sunucusuyla konuşurken kapalı bir TLS (güvenli) bağlantı kullanıp kullanmamak. Çoğu e-posta belgelerinde bu TLS bağlantı tipine SSL adı verilir. Genellikle port 465'te kullanılır. Sorun yaşıyorsanız açık TLS ayarı \"TLS Kullan\" konusuna bakın. \"Use TLS\" (TLS Kullan) ve \"Use SSL\" (SSL Kullan) seçenekleri karşılıklı olarak hariçtir, bu nedenle bu ayarlardan birini yalnızca True olarak ayarlayın."
 
-#: mailers.py:50
+#: mailers.py:46
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: mailers.py:53
+#: mailers.py:49
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr "SMTP sunucusu için kullanılacak kullanıcı adı. Boş ise, kimlik doğrulama denenmeyecektir."
 
-#: mailers.py:60
+#: mailers.py:55
 msgid "Password"
 msgstr "Parola"
 
-#: mailers.py:63
+#: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
 msgstr "SMTP sunucusu için kullanılacak şifre. Bu ayar, SMTP sunucusuna kimlik doğrulaması yaparken kullanıcı adı ile birlikte kullanılır. Bu ayarlardan herhangi biri boşsa, kimlik doğrulama denenmeyecektir."
 
-#: mailers.py:80
+#: mailers.py:76
 msgid "Django SMTP backend"
 msgstr "Django SMTP arka uç"
 
-#: mailers.py:87
+#: mailers.py:83
 msgid "File path"
 msgstr "Dosya yolu"
 
-#: mailers.py:93
+#: mailers.py:89
 msgid "Django file based backend"
 msgstr "Django dosya tabanlı arka uç"
 
@@ -363,22 +363,22 @@ msgstr "Yeni posta profili arka uç seçimi"
 msgid "Create a \"%s\" mailing profile"
 msgstr "\"%s\" posta profili oluşturma"
 
-#: views.py:181
+#: views.py:186
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Posta profilini silin: %s"
 
-#: views.py:192
+#: views.py:197
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Posta profilini düzenleme: %s"
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "%s error log"
 msgstr "%s hata günlüğü"
 
-#: views.py:245
+#: views.py:255
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test posta profili: %s"

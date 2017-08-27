@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:22-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Dezső József <dejo60@gmail.com>, 2017\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
@@ -18,33 +18,33 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:60 permissions.py:7 settings.py:7
+#: apps.py:61 permissions.py:7 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "dokumentum értelmezés"
 
-#: apps.py:87
+#: apps.py:91
 msgid "Document"
 msgstr "Dokumentum"
 
-#: apps.py:91
+#: apps.py:95
 msgid "Added"
 msgstr "Hozzáadva"
 
-#: apps.py:95 models.py:39
+#: apps.py:99 models.py:39
 msgid "Result"
 msgstr "Eredmény"
 
-#: apps.py:112 apps.py:116 links.py:11 models.py:18
+#: apps.py:116 apps.py:120 links.py:11 models.py:18
 msgid "Content"
 msgstr "Tartalom"
 
 #: events.py:9
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "dokumentum verzió értelmezésre küldve"
 
 #: events.py:13
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "dokumentum verzió értelmezve"
 
 #: forms.py:42
 #, python-format
@@ -57,19 +57,19 @@ msgstr "Tartalom"
 
 #: links.py:16 links.py:38 views.py:149
 msgid "Parsing errors"
-msgstr ""
+msgstr "értelmezési hiba"
 
 #: links.py:21
 msgid "Download content"
-msgstr ""
+msgstr "dokumentum tartalom"
 
 #: links.py:25 links.py:30
 msgid "Submit for parsing"
-msgstr ""
+msgstr "értelmezésre küld"
 
 #: links.py:33
 msgid "Parse documents per type"
-msgstr ""
+msgstr "dokumentum értelmezés típusonként"
 
 #: models.py:16
 msgid "Document page"
@@ -93,11 +93,11 @@ msgstr "Feladás dátum ideje"
 
 #: models.py:46
 msgid "Document version parse error"
-msgstr ""
+msgstr "dokumentum verzió értelmezési hiba"
 
 #: models.py:47
 msgid "Document version parse errors"
-msgstr ""
+msgstr "dokumentum verzió értelmezési hibák"
 
 #: parsers.py:91
 #, python-format
@@ -111,61 +111,63 @@ msgstr "Nem található a pdftotext futtatható a %s-n"
 
 #: permissions.py:10
 msgid "View the content of a document"
-msgstr ""
+msgstr "dokumentum tartalmának megtekintése"
 
 #: permissions.py:14
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "dokumentum tartalmának értelmezése"
 
 #: queues.py:7
 msgid "Parsing"
-msgstr ""
+msgstr "értelmezés"
 
 #: queues.py:10
 msgid "Document version parsing"
-msgstr ""
+msgstr "dokumentum verzió értelmezés"
 
 #: settings.py:13
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
 msgstr ""
+"elérési útvonal a poppler féle pdftotext programhoz ami PDF-ből szöveget "
+"nyer ki"
 
 #: views.py:38
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "dokumentum: %s tartalma"
 
 #: views.py:66
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "dokumentum értelmezési hibái: %s"
 
 #: views.py:78
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokumentum hozzáadva az értelmezési munkasorhoz"
 
 #: views.py:81
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokumentumok hozzáadva az értelmezési munkasorhoz"
 
 #: views.py:89
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d dokumentum feladása az értelmezési sorhoz"
+msgstr[1] "%(count)d dokumentum feladása az értelmezési sorba"
 
 #: views.py:102
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "\"%s\" dokumentum feladása az értelmezési sorba"
 
 #: views.py:116
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "minden típusú dokumentum beküldése értelmezésre"
 
 #: views.py:135
 #, python-format
@@ -173,3 +175,4 @@ msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the parsing "
 "queue."
 msgstr ""
+"%(count)d dokumentum a \"%(document_type)s\" típusból beküldve értelmezésre"

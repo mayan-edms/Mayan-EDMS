@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 20:22-0400\n"
-"PO-Revision-Date: 2017-08-15 06:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: 2017-08-27 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -23,15 +23,31 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:76 settings.py:11
+#: apps.py:77 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Commun"
 
-#: apps.py:81
+#: apps.py:82
 msgid "Anonymous"
 msgstr "Anonyme"
 
-#: classes.py:146
+#: apps.py:94 models.py:24
+msgid "Namespace"
+msgstr "Espace de nommage"
+
+#: apps.py:98 mixins.py:245
+msgid "Object"
+msgstr "Objet"
+
+#: apps.py:102
+msgid "Date and time"
+msgstr "Date et heure"
+
+#: apps.py:106 models.py:37
+msgid "Result"
+msgstr "Résultat"
+
+#: classes.py:222
 msgid "Available attributes: \n"
 msgstr "Attributs disponibles: \n"
 
@@ -43,7 +59,7 @@ msgstr "Principal"
 msgid "Selection"
 msgstr "Sélection"
 
-#: forms.py:138
+#: forms.py:143
 msgid "Filter"
 msgstr "Filtre"
 
@@ -90,63 +106,67 @@ msgstr "%(object)s n'a pas été mis à jour, erreur: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s, mise à jour réussie."
 
-#: links.py:9
+#: links.py:30
 msgid "About this"
 msgstr "À propos de"
 
-#: links.py:12 views.py:53
+#: links.py:33 views.py:58
 msgid "Check for updates"
 msgstr "Vérifiez les mises à jour"
 
-#: links.py:16
+#: links.py:37
 msgid "User details"
 msgstr "Profil Utilisateur"
 
-#: links.py:20
+#: links.py:41
 msgid "Edit details"
 msgstr "Modifier les détails"
 
-#: links.py:23
+#: links.py:44
 msgid "Locale profile"
 msgstr "Paramètres régionaux du profil"
 
-#: links.py:27
+#: links.py:48
 msgid "Edit locale profile"
 msgstr "Éditer les paramètres régionaux du profil"
 
-#: links.py:31
+#: links.py:52
 msgid "Source code"
 msgstr "Code source"
 
-#: links.py:35
+#: links.py:56
 msgid "Documentation"
 msgstr "Documentation"
 
-#: links.py:39
+#: links.py:60 links.py:65
+msgid "Errors"
+msgstr ""
+
+#: links.py:69
 msgid "Data filters"
 msgstr "Filtres de données"
 
-#: links.py:43
+#: links.py:73
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:47 views.py:192
+#: links.py:77 views.py:234
 msgid "License"
 msgstr "Licence"
 
-#: links.py:50 views.py:206
+#: links.py:80 views.py:248
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"
 
-#: links.py:54
+#: links.py:84
 msgid "Setup"
 msgstr "Configuration"
 
-#: links.py:57
+#: links.py:87
 msgid "Support"
 msgstr "Support"
 
-#: links.py:61 queues.py:10 views.py:236
+#: links.py:91 queues.py:10 views.py:278
 msgid "Tools"
 msgstr "Outils"
 
@@ -166,7 +186,7 @@ msgstr "Minutes"
 msgid "System"
 msgstr "Système"
 
-#: menus.py:22 models.py:53
+#: menus.py:22 models.py:81
 msgid "User"
 msgstr "Uitlisateur"
 
@@ -180,45 +200,53 @@ msgstr "Opération effectuée sur %(count)d objet"
 msgid "Operation performed on %(count)d objects"
 msgstr "Opération effectuée sur  %(count)d objets"
 
-#: mixins.py:245
-msgid "Object"
-msgstr "Objet"
-
-#: models.py:23
-msgid "File"
-msgstr "Fichier"
-
-#: models.py:25
-msgid "Filename"
-msgstr "Nom de fichier"
-
-#: models.py:27
+#: models.py:35 models.py:55
 msgid "Date time"
 msgstr "Date et heure"
 
-#: models.py:31
+#: models.py:43
+msgid "Error log entry"
+msgstr ""
+
+#: models.py:44
+msgid "Error log entries"
+msgstr ""
+
+#: models.py:51
+msgid "File"
+msgstr "Fichier"
+
+#: models.py:53
+msgid "Filename"
+msgstr "Nom de fichier"
+
+#: models.py:59
 msgid "Shared uploaded file"
 msgstr "Partager le fichier transféré"
 
-#: models.py:32
+#: models.py:60
 msgid "Shared uploaded files"
 msgstr "Partager les fichiers téléchargés"
 
-#: models.py:57
+#: models.py:85
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: models.py:60
+#: models.py:88
 msgid "Language"
 msgstr "Langue"
 
-#: models.py:67
+#: models.py:92
 msgid "User locale profile"
 msgstr "Paramètres régionaux du profil utilisateur"
 
-#: models.py:68
+#: models.py:93
 msgid "User locale profiles"
 msgstr "Paramètres régionaux des profils utilisateur"
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr ""
 
 #: queues.py:8
 msgid "Default"
@@ -266,53 +294,58 @@ msgid ""
 "underscores."
 msgstr "Entrez un 'nom interne' valide composé de lettres, de chiffres et de soulignement."
 
-#: views.py:46
+#: views.py:51
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
 
-#: views.py:50
+#: views.py:55
 msgid "Your version is up-to-date."
 msgstr "Votre version est à jour"
 
-#: views.py:67
+#: views.py:72
 msgid "Current user details"
 msgstr "Détails de l'utilisateur courant"
 
-#: views.py:72
+#: views.py:77
 msgid "Edit current user details"
 msgstr "Modifier les détails des utilisateurs actuels"
 
-#: views.py:92
+#: views.py:97
 msgid "Current user locale profile details"
 msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:99
+#: views.py:104
 msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:155
+#: views.py:165
+#, python-format
+msgid "Error log entries for: %s"
+msgstr ""
+
+#: views.py:197
 msgid "Filter selection"
 msgstr "Sélection du filtre"
 
-#: views.py:171
+#: views.py:213
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Résultats pour le filtre : %s"
 
-#: views.py:178
+#: views.py:220
 msgid "Filter not found"
 msgstr "Filtre non trouvé"
 
-#: views.py:219
+#: views.py:261
 msgid "Setup items"
 msgstr "Paramètres de configuration"
 
-#: views.py:263
+#: views.py:305
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:271
+#: views.py:313
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."
 
