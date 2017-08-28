@@ -13,7 +13,7 @@ from common import (
     menu_setup, menu_sidebar, menu_tools
 )
 from common.classes import ErrorLogNamespace, ModelAttribute
-from common.links import link_error_list
+from common.links import link_object_error_list
 from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
@@ -264,7 +264,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_workflow_state_action_edit,
-                link_error_list,
+                link_object_error_list,
                 link_setup_workflow_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )

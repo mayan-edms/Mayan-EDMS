@@ -20,6 +20,7 @@ from documents.models import Document, DocumentType
 from events.models import EventType
 from permissions import Permission
 
+from .error_logs import error_log_state_actions
 from .literals import (
     WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
     WORKFLOW_ACTION_ON_EXIT
@@ -247,8 +248,10 @@ class WorkflowStateAction(models.Model):
         try:
             self.get_class_instance().execute(context=context)
         except Exception as exception:
-            self.error_logs.create(
-                result='{}; {}'.format(exception.__class__.__name__, exception)
+            error_log_state_actions.create(
+                obj=self, result='{}; {}'.format(
+                    exception.__class__.__name__, exception
+                )
             )
 
             if settings.DEBUG:
