@@ -26,10 +26,14 @@ from .links import (
     link_about, link_check_version, link_code, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
     link_documentation, link_filters, link_forum, link_license,
-    link_packages_licenses, link_setup, link_support, link_tools
+    link_object_error_list_clear, link_packages_licenses, link_setup,
+    link_support, link_tools
 )
+
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
-from .menus import menu_about, menu_main, menu_tools, menu_user
+from .menus import (
+    menu_about, menu_main, menu_secondary, menu_tools, menu_user
+)
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
 from .settings import setting_auto_logging, setting_production_error_log_path
@@ -90,23 +94,6 @@ class CommonApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
-        SourceColumn(
-            source=ErrorLogEntry, label=_('Namespace'),
-            attribute='namespace'
-        )
-        SourceColumn(
-            source=ErrorLogEntry, label=_('Object'),
-            attribute='content_object'
-        )
-        SourceColumn(
-            source=ErrorLogEntry, label=_('Date and time'),
-            attribute='datetime'
-        )
-        SourceColumn(
-            source=ErrorLogEntry, label=_('Result'),
-            attribute='result'
-        )
-
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 'task_delete_stale_uploads': {
@@ -156,7 +143,11 @@ class CommonApp(MayanAppConfig):
         )
 
         menu_main.bind_links(links=(menu_about, menu_user,), position=99)
-
+        menu_secondary.bind_links(
+            links=(link_object_error_list_clear,), sources=(
+                'common:object_error_list',
+            )
+        )
         menu_tools.bind_links(
             links=(link_filters,)
         )

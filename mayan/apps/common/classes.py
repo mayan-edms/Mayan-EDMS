@@ -109,6 +109,9 @@ class ErrorLogNamespace(object):
     def __str__(self):
         return force_text(self.label)
 
+    def create(self, obj, result):
+        obj.error_logs.create(namespace=self.name, result=result)
+
     def all(self):
         ErrorLogEntry = apps.get_model(
             app_label='common', model_name='ErrorLogEntry'

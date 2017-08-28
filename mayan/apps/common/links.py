@@ -56,14 +56,20 @@ link_documentation = Link(
     icon='fa fa-book', tags='new_window', text=_('Documentation'),
     url='https://mayan.readthedocs.io/en/stable/'
 )
-link_error_list = Link(
+link_object_error_list = Link(
+    kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_error_log_view,), text=_('Errors'),
-    view='common:error_list', kwargs=get_kwargs_factory('resolved_object')
+    view='common:object_error_list',
 )
-link_error_list_with_icon = Link(
-    icon='fa fa-lock', permissions=(permission_error_log_view,),
-    text=_('Errors'), view='common:error_list',
-    kwargs=get_kwargs_factory('resolved_object')
+link_object_error_list_clear = Link(
+    kwargs=get_kwargs_factory('resolved_object'),
+    permissions=(permission_error_log_view,), text=_('Clear all'),
+    view='common:object_error_list_clear',
+)
+link_object_error_list_with_icon = Link(
+    kwargs=get_kwargs_factory('resolved_object'), icon='fa fa-lock',
+    permissions=(permission_error_log_view,), text=_('Errors'),
+    view='common:error_list',
 )
 link_filters = Link(
     icon='fa fa-filter', text=_('Data filters'),

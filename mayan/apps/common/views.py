@@ -135,43 +135,6 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
         return self.request.user.locale_profile
 
 
-class ErrorLogEntryListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.object_content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
-
-        try:
-            self.content_object = self.object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except self.object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=self.content_object, permissions=permission_error_log_view,
-            user=request.user
-        )
-
-        return super(ErrorLogEntryListView, self).dispatch(
-            request, *args, **kwargs
-        )
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.content_object,
-            'title': _('Error log entries for: %s' % self.content_object),
-        }
-
-    def get_object_list(self):
-        return ErrorLogEntry.objects.filter(
-            content_type=self.object_content_type,
-            object_id=self.content_object.pk
-        )
-
-
 class FaviconRedirectView(RedirectView):
     permanent = True
 
@@ -234,6 +197,67 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
+
+
+class ObjectErrorLogEntryListClearView(ConfirmView):
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Clear error log entries for: %s' % self.get_object()),
+        }
+
+    def get_object(self):
+        content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        return get_object_or_404(
+            klass=content_type.model_class(),
+            pk=self.kwargs['object_id']
+        )
+
+    def view_action(self):
+        self.get_object().error_logs.all().delete()
+        messages.success(
+            self.request, _('Object error log cleared successfully')
+        )
+
+
+class ObjectErrorLogEntryListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            obj=self.get_object(), permissions=permission_error_log_view,
+            user=request.user
+        )
+
+        return super(ObjectErrorLogEntryListView, self).dispatch(
+            request, *args, **kwargs
+        )
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {'name': _('Date and time'), 'attribute': 'datetime'},
+                {'name': _('Result'), 'attribute': 'result'},
+            ),
+            'hide_object': True,
+            'object': self.get_object(),
+            'title': _('Error log entries for: %s' % self.get_object()),
+        }
+
+    def get_object(self):
+        content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        return get_object_or_404(
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
+        )
+
+    def get_object_list(self):
+        return self.get_object().error_logs.all()
 
 
 class PackagesLicensesView(SimpleView):

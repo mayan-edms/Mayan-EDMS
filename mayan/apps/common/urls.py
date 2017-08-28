@@ -7,9 +7,10 @@ from .api_views import APIContentTypeList
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    ErrorLogEntryListView, FaviconRedirectView, FilterResultListView,
-    FilterSelectView, HomeView, LicenseView, PackagesLicensesView,
-    SetupListView, ToolsListView, multi_object_action_view
+    FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
+    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
+    PackagesLicensesView, SetupListView, ToolsListView,
+    multi_object_action_view
 )
 
 urlpatterns = [
@@ -55,8 +56,13 @@ urlpatterns = [
         name='filter_results'
     ),
     url(
-        r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
-        ErrorLogEntryListView.as_view(), name='error_list'
+        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
+        ObjectErrorLogEntryListView.as_view(), name='object_error_list'
+    ),
+    url(
+        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/clear/$',
+        ObjectErrorLogEntryListClearView.as_view(),
+        name='object_error_list_clear'
     ),
 ]
 
