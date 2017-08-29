@@ -65,7 +65,7 @@ class MayanAppConfig(apps.AppConfig):
                 )
             ),
         except ImportError as exception:
-            if force_text(exception) != 'No module named urls':
+            if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
                 logger.error(
                     'Import time error when running AppConfig.ready(). Check '
                     'apps.py, urls.py, views.py, etc.'

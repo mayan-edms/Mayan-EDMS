@@ -24,7 +24,7 @@ class Namespace(object):
             try:
                 import_module('{}.settings'.format(app.name))
             except ImportError as exception:
-                if force_text(exception) != 'No module named settings':
+                if force_text(exception) not in ('No module named settings', 'No module named \'{}.settings\''.format(app.name)):
                     logger.error(
                         'Error importing %s settings.py file; %s', app.name,
                         exception
@@ -84,7 +84,7 @@ class Setting(object):
         result = yaml.safe_dump(value, allow_unicode=True)
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
-        if result.endswith(b'...\n'):
+        if force_text(result).endswith('...\n'):
             result = result[:-4]
 
         return result
