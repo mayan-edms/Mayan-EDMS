@@ -12,7 +12,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
 )
-from common.classes import ErrorLogNamespace, ModelAttribute
+from common.classes import ModelAttribute
 from common.links import link_object_error_list
 from common.widgets import two_state_template
 from mayan.celery import app

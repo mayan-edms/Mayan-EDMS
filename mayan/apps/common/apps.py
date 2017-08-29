@@ -14,7 +14,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
-from navigation import SourceColumn
 from navigation.classes import Separator, Text
 from rest_api.classes import APIEndPoint
 
@@ -89,8 +88,6 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
-
-        ErrorLogEntry = self.get_model(model_name='ErrorLogEntry')
 
         APIEndPoint(app=self, version_string='1')
 

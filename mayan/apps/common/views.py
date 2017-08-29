@@ -31,7 +31,6 @@ from .generics import (  # NOQA
     SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .menus import menu_tools, menu_setup
-from .models import ErrorLogEntry
 from .permissions_runtime import permission_error_log_view
 from .utils import check_version
 
