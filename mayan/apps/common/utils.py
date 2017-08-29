@@ -5,16 +5,18 @@ import os
 import shutil
 import tempfile
 import types
-import xmlrpclib
 
 from django.conf import settings
 from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
 from django.utils.encoding import force_text
-from django.utils.http import urlquote as django_urlquote
-from django.utils.http import urlencode as django_urlencode
+from django.utils.http import (
+    urlencode as django_urlencode, urlquote as django_urlquote
+)
+from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
 
+from common.compat import dict_type, dictionary_type
 import mayan
 
 from .exceptions import NotLatestVersion
@@ -25,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 def check_version():
-    pypi = xmlrpclib.ServerProxy(PYPI_URL)
+    pypi = xmlrpc_client.ServerProxy(PYPI_URL)
     versions = pypi.package_releases(MAYAN_PYPI_NAME)
 
     if versions[0] != mayan.__version__:
@@ -128,11 +130,11 @@ def return_attrib(obj, attrib, arguments=None):
         if isinstance(attrib, types.FunctionType):
             return attrib(obj)
         elif isinstance(
-            obj, types.DictType
-        ) or isinstance(obj, types.DictionaryType):
+            obj, dict_type
+        ) or isinstance(obj, dictionary_type):
             return obj[attrib]
         else:
-            result = reduce(getattr, attrib.split('.'), obj)
+            result = reduce_function(getattr, attrib.split('.'), obj)
             if isinstance(result, types.MethodType):
                 if arguments:
                     return result(**arguments)
