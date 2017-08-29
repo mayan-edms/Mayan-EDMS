@@ -164,9 +164,9 @@ source_file = mayan/apps/sources/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.statistics-2-0]
-file_filter = mayan/apps/statistics/locale/<lang>/LC_MESSAGES/django.po
+file_filter = mayan/apps/mayan_statistics/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
-source_file = mayan/apps/statistics/locale/en/LC_MESSAGES/django.po
+source_file = mayan/apps/mayan_statistics/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.storage-2-0]

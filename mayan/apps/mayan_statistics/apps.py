@@ -20,8 +20,9 @@ from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 
 class StatisticsApp(MayanAppConfig):
+    app_namespace = 'statistics'
     has_tests = True
-    name = 'statistics'
+    name = 'mayan_statistics'
     verbose_name = _('Statistics')
 
     def ready(self):
@@ -46,7 +47,7 @@ class StatisticsApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'statistics.tasks.task_execute_statistic': {
+                'mayan_statistics.tasks.task_execute_statistic': {
                     'queue': 'statistics'
                 },
             }

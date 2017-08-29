@@ -9,6 +9,6 @@ queue_statistics = CeleryQueue(
 )
 
 queue_statistics.add_task_type(
-    name='statistics.tasks.task_execute_statistic',
+    name='mayan_statistics.tasks.task_execute_statistic',
     label=_('Execute statistic')
 )

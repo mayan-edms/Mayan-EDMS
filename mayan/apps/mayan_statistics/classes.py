@@ -51,10 +51,12 @@ class Statistic(object):
             app_label='djcelery', model_name='PeriodicTask'
         )
         StatisticResult = apps.get_model(
-            app_label='statistics', model_name='StatisticResult'
+            app_label='mayan_statistics', model_name='StatisticResult'
         )
 
-        queryset = PeriodicTask.objects.filter(name__startswith='statistics.').exclude(name__in=Statistic.get_task_names())
+        queryset = PeriodicTask.objects.filter(
+            name__startswith='mayan_statistics.'
+        ).exclude(name__in=Statistic.get_task_names())
 
         for periodic_task in queryset:
             crontab_instance = periodic_task.crontab
@@ -94,7 +96,7 @@ class Statistic(object):
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 self.get_task_name(): {
-                    'task': 'statistics.tasks.task_execute_statistic',
+                    'task': 'mayan_statistics.tasks.task_execute_statistic',
                     'schedule': self.schedule,
                     'args': (self.slug,)
                 },
@@ -118,7 +120,7 @@ class Statistic(object):
         self.store_results(results=self.func())
 
     def get_task_name(self):
-        return 'statistics.task_execute_statistic_{}'.format(self.slug)
+        return 'mayan_statistics.task_execute_statistic_{}'.format(self.slug)
 
     def store_results(self, results):
         from .models import StatisticResult
