@@ -38,6 +38,7 @@
 - Change the permission needed to attach and remove tags.
 - Add HTTP POST workflow state action.
 - Add access control grant workflow state action.
+- Beta Python 3 support.
 
 2.6.4 (2017-07-26)
 ==================

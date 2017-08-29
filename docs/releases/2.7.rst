@@ -7,6 +7,10 @@ Released: August xx, 2017
 What's new
 ==========
 
+Beta Python 3 support
+---------------------
+
+
 PDF introspection improvements
 ------------------------------
 Some PDF files encode their page rotation information using indirect values
