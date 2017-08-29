@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import urlparse
 
 from django.conf import settings
 from django.contrib import messages
@@ -10,6 +9,9 @@ from django.urls import reverse
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
+from django.utils.six.moves.urllib.parse import (
+    parse_qs, unquote_plus, urlparse
+)
 
 from acls.models import AccessControlList
 from common.generics import SimpleView, SingleObjectListView
@@ -69,7 +71,7 @@ class DocumentPageNavigationBase(RedirectView):
         return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
 
     def get_redirect_url(self, *args, **kwargs):
-        parse_result = urlparse.urlparse(
+        parse_result = urlparse(
             self.request.META.get(
                 'HTTP_REFERER', resolve_url(
                     settings.LOGIN_REDIRECT_URL
@@ -77,7 +79,7 @@ class DocumentPageNavigationBase(RedirectView):
             )
         )
 
-        query_dict = urlparse.parse_qs(parse_result.query)
+        query_dict = parse_qs(parse_result.query)
 
         resolver_match = resolve(parse_result.path)
 
