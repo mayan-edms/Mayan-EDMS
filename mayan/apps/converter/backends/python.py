@@ -4,11 +4,6 @@ import io
 import logging
 import os
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
 from PIL import Image
 import PyPDF2
 import sh
@@ -66,7 +61,7 @@ logger = logging.getLogger(__name__)
 
 class IteratorIO(object):
     def __init__(self, iterator):
-        self.file_buffer = StringIO()
+        self.file_buffer = io.BytesIO()
 
         for chunk in iterator:
             self.file_buffer.write(chunk)
