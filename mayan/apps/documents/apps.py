@@ -26,10 +26,10 @@ from converter.permissions import (
 from events.links import link_events_for_object
 from events.permissions import permission_events_view
 from mayan.celery import app
+from mayan_statistics.classes import StatisticNamespace, CharJSLine
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 from rest_api.fields import DynamicSerializerField
-from statistics.classes import StatisticNamespace, CharJSLine
 
 from .dashboard_widgets import (
     widget_document_types, widget_documents_in_trash,
