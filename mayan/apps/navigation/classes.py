@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 import inspect
 import logging
-import urllib
-import urlparse
 
 from django.apps import apps
 from django.conf import settings
@@ -14,6 +12,9 @@ from django.template.defaulttags import URLNode
 from django.urls import resolve
 from django.utils.encoding import force_text
 from django.utils.http import urlencode, urlquote
+from django.utils.six.moves.urllib.parse import (
+    parse_qs, unquote_plus, urlencode, urlparse
+)
 
 from common.utils import return_attrib
 from permissions import Permission
@@ -150,7 +151,7 @@ class Menu(object):
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
-            for bound_source, links in self.bound_links.iteritems():
+            for bound_source, links in self.bound_links.items():
                 try:
                     if inspect.isclass(bound_source):
                         if type(resolved_navigation_object) == bound_source:
@@ -215,7 +216,7 @@ class Menu(object):
         if result:
             # Sort links by position value passed during bind
             result[0] = sorted(
-                result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
+                result[0], key=lambda item: (self.link_positions.get(item.link) or 0) if isinstance(item, ResolvedLink) else (self.link_positions.get(item) or 0)
             )
 
         return result
@@ -326,7 +327,7 @@ class Link(object):
                 # Is not a callable
                 kwargs = self.kwargs
 
-            kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
+            kwargs = {key: Variable(value) for key, value in kwargs.items()}
 
             # Use Django's exact {% url %} code to resolve the link
             node = URLNode(
@@ -351,7 +352,7 @@ class Link(object):
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
             previous_path = force_text(
-                urllib.unquote_plus(
+                unquote_plus(
                     force_text(
                         request.get_full_path()
                     ) or force_text(
@@ -362,8 +363,8 @@ class Link(object):
                     )
                 )
             )
-            query_string = urlparse.urlparse(previous_path).query
-            parsed_query_string = urlparse.parse_qs(query_string)
+            query_string = urlparse(previous_path).query
+            parsed_query_string = parse_qs(query_string)
 
             for key in self.remove_from_query:
                 try:
