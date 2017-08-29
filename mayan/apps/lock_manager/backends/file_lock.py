@@ -8,6 +8,7 @@ import time
 import uuid
 
 from django.core.files import locks
+from django.utils.encoding import force_text
 
 from common.settings import setting_temporary_directory
 
@@ -64,7 +65,7 @@ class FileLock(LockingBackend):
     def __init__(self, name, timeout=None):
         self.name = name
         self.timeout = timeout or setting_default_lock_timeout.value
-        self.uuid = uuid.uuid4().get_hex()
+        self.uuid = force_text(uuid.uuid4())
 
         lock.acquire()
         with open(self.__class__.lock_file, 'r+') as file_object:
