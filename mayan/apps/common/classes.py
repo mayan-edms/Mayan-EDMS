@@ -188,7 +188,7 @@ class ModelAttribute(object):
         result = []
 
         try:
-            for type_name, attributes in cls.__registry[model].iteritems():
+            for type_name, attributes in cls.__registry[model].items():
                 if not type_names or type_name in type_names:
                     result.extend(attributes)
 
