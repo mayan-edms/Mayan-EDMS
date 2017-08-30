@@ -14,6 +14,7 @@ from common import (
 )
 from common.classes import ModelAttribute
 from common.links import link_object_error_list
+from common.permissions_runtime import permission_error_log_view
 from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
@@ -41,7 +42,10 @@ from .links import (
     link_workflow_state_document_list, link_workflow_state_list,
     link_workflow_instance_transition_events
 )
-from .permissions import permission_workflow_transition
+from .permissions import (
+    permission_workflow_delete, permission_workflow_edit,
+    permission_workflow_transition, permission_workflow_view
+)
 from .queues import *  # NOQA
 from .widgets import widget_transition_events
 
@@ -75,6 +79,9 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowStateAction = self.get_model('WorkflowStateAction')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
+        WorkflowTransitionTriggerEvent = self.get_model(
+            'WorkflowTransitionTriggerEvent'
+        )
 
         Document.add_to_class(
             'workflow', DocumentStateHelper.constructor
@@ -100,12 +107,37 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=Workflow, permissions=(permission_workflow_transition,)
+            model=Workflow, permissions=(
+                permission_error_log_view, permission_workflow_delete,
+                permission_workflow_edit, permission_workflow_transition,
+                permission_workflow_view,
+            )
         )
 
+        ModelPermission.register_inheritance(
+            model=WorkflowInstance, related='workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowInstanceLogEntry,
+            related='workflow_instance__workflow',
+        )
         ModelPermission.register(
             model=WorkflowTransition,
             permissions=(permission_workflow_transition,)
+        )
+
+        ModelPermission.register_inheritance(
+            model=WorkflowState, related='workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowStateAction, related='state__workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowTransition, related='workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowTransitionTriggerEvent,
+            related='transition__workflow',
         )
 
         SourceColumn(
