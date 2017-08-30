@@ -2,13 +2,17 @@
 Mayan EDMS v2.7 release notes
 =============================
 
-Released: August xx, 2017
+Released: August 30, 2017
 
 What's new
 ==========
 
 Beta Python 3 support
 ---------------------
+Preliminary support for Python 3 has landed in this version. More testing
+is still needed but for the most part seems to be usable. This is just
+initial support and not meant for production. Please submit any issue with
+Python 3 to help improve the support for it.
 
 
 PDF introspection improvements
@@ -39,6 +43,7 @@ DPI value used by the conversion process of PDF files to images. The default
 value for this coversion was set to 300 DPI. The entry used to specify this
 value is `pdftoppm_dpi`.
 
+
 Workflow refactor
 -----------------
 This version includes a preview release of the workflow refactor that includes
@@ -57,6 +62,7 @@ improvement added to the workflow app is the ability to render a workflow
 in a graphical manner, useful for visually understanding, explaining and
 debugging workflows.
 
+
 OCR refactor
 ------------
 As part of the plan to add OCR zone and barcode support the first set of
@@ -69,6 +75,7 @@ document even if they provide text content to recognize any text on images.
 This separation gives users the two choices of text information one extracted
 from the document (not always available or of quality) and the other recognized
 by OCR.
+
 
 Document parsing
 ----------------
@@ -83,6 +90,7 @@ initial experience with this library has been positive and since it supports
 text extraction might also replace PDFMiner as the secondary PDF text
 extraction strategy.
 
+
 Document version UI
 -------------------
 The list of versions of a document was updated to use the new item list
@@ -91,6 +99,7 @@ preview support was added for individual document version. It is also possible
 to explore and navigate different versions of a document much easier and with
 more information that previously available, being able to visually see for
 example the difference in a document's versions.
+
 
 Events system
 -------------
@@ -131,6 +140,7 @@ Metadata on document type change
 Changing document types will no longer delete all metadata from the document.
 Any existing metadata whose type matches the metadata in the new type will be
 preserved.
+
 
 Permission rebalance
 --------------------
@@ -259,6 +269,7 @@ Bugs fixed or issues closed
 * `GitHub issue #261 <https://github.com/mayan-edms/mayan-edms/issues/261>`_ fix_orientation method causes document add to crash
 * `GitHub issue #263 <https://github.com/mayan-edms/mayan-edms/issues/263>`_ Typo in mayan/apps/ocr/migrations/0004_documenttypesettings.py
 * `GitLab issue #172 <https://gitlab.com/mayan-edms/mayan-edms/issues/172>`_ Metadata default value ignored when changing document type
+* `GitLab issue #329 <https://gitlab.com/mayan-edms/mayan-edms/issues/329>`_ Move code to Python 3
 * `GitLab issue #415 <https://gitlab.com/mayan-edms/mayan-edms/issues/415>`_ Wrong filename when downloading document version
 * `GitLab issue #416 <https://gitlab.com/mayan-edms/mayan-edms/issues/416>`_ DPI value for OCR not taken from document metadata
 * `GitLab issue #417 <https://gitlab.com/mayan-edms/mayan-edms/issues/417>`_ Display document cabinets in documents list

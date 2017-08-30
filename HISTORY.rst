@@ -1,4 +1,4 @@
-2.7 (2017-XX-XX)
+2.7 (2017-08-30)
 ================
 - Add workaround for PDF with IndirectObject as the
   rotation value. GitHub #261.
