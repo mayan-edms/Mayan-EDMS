@@ -6,6 +6,10 @@ from django.conf import settings
 from django.core import management
 from django.utils.crypto import get_random_string
 
+from ...settings import setting_local_settings_filename
+
+from .literals import SETTING_FILE_TEMPLATE
+
 
 class Command(management.BaseCommand):
     help = 'Creates a local settings file with a random secret key.'
@@ -16,16 +20,19 @@ class Command(management.BaseCommand):
         return get_random_string(50, chars)
 
     def handle(self, *args, **options):
-        path = os.path.join(settings.BASE_DIR, 'settings', 'local.py')
+        path = os.path.join(settings.BASE_DIR, 'settings', '{}.py'.format(setting_local_settings_filename.value))
         if os.path.exists(path):
             self.stdout.write(self.style.NOTICE('Existing settings file at: {0}. Backup, remove this file, and try again.'.format(path)))
         else:
             with open(path, 'w+') as file_object:
-                file_object.write('\n'.join([
-                    'from __future__ import absolute_import',
-                    '',
-                    'from .base import *',
-                    '',
-                    "SECRET_KEY = '{0}'".format(Command._generate_secret_key()),
-                    '',
-                ]))
+                #file_object.write('\n'.join([
+                #    'from __future__ import absolute_import',
+                #    '',
+                #    'from .base import *',
+                #    '',
+                #    "SECRET_KEY = '{0}'".format(Command._generate_secret_key()),
+                #    '',
+                #]))
+                file_object.write(
+                    SETTING_FILE_TEMPLATE.format(Command._generate_secret_key())
+                )
