@@ -25,14 +25,6 @@ class Command(management.BaseCommand):
             self.stdout.write(self.style.NOTICE('Existing settings file at: {0}. Backup, remove this file, and try again.'.format(path)))
         else:
             with open(path, 'w+') as file_object:
-                #file_object.write('\n'.join([
-                #    'from __future__ import absolute_import',
-                #    '',
-                #    'from .base import *',
-                #    '',
-                #    "SECRET_KEY = '{0}'".format(Command._generate_secret_key()),
-                #    '',
-                #]))
                 file_object.write(
                     SETTING_FILE_TEMPLATE.format(Command._generate_secret_key())
                 )

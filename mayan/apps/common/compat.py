@@ -16,10 +16,6 @@ else:
     dictionary_type = types.DictionaryType
 
 try:
-    from email.Utils import collapse_rfc2231_value
+    from email.Utils import collapse_rfc2231_value  # NOQA
 except ImportError:
-    from email.utils import collapse_rfc2231_value
-
-
-
-
+    from email.utils import collapse_rfc2231_value  # NOQA
