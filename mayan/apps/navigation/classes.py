@@ -11,7 +11,7 @@ from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve
 from django.utils.encoding import force_text
-from django.utils.http import urlencode, urlquote
+from django.utils.http import urlquote
 from django.utils.six.moves.urllib.parse import (
     parse_qs, unquote_plus, urlencode, urlparse
 )
