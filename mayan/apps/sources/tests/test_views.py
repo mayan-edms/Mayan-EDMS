@@ -3,7 +3,10 @@ from __future__ import unicode_literals
 import os
 import shutil
 
+from furl import furl
+
 from django.test import override_settings
+from django.urls import reverse
 
 from checkouts.models import NewVersionBlock
 from common.tests.test_views import GenericViewTestCase
@@ -15,6 +18,9 @@ from documents.tests import (
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
+from metadata.models import MetadataType
+from metadata.tests.literals import TEST_METADATA_VALUE_UNICODE
+from metadata.tests.mixins import MetadataTypeMixin
 
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
@@ -117,6 +123,42 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(
             response, text=self.source.label, status_code=200
+        )
+
+
+class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestCase):
+    def setUp(self):
+        super(DocumentUploadMetadataTestCase, self).setUp()
+        self.source = WebFormSource.objects.create(
+            enabled=True, label=TEST_SOURCE_LABEL,
+            uncompress=TEST_SOURCE_UNCOMPRESS_N
+        )
+
+        self.document.delete()
+
+        self.document_type.metadata.create(
+            metadata_type=self.metadata_type, required=True
+        )
+
+    def test_unicode_interactive_with_unicode_metadata(self):
+        self.login_admin_user()
+
+        url = furl(reverse('sources:upload_interactive'))
+        url.args['metadata0_id'] = self.metadata_type.pk
+        url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
+
+        # Upload the test document
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+            response = self.post(
+                path=url, data={
+                    'document-language': 'eng', 'source-file': file_descriptor,
+                    'document_type_id': self.document_type.pk,
+                }, follow=True
+            )
+        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(
+            Document.objects.first().metadata.first().value,
+            TEST_METADATA_VALUE_UNICODE
         )
 
 
