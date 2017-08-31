@@ -19,18 +19,15 @@ from .literals import (
     TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_LABEL, TEST_INVALID_DATE,
     TEST_VALID_DATE, TEST_PARSED_VALID_DATE
 )
+from .mixins import MetadataTypeMixin
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MetadataTestCase(BaseTestCase):
+class MetadataTestCase(MetadataTypeMixin, BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        self.metadata_type = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
