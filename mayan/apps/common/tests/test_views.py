@@ -63,13 +63,15 @@ class GenericViewTestCase(BaseTestCase):
             response.context.update({'request': response.wsgi_request})
             return Context(response.context)
 
-    def get(self, viewname, *args, **kwargs):
+    def get(self, viewname=None, path=None, *args, **kwargs):
         data = kwargs.pop('data', {})
         follow = kwargs.pop('follow', False)
 
+        if viewname:
+            path = reverse(viewname=viewname, *args, **kwargs)
+
         return self.client.get(
-            reverse(viewname=viewname, *args, **kwargs),
-            data=data, follow=follow
+            path=path, data=data, follow=follow
         )
 
     def login(self, username, password):
@@ -89,13 +91,15 @@ class GenericViewTestCase(BaseTestCase):
     def logout(self):
         self.client.logout()
 
-    def post(self, viewname, *args, **kwargs):
+    def post(self, viewname=None, path=None, *args, **kwargs):
         data = kwargs.pop('data', {})
         follow = kwargs.pop('follow', False)
 
+        if viewname:
+            path = reverse(viewname=viewname, *args, **kwargs)
+
         return self.client.post(
-            reverse(viewname=viewname, *args, **kwargs),
-            data=data, follow=follow
+            path=path, data=data, follow=follow
         )
 
 
