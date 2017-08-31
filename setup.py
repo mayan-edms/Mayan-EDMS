@@ -80,6 +80,7 @@ django-suit==0.2.25
 django-widget-tweaks==1.4.1
 djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
+furl==1.0.0
 fusepy==2.0.4
 graphviz==0.8
 pycountry==1.20
