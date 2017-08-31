@@ -7,9 +7,6 @@ import time
 from django.urls import reverse
 
 from acls.models import AccessControlList
-from user_management.tests.literals import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME
-)
 
 from ..links import (
     link_document_restore, link_document_version_download,
@@ -31,7 +28,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.versions.count(), 2)
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=self.document.versions.first())
         context = self.get_test_view()
@@ -49,7 +46,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.versions.count(), 2)
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role
@@ -72,7 +69,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_version_download_link_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=self.document.latest_version)
         context = self.get_test_view()
@@ -81,7 +78,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_version_download_link_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role
@@ -106,7 +103,7 @@ class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_deleted_document_restore_link_no_permission(self):
         self.document.delete()
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()
@@ -117,7 +114,7 @@ class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_deleted_document_restore_link_with_permission(self):
         self.document.delete()
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role

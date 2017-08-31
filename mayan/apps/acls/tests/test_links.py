@@ -4,9 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests.literals import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME
-)
 
 from ..links import (
     link_acl_delete, link_acl_list, link_acl_create, link_acl_permissions
@@ -22,7 +19,7 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()
@@ -47,7 +44,7 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=acl)
         context = self.get_test_view()
@@ -65,7 +62,7 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=acl)
         context = self.get_test_view()
@@ -83,7 +80,7 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_view.stored_permission)
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()

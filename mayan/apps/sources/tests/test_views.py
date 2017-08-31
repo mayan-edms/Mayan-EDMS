@@ -18,7 +18,6 @@ from documents.tests import (
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
-from metadata.models import MetadataType
 from metadata.tests.literals import TEST_METADATA_VALUE_UNICODE
 from metadata.tests.mixins import MetadataTypeMixin
 
@@ -149,7 +148,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestC
 
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            response = self.post(
+            self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
                     'document_type_id': self.document_type.pk,

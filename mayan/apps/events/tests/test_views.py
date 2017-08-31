@@ -3,9 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.contenttypes.models import ContentType
 
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..permissions import permission_events_view
 
@@ -23,7 +20,7 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         }
 
     def test_events_for_object_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         document = self.document.add_as_recent_document_for_user(
             self.user
@@ -45,7 +42,7 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         self.assertNotContains(response, text='otal:', status_code=403)
 
     def test_events_for_object_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_events_view.stored_permission

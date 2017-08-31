@@ -7,11 +7,9 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, resolve_url
 from django.urls import reverse
 from django.utils.http import urlencode
+from django.utils.six.moves.urllib.parse import parse_qs, urlparse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
-from django.utils.six.moves.urllib.parse import (
-    parse_qs, unquote_plus, urlparse
-)
 
 from acls.models import AccessControlList
 from common.generics import SimpleView, SingleObjectListView

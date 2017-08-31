@@ -5,9 +5,6 @@ from django.urls import reverse
 
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests.literals import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME
-)
 
 from ..links import (
     link_document_version_signature_delete,
@@ -28,7 +25,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
                 file_object=file_object
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(
             test_object=document.latest_version.signatures.first()
@@ -46,7 +43,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
                 file_object=file_object
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_version_signature_view.stored_permission
@@ -81,7 +78,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.add_test_view(
             test_object=document.latest_version.signatures.first()
@@ -105,7 +102,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_version_signature_delete.stored_permission
