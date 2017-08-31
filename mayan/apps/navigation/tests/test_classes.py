@@ -3,18 +3,19 @@ from __future__ import absolute_import, unicode_literals
 from django.template import Context
 from django.urls import reverse
 
+from furl import furl
+
 from acls.models import AccessControlList
 from common.tests.literals import TEST_VIEW_NAME
 from common.tests.test_views import GenericViewTestCase
 from permissions import Permission, PermissionNamespace
-from user_management.tests import TEST_USER_PASSWORD, TEST_USER_USERNAME
 
 from ..classes import Link, Menu
 
 from .literals import (
     TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT,
     TEST_PERMISSION_NAME, TEST_PERMISSION_LABEL, TEST_LINK_TEXT,
-    TEST_MENU_NAME, TEST_SUBMENU_NAME
+    TEST_MENU_NAME, TEST_SUBMENU_NAME, TEST_UNICODE_STRING
 )
 
 
@@ -44,9 +45,7 @@ class LinkClassTestCase(GenericViewTestCase):
         self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
 
     def test_link_permission_resolve_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         link = Link(
             permissions=(self.permission,), text=TEST_LINK_TEXT,
@@ -62,9 +61,7 @@ class LinkClassTestCase(GenericViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_link_permission_resolve_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         link = Link(
             permissions=(self.permission,), text=TEST_LINK_TEXT,
@@ -83,9 +80,7 @@ class LinkClassTestCase(GenericViewTestCase):
 
     def test_link_permission_resolve_with_acl(self):
         # ACL is tested agains the resolved_object or just {{ object }} if not
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         link = Link(
             permissions=(self.permission,), text=TEST_LINK_TEXT,
@@ -105,6 +100,19 @@ class LinkClassTestCase(GenericViewTestCase):
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
+
+    def test_link_with_unicode_querystring_request(self):
+        url = furl(reverse(TEST_VIEW_NAME))
+        url.args['unicode_key'] = TEST_UNICODE_STRING
+
+        self.link.keep_query = True
+        response = self.get(path=url.url)
+
+        context = Context({'request': response.wsgi_request})
+
+        resolved_link = self.link.resolve(context=context)
+
+        self.assertEqual(resolved_link.url, url.url)
 
 
 class MenuClassTestCase(GenericViewTestCase):

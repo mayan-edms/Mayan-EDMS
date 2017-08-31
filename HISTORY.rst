@@ -1,3 +1,9 @@
+2.7.1 (2017-XX-XX)
+==================
+- Support unicode in URL querystring. GitLab issue #423.
+  Thanks to Gustavo Teixeira (@gsteixei) for the find.
+
+
 2.7 (2017-08-30)
 ================
 - Add workaround for PDF with IndirectObject as the

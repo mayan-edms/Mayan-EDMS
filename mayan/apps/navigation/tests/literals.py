@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 TEST_PERMISSION_NAMESPACE_NAME = 'test namespace name'
@@ -7,3 +8,4 @@ TEST_PERMISSION_LABEL = 'test permission label'
 TEST_LINK_TEXT = 'test link text'
 TEST_MENU_NAME = 'menu test'
 TEST_SUBMENU_NAME = 'submenu test'
+TEST_UNICODE_STRING = 'úñí©óðé'

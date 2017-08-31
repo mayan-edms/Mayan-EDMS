@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 import inspect
 import logging
 
+from furl import furl
+
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
@@ -10,11 +12,7 @@ from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve
-from django.utils.encoding import force_text
-from django.utils.http import urlquote
-from django.utils.six.moves.urllib.parse import (
-    parse_qs, unquote_plus, urlencode, urlparse
-)
+from django.utils.encoding import force_str, force_text
 
 from common.utils import return_attrib
 from permissions import Permission
@@ -351,31 +349,21 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
-            previous_path = force_text(
-                unquote_plus(
-                    force_text(
-                        request.get_full_path()
-                    ) or force_text(
-                        request.META.get(
-                            'HTTP_REFERER',
-                            resolve_url(settings.LOGIN_REDIRECT_URL)
-                        )
+            parsed_url = furl(
+                force_str(
+                    request.get_full_path() or request.META.get(
+                        'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                     )
                 )
             )
-            query_string = urlparse(previous_path).query
-            parsed_query_string = parse_qs(query_string)
 
             for key in self.remove_from_query:
                 try:
-                    del parsed_query_string[key]
+                    parsed_url.query.remove(key)
                 except KeyError:
                     pass
 
-            resolved_link.url = '%s?%s' % (
-                urlquote(resolved_link.url),
-                urlencode(parsed_query_string, doseq=True)
-            )
+            resolved_link.url = parsed_url.url
 
         resolved_link.context = context
         return resolved_link
