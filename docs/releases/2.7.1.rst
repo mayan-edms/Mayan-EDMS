@@ -2,7 +2,7 @@
 Mayan EDMS v2.7.1 release notes
 ===============================
 
-Released: XX XX, 2017
+Released: August 31, 2017
 
 What's new
 ==========
@@ -11,6 +11,8 @@ Other Changes
 -------------
 - Support unicode in URL querystring. GitLab issue #423.
   Thanks to Gustavo Teixeira (@gsteixei) for the find.
+- Import errors during initialization are only ignored
+  if they are cause by a missing local.py.
 
 Removals
 --------
