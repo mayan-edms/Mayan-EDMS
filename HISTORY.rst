@@ -4,6 +4,9 @@
   Thanks to Gustavo Teixeira (@gsteixei) for the find.
 - Import errors during initialization are only ignored
   if they are cause by a missing local.py.
+- Make sure the local.py created used unicode for strings
+  by default. GitLab issue #424. Thanks to Gustavo Teixeira
+  (@gsteixei) for the find.
 
 2.7 (2017-08-30)
 ================
