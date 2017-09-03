@@ -1,9 +1,10 @@
-2.7.1 (2017-08-31)
+2.7.1 (2017-09-03)
 ==================
 - Support unicode in URL querystring. GitLab issue #423.
   Thanks to Gustavo Teixeira (@gsteixei) for the find.
 - Import errors during initialization are only ignored
-  if they are cause by a missing local.py.
+  if they are cause by a missing local.py. Thanks to 
+  MacRobb Simpson for the report and solution.
 - Make sure the local.py created used unicode for strings
   by default. GitLab issue #424. Thanks to Gustavo Teixeira
   (@gsteixei) for the find.
