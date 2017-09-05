@@ -153,7 +153,9 @@ class CabinetListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return Cabinet.objects.root_nodes()
+        # Add explicit ordering of root nodes since the queryset returned
+        # is not affected by the model's order Meta option.
+        return Cabinet.objects.root_nodes().order_by('label')
 
 
 class DocumentCabinetListView(CabinetListView):

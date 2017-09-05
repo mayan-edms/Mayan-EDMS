@@ -7,6 +7,8 @@
   document properties edited events. Preserve the user that
   initially creates the document. GitLab issue #433. Thanks
   to Jesaja Everling (@jeverling) for the report.
+- Sort the list of root cabinets. Thanks to Thomas Plotkowiak
+  for the request.
 
 
 2.7.1 (2017-09-03)
