@@ -157,8 +157,8 @@ class DocumentMetadata(models.Model):
     metadata_type = models.ForeignKey(
         MetadataType, on_delete=models.CASCADE, verbose_name=_('Type')
     )
-    value = models.CharField(
-        blank=True, db_index=True, max_length=255, null=True,
+    value = models.TextField(
+        blank=True, db_index=True, null=True,
         verbose_name=_('Value')
     )
 

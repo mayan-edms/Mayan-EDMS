@@ -190,3 +190,22 @@ class MetadataTestCase(BaseTestCase):
         self.metadata_type.lookup = 'test1,test2'
         self.metadata_type.save()
         self.metadata_type.validate_value(document_type=None, value='test1')
+
+    def test_long_value_for_metadata(self):
+        """
+        asserts that DocumentMetadata.value can store more than 255 chars
+        """
+        very_long_string = (u'Mayan EDMS is a Free Open Source Electronic '+
+                'Document Management System, coded in the Python language '+
+                'using the Django web application framework and released '+
+                'under the Apache 2.0 License. It provides an electronic '+
+                'vault or repository for electronic documents.') # 258 chars
+        document_metadata = DocumentMetadata(
+            document=self.document, metadata_type=self.metadata_type,
+            value=very_long_string
+        )
+        document_metadata.full_clean()
+        document_metadata.save()
+        self.assertEqual(very_long_string, document_metadata.value)
+        
+
