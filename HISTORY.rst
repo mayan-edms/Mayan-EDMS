@@ -1,3 +1,9 @@
+2.7.2 (2017-09-XX)
+==================
+- Fix new mailer creation view. GitLab issue #431.
+  Thanks to Robert Schöftner (@robert.schoeftner) for the
+  report and the solution.
+
 2.7.1 (2017-09-03)
 ==================
 - Support unicode in URL querystring. GitLab issue #423.

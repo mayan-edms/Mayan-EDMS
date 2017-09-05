@@ -46,7 +46,7 @@ class MailerBackendBase(object):
 
     """
     class_path = ''  # Dot path to the actual class that will handle the mail
-    fields = ()
+    fields = {}
 
 
 class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)):
