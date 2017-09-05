@@ -3,6 +3,11 @@
 - Fix new mailer creation view. GitLab issue #431.
   Thanks to Robert Schöftner (@robert.schoeftner) for the
   report and the solution.
+- Consolidate intial document created event and the first 
+  document properties edited events. Preserve the user that
+  initially creates the document. GitLab issue #433. Thanks
+  to Jesaja Everling (@jeverling) for the report.
+
 
 2.7.1 (2017-09-03)
 ==================
