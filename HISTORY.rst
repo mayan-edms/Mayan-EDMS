@@ -9,7 +9,7 @@
   to Jesaja Everling (@jeverling) for the report.
 - Sort the list of root cabinets. Thanks to Thomas Plotkowiak
   for the request.
-
+- Sort the list of a document's cabinets.
 
 2.7.1 (2017-09-03)
 ==================
