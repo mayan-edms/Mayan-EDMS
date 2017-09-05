@@ -7,8 +7,8 @@ from documents.tests.test_views import GenericDocumentViewTestCase
 from ..models import UserMailer
 from ..permissions import (
     permission_mailing_link, permission_mailing_send_document,
-    permission_user_mailer_create, permission_user_mailer_use,
-    permission_user_mailer_view
+    permission_user_mailer_create, permission_user_mailer_delete,
+    permission_user_mailer_use, permission_user_mailer_view
 )
 
 from .literals import (
@@ -148,17 +148,17 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
             UserMailer.objects.all(), (repr(self.user_mailer),)
         )
 
-    def test_user_mailer_delete_view_with_permissions(self):
+    def test_user_mailer_delete_view_with_access(self):
         self._create_user_mailer()
         self.login_user()
 
-        self.grant_permission(permission=permission_user_mailer_view)
+        self.grant_access(
+            obj=self.user_mailer, permission=permission_user_mailer_delete
+        )
 
         self._request_user_mailer_delete()
 
-        self.assertNotEqual(
-            [UserMailer.objects.all()], [self.user_mailer]
-        )
+        self.assertEqual(UserMailer.objects.count(), 0)
 
     def test_user_mailer_list_view_no_permissions(self):
         self._create_user_mailer()
