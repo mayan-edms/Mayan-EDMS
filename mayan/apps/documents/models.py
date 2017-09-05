@@ -215,6 +215,7 @@ class Document(models.Model):
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
+        _commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
         super(Document, self).save(*args, **kwargs)
 
@@ -225,7 +226,8 @@ class Document(models.Model):
             else:
                 event_document_create.commit(target=self)
         else:
-            event_document_properties_edit.commit(actor=user, target=self)
+            if _commit_events:
+                event_document_properties_edit.commit(actor=user, target=self)
 
     class Meta:
         verbose_name = _('Document')
@@ -432,7 +434,6 @@ class DocumentVersion(models.Model):
         mimetype, and page count when created
         """
         user = kwargs.pop('_user', None)
-
         new_document_version = not self.pk
 
         if new_document_version:
@@ -464,7 +465,7 @@ class DocumentVersion(models.Model):
                     if not self.document.label:
                         self.document.label = force_text(self.file)
 
-                    self.document.save()
+                    self.document.save(_commit_events=False)
         except Exception as exception:
             logger.error(
                 'Error creating new document version for document "%s"; %s',
