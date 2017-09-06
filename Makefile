@@ -10,10 +10,12 @@ help:
 
 	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
-	@echo "test-postgres-all - Run all tests against a Postgres database container."
+	@echo "test-with-postgres-all - Run all tests against a Postgres database container."
 	@echo "test-postgres MODULE=<python module name> - Run tests for a single app, module or test class against a Postgres database container."
-	@echo "test-mysql-all - Run all tests against a MySQL database container."
+	@echo "test-with-mysql-all - Run all tests against a MySQL database container."
 	@echo "test-mysql MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container."
+	@echo "test-with-oracle-all - Run all tests against a Oracle database container."
+	@echo "test-oracle MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container."
 
 	@echo "docs_serve - Run the livehtml documentation generator."
 
@@ -84,12 +86,12 @@ test-launch-postgres:
 	pip install psycopg2
 	while ! docker inspect --format='{{json .State.Health}}' test-postgres|grep 'Status":"healthy"'; do sleep 1; done
 
-test-postgres: test-launch-postgres
+test-with-postgres: test-launch-postgres
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
-test-postgres-all: test-launch-postgres
+test-with-postgres-all: test-launch-postgres
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
@@ -103,12 +105,12 @@ test-launch-mysql:
 	while ! docker inspect --format='{{json .State.Health}}' test-mysql|grep 'Status":"healthy"'; do sleep 1; done
 	mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
 
-test-mysql: test-launch-mysql
+test-with-mysql: test-launch-mysql
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
-test-mysql-all: test-launch-mysql
+test-with-mysql-all: test-launch-mysql
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
@@ -122,12 +124,12 @@ test-launch-oracle:
 	while ! nc -z 127.0.0.1 49161; do sleep 1; done
 	sleep 10
 
-test-oracle: test-launch-oracle
+test-with-oracle: test-launch-oracle
 	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --nomigrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
 
-test-oracle-all: test-launch-oracle
+test-with-oracle-all: test-launch-oracle
 	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
