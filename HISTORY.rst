@@ -1,9 +1,9 @@
-2.7.2 (2017-09-XX)
+2.7.2 (2017-09-06)
 ==================
 - Fix new mailer creation view. GitLab issue #431.
   Thanks to Robert Schöftner (@robert.schoeftner) for the
   report and the solution.
-- Consolidate intial document created event and the first 
+- Consolidate intial document created event and the first
   document properties edited events. Preserve the user that
   initially creates the document. GitLab issue #433. Thanks
   to Jesaja Everling (@jeverling) for the report.
@@ -20,7 +20,7 @@
 - Support unicode in URL querystring. GitLab issue #423.
   Thanks to Gustavo Teixeira (@gsteixei) for the find.
 - Import errors during initialization are only ignored
-  if they are cause by a missing local.py. Thanks to 
+  if they are cause by a missing local.py. Thanks to
   MacRobb Simpson for the report and solution.
 - Make sure the local.py created used unicode for strings
   by default. GitLab issue #424. Thanks to Gustavo Teixeira
