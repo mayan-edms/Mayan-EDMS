@@ -271,3 +271,8 @@ a i {
     margin-left: 4px;
     margin-top: 3px;
 }
+
+/* Cabinets */
+.cabinet-display {
+    font-style: italic;
+}

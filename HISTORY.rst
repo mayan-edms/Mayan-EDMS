@@ -10,6 +10,8 @@
 - Sort the list of root cabinets. Thanks to Thomas Plotkowiak
   for the request.
 - Sort the list of a document's cabinets.
+- Display a document's cabinet list in italics. GitLab issue #435.
+  Thanks to LeVon Smoker for the request.
 
 2.7.1 (2017-09-03)
 ==================
