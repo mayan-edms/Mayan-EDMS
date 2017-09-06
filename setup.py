@@ -83,6 +83,7 @@ djangorestframework-recursive==0.1.1
 furl==1.0.0
 fusepy==2.0.4
 graphviz==0.8
+mock==2.0.0
 pycountry==1.20
 PyPDF2==1.26.0
 pyocr==0.4.5
