@@ -19,7 +19,7 @@ class OCREventsTestCase(GenericDocumentTestCase):
         )
         self.assertEqual(
             Action.objects.last().verb,
-            event_ocr_document_version_submit.name
+            event_ocr_document_version_submit.id
         )
 
     def test_document_version_finish_event(self):
@@ -31,5 +31,5 @@ class OCREventsTestCase(GenericDocumentTestCase):
         )
         self.assertEqual(
             Action.objects.first().verb,
-            event_ocr_document_version_finish.name
+            event_ocr_document_version_finish.id
         )
