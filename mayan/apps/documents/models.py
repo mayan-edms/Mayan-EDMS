@@ -100,6 +100,11 @@ class DocumentType(models.Model):
 
         return super(DocumentType, self).delete(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse(
+            'documents:document_type_document_list', args=(self.pk,)
+        )
+
     def natural_key(self):
         return (self.label,)
 
