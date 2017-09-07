@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.db.utils import OperationalError
+from django.db.utils import OperationalError, ProgrammingError
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -33,7 +33,7 @@ class QuotasApp(MayanAppConfig):
         try:
             for quota in Quota.objects.all():
                 quota.update_receiver()
-        except OperationalError:
+        except (OperationalError, ProgrammingError):
             # Ignore errors during migration
             pass
 
