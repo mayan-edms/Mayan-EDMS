@@ -71,9 +71,6 @@ class EventTypeSubscriptionListView(FormView):
             EventTypeSubscriptionListView, self
         ).form_valid(form=form)
 
-    def get_object(self):
-        return self.request.user
-
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
@@ -95,19 +92,19 @@ class EventTypeSubscriptionListView(FormView):
             })
         return initial
 
-    def get_post_action_redirect(self):
-        return reverse('common:current_user_details')
+    def get_object(self):
+        return self.request.user
 
-    def get_queryset(self):
+    def get_object_list(self):
         # Return the queryset by name from the sorted list of the class
         event_type_ids = [event_type.id for event_type in EventType.all()]
         return self.submodel.objects.filter(name__in=event_type_ids)
 
+    def get_post_action_redirect(self):
+        return reverse('common:current_user_details')
+
 
 class NotificationListView(SingleObjectListView):
-    def get_queryset(self):
-        return self.request.user.notifications.all()
-
     def get_extra_context(self):
         return {
             'hide_object': True,
@@ -115,13 +112,16 @@ class NotificationListView(SingleObjectListView):
             'title': _('Notifications'),
         }
 
+    def get_object_list(self):
+        return self.request.user.notifications.all()
+
 
 class NotificationMarkRead(SimpleView):
     def dispatch(self, *args, **kwargs):
         self.get_queryset().filter(pk=self.kwargs['pk']).update(read=True)
         return HttpResponseRedirect(reverse('events:user_notifications_list'))
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.request.user.notifications.all()
 
 
@@ -130,7 +130,7 @@ class NotificationMarkReadAll(SimpleView):
         self.get_queryset().update(read=True)
         return HttpResponseRedirect(reverse('events:user_notifications_list'))
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.request.user.notifications.all()
 
 
@@ -236,7 +236,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
             })
         return initial
 
-    def get_queryset(self):
+    def get_object_list(self):
         return ModelEventType.get_for_instance(instance=self.get_object())
 
 
