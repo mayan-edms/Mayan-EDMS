@@ -1,23 +1,28 @@
 from __future__ import unicode_literals
 
 from django.urls import reverse
+from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 
 from .classes import EventType
 
 
 def event_object_link(entry, attribute='target'):
+    label = ''
+    url = '#'
+    obj_type = ''
+
     obj = getattr(entry, attribute)
 
     if obj:
         obj_type = '{}: '.format(obj._meta.verbose_name)
-    else:
-        obj_type = ''
+        if hasattr(obj, 'get_absolute_url'):
+            url = obj.get_absolute_url()
+        label = force_text(obj)
 
     return mark_safe(
         '<a href="%(url)s">%(obj_type)s%(label)s</a>' % {
-            'url': obj.get_absolute_url() if obj else '#',
-            'label': obj or '', 'obj_type': obj_type
+            'url': url, 'label': label, 'obj_type': obj_type
         }
     )
 
