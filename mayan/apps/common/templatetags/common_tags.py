@@ -83,9 +83,10 @@ def render_subtemplate(context, template_name, template_context):
     Renders the specified template with the mixed parent and
     subtemplate contexts
     """
-    new_context = Context(context.flatten())
+
+    new_context = Context(context)
     new_context.update(Context(template_context))
-    return get_template(template_name).render(new_context.flatten())
+    return get_template(template_name).render(new_context)
 
 
 @register.simple_tag
