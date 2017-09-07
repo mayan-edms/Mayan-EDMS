@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from email import message_from_string
-from email.Utils import collapse_rfc2231_value
 from email.header import decode_header
 import imaplib
 import json
@@ -28,6 +27,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
+from common.compat import collapse_rfc2231_value
 from common.compressed_files import CompressedFile, NotACompressedFile
 from common.utils import TemporaryFile
 from converter.literals import DIMENSION_SEPARATOR
@@ -96,7 +96,7 @@ class Source(models.Model):
         else:
             try:
                 document_version = document.new_version(
-                    file_object=file_object, _user=user
+                    file_object=file_object, _user=user,
                 )
 
                 if user:

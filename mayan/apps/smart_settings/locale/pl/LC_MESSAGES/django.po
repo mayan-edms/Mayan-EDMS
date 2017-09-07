@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012
@@ -13,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -60,9 +58,3 @@ msgstr "Ustawienia w przestrzeni nazw: %s"
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Przestrzeń nazw: %s, nie znaleziono"
-
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "name"
-#~ msgstr "name"

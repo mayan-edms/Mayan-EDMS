@@ -72,9 +72,9 @@
         </div>
     </div>
 
-    {% get_dashboard_widgets as dashboard_widgets %}
+    {% get_dashboard 'main' as dashboard %}
     <div class="row">
-        {% for widget in dashboard_widgets %}
+        {% for widget in dashboard.get_widgets %}
             {% include 'appearance/dashboard_widget.html' %}
         {% endfor %}
     </div>

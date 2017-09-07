@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import hashlib
+import logging
 import time
 
 from django.core.files import File
@@ -284,6 +285,9 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
         )
 
     def test_task_verify_missing_embedded_signature(self):
+        # Silence converter logging
+        logging.getLogger('converter.backends').setLevel(logging.CRITICAL)
+
         old_hooks = DocumentVersion._post_save_hooks
 
         DocumentVersion._post_save_hooks = {}

@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
+# molnars <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-15 06:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +20,19 @@ msgstr ""
 
 #: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
-msgstr ""
+msgstr "Dokumentum aláírások"
 
 #: apps.py:92
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 #: apps.py:95 models.py:47
 msgid "Key ID"
-msgstr ""
+msgstr "Kulcs ID"
 
 #: apps.py:99 forms.py:64 models.py:51
 msgid "Signature ID"
-msgstr ""
+msgstr "Aláírás azonosító"
 
 #: apps.py:100 forms.py:76
 msgid "None"
@@ -41,7 +40,7 @@ msgstr "Semmi"
 
 #: apps.py:103
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: forms.py:21
 msgid "Key"
@@ -99,21 +98,17 @@ msgstr ""
 msgid "Verify all documents"
 msgstr ""
 
-#: links.py:39 queues.py:8
+#: links.py:39 links.py:57 queues.py:8
 msgid "Signatures"
 msgstr ""
 
 #: links.py:46
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #: links.py:51
 msgid "Details"
 msgstr "Részletek"
-
-#: links.py:57
-msgid "Signature list"
-msgstr ""
 
 #: links.py:63
 msgid "Download"
@@ -121,7 +116,7 @@ msgstr "Letöltés"
 
 #: links.py:69
 msgid "Upload signature"
-msgstr ""
+msgstr "Aláírás feltöltése"
 
 #: links.py:75
 msgid "Sign detached"
@@ -133,7 +128,7 @@ msgstr ""
 
 #: models.py:41
 msgid "Document version"
-msgstr ""
+msgstr "Dokumentum verzió"
 
 #: models.py:45
 msgid "Date signed"
@@ -169,7 +164,7 @@ msgstr ""
 
 #: models.py:132
 msgid "Signature file"
-msgstr ""
+msgstr "Aláíró állomány"
 
 #: models.py:136
 msgid "Document version detached signature"
@@ -227,80 +222,56 @@ msgstr ""
 msgid "Verify missing embedded signature"
 msgstr ""
 
-#: views.py:61 views.py:156
+#: views.py:61 views.py:154
 msgid "Passphrase is needed to unlock this key."
 msgstr ""
 
-#: views.py:71 views.py:166
+#: views.py:71 views.py:164
 msgid "Passphrase is incorrect."
 msgstr ""
 
-#: views.py:92 views.py:186
+#: views.py:92 views.py:184
 msgid "Document version signed successfully."
 msgstr ""
 
-#: views.py:118
+#: views.py:116
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:219
+#: views.py:215
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:246
+#: views.py:238
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr ""
 
-#: views.py:271
+#: views.py:259
 #, python-format
 msgid "Details for signature: %s"
 msgstr ""
 
-#: views.py:313
+#: views.py:299
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr ""
 
-#: views.py:344
+#: views.py:328
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr ""
 
-#: views.py:361
+#: views.py:345
 msgid "On large databases this operation may take some time to execute."
 msgstr "A nagy adatbázisok esetében a művelet sokáig is tarthat."
 
-#: views.py:362
+#: views.py:346
 msgid "Verify all document for signatures?"
 msgstr ""
 
-#: views.py:372
+#: views.py:356
 msgid "Signature verification queued successfully."
 msgstr ""
-
-#~ msgid "Signature status: %s"
-#~ msgstr "Signature type: %s"
-
-#~ msgid "Timestamp: %s"
-#~ msgstr "Timestamp: %s"
-
-#~ msgid "Signee: %s"
-#~ msgstr "Signee: %s"
-
-#~ msgid "Detached signature uploaded successfully."
-#~ msgstr "Detached signature uploaded successfully."
-
-#~ msgid "Error while deleting the detached signature; %s"
-#~ msgstr "Download detached signatures"
-
-#~ msgid "Delete the detached signature from document: %s?"
-#~ msgstr "Upload detached signature for: %s"
-
-#~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "Signature status: %(widget)s %(text)s"
-
-#~ msgid "signature file"
-#~ msgstr "signature file"

@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from .models import DocumentPageContent
+from .models import DocumentPageOCRContent
 
 
-class DocumentPageContentSerializer(serializers.ModelSerializer):
+class DocumentPageOCRContentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('content',)
-        model = DocumentPageContent
+        model = DocumentPageOCRContent

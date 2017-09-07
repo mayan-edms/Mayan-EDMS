@@ -6,16 +6,16 @@ from kombu import Exchange, Queue
 
 from django.apps import apps
 from django.db.models.signals import pre_save
-from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
-from common.classes import DashboardWidget
+from common.dashboards import dashboard_main
 from events import ModelEventType
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
+from .dashboard_widgets import widget_checkouts
 from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
@@ -53,13 +53,6 @@ class CheckoutsApp(MayanAppConfig):
         )
 
         DocumentCheckout = self.get_model('DocumentCheckout')
-
-        DashboardWidget(
-            icon='fa fa-shopping-cart',
-            queryset=DocumentCheckout.objects.all(),
-            label=_('Checkedout documents'),
-            link=reverse_lazy('checkouts:checkout_list')
-        )
 
         Document.add_to_class(
             'check_in',
@@ -128,6 +121,8 @@ class CheckoutsApp(MayanAppConfig):
                 },
             }
         )
+
+        dashboard_main.add_widget(order=-1, widget=widget_checkouts)
 
         menu_facet.bind_links(links=(link_checkout_info,), sources=(Document,))
         menu_main.bind_links(links=(link_checkout_list,), position=98)

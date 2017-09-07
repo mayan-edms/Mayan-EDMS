@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.db.models import Q
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.utils import return_attrib
 from permissions import Permission
@@ -26,8 +26,8 @@ class AccessControlListManager(models.Manager):
     def check_access(self, permissions, user, obj, related=None):
         if user.is_superuser or user.is_staff:
             logger.debug(
-                'Permissions "%s" on "%s" granted to user "%s" as superuser or staff',
-                permissions, obj, user
+                'Permissions "%s" on "%s" granted to user "%s" as superuser '
+                'or staff', permissions, obj, user
             )
             return True
 
@@ -53,14 +53,15 @@ class AccessControlListManager(models.Manager):
                 )
             except AttributeError:
                 # AttributeError means non model objects: ie Statistics
-                # These can't have ACLS so we raise PermissionDenied
-                raise PermissionDenied
+                # These can't have ACLs so we raise PermissionDenied
+                raise PermissionDenied(_('Insufficient access for: %s') % obj)
             except KeyError:
                 pass
             else:
                 try:
                     return self.check_access(
-                        permissions, user, getattr(obj, parent_accessor)
+                        obj=getattr(obj, parent_accessor),
+                        permissions=permissions, user=user
                     )
                 except PermissionDenied:
                     pass
@@ -82,7 +83,7 @@ class AccessControlListManager(models.Manager):
                     'Permissions "%s" on "%s" denied for user "%s"',
                     permissions, obj, user
                 )
-                raise PermissionDenied(ugettext('Insufficient access.'))
+                raise PermissionDenied(ugettext('Insufficient access for: %s') % obj)
 
             logger.debug(
                 'Permissions "%s" on "%s" granted to user "%s" through roles "%s" by direct ACL',

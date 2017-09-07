@@ -3,12 +3,13 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentOCRView, APIDocumentPageContentView, APIDocumentVersionOCRView
+    APIDocumentOCRView, APIDocumentPageOCRContentView,
+    APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentAllSubmitView, DocumentOCRContent, DocumentOCRDownloadView,
-    DocumentOCRErrorsListView, DocumentSubmitView, DocumentSubmitManyView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
+    DocumentOCRContent, DocumentOCRDownloadView, DocumentOCRErrorsListView,
+    DocumentSubmitView, DocumentSubmitManyView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView, EntryListView
 )
 
 urlpatterns = [
@@ -19,10 +20,6 @@ urlpatterns = [
     url(
         r'^document/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(),
         name='document_submit'
-    ),
-    url(
-        r'^document/all/submit/$', DocumentAllSubmitView.as_view(),
-        name='document_submit_all'
     ),
     url(
         r'^document/type/submit/$', DocumentTypeSubmitView.as_view(),
@@ -60,6 +57,7 @@ api_urls = [
     ),
     url(
         r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$', APIDocumentPageContentView.as_view(),
+        APIDocumentPageOCRContentView.as_view(),
         name='document-page-content-view'
     ),
 ]

@@ -119,7 +119,7 @@ class KeyQueryResultView(SingleObjectListView):
             'title': _('Key query results'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         term = self.request.GET.get('term')
         if term:
             return Key.objects.search(query=term)

@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
 from django.test import override_settings
 
@@ -12,9 +10,6 @@ from documents.tests import (
     TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_DOCUMENT_TYPE_2_LABEL
 )
-from permissions.models import Role
-from permissions.tests.literals import TEST_ROLE_LABEL
-from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP_NAME
 
 from ..models import AccessControlList
 
@@ -45,15 +40,6 @@ class PermissionTestCase(BaseTestCase):
             self.document_3 = self.document_type_2.new_document(
                 file_object=file_object
             )
-
-        self.user = get_user_model().objects.create(
-            username=TEST_USER_USERNAME
-        )
-        self.group = Group.objects.create(name=TEST_GROUP_NAME)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-
-        self.group.user_set.add(self.user)
-        self.role.groups.add(self.group)
 
     def tearDown(self):
         for document_type in DocumentType.objects.all():

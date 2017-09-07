@@ -1,0 +1,279 @@
+=============================
+Mayan EDMS v2.7 release notes
+=============================
+
+Released: August 30, 2017
+
+What's new
+==========
+
+Beta Python 3 support
+---------------------
+Preliminary support for Python 3 has landed in this version. More testing
+is still needed but for the most part seems to be usable. This is just
+initial support and not meant for production. Please submit any issue with
+Python 3 to help improve the support for it.
+
+
+PDF introspection improvements
+------------------------------
+Some PDF files encode their page rotation information using indirect values
+instead of actually storing the rotation value as an integer. Support these
+types of PDF files was added.
+
+
+3rd party apps
+--------------
+Support was added to allow 3rd party app adding data columns to existing
+models to specify the order in which such new columns will appear. Support
+was also added to allow any app to remove existing main menus. App can now in
+addition to adding their own dashboard widget, remove existing widgets. As
+part of the dashboard updates support was also added to allow app developers to
+create multiple dashboards.
+
+
+Converter customization improvements
+------------------------------------
+For users wanting more control over the document image conversion process,
+support was added to change the internal format used for image conversion.
+By default JPG used but via the `pdftoppm_format` and `pillow_format` entries
+of the CONVERTER_GRAPHICS_BACKEND_CONFIG setting option any other format
+support by Python's Pillow can use used. Support was also added to change the
+DPI value used by the conversion process of PDF files to images. The default
+value for this coversion was set to 300 DPI. The entry used to specify this
+value is `pdftoppm_dpi`.
+
+
+Workflow refactor
+-----------------
+This version includes a preview release of the workflow refactor that includes
+three new features: transition triggers, state actions, and graphical previews.
+The transition triggers allow setting document events as triggers to perform
+a workflow transition automatically. State actions allow performing system
+actions when a workflow enters or leaves a specify state. For this release
+5 actions were included: attaching and removing tags to a document, granting
+or revoking access via the ACL, and performing a HTTP POST request. As the
+feature matures more actions will be added. These two features make the
+workflow app the automation center for Mayan. This feature allow users to program
+behaviors to perform, even provoke changes in 3rd party software using the HTTP
+POST. This feature works very much like services like IFTTT [ifttt.com]
+(If This Then That) or conditionals in programming languages. The last
+improvement added to the workflow app is the ability to render a workflow
+in a graphical manner, useful for visually understanding, explaining and
+debugging workflows.
+
+
+OCR refactor
+------------
+As part of the plan to add OCR zone and barcode support the first set of
+changes was included in this version. These initial changes bring the OCR
+app up to standard with the rest of the system and splits the OCR app into two
+new apps: the OCR app and the Document parsing app. The document parsing app
+will read text content from documents that provide them and display the result
+under the "Content" document tab. The OCR app will also launch for each
+document even if they provide text content to recognize any text on images.
+This separation gives users the two choices of text information one extracted
+from the document (not always available or of quality) and the other recognized
+by OCR.
+
+
+Document parsing
+----------------
+Historically Mayan has had two methods to extract text from PDF files. First
+it will try the program called `pdftotext` and failing that will try the
+PDFMiner Python library. The official PDFMiner library is unmaintained and
+doesn't support Python 3 will be a requirement for Django 2.0, which will
+force Mayan to move to Python 3 exclusively in the near future. For this
+reason the PDFMiner parser has been removed. A new library called PyPDF2 was
+added in a past version to improve the PDF page count and rotation detection,
+initial experience with this library has been positive and since it supports
+text extraction might also replace PDFMiner as the secondary PDF text
+extraction strategy.
+
+
+Document version UI
+-------------------
+The list of versions of a document was updated to use the new item list
+view templated added in version 2.6 for document lists. Along with this update
+preview support was added for individual document version. It is also possible
+to explore and navigate different versions of a document much easier and with
+more information that previously available, being able to visually see for
+example the difference in a document's versions.
+
+
+Events system
+-------------
+The events system has been updated to provide more information and improve
+navigation. The `Actor` field will now display `System` when an event was
+performed by the system instead of displaying the document name. The
+column `Action object` was added to help identify via which object the
+event was performed. This is significant when performing actions on objects
+which are children of another like document versions. The number and types
+of events that are monitored has been increased all of which can also be used
+to trigger a workflow transition. The current list:
+
+- Document added to cabinet
+- Document removed from cabinet
+- Document automatically checked in
+- Document checked in
+- Document checked out
+- Document forcefully checked in
+- Document comment created
+- Document comment deleted
+- Document created
+- Document downloaded
+- Document properties edited
+- New version uploaded
+- Document type changed
+- Document version reverted
+- Document viewed
+- Document version OCR finished
+- Document version submitted for OCR
+- Document version parsing finished
+- Document version submitted for parsing
+- Tag attached to document
+- Tag removed from document
+
+
+Metadata on document type change
+--------------------------------
+Changing document types will no longer delete all metadata from the document.
+Any existing metadata whose type matches the metadata in the new type will be
+preserved.
+
+
+Permission rebalance
+--------------------
+In order to attach or remove a tag to a document, the tag view permissions
+was needed. This has been update to required the tag attach and remove
+permissions respectively.
+
+
+Other Changes
+-------------
+- Add workaround for PDF with IndirectObject as the
+  rotation value. GitHub #261.
+- Add ACL list link with icon and use it for the document facet menu.
+- Fix mailing app permissions labels.
+- Add ACLs link and ACLs permissions to the mailer profile model.
+- Improve mailer URL regex.
+- Add ordering support to the SourceColumn class. GitLab issue #417.
+- Shows the cabinets in the document list. GitLab #417 @corneliusludmann
+- Update the index information colums to show the
+  total number of documents and nodes contained in a level.
+- Add workaround for pycountry versions without the bibliographical key.
+  GitHub issue #250.
+- Skip UUID migration on Oracle backends. GitHub issue #251.
+- Allow changing the output format, DPI of the pdftoppm command, and
+  the output format of the converter via the CONVERTER_GRAPHICS_BACKEND_CONFIG
+  setting sub options: pdftoppm_dpi: 300, pdftoppm_format: jpeg, pillow_format: jpeg
+  GitHub issues #256 #257 GitLab issue #416.
+- Add support for workflow triggers.
+- Add support for workflow actions. Includes actions to attach and remove tags,
+  grant and remove access and perform an HTTP POST request.
+- Add support for rendering workflows. Required graphviz binary.
+- Add support for unbinding sub menus.
+- Fix mailing profile test view.
+- Disregard the last 3 dots that mark the end of the YAML document.
+- Add support for multiple dashboards.
+- Add support for removing dashboard widgets.
+- Convert document version view to item list view.
+- Add support for browsing individual document versions.
+- Add support for dropdown menus to the item list view template.
+- Add support for preserving the file extenstion when downloading a document
+  version. GitLab #415.
+- Split OCR app into OCR and parsing.
+- Use the literal 'System' instead of the target name when
+  the action user in unknown.
+- When changing document types, don't delete the old metadata that is
+  also found in the new document type. GitLab issue #421.
+- Change the permission needed to attach and remove tags.
+- Reduces debug verbosity during tests.
+- Remove the NoMimetype match exception. Not needed now that this is
+  a separate app from the OCR app.
+- Make error messages persistent.
+- Add 'Action object' column to the event list. Display the
+  object or target type (document, tag, etc).
+- Rebalance tag permissions. Change the required permission to attach
+  and remove a tag from view to attach and remove respectively.
+- Start of error log consolidation sub project.
+- Implement field order for the action dynamic forms.
+  Perform action class validation by importing the class and
+  not relying on an instance of action model, which might not
+  exisit when still creating the action.
+- Navigation improvements in the workflow app.
+- Rename index nodes to index levels.
+- Avoid Maximum recursion depth exceeded exception on index document
+  list view.
+
+Removals
+--------
+- Folders app.
+- The view to submit all document for OCR. The view to submit documents by type
+  substitutes this once.
+- The PDFMiner parser.
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitHub issue #250 <https://github.com/mayan-edms/mayan-edms/issues/250>`_ migrate fails on documents.0025_auto_20150718_0742
+* `GitHub issue #251 <https://github.com/mayan-edms/mayan-edms/issues/251>`_ migrate fails on documents.0032_auto_20160315_0537
+* `GitHub issue #256 <https://github.com/mayan-edms/mayan-edms/issues/256>`_ Make it possible to adjust values in apps\converter\literals.py from Settings
+* `GitHub issue #257 <https://github.com/mayan-edms/mayan-edms/issues/257>`_ Use the DEFAULT_FILE_FORMAT from literals.py in python.py
+* `GitHub issue #261 <https://github.com/mayan-edms/mayan-edms/issues/261>`_ fix_orientation method causes document add to crash
+* `GitHub issue #263 <https://github.com/mayan-edms/mayan-edms/issues/263>`_ Typo in mayan/apps/ocr/migrations/0004_documenttypesettings.py
+* `GitLab issue #172 <https://gitlab.com/mayan-edms/mayan-edms/issues/172>`_ Metadata default value ignored when changing document type
+* `GitLab issue #329 <https://gitlab.com/mayan-edms/mayan-edms/issues/329>`_ Move code to Python 3
+* `GitLab issue #415 <https://gitlab.com/mayan-edms/mayan-edms/issues/415>`_ Wrong filename when downloading document version
+* `GitLab issue #416 <https://gitlab.com/mayan-edms/mayan-edms/issues/416>`_ DPI value for OCR not taken from document metadata
+* `GitLab issue #417 <https://gitlab.com/mayan-edms/mayan-edms/issues/417>`_ Display document cabinets in documents list
+* `GitLab issue #421 <https://gitlab.com/mayan-edms/mayan-edms/issues/421>`_ Metadata lost when changing document type
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

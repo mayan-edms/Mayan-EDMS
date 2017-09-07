@@ -4,7 +4,6 @@ import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from django.utils.encoding import force_text
 
 from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
@@ -109,9 +108,15 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
+    def get_encoding(self):
+        return self.get_object().latest_version.encoding
+
     def get_file(self):
         instance = self.get_object()
         return VirtualFile(instance.latest_version.file, name=instance.label)
+
+    def get_mimetype(self):
+        return self.get_object().latest_version.mimetype
 
     def get_serializer_class(self):
         return None
@@ -186,6 +191,9 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
             - name: pk
               paramType: path
               type: number
+            - name: preserve_extension
+              paramType: query
+              type: boolean
     """
     lookup_url_kwarg = 'version_pk'
 
@@ -197,9 +205,27 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         )
         return document
 
+    def get_encoding(self):
+        return self.get_object().encoding
+
     def get_file(self):
+        preserve_extension = self.request.GET.get(
+            'preserve_extension', self.request.POST.get(
+                'preserve_extension', False
+            )
+        )
+
+        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+
         instance = self.get_object()
-        return VirtualFile(instance.file, name=force_text(instance))
+        return VirtualFile(
+            instance.file, name=instance.get_rendered_string(
+                preserve_extension=preserve_extension
+            )
+        )
+
+    def get_mimetype(self):
+        return self.get_object().mimetype
 
     def get_serializer_class(self):
         return None

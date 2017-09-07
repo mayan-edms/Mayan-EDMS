@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
@@ -12,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -59,9 +57,3 @@ msgstr "Einstellungen für Bereich %s"
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Bereich %s nicht gefunden"
-
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "name"
-#~ msgstr "name"

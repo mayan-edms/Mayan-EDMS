@@ -308,8 +308,21 @@ class IndexInstanceNode(MPTTModel):
         # Convenience method for serializer
         return self.get_children()
 
-    def index(self):
-        return IndexInstance.objects.get(pk=self.index_template_node.index.pk)
+    def get_children_count(self):
+        return self.get_children().count()
+
+    def get_descendants_count(self):
+        return self.get_descendants().count()
+
+    def get_descendants_document_count(self, user):
+        return AccessControlList.objects.filter_by_access(
+            permission=permission_document_view, user=user,
+            queryset=Document.objects.filter(
+                index_instance_nodes__in=self.get_descendants(
+                    include_self=True
+                )
+            )
+        ).count()
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
@@ -355,6 +368,9 @@ class IndexInstanceNode(MPTTModel):
                     self.parent.delete_empty(acquire_lock=False)
             if acquire_lock:
                 lock.release()
+
+    def index(self):
+        return IndexInstance.objects.get(pk=self.index_template_node.index.pk)
 
     def remove_document(self, document, acquire_lock=True):
         """

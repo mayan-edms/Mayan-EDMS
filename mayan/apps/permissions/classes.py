@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import itertools
 import logging
 
 from django.apps import apps
@@ -52,11 +53,24 @@ class Permission(object):
     _stored_permissions_cache = {}
 
     @classmethod
-    def all(cls):
-        # Return sorted permisions by namespace.name
-        return sorted(
-            cls._permissions.values(), key=lambda x: x.namespace.name
-        )
+    def all(cls, as_choices=False):
+        if as_choices:
+            results = []
+
+            for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
+                permission_options = [
+                    (force_text(permission.uuid), permission) for permission in permissions
+                ]
+                results.append(
+                    (namespace, permission_options)
+                )
+
+            return results
+        else:
+            # Return sorted permisions by namespace.name
+            return sorted(
+                cls._permissions.values(), key=lambda x: x.namespace.name
+            )
 
     @classmethod
     def check_permissions(cls, requester, permissions):

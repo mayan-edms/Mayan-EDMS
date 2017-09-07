@@ -25,7 +25,6 @@ from .permissions import (
 )
 from .widgets import jstree_data
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -153,8 +152,10 @@ class CabinetListView(SingleObjectListView):
             'title': _('Cabinets'),
         }
 
-    def get_queryset(self):
-        return Cabinet.objects.root_nodes()
+    def get_object_list(self):
+        # Add explicit ordering of root nodes since the queryset returned
+        # is not affected by the model's order Meta option.
+        return Cabinet.objects.root_nodes().order_by('label')
 
 
 class DocumentCabinetListView(CabinetListView):
@@ -177,7 +178,7 @@ class DocumentCabinetListView(CabinetListView):
             'title': _('Cabinets containing document: %s') % self.document,
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.document.document_cabinets().all()
 
 
@@ -257,7 +258,9 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                cabinet.documents.add(instance)
+                cabinet.add_document(
+                    document=instance, user=self.request.user
+                )
                 messages.success(
                     self.request, _(
                         'Document: %(document)s added to cabinet: '
@@ -343,7 +346,9 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                     }
                 )
             else:
-                cabinet.documents.remove(instance)
+                cabinet.remove_document(
+                    document=instance, user=self.request.user
+                )
                 messages.success(
                     self.request, _(
                         'Document: %(document)s removed from cabinet: '

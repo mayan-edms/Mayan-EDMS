@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -13,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2017-05-04 02:24+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -70,53 +68,3 @@ msgstr "Resultados da pesquisa para: %s"
 #, python-format
 msgid "Search for: %s"
 msgstr "Pesquisar por: %s"
-
-#~ msgid "Query"
-#~ msgstr "query"
-
-#~ msgid "Datetime created"
-#~ msgstr "datetime created"
-
-#~ msgid "Recent search"
-#~ msgstr "recent search"
-
-#~ msgid "Recent searches"
-#~ msgstr "recent searches"
-
-#~ msgid "Maximum number of search queries to remember per user."
-#~ msgstr "Maximum number of search queries to remember per user."
-
-#~ msgid "Results"
-#~ msgstr "results"
-
-#~ msgid "Elapsed time: %(time_delta)s seconds"
-#~ msgstr "Elapsed time: %(time_delta)s seconds"
-
-#~ msgid "Recent searches (maximum of %d)"
-#~ msgstr "recent searches (maximum of %d)"
-
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
-#~ msgstr ""
-#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-
-#~ msgid "search"
-#~ msgstr "search"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "hits"
-#~ msgstr "hits"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."
-#~ msgstr ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."

@@ -1,0 +1,97 @@
+===============================
+Mayan EDMS v2.7.1 release notes
+===============================
+
+Released: September 3, 2017
+
+What's new
+==========
+
+Unicode metadata when uploading a document
+------------------------------------------
+An issue with Django's unquote_plus caused documents being uploaded with an
+unicode, no English character in an initial metadata value field to fail.
+The unquote_plus usage was remove in favor of a dedicate URL parsing library
+called furl. GitLab issue #423. Thanks to Gustavo Teixeira (@gsteixei) for the
+find.
+
+Silent errors during initialization
+-----------------------------------
+When Python raises an ImportError exception, it is not possible to determine
+the cause of the error. The local.py import code was updated to interpret the
+text of the ImportError exception and ignore it only if the local.py was
+missing, which is the case during the initialization commands execute after
+the initial installation. Any error in the local.py file will now cause Mayan
+to exit. Thanks to MacRobb Simpson for the report and solution.
+
+String usage in the local.py file
+---------------------------------
+Python 2.7 uses byte strings by default. Byte strings cannot be used in
+conjunction with unicode strings. A missing import was causing strings in
+the local.py file to be interpreted as byte string while the rest of Mayan
+uses unicode strings. Using non English special characters in a string located
+in the local.py file would have cause a Unicode errors. For new installations
+from Mayan version 2.7.1 onwards, the line
+`from __future__ import absolute_imports, unicode_literals` is included when
+generating the local.py for the first time. For existing installations,
+adding this line at the top is all that's needed. GitLab issue #424. Thanks to
+Gustavo Teixeira (@gsteixei) for the find and researching the cause.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #423 <https://gitlab.com/mayan-edms/mayan-edms/issues/423>`_ Metadata can't handle non ascii chars on upload
+* `GitLab issue #424 <https://gitlab.com/mayan-edms/mayan-edms/issues/424>`_ DjangoUnicodeDecodeError on document proprieties due document language field
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

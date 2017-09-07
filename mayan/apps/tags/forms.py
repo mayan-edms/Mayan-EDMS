@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 class TagMultipleSelectionForm(forms.Form):
     def __init__(self, *args, **kwargs):
         help_text = kwargs.pop('help_text', None)
+        permission = kwargs.pop('permission', permission_tag_view)
         queryset = kwargs.pop('queryset', Tag.objects.all())
         user = kwargs.pop('user', None)
 
@@ -24,7 +25,7 @@ class TagMultipleSelectionForm(forms.Form):
         super(TagMultipleSelectionForm, self).__init__(*args, **kwargs)
 
         queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_view, user, queryset=queryset
+            permission=permission, queryset=queryset, user=user
         )
 
         self.fields['tags'] = forms.ModelMultipleChoiceField(

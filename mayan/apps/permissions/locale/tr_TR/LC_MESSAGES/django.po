@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
+# serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
-"PO-Revision-Date: 2017-07-03 19:27+0000\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +18,13 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:22 models.py:46 models.py:77 permissions.py:7
+#: apps.py:23 models.py:46 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "İzinler"
 
-#: classes.py:75
+#: classes.py:89
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "Yetersiz yetkiler."
 
 #: links.py:14
 msgid "Grant"
@@ -37,7 +36,7 @@ msgstr "Kaldır"
 
 #: links.py:22
 msgid "Create new role"
-msgstr ""
+msgstr "Yeni rol oluştur"
 
 #: links.py:26
 msgid "Delete"
@@ -47,17 +46,17 @@ msgstr "Sil"
 msgid "Edit"
 msgstr "Düzenle"
 
-#: links.py:35 models.py:98 views.py:137
+#: links.py:35 models.py:99 views.py:137
 msgid "Roles"
 msgstr "Roller"
 
 #: links.py:38
 msgid "Members"
-msgstr ""
+msgstr "Üyeler"
 
 #: links.py:43
 msgid "Role permissions"
-msgstr ""
+msgstr "Rol izinleri"
 
 #: models.py:19
 msgid "Namespace"
@@ -71,69 +70,73 @@ msgstr "Ad"
 msgid "Permission"
 msgstr "İzinler"
 
-#: models.py:74
+#: models.py:75 search.py:16
 msgid "Label"
 msgstr "Etiket"
 
-#: models.py:80
+#: models.py:81
 msgid "Groups"
 msgstr "Gruplar"
 
-#: models.py:97
+#: models.py:98
 msgid "Role"
 msgstr "rol"
 
 #: permissions.py:10
 msgid "View roles"
-msgstr ""
+msgstr "Rolleri göster"
 
 #: permissions.py:13
 msgid "Edit roles"
-msgstr ""
+msgstr "Rolleri düzenle"
 
 #: permissions.py:16
 msgid "Create roles"
-msgstr ""
+msgstr "Roller oluştur"
 
 #: permissions.py:19
 msgid "Delete roles"
-msgstr ""
+msgstr "Rolleri sil"
 
 #: permissions.py:22
 msgid "Grant permissions"
-msgstr ""
+msgstr "Izinleri ver"
 
 #: permissions.py:25
 msgid "Revoke permissions"
+msgstr "Izinleri iptal et"
+
+#: search.py:20
+msgid "Group name"
 msgstr ""
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Eklenecek veya bu rolde değiştirilecek birincil anahtarların virgülle ayrılmış listeleri."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Bu rolü vermek için virgülle ayrılmış birincil anahtarlar listesi."
 
-#: serializers.py:92
+#: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr "Böyle bir izin yok: %s"
 
 #: views.py:46
 msgid "Available groups"
-msgstr ""
+msgstr "Kullanılabilir gruplar"
 
 #: views.py:47
 msgid "Role groups"
-msgstr ""
+msgstr "Rol grupları"
 
 #: views.py:57
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Rol grupları: %s"
 
 #: views.py:80
 msgid "Available permissions"
@@ -146,81 +149,4 @@ msgstr "İzinler izin verildi"
 #: views.py:94
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
-
-#~ msgid "Permission holder"
-#~ msgstr "permission holder"
-
-#~ msgid "Role member"
-#~ msgstr "role member"
-
-#~ msgid "Role members"
-#~ msgstr "role members"
-
-#~ msgid ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-#~ msgstr ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-
-#~ msgid "Has permission"
-#~ msgstr "has permission"
-
-#~ msgid " and "
-#~ msgstr " and "
-
-#~ msgid "%(permissions)s to %(requester)s"
-#~ msgstr "%(permissions)s to %(requester)s"
-
-#~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
-
-#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-
-#~ msgid "permission"
-#~ msgstr "permission"
-
-#~ msgid "permissions"
-#~ msgstr "permissions"
-
-#~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
-
-#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-
-#~ msgid "Users"
-#~ msgstr "Users"
-
-#~ msgid "Special"
-#~ msgstr "Special"
-
-#~ msgid "Members of role: %s"
-#~ msgstr "members of role: %s"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "grant"
-#~ msgstr "grant"
-
-#~ msgid "revoke"
-#~ msgstr "revoke"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "role"
-#~ msgstr "role"
+msgstr "Rol için izinler: %s"

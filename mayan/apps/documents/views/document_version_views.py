@@ -12,7 +12,7 @@ from common.generics import (
 )
 
 from ..events import event_document_view
-from ..forms import DocumentVersionPreviewForm
+from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
 from ..models import Document, DocumentVersion
 from ..permissions import (
     permission_document_download, permission_document_version_revert,
@@ -47,7 +47,7 @@ class DocumentVersionListView(SingleObjectListView):
             'title': _('Versions of document: %s') % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().versions.order_by('-timestamp')
 
 
@@ -81,9 +81,22 @@ class DocumentVersionRevertView(ConfirmView):
 
 
 class DocumentVersionDownloadFormView(DocumentDownloadFormView):
+    form_class = DocumentVersionDownloadForm
     model = DocumentVersion
     multiple_download_view = None
+    querystring_form_fields = (
+        'compressed', 'zip_filename', 'preserve_extension'
+    )
     single_download_view = 'documents:document_version_download'
+
+    def get_extra_context(self):
+        result = super(
+            DocumentVersionDownloadFormView, self
+        ).get_extra_context()
+
+        result['title'] = _('Download document version')
+
+        return result
 
     def get_document_queryset(self):
         id_list = self.request.GET.get(
@@ -101,6 +114,27 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
 class DocumentVersionDownloadView(DocumentDownloadView):
     model = DocumentVersion
     object_permission = permission_document_download
+
+    @staticmethod
+    def get_item_file(item):
+        return item.file
+
+    def get_encoding(self):
+        return self.get_object().encoding
+
+    def get_item_label(self, item):
+        preserve_extension = self.request.GET.get(
+            'preserve_extension', self.request.POST.get(
+                'preserve_extension', False
+            )
+        )
+
+        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+
+        return item.get_rendered_string(preserve_extension=preserve_extension)
+
+    def get_mimetype(self):
+        return self.get_object().mimetype
 
 
 class DocumentVersionView(SingleObjectDetailView):

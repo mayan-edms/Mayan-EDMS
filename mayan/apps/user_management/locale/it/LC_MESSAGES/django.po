@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
 # Roberto Rosario, 2012
@@ -12,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2017-07-15 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -123,7 +121,6 @@ msgid "View existing users"
 msgstr "Visualizza utenti"
 
 #: search.py:19
-#| msgid "Full name"
 msgid "First name"
 msgstr ""
 
@@ -132,7 +129,6 @@ msgid "Last name"
 msgstr ""
 
 #: search.py:31
-#| msgid "user"
 msgid "username"
 msgstr ""
 
@@ -271,79 +267,3 @@ msgstr "Password reimpostata per l'utente: %s."
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Errore per il reimpostamento della password per l'utente \"%(user)s\": %(error)s"
-
-#~ msgid "Must provide at least one user."
-#~ msgstr "Must provide at least one user."
-
-#~ msgid "Delete the users: %s?"
-#~ msgstr "Delete existing users"
-
-#~ msgid "Passwords do not match, try again."
-#~ msgstr "Passwords do not match, try again."
-
-#~ msgid "Reseting password for users: %s"
-#~ msgstr "Reseting password for users: %s"
-
-#~ msgid ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-#~ msgstr ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-
-#~ msgid "User \"%s\" updated successfully."
-#~ msgstr "User \"%s\" updated successfully."
-
-#~ msgid "Must provide at least one group."
-#~ msgstr "Must provide at least one group."
-
-#~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Group \"%s\" deleted successfully."
-
-#~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
-
-#~ msgid "Delete the groups: %s?"
-#~ msgstr "Delete existing groups"
-
-#~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Are you sure you wish to delete the user: %s?"
-
-#~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Are you sure you wish to delete the users: %s?"
-
-#~ msgid "Non groups of user: %s"
-#~ msgstr "non groups of user: %s"
-
-#~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Group \"%s\" updated successfully."
-
-#~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Group \"%s\" created successfully."
-
-#~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Are you sure you wish to delete the group: %s?"
-
-#~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Are you sure you wish to delete the groups: %s?"
-
-#~ msgid "Non members of group: %s"
-#~ msgstr "non members of group: %s"
-
-#~ msgid "Group"
-#~ msgstr "group"
-
-#~ msgid "User list"
-#~ msgstr "user list"
-
-#~ msgid "Group list"
-#~ msgstr "group list"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "create new user"
-#~ msgstr "create new user"
-
-#~ msgid "create new group"
-#~ msgstr "create new group"

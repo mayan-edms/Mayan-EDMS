@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 
+from datetime import timedelta
 import logging
 
 from kombu import Exchange, Queue
 
 from django.apps import apps
 from django.db.models.signals import post_save
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -21,32 +23,40 @@ from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
-from .handlers import initialize_new_ocr_settings, post_version_upload_ocr
+from .events import event_ocr_document_version_submit
+from .handlers import (
+    handler_initialize_new_ocr_settings, handler_ocr_document_version,
+)
 from .links import (
     link_document_content, link_document_ocr_download,
     link_document_ocr_erros_list, link_document_submit,
-    link_document_submit_all, link_document_submit_multiple,
-    link_document_type_ocr_settings, link_document_type_submit,
-    link_entry_list
+    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_document_type_submit, link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .queues import *  # NOQA
+from .utils import get_document_ocr_content
 
 logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
-    from .tasks import task_do_ocr
-
-    task_do_ocr.apply_async(args=(self.latest_version.pk,))
+    latest_version = self.latest_version
+    # Don't error out if document has no version
+    if latest_version:
+        latest_version.submit_for_ocr()
 
 
 def document_version_ocr_submit(self):
     from .tasks import task_do_ocr
 
+    event_ocr_document_version_submit.commit(
+        action_object=self.document, target=self
+    )
+
     task_do_ocr.apply_async(
+        eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
         kwargs={'document_version_pk': self.pk},
-        countdown=settings_db_sync_task_delay.value
     )
 
 
@@ -75,6 +85,9 @@ class OCRApp(MayanAppConfig):
         DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
+        DocumentVersion.add_to_class(
+            'ocr_content', get_document_ocr_content
+        )
         DocumentVersion.add_to_class(
             'submit_for_ocr', document_version_ocr_submit
         )
@@ -149,16 +162,17 @@ class OCRApp(MayanAppConfig):
         )
         menu_tools.bind_links(
             links=(
-                link_document_submit_all, link_document_type_submit,
-                link_entry_list
+                link_document_type_submit, link_entry_list
             )
         )
 
         post_save.connect(
-            initialize_new_ocr_settings,
-            dispatch_uid='initialize_new_ocr_settings', sender=DocumentType
+            dispatch_uid='ocr_handler_initialize_new_ocr_settings',
+            receiver=handler_initialize_new_ocr_settings,
+            sender=DocumentType
         )
         post_version_upload.connect(
-            post_version_upload_ocr, dispatch_uid='post_version_upload_ocr',
+            dispatch_uid='ocr_handler_ocr_document_version',
+            receiver=handler_ocr_document_version,
             sender=DocumentVersion
         )

@@ -1,14 +1,10 @@
 from __future__ import unicode_literals
 
 import base64
+from io import BytesIO
 import os
 import time
 import urllib
-
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
 
 from django.core.files import File
 from django.utils.encoding import force_text, python_2_unicode_compatible
@@ -36,7 +32,7 @@ class Attachment(File):
     def __init__(self, part, name):
         self.name = name
         self.file = PseudoFile(
-            StringIO(part.get_payload(decode=True)), name=name
+            BytesIO(part.get_payload(decode=True)), name=name
         )
 
 

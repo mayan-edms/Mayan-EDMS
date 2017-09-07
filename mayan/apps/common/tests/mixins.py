@@ -6,8 +6,11 @@ import os
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+
 if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
     import psutil
+
+from acls.models import AccessControlList
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
@@ -130,3 +133,13 @@ class UserMixin(object):
         self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
+
+    def grant_access(self, permission, obj):
+        AccessControlList.objects.grant(
+            permission=permission, role=self.role, obj=obj
+        )
+
+    def grant_permission(self, permission):
+        self.role.permissions.add(
+            permission.stored_permission
+        )

@@ -9,17 +9,17 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 from common.widgets import TextAreaDiv
 from documents.models import DocumentType
 
-from .models import DocumentPageContent
+from .models import DocumentPageOCRContent
 
 
-class DocumentContentForm(forms.Form):
+class DocumentOCRContentForm(forms.Form):
     """
     Form that concatenates all of a document pages' text content into a
     single textarea widget
     """
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('instance', None)
-        super(DocumentContentForm, self).__init__(*args, **kwargs)
+        super(DocumentOCRContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = ''
         try:
@@ -30,7 +30,7 @@ class DocumentContentForm(forms.Form):
         for page in document_pages:
             try:
                 page_content = page.ocr_content.content
-            except DocumentPageContent.DoesNotExist:
+            except DocumentPageOCRContent.DoesNotExist:
                 pass
             else:
                 content.append(conditional_escape(force_text(page_content)))

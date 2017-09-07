@@ -20,7 +20,7 @@ class EventTypeNamespace(object):
 
     @classmethod
     def all(cls):
-        return cls._registry.values()
+        return Event.sort(event_type_list=cls._registry.values())
 
     @classmethod
     def get(cls, name):

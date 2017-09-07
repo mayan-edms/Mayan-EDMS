@@ -47,24 +47,25 @@ class StoredPermission(models.Model):
 
     def requester_has_this(self, user):
         if user.is_superuser or user.is_staff:
-            logger.debug('Permission "%s" granted to user "%s" as superuser or staff',
-                         self,
-                         user)
+            logger.debug(
+                'Permission "%s" granted to user "%s" as superuser or staff',
+                self, user
+            )
             return True
 
         # Request is one of the permission's holders?
         for group in user.groups.all():
             for role in group.roles.all():
                 if self in role.permissions.all():
-                    logger.debug('Permission "%s" granted to user "%s" through role "%s"',
-                                 self,
-                                 user,
-                                 role)
+                    logger.debug(
+                        'Permission "%s" granted to user "%s" through role "%s"',
+                        self, user, role
+                    )
                     return True
 
-        logger.debug('Fallthru: Permission "%s" not granted to user "%s"',
-                     self,
-                     user)
+        logger.debug(
+            'Fallthru: Permission "%s" not granted to user "%s"', self, user
+        )
         return False
 
 

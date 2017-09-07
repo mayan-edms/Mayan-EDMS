@@ -105,9 +105,9 @@ class UserMailerDynamicForm(DynamicModelForm):
         # 'backend_data'.
         backend_data = {}
 
-        for field in self.schema['fields']:
-            backend_data[field['name']] = data.pop(
-                field['name'], field.get('default', None)
+        for field_name, field_data in self.schema['fields'].items():
+            backend_data[field_name] = data.pop(
+                field_name, field_data.get('default', None)
             )
 
         data['backend_data'] = json.dumps(backend_data)

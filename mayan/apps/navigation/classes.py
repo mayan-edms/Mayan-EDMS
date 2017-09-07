@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 import inspect
 import logging
-import urllib
-import urlparse
+
+from furl import furl
 
 from django.apps import apps
 from django.conf import settings
@@ -11,9 +11,8 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.urls import resolve, reverse
-from django.utils.encoding import force_text
-from django.utils.http import urlencode, urlquote
+from django.urls import resolve
+from django.utils.encoding import force_str, force_text
 
 from common.utils import return_attrib
 from permissions import Permission
@@ -60,6 +59,10 @@ class Menu(object):
     @classmethod
     def get(cls, name):
         return cls._registry[name]
+
+    @classmethod
+    def remove(cls, name):
+        del cls._registry[name]
 
     def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:
@@ -146,7 +149,7 @@ class Menu(object):
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
-            for bound_source, links in self.bound_links.iteritems():
+            for bound_source, links in self.bound_links.items():
                 try:
                     if inspect.isclass(bound_source):
                         if type(resolved_navigation_object) == bound_source:
@@ -196,7 +199,8 @@ class Menu(object):
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
                 resolved_link = link
-                resolved_links.append(resolved_link)
+                if resolved_link not in self.unbound_links.get(None, ()):
+                    resolved_links.append(resolved_link)
             else:
                 # "Always show" links
                 resolved_link = link.resolve(context=context)
@@ -210,7 +214,7 @@ class Menu(object):
         if result:
             # Sort links by position value passed during bind
             result[0] = sorted(
-                result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
+                result[0], key=lambda item: (self.link_positions.get(item.link) or 0) if isinstance(item, ResolvedLink) else (self.link_positions.get(item) or 0)
             )
 
         return result
@@ -321,7 +325,7 @@ class Link(object):
                 # Is not a callable
                 kwargs = self.kwargs
 
-            kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
+            kwargs = {key: Variable(value) for key, value in kwargs.items()}
 
             # Use Django's exact {% url %} code to resolve the link
             node = URLNode(
@@ -345,31 +349,21 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
-            previous_path = force_text(
-                urllib.unquote_plus(
-                    force_text(
-                        request.get_full_path()
-                    ) or force_text(
-                        request.META.get(
-                            'HTTP_REFERER',
-                            resolve_url(settings.LOGIN_REDIRECT_URL)
-                        )
+            parsed_url = furl(
+                force_str(
+                    request.get_full_path() or request.META.get(
+                        'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
                     )
                 )
             )
-            query_string = urlparse.urlparse(previous_path).query
-            parsed_query_string = urlparse.parse_qs(query_string)
 
             for key in self.remove_from_query:
                 try:
-                    del parsed_query_string[key]
+                    parsed_url.query.remove(key)
                 except KeyError:
                     pass
 
-            resolved_link.url = '%s?%s' % (
-                urlquote(resolved_link.url),
-                urlencode(parsed_query_string, doseq=True)
-            )
+            resolved_link.url = parsed_url.url
 
         resolved_link.context = context
         return resolved_link
@@ -393,34 +387,39 @@ class Separator(Link):
 class SourceColumn(object):
     _registry = {}
 
+    @staticmethod
+    def sort(columns):
+        return sorted(columns, key=lambda x: x.order)
+
     @classmethod
     def get_for_source(cls, source):
         try:
-            return cls._registry[source]
+            return SourceColumn.sort(columns=cls._registry[source])
         except KeyError:
             try:
                 # Try it as a queryset
-                return cls._registry[source.model]
+                return SourceColumn.sort(columns=cls._registry[source.model])
             except AttributeError:
                 try:
                     # It seems to be an instance, try its class
-                    return cls._registry[source.__class__]
+                    return SourceColumn.sort(columns=cls._registry[source.__class__])
                 except KeyError:
                     try:
                         # Special case for queryset items produced from
                         # .defer() or .only() optimizations
-                        return cls._registry[source._meta.parents.items()[0][0]]
+                        return SourceColumn.sort(columns=cls._registry[source._meta.parents.items()[0][0]])
                     except (AttributeError, KeyError, IndexError):
                         return ()
         except TypeError:
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label, attribute=None, func=None):
+    def __init__(self, source, label, attribute=None, func=None, order=None):
         self.source = source
         self.label = label
         self.attribute = attribute
         self.func = func
+        self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
 

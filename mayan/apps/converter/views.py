@@ -108,6 +108,15 @@ class TransformationCreateView(SingleObjectCreateView):
         else:
             return super(TransformationCreateView, self).form_valid(form)
 
+    def get_extra_context(self):
+        return {
+            'content_object': self.content_object,
+            'navigation_object_list': ('content_object',),
+            'title': _(
+                'Create new transformation for: %s'
+            ) % self.content_object,
+        }
+
     def get_post_action_redirect(self):
         return reverse(
             'converter:transformation_list', args=(
@@ -118,15 +127,6 @@ class TransformationCreateView(SingleObjectCreateView):
 
     def get_queryset(self):
         return Transformation.objects.get_for_model(self.content_object)
-
-    def get_extra_context(self):
-        return {
-            'content_object': self.content_object,
-            'navigation_object_list': ('content_object',),
-            'title': _(
-                'Create new transformation for: %s'
-            ) % self.content_object,
-        }
 
 
 class TransformationEditView(SingleObjectEditView):
@@ -158,15 +158,6 @@ class TransformationEditView(SingleObjectEditView):
         else:
             return super(TransformationEditView, self).form_valid(form)
 
-    def get_post_action_redirect(self):
-        return reverse(
-            'converter:transformation_list', args=(
-                self.transformation.content_type.app_label,
-                self.transformation.content_type.model,
-                self.transformation.object_id
-            )
-        )
-
     def get_extra_context(self):
         return {
             'content_object': self.transformation.content_object,
@@ -179,6 +170,15 @@ class TransformationEditView(SingleObjectEditView):
             },
             'transformation': self.transformation,
         }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'converter:transformation_list', args=(
+                self.transformation.content_type.app_label,
+                self.transformation.content_type.model,
+                self.transformation.object_id
+            )
+        )
 
 
 class TransformationListView(SingleObjectListView):
@@ -204,9 +204,6 @@ class TransformationListView(SingleObjectListView):
             request, *args, **kwargs
         )
 
-    def get_queryset(self):
-        return Transformation.objects.get_for_model(self.content_object)
-
     def get_extra_context(self):
         return {
             'content_object': self.content_object,
@@ -215,3 +212,6 @@ class TransformationListView(SingleObjectListView):
             'navigation_object_list': ('content_object',),
             'title': _('Transformations for: %s') % self.content_object,
         }
+
+    def get_object_list(self):
+        return Transformation.objects.get_for_model(self.content_object)

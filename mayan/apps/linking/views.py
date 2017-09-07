@@ -132,7 +132,7 @@ class SmartLinkListView(SingleObjectListView):
             'title': _('Smart links'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_smart_link_queryset()
 
     def get_smart_link_queryset(self):
@@ -209,7 +209,7 @@ class SmartLinkConditionListView(SingleObjectListView):
             ) % self.get_smart_link(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_smart_link().conditions.all()
 
     def get_smart_link(self):

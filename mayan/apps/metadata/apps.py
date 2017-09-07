@@ -26,7 +26,7 @@ from .classes import DocumentMetadataHelper
 from .handlers import (
     handler_index_document, post_document_type_metadata_type_add,
     post_document_type_metadata_type_delete,
-    post_post_document_type_change_metadata
+    post_document_type_change_metadata
 )
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
@@ -236,17 +236,17 @@ class MetadataApp(MayanAppConfig):
 
         post_delete.connect(
             post_document_type_metadata_type_delete,
-            dispatch_uid='post_document_type_metadata_type_delete',
+            dispatch_uid='metadata_post_document_type_metadata_type_delete',
             sender=DocumentTypeMetadataType
         )
         post_document_type_change.connect(
-            post_post_document_type_change_metadata,
-            dispatch_uid='post_post_document_type_change_metadata',
+            post_document_type_change_metadata,
+            dispatch_uid='metadata_post_document_type_change_metadata',
             sender=Document
         )
         post_save.connect(
             post_document_type_metadata_type_add,
-            dispatch_uid='post_document_type_metadata_type_add',
+            dispatch_uid='metadata_post_document_type_metadata_type_add',
             sender=DocumentTypeMetadataType
         )
 
@@ -254,11 +254,11 @@ class MetadataApp(MayanAppConfig):
 
         post_delete.connect(
             handler_index_document,
-            dispatch_uid='handler_index_document_delete',
+            dispatch_uid='metadata_handler_index_document_delete',
             sender=DocumentMetadata
         )
         post_save.connect(
             handler_index_document,
-            dispatch_uid='handler_index_document_save',
+            dispatch_uid='metadata_handler_index_document_save',
             sender=DocumentMetadata
         )

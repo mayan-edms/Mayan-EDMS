@@ -1,34 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2015-08-20 19:09+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
-"language/en/)\n"
-"Language: en\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:17 settings.py:9
 msgid "Authentication"
-msgstr "Authentication"
+msgstr ""
 
 #: forms.py:18
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: forms.py:21
 msgid "Password"
-msgstr "Password"
+msgstr ""
 
 #: forms.py:23 forms.py:72
 msgid "Remember me"
@@ -39,28 +38,24 @@ msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
 
 #: forms.py:28
 msgid "This account is inactive."
-msgstr "This account is inactive."
+msgstr ""
 
 #: links.py:13
 msgid "Logout"
-msgstr "Logout"
+msgstr ""
 
 #: links.py:16
 msgid "Change password"
-msgstr "Change password"
+msgstr ""
 
 #: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
-"Controls the mechanism used to authenticated user. Options are: username, "
-"email"
 
 #: settings.py:20
 msgid ""
@@ -68,10 +63,10 @@ msgid ""
 "logged in. Value is time in seconds."
 msgstr ""
 
-#: views.py:54
+#: views.py:59
 msgid "Current user password change"
-msgstr "Current user password change"
+msgstr ""
 
-#: views.py:68
+#: views.py:73
 msgid "Your password has been successfully changed."
-msgstr "Your password has been successfully changed."
+msgstr ""

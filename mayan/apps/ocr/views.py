@@ -14,7 +14,7 @@ from common.generics import (
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
 
-from .forms import DocumentContentForm, DocumentTypeSelectForm
+from .forms import DocumentOCRContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -23,21 +23,25 @@ from .permissions import (
 from .utils import get_document_ocr_content
 
 
-class DocumentAllSubmitView(ConfirmView):
-    extra_context = {'title': _('Submit all documents for OCR?')}
+class DocumentOCRContent(SingleObjectDetailView):
+    form_class = DocumentOCRContentForm
+    model = Document
+    object_permission = permission_ocr_content_view
 
-    def get_post_action_redirect(self):
-        return reverse('common:tools_list')
-
-    def view_action(self):
-        count = 0
-        for document in Document.objects.all():
-            document.submit_for_ocr()
-            count += 1
-
-        messages.success(
-            self.request, _('%d documents added to the OCR queue.') % count
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentOCRContent, self).dispatch(
+            request, *args, **kwargs
         )
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_object(),
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('OCR result for document: %s') % self.get_object(),
+        }
 
 
 class DocumentSubmitView(ConfirmView):
@@ -128,27 +132,6 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
         }
 
 
-class DocumentOCRContent(SingleObjectDetailView):
-    form_class = DocumentContentForm
-    model = Document
-    object_permission = permission_ocr_content_view
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentOCRContent, self).dispatch(
-            request, *args, **kwargs
-        )
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'document': self.get_object(),
-            'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('OCR result for document: %s') % self.get_object(),
-        }
-
-
 class EntryListView(SingleObjectListView):
     extra_context = {
         'hide_object': True,
@@ -156,7 +139,7 @@ class EntryListView(SingleObjectListView):
     }
     view_permission = permission_ocr_document
 
-    def get_queryset(self):
+    def get_object_list(self):
         return DocumentVersionOCRError.objects.all()
 
 
@@ -173,7 +156,7 @@ class DocumentOCRErrorsListView(SingleObjectListView):
             'title': _('OCR errors for document: %s') % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document().latest_version.ocr_errors.all()
 
 

@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Roberto Rosario, 2015
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:47-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,21 +19,29 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:18 links.py:31 links.py:35 permissions.py:7 views.py:36
+#: apps.py:16
+msgid "System"
+msgstr ""
+
+#: apps.py:26 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
 msgstr "Eventos"
 
-#: apps.py:27
+#: apps.py:35
 msgid "Timestamp"
 msgstr "Timestamp"
 
-#: apps.py:29
+#: apps.py:38
 msgid "Actor"
 msgstr "Ator"
 
-#: apps.py:31
+#: apps.py:42
 msgid "Verb"
 msgstr "Verbo"
+
+#: apps.py:46
+msgid "Action object"
+msgstr ""
 
 #: classes.py:23
 #, python-brace-format
@@ -57,7 +64,7 @@ msgstr "Tipos de Eventos"
 msgid "Access the events of an object"
 msgstr "Acesse os eventos de um objeto"
 
-#: views.py:29 views.py:84
+#: views.py:26 views.py:81
 msgid "Target"
 msgstr "Destino"
 
@@ -66,7 +73,7 @@ msgstr "Destino"
 msgid "Events for: %s"
 msgstr "Eventos para: %s"
 
-#: views.py:92
+#: views.py:89
 #, python-format
 msgid "Events of type: %s"
 msgstr "Eventos do Tipo: %s"

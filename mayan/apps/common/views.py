@@ -4,14 +4,17 @@ from json import dumps
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import resolve_url
+from django.shortcuts import get_object_or_404, resolve_url
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.views.generic import RedirectView, TemplateView
+
+from acls.models import AccessControlList
 
 from .classes import Filter
 from .exceptions import NotLatestVersion
@@ -23,10 +26,12 @@ from .generics import (  # NOQA
     AssignRemoveView, ConfirmView, FormView, MultiFormView,
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView,
-    SimpleView
+    SingleObjectDetailView, SingleObjectDynamicFormCreateView,
+    SingleObjectDynamicFormEditView, SingleObjectDownloadView,
+    SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .menus import menu_tools, menu_setup
+from .permissions_runtime import permission_error_log_view
 from .utils import check_version
 
 
@@ -176,7 +181,7 @@ class FilterResultListView(SingleObjectListView):
         except KeyError:
             raise Http404(ugettext('Filter not found'))
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_filter().get_queryset(user=self.request.user)
 
 
@@ -191,6 +196,67 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
+
+
+class ObjectErrorLogEntryListClearView(ConfirmView):
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Clear error log entries for: %s' % self.get_object()),
+        }
+
+    def get_object(self):
+        content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        return get_object_or_404(
+            klass=content_type.model_class(),
+            pk=self.kwargs['object_id']
+        )
+
+    def view_action(self):
+        self.get_object().error_logs.all().delete()
+        messages.success(
+            self.request, _('Object error log cleared successfully')
+        )
+
+
+class ObjectErrorLogEntryListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            obj=self.get_object(), permissions=permission_error_log_view,
+            user=request.user
+        )
+
+        return super(ObjectErrorLogEntryListView, self).dispatch(
+            request, *args, **kwargs
+        )
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {'name': _('Date and time'), 'attribute': 'datetime'},
+                {'name': _('Result'), 'attribute': 'result'},
+            ),
+            'hide_object': True,
+            'object': self.get_object(),
+            'title': _('Error log entries for: %s' % self.get_object()),
+        }
+
+    def get_object(self):
+        content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        return get_object_or_404(
+            klass=content_type.model_class(), pk=self.kwargs['object_id']
+        )
+
+    def get_object_list(self):
+        return self.get_object().error_logs.all()
 
 
 class PackagesLicensesView(SimpleView):

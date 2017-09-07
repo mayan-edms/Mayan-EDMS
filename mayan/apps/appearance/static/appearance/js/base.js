@@ -92,19 +92,22 @@ App.prototype.doToastrMessages = function () {
     // Add invisible bootstrap messages to copy the styles to toastr.js
 
     $('body').append('\
-        <div class="hidden alert alert-success alert-sample">\
+        <div class="hidden alert alert-success">\
             <p>text</p>\
         </div>\
-        <div class="hidden alert alert-info alert-sample">\
+        <div class="hidden alert alert-info">\
             <p>text</p>\
         </div>\
-        <div class="hidden alert alert-danger alert-sample">\
+        <div class="hidden alert alert-danger">\
             <p>text</p>\
         </div>\
-        <div class="hidden alert alert-warning alert-sample">\
+        <div class="hidden alert alert-warning">\
             <p>text</p>\
         </div>\
     ');
+
+    // Copy the bootstrap style from the sample alerts to toaster.js via
+    // dynamic document style tag
 
     $('head').append('\
         <style>\
@@ -124,7 +127,13 @@ App.prototype.doToastrMessages = function () {
     ');
 
     $.each(DjangoMessages, function (index, value) {
-        toastr[value.tags](value.message);
+        var options = {};
+
+        if (value.tags === 'error') {
+            // Error messages persist
+            options['timeOut'] = 10000;
+        }
+        toastr[value.tags](value.message, '', options);
     });
 }
 

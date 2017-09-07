@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 logger = logging.getLogger(__name__)
 
 
-__ALL__ = ('MailerBackend',)
+__all__ = ('MailerBackend',)
 
 
 class MailerBackendMetaclass(type):
@@ -46,7 +46,7 @@ class MailerBackendBase(object):
 
     """
     class_path = ''  # Dot path to the actual class that will handle the mail
-    fields = ()
+    fields = {}
 
 
 class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)):
@@ -64,7 +64,7 @@ class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase
             try:
                 import_module('{}.mailers'.format(app.name))
             except ImportError as exception:
-                if force_text(exception) != 'No module named mailers':
+                if force_text(exception) not in ('No module named mailers', 'No module named \'{}.mailers\''.format(app.name)):
                     logger.error(
                         'Error importing %s mailers.py file; %s', app.name,
                         exception

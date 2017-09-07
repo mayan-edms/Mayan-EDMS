@@ -1,18 +1,15 @@
 from __future__ import unicode_literals
 
 import base64
+from io import BytesIO
 import logging
 import os
-
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
 
 from PIL import Image, ImageFilter
 import sh
 import yaml
 
+from django.utils.six import text_type
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
@@ -21,7 +18,7 @@ from mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (
-    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
+    DEFAULT_LIBREOFFICE_PATH, DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
 )
 from .settings import setting_graphics_backend_config
 
@@ -183,11 +180,17 @@ class ConverterBase(object):
         fs_cleanup(input_filepath)
         fs_cleanup(converted_output)
 
-    def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
+    def get_page(self, output_format=None, as_base64=False):
+        output_format = output_format or yaml.load(
+            setting_graphics_backend_config.value
+        ).get(
+            'pillow_format', DEFAULT_PILLOW_FORMAT
+        )
+
         if not self.image:
             self.seek(0)
 
-        image_buffer = StringIO()
+        image_buffer = BytesIO()
         new_mode = self.image.mode
 
         if output_format.upper() == 'JPEG':
@@ -290,7 +293,7 @@ class BaseTransformation(object):
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
     def cache_hash(self):
-        result = unicode.__hash__(self.name)
+        result = text_type.__hash__(self.name)
         for index, (key, value) in enumerate(self.kwargs.items()):
             result ^= hash((key, index)) ^ hash((value, index))
 

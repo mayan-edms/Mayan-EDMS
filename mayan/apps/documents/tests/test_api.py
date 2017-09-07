@@ -119,11 +119,15 @@ class DocumentAPITestCase(BaseAPITestCase):
         self.document_type.delete()
         super(DocumentAPITestCase, self).tearDown()
 
-    def _upload_document(self):
+    def _create_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object,
+                label=TEST_SMALL_DOCUMENT_FILENAME
             )
+
+        # For compatibility
+        return self.document
 
     def test_document_upload(self):
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
@@ -160,10 +164,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(document.page_count, 47)
 
     def test_document_new_version_upload(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._create_document()
 
         # Artifical delay since MySQL doesn't store microsecond data in
         # timestamps. Version timestamp is used to determine which version
@@ -193,10 +194,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(document.page_count, 47)
 
     def test_document_version_revert(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._create_document()
 
         # Needed by MySQL as milliseconds value is not store in timestamp field
         time.sleep(1)
@@ -220,10 +218,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(document.versions.first(), document.latest_version)
 
     def test_document_version_list(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._create_document()
 
         # Needed by MySQL as milliseconds value is not store in timestamp field
         time.sleep(1)
@@ -248,10 +243,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
     def test_document_download(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._create_document()
 
         response = self.client.get(
             reverse(
@@ -267,10 +259,7 @@ class DocumentAPITestCase(BaseAPITestCase):
             )
 
     def test_document_version_download(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
+        document = self._create_document()
 
         latest_version = document.latest_version
         response = self.client.get(
@@ -283,14 +272,33 @@ class DocumentAPITestCase(BaseAPITestCase):
         with latest_version.open() as file_object:
             assert_download_response(
                 self, response, content=file_object.read(),
-                basename='{} - {}'.format(
-                    TEST_SMALL_DOCUMENT_FILENAME,
-                    latest_version.timestamp
-                ), mime_type='application/octet-stream; charset=utf-8'
+                basename=force_text(latest_version),
+                mime_type='{}; charset=utf-8'.format(document.file_mimetype)
+            )
+
+    def test_document_version_download_preserve_extension(self):
+        document = self._create_document()
+
+        latest_version = document.latest_version
+        response = self.client.get(
+            reverse(
+                'rest_api:documentversion-download',
+                args=(document.pk, latest_version.pk,)
+            ), data={'preserve_extension': True}
+        )
+
+        with latest_version.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename=latest_version.get_rendered_string(
+                    preserve_extension=True
+                ), mime_type='{}; charset=utf-8'.format(
+                    document.file_mimetype
+                )
             )
 
     def test_document_version_edit_via_patch(self):
-        self._upload_document()
+        self._create_document()
         response = self.client.patch(
             reverse(
                 'rest_api:documentversion-detail',
@@ -307,7 +315,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
     def test_document_version_edit_via_put(self):
-        self._upload_document()
+        self._create_document()
         response = self.client.put(
             reverse(
                 'rest_api:documentversion-detail',
@@ -324,7 +332,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
     def test_document_comment_edit_via_patch(self):
-        self._upload_document()
+        self._create_document()
         response = self.client.patch(
             reverse(
                 'rest_api:document-detail',
@@ -340,7 +348,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
 
     def test_document_comment_edit_via_put(self):
-        self._upload_document()
+        self._create_document()
         response = self.client.put(
             reverse(
                 'rest_api:document-detail',
@@ -377,7 +385,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         self.document_type.delete()
         super(TrashedDocumentAPITestCase, self).tearDown()
 
-    def _upload_document(self):
+    def _create_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
                 file_object=file_object,
@@ -386,7 +394,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         return document
 
     def test_document_move_to_trash(self):
-        document = self._upload_document()
+        document = self._create_document()
 
         self.client.delete(
             reverse('rest_api:document-detail', args=(document.pk,))
@@ -396,7 +404,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(Document.trash.count(), 1)
 
     def test_trashed_document_delete_from_trash(self):
-        document = self._upload_document()
+        document = self._create_document()
         document.delete()
 
         self.assertEqual(Document.objects.count(), 0)
@@ -409,7 +417,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(Document.trash.count(), 0)
 
     def test_trashed_document_detail_view(self):
-        document = self._upload_document()
+        document = self._create_document()
         document.delete()
 
         response = self.client.get(
@@ -419,7 +427,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(response.data['uuid'], force_text(document.uuid))
 
     def test_trashed_document_list_view(self):
-        document = self._upload_document()
+        document = self._create_document()
         document.delete()
 
         response = self.client.get(
@@ -429,7 +437,7 @@ class TrashedDocumentAPITestCase(BaseAPITestCase):
         self.assertEqual(response.data['results'][0]['uuid'], force_text(document.uuid))
 
     def test_trashed_document_restore(self):
-        document = self._upload_document()
+        document = self._create_document()
         document.delete()
 
         self.client.post(

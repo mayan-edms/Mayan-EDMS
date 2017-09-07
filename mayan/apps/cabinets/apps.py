@@ -10,6 +10,7 @@ from common import (
     menu_sidebar
 )
 from documents.search import document_page_search, document_search
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -26,6 +27,7 @@ from .permissions import (
     permission_cabinet_edit, permission_cabinet_remove_document,
     permission_cabinet_view
 )
+from .widgets import widget_document_cabinets
 
 
 class CabinetsApp(MayanAppConfig):
@@ -35,6 +37,7 @@ class CabinetsApp(MayanAppConfig):
 
     def ready(self):
         super(CabinetsApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -45,9 +48,11 @@ class CabinetsApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
+        # Add explicit order_by as DocumentCabinet ordering Meta option has no
+        # effect.
         Document.add_to_class(
             'document_cabinets',
-            lambda document: DocumentCabinet.objects.filter(documents=document)
+            lambda document: DocumentCabinet.objects.filter(documents=document).order_by('parent__label', 'label')
         )
 
         ModelPermission.register(
@@ -67,6 +72,13 @@ class CabinetsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=Cabinet, related='get_root',
+        )
+
+        SourceColumn(
+            source=Document, label=_('Cabinets'),
+            func=lambda context: widget_document_cabinets(
+                document=context['object'], user=context['request'].user
+            ), order=1
         )
 
         document_page_search.add_model_field(
@@ -117,3 +129,5 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_remove'
             )
         )
+
+        registry.register(Cabinet)

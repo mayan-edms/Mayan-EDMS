@@ -8,9 +8,9 @@ from django.shortcuts import get_object_or_404
 from documents.models import Document, DocumentPage, DocumentVersion
 from rest_api.permissions import MayanPermission
 
-from .models import DocumentPageContent
+from .models import DocumentPageOCRContent
 from .permissions import permission_ocr_content_view, permission_ocr_document
-from .serializers import DocumentPageContentSerializer
+from .serializers import DocumentPageOCRContentSerializer
 
 
 class APIDocumentOCRView(generics.GenericAPIView):
@@ -68,7 +68,7 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
-class APIDocumentPageContentView(generics.RetrieveAPIView):
+class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     """
     Returns the OCR content of the selected document page.
     """
@@ -78,7 +78,7 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
         'GET': (permission_ocr_content_view,),
     }
     permission_classes = (MayanPermission,)
-    serializer_class = DocumentPageContentSerializer
+    serializer_class = DocumentPageOCRContentSerializer
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['document_pk'])
@@ -96,8 +96,8 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
 
         try:
             ocr_content = instance.ocr_content
-        except DocumentPageContent.DoesNotExist:
-            ocr_content = DocumentPageContent.objects.none()
+        except DocumentPageOCRContent.DoesNotExist:
+            ocr_content = DocumentPageOCRContent.objects.none()
 
         serializer = self.get_serializer(ocr_content)
         return Response(serializer.data)

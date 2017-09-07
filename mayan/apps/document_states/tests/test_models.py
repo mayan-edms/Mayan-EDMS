@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.test import override_settings
 
 from common.tests import BaseTestCase
-from common.tests.mixins import UserMixin
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 from document_indexing.models import Index, IndexInstanceNode
@@ -20,7 +19,7 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentStateIndexingTestCase(UserMixin, BaseTestCase):
+class DocumentStateIndexingTestCase(BaseTestCase):
     def tearDown(self):
         self.document_type.delete()
         super(DocumentStateIndexingTestCase, self).tearDown()

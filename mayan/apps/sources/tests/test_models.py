@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import shutil
 
-from django.contrib.auth import get_user_model
 from django.test import override_settings
 
 from common.utils import mkdtemp
@@ -12,9 +11,6 @@ from documents.tests import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
-)
-from user_management.tests import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
@@ -33,14 +29,8 @@ class UploadDocumentTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
     def tearDown(self):
         self.document_type.delete()
-        self.admin_user.delete()
         super(UploadDocumentTestCase, self).tearDown()
 
     def test_issue_gh_163(self):

@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import hashlib
 import logging
+import os
 import uuid
 
 from django.conf import settings
@@ -214,6 +215,7 @@ class Document(models.Model):
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
+        _commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
         super(Document, self).save(*args, **kwargs)
 
@@ -228,7 +230,8 @@ class Document(models.Model):
                     target=self, action_object=self.document_type
                 )
         else:
-            event_document_properties_edit.commit(actor=user, target=self)
+            if _commit_events:
+                event_document_properties_edit.commit(actor=user, target=self)
 
     class Meta:
         verbose_name = _('Document')
@@ -400,9 +403,7 @@ class DocumentVersion(models.Model):
         verbose_name_plural = _('Document version')
 
     def __str__(self):
-        return Template(
-            '{{ instance.document }} - {{ instance.timestamp }}'
-        ).render(context=Context({'instance': self}))
+        return self.get_rendered_string()
 
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
@@ -415,13 +416,28 @@ class DocumentVersion(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_version_view', args=(self.pk,))
 
+    def get_rendered_string(self, preserve_extension=False):
+        if preserve_extension:
+            filename, extension = os.path.splitext(self.document.label)
+            return '{} ({}){}'.format(
+                filename, self.get_rendered_timestamp(), extension
+            )
+        else:
+            return Template(
+                '{{ instance.document }} - {{ instance.timestamp }}'
+            ).render(context=Context({'instance': self}))
+
+    def get_rendered_timestamp(self):
+        return Template('{{ instance.timestamp }}').render(
+            context=Context({'instance': self})
+        )
+
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
         mimetype, and page count when created
         """
         user = kwargs.pop('_user', None)
-
         new_document_version = not self.pk
 
         if new_document_version:
@@ -453,7 +469,7 @@ class DocumentVersion(models.Model):
                     if not self.document.label:
                         self.document.label = force_text(self.file)
 
-                    self.document.save()
+                    self.document.save(_commit_events=False)
         except Exception as exception:
             logger.error(
                 'Error creating new document version for document "%s"; %s',

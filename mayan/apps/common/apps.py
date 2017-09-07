@@ -25,10 +25,14 @@ from .links import (
     link_about, link_check_version, link_code, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
     link_documentation, link_filters, link_forum, link_license,
-    link_packages_licenses, link_setup, link_support, link_tools
+    link_object_error_list_clear, link_packages_licenses, link_setup,
+    link_support, link_tools
 )
+
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
-from .menus import menu_about, menu_main, menu_tools, menu_user
+from .menus import (
+    menu_about, menu_main, menu_secondary, menu_tools, menu_user
+)
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
 from .settings import setting_auto_logging, setting_production_error_log_path
@@ -61,7 +65,7 @@ class MayanAppConfig(apps.AppConfig):
                 )
             ),
         except ImportError as exception:
-            if force_text(exception) != 'No module named urls':
+            if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
                 logger.error(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
@@ -135,7 +139,11 @@ class CommonApp(MayanAppConfig):
         )
 
         menu_main.bind_links(links=(menu_about, menu_user,), position=99)
-
+        menu_secondary.bind_links(
+            links=(link_object_error_list_clear,), sources=(
+                'common:object_error_list',
+            )
+        )
         menu_tools.bind_links(
             links=(link_filters,)
         )

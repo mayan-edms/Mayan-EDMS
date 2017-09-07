@@ -4,7 +4,6 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
-from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -14,7 +13,8 @@ from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from common.classes import DashboardWidget, ModelAttribute
+from common.classes import ModelAttribute
+from common.dashboards import dashboard_main
 from common.signals import post_initial_setup
 from common.widgets import two_state_template
 from converter.links import link_transformation_list
@@ -30,11 +30,16 @@ from events.links import (
 )
 from events.permissions import permission_events_view
 from mayan.celery import app
+from mayan_statistics.classes import StatisticNamespace, CharJSLine
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint, APIResource
 from rest_api.fields import DynamicSerializerField
-from statistics.classes import StatisticNamespace, CharJSLine
 
+from .dashboard_widgets import (
+    widget_document_types, widget_documents_in_trash,
+    widget_new_documents_this_month, widget_pages_per_month,
+    widget_total_documents
+)
 from .events import (
     event_document_create, event_document_download,
     event_document_properties_edit, event_document_type_change,
@@ -93,7 +98,6 @@ from .search import document_search, document_page_search  # NOQA
 from .signals import post_version_upload
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
-    new_document_pages_this_month, new_documents_this_month,
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
@@ -129,42 +133,6 @@ class DocumentsApp(MayanAppConfig):
         DynamicSerializerField.add_serializer(
             klass=Document,
             serializer_class='documents.serializers.DocumentSerializer'
-        )
-
-        DashboardWidget(
-            func=new_document_pages_this_month, icon='fa fa-calendar',
-            label=_('New pages this month'),
-            link=reverse_lazy(
-                'statistics:statistic_detail',
-                args=('new-document-pages-per-month',)
-            )
-        )
-
-        DashboardWidget(
-            func=new_documents_this_month, icon='fa fa-calendar',
-            label=_('New documents this month'),
-            link=reverse_lazy(
-                'statistics:statistic_detail',
-                args=('new-documents-per-month',)
-            )
-        )
-
-        DashboardWidget(
-            icon='fa fa-file', queryset=Document.objects.all(),
-            label=_('Total documents'),
-            link=reverse_lazy('documents:document_list')
-        )
-
-        DashboardWidget(
-            icon='fa fa-book', queryset=DocumentType.objects.all(),
-            label=_('Document types'),
-            link=reverse_lazy('documents:document_type_list')
-        )
-
-        DashboardWidget(
-            icon='fa fa-trash', queryset=DeletedDocument.objects.all(),
-            label=_('Documents in trash'),
-            link=reverse_lazy('documents:document_list_deleted')
         )
 
         MissingItem(
@@ -410,6 +378,12 @@ class DocumentsApp(MayanAppConfig):
             }
         )
 
+        dashboard_main.add_widget(widget=widget_document_types)
+        dashboard_main.add_widget(widget=widget_documents_in_trash)
+        dashboard_main.add_widget(widget=widget_new_documents_this_month)
+        dashboard_main.add_widget(widget=widget_pages_per_month)
+        dashboard_main.add_widget(widget=widget_total_documents)
+
         menu_documents.bind_links(
             links=(
                 link_document_list_recent, link_document_list,
@@ -493,6 +467,9 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
+        menu_facet.bind_links(
+            links=(link_document_version_view,), sources=(DocumentVersion,)
+        )
 
         # Document actions
         menu_object.bind_links(

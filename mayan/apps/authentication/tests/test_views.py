@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
@@ -25,11 +24,6 @@ class UserLoginTestCase(BaseTestCase):
 
     def setUp(self):
         super(UserLoginTestCase, self).setUp()
-
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
         Namespace.invalidate_cache_all()
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')

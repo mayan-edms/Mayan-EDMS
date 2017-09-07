@@ -4,11 +4,6 @@ import io
 import logging
 import os
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
 from PIL import Image
 import PyPDF2
 import sh
@@ -23,7 +18,10 @@ from ..classes import ConverterBase
 from ..exceptions import PageCountError
 from ..settings import setting_graphics_backend_config
 
-from .literals import DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH
+from ..literals import (
+    DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT, DEFAULT_PDFTOPPM_PATH,
+    DEFAULT_PDFINFO_PATH
+)
 
 try:
     pdftoppm = sh.Command(
@@ -34,7 +32,19 @@ try:
 except sh.CommandNotFound:
     pdftoppm = None
 else:
-    pdftoppm = pdftoppm.bake('-jpeg')
+    pdftoppm_format = '-{}'.format(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdftoppm_format', DEFAULT_PDFTOPPM_FORMAT
+        )
+    )
+
+    pdftoppm_dpi = format(
+        yaml.load(setting_graphics_backend_config.value).get(
+            'pdftoppm_dpi', DEFAULT_PDFTOPPM_DPI
+        )
+    )
+
+    pdftoppm = pdftoppm.bake(pdftoppm_format, '-r', pdftoppm_dpi)
 
 try:
     pdfinfo = sh.Command(
@@ -51,7 +61,7 @@ logger = logging.getLogger(__name__)
 
 class IteratorIO(object):
     def __init__(self, iterator):
-        self.file_buffer = StringIO()
+        self.file_buffer = io.BytesIO()
 
         for chunk in iterator:
             self.file_buffer.write(chunk)
@@ -92,7 +102,9 @@ class Python(ConverterBase):
         if self.mime_type == 'application/pdf':
             pdf = PyPDF2.PdfFileReader(self.file_object)
             try:
-                result = pdf.getPage(page_number - 1).get('/Rotate')
+                result = pdf.getPage(page_number - 1).get('/Rotate', 0)
+                if isinstance(result, PyPDF2.generic.IndirectObject):
+                    result = result.getObject()
             except Exception as exception:
                 self.file_object.seek(0)
                 pdf = PyPDF2.PdfFileReader(self.file_object)

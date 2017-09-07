@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:48-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2017\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:23 links.py:11 permissions.py:7
 msgid "Task manager"
-msgstr ""
+msgstr "Görev Yöneticisi"
 
 #: apps.py:29
 msgid "Label"
@@ -32,11 +32,11 @@ msgstr "İsim"
 
 #: apps.py:35
 msgid "Default queue?"
-msgstr ""
+msgstr "Varsayılan sıra"
 
 #: apps.py:41
 msgid "Is transient?"
-msgstr ""
+msgstr "Geçici mi?"
 
 #: apps.py:47
 msgid "Type"
@@ -44,15 +44,15 @@ msgstr "Tür"
 
 #: apps.py:50
 msgid "Start time"
-msgstr ""
+msgstr "Başlama zamanı"
 
 #: apps.py:53
 msgid "Host"
-msgstr ""
+msgstr "evsahibi"
 
 #: apps.py:57
 msgid "Acknowledged"
-msgstr ""
+msgstr "Kabul edilen"
 
 #: apps.py:63
 msgid "Arguments"
@@ -60,48 +60,48 @@ msgstr "Argümanlar"
 
 #: apps.py:67
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Anahtar kelime argümanları"
 
 #: apps.py:71
 msgid "Worker process ID"
-msgstr ""
+msgstr "İşçi işlem kimliği"
 
 #: links.py:15 views.py:15
 msgid "Background task queues"
-msgstr ""
+msgstr "Arka plan görev sıraları"
 
 #: links.py:19
 msgid "Active tasks"
-msgstr ""
+msgstr "Aktif görevler"
 
 #: links.py:23
 msgid "Reserved tasks"
-msgstr ""
+msgstr "Ayrılmış görevler"
 
 #: links.py:27
 msgid "Scheduled tasks"
-msgstr ""
+msgstr "Zamanlanmış görevler"
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr ""
+msgstr "Görevleri görüntüleme"
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr ""
+msgstr "Sıradaki etkin görevler: %s"
 
 #: views.py:45
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr ""
+msgstr "Görev listesi alınamadı; %s"
 
 #: views.py:55
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr ""
+msgstr "Sıradaki zamanlanmış görevler: %s"
 
 #: views.py:67
 #, python-format
 msgid "Reserved tasks in queue: %s"
-msgstr ""
+msgstr "Kuyruktaki ayrılmış görevler: %s"

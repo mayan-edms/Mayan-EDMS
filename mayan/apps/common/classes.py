@@ -45,6 +45,43 @@ class Collection(object):
                 return self._model.objects.all()
 
 
+class Dashboard(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    def __init__(self, name, label):
+        self.name = name
+        self.label = label
+        self.widgets = {}
+        self.removed_widgets = []
+        self.__class__._registry[name] = self
+
+    def add_widget(self, widget, order=0):
+        self.widgets[widget] = {'widget': widget, 'order': order}
+
+    def get_widgets(self):
+        """
+        Returns a list of widgets sorted by their 'order'.
+        If two or more widgets have the same 'order', sort by label.
+        """
+        return map(
+            lambda x: x['widget'],
+            filter(
+                lambda x: x['widget'] not in self.removed_widgets,
+                sorted(
+                    self.widgets.values(),
+                    key=lambda x: (x['order'], x['widget'].label)
+                )
+            )
+        )
+
+    def remove_widget(self, widget):
+        self.removed_widgets.append(widget)
+
+
 class DashboardWidget(object):
     _registry = []
 
@@ -64,6 +101,85 @@ class DashboardWidget(object):
 
 
 @python_2_unicode_compatible
+class ErrorLogNamespace(object):
+    def __init__(self, name, label=None):
+        self.name = name
+        self.label = label or name
+
+    def __str__(self):
+        return force_text(self.label)
+
+    def create(self, obj, result):
+        obj.error_logs.create(namespace=self.name, result=result)
+
+    def all(self):
+        ErrorLogEntry = apps.get_model(
+            app_label='common', model_name='ErrorLogEntry'
+        )
+
+        return ErrorLogEntry.objects.filter(namespace=self.name)
+
+
+@python_2_unicode_compatible
+class Filter(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, slug):
+        return cls._registry[slug]
+
+    @classmethod
+    def all(cls):
+        return cls._registry
+
+    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
+        self.label = label
+        self.slug = slug
+        self.filter_kwargs = filter_kwargs
+        self.model = model
+        self.object_permission = object_permission
+        self.hide_links = hide_links
+
+        self.__class__._registry[self.slug] = self
+
+    def __str__(self):
+        return force_text(self.label)
+
+    def get_queryset(self, user):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        queryset = self.model.objects.all()
+        for kwargs in self.filter_kwargs:
+            queryset = queryset.filter(**kwargs)
+
+        queryset = queryset.distinct()
+
+        if self.object_permission:
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, user, queryset=queryset
+            )
+        else:
+            return queryset
+
+
+class MissingItem(object):
+    _registry = []
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry
+
+    def __init__(self, label, condition, description, view):
+        self.label = label
+        self.condition = condition
+        self.description = description
+        self.view = view
+        self.__class__._registry.append(self)
+
+
+@python_2_unicode_compatible
 class ModelAttribute(object):
     __registry = {}
 
@@ -72,7 +188,7 @@ class ModelAttribute(object):
         result = []
 
         try:
-            for type_name, attributes in cls.__registry[model].iteritems():
+            for type_name, attributes in cls.__registry[model].items():
                 if not type_names or type_name in type_names:
                     result.extend(attributes)
 
@@ -140,65 +256,6 @@ class ModelAttribute(object):
         else:
             self.__registry[model].setdefault(type_name, [])
             self.__registry[model][type_name].append(self)
-
-
-class MissingItem(object):
-    _registry = []
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry
-
-    def __init__(self, label, condition, description, view):
-        self.label = label
-        self.condition = condition
-        self.description = description
-        self.view = view
-        self.__class__._registry.append(self)
-
-
-@python_2_unicode_compatible
-class Filter(object):
-    _registry = {}
-
-    @classmethod
-    def get(cls, slug):
-        return cls._registry[slug]
-
-    @classmethod
-    def all(cls):
-        return cls._registry
-
-    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
-        self.label = label
-        self.slug = slug
-        self.filter_kwargs = filter_kwargs
-        self.model = model
-        self.object_permission = object_permission
-        self.hide_links = hide_links
-
-        self.__class__._registry[self.slug] = self
-
-    def __str__(self):
-        return force_text(self.label)
-
-    def get_queryset(self, user):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        queryset = self.model.objects.all()
-        for kwargs in self.filter_kwargs:
-            queryset = queryset.filter(**kwargs)
-
-        queryset = queryset.distinct()
-
-        if self.object_permission:
-            return AccessControlList.objects.filter_by_access(
-                self.object_permission, user, queryset=queryset
-            )
-        else:
-            return queryset
 
 
 class Package(object):

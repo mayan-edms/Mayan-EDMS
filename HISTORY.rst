@@ -1,14 +1,77 @@
 3.0 (2017-XX-XX)
 ================
-- Metadat widget appearance changes
-- Content windows appearance changes
-- Add new document's version list view permission
 - Add support for notifications. GitLab #262.
 - Add quota support. GitLab #284.
+
+2.7.2 (2017-09-06)
+==================
+- Fix new mailer creation view. GitLab issue #431.
+  Thanks to Robert Schöftner (@robert.schoeftner) for the
+  report and the solution.
+- Consolidate intial document created event and the first
+  document properties edited events. Preserve the user that
+  initially creates the document. GitLab issue #433. Thanks
+  to Jesaja Everling (@jeverling) for the report.
+- Sort the list of root cabinets. Thanks to Thomas Plotkowiak
+  for the request.
+- Sort the list of a document's cabinets.
+- Display a document's cabinet list in italics. GitLab issue #435.
+  Thanks to LeVon Smoker for the request.
+- Install mock by default to allow easier testing of deployed
+  instances.
+
+2.7.1 (2017-09-03)
+==================
+- Support unicode in URL querystring. GitLab issue #423.
+  Thanks to Gustavo Teixeira (@gsteixei) for the find.
+- Import errors during initialization are only ignored
+  if they are cause by a missing local.py. Thanks to
+  MacRobb Simpson for the report and solution.
+- Make sure the local.py created used unicode for strings
+  by default. GitLab issue #424. Thanks to Gustavo Teixeira
+  (@gsteixei) for the find.
+
+2.7 (2017-08-30)
+================
+- Add workaround for PDF with IndirectObject as the
+  rotation value. GitHub #261.
+- Add ACL list link with icon and use it for the document facet menu.
+- Fix mailing app permissions labels.
+- Add ACLs link and ACLs permissions to the mailer profile model.
+- Improve mailer URL regex.
+- Add ordering support to the SourceColumn class. GitLab issue #417.
+- Shows the cabinets in the document list. GitLab #417 @corneliusludmann
+- Add workaround for pycountry versions without the bibliographical key.
+  GitHub issue #250.
+- Skip UUID migration on Oracle backends. GitHub issue #251.
+- Allow changing the output format, DPI of the pdftoppm command, and
+  the output format of the converter via the CONVERTER_GRAPHICS_BACKEND_CONFIG
+  setting. GitHub issues #256 #257 GitLab issue #416.
+- Add support for workflow triggers.
+- Add support for workflow actions.
+- Add support for rendering workflows.
+- Add support for unbinding sub menus.
+- Fix mailing profile test view.
+- Disregard the last 3 dots that mark the end of the YAML document.
+- Add support for multiple dashboards.
+- Add support for removing dashboard widgets.
 - Convert document version view to item list view.
 - Add support for browsing individual document versions.
 - Add support for dropdown menus to the item list view template.
-- Add ACLs support to the mailer app.
+- Add support for preserving the file extenstion when downloading a document
+  version. GitLab #415.
+- Split OCR app into OCR and parsing.
+- Remove Folders app.
+- Use the literal 'System' instead of the target name when
+  the action user in unknown.
+- Remove the view to submit all document for OCR.
+- When changing document types, don't delete the old metadata that is
+  also found in the new document type. GitLab issue #421.
+- Add tag attach and tag remove events.
+- Change the permission needed to attach and remove tags.
+- Add HTTP POST workflow state action.
+- Add access control grant workflow state action.
+- Beta Python 3 support.
 
 2.6.4 (2017-07-26)
 ==================

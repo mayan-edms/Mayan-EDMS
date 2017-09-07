@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import datetime
+import logging
 
 from django.utils.timezone import now
 
@@ -21,9 +22,7 @@ from ..permissions import (
 
 class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
     def test_checkin_document_view_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
@@ -42,10 +41,8 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.is_checked_out())
 
-    def test_checkin_document_view_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+    def test_checkin_document_view_with_access(self):
+        self.login_user()
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
@@ -56,11 +53,12 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.is_checked_out())
 
-        self.role.permissions.add(
-            permission_document_checkin.stored_permission
+        self.grant_access(
+            obj=self.document, permission=permission_document_checkin
         )
-        self.role.permissions.add(
-            permission_document_checkout_detail_view.stored_permission
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_checkout_detail_view
         )
 
         response = self.post(
@@ -78,9 +76,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_checkout_document_view_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         response = self.post(
             'checkouts:checkout_document', args=(self.document.pk,), data={
@@ -94,15 +90,14 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         self.assertFalse(self.document.is_checked_out())
 
-    def test_checkout_document_view_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+    def test_checkout_document_view_with_access(self):
+        self.login_user()
+        self.grant_access(
+            obj=self.document, permission=permission_document_checkout
         )
-        self.role.permissions.add(
-            permission_document_checkout.stored_permission
-        )
-        self.role.permissions.add(
-            permission_document_checkout_detail_view.stored_permission
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_checkout_detail_view
         )
 
         response = self.post(
@@ -127,7 +122,6 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
             - Link to upload version view should not resolve
             - Upload version view should reject request
         """
-
         self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
@@ -166,6 +160,9 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         # Gitlab issue #237
         # Forcefully checking in a document by a user without adequate
         # permissions throws out an error
+
+        # Silence unrelated logging
+        logging.getLogger('navigation.classes').setLevel(logging.CRITICAL)
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 

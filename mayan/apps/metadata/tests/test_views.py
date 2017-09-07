@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import logging
+
 from django.core.files.base import File
 from documents.models import DocumentType
 from documents.permissions import (
@@ -140,12 +142,14 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
                 'form-MAX_NUM_FORMS': '',
             }, follow=True
         )
-
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
     def test_metadata_remove_view_with_permission(self):
+        # Silence unrelated logging
+        logging.getLogger('navigation.classes').setLevel(logging.CRITICAL)
+
         self.login_user()
 
         document_metadata = self.document.metadata.create(

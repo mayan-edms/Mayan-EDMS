@@ -8,7 +8,8 @@ from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
-    LicenseView, PackagesLicensesView, SetupListView, ToolsListView,
+    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
+    PackagesLicensesView, SetupListView, ToolsListView,
     multi_object_action_view
 )
 
@@ -53,6 +54,15 @@ urlpatterns = [
     url(
         r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
         name='filter_results'
+    ),
+    url(
+        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
+        ObjectErrorLogEntryListView.as_view(), name='object_error_list'
+    ),
+    url(
+        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/clear/$',
+        ObjectErrorLogEntryListClearView.as_view(),
+        name='object_error_list_clear'
     ),
 ]
 

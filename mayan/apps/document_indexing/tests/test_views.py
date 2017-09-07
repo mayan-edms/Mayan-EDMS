@@ -1,9 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..models import Index
 from ..permissions import (
@@ -19,7 +16,7 @@ from .literals import (
 
 class IndexViewTestCase(GenericDocumentViewTestCase):
     def test_index_create_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.post(
             'indexing:index_setup_create', data={
@@ -31,7 +28,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Index.objects.count(), 0)
 
     def test_index_create_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_indexing_create.stored_permission
@@ -48,7 +45,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Index.objects.first().label, TEST_INDEX_LABEL)
 
     def test_index_delete_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         index = Index.objects.create(
             label=TEST_INDEX_LABEL, slug=TEST_INDEX_SLUG
@@ -59,7 +56,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Index.objects.count(), 1)
 
     def test_index_delete_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_indexing_delete.stored_permission
@@ -77,7 +74,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Index.objects.count(), 0)
 
     def test_index_edit_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         index = Index.objects.create(
             label=TEST_INDEX_LABEL, slug=TEST_INDEX_SLUG
@@ -93,7 +90,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(index.label, TEST_INDEX_LABEL)
 
     def test_index_edit_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_indexing_edit.stored_permission
@@ -135,7 +132,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
     def test_index_instance_node_view_no_permission(self):
         index = self.create_test_index()
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         response = self.get(
             'indexing:index_instance_node_view', args=(index.instance_root.pk,)
@@ -146,7 +143,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
     def test_index_instance_node_view_with_permission(self):
         index = self.create_test_index()
 
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
 
         self.role.permissions.add(
             permission_document_indexing_view.stored_permission

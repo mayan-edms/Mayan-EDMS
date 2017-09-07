@@ -13,13 +13,17 @@ from .views import (
     DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
     SetupWorkflowDeleteView, SetupWorkflowDocumentTypesView,
     SetupWorkflowEditView, SetupWorkflowListView,
-    SetupWorkflowStateCreateView, SetupWorkflowStateDeleteView,
-    SetupWorkflowStateEditView, SetupWorkflowStateListView,
-    SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
-    SetupWorkflowTransitionDeleteView, SetupWorkflowTransitionEditView,
-    ToolLaunchAllWorkflows, WorkflowDocumentListView,
-    WorkflowInstanceDetailView, WorkflowInstanceTransitionView,
-    WorkflowListView, WorkflowStateDocumentListView, WorkflowStateListView
+    SetupWorkflowStateActionCreateView, SetupWorkflowStateActionDeleteView,
+    SetupWorkflowStateActionEditView, SetupWorkflowStateActionListView,
+    SetupWorkflowStateActionSelectionView, SetupWorkflowStateCreateView,
+    SetupWorkflowStateDeleteView, SetupWorkflowStateEditView,
+    SetupWorkflowStateListView, SetupWorkflowTransitionListView,
+    SetupWorkflowTransitionCreateView, SetupWorkflowTransitionDeleteView,
+    SetupWorkflowTransitionEditView,
+    SetupWorkflowTransitionTriggerEventListView, ToolLaunchAllWorkflows,
+    WorkflowDocumentListView, WorkflowInstanceDetailView,
+    WorkflowImageView, WorkflowInstanceTransitionView, WorkflowListView,
+    WorkflowPreviewView, WorkflowStateDocumentListView, WorkflowStateListView,
 )
 
 urlpatterns = [
@@ -37,7 +41,6 @@ urlpatterns = [
         WorkflowInstanceTransitionView.as_view(),
         name='workflow_instance_transition'
     ),
-
     url(
         r'^setup/all/$', SetupWorkflowListView.as_view(),
         name='setup_workflow_list'
@@ -84,6 +87,11 @@ urlpatterns = [
         name='setup_workflow_transition_create'
     ),
     url(
+        r'^setup/(?P<pk>\d+)/transitions/events/$',
+        SetupWorkflowTransitionTriggerEventListView.as_view(),
+        name='setup_workflow_instance_transition_events'
+    ),
+    url(
         r'^setup/workflow/state/(?P<pk>\d+)/delete/$',
         SetupWorkflowStateDeleteView.as_view(),
         name='setup_workflow_state_delete'
@@ -93,6 +101,39 @@ urlpatterns = [
         SetupWorkflowStateEditView.as_view(),
         name='setup_workflow_state_edit'
     ),
+    url(
+        r'^setup/workflow/state/(?P<pk>\d+)/actions/$',
+        SetupWorkflowStateActionListView.as_view(),
+        name='setup_workflow_state_action_list'
+    ),
+    url(
+        r'^setup/workflow/state/(?P<pk>\d+)/actions/$',
+        SetupWorkflowStateActionListView.as_view(),
+        name='setup_workflow_state_action_list'
+    ),
+    url(
+        r'^setup/workflow/state/(?P<pk>\d+)/actions/selection/$',
+        SetupWorkflowStateActionSelectionView.as_view(),
+        name='setup_workflow_state_action_selection'
+    ),
+    url(
+        r'^setup/workflow/state/(?P<pk>\d+)/actions/(?P<class_path>[a-zA-Z0-9_.]+)/create/$',
+        SetupWorkflowStateActionCreateView.as_view(),
+        name='setup_workflow_state_action_create'
+    ),
+
+    url(
+        r'^setup/workflow/state/actions/(?P<pk>\d+)/delete/$',
+        SetupWorkflowStateActionDeleteView.as_view(),
+        name='setup_workflow_state_action_delete'
+    ),
+    url(
+        r'^setup/workflow/state/actions/(?P<pk>\d+)/edit/$',
+        SetupWorkflowStateActionEditView.as_view(),
+        name='setup_workflow_state_action_edit'
+    ),
+
+
     url(
         r'^setup/workflow/transitions/(?P<pk>\d+)/delete/$',
         SetupWorkflowTransitionDeleteView.as_view(),
@@ -123,6 +164,16 @@ urlpatterns = [
         r'^(?P<pk>\d+)/states/$',
         WorkflowStateListView.as_view(),
         name='workflow_state_list'
+    ),
+    url(
+        r'^(?P<pk>\d+)/image/$',
+        WorkflowImageView.as_view(),
+        name='workflow_image'
+    ),
+    url(
+        r'^(?P<pk>\d+)/preview/$',
+        WorkflowPreviewView.as_view(),
+        name='workflow_preview'
     ),
     url(
         r'^state/(?P<pk>\d+)/documents/$',

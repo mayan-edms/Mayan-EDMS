@@ -88,21 +88,29 @@ class DynamicFormMixin(object):
     def __init__(self, *args, **kwargs):
         self.schema = kwargs.pop('schema')
         super(DynamicFormMixin, self).__init__(*args, **kwargs)
-        for field in self.schema['fields']:
-            field_class = import_string(field['class'])
-            kwargs = {
-                'label': field['label'],
-                'required': field.get('required', True),
-                'initial': field.get('default', None),
-                'help_text': field.get('help_text'),
-            }
-            kwargs.update(field.get('kwargs', {}))
-            self.fields[field['name']] = field_class(**kwargs)
 
-        for field, widget in self.schema.get('widgets', {}).items():
-            self.fields[field].widget = import_string(
-                widget['class']
-            )(**widget.get('kwargs', {}))
+        widgets = self.schema.get('widgets', {})
+        field_order = self.schema.get(
+            'field_order', self.schema['fields'].keys()
+        )
+
+        for field_name in field_order:
+            field_data = self.schema['fields'][field_name]
+            field_class = import_string(field_data['class'])
+            kwargs = {
+                'label': field_data['label'],
+                'required': field_data.get('required', True),
+                'initial': field_data.get('default', None),
+                'help_text': field_data.get('help_text'),
+            }
+            if widgets and field_name in widgets:
+                widget = widgets[field_name]
+                kwargs['widget'] = import_string(
+                    widget['class']
+                )(**widget.get('kwargs', {}))
+
+            kwargs.update(field_data.get('kwargs', {}))
+            self.fields[field_name] = field_class(**kwargs)
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):

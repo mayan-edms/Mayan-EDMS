@@ -3,8 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2013
@@ -12,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +24,7 @@ msgstr ""
 msgid "None"
 msgstr "Geen"
 
-#: admin.py:26 apps.py:95 links.py:48 models.py:49
+#: admin.py:26 apps.py:103 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Documentsoorten"
 
@@ -42,25 +40,33 @@ msgstr "Label"
 msgid "Slug"
 msgstr ""
 
-#: apps.py:84 apps.py:104 models.py:46 models.py:166
+#: apps.py:84 apps.py:112 models.py:46 models.py:169
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: apps.py:89 apps.py:119 apps.py:132
-msgid "Items"
-msgstr "Items"
+#: apps.py:89
+msgid "Total levels"
+msgstr ""
 
-#: apps.py:100
+#: apps.py:95
+msgid "Total documents"
+msgstr ""
+
+#: apps.py:108 apps.py:123 apps.py:140
 msgid "Level"
 msgstr "Niveau"
 
-#: apps.py:108
+#: apps.py:116
 msgid "Has document links?"
 msgstr "Heeft document verwijzingen?"
 
-#: apps.py:115 apps.py:126
-msgid "Node"
-msgstr "Node"
+#: apps.py:127 apps.py:146
+msgid "Levels"
+msgstr ""
+
+#: apps.py:131 apps.py:150 models.py:291
+msgid "Documents"
+msgstr "Documenten"
 
 #: forms.py:15
 msgid "Indexes to be queued for rebuilding."
@@ -112,7 +118,7 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
 
-#: models.py:56 models.py:150
+#: models.py:56 models.py:153
 msgid "Index"
 msgstr "Index"
 
@@ -124,74 +130,70 @@ msgstr "index instance"
 msgid "Index instances"
 msgstr ""
 
-#: models.py:154
+#: models.py:157
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:158
+#: models.py:161
 msgid "Indexing expression"
 msgstr "Indexeringsexpressie"
 
-#: models.py:163
+#: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
-#: models.py:171
+#: models.py:174
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
-#: models.py:174
+#: models.py:177
 msgid "Link documents"
 msgstr "Koppel documenten"
 
-#: models.py:178
+#: models.py:181
 msgid "Index node template"
 msgstr ""
 
-#: models.py:179
+#: models.py:182
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:183
+#: models.py:186
 msgid "Root"
 msgstr ""
 
-#: models.py:244
+#: models.py:247
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
 
-#: models.py:278
+#: models.py:284
 msgid "Index template node"
 msgstr ""
 
-#: models.py:281
+#: models.py:287
 msgid "Value"
 msgstr "Waarde"
 
-#: models.py:285
-msgid "Documents"
-msgstr "Documenten"
-
-#: models.py:291
+#: models.py:297
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:292
+#: models.py:298
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:380
+#: models.py:402
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:381
+#: models.py:403
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -258,7 +260,7 @@ msgstr ""
 msgid "Document types linked to index: %s"
 msgstr ""
 
-#: views.py:135
+#: views.py:127
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr ""
@@ -278,12 +280,12 @@ msgstr ""
 msgid "Edit the index template node: %s?"
 msgstr ""
 
-#: views.py:269
+#: views.py:256
 #, python-format
 msgid "Navigation: %s"
 msgstr ""
 
-#: views.py:274
+#: views.py:261
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
@@ -293,148 +295,6 @@ msgstr ""
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:335
+#: views.py:337
 msgid "Index rebuild queued successfully."
 msgstr ""
-
-#~ msgid "On large databases this operation may take some time to execute."
-#~ msgstr "On large databases this operation may take some time to execute."
-
-#~ msgid "Rebuild all indexes?"
-#~ msgstr "rebuild indexes"
-
-#~ msgid "Index list"
-#~ msgstr "index list"
-
-#~ msgid "Configure document indexes"
-#~ msgstr "Configure document indexes"
-
-#~ msgid "Index template node created successfully."
-#~ msgstr "Index template node created successfully."
-
-#~ msgid "Index template node edited successfully"
-#~ msgstr "Index template node edited successfully"
-
-#~ msgid "Node: %s deleted successfully."
-#~ msgstr "Node: %s deleted successfully."
-
-#~ msgid "Node: %(node)s delete error: %(error)s"
-#~ msgstr "Node: %(node)s delete error: %(error)s"
-
-#~ msgid "Enter a python string expression to be evaluated."
-#~ msgstr "Enter a python string expression to be evaluated."
-
-#~ msgid "Go up one level"
-#~ msgstr "go up one level"
-
-#~ msgid "Title"
-#~ msgstr "title"
-
-#~ msgid "The name that will be visible to users."
-#~ msgstr "The name that will be visible to users."
-
-#~ msgid "Index created successfully."
-#~ msgstr "Index created successfully."
-
-#~ msgid "Index edited successfully"
-#~ msgstr "Index edited successfully"
-
-#~ msgid "Index: %s deleted successfully."
-#~ msgstr "Index: %s deleted successfully."
-
-#~ msgid "Index: %(index)s delete error: %(error)s"
-#~ msgstr "Index: %(index)s delete error: %(error)s"
-
-#~ msgid "Are you sure you with to delete the index: %s?"
-#~ msgstr "Are you sure you with to delete the index: %s?"
-
-#~ msgid "Document types not in index: %s"
-#~ msgstr "document types not in index: %s"
-
-#~ msgid "Are you sure you with to delete the index template node: %s?"
-#~ msgstr "Are you sure you with to delete the index template node: %s?"
-
-#~ msgid "Are you sure you wish to rebuild all indexes?"
-#~ msgstr "Are you sure you wish to rebuild all indexes?"
-
-#~ msgid "Nodes"
-#~ msgstr "nodes"
-
-#~ msgid "Maximum suffix (%s) count reached."
-#~ msgstr "Maximum suffix (%s) count reached."
-
-#~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
-#~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
-
-#~ msgid "Unable to delete document indexing node; %s"
-#~ msgstr "Unable to delete document indexing node; %s"
-
-#~ msgid "Unable to create indexing directory; %s"
-#~ msgstr "Unable to create indexing directory; %s"
-
-#~ msgid ""
-#~ "Unable to create symbolic link, file exists and could not be deleted: "
-#~ "%(filepath)s; %(exception)s"
-#~ msgstr ""
-#~ "Unable to create symbolic link, file exists and could not be deleted: "
-#~ "%(filepath)s; %(exc)s"
-
-#~ msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-#~ msgstr "Unable to create symbolic link: %(filepath)s; %(exc)s"
-
-#~ msgid "Unable to delete document symbolic link; %s"
-#~ msgstr "Unable to delete document symbolic link; %s"
-
-#~ msgid "Unable to delete indexing directory; %s"
-#~ msgstr "Unable to delete indexing directory; %s"
-
-#~ msgid "Available functions: %s"
-#~ msgstr "Available functions: %s"
-
-#~ msgid "Document"
-#~ msgstr "document"
-
-#~ msgid "Document rename count"
-#~ msgstr "document rename count"
-
-#~ msgid "Documents rename count"
-#~ msgstr "documents rename count"
-
-#~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
-#~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that index"
-#~ " will be mirrored."
-
-#~ msgid "Index rebuild error: %s"
-#~ msgstr "Index rebuild error: %s"
-
-#~ msgid "Index instance node"
-#~ msgstr "index instance node"
-
-#~ msgid "Indexes instance nodes"
-#~ msgstr "indexes instance nodes"
-
-#~ msgid "indexes"
-#~ msgstr "indexes"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "index"
-#~ msgstr "index"
-
-#~ msgid "node"
-#~ msgstr "node"
-
-#~ msgid "What are indexes?"
-#~ msgstr "What are indexes?"
-
-#~ msgid "Indexes group documents into a tree like hierarchical structure."
-#~ msgstr "Indexes group documents into a tree like hierarchical structure."

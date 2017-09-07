@@ -52,9 +52,9 @@ link_document_version_signature_details = Link(
     view='signatures:document_version_signature_details',
 )
 link_document_version_signature_list = Link(
-    args='resolved_object.pk',
+    args='resolved_object.pk', icon='fa fa-certificate',
     permissions=(permission_document_version_signature_view,),
-    permissions_related='document', text=_('Signature list'),
+    permissions_related='document', text=_('Signatures'),
     view='signatures:document_version_signature_list',
 )
 link_document_version_signature_download = Link(

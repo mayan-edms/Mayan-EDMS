@@ -10,9 +10,18 @@ def change_bibliographic_to_terminology(apps, schema_editor):
     Document = apps.get_model('documents', 'Document')
 
     for document in Document.objects.all():
-        language = pycountry.languages.get(bibliographic=document.language)
-        document.language = language.terminology
-        document.save()
+        try:
+            language = pycountry.languages.get(bibliographic=document.language)
+        except KeyError:
+            # The pycountry version used doesn't support the 'bibliographic'
+            # key. Reset the document's language to English.
+            # GitHub issue #250
+            # https://github.com/mayan-edms/mayan-edms/issues/250
+            document.language = 'eng'
+            document.save()
+        else:
+            document.language = language.terminology
+            document.save()
 
 
 class Migration(migrations.Migration):

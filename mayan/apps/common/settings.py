@@ -22,6 +22,13 @@ settings_db_sync_task_delay = namespace.add_setting(
         'propagate.'
     )
 )
+setting_local_settings_filename = namespace.add_setting(
+    global_name='COMMON_LOCAL_SETTINGS_FILENAME',
+    default='local', help_text=_(
+        'Filename of the local settings file (just the filename, extension '
+        'will be .py).'
+    )
+)
 setting_paginate_by = namespace.add_setting(
     global_name='COMMON_PAGINATE_BY',
     default=40,

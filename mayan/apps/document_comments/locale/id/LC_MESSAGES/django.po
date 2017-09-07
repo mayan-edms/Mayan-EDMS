@@ -3,13 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
-# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
@@ -86,43 +84,7 @@ msgstr "Menambah komentar ke dokumen: %s"
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:106
+#: views.py:98
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""
-
-#~ msgid "Comment \"%s\" deleted successfully."
-#~ msgstr "Comment \"%s\" deleted successfully."
-
-#~ msgid "Error deleting comment \"%(comment)s\": %(error)s"
-#~ msgstr "Error deleting comment \"%(comment)s\": %(error)s"
-
-#~ msgid "Delete comment?"
-#~ msgstr "Delete comments"
-
-#~ msgid "Comment added successfully."
-#~ msgstr "Comment added successfully."
-
-#~ msgid "comment"
-#~ msgstr "comment"
-
-#~ msgid "Must provide at least one comment."
-#~ msgstr "Must provide at least one comment."
-
-#~ msgid "Are you sure you wish to delete the comment: %s?"
-#~ msgstr "Are you sure you wish to delete the comment: %s?"
-
-#~ msgid "Are you sure you wish to delete the comments: %s?"
-#~ msgstr "Are you sure you wish to delete the comments: %s?"
-
-#~ msgid "date"
-#~ msgstr "date"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "comments"
-#~ msgstr "comments"
-
-#~ msgid "comments: %s"
-#~ msgstr "comments: %s"

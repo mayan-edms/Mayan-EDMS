@@ -119,14 +119,6 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
 class SetupIndexTreeTemplateListView(SingleObjectListView):
     object_permission = permission_document_indexing_edit
 
-    def get_index(self):
-        return get_object_or_404(Index, pk=self.kwargs['pk'])
-
-    def get_queryset(self):
-        return self.get_index().template_root.get_descendants(
-            include_self=True
-        )
-
     def get_extra_context(self):
         return {
             'hide_object': True,
@@ -134,6 +126,14 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
             'navigation_object_list': ('index',),
             'title': _('Tree template nodes for index: %s') % self.get_index(),
         }
+
+    def get_index(self):
+        return get_object_or_404(Index, pk=self.kwargs['pk'])
+
+    def get_object_list(self):
+        return self.get_index().template_root.get_descendants(
+            include_self=True
+        )
 
 
 class TemplateNodeCreateView(SingleObjectCreateView):
@@ -236,24 +236,11 @@ class IndexInstanceNodeView(DocumentListView):
 
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return DocumentListView.dispatch(
-                    self, request, *args, **kwargs
+                return super(IndexInstanceNodeView, self).dispatch(
+                    request, *args, **kwargs
                 )
 
         return SingleObjectListView.dispatch(self, request, *args, **kwargs)
-
-    def get_queryset(self):
-        if self.index_instance_node:
-            if self.index_instance_node.index_template_node.link_documents:
-                return DocumentListView.get_queryset(self)
-            else:
-                self.object_permission = None
-                return self.index_instance_node.get_children().order_by(
-                    'value'
-                )
-        else:
-            self.object_permission = None
-            return IndexInstanceNode.objects.none()
 
     def get_document_queryset(self):
         if self.index_instance_node:
@@ -286,6 +273,19 @@ class IndexInstanceNodeView(DocumentListView):
 
         return context
 
+    def get_object_list(self):
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
+                return super(IndexInstanceNodeView, self).get_object_list()
+            else:
+                self.object_permission = None
+                return self.index_instance_node.get_children().order_by(
+                    'value'
+                )
+        else:
+            self.object_permission = None
+            return IndexInstanceNode.objects.none()
+
 
 class DocumentIndexNodeListView(SingleObjectListView):
     """
@@ -317,7 +317,7 @@ class DocumentIndexNodeListView(SingleObjectListView):
             ) % self.get_document(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return DocumentIndexInstanceNode.objects.get_for(self.get_document())
 
 
@@ -330,7 +330,9 @@ class RebuildIndexesView(FormView):
 
     def form_valid(self, form):
         for index in form.cleaned_data['indexes']:
-            task_rebuild_index(index_id=index.pk)
+            task_rebuild_index.apply_async(
+                kwargs=dict(index_id=index.pk)
+            )
 
         messages.success(self.request, _('Index rebuild queued successfully.'))
 

@@ -35,8 +35,7 @@ class AccessControlList(models.Model):
     )
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(
-        ct_field='content_type',
-        fk_field='object_id',
+        ct_field='content_type', fk_field='object_id',
     )
     # TODO: limit choices to the permissions valid for the content_object
     permissions = models.ManyToManyField(

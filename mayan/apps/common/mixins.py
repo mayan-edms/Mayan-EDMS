@@ -6,7 +6,6 @@ from django.core.exceptions import PermissionDenied
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
-from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from permissions import Permission
@@ -19,8 +18,8 @@ __all__ = (
     'DeleteExtraDataMixin', 'DynamicFormViewMixin', 'ExtraContextMixin',
     'FormExtraKwargsMixin', 'MultipleObjectMixin', 'ObjectActionMixin',
     'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
-    'ObjectPermissionCheckMixin', 'PreserveGetQuerysetMixin',
-    'RedirectionMixin', 'ViewPermissionCheckMixin'
+    'ObjectPermissionCheckMixin', 'RedirectionMixin',
+    'ViewPermissionCheckMixin'
 )
 
 
@@ -265,26 +264,6 @@ class ObjectPermissionCheckMixin(object):
         return super(
             ObjectPermissionCheckMixin, self
         ).dispatch(request, *args, **kwargs)
-
-
-class PreserveGetQuerysetMixin(object):
-    """
-    Allows class based views to define a get_queryset method that doesn't
-    overrided the parent classe's get_queryset method
-    """
-    def __init__(self, *args, **kwargs):
-        result = super(PreserveGetQuerysetMixin, self).__init__(*args, **kwargs)
-        if not hasattr(self.__class__, 'original_get_queryset'):
-            if not self.__class__.mro()[0].get_queryset == PreserveGetQuerysetMixin.get_queryset:
-                setattr(self.__class__, 'original_get_queryset', self.__class__.mro()[0].get_queryset)
-                self.__class__.mro()[0].get_queryset = PreserveGetQuerysetMixin.get_queryset
-        return result
-
-    def get_queryset(self, *args, **kwargs):
-        if hasattr(self.__class__, 'original_get_queryset'):
-            self.queryset = self.__class__.original_get_queryset(self, *args, **kwargs)
-
-        return super(PreserveGetQuerysetMixin, self).get_queryset(*args, **kwargs)
 
 
 class RedirectionMixin(object):

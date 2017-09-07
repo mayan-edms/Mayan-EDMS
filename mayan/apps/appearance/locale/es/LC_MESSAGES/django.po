@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Roberto Rosario, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 23:46-0400\n"
-"PO-Revision-Date: 2017-07-09 07:04+0000\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: 2017-08-27 17:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +28,7 @@ msgstr "Permisos insuficientes"
 
 #: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
-msgstr "No tienes suficientes permisos para esta operación"
+msgstr "No tiene suficientes permisos para esta operación."
 
 #: templates/404.html:5 templates/404.html:9
 msgid "Page not found"
@@ -37,7 +36,7 @@ msgstr "Página no encontrada"
 
 #: templates/404.html:11
 msgid "Sorry, but the requested page could not be found."
-msgstr "Lo sentimos, la página solicitada no pudo ser encontrada"
+msgstr "Lo sentimos, pero no se pudo encontrar la página solicitada."
 
 #: templates/500.html:5 templates/500.html:9
 msgid "Server error"
@@ -70,7 +69,7 @@ msgstr "Número de compilación: %(build_number)s"
 
 #: templates/appearance/about.html:76
 msgid "Released under the Apache 2.0 License"
-msgstr "Liberado bajo la licencia Apache 2.0 License"
+msgstr "Liberado bajo la licencia Apache 2.0"
 
 #: templates/appearance/about.html:88
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
@@ -81,6 +80,7 @@ msgid "Toggle navigation"
 msgstr "Activar/Desactivar navegación"
 
 #: templates/appearance/base.html:114
+#: templates/navigation/generic_navigation.html:6
 msgid "Actions"
 msgstr "Acciones"
 
@@ -155,7 +155,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_items_subtemplate.html:124
+#: templates/appearance/generic_list_items_subtemplate.html:118
 #: templates/appearance/generic_list_subtemplate.html:112
 msgid "No results"
 msgstr "Ningún resultado"
@@ -270,7 +270,6 @@ msgid "Password reset complete! Click the link below to login."
 msgstr "Reajuste de contraseña completado! Haga clic en el enlace de abajo para iniciar sesión."
 
 #: templates/authentication/password_reset_complete.html:17
-#| msgid "Login"
 msgid "Login page"
 msgstr "Página de inicio de sesión"
 
@@ -281,21 +280,3 @@ msgstr "Correo electrónico de restablecimiento de contraseña enviado!"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Ninguno"
-
-#~ msgid "Profile"
-#~ msgstr "Profile"
-
-#~ msgid "Anonymous"
-#~ msgstr "Anonymous"
-
-#~ msgid "Success"
-#~ msgstr "Success"
-
-#~ msgid "Information"
-#~ msgstr "Information"
-
-#~ msgid "Warning"
-#~ msgstr "Warning"
-
-#~ msgid "Error"
-#~ msgstr "Error"

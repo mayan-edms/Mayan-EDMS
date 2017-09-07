@@ -86,8 +86,16 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstance, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=IndexInstance, label=_('Total levels'),
+            func=lambda context: context[
+                'object'
+            ].instance_root.get_descendants_count()
+        )
+        SourceColumn(
+            source=IndexInstance, label=_('Total documents'),
+            func=lambda context: context[
+                'object'
+            ].instance_root.get_descendants_document_count(
                 user=context['request'].user
             )
         )
@@ -112,25 +120,37 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstanceNode, label=_('Node'),
+            source=IndexInstanceNode, label=_('Level'),
             func=lambda context: index_instance_item_link(context['object'])
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=IndexInstanceNode, label=_('Levels'),
+            func=lambda context: context['object'].get_descendants_count()
+        )
+        SourceColumn(
+            source=IndexInstanceNode, label=_('Documents'),
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
                 user=context['request'].user
             )
         )
 
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Node'),
+            source=DocumentIndexInstanceNode, label=_('Level'),
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
             )
         )
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Items'),
-            func=lambda context: context['object'].get_item_count(
+            source=DocumentIndexInstanceNode, label=_('Levels'),
+            func=lambda context: context['object'].get_descendants_count()
+        )
+        SourceColumn(
+            source=DocumentIndexInstanceNode, label=_('Documents'),
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
                 user=context['request'].user
             )
         )

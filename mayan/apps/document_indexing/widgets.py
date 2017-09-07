@@ -65,23 +65,20 @@ def node_tree(node, user):
     for ancestor in node.get_ancestors(include_self=True):
         if ancestor.is_root_node():
             element = node.index()
-            level = 0
             icon = 'fa fa-list-ul'
         else:
             element = ancestor
-            level = element.get_level()
             if element.index_template_node.link_documents:
                 icon = 'fa fa-folder'
             else:
                 icon = 'fa fa-level-up fa-rotate-90'
 
         result.append(
-            '<a href="{url}" class="list-group-item {active}"><span class="badge">{count}</span><i class="{icon}"></i>{space} {text}</a>'.format(
+            '<a href="{url}" class="list-group-item {active}"><span class="badge">{count}</span><i class="{icon}"></i> {text}</a>'.format(
                 url=element.get_absolute_url(),
                 active='active' if element == node or node.get_ancestors(include_self=True).count() == 1 else '',
                 count=element.get_item_count(user=user),
                 icon=icon,
-                space='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * level,
                 text=escape(element)
             )
         )
