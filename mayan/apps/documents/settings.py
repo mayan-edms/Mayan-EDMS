@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from smart_settings import Namespace
 
 LANGUAGE_CHOICES = [
-    (i.iso639_3_code, i.name) for i in list(pycountry.languages)
+    (i.alpha_3, i.name) for i in list(pycountry.languages)
 ]
 
 namespace = Namespace(name='documents', label=_('Documents'))

@@ -1,4 +1,4 @@
-Sphinx==1.5.3
+Sphinx==1.6.3
 
-sphinx-autobuild==0.6.0
+sphinx-autobuild==0.7.1
 sphinxcontrib-blockdiag==1.5.5
