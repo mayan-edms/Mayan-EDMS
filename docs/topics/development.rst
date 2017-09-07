@@ -54,6 +54,12 @@ Whenever possible, but don't obsess over things like line length:
 
     $ flake8 --ignore=E501,E128,E122 |less
 
+To perform automatic PEP8 checks, install flake8's git hook using:
+
+.. code-block:: bash
+
+    $ flake8 --install-hook git
+
 Imports
 ~~~~~~~
 
