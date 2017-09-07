@@ -245,47 +245,6 @@ Steps to deploy a development version
     $ ./manage.py runserver
 
 
-Setting up a development version using Vagrant
-----------------------------------------------
-Make sure you have Vagrant and a provider properly installed as per
-https://docs.vagrantup.com/v2/installation/index.html
-
-Start and provision a machine using:
-
-.. code-block:: bash
-
-    $ vagrant up development
-
-To launch a standalone development server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
-
-To launch a development server with a celery worker and Redis as broker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
-
-Then on a separate console launch a celery worker from the same provisioned Vagrant machine:
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
-
-
 Contributing changes
 --------------------
 Once your have created and committed some new code or feature, submit a Pull
