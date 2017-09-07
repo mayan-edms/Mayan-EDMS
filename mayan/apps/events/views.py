@@ -228,7 +228,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
         obj = self.get_object()
         initial = []
 
-        for element in self.get_queryset():
+        for element in self.get_object_list():
             initial.append({
                 'user': self.request.user,
                 'object': obj,
