@@ -2,13 +2,17 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from events.classes import Event
+from events import EventTypeNamespace
 
-event_parsing_document_version_submit = Event(
-    name='parsing_document_version_submit',
-    label=_('Document version submitted for parsing')
+namespace = EventTypeNamespace(
+    name='parsing', label=_('Document parsing')
 )
-event_parsing_document_version_finish = Event(
-    name='parsing_document_version_finish',
-    label=_('Document version parsing finished')
+
+event_parsing_document_version_submit = namespace.add_event_type(
+    label=_('Document version submitted for parsing'),
+    name='document_version_submit'
+)
+event_parsing_document_version_finish = namespace.add_event_type(
+    label=_('Document version parsing finished'),
+    name='document_version_finish'
 )

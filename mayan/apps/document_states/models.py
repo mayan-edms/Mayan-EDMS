@@ -17,7 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
-from events.models import EventType
+from events.models import StoredEventType
 from permissions import Permission
 
 from .error_logs import error_log_state_actions
@@ -306,7 +306,8 @@ class WorkflowTransitionTriggerEvent(models.Model):
         related_name='trigger_events', verbose_name=_('Transition')
     )
     event_type = models.ForeignKey(
-        EventType, on_delete=models.CASCADE, verbose_name=_('Event type')
+        StoredEventType, on_delete=models.CASCADE,
+        verbose_name=_('Event type')
     )
 
     class Meta:

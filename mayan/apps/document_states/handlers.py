@@ -4,7 +4,7 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from document_indexing.tasks import task_index_document
-from events.classes import Event
+from events.classes import EventType
 
 
 def handler_index_document(sender, **kwargs):
@@ -42,8 +42,9 @@ def handler_trigger_transition(sender, **kwargs):
         transition = list(set(trigger_transitions) & set(workflow_instance.get_transition_choices()))[0]
 
         workflow_instance.do_transition(
-            comment=_('Event trigger: %s') % Event.get(name=action.verb).label,
-            transition=transition
+            comment=_('Event trigger: %s') % EventType.get(
+                name=action.verb
+            ).label, transition=transition
         )
 
 

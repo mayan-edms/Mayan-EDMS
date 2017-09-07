@@ -17,16 +17,28 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='workflowinstancelogentry',
             name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='User'),
+            field=models.ForeignKey(
+                blank=True, null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL, verbose_name='User'
+            ),
         ),
         migrations.AlterField(
             model_name='workflowtransitiontriggerevent',
             name='event_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.EventType', verbose_name='Event type'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to='events.StoredEventType', verbose_name='Event type'
+            ),
         ),
         migrations.AlterField(
             model_name='workflowtransitiontriggerevent',
             name='transition',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='trigger_events', to='document_states.WorkflowTransition', verbose_name='Transition'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='trigger_events',
+                to='document_states.WorkflowTransition',
+                verbose_name='Transition'
+            ),
         ),
     ]

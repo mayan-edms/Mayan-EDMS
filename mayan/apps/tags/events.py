@@ -2,13 +2,15 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from events.classes import Event
+from events.classes import EventTypeNamespace
 
-event_tag_attach = Event(
-    name='tag_attach',
-    label=_('Tag attached to document')
+namespace = EventTypeNamespace(name='tag', label=_('Tags'))
+
+event_tag_attach = namespace.add_event_type(
+    label=_('Tag attached to document'),
+    name='attach'
 )
-event_tag_remove = Event(
-    name='tag_remove',
-    label=_('Tag removed from document')
+event_tag_remove = namespace.add_event_type(
+    label=_('Tag removed from document'),
+    name='remove'
 )

@@ -56,7 +56,7 @@ api_urls = [
         name='document-version-ocr-submit-view'
     ),
     url(
-        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$', APIDocumentPageContentView.as_view(),
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$',
         APIDocumentPageOCRContentView.as_view(),
         name='document-page-content-view'
     ),

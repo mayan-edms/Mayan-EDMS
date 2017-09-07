@@ -17,8 +17,8 @@ from common.views import (
 )
 from documents.models import Document
 from documents.views import DocumentListView
-from events.classes import Event
-from events.models import EventType
+from events.classes import EventType
+from events.models import StoredEventType
 
 from .classes import WorkflowAction
 from .forms import (
@@ -675,7 +675,7 @@ class WorkflowStateListView(SingleObjectListView):
 
 class SetupWorkflowTransitionTriggerEventListView(FormView):
     form_class = WorkflowTransitionTriggerEventRelationshipFormSet
-    submodel = EventType
+    submodel = StoredEventType
 
     def dispatch(self, *args, **kwargs):
         messages.warning(
@@ -689,7 +689,7 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
             user=self.request.user, obj=self.get_object().workflow
         )
 
-        Event.refresh()
+        EventType.refresh()
         return super(
             SetupWorkflowTransitionTriggerEventListView, self
         ).dispatch(*args, **kwargs)
@@ -735,8 +735,10 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
         initial = []
 
         # Return the queryset by name from the sorted list of the class
-        event_type_ids = [event_type.name for event_type in Event.all()]
-        event_type_queryset = EventType.objects.filter(name__in=event_type_ids)
+        event_type_ids = [event_type.name for event_type in EventType.all()]
+        event_type_queryset = StoredEventType.objects.filter(
+            name__in=event_type_ids
+        )
 
         for event_type in event_type_queryset:
             initial.append({
