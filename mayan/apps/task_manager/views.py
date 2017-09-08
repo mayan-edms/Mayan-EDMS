@@ -16,7 +16,7 @@ class QueueListView(SingleObjectListView):
     }
     view_permission = permission_task_view
 
-    def get_queryset(self):
+    def get_object_list(self):
         return CeleryQueue.all()
 
 
@@ -33,10 +33,7 @@ class QueueActiveTaskListView(SingleObjectListView):
     def get_object(self):
         return CeleryQueue.get(queue_name=self.kwargs['queue_name'])
 
-    def get_task_list(self):
-        return self.get_object().get_active_tasks()
-
-    def get_queryset(self):
+    def get_object_list(self):
         try:
             return self.get_task_list()
         except Exception as exception:
@@ -45,6 +42,9 @@ class QueueActiveTaskListView(SingleObjectListView):
                 _('Unable to retrieve task list; %s') % exception
             )
             return ()
+
+    def get_task_list(self):
+        return self.get_object().get_active_tasks()
 
 
 class QueueScheduledTaskListView(QueueActiveTaskListView):

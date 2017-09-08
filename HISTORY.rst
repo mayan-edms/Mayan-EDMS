@@ -1,3 +1,8 @@
+2.7.3 (2017-09-XX)
+==================
+- Fix task manager queue list view. Thanks to LeVon Smoker for
+  the report.
+
 2.7.2 (2017-09-06)
 ==================
 - Fix new mailer creation view. GitLab issue #431.
