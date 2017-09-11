@@ -29,9 +29,9 @@ from ..permissions import (
     permission_sources_setup_view, permission_staging_file_delete
 )
 
-TEST_SOURCE_LABEL = 'test source'
-TEST_SOURCE_UNCOMPRESS_N = 'n'
-TEST_STAGING_PREVIEW_WIDTH = 640
+from .literals import (
+    TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N, TEST_STAGING_PREVIEW_WIDTH
+)
 
 
 class DocumentUploadTestCase(GenericDocumentViewTestCase):
@@ -253,9 +253,9 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
 
-class StagingFolderTestCase(GenericViewTestCase):
+class StagingFolderViewTestCase(GenericViewTestCase):
     def setUp(self):
-        super(StagingFolderTestCase, self).setUp()
+        super(StagingFolderViewTestCase, self).setUp()
         self.temporary_directory = mkdtemp()
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
 
@@ -263,7 +263,7 @@ class StagingFolderTestCase(GenericViewTestCase):
 
     def tearDown(self):
         fs_cleanup(self.temporary_directory)
-        super(StagingFolderTestCase, self).tearDown()
+        super(StagingFolderViewTestCase, self).tearDown()
 
     def test_staging_folder_delete_no_permission(self):
         self.login_user()
