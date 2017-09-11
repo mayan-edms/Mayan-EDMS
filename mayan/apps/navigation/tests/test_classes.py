@@ -15,7 +15,8 @@ from ..classes import Link, Menu
 from .literals import (
     TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT,
     TEST_PERMISSION_NAME, TEST_PERMISSION_LABEL, TEST_LINK_TEXT,
-    TEST_MENU_NAME, TEST_SUBMENU_NAME, TEST_UNICODE_STRING
+    TEST_MENU_NAME, TEST_QUERYSTRING_ONE_KEY, TEST_QUERYSTRING_TWO_KEYS,
+    TEST_SUBMENU_NAME, TEST_UNICODE_STRING, TEST_URL
 )
 
 
@@ -113,6 +114,43 @@ class LinkClassTestCase(GenericViewTestCase):
         resolved_link = self.link.resolve(context=context)
 
         self.assertEqual(resolved_link.url, url.url)
+
+
+    def test_link_with_querystring_preservation(self):
+        previous_url = '{}?{}'.format(
+            reverse(TEST_VIEW_NAME), TEST_QUERYSTRING_TWO_KEYS
+        )
+        self.link.keep_query = True
+        self.link.url = TEST_URL
+        self.link.view = None
+        response = self.get(path=previous_url)
+
+        context = Context({'request': response.wsgi_request})
+
+        resolved_link = self.link.resolve(context=context)
+
+        self.assertEqual(
+            resolved_link.url,
+            '{}?{}'.format(TEST_URL, TEST_QUERYSTRING_TWO_KEYS)
+        )
+
+    def test_link_with_querystring_preservation_with_key_removal(self):
+        previous_url = '{}?{}'.format(
+            reverse(TEST_VIEW_NAME), TEST_QUERYSTRING_TWO_KEYS
+        )
+        self.link.keep_query = True
+        self.link.url = TEST_URL
+        self.link.view = None
+        self.link.remove_from_query = ['key2']
+        response = self.get(path=previous_url)
+
+        context = Context({'request': response.wsgi_request})
+
+        resolved_link = self.link.resolve(context=context)
+        self.assertEqual(
+            resolved_link.url,
+            '{}?{}'.format(TEST_URL, TEST_QUERYSTRING_ONE_KEY)
+        )
 
 
 class MenuClassTestCase(GenericViewTestCase):

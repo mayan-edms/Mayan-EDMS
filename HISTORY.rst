@@ -2,6 +2,9 @@
 ==================
 - Fix task manager queue list view. Thanks to LeVon Smoker for
   the report.
+- Fix resolved link class URL mangling when the keep_query argument is
+  used. Thanks to Nick Douma (LordGaav) for the report and diagnostic
+  information. Fixes source navigation on the document upload wizard.
 
 2.7.2 (2017-09-06)
 ==================

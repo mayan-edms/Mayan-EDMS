@@ -363,7 +363,10 @@ class Link(object):
                 except KeyError:
                     pass
 
-            resolved_link.url = parsed_url.url
+            # Use the link's URL but with the previous URL querystring
+            new_url = furl(resolved_link.url)
+            new_url.args = parsed_url.querystr
+            resolved_link.url = new_url.url
 
         resolved_link.context = context
         return resolved_link

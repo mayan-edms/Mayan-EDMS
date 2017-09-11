@@ -9,6 +9,10 @@ What's new
 
 - Fix task manager queue list view. Thanks to LeVon Smoker for
   the report.
+- Fix resolved link class URL mangling when the keep_query argument is
+  used. Fixes source navigation on the document upload wizard. Thanks to
+  Nick Douma (LordGaav) for the report and diagnostic information. GitLab
+  issue #436.
 
 Removals
 --------
@@ -64,5 +68,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #431 <https://gitlab.com/mayan-edms/mayan-edms/issues/431>`_ can't create new mailer
+* `GitLab issue #436 <https://gitlab.com/mayan-edms/mayan-edms/issues/436>`_ New document source menu does not contain source_ids
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
