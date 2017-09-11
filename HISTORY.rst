@@ -1,4 +1,4 @@
-2.7.3 (2017-09-XX)
+2.7.3 (2017-09-11)
 ==================
 - Fix task manager queue list view. Thanks to LeVon Smoker for
   the report.
