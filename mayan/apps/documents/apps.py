@@ -437,9 +437,6 @@ class DocumentsApp(MayanAppConfig):
             sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
-        menu_facet.bind_links(
-            links=(link_document_version_view,), sources=(DocumentVersion,)
-        )
 
         # Document actions
         menu_object.bind_links(
@@ -492,6 +489,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_return_document,
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 
         namespace = StatisticNamespace(slug='documents', label=_('Documents'))

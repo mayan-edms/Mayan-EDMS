@@ -135,7 +135,7 @@ class DocumentSignaturesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(
                 link_document_version_signature_list,
-            ), sources=(DocumentVersion,)
+            ), position=9, sources=(DocumentVersion,)
         )
 
         menu_object.bind_links(
