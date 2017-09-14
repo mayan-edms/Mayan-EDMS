@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Q
 from django.template import Context, Template
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
@@ -11,6 +11,7 @@ from documents.models import Document, DocumentType
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
 )
+from .managers import SmartLinkManager
 
 
 @python_2_unicode_compatible
@@ -29,6 +30,8 @@ class SmartLink(models.Model):
         DocumentType, verbose_name=_('Document types')
     )
 
+    objects = SmartLinkManager()
+
     def __str__(self):
         return self.label
 
@@ -40,7 +43,9 @@ class SmartLink(models.Model):
                 return template.render(context=context)
             except Exception as exception:
                 return _(
-                    'Error generating dynamic label; %s' % unicode(exception)
+                    'Error generating dynamic label; %s' % force_text(
+                        exception
+                    )
                 )
         else:
             return None
@@ -97,7 +102,8 @@ class ResolvedSmartLink(SmartLink):
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     smart_link = models.ForeignKey(
-        SmartLink, related_name='conditions', verbose_name=_('Smart link')
+        SmartLink, on_delete=models.CASCADE, related_name='conditions',
+        verbose_name=_('Smart link')
     )
     inclusion = models.CharField(
         choices=INCLUSION_CHOICES, default=INCLUSION_AND,

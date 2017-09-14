@@ -2,7 +2,7 @@
 Document signatures
 ===================
 
-**Mayan EDMS** supports two types of document signatures: embedded and
+Mayan EDMS supports two types of document signatures: embedded and
 detached signatures. When a document with an embedded signature is
 uploaded, this signature is readily detected as part of the document
 inspection step. The status of the signature can be verified by accessing the
@@ -20,5 +20,7 @@ From this menu, key servers can be queried and the results imported. Public
 keys no longer needed can also be deleted from this menu.
 
 Only `GNU Privacy Guard`_ signatures are support at the moment.
+
+Only version 1 of `GNU Privacy Guard`_ is supported for now.
 
 .. _`GNU Privacy Guard`: www.gnupg.org/

@@ -1,0 +1,87 @@
+===============================
+Mayan EDMS v2.1.3 release notes
+===============================
+
+Released: June 29, 2016
+
+What's new
+==========
+
+This is a bug-fix release and all users are encouraged to upgrade.
+
+Temporary files cleanup
+-----------------------
+When uploading PDF files that had been OCRed by previous software, the text
+parser backend that uses Poppler, would leave behind some temporary files in
+the /tmp folder. The issue has been resolved and from the fix a test mixin
+system check has been devised that will identify places in the codebase with
+similar behaviors, reducing the recurrence of similar issues in the future.
+
+Other changes
+-------------
+- Add help message when initialsetup migration phase fails. Relates to GitLab issue #296
+- Start using self.setdout instead of print as per documentation.
+- Fix GitLab issue #295, "When editing a user the top bar jumps to the name of the user".
+- Normalize handling of temporary file and directory creation.
+- Explicitly check for residual temporary files in tests.
+- Add missing temporary file cleanup for office documents.
+- Fix file descriptor leak in the document signature download test.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #295 <https://gitlab.com/mayan-edms/mayan-edms/issues/295>`_   When editing a user the top bar jumps to the name of the user
+* `GitLab issue #309 <https://gitlab.com/mayan-edms/mayan-edms/issues/309>`_   Temp files quickly filling-up my /tmp (1GB tmpfs)
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

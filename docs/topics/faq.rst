@@ -7,7 +7,7 @@ Frequently asked questions and solutions
 **Q: PostgreSQL vs. MySQL**
 
 Since Django abstracts database operations from a functional point of view
-**Mayan EDMS** will behave exactly the same either way.  The only concern
+Mayan EDMS will behave exactly the same either way.  The only concern
 would be that MySQL doesn't support transactions for schema modifying
 commands. The only moment this could cause problems is when running
 South migrations during upgrades, if a migration fails the database
@@ -90,7 +90,7 @@ When using ``MySQL`` and doing OCR on languages other than English
 
 **Q: Is virtualenv required as specified in the documentation?**
 
-* It is not necessary, it's just a strong recommendation mainly to reduce
+* It is not necessary, but it's a strong recommendation mainly to reduce
   dependency conflicts by isolation from the main Python system install.
   If not using a virtualenv, pip would install Mayan's dependencies
   globally coming in conflict with the distribution's prepackaged Python
@@ -116,3 +116,20 @@ http://mayan-edms-ru.blogspot.com/2011/11/blog-post_09.html
 **Q:  Can you change the display order of documents...i.e can they be in alphabetical order?**
 
 A the moment no, but it is something being considered.
+
+**Q: Does Mayan EDMS work with Python 3?**
+
+Not at the moment. When all the projects and libraries upon which Mayan is
+dependent support Python 3 then will the project move to fully support Python 3.
+
+**Q: The watched folder feature is not working**
+
+Make sure that the Celery BEAT scheduler is running correctly as it is the element
+that triggers the periodics tasks.
+
+**Q: How to do LDAP authentication**
+
+A sample settings file called ldap_connection_settings.py is included in the
+contrib/settings/ folder of the repository showing how to setup LDAP
+authentication.
+

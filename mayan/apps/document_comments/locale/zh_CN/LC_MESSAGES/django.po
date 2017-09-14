@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:43-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
@@ -18,31 +17,32 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:23
-#| msgid "Delete comments"
+#: apps.py:26
 msgid "Document comments"
 msgstr ""
 
-#: apps.py:41
+#: apps.py:46
 msgid "Date"
 msgstr "日期"
 
-#: apps.py:43 models.py:27
+#: apps.py:48 models.py:27
 msgid "User"
 msgstr "用户"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:46 models.py:30 models.py:72 views.py:25
+#: apps.py:51 models.py:30 models.py:72 views.py:23
 msgid "Comment"
 msgstr "评论"
 
+#: apps.py:55 apps.py:59 links.py:22 models.py:73 permissions.py:7
+msgid "Comments"
+msgstr "评论"
+
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr ""
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr ""
 
@@ -53,10 +53,6 @@ msgstr ""
 #: links.py:18
 msgid "Delete"
 msgstr ""
-
-#: links.py:22 models.py:73 permissions.py:7
-msgid "Comments"
-msgstr "评论"
 
 #: models.py:23
 msgid "Document"
@@ -78,54 +74,17 @@ msgstr "删除评论"
 msgid "View comments"
 msgstr "查看评论"
 
-#: views.py:47
+#: views.py:41
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "添加评论到文档：%s"
 
-#: views.py:90
+#: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:122
+#: views.py:98
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""
-
-#~ msgid "Comment \"%s\" deleted successfully."
-#~ msgstr "Comment \"%s\" deleted successfully."
-
-#~ msgid "Error deleting comment \"%(comment)s\": %(error)s"
-#~ msgstr "Error deleting comment \"%(comment)s\": %(error)s"
-
-#~ msgid "Delete comment?"
-#~ msgstr "Delete comments"
-
-#~ msgid "Comment added successfully."
-#~ msgstr "Comment added successfully."
-
-#~ msgid "comment"
-#~ msgstr "comment"
-
-#~ msgid "Must provide at least one comment."
-#~ msgstr "Must provide at least one comment."
-
-#~ msgid "Are you sure you wish to delete the comment: %s?"
-#~ msgstr "Are you sure you wish to delete the comment: %s?"
-
-#~ msgid "Are you sure you wish to delete the comments: %s?"
-#~ msgstr "Are you sure you wish to delete the comments: %s?"
-
-#~ msgid "date"
-#~ msgstr "date"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "comments"
-#~ msgstr "comments"
-
-#~ msgid "comments: %s"
-#~ msgstr "comments: %s"

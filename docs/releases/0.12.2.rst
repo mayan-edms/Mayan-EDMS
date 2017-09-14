@@ -24,7 +24,7 @@ What's new in Mayan EDMS v0.12.2
 
 Smarter auto admin creation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-**Mayan EDMS** creates a administrator user during the
+Mayan EDMS creates a administrator user during the
 database creation phase to reduce the amount of steps required for a
 functional install.  The creation of this account is controlled by the configuration
 option `COMMON_AUTO_CREATE_ADMIN`, the username of the account is
@@ -41,7 +41,7 @@ As per the feature request filed under `issue #26`_, a new document
 check out and check in functionality has been added.  Users can now
 check out a document and lock new version of it from being uploaded to avoid
 editing conflicts.  Document check outs have an expiration period after which
-**Mayan EDMS** will automatically check them back in to avoid a permanent
+Mayan EDMS will automatically check them back in to avoid a permanent
 document lockout.  Only the user who has checked out a document can upload
 new versions of it or check the document back in before the expiration period,
 unless being granted the ``Allow overriding check out restrictions`` or
@@ -52,14 +52,14 @@ Installation environment app
 Diagnosting remote installations of web based applications without access to the
 command line can be a bit hard, to alleviate this situation a new installation
 environment details app has been added.  The purpose of this app is to provide
-support staff information about the physical environment where **Mayan EDMS** has
+support staff information about the physical environment where Mayan EDMS has
 been installed.  To avoid possible security compromises only administrators
 can access this app.
 
 Editable compressed documents filename
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Previously when downloading more than one document in a compressed manner,
-**Mayan EDMS** would produce a file with the name ``document_bundle.zip`` for
+Mayan EDMS would produce a file with the name ``document_bundle.zip`` for
 download.  A different filename can now be specified at the same download dialog.
 
 German translation
@@ -71,7 +71,7 @@ Statistics gathering
 ~~~~~~~~~~~~~~~~~~~~
 Previous attempts at gathering usage statistics have been met with deficient results.
 User participation in surveys as well as the quality of the data entered by users
-was disappointing.  That is why this version of **Mayan EDMS** features an
+was disappointing.  That is why this version of Mayan EDMS features an
 anonymous statistics gathering functionality.
 
 

@@ -1,13 +1,15 @@
 from __future__ import unicode_literals
 
-from django.db.models import get_model
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK
 
 
 def create_default_document_source(sender, **kwargs):
-    WebFormSource = get_model('sources', 'WebFormSource')
+    WebFormSource = apps.get_model(
+        app_label='sources', model_name='WebFormSource'
+    )
 
     if not WebFormSource.objects.count():
         WebFormSource.objects.create(
@@ -16,7 +18,9 @@ def create_default_document_source(sender, **kwargs):
 
 
 def copy_transformations_to_version(sender, **kwargs):
-    Transformation = get_model('converter', 'Transformation')
+    Transformation = apps.get_model(
+        app_label='converter', model_name='Transformation'
+    )
 
     instance = kwargs['instance']
 
@@ -28,9 +32,11 @@ def copy_transformations_to_version(sender, **kwargs):
 
 
 def initialize_periodic_tasks(sender, **kwargs):
-    POP3Email = get_model('sources', 'POP3Email')
-    IMAPEmail = get_model('sources', 'IMAPEmail')
-    WatchFolderSource = get_model('sources', 'WatchFolderSource')
+    POP3Email = apps.get_model(app_label='sources', model_name='POP3Email')
+    IMAPEmail = apps.get_model(app_label='sources', model_name='IMAPEmail')
+    WatchFolderSource = apps.get_model(
+        app_label='sources', model_name='WatchFolderSource'
+    )
 
     for source in POP3Email.objects.filter(enabled=True):
         source.save()

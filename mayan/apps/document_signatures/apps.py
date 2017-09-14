@@ -39,6 +39,7 @@ from .permissions import (
     permission_document_version_signature_upload,
     permission_document_version_signature_view,
 )
+from .queues import *  # NOQA
 
 logger = logging.getLogger(__name__)
 
@@ -46,8 +47,8 @@ logger = logging.getLogger(__name__)
 class DocumentSignaturesApp(MayanAppConfig):
     app_namespace = 'signatures'
     app_url = 'signatures'
+    has_tests = True
     name = 'document_signatures'
-    test = True
     verbose_name = _('Document signatures')
 
     def ready(self):
@@ -131,9 +132,14 @@ class DocumentSignaturesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_signature_list,), sources=(Document,)
         )
-        menu_object.bind_links(
+        menu_facet.bind_links(
             links=(
                 link_document_version_signature_list,
+            ), position=9, sources=(DocumentVersion,)
+        )
+
+        menu_object.bind_links(
+            links=(
                 link_document_version_signature_detached_create,
                 link_document_version_signature_embedded_create
             ), sources=(DocumentVersion,)

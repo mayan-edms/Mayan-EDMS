@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 import itertools
 
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import (
@@ -61,12 +62,12 @@ class SetupRoleMembersView(AssignRemoveView):
 
     def left_list(self):
         return [
-            (unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())
+            (force_text(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())
         ]
 
     def right_list(self):
         return [
-            (unicode(group.pk), group.name) for group in self.get_object().groups.all()
+            (force_text(group.pk), group.name) for group in self.get_object().groups.all()
         ]
 
     def remove(self, item):
@@ -97,10 +98,12 @@ class SetupRolePermissionsView(AssignRemoveView):
         return get_object_or_404(Role, pk=self.kwargs['pk'])
 
     def left_list(self):
+        Permission.refresh()
         results = []
+
         for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
             permission_options = [
-                (unicode(permission.pk), permission) for permission in permissions
+                (force_text(permission.pk), permission) for permission in permissions
             ]
             results.append(
                 (PermissionNamespace.get(namespace), permission_options)
@@ -112,7 +115,7 @@ class SetupRolePermissionsView(AssignRemoveView):
         results = []
         for namespace, permissions in itertools.groupby(self.get_object().permissions.all(), lambda entry: entry.namespace):
             permission_options = [
-                (unicode(permission.pk), permission) for permission in permissions
+                (force_text(permission.pk), permission) for permission in permissions
             ]
             results.append(
                 (PermissionNamespace.get(namespace), permission_options)

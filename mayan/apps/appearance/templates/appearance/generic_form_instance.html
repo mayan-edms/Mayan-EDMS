@@ -22,7 +22,17 @@
     {% for field in form.visible_fields %}
         <td title="{% if field.errors %}{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}{% else %}{{ field.help_text }}{% endif %}">
             {% if field.errors %}<div class="has-error">{% endif %}
-              {% render_field field class+="form-control" %}
+                {% if field|widget_type == 'radioselect' %}
+                    <div class="btn-group" data-toggle="buttons">
+                        {% for option in field %}
+                            <label class="btn btn-default {% if field.value == option.choice_value %}active{% endif %}" for="{{ option.attrs.id }}">
+                                <input type="radio" name="{{ option.name }}" id="{{ option.attrs.id }}" value="{{ option.choice_value }}" {% if field.value == option.choice_value %}checked{% endif %}> {{ option.choice_label }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {% render_field field class+="form-control" %}
+                {% endif %}
             {% if field.errors %}</div>{% endif %}
         </td>
     {% endfor %}
@@ -38,7 +48,6 @@
                 {% if field|widget_type != 'checkboxinput' and not field.field.widget.attrs.hidden %}
                     {% if not hide_labels %}{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                 {% endif %}
-
                 {% if field|widget_type == 'checkboxinput' %}
                     <div class="checkbox">
                         <label>
@@ -78,7 +87,7 @@
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}
-                {% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
+                {% if field.help_text %}<p class="help-block">{{ field.help_text|safe }}</p>{% endif %}
             </div>
         {% endfor %}
 {% endif %}

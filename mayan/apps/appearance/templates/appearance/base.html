@@ -22,22 +22,35 @@
         </title>
 
         {% compress css %}
-            <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-            <link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />
-            <link href="{% static 'appearance/packages/bootswatch.com/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/font-awesome-4.7.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            {# Disable base Bootstrap CSS, Flatly seems to include it already #}
+            {#<link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />#}
+            <link href="{% static 'appearance/packages/bootswatch.com/flatly/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/animate/animate.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/select2-4.0.3/dist/css/select2.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
             {% block stylesheets %}{% endblock %}
-
         {% endcompress %}
+        <script>
+            function waitForJQuery(func) {
+                if (window.jQuery) {
+                    func();
+                } else {
+                    setTimeout(function() {
+                        waitForJQuery(func)
+                    }, 50);
+                }
+            }
+        </script>
     </head>
     <body>
         {% if appearance_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
             <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                             <span class="sr-only">{% trans 'Toggle navigation' %}</span>
@@ -46,7 +59,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         {# TODO: don't use hardcoded main:home use settings.LOGIN_REDIRECT_URL #}
-                        <a class="navbar-brand" href="{% url 'common:home' %}">{% project_name %}{% if debug %} <i class="fa fa-bug"></i>{% endif %}</a>
+                        <a class="navbar-brand" href="{% url 'common:home' %}">{% project_name %}</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -67,28 +80,13 @@
                                 {% endfor %}
                             {% endfor %}
                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            {% if not user.is_authenticated %}
-                                {% trans 'Anonymous' %}
-                            {% else %}
-                                <li><a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <i class="fa fa-user"></i></a></li>
-                            {% endif %}
-                        </ul>
                     </div>
                 </div>
             </nav>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12">
-                        {% for message in messages %}
-                            <div class="animated fadeInDown alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
-                                <button type="button" class="close">×</button>
-                                <h4>{% if 'success' in message.tags %}{% trans 'Success' %}{% elif 'info' in message.tags %}{% trans 'Information' %}{% elif 'warning' in message.tags %}{% trans 'Warning' %}{% else %}{% trans 'Error' %}{% endif %}</h4>
-                                <p>{{ message }}</p>
-                            </div>
-                        {% endfor %}
-
                         {% block messages %}{% endblock %}
                     </div>
                 </div>
@@ -98,7 +96,7 @@
 
                 <div class="row">
                     {% if links or form_navigation_links %}
-                        <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
                     {% else %}
                         <div class="col-xs-12">
                     {% endif %}
@@ -107,13 +105,14 @@
                     </div>
 
                     {% if links or form_navigation_links %}
-                        <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2">
                     {% endif %}
 
                     {% if links %}
                         <div class="pull-right btn-group" style="margin-bottom: 10px;">
                             <button aria-expanded="true" type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">
                                 {% trans 'Actions' %}
+                                <span class="caret"></span>
                                 <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
@@ -167,9 +166,23 @@
         <script type="text/javascript" src="{% static 'appearance/packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.pack.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/lib/jquery.mousewheel.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/select2-4.0.3/dist/js/select2.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/jquery.matchHeight-min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/js/base.js' %}"></script>
-        {% block javascript %}{% endblock %}
         {% endcompress %}
+
+        <script>
+        var DjangoMessages = [
+            {% for message in messages %}
+                {
+                    tags: '{{ message.tags }}',
+                    message: '{{ message.message }}'
+                },
+            {% endfor %}
+        ];
+        </script>
+        {% block javascript %}{% endblock %}
     </body>
 </html>
 {% endspaceless %}

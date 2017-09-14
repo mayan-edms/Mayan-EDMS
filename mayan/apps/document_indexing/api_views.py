@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -9,7 +8,6 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 from documents.serializers import DocumentSerializer
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -99,15 +97,10 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         index_node_instance = get_object_or_404(
             IndexInstanceNode, pk=self.kwargs['pk']
         )
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_indexing_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_indexing_view, self.request.user,
-                index_node_instance.index
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_indexing_view,
+            user=self.request.user, obj=index_node_instance.index
+        )
 
         return index_node_instance.documents.all()
 
@@ -177,13 +170,9 @@ class APIDocumentIndexListView(generics.ListAPIView):
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
-        return document.node_instances.all()
+        return document.index_instance_nodes.all()

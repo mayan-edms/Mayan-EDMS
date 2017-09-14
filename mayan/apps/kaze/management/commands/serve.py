@@ -11,7 +11,7 @@ from tornado.process import Subprocess
 import tornado.web
 import tornado.wsgi
 
-DEFAULT_PORT = 52723
+DEFAULT_PORT = 8080
 
 
 class Command(management.BaseCommand):

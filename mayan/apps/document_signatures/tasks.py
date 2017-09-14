@@ -73,4 +73,11 @@ def task_verify_document_version(self, document_version_pk):
     )
 
     document_version = DocumentVersion.objects.get(pk=document_version_pk)
-    EmbeddedSignature.objects.create(document_version=document_version)
+    try:
+        EmbeddedSignature.objects.create(document_version=document_version)
+    except IOError as exception:
+        error_message = 'File missing for document version ID {}; {}'.format(
+            document_version_pk, exception
+        )
+        logger.error(error_message)
+        raise IOError(error_message)

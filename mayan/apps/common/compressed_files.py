@@ -1,17 +1,13 @@
 from __future__ import unicode_literals
 
+from io import BytesIO
 import zipfile
 
 try:
-    import zlib
+    import zlib  # NOQA
     COMPRESSION = zipfile.ZIP_DEFLATED
 except:
     COMPRESSION = zipfile.ZIP_STORED
-
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -35,7 +31,7 @@ class CompressedFile(object):
             self._create()
 
     def _create(self):
-        self.descriptor = StringIO()
+        self.descriptor = BytesIO()
         self.zf = zipfile.ZipFile(self.descriptor, mode='w')
 
     def _open(self, file_input):

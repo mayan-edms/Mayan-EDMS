@@ -7,9 +7,11 @@ import sh
 from django.conf import settings
 from django.template import Context, Library
 from django.template.loader import get_template
+from django.utils.encoding import force_text
 
 import mayan
 
+from ..classes import Collection, Dashboard
 from ..utils import return_attrib
 
 register = Library()
@@ -20,6 +22,16 @@ try:
 except sh.CommandNotFound:
     BUILD = None
     DATE = None
+
+
+@register.simple_tag
+def get_collections():
+    return Collection.get_all()
+
+
+@register.simple_tag
+def get_dashboard(name):
+    return Dashboard.get(name=name)
 
 
 @register.filter
@@ -35,9 +47,19 @@ def object_property(value, arg):
     return return_attrib(value, arg)
 
 
-@register.assignment_tag
+@register.simple_tag
+def project_copyright():
+    return settings.PROJECT_COPYRIGHT
+
+
+@register.simple_tag
 def project_description():
     return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
+
+
+@register.simple_tag
+def project_license():
+    return settings.PROJECT_LICENSE
 
 
 @register.simple_tag
@@ -55,7 +77,7 @@ def project_version():
     return mayan.__version__
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def render_subtemplate(context, template_name, template_context):
     """
     Renders the specified template with the mixed parent and
@@ -67,12 +89,17 @@ def render_subtemplate(context, template_name, template_context):
     return get_template(template_name).render(new_context)
 
 
-@register.assignment_tag
+@register.simple_tag
 def build():
     if BUILD:
         try:
-            return '{} {}'.format(BUILD(), DATE().decode())
+            return '{} {}'.format(BUILD(), DATE())
         except sh.ErrorReturnCode_128:
             return ''
     else:
         return ''
+
+
+@register.filter
+def get_type(value):
+    return force_text(type(value))

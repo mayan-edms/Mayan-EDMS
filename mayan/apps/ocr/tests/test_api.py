@@ -3,24 +3,26 @@ from __future__ import unicode_literals
 import json
 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from rest_framework import status
-from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import BaseAPITestCase
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 
-class OCRAPITestCase(APITestCase):
+class OCRAPITestCase(BaseAPITestCase):
     """
     Test the OCR app API endpoints
     """
 
     def setUp(self):
+        super(OCRAPITestCase, self).setUp()
+
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -31,7 +33,7 @@ class OCRAPITestCase(APITestCase):
         )
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -41,6 +43,7 @@ class OCRAPITestCase(APITestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OCRAPITestCase, self).tearDown()
 
     def test_submit_document(self):
         response = self.client.post(

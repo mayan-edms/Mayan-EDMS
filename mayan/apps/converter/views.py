@@ -3,10 +3,9 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -14,7 +13,6 @@ from common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
 )
-from permissions import Permission
 
 from .models import Transformation
 from .permissions import (
@@ -33,15 +31,10 @@ class TransformationDeleteView(SingleObjectDeleteView):
             Transformation, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_delete,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_delete, request.user,
-                self.transformation.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_delete, user=request.user,
+            obj=self.transformation.content_object
+        )
 
         return super(TransformationDeleteView, self).dispatch(
             request, *args, **kwargs
@@ -94,15 +87,10 @@ class TransformationCreateView(SingleObjectCreateView):
         except content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_create,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_create, request.user,
-                self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_create, user=request.user,
+            obj=self.content_object
+        )
 
         return super(TransformationCreateView, self).dispatch(
             request, *args, **kwargs
@@ -120,6 +108,15 @@ class TransformationCreateView(SingleObjectCreateView):
         else:
             return super(TransformationCreateView, self).form_valid(form)
 
+    def get_extra_context(self):
+        return {
+            'content_object': self.content_object,
+            'navigation_object_list': ('content_object',),
+            'title': _(
+                'Create new transformation for: %s'
+            ) % self.content_object,
+        }
+
     def get_post_action_redirect(self):
         return reverse(
             'converter:transformation_list', args=(
@@ -131,15 +128,6 @@ class TransformationCreateView(SingleObjectCreateView):
     def get_queryset(self):
         return Transformation.objects.get_for_model(self.content_object)
 
-    def get_extra_context(self):
-        return {
-            'content_object': self.content_object,
-            'navigation_object_list': ('content_object',),
-            'title': _(
-                'Create new transformation for: %s'
-            ) % self.content_object,
-        }
-
 
 class TransformationEditView(SingleObjectEditView):
     fields = ('name', 'arguments', 'order')
@@ -150,15 +138,10 @@ class TransformationEditView(SingleObjectEditView):
             Transformation, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_edit, request.user,
-                self.transformation.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_edit, user=request.user,
+            obj=self.transformation.content_object
+        )
 
         return super(TransformationEditView, self).dispatch(
             request, *args, **kwargs
@@ -175,15 +158,6 @@ class TransformationEditView(SingleObjectEditView):
         else:
             return super(TransformationEditView, self).form_valid(form)
 
-    def get_post_action_redirect(self):
-        return reverse(
-            'converter:transformation_list', args=(
-                self.transformation.content_type.app_label,
-                self.transformation.content_type.model,
-                self.transformation.object_id
-            )
-        )
-
     def get_extra_context(self):
         return {
             'content_object': self.transformation.content_object,
@@ -196,6 +170,15 @@ class TransformationEditView(SingleObjectEditView):
             },
             'transformation': self.transformation,
         }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'converter:transformation_list', args=(
+                self.transformation.content_type.app_label,
+                self.transformation.content_type.model,
+                self.transformation.object_id
+            )
+        )
 
 
 class TransformationListView(SingleObjectListView):
@@ -212,22 +195,14 @@ class TransformationListView(SingleObjectListView):
         except content_type.model_class().DoesNotExist:
             raise Http404
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_transformation_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_transformation_view, request.user,
-                self.content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_transformation_view, user=request.user,
+            obj=self.content_object
+        )
 
         return super(TransformationListView, self).dispatch(
             request, *args, **kwargs
         )
-
-    def get_queryset(self):
-        return Transformation.objects.get_for_model(self.content_object)
 
     def get_extra_context(self):
         return {
@@ -237,3 +212,6 @@ class TransformationListView(SingleObjectListView):
             'navigation_object_list': ('content_object',),
             'title': _('Transformations for: %s') % self.content_object,
         }
+
+    def get_object_list(self):
+        return Transformation.objects.get_for_model(self.content_object)

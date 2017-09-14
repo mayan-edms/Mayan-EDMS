@@ -1,53 +1,61 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# molnars <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:44-0400\n"
-"PO-Revision-Date: 2015-08-20 19:07+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 links.py:27 links.py:31 permissions.py:7 views.py:38
+#: apps.py:16
+msgid "System"
+msgstr ""
+
+#: apps.py:26 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
-msgstr ""
+msgstr "Események"
 
-#: apps.py:55
+#: apps.py:35
 msgid "Timestamp"
-msgstr ""
+msgstr "Időbélyeg"
 
-#: apps.py:57
+#: apps.py:38
 msgid "Actor"
-msgstr ""
+msgstr "Szereplő"
 
-#: apps.py:59
+#: apps.py:42
 msgid "Verb"
+msgstr "Ige"
+
+#: apps.py:46
+msgid "Action object"
 msgstr ""
 
-#: classes.py:17
+#: classes.py:23
 #, python-brace-format
 msgid "Unknown or obsolete event type: {0}"
-msgstr ""
+msgstr "Unknown or obsolete event type: {0}"
 
 #: models.py:13
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
-#: models.py:20
+#: models.py:17
 msgid "Event type"
-msgstr ""
+msgstr "Esemény típus"
 
-#: models.py:21
+#: models.py:18
 msgid "Event types"
 msgstr ""
 
@@ -55,16 +63,16 @@ msgstr ""
 msgid "Access the events of an object"
 msgstr ""
 
-#: views.py:31 views.py:90
+#: views.py:26 views.py:81
 msgid "Target"
 msgstr ""
 
-#: views.py:75
+#: views.py:69
 #, python-format
 msgid "Events for: %s"
 msgstr ""
 
-#: views.py:98
+#: views.py:89
 #, python-format
 msgid "Events of type: %s"
 msgstr ""

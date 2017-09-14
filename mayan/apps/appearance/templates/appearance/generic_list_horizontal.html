@@ -1,6 +1,7 @@
 {% extends 'appearance/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% load navigation_tags %}
 
@@ -24,3 +25,11 @@
     </div>
 {% endblock %}
 
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(function() {
+            $('.btn-block').matchHeight();
+        });
+    </script>
+{% endblock %}

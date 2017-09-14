@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:46-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2016-03-21 20:55+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:21 links.py:25 permissions.py:7
+#: apps.py:22 links.py:25 permissions.py:7
 msgid "Message of the day"
 msgstr ""
 
-#: apps.py:29 models.py:20
+#: apps.py:32 models.py:20
 msgid "Enabled"
 msgstr "فعال شده"
 
-#: apps.py:32 models.py:24
+#: apps.py:35 models.py:24
 msgid "Start date time"
 msgstr ""
 
-#: apps.py:33 apps.py:37
+#: apps.py:36 apps.py:40
 msgid "None"
 msgstr "هیچکدام."
 
-#: apps.py:36 models.py:29
+#: apps.py:39 models.py:29
 msgid "End date time"
 msgstr ""
 

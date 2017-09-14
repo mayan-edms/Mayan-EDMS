@@ -15,7 +15,7 @@ from common import (
 )
 from common.classes import ModelAttribute, Filter
 from common.widgets import two_state_template
-from documents.search import document_search
+from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
 from documents.permissions import permission_document_view
 from mayan.celery import app
@@ -24,31 +24,32 @@ from rest_api.classes import APIEndPoint
 
 from .classes import DocumentMetadataHelper
 from .handlers import (
-    post_document_type_metadata_type_add,
+    handler_index_document, post_document_type_metadata_type_add,
     post_document_type_metadata_type_delete,
-    post_post_document_type_change_metadata
+    post_document_type_change_metadata
 )
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
     link_metadata_remove, link_metadata_view,
-    link_setup_document_type_metadata,
-    link_setup_document_type_metadata_required,
-    link_setup_metadata_type_create, link_setup_metadata_type_delete,
+    link_setup_document_type_metadata_types, link_setup_metadata_type_create,
+    link_setup_metadata_type_delete, link_setup_metadata_type_document_types,
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
 )
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view
 )
+from .queues import *  # NOQA
+from .search import metadata_type_search  # NOQA
 from .widgets import get_metadata_string
 
 logger = logging.getLogger(__name__)
 
 
 class MetadataApp(MayanAppConfig):
+    has_tests = True
     name = 'metadata'
-    test = True
     verbose_name = _('Metadata')
 
     def ready(self):
@@ -56,6 +57,9 @@ class MetadataApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentPageResult'
         )
 
         DocumentType = apps.get_model(
@@ -66,7 +70,7 @@ class MetadataApp(MayanAppConfig):
         DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
         MetadataType = self.get_model('MetadataType')
 
-        APIEndPoint(app=self, version_string='1')
+        APIEndPoint(app=self, version_string='2')
 
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor
@@ -144,6 +148,13 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(
+            source=DocumentPageResult, label=_('Metadata'),
+            func=lambda context: get_metadata_string(
+                context['object'].document
+            )
+        )
+
+        SourceColumn(
             source=DocumentMetadata, label=_('Value'),
             attribute='value'
         )
@@ -176,6 +187,15 @@ class MetadataApp(MayanAppConfig):
             field='metadata__value', label=_('Metadata value')
         )
 
+        document_page_search.add_model_field(
+            field='document_version__document__metadata__metadata_type__name',
+            label=_('Metadata type')
+        )
+        document_page_search.add_model_field(
+            field='document_version__document__metadata__value',
+            label=_('Metadata value')
+        )
+
         menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))
         menu_multi_item.bind_links(
             links=(
@@ -185,13 +205,13 @@ class MetadataApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_setup_document_type_metadata,
-                link_setup_document_type_metadata_required
+                link_setup_document_type_metadata_types,
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(
             links=(
                 link_setup_metadata_type_edit,
+                link_setup_metadata_type_document_types,
                 link_setup_metadata_type_delete
             ), sources=(MetadataType,)
         )
@@ -216,16 +236,29 @@ class MetadataApp(MayanAppConfig):
 
         post_delete.connect(
             post_document_type_metadata_type_delete,
-            dispatch_uid='post_document_type_metadata_type_delete',
+            dispatch_uid='metadata_post_document_type_metadata_type_delete',
             sender=DocumentTypeMetadataType
         )
         post_document_type_change.connect(
-            post_post_document_type_change_metadata,
-            dispatch_uid='post_post_document_type_change_metadata',
+            post_document_type_change_metadata,
+            dispatch_uid='metadata_post_document_type_change_metadata',
             sender=Document
         )
         post_save.connect(
             post_document_type_metadata_type_add,
-            dispatch_uid='post_document_type_metadata_type_add',
+            dispatch_uid='metadata_post_document_type_metadata_type_add',
             sender=DocumentTypeMetadataType
+        )
+
+        # Index updating
+
+        post_delete.connect(
+            handler_index_document,
+            dispatch_uid='metadata_handler_index_document_delete',
+            sender=DocumentMetadata
+        )
+        post_save.connect(
+            handler_index_document,
+            dispatch_uid='metadata_handler_index_document_save',
+            sender=DocumentMetadata
         )

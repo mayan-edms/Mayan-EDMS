@@ -21,9 +21,15 @@ class Transformation(models.Model):
     """
     Model that stores the transformation and transformation arguments
     for a given object
+    Fields:
+    * order - Order of a Transformation - In case there are multiple
+    transformations for an object, this field list the order at which
+    they will be execute.
+    * arguments - Arguments of a Transformation - An optional field to hold a
+    transformation argument. Example: if a page is rotated with the Rotation
+    transformation, this field will show by how many degrees it was rotated.
     """
-
-    content_type = models.ForeignKey(ContentType)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 

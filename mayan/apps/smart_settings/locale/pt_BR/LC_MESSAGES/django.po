@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: apps.py:18 permissions.py:7
 msgid "Smart settings"
-msgstr ""
+msgstr "Ajustes inteligentes"
 
 #: apps.py:26
 msgid "Setting count"
-msgstr ""
+msgstr "Contagem de ajustes"
 
 #: apps.py:30
 msgid "Name"
@@ -36,38 +36,24 @@ msgstr "Nome"
 msgid "Value"
 msgstr "Valor"
 
-#: apps.py:37
-msgid "Found in path"
-msgstr ""
-
-#: apps.py:40
-msgid "n/a"
-msgstr ""
-
 #: links.py:11 links.py:14
 msgid "Settings"
 msgstr "Definições"
 
 #: permissions.py:10
 msgid "View settings"
-msgstr ""
+msgstr "Ver configurações"
 
 #: views.py:15
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Categoria de ajustes"
 
 #: views.py:29
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Ajustes na categoria: %s"
 
 #: views.py:37
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
-
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "name"
-#~ msgstr "name"
+msgstr "Categoria: %s, não encontrada"

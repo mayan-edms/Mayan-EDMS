@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:43-0400\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
 "PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -19,31 +18,32 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:23
-#| msgid "Delete comments"
+#: apps.py:26
 msgid "Document comments"
 msgstr "Commentaires du document"
 
-#: apps.py:41
+#: apps.py:46
 msgid "Date"
 msgstr "Date"
 
-#: apps.py:43 models.py:27
+#: apps.py:48 models.py:27
 msgid "User"
 msgstr "Utilisateur"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:46 models.py:30 models.py:72 views.py:25
+#: apps.py:51 models.py:30 models.py:72 views.py:23
 msgid "Comment"
 msgstr "Commentaire"
 
+#: apps.py:55 apps.py:59 links.py:22 models.py:73 permissions.py:7
+msgid "Comments"
+msgstr "Commentaires"
+
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr "Commentaire de document créé"
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr "Commentaire de document supprimé"
 
@@ -54,10 +54,6 @@ msgstr "Ajouter un commentaire"
 #: links.py:18
 msgid "Delete"
 msgstr "Suppression"
-
-#: links.py:22 models.py:73 permissions.py:7
-msgid "Comments"
-msgstr "Commentaires"
 
 #: models.py:23
 msgid "Document"
@@ -79,54 +75,17 @@ msgstr "Supprimer des commentaires"
 msgid "View comments"
 msgstr "Afficher les commentaires"
 
-#: views.py:47
+#: views.py:41
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Ajouter un commentaire au document : %s"
 
-#: views.py:90
+#: views.py:79
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr "Supprimer le commentaire : %s ?"
 
-#: views.py:122
+#: views.py:98
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Commentaires pour le document : %s"
-
-#~ msgid "Comment \"%s\" deleted successfully."
-#~ msgstr "Comment \"%s\" deleted successfully."
-
-#~ msgid "Error deleting comment \"%(comment)s\": %(error)s"
-#~ msgstr "Error deleting comment \"%(comment)s\": %(error)s"
-
-#~ msgid "Delete comment?"
-#~ msgstr "Delete comments"
-
-#~ msgid "Comment added successfully."
-#~ msgstr "Comment added successfully."
-
-#~ msgid "comment"
-#~ msgstr "comment"
-
-#~ msgid "Must provide at least one comment."
-#~ msgstr "Must provide at least one comment."
-
-#~ msgid "Are you sure you wish to delete the comment: %s?"
-#~ msgstr "Are you sure you wish to delete the comment: %s?"
-
-#~ msgid "Are you sure you wish to delete the comments: %s?"
-#~ msgstr "Are you sure you wish to delete the comments: %s?"
-
-#~ msgid "date"
-#~ msgstr "date"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "comments"
-#~ msgstr "comments"
-
-#~ msgid "comments: %s"
-#~ msgstr "comments: %s"

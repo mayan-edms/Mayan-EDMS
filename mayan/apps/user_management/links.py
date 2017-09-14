@@ -59,11 +59,11 @@ link_user_multiple_delete = Link(
     view='user_management:user_multiple_delete'
 )
 link_user_multiple_set_password = Link(
-    permissions=(permission_user_edit,), text=_('Reset password'),
+    permissions=(permission_user_edit,), text=_('Set password'),
     view='user_management:user_multiple_set_password'
 )
 link_user_set_password = Link(
-    permissions=(permission_user_edit,), text=_('Reset password'),
+    permissions=(permission_user_edit,), text=_('Set password'),
     view='user_management:user_set_password', args='object.id'
 )
 link_user_setup = Link(

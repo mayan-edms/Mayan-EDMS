@@ -1,33 +1,38 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.contrib.staticfiles.templatetags.staticfiles import static
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+from django.utils.encoding import force_text
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
-from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from common.utils import index_or_default
 
-from .settings import setting_display_size, setting_thumbnail_size
+from .settings import (
+    setting_display_size, setting_preview_size, setting_thumbnail_size
+)
 
 
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         final_attrs = self.build_attrs(attrs)
-        zoom = final_attrs.get('zoom', 100)
-        rotation = final_attrs.get('rotation', 0)
+        zoom = final_attrs.get('zoom')
+        rotation = final_attrs.get('rotation')
+
+        html_widget = InteractiveDocumentPageWidget()
+
         if value:
             output = []
             output.append(
                 '<div class="full-height scrollable '
                 'mayan-page-wrapper-interactive" data-height-difference=230>'
             )
-            output.append(document_html_widget(
-                value, zoom=zoom, rotation=rotation, image_class='lazy-load',
-                nolazyload=False, size=setting_display_size.value)
+            output.append(
+                html_widget.render(
+                    instance=value, zoom=zoom, rotation=rotation,
+                )
             )
             output.append('</div>')
             return mark_safe(''.join(output))
@@ -40,52 +45,39 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
     Display many small representations of a document pages
     """
     def render(self, name, value, attrs=None):
+        html_widget = CarouselDocumentPageThumbnailWidget()
+
         output = []
         output.append(
             '<div id="carousel-container" class="full-height scrollable" '
             'data-height-difference=200>'
         )
 
-        try:
-            document_pages = value.pages.all()
-            total_pages = value.pages.count()
-        except AttributeError:
-            document_pages = []
-            total_pages = 0
+        document_pages = value.pages.all()
+        total_pages = value.pages.count()
 
-        for page in document_pages:
+        for document_page in document_pages:
             output.append('<div class="carousel-item">')
             output.append(
-                document_html_widget(
-                    page,
-                    click_view='documents:document_page_view',
-                    click_view_arguments=[page.pk],
-                    fancybox_class='',
-                    image_class='lazy-load-carousel',
-                    size=setting_display_size.value,
-                    post_load_class='lazy-load-carousel-loaded',
-                )
+                html_widget.render(instance=document_page)
             )
+
             output.append(
                 '<div class="carousel-item-page-number">%s</div>' % ugettext(
                     'Page %(page_number)d of %(total_pages)d'
                 ) % {
-                    'page_number': page.page_number,
+                    'page_number': document_page.page_number,
                     'total_pages': total_pages
                 }
             )
             output.append('</div>')
 
+        if not total_pages:
+            output.append('<p>No pages to display</p>')
+
         output.append('</div>')
 
         return mark_safe(''.join(output))
-
-
-def document_thumbnail(document, **kwargs):
-    return document_html_widget(
-        document.latest_version.pages.first(),
-        click_view='documents:document_display', **kwargs
-    )
 
 
 def document_link(document):
@@ -94,87 +86,309 @@ def document_link(document):
     )
 
 
-def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False):
-    result = []
+class InstanceImageWidget(object):
+    alt_text = _('Clickable image')
+    click_view_name = None
+    click_view_query_dict = {}
+    destination_view_name = None
+    destination_view_query_dict = {}
+    disable_title_link = False
+    fancybox_class = 'fancybox'
+    gallery_name = None
+    # TODO: update this to load a disk template
+    invalid_image_template = '<p>Invalid image</p>'
+    preview_view_name = None
+    preview_query_dict = {}
+    image_class = 'lazy-load'
+    title = None
+    width = None
+    height = None
 
+    # Click view
+    def get_click_view_kwargs(self, instance):
+        """
+        Determine if the view is a template or API view and vary the view
+        keyword arguments
+        """
+
+        if self.click_view_name.startswith('rest_api'):
+            return {
+                'pk': instance.document.pk,
+                'version_pk': instance.document_version.pk,
+                'page_pk': instance.pk
+            }
+        else:
+            return {
+                'pk': instance.pk,
+            }
+
+    def get_click_view_query_dict(self, instance):
+        return self.click_view_query_dict
+
+    def get_click_view_querystring(self, instance):
+        return urlencode(self.get_click_view_query_dict(instance=instance))
+
+    def get_click_view_url(self, instance):
+        return '{}?{}'.format(
+            reverse(
+                viewname=self.click_view_name,
+                kwargs=self.get_click_view_kwargs(instance=instance)
+            ),
+            self.get_click_view_querystring(instance=instance)
+        )
+
+    # Destination view
+    def get_destination_view_querystring(self, instance):
+        return urlencode(self.get_destination_view_query_dict(instance=instance))
+
+    def get_destination_url(self, instance):
+        return '{}?{}'.format(
+            reverse(
+                viewname=self.destination_view_name,
+                kwargs=self.get_destination_view_kwargs(instance=instance)
+            ),
+            self.get_destination_view_querystring(instance=instance)
+        )
+
+    def get_destination_view_kwargs(self, instance):
+        return {
+            'pk': instance.pk
+        }
+
+    # Preview view
+    def get_preview_view_kwargs(self, instance):
+        return {
+            'pk': instance.document.pk,
+            'version_pk': instance.document_version.pk,
+            'page_pk': instance.pk
+        }
+
+    def get_preview_view_query_dict(self, instance):
+        return self.preview_view_query_dict
+
+    def get_preview_view_querystring(self, instance):
+        return urlencode(self.get_preview_view_query_dict(instance=instance))
+
+    def get_preview_view_url(self, instance):
+        return '{}?{}'.format(
+            reverse(
+                viewname=self.preview_view_name,
+                kwargs=self.get_preview_view_kwargs(instance=instance)
+            ),
+            self.get_preview_view_querystring(instance=instance)
+        )
+
+    def get_title(self, instance):
+        return self.title
+
+    def is_valid(self, instance):
+        return instance
+
+    def render(self, instance):
+        result = []
+
+        result.append('<div class="instance-image-widget">')
+
+        if not self.is_valid(instance=instance):
+            result.append(self.invalid_image_template)
+        else:
+            if self.gallery_name:
+                gallery_markup = 'rel="%s"' % self.gallery_name
+            else:
+                gallery_markup = ''
+
+            if self.click_view_name:
+                click_full_url = self.get_click_view_url(instance=instance)
+
+                title = self.get_title(instance=instance)
+
+                if title:
+                    if not self.disable_title_link:
+                        title_markup = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title} <i class=\'fa fa-external-link\'></i></a>"'.format(
+                            title=strip_tags(title), url=self.get_destination_url(instance=instance) or '#'
+                        )
+                    else:
+                        title_markup = 'data-caption="{title}"'.format(
+                            title=strip_tags(title),
+                        )
+                else:
+                    title_markup = ''
+
+                result.append(
+                    '<a {gallery_markup} class="{fancybox_class}" '
+                    'href="{click_full_url}" {title_markup}>'.format(
+                        gallery_markup=gallery_markup,
+                        fancybox_class=self.fancybox_class,
+                        click_full_url=click_full_url,
+                        title_markup=title_markup
+                    )
+                )
+
+            result.append(
+                '<div class="spinner-container text-primary" style="height: {height}px;">'
+                '<span class="spinner-icon fa-stack fa-lg">'
+                '<i class="fa fa-file-o fa-stack-2x"></i>'
+                '<i class="fa fa-clock-o fa-stack-1x"></i>'
+                '</span>'
+                '</div>'
+                '<img class="thin_border {image_class} pull-left" style="width: {width};"'
+                'data-url="{preview_full_url}" src="#" '
+                '/> '.format(
+                    width=self.width or '100%', height=self.height or '150',
+                    image_class=self.image_class,
+                    preview_full_url=self.get_preview_view_url(instance=instance),
+                    alt_text=self.alt_text
+                )
+            )
+
+            if self.click_view_name:
+                result.append('</a>')
+
+        result.append('</div>')
+
+        return mark_safe(''.join(result))
+
+
+class BaseDocumentThumbnailWidget(InstanceImageWidget):
     alt_text = _('Document page image')
-
-    if not document_page:
-        return mark_safe(
-            '<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>'
-        )
-
-    document = document_page.document
-
-    query_dict = {
-        'zoom': zoom,
-        'rotation': rotation,
-        'size': size,
+    click_view_name = 'rest_api:documentpage-image'
+    click_view_query_dict = {
+        'size': setting_preview_size.value
     }
+    gallery_name = 'document_list'
+    invalid_image_template = """
+        <span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>
+    """
+    preview_view_name = 'rest_api:documentpage-image'
+    preview_view_query_dict = {
+        'size': setting_thumbnail_size.value
+    }
+    width = setting_thumbnail_size.value.split('x')[0]
+    height = 150
 
-    if gallery_name:
-        gallery_template = 'rel="%s"' % gallery_name
-    else:
-        gallery_template = ''
+    def get_destination_url(self, instance):
+        return instance.get_absolute_url()
 
-    query_string = urlencode(query_dict)
 
-    preview_view = '%s?%s' % (
-        reverse('rest_api:documentpage-image', args=(document_page.pk,)),
-        query_string
+class CarouselDocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
+    click_view_name = 'documents:document_page_view'
+    fancybox_class = ''
+    image_class = 'lazy-load-carousel'
+    preview_view_query_dict = {
+        'size': setting_display_size.value
+    }
+    width = setting_preview_size.value.split('x')[0]
+    height = index_or_default(
+        instance=setting_preview_size.value.split('x'),
+        index=1, default=setting_preview_size.value.split('x')[0]
     )
 
-    result.append(
-        '<div class="tc" id="document-%d-%d">' % (
-            document.pk, document_page.page_number if document_page.page_number else 1
-        )
-    )
 
-    if title:
-        if not disable_title_link:
-            preview_click_link = document.get_absolute_url()
-            title_template = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title}</a>"'.format(
-                title=strip_tags(title), url=preview_click_link or '#'
+class DocumentThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
+    def get_click_view_kwargs(self, instance):
+        return {
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.pages.first().pk
+        }
+
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_click_view_url(
+                instance=instance
             )
         else:
-            title_template = 'data-caption="{title}"'.format(
-                title=strip_tags(title),
-            )
-    else:
-        title_template = ''
+            return '#'
 
-    if click_view:
-        result.append(
-            '<a {gallery_template} class="{fancybox_class}" '
-            'href="{image_data}" {title_template}>'.format(
-                gallery_template=gallery_template,
-                fancybox_class=fancybox_class,
-                image_data='%s?%s' % (
-                    reverse(
-                        click_view, args=click_view_arguments or [document.pk]
-                    ), query_string
-                ),
-                title_template=title_template
-            )
-        )
+    def get_preview_view_kwargs(self, instance):
+        return {
+            'pk': instance.pk,
+            'version_pk': instance.latest_version.pk,
+            'page_pk': instance.pages.first().pk
+        }
 
-    if nolazyload:
-        result.append(
-            '<img class="img-nolazyload" src="%s" alt="%s" />' % (
-                preview_view, alt_text
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentThumbnailWidget, self).get_preview_view_url(
+                instance=instance
             )
-        )
-    else:
-        result.append(
-            '<img class="thin_border %s" data-src="%s" '
-            'data-post-load-class="%s" src="%s" alt="%s" />' % (
-                image_class, preview_view, post_load_class,
-                static('appearance/images/loading.png'), alt_text
+        else:
+            return ''
+
+    def get_title(self, instance):
+        return getattr(instance, 'label', None)
+
+    def is_valid(self, instance):
+        return instance.pages
+
+
+class DocumentPageThumbnailWidget(BaseDocumentThumbnailWidget):
+    width = '100%'
+
+    def get_title(self, instance):
+        return force_text(instance)
+
+
+class DocumentVersionThumbnailWidget(DocumentThumbnailWidget):
+    width = '100%'
+
+    def get_click_view_kwargs(self, instance):
+        return {
+            'pk': instance.document.pk,
+            'version_pk': instance.pk,
+            'page_pk': instance.pages.first().pk
+        }
+
+    def get_click_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentVersionThumbnailWidget, self).get_click_view_url(
+                instance=instance
             )
-        )
+        else:
+            return '#'
 
-    if click_view:
-        result.append('</a>')
-    result.append('</div>')
+    def get_preview_view_kwargs(self, instance):
+        return {
+            'pk': instance.document.pk,
+            'version_pk': instance.pk,
+            'page_pk': instance.pages.first().pk
+        }
 
-    return mark_safe(''.join(result))
+    def get_preview_view_url(self, instance):
+        first_page = instance.pages.first()
+        if first_page:
+            return super(DocumentVersionThumbnailWidget, self).get_preview_view_url(
+                instance=instance
+            )
+        else:
+            return ''
+
+    def get_title(self, instance):
+        return getattr(instance, 'label', None)
+
+    def is_valid(self, instance):
+        return instance.pages
+
+
+class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):
+    click_view_name = None
+
+    def get_preview_view_query_dict(self, instance):
+        return {
+            'zoom': self.zoom,
+            'rotation': self.rotation,
+            'size': setting_display_size.value,
+        }
+
+    def render(self, instance, *args, **kwargs):
+        self.zoom = kwargs.pop('zoom')
+        self.rotation = kwargs.pop('rotation')
+
+        return super(
+            InteractiveDocumentPageWidget, self
+        ).render(instance=instance, *args, **kwargs)

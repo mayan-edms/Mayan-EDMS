@@ -1,29 +1,41 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
-    APIRecentSearchListView, APIRecentSearchView, APISearchView
+    APIAdvancedSearchView, APISearchModelList, APISearchView
 )
-from .views import AdvancedSearchView, ResultsView, SearchView
-
-urlpatterns = patterns(
-    'dynamic_search.views',
-    url(r'^$', SearchView.as_view(), name='search'),
-    url(r'^advanced/$', AdvancedSearchView.as_view(), name='search_advanced'),
-    url(r'^again/$', 'search_again', name='search_again'),
-    url(r'^results/$', ResultsView.as_view(), name='results'),
+from .views import (
+    AdvancedSearchView, ResultsView, SearchAgainView, SearchView
 )
 
-api_urls = patterns(
-    '',
+urlpatterns = [
+    url(r'^(?P<search_model>[\.\w]+)/$', SearchView.as_view(), name='search'),
     url(
-        r'^recent_searches/$', APIRecentSearchListView.as_view(),
-        name='recentsearch-list'
+        r'^advanced/(?P<search_model>[\.\w]+)/$', AdvancedSearchView.as_view(),
+        name='search_advanced'
     ),
     url(
-        r'^recent_searches/(?P<pk>[0-9]+)/$', APIRecentSearchView.as_view(),
-        name='recentsearch-detail'
+        r'^again/(?P<search_model>[\.\w]+)/$', SearchAgainView.as_view(),
+        name='search_again'
     ),
-    url(r'^search/$', APISearchView.as_view(), name='search-view'),
-)
+    url(
+        r'^results/(?P<search_model>[\.\w]+)/$', ResultsView.as_view(),
+        name='results'
+    ),
+]
+
+api_urls = [
+    url(
+        r'^search_models/$', APISearchModelList.as_view(),
+        name='searchmodel-list'
+    ),
+    url(
+        r'^search/(?P<search_model>[\.\w]+)/$', APISearchView.as_view(),
+        name='search-view'
+    ),
+    url(
+        r'^advanced/(?P<search_model>[\.\w]+)/$', APIAdvancedSearchView.as_view(),
+        name='advanced-search-view'
+    ),
+]

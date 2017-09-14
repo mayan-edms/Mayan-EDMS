@@ -5,7 +5,7 @@ import logging
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Role, StoredPermission
@@ -18,24 +18,34 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class AccessControlList(models.Model):
     """
-    Model that hold the permission, object, actor relationship
+    ACL means Access Control List it is a more fine-grained method of
+    granting access to objects. In the case of ACLs, they grant access using
+    3 elements: actor, permission, object. In this case the actor is the role,
+    the permission is the Mayan permission and the object can be anything:
+    a document, a folder, an index, etc. This means = "Grant X permissions
+    to role Y for object Z". This model holds the permission, object, actor
+    relationship for one access control list.
+    Fields:
+    * Role - Custom role that is being granted a permission. Roles are created
+    in the Setup menu.
     """
-
     content_type = models.ForeignKey(
-        ContentType,
+        ContentType, on_delete=models.CASCADE,
         related_name='object_content_type'
     )
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(
-        ct_field='content_type',
-        fk_field='object_id',
+        ct_field='content_type', fk_field='object_id',
     )
     # TODO: limit choices to the permissions valid for the content_object
     permissions = models.ManyToManyField(
         StoredPermission, blank=True, related_name='acls',
         verbose_name=_('Permissions')
     )
-    role = models.ForeignKey(Role, related_name='acls', verbose_name=_('Role'))
+    role = models.ForeignKey(
+        Role, on_delete=models.CASCADE, related_name='acls',
+        verbose_name=_('Role')
+    )
 
     objects = AccessControlListManager()
 
@@ -45,7 +55,13 @@ class AccessControlList(models.Model):
         verbose_name_plural = _('Access entries')
 
     def __str__(self):
-        return '{} <=> {}'.format(self.content_object, self.role)
+        return _(
+            'Permissions "%(permissions)s" to role "%(role)s" for "%(object)s"'
+        ) % {
+            'permissions': self.get_permission_titles(),
+            'object': self.content_object,
+            'role': self.role
+        }
 
     def get_inherited_permissions(self):
         return AccessControlList.objects.get_inherited_permissions(
@@ -54,7 +70,7 @@ class AccessControlList(models.Model):
 
     def get_permission_titles(self):
         result = ', '.join(
-            [unicode(permission) for permission in self.permissions.all()]
+            [force_text(permission) for permission in self.permissions.all()]
         )
 
         return result or _('None')

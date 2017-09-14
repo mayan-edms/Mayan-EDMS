@@ -1,0 +1,78 @@
+===============================
+Mayan EDMS v2.6.2 release notes
+===============================
+
+Released: July 22, 2017
+
+What's new
+==========
+
+This is a bug fix release and users are encouraged to upgrade.
+
+Other Changes
+-------------
+- Fix deprecation warning to prepare upgrade to Django 1.11 and 2.0.
+- Fix zoom feature in document page view.
+- Add support to run tests against a MySQL or Postgres container.
+- Improve tag widget customization by moving the markup to its own template.
+- Fix document page widget appearance in the document page list view.
+- Make document version order deterministic.
+- Allow total page number instrospection of encrypted PDF with non ASCII
+  user properties. GitLab issue #411.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

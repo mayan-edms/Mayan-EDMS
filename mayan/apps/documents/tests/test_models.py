@@ -1,25 +1,56 @@
 from __future__ import unicode_literals
 
 from datetime import timedelta
+import os
 import time
 
-from django.test import TestCase, override_settings
+from django.conf import settings
+from django.test import override_settings
 
-from ..exceptions import NewDocumentVersionNotAllowed
+from common.tests import BaseTestCase
+
 from ..literals import STUB_EXPIRATION_INTERVAL
-from ..models import DeletedDocument, Document, DocumentType, NewVersionBlock
+from ..models import DeletedDocument, Document, DocumentType
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
-    TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
+    TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(TestCase):
+class GenericDocumentTestCase(BaseTestCase):
+    test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
+
     def setUp(self):
+        super(GenericDocumentTestCase, self).setUp()
+        self.test_document_path = os.path.join(
+            settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+            'sample_documents', self.test_document_filename
+        )
+
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+        with open(self.test_document_path) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object, label=self.test_document_filename
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(GenericDocumentTestCase, self).tearDown()
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentTestCase(BaseTestCase):
+    def setUp(self):
+        super(DocumentTestCase, self).setUp()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_DOCUMENT_PATH) as file_object:
@@ -29,9 +60,10 @@ class DocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
-        self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
+        self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE_LABEL)
 
         self.assertEqual(self.document.exists(), True)
         self.assertEqual(self.document.size, 272213)
@@ -135,10 +167,29 @@ class DocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class OfficeDocumentTestCase(TestCase):
-    def setUp(self):
+class PDFCompatibilityTestCase(BaseTestCase):
+    def test_indirect_rotate(self):
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+        with open(TEST_PDF_INDIRECT_ROTATE_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertQuerysetEqual(
+            qs=Document.objects.all(), values=(repr(self.document),)
+        )
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class OfficeDocumentTestCase(BaseTestCase):
+    def setUp(self):
+        super(OfficeDocumentTestCase, self).setUp()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
@@ -148,6 +199,7 @@ class OfficeDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OfficeDocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'application/msword')
@@ -162,10 +214,11 @@ class OfficeDocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MultiPageTiffTestCase(TestCase):
+class MultiPageTiffTestCase(BaseTestCase):
     def setUp(self):
+        super(MultiPageTiffTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
@@ -175,6 +228,7 @@ class MultiPageTiffTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(MultiPageTiffTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'image/tiff')
@@ -186,21 +240,7 @@ class MultiPageTiffTestCase(TestCase):
         self.assertEqual(self.document.page_count, 2)
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentVersionTestCase(TestCase):
-    def setUp(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-
+class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 
@@ -236,14 +276,16 @@ class DocumentVersionTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentManagerTestCase(TestCase):
+class DocumentManagerTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentManagerTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentManagerTestCase, self).tearDown()
 
     def test_document_stubs_deletion(self):
         document_stub = Document.objects.create(
@@ -262,55 +304,3 @@ class DocumentManagerTestCase(TestCase):
         Document.objects.delete_stubs()
 
         self.assertEqual(Document.objects.count(), 0)
-
-
-@override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(TestCase):
-    def setUp(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()
-
-    def test_blocking(self):
-        NewVersionBlock.objects.block(document=self.document)
-
-        self.assertEqual(NewVersionBlock.objects.count(), 1)
-        self.assertEqual(
-            NewVersionBlock.objects.first().document, self.document
-        )
-
-    def test_unblocking(self):
-        NewVersionBlock.objects.create(document=self.document)
-
-        NewVersionBlock.objects.unblock(document=self.document)
-
-        self.assertEqual(NewVersionBlock.objects.count(), 0)
-
-    def test_is_blocked(self):
-        NewVersionBlock.objects.create(document=self.document)
-
-        self.assertTrue(
-            NewVersionBlock.objects.is_blocked(document=self.document)
-        )
-
-        NewVersionBlock.objects.all().delete()
-
-        self.assertFalse(
-            NewVersionBlock.objects.is_blocked(document=self.document)
-        )
-
-    def test_blocking_new_versions(self):
-        NewVersionBlock.objects.block(document=self.document)
-
-        with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-                self.document.new_version(file_object=file_object)

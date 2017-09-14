@@ -18,7 +18,7 @@ sudo apt-get -qq update
 sudo apt-get -y upgrade
 
 echo -e "\n -> Installing core binaries \n"
-sudo apt-get -y install git-core python-virtualenv gcc python-dev libjpeg-dev libpng-dev libtiff-dev tesseract-ocr poppler-utils unpaper libreoffice
+sudo apt-get -y install git-core python-virtualenv gcc python-dev libjpeg-dev libpng-dev libtiff-dev tesseract-ocr poppler-utils libreoffice
 
 echo -e "\n -> Cloning development branch of repository \n"
 git clone /mayan-edms-repository/ $INSTALLATION_DIRECTORY

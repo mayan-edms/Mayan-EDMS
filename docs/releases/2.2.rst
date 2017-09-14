@@ -1,0 +1,258 @@
+=============================
+Mayan EDMS v2.2 release notes
+=============================
+
+Released: April 26, 2017
+
+What's new
+==========
+
+API changes
+-----------
+Refactor of the metadata API URLs to use the resource/sub resource paradigm.
+
+Before:
+
+/api/metadata/metadata_types/
+/api/metadata/metadata_types/{pk}/
+/api/metadata/document/metadata/{pk}/
+/api/metadata/document/{pk}/metadata/
+/api/metadata/document_type/{document_type_pk}/metadata_types/optional/
+/api/metadata/document_type/{document_type_pk}/metadata_types/required/
+
+After:
+
+/api/metadata/metadata_types/
+/api/metadata/metadata_types/{metadata_type_pk}/
+/api/metadata/document_types/{document_type_pk}/metadata_types/
+/api/metadata/document_types/{document_type_pk}/metadata_types/{metadata_type_pk}/
+/api/metadata/documents/{document_pk}/metadata/
+/api/metadata/documents/{document_pk}/metadata/{metadata_pk}/
+
+
+Document API URLs updated to use the resource/sub resource paradigm.
+Before:
+
+/api/documents/document_version<pk>
+/api/documents/document_pages<pk>
+
+After:
+/api/documents/<pk>/version/<version_pk>
+/api/documents/<pk>/version/<version_pk>/pages/<page_pk>
+
+Fields that reference a resource by URL now have the suffix '_url' to differentiate
+then from fields include the resource.
+
+Before:
+
+'document': '/api/documents/10'
+
+After:
+
+'document_url': '/api/documents/10'
+
+Removal of the document version revert API endpoint. To revert a document to a
+previous version using the API, use the DELETE verb to delete the most recent
+document version to be discarded.
+
+Pages data is no longer included as part of the version data. Instead a link to
+the document version's pages has been added by the name 'pages_url'. This
+resolved to '/api/documents/<pk>/pages/<page_pk>/pages'.
+
+- New API endpoints (initial work by @lokeshmanmode):
+
+  - API endpoint to change an user's groups subscription.
+  - API endpoint that list all available permissions types.
+  - API endpoint to view or change a role's groups.
+  - API endpoint to view or change a role's permissions.
+
+Code cleanups
+-------------
+As with every release time was dedicated to improve the organization, size, and
+readability of code. To this end the licenses of each app were moved to their
+own module in every app, called licenses.py. As part of the code cleanup the
+seldom used app called 'installation' which tracked runtime Python packages
+installed alongside Mayan EDMS for debugging purposes has been removed. The
+dependency on django-filetransfer has been removed by using
+django-downloadviews which allows the creation of class based download views.
+
+Performance
+-----------
+The document language list has been moved from the document model to the
+document form. This change speeds up loading time, document properties views
+and API documentation views. This version includes the new image caching
+pipeline which stores transformed (rotated, scaled, etc) versions of the
+document's images resulting in an overall display loading speed up. The fonts
+used are now loaded from Mayan EDMS itself and not from the web. This change
+also allow Mayan EDMS to work in a completely off-line manner.
+
+Searching
+---------
+Support for searching pages as well as documents has been added. This
+functionality has been exposed in the API too.
+
+Security
+--------
+This release enables the password validation for the user password validation
+support provided by Django. This change allows administrator to set password
+policies limiting the minimum amount of characters needed for example. For
+more information on how to configure the password validation feature refer
+to Django's documentation at: https://docs.djangoproject.com/en/1.11/topics/auth/passwords/#enabling-password-validation
+
+Sources
+-------
+To help test the interval sources (POP3 Email, IMAP Email, Watch folders) a
+"Check now" button was added that allows users to trigger the source's
+document fetching code instantly. Previously users had to wait until the next
+scheduled interval to verify if their source's settings were correct.
+
+Testing
+-------
+The testing process has been simplified by adding a new option '--mayan-apps'
+to the test runner that automatically tests all Mayan EDMS apps that report to
+include tests. The app flag that indicates when an app has test was changed
+from 'test' to the more explicit 'has_test'. The packaging manifest now
+includes test files, this means that tests can now be executed in production.
+The total number of tests was raised to 359 and the total coverage increased
+to 81%.
+
+A custom test runner replacing the previous custom management command
+called `runtests`. Testing for orphaned temporary files and orphaned file
+handles is now optional and controlled by the COMMON_TEST_FILE_HANDLES and
+COMMON_TEST_FILE_HANDLES settings.
+
+User interface
+--------------
+To avoid warping on long full names or usernames, the user's full name or
+username is no longer displayed in the main menu. Instead the word "Profile"
+is displayed and the users's full name or username is displayed when the
+"Profile" icon is clicked. Drop down menus support has been added and enabled
+for several apps like documents, folders, and tags. This change make navigation
+much faster and required less mouse travel.
+
+Support was added for a dashboard widgets and several default widgets are
+included and enabled.
+
+A view to clone a document page transformation to other pages has been added.
+A document page transformation navigation bug has been fixed. To aid visual
+lookup, tags are now alphabetically ordered by label.
+
+A new workflow view that lists documents currently executing a workflow and
+documents by their specific current workflow state has been added to the
+main menu.
+
+Other changes
+-------------
+- Cabinets app is now integrated as a core app.
+- Now that the Cabinets app is included, the Folders app has been disabled
+  by default. To enable the Folders apps add the following line to your
+  settings/local.py file::
+
+    INSTALLED_APPS += ('folders',)
+
+- Fix height calculation in resize transformation.
+- Improve upgrade instructions.
+- Update project to work with Django 1.10.
+- Add support for attaching multiple tags to single or multiple documents.
+- Refactor the workflow for removing tags from single and multiple documents.
+- Move new version creation blocking from the documents app to the checkouts app.
+- DEBUG now defaults to False.
+- Production settings don't override the DEBUG variable. DEBUG can be set to True
+  on production install to debug errors live.
+- Refactor add document to folder view to allow adding a documents to multiple folders at the same time.
+- Refactor the remove document from folder view to allow removing documents from multiple folders at the same time.
+- Refactor the document mailing views and add support for sending multiple documents via email at the same time.
+- Refactor the document metadata views and add support for adding multiple metadata types to a document at the same time.
+- Addition of a new OCR backend using PyOCR. This backend tries first to do OCR
+  using libtesseract. If libtesseract is not available the backend defaults to
+  calling the Tesseract executable.
+- Make the lock_manager.backends.file_lock.FileLock the new default locking backend.
+- New transformations added:
+
+  - Rotate 90 degrees
+  - Rotate 180 degrees
+  - Rotate 270 degrees
+  - Mirror (horizontal)
+  - Flip (vertical)
+  - Gaussian blur
+  - Unsharp masking
+
+- Add tool to launch all workflows. GitLab issue #355
+
+Removals
+--------
+- Removal of the OCR_TESSERACT_PATH configuration setting.
+- Removal of the Tesseract OCR backend. Replaced with a PyOCR backend.
+- Remove usage of pytesseract Python library.
+- Installation app.
+- Recent searches feature.
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via PIP
+~~~~~~~~~~~~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+If installed using Git
+~~~~~~~~~~~~~~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Manually upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #185 <https://gitlab.com/mayan-edms/mayan-edms/issues/185>`_ Add support for nested menus
+* `GitLab issue #285 <https://gitlab.com/mayan-edms/mayan-edms/issues/285>`_ Dashboard widgets
+* `GitLab issue #294 <https://gitlab.com/mayan-edms/mayan-edms/issues/294>`_ Move new version creation blocking from the documents app to the checkouts app
+* `GitLab issue #301 <https://gitlab.com/mayan-edms/mayan-edms/issues/301>`_ Remove the installation app
+* `GitLab issue #303 <https://gitlab.com/mayan-edms/mayan-edms/issues/303>`_ Update urlpatterns in urls.py files to be a list of django.conf.urls.url() instances instead.
+* `GitLab issue #304 <https://gitlab.com/mayan-edms/mayan-edms/issues/304>`_ Remove string view arguments of url() in urls.py files.
+* `GitLab issue #307 <https://gitlab.com/mayan-edms/mayan-edms/issues/307>`_ Enter multiple Tags at once
+* `GitLab issue #310 <https://gitlab.com/mayan-edms/mayan-edms/issues/310>`_ Metadata's lookup with chinese messages when new document
+* `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
+* `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
+* `GitLab issue #328 <https://gitlab.com/mayan-edms/mayan-edms/issues/328>`_ Upgrade Warning/Error during performupgrade (v2.1.3 to v2.1.4)
+* `GitLab issue #342 <https://gitlab.com/mayan-edms/mayan-edms/issues/342>`_ Tags should be of unordered / unsorted data type
+* `GitLab issue #343 <https://gitlab.com/mayan-edms/mayan-edms/issues/343>`_ Bootstrap's dependency on fonts.googleapis.com causes Mayan EDMS web interface load slowly if public internet is unreachable
+* `GitLab issue #355 <https://gitlab.com/mayan-edms/mayan-edms/issues/355>`_ Workflow changes only on new added documents
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

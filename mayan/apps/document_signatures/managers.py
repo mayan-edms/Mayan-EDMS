@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 import logging
 import os
-import tempfile
 
 from django.db import models
 
+from common.utils import mkstemp
 from django_gpg.exceptions import DecryptionError
 from django_gpg.models import Key
 from documents.models import DocumentVersion
@@ -34,11 +34,11 @@ class EmbeddedSignatureManager(models.Manager):
         )
 
     def sign_document_version(self, document_version, key, passphrase=None, user=None):
-        temporary_file_object, temporary_filename = tempfile.mkstemp()
+        temporary_file_object, temporary_filename = mkstemp()
 
         try:
             with document_version.open() as file_object:
-                signature_result = key.sign_file(
+                key.sign_file(
                     binary=True, file_object=file_object,
                     output=temporary_filename, passphrase=passphrase
                 )

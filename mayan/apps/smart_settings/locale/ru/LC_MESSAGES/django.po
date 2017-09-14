@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: apps.py:18 permissions.py:7
 msgid "Smart settings"
-msgstr ""
+msgstr "Гибкие настройки"
 
 #: apps.py:26
 msgid "Setting count"
-msgstr ""
+msgstr "Количество настроек"
 
 #: apps.py:30
 msgid "Name"
@@ -34,38 +34,24 @@ msgstr "Имя"
 msgid "Value"
 msgstr "Значение"
 
-#: apps.py:37
-msgid "Found in path"
-msgstr ""
-
-#: apps.py:40
-msgid "n/a"
-msgstr ""
-
 #: links.py:11 links.py:14
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: permissions.py:10
 msgid "View settings"
-msgstr ""
+msgstr "Просмотр настроек"
 
 #: views.py:15
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Пространство имён параметра"
 
 #: views.py:29
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Параметры в пространстве имён: %s"
 
 #: views.py:37
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
-
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "name"
-#~ msgstr "name"
+msgstr "Пространство имён: %s, не найдено"

@@ -1,40 +1,27 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
-from django.test import TestCase
-from django.test.client import Client
+from django.test import override_settings
 
+from common.tests.test_views import GenericViewTestCase
 from documents.models import DocumentType
 from documents.search import document_search
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
-)
+from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 
 
-class Issue46TestCase(TestCase):
+@override_settings(OCR_AUTO_OCR=False)
+class Issue46TestCase(GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
 
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
+        super(Issue46TestCase, self).setUp()
+        self.login_admin_user()
 
         self.document_count = 4
 
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         # Upload many instances of the same test document
@@ -48,6 +35,7 @@ class Issue46TestCase(TestCase):
     def tearDown(self):
         for document_type in DocumentType.objects.all():
             document_type.delete()
+        super(Issue46TestCase, self).tearDown()
 
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search
@@ -58,8 +46,9 @@ class Issue46TestCase(TestCase):
 
         with self.settings(COMMON_PAGINATE_BY=2):
             # Funcitonal test for the first page of advanced results
-            response = self.client.get(
-                reverse('search:results'), {'label': 'test'}
+            response = self.get(
+                'search:results', args=(document_search.get_full_name(),),
+                data={'label': 'test'}
             )
 
             self.assertContains(
@@ -68,8 +57,9 @@ class Issue46TestCase(TestCase):
             )
 
             # Functional test for the second page of advanced results
-            response = self.client.get(
-                reverse('search:results'), {'label': 'test', 'page': 2}
+            response = self.get(
+                'search:results', args=(document_search.get_full_name(),),
+                data={'label': 'test', 'page': 2}
             )
             self.assertContains(
                 response, 'Total (3 - 4 out of 4) (Page 2 of 2)',

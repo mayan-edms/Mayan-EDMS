@@ -1,0 +1,74 @@
+===============================
+Mayan EDMS v2.5.2 release notes
+===============================
+
+Released: July 08, 2017
+
+What's new
+==========
+
+Improve duplicate document scan
+-------------------------------
+Previously the way document creation code was enclosed in a single database
+transactions. This cause the duplicate scan at upload code to received a
+document reference to uncommitted database data. The single database
+transaction was split into smaller units to make sure the duplicate scan
+recevies saved and committed data.
+
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -31,7 +31,7 @@ permission_document_print = namespace.add_permission(
     name='document_print', label=_('Print documents')
 )
 permission_document_restore = namespace.add_permission(
-    name='document_restore', label=_('Restore deleted document')
+    name='document_restore', label=_('Restore trashed document')
 )
 permission_document_tools = namespace.add_permission(
     name='document_tools', label=_('Execute document modifying tools')
@@ -40,6 +40,10 @@ permission_document_version_revert = namespace.add_permission(
     name='document_version_revert',
     label=_('Revert documents to a previous version')
 )
+permission_document_version_view = namespace.add_permission(
+    name='document_version_view',
+    label=_('View documents\' versions list')
+)
 permission_document_view = namespace.add_permission(
     name='document_view', label=_('View documents')
 )
@@ -47,8 +51,9 @@ permission_empty_trash = namespace.add_permission(
     name='document_empty_trash', label=_('Empty trash')
 )
 
+# TODO: rename 'document_setup' to 'document_types' on the next major version
 setup_namespace = PermissionNamespace(
-    'documents_setup', label=_('Documents setup')
+    'documents_setup', label=_('Document types')
 )
 permission_document_type_create = setup_namespace.add_permission(
     name='document_type_create', label=_('Create document types')

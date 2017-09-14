@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:46-0400\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
 "PO-Revision-Date: 2016-03-21 20:55+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:21 links.py:25 permissions.py:7
+#: apps.py:22 links.py:25 permissions.py:7
 msgid "Message of the day"
 msgstr ""
 
-#: apps.py:29 models.py:20
+#: apps.py:32 models.py:20
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:32 models.py:24
+#: apps.py:35 models.py:24
 msgid "Start date time"
 msgstr ""
 
-#: apps.py:33 apps.py:37
+#: apps.py:36 apps.py:40
 msgid "None"
 msgstr "Nijedno"
 
-#: apps.py:36 models.py:29
+#: apps.py:39 models.py:29
 msgid "End date time"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 
 #: models.py:14
 msgid "Label"
-msgstr ""
+msgstr "Labela"
 
 #: models.py:17
 msgid "The actual message to be displayed."

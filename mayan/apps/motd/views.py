@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import (

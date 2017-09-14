@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowTransition
+    WorkflowStateAction, WorkflowTransition
 )
 
 
@@ -30,7 +30,7 @@ class WorkflowAdmin(admin.ModelAdmin):
 
     filter_horizontal = ('document_types',)
     inlines = (WorkflowStateInline, WorkflowTransitionInline)
-    list_display = ('label', 'document_types_list')
+    list_display = ('label', 'internal_name', 'document_types_list')
 
 
 @admin.register(WorkflowInstance)
@@ -38,4 +38,11 @@ class WorkflowInstanceAdmin(admin.ModelAdmin):
     inlines = (WorkflowInstanceLogEntryInline,)
     list_display = (
         'workflow', 'document', 'get_current_state', 'get_last_transition'
+    )
+
+
+@admin.register(WorkflowStateAction)
+class WorkflowStateActionAdmin(admin.ModelAdmin):
+    list_display = (
+        'state', 'label', 'enabled', 'when', 'action_path', 'action_data'
     )

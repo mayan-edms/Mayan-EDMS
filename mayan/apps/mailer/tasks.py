@@ -1,29 +1,27 @@
 from __future__ import unicode_literals
 
-from django.core.mail import EmailMultiAlternatives
+from django.apps import apps
 
-from documents.models import Document
 from mayan.celery import app
-
-from .models import LogEntry
 
 
 @app.task(ignore_result=True)
-def task_send_document(subject_text, body_text_content, sender, recipient, document_id, as_attachment=False):
-    email_msg = EmailMultiAlternatives(
-        subject_text, body_text_content, sender, [recipient]
+def task_send_document(subject_text, body_text_content, sender, recipient, user_mailer_id, as_attachment=False, document_id=None):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+    UserMailer = apps.get_model(
+        app_label='mailer', model_name='UserMailer'
     )
 
-    if as_attachment:
+    if document_id:
         document = Document.objects.get(pk=document_id)
-        with document.open() as descriptor:
-            email_msg.attach(
-                document.label, descriptor.read(), document.file_mimetype
-            )
-
-    try:
-        email_msg.send()
-    except Exception as exception:
-        LogEntry.objects.create(message=exception)
     else:
-        LogEntry.objects.all().delete()
+        document = None
+
+    user_mailer = UserMailer.objects.get(pk=user_mailer_id)
+
+    user_mailer.send(
+        subject=subject_text, body=body_text_content, to=recipient,
+        document=document, as_attachment=as_attachment
+    )

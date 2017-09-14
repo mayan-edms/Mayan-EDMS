@@ -13,7 +13,7 @@ What's new in Mayan EDMS v1.1
 Celery
 ~~~~~~
 All background tasks processing has been converted to use Celery_. By default
-**Mayan EDMS** runs in "Eager" until a broker and result backend are configured
+Mayan EDMS runs in "Eager" until a broker and result backend are configured
 as per `Celery's documentation`_. This change made the built-in scheduler and
 job_processing apps obsolete, both were removed.
 
@@ -21,7 +21,7 @@ job_processing apps obsolete, both were removed.
 Views namespaces
 ~~~~~~~~~~~~~~~~
 All views are namespaced_ with the name of the app which defines them. If you have
-developed 3rd party apps for **Mayan EDMS** be sure to update any reference to a view
+developed 3rd party apps for Mayan EDMS be sure to update any reference to a view
 by prepending the app name to the view name.
 
 
@@ -43,7 +43,7 @@ mail serving.
 
 Update to Django 1.6.8
 ~~~~~~~~~~~~~~~~~~~~~~
-**Mayan EDMS** has been updated to use Django 1.6.8.
+Mayan EDMS has been updated to use Django 1.6.8.
 
 
 Events app
@@ -55,13 +55,13 @@ for `Django activity stream`_
 Watch folders
 ~~~~~~~~~~~~~
 Filesystem folders can be monitored for change and their files automatically
-uploaded as documents in **Mayan EDMS**.
+uploaded as documents in Mayan EDMS.
 
 
 Vagrant file included
 ~~~~~~~~~~~~~~~~~~~~~
 A vagrant file is now included to allow developers to provision a virtual machine
-with the latest development version of **Mayan EDMS**.
+with the latest development version of Mayan EDMS.
 
 
 User locale profile (language and timezone)
@@ -101,7 +101,7 @@ the metadata types of the new document type are automatically assigned.
 New release cycle
 ~~~~~~~~~~~~~~~~~
 Starting with this version a new release cycle methodology will come into effect.
-The goal of this release cycle is to allow two series of versions of **Mayan EDMS** to be
+The goal of this release cycle is to allow two series of versions of Mayan EDMS to be
 active at a given time: A new major version with new functionality and a minor version
 providing upgrades and fixes. This release (1.1) will be active and supported
 during releases of versions 2.x, but will go into end-of-life as soon as
@@ -111,24 +111,24 @@ maintenance mode.
 
 Deprecation of Python 2.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Series 1.0 of **Mayan EDMS** will be the last series supporting Python 2.6. Series
+Series 1.0 of Mayan EDMS will be the last series supporting Python 2.6. Series
 2.0 will be using Django 1.7.x which itself requires Python 2.7 or later.
 
 
 Improved testings
 ~~~~~~~~~~~~~~~~~
-**Mayan EDMS** is now automatically tested against SQLite, MySQL and PostgreSQL.
+Mayan EDMS is now automatically tested against SQLite, MySQL and PostgreSQL.
 
 
 API updates
 ~~~~~~~~~~~
-Many new API endpoints have been added exposing the majority of **Mayan EDMS** functionality.
+Many new API endpoints have been added exposing the majority of Mayan EDMS functionality.
 
 
 Messages contextual improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Many updates and simplifications were made to the source text messages to reduce the
-difficulty of translating **Mayan EDMS** and maintaing the contextual meaning of the
+difficulty of translating Mayan EDMS and maintaing the contextual meaning of the
 text messages.
 
 Improved method for custom settings
@@ -186,7 +186,7 @@ More technical documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Many new sub topics were added to the development section of the documentation
 to allow developers to better understand the inner workings and philosophies
-of **Mayan EDMS**.
+of Mayan EDMS.
 
 
 Other changes

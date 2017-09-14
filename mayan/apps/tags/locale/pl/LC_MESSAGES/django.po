@@ -3,58 +3,63 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012,2015
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:33 apps.py:73 apps.py:90 forms.py:34 forms.py:52 links.py:40
-#: links.py:43 models.py:35 permissions.py:7 views.py:139
+#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 forms.py:32
+#: links.py:40 menus.py:8 models.py:36 permissions.py:7 views.py:184
+#: workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Tagi"
 
-#: apps.py:68 apps.py:80
+#: apps.py:76 apps.py:96
 msgid "Preview"
 msgstr "Podgląd"
 
-#: apps.py:84 models.py:24
+#: apps.py:100 models.py:24
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: forms.py:53
-msgid "Tags to attach to the document."
+#: events.py:9
+msgid "Tag attached to document"
 msgstr ""
 
-#: links.py:14
+#: events.py:13
+msgid "Tag removed from document"
+msgstr ""
+
+#: links.py:14 workflow_actions.py:73
 msgid "Remove tag"
 msgstr "Usuń tag"
 
 #: links.py:17 links.py:24
-msgid "Attach tag"
-msgstr "Dołącz tag"
+msgid "Attach tags"
+msgstr "Załącz tagi"
 
 #: links.py:20
 msgid "Remove tags"
 msgstr "Usuń tagi"
 
-#: links.py:28
+#: links.py:29
 msgid "Create new tag"
 msgstr "Utwórz nowy tag"
 
-#: links.py:32 links.py:45
+#: links.py:32 links.py:45 views.py:133
 msgid "Delete"
 msgstr "Usunąć"
 
@@ -62,25 +67,29 @@ msgstr "Usunąć"
 msgid "Edit"
 msgstr "Edytuj"
 
-#: models.py:20
+#: links.py:43
+msgid "All"
+msgstr "Wszystkie"
+
+#: models.py:20 search.py:16
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:22
+#: models.py:22 search.py:20
 msgid "Color"
 msgstr "Kolor"
 
-#: models.py:34
+#: models.py:35
 msgid "Tag"
 msgstr "Tag"
 
-#: models.py:53
+#: models.py:61
 msgid "Document tag"
-msgstr ""
+msgstr "Tag dokumentu"
 
-#: models.py:54
+#: models.py:62
 msgid "Document tags"
-msgstr ""
+msgstr "Tagi dokumentu"
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -106,214 +115,170 @@ msgstr "Załącz tagi do dokumentów"
 msgid "Remove tags from documents"
 msgstr "Usuń tagi z dokumentów"
 
-#: serializers.py:46
+#: serializers.py:38
+msgid ""
+"Comma separated list of document primary keys to which this tag will be "
+"attached."
+msgstr "Rozdzielona przecinkami lista kluczy głównych dokumentu, do którego ten tag zostanie dołączony."
+
+#: serializers.py:85
+msgid ""
+"API URL pointing to a tag in relation to the document attached to it. This "
+"URL is different than the canonical tag URL."
+msgstr "API URL wskazujący na tag w relacji do dokumentu, do którego został dołączony. URL ten różni się od kanonicznego URL-a taga."
+
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
-msgstr ""
+msgstr "Klucz główny taga przeznaczony do dodania."
 
-#: views.py:34
-msgid "Create tag"
-msgstr "Utwórz tag"
+#: views.py:33
+#, python-format
+msgid "Tag attach request performed on %(count)d document"
+msgstr "Dołączono tag do %(count)d dokumentu."
 
-#: views.py:59
-msgid "Must provide at least one document."
-msgstr "Musisz podać co najmniej jeden dokument."
+#: views.py:35
+#, python-format
+msgid "Tag attach request performed on %(count)d documents"
+msgstr "Dołączono tag do %(count)d dokumentów."
 
-#: views.py:86
+#: views.py:42
+msgid "Attach"
+msgstr "Załącz"
+
+#: views.py:44
+#, python-format
+msgid "Attach tags to %(count)d document"
+msgid_plural "Attach tags to %(count)d documents"
+msgstr[0] "Dołącz tagi do %(count)d dokumentu"
+msgstr[1] "Dołącz tagi do %(count)d dokumentu"
+msgstr[2] "Dołącz tagi do %(count)d dokumentu"
+msgstr[3] "Dołącz tagi do %(count)d dokumentów"
+
+#: views.py:56
+#, python-format
+msgid "Attach tags to document: %s"
+msgstr "Załącz tagi do dokumentu: %s"
+
+#: views.py:65
+msgid "Tags to be attached."
+msgstr "Tagi do załączenia."
+
+#: views.py:91
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Dokument \"%(document)s\" jest już otagowany jako \"%(tag)s\""
 
-#: views.py:96
+#: views.py:102
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr "Dodanie taga \"%(tag)s\" do dokumentu \"%(document)s\" powiodło się."
 
-#: views.py:110
-msgid "Attach tag to document"
-msgid_plural "Attach tag to documents"
-msgstr[0] "Załącz tag do dokumentu"
-msgstr[1] "Załącz tag do dokumentów"
-msgstr[2] "Załącz tag do dokumentów"
+#: views.py:111
+msgid "Create tag"
+msgstr "Utwórz tag"
 
-#: views.py:160
-msgid "Must provide at least one tag."
-msgstr "Musisz wprowadzić conajmniej jeden tag."
+#: views.py:122
+#, python-format
+msgid "Tag delete request performed on %(count)d tag"
+msgstr "Usunięto %(count)d tag"
 
-#: views.py:182
+#: views.py:124
+#, python-format
+msgid "Tag delete request performed on %(count)d tags"
+msgstr "Usunięto %(count)d tagi"
+
+#: views.py:131
+msgid "Will be removed from all documents."
+msgstr "Zostanie usunięty ze wszystkich dokumentów."
+
+#: views.py:135
+msgid "Delete the selected tag?"
+msgid_plural "Delete the selected tags?"
+msgstr[0] "Usunąć wybrany tag?"
+msgstr[1] "Usunąć wybrany tag?"
+msgstr[2] "Usunąć wybrany tag?"
+msgstr[3] "Usunąć wybrane tagi?"
+
+#: views.py:145
+#, python-format
+msgid "Delete tag: %s"
+msgstr "Usuń tag: %s"
+
+#: views.py:155
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Usunięto tag \"%s\"."
 
-#: views.py:186
+#: views.py:159
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Błąd podczas usuwania taga \"%(tag)s\":%(error)s"
 
-#: views.py:196
-msgid "Will be removed from all documents."
-msgstr "Zostanie usunięty ze wszystkich dokumentów."
-
-#: views.py:199
-msgid "Delete the selected tag?"
-msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: views.py:231
+#: views.py:174
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Edytuj tag: %s"
 
-#: views.py:244
+#: views.py:206
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumenty z tagiem: %s"
 
-#: views.py:271
+#: views.py:229
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Tagi dla dokumentu: %s"
 
-#: views.py:286
-msgid "Must provide at least one tagged document."
-msgstr "Musisz podać conajmniej jeden otagowany dokument."
-
-#: views.py:332
+#: views.py:240
 #, python-format
-msgid "Remove tag from document: %s."
-msgstr "Usuń tag z dokumentu: %s."
+msgid "Tag remove request performed on %(count)d document"
+msgstr "Usunięto tag z %(count)d dokumentu"
 
-#: views.py:336
+#: views.py:242
 #, python-format
-msgid "Remove tag from documents: %s."
-msgstr "Usuń tagi z dokumentów: %s."
+msgid "Tag remove request performed on %(count)d documents"
+msgstr "Usunięto tag %(count)d z dokumentów"
 
-#: views.py:344
+#: views.py:249
+msgid "Remove"
+msgstr "Usuń"
+
+#: views.py:251
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
-msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr ""
+msgid "Remove tags to %(count)d document"
+msgid_plural "Remove tags to %(count)d documents"
+msgstr[0] "Usunięto tagi z %(count)d dokumentu"
+msgstr[1] "Usunięto tagi z %(count)d dokumentu"
+msgstr[2] "Usunięto tagi z %(count)d dokumentu"
+msgstr[3] "Usunięto tagi z %(count)d dokumentów"
 
-#: views.py:351
+#: views.py:263
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
-msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-msgstr ""
+msgid "Remove tags from document: %s"
+msgstr "Usuń tagi z dokumentu: %s"
 
-#: views.py:360
+#: views.py:272
+msgid "Tags to be removed."
+msgstr "Tagi do usunięcia."
+
+#: views.py:298
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
-msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-msgstr ""
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
+msgstr "Dokument \"%(document)s\" nie zawiera tagów \"%(tag)s\""
 
-#: views.py:367
-#, python-format
-msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-msgstr ""
-
-#: views.py:379
-#, python-format
-msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
-msgstr "Dokument \"%(document)s\" nie był otagowany jako \"%(tag)s\""
-
-#: views.py:388
+#: views.py:308
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" usunięty z dokumentu \"%(document)s\"."
 
-#~ msgid "remove tags"
-#~ msgstr "remove tags"
+#: workflow_actions.py:21
+msgid "Tags to attach to the document"
+msgstr ""
 
-#~ msgid "Tagged items"
-#~ msgstr "tagged items"
+#: workflow_actions.py:26
+msgid "Attach tag"
+msgstr "Dołącz tag"
 
-#~ msgid "ACLs"
-#~ msgstr "ACLs"
-
-#~ msgid "Blue"
-#~ msgstr "Blue"
-
-#~ msgid "Cyan"
-#~ msgstr "Cyan"
-
-#~ msgid "Coral"
-#~ msgstr "Coral"
-
-#~ msgid "Green-Yellow"
-#~ msgstr "Green-Yellow"
-
-#~ msgid "Khaki"
-#~ msgstr "Khaki"
-
-#~ msgid "LightGrey"
-#~ msgstr "LightGrey"
-
-#~ msgid "Magenta"
-#~ msgstr "Magenta"
-
-#~ msgid "Red"
-#~ msgstr "Red"
-
-#~ msgid "Orange"
-#~ msgstr "Orange"
-
-#~ msgid "Yellow"
-#~ msgstr "Yellow"
-
-#~ msgid "Tag created succesfully."
-#~ msgstr "Tag created succesfully."
-
-#~ msgid "Tag updated succesfully."
-#~ msgstr "Tag updated succesfully."
-
-#~ msgid "Add tag to document"
-#~ msgstr "Add tag to document"
-
-#~ msgid "Document created"
-#~ msgstr "document"
-
-#~ msgid "Attach tag to document: %s."
-#~ msgstr "Attach tag to document: %s."
-
-#~ msgid "Attach tag to documents: %s."
-#~ msgstr "Attach tag to documents: %s."
-
-#~ msgid "Are you sure you wish to delete the tags: %s?"
-#~ msgstr "Are you sure you wish to delete the tags: %s?"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Tag list"
-#~ msgstr "tag list"
-
-#~ msgid "Tagged documents"
-#~ msgstr "tagged documents"
-
-#~ msgid "Tag properties"
-#~ msgstr "tag properties"
-
-#~ msgid "Tags properties"
-#~ msgstr "tags properties"
-
-#~ msgid "Tag already exists."
-#~ msgstr "Tag already exists."
-
-#~ msgid "tags"
-#~ msgstr "tags"
-
-#~ msgid "create new tag"
-#~ msgstr "create new tag"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "tag"
-#~ msgstr "tag"
-
-#~ msgid "color"
-#~ msgstr "color"
+#: workflow_actions.py:68
+msgid "Tags to remove from the document"
+msgstr ""

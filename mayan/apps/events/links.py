@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.contenttypes.models import ContentType
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
@@ -10,6 +10,10 @@ from .permissions import permission_events_view
 
 def get_kwargs_factory(variable_name):
     def get_kwargs(context):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
         content_type = ContentType.objects.get_for_model(
             context[variable_name]
         )

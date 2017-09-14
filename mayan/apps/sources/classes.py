@@ -1,16 +1,13 @@
 from __future__ import unicode_literals
 
 import base64
+from io import BytesIO
 import os
 import time
 import urllib
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
 from django.core.files import File
+from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from converter import TransformationResize, converter_class
 
@@ -35,10 +32,11 @@ class Attachment(File):
     def __init__(self, part, name):
         self.name = name
         self.file = PseudoFile(
-            StringIO(part.get_payload(decode=True)), name=name
+            BytesIO(part.get_payload(decode=True)), name=name
         )
 
 
+@python_2_unicode_compatible
 class StagingFile(object):
     """
     Simple class to extend the File class to add preview capabilities
@@ -57,8 +55,8 @@ class StagingFile(object):
                 filename.encode('utf8')
             )
 
-    def __unicode__(self):
-        return unicode(self.filename)
+    def __str__(self):
+        return force_text(self.filename)
 
     def as_file(self):
         return File(
@@ -71,7 +69,7 @@ class StagingFile(object):
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
 
-    def get_image(self, size=None, as_base64=True, transformations=None):
+    def get_image(self, size=None, as_base64=False, transformations=None):
         converter = converter_class(file_object=open(self.get_full_path()))
 
         if size:

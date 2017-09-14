@@ -1,20 +1,19 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIStagingSourceFileView, APIStagingSourceFileImageView,
     APIStagingSourceListView, APIStagingSourceView
 )
 from .views import (
-    SetupSourceCreateView, SetupSourceDeleteView, SetupSourceEditView,
-    SetupSourceListView, SourceLogListView, StagingFileDeleteView,
-    UploadInteractiveVersionView, UploadInteractiveView
+    SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
+    SetupSourceEditView, SetupSourceListView, SourceLogListView,
+    StagingFileDeleteView, UploadInteractiveVersionView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^staging_file/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
         StagingFileDeleteView.as_view(), name='staging_file_delete'
@@ -60,6 +59,10 @@ urlpatterns = patterns(
         r'^setup/(?P<source_type>\w+)/create/$',
         SetupSourceCreateView.as_view(), name='setup_source_create'
     ),
+    url(
+        r'^setup/(?P<pk>\d+)/check/$', SetupSourceCheckView.as_view(),
+        name='setup_source_check'
+    ),
 
     # Document create views
 
@@ -67,10 +70,9 @@ urlpatterns = patterns(
         r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(),
         name='document_create_multiple'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
         APIStagingSourceFileImageView.as_view(),
@@ -88,4 +90,4 @@ api_urls = patterns(
         r'^staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(),
         name='stagingfolder-detail'
     )
-)
+]

@@ -1,15 +1,28 @@
 {% load i18n %}
 
-{% if title %}
-    {{ title }}
-{% else %}
-    {% if read_only %}
-        {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
+{% load smart_settings_tags %}
+
+{% smart_setting 'APPEARANCE_MAXIMUM_TITLE_LENGTH' as maximum_title_length %}
+
+{# Avoid horizontal scroll on small displays #}
+{% if not html_title %}
+    <span style="word-break: break-all;">
+{% endif %}
+
+    {% if title %}
+        {{ title|truncatechars:maximum_title_length }}
     {% else %}
-        {% if object %}
-            {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
+        {% if read_only %}
+            {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
         {% else %}
-            {% trans 'Create' %}
+            {% if object %}
+                {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
+            {% else %}
+                {% trans 'Create' %}
+            {% endif %}
         {% endif %}
     {% endif %}
+
+{% if not html_title %}
+    </span>
 {% endif %}

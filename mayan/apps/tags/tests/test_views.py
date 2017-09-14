@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from documents.permissions import permission_document_view
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import TEST_USER_PASSWORD, TEST_USER_USERNAME
 
 from ..models import Tag
 from ..permissions import (
@@ -17,230 +16,225 @@ from .literals import (
 
 
 class TagViewTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(TagViewTestCase, self).setUp()
-
+    def _create_tag(self):
         self.tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
 
-    def tearDown(self):
-        super(TagViewTestCase, self).tearDown()
-        if self.tag.pk:
-            self.tag.delete()
-
-    def test_tag_create_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.tag.delete()
-        self.assertEqual(Tag.objects.count(), 0)
-
-        response = self.post(
-            'tags:tag_create', data={
-                'label': TEST_TAG_LABEL,
-                'color': TEST_TAG_COLOR
-            }
-        )
-
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(Tag.objects.count(), 0)
-
-    def test_tag_create_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.tag.delete()
-        self.assertEqual(Tag.objects.count(), 0)
-
-        self.role.permissions.add(permission_tag_create.stored_permission)
-
-        response = self.post(
+    def _request_create_tag(self):
+        return self.post(
             'tags:tag_create', data={
                 'label': TEST_TAG_LABEL,
                 'color': TEST_TAG_COLOR
             }, follow=True
         )
 
-        self.assertContains(response, text='created', status_code=200)
+    def test_tag_create_view_no_permissions(self):
+        self.login_user()
+
+        response = self._request_create_tag()
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(Tag.objects.count(), 0)
+
+    def test_tag_create_view_with_permissions(self):
+        self.login_user()
+
+        self.grant_permission(permission=permission_tag_create)
+
+        response = self._request_create_tag()
+
+        self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Tag.objects.count(), 1)
         tag = Tag.objects.first()
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
-    def test_tag_delete_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(Tag.objects.count(), 1)
-
-        response = self.post(
-            'tags:tag_delete', args=(self.tag.pk,)
-        )
-
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(Tag.objects.count(), 1)
-
-    def test_tag_delete_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(Tag.objects.count(), 1)
-
-        self.role.permissions.add(permission_tag_delete.stored_permission)
-
-        response = self.post(
+    def _request_delete_tag(self):
+        return self.post(
             'tags:tag_delete', args=(self.tag.pk,), follow=True
         )
 
-        self.assertContains(response, text='deleted', status_code=200)
+    def test_tag_delete_view_no_permissions(self):
+        self.login_user()
+        self._create_tag()
+
+        response = self._request_delete_tag()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Tag.objects.count(), 1)
+
+    def test_tag_delete_view_with_access(self):
+        self.login_user()
+        self._create_tag()
+
+        self.grant_access(obj=self.tag, permission=permission_tag_delete)
+
+        response = self._request_delete_tag()
+
+        self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Tag.objects.count(), 0)
 
-    def test_tag_multiple_delete_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(Tag.objects.count(), 1)
-
-        response = self.post(
-            'tags:tag_multiple_delete', data={'id_list': self.tag.pk}
-        )
-
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(Tag.objects.count(), 1)
-
-    def test_tag_multiple_delete_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(Tag.objects.count(), 1)
-
-        self.role.permissions.add(permission_tag_delete.stored_permission)
-
-        response = self.post(
+    def _request_multiple_delete(self):
+        return self.post(
             'tags:tag_multiple_delete', data={'id_list': self.tag.pk},
             follow=True
         )
 
-        self.assertContains(response, text='deleted', status_code=200)
+    def test_tag_multiple_delete_view_no_permissions(self):
+        self.login_user()
+        self._create_tag()
+
+        response = self._request_multiple_delete()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Tag.objects.count(), 1)
+
+    def test_tag_multiple_delete_view_with_access(self):
+        self.login_user()
+        self._create_tag()
+
+        self.grant_access(obj=self.tag, permission=permission_tag_delete)
+
+        response = self._request_multiple_delete()
+
+        self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Tag.objects.count(), 0)
 
-    def test_tag_edit_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        response = self.post(
+    def _request_edit_tag(self):
+        return self.post(
             'tags:tag_edit', args=(self.tag.pk,), data={
                 'label': TEST_TAG_LABEL_EDITED, 'color': TEST_TAG_COLOR_EDITED
-            }
+            }, follow=True
         )
+
+    def test_tag_edit_view_no_permissions(self):
+        self.login_user()
+        self._create_tag()
+
+        response = self._request_edit_tag()
 
         self.assertEqual(response.status_code, 403)
         tag = Tag.objects.get(pk=self.tag.pk)
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
-    def test_tag_edit_view_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def test_tag_edit_view_with_access(self):
+        self.login_user()
+        self._create_tag()
 
-        self.role.permissions.add(permission_tag_edit.stored_permission)
+        self.grant_access(obj=self.tag, permission=permission_tag_edit)
 
-        response = self.post(
-            'tags:tag_edit', args=(self.tag.pk,), data={
-                'label': TEST_TAG_LABEL_EDITED, 'color': TEST_TAG_COLOR_EDITED
-            }, follow=True
-        )
+        response = self._request_edit_tag()
 
-        self.assertContains(response, text='update', status_code=200)
+        self.assertEqual(response.status_code, 200)
         tag = Tag.objects.get(pk=self.tag.pk)
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
+    def _request_document_list(self):
+        return self.get('documents:document_list')
+
     def test_document_tags_widget_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
+        self._create_tag()
 
         self.tag.documents.add(self.document)
-        response = self.get('documents:document_list')
+        response = self._request_document_list()
         self.assertNotContains(response, text=TEST_TAG_LABEL, status_code=200)
 
-    def test_document_tags_widget_with_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def test_document_tags_widget_with_access(self):
+        self.login_user()
+        self._create_tag()
 
         self.tag.documents.add(self.document)
-        self.role.permissions.add(permission_tag_view.stored_permission)
-        self.role.permissions.add(permission_document_view.stored_permission)
-        response = self.get('documents:document_list')
+
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+        self.grant_access(
+            obj=self.document, permission=permission_document_view
+        )
+
+        response = self._request_document_list()
 
         self.assertContains(response, text=TEST_TAG_LABEL, status_code=200)
 
-    def test_document_attach_tag_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(self.document.tags.count(), 0)
-
-        self.role.permissions.add(permission_tag_view.stored_permission)
-        response = self.post(
+    def _request_attach_tag(self):
+        return self.post(
             'tags:tag_attach', args=(self.document.pk,), data={
-                'tag': self.tag.pk,
-                'user': self.user.pk
-            }
-        )
-
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(self.document.tags.count(), 0)
-
-    def test_document_attach_tag_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.assertEqual(self.document.tags.count(), 0)
-
-        self.role.permissions.add(permission_tag_attach.stored_permission)
-        # permission_tag_view is needed because the form filters the
-        # choices
-        self.role.permissions.add(permission_tag_view.stored_permission)
-
-        response = self.post(
-            'tags:tag_attach', args=(self.document.pk,), data={
-                'tag': self.tag.pk,
+                'tags': self.tag.pk,
                 'user': self.user.pk
             }, follow=True
         )
+
+    def test_document_attach_tag_view_no_permission(self):
+        self.login_user()
+        self._create_tag()
+
+        self.assertEqual(self.document.tags.count(), 0)
+
+        self.grant_access(obj=self.tag, permission=permission_tag_attach)
+
+        response = self._request_attach_tag()
+
+        # Redirect to previous URL and show warning message about having to
+        # select at least one object.
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.document.tags.count(), 0)
+
+    def test_document_attach_tag_view_with_access(self):
+        self.login_user()
+        self._create_tag()
+
+        self.assertEqual(self.document.tags.count(), 0)
+
+        self.grant_access(obj=self.document, permission=permission_tag_attach)
+        self.grant_access(obj=self.tag, permission=permission_tag_attach)
+        # permission_tag_view is needed because the form filters the
+        # choices
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+
+        response = self._request_attach_tag()
 
         self.assertEqual(response.status_code, 200)
 
         self.assertQuerysetEqual(
             self.document.tags.all(), (repr(self.tag),)
+        )
+
+    def _request_multiple_attach_tag(self):
+        return self.post(
+            'tags:multiple_documents_tag_attach', data={
+                'id_list': self.document.pk, 'tags': self.tag.pk,
+                'user': self.user.pk
+            }, follow=True
         )
 
     def test_document_multiple_attach_tag_view_no_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.login_user()
+        self._create_tag()
 
-        self.assertEqual(self.document.tags.count(), 0)
-        self.role.permissions.add(permission_tag_view.stored_permission)
+        self.grant_permission(permission=permission_tag_view)
 
-        response = self.post(
-            'tags:multiple_documents_tag_attach', data={
-                'id_list': self.document.pk, 'tag': self.tag.pk,
-                'user': self.user.pk
-            }
-        )
+        response = self._request_multiple_attach_tag()
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(self.document.tags.count(), 0)
 
-    def test_document_multiple_attach_tag_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+    def test_document_multiple_attach_tag_view_with_access(self):
+        self.login_user()
+        self._create_tag()
 
-        self.assertEqual(self.document.tags.count(), 0)
-
-        self.role.permissions.add(permission_tag_attach.stored_permission)
+        self.grant_access(obj=self.document, permission=permission_tag_attach)
+        self.grant_access(obj=self.tag, permission=permission_tag_attach)
 
         # permission_tag_view is needed because the form filters the
         # choices
-        self.role.permissions.add(permission_tag_view.stored_permission)
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
 
-        response = self.post(
-            'tags:multiple_documents_tag_attach', data={
-                'id_list': self.document.pk, 'tag': self.tag.pk,
-                'user': self.user.pk
-            }, follow=True
-        )
+        response = self._request_multiple_attach_tag()
 
         self.assertEqual(response.status_code, 200)
 
@@ -248,76 +242,76 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             self.document.tags.all(), (repr(self.tag),)
         )
 
-    def test_single_document_multiple_tag_remove_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.document.tags.add(self.tag)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-        self.role.permissions.add(permission_tag_view.stored_permission)
-
-        response = self.post(
+    def _request_single_document_multiple_tag_remove(self):
+        return self.post(
             'tags:single_document_multiple_tag_remove',
             args=(self.document.pk,), data={
-                'id_list': self.tag.pk,
-            }
-        )
-
-        self.assertEqual(response.status_code, 302)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-
-    def test_single_document_multiple_tag_remove_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.document.tags.add(self.tag)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-
-        self.role.permissions.add(permission_tag_remove.stored_permission)
-        self.role.permissions.add(permission_tag_view.stored_permission)
-
-        response = self.post(
-            'tags:single_document_multiple_tag_remove',
-            args=(self.document.pk,), data={
-                'id_list': self.tag.pk,
+                'id_list': self.document.pk,
+                'tags': self.tag.pk,
             }, follow=True
         )
+
+    def test_single_document_multiple_tag_remove_view_no_permissions(self):
+        self.login_user()
+        self._create_tag()
+
+        self.document.tags.add(self.tag)
+
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+
+        response = self._request_single_document_multiple_tag_remove()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
+
+    def test_single_document_multiple_tag_remove_view_with_access(self):
+        self.login_user()
+        self._create_tag()
+
+        self.document.tags.add(self.tag)
+
+        self.grant_access(obj=self.document, permission=permission_tag_remove)
+        self.grant_access(obj=self.tag, permission=permission_tag_remove)
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+
+        response = self._request_single_document_multiple_tag_remove()
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.document.tags.count(), 0)
 
-    def test_multiple_documents_selection_tag_remove_view_no_permissions(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.document.tags.add(self.tag)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-        self.role.permissions.add(permission_tag_view.stored_permission)
-
-        response = self.post(
+    def _request_multiple_documents_selection_tag_remove(self):
+        return self.post(
             'tags:multiple_documents_selection_tag_remove',
             data={
                 'id_list': self.document.pk,
-                'tag': self.tag.pk,
-            }
-        )
-
-        self.assertEqual(response.status_code, 302)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-
-    def test_multiple_documents_selection_tag_remove_view_with_permission(self):
-        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
-
-        self.document.tags.add(self.tag)
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
-
-        self.role.permissions.add(permission_tag_remove.stored_permission)
-        self.role.permissions.add(permission_tag_view.stored_permission)
-
-        response = self.post(
-            'tags:multiple_documents_selection_tag_remove',
-            data={
-                'id_list': self.document.pk,
-                'tag': self.tag.pk,
+                'tags': self.tag.pk,
             }, follow=True
         )
+
+    def test_multiple_documents_selection_tag_remove_view_no_permissions(self):
+        self.login_user()
+        self._create_tag()
+
+        self.document.tags.add(self.tag)
+
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+
+        response = self._request_multiple_documents_selection_tag_remove()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
+
+    def test_multiple_documents_selection_tag_remove_view_with_access(self):
+        self.login_user()
+        self._create_tag()
+
+        self.document.tags.add(self.tag)
+
+        self.grant_access(obj=self.document, permission=permission_tag_remove)
+        self.grant_access(obj=self.tag, permission=permission_tag_remove)
+        self.grant_access(obj=self.tag, permission=permission_tag_view)
+
+        response = self._request_multiple_documents_selection_tag_remove()
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.document.tags.count(), 0)

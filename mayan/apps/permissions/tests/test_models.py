@@ -1,27 +1,16 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
-from django.test import TestCase
 
-from user_management.tests import TEST_GROUP, TEST_USER_USERNAME
+from common.tests import BaseTestCase
 
 from ..classes import Permission
-from ..models import Role
 from ..permissions import permission_role_view
 
-from .literals import TEST_ROLE_LABEL
 
-
-class PermissionTestCase(TestCase):
+class PermissionTestCase(BaseTestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create(
-            username=TEST_USER_USERNAME
-        )
-        self.group = Group.objects.create(name=TEST_GROUP)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-        Permission.invalidate_cache()
+        super(PermissionTestCase, self).setUp()
 
     def test_no_permissions(self):
         with self.assertRaises(PermissionDenied):

@@ -4,7 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.core.files.base import ContentFile
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (
@@ -119,7 +119,7 @@ class KeyQueryResultView(SingleObjectListView):
             'title': _('Key query results'),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         term = self.request.GET.get('term')
         if term:
             return Key.objects.search(query=term)

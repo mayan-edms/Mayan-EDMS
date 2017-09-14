@@ -5,14 +5,14 @@ import shlex
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.template import Context, Template
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
 from .classes import MetadataLookup
-from .managers import MetadataTypeManager
+from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
 from .settings import setting_available_parsers, setting_available_validators
 
 
@@ -97,7 +97,7 @@ class MetadataType(models.Model):
         splitter.whitespace = ','.encode('utf-8')
         splitter.whitespace_split = True
         splitter.commenters = ''.encode('utf-8')
-        return list(splitter)
+        return [force_text(e) for e in splitter]
 
     def get_default_value(self):
         template = Template(self.default)
@@ -121,11 +121,12 @@ class MetadataType(models.Model):
 
         if not value and self.get_required_for(document_type=document_type):
             raise ValidationError(
-                _('This metadata is required for this document type.')
+                _('"%s" is required for this document type.') % self.label
             )
 
         if self.lookup:
             lookup_options = self.get_lookup_values()
+
             if value and value not in lookup_options:
                 raise ValidationError(
                     _('Value is not one of the provided options.')
@@ -150,18 +151,26 @@ class DocumentMetadata(models.Model):
     """
 
     document = models.ForeignKey(
-        Document, related_name='metadata', verbose_name=_('Document')
+        Document, on_delete=models.CASCADE, related_name='metadata',
+        verbose_name=_('Document')
     )
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Type'))
+    metadata_type = models.ForeignKey(
+        MetadataType, on_delete=models.CASCADE, verbose_name=_('Type')
+    )
     value = models.CharField(
         blank=True, db_index=True, max_length=255, null=True,
         verbose_name=_('Value')
     )
 
     def __str__(self):
-        return unicode(self.metadata_type)
+        return force_text(self.metadata_type)
 
     def delete(self, enforce_required=True, *args, **kwargs):
+        """
+        enforce_required prevents deletion of required metadata at the
+        model level. It used set to False when deleting document metadata
+        on document type change.
+        """
         if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
             raise ValidationError(
                 _('Metadata type is required for this document type.')
@@ -199,16 +208,19 @@ class DocumentMetadata(models.Model):
 @python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(
-        DocumentType, related_name='metadata',
+        DocumentType, on_delete=models.CASCADE, related_name='metadata',
         verbose_name=_('Document type')
     )
     metadata_type = models.ForeignKey(
-        MetadataType, verbose_name=_('Metadata type')
+        MetadataType, on_delete=models.CASCADE,
+        verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 
+    objects = DocumentTypeMetadataTypeManager()
+
     def __str__(self):
-        return unicode(self.metadata_type)
+        return force_text(self.metadata_type)
 
     class Meta:
         unique_together = ('document_type', 'metadata_type')

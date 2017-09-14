@@ -1,13 +1,13 @@
-===============================
+=============================
 Mayan EDMS v2.1 release notes
-===============================
+=============================
 
-Released: April, 2016
+Released: May 14, 2016
 
 What's new
 ==========
 
-Upgrade to use Django 1.8.11
+Upgrade to use Django 1.8.13
 ----------------------------
 With the end of life support for Django 1.7, moving to the next Mayan EDMS
 minor version was a target for this release. The Django minor release chosen was
@@ -33,13 +33,13 @@ Improve generation of success and error messages for class based views
 ----------------------------------------------------------------------
 In the past success messages for actions would show a generic mention to the
 object being manipulated (document, folder, tag). Now the errors and success
-messages with be more explcit in describing what the view has or was trying
+messages with be more explicit in describing what the view has or was trying
 to manipulate.
 
 Remove ownership concept from folders
 -------------------------------------
 Currently Folders in Mayan EDMS have a field that stores a reference to the
-user that has created that folders. One of the design decissions of Mayan EDMS
+user that has created that folders. One of the design decisions of Mayan EDMS
 is that there should never be any explicit ownership of any object. Ownership
 is relative and is defined by the Access Control List of an object. The
 removal of the user field from the Folders model brings this app in line with
@@ -48,7 +48,7 @@ the defined behavior.
 Replacement of strip_spaces middleware with the spaceless template tag
 ----------------------------------------------------------------------
 As a size optimization technique HTML content was dynamically stripped of spaces
-as it was being served. The techique used involved detecting the MIME type of
+as it was being served. The technique used involved detecting the MIME type of
 the content being served and if found to be of text/HTML type spaces between
 tags were stripped. An edge case was found where this did not worked always.
 The approached has been changed to use Django's official tag to strip spaces.
@@ -84,7 +84,13 @@ Fixed date locale handling in document properties, checkout and user detail view
 A few releases back the ability to for users to set their timezone was added.
 This change also included a smart date rendering update to adjust the dates
 and times fields to the user's timezone. Some users reported a few views where
-this timezone adjustment was not happeding, this has been fully fixed.
+this timezone adjustment was not happening, this has been fully fixed.
+
+Default index
+-------------
+During new installations a default index that organizes document by year/month
+when they were uploaded will be created to help users better understand the
+concept of indexes in Mayan EDMS.
 
 HTML5 upload widget
 -------------------
@@ -98,7 +104,7 @@ Message of the Day app
 Administrators wanting to display announcements has no other way to do so
 than to customize the login template. To avoid this a new app has been added
 that allows for the creation of messages to be shown at the user login
-screen. These messages can have an activation and an experiation date and
+screen. These messages can have an activation and an expiration date and
 time. These messages are useful for display company access policies,
 maintenance announcement, etc.
 
@@ -121,7 +127,7 @@ if signed, verify the validity of the signature. However, to sign documents
 user had to download the document, sign the document offline, and either
 re-upload the signed document as a new version or upload a detached
 signature for the existing document version. Aside from being now able to sign
-documents from the web user iterface, the way keys are handled has been
+documents from the web user interface, the way keys are handled has been
 rewritten from scratch to support distributed key storage. This means that
 a key uploaded in one computer by one user can be used transparently by
 other users in other computers to sign documents. The relevant access control
@@ -145,6 +151,20 @@ Other changes
 - Update Document model's uuid field to use Django's native UUIDField class.
 - Add new split view index navigation
 - Newly uploaded documents appear in the Recent document list of the user.
+- Start migration from django-sendfile to django-downloadview.
+- Index more model fields.
+- Navigation system support querysets using .defer() or .only() optimizations.
+- API fixes and improvements.
+- Increase total test count to 311.
+- Increase test coverage to 77%.
+- Documentation improvements.
+- Handle unicode filenames in staging folders.
+- Add staging file deletion permission.
+- New document_signature_view permission.
+- Instead of multiple keyservers only one keyserver is now supported.
+- Replace document type selection widget with an opened selection list.
+- Add roadmap documentation chapter.
+
 
 Removals
 --------
@@ -199,11 +219,29 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
+* `GitLab issue #137 <https://gitlab.com/mayan-edms/mayan-edms/issues/137>`_   Add app creation chapter to documentation.
+* `GitLab issue #147 <https://gitlab.com/mayan-edms/mayan-edms/issues/147>`_   Add in app document signing.
+* `GitLab issue #161 <https://gitlab.com/mayan-edms/mayan-edms/issues/161>`_   Email backend setup documentation.
 * `GitLab issue #162 <https://gitlab.com/mayan-edms/mayan-edms/issues/162>`_   Add HTML5 file uploader.
+* `GitLab issue #191 <https://gitlab.com/mayan-edms/mayan-edms/issues/191>`_   Split index contents title into title and path/breadcrumb widget.
+* `GitLab issue #206 <https://gitlab.com/mayan-edms/mayan-edms/issues/206>`_   Support for dynamic LOGIN_EXEMPT_URLS.
+* `GitLab issue #208 <https://gitlab.com/mayan-edms/mayan-edms/issues/208>`_   Add tagging step to upload wizard.
+* `GitLab issue #218 <https://gitlab.com/mayan-edms/mayan-edms/issues/218>`_   Cookie cutter template for Mayan apps.
 * `GitLab issue #222 <https://gitlab.com/mayan-edms/mayan-edms/issues/222>`_   Add notice board or Message of the Day.
 * `GitLab issue #225 <https://gitlab.com/mayan-edms/mayan-edms/issues/225>`_   Remove hard coded User model.
 * `GitLab issue #232 <https://gitlab.com/mayan-edms/mayan-edms/issues/232>`_   "Create documents" is a blanket permission for a user to create a document of any document type.
 * `GitLab issue #246 <https://gitlab.com/mayan-edms/mayan-edms/issues/246>`_   Upgrade to Django version 1.8 as Django 1.7 is end-of-life.
+* `GitLab issue #251 <https://gitlab.com/mayan-edms/mayan-edms/issues/251>`_   Add method to disable metadata edit form "update" checkbox when not needed.
 * `GitLab issue #255 <https://gitlab.com/mayan-edms/mayan-edms/issues/255>`_   UnicodeDecodeError in apps/common/middleware/strip_spaces_widdleware.py.
+* `GitLab issue #256 <https://gitlab.com/mayan-edms/mayan-edms/issues/256>`_   typo in locale settings (Dutch).
+* `GitLab issue #261 <https://gitlab.com/mayan-edms/mayan-edms/issues/261>`_   Feature: Document Access Audit Logging.
+* `GitLab issue #265 <https://gitlab.com/mayan-edms/mayan-edms/issues/265>`_   Indexes show list (show indexe only if the user has ACLs on document type).
+* `GitLab issue #266 <https://gitlab.com/mayan-edms/mayan-edms/issues/266>`_   Smart links : Dynamic label with Postgresql.
+* `GitLab issue #267 <https://gitlab.com/mayan-edms/mayan-edms/issues/267>`_   Release 2.1 RC1 : Notes and ideas.
+* `GitLab issue #268 <https://gitlab.com/mayan-edms/mayan-edms/issues/268>`_   Release 2.1 RC1 : Bug to access inside an indexes.
+* `GitLab issue #270 <https://gitlab.com/mayan-edms/mayan-edms/issues/270>`_   Release 2.1 RC1 : Bug statistics.
+* `GitLab issue #274 <https://gitlab.com/mayan-edms/mayan-edms/issues/274>`_   [Release 2.1 RC2] Web Tests.
+* `GitLab issue #275 <https://gitlab.com/mayan-edms/mayan-edms/issues/275>`_   [Release 2.1 RC2] Notes.
+* `GitLab issue #276 <https://gitlab.com/mayan-edms/mayan-edms/issues/276>`_   [Release 2.1 RC2] API Tests.
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

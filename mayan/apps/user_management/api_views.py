@@ -2,9 +2,11 @@ from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
+from acls.models import AccessControlList
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -13,7 +15,44 @@ from .permissions import (
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
-from .serializers import GroupSerializer, UserSerializer
+from .serializers import (
+    GroupSerializer, UserSerializer, UserGroupListSerializer
+)
+
+
+class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def delete(self, *args, **kwargs):
+        """
+        Delete the current user.
+        """
+
+        return super(APICurrentUserView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """
+        Return the details of the current user.
+        """
+
+        return super(APICurrentUserView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """
+        Partially edit the current user.
+        """
+
+        return super(APICurrentUserView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """
+        Edit the current user.
+        """
+
+        return super(APICurrentUserView, self).put(*args, **kwargs)
 
 
 class APIGroupListView(generics.ListCreateAPIView):
@@ -141,36 +180,50 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIUserView, self).put(*args, **kwargs)
 
 
-class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = UserSerializer
+class APIUserGroupList(generics.ListCreateAPIView):
+    """
+    Returns a list of all the groups to which an user belongs.
+    """
 
-    def get_object(self):
-        return self.request.user
+    mayan_object_permissions = {
+        'GET': (permission_user_view,),
+        'POST': (permission_user_edit,)
+    }
+    permission_classes = (MayanPermission,)
 
-    def delete(self, *args, **kwargs):
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return GroupSerializer
+        elif self.request.method == 'POST':
+            return UserGroupListSerializer
+
+    def get_serializer_context(self):
         """
-        Delete the current user.
+        Extra context provided to the serializer class.
         """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'user': self.get_user(),
+            'view': self
+        }
 
-        return super(APICurrentUserView, self).delete(*args, **kwargs)
+    def get_queryset(self):
+        user = self.get_user()
 
-    def get(self, *args, **kwargs):
+        return AccessControlList.objects.filter_by_access(
+            permission_group_view, self.request.user,
+            queryset=user.groups.all()
+        )
+
+    def get_user(self):
+        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.get_user())
+
+    def post(self, request, *args, **kwargs):
         """
-        Return the details of the current user.
+        Add a user to a list of groups.
         """
-
-        return super(APICurrentUserView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit the current user.
-        """
-
-        return super(APICurrentUserView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the current user.
-        """
-
-        return super(APICurrentUserView, self).put(*args, **kwargs)
+        return super(APIUserGroupList, self).post(request, *args, **kwargs)

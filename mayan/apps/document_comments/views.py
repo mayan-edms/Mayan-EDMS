@@ -1,8 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -10,7 +9,6 @@ from common.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectListView
 )
 from documents.models import Document
-from permissions import Permission
 
 from .models import Comment
 from .permissions import (
@@ -25,14 +23,10 @@ class DocumentCommentCreateView(SingleObjectCreateView):
     object_verbose_name = _('Comment')
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_comment_create,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_comment_create, request.user, self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_comment_create, user=request.user,
+            obj=self.get_document()
+        )
 
         return super(
             DocumentCommentCreateView, self
@@ -67,15 +61,10 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
     model = Comment
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_comment_delete,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_comment_delete, request.user,
-                self.get_object().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_comment_delete, user=request.user,
+            obj=self.get_object().document
+        )
 
         return super(
             DocumentCommentDeleteView, self
@@ -101,19 +90,6 @@ class DocumentCommentListView(SingleObjectListView):
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    def get_queryset(self):
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_comment_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_comment_view, self.request.user,
-                self.get_document()
-            )
-
-        return self.get_document().comments.all()
-
     def get_extra_context(self):
         return {
             'hide_link': True,
@@ -121,3 +97,11 @@ class DocumentCommentListView(SingleObjectListView):
             'object': self.get_document(),
             'title': _('Comments for document: %s') % self.get_document(),
         }
+
+    def get_object_list(self):
+        AccessControlList.objects.check_access(
+            permissions=permission_comment_view, user=self.request.user,
+            obj=self.get_document()
+        )
+
+        return self.get_document().comments.all()

@@ -1,0 +1,87 @@
+===============================
+Mayan EDMS v2.6.3 release notes
+===============================
+
+Released: July 25, 2017
+
+What's new
+==========
+
+This is a bug fix release and users are encouraged to upgrade.
+
+Changes
+-------
+- Add makefile target to launch a PostgreSQL container.
+- Use resolve_url instead of redirect to resolve the post login URL.
+- Make the intialsetup and performupgrade management tasks work
+  with signals to allow customization from 3rd party apps.
+- PEP8 cleanups.
+- Add tag_ids keyword argument to the Source.handle_upload
+  model method. GitLab issue #413.
+- Add overflow wrapping so wrap long titles in Firefox too.
+- Makes Roles searchable. GitLab issue #402.
+- Add line numbers to the debug and production loggers.
+  Add date and time to the production logger.
+- Add support for generating setup.py from a template. GitLab
+  #149 #200.
+- Add fade in animation to document images.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #149 <https://gitlab.com/mayan-edms/mayan-edms/issues/149>`_ Autogenerate setup.py
+* `GitLab issue #200 <https://gitlab.com/mayan-edms/mayan-edms/issues/200>`_ dependencies in setup.py not up to date with requirements
+* `GitLab issue #402 <https://gitlab.com/mayan-edms/mayan-edms/issues/402>`_ Make permissions and roles searchable.
+* `GitLab issue #413 <https://gitlab.com/mayan-edms/mayan-edms/issues/413>`_ source.models.Source.handle_upload does not support tag_ids but upload_document does
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

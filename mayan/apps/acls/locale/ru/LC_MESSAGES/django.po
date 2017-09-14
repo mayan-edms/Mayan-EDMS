@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:41-0400\n"
-"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -18,43 +18,47 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:14 links.py:30
+#: apps.py:15 links.py:35 links.py:39
 msgid "ACLs"
-msgstr "ACLs"
+msgstr "СУДы"
 
-#: apps.py:22 links.py:38 models.py:36
+#: apps.py:25 links.py:48 models.py:43 workflow_actions.py:48
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: apps.py:26 models.py:38
-#| msgid "Roles"
+#: apps.py:29 models.py:47
 msgid "Role"
-msgstr ""
+msgstr "Роль"
 
-#: links.py:26
+#: links.py:31
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
-#: links.py:34
-#| msgid "View ACLs"
+#: links.py:43
 msgid "New ACL"
+msgstr "Создать СУД"
+
+#: managers.py:57 managers.py:86
+#, python-format
+msgid "Insufficient access for: %s"
 msgstr ""
 
-#: managers.py:84
-msgid "Insufficient access."
-msgstr "Недостаточный доступ."
-
-#: models.py:44
+#: models.py:54
 msgid "Access entry"
-msgstr ""
+msgstr "Элемент доступа"
 
-#: models.py:45
+#: models.py:55
 msgid "Access entries"
+msgstr "Элементы доступа"
+
+#: models.py:59
+#, python-format
+msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr ""
 
-#: models.py:60
+#: models.py:76
 msgid "None"
-msgstr "Ни один"
+msgstr "Пусто"
 
 #: permissions.py:7
 msgid "Access control lists"
@@ -62,165 +66,108 @@ msgstr "Списки контроля доступа"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Редактировать списки ACL"
+msgstr "Редактировать СУДы"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "Просмотр списков ACL"
+msgstr "Просмотр СУДов"
 
-#: views.py:78
+#: serializers.py:24 serializers.py:132
+msgid ""
+"API URL pointing to the list of permissions for this access control list."
+msgstr ""
+
+#: serializers.py:57
+msgid ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
+msgstr ""
+
+#: serializers.py:87
+msgid "Primary key of the new permission to grant to the access control list."
+msgstr ""
+
+#: serializers.py:111 serializers.py:187
+#, python-format
+msgid "No such permission: %s"
+msgstr ""
+
+#: serializers.py:126
+msgid ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
+msgstr ""
+
+#: serializers.py:138
+msgid "Primary keys of the role to which this access control list binds to."
+msgstr ""
+
+#: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Новый СУД для: %s"
 
-#: views.py:109
+#: views.py:101
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Удалить СУД: %s"
 
-#: views.py:151
+#: views.py:139
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "СУДы для: %s"
 
-#: views.py:162
+#: views.py:151
 msgid "Available permissions"
-msgstr ""
+msgstr "Доступные разрешения"
 
-#: views.py:163
+#: views.py:152
 msgid "Granted permissions"
-msgstr ""
+msgstr "Предоставленные разрешения"
 
-#: views.py:222
+#: views.py:207
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Права роли \"%(role)s\" для \"%(object)s\""
 
-#: views.py:242
+#: views.py:227
 msgid "Disabled permissions are inherited from a parent object."
+msgstr "Отключенные права наследуются от родительского объекта."
+
+#: workflow_actions.py:25
+msgid "Object type"
 msgstr ""
 
-#~ msgid "New holder"
-#~ msgstr "New holder"
+#: workflow_actions.py:28
+msgid "Type of the object for which the access will be modified."
+msgstr ""
 
-#~ msgid "Users"
-#~ msgstr "Users"
+#: workflow_actions.py:34
+msgid "Object ID"
+msgstr ""
 
-#~ msgid "Groups"
-#~ msgstr "Groups"
+#: workflow_actions.py:37
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr ""
 
-#~ msgid "Special"
-#~ msgstr "Special"
+#: workflow_actions.py:42
+msgid "Roles"
+msgstr "Роли"
 
-#~ msgid "Details"
-#~ msgstr "details"
+#: workflow_actions.py:44
+msgid "Roles whose access will be modified."
+msgstr ""
 
-#~ msgid "Grant"
-#~ msgstr "grant"
+#: workflow_actions.py:51
+msgid ""
+"Permissions to grant/revoke to/from the role for the object selected above."
+msgstr ""
 
-#~ msgid "Revoke"
-#~ msgstr "revoke"
+#: workflow_actions.py:59
+msgid "Grant access"
+msgstr ""
 
-#~ msgid "Classes"
-#~ msgstr "classes"
-
-#~ msgid "ACLs for class"
-#~ msgstr "ACLs for class"
-
-#~ msgid "Permission"
-#~ msgstr "permissions"
-
-#~ msgid "Default access entry"
-#~ msgstr "default access entry"
-
-#~ msgid "Default access entries"
-#~ msgstr "default access entries"
-
-#~ msgid "Creator"
-#~ msgstr "Creator"
-
-#~ msgid "Edit class default ACLs"
-#~ msgstr "Edit class default ACLs"
-
-#~ msgid "View class default ACLs"
-#~ msgstr "View class default ACLs"
-
-#~ msgid "Holder"
-#~ msgstr "holder"
-
-#~ msgid "Permissions available to: %(actor)s for %(obj)s"
-#~ msgstr "permissions available to: %(actor)s for %(obj)s"
-
-#~ msgid "Namespace"
-#~ msgstr "namespace"
-
-#~ msgid "Label"
-#~ msgstr "label"
-
-#~ msgid ", "
-#~ msgstr ", "
-
-#~ msgid " for %s"
-#~ msgstr " for %s"
-
-#~ msgid " to %s"
-#~ msgstr " to %s"
-
-#~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
-
-#~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
-
-#~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-
-#~ msgid ""
-#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
-#~ "%(object)s."
-#~ msgstr ""
-#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
-#~ "%(object)s."
-
-#~ msgid " from %s"
-#~ msgstr " from %s"
-
-#~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
-
-#~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-
-#~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-
-#~ msgid "Add new holder for: %s"
-#~ msgstr "add new holder for: %s"
-
-#~ msgid "Select"
-#~ msgstr "Select"
-
-#~ msgid "Class"
-#~ msgstr "class"
-
-#~ msgid "Default access control lists for class: %s"
-#~ msgstr "default access control lists for class: %s"
-
-#~ msgid "Permissions available to: %(actor)s for class %(class)s"
-#~ msgstr "permissions available to: %(actor)s for class %(class)s"
-
-#~ msgid "Add new holder for class: %s"
-#~ msgstr "add new holder for class: %s"
-
-#~ msgid "List of classes"
-#~ msgstr "List of classes"
-
-#~ msgid "permission"
-#~ msgstr "permission"
-
-#~ msgid "creator"
-#~ msgstr "creator"
+#: workflow_actions.py:129
+msgid "Revoke access"
+msgstr ""

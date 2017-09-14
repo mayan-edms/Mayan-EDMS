@@ -19,7 +19,7 @@ Features
 
 * Office document format support.
 
-  * **Mayan EDMS** can detect the presence of Libre Office and use it to support
+  * Mayan EDMS can detect the presence of Libre Office and use it to support
     word processing files, spreadsheets and presentations.
 
 * User defined metadata fields.
@@ -30,7 +30,7 @@ Features
 * Dynamic default values for metadata.
 
   * Metadata fields can have an initial value, which can be static or determined
-    by an user provided template code snippet.
+    by a template code snippet provided by the user.
 
 * Documents can be uploaded from different sources.
 
@@ -44,7 +44,7 @@ Features
 
 * Previews for many file formats.
 
-  * **Mayan EDMS** provides image preview generation for many popular file
+  * Mayan EDMS provides image preview generation for many popular file
     formats.
 
 * Full text searching.
@@ -68,7 +68,7 @@ Features
 
 * Multi page document support.
 
-  * Multiple page PDFs and TIFFs files are supported.
+  * Multiple page PDF and TIFF files are supported.
 
 * Automatic OCR processing.
 
@@ -78,7 +78,7 @@ Features
 
 * Multilingual user interface.
 
-  * **Mayan EDMS** being written using the Django_ framework, can be translated
+  * Mayan EDMS being written using the Django_ framework, can be translated
     to practically any language spoken in the world. For a list of translated
     languages have a look at the Transifex_ project location.
 

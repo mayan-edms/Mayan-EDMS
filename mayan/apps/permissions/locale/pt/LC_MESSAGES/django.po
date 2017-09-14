@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Rosario, 2012
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -11,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +20,11 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 models.py:47 models.py:70 permissions.py:7
+#: apps.py:23 models.py:46 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Permissões"
 
-#: classes.py:63
+#: classes.py:89
 msgid "Insufficient permissions."
 msgstr "Permissões insuficientes."
 
@@ -49,7 +48,7 @@ msgstr "Eliminar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:35 models.py:91 views.py:134
+#: links.py:35 models.py:99 views.py:137
 msgid "Roles"
 msgstr "Funções"
 
@@ -61,27 +60,27 @@ msgstr "Membros"
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:18
+#: models.py:19
 msgid "Namespace"
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:46
+#: models.py:45
 msgid "Permission"
 msgstr ""
 
-#: models.py:67
+#: models.py:75 search.py:16
 msgid "Label"
 msgstr "Nome"
 
-#: models.py:73
+#: models.py:81
 msgid "Groups"
 msgstr "Grupos"
 
-#: models.py:90
+#: models.py:98
 msgid "Role"
 msgstr ""
 
@@ -109,106 +108,47 @@ msgstr "Conceder permissões"
 msgid "Revoke permissions"
 msgstr "Revogar permissões"
 
-#: views.py:45
+#: search.py:20
+msgid "Group name"
+msgstr ""
+
+#: serializers.py:46
+msgid ""
+"Comma separated list of groups primary keys to add to, or replace in this "
+"role."
+msgstr ""
+
+#: serializers.py:53
+msgid "Comma separated list of permission primary keys to grant to this role."
+msgstr ""
+
+#: serializers.py:90
+#, python-format
+msgid "No such permission: %s"
+msgstr ""
+
+#: views.py:46
 msgid "Available groups"
 msgstr "Grupos disponíveis"
 
-#: views.py:46
+#: views.py:47
 msgid "Role groups"
 msgstr ""
 
-#: views.py:56
+#: views.py:57
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:79
+#: views.py:80
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:80
-#| msgid "Grant permissions"
+#: views.py:81
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:93
+#: views.py:94
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""
-
-#~ msgid "Permission holder"
-#~ msgstr "permission holder"
-
-#~ msgid "Role member"
-#~ msgstr "role member"
-
-#~ msgid "Role members"
-#~ msgstr "role members"
-
-#~ msgid ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-#~ msgstr ""
-#~ "A list of existing roles that are automatically assigned to newly created "
-#~ "users"
-
-#~ msgid "Has permission"
-#~ msgstr "has permission"
-
-#~ msgid " and "
-#~ msgstr " and "
-
-#~ msgid "%(permissions)s to %(requester)s"
-#~ msgstr "%(permissions)s to %(requester)s"
-
-#~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
-
-#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-
-#~ msgid "permission"
-#~ msgstr "permission"
-
-#~ msgid "permissions"
-#~ msgstr "permissions"
-
-#~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-#~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
-
-#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-
-#~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-#~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-
-#~ msgid "Users"
-#~ msgstr "Users"
-
-#~ msgid "Special"
-#~ msgstr "Special"
-
-#~ msgid "Members of role: %s"
-#~ msgstr "members of role: %s"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "grant"
-#~ msgstr "grant"
-
-#~ msgid "revoke"
-#~ msgstr "revoke"
-
-#~ msgid "name"
-#~ msgstr "name"
-
-#~ msgid "role"
-#~ msgstr "role"

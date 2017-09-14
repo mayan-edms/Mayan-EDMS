@@ -1,0 +1,131 @@
+{% load i18n %}
+{% load static %}
+
+{% load common_tags %}
+{% load navigation_tags %}
+
+<script>
+    'use strict';
+
+    waitForJQuery(function() {
+        $(function() {
+            $('.panel-item').matchHeight({
+                byRow: false,
+            });
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>
+            {% if page_obj %}
+                {% if page_obj.paginator.num_pages != 1 %}
+                    {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
+                {% else %}
+                    {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
+                {% endif %}
+            {% else %}
+                {% blocktrans with object_list|length as total %}Total: {{ total }}{% endblocktrans %}
+            {% endif %}
+        </h4>
+        <hr>
+
+        <div class="well center-block">
+
+            <form action="{% url 'common:multi_object_action_view' %}" class="pure-form" method="get">
+                {% if object_list %}
+                    {% if not hide_multi_item_actions %}
+                        {% get_multi_item_links_form object_list %}
+                    {% endif %}
+                    {% if multi_item_actions %}
+                        <fieldset>
+                            {{ multi_item_form }}
+                                &nbsp;<button class="btn btn-primary btn-xs" type="submit" name="{{ form.prefix }}-submit">
+                                    {% trans 'Submit' %}
+                                </button>
+                        </fieldset>
+                    {% endif %}
+                {% endif %}
+
+                <hr/>
+                {% if scrollable_content %}
+                    <div style="border: 1px solid; height: {{ scrollable_content_height }}; overflow: auto;">
+                {% endif %}
+
+                <div class="row">
+                    {% for object in object_list %}
+                        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                            <div class="panel panel-primary panel-item">
+                                <div class="panel-heading">
+
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label for="id_indexes_0">
+                                                {% if multi_item_actions %}
+                                                    {% if multi_select_item_properties %}
+                                                        <input class="checkbox" type="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
+                                                    {% else %}
+                                                        <input class="checkbox" type="checkbox" name="pk_{{ object.pk }}" value="" />
+                                                    {% endif %}
+                                                {% endif %}
+
+                                                <span style="color: white; word-break: break-all; overflow-wrap: break-word;">
+                                                    {% if not hide_object %}
+                                                        {% if main_object %}
+                                                            {% with object|object_property:main_object as object %}
+                                                                {% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}
+                                                            {% endwith %}
+                                                        {% else %}
+                                                            {% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}
+                                                        {% endif %}
+                                                    {% endif %}
+
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="panel-body">
+
+                                    {% if not hide_columns %}
+                                        {% for column in object|get_source_columns %}
+                                            <div class="text-center" style="">{% source_column_resolve column=column %}{{ column_result }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    {% for column in extra_columns %}
+                                        <div class="text-center"><span class="list-extra-column-label">{{ column.name }}</span>: {{ object|object_property:column.attribute }}</div>
+                                    {% endfor %}
+
+                                    {% if not hide_links %}
+                                        <p class="text-center">
+                                            {% get_menu_links 'object menu' source=object as resolved_links %}
+                                            {% for object_navigation_links in resolved_links %}
+                                                {% with 'true' as as_dropdown %}
+                                                    {% include 'navigation/generic_navigation.html' %}
+                                                {% endwith %}
+                                            {% endfor %}
+                                        </p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-xs-12">
+                            <p class="text-center">{% trans 'No results' %}</p>
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+                {% if scrollable_content %}
+                    </div>
+                {% endif %}
+            </form>
+            {% include 'pagination/pagination.html' %}
+        </div>
+    </div>
+</div>

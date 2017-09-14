@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 import logging
 import uuid
 
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.urls import reverse
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
@@ -21,14 +21,24 @@ logger = logging.getLogger(__name__)
 
 
 def upload_to(*args, **kwargs):
-    return unicode(uuid.uuid4())
+    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible
 class SignatureBaseModel(models.Model):
+    """
+    Fields:
+    * key_id - Key Identifier - This is what identifies uniquely a key. Not
+    two keys in the world have the same Key ID. The Key ID is also used to
+    locate a key in the key servers: http://pgp.mit.edu
+    * signature_id - Signature ID - Every time a key is used to sign something
+    it will generate a unique signature ID. No two signature IDs are the same,
+    even when using the same key.
+    """
+
     document_version = models.ForeignKey(
-        DocumentVersion, editable=False, related_name='signatures',
-        verbose_name=_('Document version')
+        DocumentVersion, editable=False, on_delete=models.CASCADE,
+        related_name='signatures', verbose_name=_('Document version')
     )
     # Basic fields
     date = models.DateField(

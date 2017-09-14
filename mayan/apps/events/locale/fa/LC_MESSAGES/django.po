@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:44-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +18,31 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:18 links.py:27 links.py:31 permissions.py:7 views.py:38
+#: apps.py:16
+msgid "System"
+msgstr ""
+
+#: apps.py:26 links.py:31 links.py:35 permissions.py:7 views.py:33
 msgid "Events"
 msgstr "رویداد"
 
-#: apps.py:55
+#: apps.py:35
 msgid "Timestamp"
 msgstr "علامت زمان"
 
-#: apps.py:57
+#: apps.py:38
 msgid "Actor"
 msgstr "فعال"
 
-#: apps.py:59
+#: apps.py:42
 msgid "Verb"
 msgstr "فعل"
 
-#: classes.py:17
+#: apps.py:46
+msgid "Action object"
+msgstr ""
+
+#: classes.py:23
 #, python-brace-format
 msgid "Unknown or obsolete event type: {0}"
 msgstr "نوع رخداد ناشناخته :{0}"
@@ -43,11 +51,11 @@ msgstr "نوع رخداد ناشناخته :{0}"
 msgid "Name"
 msgstr "نام"
 
-#: models.py:20
+#: models.py:17
 msgid "Event type"
 msgstr "نوع رویداد"
 
-#: models.py:21
+#: models.py:18
 msgid "Event types"
 msgstr "انواع رخدادها"
 
@@ -55,16 +63,16 @@ msgstr "انواع رخدادها"
 msgid "Access the events of an object"
 msgstr "دسترسی به رخدادهای یک شی"
 
-#: views.py:31 views.py:90
+#: views.py:26 views.py:81
 msgid "Target"
 msgstr "هدف"
 
-#: views.py:75
+#: views.py:69
 #, python-format
 msgid "Events for: %s"
 msgstr "رخدادها برای :  %s"
 
-#: views.py:98
+#: views.py:89
 #, python-format
 msgid "Events of type: %s"
 msgstr "نوع رخداد ها:  %s"

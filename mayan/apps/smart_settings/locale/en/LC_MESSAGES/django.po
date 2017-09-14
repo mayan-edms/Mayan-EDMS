@@ -1,64 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2012-12-12 06:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
-"language/en/)\n"
-"Language: en\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:18 permissions.py:7
-#, fuzzy
 msgid "Smart settings"
-msgstr "settings"
+msgstr ""
 
 #: apps.py:26
-#, fuzzy
 msgid "Setting count"
-msgstr "settings"
+msgstr ""
 
 #: apps.py:30
 msgid "Name"
 msgstr ""
 
 #: apps.py:34
-#, fuzzy
 msgid "Value"
-msgstr "value"
-
-#: apps.py:37
-msgid "Found in path"
-msgstr ""
-
-#: apps.py:40
-msgid "n/a"
 msgstr ""
 
 #: links.py:11 links.py:14
-#, fuzzy
 msgid "Settings"
-msgstr "settings"
+msgstr ""
 
 #: permissions.py:10
-#, fuzzy
 msgid "View settings"
-msgstr "settings"
+msgstr ""
 
 #: views.py:15
-#, fuzzy
 msgid "Setting namespaces"
-msgstr "settings"
+msgstr ""
 
 #: views.py:29
 #, python-format
@@ -69,10 +54,3 @@ msgstr ""
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "name"
-#~ msgstr "name"

@@ -2,18 +2,14 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from user_management.serializers import UserSerializer
 
-from .models import RecentSearch
+class SearchFieldSerializer(serializers.Serializer):
+    field = serializers.CharField(read_only=True)
+    label = serializers.CharField(read_only=True)
 
 
-class RecentSearchSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:recentsearch-detail'
-    )
-    user = UserSerializer()
-
-    class Meta:
-        fields = ('datetime_created', 'hits', 'query', 'url', 'user')
-        model = RecentSearch
-        read_only_fields = ('datetime_created', 'hits', 'query', 'user')
+class SearchModelSerializer(serializers.Serializer):
+    app_label = serializers.CharField(read_only=True)
+    model_name = serializers.CharField(read_only=True)
+    pk = serializers.CharField(read_only=True)
+    search_fields = SearchFieldSerializer(many=True, read_only=True)

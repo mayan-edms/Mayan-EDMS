@@ -4,6 +4,7 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.db import OperationalError
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
@@ -128,8 +129,10 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                 for compressed_file_child in compressed_file.children():
                     # TODO: find way to uniquely identify child files
                     # Use filename in the mean time.
-                    if unicode(compressed_file_child) not in skip_list:
-                        kwargs.update({'label': unicode(compressed_file_child)})
+                    if force_text(compressed_file_child) not in skip_list:
+                        kwargs.update(
+                            {'label': force_text(compressed_file_child)}
+                        )
 
                         try:
                             child_shared_uploaded_file = SharedUploadedFile.objects.create(
@@ -153,7 +156,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                             )
                             return
                         else:
-                            skip_list.append(unicode(compressed_file_child))
+                            skip_list.append(force_text(compressed_file_child))
                             task_upload_document.delay(
                                 shared_uploaded_file_id=child_shared_uploaded_file.pk,
                                 **kwargs

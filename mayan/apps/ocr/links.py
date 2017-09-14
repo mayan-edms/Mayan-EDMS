@@ -17,10 +17,6 @@ link_document_submit = Link(
     args='resolved_object.id', permissions=(permission_ocr_document,),
     text=_('Submit for OCR'), view='ocr:document_submit'
 )
-link_document_submit_all = Link(
-    icon='fa fa-font', permissions=(permission_ocr_document,),
-    text=_('OCR all documents'), view='ocr:document_submit_all'
-)
 link_document_submit_multiple = Link(
     text=_('Submit for OCR'), view='ocr:document_submit_multiple'
 )
@@ -35,4 +31,14 @@ link_document_type_submit = Link(
 link_entry_list = Link(
     icon='fa fa-file-text-o', permissions=(permission_ocr_document,),
     text=_('OCR errors'), view='ocr:entry_list'
+)
+link_document_ocr_erros_list = Link(
+    args='resolved_object.id', icon='fa fa-file-text-o',
+    permissions=(permission_ocr_content_view,), text=_('OCR errors'),
+    view='ocr:document_ocr_error_list'
+)
+link_document_ocr_download = Link(
+    args='resolved_object.id', icon='fa fa-file-text-o',
+    permissions=(permission_ocr_content_view,), text=_('Download OCR text'),
+    view='ocr:document_ocr_download'
 )

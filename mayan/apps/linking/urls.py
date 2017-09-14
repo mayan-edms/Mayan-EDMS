@@ -1,7 +1,12 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
+from .api_views import (
+    APIResolvedSmartLinkView, APIResolvedSmartLinkDocumentListView,
+    APIResolvedSmartLinkListView, APISmartLinkListView, APISmartLinkView,
+    APISmartLinkConditionListView, APISmartLinkConditionView
+)
 from .views import (
     DocumentSmartLinkListView, ResolvedSmartLinkView,
     SetupSmartLinkDocumentTypesView, SmartLinkConditionListView,
@@ -10,8 +15,7 @@ from .views import (
     SmartLinkEditView, SmartLinkListView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^document/(?P<pk>\d+)/list/$', DocumentSmartLinkListView.as_view(),
         name='smart_link_instances_for_document'
@@ -60,4 +64,39 @@ urlpatterns = patterns(
         SmartLinkConditionDeleteView.as_view(),
         name='smart_link_condition_delete'
     ),
-)
+]
+
+api_urls = [
+    url(
+        r'^smart_links/$', APISmartLinkListView.as_view(),
+        name='smartlink-list'
+    ),
+    url(
+        r'^smart_links/(?P<pk>[0-9]+)/$', APISmartLinkView.as_view(),
+        name='smartlink-detail'
+    ),
+    url(
+        r'^smart_links/(?P<pk>[0-9]+)/conditions/$',
+        APISmartLinkConditionListView.as_view(), name='smartlinkcondition-list'
+    ),
+    url(
+        r'^smart_links/(?P<pk>[0-9]+)/conditions/(?P<condition_pk>[0-9]+)/$',
+        APISmartLinkConditionView.as_view(),
+        name='smartlinkcondition-detail'
+    ),
+    url(
+        r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/$',
+        APIResolvedSmartLinkListView.as_view(),
+        name='resolvedsmartlink-list'
+    ),
+    url(
+        r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/$',
+        APIResolvedSmartLinkView.as_view(),
+        name='resolvedsmartlink-detail'
+    ),
+    url(
+        r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/documents/$',
+        APIResolvedSmartLinkDocumentListView.as_view(),
+        name='resolvedsmartlinkdocument-list'
+    ),
+]

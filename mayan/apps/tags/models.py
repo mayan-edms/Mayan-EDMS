@@ -1,8 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.core.exceptions import PermissionDenied
+from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,7 +10,8 @@ from colorful.fields import RGBColorField
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions import Permission
+
+from .events import event_tag_attach, event_tag_remove
 
 
 @python_2_unicode_compatible
@@ -31,20 +31,28 @@ class Tag(models.Model):
         return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
 
-    def get_document_count(self, user):
-        queryset = self.documents
+    def attach_to(self, document, user=None):
+        self.documents.add(document)
+        event_tag_attach.commit(
+            action_object=self, actor=user, target=document
+        )
 
-        try:
-            Permission.check_permissions(user, (permission_document_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset
-            )
+    def get_document_count(self, user):
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_view, user, queryset=self.documents
+        )
 
         return queryset.count()
+
+    def remove_from(self, document, user=None):
+        self.documents.remove(document)
+        event_tag_remove.commit(
+            action_object=self, actor=user, target=document
+        )
 
 
 class DocumentTag(Tag):

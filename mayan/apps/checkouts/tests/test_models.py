@@ -1,35 +1,31 @@
 from __future__ import unicode_literals
 
 import datetime
+import logging
 import time
 
-from django.contrib.auth import get_user_model
-from django.test import TestCase, override_settings
+from django.test import override_settings
 from django.utils.timezone import now
 
-from documents.exceptions import NewDocumentVersionNotAllowed
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-)
-from user_management.tests.literals import (
-    TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 
-from ..exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
-from ..models import DocumentCheckout
+from ..exceptions import (
+    DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
+    NewDocumentVersionNotAllowed
+)
+from ..models import DocumentCheckout, NewVersionBlock
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(TestCase):
+class DocumentCheckoutTestCase(BaseTestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
+        super(DocumentCheckoutTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -39,6 +35,7 @@ class DocumentCheckoutTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentCheckoutTestCase, self).tearDown()
 
     def test_document_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
@@ -56,6 +53,9 @@ class DocumentCheckoutTestCase(TestCase):
         )
 
     def test_version_creation_blocking(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
         expiration_datetime = now() + datetime.timedelta(days=1)
 
         DocumentCheckout.objects.checkout_document(
@@ -116,3 +116,61 @@ class DocumentCheckoutTestCase(TestCase):
         DocumentCheckout.objects.check_in_expired_check_outs()
 
         self.assertFalse(self.document.is_checked_out())
+
+    def test_blocking_new_versions(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
+        NewVersionBlock.objects.block(document=self.document)
+
+        with self.assertRaises(NewDocumentVersionNotAllowed):
+            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+                self.document.new_version(file_object=file_object)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class NewVersionBlockTestCase(BaseTestCase):
+    def setUp(self):
+        super(NewVersionBlockTestCase, self).setUp()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
+        super(NewVersionBlockTestCase, self).tearDown()
+
+    def test_blocking(self):
+        NewVersionBlock.objects.block(document=self.document)
+
+        self.assertEqual(NewVersionBlock.objects.count(), 1)
+        self.assertEqual(
+            NewVersionBlock.objects.first().document, self.document
+        )
+
+    def test_unblocking(self):
+        NewVersionBlock.objects.create(document=self.document)
+
+        NewVersionBlock.objects.unblock(document=self.document)
+
+        self.assertEqual(NewVersionBlock.objects.count(), 0)
+
+    def test_is_blocked(self):
+        NewVersionBlock.objects.create(document=self.document)
+
+        self.assertTrue(
+            NewVersionBlock.objects.is_blocked(document=self.document)
+        )
+
+        NewVersionBlock.objects.all().delete()
+
+        self.assertFalse(
+            NewVersionBlock.objects.is_blocked(document=self.document)
+        )

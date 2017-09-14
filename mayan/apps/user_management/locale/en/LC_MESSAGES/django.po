@@ -1,319 +1,267 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2012-12-12 06:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
-"language/en/)\n"
-"Language: en\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:29 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
-msgstr "User management"
+msgstr ""
 
-#: apps.py:39
+#: apps.py:59
 msgid "All the groups."
 msgstr ""
 
-#: apps.py:43
+#: apps.py:63
 msgid "All the users."
 msgstr ""
 
-#: apps.py:48 links.py:30
-#, fuzzy
+#: apps.py:68 links.py:30
 msgid "Members"
-msgstr "members"
+msgstr ""
 
-#: apps.py:52
-#, fuzzy
+#: apps.py:72
 msgid "Full name"
-msgstr "full name"
+msgstr ""
 
-#: apps.py:55
-#, fuzzy
+#: apps.py:75 search.py:22
 msgid "Email"
-msgstr "email"
+msgstr ""
 
-#: apps.py:58
-#, fuzzy
+#: apps.py:78
 msgid "Active"
-msgstr "active"
+msgstr ""
 
-#: apps.py:64
-#, fuzzy
+#: apps.py:84
 msgid "Has usable password?"
-msgstr "has usable password?"
+msgstr ""
 
-#: forms.py:16
+#: forms.py:18
 msgid "New password"
-msgstr "New password"
+msgstr ""
 
-#: forms.py:19
+#: forms.py:21
 msgid "Confirm password"
-msgstr "Confirm password"
+msgstr ""
 
-#: links.py:14 views.py:29
-#, fuzzy
+#: links.py:14 views.py:27
 msgid "Create new group"
-msgstr "Create new groups"
+msgstr ""
 
 #: links.py:18 links.py:42 links.py:58
-#, fuzzy
 msgid "Delete"
-msgstr "delete"
+msgstr ""
 
 #: links.py:22 links.py:46
 msgid "Edit"
 msgstr ""
 
-#: links.py:26 links.py:34 links.py:50 views.py:52
-#, fuzzy
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
-msgstr "groups"
+msgstr ""
 
-#: links.py:38 views.py:197
-#, fuzzy
+#: links.py:38 views.py:116
 msgid "Create new user"
-msgstr "Create new users"
+msgstr ""
 
-#: links.py:54 links.py:70 views.py:169
-#, fuzzy
+#: links.py:54 links.py:70 views.py:240
 msgid "Users"
-msgstr "users"
+msgstr ""
 
 #: links.py:62 links.py:66
-#, fuzzy
-msgid "Reset password"
-msgstr "reset password"
+msgid "Set password"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr "Create new groups"
+msgstr ""
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr "Delete existing groups"
+msgstr ""
 
 #: permissions.py:16
 msgid "Edit existing groups"
-msgstr "Edit existing groups"
+msgstr ""
 
 #: permissions.py:19
 msgid "View existing groups"
-msgstr "View existing groups"
+msgstr ""
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr "Create new users"
+msgstr ""
 
 #: permissions.py:25
 msgid "Delete existing users"
-msgstr "Delete existing users"
+msgstr ""
 
 #: permissions.py:28
 msgid "Edit existing users"
-msgstr "Edit existing users"
+msgstr ""
 
 #: permissions.py:31
 msgid "View existing users"
-msgstr "View existing users"
+msgstr ""
 
-#: views.py:45
-#, fuzzy, python-format
+#: search.py:19
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr ""
+
+#: serializers.py:29
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr ""
+
+#: serializers.py:51
+msgid "List of group primary keys to which to add the user."
+msgstr ""
+
+#: views.py:43
+#, python-format
 msgid "Edit group: %s"
-msgstr "edit group: %s"
+msgstr ""
 
-#: views.py:66
-#, fuzzy, python-format
-#| msgid "Delete existing groups"
+#: views.py:64
+#, python-format
 msgid "Delete the group: %s?"
-msgstr "Delete existing groups"
+msgstr ""
 
-#: views.py:72
+#: views.py:70
 msgid "Available users"
 msgstr ""
 
-#: views.py:73
-#, fuzzy
+#: views.py:71
 msgid "Members of groups"
-msgstr "members of group: %s"
+msgstr ""
 
-#: views.py:94
-#, fuzzy, python-format
+#: views.py:92
+#, python-format
 msgid "Members of group: %s"
-msgstr "members of group: %s"
+msgstr ""
 
-#: views.py:127
-#, fuzzy, python-format
+#: views.py:126
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr ""
+
+#: views.py:135
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr ""
+
+#: views.py:137
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr ""
+
+#: views.py:146
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:156
+#, python-format
+msgid "Delete user: %s"
+msgstr ""
+
+#: views.py:168
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr ""
+
+#: views.py:176
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:182
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr ""
+
+#: views.py:198
+#, python-format
 msgid "Edit user: %s"
-msgstr "edit user: %s"
+msgstr ""
 
-#: views.py:133
+#: views.py:204
 msgid "Available groups"
 msgstr ""
 
-#: views.py:134
-#, fuzzy
+#: views.py:205
 msgid "Groups joined"
-msgstr "groups"
+msgstr ""
 
-#: views.py:143
-#, fuzzy, python-format
+#: views.py:214
+#, python-format
 msgid "Groups of user: %s"
-msgstr "groups of user: %s"
-
-#: views.py:188
-#, python-format
-msgid "User \"%s\" created successfully."
-msgstr "User \"%s\" created successfully."
-
-#: views.py:213 views.py:284
-msgid "Must provide at least one user."
-msgstr "Must provide at least one user."
-
-#: views.py:230
-msgid ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
 msgstr ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
 
-#: views.py:237
+#: views.py:252
 #, python-format
-msgid "User \"%s\" deleted successfully."
-msgstr "User \"%s\" deleted successfully."
+msgid "Password change request performed on %(count)d user"
+msgstr ""
 
-#: views.py:241
+#: views.py:254
 #, python-format
-msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "Error deleting user \"%(user)s\": %(error)s"
+msgid "Password change request performed on %(count)d users"
+msgstr ""
 
-#: views.py:255
-#, fuzzy, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
-msgstr "Delete existing users"
+#: views.py:262
+msgid "Submit"
+msgstr ""
 
-#: views.py:257
-#, fuzzy, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
-msgstr "Delete existing users"
+#: views.py:264
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:300
-msgid "Passwords do not match, try again."
-msgstr "Passwords do not match, try again."
+#: views.py:274
+#, python-format
+msgid "Change password for user: %s"
+msgstr ""
 
-#: views.py:309
+#: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
 
-#: views.py:319
+#: views.py:304
 #, python-format
 msgid "Successfull password reset for user: %s."
-msgstr "Successfull password reset for user: %s."
+msgstr ""
 
-#: views.py:325
+#: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Error reseting password for user \"%(user)s\": %(error)s"
-
-#: views.py:342
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "Reseting password for user: %s"
-
-#: views.py:344
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "Reseting password for users: %s"
-
-#~ msgid ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-#~ msgstr ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-
-#~ msgid "User \"%s\" updated successfully."
-#~ msgstr "User \"%s\" updated successfully."
-
-#~ msgid "Must provide at least one group."
-#~ msgstr "Must provide at least one group."
-
-#~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Group \"%s\" deleted successfully."
-
-#~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
-
-#, fuzzy
-#~| msgid "Delete existing groups"
-#~ msgid "Delete the groups: %s?"
-#~ msgstr "Delete existing groups"
-
-#~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Are you sure you wish to delete the user: %s?"
-
-#~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Are you sure you wish to delete the users: %s?"
-
-#, fuzzy
-#~ msgid "Non groups of user: %s"
-#~ msgstr "non groups of user: %s"
-
-#~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Group \"%s\" updated successfully."
-
-#~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Group \"%s\" created successfully."
-
-#~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Are you sure you wish to delete the group: %s?"
-
-#~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Are you sure you wish to delete the groups: %s?"
-
-#, fuzzy
-#~ msgid "Non members of group: %s"
-#~ msgstr "non members of group: %s"
-
-#, fuzzy
-#~ msgid "Group"
-#~ msgstr "group"
-
-#, fuzzy
-#~ msgid "User list"
-#~ msgstr "user list"
-
-#, fuzzy
-#~ msgid "Group list"
-#~ msgstr "group list"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "create new user"
-#~ msgstr "create new user"
-
-#~ msgid "create new group"
-#~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"
+msgstr ""

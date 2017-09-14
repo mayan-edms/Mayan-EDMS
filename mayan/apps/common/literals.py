@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
-
+MAYAN_PYPI_NAME = 'mayan-edms'
+PYPI_URL = 'https://pypi.python.org/pypi'
 TIME_DELTA_UNIT_DAYS = 'days'
 TIME_DELTA_UNIT_HOURS = 'hours'
 TIME_DELTA_UNIT_MINUTES = 'minutes'

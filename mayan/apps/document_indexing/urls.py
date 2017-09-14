@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDocumentIndexListView, APIIndexListView,
@@ -9,14 +9,13 @@ from .api_views import (
 )
 from .views import (
     DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
-    RebuildIndexesConfirmView, SetupIndexDocumentTypesView,
-    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeCreateView,
+    RebuildIndexesView, SetupIndexDocumentTypesView, SetupIndexCreateView,
+    SetupIndexDeleteView, SetupIndexEditView, SetupIndexListView,
+    SetupIndexTreeTemplateListView, TemplateNodeCreateView,
     TemplateNodeDeleteView, TemplateNodeEditView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^setup/index/list/$', SetupIndexListView.as_view(),
         name='index_setup_list'
@@ -62,17 +61,16 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^rebuild/all/$', RebuildIndexesConfirmView.as_view(),
+        r'^rebuild/all/$', RebuildIndexesView.as_view(),
         name='rebuild_index_instances'
     ),
     url(
         r'^list/for/document/(?P<pk>\d+)/$',
         DocumentIndexNodeListView.as_view(), name='document_index_list'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^index/node/(?P<pk>[0-9]+)/documents/$',
         APIIndexNodeInstanceDocumentListView.as_view(),
@@ -95,4 +93,4 @@ api_urls = patterns(
         r'^document/(?P<pk>[0-9]+)/indexes/$',
         APIDocumentIndexListView.as_view(), name='document-index-list'
     ),
-)
+]

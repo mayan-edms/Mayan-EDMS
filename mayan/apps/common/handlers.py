@@ -2,7 +2,17 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.conf import settings
+from django.core import management
 from django.utils import timezone, translation
+
+
+def handler_pre_initial_setup(sender, **kwargs):
+    management.call_command('migrate', interactive=False)
+
+
+def handler_pre_upgrade(sender, **kwargs):
+    management.call_command('migrate', fake_initial=True, interactive=False)
+    management.call_command('purgeperiodictasks', interactive=False)
 
 
 def user_locale_profile_session_config(sender, request, user, **kwargs):

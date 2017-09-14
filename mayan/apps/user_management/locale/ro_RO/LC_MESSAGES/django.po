@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
+# Stefaniu Criste <gupi@hangar.ro>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,72 +19,72 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:29 permissions.py:7
+#: apps.py:43 permissions.py:7
 msgid "User management"
 msgstr "Management utilizatori"
 
-#: apps.py:39
+#: apps.py:59
 msgid "All the groups."
-msgstr ""
+msgstr "Toate grupurile."
 
-#: apps.py:43
+#: apps.py:63
 msgid "All the users."
-msgstr ""
+msgstr "Toți utilizatorii."
 
-#: apps.py:48 links.py:30
+#: apps.py:68 links.py:30
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
-#: apps.py:52
+#: apps.py:72
 msgid "Full name"
-msgstr ""
+msgstr "Numele întreg"
 
-#: apps.py:55
+#: apps.py:75 search.py:22
 msgid "Email"
 msgstr "email"
 
-#: apps.py:58
+#: apps.py:78
 msgid "Active"
-msgstr ""
+msgstr "Activ"
 
-#: apps.py:64
+#: apps.py:84
 msgid "Has usable password?"
 msgstr ""
 
-#: forms.py:16
+#: forms.py:18
 msgid "New password"
 msgstr "Parolă nouă"
 
-#: forms.py:19
+#: forms.py:21
 msgid "Confirm password"
 msgstr "Confirmați parola"
 
-#: links.py:14 views.py:29
+#: links.py:14 views.py:27
 msgid "Create new group"
 msgstr ""
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #: links.py:22 links.py:46
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:26 links.py:34 links.py:50 views.py:52
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
 msgid "Groups"
 msgstr "Grupuri"
 
-#: links.py:38 views.py:197
+#: links.py:38 views.py:116
 msgid "Create new user"
 msgstr ""
 
-#: links.py:54 links.py:70 views.py:169
+#: links.py:54 links.py:70 views.py:240
 msgid "Users"
 msgstr "Utilizatorii"
 
 #: links.py:62 links.py:66
-msgid "Reset password"
+msgid "Set password"
 msgstr ""
 
 #: permissions.py:10
@@ -119,178 +119,152 @@ msgstr "Editați utilizatorii existenți"
 msgid "View existing users"
 msgstr "Vizualizați utilizatorii existenți"
 
-#: views.py:45
+#: search.py:19
+msgid "First name"
+msgstr ""
+
+#: search.py:28
+msgid "Last name"
+msgstr ""
+
+#: search.py:31
+msgid "username"
+msgstr ""
+
+#: search.py:41
+msgid "Name"
+msgstr "Nume"
+
+#: serializers.py:29
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr ""
+
+#: serializers.py:51
+msgid "List of group primary keys to which to add the user."
+msgstr ""
+
+#: views.py:43
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Modificați grupul: %s"
 
-#: views.py:66
+#: views.py:64
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Ștergeți grupul: %s?"
 
-#: views.py:72
+#: views.py:70
 msgid "Available users"
-msgstr ""
+msgstr "Utilizatori disponibili"
 
-#: views.py:73
+#: views.py:71
 msgid "Members of groups"
 msgstr ""
 
-#: views.py:94
+#: views.py:92
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Membrii grupului: %s"
 
-#: views.py:127
-#, python-format
-msgid "Edit user: %s"
-msgstr ""
-
-#: views.py:133
-msgid "Available groups"
-msgstr ""
-
-#: views.py:134
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:143
-#, python-format
-msgid "Groups of user: %s"
-msgstr ""
-
-#: views.py:188
+#: views.py:126
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Utilizator \"%s\" creat cu succes."
 
-#: views.py:213 views.py:284
-msgid "Must provide at least one user."
-msgstr "Trebuie să furnizeze cel puțin un utilizator."
+#: views.py:135
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr ""
 
-#: views.py:230
+#: views.py:137
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr ""
+
+#: views.py:146
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:156
+#, python-format
+msgid "Delete user: %s"
+msgstr ""
+
+#: views.py:168
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Super-utilizator și personalul ștergerea utilizator nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
 
-#: views.py:237
+#: views.py:176
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Utilizatorul  \"%s\" a fost șters cu succes."
 
-#: views.py:241
+#: views.py:182
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Eroare la ștergerea utilizator  \"%(user)s\": %(error)s"
 
-#: views.py:255
+#: views.py:198
 #, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
+msgid "Edit user: %s"
+msgstr "Modificați utilizatorul: %s"
+
+#: views.py:204
+msgid "Available groups"
+msgstr "Grupuri disponibile"
+
+#: views.py:205
+msgid "Groups joined"
 msgstr ""
 
-#: views.py:257
+#: views.py:214
 #, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
+msgid "Groups of user: %s"
+msgstr "Grupurile utilizatorului: %s"
+
+#: views.py:252
+#, python-format
+msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:300
-msgid "Passwords do not match, try again."
-msgstr "Parolele nu corespund, încercați din nou."
+#: views.py:254
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr ""
 
-#: views.py:309
+#: views.py:262
+msgid "Submit"
+msgstr "Trimiteţi"
+
+#: views.py:264
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:274
+#, python-format
+msgid "Change password for user: %s"
+msgstr ""
+
+#: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super utilizator și parola de utilizator personalul resetarea nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
 
-#: views.py:319
+#: views.py:304
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Resetarea parolei cu succes pentru utilizator:% s."
 
-#: views.py:325
+#: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"
-
-#: views.py:342
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "Resetarea parola pentru utilizator:% s"
-
-#: views.py:344
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "Resetarea parolei pentru utilizatori:% s"
-
-#~ msgid ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-#~ msgstr ""
-#~ "Super user and staff user editing is not allowed, use the admin interface "
-#~ "for these cases."
-
-#~ msgid "User \"%s\" updated successfully."
-#~ msgstr "User \"%s\" updated successfully."
-
-#~ msgid "Must provide at least one group."
-#~ msgstr "Must provide at least one group."
-
-#~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Group \"%s\" deleted successfully."
-
-#~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
-
-#~ msgid "Delete the groups: %s?"
-#~ msgstr "Delete existing groups"
-
-#~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Are you sure you wish to delete the user: %s?"
-
-#~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Are you sure you wish to delete the users: %s?"
-
-#~ msgid "Non groups of user: %s"
-#~ msgstr "non groups of user: %s"
-
-#~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Group \"%s\" updated successfully."
-
-#~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Group \"%s\" created successfully."
-
-#~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Are you sure you wish to delete the group: %s?"
-
-#~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Are you sure you wish to delete the groups: %s?"
-
-#~ msgid "Non members of group: %s"
-#~ msgstr "non members of group: %s"
-
-#~ msgid "Group"
-#~ msgstr "group"
-
-#~ msgid "User list"
-#~ msgstr "user list"
-
-#~ msgid "Group list"
-#~ msgstr "group list"
-
-#~ msgid "edit"
-#~ msgstr "edit"
-
-#~ msgid "create new user"
-#~ msgstr "create new user"
-
-#~ msgid "create new group"
-#~ msgstr "create new group"
-
-#~ msgid "user"
-#~ msgstr "user"

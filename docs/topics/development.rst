@@ -3,11 +3,11 @@
 Development
 ===========
 
-**Mayan EDMS** is under active development, and contributions are welcome.
+Mayan EDMS is under active development, and contributions are welcome.
 
 If you have a feature request, suggestion or bug report, please open a new
-issue on the `GitLab issue tracker`_. To submit patches, please send a pull
-request on GitLab_. Make sure to add yourself to the :ref:`contributors` file.
+issue on the `GitLab issue tracker`_. To submit patches, please send a merge
+request on GitLab_.
 
 .. _GitLab: https://gitlab.com/mayan-edms/mayan-edms/
 .. _`GitLab issue tracker`: https://gitlab.com/mayan-edms/mayan-edms/issues
@@ -16,8 +16,8 @@ request on GitLab_. Make sure to add yourself to the :ref:`contributors` file.
 Project philosophies
 --------------------
 
-How to think about **Mayan EDMS** when doing changes or adding new features,
-why things are the way they are in **Mayan EDMS**.
+How to think about Mayan EDMS when doing changes or adding new features;
+why things are the way they are in Mayan EDMS:
 
 - Functionality must be as market/sector independent as possible, code for the
   95% of use cases.
@@ -36,7 +36,7 @@ why things are the way they are in **Mayan EDMS**.
   not viable/mature/efficient.
 - Each app is as independent and self contained as possible. Exceptions, the
   basic requirements: navigation, permissions, common, main.
-- If an app is meant to be used by more than one other app it should be as
+- If an app is meant to be used by more than one other app, it should be as
   generic as possible in regard to the project and another app will bridge the functionality.
 
   - Example: since indexing (document_indexing) only applies to documents, the
@@ -48,7 +48,7 @@ Coding conventions
 
 Follow PEP8
 ~~~~~~~~~~~
-Whenever possible, but don't obsess over things like line length.
+Whenever possible, but don't obsess over things like line length:
 
 .. code-block:: bash
 
@@ -103,9 +103,9 @@ Example:
     )
     from .models import Index, IndexInstanceNode, DocumentRenameCount
 
-All local app module imports are in relative form, local app module name is to
+All local app module imports are in relative form. Local app module name is to
 be referenced as little as possible, unless required by a specific feature,
-trick, restriction, ie: Runtime modification of the module's attributes.
+trick, restriction (e.g., Runtime modification of the module's attributes).
 
 Incorrect:
 
@@ -125,10 +125,10 @@ Correct:
 
 Dependencies
 ~~~~~~~~~~~~
-**Mayan EDMS** apps follow a hierarchical model of dependency. Apps import from
+Mayan EDMS apps follow a hierarchical model of dependency. Apps import from
 their parents or siblings, never from their children. Think plugins. A parent
 app must never assume anything about a possible existing child app. The
-documents app and the Document model are the basic entities they must never
+documents app and the Document model are the basic entities; they must never
 import anything else. The common and main apps are the base apps.
 
 
@@ -136,7 +136,7 @@ Variables
 ~~~~~~~~~
 Naming of variables should follow a Major to Minor convention, usually
 including the purpose of the variable as the first piece of the name, using
-underscores as spaces. camelCase is not used in **Mayan EDMS**.
+underscores as spaces. camelCase is not used in Mayan EDMS.
 
 Examples:
 
@@ -171,7 +171,7 @@ Classes:
 
 Strings
 ~~~~~~~
-Quotation character used in **Mayan EDMS** for strings is the single quote.
+Quotation character used in Mayan EDMS for strings is the single quote.
 Double quote is used for multiple line comments or HTML markup.
 
 Migrations
@@ -199,17 +199,17 @@ as passed directly from the exception object.
 Source Control
 --------------
 
-**Mayan EDMS** source is controlled with Git_.
+Mayan EDMS source is controlled with Git_.
 
 The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
 
 
 Git branch structure
 --------------------
 
-**Mayan EDMS** follows a simplified model layout based on Vincent Driessen's
+Mayan EDMS follows a simplified model layout based on Vincent Driessen's
 `Successful Git Branching Model`_ blog post.
 
 ``develop``
@@ -235,14 +235,14 @@ Steps to deploy a development version
 -------------------------------------
 .. code-block:: bash
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
-    cd mayan-edms
-    git checkout development
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    ./manage.py initialsetup
-    ./manage.py runserver
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
+    $ cd mayan-edms
+    $ git checkout development
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
+    $ ./manage.py initialsetup
+    $ ./manage.py runserver
 
 
 Setting up a development version using Vagrant
@@ -254,36 +254,36 @@ Start and provision a machine using:
 
 .. code-block:: bash
 
-    vagrant up development
+    $ vagrant up development
 
 To launch a standalone development server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
 
 To launch a development server with a celery worker and Redis as broker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
 
 Then on a separate console launch a celery worker from the same provisioned Vagrant machine:
 
 .. code-block:: bash
 
-    vagrant ssh
-    vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
+    $ vagrant ssh
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
+    $ vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
 
 
 Contributing changes
@@ -299,7 +299,7 @@ merged.
 Debugging
 ---------
 
-**Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
+Mayan EDMS makes extensive use of Django's new `logging capabilities`_.
 By default debug logging for all apps is turned on. If you wish to customize
 how logging is managed turn off automatic logging by setting
 `COMMON_AUTO_LOGGING` to ``False`` and add the following lines to your
@@ -361,12 +361,12 @@ The documentation is written in `reStructured Text`_ format, processed with
 Sphinx_, and resides in the ``docs`` directory. In order to build it, you will
 first need to install the documentation editing dependencies with::
 
-    pip install -r requirements/documentation.txt
+    $ pip install -r requirements/documentation.txt
 
 Then, to build an HTML version of the documentation, run the following command
 from the **docs** directory::
 
-    make livehtml
+    $ make docs_serve
 
 The generated documentation can be viewed by browsing to http://127.0.0.1:8000
 or by browsing to the ``docs/_build/html`` directory.
@@ -386,22 +386,18 @@ Source file package
 
 This is the sequence of step used to produce an installable package:
 
-1. Make sure there are no lingering packages from previous attempts::
+1. Generate the packaged version (will produce dist/mayan-edms-x.y.z.tar.gz)::
 
-    rm dist -R
+    $ make sdist
 
-2. Generate the packaged version (will produce dist/mayan-edms-x.y.z.tar.gz)::
+2. Do a test install::
 
-    python setup.py sdist
-
-3. Do a test install::
-
-    cd /tmp
-    virtualenv venv
-    source venv/bin/activate
-    pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
-    mayan-edms.py initialsetup
-    mayan-edms.py runserver
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan-edms-x.y.z.tar.gz
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py runserver
 
 
 Wheel package
@@ -411,9 +407,9 @@ Wheel package
 
     $ pip install -r requirements/development.txt
 
-2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
+2. Create wheel package using the makefile::
 
-    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-x.y.z.tar.gz
+    $ make wheel
 
 3. Do a test install::
 
@@ -423,3 +419,60 @@ Wheel package
     $ pip install <path of the Git repository>/dist/mayan_edms-x.y.z-py2-none-any.whl
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
+
+
+Version numbering
+~~~~~~~~~~~~~~~~~
+
+Mayan EDMS uses the Semantic Versioning (http://semver.org/) method to choose
+version numbers along with Python's PEP-0440 (https://www.python.org/dev/peps/pep-0440/)
+to format them.
+
+X.YaN   # Alpha release
+X.YbN   # Beta release
+X.YrcN  # Release Candidate
+X.Y     # Final release
+
+
+Release checklist
+~~~~~~~~~~~~~~~~~
+
+1. Check for missing migrations::
+
+    $ ./manage.py makemigrations
+
+2. Synchronize translations::
+
+    $ make translations_pull
+
+3. Compile translations::
+
+    $ make translations_compile
+
+4. Write release notes.
+5. Update changelog.
+6. Update requirements version in `setup.py`
+7. Bump version in `mayan/__init__.py`
+8. Build source package and test::
+
+    $ make test_sdist_via_docker_ubuntu
+
+9. Build wheel package and test::
+
+    $ make test_whell_via_docker_ubuntu
+
+10. Tag version::
+
+    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
+
+11. Push tag upstream::
+
+    $ git push --tags
+
+12. Build and upload a test release::
+
+    $ make release_test_via_docker_ubuntu
+
+13. Build and upload a final release::
+
+    $ make release_via_docker_ubuntu

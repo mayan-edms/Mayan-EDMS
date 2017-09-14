@@ -15,14 +15,14 @@ Search for information in the `archives of the mayan-edms mailing list`_, or
 `post a question`_.  If you prefer news servers, use the gateway provided by
 Gmane_.
 
-**Mayan EDMS** community developers do their best to reply to basic questions.
+Mayan EDMS community developers do their best to reply to basic questions.
 Be sure to check the list archives as it may already containt the answers to
 your questions.
 
 Twitter
 -------
 
-**Mayan EDMS** has an official Twitter account, `@mayanedms
+Mayan EDMS has an official Twitter account, `@mayanedms
 <http://twitter.com/mayanedms>`_, which is used for announcements and occasional
 related news tidbits.
 
@@ -30,7 +30,7 @@ related news tidbits.
 Bugs/ticket tracker
 -------------------
 
-Report bugs with **Mayan EDMS** or search existing ones using Github's `ticket tracker`_.
+Report bugs with Mayan EDMS or search existing ones using Gitlab's `ticket tracker`_.
 
 
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/

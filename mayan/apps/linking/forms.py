@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from common.classes import ModelAttribute
@@ -14,10 +15,10 @@ class SmartLinkForm(forms.ModelForm):
         super(SmartLinkForm, self).__init__(*args, **kwargs)
         self.fields['dynamic_label'].help_text = ' '.join(
             [
-                unicode(self.fields['dynamic_label'].help_text),
+                force_text(self.fields['dynamic_label'].help_text),
                 ModelAttribute.help_text_for(
                     Document, type_names=['field', 'related', 'property']
-                )
+                ).replace('\n', '<br>')
             ]
         )
 
@@ -36,10 +37,10 @@ class SmartLinkConditionForm(forms.ModelForm):
         )
         self.fields['expression'].help_text = ' '.join(
             [
-                unicode(self.fields['expression'].help_text),
+                force_text(self.fields['expression'].help_text),
                 ModelAttribute.help_text_for(
                     Document, type_names=['field', 'related', 'property']
-                )
+                ).replace('\n', '<br>')
             ]
         )
 

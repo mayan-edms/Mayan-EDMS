@@ -1,0 +1,87 @@
+===============================
+Mayan EDMS v2.1.5 release notes
+===============================
+
+Released: November 8, 2016
+
+What's new
+==========
+
+This is a bug-fix release and all users are encouraged to upgrade.
+
+Other changes
+-------------
+
+- Backport resize transformation math operation fix (GitLab #319).
+- Update Pillow to 3.1.2
+
+    - https://pillow.readthedocs.io/en/3.4.x/releasenotes/3.1.1.html
+    - https://pillow.readthedocs.io/en/3.4.x/releasenotes/3.1.2.html
+
+- Backport zoom performance improvement (GitLab #334).
+- Backport trash can navigation link resolution fix (GitLab #331).
+- Improve documentation regarding the use of GPG version 1 (GitLab #333).
+- Fix ACL create view HTML response type. (GitLab #335).
+- Expland staging folder and watch folder explanation.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
+* `GitLab issue #331 <https://gitlab.com/mayan-edms/mayan-edms/issues/331>`_ Trash List View: Items actions should be limited
+* `GitLab issue #333 <https://gitlab.com/mayan-edms/mayan-edms/issues/333>`_ "Unable to run gpg - it may not be available."
+* `GitLab issue #334 <https://gitlab.com/mayan-edms/mayan-edms/issues/334>`_ Perfomance improvment: prevent unnecessary image.resize in TransformationZoom
+* `GitLab issue #335 <https://gitlab.com/mayan-edms/mayan-edms/issues/335>`_ Wrong HTML Content-Type in ACL->NEW
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

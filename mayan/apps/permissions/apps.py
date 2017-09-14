@@ -14,11 +14,12 @@ from .links import (
     link_role_delete, link_role_edit, link_role_list, link_role_members,
     link_role_permissions
 )
+from .search import *  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):
+    has_tests = True
     name = 'permissions'
-    test = True
     verbose_name = _('Permissions')
 
     def ready(self):

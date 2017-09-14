@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,7 +11,7 @@ from formtools.wizard.views import SessionWizardView
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from metadata.forms import MetadataFormSet
+from metadata.forms import DocumentMetadataFormSet
 from tags.forms import TagMultipleSelectionForm
 
 from .literals import STEP_DOCUMENT_TYPE, STEP_METADATA, STEP_TAGS
@@ -33,10 +34,13 @@ def has_metadata_types(wizard):
 class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     condition_dict = {STEP_METADATA: has_metadata_types}
     extra_context = {}
-    form_list = (DocumentTypeSelectForm, MetadataFormSet, TagMultipleSelectionForm)
+    form_list = (
+        DocumentTypeSelectForm, DocumentMetadataFormSet,
+        TagMultipleSelectionForm
+    )
     form_titles = {
         DocumentTypeSelectForm: _('Step 1 of 3: Select document type'),
-        MetadataFormSet: _('Step 2 of 3: Enter document metadata'),
+        DocumentMetadataFormSet: _('Step 2 of 3: Enter document metadata'),
         TagMultipleSelectionForm: _('Step 3 of 3: Select tags'),
     }
     template_name = 'appearance/generic_wizard.html'
@@ -91,7 +95,10 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             return {'user': self.request.user}
 
         if step == STEP_TAGS:
-            return {'user': self.request.user}
+            return {
+                'help_text': _('Tags to be attached.'),
+                'user': self.request.user
+            }
 
         return {}
 
@@ -112,7 +119,8 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             pass
 
         try:
-            query_dict['tags'] = self.get_cleaned_data_for_step(STEP_TAGS)['tags']
+            query_dict['tags'] = ([force_text(tag.pk) for tag in self.get_cleaned_data_for_step(STEP_TAGS)['tags']])
+
         except AttributeError:
             pass
 

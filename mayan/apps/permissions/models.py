@@ -3,11 +3,12 @@ from __future__ import unicode_literals
 import logging
 
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.urls import reverse
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from .classes import Permission
 from .managers import RoleManager, StoredPermissionManager
 
 logger = logging.getLogger(__name__)
@@ -21,12 +22,10 @@ class StoredPermission(models.Model):
     objects = StoredPermissionManager()
 
     def __init__(self, *args, **kwargs):
-        from .classes import Permission
-
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
             self.volatile_permission = Permission.get(
-                {'pk': '%s.%s' % (self.namespace, self.name)},
+                pk='{}.{}'.format(self.namespace, self.name),
                 proxy_only=True
             )
         except KeyError:
@@ -35,7 +34,7 @@ class StoredPermission(models.Model):
             pass
 
     def __str__(self):
-        return unicode(getattr(self, 'volatile_permission', self.name))
+        return force_text(getattr(self, 'volatile_permission', self.name))
 
     def natural_key(self):
         return (self.namespace, self.name)
@@ -47,17 +46,26 @@ class StoredPermission(models.Model):
         verbose_name_plural = _('Permissions')
 
     def requester_has_this(self, user):
-        logger.debug('user: %s', user)
         if user.is_superuser or user.is_staff:
+            logger.debug(
+                'Permission "%s" granted to user "%s" as superuser or staff',
+                self, user
+            )
             return True
 
         # Request is one of the permission's holders?
         for group in user.groups.all():
             for role in group.roles.all():
                 if self in role.permissions.all():
+                    logger.debug(
+                        'Permission "%s" granted to user "%s" through role "%s"',
+                        self, user, role
+                    )
                     return True
 
-        logger.debug('Fallthru')
+        logger.debug(
+            'Fallthru: Permission "%s" not granted to user "%s"', self, user
+        )
         return False
 
 

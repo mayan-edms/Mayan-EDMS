@@ -1,61 +1,49 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from checkouts.models import NewVersionBlock
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import (
-    MultiFormView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    ConfirmView, MultiFormView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
-from documents.models import DocumentType, Document, NewVersionBlock
+from documents.models import DocumentType, Document
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url
 from navigation import Link
-from permissions import Permission
 
+from .exceptions import SourceException
 from .forms import (
-    NewDocumentForm, NewVersionForm, WebFormUploadForm,
-    WebFormUploadFormHTML5
+    NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
-from .literals import (
-    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
-    SOURCE_UNCOMPRESS_CHOICE_ASK,
-    SOURCE_UNCOMPRESS_CHOICE_Y
-)
+from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .models import (
-    InteractiveSource, Source, StagingFolderSource, WebFormSource
+    InteractiveSource, Source, SaneScanner, StagingFolderSource
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
     permission_sources_setup_edit, permission_sources_setup_view,
     permission_staging_file_delete
 )
-from .tasks import task_source_handle_upload
+from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
 class SourceLogListView(SingleObjectListView):
     view_permission = permission_sources_setup_view
-
-    def get_source(self):
-        return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
-    def get_queryset(self):
-        return self.get_source().logs.all()
 
     def get_extra_context(self):
         return {
@@ -63,6 +51,14 @@ class SourceLogListView(SingleObjectListView):
             'object': self.get_source(),
             'title': _('Log entries for source: %s') % self.get_source(),
         }
+
+    def get_object_list(self):
+        return self.get_source().logs.all()
+
+    def get_source(self):
+        return get_object_or_404(
+            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
 
 class UploadBaseView(MultiFormView):
@@ -89,27 +85,10 @@ class UploadBaseView(MultiFormView):
 
     @staticmethod
     def get_active_tab_links(document=None):
-        tab_links = []
-
-        web_forms = WebFormSource.objects.filter(enabled=True)
-        for web_form in web_forms:
-            tab_links.append(
-                UploadBaseView.get_tab_link_for_source(web_form, document)
-            )
-
-        staging_folders = StagingFolderSource.objects.filter(enabled=True)
-        for staging_folder in staging_folders:
-            tab_links.append(
-                UploadBaseView.get_tab_link_for_source(
-                    staging_folder, document
-                )
-            )
-
-        return {
-            'tab_links': tab_links,
-            SOURCE_CHOICE_WEB_FORM: web_forms,
-            SOURCE_CHOICE_STAGING: staging_folders,
-        }
+        return [
+            UploadBaseView.get_tab_link_for_source(source, document)
+            for source in InteractiveSource.objects.filter(enabled=True).select_subclasses()
+        ]
 
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
@@ -164,6 +143,16 @@ class UploadBaseView(MultiFormView):
                         }
                     },
                 ]
+        elif isinstance(self.source, SaneScanner):
+            subtemplates_list.append({
+                'name': 'sources/upload_multiform_subtemplate.html',
+                'context': {
+                    'forms': context['forms'],
+                    'is_multipart': True,
+                    'title': _('Document properties'),
+                    'submit_label': _('Scan'),
+                },
+            })
         else:
             subtemplates_list.append({
                 'name': 'sources/upload_multiform_subtemplate.html',
@@ -174,8 +163,8 @@ class UploadBaseView(MultiFormView):
                 },
             })
 
-        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links['tab_links']
-        menu_facet.bound_links['sources:upload_version'] = self.tab_links['tab_links']
+        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links
+        menu_facet.bound_links['sources:upload_version'] = self.tab_links
 
         context.update({
             'subtemplates_list': subtemplates_list,
@@ -195,83 +184,101 @@ class UploadInteractiveView(UploadBaseView):
             )
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_create,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_create, request.user,
-                self.document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_create, user=request.user,
+            obj=self.document_type
+        )
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
-        return super(
-            UploadInteractiveView, self
-        ).dispatch(request, *args, **kwargs)
+        try:
+            return super(
+                UploadInteractiveView, self
+            ).dispatch(request, *args, **kwargs)
+        except Exception as exception:
+            if request.is_ajax():
+                return JsonResponse(
+                    data={'error': force_text(exception)}, status=500
+                )
+            else:
+                raise
 
     def forms_valid(self, forms):
-        if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-            expand = forms['source_form'].cleaned_data.get('expand')
-        else:
-            if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                expand = True
+        if self.source.can_compress:
+            if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                expand = forms['source_form'].cleaned_data.get('expand')
             else:
-                expand = False
-
-        uploaded_file = self.source.get_upload_file_object(
-            forms['source_form'].cleaned_data
-        )
-
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=uploaded_file.file
-        )
-
-        label = None
-
-        if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
-            if forms['document_form'].cleaned_data['document_type_available_filenames']:
-                label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
-
-        if not self.request.user.is_anonymous():
-            user_id = self.request.user.pk
+                if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                    expand = True
+                else:
+                    expand = False
         else:
-            user_id = None
+            expand = False
 
         try:
-            self.source.clean_up_upload_file(uploaded_file)
-        except Exception as exception:
-            messages.error(self.request, exception)
-
-        task_source_handle_upload.apply_async(kwargs=dict(
-            description=forms['document_form'].cleaned_data.get('description'),
-            document_type_id=self.document_type.pk,
-            expand=expand,
-            label=label,
-            language=forms['document_form'].cleaned_data.get('language'),
-            metadata_dict_list=decode_metadata_from_url(self.request.GET),
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            source_id=self.source.pk,
-            tag_ids=self.request.GET.getlist('tags'),
-            user_id=user_id,
-        ))
-        messages.success(
-            self.request,
-            _(
-                'New document queued for uploaded and will be available '
-                'shortly.'
+            uploaded_file = self.source.get_upload_file_object(
+                forms['source_form'].cleaned_data
             )
+        except SourceException as exception:
+            messages.error(self.request, exception)
+        else:
+            shared_uploaded_file = SharedUploadedFile.objects.create(
+                file=uploaded_file.file
+            )
+
+            label = None
+
+            if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
+                if forms['document_form'].cleaned_data['document_type_available_filenames']:
+                    label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
+
+            if not self.request.user.is_anonymous:
+                user_id = self.request.user.pk
+            else:
+                user_id = None
+
+            try:
+                self.source.clean_up_upload_file(uploaded_file)
+            except Exception as exception:
+                messages.error(self.request, exception)
+
+            task_source_handle_upload.apply_async(kwargs=dict(
+                description=forms['document_form'].cleaned_data.get('description'),
+                document_type_id=self.document_type.pk,
+                expand=expand,
+                label=label,
+                language=forms['document_form'].cleaned_data.get('language'),
+                metadata_dict_list=decode_metadata_from_url(self.request.GET),
+                shared_uploaded_file_id=shared_uploaded_file.pk,
+                source_id=self.source.pk,
+                tag_ids=self.request.GET.getlist('tags'),
+                user_id=user_id,
+            ))
+            messages.success(
+                self.request,
+                _(
+                    'New document queued for uploaded and will be available '
+                    'shortly.'
+                )
+            )
+
+        return HttpResponseRedirect(
+            '{}?{}'.format(
+                reverse(self.request.resolver_match.view_name),
+                self.request.META['QUERY_STRING']
+            ),
         )
-        return HttpResponseRedirect(self.request.get_full_path())
 
     def create_source_form_form(self, **kwargs):
+        if hasattr(self.source, 'uncompress'):
+            show_expand = self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
+        else:
+            show_expand = False
+
         return self.get_form_classes()['source_form'](
             prefix=kwargs['prefix'],
             source=self.source,
-            show_expand=(
-                self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
-            ),
+            show_expand=show_expand,
             data=kwargs.get('data', None),
             files=kwargs.get('files', None),
         )
@@ -301,10 +308,13 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
-        if not isinstance(self.source, StagingFolderSource):
+        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context['subtemplates_list'][0]['context'].update(
                 {
-                    'form_action': self.request.get_full_path(),
+                    'form_action': '{}?{}'.format(
+                        reverse(self.request.resolver_match.view_name),
+                        self.request.META['QUERY_STRING']
+                    ),
                     'form_class': 'dropzone',
                     'form_disable_submit': True,
                     'form_id': 'html5upload',
@@ -320,6 +330,7 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
 
+        # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
                 self.request,
@@ -333,15 +344,10 @@ class UploadInteractiveVersionView(UploadBaseView):
                 )
             )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_new_version,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_new_version, self.request.user,
-                self.document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_new_version,
+            user=self.request.user, obj=self.document
+        )
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 
@@ -350,38 +356,42 @@ class UploadInteractiveVersionView(UploadBaseView):
         ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
-        uploaded_file = self.source.get_upload_file_object(
-            forms['source_form'].cleaned_data
-        )
-
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=uploaded_file.file
-        )
-
         try:
-            self.source.clean_up_upload_file(uploaded_file)
-        except Exception as exception:
-            messages.error(self.request, exception)
-
-        if not self.request.user.is_anonymous():
-            user_id = self.request.user.pk
-        else:
-            user_id = None
-
-        task_upload_new_version.apply_async(kwargs=dict(
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            document_id=self.document.pk,
-            user_id=user_id,
-            comment=forms['document_form'].cleaned_data.get('comment')
-        ))
-
-        messages.success(
-            self.request,
-            _(
-                'New document version queued for uploaded and will be '
-                'available shortly.'
+            uploaded_file = self.source.get_upload_file_object(
+                forms['source_form'].cleaned_data
             )
-        )
+        except SourceException as exception:
+            messages.error(self.request, exception)
+        else:
+            shared_uploaded_file = SharedUploadedFile.objects.create(
+                file=uploaded_file.file
+            )
+
+            try:
+                self.source.clean_up_upload_file(uploaded_file)
+            except Exception as exception:
+                messages.error(self.request, exception)
+
+            if not self.request.user.is_anonymous:
+                user_id = self.request.user.pk
+            else:
+                user_id = None
+
+            task_upload_new_version.apply_async(kwargs=dict(
+                shared_uploaded_file_id=shared_uploaded_file.pk,
+                document_id=self.document.pk,
+                user_id=user_id,
+                comment=forms['document_form'].cleaned_data.get('comment')
+            ))
+
+            messages.success(
+                self.request,
+                _(
+                    'New document version queued for uploaded and will be '
+                    'available shortly.'
+                )
+            )
+
         return HttpResponseRedirect(
             reverse(
                 'documents:document_version_list', args=(self.document.pk,)
@@ -446,6 +456,32 @@ class StagingFileDeleteView(SingleObjectDeleteView):
 
 
 # Setup views
+class SetupSourceCheckView(ConfirmView):
+    """
+    Trigger the task_check_interval_source task for a given source to
+    test/debug their configuration irrespective of the schedule task setup.
+    """
+    view_permission = permission_sources_setup_view
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Trigger check for source "%s"?') % self.get_object(),
+        }
+
+    def get_object(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+
+    def view_action(self):
+        task_check_interval_source.apply_async(
+            kwargs={
+                'source_id': self.get_object().pk
+            }
+        )
+
+        messages.success(self.request, _('Source check queued.'))
+
+
 class SetupSourceCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_create
@@ -501,9 +537,6 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
-    view_permission = permission_sources_setup_view
-    queryset = Source.objects.select_subclasses()
-
     extra_context = {
         'extra_columns': (
             {
@@ -520,3 +553,5 @@ class SetupSourceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Sources'),
     }
+    queryset = Source.objects.select_subclasses()
+    view_permission = permission_sources_setup_view

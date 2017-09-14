@@ -1,48 +1,153 @@
 'use strict';
 
-function resizeFullHeight() {
-    $('.full-height').height($(window).height() - $('.full-height').data('height-difference'));
+var App = function (parameters) {
+    var self = this;
+
+    parameters = parameters || {}
+
+    this.window = $(window);
 }
 
-function set_image_noninteractive(image) {
-    // Remove border to indicate non interactive image
-    image.removeClass('thin_border');
-    container = image.parent().parent();
-    // Save img HTML
-    html = image.parent().html();
-    // Remove anchor
-    image.parent().remove();
-    // Place again img
-    container.html(html);
+App.tagSelectionTemplate = function (tag, container) {
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  container[0].style.background = tag.element.style.color;
+  return $tag;
 }
 
-function load_document_image(image) {
-    $.get( image.attr('data-src'), function(result) {
-        image.attr('src', result.data);
-        image.addClass(image.attr('data-post-load-class'));
-    })
-    .fail(function() {
-        image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
-        set_image_noninteractive(image);
-    })
+App.tagResultTemplate = function (tag) {
+  if (!tag.element) { return ''; }
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  return $tag;
 }
 
-function dismissAlert(element) {
-    element.addClass('fadeOutUp').fadeOut('slow');
+App.prototype.setupScrollView = function () {
+    $('.scrollable').scrollview();
 }
 
-jQuery(document).ready(function() {
-    resizeFullHeight();
+App.prototype.setupTableSelector = function () {
+    $('th input:checkbox').click(function(e) {
+        var table = $(e.target).closest('table');
+        var checked = $(e.target).prop('checked');
+        $('td input:checkbox', table).prop('checked', checked);
+    });
+}
 
-    $(window).resize(function() {
-        resizeFullHeight();
+App.prototype.setupWindowPopUp = function () {
+    $('a.new_window').click(function(event) {
+        event.preventDefault();
+        var newWindow = window.open($(this).attr('href'), '_blank');
+        newWindow.focus();
+    });
+}
+
+App.prototype.setupSelect2 = function () {
+    $('.select2').select2({
+        dropdownAutoWidth: true,
+        width: '100%'
     });
 
-    $('.scrollable').scrollview();
+    $('.select2-tags').select2({
+        templateSelection: App.tagSelectionTemplate,
+        templateResult: App.tagResultTemplate,
+        width: '100%'
+    });
+}
 
+App.prototype.setupFullHeightResizing = function () {
+    var self = this;
+
+    this.resizeFullHeight();
+
+    this.window.resize(function() {
+        self.resizeFullHeight();
+    });
+}
+
+App.prototype.resizeFullHeight = function () {
+    $('.full-height').height(this.window.height() - $('.full-height').data('height-difference'));
+}
+
+App.prototype.doToastrMessages = function () {
+    toastr.options = {
+        'closeButton': true,
+        'debug': false,
+        'newestOnTop': true,
+        'positionClass': 'toast-top-right',
+        'preventDuplicates': false,
+        'onclick': null,
+        'showDuration': '300',
+        'hideDuration': '1000',
+        'timeOut': '5000',
+        'extendedTimeOut': '1000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut'
+    }
+
+    // Add invisible bootstrap messages to copy the styles to toastr.js
+
+    $('body').append('\
+        <div class="hidden alert alert-success">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-info">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-danger">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-warning">\
+            <p>text</p>\
+        </div>\
+    ');
+
+    // Copy the bootstrap style from the sample alerts to toaster.js via
+    // dynamic document style tag
+
+    $('head').append('\
+        <style>\
+            .toast-success {\
+                background-color: ' + $('.alert-success').css('background-color') +'\
+            }\
+            .toast-info {\
+                background-color: ' + $('.alert-info').css('background-color') +'\
+            }\
+            .toast-error {\
+                background-color: ' + $('.alert-danger').css('background-color') +'\
+            }\
+            .toast-warning {\
+                background-color: ' + $('.alert-warning').css('background-color') +'\
+            }\
+        </style>\
+    ');
+
+    $.each(DjangoMessages, function (index, value) {
+        var options = {};
+
+        if (value.tags === 'error') {
+            // Error messages persist
+            options['timeOut'] = 10000;
+        }
+        toastr[value.tags](value.message, '', options);
+    });
+}
+
+/* MayanImage class */
+
+var MayanImage = function (options) {
+    this.element = options.element;
+    this.load();
+}
+
+MayanImage.intialize = function () {
     $('a.fancybox').fancybox({
         beforeShow : function(){
-            this.title =  $(this.element).data('caption');
+            this.title = $(this.element).data('caption');
         },
         openEffect  : 'elastic',
         closeEffect : 'elastic',
@@ -53,65 +158,76 @@ jQuery(document).ready(function() {
         autoResize  : true,
     });
 
-    $('a.fancybox-staging').click(function(e) {
-        var $this = $(this);
-
-            $.get($this.attr('href'), function( result ) {
-                if (result.status == 'success') {
-                    $.fancybox.open([
-                        {
-                            href : result.data,
-                            title : $this.attr('title'),
-                            openEffect  : 'elastic',
-                            closeEffect : 'elastic',
-                            prevEffect  : 'none',
-                            nextEffect  : 'none',
-                            titleShow   : true,
-                            type        : 'image',
-                            autoResize  : true,
-                        },
-                    ]);
-                }
-            })
-        e.preventDefault();
-    })
-
    $('img.lazy-load').lazyload({
         appear: function(elements_left, settings) {
-            load_document_image($(this));
+            new MayanImage({element: $(this)});
         },
+        threshold: 400,
     });
 
     $('img.lazy-load-carousel').lazyload({
-        threshold : 400,
-        container: $("#carousel-container"),
         appear: function(elements_left, settings) {
-            var $this = $(this);
-            $this.removeClass('lazy-load-carousel');
-            load_document_image($this);
+            new MayanImage({element: $(this)});
         },
+        container: $('#carousel-container'),
+        threshold: 2000
     });
 
-    $('th input:checkbox').click(function(e) {
-        var table = $(e.target).closest('table');
-        var checked = $(e.target).prop('checked');
-        $('td input:checkbox', table).prop('checked', checked);
+    $('.lazy-load').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
+        $(this).siblings('.spinner-container').remove();
+        $(this).removeClass('lazy-load pull-left');
     });
 
-    $('a.new_window').click(function(event) {
-        event.preventDefault();
-        var newWindow = window.open($(this).attr('href'), '_blank');
-        newWindow.focus();
+    $('.lazy-load-carousel').on('load', function() {
+        $(this).hide();
+        $(this).fadeIn();
+        $(this).siblings('.spinner-container').remove();
+        $(this).removeClass('lazy-load-carousel pull-left');
+    });
+}
+
+MayanImage.prototype.onImageError = function () {
+    this.element.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+    // Remove border to indicate non interactive image
+    this.element.removeClass('thin_border');
+
+    var container = this.element.parent().parent();
+    // Save img HTML
+    var html = this.element.parent().html();
+    // Remove anchor
+    this.element.parent().remove();
+    // Place again img
+    container.html(html);
+};
+
+MayanImage.prototype.load = function () {
+    var self = this;
+
+    this.element.error(function(event) {
+        self.onImageError();
     });
 
-    $('.alert button.close').click(function() {
-        dismissAlert($(this).parent());
-    });
+    this.element.attr('src', this.element.attr('data-url'));
+    $.fn.matchHeight._update();
+    $.fn.matchHeight._maintainScroll = true;
+};
 
-    setTimeout(function() {
-        $('.alert-success').each(function() {
-            dismissAlert($(this));
-        });
+jQuery(document).ready(function() {
+    var app = new App();
 
-    }, 3000);
+    app.setupFullHeightResizing();
+
+    MayanImage.intialize();
+
+    app.doToastrMessages();
+
+    app.setupSelect2();
+
+    app.setupScrollView();
+
+    app.setupTableSelector();
+
+    app.setupWindowPopUp();
 });

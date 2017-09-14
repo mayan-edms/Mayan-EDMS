@@ -13,9 +13,16 @@ class EventType(models.Model):
         max_length=64, unique=True, verbose_name=_('Name')
     )
 
-    def __str__(self):
-        return unicode(Event.get_label(self.name))
-
     class Meta:
         verbose_name = _('Event type')
         verbose_name_plural = _('Event types')
+
+    def __str__(self):
+        return self.get_class().label
+
+    def get_class(self):
+        return Event.get(name=self.name)
+
+    @property
+    def label(self):
+        return self.get_class().label

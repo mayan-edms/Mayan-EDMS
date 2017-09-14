@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
+# Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
-"PO-Revision-Date: 2016-03-21 21:10+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"PO-Revision-Date: 2017-05-12 07:25+0000\n"
+"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,236 +18,243 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: api.py:100
-msgid "Unknown"
-msgstr "ناشناخته"
-
-#: apps.py:22
+#: apps.py:31
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:55 apps.py:62
-msgid "ID"
-msgstr "شناسه"
+#: apps.py:47 apps.py:50 forms.py:17
+msgid "Key ID"
+msgstr "شناسه کلید"
 
-#: apps.py:57
-msgid "Owner"
-msgstr "صاحب"
+#: apps.py:48 apps.py:61 forms.py:19 models.py:52
+msgid "User ID"
+msgstr "شناسه کاربری"
 
-#: apps.py:65
+#: apps.py:51 forms.py:34 models.py:55
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:67
+#: apps.py:53 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "تاریخ ایجاد"
 
-#: apps.py:73
+#: apps.py:56 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
-#: apps.py:74
+#: apps.py:57
 msgid "No expiration"
-msgstr ""
+msgstr "بدون انقضا"
 
-#: apps.py:76
+#: apps.py:59 forms.py:32 models.py:47
 msgid "Length"
 msgstr "طول"
 
-#: apps.py:78
-#| msgid "Identifies"
-msgid "Identities"
-msgstr ""
+#: forms.py:28
+msgid "None"
+msgstr "هیچکدام."
 
-#: forms.py:9
+#: forms.py:31 models.py:44
+msgid "Fingerprint"
+msgstr "اثر انگشت"
+
+#: forms.py:33 models.py:50
+msgid "Algorithm"
+msgstr "الگوریتم"
+
+#: forms.py:47
 msgid "Term"
 msgstr "ترم Term"
 
-#: forms.py:10
+#: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:14 views.py:81
-msgid "Private keys"
-msgstr "کلید شخصی"
-
-#: links.py:18 views.py:76
-msgid "Public keys"
-msgstr "کلید عمومی"
-
-#: links.py:21
+#: links.py:13
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:26 permissions.py:16
+#: links.py:17
+msgid "Details"
+msgstr "جزئیات"
+
+#: links.py:21
+msgid "Download"
+msgstr "دانلود"
+
+#: links.py:25 permissions.py:28
 msgid "Query keyservers"
 msgstr "پرسش و یا query از سرورهای کلید"
 
-#: links.py:30
+#: links.py:29
 msgid "Import"
 msgstr "وارد کردن"
 
-#: links.py:35 permissions.py:7
+#: links.py:34 permissions.py:7
 msgid "Key management"
 msgstr "مدیریت کلید"
 
-#: literals.py:6
+#: links.py:37
+msgid "Upload key"
+msgstr "کلید آپلود"
+
+#: links.py:41 views.py:160
+msgid "Private keys"
+msgstr "کلید شخصی"
+
+#: links.py:45 views.py:149
+msgid "Public keys"
+msgstr "کلید عمومی"
+
+#: literals.py:6 literals.py:14
 msgid "Public"
 msgstr "عمومی"
 
-#: literals.py:7
+#: literals.py:7 literals.py:15
 msgid "Secret"
 msgstr "سری و یا رمز"
 
-#: literals.py:15 literals.py:20
+#: literals.py:23 literals.py:28
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:16
+#: literals.py:24
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:21
+#: literals.py:29
 msgid "Elgamal"
 msgstr "الگمال Elgmal"
 
-#: literals.py:35
+#: literals.py:43
 msgid "Bad signature."
 msgstr "امضای اشتباه"
 
-#: literals.py:38
+#: literals.py:46
 msgid "Document not signed or invalid signature."
 msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
 
-#: literals.py:41
+#: literals.py:49
 msgid "Signature error."
 msgstr "خطا در امضا"
 
-#: literals.py:45
+#: literals.py:53
 msgid "Document is signed but no public key is available for verification."
 msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
 
-#: literals.py:50
+#: literals.py:58
 msgid "Document is signed, and signature is good."
 msgstr "سند امضا شده است و امضا مورد تایید میباشد."
 
-#: literals.py:53
+#: literals.py:61
 msgid "Document is signed with a valid signature."
 msgstr "سند با امضای مورد تایید امضا شده است."
 
-#: permissions.py:10
-msgid "View keys"
-msgstr "دیدن کلیدها"
+#: models.py:32
+msgid "ASCII armored version of the key."
+msgstr ""
 
-#: permissions.py:13
+#: models.py:33
+msgid "Key data"
+msgstr ""
+
+#: models.py:61
+msgid "Key"
+msgstr "کلید"
+
+#: models.py:62
+msgid "Keys"
+msgstr "کلیدها"
+
+#: models.py:68
+msgid "Invalid key data"
+msgstr ""
+
+#: models.py:71
+msgid "Key already exists."
+msgstr "این کلید از قبل وجود دارد."
+
+#: permissions.py:10
 msgid "Delete keys"
 msgstr "پاک و یا حذف کلیدها"
 
-#: permissions.py:19
+#: permissions.py:13
+msgid "Download keys"
+msgstr "دانلود کلیدها"
+
+#: permissions.py:16
 msgid "Import keys from keyservers"
 msgstr "وارد کردن کلیده از سرور کلیدها"
 
+#: permissions.py:19
+msgid "Use keys to sign content"
+msgstr ""
+
+#: permissions.py:22
+msgid "Upload keys"
+msgstr "آپلود کلیدها"
+
+#: permissions.py:25
+msgid "View keys"
+msgstr "دیدن کلیدها"
+
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "امضاها"
 
-#: settings.py:13
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "لیست سرور کلیدها برای پرسش درباره کلید های ناشناس."
-
-#: settings.py:19
+#: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمراه فایلهای پیکربندی."
 
-#: settings.py:25
+#: settings.py:21
 msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr ""
+
 #: views.py:38
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgid "Unable to import key: %(key_id)s; %(error)s"
+msgid "Delete key: %s"
 msgstr ""
 
 #: views.py:48
 #, python-format
-msgid "Successfully received key: %(key_id)s"
+msgid "Details for key: %s"
 msgstr ""
 
-#: views.py:57
+#: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
-#: views.py:59
+#: views.py:69
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:100
+#: views.py:78
 #, python-format
-msgid "Key: %s, deleted successfully."
-msgstr "کلید: %s با موفقیت حذف شد."
-
-#: views.py:107
-msgid "Delete key"
-msgstr "حذف کلید"
-
-#: views.py:110
-#, python-format
-#| msgid ""
-#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
-#| " of a public/private pair the private key will be deleted well."
-msgid ""
-"Delete key %s? If you delete a public key that is part of a public/private "
-"pair the private key will be deleted as well."
+msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:134
+#: views.py:85
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr ""
+
+#: views.py:107
 msgid "Search"
 msgstr "جستجو"
 
-#: views.py:136
+#: views.py:109
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:146
+#: views.py:119
 msgid "Key query results"
 msgstr ""
 
-#~ msgid "Key ID"
-#~ msgstr "Key ID"
-
-#~ msgid "results"
-#~ msgstr "results"
-
-#~ msgid "Key: %s, imported successfully."
-#~ msgstr "Key: %s, imported successfully."
-
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Are you sure you wish to import key id: %s?"
-
-#~ msgid "Disabled"
-#~ msgstr "disabled"
-
-#~ msgid "Expired"
-#~ msgstr "expired"
-
-#~ msgid "Revoked"
-#~ msgstr "revoked"
-
-#~ msgid "private keys"
-#~ msgstr "private keys"
-
-#~ msgid "public keys"
-#~ msgstr "public keys"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "query keyservers"
-#~ msgstr "query keyservers"
-
-#~ msgid "key management"
-#~ msgstr "key management"
+#: views.py:138
+msgid "Upload new key"
+msgstr ""

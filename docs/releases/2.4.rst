@@ -1,0 +1,156 @@
+=============================
+Mayan EDMS v2.4 release notes
+=============================
+
+Released: June 23, 2017
+
+What's new
+==========
+
+SANE document source
+--------------------
+A new document source has been added with the ability to retrieve documents from
+scanners directly. This new document source uses the SANE (Scanner Access Now Easy)
+(https://en.wikipedia.org/wiki/Scanner_Access_Now_Easy) API client to communicate
+with USB and network scanners. SANE must be properly installed for this document
+source to work. Your scanner must also be supported by the SANE API
+(http://www.sane-project.org/sane-supported-devices.html).
+
+Automatic PDF orientation detection
+-----------------------------------
+The orientation of PDF documents is now detected at creation and a rotation
+transformation applied to each of the document's pages to correct the orientation.
+
+Environment variables
+---------------------
+Configuration options can now be updated from environment variables. To update
+a configuration option, prepend the string `MAYAN_` to the name of the configuration
+option. For example, to increase the number of documents displayed per search results
+page (from a default of 40) to 50 documents, set the environment variable
+MAYAN_COMMON_PAGINATE_BY to 50 with::
+
+    $ export MAYAN_COMMON_PAGINATE_BY=50
+
+and restart Mayan EDMS. A list of the configuration options can be found in the
+`Setup` menu, under `Settings`.
+
+Math filters
+------------
+The django-mathfilters (https://pypi.python.org/pypi/django-mathfilters) package
+has been included to provide proper math filters in the indexes. An example of
+this is indexing documents by quarter::
+
+    {% load mathfilters %}{{ document.metadata_value_of.date|date:"Y"}}Q{{ document.metadata_value_of.date|date:"m"|sub:1|intdiv:3|add:1 }}
+
+
+Expand searchable objects
+-------------------------
+Previously, only documents and later on document pages were searchable. This release
+add support for searching for tags, metadata types and cabinets. This search support
+is available via the dynamic search API.
+
+Management command to reset locks
+---------------------------------
+During testing or development error occur and locks can remain behind, blocking
+execution of a process or task until they expire. To help resolve this a
+management command has been added called `purgelocks` that will delete all locks
+in the system.
+
+Index by workflow state
+-----------------------
+Support was added to update the a document indexes from workflow state changes.
+To make workflow referencing easier from the index template, a new fields was
+added to the workflow model called internal_name. For example, for a workflow
+called `Publishing Workflow` with an internal name of `publishing_workflow`,
+use the following string to reference the current state in an index::
+
+    {{ document.workflow.publishing_workflow.get_current_state }}
+
+
+Task manager
+------------
+A new app to monitor the distribution and consumption of background task has been
+added. This app is call `Task manager` and can be found in the `Tools` menu.
+Use this new tool to diagnose your background task workers or to determine when
+to scale up the number of workers.
+
+
+Other Changes
+-------------
+- Improve render of documents with no pages.
+- Fix repeated permission list API URL. GitLab issue #389.
+- Fix role creation API endpoint not returning id. GitLab issue #390.
+- Fix index rebuilding for multi value first levels. GitLab issue #391.
+- Add hardware requirements. GitHub issue #247.
+- Fix URL query string encoding for the document page navigation views. GitLab
+  issue #383.
+- Truncate views titles via the APPEARANCE_MAXIMUM_TITLE_LENGTH setting.
+  GitLab issue #217.
+- Add link to show a document's OCR errors. GitLab issue #291.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitHub issue #247 <https://github.com/mayan-edms/mayan-edms/issues/247>`_ Hardware requirements
+* `GitLab issue #132 <https://gitlab.com/mayan-edms/mayan-edms/issues/132>`_ Task queue viewer
+* `GitLab issue #217 <https://gitlab.com/mayan-edms/mayan-edms/issues/217>`_ [Documents] Truncate document label for avoid double lines in mobile or reduce font
+* `GitLab issue #221 <https://gitlab.com/mayan-edms/mayan-edms/issues/221>`_ Add flush lock management command
+* `GitLab issue #291 <https://gitlab.com/mayan-edms/mayan-edms/issues/291>`_ Link to OCR error log from document OCR tab
+* `GitLab issue #344 <https://gitlab.com/mayan-edms/mayan-edms/issues/344>`_ Add support for searching folders, tags, metadata.
+* `GitLab issue #383 <https://gitlab.com/mayan-edms/mayan-edms/issues/383>`_ Page not found when deployed to sub-uri
+* `GitLab issue #387 <https://gitlab.com/mayan-edms/mayan-edms/issues/387>`_ Document Scanning not Functioning on rotated landscape PDF's
+* `GitLab issue #389 <https://gitlab.com/mayan-edms/mayan-edms/issues/389>`_ How can we map permissions with a particular role using REST API?
+* `GitLab issue #390 <https://gitlab.com/mayan-edms/mayan-edms/issues/390>`_ Id is not getting in response
+* `GitLab issue #391 <https://gitlab.com/mayan-edms/mayan-edms/issues/391>`_ "Rebuild indexes" does not work in Mayan EDMS 2.3
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

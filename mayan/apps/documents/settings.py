@@ -6,30 +6,22 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
 
-# TODO: Findout method to make languages names' translatable.
-# YAML fails to serialize ugettext_lazy and ugettext is not allowed at this
-# level
-
 LANGUAGE_CHOICES = [
     (i.iso639_3_code, i.name) for i in list(pycountry.languages)
 ]
 
 namespace = Namespace(name='documents', label=_('Documents'))
-setting_storage_backend = namespace.add_setting(
-    global_name='DOCUMENTS_STORAGE_BACKEND',
-    default='storage.backends.filebasedstorage.FileBasedStorage'
+setting_display_size = namespace.add_setting(
+    global_name='DOCUMENTS_DISPLAY_SIZE', default='3600'
 )
 setting_preview_size = namespace.add_setting(
-    global_name='DOCUMENTS_PREVIEW_SIZE', default='640x480'
+    global_name='DOCUMENTS_PREVIEW_SIZE', default='800'
 )
 setting_print_size = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_SIZE', default='3600'
 )
 setting_thumbnail_size = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='50x50'
-)
-setting_display_size = namespace.add_setting(
-    global_name='DOCUMENTS_DISPLAY_SIZE', default='3600'
+    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='800'
 )
 setting_recent_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_COUNT', default=40,
@@ -37,6 +29,10 @@ setting_recent_count = namespace.add_setting(
         'Maximum number of recent (created, edited, viewed) documents to '
         'remember per user.'
     )
+)
+setting_storage_backend = namespace.add_setting(
+    global_name='DOCUMENTS_STORAGE_BACKEND',
+    default='storage.backends.filebasedstorage.FileBasedStorage'
 )
 setting_zoom_percent_step = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_PERCENT_STEP', default=25,
@@ -76,4 +72,19 @@ setting_language = namespace.add_setting(
 setting_language_choices = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE_CHOICES', default=LANGUAGE_CHOICES,
     help_text=_('List of supported document languages.')
+)
+setting_disable_base_image_cache = namespace.add_setting(
+    global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
+    help_text=_(
+        'Disables the first cache tier which stores high resolution, '
+        'non transformed versions of documents\'s pages.'
+    )
+)
+setting_disable_transformed_image_cache = namespace.add_setting(
+    global_name='DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE', default=False,
+    help_text=_(
+        'Disables the second cache tier which stores medium to low '
+        'resolution, transformed (rotated, zoomed, etc) versions '
+        'of documents\' pages.'
+    )
 )

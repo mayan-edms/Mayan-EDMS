@@ -2,18 +2,17 @@ from __future__ import unicode_literals
 
 import os
 import shutil
-import tempfile
 
-from django.test import TestCase
-
+from common.tests import BaseTestCase
+from common.utils import mkdtemp
 from documents.tests import TEST_NON_ASCII_DOCUMENT_PATH
 
 from ..classes import StagingFile
 
 
-class StagingFileTestCase(TestCase):
+class StagingFileTestCase(BaseTestCase):
     def test_unicode_staging_file(self):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
         filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)

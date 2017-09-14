@@ -1,14 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
-import tempfile
 import logging
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.files import File
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -16,10 +15,10 @@ from common.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
+from common.utils import TemporaryFile
 from django_gpg.exceptions import NeedPassphrase, PassphraseError
 from django_gpg.permissions import permission_key_sign
 from documents.models import DocumentVersion
-from permissions import Permission
 
 from .forms import (
     DocumentVersionSignatureCreateForm,
@@ -47,14 +46,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         key = form.cleaned_data['key']
         passphrase = form.cleaned_data['passphrase'] or None
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_key_sign,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_key_sign, self.request.user, key
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_key_sign, user=self.request.user, obj=key
+        )
 
         try:
             with self.get_document_version().open() as file_object:
@@ -83,7 +77,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object = TemporaryFile()
             temporary_file_object.write(detached_signature.data)
             temporary_file_object.seek(0)
 
@@ -103,15 +97,10 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_sign_detached,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_sign_detached, request.user,
-                self.get_document_version().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_sign_detached,
+            user=request.user, obj=self.get_document_version().document
+        )
 
         return super(
             DocumentVersionDetachedSignatureCreateView, self
@@ -122,9 +111,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Sign document version "%s" with a detached signature'
             ) % self.get_document_version(),
@@ -153,14 +140,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         key = form.cleaned_data['key']
         passphrase = form.cleaned_data['passphrase'] or None
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_key_sign,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_key_sign, self.request.user, key
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_key_sign, user=self.request.user, obj=key
+        )
 
         try:
             with self.get_document_version().open() as file_object:
@@ -188,7 +170,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object = TemporaryFile()
             temporary_file_object.write(signature_result.data)
             temporary_file_object.seek(0)
 
@@ -214,15 +196,10 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_sign_embedded,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_sign_embedded, request.user,
-                self.get_document_version().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_sign_embedded,
+            user=request.user, obj=self.get_document_version().document
+        )
 
         return super(
             DocumentVersionEmbeddedSignatureCreateView, self
@@ -233,9 +210,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Sign document version "%s" with a embedded signature'
             ) % self.get_document_version(),
@@ -258,11 +233,7 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_object().document_version.document,
-            'document_version': self.get_object().document_version,
-            'navigation_object_list': (
-                'document', 'document_version', 'signature'
-            ),
+            'object': self.get_object().document_version,
             'signature': self.get_object(),
             'title': _('Delete detached signature: %s') % self.get_object()
         }
@@ -281,13 +252,9 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_object().document_version.document,
-            'document_version': self.get_object().document_version,
-            'signature': self.get_object(),
-            'navigation_object_list': (
-                'document', 'document_version', 'signature'
-            ),
             'hide_object': True,
+            'object': self.get_object().document_version,
+            'signature': self.get_object(),
             'title': _(
                 'Details for signature: %s'
             ) % self.get_object(),
@@ -306,21 +273,16 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
         signature = self.get_object()
 
         return DocumentVersionSignatureDownloadView.VirtualFile(
-            signature.signature_file, name=unicode(signature)
+            signature.signature_file, name=force_text(signature)
         )
 
 
 class DocumentVersionSignatureListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_signature_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_signature_view, request.user,
-                self.get_document_version()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_signature_view,
+            user=request.user, obj=self.get_document_version()
+        )
 
         return super(
             DocumentVersionSignatureListView, self
@@ -331,16 +293,14 @@ class DocumentVersionSignatureListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
             'hide_object': True,
+            'object': self.get_document_version(),
             'title': _(
                 'Signatures for document version: %s'
             ) % self.get_document_version(),
         }
 
-    def get_queryset(self):
+    def get_object_list(self):
         return self.get_document_version().signatures.all()
 
 
@@ -349,15 +309,10 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
     model = DetachedSignature
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_signature_upload,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_signature_upload, request.user,
-                self.get_document_version()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_signature_upload,
+            user=request.user, obj=self.get_document_version()
+        )
 
         return super(
             DocumentVersionSignatureUploadView, self
@@ -368,9 +323,7 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'document': self.get_document_version().document,
-            'document_version': self.get_document_version(),
-            'navigation_object_list': ('document', 'document_version'),
+            'object': self.get_document_version(),
             'title': _(
                 'Upload detached signature for document version: %s'
             ) % self.get_document_version(),

@@ -3,11 +3,9 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django import forms
-from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from permissions import Permission
 
 from common.forms import DetailForm
 from django_gpg.models import Key
@@ -35,14 +33,9 @@ class DocumentVersionSignatureCreateForm(forms.Form):
             DocumentVersionSignatureCreateForm, self
         ).__init__(*args, **kwargs)
 
-        queryset = Key.objects.private_keys()
-
-        try:
-            Permission.check_permissions(user, (permission_key_sign,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_key_sign, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_key_sign, user, queryset=Key.objects.private_keys()
+        )
 
         self.fields['key'].queryset = queryset
 

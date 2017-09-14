@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# Johan Braeken, 2017
 # Lucas Weel <ljj.weel@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:44-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"PO-Revision-Date: 2017-04-21 16:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,98 +22,48 @@ msgstr ""
 
 #: apps.py:16
 msgid "Dynamic search"
+msgstr "Dynamisch zoeken"
+
+#: classes.py:27
+msgid "No search model matching the query"
 msgstr ""
 
-#: forms.py:21
+#: forms.py:9
+msgid "Match all"
+msgstr ""
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+
+#: forms.py:29
 msgid "Search terms"
 msgstr "Zoektermen"
 
-#: links.py:7 settings.py:8 views.py:56 views.py:70
+#: links.py:8 settings.py:8 views.py:52 views.py:63
 msgid "Search"
 msgstr "Zoek"
 
-#: links.py:9 views.py:77
+#: links.py:11 views.py:77
 msgid "Advanced search"
-msgstr ""
+msgstr "Geavanceerd zoeken"
 
-#: links.py:11
+#: links.py:15
 msgid "Search again"
-msgstr ""
+msgstr "Zoek nog een keer"
 
-#: models.py:24
-msgid "User"
-msgstr "Gebruiker"
-
-#: models.py:26
-msgid "Query"
-msgstr ""
-
-#: models.py:28
-msgid "Datetime created"
-msgstr ""
-
-#: models.py:30
-msgid "Hits"
-msgstr ""
-
-#: models.py:74
-msgid "Recent search"
-msgstr ""
-
-#: models.py:75
-msgid "Recent searches"
-msgstr ""
-
-#: settings.py:14
+#: settings.py:11
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Het maximum aantal zoekresultaten."
 
-#: settings.py:18
-msgid "Maximum number of search queries to remember per user."
-msgstr "Het maximum aantal zoek-opdrachten dat per gebruiker wordt opgeslagen"
-
 #: views.py:25
-msgid "Search results"
-msgstr "Zoekresultaten"
-
-#: views.py:32
-msgid "Type"
+#, python-format
+msgid "Search results for: %s"
 msgstr ""
 
-#~ msgid "Results"
-#~ msgstr "results"
-
-#~ msgid "Elapsed time: %(time_delta)s seconds"
-#~ msgstr "Elapsed time: %(time_delta)s seconds"
-
-#~ msgid "Recent searches (maximum of %d)"
-#~ msgstr "recent searches (maximum of %d)"
-
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
-#~ msgstr ""
-#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-
-#~ msgid "search"
-#~ msgstr "search"
-
-#~ msgid "user"
-#~ msgstr "user"
-
-#~ msgid "hits"
-#~ msgstr "hits"
-
-#~ msgid "type"
-#~ msgstr "type"
-
-#~ msgid "Help"
-#~ msgstr "Help"
-
-#~ msgid ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."
-#~ msgstr ""
-#~ "Enter the desired search keywords separated by space.  Only the top "
-#~ "%(search_results_limit)s results will be available."
-
-#~ msgid "Search error: %s"
-#~ msgstr "Search error: %s"
+#: views.py:65
+#, python-format
+msgid "Search for: %s"
+msgstr ""

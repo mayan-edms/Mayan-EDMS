@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
 
 from django.core.files.base import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 
 from ..models import Tag
 
@@ -12,10 +13,11 @@ from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TagTestCase(TestCase):
+class TagTestCase(BaseTestCase):
     def setUp(self):
+        super(TagTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -26,6 +28,7 @@ class TagTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(TagTestCase, self).tearDown()
 
     def runTest(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)

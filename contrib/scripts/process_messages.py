@@ -4,20 +4,21 @@ import optparse
 
 import sh
 
+
 APP_LIST = (
-    'acls', 'appearance', 'authentication', 'checkouts', 'common',
+    'acls', 'appearance', 'authentication', 'cabinets', 'checkouts', 'common',
     'converter', 'django_gpg', 'document_comments', 'document_indexing',
-    'document_signatures', 'document_states', 'documents', 'dynamic_search',
-    'events', 'folders', 'installation', 'linking', 'lock_manager', 'mailer',
-    'metadata', 'mirroring', 'motd', 'navigation', 'ocr', 'permissions',
-    'rest_api', 'smart_settings', 'sources', 'statistics', 'storage', 'tags',
+    'document_parsing', 'document_signatures', 'document_states', 'documents',
+    'dynamic_search', 'events', 'linking', 'lock_manager', 'mayan_statistics',
+    'mailer', 'metadata', 'mirroring', 'motd', 'navigation', 'ocr', 'permissions',
+    'rest_api', 'smart_settings', 'sources', 'storage', 'tags', 'task_manager',
     'user_management'
 )
 
 LANGUAGE_LIST = (
     'ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'id',
-    'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'vi_VN',
-    'zh_CN',
+    'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'tr_TR',
+    'vi_VN', 'zh_CN',
 )
 
 makemessages = sh.Command('django-admin.py')

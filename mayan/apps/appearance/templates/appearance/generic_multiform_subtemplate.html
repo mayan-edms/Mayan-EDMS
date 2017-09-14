@@ -1,11 +1,9 @@
 {% load i18n %}
 {% load static %}
-
     <h4>
         {% include 'appearance/calculate_form_title.html' %}
     </h4>
     <hr>
-
     <div class="well">
         {% if is_multipart %}
             <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" id="{{ form_id|default:'' }}" method="{{ submit_method|default:'post' }}">
@@ -62,7 +60,7 @@
 
             <div class="form-group">
                 {% if not form_disable_submit %}
-                    <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-check"></i> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}</button>
+                    <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="{{ submit_icon|default:'fa fa-check' }}"></i> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}</button>
                 {% endif %}
                 {% if previous %}
                       &nbsp;<a class="btn btn-default" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>

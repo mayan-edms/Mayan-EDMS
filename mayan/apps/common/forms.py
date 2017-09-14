@@ -6,6 +6,7 @@ from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Filter, Package
@@ -83,6 +84,43 @@ class DetailForm(forms.ModelForm):
             )
 
 
+class DynamicFormMixin(object):
+    def __init__(self, *args, **kwargs):
+        self.schema = kwargs.pop('schema')
+        super(DynamicFormMixin, self).__init__(*args, **kwargs)
+
+        widgets = self.schema.get('widgets', {})
+        field_order = self.schema.get(
+            'field_order', self.schema['fields'].keys()
+        )
+
+        for field_name in field_order:
+            field_data = self.schema['fields'][field_name]
+            field_class = import_string(field_data['class'])
+            kwargs = {
+                'label': field_data['label'],
+                'required': field_data.get('required', True),
+                'initial': field_data.get('default', None),
+                'help_text': field_data.get('help_text'),
+            }
+            if widgets and field_name in widgets:
+                widget = widgets[field_name]
+                kwargs['widget'] = import_string(
+                    widget['class']
+                )(**widget.get('kwargs', {}))
+
+            kwargs.update(field_data.get('kwargs', {}))
+            self.fields[field_name] = field_class(**kwargs)
+
+
+class DynamicForm(DynamicFormMixin, forms.Form):
+    pass
+
+
+class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
+    pass
+
+
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
         label='',
@@ -110,7 +148,7 @@ class FilterForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    DIRECTORY = ('mayan',)
+    DIRECTORY = ()
     FILENAME = 'LICENSE'
 
 
@@ -118,6 +156,18 @@ class LocaleProfileForm(forms.ModelForm):
     class Meta:
         fields = ('language', 'timezone')
         model = UserLocaleProfile
+        widgets = {
+            'language': forms.Select(
+                attrs={
+                    'class': 'select2'
+                }
+            ),
+            'timezone': forms.Select(
+                attrs={
+                    'class': 'select2'
+                }
+            )
+        }
 
 
 class LocaleProfileForm_view(DetailForm):
@@ -158,7 +208,7 @@ class UserForm_view(DetailForm):
 
     class Meta:
         fields = (
-            'username', 'first_name', 'last_name', 'email', 'is_staff',
-            'is_superuser', 'last_login', 'date_joined', 'groups'
+            'username', 'first_name', 'last_name', 'email', 'last_login',
+            'date_joined', 'groups'
         )
         model = get_user_model()

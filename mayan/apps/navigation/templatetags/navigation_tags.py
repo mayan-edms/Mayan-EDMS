@@ -8,17 +8,17 @@ from ..forms import MultiItemForm
 register = Library()
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menu_links(context, name, source=None):
     return Menu.get(name).resolve(context=context, source=source)
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menus_links(context, names, source=None):
     result = []
 
     for name in names.split(','):
-        for links in Menu.get(name=name).resolve(context):
+        for links in Menu.get(name=name).resolve(context=context):
             if links:
                 result.append(links)
 
@@ -48,7 +48,7 @@ def get_source_columns(source):
             # Is iterable?
             source = source[0]
         except TypeError:
-            # It is not
+            # It is not an iterable
             pass
         except IndexError:
             # It a list and it's empty

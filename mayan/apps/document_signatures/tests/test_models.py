@@ -1,15 +1,17 @@
 from __future__ import unicode_literals
 
 import hashlib
+import logging
 import time
 
 from django.core.files import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from django_gpg.models import Key
 from django_gpg.tests.literals import TEST_KEY_DATA, TEST_KEY_PASSPHRASE
 from documents.models import DocumentType, DocumentVersion
-from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
@@ -21,14 +23,16 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentSignaturesTestCase(TestCase):
+class DocumentSignaturesTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentSignaturesTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentSignaturesTestCase, self).tearDown()
 
     def test_embedded_signature_no_key(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
@@ -247,14 +251,17 @@ class DocumentSignaturesTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class EmbeddedSignaturesTestCase(TestCase):
+class EmbeddedSignaturesTestCase(BaseTestCase):
     def setUp(self):
+        super(EmbeddedSignaturesTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+            label=TEST_DOCUMENT_TYPE_LABEL
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(EmbeddedSignaturesTestCase, self).tearDown()
 
     def test_unsigned_document_version_method(self):
         TEST_UNSIGNED_DOCUMENT_COUNT = 3
@@ -278,6 +285,9 @@ class EmbeddedSignaturesTestCase(TestCase):
         )
 
     def test_task_verify_missing_embedded_signature(self):
+        # Silence converter logging
+        logging.getLogger('converter.backends').setLevel(logging.CRITICAL)
+
         old_hooks = DocumentVersion._post_save_hooks
 
         DocumentVersion._post_save_hooks = {}
@@ -331,9 +341,6 @@ class EmbeddedSignaturesTestCase(TestCase):
         )
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
-
-        with new_version.open() as file_object:
-            document_content_hash = hashlib.sha256(file_object.read()).hexdigest()
 
         with new_version.open() as file_object:
             file_object.seek(0, 2)

@@ -1,0 +1,243 @@
+=============================
+Mayan EDMS v2.5 release notes
+=============================
+
+Released: July 07, 2017
+
+What's new
+==========
+
+OCR text download
+-----------------
+A link and view were added to download the entire OCR text of a document as a
+separate file. The link can be found under the "Actions" dropdown when the
+"OCR" tab of a document is selected.
+
+SANE document source
+--------------------
+A validation error was being raised when the resolution field of the SANE
+document source was left blank. This issue has been fixed and works as expected
+now.
+
+Mailing profiles
+----------------
+Previously, the way documents were emailed was controlled by configuration
+settings that only system administrator could change as the OS level. It is
+now possible to create mailing profiles from within the user interface. This
+allows for Mayan administrators to add mailing profiles without the
+intervention system administrators. It also provides the opportunity to create
+multiple mailing profiles. This is useful for sending documents via different
+email providers depending on things like priority of delivery, or email size
+limitations. For multi-tenant environments, this also means that each tenant
+can now send documents via email with their own respective email accounts.
+For system administrators, this means there is no longer a need to rely on a
+single email profile for the entirety of all the tenants in a deployment,
+which could be taxing email quota limits or triggering spam filters. For
+more information on the multi-tenant plugin visit the Mayan app store at:
+http://www.mayan-edms.com/store/
+
+New transformation
+------------------
+A lineart transformation was added to reduce the amount of colors in a
+document's image to just 2. This is useful to increase the OCR accuracy on
+some kind of documents whose color or layout may confuse the OCR engine
+and lower the accuracy of the text recognition.
+
+UI reorganization
+-----------------
+The main menu was been reorganization for clarity of function. The "About" menu
+has been renamed to "System" to signify that the items in this menu relate
+to system configuration topics. The "Tools" and "Setup" sub-menus, were moved
+from the "Profile" menu to the new "System" menu. The "Profile" menu has been
+renamed to "User". Additionally, the "User" menu is now part of the main menu
+instead of floating right on the layout. This change along with others
+improve the usability on small devices like tablets and smartphones.
+
+PDF compatibility updates
+-------------------------
+Support for non-compliant, "broken", and PDFs encrypted with no passwords has
+been added. Previously no effort was made to process the images for these
+files. The code for detecting the number of pages in a PDF has also been
+improved to retry several methods when failing on non-compliant PDF documents.
+
+Office documents compatibility updates
+--------------------------------------
+Improvements to the Libre Office conversion code were added, including a
+workaround for Libre Office bug #37531 (https://bugs.documentfoundation.org/show_bug.cgi?id=37531)
+which sometimes manifested when uploading multiple office documents
+sequentially.
+
+Metadata setup UI improvements
+------------------------------
+A new widget to define the document type to metadata type relationship has been
+added. The new widget provides a method to switch between required metadata
+and optional metadata for a document type. This new method is not only faster
+but does not force users to remove a metadata type before making the switch
+and thus avoid deletion of existing metadata entries. A new view was also added
+to change the document type to metadata type relation not only the document
+type view but also from the metadata type view eliminating travel between these
+two views when creating new metadata types and assigning them to document
+types.
+
+Duplicated document scanning
+----------------------------
+Support to scan and list duplicated document scanning was added in the form of
+a new document list link under the "Documents" main menu. Every time a document
+is uploaded, a document scan will be triggered to determine if the new document
+is a duplicate of an existing document. Duplicate documents will be listed
+in a new "Duplicated documents" link in the main menu. A full document list
+scan can also be triggered by using the new "Duplicated document scan" button
+in the tools menu. Finally, a new tab in the document view has been added
+called "Duplicates" that will list all duplicates of the currently
+selected document when in the document's view. Related to this feature is the
+addition of being able to search documents by their checksum. This was done by
+indexing the checksum database field and by adding the checksum as a search
+field in the advanced document search view and via the API.
+
+Login session control
+---------------------
+Support was added to control the length of time a log in session lasts. First
+from the user interface side of things a "Remember me" checkbox was added to
+the log in form that will cause the session to persist after the browser is
+closed. If this checkbox is left blank the session will be destroyed when the
+browser closes and the user will need to log in again when accessing any of the
+URLs. The second part of this feature is for administrators. The configuration
+setting AUTHENTICATION_MAXIMUM_SESSION_LENGTH was added to control the maximum
+time a logged in session will persist when users click the "Remember me"
+checkbox. The default of this setting is 30 days.
+
+Document image cache disabling
+------------------------------
+It is now possible to disable the document page image caching. The document
+image cache works on two level and hence two setting options were added.
+The first is the DOCUMENTS_DISABLE_BASE_IMAGE_CACHE option which disables the
+first layer of caching, the generation of a master image file for each document
+page. This means that subsequent request for a page's image will trigger the
+conversion of the document from its original uploaded file. The second option,
+DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE, disables just the caching of the
+transformed (rotated, resized, zoomed) images of document pages. The settings
+can be used together or separately depending on how much disk space saving is
+desired. These settings give control over the trade-off between disk space
+savings and higher CPU utilization. These settings are ideal for installations
+with a lot of documents, that want to conserve disk space, and have CPU capacity
+to spare. Multi-tenant installations can also benefit from these new settings.
+
+Document filter by workflow state
+---------------------------------
+A few versions over, a main menu item was added to list documents by their
+workflow and/or their current workflow state. Support for filtering by the
+initial workflow state has been added to this feature.
+
+Support for restoring forgotten password
+----------------------------------------
+Views and templates were added to enable the typical "Forgotten
+password" worflow using a signed token via email.
+
+Other Changes
+-------------
+- Add missing OCR migration.
+- Improve error output of the performupgrade command to debug upgrade errors
+  that could stop an upgrade (missing document files, etc).
+- Enable the django-mathfilters app added in version 2.4.
+- Do a complete pull and synchronization of the translations to fix missing
+  translations for Polish. Thanks to Wojtek Warczakowski for the report.
+- Allow null for the SANE source resolution field. Even though the field was
+  marked as allowing blank values it was failing because it is a number field
+  and number fields need to allow explicit null values when left blank.
+- Rename the mayan_task_manager app to task_manager.
+- Make the task manager translatable.
+- Add Turkish to the list of processes languages.
+- Use Toastr libary for screen messages.
+- Reduce verbosity of some debug messages in the MayanAppConfig, settings and,
+  mailing discovery.
+- Make sure lookup selection widgets also trigger the metadata update
+  checkbox on change.
+- Usability improvements on small displays.
+- Removal of the CONVERTER_LIBREOFFICE_PATH and CONVERTER_PDFTOPPM_PATH
+  settings. These setting have been consolidated into
+  CONVERTER_GRAPHICS_BACKEND_CONFIG.
+- Improve the documentation of the document creation API endpoint.
+  GitHub issue #255. Thanks to @lcerliani opening the issue.
+- Libre Office conversion improvements. Give every libreoffice instance
+  its own separate $HOME directory. Additionally give every libreoffice
+  its own UserInstallation file in the $HOME directory. Works around
+  Libre Office issue: https://bugs.documentfoundation.org/show_bug.cgi?id=37531
+  Solves or affects GitLab issues #393 #258 #198 #175
+- The trashed document deletion action is now a background task. This
+  feature results is much faster trashed document deletion and trash
+  can emptying.
+- Remove animated spinners to lower browser memory usage and increase
+  responsiveness.
+- Render a document page placeholder while the real document page
+  loads. This change avoids "jumping" effect when loading many thumbnails.
+- Increase lazy load thresholds. More thumbnails and document pages
+  will be loaded and visible by default when a view loads.
+- Improve usability and appearance on medium and small devices like
+  tablets and smartphones.
+- Do hard word break on form titles to avoid horizontal scroll on
+  small displays.
+- Python3 compatilibty improvements by removing all explicit conversion
+  using the unicode() function.
+- Unicode handling improvements.
+- Update required versions of Pillow and django-suit.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitHub issue #255 <https://github.com/mayan-edms/mayan-edms/issues/255>`_ Uploading a local file via api
+* `GitLab issue #215 <https://gitlab.com/mayan-edms/mayan-edms/issues/215>`_ Download text contents
+* `GitLab issue #286 <https://gitlab.com/mayan-edms/mayan-edms/issues/286>`_ User configurable mailer
+* `GitLab issue #337 <https://gitlab.com/mayan-edms/mayan-edms/issues/337>`_ Better way to switch Optional to Required Metadata
+* `GitLab issue #373 <https://gitlab.com/mayan-edms/mayan-edms/issues/373>`_ (feature request) Allow selecting document types for metadata
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

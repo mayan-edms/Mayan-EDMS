@@ -4,14 +4,18 @@
 
 {% load navigation_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
 
 {% block content %}
     {% if title %}
-        <h3>{{ title }}</h3>
+        <h3>{% include 'appearance/calculate_form_title.html' %}</h3>
         <hr>
     {% endif %}
 
-    {% include 'appearance/generic_list_subtemplate.html' %}
-{% endblock %}
+    {% if list_as_items %}
+        {% include 'appearance/generic_list_items_subtemplate.html' %}
+    {% else %}
+        {% include 'appearance/generic_list_subtemplate.html' %}
+    {% endif %}
+{% endblock content %}
 

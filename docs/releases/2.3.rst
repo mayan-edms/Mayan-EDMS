@@ -1,0 +1,101 @@
+=============================
+Mayan EDMS v2.3 release notes
+=============================
+
+Released: June 08, 2017
+
+What's new
+==========
+
+This is a bug-fix and minor feature release and all users are encouraged to
+upgrade.
+
+Changes
+-------------
+- Index node expression template field changed from a 128 character field to an
+  unlimited size text field to allow for complex indexing expressions.
+- When updating the metadata of a document, any input in the value form field
+  will select the adjacent checkbox.
+- Support for passing the FUSE option `allow-other` and `allow-root` was added
+  to the index mirroring management command.
+- Added support for checking for the latest released version of Mayan from the
+  About menu.
+- Added support for rebuilding specific indexes instead of only being able to
+  rebuild all index. GitLab issue #372.
+- Rewrite document indexing code to be faster and use less locking. Thanks to
+  Macrobb Simpson (@Macrobb) for the initial implementation.
+- Use a predefined file path for the file lock.
+- Catch documents with not document version when displaying their thumbnails.
+- Add custom script_prefix aware resolve function and use it for the
+  document page navigation views. Fixes an issue when Mayan is installed
+  as a sub URL app. Thanks to Gustavo Teixeira(@gsteixei) for the issue and
+  investigation.
+- Support was added to update document indexes after workflow state changes.
+- An helper was added to access a documents workflow by name. To this end
+  a new field was added to the Workflow class called `Internal name`.
+  This new field makes it much easier to get a document's workflow instance.
+  If for example a document has a workflow called `Publish` with the internal
+  name `publish_workflow`, it will be accessible in the indexing template as
+  {{ document.workflow.publish_workflow }}. The latest state of the workflow
+  can be accessed using {{ document.workflow.publish_workflow.get_current_state }}.
+- Added a new API endpoint to display a list of all the available search models.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #371 <https://gitlab.com/mayan-edms/mayan-edms/issues/371>`_ Auto select checkbox when updating metadata
+* `GitLab issue #372 <https://gitlab.com/mayan-edms/mayan-edms/issues/372>`_ (Feature request) Allow 'rebuild index' to rebuild only a selected index
+* `GitLab issue #383 <https://gitlab.com/mayan-edms/mayan-edms/issues/383>`_ Page not found when deployed to sub-uri
+* `GitLab issue #385 <https://gitlab.com/mayan-edms/mayan-edms/issues/385>`_ mountindex: how to specify FUSE mount option allow_other?
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

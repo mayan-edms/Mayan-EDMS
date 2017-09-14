@@ -1,10 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
@@ -15,7 +14,6 @@ from common.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDetailView
 )
 from common.utils import encapsulate
-from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm
@@ -32,14 +30,10 @@ class CheckoutDocumentView(SingleObjectCreateView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_checkout,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_checkout, request.user, self.document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_checkout, user=request.user,
+            obj=self.document
+        )
 
         return super(
             CheckoutDocumentView, self
@@ -77,33 +71,37 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
 
 class CheckoutListView(DocumentListView):
-    extra_context = {
-        'title': _('Documents checked out'),
-        'hide_links': True,
-        'extra_columns': (
-            {
-                'name': _('User'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
-                )
-            },
-            {
-                'name': _('Checkout time and date'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().checkout_datetime
-                )
-            },
-            {
-                'name': _('Checkout expiration'),
-                'attribute': encapsulate(
-                    lambda document: document.checkout_info().expiration_datetime
-                )
-            },
-        ),
-    }
-
     def get_document_queryset(self):
         return DocumentCheckout.objects.checked_out_documents()
+
+    def get_extra_context(self):
+        context = super(CheckoutListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Documents checked out'),
+                'extra_columns': (
+                    {
+                        'name': _('User'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
+                        )
+                    },
+                    {
+                        'name': _('Checkout time and date'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().checkout_datetime
+                        )
+                    },
+                    {
+                        'name': _('Checkout expiration'),
+                        'attribute': encapsulate(
+                            lambda document: document.checkout_info().expiration_datetime
+                        )
+                    },
+                ),
+            }
+        )
+        return context
 
 
 class CheckoutDetailView(SingleObjectDetailView):
@@ -151,24 +149,15 @@ class DocumentCheckinView(ConfirmView):
         document = self.get_object()
 
         if document.checkout_info().user == self.request.user:
-            try:
-                Permission.check_permissions(
-                    self.request.user, (permission_document_checkin,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_document_checkin, self.request.user, document
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_document_checkin,
+                user=self.request.user, obj=document
+            )
         else:
-            try:
-                Permission.check_permissions(
-                    self.request.user, (permission_document_checkin_override,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_document_checkin_override, self.request.user,
-                    document
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_document_checkin_override,
+                user=self.request.user, obj=document
+            )
 
         try:
             document.check_in(user=self.request.user)
