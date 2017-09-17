@@ -27,7 +27,7 @@ link_group_list = Link(
     view='user_management:group_list'
 )
 link_group_members = Link(
-    permissions=(permission_group_edit,), text=_('Members'),
+    permissions=(permission_group_edit,), text=_('Users'),
     view='user_management:group_members', args='object.id'
 )
 link_group_setup = Link(

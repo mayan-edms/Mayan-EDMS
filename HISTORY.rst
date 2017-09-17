@@ -1,6 +1,7 @@
 2.8 (2017-09-XX)
 ================
 - Rename the role groups link label from "Members" to "Groups".
+- Rename the group users link label from "Members" to "Users".
 
 2.7.3 (2017-09-11)
 ==================

@@ -68,7 +68,7 @@ class GroupDeleteView(SingleObjectDeleteView):
 class GroupMembersView(AssignRemoveView):
     decode_content_type = True
     left_list_title = _('Available users')
-    right_list_title = _('Members of groups')
+    right_list_title = _('Users in group')
     view_permission = permission_group_edit
 
     @staticmethod
@@ -89,7 +89,7 @@ class GroupMembersView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Members of group: %s') % self.get_object()
+            'title': _('Users of group: %s') % self.get_object()
         }
 
     def get_object(self):
