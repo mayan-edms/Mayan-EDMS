@@ -15,6 +15,9 @@
 - Rename the group user count column label from "Members" to "Users".
 - Backport support for global and object event notification.
   GitLab issue #262.
+- Remove Vagrant section of the document. Anything related to
+  Vagrant has been move into its own repository at:
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant
 
 2.7.3 (2017-09-11)
 ==================
