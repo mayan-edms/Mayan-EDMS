@@ -93,7 +93,8 @@ from .statistics import (
 )
 from .widgets import (
     DocumentThumbnailWidget, DocumentPageThumbnailWidget,
-    DocumentVersionThumbnailWidget
+    DocumentVersionThumbnailWidget, widget_document_page_number,
+    widget_document_version_page_number
 )
 
 
@@ -195,6 +196,12 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             source=Document, label=_('Type'), attribute='document_type'
         )
+        SourceColumn(
+            source=Document, label=_('Pages'),
+            func=lambda context: widget_document_page_number(
+                document=context['object']
+            )
+        )
 
         # DocumentPage
         SourceColumn(
@@ -247,8 +254,20 @@ class DocumentsApp(MayanAppConfig):
 
         # DocumentVersion
         SourceColumn(
+            source=DocumentVersion, label=_('Thumbnail'),
+            func=lambda context: document_version_thumbnail_widget.render(
+                instance=context['object']
+            )
+        )
+        SourceColumn(
             source=DocumentVersion, label=_('Time and date'),
             attribute='timestamp'
+        )
+        SourceColumn(
+            source=DocumentVersion, label=_('Pages'),
+            func=lambda context: widget_document_version_page_number(
+                document_version=context['object']
+            )
         )
         SourceColumn(
             source=DocumentVersion, label=_('MIME type'),
@@ -261,12 +280,6 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             source=DocumentVersion, label=_('Comment'),
             attribute='comment'
-        )
-        SourceColumn(
-            source=DocumentVersion, label=_('Thumbnail'),
-            func=lambda context: document_version_thumbnail_widget.render(
-                instance=context['object']
-            )
         )
 
         # DuplicatedDocument

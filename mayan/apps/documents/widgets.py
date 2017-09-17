@@ -392,3 +392,11 @@ class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):
         return super(
             InteractiveDocumentPageWidget, self
         ).render(instance=instance, *args, **kwargs)
+
+
+def widget_document_page_number(document):
+    return mark_safe(s=_('Pages: %d') % document.pages.count())
+
+
+def widget_document_version_page_number(document_version):
+    return mark_safe(s=_('Pages: %d') % document_version.pages.count())
