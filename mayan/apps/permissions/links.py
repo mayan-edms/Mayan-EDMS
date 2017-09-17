@@ -35,7 +35,7 @@ link_role_list = Link(
     text=_('Roles'), view='permissions:role_list'
 )
 link_role_members = Link(
-    permissions=(permission_role_edit,), text=_('Members'),
+    permissions=(permission_role_edit,), text=_('Groups'),
     view='permissions:role_members', args='object.id'
 )
 link_role_permissions = Link(

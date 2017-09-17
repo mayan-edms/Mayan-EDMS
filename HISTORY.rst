@@ -1,3 +1,7 @@
+2.8 (2017-09-XX)
+================
+- Rename the role groups link label from "Members" to "Groups".
+
 2.7.3 (2017-09-11)
 ==================
 - Fix task manager queue list view. Thanks to LeVon Smoker for
