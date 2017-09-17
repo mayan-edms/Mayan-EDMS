@@ -42,6 +42,7 @@ class DocumentVersionListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'hide_object': True,
             'list_as_items': True,
             'object': self.get_document(),
             'title': _('Versions of document: %s') % self.get_document(),
