@@ -13,6 +13,8 @@
 - Add method to modify a group's role membership from the group's
   view.  
 - Rename the group user count column label from "Members" to "Users".
+- Backport support for global and object event notification.
+  GitLab issue #262.
 
 2.7.3 (2017-09-11)
 ==================
