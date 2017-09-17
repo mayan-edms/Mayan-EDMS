@@ -2,6 +2,11 @@
 ================
 - Rename the role groups link label from "Members" to "Groups".
 - Rename the group users link label from "Members" to "Users".
+- Don't show full document version label in the heading of the document
+  version list view.
+- Show the number of pages of a document and of document versions in
+  the document list view and document versions list views respectively.
+- Display a document version's thumbnail before other attributes.
 
 2.7.3 (2017-09-11)
 ==================
