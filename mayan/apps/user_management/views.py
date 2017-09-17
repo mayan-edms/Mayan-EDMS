@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
@@ -15,7 +16,7 @@ from common.views import (
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 
-from .forms import PasswordForm, UserForm
+from .forms import UserForm
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -247,7 +248,7 @@ class UserListView(SingleObjectListView):
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):
-    form_class = PasswordForm
+    form_class = SetPasswordForm
     model = get_user_model()
     success_message = _('Password change request performed on %(count)d user')
     success_message_plural = _(
@@ -297,7 +298,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
                     )
                 )
             else:
-                instance.set_password(form.cleaned_data['new_password_1'])
+                instance.set_password(form.cleaned_data['new_password1'])
                 instance.save()
                 messages.success(
                     self.request, _(

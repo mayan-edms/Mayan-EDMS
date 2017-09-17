@@ -7,6 +7,9 @@
 - Show the number of pages of a document and of document versions in
   the document list view and document versions list views respectively.
 - Display a document version's thumbnail before other attributes.
+- User Django's provided form for setting an users password.
+  This change allows displaying the current password policies       
+  and validation. 
 
 2.7.3 (2017-09-11)
 ==================
