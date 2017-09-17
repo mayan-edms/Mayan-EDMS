@@ -12,6 +12,7 @@ from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
+from user_management.permissions import permission_group_edit
 
 from .classes import Permission, PermissionNamespace
 from .models import Role, StoredPermission
@@ -20,6 +21,40 @@ from .permissions import (
     permission_role_view, permission_role_create, permission_role_delete,
     permission_role_edit
 )
+
+
+class GroupRoleMembersView(AssignRemoveView):
+    grouped = False
+    left_list_title = _('Available roles')
+    right_list_title = _('Group roles')
+    view_permission = permission_group_edit
+
+    def add(self, item):
+        role = get_object_or_404(Role, pk=item)
+        self.get_object().roles.add(role)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Roles of group: %s') % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(Group, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return [
+            (force_text(role.pk), role.label) for role in set(Role.objects.all()) - set(self.get_object().roles.all())
+        ]
+
+    def right_list(self):
+        return [
+            (force_text(role.pk), role.label) for role in self.get_object().roles.all()
+        ]
+
+    def remove(self, item):
+        role = get_object_or_404(Role, pk=item)
+        self.get_object().roles.remove(role)
 
 
 class RoleCreateView(SingleObjectCreateView):

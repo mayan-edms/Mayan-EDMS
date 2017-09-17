@@ -92,8 +92,11 @@ class UserManagementApp(MayanAppConfig):
             sources=('user_management:user_list',)
         )
         menu_object.bind_links(
-            links=(link_group_edit, link_group_members, link_group_delete),
+            links=(link_group_edit, link_group_members,),
             sources=(Group,)
+        )
+        menu_object.bind_links(
+            links=(link_group_delete,), position=99, sources=(Group,)
         )
         menu_object.bind_links(
             links=(
@@ -104,9 +107,8 @@ class UserManagementApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_group_list, link_group_add), sources=(
                 'user_management:group_multiple_delete',
-                'user_management:group_delete', 'user_management:group_edit',
                 'user_management:group_list', 'user_management:group_add',
-                'user_management:group_members'
+                Group
             )
         )
         menu_secondary.bind_links(

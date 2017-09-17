@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
+from user_management.permissions import permission_group_edit
 
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
@@ -10,6 +11,10 @@ from .permissions import (
     permission_role_view
 )
 
+link_group_members = Link(
+    permissions=(permission_group_edit,), text=_('Roles'),
+    view='permissions:group_members', args='object.id'
+)
 link_permission_grant = Link(
     permissions=(permission_permission_grant,), text=_('Grant'),
     view='permissions:permission_multiple_grant'

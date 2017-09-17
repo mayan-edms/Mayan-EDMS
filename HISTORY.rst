@@ -10,6 +10,8 @@
 - User Django's provided form for setting an users password.
   This change allows displaying the current password policies       
   and validation. 
+- Add method to modify a group's role membership from the group's
+  view.  
 
 2.7.3 (2017-09-11)
 ==================
