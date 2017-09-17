@@ -302,7 +302,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
                 instance.save()
                 messages.success(
                     self.request, _(
-                        'Successfull password reset for user: %s.'
+                        'Successful password reset for user: %s.'
                     ) % instance
                 )
         except Exception as exception:
