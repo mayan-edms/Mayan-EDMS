@@ -27,17 +27,28 @@ class UserManagementViewTestCase(GenericViewTestCase):
         super(UserManagementViewTestCase, self).setUp()
         self.login_user()
 
-    def _set_password(self, password):
+    def _request_set_password(self, password):
         return self.post(
             'user_management:user_set_password', args=(self.user.pk,), data={
-                'new_password_1': password, 'new_password_2': password
+                'new_password1': password, 'new_password2': password
             }
+        )
+
+    def _request_multiple_user_set_password(self, password):
+        return self.post(
+            'user_management:user_multiple_set_password', data={
+                'id_list': self.user.pk,
+                'new_password1': password,
+                'new_password2': password
+            }, follow=True
         )
 
     def test_user_set_password_view_no_permissions(self):
         self.grant_permission(permission=permission_user_view)
 
-        response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
+        response = self._request_set_password(
+            password=TEST_USER_PASSWORD_EDITED
+        )
 
         self.assertEqual(response.status_code, 403)
 
@@ -56,7 +67,9 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.grant_permission(permission=permission_user_edit)
         self.grant_permission(permission=permission_user_view)
 
-        response = self._set_password(password=TEST_USER_PASSWORD_EDITED)
+        response = self._request_set_password(
+            password=TEST_USER_PASSWORD_EDITED
+        )
 
         self.assertEqual(response.status_code, 302)
 
@@ -68,19 +81,10 @@ class UserManagementViewTestCase(GenericViewTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def _multiple_user_set_password(self, password):
-        return self.post(
-            'user_management:user_multiple_set_password', data={
-                'id_list': self.user.pk,
-                'new_password_1': password,
-                'new_password_2': password
-            }, follow=True
-        )
-
     def test_user_multiple_set_password_view_no_permissions(self):
         self.grant_permission(permission=permission_user_view)
 
-        response = self._multiple_user_set_password(
+        response = self._request_multiple_user_set_password(
             password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -94,14 +98,13 @@ class UserManagementViewTestCase(GenericViewTestCase):
             )
 
         response = self.get('common:current_user_details')
-
         self.assertEqual(response.status_code, 302)
 
     def test_user_multiple_set_password_view_with_permissions(self):
         self.grant_permission(permission=permission_user_edit)
         self.grant_permission(permission=permission_user_view)
 
-        response = self._multiple_user_set_password(
+        response = self._request_multiple_user_set_password(
             password=TEST_USER_PASSWORD_EDITED
         )
 
