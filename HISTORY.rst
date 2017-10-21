@@ -19,6 +19,7 @@
   Vagrant has been move into its own repository at:
   https://gitlab.com/mayan-edms/mayan-edms-vagrant
 - Add view to show list of events performed by an user.
+- Allow filtering an event list by clicking on the user column.
 
 2.7.3 (2017-09-11)
 ==================
