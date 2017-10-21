@@ -18,6 +18,7 @@
 - Remove Vagrant section of the document. Anything related to
   Vagrant has been move into its own repository at:
   https://gitlab.com/mayan-edms/mayan-edms-vagrant
+- Add view to show list of events performed by an user.
 
 2.7.3 (2017-09-11)
 ==================

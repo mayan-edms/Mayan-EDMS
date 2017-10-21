@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from common import (
@@ -14,7 +15,7 @@ from rest_api.classes import APIEndPoint
 from .links import (
     link_events_list, link_event_types_subscriptions_list,
     link_notification_mark_read, link_notification_mark_read_all,
-    link_user_notifications_list,
+    link_user_events, link_user_notifications_list,
 )
 from .licenses import *  # NOQA
 from .widgets import event_object_link, event_type_link
@@ -38,6 +39,7 @@ class EventsApp(MayanAppConfig):
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
+        User = get_user_model()
 
         APIEndPoint(app=self, version_string='1')
 
@@ -93,6 +95,9 @@ class EventsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_notification_mark_read,), sources=(Notification,)
+        )
+        menu_object.bind_links(
+            links=(link_user_events,), sources=(User,)
         )
         menu_secondary.bind_links(
             links=(link_notification_mark_read_all,),

@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -238,6 +239,33 @@ class ObjectEventTypeSubscriptionListView(FormView):
 
     def get_queryset(self):
         return ModelEventType.get_for_instance(instance=self.get_object())
+
+
+class UserEventListView(SingleObjectListView):
+    view_permission = permission_events_view
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Target'),
+                    'attribute': encapsulate(
+                        lambda entry: event_object_link(entry)
+                    )
+                },
+            ),
+            'hide_object': True,
+            'object': self.get_user(),
+            'title': _(
+                'Events for user: %s'
+            ) % self.get_user(),
+        }
+
+    def get_object_list(self):
+        return Action.objects.actor(obj=self.get_user())
+
+    def get_user(self):
+        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
 
 
 class VerbEventListView(SingleObjectListView):

@@ -63,6 +63,10 @@ link_object_event_types_user_subcriptions_list_with_icon = Link(
     permissions=(permission_events_view,), text=_('Subscriptions'),
     view='events:object_event_types_user_subcriptions_list',
 )
+link_user_events = Link(
+    args='resolved_object.pk', text=_('User events'),
+    view='events:user_events'
+)
 link_user_notifications_list = Link(
     icon='fa fa-bell', text=get_notification_count,
     view='events:user_notifications_list'
