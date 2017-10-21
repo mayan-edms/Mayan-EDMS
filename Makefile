@@ -338,3 +338,9 @@ docker_service_postgres_off:
 
 safety_check:
 	safety check
+
+
+# Other
+find_gitignores:
+	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
+	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
