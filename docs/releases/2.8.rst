@@ -28,7 +28,6 @@ What's new
 - Add view to show list of events performed by an user.
 - Allow filtering an event list by clicking on the user column.
 - Revise and improve permission requirements for the documents app API.
-
   - Downloading a document version now requires the document download permission instead of just the document view permission.
   - Creating a new document no longer works by having the document create permission in a global manner. It is now possible
     to create a document via the API by having the document permission for a specific document type.

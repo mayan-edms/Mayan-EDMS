@@ -66,6 +66,13 @@ class DocumentTypeAPITestCase(BaseAPITestCase):
             ), data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
+    def test_document_type_edit_via_patch_no_permission(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+        response = self._request_document_type_patch()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_document_type_edit_via_patch_with_access(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
@@ -73,17 +80,13 @@ class DocumentTypeAPITestCase(BaseAPITestCase):
         self.grant_access(
             permission=permission_document_type_edit, obj=self.document_type
         )
+        response = self._request_document_type_put()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
         self.document_type.refresh_from_db()
         self.assertEqual(
             self.document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
         )
-
-    def test_document_type_edit_via_patch_no_permission(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-        response = self._request_document_type_patch()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def _request_document_type_put(self):
         return self.put(
@@ -276,6 +279,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
         response = self._request_document_version_revert()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
         self.assertEqual(self.document.versions.count(), 1)
         self.assertEqual(
             self.document.versions.first(), self.document.latest_version
