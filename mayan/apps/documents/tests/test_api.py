@@ -184,6 +184,7 @@ class DocumentAPITestCase(BaseAPITestCase):
         )
         response = self._request_document_upload()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
