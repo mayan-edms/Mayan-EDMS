@@ -14,10 +14,8 @@ from .serializers import KeySerializer
 
 class APIKeyListView(generics.ListCreateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {
-        'GET': (permission_key_view,),
-        'POST': (permission_key_upload,)
-    }
+    mayan_object_permissions = {'GET': (permission_key_view,)}
+    mayan_view_permissions = {'POST': (permission_key_upload,)}
     permission_classes = (MayanPermission,)
     queryset = Key.objects.all()
     serializer_class = KeySerializer
