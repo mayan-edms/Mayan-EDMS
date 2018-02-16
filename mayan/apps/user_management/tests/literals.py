@@ -11,6 +11,7 @@ TEST_ADMIN_PASSWORD = 'test admin password'
 TEST_ADMIN_USERNAME = 'test_admin'
 
 TEST_GROUP_NAME = 'test group'
+TEST_GROUP_2_NAME = 'test group 2'
 TEST_GROUP_NAME_EDITED = 'test group edited'
 TEST_USER_EMAIL = 'user@example.com'
 TEST_USER_PASSWORD = 'test user password'
