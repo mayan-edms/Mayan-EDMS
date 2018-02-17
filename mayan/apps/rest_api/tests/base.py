@@ -57,6 +57,7 @@ class BaseAPITestCase(UserMixin, APITestCase):
 
         self.assertTrue(logged_in)
         self.assertTrue(user.is_authenticated)
+        return user.is_authenticated
 
     def login_user(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
