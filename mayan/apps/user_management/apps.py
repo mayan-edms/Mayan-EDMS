@@ -4,6 +4,7 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
+from acls import ModelPermission
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
 from common.widgets import two_state_template
@@ -18,6 +19,11 @@ from .links import (
     link_user_edit, link_user_groups, link_user_list,
     link_user_multiple_delete, link_user_multiple_set_password,
     link_user_set_password, link_user_setup
+)
+from .permissions import (
+    permission_group_create, permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_create, permission_user_delete,
+    permission_user_edit, permission_user_view
 )
 from .search import *  # NOQA
 
@@ -63,7 +69,18 @@ class UserManagementApp(MayanAppConfig):
             description=_('All the users.'), name='users',
             value=get_users
         )
-
+        ModelPermission.register(
+            model=Group, permissions=(
+                permission_group_create, permission_group_delete,
+                permission_group_edit, permission_group_view,
+            )
+        )
+        ModelPermission.register(
+            model=User, permissions=(
+                permission_user_create, permission_user_delete,
+                permission_user_edit, permission_user_view
+            )
+        )
         SourceColumn(
             source=Group, label=_('Users'), attribute='user_set.count'
         )
