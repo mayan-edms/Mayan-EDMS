@@ -217,10 +217,21 @@ class APIUserGroupList(generics.ListCreateAPIView):
         )
 
     def get_user(self):
-        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+        if self.request.method == 'GET':
+            permission = permission_user_view
+        else:
+            permission = permission_user_edit
+
+        user = get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=(permission,), user=self.request.user,
+            obj=user
+        )
+        return user
 
     def perform_create(self, serializer):
-        serializer.save(user=self.get_user())
+        serializer.save(user=self.get_user(), _user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         """

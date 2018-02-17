@@ -3,10 +3,15 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+
+from acls.models import AccessControlList
+
+from .permissions import permission_group_view
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
@@ -37,7 +42,15 @@ class UserGroupListSerializer(serializers.Serializer):
             pk_list = validated_data['group_pk_list'].split(',')
 
             for group in Group.objects.filter(pk__in=pk_list):
-                validated_data['user'].groups.add(group)
+                try:
+                    AccessControlList.objects.check_access(
+                        permissions=(permission_group_view,),
+                        user=self.context['request'].user, obj=group
+                    )
+                except PermissionDenied:
+                    pass
+                else:
+                    validated_data['user'].groups.add(group)
         except Exception as exception:
             raise ValidationError(exception)
 
