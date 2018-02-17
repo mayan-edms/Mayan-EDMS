@@ -25,6 +25,7 @@ repository for electronic documents.
     Licensing <topics/license>
     FAQ <topics/faq>
     Contact <topics/contact>
+    MERCs <mercs/index>
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/
