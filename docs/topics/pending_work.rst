@@ -28,6 +28,8 @@ API
   corresponding group access.
 - User group list API get & post views: Should adding a group to an user
   via the API return 201 or 200. Currently returns 201.
+- Consistent API return code for delete views without access. Some views
+  return 403 other return 404.
 
 Caching
 ~~~~~~~
