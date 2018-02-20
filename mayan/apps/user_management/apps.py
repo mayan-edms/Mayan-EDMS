@@ -71,14 +71,14 @@ class UserManagementApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=Group, permissions=(
-                permission_group_create, permission_group_delete,
-                permission_group_edit, permission_group_view,
+                permission_group_delete, permission_group_edit,
+                permission_group_view,
             )
         )
         ModelPermission.register(
             model=User, permissions=(
-                permission_user_create, permission_user_delete,
-                permission_user_edit, permission_user_view
+                permission_user_delete, permission_user_edit,
+                permission_user_view
             )
         )
         SourceColumn(
