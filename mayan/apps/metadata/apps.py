@@ -38,8 +38,11 @@ from .links import (
 )
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
-    permission_metadata_document_remove, permission_metadata_document_view
+    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_metadata_type_delete, permission_metadata_type_edit,
+    permission_metadata_type_view
 )
+
 from .queues import *  # NOQA
 from .search import metadata_type_search  # NOQA
 from .widgets import get_metadata_string
@@ -139,6 +142,13 @@ class MetadataApp(MayanAppConfig):
                 permission_metadata_document_edit,
                 permission_metadata_document_remove,
                 permission_metadata_document_view,
+            )
+        )
+        ModelPermission.register(
+            model=MetadataType, permissions=(
+                permission_metadata_type_delete,
+                permission_metadata_type_edit,
+                permission_metadata_type_view
             )
         )
 
