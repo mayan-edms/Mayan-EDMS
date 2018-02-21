@@ -76,11 +76,35 @@ Other
 - Automatically capture license information from installed Python
   packages.
 
+Permissions
+~~~~~~~~~~~
+- Permission should be reciprocal. Example: To be able to add a tag to a
+  document, the user must hold the tag add permission for the document
+  and for the tag to be added. To be able to enable a metadata type to a
+  document type, the user must hold the metadata add permissions for the
+  metadata type and for the document type.
+- Edit type permissions should only grant the ability to edit the properties
+  of an object. To modify its relationship with other objects a reciprocal
+  permission check should be instead.
+
 Sources
 ~~~~~~~
 - Add ACLs support to sources.
 - Provide error message/feedback when scanning from a remote scanner fails.
 - Redirect to the same source when scanning from a remote scanner finishes.
+- Require a permission for document types to avoid a user that has the workflow
+  creation permission to attach a workflow to a document type they don't
+  control.
+- Research making APIWorkflowDocumentTypeList a subclass of documents.api_views.APIDocumentTypeList
+- A POST request to APIWorkflowDocumentTypeList should require some permission
+  on the document type part to avoid adding non controlled document types
+  to a new workflow.
+- To transition a workflow, the transition permission is only needed for the
+  workflow. Make it necesary to have the same permission for the document
+  of document type.
+- To view the transition log, the workflow view permission is only needed for the
+  document. Make it necesary to have the same permission for the workflow or
+  for the transition and the states.
 
 Testing
 ~~~~~~~

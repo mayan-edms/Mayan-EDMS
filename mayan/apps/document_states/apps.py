@@ -107,6 +107,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelPermission.register(
+            model=Document, permissions=(permission_workflow_view,)
+        )
+        ModelPermission.register(
             model=Workflow, permissions=(
                 permission_error_log_view, permission_workflow_delete,
                 permission_workflow_edit, permission_workflow_transition,
