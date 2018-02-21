@@ -25,6 +25,10 @@ from .serializers import (
 
 
 class APIDocumentTypeWorkflowListView(generics.ListAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {
+        'GET': (permission_workflow_view,),
+    }
     serializer_class = WorkflowSerializer
 
     def get(self, *args, **kwargs):
@@ -39,7 +43,7 @@ class APIDocumentTypeWorkflowListView(generics.ListAPIView):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=self.request.user,
+            permissions=permission_document_type_view, user=self.request.user,
             obj=document_type
         )
 
@@ -64,9 +68,7 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         """
-        This view returns a list of document types that belong to a workflow
-        RESEARCH: Could the documents.api_views.APIDocumentTypeList class
-        be subclasses for this?
+        This view returns a list of document types that belong to a workflow.
         """
 
         return self.get_workflow().document_types.all()
@@ -192,10 +194,8 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
 
 class APIWorkflowListView(generics.ListCreateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {
-        'GET': (permission_workflow_view,),
-        'POST': (permission_workflow_create,)
-    }
+    mayan_object_permissions = {'GET': (permission_workflow_view,)}
+    mayan_view_permissions = {'POST': (permission_workflow_create,)}
     permission_classes = (MayanPermission,)
     queryset = Workflow.objects.all()
 
@@ -496,7 +496,11 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class APIWorkflowInstanceListView(generics.ListAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
     serializer_class = WorkflowInstanceSerializer
+    mayan_object_permissions = {
+        'GET': (permission_workflow_view,),
+    }
 
     def get(self, *args, **kwargs):
         """
@@ -519,7 +523,11 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
 
 
 class APIWorkflowInstanceView(generics.RetrieveAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'workflow_pk'
+    mayan_object_permissions = {
+        'GET': (permission_workflow_view,),
+    }
     serializer_class = WorkflowInstanceSerializer
 
     def get(self, *args, **kwargs):
