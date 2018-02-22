@@ -108,6 +108,20 @@ UI
 
 Workflows
 ~~~~~~~~~
-- Workflow trigger filters. Example: {{ document.document_type.name = 'invoice' }} or same
-  UI as the smart links app. Will allow restricting the firing of workflow
+- Workflow trigger filters. Example: {{ document.document_type.name = 'invoice' }}
+  or same UI as the smart links app. Will allow restricting the firing of workflow
   actions by an user defined filter criteria.
+- Require a permission for document types to avoid a user that has the workflow
+  creation permission to attach a workflow to a document type they don't
+  control.
+- Research making APIWorkflowDocumentTypeList a subclass of
+  documents.api_views.APIDocumentTypeList
+- A POST request to APIWorkflowDocumentTypeList should require some permission
+  on the document type part to avoid adding non controlled document types
+  to a new workflow.
+- To transition a workflow, the transition permission is only needed for the
+  workflow. Make it necesary to have the same permission for the document
+  of document type.
+- To view the transition log, the workflow view permission is only needed for
+  the document. Make it necesary to have the same permission for the workflow or
+  for the transition and the states.

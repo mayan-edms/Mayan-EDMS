@@ -26,6 +26,18 @@
 - Make the multi object form perform an auto submit when the value is changed.
 - Improved styling and interaction of the multiple object action form.
 - Add checkbox to allow selecting all item in the item list view.
+- Revise and improve permission requirements for the documents app API.
+- Downloading a document version now requires the document download permission
+  instead of just the document view permission.
+- Creating a new document no longer works by having the document create
+  permission in a global manner. It is now possible to create a document via
+  the API by having the document permission for a specific document type.
+- Viewing the version list of a document now required the document version
+  view permission instead of the document view permission.
+- Not having the document version view permission for a document will not
+  return a 403 error. Instead a blank response will be returned.
+- Reverting a document via API will new require the document version revert
+  permission instead of the document edit permission.
 
 2.7.3 (2017-09-11)
 ==================

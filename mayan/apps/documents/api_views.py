@@ -24,7 +24,8 @@ from .permissions import (
     permission_document_restore, permission_document_trash,
     permission_document_view, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_version_view
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_version_view
 )
 from .runtime import cache_storage_backend
 from .serializers import (
@@ -136,7 +137,6 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
 class APIDocumentListView(generics.ListCreateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
-    mayan_view_permissions = {'POST': (permission_document_create,)}
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
@@ -153,6 +153,10 @@ class APIDocumentListView(generics.ListCreateAPIView):
             return NewDocumentSerializer
 
     def perform_create(self, serializer):
+        AccessControlList.objects.check_access(
+            permissions=(permission_document_create,), user=self.request.user,
+            obj=serializer.validated_data['document_type']
+        )
         serializer.save(_user=self.request.user)
 
     def post(self, *args, **kwargs):
@@ -209,7 +213,8 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permission_document_view, self.request.user, document
+            permissions=(permission_document_download,), user=self.request.user,
+            obj=document
         )
         return document
 
@@ -562,11 +567,11 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
     Return a list of the selected document's versions.
     """
 
+    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_document_version_view,),
     }
     mayan_permission_attribute_check = 'document'
-    mayan_view_permissions = {'POST': (permission_document_new_version,)}
     permission_classes = (MayanPermission,)
 
     def get_serializer_class(self):
@@ -579,10 +584,13 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
         return get_object_or_404(Document, pk=self.kwargs['pk']).versions.all()
 
     def perform_create(self, serializer):
-        serializer.save(
-            document=get_object_or_404(Document, pk=self.kwargs['pk']),
-            _user=self.request.user
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=(permission_document_new_version,),
+            user=self.request.user, obj=document
         )
+        serializer.save(document=document, _user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         """
@@ -618,6 +626,8 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
     def get_document(self):
         if self.request.method == 'GET':
             permission_required = permission_document_view
+        elif self.request.method == 'DELETE':
+            permission_required = permission_document_version_revert
         else:
             permission_required = permission_document_edit
 
