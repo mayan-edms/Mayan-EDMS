@@ -24,6 +24,14 @@ App.tagResultTemplate = function (tag) {
   return $tag;
 }
 
+App.prototype.setupAutoSubmit = function () {
+    $('.select-auto-submit').change(function () {
+        if ($(this).val()) {
+            this.form.submit();
+        }
+    });
+}
+
 App.prototype.setupScrollView = function () {
     $('.scrollable').scrollview();
 }
@@ -33,6 +41,14 @@ App.prototype.setupTableSelector = function () {
         var table = $(e.target).closest('table');
         var checked = $(e.target).prop('checked');
         $('td input:checkbox', table).prop('checked', checked);
+    });
+}
+
+App.prototype.setupItemsSelector = function () {
+    $('.check-all').click(function(e) {
+        var parent = $(e.target).closest('.well');
+        var checked = $(e.target).prop('checked');
+        $('.panel-item input:checkbox', parent).prop('checked', checked);
     });
 }
 
@@ -227,7 +243,11 @@ jQuery(document).ready(function() {
 
     app.setupScrollView();
 
+    app.setupItemsSelector();
+
     app.setupTableSelector();
 
     app.setupWindowPopUp();
+
+    app.setupAutoSubmit();
 });

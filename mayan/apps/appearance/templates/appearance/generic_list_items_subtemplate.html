@@ -30,25 +30,24 @@
             {% endif %}
         </h4>
         <hr>
-
         <div class="well center-block">
-
-            <form action="{% url 'common:multi_object_action_view' %}" class="pure-form" method="get">
-                {% if object_list %}
-                    {% if not hide_multi_item_actions %}
-                        {% get_multi_item_links_form object_list %}
-                    {% endif %}
-                    {% if multi_item_actions %}
-                        <fieldset>
-                            {{ multi_item_form }}
-                                &nbsp;<button class="btn btn-primary btn-xs" type="submit" name="{{ form.prefix }}-submit">
-                                    {% trans 'Submit' %}
-                                </button>
-                        </fieldset>
-                    {% endif %}
-                {% endif %}
-
-                <hr/>
+            <div class="clearfix">
+                <div class="pull-right">
+                    <form action="{% url 'common:multi_object_action_view' %}" class="pure-form" method="get">
+                        {% if object_list %}
+                            {% if not hide_multi_item_actions %}
+                                {% get_multi_item_links_form object_list %}
+                            {% endif %}
+                            {% if multi_item_actions %}
+                                <fieldset>
+                                    <input class="check-all" type="checkbox"/>&nbsp;
+                                    {{ multi_item_form }}
+                                </fieldset>
+                            {% endif %}
+                        {% endif %}
+                </div>
+            </div>
+                <hr style="border-bottom: 1px solid lightgrey;">
                 {% if scrollable_content %}
                     <div style="border: 1px solid; height: {{ scrollable_content_height }}; overflow: auto;">
                 {% endif %}
