@@ -90,7 +90,7 @@ into the main source code repository, the status will be changed to
 "Final".
 
 MERC format
-==========
+===========
 
 MERCs need to follow a common format and outline; this section describes
 that format.
@@ -147,7 +147,7 @@ Each MERC should have the following parts:
 
 
 MERC Metadata
-------------
+-------------
 
 Each MERC must begin with some metadata given as an rST
 `field list <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#field-lists>`_.

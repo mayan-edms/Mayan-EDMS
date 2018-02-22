@@ -18,6 +18,7 @@ Draft
    :maxdepth: 1
 
    0001-merc-process
+   test-writing
 
 
 Type

@@ -1,24 +1,9 @@
-===========
-OCR backend
-===========
-
-Test writing
-~~~~~~~~~~~~
-
-All view and API tests must test each view in at least two ways:
-
-- Object creations views must be tested with and without permissions.
-- Object detail, list and delete views must be tested with and without
-  object access.
-
-All view and API tests must assert the status code of the response even
-when the expected status if HTTP 200.
+============
+Pending work
+============
 
 
-Pending tasks
--------------
-
-These are task that need to be completed but are missing a dependency or
+These are tasks that need to be completed but are missing a dependency or
 a design decision. As more information is added to each, they should be
 converted into a MERC.
 
