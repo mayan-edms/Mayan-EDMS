@@ -8,10 +8,10 @@
   the document list view and document versions list views respectively.
 - Display a document version's thumbnail before other attributes.
 - User Django's provided form for setting an users password.
-  This change allows displaying the current password policies       
-  and validation. 
+  This change allows displaying the current password policies
+  and validation.
 - Add method to modify a group's role membership from the group's
-  view.  
+  view.
 - Rename the group user count column label from "Members" to "Users".
 - Backport support for global and object event notification.
   GitLab issue #262.
@@ -24,7 +24,8 @@
   view when there are no metadata types exist.
 - Require the document view permission to view trashed documents.
 - Make the multi object form perform an auto submit when the value is changed.
-- Add multiple object select checkbox that was missing in the list item subtemplate.
+- Improved styling and interaction of the multiple object action form.
+- Add checkbox to allow selecting all item in the item list view.
 
 2.7.3 (2017-09-11)
 ==================
