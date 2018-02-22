@@ -20,6 +20,8 @@
   https://gitlab.com/mayan-edms/mayan-edms-vagrant
 - Add view to show list of events performed by an user.
 - Allow filtering an event list by clicking on the user column.
+- Display a proper message in the document type metadata type relationship
+  view when there are no metadata types exist.
 
 2.7.3 (2017-09-11)
 ==================
