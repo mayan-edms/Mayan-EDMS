@@ -57,7 +57,8 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
     """
 
     mayan_object_permissions = {
-        'DELETE': (permission_document_delete,)
+        'DELETE': (permission_document_delete,),
+        'GET': (permission_document_view,)
     }
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
@@ -69,6 +70,13 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
         """
 
         return super(APIDeletedDocumentView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """
+        Retreive the details of the trashed document.
+        """
+
+        return super(APIDeletedDocumentView, self).get(*args, **kwargs)
 
 
 class APIDeletedDocumentRestoreView(generics.GenericAPIView):
