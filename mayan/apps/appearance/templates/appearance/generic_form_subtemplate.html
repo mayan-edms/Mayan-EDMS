@@ -52,11 +52,16 @@
                                     </th>
                                 {% endfor %}
                             </tr>
-                    {% endif %}
+                {% endif %}
 
-                    {% for form in formset.forms %}
-                        {% include 'appearance/generic_form_instance.html' %}
+                {% for form in formset.forms %}
+                    {% include 'appearance/generic_form_instance.html' %}
+                {% empty %}
+                    <tr><td class="text-center" colspan=99>
+                        {% if form_empty_label %}{{ form_empty_label }}{% else %}{% trans 'No results' %}{% endif %}
+                    </td></tr>
                 {% endfor %}
+
                 {% if form_display_mode_table %}
                         </tbody>
                     </table>
