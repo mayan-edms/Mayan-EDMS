@@ -592,6 +592,9 @@ class SetupDocumentTypeMetadataTypes(FormView):
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
+            'form_empty_label': _(
+                'No metadata types available. Add at least one.'
+            ),
             'object': self.get_object(),
             'title': _(
                 'Metadata types for document type: %s'
