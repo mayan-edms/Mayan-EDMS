@@ -212,7 +212,7 @@ class TagAPITestCase(BaseAPITestCase):
         self.grant_access(permission=permission_tag_attach, obj=self.tag)
         response = self._request_document_attach_tag()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertFalse(self.tag in self.document.tags.all())
+        self.assertTrue(self.tag in self.document.tags.all())
 
     def test_document_attach_tag_view_with_access(self):
         self.tag = self._create_tag()
