@@ -47,7 +47,9 @@
                         {% endif %}
                 </div>
             </div>
-                <hr style="border-bottom: 1px solid lightgrey;">
+                {% if object_list %}
+                    <hr style="border-bottom: 1px solid lightgrey;">
+                {% endif %}
                 {% if scrollable_content %}
                     <div style="border: 1px solid; height: {{ scrollable_content_height }}; overflow: auto;">
                 {% endif %}
