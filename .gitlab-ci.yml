@@ -1,7 +1,4 @@
 image: ubuntu:16.04
-services:
-  - mysql:latest
-  - postgres
 before_script:
   - apt-get -qq update
   - apt-get install -qq locales
@@ -16,6 +13,8 @@ variables:
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   MYSQL_DATABASE: "mayan_edms"
 test:mysql:
+  services:
+  - mysql:latest
   script:
   - apt-get install -qq libmysqlclient-dev
   - pip install -r requirements/testing.txt
@@ -27,6 +26,8 @@ test:mysql:
   tags:
     - mysql
 test:postgres:
+  services:
+  - postgres
   script:
   - apt-get install -qq libpq-dev
   - pip install -r requirements/testing.txt
