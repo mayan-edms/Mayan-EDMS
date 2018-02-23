@@ -116,9 +116,13 @@ class EventType(object):
                             except PermissionDenied:
                                 pass
                             else:
-                                notification = Notification.objects.create(action=result, user=user)
+                                notification, created = Notification.objects.get_or_create(
+                                    action=result, user=user
+                                )
                         else:
-                            notification = Notification.objects.create(action=result, user=user)
+                            notification, created = Notification.objects.get_or_create(
+                                action=result, user=user
+                            )
 
                     if result.target:
                         content_type = ContentType.objects.get_for_model(model=result.target)
@@ -138,7 +142,10 @@ class EventType(object):
                             except PermissionDenied:
                                 pass
                             else:
-                                notification = Notification.objects.create(action=result, user=user)
+                                notification, created = Notification.objects.get_or_create(
+                                    action=result, user=user
+                                )
+
                     if not notification and result.action_object:
                         content_type = ContentType.objects.get_for_model(model=result.action_object)
 
@@ -157,7 +164,10 @@ class EventType(object):
                             except PermissionDenied:
                                 pass
                             else:
-                                notification = Notification.objects.create(action=result, user=user)
+                                notification, created = Notification.objects.get_or_create(
+                                    action=result, user=user
+                                )
+
 
     def get_stored_event_type(self):
         if not self.stored_event_type:
