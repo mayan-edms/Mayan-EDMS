@@ -5,7 +5,7 @@ MERC XX: Unify Roles and Groups
 :MERC: XX
 :Author: Michael Price
 :Status: Draft
-:Type: Process
+:Type: Feature
 :Created: 2018-02-27
 :Last-Modified: 2018-02-27
 
