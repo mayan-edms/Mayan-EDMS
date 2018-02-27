@@ -1,4 +1,4 @@
-2.8 (2017-09-XX)
+2.8 (2018-02-XX)
 ================
 - Rename the role groups link label from "Members" to "Groups".
 - Rename the group users link label from "Members" to "Users".
