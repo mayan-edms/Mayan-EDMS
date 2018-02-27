@@ -215,10 +215,7 @@ release_via_docker_ubuntu:
 	make release"
 
 release_test_via_docker_alpine:
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "\
-	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
-	locale-gen en_US.UTF-8 && \
-	update-locale LANG=en_US.UTF-8 && \
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine:3.7 /bin/busybox sh -c "\
 	export LC_ALL=en_US.UTF-8 && \
 	cp -r /host_source/* . && \
 	apk update && \
@@ -228,10 +225,7 @@ release_test_via_docker_alpine:
 	make test_release"
 
 release_via_docker_alpine:
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "\
-	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
-	locale-gen en_US.UTF-8 && \
-	update-locale LANG=en_US.UTF-8 && \
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine:3.7 /bin/busybox sh -c "\
 	export LC_ALL=en_US.UTF-8 && \
 	cp -r /host_source/* . && \
 	apk update && \
