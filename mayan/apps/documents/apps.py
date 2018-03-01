@@ -198,6 +198,9 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentPage, related='document',
         )
         ModelPermission.register_inheritance(
+            model=DocumentPageResult, related='document_version__document',
+        )
+        ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
         )
         ModelPermission.register_inheritance(
