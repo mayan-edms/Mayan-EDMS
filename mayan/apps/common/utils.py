@@ -149,6 +149,15 @@ def return_attrib(obj, attrib, arguments=None):
             return force_text(exception)
 
 
+def return_related(instance, attribute):
+    """
+    This functions works in a similar method to return_attrib but is
+    meant for related models. Support multiple levels of relationship
+    using double underscore.
+    """
+    return reduce_function(getattr, attribute.split('__'), instance)
+
+
 def urlquote(link=None, get=None):
     """
     This method does both: urlquote() and urlencode()

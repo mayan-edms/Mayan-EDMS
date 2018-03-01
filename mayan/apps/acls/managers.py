@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from common.utils import return_attrib
+from common.utils import return_attrib, return_related
 from permissions import Permission
 from permissions.models import StoredPermission
 
@@ -115,7 +115,7 @@ class AccessControlListManager(models.Manager):
             else:
                 instance = queryset.first()
                 if instance:
-                    parent_object = getattr(instance, parent_accessor)
+                    parent_object = return_related(instance, parent_accessor)
 
                     try:
                         # Try to see if parent_object is a function
