@@ -20,7 +20,7 @@ from .literals import TEST_SIGNATURE_FILE_PATH, TEST_SIGNED_DOCUMENT_PATH
 
 class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
     def setUp(self):
-        super(DocumentSignaturesTestCase, self).setUp()
+        super(DocumentSignatureLinksTestCase, self).setUp()
         self.login_user()
 
     def test_document_version_signature_detail_link_no_permission(self):
