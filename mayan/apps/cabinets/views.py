@@ -15,6 +15,7 @@ from common.views import (
 )
 from documents.permissions import permission_document_view
 from documents.models import Document
+from documents.views import DocumentListView
 
 from .forms import CabinetListForm
 from .models import Cabinet
@@ -83,7 +84,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
         }
 
 
-class CabinetDetailView(TemplateView):
+class CabinetDetailView(DocumentListView):
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
