@@ -64,6 +64,11 @@ class Source(models.Model):
 
     objects = InheritanceManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Source')
+        verbose_name_plural = _('Sources')
+
     @classmethod
     def class_fullname(cls):
         return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
@@ -169,11 +174,6 @@ class Source(models.Model):
         pass
         # TODO: Should raise NotImplementedError?
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Source')
-        verbose_name_plural = _('Sources')
-
 
 class InteractiveSource(Source):
     objects = InheritanceManager()
@@ -222,6 +222,8 @@ class SaneScanner(InteractiveSource):
             'option is not supported by your scanner, leave it blank.'
         ), max_length=16, verbose_name=_('ADF mode')
     )
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('SANE Scanner')
@@ -329,6 +331,12 @@ class StagingFolderSource(InteractiveSource):
         verbose_name=_('Delete after upload')
     )
 
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Staging folder')
+        verbose_name_plural = _('Staging folders')
+
     def get_preview_size(self):
         dimensions = []
         dimensions.append(force_text(self.preview_width))
@@ -374,10 +382,6 @@ class StagingFolderSource(InteractiveSource):
                     _('Error deleting staging file; %s') % exception
                 )
 
-    class Meta:
-        verbose_name = _('Staging folder')
-        verbose_name_plural = _('Staging folders')
-
 
 class WebFormSource(InteractiveSource):
     """
@@ -392,6 +396,12 @@ class WebFormSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Web form')
+        verbose_name_plural = _('Web forms')
+
     # TODO: unify uncompress as an InteractiveSource field
     uncompress = models.CharField(
         choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
@@ -403,13 +413,11 @@ class WebFormSource(InteractiveSource):
     def get_upload_file_object(self, form_data):
         return SourceUploadedFile(source=self, file=form_data['file'])
 
-    class Meta:
-        verbose_name = _('Web form')
-        verbose_name_plural = _('Web forms')
-
 
 class OutOfProcessSource(Source):
     is_interactive = False
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('Out of process')
@@ -434,6 +442,12 @@ class IntervalBaseModel(OutOfProcessSource):
         help_text=_('Whether to expand or not, compressed archives.'),
         max_length=1, verbose_name=_('Uncompress')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Interval source')
+        verbose_name_plural = _('Interval sources')
 
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
@@ -479,10 +493,6 @@ class IntervalBaseModel(OutOfProcessSource):
         pk = self.pk
         super(IntervalBaseModel, self).delete(*args, **kwargs)
         self._delete_periodic_task(pk)
-
-    class Meta:
-        verbose_name = _('Interval source')
-        verbose_name_plural = _('Interval sources')
 
 
 class EmailBaseModel(IntervalBaseModel):
@@ -531,6 +541,12 @@ class EmailBaseModel(IntervalBaseModel):
             'Store the body of the email as a text document.'
         ), verbose_name=_('Store email body')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Email source')
+        verbose_name_plural = _('Email sources')
 
     def clean(self):
         if self.subject_metadata_type:
@@ -640,10 +656,6 @@ class EmailBaseModel(IntervalBaseModel):
                             metadata_dictionary=metadata_dictionary
                         )
 
-    class Meta:
-        verbose_name = _('Email source')
-        verbose_name_plural = _('Email sources')
-
 
 class POP3Email(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_POP3
@@ -651,6 +663,12 @@ class POP3Email(EmailBaseModel):
     timeout = models.PositiveIntegerField(
         default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('POP email')
+        verbose_name_plural = _('POP email')
 
     def check_source(self):
         logger.debug('Starting POP3 email fetch')
@@ -685,10 +703,6 @@ class POP3Email(EmailBaseModel):
 
         mailbox.quit()
 
-    class Meta:
-        verbose_name = _('POP email')
-        verbose_name_plural = _('POP email')
-
 
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_IMAP
@@ -698,6 +712,12 @@ class IMAPEmail(EmailBaseModel):
         help_text=_('IMAP Mailbox from which to check for messages.'),
         max_length=64, verbose_name=_('Mailbox')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('IMAP email')
+        verbose_name_plural = _('IMAP email')
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self):
@@ -730,10 +750,6 @@ class IMAPEmail(EmailBaseModel):
         mailbox.close()
         mailbox.logout()
 
-    class Meta:
-        verbose_name = _('IMAP email')
-        verbose_name_plural = _('IMAP email')
-
 
 class WatchFolderSource(IntervalBaseModel):
     """
@@ -753,6 +769,12 @@ class WatchFolderSource(IntervalBaseModel):
         verbose_name=_('Folder path')
     )
 
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Watch folder')
+        verbose_name_plural = _('Watch folders')
+
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning
         # str for non-latin filenames, gh-issue #163
@@ -766,10 +788,6 @@ class WatchFolderSource(IntervalBaseModel):
                         label=file_name
                     )
                     os.unlink(full_path)
-
-    class Meta:
-        verbose_name = _('Watch folder')
-        verbose_name_plural = _('Watch folders')
 
 
 class SourceLog(models.Model):

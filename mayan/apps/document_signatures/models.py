@@ -132,6 +132,9 @@ class DetachedSignature(SignatureBaseModel):
         verbose_name=_('Signature file')
     )
 
+    # Don't inherit the SignatureBaseModel manager
+    objects = models.Manager()
+
     class Meta:
         verbose_name = _('Document version detached signature')
         verbose_name_plural = _('Document version detached signatures')
