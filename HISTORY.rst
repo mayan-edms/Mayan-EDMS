@@ -1,4 +1,9 @@
-2.8 (2018-02-XX)
+Next (2018-XX-XX)
+=================
+- Fix permission filtering when performing document page searching.
+- Fix cabinet detail view pagination.
+
+2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".
 - Rename the group users link label from "Members" to "Users".
