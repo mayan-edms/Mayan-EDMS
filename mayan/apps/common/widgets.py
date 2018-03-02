@@ -109,6 +109,7 @@ class TextAreaDiv(forms.widgets.Widget):
     Class to define a form widget that simulates the behavior of a
     Textarea widget but using a div tag instead
     """
+    template_name = 'appearance/forms/widgets/textareadiv.html'
 
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
@@ -116,15 +117,6 @@ class TextAreaDiv(forms.widgets.Widget):
         if attrs:
             default_attrs.update(attrs)
         super(TextAreaDiv, self).__init__(default_attrs)
-
-    def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
-
-        flat_attrs = flatatt(self.build_attrs(attrs, name=name))
-        content = conditional_escape(force_text(value))
-        result = '<pre%s>%s</pre>' % (flat_attrs, content)
-        return mark_safe(result)
 
 
 def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
