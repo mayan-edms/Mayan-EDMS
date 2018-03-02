@@ -69,11 +69,13 @@ link_setup_workflow_state_delete = Link(
 )
 link_setup_workflow_state_edit = Link(
     permissions=(permission_workflow_edit,), text=_('Edit'),
-    view='document_states:setup_workflow_state_edit', args='resolved_object.pk'
+    view='document_states:setup_workflow_state_edit',
+    args='resolved_object.pk'
 )
 link_setup_workflow_states = Link(
     permissions=(permission_workflow_view,), text=_('States'),
-    view='document_states:setup_workflow_states', args='resolved_object.pk'
+    view='document_states:setup_workflow_state_list',
+    args='resolved_object.pk'
 )
 link_setup_workflow_transition_create = Link(
     permissions=(permission_workflow_edit,), text=_('Create transition'),
@@ -92,7 +94,7 @@ link_setup_workflow_transition_edit = Link(
 )
 link_setup_workflow_transitions = Link(
     permissions=(permission_workflow_view,), text=_('Transitions'),
-    view='document_states:setup_workflow_transitions',
+    view='document_states:setup_workflow_transition_list',
     args='resolved_object.pk'
 )
 link_tool_launch_all_workflows = Link(
@@ -132,7 +134,7 @@ link_workflow_state_list = Link(
 link_workflow_instance_transition_events = Link(
     args='resolved_object.pk', permissions=(permission_workflow_edit,),
     text=_('Transition triggers'),
-    view='document_states:setup_workflow_instance_transition_events'
+    view='document_states:setup_workflow_transition_events'
 )
 link_workflow_preview = Link(
     args='resolved_object.pk', permissions=(permission_workflow_view,),
