@@ -2,6 +2,9 @@ Next (2018-XX-XX)
 =================
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
+- Update project to work with Django 1.11.10.
+- Fix deprecations in preparation for Django 2.0.
+- Improve permission handling in the workflow app.
 
 2.8 (2018-02-27)
 ================
