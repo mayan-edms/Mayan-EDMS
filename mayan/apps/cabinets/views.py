@@ -105,7 +105,6 @@ class CabinetDetailView(DocumentListView):
                 'jstree_data': '\n'.join(
                     jstree_data(node=cabinet.get_root(), selected_node=cabinet)
                 ),
-                'document_list': self.get_document_queryset(),
                 'hide_links': True,
                 'list_as_items': True,
                 'object': cabinet,
