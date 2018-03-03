@@ -14,8 +14,8 @@ from documents.permissions import permission_document_view
 
 from .models import DocumentCheckout
 from .permissions import (
-    permission_document_checkout, permission_document_checkin,
-    permission_document_checkin_override
+    permission_document_checkin, permission_document_checkin_override,
+    permission_document_checkout, permission_document_checkout_detail_view
 )
 from .serializers import (
     DocumentCheckoutSerializer, NewDocumentCheckoutSerializer
@@ -94,6 +94,10 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
             filtered_documents = AccessControlList.objects.filter_by_access(
                 permission=permission_document_view, user=self.request.user,
                 queryset=DocumentCheckout.objects.checked_out_documents()
+            )
+            filtered_documents = AccessControlList.objects.filter_by_access(
+                permission=permission_document_checkout_detail_view, user=self.request.user,
+                queryset=filtered_documents
             )
 
             return DocumentCheckout.objects.filter(
