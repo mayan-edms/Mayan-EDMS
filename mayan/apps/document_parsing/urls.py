@@ -40,7 +40,8 @@ urlpatterns = [
 
 api_urls = [
     url(
-        r'^page/(?P<pk>\d+)/content/$', APIDocumentPageContentView.as_view(),
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/content/$',
+        APIDocumentPageContentView.as_view(),
         name='document-page-content-view'
     ),
 ]

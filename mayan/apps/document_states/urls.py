@@ -215,20 +215,20 @@ api_urls = [
         APIWorkflowTransitionView.as_view(), name='workflowtransition-detail'
     ),
     url(
-        r'^document/(?P<pk>[0-9]+)/workflows/$',
+        r'^documents/(?P<pk>[0-9]+)/workflows/$',
         APIWorkflowInstanceListView.as_view(), name='workflowinstance-list'
     ),
     url(
-        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/$',
+        r'^documents/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/$',
         APIWorkflowInstanceView.as_view(), name='workflowinstance-detail'
     ),
     url(
-        r'^document/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
+        r'^documents/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
         APIWorkflowInstanceLogEntryListView.as_view(),
         name='workflowinstancelogentry-list'
     ),
     url(
-        r'^document_type/(?P<pk>[0-9]+)/workflows/$',
+        r'^document_types/(?P<pk>[0-9]+)/workflows/$',
         APIDocumentTypeWorkflowListView.as_view(),
         name='documenttype-workflow-list'
     ),

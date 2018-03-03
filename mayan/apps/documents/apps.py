@@ -32,7 +32,7 @@ from events.permissions import permission_events_view
 from mayan.celery import app
 from mayan_statistics.classes import StatisticNamespace, CharJSLine
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
+from rest_api.classes import APIEndPoint, APIResource
 from rest_api.fields import DynamicSerializerField
 
 from .dashboard_widgets import (
@@ -107,7 +107,6 @@ from .widgets import (
     widget_document_version_page_number
 )
 
-
 class DocumentsApp(MayanAppConfig):
     has_tests = True
     name = 'documents'
@@ -118,6 +117,9 @@ class DocumentsApp(MayanAppConfig):
         from actstream import registry
 
         APIEndPoint(app=self, version_string='1')
+        APIResource(label=_('Document types'), name='document_types')
+        APIResource(label=_('Documents'), name='documents')
+        APIResource(label=_('Trashed documents'), name='trashed_documents')
 
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')

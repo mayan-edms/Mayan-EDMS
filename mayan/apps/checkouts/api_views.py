@@ -92,7 +92,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
     def get_queryset(self):
         if self.request.method == 'GET':
             filtered_documents = AccessControlList.objects.filter_by_access(
-                (permission_document_view,), self.request.user,
+                permission=permission_document_view, user=self.request.user,
                 queryset=DocumentCheckout.objects.checked_out_documents()
             )
 

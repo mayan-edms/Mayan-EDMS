@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.shortcuts import get_object_or_404
+
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -26,10 +28,6 @@ class APIDocumentOCRView(generics.GenericAPIView):
         Submit a document for OCR.
         ---
         omit_serializer: true
-        parameters:
-            - name: pk
-              paramType: path
-              type: number
         responseMessages:
             - code: 202
               message: Accepted
@@ -40,11 +38,18 @@ class APIDocumentOCRView(generics.GenericAPIView):
 
 
 class APIDocumentVersionOCRView(generics.GenericAPIView):
+    lookup_url_kwarg = 'version_pk'
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
     }
     permission_classes = (MayanPermission,)
     queryset = DocumentVersion.objects.all()
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
 
     def get_serializer_class(self):
         return None
@@ -54,10 +59,6 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
         Submit a document version for OCR.
         ---
         omit_serializer: true
-        parameters:
-            - name: pk
-              paramType: path
-              type: number
         responseMessages:
             - code: 202
               message: Accepted
@@ -70,20 +71,24 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
 class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     """
     Returns the OCR content of the selected document page.
-    ---
-    GET:
-        parameters:
-            - name: pk
-              paramType: path
-              type: number
     """
-
+    lookup_url_kwarg = 'page_pk'
     mayan_object_permissions = {
         'GET': (permission_ocr_content_view,),
     }
     permission_classes = (MayanPermission,)
     serializer_class = DocumentPageOCRContentSerializer
-    queryset = DocumentPage.objects.all()
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+
+    def get_document_version(self):
+        return get_object_or_404(
+            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+        )
+
+    def get_queryset(self):
+        return self.get_document_version().pages.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
