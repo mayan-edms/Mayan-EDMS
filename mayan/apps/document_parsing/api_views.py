@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.models import Document, DocumentPage
+from documents.models import Document
 from rest_api.permissions import MayanPermission
 
 from .models import DocumentPageContent
