@@ -5,7 +5,9 @@ Next (2018-XX-XX)
 - Update project to work with Django 1.11.10.
 - Fix deprecations in preparation for Django 2.0.
 - Improve permission handling in the workflow app.
-
+- The checkedout detail view permission is now required for the checked out document detail API view.
+- Switch to a resource and service based API from previous app based one.
+              
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".
