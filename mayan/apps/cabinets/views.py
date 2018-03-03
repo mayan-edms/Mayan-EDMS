@@ -10,8 +10,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessControlList
 from common.views import (
     MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView,
-    TemplateView
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.permissions import permission_document_view
 from documents.models import Document

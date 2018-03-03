@@ -107,6 +107,7 @@ from .widgets import (
     widget_document_version_page_number
 )
 
+
 class DocumentsApp(MayanAppConfig):
     has_tests = True
     name = 'documents'

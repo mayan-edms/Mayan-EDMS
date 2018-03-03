@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.forms.utils import flatatt
 from django.utils.encoding import force_text
-from django.utils.html import conditional_escape, format_html
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 

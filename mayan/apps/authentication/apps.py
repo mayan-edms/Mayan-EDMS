@@ -5,7 +5,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_user
-from navigation.classes import Separator, Text
+from navigation.classes import Separator
 
 from .links import link_logout, link_password_change
 

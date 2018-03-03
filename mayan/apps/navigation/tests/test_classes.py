@@ -115,7 +115,6 @@ class LinkClassTestCase(GenericViewTestCase):
 
         self.assertEqual(resolved_link.url, url.url)
 
-
     def test_link_with_querystring_preservation(self):
         previous_url = '{}?{}'.format(
             reverse(TEST_VIEW_NAME), TEST_QUERYSTRING_TWO_KEYS

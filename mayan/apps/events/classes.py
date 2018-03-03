@@ -168,7 +168,6 @@ class EventType(object):
                                     action=result, user=user
                                 )
 
-
     def get_stored_event_type(self):
         if not self.stored_event_type:
             StoredEventType = apps.get_model('events', 'StoredEventType')

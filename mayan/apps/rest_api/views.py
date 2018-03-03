@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from rest_framework import renderers
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework_swagger.views import SwaggerApiView, SwaggerResourcesView
+from rest_framework_swagger.views import SwaggerResourcesView
 
 
 class APIBase(SwaggerResourcesView):

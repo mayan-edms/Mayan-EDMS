@@ -21,9 +21,9 @@ from .links import (
     link_user_set_password, link_user_setup
 )
 from .permissions import (
-    permission_group_create, permission_group_delete, permission_group_edit,
-    permission_group_view, permission_user_create, permission_user_delete,
-    permission_user_edit, permission_user_view
+    permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_delete, permission_user_edit,
+    permission_user_view
 )
 from .search import *  # NOQA
 
