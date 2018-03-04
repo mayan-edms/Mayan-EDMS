@@ -10,7 +10,6 @@ from common.apps import MayanAppConfig
 from common.widgets import two_state_template
 from metadata import MetadataLookup
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 from rest_api.fields import DynamicSerializerField
 
 from .links import (
@@ -44,6 +43,7 @@ def get_users():
 
 class UserManagementApp(MayanAppConfig):
     app_url = 'accounts'
+    has_rest_api = True
     has_tests = True
     name = 'user_management'
     verbose_name = _('User management')
@@ -55,7 +55,6 @@ class UserManagementApp(MayanAppConfig):
         Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()
 
-        APIEndPoint(app=self, version_string='1')
         DynamicSerializerField.add_serializer(
             klass=get_user_model(),
             serializer_class='user_management.serializers.UserSerializer'

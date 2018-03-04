@@ -12,7 +12,6 @@ from common import (
 )
 from documents.search import document_page_search, document_search
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
@@ -30,6 +29,7 @@ from .widgets import widget_document_tags, widget_single_tag
 
 
 class TagsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'tags'
     verbose_name = _('Tags')
@@ -48,8 +48,6 @@ class TagsApp(MayanAppConfig):
 
         DocumentTag = self.get_model('DocumentTag')
         Tag = self.get_model('Tag')
-
-        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class(
             'attached_tags',

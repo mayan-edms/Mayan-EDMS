@@ -15,7 +15,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 from navigation.classes import Separator, Text
-from rest_api.classes import APIEndPoint
 
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
@@ -75,6 +74,7 @@ class MayanAppConfig(apps.AppConfig):
 
 class CommonApp(MayanAppConfig):
     app_url = ''
+    has_rest_api = True
     has_tests = True
     name = 'common'
     verbose_name = _('Common')
@@ -88,8 +88,6 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {

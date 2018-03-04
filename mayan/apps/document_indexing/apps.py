@@ -18,7 +18,6 @@ from common.widgets import two_state_template
 from documents.signals import post_document_created, post_initial_document_type
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .handlers import (
     create_default_document_index, handler_delete_empty,
@@ -44,14 +43,13 @@ from .widgets import get_instance_link, index_instance_item_link, node_level
 class DocumentIndexingApp(MayanAppConfig):
     app_namespace = 'indexing'
     app_url = 'indexing'
+    has_rest_api = True
     has_tests = True
     name = 'document_indexing'
     verbose_name = _('Document indexing')
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

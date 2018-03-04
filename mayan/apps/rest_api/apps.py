@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.conf import settings
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_tools
 
-from .classes import APIEndPoint
 from .links import link_api, link_api_documentation
 from .licenses import *  # NOQA
 
@@ -17,9 +18,12 @@ class RESTAPIApp(MayanAppConfig):
 
     def ready(self):
         super(RESTAPIApp, self).ready()
+        from .urls import api_urls
 
         settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
-
-        APIEndPoint(app=self, name='rest', version_string='1')
-
         menu_tools.bind_links(links=(link_api, link_api_documentation))
+
+        for app in apps.get_app_configs():
+            if getattr(app, 'has_rest_api', False):
+                app_api_urls = import_string('{}.urls.api_urls'.format(app.label))
+                api_urls.extend(app_api_urls)

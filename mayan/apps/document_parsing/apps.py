@@ -20,7 +20,6 @@ from documents.signals import post_version_upload
 from documents.widgets import document_link
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .events import event_parsing_document_version_submit
 from .handlers import handler_parse_document_version
@@ -56,14 +55,13 @@ def document_version_parsing_submit(self):
 
 
 class DocumentParsingApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'document_parsing'
     verbose_name = _('Document parsing')
 
     def ready(self):
         super(DocumentParsingApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

@@ -8,7 +8,6 @@ from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from documents.search import document_page_search, document_search
 from events import ModelEventType
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .events import (
     event_document_comment_create, event_document_comment_delete
@@ -25,14 +24,13 @@ from .permissions import (
 class DocumentCommentsApp(MayanAppConfig):
     app_namespace = 'comments'
     app_url = 'comments'
+    has_rest_api = True
     has_tests = True
     name = 'document_comments'
     verbose_name = _('Document comments')
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

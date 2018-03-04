@@ -1,16 +1,12 @@
 from __future__ import unicode_literals
 
-from rest_framework import generics
-
-from .classes import APIResource
-from .serializers import APIResourceSerializer
+from rest_framework import generics, renderers
+from rest_framework.authtoken.views import ObtainAuthToken
 
 
-class APIResourceTypeListView(generics.ListAPIView):
+class BrowseableObtainAuthToken(ObtainAuthToken):
     """
-    Returns a list of all the available API resources.
+    Obtain an API authentication token.
     """
-    serializer_class = APIResourceSerializer
 
-    def get_queryset(self):
-        return APIResource.all()
+    renderer_classes = (renderers.BrowsableAPIRenderer, renderers.JSONRenderer)

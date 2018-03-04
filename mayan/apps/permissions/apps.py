@@ -8,7 +8,6 @@ from common import (
     MayanAppConfig, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from common.signals import perform_upgrade
-from rest_api.classes import APIEndPoint
 
 from .handlers import purge_permissions
 from .links import (
@@ -23,6 +22,7 @@ from .search import *  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'permissions'
     verbose_name = _('Permissions')
@@ -32,8 +32,6 @@ class PermissionsApp(MayanAppConfig):
 
         Role = self.get_model('Role')
         Group = apps.get_model(app_label='auth', model_name='Group')
-
-        APIEndPoint(app=self, version_string='1')
 
         ModelPermission.register(
             model=Role, permissions=(

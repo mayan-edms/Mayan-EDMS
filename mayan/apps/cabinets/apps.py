@@ -11,7 +11,6 @@ from common import (
 )
 from documents.search import document_page_search, document_search
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
@@ -31,6 +30,7 @@ from .widgets import widget_document_cabinets
 
 
 class CabinetsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'cabinets'
     verbose_name = _('Cabinets')
@@ -45,8 +45,6 @@ class CabinetsApp(MayanAppConfig):
 
         DocumentCabinet = self.get_model('DocumentCabinet')
         Cabinet = self.get_model('Cabinet')
-
-        APIEndPoint(app=self, version_string='1')
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
         # effect.

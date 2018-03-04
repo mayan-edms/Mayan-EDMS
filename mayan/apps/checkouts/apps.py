@@ -13,7 +13,6 @@ from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
 from common.dashboards import dashboard_main
 from events import ModelEventType
 from mayan.celery import app
-from rest_api.classes import APIEndPoint
 
 from .dashboard_widgets import widget_checkouts
 from .events import (
@@ -36,14 +35,13 @@ from .tasks import task_check_expired_check_outs  # NOQA
 
 
 class CheckoutsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'checkouts'
     verbose_name = _('Checkouts')
 
     def ready(self):
         super(CheckoutsApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

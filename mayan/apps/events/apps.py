@@ -10,7 +10,6 @@ from common import (
 )
 from common.widgets import two_state_template
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import (
     link_events_list, link_event_types_subscriptions_list,
@@ -22,6 +21,7 @@ from .widgets import event_object_link, event_type_link, event_user_link
 
 
 class EventsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'events'
     verbose_name = _('Events')
@@ -32,8 +32,6 @@ class EventsApp(MayanAppConfig):
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
         User = get_user_model()
-
-        APIEndPoint(app=self, version_string='1')
 
         SourceColumn(
             source=Action, label=_('Timestamp'), attribute='timestamp'

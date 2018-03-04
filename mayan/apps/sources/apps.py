@@ -14,7 +14,6 @@ from documents.menus import menu_documents
 from documents.signals import post_version_upload
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
 from .handlers import (
@@ -35,6 +34,7 @@ from .widgets import StagingFileThumbnailWidget
 
 
 class SourcesApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'sources'
     verbose_name = _('Sources')
@@ -50,8 +50,6 @@ class SourcesApp(MayanAppConfig):
         StagingFolderSource = self.get_model('StagingFolderSource')
         WatchFolderSource = self.get_model('WatchFolderSource')
         WebFormSource = self.get_model('WebFormSource')
-
-        APIEndPoint(app=self, version_string='1')
 
         MissingItem(
             label=_('Create a document source'),

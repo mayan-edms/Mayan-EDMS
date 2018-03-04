@@ -20,7 +20,6 @@ from documents.signals import post_document_type_change
 from documents.permissions import permission_document_view
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .classes import DocumentMetadataHelper
 from .handlers import (
@@ -51,6 +50,7 @@ logger = logging.getLogger(__name__)
 
 
 class MetadataApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'metadata'
     verbose_name = _('Metadata')
@@ -72,8 +72,6 @@ class MetadataApp(MayanAppConfig):
         DocumentMetadata = self.get_model('DocumentMetadata')
         DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
         MetadataType = self.get_model('MetadataType')
-
-        APIEndPoint(app=self, version_string='2')
 
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor

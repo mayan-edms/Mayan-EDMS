@@ -12,7 +12,6 @@ from common import (
 )
 from common.widgets import two_state_template
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,
@@ -29,14 +28,13 @@ from .permissions import (
 
 
 class LinkingApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'linking'
     verbose_name = _('Linking')
 
     def ready(self):
         super(LinkingApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
