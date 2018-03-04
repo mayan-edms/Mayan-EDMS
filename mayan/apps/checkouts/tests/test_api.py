@@ -80,3 +80,42 @@ class CheckoutsAPITestCase(BaseAPITestCase):
         response = self._request_checkedout_document_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['document']['uuid'], force_text(self.document.uuid))
+
+    def _request_checkout_list_view(self):
+        return self.get(viewname='rest_api:checkout-document-list')
+
+    def test_checkout_list_view_no_access(self):
+        self._checkout_document()
+        response = self._request_checkout_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotContains(response, text=self.document.uuid)
+
+    def test_checkout_list_view_with_document_access(self):
+        self._checkout_document()
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
+        response = self._request_checkout_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotContains(response, text=self.document.uuid)
+
+    def test_checkout_list_view_with_checkout_access(self):
+        self._checkout_document()
+        self.grant_access(
+            permission=permission_document_checkout_detail_view, obj=self.document
+        )
+        response = self._request_checkout_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotContains(response, text=self.document.uuid)
+
+    def test_checkout_list_view_with_access(self):
+        self._checkout_document()
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
+        self.grant_access(
+            permission=permission_document_checkout_detail_view, obj=self.document
+        )
+        response = self._request_checkout_list_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, text=self.document.uuid)
