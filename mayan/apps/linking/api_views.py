@@ -63,13 +63,16 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'document': self.get_document(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'smart_link': self.get_smart_link(),
-            'view': self
-        }
+        context = super(APIResolvedSmartLinkDocumentListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                    'smart_link': self.get_smart_link(),
+                }
+            )
+
+        return context
 
     def get_queryset(self):
         return self.get_smart_link().get_linked_document_for(
@@ -104,12 +107,15 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'document': self.get_document(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APIResolvedSmartLinkView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
+
+        return context
 
     def get_queryset(self):
         return SmartLink.objects.get_for(document=self.get_document())
@@ -141,12 +147,15 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'document': self.get_document(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APIResolvedSmartLinkListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
+
+        return context
 
     def get_queryset(self):
         return SmartLink.objects.filter(
@@ -170,12 +179,15 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'smart_link': self.get_smart_link(),
-            'view': self
-        }
+        context = super(APISmartLinkConditionListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'smart_link': self.get_smart_link(),
+                }
+            )
+
+        return context
 
     def get_smart_link(self):
         if self.request.method == 'GET':
@@ -224,12 +236,15 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'smart_link': self.get_smart_link(),
-            'view': self
-        }
+        context = super(APISmartLinkConditionView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'smart_link': self.get_smart_link(),
+                }
+            )
+
+        return context
 
     def get_smart_link(self):
         if self.request.method == 'GET':

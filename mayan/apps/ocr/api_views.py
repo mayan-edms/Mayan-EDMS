@@ -20,6 +20,9 @@ class APIDocumentOCRView(generics.GenericAPIView):
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
+    def get_serializer(self, *args, **kwargs):
+        return None
+
     def get_serializer_class(self):
         return None
 
@@ -50,6 +53,9 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
 
     def get_queryset(self):
         return self.get_document().versions.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
 
     def get_serializer_class(self):
         return None

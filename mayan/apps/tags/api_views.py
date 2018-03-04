@@ -153,12 +153,15 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'document': self.get_document(),
-            'view': self
-        }
+        context = super(APIDocumentTagListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
+
+        return context
 
     def perform_create(self, serializer):
         serializer.save(document=self.get_document())
@@ -213,12 +216,15 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'document': self.get_document(),
-            'view': self
-        }
+        context = super(APIDocumentTagView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
+
+        return context
 
     def perform_destroy(self, instance):
         try:

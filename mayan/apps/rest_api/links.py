@@ -10,5 +10,5 @@ link_api = Link(
 )
 link_api_documentation = Link(
     icon='fa fa-book', tags='new_window', text=_('API Documentation'),
-    view='django.swagger.base.view'
+    view='schema-swagger-ui'
 )

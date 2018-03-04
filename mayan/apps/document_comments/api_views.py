@@ -55,12 +55,15 @@ class APICommentListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'document': self.get_document(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APICommentListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
+
+        return context
 
     def post(self, *args, **kwargs):
         """
@@ -108,13 +111,3 @@ class APICommentView(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document().comments.all()
-
-    def get_serializer_context(self):
-        """
-        Extra context provided to the serializer class.
-        """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }

@@ -59,6 +59,9 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
               type: number
     """
 
+    def get_serializer(self, *args, **kwargs):
+        return None
+
     def get_serializer_class(self):
         return None
 

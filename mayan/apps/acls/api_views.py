@@ -58,13 +58,15 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
+        context = super(APIObjectACLListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'content_object': self.get_content_object(),
+                }
+            )
 
-        return {
-            'content_object': self.get_content_object(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        return context
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -173,12 +175,15 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
             return WritableAccessControlListPermissionSerializer
 
     def get_serializer_context(self):
-        return {
-            'acl': self.get_acl(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APIObjectACLPermissionListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'acl': self.get_acl(),
+                }
+            )
+
+        return context
 
     def post(self, *args, **kwargs):
         """
@@ -242,9 +247,12 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
         return self.get_acl().permissions.all()
 
     def get_serializer_context(self):
-        return {
-            'acl': self.get_acl(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APIObjectACLPermissionView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'acl': self.get_acl(),
+                }
+            )
+
+        return context

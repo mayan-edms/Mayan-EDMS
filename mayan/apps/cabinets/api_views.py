@@ -133,12 +133,15 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'cabinet': self.get_cabinet(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APICabinetDocumentListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'cabinet': self.get_cabinet(),
+                }
+            )
+
+        return context
 
     def get_cabinet(self):
         return get_object_or_404(Cabinet, pk=self.kwargs['pk'])
@@ -198,12 +201,15 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'cabinet': self.get_cabinet(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        context = super(APICabinetDocumentView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'cabinet': self.get_cabinet(),
+                }
+            )
+
+        return context
 
     def perform_destroy(self, instance):
         self.get_cabinet().documents.remove(instance)

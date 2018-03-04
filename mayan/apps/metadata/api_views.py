@@ -65,13 +65,15 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
+        context = super(APIDocumentMetadataListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document': self.get_document(),
+                }
+            )
 
-        return {
-            'document': self.get_document(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        return context
 
     def post(self, *args, **kwargs):
         """
@@ -249,13 +251,15 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
+        context = super(APIDocumentTypeMetadataTypeListView, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'document_type': self.get_document_type(),
+                }
+            )
 
-        return {
-            'document_type': self.get_document_type(),
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
+        return context
 
     def post(self, *args, **kwargs):
         """

@@ -201,12 +201,15 @@ class APIUserGroupList(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'user': self.get_user(),
-            'view': self
-        }
+        context = super(APIUserGroupList, self).get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'user': self.get_user(),
+                }
+            )
+
+        return context
 
     def get_queryset(self):
         user = self.get_user()

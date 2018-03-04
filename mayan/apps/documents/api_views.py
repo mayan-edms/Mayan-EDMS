@@ -83,6 +83,9 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
 class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     """
     Restore a trashed document.
+    ---
+    POST:
+        omit_serializer: true
     """
 
     mayan_object_permissions = {
@@ -90,6 +93,9 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     }
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
 
     def get_serializer_class(self):
         return None
@@ -126,6 +132,9 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
 
     def get_mimetype(self):
         return self.get_object().latest_version.mimetype
+
+    def get_serializer(self, *args, **kwargs):
+        return None
 
     def get_serializer_class(self):
         return None
@@ -240,6 +249,9 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
     def get_mimetype(self):
         return self.get_object().mimetype
 
+    def get_serializer(self, *args, **kwargs):
+        return None
+
     def get_serializer_class(self):
         return None
 
@@ -345,6 +357,9 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return self.get_document_version().pages.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
 
     def get_serializer_class(self):
         return None
@@ -574,6 +589,13 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentVersionSerializer
@@ -600,13 +622,6 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
         return super(
             APIDocumentVersionsListView, self
         ).post(request, *args, **kwargs)
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
 
 
 class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):

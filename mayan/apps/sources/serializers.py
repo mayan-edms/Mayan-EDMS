@@ -11,16 +11,9 @@ logger = logging.getLogger(__name__)
 
 
 class StagingFolderFileSerializer(serializers.Serializer):
-    url = serializers.SerializerMethodField('get_url')
-    image_url = serializers.SerializerMethodField('get_image_url')
     filename = serializers.CharField(max_length=255)
-
-    def get_url(self, obj):
-        return reverse(
-            'stagingfolderfile-detail',
-            args=(obj.staging_folder.pk, obj.encoded_filename,),
-            request=self.context.get('request')
-        )
+    image_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
     def get_image_url(self, obj):
         return reverse(
@@ -29,9 +22,20 @@ class StagingFolderFileSerializer(serializers.Serializer):
             request=self.context.get('request')
         )
 
+    def get_url(self, obj):
+        return reverse(
+            'stagingfolderfile-detail',
+            args=(obj.staging_folder.pk, obj.encoded_filename,),
+            request=self.context.get('request')
+        )
+
 
 class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
-    files = serializers.SerializerMethodField('get_files')
+    files = serializers.SerializerMethodField()
+
+    class Meta:
+        fields = ('files',)
+        model = StagingFolderSource
 
     def get_files(self, obj):
         try:
@@ -41,9 +45,6 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
         except Exception as exception:
             logger.error('unhandled exception: %s', exception)
             return []
-
-    class Meta:
-        model = StagingFolderSource
 
 
 class WebFormSourceSerializer(serializers.Serializer):

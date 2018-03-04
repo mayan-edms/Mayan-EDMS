@@ -105,7 +105,7 @@ INSTALLED_APPS = (
     'tags',
     'task_manager',
     # Placed after rest_api to allow template overriding
-    'rest_framework_swagger',
+    'drf_yasg',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -261,6 +261,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
 # --------- Pagination --------
@@ -283,20 +284,12 @@ CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
-# ------ Django REST Swagger -----
-SWAGGER_SETTINGS = {
-    'api_version': '1',
-    'info': {
-        'title': _('Mayan EDMS API Documentation'),
-        'description': _('Free Open Source Document Management System.'),
-        'contact': 'roberto.rosario@mayan-edms.com',
-        'license': 'Apache 2.0',
-        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
-    }
-
-}
 # ------ Timezone --------
 TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
 # ----- Stronghold -------
 STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
+# ----- Swagger --------
+SWAGGER_SETTINGS = {
+    'DOC_EXPANSION': 'None',
+}

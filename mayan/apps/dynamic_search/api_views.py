@@ -46,6 +46,9 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
 
         return queryset
 
+    def get_serializer(self, *args, **kwargs):
+        return None
+
 
 class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
     """
@@ -88,6 +91,9 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
             raise ParseError(force_text(exception))
 
         return queryset
+
+    def get_serializer(self, *args, **kwargs):
+        return None
 
 
 class APISearchModelList(generics.ListAPIView):
