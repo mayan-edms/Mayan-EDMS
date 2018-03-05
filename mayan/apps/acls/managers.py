@@ -94,8 +94,8 @@ class AccessControlListManager(models.Manager):
         if user.is_superuser or user.is_staff:
             logger.debug(
                 'Unfiltered queryset returned to user "%s" as superuser or staff',
-                 user
-             )
+                user
+            )
             return queryset
 
         try:
