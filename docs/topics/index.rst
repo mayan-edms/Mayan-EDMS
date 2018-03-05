@@ -25,3 +25,4 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    file_storage
    backups
    pending_work
+   code_statistics
