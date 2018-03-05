@@ -380,8 +380,8 @@ class InteractiveDocumentPageWidget(BaseDocumentThumbnailWidget):
 
     def get_preview_view_query_dict(self, instance):
         return {
-            'zoom': self.zoom,
-            'rotation': self.rotation,
+            'zoom': self.zoom or 100,
+            'rotation': self.rotation or 0,
             'size': setting_display_size.value,
         }
 
