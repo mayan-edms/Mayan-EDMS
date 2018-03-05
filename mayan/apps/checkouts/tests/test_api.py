@@ -14,7 +14,9 @@ from documents.permissions import permission_document_view
 from rest_api.tests import BaseAPITestCase
 
 from ..models import DocumentCheckout
-from ..permissions import permission_document_checkout_detail_view
+from ..permissions import (
+    permission_document_checkout, permission_document_checkout_detail_view
+)
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -80,6 +82,27 @@ class CheckoutsAPITestCase(BaseAPITestCase):
         response = self._request_checkedout_document_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['document']['uuid'], force_text(self.document.uuid))
+
+    def _request_document_checkout_view(self):
+        return self.post(
+            viewname='rest_api:checkout-document-list', data={
+                'document_pk': self.document.pk,
+                'expiration_datetime': '2099-01-01T12:00'
+            }
+        )
+
+    def test_document_checkout_no_access(self):
+        response = self._request_document_checkout_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(DocumentCheckout.objects.count(), 0)
+
+    def test_document_checkout_with_access(self):
+        self.grant_access(permission=permission_document_checkout, obj=self.document)
+        response = self._request_document_checkout_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(
+            DocumentCheckout.objects.first().document, self.document
+        )
 
     def _request_checkout_list_view(self):
         return self.get(viewname='rest_api:checkout-document-list')
