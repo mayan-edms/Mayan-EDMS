@@ -50,6 +50,7 @@ class AccessControlList(models.Model):
     objects = AccessControlListManager()
 
     class Meta:
+        ordering = ('pk',)
         unique_together = ('content_type', 'object_id', 'role')
         verbose_name = _('Access entry')
         verbose_name_plural = _('Access entries')
