@@ -39,7 +39,7 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             else:
                 global_and_search = False
 
-            queryset, ids, timedelta = self.search_model.search(
+            queryset, timedelta = self.search_model.search(
                 query_string=self.request.GET, user=self.request.user,
                 global_and_search=global_and_search
             )

@@ -236,7 +236,7 @@ class SearchModel(object):
                 self.permission, user, queryset
             )
 
-        return queryset, result_set, elapsed_time
+        return queryset, elapsed_time
 
 
 # SearchField classes

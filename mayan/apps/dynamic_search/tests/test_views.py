@@ -39,10 +39,10 @@ class Issue46TestCase(GenericViewTestCase):
 
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'label': 'test document'}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), self.document_count)
+        self.assertEqual(queryset.count(), self.document_count)
 
         with self.settings(COMMON_PAGINATE_BY=2):
             # Funcitonal test for the first page of advanced results

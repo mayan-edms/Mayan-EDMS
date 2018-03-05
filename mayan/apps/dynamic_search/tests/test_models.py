@@ -31,24 +31,24 @@ class DocumentSearchTestCase(BaseTestCase):
         document versions and document version pages
         """
 
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'q': 'Mayan'}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)
 
     def test_advanced_search_after_related_name_change(self):
         # Test versions__filename
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'label': self.document.label}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)
 
         # Test versions__mimetype
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'versions__mimetype': self.document.file_mimetype},
             user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)

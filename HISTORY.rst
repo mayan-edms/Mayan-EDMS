@@ -15,6 +15,7 @@ Next (2018-XX-XX)
 - Update to the latest version the packages for building, development, documentation and testing.
 - Add statistics script to produce a report of the views, APIs and test for each app.
 - Merge base64 filename patch from Cornelius Ludmann.
+- SearchModel retrun interface changed. The class no longer returns the result_set value. Use the queryset returned instead.
 
 2.8 (2018-02-27)
 ================
