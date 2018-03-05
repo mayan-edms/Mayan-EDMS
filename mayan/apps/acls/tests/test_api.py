@@ -1,40 +1,25 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
-from django.urls import reverse
-
-from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
 from documents.permissions import permission_document_view
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
-from permissions.classes import Permission
-from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
-from user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
+from rest_api.tests import BaseAPITestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_view
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class ACLAPITestCase(APITestCase):
+class ACLAPITestCase(BaseAPITestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
+        super(ACLAPITestCase, self).setUp()
+        self.login_admin_user()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -44,12 +29,9 @@ class ACLAPITestCase(APITestCase):
                 file_object=file_object
             )
 
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-
         self.document_content_type = ContentType.objects.get_for_model(
             self.document
         )
-        Permission.invalidate_cache()
 
     def tearDown(self):
         if hasattr(self, 'document_type'):
@@ -66,14 +48,12 @@ class ACLAPITestCase(APITestCase):
     def test_object_acl_list_view(self):
         self._create_acl()
 
-        response = self.client.get(
-            reverse(
-                'rest_api:accesscontrollist-list',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk
-                )
+        response = self.get(
+            viewname='rest_api:accesscontrollist-list',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk
             )
         )
 
@@ -88,14 +68,12 @@ class ACLAPITestCase(APITestCase):
     def test_object_acl_delete_view(self):
         self._create_acl()
 
-        response = self.client.delete(
-            reverse(
-                'rest_api:accesscontrollist-detail',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk
-                )
+        response = self.delete(
+            viewname='rest_api:accesscontrollist-detail',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk
             )
         )
 
@@ -105,14 +83,12 @@ class ACLAPITestCase(APITestCase):
     def test_object_acl_detail_view(self):
         self._create_acl()
 
-        response = self.client.get(
-            reverse(
-                'rest_api:accesscontrollist-detail',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk
-                )
+        response = self.get(
+            viewname='rest_api:accesscontrollist-detail',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk
             )
         )
         self.assertEqual(
@@ -127,15 +103,13 @@ class ACLAPITestCase(APITestCase):
         self._create_acl()
         permission = self.acl.permissions.first()
 
-        response = self.client.delete(
-            reverse(
-                'rest_api:accesscontrollist-permission-detail',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk,
-                    permission.pk
-                )
+        response = self.delete(
+            viewname='rest_api:accesscontrollist-permission-detail',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk,
+                permission.pk
             )
         )
         self.assertEqual(response.status_code, 204)
@@ -145,15 +119,13 @@ class ACLAPITestCase(APITestCase):
         self._create_acl()
         permission = self.acl.permissions.first()
 
-        response = self.client.get(
-            reverse(
-                'rest_api:accesscontrollist-permission-detail',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk,
-                    permission.pk
-                )
+        response = self.get(
+            viewname='rest_api:accesscontrollist-permission-detail',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk,
+                permission.pk
             )
         )
 
@@ -164,14 +136,12 @@ class ACLAPITestCase(APITestCase):
     def test_object_acl_permission_list_view(self):
         self._create_acl()
 
-        response = self.client.get(
-            reverse(
-                'rest_api:accesscontrollist-permission-list',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk
-                )
+        response = self.get(
+            viewname='rest_api:accesscontrollist-permission-list',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk
             )
         )
 
@@ -183,14 +153,12 @@ class ACLAPITestCase(APITestCase):
     def test_object_acl_permission_list_post_view(self):
         self._create_acl()
 
-        response = self.client.post(
-            reverse(
-                'rest_api:accesscontrollist-permission-list',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk, self.acl.pk
-                )
+        response = self.post(
+            viewname='rest_api:accesscontrollist-permission-list',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk, self.acl.pk
             ), data={'permission_pk': permission_acl_view.pk}
         )
 
@@ -203,14 +171,12 @@ class ACLAPITestCase(APITestCase):
         )
 
     def test_object_acl_post_no_permissions_added_view(self):
-        response = self.client.post(
-            reverse(
-                'rest_api:accesscontrollist-list',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk
-                )
+        response = self.post(
+            viewname='rest_api:accesscontrollist-list',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk
             ), data={'role_pk': self.role.pk}
         )
 
@@ -226,14 +192,12 @@ class ACLAPITestCase(APITestCase):
         )
 
     def test_object_acl_post_with_permissions_added_view(self):
-        response = self.client.post(
-            reverse(
-                'rest_api:accesscontrollist-list',
-                args=(
-                    self.document_content_type.app_label,
-                    self.document_content_type.model,
-                    self.document.pk
-                )
+        response = self.post(
+            viewname='rest_api:accesscontrollist-list',
+            args=(
+                self.document_content_type.app_label,
+                self.document_content_type.model,
+                self.document.pk
             ), data={
                 'role_pk': self.role.pk,
                 'permissions_pk_list': permission_acl_view.pk
