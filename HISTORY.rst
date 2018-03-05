@@ -7,7 +7,15 @@ Next (2018-XX-XX)
 - Improve permission handling in the workflow app.
 - The checkedout detail view permission is now required for the checked out document detail API view.
 - Switch to a resource and service based API from previous app based one.
-              
+- Add missing services for the checkout API.
+- Fix existing checkout APIs.
+- Update API vies and serializers for the latest Django REST framework version. Replace DRF Swagger with DRF-YASG.
+- Update to the latest version of Pillow, django-activity-stream, django-compressor, django-cors-headers, django-formtools, django-qsstats-magic, django-stronghold, 
+ django-suit, furl, graphviz, pyocr, python-dateutil, python-magic, pytz, sh.
+- Update to the latest version the packages for building, development, documentation and testing.
+- Add statistics script to produce a report of the views, APIs and test for each app.
+- Merge base64 filename patch from Cornelius Ludmann.
+
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".
