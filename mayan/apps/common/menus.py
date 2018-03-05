@@ -19,5 +19,5 @@ menu_setup = Menu(name='setup menu')
 menu_sidebar = Menu(name='sidebar menu')
 menu_tools = Menu(name='tools menu')
 menu_user = Menu(
-    icon='fa fa-user-circle-o', name='user menu', label=_('User')
+    icon='fa fa-user-circle', name='user menu', label=_('User')
 )

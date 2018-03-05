@@ -35,7 +35,7 @@ link_metadata_remove = Link(
     args='object.pk'
 )
 link_metadata_view = Link(
-    icon='fa fa-pencil', permissions=(permission_metadata_document_view,),
+    icon='fa fa-pencil-alt', permissions=(permission_metadata_document_view,),
     text=_('Metadata'), view='metadata:metadata_view',
     args='resolved_object.pk'
 )
@@ -62,6 +62,6 @@ link_setup_metadata_type_edit = Link(
     view='metadata:setup_metadata_type_edit', args='object.pk'
 )
 link_setup_metadata_type_list = Link(
-    icon='fa fa-pencil', permissions=(permission_metadata_type_view,),
+    icon='fa fa-pencil-alt', permissions=(permission_metadata_type_view,),
     text=_('Metadata types'), view='metadata:setup_metadata_type_list'
 )

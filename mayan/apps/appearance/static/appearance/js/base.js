@@ -205,7 +205,15 @@ MayanImage.intialize = function () {
 }
 
 MayanImage.prototype.onImageError = function () {
-    this.element.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+    this.element.parent().parent().html('\
+        <div class="fa-3x">\
+            <span class="fa-layers fa-fw">\
+                <i class="far fa-file"></i>\
+                <i class="fa-inverse fas fa-times text-danger" data-fa-transform="shrink-6"></i>\
+            </span>\
+        </div>\
+    ')
+
     // Remove border to indicate non interactive image
     this.element.removeClass('thin_border');
 

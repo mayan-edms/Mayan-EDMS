@@ -42,6 +42,10 @@ class ResolvedLink(object):
         return self.link.icon
 
     @property
+    def icon_class(self):
+        return self.link.icon_class
+
+    @property
     def tags(self):
         return self.link.tags
 
@@ -64,11 +68,12 @@ class Menu(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, name, icon=None, label=None):
+    def __init__(self, name, icon=None, icon_class=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
         self.icon = icon
+        self.icon_class = icon_class
         self.name = name
         self.label = label
         self.bound_links = {}
@@ -240,8 +245,9 @@ class Menu(object):
 class Link(object):
     def __init__(self, text, view=None, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
-                 keep_query=False, kwargs=None, permissions=None,
-                 permissions_related=None, remove_from_query=None, tags=None,
+                 icon_class=None, keep_query=False, kwargs=None,
+                 permissions=None, permissions_related=None,
+                 remove_from_query=None, tags=None,
                  url=None):
 
         self.args = args or []
@@ -249,6 +255,7 @@ class Link(object):
         self.conditional_disable = conditional_disable
         self.description = description
         self.icon = icon
+        self.icon_class = icon_class
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.permissions = permissions or []

@@ -28,7 +28,7 @@ def index_instance_item_link(index_instance_item):
         if index_instance_item.index_template_node.link_documents:
             icon_template = '<i class="fa fa-folder"></i>'
         else:
-            icon_template = '<i class="fa fa-level-up fa-rotate-90"></i>'
+            icon_template = '<i class="fa fa-level-up-alt fa-rotate-90"></i>'
     else:
         icon_template = ''
 
@@ -71,7 +71,7 @@ def node_tree(node, user):
             if element.index_template_node.link_documents:
                 icon = 'fa fa-folder'
             else:
-                icon = 'fa fa-level-up fa-rotate-90'
+                icon = 'fa fa-level-up-alt fa-rotate-90'
 
         result.append(
             '<a href="{url}" class="list-group-item {active}"><span class="badge">{count}</span><i class="{icon}"></i> {text}</a>'.format(

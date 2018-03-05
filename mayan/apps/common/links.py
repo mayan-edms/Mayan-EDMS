@@ -30,7 +30,7 @@ link_about = Link(
     icon='fa fa-info', text=_('About this'), view='common:about_view'
 )
 link_check_version = Link(
-    icon='fa fa-refresh', text=_('Check for updates'),
+    icon='fa fa-sync', text=_('Check for updates'),
     view='common:check_version_view'
 )
 link_current_user_details = Link(
@@ -49,7 +49,7 @@ link_current_user_locale_profile_edit = Link(
     view='common:current_user_locale_profile_edit'
 )
 link_code = Link(
-    icon='fa fa-code-fork', tags='new_window', text=_('Source code'),
+    icon='fa fa-code-branch', tags='new_window', text=_('Source code'),
     url='https://gitlab.com/mayan-edms/mayan-edms'
 )
 link_documentation = Link(
@@ -87,7 +87,7 @@ link_packages_licenses = Link(
     view='common:packages_licenses_view'
 )
 link_setup = Link(
-    icon='fa fa-gear', text=_('Setup'), view='common:setup_list'
+    icon='fa fa-cog', text=_('Setup'), view='common:setup_list'
 )
 link_support = Link(
     icon='fa fa-phone', tags='new_window', text=_('Support'),

@@ -24,6 +24,6 @@ link_namespace_list = Link(
     view='statistics:namespace_list'
 )
 link_statistics = Link(
-    icon='fa fa-sort-numeric-desc', permissions=(permission_statistics_view,),
+    icon='fa fa-sort-numeric-up', permissions=(permission_statistics_view,),
     text=_('Statistics'), view='statistics:namespace_list'
 )

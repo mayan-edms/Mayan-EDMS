@@ -22,7 +22,7 @@
         </title>
 
         {% compress css %}
-            <link href="{% static 'appearance/packages/font-awesome-4.7.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/css/fa-svg-with-js.css' %}" media="screen" rel="stylesheet" type="text/css" />
             {# Disable base Bootstrap CSS, Flatly seems to include it already #}
             {#<link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />#}
             <link href="{% static 'appearance/packages/bootswatch.com/flatly/bootstrap.css' %}" media="screen" rel="stylesheet" type="text/css" />
@@ -169,6 +169,7 @@
         <script type="text/javascript" src="{% static 'appearance/packages/select2-4.0.3/dist/js/select2.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/toastr-master-998959b0/build/toastr.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/jquery.matchHeight-min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/js/base.js' %}"></script>
         {% endcompress %}
 

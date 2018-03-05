@@ -31,7 +31,7 @@ link_group_members = Link(
     view='user_management:group_members', args='object.id'
 )
 link_group_setup = Link(
-    icon='fa fa-group', permissions=(permission_group_view,), text=_('Groups'),
+    icon='fa fa-users', permissions=(permission_group_view,), text=_('Groups'),
     view='user_management:group_list'
 )
 link_user_add = Link(

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.html import strip_tags
@@ -95,8 +96,7 @@ class InstanceImageWidget(object):
     disable_title_link = False
     fancybox_class = 'fancybox'
     gallery_name = None
-    # TODO: update this to load a disk template
-    invalid_image_template = '<p>Invalid image</p>'
+    invalid_image_template = 'documents/invalid_document.html'
     preview_view_name = None
     preview_query_dict = {}
     image_class = 'lazy-load'
@@ -190,7 +190,11 @@ class InstanceImageWidget(object):
         result.append('<div class="instance-image-widget">')
 
         if not self.is_valid(instance=instance):
-            result.append(self.invalid_image_template)
+            result.append(
+                render_to_string(
+                    self.invalid_image_template
+                )
+            )
         else:
             if self.gallery_name:
                 gallery_markup = 'rel="%s"' % self.gallery_name
@@ -204,7 +208,7 @@ class InstanceImageWidget(object):
 
                 if title:
                     if not self.disable_title_link:
-                        title_markup = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title} <i class=\'fa fa-external-link\'></i></a>"'.format(
+                        title_markup = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title} <i class=\'fa fa-external-link-alt\'></i></a>"'.format(
                             title=strip_tags(title), url=self.get_destination_url(instance=instance) or '#'
                         )
                     else:
@@ -226,10 +230,7 @@ class InstanceImageWidget(object):
 
             result.append(
                 '<div class="spinner-container text-primary" style="height: {height}px;">'
-                '<span class="spinner-icon fa-stack fa-lg">'
-                '<i class="fa fa-file-o fa-stack-2x"></i>'
-                '<i class="fa fa-clock-o fa-stack-1x"></i>'
-                '</span>'
+                '<i class="far fa-clock fa-2x"></i>'
                 '</div>'
                 '<img class="thin_border {image_class} pull-left" style="width: {width};"'
                 'data-url="{preview_full_url}" src="#" '
@@ -256,9 +257,6 @@ class BaseDocumentThumbnailWidget(InstanceImageWidget):
         'size': setting_preview_size.value
     }
     gallery_name = 'document_list'
-    invalid_image_template = """
-        <span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>
-    """
     preview_view_name = 'rest_api:documentpage-image'
     preview_view_query_dict = {
         'size': setting_thumbnail_size.value

@@ -7,6 +7,10 @@ from converter.permissions import (
 )
 from navigation import Link
 
+from .icons import (
+    icon_document_preview, icon_document_properties,
+    icon_document_version_list, icon_document_pages
+)
 from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_properties_edit, permission_document_print,
@@ -49,22 +53,22 @@ def is_min_zoom(context):
 
 # Facet
 link_document_preview = Link(
-    icon='fa fa-eye', permissions=(permission_document_view,),
+    icon_class=icon_document_preview, permissions=(permission_document_view,),
     text=_('Preview'), view='documents:document_preview',
     args='resolved_object.id'
 )
 link_document_properties = Link(
-    icon='fa fa-info', permissions=(permission_document_view,),
+    icon_class=icon_document_properties, permissions=(permission_document_view,),
     text=_('Properties'), view='documents:document_properties',
     args='resolved_object.id'
 )
 link_document_version_list = Link(
-    icon='fa fa-code-fork', permissions=(permission_document_version_view,),
+    icon_class=icon_document_version_list, permissions=(permission_document_version_view,),
     text=_('Versions'), view='documents:document_version_list',
     args='resolved_object.pk'
 )
 link_document_pages = Link(
-    icon='fa fa-files-o', permissions=(permission_document_view,),
+    icon_class=icon_document_pages, permissions=(permission_document_view,),
     text=_('Pages'), view='documents:document_pages', args='resolved_object.pk'
 )
 
@@ -154,7 +158,7 @@ link_document_version_return_document = Link(
     args='resolved_object.document.pk'
 )
 link_document_version_return_list = Link(
-    icon='fa fa-code-fork', permissions=(permission_document_version_view,),
+    icon='fa fa-code-branch', permissions=(permission_document_version_view,),
     text=_('Versions'), view='documents:document_version_list',
     args='resolved_object.document.pk'
 )
@@ -168,7 +172,7 @@ link_document_list = Link(
     icon='fa fa-file', text=_('All documents'), view='documents:document_list'
 )
 link_document_list_recent = Link(
-    icon='fa fa-clock-o', text=_('Recent documents'),
+    icon='fa fa-clock', text=_('Recent documents'),
     view='documents:document_list_recent'
 )
 link_document_list_deleted = Link(
@@ -178,7 +182,7 @@ link_document_list_deleted = Link(
 
 # Tools
 link_clear_image_cache = Link(
-    icon='fa fa-file-image-o',
+    icon='fa fa-file-image',
     description=_(
         'Clear the graphics representations used to speed up the documents\' '
         'display and interactive transformations results.'

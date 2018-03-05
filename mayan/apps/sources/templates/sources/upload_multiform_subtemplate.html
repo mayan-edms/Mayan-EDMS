@@ -10,7 +10,7 @@
 
 <script type="text/x-template" id="previewTemplate">
     <div class="dz-preview dz-file-preview">
-        <i class="fa fa-file-o" style="font-size: 150px;"></i>
+        <i class="far fa-file" style="font-size: 150px;"></i>
 
         <div class="dz-image"><img data-dz-thumbnail></div>
         <div class="dz-details">
@@ -28,7 +28,7 @@
             <i class="text-success fa fa-4x fa-check-circle"></i>
         </div>
         <div class="dz-error-mark">
-            <i class="text-danger fa fa-4x fa-exclamation-circle"></i>
+            <i class="text-danger fa fa-4x fa-times-circle"></i>
         </div>
 
         <div class="text-center">
@@ -44,7 +44,7 @@
             paramName: 'source-file',
             addRemoveLinks: false,
             createImageThumbnails: false,
-            dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> ' + gettext('Drop files or click here to upload files'),
+            dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + gettext('Drop files or click here to upload files'),
             dictFallbackMessage: gettext('Your browser does not support drag\'n\'drop file uploads.'),
             dictFallbackText: gettext('Please use the fallback form below to upload your files like in the olden days.'),
             dictFileTooBig: gettext('File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.'),

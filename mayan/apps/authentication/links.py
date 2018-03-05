@@ -10,7 +10,7 @@ def has_usable_password(context):
 
 
 link_logout = Link(
-    icon='fa fa-sign-out', text=_('Logout'), view='authentication:logout_view'
+    icon='fa fa-sign-out-alt', text=_('Logout'), view='authentication:logout_view'
 )
 link_password_change = Link(
     condition=has_usable_password, icon='fa fa-key', text=_('Change password'),

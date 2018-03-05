@@ -12,12 +12,12 @@ link_document_content = Link(
     view='document_parsing:document_content',
 )
 link_document_parsing_errors_list = Link(
-    args='resolved_object.id', icon='fa fa-file-text-o',
+    args='resolved_object.id', icon='fa fa-file-alt',
     permissions=(permission_content_view,), text=_('Parsing errors'),
     view='document_parsing:document_parsing_error_list'
 )
 link_document_content_download = Link(
-    args='resolved_object.id', icon='fa fa-file-text-o',
+    args='resolved_object.id', icon='fa fa-file-alt',
     permissions=(permission_content_view,), text=_('Download content'),
     view='document_parsing:document_content_download'
 )
@@ -34,6 +34,6 @@ link_document_type_submit = Link(
     view='document_parsing:document_type_submit'
 )
 link_error_list = Link(
-    icon='fa fa-file-text-o', permissions=(permission_content_view,),
+    icon='fa fa-file-alt', permissions=(permission_content_view,),
     text=_('Parsing errors'), view='document_parsing:error_list'
 )
