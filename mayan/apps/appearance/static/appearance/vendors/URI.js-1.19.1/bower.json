@@ -1,0 +1,16 @@
+{
+  "name": "urijs",
+  "version": "1.19.1",
+  "main": "src/URI.js",
+  "ignore": [
+    ".*",
+    "*.css",
+    "/*.js",
+    "/*.html",
+    "/*.json",
+    "utils",
+    "test",
+    "prettify"
+  ],
+  "license": "MIT"
+}

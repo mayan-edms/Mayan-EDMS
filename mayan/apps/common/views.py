@@ -272,6 +272,11 @@ class PackagesLicensesView(SimpleView):
         }
 
 
+class RootView(SimpleView):
+    extra_context = {'home_view': settings.HOME_VIEW}
+    template_name = 'appearance/root.html'
+
+
 class SetupListView(TemplateView):
     template_name = 'appearance/generic_list_horizontal.html'
 

@@ -82,7 +82,7 @@ class DocumentPageNavigationBase(RedirectView):
         resolver_match = resolve(parse_result.path)
 
         # Default is to stay on the same view
-        url = parse_result.path, query_dict
+        url = parse_result.path
 
         new_object = self.navigation_function()
 

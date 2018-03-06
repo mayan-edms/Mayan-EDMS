@@ -9,12 +9,13 @@ from .views import (
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
     LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    PackagesLicensesView, SetupListView, ToolsListView,
+    PackagesLicensesView, RootView, SetupListView, ToolsListView,
     multi_object_action_view
 )
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', RootView.as_view(), name='root'),
+    url(r'^home/$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(
         r'^check_version/$', CheckVersionView.as_view(),

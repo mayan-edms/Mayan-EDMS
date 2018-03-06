@@ -251,8 +251,9 @@ COMPRESS_CSS_FILTERS = (
 COMPRESS_ENABLED = False
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 # --------- Django -------------------
+HOME_VIEW = 'common:home'
 LOGIN_URL = 'authentication:login_view'
-LOGIN_REDIRECT_URL = 'common:home'
+LOGIN_REDIRECT_URL = 'common:root'
 INTERNAL_IPS = ('127.0.0.1',)
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
@@ -293,3 +294,5 @@ STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
 SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'None',
 }
+# ----- AJAX REDIRECT -----
+AJAX_REDIRECT_CODE = 278

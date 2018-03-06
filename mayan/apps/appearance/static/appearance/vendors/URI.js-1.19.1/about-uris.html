@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>URI.js - About URIs</title>
+    <meta name="description" content="URI.js is a Javascript library for working with URLs." />
+    
+    <script src="jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="prettify/prettify.js" type="text/javascript"></script>
+    <script src="screen.js" type="text/javascript"></script>
+    <link href="screen.css" rel="stylesheet" type="text/css" />
+    <link href="prettify/prettify.sunburst.css" rel="stylesheet" type="text/css" />
+    <script src="src/URI.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8922143-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+    <a id="github-forkme" href="https://github.com/medialize/URI.js"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    
+    <div id="container">
+    <h1><a href="https://github.com/medialize/URI.js">URI.js</a></h1>
+    
+    <ul class="menu">
+        <li><a href="/URI.js/">Intro</a></li>
+        <li class="active"><a href="about-uris.html">Understanding URIs</a></li>
+        <li><a href="docs.html">API-Documentation</a></li>
+        <li><a href="jquery-uri-plugin.html">jQuery Plugin</a></li>
+        <li><a href="uri-template.html">URI Template</a></li>
+        <li><a href="build.html">Build</a></li>
+        <li><a href="http://rodneyrehm.de/en/">Author</a></li>
+    </ul>
+    
+    <h2>Understanding URIs</h2>
+    
+    <p>
+        Uniform Resource Identifiers (URI) can be one of two things, a Uniform Resource Locator (URL) or a Uniform Resource Name (URN).
+        You likely deal with URLs most of the time. See RFC 3986 for a proper definition of the terms <a href="http://tools.ietf.org/html/rfc3986#section-1.1.3">URI, URL and URN</a>
+    </p>
+    
+    <p>
+        URNs <em>name</em> a resource.
+        They are (supposed to) designate a globally unique, permanent identifier for that resource.
+        For example, the URN <code>urn:isbn:0201896834</code> uniquely identifies Volume 1 of Donald Knuth's <em>The Art of Computer Porgramming</em>.
+        Even if that book goes out of print, that URN will continue to identify that particular book in that particular printing.
+        While the term &quot;URN&quot; <em>technically</em> refers to a specific URI scheme laid out by <a href="http://tools.ietf.org/html/rfc2141">RFC 2141</a>,
+        the previously-mentioned RFC 3986 indicates that in common usage &quot;URN&quot; refers to any kind of URI that identifies a resource.
+    </p>
+
+    <p>
+        URLs <em>locate</em> a resource.
+        They designate a protocol to use when looking up the resource and provide an &quot;address&quot; for finding the resource within that scheme.
+        For example, the URL <code><a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a></code> tells the consumer (most likely a web browser)
+        to use the HTTP protocol to access whatever site is found at the <code>/html/rfc3986</code> path of <code>tools.ietf.org</code>.
+        URLs are not permanent; it is possible that in the future that the IETF will move to a different domain or even that some other organization will acquire the rights to <code>tools.ietf.org</code>.
+        It is also possible that multiple URLs may locate the same resource;
+        for example, an admin at the IETF might be able to access the document found at the example URL via the <code>ftp://</code> protocol.
+    </p>
+
+    <h2>URLs and URNs in URI.js</h2>
+
+    <p>
+        The distinction between URLs and URNs is one of <strong>semantics</strong>.
+        In principle, it is impossible to tell, on a purely syntactical level, whether a given URI is a URN or a URL without knowing more about its scheme.
+        Practically speaking, however, URIs that look like HTTP URLs (scheme is followed by a colon and two slashes, URI has an authority component, and paths are delimited by slashes) tend to be URLs,
+        and URIs that look like RFC 2141 URNs (scheme is followed by a colon, no authority component, and paths are delimited by colons) tend to be URNs (in the broad sense of &quot;URIs that name&quot;).
+    </p>
+
+    <p>
+        So, for the purposes of URI.js, the distinction between URLs and URNs is treated as one of <strong>syntax</strong>.
+        The main functional differences between the two are that (1) URNs will not have an authority element and
+        (2) when breaking the path of the URI into segments, the colon will be used as the delimiter rather than the slash.
+        The most surprising result of this is that <code>mailto:</code> URLs will be considered by URI.js to be URNs rather than URLs.
+        That said, the functional differences will not adversely impact the handling of those URLs.
+    </p>
+    
+    <h2 id="components">Components of an URI</h2>
+    <p><a href="http://tools.ietf.org/html/rfc3986#section-3">RFC 3986 Section 3</a> visualizes the structure of <abbr title="Uniform Resource Indicator">URI</abbr>s as follows:</p>
+    <pre class="ascii-art">
+URL:      foo://example.com:8042/over/there?name=ferret#nose
+<span class="line">          \_/   \______________/\_________/ \_________/ \__/
+           |           |            |            |        |
+</span><span class="label">        scheme     authority       path        query   fragment
+</span><span class="line">           |   _____________________|__
+          / \ /                        \
+</span>URN:      urn:example:animal:ferret:nose</pre>
+
+    <h3 id="components-url">Components of an <abbr title="Uniform Resource Locator">URL</abbr> in URI.js</h3>
+
+    <pre class="ascii-art">
+              <a href="docs.html#accessors-origin">origin</a>
+<span class="line">       __________|__________
+      /                     \
+</span>                         <a href="docs.html#accessors-authority">authority</a>
+<span class="line">     |             __________|_________
+     |            /                    \
+</span>              <a href="docs.html#accessors-userinfo">userinfo</a>                <a href="docs.html#accessors-host">host</a>                          <a href="docs.html#accessors-resource">resource</a>
+<span class="line">     |         __|___                ___|___                 __________|___________
+     |        /      \              /       \               /                      \
+</span>         <a href="docs.html#accessors-username">username</a>  <a href="docs.html#accessors-password">password</a>     <a href="docs.html#accessors-hostname">hostname</a>    <a href="docs.html#accessors-port">port</a>     <a href="docs.html#accessors-pathname">path</a> &amp; <a href="docs.html#accessors-segment">segment</a>      <a href="docs.html#accessors-search">query</a>   <a href="docs.html#accessors-hash">fragment</a>
+<span class="line">     |     __|___   __|__    ______|______   |   __________|_________   ____|____   |
+     |    /      \ /     \  /             \ / \ /                    \ /         \ / \
+</span>    foo://username:password@www.example.com:123/hello/world/there.html?name=ferret#foo
+<span class="line">    \_/                     \ / \       \ /    \__________/ \     \__/
+     |                       |   \       |           |       \      |
+</span>  <a href="docs.html#accessors-protocol">scheme</a>               <a href="docs.html#accessors-subdomain">subdomain</a>  <span class="line">\</span>     <a href="docs.html#accessors-tld">tld</a>      <a href="docs.html#accessors-directory">directory</a>    <span class="line">\</span>   <a href="docs.html#accessors-suffix">suffix</a>
+<span class="line">                                   \____/                      \___/
+                                      |                          |
+</span>                                    <a href="docs.html#accessors-domain">domain</a>                   <a href="docs.html#accessors-filename">filename</a>
+
+</pre>
+    
+    <p>
+        In Javascript the <em>query</em> is often referred to as the <em>search</em>. 
+        URI.js provides both accessors with the subtle difference of <a href="docs.html#accessors-search">.search()</a> beginning with the <code>?</code>-character
+        and <a href="docs.html#accessors-search">.query()</a> not.
+    </p>
+    <p>
+        In Javascript the <em>fragment</em> is often referred to as the <em>hash</em>. 
+        URI.js provides both accessors with the subtle difference of <a href="docs.html#accessors-hash">.hash()</a> beginning with the <code>#</code>-character
+        and <a href="docs.html#accessors-hash">.fragment()</a> not.
+    </p>
+    
+    <h3 id="components-urn">Components of an <abbr title="Uniform Resource Name">URN</abbr> in URI.js</h3>
+    
+    <pre class="ascii-art">
+    urn:example:animal:ferret:nose?name=ferret#foo
+<span class="line">    \ / \________________________/ \_________/ \ /
+     |               |                  |       |
+</span>  <a href="docs.html#accessors-protocol">scheme</a>       <a href="docs.html#accessors-pathname">path</a> &amp; <a href="docs.html#accessors-segment">segment</a>         <a href="docs.html#accessors-search">query</a>   <a href="docs.html#accessors-hash">fragment</a>
+    </pre>
+    
+    <p>While <a href="http://tools.ietf.org/html/rfc2141">RFC 2141</a> does not define URNs having a query or fragment component, URI.js enables these accessors for convenience.</p>
+    
+    <h2 id="problems">URLs - Man Made Problems</h2>
+    
+    <p>URLs (URIs, whatever) aren't easy. There are a couple of issues that make this simple text representation of a resource a real pain</p>
+    <ul>
+        <li>Look simple but have tricky encoding issues</li>
+        <li>Domains aren't part of the specification</li>
+        <li>Query String Format isn't part of the specification</li>
+        <li>Environments (PHP, JS, Ruby, …) handle Query Strings quite differently</li>
+    </ul>
+    
+    <h3 id="problems-encoding">Parsing (seemingly) invalid URLs</h3>
+    <p>Because URLs look very simple, most people haven't read the formal specification. As a result, most people get URLs wrong on many different levels. The one thing most everybody screws up is proper encoding/escaping.</p>
+    <p><code>http://username:pass:word@example.org/</code> is such a case. Often times homebrew URL handling misses escaping the less frequently used parts such as the userinfo.</p>
+    <p><code>http://example.org/@foo</code> that "@" doesn't have to be escaped according to RFC3986. Homebrew URL handlers often just treat everything between "://" and "@" as the userinfo.</p>
+    <p><code>some/path/:foo</code> is a valid relative path (as URIs don't have to contain scheme and authority). Since homebrew URL handlers usually just look for the first occurence of ":" to delimit the scheme, they'll screw this up as well.</p>
+    <p><code>+</code> is the proper escape-sequence for a space-character within the query string component, while every other component prefers <code>%20</code>. This is due to the fact that the actual format used within the query string component is not defined in RFC 3986, but in the HTML spec.</p>
+    <p>There is encoding and strict encoding - and Javascript won't get them right: <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/encodeURIComponent#Description">encodeURIComponent()</a></p>
+    
+    <h3 id="problems-tld">Top Level Domains</h3>
+    <p>The hostname component can be one of may things. An IPv4 or IPv6 address, an IDN or Punycode domain name, or a regular domain name. While the format (and meaning) of IPv4 and IPv6 addresses is defined in RFC 3986, the meaning of domain names is not.</p>
+    <p>DNS is the base of translating domain names to IP addresses. DNS itself only specifies syntax, not semantics. The missing semantics is what's driving us crazy here.</p> 
+    <p>ICANN provides a <a href="http://www.iana.org/domains/root/db/">list of registered Top Level Domains</a> (TLD). There are country code TLDs (ccTLDs, assigned to each country, like ".uk" for United Kindom) and generic TLDs (gTLDs, like ".xxx" for you know what). Also note that a TLD may be non-ASCII <code>.香港</code> (IDN version of HK, Hong Kong).</p>
+    <p>IDN TLDs such as <code>.香港</code> and the fact that any possible new TLD could pop up next month has lead to a lot of URL/Domain verification tools to fail.</p>
+
+    <h3 id="problems-sld">Second Level Domains</h3>    
+    <p>To make Things worse, people thought it to be a good idea to introduce Second Level Domains (SLD, ".co.uk" - the commercial namespace of United Kingdom). These SLDs are not up to ICANN to define, they're handled individually by each NIC (Network Information Center, the orgianisation responsible for a specific TLD).</p>
+    <p>Since there is no central oversight, things got really messy in this particular space. Germany doesn't do SDLs, Australia does. Australia has different SLDs than the United Kingdom (".csiro.au" but no ".csiro.uk"). The individual NICs are not required to publish their arbitrarily chosen SLDs in a defined syntax anywhere.</p>
+    <p>You can scour each NIC's website to find some hints at their SLDs. You can look them up on Wikipedia and hope they're right. Or you can use <a href="http://publicsuffix.org/">PublicSuffix</a>.</p>
+    <p>Speaking of PublicSuffix, it's time mentioning that browser vendors actually keep a list of known Second Level Domains. They need to know those for security issues. Remember cookies? They can be read and set on a domain level. What do you think would happen if "co.uk" was treated as the domain? <code>amazon.co.uk</code> would be able to read the cookies of <code>google.co.uk</code>. PublicSuffix also contains custom SLDs, such as <code>.dyndns.org</code>. While this makes perfect sense for browser security, it's not what we need for basic URL handling.</p>
+    <p>TL;DR: It's a mess.</p>
+    
+    <h3 id="problems-querystring">The Query String</h3>
+    <p>PHP (<a href="http://php.net/manual/en/function.parse-str.php">parse_str()</a>) will automatically parse the query string and populate the superglobal <code>$_GET</code> for you. <code>?foo=1&amp;foo=2</code> becomes <code>$_GET = array('foo' => 2);</code>, while <code>?foo[]=1&amp;foo[]=2</code> becomes <code>$_GET = array('foo' => array("1", "2"));</code>.</p>
+    <p>Ruby's <code>CGI.parse()</code> turns <code>?a=1&amp;a=2</code> into <code>{"a" : ["1", "2"]}</code>, while Ruby on Rails chose the PHP-way.</p>
+    <p>Python's <a href="http://docs.python.org/2/library/urlparse.html#urlparse.parse_qs">parse_qs()</a> doesn't care for <code>[]</code> either.
+    <p>Most other languages don't follow the <code>[]</code>-style array-notation and deal with this mess differently.</p>
+    <p>TL;DR: You need to know the target-environment, to know how complex query string data has to be encoded</p>
+    
+    <h3 id="problems-fragment">The Fragment</h3>
+    <p>Given the URL <code>http://example.org/index.html#foobar</code>, browsers only request <code>http://example.org/index.html</code>, the fragment <code>#foobar</code> is a client-side thing.</p>
+    
+    </div>
+</body>
+</html>
