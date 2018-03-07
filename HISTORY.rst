@@ -26,6 +26,7 @@ Next (2018-XX-XX)
 - Add template and modal to display server side errors.
 - Remove the unused scrollable_content internal feature.
 - Remove unused animate.css package.
+- Add page loading indicator.
 
 2.8 (2018-02-27)
 ================
