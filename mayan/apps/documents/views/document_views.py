@@ -717,38 +717,50 @@ class DocumentTransformationsCloneView(FormView):
 class DocumentPrint(FormView):
     form_class = DocumentPrintForm
 
-    def form_valid(self, form):
-        instance = self.get_object()
+    def dispatch(self, request, *args, **kwargs):
+        self.page_group = self.request.GET.get('page_group')
+        self.page_range = self.request.GET.get('page_range')
+        return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
 
-        if form.cleaned_data['page_group'] == PAGE_RANGE_RANGE:
-            page_range = form.cleaned_data['page_range']
+    def get(self, request, *args, **kwargs):
 
-            if page_range:
-                page_range = parse_range(page_range)
-                pages = instance.pages.filter(page_number__in=page_range)
+        if not self.page_group and not self.page_range:
+           return super(DocumentPrint, self).get(request, *args, **kwargs)
+        else:
+            instance = self.get_object()
+
+            if self.page_group == PAGE_RANGE_RANGE:
+                if self.page_range:
+                    page_range = parse_range(self.page_range)
+                    pages = instance.pages.filter(page_number__in=page_range)
+                else:
+                    pages = instance.pages.all()
             else:
                 pages = instance.pages.all()
-        else:
-            pages = instance.pages.all()
 
-        context = self.get_context_data()
+            context = self.get_context_data()
 
-        context.update(
-            {
-                'appearance_type': 'plain',
-                'pages': pages,
-                'size': setting_print_size.value,
-            }
-        )
+            context.update(
+                {
+                    'appearance_type': 'plain',
+                    'pages': pages,
+                    'size': setting_print_size.value,
+                }
+            )
 
-        return self.render_to_response(context=context)
+            return self.render_to_response(context=context)
 
     def get_extra_context(self):
         instance = self.get_object()
 
         context = {
+            'form_action': reverse(
+                'documents:document_print', args=(instance.pk,)
+            ),
             'object': instance,
             'submit_label': _('Submit'),
+            'submit_method': 'GET',
+            'submit_target': '_blank',
             'title': _('Print: %s') % instance,
         }
 
@@ -767,7 +779,7 @@ class DocumentPrint(FormView):
         return instance
 
     def get_template_names(self):
-        if self.request.method == 'POST':
+        if self.page_group or self.page_range:
             return ('documents/document_print.html',)
         else:
             return (self.template_name,)

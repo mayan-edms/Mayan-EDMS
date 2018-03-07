@@ -168,11 +168,19 @@ PartialNavigation.prototype.setupAjaxForm = function () {
             console.log('>> ajaxForm.beforeSubmit.$form.target: ' + $form.attr('action'));
             var uri = new URI(location);
             var uriFragment = uri.fragment();
-            console.log('>>ajaxForm.$form.target.uriFragment:' + uriFragment);
-
             var url = $form.attr('action') || uriFragment;
 
+            console.log('>>ajaxForm.$form.target.uriFragment:' + uriFragment);
             options.url = url;
+
+            if ($form.attr('target') == '_blank') {
+                window.open(
+                    $form.attr('action') + '?' + decodeURIComponent($form.serialize())
+                );
+
+                return false;
+            }
+
             console.log('>>ajaxForm.url:' + url);
         },
         dataType: 'html',

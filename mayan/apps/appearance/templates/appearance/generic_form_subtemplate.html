@@ -10,9 +10,9 @@
 
 <div class="well">
     {% if form.is_multipart %}
-        <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'' }}">
+        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% else %}
-        <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'' }}">
+        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% endif %}
 
         {{ wizard.management_form }}
