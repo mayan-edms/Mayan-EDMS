@@ -15,6 +15,7 @@ jQuery(document).ready(function() {
 var afterBaseLoad = function () {
     MayanImage.intialize();
     app.doToastrMessages();
+    app.setupAJAXperiodicWorkers();
     app.setupAutoSubmit();
     app.setupItemsSelector();
     app.setupNewWindowAnchor();

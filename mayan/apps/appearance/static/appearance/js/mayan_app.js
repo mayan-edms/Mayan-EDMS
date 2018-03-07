@@ -52,6 +52,35 @@ App.tagResultTemplate = function (tag) {
 
 // Instance methods
 
+App.prototype.AJAXperiodicWorker = function (options) {
+    var app = this;
+
+    $.ajax({
+        complete: function() {
+            setTimeout(app.AJAXperiodicWorker, options.interval, options);
+        },
+        success: function(data) {
+            options.element.text(data[options.attributeName]);
+        },
+        url: options.APIURL
+  });
+}
+
+App.prototype.setupAJAXperiodicWorkers = function () {
+    var app = this;
+
+    $('a[data-apw-url]').each(function() {
+        var $this = $(this);
+
+        app.AJAXperiodicWorker({
+            attributeName: $this.data('apw-attribute'),
+            APIURL: $this.data('apw-url'),
+            element: $this,
+            interval: $this.data('apw-interval'),
+        });
+    });
+}
+
 App.prototype.doToastrMessages = function () {
     toastr.options = {
         'closeButton': true,

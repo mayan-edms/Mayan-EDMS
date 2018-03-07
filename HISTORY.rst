@@ -27,6 +27,7 @@ Next (2018-XX-XX)
 - Remove the unused scrollable_content internal feature.
 - Remove unused animate.css package.
 - Add page loading indicator.
+- Add periodic AJAX workers to update the value of the notifications link.
 
 2.8 (2018-02-27)
 ================

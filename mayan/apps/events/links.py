@@ -68,6 +68,9 @@ link_user_events = Link(
     view='events:user_events'
 )
 link_user_notifications_list = Link(
-    icon='fa fa-bell', text=get_notification_count,
+    html_data={
+        'apw-attribute': 'count', 'apw-interval': '5000',
+        'apw-url': '/api/notifications/'
+    }, icon='fa fa-bell', text=get_notification_count,
     view='events:user_notifications_list'
 )
