@@ -3,7 +3,7 @@
 var app = new App();
 var partialNavigation = new PartialNavigation({
     initialURL: initialURL,
-    excludeAnchorClasses: ['fancybox', 'new_window'],
+    excludeAnchorClasses: ['fancybox', 'new_window', 'non-ajax'],
     formBeforeSerializeCallbacks: [App.MultiObjectFormProcess],
 });
 

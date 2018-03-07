@@ -42,6 +42,10 @@ class ResolvedLink(object):
         return self.link.html_data
 
     @property
+    def html_extra_classes(self):
+        return self.link.html_extra_classes
+
+    @property
     def icon(self):
         return self.link.icon
 
@@ -249,9 +253,9 @@ class Menu(object):
 class Link(object):
     def __init__(self, text, view=None, args=None, condition=None,
                  conditional_disable=None, description=None, html_data=None,
-                 icon=None, icon_class=None, keep_query=False, kwargs=None,
-                 permissions=None, permissions_related=None,
-                 remove_from_query=None, tags=None,
+                 html_extra_classes=None, icon=None, icon_class=None,
+                 keep_query=False, kwargs=None, permissions=None,
+                 permissions_related=None, remove_from_query=None, tags=None,
                  url=None):
 
         self.args = args or []
@@ -259,6 +263,7 @@ class Link(object):
         self.conditional_disable = conditional_disable
         self.description = description
         self.html_data = html_data
+        self.html_extra_classes = html_extra_classes
         self.icon = icon
         self.icon_class = icon_class
         self.keep_query = keep_query
