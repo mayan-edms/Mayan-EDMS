@@ -118,15 +118,12 @@ PartialNavigation.prototype.onAnchorClick = function ($this, event) {
 }
 
 PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
-    window.history.back();
-
     if (jqXHR.status == 0) {
         $('#modal-server-error .modal-body').html($('#template-error').html());
+        $('#modal-server-error').modal('show')
     } else {
-        $('#modal-server-error .modal-body').html(jqXHR.responseText.replace(/\n/g, "<br />"));
+        $('#ajax-content').html(jqXHR.responseText.replace(/\n/g, "<br />"));
     }
-
-    $('#modal-server-error').modal('show')
 }
 
 PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
