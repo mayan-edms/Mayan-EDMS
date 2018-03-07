@@ -12,14 +12,24 @@ $.fn.hasAnyClass = function() {
 var PartialNavigation = function (parameters) {
     parameters = parameters || {};
 
-    this.initialURL = parameters.initialURL || null;
-    this.excludeAnchorClasses = parameters.excludeAnchorClasses || [];
+    // lastLocation - used as the AJAX referer
     this.lastLocation = null;
+
+    // initialURL - the URL to send users when trying to access the / URL
+    this.initialURL = parameters.initialURL || null;
+
+    // excludeAnchorClasses - Anchors with any of these classes will not be processes as AJAX anchors
+    this.excludeAnchorClasses = parameters.excludeAnchorClasses || [];
+
+    // formBeforeSerializeCallbacks - Callbacks to execute before submitting an ajaxForm
+    this.formBeforeSerializeCallbacks = parameters.formBeforeSerializeCallbacks || [];
 
     if (!this.initialURL) {
         alert('Need to setup initialURL');
     }
+}
 
+PartialNavigation.prototype.initialize = function () {
     this.setupAjaxAnchors();
     this.setupAjaxNavigation();
     this.setupAjaxForm();
@@ -137,6 +147,11 @@ PartialNavigation.prototype.setupAjaxForm = function () {
 
     $('form').ajaxForm({
         async: false,
+        beforeSerialize: function($form, options) {
+            $.each(app.formBeforeSerializeCallbacks, function (index, value) {
+               value($form, options);
+            });
+        },
         beforeSubmit: function(arr, $form, options) {
             console.log('>> ajaxForm.beforeSubmit.$form.target: ' + $form.attr('action'));
             var uri = new URI(location);

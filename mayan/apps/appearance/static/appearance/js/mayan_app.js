@@ -10,6 +10,30 @@ var App = function (parameters) {
 
 // Class methods and variables
 
+App.MultiObjectFormProcess = function ($form, options) {
+    /*
+     * ajaxForm callback to add the external item checkboxes to the
+     * submitted form
+     */
+
+    if ($form.hasClass('form-multi-object-action')) {
+        // Turn form data into an object
+        var formArray = $form.serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+
+        // Add all checked checkboxes to the form data
+        $('.form-multi-object-action-checkbox:checked').each(function() {
+            var $this = $(this);
+            formArray[$this.attr('name')] = $this.attr('value');
+        });
+
+        // Set the form data as the data to send
+        options.data = formArray;
+    }
+}
+
 App.tagSelectionTemplate = function (tag, container) {
   var $tag = $(
     '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
@@ -97,7 +121,7 @@ App.prototype.doToastrMessages = function () {
 App.prototype.setupAutoSubmit = function () {
     $('.select-auto-submit').change(function () {
         if ($(this).val()) {
-            this.form.submit();
+            $(this.form).trigger('submit');
         }
     });
 }

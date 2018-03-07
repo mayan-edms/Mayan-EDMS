@@ -1,19 +1,19 @@
 'use strict';
 
 var app = new App();
+var partialNavigation = new PartialNavigation({
+    initialURL: initialURL,
+    excludeAnchorClasses: ['fancybox', 'new_window'],
+    formBeforeSerializeCallbacks: [App.MultiObjectFormProcess],
+});
 
 jQuery(document).ready(function() {
     app.setupFullHeightResizing();
-
-    var partialNavigation = new PartialNavigation({
-        initialURL: initialURL,
-        excludeAnchorClasses: ['fancybox', 'new_window'],
-    });
+    partialNavigation.initialize();
 });
 
 var afterBaseLoad = function () {
     MayanImage.intialize();
-
     app.doToastrMessages();
     app.setupAutoSubmit();
     app.setupItemsSelector();
