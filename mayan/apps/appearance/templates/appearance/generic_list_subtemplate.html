@@ -36,9 +36,6 @@
                     </form>
                 </div>
             </div>
-            {% if scrollable_content %}
-                <div style="border: 1px solid; height: {{ scrollable_content_height }}; overflow: auto;">
-            {% endif %}
 
             <div class="table-responsive">
                 <table class="table table-condensed table-striped">
@@ -114,11 +111,6 @@
                     </tbody>
                 </table>
             </div>
-
-            {% if scrollable_content %}
-                </div>
-            {% endif %}
-
             {% include 'pagination/pagination.html' %}
         </div>
     </div>

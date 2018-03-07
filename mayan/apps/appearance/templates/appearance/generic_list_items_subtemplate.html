@@ -52,9 +52,6 @@
             {% if object_list %}
                 <hr style="border-bottom: 1px solid lightgrey;">
             {% endif %}
-            {% if scrollable_content %}
-                <div style="border: 1px solid; height: {{ scrollable_content_height }}; overflow: auto;">
-            {% endif %}
 
             <div class="row">
                 {% for object in object_list %}
@@ -124,9 +121,6 @@
                 {% endfor %}
             </div>
 
-            {% if scrollable_content %}
-                </div>
-            {% endif %}
             {% include 'pagination/pagination.html' %}
         </div>
     </div>
