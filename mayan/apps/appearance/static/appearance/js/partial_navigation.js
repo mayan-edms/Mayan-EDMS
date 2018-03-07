@@ -35,17 +35,29 @@ PartialNavigation.prototype.initialize = function () {
     this.setupAjaxForm();
 }
 
-PartialNavigation.prototype.filterLocation = function (location) {
-    var uri = new URI(location);
+PartialNavigation.prototype.filterLocation = function (newLocation) {
+    var uri = new URI(newLocation);
 
-    console.log('>> filterLocation.location: ' + location);
-    console.log('>> filterLocation.uri.path(): ' + uri.path());
+    console.log('>> filterLocation.Newlocation: ' + newLocation);
+    console.log('>> filterLocation.newLocation.uri.path(): ' + uri.path());
+
+    var currentLocation = new URI(location);
+
+    if (uri.path() === '') {
+        // href with no path remain in the same location
+        // We strip the same location query and use the new href's one
+        uri.path(
+            new URI(currentLocation.fragment()).path()
+        )
+        return uri.toString();
+    }
+
     if (uri.path() === '/') {
         // Root URL is not allowed
         return this.initialURL;
     }
 
-    return location;
+    return newLocation;
 }
 
 PartialNavigation.prototype.loadAjaxContent = function (url) {
@@ -55,7 +67,7 @@ PartialNavigation.prototype.loadAjaxContent = function (url) {
     url = this.filterLocation(url);
     console.log('>> loadAjaxContent.filterLocation.url: ' + url);
     $.ajax({
-        async: false,
+        async: true,
         mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
         url: url,
         type: 'GET',
@@ -146,7 +158,7 @@ PartialNavigation.prototype.setupAjaxForm = function () {
     var app = this;
 
     $('form').ajaxForm({
-        async: false,
+        async: true,
         beforeSerialize: function($form, options) {
             $.each(app.formBeforeSerializeCallbacks, function (index, value) {
                value($form, options);
