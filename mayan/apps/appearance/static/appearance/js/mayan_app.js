@@ -157,6 +157,7 @@ App.prototype.setupAutoSubmit = function () {
 
 App.prototype.setupNewWindowAnchor = function () {
     $('a.new_window').click(function (event) {
+        event.preventDefault();
         var newWindow = window.open($(this).attr('href'), '_blank');
         newWindow.focus();
     });
