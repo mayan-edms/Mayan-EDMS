@@ -49,7 +49,7 @@
                     </button>
 
                     {% if previous %}
-                        <a class="btn btn-primary" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>{% trans 'No' %}</a>
+                        <a class="btn btn-primary" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.back();{% endif %}'>{% trans 'No' %}</a>
                     {% endif %}
 
                 </form>
