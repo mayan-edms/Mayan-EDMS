@@ -14,13 +14,14 @@ var PartialNavigation = function (parameters) {
 
     this.initialURL = parameters.initialURL || null;
     this.excludeAnchorClasses = parameters.excludeAnchorClasses || [];
+    this.lastLocation = null;
 
     if (!this.initialURL) {
         alert('Need to setup initialURL');
     }
 
     this.setupAjaxAnchors();
-    this.setupHashLocation();
+    this.setupAjaxNavigation();
     this.setupAjaxForm();
 }
 
@@ -44,19 +45,20 @@ PartialNavigation.prototype.loadAjaxContent = function (url) {
     url = this.filterLocation(url);
     console.log('>> loadAjaxContent.filterLocation.url: ' + url);
     $.ajax({
-        async: true,
+        async: false,
         mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
         url: url,
         type: 'GET',
-        success: function(data, textStatus, response){
+        success: function (data, textStatus, response){
             if (response.status == 278) {
                 console.log('>> loadAjaxContent.ajax: got HTTP278');
                 var newLocation = response.getResponseHeader('Location');
 
                 console.log('>> loadAjaxContent.ajax.newLocation: ' + newLocation);
-
                 app.setLocation(newLocation);
+                app.lastLocation = newLocation;
             } else {
+                app.lastLocation = url;
                 if (response.getResponseHeader('Content-Disposition')) {
                     window.location = this.url;
                 } else {
@@ -64,7 +66,7 @@ PartialNavigation.prototype.loadAjaxContent = function (url) {
                 }
             }
         },
-        error: function(jqXHR, textStatus, errorThrown){
+        error: function (jqXHR, textStatus, errorThrown){
             app.processAjaxRequestError(jqXHR);
         },
         dataType: 'html',
@@ -105,21 +107,22 @@ PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
     $('#modal-server-error').modal('show')
 }
 
-PartialNavigation.prototype.setLocation = function (newLocation) {
+PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
     console.log('>> setLocation.newLocation: ' + newLocation);
     console.log('>> setLocation.location: ' + location);
     newLocation = this.filterLocation(newLocation);
 
-    var currentLocationPath = new URI(location).fragment();
-    var newLocationPath = new URI(newLocation).path();
-
-    console.log(currentLocationPath);
-    console.log(newLocationPath);
-    if (currentLocationPath === newLocationPath) {
-        // New location same as old, force a reload
-        this.loadAjaxContent(newLocation);
+    if (typeof pushState === 'undefined') {
+         pushState = true;
     }
-    window.location.hash = newLocation;
+
+    var currentLocation = new URI(location);
+    currentLocation.fragment(newLocation);
+
+    if (pushState) {
+        history.pushState({}, '', currentLocation);
+    }
+    this.loadAjaxContent(newLocation);
 }
 
 PartialNavigation.prototype.setupAjaxAnchors = function () {
@@ -133,10 +136,9 @@ PartialNavigation.prototype.setupAjaxForm = function () {
     var app = this;
 
     $('form').ajaxForm({
-        async: true,
+        async: false,
         beforeSubmit: function(arr, $form, options) {
             console.log('>> ajaxForm.beforeSubmit.$form.target: ' + $form.attr('action'));
-
             var uri = new URI(location);
             var uriFragment = uri.fragment();
             console.log('>>ajaxForm.$form.target.uriFragment:' + uriFragment);
@@ -170,7 +172,6 @@ PartialNavigation.prototype.setupAjaxForm = function () {
                 var url = uriFragment || currentUriFragment;
 
                 app.setLocation(newLocation);
-
             } else {
                 console.log('>>ajaxForm.success');
                 $('#ajax-content').html(data);
@@ -179,16 +180,16 @@ PartialNavigation.prototype.setupAjaxForm = function () {
     });
 }
 
-PartialNavigation.prototype.setupHashLocation = function () {
+PartialNavigation.prototype.setupAjaxNavigation = function () {
     var app = this;
 
     // Load ajax content when the hash changes
     if (window.history && window.history.pushState) {
         $(window).on('popstate', function() {
-            console.log('>> setupHashLocation.location: ' + location);
+            console.log('>> setupHashLocation.popstate.location: ' + location);
             var uri = new URI(location);
             var uriFragment = uri.fragment();
-            app.loadAjaxContent(uriFragment);
+            app.setLocation(uriFragment, false);
         });
     }
 
@@ -200,4 +201,10 @@ PartialNavigation.prototype.setupHashLocation = function () {
     } else {
         this.setLocation('/');
     }
+
+    $.ajaxSetup({
+        beforeSend: function (jqXHR, settings) {
+            jqXHR.setRequestHeader('X-Alt-Referer', app.lastLocation);
+        },
+    });
 }
