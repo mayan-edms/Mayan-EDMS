@@ -173,13 +173,11 @@
 .dropzone, .dropzone * {
   box-sizing: border-box; }
 
-.dz-default {
-    border-style: dotted;
-}
-
 .dropzone {
   min-height: 150px;
-}
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  background: white;
+  padding: 20px 20px; }
   .dropzone.dz-clickable {
     cursor: pointer; }
     .dropzone.dz-clickable * {
@@ -187,39 +185,48 @@
     .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
       cursor: pointer; }
   .dropzone.dz-started .dz-message {
-    display: none;  }
+    display: none; }
   .dropzone.dz-drag-hover {
     border-style: solid; }
     .dropzone.dz-drag-hover .dz-message {
       opacity: 0.5; }
   .dropzone .dz-message {
     text-align: center;
-    padding: 2em 0; }
+    margin: 2em 0; }
   .dropzone .dz-preview {
     position: relative;
     display: inline-block;
     vertical-align: top;
-    margin: 5px;
-}
+    margin: 16px;
+    min-height: 100px; }
     .dropzone .dz-preview:hover {
       z-index: 1000; }
       .dropzone .dz-preview:hover .dz-details {
         opacity: 1; }
     .dropzone .dz-preview.dz-file-preview .dz-image {
-      }
+      border-radius: 20px;
+      background: #999;
+      background: linear-gradient(to bottom, #eee, #ddd); }
     .dropzone .dz-preview.dz-file-preview .dz-details {
-      opacity: 1;
-      margin-top: 30px;
-    }
+      opacity: 1; }
     .dropzone .dz-preview.dz-image-preview {
       background: white; }
       .dropzone .dz-preview.dz-image-preview .dz-details {
-        }
-
+        -webkit-transition: opacity 0.2s linear;
+        -moz-transition: opacity 0.2s linear;
+        -ms-transition: opacity 0.2s linear;
+        -o-transition: opacity 0.2s linear;
+        transition: opacity 0.2s linear; }
+    .dropzone .dz-preview .dz-remove {
+      font-size: 14px;
+      text-align: center;
+      display: block;
+      cursor: pointer;
+      border: none; }
+      .dropzone .dz-preview .dz-remove:hover {
+        text-decoration: underline; }
     .dropzone .dz-preview:hover .dz-details {
-      opacity: 1;
-
-      }
+      opacity: 1; }
     .dropzone .dz-preview .dz-details {
       z-index: 20;
       position: absolute;
@@ -231,6 +238,7 @@
       max-width: 100%;
       padding: 2em 1em;
       text-align: center;
+      color: rgba(0, 0, 0, 0.9);
       line-height: 150%; }
       .dropzone .dz-preview .dz-details .dz-size {
         margin-bottom: 1em;
@@ -248,12 +256,20 @@
       .dropzone .dz-preview .dz-details .dz-filename span, .dropzone .dz-preview .dz-details .dz-size span {
         background-color: rgba(255, 255, 255, 0.4);
         padding: 0 0.4em;
-        }
+        border-radius: 3px; }
     .dropzone .dz-preview:hover .dz-image img {
-      }
+      -webkit-transform: scale(1.05, 1.05);
+      -moz-transform: scale(1.05, 1.05);
+      -ms-transform: scale(1.05, 1.05);
+      -o-transform: scale(1.05, 1.05);
+      transform: scale(1.05, 1.05);
+      -webkit-filter: blur(8px);
+      filter: blur(8px); }
     .dropzone .dz-preview .dz-image {
+      border-radius: 20px;
       overflow: hidden;
       width: 120px;
+      height: 120px;
       position: relative;
       display: block;
       z-index: 10; }
@@ -313,7 +329,7 @@
       position: absolute;
       height: 16px;
       left: 50%;
-      top: 70%;
+      top: 50%;
       margin-top: -8px;
       width: 80px;
       margin-left: -40px;
@@ -353,16 +369,20 @@
       transition: opacity 0.3s ease;
       border-radius: 8px;
       font-size: 13px;
-      top: 10px;
+      top: 130px;
       left: -10px;
       width: 140px;
+      background: #be2626;
+      background: linear-gradient(to bottom, #be2626, #a92222);
       padding: 0.5em 1.2em;
-  }
-
-    .btn-dz-remove {
-        margin-top: 5px;
-    }
-
-    .dz-message {
-        background: white;
-    }
+      color: white; }
+      .dropzone .dz-preview .dz-error-message:after {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 64px;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #be2626; }
