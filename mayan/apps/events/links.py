@@ -70,7 +70,7 @@ link_user_events = Link(
 link_user_notifications_list = Link(
     html_data={
         'apw-attribute': 'count', 'apw-interval': '5000',
-        'apw-url': '/api/notifications/',
+        'apw-url': '/api/notifications/?read=False',
         'apw-callback': 'App.mayanNotificationBadge'
     }, icon='fa fa-bell', text='', view='events:user_notifications_list'
 )

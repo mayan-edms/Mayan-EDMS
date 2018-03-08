@@ -143,4 +143,13 @@ class APINotificationListView(generics.ListAPIView):
     serializer_class = NotificationSerializer
 
     def get_queryset(self):
-        return Notification.objects.filter(user=self.request.user)
+        parameter_read = self.request.GET.get('read')
+
+        queryset = Notification.objects.filter(user=self.request.user)
+
+        if parameter_read == 'True':
+            queryset = queryset.filter(read=True)
+        elif parameter_read == 'False':
+            queryset = queryset.filter(read=False)
+
+        return queryset
