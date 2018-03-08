@@ -6,6 +6,17 @@
 {% load common_tags %}
 {% load navigation_tags %}
 
+<script>
+    if (typeof partialNavigation === 'undefined') {
+        /* Check if the template was not loaded via AJAX
+         * If not then reload the root path passing the
+         * current location's path as the new hash
+         */
+        var currentPath = window.location.pathname;
+        window.location = '/#' + currentPath;
+    }
+</script>
+
 {% if appearance_type == 'plain' %}
     {% block content_plain %}{% endblock %}
 {% else %}
