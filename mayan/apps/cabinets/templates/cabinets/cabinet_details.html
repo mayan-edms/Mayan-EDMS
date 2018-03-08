@@ -37,10 +37,11 @@
     <script>
         $(function () {
             var jstreeElement = $('.jstree');
+
             jstreeElement
-                .on("select_node.jstree", function (e, data) {
+                .on('select_node.jstree', function (e, data) {
                     if(data.selected.length) {
-                        window.location.href=data.instance.get_node(data.selected[0]).data.href;
+                        partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
                     }
                 })
                 .jstree({
