@@ -5,8 +5,8 @@ from django.template import Template, Context
 
 class Icon(object):
     templates = {
-        'classes': '<i class="{{ classes }}"></i>',
-        'symbol': '<i class="fa fa-{{ symbol }}"></i>'
+        'classes': '<i class="hidden-xs hidden-sm hidden-md {{ classes }}"></i>',
+        'symbol': '<i class="hidden-xs hidden-sm hidden-md fa fa-{{ symbol }}"></i>'
     }
 
     def __init__(self, classes=None, symbol=None):
