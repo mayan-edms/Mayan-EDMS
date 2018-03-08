@@ -1,6 +1,10 @@
 'use strict';
 
 $.fn.hasAnyClass = function() {
+    /*
+     *  Return true is an element has any of the passed classes
+     *  The classes are bassed as an array
+     */
     for (var i = 0; i < arguments[0].length; i++) {
         if (this.hasClass(arguments[0][i])) {
             return true;
@@ -36,11 +40,10 @@ PartialNavigation.prototype.initialize = function () {
 }
 
 PartialNavigation.prototype.filterLocation = function (newLocation) {
+    /*
+     * Method to validate new locations
+     */
     var uri = new URI(newLocation);
-
-    console.log('>> filterLocation.Newlocation: ' + newLocation);
-    console.log('>> filterLocation.newLocation.uri.path(): ' + uri.path());
-
     var currentLocation = new URI(location);
 
     if (uri.path() === '') {
@@ -61,11 +64,13 @@ PartialNavigation.prototype.filterLocation = function (newLocation) {
 }
 
 PartialNavigation.prototype.loadAjaxContent = function (url) {
+    /*
+     *  Method to load and display partial backend views to the main
+     *  view port.
+     */
     var app = this;
 
-    console.log('>> loadAjaxContent.url: ' + url);
     url = this.filterLocation(url);
-    console.log('>> loadAjaxContent.filterLocation.url: ' + url);
     $.ajax({
         async: true,
         mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
@@ -73,10 +78,9 @@ PartialNavigation.prototype.loadAjaxContent = function (url) {
         type: 'GET',
         success: function (data, textStatus, response){
             if (response.status == 278) {
-                console.log('>> loadAjaxContent.ajax: got HTTP278');
+                // Handle redirects
                 var newLocation = response.getResponseHeader('Location');
 
-                console.log('>> loadAjaxContent.ajax.newLocation: ' + newLocation);
                 app.setLocation(newLocation);
                 app.lastLocation = newLocation;
             } else {
@@ -96,7 +100,10 @@ PartialNavigation.prototype.loadAjaxContent = function (url) {
 }
 
 PartialNavigation.prototype.onAnchorClick = function ($this, event) {
-    console.log('>> onAnchorClick');
+    /*
+     * Anchor click event manager. We intercept all click events and
+     * route them to load the content via AJAX instead.
+     */
     var url;
 
     if ($this.hasAnyClass(this.excludeAnchorClasses)) {
@@ -110,14 +117,16 @@ PartialNavigation.prototype.onAnchorClick = function ($this, event) {
 
     event.preventDefault();
 
-    console.log('>> onAnchorClick.url: ' + url);
-
     if ((url !== '#') && !($this.hasClass('disabled') || $this.parent().hasClass('disabled'))) {
         this.setLocation(url);
     }
 }
 
 PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
+    /*
+     * Method to process an AJAX request and make it presentable to the
+     * user.
+     */
     if (jqXHR.status == 0) {
         $('#modal-server-error .modal-body').html($('#template-error').html());
         $('#modal-server-error').modal('show')
@@ -127,12 +136,17 @@ PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
 }
 
 PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
-    console.log('>> setLocation.newLocation: ' + newLocation);
-    console.log('>> setLocation.location: ' + location);
+    /*
+     * Method to update the browsers history and trigger a page update.
+     */
+
+    // Validate the new location first.
     newLocation = this.filterLocation(newLocation);
 
     if (typeof pushState === 'undefined') {
-         pushState = true;
+        // Check if we should just load the content or load the content
+        // and update the history.
+        pushState = true;
     }
 
     var currentLocation = new URI(location);
@@ -145,6 +159,9 @@ PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
 }
 
 PartialNavigation.prototype.setupAjaxAnchors = function () {
+    /*
+     * Setup the new click event handler.
+     */
     var app = this;
     $('body').on('click', 'a', function (event) {
         app.onAnchorClick($(this), event);
@@ -152,33 +169,36 @@ PartialNavigation.prototype.setupAjaxAnchors = function () {
 }
 
 PartialNavigation.prototype.setupAjaxForm = function () {
+    /*
+     * Method to setup the handling of form in an AJAX way.
+     */
     var app = this;
 
     $('form').ajaxForm({
         async: true,
         beforeSerialize: function($form, options) {
+            // Manage any callback registered to preprocess the form.
             $.each(app.formBeforeSerializeCallbacks, function (index, value) {
                value($form, options);
             });
         },
         beforeSubmit: function(arr, $form, options) {
-            console.log('>> ajaxForm.beforeSubmit.$form.target: ' + $form.attr('action'));
             var uri = new URI(location);
             var uriFragment = uri.fragment();
             var url = $form.attr('action') || uriFragment;
 
-            console.log('>>ajaxForm.$form.target.uriFragment:' + uriFragment);
             options.url = url;
 
             if ($form.attr('target') == '_blank') {
+                // If the form has a target attribute we emulate it by
+                // opening a new window and passing the form serialized
+                // data as the query.
                 window.open(
                     $form.attr('action') + '?' + decodeURIComponent($form.serialize())
                 );
 
                 return false;
             }
-
-            console.log('>>ajaxForm.url:' + url);
         },
         dataType: 'html',
         delegation: true,
@@ -188,24 +208,16 @@ PartialNavigation.prototype.setupAjaxForm = function () {
         mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
         success: function(data, textStatus, request){
             if (request.status == 278) {
-                console.log('>> ajaxForm: Got HTTP 278');
+                // Handle redirects after submitting the form
                 var newLocation = request.getResponseHeader('Location');
-
                 var uri = new URI(newLocation);
                 var uriFragment = uri.fragment();
-
-                console.log('>>ajaxForm.newLocation:' + newLocation);
-                console.log('>>ajaxForm.newLocation.uriFragment:' + uriFragment);
-                console.log('>>ajaxForm.window.location.hash:' + window.location.hash);
-
                 var currentUri = new URI(window.location.hash);
                 var currentUriFragment = currentUri.fragment();
-
                 var url = uriFragment || currentUriFragment;
 
                 app.setLocation(newLocation);
             } else {
-                console.log('>>ajaxForm.success');
                 $('#ajax-content').html(data);
             }
         }
@@ -213,12 +225,18 @@ PartialNavigation.prototype.setupAjaxForm = function () {
 }
 
 PartialNavigation.prototype.setupAjaxNavigation = function () {
+    /*
+     * Setup the navigation method using the hash of the location.
+     * Also handles the back button event and loads via AJAX any
+     * URL in the location when the app first launches. Registers
+     * a callback to send an emulated HTTP_REFERER so that the backends
+     * code will still work without change.
+     */
     var app = this;
 
     // Load ajax content when the hash changes
     if (window.history && window.history.pushState) {
         $(window).on('popstate', function() {
-            console.log('>> setupHashLocation.popstate.location: ' + location);
             var uri = new URI(location);
             var uriFragment = uri.fragment();
             app.setLocation(uriFragment, false);
@@ -236,6 +254,7 @@ PartialNavigation.prototype.setupAjaxNavigation = function () {
 
     $.ajaxSetup({
         beforeSend: function (jqXHR, settings) {
+            // Emulate the HTTP_REFERER.
             jqXHR.setRequestHeader('X-Alt-Referer', app.lastLocation);
         },
     });
