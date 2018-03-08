@@ -227,12 +227,12 @@ link_document_page_return = Link(
     args='resolved_object.document.pk'
 )
 link_document_page_rotate_left = Link(
-    icon='fa fa-rotate-left', permissions=(permission_document_view,),
+    icon='fa fa-undo', permissions=(permission_document_view,),
     text=_('Rotate left'), view='documents:document_page_rotate_left',
     args='resolved_object.pk', keep_query=True
 )
 link_document_page_rotate_right = Link(
-    icon='fa fa-rotate-right', permissions=(permission_document_view,),
+    icon='fa fa-redo', permissions=(permission_document_view,),
     text=_('Rotate right'), view='documents:document_page_rotate_right',
     args='resolved_object.pk', keep_query=True
 )
