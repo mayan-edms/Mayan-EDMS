@@ -31,6 +31,7 @@ Next (2018-XX-XX)
 - Add notification count inside a badge on the notification link.
 - Add the MERC specifying javascript library usage.
 - Documents without at least a version are not scanned for duplicates. 
+- Use a SHA256 hex digest of the secret key at the name of the lockfile. This makes the generation of the name repeatable while unique between installations.
 
 2.8 (2018-02-27)
 ================

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import hashlib
 import logging
 import json
 import os
@@ -7,6 +8,7 @@ import threading
 import time
 import uuid
 
+from django.conf import settings
 from django.core.files import locks
 from django.utils.encoding import force_text
 
@@ -21,7 +23,7 @@ lock = threading.Lock()
 logger = logging.getLogger(__name__)
 
 lock_file = os.path.join(
-    setting_temporary_directory.value, 'mayan_locks.tmp'
+    setting_temporary_directory.value, hashlib.sha256(settings.SECRET_KEY).hexdigest()
 )
 open(lock_file, 'a').close()
 logger.debug('lock_file: %s', lock_file)
