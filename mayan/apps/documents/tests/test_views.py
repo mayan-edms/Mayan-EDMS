@@ -380,9 +380,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'documents:document_update_page_count',
-            args=(self.document.pk,), follow=True
+            args=(self.document.pk,)
         )
-        self.assertContains(response, text='queued', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), page_count)
 
     def test_document_multiple_update_page_count_view_no_permission(self):
@@ -406,9 +406,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'documents:document_multiple_update_page_count',
-            data={'id_list': self.document.pk}, follow=True
+            data={'id_list': self.document.pk}
         )
-        self.assertContains(response, text='queued', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), page_count)
 
     def test_document_clear_transformations_view_no_permission(self):
@@ -578,16 +578,16 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def _request_print_view(self):
-        return self.post(
+        return self.get(
             'documents:document_print', args=(
                 self.document.pk,
             ), data={
                 'page_group': PAGE_RANGE_ALL
-            }, follow=True
+            }
         )
 
-    def test_document_print_view_no_permissions(self):
-        response = self._request_print_view()
+    def test_document_print_view_no_access(self):
+        response = self ._request_print_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_print_view_with_access(self):
@@ -739,15 +739,16 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             args=(self.document_type.pk,),
             data={
                 'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL,
-            }, follow=True
+            }
         )
 
     def test_document_type_quick_label_create_no_permission(self):
         self.grant_access(
             obj=self.document_type, permission=permission_document_type_view
         )
-        self._request_quick_label_create()
+        response = self._request_quick_label_create()
 
+        self.assertEqual(response.status_code, 403)
         self.assertEqual(self.document_type.filenames.count(), 0)
 
     def test_document_type_quick_label_create_with_access(self):
@@ -760,7 +761,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         response = self._request_quick_label_create()
 
-        self.assertContains(response, 'reated', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document_type.filenames.count(), 1)
 
     def _create_quick_label(self):
@@ -909,10 +910,9 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'documents:document_version_revert', args=(first_version.pk,),
-            follow=True
         )
 
-        self.assertContains(response, 'reverted', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.versions.count(), 1)
 
 
@@ -941,9 +941,8 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         )
         response = self.post(
             'documents:document_restore', args=(self.document.pk,),
-            follow=True
         )
-        self.assertContains(response, text='restored', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
@@ -963,10 +962,9 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'documents:document_trash', args=(self.document.pk,),
-            follow=True
         )
 
-        self.assertContains(response, text='success', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
@@ -993,10 +991,8 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'documents:document_delete', args=(self.document.pk,),
-            follow=True
         )
-
-        self.assertContains(response, text='success', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 

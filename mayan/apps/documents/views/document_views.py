@@ -723,7 +723,6 @@ class DocumentPrint(FormView):
         return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-
         if not self.page_group and not self.page_range:
            return super(DocumentPrint, self).get(request, *args, **kwargs)
         else:
