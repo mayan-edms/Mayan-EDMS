@@ -51,6 +51,12 @@ class APICabinetListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
     queryset = Cabinet.objects.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APICabinetListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return CabinetSerializer
@@ -93,6 +99,12 @@ class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
         """
         return super(APICabinetView, self).get(*args, **kwargs)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APICabinetView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return CabinetSerializer
@@ -122,6 +134,12 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         'GET': (permission_cabinet_view,),
         'POST': (permission_cabinet_add_document,)
     }
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APICabinetDocumentListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

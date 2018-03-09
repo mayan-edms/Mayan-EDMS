@@ -68,6 +68,12 @@ class APIObjectACLListView(generics.ListCreateAPIView):
 
         return context
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIObjectACLListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return AccessControlListSerializer
@@ -167,6 +173,12 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return self.get_acl().permissions.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIObjectACLPermissionListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

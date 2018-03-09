@@ -290,6 +290,12 @@ class APISmartLinkListView(generics.ListCreateAPIView):
 
         return super(APISmartLinkListView, self).get(*args, **kwargs)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APISmartLinkListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return SmartLinkSerializer
@@ -327,6 +333,12 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APISmartLinkView, self).get(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APISmartLinkView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

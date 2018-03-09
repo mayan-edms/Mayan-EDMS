@@ -45,6 +45,12 @@ class APICommentListView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.get_document().comments.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APICommentListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return CommentSerializer

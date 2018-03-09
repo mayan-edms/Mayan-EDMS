@@ -73,6 +73,12 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
 
         return self.get_workflow().document_types.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowDocumentTypeList, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return WorkflowDocumentTypeSerializer
@@ -210,6 +216,12 @@ class APIWorkflowListView(generics.ListCreateAPIView):
         """
         return super(APIWorkflowListView, self).get(*args, **kwargs)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return WorkflowSerializer
@@ -246,6 +258,12 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIWorkflowView, self).get(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -397,6 +415,12 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.get_workflow().transitions.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowTransitionListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return WorkflowTransitionSerializer
@@ -458,6 +482,12 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.get_workflow().transitions.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowTransitionView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -597,6 +627,12 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
             )
 
         return document
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIWorkflowInstanceLogEntryListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

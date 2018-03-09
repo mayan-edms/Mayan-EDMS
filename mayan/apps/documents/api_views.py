@@ -155,6 +155,12 @@ class APIDocumentListView(generics.ListCreateAPIView):
         """
         return super(APIDocumentListView, self).get(*args, **kwargs)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentSerializer
@@ -289,6 +295,12 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIDocumentView, self).get(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         return {
@@ -454,6 +466,12 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
 
         return super(APIDocumentTypeListView, self).get(*args, **kwargs)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentTypeSerializer
@@ -495,6 +513,12 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIDocumentTypeView, self).get(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -570,6 +594,8 @@ class APIDocumentVersionPageListView(generics.ListAPIView):
         return self.get_document_version().pages.all()
 
     def get_serializer_context(self):
+        # FIXME: Redundant as this is already passed to the serializer
+        # by default
         return {
             'format': self.format_kwarg,
             'request': self.request,
@@ -595,6 +621,12 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentVersionsListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -656,6 +688,12 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return self.get_document().versions.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentVersionView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentVersionSerializer
@@ -663,6 +701,8 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
             return WritableDocumentVersionSerializer
 
     def get_serializer_context(self):
+        # FIXME: Redundant as this is already passed to the serializer
+        # by default. Add test to confirm.
         return {
             'format': self.format_kwarg,
             'request': self.request,

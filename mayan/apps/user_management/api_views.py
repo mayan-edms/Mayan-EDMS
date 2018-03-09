@@ -191,6 +191,12 @@ class APIUserGroupList(generics.ListCreateAPIView):
     }
     permission_classes = (MayanPermission,)
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIUserGroupList, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return GroupSerializer

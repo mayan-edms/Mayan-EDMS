@@ -55,6 +55,12 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.get_document().metadata.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentMetadataListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentMetadataSerializer
@@ -123,6 +129,12 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document().metadata.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentMetadataView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -241,6 +253,12 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.get_document_type().metadata.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeMetadataTypeListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentTypeMetadataTypeSerializer
@@ -312,6 +330,12 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document_type().metadata.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeMetadataTypeView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

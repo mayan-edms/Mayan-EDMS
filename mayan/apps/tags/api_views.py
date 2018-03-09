@@ -31,6 +31,12 @@ class APITagListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
     queryset = Tag.objects.all()
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APITagListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return TagSerializer
@@ -75,6 +81,12 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APITagView, self).get(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APITagView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -142,6 +154,12 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
         )
 
         return document.attached_tags().all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTagListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -211,6 +229,12 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document().attached_tags().all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTagView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """

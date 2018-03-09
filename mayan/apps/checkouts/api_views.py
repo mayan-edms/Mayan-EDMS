@@ -16,6 +16,12 @@ from .serializers import (
 
 
 class APICheckedoutDocumentListView(generics.ListCreateAPIView):
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APICheckedoutDocumentListView, self).get_serializer(*args, **kwargs)
+
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return NewDocumentCheckoutSerializer
