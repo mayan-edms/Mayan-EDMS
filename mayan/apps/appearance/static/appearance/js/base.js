@@ -9,6 +9,7 @@ var partialNavigation = new PartialNavigation({
 
 jQuery(document).ready(function() {
     app.setupFullHeightResizing();
+    app.setupNavbarCollapse();
     partialNavigation.initialize();
 });
 

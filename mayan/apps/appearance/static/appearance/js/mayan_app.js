@@ -194,6 +194,20 @@ App.prototype.setupAutoSubmit = function () {
     });
 }
 
+App.prototype.setupNavbarCollapse = function () {
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+            $('.navbar-collapse').collapse('hide');
+        }
+    });
+
+    $('body').on('click', 'a', function (event) {
+        if (!$(this).hasAnyClass(['dropdown-toggle'])) {
+            $('.navbar-collapse').collapse('hide');
+        }
+    });
+}
+
 App.prototype.setupNewWindowAnchor = function () {
     $('a.new_window').click(function (event) {
         event.preventDefault();
