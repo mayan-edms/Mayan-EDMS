@@ -116,6 +116,9 @@ class DuplicatedDocumentManager(models.Manager):
         """
         Find duplicates by matching latest version checksums
         """
+        if not document.latest_version:
+            return None
+
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
