@@ -50,6 +50,11 @@ class DocumentCheckout(models.Model):
 
     objects = DocumentCheckoutManager()
 
+    class Meta:
+        ordering = ('pk',)
+        verbose_name = _('Document checkout')
+        verbose_name_plural = _('Document checkouts')
+
     def __str__(self):
         return force_text(self.document)
 
@@ -87,10 +92,6 @@ class DocumentCheckout(models.Model):
             )
 
         return result
-
-    class Meta:
-        verbose_name = _('Document checkout')
-        verbose_name_plural = _('Document checkouts')
 
 
 class NewVersionBlock(models.Model):
