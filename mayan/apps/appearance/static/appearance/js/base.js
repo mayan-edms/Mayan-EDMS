@@ -10,13 +10,13 @@ var partialNavigation = new PartialNavigation({
 jQuery(document).ready(function() {
     app.setupFullHeightResizing();
     app.setupNavbarCollapse();
+    app.setupAJAXperiodicWorkers();
     partialNavigation.initialize();
 });
 
 var afterBaseLoad = function () {
     MayanImage.intialize();
     app.doToastrMessages();
-    app.setupAJAXperiodicWorkers();
     app.setupAutoSubmit();
     app.setupItemsSelector();
     app.setupNewWindowAnchor();

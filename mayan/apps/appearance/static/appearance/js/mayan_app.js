@@ -104,22 +104,6 @@ App.prototype.AJAXperiodicWorker = function (options) {
   });
 }
 
-App.prototype.setupAJAXperiodicWorkers = function () {
-    var app = this;
-
-    $('a[data-apw-url]').each(function() {
-        var $this = $(this);
-
-        app.AJAXperiodicWorker({
-            attributeName: $this.data('apw-attribute'),
-            APIURL: $this.data('apw-url'),
-            callback: $this.data('apw-callback'),
-            element: $this,
-            interval: $this.data('apw-interval'),
-        });
-    });
-}
-
 App.prototype.doToastrMessages = function () {
     toastr.options = {
         'closeButton': true,
@@ -183,6 +167,22 @@ App.prototype.doToastrMessages = function () {
             options['timeOut'] = 10000;
         }
         toastr[value.tags](value.message, '', options);
+    });
+}
+
+App.prototype.setupAJAXperiodicWorkers = function () {
+    var app = this;
+
+    $('a[data-apw-url]').each(function() {
+        var $this = $(this);
+
+        app.AJAXperiodicWorker({
+            attributeName: $this.data('apw-attribute'),
+            APIURL: $this.data('apw-url'),
+            callback: $this.data('apw-callback'),
+            element: $this,
+            interval: $this.data('apw-interval'),
+        });
     });
 }
 
