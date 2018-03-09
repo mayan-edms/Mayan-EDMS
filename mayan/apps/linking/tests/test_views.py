@@ -16,9 +16,11 @@ from .literals import (
 
 
 class SmartLinkViewTestCase(GenericDocumentViewTestCase):
-    def test_smart_link_create_view_no_permission(self):
+    def setUp(self):
+        super(SmartLinkViewTestCase, self).setUp()
         self.login_user()
 
+    def test_smart_link_create_view_no_permission(self):
         response = self.post(
             'linking:smart_link_create', data={
                 'label': TEST_SMART_LINK_LABEL
@@ -29,8 +31,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(SmartLink.objects.count(), 0)
 
     def test_smart_link_create_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_smart_link_create.stored_permission
         )
@@ -47,8 +47,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_smart_link_delete_view_no_permission(self):
-        self.login_user()
-
         smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
 
         response = self.post(
@@ -58,8 +56,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(SmartLink.objects.count(), 1)
 
     def test_smart_link_delete_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_smart_link_delete.stored_permission
         )
@@ -74,8 +70,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(SmartLink.objects.count(), 0)
 
     def test_smart_link_edit_view_no_permission(self):
-        self.login_user()
-
         smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
 
         response = self.post(
@@ -88,8 +82,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL)
 
     def test_smart_link_edit_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_smart_link_edit.stored_permission
         )
@@ -122,8 +114,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
     def test_document_smart_link_list_view_no_permission(self):
         self.setup_smart_links()
 
-        self.login_user()
-
         self.role.permissions.add(
             permission_document_view.stored_permission
         )
@@ -136,13 +126,11 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         # heading. The two smart links are not shown.
 
         self.assertContains(
-            response, text=self.document.label, count=2, status_code=200
+            response, text=self.document.label, count=1, status_code=200
         )
 
     def test_document_smart_link_list_view_with_permission(self):
         self.setup_smart_links()
-
-        self.login_user()
 
         self.role.permissions.add(
             permission_smart_link_view.stored_permission
@@ -161,5 +149,5 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         # heading, plus 2 for the test.
 
         self.assertContains(
-            response, text=self.document.label, count=4, status_code=200
+            response, text=self.document.label, count=3, status_code=200
         )
