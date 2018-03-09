@@ -29,7 +29,8 @@ Next (2018-XX-XX)
 - Add page loading indicator.
 - Add periodic AJAX workers to update the value of the notifications link.
 - Add notification count inside a badge on the notification link.
-
+- Add the MERC specifying javascript library usage.
+   
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".
