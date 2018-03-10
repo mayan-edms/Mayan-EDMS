@@ -127,11 +127,12 @@ PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
      * Method to process an AJAX request and make it presentable to the
      * user.
      */
+
     if (jqXHR.status == 0) {
         $('#modal-server-error .modal-body').html($('#template-error').html());
         $('#modal-server-error').modal('show')
     } else {
-        $('#ajax-content').html(jqXHR.responseText.replace(/\n/g, "<br />"));
+        $('#ajax-content').html(jqXHR.responseText);
     }
 }
 
