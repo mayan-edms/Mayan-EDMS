@@ -162,6 +162,12 @@ class DocumentMetadata(models.Model):
         verbose_name=_('Value')
     )
 
+    class Meta:
+        ordering = ('metadata_type',)
+        unique_together = ('document', 'metadata_type')
+        verbose_name = _('Document metadata')
+        verbose_name_plural = _('Document metadata')
+
     def __str__(self):
         return force_text(self.metadata_type)
 
@@ -193,11 +199,6 @@ class DocumentMetadata(models.Model):
             document_type=self.document.document_type, value=self.value
         )
 
-    class Meta:
-        unique_together = ('document', 'metadata_type')
-        verbose_name = _('Document metadata')
-        verbose_name_plural = _('Document metadata')
-
     @property
     def is_required(self):
         return self.metadata_type.get_required_for(
@@ -223,6 +224,7 @@ class DocumentTypeMetadataType(models.Model):
         return force_text(self.metadata_type)
 
     class Meta:
+        ordering = ('metadata_type',)
         unique_together = ('document_type', 'metadata_type')
         verbose_name = _('Document type metadata type options')
         verbose_name_plural = _('Document type metadata types options')

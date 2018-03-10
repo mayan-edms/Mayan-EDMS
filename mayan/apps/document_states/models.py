@@ -455,6 +455,7 @@ class WorkflowInstanceLogEntry(models.Model):
         return force_text(self.transition)
 
     class Meta:
+        ordering = ('datetime',)
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
 
