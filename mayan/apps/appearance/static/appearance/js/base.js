@@ -21,6 +21,7 @@ var afterBaseLoad = function () {
     app.setupItemsSelector();
     app.setupNewWindowAnchor();
     app.setupTableSelector();
+    app.resizeFullHeight();
     app.setupSelect2();
     app.setupScrollView();
 }
