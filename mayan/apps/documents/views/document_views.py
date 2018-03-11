@@ -724,7 +724,7 @@ class DocumentPrint(FormView):
 
     def get(self, request, *args, **kwargs):
         if not self.page_group and not self.page_range:
-           return super(DocumentPrint, self).get(request, *args, **kwargs)
+            return super(DocumentPrint, self).get(request, *args, **kwargs)
         else:
             instance = self.get_object()
 
