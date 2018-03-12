@@ -98,13 +98,6 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-def index_or_default(instance, index, default):
-    try:
-        return instance[index]
-    except IndexError:
-        return default
-
-
 def TemporaryFile(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.TemporaryFile(*args, **kwargs)

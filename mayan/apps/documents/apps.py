@@ -101,8 +101,7 @@ from .statistics import (
     total_document_page_per_month, total_document_version_per_month
 )
 from .widgets import (
-    DocumentThumbnailWidget, DocumentPageThumbnailWidget,
-    DocumentVersionThumbnailWidget, widget_document_page_number,
+    DocumentPageThumbnailWidget, widget_document_page_number,
     widget_document_version_page_number
 )
 
@@ -207,13 +206,11 @@ class DocumentsApp(MayanAppConfig):
 
         # Document and document page thumbnail widget
         document_page_thumbnail_widget = DocumentPageThumbnailWidget()
-        document_thumbnail_widget = DocumentThumbnailWidget()
-        document_version_thumbnail_widget = DocumentVersionThumbnailWidget()
 
         # Document
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
@@ -263,7 +260,7 @@ class DocumentsApp(MayanAppConfig):
         # DeletedDocument
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
@@ -279,7 +276,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentVersion
         SourceColumn(
             source=DocumentVersion, label=_('Thumbnail'),
-            func=lambda context: document_version_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
@@ -309,7 +306,7 @@ class DocumentsApp(MayanAppConfig):
         # DuplicatedDocument
         SourceColumn(
             source=DuplicatedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object'].document
             )
         )

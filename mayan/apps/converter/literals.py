@@ -10,5 +10,3 @@ DEFAULT_PDFTOPPM_DPI = 300
 DEFAULT_PDFTOPPM_FORMAT = 'jpeg'  # Possible values jpeg, png, tiff
 DEFAULT_PDFTOPPM_PATH = '/usr/bin/pdftoppm'
 DEFAULT_PDFINFO_PATH = '/usr/bin/pdfinfo'
-
-DIMENSION_SEPARATOR = 'x'

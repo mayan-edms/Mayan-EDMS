@@ -1,32 +1,25 @@
 from __future__ import unicode_literals
 
-from documents.settings import setting_preview_size, setting_thumbnail_size
-from documents.widgets import BaseDocumentThumbnailWidget
+from django.template.loader import render_to_string
+
+from documents.settings import (
+    setting_preview_width, setting_preview_height, setting_thumbnail_width,
+    setting_thumbnail_height
+)
 
 
-class StagingFileThumbnailWidget(BaseDocumentThumbnailWidget):
-    disable_title_link = True
-    gallery_name = 'sources:staging_list'
-    click_view_name = 'rest_api:stagingfolderfile-image-view'
-    click_view_query_dict = {
-        'size': setting_preview_size.value
-    }
-    preview_view_name = 'rest_api:stagingfolderfile-image-view'
-    preview_view_query_dict = {
-        'size': setting_thumbnail_size.value
-    }
-
-    def get_click_view_kwargs(self, instance):
-        return {
-            'staging_folder_pk': instance.staging_folder.pk,
-            'encoded_filename': instance.encoded_filename
-        }
-
-    def get_preview_view_kwargs(self, instance):
-        return {
-            'staging_folder_pk': instance.staging_folder.pk,
-            'encoded_filename': instance.encoded_filename
-        }
-
-    def get_title(self, instance):
-        return instance.filename
+class StagingFileThumbnailWidget(object):
+    def render(self, instance):
+        return render_to_string(
+            template_name='documents/widgets/document_thumbnail.html',
+            context={
+                'container_class': 'staging-file-thumbnail-container',
+                'disable_title_link': True,
+                'gallery_name': 'sources:staging_list',
+                'instance': instance,
+                'size_preview_width': setting_preview_width.value,
+                'size_preview_height': setting_preview_height.value,
+                'size_thumbnail_width': setting_thumbnail_width.value,
+                'size_thumbnail_height': setting_thumbnail_height.value,
+            }
+        )

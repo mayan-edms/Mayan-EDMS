@@ -33,7 +33,12 @@ Next (2018-XX-XX)
 - Documents without at least a version are not scanned for duplicates. 
 - Use a SHA256 hex digest of the secret key at the name of the lockfile. This makes the generation of the name repeatable while unique between installations.
 - Squashed apps migrations.
-
+- Convert document thumbnails, preview, image preview and staging files to template base widgets.
+- Unify all document widgets.
+- Display resolution settings are now specified as width and height and not a single resolution value.
+- Printed pages are now full width.
+- Move the invalid document markup to a separate HTML template.
+                                
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".

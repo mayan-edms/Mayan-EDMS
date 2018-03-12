@@ -1,0 +1,16 @@
+<a
+    class="fancybox"
+    {% if disable_title_link %}
+        data-caption="{{ instance }}"
+    {% else %}
+        data-caption="<a class='a-caption' href='{{ instance.get_absolute_url }}'>{{ instance }} <i class='fa fa-external-link-alt'></i></a>"
+    {% endif %}
+    href="{{ instance.get_api_image_url }}?width={{ size_preview_width }}&height={{ size_preview_height }}"
+    {% if gallery_name %}rel="{{ gallery_name }}"{% endif %}
+>
+    {% with 'lazy-load' as image_classes %}
+    {% with 'true' as display_full_width %}
+        {% include 'documents/forms/widgets/document_page_image.html' %}
+    {% endwith %}
+    {% endwith %}
+</a>

@@ -41,7 +41,7 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..settings import setting_print_size
+from ..settings import setting_print_width, setting_print_height
 from ..tasks import task_delete_document, task_update_page_count
 from ..utils import parse_range
 
@@ -743,7 +743,8 @@ class DocumentPrint(FormView):
                 {
                     'appearance_type': 'plain',
                     'pages': pages,
-                    'size': setting_print_size.value,
+                    'width': setting_print_width.value,
+                    'height': setting_print_height.value,
                 }
             )
 

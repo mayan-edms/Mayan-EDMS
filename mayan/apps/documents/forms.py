@@ -9,35 +9,34 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.forms import DetailForm
 
+from .fields import (
+    DocumentField, DocumentPageField, DocumentVersionField
+)
 from .models import (
-    Document, DocumentType, DocumentPage, DocumentTypeFilename
+    Document, DocumentType, DocumentTypeFilename
 )
 from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 from .permissions import permission_document_create
 from .settings import setting_language_choices
-from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
+
 logger = logging.getLogger(__name__)
 
-
 # Document page forms
-class DocumentPageForm(DetailForm):
-    class Meta:
-        fields = ()
-        model = DocumentPage
 
+
+class DocumentPageForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        zoom = kwargs.pop('zoom', None)
+        instance = kwargs.pop('instance', None)
         rotation = kwargs.pop('rotation', None)
+        zoom = kwargs.pop('zoom', None)
         super(DocumentPageForm, self).__init__(*args, **kwargs)
-        self.fields['page_image'].initial = self.instance
-        self.fields['page_image'].widget.attrs.update({
+        self.fields['document_page'].initial = instance
+        self.fields['document_page'].widget.attrs.update({
             'zoom': zoom,
-            'rotation': rotation
+            'rotation': rotation,
         })
 
-    page_image = forms.CharField(
-        label=_('Page image'), widget=DocumentPageImageWidget()
-    )
+    document_page = DocumentPageField()
 
 
 # Document forms
@@ -45,31 +44,18 @@ class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document = kwargs.pop('instance', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['preview'].initial = document
-        try:
-            self.fields['preview'].label = _(
-                'Document pages (%d)'
-            ) % document.page_count
-        except AttributeError:
-            self.fields['preview'].label = _('Document pages (%d)') % 0
+        self.fields['document'].initial = document
 
-    preview = forms.CharField(widget=DocumentPagesCarouselWidget())
+    document = DocumentField()
 
 
 class DocumentVersionPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document_version = kwargs.pop('instance', None)
         super(DocumentVersionPreviewForm, self).__init__(*args, **kwargs)
+        self.fields['document_version'].initial = document_version
 
-        self.fields['preview'].initial = document_version
-        try:
-            self.fields['preview'].label = _(
-                'Document pages (%d)'
-            ) % document_version.pages.count()
-        except AttributeError:
-            self.fields['preview'].label = _('Document version pages (%d)') % 0
-
-    preview = forms.CharField(widget=DocumentPagesCarouselWidget())
+    document_version = DocumentVersionField()
 
 
 class DocumentForm(forms.ModelForm):

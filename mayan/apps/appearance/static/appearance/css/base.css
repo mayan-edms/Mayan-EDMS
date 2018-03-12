@@ -120,6 +120,7 @@ img.lazy-load-carousel {
 
 .instance-image-widget {
     text-align: center;
+    height: 100%;
 }
 
 hr {
@@ -700,3 +701,9 @@ a i {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-bottom: 6px solid #be2626; }
+
+
+.staging-file-thumbnail-container {
+    width: 150px;
+    margin: auto;
+}

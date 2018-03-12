@@ -7,6 +7,7 @@ import time
 import urllib
 
 from django.core.files import File
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from converter import TransformationResize, converter_class
@@ -61,6 +62,14 @@ class StagingFile(object):
     def as_file(self):
         return File(
             file=open(self.get_full_path(), mode='rb'), name=self.filename
+        )
+
+    def get_api_image_url(self):
+        return reverse(
+            'rest_api:stagingfolderfile-image-view', args=(
+                self.staging_folder.pk,
+                self.encoded_filename
+            )
         )
 
     def get_date_time_created(self):

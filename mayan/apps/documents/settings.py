@@ -10,18 +10,31 @@ LANGUAGE_CHOICES = [
     (i.iso639_3_code, i.name) for i in list(pycountry.languages)
 ]
 
+
 namespace = Namespace(name='documents', label=_('Documents'))
-setting_display_size = namespace.add_setting(
-    global_name='DOCUMENTS_DISPLAY_SIZE', default='3600'
+setting_display_width = namespace.add_setting(
+    global_name='DOCUMENTS_DISPLAY_WIDTH', default='3600'
 )
-setting_preview_size = namespace.add_setting(
-    global_name='DOCUMENTS_PREVIEW_SIZE', default='800'
+setting_display_height = namespace.add_setting(
+    global_name='DOCUMENTS_DISPLAY_HEIGHT', default=''
 )
-setting_print_size = namespace.add_setting(
-    global_name='DOCUMENTS_PRINT_SIZE', default='3600'
+setting_preview_width = namespace.add_setting(
+    global_name='DOCUMENTS_PREVIEW_WIDTH', default='800'
 )
-setting_thumbnail_size = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_SIZE', default='800'
+setting_preview_height = namespace.add_setting(
+    global_name='DOCUMENTS_PREVIEW_HEIGHT', default=''
+)
+setting_print_width = namespace.add_setting(
+    global_name='DOCUMENTS_PRINT_WIDTH', default='3600'
+)
+setting_print_height = namespace.add_setting(
+    global_name='DOCUMENTS_PRINT_HEIGHT', default=''
+)
+setting_thumbnail_width = namespace.add_setting(
+    global_name='DOCUMENTS_THUMBNAIL_WIDTH', default='800'
+)
+setting_thumbnail_height = namespace.add_setting(
+    global_name='DOCUMENTS_THUMBNAIL_HEIGHT', default=''
 )
 setting_recent_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_COUNT', default=40,

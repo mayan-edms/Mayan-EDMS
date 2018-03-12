@@ -39,8 +39,8 @@ from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
-    setting_display_size, setting_language, setting_zoom_max_level,
-    setting_zoom_min_level
+    setting_display_width, setting_display_height, setting_language,
+    setting_zoom_max_level, setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
@@ -195,6 +195,11 @@ class Document(models.Model):
     passthrough = PassthroughManager()
     trash = TrashCanManager()
 
+    class Meta:
+        verbose_name = _('Document')
+        verbose_name_plural = _('Documents')
+        ordering = ('-date_added',)
+
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk
 
@@ -238,11 +243,6 @@ class Document(models.Model):
             if _commit_events:
                 event_document_properties_edit.commit(actor=user, target=self)
 
-    class Meta:
-        verbose_name = _('Document')
-        verbose_name_plural = _('Documents')
-        ordering = ('-date_added',)
-
     def add_as_recent_document_for_user(self, user):
         return RecentDocument.objects.add_document_for_user(user, self)
 
@@ -256,6 +256,11 @@ class Document(models.Model):
             return latest_version.exists()
         else:
             return False
+
+    def get_api_image_url(self):
+        latest_version = self.latest_version
+        if latest_version:
+            return latest_version.get_api_image_url()
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
@@ -420,6 +425,11 @@ class DocumentVersion(models.Model):
 
     def get_absolute_url(self):
         return reverse('documents:document_version_view', args=(self.pk,))
+
+    def get_api_image_url(self):
+        first_page = self.pages.first()
+        if first_page:
+            return first_page.get_api_image_url()
 
     def get_rendered_string(self, preserve_extension=False):
         if preserve_extension:
@@ -758,7 +768,8 @@ class DocumentPage(models.Model):
 
         # Set sensible defaults if the argument is not specified or if the
         # argument is None
-        size = kwargs.get('size', setting_display_size.value) or setting_display_size.value
+        width = kwargs.get('width', setting_display_width.value) or setting_display_width.value
+        height = kwargs.get('height', setting_display_height.value) or setting_display_height.value
         rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
         zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
 
@@ -785,11 +796,9 @@ class DocumentPage(models.Model):
                 TransformationRotate(degrees=rotation)
             )
 
-        if size:
+        if width:
             transformation_list.append(
-                TransformationResize(
-                    **dict(zip(('width', 'height'), (size.split('x'))))
-                )
+                TransformationResize(width=width, height=height)
             )
 
         if zoom_level:
@@ -874,6 +883,13 @@ class DocumentPage(models.Model):
         images
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
+
+    def get_api_image_url(self):
+        return reverse(
+            'rest_api:documentpage-image', args=(
+                self.document.pk, self.document_version.pk, self.pk
+            )
+        )
 
 
 class DocumentPageCachedImage(models.Model):

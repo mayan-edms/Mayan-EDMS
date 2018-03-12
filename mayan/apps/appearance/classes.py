@@ -27,4 +27,3 @@ class Icon(object):
                 }
             )
         )
-

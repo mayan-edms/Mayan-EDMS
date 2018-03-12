@@ -337,8 +337,12 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
     GET:
         omit_serializer: true
         parameters:
-            - name: size
-              description: 'x' seprated width and height of the desired image representation.
+            - name: width
+              description: Width of the desired image representation.
+              paramType: query
+              type: number
+            - name: height
+              description: Height of the desired image representation.
               paramType: query
               type: number
             - name: zoom
@@ -377,7 +381,8 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        size = request.GET.get('size')
+        width = request.GET.get('width')
+        height = request.GET.get('height')
         zoom = request.GET.get('zoom')
 
         if zoom:
@@ -390,8 +395,8 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
         task = task_generate_document_page_image.apply_async(
             kwargs=dict(
-                document_page_id=self.get_object().pk, size=size, zoom=zoom,
-                rotation=rotation
+                document_page_id=self.get_object().pk, width=width,
+                height=height, zoom=zoom, rotation=rotation
             )
         )
 
