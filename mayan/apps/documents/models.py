@@ -261,6 +261,8 @@ class Document(models.Model):
         latest_version = self.latest_version
         if latest_version:
             return latest_version.get_api_image_url()
+        else:
+            return '#'
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
@@ -430,6 +432,8 @@ class DocumentVersion(models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url()
+        else:
+            return '#'
 
     def get_rendered_string(self, preserve_extension=False):
         if preserve_extension:

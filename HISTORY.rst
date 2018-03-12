@@ -38,6 +38,8 @@ Next (2018-XX-XX)
 - Display resolution settings are now specified as width and height and not a single resolution value.
 - Printed pages are now full width.
 - Move the invalid document markup to a separate HTML template.
+- Update to Fancybox 3.
+- Update to jQuery 3.3.1
                                 
 2.8 (2018-02-27)
 ================

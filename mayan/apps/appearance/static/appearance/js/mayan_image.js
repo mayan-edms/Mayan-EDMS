@@ -6,17 +6,13 @@ var MayanImage = function (options) {
 }
 
 MayanImage.intialize = function () {
-    $('a.fancybox').fancybox({
-        beforeShow : function(){
-            this.title = $(this.element).data('caption');
-        },
-        openEffect  : 'elastic',
-        closeEffect : 'elastic',
-        prevEffect  : 'none',
-        nextEffect  : 'none',
-        titleShow   : true,
-        type        : 'image',
-        autoResize  : true,
+    this.fancybox = $().fancybox({
+        animationDuration : 400,
+        buttons : [
+            'fullScreen',
+            'close'
+        ],
+        selector: 'a.fancybox',
     });
 
    $('img.lazy-load').lazyload({
@@ -31,7 +27,7 @@ MayanImage.intialize = function () {
             new MayanImage({element: $(this)});
         },
         container: $('#carousel-container'),
-        threshold: 2000
+        threshold: 2000,
     });
 
     $('.lazy-load').on('load', function() {
@@ -51,27 +47,14 @@ MayanImage.intialize = function () {
 
 MayanImage.templateInvalidDocument = $('#template-invalid-document').html();
 
-MayanImage.prototype.onImageError = function () {
-    this.element.parent().parent().html(MayanImage.templateInvalidDocument);
-
-    // Remove border to indicate non interactive image
-    this.element.removeClass('thin_border');
-
-    var container = this.element.parent().parent();
-    // Save img HTML
-    var html = this.element.parent().html();
-    // Remove anchor
-    this.element.parent().remove();
-    // Place again img
-    container.html(html);
-};
 
 MayanImage.prototype.load = function () {
     var self = this;
+    var container = this.element.parent().parent().parent();
 
-    this.element.error(function(event) {
-        self.onImageError();
-    });
+    this.element.on('error', (function(event) {
+        container.html(MayanImage.templateInvalidDocument);
+    }));
 
     this.element.attr('src', this.element.attr('data-url'));
     $.fn.matchHeight._update();
