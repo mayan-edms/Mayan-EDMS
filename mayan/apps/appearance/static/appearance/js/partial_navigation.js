@@ -115,9 +115,19 @@ PartialNavigation.prototype.onAnchorClick = function ($this, event) {
         return true;
     }
 
+    if (url.indexOf('javascript:;') > -1) {
+        // Ignore links meant to execute javascript on click.
+        return true;
+    }
+
+    if (url === '#') {
+        // Ignore links with hash at the.
+        return true;
+    }
+
     event.preventDefault();
 
-    if ((url !== '#') && !($this.hasClass('disabled') || $this.parent().hasClass('disabled'))) {
+    if (!($this.hasClass('disabled') || $this.parent().hasClass('disabled'))) {
         this.setLocation(url);
     }
 }
