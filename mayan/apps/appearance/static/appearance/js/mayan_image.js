@@ -49,15 +49,10 @@ MayanImage.intialize = function () {
     });
 }
 
+MayanImage.templateInvalidDocument = $('#template-invalid-document').html();
+
 MayanImage.prototype.onImageError = function () {
-    this.element.parent().parent().html('\
-        <div class="fa-3x">\
-            <span class="fa-layers fa-fw">\
-                <i class="far fa-file"></i>\
-                <i class="fa-inverse fas fa-times text-danger" data-fa-transform="shrink-6"></i>\
-            </span>\
-        </div>\
-    ')
+    this.element.parent().parent().html(MayanImage.templateInvalidDocument);
 
     // Remove border to indicate non interactive image
     this.element.removeClass('thin_border');
