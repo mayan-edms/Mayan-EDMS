@@ -30,7 +30,6 @@ from model_utils.managers import InheritanceManager
 from common.compat import collapse_rfc2231_value
 from common.compressed_files import CompressedFile, NotACompressedFile
 from common.utils import TemporaryFile
-from converter.literals import DIMENSION_SEPARATOR
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
@@ -336,14 +335,6 @@ class StagingFolderSource(InteractiveSource):
     class Meta:
         verbose_name = _('Staging folder')
         verbose_name_plural = _('Staging folders')
-
-    def get_preview_size(self):
-        dimensions = []
-        dimensions.append(force_text(self.preview_width))
-        if self.preview_height:
-            dimensions.append(force_text(self.preview_height))
-
-        return DIMENSION_SEPARATOR.join(dimensions)
 
     def get_file(self, *args, **kwargs):
         return StagingFile(staging_folder=self, *args, **kwargs)
