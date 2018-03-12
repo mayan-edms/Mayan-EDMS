@@ -6,6 +6,8 @@ var MayanImage = function (options) {
 }
 
 MayanImage.intialize = function () {
+    var app = this;
+
     this.fancybox = $().fancybox({
         animationDuration : 400,
         buttons : [
@@ -13,9 +15,14 @@ MayanImage.intialize = function () {
             'close'
         ],
         selector: 'a.fancybox',
+        afterShow: function (instance, current) {
+            $('a.a-caption').on('click', function(event) {
+                instance.close(true);
+            });
+        },
     });
 
-   $('img.lazy-load').lazyload({
+    $('img.lazy-load').lazyload({
         appear: function(elements_left, settings) {
             new MayanImage({element: $(this)});
         },

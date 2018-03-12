@@ -1,6 +1,5 @@
-===============
 Code statistics
-===============
+---------------
 
 As of Sun Mar 4 00:43:25 2018 (commit d367d32be62ed86dd6d7b02658eac2fa8086dbb9)
 

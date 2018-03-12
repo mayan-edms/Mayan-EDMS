@@ -9,7 +9,6 @@ These are errors or issues that are blocking a release.
 
 UI - Frontend
 ~~~~~~~~~~~~~
-- Close fancybox when clicking on the title to move to the document view.
 - Match row height is not executing until scroll.
 - Fix shift+click and control+click.
 
