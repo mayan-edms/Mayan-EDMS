@@ -126,7 +126,7 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         # heading. The two smart links are not shown.
 
         self.assertContains(
-            response, text=self.document.label, count=1, status_code=200
+            response, text=self.document.label, count=2, status_code=200
         )
 
     def test_document_smart_link_list_view_with_permission(self):
@@ -149,5 +149,5 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         # heading, plus 2 for the test.
 
         self.assertContains(
-            response, text=self.document.label, count=3, status_code=200
+            response, text=self.document.label, count=4, status_code=200
         )
