@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
 from common.tests.test_views import GenericViewTestCase
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from metadata.models import MetadataType
 from metadata.permissions import permission_metadata_document_edit

@@ -6,7 +6,7 @@ import logging
 from django.utils.timezone import now
 
 from common.literals import TIME_DELTA_UNIT_DAYS
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 from sources.links import link_upload_version
 from user_management.tests import (
     TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_PASSWORD,

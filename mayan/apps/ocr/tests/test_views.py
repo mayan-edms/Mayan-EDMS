@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..permissions import permission_ocr_content_view
 from ..utils import get_document_ocr_content

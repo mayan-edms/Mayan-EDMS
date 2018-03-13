@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-from documents.tests.literals import TEST_DOCUMENT_FILENAME
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import (
+    GenericDocumentViewTestCase, TEST_DOCUMENT_FILENAME
+)
 
 from ..permissions import permission_content_view
 from ..utils import get_document_content

@@ -30,7 +30,7 @@ Next (2018-XX-XX)
 - Add periodic AJAX workers to update the value of the notifications link.
 - Add notification count inside a badge on the notification link.
 - Add the MERC specifying javascript library usage.
-- Documents without at least a version are not scanned for duplicates. 
+- Documents without at least a version are not scanned for duplicates.
 - Use a SHA256 hex digest of the secret key at the name of the lockfile. This makes the generation of the name repeatable while unique between installations.
 - Squashed apps migrations.
 - Convert document thumbnails, preview, image preview and staging files to template base widgets.
@@ -41,7 +41,11 @@ Next (2018-XX-XX)
 - Update to Fancybox 3.
 - Update to jQuery 3.3.1
 - Move transfomations to their own module.
-                               
+- Split documents.tests.test_views into base.py, test_deleted_document_views.py,
+  test_document_page_views.py, test_document_type_views.py, test_document_version_views.py,
+  test_document_views.py, test_duplicated_document_views.py
+
+
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".

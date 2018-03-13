@@ -17,8 +17,8 @@ from ..permissions import (
     permission_document_version_revert
 )
 
+from .base import GenericDocumentViewTestCase
 from .literals import TEST_SMALL_DOCUMENT_PATH
-from .test_views import GenericDocumentViewTestCase
 
 
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):

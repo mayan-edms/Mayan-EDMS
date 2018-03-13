@@ -49,7 +49,7 @@ Caching
 
 Converter
 ~~~~~~~~~
-- Move converter transformations to their own module.
+- Move converter transformations to their own module. [DONE]
 
 
 Documents
@@ -172,7 +172,7 @@ Testing
 - Update all API tests using self.client to just self. and the HTTP method.
 - Add test for searches for each app that uses search.
 - Split documents.tests.test_views into test_document_views test_pages_views, etc.
-  The module is too big.
+  The module is too big. [DONE]
 
 UI - Frontend
 ~~~~~~~~~~~~~

@@ -14,7 +14,7 @@ from ..permissions import (
     permission_document_download, permission_document_view
 )
 
-from .test_views import GenericDocumentViewTestCase
+from .base import GenericDocumentViewTestCase
 
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'

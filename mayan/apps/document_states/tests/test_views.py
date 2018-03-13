@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
 
 from common.tests.test_views import GenericViewTestCase
-from documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import (
+    GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH
+)
 
 from ..models import Workflow, WorkflowState, WorkflowTransition
 from ..permissions import (

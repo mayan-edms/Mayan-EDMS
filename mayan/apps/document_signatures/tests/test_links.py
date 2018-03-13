@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 from django.core.files import File
 from django.urls import reverse
 
-from documents.tests.literals import TEST_DOCUMENT_PATH
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import (
+    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
+)
 
 from ..links import (
     link_document_version_signature_delete,
