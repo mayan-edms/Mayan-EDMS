@@ -44,7 +44,7 @@ Next (2018-XX-XX)
 - Split documents.tests.test_views into base.py, test_deleted_document_views.py,
   test_document_page_views.py, test_document_type_views.py, test_document_version_views.py,
   test_document_views.py, test_duplicated_document_views.py
-
+- Sort smart links by label.
 
 2.8 (2018-02-27)
 ================

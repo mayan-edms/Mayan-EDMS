@@ -16,7 +16,9 @@ from .managers import SmartLinkManager
 
 @python_2_unicode_compatible
 class SmartLink(models.Model):
-    label = models.CharField(max_length=96, verbose_name=_('Label'))
+    label = models.CharField(
+        db_index=True, max_length=96, verbose_name=_('Label')
+    )
     dynamic_label = models.CharField(
         blank=True, max_length=96, help_text=_(
             'Enter a template to render. '
@@ -90,6 +92,7 @@ class SmartLink(models.Model):
         )
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Smart link')
         verbose_name_plural = _('Smart links')
 
