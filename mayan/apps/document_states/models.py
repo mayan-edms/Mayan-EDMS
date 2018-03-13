@@ -420,6 +420,7 @@ class WorkflowInstance(models.Model):
             return WorkflowTransition.objects.none()
 
     class Meta:
+        ordering = ('workflow',)
         unique_together = ('document', 'workflow')
         verbose_name = _('Workflow instance')
         verbose_name_plural = _('Workflow instances')
