@@ -598,15 +598,6 @@ class APIDocumentVersionPageListView(generics.ListAPIView):
     def get_queryset(self):
         return self.get_document_version().pages.all()
 
-    def get_serializer_context(self):
-        # FIXME: Redundant as this is already passed to the serializer
-        # by default
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
-
 
 class APIDocumentVersionsListView(generics.ListCreateAPIView):
     """
@@ -704,15 +695,6 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
             return DocumentVersionSerializer
         else:
             return WritableDocumentVersionSerializer
-
-    def get_serializer_context(self):
-        # FIXME: Redundant as this is already passed to the serializer
-        # by default. Add test to confirm.
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
 
     def patch(self, *args, **kwargs):
         """
