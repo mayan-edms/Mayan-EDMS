@@ -6,7 +6,8 @@ from django.apps import apps
 
 from mayan.celery import app
 
-RETRY_DELAY = 10
+from .literals import RETRY_DELAY
+
 logger = logging.getLogger(__name__)
 
 
