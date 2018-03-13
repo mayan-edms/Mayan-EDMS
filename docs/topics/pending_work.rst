@@ -37,6 +37,7 @@ API
 - Update API docstrings. The upgrade to the latest DRF broke all formatting.
 - Make views smaller. Much as much as possible to serializers.
 - Switch to ViewSets.
+- Add API filtering. Example unread notifications.
 
 
 Caching
@@ -120,6 +121,10 @@ Other
 - Change metadata label column from CharField to Label
 - Start testing to Python 3 compatibility.
 - Unify all **RelationshipForms into a common class.
+- Add test for event subscription view.
+- Repeated templates: password_reset_confirm.html and password_reset_form.html
+- Remove unused text=get_notification_count from events.links
+- Reduce number of languages so dropzone view starts faster.
 
 
 Permissions
@@ -169,6 +174,20 @@ Testing
 - Split documents.tests.test_views into test_document_views test_pages_views, etc.
   The module is too big.
 
+UI - Frontend
+~~~~~~~~~~~~~
+- Fix horizontal center of previews in document view. [DONE]
+- Fix menu not collapsing at the same width of nav parent.
+- Move direct CSS style from code into base.css. grep 'style' * -R. Style code in:
+
+    * appearance/templates/appearance/generic_list_items_subtemplate.html
+    * appearance/templates/appearance/base.html
+    * appearance/templates/appearance/generic_list_subtemplate.html
+    * appearance/templates/navigation/generic_link_instance.html
+
+- Check if location is found in partial and remove it. Avoid circular loading.
+- Add location to history after a form submit redirect.
+- Hitting refresh adds a new history? Can refresh be detected with JS.
 
 UI
 ~~
@@ -180,8 +199,7 @@ UI
   to display each menu.
 - Reduce the facet buttons paddings.
 - Make facet action button smaller. Reduce margin-bottom.
-- Hitting refresh adds a new history? Can refresh be detected with JS.
-
+- Remove previous from the views.py. It is not longer used by the form's cancel button.
 
 Workflows
 ~~~~~~~~~
