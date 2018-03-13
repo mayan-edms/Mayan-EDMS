@@ -13,7 +13,7 @@ from .serializers import StagingFolderFileSerializer, StagingFolderSerializer
 
 class APIStagingSourceFileView(generics.GenericAPIView):
     """
-    Details of the selected staging file.
+    get: Details of the selected staging file.
     """
     serializer_class = StagingFolderFileSerializer
 
@@ -31,7 +31,7 @@ class APIStagingSourceFileView(generics.GenericAPIView):
 
 class APIStagingSourceListView(generics.ListAPIView):
     """
-    Returns a list of all the staging folders and the files they contain.
+    get: Returns a list of all the staging folders and the files they contain.
     """
 
     serializer_class = StagingFolderSerializer
@@ -40,7 +40,7 @@ class APIStagingSourceListView(generics.ListAPIView):
 
 class APIStagingSourceView(generics.RetrieveAPIView):
     """
-    Details of the selected staging folders and the files it contains.
+    get: Details of the selected staging folders and the files it contains.
     """
     serializer_class = StagingFolderSerializer
     queryset = StagingFolderSource.objects.all()
@@ -48,17 +48,8 @@ class APIStagingSourceView(generics.RetrieveAPIView):
 
 class APIStagingSourceFileImageView(generics.RetrieveAPIView):
     """
-    Returns an image representation of the selected document.
-    ---
-    GET:
-        omit_serializer: true
-        parameters:
-            - name: size
-              description: 'x' seprated width and height of the desired image representation.
-              paramType: query
-              type: number
+    get: Returns an image representation of the selected document.
     """
-
     def get_serializer(self, *args, **kwargs):
         return None
 

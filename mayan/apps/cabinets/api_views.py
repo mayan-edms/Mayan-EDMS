@@ -45,6 +45,10 @@ class APIDocumentCabinetListView(generics.ListAPIView):
 
 
 class APICabinetListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the cabinets.
+    post: Create a new cabinet
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
     mayan_view_permissions = {'POST': (permission_cabinet_create,)}
@@ -63,20 +67,14 @@ class APICabinetListView(generics.ListCreateAPIView):
         elif self.request.method == 'POST':
             return WritableCabinetSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the cabinets.
-        """
-        return super(APICabinetListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new cabinet.
-        """
-        return super(APICabinetListView, self).post(*args, **kwargs)
-
 
 class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected cabinet.
+    get: Returns the details of the selected cabinet.
+    patch: Edit the selected cabinet.
+    put: Edit the selected cabinet.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
@@ -86,18 +84,6 @@ class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
     }
     permission_classes = (MayanPermission,)
     queryset = Cabinet.objects.all()
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected cabinet.
-        """
-        return super(APICabinetView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected cabinet.
-        """
-        return super(APICabinetView, self).get(*args, **kwargs)
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -111,24 +97,12 @@ class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
         else:
             return WritableCabinetSerializer
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected cabinet.
-        """
-        return super(APICabinetView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected cabinet.
-        """
-        return super(APICabinetView, self).put(*args, **kwargs)
-
 
 class APICabinetDocumentListView(generics.ListCreateAPIView):
     """
-    Returns a list of all the documents contained in a particular cabinet.
+    get: Returns a list of all the documents contained in a particular cabinet.
+    post: Add a document to the selected cabinet.
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
@@ -175,16 +149,12 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(cabinet=self.get_cabinet())
 
-    def post(self, request, *args, **kwargs):
-        """
-        Add a document to the selected cabinet.
-        """
-        return super(APICabinetDocumentListView, self).post(
-            request, *args, **kwargs
-        )
-
 
 class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
+    """
+    delete: Remove a document from the selected cabinet.
+    get: Returns the details of the selected cabinet document.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'document_pk'
     mayan_object_permissions = {
@@ -192,22 +162,6 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
         'DELETE': (permission_cabinet_remove_document,)
     }
     serializer_class = CabinetDocumentSerializer
-
-    def delete(self, request, *args, **kwargs):
-        """
-        Remove a document from the selected cabinet.
-        """
-
-        return super(APICabinetDocumentView, self).delete(
-            request, *args, **kwargs
-        )
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected cabinet document.
-        """
-
-        return super(APICabinetDocumentView, self).get(*args, **kwargs)
 
     def get_cabinet(self):
         return get_object_or_404(Cabinet, pk=self.kwargs['pk'])

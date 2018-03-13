@@ -14,17 +14,8 @@ from .serializers import SearchModelSerializer
 
 class APISearchView(SearchModelMixin, generics.ListAPIView):
     """
-    Perform a search operation
-    ---
-    GET:
-        omit_serializer: true
-        parameters:
-            - name: q
-              paramType: query
-              type: string
-              description: Term that will be used for the search.
+    get: Perform a search operation
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
 
     def get_queryset(self):
@@ -55,17 +46,8 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
 
 class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
     """
-    Perform an advanced search operation
-    ---
-    GET:
-        omit_serializer: true
-        parameters:
-            - name: _match_all
-              paramType: query
-              type: string
-              description: When checked, only results that match all fields will be returned. When unchecked results that match at least one field will be returned. Possible values are "on" or "off"
+    get: Perform an advanced search operation
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
 
     def get_queryset(self):
@@ -103,12 +85,8 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
 
 
 class APISearchModelList(generics.ListAPIView):
+    """
+    get: Returns a list of all the available search models.
+    """
     serializer_class = SearchModelSerializer
     queryset = SearchModel.all()
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the available search models.
-        """
-
-        return super(APISearchModelList, self).get(*args, **kwargs)

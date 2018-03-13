@@ -16,6 +16,10 @@ from .serializers import (
 
 
 class APICheckedoutDocumentListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the documents that are currently checked out.
+    post: Checkout a document.
+    """
     def get_serializer(self, *args, **kwargs):
         if not self.request:
             return None
@@ -42,25 +46,12 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             document__pk__in=filtered_documents.values_list('pk', flat=True)
         )
 
-    def get(self, request, *args, **kwargs):
-        """
-        Returns a list of all the documents that are currently checked out.
-        """
-
-        return super(
-            APICheckedoutDocumentListView, self
-        ).get(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        """
-        Checkout a document.
-        """
-        return super(
-            APICheckedoutDocumentListView, self
-        ).post(request, *args, **kwargs)
-
 
 class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
+    """
+    get: Retrieve the details of the selected checked out document entry.
+    delete: Checkin a document.
+    """
     serializer_class = DocumentCheckoutSerializer
 
     def get_queryset(self):
@@ -82,20 +73,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
         elif self.request.method == 'DELETE':
             return DocumentCheckout.objects.all()
 
-    def get(self, request, *args, **kwargs):
-        """
-        Retrieve the details of the selected checked out document entry.
-        """
-
-        return super(
-            APICheckedoutDocumentView, self
-        ).get(request, *args, **kwargs)
-
     def delete(self, request, *args, **kwargs):
-        """
-        Checkin a document.
-        """
-
         document = self.get_object().document
 
         if document.checkout_info().user == request.user:

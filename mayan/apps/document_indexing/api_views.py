@@ -22,28 +22,24 @@ from .serializers import (
 
 
 class APIIndexListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the defined indexes.
+    post: Create a new index.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
     mayan_view_permissions = {'POST': (permission_document_indexing_create,)}
     queryset = Index.objects.all()
     serializer_class = IndexSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the defined indexes.
-        """
-
-        return super(APIIndexListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new index.
-        """
-
-        return super(APIIndexListView, self).post(*args, **kwargs)
-
 
 class APIIndexView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected index.
+    get: Returns the details of the selected index.
+    patch: Partially edit an index.
+    put: Edit an index.
+    """
     mayan_object_permissions = {
         'GET': (permission_document_indexing_view,),
         'PUT': (permission_document_indexing_edit,),
@@ -53,34 +49,6 @@ class APIIndexView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (MayanPermission,)
     queryset = Index.objects.all()
     serializer_class = IndexSerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected index.
-        """
-
-        return super(APIIndexView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected index.
-        """
-
-        return super(APIIndexView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit an index.
-        """
-
-        return super(APIIndexView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit an index.
-        """
-
-        return super(APIIndexView, self).put(*args, **kwargs)
 
 
 class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
@@ -106,19 +74,21 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
 
 
 class APIIndexTemplateListView(generics.ListAPIView):
+    """
+    get: Returns a list of all the template nodes for the selected index.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
     serializer_class = IndexTemplateNodeSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the template nodes for the selected index.
-        """
-
-        return super(APIIndexTemplateListView, self).get(*args, **kwargs)
-
 
 class APIIndexTemplateView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected index template node.
+    get: Returns the details of the selected index template node.
+    patch: Partially edit an index template node.
+    put: Edit an index template node.
+    """
     serializer_class = IndexTemplateNodeSerializer
     queryset = IndexTemplateNode.objects.all()
 
@@ -129,34 +99,6 @@ class APIIndexTemplateView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_document_indexing_edit,),
         'DELETE': (permission_document_indexing_edit,)
     }
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected index template node.
-        """
-
-        return super(APIIndexTemplateView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected index template node.
-        """
-
-        return super(APIIndexTemplateView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit an index template node.
-        """
-
-        return super(APIIndexTemplateView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit an index template node.
-        """
-
-        return super(APIIndexTemplateView, self).put(*args, **kwargs)
 
 
 class APIDocumentIndexListView(generics.ListAPIView):

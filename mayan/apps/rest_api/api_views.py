@@ -15,7 +15,7 @@ class APIRoot(APIView):
 
     def get(self, request, format=None):
         """
-        Return a list of all users.
+        get: Return a list of all endpoints.
         """
         endpoint_enumerator = EndpointEnumerator()
 
@@ -32,5 +32,4 @@ class BrowseableObtainAuthToken(ObtainAuthToken):
     """
     Obtain an API authentication token.
     """
-
     renderer_classes = (renderers.BrowsableAPIRenderer, renderers.JSONRenderer)

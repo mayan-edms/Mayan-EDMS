@@ -14,6 +14,9 @@ from .serializers import DocumentPageOCRContentSerializer
 
 
 class APIDocumentOCRView(generics.GenericAPIView):
+    """
+    post: Submit a document for OCR.
+    """
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
     }
@@ -27,20 +30,14 @@ class APIDocumentOCRView(generics.GenericAPIView):
         return None
 
     def post(self, request, *args, **kwargs):
-        """
-        Submit a document for OCR.
-        ---
-        omit_serializer: true
-        responseMessages:
-            - code: 202
-              message: Accepted
-        """
-
         self.get_object().submit_for_ocr()
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
 class APIDocumentVersionOCRView(generics.GenericAPIView):
+    """
+    post: Submit a document version for OCR.
+    """
     lookup_url_kwarg = 'version_pk'
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
@@ -61,22 +58,13 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
         return None
 
     def post(self, request, *args, **kwargs):
-        """
-        Submit a document version for OCR.
-        ---
-        omit_serializer: true
-        responseMessages:
-            - code: 202
-              message: Accepted
-        """
-
         self.get_object().submit_for_ocr()
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
 class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     """
-    Returns the OCR content of the selected document page.
+    get: Returns the OCR content of the selected document page.
     """
     lookup_url_kwarg = 'page_pk'
     mayan_object_permissions = {

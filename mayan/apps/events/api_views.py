@@ -21,9 +21,8 @@ from .serializers import (
 
 class APIObjectEventListView(generics.ListAPIView):
     """
-    Return a list of events for the specified object.
+    get: Return a list of events for the specified object.
     """
-
     serializer_class = EventSerializer
 
     def get_object(self):
@@ -52,7 +51,7 @@ class APIObjectEventListView(generics.ListAPIView):
 
 class APIEventTypeNamespaceDetailView(generics.RetrieveAPIView):
     """
-    Returns the details of an event type namespace.
+    get: Returns the details of an event type namespace.
     """
     serializer_class = EventTypeNamespaceSerializer
 
@@ -65,9 +64,8 @@ class APIEventTypeNamespaceDetailView(generics.RetrieveAPIView):
 
 class APIEventTypeNamespaceListView(generics.ListAPIView):
     """
-    Returns a list of all the available event type namespaces.
+    get: Returns a list of all the available event type namespaces.
     """
-
     serializer_class = EventTypeNamespaceSerializer
     queryset = EventTypeNamespace.all()
 
@@ -81,9 +79,8 @@ class APIEventTypeNamespaceListView(generics.ListAPIView):
 
 class APIEventTypeNamespaceEventTypeListView(generics.ListAPIView):
     """
-    Returns a list of all the available event types from a namespaces.
+    get: Returns a list of all the available event types from a namespaces.
     """
-
     serializer_class = EventTypeSerializer
 
     def get_queryset(self):
@@ -104,9 +101,8 @@ class APIEventTypeNamespaceEventTypeListView(generics.ListAPIView):
 
 class APIEventTypeListView(generics.ListAPIView):
     """
-    Returns a list of all the available event types.
+    get: Returns a list of all the available event types.
     """
-
     serializer_class = EventTypeSerializer
     queryset = EventType.all()
 
@@ -120,9 +116,8 @@ class APIEventTypeListView(generics.ListAPIView):
 
 class APIEventListView(generics.ListAPIView):
     """
-    Returns a list of all the available events.
+    get: Returns a list of all the available events.
     """
-
     mayan_view_permissions = {'GET': (permission_events_view,)}
     permission_classes = (MayanPermission,)
     queryset = Action.objects.all()
@@ -138,7 +133,7 @@ class APIEventListView(generics.ListAPIView):
 
 class APINotificationListView(generics.ListAPIView):
     """
-    Return a list of notifications for the current user.
+    get: Return a list of notifications for the current user.
     """
     serializer_class = NotificationSerializer
 

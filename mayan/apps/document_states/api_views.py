@@ -25,19 +25,14 @@ from .serializers import (
 
 
 class APIDocumentTypeWorkflowListView(generics.ListAPIView):
+    """
+    get: Returns a list of all the document type workflows.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
     serializer_class = WorkflowSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the document type workflows.
-        """
-        return super(
-            APIDocumentTypeWorkflowListView, self
-        ).get(*args, **kwargs)
 
     def get_document_type(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
@@ -54,17 +49,14 @@ class APIDocumentTypeWorkflowListView(generics.ListAPIView):
 
 
 class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the document types attached to a workflow.
+    post: Attach a document type to a specified workflow.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
     }
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the document types attached to a workflow.
-        """
-
-        return super(APIWorkflowDocumentTypeList, self).get(*args, **kwargs)
 
     def get_queryset(self):
         """
@@ -119,39 +111,18 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
 
         return workflow
 
-    def post(self, request, *args, **kwargs):
-        """
-        Attach a document type to a specified workflow.
-        """
-
-        return super(
-            APIWorkflowDocumentTypeList, self
-        ).post(request, *args, **kwargs)
-
 
 class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
+    """
+    delete: Remove a document type from the selected workflow.
+    get: Returns the details of the selected workflow document type.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'document_type_pk'
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
     }
     serializer_class = WorkflowDocumentTypeSerializer
-
-    def delete(self, request, *args, **kwargs):
-        """
-        Remove a document type from the selected workflow.
-        """
-
-        return super(
-            APIWorkflowDocumentTypeView, self
-        ).delete(request, *args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected workflow document type.
-        """
-
-        return super(APIWorkflowDocumentTypeView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_workflow().document_types.all()
@@ -179,7 +150,6 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         into a generic API class?
         RESEARCH: Reuse get_workflow method from APIWorkflowDocumentTypeList?
         """
-
         if self.request.method == 'GET':
             permission_required = permission_workflow_view
         else:
@@ -199,22 +169,19 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         RESEARCH: Move this kind of methods to the serializer instead it that
         ability becomes available in Django REST framework
         """
-
         self.get_workflow().document_types.remove(instance)
 
 
 class APIWorkflowListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the workflows.
+    post: Create a new workflow.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_workflow_view,)}
     mayan_view_permissions = {'POST': (permission_workflow_create,)}
     permission_classes = (MayanPermission,)
     queryset = Workflow.objects.all()
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the workflows.
-        """
-        return super(APIWorkflowListView, self).get(*args, **kwargs)
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -228,14 +195,14 @@ class APIWorkflowListView(generics.ListCreateAPIView):
         else:
             return WritableWorkflowSerializer
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new workflow.
-        """
-        return super(APIWorkflowListView, self).post(*args, **kwargs)
-
 
 class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected workflow.
+    get: Return the details of the selected workflow.
+    patch: Edit the selected workflow.
+    put: Edit the selected workflow.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_workflow_delete,),
@@ -244,20 +211,6 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_workflow_edit,)
     }
     queryset = Workflow.objects.all()
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected workflow.
-        """
-
-        return super(APIWorkflowView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected workflow.
-        """
-
-        return super(APIWorkflowView, self).get(*args, **kwargs)
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -271,32 +224,16 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         else:
             return WritableWorkflowSerializer
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected workflow.
-        """
-
-        return super(APIWorkflowView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected workflow.
-        """
-
-        return super(APIWorkflowView, self).put(*args, **kwargs)
-
 
 # Workflow state views
 
 
 class APIWorkflowStateListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the workflow states.
+    post: Create a new workflow state.
+    """
     serializer_class = WorkflowStateSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the workflow states.
-        """
-        return super(APIWorkflowStateListView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_workflow().states.all()
@@ -330,30 +267,16 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
 
         return workflow
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new workflow state.
-        """
-        return super(APIWorkflowStateListView, self).post(*args, **kwargs)
-
 
 class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected workflow state.
+    get: Return the details of the selected workflow state.
+    patch: Edit the selected workflow state.
+    put: Edit the selected workflow state.
+    """
     lookup_url_kwarg = 'state_pk'
     serializer_class = WorkflowStateSerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected workflow state.
-        """
-
-        return super(APIWorkflowStateView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected workflow state.
-        """
-
-        return super(APIWorkflowStateView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_workflow().states.all()
@@ -387,31 +310,15 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
 
         return workflow
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected workflow state.
-        """
-
-        return super(APIWorkflowStateView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected workflow state.
-        """
-
-        return super(APIWorkflowStateView, self).put(*args, **kwargs)
-
 
 # Workflow transition views
 
 
 class APIWorkflowTransitionListView(generics.ListCreateAPIView):
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the workflow transitions.
-        """
-        return super(APIWorkflowTransitionListView, self).get(*args, **kwargs)
-
+    """
+    get: Returns a list of all the workflow transitions.
+    post: Create a new workflow transition.
+    """
     def get_queryset(self):
         return self.get_workflow().transitions.all()
 
@@ -456,29 +363,15 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
 
         return workflow
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new workflow transition.
-        """
-        return super(APIWorkflowTransitionListView, self).post(*args, **kwargs)
-
 
 class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected workflow transition.
+    get: Return the details of the selected workflow transition.
+    patch: Edit the selected workflow transition.
+    put: Edit the selected workflow transition.
+    """
     lookup_url_kwarg = 'transition_pk'
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected workflow transition.
-        """
-
-        return super(APIWorkflowTransitionView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected workflow transition.
-        """
-
-        return super(APIWorkflowTransitionView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_workflow().transitions.all()
@@ -524,36 +417,19 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
 
         return workflow
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected workflow transition.
-        """
-
-        return super(APIWorkflowTransitionView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected workflow transition.
-        """
-
-        return super(APIWorkflowTransitionView, self).put(*args, **kwargs)
-
 
 # Document workflow views
 
 
 class APIWorkflowInstanceListView(generics.ListAPIView):
+    """
+    get: Returns a list of all the document workflows.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     serializer_class = WorkflowInstanceSerializer
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the document workflows.
-        """
-        return super(APIWorkflowInstanceListView, self).get(*args, **kwargs)
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -570,19 +446,15 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
 
 
 class APIWorkflowInstanceView(generics.RetrieveAPIView):
+    """
+    get: Return the details of the selected document workflow.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'workflow_pk'
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
     serializer_class = WorkflowInstanceSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected document workflow.
-        """
-
-        return super(APIWorkflowInstanceView, self).get(*args, **kwargs)
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -599,14 +471,10 @@ class APIWorkflowInstanceView(generics.RetrieveAPIView):
 
 
 class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the document workflows log entries.
-        """
-        return super(APIWorkflowInstanceLogEntryListView, self).get(
-            *args, **kwargs
-        )
-
+    """
+    get: Returns a list of all the document workflows log entries.
+    post: Transition a document workflow by creating a new document workflow log entry.
+    """
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
@@ -660,12 +528,3 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
         )
 
         return workflow
-
-    def post(self, *args, **kwargs):
-        """
-        Transition a document workflow by creating a new document workflow
-        log entry.
-        """
-        return super(
-            APIWorkflowInstanceLogEntryListView, self
-        ).post(*args, **kwargs)

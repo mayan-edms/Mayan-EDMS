@@ -21,41 +21,23 @@ from .serializers import (
 
 
 class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the current user.
+    get: Return the details of the current user.
+    patch: Partially edit the current user.
+    put: Edit the current user.
+    """
     serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user
 
-    def delete(self, *args, **kwargs):
-        """
-        Delete the current user.
-        """
-
-        return super(APICurrentUserView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the current user.
-        """
-
-        return super(APICurrentUserView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit the current user.
-        """
-
-        return super(APICurrentUserView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the current user.
-        """
-
-        return super(APICurrentUserView, self).put(*args, **kwargs)
-
 
 class APIGroupListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the groups.
+    post: Create a new group.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_group_view,)}
     mayan_view_permissions = {'POST': (permission_group_create,)}
@@ -63,22 +45,14 @@ class APIGroupListView(generics.ListCreateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the groups.
-        """
-
-        return super(APIGroupListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new group.
-        """
-
-        return super(APIGroupListView, self).post(*args, **kwargs)
-
 
 class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected group.
+    get: Return the details of the selected group.
+    patch: Partially edit the selected group.
+    put: Edit the selected group.
+    """
     mayan_object_permissions = {
         'GET': (permission_group_view,),
         'PUT': (permission_group_edit,),
@@ -89,36 +63,12 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected group.
-        """
-
-        return super(APIGroupView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected group.
-        """
-
-        return super(APIGroupView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit the selected group.
-        """
-
-        return super(APIGroupView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected group.
-        """
-
-        return super(APIGroupView, self).put(*args, **kwargs)
-
 
 class APIUserListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the users.
+    post: Create a new user.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_user_view,)}
     mayan_view_permissions = {'POST': (permission_user_create,)}
@@ -126,21 +76,14 @@ class APIUserListView(generics.ListCreateAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the users.
-        """
-        return super(APIUserListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new user.
-        """
-
-        return super(APIUserListView, self).post(*args, **kwargs)
-
 
 class APIUserView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected user.
+    get: Return the details of the selected user.
+    patch: Partially edit the selected user.
+    put: Edit the selected user.
+    """
     mayan_object_permissions = {
         'GET': (permission_user_view,),
         'PUT': (permission_user_edit,),
@@ -151,40 +94,12 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected user.
-        """
-
-        return super(APIUserView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected user.
-        """
-
-        return super(APIUserView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit the selected user.
-        """
-
-        return super(APIUserView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected user.
-        """
-
-        return super(APIUserView, self).put(*args, **kwargs)
-
 
 class APIUserGroupList(generics.ListCreateAPIView):
     """
-    Returns a list of all the groups to which an user belongs.
+    get: Returns a list of all the groups to which an user belongs.
+    post: Add a user to a list of groups.
     """
-
     mayan_object_permissions = {
         'GET': (permission_user_view,),
         'POST': (permission_user_edit,)
@@ -241,9 +156,3 @@ class APIUserGroupList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.get_user(), _user=self.request.user)
-
-    def post(self, request, *args, **kwargs):
-        """
-        Add a user to a list of groups.
-        """
-        return super(APIUserGroupList, self).post(request, *args, **kwargs)

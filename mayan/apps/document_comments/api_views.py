@@ -17,12 +17,10 @@ from .serializers import CommentSerializer, WritableCommentSerializer
 
 
 class APICommentListView(generics.ListCreateAPIView):
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the document comments.
-        """
-        return super(APICommentListView, self).get(*args, **kwargs)
-
+    """
+    get: Returns a list of all the document comments.
+    post: Create a new document comment.
+    """
     def get_document(self):
         if self.request.method == 'GET':
             permission_required = permission_comment_view
@@ -71,30 +69,14 @@ class APICommentListView(generics.ListCreateAPIView):
 
         return context
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new document comment.
-        """
-        return super(APICommentListView, self).post(*args, **kwargs)
-
 
 class APICommentView(generics.RetrieveDestroyAPIView):
+    """
+    delete: Delete the selected document comment.
+    get: Returns the details of the selected document comment.
+    """
     lookup_url_kwarg = 'comment_pk'
     serializer_class = CommentSerializer
-
-    def delete(self, request, *args, **kwargs):
-        """
-        Delete the selected document comment.
-        """
-
-        return super(APICommentView, self).delete(request, *args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Returns the details of the selected document comment.
-        """
-
-        return super(APICommentView, self).get(*args, **kwargs)
 
     def get_document(self):
         if self.request.method == 'GET':

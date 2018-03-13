@@ -23,18 +23,13 @@ from .serializers import (
 
 
 class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
+    """
+    get: Returns a list of the smart link documents that apply to the document.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkDocumentSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of the smart link documents that apply to the document.
-        """
-        return super(APIResolvedSmartLinkDocumentListView, self).get(
-            *args, **kwargs
-        )
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -81,17 +76,14 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
 
 
 class APIResolvedSmartLinkView(generics.RetrieveAPIView):
+    """
+    get: Return the details of the selected resolved smart link.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     lookup_url_kwarg = 'smart_link_pk'
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
     permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected resolved smart link.
-        """
-        return super(APIResolvedSmartLinkView, self).get(*args, **kwargs)
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -122,16 +114,13 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
 
 
 class APIResolvedSmartLinkListView(generics.ListAPIView):
+    """
+    get: Returns a list of the smart links that apply to the document.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
     permission_classes = (MayanPermission,)
     serializer_class = ResolvedSmartLinkSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of the smart links that apply to the document.
-        """
-        return super(APIResolvedSmartLinkListView, self).get(*args, **kwargs)
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -164,13 +153,11 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
 
 
 class APISmartLinkConditionListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the smart link conditions.
+    post: Create a new smart link condition.
+    """
     serializer_class = SmartLinkConditionSerializer
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the smart link conditions.
-        """
-        return super(APISmartLinkConditionListView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_smart_link().conditions.all()
@@ -204,30 +191,16 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
 
         return smart_link
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new smart link condition.
-        """
-        return super(APISmartLinkConditionListView, self).post(*args, **kwargs)
-
 
 class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected smart link condition.
+    get: Return the details of the selected smart link condition.
+    patch: Edit the selected smart link condition.
+    put: Edit the selected smart link condition.
+    """
     lookup_url_kwarg = 'condition_pk'
     serializer_class = SmartLinkConditionSerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected smart link condition.
-        """
-
-        return super(APISmartLinkConditionView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected smart link condition.
-        """
-
-        return super(APISmartLinkConditionView, self).get(*args, **kwargs)
 
     def get_queryset(self):
         return self.get_smart_link().conditions.all()
@@ -261,34 +234,17 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
 
         return smart_link
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected smart link condition.
-        """
-
-        return super(APISmartLinkConditionView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected smart link condition.
-        """
-
-        return super(APISmartLinkConditionView, self).put(*args, **kwargs)
-
 
 class APISmartLinkListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the smart links.
+    post: Create a new smart link.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
     mayan_view_permissions = {'POST': (permission_smart_link_create,)}
     permission_classes = (MayanPermission,)
     queryset = SmartLink.objects.all()
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the smart links.
-        """
-
-        return super(APISmartLinkListView, self).get(*args, **kwargs)
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -302,15 +258,14 @@ class APISmartLinkListView(generics.ListCreateAPIView):
         else:
             return WritableSmartLinkSerializer
 
-    def post(self, *args, **kwargs):
-        """
-        Create a new smart link.
-        """
-
-        return super(APISmartLinkListView, self).post(*args, **kwargs)
-
 
 class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected smart link.
+    get: Return the details of the selected smart link.
+    patch: Edit the selected smart link.
+    put: Edit the selected smart link.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_smart_link_delete,),
@@ -319,20 +274,6 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_smart_link_edit,)
     }
     queryset = SmartLink.objects.all()
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected smart link.
-        """
-
-        return super(APISmartLinkView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected smart ink.
-        """
-
-        return super(APISmartLinkView, self).get(*args, **kwargs)
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -345,17 +286,3 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
             return SmartLinkSerializer
         else:
             return WritableSmartLinkSerializer
-
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected smart link.
-        """
-
-        return super(APISmartLinkView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected smart link.
-        """
-
-        return super(APISmartLinkView, self).put(*args, **kwargs)
