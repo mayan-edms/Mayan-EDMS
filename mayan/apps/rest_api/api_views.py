@@ -11,6 +11,8 @@ from .serializers import EndpointSerializer
 
 
 class APIRoot(APIView):
+    swagger_schema = None
+
     def get(self, request, format=None):
         """
         Return a list of all users.
