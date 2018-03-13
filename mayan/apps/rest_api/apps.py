@@ -7,7 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_tools
 
-from .links import link_api, link_api_documentation
+from .links import (
+    link_api, link_api_documentation, link_api_documentation_redoc
+)
 from .licenses import *  # NOQA
 
 
@@ -21,7 +23,9 @@ class RESTAPIApp(MayanAppConfig):
         from .urls import api_urls
 
         settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
-        menu_tools.bind_links(links=(link_api_documentation,))
+        menu_tools.bind_links(
+            links=(link_api_documentation, link_api_documentation_redoc)
+        )
 
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):

@@ -9,6 +9,11 @@ link_api = Link(
     view='rest_api:api_root'
 )
 link_api_documentation = Link(
-    icon='fa fa-book', tags='new_window', text=_('API Documentation'),
+    icon='fa fa-book', tags='new_window', text=_('API Documentation (Swagger)'),
     view='schema-swagger-ui'
+)
+
+link_api_documentation_redoc = Link(
+    icon='fa fa-book', tags='new_window', text=_('API Documentation (ReDoc)'),
+    view='schema-redoc'
 )
