@@ -51,9 +51,8 @@ permission_empty_trash = namespace.add_permission(
     name='document_empty_trash', label=_('Empty trash')
 )
 
-# TODO: rename 'document_setup' to 'document_types' on the next major version
 setup_namespace = PermissionNamespace(
-    'documents_setup', label=_('Document types')
+    'documents_types', label=_('Document types')
 )
 permission_document_type_create = setup_namespace.add_permission(
     name='document_type_create', label=_('Create document types')

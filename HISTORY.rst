@@ -45,6 +45,7 @@ Next (2018-XX-XX)
   test_document_page_views.py, test_document_type_views.py, test_document_version_views.py,
   test_document_views.py, test_duplicated_document_views.py
 - Sort smart links by label.
+- Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
 
 2.8 (2018-02-27)
 ================
