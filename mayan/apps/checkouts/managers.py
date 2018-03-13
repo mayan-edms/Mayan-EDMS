@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 class DocumentCheckoutManager(models.Manager):
     def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
-        self.create(
+        return self.create(
             document=document, expiration_datetime=expiration_datetime,
             user=user, block_new_version=block_new_version
         )

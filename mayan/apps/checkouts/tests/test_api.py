@@ -40,18 +40,19 @@ class CheckoutsAPITestCase(BaseAPITestCase):
     def _request_checkedout_document_view(self):
         return self.get(
             viewname='rest_api:checkedout-document-view',
-            args=(self.document.pk,)
+            args=(self.checkout.pk,)
         )
 
     def _checkout_document(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        self.checkout = DocumentCheckout.objects.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
     def test_checkedout_document_view_no_access(self):
+        self._checkout_document()
         response = self._request_checkedout_document_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
