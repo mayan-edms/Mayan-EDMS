@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from common.tests.test_views import GenericViewTestCase
+from common.tests import GenericViewTestCase
 from documents.tests import GenericDocumentViewTestCase
 
 from metadata.models import MetadataType

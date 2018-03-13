@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.tests.test_views import GenericViewTestCase
+from common.tests import GenericViewTestCase
 
 from ..classes import Statistic
 from ..permissions import permission_statistics_view

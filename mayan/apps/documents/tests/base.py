@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests.test_views import GenericViewTestCase
+from common.tests import GenericViewTestCase
 
 from ..models import DocumentType
 

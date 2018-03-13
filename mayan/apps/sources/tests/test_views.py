@@ -9,7 +9,7 @@ from django.test import override_settings
 from django.urls import reverse
 
 from checkouts.models import NewVersionBlock
-from common.tests.test_views import GenericViewTestCase
+from common.tests import GenericViewTestCase
 from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
