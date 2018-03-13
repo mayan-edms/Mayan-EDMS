@@ -79,6 +79,7 @@ Notifications
 - Fix notification duplication of global & per document subscription
   notifications.
 
+
 Other
 ~~~~~
 - Python based Javascript package manager. Each app specifies what
@@ -171,12 +172,10 @@ Testing
   (to be used in dynamic_search.test_api).
 - Update all API tests using self.client to just self. and the HTTP method.
 - Add test for searches for each app that uses search.
-- Split documents.tests.test_views into test_document_views test_pages_views, etc.
-  The module is too big. [DONE]
+
 
 UI - Frontend
 ~~~~~~~~~~~~~
-- Fix horizontal center of previews in document view. [DONE]
 - Fix menu not collapsing at the same width of nav parent.
 - Move direct CSS style from code into base.css. grep 'style' * -R. Style code in:
 
@@ -187,6 +186,7 @@ UI - Frontend
 
 - Check if location is found in partial and remove it. Avoid circular loading.
 - Add location to history after a form submit redirect.
+
 
 UI
 ~~
@@ -199,6 +199,7 @@ UI
 - Reduce the facet buttons paddings.
 - Make facet action button smaller. Reduce margin-bottom.
 - Remove previous from the views.py. It is not longer used by the form's cancel button.
+
 
 Workflows
 ~~~~~~~~~
