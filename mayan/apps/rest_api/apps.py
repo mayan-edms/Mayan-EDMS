@@ -21,7 +21,7 @@ class RESTAPIApp(MayanAppConfig):
         from .urls import api_urls
 
         settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
-        menu_tools.bind_links(links=(link_api, link_api_documentation))
+        menu_tools.bind_links(links=(link_api_documentation,))
 
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):
