@@ -7,7 +7,7 @@ import yaml
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 
-from .classes import BaseTransformation
+from .transformations import BaseTransformation
 
 logger = logging.getLogger(__name__)
 

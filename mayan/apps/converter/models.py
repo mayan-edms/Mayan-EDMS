@@ -9,8 +9,8 @@ from django.db.models import Max
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .classes import BaseTransformation
 from .managers import TransformationManager
+from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
 logger = logging.getLogger(__name__)
