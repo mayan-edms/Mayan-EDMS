@@ -40,7 +40,8 @@ Next (2018-XX-XX)
 - Move the invalid document markup to a separate HTML template.
 - Update to Fancybox 3.
 - Update to jQuery 3.3.1
-                                
+- Move transfomations to their own module.
+                               
 2.8 (2018-02-27)
 ================
 - Rename the role groups link label from "Members" to "Groups".
