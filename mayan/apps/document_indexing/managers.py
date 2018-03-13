@@ -9,12 +9,12 @@ class DocumentIndexInstanceNodeManager(models.Manager):
 
 
 class IndexManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
     def index_document(self, document):
         for index in self.filter(enabled=True, document_types=document.document_type):
             index.index_document(document=document)
-
-    def get_by_natural_key(self, name):
-        return self.get(name=name)
 
     def rebuild(self):
         for index in self.all():

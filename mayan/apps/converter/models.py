@@ -52,6 +52,12 @@ class Transformation(models.Model):
 
     objects = TransformationManager()
 
+    class Meta:
+        ordering = ('order',)
+        unique_together = ('content_type', 'object_id', 'order')
+        verbose_name = _('Transformation')
+        verbose_name_plural = _('Transformations')
+
     def __str__(self):
         return self.get_name_display()
 
@@ -63,9 +69,3 @@ class Transformation(models.Model):
             if last_order is not None:
                 self.order = last_order + 1
         super(Transformation, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ('order',)
-        unique_together = ('content_type', 'object_id', 'order')
-        verbose_name = _('Transformation')
-        verbose_name_plural = _('Transformations')

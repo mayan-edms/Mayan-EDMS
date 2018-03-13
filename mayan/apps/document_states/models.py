@@ -54,6 +54,11 @@ class Workflow(models.Model):
 
     objects = WorkflowManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Workflow')
+        verbose_name_plural = _('Workflows')
+
     def __str__(self):
         return self.label
 
@@ -123,11 +128,6 @@ class Workflow(models.Model):
 
         return diagram.pipe()
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Workflow')
-        verbose_name_plural = _('Workflows')
-
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
@@ -169,11 +169,6 @@ class WorkflowState(models.Model):
     def __str__(self):
         return self.label
 
-    def save(self, *args, **kwargs):
-        if self.initial:
-            self.workflow.states.all().update(initial=False)
-        return super(WorkflowState, self).save(*args, **kwargs)
-
     @property
     def entry_actions(self):
         return self.actions.filter(when=WORKFLOW_ACTION_ON_ENTRY)
@@ -207,6 +202,11 @@ class WorkflowState(models.Model):
             )
         ).distinct()
 
+    def save(self, *args, **kwargs):
+        if self.initial:
+            self.workflow.states.all().update(initial=False)
+        return super(WorkflowState, self).save(*args, **kwargs)
+
 
 @python_2_unicode_compatible
 class WorkflowStateAction(models.Model):
@@ -231,14 +231,14 @@ class WorkflowStateAction(models.Model):
         blank=True, verbose_name=_('Entry action data')
     )
 
-    def __str__(self):
-        return self.label
-
     class Meta:
         ordering = ('label',)
         unique_together = ('state', 'label')
         verbose_name = _('Workflow state action')
         verbose_name_plural = _('Workflow state actions')
+
+    def __str__(self):
+        return self.label
 
     def dumps(self, data):
         self.action_data = json.dumps(data)
@@ -260,11 +260,11 @@ class WorkflowStateAction(models.Model):
     def get_class(self):
         return import_string(self.action_path)
 
-    def get_class_label(self):
-        return self.get_class().label
-
     def get_class_instance(self):
         return self.get_class()(form_data=self.loads())
+
+    def get_class_label(self):
+        return self.get_class().label
 
     def loads(self):
         return json.loads(self.action_data)
@@ -287,9 +287,6 @@ class WorkflowTransition(models.Model):
         verbose_name=_('Destination state')
     )
 
-    def __str__(self):
-        return self.label
-
     class Meta:
         ordering = ('label',)
         unique_together = (
@@ -297,6 +294,9 @@ class WorkflowTransition(models.Model):
         )
         verbose_name = _('Workflow transition')
         verbose_name_plural = _('Workflow transitions')
+
+    def __str__(self):
+        return self.label
 
 
 @python_2_unicode_compatible
@@ -329,13 +329,14 @@ class WorkflowInstance(models.Model):
         verbose_name=_('Document')
     )
 
+    class Meta:
+        ordering = ('workflow',)
+        unique_together = ('document', 'workflow')
+        verbose_name = _('Workflow instance')
+        verbose_name_plural = _('Workflow instances')
+
     def __str__(self):
         return force_text(self.workflow)
-
-    def get_absolute_url(self):
-        return reverse(
-            'document_states:workflow_instance_detail', args=(str(self.pk),)
-        )
 
     def do_transition(self, transition, user=None, comment=None):
         try:
@@ -346,6 +347,11 @@ class WorkflowInstance(models.Model):
         except AttributeError:
             # No initial state has been set for this workflow
             pass
+
+    def get_absolute_url(self):
+        return reverse(
+            'document_states:workflow_instance_detail', args=(str(self.pk),)
+        )
 
     def get_current_state(self):
         """
@@ -419,12 +425,6 @@ class WorkflowInstance(models.Model):
 
             return WorkflowTransition.objects.none()
 
-    class Meta:
-        ordering = ('workflow',)
-        unique_together = ('document', 'workflow')
-        verbose_name = _('Workflow instance')
-        verbose_name_plural = _('Workflow instances')
-
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
@@ -452,13 +452,13 @@ class WorkflowInstanceLogEntry(models.Model):
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
-    def __str__(self):
-        return force_text(self.transition)
-
     class Meta:
         ordering = ('datetime',)
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
+
+    def __str__(self):
+        return force_text(self.transition)
 
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):

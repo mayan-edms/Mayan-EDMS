@@ -91,6 +91,11 @@ class DocumentType(models.Model):
 
     objects = DocumentTypeManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Document type')
+        verbose_name_plural = _('Documents types')
+
     def __str__(self):
         return self.label
 
@@ -100,22 +105,14 @@ class DocumentType(models.Model):
 
         return super(DocumentType, self).delete(*args, **kwargs)
 
+    @property
+    def deleted_documents(self):
+        return DeletedDocument.objects.filter(document_type=self)
+
     def get_absolute_url(self):
         return reverse(
             'documents:document_type_document_list', args=(self.pk,)
         )
-
-    def natural_key(self):
-        return (self.label,)
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Document type')
-        verbose_name_plural = _('Documents types')
-
-    @property
-    def deleted_documents(self):
-        return DeletedDocument.objects.filter(document_type=self)
 
     def get_document_count(self, user):
         queryset = AccessControlList.objects.filter_by_access(
@@ -123,6 +120,9 @@ class DocumentType(models.Model):
         )
 
         return queryset.count()
+
+    def natural_key(self):
+        return (self.label,)
 
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
         try:
@@ -203,6 +203,9 @@ class Document(models.Model):
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk
 
+    def add_as_recent_document_for_user(self, user):
+        return RecentDocument.objects.add_document_for_user(user, self)
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
 
@@ -216,36 +219,6 @@ class Document(models.Model):
 
             return super(Document, self).delete(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse('documents:document_preview', args=(self.pk,))
-
-    def natural_key(self):
-        return (self.uuid,)
-    natural_key.dependencies = ['documents.DocumentType']
-
-    def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        _commit_events = kwargs.pop('_commit_events', True)
-        new_document = not self.pk
-        super(Document, self).save(*args, **kwargs)
-
-        if new_document:
-            if user:
-                self.add_as_recent_document_for_user(user)
-                event_document_create.commit(
-                    actor=user, target=self, action_object=self.document_type
-                )
-            else:
-                event_document_create.commit(
-                    target=self, action_object=self.document_type
-                )
-        else:
-            if _commit_events:
-                event_document_properties_edit.commit(actor=user, target=self)
-
-    def add_as_recent_document_for_user(self, user):
-        return RecentDocument.objects.add_document_for_user(user, self)
-
     def exists(self):
         """
         Returns a boolean value that indicates if the document's
@@ -257,6 +230,9 @@ class Document(models.Model):
         else:
             return False
 
+    def get_absolute_url(self):
+        return reverse('documents:document_preview', args=(self.pk,))
+
     def get_api_image_url(self):
         latest_version = self.latest_version
         if latest_version:
@@ -267,6 +243,10 @@ class Document(models.Model):
     def invalidate_cache(self):
         for document_version in self.versions.all():
             document_version.invalidate_cache()
+
+    def natural_key(self):
+        return (self.uuid,)
+    natural_key.dependencies = ['documents.DocumentType']
 
     def new_version(self, file_object, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
@@ -289,6 +269,26 @@ class Document(models.Model):
     def restore(self):
         self.in_trash = False
         self.save()
+
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        _commit_events = kwargs.pop('_commit_events', True)
+        new_document = not self.pk
+        super(Document, self).save(*args, **kwargs)
+
+        if new_document:
+            if user:
+                self.add_as_recent_document_for_user(user)
+                event_document_create.commit(
+                    actor=user, target=self, action_object=self.document_type
+                )
+            else:
+                event_document_create.commit(
+                    target=self, action_object=self.document_type
+                )
+        else:
+            if _commit_events:
+                event_document_properties_edit.commit(actor=user, target=self)
 
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)
@@ -417,6 +417,10 @@ class DocumentVersion(models.Model):
     def __str__(self):
         return self.get_rendered_string()
 
+    @property
+    def cache_filename(self):
+        return 'document-version-{}'.format(self.uuid)
+
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
             page.delete()
@@ -424,6 +428,24 @@ class DocumentVersion(models.Model):
         self.file.storage.delete(self.file.name)
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
+
+    def exists(self):
+        """
+        Returns a boolean value that indicates if the document's file
+        exists in storage. Returns True if the document's file is verified to
+        be in the document storage. This is a diagnostic flag to help users
+        detect if the storage has desynchronized (ie: Amazon's S3).
+        """
+        return self.file.storage.exists(self.file.name)
+
+    def fix_orientation(self):
+        for page in self.pages.all():
+            degrees = page.detect_orientation()
+            if degrees:
+                Transformation.objects.add_for_model(
+                    obj=page, transformation=TransformationRotate,
+                    arguments='{{"degrees": {}}}'.format(360 - degrees)
+                )
 
     def get_absolute_url(self):
         return reverse('documents:document_version_view', args=(self.pk,))
@@ -506,28 +528,6 @@ class DocumentVersion(models.Model):
                     post_document_created.send(
                         sender=Document, instance=self.document
                     )
-
-    @property
-    def cache_filename(self):
-        return 'document-version-{}'.format(self.uuid)
-
-    def exists(self):
-        """
-        Returns a boolean value that indicates if the document's file
-        exists in storage. Returns True if the document's file is verified to
-        be in the document storage. This is a diagnostic flag to help users
-        detect if the storage has desynchronized (ie: Amazon's S3).
-        """
-        return self.file.storage.exists(self.file.name)
-
-    def fix_orientation(self):
-        for page in self.pages.all():
-            degrees = page.detect_orientation()
-            if degrees:
-                Transformation.objects.add_for_model(
-                    obj=page, transformation=TransformationRotate,
-                    arguments='{{"degrees": {}}}'.format(360 - degrees)
-                )
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename
@@ -727,6 +727,11 @@ class DocumentPage(models.Model):
         verbose_name=_('Page number')
     )
 
+    class Meta:
+        ordering = ('page_number',)
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
+
     def __str__(self):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
@@ -736,25 +741,13 @@ class DocumentPage(models.Model):
             'total_pages': self.document_version.pages.count()
         }
 
-    def delete(self, *args, **kwargs):
-        self.invalidate_cache()
-        super(DocumentPage, self).delete(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return reverse('documents:document_page_view', args=(self.pk,))
-
-    class Meta:
-        ordering = ('page_number',)
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
-
     @property
     def cache_filename(self):
         return 'page-cache-{}'.format(self.uuid)
 
-    @property
-    def document(self):
-        return self.document_version.document
+    def delete(self, *args, **kwargs):
+        self.invalidate_cache()
+        super(DocumentPage, self).delete(*args, **kwargs)
 
     def detect_orientation(self):
         with self.document_version.open() as file_object:
@@ -765,6 +758,10 @@ class DocumentPage(models.Model):
             return converter.detect_orientation(
                 page_number=self.page_number
             )
+
+    @property
+    def document(self):
+        return self.document_version.document
 
     def generate_image(self, *args, **kwargs):
         # Convert arguments into transformations
@@ -831,6 +828,16 @@ class DocumentPage(models.Model):
 
         return cache_filename
 
+    def get_absolute_url(self):
+        return reverse('documents:document_page_view', args=(self.pk,))
+
+    def get_api_image_url(self):
+        return reverse(
+            'rest_api:documentpage-image', args=(
+                self.document.pk, self.document_version.pk, self.pk
+            )
+        )
+
     def get_image(self, transformations=None):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
@@ -888,13 +895,6 @@ class DocumentPage(models.Model):
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
 
-    def get_api_image_url(self):
-        return reverse(
-            'rest_api:documentpage-image', args=(
-                self.document.pk, self.document_version.pk, self.pk
-            )
-        )
-
 
 class DocumentPageCachedImage(models.Model):
     document_page = models.ForeignKey(
@@ -940,17 +940,17 @@ class RecentDocument(models.Model):
 
     objects = RecentDocumentManager()
 
+    class Meta:
+        ordering = ('-datetime_accessed',)
+        verbose_name = _('Recent document')
+        verbose_name_plural = _('Recent documents')
+
     def __str__(self):
         return force_text(self.document)
 
     def natural_key(self):
         return self.document.natural_key() + self.user.natural_key()
     natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
-
-    class Meta:
-        ordering = ('-datetime_accessed',)
-        verbose_name = _('Recent document')
-        verbose_name_plural = _('Recent documents')
 
 
 @python_2_unicode_compatible
@@ -968,9 +968,9 @@ class DuplicatedDocument(models.Model):
 
     objects = DuplicatedDocumentManager()
 
-    def __str__(self):
-        return force_text(self.document)
-
     class Meta:
         verbose_name = _('Duplicated document')
         verbose_name_plural = _('Duplicated documents')
+
+    def __str__(self):
+        return force_text(self.document)

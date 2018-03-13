@@ -19,12 +19,12 @@ class DocumentPageContent(models.Model):
 
     objects = DocumentPageContentManager()
 
-    def __str__(self):
-        return force_text(self.document_page)
-
     class Meta:
         verbose_name = _('Document page content')
         verbose_name_plural = _('Document pages contents')
+
+    def __str__(self):
+        return force_text(self.document_page)
 
 
 @python_2_unicode_compatible
@@ -38,10 +38,10 @@ class DocumentVersionParseError(models.Model):
     )
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 
-    def __str__(self):
-        return force_text(self.document_version)
-
     class Meta:
         ordering = ('datetime_submitted',)
         verbose_name = _('Document version parse error')
         verbose_name_plural = _('Document version parse errors')
+
+    def __str__(self):
+        return force_text(self.document_version)

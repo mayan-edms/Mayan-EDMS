@@ -61,6 +61,9 @@ class Key(models.Model):
         verbose_name = _('Key')
         verbose_name_plural = _('Keys')
 
+    def __str__(self):
+        return '{} - {}'.format(self.key_id, self.user_id)
+
     def clean(self):
         import_results = gpg_backend.import_key(key_data=self.key_data)
 
@@ -92,9 +95,6 @@ class Key(models.Model):
             self.key_type = key_info['type']
 
         super(Key, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return '{} - {}'.format(self.key_id, self.user_id)
 
     def sign_file(self, file_object, passphrase=None, clearsign=False, detached=False, binary=False, output=None):
         # WARNING: using clearsign=True and subsequent decryption corrupts the

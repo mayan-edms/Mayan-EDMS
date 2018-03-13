@@ -68,15 +68,55 @@ class Source(models.Model):
         verbose_name = _('Source')
         verbose_name_plural = _('Sources')
 
+    def __str__(self):
+        return '%s' % self.label
+
     @classmethod
     def class_fullname(cls):
         return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
 
-    def __str__(self):
-        return '%s' % self.label
+    def clean_up_upload_file(self, upload_file_object):
+        pass
+        # TODO: Should raise NotImplementedError?
 
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
+
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+        """
+        Handle an upload request from a file object which may be an individual
+        document or a compressed file containing multiple documents.
+        """
+        if not document_type:
+            document_type = self.document_type
+
+        kwargs = {
+            'description': description, 'document_type': document_type,
+            'label': label, 'language': language,
+            'metadata_dict_list': metadata_dict_list,
+            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
+            'user': user
+        }
+
+        if expand:
+            try:
+                compressed_file = CompressedFile(file_object)
+                for compressed_file_child in compressed_file.children():
+                    kwargs.update({'label': force_text(compressed_file_child)})
+                    self.upload_document(
+                        file_object=File(compressed_file_child), **kwargs
+                    )
+                    compressed_file_child.close()
+
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                self.upload_document(file_object=file_object, **kwargs)
+        else:
+            self.upload_document(file_object=file_object, **kwargs)
+
+    def get_upload_file_object(self, form_data):
+        pass
+        # TODO: Should raise NotImplementedError?
 
     def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
         """
@@ -132,46 +172,6 @@ class Source(models.Model):
                 )
                 document.delete(to_trash=False)
                 raise
-
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
-        """
-        Handle an upload request from a file object which may be an individual
-        document or a compressed file containing multiple documents.
-        """
-        if not document_type:
-            document_type = self.document_type
-
-        kwargs = {
-            'description': description, 'document_type': document_type,
-            'label': label, 'language': language,
-            'metadata_dict_list': metadata_dict_list,
-            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
-            'user': user
-        }
-
-        if expand:
-            try:
-                compressed_file = CompressedFile(file_object)
-                for compressed_file_child in compressed_file.children():
-                    kwargs.update({'label': force_text(compressed_file_child)})
-                    self.upload_document(
-                        file_object=File(compressed_file_child), **kwargs
-                    )
-                    compressed_file_child.close()
-
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
-                self.upload_document(file_object=file_object, **kwargs)
-        else:
-            self.upload_document(file_object=file_object, **kwargs)
-
-    def get_upload_file_object(self, form_data):
-        pass
-        # TODO: Should raise NotImplementedError?
-
-    def clean_up_upload_file(self, upload_file_object):
-        pass
-        # TODO: Should raise NotImplementedError?
 
 
 class InteractiveSource(Source):
@@ -336,6 +336,19 @@ class StagingFolderSource(InteractiveSource):
         verbose_name = _('Staging folder')
         verbose_name_plural = _('Staging folders')
 
+    def clean_up_upload_file(self, upload_file_object):
+        if self.delete_after_upload:
+            try:
+                upload_file_object.extra_data.delete()
+            except Exception as exception:
+                logger.error(
+                    'Error deleting staging file: %s; %s', upload_file_object,
+                    exception
+                )
+                raise Exception(
+                    _('Error deleting staging file; %s') % exception
+                )
+
     def get_file(self, *args, **kwargs):
         return StagingFile(staging_folder=self, *args, **kwargs)
 
@@ -360,19 +373,6 @@ class StagingFolderSource(InteractiveSource):
             source=self, file=staging_file.as_file(), extra_data=staging_file
         )
 
-    def clean_up_upload_file(self, upload_file_object):
-        if self.delete_after_upload:
-            try:
-                upload_file_object.extra_data.delete()
-            except Exception as exception:
-                logger.error(
-                    'Error deleting staging file: %s; %s', upload_file_object,
-                    exception
-                )
-                raise Exception(
-                    _('Error deleting staging file; %s') % exception
-                )
-
 
 class WebFormSource(InteractiveSource):
     """
@@ -387,20 +387,20 @@ class WebFormSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 
-    objects = models.Manager()
-
-    class Meta:
-        verbose_name = _('Web form')
-        verbose_name_plural = _('Web forms')
-
     # TODO: unify uncompress as an InteractiveSource field
     uncompress = models.CharField(
         choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
         help_text=_('Whether to expand or not compressed archives.'),
         max_length=1, verbose_name=_('Uncompress')
     )
-    # Default path
 
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Web form')
+        verbose_name_plural = _('Web forms')
+
+    # Default path
     def get_upload_file_object(self, form_data):
         return SourceUploadedFile(source=self, file=form_data['file'])
 
@@ -440,9 +440,6 @@ class IntervalBaseModel(OutOfProcessSource):
         verbose_name = _('Interval source')
         verbose_name_plural = _('Interval sources')
 
-    def _get_periodic_task_name(self, pk=None):
-        return 'check_interval_source-%i' % (pk or self.pk)
-
     def _delete_periodic_task(self, pk=None):
         try:
             periodic_task = PeriodicTask.objects.get(
@@ -462,6 +459,14 @@ class IntervalBaseModel(OutOfProcessSource):
                 self._get_periodic_task_name(pk)
             )
 
+    def _get_periodic_task_name(self, pk=None):
+        return 'check_interval_source-%i' % (pk or self.pk)
+
+    def delete(self, *args, **kwargs):
+        pk = self.pk
+        super(IntervalBaseModel, self).delete(*args, **kwargs)
+        self._delete_periodic_task(pk)
+
     def save(self, *args, **kwargs):
         new_source = not self.pk
         super(IntervalBaseModel, self).save(*args, **kwargs)
@@ -479,11 +484,6 @@ class IntervalBaseModel(OutOfProcessSource):
             task='sources.tasks.task_check_interval_source',
             kwargs=json.dumps({'source_id': self.pk})
         )
-
-    def delete(self, *args, **kwargs):
-        pk = self.pk
-        super(IntervalBaseModel, self).delete(*args, **kwargs)
-        self._delete_periodic_task(pk)
 
 
 class EmailBaseModel(IntervalBaseModel):

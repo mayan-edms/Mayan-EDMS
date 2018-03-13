@@ -24,22 +24,22 @@ class Tag(models.Model):
         Document, related_name='tags', verbose_name=_('Documents')
     )
 
-    def __str__(self):
-        return self.label
-
-    def get_absolute_url(self):
-        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
-
     class Meta:
         ordering = ('label',)
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
+
+    def __str__(self):
+        return self.label
 
     def attach_to(self, document, user=None):
         self.documents.add(document)
         event_tag_attach.commit(
             action_object=self, actor=user, target=document
         )
+
+    def get_absolute_url(self):
+        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     def get_document_count(self, user):
         queryset = AccessControlList.objects.filter_by_access(

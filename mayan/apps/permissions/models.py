@@ -21,6 +21,12 @@ class StoredPermission(models.Model):
 
     objects = StoredPermissionManager()
 
+    class Meta:
+        ordering = ('namespace',)
+        unique_together = ('namespace', 'name')
+        verbose_name = _('Permission')
+        verbose_name_plural = _('Permissions')
+
     def __init__(self, *args, **kwargs):
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
@@ -38,12 +44,6 @@ class StoredPermission(models.Model):
 
     def natural_key(self):
         return (self.namespace, self.name)
-
-    class Meta:
-        ordering = ('namespace',)
-        unique_together = ('namespace', 'name')
-        verbose_name = _('Permission')
-        verbose_name_plural = _('Permissions')
 
     def requester_has_this(self, user):
         if user.is_superuser or user.is_staff:
@@ -83,6 +83,11 @@ class Role(models.Model):
 
     objects = RoleManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Role')
+        verbose_name_plural = _('Roles')
+
     def __str__(self):
         return self.label
 
@@ -92,8 +97,3 @@ class Role(models.Model):
     def natural_key(self):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Role')
-        verbose_name_plural = _('Roles')

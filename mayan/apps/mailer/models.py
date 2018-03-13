@@ -56,16 +56,12 @@ class UserMailer(models.Model):
     def __str__(self):
         return self.label
 
-    def save(self, *args, **kwargs):
-        if self.default:
-            UserMailer.objects.select_for_update().exclude(pk=self.pk).update(
-                default=False
-            )
-
-        return super(UserMailer, self).save(*args, **kwargs)
-
     def backend_label(self):
         return self.get_backend().label
+
+    def dumps(self, data):
+        self.backend_data = json.dumps(data)
+        self.save()
 
     def get_backend(self):
         return import_string(self.backend_path)
@@ -78,9 +74,13 @@ class UserMailer(models.Model):
     def loads(self):
         return json.loads(self.backend_data)
 
-    def dumps(self, data):
-        self.backend_data = json.dumps(data)
-        self.save()
+    def save(self, *args, **kwargs):
+        if self.default:
+            UserMailer.objects.select_for_update().exclude(pk=self.pk).update(
+                default=False
+            )
+
+        return super(UserMailer, self).save(*args, **kwargs)
 
     def send(self, subject='', body='', to=None, document=None, as_attachment=False):
         recipient_list = split_recipient_list(recipients=[to])

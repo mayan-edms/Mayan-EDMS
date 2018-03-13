@@ -34,6 +34,11 @@ class SmartLink(models.Model):
 
     objects = SmartLinkManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Smart link')
+        verbose_name_plural = _('Smart links')
+
     def __str__(self):
         return self.label
 
@@ -91,11 +96,6 @@ class SmartLink(models.Model):
             smart_link=self, queryset=self.get_linked_document_for(document)
         )
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Smart link')
-        verbose_name_plural = _('Smart links')
-
 
 class ResolvedSmartLink(SmartLink):
     class Meta:
@@ -132,13 +132,13 @@ class SmartLinkCondition(models.Model):
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
+    class Meta:
+        verbose_name = _('Link condition')
+        verbose_name_plural = _('Link conditions')
+
     def __str__(self):
         return '%s foreign %s %s %s %s' % (
             self.get_inclusion_display(),
             self.foreign_document_data, _('not') if self.negated else '',
             self.get_operator_display(), self.expression
         )
-
-    class Meta:
-        verbose_name = _('Link condition')
-        verbose_name_plural = _('Link conditions')

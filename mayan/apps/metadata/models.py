@@ -80,16 +80,13 @@ class MetadataType(models.Model):
 
     objects = MetadataTypeManager()
 
-    def __str__(self):
-        return self.label
-
-    def natural_key(self):
-        return (self.name,)
-
     class Meta:
         ordering = ('label',)
         verbose_name = _('Metadata type')
         verbose_name_plural = _('Metadata types')
+
+    def __str__(self):
+        return self.label
 
     @staticmethod
     def comma_splitter(string):
@@ -113,6 +110,9 @@ class MetadataType(models.Model):
         return document_type.metadata.filter(
             required=True, metadata_type=self
         ).exists()
+
+    def natural_key(self):
+        return (self.name,)
 
     def validate_value(self, document_type, value):
         # Check default
@@ -171,6 +171,13 @@ class DocumentMetadata(models.Model):
     def __str__(self):
         return force_text(self.metadata_type)
 
+    def clean_fields(self, *args, **kwargs):
+        super(DocumentMetadata, self).clean_fields(*args, **kwargs)
+
+        self.value = self.metadata_type.validate_value(
+            document_type=self.document.document_type, value=self.value
+        )
+
     def delete(self, enforce_required=True, *args, **kwargs):
         """
         enforce_required prevents deletion of required metadata at the
@@ -184,6 +191,12 @@ class DocumentMetadata(models.Model):
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
+    @property
+    def is_required(self):
+        return self.metadata_type.get_required_for(
+            document_type=self.document.document_type
+        )
+
     def save(self, *args, **kwargs):
         if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
             raise ValidationError(
@@ -191,19 +204,6 @@ class DocumentMetadata(models.Model):
             )
 
         return super(DocumentMetadata, self).save(*args, **kwargs)
-
-    def clean_fields(self, *args, **kwargs):
-        super(DocumentMetadata, self).clean_fields(*args, **kwargs)
-
-        self.value = self.metadata_type.validate_value(
-            document_type=self.document.document_type, value=self.value
-        )
-
-    @property
-    def is_required(self):
-        return self.metadata_type.get_required_for(
-            document_type=self.document.document_type
-        )
 
 
 @python_2_unicode_compatible
@@ -220,11 +220,11 @@ class DocumentTypeMetadataType(models.Model):
 
     objects = DocumentTypeMetadataTypeManager()
 
-    def __str__(self):
-        return force_text(self.metadata_type)
-
     class Meta:
         ordering = ('metadata_type',)
         unique_together = ('document_type', 'metadata_type')
         verbose_name = _('Document type metadata type options')
         verbose_name_plural = _('Document type metadata types options')
+
+    def __str__(self):
+        return force_text(self.metadata_type)

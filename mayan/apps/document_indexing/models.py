@@ -68,21 +68,6 @@ class Index(models.Model):
         except IndexInstanceNode.DoesNotExist:
             return '#'
 
-    def save(self, *args, **kwargs):
-        """
-        Automatically create the root index template node
-        """
-        super(Index, self).save(*args, **kwargs)
-        IndexTemplateNode.objects.get_or_create(parent=None, index=self)
-
-    @property
-    def instance_root(self):
-        return self.template_root.index_instance_nodes.get()
-
-    @property
-    def template_root(self):
-        return self.node_templates.get(parent=None)
-
     def get_document_types_names(self):
         return ', '.join(
             [
@@ -93,6 +78,10 @@ class Index(models.Model):
     def index_document(self, document):
         logger.debug('Index; Indexing document: %s', document)
         self.template_root.index_document(document=document)
+
+    @property
+    def instance_root(self):
+        return self.template_root.index_instance_nodes.get()
 
     def rebuild(self):
         """
@@ -118,8 +107,24 @@ class Index(models.Model):
             # associated with this index.
             self.index_document(document=document)
 
+    def save(self, *args, **kwargs):
+        """
+        Automatically create the root index template node
+        """
+        super(Index, self).save(*args, **kwargs)
+        IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+
+    @property
+    def template_root(self):
+        return self.node_templates.get(parent=None)
+
 
 class IndexInstance(Index):
+    class Meta:
+        proxy = True
+        verbose_name = _('Index instance')
+        verbose_name_plural = _('Index instances')
+
     def get_instance_node_count(self):
         try:
             return self.instance_root.get_descendant_count()
@@ -131,11 +136,6 @@ class IndexInstance(Index):
             return self.instance_root.get_item_count(user=user)
         except IndexInstanceNode.DoesNotExist:
             return 0
-
-    class Meta:
-        proxy = True
-        verbose_name = _('Index instance')
-        verbose_name_plural = _('Index instances')
 
 
 @python_2_unicode_compatible
@@ -300,49 +300,10 @@ class IndexInstanceNode(MPTTModel):
     def __str__(self):
         return self.value
 
-    def get_absolute_url(self):
-        return reverse('indexing:index_instance_node_view', args=(self.pk,))
-
     @property
     def children(self):
         # Convenience method for serializer
         return self.get_children()
-
-    def get_children_count(self):
-        return self.get_children().count()
-
-    def get_descendants_count(self):
-        return self.get_descendants().count()
-
-    def get_descendants_document_count(self, user):
-        return AccessControlList.objects.filter_by_access(
-            permission=permission_document_view, user=user,
-            queryset=Document.objects.filter(
-                index_instance_nodes__in=self.get_descendants(
-                    include_self=True
-                )
-            )
-        ).count()
-
-    def get_item_count(self, user):
-        if self.index_template_node.link_documents:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset=self.documents
-            )
-
-            return queryset.count()
-        else:
-            return self.get_children().count()
-
-    def get_full_path(self):
-        result = []
-        for node in self.get_ancestors(include_self=True):
-            if node.is_root_node():
-                result.append(force_text(self.index()))
-            else:
-                result.append(force_text(node))
-
-        return ' / '.join(result)
 
     def delete_empty(self, acquire_lock=True):
         """
@@ -368,6 +329,45 @@ class IndexInstanceNode(MPTTModel):
                     self.parent.delete_empty(acquire_lock=False)
             if acquire_lock:
                 lock.release()
+
+    def get_absolute_url(self):
+        return reverse('indexing:index_instance_node_view', args=(self.pk,))
+
+    def get_children_count(self):
+        return self.get_children().count()
+
+    def get_descendants_count(self):
+        return self.get_descendants().count()
+
+    def get_descendants_document_count(self, user):
+        return AccessControlList.objects.filter_by_access(
+            permission=permission_document_view, user=user,
+            queryset=Document.objects.filter(
+                index_instance_nodes__in=self.get_descendants(
+                    include_self=True
+                )
+            )
+        ).count()
+
+    def get_full_path(self):
+        result = []
+        for node in self.get_ancestors(include_self=True):
+            if node.is_root_node():
+                result.append(force_text(self.index()))
+            else:
+                result.append(force_text(node))
+
+        return ' / '.join(result)
+
+    def get_item_count(self, user):
+        if self.index_template_node.link_documents:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset=self.documents
+            )
+
+            return queryset.count()
+        else:
+            return self.get_children().count()
 
     def index(self):
         return IndexInstance.objects.get(pk=self.index_template_node.index.pk)

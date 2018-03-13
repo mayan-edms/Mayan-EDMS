@@ -33,8 +33,24 @@ class Comment(models.Model):
         verbose_name=_('Date time submitted')
     )
 
+    class Meta:
+        get_latest_by = 'submit_date'
+        ordering = ('-submit_date',)
+        verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
+
     def __str__(self):
         return self.comment
+
+    def delete(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        super(Comment, self).delete(*args, **kwargs)
+        if user:
+            event_document_comment_delete.commit(
+                actor=user, target=self.document
+            )
+        else:
+            event_document_comment_delete.commit(target=self.document)
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None) or self.user
@@ -55,19 +71,3 @@ class Comment(models.Model):
                     'Comment "%s" added to document "%s"', self.comment,
                     self.document
                 )
-
-    def delete(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        super(Comment, self).delete(*args, **kwargs)
-        if user:
-            event_document_comment_delete.commit(
-                actor=user, target=self.document
-            )
-        else:
-            event_document_comment_delete.commit(target=self.document)
-
-    class Meta:
-        get_latest_by = 'submit_date'
-        ordering = ('-submit_date',)
-        verbose_name = _('Comment')
-        verbose_name_plural = _('Comments')

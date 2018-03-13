@@ -37,12 +37,12 @@ class DocumentPageOCRContent(models.Model):
 
     objects = DocumentPageOCRContentManager()
 
-    def __str__(self):
-        return force_text(self.document_page)
-
     class Meta:
         verbose_name = _('Document page OCR content')
         verbose_name_plural = _('Document pages OCR contents')
+
+    def __str__(self):
+        return force_text(self.document_page)
 
 
 @python_2_unicode_compatible
@@ -56,10 +56,10 @@ class DocumentVersionOCRError(models.Model):
     )
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 
-    def __str__(self):
-        return force_text(self.document_version)
-
     class Meta:
         ordering = ('datetime_submitted',)
         verbose_name = _('Document version OCR error')
         verbose_name_plural = _('Document version OCR errors')
+
+    def __str__(self):
+        return force_text(self.document_version)
