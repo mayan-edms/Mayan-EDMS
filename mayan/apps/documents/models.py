@@ -321,7 +321,6 @@ class Document(models.Model):
     def date_updated(self):
         return self.latest_version.timestamp
 
-    # TODO: rename to file_encoding
     @property
     def file_mime_encoding(self):
         return self.latest_version.encoding
@@ -676,7 +675,6 @@ class DocumentVersion(models.Model):
                         document_version=self, page_number=page_number + 1
                     )
 
-            # TODO: is this needed anymore
             if save:
                 self.save()
 
