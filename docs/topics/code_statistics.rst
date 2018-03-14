@@ -1,7 +1,7 @@
 Code statistics
 ---------------
 
-As of Sun Mar 4 00:43:25 2018 (commit d367d32be62ed86dd6d7b02658eac2fa8086dbb9)
+As of Wed Mar 14 19:31:49 2018 (commit f3ba6ee2cca99acbbb2403d69cc3f922b0f2b0a2
 
 App name: acls
 
@@ -94,7 +94,7 @@ App name: checkouts
     module: mayan/apps/checkouts/tests/test_models.py
       tests: 10
     module: mayan/apps/checkouts/tests/test_api.py
-      tests: 8
+      tests: 10
     module: mayan/apps/checkouts/tests/test_views.py
       tests: 7
 
@@ -103,7 +103,7 @@ App name: common
 
   Views
     module: mayan/apps/common/views.py
-      class based views: 16
+      class based views: 17
       function based views: 1
 
   API Views
@@ -172,7 +172,7 @@ App name: document_comments
 
   Tests
     module: mayan/apps/document_comments/tests/test_api.py
-      tests: 4
+      tests: 8
 
 
 App name: document_indexing
@@ -270,6 +270,12 @@ App name: documents
       function based views: 0
 
   Tests
+    module: mayan/apps/documents/tests/test_document_type_views.py
+      tests: 12
+    module: mayan/apps/documents/tests/test_duplicated_document_views.py
+      tests: 4
+    module: mayan/apps/documents/tests/test_document_views.py
+      tests: 31
     module: mayan/apps/documents/tests/test_utils.py
       tests: 1
     module: mayan/apps/documents/tests/test_models.py
@@ -284,8 +290,12 @@ App name: documents
       tests: 4
     module: mayan/apps/documents/tests/test_api.py
       tests: 39
-    module: mayan/apps/documents/tests/test_views.py
-      tests: 61
+    module: mayan/apps/documents/tests/test_deleted_document_views.py
+      tests: 8
+    module: mayan/apps/documents/tests/test_document_version_views.py
+      tests: 4
+    module: mayan/apps/documents/tests/test_document_page_views.py
+      tests: 2
 
 
 App name: dynamic_search
@@ -522,7 +532,7 @@ App name: rest_api
 
   API Views
     module: mayan/apps/rest_api/api_views.py
-      class based views: 0
+      class based views: 1
       function based views: 0
 
   Tests
@@ -559,7 +569,7 @@ App name: sources
 
   Tests
     module: mayan/apps/sources/tests/test_models.py
-      tests: 2
+      tests: 3
     module: mayan/apps/sources/tests/test_classes.py
       tests: 1
     module: mayan/apps/sources/tests/test_views.py
@@ -635,14 +645,14 @@ App name: user_management
       tests: 10
 ----------
 Totals:
-  Tests: 742
+  Tests: 751
   Function based API views: 0
   Function based views: 8
   Apps: 34
-  Class based API views: 97
-  Class based views: 206
+  Class based API views: 98
+  Class based views: 207
 
 These are the defined views and tests defined. Actual executable views or
 tests could be higher if subclassed.
 
-Actual test executed: 748 as lock manager app subclasses its 6 tests once
+Actual test executed: 757 as lock manager app subclasses its 6 tests once
