@@ -29,14 +29,10 @@ class APICommentListView(generics.ListCreateAPIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=document
+        )
 
         return document
 
