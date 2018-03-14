@@ -20,7 +20,6 @@ from .permissions import (
 class DocumentCommentCreateView(SingleObjectCreateView):
     fields = ('comment',)
     model = Comment
-    object_verbose_name = _('Comment')
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(

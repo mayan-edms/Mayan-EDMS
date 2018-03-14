@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import datetime
 import logging
-import re
 
 from django.apps import apps
 from django.db.models import Q
@@ -279,7 +278,6 @@ class SearchModel(object):
                                 field_result_set &= term_query_result_set
                             else:
                                 field_result_set |= term_query_result_set
-
 
                         logger.debug(
                             'term_query_result_set: %s', len(term_query_result_set)
