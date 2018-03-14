@@ -52,3 +52,27 @@ class DocumentSearchTestCase(BaseTestCase):
         )
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.document in queryset)
+
+    def test_simple_or_search(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_2 = self.document_type.new_document(
+                file_object=file_object, label='second_doc.pdf'
+            )
+
+        queryset, elapsed_time = document_search.search(
+            {'q': 'Mayan OR second'}, user=self.admin_user
+        )
+        self.assertEqual(queryset.count(), 2)
+        self.assertTrue(self.document in queryset)
+        self.assertTrue(self.document_2 in queryset)
+
+    def test_simple_and_search(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_2 = self.document_type.new_document(
+                file_object=file_object, label='second_doc.pdf'
+            )
+
+        queryset, elapsed_time = document_search.search(
+            {'q': 'Mayan second'}, user=self.admin_user
+        )
+        self.assertEqual(queryset.count(), 0)
