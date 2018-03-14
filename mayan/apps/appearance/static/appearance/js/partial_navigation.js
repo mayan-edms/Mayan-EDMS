@@ -184,6 +184,7 @@ PartialNavigation.prototype.setupAjaxForm = function () {
      * Method to setup the handling of form in an AJAX way.
      */
     var app = this;
+    var lastAjaxFormData = {};
 
     $('form').ajaxForm({
         async: true,
@@ -199,6 +200,7 @@ PartialNavigation.prototype.setupAjaxForm = function () {
             var url = $form.attr('action') || uriFragment;
 
             options.url = url;
+            lastAjaxFormData.url = url + '?' + decodeURIComponent($form.serialize());
 
             if ($form.attr('target') == '_blank') {
                 // If the form has a target attribute we emulate it by
@@ -229,6 +231,9 @@ PartialNavigation.prototype.setupAjaxForm = function () {
 
                 app.setLocation(newLocation);
             } else {
+                var currentUri = new URI(window.location.hash);
+                currentUri.fragment(lastAjaxFormData.url);
+                history.pushState({}, '', currentUri);
                 $('#ajax-content').html(data);
             }
         }
