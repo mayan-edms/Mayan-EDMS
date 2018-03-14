@@ -225,6 +225,12 @@ Workflows
 New features
 ------------
 
+API
+~~~
+- Add converter API
+- Document signatures API
+- Smart settings API
+
 Converter
 ~~~~~~~~~
 - New zoom transformation. Resample, not just bigger final size but do
@@ -265,12 +271,19 @@ Other
 - Document splitting. Only for PDF files first. A document versions
   relationship between the documents has to be designed.
 - Manually linking documents.
-
+- Migrate settings/base.py to Django's 1.11 format.
+- Rename model methods to use 'get_' or 'do_'
+- Hunt TODO
+- Hunt FIXME
+- Convert SETTING_GPG_BACKEND into a setting option similar to converter and converter options.
+- Reorganize modelForms Meta class and methods.
 
 Metadata
 ~~~~~~~~
 - Metadata lookup memory. Add a select2 style widget that will query a
   new metadata API endpoint that will return all used values so far.
+- Metadata validation_choices and parser_choices as static model methods
+- Metadata.api as Metadata.utils and manager
 
 Search
 ~~~~~~
