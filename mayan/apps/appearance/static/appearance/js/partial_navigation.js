@@ -127,6 +127,11 @@ PartialNavigation.prototype.onAnchorClick = function ($this, event) {
 
     event.preventDefault();
 
+    if (event.ctrlKey) {
+        window.open(url);
+        return false;
+    }
+
     if (!($this.hasClass('disabled') || $this.parent().hasClass('disabled'))) {
         this.setLocation(url);
     }

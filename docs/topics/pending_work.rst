@@ -10,7 +10,6 @@ These are errors or issues that are blocking a release.
 UI - Frontend
 ~~~~~~~~~~~~~
 - Match row height is not executing until scroll.
-- Fix shift+click and control+click.
 
 
 UI - Backend
