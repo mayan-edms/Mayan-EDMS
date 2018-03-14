@@ -1,13 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
 from acls.models import AccessControlList
 from documents.models import Document
-from permissions import Permission
 
 from .permissions import (
     permission_comment_create, permission_comment_delete,
@@ -82,14 +80,10 @@ class APICommentView(generics.RetrieveDestroyAPIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=document
+        )
 
         return document
 

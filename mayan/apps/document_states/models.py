@@ -18,7 +18,6 @@ from acls.models import AccessControlList
 from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
 from events.models import StoredEventType
-from permissions import Permission
 
 from .error_logs import error_log_state_actions
 from .literals import (
@@ -389,32 +388,23 @@ class WorkflowInstance(models.Model):
 
             if _user:
                 try:
-                    Permission.check_permissions(
-                        requester=_user, permissions=(
-                            permission_workflow_transition,
-                        )
+                    """
+                    Check for ACL access to the workflow, if true, allow
+                    all transition options.
+                    """
+                    AccessControlList.objects.check_access(
+                        permissions=permission_workflow_transition,
+                        user=_user, obj=self.workflow
                     )
                 except PermissionDenied:
-                    try:
-                        """
-                        Check for ACL access to the workflow, if true, allow
-                        all transition options.
-                        """
-
-                        AccessControlList.objects.check_access(
-                            permissions=permission_workflow_transition,
-                            user=_user, obj=self.workflow
-                        )
-                    except PermissionDenied:
-                        """
-                        If not ACL access to the workflow, filter transition
-                        options by each transition ACL access
-                        """
-
-                        queryset = AccessControlList.objects.filter_by_access(
-                            permission=permission_workflow_transition,
-                            user=_user, queryset=queryset
-                        )
+                    """
+                    If not ACL access to the workflow, filter transition
+                    options by each transition ACL access
+                    """
+                    queryset = AccessControlList.objects.filter_by_access(
+                        permission=permission_workflow_transition,
+                        user=_user, queryset=queryset
+                    )
             return queryset
         else:
             """
@@ -422,7 +412,6 @@ class WorkflowInstance(models.Model):
             whose document type has this workflow is created. We return an
             empty transition queryset.
             """
-
             return WorkflowTransition.objects.none()
 
 

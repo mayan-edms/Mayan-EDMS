@@ -1,12 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
-
-from permissions import Permission
 
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
@@ -37,14 +34,10 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         else:
             permission_required = permission_acl_edit
 
-        try:
-            Permission.check_permissions(
-                self.request.user, permissions=(permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=content_object
+        )
 
         return content_object
 
@@ -100,14 +93,10 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
             content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, permissions=(permission_required,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_required, self.request.user, content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_required, user=self.request.user,
+            obj=content_object
+        )
 
         return content_object
 
@@ -135,14 +124,10 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
             content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, permissions=(permission_acl_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_view, self.request.user, content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_view, user=self.request.user,
+            obj=content_object
+        )
 
         return content_object
 
@@ -196,14 +181,10 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
             content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, permissions=(permission_acl_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_acl_view, self.request.user, content_object
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_acl_view, user=self.request.user,
+            obj=content_object
+        )
 
         return content_object
 
