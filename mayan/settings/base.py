@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
 from __future__ import unicode_literals
 
 import os
@@ -292,6 +291,8 @@ TIMEZONE_SESSION_KEY = 'django_timezone'
 STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
 # ----- Swagger --------
 SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'rest_api.schemas.openapi_info',
+    'DEFAULT_MODEL_DEPTH': 1,
     'DOC_EXPANSION': 'None',
 }
 # ----- AJAX REDIRECT -----
