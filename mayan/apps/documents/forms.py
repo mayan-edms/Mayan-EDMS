@@ -166,7 +166,6 @@ class DocumentTypeSelectForm(forms.Form):
     Form to select the document type of a document to be created, used
     as form #1 in the document creation wizard
     """
-
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         logger.debug('user: %s', user)

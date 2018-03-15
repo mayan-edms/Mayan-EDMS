@@ -22,7 +22,6 @@ def has_metadata_types(wizard):
     """
     Skip the 2nd step if document type has no associated metadata
     """
-
     cleaned_data = wizard.get_cleaned_data_for_step(STEP_DOCUMENT_TYPE) or {}
 
     document_type = cleaned_data.get('document_type')

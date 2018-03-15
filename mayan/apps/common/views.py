@@ -312,7 +312,6 @@ def multi_object_action_view(request):
     Proxy view called first when using a multi object action, which
     then redirects to the appropiate specialized view
     """
-
     next = request.POST.get(
         'next', request.GET.get(
             'next', request.META.get(

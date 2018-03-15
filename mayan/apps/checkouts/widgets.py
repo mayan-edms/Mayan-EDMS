@@ -14,7 +14,6 @@ class SplitTimeDeltaWidget(forms.widgets.MultiWidget):
     A Widget that splits a timedelta input into three <input type="text">
     boxes.
     """
-
     def __init__(self, attrs=None):
         widgets = (
             forms.widgets.NumberInput(

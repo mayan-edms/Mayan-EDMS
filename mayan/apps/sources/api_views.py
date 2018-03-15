@@ -33,7 +33,6 @@ class APIStagingSourceListView(generics.ListAPIView):
     """
     get: Returns a list of all the staging folders and the files they contain.
     """
-
     serializer_class = StagingFolderSerializer
     queryset = StagingFolderSource.objects.all()
 

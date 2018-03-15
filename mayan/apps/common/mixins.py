@@ -48,7 +48,6 @@ class ExtraContextMixin(object):
     """
     Mixin that allows views to pass extra context to the template
     """
-
     extra_context = {}
 
     def get_extra_context(self):
@@ -64,7 +63,6 @@ class FormExtraKwargsMixin(object):
     """
     Mixin that allows a view to pass extra keyword arguments to forms
     """
-
     form_extra_kwargs = {}
 
     def get_form_extra_kwargs(self):
@@ -123,7 +121,6 @@ class MultipleObjectMixin(object):
     """
     Mixin that allows a view to work on a single or multiple objects
     """
-
     model = None
     object_permission = None
     pk_list_key = 'id_list'
@@ -184,7 +181,6 @@ class ObjectActionMixin(object):
     """
     Mixin that performs an user action to a queryset
     """
-
     success_message = 'Operation performed on %(count)d object'
     success_message_plural = 'Operation performed on %(count)d objects'
 

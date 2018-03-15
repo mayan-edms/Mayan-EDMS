@@ -381,7 +381,6 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     """
     Returns a list of all the documents of a particular document type.
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer

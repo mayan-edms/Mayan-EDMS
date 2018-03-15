@@ -100,7 +100,6 @@ class MetadataTestCase(MetadataTypeMixin, BaseTestCase):
         Checks for GitLab issue #250
         Empty optional lookup metadata trigger validation error
         """
-
         self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
         self.metadata_type.save()
 

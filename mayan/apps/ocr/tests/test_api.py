@@ -19,7 +19,6 @@ class OCRAPITestCase(BaseAPITestCase):
     """
     Test the OCR app API endpoints
     """
-
     def setUp(self):
         super(OCRAPITestCase, self).setUp()
         self.login_user()

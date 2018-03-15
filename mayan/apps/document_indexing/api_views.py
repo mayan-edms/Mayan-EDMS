@@ -56,7 +56,6 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
     Returns a list of all the documents contained by a particular index node
     instance.
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer
@@ -105,7 +104,6 @@ class APIDocumentIndexListView(generics.ListAPIView):
     """
     Returns a list of all the indexes to which a document belongs.
     """
-
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
     serializer_class = IndexInstanceNodeSerializer

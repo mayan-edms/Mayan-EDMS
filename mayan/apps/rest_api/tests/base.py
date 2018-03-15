@@ -18,7 +18,6 @@ class BaseAPITestCase(UserMixin, APITestCase):
     """
     API test case class that invalidates permissions and smart settings
     """
-
     def setUp(self):
         super(BaseAPITestCase, self).setUp()
         Namespace.invalidate_cache_all()

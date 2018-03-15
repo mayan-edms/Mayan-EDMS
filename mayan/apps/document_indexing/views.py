@@ -291,7 +291,6 @@ class DocumentIndexNodeListView(SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
-
     object_permission = permission_document_indexing_view
     object_permission_related = 'index'
 

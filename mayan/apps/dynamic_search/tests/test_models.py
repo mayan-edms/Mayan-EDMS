@@ -30,7 +30,6 @@ class DocumentSearchTestCase(BaseTestCase):
         Test that simple search works after related_name changes to
         document versions and document version pages
         """
-
         queryset, elapsed_time = document_search.search(
             {'q': 'Mayan'}, user=self.admin_user
         )

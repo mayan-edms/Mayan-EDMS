@@ -27,7 +27,6 @@ class APIDocumentCabinetListView(generics.ListAPIView):
     """
     Returns a list of all the cabinets to which a document belongs.
     """
-
     serializer_class = CabinetSerializer
 
     filter_backends = (MayanObjectPermissionsFilter,)

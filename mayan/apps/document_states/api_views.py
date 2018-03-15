@@ -62,7 +62,6 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         """
         This view returns a list of document types that belong to a workflow.
         """
-
         return self.get_workflow().document_types.all()
 
     def get_serializer(self, *args, **kwargs):
@@ -96,7 +95,6 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         Retrieve the parent workflow of the workflow document type.
         Perform custom permission and access check.
         """
-
         if self.request.method == 'GET':
             permission_required = permission_workflow_view
         else:
@@ -488,7 +486,6 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
             Failing that, check for ACLs for any of the workflow's transitions.
             Failing that, then raise PermissionDenied
             """
-
             AccessControlList.objects.check_access(
                 permissions=permission_workflow_view, user=self.request.user,
                 obj=document

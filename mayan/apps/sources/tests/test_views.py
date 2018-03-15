@@ -79,7 +79,6 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         Test uploading of documents by granting the document create
         permssion for the document type to the user
         """
-
         self.login_user()
 
         # Create an access control entry giving the role the document
@@ -226,7 +225,6 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
             - Link to upload version view should not resolve
             - Upload version view should reject request
         """
-
         self.login_admin_user()
 
         NewVersionBlock.objects.block(self.document)

@@ -9,7 +9,6 @@ def check_new_version_creation(sender, instance, **kwargs):
     """
     Make sure that new version creation is allowed for this document
     """
-
     NewVersionBlock = apps.get_model(
         app_label='checkouts', model_name='NewVersionBlock'
     )

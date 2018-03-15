@@ -35,7 +35,6 @@ class SignatureBaseModel(models.Model):
     it will generate a unique signature ID. No two signature IDs are the same,
     even when using the same key.
     """
-
     document_version = models.ForeignKey(
         DocumentVersion, editable=False, on_delete=models.CASCADE,
         related_name='signatures', verbose_name=_('Document version')

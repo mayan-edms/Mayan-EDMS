@@ -28,13 +28,10 @@ from .serializers import (
 
 
 class APIDocumentMetadataListView(generics.ListCreateAPIView):
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of selected document's metadata types and values.
-        """
-
-        return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
-
+    """
+    get: Returns a list of selected document's metadata types and values.
+    post: Add an existing metadata type and value to the selected document.
+    """
     def get_document(self):
         if self.request.method == 'GET':
             permission_required = permission_metadata_document_view
@@ -81,30 +78,15 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
 
         return context
 
-    def post(self, *args, **kwargs):
-        """
-        Add an existing metadata type and value to the selected document.
-        """
-
-        return super(APIDocumentMetadataListView, self).post(*args, **kwargs)
-
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Remove this metadata entry from the selected document.
+    get: Return the details of the selected document metadata type and value.
+    patch: Edit the selected document metadata type and value.
+    put: Edit the selected document metadata type and value.
+    """
     lookup_url_kwarg = 'metadata_pk'
-
-    def delete(self, *args, **kwargs):
-        """
-        Remove this metadata entry from the selected document.
-        """
-
-        return super(APIDocumentMetadataView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected document metadata type and value.
-        """
-
-        return super(APIDocumentMetadataView, self).get(*args, **kwargs)
 
     def get_document(self):
         if self.request.method == 'GET':
@@ -142,22 +124,12 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         else:
             return DocumentMetadataSerializer
 
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected document metadata type and value.
-        """
-
-        return super(APIDocumentMetadataView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected document metadata type and value.
-        """
-
-        return super(APIDocumentMetadataView, self).put(*args, **kwargs)
-
 
 class APIMetadataTypeListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the metadata types.
+    post: Create a new metadata type.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_metadata_type_view,)}
     mayan_view_permissions = {'POST': (permission_metadata_type_create,)}
@@ -165,22 +137,14 @@ class APIMetadataTypeListView(generics.ListCreateAPIView):
     queryset = MetadataType.objects.all()
     serializer_class = MetadataTypeSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the metadata types.
-        """
-
-        return super(APIMetadataTypeListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new metadata type.
-        """
-
-        return super(APIMetadataTypeListView, self).post(*args, **kwargs)
-
 
 class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected metadata type.
+    get: Return the details of the selected metadata type.
+    patch: Edit the selected metadata type.
+    put: Edit the selected metadata type.
+    """
     lookup_url_kwarg = 'metadata_type_pk'
     mayan_object_permissions = {
         'GET': (permission_metadata_type_view,),
@@ -192,46 +156,13 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MetadataType.objects.all()
     serializer_class = MetadataTypeSerializer
 
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected metadata type.
-        """
-
-        return super(APIMetadataTypeView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected metadata type.
-        """
-
-        return super(APIMetadataTypeView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected metadata type.
-        """
-
-        return super(APIMetadataTypeView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected metadata type.
-        """
-
-        return super(APIMetadataTypeView, self).put(*args, **kwargs)
-
 
 class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of selected document type's metadata types.
+    post: Add a metadata type to the selected document type.
+    """
     lookup_url_kwarg = 'metadata_type_pk'
-
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of selected document type's metadata types.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeListView, self
-        ).get(*args, **kwargs)
 
     def get_document_type(self):
         if self.request.method == 'GET':
@@ -279,37 +210,16 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
 
         return context
 
-    def post(self, *args, **kwargs):
-        """
-        Add a metadata type to the selected document type.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeListView, self
-        ).post(*args, **kwargs)
-
 
 class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Remove a metadata type from a document type.
+    get: Retrieve the details of a document type metadata type.
+    patch: Edit the selected document type metadata type.
+    put: Edit the selected document type metadata type.
+    """
     lookup_url_kwarg = 'metadata_type_pk'
     serializer_class = DocumentTypeMetadataTypeSerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Remove a metadata type from a document type.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeView, self
-        ).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Retrieve the details of a document type metadata type.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeView, self
-        ).get(*args, **kwargs)
 
     def get_document_type(self):
         if self.request.method == 'GET':
@@ -342,21 +252,3 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
             return DocumentTypeMetadataTypeSerializer
         else:
             return WritableDocumentTypeMetadataTypeSerializer
-
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected document type metadata type.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeView, self
-        ).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected document type metadata type.
-        """
-
-        return super(
-            APIDocumentTypeMetadataTypeView, self
-        ).put(*args, **kwargs)

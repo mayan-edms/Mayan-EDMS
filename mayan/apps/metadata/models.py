@@ -35,7 +35,6 @@ class MetadataType(models.Model):
     """
     Define a type of metadata
     """
-
     name = models.CharField(
         max_length=48,
         help_text=_(
@@ -149,7 +148,6 @@ class DocumentMetadata(models.Model):
     Link a document to a specific instance of a metadata type with it's
     current value
     """
-
     document = models.ForeignKey(
         Document, on_delete=models.CASCADE, related_name='metadata',
         verbose_name=_('Document')

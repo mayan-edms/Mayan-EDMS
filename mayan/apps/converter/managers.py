@@ -65,7 +65,6 @@ class TransformationManager(models.Manager):
         as_classes == True returns the transformation classes from .classes
         ready to be feed to the converter class
         """
-
         content_type = ContentType.objects.get_for_model(obj)
 
         transformations = self.filter(

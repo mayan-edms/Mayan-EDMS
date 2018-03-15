@@ -154,7 +154,6 @@ class Document(models.Model):
     generated for each document. No two documents can ever have the same UUID.
     This ID is generated automatically.
     """
-
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
         DocumentType, on_delete=models.CASCADE, related_name='documents',

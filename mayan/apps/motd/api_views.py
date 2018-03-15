@@ -14,6 +14,10 @@ from .serializers import MessageSerializer
 
 
 class APIMessageListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the messages.
+    post: Create a new message.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_message_view,)}
     mayan_view_permissions = {'POST': (permission_message_create,)}
@@ -21,22 +25,14 @@ class APIMessageListView(generics.ListCreateAPIView):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the messages.
-        """
-
-        return super(APIMessageListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Create a new message.
-        """
-
-        return super(APIMessageListView, self).post(*args, **kwargs)
-
 
 class APIMessageView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected message.
+    get: Return the details of the selected message.
+    patch: Edit the selected message.
+    put: Edit the selected message.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_message_delete,),
@@ -46,31 +42,3 @@ class APIMessageView(generics.RetrieveUpdateDestroyAPIView):
     }
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected message.
-        """
-
-        return super(APIMessageView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected message.
-        """
-
-        return super(APIMessageView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Edit the selected message.
-        """
-
-        return super(APIMessageView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the selected message.
-        """
-
-        return super(APIMessageView, self).put(*args, **kwargs)

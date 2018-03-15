@@ -10,7 +10,6 @@ def get_instance_link(index_instance_node):
     """
     Return an HTML anchor to an index node instance
     """
-
     return mark_safe(
         '<a href="{url}">{text}</a>'.format(
             url=index_instance_node.get_absolute_url(),
@@ -45,7 +44,6 @@ def node_level(node):
     """
     Render an indented tree like output for a specific node
     """
-
     return mark_safe(
         ''.join(
             [

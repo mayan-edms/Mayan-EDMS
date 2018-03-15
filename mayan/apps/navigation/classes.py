@@ -100,7 +100,6 @@ class Menu(object):
         """
         Associate a link to a model, a view inside this menu
         """
-
         try:
             for source in sources:
                 self._map_links_to_source(
@@ -237,7 +236,6 @@ class Menu(object):
         Allow unbinding links from sources, used to allow 3rd party apps to
         change the link binding of core apps
         """
-
         try:
             for source in sources:
                 self._map_links_to_source(

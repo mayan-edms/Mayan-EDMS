@@ -119,7 +119,6 @@ class DocumentTestCase(BaseTestCase):
         Test document type trashing policies. Documents are moved to the
         trash, x amount of time after being uploaded
         """
-
         self.document_type.trash_time_period = 1
         # 'seconds' is not a choice via the model, used here for convenience
         self.document_type.trash_time_unit = 'seconds'
@@ -142,7 +141,6 @@ class DocumentTestCase(BaseTestCase):
         Test document type deletion policies. Documents are deleted from the
         trash, x amount of time after being trashed
         """
-
         self.document_type.delete_time_period = 1
         # 'seconds' is not a choice via the model, used here for convenience
         self.document_type.delete_time_unit = 'seconds'

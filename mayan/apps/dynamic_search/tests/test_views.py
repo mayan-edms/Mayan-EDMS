@@ -13,7 +13,6 @@ class Issue46TestCase(GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
-
     def setUp(self):
         super(Issue46TestCase, self).setUp()
         self.login_admin_user()

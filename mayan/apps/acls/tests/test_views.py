@@ -82,7 +82,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Test creating a duplicate ACL entry: same object & role
         Result: Should redirect to existing ACL for object + role combination
         """
-
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role
         )
@@ -110,7 +109,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Test creating an ACL entry for an object with no model permissions.
         Result: Should display a blank permissions list (not optgroup)
         """
-
         self.login_user()
 
         self.role.permissions.add(
