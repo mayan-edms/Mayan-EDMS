@@ -3,25 +3,18 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
 
-from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-import mayan
+from rest_api.schemas import openapi_info
 
 admin.autodiscover()
 schema_view = get_schema_view(
-   openapi.Info(
-      title=_('%s API') % mayan.__title__,
-      default_version='v2',
-      description=mayan.__description__,
-      license=openapi.License(name=mayan.__license__),
-   ),
-   validators=['flex', 'ssv'],
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi_info,
+    validators=['flex', 'ssv'],
+    public=True,
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
