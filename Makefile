@@ -167,7 +167,7 @@ requirements_testing:
 	pip install -r requirements/testing.txt
 
 generate_setup:
-	@./contrib/scripts/generate_setup.py
+	@./generate_setup.py
 	@echo "Complete."
 
 # Releases
