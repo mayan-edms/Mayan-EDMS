@@ -56,7 +56,6 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-<<<<<<< HEAD
 Django==1.11.11
 Pillow==5.0.0
 PyYAML==3.12
@@ -79,9 +78,11 @@ django-rest-swagger==0.3.10
 django-stronghold==0.2.8
 django-suit==0.2.25
 django-widget-tweaks==1.4.1
-djangorestframework==3.3.2
-djangorestframework-recursive==0.1.1
-furl==1.0.0
+djangorestframework==3.7.7
+djangorestframework-recursive==0.1.2
+drf-yasg==1.5.0
+flex==6.12.0
+furl==1.0.1
 fusepy==2.0.4
 graphviz==0.8
 mock==2.0.0

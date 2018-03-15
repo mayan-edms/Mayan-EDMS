@@ -22,7 +22,7 @@ django-suit==0.2.26
 django-widget-tweaks==1.4.1
 djangorestframework==3.7.7
 djangorestframework-recursive==0.1.2
-drf-yasg==1.4.4
+drf-yasg==1.5.0
 
 flex==6.12.0
 furl==1.0.1
