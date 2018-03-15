@@ -2,7 +2,7 @@ Next (2018-XX-XX)
 =================
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
-- Update project to work with Django 1.11.10.
+- Update project to work with Django 1.11.11.
 - Fix deprecations in preparation for Django 2.0.
 - Improve permission handling in the workflow app.
 - The checkedout detail view permission is now required for the checked out document detail API view.
