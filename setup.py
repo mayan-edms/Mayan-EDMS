@@ -56,8 +56,9 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Django==1.10.7
-Pillow==4.2.0
+<<<<<<< HEAD
+Django==1.11.11
+Pillow==5.0.0
 PyYAML==3.12
 celery==3.1.24
 cssmin==0.2.0
@@ -91,7 +92,7 @@ python-dateutil==2.5.3
 python-gnupg==0.3.9
 python-magic==0.4.13
 pytz==2016.7
-requests==2.18.4 
+requests==2.18.4
 sh==1.12.11
 """.split()
 
