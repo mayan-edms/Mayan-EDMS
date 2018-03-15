@@ -125,7 +125,13 @@ Other
 - Repeated templates: password_reset_confirm.html and password_reset_form.html
 - Remove unused text=get_notification_count from events.links
 - Reduce number of languages so dropzone view starts faster.
-
+- In DocumentComment model, rename comment field to text.
+- class MultipleInstanceActionMixin is deprecated. Replace views using this with
+  MultipleObjectFormActionView or MultipleObjectConfirmActionView
+- Subscribe to tag events
+- Subscribe to workflow events
+- Subscribe to workflow state events
+- Link to go from event notification to view. Example document workflow notification to document workflow views.
 
 Permissions
 ~~~~~~~~~~~
@@ -229,6 +235,8 @@ API
 - Add converter API
 - Document signatures API
 - Smart settings API
+- Use REST_API's 'mayan_permission_attribute_check' to simplify API views access checking and filtering.
+- DRF filtering using the URL query.
 
 Converter
 ~~~~~~~~~
@@ -276,6 +284,7 @@ Other
 - Hunt FIXME
 - Convert SETTING_GPG_BACKEND into a setting option similar to converter and converter options.
 - Reorganize modelForms Meta class and methods.
+- Periodic messages, like notifications. Using an AJAX worker.
 
 Metadata
 ~~~~~~~~
