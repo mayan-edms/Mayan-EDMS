@@ -42,39 +42,14 @@ def get_encoded_parameter(item, parameters_dict):
     return dumps(result)
 
 
+@register.simple_tag
+def project_information(attribute_name):
+    return getattr(mayan, attribute_name)
+
+
 @register.filter
 def object_property(value, arg):
     return return_attrib(value, arg)
-
-
-@register.simple_tag
-def project_copyright():
-    return settings.PROJECT_COPYRIGHT
-
-
-@register.simple_tag
-def project_description():
-    return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
-
-
-@register.simple_tag
-def project_license():
-    return settings.PROJECT_LICENSE
-
-
-@register.simple_tag
-def project_name():
-    return settings.PROJECT_TITLE
-
-
-@register.simple_tag
-def project_website():
-    return settings.PROJECT_WEBSITE
-
-
-@register.simple_tag
-def project_version():
-    return mayan.__version__
 
 
 @register.simple_tag(takes_context=True)

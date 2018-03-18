@@ -9,6 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.forms import DynamicModelForm
 
+import mayan
+
 from .classes import MailerBackend
 from .models import UserMailer
 from .permissions import permission_user_mailer_use
@@ -31,16 +33,16 @@ class DocumentMailForm(forms.Form):
             self.fields[
                 'body'
             ].initial = setting_document_body_template.value % {
-                'project_title': settings.PROJECT_TITLE,
-                'project_website': settings.PROJECT_WEBSITE
+                'project_title': mayan.__title__,
+                'project_website': mayan.__website__
             }
         else:
             self.fields[
                 'subject'
             ].initial = setting_link_subject_template.value
             self.fields['body'].initial = setting_link_body_template.value % {
-                'project_title': settings.PROJECT_TITLE,
-                'project_website': settings.PROJECT_WEBSITE
+                'project_title': mayan.__title__,
+                'project_website': mayan.__website__
             }
 
         queryset = AccessControlList.objects.filter_by_access(

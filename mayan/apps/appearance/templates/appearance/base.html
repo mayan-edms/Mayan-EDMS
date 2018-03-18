@@ -105,6 +105,6 @@ var DjangoMessages = [
 {% block javascript %}{% endblock %}
 
 <script>
-    document.title = '{% spaceless %}{% block title %}{% endblock %}{% endspaceless %} :: {% block project_name %}{% project_name %}{% endblock %}';
+    document.title = '{% spaceless %}{% block title %}{% endblock %}{% endspaceless %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}';
     afterBaseLoad();
 </script>

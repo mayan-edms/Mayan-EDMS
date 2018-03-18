@@ -49,6 +49,7 @@ Next (2018-XX-XX)
 - Add support for OR type searches. Use the "OR" string between the terms. Example: term1 OR term2.
 - Removed redundant permissions checks.
 - Move the page count display to the top of the image.
+- Unify the way to gather the project's metadata. Use mayan.__XX__ and a new common tag named {% project_information '' %}
 
 2.8 (2018-02-27)
 ================

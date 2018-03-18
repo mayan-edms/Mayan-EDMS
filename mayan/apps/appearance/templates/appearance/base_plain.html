@@ -17,7 +17,7 @@
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
         <title>
             {% block base_title %}
-                {% block title %}{% endblock %} :: {% block project_name %}{% project_name %}{% endblock %}
+                {% block title %}{% endblock %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}
             {% endblock base_title %}
         </title>
 
