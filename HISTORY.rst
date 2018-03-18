@@ -48,6 +48,7 @@ Next (2018-XX-XX)
 - Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
 - Add support for OR type searches. Use the "OR" string between the terms. Example: term1 OR term2.
 - Removed redundant permissions checks.
+- Move the page count display to the top of the image.
 
 2.8 (2018-02-27)
 ================

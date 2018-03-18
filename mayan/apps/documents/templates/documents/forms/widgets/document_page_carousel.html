@@ -4,6 +4,11 @@
     {% for document_page in widget.value.pages.all %}
         <div class="carousel-item" style="height: 100%;">
             <div class="instance-image-widget">
+                <div class="carousel-item-page-number">
+                    {% blocktrans with document_page.page_number as page_number and widget.value.pages.count as total_pages %}
+                        Page {{ page_number }} of {{ total_pages }}
+                    {% endblocktrans %}
+                </div>
                 <a href="{% url 'documents:document_page_view' document_page.pk %}">
                     {% with 'lazy-load-carousel' as image_classes %}
                     {% with document_page as instance %}
@@ -13,11 +18,6 @@
                     {% endwith %}
                     {% endwith %}
                 </a>
-            </div>
-            <div class="carousel-item-page-number">
-                {% blocktrans with document_page.page_number as page_number and widget.value.pages.count as total_pages %}
-                    Page {{ page_number }} of {{ total_pages }}
-                {% endblocktrans %}
             </div>
         </div>
     {% empty %}
