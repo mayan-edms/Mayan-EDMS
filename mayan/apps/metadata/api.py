@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from furl import furl
 
 from django.shortcuts import get_object_or_404
-from django.utils.encoding import force_text
 from django.utils.six.moves.urllib.parse import unquote_plus
 
 from .models import DocumentMetadata, MetadataType
