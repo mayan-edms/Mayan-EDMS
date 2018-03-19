@@ -15,6 +15,7 @@ from documents.forms import DocumentTypeSelectForm
 
 class WizardStep(object):
     _registry = {}
+    _deregistry = {}
 
     @classmethod
     def done(cls, wizard):
@@ -32,11 +33,9 @@ class WizardStep(object):
 
     @classmethod
     def get_choices(cls, attribute_name):
-        return sorted(
-            [
-                (step.name, getattr(step, attribute_name)) for step in cls.get_all()
-            ]
-        )
+        return [
+            (step.name, getattr(step, attribute_name)) for step in cls.get_all()
+        ]
 
     @classmethod
     def get_form_initial(cls, wizard):
@@ -55,7 +54,27 @@ class WizardStep(object):
 
     @classmethod
     def register(cls, step):
+        if step in cls._deregistry:
+            # This step has been marked for reregistration before it was
+            # registered
+            return
+
+        if step.name in cls._registry:
+            raise Exception('A step with this name already exists: %s' % step.name)
+
+        if step.number in [reigstered_step.number for reigstered_step in cls.get_all()]:
+            raise Exception('A step with this number already exists: %s' % step.name)
+
         cls._registry[step.name] = step
+
+    @classmethod
+    def deregister(cls, step):
+        try:
+            cls._registry.pop(step.name)
+        except KeyError:
+            cls._deregistry[step.name] = step
+        else:
+            cls._deregistry[step.name] = step
 
     @classmethod
     def step_post_upload_process(cls, document, querystring=None):
