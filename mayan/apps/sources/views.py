@@ -242,18 +242,20 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 messages.error(self.request, exception)
 
-            task_source_handle_upload.apply_async(kwargs=dict(
-                description=forms['document_form'].cleaned_data.get('description'),
-                document_type_id=self.document_type.pk,
-                expand=expand,
-                label=label,
-                language=forms['document_form'].cleaned_data.get('language'),
-                metadata_dict_list=decode_metadata_from_url(self.request.GET),
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                source_id=self.source.pk,
-                tag_ids=self.request.GET.getlist('tags'),
-                user_id=user_id,
-            ))
+            task_source_handle_upload.apply_async(
+                kwargs=dict(
+                    description=forms['document_form'].cleaned_data.get('description'),
+                    document_type_id=self.document_type.pk,
+                    expand=expand,
+                    label=label,
+                    language=forms['document_form'].cleaned_data.get('language'),
+                    metadata_dict_list=decode_metadata_from_url(self.request.GET),
+                    shared_uploaded_file_id=shared_uploaded_file.pk,
+                    source_id=self.source.pk,
+                    tag_ids=self.request.GET.getlist('tags'),
+                    user_id=user_id,
+                )
+            )
             messages.success(
                 self.request,
                 _(

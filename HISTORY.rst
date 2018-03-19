@@ -51,6 +51,7 @@ Next (2018-XX-XX)
 - Move the page count display to the top of the image.
 - Unify the way to gather the project's metadata. Use mayan.__XX__ and a new common tag named {% project_information '' %}
 - Return to the same source view after uploading a document.
+- Add new WizardStep class to decouple the wizard step configuration.
 
 2.8 (2018-02-27)
 ================
