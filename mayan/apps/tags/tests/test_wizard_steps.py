@@ -6,7 +6,6 @@ from documents.tests import (
     GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH,
 )
 from sources.models import WebFormSource
-
 from sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
