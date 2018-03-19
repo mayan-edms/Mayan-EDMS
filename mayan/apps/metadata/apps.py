@@ -58,6 +58,8 @@ class MetadataApp(MayanAppConfig):
     def ready(self):
         super(MetadataApp, self).ready()
 
+        from .wizard_steps import WizardStepMetadata  # NOQA
+
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )

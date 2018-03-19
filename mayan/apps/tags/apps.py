@@ -38,6 +38,8 @@ class TagsApp(MayanAppConfig):
         super(TagsApp, self).ready()
         from actstream import registry
 
+        from .wizard_steps import WizardStepTags  # NOQA
+
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )

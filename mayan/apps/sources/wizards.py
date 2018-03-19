@@ -1,22 +1,16 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.decorators import classonlymethod
-from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
 
-from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from metadata.forms import DocumentMetadataFormSet
-from tags.forms import TagMultipleSelectionForm
-from tags.models import Tag
-
-from .models import InteractiveSource
 
 
 class WizardStep(object):
@@ -53,8 +47,17 @@ class WizardStep(object):
         return {}
 
     @classmethod
+    def post_upload_process(cls, document, request_data=None):
+        for step in cls.get_all():
+            step.step_post_upload_process(document=document, request_data=request_data)
+
+    @classmethod
     def register(cls, step):
         cls._registry[step.name] = step
+
+    @classmethod
+    def step_post_upload_process(cls, document, request_data=None):
+        pass
 
 
 class WizardStepDocumentType(WizardStep):
@@ -80,89 +83,10 @@ class WizardStepDocumentType(WizardStep):
         return {'user': wizard.request.user}
 
 
-class WizardStepMetadata(WizardStep):
-    form_class = DocumentMetadataFormSet
-    label = _('Enter document metadata')
-    name = 'metadata_entry'
-    number = 1
-
-    @classmethod
-    def condition(cls, wizard):
-        """
-        Skip step if document type has no associated metadata
-        """
-        cleaned_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name) or {}
-
-        document_type = cleaned_data.get('document_type')
-
-        if document_type:
-            return document_type.metadata.exists()
-
-    @classmethod
-    def get_form_initial(cls, wizard):
-        initial = []
-
-        step_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name)
-        if step_data:
-            document_type = step_data['document_type']
-            for document_type_metadata_type in document_type.metadata.all():
-                initial.append(
-                    {
-                        'document_type': document_type,
-                        'metadata_type': document_type_metadata_type.metadata_type,
-                    }
-                )
-
-        return initial
-
-    @classmethod
-    def done(cls, wizard):
-        result = {}
-        cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
-        if cleaned_data:
-            for identifier, metadata in enumerate(wizard.get_cleaned_data_for_step(cls.name)):
-                if metadata.get('update'):
-                    result['metadata%s_id' % identifier] = metadata['id']
-                    result['metadata%s_value' % identifier] = metadata['value']
-
-        return result
-
-
-class WizardStepTags(WizardStep):
-    form_class = TagMultipleSelectionForm
-    label = _('Select tags')
-    name = 'tag_selection'
-    number = 2
-
-    @classmethod
-    def condition(cls, wizard):
-        return Tag.objects.exists()
-
-    @classmethod
-    def get_form_kwargs(self, wizard):
-        return {
-            'help_text': _('Tags to be attached.'),
-            'user': wizard.request.user
-        }
-
-    @classmethod
-    def done(cls, wizard):
-        result = {}
-        cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
-        if cleaned_data:
-            result['tags'] = [
-                force_text(tag.pk) for tag in cleaned_data['tags']
-            ]
-
-        return result
-
-
 WizardStep.register(WizardStepDocumentType)
-WizardStep.register(WizardStepMetadata)
-WizardStep.register(WizardStepTags)
 
 
-class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
+class DocumentCreateWizard(SessionWizardView):
     template_name = 'appearance/generic_wizard.html'
 
     @classonlymethod
@@ -172,6 +96,16 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         return super(DocumentCreateWizard, cls).as_view(*args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):
+        InteractiveSource = apps.get_model(
+            app_label='sources', model_name='InteractiveSource'
+        )
+
+        form_list = WizardStep.get_choices(attribute_name='form_class')
+        condition_dict = dict(WizardStep.get_choices(attribute_name='condition'))
+        result = self.__class__.get_initkwargs(form_list=form_list, condition_dict=condition_dict)
+        self.form_list = result['form_list']
+        self.condition_dict = result['condition_dict']
+
         if not InteractiveSource.objects.filter(enabled=True).exists():
             messages.error(
                 request,

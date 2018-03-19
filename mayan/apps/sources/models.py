@@ -34,9 +34,8 @@ from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from documents.settings import setting_language
-from metadata.api import save_metadata_list, set_bulk_metadata
+from metadata.api import set_bulk_metadata
 from metadata.models import MetadataType
-from tags.models import Tag
 
 from .classes import Attachment, PseudoFile, SourceUploadedFile, StagingFile
 from .exceptions import SourceException
@@ -52,6 +51,7 @@ from .literals import (
     SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_SANE_SCANNER,
 )
 from .settings import setting_scanimage_path
+from .wizards import WizardStep
 
 logger = logging.getLogger(__name__)
 
@@ -82,7 +82,7 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, user=None):
         """
         Handle an upload request from a file object which may be an individual
         document or a compressed file containing multiple documents.
@@ -93,8 +93,6 @@ class Source(models.Model):
         kwargs = {
             'description': description, 'document_type': document_type,
             'label': label, 'language': language,
-            'metadata_dict_list': metadata_dict_list,
-            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
             'user': user
         }
 
@@ -103,22 +101,22 @@ class Source(models.Model):
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
                     kwargs.update({'label': force_text(compressed_file_child)})
-                    self.upload_document(
+                    return self.upload_document(
                         file_object=File(compressed_file_child), **kwargs
                     )
                     compressed_file_child.close()
 
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')
-                self.upload_document(file_object=file_object, **kwargs)
+                return self.upload_document(file_object=file_object, **kwargs)
         else:
-            self.upload_document(file_object=file_object, **kwargs)
+            return self.upload_document(file_object=file_object, **kwargs)
 
     def get_upload_file_object(self, form_data):
         pass
         # TODO: Should raise NotImplementedError?
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, request_data=None, user=None):
         """
         Upload an individual document
         """
@@ -150,20 +148,6 @@ class Source(models.Model):
                     source=self, targets=document_version.pages.all()
                 )
 
-                if metadata_dict_list:
-                    save_metadata_list(
-                        metadata_dict_list, document, create=True
-                    )
-
-                if metadata_dictionary:
-                    set_bulk_metadata(
-                        document=document,
-                        metadata_dictionary=metadata_dictionary
-                    )
-
-                if tag_ids:
-                    for tag in Tag.objects.filter(pk__in=tag_ids):
-                        tag.documents.add(document)
             except Exception as exception:
                 logger.critical(
                     'Unexpected exception while trying to create version for '
@@ -172,6 +156,11 @@ class Source(models.Model):
                 )
                 document.delete(to_trash=False)
                 raise
+            else:
+                WizardStep.post_upload_process(
+                    document=document, request_data=request_data
+                )
+                return document
 
 
 class InteractiveSource(Source):
@@ -629,13 +618,18 @@ class EmailBaseModel(IntervalBaseModel):
                             'Got metadata dictionary: %s', metadata_dictionary
                         )
                     else:
-                        source.handle_upload(
+                        document = source.handle_upload(
                             document_type=source.document_type,
                             file_object=file_object, label=filename,
                             expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
-                            ), metadata_dictionary=metadata_dictionary
+                            )
                         )
+                        if metadata_dictionary:
+                            set_bulk_metadata(
+                                document=document,
+                                metadata_dictionary=metadata_dictionary
+                            )
             else:
                 logger.debug('No Content-Disposition')
 
@@ -646,12 +640,16 @@ class EmailBaseModel(IntervalBaseModel):
                 if content_type == 'text/plain' and source.store_body:
                     content = part.get_payload(decode=True).decode(part.get_content_charset())
                     with ContentFile(content=content, name='email_body.txt') as file_object:
-                        source.handle_upload(
+                        document = source.handle_upload(
                             document_type=source.document_type,
                             file_object=file_object,
                             expand=SOURCE_UNCOMPRESS_CHOICE_N, label='email_body.txt',
-                            metadata_dictionary=metadata_dictionary
                         )
+                        if metadata_dictionary:
+                            set_bulk_metadata(
+                                document=document,
+                                metadata_dictionary=metadata_dictionary
+                            )
 
 
 class POP3Email(EmailBaseModel):

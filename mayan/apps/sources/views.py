@@ -22,7 +22,6 @@ from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
 from documents.tasks import task_upload_new_version
-from metadata.api import decode_metadata_from_url
 from navigation import Link
 
 from .exceptions import SourceException
@@ -249,10 +248,9 @@ class UploadInteractiveView(UploadBaseView):
                     expand=expand,
                     label=label,
                     language=forms['document_form'].cleaned_data.get('language'),
-                    metadata_dict_list=decode_metadata_from_url(self.request.GET),
+                    request_data=self.request.GET,
                     shared_uploaded_file_id=shared_uploaded_file.pk,
                     source_id=self.source.pk,
-                    tag_ids=self.request.GET.getlist('tags'),
                     user_id=user_id,
                 )
             )
