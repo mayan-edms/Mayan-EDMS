@@ -34,10 +34,6 @@ class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestC
             metadata_type=self.metadata_type, required=True
         )
 
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentUploadMetadataTestCase, self).tearDown()
-
     def test_unicode_interactive_with_unicode_metadata(self):
         url = furl(reverse('sources:upload_interactive'))
         url.args['metadata0_id'] = self.metadata_type.pk
