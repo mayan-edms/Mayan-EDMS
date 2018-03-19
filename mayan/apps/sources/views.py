@@ -264,8 +264,10 @@ class UploadInteractiveView(UploadBaseView):
 
         return HttpResponseRedirect(
             '{}?{}'.format(
-                reverse(self.request.resolver_match.view_name),
-                self.request.META['QUERY_STRING']
+                reverse(
+                    self.request.resolver_match.view_name,
+                    kwargs=self.request.resolver_match.kwargs
+                ), self.request.META['QUERY_STRING']
             ),
         )
 
@@ -308,12 +310,15 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
+
         if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context['subtemplates_list'][0]['context'].update(
                 {
                     'form_action': '{}?{}'.format(
-                        reverse(self.request.resolver_match.view_name),
-                        self.request.META['QUERY_STRING']
+                        reverse(
+                            self.request.resolver_match.view_name,
+                            kwargs=self.request.resolver_match.kwargs
+                        ), self.request.META['QUERY_STRING']
                     ),
                     'form_class': 'dropzone',
                     'form_disable_submit': True,
