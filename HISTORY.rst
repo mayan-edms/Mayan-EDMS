@@ -53,6 +53,7 @@ Next (2018-XX-XX)
 - Return to the same source view after uploading a document.
 - Add new WizardStep class to decouple the wizard step configuration.
 - Add support for deregister upload wizard steps.
+- Add wizard step to insert the document being uploaded to a cabinet.
 
 2.8 (2018-02-27)
 ================
