@@ -36,7 +36,7 @@ def task_check_interval_source(source_id):
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, request_data=None, user_id=None):
+def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, querystring=None, user_id=None):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -65,7 +65,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
             source.upload_document(
                 file_object=file_object, document_type=document_type,
                 description=description, label=label, language=language,
-                request_data=request_data, user=user,
+                querystring=querystring, user=user,
             )
 
     except OperationalError as exception:
@@ -86,7 +86,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, skip_list=None, request_data=None, user_id=None):
+def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, querystring=None, skip_list=None, user_id=None):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -113,8 +113,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
 
     kwargs = {
         'description': description, 'document_type_id': document_type.pk,
-        'label': label, 'language': language,
-        'source_id': source_id, 'request_data': request_data, 'user_id': user_id
+        'label': label, 'language': language, 'querystring': querystring,
+        'source_id': source_id, 'user_id': user_id
     }
 
     if not skip_list:
@@ -150,7 +150,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                                 source_id=source_id, description=description,
                                 expand=expand, label=label,
                                 language=language,
-                                skip_list=skip_list, request_data=request_data,
+                                skip_list=skip_list, querystring=querystring,
                                 user_id=user_id
                             )
                             return

@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from metadata.api import decode_metadata_from_url, save_metadata_list
+from metadata.api import (
+    decode_metadata_from_querystring, save_metadata_list
+)
 from metadata.forms import DocumentMetadataFormSet
 
 from sources.wizards import WizardStep, WizardStepDocumentType
@@ -56,8 +58,8 @@ class WizardStepMetadata(WizardStep):
         return result
 
     @classmethod
-    def step_post_upload_process(cls, document, request_data=None):
-        metadata_dict_list = decode_metadata_from_url(url_dict=request_data)
+    def step_post_upload_process(cls, document, querystring=None):
+        metadata_dict_list = decode_metadata_from_querystring(querystring=querystring)
         if metadata_dict_list:
             save_metadata_list(
                 metadata_list=metadata_dict_list, document=document,

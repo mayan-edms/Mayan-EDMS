@@ -41,13 +41,11 @@ class WizardStepTags(WizardStep):
         return result
 
     @classmethod
-    def step_post_upload_process(cls, document, request_data=None):
-        f = furl(request_data)
-        f.args.getlist('tags')
-
+    def step_post_upload_process(cls, document, querystring=None):
+        furl_instance = furl(querystring)
         Tag = apps.get_model(app_label='tags', model_name='Tag')
 
-        for tag in Tag.objects.filter(pk__in=request_data.getlist('tags')):
+        for tag in Tag.objects.filter(pk__in=furl_instance.args.getlist('tags')):
             tag.documents.add(document)
 
 

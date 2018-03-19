@@ -147,12 +147,13 @@ class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestC
 
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            self.post(
+            response = self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
                     'document_type_id': self.document_type.pk,
-                }, follow=True
+                }
             )
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().metadata.first().value,

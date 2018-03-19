@@ -47,16 +47,18 @@ class WizardStep(object):
         return {}
 
     @classmethod
-    def post_upload_process(cls, document, request_data=None):
+    def post_upload_process(cls, document, querystring=None):
         for step in cls.get_all():
-            step.step_post_upload_process(document=document, request_data=request_data)
+            step.step_post_upload_process(
+                document=document, querystring=querystring
+            )
 
     @classmethod
     def register(cls, step):
         cls._registry[step.name] = step
 
     @classmethod
-    def step_post_upload_process(cls, document, request_data=None):
+    def step_post_upload_process(cls, document, querystring=None):
         pass
 
 
@@ -158,4 +160,5 @@ class DocumentCreateWizard(SessionWizardView):
                 urlencode(query_dict, doseq=True)
             ]
         )
+
         return HttpResponseRedirect(url)

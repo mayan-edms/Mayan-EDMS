@@ -101,22 +101,22 @@ class Source(models.Model):
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
                     kwargs.update({'label': force_text(compressed_file_child)})
-                    return self.upload_document(
+                    self.upload_document(
                         file_object=File(compressed_file_child), **kwargs
                     )
                     compressed_file_child.close()
 
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')
-                return self.upload_document(file_object=file_object, **kwargs)
+                self.upload_document(file_object=file_object, **kwargs)
         else:
-            return self.upload_document(file_object=file_object, **kwargs)
+            self.upload_document(file_object=file_object, **kwargs)
 
     def get_upload_file_object(self, form_data):
         pass
         # TODO: Should raise NotImplementedError?
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, request_data=None, user=None):
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, querystring=None, user=None):
         """
         Upload an individual document
         """
@@ -158,7 +158,7 @@ class Source(models.Model):
                 raise
             else:
                 WizardStep.post_upload_process(
-                    document=document, request_data=request_data
+                    document=document, querystring=querystring
                 )
                 return document
 

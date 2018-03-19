@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.utils.encoding import force_text
+from django.utils.encoding import force_text, uri_to_iri
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -248,7 +248,11 @@ class UploadInteractiveView(UploadBaseView):
                     expand=expand,
                     label=label,
                     language=forms['document_form'].cleaned_data.get('language'),
-                    request_data=self.request.GET,
+                    querystring=uri_to_iri(
+                        '?{}&{}'.format(
+                            self.request.GET.urlencode(), self.request.POST.urlencode()
+                        )
+                    ),
                     shared_uploaded_file_id=shared_uploaded_file.pk,
                     source_id=self.source.pk,
                     user_id=user_id,
