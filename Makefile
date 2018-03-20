@@ -43,14 +43,14 @@ help:
 	@echo "runserver_plus - Run the Django extension's development server."
 	@echo "shell_plus - Run the shell_plus command."
 
-	@echo "docker_services_on - Launch and initialize production-like services using Docker (Postgres and Redis)."
-	@echo "docker_services_off - Stop and delete the Docker production-like services."
-	@echo "docker_services_frontend - Launch a front end instance that uses the production-like services."
-	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
-	@echo "docker_service_mysql_on - Launch and initialize a MySQL Docker container."
-	@echo "docker_service_mysql_off - Stop and delete the MySQL Docker container."
-	@echo "docker_service_postgres_on - Launch and initialize a PostgreSQL Docker container."
-	@echo "docker_service_postgres_off - Stop and delete the PostgreSQL Docker container."
+	@echo "test_with_docker_services_on - Launch and initialize production-like services using Docker (Postgres and Redis)."
+	@echo "test_with_docker_services_off - Stop and delete the Docker production-like services."
+	@echo "test_with_docker_frontend - Launch a front end instance that uses the production-like services."
+	@echo "test_with_docker_worker - Launch a worker instance that uses the production-like services."
+	@echo "docker_mysql_on - Launch and initialize a MySQL Docker container."
+	@echo "docker_mysql_off - Stop and delete the MySQL Docker container."
+	@echo "docker_postgres_on - Launch and initialize a PostgreSQL Docker container."
+	@echo "docker_postgres_off - Stop and delete the PostgreSQL Docker container."
 
 	@echo "safety_check - Run a package safety check."
 
@@ -293,37 +293,37 @@ runserver_plus:
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
 
-docker_services_on:
+test_with_docker_services_on:
 	docker run -d --name redis -p 6379:6379 redis
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
-	sleep 2
+	sleep 4
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
-docker_services_off:
+test_with_docker_services_off:
 	docker stop postgres redis
 	docker rm postgres redis
 
-docker_services_frontend:
+test_with_docker_frontend:
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
-docker_services_worker:
+test_with_docker_worker:
 	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
 
-docker_service_mysql_on:
+docker_mysql_on:
 	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 
-docker_service_mysql_off:
+docker_mysql_off:
 	docker stop mysql
 	docker rm mysql
 
-docker_service_postgres_on:
+docker_postgres_on:
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
-docker_service_postgres_off:
+docker_postgres_off:
 	docker stop postgres
 	docker rm postgres
 
@@ -338,3 +338,17 @@ safety_check:
 find_gitignores:
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
+
+build:
+	docker rm -f mayan-edms-ng-build || true && \
+	docker run --rm --name mayan-edms-ng-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-alpine3.7 /bin/busybox sh -c "\
+	rm /host_source/dist -R || true && \
+	mkdir /host_source/dist || true && \
+	export LC_ALL=en_US.UTF-8 && \
+	cp -r /host_source/* . && \
+	apk update && \
+	apk add make && \
+	pip install -r requirements/build.txt && \
+	cp -r /host_home/.pypirc ~/.pypirc && \
+	make wheel && \
+	cp dist/* /host_source/dist/"
