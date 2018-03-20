@@ -1,5 +1,5 @@
-Next (2018-03-19)
-=================
+3.0 (2018-03-19)
+================
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
 - Update project to work with Django 1.11.11.
