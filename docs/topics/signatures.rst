@@ -8,6 +8,25 @@ uploaded, this signature is readily detected as part of the document
 inspection step. The status of the signature can be verified by accessing the
 signatures sections of a document.
 
+.. blockdiag::
+
+   blockdiag {
+      orientation = portrait
+      span_width = 240;
+
+      user [ shape = "actor" ];
+      key [ shape = flowchart.database, label = "Key" ];
+      document [ shape = "note", label = "Document" ];
+      document_signed [ label = "Signed\nDocument" ];
+
+
+      key -> user -> document -> document_signed;
+   }
+
+Signed documents are tamper-proof. That means that if any part of the document's
+file is edited (even just one character or one pixel), the document's
+signature becomes invalid alerting that an unathorized change has ocurred.
+
 Existing non signed documents can be signed in one of two ways:
 by downloading the document, signing it, and uploading the signed document
 as a new version of the existing one or by creating a detached signature for
@@ -21,6 +40,6 @@ keys no longer needed can also be deleted from this menu.
 
 Only `GNU Privacy Guard`_ signatures are support at the moment.
 
-Only version 1 of `GNU Privacy Guard`_ is supported for now.
+Only version 1 of `GNU Privacy Guard`_ is supported at the moment.
 
 .. _`GNU Privacy Guard`: www.gnupg.org/

@@ -16,7 +16,7 @@ Docker procedure
 
 For the complete set of installation, configuration, upgrade, and backup
 instructions visit the Mayan EDMS Docker Hub page at:
-https://hub.docker.com/r/mayanedms/mayanedms/
+https://hub.docker.com/r/mayanedmsng/mayanedmsng/
 
 
 .. _Docker: https://www.docker.com/

@@ -58,13 +58,14 @@ Specification
 
 Changes needed:
 
-1- Python based javascript package manager. Alternatively a Python wrapper
+1. Python based javascript package manager. Alternatively a Python wrapper
    for a javascript package manager could be used.
-2- Package manifest for the javascript libraries used.
-3- Installation pipeline to install the javascript libraries during the
+2. Package manifest for the javascript libraries used.
+3. Installation pipeline to install the javascript libraries during the
    installation and setup of the project.
 
 References:
+
 - https://github.com/JDeuce/powser
 - https://github.com/javrasya/version-manager
 - https://github.com/inveniosoftware-attic/setuptools-bower

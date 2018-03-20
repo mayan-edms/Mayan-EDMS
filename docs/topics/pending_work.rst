@@ -279,7 +279,7 @@ Other
   relationship between the documents has to be designed.
 - Manually linking documents.
 - Migrate settings/base.py to Django's 1.11 format.
-- Rename model methods to use 'get_' or 'do_'
+- Rename model methods to use ``get_`` or ``do_``
 - Hunt TODO
 - Hunt FIXME
 - Convert SETTING_GPG_BACKEND into a setting option similar to converter and converter options.

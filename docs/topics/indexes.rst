@@ -23,6 +23,9 @@ Example:
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
+      span_width = 30;
+
       index [ label = 'Product sheets per year', width=180 ];
       root [ label = 'Root (Has document links? No)', width=450];
       level_2 [ label = '{{ document.metadata_value_of.product_year }} (Has document links? Yes)', width=450];
@@ -50,6 +53,8 @@ that will be generate based on the tree template would be as follows:
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
+
       index [ label = 'Product sheets per year', width=180 ];
       year_1 [ label = '2001', width = 60 ];
       year_2 [ label = '2002', width = 60 ];
@@ -88,6 +93,21 @@ behave like any other filesystem directory and can even be further shared
 via the network with network file system software like
 `Samba <https://www.samba.org/>`_ or
 `NFS <https://en.wikipedia.org/wiki/Network_File_System>`_.
+
+.. blockdiag::
+
+    blockdiag {
+        orientation = portrait
+        span_width = 200;
+
+        index [ label = 'Product sheets per year', width=180 ];
+        block_device [ height = 100, label = "Block device\n(Hard drive)", shape = flowchart.database ];
+        network [ label = "Network", shape = cloud ];
+        user [ label = "Users", shape = actor ];
+
+        index -> block_device [ label = "mirroring", fontsize = 8 ];
+        block_device -> network -> user;
+   }
 
 Indexes and mirrored indexes are Read Only as they are generated as a result of
 prior activities like document uploads, metadata changes.

@@ -57,11 +57,11 @@ Specification
 
 Changes needed:
 
-1- Data migration to convert existing roles to groups.
-2- Prepend or append an identifier to the migrated roles.
-3- Intermediate model to map permissions to a group. This will substitute
+1. Data migration to convert existing roles to groups.
+2. Prepend or append an identifier to the migrated roles.
+3. Intermediate model to map permissions to a group. This will substitute
    the Role model's permissions many to many field.
-4- Update the ``AccessControlList`` models roles field to point to the group
+4. Update the ``AccessControlList`` models roles field to point to the group
    models.
-5- Update the role checks in the ``check_access`` and ``filter_by_access``
+5. Update the role checks in the ``check_access`` and ``filter_by_access``
    ``AccessControlList`` model manager methods.

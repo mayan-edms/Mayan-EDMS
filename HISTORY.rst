@@ -1,4 +1,4 @@
-Next (2018-XX-XX)
+Next (2018-03-19)
 =================
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
@@ -54,6 +54,10 @@ Next (2018-XX-XX)
 - Add new WizardStep class to decouple the wizard step configuration.
 - Add support for deregister upload wizard steps.
 - Add wizard step to insert the document being uploaded to a cabinet.
+- Fix documentation formatting.
+- Add upload wizard step chapte.
+- Improve and add additional diagrams.
+- Change documenation theme to rtd.
 
 2.8 (2018-02-27)
 ================

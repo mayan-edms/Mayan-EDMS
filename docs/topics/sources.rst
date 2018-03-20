@@ -31,6 +31,27 @@ The current document sources supported are:
   when the quality of the scans is irrelevant or when they will be known
   to be of good quality, such as when receiving e-faxes as PDFs.
 
+.. blockdiag::
+
+    blockdiag {
+        mayan [shape = "roundedbox", label = "Mayan EDMS" ];
+        email_pop3 [shape = "mail", label = "e-mail (POP3)"];
+        email_imap [shape = "mail", label = "e-mail (IMAP)"];
+        staging [shape = "flowchart.database", label = "Staging folder" ];
+        watch [shape = "flowchart.database", label = "Watch folder" ];
+        automatic [shape = "box", label = "Automatic\n(via schedule)" ];
+        manual [shape = "actor", height=60, label = "Manual\n(user interaction)" ];
+        web [shape = "note", label = "Webform upload" ];
+
+        automatic -> mayan;
+        email_pop3 -> automatic;
+        email_imap -> automatic;
+        watch -> automatic;
+        manual -> mayan;
+        staging -> manual;
+        web -> manual;
+    }
+
 Document source can be configure to allow document bundles to uploaded as
 compressed files which are decompressed and their content uploaded as separate
 documents. This feature is useful when migrating from another document

@@ -1,5 +1,14 @@
-Welcome to Mayan EDMS!
-======================
+Welcome to Mayan EDMS NG!
+=========================
+
+Mayan EDMS NG is a modern fork of Mayan EDMS focused on stability,
+perfomance and new features.
+
+.. image:: /_static/mayan-pyramid.svg
+  :alt: Icons made by Freepik (http://www.freepik.com) from www.flaticon.com is licensed by CC 3.0 BY (http://creativecommons.org/licenses/by/3.0/)
+  :align: center
+  :width: 30%
+
 
 Mayan EDMS is a `Free Open Source`_ `Electronic Document Management System`_,
 coded in the Python language using the Django_ web application framework and
@@ -26,6 +35,7 @@ repository for electronic documents.
     FAQ <topics/faq>
     Contact <topics/contact>
     MERCs <mercs/index>
+    Pending tasks <topics/pending_tasks>
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/

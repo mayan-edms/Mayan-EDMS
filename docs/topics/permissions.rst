@@ -10,6 +10,11 @@ that permission can exercise it throughout the entire system.
 .. blockdiag::
 
    blockdiag {
+      orientation = portrait
+      default_shape = roundedbox
+      span_width = 240;
+      span_height = 100;
+
       user [ label = 'Users' ];
       group [ label = 'Groups' ];
       role [ label = 'Roles' ];

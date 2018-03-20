@@ -1,0 +1,439 @@
+================================
+Mayan EDMS NG v3.0 release notes
+================================
+
+Released: March 19, 2018
+
+What's new
+==========
+
+Turning Mayan EDMS into a single page app
+-----------------------------------------
+Historically, Mayan EDMS has steered away from adding too much Javascript
+in its code. Roberto, the main developer, often explains his rationale
+for this decision. His goal has been to maintain a robust, backend-based
+page rendering method that will be as future-proof as possible.
+This approach comes at the cost of some page loading speed, and reduced
+user interface interactivity.
+
+The Javascript ecosystem is an untamed jungle of competing “standards”.
+Between JQuery, Angular, React, Ember, CoffeeScript, ES2015, ES2017,
+Babel, Grunt, Gulp, Bower, Webpack, Vue, Webpack, Rollup, Parcel,
+among many others, is easy to see why that approach was the correct
+one at the time. Luckily things have improved thanks to HTML5 and CCS3.
+The browser can now do many things that often required convoluted
+Javascript code to achieve.
+
+One of the most common complains about the user interface is that it
+is slow, heavy, requires users to move around too much. That it
+requires “too many clicks” to achieve things.
+
+Single Page Applications (SPAs) rewrite the current page dynamically
+rather than loading the entire page on each click of the mouse. This
+makes the web application feel and behave more like a desktop
+application. Because the majority of the styling and Javascript code
+is loaded only once, there is also the added benefit of less data down
+the wire. Thus the application becomes lighter and provides a faster
+response time to user events. Because the style is loaded and
+interpreted at the beginning, the browser is also able to apply it to
+the new content faster.
+
+In order to strike a balance with Roberto’s backend heavy philosophy,
+we stuck to using just HTML5 and jQuery. Aside from two additional
+jQuery libraries, there are no extra framework dependencies. With the
+conversion to an SPA, many other petitions for user interface
+improvements are now possible. We will work on these once the community
+confirms that all the user interface changes made to create the SPA are
+working as expected.
+
+
+Upgrading to Django 1.11
+------------------------
+The move to Django 1.11 proved to be a real challenge. Even though
+Django 1.11 is a minor release, it breaks compatibility and interfaces
+in several key areas. Among these were templates and form widgets.
+
+Mayan EDMS uses a complex template, form and widget system. The system
+mimics object-oriented concepts like inheritance at the rendering stage.
+This allows the more than 300 views to be serviced with just a handful
+of forms classes and base templates. Testing and auditing all the views
+and forms after the upgrade was a lot of work. If any member of the
+Django project is reading this, please adopt stricter version numbering
+convention, something like Semantic Versioning.
+
+Along with the upgrade to Django 1.11, we fixed many deprecations
+warning in preparation for an eventual upgrade to Django 2.0.
+
+
+Notification improvements
+-------------------------
+In version 2.8 we introduced event notifications. These work by allowing
+users to subscribe to a particular event like Document Uploads or to an
+event of a particular document like when an invoice is edited. If
+these events occur, the user gets a reminder next to the bell icon in
+the main menu bar. This feature had one important limitation. The
+notification reminder would only update if the main page updated. That
+meant that if the user didn’t interact with the user interface they
+would not get a notification reminder.
+
+We implemented a simple mechanism that checks for notifications
+periodically without user intervention. We avoided the use of webworkers,
+websockets and push notifications. The result is almost instant
+notifications without user interaction and without adding any extra
+dependencies.
+
+
+Notification improvements
+-------------------------
+In version 2.8 we introduced event notifications. These work by allowing
+users to subscribe to a particular event like Document Uploads or to an
+event of a particular document like when an invoice is edited. If these
+events occur, the user gets a reminder next to the bell icon in the main
+menu bar. This feature had one important limitation. The notification
+reminder would only update if the main page updated. That meant that if
+the user didn’t interact with the user interface they would not get a
+notification reminder.
+
+We implemented a simple mechanism that checks for notifications
+periodically without user intervention. We avoided the use of webworkers,
+websockets and push notifications. The result is almost instant
+notifications without user interaction and without adding any extra
+dependencies.
+
+
+Migration squashing
+-------------------
+Database base migrations are a must to ensure your data remains coherent
+after each upgrade. They need to be committed sequentially to simulate
+the evolution of the database structures over time. This is true even
+for new installations with no existing data. As Mayan EDMS matures and
+adds features it also adds migrations. Each of these migration add up
+to the amount of times it takes to install Mayan EDMS.
+
+Django recently added support for merging migrations. Because migrations
+are sometimes interdependencies between each other, this is a delicate
+procedure. Instead of getting wild with merges, we used the feature in
+moderation. We merged the migrations that have proven to be stable over
+the course of months or years. Additionally, these merged or “squashed”
+migrations are only used for new installations. Any upgrade of an
+existing installation will use the normal migrations. After some time,
+if not issues are reported with the merged migrations, the individual
+migrations will be removed and the merged migrations will take their place.
+
+These are the apps for which migrations were merged:
+
+- acls (ACLs): 1 and 2
+- checkouts (Checkouts): 1 and 2
+- common (Not shown in UI): 1 to 8
+- converter (Not shown in UI): from 1 to 12
+- django_gpg (Keys): from 1 to 6
+- document_indexing (Indexing): from 1 to 5
+- document_parsing (Parsing, “Content”): 1 and 2
+- document_signatures (Signatures): from 1 to 6
+- document_states (Workflows): 1 and 2
+- dynamic_search (Search): from 1 to 3
+- events (Event): from 1 to 4
+- linking (Smart links): from 1 to 5
+- lock_manager (Not shown in UI): 1 and 2
+- mailer (Mailing): from 1 to 5
+- metadata (Metadata): from 1 to 8
+- motd (Message of the day): from 1 to 5
+- permissions (Permissions): from 1 to 3
+- sources (Sources): from 1 to 16
+
+
+Dependencies upgrades
+---------------------
+Most of the requirements, dependencies and libraries were upgraded to
+their latest release.
+
+- Pillow: 5.0.0
+- django-activity-stream: 0.6.5
+- django-compressor: 2.2
+- django-cors-headers: 2.2.0
+- django-formtools: 2.1
+- django-qsstats-magic: 1.0.0
+- django-stronghold: 0.3.0
+- django-suit: 0.2.26
+- furl: 1.0.1
+- graphviz: 0.8.2
+- pyocr: 0.5.1
+- python-dateutil: 2.6.1
+- python-magic: 0.4.15
+- pytz: 2018.3
+- sh: 1.12.14
+- rest_framework_swagger replaced with drf-yasg: 1.5.0
+- FancyBox was upgraded to version 3, Font Awesome to version 5, jQuery to version 3.3.1. ajaxForm version 4.2.2, URI.js 1.19.1 and pace 0.7.8 were added as part of the conversion to single page app.
+
+
+Search syntax
+-------------
+Searching without using a specialized search database is difficult.
+Most software just take the lazy route and force the user to install a
+dedicated search engine. Early on we noticed Mayan’s design called for
+avoiding a separate search engine at the cost of some missing search
+syntax. The OR and the negative term support is our first attempt at
+adding special syntax to Mayan’s search code. If we get good feedback,
+we plan to add more.
+
+By default now, search terms are routed to an “AND” query. That means
+that a search for:
+
+``Tag1 Tag2``
+
+will only return documents with both tags attached. To offer the
+opposite choice we added an “OR” syntax. Searching for:
+
+``Tag1 OR Tag2``
+
+will return documents with either tag attached.
+
+We also added support for literals terms.
+
+Searching for:
+
+``blue car``
+
+will return documents with the words “blue” and “car”, even if they are
+not together. That means getting documents with the phrases “blue sky”
+and “slow car”. To search for exact terms enclose them in quotes:
+
+``“blue car”``
+
+This will return only documents with the exact phrase “blue car”.
+
+
+Running multiple instances of Mayan EDMS NG
+-------------------------------------------
+If you've ever tried running two instances of Mayan EDMS NG, you would
+have noticed that they both try to create a lock file in the /tmp
+directory with the same name. Only the first instance will be able to run.
+
+The lock filename needs to be unique to each instance, yet predictable
+so that the workers of an instance can also access the same lock file.
+
+We solved this issues by using a hexadecimal hash representation of the
+installation’s unique SECRET_KEY setting. The use of a hash makes
+reversing the value in order to obtain the SECRET_KEY impossible for
+all practical purposes.
+
+
+Display resolution settings
+---------------------------
+During the template work required to upgrade the version of Django, we
+noticed that display sizes (display, preview, thumbnail) were specified
+as a string that included the horizontal and the vertical resolution
+separated by the character “x”. Using an “x” character to separate
+resolution elements is not standard and didn't felt as well planned as
+the rest of the project. The converter in Mayan EDMS NG also allows
+specifying only the horizontal resolution. This design created some
+ambiguities in the code. We decided to split the settings for specifying
+resolutions into two settings for each size. One setting for
+horizontal resolution and another for vertical resolution.
+
+The settings are now:
+
+``DOCUMENTS_DISPLAY_WIDTH``, ``DOCUMENTS_DISPLAY_HEIGHT``, ``DOCUMENTS_PREVIEW_WIDTH``,
+``DOCUMENTS_PREVIEW_HEIGHT``, ``DOCUMENTS_PRINT_WIDTH``, ``DOCUMENTS_PRINT_HEIGHT``,
+``DOCUMENTS_THUMBNAIL_WIDTH``, ``DOCUMENTS_THUMBNAIL_HEIGHT``
+
+
+Dynamic upload wizard steps
+---------------------------
+The steps needed to upgrade a document using form-tools' SessionWizard
+were hardcoded in the source app. This made it very difficult to add or remove
+wizard steps.
+
+The steps of the wizard are now defined by a new class called
+``sources.wizard.WizardStep``. The existing steps to select a document type,
+enter metadata and tag the document, have been converted to function as
+WizardSteps subclasses. The converted steps now live in
+
+``sources.wizards.WizardStepDocumentType``, ``tag.wizard_steps.WizardStepTags``,
+and ``metadata.wizard_steps.WizardStepMetadata``.
+
+The steps need to define the following methods:
+
+- ``done``: This method is execute when the wizard finished the last step
+  an enter the step where the actual file are uploaded. This steps is used
+  to encode form data into the URL query string that will be passed to the
+  document upload view for each file uploaded.
+
+- ``condition``: This method is used to display the step conditionally.
+  If this method return True it will be displayed during the upload wizard
+  execution. To skip the step, return False or None.
+
+- ``get_form_initial``: This method is used to return the initial data
+  for the step form. Use this method to set up initial values for the step's
+  form fields.
+
+- ``step_post_upload_process``: This method will be executed once the
+  document finishes uploading. Use this method to process the information
+  encoded in the URL querystring by the step's `done`` method.
+
+Once the ``WizardStep`` subclass is defined, it needs to be registered. This
+is done by calling the ``.register`` method of the ``WizardStep`` class with
+the subclass as the argument. Example::
+
+    WizardStep.register(WizardStepMetadata)
+
+This statement must be located after the subclass definition. Finally,
+the module defining the wizard step must be imported so that it is loaded
+with the rest of the code and enabled. The best place to do this is in the
+``.ready`` method of the apps' ``apps.py`` module. Example::
+
+    class TagsApp(MayanAppConfig):
+        has_rest_api = True
+        has_tests = True
+        name = 'tags'
+        verbose_name = _('Tags')
+
+        def ready(self):
+            super(TagsApp, self).ready()
+            from actstream import registry
+
+            from .wizard_steps import WizardStepTags  # NOQA
+
+The WizardStep class also allows for unregistering existing steps. This
+is accomplished by calling the ``.deregister`` method of the ``WizardStep``
+class and passing the subclass as the argument. This method should
+also be called inside the ``.ready`` method of an apps' ``apps.py``
+module. Example::
+
+
+    class TagsApp(MayanAppConfig):
+        has_rest_api = True
+        has_tests = True
+        name = 'tags'
+        verbose_name = _('Tags')
+
+        def ready(self):
+            super(TagsApp, self).ready()
+            from actstream import registry
+
+            from metadata.wizard_steps import WizardStepMetadata  # NOQA
+            from sources.wizards import WizardStep  # NOQA
+            from .wizard_steps import WizardStepTags  # NOQA
+
+            WizardStep.deregister(WizardStepTags)
+
+
+This will cause the tags assigment step to not be assigned to the upload
+wizard anymore.
+
+
+Repository location
+-------------------
+The code repository for Mayan EDMS NG now lives at:
+https://gitlab.com/Mayan-EDMS-NG/mayan-edms-ng
+
+A GitLab group was also created and all projects will now live under
+that unit.
+
+
+New upload step
+---------------
+Using the new ``WizardStep`` class a new upload wizard step was added
+to assign documents being uploaded to any number of cabinets while
+being uploaded. This step was been assigned number 4 in the order of
+step for uploading a file.
+
+
+Other changes worth mentioning
+------------------------------
+- Fix permission filtering when performing document page searching
+- base.js was splitted into mayan_app.js, mayan_image.js, and partial_navigation.js.
+- Cabinet detail view pagination was fixed.
+- Improve permission handling in the workflow app.
+- The checkedout detail view permission is now required for the checked out document detail API view.
+- Add missing services for the checkout API.
+- Fix existing checkout APIs.
+- Update API views and serializers for the latest Django REST framework version.
+- Update to the latest version the packages for building, development, documentation and testing.
+- Add statistics script to produce a report of the views, APIs and test for each app.
+- Merge base64 filename patch from Cornelius Ludmann.
+- SearchModel return interface changed. The class no longer returns the result_set value. Use the queryset returned instead.
+- Remove the unused scrollable_content internal feature.
+- Remove unused animate.css package.
+- Add the MERC specifying javascript library usage.
+- Documents without at least a version are not scanned for duplicates.
+- Convert document thumbnails, preview, image preview and staging files to template base widgets.
+- Unify all document widgets.
+- Printed pages are now full width.
+- Move the invalid document markup to a separate HTML template.
+- Move transfomations to their own module.
+- Split documents.tests.test_views into:
+
+  - base.py
+  - test_deleted_document_views.py
+  - test_document_page_views.py
+  - test_document_type_views.py
+  - test_document_version_views.py
+  - test_document_views.py
+  - test_duplicated_document_views.py
+
+- Sort smart links by label.
+- Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
+- Removed redundant permissions checks.
+
+
+Removals
+--------
+* None
+
+
+Upgrading from a previous version
+---------------------------------
+
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install mayan-edms-ng==3.0
+
+the requirements will also be updated automatically.
+
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
