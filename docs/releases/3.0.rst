@@ -375,7 +375,11 @@ Other changes worth mentioning
 - Sort smart links by label.
 - Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
 - Removed redundant permissions checks.
-
+- Total test count increased to 753
+- Fix documentation formatting.
+- Add upload wizard step documentation chapter.
+- Improve and add additional diagrams.
+- Change documenation theme to rtd.
 
 Removals
 --------
