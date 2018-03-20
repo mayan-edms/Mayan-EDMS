@@ -1,5 +1,3 @@
-
-
 Code statistics
 ---------------
 
@@ -314,7 +312,7 @@ App name: dynamic_search
 
   Tests
     module: mayan/apps/dynamic_search/tests/test_models.py
-      tests: 2
+      tests: 4
     module: mayan/apps/dynamic_search/tests/test_api.py
       tests: 3
     module: mayan/apps/dynamic_search/tests/test_views.py
@@ -421,6 +419,8 @@ App name: metadata
   Tests
     module: mayan/apps/metadata/tests/test_models.py
       tests: 14
+    module: mayan/apps/metadata/tests/test_wizard_steps.py
+      tests: 1
     module: mayan/apps/metadata/tests/test_api.py
       tests: 35
     module: mayan/apps/metadata/tests/test_views.py
@@ -575,7 +575,7 @@ App name: sources
     module: mayan/apps/sources/tests/test_classes.py
       tests: 1
     module: mayan/apps/sources/tests/test_views.py
-      tests: 16
+      tests: 15
 
 
 App name: storage
@@ -607,6 +607,8 @@ App name: tags
       tests: 1
     module: mayan/apps/tags/tests/test_actions.py
       tests: 2
+    module: mayan/apps/tags/tests/test_wizard_steps.py
+      tests: 1
     module: mayan/apps/tags/tests/test_api.py
       tests: 28
     module: mayan/apps/tags/tests/test_views.py
@@ -647,7 +649,7 @@ App name: user_management
       tests: 10
 
 Totals:
-  Tests: 751
+  Tests: 753
   Function based API views: 0
   Function based views: 8
   Apps: 34
