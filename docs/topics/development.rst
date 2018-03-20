@@ -418,26 +418,30 @@ Release checklist
 5. Update changelog.
 6. Update requirements version in `setup.py`
 7. Bump version in `mayan/__init__.py`
-8. Build source package and test::
+8. Check README.rst format with::
+   
+    $ python setup.py check -r -s
+    
+9. Build source package and test::
 
     $ make test_sdist_via_docker_ubuntu
 
-9. Build wheel package and test::
+10. Build wheel package and test::
 
     $ make test_whell_via_docker_ubuntu
 
-10. Tag version::
+11. Tag version::
 
     $ git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-11. Push tag upstream::
+12. Push tag upstream::
 
     $ git push --tags
 
-12. Build and upload a test release::
+13. Build and upload a test release::
 
     $ make release_test_via_docker_ubuntu
 
-13. Build and upload a final release::
+14. Build and upload a final release::
 
     $ make release_via_docker_ubuntu
