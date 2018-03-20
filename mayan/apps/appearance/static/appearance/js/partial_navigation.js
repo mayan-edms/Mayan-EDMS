@@ -152,6 +152,7 @@ PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
       } else {
           $('#ajax-content').html(jqXHR.responseText);
       }
+    }
 }
 
 PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
