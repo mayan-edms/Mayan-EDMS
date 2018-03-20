@@ -170,7 +170,8 @@
             {# Transfer variable from Django to javascript #}
             var initialURL = '{% url home_view %}';
             Dropzone.autoDiscover = false;
-        </script>
+	    var djangoDEBUG = {% if debug %}true{% else %}false{% endif %};
+	</script>
 
         <script src="{% static 'appearance/js/base.js' %}" type="text/javascript"></script>
         {% endcompress %}

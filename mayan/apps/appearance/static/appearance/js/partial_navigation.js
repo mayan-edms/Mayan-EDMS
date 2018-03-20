@@ -143,12 +143,15 @@ PartialNavigation.prototype.processAjaxRequestError = function (jqXHR) {
      * user.
      */
 
-    if (jqXHR.status == 0) {
-        $('#modal-server-error .modal-body').html($('#template-error').html());
-        $('#modal-server-error').modal('show')
+    if (djangoDEBUG) {
+        $('#ajax-content').html('<pre class="text-primary" style="background-color:#ffe7ae"><code>' + jqXHR.responseText + '</code></pre>');
     } else {
-        $('#ajax-content').html(jqXHR.responseText);
-    }
+      if (jqXHR.status == 0) {
+          $('#modal-server-error .modal-body').html($('#template-error').html());
+          $('#modal-server-error').modal('show')
+      } else {
+          $('#ajax-content').html(jqXHR.responseText);
+      }
 }
 
 PartialNavigation.prototype.setLocation = function (newLocation, pushState) {
