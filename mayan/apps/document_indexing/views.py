@@ -212,13 +212,16 @@ class TemplateNodeEditView(SingleObjectEditView):
 
 class IndexListView(SingleObjectListView):
     object_permission = permission_document_indexing_view
-    queryset = IndexInstance.objects.filter(enabled=True)
 
     def get_extra_context(self):
         return {
             'hide_links': True,
             'title': _('Indexes'),
         }
+
+    def get_object_list(self):
+        queryset = IndexInstance.objects.filter(enabled=True)
+        return queryset.filter(node_templates__index_instance_nodes__isnull=False).distinct()
 
 
 class IndexInstanceNodeView(DocumentListView):
