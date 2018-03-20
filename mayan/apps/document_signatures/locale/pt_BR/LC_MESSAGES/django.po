@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-15 06:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -27,11 +28,11 @@ msgstr "Assinaturas de documentos"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:95 models.py:47
+#: apps.py:95 models.py:46
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: apps.py:99 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "ID da assinatura"
 
@@ -127,55 +128,55 @@ msgstr "Assinatura destacada"
 msgid "Sign embedded"
 msgstr "Assinatura integrada"
 
-#: models.py:41
+#: models.py:40
 msgid "Document version"
 msgstr "Versão do Documento"
 
-#: models.py:45
+#: models.py:44
 msgid "Date signed"
 msgstr "Data da assinatura"
 
-#: models.py:55
+#: models.py:54
 msgid "Public key fingerprint"
 msgstr "Impressão digital da chave pública"
 
-#: models.py:61
+#: models.py:60
 msgid "Document version signature"
 msgstr "Versão do documento da assinatura "
 
-#: models.py:62
+#: models.py:61
 msgid "Document version signatures"
 msgstr "Versão do documento das  assinaturas"
 
-#: models.py:81
+#: models.py:80
 msgid "Detached"
 msgstr "Destacado"
 
-#: models.py:83
+#: models.py:82
 msgid "Embedded"
 msgstr "Embutido"
 
-#: models.py:98
+#: models.py:97
 msgid "Document version embedded signature"
 msgstr "Versão do documento da assinatura integrada"
 
-#: models.py:99
+#: models.py:98
 msgid "Document version embedded signatures"
 msgstr "Versão do documento das assinaturas integradas"
 
-#: models.py:132
+#: models.py:131
 msgid "Signature file"
 msgstr "Arquivo de assinatura"
 
-#: models.py:136
+#: models.py:138
 msgid "Document version detached signature"
 msgstr "Versão do documento da assinatura destacada"
 
-#: models.py:137
+#: models.py:139
 msgid "Document version detached signatures"
 msgstr "Versão do documento das assinaturas destacadas"
 
-#: models.py:140
+#: models.py:142
 msgid "signature"
 msgstr "assinatura"
 
@@ -267,7 +268,8 @@ msgstr "Carregar a assinatura destacada para a versão do documento: %s"
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
+msgstr ""
+"Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
 #: views.py:346
 msgid "Verify all document for signatures?"

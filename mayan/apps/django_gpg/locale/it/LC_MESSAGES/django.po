@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
@@ -9,45 +9,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2016-09-24 10:33+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:47 apps.py:50 forms.py:17
+#: apps.py:46 apps.py:49 forms.py:17
 msgid "Key ID"
 msgstr "chiave ID"
 
-#: apps.py:48 apps.py:61 forms.py:19 models.py:52
+#: apps.py:47 apps.py:60 forms.py:19 models.py:52
 msgid "User ID"
 msgstr "User ID"
 
-#: apps.py:51 forms.py:34 models.py:55
+#: apps.py:50 forms.py:34 models.py:55
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:53 forms.py:23 models.py:36
+#: apps.py:52 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "Data di creazione"
 
-#: apps.py:56 forms.py:27 models.py:40
+#: apps.py:55 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "Data scadenza"
 
-#: apps.py:57
+#: apps.py:56
 msgid "No expiration"
 msgstr "Nessuna scadenza"
 
-#: apps.py:59 forms.py:32 models.py:47
+#: apps.py:58 forms.py:32 models.py:47
 msgid "Length"
 msgstr "Lunghezza"
 
@@ -141,7 +142,9 @@ msgstr "Errore di firma"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la verifica"
+msgstr ""
+"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
+"verifica"
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -167,11 +170,11 @@ msgstr "Chiave"
 msgid "Keys"
 msgstr "Chiavi"
 
-#: models.py:68
+#: models.py:71
 msgid "Invalid key data"
 msgstr "Dati chiave non valida"
 
-#: models.py:71
+#: models.py:74
 msgid "Key already exists."
 msgstr "La chiave esiste già."
 
@@ -205,7 +208,9 @@ msgstr "Firme"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Home directory utilizzata per memorizzare le chiavi così come i file di configurazione."
+msgstr ""
+"Home directory utilizzata per memorizzare le chiavi così come i file di "
+"configurazione."
 
 #: settings.py:21
 msgid "Path to the GPG binary."

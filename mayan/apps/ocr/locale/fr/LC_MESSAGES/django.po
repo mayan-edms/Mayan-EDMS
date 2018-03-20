@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
@@ -12,38 +12,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-25 00:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 apps.py:127 apps.py:131 links.py:14 permissions.py:7 queues.py:7
-#: settings.py:7
+#: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
+#: queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR - Reconnaissance de caractères"
 
-#: apps.py:102
+#: apps.py:100
 msgid "Document"
 msgstr "Document"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Added"
 msgstr "Ajouté"
 
-#: apps.py:110 models.py:57
+#: apps.py:108 models.py:57
 msgid "Result"
 msgstr "Résultat"
 
-#: events.py:9
+#: events.py:10
 msgid "Document version submitted for OCR"
 msgstr ""
 
-#: events.py:13
+#: events.py:14
 msgid "Document version OCR finished"
 msgstr ""
 
@@ -82,7 +83,8 @@ msgstr "Type de document"
 
 #: models.py:22
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Ajouter automatiquement les nouveaux documents créés à la file d'attente OCR."
+msgstr ""
+"Ajouter automatiquement les nouveaux documents créés à la file d'attente OCR."
 
 #: models.py:26
 msgid "Document type settings"
@@ -100,11 +102,11 @@ msgstr "Pages du document"
 msgid "Content"
 msgstr "Contenu"
 
-#: models.py:44
+#: models.py:41
 msgid "Document page OCR content"
 msgstr ""
 
-#: models.py:45
+#: models.py:42
 msgid "Document pages OCR contents"
 msgstr ""
 
@@ -116,11 +118,11 @@ msgstr "Version du document"
 msgid "Date time submitted"
 msgstr "Date et heure de soumission"
 
-#: models.py:64
+#: models.py:61
 msgid "Document version OCR error"
 msgstr ""
 
-#: models.py:65
+#: models.py:62
 msgid "Document version OCR errors"
 msgstr ""
 
@@ -142,9 +144,10 @@ msgstr "ROC version du document"
 
 #: settings.py:12
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
-msgstr "Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à partir des fichiers PDF."
+"File path to poppler's pdftotext program used to extract text from PDF files."
+msgstr ""
+"Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à "
+"partir des fichiers PDF."
 
 #: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
@@ -179,8 +182,11 @@ msgstr "Soumettre tous les documents d'un type à l'OCR"
 
 #: views.py:107
 #, python-format
-msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr "%(count)d documents de type \"%(document_type)s\" ajoutés à la file d'attente OCR"
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr ""
+"%(count)d documents de type \"%(document_type)s\" ajoutés à la file "
+"d'attente OCR"
 
 #: views.py:130
 #, python-format

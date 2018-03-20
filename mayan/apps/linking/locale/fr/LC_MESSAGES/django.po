@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -10,33 +10,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-07-24 20:01+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
 msgid "Linking"
 msgstr "Liaison"
 
-#: apps.py:58 models.py:19
+#: apps.py:56 models.py:20
 msgid "Label"
 msgstr "Libellé"
 
-#: apps.py:65 models.py:26
+#: apps.py:63 models.py:28
 msgid "Dynamic label"
 msgstr "Etiquette dynamique"
 
-#: apps.py:69 apps.py:74 models.py:28 models.py:130
+#: apps.py:67 apps.py:72 models.py:30 models.py:133
 msgid "Enabled"
 msgstr "Activé"
 
-#: forms.py:36 models.py:115
+#: forms.py:36 models.py:118
 msgid "Foreign document attribute"
 msgstr "Attribut étranger du document "
 
@@ -60,7 +61,7 @@ msgstr "Conditions"
 msgid "Create new smart link"
 msgstr "Céer un nouveau lien intelligent"
 
-#: links.py:39 models.py:30
+#: links.py:39 models.py:32
 msgid "Document types"
 msgstr "Types de document"
 
@@ -68,7 +69,7 @@ msgstr "Types de document"
 msgid "Documents"
 msgstr "Documents"
 
-#: links.py:54 links.py:58 links.py:63 models.py:94 permissions.py:7
+#: links.py:54 links.py:58 links.py:63 models.py:40 permissions.py:7
 #: views.py:132
 msgid "Smart links"
 msgstr "Liens intelligents"
@@ -141,57 +142,61 @@ msgstr "est une expression régulière"
 msgid "is in regular expression (case insensitive)"
 msgstr "est une expression régulière (insensible à la casse)"
 
-#: models.py:22 models.py:120
+#: models.py:24 models.py:123
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
-msgstr "Indiquez un modèle à restituer. Utilise le langage de rendu de Django par défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La variable de contexte {{ document }} est disponible."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
+msgstr ""
+"Indiquez un modèle à restituer. Utilise le langage de rendu de Django par "
+"défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La "
+"variable de contexte {{ document }} est disponible."
 
-#: models.py:46
+#: models.py:39 models.py:109
+msgid "Smart link"
+msgstr "Lien intelligent"
+
+#: models.py:53
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Erreur de génération de l'étiquette dynamique : %s"
 
-#: models.py:57
+#: models.py:64
 msgid "This smart link is not allowed for the selected document's type."
-msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr ""
+"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
-#: models.py:93 models.py:106
-msgid "Smart link"
-msgstr "Lien intelligent"
-
-#: models.py:110
+#: models.py:113
 msgid "The inclusion is ignored for the first item."
 msgstr "Ignorer l'inclusion sur le premier élément"
 
-#: models.py:114
+#: models.py:117
 msgid "This represents the metadata of all other documents."
 msgstr "Ceci représente la méta-donnée de tous les autres documents."
 
-#: models.py:124
+#: models.py:127
 msgid "Expression"
 msgstr "Expression"
 
-#: models.py:127
+#: models.py:130
 msgid "Inverts the logic of the operator."
 msgstr "Inverser l'opérateur logique"
 
-#: models.py:128
+#: models.py:131
 msgid "Negated"
 msgstr "Négation"
 
-#: models.py:135
-msgid "not"
-msgstr "ne pas"
-
-#: models.py:140
+#: models.py:136
 msgid "Link condition"
 msgstr "Condition sur le lien"
 
-#: models.py:141
+#: models.py:137
 msgid "Link conditions"
 msgstr "Conditions sur le lien"
+
+#: models.py:142
+msgid "not"
+msgstr "ne pas"
 
 #: permissions.py:10
 msgid "View existing smart links"
@@ -213,7 +218,9 @@ msgstr "Modifier les liens intelligents"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de type de document "
+"auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:139
 #, python-format
@@ -232,8 +239,11 @@ msgstr "Lien inetlligent du document: %s"
 
 #: views.py:71
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
+"\"%(document)s\""
 
 #: views.py:90
 msgid "Available document types"

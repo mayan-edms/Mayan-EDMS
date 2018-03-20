@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic, 2012
@@ -13,41 +13,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-27 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:77 permissions_runtime.py:7 settings.py:11
+#: apps.py:80 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
-#: apps.py:82
+#: apps.py:85
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: apps.py:94 models.py:24
-msgid "Namespace"
-msgstr "Przestrzeń nazw"
-
-#: apps.py:98 mixins.py:245
-msgid "Object"
-msgstr "Obiekt"
-
-#: apps.py:102
-msgid "Date and time"
-msgstr "Data i godzina"
-
-#: apps.py:106 models.py:37
-msgid "Result"
-msgstr "Wynik"
-
-#: classes.py:222
+#: classes.py:225
 msgid "Available attributes: \n"
 msgstr "Dostępne atrybuty: \n"
 
@@ -110,7 +97,7 @@ msgstr "%(object)s zaktualizowano pomyślnie."
 msgid "About this"
 msgstr "O programie"
 
-#: links.py:33 views.py:58
+#: links.py:33 views.py:57
 msgid "Check for updates"
 msgstr "Sprawdź aktualizacje"
 
@@ -138,35 +125,39 @@ msgstr "Kod źródłowy"
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: links.py:60 links.py:65
+#: links.py:61 links.py:71
 msgid "Errors"
 msgstr ""
 
-#: links.py:69
+#: links.py:66
+msgid "Clear all"
+msgstr ""
+
+#: links.py:75
 msgid "Data filters"
 msgstr "Filtry danych"
 
-#: links.py:73
+#: links.py:79
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:77 views.py:234
+#: links.py:83 views.py:196
 msgid "License"
 msgstr "Licencja"
 
-#: links.py:80 views.py:248
+#: links.py:86 views.py:271
 msgid "Other packages licenses"
 msgstr "Pozostałe licencje"
 
-#: links.py:84
+#: links.py:90
 msgid "Setup"
 msgstr "Ustawienia"
 
-#: links.py:87
+#: links.py:93
 msgid "Support"
 msgstr "Wsparcie"
 
-#: links.py:91 queues.py:10 views.py:278
+#: links.py:97 queues.py:10 views.py:306
 msgid "Tools"
 msgstr "Narzędzia"
 
@@ -190,19 +181,31 @@ msgstr "System"
 msgid "User"
 msgstr "Użytkownik"
 
-#: mixins.py:84
+#: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operację przeprowadzono na %(count)d obiekcie"
 
-#: mixins.py:85
+#: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operację przeprowadzono na %(count)d obiektach"
 
+#: mixins.py:241
+msgid "Object"
+msgstr "Obiekt"
+
+#: models.py:24
+msgid "Namespace"
+msgstr "Przestrzeń nazw"
+
 #: models.py:35 models.py:55
 msgid "Date time"
 msgstr "Data i godzina"
+
+#: models.py:37 views.py:241
+msgid "Result"
+msgstr "Wynik"
 
 #: models.py:43
 msgid "Error log entry"
@@ -266,25 +269,34 @@ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
-#: settings.py:29
+#: settings.py:28
+msgid ""
+"Filename of the local settings file (just the filename, extension will be ."
+"py)."
+msgstr ""
+
+#: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Liczba określająca ile obiektów będzie wyświetlane na stronie."
 
-#: settings.py:35
+#: settings.py:42
 msgid "A storage backend that all workers can use to share files."
-msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
+msgstr ""
+"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
+"plików."
 
-#: settings.py:40
+#: settings.py:47
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików poglądowych i plików tymczasowych."
+msgstr ""
+"Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików "
+"poglądowych i plików tymczasowych."
 
-#: settings.py:48
+#: settings.py:55
 msgid "Path to the logfile that will track errors during production."
 msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
 
@@ -292,63 +304,79 @@ msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjny
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
+msgstr ""
+"Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
-#: views.py:51
+#: views.py:50
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "Ta wersja programu jest nieaktualna. Najświeższą wersją jest %s"
 
-#: views.py:55
+#: views.py:54
 msgid "Your version is up-to-date."
 msgstr "Wersja programu jest aktualna."
 
-#: views.py:72
+#: views.py:71
 msgid "Current user details"
 msgstr "Dane użytkownika"
 
-#: views.py:77
+#: views.py:76
 msgid "Edit current user details"
 msgstr "Edycja danych użytkownika"
 
-#: views.py:97
+#: views.py:96
 msgid "Current user locale profile details"
 msgstr "Profil regionalny użytkownika"
 
-#: views.py:104
+#: views.py:103
 msgid "Edit current user locale profile details"
 msgstr "Edycja ustawień regionalnych użytkownika"
 
-#: views.py:165
-#, python-format
-msgid "Error log entries for: %s"
-msgstr ""
-
-#: views.py:197
+#: views.py:159
 msgid "Filter selection"
 msgstr "Wybór filtru"
 
-#: views.py:213
+#: views.py:175
 #, python-format
 msgid "Results for filter: %s"
 msgstr "Wyniki dla filtru: %s"
 
-#: views.py:220
+#: views.py:182
 msgid "Filter not found"
 msgstr "Nie znaleziono filtru"
 
-#: views.py:261
+#: views.py:205
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr ""
+
+#: views.py:222
+#, fuzzy
+#| msgid "%(object)s created successfully."
+msgid "Object error log cleared successfully"
+msgstr "%(object)s utworzono pomyślnie."
+
+#: views.py:240
+msgid "Date and time"
+msgstr "Data i godzina"
+
+#: views.py:245
+#, python-format
+msgid "Error log entries for: %s"
+msgstr ""
+
+#: views.py:289
 msgid "Setup items"
 msgstr "Ustawienia"
 
-#: views.py:305
+#: views.py:332
 msgid "No action selected."
 msgstr "Nie wybrano żadnego działania"
 
-#: views.py:313
+#: views.py:340
 msgid "Must select at least one item."
 msgstr "Musisz wybrać co najmniej jeden element."
 
-#: widgets.py:48
+#: widgets.py:47
 msgid "None"
 msgstr "Brak"

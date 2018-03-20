@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:22 links.py:25 permissions.py:7
+#: apps.py:27 links.py:25 permissions.py:7
 msgid "Message of the day"
 msgstr ""
 
-#: apps.py:32 models.py:20
+#: apps.py:40 models.py:20
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:35 models.py:24
+#: apps.py:43 models.py:24
 msgid "Start date time"
 msgstr ""
 
-#: apps.py:36 apps.py:40
+#: apps.py:44 apps.py:48
 msgid "None"
 msgstr ""
 
-#: apps.py:39 models.py:29
+#: apps.py:47 models.py:29
 msgid "End date time"
 msgstr ""
 

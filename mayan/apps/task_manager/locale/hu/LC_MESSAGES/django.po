@@ -2,67 +2,68 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2017\n"
-"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
+"hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:11 permissions.py:7
+#: apps.py:24 links.py:11 permissions.py:7
 msgid "Task manager"
 msgstr "Feladatkezelő"
 
-#: apps.py:29
+#: apps.py:30
 msgid "Label"
 msgstr "Cimke"
 
-#: apps.py:32
+#: apps.py:33
 msgid "Name"
 msgstr "Név"
 
-#: apps.py:35
+#: apps.py:36
 msgid "Default queue?"
 msgstr "Alapértelmezett munkasor?"
 
-#: apps.py:41
+#: apps.py:42
 msgid "Is transient?"
 msgstr "Átmeneti?"
 
-#: apps.py:47
+#: apps.py:48
 msgid "Type"
 msgstr "Típus"
 
-#: apps.py:50
+#: apps.py:51
 msgid "Start time"
 msgstr "Kezdési idő"
 
-#: apps.py:53
+#: apps.py:54
 msgid "Host"
 msgstr "Kiszolgáló"
 
-#: apps.py:57
+#: apps.py:58
 msgid "Acknowledged"
 msgstr "Visszaigazolt"
 
-#: apps.py:63
+#: apps.py:64
 msgid "Arguments"
 msgstr "Paraméterek"
 
-#: apps.py:67
+#: apps.py:68
 msgid "Keyword arguments"
 msgstr "Kulcsszó paraméterek"
 
-#: apps.py:71
+#: apps.py:72
 msgid "Worker process ID"
 msgstr "Munkafolyamat ID"
 
@@ -86,12 +87,18 @@ msgstr "Időzített feladatok"
 msgid "View tasks"
 msgstr "Feladatok megtekintése"
 
+#: tests/literals.py:5
+#, fuzzy
+#| msgid "Default queue?"
+msgid "Test queue"
+msgstr "Alapértelmezett munkasor?"
+
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
 msgstr "Aktív feladatok a munkasorban: %s"
 
-#: views.py:45
+#: views.py:42
 #, python-format
 msgid "Unable to retrieve task list; %s"
 msgstr "Nem sikerült a feladatlista felolvasása; %s"

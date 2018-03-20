@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:07-0400\n"
 "PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 forms.py:32
-#: links.py:40 menus.py:8 models.py:36 permissions.py:7 views.py:184
-#: workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
+#: views.py:184 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Labels"
 
@@ -32,7 +33,7 @@ msgstr "Preview"
 msgid "Documents"
 msgstr "Documenten"
 
-#: events.py:9
+#: events.py:10
 msgid "Tag attached to document"
 msgstr ""
 
@@ -76,7 +77,7 @@ msgstr "Label"
 msgid "Color"
 msgstr "Kleur"
 
-#: models.py:35
+#: models.py:29
 msgid "Tag"
 msgstr "Label"
 
@@ -112,19 +113,19 @@ msgstr "Label documenten"
 msgid "Remove tags from documents"
 msgstr "Labels van documenten verwijderen"
 
-#: serializers.py:38
+#: serializers.py:39
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr ""
 
-#: serializers.py:85
+#: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr ""
 
-#: serializers.py:105
+#: serializers.py:106
 msgid "Primary key of the tag to be added."
 msgstr ""
 
@@ -154,7 +155,7 @@ msgstr[1] ""
 msgid "Attach tags to document: %s"
 msgstr ""
 
-#: views.py:65
+#: views.py:65 wizard_steps.py:28
 msgid "Tags to be attached."
 msgstr ""
 
@@ -205,7 +206,8 @@ msgstr "Label \"%s\" verwijderd."
 #: views.py:159
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr ""
+"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
 #: views.py:174
 #, python-format
@@ -261,6 +263,12 @@ msgstr ""
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Label: \"%(tag)s\" is verwijderd van document \"%(document)s\"."
+
+#: wizard_steps.py:16
+#, fuzzy
+#| msgid "Delete tags"
+msgid "Select tags"
+msgstr "Verwijder labels"
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"

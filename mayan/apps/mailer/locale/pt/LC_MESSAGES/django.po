@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-03 05:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:38
@@ -41,33 +42,33 @@ msgstr ""
 msgid "Enabled?"
 msgstr ""
 
-#: forms.py:59
+#: forms.py:61
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
 msgstr ""
 
-#: forms.py:61 forms.py:118
+#: forms.py:63 forms.py:120
 msgid "Email address"
 msgstr "Endereço de correio eletrónico"
 
-#: forms.py:63
+#: forms.py:65
 msgid "Subject"
 msgstr "Assunto"
 
-#: forms.py:65
+#: forms.py:67
 msgid "Body"
 msgstr "Corpo"
 
-#: forms.py:69
+#: forms.py:71
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:70 views.py:233
+#: forms.py:72 views.py:233
 msgid "Mailing profile"
 msgstr ""
 
-#: forms.py:75
+#: forms.py:77
 msgid "Backend"
 msgstr ""
 
@@ -165,8 +166,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
 msgstr ""
 
 #: mailers.py:46
@@ -186,8 +187,8 @@ msgstr "Senha"
 #: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:76
@@ -306,7 +307,9 @@ msgstr "Hiperligação para o documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr "Modelo para a linha do assunto do formulário de mensagem da hiperligação de documento."
+msgstr ""
+"Modelo para a linha do assunto do formulário de mensagem da hiperligação de "
+"documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."

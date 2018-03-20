@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -11,45 +11,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2016-05-20 21:54+0000\n"
 "Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:47 apps.py:50 forms.py:17
+#: apps.py:46 apps.py:49 forms.py:17
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
-#: apps.py:48 apps.py:61 forms.py:19 models.py:52
+#: apps.py:47 apps.py:60 forms.py:19 models.py:52
 msgid "User ID"
 msgstr "Benutzer-ID"
 
-#: apps.py:51 forms.py:34 models.py:55
+#: apps.py:50 forms.py:34 models.py:55
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:53 forms.py:23 models.py:36
+#: apps.py:52 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr "Erstellungsdatum"
 
-#: apps.py:56 forms.py:27 models.py:40
+#: apps.py:55 forms.py:27 models.py:40
 msgid "Expiration date"
 msgstr "Ablaufdatum"
 
-#: apps.py:57
+#: apps.py:56
 msgid "No expiration"
 msgstr "Ohne Ablaufdatum"
 
-#: apps.py:59 forms.py:32 models.py:47
+#: apps.py:58 forms.py:32 models.py:47
 msgid "Length"
 msgstr "Länge"
 
@@ -71,7 +72,9 @@ msgstr "Begriff"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird"
+msgstr ""
+"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
+"wird"
 
 #: links.py:13
 msgid "Delete"
@@ -143,7 +146,9 @@ msgstr "Signaturfehler"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+msgstr ""
+"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
+"verfügbar."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -169,11 +174,11 @@ msgstr "Schlüssel"
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: models.py:68
+#: models.py:71
 msgid "Invalid key data"
 msgstr "Ungültige Schlüssel-Daten"
 
-#: models.py:71
+#: models.py:74
 msgid "Key already exists."
 msgstr "Schlüssel existiert bereits."
 

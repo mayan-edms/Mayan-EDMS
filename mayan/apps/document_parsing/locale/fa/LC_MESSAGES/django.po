@@ -2,47 +2,47 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:61 permissions.py:7 settings.py:7
+#: apps.py:61 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:91
+#: apps.py:89
 msgid "Document"
 msgstr "سند"
 
-#: apps.py:95
+#: apps.py:93
 msgid "Added"
 msgstr "اضافه شده"
 
-#: apps.py:99 models.py:39
+#: apps.py:97 models.py:39
 msgid "Result"
 msgstr "جواب"
 
-#: apps.py:116 apps.py:120 links.py:11 models.py:18
+#: apps.py:114 apps.py:118 links.py:11 models.py:18
 msgid "Content"
 msgstr "محتوا"
 
-#: events.py:9
+#: events.py:12
 msgid "Document version submitted for parsing"
 msgstr ""
 
-#: events.py:13
+#: events.py:15
 msgid "Document version parsing finished"
 msgstr ""
 
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Document page"
 msgstr "صفحه سند"
 
-#: models.py:26
+#: models.py:23
 msgid "Document page content"
 msgstr ""
 
-#: models.py:27
+#: models.py:24
 msgid "Document pages contents"
 msgstr ""
 
@@ -91,20 +91,20 @@ msgstr "نسخه سند"
 msgid "Date time submitted"
 msgstr "تاریخ و زمان ارسال"
 
-#: models.py:46
+#: models.py:43
 msgid "Document version parse error"
 msgstr ""
 
-#: models.py:47
+#: models.py:44
 msgid "Document version parse errors"
 msgstr ""
 
-#: parsers.py:91
+#: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr ""
 
-#: parsers.py:118
+#: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr ""
@@ -127,8 +127,7 @@ msgstr ""
 
 #: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 
 #: views.py:38
@@ -169,6 +168,5 @@ msgstr ""
 #: views.py:135
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing "
-"queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
 msgstr ""

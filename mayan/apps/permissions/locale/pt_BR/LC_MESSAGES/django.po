@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -12,17 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:28 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Permissões"
 
@@ -30,35 +31,35 @@ msgstr "Permissões"
 msgid "Insufficient permissions."
 msgstr "Permissões insuficientes."
 
-#: links.py:14
-msgid "Grant"
-msgstr "Conceder"
-
-#: links.py:18
-msgid "Revoke"
-msgstr "Revogar"
-
-#: links.py:22
-msgid "Create new role"
-msgstr "Criar nova regra"
-
-#: links.py:26
-msgid "Delete"
-msgstr "Excluir"
-
-#: links.py:30
-msgid "Edit"
-msgstr "Editar"
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:172
 msgid "Roles"
 msgstr "Regras"
 
-#: links.py:38
-msgid "Members"
-msgstr "Membros"
+#: links.py:19
+msgid "Grant"
+msgstr "Conceder"
 
-#: links.py:43
+#: links.py:23
+msgid "Revoke"
+msgstr "Revogar"
+
+#: links.py:27
+msgid "Create new role"
+msgstr "Criar nova regra"
+
+#: links.py:31
+msgid "Delete"
+msgstr "Excluir"
+
+#: links.py:35
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr "Grupos"
+
+#: links.py:48
 msgid "Role permissions"
 msgstr "Regra de permissão"
 
@@ -70,7 +71,7 @@ msgstr "namespace"
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr "permissão"
 
@@ -78,11 +79,7 @@ msgstr "permissão"
 msgid "Label"
 msgstr "Label"
 
-#: models.py:81
-msgid "Groups"
-msgstr "Grupos"
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr "Regras"
 
@@ -118,39 +115,64 @@ msgstr ""
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista separada por vírgulas de chaves primárias de grupo para adicionar ou substituir nesta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de grupo para adicionar ou "
+"substituir nesta função."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista separada por vírgulas de chaves primárias de permissão para conceder a esta função."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de permissão para conceder a "
+"esta função."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr "Sem permissão: %s"
 
-#: views.py:46
+#: views.py:28
+#, fuzzy
+#| msgid "Available groups"
+msgid "Available roles"
+msgstr "Grupos disponíveis"
+
+#: views.py:29
+#, fuzzy
+#| msgid "Groups of role: %s"
+msgid "Group roles"
+msgstr "Grupos do papel: %s"
+
+#: views.py:39
+#, fuzzy, python-format
+#| msgid "Role groups"
+msgid "Roles of group: %s"
+msgstr "Grupos de papéis"
+
+#: views.py:81
 msgid "Available groups"
 msgstr "Grupos disponíveis"
 
-#: views.py:47
+#: views.py:82
 msgid "Role groups"
 msgstr "Grupos de papéis"
 
-#: views.py:57
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupos do papel: %s"
 
-#: views.py:80
+#: views.py:115
 msgid "Available permissions"
 msgstr "Permissões disponíveis"
 
-#: views.py:81
+#: views.py:116
 msgid "Granted permissions"
 msgstr "Permissões outorgadas"
 
-#: views.py:94
+#: views.py:129
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permissões para papel: %s"
+
+#~ msgid "Members"
+#~ msgstr "Membros"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:30
 msgid "Checkouts"
 msgstr "Reservas"
 
@@ -27,19 +28,19 @@ msgstr "Reservas"
 msgid "Checkedout documents"
 msgstr "Documentos verificados"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Documento devolvido automaticamente"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Documento devolvido"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Documento reservado"
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Documento devolvido forçosamente"
 
@@ -95,7 +96,7 @@ msgstr "Reservado"
 msgid "Checked in/available"
 msgstr "Devolvido/disponível"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "Documento"
 
@@ -119,23 +120,23 @@ msgstr "Não permitir que novas versões deste documento sejam carregadas."
 msgid "Block new version upload"
 msgstr "Restringir o carregamento de novas versões"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr "Data e hora da expiração da reserva deve ser no futuro."
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Reserva de documentos"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Reservas de documentos"
 
-#: models.py:104
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "Data e hora da expiração da reserva deve ser no futuro."
+
+#: models.py:105
 msgid "New version block"
 msgstr "Bloqueio de nova versão"
 
-#: models.py:105
+#: models.py:106
 msgid "New version blocks"
 msgstr "Bloqueios de nova versão"
 
@@ -162,6 +163,12 @@ msgstr ""
 #: queues.py:12
 msgid "Check expired checkouts"
 msgstr ""
+
+#: serializers.py:26
+#, fuzzy
+#| msgid "Document has not been checked out."
+msgid "Primary key of the document to be checked out."
+msgstr "O documento não foi reservado."
 
 #: views.py:53
 #, python-format
@@ -200,7 +207,9 @@ msgstr "Detalhes da reserva para o documento: %s "
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr "Você não reservou inicialmente este documento. Devolver forçosamente o documento: %s?"
+msgstr ""
+"Você não reservou inicialmente este documento. Devolver forçosamente o "
+"documento: %s?"
 
 #: views.py:138
 #, python-format
@@ -221,6 +230,6 @@ msgstr "Erro tentando devolver o documento: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documento \"%s\" devolvido com sucesso."
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr "Período"

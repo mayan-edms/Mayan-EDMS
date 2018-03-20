@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:28 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr ""
 
@@ -25,35 +25,35 @@ msgstr ""
 msgid "Insufficient permissions."
 msgstr ""
 
-#: links.py:14
-msgid "Grant"
-msgstr ""
-
-#: links.py:18
-msgid "Revoke"
-msgstr ""
-
-#: links.py:22
-msgid "Create new role"
-msgstr ""
-
-#: links.py:26
-msgid "Delete"
-msgstr ""
-
-#: links.py:30
-msgid "Edit"
-msgstr ""
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:172
 msgid "Roles"
 msgstr ""
 
-#: links.py:38
-msgid "Members"
+#: links.py:19
+msgid "Grant"
 msgstr ""
 
-#: links.py:43
+#: links.py:23
+msgid "Revoke"
+msgstr ""
+
+#: links.py:27
+msgid "Create new role"
+msgstr ""
+
+#: links.py:31
+msgid "Delete"
+msgstr ""
+
+#: links.py:35
+msgid "Edit"
+msgstr ""
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr ""
+
+#: links.py:48
 msgid "Role permissions"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr ""
 
@@ -73,11 +73,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: models.py:81
-msgid "Groups"
-msgstr ""
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr ""
 
@@ -124,28 +120,41 @@ msgstr ""
 msgid "No such permission: %s"
 msgstr ""
 
-#: views.py:46
+#: views.py:28
+msgid "Available roles"
+msgstr ""
+
+#: views.py:29
+msgid "Group roles"
+msgstr ""
+
+#: views.py:39
+#, python-format
+msgid "Roles of group: %s"
+msgstr ""
+
+#: views.py:81
 msgid "Available groups"
 msgstr ""
 
-#: views.py:47
+#: views.py:82
 msgid "Role groups"
 msgstr ""
 
-#: views.py:57
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:80
+#: views.py:115
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:81
+#: views.py:116
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:94
+#: views.py:129
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""

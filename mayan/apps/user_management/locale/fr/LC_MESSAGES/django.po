@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014,2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
@@ -12,57 +12,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:07-0400\n"
 "PO-Revision-Date: 2017-07-24 19:19+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 permissions.py:7
+#: apps.py:49 permissions.py:7
 msgid "User management"
 msgstr "Gestion des utilisateurs"
 
-#: apps.py:59
+#: apps.py:64
 msgid "All the groups."
 msgstr "Tous les groupes."
 
-#: apps.py:63
+#: apps.py:68
 msgid "All the users."
 msgstr "Tous les utilisateurs."
 
-#: apps.py:68 links.py:30
-msgid "Members"
-msgstr "Membres"
+#: apps.py:84 links.py:30 links.py:54 links.py:70 views.py:241
+msgid "Users"
+msgstr "Utilisateurs"
 
-#: apps.py:72
+#: apps.py:88
 msgid "Full name"
 msgstr "Nom complet"
 
-#: apps.py:75 search.py:22
+#: apps.py:91 search.py:22
 msgid "Email"
 msgstr "Courriel"
 
-#: apps.py:78
+#: apps.py:94
 msgid "Active"
 msgstr "Actif"
 
-#: apps.py:84
+#: apps.py:100
 msgid "Has usable password?"
 msgstr "Possède un mot de passe utilisable ?"
 
-#: forms.py:18
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: forms.py:21
-msgid "Confirm password"
-msgstr "Confirmer le mot de passe"
-
-#: links.py:14 views.py:27
+#: links.py:14 views.py:28
 msgid "Create new group"
 msgstr "Créer un nouveau groupe"
 
@@ -74,17 +67,13 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:51
 msgid "Groups"
 msgstr "Groupes"
 
-#: links.py:38 views.py:116
+#: links.py:38 views.py:117
 msgid "Create new user"
 msgstr "Créer un nouvel utilisateur"
-
-#: links.py:54 links.py:70 views.py:240
-msgid "Users"
-msgstr "Utilisateurs"
 
 #: links.py:62 links.py:66
 msgid "Set password"
@@ -138,134 +127,161 @@ msgstr "utilisateur"
 msgid "Name"
 msgstr "Nom"
 
-#: serializers.py:29
+#: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Liste séparée par des virgules des clés primaires de groupe pour attribuer cet utilisateur à."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de groupe pour attribuer "
+"cet utilisateur à."
 
-#: serializers.py:51
+#: serializers.py:64
 msgid "List of group primary keys to which to add the user."
 msgstr "Liste des clés primaires de groupe auxquelles ajouter cet utilisateur."
 
-#: views.py:43
+#: views.py:44
 #, python-format
 msgid "Edit group: %s"
 msgstr "Modification du groupe : %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Supprimer le groupe : %s ?"
 
-#: views.py:70
+#: views.py:71
 msgid "Available users"
 msgstr "Utilisateurs disponibles"
 
-#: views.py:71
-msgid "Members of groups"
+#: views.py:72
+#, fuzzy
+#| msgid "Members of groups"
+msgid "Users in group"
 msgstr "Membres des groupes"
 
-#: views.py:92
-#, python-format
-msgid "Members of group: %s"
+#: views.py:93
+#, fuzzy, python-format
+#| msgid "Members of group: %s"
+msgid "Users of group: %s"
 msgstr "Membres du groupe : %s"
 
-#: views.py:126
+#: views.py:127
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Utilisateur \"%s\" créé avec succès."
 
-#: views.py:135
+#: views.py:136
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
+msgstr ""
+"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateur"
 
-#: views.py:137
+#: views.py:138
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr "Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
+msgstr ""
+"Requête de suppression d'utilisateur exécutée sur %(count)d utilisateurs"
 
-#: views.py:146
+#: views.py:147
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Supprimer l'utilisateur"
 msgstr[1] "Supprimer les utilisateurs"
 
-#: views.py:156
+#: views.py:157
 #, python-format
 msgid "Delete user: %s"
 msgstr "Supprimer l'utilisateur: %s"
 
-#: views.py:168
+#: views.py:169
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
+msgstr ""
+"La suppression des comptes super utilisateur et staff n'est pas autorisée "
+"ici, veuillez le faire via l'interface d'administration."
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Utilisateur \"%s\" supprimé avec succès."
 
-#: views.py:182
+#: views.py:183
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr ""
+"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
-#: views.py:198
+#: views.py:199
 #, python-format
 msgid "Edit user: %s"
 msgstr "Modifier l'utilisateur : %s"
 
-#: views.py:204
+#: views.py:205
 msgid "Available groups"
 msgstr "Groupes disponibles"
 
-#: views.py:205
+#: views.py:206
 msgid "Groups joined"
 msgstr "Groupes rejoints"
 
-#: views.py:214
+#: views.py:215
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Membre des groupes : %s"
 
-#: views.py:252
+#: views.py:253
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
+msgstr ""
+"Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
 
-#: views.py:254
+#: views.py:255
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr "Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
+msgstr ""
+"Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
 
-#: views.py:262
+#: views.py:263
 msgid "Submit"
 msgstr "Soumettre"
 
-#: views.py:264
+#: views.py:265
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Changer le mot de passe de l'utilisateur"
 msgstr[1] "Changer les mots de passe des utilisateurs"
 
-#: views.py:274
+#: views.py:275
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Changer le mot de passe pour l'utilisateur: %s"
 
-#: views.py:294
+#: views.py:295
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'administration."
+msgstr ""
+"La réinitialisation des mots de passe pour les comptes super utilisateur et "
+"staff n'est pas autorisée ici, veuillez le faire via l'interface "
+"d'administration."
 
-#: views.py:304
-#, python-format
-msgid "Successfull password reset for user: %s."
+#: views.py:305
+#, fuzzy, python-format
+#| msgid "Successfull password reset for user: %s."
+msgid "Successful password reset for user: %s."
 msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur : %s."
 
-#: views.py:310
+#: views.py:311
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\" : %(error)s"
+msgstr ""
+"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
+"\"%(user)s\" : %(error)s"
+
+#~ msgid "Members"
+#~ msgstr "Membres"
+
+#~ msgid "New password"
+#~ msgstr "Nouveau mot de passe"
+
+#~ msgid "Confirm password"
+#~ msgstr "Confirmer le mot de passe"

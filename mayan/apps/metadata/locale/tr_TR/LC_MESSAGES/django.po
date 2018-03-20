@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -9,64 +9,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-07-30 19:40+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:53 apps.py:146 apps.py:151 links.py:39 permissions.py:7 queues.py:8
+#: apps.py:56 apps.py:156 apps.py:161 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:80
+#: apps.py:83
 msgid "Documents missing required metadata"
 msgstr "Gerekli meta verileri eksik olan belgeler"
 
-#: apps.py:97
+#: apps.py:100
 msgid "Documents missing optional metadata"
 msgstr "İsteğe bağlı meta verileri eksik belgeler"
 
-#: apps.py:116
+#: apps.py:119
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr "Bir MetadataType örnek başvurusu ve bu meta veri türü için bir değer içeren bir sorgu"
+msgstr ""
+"Bir MetadataType örnek başvurusu ve bu meta veri türü için bir değer içeren "
+"bir sorgu"
 
-#: apps.py:122
+#: apps.py:125
 msgid "Metadata type name"
 msgstr "Meta veri türü adı"
 
-#: apps.py:125
+#: apps.py:128
 msgid "Metadata type value"
 msgstr "Metadata tipi"
 
-#: apps.py:129
+#: apps.py:132
 msgid "Value of a metadata"
 msgstr "Bir meta verinin değeri"
 
-#: apps.py:131
+#: apps.py:134
 msgid "Return the value of a specific document metadata"
 msgstr "Belge metadata sının değerini döndür"
 
-#: apps.py:158 forms.py:20 models.py:162
+#: apps.py:168 forms.py:20 models.py:160
 msgid "Value"
 msgstr "Değer"
 
-#: apps.py:162 forms.py:46 forms.py:185 models.py:218
+#: apps.py:172 forms.py:46 forms.py:185 models.py:217
 msgid "Required"
 msgstr "Gereklidir"
 
-#: apps.py:184 apps.py:192 forms.py:123 models.py:91 models.py:216
+#: apps.py:194 apps.py:202 forms.py:123 models.py:84 models.py:215
 msgid "Metadata type"
 msgstr "Meta veri türü"
 
-#: apps.py:187 apps.py:196
+#: apps.py:197 apps.py:206
 msgid "Metadata value"
 msgstr "Meta veri değeri"
 
@@ -74,7 +77,7 @@ msgstr "Meta veri değeri"
 msgid "ID"
 msgstr "İD"
 
-#: forms.py:16 models.py:45 search.py:16
+#: forms.py:16 models.py:44 search.py:16
 msgid "Name"
 msgstr "Ad"
 
@@ -92,7 +95,7 @@ msgstr "Arama değeri hatası: %s"
 msgid "Default value error: %s"
 msgstr "Varsayılan değer hatası: %s"
 
-#: forms.py:104 models.py:124
+#: forms.py:104 models.py:123
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "Bu belge türü için \"%s\" gerekiyor."
@@ -109,7 +112,7 @@ msgstr " Kullanılabilir şablon bağlam değişkenleri:"
 msgid "Remove"
 msgstr "Kaldır"
 
-#: forms.py:177 models.py:47 search.py:19
+#: forms.py:177 models.py:46 search.py:19
 msgid "Label"
 msgstr "Etiket"
 
@@ -137,7 +140,7 @@ msgstr "Meta verileri düzenle"
 msgid "Remove metadata"
 msgstr "Meta verileri kaldır"
 
-#: links.py:43 links.py:66 models.py:92 views.py:557
+#: links.py:43 links.py:66 models.py:85 views.py:557
 msgid "Metadata types"
 msgstr "Meta veri türleri"
 
@@ -157,86 +160,96 @@ msgstr "Sil"
 msgid "Edit"
 msgstr "Düzenle"
 
-#: models.py:42
+#: models.py:41
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
-msgstr "Bu değere referans vermek için diğer uygulamalar tarafından kullanılan ad. Python için  ayrılmış kelimeler veya boşluklar kullanmayın."
+msgstr ""
+"Bu değere referans vermek için diğer uygulamalar tarafından kullanılan ad. "
+"Python için  ayrılmış kelimeler veya boşluklar kullanmayın."
 
-#: models.py:51
+#: models.py:50
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr ""
+"İşlemek için bir şablon girin. Django'nun varsayılan şablonlama dili "
+"kullanın (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
-#: models.py:55 search.py:22
+#: models.py:54 search.py:22
 msgid "Default"
 msgstr "Varsayılan"
 
-#: models.py:60
+#: models.py:59
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
-msgstr "İşlemek için bir şablon girin. Virgülle ayrılmış bir dizge ile sonuçlanmalıdır. Django'nun varsayılan şablonlama dili (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/) kullanın."
+"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
+"ref/templates/builtins/)."
+msgstr ""
+"İşlemek için bir şablon girin. Virgülle ayrılmış bir dizge ile "
+"sonuçlanmalıdır. Django'nun varsayılan şablonlama dili (https://docs."
+"djangoproject.com/en/1.7/ref/templates/builtins/) kullanın."
 
-#: models.py:65 search.py:25
+#: models.py:64 search.py:25
 msgid "Lookup"
 msgstr "Yukarı Bak"
 
-#: models.py:70
+#: models.py:69
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi reddedecektir."
+msgstr ""
+"Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi "
+"reddedecektir."
 
-#: models.py:72 search.py:28
+#: models.py:71 search.py:28
 msgid "Validator"
 msgstr "Doğrulayıcı"
 
-#: models.py:76
+#: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
-msgstr "Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden biçimlendirir."
+"The parser will reformat the value entered to conform to the expected format."
+msgstr ""
+"Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden "
+"biçimlendirir."
 
-#: models.py:78 search.py:31
+#: models.py:77 search.py:31
 msgid "Parser"
 msgstr "Ayrıştırıcı"
 
-#: models.py:132
+#: models.py:131
 msgid "Value is not one of the provided options."
 msgstr "Değer, sağlanan seçeneklerden biri değildir."
 
-#: models.py:155
+#: models.py:153
 msgid "Document"
 msgstr "belge"
 
-#: models.py:158
+#: models.py:156
 msgid "Type"
 msgstr "tip"
 
-#: models.py:176
-msgid "Metadata type is required for this document type."
-msgstr "Bu belge türü için meta veri türü gerekiyor."
-
-#: models.py:184
-msgid "Metadata type is not valid for this document type."
-msgstr "Meta veri türü, bu doküman türü için geçerli değil."
-
-#: models.py:198 models.py:199
+#: models.py:166 models.py:167
 msgid "Document metadata"
 msgstr "Belge meta verileri"
 
-#: models.py:212
+#: models.py:187
+msgid "Metadata type is required for this document type."
+msgstr "Bu belge türü için meta veri türü gerekiyor."
+
+#: models.py:201
+msgid "Metadata type is not valid for this document type."
+msgstr "Meta veri türü, bu doküman türü için geçerli değil."
+
+#: models.py:211
 msgid "Document type"
 msgstr "Belge Türü"
 
-#: models.py:227
+#: models.py:224
 msgid "Document type metadata type options"
 msgstr "Belge türü meta veri türü seçenekleri"
 
-#: models.py:228
+#: models.py:225
 msgid "Document type metadata types options"
 msgstr "Belge türü meta veri türleri seçenekleri"
 
@@ -325,14 +338,16 @@ msgstr "Belgeye meta veri türleri ekleyin: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: %(document)s; %(exception)s"
+msgstr ""
+"Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: "
+"%(document)s; %(exception)s"
 
 #: views.py:173
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
 
 #: views.py:183
 #, python-format
@@ -363,7 +378,8 @@ msgstr "Dokümanın meta verilerini düzenleme: %s"
 #: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
+msgstr ""
+"Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
 
 #: views.py:335
 #, python-format
@@ -400,14 +416,18 @@ msgstr "Metadaki veri türlerini belgeden kaldırın: %s"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: %(document)s."
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: "
+"%(document)s."
 
 #: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: %(document)s; %(exception)s"
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: "
+"%(document)s; %(exception)s"
 
 #: views.py:512
 msgid "Create metadata type"
@@ -436,12 +456,23 @@ msgstr "İlişki güncelleme hatası; %s"
 msgid "Relationships updated successfully"
 msgstr "İlişkiler başarıyla güncellendi"
 
-#: views.py:597
+#: views.py:596
+msgid "No metadata types available. Add at least one."
+msgstr ""
+
+#: views.py:600
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "Doküman türü için meta veri türleri: %s"
 
-#: views.py:630
+#: views.py:633
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "Meta veri türü için doküman türleri: %s"
+
+#: wizard_steps.py:15
+#, fuzzy
+#| msgid "Edit document metadata"
+#| msgid_plural "Edit documents metadata"
+msgid "Enter document metadata"
+msgstr "Belge meta verilerini düzenleme"

@@ -2,47 +2,49 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:61 permissions.py:7 settings.py:7
+#: apps.py:61 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:91
+#: apps.py:89
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:95
+#: apps.py:93
 msgid "Added"
 msgstr "Добавлено"
 
-#: apps.py:99 models.py:39
+#: apps.py:97 models.py:39
 msgid "Result"
 msgstr "Результат"
 
-#: apps.py:116 apps.py:120 links.py:11 models.py:18
+#: apps.py:114 apps.py:118 links.py:11 models.py:18
 msgid "Content"
 msgstr "Содержимое"
 
-#: events.py:9
+#: events.py:12
 msgid "Document version submitted for parsing"
 msgstr ""
 
-#: events.py:13
+#: events.py:15
 msgid "Document version parsing finished"
 msgstr ""
 
@@ -75,11 +77,11 @@ msgstr ""
 msgid "Document page"
 msgstr "Страница документа"
 
-#: models.py:26
+#: models.py:23
 msgid "Document page content"
 msgstr "Содержимое страницы документа"
 
-#: models.py:27
+#: models.py:24
 msgid "Document pages contents"
 msgstr "Содержимое страниц документа"
 
@@ -91,20 +93,20 @@ msgstr "Версия документа"
 msgid "Date time submitted"
 msgstr "Дата и время отправления"
 
-#: models.py:46
+#: models.py:43
 msgid "Document version parse error"
 msgstr ""
 
-#: models.py:47
+#: models.py:44
 msgid "Document version parse errors"
 msgstr ""
 
-#: parsers.py:91
+#: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Ошибка при чтении страницы; %s"
 
-#: parsers.py:118
+#: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Не удаётся найти исполняемый файл pdftotext: %s"
@@ -127,11 +129,10 @@ msgstr ""
 
 #: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
-"Путь к файлу программы pdftotext Poppler, используемой для извлечения текста"
-" из PDF файлов."
+"Путь к файлу программы pdftotext Poppler, используемой для извлечения текста "
+"из PDF файлов."
 
 #: views.py:38
 #, python-format
@@ -174,6 +175,5 @@ msgstr ""
 #: views.py:135
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing "
-"queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
 msgstr ""

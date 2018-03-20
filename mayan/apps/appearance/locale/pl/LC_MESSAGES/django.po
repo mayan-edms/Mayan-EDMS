@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
@@ -10,15 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:04-0400\n"
 "PO-Revision-Date: 2017-07-09 18:16+0000\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
@@ -40,53 +43,51 @@ msgstr "Nie znaleziono strony"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Przepraszamy, ale żądana strona nie została znaleziona."
 
-#: templates/500.html:5 templates/500.html:9
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:100
 msgid "Server error"
 msgstr "Błąd serwera"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i "
+"wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr "Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez następujący identyfikator:"
+msgstr ""
+"Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez "
+"następujący identyfikator:"
 
-#: templates/appearance/about.html:8 templates/appearance/about.html:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:61
 msgid "About"
 msgstr "Informacje"
 
-#: templates/appearance/about.html:62
+#: templates/appearance/about.html:66
 msgid "Version"
 msgstr "Wersja"
 
-#: templates/appearance/about.html:64
+#: templates/appearance/about.html:68
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Numer wersji: %(build_number)s"
 
-#: templates/appearance/about.html:76
-msgid "Released under the Apache 2.0 License"
+#: templates/appearance/about.html:81
+#, fuzzy
+#| msgid "Released under the Apache 2.0 License"
+msgid "Released under the license:"
 msgstr "Wydano na licencji Apache 2.0 License"
 
-#: templates/appearance/about.html:88
-msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-msgstr "Prawa autorskie &copy; 2011-2015 Roberto Rosario."
-
-#: templates/appearance/base.html:56
-msgid "Toggle navigation"
-msgstr "Rozwiń nawigację"
-
-#: templates/appearance/base.html:114
+#: templates/appearance/base.html:53
 #: templates/navigation/generic_navigation.html:6
 msgid "Actions"
 msgstr "Akcje"
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:55
 msgid "Toggle Dropdown"
 msgstr "Rozwiń listę"
 
@@ -137,30 +138,29 @@ msgstr "Nie"
 msgid "required"
 msgstr "wymagane"
 
-#: templates/appearance/generic_form_subtemplate.html:71
+#: templates/appearance/generic_form_subtemplate.html:61
+#: templates/appearance/generic_list_horizontal.html:21
+#: templates/appearance/generic_list_items_subtemplate.html:118
+#: templates/appearance/generic_list_subtemplate.html:109
+msgid "No results"
+msgstr "Brak wyników"
+
+#: templates/appearance/generic_form_subtemplate.html:76
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Save"
 msgstr "Zapisz"
 
-#: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_items_subtemplate.html:45
-#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_form_subtemplate.html:76
 #: templates/appearance/generic_multiform_subtemplate.html:63
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Wykonaj"
 
-#: templates/appearance/generic_form_subtemplate.html:74
+#: templates/appearance/generic_form_subtemplate.html:79
 #: templates/appearance/generic_multiform_subtemplate.html:67
 msgid "Cancel"
 msgstr "Anuluj"
-
-#: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_items_subtemplate.html:118
-#: templates/appearance/generic_list_subtemplate.html:112
-msgid "No results"
-msgstr "Brak wyników"
 
 #: templates/appearance/generic_list_items_subtemplate.html:24
 #: templates/appearance/generic_list_subtemplate.html:12
@@ -168,7 +168,9 @@ msgstr "Brak wyników"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(total_pages)s)"
+msgstr ""
+"Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:26
 #: templates/appearance/generic_list_items_subtemplate.html:29
@@ -178,7 +180,7 @@ msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(tota
 msgid "Total: %(total)s"
 msgstr "Razem: %(total)s"
 
-#: templates/appearance/generic_list_subtemplate.html:53
+#: templates/appearance/generic_list_subtemplate.html:50
 msgid "Identifier"
 msgstr "Identyfikator"
 
@@ -209,6 +211,24 @@ msgstr "Zaawansowane"
 #: templates/appearance/home.html:64
 msgid "Search documents"
 msgstr "Przeszukaj dokumenty"
+
+#: templates/appearance/root.html:56
+msgid "Toggle navigation"
+msgstr "Rozwiń nawigację"
+
+#: templates/appearance/root.html:105
+msgid "Close"
+msgstr ""
+
+#: templates/appearance/root.html:113 templates/appearance/root.html:133
+#, fuzzy
+#| msgid "Server error"
+msgid "Server communication error"
+msgstr "Błąd serwera"
+
+#: templates/appearance/root.html:115 templates/appearance/root.html:135
+msgid "Check you network connection and try again in a few moments."
+msgstr ""
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -247,7 +267,9 @@ msgstr "Hasło: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić hasła."
+msgstr ""
+"Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić "
+"hasła."
 
 #: templates/authentication/login.html:45
 #: templates/authentication/login.html:53
@@ -282,3 +304,6 @@ msgstr "Wiadomość z nowym hasłem została wysłana!"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Brak"
+
+#~ msgid "Copyright &copy; 2011-2015 Roberto Rosario."
+#~ msgstr "Prawa autorskie &copy; 2011-2015 Roberto Rosario."

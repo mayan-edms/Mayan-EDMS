@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: admin.py:26 apps.py:103 links.py:48 models.py:49
+#: admin.py:26 apps.py:101 links.py:48 models.py:49
 msgid "Document types"
 msgstr ""
 
@@ -29,39 +29,39 @@ msgstr ""
 msgid "Document indexing"
 msgstr ""
 
-#: apps.py:81 models.py:33
+#: apps.py:79 models.py:33
 msgid "Label"
 msgstr ""
 
-#: apps.py:82 models.py:38
+#: apps.py:80 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:84 apps.py:112 models.py:46 models.py:169
+#: apps.py:82 apps.py:110 models.py:46 models.py:169
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:89
+#: apps.py:87
 msgid "Total levels"
 msgstr ""
 
-#: apps.py:95
+#: apps.py:93
 msgid "Total documents"
 msgstr ""
 
-#: apps.py:108 apps.py:123 apps.py:140
+#: apps.py:106 apps.py:121 apps.py:138
 msgid "Level"
 msgstr ""
 
-#: apps.py:116
+#: apps.py:114
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:127 apps.py:146
+#: apps.py:125 apps.py:144
 msgid "Levels"
 msgstr ""
 
-#: apps.py:131 apps.py:150 models.py:291
+#: apps.py:129 apps.py:148 models.py:291
 msgid "Documents"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr ""
 
-#: links.py:57 views.py:326
+#: links.py:57 views.py:325
 msgid "Rebuild indexes"
 msgstr ""
 
@@ -118,11 +118,11 @@ msgstr ""
 msgid "Index"
 msgstr ""
 
-#: models.py:137
+#: models.py:125
 msgid "Index instance"
 msgstr ""
 
-#: models.py:138
+#: models.py:126
 msgid "Index instances"
 msgstr ""
 
@@ -286,11 +286,11 @@ msgstr ""
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:316
+#: views.py:315
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:337
+#: views.py:336
 msgid "Index rebuild queued successfully."
 msgstr ""

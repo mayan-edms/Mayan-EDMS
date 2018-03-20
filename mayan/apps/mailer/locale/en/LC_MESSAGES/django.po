@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,33 +41,33 @@ msgstr ""
 msgid "Enabled?"
 msgstr ""
 
-#: forms.py:59
+#: forms.py:61
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma "
 "or semicolon."
 msgstr ""
 
-#: forms.py:61 forms.py:118
+#: forms.py:63 forms.py:120
 msgid "Email address"
 msgstr ""
 
-#: forms.py:63
+#: forms.py:65
 msgid "Subject"
 msgstr ""
 
-#: forms.py:65
+#: forms.py:67
 msgid "Body"
 msgstr ""
 
-#: forms.py:69
+#: forms.py:71
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:70 views.py:233
+#: forms.py:72 views.py:233
 msgid "Mailing profile"
 msgstr ""
 
-#: forms.py:75
+#: forms.py:77
 msgid "Backend"
 msgstr ""
 

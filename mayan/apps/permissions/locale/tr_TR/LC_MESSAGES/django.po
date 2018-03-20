@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:28 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "İzinler"
 
@@ -26,35 +27,35 @@ msgstr "İzinler"
 msgid "Insufficient permissions."
 msgstr "Yetersiz yetkiler."
 
-#: links.py:14
-msgid "Grant"
-msgstr "Ata"
-
-#: links.py:18
-msgid "Revoke"
-msgstr "Kaldır"
-
-#: links.py:22
-msgid "Create new role"
-msgstr "Yeni rol oluştur"
-
-#: links.py:26
-msgid "Delete"
-msgstr "Sil"
-
-#: links.py:30
-msgid "Edit"
-msgstr "Düzenle"
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:172
 msgid "Roles"
 msgstr "Roller"
 
-#: links.py:38
-msgid "Members"
-msgstr "Üyeler"
+#: links.py:19
+msgid "Grant"
+msgstr "Ata"
 
-#: links.py:43
+#: links.py:23
+msgid "Revoke"
+msgstr "Kaldır"
+
+#: links.py:27
+msgid "Create new role"
+msgstr "Yeni rol oluştur"
+
+#: links.py:31
+msgid "Delete"
+msgstr "Sil"
+
+#: links.py:35
+msgid "Edit"
+msgstr "Düzenle"
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr "Gruplar"
+
+#: links.py:48
 msgid "Role permissions"
 msgstr "Rol izinleri"
 
@@ -66,7 +67,7 @@ msgstr "Alanadı"
 msgid "Name"
 msgstr "Ad"
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr "İzinler"
 
@@ -74,11 +75,7 @@ msgstr "İzinler"
 msgid "Label"
 msgstr "Etiket"
 
-#: models.py:81
-msgid "Groups"
-msgstr "Gruplar"
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr "rol"
 
@@ -114,7 +111,9 @@ msgstr ""
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Eklenecek veya bu rolde değiştirilecek birincil anahtarların virgülle ayrılmış listeleri."
+msgstr ""
+"Eklenecek veya bu rolde değiştirilecek birincil anahtarların virgülle "
+"ayrılmış listeleri."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
@@ -125,28 +124,49 @@ msgstr "Bu rolü vermek için virgülle ayrılmış birincil anahtarlar listesi.
 msgid "No such permission: %s"
 msgstr "Böyle bir izin yok: %s"
 
-#: views.py:46
+#: views.py:28
+#, fuzzy
+#| msgid "Available groups"
+msgid "Available roles"
+msgstr "Kullanılabilir gruplar"
+
+#: views.py:29
+#, fuzzy
+#| msgid "Groups of role: %s"
+msgid "Group roles"
+msgstr "Rol grupları: %s"
+
+#: views.py:39
+#, fuzzy, python-format
+#| msgid "Role groups"
+msgid "Roles of group: %s"
+msgstr "Rol grupları"
+
+#: views.py:81
 msgid "Available groups"
 msgstr "Kullanılabilir gruplar"
 
-#: views.py:47
+#: views.py:82
 msgid "Role groups"
 msgstr "Rol grupları"
 
-#: views.py:57
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Rol grupları: %s"
 
-#: views.py:80
+#: views.py:115
 msgid "Available permissions"
 msgstr "Kullanılabilir izinler"
 
-#: views.py:81
+#: views.py:116
 msgid "Granted permissions"
 msgstr "İzinler izin verildi"
 
-#: views.py:94
+#: views.py:129
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Rol için izinler: %s"
+
+#~ msgid "Members"
+#~ msgstr "Üyeler"

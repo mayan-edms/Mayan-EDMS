@@ -2,26 +2,39 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:36 apps.py:76 apps.py:84 apps.py:87 forms.py:30 links.py:21
-#: menus.py:8 models.py:38 permissions.py:7 views.py:152
+#: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
+#: links.py:21 menus.py:8 models.py:38 permissions.py:7 views.py:151
 msgid "Cabinets"
 msgstr "Pasta"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "Pasta de documentos"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Remover da pasta"
 
 #: links.py:27 links.py:38
 msgid "Remove from cabinets"
@@ -121,8 +134,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "O nome deste nível de pasta anexado aos nomes de seus antepassados."
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL do ponto de extremidade da API mostrando os documentos da lista dentro "
 "desta pasta."
@@ -138,8 +150,8 @@ msgid ""
 "API URL pointing to a document in relation to the cabinet storing it. This "
 "URL is different than the canonical document URL."
 msgstr ""
-"API URL que aponta para um documento em relação à pasta que o armazena. Este"
-" URL é diferente do URL do documento que está de acordo com as normas "
+"API URL que aponta para um documento em relação à pasta que o armazena. Este "
+"URL é diferente do URL do documento que está de acordo com as normas "
 "estabelecidas."
 
 #: templates/cabinets/cabinet_details.html:21
@@ -156,78 +168,112 @@ msgstr "Adicione novo nível a: %s"
 msgid "Delete the cabinet: %s?"
 msgstr "Excluir a pasta: %s?"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Detalhes da pasta: %s"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Editar pasta: %s"
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Pasta com documento: %s"
 
-#: views.py:188
+#: views.py:189
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "Adicionar  a pasta o pedido executado em %(count)d documento"
 
-#: views.py:191
+#: views.py:192
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "Adicionar a pasta o pedido executado em  %(count)d documento"
 
-#: views.py:198
+#: views.py:199
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:213
+#: views.py:201
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Adicionar documentos as pastas"
+msgstr[1] "Adicionar documentos as pastas"
+
+#: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Adicionar documento \"%s\" à uma pasta"
 
-#: views.py:224
+#: views.py:225
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Pastas aos quais os documentos selecionados serão adicionados."
 
-#: views.py:252
+#: views.py:253
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s  já está na pasta: %(cabinet)s ."
 
-#: views.py:264
+#: views.py:265
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Documento: %(document)s  adicionado à pasta: %(cabinet)s com sucesso."
 
-#: views.py:277
+#: views.py:278
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "Remover da solicitação de pasta executada em %(count)d documento"
 
-#: views.py:280
+#: views.py:281
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "Remover da solicitação de pasta realizada em %(count)d documentos"
 
-#: views.py:287
+#: views.py:288
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:313
+#: views.py:290
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Excluir documentos de pastas"
+msgstr[1] "Excluir documentos de pastas"
+
+#: views.py:303
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Excluir documentos de pastas"
+
+#: views.py:314
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Pastas das quais os documentos selecionados serão removidos."
 
-#: views.py:340
+#: views.py:341
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s não está na pasta: %(cabinet)s"
 
-#: views.py:352
+#: views.py:353
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s removido da pasta: %(cabinet)s."
+
+#: wizard_steps.py:16
+#, fuzzy
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Excluir pastas"
+
+#: wizard_steps.py:30
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "Pastas aos quais os documentos selecionados serão adicionados."

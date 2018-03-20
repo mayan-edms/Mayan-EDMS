@@ -1,28 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "لا شيء"
 
-#: admin.py:26 apps.py:103 links.py:48 models.py:49
+#: admin.py:26 apps.py:101 links.py:48 models.py:49
 msgid "Document types"
 msgstr ""
 
@@ -30,39 +32,39 @@ msgstr ""
 msgid "Document indexing"
 msgstr ""
 
-#: apps.py:81 models.py:33
+#: apps.py:79 models.py:33
 msgid "Label"
 msgstr ""
 
-#: apps.py:82 models.py:38
+#: apps.py:80 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:84 apps.py:112 models.py:46 models.py:169
+#: apps.py:82 apps.py:110 models.py:46 models.py:169
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:89
+#: apps.py:87
 msgid "Total levels"
 msgstr ""
 
-#: apps.py:95
+#: apps.py:93
 msgid "Total documents"
 msgstr ""
 
-#: apps.py:108 apps.py:123 apps.py:140
+#: apps.py:106 apps.py:121 apps.py:138
 msgid "Level"
 msgstr ""
 
-#: apps.py:116
+#: apps.py:114
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:127 apps.py:146
+#: apps.py:125 apps.py:144
 msgid "Levels"
 msgstr ""
 
-#: apps.py:131 apps.py:150 models.py:291
+#: apps.py:129 apps.py:148 models.py:291
 msgid "Documents"
 msgstr "الوثائق"
 
@@ -99,7 +101,7 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Deletes and creates from scratch all the document indexes."
 
-#: links.py:57 views.py:326
+#: links.py:57 views.py:325
 msgid "Rebuild indexes"
 msgstr ""
 
@@ -112,19 +114,19 @@ msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:43
-msgid ""
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
 "Causes this index to be visible and updated when document data changes."
-msgstr "Causes this index to be visible and updated when document data changes."
 
 #: models.py:56 models.py:153
 msgid "Index"
 msgstr ""
 
-#: models.py:137
+#: models.py:125
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:138
+#: models.py:126
 msgid "Index instances"
 msgstr ""
 
@@ -144,9 +146,11 @@ msgstr "Causes this node to be visible and updated when document data changes."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
 #: models.py:177
 msgid "Link documents"
@@ -288,11 +292,11 @@ msgstr ""
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:316
+#: views.py:315
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:337
+#: views.py:336
 msgid "Index rebuild queued successfully."
 msgstr ""

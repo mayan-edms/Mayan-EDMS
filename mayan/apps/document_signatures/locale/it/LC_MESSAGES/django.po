@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Carlo Zanatto <>, 2012
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-15 06:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -28,11 +29,11 @@ msgstr "Firme documento"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:95 models.py:47
+#: apps.py:95 models.py:46
 msgid "Key ID"
 msgstr "ID Chiave"
 
-#: apps.py:99 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "ID Firma"
 
@@ -128,55 +129,55 @@ msgstr "Firma scollegata"
 msgid "Sign embedded"
 msgstr "Firma incorporata"
 
-#: models.py:41
+#: models.py:40
 msgid "Document version"
 msgstr "Versione documento"
 
-#: models.py:45
+#: models.py:44
 msgid "Date signed"
 msgstr "Data firma"
 
-#: models.py:55
+#: models.py:54
 msgid "Public key fingerprint"
 msgstr "Chiave pubblica impronta"
 
-#: models.py:61
+#: models.py:60
 msgid "Document version signature"
 msgstr "Versione della firma del documento"
 
-#: models.py:62
+#: models.py:61
 msgid "Document version signatures"
 msgstr "Versioni delle firma del documento"
 
-#: models.py:81
+#: models.py:80
 msgid "Detached"
 msgstr "Distaccato"
 
-#: models.py:83
+#: models.py:82
 msgid "Embedded"
 msgstr "Incorporata"
 
-#: models.py:98
+#: models.py:97
 msgid "Document version embedded signature"
 msgstr "Firma incorporata versione documento"
 
-#: models.py:99
+#: models.py:98
 msgid "Document version embedded signatures"
 msgstr "Firme incorporate versione documento"
 
-#: models.py:132
+#: models.py:131
 msgid "Signature file"
 msgstr "File della firma"
 
-#: models.py:136
+#: models.py:138
 msgid "Document version detached signature"
 msgstr "Firma versione del documento distaccata"
 
-#: models.py:137
+#: models.py:139
 msgid "Document version detached signatures"
 msgstr "Firma distaccata versione dei documenti"
 
-#: models.py:140
+#: models.py:142
 msgid "signature"
 msgstr "firma"
 
@@ -268,7 +269,9 @@ msgstr "Carica la firma scollegata per la versione documento: %s"
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr "Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di tempo."
+msgstr ""
+"Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di "
+"tempo."
 
 #: views.py:346
 msgid "Verify all document for signatures?"

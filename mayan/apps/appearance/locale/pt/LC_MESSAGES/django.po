@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-03-20 02:04-0400\n"
 "PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -37,14 +38,14 @@ msgstr "Página não encontrada"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Desculpe, mas a página solicitada não foi encontrada."
 
-#: templates/500.html:5 templates/500.html:9
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:100
 msgid "Server error"
 msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -53,37 +54,29 @@ msgid ""
 "identifier:"
 msgstr ""
 
-#: templates/appearance/about.html:8 templates/appearance/about.html:57
+#: templates/appearance/about.html:8 templates/appearance/about.html:61
 msgid "About"
 msgstr ""
 
-#: templates/appearance/about.html:62
+#: templates/appearance/about.html:66
 msgid "Version"
 msgstr "Versão"
 
-#: templates/appearance/about.html:64
+#: templates/appearance/about.html:68
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr ""
 
-#: templates/appearance/about.html:76
-msgid "Released under the Apache 2.0 License"
+#: templates/appearance/about.html:81
+msgid "Released under the license:"
 msgstr ""
 
-#: templates/appearance/about.html:88
-msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-msgstr ""
-
-#: templates/appearance/base.html:56
-msgid "Toggle navigation"
-msgstr ""
-
-#: templates/appearance/base.html:114
+#: templates/appearance/base.html:53
 #: templates/navigation/generic_navigation.html:6
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:55
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -134,30 +127,29 @@ msgstr "Não"
 msgid "required"
 msgstr "obrigatório"
 
-#: templates/appearance/generic_form_subtemplate.html:71
+#: templates/appearance/generic_form_subtemplate.html:61
+#: templates/appearance/generic_list_horizontal.html:21
+#: templates/appearance/generic_list_items_subtemplate.html:118
+#: templates/appearance/generic_list_subtemplate.html:109
+msgid "No results"
+msgstr "Sem resultados"
+
+#: templates/appearance/generic_form_subtemplate.html:76
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Save"
 msgstr "Guardar"
 
-#: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_items_subtemplate.html:45
-#: templates/appearance/generic_list_subtemplate.html:33
+#: templates/appearance/generic_form_subtemplate.html:76
 #: templates/appearance/generic_multiform_subtemplate.html:63
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Submeter"
 
-#: templates/appearance/generic_form_subtemplate.html:74
+#: templates/appearance/generic_form_subtemplate.html:79
 #: templates/appearance/generic_multiform_subtemplate.html:67
 msgid "Cancel"
 msgstr "Cancelar"
-
-#: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_items_subtemplate.html:118
-#: templates/appearance/generic_list_subtemplate.html:112
-msgid "No results"
-msgstr "Sem resultados"
 
 #: templates/appearance/generic_list_items_subtemplate.html:24
 #: templates/appearance/generic_list_subtemplate.html:12
@@ -175,7 +167,7 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:53
+#: templates/appearance/generic_list_subtemplate.html:50
 msgid "Identifier"
 msgstr "Identificador"
 
@@ -205,6 +197,22 @@ msgstr ""
 
 #: templates/appearance/home.html:64
 msgid "Search documents"
+msgstr ""
+
+#: templates/appearance/root.html:56
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/appearance/root.html:105
+msgid "Close"
+msgstr ""
+
+#: templates/appearance/root.html:113 templates/appearance/root.html:133
+msgid "Server communication error"
+msgstr ""
+
+#: templates/appearance/root.html:115 templates/appearance/root.html:135
+msgid "Check you network connection and try again in a few moments."
 msgstr ""
 
 #: templates/authentication/login.html:10
@@ -244,7 +252,9 @@ msgstr "Senha: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Certifique-se de que altera a senha para aumentar a segurança e que desativa esta mensagem."
+msgstr ""
+"Certifique-se de que altera a senha para aumentar a segurança e que desativa "
+"esta mensagem."
 
 #: templates/authentication/login.html:45
 #: templates/authentication/login.html:53

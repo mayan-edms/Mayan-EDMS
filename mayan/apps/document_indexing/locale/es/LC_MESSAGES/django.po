@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -10,21 +10,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-27 16:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "Ninguno"
 
-#: admin.py:26 apps.py:103 links.py:48 models.py:49
+#: admin.py:26 apps.py:101 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Tipos de documento"
 
@@ -32,39 +33,39 @@ msgstr "Tipos de documento"
 msgid "Document indexing"
 msgstr "Indexación de documentos"
 
-#: apps.py:81 models.py:33
+#: apps.py:79 models.py:33
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:82 models.py:38
+#: apps.py:80 models.py:38
 msgid "Slug"
 msgstr "Identificador"
 
-#: apps.py:84 apps.py:112 models.py:46 models.py:169
+#: apps.py:82 apps.py:110 models.py:46 models.py:169
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps.py:89
+#: apps.py:87
 msgid "Total levels"
 msgstr "Niveles totales"
 
-#: apps.py:95
+#: apps.py:93
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:108 apps.py:123 apps.py:140
+#: apps.py:106 apps.py:121 apps.py:138
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:116
+#: apps.py:114
 msgid "Has document links?"
 msgstr "El documento tiene enlaces?"
 
-#: apps.py:127 apps.py:146
+#: apps.py:125 apps.py:144
 msgid "Levels"
 msgstr "Niveles"
 
-#: apps.py:131 apps.py:150 models.py:291
+#: apps.py:129 apps.py:148 models.py:291
 msgid "Documents"
 msgstr "Documentos"
 
@@ -101,7 +102,7 @@ msgstr "árbol de plantilla"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Borra y crea desde cero todos los índices de documentos."
 
-#: links.py:57 views.py:326
+#: links.py:57 views.py:325
 msgid "Rebuild indexes"
 msgstr "reconstruir índices"
 
@@ -111,22 +112,25 @@ msgstr "nuevo nodo secundario"
 
 #: models.py:37
 msgid "This value will be used by other apps to reference this index."
-msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este índice."
+msgstr ""
+"Este valor será utilizado por otras aplicaciones para hacer referencia a "
+"este índice."
 
 #: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Hace que este índice sea visible y actualizado cuando los datos de "
+"documentos cambien."
 
 #: models.py:56 models.py:153
 msgid "Index"
 msgstr "índice"
 
-#: models.py:137
+#: models.py:125
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:138
+#: models.py:126
 msgid "Index instances"
 msgstr "Instancias de índices"
 
@@ -134,7 +138,9 @@ msgstr "Instancias de índices"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
+msgstr ""
+"Introduzca una plantilla para generar. Use el lenguaje de plantillas de "
+"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:161
 msgid "Indexing expression"
@@ -142,13 +148,17 @@ msgstr "expresión de indexación"
 
 #: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
+msgstr ""
+"Hace que este nodo sea visible y actualizado cuando los datos de los "
+"documentos son cambiados."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
+"no como un padre para otros nodos secundarios."
 
 #: models.py:177
 msgid "Link documents"
@@ -171,7 +181,9 @@ msgstr "raíz"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
+msgstr ""
+"Error indexando documento: %(document)s; expresión: %(expression)s; "
+"%(exception)s"
 
 #: models.py:284
 msgid "Index template node"
@@ -290,11 +302,11 @@ msgstr "Navegación: %s"
 msgid "Contents for index: %s"
 msgstr "contenido del indice: %s"
 
-#: views.py:316
+#: views.py:315
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Nodos de indices que contienen el documento: %s"
 
-#: views.py:337
+#: views.py:336
 msgid "Index rebuild queued successfully."
 msgstr "Reconstrucción de Índices en espera de forma exitosa."

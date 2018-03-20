@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-15 06:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
 msgid "Document signatures"
@@ -26,11 +28,11 @@ msgstr "Document signatures"
 msgid "Date"
 msgstr "Date"
 
-#: apps.py:95 models.py:47
+#: apps.py:95 models.py:46
 msgid "Key ID"
 msgstr "Key ID"
 
-#: apps.py:99 forms.py:64 models.py:51
+#: apps.py:99 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr ""
 
@@ -126,55 +128,55 @@ msgstr ""
 msgid "Sign embedded"
 msgstr ""
 
-#: models.py:41
+#: models.py:40
 msgid "Document version"
 msgstr ""
 
-#: models.py:45
+#: models.py:44
 msgid "Date signed"
 msgstr ""
 
-#: models.py:55
+#: models.py:54
 msgid "Public key fingerprint"
 msgstr ""
 
-#: models.py:61
+#: models.py:60
 msgid "Document version signature"
 msgstr ""
 
-#: models.py:62
+#: models.py:61
 msgid "Document version signatures"
 msgstr ""
 
-#: models.py:81
+#: models.py:80
 msgid "Detached"
 msgstr ""
 
-#: models.py:83
+#: models.py:82
 msgid "Embedded"
 msgstr ""
 
-#: models.py:98
+#: models.py:97
 msgid "Document version embedded signature"
 msgstr ""
 
-#: models.py:99
+#: models.py:98
 msgid "Document version embedded signatures"
 msgstr ""
 
-#: models.py:132
+#: models.py:131
 msgid "Signature file"
 msgstr "Signature file"
 
-#: models.py:136
+#: models.py:138
 msgid "Document version detached signature"
 msgstr ""
 
-#: models.py:137
+#: models.py:139
 msgid "Document version detached signatures"
 msgstr ""
 
-#: models.py:140
+#: models.py:142
 msgid "signature"
 msgstr ""
 

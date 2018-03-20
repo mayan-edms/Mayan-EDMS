@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -9,19 +9,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:07-0400\n"
 "PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 forms.py:32
-#: links.py:40 menus.py:8 models.py:36 permissions.py:7 views.py:184
-#: workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
+#: views.py:184 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Tags"
 
@@ -33,7 +34,7 @@ msgstr "Vorschau"
 msgid "Documents"
 msgstr "Dokumente"
 
-#: events.py:9
+#: events.py:10
 msgid "Tag attached to document"
 msgstr ""
 
@@ -77,7 +78,7 @@ msgstr "Text"
 msgid "Color"
 msgstr "Farbe"
 
-#: models.py:35
+#: models.py:29
 msgid "Tag"
 msgstr "Tag"
 
@@ -113,19 +114,21 @@ msgstr "Tags zu Dokumenten hinzufügen"
 msgid "Remove tags from documents"
 msgstr "Tags von Dokumenten entfernen"
 
-#: serializers.py:38
+#: serializers.py:39
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag zugeordnet werden soll"
+msgstr ""
+"Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag "
+"zugeordnet werden soll"
 
-#: serializers.py:85
+#: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr ""
 
-#: serializers.py:105
+#: serializers.py:106
 msgid "Primary key of the tag to be added."
 msgstr "Primärschlüssel des hinzuzufügenden Tags"
 
@@ -155,7 +158,7 @@ msgstr[1] ""
 msgid "Attach tags to document: %s"
 msgstr "Tags Dokument zuweisen: %s"
 
-#: views.py:65
+#: views.py:65 wizard_steps.py:28
 msgid "Tags to be attached."
 msgstr "Zuzuweisende Tags."
 
@@ -262,6 +265,12 @@ msgstr "Dokument \"%(document)s\" wurde nicht als \"%(tag)s getaggt"
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."
+
+#: wizard_steps.py:16
+#, fuzzy
+#| msgid "Delete tags"
+msgid "Select tags"
+msgstr "Tags löschen"
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"

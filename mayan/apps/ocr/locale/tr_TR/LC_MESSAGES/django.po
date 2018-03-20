@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -9,38 +9,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-25 00:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:66 apps.py:127 apps.py:131 links.py:14 permissions.py:7 queues.py:7
-#: settings.py:7
+#: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
+#: queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:102
+#: apps.py:100
 msgid "Document"
 msgstr "belge"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Added"
 msgstr "Katma"
 
-#: apps.py:110 models.py:57
+#: apps.py:108 models.py:57
 msgid "Result"
 msgstr "Sonuç"
 
-#: events.py:9
+#: events.py:10
 msgid "Document version submitted for OCR"
 msgstr ""
 
-#: events.py:13
+#: events.py:14
 msgid "Document version OCR finished"
 msgstr ""
 
@@ -97,11 +98,11 @@ msgstr "Belge sayfası"
 msgid "Content"
 msgstr "İçerik"
 
-#: models.py:44
+#: models.py:41
 msgid "Document page OCR content"
 msgstr ""
 
-#: models.py:45
+#: models.py:42
 msgid "Document pages OCR contents"
 msgstr ""
 
@@ -113,11 +114,11 @@ msgstr "Belge versiyonu"
 msgid "Date time submitted"
 msgstr "Gönderilen tarih saati"
 
-#: models.py:64
+#: models.py:61
 msgid "Document version OCR error"
 msgstr ""
 
-#: models.py:65
+#: models.py:62
 msgid "Document version OCR errors"
 msgstr ""
 
@@ -139,9 +140,10 @@ msgstr "Doküman sürümü OCR"
 
 #: settings.py:12
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
-msgstr "PDF dosyalarından metin ayıklamak için kullanılan poppler'ın pptotext programının dosya yolu."
+"File path to poppler's pdftotext program used to extract text from PDF files."
+msgstr ""
+"PDF dosyalarından metin ayıklamak için kullanılan poppler'ın pptotext "
+"programının dosya yolu."
 
 #: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
@@ -149,7 +151,9 @@ msgstr "OCR yapmak için kullanılacak arka uç için tam yol."
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Varsayılan olarak otomatik olarak OCR gerçekleştirmek için yeni belge türlerini ayarlayın."
+msgstr ""
+"Varsayılan olarak otomatik olarak OCR gerçekleştirmek için yeni belge "
+"türlerini ayarlayın."
 
 #: views.py:43
 #, python-format
@@ -176,8 +180,10 @@ msgstr "OCR için bir türdeki tüm belgeleri gönderin"
 
 #: views.py:107
 #, python-format
-msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr "\"%(document_type)s\" türündeki %(count)d belgeleri OCR sırasına eklendi."
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr ""
+"\"%(document_type)s\" türündeki %(count)d belgeleri OCR sırasına eklendi."
 
 #: views.py:130
 #, python-format

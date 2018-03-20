@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2017
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:28 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Permessi"
 
@@ -28,35 +29,35 @@ msgstr "Permessi"
 msgid "Insufficient permissions."
 msgstr "Permessi insufficienti"
 
-#: links.py:14
-msgid "Grant"
-msgstr "Concessione"
-
-#: links.py:18
-msgid "Revoke"
-msgstr "Revoca"
-
-#: links.py:22
-msgid "Create new role"
-msgstr "Crea nuovo ruolo "
-
-#: links.py:26
-msgid "Delete"
-msgstr "Cancella "
-
-#: links.py:30
-msgid "Edit"
-msgstr "Modifica "
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:172
 msgid "Roles"
 msgstr "Ruoli "
 
-#: links.py:38
-msgid "Members"
-msgstr "Membri "
+#: links.py:19
+msgid "Grant"
+msgstr "Concessione"
 
-#: links.py:43
+#: links.py:23
+msgid "Revoke"
+msgstr "Revoca"
+
+#: links.py:27
+msgid "Create new role"
+msgstr "Crea nuovo ruolo "
+
+#: links.py:31
+msgid "Delete"
+msgstr "Cancella "
+
+#: links.py:35
+msgid "Edit"
+msgstr "Modifica "
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr "Gruppi"
+
+#: links.py:48
 msgid "Role permissions"
 msgstr "Autorizzazioni ruolo "
 
@@ -68,7 +69,7 @@ msgstr "Namespace"
 msgid "Name"
 msgstr "Nome "
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr "Autorizzazione "
 
@@ -76,11 +77,7 @@ msgstr "Autorizzazione "
 msgid "Label"
 msgstr "Etichetta "
 
-#: models.py:81
-msgid "Groups"
-msgstr "Gruppi"
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr "Ruolo"
 
@@ -116,7 +113,9 @@ msgstr ""
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista separata da virgole di ID gruppi da aggiungere o sostituire in questo ruolo"
+msgstr ""
+"Lista separata da virgole di ID gruppi da aggiungere o sostituire in questo "
+"ruolo"
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
@@ -127,28 +126,49 @@ msgstr "Lista separata da virgole di ID permessi da assegnare a questo ruolo"
 msgid "No such permission: %s"
 msgstr "Nessun permesso: %s"
 
-#: views.py:46
+#: views.py:28
+#, fuzzy
+#| msgid "Available groups"
+msgid "Available roles"
+msgstr "Gruppi disponibili "
+
+#: views.py:29
+#, fuzzy
+#| msgid "Groups of role: %s"
+msgid "Group roles"
+msgstr "Gruppi del ruolo: %s"
+
+#: views.py:39
+#, fuzzy, python-format
+#| msgid "Role groups"
+msgid "Roles of group: %s"
+msgstr "Gruppi di ruoli "
+
+#: views.py:81
 msgid "Available groups"
 msgstr "Gruppi disponibili "
 
-#: views.py:47
+#: views.py:82
 msgid "Role groups"
 msgstr "Gruppi di ruoli "
 
-#: views.py:57
+#: views.py:92
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Gruppi del ruolo: %s"
 
-#: views.py:80
+#: views.py:115
 msgid "Available permissions"
 msgstr "Autorizzazioni disponibili "
 
-#: views.py:81
+#: views.py:116
 msgid "Granted permissions"
 msgstr "Autorizzazioni concesse  "
 
-#: views.py:94
+#: views.py:129
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Autorizzazioni per ruolo: %s"
+
+#~ msgid "Members"
+#~ msgstr "Membri "

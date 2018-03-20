@@ -1,40 +1,41 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # molnars <szabolcs.molnar@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:06-0400\n"
 "PO-Revision-Date: 2017-08-04 13:02+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:34
 msgid "Linking"
 msgstr "Összfűzés"
 
-#: apps.py:58 models.py:19
+#: apps.py:56 models.py:20
 msgid "Label"
 msgstr "Cimke"
 
-#: apps.py:65 models.py:26
+#: apps.py:63 models.py:28
 msgid "Dynamic label"
 msgstr "Dinamikus címke"
 
-#: apps.py:69 apps.py:74 models.py:28 models.py:130
+#: apps.py:67 apps.py:72 models.py:30 models.py:133
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: forms.py:36 models.py:115
+#: forms.py:36 models.py:118
 msgid "Foreign document attribute"
 msgstr "Külső dokumentum paraméter"
 
@@ -58,7 +59,7 @@ msgstr ""
 msgid "Create new smart link"
 msgstr "Új okos kapcsolat létrehozása"
 
-#: links.py:39 models.py:30
+#: links.py:39 models.py:32
 msgid "Document types"
 msgstr "Dokumentum típusok"
 
@@ -66,7 +67,7 @@ msgstr "Dokumentum típusok"
 msgid "Documents"
 msgstr "dokumentumok"
 
-#: links.py:54 links.py:58 links.py:63 models.py:94 permissions.py:7
+#: links.py:54 links.py:58 links.py:63 models.py:40 permissions.py:7
 #: views.py:132
 msgid "Smart links"
 msgstr "Okos kapcsolatok"
@@ -139,56 +140,56 @@ msgstr ""
 msgid "is in regular expression (case insensitive)"
 msgstr ""
 
-#: models.py:22 models.py:120
+#: models.py:24 models.py:123
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
 msgstr ""
 
-#: models.py:46
+#: models.py:39 models.py:109
+msgid "Smart link"
+msgstr ""
+
+#: models.py:53
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:57
+#: models.py:64
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:93 models.py:106
-msgid "Smart link"
-msgstr ""
-
-#: models.py:110
+#: models.py:113
 msgid "The inclusion is ignored for the first item."
 msgstr ""
 
-#: models.py:114
+#: models.py:117
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:124
+#: models.py:127
 msgid "Expression"
 msgstr ""
 
-#: models.py:127
+#: models.py:130
 msgid "Inverts the logic of the operator."
 msgstr ""
 
-#: models.py:128
+#: models.py:131
 msgid "Negated"
 msgstr ""
 
-#: models.py:135
-msgid "not"
-msgstr ""
-
-#: models.py:140
+#: models.py:136
 msgid "Link condition"
 msgstr ""
 
-#: models.py:141
+#: models.py:137
 msgid "Link conditions"
+msgstr ""
+
+#: models.py:142
+msgid "not"
 msgstr ""
 
 #: permissions.py:10
@@ -230,7 +231,8 @@ msgstr ""
 
 #: views.py:71
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 
 #: views.py:90

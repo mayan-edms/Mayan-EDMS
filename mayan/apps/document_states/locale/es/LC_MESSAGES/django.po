@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario, 2015
 # Roberto Rosario, 2016-2017
@@ -9,105 +9,112 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
+"POT-Creation-Date: 2018-03-20 02:05-0400\n"
 "PO-Revision-Date: 2017-08-27 16:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:53 queues.py:8
+#: apps.py:57 queues.py:8
 msgid "Document states"
 msgstr "Estados de documentos"
 
-#: apps.py:89 apps.py:96
+#: apps.py:94 apps.py:101
 msgid "Current state of a workflow"
 msgstr "Estado actual de un flujo de trabajo"
 
-#: apps.py:90
+#: apps.py:95
 msgid "Return the current state of the selected workflow"
 msgstr "Devolver el estado actual del flujo de trabajo seleccionado"
 
-#: apps.py:97
+#: apps.py:102
 msgid ""
 "Return the completion value of the current state of the selected workflow"
-msgstr "Devolver el valor de finalización del estado actual del flujo de trabajo seleccionado"
+msgstr ""
+"Devolver el valor de finalización del estado actual del flujo de trabajo "
+"seleccionado"
 
-#: apps.py:112 apps.py:175 forms.py:117 models.py:47 models.py:147
-#: models.py:216 models.py:276
+#: apps.py:145 apps.py:208 forms.py:117 models.py:47 models.py:147
+#: models.py:216 models.py:278
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:115 models.py:44
+#: apps.py:148 models.py:44
 msgid "Internal name"
 msgstr "Nombre interno"
 
-#: apps.py:119
+#: apps.py:152
 msgid "Initial state"
 msgstr "Estado inicial"
 
-#: apps.py:120 apps.py:130 apps.py:140 apps.py:146
+#: apps.py:153 apps.py:163 apps.py:173 apps.py:179
 msgid "None"
 msgstr "Ninguno"
 
-#: apps.py:124
+#: apps.py:157
 msgid "Current state"
 msgstr "Estado actual"
 
-#: apps.py:128 apps.py:155 models.py:446
+#: apps.py:161 apps.py:188 models.py:440
 msgid "User"
 msgstr "Usuario"
 
-#: apps.py:134
+#: apps.py:167
 msgid "Last transition"
 msgstr "Última transición"
 
-#: apps.py:138 apps.py:151
+#: apps.py:171 apps.py:184
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:144 apps.py:171 models.py:159
+#: apps.py:177 apps.py:204 models.py:159
 msgid "Completion"
 msgstr "Cantidad de completación"
 
-#: apps.py:158 forms.py:173 links.py:109 models.py:303 models.py:442
+#: apps.py:191 forms.py:173 links.py:111 models.py:305 models.py:436
 msgid "Transition"
 msgstr "Transición"
 
-#: apps.py:162 forms.py:176 models.py:448
+#: apps.py:195 forms.py:176 models.py:442
 msgid "Comment"
 msgstr "Comentario"
 
-#: apps.py:167
+#: apps.py:200
 msgid "Is initial state?"
 msgstr "¿Es el estado inicial?"
 
-#: apps.py:178
+#: apps.py:211
 msgid "Enabled?"
 msgstr "¿Habilitado?"
 
-#: apps.py:182
+#: apps.py:215
 msgid "When?"
 msgstr "¿Cuando?"
 
-#: apps.py:186
+#: apps.py:219
 msgid "Action type"
 msgstr "Tipo de acción"
 
-#: apps.py:191 models.py:279
+#: apps.py:224 models.py:281
 msgid "Origin state"
 msgstr "Estado origen"
 
-#: apps.py:195 models.py:284
+#: apps.py:228 models.py:286
 msgid "Destination state"
 msgstr "Estado destino"
 
-#: apps.py:199
+#: apps.py:232
 msgid "Triggers"
 msgstr "Disparadores"
+
+#: error_logs.py:8 models.py:237
+msgid "Workflow state actions"
+msgstr "Acciones del estado del flujo de trabajo"
 
 #: forms.py:22
 msgid "Action"
@@ -130,8 +137,7 @@ msgstr "Si"
 msgid "Event trigger: %s"
 msgstr "Activador de eventos: %s"
 
-#: links.py:15 links.py:39 links.py:119 models.py:128 views.py:141
-#: views.py:576
+#: links.py:15 links.py:39 links.py:121 models.py:59 views.py:141 views.py:606
 msgid "Workflows"
 msgstr "Flujos de trabajo"
 
@@ -139,7 +145,7 @@ msgstr "Flujos de trabajo"
 msgid "Create workflow"
 msgstr "Crear flujo de trabajo"
 
-#: links.py:25 links.py:43 links.py:67 links.py:85
+#: links.py:25 links.py:43 links.py:67 links.py:87
 msgid "Delete"
 msgstr "Borrar"
 
@@ -147,7 +153,7 @@ msgstr "Borrar"
 msgid "Document types"
 msgstr "Tipos de documentos"
 
-#: links.py:34 links.py:48 links.py:71 links.py:89
+#: links.py:34 links.py:48 links.py:71 links.py:91
 msgid "Edit"
 msgstr "Editar"
 
@@ -163,39 +169,39 @@ msgstr "Crear acción"
 msgid "Create state"
 msgstr "Crear estado"
 
-#: links.py:75 links.py:129
+#: links.py:76 links.py:131
 msgid "States"
 msgstr "Estados"
 
-#: links.py:79
+#: links.py:81
 msgid "Create transition"
 msgstr "Crear transición"
 
-#: links.py:94
+#: links.py:96
 msgid "Transitions"
 msgstr "Transiciones"
 
-#: links.py:101 queues.py:12
+#: links.py:103 queues.py:12
 msgid "Launch all workflows"
 msgstr "Iniciar todos los flujos de trabajo"
 
-#: links.py:105
+#: links.py:107
 msgid "Detail"
 msgstr "Detalle"
 
-#: links.py:114
+#: links.py:116
 msgid "Workflow documents"
 msgstr "Documentos del flujo de trabajo"
 
-#: links.py:123
+#: links.py:125
 msgid "State documents"
 msgstr "Documentos del estado de flujo"
 
-#: links.py:134
+#: links.py:136
 msgid "Transition triggers"
 msgstr "Disparadores de transición"
 
-#: links.py:139
+#: links.py:141
 msgid "Preview"
 msgstr "Muestra"
 
@@ -211,9 +217,11 @@ msgstr "A la salida"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este flujo de trabajo. Sólo puede contener letras, números y subrayados."
+msgstr ""
+"Este valor será utilizado por otras aplicaciones para hacer referencia a "
+"este flujo de trabajo. Sólo puede contener letras, números y subrayados."
 
-#: models.py:127 models.py:145 models.py:274 models.py:321
+#: models.py:58 models.py:145 models.py:276 models.py:324
 msgid "Workflow"
 msgstr "Flujo de trabajo"
 
@@ -221,7 +229,9 @@ msgstr "Flujo de trabajo"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr "Seleccione si este va a ser el estado con el que desea que el flujo de trabajo comience. Sólo un estado puede ser el estado inicial."
+msgstr ""
+"Seleccione si este va a ser el estado con el que desea que el flujo de "
+"trabajo comience. Sólo un estado puede ser el estado inicial."
 
 #: models.py:153
 msgid "Initial"
@@ -231,7 +241,9 @@ msgstr "Inicial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr "Introduzca el porcentaje de finalización que este estado representa en relación con el flujo de trabajo. Utilice números sin el signo de porcentaje."
+msgstr ""
+"Introduzca el porcentaje de finalización que este estado representa en "
+"relación con el flujo de trabajo. Utilice números sin el signo de porcentaje."
 
 #: models.py:165 models.py:214
 msgid "Workflow state"
@@ -251,7 +263,9 @@ msgstr "Cuando"
 
 #: models.py:226
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr "La ruta punteada de Python a la clase de acción de flujo de trabajo que se va a ejecutar."
+msgstr ""
+"La ruta punteada de Python a la clase de acción de flujo de trabajo que se "
+"va a ejecutar."
 
 #: models.py:227
 msgid "Entry action path"
@@ -261,75 +275,71 @@ msgstr "Ruta de acceso a la acción"
 msgid "Entry action data"
 msgstr "Datos de la acción"
 
-#: models.py:239
+#: models.py:236
 msgid "Workflow state action"
 msgstr "Acción del estado del flujo de trabajo"
 
-#: models.py:240
-msgid "Workflow state actions"
-msgstr "Acciones del estado del flujo de trabajo"
-
-#: models.py:295
+#: models.py:294
 msgid "Workflow transition"
 msgstr "Transición de flujo de trabajo"
 
-#: models.py:296
+#: models.py:295
 msgid "Workflow transitions"
 msgstr "Transiciones de flujo de trabajo"
 
-#: models.py:306
+#: models.py:309
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: models.py:310
+#: models.py:313
 msgid "Workflow transition trigger event"
 msgstr "Evento de activación de transiciones de flujo de trabajo"
 
-#: models.py:311
+#: models.py:314
 msgid "Workflow transitions trigger events"
 msgstr "Eventos de activación de transiciones de flujo de trabajo"
 
-#: models.py:325
+#: models.py:328
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:420 models.py:435
+#: models.py:334 models.py:429
 msgid "Workflow instance"
 msgstr "Instancia de flujo de trabajo"
 
-#: models.py:421
+#: models.py:335
 msgid "Workflow instances"
 msgstr "Instancias de flujo de trabajo"
 
-#: models.py:438
+#: models.py:432
 msgid "Datetime"
 msgstr "Fecha y hora"
 
-#: models.py:454
+#: models.py:446
 msgid "Workflow instance log entry"
 msgstr "Entrada de registro de la instancia de flujo de trabajo"
 
-#: models.py:455
+#: models.py:447
 msgid "Workflow instance log entries"
 msgstr "Entradas de registro de las instancias de flujos de trabajo"
 
-#: models.py:459
+#: models.py:454
 msgid "Not a valid transition choice."
 msgstr "No hay opción valida de transición."
 
-#: models.py:476
+#: models.py:471
 msgid "Workflow runtime proxy"
 msgstr "Proxy de tiempo de ejecución de flujo de trabajo"
 
-#: models.py:477
+#: models.py:472
 msgid "Workflow runtime proxies"
 msgstr "Proxies de tiempo de ejecución de flujo de trabajo"
 
-#: models.py:483
+#: models.py:478
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de tiempo de ejecución de estado de flujo de trabajo"
 
-#: models.py:484
+#: models.py:479
 msgid "Workflow state runtime proxies"
 msgstr "Proxies de tiempo de ejecución de estado de flujo de trabajo"
 
@@ -369,7 +379,10 @@ msgstr "Llave primaria del tipo de documento a ser agregado."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr "URL de la API que apunta a un tipo de documento en relación con el flujo de trabajo al que está conectado. Esta URL es diferente de la URL del tipo de documento canónico."
+msgstr ""
+"URL de la API que apunta a un tipo de documento en relación con el flujo de "
+"trabajo al que está conectado. Esta URL es diferente de la URL del tipo de "
+"documento canónico."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -383,7 +396,9 @@ msgstr "Llave primaria del estado inicial a ser agregado."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr "API URL que apunta a un flujo de trabajo en relación con el documento al que está asociado. Esta URL es diferente de la URL de flujo de trabajo canónico."
+msgstr ""
+"API URL que apunta a un flujo de trabajo en relación con el documento al que "
+"está asociado. Esta URL es diferente de la URL de flujo de trabajo canónico."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -393,7 +408,9 @@ msgstr "Un enlace a la historia completa de este flujo de trabajo."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr "Lista separada por comas de las llaves principales de tipos de documentos a los que se adjuntará este flujo de trabajo."
+msgstr ""
+"Lista separada por comas de las llaves principales de tipos de documentos a "
+"los que se adjuntará este flujo de trabajo."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -423,7 +440,7 @@ msgstr "Enviar"
 msgid "Do transition for workflow: %s"
 msgstr "Realizar la transición de flujo de trabajo: %s"
 
-#: views.py:171
+#: views.py:170
 msgid "Available document types"
 msgstr "Tipos de documentos disponibles"
 
@@ -436,91 +453,96 @@ msgstr "Tipos de documentos asignados a este flujo de trabajo"
 msgid "Document types assigned the workflow: %s"
 msgstr "Tipos de documentos asignados al flujo de trabajo: %s"
 
-#: views.py:221 views.py:664
-#, python-format
-msgid "States of workflow: %s"
-msgstr "Estados del flujo de trabajo: %s"
-
-#: views.py:248
+#: views.py:226
 #, python-format
 msgid "Create a \"%s\" workflow action"
 msgstr "Crear una acción de flujo de trabajo \"%s\""
 
-#: views.py:288
+#: views.py:266
 #, python-format
 msgid "Delete workflow state action: %s"
 msgstr "Eliminar acción del estado del flujo de trabajo: %s"
 
-#: views.py:311
+#: views.py:289
 #, python-format
 msgid "Edit workflow state action: %s"
 msgstr "Editar acción de estado de flujo de trabajo: %s"
 
-#: views.py:334 views.py:683
+#: views.py:312 views.py:713
 msgid "This is a feature preview. Things might not work as expect."
-msgstr "Esta es una versión de prelimiar de esta función. Las cosas podrían no funcionar como se espera."
+msgstr ""
+"Esta es una versión de prelimiar de esta función. Las cosas podrían no "
+"funcionar como se espera."
 
-#: views.py:348
+#: views.py:326
 #, python-format
 msgid "Actions for workflow state: %s"
 msgstr "Acciones para el estado de flujo de trabajo: %s"
 
-#: views.py:382
+#: views.py:360
 msgid "New workflow state action selection"
 msgstr "Selección de nueva acciones de estado de flujo de trabajo"
 
-#: views.py:398
+#: views.py:378
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Crear estados para el flujo de trabajo: %s"
 
-#: views.py:468
+#: views.py:470 views.py:694
 #, python-format
-msgid "Transitions of workflow: %s"
-msgstr "Transiciones de flujo de trabajo: %s"
+msgid "States of workflow: %s"
+msgstr "Estados del flujo de trabajo: %s"
 
-#: views.py:490
+#: views.py:493
 msgid "Unable to save transition; integrity error."
 msgstr "No se puede guardar la transición; error de integridad."
 
-#: views.py:502
+#: views.py:505
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Crear transiciones para el flujo de trabajo: %s"
 
-#: views.py:606
+#: views.py:586
+#, python-format
+msgid "Transitions of workflow: %s"
+msgstr "Transiciones de flujo de trabajo: %s"
+
+#: views.py:636
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr "Documentos con el flujo de trabajo: %s"
 
-#: views.py:627
+#: views.py:657
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documentos en el flujo de trabajo \"%s\", estado \"%s\""
 
-#: views.py:705
+#: views.py:735
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr "Error al actualizar eventos de disparo de transición de flujo de trabajo; %s"
+msgstr ""
+"Error al actualizar eventos de disparo de transición de flujo de trabajo; %s"
 
-#: views.py:711
+#: views.py:741
 msgid "Workflow transition trigger events updated successfully"
-msgstr "Eventos de activación de transición de flujo de trabajo actualizados correctamente"
+msgstr ""
+"Eventos de activación de transición de flujo de trabajo actualizados "
+"correctamente"
 
-#: views.py:728
+#: views.py:758
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr "Eventos de activación de transición de flujo de trabajo para: %s"
 
-#: views.py:757
+#: views.py:789
 msgid "Launch all workflows?"
 msgstr "¿Lanzar todos los flujos de trabajo?"
 
-#: views.py:764
+#: views.py:796
 msgid "Workflow launch queued successfully."
 msgstr "Lanzamiento de flujos de trabajo sometido con éxito."
 
-#: views.py:789
+#: views.py:821
 #, python-format
 msgid "Preview of: %s"
 msgstr "Vista previa de: %s"
@@ -531,11 +553,16 @@ msgstr "URL"
 
 #: workflow_actions.py:25
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
-msgstr "Puede ser una dirección IP, un dominio o una plantilla. Las plantillas reciben la instancia de entrada del registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+"Can be an IP address, a domain or a template. Templates receive the workflow "
+"log entry instance as part of their context via the variable \"entry_log\". "
+"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Puede ser una dirección IP, un dominio o una plantilla. Las plantillas "
+"reciben la instancia de entrada del registro de flujo de trabajo como parte "
+"de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su "
+"vez proporciona los atributos \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\" y \"comment\"."
 
 #: workflow_actions.py:35
 msgid "Timeout"
@@ -552,11 +579,17 @@ msgstr "Datos a enviar"
 #: workflow_actions.py:44
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
-msgstr "Un documento JSON a incluir en la solicitud. También puede ser una plantilla que devuelva un documento JSON. Las plantillas reciben la instancia de entrada del registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+"return a JSON document. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
+"\", and \"comment\" attributes."
+msgstr ""
+"Un documento JSON a incluir en la solicitud. También puede ser una plantilla "
+"que devuelva un documento JSON. Las plantillas reciben la instancia de "
+"entrada del registro de flujo de trabajo como parte de su contexto a través "
+"de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los "
+"atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y "
+"\"comment\"."
 
 #: workflow_actions.py:57
 msgid "Perform a POST request"
