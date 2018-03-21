@@ -36,7 +36,6 @@ from .managers import (
     PassthroughManager, RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
-from .runtime import cache_storage_backend, storage_backend
 from .settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_fix_orientation,
@@ -45,6 +44,7 @@ from .settings import (
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
 )
+from .storages import documentversion_storage, documentimagecache_storage
 
 logger = logging.getLogger(__name__)
 
@@ -393,7 +393,7 @@ class DocumentVersion(models.Model):
 
     # File related fields
     file = models.FileField(
-        storage=storage_backend, upload_to=UUID_FUNCTION,
+        storage=documentversion_storage, upload_to=UUID_FUNCTION,
         verbose_name=_('File')
     )
     mimetype = models.CharField(
@@ -459,10 +459,10 @@ class DocumentVersion(models.Model):
         cache_filename = self.cache_filename
         logger.debug('Intermidiate filename: %s', cache_filename)
 
-        if cache_storage_backend.exists(cache_filename):
+        if documentimagecache_storage.exists(cache_filename):
             logger.debug('Intermidiate file "%s" found.', cache_filename)
 
-            return cache_storage_backend.open(cache_filename)
+            return documentimagecache_storage.open(cache_filename)
         else:
             logger.debug('Intermidiate file "%s" not found.', cache_filename)
 
@@ -470,11 +470,11 @@ class DocumentVersion(models.Model):
                 converter = converter_class(file_object=self.open())
                 pdf_file_object = converter.to_pdf()
 
-                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+                with documentimagecache_storage.open(cache_filename, 'wb+') as file_object:
                     for chunk in pdf_file_object:
                         file_object.write(chunk)
 
-                return cache_storage_backend.open(cache_filename)
+                return documentimagecache_storage.open(cache_filename)
             except InvalidOfficeFormat:
                 return self.open()
             except Exception as exception:
@@ -483,7 +483,7 @@ class DocumentVersion(models.Model):
                     'Error creating intermediate file "%s"; %s.',
                     cache_filename, exception
                 )
-                cache_storage_backend.delete(cache_filename)
+                documentimagecache_storage.delete(cache_filename)
                 raise
 
     def get_rendered_string(self, preserve_extension=False):
@@ -503,7 +503,7 @@ class DocumentVersion(models.Model):
         )
 
     def invalidate_cache(self):
-        cache_storage_backend.delete(self.cache_filename)
+        documentimagecache_storage.delete(self.cache_filename)
         for page in self.pages.all():
             page.invalidate_cache()
 
@@ -810,7 +810,7 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', cache_filename)
 
-        if not setting_disable_transformed_image_cache.value and cache_storage_backend.exists(cache_filename):
+        if not setting_disable_transformed_image_cache.value and documentimagecache_storage.exists(cache_filename):
             logger.debug(
                 'transformations cache file "%s" found', cache_filename
             )
@@ -819,7 +819,7 @@ class DocumentPage(models.Model):
                 'transformations cache file "%s" not found', cache_filename
             )
             image = self.get_image(transformations=transformation_list)
-            with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+            with documentimagecache_storage.open(cache_filename, 'wb+') as file_object:
                 file_object.write(image.getvalue())
 
             self.cached_images.create(filename=cache_filename)
@@ -840,10 +840,10 @@ class DocumentPage(models.Model):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
-        if not setting_disable_base_image_cache.value and cache_storage_backend.exists(cache_filename):
+        if not setting_disable_base_image_cache.value and documentimagecache_storage.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
             converter = converter_class(
-                file_object=cache_storage_backend.open(cache_filename)
+                file_object=documentimagecache_storage.open(cache_filename)
             )
 
             converter.seek(0)
@@ -858,7 +858,7 @@ class DocumentPage(models.Model):
 
                 page_image = converter.get_page()
 
-                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+                with documentimagecache_storage.open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
             except Exception as exception:
                 # Cleanup in case of error
@@ -866,7 +866,7 @@ class DocumentPage(models.Model):
                     'Error creating page cache file "%s"; %s',
                     cache_filename, exception
                 )
-                cache_storage_backend.delete(cache_filename)
+                documentimagecache_storage.delete(cache_filename)
                 raise
 
         for transformation in transformations:
@@ -875,7 +875,7 @@ class DocumentPage(models.Model):
         return converter.get_page()
 
     def invalidate_cache(self):
-        cache_storage_backend.delete(self.cache_filename)
+        documentimagecache_storage.delete(self.cache_filename)
         for cached_image in self.cached_images.all():
             cached_image.delete()
 
@@ -906,7 +906,7 @@ class DocumentPageCachedImage(models.Model):
         verbose_name_plural = _('Document page cached images')
 
     def delete(self, *args, **kwargs):
-        cache_storage_backend.delete(self.filename)
+        documentimagecache_storage.delete(self.filename)
         return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
 
 

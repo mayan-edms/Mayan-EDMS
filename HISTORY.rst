@@ -117,9 +117,6 @@
 - Support passing arguments to the document, document cache and document signatures
   storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
   DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
-- Support passing arguments to the document, document cache and document signatures
-  storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
-  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
 - Remove the setting STORAGE_FILESTORAGE_LOCATION. Document storage
   location for the storage.backend.filebasedstorage.FileBasedStorage
   backdend must now passed via the DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
@@ -129,6 +126,11 @@
   DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
   If no path is specified the backend will default to
   'mayan/media/document_storage'.
+- Standardize the way storages are used. All apps that use storage now define
+  their storages in the .storages modules instead of the .runtime module.
+  The storage.backends.filebasedstorage.FileBasedStorage has been remove,
+  instead Django's default storage is used and each app is responsible
+  of specifying their default path.
 
 
 2.7.3 (2017-09-11)

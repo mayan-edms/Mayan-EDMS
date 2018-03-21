@@ -8,7 +8,7 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 
-from documents.runtime import cache_storage_backend
+from documents.storages import documentimagecache_storage
 
 from .events import event_ocr_document_version_finish
 from .runtime import ocr_backend
@@ -31,7 +31,7 @@ class DocumentPageOCRContentManager(models.Manager):
         # TODO: Call task and wait
         cache_filename = document_page.generate_image()
 
-        with cache_storage_backend.open(cache_filename) as file_object:
+        with documentimagecache_storage.open(cache_filename) as file_object:
             document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
                 document_page=document_page
             )

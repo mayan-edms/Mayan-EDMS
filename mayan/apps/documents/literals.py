@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.literals import TIME_DELTA_UNIT_DAYS
 
-CACHE_PATH = 'document_cache/'
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60
 DELETE_STALE_STUBS_INTERVAL = 60 * 10  # 10 minutes

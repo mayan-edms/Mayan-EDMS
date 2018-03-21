@@ -15,7 +15,7 @@ from django_gpg.models import Key
 from documents.models import DocumentVersion
 
 from .managers import EmbeddedSignatureManager
-from .runtime import storage_backend
+from .storages import storage_backend
 
 logger = logging.getLogger(__name__)
 
