@@ -9,3 +9,7 @@ setting_storage_backend = namespace.add_setting(
     global_name='SIGNATURES_STORAGE_BACKEND',
     default='storage.backends.filebasedstorage.FileBasedStorage'
 )
+setting_storage_backend_arguments = namespace.add_setting(
+    global_name='SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
+    default=''
+)

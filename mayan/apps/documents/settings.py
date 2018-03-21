@@ -47,6 +47,10 @@ setting_storage_backend = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND',
     default='storage.backends.filebasedstorage.FileBasedStorage'
 )
+setting_storage_backend_arguments = namespace.add_setting(
+    global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
+    default=''
+)
 setting_zoom_percent_step = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_PERCENT_STEP', default=25,
     help_text=_(
@@ -77,6 +81,10 @@ setting_rotation_step = namespace.add_setting(
 setting_cache_storage_backend = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
     default='documents.storage.LocalCacheFileStorage'
+)
+setting_cache_storage_backend_arguments = namespace.add_setting(
+    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
+    default=''
 )
 setting_language = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE', default='eng',

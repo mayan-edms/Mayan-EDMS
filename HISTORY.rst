@@ -114,7 +114,9 @@
   revoke permissions for the selected role.
 - Only show the new document link if the user has access to create documents of
   at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
-- Remove the data filters feature.
+- Support passing arguments to the document, document cache and document signatures
+  storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
 
 2.7.3 (2017-09-11)
 ==================
