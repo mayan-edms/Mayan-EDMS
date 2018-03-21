@@ -17,8 +17,6 @@ except ImportError:
 from django.core.files import File
 from django.core.files.storage import FileSystemStorage
 
-from ..settings import FILESTORAGE_LOCATION
-
 
 class CompressedStorage(FileSystemStorage):
     """Simple wrapper for the stock Django FileSystemStorage class"""
@@ -26,8 +24,8 @@ class CompressedStorage(FileSystemStorage):
     separator = os.path.sep
 
     def __init__(self, *args, **kwargs):
+        self.location = kwargs.pop('location')
         super(CompressedStorage, self).__init__(*args, **kwargs)
-        self.location = FILESTORAGE_LOCATION
 
     def save(self, name, content):
         descriptor = StringIO()
