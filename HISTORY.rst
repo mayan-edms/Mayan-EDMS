@@ -1,4 +1,4 @@
-3.0 (2018-03-19)
+3.0 (2018-04-XX)
 ================
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
@@ -60,6 +60,8 @@
 - Improve and add additional diagrams.
 - Change documenation theme to rtd.
 - Fix "check for update" feature.
+- Fix carousel item height issues.
+- Place the page number summary at the bottom of the carousel pages.
 
 2.8 (2018-02-27)
 ================

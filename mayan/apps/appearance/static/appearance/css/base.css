@@ -84,6 +84,7 @@ body {
 
 .carousel-item {
     margin: 5px 10px 10px 10px;
+    min-height: 100%;
 }
 
 .carousel-item-page-number {
