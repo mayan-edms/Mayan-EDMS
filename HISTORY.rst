@@ -59,9 +59,9 @@
 - Add upload wizard step chapte.
 - Improve and add additional diagrams.
 - Change documenation theme to rtd.
-- Fix "check for update" feature.
 - Fix carousel item height issues.
-- Place the page number summary at the bottom of the carousel pages.
+- Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
+- Add Makefile target to check the format of the README.rst file.
 
 2.8 (2018-02-27)
 ================
