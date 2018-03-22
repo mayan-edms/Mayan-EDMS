@@ -393,6 +393,7 @@ Other changes worth mentioning
 - Add upload wizard step documentation chapter.
 - Improve and add additional diagrams.
 - Change documenation theme to rtd.
+- Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
 
 Removals
 --------
