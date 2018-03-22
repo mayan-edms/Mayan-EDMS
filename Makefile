@@ -352,3 +352,6 @@ build:
 	cp -r /host_home/.pypirc ~/.pypirc && \
 	make wheel && \
 	cp dist/* /host_source/dist/"
+
+check_readme:
+	python setup.py check -r -s

@@ -421,6 +421,11 @@ Release checklist
 8. Check README.rst format with::
    
     $ python setup.py check -r -s
+
+or with::
+
+    $ make check_readme
+
     
 9. Build source package and test::
 

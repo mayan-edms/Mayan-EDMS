@@ -59,6 +59,7 @@
 - Add upload wizard step chapte.
 - Improve and add additional diagrams.
 - Change documenation theme to rtd.
+- Fix "check for update" feature.
 
 2.8 (2018-02-27)
 ================
