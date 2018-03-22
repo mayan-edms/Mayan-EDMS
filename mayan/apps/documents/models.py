@@ -156,7 +156,7 @@ class Document(models.Model):
     """
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
-        DocumentType, on_delete=models.CASCADE, related_name='documents',
+        on_delete=models.CASCADE, related_name='documents', to=DocumentType,
         verbose_name=_('Document type')
     )
     label = models.CharField(
@@ -381,7 +381,7 @@ class DocumentVersion(models.Model):
         cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(
-        Document, on_delete=models.CASCADE, related_name='versions',
+        on_delete=models.CASCADE, related_name='versions', to=Document,
         verbose_name=_('Document')
     )
     timestamp = models.DateTimeField(
@@ -455,6 +455,37 @@ class DocumentVersion(models.Model):
         else:
             return '#'
 
+    def get_intermidiate_file(self):
+        cache_filename = self.cache_filename
+        logger.debug('Intermidiate filename: %s', cache_filename)
+
+        if cache_storage_backend.exists(cache_filename):
+            logger.debug('Intermidiate file "%s" found.', cache_filename)
+
+            return cache_storage_backend.open(cache_filename)
+        else:
+            logger.debug('Intermidiate file "%s" not found.', cache_filename)
+
+            try:
+                converter = converter_class(file_object=self.open())
+                pdf_file_object = converter.to_pdf()
+
+                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+                    for chunk in pdf_file_object:
+                        file_object.write(chunk)
+
+                return cache_storage_backend.open(cache_filename)
+            except InvalidOfficeFormat:
+                return self.open()
+            except Exception as exception:
+                # Cleanup in case of error
+                logger.error(
+                    'Error creating intermediate file "%s"; %s.',
+                    cache_filename, exception
+                )
+                cache_storage_backend.delete(cache_filename)
+                raise
+
     def get_rendered_string(self, preserve_extension=False):
         if preserve_extension:
             filename, extension = os.path.splitext(self.document.label)
@@ -470,6 +501,47 @@ class DocumentVersion(models.Model):
         return Template('{{ instance.timestamp }}').render(
             context=Context({'instance': self})
         )
+
+    def invalidate_cache(self):
+        cache_storage_backend.delete(self.cache_filename)
+        for page in self.pages.all():
+            page.invalidate_cache()
+
+    def open(self, raw=False):
+        """
+        Return a file descriptor to a document version's file irrespective of
+        the storage backend
+        """
+        if raw:
+            return self.file.storage.open(self.file.name)
+        else:
+            result = self.file.storage.open(self.file.name)
+            for key in sorted(DocumentVersion._pre_open_hooks):
+                result = DocumentVersion._pre_open_hooks[key](
+                    file_object=result, document_version=self
+                )
+
+            return result
+
+    @property
+    def page_count(self):
+        """
+        The number of pages that the document posses.
+        """
+        return self.pages.count()
+
+    def revert(self, _user=None):
+        """
+        Delete the subsequent versions after this one
+        """
+        logger.info(
+            'Reverting to document document: %s to version: %s',
+            self.document, self
+        )
+
+        event_document_version_revert.commit(actor=_user, target=self.document)
+        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
+            version.delete()
 
     def save(self, *args, **kwargs):
         """
@@ -526,78 +598,6 @@ class DocumentVersion(models.Model):
                     post_document_created.send(
                         sender=Document, instance=self.document
                     )
-
-    def get_intermidiate_file(self):
-        cache_filename = self.cache_filename
-        logger.debug('Intermidiate filename: %s', cache_filename)
-
-        if cache_storage_backend.exists(cache_filename):
-            logger.debug('Intermidiate file "%s" found.', cache_filename)
-
-            return cache_storage_backend.open(cache_filename)
-        else:
-            logger.debug('Intermidiate file "%s" not found.', cache_filename)
-
-            try:
-                converter = converter_class(file_object=self.open())
-                pdf_file_object = converter.to_pdf()
-
-                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
-                    for chunk in pdf_file_object:
-                        file_object.write(chunk)
-
-                return cache_storage_backend.open(cache_filename)
-            except InvalidOfficeFormat:
-                return self.open()
-            except Exception as exception:
-                # Cleanup in case of error
-                logger.error(
-                    'Error creating intermediate file "%s"; %s.',
-                    cache_filename, exception
-                )
-                cache_storage_backend.delete(cache_filename)
-                raise
-
-    def invalidate_cache(self):
-        cache_storage_backend.delete(self.cache_filename)
-        for page in self.pages.all():
-            page.invalidate_cache()
-
-    def open(self, raw=False):
-        """
-        Return a file descriptor to a document version's file irrespective of
-        the storage backend
-        """
-        if raw:
-            return self.file.storage.open(self.file.name)
-        else:
-            result = self.file.storage.open(self.file.name)
-            for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](
-                    file_object=result, document_version=self
-                )
-
-            return result
-
-    @property
-    def page_count(self):
-        """
-        The number of pages that the document posses.
-        """
-        return self.pages.count()
-
-    def revert(self, _user=None):
-        """
-        Delete the subsequent versions after this one
-        """
-        logger.info(
-            'Reverting to document document: %s to version: %s',
-            self.document, self
-        )
-
-        event_document_version_revert.commit(actor=_user, target=self.document)
-        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
-            version.delete()
 
     def save_to_file(self, filepath, buffer_size=1024 * 1024):
         """
@@ -692,7 +692,7 @@ class DocumentTypeFilename(models.Model):
     quick rename functionality
     """
     document_type = models.ForeignKey(
-        DocumentType, on_delete=models.CASCADE, related_name='filenames',
+        on_delete=models.CASCADE, related_name='filenames', to=DocumentType,
         verbose_name=_('Document type')
     )
     filename = models.CharField(
@@ -716,7 +716,7 @@ class DocumentPage(models.Model):
     Model that describes a document version page
     """
     document_version = models.ForeignKey(
-        DocumentVersion, on_delete=models.CASCADE, related_name='pages',
+        on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
         verbose_name=_('Document version')
     )
     page_number = models.PositiveIntegerField(
@@ -895,8 +895,8 @@ class DocumentPage(models.Model):
 
 class DocumentPageCachedImage(models.Model):
     document_page = models.ForeignKey(
-        DocumentPage, on_delete=models.CASCADE, related_name='cached_images',
-        verbose_name=_('Document page')
+        on_delete=models.CASCADE, related_name='cached_images',
+        to=DocumentPage, verbose_name=_('Document page')
     )
     filename = models.CharField(max_length=128, verbose_name=_('Filename'))
 
@@ -924,11 +924,11 @@ class RecentDocument(models.Model):
     a given user
     """
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, editable=False,
-        on_delete=models.CASCADE, verbose_name=_('User')
+        db_index=True, editable=False, on_delete=models.CASCADE,
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     document = models.ForeignKey(
-        Document, editable=False, on_delete=models.CASCADE,
+        editable=False, on_delete=models.CASCADE, to=Document,
         verbose_name=_('Document')
     )
     datetime_accessed = models.DateTimeField(
@@ -953,11 +953,11 @@ class RecentDocument(models.Model):
 @python_2_unicode_compatible
 class DuplicatedDocument(models.Model):
     document = models.ForeignKey(
-        Document, on_delete=models.CASCADE, related_name='duplicates',
+        on_delete=models.CASCADE, related_name='duplicates', to=Document,
         verbose_name=_('Document')
     )
     documents = models.ManyToManyField(
-        Document, verbose_name=_('Duplicated documents')
+        to=Document, verbose_name=_('Duplicated documents')
     )
     datetime_added = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Added')

@@ -29,10 +29,9 @@ class Transformation(models.Model):
     transformation argument. Example: if a page is rotated with the Rotation
     transformation, this field will show by how many degrees it was rotated.
     """
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(on_delete=models.CASCADE, to=ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(
             'Order in which the transformations will be executed. If left '

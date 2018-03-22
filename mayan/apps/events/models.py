@@ -43,12 +43,13 @@ class StoredEventType(models.Model):
 @python_2_unicode_compatible
 class EventSubscription(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, on_delete=models.CASCADE,
-        related_name='event_subscriptions', verbose_name=_('User')
+        db_index=True, on_delete=models.CASCADE,
+        related_name='event_subscriptions', to=settings.AUTH_USER_MODEL,
+        verbose_name=_('User')
     )
     stored_event_type = models.ForeignKey(
-        StoredEventType, on_delete=models.CASCADE,
-        related_name='event_subscriptions', verbose_name=_('Event type')
+        on_delete=models.CASCADE, related_name='event_subscriptions',
+        to=StoredEventType, verbose_name=_('Event type')
     )
 
     objects = EventSubscriptionManager()
@@ -64,11 +65,12 @@ class EventSubscription(models.Model):
 @python_2_unicode_compatible
 class Notification(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, on_delete=models.CASCADE,
-        related_name='notifications', verbose_name=_('User')
+        db_index=True, on_delete=models.CASCADE,
+        related_name='notifications', to=settings.AUTH_USER_MODEL,
+        verbose_name=_('User')
     )
     action = models.ForeignKey(
-        Action, on_delete=models.CASCADE, related_name='notifications',
+        on_delete=models.CASCADE, related_name='notifications', to=Action,
         verbose_name=_('Action')
     )
     read = models.BooleanField(default=False, verbose_name=_('Read'))
@@ -85,7 +87,7 @@ class Notification(models.Model):
 @python_2_unicode_compatible
 class ObjectEventSubscription(models.Model):
     content_type = models.ForeignKey(
-        ContentType, on_delete=models.CASCADE,
+        on_delete=models.CASCADE, to=ContentType,
     )
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(
@@ -93,12 +95,13 @@ class ObjectEventSubscription(models.Model):
         fk_field='object_id',
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, db_index=True, on_delete=models.CASCADE,
-        related_name='object_subscriptions', verbose_name=_('User')
+        db_index=True, on_delete=models.CASCADE,
+        related_name='object_subscriptions', to=settings.AUTH_USER_MODEL,
+        verbose_name=_('User')
     )
     stored_event_type = models.ForeignKey(
-        StoredEventType, on_delete=models.CASCADE,
-        related_name='object_subscriptions', verbose_name=_('Event type')
+        on_delete=models.CASCADE, related_name='object_subscriptions',
+        to=StoredEventType, verbose_name=_('Event type')
     )
 
     objects = ObjectEventSubscriptionManager()

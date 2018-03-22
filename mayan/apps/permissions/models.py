@@ -75,10 +75,11 @@ class Role(models.Model):
         max_length=64, unique=True, verbose_name=_('Label')
     )
     permissions = models.ManyToManyField(
-        StoredPermission, related_name='roles', verbose_name=_('Permissions')
+        related_name='roles', to=StoredPermission,
+        verbose_name=_('Permissions')
     )
     groups = models.ManyToManyField(
-        Group, related_name='roles', verbose_name=_('Groups')
+        related_name='roles', to=Group, verbose_name=_('Groups')
     )
 
     objects = RoleManager()

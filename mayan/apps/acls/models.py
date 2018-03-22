@@ -30,8 +30,8 @@ class AccessControlList(models.Model):
     in the Setup menu.
     """
     content_type = models.ForeignKey(
-        ContentType, on_delete=models.CASCADE,
-        related_name='object_content_type'
+        on_delete=models.CASCADE, related_name='object_content_type',
+        to=ContentType
     )
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey(
@@ -39,11 +39,11 @@ class AccessControlList(models.Model):
     )
     # TODO: limit choices to the permissions valid for the content_object
     permissions = models.ManyToManyField(
-        StoredPermission, blank=True, related_name='acls',
+        blank=True, related_name='acls', to=StoredPermission,
         verbose_name=_('Permissions')
     )
     role = models.ForeignKey(
-        Role, on_delete=models.CASCADE, related_name='acls',
+        on_delete=models.CASCADE, related_name='acls', to=Role,
         verbose_name=_('Role')
     )
 

@@ -36,8 +36,8 @@ class SignatureBaseModel(models.Model):
     even when using the same key.
     """
     document_version = models.ForeignKey(
-        DocumentVersion, editable=False, on_delete=models.CASCADE,
-        related_name='signatures', verbose_name=_('Document version')
+        editable=False, on_delete=models.CASCADE, related_name='signatures',
+        to=DocumentVersion, verbose_name=_('Document version')
     )
     # Basic fields
     date = models.DateField(

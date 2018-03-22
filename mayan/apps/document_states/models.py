@@ -47,8 +47,9 @@ class Workflow(models.Model):
         max_length=255, unique=True, verbose_name=_('Label')
     )
     document_types = models.ManyToManyField(
-        DocumentType, related_name='workflows',
-        verbose_name=_('Document types')
+        related_name='workflows', to=DocumentType, verbose_name=_(
+            'Document types'
+        )
     )
 
     objects = WorkflowManager()
@@ -141,7 +142,7 @@ class WorkflowState(models.Model):
     the Completion Amount will show 66%.
     """
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='states',
+        on_delete=models.CASCADE, related_name='states', to=Workflow,
         verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
@@ -210,8 +211,8 @@ class WorkflowState(models.Model):
 @python_2_unicode_compatible
 class WorkflowStateAction(models.Model):
     state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='actions', verbose_name=_('Workflow state')
+        on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
+        verbose_name=_('Workflow state')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -272,18 +273,17 @@ class WorkflowStateAction(models.Model):
 @python_2_unicode_compatible
 class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='transitions',
+        on_delete=models.CASCADE, related_name='transitions', to=Workflow,
         verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     origin_state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='origin_transitions', verbose_name=_('Origin state')
+        on_delete=models.CASCADE, related_name='origin_transitions',
+        to=WorkflowState, verbose_name=_('Origin state')
     )
     destination_state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='destination_transitions',
-        verbose_name=_('Destination state')
+        on_delete=models.CASCADE, related_name='destination_transitions',
+        to=WorkflowState, verbose_name=_('Destination state')
     )
 
     class Meta:
@@ -301,11 +301,11 @@ class WorkflowTransition(models.Model):
 @python_2_unicode_compatible
 class WorkflowTransitionTriggerEvent(models.Model):
     transition = models.ForeignKey(
-        WorkflowTransition, on_delete=models.CASCADE,
-        related_name='trigger_events', verbose_name=_('Transition')
+        on_delete=models.CASCADE, related_name='trigger_events',
+        to=WorkflowTransition, verbose_name=_('Transition')
     )
     event_type = models.ForeignKey(
-        StoredEventType, on_delete=models.CASCADE,
+        on_delete=models.CASCADE, to=StoredEventType,
         verbose_name=_('Event type')
     )
 
@@ -320,11 +320,11 @@ class WorkflowTransitionTriggerEvent(models.Model):
 @python_2_unicode_compatible
 class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='instances',
+        on_delete=models.CASCADE, related_name='instances', to=Workflow,
         verbose_name=_('Workflow')
     )
     document = models.ForeignKey(
-        Document, on_delete=models.CASCADE, related_name='workflows',
+        on_delete=models.CASCADE, related_name='workflows', to=Document,
         verbose_name=_('Document')
     )
 
@@ -425,19 +425,19 @@ class WorkflowInstanceLogEntry(models.Model):
     the document state to the Actual state.
     """
     workflow_instance = models.ForeignKey(
-        WorkflowInstance, on_delete=models.CASCADE,
-        related_name='log_entries', verbose_name=_('Workflow instance')
+        on_delete=models.CASCADE, related_name='log_entries',
+        to=WorkflowInstance, verbose_name=_('Workflow instance')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Datetime')
     )
     transition = models.ForeignKey(
-        WorkflowTransition, on_delete=models.CASCADE,
+        on_delete=models.CASCADE, to=WorkflowTransition,
         verbose_name=_('Transition')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, blank=True, null=True,
-        on_delete=models.CASCADE, verbose_name=_('User')
+        blank=True, null=True, on_delete=models.CASCADE,
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 

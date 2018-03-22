@@ -76,6 +76,10 @@ class Key(models.Model):
     def get_absolute_url(self):
         return reverse('django_gpg:key_detail', args=(self.pk,))
 
+    @property
+    def key_id(self):
+        return self.fingerprint[-8:]
+
     def save(self, *args, **kwargs):
         import_results, key_info = gpg_backend.import_and_list_keys(
             key_data=self.key_data
@@ -119,7 +123,3 @@ class Key(models.Model):
                 raise NeedPassphrase
 
         return file_sign_results
-
-    @property
-    def key_id(self):
-        return self.fingerprint[-8:]

@@ -503,18 +503,18 @@ class EmailBaseModel(IntervalBaseModel):
         ), max_length=128, verbose_name=_('Metadata attachment name')
     )
     subject_metadata_type = models.ForeignKey(
-        MetadataType, blank=True, help_text=_(
+        blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s subject.'
         ), on_delete=models.CASCADE, null=True, related_name='email_subject',
-        verbose_name=_('Subject metadata type')
+        to=MetadataType, verbose_name=_('Subject metadata type')
     )
     from_metadata_type = models.ForeignKey(
-        MetadataType, blank=True, help_text=_(
+        blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s "from" value.'
         ), on_delete=models.CASCADE, null=True, related_name='email_from',
-        verbose_name=_('From metadata type')
+        to=MetadataType, verbose_name=_('From metadata type')
     )
     store_body = models.BooleanField(
         default=True, help_text=_(
@@ -787,7 +787,7 @@ class WatchFolderSource(IntervalBaseModel):
 
 class SourceLog(models.Model):
     source = models.ForeignKey(
-        Source, on_delete=models.CASCADE, related_name='logs',
+        on_delete=models.CASCADE, related_name='logs', to=Source,
         verbose_name=_('Source')
     )
     datetime = models.DateTimeField(

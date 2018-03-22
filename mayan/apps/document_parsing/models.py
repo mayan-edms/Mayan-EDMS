@@ -12,7 +12,7 @@ from .managers import DocumentPageContentManager
 @python_2_unicode_compatible
 class DocumentPageContent(models.Model):
     document_page = models.OneToOneField(
-        DocumentPage, on_delete=models.CASCADE, related_name='content',
+        on_delete=models.CASCADE, related_name='content', to=DocumentPage,
         verbose_name=_('Document page')
     )
     content = models.TextField(blank=True, verbose_name=_('Content'))
@@ -30,8 +30,8 @@ class DocumentPageContent(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionParseError(models.Model):
     document_version = models.ForeignKey(
-        DocumentVersion, on_delete=models.CASCADE,
-        related_name='parsing_errors', verbose_name=_('Document version')
+        on_delete=models.CASCADE, related_name='parsing_errors',
+        to=DocumentVersion, verbose_name=_('Document version')
     )
     datetime_submitted = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')

@@ -19,12 +19,12 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class Comment(models.Model):
     document = models.ForeignKey(
-        Document, db_index=True, on_delete=models.CASCADE,
-        related_name='comments', verbose_name=_('Document')
+        db_index=True, on_delete=models.CASCADE, related_name='comments',
+        to=Document, verbose_name=_('Document')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE,
-        related_name='comments', verbose_name=_('User'),
+        editable=False, on_delete=models.CASCADE, related_name='comments',
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User'),
     )
     # Translators: Comment here is a noun and refers to the actual text stored
     comment = models.TextField(verbose_name=_('Comment'))

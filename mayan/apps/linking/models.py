@@ -29,7 +29,7 @@ class SmartLink(models.Model):
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(
-        DocumentType, verbose_name=_('Document types')
+        to=DocumentType, verbose_name=_('Document types')
     )
 
     objects = SmartLinkManager()
@@ -105,7 +105,7 @@ class ResolvedSmartLink(SmartLink):
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     smart_link = models.ForeignKey(
-        SmartLink, on_delete=models.CASCADE, related_name='conditions',
+        on_delete=models.CASCADE, related_name='conditions', to=SmartLink,
         verbose_name=_('Smart link')
     )
     inclusion = models.CharField(

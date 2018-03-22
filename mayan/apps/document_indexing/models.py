@@ -46,7 +46,7 @@ class Index(models.Model):
         verbose_name=_('Enabled')
     )
     document_types = models.ManyToManyField(
-        DocumentType, verbose_name=_('Document types')
+        to=DocumentType, verbose_name=_('Document types')
     )
 
     objects = IndexManager()
@@ -146,10 +146,10 @@ class IndexTemplateNode(MPTTModel):
     documents but not both.
     """
     parent = TreeForeignKey(
-        'self', blank=True, null=True, on_delete=models.CASCADE
+        blank=True, null=True, on_delete=models.CASCADE, to='self',
     )
     index = models.ForeignKey(
-        Index, on_delete=models.CASCADE, related_name='node_templates',
+        on_delete=models.CASCADE, related_name='node_templates', to=Index,
         verbose_name=_('Index')
     )
     expression = models.TextField(
@@ -276,18 +276,17 @@ class IndexTemplateNode(MPTTModel):
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey(
-        'self', blank=True, null=True, on_delete=models.CASCADE
+        blank=True, null=True, on_delete=models.CASCADE, to='self',
     )
     index_template_node = models.ForeignKey(
-        IndexTemplateNode, on_delete=models.CASCADE,
-        related_name='index_instance_nodes',
-        verbose_name=_('Index template node')
+        on_delete=models.CASCADE, related_name='index_instance_nodes',
+        to=IndexTemplateNode, verbose_name=_('Index template node')
     )
     value = models.CharField(
         blank=True, db_index=True, max_length=128, verbose_name=_('Value')
     )
     documents = models.ManyToManyField(
-        Document, related_name='index_instance_nodes',
+        related_name='index_instance_nodes', to=Document,
         verbose_name=_('Documents')
     )
 
