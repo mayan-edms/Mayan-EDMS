@@ -48,6 +48,4 @@ class CabinetDocumentUploadTestCase(GenericDocumentViewTestCase):
         response = self._request_upload_interactive_document_create_view()
 
         self.assertEqual(response.status_code, 302)
-        print '1', self.cabinet
-        print '2', Document.objects.first().cabinets.all()
         self.assertTrue(self.cabinet in Document.objects.first().cabinets.all())
