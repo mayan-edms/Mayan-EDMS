@@ -29,18 +29,19 @@ class EventTypeUserRelationshipForm(forms.Form):
             *args, **kwargs
         )
 
-        self.fields['namespace'].initial = self.initial['stored_event_type'].namespace
-        self.fields['label'].initial = self.initial['stored_event_type'].label
+        if 'stored_event_type' in self.initial:
+            self.fields['namespace'].initial = self.initial['stored_event_type'].namespace
+            self.fields['label'].initial = self.initial['stored_event_type'].label
 
-        subscription = EventSubscription.objects.get_for(
-            stored_event_type=self.initial['stored_event_type'],
-            user=self.initial['user'],
-        )
+            subscription = EventSubscription.objects.get_for(
+                stored_event_type=self.initial['stored_event_type'],
+                user=self.initial['user'],
+            )
 
-        if subscription.exists():
-            self.fields['subscription'].initial = 'subscribed'
-        else:
-            self.fields['subscription'].initial = 'none'
+            if subscription.exists():
+                self.fields['subscription'].initial = 'subscribed'
+            else:
+                self.fields['subscription'].initial = 'none'
 
     def save(self):
         subscription = EventSubscription.objects.get_for(

@@ -75,6 +75,7 @@ Other
   libraries.
 - Automatically capture license information from installed Python
   packages.
+- Unify all **RelationshipForms into a common class.
 
 Permissions
 ~~~~~~~~~~~
