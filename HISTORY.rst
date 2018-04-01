@@ -23,6 +23,8 @@
 - Display a proper message in the document type metadata type relationship
   view when there are no metadata types exist.
 - Require the document view permission to view trashed documents.
+- Make the multi object form perform an auto submit when the value is changed.
+- Add multiple object select checkbox that was missing in the list item subtemplate.
 
 2.7.3 (2017-09-11)
 ==================
