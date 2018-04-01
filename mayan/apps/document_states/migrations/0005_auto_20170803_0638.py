@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0006_objecteventsubscription'),
+        ('events', '0001_initial'),
         ('document_states', '0004_workflow_internal_name'),
     ]
 
