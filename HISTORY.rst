@@ -22,6 +22,7 @@
 - Allow filtering an event list by clicking on the user column.
 - Display a proper message in the document type metadata type relationship
   view when there are no metadata types exist.
+- Require the document view permission to view trashed documents.
 
 2.7.3 (2017-09-11)
 ==================
