@@ -103,6 +103,7 @@
 - Mark the feature to detect and fix the orientatin of PDF as experimental.
 - Don't show documents with 0 duplicates in the duplicated document list.
 - Clean up the duplicated document model after a document is deleted.
+- Add support Role ACLs.
 
 2.7.3 (2017-09-11)
 ==================

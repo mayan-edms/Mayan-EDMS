@@ -4,6 +4,9 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
+
 from common import (
     MayanAppConfig, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
@@ -11,9 +14,9 @@ from common.signals import perform_upgrade
 
 from .handlers import purge_permissions
 from .links import (
-    link_group_members, link_permission_grant, link_permission_revoke,
-    link_role_create, link_role_delete, link_role_edit, link_role_list,
-    link_role_members, link_role_permissions
+    link_group_roles, link_permission_grant, link_permission_revoke,
+    link_role_create, link_role_delete, link_role_edit, link_role_groups,
+    link_role_list, link_role_permissions
 )
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
@@ -35,18 +38,19 @@ class PermissionsApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Role, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_role_delete, permission_role_edit,
                 permission_role_view
             )
         )
 
         menu_object.bind_links(
-            links=(link_group_members,), position=98, sources=(Group,)
+            links=(link_group_roles,), position=98, sources=(Group,)
         )
         menu_object.bind_links(
             links=(
-                link_role_edit, link_role_members, link_role_permissions,
-                link_role_delete
+                link_role_edit, link_role_groups, link_role_permissions,
+                link_acl_list, link_role_delete
             ), sources=(Role,)
         )
         menu_multi_item.bind_links(

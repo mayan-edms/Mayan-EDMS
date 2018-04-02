@@ -27,7 +27,7 @@ class GroupRoleMembersView(AssignRemoveView):
     grouped = False
     left_list_title = _('Available roles')
     right_list_title = _('Group roles')
-    view_permission = permission_group_edit
+    object_permission = permission_group_edit
 
     def add(self, item):
         role = get_object_or_404(Role, pk=item)
@@ -66,21 +66,21 @@ class RoleCreateView(SingleObjectCreateView):
 
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
-    view_permission = permission_role_delete
+    object_permission = permission_role_delete
     post_action_redirect = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):
     fields = ('label',)
     model = Role
-    view_permission = permission_role_edit
+    object_permission = permission_role_edit
 
 
 class SetupRoleMembersView(AssignRemoveView):
     grouped = False
     left_list_title = _('Available groups')
     right_list_title = _('Role groups')
-    view_permission = permission_role_edit
+    object_permission = permission_role_edit
 
     def add(self, item):
         group = get_object_or_404(Group, pk=item)
@@ -114,7 +114,7 @@ class SetupRolePermissionsView(AssignRemoveView):
     grouped = True
     left_list_title = _('Available permissions')
     right_list_title = _('Granted permissions')
-    view_permission = permission_role_view
+    object_permission = permission_role_view
 
     def add(self, item):
         Permission.check_permissions(
@@ -173,4 +173,4 @@ class RoleListView(SingleObjectListView):
     }
 
     model = Role
-    view_permission = permission_role_view
+    object_permission = permission_role_view

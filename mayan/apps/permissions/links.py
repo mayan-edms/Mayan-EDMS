@@ -11,9 +11,9 @@ from .permissions import (
     permission_role_view
 )
 
-link_group_members = Link(
+link_group_roles = Link(
     permissions=(permission_group_edit,), text=_('Roles'),
-    view='permissions:group_members', args='object.id'
+    view='permissions:group_roles', args='object.id'
 )
 link_permission_grant = Link(
     permissions=(permission_permission_grant,), text=_('Grant'),
@@ -39,9 +39,9 @@ link_role_list = Link(
     icon='fa fa-user-secret', permissions=(permission_role_view,),
     text=_('Roles'), view='permissions:role_list'
 )
-link_role_members = Link(
+link_role_groups = Link(
     permissions=(permission_role_edit,), text=_('Groups'),
-    view='permissions:role_members', args='object.id'
+    view='permissions:role_groups', args='object.id'
 )
 link_role_permissions = Link(
     permissions=(permission_permission_grant, permission_permission_revoke),
