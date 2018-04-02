@@ -7,16 +7,7 @@ Release blockers
 
 These are errors or issues that are blocking a release.
 
-UI - Frontend
-~~~~~~~~~~~~~
-- Match row height is not executing until scroll.
-
-
-UI - Backend
-~~~~~~~~~~~~
-- Contextual multiple object action list is updating. On Checkout list
-  should diplay document checkin link. Same for other views.
-
+- None
 
 Pending work
 ------------
@@ -39,18 +30,6 @@ API
 - Add API filtering. Example unread notifications.
 
 
-Caching
-~~~~~~~
-- Size limited caching. A new model in the common app will keep track
-  of all cache files. A manager method will be provided that will
-  return the cache files in other of age to be deleted.
-
-
-Converter
-~~~~~~~~~
-- Move converter transformations to their own module. [DONE]
-
-
 Documents
 ~~~~~~~~~
 - Navigating to the interactive document page image is not triggering
@@ -65,18 +44,6 @@ Events
 Forms processing
 ~~~~~~~~~~~~~~~~
 - Remove usage of self.cleaned_data. Use self.clean_data instead.
-
-
-Metadata
-~~~~~~~~
-- Metadata lookup memory. Add a select2 style widget that will query a
-  new metadata API endpoint that will return all used values so far.
-
-
-Notifications
-~~~~~~~~~~~~~
-- Fix notification duplication of global & per document subscription
-  notifications.
 
 
 Other
@@ -230,6 +197,7 @@ Workflows
 New features
 ------------
 
+
 API
 ~~~
 - Add converter API
@@ -238,11 +206,13 @@ API
 - Use REST_API's 'mayan_permission_attribute_check' to simplify API views access checking and filtering.
 - DRF filtering using the URL query.
 
+
 Converter
 ~~~~~~~~~
 - New zoom transformation. Resample, not just bigger final size but do
   a resize * zoom multiple before. Produces a bigger image or higher
   quality than the original.
+
 
 Caching
 ~~~~~~~
@@ -250,11 +220,13 @@ Caching
   of all cache files. A manager method will be provided that will
   return the cache files in other of age to be deleted.
 
+
 Distribution
 ~~~~~~~~~~~~
 - Python based Javascript package manager. Each app specifies what
   library and version needs. The common app (or a new app) will add all
   the JS loading lines automatically so that compress can detect them.
+
 
 Other
 ~~~~~
@@ -286,6 +258,7 @@ Other
 - Reorganize modelForms Meta class and methods.
 - Periodic messages, like notifications. Using an AJAX worker.
 
+
 Metadata
 ~~~~~~~~
 - Metadata lookup memory. Add a select2 style widget that will query a
@@ -293,17 +266,21 @@ Metadata
 - Metadata validation_choices and parser_choices as static model methods
 - Metadata.api as Metadata.utils and manager
 
+
 Search
 ~~~~~~
 - Add support for highlighting the search results in pages.
+
 
 Settings
 ~~~~~~~~
 - Database based settings.
 
+
 Sources
 ~~~~~~~
 - UI improvement for staging folders files selection. GitLab issue.
+
 
 UI
 ~~
@@ -311,6 +288,7 @@ UI
 - Upgrade to Flatly 4.
 - Better workflow transition UI. Instead of a dropdown show all the
   available transitions as buttons.
+
 
 Workflows
 ~~~~~~~~~
