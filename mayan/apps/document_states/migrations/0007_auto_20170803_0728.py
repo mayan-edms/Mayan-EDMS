@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='workflowtransitiontriggerevent',
             name='event_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.StoredEventType', verbose_name='Event type'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.EventType', verbose_name='Event type'),
         ),
         migrations.AlterField(
             model_name='workflowtransitiontriggerevent',
