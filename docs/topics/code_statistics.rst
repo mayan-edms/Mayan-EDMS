@@ -1,3 +1,5 @@
+
+
 Code statistics
 ---------------
 
@@ -643,7 +645,7 @@ App name: user_management
       tests: 31
     module: mayan/apps/user_management/tests/test_views.py
       tests: 10
-----------
+
 Totals:
   Tests: 751
   Function based API views: 0

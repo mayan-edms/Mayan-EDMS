@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             model_name='workflow',
             name='internal_name',
             field=models.CharField(
-                db_index=True, default=' ',
+                db_index=False, default=' ',
                 help_text='This value will be used by other apps to reference '
                 'this workflow. Can only contain letters, numbers, and '
                 'underscores.', max_length=255, unique=False, validators=[
