@@ -136,7 +136,16 @@ class SetupRolePermissionsView(AssignRemoveView):
         Permission.refresh()
         results = []
 
-        for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
+        available_permission = sorted(
+            StoredPermission.objects.exclude(
+                id__in=self.get_object().permissions.values_list('pk', flat=True)
+            ), key=lambda x: (
+                x.get_volatile_permission().namespace.label,
+                x.get_volatile_permission().label
+            )
+        )
+
+        for namespace, permissions in itertools.groupby(available_permission, lambda entry: entry.namespace):
             permission_options = [
                 (force_text(permission.pk), permission) for permission in permissions
             ]
@@ -148,7 +157,15 @@ class SetupRolePermissionsView(AssignRemoveView):
 
     def right_list(self):
         results = []
-        for namespace, permissions in itertools.groupby(self.get_object().permissions.all(), lambda entry: entry.namespace):
+
+        granted_permissions = sorted(
+            self.get_object().permissions.all(), key=lambda x: (
+                x.get_volatile_permission().namespace.label,
+                x.get_volatile_permission().label
+            )
+        )
+
+        for namespace, permissions in itertools.groupby(granted_permissions, lambda entry: entry.namespace):
             permission_options = [
                 (force_text(permission.pk), permission) for permission in permissions
             ]

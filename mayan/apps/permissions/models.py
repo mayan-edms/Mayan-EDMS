@@ -27,20 +27,19 @@ class StoredPermission(models.Model):
         verbose_name = _('Permission')
         verbose_name_plural = _('Permissions')
 
-    def __init__(self, *args, **kwargs):
-        super(StoredPermission, self).__init__(*args, **kwargs)
-        try:
-            self.volatile_permission = Permission.get(
-                pk='{}.{}'.format(self.namespace, self.name),
-                proxy_only=True
-            )
-        except KeyError:
-            # Must be a deprecated permission in the database that is no
-            # longer used in the current code
-            pass
-
     def __str__(self):
-        return force_text(getattr(self, 'volatile_permission', self.name))
+        try:
+            return force_text(self.get_volatile_permission())
+        except KeyError:
+            return self.name
+
+    def get_volatile_permission_id(self):
+        return '{}.{}'.format(self.namespace, self.name)
+
+    def get_volatile_permission(self):
+        return Permission.get(
+            pk=self.get_volatile_permission_id(), proxy_only=True
+        )
 
     def natural_key(self):
         return (self.namespace, self.name)
