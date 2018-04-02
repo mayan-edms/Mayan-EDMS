@@ -1,13 +1,9 @@
-Welcome to Mayan EDMS NG!
-=========================
+Welcome to Mayan EDMS!
+======================
 
-Mayan EDMS NG is a modern fork of Mayan EDMS focused on stability,
-perfomance and new features.
-
-.. image:: /_static/mayan-pyramid.svg
-  :alt: Icons made by Freepik (http://www.freepik.com) from www.flaticon.com is licensed by CC 3.0 BY (http://creativecommons.org/licenses/by/3.0/)
+.. image:: /_static/mayan_logo.png
+  :alt: Logo is a trademark of Roberto Rosario
   :align: center
-  :width: 30%
 
 
 Mayan EDMS is a `Free Open Source`_ `Electronic Document Management System`_,
@@ -35,7 +31,7 @@ repository for electronic documents.
     FAQ <topics/faq>
     Contact <topics/contact>
     MERCs <mercs/index>
-    Pending tasks <topics/pending_tasks>
+    Pending work <topics/pending_work>
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/

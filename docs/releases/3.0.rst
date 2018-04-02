@@ -1,6 +1,6 @@
-================================
-Mayan EDMS NG v3.0 release notes
-================================
+=============================
+Mayan EDMS v3.0 release notes
+=============================
 
 Released: March 19, 2018
 
@@ -10,24 +10,12 @@ What's new
 Turning Mayan EDMS into a single page app
 -----------------------------------------
 Historically, Mayan EDMS has steered away from adding too much Javascript
-in its code. Roberto, the main developer, often explains his rationale
-for this decision. His goal has been to maintain a robust, backend-based
+in its code. The goal was to be able to maintain a robust, backend-based
 page rendering method that will be as future-proof as possible.
 This approach comes at the cost of some page loading speed, and reduced
 user interface interactivity.
 
-The Javascript ecosystem is an untamed jungle of competing “standards”.
-Between JQuery, Angular, React, Ember, CoffeeScript, ES2015, ES2017,
-Babel, Grunt, Gulp, Bower, Webpack, Vue, Webpack, Rollup, Parcel,
-among many others, is easy to see why that approach was the correct
-one at the time. Luckily things have improved thanks to HTML5 and CCS3.
-The browser can now do many things that often required convoluted
-Javascript code to achieve.
-
-One of the most common complains about the user interface is that it
-is slow, heavy, requires users to move around too much. That it
-requires “too many clicks” to achieve things.
-
+The whole system has been update to work as a modern Single Page App.
 Single Page Applications (SPAs) rewrite the current page dynamically
 rather than loading the entire page on each click of the mouse. This
 makes the web application feel and behave more like a desktop
@@ -38,13 +26,10 @@ response time to user events. Because the style is loaded and
 interpreted at the beginning, the browser is also able to apply it to
 the new content faster.
 
-In order to strike a balance with Roberto’s backend heavy philosophy,
-we stuck to using just HTML5 and jQuery. Aside from two additional
-jQuery libraries, there are no extra framework dependencies. With the
-conversion to an SPA, many other petitions for user interface
-improvements are now possible. We will work on these once the community
-confirms that all the user interface changes made to create the SPA are
-working as expected.
+This redesign was achieved using only HTML5 and jQuery. Aside from two
+additional jQuery libraries, there are no extra framework dependencies.
+With the conversion to an SPA, many other petitions for user interface
+improvements are now possible.
 
 
 Upgrading to Django 1.11
@@ -57,89 +42,18 @@ Mayan EDMS uses a complex template, form and widget system. The system
 mimics object-oriented concepts like inheritance at the rendering stage.
 This allows the more than 300 views to be serviced with just a handful
 of forms classes and base templates. Testing and auditing all the views
-and forms after the upgrade was a lot of work. If any member of the
-Django project is reading this, please adopt stricter version numbering
-convention, something like Semantic Versioning.
+and forms after the upgrade was a lot of work.
 
-Along with the upgrade to Django 1.11, we fixed many deprecations
-warning in preparation for an eventual upgrade to Django 2.0.
+Along with the upgrade to Django 1.11, many deprecations
+warning were fixed in preparation for an eventual upgrade to Django 2.0.
 
 
 Notification improvements
 -------------------------
-In version 2.8 we introduced event notifications. These work by allowing
-users to subscribe to a particular event like Document Uploads or to an
-event of a particular document like when an invoice is edited. If
-these events occur, the user gets a reminder next to the bell icon in
-the main menu bar. This feature had one important limitation. The
-notification reminder would only update if the main page updated. That
-meant that if the user didn’t interact with the user interface they
-would not get a notification reminder.
-
-We implemented a simple mechanism that checks for notifications
-periodically without user intervention. We avoided the use of webworkers,
-websockets and push notifications. The result is almost instant
-notifications without user interaction and without adding any extra
-dependencies.
-
-
-Notification improvements
--------------------------
-In version 2.8 we introduced event notifications. These work by allowing
-users to subscribe to a particular event like Document Uploads or to an
-event of a particular document like when an invoice is edited. If these
-events occur, the user gets a reminder next to the bell icon in the main
-menu bar. This feature had one important limitation. The notification
-reminder would only update if the main page updated. That meant that if
-the user didn’t interact with the user interface they would not get a
-notification reminder.
-
-We implemented a simple mechanism that checks for notifications
-periodically without user intervention. We avoided the use of webworkers,
-websockets and push notifications. The result is almost instant
-notifications without user interaction and without adding any extra
-dependencies.
-
-
-Migration squashing
--------------------
-Database base migrations are a must to ensure your data remains coherent
-after each upgrade. They need to be committed sequentially to simulate
-the evolution of the database structures over time. This is true even
-for new installations with no existing data. As Mayan EDMS matures and
-adds features it also adds migrations. Each of these migration add up
-to the amount of times it takes to install Mayan EDMS.
-
-Django recently added support for merging migrations. Because migrations
-are sometimes interdependencies between each other, this is a delicate
-procedure. Instead of getting wild with merges, we used the feature in
-moderation. We merged the migrations that have proven to be stable over
-the course of months or years. Additionally, these merged or “squashed”
-migrations are only used for new installations. Any upgrade of an
-existing installation will use the normal migrations. After some time,
-if not issues are reported with the merged migrations, the individual
-migrations will be removed and the merged migrations will take their place.
-
-These are the apps for which migrations were merged:
-
-- acls (ACLs): 1 and 2
-- checkouts (Checkouts): 1 and 2
-- common (Not shown in UI): 1 to 8
-- converter (Not shown in UI): from 1 to 12
-- django_gpg (Keys): from 1 to 6
-- document_indexing (Indexing): from 1 to 5
-- document_parsing (Parsing, “Content”): 1 and 2
-- document_signatures (Signatures): from 1 to 6
-- document_states (Workflows): 1 and 2
-- dynamic_search (Search): from 1 to 3
-- events (Event): from 1 to 4
-- linking (Smart links): from 1 to 5
-- lock_manager (Not shown in UI): 1 and 2
-- mailer (Mailing): from 1 to 5
-- metadata (Metadata): from 1 to 8
-- motd (Message of the day): from 1 to 5
-- permissions (Permissions): from 1 to 3
-- sources (Sources): from 1 to 16
+These work by allowing users to subscribe to a particular event like Document
+Uploads or to an event of a particular document like when an invoice is edited.
+If these events occurs, the user gets a reminder next to the bell icon in the
+main menu bar.
 
 
 Dependencies upgrades
@@ -169,12 +83,9 @@ their latest release.
 Search syntax
 -------------
 Searching without using a specialized search database is difficult.
-Most software just take the lazy route and force the user to install a
-dedicated search engine. Early on we noticed Mayan’s design called for
-avoiding a separate search engine at the cost of some missing search
-syntax. The OR and the negative term support is our first attempt at
-adding special syntax to Mayan’s search code. If we get good feedback,
-we plan to add more.
+Mayan’s design calls avoiding a separate search engine at the cost of some
+missing search syntax. The OR and the negative term support are the first
+attempts at adding special syntax to Mayan’s search code.
 
 By default now, search terms are routed to an “AND” query. That means
 that a search for:
@@ -188,7 +99,7 @@ opposite choice we added an “OR” syntax. Searching for:
 
 will return documents with either tag attached.
 
-We also added support for literals terms.
+Support for literals terms was also added.
 
 Searching for:
 
@@ -203,16 +114,16 @@ and “slow car”. To search for exact terms enclose them in quotes:
 This will return only documents with the exact phrase “blue car”.
 
 
-Running multiple instances of Mayan EDMS NG
--------------------------------------------
-If you've ever tried running two instances of Mayan EDMS NG, you would
+Running multiple instances of Mayan EDMS
+----------------------------------------
+If you've ever tried running two instances of Mayan EDMS, you would
 have noticed that they both try to create a lock file in the /tmp
 directory with the same name. Only the first instance will be able to run.
 
 The lock filename needs to be unique to each instance, yet predictable
 so that the workers of an instance can also access the same lock file.
 
-We solved this issues by using a hexadecimal hash representation of the
+This issues was solved by using a hexadecimal hash representation of the
 installation’s unique SECRET_KEY setting. The use of a hash makes
 reversing the value in order to obtain the SECRET_KEY impossible for
 all practical purposes.
@@ -220,16 +131,14 @@ all practical purposes.
 
 Display resolution settings
 ---------------------------
-During the template work required to upgrade the version of Django, we
-noticed that display sizes (display, preview, thumbnail) were specified
+Display sizes for document display, previews, and thumbnail were specified
 as a string that included the horizontal and the vertical resolution
 separated by the character “x”. Using an “x” character to separate
-resolution elements is not standard and didn't felt as well planned as
-the rest of the project. The converter in Mayan EDMS NG also allows
-specifying only the horizontal resolution. This design created some
-ambiguities in the code. We decided to split the settings for specifying
-resolutions into two settings for each size. One setting for
-horizontal resolution and another for vertical resolution.
+resolution elements is not standard.
+
+This version splits the settings for specifying resolutions into two settings
+for each size. One setting for horizontal resolution and another for vertical
+resolution.
 
 The settings are now:
 
@@ -322,15 +231,6 @@ This will cause the tags assigment step to not be assigned to the upload
 wizard anymore.
 
 
-Repository location
--------------------
-The code repository for Mayan EDMS NG now lives at:
-https://gitlab.com/Mayan-EDMS-NG/mayan-edms-ng
-
-A GitLab group was also created and all projects will now live under
-that unit.
-
-
 New upload step
 ---------------
 Using the new ``WizardStep`` class a new upload wizard step was added
@@ -345,16 +245,20 @@ On some devices the height of the pages on the document preview view were
 squashed. The CSS for this view was updated to fix this issue.
 
 
-Page number summary
--------------------
-The page number summary has been placed back at the bottom of the
-carousel pages in the document preview view.
-
 Orientation detection
 ---------------------
 After reports that it is not working in 100% of the cases, the feature that
 detects and fixes the orientation of PDF has been marked experimental and
 now defaults to being disabled.
+
+
+New proposal system
+-------------------
+The Mayan EDMS Request for Comments or MERCs will be use to propose and or
+document the new features, the existing code, and the processes governing the
+project. MERCs 1 and 2 have been approved. MERC-1 outlines the MERC process
+itself and MERC-2 documents the way API tests are to be written for Mayan EDMS.
+
 
 Other changes worth mentioning
 ------------------------------
@@ -420,12 +324,17 @@ Other changes worth mentioning
 - Add view to show list of events performed by an user.
 - Allow filtering an event list by clicking on the user column.
 - Revise and improve permission requirements for the documents app API.
-  - Downloading a document version now requires the document download permission instead of just the document view permission.
-  - Creating a new document no longer works by having the document create permission in a global manner. It is now possible
-    to create a document via the API by having the document permission for a specific document type.
-  - Viewing the version list of a document now required the document version view permission instead of the document view permission.
-    Not having the document version view permission for a document will not return a 403 error. Instead a blank response will be returned.
-  - Reverting a document via API will new require the document version revert permission instead of the document edit permission.
+  - Downloading a document version now requires the document download
+    permission instead of just the document view permission.
+  - Creating a new document no longer works by having the document create
+    permission in a global manner. It is now possible to create a document via
+    the API by having the document permission for a specific document type.
+  - Viewing the version list of a document now required the document version
+    view permission instead of the document view permission. Not having the
+    document version view permission for a document will not return a 403
+    error. Instead a blank response will be returned.
+  - Reverting a document via API will new require the document version revert
+    permission instead of the document edit permission.
   - ``Document view`` permissions is nor required to view the details of
     a trashed document.
 
@@ -458,7 +367,7 @@ Using PIP
 
 Type in the console::
 
-    $ pip install mayan-edms-ng==3.0
+    $ pip install mayan-edms==3.0
 
 the requirements will also be updated automatically.
 

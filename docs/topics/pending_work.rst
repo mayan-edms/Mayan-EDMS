@@ -111,8 +111,8 @@ Other
   PasswordChangeView, PasswordChangeDoneView, PasswordResetView,
   PasswordResetDoneView, PasswordResetConfirmView, and PasswordResetCompleteView.
 - django.utils.translation.string_concat() is deprecated in favor of
-  django.utils.text.format_lazy(). string_concat(*strings) can be
-  replaced by format_lazy('{}' * len(strings), *strings).
+  django.utils.text.format_lazy(). string_concat(strings) can be
+  replaced by format_lazy('{}' x len(strings), strings).
   Found in converter/classes.py and metadata/forms.py.
 - Fix warnings in preparation for Django 2.0.
 - Update all tempfile.mkstemp() to tempfile.mkstemp(dir=setting_temporary_directory.value)
@@ -120,7 +120,7 @@ Other
 - Update common.utils.copyfile to use only file objects.
 - Change metadata label column from CharField to Label
 - Start testing to Python 3 compatibility.
-- Unify all **RelationshipForms into a common class.
+- Unify all RelationshipForms into a common class.
 - Add test for event subscription view.
 - Repeated templates: password_reset_confirm.html and password_reset_form.html
 - Remove unused text=get_notification_count from events.links
