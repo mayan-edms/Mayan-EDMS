@@ -5,6 +5,8 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
 from common.widgets import two_state_template
@@ -70,12 +72,14 @@ class UserManagementApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=Group, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_group_delete, permission_group_edit,
                 permission_group_view,
             )
         )
         ModelPermission.register(
             model=User, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_user_delete, permission_user_edit,
                 permission_user_view
             )
@@ -112,12 +116,12 @@ class UserManagementApp(MayanAppConfig):
             sources=(Group,)
         )
         menu_object.bind_links(
-            links=(link_group_delete,), position=99, sources=(Group,)
+            links=(link_acl_list, link_group_delete,), position=99, sources=(Group,)
         )
         menu_object.bind_links(
             links=(
                 link_user_edit, link_user_set_password, link_user_groups,
-                link_user_delete
+                link_acl_list, link_user_delete
             ), sources=(User,)
         )
         menu_secondary.bind_links(
