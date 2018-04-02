@@ -101,3 +101,12 @@ setting_disable_transformed_image_cache = namespace.add_setting(
         'of documents\' pages.'
     )
 )
+setting_fix_orientation = namespace.add_setting(
+    global_name='DOCUMENTS_FIX_ORIENTATION', default=False,
+    help_text=_(
+        'Detect the orientation of each of the document\'s pages '
+        'and create a corresponding rotation transformation to '
+        'display it rightside up. This is an experimental '
+        'feature and it is disabled by default.'
+    )
+)

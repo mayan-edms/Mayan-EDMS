@@ -350,6 +350,11 @@ Page number summary
 The page number summary has been placed back at the bottom of the
 carousel pages in the document preview view.
 
+Orientation detection
+---------------------
+After reports that it is not working in 100% of the cases, the feature that
+detects and fixes the orientation of PDF has been marked experimental and
+now defaults to being disabled.
 
 Other changes worth mentioning
 ------------------------------

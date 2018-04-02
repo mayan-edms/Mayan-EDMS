@@ -39,8 +39,8 @@ from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
-    setting_display_width, setting_display_height, setting_language,
-    setting_zoom_max_level, setting_zoom_min_level
+    setting_display_width, setting_display_height, setting_fix_orientation,
+    setting_language, setting_zoom_max_level, setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
@@ -569,7 +569,8 @@ class DocumentVersion(models.Model):
                     self.update_mimetype(save=False)
                     self.save()
                     self.update_page_count(save=False)
-                    self.fix_orientation()
+                    if setting_fix_orientation.value:
+                        self.fix_orientation()
 
                     logger.info(
                         'New document version "%s" created for document: %s',
