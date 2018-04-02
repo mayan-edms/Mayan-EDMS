@@ -7,6 +7,7 @@ help:
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
 	@echo "generate_setup - Create and updated setup.py"
+	@echo "check_readme - Checks validity of the README.rst file for PyPI publication."
 
 	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
