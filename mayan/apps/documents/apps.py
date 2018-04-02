@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
+from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -46,7 +47,8 @@ from .events import (
     event_document_view
 )
 from .handlers import (
-    create_default_document_type, handler_scan_duplicates_for
+    create_default_document_type, handler_remove_empty_duplicates_lists,
+    handler_scan_duplicates_for,
 )
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
@@ -359,20 +361,20 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_check_trash_periods': {
                     'queue': 'documents_periodic'
                 },
-                'documents.tasks.task_delete_stubs': {
-                    'queue': 'documents_periodic'
+                'documents.tasks.task_clean_empty_duplicate_lists': {
+                    'queue': 'documents'
                 },
                 'documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
                 },
+                'documents.tasks.task_delete_document': {
+                    'queue': 'documents'
+                },
+                'documents.tasks.task_delete_stubs': {
+                    'queue': 'documents_periodic'
+                },
                 'documents.tasks.task_generate_document_page_image': {
                     'queue': 'converter'
-                },
-                'documents.tasks.task_update_page_count': {
-                    'queue': 'uploads'
-                },
-                'documents.tasks.task_upload_new_version': {
-                    'queue': 'uploads'
                 },
                 'documents.tasks.task_scan_duplicates_all': {
                     'queue': 'tools'
@@ -380,8 +382,11 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_scan_duplicates_for': {
                     'queue': 'uploads'
                 },
-                'documents.tasks.task_delete_document': {
-                    'queue': 'documents'
+                'documents.tasks.task_update_page_count': {
+                    'queue': 'uploads'
+                },
+                'documents.tasks.task_upload_new_version': {
+                    'queue': 'uploads'
                 },
             }
         )
@@ -576,6 +581,11 @@ class DocumentsApp(MayanAppConfig):
             minute='0'
         )
 
+        post_delete.connect(
+            dispatch_uid='handler_remove_empty_duplicates_lists',
+            receiver=handler_remove_empty_duplicates_lists,
+            sender=Document,
+        )
         post_initial_setup.connect(
             create_default_document_type,
             dispatch_uid='create_default_document_type'

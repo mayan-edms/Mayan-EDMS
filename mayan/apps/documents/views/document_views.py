@@ -787,11 +787,7 @@ class DocumentPrint(FormView):
 
 class DuplicatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return Document.objects.filter(
-            pk__in=DuplicatedDocument.objects.values_list(
-                'document_id', flat=True
-            )
-        )
+        return DuplicatedDocument.objects.get_duplicated_documents()
 
     def get_extra_context(self):
         context = super(DuplicatedDocumentListView, self).get_extra_context()

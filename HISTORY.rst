@@ -101,6 +101,8 @@
 - Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
 - Add Makefile target to check the format of the README.rst file.
 - Mark the feature to detect and fix the orientatin of PDF as experimental.
+- Don't show documents with 0 duplicates in the duplicated document list.
+- Clean up the duplicated document model after a document is deleted.
 
 2.7.3 (2017-09-11)
 ==================

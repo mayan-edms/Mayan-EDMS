@@ -16,6 +16,14 @@ logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
+def task_clean_empty_duplicate_lists():
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+    DuplicatedDocument.objects.clean_empty_duplicate_lists()
+
+
+@app.task(ignore_result=True)
 def task_check_delete_periods():
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'

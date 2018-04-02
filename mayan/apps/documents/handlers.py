@@ -4,7 +4,7 @@ from django.apps import apps
 
 from .literals import DEFAULT_DOCUMENT_TYPE_LABEL
 from .signals import post_initial_document_type
-from .tasks import task_scan_duplicates_for
+from .tasks import task_clean_empty_duplicate_lists, task_scan_duplicates_for
 
 
 def create_default_document_type(sender, **kwargs):
@@ -25,3 +25,7 @@ def handler_scan_duplicates_for(sender, instance, **kwargs):
     task_scan_duplicates_for.apply_async(
         kwargs={'document_id': instance.document.pk}
     )
+
+
+def handler_remove_empty_duplicates_lists(sender, **kwargs):
+    task_clean_empty_duplicate_lists.apply_async()

@@ -260,6 +260,18 @@ project. MERCs 1 and 2 have been approved. MERC-1 outlines the MERC process
 itself and MERC-2 documents the way API tests are to be written for Mayan EDMS.
 
 
+Duplicated documents
+--------------------
+The duplicated documents system has been improved to also better detect when
+the duplicate of a primary document has been move to the trash. In this
+instance the duplicate count of the primary document would be zero and will
+cause the primary document to not show in the duplicated document list view.
+
+If the duplicated document is deleted from the trash the system now will launch
+a background clean up task to permanently delete the empty primary document's
+duplicate document entry from the database.
+
+
 Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.
