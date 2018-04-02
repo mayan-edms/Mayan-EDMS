@@ -22,7 +22,7 @@
                     </div>
                     <div class="panel-body">
                         {% project_information '__title__' as project_title %}
-                        <p>{% blocktrans %}You have just finished installing <strong>{{ project_title }}</strong>, congratulations!' {% endblocktrans %}</p>
+                        <p>{% blocktrans %}You have just finished installing <strong>{{ project_title }}</strong>, congratulations!{% endblocktrans %}</p>
                         <p>{% trans 'Login using the following credentials:' %}</p>
                         <p>{% blocktrans with autoadmin_properties.account as account %}Username: <strong>{{ account }}</strong>{% endblocktrans %}</p>
                         <p>{% blocktrans with autoadmin_properties.account.email as email %}Email: <strong>{{ email }}</strong>{% endblocktrans %}</p>
