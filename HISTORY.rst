@@ -107,6 +107,7 @@
 - Add support for users ACLs.
 - Add support for groups ACLs.
 - Sort permission namespaces and permissions in the role permission views.
+- Invert the columns in the ACL detail view.
 
 
 2.7.3 (2017-09-11)
