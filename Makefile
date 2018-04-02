@@ -340,8 +340,8 @@ find_gitignores:
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
 
 build:
-	docker rm -f mayan-edms-ng-build || true && \
-	docker run --rm --name mayan-edms-ng-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-alpine3.7 /bin/busybox sh -c "\
+	docker rm -f mayan-edms-build || true && \
+	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-alpine3.7 /bin/busybox sh -c "\
 	rm /host_source/dist -R || true && \
 	mkdir /host_source/dist || true && \
 	export LC_ALL=en_US.UTF-8 && \

@@ -1,13 +1,13 @@
 =====================
-MERC XX: Test writing
+MERC 2: Test writing
 =====================
 
-:MERC: XX
+:MERC: 2
 :Author: Michael Price
-:Status: Draft
-:Type: Process
+:Status: Accepted
+:Type: Feature
 :Created: 2018-02-22
-:Last-Modified: 2018-02-22
+:Last-Modified: 2018-04-01
 
 .. contents:: Table of Contents
    :depth: 3

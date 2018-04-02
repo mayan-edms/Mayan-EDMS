@@ -11,14 +11,21 @@ Mayan EDMS Request For Comment documents index.
 Status
 ======
 
+Accepted
+--------
+
+.. toctree::
+   :maxdepth: 1
+
+   0001-merc-process
+   0002-test-writing
+
 Draft
 -----
 
 .. toctree::
    :maxdepth: 1
 
-   0001-merc-process
-   test-writing
    merging-roles-and-groups
    support-forum
    using-javascript-libraries
@@ -35,3 +42,10 @@ Process
 
    0001-merc-process
 
+
+Feature
+-------
+.. toctree::
+   :maxdepth: 1
+
+   0002-test-writing

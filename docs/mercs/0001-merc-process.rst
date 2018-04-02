@@ -4,7 +4,7 @@ MERC 1: Purpose and Guidelines
 
 :MERC: 1
 :Author: Michael Price
-:Status: Draft
+:Status: Accepted
 :Type: Process
 :Created: 2018-02-17
 :Last-Modified: 2018-02-17
