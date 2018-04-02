@@ -187,7 +187,6 @@ UI - Frontend
 
 - Check if location is found in partial and remove it. Avoid circular loading.
 - Add location to history after a form submit redirect.
-- Hitting refresh adds a new history? Can refresh be detected with JS.
 
 UI
 ~~
