@@ -1,5 +1,43 @@
 3.0 (2018-04-XX)
 ================
+- Rename the role groups link label from "Members" to "Groups".
+- Rename the group users link label from "Members" to "Users".
+- Don't show full document version label in the heading of the document
+  version list view.
+- Show the number of pages of a document and of document versions in
+  the document list view and document versions list views respectively.
+- Display a document version's thumbnail before other attributes.
+- User Django's provided form for setting an users password.
+  This change allows displaying the current password policies
+  and validation.
+- Add method to modify a group's role membership from the group's
+  view.
+- Rename the group user count column label from "Members" to "Users".
+- Backport support for global and object event notification.
+  GitLab issue #262.
+- Remove Vagrant section of the document. Anything related to
+  Vagrant has been move into its own repository at:
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant
+- Add view to show list of events performed by an user.
+- Allow filtering an event list by clicking on the user column.
+- Display a proper message in the document type metadata type relationship
+  view when there are no metadata types exist.
+- Require the document view permission to view trashed documents.
+- Make the multi object form perform an auto submit when the value is changed.
+- Improved styling and interaction of the multiple object action form.
+- Add checkbox to allow selecting all item in the item list view.
+- Revise and improve permission requirements for the documents app API.
+- Downloading a document version now requires the document download permission
+  instead of just the document view permission.
+- Creating a new document no longer works by having the document create
+  permission in a global manner. It is now possible to create a document via
+  the API by having the document permission for a specific document type.
+- Viewing the version list of a document now required the document version
+  view permission instead of the document view permission.
+- Not having the document version view permission for a document will not
+  return a 403 error. Instead a blank response will be returned.
+- Reverting a document via API will new require the document version revert
+  permission instead of the document edit permission.
 - Fix permission filtering when performing document page searching.
 - Fix cabinet detail view pagination.
 - Update project to work with Django 1.11.11.
@@ -62,47 +100,6 @@
 - Fix carousel item height issues.
 - Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
 - Add Makefile target to check the format of the README.rst file.
-
-2.8 (2018-02-27)
-================
-- Rename the role groups link label from "Members" to "Groups".
-- Rename the group users link label from "Members" to "Users".
-- Don't show full document version label in the heading of the document
-  version list view.
-- Show the number of pages of a document and of document versions in
-  the document list view and document versions list views respectively.
-- Display a document version's thumbnail before other attributes.
-- User Django's provided form for setting an users password.
-  This change allows displaying the current password policies
-  and validation.
-- Add method to modify a group's role membership from the group's
-  view.
-- Rename the group user count column label from "Members" to "Users".
-- Backport support for global and object event notification.
-  GitLab issue #262.
-- Remove Vagrant section of the document. Anything related to
-  Vagrant has been move into its own repository at:
-  https://gitlab.com/mayan-edms/mayan-edms-vagrant
-- Add view to show list of events performed by an user.
-- Allow filtering an event list by clicking on the user column.
-- Display a proper message in the document type metadata type relationship
-  view when there are no metadata types exist.
-- Require the document view permission to view trashed documents.
-- Make the multi object form perform an auto submit when the value is changed.
-- Improved styling and interaction of the multiple object action form.
-- Add checkbox to allow selecting all item in the item list view.
-- Revise and improve permission requirements for the documents app API.
-- Downloading a document version now requires the document download permission
-  instead of just the document view permission.
-- Creating a new document no longer works by having the document create
-  permission in a global manner. It is now possible to create a document via
-  the API by having the document permission for a specific document type.
-- Viewing the version list of a document now required the document version
-  view permission instead of the document view permission.
-- Not having the document version view permission for a document will not
-  return a 403 error. Instead a blank response will be returned.
-- Reverting a document via API will new require the document version revert
-  permission instead of the document edit permission.
 
 2.7.3 (2017-09-11)
 ==================
