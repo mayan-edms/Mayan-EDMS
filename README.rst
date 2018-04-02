@@ -14,7 +14,7 @@ are its workflow system, role based access control, and REST API.
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
     :align: center
-
+    :width: 300
 
 The easiest way to use Mayan EDMS is by using the official Docker_ image.
 Make sure Docker is properly installed and working before attempting to install

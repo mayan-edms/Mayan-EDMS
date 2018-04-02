@@ -35,7 +35,7 @@
   <p>
 
 <p align="center">
-    <img src="https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif">
+    <img width="400" src="https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif">
 </p>
 
 </div>
