@@ -43,7 +43,7 @@
                         {% if not hide_header %}
                             <tr>
                                 {% if multi_item_actions %}
-                                    <th class="first"><input class="form-multi-object-action-checkbox checkbox" type="checkbox" /></th>
+                                    <th class="first"><input class="checkbox" type="checkbox" /></th>
                                 {% endif %}
 
                                 {% if not hide_object %}
@@ -71,9 +71,9 @@
                             {% if multi_item_actions %}
                                 <td>
                                 {% if multi_select_item_properties %}
-                                    <input type="checkbox" class="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
+                                    <input type="checkbox" class="form-multi-object-action-checkbox checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
                                 {% else %}
-                                    <input type="checkbox" class="checkbox" name="pk_{{ object.pk }}" value="" />
+                                    <input type="checkbox" class="form-multi-object-action-checkbox checkbox" name="pk_{{ object.pk }}" value="" />
                                 {% endif %}
                                 </td>
                             {% endif %}
