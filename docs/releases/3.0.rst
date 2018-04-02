@@ -339,8 +339,21 @@ being uploaded. This step was been assigned number 4 in the order of
 step for uploading a file.
 
 
+Fix carousel item height issues
+-------------------------------
+On some devices the height of the pages on the document preview view were
+squashed. The CSS for this view was updated to fix this issue.
+
+
+Page number summary
+-------------------
+The page number summary has been placed back at the bottom of the
+carousel pages in the document preview view.
+
+
 Other changes worth mentioning
 ------------------------------
+- Add Makefile target to check the format of the README.rst file.
 - Fix permission filtering when performing document page searching
 - base.js was splitted into mayan_app.js, mayan_image.js, and partial_navigation.js.
 - Cabinet detail view pagination was fixed.
