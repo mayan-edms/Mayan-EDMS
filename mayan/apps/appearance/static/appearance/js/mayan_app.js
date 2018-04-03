@@ -187,7 +187,7 @@ App.prototype.setupAJAXperiodicWorkers = function () {
 }
 
 App.prototype.setupAutoSubmit = function () {
-    $('.select-auto-submit').change(function () {
+    $('body').on('change', '.select-auto-submit', function () {
         if ($(this).val()) {
             $(this.form).trigger('submit');
         }
@@ -209,7 +209,7 @@ App.prototype.setupNavbarCollapse = function () {
 }
 
 App.prototype.setupNewWindowAnchor = function () {
-    $('a.new_window').click(function (event) {
+    $('body').on('click', 'a.new_window', function (event) {
         event.preventDefault();
         var newWindow = window.open($(this).attr('href'), '_blank');
         newWindow.focus();
@@ -220,20 +220,35 @@ App.prototype.setupScrollView = function () {
     $('.scrollable').scrollview();
 }
 
-App.prototype.setupTableSelector = function () {
-    $('th input:checkbox').click(function(e) {
-        var table = $(e.target).closest('table');
-        var checked = $(e.target).prop('checked');
-        $('td input:checkbox', table).prop('checked', checked);
-    });
-}
-
 App.prototype.setupItemsSelector = function () {
-    $('.check-all').click(function(e) {
-        var parent = $(e.target).closest('.well');
-        var checked = $(e.target).prop('checked');
-        $('.panel-item input:checkbox', parent).prop('checked', checked);
+    var app = this;
+    app.lastChecked = null;
+
+    $('body').on('click', '.check-all', function (event) {
+        var checked = $(event.target).prop('checked');
+        var $checkBoxes = $('.check-all-slave');
+
+        $checkBoxes.prop('checked', checked);
+        $checkBoxes.trigger('change');
     });
+
+    $('body').on('click', '.check-all-slave', function(e) {
+        if(!app.lastChecked) {
+            app.lastChecked = this;
+            return;
+        }
+        if(e.shiftKey) {
+            var $checkBoxes = $('.check-all-slave');
+
+            var start = $checkBoxes.index(this);
+            var end = $checkBoxes.index(app.lastChecked);
+
+            $checkBoxes.slice(
+                Math.min(start,end), Math.max(start,end) + 1
+            ).prop('checked', app.lastChecked.checked).trigger('change');
+        }
+        app.lastChecked = this;
+    })
 }
 
 App.prototype.setupSelect2 = function () {

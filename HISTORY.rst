@@ -131,6 +131,8 @@
   The storage.backends.filebasedstorage.FileBasedStorage has been remove,
   instead Django's default storage is used and each app is responsible
   of specifying their default path.
+- Unify checkbox selection code for list items and table items.
+- Add smart checkbox manager.
 
 
 2.7.3 (2017-09-11)

@@ -64,9 +64,9 @@
                                         <label for="id_indexes_0">
                                             {% if multi_item_actions %}
                                                 {% if multi_select_item_properties %}
-                                                    <input class="form-multi-object-action-checkbox checkbox" type="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" />
+                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" />
                                                 {% else %}
-                                                    <input class="form-multi-object-action-checkbox checkbox" type="checkbox" name="pk_{{ object.pk }}" />
+                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="pk_{{ object.pk }}" />
                                                 {% endif %}
                                             {% endif %}
 

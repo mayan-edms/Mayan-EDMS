@@ -8,8 +8,11 @@ var partialNavigation = new PartialNavigation({
 });
 
 jQuery(document).ready(function() {
+    app.setupAutoSubmit();
     app.setupFullHeightResizing();
+    app.setupItemsSelector();
     app.setupNavbarCollapse();
+    app.setupNewWindowAnchor();
     app.setupAJAXperiodicWorkers();
     partialNavigation.initialize();
 });
@@ -17,10 +20,6 @@ jQuery(document).ready(function() {
 var afterBaseLoad = function () {
     MayanImage.intialize();
     app.doToastrMessages();
-    app.setupAutoSubmit();
-    app.setupItemsSelector();
-    app.setupNewWindowAnchor();
-    app.setupTableSelector();
     app.resizeFullHeight();
     app.setupSelect2();
     app.setupScrollView();

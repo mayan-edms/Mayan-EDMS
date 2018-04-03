@@ -294,6 +294,13 @@ If no path is specified the backend will default to 'mayan/media/document_storag
 Finally, to standardize the way app use storage, the .storages modules is now used
 instead of the .runtime module.
 
+Smart checkbox selection
+------------------------
+A faster way to select multiple item has been added. Click the checkbox of the first,
+hold the Shift key, and then click the checkbox of the last item of the selection.
+This will select the first, the last and all items in between. To deselect multiple
+items the same procedure is used. This code was donated by the Paperattor
+project (www.paperattor.com).
 
 Other changes worth mentioning
 ------------------------------
