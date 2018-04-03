@@ -271,6 +271,29 @@ If the duplicated document is deleted from the trash the system now will launch
 a background clean up task to permanently delete the empty primary document's
 duplicate document entry from the database.
 
+Storage
+-------
+It is now possible to pass arguments to the document, document cache and
+document signatures storage backends. To pass the arguments, use the new
+settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, and SIGNATURES_STORAGE_BACKEND_ARGUMENTS.
+
+The FileBasedStorage driver originally provided has been removed.
+With this change the setting STORAGE_FILESTORAGE_LOCATION has also been removed.
+The storage driver now default to Django's own FileSystemStorage driver.
+By using this driver each app is responsible of specifying their storage
+path. The path path (or location) is configure via the
+DOCUMENTS_STORAGE_BACKEND_ARGUMENTS, DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, or
+SIGNATURES_STORAGE_BACKEND_ARGUMENTS for the documents, document cache and document signatures respectively.
+
+For example, to change the document storage location use:
+
+DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
+If no path is specified the backend will default to 'mayan/media/document_storage'.
+
+Finally, to standardize the way app use storage, the .storages modules is now used
+instead of the .runtime module.
+
 
 Other changes worth mentioning
 ------------------------------
