@@ -433,6 +433,7 @@ Bugs fixed or issues closed
 * `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
 * `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
 * `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
+* `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
 * `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
