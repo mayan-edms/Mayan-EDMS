@@ -129,7 +129,7 @@ class CommonApp(MayanAppConfig):
 
         menu_about.bind_links(
             links=(
-                link_tools, link_setup, link_about, link_support,
+                link_tools, link_setup, link_about,
                 link_documentation, link_forum, link_code, link_license,
                 link_packages_licenses, link_check_version
             )

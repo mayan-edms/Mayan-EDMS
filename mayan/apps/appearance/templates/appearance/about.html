@@ -77,7 +77,27 @@
             {% trans 'Released under the license:' %} {% trans license_information %}
         </p>
 
-        <p class="text-center mayan-edms-logo">Mayan <span class="icon-mayan-edms-logo"></span> EDMS</p>
+        <p class="text-center mayan-edms-logo"><span class="icon-mayan-edms-logo"></span> {% project_information '__title__' %}</p>
+
+        <p class="text-center">
+            {% project_information '__title__' %} is a free and open-source software brought to you with <i class="fa fa-heart text-danger"></i> by Roberto Rosario and contributors.
+        </p>
+
+        <p class="text-center">
+            It takes great effort to make {% project_information '__title__' %} as feature-rich as it is. We need all the help we can get!
+        </p>
+
+        <p class="text-center">
+            If you use {% project_information '__title__' %} please <a class="new_window" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN">consider making a donation <i class="fab fa-paypal"></i></a>
+        </p>
+
+        <p class="text-center">
+            If you found a bug or got a feature idea, visit the <a class="new_window" href="https://groups.google.com/forum/#!forum/mayan-edms">forum <i class="far fa-life-ring"></i></a> or open a ticket in the <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms">GitLab repository <i class="fab fa-gitlab"></i></a>.
+        </p>
+        <p class="text-center">
+            Spread the word. Talk to your friends and colleagues about how awesome {% project_information '__title__' %} is!
+            Follow us on <a class="new_window" href="https://twitter.com/mayanedms">Twitter <i class="fab fa-twitter"></i></a> or <a class="new_window" href="https://www.facebook.com/MayanEDMS/">Facebook <i class="fab fa-facebook"></i></a>
+        </p>
     </div>
 {% endblock %}
 
