@@ -116,6 +116,27 @@ class SetupRolePermissionsView(AssignRemoveView):
     left_list_title = _('Available permissions')
     right_list_title = _('Granted permissions')
 
+    @staticmethod
+    def generate_choices(entries):
+        results = []
+
+        entries = sorted(
+            entries, key=lambda x: (
+                x.get_volatile_permission().namespace.label,
+                x.get_volatile_permission().label
+            )
+        )
+
+        for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
+            permission_options = [
+                (force_text(permission.pk), permission) for permission in permissions
+            ]
+            results.append(
+                (PermissionNamespace.get(namespace), permission_options)
+            )
+
+        return results
+
     def add(self, item):
         Permission.check_permissions(
             self.request.user, permissions=(permission_permission_grant,)
@@ -141,46 +162,17 @@ class SetupRolePermissionsView(AssignRemoveView):
 
     def left_list(self):
         Permission.refresh()
-        results = []
 
-        available_permission = sorted(
-            StoredPermission.objects.exclude(
+        return SetupRolePermissionsView.generate_choices(
+            entries=StoredPermission.objects.exclude(
                 id__in=self.get_object().permissions.values_list('pk', flat=True)
-            ), key=lambda x: (
-                x.get_volatile_permission().namespace.label,
-                x.get_volatile_permission().label
             )
         )
-
-        for namespace, permissions in itertools.groupby(available_permission, lambda entry: entry.namespace):
-            permission_options = [
-                (force_text(permission.pk), permission) for permission in permissions
-            ]
-            results.append(
-                (PermissionNamespace.get(namespace), permission_options)
-            )
-
-        return results
 
     def right_list(self):
-        results = []
-
-        granted_permissions = sorted(
-            self.get_object().permissions.all(), key=lambda x: (
-                x.get_volatile_permission().namespace.label,
-                x.get_volatile_permission().label
-            )
+        return SetupRolePermissionsView.generate_choices(
+            entries=self.get_object().permissions.all()
         )
-
-        for namespace, permissions in itertools.groupby(granted_permissions, lambda entry: entry.namespace):
-            permission_options = [
-                (force_text(permission.pk), permission) for permission in permissions
-            ]
-            results.append(
-                (PermissionNamespace.get(namespace), permission_options)
-            )
-
-        return results
 
     def remove(self, item):
         Permission.check_permissions(

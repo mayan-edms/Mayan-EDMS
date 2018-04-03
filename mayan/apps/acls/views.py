@@ -155,6 +155,13 @@ class ACLPermissionsView(AssignRemoveView):
     def generate_choices(entries):
         results = []
 
+        entries = sorted(
+            entries, key=lambda x: (
+                x.get_volatile_permission().namespace.label,
+                x.get_volatile_permission().label
+            )
+        )
+
         for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
             permission_options = [
                 (force_text(permission.pk), permission) for permission in permissions
