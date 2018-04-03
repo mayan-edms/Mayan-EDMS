@@ -306,17 +306,6 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
 class SetupWorkflowStateActionListView(SingleObjectListView):
     object_permission = permission_workflow_edit
 
-    def dispatch(self, request, *args, **kwargs):
-        messages.warning(
-            request, _(
-                'This is a feature preview. Things might not work as expect.'
-            )
-        )
-
-        return super(
-            SetupWorkflowStateActionListView, self
-        ).dispatch(request, *args, **kwargs)
-
     def get_extra_context(self):
         return {
             'hide_object': True,
