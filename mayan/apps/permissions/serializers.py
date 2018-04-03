@@ -20,7 +20,7 @@ class PermissionSerializer(serializers.Serializer):
     def to_representation(self, instance):
         if isinstance(instance, StoredPermission):
             return super(PermissionSerializer, self).to_representation(
-                instance.volatile_permission
+                instance.get_volatile_permission()
             )
         else:
             return super(PermissionSerializer, self).to_representation(
