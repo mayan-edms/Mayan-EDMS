@@ -2,8 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.core.files.storage import FileSystemStorage
+
 import documents.models
-import storage.backends.filebasedstorage
 
 
 class Migration(migrations.Migration):
@@ -27,7 +28,7 @@ class Migration(migrations.Migration):
             name='file',
             field=models.FileField(
                 upload_to=documents.models.UUID_FUNCTION,
-                storage=storage.backends.filebasedstorage.FileBasedStorage(),
+                storage=FileBasedStorage(),
                 verbose_name='File'
             ),
             preserve_default=True,

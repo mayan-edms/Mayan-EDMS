@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import storage.backends.filebasedstorage
+from django.core.files.storage import FileSystemStorage
+
 import document_signatures.models
 
 
@@ -25,7 +26,7 @@ class Migration(migrations.Migration):
             model_name='documentversionsignature',
             name='signature_file',
             field=models.FileField(
-                storage=storage.backends.filebasedstorage.FileBasedStorage(),
+                storage=FleBasedStorage(),
                 upload_to=document_signatures.models.upload_to, null=True,
                 verbose_name='Signature file', blank=True
             ),
