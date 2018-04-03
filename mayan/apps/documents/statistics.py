@@ -98,7 +98,7 @@ def total_document_per_month():
     for month in range(1, datetime.date.today().month + 1):
         next_month = month + 1
 
-        if next_month == 12:
+        if month == 12:
             next_month = 1
             year = this_year + 1
         else:
@@ -129,7 +129,7 @@ def total_document_version_per_month():
     for month in range(1, datetime.date.today().month + 1):
         next_month = month + 1
 
-        if next_month == 12:
+        if month == 12:
             next_month = 1
             year = this_year + 1
         else:
@@ -160,7 +160,7 @@ def total_document_page_per_month():
     for month in range(1, datetime.date.today().month + 1):
         next_month = month + 1
 
-        if next_month == 12:
+        if month == 12:
             next_month = 1
             year = this_year + 1
         else:

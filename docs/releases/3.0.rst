@@ -423,5 +423,6 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
+* `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
