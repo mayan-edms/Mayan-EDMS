@@ -48,7 +48,7 @@ def node_level(node):
         ''.join(
             [
                 '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * node.get_level(),
-                '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
+                '' if node.is_root_node() else '<i class="fa fa-level-up-alt fa-rotate-90"></i> ',
                 force_text(node)
             ]
         )
