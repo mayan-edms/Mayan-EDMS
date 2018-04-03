@@ -27,7 +27,6 @@ from .permissions import (
     permission_document_type_view, permission_document_version_revert,
     permission_document_version_view
 )
-from .runtime import cache_storage_backend
 from .serializers import (
     DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
@@ -35,6 +34,7 @@ from .serializers import (
     RecentDocumentSerializer, WritableDocumentSerializer,
     WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
 )
+from .storages import documentimagecache_storage
 from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
@@ -288,7 +288,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
 
         cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-        with cache_storage_backend.open(cache_filename) as file_object:
+        with documentimagecache_storage.open(cache_filename) as file_object:
             return HttpResponse(file_object.read(), content_type='image')
 
 

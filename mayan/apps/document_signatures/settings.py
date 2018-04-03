@@ -7,5 +7,9 @@ from smart_settings import Namespace
 namespace = Namespace(name='signatures', label=_('Document signatures'))
 setting_storage_backend = namespace.add_setting(
     global_name='SIGNATURES_STORAGE_BACKEND',
-    default='storage.backends.filebasedstorage.FileBasedStorage'
+    default='django.core.files.storage.FileSystemStorage'
+)
+setting_storage_backend_arguments = namespace.add_setting(
+    global_name='SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
+    default='{location: mayan/media/document_storage}'
 )

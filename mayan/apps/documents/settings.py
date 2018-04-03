@@ -45,7 +45,11 @@ setting_recent_count = namespace.add_setting(
 )
 setting_storage_backend = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND',
-    default='storage.backends.filebasedstorage.FileBasedStorage'
+    default='django.core.files.storage.FileSystemStorage'
+)
+setting_storage_backend_arguments = namespace.add_setting(
+    global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
+    default='{location: mayan/media/document_storage}'
 )
 setting_zoom_percent_step = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_PERCENT_STEP', default=25,
@@ -74,9 +78,13 @@ setting_rotation_step = namespace.add_setting(
         'Amount in degrees to rotate a document page per user interaction.'
     )
 )
-setting_cache_storage_backend = namespace.add_setting(
+setting_documentimagecache_storage = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
-    default='documents.storage.LocalCacheFileStorage'
+    default='django.core.files.storage.FileSystemStorage'
+)
+setting_documentimagecache_storage_arguments = namespace.add_setting(
+    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
+    default='{location: mayan/media/document_cache}'
 )
 setting_language = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE', default='eng',

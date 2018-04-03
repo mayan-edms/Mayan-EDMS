@@ -38,8 +38,12 @@ setting_paginate_by = namespace.add_setting(
 )
 setting_shared_storage = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE',
-    default='storage.backends.filebasedstorage.FileBasedStorage',
+    default='django.core.files.storage.FileSystemStorage',
     help_text=_('A storage backend that all workers can use to share files.')
+)
+setting_shared_storage_arguments = namespace.add_setting(
+    global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
+    default='{location: mayan/media/shared_files}',
 )
 setting_temporary_directory = namespace.add_setting(
     global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
