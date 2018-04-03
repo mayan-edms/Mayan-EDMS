@@ -78,7 +78,7 @@ class Migration(migrations.Migration):
                 (
                     'file', models.FileField(
                         upload_to=common.models.upload_to,
-                        storage=FileBasedStorage(),
+                        storage=FileSystemStorage(),
                         verbose_name='File'
                     )
                 ),

@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             name='file',
             field=models.FileField(
                 upload_to=documents.models.UUID_FUNCTION,
-                storage=FileBasedStorage(),
+                storage=FileSystemStorage(),
                 verbose_name='File'
             ),
             preserve_default=True,

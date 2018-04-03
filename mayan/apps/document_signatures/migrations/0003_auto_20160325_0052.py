@@ -91,7 +91,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'signature_file', models.FileField(
-                        storage=FileBasedStorage(),
+                        storage=FileSystemStorage(),
                         upload_to=document_signatures.models.upload_to,
                         null=True, verbose_name='Signature file', blank=True
                     )

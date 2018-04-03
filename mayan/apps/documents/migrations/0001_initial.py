@@ -573,7 +573,7 @@ class Migration(migrations.Migration):
                 (
                     'file', models.FileField(
                         upload_to='2a2af9b3-8079-4753-9863-f1c342ec0d06',
-                        storage=FileBasedStorage(),
+                        storage=FileSystemStorage(),
                         verbose_name='File'
                     )
                 ),
