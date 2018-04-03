@@ -202,6 +202,7 @@ class TagTaggedItemListView(DocumentListView):
         context = super(TagTaggedItemListView, self).get_extra_context()
         context.update(
             {
+                'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
                 'object': self.get_tag(),
                 'title': _('Documents with the tag: %s') % self.get_tag(),
             }

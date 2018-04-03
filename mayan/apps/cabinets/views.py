@@ -95,23 +95,24 @@ class CabinetDetailView(DocumentListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        data = super(CabinetDetailView, self).get_context_data(**kwargs)
+        context = super(CabinetDetailView, self).get_context_data(**kwargs)
 
         cabinet = self.get_object()
 
-        data.update(
+        context.update(
             {
+                'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
+                'hide_links': True,
                 'jstree_data': '\n'.join(
                     jstree_data(node=cabinet.get_root(), selected_node=cabinet)
                 ),
-                'hide_links': True,
                 'list_as_items': True,
                 'object': cabinet,
                 'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
             }
         )
 
-        return data
+        return context
 
     def get_object(self):
         cabinet = get_object_or_404(Cabinet, pk=self.kwargs['pk'])
