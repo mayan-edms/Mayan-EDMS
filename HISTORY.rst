@@ -110,6 +110,8 @@
 - Invert the columns in the ACL detail view.
 - Fix issue #454. Thanks to Andrei Korostelev @kindkaktus for the issue and the
   solution.
+- Update the role permission edit view require the permission grant or permission
+  revoke permissions for the selected role.
 
 2.7.3 (2017-09-11)
 ==================

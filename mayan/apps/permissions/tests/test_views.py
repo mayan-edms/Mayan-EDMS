@@ -8,8 +8,9 @@ from user_management.tests.literals import TEST_GROUP_2_NAME
 
 from ..models import Role
 from ..permissions import (
+    permission_permission_grant, permission_permission_revoke,
     permission_role_create, permission_role_delete, permission_role_edit,
-    permission_role_view
+    permission_role_view,
 )
 
 from .literals import TEST_ROLE_2_LABEL, TEST_ROLE_LABEL_EDITED
@@ -116,9 +117,17 @@ class PermissionsViewsTestCase(GenericViewTestCase):
         response = self._request_role_permissions_view()
         self.assertEqual(response.status_code, 403)
 
-    def test_role_permissions_view_with_access(self):
+    def test_role_permissions_view_with_permission_grant(self):
         self._create_role()
-        self.grant_access(permission=permission_role_edit, obj=self.role_2)
+        self.grant_access(permission=permission_permission_grant, obj=self.role_2)
+        #self.grant_access(permission=permission_role_edit, obj=self.role_2)
+        response = self._request_role_permissions_view()
+        self.assertEqual(response.status_code, 200)
+
+    def test_role_permissions_view_with_permission_revoke(self):
+        self._create_role()
+        self.grant_access(permission=permission_permission_revoke, obj=self.role_2)
+        #self.grant_access(permission=permission_role_edit, obj=self.role_2)
         response = self._request_role_permissions_view()
         self.assertEqual(response.status_code, 200)
 

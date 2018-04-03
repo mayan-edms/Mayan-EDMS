@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -114,7 +115,6 @@ class SetupRolePermissionsView(AssignRemoveView):
     grouped = True
     left_list_title = _('Available permissions')
     right_list_title = _('Granted permissions')
-    object_permission = permission_role_view
 
     def add(self, item):
         Permission.check_permissions(
@@ -122,6 +122,13 @@ class SetupRolePermissionsView(AssignRemoveView):
         )
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
+
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            permissions=(permission_permission_grant, permission_permission_revoke),
+            user=self.request.user, obj=self.get_object()
+        )
+        return super(SetupRolePermissionsView, self).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {

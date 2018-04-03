@@ -364,6 +364,9 @@ Other changes worth mentioning
   view when there are no metadata types exist.
 - Improved styling and interaction of the multiple object action form.
 - Add checkbox to allow selecting all item in the item list view.
+- Update the role permission edit view require the permission grant or permission
+  revoke permissions for the selected role.
+
 
 Removals
 --------
