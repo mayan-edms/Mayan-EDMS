@@ -18,6 +18,23 @@ from .permissions import (
 )
 
 
+def condition_check_document_creation_acls(context):
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    queryset = AccessControlList.objects.filter_by_access(
+        permission=permission_document_create, user=context['user'],
+        queryset=DocumentType.objects.all()
+    )
+
+    if queryset:
+        return True
+
+
 def document_new_version_not_blocked(context):
     NewVersionBlock = apps.get_model(
         app_label='checkouts', model_name='NewVersionBlock'
@@ -27,8 +44,8 @@ def document_new_version_not_blocked(context):
 
 
 link_document_create_multiple = Link(
-    icon='fa fa-upload', text=_('New document'),
-    view='sources:document_create_multiple'
+    condition=condition_check_document_creation_acls, icon='fa fa-upload',
+    text=_('New document'), view='sources:document_create_multiple'
 )
 link_setup_sources = Link(
     icon='fa fa-upload', permissions=(permission_sources_setup_view,),

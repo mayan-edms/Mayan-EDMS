@@ -112,6 +112,8 @@
   solution.
 - Update the role permission edit view require the permission grant or permission
   revoke permissions for the selected role.
+- Only show the new document link if the user has access to create documents of
+  at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
 
 2.7.3 (2017-09-11)
 ==================
