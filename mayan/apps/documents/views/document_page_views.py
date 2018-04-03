@@ -43,6 +43,7 @@ class DocumentPageListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
             'list_as_items': True,
             'object': self.get_document(),
             'title': _('Pages for document: %s') % self.get_document(),
