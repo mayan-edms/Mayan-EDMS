@@ -75,7 +75,7 @@
                 {% elif field|widget_type == 'checkboxselectmultiple' %}
                     {% for option in field %}
                         <div class="checkbox">
-                            {{ option.render }}
+                            {{ option }}
                         </div>
                     {% endfor %}
                 {% elif field|widget_type == 'datetimeinput' or field|widget_type == 'dateinput' %}
