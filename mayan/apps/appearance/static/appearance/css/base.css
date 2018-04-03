@@ -68,6 +68,7 @@ body {
 
 .thin_border {
     border: 1px solid black;
+    max-height: 200px;
 }
 
 .mayan-page-wrapper-interactive {
