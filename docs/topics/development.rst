@@ -404,7 +404,7 @@ Release checklist
 
 1. Check for missing migrations::
 
-    $ ./manage.py makemigrations
+    $ make check_missing_migrations
 
 2. Synchronize translations::
 
@@ -419,14 +419,14 @@ Release checklist
 6. Update requirements version in `setup.py`
 7. Bump version in `mayan/__init__.py`
 8. Check README.rst format with::
-   
+
     $ python setup.py check -r -s
 
 or with::
 
     $ make check_readme
 
-    
+
 9. Build source package and test::
 
     $ make test_sdist_via_docker_ubuntu

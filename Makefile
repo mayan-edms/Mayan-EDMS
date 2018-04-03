@@ -8,6 +8,7 @@ help:
 	@echo "clean - Remove Python and build artifacts."
 	@echo "generate_setup - Create and updated setup.py"
 	@echo "check_readme - Checks validity of the README.rst file for PyPI publication."
+	@echo "check_missing_migrations - Make sure all models have proper migrations."
 
 	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
@@ -356,3 +357,7 @@ build:
 
 check_readme:
 	python setup.py check -r -s
+
+check_missing_migrations:
+	./manage.py makemigrations --dry-run --noinput --check
+
