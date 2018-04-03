@@ -11,7 +11,9 @@
 >
     {% with 'lazy-load' as image_classes %}
     {% with 'true' as display_full_width %}
+    {% with '200px' as image_container_height %}
         {% include 'documents/forms/widgets/document_page_image.html' %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
 </a>
