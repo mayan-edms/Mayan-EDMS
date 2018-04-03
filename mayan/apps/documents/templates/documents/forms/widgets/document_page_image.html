@@ -8,7 +8,7 @@
         class="thin_border {{ image_classes }}"
         data-url="{{ instance.get_api_image_url }}?width={{ image_width }}&height={{ image_height }}&zoom={{ image_zoom }}&rotation={{ image_rotation }}"
         src="#"
-        style="{% if display_full_width %}width: 100%;{% endif %} {% if image_container_height %}max-height: {{ image_container_height }}; {% endif %}"
+        style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
      />
 </div>
 
