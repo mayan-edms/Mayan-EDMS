@@ -114,6 +114,7 @@
   revoke permissions for the selected role.
 - Only show the new document link if the user has access to create documents of
   at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
+- Remove the data filters feature.
 
 2.7.3 (2017-09-11)
 ==================

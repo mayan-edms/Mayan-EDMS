@@ -9,7 +9,7 @@ from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from .classes import Filter, Package
+from .classes import Package
 from .models import UserLocaleProfile
 from .utils import return_attrib
 from .widgets import (
@@ -137,14 +137,6 @@ class FileDisplayForm(forms.Form):
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
         fd.close()
-
-
-class FilterForm(forms.Form):
-    filter_slug = forms.ChoiceField(label=_('Filter'))
-
-    def __init__(self, *args, **kwargs):
-        super(FilterForm, self).__init__(*args, **kwargs)
-        self.fields['filter_slug'].choices = Filter.all().items()
 
 
 class LicenseForm(FileDisplayForm):

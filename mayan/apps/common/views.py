@@ -16,10 +16,9 @@ from django.views.generic import RedirectView, TemplateView
 
 from acls.models import AccessControlList
 
-from .classes import Filter
 from .exceptions import NotLatestVersion
 from .forms import (
-    FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
+    LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
 )
 from .generics import (  # NOQA
@@ -144,45 +143,6 @@ class FaviconRedirectView(RedirectView):
         """
         from django.contrib.staticfiles.templatetags.staticfiles import static
         return static('appearance/images/favicon.ico')
-
-
-class FilterSelectView(SimpleView):
-    form_class = FilterForm
-    template_name = 'appearance/generic_form.html'
-
-    def get_form(self):
-        return FilterForm()
-
-    def get_extra_context(self):
-        return {
-            'form': self.get_form(),
-            'title': _('Filter selection')
-        }
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(
-            reverse(
-                'common:filter_results',
-                args=(request.POST.get('filter_slug'),)
-            )
-        )
-
-
-class FilterResultListView(SingleObjectListView):
-    def get_extra_context(self):
-        return {
-            'hide_links': self.get_filter().hide_links,
-            'title': _('Results for filter: %s') % self.get_filter()
-        }
-
-    def get_filter(self):
-        try:
-            return Filter.get(self.kwargs['slug'])
-        except KeyError:
-            raise Http404(ugettext('Filter not found'))
-
-    def get_object_list(self):
-        return self.get_filter().get_queryset(user=self.request.user)
 
 
 class HomeView(TemplateView):

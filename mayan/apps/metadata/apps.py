@@ -13,7 +13,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar
 )
-from common.classes import ModelAttribute, Filter
+from common.classes import ModelAttribute
 from common.widgets import two_state_template
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
@@ -77,40 +77,6 @@ class MetadataApp(MayanAppConfig):
 
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor
-        )
-
-        Filter(
-            label=_('Documents missing required metadata'),
-            slug='documents-no-required-metadata',
-            filter_kwargs=[
-                {
-                    'document_type__metadata__required': True,
-                },
-                {
-                    'metadata__value__isnull': True
-                },
-                {
-                    'is_stub': False
-                }
-            ], model=Document, object_permission=permission_document_view,
-            hide_links=True
-        )
-
-        Filter(
-            label=_('Documents missing optional metadata'),
-            slug='documents-no-optional-metadata',
-            filter_kwargs=[
-                {
-                    'document_type__metadata__required': False,
-                },
-                {
-                    'metadata__value__isnull': True
-                },
-                {
-                    'is_stub': False
-                }
-            ], model=Document, object_permission=permission_document_view,
-            hide_links=True
         )
 
         ModelAttribute(

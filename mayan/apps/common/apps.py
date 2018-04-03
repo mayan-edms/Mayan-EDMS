@@ -23,9 +23,8 @@ from .handlers import (
 from .links import (
     link_about, link_check_version, link_code, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
-    link_documentation, link_filters, link_forum, link_license,
-    link_object_error_list_clear, link_packages_licenses, link_setup,
-    link_support, link_tools
+    link_documentation, link_forum, link_license, link_object_error_list_clear,
+    link_packages_licenses, link_setup, link_support, link_tools
 )
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
@@ -141,9 +140,6 @@ class CommonApp(MayanAppConfig):
             links=(link_object_error_list_clear,), sources=(
                 'common:object_error_list',
             )
-        )
-        menu_tools.bind_links(
-            links=(link_filters,)
         )
 
         post_save.connect(

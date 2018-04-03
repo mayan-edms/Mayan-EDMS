@@ -7,10 +7,9 @@ from .api_views import APIContentTypeList
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
-    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    PackagesLicensesView, RootView, SetupListView, ToolsListView,
-    multi_object_action_view
+    FaviconRedirectView, HomeView, LicenseView, ObjectErrorLogEntryListClearView,
+    ObjectErrorLogEntryListView, PackagesLicensesView, RootView, SetupListView,
+    ToolsListView, multi_object_action_view
 )
 
 urlpatterns = [
@@ -47,14 +46,6 @@ urlpatterns = [
     url(
         r'^user/locale/edit/$', CurrentUserLocaleProfileEditView.as_view(),
         name='current_user_locale_profile_edit'
-    ),
-    url(
-        r'^filter/select/$', FilterSelectView.as_view(),
-        name='filter_selection'
-    ),
-    url(
-        r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
-        name='filter_results'
     ),
     url(
         r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',

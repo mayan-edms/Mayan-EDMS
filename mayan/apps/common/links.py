@@ -71,10 +71,6 @@ link_object_error_list_with_icon = Link(
     permissions=(permission_error_log_view,), text=_('Errors'),
     view='common:error_list',
 )
-link_filters = Link(
-    icon='fa fa-filter', text=_('Data filters'),
-    view='common:filter_selection'
-)
 link_forum = Link(
     icon='fa fa-life-ring', tags='new_window', text=_('Forum'),
     url='https://groups.google.com/forum/#!forum/mayan-edms'
