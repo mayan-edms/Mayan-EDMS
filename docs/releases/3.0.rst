@@ -294,6 +294,14 @@ If no path is specified the backend will default to 'mayan/media/document_storag
 Finally, to standardize the way app use storage, the .storages modules is now used
 instead of the .runtime module.
 
+User event filtering
+--------------------
+When viewing the event list, the Actor (user) column is not displayed
+as a link. Clicking this link will filter the event list and display
+the events performed by that user. The view of event for each user can
+also be viewed using a new link added to the user list view in the setup
+menu.
+
 Smart checkbox selection
 ------------------------
 A faster way to select multiple item has been added. Click the checkbox of the first,
@@ -363,8 +371,6 @@ Other changes worth mentioning
 - Remove Vagrant section of the document. Anything related to
   Vagrant has been move into its own repository at:
   https://gitlab.com/mayan-edms/mayan-edms-vagrant
-- Add view to show list of events performed by an user.
-- Allow filtering an event list by clicking on the user column.
 - Revise and improve permission requirements for the documents app API.
 
   - Downloading a document version now requires the document download permission instead of just the document view permission.
@@ -464,6 +470,7 @@ Bugs fixed or issues closed
 * `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
 * `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
 * `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
+* `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
 * `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
