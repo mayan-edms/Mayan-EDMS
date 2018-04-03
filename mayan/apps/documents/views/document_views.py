@@ -718,6 +718,14 @@ class DocumentPrint(FormView):
     form_class = DocumentPrintForm
 
     def dispatch(self, request, *args, **kwargs):
+        instance = self.get_object()
+        AccessControlList.objects.check_access(
+            permissions=permission_document_print, user=self.request.user,
+            obj=instance
+        )
+
+        instance.add_as_recent_document_for_user(self.request.user)
+
         self.page_group = self.request.GET.get('page_group')
         self.page_range = self.request.GET.get('page_range')
         return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
@@ -767,16 +775,7 @@ class DocumentPrint(FormView):
         return context
 
     def get_object(self):
-        instance = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            permissions=permission_document_print, user=self.request.user,
-            obj=instance
-        )
-
-        instance.add_as_recent_document_for_user(self.request.user)
-
-        return instance
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_template_names(self):
         if self.page_group or self.page_range:
