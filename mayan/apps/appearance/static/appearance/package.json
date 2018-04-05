@@ -1,0 +1,23 @@
+{
+  "name": "appearance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "jquery": "^3.3.1",
+    "jquery-form": "^4.2.2",
+    "jquery-lazyload": "^1.9.3",
+    "jquery-match-height": "^0.7.2",
+    "select2": "^4.0.3",
+    "toastr": "^2.1.4",
+    "urijs": "^1.19.1"
+  }
+}

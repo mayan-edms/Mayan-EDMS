@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.2"
