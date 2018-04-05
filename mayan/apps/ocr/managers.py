@@ -8,7 +8,9 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 
-from documents.storages import documentimagecache_storage
+from documents.storages import storage_documentimagecache
+from documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from documents.tasks import task_generate_document_page_image
 
 from .events import event_ocr_document_version_finish
 from .runtime import ocr_backend
@@ -28,10 +30,15 @@ class DocumentPageOCRContentManager(models.Manager):
             app_label='ocr', model_name='DocumentPageOCRContent'
         )
 
-        # TODO: Call task and wait
-        cache_filename = document_page.generate_image()
+        task = task_generate_document_page_image.apply_async(
+            kwargs=dict(
+                document_page_id=document_page.pk
+            )
+        )
 
-        with documentimagecache_storage.open(cache_filename) as file_object:
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+
+        with storage_documentimagecache.open(cache_filename) as file_object:
             document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
                 document_page=document_page
             )
