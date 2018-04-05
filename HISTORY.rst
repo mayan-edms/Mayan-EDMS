@@ -137,6 +137,9 @@
 - Improve line chart appearance. Fix mouse hover label issue.
 - Add JavaScript dependency manager.
 - Add support for passing arguments to the OCR backend.
+- Fix issue when using workflows transitions with the new version
+  upload event as trigger. Thanks to Sema @Miggaten for the find and
+  the solution.
 
 2.7.3 (2017-09-11)
 ==================
