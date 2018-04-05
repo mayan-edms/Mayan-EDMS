@@ -68,15 +68,16 @@ class NPMPackage(object):
             os.path.join(self.registry.module_directory, self.name)
         )
 
-    def install(self):
+    def install(self, include_dependencies=False):
         print 'Installing package: {}@{}'.format(self.name, self.version)
 
         self._download()
         self._extract()
 
-        for name, version in self.metadata.get('dependencies', {}).items():
-            package = NPMPackage(registry=self.registry, name=name, version=version[1:])
-            package.install()
+        if include_dependencies:
+            for name, version in self.metadata.get('dependencies', {}).items():
+                package = NPMPackage(registry=self.registry, name=name, version=version)
+                package.install()
 
     @property
     def tar_filename(self):
@@ -95,7 +96,8 @@ class NPMPackage(object):
     @property
     def metadata(self):
         if not hasattr(self, '_metadata'):
-            self._metadata = requests.get(url=self.get_url()).json()
+            response = requests.get(url=self.get_url())
+            self._metadata = response.json()
         return self._metadata
 
     def get_url(self):
@@ -134,12 +136,17 @@ class NPMRegistry(object):
             self._read_package()
 
             for name, version in self._package_data['dependencies'].items():
-                self._install_package(name=name, version=version[1:])
+                self._install_package(name=name, version=version)
 
 
 class JSDependencyManager(object):
-    def install(self):
-        for app in apps.get_app_configs():
+    def install(self, app_name=None):
+        if app_name:
+            app_config_list = [apps.get_app_config(app_label=app_name)]
+        else:
+            app_config_list = apps.get_app_configs()
+
+        for app in app_config_list:
             for root, dirs, files in os.walk(os.path.join(app.path, 'static')):
                 if 'package.json' in files and not any(map(lambda x: x in root, ['node_modules', 'packages', 'vendors'])):
                     print 'Installing JavaScript packages for app: {} - {}'.format(app.label, root)
