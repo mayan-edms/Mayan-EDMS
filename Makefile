@@ -287,10 +287,10 @@ wheel_test_suit: wheel
 # Dev server
 
 runserver:
-	./manage.py runserver --settings=mayan.settings.development
+	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
 
 runserver_plus:
-	./manage.py runserver_plus --settings=mayan.settings.development
+	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
 
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
