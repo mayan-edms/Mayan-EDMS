@@ -1,15 +1,16 @@
 {
-  "name": "mayan_statistics",
+  "name": "sources",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "dropzone": "^5.4.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "Apache 2.0",
-  "private": true,
-  "dependencies": {
-    "chart.js": "^2.7.2"
-  }
+  "private": true
 }
