@@ -310,6 +310,22 @@ This will select the first, the last and all items in between. To deselect multi
 items the same procedure is used. This code was donated by the Paperattor
 project (www.paperattor.com).
 
+Add JavaScript dependency manager
+---------------------------------
+An internal utility to install and upgrade the JavaScript dependencies was added.
+This depency manager allows for the easier maintenace of the JavaScript libraries
+used through the project. 
+
+Previously JavaScript libraries we downloaded and installed by manually. These
+libraries were them checked into the Git repository. Finally to enable them
+the correspoding imports were added to the base templates in the apppeance app.
+
+This new manager is the first step to start resolving these issues. The manager
+allows apps to specify their own dependencies. These dependecies are then
+downloaded when the project is installed or upgraded. As such they are not
+part of the repository and lower the file size of the project.
+
+
 Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.
@@ -408,6 +424,9 @@ Other changes worth mentioning
 - Sort permission namespaces and permissions in the role permission views.
 - Invert the columns in the ACL detail view.
 - Remove the data filters feature.
+- Update Chart.js version.
+- Improve line chart appearance. Fix issue with mouse over labels next other chart margin.
+
 
 Removals
 --------

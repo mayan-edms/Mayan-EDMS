@@ -14,3 +14,11 @@ class NotLatestVersion(BaseCommonException):
     """
     def __init__(self, upstream_version):
         self.upstream_version = upstream_version
+
+
+class NPMException(BaseCommonException):
+    """Base exception for the NPM registry client"""
+
+
+class NPMPackgeIntegrityError(NPMException):
+    """Hash mismatch exception"""

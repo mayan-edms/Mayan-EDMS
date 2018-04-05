@@ -28,3 +28,4 @@ static_collected/
 /mayan/media/static/
 /venv/
 /whoosh_index/
+node_modules/

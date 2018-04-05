@@ -133,7 +133,9 @@
   of specifying their default path.
 - Unify checkbox selection code for list items and table items.
 - Add smart checkbox manager.
-
+- Update Chart.js version.
+- Improve line chart appearance. Fix mouse hover label issue.
+- Add JavaScript dependency manager.
 
 2.7.3 (2017-09-11)
 ==================

@@ -11,5 +11,6 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         management.call_command('createsettings', interactive=False)
         pre_initial_setup.send(sender=self)
+        management.call_command('installjavascript', interactive=False)
         management.call_command('createautoadmin', interactive=False)
         post_initial_setup.send(sender=self)

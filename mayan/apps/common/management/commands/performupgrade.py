@@ -17,6 +17,8 @@ class Command(management.BaseCommand):
                 'Error during pre_upgrade signal: %s' % exception
             )
 
+        management.call_command('installjavascript', interactive=False)
+
         try:
             perform_upgrade.send(sender=self)
         except Exception as exception:
