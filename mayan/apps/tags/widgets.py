@@ -11,28 +11,21 @@ from .permissions import permission_tag_view
 
 
 class TagFormWidget(forms.SelectMultiple):
+    option_template_name = 'tags/forms/widgets/tag_select_option.html'
+
     def __init__(self, *args, **kwargs):
         self.queryset = kwargs.pop('queryset')
         return super(TagFormWidget, self).__init__(*args, **kwargs)
 
-    def render_option(self, selected_choices, option_value, option_label):
-        if option_value is None:
-            option_value = ''
-        option_value = force_text(option_value)
-        if option_value in selected_choices:
-            selected_html = mark_safe(' selected="selected"')
-            if not self.allow_multiple_selected:
-                # Only allow for a single selection.
-                selected_choices.remove(option_value)
-        else:
-            selected_html = ''
-        return format_html(
-            '<option style="color:{};" value="{}"{}>{}</option>',
-            self.queryset.get(pk=option_value).color,
-            option_value,
-            selected_html,
-            force_text(option_label)
+    def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
+        result = super(TagFormWidget, self).create_option(
+            name=name, value=value, label=label, selected=selected,
+            index=index, subindex=subindex, attrs=attrs
         )
+
+        result['attrs']['data-color'] = self.queryset.get(pk=value).color
+
+        return result
 
 
 def widget_document_tags(document, user):

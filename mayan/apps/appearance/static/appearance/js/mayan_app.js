@@ -59,16 +59,16 @@ App.MultiObjectFormProcess = function ($form, options) {
 
 App.tagSelectionTemplate = function (tag, container) {
   var $tag = $(
-    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+    '<span class="label label-tag" style="background: ' + tag.element.dataset.color + ';"> ' + tag.text + '</span>'
   );
-  container[0].style.background = tag.element.style.color;
+  container[0].style.background = tag.element.dataset.color;
   return $tag;
 }
 
 App.tagResultTemplate = function (tag) {
   if (!tag.element) { return ''; }
   var $tag = $(
-    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+    '<span class="label label-tag" style="background: ' + tag.element.dataset.color + ';"> ' + tag.text + '</span>'
   );
   return $tag;
 }
