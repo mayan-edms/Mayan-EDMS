@@ -55,7 +55,7 @@ class DocumentPageOCRContentManager(models.Manager):
                 self.process_document_page(document_page=document_page)
         except Exception as exception:
             logger.error(
-                'OCR error for document version: %d; %s', document_version,
+                'OCR error for document version: %d; %s', document_version.pk,
                 exception
             )
 
