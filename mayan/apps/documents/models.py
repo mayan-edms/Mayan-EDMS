@@ -7,6 +7,7 @@ import uuid
 
 from django.conf import settings
 from django.core.files import File
+from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.template import Template, Context
 from django.urls import reverse
@@ -857,6 +858,11 @@ class DocumentPage(models.Model):
                 converter.seek(page_number=self.page_number - 1)
 
                 page_image = converter.get_page()
+
+                # Since open "wb+" doesn't create files, check if the file
+                # exists, if not then create it
+                if not documentimagecache_storage.exists(cache_filename):
+                    documentimagecache_storage.save(name=cache_filename, content=ContentFile(content=''))
 
                 with documentimagecache_storage.open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
