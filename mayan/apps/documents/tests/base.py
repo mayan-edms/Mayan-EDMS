@@ -19,6 +19,7 @@ from .literals import (
 
 @override_settings(OCR_AUTO_OCR=False)
 class GenericDocumentTestCase(BaseTestCase):
+    auto_upload_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
 
     def upload_document(self):
@@ -38,8 +39,8 @@ class GenericDocumentTestCase(BaseTestCase):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
-
-        self.document = self.upload_document()
+        if self.auto_upload_document:
+            self.document = self.upload_document()
 
     def tearDown(self):
         self.document_type.delete()
