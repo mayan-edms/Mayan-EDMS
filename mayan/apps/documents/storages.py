@@ -9,7 +9,7 @@ from .settings import (
     setting_storage_backend, setting_storage_backend_arguments
 )
 
-documentversion_storage = import_string(
+storage_documentversion = import_string(
     dotted_path=setting_storage_backend.value
 )(
     **yaml.safe_load(
@@ -17,7 +17,7 @@ documentversion_storage = import_string(
     )
 )
 
-documentimagecache_storage = import_string(
+storage_documentimagecache = import_string(
     dotted_path=setting_documentimagecache_storage.value
 )(
     **yaml.safe_load(

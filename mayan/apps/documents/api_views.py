@@ -34,7 +34,7 @@ from .serializers import (
     RecentDocumentSerializer, WritableDocumentSerializer,
     WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
 )
-from .storages import documentimagecache_storage
+from .storages import storage_documentimagecache
 from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
@@ -288,7 +288,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
 
         cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-        with documentimagecache_storage.open(cache_filename) as file_object:
+        with storage_documentimagecache.open(cache_filename) as file_object:
             return HttpResponse(file_object.read(), content_type='image')
 
 

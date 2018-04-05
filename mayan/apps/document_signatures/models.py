@@ -15,7 +15,7 @@ from django_gpg.models import Key
 from documents.models import DocumentVersion
 
 from .managers import EmbeddedSignatureManager
-from .storages import storage_backend
+from .storages import storage_detachedsignature
 
 logger = logging.getLogger(__name__)
 
@@ -127,8 +127,8 @@ class EmbeddedSignature(SignatureBaseModel):
 @python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
-        blank=True, null=True, storage=storage_backend, upload_to=upload_to,
-        verbose_name=_('Signature file')
+        blank=True, null=True, storage=storage_detachedsignature,
+        upload_to=upload_to, verbose_name=_('Signature file')
     )
 
     # Don't inherit the SignatureBaseModel manager

@@ -8,7 +8,7 @@ from .settings import (
     setting_storage_backend, setting_storage_backend_arguments
 )
 
-storage_backend = import_string(
+storage_detachedsignature = import_string(
     dotted_path=setting_storage_backend.value
 )(
     **yaml.safe_load(
