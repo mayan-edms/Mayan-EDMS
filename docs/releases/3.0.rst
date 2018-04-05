@@ -426,6 +426,8 @@ Other changes worth mentioning
 - Remove the data filters feature.
 - Update Chart.js version.
 - Improve line chart appearance. Fix issue with mouse over labels next other chart margin.
+- Add support for passing arguments to the OCR backend.
+
 
 
 Removals

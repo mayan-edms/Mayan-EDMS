@@ -136,6 +136,7 @@
 - Update Chart.js version.
 - Improve line chart appearance. Fix mouse hover label issue.
 - Add JavaScript dependency manager.
+- Add support for passing arguments to the OCR backend.
 
 2.7.3 (2017-09-11)
 ==================
