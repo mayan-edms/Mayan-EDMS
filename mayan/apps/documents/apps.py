@@ -31,7 +31,6 @@ from events.links import (
 )
 from events.permissions import permission_events_view
 from mayan.celery import app
-from mayan_statistics.classes import StatisticNamespace, CharJSLine
 from navigation import SourceColumn
 from rest_api.fields import DynamicSerializerField
 
@@ -97,11 +96,7 @@ from .queues import *  # NOQA
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
 from .signals import post_version_upload
-from .statistics import (
-    new_documents_per_month, new_document_pages_per_month,
-    new_document_versions_per_month, total_document_per_month,
-    total_document_page_per_month, total_document_version_per_month
-)
+from .statistics import *  # NOQA
 from .widgets import (
     DocumentPageThumbnailWidget, widget_document_page_number,
     widget_document_version_page_number
@@ -535,50 +530,6 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
-        )
-
-        namespace = StatisticNamespace(slug='documents', label=_('Documents'))
-        namespace.add_statistic(
-            slug='new-documents-per-month',
-            label=_('New documents per month'),
-            func=new_documents_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='new-document-versions-per-month',
-            label=_('New document versions per month'),
-            func=new_document_versions_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='new-document-pages-per-month',
-            label=_('New document pages per month'),
-            func=new_document_pages_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-documents-at-each-month',
-            label=_('Total documents at each month'),
-            func=total_document_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-document-versions-at-each-month',
-            label=_('Total document versions at each month'),
-            func=total_document_version_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-document-pages-at-each-month',
-            label=_('Total document pages at each month'),
-            func=total_document_page_per_month,
-            renderer=CharJSLine,
-            minute='0'
         )
 
         post_delete.connect(
