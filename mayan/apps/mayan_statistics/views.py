@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.contrib import messages
 from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
@@ -92,3 +93,8 @@ class StatisticQueueView(ConfirmView):
 
     def view_action(self):
         task_execute_statistic.delay(slug=self.get_object().slug)
+        messages.success(
+            self.request, _(
+                'Statistic "%s" queued successfully for update.'
+            ) % self.get_object().label
+        )
