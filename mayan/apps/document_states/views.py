@@ -697,12 +697,6 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
     submodel = StoredEventType
 
     def dispatch(self, *args, **kwargs):
-        messages.warning(
-            self.request, _(
-                'This is a feature preview. Things might not work as expect.'
-            )
-        )
-
         AccessControlList.objects.check_access(
             permissions=permission_workflow_edit,
             user=self.request.user, obj=self.get_object().workflow
