@@ -164,8 +164,13 @@ App.prototype.doToastrMessages = function () {
 
         if (value.tags === 'error') {
             // Error messages persist
+            options['timeOut'] = 0;
+        }
+        if (value.tags === 'warning') {
+            // Error messages persist
             options['timeOut'] = 10000;
         }
+
         toastr[value.tags](value.message, '', options);
     });
 }

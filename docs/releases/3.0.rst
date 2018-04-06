@@ -435,6 +435,7 @@ Other changes worth mentioning
 - Fix issue when using workflows transitions with the new version
   upload event as trigger. Thanks to Sema @Miggaten for the find and
   the solution.
+- Make error messages persistent and increase the timeout of warning to 10 seconds.
 
 
 Removals
