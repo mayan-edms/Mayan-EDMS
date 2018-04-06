@@ -11,6 +11,6 @@ def get_choice_value(field):
     try:
         return dict(field.field.choices)[field.value()]
     except TypeError:
-        return ', '.join([entry for id, entry in field.field.choices])
+        return ', '.join([subwidget.data['label'] for subwidget in field.subwidgets if subwidget.data['selected']])
     except KeyError:
         return _('None')

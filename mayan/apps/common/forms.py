@@ -12,9 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import Package
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import (
-    DetailSelectMultiple, DisableableSelectWidget, PlainWidget
-)
+from .widgets import DisableableSelectWidget, PlainWidget
 
 
 class ChoiceForm(forms.Form):
@@ -61,22 +59,6 @@ class DetailForm(forms.ModelForm):
                     ),
                     widget=extra_field.get('widget', PlainWidget)
                 )
-
-        for field_name, field in self.fields.items():
-            if isinstance(field.widget, forms.widgets.SelectMultiple):
-                self.fields[field_name].widget = DetailSelectMultiple(
-                    choices=field.widget.choices,
-                    attrs=field.widget.attrs,
-                    queryset=getattr(field, 'queryset', None),
-                )
-                self.fields[field_name].help_text = ''
-            elif isinstance(field.widget, forms.widgets.Select):
-                self.fields[field_name].widget = DetailSelectMultiple(
-                    choices=field.widget.choices,
-                    attrs=field.widget.attrs,
-                    queryset=getattr(field, 'queryset', None),
-                )
-                self.fields[field_name].help_text = ''
 
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs.update(
