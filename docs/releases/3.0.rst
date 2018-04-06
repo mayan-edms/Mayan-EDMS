@@ -314,7 +314,7 @@ Add JavaScript dependency manager
 ---------------------------------
 An internal utility to install and upgrade the JavaScript dependencies was added.
 This depency manager allows for the easier maintenace of the JavaScript libraries
-used through the project. 
+used through the project.
 
 Previously JavaScript libraries we downloaded and installed by manually. These
 libraries were them checked into the Git repository. Finally to enable them
@@ -495,11 +495,17 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
+* `GitLab issue #211 <https://gitlab.com/mayan-edms/mayan-edms/issues/211>`_ Remove all workflows when removing them from a document type
 * `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
 * `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
 * `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
 * `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
+* `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
+* `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach
+* `GitLab issue #449 <https://gitlab.com/mayan-edms/mayan-edms/issues/449>`_ OCR Error: 'int' object has no attribute 'split'
 * `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
+
+* `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
