@@ -489,6 +489,49 @@ class DocumentAPITestCase(BaseAPITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
+class DocumentPageAPITestCase(BaseAPITestCase):
+    def setUp(self):
+        super(DocumentPageAPITestCase, self).setUp()
+        self.login_user()
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(DocumentPageAPITestCase, self).tearDown()
+
+    def _create_document(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=file_object,
+                label=TEST_SMALL_DOCUMENT_FILENAME
+            )
+
+    def _request_document_page_image(self):
+        page = self.document.pages.first()
+        return self.get(
+            viewname='rest_api:documentpage-image', args=(
+                page.document.pk, page.document_version.pk, page.pk
+            ),
+        )
+
+    def test_document_page_image_view_no_access(self):
+        self._create_document()
+        response = self._request_document_page_image()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_document_page_image_view_with_access(self):
+        self._create_document()
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
+        response = self._request_document_page_image()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+@override_settings(OCR_AUTO_OCR=False)
 class TrashedDocumentAPITestCase(BaseAPITestCase):
     def setUp(self):
         super(TrashedDocumentAPITestCase, self).setUp()
