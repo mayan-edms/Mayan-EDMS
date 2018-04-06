@@ -11,7 +11,11 @@
 >
     {% with 'lazy-load thin_border-thumbnail' as image_classes %}
     {% with '200px' as image_max_height %}
+    {% with size_thumbnail_width as image_width %}
+    {% with size_thumbnail_height as image_height %}
         {% include 'documents/forms/widgets/document_page_image.html' %}
+    {% endwith %}
+    {% endwith %}
     {% endwith %}
     {% endwith %}
 </a>
