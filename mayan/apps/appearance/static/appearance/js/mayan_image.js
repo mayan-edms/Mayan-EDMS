@@ -12,7 +12,7 @@ MayanImage.intialize = function () {
         animationDuration : 400,
         buttons : [
             'fullScreen',
-            'close'
+            'close',
         ],
         selector: 'a.fancybox',
         afterShow: function (instance, current) {
@@ -20,6 +20,8 @@ MayanImage.intialize = function () {
                 instance.close(true);
             });
         },
+        infobar: true,
+
     });
 
     $('img.lazy-load').lazyload({
