@@ -232,7 +232,7 @@ class ObjectListPermissionFilterMixin(object):
     def get_queryset(self):
         queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
 
-        if not self.get_document_type and self.object_permission:
+        if not self.access_object_retrieve_method and self.object_permission:
             return AccessControlList.objects.filter_by_access(
                 self.object_permission, self.request.user, queryset=queryset
             )
