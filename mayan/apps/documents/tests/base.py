@@ -19,8 +19,14 @@ from .literals import (
 
 @override_settings(OCR_AUTO_OCR=False)
 class GenericDocumentTestCase(BaseTestCase):
+    auto_create_document_type = True
     auto_upload_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
+
+    def create_document_type(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
     def upload_document(self):
         with open(self.test_document_path) as file_object:
@@ -36,11 +42,11 @@ class GenericDocumentTestCase(BaseTestCase):
             'sample_documents', self.test_document_filename
         )
 
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-        if self.auto_upload_document:
-            self.document = self.upload_document()
+        if self.auto_create_document_type:
+            self.create_document_type()
+
+            if self.auto_upload_document:
+                self.document = self.upload_document()
 
     def tearDown(self):
         self.document_type.delete()
