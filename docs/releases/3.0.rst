@@ -506,6 +506,7 @@ Bugs fixed or issues closed
 * `GitLab issue #449 <https://gitlab.com/mayan-edms/mayan-edms/issues/449>`_ OCR Error: 'int' object has no attribute 'split'
 * `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
 
+* `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
 * `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
