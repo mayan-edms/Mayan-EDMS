@@ -13,6 +13,7 @@ import requests
 from django.apps import apps
 
 from .exceptions import NPMException, NPMPackgeIntegrityError
+from .utils import mkdtemp
 
 
 class NPMPackage(object):
@@ -106,7 +107,6 @@ class NPMPackage(object):
 
 
 class NPMRegistry(object):
-    DEFAULT_CACHE_PATH = '/tmp'
     DEFAULT_REGISTRY_URL = 'http://registry.npmjs.com'
     DEFAULT_MODULE_DIRECTORY = 'node_modules'
     DEFAULT_PACKAGE_FILENAME = 'package.json'
@@ -114,7 +114,7 @@ class NPMRegistry(object):
 
     def __init__(self, url=None, cache_path=None, module_directory=None, package_filename=None, lock_filename=None):
         self.url = url or self.DEFAULT_REGISTRY_URL
-        self.cache_path = cache_path or self.DEFAULT_CACHE_PATH
+        self.cache_path = cache_path or mkdtemp()
         self.module_directory = module_directory or self.DEFAULT_MODULE_DIRECTORY
         self.package_file = package_filename or self.DEFAULT_PACKAGE_FILENAME
         self.lock_filename = lock_filename or self.DEFAULT_LOCK_FILENAME
