@@ -325,6 +325,10 @@ allows apps to specify their own dependencies. These dependecies are then
 downloaded when the project is installed or upgraded. As such they are not
 part of the repository and lower the file size of the project.
 
+Workflow changes
+----------------
+Removing a document type from a workflow will now also remove all running
+instances of that workflow for documents of the document type just removed.
 
 Other changes worth mentioning
 ------------------------------
@@ -340,7 +344,8 @@ Other changes worth mentioning
 - Update to the latest version the packages for building, development, documentation and testing.
 - Add statistics script to produce a report of the views, APIs and test for each app.
 - Merge base64 filename patch from Cornelius Ludmann.
-- SearchModel return interface changed. The class no longer returns the result_set value. Use the queryset returned instead.
+- SearchModel return interface changed. The class no longer
+  returns the result_set value. Use the queryset returned instead.
 - Remove the unused scrollable_content internal feature.
 - Remove unused animate.css package.
 - Add the MERC specifying javascript library usage.

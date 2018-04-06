@@ -140,6 +140,9 @@
 - Fix issue when using workflows transitions with the new version
   upload event as trigger. Thanks to Sema @Miggaten for the find and
   the solution.
+- Removing running workflow instances in document of a specific type if
+  that document type is removed from the workflow.
+  
 
 2.7.3 (2017-09-11)
 ==================

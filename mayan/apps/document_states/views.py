@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.core.files.base import ContentFile
+from django.db import transaction
 from django.db.utils import IntegrityError
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -176,6 +177,17 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         # TODO: add task launching this workflow for all the document types
         # of item
 
+    def dispatch(self, request, *args, **kwargs):
+        messages.warning(
+            self.request, _(
+                'Removing a document type from a workflow will also '
+                'remove all running instances of that workflow for '
+                'documents of the document type just removed.'
+            )
+        )
+
+        return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
+
     def get_extra_context(self):
         return {
             'title': _(
@@ -198,9 +210,11 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         )
 
     def remove(self, item):
-        self.get_object().document_types.remove(item)
-        # TODO: add task deleting this workflow for all the document types of
-        # item
+        # When removing a document type to workflow association
+        # also remove all running workflows in documents of that type.
+        with transaction.atomic():
+            self.get_object().document_types.remove(item)
+            self.get_object().instances.filter(document__document_type=item).delete()
 
 
 # Workflow state actions
