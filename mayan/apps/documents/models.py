@@ -649,7 +649,7 @@ class DocumentVersion(models.Model):
                     self.mimetype, self.encoding = get_mimetype(
                         file_object=file_object
                     )
-            except:
+            except Exception:
                 self.mimetype = ''
                 self.encoding = ''
             finally:

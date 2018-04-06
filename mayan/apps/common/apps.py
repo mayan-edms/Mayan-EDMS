@@ -29,7 +29,7 @@ from .links import (
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import (
-    menu_about, menu_main, menu_secondary, menu_tools, menu_user
+    menu_about, menu_main, menu_secondary, menu_user
 )
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration

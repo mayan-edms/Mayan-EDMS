@@ -96,7 +96,7 @@ def metadata_repr_as_list(metadata_list):
         try:
             output.append('%s - %s' % (MetadataType.objects.get(
                 pk=metadata_dict['id']), metadata_dict.get('value', '')))
-        except:
+        except Exception:
             pass
 
     return output

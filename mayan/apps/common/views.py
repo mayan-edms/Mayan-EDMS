@@ -5,13 +5,13 @@ from json import dumps
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, resolve_url
 from django.template import RequestContext
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView, TemplateView
 
 from acls.models import AccessControlList

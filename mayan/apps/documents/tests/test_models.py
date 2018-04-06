@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
 
 from datetime import timedelta
-import os
 import time
 
-from django.conf import settings
 from django.test import override_settings
 
 from common.tests import BaseTestCase
@@ -18,7 +16,7 @@ from .base import GenericDocumentTestCase
 from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
+    TEST_SMALL_DOCUMENT_PATH
 )
 
 

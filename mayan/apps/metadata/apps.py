@@ -17,7 +17,6 @@ from common.classes import ModelAttribute
 from common.widgets import two_state_template
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
-from documents.permissions import permission_document_view
 from mayan.celery import app
 from navigation import SourceColumn
 

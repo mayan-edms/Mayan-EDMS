@@ -1,9 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.contenttypes.models import ContentType
-from django.urls import reverse
-
-from acls.models import AccessControlList
 from documents.tests import GenericDocumentViewTestCase
 from documents.permissions import permission_document_create
 

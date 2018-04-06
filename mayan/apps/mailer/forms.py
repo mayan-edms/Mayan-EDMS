@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import json
 
 from django import forms
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList

@@ -14,13 +14,11 @@ from metadata.tests.literals import (
 )
 
 from ..permissions import (
-    permission_user_create, permission_user_delete, permission_user_edit,
-    permission_user_view
+    permission_user_create, permission_user_delete, permission_user_edit
 )
 
 from .literals import (
-    TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME, TEST_USER_2_USERNAME,
-    TEST_USER_2_USERNAME_EDITED
+    TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME, TEST_USER_2_USERNAME
 )
 
 TEST_USER_TO_DELETE_USERNAME = 'user_to_delete'

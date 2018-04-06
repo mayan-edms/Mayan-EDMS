@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from ..literals import (
     DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 )
-from ..models import Document, DocumentType
+from ..models import DocumentType
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
@@ -213,6 +213,6 @@ class DocumentTypeQuickLabelViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document_type, permission=permission_document_type_view
         )
         response = self._request_quick_label_list_view()
-        self.assertContains(response, text=self.document_type_filename,
-            status_code=200
+        self.assertContains(
+            response, text=self.document_type_filename, status_code=200
         )

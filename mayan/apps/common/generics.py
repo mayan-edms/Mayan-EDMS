@@ -127,7 +127,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
 
                     try:
                         action_function(selection_obj)
-                    except:
+                    except Exception:
                         if settings.DEBUG:
                             raise
                         else:

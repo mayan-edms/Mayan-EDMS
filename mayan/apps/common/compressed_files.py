@@ -6,7 +6,7 @@ import zipfile
 try:
     import zlib  # NOQA
     COMPRESSION = zipfile.ZIP_DEFLATED
-except:
+except ImportError:
     COMPRESSION = zipfile.ZIP_STORED
 
 from django.core.files.uploadedfile import SimpleUploadedFile
