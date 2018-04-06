@@ -55,9 +55,33 @@
                             {% if not hide_labels %}{{ field.label }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                         </label>
                     </div>
-                {% elif field|widget_type == 'detailselectmultiple' %}
+                {% elif field|widget_type == 'emailinput' %}
                     {% if read_only %}
-                        <input class="form-control" readonly="readonly" type="text" value="{{ field|get_choice_value }}">
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
+                {% elif field|widget_type == 'textinput' %}
+                    {% if read_only %}
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
+                {% elif field|widget_type == 'textarea' %}
+                    {% if read_only %}
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
+                {% elif field|widget_type == 'select' %}
+                    {% if read_only %}
+                        {{ field|get_choice_value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
+                {% elif field|widget_type == 'selectmultiple' %}
+                    {% if read_only %}
+                        {{ field|get_choice_value }}
                     {% else %}
                         {% render_field field class+="form-control" %}
                     {% endif %}
@@ -87,6 +111,7 @@
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}
+
                 {% if field.help_text %}<p class="help-block">{{ field.help_text|safe }}</p>{% endif %}
             </div>
         {% endfor %}

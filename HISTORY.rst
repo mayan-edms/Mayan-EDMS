@@ -143,7 +143,7 @@
 - Removing running workflow instances in document of a specific type if
   that document type is removed from the workflow.
 - Make error messages persistent and increase the timeout of warning to 10 seconds.
-
+- Improve rendering of the details form.
 
 2.7.3 (2017-09-11)
 ==================
