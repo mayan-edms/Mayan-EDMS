@@ -32,6 +32,8 @@ repository for electronic documents.
     Contact <topics/contact>
     MERCs <mercs/index>
     Pending work <topics/pending_work>
+    Individual Contributor Assignment Agreement <topics/caa_individual>
+    Entity Contributor Assignment Agreement <topics/caa_entity>
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/
