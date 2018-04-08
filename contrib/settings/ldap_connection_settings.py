@@ -3,8 +3,7 @@ from __future__ import absolute_import
 import ldap
 from django_auth_ldap.config import LDAPSearch
 
-from .base import *
-from django.conf import settings
+from .base import *  # NOQA
 from django.contrib.auth import get_user_model
 
 SECRET_KEY = '<your secret key>'
@@ -27,22 +26,24 @@ AUTH_LDAP_BIND_DN = LDAP_ADMIN_DN
 AUTH_LDAP_BIND_PASSWORD = LDAP_PASSWORD
 
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch('%s,%s'%(LDAP_ADDITIONAL_USER_DN, LDAP_BASE_DN), ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
-AUTH_LDAP_USER_ATTR_MAP = {
-                           "first_name": "cn",
-                           "last_name": "sn",
-			   "email": "mail"
-                          }
-
-AUTHENTICATION_BACKENDS = (
-'django_auth_ldap.backend.LDAPBackend',
-'mayan.settings.settings_local.EmailOrUsernameModelBackend',
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    '%s,%s' % (LDAP_ADDITIONAL_USER_DN, LDAP_BASE_DN),
+    ldap.SCOPE_SUBTREE, '(uid=%(user)s)'
 )
+AUTH_LDAP_USER_ATTR_MAP = {
+    'first_name': 'cn',
+    'last_name': 'sn',
+    'email': 'mail'
+}
+AUTHENTICATION_BACKENDS = (
+    'django_auth_ldap.backend.LDAPBackend',
+    'mayan.settings.settings_local.EmailOrUsernameModelBackend',
+)
+
 
 class EmailOrUsernameModelBackend(object):
     """
     This is a ModelBacked that allows authentication with either a username or an email address.
-
     """
     def authenticate(self, username=None, password=None):
         if '@' in username:
@@ -53,7 +54,7 @@ class EmailOrUsernameModelBackend(object):
             user = get_user_model().objects.get(**kwargs)
             if user.check_password(password):
                 return user
-        except User.DoesNotExist:
+        except get_user_model().DoesNotExist:
             return None
 
     def get_user(self, username):
