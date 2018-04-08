@@ -199,7 +199,7 @@ class DocumentTypeQuickLabelViewsTestCase(GenericDocumentViewTestCase):
     def _request_quick_label_list_view(self):
         return self.get(
             viewname='documents:document_type_filename_list',
-            args=(self.document_type_filename.pk,),
+            args=(self.document_type.pk,),
         )
 
     def test_document_type_quick_label_list_no_access(self):
