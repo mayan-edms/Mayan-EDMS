@@ -330,6 +330,15 @@ Workflow changes
 Removing a document type from a workflow will now also remove all running
 instances of that workflow for documents of the document type just removed.
 
+Adoption of Contributor Assignment Agreements
+---------------------------------------------
+To facilitate the inclusion of submissions provided by third parties,
+the project has adopted the use of individual and entity contributor
+assignment agreements. These agreements make clear the process to
+transfer the rights to submissions. With these agreements in place
+we now have a documented and legally sound method to accept
+submissions that we couldn't before.
+
 Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.
