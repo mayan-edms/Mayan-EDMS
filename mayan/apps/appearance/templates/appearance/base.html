@@ -93,14 +93,14 @@
 {% endif %}
 
 <script>
-var DjangoMessages = [
-    {% for message in messages %}
-        {
-            tags: '{{ message.tags }}',
-            message: '{{ message.message }}'
-        },
-    {% endfor %}
-];
+    var DjangoMessages = [
+        {% for message in messages %}
+            {
+                tags: '{{ message.tags }}',
+                message: '{{ message.message }}'
+            },
+        {% endfor %}
+    ];
 </script>
 {% block javascript %}{% endblock %}
 
