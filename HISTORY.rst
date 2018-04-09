@@ -145,6 +145,7 @@
 - Make error messages persistent and increase the timeout of warning to 10 seconds.
 - Improve rendering of the details form.
 - Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
+- Add warning when using SQLite as the database backend.
 
 2.7.3 (2017-09-11)
 ==================

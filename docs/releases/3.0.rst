@@ -339,6 +339,16 @@ transfer the rights to submissions. With these agreements in place
 we now have a documented and legally sound method to accept
 submissions that we couldn't before.
 
+SQLite
+------
+Starting with version 3.0, a warning message will be shown in the console and
+in the user interface when using SQLite as the database engine. When it comes to
+Mayan EDMS, SQLite should only be used for development or testing, never for
+production. This is due to Mayan EDMS exceeding the concurrency capabilities of
+SQLite. The results are duplicated documents, frequency database locked errors,
+among other issues. Suggested database backends are PostgreSQL and MySQL
+(or MariaDB) using a transaction aware storage engine like InnoDB.
+
 Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.

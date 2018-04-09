@@ -20,10 +20,14 @@ from common.compat import dict_type, dictionary_type
 import mayan
 
 from .exceptions import NotLatestVersion
-from .literals import MAYAN_PYPI_NAME, PYPI_URL
+from .literals import DJANGO_SQLITE_BACKEND, MAYAN_PYPI_NAME, PYPI_URL
 from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
+
+
+def check_for_sqlite():
+    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND
 
 
 def check_version():

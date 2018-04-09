@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 import logging
+import warnings
 
 from kombu import Exchange, Queue
 
@@ -27,7 +28,7 @@ from .links import (
     link_packages_licenses, link_setup, link_support, link_tools
 )
 
-from .literals import DELETE_STALE_UPLOADS_INTERVAL
+from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
 from .menus import (
     menu_about, menu_main, menu_secondary, menu_user
 )
@@ -36,6 +37,7 @@ from .queues import *  # NOQA - Force queues registration
 from .settings import setting_auto_logging, setting_production_error_log_path
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
+from .utils import check_for_sqlite
 
 logger = logging.getLogger(__name__)
 
@@ -87,6 +89,8 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
+        if check_for_sqlite():
+            warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
