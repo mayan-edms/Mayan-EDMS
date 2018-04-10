@@ -24,6 +24,7 @@ djangorestframework==3.7.7
 djangorestframework-recursive==0.1.2
 drf-yasg==1.5.0
 
+flanker==0.8.5
 flex==6.12.0
 furl==1.0.1
 fusepy==2.0.4

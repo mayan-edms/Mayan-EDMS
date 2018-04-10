@@ -9,6 +9,7 @@ import os
 import poplib
 import subprocess
 
+from flanker import mime
 import sh
 import yaml
 
@@ -21,7 +22,9 @@ from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_str, force_text, python_2_unicode_compatible
+)
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
@@ -37,7 +40,7 @@ from documents.settings import setting_language
 from metadata.api import set_bulk_metadata
 from metadata.models import MetadataType
 
-from .classes import Attachment, PseudoFile, SourceUploadedFile, StagingFile
+from .classes import PseudoFile, SourceUploadedFile, StagingFile
 from .exceptions import SourceException
 from .literals import (
     DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
@@ -573,11 +576,7 @@ class EmailBaseModel(IntervalBaseModel):
         return ''.join(header_sections)
 
     @staticmethod
-    def process_message(source, message):
-        counter = 1
-        email = message_from_string(message)
-        metadata_dictionary = {}
-
+    def process_message(source, message_text):
         if source.subject_metadata_type:
             metadata_dictionary[
                 source.subject_metadata_type.name
@@ -588,29 +587,22 @@ class EmailBaseModel(IntervalBaseModel):
                 source.from_metadata_type.name
             ] = EmailBaseModel.getheader(email['From'])
 
-        for part in email.walk():
-            disposition = part.get('Content-Disposition', 'none')
-            logger.debug('Disposition: %s', disposition)
+        counter = 1
+        metadata_dictionary = {}
 
-            if disposition.startswith('attachment'):
-                raw_filename = part.get_filename()
+        message = mime.from_string(force_str(message_text))
 
-                if raw_filename:
-                    filename = collapse_rfc2231_value(raw_filename)
-
-                    # Decode base64 encoded filename
-                    # https://stackoverflow.com/a/21859258/1364435
-                    if decode_header(filename)[0][1] is not None:
-                        filename = str(decode_header(filename)[0][0]).decode(decode_header(filename)[0][1])
-
-                else:
-                    filename = _('attachment-%i') % counter
-                    counter += 1
-
-                logger.debug('filename: %s', filename)
-
-                with Attachment(part, name=filename) as file_object:
-                    if filename == source.metadata_attachment_name:
+        # Messages are tree based, do nested processing of message parts until
+        # a message with no children is found, then work out way up.
+        if message.parts:
+            for part in message.parts:
+                EmailBaseModel.process_message(source=source, message_text=part.to_string())
+        else:
+            # Treat inlines as attachments, both are extracted and saved as
+            # documents
+            if message.is_attachment() or message.is_inline():
+                with ContentFile(content=message.body, name=message.detected_file_name) as file_object:
+                    if message.detected_file_name == source.metadata_attachment_name:
                         metadata_dictionary = yaml.safe_load(
                             file_object.read()
                         )
@@ -620,7 +612,7 @@ class EmailBaseModel(IntervalBaseModel):
                     else:
                         document = source.handle_upload(
                             document_type=source.document_type,
-                            file_object=file_object, label=filename,
+                            file_object=file_object, label=message.detected_file_name,
                             expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
                             )
@@ -631,25 +623,24 @@ class EmailBaseModel(IntervalBaseModel):
                                 metadata_dictionary=metadata_dictionary
                             )
             else:
-                logger.debug('No Content-Disposition')
+                # If it is not an attachment then it should be a body message part.
+                # Another option is to use message.is_body()
+                if message.detected_content_type == 'text/html':
+                    label = 'email_body.html'
+                else:
+                    label = 'email_body.txt'
 
-                content_type = part.get_content_type()
-
-                logger.debug('content_type: %s', content_type)
-
-                if content_type == 'text/plain' and source.store_body:
-                    content = part.get_payload(decode=True).decode(part.get_content_charset())
-                    with ContentFile(content=content, name='email_body.txt') as file_object:
-                        document = source.handle_upload(
-                            document_type=source.document_type,
-                            file_object=file_object,
-                            expand=SOURCE_UNCOMPRESS_CHOICE_N, label='email_body.txt',
+                with ContentFile(content=message.body, name=label) as file_object:
+                    document = source.handle_upload(
+                        document_type=source.document_type,
+                        file_object=file_object,
+                        expand=SOURCE_UNCOMPRESS_CHOICE_N
+                    )
+                    if metadata_dictionary:
+                        set_bulk_metadata(
+                            document=document,
+                            metadata_dictionary=metadata_dictionary
                         )
-                        if metadata_dictionary:
-                            set_bulk_metadata(
-                                document=document,
-                                metadata_dictionary=metadata_dictionary
-                            )
 
 
 class POP3Email(EmailBaseModel):
@@ -692,7 +683,7 @@ class POP3Email(EmailBaseModel):
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
             EmailBaseModel.process_message(
-                source=self, message=complete_message
+                source=self, message_text=complete_message
             )
             mailbox.dele(message_number)
 
@@ -737,7 +728,7 @@ class IMAPEmail(EmailBaseModel):
                 logger.debug('message_number: %s', message_number)
                 status, data = mailbox.fetch(message_number, '(RFC822)')
                 EmailBaseModel.process_message(
-                    source=self, message=data[0][1]
+                    source=self, message_text=data[0][1]
                 )
                 mailbox.store(message_number, '+FLAGS', '\\Deleted')
 

@@ -29,14 +29,6 @@ class SourceUploadedFile(File):
         self.extra_data = extra_data
 
 
-class Attachment(File):
-    def __init__(self, part, name):
-        self.name = name
-        self.file = PseudoFile(
-            BytesIO(part.get_payload(decode=True)), name=name
-        )
-
-
 @python_2_unicode_compatible
 class StagingFile(object):
     """

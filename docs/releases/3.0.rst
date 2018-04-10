@@ -349,6 +349,15 @@ SQLite. The results are duplicated documents, frequency database locked errors,
 among other issues. Suggested database backends are PostgreSQL and MySQL
 (or MariaDB) using a transaction aware storage engine like InnoDB.
 
+Received email processing
+-------------------------
+Parsing email messages is a complex task. To increase compatibility with the
+many interpretations of the standards that govern email messaging, Mayan EDMS
+now uses Mailgun's flanker library (https://github.com/mailgun/flanker).
+Thanks to flanker, Mayan EDMS now gains new capabilities when it comes to
+parsing incoming email. For example, in addition to mail attachments, it is now
+possible to process files included in emails as inline content.
+
 Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.

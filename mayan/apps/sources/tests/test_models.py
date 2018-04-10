@@ -16,6 +16,12 @@ from documents.tests import (
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import WatchFolderSource, WebFormSource, EmailBaseModel
 
+from .literals import (
+    TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
+    TEST_EMAIL_INLINE_IMAGE, TEST_EMAIL_NO_CONTENT_TYPE,
+    TEST_EMAIL_NO_CONTENT_TYPE_STRING
+)
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class UploadDocumentTestCase(BaseTestCase):
@@ -119,53 +125,68 @@ class CompressedUploadsTestCase(BaseTestCase):
         )
 
 
-test_email = """From: noreply@example.com
-To: test@example.com
-Subject: Scan to E-mail Server Job
-Date: Tue, 23 May 2017 23:03:37 +0200
-Message-Id: <00000001.465619c9.1.00@BRN30055CCF4D76>
-Mime-Version: 1.0
-Content-Type: multipart/mixed;
-    boundary="RS1tYWlsIENsaWVudA=="
-X-Mailer: E-mail Client
-
-This is multipart message.
-
---RS1tYWlsIENsaWVudA==
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-
-Sending device cannot receive e-mail replies.
---RS1tYWlsIENsaWVudA==
-Content-Type: text/plain
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
-
-SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
-
---RS1tYWlsIENsaWVudA==--"""
-
-
-class SourceStub():
-    subject_metadata_type = None
-    from_metadata_type = None
-    metadata_attachment_name = None
-    document_type = None
-    uncompress = None
-    store_body = False
-    label = ""
-
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None,
-                      metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
-        self.label = label
-
-
+@override_settings(OCR_AUTO_OCR=False)
 class EmailFilenameDecodingTestCase(BaseTestCase):
-    """
-    Test decoding of base64 encoded e-mail attachment filename.
-    """
+    def setUp(self):
+        super(EmailFilenameDecodingTestCase, self).setUp()
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
 
-    def test_decode_email_encoded_filename(self):
-        source_stub = SourceStub()
-        EmailBaseModel.process_message(source_stub, test_email)
-        self.assertEqual(source_stub.label, u'Ampelm\xe4nnchen.txt')
+    def tearDown(self):
+        self.document_type.delete()
+        super(EmailFilenameDecodingTestCase, self).tearDown()
+
+    def _create_email_source(self):
+        self.source = EmailBaseModel(
+            document_type=self.document_type,
+            host='', username='', password='', store_body=True
+        )
+
+
+    def test_decode_email_base64_encoded_filename(self):
+        """
+        Test decoding of base64 encoded e-mail attachment filename.
+        """
+        self._create_email_source()
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_BASE64_FILENAME
+        )
+
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
+        )
+
+    def test_decode_email_no_content_type(self):
+        self._create_email_source()
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_NO_CONTENT_TYPE
+        )
+        self.assertTrue(
+            TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().open().read()
+        )
+
+    def test_decode_email_with_inline_image(self):
+        self._create_email_source()
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_INLINE_IMAGE
+        )
+        self.assertTrue(Document.objects.count(), 2)
+        self.assertQuerysetEqual(
+            ordered=False, qs=Document.objects.all(), values=(
+                '<Document: test-01.png>', '<Document: email_body.html>'
+            ),
+        )
+
+    def test_decode_email_with_attachment_and_inline_image(self):
+        self._create_email_source()
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_ATTACHMENT_AND_INLINE
+        )
+        self.assertTrue(Document.objects.count(), 2)
+        self.assertQuerysetEqual(
+            ordered=False, qs=Document.objects.all(), values=(
+                '<Document: test-01.png>', '<Document: email_body.html>',
+                '<Document: test-02.png>'
+            ),
+        )
