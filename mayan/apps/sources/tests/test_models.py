@@ -143,7 +143,6 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
             host='', username='', password='', store_body=True
         )
 
-
     def test_decode_email_base64_encoded_filename(self):
         """
         Test decoding of base64 encoded e-mail attachment filename.

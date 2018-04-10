@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import base64
-from io import BytesIO
 import os
 import time
 import urllib

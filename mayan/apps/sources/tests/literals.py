@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-TEST_EMAIL_ATTACHMENT_AND_INLINE='''Subject: Test 03: inline and attachments
+TEST_EMAIL_ATTACHMENT_AND_INLINE = '''Subject: Test 03: inline and attachments
 To: Renat Gilmanov
 Content-Type: multipart/mixed; boundary=001a11c24d809f1525051712cc78
 
@@ -64,7 +64,6 @@ Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
 SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
 
 --RS1tYWlsIENsaWVudA==--'''
-
 TEST_EMAIL_NO_CONTENT_TYPE = '''MIME-Version: 1.0
 Received: by 10.0.0.1 with HTTP; Mon, 9 Apr 2018 00:00:00 -0400 (AST)
 X-Originating-IP: [10.0.0.1]

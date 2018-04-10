@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from email import message_from_string
-from email.header import decode_header
 import imaplib
 import json
 import logging
@@ -10,13 +8,7 @@ import poplib
 import subprocess
 
 from flanker import mime
-import sh
 import yaml
-
-try:
-    scanimage = sh.Command('/usr/bin/scanimage')
-except sh.CommandNotFound:
-    scanimage = None
 
 from django.core.exceptions import ValidationError
 from django.core.files import File
@@ -30,7 +22,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from common.compat import collapse_rfc2231_value
 from common.compressed_files import CompressedFile, NotACompressedFile
 from common.utils import TemporaryFile
 from converter.models import Transformation
@@ -560,37 +551,25 @@ class EmailBaseModel(IntervalBaseModel):
                     }
                 )
 
-    # From: http://bookmarks.honewatson.com/2009/08/11/
-    #   python-gmail-imaplib-search-subject-get-attachments/
     # TODO: Add lock to avoid running more than once concurrent same document
     # download
     # TODO: Use message ID for lock
 
     @staticmethod
-    def getheader(header_text, default='ascii'):
-
-        headers = decode_header(header_text)
-        header_sections = [
-            force_text(text, charset or default) for text, charset in headers
-        ]
-        return ''.join(header_sections)
-
-    @staticmethod
     def process_message(source, message_text):
+        counter = 1
+        message = mime.from_string(force_str(message_text))
+        metadata_dictionary = {}
+
         if source.subject_metadata_type:
             metadata_dictionary[
                 source.subject_metadata_type.name
-            ] = EmailBaseModel.getheader(email['Subject'])
+            ] = message.headers.get('Subjet')
 
         if source.from_metadata_type:
             metadata_dictionary[
                 source.from_metadata_type.name
-            ] = EmailBaseModel.getheader(email['From'])
-
-        counter = 1
-        metadata_dictionary = {}
-
-        message = mime.from_string(force_str(message_text))
+            ] = message.headers.get('From')
 
         # Messages are tree based, do nested processing of message parts until
         # a message with no children is found, then work out way up.
@@ -601,8 +580,9 @@ class EmailBaseModel(IntervalBaseModel):
             # Treat inlines as attachments, both are extracted and saved as
             # documents
             if message.is_attachment() or message.is_inline():
-                with ContentFile(content=message.body, name=message.detected_file_name) as file_object:
-                    if message.detected_file_name == source.metadata_attachment_name:
+                label = message.detected_file_name or 'attachment-{}'.format(counter)
+                with ContentFile(content=message.body, name=label) as file_object:
+                    if label == source.metadata_attachment_name:
                         metadata_dictionary = yaml.safe_load(
                             file_object.read()
                         )
@@ -612,8 +592,7 @@ class EmailBaseModel(IntervalBaseModel):
                     else:
                         document = source.handle_upload(
                             document_type=source.document_type,
-                            file_object=file_object, label=message.detected_file_name,
-                            expand=(
+                            file_object=file_object, expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
                             )
                         )
