@@ -19,7 +19,6 @@ from .mailers import TestBackend
 
 class MailerTestMixin(object):
     def _create_user_mailer(self):
-
         self.user_mailer = UserMailer.objects.create(
             default=True,
             enabled=True,

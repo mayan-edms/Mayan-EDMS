@@ -1,11 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.sites.models import Site
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.template import Context, Template
 from django.urls import reverse, reverse_lazy
-from django.utils.html import strip_tags
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -84,33 +81,20 @@ class MailDocumentView(MultipleObjectFormActionView):
         }
 
     def object_action(self, form, instance):
-        context = Context({
-            'link': 'http://%s%s' % (
-                Site.objects.get_current().domain,
-                instance.get_absolute_url()
-            ),
-            'document': instance
-        })
-        body_template = Template(form.cleaned_data['body'])
-        body_html_content = body_template.render(context)
-        body_text_content = strip_tags(body_html_content)
-
-        subject_template = Template(form.cleaned_data['subject'])
-        subject_text = strip_tags(subject_template.render(context))
-
         AccessControlList.objects.check_access(
             permissions=permission_user_mailer_use, user=self.request.user,
             obj=form.cleaned_data['user_mailer']
         )
 
         task_send_document.apply_async(
-            args=(
-                subject_text, body_text_content, self.request.user.email,
-                form.cleaned_data['email']
-            ), kwargs={
-                'document_id': instance.pk,
+            kwargs={
                 'as_attachment': self.as_attachment,
-                'user_mailer_id': form.cleaned_data['user_mailer'].pk
+                'body': form.cleaned_data['body'],
+                'document_id': instance.pk,
+                'recipient': form.cleaned_data['email'],
+                'sender': self.request.user.email,
+                'subject': form.cleaned_data['subject'],
+                'user_mailer_id': form.cleaned_data['user_mailer'].pk,
             }
         )
 

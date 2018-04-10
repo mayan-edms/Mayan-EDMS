@@ -7,7 +7,7 @@ from documents.tests.test_models import GenericDocumentTestCase
 from ..models import UserMailer
 
 from .literals import (
-    TEST_EMAIL_ADDRESS, TEST_RECIPIENTS_MULTIPLE_COMMA,
+    TEST_BODY_HTML, TEST_EMAIL_ADDRESS, TEST_RECIPIENTS_MULTIPLE_COMMA,
     TEST_RECIPIENTS_MULTIPLE_SEMICOLON, TEST_RECIPIENTS_MULTIPLE_MIXED,
     TEST_RECIPIENTS_MULTIPLE_MIXED_LIST, TEST_USER_MAILER_LABEL,
     TEST_USER_MAILER_BACKEND_PATH
@@ -31,9 +31,17 @@ class ModelTestCase(GenericDocumentTestCase):
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
+    def test_send_simple_with_html(self):
+        self._create_user_mailer()
+        self.user_mailer.send(to=TEST_EMAIL_ADDRESS, body=TEST_BODY_HTML)
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].alternatives[0][0], TEST_BODY_HTML)
+
     def test_send_attachment(self):
         self._create_user_mailer()
-        self.user_mailer.send(
+        self.user_mailer.send_document(
             to=TEST_EMAIL_ADDRESS, document=self.document, as_attachment=True
         )
 

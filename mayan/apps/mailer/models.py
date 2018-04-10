@@ -3,8 +3,11 @@ from __future__ import unicode_literals
 import json
 import logging
 
+from django.contrib.sites.models import Site
 from django.core import mail
 from django.db import models
+from django.template import Context, Template
+from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -82,21 +85,28 @@ class UserMailer(models.Model):
 
         return super(UserMailer, self).save(*args, **kwargs)
 
-    def send(self, subject='', body='', to=None, document=None, as_attachment=False):
+    def send(self, to, subject='', body='', attachments=None):
+        """
+        Send a simple email. There is no document or template knowledge.
+        attachments is a list of dictionaries with the keys:
+        filename, content, and  mimetype.
+        """
         recipient_list = split_recipient_list(recipients=[to])
 
         with self.get_connection() as connection:
             email_message = mail.EmailMultiAlternatives(
-                subject=subject, body=body, to=recipient_list,
-                connection=connection
+                body=strip_tags(body), connection=connection, subject=subject,
+                to=recipient_list,
             )
 
-            if as_attachment:
-                with document.open() as descriptor:
-                    email_message.attach(
-                        filename=document.label, content=descriptor.read(),
-                        mimetype=document.file_mimetype
-                    )
+            for attachment in attachments or []:
+                email_message.attach(
+                    filename=attachment['filename'],
+                    content=attachment['content'],
+                    mimetype=attachment['mimetype']
+                )
+
+            email_message.attach_alternative(body, 'text/html')
 
             try:
                 email_message.send()
@@ -105,8 +115,39 @@ class UserMailer(models.Model):
             else:
                 self.error_log.all().delete()
 
+    def send_document(self, document, to, subject='', body='', as_attachment=False):
+        context_dictionary = {
+            'link': 'http://%s%s' % (
+                Site.objects.get_current().domain,
+                document.get_absolute_url()
+            ),
+            'document': document
+        }
+
+        context = Context(context_dictionary)
+
+        body_template = Template(body)
+        body_html_content = body_template.render(context)
+
+        subject_template = Template(subject)
+        subject_text = strip_tags(subject_template.render(context))
+
+        attachments = []
+        if as_attachment:
+            with document.open() as file_object:
+                attachments.append(
+                    {
+                        'filename': document.label, 'content': file_object.read(),
+                        'mimetype': document.file_mimetype
+                    }
+                )
+
+        return self.send(
+            subject=subject_text, body=body_html_content, to=to, attachments=attachments
+        )
+
     def test(self, to):
-        self.send(to=to, subject=_('Test email from Mayan EDMS'))
+        self.send(subject=_('Test email from Mayan EDMS'), to=to)
 
 
 class UserMailerLogEntry(models.Model):

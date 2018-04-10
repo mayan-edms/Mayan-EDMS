@@ -17,7 +17,7 @@ setting_link_subject_template = namespace.add_setting(
 )
 setting_link_body_template = namespace.add_setting(
     default=DEFAULT_LINK_BODY_TEMPLATE,
-    help_text=_('Template for the document link email form body line.'),
+    help_text=_('Template for the document link email form body text. Can include HTML.'),
     global_name='MAILER_LINK_BODY_TEMPLATE',
 )
 setting_document_subject_template = namespace.add_setting(
@@ -27,6 +27,6 @@ setting_document_subject_template = namespace.add_setting(
 )
 setting_document_body_template = namespace.add_setting(
     default=DEFAULT_DOCUMENT_BODY_TEMPLATE,
-    help_text=_('Template for the document email form body line.'),
+    help_text=_('Template for the document email form body text. Can include HTML.'),
     global_name='MAILER_DOCUMENT_BODY_TEMPLATE',
 )
