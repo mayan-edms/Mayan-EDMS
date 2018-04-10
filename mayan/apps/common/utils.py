@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 def check_for_sqlite():
-    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND
+    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
 def check_version():
