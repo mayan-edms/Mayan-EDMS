@@ -466,6 +466,7 @@ Other changes worth mentioning
 - Make error messages persistent and increase the timeout of warning to 10 seconds.
 - Improve rendering of the details form.
 - Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
+- Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
 
 
 Removals

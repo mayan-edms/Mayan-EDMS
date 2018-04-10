@@ -10,8 +10,12 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 
 from common.compressed_files import CompressedFile, NotACompressedFile
+from lock_manager import LockError
+from lock_manager.runtime import locking_backend
 
-from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
+from .literals import (
+    DEFAULT_SOURCE_LOCK_EXPIRE, DEFAULT_SOURCE_TASK_RETRY_DELAY
+)
 
 logger = logging.getLogger(__name__)
 
@@ -22,10 +26,19 @@ def task_check_interval_source(source_id):
         app_label='sources', model_name='Source'
     )
 
-    source = Source.objects.get_subclass(pk=source_id)
-    if source.enabled:
+    lock_id = 'task_check_interval_source-%d' % source_id
+    try:
+        logger.debug('trying to acquire lock: %s', lock_id)
+        lock = locking_backend.acquire_lock(lock_id, DEFAULT_SOURCE_LOCK_EXPIRE)
+    except LockError:
+        logger.debug('unable to obtain lock: %s' % lock_id)
+    else:
+        logger.debug('acquired lock: %s', lock_id)
+
         try:
-            source.check_source()
+            source = Source.objects.get_subclass(pk=source_id)
+            if source.enabled:
+                source.check_source()
         except Exception as exception:
             logger.error('Error processing source: %s; %s', source, exception)
             source.logs.create(
@@ -33,6 +46,8 @@ def task_check_interval_source(source_id):
             )
         else:
             source.logs.all().delete()
+        finally:
+            lock.release()
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)

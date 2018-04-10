@@ -147,6 +147,7 @@
 - Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
 - Add warning when using SQLite as the database backend.
 - Use Mailgun's flanker library to process the email sources.
+- Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
 
 2.7.3 (2017-09-11)
 ==================

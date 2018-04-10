@@ -551,10 +551,6 @@ class EmailBaseModel(IntervalBaseModel):
                     }
                 )
 
-    # TODO: Add lock to avoid running more than once concurrent same document
-    # download
-    # TODO: Use message ID for lock
-
     @staticmethod
     def process_message(source, message_text):
         counter = 1
