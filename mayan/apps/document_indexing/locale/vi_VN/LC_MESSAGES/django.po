@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Levels"
 msgstr ""
 
-#: apps.py:129 apps.py:148 models.py:291
+#: apps.py:129 apps.py:148 models.py:290
 msgid "Documents"
 msgstr "Tài liệu"
 
@@ -71,7 +71,7 @@ msgid "Indexes to be queued for rebuilding."
 msgstr ""
 
 #: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:57
-#: views.py:73 views.py:220
+#: views.py:73 views.py:219
 msgid "Indexes"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr ""
 
-#: links.py:57 views.py:325
+#: links.py:57 views.py:329
 msgid "Rebuild indexes"
 msgstr ""
 
@@ -170,27 +170,27 @@ msgid ""
 "%(exception)s"
 msgstr ""
 
-#: models.py:284
+#: models.py:283
 msgid "Index template node"
 msgstr ""
 
-#: models.py:287
+#: models.py:286
 msgid "Value"
 msgstr "Giá trị"
 
-#: models.py:297
+#: models.py:296
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:298
+#: models.py:297
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:402
+#: models.py:401
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:403
+#: models.py:402
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -277,21 +277,21 @@ msgstr ""
 msgid "Edit the index template node: %s?"
 msgstr ""
 
-#: views.py:256
+#: views.py:260
 #, python-format
 msgid "Navigation: %s"
 msgstr ""
 
-#: views.py:261
+#: views.py:265
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:336
+#: views.py:340
 msgid "Index rebuild queued successfully."
 msgstr ""

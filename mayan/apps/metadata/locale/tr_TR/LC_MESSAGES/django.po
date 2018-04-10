@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-07-30 19:40+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -20,20 +20,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:56 apps.py:156 apps.py:161 links.py:39 permissions.py:7 queues.py:8
+#: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:83
-msgid "Documents missing required metadata"
-msgstr "Gerekli meta verileri eksik olan belgeler"
-
-#: apps.py:100
-msgid "Documents missing optional metadata"
-msgstr "İsteğe bağlı meta verileri eksik belgeler"
-
-#: apps.py:119
+#: apps.py:84
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
@@ -41,35 +33,35 @@ msgstr ""
 "Bir MetadataType örnek başvurusu ve bu meta veri türü için bir değer içeren "
 "bir sorgu"
 
-#: apps.py:125
+#: apps.py:90
 msgid "Metadata type name"
 msgstr "Meta veri türü adı"
 
-#: apps.py:128
+#: apps.py:93
 msgid "Metadata type value"
 msgstr "Metadata tipi"
 
-#: apps.py:132
+#: apps.py:97
 msgid "Value of a metadata"
 msgstr "Bir meta verinin değeri"
 
-#: apps.py:134
+#: apps.py:99
 msgid "Return the value of a specific document metadata"
 msgstr "Belge metadata sının değerini döndür"
 
-#: apps.py:168 forms.py:20 models.py:160
+#: apps.py:133 forms.py:20 models.py:160
 msgid "Value"
 msgstr "Değer"
 
-#: apps.py:172 forms.py:46 forms.py:185 models.py:217
+#: apps.py:137 forms.py:46 forms.py:185 models.py:217
 msgid "Required"
 msgstr "Gereklidir"
 
-#: apps.py:194 apps.py:202 forms.py:123 models.py:84 models.py:215
+#: apps.py:159 apps.py:167 forms.py:123 models.py:84 models.py:215
 msgid "Metadata type"
 msgstr "Meta veri türü"
 
-#: apps.py:197 apps.py:206
+#: apps.py:162 apps.py:171
 msgid "Metadata value"
 msgstr "Meta veri değeri"
 
@@ -476,3 +468,9 @@ msgstr "Meta veri türü için doküman türleri: %s"
 #| msgid_plural "Edit documents metadata"
 msgid "Enter document metadata"
 msgstr "Belge meta verilerini düzenleme"
+
+#~ msgid "Documents missing required metadata"
+#~ msgstr "Gerekli meta verileri eksik olan belgeler"
+
+#~ msgid "Documents missing optional metadata"
+#~ msgstr "İsteğe bağlı meta verileri eksik belgeler"

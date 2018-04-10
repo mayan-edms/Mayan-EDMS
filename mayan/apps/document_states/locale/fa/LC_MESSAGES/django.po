@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: 2017-08-27 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -37,8 +37,8 @@ msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:145 apps.py:208 forms.py:117 models.py:47 models.py:147
-#: models.py:216 models.py:278
+#: apps.py:145 apps.py:208 forms.py:117 models.py:47 models.py:148
+#: models.py:217 models.py:279
 msgid "Label"
 msgstr "برچسب"
 
@@ -70,7 +70,7 @@ msgstr "آخرین تغییر وضعیت"
 msgid "Date and time"
 msgstr "تاریخ و زمان"
 
-#: apps.py:177 apps.py:204 models.py:159
+#: apps.py:177 apps.py:204 models.py:160
 msgid "Completion"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Action type"
 msgstr ""
 
-#: apps.py:224 models.py:281
+#: apps.py:224 models.py:282
 msgid "Origin state"
 msgstr "وضعیت شروع"
 
@@ -110,7 +110,7 @@ msgstr "وضعیت نهایی"
 msgid "Triggers"
 msgstr ""
 
-#: error_logs.py:8 models.py:237
+#: error_logs.py:8 models.py:238
 msgid "Workflow state actions"
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: forms.py:121 models.py:217
+#: forms.py:121 models.py:218
 msgid "Enabled"
 msgstr "فعال شده"
 
@@ -135,7 +135,7 @@ msgstr "بلی"
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:15 links.py:39 links.py:121 models.py:59 views.py:141 views.py:606
+#: links.py:15 links.py:39 links.py:121 models.py:60 views.py:142 views.py:609
 msgid "Workflows"
 msgstr "گردشکار"
 
@@ -217,11 +217,11 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:58 models.py:145 models.py:276 models.py:324
+#: models.py:59 models.py:146 models.py:277 models.py:324
 msgid "Workflow"
 msgstr "گردشکار"
 
-#: models.py:151
+#: models.py:152
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
@@ -229,11 +229,11 @@ msgstr ""
 "در صورتیکه این وضعیت شروع گردشکار باشد این وضعیت را انتخاب کنید. وضعیت فقط "
 "میتواند وضعیت اولیه باشد."
 
-#: models.py:153
+#: models.py:154
 msgid "Initial"
 msgstr "اولیه"
 
-#: models.py:157
+#: models.py:158
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
@@ -241,35 +241,35 @@ msgstr ""
 "درصد پیشرفت کار برای این وضعیت نسبت به تکمیل گردش کار را وارد کنید. از عدد "
 "بدون علامت درصد استفاده کنید."
 
-#: models.py:165 models.py:214
+#: models.py:166 models.py:215
 msgid "Workflow state"
 msgstr "وضعیت گردشکار"
 
-#: models.py:166
+#: models.py:167
 msgid "Workflow states"
 msgstr "وضعیتهای گردشکار"
 
-#: models.py:221
+#: models.py:222
 msgid "At which moment of the state this action will execute"
 msgstr ""
 
-#: models.py:222
+#: models.py:223
 msgid "When"
 msgstr ""
 
-#: models.py:226
+#: models.py:227
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr ""
 
-#: models.py:227
+#: models.py:228
 msgid "Entry action path"
 msgstr ""
 
-#: models.py:230
+#: models.py:231
 msgid "Entry action data"
 msgstr ""
 
-#: models.py:236
+#: models.py:237
 msgid "Workflow state action"
 msgstr ""
 
@@ -403,128 +403,130 @@ msgstr ""
 msgid "Primary key of the transition to be added."
 msgstr ""
 
-#: views.py:60
+#: views.py:61
 #, python-format
 msgid "Workflows for document: %s"
 msgstr "گردشکارهای سند : %s"
 
-#: views.py:84
+#: views.py:85
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr "شرح گردشکار : %(workflow)s"
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
 msgstr ""
 
-#: views.py:117
+#: views.py:118
 msgid "Submit"
 msgstr "ارسال"
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Do transition for workflow: %s"
 msgstr "انجام تغییر وضعیت گردشکار : %s"
 
-#: views.py:170
+#: views.py:171
 msgid "Available document types"
 msgstr ""
 
-#: views.py:172
+#: views.py:173
 msgid "Document types assigned this workflow"
 msgstr ""
 
-#: views.py:182
+#: views.py:183
+msgid ""
+"Removing a document type from a workflow will also remove all running "
+"instances of that workflow for documents of the document type just removed."
+msgstr ""
+
+#: views.py:194
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr "نوع سند مرتبط با گردش کاری:  %s"
 
-#: views.py:226
+#: views.py:240
 #, python-format
 msgid "Create a \"%s\" workflow action"
 msgstr ""
 
-#: views.py:266
+#: views.py:280
 #, python-format
 msgid "Delete workflow state action: %s"
 msgstr ""
 
-#: views.py:289
+#: views.py:303
 #, python-format
 msgid "Edit workflow state action: %s"
 msgstr ""
 
-#: views.py:312 views.py:713
-msgid "This is a feature preview. Things might not work as expect."
-msgstr ""
-
-#: views.py:326
+#: views.py:329
 #, python-format
 msgid "Actions for workflow state: %s"
 msgstr ""
 
-#: views.py:360
+#: views.py:363
 msgid "New workflow state action selection"
 msgstr ""
 
-#: views.py:378
+#: views.py:381
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "وضعیت ایجاد برای گردشکار : %s"
 
-#: views.py:470 views.py:694
+#: views.py:473 views.py:697
 #, python-format
 msgid "States of workflow: %s"
 msgstr "وضعیتهای گردشکار : %s"
 
-#: views.py:493
+#: views.py:496
 msgid "Unable to save transition; integrity error."
 msgstr "قادر به ذخیره انتقال نیست:خطای تجمع"
 
-#: views.py:505
+#: views.py:508
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "ایجاد تغییر وضعیت برای گردشکار : %s"
 
-#: views.py:586
+#: views.py:589
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "تغییر وضعیتهای گردشکار : %s"
 
-#: views.py:636
+#: views.py:639
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr ""
 
-#: views.py:657
+#: views.py:660
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views.py:735
+#: views.py:732
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr ""
 
-#: views.py:741
+#: views.py:738
 msgid "Workflow transition trigger events updated successfully"
 msgstr ""
 
-#: views.py:758
+#: views.py:755
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr ""
 
-#: views.py:789
+#: views.py:786
 msgid "Launch all workflows?"
 msgstr ""
 
-#: views.py:796
+#: views.py:793
 msgid "Workflow launch queued successfully."
 msgstr ""
 
-#: views.py:821
+#: views.py:818
 #, python-format
 msgid "Preview of: %s"
 msgstr ""

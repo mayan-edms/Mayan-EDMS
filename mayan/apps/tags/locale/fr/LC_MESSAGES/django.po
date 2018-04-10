@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:07-0400\n"
+"POT-Creation-Date: 2018-04-10 04:06-0400\n"
 "PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -224,54 +224,54 @@ msgstr "Erreur lors de la suppression de l'étiquette \"%(tag)s\": %(error)s"
 msgid "Edit tag: %s"
 msgstr "Modifier l'étiquette:%s"
 
-#: views.py:206
+#: views.py:207
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documents avec l'étiquette: %s"
 
-#: views.py:229
+#: views.py:230
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Étiquettes du document: %s"
 
-#: views.py:240
+#: views.py:241
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr ""
 "La demande de suppression de l'étiquette effectuée sur %(count)d document"
 
-#: views.py:242
+#: views.py:243
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr ""
 "La demande de suppression de l'étiquette effectuée sur %(count)d documents"
 
-#: views.py:249
+#: views.py:250
 msgid "Remove"
 msgstr "Supprimer"
 
-#: views.py:251
+#: views.py:252
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Supprimer les étiquettes sur %(count)d document"
 msgstr[1] "Supprimer les étiquettes sur %(count)d documents"
 
-#: views.py:263
+#: views.py:264
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Supprimer les étiquettes sur le document: %s"
 
-#: views.py:272
+#: views.py:273
 msgid "Tags to be removed."
 msgstr "Étiquettes qui seront supprimées."
 
-#: views.py:298
+#: views.py:299
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Le document \"%(document)s\" n'a pas été étiquetté comme \"%(tag)s"
 
-#: views.py:308
+#: views.py:309
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""

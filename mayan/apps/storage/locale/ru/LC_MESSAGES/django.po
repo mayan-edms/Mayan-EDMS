@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:07-0400\n"
+"POT-Creation-Date: 2018-04-10 04:06-0400\n"
 "PO-Revision-Date: 2016-07-14 01:15+0000\n"
 "Last-Translator: lilo.panic\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,6 +21,6 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:9 settings.py:10
+#: apps.py:9
 msgid "Storage"
 msgstr "Хранилище"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:04-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -24,13 +24,13 @@ msgstr ""
 msgid "ACLs"
 msgstr "Droits"
 
-#: apps.py:23 links.py:48 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr "Permissions"
-
-#: apps.py:27 models.py:47
+#: apps.py:23 models.py:47
 msgid "Role"
 msgstr "Rôle"
+
+#: apps.py:26 links.py:48 models.py:43 workflow_actions.py:48
+msgid "Permissions"
+msgstr "Permissions"
 
 #: links.py:31
 msgid "Delete"
@@ -138,12 +138,12 @@ msgstr "Permissions disponibles"
 msgid "Granted permissions"
 msgstr "Permissions autorisées"
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permission du rôle \"%(role)s\" pour \"%(object)s\"@"
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "La désactivation de permission est hérité de l'objet parent"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:04-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -23,13 +23,13 @@ msgstr ""
 msgid "ACLs"
 msgstr "Erişim Kontrol Listeleri"
 
-#: apps.py:23 links.py:48 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr "İzinler"
-
-#: apps.py:27 models.py:47
+#: apps.py:23 models.py:47
 msgid "Role"
 msgstr "Rol"
+
+#: apps.py:26 links.py:48 models.py:43 workflow_actions.py:48
+msgid "Permissions"
+msgstr "İzinler"
 
 #: links.py:31
 msgid "Delete"
@@ -130,12 +130,12 @@ msgstr "Kullanılabilir izinler"
 msgid "Granted permissions"
 msgstr "İzinler izin verildi"
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "\"%(role)s\" yetkisi \"%(object)s\" için rol"
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Devre Dışı İzinler üst nesneden devralınır."
 

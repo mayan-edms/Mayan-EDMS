@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-07-15 03:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -81,26 +81,31 @@ msgstr "Ejecutar estadística"
 msgid "No data available yet"
 msgstr "No hay datos disponibles aún."
 
-#: views.py:17
+#: views.py:18
 msgid "Statistics namespaces"
 msgstr "Estadísticas de espacios nombrados"
 
-#: views.py:33
+#: views.py:34
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Detalles para espacios nombrados: %s"
 
-#: views.py:53
+#: views.py:54
 #, python-format
 msgid "Results for: %s"
 msgstr "Resultados para: %s"
 
-#: views.py:60 views.py:85
+#: views.py:61 views.py:86
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "No se encontró estadística \"%s\"."
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "¿Programa estadística \"%s\" para ser actualizada?"
+
+#: views.py:98
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr ""

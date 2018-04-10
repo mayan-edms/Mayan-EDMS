@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:04-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
@@ -24,13 +24,13 @@ msgstr ""
 msgid "ACLs"
 msgstr "Authorisatielijsten"
 
-#: apps.py:23 links.py:48 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr "Permissies"
-
-#: apps.py:27 models.py:47
+#: apps.py:23 models.py:47
 msgid "Role"
 msgstr "Gebruikersrol"
+
+#: apps.py:26 links.py:48 models.py:43 workflow_actions.py:48
+msgid "Permissions"
+msgstr "Permissies"
 
 #: links.py:31
 msgid "Delete"
@@ -129,12 +129,12 @@ msgstr "Beschikbare permissies"
 msgid "Granted permissions"
 msgstr "Toegekende permissies"
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Rol \"%(role)s\" permissies voor \"%(object)s\""
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Uitgeschakelde permissies zijn  geërfd van een parent object."
 

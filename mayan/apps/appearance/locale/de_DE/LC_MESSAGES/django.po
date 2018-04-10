@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:04-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: 2017-07-09 06:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -40,7 +40,7 @@ msgstr "Seite nicht gefunden"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Die angeforderte Seite konnte leider nicht gefunden werden"
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:100
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:98
 msgid "Server error"
 msgstr "Serverfehler"
 
@@ -60,31 +60,35 @@ msgstr ""
 "Wenn Sie Hilfe brauchen, können Sie den Fehler über folgende Kennung "
 "referenzieren: "
 
-#: templates/appearance/about.html:8 templates/appearance/about.html:61
+#: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
 msgstr "Über"
 
-#: templates/appearance/about.html:66
+#: templates/appearance/about.html:62
 msgid "Version"
 msgstr "Version"
 
-#: templates/appearance/about.html:68
+#: templates/appearance/about.html:64
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Build Nummer: %(build_number)s"
 
-#: templates/appearance/about.html:81
+#: templates/appearance/about.html:77
 #, fuzzy
 #| msgid "Released under the Apache 2.0 License"
 msgid "Released under the license:"
 msgstr "Veröffentlicht unter der Apache 2.0 Lizenz"
 
-#: templates/appearance/base.html:53
+#: templates/appearance/base.html:33
+msgid "Warning"
+msgstr ""
+
+#: templates/appearance/base.html:61
 #: templates/navigation/generic_navigation.html:6
 msgid "Actions"
 msgstr "Aktionen"
 
-#: templates/appearance/base.html:55
+#: templates/appearance/base.html:63
 msgid "Toggle Dropdown"
 msgstr "Ausklappmenü ein-/ausschalten"
 
@@ -209,21 +213,21 @@ msgstr "Erweitert"
 msgid "Search documents"
 msgstr "Dokumente durchsuchen"
 
-#: templates/appearance/root.html:56
+#: templates/appearance/root.html:54
 msgid "Toggle navigation"
 msgstr "Navigation ein-/ausschalten"
 
-#: templates/appearance/root.html:105
+#: templates/appearance/root.html:103
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:113 templates/appearance/root.html:133
+#: templates/appearance/root.html:122
 #, fuzzy
 #| msgid "Server error"
 msgid "Server communication error"
 msgstr "Serverfehler"
 
-#: templates/appearance/root.html:115 templates/appearance/root.html:135
+#: templates/appearance/root.html:124
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 
@@ -235,34 +239,38 @@ msgstr "Login"
 msgid "First time login"
 msgstr "Erstanmeldung"
 
-#: templates/authentication/login.html:24
+#: templates/authentication/login.html:25
+#, fuzzy, python-format
+#| msgid ""
+#| "You have just finished installing <strong>Mayan EDMS</strong>, "
+#| "congratulations!"
 msgid ""
-"You have just finished installing <strong>Mayan EDMS</strong>, "
+"You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
 "Herzlichen Glückwunsch! Sie haben die Installation von <strong>Mayan EDMS</"
 "strong> erfolgreich abgeschlossen. "
 
-#: templates/authentication/login.html:25
+#: templates/authentication/login.html:26
 msgid "Login using the following credentials:"
 msgstr "Einloggen mit folgenden Zugangsdaten:"
 
-#: templates/authentication/login.html:26
+#: templates/authentication/login.html:27
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
 msgstr "Benutzername: <strong>%(account)s</strong>"
 
-#: templates/authentication/login.html:27
+#: templates/authentication/login.html:28
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
 msgstr "E-Mail: <strong>%(email)s</strong>"
 
-#: templates/authentication/login.html:28
+#: templates/authentication/login.html:29
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
 msgstr "Passwort: <strong>%(password)s</strong>"
 
-#: templates/authentication/login.html:29
+#: templates/authentication/login.html:30
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
@@ -270,12 +278,12 @@ msgstr ""
 "Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese "
 "Nachricht zu deaktivieren."
 
-#: templates/authentication/login.html:45
-#: templates/authentication/login.html:53
+#: templates/authentication/login.html:46
+#: templates/authentication/login.html:54
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: templates/authentication/login.html:58
+#: templates/authentication/login.html:59
 msgid "Forgot your password?"
 msgstr ""
 

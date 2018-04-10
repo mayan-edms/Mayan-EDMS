@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-06-23 05:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -81,26 +81,31 @@ msgstr ""
 msgid "No data available yet"
 msgstr "Noch keine Daten vorhanden"
 
-#: views.py:17
+#: views.py:18
 msgid "Statistics namespaces"
 msgstr "Statistiken Namensräume"
 
-#: views.py:33
+#: views.py:34
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Namensraumdetails für %s"
 
-#: views.py:53
+#: views.py:54
 #, python-format
 msgid "Results for: %s"
 msgstr "Ergebnis für %s"
 
-#: views.py:60 views.py:85
+#: views.py:61 views.py:86
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistik \"%s\" nicht gefunden."
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Statistik \"%s\"  für die Aktualisierung vorsehen?"
+
+#: views.py:98
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr ""

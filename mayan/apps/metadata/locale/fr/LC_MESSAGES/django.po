@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-07-24 20:12+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -23,20 +23,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:56 apps.py:156 apps.py:161 links.py:39 permissions.py:7 queues.py:8
+#: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
 msgid "Metadata"
 msgstr "Métadonnées"
 
-#: apps.py:83
-msgid "Documents missing required metadata"
-msgstr "Documents avec des métadonnées manquantes"
-
-#: apps.py:100
-msgid "Documents missing optional metadata"
-msgstr "Documents avec métadonnées optionnelles manquantes"
-
-#: apps.py:119
+#: apps.py:84
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
@@ -44,35 +36,35 @@ msgstr ""
 "Jeu de requête contenant une référence d'instance MetadataType et une valeur "
 "pour ce type de métadonnées"
 
-#: apps.py:125
+#: apps.py:90
 msgid "Metadata type name"
 msgstr "Nom du type de métadonnée"
 
-#: apps.py:128
+#: apps.py:93
 msgid "Metadata type value"
 msgstr "Valeur du type de métadonnée"
 
-#: apps.py:132
+#: apps.py:97
 msgid "Value of a metadata"
 msgstr "Valeur de la métadonnées"
 
-#: apps.py:134
+#: apps.py:99
 msgid "Return the value of a specific document metadata"
 msgstr "Retourne la valeur de la métadonnée du document spécifié"
 
-#: apps.py:168 forms.py:20 models.py:160
+#: apps.py:133 forms.py:20 models.py:160
 msgid "Value"
 msgstr "Valeur"
 
-#: apps.py:172 forms.py:46 forms.py:185 models.py:217
+#: apps.py:137 forms.py:46 forms.py:185 models.py:217
 msgid "Required"
 msgstr "Requis"
 
-#: apps.py:194 apps.py:202 forms.py:123 models.py:84 models.py:215
+#: apps.py:159 apps.py:167 forms.py:123 models.py:84 models.py:215
 msgid "Metadata type"
 msgstr "Type de métadonnée"
 
-#: apps.py:197 apps.py:206
+#: apps.py:162 apps.py:171
 msgid "Metadata value"
 msgstr "Valeur de la métadonnée"
 
@@ -488,3 +480,9 @@ msgstr "Types de documents pour le type de métadonnée: %s"
 #| msgid_plural "Edit documents metadata"
 msgid "Enter document metadata"
 msgstr "Modifier les méta-données du document"
+
+#~ msgid "Documents missing required metadata"
+#~ msgstr "Documents avec des métadonnées manquantes"
+
+#~ msgid "Documents missing optional metadata"
+#~ msgstr "Documents avec métadonnées optionnelles manquantes"

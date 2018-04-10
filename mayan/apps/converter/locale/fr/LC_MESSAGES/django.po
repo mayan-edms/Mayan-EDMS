@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: 2017-07-24 19:36+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "Converter"
 msgstr "Convertisseur"
 
-#: apps.py:27 models.py:40
+#: apps.py:27 models.py:39
 msgid "Order"
 msgstr "Ordre"
 
-#: apps.py:29 models.py:58
+#: apps.py:29 models.py:57
 msgid "Transformation"
 msgstr "Transformation"
 
-#: apps.py:33 models.py:50
+#: apps.py:33 models.py:49
 msgid "Arguments"
 msgstr "Arguments"
 
@@ -67,11 +67,11 @@ msgstr "Suppression"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:47 models.py:59
+#: links.py:47 models.py:58
 msgid "Transformations"
 msgstr "Transformations"
 
-#: models.py:38
+#: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -79,11 +79,11 @@ msgstr ""
 "Ordre dans lequel les transformations seront exécutées. En l'absence de "
 "modification, un ordre est automatiquement assigné."
 
-#: models.py:44
+#: models.py:43
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:48
+#: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"

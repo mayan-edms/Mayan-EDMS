@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: 2017-08-27 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:80 permissions_runtime.py:7 settings.py:11
+#: apps.py:81 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr ""
 
-#: apps.py:85
+#: apps.py:86
 msgid "Anonymous"
 msgstr "匿名用户"
 
-#: classes.py:225
+#: classes.py:181
 msgid "Available attributes: \n"
 msgstr ""
 
@@ -35,13 +35,9 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
-#: forms.py:27
+#: forms.py:25
 msgid "Selection"
 msgstr "选择"
-
-#: forms.py:143
-msgid "Filter"
-msgstr ""
 
 #: generics.py:136
 #, python-format
@@ -90,7 +86,7 @@ msgstr ""
 msgid "About this"
 msgstr ""
 
-#: links.py:33 views.py:57
+#: links.py:33 views.py:56
 msgid "Check for updates"
 msgstr ""
 
@@ -127,44 +123,50 @@ msgid "Clear all"
 msgstr ""
 
 #: links.py:75
-msgid "Data filters"
-msgstr ""
-
-#: links.py:79
 msgid "Forum"
 msgstr ""
 
-#: links.py:83 views.py:196
+#: links.py:79 views.py:156
 msgid "License"
 msgstr "许可证"
 
-#: links.py:86 views.py:271
+#: links.py:82 views.py:231
 msgid "Other packages licenses"
 msgstr ""
 
-#: links.py:90
+#: links.py:86
 msgid "Setup"
 msgstr ""
 
-#: links.py:93
+#: links.py:89
 msgid "Support"
 msgstr ""
 
-#: links.py:97 queues.py:10 views.py:306
+#: links.py:93 queues.py:10 views.py:266
 msgid "Tools"
 msgstr ""
 
-#: literals.py:13
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:18
 msgid "Days"
 msgstr "天"
 
-#: literals.py:14
+#: literals.py:19
 msgid "Hours"
 msgstr "小时"
 
-#: literals.py:15
+#: literals.py:20
 msgid "Minutes"
 msgstr "分钟"
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr ""
 
 #: menus.py:12
 msgid "System"
@@ -184,7 +186,7 @@ msgstr ""
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
-#: mixins.py:241
+#: mixins.py:254
 msgid "Object"
 msgstr "对象"
 
@@ -196,7 +198,7 @@ msgstr ""
 msgid "Date time"
 msgstr ""
 
-#: models.py:37 views.py:241
+#: models.py:37 views.py:201
 msgid "Result"
 msgstr ""
 
@@ -279,13 +281,13 @@ msgstr ""
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: settings.py:47
+#: settings.py:51
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 
-#: settings.py:55
+#: settings.py:59
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
@@ -295,74 +297,60 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:50
+#: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:54
+#: views.py:53
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:71
+#: views.py:70
 msgid "Current user details"
 msgstr ""
 
-#: views.py:76
+#: views.py:75
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:96
+#: views.py:95
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:103
+#: views.py:102
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:159
-msgid "Filter selection"
-msgstr ""
-
-#: views.py:175
-#, python-format
-msgid "Results for filter: %s"
-msgstr ""
-
-#: views.py:182
-msgid "Filter not found"
-msgstr ""
-
-#: views.py:205
+#: views.py:165
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:222
+#: views.py:182
 msgid "Object error log cleared successfully"
 msgstr ""
 
-#: views.py:240
+#: views.py:200
 msgid "Date and time"
 msgstr ""
 
-#: views.py:245
+#: views.py:205
 #, python-format
 msgid "Error log entries for: %s"
 msgstr ""
 
-#: views.py:289
+#: views.py:249
 msgid "Setup items"
 msgstr ""
 
-#: views.py:332
+#: views.py:292
 msgid "No action selected."
 msgstr "请选择一个操作"
 
-#: views.py:340
+#: views.py:300
 msgid "Must select at least one item."
 msgstr "至少需要选择一项"
 
-#: widgets.py:47
-msgid "None"
-msgstr "无"
+#~ msgid "None"
+#~ msgstr "无"

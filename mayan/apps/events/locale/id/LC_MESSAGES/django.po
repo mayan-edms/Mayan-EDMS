@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: 2017-08-27 16:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Action object"
 msgstr ""
 
-#: apps.py:55 forms.py:12 forms.py:68
+#: apps.py:55 forms.py:12 forms.py:69
 msgid "Namespace"
 msgstr ""
 
-#: apps.py:58 forms.py:16 forms.py:72
+#: apps.py:58 forms.py:16 forms.py:73
 msgid "Label"
 msgstr ""
 
@@ -59,19 +59,19 @@ msgstr ""
 msgid "Unknown or obsolete event type: %s"
 msgstr ""
 
-#: forms.py:20 forms.py:76
+#: forms.py:20 forms.py:77
 msgid "Subscription"
 msgstr ""
 
-#: forms.py:22 forms.py:78
+#: forms.py:22 forms.py:79
 msgid "No"
 msgstr ""
 
-#: forms.py:23 forms.py:79
+#: forms.py:23 forms.py:80
 msgid "Subscribed"
 msgstr ""
 
-#: links.py:46 models.py:58 views.py:83
+#: links.py:46 models.py:59 views.py:83
 msgid "Event subscriptions"
 msgstr ""
 
@@ -103,39 +103,39 @@ msgstr ""
 msgid "Stored event types"
 msgstr ""
 
-#: models.py:47 models.py:68 models.py:97
+#: models.py:48 models.py:70 models.py:100
 msgid "User"
 msgstr ""
 
-#: models.py:51 models.py:101
+#: models.py:52 models.py:104
 msgid "Event type"
 msgstr ""
 
-#: models.py:57
+#: models.py:58
 msgid "Event subscription"
 msgstr ""
 
-#: models.py:72
+#: models.py:74
 msgid "Action"
 msgstr ""
 
-#: models.py:74
+#: models.py:76
 msgid "Read"
 msgstr ""
 
-#: models.py:78
+#: models.py:80
 msgid "Notification"
 msgstr ""
 
-#: models.py:79 views.py:113
+#: models.py:81 views.py:113
 msgid "Notifications"
 msgstr ""
 
-#: models.py:107
+#: models.py:110
 msgid "Object event subscription"
 msgstr ""
 
-#: models.py:108
+#: models.py:111
 msgid "Object event subscriptions"
 msgstr ""
 

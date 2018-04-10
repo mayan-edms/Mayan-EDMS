@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -67,7 +67,7 @@ msgstr "Czy dokument ma odnośniki?"
 msgid "Levels"
 msgstr ""
 
-#: apps.py:129 apps.py:148 models.py:291
+#: apps.py:129 apps.py:148 models.py:290
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -76,7 +76,7 @@ msgid "Indexes to be queued for rebuilding."
 msgstr "Indeksy w kolejce do przebudowania."
 
 #: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:57
-#: views.py:73 views.py:220
+#: views.py:73 views.py:219
 msgid "Indexes"
 msgstr "Indeksy"
 
@@ -104,7 +104,7 @@ msgstr "Szablon drzewa"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Usuwa i tworzy od podstaw wszystkie indeksy dokumentów."
 
-#: links.py:57 views.py:325
+#: links.py:57 views.py:329
 msgid "Rebuild indexes"
 msgstr "Przebudowa indeksów"
 
@@ -185,27 +185,27 @@ msgstr ""
 "Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; "
 "%(exception)s"
 
-#: models.py:284
+#: models.py:283
 msgid "Index template node"
 msgstr "Węzeł szablonu indeksu"
 
-#: models.py:287
+#: models.py:286
 msgid "Value"
 msgstr "Wartość"
 
-#: models.py:297
+#: models.py:296
 msgid "Index node instance"
 msgstr "Instancja węzła indeksu"
 
-#: models.py:298
+#: models.py:297
 msgid "Indexes node instances"
 msgstr "Instancje węzła indeksów"
 
-#: models.py:402
+#: models.py:401
 msgid "Document index node instance"
 msgstr "Instancja węzła indeksu dokumentu"
 
-#: models.py:403
+#: models.py:402
 msgid "Document indexes node instances"
 msgstr "Instancje węzła indeksów dokumentu"
 
@@ -292,21 +292,21 @@ msgstr "Usunąć węzeł szablonu indeksu: %s?"
 msgid "Edit the index template node: %s?"
 msgstr "Edytować węzeł szablonu indeksu: %s?"
 
-#: views.py:256
+#: views.py:260
 #, python-format
 msgid "Navigation: %s"
 msgstr "Nawigacja: %s"
 
-#: views.py:261
+#: views.py:265
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Zawartość indeksu: %s"
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Węzły indeksów zawierające dokument: %s"
 
-#: views.py:336
+#: views.py:340
 msgid "Index rebuild queued successfully."
 msgstr "Przebudowanie indeksu pomyślnie umieszczono w kolejce."

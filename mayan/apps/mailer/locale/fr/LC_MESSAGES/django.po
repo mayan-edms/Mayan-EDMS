@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-08-07 12:44+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -44,7 +44,7 @@ msgstr "Défaut?"
 msgid "Enabled?"
 msgstr "Activé?"
 
-#: forms.py:61
+#: forms.py:60
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma "
 "or semicolon."
@@ -52,29 +52,29 @@ msgstr ""
 "Adresse électronique du destinataire. Peut être plusieurs adresses séparées "
 "par une virgule ou un point-virgule."
 
-#: forms.py:63 forms.py:120
+#: forms.py:62 forms.py:119
 msgid "Email address"
 msgstr "Adresse du courriel"
 
-#: forms.py:65
+#: forms.py:64
 msgid "Subject"
 msgstr "Sujet"
 
-#: forms.py:67
+#: forms.py:66
 msgid "Body"
 msgstr "Corps"
 
-#: forms.py:71
+#: forms.py:70
 msgid "The email profile that will be used to send this email."
 msgstr ""
 "Le profil de messagerie qui sera utilisé pour envoyer ce courrier "
 "électronique."
 
-#: forms.py:72 views.py:233
+#: forms.py:71 views.py:233
 msgid "Mailing profile"
 msgstr "Profil de la liste de diffusion"
 
-#: forms.py:77
+#: forms.py:76
 msgid "Backend"
 msgstr "Backend"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-08-03 06:00+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:28 models.py:28 models.py:78 permissions.py:7
+#: apps.py:32 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -29,7 +29,7 @@ msgstr "Разрешения"
 msgid "Insufficient permissions."
 msgstr "Недостаточно разрешений."
 
-#: links.py:15 links.py:40 models.py:89 views.py:172
+#: links.py:15 links.py:40 models.py:89 views.py:188
 msgid "Roles"
 msgstr "Роли"
 
@@ -73,7 +73,7 @@ msgstr "Имя"
 msgid "Permission"
 msgstr "Разрешение"
 
-#: models.py:75 search.py:16
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr "Надпись"
 
@@ -124,46 +124,46 @@ msgstr ""
 msgid "No such permission: %s"
 msgstr ""
 
-#: views.py:28
+#: views.py:29
 #, fuzzy
 #| msgid "Available groups"
 msgid "Available roles"
 msgstr "Доступные группы"
 
-#: views.py:29
+#: views.py:30
 #, fuzzy
 #| msgid "Groups of role: %s"
 msgid "Group roles"
 msgstr "Группы роли: %s"
 
-#: views.py:39
+#: views.py:40
 #, fuzzy, python-format
 #| msgid "Role groups"
 msgid "Roles of group: %s"
 msgstr "Группы роли"
 
-#: views.py:81
+#: views.py:82
 msgid "Available groups"
 msgstr "Доступные группы"
 
-#: views.py:82
+#: views.py:83
 msgid "Role groups"
 msgstr "Группы роли"
 
-#: views.py:92
+#: views.py:93
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Группы роли: %s"
 
-#: views.py:115
+#: views.py:116
 msgid "Available permissions"
 msgstr "Доступные разрешения"
 
-#: views.py:116
+#: views.py:117
 msgid "Granted permissions"
 msgstr "Предоставленные разрешения"
 
-#: views.py:129
+#: views.py:157
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Разрешения роли: %s"

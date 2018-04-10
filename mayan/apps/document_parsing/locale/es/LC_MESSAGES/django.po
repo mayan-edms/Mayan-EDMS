@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:61 events.py:8 permissions.py:7 settings.py:7
+#: apps.py:68 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr "Análisis de documentos"
 
-#: apps.py:89
+#: apps.py:108
 msgid "Document"
 msgstr "Documento"
 
-#: apps.py:93
+#: apps.py:112
 msgid "Added"
 msgstr "Añadido"
 
-#: apps.py:97 models.py:39
+#: apps.py:116 models.py:54
 msgid "Result"
 msgstr "Resultado"
 
-#: apps.py:114 apps.py:118 links.py:11 models.py:18
+#: apps.py:133 apps.py:137 links.py:14 models.py:18
 msgid "Content"
 msgstr "Contenido"
 
@@ -55,19 +55,25 @@ msgstr "Página %(page_number)d"
 msgid "Contents"
 msgstr "Contenido"
 
-#: links.py:16 links.py:38 views.py:149
+#: links.py:19 links.py:45 views.py:169
 msgid "Parsing errors"
 msgstr "Errores de análisis"
 
-#: links.py:21
+#: links.py:24
 msgid "Download content"
 msgstr "Descargar contenido"
 
-#: links.py:25 links.py:30
+#: links.py:28 links.py:33
 msgid "Submit for parsing"
 msgstr "Enviar para analizar"
 
-#: links.py:33
+#: links.py:37
+#, fuzzy
+#| msgid "Document parsing"
+msgid "Setup parsing"
+msgstr "Análisis de documentos"
+
+#: links.py:40
 msgid "Parse documents per type"
 msgstr "Analizar documentos por tipo"
 
@@ -83,19 +89,41 @@ msgstr "Contenido de página de documento"
 msgid "Document pages contents"
 msgstr "Contenido de página de documento"
 
-#: models.py:34
+#: models.py:33
+#, fuzzy
+#| msgid "Document page"
+msgid "Document type"
+msgstr "Página del documento"
+
+#: models.py:37
+msgid "Automatically queue newly created documents for parsing."
+msgstr ""
+
+#: models.py:41
+#, fuzzy
+#| msgid "Document parsing"
+msgid "Document type settings"
+msgstr "Análisis de documentos"
+
+#: models.py:42
+#, fuzzy
+#| msgid "Document parsing"
+msgid "Document types settings"
+msgstr "Análisis de documentos"
+
+#: models.py:49
 msgid "Document version"
 msgstr "Versión del documento"
 
-#: models.py:37
+#: models.py:52
 msgid "Date time submitted"
 msgstr "Fecha y hora sometido"
 
-#: models.py:43
+#: models.py:58
 msgid "Document version parse error"
 msgstr "Error de análisis de la versión del documento"
 
-#: models.py:44
+#: models.py:59
 msgid "Document version parse errors"
 msgstr "Errores de análisis de la versión del documento"
 
@@ -114,6 +142,12 @@ msgid "View the content of a document"
 msgstr "Ver el contenido de un documento"
 
 #: permissions.py:14
+#, fuzzy
+#| msgid "Document version parsing finished"
+msgid "Change document type parsing settings"
+msgstr "Se terminó el análisis de la versión del documento"
+
+#: permissions.py:17
 msgid "Parse the content of a document"
 msgstr "Analizar el contenido de un documento"
 
@@ -125,50 +159,60 @@ msgstr "Análisis"
 msgid "Document version parsing"
 msgstr "Análisis de la versión del documento"
 
-#: settings.py:13
+#: settings.py:12
+msgid "Set new document types to perform parsing automatically by default."
+msgstr ""
+
+#: settings.py:19
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 "Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
 "extraer texto de archivos PDF."
 
-#: views.py:38
+#: views.py:41
 #, python-format
 msgid "Content for document: %s"
 msgstr "Contenido del documento: %s"
 
-#: views.py:66
+#: views.py:69
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Errores de análisis del documento: %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d documento añadido a la cola de análisis"
 
-#: views.py:81
+#: views.py:84
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d documentos añadidos a la cola de análisis"
 
-#: views.py:89
+#: views.py:92
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "¿Enviar %(count)d documento a la cola de análisis?"
 msgstr[1] "Enviar %(count)d documentos a la cola de análisis"
 
-#: views.py:102
+#: views.py:105
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Enviar el documento \"%s\" a la cola de análisis"
 
-#: views.py:116
+#: views.py:128
+#, fuzzy, python-format
+#| msgid "Parsing errors for document: %s"
+msgid "Edit parsing settings for document type: %s"
+msgstr "Errores de análisis del documento: %s"
+
+#: views.py:136
 msgid "Submit all documents of a type for parsing"
 msgstr "Enviar todos los documentos de un tipo para analizar"
 
-#: views.py:135
+#: views.py:155
 #, python-format
 msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the parsing queue."

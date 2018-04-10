@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-07-09 06:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
@@ -20,54 +20,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 apps.py:156 apps.py:161 links.py:39 permissions.py:7 queues.py:8
+#: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:83
-msgid "Documents missing required metadata"
-msgstr "Documenten missen vereiste metadata"
-
-#: apps.py:100
-msgid "Documents missing optional metadata"
-msgstr "Documenten met ontbrekende optionele metadata"
-
-#: apps.py:119
+#: apps.py:84
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
 msgstr ""
 
-#: apps.py:125
+#: apps.py:90
 msgid "Metadata type name"
 msgstr "Metadata soortnaam"
 
-#: apps.py:128
+#: apps.py:93
 msgid "Metadata type value"
 msgstr "Metadata typenaam"
 
-#: apps.py:132
+#: apps.py:97
 msgid "Value of a metadata"
 msgstr "Waarde van een metadata"
 
-#: apps.py:134
+#: apps.py:99
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:168 forms.py:20 models.py:160
+#: apps.py:133 forms.py:20 models.py:160
 msgid "Value"
 msgstr "Waarde"
 
-#: apps.py:172 forms.py:46 forms.py:185 models.py:217
+#: apps.py:137 forms.py:46 forms.py:185 models.py:217
 msgid "Required"
 msgstr "Verplicht"
 
-#: apps.py:194 apps.py:202 forms.py:123 models.py:84 models.py:215
+#: apps.py:159 apps.py:167 forms.py:123 models.py:84 models.py:215
 msgid "Metadata type"
 msgstr "Metadata type"
 
-#: apps.py:197 apps.py:206
+#: apps.py:162 apps.py:171
 msgid "Metadata value"
 msgstr "Metadata waarde"
 
@@ -457,3 +449,9 @@ msgstr ""
 #| msgid "Document metadata"
 msgid "Enter document metadata"
 msgstr "Document metadata"
+
+#~ msgid "Documents missing required metadata"
+#~ msgstr "Documenten missen vereiste metadata"
+
+#~ msgid "Documents missing optional metadata"
+#~ msgstr "Documenten met ontbrekende optionele metadata"

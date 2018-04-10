@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:05-0400\n"
+"POT-Creation-Date: 2018-04-10 04:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
-#: links.py:21 menus.py:8 models.py:38 permissions.py:7 views.py:151
+#: links.py:21 menus.py:8 models.py:38 permissions.py:7 views.py:152
 msgid "Cabinets"
 msgstr "Pasta"
 
@@ -168,36 +168,36 @@ msgstr "Adicione novo nível a: %s"
 msgid "Delete the cabinet: %s?"
 msgstr "Excluir a pasta: %s?"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "Detalhes da pasta: %s"
 
-#: views.py:141
+#: views.py:142
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "Editar pasta: %s"
 
-#: views.py:177
+#: views.py:178
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Pasta com documento: %s"
 
-#: views.py:189
+#: views.py:190
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "Adicionar  a pasta o pedido executado em %(count)d documento"
 
-#: views.py:192
+#: views.py:193
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "Adicionar a pasta o pedido executado em  %(count)d documento"
 
-#: views.py:199
+#: views.py:200
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:201
+#: views.py:202
 #, fuzzy, python-format
 #| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
@@ -205,40 +205,40 @@ msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Adicionar documentos as pastas"
 msgstr[1] "Adicionar documentos as pastas"
 
-#: views.py:214
+#: views.py:215
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Adicionar documento \"%s\" à uma pasta"
 
-#: views.py:225
+#: views.py:226
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Pastas aos quais os documentos selecionados serão adicionados."
 
-#: views.py:253
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s  já está na pasta: %(cabinet)s ."
 
-#: views.py:265
+#: views.py:266
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Documento: %(document)s  adicionado à pasta: %(cabinet)s com sucesso."
 
-#: views.py:278
+#: views.py:279
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "Remover da solicitação de pasta executada em %(count)d documento"
 
-#: views.py:281
+#: views.py:282
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "Remover da solicitação de pasta realizada em %(count)d documentos"
 
-#: views.py:288
+#: views.py:289
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:290
+#: views.py:291
 #, fuzzy, python-format
 #| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
@@ -246,22 +246,22 @@ msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Excluir documentos de pastas"
 msgstr[1] "Excluir documentos de pastas"
 
-#: views.py:303
+#: views.py:304
 #, fuzzy, python-format
 #| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Excluir documentos de pastas"
 
-#: views.py:314
+#: views.py:315
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Pastas das quais os documentos selecionados serão removidos."
 
-#: views.py:341
+#: views.py:342
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s não está na pasta: %(cabinet)s"
 
-#: views.py:353
+#: views.py:354
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s removido da pasta: %(cabinet)s."

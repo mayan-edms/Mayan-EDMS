@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-20 02:06-0400\n"
+"POT-Creation-Date: 2018-04-10 04:05-0400\n"
 "PO-Revision-Date: 2017-08-25 00:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
-#: settings.py:24
+#: settings.py:28
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
