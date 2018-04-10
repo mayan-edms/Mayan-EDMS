@@ -8,13 +8,16 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectListView
+    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from documents.models import Document
+from documents.models import Document, DocumentType
 
 from .forms import DocumentContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionParseError
-from .permissions import permission_content_view, permission_parse_document
+from .permissions import (
+    permission_content_view, permission_document_type_parsing_setup,
+    permission_parse_document
+)
 from .utils import get_document_content
 
 
@@ -108,6 +111,23 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 
     def object_action(self, instance, form=None):
         instance.submit_for_parsing()
+
+
+class DocumentTypeSettingsEditView(SingleObjectEditView):
+    fields = ('auto_parsing',)
+    view_permission = permission_document_type_parsing_setup
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(
+            DocumentType, pk=self.kwargs['pk']
+        ).parsing_settings
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit parsing settings for document type: %s'
+            ) % self.get_object().document_type
+        }
 
 
 class DocumentTypeSubmitView(FormView):

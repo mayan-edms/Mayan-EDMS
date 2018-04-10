@@ -148,6 +148,8 @@
 - Add warning when using SQLite as the database backend.
 - Use Mailgun's flanker library to process the email sources.
 - Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
+- Add the option to enable or disable parsing when uploading a document for each document type.
+- Add a new setting option to enable automatic parsing for each new document type created.
 
 2.7.3 (2017-09-11)
 ==================

@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import DocumentPage, DocumentVersion
+from documents.models import DocumentPage, DocumentType, DocumentVersion
 
 from .managers import DocumentPageContentManager
 
@@ -25,6 +25,21 @@ class DocumentPageContent(models.Model):
 
     def __str__(self):
         return force_text(self.document_page)
+
+
+class DocumentTypeSettings(models.Model):
+    document_type = models.OneToOneField(
+        on_delete=models.CASCADE, related_name='parsing_settings',
+        to=DocumentType, unique=True, verbose_name=_('Document type')
+    )
+    auto_parsing = models.BooleanField(
+        default=True,
+        verbose_name=_('Automatically queue newly created documents for parsing.')
+    )
+
+    class Meta:
+        verbose_name = _('Document type settings')
+        verbose_name_plural = _('Document types settings')
 
 
 @python_2_unicode_compatible

@@ -467,6 +467,8 @@ Other changes worth mentioning
 - Improve rendering of the details form.
 - Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
 - Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
+- Add the option to enable or disable parsing when uploading a document for each document type.
+- Add a new setting option to enable automatic parsing for each new document type created.
 
 
 Removals

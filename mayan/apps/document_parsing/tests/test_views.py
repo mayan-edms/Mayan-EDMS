@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.test import override_settings
+
 from documents.tests import (
     GenericDocumentViewTestCase, TEST_DOCUMENT_FILENAME,
     TEST_DOCUMENT_PATH
@@ -9,6 +11,7 @@ from ..permissions import permission_content_view
 from ..utils import get_document_content
 
 
+@override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
 class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     _skip_file_descriptor_test = True
 

@@ -6,6 +6,7 @@ import logging
 from kombu import Exchange, Queue
 
 from django.apps import apps
+from django.db.models.signals import post_save
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
@@ -22,13 +23,19 @@ from mayan.celery import app
 from navigation import SourceColumn
 
 from .events import event_parsing_document_version_submit
-from .handlers import handler_parse_document_version
+from .handlers import (
+    handler_initialize_new_parsing_settings, handler_parse_document_version
+)
 from .links import (
     link_document_content, link_document_content_download,
     link_document_parsing_errors_list, link_document_submit_multiple,
-    link_document_submit, link_document_type_submit, link_error_list
+    link_document_submit, link_document_type_parsing_settings,
+    link_document_type_submit, link_error_list
 )
-from .permissions import permission_content_view
+from .permissions import (
+    permission_content_view, permission_document_type_parsing_setup,
+    permission_parse_document
+)
 from .utils import get_document_content
 
 logger = logging.getLogger(__name__)
@@ -66,7 +73,9 @@ class DocumentParsingApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
@@ -74,6 +83,9 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentVersionParseError = self.get_model('DocumentVersionParseError')
 
         Document.add_to_class('submit_for_parsing', document_parsing_submit)
+        Document.add_to_class(
+            'content', get_document_content
+        )
         DocumentVersion.add_to_class(
             'content', get_document_content
         )
@@ -82,7 +94,14 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=Document, permissions=(permission_content_view,)
+            model=Document, permissions=(
+                permission_content_view, permission_parse_document
+            )
+        )
+        ModelPermission.register(
+            model=DocumentType, permissions=(
+                permission_document_type_parsing_setup,
+            )
         )
 
         SourceColumn(
@@ -127,6 +146,10 @@ class DocumentParsingApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_document_submit,), sources=(Document,)
         )
+        menu_object.bind_links(
+            links=(link_document_type_parsing_settings,), sources=(DocumentType,),
+            position=99
+        )
         menu_secondary.bind_links(
             links=(
                 link_document_content, link_document_parsing_errors_list,
@@ -143,7 +166,11 @@ class DocumentParsingApp(MayanAppConfig):
                 link_document_type_submit, link_error_list,
             )
         )
-
+        post_save.connect(
+            dispatch_uid='handler_initialize_new_parsing_settings',
+            receiver=handler_initialize_new_parsing_settings,
+            sender=DocumentType
+        )
         post_version_upload.connect(
             dispatch_uid='document_parsing_handler_parse_document_version',
             receiver=handler_parse_document_version,

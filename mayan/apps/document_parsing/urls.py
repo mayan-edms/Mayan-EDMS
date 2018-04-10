@@ -5,8 +5,8 @@ from django.conf.urls import url
 from .api_views import APIDocumentPageContentView
 from .views import (
     DocumentContentView, DocumentContentDownloadView,
-    DocumentParsingErrorsListView, DocumentSubmitView, DocumentTypeSubmitView,
-    ParseErrorListView
+    DocumentParsingErrorsListView, DocumentSubmitView,
+    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
 )
 
 urlpatterns = [
@@ -21,6 +21,11 @@ urlpatterns = [
     url(
         r'^document_types/submit/$', DocumentTypeSubmitView.as_view(),
         name='document_type_submit'
+    ),
+    url(
+        r'^document_types/(?P<pk>\d+)/parsing/settings/$',
+        DocumentTypeSettingsEditView.as_view(),
+        name='document_type_parsing_settings'
     ),
     url(
         r'^documents/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(),
