@@ -12,8 +12,8 @@ from mayan_statistics.classes import StatisticNamespace, CharJSLine
 
 MONTH_NAMES = [
     _('January'), _('February'), _('March'), _('April'), _('May'),
-    _('June'), _('July'), _('August'), _('September'), _('November'),
-    _('December')
+    _('June'), _('July'), _('August'), _('September'), _('October'),
+    _('November'), _('December')
 ]
 
 
