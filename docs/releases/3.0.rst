@@ -409,7 +409,7 @@ Other changes worth mentioning
 - Show the number of pages of a document and of document versions in
   the document list view and document versions list views respectively.
 - Display a document version's thumbnail before other attributes.
-- User Django's provided form for setting an users password.
+- Use Django's provided form for setting an users password.
   This change allows displaying the current password policies
   and validation.
 - Add method to modify a group's role membership from the group's
