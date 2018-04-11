@@ -535,6 +535,9 @@ Bugs fixed or issues closed
 * `GitLab issue #332 <https://gitlab.com/mayan-edms/mayan-edms/issues/332>`_ Add option to pass configuration parameters to the OCR backend as mentioned in #319
 * `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
 * `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
+* `GitLab issue #405 <https://gitlab.com/mayan-edms/mayan-edms/issues/405>`_ Add wizard steps from external apps
+* `GitLab issue #407 <https://gitlab.com/mayan-edms/mayan-edms/issues/407>`_ Improve search syntax to support search query types: AND, OR
+* `GitLab issue #408 <https://gitlab.com/mayan-edms/mayan-edms/issues/408>`_ Improve document checkbox selection.
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
 * `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
 * `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach
