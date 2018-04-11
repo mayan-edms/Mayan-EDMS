@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:04-0400\n"
+"POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: 2017-08-15 06:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -748,6 +748,10 @@ msgid "September"
 msgstr ""
 
 #: statistics.py:15
+msgid "October"
+msgstr ""
+
+#: statistics.py:16
 msgid "November"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: 2016-09-24 10:04+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:25 permissions.py:7
+#: apps.py:27 links.py:26 permissions.py:7
 msgid "Message of the day"
 msgstr "Messaggio del giorno"
 
@@ -39,15 +39,15 @@ msgstr "Nessuna "
 msgid "End date time"
 msgstr "Data e ora fine"
 
-#: links.py:13 views.py:29
+#: links.py:14 views.py:29
 msgid "Create message"
 msgstr "Crea messaggio"
 
-#: links.py:18
+#: links.py:19
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:21
+#: links.py:22
 msgid "Edit"
 msgstr "Modifica"
 

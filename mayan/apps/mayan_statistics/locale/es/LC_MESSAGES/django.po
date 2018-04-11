@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: 2017-07-15 03:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:26 links.py:28 permissions.py:7 queues.py:8
+#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr "Estadísticas"
 
@@ -31,19 +31,19 @@ msgstr "Estadísticas"
 msgid "Schedule"
 msgstr "Programa"
 
-#: links.py:11
+#: links.py:12
 msgid "Queue"
 msgstr "Programar"
 
-#: links.py:15
+#: links.py:16
 msgid "View"
 msgstr "Ver"
 
-#: links.py:19
+#: links.py:20
 msgid "Namespace details"
 msgstr "Detalles de espacio de nombres"
 
-#: links.py:23
+#: links.py:24
 msgid "Namespace list"
 msgstr "Lista de espacios nombrados"
 

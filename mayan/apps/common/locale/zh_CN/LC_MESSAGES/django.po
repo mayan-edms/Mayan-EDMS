@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: 2017-08-27 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
@@ -82,67 +82,67 @@ msgstr ""
 msgid "%(object)s updated successfully."
 msgstr ""
 
-#: links.py:30
+#: links.py:33
 msgid "About this"
 msgstr ""
 
-#: links.py:33 views.py:56
+#: links.py:36 views.py:56
 msgid "Check for updates"
 msgstr ""
 
-#: links.py:37
+#: links.py:40
 msgid "User details"
 msgstr "用户信息"
 
-#: links.py:41
+#: links.py:44
 msgid "Edit details"
 msgstr ""
 
-#: links.py:44
+#: links.py:47
 msgid "Locale profile"
 msgstr ""
 
-#: links.py:48
+#: links.py:51
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:52
+#: links.py:55
 msgid "Source code"
 msgstr ""
 
-#: links.py:56
+#: links.py:59
 msgid "Documentation"
 msgstr ""
 
-#: links.py:61 links.py:71
+#: links.py:64 links.py:74
 msgid "Errors"
 msgstr ""
 
-#: links.py:66
+#: links.py:69
 msgid "Clear all"
 msgstr ""
 
-#: links.py:75
+#: links.py:78
 msgid "Forum"
 msgstr ""
 
-#: links.py:79 views.py:156
+#: links.py:82 views.py:156
 msgid "License"
 msgstr "许可证"
 
-#: links.py:82 views.py:231
+#: links.py:85 views.py:231
 msgid "Other packages licenses"
 msgstr ""
 
-#: links.py:86
+#: links.py:89
 msgid "Setup"
 msgstr ""
 
-#: links.py:89
+#: links.py:92
 msgid "Support"
 msgstr ""
 
-#: links.py:93 queues.py:10 views.py:266
+#: links.py:96 queues.py:10 views.py:266
 msgid "Tools"
 msgstr ""
 

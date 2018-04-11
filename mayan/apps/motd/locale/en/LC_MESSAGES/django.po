@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:27 links.py:25 permissions.py:7
+#: apps.py:27 links.py:26 permissions.py:7
 msgid "Message of the day"
 msgstr ""
 
@@ -37,15 +37,15 @@ msgstr ""
 msgid "End date time"
 msgstr ""
 
-#: links.py:13 views.py:29
+#: links.py:14 views.py:29
 msgid "Create message"
 msgstr ""
 
-#: links.py:18
+#: links.py:19
 msgid "Delete"
 msgstr ""
 
-#: links.py:21
+#: links.py:22
 msgid "Edit"
 msgstr ""
 

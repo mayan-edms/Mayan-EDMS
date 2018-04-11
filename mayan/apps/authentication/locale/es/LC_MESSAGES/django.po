@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:54-0400\n"
 "PO-Revision-Date: 2017-07-15 04:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -47,11 +47,11 @@ msgstr ""
 msgid "This account is inactive."
 msgstr "Esta cuenta está inactiva."
 
-#: links.py:14
+#: links.py:16
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: links.py:17
+#: links.py:20
 msgid "Change password"
 msgstr "Cambiar contraseña"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: 2017-07-30 19:40+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -120,19 +120,19 @@ msgstr "Yok"
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
-#: links.py:16 links.py:24
+#: links.py:18 links.py:25
 msgid "Add metadata"
 msgstr "Meta veri ekle"
 
-#: links.py:20 links.py:27
+#: links.py:22 links.py:28
 msgid "Edit metadata"
 msgstr "Meta verileri düzenle"
 
-#: links.py:30 links.py:34
+#: links.py:31 links.py:35
 msgid "Remove metadata"
 msgstr "Meta verileri kaldır"
 
-#: links.py:43 links.py:66 models.py:85 views.py:557
+#: links.py:44 links.py:64 models.py:85 views.py:557
 msgid "Metadata types"
 msgstr "Meta veri türleri"
 
@@ -140,15 +140,15 @@ msgstr "Meta veri türleri"
 msgid "Document types"
 msgstr "Doküman türleri"
 
-#: links.py:53
+#: links.py:51
 msgid "Create new"
 msgstr "Yeni oluştur"
 
-#: links.py:58
+#: links.py:56
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:61 views.py:256
+#: links.py:60 views.py:256
 msgid "Edit"
 msgstr "Düzenle"
 

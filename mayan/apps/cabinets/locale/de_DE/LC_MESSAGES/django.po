@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2017\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
-#: links.py:21 menus.py:8 models.py:38 permissions.py:7 views.py:152
+#: links.py:23 menus.py:10 models.py:38 permissions.py:7 views.py:152
 msgid "Cabinets"
 msgstr "Aktenschrank"
 
@@ -36,15 +36,15 @@ msgstr "Dokumenten-Aktenschrank"
 msgid "Document removed from cabinet"
 msgstr "Aus Aktenschrank entfernen"
 
-#: links.py:27 links.py:38
+#: links.py:28 links.py:38
 msgid "Remove from cabinets"
 msgstr "Aus Aktenschrank entfernen"
 
-#: links.py:31 links.py:35
+#: links.py:32 links.py:35
 msgid "Add to cabinets"
 msgstr "Zu Aktenschrank hinzufügen"
 
-#: links.py:55
+#: links.py:56
 msgid "Add new level"
 msgstr "Neue Ebene hinzufügen"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:54-0400\n"
 "PO-Revision-Date: 2017-08-27 16:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
-#: apps.py:15 links.py:35 links.py:39
+#: apps.py:15 links.py:37 links.py:41
 msgid "ACLs"
 msgstr "Pravice"
 
@@ -27,15 +27,15 @@ msgstr "Pravice"
 msgid "Role"
 msgstr ""
 
-#: apps.py:26 links.py:48 models.py:43 workflow_actions.py:48
+#: apps.py:26 links.py:50 models.py:43 workflow_actions.py:48
 msgid "Permissions"
 msgstr "Pravice"
 
-#: links.py:31
+#: links.py:32
 msgid "Delete"
 msgstr ""
 
-#: links.py:43
+#: links.py:45
 msgid "New ACL"
 msgstr ""
 

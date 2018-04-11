@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 events.py:7 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Ausbuchungen"
 
@@ -76,15 +76,15 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Dokument ausbuchen"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Dokument einbuchen"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Ein-/Ausbuchung"
 

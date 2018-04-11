@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: 2017-08-03 21:31+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:26 links.py:28 permissions.py:7 queues.py:8
+#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr "Statisztika"
 
@@ -30,19 +30,19 @@ msgstr "Statisztika"
 msgid "Schedule"
 msgstr "Időzítés"
 
-#: links.py:11
+#: links.py:12
 msgid "Queue"
 msgstr "Munkasor"
 
-#: links.py:15
+#: links.py:16
 msgid "View"
 msgstr "Nézet"
 
-#: links.py:19
+#: links.py:20
 msgid "Namespace details"
 msgstr "Névtér részletek"
 
-#: links.py:23
+#: links.py:24
 msgid "Namespace list"
 msgstr "Névtérlista"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0400\n"
+"POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: 2017-06-23 05:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
-#: apps.py:41 events.py:7 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Odjave"
 
@@ -75,15 +75,15 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Odjavi dokument"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Prijavi dokument"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Prijava / Odjava"
 

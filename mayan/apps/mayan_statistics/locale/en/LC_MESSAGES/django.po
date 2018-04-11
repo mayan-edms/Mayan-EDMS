@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:26 links.py:28 permissions.py:7 queues.py:8
+#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr ""
 
@@ -27,19 +27,19 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-#: links.py:11
+#: links.py:12
 msgid "Queue"
 msgstr ""
 
-#: links.py:15
+#: links.py:16
 msgid "View"
 msgstr ""
 
-#: links.py:19
+#: links.py:20
 msgid "Namespace details"
 msgstr ""
 
-#: links.py:23
+#: links.py:24
 msgid "Namespace list"
 msgstr ""
 

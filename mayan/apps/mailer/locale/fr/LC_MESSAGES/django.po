@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:05-0400\n"
+"POT-Creation-Date: 2018-04-11 12:56-0400\n"
 "PO-Revision-Date: 2017-08-07 12:44+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -28,11 +28,11 @@ msgstr "Gestionnaire d'envoi"
 msgid "Date and time"
 msgstr "Date et heure"
 
-#: apps.py:56 models.py:21 models.py:121
+#: apps.py:56 models.py:24 models.py:162
 msgid "Message"
 msgstr "Message"
 
-#: apps.py:59 apps.py:74 models.py:33
+#: apps.py:59 apps.py:74 models.py:36
 msgid "Label"
 msgstr "Libellé"
 
@@ -70,7 +70,7 @@ msgstr ""
 "Le profil de messagerie qui sera utilisé pour envoyer ce courrier "
 "électronique."
 
-#: forms.py:71 views.py:233
+#: forms.py:71 views.py:217
 msgid "Mailing profile"
 msgstr "Profil de la liste de diffusion"
 
@@ -114,7 +114,7 @@ msgstr "Liste des profils de diffusion"
 msgid "Mailing profiles"
 msgstr "Profil de diffusion"
 
-#: links.py:58 views.py:254
+#: links.py:58 views.py:238
 msgid "Test"
 msgstr "Test"
 
@@ -232,19 +232,19 @@ msgstr "Chemin du fichier"
 msgid "Django file based backend"
 msgstr "Support Django basée sur un fichier "
 
-#: models.py:18 models.py:118
+#: models.py:21 models.py:159
 msgid "Date time"
 msgstr "Date et heure"
 
-#: models.py:27
+#: models.py:30
 msgid "Log entry"
 msgstr "Entrée du journal"
 
-#: models.py:28
+#: models.py:31
 msgid "Log entries"
 msgstr "Entrées du journal"
 
-#: models.py:37
+#: models.py:40
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -252,43 +252,43 @@ msgstr ""
 "Si par défaut, ce profil de liste de diffusion sera présélectionné sur le "
 "formulaire de diffusion du document."
 
-#: models.py:39
+#: models.py:42
 msgid "Default"
 msgstr "Défaut"
 
-#: models.py:41
+#: models.py:44
 msgid "Enabled"
 msgstr "Activé"
 
-#: models.py:44
+#: models.py:47
 msgid "The dotted Python path to the backend class."
 msgstr "Un chemin Python séparé par des point comme classe de support."
 
-#: models.py:45
+#: models.py:48
 msgid "Backend path"
 msgstr "Chemin du support"
 
-#: models.py:48
+#: models.py:51
 msgid "Backend data"
 msgstr "Donnée du support"
 
-#: models.py:53 models.py:115
+#: models.py:56 models.py:156
 msgid "User mailer"
 msgstr "Utilisateur d'envoi"
 
-#: models.py:54
+#: models.py:57
 msgid "User mailers"
 msgstr "Utilisateur d'envois"
 
-#: models.py:109
+#: models.py:150
 msgid "Test email from Mayan EDMS"
 msgstr "Tester le courriel depuis Mayan EDMS"
 
-#: models.py:127
+#: models.py:168
 msgid "User mailer log entry"
 msgstr "Entrée du journal de l'utilisateur d'envoi"
 
-#: models.py:128
+#: models.py:169
 msgid "User mailer log entries"
 msgstr "Entrées du journal de l'utilisateur d'envoi"
 
@@ -341,7 +341,9 @@ msgid "Template for the document link email form subject line."
 msgstr "Modèle pour le lien du document du courriel dans la ligne du sujet."
 
 #: settings.py:20
-msgid "Template for the document link email form body line."
+#, fuzzy
+#| msgid "Template for the document link email form body line."
+msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Modèle pour le lien du document dans le corps du courriel."
 
 #: settings.py:24
@@ -353,64 +355,66 @@ msgid "Template for the document email form subject line."
 msgstr "Modèle pour le sujet du courriel du document."
 
 #: settings.py:30
-msgid "Template for the document email form body line."
+#, fuzzy
+#| msgid "Template for the document email form body line."
+msgid "Template for the document email form body text. Can include HTML."
 msgstr "Modèle pour le corps du courriel du document."
 
-#: views.py:37
+#: views.py:34
 msgid "Document mailing error log"
 msgstr "Journal d'erreur du document envoyé"
 
-#: views.py:49
+#: views.py:46
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d document dans la file d'attente pour livraison par courriel"
 
-#: views.py:51
+#: views.py:48
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d documents dans la file d'attente pour livraison par courriel"
 
-#: views.py:62
+#: views.py:59
 msgid "Send"
 msgstr "Envoyé"
 
-#: views.py:121
+#: views.py:105
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr ""
 "%(count)d document lié dans la file d'attente pour livraison par courriel"
 
-#: views.py:123
+#: views.py:107
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr ""
 "%(count)d documents liés dans la file d'attente pour livraison par courriel"
 
-#: views.py:132
+#: views.py:116
 msgid "New mailing profile backend selection"
 msgstr "Nouvelle sélection du support de profil de liste de diffusion"
 
-#: views.py:160
+#: views.py:144
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Créer un profil de diffusion \"%s\""
 
-#: views.py:186
+#: views.py:170
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Supprimer un profil de diffusion %s"
 
-#: views.py:197
+#: views.py:181
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Modifier un profile de liste de diffusion %s"
 
-#: views.py:220
+#: views.py:204
 #, python-format
 msgid "%s error log"
 msgstr "%s journal d'erreur"
 
-#: views.py:255
+#: views.py:239
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Tester le profil de diffusion: %s"
