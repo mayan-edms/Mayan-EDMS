@@ -532,6 +532,7 @@ Bugs fixed or issues closed
 * `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
 * `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
 * `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
+* `GitLab issue #332 <https://gitlab.com/mayan-edms/mayan-edms/issues/332>`_ Add option to pass configuration parameters to the OCR backend as mentioned in #319
 * `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
 * `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
