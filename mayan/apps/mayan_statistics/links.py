@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_statistics
 from .permissions import permission_statistics_view
 
 # Translators: 'Queue' here is the verb, to queue a statistic to update
@@ -24,6 +25,6 @@ link_namespace_list = Link(
     view='statistics:namespace_list'
 )
 link_statistics = Link(
-    icon='fa fa-sort-numeric-up', permissions=(permission_statistics_view,),
+    icon_class=icon_statistics, permissions=(permission_statistics_view,),
     text=_('Statistics'), view='statistics:namespace_list'
 )

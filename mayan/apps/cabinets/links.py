@@ -8,6 +8,7 @@ from acls.links import link_acl_list
 from documents.permissions import permission_document_view
 from navigation import Link
 
+from .icons import icon_cabinet_create, icon_cabinet_list
 from .permissions import (
     permission_cabinet_add_document, permission_cabinet_create,
     permission_cabinet_delete, permission_cabinet_edit,
@@ -17,9 +18,9 @@ from .permissions import (
 # Document links
 
 link_document_cabinet_list = Link(
-    icon='fa fa-columns', permissions=(permission_document_view,),
+    args='resolved_object.pk', icon_class=icon_cabinet_list,
+    permissions=(permission_document_view,),
     text=_('Cabinets'), view='cabinets:document_cabinet_list',
-    args='resolved_object.pk'
 )
 link_document_cabinet_remove = Link(
     args='resolved_object.pk',
@@ -27,9 +28,8 @@ link_document_cabinet_remove = Link(
     text=_('Remove from cabinets'), view='cabinets:document_cabinet_remove'
 )
 link_cabinet_add_document = Link(
-    permissions=(permission_cabinet_add_document,),
+    args='object.pk', permissions=(permission_cabinet_add_document,),
     text=_('Add to cabinets'), view='cabinets:cabinet_add_document',
-    args='object.pk'
 )
 link_cabinet_add_multiple_documents = Link(
     text=_('Add to cabinets'), view='cabinets:cabinet_add_multiple_documents'
@@ -52,25 +52,25 @@ link_custom_acl_list = copy.copy(link_acl_list)
 link_custom_acl_list.condition = cabinet_is_root
 
 link_cabinet_child_add = Link(
-    permissions=(permission_cabinet_create,), text=_('Add new level'),
-    view='cabinets:cabinet_child_add', args='object.pk'
+    args='object.pk', permissions=(permission_cabinet_create,),
+    text=_('Add new level'), view='cabinets:cabinet_child_add'
 )
 link_cabinet_create = Link(
-    icon='fa fa-plus', permissions=(permission_cabinet_create,),
+    icon_class=icon_cabinet_create, permissions=(permission_cabinet_create,),
     text=_('Create cabinet'), view='cabinets:cabinet_create'
 )
 link_cabinet_delete = Link(
-    permissions=(permission_cabinet_delete,), tags='dangerous',
-    text=_('Delete'), view='cabinets:cabinet_delete', args='object.pk'
+    args='object.pk', permissions=(permission_cabinet_delete,),
+    tags='dangerous', text=_('Delete'), view='cabinets:cabinet_delete'
 )
 link_cabinet_edit = Link(
-    permissions=(permission_cabinet_edit,), text=_('Edit'),
-    view='cabinets:cabinet_edit', args='object.pk'
+    args='object.pk', permissions=(permission_cabinet_edit,), text=_('Edit'),
+    view='cabinets:cabinet_edit'
 )
 link_cabinet_list = Link(
-    icon='fa fa-columns', text=_('All'), view='cabinets:cabinet_list'
+    icon_class=icon_cabinet_list, text=_('All'), view='cabinets:cabinet_list'
 )
 link_cabinet_view = Link(
-    permissions=(permission_cabinet_view,), text=_('Details'),
-    view='cabinets:cabinet_view', args='object.pk'
+    args='object.pk', permissions=(permission_cabinet_view,), text=_('Details'),
+    view='cabinets:cabinet_view'
 )

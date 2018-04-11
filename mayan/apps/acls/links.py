@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_acl_list
 from .permissions import permission_acl_view, permission_acl_edit
 
 
@@ -27,24 +28,25 @@ def get_kwargs_factory(variable_name):
 
 
 link_acl_delete = Link(
-    permissions=(permission_acl_edit,), permissions_related='content_object',
-    tags='dangerous', text=_('Delete'), view='acls:acl_delete',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_acl_edit,),
+    permissions_related='content_object', tags='dangerous', text=_('Delete'),
+    view='acls:acl_delete',
 )
 link_acl_list = Link(
-    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list',
-    kwargs=get_kwargs_factory('resolved_object')
+    kwargs=get_kwargs_factory('resolved_object'),
+    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
 )
 link_acl_list_with_icon = Link(
-    icon='fa fa-lock', permissions=(permission_acl_view,), text=_('ACLs'),
-    view='acls:acl_list', kwargs=get_kwargs_factory('resolved_object')
+    icon_class=icon_acl_list, kwargs=get_kwargs_factory('resolved_object'),
+    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
 )
 link_acl_create = Link(
+    kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_acl_edit,), text=_('New ACL'),
-    view='acls:acl_create', kwargs=get_kwargs_factory('resolved_object')
+    view='acls:acl_create'
 )
 link_acl_permissions = Link(
-    permissions=(permission_acl_edit,), permissions_related='content_object',
-    text=_('Permissions'), view='acls:acl_permissions',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_acl_edit,),
+    permissions_related='content_object', text=_('Permissions'),
+    view='acls:acl_permissions',
 )

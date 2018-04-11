@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_checkout_info
 from .permissions import (
     permission_document_checkout, permission_document_checkin,
     permission_document_checkin_override
@@ -27,24 +28,23 @@ def is_not_checked_out(context):
 
 
 link_checkout_list = Link(
-    icon='fa fa-shopping-cart', text=_('Checkouts'),
+    icon_class=icon_checkout_info, text=_('Checkouts'),
     view='checkouts:checkout_list'
 )
 link_checkout_document = Link(
-    condition=is_not_checked_out, permissions=(permission_document_checkout,),
+    args='object.pk', condition=is_not_checked_out,
+    permissions=(permission_document_checkout,),
     text=_('Check out document'), view='checkouts:checkout_document',
-    args='object.pk'
 )
 link_checkin_document = Link(
-    condition=is_checked_out, permissions=(
+    args='object.pk', condition=is_checked_out, permissions=(
         permission_document_checkin, permission_document_checkin_override
     ), text=_('Check in document'), view='checkouts:checkin_document',
-    args='object.pk'
+
 )
 link_checkout_info = Link(
-    icon='fa fa-shopping-cart', permissions=(
+    args='resolved_object.pk', icon_class=icon_checkout_info, permissions=(
         permission_document_checkin, permission_document_checkin_override,
         permission_document_checkout
     ), text=_('Check in/out'), view='checkouts:checkout_info',
-    args='resolved_object.pk'
 )

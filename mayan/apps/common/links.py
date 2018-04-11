@@ -5,6 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_about, icon_check_version, icon_current_user_details
+)
 from .permissions_runtime import permission_error_log_view
 
 
@@ -27,14 +30,14 @@ def get_kwargs_factory(variable_name):
 
 
 link_about = Link(
-    icon='fa fa-info', text=_('About this'), view='common:about_view'
+    icon_class=icon_about, text=_('About this'), view='common:about_view'
 )
 link_check_version = Link(
-    icon='fa fa-sync', text=_('Check for updates'),
+    icon_class=icon_check_version, text=_('Check for updates'),
     view='common:check_version_view'
 )
 link_current_user_details = Link(
-    icon='fa fa-user', text=_('User details'),
+    icon_class=icon_current_user_details, text=_('User details'),
     view='common:current_user_details'
 )
 link_current_user_edit = Link(
