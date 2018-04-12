@@ -186,7 +186,7 @@ class CommonApp(MayanAppConfig):
             logging.config.dictConfig(
                 {
                     'version': 1,
-                    'disable_existing_loggers': True,
+                    'disable_existing_loggers': False,
                     'formatters': {
                         'intermediate': {
                             'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
