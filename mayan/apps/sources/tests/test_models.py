@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import shutil
 
+import mock
+
 from django.test import override_settings
 
 from common.utils import mkdtemp
@@ -14,7 +16,9 @@ from documents.tests import (
 )
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import WatchFolderSource, WebFormSource, EmailBaseModel
+from ..models import (
+    EmailBaseModel, POP3Email, WatchFolderSource, WebFormSource
+)
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
@@ -123,6 +127,56 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
                 '<Document: test-01.png>', '<Document: email_body.html>',
                 '<Document: test-02.png>'
             ),
+        )
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class POP3SourceTestCase(BaseTestCase):
+    class MockMailbox(object):
+        def dele(self, which):
+            return
+
+        def getwelcome(self):
+            return
+
+        def list(self, which=None):
+            return (None, ['1 test'])
+
+        def pass_(self, password):
+            return
+
+        def quit(self):
+            return
+
+        def retr(self, which=None):
+            return (
+                1, [TEST_EMAIL_BASE64_FILENAME]
+            )
+
+        def user(self, username):
+            return
+
+    def setUp(self):
+        super(POP3SourceTestCase, self).setUp()
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(POP3SourceTestCase, self).tearDown()
+
+    @mock.patch('poplib.POP3_SSL')
+    def test_download_document(self, mock_poplib):
+        mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
+        self.source = POP3Email.objects.create(
+            document_type=self.document_type, label='', host='', password='',
+            username=''
+        )
+
+        self.source.check_source()
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
         )
 
 
