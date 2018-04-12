@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:57-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
@@ -118,9 +117,7 @@ msgstr "Tags von Dokumenten entfernen"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag "
-"zugeordnet werden soll"
+msgstr "Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag zugeordnet werden soll"
 
 #: serializers.py:86
 msgid ""
@@ -267,10 +264,8 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."
 
 #: wizard_steps.py:16
-#, fuzzy
-#| msgid "Delete tags"
 msgid "Select tags"
-msgstr "Tags löschen"
+msgstr ""
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"

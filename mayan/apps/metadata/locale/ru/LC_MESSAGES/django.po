@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # lilo.panic, 2016
 msgid ""
@@ -9,17 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-07-09 06:35+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
@@ -170,8 +167,8 @@ msgstr "Умолчание"
 #: models.py:59
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
-"ref/templates/builtins/)."
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
 msgstr ""
 
 #: models.py:64 search.py:25
@@ -190,10 +187,9 @@ msgstr "Валидатор"
 
 #: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
-msgstr ""
-"Введённое значение будет переформатировано парсером так, чтобы удовлетворять "
-"требованиям формата."
+"The parser will reformat the value entered to conform to the expected "
+"format."
+msgstr "Введённое значение будет переформатировано парсером так, чтобы удовлетворять требованиям формата."
 
 #: models.py:77 search.py:31
 msgid "Parser"
@@ -323,16 +319,14 @@ msgstr ""
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr ""
-"Ошибка добавления метаданных типа %(metadata_type)s к документу: "
-"%(document)s; %(exception)s"
+msgstr "Ошибка добавления метаданных типа %(metadata_type)s к документу: %(document)s; %(exception)s"
 
 #: views.py:173
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Тип метаданных: %(metadata_type)s успешно добавлены к документу %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "Тип метаданных: %(metadata_type)s успешно добавлены к документу %(document)s."
 
 #: views.py:183
 #, python-format
@@ -366,8 +360,7 @@ msgstr "Редактировать метаданные документа:%s."
 #: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
-"Ошибка при редактировании метаданных документа: %(document)s; %(exception)s."
+msgstr "Ошибка при редактировании метаданных документа: %(document)s; %(exception)s."
 
 #: views.py:335
 #, python-format
@@ -407,18 +400,14 @@ msgstr ""
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
-"Успешно удалён тип метаданных \"%(metadata_type)s\" из документа "
-"%(document)s."
+msgstr "Успешно удалён тип метаданных \"%(metadata_type)s\" из документа %(document)s."
 
 #: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
-"Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: "
-"%(document)s; %(exception)s"
+msgstr "Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: %(document)s; %(exception)s"
 
 #: views.py:512
 msgid "Create metadata type"
@@ -462,8 +451,5 @@ msgid "Document types for metadata type: %s"
 msgstr ""
 
 #: wizard_steps.py:15
-#, fuzzy
-#| msgid "Edit document metadata"
-#| msgid_plural "Edit documents metadata"
 msgid "Enter document metadata"
-msgstr "Редактировать метаданные документа."
+msgstr ""

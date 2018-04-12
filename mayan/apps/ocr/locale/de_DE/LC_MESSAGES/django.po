@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-08-25 00:50+0000\n"
+"PO-Revision-Date: 2017-09-23 21:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
@@ -143,22 +142,17 @@ msgstr ""
 
 #: settings.py:12
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
-"wird, um Text aus PDF-Dateien zu extrahieren."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt wird, um Text aus PDF-Dateien zu extrahieren."
 
 #: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-"Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet "
-"werden soll."
+msgstr "Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet werden soll."
 
 #: settings.py:28
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Neue Dokumententypen definieren, für die die OCR-Texterkennung automatisch "
-"durchgeführt werden soll."
+msgstr "Neue Dokumententypen definieren, für die die OCR-Texterkennung automatisch durchgeführt werden soll."
 
 #: views.py:43
 #, python-format
@@ -185,11 +179,8 @@ msgstr "Alle Dokumente eines Typs in die OCR-Verarbeitung einstellen"
 
 #: views.py:107
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
-"%(count)d Dokumente vom Typ \"%(document_type)s\" in OCR-Warteschlange "
-"eingereiht"
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "%(count)d Dokumente vom Typ \"%(document_type)s\" in OCR-Warteschlange eingereiht"
 
 #: views.py:130
 #, python-format

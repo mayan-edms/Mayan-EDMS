@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 msgid ""
@@ -9,17 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
+"Last-Translator: Przemysław Bodio <przemyslawbodio.dev@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:27 links.py:35 links.py:38 links.py:42 permissions.py:7 views.py:41
 msgid "Events"
@@ -34,24 +31,20 @@ msgid "Actor"
 msgstr "Czynnik"
 
 #: apps.py:44 apps.py:69
-#, fuzzy
-#| msgid "Events"
 msgid "Event"
-msgstr "Zdarzenia"
+msgstr ""
 
 #: apps.py:48
 msgid "Action object"
 msgstr ""
 
 #: apps.py:55 forms.py:12 forms.py:69
-#, fuzzy
-#| msgid "Name"
 msgid "Namespace"
-msgstr "Nazwa"
+msgstr "Przestrzeń nazw"
 
 #: apps.py:58 forms.py:16 forms.py:73
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
 #: apps.py:73 views.py:34 views.py:251 views.py:276
 msgid "Target"
@@ -62,10 +55,9 @@ msgid "Seen"
 msgstr ""
 
 #: classes.py:68
-#, fuzzy, python-format
-#| msgid "Unknown or obsolete event type: {0}"
+#, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr "Nieznany, bądź przestarzały typ zdarzenia: {0}"
+msgstr ""
 
 #: forms.py:20 forms.py:77
 msgid "Subscription"
@@ -73,7 +65,7 @@ msgstr ""
 
 #: forms.py:22 forms.py:79
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: forms.py:23 forms.py:80
 msgid "Subscribed"
@@ -104,20 +96,16 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: models.py:25
-#, fuzzy
-#| msgid "Event type"
 msgid "Stored event type"
-msgstr "Typ zdarzenia"
+msgstr ""
 
 #: models.py:26
-#, fuzzy
-#| msgid "Event types"
 msgid "Stored event types"
-msgstr "Typy zdarzeń"
+msgstr ""
 
 #: models.py:48 models.py:70 models.py:100
 msgid "User"
-msgstr ""
+msgstr "Użytkownik"
 
 #: models.py:52 models.py:104
 msgid "Event type"
@@ -179,16 +167,14 @@ msgid "Object event subscriptions updated successfully"
 msgstr ""
 
 #: views.py:224
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Event subscriptions for: %s"
-msgstr "Zdarzenia dla: %s"
+msgstr ""
 
 #: views.py:260
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Events for user: %s"
-msgstr "Zdarzenia dla: %s"
+msgstr ""
 
 #: views.py:284
 #, python-format
@@ -198,6 +184,3 @@ msgstr "Zdarzenia typu: %s"
 #: widgets.py:42
 msgid "System"
 msgstr "System"
-
-#~ msgid "Verb"
-#~ msgstr "Słowo"

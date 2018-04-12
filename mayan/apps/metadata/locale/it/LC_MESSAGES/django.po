@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-07-10 07:35+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
@@ -29,8 +28,7 @@ msgstr "Metadati"
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr ""
-"Queryset che contiene il riferimento all'istanza MetadataType e il valore "
+msgstr "Queryset che contiene il riferimento all'istanza MetadataType e il valore "
 
 #: apps.py:90
 msgid "Metadata type name"
@@ -155,17 +153,13 @@ msgstr "Modifica"
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
-msgstr ""
-"Nome usato dalle altre app per riferirsi a questo valore. Non utilizzare "
-"parole riservate di python o spazi."
+msgstr "Nome usato dalle altre app per riferirsi a questo valore. Non utilizzare parole riservate di python o spazi."
 
 #: models.py:50
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-"Inserisci il template da renderizzare. Usa il linguaggio di template di "
-"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr "Inserisci il template da renderizzare. Usa il linguaggio di template di Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:54 search.py:22
 msgid "Default"
@@ -174,12 +168,9 @@ msgstr "Default"
 #: models.py:59
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
-"ref/templates/builtins/)."
-msgstr ""
-"Inserisci il template da renderizzare. Deve essere una stringa separata da "
-"virgole. Usa il linguaggio di template di Django (https://docs.djangoproject."
-"com/en/1.7/ref/templates/builtins/)"
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
+msgstr "Inserisci il template da renderizzare. Deve essere una stringa separata da virgole. Usa il linguaggio di template di Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:64 search.py:25
 msgid "Lookup"
@@ -189,9 +180,7 @@ msgstr "Ricerca"
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr ""
-"Il validatore rifiuterà l'inserimento se il valore immesso non è conforme al "
-"formato richiesto."
+msgstr "Il validatore rifiuterà l'inserimento se il valore immesso non è conforme al formato richiesto."
 
 #: models.py:71 search.py:28
 msgid "Validator"
@@ -199,10 +188,9 @@ msgstr "Validatore"
 
 #: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
-msgstr ""
-"Il parser riformatta il valore immesso per renderlo conforme al formato "
-"voluto."
+"The parser will reformat the value entered to conform to the expected "
+"format."
+msgstr "Il parser riformatta il valore immesso per renderlo conforme al formato voluto."
 
 #: models.py:77 search.py:31
 msgid "Parser"
@@ -330,24 +318,20 @@ msgstr ""
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr ""
-"Errore aggiungendo il tipo metadato \"%(metadata_type)s\" al documento: "
-"%(document)s; %(exception)s"
+msgstr "Errore aggiungendo il tipo metadato \"%(metadata_type)s\" al documento: %(document)s; %(exception)s"
 
 #: views.py:173
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Tipo metadata: %(metadata_type)s aggiunto con successo al documento "
+"Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
+msgstr "Tipo metadata: %(metadata_type)s aggiunto con successo al documento %(document)s."
 
 #: views.py:183
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
-"Tipo Metadata: %(metadata_type)s già presente per il documento %(document)s."
+msgstr "Tipo Metadata: %(metadata_type)s già presente per il documento %(document)s."
 
 #: views.py:197
 #, python-format
@@ -373,8 +357,7 @@ msgstr "Modifica metadata per il documento: %s"
 #: views.py:324
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
-"Errore modifica metadato per il documento: %(document)s; %(exception)s."
+msgstr "Errore modifica metadato per il documento: %(document)s; %(exception)s."
 
 #: views.py:335
 #, python-format
@@ -412,18 +395,14 @@ msgstr ""
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
-"Rimosso con successo il tipo metadato \"%(metadata_type)s\" dal documento: "
-"%(document)s."
+msgstr "Rimosso con successo il tipo metadato \"%(metadata_type)s\" dal documento: %(document)s."
 
 #: views.py:501
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
-"Errore rimuovendo il tipo metadato \"%(metadata_type)s\" dal documento: "
-"%(document)s; %(exception)s"
+msgstr "Errore rimuovendo il tipo metadato \"%(metadata_type)s\" dal documento: %(document)s; %(exception)s"
 
 #: views.py:512
 msgid "Create metadata type"
@@ -467,14 +446,5 @@ msgid "Document types for metadata type: %s"
 msgstr ""
 
 #: wizard_steps.py:15
-#, fuzzy
-#| msgid "Edit document metadata"
-#| msgid_plural "Edit documents metadata"
 msgid "Enter document metadata"
-msgstr "Modifica metadato documento"
-
-#~ msgid "Documents missing required metadata"
-#~ msgstr "Nel documento manca un metadato obbligatorio"
-
-#~ msgid "Documents missing optional metadata"
-#~ msgstr "Nel documento mancano metadati opzionali"
+msgstr ""

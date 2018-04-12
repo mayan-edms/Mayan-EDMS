@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:35 links.py:38 links.py:42 permissions.py:7 views.py:41
@@ -31,24 +30,20 @@ msgid "Actor"
 msgstr "Akteur"
 
 #: apps.py:44 apps.py:69
-#, fuzzy
-#| msgid "Events"
 msgid "Event"
-msgstr "Ereignisse"
+msgstr ""
 
 #: apps.py:48
 msgid "Action object"
 msgstr ""
 
 #: apps.py:55 forms.py:12 forms.py:69
-#, fuzzy
-#| msgid "Name"
 msgid "Namespace"
-msgstr "Name"
+msgstr "Namensraum"
 
 #: apps.py:58 forms.py:16 forms.py:73
 msgid "Label"
-msgstr ""
+msgstr "Bezeichner"
 
 #: apps.py:73 views.py:34 views.py:251 views.py:276
 msgid "Target"
@@ -59,10 +54,9 @@ msgid "Seen"
 msgstr ""
 
 #: classes.py:68
-#, fuzzy, python-format
-#| msgid "Unknown or obsolete event type: {0}"
+#, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr "Unbekannter oder obsoleter Ereignistyp: {0}"
+msgstr ""
 
 #: forms.py:20 forms.py:77
 msgid "Subscription"
@@ -70,7 +64,7 @@ msgstr ""
 
 #: forms.py:22 forms.py:79
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: forms.py:23 forms.py:80
 msgid "Subscribed"
@@ -101,20 +95,16 @@ msgid "Name"
 msgstr "Name"
 
 #: models.py:25
-#, fuzzy
-#| msgid "Event type"
 msgid "Stored event type"
-msgstr "Ereignistyp"
+msgstr ""
 
 #: models.py:26
-#, fuzzy
-#| msgid "Event types"
 msgid "Stored event types"
-msgstr "Ereignistypen"
+msgstr ""
 
 #: models.py:48 models.py:70 models.py:100
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: models.py:52 models.py:104
 msgid "Event type"
@@ -176,16 +166,14 @@ msgid "Object event subscriptions updated successfully"
 msgstr ""
 
 #: views.py:224
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Event subscriptions for: %s"
-msgstr "Ereignisse für %s"
+msgstr ""
 
 #: views.py:260
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Events for user: %s"
-msgstr "Ereignisse für %s"
+msgstr ""
 
 #: views.py:284
 #, python-format
@@ -195,6 +183,3 @@ msgstr "Ereignisse des Typs %s"
 #: widgets.py:42
 msgid "System"
 msgstr ""
-
-#~ msgid "Verb"
-#~ msgstr "Verb"

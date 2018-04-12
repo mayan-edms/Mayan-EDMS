@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Rosario, 2012
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:81 permissions_runtime.py:7 settings.py:11
@@ -266,13 +265,14 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 
 #: settings.py:28
 msgid ""
-"Filename of the local settings file (just the filename, extension will be ."
-"py)."
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
 msgstr ""
 
 #: settings.py:36
@@ -353,6 +353,3 @@ msgstr "Nenhuma ação selecionada."
 #: views.py:300
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
-
-#~ msgid "None"
-#~ msgstr "Nenhum"

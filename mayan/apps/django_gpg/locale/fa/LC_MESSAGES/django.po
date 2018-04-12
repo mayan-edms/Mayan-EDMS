@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-05-12 07:25+0000\n"
-"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2018-03-12 13:25+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:31
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:49 forms.py:17
 msgid "Key ID"
@@ -153,11 +153,11 @@ msgstr "سند با امضای مورد تایید امضا شده است."
 
 #: models.py:32
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "ASCII نسخه زره پوش کلیدی."
 
 #: models.py:33
 msgid "Key data"
-msgstr ""
+msgstr "داده های کلیدی"
 
 #: models.py:61
 msgid "Key"
@@ -169,7 +169,7 @@ msgstr "کلیدها"
 
 #: models.py:71
 msgid "Invalid key data"
-msgstr ""
+msgstr "داده های کلید نامعتبر"
 
 #: models.py:74
 msgid "Key already exists."
@@ -189,7 +189,7 @@ msgstr "وارد کردن کلیده از سرور کلیدها"
 
 #: permissions.py:19
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "برای امضای محتویات از کلید استفاده کنید"
 
 #: permissions.py:22
 msgid "Upload keys"
@@ -213,22 +213,22 @@ msgstr "محل کتایخانه باینری GPG"
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Keyserver برای پرس و جو برای کلید استفاده می شود."
 
 #: views.py:38
 #, python-format
 msgid "Delete key: %s"
-msgstr ""
+msgstr "کلید حذف: %s"
 
 #: views.py:48
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "جزئیات برای کلید: %s"
 
 #: views.py:68
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "وارد کردن شناسه کلیدی: %s"
 
 #: views.py:69
 msgid "Import key"
@@ -237,12 +237,12 @@ msgstr "وارد کردن کلید"
 #: views.py:78
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "قادر به وارد کردن کلید نیست: %(key_id)s؛ %(error)s"
 
 #: views.py:85
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "کلید موفقیت آمیز دریافت کرد: %(key_id)s"
 
 #: views.py:107
 msgid "Search"
@@ -254,8 +254,8 @@ msgstr "پرسش از سرور کلید"
 
 #: views.py:119
 msgid "Key query results"
-msgstr ""
+msgstr "نتایج پرس و جو کلید"
 
 #: views.py:138
 msgid "Upload new key"
-msgstr ""
+msgstr "بارگذاری کلید جدید"

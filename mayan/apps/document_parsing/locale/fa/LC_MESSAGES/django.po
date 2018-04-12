@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -10,17 +10,17 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Roberto Rosario <roberto.rosario.gonzalez@gmail.com>, 2017\n"
+"Last-Translator: Roberto Rosario, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
-"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:68 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "تجزیه و تحلیل سند"
 
 #: apps.py:108
 msgid "Document"
@@ -40,11 +40,11 @@ msgstr "محتوا"
 
 #: events.py:12
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "نسخه سند برای تجزیه و تحلیل ارائه شده است"
 
 #: events.py:15
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "نسخه سند تجزیه به پایان رسید"
 
 #: forms.py:42
 #, python-format
@@ -57,15 +57,15 @@ msgstr "محتوا"
 
 #: links.py:19 links.py:45 views.py:169
 msgid "Parsing errors"
-msgstr ""
+msgstr "خطاهای تجزیه"
 
 #: links.py:24
 msgid "Download content"
-msgstr ""
+msgstr "دانلود محتوا"
 
 #: links.py:28 links.py:33
 msgid "Submit for parsing"
-msgstr ""
+msgstr "ارسال برای تجزیه و تحلیل"
 
 #: links.py:37
 msgid "Setup parsing"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: links.py:40
 msgid "Parse documents per type"
-msgstr ""
+msgstr "هر نوع اسناد را تجزیه کنید"
 
 #: models.py:16
 msgid "Document page"
@@ -81,33 +81,27 @@ msgstr "صفحه سند"
 
 #: models.py:23
 msgid "Document page content"
-msgstr ""
+msgstr "محتوای صفحه سند"
 
 #: models.py:24
 msgid "Document pages contents"
-msgstr ""
+msgstr "محتویات صفحات سند"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Document page"
 msgid "Document type"
-msgstr "صفحه سند"
+msgstr "نوع سند"
 
 #: models.py:37
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 
 #: models.py:41
-#, fuzzy
-#| msgid "Document version"
 msgid "Document type settings"
-msgstr "نسخه سند"
+msgstr "Document type settings"
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document types settings"
-msgstr "نسخه سند"
+msgstr "Document types settings"
 
 #: models.py:49
 msgid "Document version"
@@ -119,25 +113,25 @@ msgstr "تاریخ و زمان ارسال"
 
 #: models.py:58
 msgid "Document version parse error"
-msgstr ""
+msgstr "نسخه سند خطا را تجزیه می کند"
 
 #: models.py:59
 msgid "Document version parse errors"
-msgstr ""
+msgstr "نسخه سند خطاهای تجزیه"
 
 #: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "صفحه تجزیه آمیز exception؛ %s"
 
 #: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "نتوانست اجرایی pdftotext را در: %s پیدا کند"
 
 #: permissions.py:10
 msgid "View the content of a document"
-msgstr ""
+msgstr "محتوای یک سند را مشاهده کنید"
 
 #: permissions.py:14
 msgid "Change document type parsing settings"
@@ -145,15 +139,15 @@ msgstr ""
 
 #: permissions.py:17
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "محتوای یک سند را تجزیه کنید"
 
 #: queues.py:7
 msgid "Parsing"
-msgstr ""
+msgstr "تجزیه"
 
 #: queues.py:10
 msgid "Document version parsing"
-msgstr ""
+msgstr "نسخه سند تجزیه"
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
@@ -161,39 +155,40 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 
 #: views.py:41
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "محتوا برای سند: %s"
 
 #: views.py:69
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "خطاهای تجزیه برای سند: %s"
 
 #: views.py:81
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d سند اضافه شده به صف تجزیه و تحلیل"
 
 #: views.py:84
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "اسناد %(count)d اضافه شده به صف تجزیه و تحلیل"
 
 #: views.py:92
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
+msgstr[0] " ارسال  \"%(count)d\" از  اسناد به صف تجزیه و تحلیل"
 
 #: views.py:105
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr " ارسال  \"%s\" سند  به صف تجزیه و تحلیل"
 
 #: views.py:128
 #, python-format
@@ -202,10 +197,13 @@ msgstr ""
 
 #: views.py:136
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "برای تجزیه و تحلیل تمام اسناد یک نوع را ارسال کنید"
 
 #: views.py:155
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing "
+"queue."
 msgstr ""
+"\"%(count)d \" اسناد از نوع \"%(document_type)s\" اضافه شده به صف جهت تجزیه "
+"و تحلیل."

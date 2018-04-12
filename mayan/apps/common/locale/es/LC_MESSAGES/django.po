@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2016-2017
+# Roberto Rosario, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:58+0000\n"
+"PO-Revision-Date: 2018-04-11 19:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:81 permissions_runtime.py:7 settings.py:11
@@ -123,7 +122,7 @@ msgstr "Errores"
 
 #: links.py:69
 msgid "Clear all"
-msgstr ""
+msgstr "Limpiar todo"
 
 #: links.py:78
 msgid "Forum"
@@ -153,7 +152,7 @@ msgstr "Herramientas"
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "El backend de su base de datos está configurado para usar SQLite. SQLite solo debe usarse para desarrollo y pruebas, no para producción."
 
 #: literals.py:18
 msgid "Days"
@@ -169,7 +168,7 @@ msgstr "Minutos"
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Procesar una aplicación específica."
 
 #: menus.py:12
 msgid "System"
@@ -267,49 +266,39 @@ msgstr "Activar bitácoras automáticamente a todas las aplicaciones."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Tiempo para retrasar las tareas de fondo que dependen de la propagación de "
-"información en la base de datos."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Tiempo para retrasar las tareas de fondo que dependen de la propagación de información en la base de datos."
 
 #: settings.py:28
 msgid ""
-"Filename of the local settings file (just the filename, extension will be ."
-"py)."
-msgstr ""
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
+msgstr "Nombre de archivo del archivo de configuración local (solo el nombre del archivo, la extensión será .py)."
 
 #: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Un número entero que especifica cuántos objetos se debe mostrar por página."
+msgstr "Un número entero que especifica cuántos objetos se debe mostrar por página."
 
 #: settings.py:42
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un soporte de almacenamiento que todos los 'workers' puedan utilizar para "
-"compartir archivos."
+msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
 
 #: settings.py:51
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Directorio temporero utilizado en todo el sitio para almacenar imágenes en "
-"miniatura, visualizaciones y archivos temporeros."
+msgstr "Directorio temporero utilizado en todo el sitio para almacenar imágenes en miniatura, visualizaciones y archivos temporeros."
 
 #: settings.py:59
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
-"Ruta de acceso al archivo de registro que rastreará errores durante la "
-"producción."
+msgstr "Ruta de acceso al archivo de registro que rastreará errores durante la producción."
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Introduzca un nombre interno válido que conste de letras, números y "
-"subrayados."
+msgstr "Introduzca un nombre interno válido que conste de letras, números y subrayados."
 
 #: views.py:49
 #, python-format
@@ -337,16 +326,13 @@ msgid "Edit current user locale profile details"
 msgstr "Editar los detalles del perfil del usuario local"
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Error log entries for: %s"
+#, python-format
 msgid "Clear error log entries for: %s"
-msgstr "Entradas del registro de errores para: %s"
+msgstr "Borrar entradas de registro de errores para: %s"
 
 #: views.py:182
-#, fuzzy
-#| msgid "%(object)s created successfully."
 msgid "Object error log cleared successfully"
-msgstr "%(object)s creado exitosamente."
+msgstr "El registro de errores del objeto se borró correctamente"
 
 #: views.py:200
 msgid "Date and time"
@@ -368,21 +354,3 @@ msgstr "Ninguna acción seleccionada."
 #: views.py:300
 msgid "Must select at least one item."
 msgstr "Debe seleccionar al menos un artículo."
-
-#~ msgid "Filter"
-#~ msgstr "Filtro"
-
-#~ msgid "Data filters"
-#~ msgstr "Filtros de datos"
-
-#~ msgid "Filter selection"
-#~ msgstr "Selección de filtro"
-
-#~ msgid "Results for filter: %s"
-#~ msgstr "Resultados para el filtro: %s"
-
-#~ msgid "Filter not found"
-#~ msgstr "Filtro no encontrado"
-
-#~ msgid "None"
-#~ msgstr "Ninguno"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:81 permissions_runtime.py:7 settings.py:11
@@ -268,35 +267,29 @@ msgstr "Abilita automaticamente i log per tutte le app."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Il ritardo per i task in background dipende dalla propagazione del commit su "
-"database."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Il ritardo per i task in background dipende dalla propagazione del commit su database."
 
 #: settings.py:28
 msgid ""
-"Filename of the local settings file (just the filename, extension will be ."
-"py)."
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
 msgstr ""
 
 #: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Un intero che specifica quanti oggetti devono essere visualizzati per pagina."
+msgstr "Un intero che specifica quanti oggetti devono essere visualizzati per pagina."
 
 #: settings.py:42
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
-"condividere i file."
+msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
 #: settings.py:51
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, "
-"anteprime e files temporanei"
+msgstr "Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, anteprime e files temporanei"
 
 #: settings.py:59
 msgid "Path to the logfile that will track errors during production."
@@ -306,8 +299,7 @@ msgstr ""
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
+msgstr "Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
 
 #: views.py:49
 #, python-format
@@ -340,10 +332,8 @@ msgid "Clear error log entries for: %s"
 msgstr ""
 
 #: views.py:182
-#, fuzzy
-#| msgid "%(object)s created successfully."
 msgid "Object error log cleared successfully"
-msgstr "%(object)s creato con successo.."
+msgstr ""
 
 #: views.py:200
 msgid "Date and time"
@@ -365,21 +355,3 @@ msgstr "Nessuna azione selezionata"
 #: views.py:300
 msgid "Must select at least one item."
 msgstr "Devi selezionare un elemento"
-
-#~ msgid "Filter"
-#~ msgstr "Filtro"
-
-#~ msgid "Data filters"
-#~ msgstr "Filtro dati"
-
-#~ msgid "Filter selection"
-#~ msgstr "Scegli il filtro"
-
-#~ msgid "Results for filter: %s"
-#~ msgstr "Risultati per il filtro: %s"
-
-#~ msgid "Filter not found"
-#~ msgstr "Filtro non trovato"
-
-#~ msgid "None"
-#~ msgstr "Nessuno"

@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-15 06:30+0000\n"
+"PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:52 permissions.py:8 settings.py:7
@@ -266,9 +265,7 @@ msgstr ""
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Pada database yang besar pekerjaan berikut mungkin akan membutuhkan waktu "
-"untuk dilaksanakan."
+msgstr "Pada database yang besar pekerjaan berikut mungkin akan membutuhkan waktu untuk dilaksanakan."
 
 #: views.py:346
 msgid "Verify all document for signatures?"

@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
+# Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:32+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2018-04-11 12:43+0000\n"
+"Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:24
@@ -48,7 +48,7 @@ msgstr "Activé"
 
 #: apps.py:87
 msgid "Total levels"
-msgstr ""
+msgstr "Nombre de niveaux"
 
 #: apps.py:93
 msgid "Total documents"
@@ -64,7 +64,7 @@ msgstr "Est lié à d'autres documents ?"
 
 #: apps.py:125 apps.py:144
 msgid "Levels"
-msgstr ""
+msgstr "Niveaux"
 
 #: apps.py:129 apps.py:148 models.py:290
 msgid "Documents"
@@ -77,7 +77,7 @@ msgstr "Les index doivent être mis en file d'attente pour la reconstruction."
 #: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:57
 #: views.py:73 views.py:219
 msgid "Indexes"
-msgstr "Indexes"
+msgstr "Index"
 
 #: handlers.py:20
 msgid "Creation date"
@@ -101,8 +101,7 @@ msgstr "Modèle d'arborescence"
 
 #: links.py:54
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr ""
-"Supprimer et reconstruire les indexes des documents en partant de zéro."
+msgstr "Supprimer et reconstruire les index des documents en partant de zéro."
 
 #: links.py:57 views.py:329
 msgid "Rebuild indexes"
@@ -114,15 +113,12 @@ msgstr "Nouveau noeud enfant"
 
 #: models.py:37
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Cette valeur sera utilisée par d'autres applications pour faire référence à "
-"cet indice."
+msgstr "Cette valeur sera utilisée par d'autres applications pour faire référence à cet index."
 
 #: models.py:43
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
-"d'un document est modifié."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Permet à cet index d'être à la fois visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:56 models.py:153
 msgid "Index"
@@ -130,19 +126,17 @@ msgstr "Index"
 
 #: models.py:125
 msgid "Index instance"
-msgstr "index instance"
+msgstr "Instance d'index"
 
 #: models.py:126
 msgid "Index instances"
-msgstr "Instance d'indexe"
+msgstr "Instances d'index"
 
 #: models.py:157
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-"Saisissez un modèle à restituer. Utiliser le langage de rendu de Django par "
-"défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr "Saisissez un modèle à restituer. Utiliser le langage de rendu de Django par défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:161
 msgid "Indexing expression"
@@ -150,17 +144,13 @@ msgstr "Expression d'indexation"
 
 #: models.py:166
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Permet à ce noeud d'être visible et mis à jour quand le contenu d'un "
-"document est modifié."
+msgstr "Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document est modifié."
 
 #: models.py:174
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Cochez cette option pour permettre à ce noeud d'être un conteneur de "
-"documents et pas seulement un noeud parent d'autres noeuds enfants."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Cochez cette option pour permettre à ce nœud d'être un conteneur de documents et pas seulement un nœud parent d'autres nœuds enfants."
 
 #: models.py:177
 msgid "Link documents"
@@ -168,11 +158,11 @@ msgstr "Lier les documents"
 
 #: models.py:181
 msgid "Index node template"
-msgstr "Noeud de modèle d'index"
+msgstr "Modèle de nœud d'index"
 
 #: models.py:182
 msgid "Indexes node template"
-msgstr "Noeud de modèle d'index"
+msgstr "Modèle de nœud d'index"
 
 #: models.py:186
 msgid "Root"
@@ -183,13 +173,11 @@ msgstr "Racine"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Erreur lors de l'indexation du document: %(document)s; expression: "
-"%(expression)s; %(exception)s"
+msgstr "Erreur lors de l'indexation du document : %(document)s; expression: %(expression)s; %(exception)s"
 
 #: models.py:283
 msgid "Index template node"
-msgstr "Noeud de modèle d'index"
+msgstr "Nœud de modèle d'index"
 
 #: models.py:286
 msgid "Value"
@@ -197,19 +185,19 @@ msgstr "Valeur"
 
 #: models.py:296
 msgid "Index node instance"
-msgstr "Noeud d'instance d'index"
+msgstr "Instance de nœud d'index"
 
 #: models.py:297
 msgid "Indexes node instances"
-msgstr "Noeud d'instances d'indexes"
+msgstr "Instances de nœuds d'index"
 
 #: models.py:401
 msgid "Document index node instance"
-msgstr "Instance de noeud d'indexe de document"
+msgstr "Instance de nœud d'index de document"
 
 #: models.py:402
 msgid "Document indexes node instances"
-msgstr "Instances de noeuds d'indexe de document"
+msgstr "Instances de nœuds d'index de document"
 
 #: permissions.py:7 queues.py:8
 msgid "Indexing"
@@ -217,23 +205,23 @@ msgstr "Indexation"
 
 #: permissions.py:10
 msgid "Create new document indexes"
-msgstr "Créer de nouveaux indexes de documents"
+msgstr "Créer de nouveaux index de documents"
 
 #: permissions.py:13
 msgid "Edit document indexes"
-msgstr "Modifier les indexes de documents"
+msgstr "Modifier les index de documents"
 
 #: permissions.py:16
 msgid "Delete document indexes"
-msgstr "Supprimer des indexes de documents"
+msgstr "Supprimer des index de documents"
 
 #: permissions.py:19
 msgid "View document indexes"
-msgstr "Afficher les indexes des documents"
+msgstr "Afficher les index des documents"
 
 #: permissions.py:22
 msgid "Rebuild document indexes"
-msgstr "Reconstruire les indexes des documents"
+msgstr "Reconstruire les index des documents"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -241,11 +229,11 @@ msgstr "Supprimer les nœuds d'index vides"
 
 #: queues.py:16
 msgid "Remove document"
-msgstr "Supprimer le document"
+msgstr "Enlever le document"
 
 #: queues.py:20
 msgid "Index document"
-msgstr "Document d'index"
+msgstr "Indexer le document"
 
 #: queues.py:24
 msgid "Rebuild index"
@@ -254,61 +242,61 @@ msgstr "Reconstruire l'index"
 #: views.py:49
 #, python-format
 msgid "Delete the index: %s?"
-msgstr "Supprimer l'indexe : %s ?"
+msgstr "Supprimer l'index : %s ?"
 
 #: views.py:62
 #, python-format
 msgid "Edit index: %s"
-msgstr "Modifier l'index: %s"
+msgstr "Modifier l'index : %s"
 
 #: views.py:79
 msgid "Available document types"
-msgstr "Types de document disponible"
+msgstr "Types de documents disponibles"
 
 #: views.py:81
 msgid "Document types linked"
-msgstr "Types de document liés"
+msgstr "Types de documents liés"
 
 #: views.py:96
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr "Types de documents liés à l'indexe : %s"
+msgstr "Types de documents liés à l'index : %s"
 
 #: views.py:127
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr "Noeuds de modèles arborescentes pour l'index: %s"
+msgstr "Nœuds de modèles d'arborescences pour l'index : %s"
 
 #: views.py:157
 #, python-format
 msgid "Create child node of: %s"
-msgstr "Créer un noeud enfant pour: %s"
+msgstr "Créer un nœud enfant de : %s"
 
 #: views.py:181
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr "Supprimer le noeud du modèle d'indexe: %s ?"
+msgstr "Supprimer le nœud du modèle d'index : %s ?"
 
 #: views.py:203
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr "Modifier le noeud du modèle d'index: %s"
+msgstr "Modifier le nœud du modèle d'index : %s"
 
 #: views.py:260
 #, python-format
 msgid "Navigation: %s"
-msgstr "Navigation: %s"
+msgstr "Navigation : %s"
 
 #: views.py:265
 #, python-format
 msgid "Contents for index: %s"
-msgstr "Contenu de l'index:%s"
+msgstr "Contenu de l'index : %s"
 
 #: views.py:319
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr "Noeuds d'indexe contenant le document : %s"
+msgstr "Nœuds d'index contenant le document : %s"
 
 #: views.py:340
 msgid "Index rebuild queued successfully."
-msgstr "La ré-indexation en attente a été faite avec succès."
+msgstr "Reconstruction d'index ajoutée à la file d'attente avec succès."

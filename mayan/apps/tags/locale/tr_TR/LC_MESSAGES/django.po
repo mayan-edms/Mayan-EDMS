@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -10,15 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:57-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
 #: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
@@ -118,16 +117,13 @@ msgstr "Dokümanlardan etiketleri kaldır"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Bu etiketin ekleneceği birincil anahtarların virgülle ayrılmış listesi."
+msgstr "Bu etiketin ekleneceği birincil anahtarların virgülle ayrılmış listesi."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"Eklenmiş belgeyle ilişkili olarak bir etiketi işaret eden API URL'si. Bu "
-"URL, kanuni etiket URL'sinden farklı."
+msgstr "Eklenmiş belgeyle ilişkili olarak bir etiketi işaret eden API URL'si. Bu URL, kanuni etiket URL'sinden farklı."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -151,7 +147,8 @@ msgstr "Ekle"
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] "Etiketleri %(count)d dokümanlarına ekleyin"
+msgstr[0] "Etiketleri %(count)d dokümana ekleyin"
+msgstr[1] "Etiketleri %(count)d dokümanlarına ekleyin"
 
 #: views.py:56
 #, python-format
@@ -193,7 +190,8 @@ msgstr "Tüm belgelerden kaldırılacak."
 #: views.py:135
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] "Seçili etiketleri silinsin mi?"
+msgstr[0] "Seçilen etiketi silinsin mi?"
+msgstr[1] "Seçili etiketleri silinsin mi?"
 
 #: views.py:145
 #, python-format
@@ -243,7 +241,8 @@ msgstr "Kaldır"
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] "Etiketleri %(count)d adet dokümandan kaldır"
+msgstr[0] "Etiketleri kaldır %(count)d dokümana"
+msgstr[1] "Etiketleri %(count)d adet dokümandan kaldır"
 
 #: views.py:264
 #, python-format
@@ -262,14 +261,11 @@ msgstr "\"%(document)s\" dokümanı \"%(tag)s\" olarak etiketlenemedi"
 #: views.py:309
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"\"%(tag)s\" Etiketi \"%(document)s\" dokümanından başarıyla kaldırıldı."
+msgstr "\"%(tag)s\" Etiketi \"%(document)s\" dokümanından başarıyla kaldırıldı."
 
 #: wizard_steps.py:16
-#, fuzzy
-#| msgid "Delete tags"
 msgid "Select tags"
-msgstr "Etiketleri sil"
+msgstr ""
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"

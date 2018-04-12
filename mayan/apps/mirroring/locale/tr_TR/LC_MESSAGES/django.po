@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
@@ -9,15 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-07-03 19:30+0000\n"
+"PO-Revision-Date: 2017-09-22 21:28+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:9 settings.py:7
 msgid "Mirroring"
@@ -29,5 +28,4 @@ msgstr "Bir belgenin yolunu önbelleklemek için gereken saniye cinsinden süre.
 
 #: settings.py:15
 msgid "Time in seconds to cache the path lookup to an index node."
-msgstr ""
-"Bir dizin düğümünün yolunu önbelleklemek için gereken saniye cinsinden süre."
+msgstr "Bir dizin düğümünün yolunu önbelleklemek için gereken saniye cinsinden süre."

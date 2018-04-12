@@ -1,74 +1,74 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:40 links.py:52 models.py:63 queues.py:8 settings.py:7 views.py:563
 msgid "Sources"
-msgstr "سورس"
+msgstr "منابع"
 
 #: apps.py:55
 msgid "Create a document source"
-msgstr ""
+msgstr "یک منبع مستند ایجاد کنید"
 
 #: apps.py:57
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
+msgstr "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
 #: apps.py:67
 msgid "Created"
-msgstr "ساخته‌شده"
+msgstr "ایجاد شده"
 
 #: apps.py:74
 msgid "Thumbnail"
-msgstr "اندازه کوچک"
+msgstr "بند انگشتی"
 
 #: apps.py:82 models.py:760
 msgid "Date time"
-msgstr "تاریخ زمان"
+msgstr "زمان قرار"
 
 #: apps.py:87 models.py:763
 msgid "Message"
-msgstr ""
+msgstr "پیام"
 
 #: forms.py:30
 msgid "Comment"
-msgstr "توضیحات"
+msgstr "اظهار نظر"
 
 #: forms.py:45
 msgid "Expand compressed files"
-msgstr "بازگشایی فایلهای فشرده"
+msgstr "فایلهای فشرده را گسترش دهید"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "آپلود فایل فشرده شامل فایل اصلی سند."
+msgstr "فایل های حاوی فایل فشرده را به عنوان اسناد شخصی بارگذاری کنید"
 
 #: forms.py:68 views.py:451
 msgid "Staging file"
-msgstr "پرونده مرحله ای"
+msgstr "مرحله گذاری فایل"
 
 #: forms.py:72 forms.py:77
 msgid "File"
-msgstr "پرونده"
+msgstr "فایل"
 
 #: handlers.py:16
 msgid "Default"
@@ -76,31 +76,31 @@ msgstr "پیش فرض"
 
 #: links.py:48
 msgid "New document"
-msgstr ""
+msgstr "سند جدید"
 
 #: links.py:56
 msgid "Add new IMAP email"
-msgstr "اضافه کردن IMAP جدید"
+msgstr "افزودن ایمیل جدید IMAP"
 
 #: links.py:61
 msgid "Add new POP3 email"
-msgstr "اضافه کردن pop3 جدید"
+msgstr "افزودن ایمیل جدید POP3"
 
 #: links.py:66
 msgid "Add new staging folder"
-msgstr "ایجتد پرونده مرحله ای"
+msgstr "افزودن پوشه مرحلهبندی جدید"
 
 #: links.py:71
 msgid "Add new watch folder"
-msgstr "ایجاد پرونده تحت نظر"
+msgstr "پوشه تماشا را اضافه کنید"
 
 #: links.py:76
 msgid "Add new webform source"
-msgstr "اضافه کردن سورس جدید یک وب فرم"
+msgstr "منبع جدید وب فرم را اضافه کنید"
 
 #: links.py:81
 msgid "Add new SANE scanner"
-msgstr ""
+msgstr "افزودن اسکنر SANE جدید"
 
 #: links.py:86 links.py:100
 msgid "Delete"
@@ -112,43 +112,43 @@ msgstr "ویرایش"
 
 #: links.py:94
 msgid "Document sources"
-msgstr "سورسهای سند"
+msgstr "منابع سند"
 
 #: links.py:106
 msgid "Upload new version"
-msgstr "آپلود نسخه دید"
+msgstr "آپلود نسخه جدید"
 
 #: links.py:109
 msgid "Logs"
-msgstr ""
+msgstr "سیاههها"
 
 #: links.py:113
 msgid "Check now"
-msgstr ""
+msgstr "اکنون بررسی کنید"
 
 #: literals.py:9
 msgid "Flatbed"
-msgstr ""
+msgstr "صفحه تخت"
 
 #: literals.py:10
 msgid "Document feeder"
-msgstr ""
+msgstr "فیدر سند"
 
 #: literals.py:17
 msgid "Simplex"
-msgstr ""
+msgstr "سیمپلکس"
 
 #: literals.py:18
 msgid "Duplex"
-msgstr ""
+msgstr "دوبلکس"
 
 #: literals.py:26
 msgid "Lineart"
-msgstr ""
+msgstr "خط مقدم"
 
 #: literals.py:27
 msgid "Monochrome"
-msgstr ""
+msgstr "تک رنگ"
 
 #: literals.py:28
 msgid "Color"
@@ -164,25 +164,23 @@ msgstr "هرگز"
 
 #: literals.py:43
 msgid "Ask user"
-msgstr "پرسیدن از کاربر"
+msgstr "از کاربر بپرس"
 
 #: literals.py:54
 msgid "Scanner"
-msgstr ""
+msgstr "اسکنر"
 
 #: literals.py:55 models.py:383
 msgid "Web form"
-msgstr ""
-"وب فرم "
-"ا                                                                                                                                                                                                                                                                                                                                                                                                          "
+msgstr "فرم وب"
 
 #: literals.py:56 models.py:319
 msgid "Staging folder"
-msgstr "پرونده مرحله ای"
+msgstr "پوشه Staging"
 
 #: literals.py:57 models.py:736
 msgid "Watch folder"
-msgstr "پرونده تحت نظر"
+msgstr "پوشه تماشا کنید"
 
 #: literals.py:58
 msgid "POP3 email"
@@ -198,81 +196,81 @@ msgstr "برچسب"
 
 #: models.py:56 views.py:556
 msgid "Enabled"
-msgstr "فعال شده"
+msgstr "فعال شده است"
 
 #: models.py:62 models.py:757
 msgid "Source"
-msgstr "سورس"
+msgstr "منبع"
 
 #: models.py:164
 msgid "Interactive source"
-msgstr "سورس محاوره ای"
+msgstr "منبع تعاملی"
 
 #: models.py:165
 msgid "Interactive sources"
-msgstr "سورس های محاوره ای"
+msgstr "منابع تعاملی"
 
 #: models.py:175
 msgid "Device name as returned by the SANE backend."
-msgstr ""
+msgstr "نام دستگاه به عنوان پشت صحنه SANE بازگشت."
 
 #: models.py:176
 msgid "Device name"
-msgstr ""
+msgstr "نام دستگاه"
 
 #: models.py:181
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
+msgstr "حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models.py:183
 msgid "Mode"
-msgstr ""
+msgstr "حالت"
 
 #: models.py:187
 msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
+msgstr "وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models.py:190
 msgid "Resolution"
-msgstr ""
+msgstr "وضوح"
 
 #: models.py:195
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models.py:198
 msgid "Paper source"
-msgstr ""
+msgstr "منبع کاغذ"
 
 #: models.py:203
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models.py:205
 msgid "ADF mode"
-msgstr ""
+msgstr "حالت ADF"
 
 #: models.py:211
 msgid "SANE Scanner"
-msgstr ""
+msgstr "SANE اسکنر"
 
 #: models.py:212
 msgid "SANE Scanners"
-msgstr ""
+msgstr "SANE اسکنرها"
 
 #: models.py:259
 #, python-format
 msgid "Error while scanning; %s"
-msgstr ""
+msgstr "خطا هنگام اسکن کردن؛ %s"
 
 #: models.py:291 models.py:729
 msgid "Server side filesystem path."
@@ -376,9 +374,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
+msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
 #: models.py:486
 msgid "Port"
@@ -397,39 +393,39 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr ""
+msgstr "نام پیوست که شامل نام های نوع فراداده و جفت های ارزش است که باید به سایر فایل های دانلود شده اختصاص داده شود. توجه: این پیوست باید اولین ضمیمه باشد."
 
 #: models.py:497
 msgid "Metadata attachment name"
-msgstr ""
+msgstr "نام دلبستگی متاداده"
 
 #: models.py:501
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
+msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره موضوع ایمیل انتخاب کنید."
 
 #: models.py:504
 msgid "Subject metadata type"
-msgstr ""
+msgstr "نوع Metadata موضوع"
 
 #: models.py:508
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
+msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره \"ایمیل\" از \"ارزش\" را انتخاب کنید."
 
 #: models.py:511
 msgid "From metadata type"
-msgstr ""
+msgstr "از نوع ابرداده"
 
 #: models.py:515
 msgid "Store the body of the email as a text document."
-msgstr ""
+msgstr "بدن ایمیل را به عنوان یک سند متن ذخیره کنید."
 
 #: models.py:516
 msgid "Store email body"
-msgstr ""
+msgstr "فروشگاه الکترونیکی ذخیره کنید"
 
 #: models.py:522
 msgid "Email source"
@@ -444,14 +440,14 @@ msgstr "ایمیل کردن سورسها"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
 #: models.py:545
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
 #: models.py:625
 msgid "Timeout"
@@ -463,7 +459,7 @@ msgstr "POP ایمیل"
 
 #: models.py:673
 msgid "IMAP Mailbox from which to check for messages."
-msgstr ""
+msgstr "صندوق پستی IMAP که از آن برای بررسی پیام ها است."
 
 #: models.py:674
 msgid "Mailbox"
@@ -475,7 +471,7 @@ msgstr "پرونده تحت نظر"
 
 #: models.py:769
 msgid "Log entry"
-msgstr ""
+msgstr "ورودی لاگ"
 
 #: models.py:770
 msgid "Log entries"
@@ -503,49 +499,47 @@ msgstr "دیدن سورس اسناد موجود"
 
 #: permissions.py:21
 msgid "Delete staging files"
-msgstr ""
+msgstr "حذف فایل های استقراری"
 
 #: queues.py:11
 msgid "Sources periodic"
-msgstr ""
+msgstr "منابع دوره ای"
 
 #: queues.py:16
 msgid "Check interval source"
-msgstr ""
+msgstr "بررسی منبع فاصله"
 
 #: queues.py:21
 msgid "Handle upload"
-msgstr ""
+msgstr "آپلود دسته"
 
 #: queues.py:25
 msgid "Upload document"
-msgstr ""
+msgstr "سند آپلود"
 
 #: settings.py:12
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
+msgstr "مسیر فایل به برنامه scanimage مورد استفاده برای کنترل اسکنر تصویر."
 
 #: tasks.py:45
 #, python-format
 msgid "Error processing source: %s"
-msgstr ""
+msgstr "خطای پردازش منبع: %s"
 
 #: views.py:51
 #, python-format
 msgid "Log entries for source: %s"
-msgstr ""
+msgstr "ورود به سیستم برای منبع: %s"
 
 #: views.py:107 wizards.py:134
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
-"بسازید."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
 
 #: views.py:133 views.py:151 views.py:161
 msgid "Document properties"
-msgstr ""
+msgstr "خواص سند"
 
 #: views.py:141
 msgid "Files in staging path"
@@ -553,7 +547,7 @@ msgstr "فایلهای درون راه مرحله ای"
 
 #: views.py:152
 msgid "Scan"
-msgstr ""
+msgstr "اسکن کردن"
 
 #: views.py:264
 msgid "New document queued for uploaded and will be available shortly."
@@ -567,10 +561,11 @@ msgstr "آپلود کردن فایل محلی از اصل:%s"
 #: views.py:347
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
-msgstr ""
+msgstr "سند \"%s\" از آپلود نسخه های جدید مسدود شده است."
 
 #: views.py:399
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr "نسخه سند جدید که جهت آپلود وارد صف شد بزودی قابل دسترس خواهد بود."
 
 #: views.py:438
@@ -581,11 +576,11 @@ msgstr "آپلود نسخه ای جدید از اصل : %s"
 #: views.py:478
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr ""
+msgstr "برای اطمینان از منبع \"%s\" تکرار کنید؟"
 
 #: views.py:491
 msgid "Source check queued."
-msgstr ""
+msgstr "بررسی منبع در صف."
 
 #: views.py:505
 #, python-format
@@ -595,7 +590,7 @@ msgstr "ایجاد سورس جدید از نوع %s."
 #: views.py:525
 #, python-format
 msgid "Delete the source: %s?"
-msgstr ""
+msgstr "منبع را حذف کنید: %s؟"
 
 #: views.py:544
 #, python-format
@@ -607,10 +602,8 @@ msgid "Type"
 msgstr "نوع"
 
 #: wizards.py:86
-#, fuzzy
-#| msgid "Document type"
 msgid "Select document type"
-msgstr "نوع سند"
+msgstr ""
 
 #: wizards.py:153
 #, python-format
@@ -623,7 +616,4 @@ msgstr "مرحله بعدی"
 
 #: wizards.py:160
 msgid "Document upload wizard"
-msgstr ""
-
-#~ msgid "attachment-%i"
-#~ msgstr "الضاقیات-%i"
+msgstr "جادوگر بارگذاری سند"

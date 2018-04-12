@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:54-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
+"PO-Revision-Date: 2018-04-10 08:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
-msgstr ""
+msgstr "ظاهر"
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -40,19 +40,19 @@ msgstr "متاسفانه صفحه درخواستی پیدا نشد."
 
 #: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:98
 msgid "Server error"
-msgstr ""
+msgstr "خطای سرور"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "یک خطا وجود دارد از طریق پست الکترونیکی به مدیران سایت گزارش شده است و باید به زودی تنظیم شود. از صبر و شکیبایی شما متشکریم"
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
+msgstr "اگر به کمک نیاز دارید، می توانید این خطا را از طریق شناسه زیر ارجاع دهید:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -65,13 +65,11 @@ msgstr "نسخه"
 #: templates/appearance/about.html:64
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr ""
+msgstr "شماره ساخت: %(build_number)s"
 
 #: templates/appearance/about.html:77
-#, fuzzy
-#| msgid "Released under the Apache 2.0 License"
 msgid "Released under the license:"
-msgstr "تحت لیسانس Apache 2.0"
+msgstr ""
 
 #: templates/appearance/base.html:33
 msgid "Warning"
@@ -84,7 +82,7 @@ msgstr "عملیات"
 
 #: templates/appearance/base.html:63
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "تغییر وضعیت dropdown"
 
 #: templates/appearance/calculate_form_title.html:16
 #, python-format
@@ -102,7 +100,7 @@ msgstr "ایجاد"
 
 #: templates/appearance/dashboard_widget.html:25
 msgid "View details"
-msgstr ""
+msgstr "دیدن جزئیات"
 
 #: templates/appearance/generic_confirm.html:6
 #: templates/appearance/generic_confirm.html:13
@@ -116,7 +114,7 @@ msgstr "تائید حذف"
 #: templates/appearance/generic_confirm.html:27
 #, python-format
 msgid "Delete: %(object)s?"
-msgstr ""
+msgstr "حذف: %(object)s"
 
 #: templates/appearance/generic_confirm.html:48
 msgid "Yes"
@@ -163,7 +161,7 @@ msgstr "لغو"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
+msgstr "مجموع (%(start)s - %(end)s از %(total)s) (صفحه %(page_number)s از %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:26
 #: templates/appearance/generic_list_items_subtemplate.html:29
@@ -171,7 +169,7 @@ msgstr ""
 #: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
 msgid "Total: %(total)s"
-msgstr ""
+msgstr "مجموع: %(total)s"
 
 #: templates/appearance/generic_list_subtemplate.html:50
 msgid "Identifier"
@@ -179,19 +177,19 @@ msgstr "مشخصه Identifier"
 
 #: templates/appearance/home.html:9 templates/appearance/home.html:21
 msgid "Dashboard"
-msgstr ""
+msgstr "داشبورد"
 
 #: templates/appearance/home.html:30
 msgid "Getting started"
-msgstr ""
+msgstr "شروع کردن"
 
 #: templates/appearance/home.html:33
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "قبل از اینکه بتوانید به طور کامل از EDMS مایان استفاده کنید، به موارد زیر نیاز دارید:"
 
 #: templates/appearance/home.html:54
 msgid "Search pages"
-msgstr ""
+msgstr "صفحات جستجو"
 
 #: templates/appearance/home.html:56 templates/appearance/home.html:66
 msgid "Search"
@@ -199,15 +197,15 @@ msgstr "جستجو"
 
 #: templates/appearance/home.html:57 templates/appearance/home.html:67
 msgid "Advanced"
-msgstr ""
+msgstr "پیشرفته"
 
 #: templates/appearance/home.html:64
 msgid "Search documents"
-msgstr ""
+msgstr "جستجو اسناد"
 
 #: templates/appearance/root.html:54
 msgid "Toggle navigation"
-msgstr ""
+msgstr "تغییر ناوبری"
 
 #: templates/appearance/root.html:103
 msgid "Close"
@@ -230,16 +228,11 @@ msgid "First time login"
 msgstr "دفعه اول لاگین "
 
 #: templates/authentication/login.html:25
-#, fuzzy, python-format
-#| msgid ""
-#| "You have just finished installing <strong>Mayan EDMS</strong>, "
-#| "congratulations!"
+#, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
-"You have just finished installing <strong>Mayan EDMS</strong>, "
-"congratulations!"
 
 #: templates/authentication/login.html:26
 msgid "Login using the following credentials:"
@@ -269,11 +262,11 @@ msgstr "برای امنیت بیشتر پسورد خود را تغییر دهی�
 #: templates/authentication/login.html:46
 #: templates/authentication/login.html:54
 msgid "Sign in"
-msgstr ""
+msgstr "ورود"
 
 #: templates/authentication/login.html:59
 msgid "Forgot your password?"
-msgstr ""
+msgstr "رمز عبور خود را فراموش کرده اید؟"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -282,23 +275,20 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "تنظیم مجدد رمز عبور"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "تنظیم مجدد رمز عبور کامل است! روی لینک زیر کلیک کنید تا وارد شوید"
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "صفحه ورود"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "ایمیل فرستادن تنظیم مجدد"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "هیچکدام."
-
-#~ msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-#~ msgstr "کپی رایت و کپی"

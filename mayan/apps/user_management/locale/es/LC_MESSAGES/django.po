@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2016-2017
+# Roberto Rosario, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:57-0400\n"
-"PO-Revision-Date: 2017-08-27 16:55+0000\n"
+"PO-Revision-Date: 2018-04-11 19:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:51 permissions.py:7
@@ -129,9 +128,7 @@ msgstr "Nombre"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Lista separada por comas de llaves primarias de grupos a ser asignados a "
-"este usuario."
+msgstr "Lista separada por comas de llaves primarias de grupos a ser asignados a este usuario."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -152,16 +149,13 @@ msgid "Available users"
 msgstr "Usuarios disponibles"
 
 #: views.py:73
-#, fuzzy
-#| msgid "Members of groups"
 msgid "Users in group"
-msgstr "Miembros de grupos"
+msgstr "Usuarios en grupo"
 
 #: views.py:94
-#, fuzzy, python-format
-#| msgid "Members of group: %s"
+#, python-format
 msgid "Users of group: %s"
-msgstr "Miembros del grupo: %s"
+msgstr "Usuarios del grupo: %s"
 
 #: views.py:128
 #, python-format
@@ -193,9 +187,7 @@ msgstr "Borrar usuario: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:178
 #, python-format
@@ -254,27 +246,14 @@ msgstr "Cambiar contraseñas para el usuario: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y del usuario de "
-"personal. Use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:307
-#, fuzzy, python-format
-#| msgid "Successfull password reset for user: %s."
+#, python-format
 msgid "Successful password reset for user: %s."
-msgstr "Contraseña restablecida para el usuario: %s."
+msgstr "Restablecimiento de contraseña exitoso para el usuario: %s."
 
 #: views.py:313
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
-
-#~ msgid "Members"
-#~ msgstr "Miembros"
-
-#~ msgid "New password"
-#~ msgstr "Nueva contraseña"
-
-#~ msgid "Confirm password"
-#~ msgstr "Confirmar contraseña"
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "

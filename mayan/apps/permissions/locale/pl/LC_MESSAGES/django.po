@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-08-03 06:00+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:32 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
@@ -35,19 +33,19 @@ msgstr "Role"
 
 #: links.py:19
 msgid "Grant"
-msgstr "Przyznać"
+msgstr "Przyznaj"
 
 #: links.py:23
 msgid "Revoke"
-msgstr "Odwołać"
+msgstr "Odwołaj"
 
 #: links.py:27
 msgid "Create new role"
-msgstr ""
+msgstr "Utwórz nową rolę"
 
 #: links.py:31
 msgid "Delete"
-msgstr "Usunąć"
+msgstr "Usuń"
 
 #: links.py:35
 msgid "Edit"
@@ -59,7 +57,7 @@ msgstr "Grupy"
 
 #: links.py:48
 msgid "Role permissions"
-msgstr ""
+msgstr "Uprawnienia roli"
 
 #: models.py:19
 msgid "Namespace"
@@ -83,31 +81,31 @@ msgstr "Rola"
 
 #: permissions.py:10
 msgid "View roles"
-msgstr ""
+msgstr "Podgląd ról"
 
 #: permissions.py:13
 msgid "Edit roles"
-msgstr ""
+msgstr "Edytuj role"
 
 #: permissions.py:16
 msgid "Create roles"
-msgstr ""
+msgstr "Utwórz role"
 
 #: permissions.py:19
 msgid "Delete roles"
-msgstr ""
+msgstr "Usuń role"
 
 #: permissions.py:22
 msgid "Grant permissions"
-msgstr "Grant uprawnienia"
+msgstr "Przyznaj uprawnienia"
 
 #: permissions.py:25
 msgid "Revoke permissions"
-msgstr ""
+msgstr "Odwołaj uprawnienia"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Nazwa grupy"
 
 #: serializers.py:46
 msgid ""
@@ -125,16 +123,12 @@ msgid "No such permission: %s"
 msgstr "Brak uprawnienia: %s"
 
 #: views.py:29
-#, fuzzy
-#| msgid "Available groups"
 msgid "Available roles"
-msgstr "Dostępne grupy"
+msgstr ""
 
 #: views.py:30
-#, fuzzy
-#| msgid "Groups"
 msgid "Group roles"
-msgstr "Grupy"
+msgstr ""
 
 #: views.py:40
 #, python-format
@@ -147,12 +141,12 @@ msgstr "Dostępne grupy"
 
 #: views.py:83
 msgid "Role groups"
-msgstr ""
+msgstr "Grupy roli"
 
 #: views.py:93
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Grupy dla roli: %s"
 
 #: views.py:116
 msgid "Available permissions"
@@ -165,7 +159,4 @@ msgstr "Przyznane uprawnienia"
 #: views.py:157
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
-
-#~ msgid "Members"
-#~ msgstr "Członkowie"
+msgstr "Uprawnienia dla roli: %s"

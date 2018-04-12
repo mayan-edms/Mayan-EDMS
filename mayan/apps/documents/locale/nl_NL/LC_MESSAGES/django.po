@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-15 06:31+0000\n"
+"PO-Revision-Date: 2018-04-11 19:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:110 apps.py:246 events.py:7 menus.py:8 models.py:200
@@ -192,8 +191,8 @@ msgstr "Comprimeren"
 
 #: forms.py:198
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -205,10 +204,7 @@ msgstr "Bestandsnaam gecomprimeerde archiefbestand"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten "
-"bevat die dienen te worden gedownload, als de voorgaande optie is "
-"geselecteerd."
+msgstr "De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten bevat die dienen te worden gedownload, als de voorgaande optie is geselecteerd."
 
 #: forms.py:223
 msgid "Preserve extension"
@@ -312,9 +308,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Opschonen van de grafische afbeeldingen, die gebuikt worden bij het "
-"versnellen van de documentweergave en interactive transformatie resultaten."
+msgstr "Opschonen van de grafische afbeeldingen, die gebuikt worden bij het versnellen van de documentweergave en interactive transformatie resultaten."
 
 #: links.py:190
 msgid "Clear document image cache"
@@ -402,7 +396,8 @@ msgstr "Alle bladzijden"
 
 #: models.py:73
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:75
@@ -646,11 +641,9 @@ msgstr ""
 
 #: settings.py:42
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te "
-"onthouden per gebruiker."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te onthouden per gebruiker."
 
 #: settings.py:57
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -660,15 +653,13 @@ msgstr "Percentage in- of uitzoomen voor documentpagina per gebruikeractie."
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
+msgstr "Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
 
 #: settings.py:71
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
+msgstr "Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
 
 #: settings.py:78
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -697,8 +688,8 @@ msgstr ""
 #: settings.py:115
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: statistics.py:14
@@ -774,13 +765,12 @@ msgid "Total document pages at each month"
 msgstr ""
 
 #: templates/documents/forms/widgets/document_page_carousel.html:16
-#, fuzzy, python-format
-#| msgid "Page %(page_number)d of %(total_pages)d"
+#, python-format
 msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr "Pagina %(page_number)d van %(total_pages)d"
+msgstr ""
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -834,8 +824,7 @@ msgstr ""
 
 #: views/document_type_views.py:142
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:167
@@ -1025,9 +1014,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Fout bij verwijderen van de pagina transformaties voor document: "
-"%(document)s ; %(error)s ."
+msgstr "Fout bij verwijderen van de pagina transformaties voor document: %(document)s ; %(error)s ."
 
 #: views/document_views.py:681
 msgid "Transformations cloned successfully."
@@ -1064,10 +1051,6 @@ msgid "Duplicated document scan queued successfully."
 msgstr ""
 
 #: widgets.py:80 widgets.py:84
-#, fuzzy, python-format
-#| msgid "Pages"
+#, python-format
 msgid "Pages: %d"
-msgstr "Pagina's"
-
-#~ msgid "Document pages (%d)"
-#~ msgstr "Documentpagina's (%d)"
+msgstr ""

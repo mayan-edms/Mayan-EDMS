@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-15 06:31+0000\n"
+"PO-Revision-Date: 2018-04-11 19:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:110 apps.py:246 events.py:7 menus.py:8 models.py:200
@@ -190,8 +189,8 @@ msgstr "Kompresi"
 
 #: forms.py:198
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -203,9 +202,7 @@ msgstr "Nama berkas terkompresi"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang "
-"akan diunduh, bila pilihan sebelumnya terpilih."
+msgstr "Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang akan diunduh, bila pilihan sebelumnya terpilih."
 
 #: forms.py:223
 msgid "Preserve extension"
@@ -309,9 +306,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat "
-"menampilkan dokumen dan hasil transformasi interaktif."
+msgstr "Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat menampilkan dokumen dan hasil transformasi interaktif."
 
 #: links.py:190
 msgid "Clear document image cache"
@@ -399,7 +394,8 @@ msgstr ""
 
 #: models.py:73
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:75
@@ -643,38 +639,29 @@ msgstr ""
 
 #: settings.py:42
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini "
-"per pengguna."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini per pengguna."
 
 #: settings.py:57
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman "
-"dokumen per interaksi pengguna."
+msgstr "Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman dokumen per interaksi pengguna."
 
 #: settings.py:64
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperbesar tampilan halaman dokumen secara interaktif"
+msgstr "Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperbesar tampilan halaman dokumen secara interaktif"
 
 #: settings.py:71
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperkecil tampilan halaman dokumen secara interaktif."
+msgstr "Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperkecil tampilan halaman dokumen secara interaktif."
 
 #: settings.py:78
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
+msgstr "Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
 
 #: settings.py:91
 msgid "Default documents language (in ISO639-2 format)."
@@ -699,8 +686,8 @@ msgstr ""
 #: settings.py:115
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: statistics.py:14
@@ -835,8 +822,7 @@ msgstr ""
 
 #: views/document_type_views.py:142
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:167
@@ -1023,9 +1009,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Masalah dalam menghapus transformasi-transformasi untuk halaman: "
-"%(document)s; %(error)s."
+msgstr "Masalah dalam menghapus transformasi-transformasi untuk halaman: %(document)s; %(error)s."
 
 #: views/document_views.py:681
 msgid "Transformations cloned successfully."
@@ -1062,7 +1046,6 @@ msgid "Duplicated document scan queued successfully."
 msgstr ""
 
 #: widgets.py:80 widgets.py:84
-#, fuzzy, python-format
-#| msgid "Pages"
+#, python-format
 msgid "Pages: %d"
-msgstr "Halaman-halaman"
+msgstr ""

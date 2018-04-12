@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:81 permissions_runtime.py:7 settings.py:11
 msgid "Common"
-msgstr ""
+msgstr "مشترک"
 
 #: apps.py:86
 msgid "Anonymous"
@@ -29,11 +29,11 @@ msgstr "ناشناس"
 
 #: classes.py:181
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "ویژگی های موجود:\n"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "اصلی"
 
 #: forms.py:25
 msgid "Selection"
@@ -42,7 +42,7 @@ msgstr "انتخاب"
 #: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "انتخاب انتقال امکان پذیر نیست: %s."
 
 #: generics.py:160
 msgid "Add"
@@ -55,40 +55,40 @@ msgstr "حذف"
 #: generics.py:353
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s ایجاد نشد، خطا: %(error)s"
 
 #: generics.py:364
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s با موفقیت ایجاد شد"
 
 #: generics.py:393
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s حذف نشده است، خطا: %(error)s."
 
 #: generics.py:404
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s با موفقیت حذف شد"
 
 #: generics.py:450
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s به روز نشده، خطا: %(error)s."
 
 #: generics.py:461
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s با موفقیت به روز شد"
 
 #: links.py:33
 msgid "About this"
-msgstr ""
+msgstr "در مورد این"
 
 #: links.py:36 views.py:56
 msgid "Check for updates"
-msgstr ""
+msgstr "بررسی برای به روز رسانی"
 
 #: links.py:40
 msgid "User details"
@@ -108,15 +108,15 @@ msgstr "ویرایش پروفایل محلی"
 
 #: links.py:55
 msgid "Source code"
-msgstr ""
+msgstr "کد منبع"
 
 #: links.py:59
 msgid "Documentation"
-msgstr ""
+msgstr "مستندات"
 
 #: links.py:64 links.py:74
 msgid "Errors"
-msgstr ""
+msgstr "خطاها"
 
 #: links.py:69
 msgid "Clear all"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: links.py:78
 msgid "Forum"
-msgstr ""
+msgstr "انجمن"
 
 #: links.py:82 views.py:156
 msgid "License"
@@ -132,7 +132,7 @@ msgstr "لیسانس"
 
 #: links.py:85 views.py:231
 msgid "Other packages licenses"
-msgstr ""
+msgstr "مجوزهای دیگر بسته"
 
 #: links.py:89
 msgid "Setup"
@@ -140,7 +140,7 @@ msgstr "نصب"
 
 #: links.py:92
 msgid "Support"
-msgstr ""
+msgstr "حمایت کردن"
 
 #: links.py:96 queues.py:10 views.py:266
 msgid "Tools"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: menus.py:12
 msgid "System"
-msgstr ""
+msgstr "سیستم"
 
 #: menus.py:22 models.py:81
 msgid "User"
@@ -179,12 +179,12 @@ msgstr "کاربر"
 #: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr ""
+msgstr "عملیات انجام شده بر روی %(count)d object"
 
 #: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgstr "عملیات انجام شده بر روی %(count)d اشیاء"
 
 #: mixins.py:254
 msgid "Object"
@@ -204,11 +204,11 @@ msgstr "جواب"
 
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "ورود به سیستم خطا"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "ورودی خطا ورودی"
 
 #: models.py:51
 msgid "File"
@@ -244,7 +244,7 @@ msgstr "پروفایل محلی کاربر"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "مشاهده ورود به سیستم خطا"
 
 #: queues.py:8
 msgid "Default"
@@ -252,30 +252,31 @@ msgstr "پیش فرض"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "دوره ای متداول"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "حذف آپلود های قدیمی"
 
 #: settings.py:15
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "به طور خودکار ورود به سیستم را به تمام برنامه ها فعال کنید"
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار است."
 
 #: settings.py:28
 msgid ""
-"Filename of the local settings file (just the filename, extension will be ."
-"py)."
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
 msgstr ""
 
 #: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "یک عدد صحیح که مشخص می کند چگونه تعداد اشیا در هر صفحه نمایش داده شود."
 
 #: settings.py:42
 msgid "A storage backend that all workers can use to share files."
@@ -285,26 +286,26 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "دایرکتوری موقت از سایت گسترده برای ذخیره ریز عکسها، پیش نمایش ها و فایل های موقت استفاده می کند."
 
 #: settings.py:59
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "مسیر فایل logfile که خطاهای تولید را دنبال می کند."
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "یک نام داخلی معتبر وارد کنید که شامل حروف، اعداد و حروف زیر است."
 
 #: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "نسخه ای که استفاده می کنید قدیمی است. آخرین نسخه %s"
 
 #: views.py:53
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "نسخه شما به روز است."
 
 #: views.py:70
 msgid "Current user details"
@@ -338,7 +339,7 @@ msgstr "تاریخ و زمان"
 #: views.py:205
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "ورودی های ورود به سیستم خطا برای: %s"
 
 #: views.py:249
 msgid "Setup items"
@@ -351,6 +352,3 @@ msgstr "هیچ عملیاتی action انتخاب نشده است."
 #: views.py:300
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
-
-#~ msgid "None"
-#~ msgstr "هیچکدام."

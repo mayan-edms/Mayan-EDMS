@@ -1,27 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2018-01-22 19:19+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:12
 msgid "Converter"
@@ -47,7 +44,7 @@ msgstr "Wyjątek określający liczbę stron PDF: %s"
 #: backends/python.py:196
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Wyjątek określający liczbę stron przy użyciu Pillow; %s"
 
 #: classes.py:98
 msgid "Not an office file format."
@@ -55,7 +52,7 @@ msgstr "Format niezgodny z formatem plików LibreOffice."
 
 #: classes.py:119
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice nie zainstalowano lub nie został zainstalowany."
 
 #: links.py:35
 msgid "Create new transformation"
@@ -77,9 +74,7 @@ msgstr "Przekształcenia"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie "
-"wartość automatyczną."
+msgstr "Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie wartość automatyczną."
 
 #: models.py:43
 msgid "Name"
@@ -89,9 +84,7 @@ msgstr "Nazwa"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: "
-"{\"degrees\": 180}"
+msgstr "Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -115,7 +108,7 @@ msgstr "Backend używany do konwersji grafiki."
 
 #: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Opcje konfiguracji dla silnika konwersji grafiki."
 
 #: transformations.py:85
 msgid "Crop"
@@ -131,7 +124,7 @@ msgstr "Rozmycie Gaussa"
 
 #: transformations.py:119
 msgid "Line art"
-msgstr ""
+msgstr "Rysunek kreskowy"
 
 #: transformations.py:130
 msgid "Mirror"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:57-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
@@ -206,8 +205,7 @@ msgstr "Label \"%s\" verwijderd."
 #: views.py:159
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
 #: views.py:174
 #, python-format
@@ -265,10 +263,8 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Label: \"%(tag)s\" is verwijderd van document \"%(document)s\"."
 
 #: wizard_steps.py:16
-#, fuzzy
-#| msgid "Delete tags"
 msgid "Select tags"
-msgstr "Verwijder labels"
+msgstr ""
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"

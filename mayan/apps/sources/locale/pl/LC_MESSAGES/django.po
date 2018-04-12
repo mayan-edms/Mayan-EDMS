@@ -1,35 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012-2013
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016,2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-07-19 08:34+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:40 links.py:52 models.py:63 queues.py:8 settings.py:7 views.py:563
 msgid "Sources"
-msgstr ""
+msgstr "Źródła"
 
 #: apps.py:55
 msgid "Create a document source"
-msgstr ""
+msgstr "Utwórz źródło dokumentu"
 
 #: apps.py:57
 msgid ""
@@ -60,7 +57,7 @@ msgstr "Komentarz"
 
 #: forms.py:45
 msgid "Expand compressed files"
-msgstr ""
+msgstr "Rozpakuj skompresowane pliki"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
@@ -116,7 +113,7 @@ msgstr "Edytuj"
 
 #: links.py:94
 msgid "Document sources"
-msgstr ""
+msgstr "Źródła dokumentu"
 
 #: links.py:106
 msgid "Upload new version"
@@ -124,15 +121,15 @@ msgstr "Prześlij nową wersję"
 
 #: links.py:109
 msgid "Logs"
-msgstr ""
+msgstr "Logi"
 
 #: links.py:113
 msgid "Check now"
-msgstr ""
+msgstr "Sprawdź teraz"
 
 #: literals.py:9
 msgid "Flatbed"
-msgstr ""
+msgstr "Platforma"
 
 #: literals.py:10
 msgid "Document feeder"
@@ -140,19 +137,19 @@ msgstr ""
 
 #: literals.py:17
 msgid "Simplex"
-msgstr ""
+msgstr "Sympleks"
 
 #: literals.py:18
 msgid "Duplex"
-msgstr ""
+msgstr "Dupleks"
 
 #: literals.py:26
 msgid "Lineart"
-msgstr ""
+msgstr "Rysunek kreskowy"
 
 #: literals.py:27
 msgid "Monochrome"
-msgstr ""
+msgstr "Monochromia"
 
 #: literals.py:28
 msgid "Color"
@@ -172,7 +169,7 @@ msgstr "Pytaj użytkownika"
 
 #: literals.py:54
 msgid "Scanner"
-msgstr ""
+msgstr "Skaner"
 
 #: literals.py:55 models.py:383
 msgid "Web form"
@@ -204,11 +201,11 @@ msgstr "Włączone"
 
 #: models.py:62 models.py:757
 msgid "Source"
-msgstr ""
+msgstr "Źródło"
 
 #: models.py:164
 msgid "Interactive source"
-msgstr ""
+msgstr "Interaktywne źródło"
 
 #: models.py:165
 msgid "Interactive sources"
@@ -220,7 +217,7 @@ msgstr ""
 
 #: models.py:176
 msgid "Device name"
-msgstr ""
+msgstr "Nazwa urządzenia"
 
 #: models.py:181
 msgid ""
@@ -230,7 +227,7 @@ msgstr ""
 
 #: models.py:183
 msgid "Mode"
-msgstr ""
+msgstr "Tryb"
 
 #: models.py:187
 msgid ""
@@ -241,7 +238,7 @@ msgstr ""
 
 #: models.py:190
 msgid "Resolution"
-msgstr ""
+msgstr "Rozdzielczość"
 
 #: models.py:195
 msgid ""
@@ -251,7 +248,7 @@ msgstr ""
 
 #: models.py:198
 msgid "Paper source"
-msgstr ""
+msgstr "Źródło papieru"
 
 #: models.py:203
 msgid ""
@@ -261,7 +258,7 @@ msgstr ""
 
 #: models.py:205
 msgid "ADF mode"
-msgstr ""
+msgstr "Tryb ADF"
 
 #: models.py:211
 msgid "SANE Scanner"
@@ -274,7 +271,7 @@ msgstr ""
 #: models.py:259
 #, python-format
 msgid "Error while scanning; %s"
-msgstr ""
+msgstr "Błąd podczas skanowania; %s"
 
 #: models.py:291 models.py:729
 msgid "Server side filesystem path."
@@ -368,11 +365,11 @@ msgstr ""
 
 #: models.py:482
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: models.py:483
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models.py:485
 msgid ""
@@ -382,11 +379,11 @@ msgstr ""
 
 #: models.py:486
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: models.py:488
 msgid "Username"
-msgstr ""
+msgstr "Nazwa użytkownika"
 
 #: models.py:489
 msgid "Password"
@@ -475,7 +472,7 @@ msgstr ""
 
 #: models.py:769
 msgid "Log entry"
-msgstr ""
+msgstr "Wpis do dziennika"
 
 #: models.py:770
 msgid "Log entries"
@@ -537,8 +534,8 @@ msgstr ""
 
 #: views.py:107 wizards.py:134
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:133 views.py:151 views.py:161
@@ -568,7 +565,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:399
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:438
@@ -605,10 +603,8 @@ msgid "Type"
 msgstr "Typ"
 
 #: wizards.py:86
-#, fuzzy
-#| msgid "Step 1 of 3: Select document type"
 msgid "Select document type"
-msgstr "Krok 1 z 3: Wybierz typ dokumentu"
+msgstr ""
 
 #: wizards.py:153
 #, python-format
@@ -622,12 +618,3 @@ msgstr "Następny krok"
 #: wizards.py:160
 msgid "Document upload wizard"
 msgstr "Kreator przesyłania dokumentu"
-
-#~ msgid "Step 2 of 3: Enter document metadata"
-#~ msgstr "Krok 2 z 3: Wprowadź metadane dokumentu"
-
-#~ msgid "Step 3 of 3: Select tags"
-#~ msgstr "Krok 3 z 3: Wybierz tagi"
-
-#~ msgid "Tags to be attached."
-#~ msgstr "Tagi do załączenia."

@@ -1,41 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2015
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2015,2018
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:57 queues.py:8
 msgid "Document states"
-msgstr "وضعیت‌های سند"
+msgstr "سند"
 
 #: apps.py:94 apps.py:101
 msgid "Current state of a workflow"
-msgstr ""
+msgstr "وضعیت فعلی جریان کاری"
 
 #: apps.py:95
 msgid "Return the current state of the selected workflow"
-msgstr ""
+msgstr "وضعیت فعلی جریان کاری انتخاب شده را بازگردانید"
 
 #: apps.py:102
 msgid ""
 "Return the completion value of the current state of the selected workflow"
-msgstr ""
+msgstr "مقدار تکمیل وضعیت کنونی جریان کاری انتخاب شده را بازگردانید"
 
 #: apps.py:145 apps.py:208 forms.py:117 models.py:47 models.py:148
 #: models.py:217 models.py:279
@@ -48,11 +47,11 @@ msgstr "نام داخلی"
 
 #: apps.py:152
 msgid "Initial state"
-msgstr "وضعیت اولیه"
+msgstr "حالت اولیه"
 
 #: apps.py:153 apps.py:163 apps.py:173 apps.py:179
 msgid "None"
-msgstr "هیچ"
+msgstr "هیچ یک"
 
 #: apps.py:157
 msgid "Current state"
@@ -64,7 +63,7 @@ msgstr "کاربر"
 
 #: apps.py:167
 msgid "Last transition"
-msgstr "آخرین تغییر وضعیت"
+msgstr "آخرین گذار"
 
 #: apps.py:171 apps.py:184
 msgid "Date and time"
@@ -72,76 +71,76 @@ msgstr "تاریخ و زمان"
 
 #: apps.py:177 apps.py:204 models.py:160
 msgid "Completion"
-msgstr ""
+msgstr "تکمیل"
 
 #: apps.py:191 forms.py:173 links.py:111 models.py:305 models.py:436
 msgid "Transition"
-msgstr "تغییر وضعیت"
+msgstr "گذار"
 
 #: apps.py:195 forms.py:176 models.py:442
 msgid "Comment"
-msgstr "شرح"
+msgstr "اظهار نظر"
 
 #: apps.py:200
 msgid "Is initial state?"
-msgstr "آیا در وضعیت اولیه است؟"
+msgstr "آیا در حالت اولیه است؟"
 
 #: apps.py:211
 msgid "Enabled?"
-msgstr ""
+msgstr "فعال شده است؟"
 
 #: apps.py:215
 msgid "When?"
-msgstr ""
+msgstr "چه زمانی؟"
 
 #: apps.py:219
 msgid "Action type"
-msgstr ""
+msgstr "نوع اقدام"
 
 #: apps.py:224 models.py:282
 msgid "Origin state"
-msgstr "وضعیت شروع"
+msgstr "کشور مبدا"
 
 #: apps.py:228 models.py:286
 msgid "Destination state"
-msgstr "وضعیت نهایی"
+msgstr "حالت مقصد"
 
 #: apps.py:232
 msgid "Triggers"
-msgstr ""
+msgstr "راه اندازی"
 
 #: error_logs.py:8 models.py:238
 msgid "Workflow state actions"
-msgstr ""
+msgstr "اقدامات دولت کار جریان"
 
 #: forms.py:22
 msgid "Action"
-msgstr ""
+msgstr "عمل"
 
 #: forms.py:121 models.py:218
 msgid "Enabled"
-msgstr "فعال شده"
+msgstr "فعال شده است"
 
 #: forms.py:123
 msgid "No"
-msgstr "خیر"
+msgstr "نه"
 
 #: forms.py:124
 msgid "Yes"
-msgstr "بلی"
+msgstr "بله"
 
 #: handlers.py:45
 #, python-format
 msgid "Event trigger: %s"
-msgstr ""
+msgstr "Event trigger: %s"
 
 #: links.py:15 links.py:39 links.py:121 models.py:60 views.py:142 views.py:609
 msgid "Workflows"
-msgstr "گردشکار"
+msgstr "گردش کار"
 
 #: links.py:20
 msgid "Create workflow"
-msgstr ""
+msgstr "ایجاد گردش کار"
 
 #: links.py:25 links.py:43 links.py:67 links.py:87
 msgid "Delete"
@@ -149,7 +148,7 @@ msgstr "حذف"
 
 #: links.py:29 models.py:51
 msgid "Document types"
-msgstr "انواع سند"
+msgstr "نوع سند"
 
 #: links.py:34 links.py:48 links.py:71 links.py:91
 msgid "Edit"
@@ -157,35 +156,35 @@ msgstr "ویرایش"
 
 #: links.py:52
 msgid "Actions"
-msgstr "عملیات"
+msgstr "اقدامات"
 
 #: links.py:57
 msgid "Create action"
-msgstr ""
+msgstr "اقدام را ایجاد کنید"
 
 #: links.py:61
 msgid "Create state"
-msgstr "وضغیت ایجاد"
+msgstr "ایجاد وضعیت یا حالت"
 
 #: links.py:76 links.py:131
 msgid "States"
-msgstr "وضعیت ها"
+msgstr "و یا وضعیتها حالات  States"
 
 #: links.py:81
 msgid "Create transition"
-msgstr "تغییر وضعیت به ایجاد"
+msgstr "ایجاد گذار"
 
 #: links.py:96
 msgid "Transitions"
-msgstr "تغییر وضعیت ها"
+msgstr "گذار"
 
 #: links.py:103 queues.py:12
 msgid "Launch all workflows"
-msgstr "اجرای همه‌ی گردش کارها"
+msgstr "راه اندازی تمام جریانهای کاری"
 
 #: links.py:107
 msgid "Detail"
-msgstr "شرح"
+msgstr "جزئیات"
 
 #: links.py:116
 msgid "Workflow documents"
@@ -193,41 +192,39 @@ msgstr "اسناد گردش کار"
 
 #: links.py:125
 msgid "State documents"
-msgstr "اسناد وضعیت"
+msgstr "اسناد دولتی"
 
 #: links.py:136
 msgid "Transition triggers"
-msgstr ""
+msgstr "باعث انتقال می شود"
 
 #: links.py:141
 msgid "Preview"
-msgstr "پیش دید ویا دیدن"
+msgstr "پیش نمایش"
 
 #: literals.py:9
 msgid "On entry"
-msgstr ""
+msgstr "در ورودی"
 
 #: literals.py:10
 msgid "On exit"
-msgstr ""
+msgstr "در خروج"
 
 #: models.py:41
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
+msgstr "این مقدار توسط برنامه های دیگر برای ارجاع به این گردش کار استفاده می شود. فقط شامل حروف، اعداد و حروف الفبا است."
 
 #: models.py:59 models.py:146 models.py:277 models.py:324
 msgid "Workflow"
-msgstr "گردشکار"
+msgstr "گردش کار"
 
 #: models.py:152
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"در صورتیکه این وضعیت شروع گردشکار باشد این وضعیت را انتخاب کنید. وضعیت فقط "
-"میتواند وضعیت اولیه باشد."
+msgstr "انتخاب کنید اگر این حالت شما خواهد بود که می خواهید جریان کار شروع شود. تنها یک حالت می تواند وضعیت اولیه باشد."
 
 #: models.py:154
 msgid "Initial"
@@ -237,49 +234,47 @@ msgstr "اولیه"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"درصد پیشرفت کار برای این وضعیت نسبت به تکمیل گردش کار را وارد کنید. از عدد "
-"بدون علامت درصد استفاده کنید."
+msgstr "درصد تکمیل را که این وضعیت در رابطه با جریان کاری نشان می دهد وارد کنید. استفاده از اعداد بدون نشانه درصد."
 
 #: models.py:166 models.py:215
 msgid "Workflow state"
-msgstr "وضعیت گردشکار"
+msgstr "حالت گردش کار"
 
 #: models.py:167
 msgid "Workflow states"
-msgstr "وضعیتهای گردشکار"
+msgstr "وضعیت کار"
 
 #: models.py:222
 msgid "At which moment of the state this action will execute"
-msgstr ""
+msgstr "در این لحظه دولت این عمل را اجرا خواهد کرد"
 
 #: models.py:223
 msgid "When"
-msgstr ""
+msgstr "چه زمانی"
 
 #: models.py:227
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
+msgstr "مسیر پایتون نقطه به کلاس عملیات گردش کار برای اجرای."
 
 #: models.py:228
 msgid "Entry action path"
-msgstr ""
+msgstr "Entry action path"
 
 #: models.py:231
 msgid "Entry action data"
-msgstr ""
+msgstr "Entry action data"
 
 #: models.py:237
 msgid "Workflow state action"
-msgstr ""
+msgstr "Workflow state action"
 
 #: models.py:294
 msgid "Workflow transition"
-msgstr "تغییر وضعیت گردشکار"
+msgstr "گذار گردش کار"
 
 #: models.py:295
 msgid "Workflow transitions"
-msgstr "تغییر وضعیت های گردشکار"
+msgstr "گذارهای کاری"
 
 #: models.py:309
 msgid "Event type"
@@ -287,11 +282,11 @@ msgstr "نوع رویداد"
 
 #: models.py:313
 msgid "Workflow transition trigger event"
-msgstr ""
+msgstr "رویداد رویداد انتقال جریان کاری"
 
 #: models.py:314
 msgid "Workflow transitions trigger events"
-msgstr ""
+msgstr "انتقال گردش کار باعث وقایع می شود"
 
 #: models.py:328
 msgid "Document"
@@ -299,124 +294,124 @@ msgstr "سند"
 
 #: models.py:334 models.py:429
 msgid "Workflow instance"
-msgstr "موردی از گردشکار"
+msgstr "نمونه گردش کار"
 
 #: models.py:335
 msgid "Workflow instances"
-msgstr "موردهای گردشکار"
+msgstr "نمونه کارها"
 
 #: models.py:432
 msgid "Datetime"
-msgstr "تاریخ زمان"
+msgstr "زمان قرار"
 
 #: models.py:446
 msgid "Workflow instance log entry"
-msgstr "ورودیه لاگ برای مورد گردشکار"
+msgstr "ورودی به لاگ یک مورد از گردش کار"
 
 #: models.py:447
 msgid "Workflow instance log entries"
-msgstr "ورودیهای مورد گردشکار"
+msgstr "ورودیهای لگ یک مورد از گردش کار"
 
 #: models.py:454
 msgid "Not a valid transition choice."
-msgstr ""
+msgstr "یک انتخاب منتخب معتبر نیست"
 
 #: models.py:471
 msgid "Workflow runtime proxy"
-msgstr ""
+msgstr "پروکسی زمانبندی گردش کار"
 
 #: models.py:472
 msgid "Workflow runtime proxies"
-msgstr ""
+msgstr "پروکسی کارآمد در زمان اجرا"
 
 #: models.py:478
 msgid "Workflow state runtime proxy"
-msgstr ""
+msgstr "پروکسی زمان اجرا وضعیت "
 
 #: models.py:479
 msgid "Workflow state runtime proxies"
-msgstr ""
+msgstr "پروکسی زمان اجرا وضعیت "
 
 #: permissions.py:7
 msgid "Document workflows"
-msgstr ""
+msgstr "گردش کار سند"
 
 #: permissions.py:10
 msgid "Create workflows"
-msgstr "ایجاد گردشکار"
+msgstr "ایجاد گردش کار"
 
 #: permissions.py:13
 msgid "Delete workflows"
-msgstr "حذف گردشکار"
+msgstr "حذف جریان کار"
 
 #: permissions.py:16
 msgid "Edit workflows"
-msgstr "ویرایش گردشکار"
+msgstr "ویرایش جریان کار"
 
 #: permissions.py:19
 msgid "View workflows"
-msgstr "مشاهده گردشکار"
+msgstr "مشاهده جریان کار"
 
 #: permissions.py:25
 msgid "Transition workflows"
-msgstr ""
+msgstr "جریان کار انتقال"
 
 #: permissions.py:28
 msgid "Execute workflow tools"
-msgstr ""
+msgstr "ابزار گردش کار را اجرا کنید"
 
 #: serializers.py:22
 msgid "Primary key of the document type to be added."
-msgstr ""
+msgstr "کلید اولیه نوع سند اضافه می شود"
 
 #: serializers.py:37
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
+msgstr "URL API اشاره به نوع سند مربوط به جریان کاری که به آن متصل است. این URL متفاوت از URL سند نوع سند است."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
-msgstr ""
+msgstr "کلید اصلی کشور مقصد اضافه می شود"
 
 #: serializers.py:120
 msgid "Primary key of the origin state to be added."
-msgstr ""
+msgstr "کلید اولیه حالت مبدأ اضافه می شود"
 
 #: serializers.py:218
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL API اشاره به یک گردش کار در رابطه با سند که آن متصل است. این URL متفاوت از URL کارآفرینی کانونی است."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
-msgstr ""
+msgstr "لینک به کل تاریخچه این گردش کار"
 
 #: serializers.py:259
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
+msgstr "لیست کاملی از نوع سند کپی اولیه که این جریان کار متصل است، جدا شده است."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
-msgstr ""
+msgstr "کلید اصلی انتقال برای اضافه کردن"
 
 #: views.py:61
 #, python-format
 msgid "Workflows for document: %s"
-msgstr "گردشکارهای سند : %s"
+msgstr "گردش کار برای سند: %s"
 
 #: views.py:85
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
-msgstr "شرح گردشکار : %(workflow)s"
+msgstr "جزئیات گردش کار: %(workflow)s"
 
 #: views.py:109
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
-msgstr ""
+msgstr "سند \"%s\" با موفقیت انتقال یافت"
 
 #: views.py:118
 msgid "Submit"
@@ -425,15 +420,15 @@ msgstr "ارسال"
 #: views.py:120
 #, python-format
 msgid "Do transition for workflow: %s"
-msgstr "انجام تغییر وضعیت گردشکار : %s"
+msgstr "انتقال برای جریان کاری: %s"
 
 #: views.py:171
 msgid "Available document types"
-msgstr ""
+msgstr "نوع سند موجود"
 
 #: views.py:173
 msgid "Document types assigned this workflow"
-msgstr ""
+msgstr "انواع سند این جریان کاری را تعیین می کنند"
 
 #: views.py:183
 msgid ""
@@ -444,141 +439,141 @@ msgstr ""
 #: views.py:194
 #, python-format
 msgid "Document types assigned the workflow: %s"
-msgstr "نوع سند مرتبط با گردش کاری:  %s"
+msgstr "انواع سند گردش کار را تعیین می کند: %s"
 
 #: views.py:240
 #, python-format
 msgid "Create a \"%s\" workflow action"
-msgstr ""
+msgstr "یک اقدام عملیاتی \"%s\" ایجاد کنید"
 
 #: views.py:280
 #, python-format
 msgid "Delete workflow state action: %s"
-msgstr ""
+msgstr "عمل عملکرد دولت را حذف کنید: %s"
 
 #: views.py:303
 #, python-format
 msgid "Edit workflow state action: %s"
-msgstr ""
+msgstr "ویرایش عمل جریان کار: %s"
 
 #: views.py:329
 #, python-format
 msgid "Actions for workflow state: %s"
-msgstr ""
+msgstr "اقدامات مربوط به وضعیت گردش کار: %s"
 
 #: views.py:363
 msgid "New workflow state action selection"
-msgstr ""
+msgstr "انتخاب عملکرد عمل جدید دولت"
 
 #: views.py:381
 #, python-format
 msgid "Create states for workflow: %s"
-msgstr "وضعیت ایجاد برای گردشکار : %s"
+msgstr "ایجاد حالت برای گردش کار: %s"
 
 #: views.py:473 views.py:697
 #, python-format
 msgid "States of workflow: %s"
-msgstr "وضعیتهای گردشکار : %s"
+msgstr "ایالت گردش کار: %s"
 
 #: views.py:496
 msgid "Unable to save transition; integrity error."
-msgstr "قادر به ذخیره انتقال نیست:خطای تجمع"
+msgstr "ذخیره گذار ذخیره نشد خطای یکپارچگی"
 
 #: views.py:508
 #, python-format
 msgid "Create transitions for workflow: %s"
-msgstr "ایجاد تغییر وضعیت برای گردشکار : %s"
+msgstr "ایجاد گذار برای گردش کار: %s"
 
 #: views.py:589
 #, python-format
 msgid "Transitions of workflow: %s"
-msgstr "تغییر وضعیتهای گردشکار : %s"
+msgstr "انتقال گردش کار: %s"
 
 #: views.py:639
 #, python-format
 msgid "Documents with the workflow: %s"
-msgstr ""
+msgstr "اسناد با جریان کاری: %s"
 
 #: views.py:660
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr ""
+msgstr "اسناد در جریان کار \"%s\"، حالت \"%s\""
 
 #: views.py:732
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr ""
+msgstr "خطا در به روز رسانی وقایع رویداد انتقال جریان کاری؛ %s"
 
 #: views.py:738
 msgid "Workflow transition trigger events updated successfully"
-msgstr ""
+msgstr "رویدادهای رویداد انتقال جریان کار با موفقیت به روز شد"
 
 #: views.py:755
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr ""
+msgstr "حوادث ماژول انتقال گردش کار برای: %s"
 
 #: views.py:786
 msgid "Launch all workflows?"
-msgstr ""
+msgstr "همه جریانهای کاری را راه اندازی کنید؟"
 
 #: views.py:793
 msgid "Workflow launch queued successfully."
-msgstr ""
+msgstr "راه اندازی کار در صف با موفقیت."
 
 #: views.py:818
 #, python-format
 msgid "Preview of: %s"
-msgstr ""
+msgstr "پیش نمایش از: %s"
 
 #: workflow_actions.py:22
 msgid "URL"
-msgstr ""
+msgstr "نشانی اینترنتی"
 
 #: workflow_actions.py:25
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "می تواند یک آدرس IP، یک دامنه یا یک الگو باشد. قالب ها ورودی ورودی ورود به سیستم را به عنوان بخشی از متن خود از طریق متغیر \"entry_log\" دریافت می کنند. \"entry_log\" به نوبه خود ویژگی های \"workflow_instance\"، \"datetime\"، \"transition\"، \"user\" و \"comment\" را فراهم می کند."
 
 #: workflow_actions.py:35
 msgid "Timeout"
-msgstr "اتمام وقت"
+msgstr "وقفه"
 
 #: workflow_actions.py:37
 msgid "Time in seconds to wait for a response."
-msgstr ""
+msgstr "زمان در ثانیه برای منتظر پاسخ."
 
 #: workflow_actions.py:41
 msgid "Payload"
-msgstr ""
+msgstr "ظرفیت ترابری"
 
 #: workflow_actions.py:44
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "یک سند JSON برای درخواست در همچنین می تواند یک الگو باشد که یک سند JSON را بازگرداند. قالب ها ورودی ورودی ورود به سیستم را به عنوان بخشی از متن خود از طریق متغیر \"entry_log\" دریافت می کنند. \"entry_log\" به نوبه خود ویژگی های \"workflow_instance\"، \"datetime\"، \"transition\"، \"user\" و \"comment\" را فراهم می کند."
 
 #: workflow_actions.py:57
 msgid "Perform a POST request"
-msgstr ""
+msgstr "یک درخواست POST انجام دهید"
 
 #: workflow_actions.py:76
 #, python-format
 msgid "URL template error: %s"
-msgstr ""
+msgstr "خطای URL الگوی: %s"
 
 #: workflow_actions.py:87
 #, python-format
 msgid "Payload template error: %s"
-msgstr ""
+msgstr "خطای قالب بارگیری: %s"
 
 #: workflow_actions.py:96
 #, python-format
 msgid "Payload JSON error: %s"
-msgstr ""
+msgstr "خطای JSON Payload: %s"

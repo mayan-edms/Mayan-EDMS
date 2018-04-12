@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,12 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Dezső József <dejo60@gmail.com>, 2017\n"
-"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
-"hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:68 events.py:8 permissions.py:7 settings.py:7
@@ -69,10 +68,8 @@ msgid "Submit for parsing"
 msgstr "értelmezésre küld"
 
 #: links.py:37
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Setup parsing"
-msgstr "dokumentum értelmezés"
+msgstr ""
 
 #: links.py:40
 msgid "Parse documents per type"
@@ -91,26 +88,20 @@ msgid "Document pages contents"
 msgstr "Dokumentum oldalak tartalma"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Document page"
 msgid "Document type"
-msgstr "Dokumentum oldal"
+msgstr "Dokumentum típus"
 
 #: models.py:37
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 
 #: models.py:41
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document type settings"
-msgstr "dokumentum értelmezés"
+msgstr "Dokumentum típus beállítások"
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document types settings"
-msgstr "dokumentum értelmezés"
+msgstr "Dokumentum típusok beállítása"
 
 #: models.py:49
 msgid "Document version"
@@ -143,10 +134,8 @@ msgid "View the content of a document"
 msgstr "dokumentum tartalmának megtekintése"
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Change document type parsing settings"
-msgstr "dokumentum verzió értelmezve"
+msgstr ""
 
 #: permissions.py:17
 msgid "Parse the content of a document"
@@ -166,7 +155,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "elérési útvonal a poppler féle pdftotext programhoz ami PDF-ből szöveget "
 "nyer ki"
@@ -204,10 +194,9 @@ msgid "Submit document \"%s\" to the parsing queue"
 msgstr "\"%s\" dokumentum feladása az értelmezési sorba"
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Edit parsing settings for document type: %s"
-msgstr "dokumentum értelmezési hibái: %s"
+msgstr ""
 
 #: views.py:136
 msgid "Submit all documents of a type for parsing"
@@ -216,6 +205,7 @@ msgstr "minden típusú dokumentum beküldése értelmezésre"
 #: views.py:155
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing "
+"queue."
 msgstr ""
 "%(count)d dokumentum a \"%(document_type)s\" típusból beküldve értelmezésre"

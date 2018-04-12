@@ -1,9 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -14,17 +15,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:81 permissions_runtime.py:7 settings.py:11
 msgid "Common"
@@ -40,7 +38,7 @@ msgstr "Dostępne atrybuty: \n"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "Główny"
 
 #: forms.py:25
 msgid "Selection"
@@ -123,7 +121,7 @@ msgstr "Dokumentacja"
 
 #: links.py:64 links.py:74
 msgid "Errors"
-msgstr ""
+msgstr "Błędy"
 
 #: links.py:69
 msgid "Clear all"
@@ -211,11 +209,11 @@ msgstr "Wynik"
 
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "Wpis dziennika błędów"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "Wpisy dziennika błędów"
 
 #: models.py:51
 msgid "File"
@@ -251,7 +249,7 @@ msgstr "Profile regionalne użytkownika"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Wyświetl dziennik błędów"
 
 #: queues.py:8
 msgid "Default"
@@ -271,13 +269,14 @@ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
 
 #: settings.py:21
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
 #: settings.py:28
 msgid ""
-"Filename of the local settings file (just the filename, extension will be ."
-"py)."
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
 msgstr ""
 
 #: settings.py:36
@@ -286,17 +285,13 @@ msgstr "Liczba określająca ile obiektów będzie wyświetlane na stronie."
 
 #: settings.py:42
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
-"plików."
+msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
 
 #: settings.py:51
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików "
-"poglądowych i plików tymczasowych."
+msgstr "Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików poglądowych i plików tymczasowych."
 
 #: settings.py:59
 msgid "Path to the logfile that will track errors during production."
@@ -306,8 +301,7 @@ msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjny
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
+msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
 #: views.py:49
 #, python-format
@@ -340,10 +334,8 @@ msgid "Clear error log entries for: %s"
 msgstr ""
 
 #: views.py:182
-#, fuzzy
-#| msgid "%(object)s created successfully."
 msgid "Object error log cleared successfully"
-msgstr "%(object)s utworzono pomyślnie."
+msgstr ""
 
 #: views.py:200
 msgid "Date and time"
@@ -352,7 +344,7 @@ msgstr "Data i godzina"
 #: views.py:205
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Wpisy dziennika błędów dla: %s"
 
 #: views.py:249
 msgid "Setup items"
@@ -365,21 +357,3 @@ msgstr "Nie wybrano żadnego działania"
 #: views.py:300
 msgid "Must select at least one item."
 msgstr "Musisz wybrać co najmniej jeden element."
-
-#~ msgid "Filter"
-#~ msgstr "Filtr"
-
-#~ msgid "Data filters"
-#~ msgstr "Filtry danych"
-
-#~ msgid "Filter selection"
-#~ msgstr "Wybór filtru"
-
-#~ msgid "Results for filter: %s"
-#~ msgstr "Wyniki dla filtru: %s"
-
-#~ msgid "Filter not found"
-#~ msgstr "Nie znaleziono filtru"
-
-#~ msgid "None"
-#~ msgstr "Brak"

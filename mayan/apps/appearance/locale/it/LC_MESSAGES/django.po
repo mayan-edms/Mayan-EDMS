@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2018
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:54-0400\n"
-"PO-Revision-Date: 2017-07-10 07:11+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2018-04-11 06:58+0000\n"
+"Last-Translator: Andrea Evangelisti <Andrea.Evangelisti@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -45,19 +45,15 @@ msgstr "Errore del server"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"C'è stato un errore. Questo è stato riportato all'amministratore del sito "
-"via e-mail e dovrebbe essere risolto presto. Grazie per la pazienza.."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "C'è stato un errore. Questo è stato riportato all'amministratore del sito via e-mail e dovrebbe essere risolto presto. Grazie per la pazienza.."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
-"Se hai bisogno di assistenza, ti puoi riferire a questo errore con questo "
-"numero:"
+msgstr "Se hai bisogno di assistenza, ti puoi riferire a questo errore con questo numero:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -73,14 +69,12 @@ msgid "Build number: %(build_number)s"
 msgstr "Build numbero: %(build_number)s"
 
 #: templates/appearance/about.html:77
-#, fuzzy
-#| msgid "Released under the Apache 2.0 License"
 msgid "Released under the license:"
-msgstr "Rilasciato sotto la licenza Apache 2.0"
+msgstr "Rilasciato sotto la licenza:"
 
 #: templates/appearance/base.html:33
 msgid "Warning"
-msgstr ""
+msgstr "Attenzione"
 
 #: templates/appearance/base.html:61
 #: templates/navigation/generic_navigation.html:6
@@ -168,9 +162,7 @@ msgstr "Annullare"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Totale (%(start)s - %(end)s di %(total)s) (Pagina %(page_number)s di "
-"%(total_pages)s)"
+msgstr "Totale (%(start)s - %(end)s di %(total)s) (Pagina %(page_number)s di %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:26
 #: templates/appearance/generic_list_items_subtemplate.html:29
@@ -218,17 +210,15 @@ msgstr "Cambia navigazione"
 
 #: templates/appearance/root.html:103
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #: templates/appearance/root.html:122
-#, fuzzy
-#| msgid "Server error"
 msgid "Server communication error"
-msgstr "Errore del server"
+msgstr "Errore di comunicazione del Server"
 
 #: templates/appearance/root.html:124
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Controlla la connessione di rete e riprova"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -239,14 +229,11 @@ msgid "First time login"
 msgstr "Primo login"
 
 #: templates/authentication/login.html:25
-#, fuzzy, python-format
-#| msgid ""
-#| "You have just finished installing <strong>Mayan EDMS</strong>, "
-#| "congratulations!"
+#, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr "Complimenti!, Hai finito di installare <strong>Mayan EDMS</strong>"
+msgstr "Hai appena completato l'installazione di %(project_title)s , congratulazioni!"
 
 #: templates/authentication/login.html:26
 msgid "Login using the following credentials:"
@@ -271,9 +258,7 @@ msgstr "Password: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Ricordati di cambiare la password per aumentare la sicurezza e disabilitare "
-"questo messaggio."
+msgstr "Ricordati di cambiare la password per aumentare la sicurezza e disabilitare questo messaggio."
 
 #: templates/authentication/login.html:46
 #: templates/authentication/login.html:54
@@ -295,8 +280,7 @@ msgstr "Reimposta la password"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
-"Reimpostazione della password completata! Clicca sul link sotto per accedere"
+msgstr "Reimpostazione della password completata! Clicca sul link sotto per accedere"
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -309,6 +293,3 @@ msgstr "Email per la reimpostazione della password inviata!"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Nessuna "
-
-#~ msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-#~ msgstr "Copyright &copy; 2011-2015 Roberto Rosario."

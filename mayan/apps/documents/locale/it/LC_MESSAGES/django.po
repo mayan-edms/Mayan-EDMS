@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Roberto Rosario, 2016
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-08-15 06:31+0000\n"
+"PO-Revision-Date: 2018-04-11 19:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:110 apps.py:246 events.py:7 menus.py:8 models.py:200
@@ -33,9 +32,7 @@ msgstr "Creare un tipo di documento"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Ad ogni documento caricato deve essere assegnato un tipo documento,  questa "
-"è la via più semplice per categorizzare i documenti in Mayan EDMS."
+msgstr "Ad ogni documento caricato deve essere assegnato un tipo documento,  questa è la via più semplice per categorizzare i documenti in Mayan EDMS."
 
 #: apps.py:140 models.py:69 models.py:165 models.py:701 search.py:21
 #: search.py:42
@@ -194,13 +191,10 @@ msgstr "Comprimere"
 
 #: forms.py:198
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Scarica il documento nel formato originale oppure compresso. Questa opzione "
-"è selezionabile quando scarichi un singolo documento, per documenti "
-"multipli, il pacchetto sarà sempre scaricato in formato compresso."
+msgstr "Scarica il documento nel formato originale oppure compresso. Questa opzione è selezionabile quando scarichi un singolo documento, per documenti multipli, il pacchetto sarà sempre scaricato in formato compresso."
 
 #: forms.py:205
 msgid "Compressed filename"
@@ -210,9 +204,7 @@ msgstr "Nome file compresso "
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Il nome file del file compresso che conterrà il documento da scaricare, se "
-"l'opzione precedente è selezionata."
+msgstr "Il nome file del file compresso che conterrà il documento da scaricare, se l'opzione precedente è selezionata."
 
 #: forms.py:223
 msgid "Preserve extension"
@@ -233,9 +225,7 @@ msgstr "Intervallo pagina"
 msgid ""
 "Page number from which all the transformation will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"Numero di pagina da cui le trasformazioni saranno clonate. Le trasformazioni "
-"esistenti andranno perse."
+msgstr "Numero di pagina da cui le trasformazioni saranno clonate. Le trasformazioni esistenti andranno perse."
 
 #: links.py:57
 msgid "Preview"
@@ -318,9 +308,7 @@ msgstr "Cestino"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Cancella le rappresentazioni grafiche utilizzate per accellerare la "
-"visualizzazione dei documenti e dei risultati interattivi trasformazioni."
+msgstr "Cancella le rappresentazioni grafiche utilizzate per accellerare la visualizzazione dei documenti e dei risultati interattivi trasformazioni."
 
 #: links.py:190
 msgid "Clear document image cache"
@@ -408,10 +396,9 @@ msgstr "Tutte le pagine"
 
 #: models.py:73
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Quantità di tempo dopo il quale i documenti di questo tipo saranno spostati "
-"nel cestino."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Quantità di tempo dopo il quale i documenti di questo tipo saranno spostati nel cestino."
 
 #: models.py:75
 msgid "Trash time period"
@@ -425,9 +412,7 @@ msgstr "Unità di tempo per cestinare"
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
-"Quantità di tempo dopo il quale i documenti di questo tipo nel cestino "
-"saranno cancellati."
+msgstr "Quantità di tempo dopo il quale i documenti di questo tipo nel cestino saranno cancellati."
 
 #: models.py:85
 msgid "Delete time period"
@@ -466,10 +451,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Un documento troncato è un documento presente sul database che non ha un "
-"file scaricato. Potrebbe essere dovuto ad un upload interrotto oppure "
-"rimandato per caricarlo via API."
+msgstr "Un documento troncato è un documento presente sul database che non ha un file scaricato. Potrebbe essere dovuto ad un upload interrotto oppure rimandato per caricarlo via API."
 
 #: models.py:191
 msgid "Is stub?"
@@ -659,33 +641,25 @@ msgstr ""
 
 #: settings.py:42
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Numero massimo di documenti recenti da ricordare per utente (creazione, "
-"modifica, visualizzazione)."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Numero massimo di documenti recenti da ricordare per utente (creazione, modifica, visualizzazione)."
 
 #: settings.py:57
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Percentuale dello zoom di una pagina del documento per l'interazione "
-"dell'utente."
+msgstr "Percentuale dello zoom di una pagina del documento per l'interazione dell'utente."
 
 #: settings.py:64
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Ingrandimento massimo in percentuale (%) da consentire all'utente per una "
-"pagina del documento in modo interattivo."
+msgstr "Ingrandimento massimo in percentuale (%) da consentire all'utente per una pagina del documento in modo interattivo."
 
 #: settings.py:71
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Quantità minima in percentuale (%) per consentire all'utente di ingrandire "
-"una pagina di documento in modo interattivo."
+msgstr "Quantità minima in percentuale (%) per consentire all'utente di ingrandire una pagina di documento in modo interattivo."
 
 #: settings.py:78
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -714,8 +688,8 @@ msgstr ""
 #: settings.py:115
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: statistics.py:14
@@ -791,13 +765,12 @@ msgid "Total document pages at each month"
 msgstr "Totale pagine documento per ogni mese"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:16
-#, fuzzy, python-format
-#| msgid "Page %(page_number)d of %(total_pages)d"
+#, python-format
 msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr "Pagina %(page_number)d di %(total_pages)d"
+msgstr ""
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -851,18 +824,14 @@ msgstr "Crea etichetta rapida per il tipo documento: %s"
 
 #: views/document_type_views.py:142
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Modifica etichetta rapida \"%(filename)s\" dal tipo documento "
-"\"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Modifica etichetta rapida \"%(filename)s\" dal tipo documento \"%(document_type)s\""
 
 #: views/document_type_views.py:167
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
-"Cancellare l'etichetta: %(label)s, dal tipo documento \"%(document_type)s\"?"
+msgstr "Cancellare l'etichetta: %(label)s, dal tipo documento \"%(document_type)s\"?"
 
 #: views/document_type_views.py:195
 #, python-format
@@ -1045,9 +1014,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Errore nella cancellazione della trasformazione della pagina per il "
-"documento:%(document)s; %(error)s."
+msgstr "Errore nella cancellazione della trasformazione della pagina per il documento:%(document)s; %(error)s."
 
 #: views/document_views.py:681
 msgid "Transformations cloned successfully."
@@ -1084,16 +1051,6 @@ msgid "Duplicated document scan queued successfully."
 msgstr ""
 
 #: widgets.py:80 widgets.py:84
-#, fuzzy, python-format
-#| msgid "Pages"
+#, python-format
 msgid "Pages: %d"
-msgstr "Pagine"
-
-#~ msgid "Document pages (%d)"
-#~ msgstr "Pagine del documento (%d)"
-
-#~ msgid "Clickable image"
-#~ msgstr "Immagine cliccabile"
-
-#~ msgid "Document page image"
-#~ msgstr "Immagine pagina documento"
+msgstr ""

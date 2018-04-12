@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:54-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
+"PO-Revision-Date: 2018-04-10 08:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:12 settings.py:9
@@ -44,8 +43,8 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -68,10 +67,8 @@ msgid "Build number: %(build_number)s"
 msgstr ""
 
 #: templates/appearance/about.html:77
-#, fuzzy
-#| msgid "Released under the Apache 2.0 License"
 msgid "Released under the license:"
-msgstr "基于Apache 2.0许可证"
+msgstr ""
 
 #: templates/appearance/base.html:33
 msgid "Warning"
@@ -230,14 +227,11 @@ msgid "First time login"
 msgstr "第一次登录"
 
 #: templates/authentication/login.html:25
-#, fuzzy, python-format
-#| msgid ""
-#| "You have just finished installing <strong>Mayan EDMS</strong>, "
-#| "congratulations!"
+#, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr "恭喜您！您已经成功安装 <strong>Mayan EDMS</strong>。"
+msgstr ""
 
 #: templates/authentication/login.html:26
 msgid "Login using the following credentials:"

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
+# Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2017-07-24 20:01+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2018-04-11 12:44+0000\n"
+"Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
@@ -31,7 +31,7 @@ msgstr "Libellé"
 
 #: apps.py:63 models.py:28
 msgid "Dynamic label"
-msgstr "Etiquette dynamique"
+msgstr "Libellé dynamique"
 
 #: apps.py:67 apps.py:72 models.py:30 models.py:133
 msgid "Enabled"
@@ -145,12 +145,9 @@ msgstr "est une expression régulière (insensible à la casse)"
 #: models.py:24 models.py:123
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
-msgstr ""
-"Indiquez un modèle à restituer. Utilise le langage de rendu de Django par "
-"défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La "
-"variable de contexte {{ document }} est disponible."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
+msgstr "Indiquez un modèle à restituer. Utilise le langage de rendu de Django par défaut (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). La variable de contexte {{ document }} est disponible."
 
 #: models.py:39 models.py:109
 msgid "Smart link"
@@ -159,12 +156,11 @@ msgstr "Lien intelligent"
 #: models.py:53
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr "Erreur de génération de l'étiquette dynamique : %s"
+msgstr "Erreur de génération du libellé dynamique ; %s"
 
 #: models.py:64
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:113
 msgid "The inclusion is ignored for the first item."
@@ -172,7 +168,7 @@ msgstr "Ignorer l'inclusion sur le premier élément"
 
 #: models.py:117
 msgid "This represents the metadata of all other documents."
-msgstr "Ceci représente la méta-donnée de tous les autres documents."
+msgstr "Ceci représente les métadonnées de tous les autres documents."
 
 #: models.py:127
 msgid "Expression"
@@ -200,7 +196,7 @@ msgstr "ne pas"
 
 #: permissions.py:10
 msgid "View existing smart links"
-msgstr "Afficher les liens intelligents disponibles"
+msgstr "Afficher les liens intelligents existants"
 
 #: permissions.py:13
 msgid "Create new smart links"
@@ -218,36 +214,31 @@ msgstr "Modifier les liens intelligents"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Liste séparée par des virgules des clés primaires de type de document "
-"auxquelles ce lien intelligent sera attaché."
+msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:139
 #, python-format
 msgid "No such document type: %s"
-msgstr "Aucun type de document de ce type: %s"
+msgstr "Aucun type de document de ce type : %s"
 
 #: views.py:60
 #, python-format
 msgid "Smart link query error: %s"
-msgstr "Erreur de requête sur lien intelligent:%s"
+msgstr "Erreur de requête sur lien intelligent :%s"
 
 #: views.py:68
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr "Lien inetlligent du document: %s"
+msgstr "Lien inetlligent du document : %s"
 
 #: views.py:71
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
 
 #: views.py:90
 msgid "Available document types"
-msgstr "Types de document disponible"
+msgstr "Types de document disponibles"
 
 #: views.py:92
 msgid "Document types enabled"
@@ -256,17 +247,17 @@ msgstr "Types de documents actifs"
 #: views.py:101
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr "Type de document sur lesquels activer les liens intelligents: %s"
+msgstr "Type de document sur lesquels activer les liens intelligents : %s"
 
 #: views.py:161
 #, python-format
 msgid "Smart links for document: %s"
-msgstr "Liens intelligents pour le document: %s"
+msgstr "Liens intelligents pour le document : %s"
 
 #: views.py:184
 #, python-format
 msgid "Edit smart link: %s"
-msgstr "Modifier le lien intelligent:%s"
+msgstr "Modifier le lien intelligent :%s"
 
 #: views.py:196
 #, python-format
@@ -276,12 +267,12 @@ msgstr "Supprimer le lien intelligent : %s"
 #: views.py:208
 #, python-format
 msgid "Conditions for smart link: %s"
-msgstr "Conditions sur le lien intelligent: %s"
+msgstr "Conditions sur le lien intelligent : %s"
 
 #: views.py:235
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr "Ajouter une nouvelle condition au lien intelligent:\"%s\""
+msgstr "Ajouter de nouvelles conditions au lien intelligent : \"%s\""
 
 #: views.py:276
 msgid "Edit smart link condition"

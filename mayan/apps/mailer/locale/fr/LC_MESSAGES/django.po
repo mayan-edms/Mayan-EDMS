@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
+# Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-08-07 12:44+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2018-04-11 19:13+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:38
@@ -46,11 +46,9 @@ msgstr "Activé?"
 
 #: forms.py:60
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
-msgstr ""
-"Adresse électronique du destinataire. Peut être plusieurs adresses séparées "
-"par une virgule ou un point-virgule."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "Adresse électronique du destinataire. Il peut s'agir de plusieurs adresses séparées par une virgule ou un point-virgule."
 
 #: forms.py:62 forms.py:119
 msgid "Email address"
@@ -66,9 +64,7 @@ msgstr "Corps"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr ""
-"Le profil de messagerie qui sera utilisé pour envoyer ce courrier "
-"électronique."
+msgstr "Le profil de messagerie qui sera utilisé pour envoyer ce courrier électronique."
 
 #: forms.py:71 views.py:217
 msgid "Mailing profile"
@@ -88,7 +84,7 @@ msgstr "Lien du courriel"
 
 #: links.py:30
 msgid "System mailer error log"
-msgstr "Journal d'erreur du système d'envoi de mail"
+msgstr "Journal d'erreur du gestionnaire d'envoi de mail"
 
 #: links.py:34
 msgid "User mailer create"
@@ -125,11 +121,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Attaché à ce courriel , voici le - document: {{ document }}\n"
-"\n"
-" --------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Attaché à ce courriel , voici le - document: {{ document }}\n\n --------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -138,15 +130,11 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
-"Pour acceder à ce document cliquer sur le lien suivant: {{ link }}\n"
-"\n"
-"--------\n"
-" Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
+msgstr "Pour accéder à ce document cliquer sur le lien suivant: {{ link }}\n\n--------\n Ce courriel a été envoyé depuis %(project_title)s (%(project_website)s)"
 
 #: mailers.py:14
 msgid "Host"
-msgstr "Hote"
+msgstr "Hôte"
 
 #: mailers.py:16
 msgid "The host to use for sending email."
@@ -168,10 +156,7 @@ msgstr "Utiliser TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr ""
-"Que ce soit pour utiliser une connexion TLS (sécurisée) lorsque vous parlez "
-"au serveur SMTP. Ceci est utilisé pour les connexions TLS explicites, "
-"généralement sur le port 587."
+msgstr "Faut-li utiliser une connexion TLS (sécurisée) pour dialoguer avec le serveur SMTP. Ce paramètre est utilisé pour les connexions TLS explicites, généralement sur le port 587."
 
 #: mailers.py:34
 msgid "Use SSL"
@@ -183,15 +168,9 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
-msgstr ""
-"Que ce soit pour utiliser une connexion implicite TLS (sécurisée) lorsque "
-"vous parlez au serveur SMTP. Dans la plupart des documents électroniques, ce "
-"type de connexion TLS est appelé SSL. Il est généralement utilisé sur le "
-"port 465. Si vous rencontrez des problèmes, consultez le paramètre TLS "
-"explicite \"Utiliser TLS\". Notez que \"Utiliser TLS\" et \"Utiliser SSL\" "
-"sont mutuellement exclusifs, donc ne cocher que l'un de ces paramètres."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "Faut-il utiliser une connexion implicite TLS (sécurisée) pour dialoguer avec le serveur SMTP. Dans la plupart des documents électroniques, ce type de connexion TLS est appelé SSL. Il est généralement utilisé sur le port 465. Si vous rencontrez des problèmes, consultez le paramètre TLS explicite \"Utiliser TLS\". Notez que \"Utiliser TLS\" et \"Utiliser SSL\" sont mutuellement exclusifs, donc ne cochez que l'un de ces paramètres."
 
 #: mailers.py:46
 msgid "Username"
@@ -201,9 +180,7 @@ msgstr "Identifiant"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr ""
-"Nom d'utilisateur à utiliser pour le serveur SMTP. Si vide, "
-"l'authentification ne sera pas tentée."
+msgstr "Nom d'utilisateur à utiliser pour le serveur SMTP. Si vide, l'authentification ne sera pas tentée."
 
 #: mailers.py:55
 msgid "Password"
@@ -212,17 +189,13 @@ msgstr "Mot de passe"
 #: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
-msgstr ""
-"Mot de passe à utiliser pour le serveur SMTP. Ce paramètre est utilisé "
-"conjointement avec le nom d'utilisateur lors de l'authentification sur le "
-"serveur SMTP. Si l'un de ces paramètres est vide, l'authentification ne sera "
-"pas tentée."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "Mot de passe à utiliser pour le serveur SMTP. Ce paramètre est utilisé conjointement avec le nom d'utilisateur lors de l'authentification sur le serveur SMTP. Si l'un de ces paramètres est vide, l'authentification ne sera pas tentée."
 
 #: mailers.py:76
 msgid "Django SMTP backend"
-msgstr "Django SMTP backend"
+msgstr "Backend Django SMTP"
 
 #: mailers.py:83
 msgid "File path"
@@ -230,7 +203,7 @@ msgstr "Chemin du fichier"
 
 #: mailers.py:89
 msgid "Django file based backend"
-msgstr "Support Django basée sur un fichier "
+msgstr "Backend Django basé sur un fichier"
 
 #: models.py:21 models.py:159
 msgid "Date time"
@@ -248,9 +221,7 @@ msgstr "Entrées du journal"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
-"Si par défaut, ce profil de liste de diffusion sera présélectionné sur le "
-"formulaire de diffusion du document."
+msgstr "Si \"Défaut\", ce profil de liste de diffusion sera présélectionné sur le formulaire de diffusion du document."
 
 #: models.py:42
 msgid "Default"
@@ -262,23 +233,23 @@ msgstr "Activé"
 
 #: models.py:47
 msgid "The dotted Python path to the backend class."
-msgstr "Un chemin Python séparé par des point comme classe de support."
+msgstr "Un chemin Python séparé par des point vers la classe de support."
 
 #: models.py:48
 msgid "Backend path"
-msgstr "Chemin du support"
+msgstr "Chemin du backend"
 
 #: models.py:51
 msgid "Backend data"
-msgstr "Donnée du support"
+msgstr "Données du backend"
 
 #: models.py:56 models.py:156
 msgid "User mailer"
-msgstr "Utilisateur d'envoi"
+msgstr "Gestionnaire d'envoi de l'utilisateur"
 
 #: models.py:57
 msgid "User mailers"
-msgstr "Utilisateur d'envois"
+msgstr "Gestionnaires d'envoi de l'utilisateur"
 
 #: models.py:150
 msgid "Test email from Mayan EDMS"
@@ -286,11 +257,11 @@ msgstr "Tester le courriel depuis Mayan EDMS"
 
 #: models.py:168
 msgid "User mailer log entry"
-msgstr "Entrée du journal de l'utilisateur d'envoi"
+msgstr "Entrée du journal du gestionnaire d'envoi de l'utilisateur"
 
 #: models.py:169
 msgid "User mailer log entries"
-msgstr "Entrées du journal de l'utilisateur d'envoi"
+msgstr "Entrées du journal du gestionnaire d'envoi de l'utilisateur"
 
 #: permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
@@ -341,24 +312,20 @@ msgid "Template for the document link email form subject line."
 msgstr "Modèle pour le lien du document du courriel dans la ligne du sujet."
 
 #: settings.py:20
-#, fuzzy
-#| msgid "Template for the document link email form body line."
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Modèle pour le lien du document dans le corps du courriel."
+msgstr ""
 
 #: settings.py:24
 msgid "Document: {{ document }}"
-msgstr "Document: {{ document }}"
+msgstr "Document : {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
 msgstr "Modèle pour le sujet du courriel du document."
 
 #: settings.py:30
-#, fuzzy
-#| msgid "Template for the document email form body line."
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Modèle pour le corps du courriel du document."
+msgstr ""
 
 #: views.py:34
 msgid "Document mailing error log"
@@ -367,12 +334,12 @@ msgstr "Journal d'erreur du document envoyé"
 #: views.py:46
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr "%(count)d document dans la file d'attente pour livraison par courriel"
+msgstr "%(count)d document dans la file d'attente pour envoi par courriel"
 
 #: views.py:48
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr "%(count)d documents dans la file d'attente pour livraison par courriel"
+msgstr "%(count)d documents dans la file d'attente pour envoi par courriel"
 
 #: views.py:59
 msgid "Send"
@@ -381,18 +348,16 @@ msgstr "Envoyé"
 #: views.py:105
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
-"%(count)d document lié dans la file d'attente pour livraison par courriel"
+msgstr "%(count)d document lié dans la file d'attente pour envoi par courriel"
 
 #: views.py:107
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
-"%(count)d documents liés dans la file d'attente pour livraison par courriel"
+msgstr "%(count)d documents liés dans la file d'attente pour envoi par courriel"
 
 #: views.py:116
 msgid "New mailing profile backend selection"
-msgstr "Nouvelle sélection du support de profil de liste de diffusion"
+msgstr "Sélection du backend de nouveau profil de liste de diffusion"
 
 #: views.py:144
 #, python-format

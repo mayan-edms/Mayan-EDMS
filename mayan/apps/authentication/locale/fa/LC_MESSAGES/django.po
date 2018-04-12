@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 # Nima Towhidi <nima.towhidi@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:54-0400\n"
-"PO-Revision-Date: 2017-07-15 03:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2018-03-12 12:29+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:18 settings.py:9
 msgid "Authentication"
-msgstr ""
+msgstr "احراز هویت"
 
 #: forms.py:18
 msgid "Email"
@@ -33,15 +33,13 @@ msgstr "کلمه عبور"
 
 #: forms.py:23 forms.py:72
 msgid "Remember me"
-msgstr ""
+msgstr "مرا به خاطر بسپار"
 
 #: forms.py:26
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"لطفا یک ایمیل و کلمه عبور معتبر وارد کنید. توجه کنید که کلمه عبور به حروف "
-"کوچک و بزرگ حساس است."
+msgstr "لطفا یک ایمیل و کلمه عبور معتبر وارد کنید. توجه کنید که کلمه عبور به حروف کوچک و بزرگ حساس است."
 
 #: forms.py:28
 msgid "This account is inactive."
@@ -59,13 +57,13 @@ msgstr "تغییر کلمه عبور"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "کنترل مکانیزم مورد استفاده برای تأیید هویت کاربر. گزینه ها عبارتند از: نام کاربری، ایمیل"
 
 #: settings.py:20
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr ""
+msgstr "حداکثر زمانی که یک کاربر با کلیک روی «به یاد داشته باشید» کادر تأیید درج خواهد شد. مقدار زمان در ثانیه است."
 
 #: views.py:61
 msgid "Current user password change"

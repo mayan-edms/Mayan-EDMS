@@ -1,35 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014,2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:57-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:51 permissions.py:7
 msgid "User management"
-msgstr "مدیریت کاربران"
+msgstr "مدیریت کاربر"
 
 #: apps.py:66
 msgid "All the groups."
-msgstr ""
+msgstr "همه گروه ها."
 
 #: apps.py:70
 msgid "All the users."
-msgstr ""
+msgstr "تمام کاربران"
 
 #: apps.py:88 links.py:30 links.py:54 links.py:70 views.py:242
 msgid "Users"
@@ -37,11 +36,11 @@ msgstr "کاربران"
 
 #: apps.py:92
 msgid "Full name"
-msgstr "نام کامل"
+msgstr "نام و نام خانوادگی"
 
 #: apps.py:95 search.py:22
 msgid "Email"
-msgstr "پست الکترونیکی"
+msgstr "پست الکترونیک"
 
 #: apps.py:98
 msgid "Active"
@@ -49,11 +48,11 @@ msgstr "فعال"
 
 #: apps.py:104
 msgid "Has usable password?"
-msgstr "دارای کلمه عبور قابل قبول؟"
+msgstr "رمز عبور قابل استفاده است؟"
 
 #: links.py:14 views.py:29
 msgid "Create new group"
-msgstr "گروه جدید"
+msgstr "ایجاد گروه جدید"
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
@@ -69,19 +68,19 @@ msgstr "گروه ها"
 
 #: links.py:38 views.py:118
 msgid "Create new user"
-msgstr "کاربر جدید"
+msgstr "ایجاد کاربر جدید"
 
 #: links.py:62 links.py:66
 msgid "Set password"
-msgstr ""
+msgstr "قراردادن رمز عبور"
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr "ایجاد گروه جدید"
+msgstr "ایجاد گروه های جدید"
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr "جذف گروه های موجود"
+msgstr "حذف گروه های موجود"
 
 #: permissions.py:16
 msgid "Edit existing groups"
@@ -89,11 +88,11 @@ msgstr "ویرایش گروه های موجود"
 
 #: permissions.py:19
 msgid "View existing groups"
-msgstr "دیدن گروه های موجود"
+msgstr "نمایش گروه های موجود"
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr "ایجاد کاربر جدید"
+msgstr "ایجاد کاربران جدید"
 
 #: permissions.py:25
 msgid "Delete existing users"
@@ -105,19 +104,19 @@ msgstr "ویرایش کاربران موجود"
 
 #: permissions.py:31
 msgid "View existing users"
-msgstr "دیدن کاربران موجود"
+msgstr "مشاهده کاربران موجود"
 
 #: search.py:19
 msgid "First name"
-msgstr ""
+msgstr "نام کوچک"
 
 #: search.py:28
 msgid "Last name"
-msgstr ""
+msgstr "نام خانوادگی"
 
 #: search.py:31
 msgid "username"
-msgstr ""
+msgstr "نام کاربری"
 
 #: search.py:41
 msgid "Name"
@@ -125,106 +124,103 @@ msgstr "نام"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
+msgstr "لیست مجزا شده بوسیله کاما  از کلیبدهای اولیه گروهی برای این کاربر"
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
-msgstr ""
+msgstr "فهرست کلیدهای اولیه گروهی که برای اضافه کردن کاربر."
 
 #: views.py:45
 #, python-format
 msgid "Edit group: %s"
-msgstr "ویرایش گروه : %s"
+msgstr "ویرایش گروه: %s"
 
 #: views.py:66
 #, python-format
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "گروه را حذف کنید: %s؟"
 
 #: views.py:72
 msgid "Available users"
-msgstr ""
+msgstr "کاربران موجود"
 
 #: views.py:73
-#, fuzzy
-#| msgid "Create new group"
 msgid "Users in group"
-msgstr "گروه جدید"
+msgstr ""
 
 #: views.py:94
-#, fuzzy, python-format
-#| msgid "Members of group: %s"
+#, python-format
 msgid "Users of group: %s"
-msgstr " اعضای گروه : %s"
+msgstr ""
 
 #: views.py:128
 #, python-format
 msgid "User \"%s\" created successfully."
-msgstr "کاربر \"%s\" با موفقیت ساخته شد."
+msgstr "کاربر \"%s\" با موفقیت ایجاد شد"
 
 #: views.py:138
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
+msgstr "درخواست حذف کاربر انجام شده در کاربر %(count)d"
 
 #: views.py:140
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
+msgstr "درخواست حذف کاربر انجام شده در کاربران %(count)d"
 
 #: views.py:148
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] ""
+msgstr[0] "حذف کاربر"
 
 #: views.py:158
 #, python-format
 msgid "Delete user: %s"
-msgstr ""
+msgstr "حذف کاربر: %s"
 
 #: views.py:170
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "برای حذف از صفحه admin استفاده کنید."
+msgstr "حذف کاربر فوق العاده کاربر و کارکنان مجاز نیست، از رابط مدیر برای این موارد استفاده کنید."
 
 #: views.py:178
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr "کاربر \"%s\" با موفقیت حذف شد."
+msgstr "کاربر \"%s\" با موفقیت حذف شد"
 
 #: views.py:184
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "خطا در حذف کاربر  \"%(user)s\": %(error)s"
+msgstr "خطا در حذف کاربر \"%(user)s\": %(error)s"
 
 #: views.py:200
 #, python-format
 msgid "Edit user: %s"
-msgstr "ویرایش کاربر : %s"
+msgstr "ویرایش کاربر: %s"
 
 #: views.py:206
 msgid "Available groups"
-msgstr ""
+msgstr "گروه های موجود"
 
 #: views.py:207
 msgid "Groups joined"
-msgstr ""
+msgstr "گروه ها پیوستند"
 
 #: views.py:216
 #, python-format
 msgid "Groups of user: %s"
-msgstr "گروه های کاربر : %s"
+msgstr "گروه کاربر: %s"
 
 #: views.py:255
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "درخواست تغییر رمز عبور بر روی کاربر %(count)d انجام می شود"
 
 #: views.py:257
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "درخواست تغییر رمز عبور بر روی کاربران %(count)d انجام شد"
 
 #: views.py:264
 msgid "Submit"
@@ -233,35 +229,25 @@ msgstr "ارسال"
 #: views.py:266
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
+msgstr[0] "تغییر کلمات عبور "
 
 #: views.py:276
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "تغییر رمز عبور برای کاربر: %s"
 
 #: views.py:297
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "از صفحه admin برای این موارد استفاده کنید."
+msgstr "بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری مدیریت برای این موارد استفاده کنید."
 
 #: views.py:307
-#, fuzzy, python-format
-#| msgid "Successfull password reset for user: %s."
+#, python-format
 msgid "Successful password reset for user: %s."
-msgstr "ریست موفق کلمه عبور برای کاربر : %s."
+msgstr ""
 
 #: views.py:313
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "خطا در زمان ریست کلمه عبور کاربر:  \"%(user)s\": %(error)s"
-
-#~ msgid "Members"
-#~ msgstr "عضو"
-
-#~ msgid "New password"
-#~ msgstr "کلمه عبور جدید"
-
-#~ msgid "Confirm password"
-#~ msgstr "تائید کلمه عبور"
+msgstr "خطای بازنشانی گذرواژه کاربر «%(user)s»: %(error)s"

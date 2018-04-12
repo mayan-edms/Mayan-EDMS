@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # lilo.panic, 2016
 msgid ""
@@ -9,17 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-11 12:54-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"PO-Revision-Date: 2018-04-10 08:23+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
@@ -47,19 +44,15 @@ msgstr "Ошибка сервера"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной "
-"почте, и она будет исправлена. Спасибо за терпение."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Тут какая-то ошибка. Её нужно сообщить администрации сайта по электронной почте, и она будет исправлена. Спасибо за терпение."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
-"Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему "
-"идентификатору:"
+msgstr "Если вам нужна помощь, вы можете сослаться на эту ошибку по следующему идентификатору:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57
 msgid "About"
@@ -75,14 +68,12 @@ msgid "Build number: %(build_number)s"
 msgstr "Версия сборки: %(build_number)s"
 
 #: templates/appearance/about.html:77
-#, fuzzy
-#| msgid "Released under the Apache 2.0 License"
 msgid "Released under the license:"
-msgstr "Выпущено под лицензией Apache 2.0"
+msgstr ""
 
 #: templates/appearance/base.html:33
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: templates/appearance/base.html:61
 #: templates/navigation/generic_navigation.html:6
@@ -170,9 +161,7 @@ msgstr "Отменить"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из "
-"%(total_pages)s)"
+msgstr "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:26
 #: templates/appearance/generic_list_items_subtemplate.html:29
@@ -196,9 +185,7 @@ msgstr "Приступая к работе"
 
 #: templates/appearance/home.html:33
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
-"Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan "
-"EDMS:"
+msgstr "Вам кое-что понадобится, прежде чем вы начнёте полноценно использовать Mayan EDMS:"
 
 #: templates/appearance/home.html:54
 msgid "Search pages"
@@ -225,10 +212,8 @@ msgid "Close"
 msgstr ""
 
 #: templates/appearance/root.html:122
-#, fuzzy
-#| msgid "Server error"
 msgid "Server communication error"
-msgstr "Ошибка сервера"
+msgstr ""
 
 #: templates/appearance/root.html:124
 msgid "Check you network connection and try again in a few moments."
@@ -243,15 +228,11 @@ msgid "First time login"
 msgstr "Первое время входа в систему"
 
 #: templates/authentication/login.html:25
-#, fuzzy, python-format
-#| msgid ""
-#| "You have just finished installing <strong>Mayan EDMS</strong>, "
-#| "congratulations!"
+#, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
-"Вы только что закончили установку <strong>Mayan EDMS</strong>, поздравляем!"
 
 #: templates/authentication/login.html:26
 msgid "Login using the following credentials:"
@@ -276,9 +257,7 @@ msgstr "Пароль: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Обязательно измените пароль для повышения безопасности и отключения этого "
-"сообщения."
+msgstr "Обязательно измените пароль для повышения безопасности и отключения этого сообщения."
 
 #: templates/authentication/login.html:46
 #: templates/authentication/login.html:54
@@ -313,6 +292,3 @@ msgstr ""
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Ни один"
-
-#~ msgid "Copyright &copy; 2011-2015 Roberto Rosario."
-#~ msgstr "&copy; 2011-2015 Roberto Rosario, все права защищены."
