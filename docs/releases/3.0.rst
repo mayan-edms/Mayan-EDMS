@@ -543,8 +543,11 @@ Bugs fixed or issues closed
 * `GitLab issue #420 <https://gitlab.com/mayan-edms/mayan-edms/issues/420>`_ Mayan raises a 500 instead of 404 in production mode
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
 * `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
+* `GitLab issue #444 <https://gitlab.com/mayan-edms/mayan-edms/issues/444>`_ Error in retrieving documents via POP3
+* `GitLab issue #446 <https://gitlab.com/mayan-edms/mayan-edms/issues/446>`_ Document searcher
 * `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach
 * `GitLab issue #449 <https://gitlab.com/mayan-edms/mayan-edms/issues/449>`_ OCR Error: 'int' object has no attribute 'split'
+* `GitLab issue #452 <https://gitlab.com/mayan-edms/mayan-edms/issues/452>`_ Workflow ACL Doesn't works
 * `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
 * `GitLab issue #467 <https://gitlab.com/mayan-edms/mayan-edms/issues/467>`_ mail attachments without content-disposition are lost
 * `GitLab issue #468 <https://gitlab.com/mayan-edms/mayan-edms/issues/468>`_ plain text e-mails without charset do not work
