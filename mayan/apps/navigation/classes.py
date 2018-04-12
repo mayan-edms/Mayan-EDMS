@@ -11,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.urls import resolve
+from django.urls import Resolver404, resolve
 from django.utils.encoding import force_str, force_text
 
 from common.utils import return_attrib
@@ -152,7 +152,13 @@ class Menu(object):
         current_path = request.META['PATH_INFO']
 
         # Get sources: view name, view objects
-        current_view = resolve(current_path).view_name
+        try:
+            current_view = resolve(current_path).view_name
+        except Resolver404:
+            # Can't figure out which view corresponds to this URL.
+            # Most likely it is an invalid URL.
+            logger.warning('Can\'t figure out which view corresponds to this URL: %s; aborting menu resolution.', current_path)
+            return ()
 
         resolved_navigation_object_list = self.get_resolved_navigation_object_list(
             context=context, source=source

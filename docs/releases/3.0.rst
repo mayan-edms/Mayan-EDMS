@@ -471,6 +471,7 @@ Other changes worth mentioning
 - Add a new setting option to enable automatic parsing for each new document type created.
 - Add support for HTML bodies to the user mailers.
 - Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
+- Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
 
 Removals
 --------
@@ -539,6 +540,7 @@ Bugs fixed or issues closed
 * `GitLab issue #405 <https://gitlab.com/mayan-edms/mayan-edms/issues/405>`_ Add wizard steps from external apps
 * `GitLab issue #407 <https://gitlab.com/mayan-edms/mayan-edms/issues/407>`_ Improve search syntax to support search query types: AND, OR
 * `GitLab issue #408 <https://gitlab.com/mayan-edms/mayan-edms/issues/408>`_ Improve document checkbox selection.
+* `GitLab issue #420 <https://gitlab.com/mayan-edms/mayan-edms/issues/420>`_ Mayan raises a 500 instead of 404 in production mode
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
 * `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
 * `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach

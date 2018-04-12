@@ -152,6 +152,7 @@
 - Add a new setting option to enable automatic parsing for each new document type created.
 - Add support for HTML bodies to the user mailers.
 - Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
+- Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
 
 2.7.3 (2017-09-11)
 ==================
