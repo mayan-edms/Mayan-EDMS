@@ -4,7 +4,7 @@ from . import *  # NOQA
 
 # Update this accordingly;
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '[::1]']
 
 TEMPLATES[0]['OPTIONS']['loaders'] = (
     (

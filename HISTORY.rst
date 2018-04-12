@@ -151,6 +151,7 @@
 - Add the option to enable or disable parsing when uploading a document for each document type.
 - Add a new setting option to enable automatic parsing for each new document type created.
 - Add support for HTML bodies to the user mailers.
+- Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
 
 2.7.3 (2017-09-11)
 ==================
