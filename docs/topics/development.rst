@@ -418,7 +418,8 @@ Release checklist
 5. Update changelog.
 6. Update requirements version in `setup.py`
 7. Bump version in `mayan/__init__.py`
-8. Check README.rst format with::
+8. Scan the code with flake8 for simple style warnings.
+9. Check README.rst format with::
 
     $ python setup.py check -r -s
 
@@ -427,26 +428,26 @@ or with::
     $ make check_readme
 
 
-9. Build source package and test::
+10. Build source package and test::
 
     $ make test_sdist_via_docker_ubuntu
 
-10. Build wheel package and test::
+11. Build wheel package and test::
 
     $ make test_whell_via_docker_ubuntu
 
-11. Tag version::
+12. Tag version::
 
     $ git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-12. Push tag upstream::
+13. Push tag upstream::
 
     $ git push --tags
 
-13. Build and upload a test release::
+14. Build and upload a test release::
 
     $ make release_test_via_docker_ubuntu
 
-14. Build and upload a final release::
+15. Build and upload a final release::
 
     $ make release_via_docker_ubuntu
