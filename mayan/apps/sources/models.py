@@ -618,53 +618,6 @@ class EmailBaseModel(IntervalBaseModel):
                         )
 
 
-class POP3Email(EmailBaseModel):
-    source_type = SOURCE_CHOICE_EMAIL_POP3
-
-    timeout = models.PositiveIntegerField(
-        default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
-    )
-
-    objects = models.Manager()
-
-    class Meta:
-        verbose_name = _('POP email')
-        verbose_name_plural = _('POP email')
-
-    def check_source(self):
-        logger.debug('Starting POP3 email fetch')
-        logger.debug('host: %s', self.host)
-        logger.debug('ssl: %s', self.ssl)
-
-        if self.ssl:
-            mailbox = poplib.POP3_SSL(self.host, self.port)
-        else:
-            mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
-
-        mailbox.getwelcome()
-        mailbox.user(self.username)
-        mailbox.pass_(self.password)
-        messages_info = mailbox.list()
-
-        logger.debug('messages_info:')
-        logger.debug(messages_info)
-        logger.debug('messages count: %s', len(messages_info[1]))
-
-        for message_info in messages_info[1]:
-            message_number, message_size = message_info.split()
-            logger.debug('message_number: %s', message_number)
-            logger.debug('message_size: %s', message_size)
-
-            complete_message = '\n'.join(mailbox.retr(message_number)[1])
-
-            EmailBaseModel.process_message(
-                source=self, message_text=complete_message
-            )
-            mailbox.dele(message_number)
-
-        mailbox.quit()
-
-
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_IMAP
 
@@ -710,6 +663,53 @@ class IMAPEmail(EmailBaseModel):
         mailbox.expunge()
         mailbox.close()
         mailbox.logout()
+
+
+class POP3Email(EmailBaseModel):
+    source_type = SOURCE_CHOICE_EMAIL_POP3
+
+    timeout = models.PositiveIntegerField(
+        default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
+    )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('POP email')
+        verbose_name_plural = _('POP email')
+
+    def check_source(self):
+        logger.debug('Starting POP3 email fetch')
+        logger.debug('host: %s', self.host)
+        logger.debug('ssl: %s', self.ssl)
+
+        if self.ssl:
+            mailbox = poplib.POP3_SSL(self.host, self.port)
+        else:
+            mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
+
+        mailbox.getwelcome()
+        mailbox.user(self.username)
+        mailbox.pass_(self.password)
+        messages_info = mailbox.list()
+
+        logger.debug('messages_info:')
+        logger.debug(messages_info)
+        logger.debug('messages count: %s', len(messages_info[1]))
+
+        for message_info in messages_info[1]:
+            message_number, message_size = message_info.split()
+            logger.debug('message_number: %s', message_number)
+            logger.debug('message_size: %s', message_size)
+
+            complete_message = '\n'.join(mailbox.retr(message_number)[1])
+
+            EmailBaseModel.process_message(
+                source=self, message_text=complete_message
+            )
+            mailbox.dele(message_number)
+
+        mailbox.quit()
 
 
 class WatchFolderSource(IntervalBaseModel):
