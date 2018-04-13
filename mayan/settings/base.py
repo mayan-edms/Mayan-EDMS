@@ -18,6 +18,11 @@ from django.utils.translation import ugettext_lazy as _
 
 import mayan
 
+# Literals
+DEFAULT_SECRET_KEY = 'secret_key_missing'
+SECRET_KEY_FILENAME = 'SECRET_KEY'
+SYSTEM_DIR = 'system'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,12 +31,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'secret_key_missing'
+SECRET_KEY = DEFAULT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '[::1]']
 
 # Application definition
 
@@ -88,9 +93,6 @@ INSTALLED_APPS = (
     'document_states',
     'documents',
     'events',
-    # Disable the folders app by default
-    # Will be removed in the next version
-    # 'folders',
     'linking',
     'mailer',
     'mayan_statistics',
@@ -266,7 +268,7 @@ PAGINATION_SETTINGS = {
 }
 # ----------- Celery ----------
 CELERY_ACCEPT_CONTENT = ('json',)
-CELERY_ALWAYS_EAGER = True
+CELERY_ALWAYS_EAGER = False
 CELERY_CREATE_MISSING_QUEUES = False
 CELERY_DISABLE_RATE_LIMITS = True
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
@@ -292,3 +294,59 @@ SWAGGER_SETTINGS = {
 }
 # ----- AJAX REDIRECT -----
 AJAX_REDIRECT_CODE = 278
+
+#########################
+# Environment overrides #
+#########################
+
+# Secret key
+
+environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
+if environment_secret_key:
+    SECRET_KEY = environment_secret_key
+else:
+    try:
+        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:
+            SECRET_KEY = file_object.read().strip()
+    except IOError:
+        pass
+
+# Celery
+
+environment_celery_always_eager = os.environ.get('MAYAN_CELERY_ALWAYS_EAGER', 'True')
+if environment_celery_always_eager == 'True':
+    CELERY_ALWAYS_EAGER = True
+elif environment_celery_always_eager == 'False':
+    CELERY_ALWAYS_EAGER = False
+
+CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND', None)
+BROKER_URL = os.environ.get('MAYAN_BROKER_URL', None)
+
+# Database
+
+environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
+
+if environment_database_engine:
+    environment_database_conn_max_age = os.environ.get('MAYAN_DATABASE_CONN_MAX_AGE', None)
+    if environment_database_conn_max_age:
+        environment_database_conn_max_age = int(environment_database_conn_max_age)
+
+    DATABASES = {
+        'default': {
+            'ENGINE': environment_database_engine,
+            'NAME': os.environ['MAYAN_DATABASE_NAME'],
+            'USER': os.environ['MAYAN_DATABASE_USER'],
+            'PASSWORD': os.environ['MAYAN_DATABASE_PASSWORD'],
+            'HOST': os.environ.get('MAYAN_DATABASE_HOST', None),
+            'PORT': os.environ.get('MAYAN_DATABASE_PORT', None),
+            'CONN_MAX_AGE': environment_database_conn_max_age,
+        }
+    }
+
+# Debug
+
+environment_debug = os.environ.get('MAYAN_DEBUG', 'False')
+if environment_debug == 'True':
+    DEBUG = True
+elif environment_debug == 'False':
+    DEBUG = False
