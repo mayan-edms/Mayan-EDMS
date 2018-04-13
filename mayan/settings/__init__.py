@@ -4,6 +4,8 @@ import logging
 
 from django.utils.encoding import force_text
 
+from .base import *  # NOQA
+
 logger = logging.getLogger(__name__)
 
 try:
@@ -14,5 +16,3 @@ except ImportError as exception:
         raise
     else:
         logger.info('No local.py settings file. Using defaults.')
-else:
-    from .base import *  # NOQA
