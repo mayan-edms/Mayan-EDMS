@@ -158,6 +158,7 @@
   MAYAN_DATABASE_USER, MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
   MAYAN_DEBUG.
 - Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
+- New initialization command. Creates media/system and populates the SECRET_KEY and VERSION files.
 
 2.7.3 (2017-09-11)
 ==================
