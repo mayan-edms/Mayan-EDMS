@@ -16,7 +16,6 @@ Roadmap
   - Add support for metadata mapping files. CSV file containing filename to metadata values mapping, useful for bulk upload and migrations.
   - Add support for registering widgets to the home screen.
   - Merge mimetype and converter apps.
-  - If SourceColumn label is None take description from model. Avoid unnecessary translatable strings.
   - Metadata widgets (Date, time, timedate).
   - Datatime widget: https://github.com/smalot/bootstrap-datetimepicker
   - Add events for document signing app (uploaded detached signateure, signed document, deleted signature)
