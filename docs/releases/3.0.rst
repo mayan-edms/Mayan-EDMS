@@ -473,7 +473,7 @@ Other changes worth mentioning
 - Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
 - Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
 - New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER, MAYAN_CELERY_RESULT_BACKEND,
-  MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE, MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME, 
+  MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE, MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME,
   MAYAN_DATABASE_USER, MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
   MAYAN_DEBUG.
 - Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
@@ -481,7 +481,16 @@ Other changes worth mentioning
 
 Removals
 --------
-* None
+* Data filters app.
+
+Known issues
+------------
+The newly added 'flanker' dependency used to process email, produces a number of
+warning on the console that are imposible to turn off. These are not critical and
+related to coding practices in the library. All warning from flanker can be
+ignored.
+
+Example: "WARNING:flanker.addresslib._parser.parser:Symbol 'domain' is unreachable"
 
 
 Upgrading from a previous version
