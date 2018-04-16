@@ -7,6 +7,7 @@ from furl import furl
 
 from django.apps import apps
 from django.conf import settings
+from django.contrib.admin.utils import label_for_field
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
@@ -438,14 +439,27 @@ class SourceColumn(object):
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label, attribute=None, func=None, order=None):
+    def __init__(self, source, label=None, attribute=None, func=None, order=None):
         self.source = source
-        self.label = label
+        self._label = label
         self.attribute = attribute
         self.func = func
         self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
+
+    @property
+    def label(self):
+        # TODO: Add support for related fields (dotted or double underscore attributes)
+        if not self._label:
+            if self.attribute:
+                self._label = label_for_field(
+                    name=self.attribute, model=self.source._meta.model
+                )
+            else:
+                self._label = 'Function'
+
+        return self._label
 
     def resolve(self, context):
         if self.attribute:
