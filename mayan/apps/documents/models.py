@@ -398,10 +398,12 @@ class DocumentVersion(models.Model):
         verbose_name=_('File')
     )
     mimetype = models.CharField(
-        blank=True, editable=False, max_length=255, null=True
+        blank=True, editable=False, max_length=255, null=True,
+        verbose_name=_('MIME type')
     )
     encoding = models.CharField(
-        blank=True, editable=False, max_length=64, null=True
+        blank=True, editable=False, max_length=64, null=True,
+        verbose_name=_('Encoding')
     )
     checksum = models.CharField(
         blank=True, db_index=True, editable=False, max_length=64, null=True,

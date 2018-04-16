@@ -212,7 +212,7 @@ class DocumentsApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=Document, label=_('Type'), attribute='document_type'
+            source=Document, attribute='document_type'
         )
         SourceColumn(
             source=Document, label=_('Pages'),
@@ -263,11 +263,10 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DeletedDocument, label=_('Type'), attribute='document_type'
+            source=DeletedDocument, attribute='document_type'
         )
         SourceColumn(
-            source=DeletedDocument, label=_('Date time trashed'),
-            attribute='deleted_date_time'
+            source=DeletedDocument, attribute='deleted_date_time'
         )
 
         # DocumentVersion
@@ -278,8 +277,7 @@ class DocumentsApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=DocumentVersion, label=_('Time and date'),
-            attribute='timestamp'
+            source=DocumentVersion, attribute='timestamp'
         )
         SourceColumn(
             source=DocumentVersion, label=_('Pages'),
@@ -288,16 +286,13 @@ class DocumentsApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=DocumentVersion, label=_('MIME type'),
-            attribute='mimetype'
+            source=DocumentVersion, attribute='mimetype'
         )
         SourceColumn(
-            source=DocumentVersion, label=_('Encoding'),
-            attribute='encoding'
+            source=DocumentVersion, attribute='encoding'
         )
         SourceColumn(
-            source=DocumentVersion, label=_('Comment'),
-            attribute='comment'
+            source=DocumentVersion, attribute='comment'
         )
 
         # DuplicatedDocument

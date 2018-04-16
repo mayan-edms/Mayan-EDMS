@@ -25,7 +25,7 @@ from .permissions import (
     permission_tag_remove, permission_tag_view
 )
 from .search import tag_search  # NOQA
-from .widgets import widget_document_tags, widget_single_tag
+from .widgets import widget_document_tags
 
 
 class TagsApp(MayanAppConfig):
@@ -73,8 +73,10 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentTag, label=_('Preview'),
-            func=lambda context: widget_single_tag(context['object'])
+            source=DocumentTag, attribute='label'
+        )
+        SourceColumn(
+            source=DocumentTag, attribute='get_preview_widget'
         )
 
         SourceColumn(
@@ -93,8 +95,10 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Tag, label=_('Preview'),
-            func=lambda context: widget_single_tag(context['object'])
+            source=Tag, attribute='label'
+        )
+        SourceColumn(
+            source=Tag, attribute='get_preview_widget'
         )
         SourceColumn(
             source=Tag, label=_('Documents'),

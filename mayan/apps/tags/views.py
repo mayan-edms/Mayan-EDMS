@@ -181,6 +181,7 @@ class TagListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'title': _('Tags'),
         }
 
@@ -224,11 +225,15 @@ class DocumentTagListView(TagListView):
         )
 
     def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'object': self.document,
-            'title': _('Tags for document: %s') % self.document,
-        }
+        context = super(DocumentTagListView, self).get_extra_context()
+        context.update(
+            {
+                'hide_link': True,
+                'object': self.document,
+                'title': _('Tags for document: %s') % self.document,
+            }
+        )
+        return context
 
     def get_tag_queryset(self):
         return self.document.attached_tags().all()

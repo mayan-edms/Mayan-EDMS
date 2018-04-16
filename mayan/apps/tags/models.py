@@ -12,6 +12,7 @@ from documents.models import Document
 from documents.permissions import permission_document_view
 
 from .events import event_tag_attach, event_tag_remove
+from .widgets import widget_single_tag
 
 
 @python_2_unicode_compatible
@@ -47,6 +48,10 @@ class Tag(models.Model):
         )
 
         return queryset.count()
+
+    def get_preview_widget(self):
+        return widget_single_tag(tag=self)
+    get_preview_widget.short_description = _('Preview')
 
     def remove_from(self, document, user=None):
         self.documents.remove(document)
