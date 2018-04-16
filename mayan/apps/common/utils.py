@@ -19,7 +19,7 @@ from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
 from common.compat import dict_type, dictionary_type
 import mayan
 
-from .exceptions import NotLatestVersion
+from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .literals import DJANGO_SQLITE_BACKEND, MAYAN_PYPI_NAME, PYPI_URL
 from .settings import setting_temporary_directory
 
@@ -33,11 +33,11 @@ def check_for_sqlite():
 def check_version():
     pypi = xmlrpc_client.ServerProxy(PYPI_URL)
     versions = pypi.package_releases(MAYAN_PYPI_NAME)
-
-    if versions[0] != mayan.__version__:
-        raise NotLatestVersion(upstream_version=versions[0])
+    if not versions:
+        raise UnknownLatestVersion
     else:
-        return True
+        if versions[0] != mayan.__version__:
+            raise NotLatestVersion(upstream_version=versions[0])
 
 
 # http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python

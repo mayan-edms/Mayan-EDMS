@@ -4,7 +4,6 @@ from json import dumps
 
 import sh
 
-from django.conf import settings
 from django.template import Context, Library
 from django.template.loader import get_template
 from django.utils.encoding import force_text
@@ -84,4 +83,3 @@ def render_subtemplate(context, template_name, template_context):
     new_context = Context(context.flatten())
     new_context.update(Context(template_context))
     return get_template(template_name).render(new_context.flatten())
-

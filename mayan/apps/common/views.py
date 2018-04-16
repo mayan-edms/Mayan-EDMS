@@ -16,7 +16,7 @@ from django.views.generic import RedirectView, TemplateView
 
 from acls.models import AccessControlList
 
-from .exceptions import NotLatestVersion
+from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
@@ -49,6 +49,11 @@ class CheckVersionView(SimpleView):
                 'The version you are using is outdated. The latest version '
                 'is %s'
             ) % exception.upstream_version
+        except UnknownLatestVersion as exception:
+            message = _(
+                'It is not possible to determine the latest version '
+                'available.'
+            )
         else:
             message = _('Your version is up-to-date.')
 
@@ -145,7 +150,10 @@ class FaviconRedirectView(RedirectView):
         return static('appearance/images/favicon.ico')
 
 
-class HomeView(TemplateView):
+class HomeView(SimpleView):
+    extra_context = {
+        'title': _('Dashboard'),
+    }
     template_name = 'appearance/home.html'
 
 

@@ -16,6 +16,12 @@ class NotLatestVersion(BaseCommonException):
         self.upstream_version = upstream_version
 
 
+class UnknownLatestVersion(BaseCommonException):
+    """
+    It is not possible to determine what is the latest upstream version.
+    """
+
+
 class NPMException(BaseCommonException):
     """Base exception for the NPM registry client"""
 
