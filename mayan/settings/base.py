@@ -18,10 +18,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import mayan
 
-# Literals
-DEFAULT_SECRET_KEY = 'secret_key_missing'
-SECRET_KEY_FILENAME = 'SECRET_KEY'
-SYSTEM_DIR = 'system'
+from .literals import DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -112,6 +109,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'common.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -152,7 +150,7 @@ WSGI_APPLICATION = 'mayan.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.environ.get('MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 
 DATABASES = {
     'default': {
@@ -313,14 +311,18 @@ else:
 
 # Celery
 
-environment_celery_always_eager = os.environ.get('MAYAN_CELERY_ALWAYS_EAGER', 'True')
+environment_celery_always_eager = os.environ.get('MAYAN_CELERY_ALWAYS_EAGER')
 if environment_celery_always_eager == 'True':
     CELERY_ALWAYS_EAGER = True
 elif environment_celery_always_eager == 'False':
     CELERY_ALWAYS_EAGER = False
 
-CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND', None)
-BROKER_URL = os.environ.get('MAYAN_BROKER_URL', None)
+CELERY_RESULT_BACKEND = os.environ.get(
+    'MAYAN_CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379/0'
+)
+BROKER_URL = os.environ.get(
+    'MAYAN_BROKER_URL', 'redis://127.0.0.1:6379/0'
+)
 
 # Database
 
