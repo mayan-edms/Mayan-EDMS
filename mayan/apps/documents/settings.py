@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 
+import os
+
 import pycountry
 
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
@@ -9,7 +12,6 @@ from smart_settings import Namespace
 LANGUAGE_CHOICES = [
     (i.iso639_3_code, i.name) for i in list(pycountry.languages)
 ]
-
 
 namespace = Namespace(name='documents', label=_('Documents'))
 setting_display_width = namespace.add_setting(
@@ -49,7 +51,9 @@ setting_storage_backend = namespace.add_setting(
 )
 setting_storage_backend_arguments = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
-    default='{location: mayan/media/document_storage}'
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'document_storage')
+    )
 )
 setting_zoom_percent_step = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_PERCENT_STEP', default=25,
@@ -84,7 +88,9 @@ setting_documentimagecache_storage = namespace.add_setting(
 )
 setting_documentimagecache_storage_arguments = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
-    default='{location: mayan/media/document_cache}'
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'document_cache')
+    )
 )
 setting_language = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE', default='eng',

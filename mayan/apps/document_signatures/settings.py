@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 
+import os
+
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
@@ -11,5 +14,7 @@ setting_storage_backend = namespace.add_setting(
 )
 setting_storage_backend_arguments = namespace.add_setting(
     global_name='SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
-    default='{location: mayan/media/document_storage}'
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'document_signatures')
+    )
 )

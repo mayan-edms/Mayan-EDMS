@@ -43,7 +43,9 @@ setting_shared_storage = namespace.add_setting(
 )
 setting_shared_storage_arguments = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
-    default='{location: mayan/media/shared_files}',
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'shared_files')
+    )
 )
 setting_temporary_directory = namespace.add_setting(
     global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
@@ -55,7 +57,7 @@ setting_temporary_directory = namespace.add_setting(
 )
 setting_production_error_log_path = namespace.add_setting(
     global_name='COMMON_PRODUCTION_ERROR_LOG_PATH',
-    default=os.path.join(settings.BASE_DIR, 'error.log'), help_text=_(
+    default=os.path.join(settings.MEDIA_ROOT, 'error.log'), help_text=_(
         'Path to the logfile that will track errors during production.'
     ),
     is_path=True
