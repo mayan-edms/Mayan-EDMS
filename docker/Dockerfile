@@ -21,6 +21,7 @@ RUN if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY
 RUN apt-get update && \
 apt-get install -y --no-install-recommends \
         curl \
+        g++ \
         gcc \
         gettext-base \
         ghostscript \
