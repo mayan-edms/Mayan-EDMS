@@ -1,5 +1,7 @@
 .PHONY: clean-pyc clean-build
 
+APT_PROXY ?= `/sbin/ip route|awk '/docker0/ { print $$9 }'`:3142
+DOCKER_VERSION ?= `cat docker/version`
 
 help:
 	@echo
@@ -361,3 +363,9 @@ check_readme:
 check_missing_migrations:
 	./manage.py makemigrations --dry-run --noinput --check
 
+
+docker-build:
+	docker build -t mayanedms/mayanedms:$(DOCKER_VERSION) -f docker/Dockerfile .
+
+docker-build-with-proxy:
+	docker build -t mayanedms/mayanedms:$(DOCKER_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) .
