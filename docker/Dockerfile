@@ -26,7 +26,7 @@ apt-get install -y --no-install-recommends \
         ghostscript \
         gpgv \
         graphviz \
-        libffi6 \
+        libffi-dev \
         libjpeg-dev \
         libmagic1 \
         libmysqlclient-dev \
@@ -44,6 +44,7 @@ apt-get install -y --no-install-recommends \
         redis-server \
         supervisor \
         tesseract-ocr \
+        zlib1g-dev \
 && \
 apt-get clean autoclean && \
 apt-get autoremove --purge -y && \
@@ -127,3 +128,16 @@ HEALTHCHECK --interval=15s --timeout=1s --retries=20 \
 
 EXPOSE 8000
 CMD ["mayan"]
+
+RUN rm /root/.cache -R
+RUN rm -rf /tmp/*
+
+RUN apt-get -y autoremove --purge && apt-get -y autoclean && apt-get -y clean
+
+RUN rm -rf /usr/share/man/*
+RUN rm -rf /usr/share/doc/*
+
+RUN find /var/lib/apt -type f | xargs rm -f
+RUN find /var/cache -type f -exec rm -rf {} \;
+
+RUN find /var/log -type f | while read f; do echo -ne '' > $f; done;
