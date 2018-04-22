@@ -15,25 +15,71 @@ from ...signals import post_initial_setup, pre_initial_setup
 class Command(management.BaseCommand):
     help = 'Initializes an install and gets it ready to be used.'
 
-    def initialize_system(self):
+    @staticmethod
+    def touch(filename, times=None):
+        with open(filename, 'a'):
+            os.utime(filename, times)
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--force', action='store_true', dest='force',
+            help='Force execution of the initialization process.',
+        )
+
+    def initialize_system(self, force=False):
         system_path = os.path.join(settings.MEDIA_ROOT, SYSTEM_DIR)
+        settings_path = os.path.join(settings.MEDIA_ROOT, 'settings')
         secret_key_file_path = os.path.join(system_path, SECRET_KEY_FILENAME)
 
-        if not os.path.exists(system_path):
-            os.makedirs(system_path)
+        if not os.path.exists(settings.MEDIA_ROOT) or force:
+            # Create the media folder
+            try:
+                os.makedirs(settings.MEDIA_ROOT)
+            except OSError as exception:
+                if exception.errno == 17 and force:
+                    pass
+
+            # Touch media/__init__.py
+            Command.touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
+
+            # Create media/settings
+            try:
+                os.makedirs(settings_path)
+            except OSError as exception:
+                if exception.errno == 17 and force:
+                    pass
+
+            # Touch media/settings/__init__.py
+            Command.touch(os.path.join(settings_path, '__init__.py'))
+
+            # Create the media/system folder
+            try:
+                os.makedirs(system_path)
+            except OSError as exception:
+                if exception.errno == 17 and force:
+                    pass
 
             version_file_path = os.path.join(system_path, 'VERSION')
-            with open(version_file_path, 'w+') as file_object:
+            with open(version_file_path, 'w') as file_object:
                 file_object.write(mayan.__version__)
 
-            with open(secret_key_file_path, 'w+') as file_object:
+            with open(secret_key_file_path, 'w') as file_object:
                 secret_key = get_random_secret_key()
                 file_object.write(secret_key)
 
             settings.SECRET_KEY = secret_key
+        else:
+            self.stdout.write(
+                self.style.NOTICE(
+                    'Existing media files at: {0}. Backup, remove this folder, '
+                    'and try again. Or use the --force argument'.format(
+                        settings.MEDIA_ROOT
+                    )
+                )
+            )
 
     def handle(self, *args, **options):
-        self.initialize_system()
+        self.initialize_system(force=options.get('force', False))
         pre_initial_setup.send(sender=self)
         management.call_command('installjavascript', interactive=False)
         management.call_command('createautoadmin', interactive=False)
