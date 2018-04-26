@@ -16,9 +16,13 @@ import sys
 
 from django.utils.translation import ugettext_lazy as _
 
+import environ
+
 import mayan
 
 from .literals import DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -33,7 +37,7 @@ SECRET_KEY = DEFAULT_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '[::1]']
+ALLOWED_HOSTS = env.list('MAYAN_ALLOWED_HOSTS', default=['127.0.0.1', 'localhost', '[::1]'])
 
 # Application definition
 

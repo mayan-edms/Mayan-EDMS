@@ -68,6 +68,7 @@ django-colorful==1.2
 django-compressor==2.2
 django-cors-headers==2.2.0
 django-downloadview==1.9
+django-environ==0.4.4
 django-formtools==2.1
 django-pure-pagination==0.3.0
 django-mathfilters==0.4.0

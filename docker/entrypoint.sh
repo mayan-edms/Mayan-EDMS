@@ -6,6 +6,7 @@ INSTALL_FLAG=/var/lib/mayan/media/system/SECRET_KEY
 
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-3}
+export MAYAN_ALLOWED_HOSTS=*
 
 chown mayan:mayan /var/lib/mayan -R
 
