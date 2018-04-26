@@ -7,7 +7,6 @@ import os
 import poplib
 import subprocess
 
-from flanker import mime
 import yaml
 
 from django.core.exceptions import ValidationError
@@ -553,6 +552,8 @@ class EmailBaseModel(IntervalBaseModel):
 
     @staticmethod
     def process_message(source, message_text):
+        from flanker import mime
+
         counter = 1
         message = mime.from_string(force_str(message_text))
         metadata_dictionary = {}
