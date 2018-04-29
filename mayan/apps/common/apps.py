@@ -1,7 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
+import errno
 import logging
+import os
 import warnings
 
 from kombu import Exchange, Queue
@@ -91,6 +93,15 @@ class CommonApp(MayanAppConfig):
         super(CommonApp, self).ready()
         if check_for_sqlite():
             warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
+
+        # Create the media folder
+        if not os.path.exists(settings.MEDIA_ROOT):
+            # Create the media folder
+            try:
+                os.makedirs(settings.MEDIA_ROOT)
+            except OSError as exception:
+                if exception.errno == errno.EEXIST:
+                    pass
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
