@@ -12,7 +12,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import ErrorLogEntryManager
-from .storages import sharedupload_storage
+from .storages import storage_sharedupload
 
 
 def upload_to(instance, filename):
@@ -47,7 +47,7 @@ class ErrorLogEntry(models.Model):
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
     file = models.FileField(
-        storage=sharedupload_storage, upload_to=upload_to,
+        storage=storage_sharedupload, upload_to=upload_to,
         verbose_name=_('File')
     )
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))

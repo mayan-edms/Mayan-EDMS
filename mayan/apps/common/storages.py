@@ -8,7 +8,7 @@ from .settings import (
     setting_shared_storage, setting_shared_storage_arguments
 )
 
-sharedupload_storage = import_string(
+storage_sharedupload = import_string(
     dotted_path=setting_shared_storage.value
 )(
     **yaml.safe_load(
