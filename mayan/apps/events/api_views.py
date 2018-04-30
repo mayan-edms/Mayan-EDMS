@@ -140,7 +140,10 @@ class APINotificationListView(generics.ListAPIView):
     def get_queryset(self):
         parameter_read = self.request.GET.get('read')
 
-        queryset = Notification.objects.filter(user=self.request.user)
+        if self.request.user.is_authenticated:
+            queryset = Notification.objects.filter(user=self.request.user)
+        else:
+            queryset = Notification.objects.none()
 
         if parameter_read == 'True':
             queryset = queryset.filter(read=True)
