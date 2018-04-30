@@ -7,6 +7,9 @@ INSTALL_FLAG=/var/lib/mayan/media/system/SECRET_KEY
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-3}
 export MAYAN_ALLOWED_HOSTS=*
+export CELERY_ALWAYS_EAGER=True
+export MAYAN_CELERY_RESULT_BACKEND=${MAYAN_CELERY_RESULT_BACKEND:-redis://127.0.0.1:6379/0}
+export MAYAN_BROKER_URL=${MAYAN_BROKER_URL:-redis://127.0.0.1:6379/0}
 
 chown mayan:mayan /var/lib/mayan -R
 
