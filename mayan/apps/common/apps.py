@@ -94,15 +94,6 @@ class CommonApp(MayanAppConfig):
         if check_for_sqlite():
             warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
 
-        # Create the media folder
-        if not os.path.exists(settings.MEDIA_ROOT):
-            # Create the media folder
-            try:
-                os.makedirs(settings.MEDIA_ROOT)
-            except OSError as exception:
-                if exception.errno == errno.EEXIST:
-                    pass
-
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 'task_delete_stale_uploads': {
@@ -185,8 +176,9 @@ class CommonApp(MayanAppConfig):
             else:
                 level = 'ERROR'
                 handlers = ['console']
-                if os.path.exists(settings.MEDIA_ROOT):
-                    handlers.append('logfile')
+
+            if os.path.exists(settings.MEDIA_ROOT):
+                handlers.append('logfile')
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
@@ -196,30 +188,32 @@ class CommonApp(MayanAppConfig):
                     'level': level,
                 }
 
-            logging.config.dictConfig(
-                {
-                    'version': 1,
-                    'disable_existing_loggers': False,
-                    'formatters': {
-                        'intermediate': {
-                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                        },
-                        'logfile': {
-                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                        },
+            logging_configuration = {
+                'version': 1,
+                'disable_existing_loggers': False,
+                'formatters': {
+                    'intermediate': {
+                        'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                     },
-                    'handlers': {
-                        'console': {
-                            'class': 'logging.StreamHandler',
-                            'formatter': 'intermediate',
-                            'level': 'DEBUG',
-                        },
-                        'logfile': {
-                            'class': 'logging.handlers.WatchedFileHandler',
-                            'filename': setting_production_error_log_path.value,
-                            'formatter': 'logfile'
-                        },
+                    'logfile': {
+                        'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                     },
-                    'loggers': loggers
+                },
+                'handlers': {
+                    'console': {
+                        'class': 'logging.StreamHandler',
+                        'formatter': 'intermediate',
+                        'level': 'DEBUG',
+                    },
+                },
+                'loggers': loggers
+            }
+
+            if os.path.exists(settings.MEDIA_ROOT):
+                logging_configuration['handlers']['logfile'] = {
+                        'class': 'logging.handlers.WatchedFileHandler',
+                        'filename': setting_production_error_log_path.value,
+                        'formatter': 'logfile'
                 }
-            )
+
+            logging.config.dictConfig(logging_configuration)
