@@ -14,7 +14,9 @@ class Command(management.BaseCommand):
             pre_upgrade.send(sender=self)
         except Exception as exception:
             raise CommandError(
-                'Error during pre_upgrade signal: %s' % exception
+                'Error during pre_upgrade signal: %s, %s' % (
+                    exception, type(exception)
+                )
             )
 
         management.call_command('installjavascript', interactive=False)
@@ -23,12 +25,16 @@ class Command(management.BaseCommand):
             perform_upgrade.send(sender=self)
         except Exception as exception:
             raise CommandError(
-                'Error during perform_upgrade signal; %s' % exception
+                'Error during perform_upgrade signal; %s, %s' % (
+                    exception, type(exception)
+                )
             )
 
         try:
             post_upgrade.send(sender=self)
         except Exception as exception:
             raise CommandError(
-                'Error during post_upgrade signal; %s' % exception
+                'Error during post_upgrade signal; %s, %s' % (
+                    exception, type(exception)
+                )
             )
