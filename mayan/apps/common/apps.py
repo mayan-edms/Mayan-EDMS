@@ -184,7 +184,9 @@ class CommonApp(MayanAppConfig):
                 handlers = ['console']
             else:
                 level = 'ERROR'
-                handlers = ['console', 'logfile']
+                handlers = ['console']
+                if os.path.exists(settings.MEDIA_ROOT):
+                    handlers.append('logfile')
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
