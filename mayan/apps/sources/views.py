@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
@@ -39,6 +41,8 @@ from .permissions import (
 )
 from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
+
+logger = logging.getLogger(__name__)
 
 
 class SourceLogListView(SingleObjectListView):
@@ -241,30 +245,44 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 messages.error(self.request, exception)
 
-            task_source_handle_upload.apply_async(
-                kwargs=dict(
-                    description=forms['document_form'].cleaned_data.get('description'),
-                    document_type_id=self.document_type.pk,
-                    expand=expand,
-                    label=label,
-                    language=forms['document_form'].cleaned_data.get('language'),
-                    querystring=uri_to_iri(
-                        '?{}&{}'.format(
-                            self.request.GET.urlencode(), self.request.POST.urlencode()
-                        )
-                    ),
-                    shared_uploaded_file_id=shared_uploaded_file.pk,
-                    source_id=self.source.pk,
-                    user_id=user_id,
+            try:
+                task_source_handle_upload.apply_async(
+                    kwargs=dict(
+                        description=forms['document_form'].cleaned_data.get('description'),
+                        document_type_id=self.document_type.pk,
+                        expand=expand,
+                        label=label,
+                        language=forms['document_form'].cleaned_data.get('language'),
+                        querystring=uri_to_iri(
+                            '?{}&{}'.format(
+                                self.request.GET.urlencode(), self.request.POST.urlencode()
+                            )
+                        ),
+                        shared_uploaded_file_id=shared_uploaded_file.pk,
+                        source_id=self.source.pk,
+                        user_id=user_id,
+                    )
                 )
-            )
-            messages.success(
-                self.request,
-                _(
-                    'New document queued for uploaded and will be available '
-                    'shortly.'
+            except Exception as exception:
+                message = _(
+                    'Error executing document upload task; '
+                    '%(exception)s, %(exception_class)s'
+                ) % {
+                    'exception': exception,
+                    'exception_class': type(exception),
+                }
+                logger.critical(
+                    message, exc_info=True
                 )
-            )
+                raise type(exception)(message)
+            else:
+                messages.success(
+                    self.request,
+                    _(
+                        'New document queued for uploaded and will be available '
+                        'shortly.'
+                    )
+                )
 
         return HttpResponseRedirect(
             '{}?{}'.format(
