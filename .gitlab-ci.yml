@@ -14,7 +14,7 @@ variables:
   MYSQL_DATABASE: "mayan_edms"
 test:mysql:
   services:
-  - mysql:latest
+  - mysql:8.0.3
   script:
   - apt-get install -qq libmysqlclient-dev
   - pip install -r requirements/testing.txt
