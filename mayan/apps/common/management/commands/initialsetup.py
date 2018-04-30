@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import errno
 import os
 
 from django.conf import settings
@@ -36,7 +37,7 @@ class Command(management.BaseCommand):
             try:
                 os.makedirs(settings.MEDIA_ROOT)
             except OSError as exception:
-                if exception.errno == 17 and force:
+                if exception.errno == errno.EEXIST and force:
                     pass
 
             # Touch media/__init__.py
