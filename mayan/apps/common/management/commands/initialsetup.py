@@ -40,14 +40,11 @@ class Command(management.BaseCommand):
                 if exception.errno == errno.EEXIST and force:
                     pass
 
-            # Touch media/__init__.py
-            Command.touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
-
             # Create media/settings
             try:
                 os.makedirs(settings_path)
             except OSError as exception:
-                if exception.errno == 17 and force:
+                if exception.errno == errno.EEXIST and force:
                     pass
 
             # Touch media/settings/__init__.py
@@ -57,7 +54,7 @@ class Command(management.BaseCommand):
             try:
                 os.makedirs(system_path)
             except OSError as exception:
-                if exception.errno == 17 and force:
+                if exception.errno == errno.EEXIST and force:
                     pass
 
             version_file_path = os.path.join(system_path, 'VERSION')
