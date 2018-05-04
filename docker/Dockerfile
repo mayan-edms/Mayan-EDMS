@@ -39,6 +39,7 @@ apt-get install -y --no-install-recommends \
         python-setuptools \
         python-wheel \
         redis-server \
+        sane-utils \
         supervisor \
         tesseract-ocr \
         zlib1g-dev \
@@ -76,7 +77,7 @@ WORKDIR /code
 
 COPY . /code
 
-RUN apt-get update && apt-get install make python-dev python-pip -y 
+RUN apt-get update && apt-get install make python-dev python-pip -y
 
 RUN pip install -r requirements/build.txt
 
@@ -99,14 +100,7 @@ RUN pip install *.whl && \
 rm *.whl
 
 # Setup supervisor
-#RUN mkdir /etc/supervisor.d/
-COPY docker/etc/supervisor/beat.conf /etc/supervisor/conf.d
-COPY docker/etc/supervisor/gunicorn.conf /etc/supervisor/conf.d
-COPY docker/etc/supervisor/redis.conf /etc/supervisor/conf.d
-COPY docker/etc/supervisor/workers.conf /etc/supervisor/conf.d
-
-# Create the directory for the logs
-RUN mkdir /var/log/mayan
+COPY docker/etc/supervisor/mayan.conf /etc/supervisor/conf.d
 
 # Fix ownership
 RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
