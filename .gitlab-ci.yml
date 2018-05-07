@@ -56,7 +56,7 @@ test-mysql:
     - apt-get install -qq libmysqlclient-dev mysql-client
     - pip install mysql-python
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   tags:
     - mysql
     
@@ -70,7 +70,7 @@ test-postgres:
   script:
     - apt-get install -qq libpq-dev
     - pip install psycopg2
-    - manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   tags:
     - postgres
     
