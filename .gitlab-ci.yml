@@ -1,6 +1,7 @@
 stages:
   - test
   - build
+  
 job_docker_master:
   stage: build      
   image: docker:latest
@@ -13,6 +14,7 @@ job_docker_master:
     - docker push "$CI_REGISTRY_IMAGE"
   only:
     - master
+    
 job_docker_other:
   stage: build
   image: docker:latest
@@ -25,12 +27,14 @@ job_docker_other:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
-job_python:
+
+.test_base: &test_base
   stage: test
   image: ubuntu:16.04
   cache:
     paths:
-    - ~/.cache/pip/
+      - ~/.cache/pip/
+      - /var/cache/apt/archives/
   before_script:
     - apt-get -qq update
     - apt-get install -qq locales
@@ -39,37 +43,39 @@ job_python:
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
     - apt-get install -qq curl gcc ghostscript gpgv gnupg graphviz libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
+    - pip install -r requirements/testing.txt
+    
+test-mysql:
+  <<: *test_base
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+  services:
+    - mysql:8.0.3
+  script:
+    - apt-get install -qq libmysqlclient-dev mysql-client
+    - pip install mysql-python
+    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
+    - manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+  tags:
+    - mysql
+    
+test-postgres:
+  <<: *test_base
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
-  test:mysql:
-    services:
-    - mysql:8.0.3
-    script:
-    - apt-get install -qq libmysqlclient-dev
-    - pip install -r requirements/testing.txt
-    - pip install mysql-python
-    - apt-get install -qq mysql-client
-    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - coverage run manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
-    - codecov
-    tags:
-      - mysql
-  test:postgres:
-    services:
+  services:
     - postgres
-    script:
+  script:
     - apt-get install -qq libpq-dev
-    - pip install -r requirements/testing.txt
     - pip install psycopg2
-    - coverage run manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
-    - codecov
-    tags:
-      - postgres
-  test:sqlite:
-    script:
-    - pip install -r requirements/testing.txt
+    - manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+  tags:
+    - postgres
+    
+test-sqlite:
+  <<: *test_base
+  script:
     - coverage run manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
     - codecov
