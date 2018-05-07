@@ -1,25 +1,30 @@
 stages:
   - test
   - build
-job_docker:
+job_docker_master:
   stage: build      
   image: docker:latest
   services:
     - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  build:master:
-    script:
-      - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
-      - docker push "$CI_REGISTRY_IMAGE"
-    only:
-      - master
-  build:other:
-    script:
-      - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
-      - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-    except:
-      - master
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+job_docker_other:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  except:
+    - master
 job_python:
   stage: test
   image: ubuntu:16.04
