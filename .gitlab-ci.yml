@@ -1,4 +1,7 @@
 image: ubuntu:16.04
+cache:
+  paths:
+  - ~/.cache/pip/
 before_script:
   - apt-get -qq update
   - apt-get install -qq locales
