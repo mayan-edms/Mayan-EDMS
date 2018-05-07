@@ -8,15 +8,13 @@ job_docker:
     - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  build-master:
-    stage: build
+  build:master:
     script:
       - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
       - docker push "$CI_REGISTRY_IMAGE"
     only:
       - master
-  build:
-    stage: build
+  build:other:
     script:
       - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
       - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
