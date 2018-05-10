@@ -17,7 +17,7 @@ setting_gpg_home = namespace.add_setting(
     is_path=True
 )
 setting_gpg_path = namespace.add_setting(
-    global_name='SIGNATURES_GPG_PATH', default='/usr/bin/gpg',
+    global_name='SIGNATURES_GPG_PATH', default='/usr/bin/gpg1',
     help_text=_('Path to the GPG binary.'), is_path=True
 )
 setting_keyserver = namespace.add_setting(
