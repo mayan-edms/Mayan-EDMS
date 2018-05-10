@@ -24,6 +24,7 @@ apt-get install -y --no-install-recommends \
         gcc \
         ghostscript \
         gpgv \
+        gnupg1 \
         graphviz \
         libffi-dev \
         libjpeg-dev \
@@ -70,6 +71,7 @@ ln -s /usr/lib/aarch64-linux-gnu/libjpeg.so /usr/lib/ \
 
 FROM debian:9.4-slim as BUILDER_IMAGE
 
+ARG APT_PROXY
 # Package caching
 RUN if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
 
