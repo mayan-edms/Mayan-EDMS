@@ -189,12 +189,10 @@ class SaneScanner(InteractiveSource):
         ), verbose_name=_('Resolution')
     )
     source = models.CharField(
-        blank=True, choices=SCANNER_SOURCE_CHOICES,
-        default=SCANNER_SOURCE_FLATBED, help_text=_(
+        blank=True, choices=SCANNER_SOURCE_CHOICES, help_text=_(
             'Selects the scan source (such as a document-feeder). If this '
             'option is not supported by your scanner, leave it blank.'
-        ), max_length=32,
-        verbose_name=_('Paper source')
+        ), max_length=32, null=True, verbose_name=_('Paper source')
     )
     adf_mode = models.CharField(
         blank=True, choices=SCANNER_ADF_MODE_CHOICES,

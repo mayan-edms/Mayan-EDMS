@@ -159,6 +159,7 @@
   MAYAN_DEBUG.
 - Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
 - New initialization command. Creates media/system and populates the SECRET_KEY and VERSION files.
+- Sane scanner source paper source now defaults to blank.
 
 2.7.3 (2017-09-11)
 ==================
