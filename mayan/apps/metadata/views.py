@@ -252,7 +252,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
 
         result = {
             'form_display_mode_table': True,
-            'submit_icon': 'fa fa-pencil',
+            'submit_icon': 'fa fa-pencil-alt',
             'submit_label': _('Edit'),
             'title': ungettext(
                 'Edit document metadata',
