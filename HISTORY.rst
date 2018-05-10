@@ -160,6 +160,13 @@
 - Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
 - New initialization command. Creates media/system and populates the SECRET_KEY and VERSION files.
 - Sane scanner source paper source now defaults to blank.
+- Merge Docker image creation back into the main repository.
+- Docker image now uses gunicorn and whitenoise instead of NGINX to server the app and
+  the static media.
+- All installation artifact are now created and read from the media folder.
+- Debian is now the Linux distribution used for the Docker image.
+- Most Docker Celery workers are now execute using a lower OS priority number.
+
 
 2.7.3 (2017-09-11)
 ==================
