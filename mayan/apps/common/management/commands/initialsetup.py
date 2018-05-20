@@ -27,6 +27,10 @@ class Command(management.BaseCommand):
             help='Force execution of the initialization process.',
         )
 
+        parser.add_argument(
+            '--no-javascript', action='store_true', dest='no_javascript',
+            help='Don\'t download the Javascript dependencies.',
+        )
     def initialize_system(self, force=False):
         system_path = os.path.join(settings.MEDIA_ROOT, SYSTEM_DIR)
         settings_path = os.path.join(settings.MEDIA_ROOT, 'settings')
@@ -79,6 +83,9 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         self.initialize_system(force=options.get('force', False))
         pre_initial_setup.send(sender=self)
-        management.call_command('installjavascript', interactive=False)
+
+        if not options.get('no_javascript', False):
+            management.call_command('installjavascript', interactive=False)
+
         management.call_command('createautoadmin', interactive=False)
         post_initial_setup.send(sender=self)
