@@ -9,8 +9,10 @@ import tarfile
 
 from furl import furl
 import requests
+from semver import max_satisfying
 
 from django.apps import apps
+from django.utils.encoding import force_bytes
 
 from .exceptions import NPMException, NPMPackgeIntegrityError
 from .utils import mkdtemp
@@ -23,15 +25,15 @@ class NPMPackage(object):
         self.version = version
 
     def _download(self):
-        with requests.get(self.metadata['dist']['tarball'], stream=True) as response:
+        with requests.get(self.download_metadata['dist']['tarball'], stream=True) as response:
             with open(name=self.tar_file_path, mode='wb') as file_object:
                 file_object.write(response.content)
 
         try:
-            upstream_algorithm_name, upstream_integrity_value = self.metadata['dist']['integrity'].split('-', 1)
+            upstream_algorithm_name, upstream_integrity_value = self.download_metadata['dist']['integrity'].split('-', 1)
         except KeyError:
             upstream_algorithm_name = 'sha1'
-            upstream_integrity_value = self.metadata['dist']['shasum']
+            upstream_integrity_value = self.download_metadata['dist']['shasum']
 
         algorithms = {
             'sha1': lambda data: hashlib.sha1(data).hexdigest(),
@@ -42,7 +44,9 @@ class NPMPackage(object):
         try:
             algorithm = algorithms[upstream_algorithm_name]
         except KeyError:
-            raise NPMException('Unknown hash algorithm: {}'.format(upstream_algorithm_name))
+            raise NPMException(
+                'Unknown hash algorithm: {}'.format(upstream_algorithm_name)
+            )
 
         with open(name=self.tar_file_path, mode='rb') as file_object:
             integrity_value = algorithm(file_object.read())
@@ -68,42 +72,75 @@ class NPMPackage(object):
             os.path.join(self.registry.module_directory, self.name)
         )
 
+    @property
+    def best_version(self):
+        if not hasattr(self, '_best_version'):
+            self._best_version = max_satisfying(
+                self.versions, force_bytes(self.version), loose=True
+            )
+            print 'Best version: {}'.format(self._best_version)
+
+        return self._best_version
+
+    @property
+    def download_metadata(self):
+        if not hasattr(self, '_download_metadata'):
+            response = requests.get(url=self.download_url)
+            self._download_metadata = response.json()
+        return self._download_metadata
+
+    @property
+    def download_url(self):
+        f = furl(self.url)
+        f.path.segments = f.path.segments + [self.best_version]
+        return f.tostr()
+
     def install(self, include_dependencies=False):
-        print 'Installing package: {}@{}'.format(self.name, self.version)
+        print 'Installing package: {}{}'.format(self.name, self.version)
 
         self._download()
         self._extract()
 
         if include_dependencies:
-            for name, version in self.metadata.get('dependencies', {}).items():
-                package = NPMPackage(registry=self.registry, name=name, version=version)
+            for name, version in self.download_metadata.get('dependencies', {}).items():
+                package = NPMPackage(
+                    registry=self.registry, name=name, version=version
+                )
                 package.install()
 
     @property
     def tar_filename(self):
         if not hasattr(self, '_tar_filename'):
-            self._tar_filename = furl(self.metadata['dist']['tarball']).path.segments[-1]
+            self._tar_filename = furl(
+                self.download_metadata['dist']['tarball']
+            ).path.segments[-1]
 
         return self._tar_filename
 
     @property
     def tar_file_path(self):
         if not hasattr(self, '_tar_file_path'):
-            self._tar_file_path = os.path.join(self.registry.cache_path, self.tar_filename)
+            self._tar_file_path = os.path.join(
+                self.registry.cache_path, self.tar_filename
+            )
 
         return self._tar_file_path
 
     @property
-    def metadata(self):
-        if not hasattr(self, '_metadata'):
-            response = requests.get(url=self.get_url())
-            self._metadata = response.json()
-        return self._metadata
-
-    def get_url(self):
+    def url(self):
         f = furl(self.registry.url)
-        f.path.segments = f.path.segments + [self.name, self.version]
+        f.path.segments = f.path.segments + [self.name]
         return f.tostr()
+
+    @property
+    def versions(self):
+        if not hasattr(self, '_versions'):
+            response = requests.get(url=self.url)
+            self._versions = [
+                force_bytes(version) for version in response.json()['versions'].keys()
+            ]
+
+        return self._versions
 
 
 class NPMRegistry(object):
