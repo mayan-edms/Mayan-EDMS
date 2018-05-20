@@ -369,3 +369,6 @@ docker-build:
 
 docker-build-with-proxy:
 	docker build -t mayanedms/mayanedms:$(DOCKER_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) .
+
+docker-shell:
+	docker exec -e TERM=$TERM -e "COLUMNS=$(tput cols)" -e "LINES=$(tput lines)" -it $(DOCKER_CONTAINER) /bin/bash
