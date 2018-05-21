@@ -10,7 +10,7 @@ MAINTAINER Roberto Rosario "roberto.rosario@mayan-edms.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
-ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 ENV PROJECT_INSTALL_DIR=/usr/local/lib/python2.7/dist-packages/mayan
 
 ARG APT_PROXY
@@ -83,6 +83,8 @@ RUN apt-get update && apt-get install make python-dev python-pip -y
 
 RUN pip install -r requirements/build.txt
 
+ENV LC_ALL C.UTF-8
+
 RUN make wheel
 
 RUN chmod 777 dist -R
@@ -96,6 +98,10 @@ FROM BASE_IMAGE
 WORKDIR /root/
 
 COPY --from=BUILDER_IMAGE /code/dist/*.whl .
+
+COPY --from=BUILDER_IMAGE /code/contrib/scripts/docker/run-tests.sh .
+
+COPY --from=BUILDER_IMAGE /code/requirements/testing-base.txt requirements-testing.txt
 
 # Install build Mayan EDMS
 RUN pip install *.whl && \
