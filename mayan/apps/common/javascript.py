@@ -8,6 +8,7 @@ import shutil
 import tarfile
 
 from furl import furl
+from pathlib import Path
 import requests
 from semver import max_satisfying
 
@@ -184,7 +185,7 @@ class JSDependencyManager(object):
 
         for app in app_config_list:
             for root, dirs, files in os.walk(os.path.join(app.path, 'static')):
-                if 'package.json' in files and not any(map(lambda x: x in root, ['node_modules', 'packages', 'vendors'])):
+                if 'package.json' in files and not (set(Path(root).parts) & set(['node_modules', 'packages', 'vendors'])):
                     print 'Installing JavaScript packages for app: {} - {}'.format(app.label, root)
                     npm_client = NPMRegistry(
                         module_directory=os.path.join(root, 'node_modules'),
