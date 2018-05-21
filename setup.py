@@ -90,6 +90,7 @@ graphviz==0.8.2
 gunicorn==19.7.1
 mock==2.0.0
 node-semver==0.3.0
+pathlib==1.0.1
 pycountry==1.20
 PyPDF2==1.26.0
 pyocr==0.5.1
