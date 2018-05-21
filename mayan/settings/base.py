@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 3rd party
     'actstream',
@@ -235,7 +236,9 @@ SITE_ID = 1
 
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
-STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
+STATIC_ROOT = os.environ.get(
+    'MAYAN_STATIC_ROOT', os.path.join(MEDIA_ROOT, 'static')
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -243,21 +246,28 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 TEST_RUNNER = 'common.tests.runner.MayanTestRunner'
 
 # --------- Django compressor -------------
+
 COMPRESS_CSS_FILTERS = (
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter'
 )
 COMPRESS_ENABLED = False
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+
 # --------- Django -------------------
+
 HOME_VIEW = 'common:home'
 LOGIN_URL = 'authentication:login_view'
 LOGIN_REDIRECT_URL = 'common:root'
 INTERNAL_IPS = ('127.0.0.1',)
+
 # ---------- Django REST framework -----------
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
@@ -267,12 +277,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
+
 # --------- Pagination --------
+
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 8,
     'MARGIN_PAGES_DISPLAYED': 2,
 }
+
 # ----------- Celery ----------
+
 CELERY_ACCEPT_CONTENT = ('json',)
 CELERY_ALWAYS_EAGER = False
 CELERY_CREATE_MISSING_QUEUES = False
@@ -285,27 +299,33 @@ CELERY_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
 # ------------ CORS ------------
+
 CORS_ORIGIN_ALLOW_ALL = True
+
 # ------ Timezone --------
+
 TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
+
 # ----- Stronghold -------
+
 STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
+
 # ----- Swagger --------
+
 SWAGGER_SETTINGS = {
     'DEFAULT_INFO': 'rest_api.schemas.openapi_info',
     'DEFAULT_MODEL_DEPTH': 1,
     'DOC_EXPANSION': 'None',
 }
+
 # ----- AJAX REDIRECT -----
+
 AJAX_REDIRECT_CODE = 278
 
-#########################
-# Environment overrides #
-#########################
-
-# Secret key
+# ----- Secret key ------
 
 environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
 if environment_secret_key:
@@ -317,18 +337,13 @@ else:
     except IOError:
         pass
 
-# Celery
+# ----- Celery -----
 
+BROKER_URL = os.environ.get('MAYAN_BROKER_URL')
 CELERY_ALWAYS_EAGER = env.bool('MAYAN_CELERY_ALWAYS_EAGER', default=True)
+CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND')
 
-CELERY_RESULT_BACKEND = os.environ.get(
-    'MAYAN_CELERY_RESULT_BACKEND'
-)
-BROKER_URL = os.environ.get(
-    'MAYAN_BROKER_URL'
-)
-
-# Database
+# ----- Database -----
 
 environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
 
@@ -349,6 +364,6 @@ if environment_database_engine:
         }
     }
 
-# Debug
+# ----- Debug -----
 
 DEBUG = env.bool('MAYAN_DEBUG', default=False)
