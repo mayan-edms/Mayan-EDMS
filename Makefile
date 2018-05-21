@@ -2,6 +2,8 @@
 
 APT_PROXY ?= `/sbin/ip route|awk '/docker0/ { print $$9 }'`:3142
 DOCKER_VERSION ?= `cat docker/version`
+CONSOLE_COLUMNS ?= `echo $$(tput cols)`
+CONSOLE_LINES ?= `echo $$(tput lines)`
 
 help:
 	@echo
@@ -371,4 +373,4 @@ docker-build-with-proxy:
 	docker build -t mayanedms/mayanedms:$(DOCKER_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) .
 
 docker-shell:
-	docker exec -e TERM=$TERM -e "COLUMNS=$(tput cols)" -e "LINES=$(tput lines)" -it $(DOCKER_CONTAINER) /bin/bash
+	docker exec -e TERM=$(TERM) -e "COLUMNS=$(CONSOLE_COLUMNS)" -e "LINES=$(CONSOLE_LINES)" -it $(DOCKER_CONTAINER) /bin/bash
