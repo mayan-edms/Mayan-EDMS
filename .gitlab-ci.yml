@@ -1,9 +1,9 @@
 stages:
   - test
   - build
-  
+
 job_docker_master:
-  stage: build      
+  stage: build
   image: docker:latest
   services:
     - docker:dind
@@ -11,10 +11,11 @@ job_docker_master:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
+    - docker run --rm "$CI_REGISTRY_IMAGE" run-tests
     - docker push "$CI_REGISTRY_IMAGE"
   only:
     - master
-    
+
 job_docker_other:
   stage: build
   image: docker:latest
@@ -24,6 +25,7 @@ job_docker_other:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run-tests
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
@@ -44,7 +46,7 @@ job_docker_other:
     - export LC_ALL=en_US.UTF-8
     - apt-get install -qq curl gcc ghostscript gpgv gnupg graphviz libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
     - pip install -r requirements/testing.txt
-    
+
 test-mysql:
   <<: *test_base
   variables:
@@ -59,7 +61,7 @@ test-mysql:
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   tags:
     - mysql
-    
+
 test-postgres:
   <<: *test_base
   variables:
@@ -73,7 +75,7 @@ test-postgres:
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   tags:
     - postgres
-    
+
 test-sqlite:
   <<: *test_base
   script:

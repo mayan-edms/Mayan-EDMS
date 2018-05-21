@@ -3,6 +3,7 @@
 set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/media/system/SECRET_KEY
+export DOCKER_ROOT=/root
 
 export MAYAN_DEFAULT_BROKER_URL=redis://127.0.0.1:6379/0
 export MAYAN_DEFAULT_CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/0
@@ -57,15 +58,29 @@ pip_installs() {
 os_package_installs || true
 pip_installs || true
 
-if [ "$1" = 'mayan' ]; then
-    # Check if this is a new install, otherwise try to upgrade the existing
-    # installation on subsequent starts
-    if [ ! -f $INSTALL_FLAG ]; then
-        initialize
-    else
-        upgrade
-    fi
-    start
-else
-    su mayan -c "mayan-edms.py $@";
-fi
+case "$1" in
+
+mayan) # Check if this is a new install, otherwise try to upgrade the existing
+       # installation on subsequent starts
+       if [ ! -f $INSTALL_FLAG ]; then
+           initialize
+       else
+           upgrade
+       fi
+       start
+       ;;
+
+run-tests) # Check if this is a new install, otherwise try to upgrade the existing
+           # installation on subsequent starts
+           if [ ! -f $INSTALL_FLAG ]; then
+               initialize
+           else
+               upgrade
+           fi
+           $DOCKER_ROOT/run-tests.sh
+           ;;
+
+*) su mayan -c "$@";
+   ;;
+
+esac
