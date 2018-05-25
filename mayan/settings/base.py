@@ -161,13 +161,6 @@ MEDIA_ROOT = os.environ.get(
     'MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media')
 )
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -344,7 +337,6 @@ CELERY_ALWAYS_EAGER = env.bool('MAYAN_CELERY_ALWAYS_EAGER', default=True)
 CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND')
 
 # ----- Database -----
-
 environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
 
 if environment_database_engine:
@@ -363,7 +355,13 @@ if environment_database_engine:
             'CONN_MAX_AGE': environment_database_conn_max_age,
         }
     }
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
+        }
+    }
 # ----- Debug -----
 
 DEBUG = env.bool('MAYAN_DEBUG', default=False)
