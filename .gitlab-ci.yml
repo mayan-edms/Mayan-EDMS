@@ -77,5 +77,6 @@ test-postgres:
 test-sqlite:
   <<: *test_base
   script:
-    - coverage run manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
-    - codecov
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+  tags:
+    - sqlite
