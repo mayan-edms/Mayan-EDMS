@@ -78,5 +78,3 @@ test-sqlite:
   <<: *test_base
   script:
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
-  tags:
-    - sqlite
