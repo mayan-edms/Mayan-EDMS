@@ -8,8 +8,8 @@ from .api_views import (
 )
 from .views import (
     DocumentOCRContent, DocumentOCRDownloadView, DocumentOCRErrorsListView,
-    DocumentSubmitView, DocumentSubmitManyView, DocumentTypeSettingsEditView,
-    DocumentTypeSubmitView, EntryListView
+    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView,
+    EntryListView
 )
 
 urlpatterns = [
@@ -26,7 +26,7 @@ urlpatterns = [
         name='document_type_submit'
     ),
     url(
-        r'^document/multiple/submit/$', DocumentSubmitManyView.as_view(),
+        r'^document/multiple/submit/$', DocumentSubmitView.as_view(),
         name='document_submit_multiple'
     ),
     url(

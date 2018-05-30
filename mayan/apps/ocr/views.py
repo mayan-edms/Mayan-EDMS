@@ -4,14 +4,12 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessControlList
 from common.generics import (
-    ConfirmView, FormView, SingleObjectDetailView, SingleObjectDownloadView,
-    SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
+    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
 
 from .forms import DocumentOCRContentForm, DocumentTypeSelectForm
@@ -44,47 +42,27 @@ class DocumentOCRContent(SingleObjectDetailView):
         }
 
 
-class DocumentSubmitView(ConfirmView):
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Submit "%s" to the OCR queue?') % self.get_object()
-        }
-
-    def get_object(self):
-        return Document.objects.get(pk=self.kwargs['pk'])
-
-    def object_action(self, instance):
-        AccessControlList.objects.check_access(
-            permissions=permission_ocr_document, user=self.request.user,
-            obj=instance
-        )
-
-        instance.submit_for_ocr()
-
-    def view_action(self):
-        instance = self.get_object()
-
-        self.object_action(instance=instance)
-
-        messages.success(
-            self.request,
-            _('Document: %(document)s was added to the OCR queue.') % {
-                'document': instance
-            }
-        )
-
-
-class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
+class DocumentSubmitView(MultipleObjectConfirmActionView):
     model = Document
+    object_permission = permission_ocr_document
     success_message = '%(count)d document submitted to the OCR queue.'
     success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
     def get_extra_context(self):
-        # Override the base class method
-        return {
-            'title': _('Submit the selected documents to the OCR queue?')
+        queryset = self.get_queryset()
+
+        result = {
+            'title': ungettext(
+                'Submit the selected document to the OCR queue?',
+                'Submit the selected documents to the OCR queue?',
+                queryset.count()
+            )
         }
+
+        return result
+
+    def object_action(self, form, instance):
+        instance.submit_for_ocr()
 
 
 class DocumentTypeSubmitView(FormView):
