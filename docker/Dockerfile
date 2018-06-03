@@ -59,10 +59,17 @@ RUN pip install psycopg2==2.7.3.2 redis==2.10.6 mysql-python==1.2.5 librabbitmq=
 
 RUN adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
 
-# Pillow can't find zlib or libjpeg on aarch64
+# Pillow can't find zlib or libjpeg on aarch64 (ODROID C2)
 RUN if [ "$(uname -m)" = "aarch64" ]; then \
 ln -s /usr/lib/aarch64-linux-gnu/libz.so /usr/lib/ && \
 ln -s /usr/lib/aarch64-linux-gnu/libjpeg.so /usr/lib/ \
+; fi
+
+# Pillow can't find zlib or libjpeg on armv7l (ODROID HC1)
+RUN if [ "$(uname -m)" = "armv7l" ]; then \
+apt-get install libssl-dev -y && \
+ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ && \
+ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
 ; fi
 
 #####################
