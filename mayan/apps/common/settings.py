@@ -55,6 +55,14 @@ setting_temporary_directory = namespace.add_setting(
     ),
     is_path=True
 )
+setting_production_error_logging = namespace.add_setting(
+    global_name='COMMON_PRODUCTION_ERROR_LOGGING',
+    default=False,
+    help_text=_(
+        'Enable error logging outside of the system error logging '
+        'capabilities.'
+    )
+)
 setting_production_error_log_path = namespace.add_setting(
     global_name='COMMON_PRODUCTION_ERROR_LOG_PATH',
     default=os.path.join(settings.MEDIA_ROOT, 'error.log'), help_text=_(

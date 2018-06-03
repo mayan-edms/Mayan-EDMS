@@ -35,7 +35,10 @@ from .menus import (
 )
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
-from .settings import setting_auto_logging, setting_production_error_log_path
+from .settings import (
+    setting_auto_logging, setting_production_error_log_path,
+    setting_production_error_logging
+)
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
@@ -176,7 +179,7 @@ class CommonApp(MayanAppConfig):
                 level = 'ERROR'
                 handlers = ['console']
 
-            if os.path.exists(settings.MEDIA_ROOT):
+            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
                 handlers.append('logfile')
 
             loggers = {}
@@ -208,11 +211,13 @@ class CommonApp(MayanAppConfig):
                 'loggers': loggers
             }
 
-            if os.path.exists(settings.MEDIA_ROOT):
+            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
                 logging_configuration['handlers']['logfile'] = {
-                        'class': 'logging.handlers.WatchedFileHandler',
+                        'backupCount': 3,
+                        'class': 'logging.handlers.RotatingFileHandler',
                         'filename': setting_production_error_log_path.value,
-                        'formatter': 'logfile'
+                        'formatter': 'logfile',
+                        'maxBytes': 1024,
                 }
 
             logging.config.dictConfig(logging_configuration)

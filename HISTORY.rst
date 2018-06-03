@@ -166,6 +166,8 @@
 - All installation artifact are now created and read from the media folder.
 - Debian is now the Linux distribution used for the Docker image.
 - Most Docker Celery workers are now execute using a lower OS priority number.
+- Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of errors in production. Defaults to False.
+- Change the error log file handle class to RotatingFileHandle to avoid an indefinitely growing log file.
 
 
 2.7.3 (2017-09-11)
