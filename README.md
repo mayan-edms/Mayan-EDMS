@@ -3,13 +3,9 @@
 [![coverage][cover]][cover-url]
 ![python][python]
 ![license][license]
-
 [![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Docker layers](https://images.microbadger.com/badges/image/mayanedms/mayanedms.svg)](https://microbadger.com/images/mayanedms/mayanedms)
-[![Docker version](https://images.microbadger.com/badges/version/mayanedms/mayanedms.svg)](https://microbadger.com/images/mayanedms/mayanedms)
-![Docker build](https://img.shields.io/docker/automated/mayanedms/mayanedms.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg?maxAge=3600)
 
 [pypi]: http://img.shields.io/pypi/v/mayan-edms.svg
 [pypi-url]: http://badge.fury.io/py/mayan-edms
