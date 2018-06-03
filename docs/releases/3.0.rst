@@ -489,6 +489,8 @@ Other changes worth mentioning
 Removals
 --------
 * Data filters app.
+* DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with
+  DOCUMENTS_LANGUAGE_CODES.
 
 Known issues
 ------------

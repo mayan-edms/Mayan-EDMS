@@ -2,16 +2,12 @@ from __future__ import unicode_literals
 
 import os
 
-import pycountry
-
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
 
-LANGUAGE_CHOICES = [
-    (i.iso639_3_code, i.name) for i in list(pycountry.languages)
-]
+from .literals import DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 
 namespace = Namespace(name='documents', label=_('Documents'))
 setting_display_width = namespace.add_setting(
@@ -93,12 +89,12 @@ setting_documentimagecache_storage_arguments = namespace.add_setting(
     )
 )
 setting_language = namespace.add_setting(
-    global_name='DOCUMENTS_LANGUAGE', default='eng',
-    help_text=_('Default documents language (in ISO639-2 format).')
+    global_name='DOCUMENTS_LANGUAGE', default=DEFAULT_LANGUAGE,
+    help_text=_('Default documents language (in ISO639-3 format).')
 )
-setting_language_choices = namespace.add_setting(
-    global_name='DOCUMENTS_LANGUAGE_CHOICES', default=LANGUAGE_CHOICES,
-    help_text=_('List of supported document languages.')
+setting_language_codes = namespace.add_setting(
+    global_name='DOCUMENTS_LANGUAGE_CODES', default=DEFAULT_LANGUAGE_CODES,
+    help_text=_('List of supported document languages. In ISO639-3 format.')
 )
 setting_disable_base_image_cache = namespace.add_setting(
     global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,

@@ -169,6 +169,8 @@
 - Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of errors in production. Defaults to False.
 - Change the error log file handle class to RotatingFileHandle to avoid an indefinitely growing log file.
 - Disable embedded signatute verification during the perform upgrade command.
+- Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the new DOCUMENTS_LANGUAGE_CODES.
+
 
 2.7.3 (2017-09-11)
 ==================
