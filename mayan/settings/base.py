@@ -31,8 +31,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
+MEDIA_ROOT = os.environ.get(
+    'MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media')
+)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = DEFAULT_SECRET_KEY
+environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
+if environment_secret_key:
+    SECRET_KEY = environment_secret_key
+else:
+    try:
+        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:
+            SECRET_KEY = file_object.read().strip()
+    except IOError:
+        SECRET_KEY = DEFAULT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -153,13 +165,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mayan.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-MEDIA_ROOT = os.environ.get(
-    'MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media')
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -317,18 +322,6 @@ SWAGGER_SETTINGS = {
 # ----- AJAX REDIRECT -----
 
 AJAX_REDIRECT_CODE = 278
-
-# ----- Secret key ------
-
-environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
-if environment_secret_key:
-    SECRET_KEY = environment_secret_key
-else:
-    try:
-        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:
-            SECRET_KEY = file_object.read().strip()
-    except IOError:
-        pass
 
 # ----- Celery -----
 
