@@ -14,9 +14,19 @@ Hardware requirements
 Docker procedure
 ----------------
 
-For the complete set of installation, configuration, upgrade, and backup
-instructions visit the Mayan EDMS Docker Hub page at:
-https://hub.docker.com/r/mayanedmsng/mayanedmsng/
+Docker is a computer program that performs operating-system-level
+virtualization also known as containerization. It allows independent
+"containers" to run within a single Linux instance, avoiding the overhead
+of starting and maintaining virtual machines (VMs).
+
+:ref:`docker`
+
+Advanced deployment
+-------------------
+
+For users with knowledge of Python, Django, Ubuntu, and databases.
+
+:ref:`deploying`
 
 
 .. _Docker: https://www.docker.com/

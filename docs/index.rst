@@ -19,14 +19,12 @@ repository for electronic documents.
 
     Installation <topics/installation>
     Features <topics/features>
-    Advanced deployment <topics/deploying>
     Release notes and upgrading <releases/index>
     Concepts <topics/index>
     Development <topics/development>
     App creation <topics/app_creation>
     Roadmap <topics/roadmap>
     Translations <topics/translations>
-    Contributors <topics/contributors>
     Licensing <topics/license>
     FAQ <topics/faq>
     Contact <topics/contact>
