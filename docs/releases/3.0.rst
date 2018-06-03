@@ -362,15 +362,20 @@ Other changes worth mentioning
 ------------------------------
 - Add Makefile target to check the format of the README.rst file.
 - Fix permission filtering when performing document page searching
-- base.js was splitted into mayan_app.js, mayan_image.js, and partial_navigation.js.
+- base.js was splitted into mayan_app.js, mayan_image.js, and
+  partial_navigation.js.
 - Cabinet detail view pagination was fixed.
 - Improve permission handling in the workflow app.
-- The checkedout detail view permission is now required for the checked out document detail API view.
+- The checkedout detail view permission is now required for the checked out
+  document detail API view.
 - Add missing services for the checkout API.
 - Fix existing checkout APIs.
-- Update API views and serializers for the latest Django REST framework version.
-- Update to the latest version the packages for building, development, documentation and testing.
-- Add statistics script to produce a report of the views, APIs and test for each app.
+- Update API views and serializers for the latest Django REST framework
+  version.
+- Update to the latest version the packages for building, development,
+  documentation and testing.
+- Add statistics script to produce a report of the views, APIs and test for
+  each app.
 - Merge base64 filename patch from Cornelius Ludmann.
 - SearchModel return interface changed. The class no longer
   returns the result_set value. Use the queryset returned instead.
@@ -378,7 +383,8 @@ Other changes worth mentioning
 - Remove unused animate.css package.
 - Add the MERC specifying javascript library usage.
 - Documents without at least a version are not scanned for duplicates.
-- Convert document thumbnails, preview, image preview and staging files to template base widgets.
+- Convert document thumbnails, preview, image preview and staging files to
+  template base widgets.
 - Unify all document widgets.
 - Printed pages are now full width.
 - Move the invalid document markup to a separate HTML template.
@@ -394,14 +400,16 @@ Other changes worth mentioning
   - test_duplicated_document_views.py
 
 - Sort smart links by label.
-- Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
+- Rename the internal name of the document type permissions namespace.
+  Existing permissions will need to be updated.
 - Removed redundant permissions checks.
 - Total test count increased to 753
 - Fix documentation formatting.
 - Add upload wizard step documentation chapter.
 - Improve and add additional diagrams.
 - Change documenation theme to rtd.
-- Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
+- Add the "to=" keyword argument to all ForeignKey, ManayToMany and
+  OneToOne Fields.
 - Rename the role groups link label from "Members" to "Groups".
 - Rename the group users link label from "Members" to "Users".
 - Don't show full document version label in the heading of the document
@@ -422,7 +430,8 @@ Other changes worth mentioning
   https://gitlab.com/mayan-edms/mayan-edms-vagrant
 - Revise and improve permission requirements for the documents app API.
 
-  - Downloading a document version now requires the document download permission instead of just the document view permission.
+  - Downloading a document version now requires the document download
+    permission instead of just the document view permission.
   - Creating a new document no longer works by having the document create
     permission in a global manner. It is now possible to create a document via
     the API by having the document permission for a specific document type.
@@ -442,15 +451,17 @@ Other changes worth mentioning
   - Fix the permission check to create workflows. Previously it had
     not effect as it has using the ``mayan_object_permissions`` instead
     of the ``mayan_view_permissions`` dictionary.
-  - Require the ``Workflow view`` permission to view the workflow instance list.
-  - Require the ``Workflow view`` permission to view a workflow instance's details.
+  - Require the ``Workflow view`` permission to view the workflow instance
+    list.
+  - Require the ``Workflow view`` permission to view a workflow instance's
+    details.
 
 - Display a proper message in the document type metadata type relationship
   view when there are no metadata types exist.
 - Improved styling and interaction of the multiple object action form.
 - Add checkbox to allow selecting all item in the item list view.
-- Update the role permission edit view require the permission grant or permission
-  revoke permissions for the selected role.
+- Update the role permission edit view require the permission grant or
+  permission revoke permissions for the selected role.
 - Add support for roles ACLs.
 - Add support for users ACLs.
 - Add support for groups ACLs.
@@ -458,33 +469,52 @@ Other changes worth mentioning
 - Invert the columns in the ACL detail view.
 - Remove the data filters feature.
 - Update Chart.js version.
-- Improve line chart appearance. Fix issue with mouse over labels next other chart margin.
+- Improve line chart appearance. Fix issue with mouse over labels next other
+  chart margin.
 - Add support for passing arguments to the OCR backend.
 - Fix issue when using workflows transitions with the new version
   upload event as trigger. Thanks to Sema @Miggaten for the find and
   the solution.
-- Make error messages persistent and increase the timeout of warning to 10 seconds.
+- Make error messages persistent and increase the timeout of warning to
+  10 seconds.
 - Improve rendering of the details form.
-- Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
-- Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
-- Add the option to enable or disable parsing when uploading a document for each document type.
-- Add a new setting option to enable automatic parsing for each new document type created.
+- Update rendering of the readonly multiselect widget to conform to Django's
+  updated field class interface.
+- Add locking for interval sources. This reduces the chance of repeated
+  documents from long running email downloads.
+- Add the option to enable or disable parsing when uploading a document for
+  each document type.
+- Add a new setting option to enable automatic parsing for each new document
+  type created.
 - Add support for HTML bodies to the user mailers.
-- Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
+- Production ALLOWED_HOSTS settings now defaults to a safer
+  ['127.0.0.1', 'localhost', '[::1]']
 - Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
-- New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER, MAYAN_CELERY_RESULT_BACKEND,
-  MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE, MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME,
-  MAYAN_DATABASE_USER, MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
+- New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER,
+  MAYAN_CELERY_RESULT_BACKEND, MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE,
+  MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME, MAYAN_DATABASE_USER,
+  MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
   MAYAN_DEBUG.
-- Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
-- New initialization command. Creates media/system and populates the SECRET_KEY and VERSION files.
+- Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to
+  ['127.0.0.1', 'localhost', '[::1]'].
+- New initialization command. Creates media/system and populates the
+  SECRET_KEY and VERSION files.
 - Sane scanner source paper source now defaults to blank.
 - Merge Docker image creation back into the main repository.
-- Docker image now uses gunicorn and whitenoise instead of NGINX to server the app and
-  the static media.
+- Docker image now uses gunicorn and whitenoise instead of NGINX to server
+  the app and the static media.
 - All installation artifact are now created and read from the media folder.
 - Debian is now the Linux distribution used for the Docker image.
 - Most Docker Celery workers are now execute using a lower OS priority number.
+- Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of
+  errors in production. Defaults to False.
+- Change the error log file handle class to RotatingFileHandle to avoid an
+  indefinitely growing log file.
+- Disable embedded signatute verification during the perform upgrade command.
+- Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the
+  new DOCUMENTS_LANGUAGE_CODES.
+- Reduce default language code choice from 7800 to the top 100 spoken
+  languages and related (https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers)
 
 Removals
 --------
