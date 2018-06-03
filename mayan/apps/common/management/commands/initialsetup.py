@@ -33,7 +33,7 @@ class Command(management.BaseCommand):
         )
     def initialize_system(self, force=False):
         system_path = os.path.join(settings.MEDIA_ROOT, SYSTEM_DIR)
-        settings_path = os.path.join(settings.MEDIA_ROOT, 'settings')
+        settings_path = os.path.join(settings.MEDIA_ROOT, 'mayan_settings')
         secret_key_file_path = os.path.join(system_path, SECRET_KEY_FILENAME)
 
         if not os.path.exists(settings.MEDIA_ROOT) or force:
@@ -43,6 +43,9 @@ class Command(management.BaseCommand):
             except OSError as exception:
                 if exception.errno == errno.EEXIST and force:
                     pass
+
+            # Touch media/__init__.py
+            Command.touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
 
             # Create media/settings
             try:
