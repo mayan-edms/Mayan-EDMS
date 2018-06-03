@@ -19,7 +19,7 @@ export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_SETTINGS_FILE=${MAYAN_SETTINGS_FILE:-mayan.settings.production}
 
 export CELERY_ALWAYS_EAGER=False
-export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT/settings
+export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
 
 chown mayan:mayan /var/lib/mayan -R
 
