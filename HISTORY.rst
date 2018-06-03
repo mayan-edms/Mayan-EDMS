@@ -168,7 +168,7 @@
 - Most Docker Celery workers are now execute using a lower OS priority number.
 - Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of errors in production. Defaults to False.
 - Change the error log file handle class to RotatingFileHandle to avoid an indefinitely growing log file.
-
+- Disable embedded signatute verification during the perform upgrade command.
 
 2.7.3 (2017-09-11)
 ==================
