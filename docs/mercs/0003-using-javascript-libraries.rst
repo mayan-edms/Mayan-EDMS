@@ -1,13 +1,13 @@
-===================================
-MERC XX: Using javascript libraries
-===================================
+==================================
+MERC 3: Using javascript libraries
+==================================
 
-:MERC: XX
+:MERC: 3
 :Author: Eric Riggs
-:Status: Draft
+:Status: Accepted
 :Type: Feature
 :Created: 2018-03-08
-:Last-Modified: 2018-03-08
+:Last-Modified: 2018-06-04
 
 .. contents:: Table of Contents
    :depth: 3

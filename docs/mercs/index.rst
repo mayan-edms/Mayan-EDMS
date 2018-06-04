@@ -19,6 +19,7 @@ Accepted
 
    0001-merc-process
    0002-test-writing
+   0003-using-javascript-libraries
 
 Draft
 -----
@@ -28,8 +29,6 @@ Draft
 
    merging-roles-and-groups
    support-forum
-   using-javascript-libraries
-
 
 
 Type
@@ -49,3 +48,4 @@ Feature
    :maxdepth: 1
 
    0002-test-writing
+   0003-using-javascript-libraries
