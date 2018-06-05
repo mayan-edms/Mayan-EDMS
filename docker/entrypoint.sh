@@ -16,7 +16,7 @@ export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
 export MAYAN_INSTALL_DIR=/usr/local/lib/python2.7/dist-packages/mayan
 export MAYAN_PYTHON_DIR=/usr/local/bin
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
-export MAYAN_SETTINGS_FILE=${MAYAN_SETTINGS_FILE:-mayan.settings.production}
+export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
 
 export CELERY_ALWAYS_EAGER=False
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
