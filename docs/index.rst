@@ -20,10 +20,34 @@ repository for electronic documents.
     Installation <topics/installation>
     Features <topics/features>
     Release notes and upgrading <releases/index>
-    Concepts <topics/index>
+
+    ACLs <topics/acls>
+    Backups <topics/backups>
+    Checkouts <topics/checkouts>
+    Document types <topics/document_types>
+    File storage <topics/file_storage>
+    Document indexes <topics/indexes>
+    Document languages <topics/languages>
+    Document signatures <topics/signatures>
+    Mailing <topics/mailing>
+    Metadata <topics/metadata>
+    OCR <topics/ocr_backend>
+    Permissions <topics/permissions>
+    Settings <topics/settings>
+    Sources <topics/sources>
+    Smart links <topics/smart_links>
+    Tags <topics/tags>
+    Transformations <topics/transformations>
+    Upload wizard <topics/upload_wizard>
+    Versioning <topics/versioning>
+
+    Docker image <topics/docker>
+    Advanced deployment <topics/deploying>
+
     Development <topics/development>
     App creation <topics/app_creation>
-    Roadmap <topics/roadmap>
+    Pending work <topics/pending_work>
+    Code statistics <topics/code_statistics>
     Translations <topics/translations>
     Licensing <topics/license>
     FAQ <topics/faq>

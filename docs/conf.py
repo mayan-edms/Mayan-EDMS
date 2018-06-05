@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = mayan.__title__
-copyright = mayan.__copyright__
+copyright = mayan.__copyright_short__
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -179,6 +179,9 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'MayanEDMSdoc'
 
+html_show_sourcelink = False
+
+html_show_sphinx = False
 
 # -- Options for LaTeX output --------------------------------------------------
 

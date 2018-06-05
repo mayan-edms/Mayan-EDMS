@@ -46,60 +46,6 @@ Forms processing
 - Remove usage of self.cleaned_data. Use self.clean_data instead.
 
 
-Other
-~~~~~
-- Python based Javascript package manager. Each app specifies what
-  library and version needs. The common app (or a new app) will add all
-  the JS loading lines automatically so that compress can detect them.
-- When moving documents to the trash update the message to "submitted"
-  and not "moved" or "deleted" since this is handled by a task queue
-  and is not immediate and doesn't delete the document.
-- When emptying the trash update the message to "submitted"
-  since this is handled by a task queue and is not immediate.
-- New app that allows creating user document filters. Will provide the
-  same service as the document filters class. Interface can be made
-  using the template language or the same UI as the smart links.
-- Allow add queue metadata that can be exported via a management command.
-  This will allow creating supervisor templates without all the worker
-  entries being hardcoded.
-- Delete .gitignore files from copied packages. Include .gitignore files
-  keep compiled or distributable files from being included in the main
-  repository. Temporary measure until a Javascript library manager is
-  added.
-- Automatically capture license information from installed Javascript
-  libraries.
-- Automatically capture license information from installed Python
-  packages.
-- Update celery to 4.1.0
-- Update to use the new class based views in the authentication app.
-  password_change(), password_change_done(), password_reset(),
-  password_reset_done(), password_reset_confirm(), and password_reset_complete()
-  function-based views are deprecated in favor of new class-based views
-  PasswordChangeView, PasswordChangeDoneView, PasswordResetView,
-  PasswordResetDoneView, PasswordResetConfirmView, and PasswordResetCompleteView.
-- django.utils.translation.string_concat() is deprecated in favor of
-  django.utils.text.format_lazy(). string_concat(strings) can be
-  replaced by format_lazy('{}' x len(strings), strings).
-  Found in converter/classes.py and metadata/forms.py.
-- Fix warnings in preparation for Django 2.0.
-- Update all tempfile.mkstemp() to tempfile.mkstemp(dir=setting_temporary_directory.value)
-- Get rid of common.utils.get_descriptor only used by common.utils.copyfile
-- Update common.utils.copyfile to use only file objects.
-- Change metadata label column from CharField to Label
-- Start testing to Python 3 compatibility.
-- Unify all RelationshipForms into a common class.
-- Add test for event subscription view.
-- Repeated templates: password_reset_confirm.html and password_reset_form.html
-- Remove unused text=get_notification_count from events.links
-- Reduce number of languages so dropzone view starts faster.
-- In DocumentComment model, rename comment field to text.
-- class MultipleInstanceActionMixin is deprecated. Replace views using this with
-  MultipleObjectFormActionView or MultipleObjectConfirmActionView
-- Subscribe to tag events
-- Subscribe to workflow events
-- Subscribe to workflow state events
-- Link to go from event notification to view. Example document workflow notification to document workflow views.
-
 Permissions
 ~~~~~~~~~~~
 - Permission should be reciprocal. Example: To be able to add a tag to a
@@ -228,37 +174,6 @@ Distribution
   the JS loading lines automatically so that compress can detect them.
 
 
-Other
-~~~~~
-- New app that allows creating user document filters. Will provide the
-  same service as the document filters class. Interface can be made
-  using the template language or the same UI as the smart links.
-- Allow add queue metadata that can be exported via a management command.
-  This will allow creating supervisor templates without all the worker
-  entries being hardcoded.
-- Automatically capture license information from installed Javascript
-  libraries.
-- Automatically capture license information from installed Python
-  packages.
-- Finish and merge improved compressed file branch.
-- Improve and merge PCL support branch.
-- Swtich to self hosted documentation.
-- Unify error logs in a common model. Fields: Datetime, namespace,
-  message, content type, object id.
-- Export documents as PDF. Each document image is used to create a PDF
-  dinamycally.
-- Document splitting. Only for PDF files first. A document versions
-  relationship between the documents has to be designed.
-- Manually linking documents.
-- Migrate settings/base.py to Django's 1.11 format.
-- Rename model methods to use ``get_`` or ``do_``
-- Hunt TODO
-- Hunt FIXME
-- Convert SETTING_GPG_BACKEND into a setting option similar to converter and converter options.
-- Reorganize modelForms Meta class and methods.
-- Periodic messages, like notifications. Using an AJAX worker.
-
-
 Metadata
 ~~~~~~~~
 - Metadata lookup memory. Add a select2 style widget that will query a
@@ -296,3 +211,102 @@ Workflows
   UI as the smart links app. Will allow restricting the firing of workflow
   actions by an user defined filter criteria.
 - New workflow action: send email. Subject and content are templates.
+
+
+Other
+~~~~~
+- Python based Javascript package manager. Each app specifies what
+  library and version needs. The common app (or a new app) will add all
+  the JS loading lines automatically so that compress can detect them.
+- When moving documents to the trash update the message to "submitted"
+  and not "moved" or "deleted" since this is handled by a task queue
+  and is not immediate and doesn't delete the document.
+- When emptying the trash update the message to "submitted"
+  since this is handled by a task queue and is not immediate.
+- New app that allows creating user document filters. Will provide the
+  same service as the document filters class. Interface can be made
+  using the template language or the same UI as the smart links.
+- Allow add queue metadata that can be exported via a management command.
+  This will allow creating supervisor templates without all the worker
+  entries being hardcoded.
+- Delete .gitignore files from copied packages. Include .gitignore files
+  keep compiled or distributable files from being included in the main
+  repository. Temporary measure until a Javascript library manager is
+  added.
+- Automatically capture license information from installed Javascript
+  libraries.
+- Automatically capture license information from installed Python
+  packages.
+- Update celery to 4.1.0
+- Update to use the new class based views in the authentication app.
+  password_change(), password_change_done(), password_reset(),
+  password_reset_done(), password_reset_confirm(), and password_reset_complete()
+  function-based views are deprecated in favor of new class-based views
+  PasswordChangeView, PasswordChangeDoneView, PasswordResetView,
+  PasswordResetDoneView, PasswordResetConfirmView, and PasswordResetCompleteView.
+- django.utils.translation.string_concat() is deprecated in favor of
+  django.utils.text.format_lazy(). string_concat(strings) can be
+  replaced by format_lazy('{}' x len(strings), strings).
+  Found in converter/classes.py and metadata/forms.py.
+- Fix warnings in preparation for Django 2.0.
+- Update all tempfile.mkstemp() to tempfile.mkstemp(dir=setting_temporary_directory.value)
+- Get rid of common.utils.get_descriptor only used by common.utils.copyfile
+- Update common.utils.copyfile to use only file objects.
+- Change metadata label column from CharField to Label
+- Start testing to Python 3 compatibility.
+- Unify all RelationshipForms into a common class.
+- Add test for event subscription view.
+- Repeated templates: password_reset_confirm.html and password_reset_form.html
+- Remove unused text=get_notification_count from events.links
+- Reduce number of languages so dropzone view starts faster.
+- In DocumentComment model, rename comment field to text.
+- class MultipleInstanceActionMixin is deprecated. Replace views using this with
+  MultipleObjectFormActionView or MultipleObjectConfirmActionView
+- Subscribe to tag events
+- Subscribe to workflow events
+- Subscribe to workflow state events
+- Link to go from event notification to view. Example document workflow notification to document workflow views.
+- Find replacement for ``python-gnupg``. Unstable & inconsistent API.
+- New app that allows creating user document filters. Will provide the
+  same service as the document filters class. Interface can be made
+  using the template language or the same UI as the smart links.
+- Allow add queue metadata that can be exported via a management command.
+  This will allow creating supervisor templates without all the worker
+  entries being hardcoded.
+- Automatically capture license information from installed Javascript
+  libraries.
+- Automatically capture license information from installed Python
+  packages.
+- Finish and merge improved compressed file branch.
+- Improve and merge PCL support branch.
+- Swtich to self hosted documentation.
+- Unify error logs in a common model. Fields: Datetime, namespace,
+  message, content type, object id.
+- Export documents as PDF. Each document image is used to create a PDF
+  dinamycally.
+- Document splitting. Only for PDF files first. A document versions
+  relationship between the documents has to be designed.
+- Manually linking documents.
+- Migrate settings/base.py to Django's 1.11 format.
+- Rename model methods to use ``get_`` or ``do_``
+- Hunt TODO
+- Hunt FIXME
+- Convert SETTING_GPG_BACKEND into a setting option similar to converter and converter options.
+- Reorganize modelForms Meta class and methods.
+- Periodic messages, like notifications. Using an AJAX worker.
+- Find replacement for ``python-gnupg``. Unstable & inconsistent API.
+- Google docs integration. Upload document from Google Drive.
+- Get ``dumpdata`` and ``loaddata`` working flawlessly. Will allow for easier backups, restores and database backend migrations.
+- Add generic list ordering. ``django.views.generic.list.MultipleObjectMixin`` (https://docs.djangoproject.com/en/1.8/ref/class-based-views/mixins-multiple-object/#django.views.generic.list.MultipleObjectMixin) now supports an ``ordering`` parameter.
+- Add support to convert any document to PDF. https://gitlab.mister-muffin.de/josch/img2pdf
+- Add support for combining documents.
+- Add support for splitting documents.
+- Add new document source to get documents from an URL.
+- Add support for metadata mapping files. CSV file containing filename to metadata values mapping, useful for bulk upload and migrations.
+- Add support for registering widgets to the home screen.
+- Merge mimetype and converter apps.
+- Metadata widgets (Date, time, timedate).
+- Datatime widget: https://github.com/smalot/bootstrap-datetimepicker
+- Add events for document signing app (uploaded detached signateure, signed document, deleted signature)
+- A configurable conversion process. Being able to invoke different binaries for file conversion, as opposed to the current libreoffice only solution.
+- A tool in the admin interface to mass (re)convert the files (basically the page count function, but then applied on all documents).

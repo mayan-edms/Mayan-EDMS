@@ -253,12 +253,7 @@ Steps to deploy a development version
 
 Contributing changes
 --------------------
-Once your have created and committed some new code or feature, submit a Pull
-Request. Be sure to merge with the development branch before doing a Pull
-Request so that patches apply as cleanly as possible. If there are no conflicts,
-Merge Requests can be merged directly from the website UI otherwise a manual
-command line merge has to be done and your patches might take longer to get
-merged.
+Follow the latest contributing guidelines outlined here: https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md
 
 
 Debugging
@@ -331,7 +326,7 @@ first need to install the documentation editing dependencies with::
 Then, to build an HTML version of the documentation, run the following command
 from the **docs** directory::
 
-    $ make docs_serve
+    $ make docs-serve
 
 The generated documentation can be viewed by browsing to http://127.0.0.1:8000
 or by browsing to the ``docs/_build/html`` directory.
@@ -404,50 +399,52 @@ Release checklist
 
 1. Check for missing migrations::
 
-    $ make check_missing_migrations
+    make check-missing-migrations
 
 2. Synchronize translations::
 
-    $ make translations_pull
+    make translations-pull
 
 3. Compile translations::
 
-    $ make translations_compile
+    make translations-compile
 
 4. Write release notes.
 5. Update changelog.
-6. Update requirements version in `setup.py`
-7. Bump version in `mayan/__init__.py`
-8. Scan the code with flake8 for simple style warnings.
-9. Check README.rst format with::
+6. Scan the code with flake8 for simple style warnings.
+7. Check README.rst format with::
 
-    $ python setup.py check -r -s
+    python setup.py check -r -s
 
 or with::
 
-    $ make check_readme
+    make check-readme
 
+8. Bump version in `mayan/__init__.py` and in `docker/version`.
+9. Update requirements version in `setup.py` using::
+
+    make generate-setup
 
 10. Build source package and test::
 
-    $ make test_sdist_via_docker_ubuntu
+     make test-sdist-via-docker-ubuntu
 
 11. Build wheel package and test::
 
-    $ make test_whell_via_docker_ubuntu
+     make test-wheel-via-docker-ubuntu
 
 12. Tag version::
 
-    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
+     git tag -a vX.Y.Z -m "Version X.Y.Z"
 
 13. Push tag upstream::
 
-    $ git push --tags
+     git push --tags
 
 14. Build and upload a test release::
 
-    $ make release_test_via_docker_ubuntu
+     make release-test-via-docker-ubuntu
 
 15. Build and upload a final release::
 
-    $ make release_via_docker_ubuntu
+     make release-via-docker-ubuntu

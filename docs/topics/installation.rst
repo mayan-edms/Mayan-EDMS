@@ -19,14 +19,14 @@ virtualization also known as containerization. It allows independent
 "containers" to run within a single Linux instance, avoiding the overhead
 of starting and maintaining virtual machines (VMs).
 
-:ref:`docker`
+Docker image chapter: :ref:`docker`
 
-Advanced deployment
+Direct installation
 -------------------
 
 For users with knowledge of Python, Django, Ubuntu, and databases.
 
-:ref:`deploying`
+Advanced deployment chapter: :ref:`deploying`
 
 
 .. _Docker: https://www.docker.com/

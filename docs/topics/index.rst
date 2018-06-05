@@ -1,5 +1,5 @@
-Concepts
-========
+Topics
+======
 
 Introductions to all the key parts of Mayan EDMS you'll need to know:
 

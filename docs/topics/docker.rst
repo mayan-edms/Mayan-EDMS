@@ -127,6 +127,25 @@ connections. For more information read the pertinent Django documentation
 page: [Settings, CONN_MAX_AGE](https://docs.djangoproject.com/en/1.10/ref/settings/#conn-max-age)
 
 
+``MAYAN_SETTINGS_FILE``
+
+Optional. Previously only the local.py file was the only settings file
+available to allow users to make configuration changes to their installations.
+Now with this environment variable, users are free to create multiple settings
+files and tell the Mayan EDMS container which setting file to import. The
+only requirement is that the setting file starts with a global import of
+mayan.settings.production. In the form::
+
+    from mayan.settings.production import *
+
+
+``MAYAN_GUNICORN_WORKERS``
+
+Optional. This environment variable controls the number of frontend workers
+that will be executed. If not specified the default is 2. For heavier loads,
+user a higher number. A formula recommended for this setting is the number
+of CPU cores + 1.
+
 Accessing outside data
 ======================
 

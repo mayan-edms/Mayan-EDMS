@@ -1,4 +1,4 @@
-|pypi| |builds| |coverage| |python| |license|
+|pypi| |builds| |coverage| |python| |license| |docker_pulls| |docker_stars| |docker_layers|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
@@ -20,9 +20,8 @@ The easiest way to use Mayan EDMS is by using the official Docker_ image.
 Make sure Docker is properly installed and working before attempting to install
 Mayan EDMS.
 
-For the complete set of installation, configuration, upgrade, and backup
-instructions visit the Mayan EDMS Docker Hub page at:
-https://hub.docker.com/r/mayanedms/mayanedms/
+For the complete set of installation instructions visit the Mayan EDMS documentation
+at: http://mayan.readthedocs.io/en/latest/topics/installation.html
 
 .. _Docker: https://www.docker.com/
 
@@ -47,7 +46,6 @@ Important links
 - `Translations <https://www.transifex.com/rosarior/mayan-edms/>`__
 
 
-
 .. |pypi| image:: http://img.shields.io/pypi/v/mayan-edms.svg
    :target: http://badge.fury.io/py/mayan-edms
 .. |builds| image:: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
@@ -56,3 +54,9 @@ Important links
    :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 .. |python| image:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 .. |license| image:: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
+.. |docker_pulls| image:: https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600
+   :target: https://hub.docker.com/r/mayanedms/mayanedms/
+.. |docker_stars| image:: https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600
+   :target: https://hub.docker.com/r/mayanedms/mayanedms/
+.. |docker_layers| image:: https://images.microbadger.com/badges/image/mayanedms/mayanedms.svg
+   :target: https://microbadger.com/images/mayanedms/mayanedms

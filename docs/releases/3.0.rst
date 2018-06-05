@@ -117,15 +117,15 @@ This will return only documents with the exact phrase “blue car”.
 Running multiple instances of Mayan EDMS
 ----------------------------------------
 If you've ever tried running two instances of Mayan EDMS, you would
-have noticed that they both try to create a lock file in the /tmp
+have noticed that they both try to create a lock file in the ``/tmp``
 directory with the same name. Only the first instance will be able to run.
 
 The lock filename needs to be unique to each instance, yet predictable
 so that the workers of an instance can also access the same lock file.
 
 This issues was solved by using a hexadecimal hash representation of the
-installation’s unique SECRET_KEY setting. The use of a hash makes
-reversing the value in order to obtain the SECRET_KEY impossible for
+installation’s unique ``SECRET_KEY`` setting. The use of a hash makes
+reversing the value in order to obtain the ``SECRET_KEY`` impossible for
 all practical purposes.
 
 
@@ -275,24 +275,25 @@ Storage
 -------
 It is now possible to pass arguments to the document, document cache and
 document signatures storage backends. To pass the arguments, use the new
-settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
-DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, and SIGNATURES_STORAGE_BACKEND_ARGUMENTS.
+settings: ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``,
+``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS``, and ``SIGNATURES_STORAGE_BACKEND_ARGUMENTS``.
 
-The FileBasedStorage driver originally provided has been removed.
-With this change the setting STORAGE_FILESTORAGE_LOCATION has also been removed.
-The storage driver now default to Django's own FileSystemStorage driver.
+The ``FileBasedStorage`` driver originally provided has been removed.
+With this change the setting ``STORAGE_FILESTORAGE_LOCATION`` has also been removed.
+The storage driver now default to Django's own ``FileSystemStorage`` driver.
 By using this driver each app is responsible of specifying their storage
 path. The path path (or location) is configure via the
-DOCUMENTS_STORAGE_BACKEND_ARGUMENTS, DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, or
-SIGNATURES_STORAGE_BACKEND_ARGUMENTS for the documents, document cache and document signatures respectively.
+``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``, ``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS``, or
+``SIGNATURES_STORAGE_BACKEND_ARGUMENTS`` for the documents, document cache and document signatures respectively.
 
-For example, to change the document storage location use:
+For example, to change the document storage location use::
 
-DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
-If no path is specified the backend will default to 'mayan/media/document_storage'.
+    DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
 
-Finally, to standardize the way app use storage, the .storages modules is now used
-instead of the .runtime module.
+If no path is specified the backend will default to ``mayan/media/document_storage``.
+
+Finally, to standardize the way app use storage, the ``storages.py`` modules is now used
+instead of the ``runtime.py`` module.
 
 User event filtering
 --------------------
