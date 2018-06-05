@@ -1,42 +1,33 @@
-
 APT_PROXY ?= `/sbin/ip route|awk '/docker0/ { print $$9 }'`:3142
-VERSION ?= `cat version`
+IMAGE_VERSION ?= `cat docker/version`
+CONSOLE_COLUMNS ?= `echo $$(tput cols)`
+CONSOLE_LINES ?= `echo $$(tput lines)`
 
-help:
+docker-help:
 	@echo
-	@echo "readme-render - Generate a new README.md from README.md.tmpl."
-	@echo "release - Push code to trigger and publish a new version build."
-	@echo "build - Build a new image locally."
-	@echo "build-with-proxy - Build a new image locally using an APT proxy."
-	@echo "test-container - Build and run a test container."
-	@echo "test-cleanup - Delete the test container and the test volume."
-	@echo "test-all - Build, run a test container, and executed the test suite."
+	@echo "**** Docker makefile ****"
+	@echo "docker-build - Build a new image locally."
+	@echo "docker-build-with-proxy - Build a new image locally using an APT proxy."
+	@echo "docker-test-container - Build and run a test container."
+	@echo "docker-test-cleanup - Delete the test container and the test volume."
+	@echo "docker-test-all - Build and executed the test suite in a test container."
+	@echo "docker-shell - Launch a bash instance inside a running container. Pass the container name via DOCKER_CONTAINER."
 
-readme-render:
-	@export VERSION=$(VERSION); \
-	envsubst < README.md.tmpl > README.md
+docker-build:
+	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile .
 
-release:
-	git push origin
-	git push --tags origin || true
-	git push --tags bitbucket || true
-	git push bitbucket
+docker-build-with-proxy:
+	docker build -t mayanedms/mayanedms:$(IMAGE_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) .
 
-build:
-	@export DIRECTORY=`pwd`; \
-	export PARENT_DIRECTORY=`dirname "$$DIRECTORY"`; \
-	docker build -t mayanedms/mayanedms:$(VERSION) -f $$PARENT_DIRECTORY
+docker-shell:
+	docker exec -e TERM=$(TERM) -e "COLUMNS=$(CONSOLE_COLUMNS)" -e "LINES=$(CONSOLE_LINES)" -it $(DOCKER_CONTAINER) /bin/bash
 
-build-with-proxy:
-	docker build -t mayanedms/mayanedms:$(VERSION) --build-arg APT_PROXY=$(APT_PROXY) .
+docker-test-container: docker-build-with-proxy docker-test-cleanup
+	docker run -d --name test-mayan-edms -p 80:8000 -v test-mayan_data:/var/lib/mayan mayanedms/mayanedms:$(DOCKER_VERSION)
 
-test-launch-container: build-with-proxy test-cleanup
-	docker run -d --name test-mayan-edms -p 80:80 -v test-mayan_data:/var/lib/mayan mayanedms/mayanedms:$(VERSION)
-
-test-cleanup:
+docker-test-cleanup:
 	@docker rm -f test-mayan-edms || true
 	@docker volume rm test-mayan_data || true
 
-test-all: test-launch-container
-	docker exec -ti test-mayan-edms sh -c "apt-get update && apt-get install -y tesseract-ocr-deu"
-	docker exec -ti test-mayan-edms sh -c "mayan-edms.py test --mayan-apps"
+docker-test-all: docker-build-with-proxy
+	docker run --rm run-tests
