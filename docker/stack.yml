@@ -10,17 +10,15 @@ services:
 
   db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_DB: mayan
       POSTGRES_PASSWORD: mayan-password
       POSTGRES_USER: mayan
 
   app:
-    image: registry.gitlab.com/mayan-edms/mayan-edms:v3-0b3
-    restart: always
+    image: mayanedms/mayanedms:latest
     ports:
-      - 8000:8000
+      - 80:8000
     environment:
       MAYAN_DATABASE_ENGINE: django.db.backends.postgresql
       MAYAN_DATABASE_HOST: db
