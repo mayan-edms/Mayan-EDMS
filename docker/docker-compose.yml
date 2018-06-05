@@ -36,7 +36,7 @@ services:
       - db:/var/lib/postgresql/data
   mayan-edms:
     container_name: mayan-edms-app
-    image: mayanedms/mayanedms:2.6
+    image: mayanedms/mayanedms:latest
     depends_on:
       broker:
         condition: service_healthy
@@ -53,6 +53,6 @@ services:
       MAYAN_DATABASE_PASSWORD: mayan-password
       MAYAN_DATABASE_USER: mayan
     ports:
-      - "80:80"
+      - "80:8000"
     volumes:
       - app:/var/lib/mayan
