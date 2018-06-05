@@ -86,7 +86,6 @@ Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``::
         MAYAN_DATABASE_PASSWORD=mayanuserpass,
         MAYAN_DATABASE_USER=mayan,
         MAYAN_DATABASE_CONN_MAX_AGE=60,
-        MAYAN_SIGNATURES_GPG_PATH=/usr/bin/gpg1
         DJANGO_SETTINGS_MODULE=mayan.settings.production
 
     [program:mayan-gunicorn]

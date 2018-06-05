@@ -14,15 +14,61 @@ Start a Mayan EDMS instance
 With Docker properly installed, proceed to download the Mayan EDMS image using the command::
 
     docker pull mayanedms/mayanedms:<version>
-    docker run -d --name mayan-edms --restart=always -p 80:8000 -v /docker-volumes/mayan:/var/lib/mayan mayanedms/mayanedms:<version>
 
-Change <version> with the latest version in numeric form (example: 2.7.3) or user the ``latest`` identifier.
+Then download version 9.5 of the Docker PostgreSQL image::
 
-The container will be available by browsing to ``http://localhost``
+    docker pull postgres:9.5
 
-All files will be stored in the directory ``/docker-volumes/mayan``
+Create and run a PostgreSQL container::
 
-If another web server is running on port 80 use a different port in the ``-p`` option, ie: ``-p 81:8000``.
+    docker run -d \
+    --name mayan-emds-postgres \
+    --restart=always \
+    -p 5432:5432 \
+    -e POSTGRES_USER=mayan \
+    -e POSTGRES_DB=mayan \
+    -e POSTGRES_PASSWORD=mayanuserpass \
+    -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
+    -d postgres:9.5
+
+The PostgreSQL container will have one database named ``mayan``, with an user
+named ``mayan`` too, with a password of ``mayanuserpass``. The container will
+expose its internal 5432 port (PostgreSQL's default port) via the host's
+5432 port. The data of this container will reside on the host's
+``/docker-volumes/mayan-edms/postgres`` folder.
+
+Finally create and run a Mayan EDMS container. Change <version> with the
+latest version in numeric form (example: 2.7.3) or use the ``latest``
+identifier::
+
+    docker run -d \
+    --name mayan-edms \
+    --restart=always \
+    -p 80:8000 \
+    -e MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
+    -e MAYAN_DATABASE_HOST=172.17.0.1 \
+    -e MAYAN_DATABASE_NAME=mayan \
+    -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
+    -e MAYAN_DATABASE_USER=mayan \
+    -e MAYAN_DATABASE_CONN_MAX_AGE=60 \
+    -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+    mayanedms/mayanedms:<version>
+
+The Mayan EDMS container will connect to the PostgreSQL container via the
+``172.17.0.1`` IP address (the Docker host's default IP address). It will
+connect using the ``django.db.backends.postgresql`` database drivern and
+connect to the ``mayan`` database using the ``mayan`` user with the password
+``mayanuserpass``. The container will keep connections to the database
+for up to 60 seconds in an attempt to reuse them increasing response time
+and reducing memory usage. The files of the container will be store in the
+host's ``/docker-volumes/mayan-edms/media`` folder. The container will
+expose its web service running on port 8000 on the host's port 80.
+
+The container will be available by browsing to ``http://localhost`` or to
+the IP address of the computer running the container.
+
+If another web server is running on port 80 use a different port in the
+``-p`` option. For example: ``-p 81:8000``.
 
 
 Stopping and starting the container
@@ -49,9 +95,9 @@ Defaults to ``None``. This environment variable configures the database
 backend to use. If left unset, SQLite will be used. The database backends
 supported by this Docker image are:
 
-- 'django.db.backends.postgresql'
-- 'django.db.backends.mysql'
-- 'django.db.backends.sqlite3' same as ``None``
+- ``'django.db.backends.postgresql'``
+- ``'django.db.backends.mysql'``
+- ``'django.db.backends.sqlite3'``
 
 When using the SQLite backend, the database file will be saved in the Docker
 volume. The SQLite database as used by Mayan EDMS is meant only for development
@@ -61,40 +107,51 @@ or testing, never use it in production.
 
 Defaults to 'mayan'. This optional environment variable can be used to define
 the database name that Mayan EDMS will connect to. For more information read
-the pertinent Django documentation page:
-[Connecting to the database](https://docs.djangoproject.com/en/1.10/ref/databases/#connecting-to-the-database)
+the pertinent Django documentation page: `Connecting to the database`_
+
+.. _Connecting to the database: https://docs.djangoproject.com/en/1.10/ref/databases/#connecting-to-the-database
 
 ``MAYAN_DATABASE_USER``
 
 Defaults to 'mayan'. This optional environment variable is used to set the
 username that will be used to connect to the database. For more information
-read the pertinent Django documentation page: [Settings, USER](https://docs.djangoproject.com/en/1.10/ref/settings/#user)
+read the pertinent Django documentation page: `Settings, USER`_
+
+.. _Settings, USER: https://docs.djangoproject.com/en/1.10/ref/settings/#user
 
 ``MAYAN_DATABASE_PASSWORD``
 
 Defaults to ''. This optional environment variable is used to set the
 password that will be used to connect to the database. For more information
-read the pertinent Django documentation page: [Settings, PASSWORD](https://docs.djangoproject.com/en/1.10/ref/settings/#password)
+read the pertinent Django documentation page: `Settings, PASSWORD`_
+
+.. _Settings, PASSWORD: https://docs.djangoproject.com/en/1.10/ref/settings/#password
 
 ``MAYAN_DATABASE_HOST``
 
 Defaults to `None`. This optional environment variable is used to set the
 hostname that will be used to connect to the database. This can be the
 hostname of another container or an IP address. For more information read
-the pertinent Django documentation page: [Settings, HOST](https://docs.djangoproject.com/en/1.10/ref/settings/#host)
+the pertinent Django documentation page: `Settings, HOST`_
+
+.. _Settings, HOST: https://docs.djangoproject.com/en/1.10/ref/settings/#host
 
 ``MAYAN_DATABASE_PORT``
 
 Defaults to `None`. This optional environment variable is used to set the
 port number to use when connecting to the database. An empty string means
 the default port. Not used with SQLite. For more information read the
-pertinent Django documentation page: [Settings, PORT](https://docs.djangoproject.com/en/1.11/ref/settings/#port)
+pertinent Django documentation page: `Settings, PORT`_
+
+.. _Settings, PORT: https://docs.djangoproject.com/en/1.11/ref/settings/#port
 
 ``MAYAN_BROKER_URL``
 
 This optional environment variable determines the broker that Celery will use
 to relay task messages between the frontend code and the background workers.
-For more information read the pertinent Celery Kombu documentation page: [Broker URL](http://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls)
+For more information read the pertinent Celery Kombu documentation page: `Broker URL`_
+
+.. _Broker URL: http://kombu.readthedocs.io/en/latest/userguide/connections.html#connection-urls
 
 This Docker image supports using Redis and RabbitMQ as brokers.
 
@@ -107,7 +164,9 @@ be disabled.
 This optional environment variable determines the results backend that Celery
 will use to relay result messages from the background workers to the frontend
 code. For more information read the pertinent Celery Kombu documentation page:
-[Task result backend settings](http://docs.celeryproject.org/en/3.1/configuration.html#celery-result-backend)
+`Task result backend settings`_
+
+.. _Task result backend settings: http://docs.celeryproject.org/en/3.1/configuration.html#celery-result-backend
 
 This Docker image supports using Redis and RabbitMQ as result backends.
 
@@ -124,17 +183,19 @@ Optional. Allows loading an alternate settings file.
 
 Amount in seconds to keep a database connection alive. Allow reuse of database
 connections. For more information read the pertinent Django documentation
-page: [Settings, CONN_MAX_AGE](https://docs.djangoproject.com/en/1.10/ref/settings/#conn-max-age)
+page: `Settings, CONN_MAX_AGE`_
+
+.. _Settings, CONN_MAX_AGE: https://docs.djangoproject.com/en/1.10/ref/settings/#conn-max-age
 
 
 ``MAYAN_SETTINGS_FILE``
 
-Optional. Previously only the local.py file was the only settings file
+Optional. Previously only the ``local.py`` file was the only settings file
 available to allow users to make configuration changes to their installations.
 Now with this environment variable, users are free to create multiple settings
 files and tell the Mayan EDMS container which setting file to import. The
 only requirement is that the setting file starts with a global import of
-mayan.settings.production. In the form::
+``mayan.settings.production``. In the form::
 
     from mayan.settings.production import *
 
@@ -159,14 +220,14 @@ container::
 
     -v /opt/scanned_files:/srv/watch_folder
 
-The complete command line would then be::
+The command line would look like this::
 
-    docker run -d --name mayan-edms --restart=always -p 80:8000 -v /docker-volumes/mayan:/var/lib/mayan -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
+    docker run ... -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
 
-Now create a watch folder in Mayan EDMS using the path `/srv/watch_folder`
-and the documents from the host folder `/opt/scanned_files` will be
+Now create a watch folder in Mayan EDMS using the path ``/srv/watch_folder``
+and the documents from the host folder ``/opt/scanned_files`` will be
 automatically available. Use the same procedure to mount host folders to be
-used as staging folderes. In this example `/srv/watch_folder` was as the
+used as staging folderes. In this example ``/srv/watch_folder`` was as the
 container directory, but any path can be used as long as it is not an
 already existing path or a path used by any other program.
 
@@ -177,7 +238,9 @@ Performing backups
 To backup the existing data, stop the image and copy the content of the volume.
 For the example::
 
-    docker run -d --name mayan-edms --restart=always -p 80:8000 -v /docker-volumes/mayan:/var/lib/mayan -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
+    docker run -d --name mayan-edms --restart=always -p 80:8000 \
+    -v /docker-volumes/mayan:/var/lib/mayan \
+    -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:latest
 
 That would be the ``/docker-volumes/mayan folder``::
 
@@ -185,7 +248,9 @@ That would be the ``/docker-volumes/mayan folder``::
     sudo chown `whoami` backup.tar.gz
 
 If using an external PostgreSQL or MySQL database or database containers, these
-too need to be backed up using their respective procedures.
+too need to be backed up using their respective procedures. A simple solution
+is to copy the entire database container volume after the container has
+been stopped.
 
 Restoring from a backup
 =======================
@@ -259,14 +324,15 @@ you can use the following environment variables:
 Specifies a list of Ubuntu .deb packages to be installed via APT when the
 container is first created. The installed packages are not lost when the image
 is stopped. Example: To install the Tesseract OCR language packs for German
-and Spanish add the following in your `docker start` command line::
+and Spanish add the following in your ``docker start`` command line::
 
     -e MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-spa"
 
 ``MAYAN_PIP_INSTALLS``
 
-Specifies a list of Python packages to be installed via `pip`. Packages will be
-downloaded from the Python Package Index (https://pypi.python.org) by default.
+Specifies a list of Python packages to be installed via ``pip``. Packages will
+be downloaded from the Python Package Index (https://pypi.python.org) by
+default.
 
 Using Docker compose
 ====================
