@@ -92,6 +92,8 @@ RUN pip install -r requirements/build.txt
 
 ENV LC_ALL C.UTF-8
 
+RUN touch docker/Makefile
+
 RUN make wheel
 
 RUN chmod 777 dist -R
