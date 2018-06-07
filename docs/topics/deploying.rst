@@ -21,7 +21,7 @@ Ubuntu
 If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
 requirements using::
 
-    apt-get install g++ gcc ghostscript gnupg1 graphviz libjpeg-dev libmagic1 \
+    sudo apt-get install g++ gcc ghostscript gnupg1 graphviz libjpeg-dev libmagic1 \
     libpq-dev libpng-dev libreoffice libtiff-dev poppler-utils postgresql \
     python-dev python-pip python-virtualenv redis-server sane-utils supervisor \
     tesseract-ocr zlib1g-dev -y
@@ -48,7 +48,7 @@ Make the mayan user the owner of the installation directory::
 
 Install Mayan EDMS from PyPI::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip --no-cache-dir install mayan-edms
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir mayan-edms
 
 Install the Python client for PostgreSQL and Redis::
 

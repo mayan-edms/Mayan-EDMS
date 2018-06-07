@@ -22,7 +22,7 @@ Then download version 9.5 of the Docker PostgreSQL image::
 Create and run a PostgreSQL container::
 
     docker run -d \
-    --name mayan-emds-postgres \
+    --name mayan-edms-postgres \
     --restart=always \
     -p 5432:5432 \
     -e POSTGRES_USER=mayan \
