@@ -19,6 +19,16 @@ virtualization also known as containerization. It allows independent
 "containers" to run within a single Linux instance, avoiding the overhead
 of starting and maintaining virtual machines (VMs).
 
+Docker can be installed using their automated script::
+
+    wget -qO- https://get.docker.com/ | sh
+
+This installs the latest versions of Docker. If you don't want run an automated
+script follow the instructions outlined in their documentation: https://docs.docker.com/install/
+
+Once the Docker installtion is finished, proceed to the link below to install
+the Docker image for Mayan EDMS.
+
 Docker image chapter: :ref:`docker`
 
 Direct installation
