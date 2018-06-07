@@ -10,15 +10,35 @@ To dump the content of your database manager refer to the documentation chapter
 regarding database data "dumping".
 
 Here is an example of how to perform a backup and a restore of a PostgreSQL
-Docker container.
+database.
 
-To backup a PostgreSQL Docker container::
+To dump the database into an SQL text file::
 
-    docker exec <container name> pg_dump -U <database user> -Fc -c <database name> > dump_`date +%Y-%m-%d"_"%H-%M-%S`.dump
+    pg_dump -h <host> -U <database user> -c <database name> -W > `date +%Y-%m-%d"_"%H-%M-%S`.sql
 
 Example::
 
-    docker exec mayan-edms-db pg_dump -U mayan -Fc -c mayan > date +%Y-%m-%d"_"%H-%M-%S`.dump
+    pg_dump -h 127.0.0.1 -U mayan -c mayan -W > `date +%Y-%m-%d"_"%H-%M-%S`.sql
+
+To restore the database from the SQL text file::
+
+    psql -h <host> -U <database user> -d <database name> -W -f <sql dump file>
+
+Example::
+
+    psql -h 127.0.0.1 -U mayan -d mayan -W -f 2018-06-07_18-10-56.sql
+
+Here is an example of how to perform a backup and a restore of a PostgreSQL
+Docker container using a compressed dump file. A dump file is not compatible or
+can be used interchangeable with an SQL text file.
+
+To backup a PostgreSQL Docker container::
+
+    docker exec <container name> pg_dump -U <database user> -Fc -c <database name> > `date +%Y-%m-%d"_"%H-%M-%S`.dump
+
+Example::
+
+    docker exec mayan-edms-db pg_dump -U mayan -Fc -c mayan > `date +%Y-%m-%d"_"%H-%M-%S`.dump
 
 This will produce a compressed dump file with the current date and time as the filename.
 
