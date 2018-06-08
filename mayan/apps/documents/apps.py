@@ -65,17 +65,17 @@ from .links import (
     link_document_page_rotate_right, link_document_page_view,
     link_document_page_view_reset, link_document_page_zoom_in,
     link_document_page_zoom_out, link_document_pages, link_document_preview,
-    link_document_print, link_document_properties, link_document_restore,
-    link_document_trash, link_document_type_create, link_document_type_delete,
-    link_document_type_edit, link_document_type_filename_create,
-    link_document_type_filename_delete, link_document_type_filename_edit,
-    link_document_type_filename_list, link_document_type_list,
-    link_document_type_setup, link_document_update_page_count,
-    link_document_version_download, link_document_version_list,
-    link_document_version_return_document, link_document_version_return_list,
-    link_document_version_revert, link_document_version_view,
-    link_duplicated_document_list, link_duplicated_document_scan,
-    link_trash_can_empty
+    link_document_print, link_document_properties, link_document_quick_download,
+    link_document_restore, link_document_trash, link_document_type_create,
+    link_document_type_delete, link_document_type_edit,
+    link_document_type_filename_create, link_document_type_filename_delete,
+    link_document_type_filename_edit, link_document_type_filename_list,
+    link_document_type_list, link_document_type_setup,
+    link_document_update_page_count, link_document_version_download,
+    link_document_version_list, link_document_version_return_document,
+    link_document_version_return_list, link_document_version_revert,
+    link_document_version_view, link_duplicated_document_list,
+    link_duplicated_document_scan, link_trash_can_empty
 )
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
@@ -441,7 +441,8 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
-                link_document_download, link_document_clear_transformations,
+                link_document_quick_download, link_document_download,
+                link_document_clear_transformations,
                 link_document_clone_transformations,
                 link_document_update_page_count,
             ), sources=(Document,)

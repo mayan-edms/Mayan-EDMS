@@ -175,7 +175,7 @@
 - On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
 - Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
   if supported.
-
+- Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
 
 2.7.3 (2017-09-11)
 ==================

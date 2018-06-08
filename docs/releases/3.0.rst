@@ -521,6 +521,7 @@ Other changes worth mentioning
 - On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
 - Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
   if supported.
+- Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
 
 Removals
 --------
@@ -530,10 +531,10 @@ Removals
 
 Known issues
 ------------
-The newly added 'flanker' dependency used to process email, produces a number of
-warning on the console that are imposible to turn off. These are not critical and
-related to coding practices in the library. All warning from flanker can be
-ignored.
+The newly added 'flanker' dependency used to process email, produces a number
+of warnings on the console that are imposible to turn off. These are not
+critical and are related to coding practices in the library. All warning
+from flanker can be ignored.
 
 Example: "WARNING:flanker.addresslib._parser.parser:Symbol 'domain' is unreachable"
 
@@ -595,6 +596,7 @@ Bugs fixed or issues closed
 * `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
 * `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
 * `GitLab issue #332 <https://gitlab.com/mayan-edms/mayan-edms/issues/332>`_ Add option to pass configuration parameters to the OCR backend as mentioned in #319
+* `GitLab issue #338 <https://gitlab.com/mayan-edms/mayan-edms/issues/338>`_ Quick download link in documents list view
 * `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
 * `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
 * `GitLab issue #405 <https://gitlab.com/mayan-edms/mayan-edms/issues/405>`_ Add wizard steps from external apps
