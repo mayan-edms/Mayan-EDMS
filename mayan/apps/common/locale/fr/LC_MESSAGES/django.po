@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2018-04-11 14:40+0000\n"
-"Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,11 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:81 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Commun"
 
-#: apps.py:86
+#: apps.py:90
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -92,7 +92,7 @@ msgstr "%(object)s mis à jour avec succès."
 msgid "About this"
 msgstr "À propos de"
 
-#: links.py:36 views.py:56
+#: links.py:36 views.py:61
 msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
@@ -132,11 +132,11 @@ msgstr "Effacer tout"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:82 views.py:156
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "Licence"
 
-#: links.py:85 views.py:231
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"
 
@@ -148,7 +148,7 @@ msgstr "Configuration"
 msgid "Support"
 msgstr "Support"
 
-#: links.py:96 queues.py:10 views.py:266
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "Outils"
 
@@ -204,7 +204,7 @@ msgstr "Espace de nommage"
 msgid "Date time"
 msgstr "Date et heure"
 
-#: models.py:37 views.py:201
+#: models.py:37 views.py:209
 msgid "Result"
 msgstr "Résultat"
 
@@ -288,13 +288,17 @@ msgstr "Valeur entière indiquant combien d'objets sont affichés sur chaque pag
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
 
-#: settings.py:51
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Répertoire temporaire utilisé pour stocker les vignettes, aperçus et fichiers temporaires."
 
-#: settings.py:59
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr "Chemin d'accès au fichier journal qui enregistrera les erreurs pendant la production."
 
@@ -309,52 +313,60 @@ msgstr "Entrez un 'nom interne' valide composé de lettres, de chiffres et de so
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
 
-#: views.py:53
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr "Votre version est à jour"
 
-#: views.py:70
+#: views.py:75
 msgid "Current user details"
 msgstr "Détails de l'utilisateur actuel"
 
-#: views.py:75
+#: views.py:80
 msgid "Edit current user details"
 msgstr "Modifier les détails de l'utilisateur actuel"
 
-#: views.py:95
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:102
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:165
+#: views.py:155
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: views.py:173
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Effacer les entrées du journal des erreurs pour : %s"
 
-#: views.py:182
+#: views.py:190
 msgid "Object error log cleared successfully"
 msgstr "Les entrées concernées du journal des erreurs ont été effacées avec succès"
 
-#: views.py:200
+#: views.py:208
 msgid "Date and time"
 msgstr "Date et heure"
 
-#: views.py:205
+#: views.py:213
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Entrées du journal des erreurs pour : %s"
 
-#: views.py:249
+#: views.py:257
 msgid "Setup items"
 msgstr "Paramètres de configuration"
 
-#: views.py:292
+#: views.py:300
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:300
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."

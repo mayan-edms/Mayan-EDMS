@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:56-0400\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:55 apps.py:121 apps.py:126 links.py:39 permissions.py:7 queues.py:8
 #: settings.py:10
@@ -306,6 +306,7 @@ msgstr "افزودن"
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "ًانواع متا داده را به اسناد اضافه کنید"
+msgstr[1] "ًانواع متا داده را به اسناد اضافه کنید"
 
 #: views.py:111
 #, python-format
@@ -346,6 +347,7 @@ msgstr "درخواست ویرایش متادیتا در اسناد %(count)d ا�
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "اسناد متاداده را ویرایش کنید"
+msgstr[1] "اسناد متاداده را ویرایش کنید"
 
 #: views.py:269
 #, python-format
@@ -381,6 +383,7 @@ msgstr "درخواست حذف متادیتا بر روی اسناد %(count)d ا
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "انواع متا داده را از اسناد حذف کنید"
+msgstr[1] "انواع متا داده را از اسناد حذف کنید"
 
 #: views.py:442
 #, python-format

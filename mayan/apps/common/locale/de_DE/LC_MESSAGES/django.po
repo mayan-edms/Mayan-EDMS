@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2018-04-10 08:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"Last-Translator: Jesaja Everling <jeverling@gmail.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:81 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Allgemein"
 
-#: apps.py:86
+#: apps.py:90
 msgid "Anonymous"
 msgstr "Anonymer Benutzer"
 
@@ -89,7 +89,7 @@ msgstr "%(object)s erfolgreich aktualisiert."
 msgid "About this"
 msgstr "Über Mayan"
 
-#: links.py:36 views.py:56
+#: links.py:36 views.py:61
 msgid "Check for updates"
 msgstr ""
 
@@ -129,11 +129,11 @@ msgstr ""
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:82 views.py:156
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "Lizenz"
 
-#: links.py:85 views.py:231
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "Andere Paket-Lizenzen"
 
@@ -145,7 +145,7 @@ msgstr "Einrichtung"
 msgid "Support"
 msgstr "Hilfe"
 
-#: links.py:96 queues.py:10 views.py:266
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -201,7 +201,7 @@ msgstr "Namensraum"
 msgid "Date time"
 msgstr "Zeit"
 
-#: models.py:37 views.py:201
+#: models.py:37 views.py:209
 msgid "Result"
 msgstr "Ergebnis"
 
@@ -285,13 +285,17 @@ msgstr "Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angi
 msgid "A storage backend that all workers can use to share files."
 msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen"
 
-#: settings.py:51
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschauen und temporären Dateien. "
 
-#: settings.py:59
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
@@ -306,52 +310,60 @@ msgstr ""
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:53
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:70
+#: views.py:75
 msgid "Current user details"
 msgstr "Aktuelle Benutzerdetails"
 
-#: views.py:75
+#: views.py:80
 msgid "Edit current user details"
 msgstr "Aktuelle Benutzerdetails bearbeiten"
 
-#: views.py:95
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "Aktuelle Benutzerlokalisierungsdetails"
 
-#: views.py:102
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"
 
-#: views.py:165
+#: views.py:155
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: views.py:173
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:182
+#: views.py:190
 msgid "Object error log cleared successfully"
 msgstr ""
 
-#: views.py:200
+#: views.py:208
 msgid "Date and time"
 msgstr "Zeit"
 
-#: views.py:205
+#: views.py:213
 #, python-format
 msgid "Error log entries for: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:257
 msgid "Setup items"
 msgstr "Einrichtungsdetails"
 
-#: views.py:292
+#: views.py:300
 msgid "No action selected."
 msgstr "Keine Aktion ausgewählt."
 
-#: views.py:300
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "Es muss mindestens ein Element ausgewählt werden."

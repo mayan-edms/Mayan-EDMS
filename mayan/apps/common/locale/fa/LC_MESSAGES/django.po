@@ -9,21 +9,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2018-04-10 08:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:81 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "مشترک"
 
-#: apps.py:86
+#: apps.py:90
 msgid "Anonymous"
 msgstr "ناشناس"
 
@@ -86,7 +86,7 @@ msgstr "%(object)s با موفقیت به روز شد"
 msgid "About this"
 msgstr "در مورد این"
 
-#: links.py:36 views.py:56
+#: links.py:36 views.py:61
 msgid "Check for updates"
 msgstr "بررسی برای به روز رسانی"
 
@@ -126,11 +126,11 @@ msgstr ""
 msgid "Forum"
 msgstr "انجمن"
 
-#: links.py:82 views.py:156
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "لیسانس"
 
-#: links.py:85 views.py:231
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "مجوزهای دیگر بسته"
 
@@ -142,7 +142,7 @@ msgstr "نصب"
 msgid "Support"
 msgstr "حمایت کردن"
 
-#: links.py:96 queues.py:10 views.py:266
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "ابزار"
 
@@ -198,7 +198,7 @@ msgstr "فضای نام"
 msgid "Date time"
 msgstr "تاریخ زمان"
 
-#: models.py:37 views.py:201
+#: models.py:37 views.py:209
 msgid "Result"
 msgstr "جواب"
 
@@ -282,13 +282,17 @@ msgstr "یک عدد صحیح که مشخص می کند چگونه تعداد ا�
 msgid "A storage backend that all workers can use to share files."
 msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
 
-#: settings.py:51
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "دایرکتوری موقت از سایت گسترده برای ذخیره ریز عکسها، پیش نمایش ها و فایل های موقت استفاده می کند."
 
-#: settings.py:59
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr "مسیر فایل logfile که خطاهای تولید را دنبال می کند."
 
@@ -303,52 +307,60 @@ msgstr "یک نام داخلی معتبر وارد کنید که شامل حرو
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "نسخه ای که استفاده می کنید قدیمی است. آخرین نسخه %s"
 
-#: views.py:53
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr "نسخه شما به روز است."
 
-#: views.py:70
+#: views.py:75
 msgid "Current user details"
 msgstr "جزئیاتا کاربر فعلی"
 
-#: views.py:75
+#: views.py:80
 msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
-#: views.py:95
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:102
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:165
+#: views.py:155
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: views.py:173
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:182
+#: views.py:190
 msgid "Object error log cleared successfully"
 msgstr ""
 
-#: views.py:200
+#: views.py:208
 msgid "Date and time"
 msgstr "تاریخ و زمان"
 
-#: views.py:205
+#: views.py:213
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "ورودی های ورود به سیستم خطا برای: %s"
 
-#: views.py:249
+#: views.py:257
 msgid "Setup items"
 msgstr "اقلام نصب"
 
-#: views.py:292
+#: views.py:300
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:300
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."

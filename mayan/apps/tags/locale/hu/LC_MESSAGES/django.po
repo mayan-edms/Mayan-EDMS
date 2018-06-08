@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:57-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -18,17 +18,13 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
-#: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
-#: views.py:184 workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:83 apps.py:90 apps.py:111 apps.py:113 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:31 permissions.py:7
+#: views.py:185 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Címkék"
 
-#: apps.py:76 apps.py:96
-msgid "Preview"
-msgstr "Előnézet"
-
-#: apps.py:100 models.py:24
+#: apps.py:104 models.py:25
 msgid "Documents"
 msgstr "Dokumentumok"
 
@@ -68,23 +64,27 @@ msgstr "Szerkesztés"
 msgid "All"
 msgstr "Mind"
 
-#: models.py:20 search.py:16
+#: models.py:21 search.py:16
 msgid "Label"
 msgstr "Cimke"
 
-#: models.py:22 search.py:20
+#: models.py:23 search.py:20
 msgid "Color"
 msgstr "Szín"
 
-#: models.py:29
+#: models.py:30
 msgid "Tag"
 msgstr "Címke"
 
-#: models.py:61
+#: models.py:54
+msgid "Preview"
+msgstr "Előnézet"
+
+#: models.py:66
 msgid "Document tag"
 msgstr "Dokumentum címke"
 
-#: models.py:62
+#: models.py:67
 msgid "Document tags"
 msgstr "Dokumentum címkék"
 
@@ -212,52 +212,52 @@ msgstr "Hiba a \"%(tag)s\" címke törlése közben: %(error)s"
 msgid "Edit tag: %s"
 msgstr "Címke szerkesztése: %s"
 
-#: views.py:207
+#: views.py:208
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumentumok a címkével: %s"
 
-#: views.py:230
+#: views.py:233
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Címkék a dokumentumon: %s"
 
-#: views.py:241
+#: views.py:246
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
 
-#: views.py:243
+#: views.py:248
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
 
-#: views.py:250
+#: views.py:255
 msgid "Remove"
 msgstr "Levétel"
 
-#: views.py:252
+#: views.py:257
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Címkék levétele %(count)d dokumentumról"
 msgstr[1] "Címkék levétele %(count)d dokumentumról"
 
-#: views.py:264
+#: views.py:269
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Címkék levétele %s dokumentumról"
 
-#: views.py:273
+#: views.py:278
 msgid "Tags to be removed."
 msgstr "Leszedendő címkék."
 
-#: views.py:299
+#: views.py:304
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "A \"%(document)s\" dokumentum nem lett \"%(tag)s\"-el megcímkézve"
 
-#: views.py:309
+#: views.py:314
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "A \"%(tag)s\" címke sikeresen leszedésre került a \"%(document)s\" dokumentumról."

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-09-22 13:31+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-06-08 01:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "OCR documents per type"
 msgstr ""
 
-#: links.py:33 links.py:37 views.py:138
+#: links.py:33 links.py:37 views.py:116
 msgid "OCR errors"
 msgstr ""
 
@@ -150,40 +150,33 @@ msgstr ""
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
-#: views.py:43
+#: views.py:41
 #, python-format
 msgid "OCR result for document: %s"
 msgstr ""
 
-#: views.py:51
-#, python-format
-msgid "Submit \"%s\" to the OCR queue?"
-msgstr ""
+#: views.py:56
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: views.py:72
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue."
-msgstr ""
-
-#: views.py:86
-msgid "Submit the selected documents to the OCR queue?"
-msgstr ""
-
-#: views.py:93
+#: views.py:71
 msgid "Submit all documents of a type for OCR"
 msgstr ""
 
-#: views.py:107
+#: views.py:85
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr ""
 
-#: views.py:130
+#: views.py:108
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
-#: views.py:156
+#: views.py:134
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""

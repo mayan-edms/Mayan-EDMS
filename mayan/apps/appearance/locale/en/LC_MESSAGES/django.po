@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:54-0400\n"
+"POT-Creation-Date: 2018-06-07 21:02-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,12 +45,6 @@ msgstr ""
 msgid ""
 "There's been an error. It's been reported to the site administrators via e-"
 "mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-
-#: templates/500.html:14
-msgid ""
-"If you need assistance, you may reference this error via the following "
-"identifier:"
 msgstr ""
 
 #: templates/appearance/about.html:8 templates/appearance/about.html:57

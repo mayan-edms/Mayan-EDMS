@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:56-0400\n"
-"PO-Revision-Date: 2017-09-23 21:30+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-06-08 01:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr "OCR Einrichtung"
 msgid "OCR documents per type"
 msgstr "Texterkennung pro Dokumententyp durchführen"
 
-#: links.py:33 links.py:37 views.py:138
+#: links.py:33 links.py:37 views.py:116
 msgid "OCR errors"
 msgstr "OCR Fehler"
 
@@ -154,40 +154,32 @@ msgstr "Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwe
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Neue Dokumententypen definieren, für die die OCR-Texterkennung automatisch durchgeführt werden soll."
 
-#: views.py:43
+#: views.py:41
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Ergebnis der OCR-Texterkennung für Dokument %s"
 
-#: views.py:51
-#, python-format
-msgid "Submit \"%s\" to the OCR queue?"
-msgstr "\"%s\" in die OCR-Warteschlange einreihen?"
+#: views.py:56
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:72
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue."
-msgstr "Dokument %(document)s in OCR-Warteschlange eingereiht"
-
-#: views.py:86
-msgid "Submit the selected documents to the OCR queue?"
-msgstr "Ausgewählte Dokumente in die OCR-Warteschlange einreihen?"
-
-#: views.py:93
+#: views.py:71
 msgid "Submit all documents of a type for OCR"
 msgstr "Alle Dokumente eines Typs in die OCR-Verarbeitung einstellen"
 
-#: views.py:107
+#: views.py:85
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d Dokumente vom Typ \"%(document_type)s\" in OCR-Warteschlange eingereiht"
 
-#: views.py:130
+#: views.py:108
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "OCR-Einstellungen für Dokumententyp %s bearbeiten"
 
-#: views.py:156
+#: views.py:134
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""

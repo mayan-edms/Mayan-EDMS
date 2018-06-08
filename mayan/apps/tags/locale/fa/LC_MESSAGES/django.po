@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:57-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -17,19 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
-#: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
-#: views.py:184 workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:83 apps.py:90 apps.py:111 apps.py:113 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:31 permissions.py:7
+#: views.py:185 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "برچسب ها"
 
-#: apps.py:76 apps.py:96
-msgid "Preview"
-msgstr "پیش نمایش"
-
-#: apps.py:100 models.py:24
+#: apps.py:104 models.py:25
 msgid "Documents"
 msgstr "اسناد"
 
@@ -69,23 +65,27 @@ msgstr "ویرایش"
 msgid "All"
 msgstr "همه"
 
-#: models.py:20 search.py:16
+#: models.py:21 search.py:16
 msgid "Label"
 msgstr "برچسب"
 
-#: models.py:22 search.py:20
+#: models.py:23 search.py:20
 msgid "Color"
 msgstr "رنگ"
 
-#: models.py:29
+#: models.py:30
 msgid "Tag"
 msgstr "برچسب"
 
-#: models.py:61
+#: models.py:54
+msgid "Preview"
+msgstr "پیش نمایش"
+
+#: models.py:66
 msgid "Document tag"
 msgstr "تگ سند"
 
-#: models.py:62
+#: models.py:67
 msgid "Document tags"
 msgstr "تگ های سند"
 
@@ -148,6 +148,7 @@ msgstr "پیوستن"
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
 msgstr[0] "برچسب ها را به اسناد %(count)d اضافه کنید: "
+msgstr[1] "برچسب ها را به اسناد %(count)d اضافه کنید: "
 
 #: views.py:56
 #, python-format
@@ -190,6 +191,7 @@ msgstr "از همه مدارک حذف خواهد شد."
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] "آیا برچسبهای انتخاب شده حذف گردد؟"
+msgstr[1] "آیا برچسبهای انتخاب شده حذف گردد؟"
 
 #: views.py:145
 #, python-format
@@ -211,51 +213,52 @@ msgstr "خطا در حذف برچسب \"%(tag)s\": %(error)s"
 msgid "Edit tag: %s"
 msgstr "ویرایش تگ: %s"
 
-#: views.py:207
+#: views.py:208
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "اسناد با برچسب: %s"
 
-#: views.py:230
+#: views.py:233
 #, python-format
 msgid "Tags for document: %s"
 msgstr "برچسب ها برای سند: %s"
 
-#: views.py:241
+#: views.py:246
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "تگ حذف درخواست انجام شده در سند %(count)d"
 
-#: views.py:243
+#: views.py:248
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "تگ حذف درخواست انجام شده در اسناد %(count)d"
 
-#: views.py:250
+#: views.py:255
 msgid "Remove"
 msgstr "برداشتن"
 
-#: views.py:252
+#: views.py:257
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "برچسب ها را از %(count)d اسناد حذف کنید: "
+msgstr[1] "برچسب ها را از %(count)d اسناد حذف کنید: "
 
-#: views.py:264
+#: views.py:269
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "برچسب ها را از سند حذف کنید: %s"
 
-#: views.py:273
+#: views.py:278
 msgid "Tags to be removed."
 msgstr "برچسب ها حذف می شوند"
 
-#: views.py:299
+#: views.py:304
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "سند \"%(document)s\" به عنوان \"%(tag)s\" برچسب گذاری نشد"
 
-#: views.py:309
+#: views.py:314
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند \"%(document)s\" حذف شد."

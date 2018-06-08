@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:57-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:51 permissions.py:7
 msgid "User management"
@@ -172,6 +172,7 @@ msgstr "درخواست حذف کاربر انجام شده در کاربران %
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "حذف کاربر"
+msgstr[1] "حذف کاربر"
 
 #: views.py:158
 #, python-format
@@ -230,6 +231,7 @@ msgstr "ارسال"
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "تغییر کلمات عبور "
+msgstr[1] "تغییر کلمات عبور "
 
 #: views.py:276
 #, python-format

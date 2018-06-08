@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:55-0400\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:68 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
@@ -184,6 +184,7 @@ msgstr "اسناد %(count)d اضافه شده به صف تجزیه و تحلی�
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] " ارسال  \"%(count)d\" از  اسناد به صف تجزیه و تحلیل"
+msgstr[1] " ارسال  \"%(count)d\" از  اسناد به صف تجزیه و تحلیل"
 
 #: views.py:105
 #, python-format

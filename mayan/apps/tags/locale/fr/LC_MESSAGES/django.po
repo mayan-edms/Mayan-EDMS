@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:57-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: 2018-04-11 14:44+0000\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -22,17 +22,13 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 events.py:7
-#: forms.py:32 links.py:40 menus.py:8 models.py:30 permissions.py:7
-#: views.py:184 workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:83 apps.py:90 apps.py:111 apps.py:113 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:31 permissions.py:7
+#: views.py:185 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: apps.py:76 apps.py:96
-msgid "Preview"
-msgstr "Prévisualiser"
-
-#: apps.py:100 models.py:24
+#: apps.py:104 models.py:25
 msgid "Documents"
 msgstr "Documents"
 
@@ -72,23 +68,27 @@ msgstr "Modifier"
 msgid "All"
 msgstr "Tout"
 
-#: models.py:20 search.py:16
+#: models.py:21 search.py:16
 msgid "Label"
 msgstr "Libellé"
 
-#: models.py:22 search.py:20
+#: models.py:23 search.py:20
 msgid "Color"
 msgstr "Couleur"
 
-#: models.py:29
+#: models.py:30
 msgid "Tag"
 msgstr "Étiquette"
 
-#: models.py:61
+#: models.py:54
+msgid "Preview"
+msgstr "Prévisualiser"
+
+#: models.py:66
 msgid "Document tag"
 msgstr "Étiquette de document"
 
-#: models.py:62
+#: models.py:67
 msgid "Document tags"
 msgstr "Étiquettes de document"
 
@@ -216,52 +216,52 @@ msgstr "Erreur lors de la suppression de l'étiquette \"%(tag)s\": %(error)s"
 msgid "Edit tag: %s"
 msgstr "Modifier l'étiquette : %s"
 
-#: views.py:207
+#: views.py:208
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documents avec l'étiquette : %s"
 
-#: views.py:230
+#: views.py:233
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Étiquettes du document : %s"
 
-#: views.py:241
+#: views.py:246
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d document"
 
-#: views.py:243
+#: views.py:248
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d documents"
 
-#: views.py:250
+#: views.py:255
 msgid "Remove"
 msgstr "Retirer"
 
-#: views.py:252
+#: views.py:257
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Supprimer les étiquettes sur %(count)d document"
 msgstr[1] "Retirer les étiquettes de %(count)d documents"
 
-#: views.py:264
+#: views.py:269
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Retirer les étiquettes du document: %s"
 
-#: views.py:273
+#: views.py:278
 msgid "Tags to be removed."
 msgstr "Étiquettes qui seront retirées."
 
-#: views.py:299
+#: views.py:304
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Le document \"%(document)s\" n'a pas été étiquetté comme \"%(tag)s"
 
-#: views.py:309
+#: views.py:314
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "L'étiquette \"%(tag)s\" à été retirée avec succès du document \"%(document)s\"."

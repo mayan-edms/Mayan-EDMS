@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-11 12:55-0400\n"
-"PO-Revision-Date: 2018-04-11 19:12+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:110 apps.py:246 events.py:7 menus.py:8 models.py:200
-#: permissions.py:7 queues.py:18 settings.py:14 statistics.py:207
+#: permissions.py:7 queues.py:18 settings.py:12 statistics.py:207
 msgid "Documents"
 msgstr "Documentos"
 
@@ -32,7 +32,7 @@ msgid ""
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:140 models.py:69 models.py:165 models.py:701 search.py:21
+#: apps.py:140 models.py:69 models.py:165 models.py:703 search.py:21
 #: search.py:42
 msgid "Label"
 msgstr "Nome"
@@ -41,43 +41,27 @@ msgstr "Nome"
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:146 apps.py:291 search.py:19 search.py:39
+#: apps.py:146 models.py:402 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "Tipo MIME"
 
-#: apps.py:209 apps.py:226 apps.py:233 apps.py:259 apps.py:275 apps.py:305
+#: apps.py:209 apps.py:226 apps.py:233 apps.py:259 apps.py:274 apps.py:300
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:215 apps.py:240 apps.py:266
-msgid "Type"
-msgstr ""
-
-#: apps.py:218 apps.py:285 forms.py:153 links.py:72
+#: apps.py:218 apps.py:283 forms.py:153 links.py:72
 msgid "Pages"
 msgstr "Páginas"
 
-#: apps.py:253 models.py:703
+#: apps.py:240
+msgid "Type"
+msgstr ""
+
+#: apps.py:253 models.py:705
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:269
-msgid "Date time trashed"
-msgstr ""
-
-#: apps.py:281
-msgid "Time and date"
-msgstr ""
-
-#: apps.py:295
-msgid "Encoding"
-msgstr ""
-
-#: apps.py:299 models.py:392
-msgid "Comment"
-msgstr "Comentário"
-
-#: apps.py:311 links.py:314 views/document_views.py:797
+#: apps.py:306 links.py:314 views/document_views.py:797
 msgid "Duplicates"
 msgstr ""
 
@@ -174,11 +158,11 @@ msgstr "Existe no armazenamento"
 msgid "File path in storage"
 msgstr "Caminho do ficheiro no armazenamento"
 
-#: forms.py:152 models.py:408 search.py:24 search.py:48
+#: forms.py:152 models.py:410 search.py:24 search.py:48
 msgid "Checksum"
 msgstr "Soma de verificação"
 
-#: forms.py:180 models.py:97 models.py:161 models.py:698 search.py:16
+#: forms.py:180 models.py:97 models.py:161 models.py:700 search.py:16
 #: search.py:35
 msgid "Document type"
 msgstr "Tipo de documento"
@@ -215,7 +199,7 @@ msgid ""
 "document version correctly."
 msgstr ""
 
-#: forms.py:237 literals.py:22
+#: forms.py:237 literals.py:39
 msgid "Page range"
 msgstr "Intervalo de páginas"
 
@@ -281,8 +265,8 @@ msgstr ""
 msgid "Download version"
 msgstr ""
 
-#: links.py:157 links.py:226 models.py:199 models.py:386 models.py:939
-#: models.py:964
+#: links.py:157 links.py:226 models.py:199 models.py:386 models.py:941
+#: models.py:966
 msgid "Document"
 msgstr ""
 
@@ -294,7 +278,7 @@ msgstr "Detalhes"
 msgid "All documents"
 msgstr ""
 
-#: links.py:175 models.py:950 views/document_views.py:394
+#: links.py:175 models.py:952 views/document_views.py:394
 msgid "Recent documents"
 msgstr ""
 
@@ -372,11 +356,11 @@ msgstr "Editar"
 msgid "Add quick label to document type"
 msgstr ""
 
-#: links.py:297 models.py:709
+#: links.py:297 models.py:711
 msgid "Quick labels"
 msgstr ""
 
-#: links.py:309 models.py:967 models.py:977 views/document_views.py:805
+#: links.py:309 models.py:969 models.py:979 views/document_views.py:805
 msgid "Duplicated documents"
 msgstr ""
 
@@ -384,11 +368,11 @@ msgstr ""
 msgid "Duplicated document scan"
 msgstr ""
 
-#: literals.py:13
+#: literals.py:30
 msgid "Default"
 msgstr "Padrão"
 
-#: literals.py:22
+#: literals.py:39
 msgid "All pages"
 msgstr ""
 
@@ -432,7 +416,7 @@ msgstr ""
 msgid "Description"
 msgstr "Descrição"
 
-#: models.py:171 models.py:970
+#: models.py:171 models.py:972
 msgid "Added"
 msgstr ""
 
@@ -464,60 +448,68 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
+#: models.py:392
+msgid "Comment"
+msgstr "Comentário"
+
 #: models.py:398
 msgid "File"
 msgstr "Ficheiro"
 
-#: models.py:413 models.py:414 models.py:722
+#: models.py:406
+msgid "Encoding"
+msgstr ""
+
+#: models.py:415 models.py:416 models.py:724
 msgid "Document version"
 msgstr ""
 
-#: models.py:708
+#: models.py:710
 msgid "Quick label"
 msgstr ""
 
-#: models.py:726
+#: models.py:728
 msgid "Page number"
 msgstr ""
 
-#: models.py:731 models.py:906 models.py:923
+#: models.py:733 models.py:908 models.py:925
 msgid "Document page"
 msgstr ""
 
-#: models.py:732 models.py:924
+#: models.py:734 models.py:926
 msgid "Document pages"
 msgstr ""
 
-#: models.py:736
+#: models.py:738
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Página %(page_num)d de %(total_pages)d de %(document)s"
 
-#: models.py:908
+#: models.py:910
 msgid "Filename"
 msgstr "Nome do ficheiro"
 
-#: models.py:911
+#: models.py:913
 msgid "Document page cached image"
 msgstr ""
 
-#: models.py:912
+#: models.py:914
 msgid "Document page cached images"
 msgstr ""
 
-#: models.py:935
+#: models.py:937
 msgid "User"
 msgstr "Utilizador"
 
-#: models.py:942
+#: models.py:944
 msgid "Accessed"
 msgstr ""
 
-#: models.py:949
+#: models.py:951
 msgid "Recent document"
 msgstr ""
 
-#: models.py:976
+#: models.py:978
 msgid "Duplicated document"
 msgstr ""
 
@@ -637,7 +629,7 @@ msgstr ""
 msgid "Upload new document version"
 msgstr ""
 
-#: settings.py:42
+#: settings.py:40
 msgid ""
 "Maximum number of recent (created, edited, viewed) documents to remember per"
 " user."
@@ -663,27 +655,27 @@ msgstr "Percentagem (%) mínima para o utilizador diminuir o zoom de uma página
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Valor em graus para rodar uma página de documento por interação do utilizador."
 
-#: settings.py:91
-msgid "Default documents language (in ISO639-2 format)."
+#: settings.py:93
+msgid "Default documents language (in ISO639-3 format)."
 msgstr ""
 
-#: settings.py:95
-msgid "List of supported document languages."
+#: settings.py:97
+msgid "List of supported document languages. In ISO639-3 format."
 msgstr ""
 
-#: settings.py:100
+#: settings.py:102
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
 msgstr ""
 
-#: settings.py:107
+#: settings.py:109
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
 msgstr ""
 
-#: settings.py:115
+#: settings.py:117
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
