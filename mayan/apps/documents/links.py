@@ -103,7 +103,7 @@ link_document_document_type_edit = Link(
     view='documents:document_document_type_edit', args='resolved_object.id'
 )
 link_document_download = Link(
-    permissions=(permission_document_download,), text=_('Download'),
+    permissions=(permission_document_download,), text=_('Advanced download'),
     view='documents:document_download_form', args='resolved_object.id'
 )
 link_document_print = Link(
