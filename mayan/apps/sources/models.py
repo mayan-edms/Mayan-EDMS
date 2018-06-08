@@ -80,6 +80,7 @@ class Source(models.Model):
         Handle an upload request from a file object which may be an individual
         document or a compressed file containing multiple documents.
         """
+        documents = []
         if not document_type:
             document_type = self.document_type
 
@@ -94,16 +95,26 @@ class Source(models.Model):
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
                     kwargs.update({'label': force_text(compressed_file_child)})
-                    self.upload_document(
-                        file_object=File(compressed_file_child), **kwargs
+                    documents.append(
+                        self.upload_document(
+                            file_object=File(compressed_file_child), **kwargs
+                        )
                     )
                     compressed_file_child.close()
 
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')
-                self.upload_document(file_object=file_object, **kwargs)
+                documents.append(
+                    self.upload_document(file_object=file_object, **kwargs)
+                )
         else:
-            self.upload_document(file_object=file_object, **kwargs)
+            documents.append(
+                self.upload_document(file_object=file_object, **kwargs)
+            )
+
+        # Return a list of newly created documents. Used by the email source
+        # to assign the from and subject metadata values.
+        return documents
 
     def get_upload_file_object(self, form_data):
         pass
@@ -549,28 +560,42 @@ class EmailBaseModel(IntervalBaseModel):
                 )
 
     @staticmethod
-    def process_message(source, message_text):
+    def process_message(source, message_text, message_properties=None):
         from flanker import mime
 
         counter = 1
         message = mime.from_string(force_str(message_text))
         metadata_dictionary = {}
 
+        if not message_properties:
+            message_properties = {}
+
+        message_properties['Subject'] = message_properties.get(
+            'Subject', message.headers.get('Subject')
+        )
+
+        message_properties['From'] = message_properties.get(
+            'From', message.headers.get('From')
+        )
+
         if source.subject_metadata_type:
             metadata_dictionary[
                 source.subject_metadata_type.name
-            ] = message.headers.get('Subjet')
+            ] = message_properties.get('Subject')
 
         if source.from_metadata_type:
             metadata_dictionary[
                 source.from_metadata_type.name
-            ] = message.headers.get('From')
+            ] = message_properties.get('From')
 
         # Messages are tree based, do nested processing of message parts until
         # a message with no children is found, then work out way up.
         if message.parts:
             for part in message.parts:
-                EmailBaseModel.process_message(source=source, message_text=part.to_string())
+                EmailBaseModel.process_message(
+                    source=source, message_text=part.to_string(),
+                    message_properties=message_properties
+                )
         else:
             # Treat inlines as attachments, both are extracted and saved as
             # documents
@@ -585,17 +610,18 @@ class EmailBaseModel(IntervalBaseModel):
                             'Got metadata dictionary: %s', metadata_dictionary
                         )
                     else:
-                        document = source.handle_upload(
+                        documents = source.handle_upload(
                             document_type=source.document_type,
                             file_object=file_object, expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
                             )
                         )
                         if metadata_dictionary:
-                            set_bulk_metadata(
-                                document=document,
-                                metadata_dictionary=metadata_dictionary
-                            )
+                            for document in documents:
+                                set_bulk_metadata(
+                                    document=document,
+                                    metadata_dictionary=metadata_dictionary
+                                )
             else:
                 # If it is not an attachment then it should be a body message part.
                 # Another option is to use message.is_body()
@@ -605,16 +631,17 @@ class EmailBaseModel(IntervalBaseModel):
                     label = 'email_body.txt'
 
                 with ContentFile(content=message.body, name=label) as file_object:
-                    document = source.handle_upload(
+                    documents = source.handle_upload(
                         document_type=source.document_type,
                         file_object=file_object,
                         expand=SOURCE_UNCOMPRESS_CHOICE_N
                     )
                     if metadata_dictionary:
-                        set_bulk_metadata(
-                            document=document,
-                            metadata_dictionary=metadata_dictionary
-                        )
+                        for document in documents:
+                            set_bulk_metadata(
+                                document=document,
+                                metadata_dictionary=metadata_dictionary
+                            )
 
 
 class IMAPEmail(EmailBaseModel):

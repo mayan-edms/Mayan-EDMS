@@ -14,14 +14,16 @@ from documents.tests import (
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
+from metadata.models import MetadataType
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import (
-    EmailBaseModel, POP3Email, WatchFolderSource, WebFormSource
+    EmailBaseModel, IMAPEmail, POP3Email, WatchFolderSource, WebFormSource
 )
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
+    TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,
     TEST_EMAIL_INLINE_IMAGE, TEST_EMAIL_NO_CONTENT_TYPE,
     TEST_EMAIL_NO_CONTENT_TYPE_STRING
 )
@@ -127,6 +129,102 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
                 '<Document: test-01.png>', '<Document: email_body.html>',
                 '<Document: test-02.png>'
             ),
+        )
+
+    def test_decode_email_and_store_from_and_subject_as_metadata(self):
+        metadata_from = MetadataType.objects.create(name='from')
+        metadata_subject = MetadataType.objects.create(name='subject')
+        self.document_type.metadata.create(metadata_type=metadata_from)
+        self.document_type.metadata.create(metadata_type=metadata_subject)
+
+        self._create_email_source()
+        self.source.from_metadata_type = metadata_from
+        self.source.subject_metadata_type = metadata_subject
+        self.source.save()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_BASE64_FILENAME
+        )
+
+        document = Document.objects.first()
+
+        self.assertEqual(
+            document.label, 'Ampelm\xe4nnchen.txt'
+        )
+        self.assertEqual(
+            document.metadata.get(metadata_type=metadata_from).value,
+            TEST_EMAIL_BASE64_FILENAME_FROM
+        )
+        self.assertEqual(
+            document.metadata.get(metadata_type=metadata_subject).value,
+            TEST_EMAIL_BASE64_FILENAME_SUBJECT
+        )
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class IMAPSourceTestCase(BaseTestCase):
+    class MockIMAP4_SSL(object):
+        #def dele(self, which):
+        #    return
+
+        #def getwelcome(self):
+        #    return
+
+        #def list(self, which=None):
+        #    return (None, ['1 test'])
+
+        #def pass_(self, password):
+        #    return
+
+        #def quit(self):
+        #    return
+
+        #def retr(self, which=None):
+        #    return (
+        #        1, [TEST_EMAIL_BASE64_FILENAME]
+        #    )
+
+        def fetch(self, message_set, message_parts):
+            return 'STATUS', '(1 BODY[{}])'.format(TEST_EMAIL_ATTACHMENT_AND_INLINE)
+            #status, data = mailbox.fetch(message_number, '(RFC822)')
+            #EmailBaseModel.process_message(
+            #    source=self, message_text=data[0][1]
+            #)
+            #mailbox.store(message_number, '+FLAGS', '\\Deleted')
+
+        def login(self, username, password):
+            return
+
+        def search(self, charset, *criterion):
+            return (None, ['1'])
+
+        def select(self, mailbox):
+            return
+
+        def user(self, username):
+            return
+
+    def setUp(self):
+        super(IMAPSourceTestCase, self).setUp()
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_LABEL
+        )
+
+    def tearDown(self):
+        self.document_type.delete()
+        super(IMAPSourceTestCase, self).tearDown()
+
+    @mock.patch('imaplib.IMAP4_SSL')
+    def test_download_document(self, mock_imaplib):
+        mock_imaplib.return_value = IMAPSourceTestCase.MockIMAP4_SSL()
+        self.source = IMAPEmail.objects.create(
+            document_type=self.document_type, label='', host='', password='',
+            username=''
+        )
+
+        self.source.check_source()
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
         )
 
 

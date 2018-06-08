@@ -516,6 +516,9 @@ Other changes worth mentioning
   new DOCUMENTS_LANGUAGE_CODES.
 - Reduce default language code choice from 7800 to the top 100 spoken
   languages and related (https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers)
+- Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
+- Fix typo on message.header get from 'Suject' to 'Subject'.
+- On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
 
 Removals
 --------
@@ -607,7 +610,7 @@ Bugs fixed or issues closed
 * `GitLab issue #467 <https://gitlab.com/mayan-edms/mayan-edms/issues/467>`_ mail attachments without content-disposition are lost
 * `GitLab issue #468 <https://gitlab.com/mayan-edms/mayan-edms/issues/468>`_ plain text e-mails without charset do not work
 * `GitLab issue #470 <https://gitlab.com/mayan-edms/mayan-edms/issues/470>`_ Enable Django variable for HTML encoded emails
-
+* `GitLab issue #481 <https://gitlab.com/mayan-edms/mayan-edms/issues/481>`_ IMAP sources with metadata not working in 3.0rc1
 * `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
 * `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
 

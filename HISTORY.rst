@@ -170,6 +170,10 @@
 - Change the error log file handle class to RotatingFileHandle to avoid an indefinitely growing log file.
 - Disable embedded signatute verification during the perform upgrade command.
 - Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the new DOCUMENTS_LANGUAGE_CODES.
+- Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
+- Fix typo on message.header get from 'Suject' to 'Subject'.
+- On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
+
 
 
 2.7.3 (2017-09-11)

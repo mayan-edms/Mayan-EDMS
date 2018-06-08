@@ -64,6 +64,8 @@ Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
 SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
 
 --RS1tYWlsIENsaWVudA==--'''
+TEST_EMAIL_BASE64_FILENAME_FROM = 'noreply@example.com'
+TEST_EMAIL_BASE64_FILENAME_SUBJECT = 'Scan to E-mail Server Job'
 TEST_EMAIL_NO_CONTENT_TYPE = '''MIME-Version: 1.0
 Received: by 10.0.0.1 with HTTP; Mon, 9 Apr 2018 00:00:00 -0400 (AST)
 X-Originating-IP: [10.0.0.1]
