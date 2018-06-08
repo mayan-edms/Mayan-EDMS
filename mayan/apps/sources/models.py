@@ -207,7 +207,7 @@ class SaneScanner(InteractiveSource):
     )
     adf_mode = models.CharField(
         blank=True, choices=SCANNER_ADF_MODE_CHOICES,
-        default=SCANNER_ADF_MODE_SIMPLEX, help_text=_(
+        help_text=_(
             'Selects the document feeder mode (simplex/duplex). If this '
             'option is not supported by your scanner, leave it blank.'
         ), max_length=16, verbose_name=_('ADF mode')

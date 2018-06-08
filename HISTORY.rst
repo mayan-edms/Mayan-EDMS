@@ -173,7 +173,8 @@
 - Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
 - Fix typo on message.header get from 'Suject' to 'Subject'.
 - On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
-
+- Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
+  if supported.
 
 
 2.7.3 (2017-09-11)
