@@ -713,28 +713,40 @@ class DocumentTransformationsCloneView(FormView):
 
         return instance
 
+from common.mixins import MultipleObjectMixin
 
-class DocumentPrint(FormView):
+class DocumentPrint(MultipleObjectMixin, FormView):
     form_class = DocumentPrintForm
+    model = Document
 
     def dispatch(self, request, *args, **kwargs):
-        instance = self.get_object()
-        AccessControlList.objects.check_access(
-            permissions=permission_document_print, user=self.request.user,
-            obj=instance
+        self.queryset = AccessControlList.objects.filter_by_access(
+            permission=permission_document_print, user=self.request.user,
+            queryset=self.get_queryset()
         )
 
-        instance.add_as_recent_document_for_user(self.request.user)
+        for document in self.queryset.all():
+            document.add_as_recent_document_for_user(self.request.user)
 
         self.page_group = self.request.GET.get('page_group')
         self.page_range = self.request.GET.get('page_range')
         return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
+        if self.queryset.count() > 1:
+            context = {
+                'appearance_type': 'plain',
+                'documents': self.queryset.all(),
+                'width': setting_print_width.value,
+                'height': setting_print_height.value,
+            }
+
+            return self.render_to_response(context=context)
+
         if not self.page_group and not self.page_range:
             return super(DocumentPrint, self).get(request, *args, **kwargs)
         else:
-            instance = self.get_object()
+            instance = self.queryset.first()
 
             if self.page_group == PAGE_RANGE_RANGE:
                 if self.page_range:
@@ -759,7 +771,7 @@ class DocumentPrint(FormView):
             return self.render_to_response(context=context)
 
     def get_extra_context(self):
-        instance = self.get_object()
+        instance = self.queryset.first()
 
         context = {
             'form_action': reverse(
@@ -774,11 +786,8 @@ class DocumentPrint(FormView):
 
         return context
 
-    def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
-
     def get_template_names(self):
-        if self.page_group or self.page_range:
+        if self.page_group or self.page_range or self.queryset.count() > 1:
             return ('documents/document_print.html',)
         else:
             return (self.template_name,)

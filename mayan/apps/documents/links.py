@@ -110,6 +110,10 @@ link_document_print = Link(
     permissions=(permission_document_print,), text=_('Print'),
     view='documents:document_print', args='resolved_object.id'
 )
+link_document_multiple_print = Link(
+    tags='new_window', text=_('Print'),
+    view='documents:document_multiple_print',
+)
 link_document_quick_download = Link(
     permissions=(permission_document_download,), text=_('Quick download'),
     view='documents:document_download', args='resolved_object.id'

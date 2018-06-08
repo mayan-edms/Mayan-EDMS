@@ -57,8 +57,8 @@ from .links import (
     link_document_edit, link_document_list, link_document_list_deleted,
     link_document_list_recent, link_document_multiple_delete,
     link_document_multiple_trash, link_document_multiple_clear_transformations,
-    link_document_multiple_download, link_document_multiple_restore,
-    link_document_multiple_update_page_count,
+    link_document_multiple_download, link_document_multiple_print,
+    link_document_multiple_restore, link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next, link_document_page_navigation_previous,
     link_document_page_return, link_document_page_rotate_left,
@@ -481,10 +481,11 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
+                link_document_multiple_print,
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash, link_document_multiple_download,
                 link_document_multiple_update_page_count,
-                link_document_multiple_document_type_edit
+                link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
         menu_multi_item.bind_links(

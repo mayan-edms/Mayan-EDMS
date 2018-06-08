@@ -100,6 +100,10 @@ urlpatterns = [
         name='document_edit'
     ),
     url(
+        r'^multiple/print/$', DocumentPrint.as_view(),
+        name='document_multiple_print'
+    ),
+    url(
         r'^(?P<pk>\d+)/print/$', DocumentPrint.as_view(),
         name='document_print'
     ),
