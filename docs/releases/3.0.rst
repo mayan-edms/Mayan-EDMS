@@ -601,6 +601,8 @@ Bugs fixed or issues closed
 * `GitLab issue #407 <https://gitlab.com/mayan-edms/mayan-edms/issues/407>`_ Improve search syntax to support search query types: AND, OR
 * `GitLab issue #408 <https://gitlab.com/mayan-edms/mayan-edms/issues/408>`_ Improve document checkbox selection.
 * `GitLab issue #420 <https://gitlab.com/mayan-edms/mayan-edms/issues/420>`_ Mayan raises a 500 instead of 404 in production mode
+* `GitLab issue #427 <https://gitlab.com/mayan-edms/mayan-edms/issues/427>`_ /tmp/mayan_locks.tmp is always owned by root
+* `GitLab issue #430 <https://gitlab.com/mayan-edms/mayan-edms/issues/430>`_ Can't use STATICFILES_STORAGE that requires running collectstatic first
 * `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
 * `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
 * `GitLab issue #444 <https://gitlab.com/mayan-edms/mayan-edms/issues/444>`_ Error in retrieving documents via POP3
@@ -612,6 +614,7 @@ Bugs fixed or issues closed
 * `GitLab issue #467 <https://gitlab.com/mayan-edms/mayan-edms/issues/467>`_ mail attachments without content-disposition are lost
 * `GitLab issue #468 <https://gitlab.com/mayan-edms/mayan-edms/issues/468>`_ plain text e-mails without charset do not work
 * `GitLab issue #470 <https://gitlab.com/mayan-edms/mayan-edms/issues/470>`_ Enable Django variable for HTML encoded emails
+* `GitLab issue #474 <https://gitlab.com/mayan-edms/mayan-edms/issues/474>`_ Provide option to serve Mayan EDMS without a webserver (using Tornado o similar).
 * `GitLab issue #480 <https://gitlab.com/mayan-edms/mayan-edms/issues/480>`_ Wrong Environment Variables names in documentation
 * `GitLab issue #481 <https://gitlab.com/mayan-edms/mayan-edms/issues/481>`_ IMAP sources with metadata not working in 3.0rc1
 * `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
