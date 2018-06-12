@@ -312,7 +312,6 @@ build:
 	apk update && \
 	apk add make && \
 	pip install -r requirements/build.txt && \
-	cp -r /host_home/.pypirc ~/.pypirc && \
 	make wheel && \
 	cp dist/* /host_source/dist/"
 
