@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import Package
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import DisableableSelectWidget, PlainWidget
+from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 
 
 class ChoiceForm(forms.Form):
@@ -104,21 +104,24 @@ class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
 
 
 class FileDisplayForm(forms.Form):
+    DIRECTORY = None
+    FILENAME = None
+
     text = forms.CharField(
         label='',
-        widget=forms.widgets.Textarea(
-            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
+        widget=TextAreaDiv(
+            attrs={'class': 'full-height scrollable', 'data-height-difference': 270}
         )
     )
 
     def __init__(self, *args, **kwargs):
         super(FileDisplayForm, self).__init__(*args, **kwargs)
-        changelog_path = os.path.join(
-            settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
-        )
-        fd = open(changelog_path)
-        self.fields['text'].initial = fd.read()
-        fd.close()
+        if self.DIRECTORY or self.FILENAME:
+            file_path = os.path.join(
+                settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
+            )
+            with open(file_path) as file_object:
+                self.fields['text'].initial = file_object.read()
 
 
 class LicenseForm(FileDisplayForm):
@@ -150,14 +153,7 @@ class LocaleProfileForm_view(DetailForm):
         model = UserLocaleProfile
 
 
-class PackagesLicensesForm(forms.Form):
-    text = forms.CharField(
-        label='',
-        widget=forms.widgets.Textarea(
-            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
-        )
-    )
-
+class PackagesLicensesForm(FileDisplayForm):
     def __init__(self, *args, **kwargs):
         super(PackagesLicensesForm, self).__init__(*args, **kwargs)
         self.fields['text'].initial = '\n\n'.join(
