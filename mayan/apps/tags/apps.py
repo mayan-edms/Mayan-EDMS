@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.db.models.signals import m2m_changed, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -13,6 +14,7 @@ from common import (
 from documents.search import document_page_search, document_search
 from navigation import SourceColumn
 
+from .handlers import handler_index_document, handler_tag_pre_delete
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
     link_single_document_multiple_tag_remove, link_tag_attach, link_tag_create,
@@ -149,3 +151,17 @@ class TagsApp(MayanAppConfig):
             )
         )
         registry.register(Tag)
+
+        # Index update
+
+        m2m_changed.connect(
+            handler_index_document,
+            dispatch_uid='tags_handler_index_document',
+            sender=Tag.documents.through
+        )
+
+        pre_delete.connect(
+            handler_tag_pre_delete,
+            dispatch_uid='tags_handler_tag_pre_delete',
+            sender=Tag
+        )

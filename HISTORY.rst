@@ -176,6 +176,8 @@
 - Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
   if supported.
 - Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
+- Recalculate a document's indexes when attaching or removing a tag from or to it.
+- Recalculate all of a tag's documents when a tag is about to be deleted.
 
 2.7.3 (2017-09-11)
 ==================
