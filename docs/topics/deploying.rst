@@ -32,15 +32,11 @@ Create an user account for the installation::
 
 Create the parent directory where the project will be deployed::
 
-    sudo mkdir -p /opt
+    sudo mkdir /opt
 
 Create the Python virtual environment for the installation::
 
     sudo virtualenv /opt/mayan-edms
-
-Create the folder for the Mayan EDMS data::
-
-    sudo mkdir /opt/mayan-edms/media
 
 Make the mayan user the owner of the installation directory::
 
