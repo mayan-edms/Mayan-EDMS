@@ -4,14 +4,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_document_content, icon_document_ocr_download,
+    icon_document_ocr_errors_list, icon_document_type_submit,
+    icon_entry_list
+)
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
 )
 
 link_document_content = Link(
-    icon='fa fa-font', permissions=(permission_ocr_content_view,),
-    text=_('OCR'), view='ocr:document_content', args='resolved_object.id'
+    args='resolved_object.id', icon_class=icon_document_content,
+    permissions=(permission_ocr_content_view,), text=_('OCR'),
+    view='ocr:document_content',
 )
 link_document_submit = Link(
     args='resolved_object.id', permissions=(permission_ocr_document,),
@@ -21,24 +27,26 @@ link_document_submit_multiple = Link(
     text=_('Submit for OCR'), view='ocr:document_submit_multiple'
 )
 link_document_type_ocr_settings = Link(
+    args='resolved_object.id',
     permissions=(permission_document_type_ocr_setup,), text=_('Setup OCR'),
-    view='ocr:document_type_ocr_settings', args='resolved_object.id'
+    view='ocr:document_type_ocr_settings',
 )
 link_document_type_submit = Link(
-    icon='fa fa-font', permissions=(permission_ocr_document,),
-    text=_('OCR documents per type'), view='ocr:document_type_submit'
+    icon_class=icon_document_type_submit,
+    permissions=(permission_ocr_document,), text=_('OCR documents per type'),
+    view='ocr:document_type_submit'
 )
 link_entry_list = Link(
-    icon='fa fa-file-alt', permissions=(permission_ocr_document,),
+    icon_class=icon_entry_list, permissions=(permission_ocr_document,),
     text=_('OCR errors'), view='ocr:entry_list'
 )
-link_document_ocr_erros_list = Link(
-    args='resolved_object.id', icon='fa fa-file-alt',
+link_document_ocr_errors_list = Link(
+    args='resolved_object.id', icon_class=icon_document_ocr_errors_list,
     permissions=(permission_ocr_content_view,), text=_('OCR errors'),
     view='ocr:document_ocr_error_list'
 )
 link_document_ocr_download = Link(
-    args='resolved_object.id', icon='fa fa-file-alt',
+    args='resolved_object.id',  icon_class=icon_document_ocr_download,
     permissions=(permission_ocr_content_view,), text=_('Download OCR text'),
     view='ocr:document_ocr_download'
 )

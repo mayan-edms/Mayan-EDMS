@@ -28,7 +28,7 @@ from .handlers import (
 )
 from .links import (
     link_document_content, link_document_ocr_download,
-    link_document_ocr_erros_list, link_document_submit,
+    link_document_ocr_errors_list, link_document_submit,
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
@@ -143,7 +143,7 @@ class OCRApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(
-                link_document_content, link_document_ocr_erros_list,
+                link_document_content, link_document_ocr_errors_list,
                 link_document_ocr_download
             ),
             sources=(
