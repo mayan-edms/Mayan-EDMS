@@ -113,6 +113,6 @@
 {% block javascript %}{% endblock %}
 
 <script>
-    document.title = '{% spaceless %}{% block title %}{% endblock %}{% endspaceless %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}';
+    document.title = '{% filter escapejs %}{% spaceless %}{% block title %}{% endblock %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}{% endspaceless %}{% endfilter %}';
     afterBaseLoad();
 </script>
