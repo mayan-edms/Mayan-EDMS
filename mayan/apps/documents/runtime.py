@@ -6,8 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .settings import setting_language_codes
 
-import operator
-
 language_choices = sorted(
     [
         (

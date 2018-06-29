@@ -40,6 +40,6 @@ icon_setup = Icon(
 icon_support = Icon(
     driver_name='fontawesome', symbol='phone'
 )
-icon_tools =  Icon(
+icon_tools = Icon(
     driver_name='fontawesome', symbol='wrench'
 )

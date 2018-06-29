@@ -46,7 +46,7 @@ link_document_ocr_errors_list = Link(
     view='ocr:document_ocr_error_list'
 )
 link_document_ocr_download = Link(
-    args='resolved_object.id',  icon_class=icon_document_ocr_download,
+    args='resolved_object.id', icon_class=icon_document_ocr_download,
     permissions=(permission_ocr_content_view,), text=_('Download OCR text'),
     view='ocr:document_ocr_download'
 )

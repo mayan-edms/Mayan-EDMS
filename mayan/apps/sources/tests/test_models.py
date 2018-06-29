@@ -18,7 +18,7 @@ from metadata.models import MetadataType
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import (
-    EmailBaseModel, IMAPEmail, POP3Email, WatchFolderSource, WebFormSource
+    EmailBaseModel, POP3Email, WatchFolderSource, WebFormSource
 )
 
 from .literals import (

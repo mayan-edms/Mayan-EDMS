@@ -4,7 +4,6 @@ from django import forms
 from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
 
 
 class DisableableSelectWidget(forms.SelectMultiple):

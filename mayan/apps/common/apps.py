@@ -213,11 +213,11 @@ class CommonApp(MayanAppConfig):
 
             if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
                 logging_configuration['handlers']['logfile'] = {
-                        'backupCount': 3,
-                        'class': 'logging.handlers.RotatingFileHandler',
-                        'filename': setting_production_error_log_path.value,
-                        'formatter': 'logfile',
-                        'maxBytes': 1024,
+                    'backupCount': 3,
+                    'class': 'logging.handlers.RotatingFileHandler',
+                    'filename': setting_production_error_log_path.value,
+                    'formatter': 'logfile',
+                    'maxBytes': 1024,
                 }
 
             logging.config.dictConfig(logging_configuration)

@@ -31,6 +31,7 @@ class Command(management.BaseCommand):
             '--no-javascript', action='store_true', dest='no_javascript',
             help='Don\'t download the Javascript dependencies.',
         )
+
     def initialize_system(self, force=False):
         system_path = os.path.join(settings.MEDIA_ROOT, SYSTEM_DIR)
         settings_path = os.path.join(settings.MEDIA_ROOT, 'mayan_settings')
