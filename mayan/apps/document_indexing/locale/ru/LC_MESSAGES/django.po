@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2017-08-27 16:32+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "None"
 msgstr "Ни один"
 
-#: admin.py:26 apps.py:103 links.py:48 models.py:49
+#: admin.py:26 apps.py:101 links.py:48 models.py:49
 msgid "Document types"
 msgstr "Типы документов"
 
@@ -30,39 +30,39 @@ msgstr "Типы документов"
 msgid "Document indexing"
 msgstr "Индексирование документа"
 
-#: apps.py:81 models.py:33
+#: apps.py:79 models.py:33
 msgid "Label"
 msgstr "Надпись"
 
-#: apps.py:82 models.py:38
+#: apps.py:80 models.py:38
 msgid "Slug"
 msgstr ""
 
-#: apps.py:84 apps.py:112 models.py:46 models.py:169
+#: apps.py:82 apps.py:110 models.py:46 models.py:169
 msgid "Enabled"
 msgstr "Доступно"
 
-#: apps.py:89
+#: apps.py:87
 msgid "Total levels"
 msgstr ""
 
-#: apps.py:95
+#: apps.py:93
 msgid "Total documents"
 msgstr ""
 
-#: apps.py:108 apps.py:123 apps.py:140
+#: apps.py:106 apps.py:121 apps.py:138
 msgid "Level"
 msgstr "Уровень"
 
-#: apps.py:116
+#: apps.py:114
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:127 apps.py:146
+#: apps.py:125 apps.py:144
 msgid "Levels"
 msgstr ""
 
-#: apps.py:131 apps.py:150 models.py:291
+#: apps.py:129 apps.py:148 models.py:290
 msgid "Documents"
 msgstr "Документы"
 
@@ -71,7 +71,7 @@ msgid "Indexes to be queued for rebuilding."
 msgstr ""
 
 #: forms.py:16 links.py:18 links.py:22 links.py:25 links.py:28 models.py:57
-#: views.py:73 views.py:220
+#: views.py:73 views.py:219
 msgid "Indexes"
 msgstr "Индексы"
 
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Удаляет и создается с нуля, все индексы документа."
 
-#: links.py:57 views.py:326
+#: links.py:57 views.py:329
 msgid "Rebuild indexes"
 msgstr "Восстановление индексов"
 
@@ -120,11 +120,11 @@ msgstr "Этот индекс должен быть видимым и обнов
 msgid "Index"
 msgstr "Индекс"
 
-#: models.py:137
+#: models.py:125
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:138
+#: models.py:126
 msgid "Index instances"
 msgstr "Экземпляры индекса"
 
@@ -171,27 +171,27 @@ msgid ""
 "%(exception)s"
 msgstr ""
 
-#: models.py:284
+#: models.py:283
 msgid "Index template node"
 msgstr ""
 
-#: models.py:287
+#: models.py:286
 msgid "Value"
 msgstr "Значение"
 
-#: models.py:297
+#: models.py:296
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:298
+#: models.py:297
 msgid "Indexes node instances"
 msgstr ""
 
-#: models.py:402
+#: models.py:401
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:403
+#: models.py:402
 msgid "Document indexes node instances"
 msgstr ""
 
@@ -278,21 +278,21 @@ msgstr ""
 msgid "Edit the index template node: %s?"
 msgstr ""
 
-#: views.py:256
+#: views.py:260
 #, python-format
 msgid "Navigation: %s"
 msgstr "Навигация: %s"
 
-#: views.py:261
+#: views.py:265
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:316
+#: views.py:319
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
 
-#: views.py:337
+#: views.py:340
 msgid "Index rebuild queued successfully."
 msgstr "Восстановление индекса успешно отправлено в очередь."

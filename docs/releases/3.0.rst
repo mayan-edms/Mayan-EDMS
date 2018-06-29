@@ -1,0 +1,627 @@
+=============================
+Mayan EDMS v3.0 release notes
+=============================
+
+Released: June 29, 2018
+
+What's new
+==========
+
+Turning Mayan EDMS into a single page app
+-----------------------------------------
+Historically, Mayan EDMS has steered away from adding too much Javascript
+in its code. The goal was to be able to maintain a robust, backend-based
+page rendering method that will be as future-proof as possible.
+This approach comes at the cost of some page loading speed, and reduced
+user interface interactivity.
+
+The whole system has been update to work as a modern Single Page App.
+Single Page Applications (SPAs) rewrite the current page dynamically
+rather than loading the entire page on each click of the mouse. This
+makes the web application feel and behave more like a desktop
+application. Because the majority of the styling and Javascript code
+is loaded only once, there is also the added benefit of less data down
+the wire. Thus the application becomes lighter and provides a faster
+response time to user events. Because the style is loaded and
+interpreted at the beginning, the browser is also able to apply it to
+the new content faster.
+
+This redesign was achieved using only HTML5 and jQuery. Aside from two
+additional jQuery libraries, there are no extra framework dependencies.
+With the conversion to an SPA, many other petitions for user interface
+improvements are now possible.
+
+
+Upgrading to Django 1.11
+------------------------
+The move to Django 1.11 proved to be a real challenge. Even though
+Django 1.11 is a minor release, it breaks compatibility and interfaces
+in several key areas. Among these were templates and form widgets.
+
+Mayan EDMS uses a complex template, form and widget system. The system
+mimics object-oriented concepts like inheritance at the rendering stage.
+This allows the more than 300 views to be serviced with just a handful
+of forms classes and base templates. Testing and auditing all the views
+and forms after the upgrade was a lot of work.
+
+Along with the upgrade to Django 1.11, many deprecations
+warning were fixed in preparation for an eventual upgrade to Django 2.0.
+
+
+Notification improvements
+-------------------------
+These work by allowing users to subscribe to a particular event like Document
+Uploads or to an event of a particular document like when an invoice is edited.
+If these events occurs, the user gets a reminder next to the bell icon in the
+main menu bar.
+
+
+Dependencies upgrades
+---------------------
+Most of the requirements, dependencies and libraries were upgraded to
+their latest release.
+
+- Pillow: 5.0.0
+- django-activity-stream: 0.6.5
+- django-compressor: 2.2
+- django-cors-headers: 2.2.0
+- django-formtools: 2.1
+- django-qsstats-magic: 1.0.0
+- django-stronghold: 0.3.0
+- django-suit: 0.2.26
+- furl: 1.0.1
+- graphviz: 0.8.2
+- pyocr: 0.5.1
+- python-dateutil: 2.6.1
+- python-magic: 0.4.15
+- pytz: 2018.3
+- sh: 1.12.14
+- rest_framework_swagger replaced with drf-yasg: 1.5.0
+- FancyBox was upgraded to version 3, Font Awesome to version 5, jQuery to version 3.3.1. ajaxForm version 4.2.2, URI.js 1.19.1 and pace 0.7.8 were added as part of the conversion to single page app.
+
+
+Search syntax
+-------------
+Searching without using a specialized search database is difficult.
+Mayan’s design calls avoiding a separate search engine at the cost of some
+missing search syntax. The OR and the negative term support are the first
+attempts at adding special syntax to Mayan’s search code.
+
+By default now, search terms are routed to an “AND” query. That means
+that a search for:
+
+``Tag1 Tag2``
+
+will only return documents with both tags attached. To offer the
+opposite choice we added an “OR” syntax. Searching for:
+
+``Tag1 OR Tag2``
+
+will return documents with either tag attached.
+
+Support for literals terms was also added.
+
+Searching for:
+
+``blue car``
+
+will return documents with the words “blue” and “car”, even if they are
+not together. That means getting documents with the phrases “blue sky”
+and “slow car”. To search for exact terms enclose them in quotes:
+
+``“blue car”``
+
+This will return only documents with the exact phrase “blue car”.
+
+
+Running multiple instances of Mayan EDMS
+----------------------------------------
+If you've ever tried running two instances of Mayan EDMS, you would
+have noticed that they both try to create a lock file in the ``/tmp``
+directory with the same name. Only the first instance will be able to run.
+
+The lock filename needs to be unique to each instance, yet predictable
+so that the workers of an instance can also access the same lock file.
+
+This issues was solved by using a hexadecimal hash representation of the
+installation’s unique ``SECRET_KEY`` setting. The use of a hash makes
+reversing the value in order to obtain the ``SECRET_KEY`` impossible for
+all practical purposes.
+
+
+Display resolution settings
+---------------------------
+Display sizes for document display, previews, and thumbnail were specified
+as a string that included the horizontal and the vertical resolution
+separated by the character “x”. Using an “x” character to separate
+resolution elements is not standard.
+
+This version splits the settings for specifying resolutions into two settings
+for each size. One setting for horizontal resolution and another for vertical
+resolution.
+
+The settings are now:
+
+``DOCUMENTS_DISPLAY_WIDTH``, ``DOCUMENTS_DISPLAY_HEIGHT``, ``DOCUMENTS_PREVIEW_WIDTH``,
+``DOCUMENTS_PREVIEW_HEIGHT``, ``DOCUMENTS_PRINT_WIDTH``, ``DOCUMENTS_PRINT_HEIGHT``,
+``DOCUMENTS_THUMBNAIL_WIDTH``, ``DOCUMENTS_THUMBNAIL_HEIGHT``
+
+
+Dynamic upload wizard steps
+---------------------------
+The steps needed to upgrade a document using form-tools' SessionWizard
+were hardcoded in the source app. This made it very difficult to add or remove
+wizard steps.
+
+The steps of the wizard are now defined by a new class called
+``sources.wizard.WizardStep``. The existing steps to select a document type,
+enter metadata and tag the document, have been converted to function as
+WizardSteps subclasses. The converted steps now live in
+
+``sources.wizards.WizardStepDocumentType``, ``tag.wizard_steps.WizardStepTags``,
+and ``metadata.wizard_steps.WizardStepMetadata``.
+
+The steps need to define the following methods:
+
+- ``done``: This method is execute when the wizard finished the last step
+  an enter the step where the actual file are uploaded. This steps is used
+  to encode form data into the URL query string that will be passed to the
+  document upload view for each file uploaded.
+
+- ``condition``: This method is used to display the step conditionally.
+  If this method return True it will be displayed during the upload wizard
+  execution. To skip the step, return False or None.
+
+- ``get_form_initial``: This method is used to return the initial data
+  for the step form. Use this method to set up initial values for the step's
+  form fields.
+
+- ``step_post_upload_process``: This method will be executed once the
+  document finishes uploading. Use this method to process the information
+  encoded in the URL querystring by the step's `done`` method.
+
+Once the ``WizardStep`` subclass is defined, it needs to be registered. This
+is done by calling the ``.register`` method of the ``WizardStep`` class with
+the subclass as the argument. Example::
+
+    WizardStep.register(WizardStepMetadata)
+
+This statement must be located after the subclass definition. Finally,
+the module defining the wizard step must be imported so that it is loaded
+with the rest of the code and enabled. The best place to do this is in the
+``.ready`` method of the apps' ``apps.py`` module. Example::
+
+    class TagsApp(MayanAppConfig):
+        has_rest_api = True
+        has_tests = True
+        name = 'tags'
+        verbose_name = _('Tags')
+
+        def ready(self):
+            super(TagsApp, self).ready()
+            from actstream import registry
+
+            from .wizard_steps import WizardStepTags  # NOQA
+
+The WizardStep class also allows for unregistering existing steps. This
+is accomplished by calling the ``.deregister`` method of the ``WizardStep``
+class and passing the subclass as the argument. This method should
+also be called inside the ``.ready`` method of an apps' ``apps.py``
+module. Example::
+
+
+    class TagsApp(MayanAppConfig):
+        has_rest_api = True
+        has_tests = True
+        name = 'tags'
+        verbose_name = _('Tags')
+
+        def ready(self):
+            super(TagsApp, self).ready()
+            from actstream import registry
+
+            from metadata.wizard_steps import WizardStepMetadata  # NOQA
+            from sources.wizards import WizardStep  # NOQA
+            from .wizard_steps import WizardStepTags  # NOQA
+
+            WizardStep.deregister(WizardStepTags)
+
+
+This will cause the tags assigment step to not be assigned to the upload
+wizard anymore.
+
+
+New upload step
+---------------
+Using the new ``WizardStep`` class a new upload wizard step was added
+to assign documents being uploaded to any number of cabinets while
+being uploaded. This step was been assigned number 4 in the order of
+step for uploading a file.
+
+
+Fix carousel item height issues
+-------------------------------
+On some devices the height of the pages on the document preview view were
+squashed. The CSS for this view was updated to fix this issue.
+
+
+Orientation detection
+---------------------
+After reports that it is not working in 100% of the cases, the feature that
+detects and fixes the orientation of PDF has been marked experimental and
+now defaults to being disabled.
+
+
+New proposal system
+-------------------
+The Mayan EDMS Request for Comments or MERCs will be use to propose and or
+document the new features, the existing code, and the processes governing the
+project. MERCs 1 and 2 have been approved. MERC-1 outlines the MERC process
+itself and MERC-2 documents the way API tests are to be written for Mayan EDMS.
+
+
+Duplicated documents
+--------------------
+The duplicated documents system has been improved to also better detect when
+the duplicate of a primary document has been move to the trash. In this
+instance the duplicate count of the primary document would be zero and will
+cause the primary document to not show in the duplicated document list view.
+
+If the duplicated document is deleted from the trash the system now will launch
+a background clean up task to permanently delete the empty primary document's
+duplicate document entry from the database.
+
+Storage
+-------
+It is now possible to pass arguments to the document, document cache and
+document signatures storage backends. To pass the arguments, use the new
+settings: ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``,
+``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS``, and ``SIGNATURES_STORAGE_BACKEND_ARGUMENTS``.
+
+The ``FileBasedStorage`` driver originally provided has been removed.
+With this change the setting ``STORAGE_FILESTORAGE_LOCATION`` has also been removed.
+The storage driver now default to Django's own ``FileSystemStorage`` driver.
+By using this driver each app is responsible of specifying their storage
+path. The path path (or location) is configure via the
+``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``, ``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS``, or
+``SIGNATURES_STORAGE_BACKEND_ARGUMENTS`` for the documents, document cache and document signatures respectively.
+
+For example, to change the document storage location use::
+
+    DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
+
+If no path is specified the backend will default to ``mayan/media/document_storage``.
+
+Finally, to standardize the way app use storage, the ``storages.py`` modules is now used
+instead of the ``runtime.py`` module.
+
+User event filtering
+--------------------
+When viewing the event list, the Actor (user) column is not displayed
+as a link. Clicking this link will filter the event list and display
+the events performed by that user. The view of event for each user can
+also be viewed using a new link added to the user list view in the setup
+menu.
+
+Smart checkbox selection
+------------------------
+A faster way to select multiple item has been added. Click the checkbox of the first,
+hold the Shift key, and then click the checkbox of the last item of the selection.
+This will select the first, the last and all items in between. To deselect multiple
+items the same procedure is used. This code was donated by the Paperattor
+project (www.paperattor.com).
+
+Add JavaScript dependency manager
+---------------------------------
+An internal utility to install and upgrade the JavaScript dependencies was added.
+This depency manager allows for the easier maintenace of the JavaScript libraries
+used through the project.
+
+Previously JavaScript libraries we downloaded and installed by manually. These
+libraries were them checked into the Git repository. Finally to enable them
+the correspoding imports were added to the base templates in the apppeance app.
+
+This new manager is the first step to start resolving these issues. The manager
+allows apps to specify their own dependencies. These dependecies are then
+downloaded when the project is installed or upgraded. As such they are not
+part of the repository and lower the file size of the project.
+
+Workflow changes
+----------------
+Removing a document type from a workflow will now also remove all running
+instances of that workflow for documents of the document type just removed.
+
+Adoption of Contributor Assignment Agreements
+---------------------------------------------
+To facilitate the inclusion of submissions provided by third parties,
+the project has adopted the use of individual and entity contributor
+assignment agreements. These agreements make clear the process to
+transfer the rights to submissions. With these agreements in place
+we now have a documented and legally sound method to accept
+submissions that we couldn't before.
+
+SQLite
+------
+Starting with version 3.0, a warning message will be shown in the console and
+in the user interface when using SQLite as the database engine. When it comes to
+Mayan EDMS, SQLite should only be used for development or testing, never for
+production. This is due to Mayan EDMS exceeding the concurrency capabilities of
+SQLite. The results are duplicated documents, frequency database locked errors,
+among other issues. Suggested database backends are PostgreSQL and MySQL
+(or MariaDB) using a transaction aware storage engine like InnoDB.
+
+Received email processing
+-------------------------
+Parsing email messages is a complex task. To increase compatibility with the
+many interpretations of the standards that govern email messaging, Mayan EDMS
+now uses Mailgun's flanker library (https://github.com/mailgun/flanker).
+Thanks to flanker, Mayan EDMS now gains new capabilities when it comes to
+parsing incoming email. For example, in addition to mail attachments, it is now
+possible to process files included in emails as inline content.
+
+Other changes worth mentioning
+------------------------------
+- Add Makefile target to check the format of the README.rst file.
+- Fix permission filtering when performing document page searching
+- base.js was splitted into mayan_app.js, mayan_image.js, and
+  partial_navigation.js.
+- Cabinet detail view pagination was fixed.
+- Improve permission handling in the workflow app.
+- The checkedout detail view permission is now required for the checked out
+  document detail API view.
+- Add missing services for the checkout API.
+- Fix existing checkout APIs.
+- Update API views and serializers for the latest Django REST framework
+  version.
+- Update to the latest version the packages for building, development,
+  documentation and testing.
+- Add statistics script to produce a report of the views, APIs and test for
+  each app.
+- Merge base64 filename patch from Cornelius Ludmann.
+- SearchModel return interface changed. The class no longer
+  returns the result_set value. Use the queryset returned instead.
+- Remove the unused scrollable_content internal feature.
+- Remove unused animate.css package.
+- Add the MERC specifying javascript library usage.
+- Documents without at least a version are not scanned for duplicates.
+- Convert document thumbnails, preview, image preview and staging files to
+  template base widgets.
+- Unify all document widgets.
+- Printed pages are now full width.
+- Move the invalid document markup to a separate HTML template.
+- Move transfomations to their own module.
+- Split documents.tests.test_views into:
+
+  - base.py
+  - test_deleted_document_views.py
+  - test_document_page_views.py
+  - test_document_type_views.py
+  - test_document_version_views.py
+  - test_document_views.py
+  - test_duplicated_document_views.py
+
+- Sort smart links by label.
+- Rename the internal name of the document type permissions namespace.
+  Existing permissions will need to be updated.
+- Removed redundant permissions checks.
+- Total test count increased to 753
+- Fix documentation formatting.
+- Add upload wizard step documentation chapter.
+- Improve and add additional diagrams.
+- Change documenation theme to rtd.
+- Add the "to=" keyword argument to all ForeignKey, ManayToMany and
+  OneToOne Fields.
+- Rename the role groups link label from "Members" to "Groups".
+- Rename the group users link label from "Members" to "Users".
+- Don't show full document version label in the heading of the document
+  version list view.
+- Show the number of pages of a document and of document versions in
+  the document list view and document versions list views respectively.
+- Display a document version's thumbnail before other attributes.
+- Use Django's provided form for setting an users password.
+  This change allows displaying the current password policies
+  and validation.
+- Add method to modify a group's role membership from the group's
+  view.
+- Rename the group user count column label from "Members" to "Users".
+- Backport support for global and object event notification.
+  GitLab issue #262.
+- Remove Vagrant section of the document. Anything related to
+  Vagrant has been move into its own repository at:
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant
+- Revise and improve permission requirements for the documents app API.
+
+  - Downloading a document version now requires the document download
+    permission instead of just the document view permission.
+  - Creating a new document no longer works by having the document create
+    permission in a global manner. It is now possible to create a document via
+    the API by having the document permission for a specific document type.
+  - Viewing the version list of a document now required the document version
+    view permission instead of the document view permission. Not having the
+    document version view permission for a document will not return a 403
+    error. Instead a blank response will be returned.
+  - Reverting a document via API will new require the document version revert
+    permission instead of the document edit permission.
+  - ``Document view`` permissions is nor required to view the details of
+    a trashed document.
+
+- Revise and improve permission requirements for the document states app API.
+
+  - Require the ``Workflow view`` permission for the workflow to be able
+    to view a document type's workflow list.
+  - Fix the permission check to create workflows. Previously it had
+    not effect as it has using the ``mayan_object_permissions`` instead
+    of the ``mayan_view_permissions`` dictionary.
+  - Require the ``Workflow view`` permission to view the workflow instance
+    list.
+  - Require the ``Workflow view`` permission to view a workflow instance's
+    details.
+
+- Display a proper message in the document type metadata type relationship
+  view when there are no metadata types exist.
+- Improved styling and interaction of the multiple object action form.
+- Add checkbox to allow selecting all item in the item list view.
+- Update the role permission edit view require the permission grant or
+  permission revoke permissions for the selected role.
+- Add support for roles ACLs.
+- Add support for users ACLs.
+- Add support for groups ACLs.
+- Sort permission namespaces and permissions in the role permission views.
+- Invert the columns in the ACL detail view.
+- Remove the data filters feature.
+- Update Chart.js version.
+- Improve line chart appearance. Fix issue with mouse over labels next other
+  chart margin.
+- Add support for passing arguments to the OCR backend.
+- Fix issue when using workflows transitions with the new version
+  upload event as trigger. Thanks to Sema @Miggaten for the find and
+  the solution.
+- Make error messages persistent and increase the timeout of warning to
+  10 seconds.
+- Improve rendering of the details form.
+- Update rendering of the readonly multiselect widget to conform to Django's
+  updated field class interface.
+- Add locking for interval sources. This reduces the chance of repeated
+  documents from long running email downloads.
+- Add the option to enable or disable parsing when uploading a document for
+  each document type.
+- Add a new setting option to enable automatic parsing for each new document
+  type created.
+- Add support for HTML bodies to the user mailers.
+- Production ALLOWED_HOSTS settings now defaults to a safer
+  ['127.0.0.1', 'localhost', '[::1]']
+- Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
+- New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER,
+  MAYAN_CELERY_RESULT_BACKEND, MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE,
+  MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME, MAYAN_DATABASE_USER,
+  MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
+  MAYAN_DEBUG.
+- Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to
+  ['127.0.0.1', 'localhost', '[::1]'].
+- New initialization command. Creates media/system and populates the
+  SECRET_KEY and VERSION files.
+- Sane scanner source paper source now defaults to blank.
+- Merge Docker image creation back into the main repository.
+- Docker image now uses gunicorn and whitenoise instead of NGINX to server
+  the app and the static media.
+- All installation artifact are now created and read from the media folder.
+- Debian is now the Linux distribution used for the Docker image.
+- Most Docker Celery workers are now execute using a lower OS priority number.
+- Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of
+  errors in production. Defaults to False.
+- Change the error log file handle class to RotatingFileHandle to avoid an
+  indefinitely growing log file.
+- Disable embedded signatute verification during the perform upgrade command.
+- Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the
+  new DOCUMENTS_LANGUAGE_CODES.
+- Reduce default language code choice from 7800 to the top 100 spoken
+  languages and related (https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers)
+- Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
+- Fix typo on message.header get from 'Suject' to 'Subject'.
+- On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
+- Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
+  if supported.
+- Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
+- Recalculate a document's indexes when attaching or removing a tag from or to it.
+- Recalculate all of a tag's documents when a tag is about to be deleted.
+
+Removals
+--------
+* Data filters app.
+* DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with
+  DOCUMENTS_LANGUAGE_CODES.
+
+Known issues
+------------
+The newly added 'flanker' dependency used to process email, produces a number
+of warnings on the console that are imposible to turn off. These are not
+critical and are related to coding practices in the library. All warning
+from flanker can be ignored.
+
+Example: "WARNING:flanker.addresslib._parser.parser:Symbol 'domain' is unreachable"
+
+
+Upgrading from a previous version
+---------------------------------
+
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install mayan-edms==3.0
+
+the requirements will also be updated automatically.
+
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #211 <https://gitlab.com/mayan-edms/mayan-edms/issues/211>`_ Remove all workflows when removing them from a document type
+* `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
+* `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
+* `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
+* `GitLab issue #332 <https://gitlab.com/mayan-edms/mayan-edms/issues/332>`_ Add option to pass configuration parameters to the OCR backend as mentioned in #319
+* `GitLab issue #338 <https://gitlab.com/mayan-edms/mayan-edms/issues/338>`_ Quick download link in documents list view
+* `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
+* `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
+* `GitLab issue #405 <https://gitlab.com/mayan-edms/mayan-edms/issues/405>`_ Add wizard steps from external apps
+* `GitLab issue #407 <https://gitlab.com/mayan-edms/mayan-edms/issues/407>`_ Improve search syntax to support search query types: AND, OR
+* `GitLab issue #408 <https://gitlab.com/mayan-edms/mayan-edms/issues/408>`_ Improve document checkbox selection.
+* `GitLab issue #420 <https://gitlab.com/mayan-edms/mayan-edms/issues/420>`_ Mayan raises a 500 instead of 404 in production mode
+* `GitLab issue #427 <https://gitlab.com/mayan-edms/mayan-edms/issues/427>`_ /tmp/mayan_locks.tmp is always owned by root
+* `GitLab issue #430 <https://gitlab.com/mayan-edms/mayan-edms/issues/430>`_ Can't use STATICFILES_STORAGE that requires running collectstatic first
+* `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
+* `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
+* `GitLab issue #444 <https://gitlab.com/mayan-edms/mayan-edms/issues/444>`_ Error in retrieving documents via POP3
+* `GitLab issue #446 <https://gitlab.com/mayan-edms/mayan-edms/issues/446>`_ Document searcher
+* `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach
+* `GitLab issue #449 <https://gitlab.com/mayan-edms/mayan-edms/issues/449>`_ OCR Error: 'int' object has no attribute 'split'
+* `GitLab issue #452 <https://gitlab.com/mayan-edms/mayan-edms/issues/452>`_ Workflow ACL Doesn't works
+* `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
+* `GitLab issue #467 <https://gitlab.com/mayan-edms/mayan-edms/issues/467>`_ mail attachments without content-disposition are lost
+* `GitLab issue #468 <https://gitlab.com/mayan-edms/mayan-edms/issues/468>`_ plain text e-mails without charset do not work
+* `GitLab issue #470 <https://gitlab.com/mayan-edms/mayan-edms/issues/470>`_ Enable Django variable for HTML encoded emails
+* `GitLab issue #474 <https://gitlab.com/mayan-edms/mayan-edms/issues/474>`_ Provide option to serve Mayan EDMS without a webserver (using Tornado o similar).
+* `GitLab issue #480 <https://gitlab.com/mayan-edms/mayan-edms/issues/480>`_ Wrong Environment Variables names in documentation
+* `GitLab issue #481 <https://gitlab.com/mayan-edms/mayan-edms/issues/481>`_ IMAP sources with metadata not working in 3.0rc1
+* `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
+* `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

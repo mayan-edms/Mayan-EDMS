@@ -1,4 +1,4 @@
-{% extends 'appearance/base.html' %}
+{% extends 'appearance/base_plain.html' %}
 
 {% load i18n %}
 {% load static %}
@@ -21,7 +21,8 @@
                         <h3 class="panel-title">{% trans "First time login" %}</h3>
                     </div>
                     <div class="panel-body">
-                        <p>{% trans 'You have just finished installing <strong>Mayan EDMS</strong>, congratulations!' %}</p>
+                        {% project_information '__title__' as project_title %}
+                        <p>{% blocktrans %}You have just finished installing <strong>{{ project_title }}</strong>, congratulations!{% endblocktrans %}</p>
                         <p>{% trans 'Login using the following credentials:' %}</p>
                         <p>{% blocktrans with autoadmin_properties.account as account %}Username: <strong>{{ account }}</strong>{% endblocktrans %}</p>
                         <p>{% blocktrans with autoadmin_properties.account.email as email %}Email: <strong>{{ email }}</strong>{% endblocktrans %}</p>
@@ -50,7 +51,7 @@
                                 {% include 'appearance/generic_form_instance.html' %}
                                 <input type="hidden" name="next" value="{{ next|escape }}" />
                             <div class="form-group">
-                                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-sign-in"></i> {% trans 'Sign in' %}</button>
+                                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-sign-in-alt"></i> {% trans 'Sign in' %}</button>
                             </div>
                         </form>
                         <hr>

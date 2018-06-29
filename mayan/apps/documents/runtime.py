@@ -1,6 +1,15 @@
-from django.utils.module_loading import import_string
+from __future__ import unicode_literals
 
-from .settings import setting_cache_storage_backend, setting_storage_backend
+import pycountry
 
-storage_backend = import_string(setting_storage_backend.value)()
-cache_storage_backend = import_string(setting_cache_storage_backend.value)()
+from django.utils.translation import ugettext_lazy as _
+
+from .settings import setting_language_codes
+
+language_choices = sorted(
+    [
+        (
+            iso639_3, _(pycountry.languages.get(alpha_3=iso639_3).name)
+        ) for iso639_3 in setting_language_codes.value
+    ], key=lambda x: x[1]
+)

@@ -14,6 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from stronghold.decorators import public
 
+import mayan
+
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
 from .settings import setting_login_method, setting_maximum_session_length
 
@@ -124,10 +126,10 @@ def password_reset_view(request):
         request, extra_context=extra_context,
         email_template_name='authentication/password_reset_email.html',
         extra_email_context={
-            'project_title': settings.PROJECT_TITLE,
-            'project_website': settings.PROJECT_WEBSITE,
-            'project_copyright': settings.PROJECT_COPYRIGHT,
-            'project_license': settings.PROJECT_LICENSE,
+            'project_title': mayan.__title__,
+            'project_website': mayan.__website__,
+            'project_copyright': mayan.__copyright__,
+            'project_license': mayan.__license__,
         }, subject_template_name='authentication/password_reset_subject.txt',
         template_name='authentication/password_reset_form.html',
         post_reset_redirect=reverse(

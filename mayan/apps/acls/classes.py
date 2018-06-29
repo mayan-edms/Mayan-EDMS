@@ -56,7 +56,7 @@ class ModelPermission(object):
 
         permissions = []
 
-        class_permissions = cls._registry.get(type(instance))
+        class_permissions = cls.get_for_class(klass=type(instance))
 
         if class_permissions:
             permissions.extend(class_permissions)

@@ -9,38 +9,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-25 00:50+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-06-08 01:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 apps.py:127 apps.py:131 links.py:14 permissions.py:7 queues.py:7
-#: settings.py:7
+#: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
+#: queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:102
+#: apps.py:100
 msgid "Document"
 msgstr "belge"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Added"
 msgstr "Katma"
 
-#: apps.py:110 models.py:57
+#: apps.py:108 models.py:57
 msgid "Result"
 msgstr "Sonuç"
 
-#: events.py:9
+#: events.py:10
 msgid "Document version submitted for OCR"
 msgstr ""
 
-#: events.py:13
+#: events.py:14
 msgid "Document version OCR finished"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr "OCR'yi kur"
 msgid "OCR documents per type"
 msgstr "Türe göre OCR belgeleri"
 
-#: links.py:33 links.py:37 views.py:138
+#: links.py:33 links.py:37 views.py:116
 msgid "OCR errors"
 msgstr "OCR hataları"
 
@@ -97,11 +97,11 @@ msgstr "Belge sayfası"
 msgid "Content"
 msgstr "İçerik"
 
-#: models.py:44
+#: models.py:41
 msgid "Document page OCR content"
 msgstr ""
 
-#: models.py:45
+#: models.py:42
 msgid "Document pages OCR contents"
 msgstr ""
 
@@ -113,11 +113,11 @@ msgstr "Belge versiyonu"
 msgid "Date time submitted"
 msgstr "Gönderilen tarih saati"
 
-#: models.py:64
+#: models.py:61
 msgid "Document version OCR error"
 msgstr ""
 
-#: models.py:65
+#: models.py:62
 msgid "Document version OCR errors"
 msgstr ""
 
@@ -147,44 +147,36 @@ msgstr "PDF dosyalarından metin ayıklamak için kullanılan poppler'ın pptote
 msgid "Full path to the backend to be used to do OCR."
 msgstr "OCR yapmak için kullanılacak arka uç için tam yol."
 
-#: settings.py:24
+#: settings.py:28
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Varsayılan olarak otomatik olarak OCR gerçekleştirmek için yeni belge türlerini ayarlayın."
 
-#: views.py:43
+#: views.py:41
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Belge için OCR sonucu: %s"
 
-#: views.py:51
-#, python-format
-msgid "Submit \"%s\" to the OCR queue?"
-msgstr "OCR sırasına \"%s\" gönderilsin mi?"
+#: views.py:56
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:72
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue."
-msgstr "Doküman: %(document)s OCR sırasına eklendi."
-
-#: views.py:86
-msgid "Submit the selected documents to the OCR queue?"
-msgstr "Seçilen dokümanları OCR sırasına gönderilsin mi?"
-
-#: views.py:93
+#: views.py:71
 msgid "Submit all documents of a type for OCR"
 msgstr "OCR için bir türdeki tüm belgeleri gönderin"
 
-#: views.py:107
+#: views.py:85
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "\"%(document_type)s\" türündeki %(count)d belgeleri OCR sırasına eklendi."
 
-#: views.py:130
+#: views.py:108
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Doküman türü için OCR ayarlarını düzenleyin: %s"
 
-#: views.py:156
+#: views.py:134
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Doküman için OCR hataları: %s"

@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 import logging
+import os
+import warnings
 
 from kombu import Exchange, Queue
 
@@ -15,7 +17,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 from navigation.classes import Separator, Text
-from rest_api.classes import APIEndPoint
 
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
@@ -24,20 +25,23 @@ from .handlers import (
 from .links import (
     link_about, link_check_version, link_code, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
-    link_documentation, link_filters, link_forum, link_license,
-    link_object_error_list_clear, link_packages_licenses, link_setup,
-    link_support, link_tools
+    link_documentation, link_forum, link_license, link_object_error_list_clear,
+    link_packages_licenses, link_setup, link_support, link_tools
 )
 
-from .literals import DELETE_STALE_UPLOADS_INTERVAL
+from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
 from .menus import (
-    menu_about, menu_main, menu_secondary, menu_tools, menu_user
+    menu_about, menu_main, menu_secondary, menu_user
 )
 from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
-from .settings import setting_auto_logging, setting_production_error_log_path
+from .settings import (
+    setting_auto_logging, setting_production_error_log_path,
+    setting_production_error_logging
+)
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
+from .utils import check_for_sqlite
 
 logger = logging.getLogger(__name__)
 
@@ -67,14 +71,15 @@ class MayanAppConfig(apps.AppConfig):
         except ImportError as exception:
             if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
                 logger.error(
-                    'Import time error when running AppConfig.ready(). Check '
-                    'apps.py, urls.py, views.py, etc.'
+                    'Import time error when running AppConfig.ready() of app '
+                    '"%s".', self.name
                 )
                 raise exception
 
 
 class CommonApp(MayanAppConfig):
     app_url = ''
+    has_rest_api = True
     has_tests = True
     name = 'common'
     verbose_name = _('Common')
@@ -88,8 +93,8 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
+        if check_for_sqlite():
+            warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
@@ -127,7 +132,6 @@ class CommonApp(MayanAppConfig):
                 Text(text=CommonApp.get_user_label_text), Separator(),
                 link_current_user_details, link_current_user_edit,
                 link_current_user_locale_profile_edit,
-                Separator()
             )
         )
 
@@ -144,9 +148,6 @@ class CommonApp(MayanAppConfig):
             links=(link_object_error_list_clear,), sources=(
                 'common:object_error_list',
             )
-        )
-        menu_tools.bind_links(
-            links=(link_filters,)
         )
 
         post_save.connect(
@@ -176,7 +177,10 @@ class CommonApp(MayanAppConfig):
                 handlers = ['console']
             else:
                 level = 'ERROR'
-                handlers = ['console', 'logfile']
+                handlers = ['console']
+
+            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
+                handlers.append('logfile')
 
             loggers = {}
             for project_app in apps.apps.get_app_configs():
@@ -186,30 +190,34 @@ class CommonApp(MayanAppConfig):
                     'level': level,
                 }
 
-            logging.config.dictConfig(
-                {
-                    'version': 1,
-                    'disable_existing_loggers': True,
-                    'formatters': {
-                        'intermediate': {
-                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                        },
-                        'logfile': {
-                            'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
-                        },
+            logging_configuration = {
+                'version': 1,
+                'disable_existing_loggers': False,
+                'formatters': {
+                    'intermediate': {
+                        'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                     },
-                    'handlers': {
-                        'console': {
-                            'class': 'logging.StreamHandler',
-                            'formatter': 'intermediate',
-                            'level': 'DEBUG',
-                        },
-                        'logfile': {
-                            'class': 'logging.handlers.WatchedFileHandler',
-                            'filename': setting_production_error_log_path.value,
-                            'formatter': 'logfile'
-                        },
+                    'logfile': {
+                        'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
                     },
-                    'loggers': loggers
+                },
+                'handlers': {
+                    'console': {
+                        'class': 'logging.StreamHandler',
+                        'formatter': 'intermediate',
+                        'level': 'DEBUG',
+                    },
+                },
+                'loggers': loggers
+            }
+
+            if os.path.exists(settings.MEDIA_ROOT) and setting_production_error_logging.value:
+                logging_configuration['handlers']['logfile'] = {
+                    'backupCount': 3,
+                    'class': 'logging.handlers.RotatingFileHandler',
+                    'filename': setting_production_error_log_path.value,
+                    'formatter': 'logfile',
+                    'maxBytes': 1024,
                 }
-            )
+
+            logging.config.dictConfig(logging_configuration)

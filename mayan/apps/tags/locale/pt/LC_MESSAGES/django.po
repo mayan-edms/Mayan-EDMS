@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-27 16:33+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -20,21 +20,17 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 apps.py:81 apps.py:88 apps.py:107 apps.py:109 forms.py:32
-#: links.py:40 menus.py:8 models.py:36 permissions.py:7 views.py:184
-#: workflow_actions.py:19 workflow_actions.py:66
+#: apps.py:35 apps.py:83 apps.py:90 apps.py:111 apps.py:113 events.py:7
+#: forms.py:32 links.py:40 menus.py:8 models.py:31 permissions.py:7
+#: views.py:185 workflow_actions.py:19 workflow_actions.py:66
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: apps.py:76 apps.py:96
-msgid "Preview"
-msgstr ""
-
-#: apps.py:100 models.py:24
+#: apps.py:104 models.py:25
 msgid "Documents"
 msgstr "Documentos"
 
-#: events.py:9
+#: events.py:10
 msgid "Tag attached to document"
 msgstr ""
 
@@ -70,23 +66,27 @@ msgstr "Editar"
 msgid "All"
 msgstr ""
 
-#: models.py:20 search.py:16
+#: models.py:21 search.py:16
 msgid "Label"
 msgstr "Nome"
 
-#: models.py:22 search.py:20
+#: models.py:23 search.py:20
 msgid "Color"
 msgstr "Cor"
 
-#: models.py:35
+#: models.py:30
 msgid "Tag"
 msgstr ""
 
-#: models.py:61
+#: models.py:54
+msgid "Preview"
+msgstr ""
+
+#: models.py:66
 msgid "Document tag"
 msgstr ""
 
-#: models.py:62
+#: models.py:67
 msgid "Document tags"
 msgstr ""
 
@@ -114,19 +114,19 @@ msgstr "Atribuir etiquetas aos documentos"
 msgid "Remove tags from documents"
 msgstr "Remover etiquetas de documentos"
 
-#: serializers.py:38
+#: serializers.py:39
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
 msgstr ""
 
-#: serializers.py:85
+#: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr ""
 
-#: serializers.py:105
+#: serializers.py:106
 msgid "Primary key of the tag to be added."
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr[1] ""
 msgid "Attach tags to document: %s"
 msgstr ""
 
-#: views.py:65
+#: views.py:65 wizard_steps.py:28
 msgid "Tags to be attached."
 msgstr ""
 
@@ -214,54 +214,58 @@ msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:206
+#: views.py:208
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr ""
 
-#: views.py:229
+#: views.py:233
 #, python-format
 msgid "Tags for document: %s"
 msgstr ""
 
-#: views.py:240
+#: views.py:246
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr ""
 
-#: views.py:242
+#: views.py:248
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:249
+#: views.py:255
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:251
+#: views.py:257
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:263
+#: views.py:269
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr ""
 
-#: views.py:272
+#: views.py:278
 msgid "Tags to be removed."
 msgstr ""
 
-#: views.py:298
+#: views.py:304
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr ""
 
-#: views.py:308
+#: views.py:314
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+msgstr ""
+
+#: wizard_steps.py:16
+msgid "Select tags"
 msgstr ""
 
 #: workflow_actions.py:21

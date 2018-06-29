@@ -21,7 +21,6 @@ from documents.signals import post_version_upload
 from documents.widgets import document_link
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .events import event_ocr_document_version_submit
 from .handlers import (
@@ -29,7 +28,7 @@ from .handlers import (
 )
 from .links import (
     link_document_content, link_document_ocr_download,
-    link_document_ocr_erros_list, link_document_submit,
+    link_document_ocr_errors_list, link_document_submit,
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
@@ -61,14 +60,13 @@ def document_version_ocr_submit(self):
 
 
 class OCRApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'ocr'
     verbose_name = _('OCR')
 
     def ready(self):
         super(OCRApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -145,7 +143,7 @@ class OCRApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(
-                link_document_content, link_document_ocr_erros_list,
+                link_document_content, link_document_ocr_errors_list,
                 link_document_ocr_download
             ),
             sources=(

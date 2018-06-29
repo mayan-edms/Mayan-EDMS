@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-05 14:39+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2017-09-22 21:37+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 links.py:25 permissions.py:7
+#: apps.py:27 links.py:26 permissions.py:7
 msgid "Message of the day"
 msgstr "Napi üzenet"
 
-#: apps.py:32 models.py:20
+#: apps.py:40 models.py:20
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: apps.py:35 models.py:24
+#: apps.py:43 models.py:24
 msgid "Start date time"
 msgstr "Kezdés dátumidő"
 
-#: apps.py:36 apps.py:40
+#: apps.py:44 apps.py:48
 msgid "None"
 msgstr "Semmi"
 
-#: apps.py:39 models.py:29
+#: apps.py:47 models.py:29
 msgid "End date time"
 msgstr ""
 
-#: links.py:13 views.py:29
+#: links.py:14 views.py:29
 msgid "Create message"
 msgstr ""
 
-#: links.py:18
+#: links.py:19
 msgid "Delete"
 msgstr "Törlés"
 
-#: links.py:21
+#: links.py:22
 msgid "Edit"
 msgstr "Szerkesztés"
 

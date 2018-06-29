@@ -1,17 +1,23 @@
 from __future__ import unicode_literals
 
-from documents.tests.literals import TEST_DOCUMENT_FILENAME
-from documents.tests.test_views import GenericDocumentViewTestCase
+from django.test import override_settings
+
+from documents.tests import (
+    GenericDocumentViewTestCase, TEST_DOCUMENT_FILENAME,
+    TEST_DOCUMENT_PATH
+)
 
 from ..permissions import permission_content_view
 from ..utils import get_document_content
 
 
+@override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
 class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     _skip_file_descriptor_test = True
 
     # Ensure we use a PDF file
     test_document_filename = TEST_DOCUMENT_FILENAME
+    test_document_path = TEST_DOCUMENT_PATH
 
     def setUp(self):
         super(DocumentContentViewsTestCase, self).setUp()
@@ -29,7 +35,6 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_content_view_with_permission(self):
         self.grant_permission(permission=permission_content_view)
-
         response = self._document_content_view()
 
         self.assertContains(

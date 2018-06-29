@@ -43,6 +43,7 @@ class DocumentPageListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
+            'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
             'list_as_items': True,
             'object': self.get_document(),
             'title': _('Pages for document: %s') % self.get_document(),
@@ -82,7 +83,7 @@ class DocumentPageNavigationBase(RedirectView):
         resolver_match = resolve(parse_result.path)
 
         # Default is to stay on the same view
-        url = parse_result.path, query_dict
+        url = parse_result.path
 
         new_object = self.navigation_function()
 

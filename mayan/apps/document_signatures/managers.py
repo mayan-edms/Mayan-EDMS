@@ -28,11 +28,6 @@ class EmbeddedSignatureManager(models.Manager):
         else:
             return file_object
 
-    def unsigned_document_versions(self):
-        return DocumentVersion.objects.exclude(
-            pk__in=self.values('document_version')
-        )
-
     def sign_document_version(self, document_version, key, passphrase=None, user=None):
         temporary_file_object, temporary_filename = mkstemp()
 
@@ -53,3 +48,8 @@ class EmbeddedSignatureManager(models.Manager):
             os.unlink(temporary_filename)
 
         return new_version
+
+    def unsigned_document_versions(self):
+        return DocumentVersion.objects.exclude(
+            pk__in=self.values('document_version')
+        )

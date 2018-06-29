@@ -1,0 +1,30 @@
+version: '3.1'
+
+volumes:
+    app:
+        driver: local
+    db:
+        driver: local
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: mayan
+      POSTGRES_PASSWORD: mayan-password
+      POSTGRES_USER: mayan
+
+  app:
+    image: mayanedms/mayanedms:latest
+    ports:
+      - 80:8000
+    environment:
+      MAYAN_DATABASE_ENGINE: django.db.backends.postgresql
+      MAYAN_DATABASE_HOST: db
+      MAYAN_DATABASE_NAME: mayan
+      MAYAN_DATABASE_PASSWORD: mayan-password
+      MAYAN_DATABASE_USER: mayan
+    volumes:
+      - app:/var/lib/mayan
+

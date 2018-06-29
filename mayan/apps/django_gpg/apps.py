@@ -9,7 +9,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_object, menu_setup, menu_sidebar
 )
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .classes import KeyStub
 from .links import (
@@ -26,6 +25,7 @@ from .permissions import (
 
 class DjangoGPGApp(MayanAppConfig):
     app_url = 'gpg'
+    has_rest_api = True
     has_tests = True
     name = 'django_gpg'
     verbose_name = _('Django GPG')
@@ -33,7 +33,6 @@ class DjangoGPGApp(MayanAppConfig):
     def ready(self):
         super(DjangoGPGApp, self).ready()
 
-        APIEndPoint(app=self, version_string='1')
         Key = self.get_model('Key')
 
         ModelPermission.register(

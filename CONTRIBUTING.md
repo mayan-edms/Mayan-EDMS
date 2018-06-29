@@ -23,6 +23,7 @@ with deployments, webservers, cloud providers, etc.
 Code
 ----
 
+1. Complete and mail, or scan and email the corresponding Contributor Assignment Agreement: [Mayan EDMS Individual Contributor Assignment Agreement](http://mayan.readthedocs.io/en/latest/topics/caa_individual.rst) or [Mayan EDMS Entity Contributor Assignment Agreement](http://mayan.readthedocs.io/en/latest/topics/caa_entity.rst).
 1. Fork [the repository](http://gitlab.com/mayan-edms/mayan-edms).
 1. Choose the version for which you want to develop. The code is divided in the
 following branches:

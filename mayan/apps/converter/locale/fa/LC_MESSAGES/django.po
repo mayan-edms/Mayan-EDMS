@@ -3,105 +3,58 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-07-09 06:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-03-12 12:24+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:12
 msgid "Converter"
-msgstr ""
+msgstr "مبدل"
 
-#: apps.py:27 models.py:40
+#: apps.py:27 models.py:39
 msgid "Order"
-msgstr "ترتیب"
+msgstr "سفارش"
 
-#: apps.py:29 models.py:70
+#: apps.py:29 models.py:57
 msgid "Transformation"
-msgstr "تبدیلات"
+msgstr "دگرگونی"
 
-#: apps.py:33 models.py:50
+#: apps.py:33 models.py:49
 msgid "Arguments"
-msgstr "آرگومانها"
+msgstr "استدلال"
 
-#: backends/python.py:181 backends/python.py:187
+#: backends/python.py:176 backends/python.py:182
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "تعداد صفحات PDF را تعیین کنید؛ %s"
 
-#: backends/python.py:201
+#: backends/python.py:196
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "شمارش صفحه تعیین میزان استثنا با استفاده از بالش؛ %s"
 
-#: classes.py:102
+#: classes.py:98
 msgid "Not an office file format."
-msgstr ""
+msgstr "فرمت فایل دفتر نیست"
 
-#: classes.py:123
+#: classes.py:119
 msgid "LibreOffice not installed or not found."
-msgstr ""
-
-#: classes.py:312
-msgid "Crop"
-msgstr ""
-
-#: classes.py:325
-msgid "Flip"
-msgstr ""
-
-#: classes.py:336
-msgid "Gaussian blur"
-msgstr ""
-
-#: classes.py:346
-msgid "Line art"
-msgstr ""
-
-#: classes.py:357
-msgid "Mirror"
-msgstr ""
-
-#: classes.py:368
-msgid "Resize"
-msgstr "تغییر اندازه"
-
-#: classes.py:395
-msgid "Rotate"
-msgstr "چرخاندن"
-
-#: classes.py:414
-msgid "Rotate 90 degrees"
-msgstr ""
-
-#: classes.py:425
-msgid "Rotate 180 degrees"
-msgstr ""
-
-#: classes.py:436
-msgid "Rotate 270 degrees"
-msgstr ""
-
-#: classes.py:446
-msgid "Unsharp masking"
-msgstr ""
-
-#: classes.py:462
-msgid "Zoom"
-msgstr "بزرگ/کوچک نمایی"
+msgstr "LibreOffice نصب نشده یا یافت نشد"
 
 #: links.py:35
 msgid "Create new transformation"
-msgstr "ایجاد تبدیلات چدید"
+msgstr "ایجاد تحول جدید"
 
 #: links.py:39
 msgid "Delete"
@@ -111,70 +64,118 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:47 models.py:71
+#: links.py:47 models.py:58
 msgid "Transformations"
-msgstr "تبدیلات"
+msgstr "تغییرات"
 
-#: models.py:38
+#: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "سفارش که در آن تحولات اجرا خواهد شد. اگر بدون تغییر باقی بماند، یک مقدار سفارش خودکار تعیین می شود."
 
-#: models.py:44
+#: models.py:43
 msgid "Name"
 msgstr "نام"
 
-#: models.py:48
+#: models.py:47
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "آرگومان را برای تبدیل به عنوان یک فرهنگ لغت YAML وارد کنید. یعنی: {\"درجه\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "ایجاد تغییرات جدید"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "حذف تغییرات"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "ویرایش تغییرات"
 
 #: permissions.py:19
 msgid "View existing transformations"
-msgstr ""
+msgstr "مشاهده تغییرات موجود"
 
 #: settings.py:15
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "باطن تبدیل گرافیک برای استفاده."
 
 #: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "گزینه های پیکربندی برای backend تبدیل گرافیک."
 
-#: validators.py:22
+#: transformations.py:85
+msgid "Crop"
+msgstr "محصول"
+
+#: transformations.py:98
+msgid "Flip"
+msgstr "تلنگر"
+
+#: transformations.py:109
+msgid "Gaussian blur"
+msgstr "تار گاوسی"
+
+#: transformations.py:119
+msgid "Line art"
+msgstr "هنر خط"
+
+#: transformations.py:130
+msgid "Mirror"
+msgstr "آینه"
+
+#: transformations.py:141
+msgid "Resize"
+msgstr "تغییر اندازه"
+
+#: transformations.py:168
+msgid "Rotate"
+msgstr "چرخش"
+
+#: transformations.py:187
+msgid "Rotate 90 degrees"
+msgstr "چرخش 90 درجه"
+
+#: transformations.py:198
+msgid "Rotate 180 degrees"
+msgstr "چرخش 180 درجه"
+
+#: transformations.py:209
+msgid "Rotate 270 degrees"
+msgstr "چرخش 270 درجه"
+
+#: transformations.py:219
+msgid "Unsharp masking"
+msgstr "ماسک غیرشفاف"
+
+#: transformations.py:235
+msgid "Zoom"
+msgstr "بزرگنمایی"
+
+#: validators.py:21
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "یک مقدار معتبر YAML را وارد کنید"
 
 #: views.py:64
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "حذف \"%(transformation)s\" برای: %(content_object)s؟"
 
 #: views.py:116
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "ایجاد تغییر جدید برای: %s"
 
 #: views.py:166
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "ویرایش \"%(transformation)s\" برای: %(content_object)s"
 
 #: views.py:213
 #, python-format
 msgid "Transformations for: %s"
-msgstr "تبدیلات برای : %s"
+msgstr "تبدیل برای: %s"

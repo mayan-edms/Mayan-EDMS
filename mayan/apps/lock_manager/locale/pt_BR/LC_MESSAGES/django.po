@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2016-11-04 19:32+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -34,10 +34,10 @@ msgstr "Tempo de expiração"
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:46
+#: models.py:26
 msgid "Lock"
 msgstr "Bloqueio"
 
-#: models.py:47
+#: models.py:27
 msgid "Locks"
 msgstr "Bloqueios"

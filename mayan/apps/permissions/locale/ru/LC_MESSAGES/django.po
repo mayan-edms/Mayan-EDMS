@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-03 06:00+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:32 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -26,35 +26,35 @@ msgstr "Разрешения"
 msgid "Insufficient permissions."
 msgstr "Недостаточно разрешений."
 
-#: links.py:14
-msgid "Grant"
-msgstr "Предоставить"
-
-#: links.py:18
-msgid "Revoke"
-msgstr "Отозвать"
-
-#: links.py:22
-msgid "Create new role"
-msgstr "Создать новую роль"
-
-#: links.py:26
-msgid "Delete"
-msgstr "Удалить"
-
-#: links.py:30
-msgid "Edit"
-msgstr "Редактировать"
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:188
 msgid "Roles"
 msgstr "Роли"
 
-#: links.py:38
-msgid "Members"
-msgstr "Участники"
+#: links.py:19
+msgid "Grant"
+msgstr "Предоставить"
 
-#: links.py:43
+#: links.py:23
+msgid "Revoke"
+msgstr "Отозвать"
+
+#: links.py:27
+msgid "Create new role"
+msgstr "Создать новую роль"
+
+#: links.py:31
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:35
+msgid "Edit"
+msgstr "Редактировать"
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr "Группы"
+
+#: links.py:48
 msgid "Role permissions"
 msgstr "Разрешения роли"
 
@@ -66,19 +66,15 @@ msgstr "Пространство имен"
 msgid "Name"
 msgstr "Имя"
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr "Разрешение"
 
-#: models.py:75 search.py:16
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr "Надпись"
 
-#: models.py:81
-msgid "Groups"
-msgstr "Группы"
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr "Роль"
 
@@ -125,28 +121,41 @@ msgstr ""
 msgid "No such permission: %s"
 msgstr ""
 
-#: views.py:46
+#: views.py:29
+msgid "Available roles"
+msgstr ""
+
+#: views.py:30
+msgid "Group roles"
+msgstr ""
+
+#: views.py:40
+#, python-format
+msgid "Roles of group: %s"
+msgstr ""
+
+#: views.py:82
 msgid "Available groups"
 msgstr "Доступные группы"
 
-#: views.py:47
+#: views.py:83
 msgid "Role groups"
 msgstr "Группы роли"
 
-#: views.py:57
+#: views.py:93
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Группы роли: %s"
 
-#: views.py:80
+#: views.py:116
 msgid "Available permissions"
 msgstr "Доступные разрешения"
 
-#: views.py:81
+#: views.py:117
 msgid "Granted permissions"
 msgstr "Предоставленные разрешения"
 
-#: views.py:94
+#: views.py:157
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Разрешения роли: %s"

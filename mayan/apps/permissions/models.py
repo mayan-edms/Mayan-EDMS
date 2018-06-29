@@ -21,29 +21,28 @@ class StoredPermission(models.Model):
 
     objects = StoredPermissionManager()
 
-    def __init__(self, *args, **kwargs):
-        super(StoredPermission, self).__init__(*args, **kwargs)
-        try:
-            self.volatile_permission = Permission.get(
-                pk='{}.{}'.format(self.namespace, self.name),
-                proxy_only=True
-            )
-        except KeyError:
-            # Must be a deprecated permission in the database that is no
-            # longer used in the current code
-            pass
-
-    def __str__(self):
-        return force_text(getattr(self, 'volatile_permission', self.name))
-
-    def natural_key(self):
-        return (self.namespace, self.name)
-
     class Meta:
         ordering = ('namespace',)
         unique_together = ('namespace', 'name')
         verbose_name = _('Permission')
         verbose_name_plural = _('Permissions')
+
+    def __str__(self):
+        try:
+            return force_text(self.get_volatile_permission())
+        except KeyError:
+            return self.name
+
+    def get_volatile_permission_id(self):
+        return '{}.{}'.format(self.namespace, self.name)
+
+    def get_volatile_permission(self):
+        return Permission.get(
+            pk=self.get_volatile_permission_id(), proxy_only=True
+        )
+
+    def natural_key(self):
+        return (self.namespace, self.name)
 
     def requester_has_this(self, user):
         if user.is_superuser or user.is_staff:
@@ -75,13 +74,19 @@ class Role(models.Model):
         max_length=64, unique=True, verbose_name=_('Label')
     )
     permissions = models.ManyToManyField(
-        StoredPermission, related_name='roles', verbose_name=_('Permissions')
+        related_name='roles', to=StoredPermission,
+        verbose_name=_('Permissions')
     )
     groups = models.ManyToManyField(
-        Group, related_name='roles', verbose_name=_('Groups')
+        related_name='roles', to=Group, verbose_name=_('Groups')
     )
 
     objects = RoleManager()
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Role')
+        verbose_name_plural = _('Roles')
 
     def __str__(self):
         return self.label
@@ -92,8 +97,3 @@ class Role(models.Model):
     def natural_key(self):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Role')
-        verbose_name_plural = _('Roles')

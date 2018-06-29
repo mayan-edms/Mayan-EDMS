@@ -7,8 +7,11 @@ from .classes import SearchModel
 
 
 class SearchModelMixin(object):
+    def get_search_model_name(self):
+        return self.kwargs.get('search_model')
+
     def get_search_model(self):
         try:
-            return SearchModel.get(self.kwargs['search_model'])
+            return SearchModel.get(self.get_search_model_name())
         except KeyError as exception:
             raise Http404(force_text(exception))

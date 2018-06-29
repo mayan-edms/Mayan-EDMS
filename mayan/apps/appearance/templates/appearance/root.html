@@ -1,0 +1,172 @@
+{% load i18n %}
+{% load static %}
+
+{% load compress %}
+
+{% load common_tags %}
+{% load navigation_tags %}
+
+{% spaceless %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
+        <title>
+            {% block base_title %}
+                {% block title %}{% endblock %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}
+            {% endblock base_title %}
+        </title>
+
+        {% compress css %}
+            <link href="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/css/fa-svg-with-js.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/vendors/fancybox-master/dist/jquery.fancybox.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/node_modules/select2/dist/css/select2.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/node_modules/toastr/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/vendors/pace-0.7.8/themes/pace-theme-flash.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            {% block stylesheets %}{% endblock %}
+        {% endcompress %}
+        <script>
+            function waitForJQuery(func) {
+                if (window.jQuery) {
+                    func();
+                } else {
+                    setTimeout(function() {
+                        waitForJQuery(func)
+                    }, 50);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        {% if appearance_type == 'plain' %}
+            {% block content_plain %}{% endblock %}
+        {% else %}
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url home_view %}">{% project_information '__title__' %}</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            {% get_menu_links 'main menu' as menu_links %}
+                            {% for link_set in menu_links %}
+                                {% for link in link_set %}
+                                    {% with 'true' as as_li %}
+                                    {% with 'true' as hide_active_anchor %}
+                                    {% with 'active' as li_class_active %}
+                                    {% with 'first' as li_class_first %}
+                                    {% with ' ' as link_classes %}
+                                        {% include 'navigation/generic_subnavigation.html' %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="ajax-content"></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="modal fade" id="modal-server-error" role="dialog" tabindex="-1" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{% trans 'Server error' %}</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script id="template-invalid-document" type="text/x-template">
+            <div class="text-center" style="border: height: 100%;">
+                <div class="fa-3x">
+                    <span class="fa-layers fa-fw">
+                        <i class="far fa-file text-primary"></i>
+                        <i class="fa-inverse fas fa-times text-danger" data-fa-transform="shrink-6"></i>
+                    </span>
+                </div>
+            </div>
+        </script>
+
+        <script id="template-error" type="text/x-template">
+            <div class="content">
+                <h2 class="title">{% blocktrans %}Server communication error{% endblocktrans %}</h2>
+                <div class="inner">
+                    <p>{% blocktrans %}Check you network connection and try again in a few moments.{% endblocktrans %}</p>
+                </div>
+            </div>
+        </script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        {% compress js %}
+        <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/packages/jquery.scrollview.js' %}" type="text/javascript"></script>
+
+        <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.lazyload.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.scrollstop.js' %}" type="text/javascript"></script>
+
+        <script src="{% static 'appearance/vendors/fancybox-master/dist/jquery.fancybox.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/select2/dist/js/select2.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/toastr/build/toastr.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/jquery-match-height/dist/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/IPv6.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/punycode.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/SecondLevelDomains.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/URI.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/URITemplate.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/urijs/src/URI.fragmentURI.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/jquery-form/dist/jquery.form.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/vendors/pace-0.7.8/pace.js' %}" type="text/javascript"></script>
+        <script src="{% static 'sources/node_modules/dropzone/dist/dropzone.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/js/mayan_app.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/js/mayan_image.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/js/partial_navigation.js' %}" type="text/javascript"></script>
+
+        <script>
+            {# Transfer variable from Django to javascript #}
+            var initialURL = '{% url home_view %}';
+            var djangoDEBUG = {% if debug %}true{% else %}false{% endif %};
+            Dropzone.autoDiscover = false;
+        </script>
+
+        <script src="{% static 'appearance/js/base.js' %}" type="text/javascript"></script>
+        {% endcompress %}
+    </body>
+</html>
+{% endspaceless %}

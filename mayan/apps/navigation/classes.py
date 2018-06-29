@@ -7,11 +7,12 @@ from furl import furl
 
 from django.apps import apps
 from django.conf import settings
+from django.contrib.admin.utils import label_for_field
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.urls import resolve
+from django.urls import Resolver404, resolve
 from django.utils.encoding import force_str, force_text
 
 from common.utils import return_attrib
@@ -38,8 +39,20 @@ class ResolvedLink(object):
         return self.link.description
 
     @property
+    def html_data(self):
+        return self.link.html_data
+
+    @property
+    def html_extra_classes(self):
+        return self.link.html_extra_classes
+
+    @property
     def icon(self):
         return self.link.icon
+
+    @property
+    def icon_class(self):
+        return self.link.icon_class
 
     @property
     def tags(self):
@@ -64,11 +77,12 @@ class Menu(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, name, icon=None, label=None):
+    def __init__(self, name, icon=None, icon_class=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
         self.icon = icon
+        self.icon_class = icon_class
         self.name = name
         self.label = label
         self.bound_links = {}
@@ -87,7 +101,6 @@ class Menu(object):
         """
         Associate a link to a model, a view inside this menu
         """
-
         try:
             for source in sources:
                 self._map_links_to_source(
@@ -140,7 +153,13 @@ class Menu(object):
         current_path = request.META['PATH_INFO']
 
         # Get sources: view name, view objects
-        current_view = resolve(current_path).view_name
+        try:
+            current_view = resolve(current_path).view_name
+        except Resolver404:
+            # Can't figure out which view corresponds to this URL.
+            # Most likely it is an invalid URL.
+            logger.warning('Can\'t figure out which view corresponds to this URL: %s; aborting menu resolution.', current_path)
+            return ()
 
         resolved_navigation_object_list = self.get_resolved_navigation_object_list(
             context=context, source=source
@@ -224,7 +243,6 @@ class Menu(object):
         Allow unbinding links from sources, used to allow 3rd party apps to
         change the link binding of core apps
         """
-
         try:
             for source in sources:
                 self._map_links_to_source(
@@ -239,7 +257,8 @@ class Menu(object):
 
 class Link(object):
     def __init__(self, text, view=None, args=None, condition=None,
-                 conditional_disable=None, description=None, icon=None,
+                 conditional_disable=None, description=None, html_data=None,
+                 html_extra_classes=None, icon=None, icon_class=None,
                  keep_query=False, kwargs=None, permissions=None,
                  permissions_related=None, remove_from_query=None, tags=None,
                  url=None):
@@ -248,7 +267,10 @@ class Link(object):
         self.condition = condition
         self.conditional_disable = conditional_disable
         self.description = description
+        self.html_data = html_data
+        self.html_extra_classes = html_extra_classes
         self.icon = icon
+        self.icon_class = icon_class
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.permissions = permissions or []
@@ -417,14 +439,27 @@ class SourceColumn(object):
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label, attribute=None, func=None, order=None):
+    def __init__(self, source, label=None, attribute=None, func=None, order=None):
         self.source = source
-        self.label = label
+        self._label = label
         self.attribute = attribute
         self.func = func
         self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
+
+    @property
+    def label(self):
+        # TODO: Add support for related fields (dotted or double underscore attributes)
+        if not self._label:
+            if self.attribute:
+                self._label = label_for_field(
+                    name=self.attribute, model=self.source._meta.model
+                )
+            else:
+                self._label = 'Function'
+
+        return self._label
 
     def resolve(self, context):
         if self.attribute:

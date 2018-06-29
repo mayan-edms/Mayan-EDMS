@@ -100,6 +100,19 @@ class DocumentTypeManager(models.Manager):
 
 
 class DuplicatedDocumentManager(models.Manager):
+    def clean_empty_duplicate_lists(self):
+        self.filter(documents=None).delete()
+
+    def get_duplicated_documents(self):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        return Document.objects.filter(
+            pk__in=self.filter(documents__isnull=False).values_list(
+                'document_id', flat=True
+            )
+        )
+
     def scan(self):
         """
         Find duplicates by iterating over all documents and then
@@ -116,6 +129,9 @@ class DuplicatedDocumentManager(models.Manager):
         """
         Find duplicates by matching latest version checksums
         """
+        if not document.latest_version:
+            return None
+
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
@@ -132,6 +148,8 @@ class DuplicatedDocumentManager(models.Manager):
         if duplicates.exists():
             instance, created = self.get_or_create(document=document)
             instance.documents.add(*duplicates)
+        else:
+            self.filter(document=document).delete()
 
         if scan_children:
             for document in duplicates:

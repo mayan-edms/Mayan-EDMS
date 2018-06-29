@@ -8,8 +8,9 @@ from django_downloadview.test import assert_download_response
 
 from django_gpg.models import Key
 from documents.models import DocumentVersion
-from documents.tests.literals import TEST_DOCUMENT_PATH
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import (
+    GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
+)
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (

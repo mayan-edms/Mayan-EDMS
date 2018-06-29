@@ -14,8 +14,22 @@ queue_documents_periodic = CeleryQueue(
 queue_uploads = CeleryQueue(
     name='uploads', label=_('Uploads')
 )
-queue_uploads = CeleryQueue(
+queue_documents = CeleryQueue(
     name='documents', label=_('Documents')
+)
+
+queue_converter.add_task_type(
+    name='documents.tasks.task_generate_document_page_image',
+    label=_('Generate document page image')
+)
+
+queue_documents.add_task_type(
+    name='documents.tasks.task_delete_document',
+    label=_('Delete a document')
+)
+queue_documents.add_task_type(
+    name='documents.tasks.task_clean_empty_duplicate_lists',
+    label=_('Clean empty duplicate lists')
 )
 
 queue_documents_periodic.add_task_type(
@@ -36,11 +50,6 @@ queue_tools.add_task_type(
     label=_('Clear image cache')
 )
 
-queue_converter.add_task_type(
-    name='documents.tasks.task_generate_document_page_image',
-    label=_('Generate document page image')
-)
-
 queue_uploads.add_task_type(
     name='documents.tasks.task_update_page_count',
     label=_('Update document page count')
@@ -48,8 +57,4 @@ queue_uploads.add_task_type(
 queue_uploads.add_task_type(
     name='documents.tasks.task_upload_new_version',
     label=_('Upload new document version')
-)
-queue_uploads.add_task_type(
-    name='documents.tasks.task_delete_document',
-    label=_('Delete a document')
 )

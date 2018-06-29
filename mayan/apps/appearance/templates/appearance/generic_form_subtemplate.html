@@ -10,9 +10,9 @@
 
 <div class="well">
     {% if form.is_multipart %}
-        <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'' }}">
+        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% else %}
-        <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'' }}">
+        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% endif %}
 
         {{ wizard.management_form }}
@@ -52,11 +52,16 @@
                                     </th>
                                 {% endfor %}
                             </tr>
-                    {% endif %}
+                {% endif %}
 
-                    {% for form in formset.forms %}
-                        {% include 'appearance/generic_form_instance.html' %}
+                {% for form in formset.forms %}
+                    {% include 'appearance/generic_form_instance.html' %}
+                {% empty %}
+                    <tr><td class="text-center" colspan=99>
+                        {% if form_empty_label %}{{ form_empty_label }}{% else %}{% trans 'No results' %}{% endif %}
+                    </td></tr>
                 {% endfor %}
+
                 {% if form_display_mode_table %}
                         </tbody>
                     </table>
@@ -68,10 +73,19 @@
         {% endif %}
         {% if not read_only %}
             <div class="form-group">
-                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="{{ submit_icon|default:'fa fa-check' }}"></i> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}</button>
+                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
+                    {% if submit_icon_class %}
+                        {{ submit_icon_class.render }}
+                    {% elif submit_icon %}
+                        <i class="{{ submit_icon }}"></i>
+                    {% else %}
+                        <i class="fa fa-check"></i>
+                    {% endif %}
+                    {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                </button>
                 {% if previous %}
-                      &nbsp;<a class="btn btn-default" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>
-                        <i class="fa fa-cross"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                      &nbsp;<a class="btn btn-default" onclick='history.back();'>
+                        <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
                       </a>
                 {% endif %}
             </div>

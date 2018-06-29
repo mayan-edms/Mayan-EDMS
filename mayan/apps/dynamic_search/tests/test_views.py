@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests.test_views import GenericViewTestCase
+from common.tests import GenericViewTestCase
 from documents.models import DocumentType
 from documents.search import document_search
 from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
@@ -13,7 +13,6 @@ class Issue46TestCase(GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
-
     def setUp(self):
         super(Issue46TestCase, self).setUp()
         self.login_admin_user()
@@ -39,10 +38,10 @@ class Issue46TestCase(GenericViewTestCase):
 
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'label': 'test document'}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), self.document_count)
+        self.assertEqual(queryset.count(), self.document_count)
 
         with self.settings(COMMON_PAGINATE_BY=2):
             # Funcitonal test for the first page of advanced results

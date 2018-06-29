@@ -3,41 +3,42 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "خروج Checkout"
 
 #: dashboard_widgets.py:18
 msgid "Checkedout documents"
-msgstr ""
+msgstr "اسناد ارزیابی"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "سند بصورت اتوماتیک وارد شده است."
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "سند وارد شد."
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "سند خارج شد."
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "سند طبق دستور وارد شد."
 
@@ -47,7 +48,7 @@ msgstr "سند در حال حاضر خارج و یا checked out شده است."
 
 #: forms.py:28
 msgid "Document status"
-msgstr ""
+msgstr "وضعیت سند"
 
 #: forms.py:37 models.py:41 views.py:84
 msgid "User"
@@ -55,15 +56,15 @@ msgstr "کاربر"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr ""
+msgstr "اتمام زمان"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "اتمام انقضای"
 
 #: forms.py:51
 msgid "New versions allowed?"
-msgstr ""
+msgstr "نسخه های جدید مجاز است؟"
 
 #: forms.py:52
 msgid "Yes"
@@ -73,15 +74,15 @@ msgstr "بلی"
 msgid "No"
 msgstr "خیر"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "خروج checkout سند"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "ورود check in سند"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "ورود/خروج"
 
@@ -93,7 +94,7 @@ msgstr "خارج شده checked out"
 msgid "Checked in/available"
 msgstr "وارد شده و یا موجود Checked in"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "سند"
 
@@ -117,25 +118,25 @@ msgstr "از بارگذاری نسخه جدید این سند جلوگیری ک�
 msgid "Block new version upload"
 msgstr "آپلود نسخه و یا بلوک جدید"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr ""
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "خروج و یا checkout سند"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "خروجی های check out سند"
 
-#: models.py:104
-msgid "New version block"
-msgstr ""
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "اتمام تاریخ انقضا و زمان باید در آینده باشد."
 
 #: models.py:105
+msgid "New version block"
+msgstr "بلوک نسخه جدید"
+
+#: models.py:106
 msgid "New version blocks"
-msgstr ""
+msgstr "بلوک نسخه جدید"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -151,14 +152,18 @@ msgstr "خروج اسناد"
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr ""
+msgstr "مشخصات دقیق را مشاهده کنید"
 
 #: queues.py:8
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "دوره های آموزشی"
 
 #: queues.py:12
 msgid "Check expired checkouts"
+msgstr "بررسی پرداخت های منقضی شده را بررسی کنید"
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
 msgstr ""
 
 #: views.py:53
@@ -198,12 +203,12 @@ msgstr "جزئیات خروج و یا Checkout سند: %s"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
+msgstr "ابتدا این سند را بررسی نکردید نیرویی در سند چک کنید: %s"
 
 #: views.py:138
 #, python-format
 msgid "Check in the document: %s?"
-msgstr ""
+msgstr "در سند چک کنید: %s"
 
 #: views.py:166
 msgid "Document has not been checked out."
@@ -219,6 +224,6 @@ msgstr "خطا در زمان خروج و یا checkout سند: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "سند \"%s\" با موفقیت وارد و یا  checked in شد."
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
-msgstr ""
+msgstr "دوره زمانی"

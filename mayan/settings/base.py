@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
 from __future__ import unicode_literals
 
 import os
@@ -17,7 +16,13 @@ import sys
 
 from django.utils.translation import ugettext_lazy as _
 
+import environ
+
 import mayan
+
+from .literals import DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -26,13 +31,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
+MEDIA_ROOT = os.environ.get(
+    'MAYAN_MEDIA_ROOT', os.path.join(BASE_DIR, 'media')
+)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'secret_key_missing'
+environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
+if environment_secret_key:
+    SECRET_KEY = environment_secret_key
+else:
+    try:
+        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:
+            SECRET_KEY = file_object.read().strip()
+    except IOError:
+        SECRET_KEY = DEFAULT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list(
+    'MAYAN_ALLOWED_HOSTS', default=['127.0.0.1', 'localhost', '[::1]']
+)
 
 # Application definition
 
@@ -49,6 +68,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 3rd party
     'actstream',
@@ -89,9 +109,6 @@ INSTALLED_APPS = (
     'document_states',
     'documents',
     'events',
-    # Disable the folders app by default
-    # Will be removed in the next version
-    # 'folders',
     'linking',
     'mailer',
     'mayan_statistics',
@@ -105,12 +122,13 @@ INSTALLED_APPS = (
     'tags',
     'task_manager',
     # Placed after rest_api to allow template overriding
-    'rest_framework_swagger',
+    'drf_yasg',
 )
 
 MIDDLEWARE_CLASSES = (
     'common.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -147,18 +165,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mayan.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -198,11 +204,6 @@ STATIC_URL = '/static/'
 
 # ------------ Custom settings section ----------
 
-PROJECT_TITLE = mayan.__title__
-PROJECT_WEBSITE = 'http://www.mayan-edms.com'
-PROJECT_COPYRIGHT = mayan.__copyright__
-PROJECT_LICENSE = mayan.__license__
-
 LANGUAGES = (
     ('ar', _('Arabic')),
     ('bg', _('Bulgarian')),
@@ -233,7 +234,9 @@ SITE_ID = 1
 
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
-STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
+STATIC_ROOT = os.environ.get(
+    'MAYAN_STATIC_ROOT', os.path.join(MEDIA_ROOT, 'static')
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -241,36 +244,49 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 TEST_RUNNER = 'common.tests.runner.MayanTestRunner'
 
 # --------- Django compressor -------------
+
 COMPRESS_CSS_FILTERS = (
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter'
 )
 COMPRESS_ENABLED = False
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+
 # --------- Django -------------------
+
+HOME_VIEW = 'common:home'
 LOGIN_URL = 'authentication:login_view'
-LOGIN_REDIRECT_URL = 'common:home'
+LOGIN_REDIRECT_URL = 'common:root'
 INTERNAL_IPS = ('127.0.0.1',)
+
 # ---------- Django REST framework -----------
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
+
 # --------- Pagination --------
+
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 8,
     'MARGIN_PAGES_DISPLAYED': 2,
 }
+
 # ----------- Celery ----------
+
 CELERY_ACCEPT_CONTENT = ('json',)
-CELERY_ALWAYS_EAGER = True
+CELERY_ALWAYS_EAGER = False
 CELERY_CREATE_MISSING_QUEUES = False
 CELERY_DISABLE_RATE_LIMITS = True
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
@@ -281,22 +297,64 @@ CELERY_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-# ------------ CORS ------------
-CORS_ORIGIN_ALLOW_ALL = True
-# ------ Django REST Swagger -----
-SWAGGER_SETTINGS = {
-    'api_version': '1',
-    'info': {
-        'title': _('Mayan EDMS API Documentation'),
-        'description': _('Free Open Source Document Management System.'),
-        'contact': 'roberto.rosario@mayan-edms.com',
-        'license': 'Apache 2.0',
-        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
-    }
 
-}
+# ------------ CORS ------------
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 # ------ Timezone --------
+
 TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
+
 # ----- Stronghold -------
+
 STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
+
+# ----- Swagger --------
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'rest_api.schemas.openapi_info',
+    'DEFAULT_MODEL_DEPTH': 1,
+    'DOC_EXPANSION': 'None',
+}
+
+# ----- AJAX REDIRECT -----
+
+AJAX_REDIRECT_CODE = 278
+
+# ----- Celery -----
+
+BROKER_URL = os.environ.get('MAYAN_BROKER_URL')
+CELERY_ALWAYS_EAGER = env.bool('MAYAN_CELERY_ALWAYS_EAGER', default=True)
+CELERY_RESULT_BACKEND = os.environ.get('MAYAN_CELERY_RESULT_BACKEND')
+
+# ----- Database -----
+environment_database_engine = os.environ.get('MAYAN_DATABASE_ENGINE')
+
+if environment_database_engine:
+    environment_database_conn_max_age = os.environ.get('MAYAN_DATABASE_CONN_MAX_AGE', None)
+    if environment_database_conn_max_age:
+        environment_database_conn_max_age = int(environment_database_conn_max_age)
+
+    DATABASES = {
+        'default': {
+            'ENGINE': environment_database_engine,
+            'NAME': os.environ['MAYAN_DATABASE_NAME'],
+            'USER': os.environ['MAYAN_DATABASE_USER'],
+            'PASSWORD': os.environ['MAYAN_DATABASE_PASSWORD'],
+            'HOST': os.environ.get('MAYAN_DATABASE_HOST', None),
+            'PORT': os.environ.get('MAYAN_DATABASE_PORT', None),
+            'CONN_MAX_AGE': environment_database_conn_max_age,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
+        }
+    }
+# ----- Debug -----
+
+DEBUG = env.bool('MAYAN_DEBUG', default=False)

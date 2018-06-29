@@ -14,22 +14,26 @@ class OCREventsTestCase(GenericDocumentTestCase):
         Action.objects.all().delete()
         self.document.submit_for_ocr()
 
+        # Get the oldest action
+        action = Action.objects.order_by('-timestamp').last()
+
         self.assertEqual(
-            Action.objects.last().target, self.document.latest_version
+            action.target, self.document.latest_version
         )
         self.assertEqual(
-            Action.objects.last().verb,
-            event_ocr_document_version_submit.name
+            action.verb, event_ocr_document_version_submit.id
         )
 
     def test_document_version_finish_event(self):
         Action.objects.all().delete()
         self.document.submit_for_ocr()
 
+        # Get the most recent action
+        action = Action.objects.order_by('-timestamp').first()
+
         self.assertEqual(
-            Action.objects.first().target, self.document.latest_version
+            action.target, self.document.latest_version
         )
         self.assertEqual(
-            Action.objects.first().verb,
-            event_ocr_document_version_finish.name
+            action.verb, event_ocr_document_version_finish.id
         )

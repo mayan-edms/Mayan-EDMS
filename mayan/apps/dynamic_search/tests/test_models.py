@@ -30,25 +30,48 @@ class DocumentSearchTestCase(BaseTestCase):
         Test that simple search works after related_name changes to
         document versions and document version pages
         """
-
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'q': 'Mayan'}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)
 
     def test_advanced_search_after_related_name_change(self):
         # Test versions__filename
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'label': self.document.label}, user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)
 
         # Test versions__mimetype
-        model_list, result_set, elapsed_time = document_search.search(
+        queryset, elapsed_time = document_search.search(
             {'versions__mimetype': self.document.file_mimetype},
             user=self.admin_user
         )
-        self.assertEqual(len(result_set), 1)
-        self.assertEqual(list(model_list), [self.document])
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.document in queryset)
+
+    def test_simple_or_search(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_2 = self.document_type.new_document(
+                file_object=file_object, label='second_doc.pdf'
+            )
+
+        queryset, elapsed_time = document_search.search(
+            {'q': 'Mayan OR second'}, user=self.admin_user
+        )
+        self.assertEqual(queryset.count(), 2)
+        self.assertTrue(self.document in queryset)
+        self.assertTrue(self.document_2 in queryset)
+
+    def test_simple_and_search(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document_2 = self.document_type.new_document(
+                file_object=file_object, label='second_doc.pdf'
+            )
+
+        queryset, elapsed_time = document_search.search(
+            {'q': 'Mayan second'}, user=self.admin_user
+        )
+        self.assertEqual(queryset.count(), 0)

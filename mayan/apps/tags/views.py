@@ -17,6 +17,7 @@ from documents.views import DocumentListView
 from documents.permissions import permission_document_view
 
 from .forms import TagMultipleSelectionForm
+from .icons import icon_tag_delete_submit, icon_tag_remove_submit
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -129,7 +130,7 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
 
         result = {
             'message': _('Will be removed from all documents.'),
-            'submit_icon': 'fa fa-times',
+            'submit_icon_class': icon_tag_delete_submit,
             'submit_label': _('Delete'),
             'title': ungettext(
                 'Delete the selected tag?',
@@ -181,6 +182,7 @@ class TagListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'title': _('Tags'),
         }
 
@@ -202,6 +204,7 @@ class TagTaggedItemListView(DocumentListView):
         context = super(TagTaggedItemListView, self).get_extra_context()
         context.update(
             {
+                'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
                 'object': self.get_tag(),
                 'title': _('Documents with the tag: %s') % self.get_tag(),
             }
@@ -223,11 +226,15 @@ class DocumentTagListView(TagListView):
         )
 
     def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'object': self.document,
-            'title': _('Tags for document: %s') % self.document,
-        }
+        context = super(DocumentTagListView, self).get_extra_context()
+        context.update(
+            {
+                'hide_link': True,
+                'object': self.document,
+                'title': _('Tags for document: %s') % self.document,
+            }
+        )
+        return context
 
     def get_tag_queryset(self):
         return self.document.attached_tags().all()
@@ -246,6 +253,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
 
         result = {
+            'submit_icon_class': icon_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
                 singular='Remove tags to %(count)d document',

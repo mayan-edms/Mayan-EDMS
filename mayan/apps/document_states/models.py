@@ -17,8 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.validators import validate_internal_name
 from documents.models import Document, DocumentType
-from events.models import EventType
-from permissions import Permission
+from events.models import StoredEventType
 
 from .error_logs import error_log_state_actions
 from .literals import (
@@ -48,11 +47,17 @@ class Workflow(models.Model):
         max_length=255, unique=True, verbose_name=_('Label')
     )
     document_types = models.ManyToManyField(
-        DocumentType, related_name='workflows',
-        verbose_name=_('Document types')
+        related_name='workflows', to=DocumentType, verbose_name=_(
+            'Document types'
+        )
     )
 
     objects = WorkflowManager()
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Workflow')
+        verbose_name_plural = _('Workflows')
 
     def __str__(self):
         return self.label
@@ -123,11 +128,6 @@ class Workflow(models.Model):
 
         return diagram.pipe()
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Workflow')
-        verbose_name_plural = _('Workflows')
-
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
@@ -142,7 +142,7 @@ class WorkflowState(models.Model):
     the Completion Amount will show 66%.
     """
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='states',
+        on_delete=models.CASCADE, related_name='states', to=Workflow,
         verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
@@ -168,11 +168,6 @@ class WorkflowState(models.Model):
 
     def __str__(self):
         return self.label
-
-    def save(self, *args, **kwargs):
-        if self.initial:
-            self.workflow.states.all().update(initial=False)
-        return super(WorkflowState, self).save(*args, **kwargs)
 
     @property
     def entry_actions(self):
@@ -207,12 +202,17 @@ class WorkflowState(models.Model):
             )
         ).distinct()
 
+    def save(self, *args, **kwargs):
+        if self.initial:
+            self.workflow.states.all().update(initial=False)
+        return super(WorkflowState, self).save(*args, **kwargs)
+
 
 @python_2_unicode_compatible
 class WorkflowStateAction(models.Model):
     state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='actions', verbose_name=_('Workflow state')
+        on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
+        verbose_name=_('Workflow state')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -231,14 +231,14 @@ class WorkflowStateAction(models.Model):
         blank=True, verbose_name=_('Entry action data')
     )
 
-    def __str__(self):
-        return self.label
-
     class Meta:
         ordering = ('label',)
         unique_together = ('state', 'label')
         verbose_name = _('Workflow state action')
         verbose_name_plural = _('Workflow state actions')
+
+    def __str__(self):
+        return self.label
 
     def dumps(self, data):
         self.action_data = json.dumps(data)
@@ -260,11 +260,11 @@ class WorkflowStateAction(models.Model):
     def get_class(self):
         return import_string(self.action_path)
 
-    def get_class_label(self):
-        return self.get_class().label
-
     def get_class_instance(self):
         return self.get_class()(form_data=self.loads())
+
+    def get_class_label(self):
+        return self.get_class().label
 
     def loads(self):
         return json.loads(self.action_data)
@@ -273,22 +273,18 @@ class WorkflowStateAction(models.Model):
 @python_2_unicode_compatible
 class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='transitions',
+        on_delete=models.CASCADE, related_name='transitions', to=Workflow,
         verbose_name=_('Workflow')
     )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     origin_state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='origin_transitions', verbose_name=_('Origin state')
+        on_delete=models.CASCADE, related_name='origin_transitions',
+        to=WorkflowState, verbose_name=_('Origin state')
     )
     destination_state = models.ForeignKey(
-        WorkflowState, on_delete=models.CASCADE,
-        related_name='destination_transitions',
-        verbose_name=_('Destination state')
+        on_delete=models.CASCADE, related_name='destination_transitions',
+        to=WorkflowState, verbose_name=_('Destination state')
     )
-
-    def __str__(self):
-        return self.label
 
     class Meta:
         ordering = ('label',)
@@ -298,15 +294,19 @@ class WorkflowTransition(models.Model):
         verbose_name = _('Workflow transition')
         verbose_name_plural = _('Workflow transitions')
 
+    def __str__(self):
+        return self.label
+
 
 @python_2_unicode_compatible
 class WorkflowTransitionTriggerEvent(models.Model):
     transition = models.ForeignKey(
-        WorkflowTransition, on_delete=models.CASCADE,
-        related_name='trigger_events', verbose_name=_('Transition')
+        on_delete=models.CASCADE, related_name='trigger_events',
+        to=WorkflowTransition, verbose_name=_('Transition')
     )
     event_type = models.ForeignKey(
-        EventType, on_delete=models.CASCADE, verbose_name=_('Event type')
+        on_delete=models.CASCADE, to=StoredEventType,
+        verbose_name=_('Event type')
     )
 
     class Meta:
@@ -320,21 +320,22 @@ class WorkflowTransitionTriggerEvent(models.Model):
 @python_2_unicode_compatible
 class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(
-        Workflow, on_delete=models.CASCADE, related_name='instances',
+        on_delete=models.CASCADE, related_name='instances', to=Workflow,
         verbose_name=_('Workflow')
     )
     document = models.ForeignKey(
-        Document, on_delete=models.CASCADE, related_name='workflows',
+        on_delete=models.CASCADE, related_name='workflows', to=Document,
         verbose_name=_('Document')
     )
 
+    class Meta:
+        ordering = ('workflow',)
+        unique_together = ('document', 'workflow')
+        verbose_name = _('Workflow instance')
+        verbose_name_plural = _('Workflow instances')
+
     def __str__(self):
         return force_text(self.workflow)
-
-    def get_absolute_url(self):
-        return reverse(
-            'document_states:workflow_instance_detail', args=(str(self.pk),)
-        )
 
     def do_transition(self, transition, user=None, comment=None):
         try:
@@ -345,6 +346,11 @@ class WorkflowInstance(models.Model):
         except AttributeError:
             # No initial state has been set for this workflow
             pass
+
+    def get_absolute_url(self):
+        return reverse(
+            'document_states:workflow_instance_detail', args=(str(self.pk),)
+        )
 
     def get_current_state(self):
         """
@@ -382,32 +388,23 @@ class WorkflowInstance(models.Model):
 
             if _user:
                 try:
-                    Permission.check_permissions(
-                        requester=_user, permissions=(
-                            permission_workflow_transition,
-                        )
+                    """
+                    Check for ACL access to the workflow, if true, allow
+                    all transition options.
+                    """
+                    AccessControlList.objects.check_access(
+                        permissions=permission_workflow_transition,
+                        user=_user, obj=self.workflow
                     )
                 except PermissionDenied:
-                    try:
-                        """
-                        Check for ACL access to the workflow, if true, allow
-                        all transition options.
-                        """
-
-                        AccessControlList.objects.check_access(
-                            permissions=permission_workflow_transition,
-                            user=_user, obj=self.workflow
-                        )
-                    except PermissionDenied:
-                        """
-                        If not ACL access to the workflow, filter transition
-                        options by each transition ACL access
-                        """
-
-                        queryset = AccessControlList.objects.filter_by_access(
-                            permission=permission_workflow_transition,
-                            user=_user, queryset=queryset
-                        )
+                    """
+                    If not ACL access to the workflow, filter transition
+                    options by each transition ACL access
+                    """
+                    queryset = AccessControlList.objects.filter_by_access(
+                        permission=permission_workflow_transition,
+                        user=_user, queryset=queryset
+                    )
             return queryset
         else:
             """
@@ -415,13 +412,7 @@ class WorkflowInstance(models.Model):
             whose document type has this workflow is created. We return an
             empty transition queryset.
             """
-
             return WorkflowTransition.objects.none()
-
-    class Meta:
-        unique_together = ('document', 'workflow')
-        verbose_name = _('Workflow instance')
-        verbose_name_plural = _('Workflow instances')
 
 
 @python_2_unicode_compatible
@@ -434,28 +425,29 @@ class WorkflowInstanceLogEntry(models.Model):
     the document state to the Actual state.
     """
     workflow_instance = models.ForeignKey(
-        WorkflowInstance, on_delete=models.CASCADE,
-        related_name='log_entries', verbose_name=_('Workflow instance')
+        on_delete=models.CASCADE, related_name='log_entries',
+        to=WorkflowInstance, verbose_name=_('Workflow instance')
     )
     datetime = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Datetime')
     )
     transition = models.ForeignKey(
-        WorkflowTransition, on_delete=models.CASCADE,
+        on_delete=models.CASCADE, to=WorkflowTransition,
         verbose_name=_('Transition')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, blank=True, null=True,
-        on_delete=models.CASCADE, verbose_name=_('User')
+        blank=True, null=True, on_delete=models.CASCADE,
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
-    def __str__(self):
-        return force_text(self.transition)
-
     class Meta:
+        ordering = ('datetime',)
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
+
+    def __str__(self):
+        return force_text(self.transition)
 
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -21,47 +21,39 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 permissions.py:7
+#: apps.py:51 permissions.py:7
 msgid "User management"
 msgstr "Gestão de utilizadores"
 
-#: apps.py:59
+#: apps.py:66
 msgid "All the groups."
 msgstr "Todos os grupos."
 
-#: apps.py:63
+#: apps.py:70
 msgid "All the users."
 msgstr "Todos os utilziadores."
 
-#: apps.py:68 links.py:30
-msgid "Members"
-msgstr "Membros"
+#: apps.py:88 links.py:30 links.py:54 links.py:70 views.py:242
+msgid "Users"
+msgstr "Utilizadores"
 
-#: apps.py:72
+#: apps.py:92
 msgid "Full name"
 msgstr "Nome completo"
 
-#: apps.py:75 search.py:22
+#: apps.py:95 search.py:22
 msgid "Email"
 msgstr "Correio eletrónico"
 
-#: apps.py:78
+#: apps.py:98
 msgid "Active"
 msgstr "Ativo"
 
-#: apps.py:84
+#: apps.py:104
 msgid "Has usable password?"
 msgstr ""
 
-#: forms.py:18
-msgid "New password"
-msgstr "Nova senha"
-
-#: forms.py:21
-msgid "Confirm password"
-msgstr "Contrassenha"
-
-#: links.py:14 views.py:27
+#: links.py:14 views.py:29
 msgid "Create new group"
 msgstr "Criar novo grupo"
 
@@ -73,17 +65,13 @@ msgstr "Eliminar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:52
 msgid "Groups"
 msgstr "Grupos"
 
-#: links.py:38 views.py:116
+#: links.py:38 views.py:118
 msgid "Create new user"
 msgstr "Criar novo utilziador"
-
-#: links.py:54 links.py:70 views.py:240
-msgid "Users"
-msgstr "Utilizadores"
 
 #: links.py:62 links.py:66
 msgid "Set password"
@@ -137,134 +125,134 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
-#: serializers.py:29
+#: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr ""
 
-#: serializers.py:51
+#: serializers.py:64
 msgid "List of group primary keys to which to add the user."
 msgstr ""
 
-#: views.py:43
+#: views.py:45
 #, python-format
 msgid "Edit group: %s"
 msgstr "Editar grupo: %s"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Eliminar o grupo: %s?"
 
-#: views.py:70
+#: views.py:72
 msgid "Available users"
 msgstr ""
 
-#: views.py:71
-msgid "Members of groups"
-msgstr "Membros de grupos"
+#: views.py:73
+msgid "Users in group"
+msgstr ""
 
-#: views.py:92
+#: views.py:94
 #, python-format
-msgid "Members of group: %s"
-msgstr "Membros do grupo: %s"
+msgid "Users of group: %s"
+msgstr ""
 
-#: views.py:126
+#: views.py:128
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Utilizador \"%s\" criado com sucesso."
 
-#: views.py:135
+#: views.py:138
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr ""
 
-#: views.py:137
+#: views.py:140
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr ""
 
-#: views.py:146
+#: views.py:148
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:156
+#: views.py:158
 #, python-format
 msgid "Delete user: %s"
 msgstr ""
 
-#: views.py:168
+#: views.py:170
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Não é permitida a eliminação de administradores ou membros da equipa, utilize a interface de administrador para estes casos."
 
-#: views.py:176
+#: views.py:178
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Utilizador \"%s\" eliminado com sucesso."
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao eliminar o utilizador \"%(user)s\": %(error)s "
 
-#: views.py:198
+#: views.py:200
 #, python-format
 msgid "Edit user: %s"
 msgstr "Editar utilizador: %s"
 
-#: views.py:204
+#: views.py:206
 msgid "Available groups"
 msgstr "Grupos disponíveis"
 
-#: views.py:205
+#: views.py:207
 msgid "Groups joined"
 msgstr ""
 
-#: views.py:214
+#: views.py:216
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Grupos do utilizador: %s"
 
-#: views.py:252
+#: views.py:255
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:254
+#: views.py:257
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:262
+#: views.py:264
 msgid "Submit"
 msgstr "Submeter"
 
-#: views.py:264
+#: views.py:266
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:274
+#: views.py:276
 #, python-format
 msgid "Change password for user: %s"
 msgstr ""
 
-#: views.py:294
+#: views.py:297
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Não é permitido redefinir a senha de administradores ou de membros da equipa, utilize a interface de administrador para estes casos."
 
-#: views.py:304
+#: views.py:307
 #, python-format
-msgid "Successfull password reset for user: %s."
-msgstr "Reposição de senha bem sucedida para o utilizador: %s."
+msgid "Successful password reset for user: %s."
+msgstr ""
 
-#: views.py:310
+#: views.py:313
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro ao redefinir a senha para o utilizador \"%(user)s\": %(error)s "

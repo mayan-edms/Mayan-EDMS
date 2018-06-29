@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..links import (
     link_acl_delete, link_acl_list, link_acl_create, link_acl_permissions

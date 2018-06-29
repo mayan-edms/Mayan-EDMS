@@ -1,5 +1,5 @@
-Concepts
-========
+Topics
+======
 
 Introductions to all the key parts of Mayan EDMS you'll need to know:
 
@@ -24,3 +24,7 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    settings
    file_storage
    backups
+   upload_wizard
+   pending_work
+   code_statistics
+   docker

@@ -13,29 +13,23 @@ from .serializers import KeySerializer
 
 
 class APIKeyListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the keys.
+    post: Upload a new key.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {
-        'GET': (permission_key_view,),
-        'POST': (permission_key_upload,)
-    }
+    mayan_object_permissions = {'GET': (permission_key_view,)}
+    mayan_view_permissions = {'POST': (permission_key_upload,)}
     permission_classes = (MayanPermission,)
     queryset = Key.objects.all()
     serializer_class = KeySerializer
 
-    def get(self, *args, **kwargs):
-        """
-        Returns a list of all the keys.
-        """
-        return super(APIKeyListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """
-        Upload a new key.
-        """
-        return super(APIKeyListView, self).post(*args, **kwargs)
-
 
 class APIKeyView(generics.RetrieveDestroyAPIView):
+    """
+    delete: Delete the selected key.
+    get: Return the details of the selected key.
+    """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'DELETE': (permission_key_delete,),
@@ -43,17 +37,3 @@ class APIKeyView(generics.RetrieveDestroyAPIView):
     }
     queryset = Key.objects.all()
     serializer_class = KeySerializer
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the selected key.
-        """
-
-        return super(APIKeyView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the selected key.
-        """
-
-        return super(APIKeyView, self).get(*args, **kwargs)

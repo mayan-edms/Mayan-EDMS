@@ -19,12 +19,12 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class Comment(models.Model):
     document = models.ForeignKey(
-        Document, db_index=True, on_delete=models.CASCADE,
-        related_name='comments', verbose_name=_('Document')
+        db_index=True, on_delete=models.CASCADE, related_name='comments',
+        to=Document, verbose_name=_('Document')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, editable=False, on_delete=models.CASCADE,
-        related_name='comments', verbose_name=_('User'),
+        editable=False, on_delete=models.CASCADE, related_name='comments',
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User'),
     )
     # Translators: Comment here is a noun and refers to the actual text stored
     comment = models.TextField(verbose_name=_('Comment'))
@@ -33,8 +33,24 @@ class Comment(models.Model):
         verbose_name=_('Date time submitted')
     )
 
+    class Meta:
+        get_latest_by = 'submit_date'
+        ordering = ('-submit_date',)
+        verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
+
     def __str__(self):
         return self.comment
+
+    def delete(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        super(Comment, self).delete(*args, **kwargs)
+        if user:
+            event_document_comment_delete.commit(
+                actor=user, target=self.document
+            )
+        else:
+            event_document_comment_delete.commit(target=self.document)
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None) or self.user
@@ -55,19 +71,3 @@ class Comment(models.Model):
                     'Comment "%s" added to document "%s"', self.comment,
                     self.document
                 )
-
-    def delete(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        super(Comment, self).delete(*args, **kwargs)
-        if user:
-            event_document_comment_delete.commit(
-                actor=user, target=self.document
-            )
-        else:
-            event_document_comment_delete.commit(target=self.document)
-
-    class Meta:
-        get_latest_by = 'submit_date'
-        ordering = ('-submit_date',)
-        verbose_name = _('Comment')
-        verbose_name_plural = _('Comments')

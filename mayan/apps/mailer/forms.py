@@ -3,11 +3,12 @@ from __future__ import unicode_literals
 import json
 
 from django import forms
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.forms import DynamicModelForm
+
+import mayan
 
 from .classes import MailerBackend
 from .models import UserMailer
@@ -31,16 +32,16 @@ class DocumentMailForm(forms.Form):
             self.fields[
                 'body'
             ].initial = setting_document_body_template.value % {
-                'project_title': settings.PROJECT_TITLE,
-                'project_website': settings.PROJECT_WEBSITE
+                'project_title': mayan.__title__,
+                'project_website': mayan.__website__
             }
         else:
             self.fields[
                 'subject'
             ].initial = setting_link_subject_template.value
             self.fields['body'].initial = setting_link_body_template.value % {
-                'project_title': settings.PROJECT_TITLE,
-                'project_website': settings.PROJECT_WEBSITE
+                'project_title': mayan.__title__,
+                'project_website': mayan.__website__
             }
 
         queryset = AccessControlList.objects.filter_by_access(

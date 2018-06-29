@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_group_setup, icon_user_setup
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -15,40 +16,40 @@ link_group_add = Link(
     view='user_management:group_add'
 )
 link_group_delete = Link(
-    permissions=(permission_group_delete,), tags='dangerous', text=_('Delete'),
-    view='user_management:group_delete', args='object.id'
+    args='object.id', permissions=(permission_group_delete,), tags='dangerous',
+    text=_('Delete'), view='user_management:group_delete',
 )
 link_group_edit = Link(
-    permissions=(permission_group_edit,), text=_('Edit'),
-    view='user_management:group_edit', args='object.id'
+    args='object.id', permissions=(permission_group_edit,), text=_('Edit'),
+    view='user_management:group_edit',
 )
 link_group_list = Link(
     permissions=(permission_group_view,), text=_('Groups'),
     view='user_management:group_list'
 )
 link_group_members = Link(
-    permissions=(permission_group_edit,), text=_('Members'),
-    view='user_management:group_members', args='object.id'
+    args='object.id', permissions=(permission_group_edit,), text=_('Users'),
+    view='user_management:group_members',
 )
 link_group_setup = Link(
-    icon='fa fa-group', permissions=(permission_group_view,), text=_('Groups'),
-    view='user_management:group_list'
+    icon_class=icon_group_setup, permissions=(permission_group_view,),
+    text=_('Groups'), view='user_management:group_list'
 )
 link_user_add = Link(
     permissions=(permission_user_create,), text=_('Create new user'),
     view='user_management:user_add'
 )
 link_user_delete = Link(
-    permissions=(permission_user_delete,), tags='dangerous', text=_('Delete'),
-    view='user_management:user_delete', args='object.id'
+    args='object.id', permissions=(permission_user_delete,), tags='dangerous',
+    text=_('Delete'), view='user_management:user_delete',
 )
 link_user_edit = Link(
-    permissions=(permission_user_edit,), text=_('Edit'),
-    view='user_management:user_edit', args='object.id'
+    args='object.id', permissions=(permission_user_edit,), text=_('Edit'),
+    view='user_management:user_edit',
 )
 link_user_groups = Link(
-    permissions=(permission_user_edit,), text=_('Groups'),
-    view='user_management:user_groups', args='object.id'
+    args='object.id', permissions=(permission_user_edit,), text=_('Groups'),
+    view='user_management:user_groups',
 )
 link_user_list = Link(
     permissions=(permission_user_view,), text=_('Users'),
@@ -63,10 +64,10 @@ link_user_multiple_set_password = Link(
     view='user_management:user_multiple_set_password'
 )
 link_user_set_password = Link(
-    permissions=(permission_user_edit,), text=_('Set password'),
-    view='user_management:user_set_password', args='object.id'
+    args='object.id', permissions=(permission_user_edit,),
+    text=_('Set password'), view='user_management:user_set_password',
 )
 link_user_setup = Link(
-    icon='fa fa-user', permissions=(permission_user_view,), text=_('Users'),
-    view='user_management:user_list'
+    icon_class=icon_user_setup, permissions=(permission_user_view,),
+    text=_('Users'), view='user_management:user_list'
 )

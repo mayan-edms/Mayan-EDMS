@@ -8,7 +8,9 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 
-from documents.runtime import cache_storage_backend
+from documents.storages import storage_documentimagecache
+from documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from documents.tasks import task_generate_document_page_image
 
 from .events import event_ocr_document_version_finish
 from .runtime import ocr_backend
@@ -18,6 +20,39 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentPageOCRContentManager(models.Manager):
+    def process_document_page(self, document_page):
+        logger.info(
+            'Processing page: %d of document version: %s',
+            document_page.page_number, document_page.document_version
+        )
+
+        DocumentPageOCRContent = apps.get_model(
+            app_label='ocr', model_name='DocumentPageOCRContent'
+        )
+
+        task = task_generate_document_page_image.apply_async(
+            kwargs=dict(
+                document_page_id=document_page.pk
+            )
+        )
+
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+
+        with storage_documentimagecache.open(cache_filename) as file_object:
+            document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
+                document_page=document_page
+            )
+            document_page_content.content = ocr_backend.execute(
+                file_object=file_object,
+                language=document_page.document.language
+            )
+            document_page_content.save()
+
+        logger.info(
+            'Finished processing page: %d of document version: %s',
+            document_page.page_number, document_page.document_version
+        )
+
     def process_document_version(self, document_version):
         logger.info('Starting OCR for document version: %s', document_version)
         logger.debug('document version: %d', document_version.pk)
@@ -27,7 +62,7 @@ class DocumentPageOCRContentManager(models.Manager):
                 self.process_document_page(document_page=document_page)
         except Exception as exception:
             logger.error(
-                'OCR error for document version: %d; %s', document_version,
+                'OCR error for document version: %d; %s', document_version.pk,
                 exception
             )
 
@@ -55,31 +90,3 @@ class DocumentPageOCRContentManager(models.Manager):
             post_document_version_ocr.send(
                 sender=document_version.__class__, instance=document_version
             )
-
-    def process_document_page(self, document_page):
-        logger.info(
-            'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
-        )
-
-        DocumentPageOCRContent = apps.get_model(
-            app_label='ocr', model_name='DocumentPageOCRContent'
-        )
-
-        # TODO: Call task and wait
-        cache_filename = document_page.generate_image()
-
-        with cache_storage_backend.open(cache_filename) as file_object:
-            document_page_content, created = DocumentPageOCRContent.objects.get_or_create(
-                document_page=document_page
-            )
-            document_page_content.content = ocr_backend.execute(
-                file_object=file_object,
-                language=document_page.document.language
-            )
-            document_page_content.save()
-
-        logger.info(
-            'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
-        )

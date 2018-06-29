@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from email import message_from_string
-from email.header import decode_header
 import imaplib
 import json
 import logging
@@ -9,37 +7,30 @@ import os
 import poplib
 import subprocess
 
-import sh
 import yaml
-
-try:
-    scanimage = sh.Command('/usr/bin/scanimage')
-except sh.CommandNotFound:
-    scanimage = None
 
 from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import (
+    force_str, force_text, python_2_unicode_compatible
+)
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from common.compat import collapse_rfc2231_value
 from common.compressed_files import CompressedFile, NotACompressedFile
 from common.utils import TemporaryFile
-from converter.literals import DIMENSION_SEPARATOR
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from documents.settings import setting_language
-from metadata.api import save_metadata_list, set_bulk_metadata
+from metadata.api import set_bulk_metadata
 from metadata.models import MetadataType
-from tags.models import Tag
 
-from .classes import Attachment, PseudoFile, SourceUploadedFile, StagingFile
+from .classes import PseudoFile, SourceUploadedFile, StagingFile
 from .exceptions import SourceException
 from .literals import (
     DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
@@ -53,6 +44,7 @@ from .literals import (
     SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_SANE_SCANNER,
 )
 from .settings import setting_scanimage_path
+from .wizards import WizardStep
 
 logger = logging.getLogger(__name__)
 
@@ -64,17 +56,71 @@ class Source(models.Model):
 
     objects = InheritanceManager()
 
-    @classmethod
-    def class_fullname(cls):
-        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Source')
+        verbose_name_plural = _('Sources')
 
     def __str__(self):
         return '%s' % self.label
 
+    @classmethod
+    def class_fullname(cls):
+        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
+
+    def clean_up_upload_file(self, upload_file_object):
+        pass
+        # TODO: Should raise NotImplementedError?
+
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, user=None):
+        """
+        Handle an upload request from a file object which may be an individual
+        document or a compressed file containing multiple documents.
+        """
+        documents = []
+        if not document_type:
+            document_type = self.document_type
+
+        kwargs = {
+            'description': description, 'document_type': document_type,
+            'label': label, 'language': language,
+            'user': user
+        }
+
+        if expand:
+            try:
+                compressed_file = CompressedFile(file_object)
+                for compressed_file_child in compressed_file.children():
+                    kwargs.update({'label': force_text(compressed_file_child)})
+                    documents.append(
+                        self.upload_document(
+                            file_object=File(compressed_file_child), **kwargs
+                        )
+                    )
+                    compressed_file_child.close()
+
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                documents.append(
+                    self.upload_document(file_object=file_object, **kwargs)
+                )
+        else:
+            documents.append(
+                self.upload_document(file_object=file_object, **kwargs)
+            )
+
+        # Return a list of newly created documents. Used by the email source
+        # to assign the from and subject metadata values.
+        return documents
+
+    def get_upload_file_object(self, form_data):
+        pass
+        # TODO: Should raise NotImplementedError?
+
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, querystring=None, user=None):
         """
         Upload an individual document
         """
@@ -106,73 +152,19 @@ class Source(models.Model):
                     source=self, targets=document_version.pages.all()
                 )
 
-                if metadata_dict_list:
-                    save_metadata_list(
-                        metadata_dict_list, document, create=True
-                    )
-
-                if metadata_dictionary:
-                    set_bulk_metadata(
-                        document=document,
-                        metadata_dictionary=metadata_dictionary
-                    )
-
-                if tag_ids:
-                    for tag in Tag.objects.filter(pk__in=tag_ids):
-                        tag.documents.add(document)
             except Exception as exception:
                 logger.critical(
                     'Unexpected exception while trying to create version for '
                     'new document "%s" from source "%s"; %s',
-                    label or file_object.name, self, exception
+                    label or file_object.name, self, exception, exc_info=True
                 )
                 document.delete(to_trash=False)
                 raise
-
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
-        """
-        Handle an upload request from a file object which may be an individual
-        document or a compressed file containing multiple documents.
-        """
-        if not document_type:
-            document_type = self.document_type
-
-        kwargs = {
-            'description': description, 'document_type': document_type,
-            'label': label, 'language': language,
-            'metadata_dict_list': metadata_dict_list,
-            'metadata_dictionary': metadata_dictionary, 'tag_ids': tag_ids,
-            'user': user
-        }
-
-        if expand:
-            try:
-                compressed_file = CompressedFile(file_object)
-                for compressed_file_child in compressed_file.children():
-                    kwargs.update({'label': force_text(compressed_file_child)})
-                    self.upload_document(
-                        file_object=File(compressed_file_child), **kwargs
-                    )
-                    compressed_file_child.close()
-
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
-                self.upload_document(file_object=file_object, **kwargs)
-        else:
-            self.upload_document(file_object=file_object, **kwargs)
-
-    def get_upload_file_object(self, form_data):
-        pass
-        # TODO: Should raise NotImplementedError?
-
-    def clean_up_upload_file(self, upload_file_object):
-        pass
-        # TODO: Should raise NotImplementedError?
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Source')
-        verbose_name_plural = _('Sources')
+            else:
+                WizardStep.post_upload_process(
+                    document=document, querystring=querystring
+                )
+                return document
 
 
 class InteractiveSource(Source):
@@ -208,20 +200,20 @@ class SaneScanner(InteractiveSource):
         ), verbose_name=_('Resolution')
     )
     source = models.CharField(
-        blank=True, choices=SCANNER_SOURCE_CHOICES,
-        default=SCANNER_SOURCE_FLATBED, help_text=_(
+        blank=True, choices=SCANNER_SOURCE_CHOICES, help_text=_(
             'Selects the scan source (such as a document-feeder). If this '
             'option is not supported by your scanner, leave it blank.'
-        ), max_length=32,
-        verbose_name=_('Paper source')
+        ), max_length=32, null=True, verbose_name=_('Paper source')
     )
     adf_mode = models.CharField(
         blank=True, choices=SCANNER_ADF_MODE_CHOICES,
-        default=SCANNER_ADF_MODE_SIMPLEX, help_text=_(
+        help_text=_(
             'Selects the document feeder mode (simplex/duplex). If this '
             'option is not supported by your scanner, leave it blank.'
         ), max_length=16, verbose_name=_('ADF mode')
     )
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('SANE Scanner')
@@ -329,13 +321,24 @@ class StagingFolderSource(InteractiveSource):
         verbose_name=_('Delete after upload')
     )
 
-    def get_preview_size(self):
-        dimensions = []
-        dimensions.append(force_text(self.preview_width))
-        if self.preview_height:
-            dimensions.append(force_text(self.preview_height))
+    objects = models.Manager()
 
-        return DIMENSION_SEPARATOR.join(dimensions)
+    class Meta:
+        verbose_name = _('Staging folder')
+        verbose_name_plural = _('Staging folders')
+
+    def clean_up_upload_file(self, upload_file_object):
+        if self.delete_after_upload:
+            try:
+                upload_file_object.extra_data.delete()
+            except Exception as exception:
+                logger.error(
+                    'Error deleting staging file: %s; %s', upload_file_object,
+                    exception
+                )
+                raise Exception(
+                    _('Error deleting staging file; %s') % exception
+                )
 
     def get_file(self, *args, **kwargs):
         return StagingFile(staging_folder=self, *args, **kwargs)
@@ -361,23 +364,6 @@ class StagingFolderSource(InteractiveSource):
             source=self, file=staging_file.as_file(), extra_data=staging_file
         )
 
-    def clean_up_upload_file(self, upload_file_object):
-        if self.delete_after_upload:
-            try:
-                upload_file_object.extra_data.delete()
-            except Exception as exception:
-                logger.error(
-                    'Error deleting staging file: %s; %s', upload_file_object,
-                    exception
-                )
-                raise Exception(
-                    _('Error deleting staging file; %s') % exception
-                )
-
-    class Meta:
-        verbose_name = _('Staging folder')
-        verbose_name_plural = _('Staging folders')
-
 
 class WebFormSource(InteractiveSource):
     """
@@ -398,18 +384,22 @@ class WebFormSource(InteractiveSource):
         help_text=_('Whether to expand or not compressed archives.'),
         max_length=1, verbose_name=_('Uncompress')
     )
-    # Default path
 
-    def get_upload_file_object(self, form_data):
-        return SourceUploadedFile(source=self, file=form_data['file'])
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('Web form')
         verbose_name_plural = _('Web forms')
 
+    # Default path
+    def get_upload_file_object(self, form_data):
+        return SourceUploadedFile(source=self, file=form_data['file'])
+
 
 class OutOfProcessSource(Source):
     is_interactive = False
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('Out of process')
@@ -435,8 +425,11 @@ class IntervalBaseModel(OutOfProcessSource):
         max_length=1, verbose_name=_('Uncompress')
     )
 
-    def _get_periodic_task_name(self, pk=None):
-        return 'check_interval_source-%i' % (pk or self.pk)
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Interval source')
+        verbose_name_plural = _('Interval sources')
 
     def _delete_periodic_task(self, pk=None):
         try:
@@ -457,6 +450,14 @@ class IntervalBaseModel(OutOfProcessSource):
                 self._get_periodic_task_name(pk)
             )
 
+    def _get_periodic_task_name(self, pk=None):
+        return 'check_interval_source-%i' % (pk or self.pk)
+
+    def delete(self, *args, **kwargs):
+        pk = self.pk
+        super(IntervalBaseModel, self).delete(*args, **kwargs)
+        self._delete_periodic_task(pk)
+
     def save(self, *args, **kwargs):
         new_source = not self.pk
         super(IntervalBaseModel, self).save(*args, **kwargs)
@@ -474,15 +475,6 @@ class IntervalBaseModel(OutOfProcessSource):
             task='sources.tasks.task_check_interval_source',
             kwargs=json.dumps({'source_id': self.pk})
         )
-
-    def delete(self, *args, **kwargs):
-        pk = self.pk
-        super(IntervalBaseModel, self).delete(*args, **kwargs)
-        self._delete_periodic_task(pk)
-
-    class Meta:
-        verbose_name = _('Interval source')
-        verbose_name_plural = _('Interval sources')
 
 
 class EmailBaseModel(IntervalBaseModel):
@@ -513,24 +505,30 @@ class EmailBaseModel(IntervalBaseModel):
         ), max_length=128, verbose_name=_('Metadata attachment name')
     )
     subject_metadata_type = models.ForeignKey(
-        MetadataType, blank=True, help_text=_(
+        blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s subject.'
         ), on_delete=models.CASCADE, null=True, related_name='email_subject',
-        verbose_name=_('Subject metadata type')
+        to=MetadataType, verbose_name=_('Subject metadata type')
     )
     from_metadata_type = models.ForeignKey(
-        MetadataType, blank=True, help_text=_(
+        blank=True, help_text=_(
             'Select a metadata type valid for the document type selected in '
             'which to store the email\'s "from" value.'
         ), on_delete=models.CASCADE, null=True, related_name='email_from',
-        verbose_name=_('From metadata type')
+        to=MetadataType, verbose_name=_('From metadata type')
     )
     store_body = models.BooleanField(
         default=True, help_text=_(
             'Store the body of the email as a text document.'
         ), verbose_name=_('Store email body')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Email source')
+        verbose_name_plural = _('Email sources')
 
     def clean(self):
         if self.subject_metadata_type:
@@ -561,54 +559,50 @@ class EmailBaseModel(IntervalBaseModel):
                     }
                 )
 
-    # From: http://bookmarks.honewatson.com/2009/08/11/
-    #   python-gmail-imaplib-search-subject-get-attachments/
-    # TODO: Add lock to avoid running more than once concurrent same document
-    # download
-    # TODO: Use message ID for lock
-
     @staticmethod
-    def getheader(header_text, default='ascii'):
+    def process_message(source, message_text, message_properties=None):
+        from flanker import mime
 
-        headers = decode_header(header_text)
-        header_sections = [
-            force_text(text, charset or default) for text, charset in headers
-        ]
-        return ''.join(header_sections)
-
-    @staticmethod
-    def process_message(source, message):
         counter = 1
-        email = message_from_string(message)
+        message = mime.from_string(force_str(message_text))
         metadata_dictionary = {}
+
+        if not message_properties:
+            message_properties = {}
+
+        message_properties['Subject'] = message_properties.get(
+            'Subject', message.headers.get('Subject')
+        )
+
+        message_properties['From'] = message_properties.get(
+            'From', message.headers.get('From')
+        )
 
         if source.subject_metadata_type:
             metadata_dictionary[
                 source.subject_metadata_type.name
-            ] = EmailBaseModel.getheader(email['Subject'])
+            ] = message_properties.get('Subject')
 
         if source.from_metadata_type:
             metadata_dictionary[
                 source.from_metadata_type.name
-            ] = EmailBaseModel.getheader(email['From'])
+            ] = message_properties.get('From')
 
-        for part in email.walk():
-            disposition = part.get('Content-Disposition', 'none')
-            logger.debug('Disposition: %s', disposition)
-
-            if disposition.startswith('attachment'):
-                raw_filename = part.get_filename()
-
-                if raw_filename:
-                    filename = collapse_rfc2231_value(raw_filename)
-                else:
-                    filename = _('attachment-%i') % counter
-                    counter += 1
-
-                logger.debug('filename: %s', filename)
-
-                with Attachment(part, name=filename) as file_object:
-                    if filename == source.metadata_attachment_name:
+        # Messages are tree based, do nested processing of message parts until
+        # a message with no children is found, then work out way up.
+        if message.parts:
+            for part in message.parts:
+                EmailBaseModel.process_message(
+                    source=source, message_text=part.to_string(),
+                    message_properties=message_properties
+                )
+        else:
+            # Treat inlines as attachments, both are extracted and saved as
+            # documents
+            if message.is_attachment() or message.is_inline():
+                label = message.detected_file_name or 'attachment-{}'.format(counter)
+                with ContentFile(content=message.body, name=label) as file_object:
+                    if label == source.metadata_attachment_name:
                         metadata_dictionary = yaml.safe_load(
                             file_object.read()
                         )
@@ -616,33 +610,85 @@ class EmailBaseModel(IntervalBaseModel):
                             'Got metadata dictionary: %s', metadata_dictionary
                         )
                     else:
-                        source.handle_upload(
+                        documents = source.handle_upload(
                             document_type=source.document_type,
-                            file_object=file_object, label=filename,
-                            expand=(
+                            file_object=file_object, expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
-                            ), metadata_dictionary=metadata_dictionary
+                            )
                         )
+                        if metadata_dictionary:
+                            for document in documents:
+                                set_bulk_metadata(
+                                    document=document,
+                                    metadata_dictionary=metadata_dictionary
+                                )
             else:
-                logger.debug('No Content-Disposition')
+                # If it is not an attachment then it should be a body message part.
+                # Another option is to use message.is_body()
+                if message.detected_content_type == 'text/html':
+                    label = 'email_body.html'
+                else:
+                    label = 'email_body.txt'
 
-                content_type = part.get_content_type()
+                with ContentFile(content=message.body, name=label) as file_object:
+                    documents = source.handle_upload(
+                        document_type=source.document_type,
+                        file_object=file_object,
+                        expand=SOURCE_UNCOMPRESS_CHOICE_N
+                    )
+                    if metadata_dictionary:
+                        for document in documents:
+                            set_bulk_metadata(
+                                document=document,
+                                metadata_dictionary=metadata_dictionary
+                            )
 
-                logger.debug('content_type: %s', content_type)
 
-                if content_type == 'text/plain' and source.store_body:
-                    content = part.get_payload(decode=True).decode(part.get_content_charset())
-                    with ContentFile(content=content, name='email_body.txt') as file_object:
-                        source.handle_upload(
-                            document_type=source.document_type,
-                            file_object=file_object,
-                            expand=SOURCE_UNCOMPRESS_CHOICE_N, label='email_body.txt',
-                            metadata_dictionary=metadata_dictionary
-                        )
+class IMAPEmail(EmailBaseModel):
+    source_type = SOURCE_CHOICE_EMAIL_IMAP
+
+    mailbox = models.CharField(
+        default=DEFAULT_IMAP_MAILBOX,
+        help_text=_('IMAP Mailbox from which to check for messages.'),
+        max_length=64, verbose_name=_('Mailbox')
+    )
+
+    objects = models.Manager()
 
     class Meta:
-        verbose_name = _('Email source')
-        verbose_name_plural = _('Email sources')
+        verbose_name = _('IMAP email')
+        verbose_name_plural = _('IMAP email')
+
+    # http://www.doughellmann.com/PyMOTW/imaplib/
+    def check_source(self):
+        logger.debug('Starting IMAP email fetch')
+        logger.debug('host: %s', self.host)
+        logger.debug('ssl: %s', self.ssl)
+
+        if self.ssl:
+            mailbox = imaplib.IMAP4_SSL(self.host, self.port)
+        else:
+            mailbox = imaplib.IMAP4(self.host, self.port)
+
+        mailbox.login(self.username, self.password)
+        mailbox.select(self.mailbox)
+
+        status, data = mailbox.search(None, 'NOT', 'DELETED')
+        if data:
+            messages_info = data[0].split()
+            logger.debug('messages count: %s', len(messages_info))
+
+            for message_number in messages_info:
+                logger.debug('message_number: %s', message_number)
+                status, data = mailbox.fetch(message_number, '(RFC822)')
+                EmailBaseModel.process_message(
+                    source=self, message_text=data[0][1]
+                )
+                mailbox.store(message_number, '+FLAGS', '\\Deleted')
+
+        mailbox.expunge()
+        mailbox.close()
+        mailbox.logout()
 
 
 class POP3Email(EmailBaseModel):
@@ -651,6 +697,12 @@ class POP3Email(EmailBaseModel):
     timeout = models.PositiveIntegerField(
         default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
     )
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('POP email')
+        verbose_name_plural = _('POP email')
 
     def check_source(self):
         logger.debug('Starting POP3 email fetch')
@@ -679,60 +731,11 @@ class POP3Email(EmailBaseModel):
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
             EmailBaseModel.process_message(
-                source=self, message=complete_message
+                source=self, message_text=complete_message
             )
             mailbox.dele(message_number)
 
         mailbox.quit()
-
-    class Meta:
-        verbose_name = _('POP email')
-        verbose_name_plural = _('POP email')
-
-
-class IMAPEmail(EmailBaseModel):
-    source_type = SOURCE_CHOICE_EMAIL_IMAP
-
-    mailbox = models.CharField(
-        default=DEFAULT_IMAP_MAILBOX,
-        help_text=_('IMAP Mailbox from which to check for messages.'),
-        max_length=64, verbose_name=_('Mailbox')
-    )
-
-    # http://www.doughellmann.com/PyMOTW/imaplib/
-    def check_source(self):
-        logger.debug('Starting IMAP email fetch')
-        logger.debug('host: %s', self.host)
-        logger.debug('ssl: %s', self.ssl)
-
-        if self.ssl:
-            mailbox = imaplib.IMAP4_SSL(self.host, self.port)
-        else:
-            mailbox = imaplib.IMAP4(self.host, self.port)
-
-        mailbox.login(self.username, self.password)
-        mailbox.select(self.mailbox)
-
-        status, data = mailbox.search(None, 'NOT', 'DELETED')
-        if data:
-            messages_info = data[0].split()
-            logger.debug('messages count: %s', len(messages_info))
-
-            for message_number in messages_info:
-                logger.debug('message_number: %s', message_number)
-                status, data = mailbox.fetch(message_number, '(RFC822)')
-                EmailBaseModel.process_message(
-                    source=self, message=data[0][1]
-                )
-                mailbox.store(message_number, '+FLAGS', '\\Deleted')
-
-        mailbox.expunge()
-        mailbox.close()
-        mailbox.logout()
-
-    class Meta:
-        verbose_name = _('IMAP email')
-        verbose_name_plural = _('IMAP email')
 
 
 class WatchFolderSource(IntervalBaseModel):
@@ -753,6 +756,12 @@ class WatchFolderSource(IntervalBaseModel):
         verbose_name=_('Folder path')
     )
 
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name = _('Watch folder')
+        verbose_name_plural = _('Watch folders')
+
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning
         # str for non-latin filenames, gh-issue #163
@@ -767,14 +776,10 @@ class WatchFolderSource(IntervalBaseModel):
                     )
                     os.unlink(full_path)
 
-    class Meta:
-        verbose_name = _('Watch folder')
-        verbose_name_plural = _('Watch folders')
-
 
 class SourceLog(models.Model):
     source = models.ForeignKey(
-        Source, on_delete=models.CASCADE, related_name='logs',
+        on_delete=models.CASCADE, related_name='logs', to=Source,
         verbose_name=_('Source')
     )
     datetime = models.DateTimeField(

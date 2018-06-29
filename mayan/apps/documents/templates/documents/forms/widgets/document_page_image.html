@@ -1,0 +1,14 @@
+<div class="instance-image-widget {{ container_class }}">
+    <div class="spinner-container text-primary"
+        style="height: {% if display_full_height %}100%{% else %}{{ display_height|default:150 }}px{% endif %};"
+    >
+        <i class="far fa-clock fa-2x"></i>
+    </div>
+    <img
+        class="thin_border {{ image_classes }}"
+        data-url="{{ instance.get_api_image_url }}?width={{ image_width }}&height={{ image_height }}&zoom={{ image_zoom }}&rotation={{ image_rotation }}"
+        src="#"
+        style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
+     />
+</div>
+

@@ -27,7 +27,7 @@ class CabinetsEventsTestCase(GenericDocumentTestCase):
         self.assertEqual(Action.objects.last().target, self.document)
         self.assertEqual(
             Action.objects.last().verb,
-            event_cabinets_add_document.name
+            event_cabinets_add_document.id
         )
 
     def test_document_cabinet_remove_event(self):
@@ -38,5 +38,5 @@ class CabinetsEventsTestCase(GenericDocumentTestCase):
         self.assertEqual(Action.objects.first().target, self.document)
         self.assertEqual(
             Action.objects.first().verb,
-            event_cabinets_remove_document.name
+            event_cabinets_remove_document.id
         )

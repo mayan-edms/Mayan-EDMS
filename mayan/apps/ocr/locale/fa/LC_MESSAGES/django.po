@@ -3,44 +3,45 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-25 00:50+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-06-08 01:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 apps.py:127 apps.py:131 links.py:14 permissions.py:7 queues.py:7
-#: settings.py:7
+#: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
+#: queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:102
+#: apps.py:100
 msgid "Document"
 msgstr "سند"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Added"
 msgstr "اضافه شده"
 
-#: apps.py:110 models.py:57
+#: apps.py:108 models.py:57
 msgid "Result"
 msgstr "جواب"
 
-#: events.py:9
+#: events.py:10
 msgid "Document version submitted for OCR"
-msgstr ""
+msgstr "نسخه سند ارسال شده برای OCR"
 
-#: events.py:13
+#: events.py:14
 msgid "Document version OCR finished"
-msgstr ""
+msgstr "نسخه سند OCR شده"
 
 #: forms.py:40
 #, python-format
@@ -53,23 +54,23 @@ msgstr "محتوا"
 
 #: links.py:18 links.py:21
 msgid "Submit for OCR"
-msgstr ""
+msgstr "ارسال برای OCR"
 
 #: links.py:24
 msgid "Setup OCR"
-msgstr ""
+msgstr "نصب OCR"
 
 #: links.py:29
 msgid "OCR documents per type"
-msgstr ""
+msgstr "اسناد OCR در هر نوع"
 
-#: links.py:33 links.py:37 views.py:138
+#: links.py:33 links.py:37 views.py:116
 msgid "OCR errors"
 msgstr "خطای OCR "
 
 #: links.py:42
 msgid "Download OCR text"
-msgstr ""
+msgstr "دانلود متن OCR"
 
 #: models.py:18
 msgid "Document type"
@@ -81,11 +82,11 @@ msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:26
 msgid "Document type settings"
-msgstr ""
+msgstr "Document type settings"
 
 #: models.py:27
 msgid "Document types settings"
-msgstr ""
+msgstr "Document types settings"
 
 #: models.py:34
 msgid "Document page"
@@ -95,13 +96,13 @@ msgstr "صفحه سند"
 msgid "Content"
 msgstr "محتوا"
 
-#: models.py:44
+#: models.py:41
 msgid "Document page OCR content"
-msgstr ""
+msgstr "محتوای OCR صفحه سند"
 
-#: models.py:45
+#: models.py:42
 msgid "Document pages OCR contents"
-msgstr ""
+msgstr "محتوای OCR صفحات سند"
 
 #: models.py:52
 msgid "Document version"
@@ -111,13 +112,13 @@ msgstr "نسخه مستندات"
 msgid "Date time submitted"
 msgstr "تاریخ و زمان ارسال"
 
-#: models.py:64
+#: models.py:61
 msgid "Document version OCR error"
-msgstr ""
+msgstr "نسخه سند دارای خطای OCR"
 
-#: models.py:65
+#: models.py:62
 msgid "Document version OCR errors"
-msgstr ""
+msgstr "نسخه سند دارای خطاهای OCR"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -125,15 +126,15 @@ msgstr "ارسال سند برای OCR"
 
 #: permissions.py:14
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "متن رونویسی از سند را مشاهده کنید"
 
 #: permissions.py:18
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "تغییر نوع سند تنظیمات OCR"
 
 #: queues.py:9
 msgid "Document version OCR"
-msgstr ""
+msgstr "نسخه اسناد OCR"
 
 #: settings.py:12
 msgid ""
@@ -145,44 +146,36 @@ msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 msgid "Full path to the backend to be used to do OCR."
 msgstr "محل اجرای نرم افزار OCR"
 
-#: settings.py:24
+#: settings.py:28
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
+msgstr "انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
 
-#: views.py:43
+#: views.py:41
 #, python-format
 msgid "OCR result for document: %s"
-msgstr ""
+msgstr "نتیبجه OCR سند : 1%s"
 
-#: views.py:51
-#, python-format
-msgid "Submit \"%s\" to the OCR queue?"
-msgstr ""
+#: views.py:56
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:72
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue."
-msgstr "سند :  %(document)s  جهت ocr وارد صف شد."
-
-#: views.py:86
-msgid "Submit the selected documents to the OCR queue?"
-msgstr ""
-
-#: views.py:93
+#: views.py:71
 msgid "Submit all documents of a type for OCR"
-msgstr ""
+msgstr "ارسال تمامی اسناد این نوع چهت OCR"
 
-#: views.py:107
+#: views.py:85
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
+msgstr "%(count)d اسناد نوع \"%(document_type)s\" اضافه شده به صف OCR."
 
-#: views.py:130
+#: views.py:108
 #, python-format
 msgid "Edit OCR settings for document type: %s"
-msgstr ""
+msgstr "نام فایل برای نوع سند %s"
 
-#: views.py:156
+#: views.py:134
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr ""
+msgstr "خطاهای OCR برای سند: %s"

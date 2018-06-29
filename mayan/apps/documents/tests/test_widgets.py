@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 
-from ..widgets import DocumentThumbnailWidget
+from ..widgets import DocumentPageThumbnailWidget
 
 from .test_models import GenericDocumentTestCase
 
 
-class DocumentWidgetTestCase(GenericDocumentTestCase):
+class DocumentPageWidgetTestCase(GenericDocumentTestCase):
     def test_document_list_view_document_with_no_pages(self):
-        document_thumbnail_widget = DocumentThumbnailWidget()
+        document_thumbnail_widget = DocumentPageThumbnailWidget()
         self.document.pages.all().delete()
         result = document_thumbnail_widget.render(instance=self.document)
 

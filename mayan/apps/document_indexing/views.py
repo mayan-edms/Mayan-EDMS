@@ -212,13 +212,16 @@ class TemplateNodeEditView(SingleObjectEditView):
 
 class IndexListView(SingleObjectListView):
     object_permission = permission_document_indexing_view
-    queryset = IndexInstance.objects.filter(enabled=True)
 
     def get_extra_context(self):
         return {
             'hide_links': True,
             'title': _('Indexes'),
         }
+
+    def get_object_list(self):
+        queryset = IndexInstance.objects.filter(enabled=True)
+        return queryset.filter(node_templates__index_instance_nodes__isnull=False).distinct()
 
 
 class IndexInstanceNodeView(DocumentListView):
@@ -251,6 +254,7 @@ class IndexInstanceNodeView(DocumentListView):
         context = super(IndexInstanceNodeView, self).get_extra_context()
         context.update(
             {
+                'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
                 'object': self.index_instance_node,
                 'navigation': mark_safe(
                     _('Navigation: %s') % node_tree(
@@ -291,7 +295,6 @@ class DocumentIndexNodeListView(SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
-
     object_permission = permission_document_indexing_view
     object_permission_related = 'index'
 

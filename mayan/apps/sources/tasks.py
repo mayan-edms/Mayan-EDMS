@@ -10,8 +10,12 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 
 from common.compressed_files import CompressedFile, NotACompressedFile
+from lock_manager import LockError
+from lock_manager.runtime import locking_backend
 
-from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
+from .literals import (
+    DEFAULT_SOURCE_LOCK_EXPIRE, DEFAULT_SOURCE_TASK_RETRY_DELAY
+)
 
 logger = logging.getLogger(__name__)
 
@@ -22,10 +26,19 @@ def task_check_interval_source(source_id):
         app_label='sources', model_name='Source'
     )
 
-    source = Source.objects.get_subclass(pk=source_id)
-    if source.enabled:
+    lock_id = 'task_check_interval_source-%d' % source_id
+    try:
+        logger.debug('trying to acquire lock: %s', lock_id)
+        lock = locking_backend.acquire_lock(lock_id, DEFAULT_SOURCE_LOCK_EXPIRE)
+    except LockError:
+        logger.debug('unable to obtain lock: %s' % lock_id)
+    else:
+        logger.debug('acquired lock: %s', lock_id)
+
         try:
-            source.check_source()
+            source = Source.objects.get_subclass(pk=source_id)
+            if source.enabled:
+                source.check_source()
         except Exception as exception:
             logger.error('Error processing source: %s; %s', source, exception)
             source.logs.create(
@@ -33,10 +46,12 @@ def task_check_interval_source(source_id):
             )
         else:
             source.logs.all().delete()
+        finally:
+            lock.release()
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, metadata_dict_list=None, tag_ids=None, user_id=None):
+def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, querystring=None, user_id=None):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -65,8 +80,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
             source.upload_document(
                 file_object=file_object, document_type=document_type,
                 description=description, label=label, language=language,
-                metadata_dict_list=metadata_dict_list, user=user,
-                tag_ids=tag_ids
+                querystring=querystring, user=user,
             )
 
     except OperationalError as exception:
@@ -87,7 +101,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, tag_ids=None, user_id=None):
+def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, querystring=None, skip_list=None, user_id=None):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -114,9 +128,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
 
     kwargs = {
         'description': description, 'document_type_id': document_type.pk,
-        'label': label, 'language': language,
-        'metadata_dict_list': metadata_dict_list,
-        'source_id': source_id, 'tag_ids': tag_ids, 'user_id': user_id
+        'label': label, 'language': language, 'querystring': querystring,
+        'source_id': source_id, 'user_id': user_id
     }
 
     if not skip_list:
@@ -144,14 +157,15 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                                 'child document: %s. Rescheduling.', exception
                             )
 
+                            # TODO: Don't call the task itself again
+                            # Update to use celery's retry feature
                             task_source_handle_upload.delay(
                                 document_type_id=document_type_id,
                                 shared_uploaded_file_id=shared_uploaded_file_id,
                                 source_id=source_id, description=description,
                                 expand=expand, label=label,
                                 language=language,
-                                metadata_dict_list=metadata_dict_list,
-                                skip_list=skip_list, tag_ids=tag_ids,
+                                skip_list=skip_list, querystring=querystring,
                                 user_id=user_id
                             )
                             return

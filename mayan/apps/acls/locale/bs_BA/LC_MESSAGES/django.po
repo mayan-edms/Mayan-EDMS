@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:32+0000\n"
+"POT-Creation-Date: 2018-06-07 21:02-0400\n"
+"PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Language: bs_BA\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:15 links.py:35 links.py:39
+#: apps.py:15 links.py:37 links.py:41
 msgid "ACLs"
 msgstr "ACLs"
 
-#: apps.py:25 links.py:48 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr "Dozvole"
-
-#: apps.py:29 models.py:47
+#: apps.py:23 models.py:47
 msgid "Role"
 msgstr ""
 
-#: links.py:31
+#: apps.py:26 links.py:50 models.py:43 workflow_actions.py:48
+msgid "Permissions"
+msgstr "Dozvole"
+
+#: links.py:32
 msgid "Delete"
 msgstr ""
 
-#: links.py:43
+#: links.py:45
 msgid "New ACL"
 msgstr ""
 
@@ -42,20 +42,20 @@ msgstr ""
 msgid "Insufficient access for: %s"
 msgstr ""
 
-#: models.py:54
+#: models.py:55
 msgid "Access entry"
 msgstr "Pristupni unos"
 
-#: models.py:55
+#: models.py:56
 msgid "Access entries"
 msgstr "Pristupni unosi"
 
-#: models.py:59
+#: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr ""
 
-#: models.py:76
+#: models.py:77
 msgid "None"
 msgstr "Nijedno"
 
@@ -124,12 +124,12 @@ msgstr ""
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 

@@ -1,52 +1,9 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.forms.utils import flatatt
 from django.utils.encoding import force_text
-from django.utils.html import conditional_escape, format_html
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
-
-
-class DetailSelectMultiple(forms.widgets.SelectMultiple):
-    def __init__(self, queryset=None, *args, **kwargs):
-        self.queryset = queryset
-        super(DetailSelectMultiple, self).__init__(*args, **kwargs)
-
-    def render(self, name, value, attrs=None, choices=(), *args, **kwargs):
-        if value is None:
-            value = ''
-        final_attrs = self.build_attrs(attrs, name=name)
-        css_class = final_attrs.get('class', 'list')
-        output = '<ul class="%s">' % css_class
-        options = None
-        if value:
-            if getattr(value, '__iter__', None):
-                options = [(index, string) for index, string in
-                           self.choices if index in value]
-            else:
-                options = [(index, string) for index, string in
-                           self.choices if index == value]
-        else:
-            if self.choices:
-                if self.choices[0] != ('', '---------') and value != []:
-                    options = [(index, string) for index, string in
-                               self.choices]
-
-        if options:
-            for index, string in options:
-                if self.queryset:
-                    try:
-                        output += '<li><a href="%s">%s</a></li>' % (
-                            self.queryset.get(pk=index).get_absolute_url(),
-                            string)
-                    except AttributeError:
-                        output += '<li>%s</li>' % (string)
-                else:
-                    output += '<li>%s</li>' % string
-        else:
-            output += '<li>%s</li>' % _('None')
-        return mark_safe(output + '</ul>\n')
 
 
 class DisableableSelectWidget(forms.SelectMultiple):
@@ -109,6 +66,7 @@ class TextAreaDiv(forms.widgets.Widget):
     Class to define a form widget that simulates the behavior of a
     Textarea widget but using a div tag instead
     """
+    template_name = 'appearance/forms/widgets/textareadiv.html'
 
     def __init__(self, attrs=None):
         # The 'rows' and 'cols' attributes are required for HTML correctness.
@@ -116,15 +74,6 @@ class TextAreaDiv(forms.widgets.Widget):
         if attrs:
             default_attrs.update(attrs)
         super(TextAreaDiv, self).__init__(default_attrs)
-
-    def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
-
-        flat_attrs = flatatt(self.build_attrs(attrs, name=name))
-        content = conditional_escape(force_text(value))
-        result = '<pre%s>%s</pre>' % (flat_attrs, content)
-        return mark_safe(result)
 
 
 def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):

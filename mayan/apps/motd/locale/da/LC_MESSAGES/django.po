@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
 "PO-Revision-Date: 2016-03-21 20:55+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 links.py:25 permissions.py:7
+#: apps.py:27 links.py:26 permissions.py:7
 msgid "Message of the day"
 msgstr ""
 
-#: apps.py:32 models.py:20
+#: apps.py:40 models.py:20
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:35 models.py:24
+#: apps.py:43 models.py:24
 msgid "Start date time"
 msgstr ""
 
-#: apps.py:36 apps.py:40
+#: apps.py:44 apps.py:48
 msgid "None"
 msgstr "Ingen"
 
-#: apps.py:39 models.py:29
+#: apps.py:47 models.py:29
 msgid "End date time"
 msgstr ""
 
-#: links.py:13 views.py:29
+#: links.py:14 views.py:29
 msgid "Create message"
 msgstr ""
 
-#: links.py:18
+#: links.py:19
 msgid "Delete"
 msgstr ""
 
-#: links.py:21
+#: links.py:22
 msgid "Edit"
 msgstr ""
 

@@ -2,8 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -15,7 +17,7 @@ from common.views import (
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 
-from .forms import PasswordForm, UserForm
+from .forms import UserForm
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -34,8 +36,8 @@ class GroupCreateView(SingleObjectCreateView):
 class GroupEditView(SingleObjectEditView):
     fields = ('name',)
     model = Group
+    object_permission = permission_group_edit
     post_action_redirect = reverse_lazy('user_management:group_list')
-    view_permission = permission_group_edit
 
     def get_extra_context(self):
         return {
@@ -50,13 +52,13 @@ class GroupListView(SingleObjectListView):
         'title': _('Groups'),
     }
     model = Group
-    view_permission = permission_group_view
+    object_permission = permission_group_view
 
 
 class GroupDeleteView(SingleObjectDeleteView):
     model = Group
+    object_permission = permission_group_delete
     post_action_redirect = reverse_lazy('user_management:group_list')
-    view_permission = permission_group_delete
 
     def get_extra_context(self):
         return {
@@ -68,8 +70,8 @@ class GroupDeleteView(SingleObjectDeleteView):
 class GroupMembersView(AssignRemoveView):
     decode_content_type = True
     left_list_title = _('Available users')
-    right_list_title = _('Members of groups')
-    view_permission = permission_group_edit
+    right_list_title = _('Users in group')
+    object_permission = permission_group_edit
 
     @staticmethod
     def generate_choices(choices):
@@ -89,7 +91,7 @@ class GroupMembersView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Members of group: %s') % self.get_object()
+            'title': _('Users of group: %s') % self.get_object()
         }
 
     def get_object(self):
@@ -132,11 +134,11 @@ class UserCreateView(SingleObjectCreateView):
 
 class UserDeleteView(MultipleObjectConfirmActionView):
     model = get_user_model()
+    object_permission = permission_user_delete
     success_message = _('User delete request performed on %(count)d user')
     success_message_plural = _(
         'User delete request performed on %(count)d users'
     )
-    view_permission = permission_user_delete
 
     def get_extra_context(self):
         queryset = self.get_queryset()
@@ -186,11 +188,11 @@ class UserDeleteView(MultipleObjectConfirmActionView):
 
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
+    object_permission = permission_user_edit
     post_action_redirect = reverse_lazy('user_management:user_list')
     queryset = get_user_model().objects.filter(
         is_superuser=False, is_staff=False
     )
-    view_permission = permission_user_edit
 
     def get_extra_context(self):
         return {
@@ -203,7 +205,7 @@ class UserGroupsView(AssignRemoveView):
     decode_content_type = True
     left_list_title = _('Available groups')
     right_list_title = _('Groups joined')
-    view_permission = permission_user_edit
+    object_permission = permission_user_edit
 
     def add(self, item):
         item.user_set.add(self.get_object())
@@ -232,7 +234,7 @@ class UserGroupsView(AssignRemoveView):
 
 
 class UserListView(SingleObjectListView):
-    view_permission = permission_user_view
+    object_permission = permission_user_view
 
     def get_extra_context(self):
         return {
@@ -247,13 +249,13 @@ class UserListView(SingleObjectListView):
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):
-    form_class = PasswordForm
+    form_class = SetPasswordForm
     model = get_user_model()
+    object_permission = permission_user_edit
     success_message = _('Password change request performed on %(count)d user')
     success_message_plural = _(
         'Password change request performed on %(count)d users'
     )
-    view_permission = permission_user_edit
 
     def get_extra_context(self):
         queryset = self.get_queryset()
@@ -282,8 +284,9 @@ class UserSetPasswordView(MultipleObjectFormActionView):
         result = {}
         if queryset:
             result['user'] = queryset.first()
-
-        return result
+            return result
+        else:
+            raise PermissionDenied
 
     def object_action(self, form, instance):
         try:
@@ -297,11 +300,11 @@ class UserSetPasswordView(MultipleObjectFormActionView):
                     )
                 )
             else:
-                instance.set_password(form.cleaned_data['new_password_1'])
+                instance.set_password(form.cleaned_data['new_password1'])
                 instance.save()
                 messages.success(
                     self.request, _(
-                        'Successfull password reset for user: %s.'
+                        'Successful password reset for user: %s.'
                     ) % instance
                 )
         except Exception as exception:

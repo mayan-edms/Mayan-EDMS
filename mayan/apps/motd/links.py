@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_message_list
 from .permissions import (
     permission_message_create, permission_message_delete,
     permission_message_edit,
@@ -14,14 +15,14 @@ link_message_create = Link(
     view='motd:message_create'
 )
 link_message_delete = Link(
-    permissions=(permission_message_delete,), tags='dangerous',
-    text=_('Delete'), view='motd:message_delete', args='object.pk'
+    args='object.pk', permissions=(permission_message_delete,),
+    tags='dangerous', text=_('Delete'), view='motd:message_delete'
 )
 link_message_edit = Link(
-    permissions=(permission_message_edit,), text=_('Edit'),
-    view='motd:message_edit', args='object.pk'
+    args='object.pk', permissions=(permission_message_edit,), text=_('Edit'),
+    view='motd:message_edit'
 )
 link_message_list = Link(
-    icon='fa fa-bullhorn', text=_('Message of the day'),
+    icon_class=icon_message_list, text=_('Message of the day'),
     view='motd:message_list'
 )

@@ -279,11 +279,20 @@ urlpatterns = [
 ]
 
 api_urls = [
-    url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(
-        r'^documents/recent/$', APIRecentDocumentListView.as_view(),
-        name='document-recent-list'
+        r'^document_types/(?P<pk>[0-9]+)/$', APIDocumentTypeView.as_view(),
+        name='documenttype-detail'
     ),
+    url(
+        r'^document_types/$', APIDocumentTypeListView.as_view(),
+        name='documenttype-list'
+    ),
+    url(
+        r'^document_types/(?P<pk>[0-9]+)/documents/$',
+        APIDocumentTypeDocumentListView.as_view(),
+        name='documenttype-document-list'
+    ),
+    url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(
         r'^documents/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(),
         name='document-detail'
@@ -310,25 +319,16 @@ api_urls = [
         name='documentversion-download'
     ),
     url(
+        r'^documents/recent/$', APIRecentDocumentListView.as_view(),
+        name='document-recent-list'
+    ),
+    url(
         r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
         APIDocumentPageView.as_view(), name='documentpage-detail'
     ),
     url(
         r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
         APIDocumentPageImageView.as_view(), name='documentpage-image'
-    ),
-    url(
-        r'^document_types/(?P<pk>[0-9]+)/documents/$',
-        APIDocumentTypeDocumentListView.as_view(),
-        name='documenttype-document-list'
-    ),
-    url(
-        r'^document_types/(?P<pk>[0-9]+)/$', APIDocumentTypeView.as_view(),
-        name='documenttype-detail'
-    ),
-    url(
-        r'^document_types/$', APIDocumentTypeListView.as_view(),
-        name='documenttype-list'
     ),
     url(
         r'^trashed_documents/$', APIDeletedDocumentListView.as_view(),

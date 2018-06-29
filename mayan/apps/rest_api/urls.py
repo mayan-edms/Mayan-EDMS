@@ -1,18 +1,18 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import url
+from django.conf.urls import include, url
 
-from .views import APIBase, APIAppView, BrowseableObtainAuthToken
+from .api_views import APIRoot, BrowseableObtainAuthToken
 
-
-urlpatterns = [
-]
 
 api_urls = [
-    url(r'^$', APIBase.as_view(), name='api_root'),
-    url(r'^api/(?P<path>.*)/?$', APIAppView.as_view(), name='api_app'),
+    url(r'^$', APIRoot.as_view(), name='api_root'),
     url(
         r'^auth/token/obtain/$', BrowseableObtainAuthToken.as_view(),
         name='auth_token_obtain'
     ),
+]
+
+urlpatterns = [
+    url(r'^', include(api_urls)),
 ]

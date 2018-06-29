@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2017-08-15 06:30+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,27 +19,27 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:52 permissions.py:8 settings.py:7
+#: apps.py:48 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "Подписи документа"
 
-#: apps.py:92
+#: apps.py:88
 msgid "Date"
 msgstr "Дата"
 
-#: apps.py:95 models.py:47
+#: apps.py:91 models.py:46
 msgid "Key ID"
 msgstr "ID ключа"
 
-#: apps.py:99 forms.py:64 models.py:51
+#: apps.py:95 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "ID подписи"
 
-#: apps.py:100 forms.py:76
+#: apps.py:96 forms.py:76
 msgid "None"
 msgstr "Ни один"
 
-#: apps.py:103
+#: apps.py:99
 msgid "Type"
 msgstr "Тип"
 
@@ -127,55 +127,55 @@ msgstr "Подпись отеделена"
 msgid "Sign embedded"
 msgstr "Подпись встроена"
 
-#: models.py:41
+#: models.py:40
 msgid "Document version"
 msgstr "Версия документа"
 
-#: models.py:45
+#: models.py:44
 msgid "Date signed"
 msgstr "Дата подписи"
 
-#: models.py:55
+#: models.py:54
 msgid "Public key fingerprint"
 msgstr "Отпечаток публичного ключа"
 
-#: models.py:61
+#: models.py:60
 msgid "Document version signature"
 msgstr "Подпись версии документа"
 
-#: models.py:62
+#: models.py:61
 msgid "Document version signatures"
 msgstr "Подписи версий документов"
 
-#: models.py:81
+#: models.py:80
 msgid "Detached"
 msgstr "Отделена"
 
-#: models.py:83
+#: models.py:82
 msgid "Embedded"
 msgstr "Встроена"
 
-#: models.py:98
+#: models.py:97
 msgid "Document version embedded signature"
 msgstr "Встроенная подпись версии документа"
 
-#: models.py:99
+#: models.py:98
 msgid "Document version embedded signatures"
 msgstr "Встроенные подписи версий документов"
 
-#: models.py:132
+#: models.py:131
 msgid "Signature file"
 msgstr "Файл подписи"
 
-#: models.py:136
+#: models.py:138
 msgid "Document version detached signature"
 msgstr "Отделённая подпись версии документа"
 
-#: models.py:137
+#: models.py:139
 msgid "Document version detached signatures"
 msgstr "Отделённые подписи версий документов"
 
-#: models.py:140
+#: models.py:142
 msgid "signature"
 msgstr "подпись"
 

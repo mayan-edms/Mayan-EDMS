@@ -1,12 +1,14 @@
 from __future__ import unicode_literals
 
+from furl import furl
+
 from django.shortcuts import get_object_or_404
 from django.utils.six.moves.urllib.parse import unquote_plus
 
 from .models import DocumentMetadata, MetadataType
 
 
-def decode_metadata_from_url(url_dict):
+def decode_metadata_from_querystring(querystring=None):
     """
     Parse a URL query string to a list of metadata
     """
@@ -15,19 +17,20 @@ def decode_metadata_from_url(url_dict):
         'value': {}
     }
     metadata_list = []
-    # Match out of order metadata_type ids with metadata values from request
-    for key, value in url_dict.items():
-        if 'metadata' in key:
-            index, element = key[8:].split('_')
-            metadata_dict[element][index] = value
+    if querystring:
+        # Match out of order metadata_type ids with metadata values from request
+        for key, value in furl(querystring).args.items():
+            if 'metadata' in key:
+                index, element = key[8:].split('_')
+                metadata_dict[element][index] = value
 
-    # Convert the nested dictionary into a list of id+values dictionaries
-    for order, identifier in metadata_dict['id'].items():
-        if order in metadata_dict['value'].keys():
-            metadata_list.append({
-                'id': identifier,
-                'value': metadata_dict['value'][order]
-            })
+        # Convert the nested dictionary into a list of id+values dictionaries
+        for order, identifier in metadata_dict['id'].items():
+            if order in metadata_dict['value'].keys():
+                metadata_list.append({
+                    'id': identifier,
+                    'value': metadata_dict['value'][order]
+                })
 
     return metadata_list
 
@@ -93,7 +96,7 @@ def metadata_repr_as_list(metadata_list):
         try:
             output.append('%s - %s' % (MetadataType.objects.get(
                 pk=metadata_dict['id']), metadata_dict.get('value', '')))
-        except:
+        except Exception:
             pass
 
     return output

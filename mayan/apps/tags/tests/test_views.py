@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from documents.permissions import permission_document_view
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..models import Tag
 from ..permissions import (

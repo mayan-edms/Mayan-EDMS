@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,45 +24,25 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:77 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
-#: apps.py:82
+#: apps.py:90
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: apps.py:94 models.py:24
-msgid "Namespace"
-msgstr "Przestrzeń nazw"
-
-#: apps.py:98 mixins.py:245
-msgid "Object"
-msgstr "Obiekt"
-
-#: apps.py:102
-msgid "Date and time"
-msgstr "Data i godzina"
-
-#: apps.py:106 models.py:37
-msgid "Result"
-msgstr "Wynik"
-
-#: classes.py:222
+#: classes.py:181
 msgid "Available attributes: \n"
 msgstr "Dostępne atrybuty: \n"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "Główny"
 
-#: forms.py:27
+#: forms.py:25
 msgid "Selection"
 msgstr "Zaznaczenie"
-
-#: forms.py:143
-msgid "Filter"
-msgstr "Filtr"
 
 #: generics.py:136
 #, python-format
@@ -106,81 +87,91 @@ msgstr "%(object)s nie zaktualizowano, błąd: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s zaktualizowano pomyślnie."
 
-#: links.py:30
+#: links.py:33
 msgid "About this"
 msgstr "O programie"
 
-#: links.py:33 views.py:58
+#: links.py:36 views.py:61
 msgid "Check for updates"
 msgstr "Sprawdź aktualizacje"
 
-#: links.py:37
+#: links.py:40
 msgid "User details"
 msgstr "Dane użytkownika"
 
-#: links.py:41
+#: links.py:44
 msgid "Edit details"
 msgstr "Edycja danych użytkownika"
 
-#: links.py:44
+#: links.py:47
 msgid "Locale profile"
 msgstr "Profil regionalny"
 
-#: links.py:48
+#: links.py:51
 msgid "Edit locale profile"
 msgstr "Edycja ustawień regionalnych"
 
-#: links.py:52
+#: links.py:55
 msgid "Source code"
 msgstr "Kod źródłowy"
 
-#: links.py:56
+#: links.py:59
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: links.py:60 links.py:65
+#: links.py:64 links.py:74
 msgid "Errors"
-msgstr ""
+msgstr "Błędy"
 
 #: links.py:69
-msgid "Data filters"
-msgstr "Filtry danych"
+msgid "Clear all"
+msgstr ""
 
-#: links.py:73
+#: links.py:78
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:77 views.py:234
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "Licencja"
 
-#: links.py:80 views.py:248
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "Pozostałe licencje"
 
-#: links.py:84
+#: links.py:89
 msgid "Setup"
 msgstr "Ustawienia"
 
-#: links.py:87
+#: links.py:92
 msgid "Support"
 msgstr "Wsparcie"
 
-#: links.py:91 queues.py:10 views.py:278
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: literals.py:13
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:18
 msgid "Days"
 msgstr "Dni"
 
-#: literals.py:14
+#: literals.py:19
 msgid "Hours"
 msgstr "Godziny"
 
-#: literals.py:15
+#: literals.py:20
 msgid "Minutes"
 msgstr "Minuty"
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr ""
 
 #: menus.py:12
 msgid "System"
@@ -190,27 +181,39 @@ msgstr "System"
 msgid "User"
 msgstr "Użytkownik"
 
-#: mixins.py:84
+#: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Operację przeprowadzono na %(count)d obiekcie"
 
-#: mixins.py:85
+#: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Operację przeprowadzono na %(count)d obiektach"
+
+#: mixins.py:254
+msgid "Object"
+msgstr "Obiekt"
+
+#: models.py:24
+msgid "Namespace"
+msgstr "Przestrzeń nazw"
 
 #: models.py:35 models.py:55
 msgid "Date time"
 msgstr "Data i godzina"
 
+#: models.py:37 views.py:209
+msgid "Result"
+msgstr "Wynik"
+
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "Wpis dziennika błędów"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "Wpisy dziennika błędów"
 
 #: models.py:51
 msgid "File"
@@ -246,7 +249,7 @@ msgstr "Profile regionalne użytkownika"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Wyświetl dziennik błędów"
 
 #: queues.py:8
 msgid "Default"
@@ -270,21 +273,31 @@ msgid ""
 "propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
-#: settings.py:29
+#: settings.py:28
+msgid ""
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
+msgstr ""
+
+#: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Liczba określająca ile obiektów będzie wyświetlane na stronie."
 
-#: settings.py:35
+#: settings.py:42
 msgid "A storage backend that all workers can use to share files."
 msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
 
-#: settings.py:40
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Katalog tymczasowy używany jest ogólnie do przechowywania miniaturek, plików poglądowych i plików tymczasowych."
 
-#: settings.py:48
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
 
@@ -294,61 +307,65 @@ msgid ""
 "underscores."
 msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
-#: views.py:51
+#: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "Ta wersja programu jest nieaktualna. Najświeższą wersją jest %s"
 
-#: views.py:55
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr "Wersja programu jest aktualna."
 
-#: views.py:72
+#: views.py:75
 msgid "Current user details"
 msgstr "Dane użytkownika"
 
-#: views.py:77
+#: views.py:80
 msgid "Edit current user details"
 msgstr "Edycja danych użytkownika"
 
-#: views.py:97
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "Profil regionalny użytkownika"
 
-#: views.py:104
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "Edycja ustawień regionalnych użytkownika"
 
-#: views.py:165
+#: views.py:155
+msgid "Dashboard"
+msgstr "Strona główna"
+
+#: views.py:173
 #, python-format
-msgid "Error log entries for: %s"
+msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:197
-msgid "Filter selection"
-msgstr "Wybór filtru"
+#: views.py:190
+msgid "Object error log cleared successfully"
+msgstr ""
+
+#: views.py:208
+msgid "Date and time"
+msgstr "Data i godzina"
 
 #: views.py:213
 #, python-format
-msgid "Results for filter: %s"
-msgstr "Wyniki dla filtru: %s"
+msgid "Error log entries for: %s"
+msgstr "Wpisy dziennika błędów dla: %s"
 
-#: views.py:220
-msgid "Filter not found"
-msgstr "Nie znaleziono filtru"
-
-#: views.py:261
+#: views.py:257
 msgid "Setup items"
 msgstr "Ustawienia"
 
-#: views.py:305
+#: views.py:300
 msgid "No action selected."
 msgstr "Nie wybrano żadnego działania"
 
-#: views.py:313
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "Musisz wybrać co najmniej jeden element."
-
-#: widgets.py:48
-msgid "None"
-msgstr "Brak"

@@ -48,7 +48,6 @@ class ExtraContextMixin(object):
     """
     Mixin that allows views to pass extra context to the template
     """
-
     extra_context = {}
 
     def get_extra_context(self):
@@ -64,7 +63,6 @@ class FormExtraKwargsMixin(object):
     """
     Mixin that allows a view to pass extra keyword arguments to forms
     """
-
     form_extra_kwargs = {}
 
     def get_form_extra_kwargs(self):
@@ -123,7 +121,6 @@ class MultipleObjectMixin(object):
     """
     Mixin that allows a view to work on a single or multiple objects
     """
-
     model = None
     object_permission = None
     pk_list_key = 'id_list'
@@ -184,7 +181,6 @@ class ObjectActionMixin(object):
     """
     Mixin that performs an user action to a queryset
     """
-
     success_message = 'Operation performed on %(count)d object'
     success_message_plural = 'Operation performed on %(count)d objects'
 
@@ -218,12 +214,25 @@ class ObjectActionMixin(object):
 
 
 class ObjectListPermissionFilterMixin(object):
+    """
+    access_object_retrieve_method is have the entire view check against
+    an object permission and not the individual secondary items.
+    """
+    access_object_retrieve_method = None
     object_permission = None
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.access_object_retrieve_method and self.object_permission:
+            AccessControlList.objects.check_access(
+                permissions=(self.object_permission,), user=request.user,
+                obj=getattr(self, self.access_object_retrieve_method)()
+            )
+        return super(ObjectListPermissionFilterMixin, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
 
-        if self.object_permission:
+        if not self.access_object_retrieve_method and self.object_permission:
             return AccessControlList.objects.filter_by_access(
                 self.object_permission, self.request.user, queryset=queryset
             )

@@ -12,7 +12,7 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import ErrorLogEntryManager
-from .runtime import shared_storage_backend
+from .storages import storage_sharedupload
 
 
 def upload_to(instance, filename):
@@ -24,8 +24,8 @@ class ErrorLogEntry(models.Model):
         max_length=128, verbose_name=_('Namespace')
     )
     content_type = models.ForeignKey(
-        ContentType, blank=True, on_delete=models.CASCADE, null=True,
-        related_name='error_log_content_type'
+        blank=True, on_delete=models.CASCADE, null=True,
+        related_name='error_log_content_type', to=ContentType,
     )
     object_id = models.PositiveIntegerField(blank=True, null=True)
     content_object = GenericForeignKey(
@@ -47,7 +47,7 @@ class ErrorLogEntry(models.Model):
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
     file = models.FileField(
-        storage=shared_storage_backend, upload_to=upload_to,
+        storage=storage_sharedupload, upload_to=upload_to,
         verbose_name=_('File')
     )
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
@@ -77,8 +77,8 @@ class SharedUploadedFile(models.Model):
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
     user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-        related_name='locale_profile', verbose_name=_('User')
+        on_delete=models.CASCADE, related_name='locale_profile',
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
     )
     timezone = models.CharField(
         choices=zip(common_timezones, common_timezones), max_length=48,

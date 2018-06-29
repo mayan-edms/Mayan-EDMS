@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -18,31 +18,15 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:77 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Общий"
 
-#: apps.py:82
+#: apps.py:90
 msgid "Anonymous"
 msgstr "Анонимно"
 
-#: apps.py:94 models.py:24
-msgid "Namespace"
-msgstr "Пространство имен"
-
-#: apps.py:98 mixins.py:245
-msgid "Object"
-msgstr "Объект"
-
-#: apps.py:102
-msgid "Date and time"
-msgstr "Дата и время"
-
-#: apps.py:106 models.py:37
-msgid "Result"
-msgstr "Результат"
-
-#: classes.py:222
+#: classes.py:181
 msgid "Available attributes: \n"
 msgstr ""
 
@@ -50,13 +34,9 @@ msgstr ""
 msgid "Main"
 msgstr "Основной"
 
-#: forms.py:27
+#: forms.py:25
 msgid "Selection"
 msgstr "Выбор"
-
-#: forms.py:143
-msgid "Filter"
-msgstr "Фильтр"
 
 #: generics.py:136
 #, python-format
@@ -101,81 +81,91 @@ msgstr "%(object)s не обновлён, ошибка: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."
 
-#: links.py:30
+#: links.py:33
 msgid "About this"
 msgstr ""
 
-#: links.py:33 views.py:58
+#: links.py:36 views.py:61
 msgid "Check for updates"
 msgstr ""
 
-#: links.py:37
+#: links.py:40
 msgid "User details"
 msgstr "сведения о пользователе"
 
-#: links.py:41
+#: links.py:44
 msgid "Edit details"
 msgstr "Редактировать сведения"
 
-#: links.py:44
+#: links.py:47
 msgid "Locale profile"
 msgstr "Профиль локали"
 
-#: links.py:48
+#: links.py:51
 msgid "Edit locale profile"
 msgstr "Редактировать локаль"
 
-#: links.py:52
+#: links.py:55
 msgid "Source code"
 msgstr ""
 
-#: links.py:56
+#: links.py:59
 msgid "Documentation"
 msgstr ""
 
-#: links.py:60 links.py:65
+#: links.py:64 links.py:74
 msgid "Errors"
 msgstr ""
 
 #: links.py:69
-msgid "Data filters"
-msgstr "Фильтры данных"
+msgid "Clear all"
+msgstr ""
 
-#: links.py:73
+#: links.py:78
 msgid "Forum"
 msgstr ""
 
-#: links.py:77 views.py:234
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "Лицензия"
 
-#: links.py:80 views.py:248
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "Лицензии других пакетов"
 
-#: links.py:84
+#: links.py:89
 msgid "Setup"
 msgstr "Настройки"
 
-#: links.py:87
+#: links.py:92
 msgid "Support"
 msgstr ""
 
-#: links.py:91 queues.py:10 views.py:278
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "Инструменты"
 
-#: literals.py:13
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:18
 msgid "Days"
 msgstr "Дней"
 
-#: literals.py:14
+#: literals.py:19
 msgid "Hours"
 msgstr "Часов"
 
-#: literals.py:15
+#: literals.py:20
 msgid "Minutes"
 msgstr "Минут"
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr ""
 
 #: menus.py:12
 msgid "System"
@@ -185,19 +175,31 @@ msgstr ""
 msgid "User"
 msgstr "Пользователь"
 
-#: mixins.py:84
+#: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr ""
 
-#: mixins.py:85
+#: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr ""
 
+#: mixins.py:254
+msgid "Object"
+msgstr "Объект"
+
+#: models.py:24
+msgid "Namespace"
+msgstr "Пространство имен"
+
 #: models.py:35 models.py:55
 msgid "Date time"
 msgstr "Дата и время"
+
+#: models.py:37 views.py:209
+msgid "Result"
+msgstr "Результат"
 
 #: models.py:43
 msgid "Error log entry"
@@ -265,21 +267,31 @@ msgid ""
 "propagate."
 msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
 
-#: settings.py:29
+#: settings.py:28
+msgid ""
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
+msgstr ""
+
+#: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Числовое значение указывающее как много объектов может быть отображено на одной странице."
 
-#: settings.py:35
+#: settings.py:42
 msgid "A storage backend that all workers can use to share files."
 msgstr "Бекенд хранения, который каждый может использовать для хранения файлов."
 
-#: settings.py:40
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 
-#: settings.py:48
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
@@ -289,61 +301,65 @@ msgid ""
 "underscores."
 msgstr ""
 
-#: views.py:51
+#: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
 
-#: views.py:55
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr ""
 
-#: views.py:72
+#: views.py:75
 msgid "Current user details"
 msgstr "Настройки текущего пользователя"
 
-#: views.py:77
+#: views.py:80
 msgid "Edit current user details"
 msgstr "Редактировать настройки текущего пользователя"
 
-#: views.py:97
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "Настройки локали текущего пользователя"
 
-#: views.py:104
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "Редактировать настройки локали текущего пользователя"
 
-#: views.py:165
+#: views.py:155
+msgid "Dashboard"
+msgstr ""
+
+#: views.py:173
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr ""
+
+#: views.py:190
+msgid "Object error log cleared successfully"
+msgstr ""
+
+#: views.py:208
+msgid "Date and time"
+msgstr "Дата и время"
+
+#: views.py:213
 #, python-format
 msgid "Error log entries for: %s"
 msgstr ""
 
-#: views.py:197
-msgid "Filter selection"
-msgstr "Фильтр по выбранным"
-
-#: views.py:213
-#, python-format
-msgid "Results for filter: %s"
-msgstr "Результаты для фильтра: %s"
-
-#: views.py:220
-msgid "Filter not found"
-msgstr "Фильтр не найден"
-
-#: views.py:261
+#: views.py:257
 msgid "Setup items"
 msgstr "Элементы настроек"
 
-#: views.py:305
+#: views.py:300
 msgid "No action selected."
 msgstr "Никаких действий не выбрано."
 
-#: views.py:313
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "Необходимо выбрать хотя бы один элемент."
-
-#: widgets.py:48
-msgid "None"
-msgstr "Ни один"

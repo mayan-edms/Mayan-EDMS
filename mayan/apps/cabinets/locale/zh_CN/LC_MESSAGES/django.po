@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Genlin Jiao <jiaogl@pkusz.edu.cn>, 2017\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rosarior/teams/13584/zh_CN/)\n"
@@ -18,20 +18,20 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:36 apps.py:76 apps.py:84 apps.py:87 forms.py:30 links.py:21
-#: menus.py:8 models.py:38 permissions.py:7 views.py:152
+#: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
+#: links.py:23 menus.py:10 models.py:38 permissions.py:7 views.py:152
 msgid "Cabinets"
 msgstr ""
 
-#: links.py:27 links.py:38
+#: links.py:28 links.py:38
 msgid "Remove from cabinets"
 msgstr ""
 
-#: links.py:31 links.py:35
+#: links.py:32 links.py:35
 msgid "Add to cabinets"
 msgstr ""
 
-#: links.py:55
+#: links.py:56
 msgid "Add new level"
 msgstr ""
 
@@ -159,68 +159,68 @@ msgstr ""
 msgid "Edit cabinet: %s"
 msgstr ""
 
-#: views.py:176
+#: views.py:178
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr ""
 
-#: views.py:188
+#: views.py:190
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:191
+#: views.py:193
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:198
+#: views.py:200
 msgid "Add"
 msgstr "新增"
 
-#: views.py:213
+#: views.py:215
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr ""
 
-#: views.py:224
+#: views.py:226
 msgid "Cabinets to which the selected documents will be added."
 msgstr ""
 
-#: views.py:252
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:264
+#: views.py:266
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
 
-#: views.py:277
+#: views.py:279
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:280
+#: views.py:282
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:287
+#: views.py:289
 msgid "Remove"
 msgstr "移除"
 
-#: views.py:313
+#: views.py:315
 msgid "Cabinets from which the selected documents will be removed."
 msgstr ""
 
-#: views.py:340
+#: views.py:342
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:352
+#: views.py:354
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr ""

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core import mail
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..models import UserMailer
 from ..permissions import (
@@ -19,7 +19,6 @@ from .mailers import TestBackend
 
 class MailerTestMixin(object):
     def _create_user_mailer(self):
-
         self.user_mailer = UserMailer.objects.create(
             default=True,
             enabled=True,

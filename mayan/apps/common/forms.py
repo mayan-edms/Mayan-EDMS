@@ -9,12 +9,10 @@ from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from .classes import Filter, Package
+from .classes import Package
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import (
-    DetailSelectMultiple, DisableableSelectWidget, PlainWidget
-)
+from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 
 
 class ChoiceForm(forms.Form):
@@ -63,22 +61,6 @@ class DetailForm(forms.ModelForm):
                 )
 
         for field_name, field in self.fields.items():
-            if isinstance(field.widget, forms.widgets.SelectMultiple):
-                self.fields[field_name].widget = DetailSelectMultiple(
-                    choices=field.widget.choices,
-                    attrs=field.widget.attrs,
-                    queryset=getattr(field, 'queryset', None),
-                )
-                self.fields[field_name].help_text = ''
-            elif isinstance(field.widget, forms.widgets.Select):
-                self.fields[field_name].widget = DetailSelectMultiple(
-                    choices=field.widget.choices,
-                    attrs=field.widget.attrs,
-                    queryset=getattr(field, 'queryset', None),
-                )
-                self.fields[field_name].help_text = ''
-
-        for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs.update(
                 {'readonly': 'readonly'}
             )
@@ -122,29 +104,24 @@ class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
 
 
 class FileDisplayForm(forms.Form):
+    DIRECTORY = None
+    FILENAME = None
+
     text = forms.CharField(
         label='',
-        widget=forms.widgets.Textarea(
-            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
+        widget=TextAreaDiv(
+            attrs={'class': 'full-height scrollable', 'data-height-difference': 270}
         )
     )
 
     def __init__(self, *args, **kwargs):
         super(FileDisplayForm, self).__init__(*args, **kwargs)
-        changelog_path = os.path.join(
-            settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
-        )
-        fd = open(changelog_path)
-        self.fields['text'].initial = fd.read()
-        fd.close()
-
-
-class FilterForm(forms.Form):
-    filter_slug = forms.ChoiceField(label=_('Filter'))
-
-    def __init__(self, *args, **kwargs):
-        super(FilterForm, self).__init__(*args, **kwargs)
-        self.fields['filter_slug'].choices = Filter.all().items()
+        if self.DIRECTORY or self.FILENAME:
+            file_path = os.path.join(
+                settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
+            )
+            with open(file_path) as file_object:
+                self.fields['text'].initial = file_object.read()
 
 
 class LicenseForm(FileDisplayForm):
@@ -176,14 +153,7 @@ class LocaleProfileForm_view(DetailForm):
         model = UserLocaleProfile
 
 
-class PackagesLicensesForm(forms.Form):
-    text = forms.CharField(
-        label='',
-        widget=forms.widgets.Textarea(
-            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
-        )
-    )
-
+class PackagesLicensesForm(FileDisplayForm):
     def __init__(self, *args, **kwargs):
         super(PackagesLicensesForm, self).__init__(*args, **kwargs)
         self.fields['text'].initial = '\n\n'.join(
@@ -195,7 +165,6 @@ class UserForm(forms.ModelForm):
     """
     Form used to edit an user's mininal fields by the user himself
     """
-
     class Meta:
         fields = ('username', 'first_name', 'last_name', 'email')
         model = get_user_model()
@@ -205,7 +174,6 @@ class UserForm_view(DetailForm):
     """
     Form used to display an user's public details
     """
-
     class Meta:
         fields = (
             'username', 'first_name', 'last_name', 'email', 'last_login',

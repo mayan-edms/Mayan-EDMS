@@ -23,7 +23,6 @@ class CabinetAPITestCase(APITestCase):
     """
     Test the cabinet API endpoints
     """
-
     def setUp(self):
         super(CabinetAPITestCase, self).setUp()
 

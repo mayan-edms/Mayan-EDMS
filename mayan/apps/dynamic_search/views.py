@@ -9,6 +9,7 @@ from django.views.generic.base import RedirectView
 from common.generics import SimpleView, SingleObjectListView
 
 from .forms import SearchForm, AdvancedSearchForm
+from .icons import icon_search_submit
 from .mixins import SearchModelMixin
 from .settings import setting_limit
 
@@ -39,7 +40,7 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             else:
                 global_and_search = False
 
-            queryset, ids, timedelta = self.search_model.search(
+            queryset, timedelta = self.search_model.search(
                 query_string=self.request.GET, user=self.request.user,
                 global_and_search=global_and_search
             )
@@ -59,7 +60,7 @@ class SearchView(SearchModelMixin, SimpleView):
                 'search:results', args=(self.search_model.get_full_name(),)
             ),
             'search_model': self.search_model,
-            'submit_icon': 'fa fa-search',
+            'submit_icon_class': icon_search_submit,
             'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Search for: %s') % self.search_model.label,

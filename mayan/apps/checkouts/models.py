@@ -25,7 +25,7 @@ class DocumentCheckout(models.Model):
     Model to store the state and information of a document checkout
     """
     document = models.OneToOneField(
-        Document, on_delete=models.CASCADE, verbose_name=_('Document')
+        on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
     )
     checkout_datetime = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Check out date and time')
@@ -37,7 +37,7 @@ class DocumentCheckout(models.Model):
         verbose_name=_('Check out expiration date and time')
     )
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        on_delete=models.CASCADE, to=settings.AUTH_USER_MODEL,
         verbose_name=_('User')
     )
     block_new_version = models.BooleanField(
@@ -49,6 +49,11 @@ class DocumentCheckout(models.Model):
     )
 
     objects = DocumentCheckoutManager()
+
+    class Meta:
+        ordering = ('pk',)
+        verbose_name = _('Document checkout')
+        verbose_name_plural = _('Document checkouts')
 
     def __str__(self):
         return force_text(self.document)
@@ -88,14 +93,10 @@ class DocumentCheckout(models.Model):
 
         return result
 
-    class Meta:
-        verbose_name = _('Document checkout')
-        verbose_name_plural = _('Document checkouts')
-
 
 class NewVersionBlock(models.Model):
     document = models.ForeignKey(
-        Document, on_delete=models.CASCADE, verbose_name=_('Document')
+        on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
     )
 
     objects = NewVersionBlockManager()

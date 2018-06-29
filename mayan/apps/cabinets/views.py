@@ -10,11 +10,11 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessControlList
 from common.views import (
     MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView,
-    TemplateView
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.permissions import permission_document_view
 from documents.models import Document
+from documents.views import DocumentListView
 
 from .forms import CabinetListForm
 from .models import Cabinet
@@ -83,7 +83,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
         }
 
 
-class CabinetDetailView(TemplateView):
+class CabinetDetailView(DocumentListView):
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
@@ -95,24 +95,24 @@ class CabinetDetailView(TemplateView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        data = super(CabinetDetailView, self).get_context_data(**kwargs)
+        context = super(CabinetDetailView, self).get_context_data(**kwargs)
 
         cabinet = self.get_object()
 
-        data.update(
+        context.update(
             {
+                'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
+                'hide_links': True,
                 'jstree_data': '\n'.join(
                     jstree_data(node=cabinet.get_root(), selected_node=cabinet)
                 ),
-                'document_list': self.get_document_queryset(),
-                'hide_links': True,
                 'list_as_items': True,
                 'object': cabinet,
                 'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
             }
         )
 
-        return data
+        return context
 
     def get_object(self):
         cabinet = get_object_or_404(Cabinet, pk=self.kwargs['pk'])

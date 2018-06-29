@@ -12,6 +12,7 @@ from documents.models import Document
 from documents.permissions import permission_document_view
 
 from .events import event_tag_attach, event_tag_remove
+from .widgets import widget_single_tag
 
 
 @python_2_unicode_compatible
@@ -21,19 +22,16 @@ class Tag(models.Model):
     )
     color = RGBColorField(verbose_name=_('Color'))
     documents = models.ManyToManyField(
-        Document, related_name='tags', verbose_name=_('Documents')
+        related_name='tags', to=Document, verbose_name=_('Documents')
     )
-
-    def __str__(self):
-        return self.label
-
-    def get_absolute_url(self):
-        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     class Meta:
         ordering = ('label',)
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
+
+    def __str__(self):
+        return self.label
 
     def attach_to(self, document, user=None):
         self.documents.add(document)
@@ -41,12 +39,19 @@ class Tag(models.Model):
             action_object=self, actor=user, target=document
         )
 
+    def get_absolute_url(self):
+        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
+
     def get_document_count(self, user):
         queryset = AccessControlList.objects.filter_by_access(
             permission_document_view, user, queryset=self.documents
         )
 
         return queryset.count()
+
+    def get_preview_widget(self):
+        return widget_single_tag(tag=self)
+    get_preview_widget.short_description = _('Preview')
 
     def remove_from(self, document, user=None):
         self.documents.remove(document)

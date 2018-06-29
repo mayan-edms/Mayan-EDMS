@@ -20,7 +20,6 @@ from .permissions import (
 class DocumentCommentCreateView(SingleObjectCreateView):
     fields = ('comment',)
     model = Comment
-    object_verbose_name = _('Comment')
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
@@ -46,15 +45,15 @@ class DocumentCommentCreateView(SingleObjectCreateView):
             'document': self.get_document(), 'user': self.request.user,
         }
 
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user,
-        }
-
     def get_post_action_redirect(self):
         return reverse(
             'comments:comments_for_document', args=(self.kwargs['pk'],)
         )
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
+        }
 
 
 class DocumentCommentDeleteView(SingleObjectDeleteView):

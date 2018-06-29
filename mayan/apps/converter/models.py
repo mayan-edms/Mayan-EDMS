@@ -9,8 +9,8 @@ from django.db.models import Max
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .classes import BaseTransformation
 from .managers import TransformationManager
+from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
 logger = logging.getLogger(__name__)
@@ -29,10 +29,9 @@ class Transformation(models.Model):
     transformation argument. Example: if a page is rotated with the Rotation
     transformation, this field will show by how many degrees it was rotated.
     """
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(on_delete=models.CASCADE, to=ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(
             'Order in which the transformations will be executed. If left '
@@ -52,6 +51,12 @@ class Transformation(models.Model):
 
     objects = TransformationManager()
 
+    class Meta:
+        ordering = ('order',)
+        unique_together = ('content_type', 'object_id', 'order')
+        verbose_name = _('Transformation')
+        verbose_name_plural = _('Transformations')
+
     def __str__(self):
         return self.get_name_display()
 
@@ -63,9 +68,3 @@ class Transformation(models.Model):
             if last_order is not None:
                 self.order = last_order + 1
         super(Transformation, self).save(*args, **kwargs)
-
-    class Meta:
-        ordering = ('order',)
-        unique_together = ('content_type', 'object_id', 'order')
-        verbose_name = _('Transformation')
-        verbose_name_plural = _('Transformations')

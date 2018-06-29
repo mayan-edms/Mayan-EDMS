@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
+from django.db.models.signals import m2m_changed, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -12,8 +13,8 @@ from common import (
 )
 from documents.search import document_page_search, document_search
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
+from .handlers import handler_index_document, handler_tag_pre_delete
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
     link_single_document_multiple_tag_remove, link_tag_attach, link_tag_create,
@@ -26,10 +27,11 @@ from .permissions import (
     permission_tag_remove, permission_tag_view
 )
 from .search import tag_search  # NOQA
-from .widgets import widget_document_tags, widget_single_tag
+from .widgets import widget_document_tags
 
 
 class TagsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'tags'
     verbose_name = _('Tags')
@@ -37,6 +39,8 @@ class TagsApp(MayanAppConfig):
     def ready(self):
         super(TagsApp, self).ready()
         from actstream import registry
+
+        from .wizard_steps import WizardStepTags  # NOQA
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -48,8 +52,6 @@ class TagsApp(MayanAppConfig):
 
         DocumentTag = self.get_model('DocumentTag')
         Tag = self.get_model('Tag')
-
-        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class(
             'attached_tags',
@@ -73,8 +75,10 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentTag, label=_('Preview'),
-            func=lambda context: widget_single_tag(context['object'])
+            source=DocumentTag, attribute='label'
+        )
+        SourceColumn(
+            source=DocumentTag, attribute='get_preview_widget'
         )
 
         SourceColumn(
@@ -93,8 +97,10 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Tag, label=_('Preview'),
-            func=lambda context: widget_single_tag(context['object'])
+            source=Tag, attribute='label'
+        )
+        SourceColumn(
+            source=Tag, attribute='get_preview_widget'
         )
         SourceColumn(
             source=Tag, label=_('Documents'),
@@ -145,3 +151,17 @@ class TagsApp(MayanAppConfig):
             )
         )
         registry.register(Tag)
+
+        # Index update
+
+        m2m_changed.connect(
+            handler_index_document,
+            dispatch_uid='tags_handler_index_document',
+            sender=Tag.documents.through
+        )
+
+        pre_delete.connect(
+            handler_tag_pre_delete,
+            dispatch_uid='tags_handler_tag_pre_delete',
+            sender=Tag
+        )

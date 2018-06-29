@@ -11,10 +11,14 @@ from django.utils.translation import ugettext_lazy as _
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
 from common.dashboards import dashboard_main
+from events import ModelEventType
 from mayan.celery import app
-from rest_api.classes import APIEndPoint
 
 from .dashboard_widgets import widget_checkouts
+from .events import (
+    event_document_auto_check_in, event_document_check_in,
+    event_document_check_out, event_document_forceful_check_in
+)
 from .handlers import check_new_version_creation
 from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
@@ -31,14 +35,13 @@ from .tasks import task_check_expired_check_outs  # NOQA
 
 
 class CheckoutsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'checkouts'
     verbose_name = _('Checkouts')
 
     def ready(self):
         super(CheckoutsApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -69,6 +72,13 @@ class CheckoutsApp(MayanAppConfig):
             'is_checked_out',
             lambda document: DocumentCheckout.objects.is_document_checked_out(
                 document
+            )
+        )
+
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_auto_check_in, event_document_check_in,
+                event_document_check_out, event_document_forceful_check_in
             )
         )
 

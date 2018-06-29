@@ -19,21 +19,25 @@ from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
 from common.compat import dict_type, dictionary_type
 import mayan
 
-from .exceptions import NotLatestVersion
-from .literals import MAYAN_PYPI_NAME, PYPI_URL
+from .exceptions import NotLatestVersion, UnknownLatestVersion
+from .literals import DJANGO_SQLITE_BACKEND, MAYAN_PYPI_NAME, PYPI_URL
 from .settings import setting_temporary_directory
 
 logger = logging.getLogger(__name__)
 
 
+def check_for_sqlite():
+    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
+
+
 def check_version():
     pypi = xmlrpc_client.ServerProxy(PYPI_URL)
     versions = pypi.package_releases(MAYAN_PYPI_NAME)
-
-    if versions[0] != mayan.__version__:
-        raise NotLatestVersion(upstream_version=versions[0])
+    if not versions:
+        raise UnknownLatestVersion
     else:
-        return True
+        if versions[0] != mayan.__version__:
+            raise NotLatestVersion(upstream_version=versions[0])
 
 
 # http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
@@ -98,13 +102,6 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-def index_or_default(instance, index, default):
-    try:
-        return instance[index]
-    except IndexError:
-        return default
-
-
 def TemporaryFile(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.TemporaryFile(*args, **kwargs)
@@ -147,6 +144,15 @@ def return_attrib(obj, attrib, arguments=None):
             return 'Attribute error: %s; %s' % (attrib, exception)
         else:
             return force_text(exception)
+
+
+def return_related(instance, attribute):
+    """
+    This functions works in a similar method to return_attrib but is
+    meant for related models. Support multiple levels of relationship
+    using double underscore.
+    """
+    return reduce_function(getattr, attribute.split('__'), instance)
 
 
 def urlquote(link=None, get=None):

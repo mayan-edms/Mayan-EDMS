@@ -1,12 +1,14 @@
 .PHONY: clean-pyc clean-build
 
-
-help:
+help: docker-help
 	@echo
+	@echo "**** Main makefile ****"
 	@echo "clean-build - Remove build artifacts."
 	@echo "clean-pyc - Remove Python artifacts."
 	@echo "clean - Remove Python and build artifacts."
-	@echo "generate_setup - Create and updated setup.py"
+	@echo "generate-setup - Create and updated setup.py"
+	@echo "check-readme - Checks validity of the README.rst file for PyPI publication."
+	@echo "check-missing_migrations - Make sure all models have proper migrations."
 
 	@echo "test-all - Run all tests."
 	@echo "test MODULE=<python module name> - Run tests for a single app, module or test class."
@@ -17,43 +19,35 @@ help:
 	@echo "test-with-oracle-all - Run all tests against a Oracle database container."
 	@echo "test-oracle MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container."
 
-	@echo "docs_serve - Run the livehtml documentation generator."
+	@echo "docs-serve - Run the livehtml documentation generator."
 
-	@echo "translations_make - Refresh all translation files."
-	@echo "translations_compile - Compile all translation files."
-	@echo "translations_push - Upload all translation files to Transifex."
-	@echo "translations_pull - Download all translation files from Transifex."
-
-	@echo "requirements_dev - Install development requirements."
-	@echo "requirements_docs - Install documentation requirements."
-	@echo "requirements_testing - Install testing requirements."
+	@echo "translations-make - Refresh all translation files."
+	@echo "translations-compile - Compile all translation files."
+	@echo "translations-push - Upload all translation files to Transifex."
+	@echo "translations-pull - Download all translation files from Transifex."
 
 	@echo "sdist - Build the source distribution package."
 	@echo "wheel - Build the wheel distribution package."
 	@echo "release - Package (sdist and wheel) and upload a release."
-	@echo "test_release - Package (sdist and wheel) and upload to the PyPI test server."
-	@echo "release_test_via_docker_ubuntu - Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder."
-	@echo "release_test_via_docker_alpine - Package (sdist and wheel) and upload to the PyPI test server using an Alpine Docker builder."
-	@echo "release_via_docker_ubuntu - Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder."
-	@echo "release_via_docker_alpine - Package (sdist and wheel) and upload to PyPI using an Alpine Docker builder."
-	@echo "test_sdist_via_docker_ubuntu - Make an sdist packange and test it using an Ubuntu Docker container."
-	@echo "test_wheel_via_docker_ubuntu - Make a wheel package and test it using an Ubuntu Docker container."
-
+	@echo "test-release - Package (sdist and wheel) and upload to the PyPI test server."
+	@echo "release-test-via-docker-ubuntu - Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder."
+	@echo "release-via-docker-ubuntu - Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder."
+	@echo "test-sdist-via-docker-ubuntu - Make an sdist packange and test it using an Ubuntu Docker container."
+	@echo "test-wheel-via-docker-ubuntu - Make a wheel package and test it using an Ubuntu Docker container."
 	@echo "runserver - Run the development server."
 	@echo "runserver_plus - Run the Django extension's development server."
 	@echo "shell_plus - Run the shell_plus command."
 
-	@echo "docker_services_on - Launch and initialize production-like services using Docker (Postgres and Redis)."
-	@echo "docker_services_off - Stop and delete the Docker production-like services."
-	@echo "docker_services_frontend - Launch a front end instance that uses the production-like services."
-	@echo "docker_services_worker - Launch a worker instance that uses the production-like services."
-	@echo "docker_service_mysql_on - Launch and initialize a MySQL Docker container."
-	@echo "docker_service_mysql_off - Stop and delete the MySQL Docker container."
-	@echo "docker_service_postgres_on - Launch and initialize a PostgreSQL Docker container."
-	@echo "docker_service_postgres_off - Stop and delete the PostgreSQL Docker container."
+	@echo "test-with-docker-services-on - Launch and initialize production-like services using Docker (Postgres and Redis)."
+	@echo "test-with-docker-services-off - Stop and delete the Docker production-like services."
+	@echo "test-with-docker-frontend - Launch a front end instance that uses the production-like services."
+	@echo "test-with-docker-worker - Launch a worker instance that uses the production-like services."
+	@echo "docker-mysql-on - Launch and initialize a MySQL Docker container."
+	@echo "docker-mysql-off - Stop and delete the MySQL Docker container."
+	@echo "docker-postgres-on - Launch and initialize a PostgreSQL Docker container."
+	@echo "docker-postgres-off - Stop and delete the PostgreSQL Docker container."
 
-	@echo "safety_check - Run a package safety check."
-
+	@echo "safety-check - Run a package safety check."
 
 # Cleaning
 
@@ -136,7 +130,7 @@ test-with-oracle-all: test-launch-oracle
 
 # Documentation
 
-docs_serve:
+docs-serve:
 	cd docs;make livehtml
 
 
@@ -155,25 +149,14 @@ translations_pull:
 	tx pull -f
 
 
-# Requirements
-
-requirements_dev:
-	pip install -r requirements/development.txt
-
-requirements_docs:
-	pip install -r requirements/documentation.txt
-
-requirements_testing:
-	pip install -r requirements/testing.txt
-
-generate_setup:
+generate-setup:
 	@./generate_setup.py
 	@echo "Complete."
 
 # Releases
 
 
-test_release: clean wheel
+test-release: clean wheel
 	twine upload dist/* -r testpypi
 	@echo "Test with: pip install -i https://testpypi.python.org/pypi mayan-edms"
 
@@ -188,7 +171,7 @@ wheel: clean sdist
 	pip wheel --no-index --no-deps --wheel-dir dist dist/*.tar.gz
 	ls -l dist
 
-release_test_via_docker_ubuntu:
+release-test-via-docker-ubuntu:
 	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -199,9 +182,9 @@ release_test_via_docker_ubuntu:
 	apt-get install make python-pip -y && \
 	pip install -r requirements/build.txt && \
 	cp -r /host_home/.pypirc ~/.pypirc && \
-	make test_release"
+	make test-release"
 
-release_via_docker_ubuntu:
+release-via-docker-ubuntu:
 	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -214,33 +197,7 @@ release_via_docker_ubuntu:
 	cp -r /host_home/.pypirc ~/.pypirc && \
 	make release"
 
-release_test_via_docker_alpine:
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "\
-	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
-	locale-gen en_US.UTF-8 && \
-	update-locale LANG=en_US.UTF-8 && \
-	export LC_ALL=en_US.UTF-8 && \
-	cp -r /host_source/* . && \
-	apk update && \
-	apk add python2 py2-pip make && \
-	pip install -r requirements/build.txt && \
-	cp -r /host_home/.pypirc ~/.pypirc && \
-	make test_release"
-
-release_via_docker_alpine:
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source alpine /bin/busybox sh -c "\
-	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
-	locale-gen en_US.UTF-8 && \
-	update-locale LANG=en_US.UTF-8 && \
-	export LC_ALL=en_US.UTF-8 && \
-	cp -r /host_source/* . && \
-	apk update && \
-	apk add python2 py2-pip make && \
-	pip install -r requirements/build.txt && \
-	cp -r /host_home/.pypirc ~/.pypirc && \
-	make release"
-
-test_sdist_via_docker_ubuntu:
+test-sdist-via-docker-ubuntu:
 	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
@@ -250,10 +207,10 @@ test_sdist_via_docker_ubuntu:
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
-	make sdist_test_suit \
+	make sdist-test-suit \
 	"
 
-test_wheel_via_docker_ubuntu:
+test-wheel-via-docker-ubuntu:
 	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
@@ -263,10 +220,10 @@ test_wheel_via_docker_ubuntu:
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
-	make wheel_test_suit \
+	make wheel-test-suit \
 	"
 
-sdist_test_suit: sdist
+sdist-test-suit: sdist
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
@@ -277,7 +234,7 @@ sdist_test_suit: sdist
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
-wheel_test_suit: wheel
+wheel-test-suit: wheel
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
@@ -291,50 +248,78 @@ wheel_test_suit: wheel
 # Dev server
 
 runserver:
-	./manage.py runserver --settings=mayan.settings.development
+	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
 
 runserver_plus:
-	./manage.py runserver_plus --settings=mayan.settings.development
+	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
 
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
 
-docker_services_on:
+test-with-docker-services-on:
 	docker run -d --name redis -p 6379:6379 redis
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
-	sleep 2
+	sleep 4
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
-docker_services_off:
+test-with-docker-services-off:
 	docker stop postgres redis
 	docker rm postgres redis
 
-docker_services_frontend:
+test-with-docker-frontend:
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
-docker_services_worker:
+test-with-docker-worker:
 	./manage.py celery worker --settings=mayan.settings.staging.docker -B -l INFO -O fair
 
-docker_service_mysql_on:
+docker-mysql-on:
 	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms mysql
 	while ! nc -z 127.0.0.1 3306; do sleep 1; done
 
-docker_service_mysql_off:
+docker-mysql-off:
 	docker stop mysql
 	docker rm mysql
 
-docker_service_postgres_on:
+docker-postgres-on:
 	docker run -d --name postgres -p 5432:5432 postgres
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
-docker_service_postgres_off:
+docker-postgres-off:
 	docker stop postgres
 	docker rm postgres
 
 
 # Security
 
-safety_check:
+safety-check:
 	safety check
+
+
+# Other
+find-gitignores:
+	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
+	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
+
+build:
+	docker rm -f mayan-edms-build || true && \
+	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-slim sh -c "\
+	rm /host_source/dist -R || true && \
+	mkdir /host_source/dist || true && \
+	export LC_ALL=C.UTF-8 && \
+	cp -r /host_source/* . && \
+	apt-get update && \
+	apt-get install -y make && \
+	pip install -r requirements/build.txt && \
+	make wheel && \
+	cp dist/* /host_source/dist/"
+
+check-readme:
+	python setup.py check -r -s
+
+check-missing-migrations:
+	./manage.py makemigrations --dry-run --noinput --check
+
+
+include docker/Makefile

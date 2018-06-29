@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
 # Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:32+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:02-0400\n"
+"PO-Revision-Date: 2018-01-22 19:19+0000\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,45 +20,45 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:15 links.py:35 links.py:39
+#: apps.py:15 links.py:37 links.py:41
 msgid "ACLs"
 msgstr "Listy ACL"
 
-#: apps.py:25 links.py:48 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr "Uprawnienia"
-
-#: apps.py:29 models.py:47
+#: apps.py:23 models.py:47
 msgid "Role"
 msgstr "Rola"
 
-#: links.py:31
+#: apps.py:26 links.py:50 models.py:43 workflow_actions.py:48
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: links.py:32
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:43
+#: links.py:45
 msgid "New ACL"
 msgstr "Nowa lista ACL"
 
 #: managers.py:57 managers.py:86
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Niewystarczający dostęp dla: %s"
 
-#: models.py:54
+#: models.py:55
 msgid "Access entry"
 msgstr "Zgłoszenie dostępu"
 
-#: models.py:55
+#: models.py:56
 msgid "Access entries"
 msgstr "Zgłoszenia dostępu"
 
-#: models.py:59
+#: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
 msgstr "Uprawnienia \"%(permissions)s\" dla roli \"%(role)s\" dotyczące \"%(object)s\""
 
-#: models.py:76
+#: models.py:77
 msgid "None"
 msgstr "Brak"
 
@@ -126,31 +127,31 @@ msgstr "Dostępne uprawnienia"
 msgid "Granted permissions"
 msgstr "Przyznane uprawnienia"
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Uprawnienia roli \"%(role)s\" dla obiektu \"%(object)s\""
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
 msgstr "Domyślne uprawnienia są dziedziczone z obiektu nadrzędnego."
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Typ obiektu"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Typ obiektu, dla którego dostęp zostanie zmodyfikowany."
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "ID obiektu"
 
 #: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Numeryczny identyfikator obiektu, dla którego dostęp zostanie zmodyfikowany."
 
 #: workflow_actions.py:42
 msgid "Roles"
@@ -158,17 +159,17 @@ msgstr "Role"
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Role, których dostęp zostanie zmodyfikowany."
 
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Uprawnienia do nadawania/odwoływania do/z roli dla obiektu."
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "Przyznaj dostęp"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr ""
+msgstr "Odwołaj dostęp"

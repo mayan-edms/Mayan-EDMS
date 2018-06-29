@@ -5,17 +5,19 @@
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
 # Franck Boucher <boucher.fk@gmail.com>, 2016
+# Frédéric Escudero <frederic.escudero@gmail.com>, 2017
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
+# Yves Dubois <ydubois@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,31 +25,15 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:77 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
 msgstr "Commun"
 
-#: apps.py:82
+#: apps.py:90
 msgid "Anonymous"
 msgstr "Anonyme"
 
-#: apps.py:94 models.py:24
-msgid "Namespace"
-msgstr "Espace de nommage"
-
-#: apps.py:98 mixins.py:245
-msgid "Object"
-msgstr "Objet"
-
-#: apps.py:102
-msgid "Date and time"
-msgstr "Date et heure"
-
-#: apps.py:106 models.py:37
-msgid "Result"
-msgstr "Résultat"
-
-#: classes.py:222
+#: classes.py:181
 msgid "Available attributes: \n"
 msgstr "Attributs disponibles: \n"
 
@@ -55,18 +41,14 @@ msgstr "Attributs disponibles: \n"
 msgid "Main"
 msgstr "Principal"
 
-#: forms.py:27
+#: forms.py:25
 msgid "Selection"
 msgstr "Sélection"
-
-#: forms.py:143
-msgid "Filter"
-msgstr "Filtre"
 
 #: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "Impossible de transférer la sélection: %s."
+msgstr "Impossible de transférer la sélection : %s."
 
 #: generics.py:160
 msgid "Add"
@@ -74,113 +56,123 @@ msgstr "Ajouter"
 
 #: generics.py:171
 msgid "Remove"
-msgstr "Supprimer"
+msgstr "Retirer"
 
 #: generics.py:353
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr "%(object)s n'a pas été créé, erreur: %(error)s"
+msgstr "%(object)s n'a pas été créé, erreur : %(error)s"
 
 #: generics.py:364
 #, python-format
 msgid "%(object)s created successfully."
-msgstr "%(object)s, creation réussi."
+msgstr "%(object)s créé avec succès."
 
 #: generics.py:393
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s non supprimé, erreur: %(error)s."
+msgstr "%(object)s n'a pas été supprimé, erreur : %(error)s."
 
 #: generics.py:404
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr "%(object)s, suppression réussie."
+msgstr "%(object)s supprimé avec succès."
 
 #: generics.py:450
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr "%(object)s n'a pas été mis à jour, erreur: %(error)s."
+msgstr "%(object)s n'a pas été mis à jour, erreur : %(error)s."
 
 #: generics.py:461
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr "%(object)s, mise à jour réussie."
+msgstr "%(object)s mis à jour avec succès."
 
-#: links.py:30
+#: links.py:33
 msgid "About this"
 msgstr "À propos de"
 
-#: links.py:33 views.py:58
+#: links.py:36 views.py:61
 msgid "Check for updates"
-msgstr "Vérifiez les mises à jour"
+msgstr "Vérifier les mises à jour"
 
-#: links.py:37
+#: links.py:40
 msgid "User details"
 msgstr "Profil Utilisateur"
 
-#: links.py:41
+#: links.py:44
 msgid "Edit details"
 msgstr "Modifier les détails"
 
-#: links.py:44
+#: links.py:47
 msgid "Locale profile"
 msgstr "Paramètres régionaux du profil"
 
-#: links.py:48
+#: links.py:51
 msgid "Edit locale profile"
 msgstr "Éditer les paramètres régionaux du profil"
 
-#: links.py:52
+#: links.py:55
 msgid "Source code"
 msgstr "Code source"
 
-#: links.py:56
+#: links.py:59
 msgid "Documentation"
 msgstr "Documentation"
 
-#: links.py:60 links.py:65
+#: links.py:64 links.py:74
 msgid "Errors"
-msgstr ""
+msgstr "Erreurs"
 
 #: links.py:69
-msgid "Data filters"
-msgstr "Filtres de données"
+msgid "Clear all"
+msgstr "Effacer tout"
 
-#: links.py:73
+#: links.py:78
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:77 views.py:234
+#: links.py:82 views.py:164
 msgid "License"
 msgstr "Licence"
 
-#: links.py:80 views.py:248
+#: links.py:85 views.py:239
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"
 
-#: links.py:84
+#: links.py:89
 msgid "Setup"
 msgstr "Configuration"
 
-#: links.py:87
+#: links.py:92
 msgid "Support"
 msgstr "Support"
 
-#: links.py:91 queues.py:10 views.py:278
+#: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
 msgstr "Outils"
 
-#: literals.py:13
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr "Votre serveur de base de données est configuré pour utiliser SQLite.  SQLite ne devrait être utilisé qu'à des fins de développement et de test, pas en production."
+
+#: literals.py:18
 msgid "Days"
 msgstr "Jours"
 
-#: literals.py:14
+#: literals.py:19
 msgid "Hours"
 msgstr "Heures"
 
-#: literals.py:15
+#: literals.py:20
 msgid "Minutes"
 msgstr "Minutes"
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr "Déclencher l'exécution d'une application spécifique."
 
 #: menus.py:12
 msgid "System"
@@ -190,27 +182,39 @@ msgstr "Système"
 msgid "User"
 msgstr "Uitlisateur"
 
-#: mixins.py:84
+#: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Opération effectuée sur %(count)d objet"
 
-#: mixins.py:85
+#: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Opération effectuée sur  %(count)d objets"
+
+#: mixins.py:254
+msgid "Object"
+msgstr "Objet"
+
+#: models.py:24
+msgid "Namespace"
+msgstr "Espace de nommage"
 
 #: models.py:35 models.py:55
 msgid "Date time"
 msgstr "Date et heure"
 
+#: models.py:37 views.py:209
+msgid "Result"
+msgstr "Résultat"
+
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "Entrée dans le journal des erreurs"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "Entrées du journal des erreurs"
 
 #: models.py:51
 msgid "File"
@@ -222,11 +226,11 @@ msgstr "Nom de fichier"
 
 #: models.py:59
 msgid "Shared uploaded file"
-msgstr "Partager le fichier transféré"
+msgstr "Fichier importé partagé"
 
 #: models.py:60
 msgid "Shared uploaded files"
-msgstr "Partager les fichiers téléchargés"
+msgstr "Fichiers importés partagés"
 
 #: models.py:85
 msgid "Timezone"
@@ -242,11 +246,11 @@ msgstr "Paramètres régionaux du profil utilisateur"
 
 #: models.py:93
 msgid "User locale profiles"
-msgstr "Paramètres régionaux des profils utilisateur"
+msgstr "Paramètres régionaux des profils utilisateurs"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Afficher le journal des erreurs"
 
 #: queues.py:8
 msgid "Default"
@@ -254,11 +258,11 @@ msgstr "Défaut"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr "Période commune"
+msgstr "Tâches communes périodiques"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr "Supprimer les téléchargements périmées"
+msgstr "Supprimer les imports périmés"
 
 #: settings.py:15
 msgid "Automatically enable logging to all apps."
@@ -268,23 +272,33 @@ msgstr "Activation automatique de la trace pour toutes les applications."
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr "Durée pendant laquelle les tâches d'arrière plan sont différées pour les tâches dépendant d'une mise à jour de la base de données."
+msgstr "Durée de temporisation des tâches d'arrière plan dépendant d'une mise à jour de la base de données."
 
-#: settings.py:29
+#: settings.py:28
+msgid ""
+"Filename of the local settings file (just the filename, extension will be "
+".py)."
+msgstr "Nom du fichier local de configuration (uniquement le nom, l'extension sera .py)."
+
+#: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Valeur entière indiquant combien d'objets sont affichés sur chaque page."
 
-#: settings.py:35
+#: settings.py:42
 msgid "A storage backend that all workers can use to share files."
 msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
 
-#: settings.py:40
+#: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Le dossier temporaire est utilisé pour stocker les vignettes, aperçus et fichiers temporaires."
+msgstr "Répertoire temporaire utilisé pour stocker les vignettes, aperçus et fichiers temporaires."
 
-#: settings.py:48
+#: settings.py:62
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:69
 msgid "Path to the logfile that will track errors during production."
 msgstr "Chemin d'accès au fichier journal qui enregistrera les erreurs pendant la production."
 
@@ -294,61 +308,65 @@ msgid ""
 "underscores."
 msgstr "Entrez un 'nom interne' valide composé de lettres, de chiffres et de soulignement."
 
-#: views.py:51
+#: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
 
-#: views.py:55
+#: views.py:54
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:58
 msgid "Your version is up-to-date."
 msgstr "Votre version est à jour"
 
-#: views.py:72
+#: views.py:75
 msgid "Current user details"
-msgstr "Détails de l'utilisateur courant"
+msgstr "Détails de l'utilisateur actuel"
 
-#: views.py:77
+#: views.py:80
 msgid "Edit current user details"
-msgstr "Modifier les détails des utilisateurs actuels"
+msgstr "Modifier les détails de l'utilisateur actuel"
 
-#: views.py:97
+#: views.py:100
 msgid "Current user locale profile details"
 msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:104
+#: views.py:107
 msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
-#: views.py:165
-#, python-format
-msgid "Error log entries for: %s"
-msgstr ""
+#: views.py:155
+msgid "Dashboard"
+msgstr "Tableau de bord"
 
-#: views.py:197
-msgid "Filter selection"
-msgstr "Sélection du filtre"
+#: views.py:173
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Effacer les entrées du journal des erreurs pour : %s"
+
+#: views.py:190
+msgid "Object error log cleared successfully"
+msgstr "Les entrées concernées du journal des erreurs ont été effacées avec succès"
+
+#: views.py:208
+msgid "Date and time"
+msgstr "Date et heure"
 
 #: views.py:213
 #, python-format
-msgid "Results for filter: %s"
-msgstr "Résultats pour le filtre : %s"
+msgid "Error log entries for: %s"
+msgstr "Entrées du journal des erreurs pour : %s"
 
-#: views.py:220
-msgid "Filter not found"
-msgstr "Filtre non trouvé"
-
-#: views.py:261
+#: views.py:257
 msgid "Setup items"
 msgstr "Paramètres de configuration"
 
-#: views.py:305
+#: views.py:300
 msgid "No action selected."
 msgstr "Aucune action sélectionnée."
 
-#: views.py:313
+#: views.py:308
 msgid "Must select at least one item."
 msgstr "Vous devez sélectionner au moins un élément."
-
-#: widgets.py:48
-msgid "None"
-msgstr "Aucun"

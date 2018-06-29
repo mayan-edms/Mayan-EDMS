@@ -26,9 +26,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ''')
 
-Package(label='Animate.css', license_text='''
-Animate.css is licensed under the MIT license. (http://opensource.org/licenses/MIT)
-''')
 
 Package(label='Bootswatch', license_text='''
 The MIT License (MIT)

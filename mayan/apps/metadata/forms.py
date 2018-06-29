@@ -190,21 +190,22 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
         super(DocumentTypeMetadataTypeRelationshipForm, self).__init__(
             *args, **kwargs
         )
-        if self.initial['main_model'] == 'metadata_type':
-            self.fields['label'].initial = self.initial['document_type'].label
-        else:
-            self.fields['label'].initial = self.initial['metadata_type'].label
-
-        relationship = self.initial['document_type'].metadata.filter(
-            metadata_type=self.initial['metadata_type']
-        )
-        if relationship.exists():
-            if relationship.get().required:
-                self.fields['relationship'].initial = 'required'
+        if 'main_model' in self.initial:
+            if self.initial['main_model'] == 'metadata_type':
+                self.fields['label'].initial = self.initial['document_type'].label
             else:
-                self.fields['relationship'].initial = 'optional'
-        else:
-            self.fields['relationship'].initial = 'none'
+                self.fields['label'].initial = self.initial['metadata_type'].label
+
+            relationship = self.initial['document_type'].metadata.filter(
+                metadata_type=self.initial['metadata_type']
+            )
+            if relationship.exists():
+                if relationship.get().required:
+                    self.fields['relationship'].initial = 'required'
+                else:
+                    self.fields['relationship'].initial = 'optional'
+            else:
+                self.fields['relationship'].initial = 'none'
 
     def save(self):
         relationship = self.initial['document_type'].metadata.filter(

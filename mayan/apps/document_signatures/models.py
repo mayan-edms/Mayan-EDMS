@@ -15,7 +15,7 @@ from django_gpg.models import Key
 from documents.models import DocumentVersion
 
 from .managers import EmbeddedSignatureManager
-from .runtime import storage_backend
+from .storages import storage_detachedsignature
 
 logger = logging.getLogger(__name__)
 
@@ -35,10 +35,9 @@ class SignatureBaseModel(models.Model):
     it will generate a unique signature ID. No two signature IDs are the same,
     even when using the same key.
     """
-
     document_version = models.ForeignKey(
-        DocumentVersion, editable=False, on_delete=models.CASCADE,
-        related_name='signatures', verbose_name=_('Document version')
+        editable=False, on_delete=models.CASCADE, related_name='signatures',
+        to=DocumentVersion, verbose_name=_('Document version')
     )
     # Basic fields
     date = models.DateField(
@@ -128,9 +127,12 @@ class EmbeddedSignature(SignatureBaseModel):
 @python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
-        blank=True, null=True, storage=storage_backend, upload_to=upload_to,
-        verbose_name=_('Signature file')
+        blank=True, null=True, storage=storage_detachedsignature,
+        upload_to=upload_to, verbose_name=_('Signature file')
     )
+
+    # Don't inherit the SignatureBaseModel manager
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('Document version detached signature')

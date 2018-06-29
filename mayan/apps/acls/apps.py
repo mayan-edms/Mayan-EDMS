@@ -4,12 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_sidebar
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import link_acl_create, link_acl_delete, link_acl_permissions
 
 
 class ACLsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'acls'
     verbose_name = _('ACLs')
@@ -17,16 +17,14 @@ class ACLsApp(MayanAppConfig):
     def ready(self):
         super(ACLsApp, self).ready()
 
-        APIEndPoint(app=self, version_string='1')
-
         AccessControlList = self.get_model('AccessControlList')
 
         SourceColumn(
-            source=AccessControlList, label=_('Permissions'),
-            attribute='get_permission_titles'
+            source=AccessControlList, label=_('Role'), attribute='role'
         )
         SourceColumn(
-            source=AccessControlList, label=_('Role'), attribute='role'
+            source=AccessControlList, label=_('Permissions'),
+            attribute='get_permission_titles'
         )
 
         menu_object.bind_links(

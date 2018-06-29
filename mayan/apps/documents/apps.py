@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
+from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -23,12 +24,14 @@ from converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from events.links import link_events_for_object
+from events import ModelEventType
+from events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+    link_object_event_types_user_subcriptions_list_with_icon
+)
 from events.permissions import permission_events_view
 from mayan.celery import app
-from mayan_statistics.classes import StatisticNamespace, CharJSLine
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 from rest_api.fields import DynamicSerializerField
 
 from .dashboard_widgets import (
@@ -36,8 +39,15 @@ from .dashboard_widgets import (
     widget_new_documents_this_month, widget_pages_per_month,
     widget_total_documents
 )
+from .events import (
+    event_document_create, event_document_download,
+    event_document_properties_edit, event_document_type_change,
+    event_document_new_version, event_document_version_revert,
+    event_document_view
+)
 from .handlers import (
-    create_default_document_type, handler_scan_duplicates_for
+    create_default_document_type, handler_remove_empty_duplicates_lists,
+    handler_scan_duplicates_for,
 )
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
@@ -55,17 +65,17 @@ from .links import (
     link_document_page_rotate_right, link_document_page_view,
     link_document_page_view_reset, link_document_page_zoom_in,
     link_document_page_zoom_out, link_document_pages, link_document_preview,
-    link_document_print, link_document_properties, link_document_restore,
-    link_document_trash, link_document_type_create, link_document_type_delete,
-    link_document_type_edit, link_document_type_filename_create,
-    link_document_type_filename_delete, link_document_type_filename_edit,
-    link_document_type_filename_list, link_document_type_list,
-    link_document_type_setup, link_document_update_page_count,
-    link_document_version_download, link_document_version_list,
-    link_document_version_return_document, link_document_version_return_list,
-    link_document_version_revert, link_document_version_view,
-    link_duplicated_document_list, link_duplicated_document_scan,
-    link_trash_can_empty
+    link_document_print, link_document_properties, link_document_quick_download,
+    link_document_restore, link_document_trash, link_document_type_create,
+    link_document_type_delete, link_document_type_edit,
+    link_document_type_filename_create, link_document_type_filename_delete,
+    link_document_type_filename_edit, link_document_type_filename_list,
+    link_document_type_list, link_document_type_setup,
+    link_document_update_page_count, link_document_version_download,
+    link_document_version_list, link_document_version_return_document,
+    link_document_version_return_list, link_document_version_revert,
+    link_document_version_view, link_duplicated_document_list,
+    link_duplicated_document_scan, link_trash_can_empty
 )
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
@@ -86,18 +96,15 @@ from .queues import *  # NOQA
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
 from .signals import post_version_upload
-from .statistics import (
-    new_documents_per_month, new_document_pages_per_month,
-    new_document_versions_per_month, total_document_per_month,
-    total_document_page_per_month, total_document_version_per_month
-)
+from .statistics import *  # NOQA
 from .widgets import (
-    DocumentThumbnailWidget, DocumentPageThumbnailWidget,
-    DocumentVersionThumbnailWidget
+    DocumentPageThumbnailWidget, widget_document_page_number,
+    widget_document_version_page_number
 )
 
 
 class DocumentsApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'documents'
     verbose_name = _('Documents')
@@ -105,8 +112,6 @@ class DocumentsApp(MayanAppConfig):
     def ready(self):
         super(DocumentsApp, self).ready()
         from actstream import registry
-
-        APIEndPoint(app=self, version_string='1')
 
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')
@@ -139,6 +144,19 @@ class DocumentsApp(MayanAppConfig):
             Document,
             description=_('The MIME type of any of the versions of a document'),
             label=_('MIME type'), name='versions__mimetype', type_name='field'
+        )
+
+        ModelEventType.register(
+            model=DocumentType, event_types=(
+                event_document_create,
+            )
+        )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_download, event_document_properties_edit,
+                event_document_type_change, event_document_new_version,
+                event_document_version_revert, event_document_view
+            )
         )
 
         ModelPermission.register(
@@ -174,6 +192,9 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentPage, related='document',
         )
         ModelPermission.register_inheritance(
+            model=DocumentPageResult, related='document_version__document',
+        )
+        ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
         )
         ModelPermission.register_inheritance(
@@ -182,18 +203,22 @@ class DocumentsApp(MayanAppConfig):
 
         # Document and document page thumbnail widget
         document_page_thumbnail_widget = DocumentPageThumbnailWidget()
-        document_thumbnail_widget = DocumentThumbnailWidget()
-        document_version_thumbnail_widget = DocumentVersionThumbnailWidget()
 
         # Document
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
         SourceColumn(
-            source=Document, label=_('Type'), attribute='document_type'
+            source=Document, attribute='document_type'
+        )
+        SourceColumn(
+            source=Document, label=_('Pages'),
+            func=lambda context: widget_document_page_number(
+                document=context['object']
+            )
         )
 
         # DocumentPage
@@ -232,47 +257,48 @@ class DocumentsApp(MayanAppConfig):
         # DeletedDocument
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
 
         SourceColumn(
-            source=DeletedDocument, label=_('Type'), attribute='document_type'
+            source=DeletedDocument, attribute='document_type'
         )
         SourceColumn(
-            source=DeletedDocument, label=_('Date time trashed'),
-            attribute='deleted_date_time'
+            source=DeletedDocument, attribute='deleted_date_time'
         )
 
         # DocumentVersion
         SourceColumn(
-            source=DocumentVersion, label=_('Time and date'),
-            attribute='timestamp'
-        )
-        SourceColumn(
-            source=DocumentVersion, label=_('MIME type'),
-            attribute='mimetype'
-        )
-        SourceColumn(
-            source=DocumentVersion, label=_('Encoding'),
-            attribute='encoding'
-        )
-        SourceColumn(
-            source=DocumentVersion, label=_('Comment'),
-            attribute='comment'
-        )
-        SourceColumn(
             source=DocumentVersion, label=_('Thumbnail'),
-            func=lambda context: document_version_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
+        )
+        SourceColumn(
+            source=DocumentVersion, attribute='timestamp'
+        )
+        SourceColumn(
+            source=DocumentVersion, label=_('Pages'),
+            func=lambda context: widget_document_version_page_number(
+                document_version=context['object']
+            )
+        )
+        SourceColumn(
+            source=DocumentVersion, attribute='mimetype'
+        )
+        SourceColumn(
+            source=DocumentVersion, attribute='encoding'
+        )
+        SourceColumn(
+            source=DocumentVersion, attribute='comment'
         )
 
         # DuplicatedDocument
         SourceColumn(
             source=DuplicatedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail_widget.render(
+            func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object'].document
             )
         )
@@ -325,20 +351,20 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_check_trash_periods': {
                     'queue': 'documents_periodic'
                 },
-                'documents.tasks.task_delete_stubs': {
-                    'queue': 'documents_periodic'
+                'documents.tasks.task_clean_empty_duplicate_lists': {
+                    'queue': 'documents'
                 },
                 'documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
                 },
+                'documents.tasks.task_delete_document': {
+                    'queue': 'documents'
+                },
+                'documents.tasks.task_delete_stubs': {
+                    'queue': 'documents_periodic'
+                },
                 'documents.tasks.task_generate_document_page_image': {
                     'queue': 'converter'
-                },
-                'documents.tasks.task_update_page_count': {
-                    'queue': 'uploads'
-                },
-                'documents.tasks.task_upload_new_version': {
-                    'queue': 'uploads'
                 },
                 'documents.tasks.task_scan_duplicates_all': {
                     'queue': 'tools'
@@ -346,8 +372,11 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_scan_duplicates_for': {
                     'queue': 'uploads'
                 },
-                'documents.tasks.task_delete_document': {
-                    'queue': 'documents'
+                'documents.tasks.task_update_page_count': {
+                    'queue': 'uploads'
+                },
+                'documents.tasks.task_upload_new_version': {
+                    'queue': 'uploads'
                 },
             }
         )
@@ -376,7 +405,8 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_type_edit, link_document_type_filename_list,
-                link_acl_list, link_document_type_delete
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_document_type_delete
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(
@@ -411,7 +441,8 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
-                link_document_download, link_document_clear_transformations,
+                link_document_quick_download, link_document_download,
+                link_document_clear_transformations,
                 link_document_clone_transformations,
                 link_document_update_page_count,
             ), sources=(Document,)
@@ -433,8 +464,11 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_properties,), sources=(Document,), position=2
         )
         menu_facet.bind_links(
-            links=(link_events_for_object, link_document_version_list,),
-            sources=(Document,), position=2
+            links=(
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list_with_icon,
+                link_document_version_list,
+            ), sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
 
@@ -494,50 +528,11 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 
-        namespace = StatisticNamespace(slug='documents', label=_('Documents'))
-        namespace.add_statistic(
-            slug='new-documents-per-month',
-            label=_('New documents per month'),
-            func=new_documents_per_month,
-            renderer=CharJSLine,
-            minute='0'
+        post_delete.connect(
+            dispatch_uid='handler_remove_empty_duplicates_lists',
+            receiver=handler_remove_empty_duplicates_lists,
+            sender=Document,
         )
-        namespace.add_statistic(
-            slug='new-document-versions-per-month',
-            label=_('New document versions per month'),
-            func=new_document_versions_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='new-document-pages-per-month',
-            label=_('New document pages per month'),
-            func=new_document_pages_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-documents-at-each-month',
-            label=_('Total documents at each month'),
-            func=total_document_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-document-versions-at-each-month',
-            label=_('Total document versions at each month'),
-            func=total_document_version_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-        namespace.add_statistic(
-            slug='total-document-pages-at-each-month',
-            label=_('Total document pages at each month'),
-            func=total_document_page_per_month,
-            renderer=CharJSLine,
-            minute='0'
-        )
-
         post_initial_setup.connect(
             create_default_document_type,
             dispatch_uid='create_default_document_type'

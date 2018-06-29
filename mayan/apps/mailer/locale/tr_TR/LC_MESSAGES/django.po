@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2017-08-03 05:59+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2018-04-11 19:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:38
 msgid "Mailer"
@@ -27,11 +27,11 @@ msgstr "Posta gönderici"
 msgid "Date and time"
 msgstr "Tarih ve saat"
 
-#: apps.py:56 models.py:21 models.py:121
+#: apps.py:56 models.py:24 models.py:162
 msgid "Message"
 msgstr "Mesaj"
 
-#: apps.py:59 apps.py:74 models.py:33
+#: apps.py:59 apps.py:74 models.py:36
 msgid "Label"
 msgstr "Etiket"
 
@@ -43,33 +43,33 @@ msgstr "Varsayılan?"
 msgid "Enabled?"
 msgstr "Etkin mi?"
 
-#: forms.py:59
+#: forms.py:60
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Alıcının e-posta adresi. Virgülle veya noktalı virgülle ayrılmış birden çok adres olabilir."
 
-#: forms.py:61 forms.py:118
+#: forms.py:62 forms.py:119
 msgid "Email address"
 msgstr "E-posta adresi"
 
-#: forms.py:63
+#: forms.py:64
 msgid "Subject"
 msgstr "Konu"
 
-#: forms.py:65
+#: forms.py:66
 msgid "Body"
 msgstr "Gövde"
 
-#: forms.py:69
+#: forms.py:70
 msgid "The email profile that will be used to send this email."
 msgstr "Bu e-postayı göndermek için kullanılacak e-posta profili."
 
-#: forms.py:70 views.py:233
+#: forms.py:71 views.py:217
 msgid "Mailing profile"
 msgstr "Posta profili"
 
-#: forms.py:75
+#: forms.py:76
 msgid "Backend"
 msgstr "Arka Ucu"
 
@@ -109,7 +109,7 @@ msgstr "Posta profilleri listesi"
 msgid "Mailing profiles"
 msgstr "Posta profilleri"
 
-#: links.py:58 views.py:254
+#: links.py:58 views.py:238
 msgid "Test"
 msgstr "Test"
 
@@ -204,61 +204,61 @@ msgstr "Dosya yolu"
 msgid "Django file based backend"
 msgstr "Django dosya tabanlı arka uç"
 
-#: models.py:18 models.py:118
+#: models.py:21 models.py:159
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: models.py:27
+#: models.py:30
 msgid "Log entry"
 msgstr "Kayıt girişi"
 
-#: models.py:28
+#: models.py:31
 msgid "Log entries"
 msgstr "Kayıt girdileri"
 
-#: models.py:37
+#: models.py:40
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Varsayılan olarak, bu posta profili, belge posta formunda önceden seçilecektir."
 
-#: models.py:39
+#: models.py:42
 msgid "Default"
 msgstr "Varsayılan"
 
-#: models.py:41
+#: models.py:44
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models.py:44
+#: models.py:47
 msgid "The dotted Python path to the backend class."
 msgstr "Arka plan sınıfının noktalı Python yolu."
 
-#: models.py:45
+#: models.py:48
 msgid "Backend path"
 msgstr "Arka plan yolu"
 
-#: models.py:48
+#: models.py:51
 msgid "Backend data"
 msgstr "Verileri yedekle"
 
-#: models.py:53 models.py:115
+#: models.py:56 models.py:156
 msgid "User mailer"
 msgstr "Kullanıcı postası"
 
-#: models.py:54
+#: models.py:57
 msgid "User mailers"
 msgstr "Kullanıcı postaları"
 
-#: models.py:109
+#: models.py:150
 msgid "Test email from Mayan EDMS"
 msgstr "e-postayı test edin"
 
-#: models.py:127
+#: models.py:168
 msgid "User mailer log entry"
 msgstr "Kullanıcı postacı günlük girişi"
 
-#: models.py:128
+#: models.py:169
 msgid "User mailer log entries"
 msgstr "Kullanıcı postacı günlük kaydı"
 
@@ -311,8 +311,8 @@ msgid "Template for the document link email form subject line."
 msgstr "Belge bağlantı e-posta formu konu satırı için şablon."
 
 #: settings.py:20
-msgid "Template for the document link email form body line."
-msgstr "Belge bağlantı e-posta formu gövde çizgisi için şablon."
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -323,62 +323,62 @@ msgid "Template for the document email form subject line."
 msgstr "Belge e-posta formu konu satırı için şablon."
 
 #: settings.py:30
-msgid "Template for the document email form body line."
-msgstr "Belge e-posta formu gövde çizgisi için şablon."
+msgid "Template for the document email form body text. Can include HTML."
+msgstr ""
 
-#: views.py:37
+#: views.py:34
 msgid "Document mailing error log"
 msgstr "Belge postalama hata günlüğü"
 
-#: views.py:49
+#: views.py:46
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d belge, e-posta teslimatı için sıraya girdi"
 
-#: views.py:51
+#: views.py:48
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d belgeler e-posta teslimatı için sıraya alındı"
 
-#: views.py:62
+#: views.py:59
 msgid "Send"
 msgstr "Gönder"
 
-#: views.py:121
+#: views.py:105
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d belge bağlantısı e-posta teslimatı için sıraya alındı"
 
-#: views.py:123
+#: views.py:107
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d belge bağlantıları e-posta teslimatı için sıraya alındı"
 
-#: views.py:132
+#: views.py:116
 msgid "New mailing profile backend selection"
 msgstr "Yeni posta profili arka uç seçimi"
 
-#: views.py:160
+#: views.py:144
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "\"%s\" posta profili oluşturma"
 
-#: views.py:186
+#: views.py:170
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Posta profilini silin: %s"
 
-#: views.py:197
+#: views.py:181
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Posta profilini düzenleme: %s"
 
-#: views.py:220
+#: views.py:204
 #, python-format
 msgid "%s error log"
 msgstr "%s hata günlüğü"
 
-#: views.py:255
+#: views.py:239
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test posta profili: %s"

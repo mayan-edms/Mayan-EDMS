@@ -6,8 +6,8 @@ from django.urls import reverse
 from furl import furl
 
 from acls.models import AccessControlList
+from common.tests import GenericViewTestCase
 from common.tests.literals import TEST_VIEW_NAME
-from common.tests.test_views import GenericViewTestCase
 from permissions import Permission, PermissionNamespace
 
 from ..classes import Link, Menu
@@ -114,7 +114,6 @@ class LinkClassTestCase(GenericViewTestCase):
         resolved_link = self.link.resolve(context=context)
 
         self.assertEqual(resolved_link.url, url.url)
-
 
     def test_link_with_querystring_preservation(self):
         previous_url = '{}?{}'.format(

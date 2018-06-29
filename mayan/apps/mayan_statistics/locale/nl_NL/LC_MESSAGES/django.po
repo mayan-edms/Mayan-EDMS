@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -19,29 +19,29 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 links.py:28 permissions.py:7 queues.py:8
+#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr "Statistiek"
 
 #. Translators: Schedule here is a verb, the 'schedule' at which the
 #. statistic will be updated
-#: apps.py:34
+#: apps.py:35
 msgid "Schedule"
 msgstr "Schema"
 
-#: links.py:11
+#: links.py:12
 msgid "Queue"
 msgstr "Wachtrij"
 
-#: links.py:15
+#: links.py:16
 msgid "View"
 msgstr "Bekijk"
 
-#: links.py:19
+#: links.py:20
 msgid "Namespace details"
 msgstr ""
 
-#: links.py:23
+#: links.py:24
 msgid "Namespace list"
 msgstr "Namespacelijst"
 
@@ -59,11 +59,11 @@ msgstr "Datum en tijd"
 msgid "Data"
 msgstr "Gegevens"
 
-#: models.py:31
+#: models.py:21
 msgid "Statistics result"
 msgstr ""
 
-#: models.py:32
+#: models.py:22
 msgid "Statistics results"
 msgstr ""
 
@@ -79,26 +79,31 @@ msgstr ""
 msgid "No data available yet"
 msgstr "Nog geen gegevens beschikbaar"
 
-#: views.py:17
+#: views.py:18
 msgid "Statistics namespaces"
 msgstr ""
 
-#: views.py:33
+#: views.py:34
 #, python-format
 msgid "Namespace details for: %s"
 msgstr ""
 
-#: views.py:53
+#: views.py:54
 #, python-format
 msgid "Results for: %s"
 msgstr "Resultaten voor: %s"
 
-#: views.py:60 views.py:85
+#: views.py:61 views.py:86
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistiek \"%s\" niet gevonden"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
+msgstr ""
+
+#: views.py:98
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

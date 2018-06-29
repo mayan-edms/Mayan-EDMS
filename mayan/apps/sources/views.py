@@ -1,10 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.utils.encoding import force_text
+from django.utils.encoding import force_text, uri_to_iri
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -22,13 +24,13 @@ from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
 from documents.tasks import task_upload_new_version
-from metadata.api import decode_metadata_from_url
 from navigation import Link
 
 from .exceptions import SourceException
 from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
+from .icons import icon_upload_view_link
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .models import (
     InteractiveSource, Source, SaneScanner, StagingFolderSource
@@ -40,6 +42,8 @@ from .permissions import (
 )
 from .tasks import task_check_interval_source, task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
+
+logger = logging.getLogger(__name__)
 
 
 class SourceLogListView(SingleObjectListView):
@@ -75,12 +79,12 @@ class UploadBaseView(MultiFormView):
             args = ('"{}"'.format(source.pk),)
 
         return Link(
-            text=source.label,
-            view=view,
             args=args,
+            icon_class=icon_upload_view_link,
             keep_query=True,
             remove_from_query=['page'],
-            icon='fa fa-upload',
+            text=source.label,
+            view=view,
         )
 
     @staticmethod
@@ -242,30 +246,51 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 messages.error(self.request, exception)
 
-            task_source_handle_upload.apply_async(kwargs=dict(
-                description=forms['document_form'].cleaned_data.get('description'),
-                document_type_id=self.document_type.pk,
-                expand=expand,
-                label=label,
-                language=forms['document_form'].cleaned_data.get('language'),
-                metadata_dict_list=decode_metadata_from_url(self.request.GET),
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                source_id=self.source.pk,
-                tag_ids=self.request.GET.getlist('tags'),
-                user_id=user_id,
-            ))
-            messages.success(
-                self.request,
-                _(
-                    'New document queued for uploaded and will be available '
-                    'shortly.'
+            try:
+                task_source_handle_upload.apply_async(
+                    kwargs=dict(
+                        description=forms['document_form'].cleaned_data.get('description'),
+                        document_type_id=self.document_type.pk,
+                        expand=expand,
+                        label=label,
+                        language=forms['document_form'].cleaned_data.get('language'),
+                        querystring=uri_to_iri(
+                            '?{}&{}'.format(
+                                self.request.GET.urlencode(), self.request.POST.urlencode()
+                            )
+                        ),
+                        shared_uploaded_file_id=shared_uploaded_file.pk,
+                        source_id=self.source.pk,
+                        user_id=user_id,
+                    )
                 )
-            )
+            except Exception as exception:
+                message = _(
+                    'Error executing document upload task; '
+                    '%(exception)s, %(exception_class)s'
+                ) % {
+                    'exception': exception,
+                    'exception_class': type(exception),
+                }
+                logger.critical(
+                    message, exc_info=True
+                )
+                raise type(exception)(message)
+            else:
+                messages.success(
+                    self.request,
+                    _(
+                        'New document queued for uploaded and will be available '
+                        'shortly.'
+                    )
+                )
 
         return HttpResponseRedirect(
             '{}?{}'.format(
-                reverse(self.request.resolver_match.view_name),
-                self.request.META['QUERY_STRING']
+                reverse(
+                    self.request.resolver_match.view_name,
+                    kwargs=self.request.resolver_match.kwargs
+                ), self.request.META['QUERY_STRING']
             ),
         )
 
@@ -308,12 +333,15 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
+
         if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context['subtemplates_list'][0]['context'].update(
                 {
                     'form_action': '{}?{}'.format(
-                        reverse(self.request.resolver_match.view_name),
-                        self.request.META['QUERY_STRING']
+                        reverse(
+                            self.request.resolver_match.view_name,
+                            kwargs=self.request.resolver_match.kwargs
+                        ), self.request.META['QUERY_STRING']
                     ),
                     'form_class': 'dropzone',
                     'form_disable_submit': True,

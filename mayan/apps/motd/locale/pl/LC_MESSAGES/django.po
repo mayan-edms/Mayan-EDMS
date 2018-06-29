@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-07-19 08:48+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2018-01-22 19:19+0000\n"
 "Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:22 links.py:25 permissions.py:7
+#: apps.py:27 links.py:26 permissions.py:7
 msgid "Message of the day"
 msgstr "Wiadomość dnia"
 
-#: apps.py:32 models.py:20
+#: apps.py:40 models.py:20
 msgid "Enabled"
 msgstr "Włączone"
 
-#: apps.py:35 models.py:24
+#: apps.py:43 models.py:24
 msgid "Start date time"
 msgstr "Ważna od"
 
-#: apps.py:36 apps.py:40
+#: apps.py:44 apps.py:48
 msgid "None"
 msgstr "Brak"
 
-#: apps.py:39 models.py:29
+#: apps.py:47 models.py:29
 msgid "End date time"
 msgstr "Ważna do"
 
-#: links.py:13 views.py:29
+#: links.py:14 views.py:29
 msgid "Create message"
 msgstr "Utwórz wiadomość"
 
-#: links.py:18
+#: links.py:19
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:21
+#: links.py:22
 msgid "Edit"
 msgstr "Edytuj"
 

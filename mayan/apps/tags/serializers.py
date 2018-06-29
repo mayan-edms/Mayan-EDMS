@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -109,12 +110,15 @@ class NewDocumentTagSerializer(serializers.Serializer):
         try:
             tag = Tag.objects.get(pk=validated_data['tag_pk'])
 
-            AccessControlList.objects.check_access(
-                permissions=permission_tag_attach,
-                user=self.context['request'].user, obj=tag
-            )
-
-            tag.documents.add(validated_data['document'])
+            try:
+                AccessControlList.objects.check_access(
+                    permissions=permission_tag_attach,
+                    user=self.context['request'].user, obj=tag
+                )
+            except PermissionDenied:
+                pass
+            else:
+                tag.documents.add(validated_data['document'])
         except Exception as exception:
             raise ValidationError(exception)
 

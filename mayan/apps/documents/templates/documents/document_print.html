@@ -1,9 +1,11 @@
-{% extends 'appearance/base.html' %}
+{% extends 'appearance/base_plain.html' %}
 
 {% block title %}{{ title }}{% endblock title %}
 
 {% block content_plain %}
     {% for page in pages %}
-        <img src="{% url 'rest_api:documentpage-image' page.document.pk page.document.latest_version.pk page.pk %}?size={{ size }}" />
+        <img
+            src="{{ page.get_api_image_url }}?width={{ width }}&height={{ height }}" style="width: 100%;"
+        />
     {% endfor %}
 {% endblock %}

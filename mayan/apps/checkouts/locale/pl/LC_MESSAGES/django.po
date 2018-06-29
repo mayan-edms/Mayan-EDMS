@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Blokady"
 
@@ -27,19 +27,19 @@ msgstr "Blokady"
 msgid "Checkedout documents"
 msgstr "Dokumenty zablokowane"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Dokument został automatycznie odblokowany"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Dokument został odblokowany"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Dokument został zablokowany"
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Wymuszono odblokowanie dokumentu"
 
@@ -75,15 +75,15 @@ msgstr "Tak"
 msgid "No"
 msgstr "Nie"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Zablokuj dokument"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Odblokuj dokument"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Blokada"
 
@@ -95,7 +95,7 @@ msgstr "Zablokowany"
 msgid "Checked in/available"
 msgstr "Odblokowany/dostępny"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "Dokument"
 
@@ -119,23 +119,23 @@ msgstr "Brak możliwości dodania nowej wersji dokumentu."
 msgid "Block new version upload"
 msgstr "Blokuj załadowanie nowej wersji"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr "Wygaśnięcie blokady musi nastąpić w przyszłości."
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Blokada dokumentu"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Blokady dokumentu"
 
-#: models.py:104
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "Wygaśnięcie blokady musi nastąpić w przyszłości."
+
+#: models.py:105
 msgid "New version block"
 msgstr "Blokada nowej wersji"
 
-#: models.py:105
+#: models.py:106
 msgid "New version blocks"
 msgstr "Blokady nowych wersji"
 
@@ -161,6 +161,10 @@ msgstr ""
 
 #: queues.py:12
 msgid "Check expired checkouts"
+msgstr ""
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
 msgstr ""
 
 #: views.py:53
@@ -221,6 +225,6 @@ msgstr "Błąd podczas odblokowania dokumentu: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" został pomyślnie odblokowany."
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr "Okres"

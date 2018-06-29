@@ -3,6 +3,9 @@
 [![coverage][cover]][cover-url]
 ![python][python]
 ![license][license]
+[![Docker pulls](https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
+[![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
+[![Docker layers](https://images.microbadger.com/badges/image/mayanedms/mayanedms.svg)](https://microbadger.com/images/mayanedms/mayanedms)
 
 [pypi]: http://img.shields.io/pypi/v/mayan-edms.svg
 [pypi-url]: http://badge.fury.io/py/mayan-edms
@@ -35,7 +38,7 @@
   <p>
 
 <p align="center">
-    <img src="https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif">
+    <img width="400" src="https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif">
 </p>
 
 </div>
@@ -46,9 +49,8 @@ The easiest way to use Mayan EDMS is by using the official
 [Docker](https://www.docker.com/) image. Make sure Docker is properly installed
 and working before attempting to install Mayan EDMS.
 
-For the complete set of installation, configuration, upgrade, and backup
-instructions visit the Mayan EDMS Docker Hub page at:
-https://hub.docker.com/r/mayanedms/mayanedms/
+For the complete set of installation instructions visit the Mayan EDMS documentation
+at: http://mayan.readthedocs.io/en/latest/topics/installation.html
 
 <h2 align="center">Hardware requirements</h2>
 

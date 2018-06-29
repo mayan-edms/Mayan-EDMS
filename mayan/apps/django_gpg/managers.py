@@ -63,6 +63,12 @@ class KeyManager(models.Manager):
 
         return io.BytesIO(decrypt_result.data)
 
+    def private_keys(self):
+        return self.filter(key_type=KEY_TYPE_SECRET)
+
+    def public_keys(self):
+        return self.filter(key_type=KEY_TYPE_PUBLIC)
+
     def receive_key(self, key_id):
         key_data = gpg_backend.recv_keys(
             keyserver=setting_keyserver.value, key_id=key_id
@@ -83,12 +89,6 @@ class KeyManager(models.Manager):
             result.append(KeyStub(raw=key_data))
 
         return result
-
-    def public_keys(self):
-        return self.filter(key_type=KEY_TYPE_PUBLIC)
-
-    def private_keys(self):
-        return self.filter(key_type=KEY_TYPE_SECRET)
 
     def verify_file(self, file_object, signature_file=None, all_keys=False, key_fingerprint=None, key_id=None):
         keys = self._preload_keys(

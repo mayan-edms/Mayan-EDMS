@@ -6,6 +6,12 @@ from smart_settings import Namespace
 
 namespace = Namespace(name='document_parsing', label=_('Document parsing'))
 
+setting_auto_parsing = namespace.add_setting(
+    global_name='DOCUMENT_PARSING_AUTO_PARSING', default=True,
+    help_text=_(
+        'Set new document types to perform parsing automatically by default.'
+    )
+)
 setting_pdftotext_path = namespace.add_setting(
     global_name='DOCUMENT_PARSING_PDFTOTEXT_PATH',
     default='/usr/bin/pdftotext',

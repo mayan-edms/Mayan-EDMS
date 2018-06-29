@@ -5,21 +5,20 @@ from json import dumps
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, resolve_url
 from django.template import RequestContext
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.http import urlencode
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView, TemplateView
 
 from acls.models import AccessControlList
 
-from .classes import Filter
-from .exceptions import NotLatestVersion
+from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import (
-    FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
+    LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm, UserForm, UserForm_view
 )
 from .generics import (  # NOQA
@@ -50,6 +49,11 @@ class CheckVersionView(SimpleView):
                 'The version you are using is outdated. The latest version '
                 'is %s'
             ) % exception.upstream_version
+        except UnknownLatestVersion as exception:
+            message = _(
+                'It is not possible to determine the latest version '
+                'available.'
+            )
         else:
             message = _('Your version is up-to-date.')
 
@@ -146,46 +150,10 @@ class FaviconRedirectView(RedirectView):
         return static('appearance/images/favicon.ico')
 
 
-class FilterSelectView(SimpleView):
-    form_class = FilterForm
-    template_name = 'appearance/generic_form.html'
-
-    def get_form(self):
-        return FilterForm()
-
-    def get_extra_context(self):
-        return {
-            'form': self.get_form(),
-            'title': _('Filter selection')
-        }
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(
-            reverse(
-                'common:filter_results',
-                args=(request.POST.get('filter_slug'),)
-            )
-        )
-
-
-class FilterResultListView(SingleObjectListView):
-    def get_extra_context(self):
-        return {
-            'hide_links': self.get_filter().hide_links,
-            'title': _('Results for filter: %s') % self.get_filter()
-        }
-
-    def get_filter(self):
-        try:
-            return Filter.get(self.kwargs['slug'])
-        except KeyError:
-            raise Http404(ugettext('Filter not found'))
-
-    def get_object_list(self):
-        return self.get_filter().get_queryset(user=self.request.user)
-
-
-class HomeView(TemplateView):
+class HomeView(SimpleView):
+    extra_context = {
+        'title': _('Dashboard'),
+    }
     template_name = 'appearance/home.html'
 
 
@@ -272,6 +240,11 @@ class PackagesLicensesView(SimpleView):
         }
 
 
+class RootView(SimpleView):
+    extra_context = {'home_view': settings.HOME_VIEW}
+    template_name = 'appearance/root.html'
+
+
 class SetupListView(TemplateView):
     template_name = 'appearance/generic_list_horizontal.html'
 
@@ -307,7 +280,6 @@ def multi_object_action_view(request):
     Proxy view called first when using a multi object action, which
     then redirects to the appropiate specialized view
     """
-
     next = request.POST.get(
         'next', request.GET.get(
             'next', request.META.get(

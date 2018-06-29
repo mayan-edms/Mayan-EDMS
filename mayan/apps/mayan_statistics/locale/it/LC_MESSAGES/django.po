@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-06-23 05:44+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -19,29 +19,29 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 links.py:28 permissions.py:7 queues.py:8
+#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr "Statistiche "
 
 #. Translators: Schedule here is a verb, the 'schedule' at which the
 #. statistic will be updated
-#: apps.py:34
+#: apps.py:35
 msgid "Schedule"
 msgstr "Programma "
 
-#: links.py:11
+#: links.py:12
 msgid "Queue"
 msgstr "Coda "
 
-#: links.py:15
+#: links.py:16
 msgid "View"
 msgstr "Vista "
 
-#: links.py:19
+#: links.py:20
 msgid "Namespace details"
 msgstr "Dettagli spazio dei nomi "
 
-#: links.py:23
+#: links.py:24
 msgid "Namespace list"
 msgstr "Lista spazio dei nomi "
 
@@ -59,11 +59,11 @@ msgstr "Appuntamento "
 msgid "Data"
 msgstr "Dati "
 
-#: models.py:31
+#: models.py:21
 msgid "Statistics result"
 msgstr "Risultato statistiche "
 
-#: models.py:32
+#: models.py:22
 msgid "Statistics results"
 msgstr "Risultati statistiche "
 
@@ -79,26 +79,31 @@ msgstr ""
 msgid "No data available yet"
 msgstr "Nessun dato ancora disponibile "
 
-#: views.py:17
+#: views.py:18
 msgid "Statistics namespaces"
 msgstr "Statistiche spazio dei nomi "
 
-#: views.py:33
+#: views.py:34
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Dettagli spazio dei nomi per: %s"
 
-#: views.py:53
+#: views.py:54
 #, python-format
 msgid "Results for: %s"
 msgstr "Risultati per: %s"
 
-#: views.py:60 views.py:85
+#: views.py:61 views.py:86
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistica \"%s\" non trovata."
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Mettere in coda le statistiche \"%s\" da aggiornare? "
+
+#: views.py:98
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr ""

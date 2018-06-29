@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Ausbuchungen"
 
@@ -27,19 +27,19 @@ msgstr "Ausbuchungen"
 msgid "Checkedout documents"
 msgstr "Ausgebuchte Dokumente"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Dokument automatisch eingebucht"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Dokument eingebucht"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Dokument ausgebucht"
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
@@ -75,15 +75,15 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Dokument ausbuchen"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Dokument einbuchen"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Ein-/Ausbuchung"
 
@@ -95,7 +95,7 @@ msgstr "Ausgebucht"
 msgid "Checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "Dokument"
 
@@ -119,23 +119,23 @@ msgstr "Hochladen neuer Versionen dieses Dokuments nicht erlauben."
 msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen sperren"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr "Ausbuchungsende muss in der Zukunft liegen."
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Ausbuchung"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Ausbuchungen"
 
-#: models.py:104
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "Ausbuchungsende muss in der Zukunft liegen."
+
+#: models.py:105
 msgid "New version block"
 msgstr "Akutialisierungsschutz"
 
-#: models.py:105
+#: models.py:106
 msgid "New version blocks"
 msgstr "Aktualisierungsschutz"
 
@@ -161,6 +161,10 @@ msgstr ""
 
 #: queues.py:12
 msgid "Check expired checkouts"
+msgstr ""
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
 msgstr ""
 
 #: views.py:53
@@ -221,6 +225,6 @@ msgstr "Fehler bei der Einbuchung von Dokument %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht"
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr "Einheit"

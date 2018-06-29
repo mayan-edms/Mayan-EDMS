@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# kontrabant <kontrabant@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-08-27 16:32+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:02-0400\n"
+"PO-Revision-Date: 2017-10-11 10:08+0000\n"
+"Last-Translator: kontrabant <kontrabant@gmail.com>\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,45 +18,45 @@ msgstr ""
 "Language: sl_SI\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:15 links.py:35 links.py:39
+#: apps.py:15 links.py:37 links.py:41
 msgid "ACLs"
 msgstr "Pravice"
 
-#: apps.py:25 links.py:48 models.py:43 workflow_actions.py:48
+#: apps.py:23 models.py:47
+msgid "Role"
+msgstr "Vloga"
+
+#: apps.py:26 links.py:50 models.py:43 workflow_actions.py:48
 msgid "Permissions"
 msgstr "Pravice"
 
-#: apps.py:29 models.py:47
-msgid "Role"
-msgstr ""
-
-#: links.py:31
+#: links.py:32
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
-#: links.py:43
+#: links.py:45
 msgid "New ACL"
-msgstr ""
+msgstr "Novi ACL"
 
 #: managers.py:57 managers.py:86
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Nezadosten dostop za: %s"
 
-#: models.py:54
+#: models.py:55
 msgid "Access entry"
 msgstr "Vstopna točka"
 
-#: models.py:55
+#: models.py:56
 msgid "Access entries"
 msgstr "Vstopne točke"
 
-#: models.py:59
+#: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
+msgstr "Dovoljenja \"%(permissions)s\" do vloge \"%(role)s\" za \"%(object)s\""
 
-#: models.py:76
+#: models.py:77
 msgid "None"
 msgstr "Brez"
 
@@ -74,42 +75,42 @@ msgstr "Preglej dostopne pravice"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "URL za API, ki kaže na seznam dovoljenj za ta nadzorni seznam dostopa."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "UR API-ja, ki kaže na dovoljenae v zvezi s seznamom za nadzor dostopa, na katerega je priključen. Ta URL je drugačen od kanoničnega URL-ja poteka dela."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Primarni ključ novega dovoljenja za odobritev na seznamu za nadzor dostopa."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Neobstoječe dovoljenje: %s"
 
 #: serializers.py:126
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Seznam primarnih ključev dovolilnic, ločenih z vejicami, za dodelitev tega seznama za nadzor dostopa."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Primarni ključi vloge, na katere se ta kontrolni seznam za dostop poveže."
 
 #: views.py:74
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Novi seznami za nadzor dostopa za: %s"
 
 #: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Brisanje ACL: %s"
 
 #: views.py:139
 #, python-format
@@ -118,37 +119,37 @@ msgstr "Dostopne pravice za %s"
 
 #: views.py:151
 msgid "Available permissions"
-msgstr ""
+msgstr "Razpoložljiva dovoljenja"
 
 #: views.py:152
 msgid "Granted permissions"
-msgstr ""
+msgstr "Dodeljena dovoljenja"
 
-#: views.py:207
+#: views.py:214
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Vloga »%(role)s«  dovoljenja za »%(object)s«"
 
-#: views.py:227
+#: views.py:234
 msgid "Disabled permissions are inherited from a parent object."
-msgstr ""
+msgstr "Onemogočena dovoljenja so podedovana od nadrejenega objekta."
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Vrsta objekta"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Vrsta predmeta, za katerega bo dostop spremenjen."
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "ID objekta"
 
 #: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Številčni identifikator predmeta, za katerega bo dostop spremenjen."
 
 #: workflow_actions.py:42
 msgid "Roles"
@@ -156,17 +157,17 @@ msgstr "Vloge"
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Vloge, katerih dostop bo spremenjen."
 
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Dovoljenja za odobritev/preklic v/iz vlog za zgoraj izbrani objekt."
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "Dovoli dostop"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr ""
+msgstr "Prekliči dostop"

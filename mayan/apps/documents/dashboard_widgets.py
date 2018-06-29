@@ -6,6 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.classes import DashboardWidget
 
+from .icons import (
+    icon_dashboard_documents_in_trash, icon_dashboard_document_types,
+    icon_dashboard_pages_per_month, icon_dashboard_new_documents_this_month,
+    icon_dashboard_total_document
+)
 from .statistics import (
     new_document_pages_this_month, new_documents_this_month,
 )
@@ -33,7 +38,8 @@ def get_deleted_documents_queryset():
 
 
 widget_pages_per_month = DashboardWidget(
-    func=new_document_pages_this_month, icon='fa fa-calendar',
+    func=new_document_pages_this_month,
+    icon_class=icon_dashboard_pages_per_month,
     label=_('New pages this month'),
     link=reverse_lazy(
         'statistics:statistic_detail',
@@ -42,7 +48,8 @@ widget_pages_per_month = DashboardWidget(
 )
 
 widget_new_documents_this_month = DashboardWidget(
-    func=new_documents_this_month, icon='fa fa-calendar',
+    func=new_documents_this_month,
+    icon_class=icon_dashboard_new_documents_this_month,
     label=_('New documents this month'),
     link=reverse_lazy(
         'statistics:statistic_detail',
@@ -51,21 +58,24 @@ widget_new_documents_this_month = DashboardWidget(
 )
 
 widget_total_documents = DashboardWidget(
-    icon='fa fa-file', queryset=get_total_documents_queryset,
+    icon_class=icon_dashboard_total_document,
+    queryset=get_total_documents_queryset,
     label=_('Total documents'),
     link=reverse_lazy('documents:document_list')
 )
 
 
 widget_document_types = DashboardWidget(
-    icon='fa fa-book', queryset=get_document_types_queryset,
+    icon_class=icon_dashboard_document_types,
+    queryset=get_document_types_queryset,
     label=_('Document types'),
     link=reverse_lazy('documents:document_type_list')
 )
 
 
 widget_documents_in_trash = DashboardWidget(
-    icon='fa fa-trash', queryset=get_deleted_documents_queryset,
+    icon_class=icon_dashboard_documents_in_trash,
+    queryset=get_deleted_documents_queryset,
     label=_('Documents in trash'),
     link=reverse_lazy('documents:document_list_deleted')
 )

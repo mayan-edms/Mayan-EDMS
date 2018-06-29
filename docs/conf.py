@@ -33,7 +33,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "_ext"))
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 #extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 #extensions = ["djangodocs", "sphinx.ext.intersphinx"]
-extensions = ['djangodocs', 'sphinxcontrib.blockdiag']
+extensions = ['sphinxcontrib.blockdiag']
 
 blockdiag_antialias = True
 blockdiag_html_image_format = "SVG"
@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = mayan.__title__
-copyright = mayan.__copyright__
+copyright = mayan.__copyright_short__
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -179,6 +179,9 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'MayanEDMSdoc'
 
+html_show_sourcelink = False
+
+html_show_sphinx = False
 
 # -- Options for LaTeX output --------------------------------------------------
 
@@ -224,28 +227,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'mayanedms', 'Mayan EDMS Documentation',
+    ('index', 'mayanedms', '{} Documentation'.format(mayan.__title__),
      [mayan.__author__], 1)
 ]
 
-
-# -- Custom options
-import alabaster
-
-html_theme_path = [alabaster.get_path()]
-extensions.append('alabaster')
-html_theme = 'alabaster'
-html_sidebars = {
-    '**': [
-        'about.html', 'donate.html', 'navigation.html', 'searchbox.html',
-    ]
-}
-html_theme_options = {
-    'description': mayan.__description__,
-    'github_button': False,
-    'travis_button': False,
-    'gratipay_user': 'rosarior',
-    'github_banner': False,
-}
-
-html_logo = '_static/logo_pyramid_only.png'
+html_theme = 'sphinx_rtd_theme'

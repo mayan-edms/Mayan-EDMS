@@ -1,0 +1,21 @@
+<a
+    class="fancybox"
+    {% if disable_title_link %}
+        data-caption="{{ instance }}"
+    {% else %}
+        data-caption="<a class='a-caption' href='{{ instance.get_absolute_url }}'>{{ instance }} <i class='fa fa-external-link-alt'></i></a>"
+    {% endif %}
+    href="{{ instance.get_api_image_url }}?width={{ size_preview_width }}&height={{ size_preview_height }}"
+    data-type="image"
+    {% if gallery_name %}data-fancybox="{{ gallery_name }}"{% endif %}
+>
+    {% with 'lazy-load thin_border-thumbnail' as image_classes %}
+    {% with '200px' as image_max_height %}
+    {% with size_thumbnail_width as image_width %}
+    {% with size_thumbnail_height as image_height %}
+        {% include 'documents/forms/widgets/document_page_image.html' %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+</a>

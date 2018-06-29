@@ -2,9 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from . import *  # NOQA
 
-# Update this accordingly;
-# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*']
+CELERY_ALWAYS_EAGER = False
 
 TEMPLATES[0]['OPTIONS']['loaders'] = (
     (
@@ -14,5 +12,3 @@ TEMPLATES[0]['OPTIONS']['loaders'] = (
         )
     ),
 )
-
-CELERY_ALWAYS_EAGER = False

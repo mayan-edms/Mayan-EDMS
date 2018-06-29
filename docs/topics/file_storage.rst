@@ -9,6 +9,7 @@ without extension, and stored in a simple flat arrangement in a directory.
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
       file [ label = 'mayan_1-1.pdf', width=120];
       document [ label = 'mayan/media/document_storage/ab6c1cfe-8a8f-4a30-96c9-f54f606b9248', width=450];
       file -> document [label = "upload"];

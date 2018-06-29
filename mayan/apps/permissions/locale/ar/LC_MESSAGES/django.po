@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-08-03 06:00+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:23 models.py:46 models.py:78 permissions.py:7
+#: apps.py:32 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
 msgstr "الصلاحيات"
 
@@ -26,35 +26,35 @@ msgstr "الصلاحيات"
 msgid "Insufficient permissions."
 msgstr "صلاحيات غير كافية."
 
-#: links.py:14
-msgid "Grant"
-msgstr "منح"
-
-#: links.py:18
-msgid "Revoke"
-msgstr "سحب"
-
-#: links.py:22
-msgid "Create new role"
-msgstr ""
-
-#: links.py:26
-msgid "Delete"
-msgstr ""
-
-#: links.py:30
-msgid "Edit"
-msgstr "تحرير"
-
-#: links.py:35 models.py:99 views.py:137
+#: links.py:15 links.py:40 models.py:89 views.py:188
 msgid "Roles"
 msgstr "Roles"
 
-#: links.py:38
-msgid "Members"
+#: links.py:19
+msgid "Grant"
+msgstr "منح"
+
+#: links.py:23
+msgid "Revoke"
+msgstr "سحب"
+
+#: links.py:27
+msgid "Create new role"
 msgstr ""
 
-#: links.py:43
+#: links.py:31
+msgid "Delete"
+msgstr ""
+
+#: links.py:35
+msgid "Edit"
+msgstr "تحرير"
+
+#: links.py:43 models.py:81
+msgid "Groups"
+msgstr "مجموعات"
+
+#: links.py:48
 msgid "Role permissions"
 msgstr ""
 
@@ -66,19 +66,15 @@ msgstr ""
 msgid "Name"
 msgstr "اسم"
 
-#: models.py:45
+#: models.py:27
 msgid "Permission"
 msgstr ""
 
-#: models.py:75 search.py:16
+#: models.py:74 search.py:16
 msgid "Label"
 msgstr ""
 
-#: models.py:81
-msgid "Groups"
-msgstr "مجموعات"
-
-#: models.py:98
+#: models.py:88
 msgid "Role"
 msgstr ""
 
@@ -125,28 +121,41 @@ msgstr ""
 msgid "No such permission: %s"
 msgstr ""
 
-#: views.py:46
+#: views.py:29
+msgid "Available roles"
+msgstr ""
+
+#: views.py:30
+msgid "Group roles"
+msgstr ""
+
+#: views.py:40
+#, python-format
+msgid "Roles of group: %s"
+msgstr ""
+
+#: views.py:82
 msgid "Available groups"
 msgstr ""
 
-#: views.py:47
+#: views.py:83
 msgid "Role groups"
 msgstr ""
 
-#: views.py:57
+#: views.py:93
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:80
+#: views.py:116
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:81
+#: views.py:117
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:94
+#: views.py:157
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""

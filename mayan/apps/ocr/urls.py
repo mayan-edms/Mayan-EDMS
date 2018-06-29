@@ -8,8 +8,8 @@ from .api_views import (
 )
 from .views import (
     DocumentOCRContent, DocumentOCRDownloadView, DocumentOCRErrorsListView,
-    DocumentSubmitView, DocumentSubmitManyView, DocumentTypeSettingsEditView,
-    DocumentTypeSubmitView, EntryListView
+    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView,
+    EntryListView
 )
 
 urlpatterns = [
@@ -26,7 +26,7 @@ urlpatterns = [
         name='document_type_submit'
     ),
     url(
-        r'^document/multiple/submit/$', DocumentSubmitManyView.as_view(),
+        r'^document/multiple/submit/$', DocumentSubmitView.as_view(),
         name='document_submit_multiple'
     ),
     url(
@@ -47,17 +47,17 @@ urlpatterns = [
 
 api_urls = [
     url(
-        r'^document/(?P<pk>\d+)/submit/$', APIDocumentOCRView.as_view(),
+        r'^documents/(?P<pk>\d+)/submit/$', APIDocumentOCRView.as_view(),
         name='document-ocr-submit-view'
     ),
     url(
-        r'^document_version/(?P<pk>\d+)/submit/$',
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/ocr/$',
         APIDocumentVersionOCRView.as_view(),
         name='document-version-ocr-submit-view'
     ),
     url(
-        r'^page/(?P<pk>\d+)/content/$',
+        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$',
         APIDocumentPageOCRContentView.as_view(),
-        name='document-page-content-view'
+        name='document-page-ocr-content-view'
     ),
 ]

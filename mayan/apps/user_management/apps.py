@@ -4,12 +4,14 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
+from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
 from common.widgets import two_state_template
 from metadata import MetadataLookup
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 from rest_api.fields import DynamicSerializerField
 
 from .links import (
@@ -18,6 +20,11 @@ from .links import (
     link_user_edit, link_user_groups, link_user_list,
     link_user_multiple_delete, link_user_multiple_set_password,
     link_user_set_password, link_user_setup
+)
+from .permissions import (
+    permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_delete, permission_user_edit,
+    permission_user_view
 )
 from .search import *  # NOQA
 
@@ -38,6 +45,7 @@ def get_users():
 
 class UserManagementApp(MayanAppConfig):
     app_url = 'accounts'
+    has_rest_api = True
     has_tests = True
     name = 'user_management'
     verbose_name = _('User management')
@@ -49,7 +57,6 @@ class UserManagementApp(MayanAppConfig):
         Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()
 
-        APIEndPoint(app=self, version_string='1')
         DynamicSerializerField.add_serializer(
             klass=get_user_model(),
             serializer_class='user_management.serializers.UserSerializer'
@@ -63,9 +70,22 @@ class UserManagementApp(MayanAppConfig):
             description=_('All the users.'), name='users',
             value=get_users
         )
-
+        ModelPermission.register(
+            model=Group, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_group_delete, permission_group_edit,
+                permission_group_view,
+            )
+        )
+        ModelPermission.register(
+            model=User, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_user_delete, permission_user_edit,
+                permission_user_view
+            )
+        )
         SourceColumn(
-            source=Group, label=_('Members'), attribute='user_set.count'
+            source=Group, label=_('Users'), attribute='user_set.count'
         )
 
         SourceColumn(
@@ -92,21 +112,23 @@ class UserManagementApp(MayanAppConfig):
             sources=('user_management:user_list',)
         )
         menu_object.bind_links(
-            links=(link_group_edit, link_group_members, link_group_delete),
+            links=(link_group_edit, link_group_members,),
             sources=(Group,)
+        )
+        menu_object.bind_links(
+            links=(link_acl_list, link_group_delete,), position=99, sources=(Group,)
         )
         menu_object.bind_links(
             links=(
                 link_user_edit, link_user_set_password, link_user_groups,
-                link_user_delete
+                link_acl_list, link_user_delete
             ), sources=(User,)
         )
         menu_secondary.bind_links(
             links=(link_group_list, link_group_add), sources=(
                 'user_management:group_multiple_delete',
-                'user_management:group_delete', 'user_management:group_edit',
                 'user_management:group_list', 'user_management:group_add',
-                'user_management:group_members'
+                Group
             )
         )
         menu_secondary.bind_links(

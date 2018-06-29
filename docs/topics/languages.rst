@@ -4,10 +4,10 @@ Languages
 
 The list of languages choices in the language dropdown used for documents is
 based on the current ISO 639 list. This list can be quite extensive. To reduce
-the number of languages available use the settings ``DOCUMENTS_LANGUAGE_CHOICES``,
+the number of languages available use the settings ``DOCUMENTS_LANGUAGE_CODES``,
 and set it to a nested list of abbreviations + languages names like::
 
-    DOCUMENTS_LANGUAGE_CHOICES = (('eng', 'English'), ('spa', 'Spanish'))
+    DOCUMENTS_LANGUAGE_CODES = ('eng', 'spa')
 
 
 The default language to appear on the dropdown can also be configured using::

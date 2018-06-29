@@ -11,11 +11,13 @@ system-wide.
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
+
       document [ label = 'Document' ];
       role [ label = 'Role' ];
       permission [ label = 'Permission' ];
 
-       role -> document <- permission;
+       role -> permission -> document;
    }
 
 Example:
@@ -23,11 +25,13 @@ Example:
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
+
       document [ label = '2015 Payroll report.txt', width=200 ];
       role [ label = 'Accountants' ];
       permission [ label = 'View document' ];
 
-      role -> document <- permission;
+      role -> permission -> document;
    }
 
 In this scenario only users in groups belonging to the ``Accountants`` role
@@ -43,11 +47,14 @@ permission for all documents of that type.
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
       document_type [ label = 'Document type' ];
       role [ label = 'Role' ];
       permission [ label = 'Permission' ];
+      documents [shape = "note", stacked];
 
-       role -> document_type <- permission;
+       role ->  permission -> document_type ;
+       document_type -> documents [folded, label = "inherit" ];
    }
 
 Example:
@@ -55,11 +62,14 @@ Example:
 .. blockdiag::
 
    blockdiag {
+      default_shape = roundedbox
       document_type [ label = 'Payroll reports', width=200 ];
       role [ label = 'Accountants' ];
       permission [ label = 'View document' ];
+      documents [shape = "note", stacked, label="payroll_report*.pdf" ];
 
-      role -> document_type <- permission;
+      role -> permission -> document_type ;
+       document_type -> documents [folded, label = "inherit" ];
    }
 
 The role ``Accountants`` is given the permission ``document view`` for the

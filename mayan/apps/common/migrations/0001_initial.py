@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 import common.models
-import storage.backends.filebasedstorage
 
 
 class Migration(migrations.Migration):
@@ -77,7 +78,7 @@ class Migration(migrations.Migration):
                 (
                     'file', models.FileField(
                         upload_to=common.models.upload_to,
-                        storage=storage.backends.filebasedstorage.FileBasedStorage(),
+                        storage=FileSystemStorage(),
                         verbose_name='File'
                     )
                 ),

@@ -1,3 +1,184 @@
+3.0 (2018-06-29)
+================
+- Rename the role groups link label from "Members" to "Groups".
+- Rename the group users link label from "Members" to "Users".
+- Don't show full document version label in the heading of the document
+  version list view.
+- Show the number of pages of a document and of document versions in
+  the document list view and document versions list views respectively.
+- Display a document version's thumbnail before other attributes.
+- User Django's provided form for setting an users password.
+  This change allows displaying the current password policies
+  and validation.
+- Add method to modify a group's role membership from the group's
+  view.
+- Rename the group user count column label from "Members" to "Users".
+- Backport support for global and object event notification.
+  GitLab issue #262.
+- Remove Vagrant section of the document. Anything related to
+  Vagrant has been move into its own repository at:
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant
+- Add view to show list of events performed by an user.
+- Allow filtering an event list by clicking on the user column.
+- Display a proper message in the document type metadata type relationship
+  view when there are no metadata types exist.
+- Require the document view permission to view trashed documents.
+- Make the multi object form perform an auto submit when the value is changed.
+- Improved styling and interaction of the multiple object action form.
+- Add checkbox to allow selecting all item in the item list view.
+- Revise and improve permission requirements for the documents app API.
+- Downloading a document version now requires the document download permission
+  instead of just the document view permission.
+- Creating a new document no longer works by having the document create
+  permission in a global manner. It is now possible to create a document via
+  the API by having the document permission for a specific document type.
+- Viewing the version list of a document now required the document version
+  view permission instead of the document view permission.
+- Not having the document version view permission for a document will not
+  return a 403 error. Instead a blank response will be returned.
+- Reverting a document via API will new require the document version revert
+  permission instead of the document edit permission.
+- Fix permission filtering when performing document page searching.
+- Fix cabinet detail view pagination.
+- Update project to work with Django 1.11.11.
+- Fix deprecations in preparation for Django 2.0.
+- Improve permission handling in the workflow app.
+- The checkedout detail view permission is now required for the checked out document detail API view.
+- Switch to a resource and service based API from previous app based one.
+- Add missing services for the checkout API.
+- Fix existing checkout APIs.
+- Update API vies and serializers for the latest Django REST framework version. Replace DRF Swagger with DRF-YASG.
+- Update to the latest version of Pillow, django-activity-stream, django-compressor, django-cors-headers,
+  django-formtools, django-qsstats-magic, django-stronghold, django-suit, furl, graphviz, pyocr,
+  python-dateutil, python-magic, pytz, sh.
+- Update to the latest version the packages for building, development, documentation and testing.
+- Add statistics script to produce a report of the views, APIs and test for each app.
+- Merge base64 filename patch from Cornelius Ludmann.
+- SearchModel retrun interface changed. The class no longer returns the result_set value. Use the queryset returned instead.
+- Update to Font Awesome 5.
+- Turn Mayan EDMS into a single page app.
+- Split base.js into mayan_app.js, mayan_image.js, partial_navigation.js.
+- Add a HOME_VIEW setting. Use it for the default view to be loaded.
+- Fix bug in document page view. Was storing the URL and the querystring as a single url variable.
+- Use history.back instead of history.go(-1).
+- Don't use the previous variable when canceling a form action. Form now use only javascript's history.back().
+- Add template and modal to display server side errors.
+- Remove the unused scrollable_content internal feature.
+- Remove unused animate.css package.
+- Add page loading indicator.
+- Add periodic AJAX workers to update the value of the notifications link.
+- Add notification count inside a badge on the notification link.
+- Add the MERC specifying javascript library usage.
+- Documents without at least a version are not scanned for duplicates.
+- Use a SHA256 hex digest of the secret key at the name of the lockfile. This makes the generation of the name repeatable while unique between installations.
+- Squashed apps migrations.
+- Convert document thumbnails, preview, image preview and staging files to template base widgets.
+- Unify all document widgets.
+- Display resolution settings are now specified as width and height and not a single resolution value.
+- Printed pages are now full width.
+- Move the invalid document markup to a separate HTML template.
+- Update to Fancybox 3.
+- Update to jQuery 3.3.1
+- Move transfomations to their own module.
+- Split documents.tests.test_views into base.py, test_deleted_document_views.py,
+  test_document_page_views.py, test_document_type_views.py, test_document_version_views.py,
+  test_document_views.py, test_duplicated_document_views.py
+- Sort smart links by label.
+- Rename the internal name of the document type permissions namespace. Existing permissions will need to be updated.
+- Add support for OR type searches. Use the "OR" string between the terms. Example: term1 OR term2.
+- Removed redundant permissions checks.
+- Move the page count display to the top of the image.
+- Unify the way to gather the project's metadata. Use mayan.__XX__ and a new common tag named {% project_information '' %}
+- Return to the same source view after uploading a document.
+- Add new WizardStep class to decouple the wizard step configuration.
+- Add support for deregister upload wizard steps.
+- Add wizard step to insert the document being uploaded to a cabinet.
+- Fix documentation formatting.
+- Add upload wizard step chapte.
+- Improve and add additional diagrams.
+- Change documenation theme to rtd.
+- Fix carousel item height issues.
+- Add the "to=" keyword argument to all ForeignKey, ManayToMany and OneToOne Fields.
+- Add Makefile target to check the format of the README.rst file.
+- Mark the feature to detect and fix the orientatin of PDF as experimental.
+- Don't show documents with 0 duplicates in the duplicated document list.
+- Clean up the duplicated document model after a document is deleted.
+- Add support for roles ACLs.
+- Add support for users ACLs.
+- Add support for groups ACLs.
+- Sort permission namespaces and permissions in the role permission views.
+- Invert the columns in the ACL detail view.
+- Fix issue #454. Thanks to Andrei Korostelev @kindkaktus for the issue and the
+  solution.
+- Update the role permission edit view require the permission grant or permission
+  revoke permissions for the selected role.
+- Only show the new document link if the user has access to create documents of
+  at least one document type. GitLab Issue #302. Thanks to kg @kgraves.
+- Support passing arguments to the document, document cache and document signatures
+  storage backends. New settings: DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, SIGNATURES_STORAGE_BACKEND_ARGUMENTS
+- Remove the setting STORAGE_FILESTORAGE_LOCATION. Document storage
+  location for the storage.backend.filebasedstorage.FileBasedStorage
+  backdend must now passed via the DOCUMENTS_STORAGE_BACKEND_ARGUMENTS,
+  DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS, or
+  SIGNATURES_STORAGE_BACKEND_ARGUMENTS if the backend is used to documents,
+  the document image cache and/or document signatures. Use
+  DOCUMENTS_STORAGE_BACKEND_ARGUMENTS = '{ location: <specific_path> }'
+  If no path is specified the backend will default to
+  'mayan/media/document_storage'.
+- Standardize the way storages are used. All apps that use storage now define
+  their storages in the .storages modules instead of the .runtime module.
+  The storage.backends.filebasedstorage.FileBasedStorage has been remove,
+  instead Django's default storage is used and each app is responsible
+  of specifying their default path.
+- Unify checkbox selection code for list items and table items.
+- Add smart checkbox manager.
+- Update Chart.js version.
+- Improve line chart appearance. Fix mouse hover label issue.
+- Add JavaScript dependency manager.
+- Add support for passing arguments to the OCR backend.
+- Fix issue when using workflows transitions with the new version
+  upload event as trigger. Thanks to Sema @Miggaten for the find and
+  the solution.
+- Removing running workflow instances in document of a specific type if
+  that document type is removed from the workflow.
+- Make error messages persistent and increase the timeout of warning to 10 seconds.
+- Improve rendering of the details form.
+- Update rendering of the readonly multiselect widget to conform to Django's updated field class interface.
+- Add warning when using SQLite as the database backend.
+- Use Mailgun's flanker library to process the email sources.
+- Add locking for interval sources. This reduces the chance of repeated documents from long running email downloads.
+- Add the option to enable or disable parsing when uploading a document for each document type.
+- Add a new setting option to enable automatic parsing for each new document type created.
+- Add support for HTML bodies to the user mailers.
+- Production ALLOWED_HOSTS settings now defaults to a safer ['127.0.0.1', 'localhost', '[::1]']
+- Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
+- New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER, MAYAN_CELERY_RESULT_BACKEND,
+  MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE, MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME,
+  MAYAN_DATABASE_USER, MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
+  MAYAN_DEBUG.
+- Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to ['127.0.0.1', 'localhost', '[::1]'].
+- New initialization command. Creates media/system and populates the SECRET_KEY and VERSION files.
+- Sane scanner source paper source now defaults to blank.
+- Merge Docker image creation back into the main repository.
+- Docker image now uses gunicorn and whitenoise instead of NGINX to server the app and
+  the static media.
+- All installation artifact are now created and read from the media folder.
+- Debian is now the Linux distribution used for the Docker image.
+- Most Docker Celery workers are now execute using a lower OS priority number.
+- Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of errors in production. Defaults to False.
+- Change the error log file handle class to RotatingFileHandle to avoid an indefinitely growing log file.
+- Disable embedded signatute verification during the perform upgrade command.
+- Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the new DOCUMENTS_LANGUAGE_CODES.
+- Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
+- Fix typo on message.header get from 'Suject' to 'Subject'.
+- On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
+- Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
+  if supported.
+- Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
+- Recalculate a document's indexes when attaching or removing a tag from or to it.
+- Recalculate all of a tag's documents when a tag is about to be deleted.
+
 2.7.3 (2017-09-11)
 ==================
 - Fix task manager queue list view. Thanks to LeVon Smoker for

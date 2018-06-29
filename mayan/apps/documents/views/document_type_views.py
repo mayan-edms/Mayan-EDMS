@@ -180,7 +180,7 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
 
 
 class DocumentTypeFilenameListView(SingleObjectListView):
-    model = DocumentType
+    access_object_retrieve_method = 'get_document_type'
     object_permission = permission_document_type_view
 
     def get_document_type(self):

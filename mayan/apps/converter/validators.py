@@ -12,7 +12,6 @@ class YAMLValidator(object):
     """
     Validates that the input is YAML compliant.
     """
-
     def __call__(self, value):
         value = value.strip()
         try:

@@ -38,8 +38,14 @@ setting_paginate_by = namespace.add_setting(
 )
 setting_shared_storage = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE',
-    default='storage.backends.filebasedstorage.FileBasedStorage',
+    default='django.core.files.storage.FileSystemStorage',
     help_text=_('A storage backend that all workers can use to share files.')
+)
+setting_shared_storage_arguments = namespace.add_setting(
+    global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'shared_files')
+    )
 )
 setting_temporary_directory = namespace.add_setting(
     global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
@@ -49,9 +55,17 @@ setting_temporary_directory = namespace.add_setting(
     ),
     is_path=True
 )
+setting_production_error_logging = namespace.add_setting(
+    global_name='COMMON_PRODUCTION_ERROR_LOGGING',
+    default=False,
+    help_text=_(
+        'Enable error logging outside of the system error logging '
+        'capabilities.'
+    )
+)
 setting_production_error_log_path = namespace.add_setting(
     global_name='COMMON_PRODUCTION_ERROR_LOG_PATH',
-    default=os.path.join(settings.BASE_DIR, 'error.log'), help_text=_(
+    default=os.path.join(settings.MEDIA_ROOT, 'error.log'), help_text=_(
         'Path to the logfile that will track errors during production.'
     ),
     is_path=True

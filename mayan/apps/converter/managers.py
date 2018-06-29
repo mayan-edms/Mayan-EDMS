@@ -7,12 +7,20 @@ import yaml
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 
-from .classes import BaseTransformation
+from .transformations import BaseTransformation
 
 logger = logging.getLogger(__name__)
 
 
 class TransformationManager(models.Manager):
+    def add_for_model(self, obj, transformation, arguments=None):
+        content_type = ContentType.objects.get_for_model(obj)
+
+        self.create(
+            content_type=content_type, object_id=obj.pk,
+            name=transformation.name, arguments=arguments
+        )
+
     def copy(self, source, targets):
         """
         Copy transformation from source to all targets
@@ -57,7 +65,6 @@ class TransformationManager(models.Manager):
         as_classes == True returns the transformation classes from .classes
         ready to be feed to the converter class
         """
-
         content_type = ContentType.objects.get_for_model(obj)
 
         transformations = self.filter(
@@ -102,11 +109,3 @@ class TransformationManager(models.Manager):
             return result
         else:
             return transformations
-
-    def add_for_model(self, obj, transformation, arguments=None):
-        content_type = ContentType.objects.get_for_model(obj)
-
-        self.create(
-            content_type=content_type, object_id=obj.pk,
-            name=transformation.name, arguments=arguments
-        )

@@ -41,7 +41,7 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..settings import setting_print_size
+from ..settings import setting_print_width, setting_print_height
 from ..tasks import task_delete_document, task_update_page_count
 from ..utils import parse_range
 
@@ -717,46 +717,8 @@ class DocumentTransformationsCloneView(FormView):
 class DocumentPrint(FormView):
     form_class = DocumentPrintForm
 
-    def form_valid(self, form):
+    def dispatch(self, request, *args, **kwargs):
         instance = self.get_object()
-
-        if form.cleaned_data['page_group'] == PAGE_RANGE_RANGE:
-            page_range = form.cleaned_data['page_range']
-
-            if page_range:
-                page_range = parse_range(page_range)
-                pages = instance.pages.filter(page_number__in=page_range)
-            else:
-                pages = instance.pages.all()
-        else:
-            pages = instance.pages.all()
-
-        context = self.get_context_data()
-
-        context.update(
-            {
-                'appearance_type': 'plain',
-                'pages': pages,
-                'size': setting_print_size.value,
-            }
-        )
-
-        return self.render_to_response(context=context)
-
-    def get_extra_context(self):
-        instance = self.get_object()
-
-        context = {
-            'object': instance,
-            'submit_label': _('Submit'),
-            'title': _('Print: %s') % instance,
-        }
-
-        return context
-
-    def get_object(self):
-        instance = get_object_or_404(Document, pk=self.kwargs['pk'])
-
         AccessControlList.objects.check_access(
             permissions=permission_document_print, user=self.request.user,
             obj=instance
@@ -764,10 +726,59 @@ class DocumentPrint(FormView):
 
         instance.add_as_recent_document_for_user(self.request.user)
 
-        return instance
+        self.page_group = self.request.GET.get('page_group')
+        self.page_range = self.request.GET.get('page_range')
+        return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if not self.page_group and not self.page_range:
+            return super(DocumentPrint, self).get(request, *args, **kwargs)
+        else:
+            instance = self.get_object()
+
+            if self.page_group == PAGE_RANGE_RANGE:
+                if self.page_range:
+                    page_range = parse_range(self.page_range)
+                    pages = instance.pages.filter(page_number__in=page_range)
+                else:
+                    pages = instance.pages.all()
+            else:
+                pages = instance.pages.all()
+
+            context = self.get_context_data()
+
+            context.update(
+                {
+                    'appearance_type': 'plain',
+                    'pages': pages,
+                    'width': setting_print_width.value,
+                    'height': setting_print_height.value,
+                }
+            )
+
+            return self.render_to_response(context=context)
+
+    def get_extra_context(self):
+        instance = self.get_object()
+
+        context = {
+            'form_action': reverse(
+                'documents:document_print', args=(instance.pk,)
+            ),
+            'object': instance,
+            'submit_label': _('Submit'),
+            'submit_method': 'GET',
+            'submit_target': '_blank',
+            'title': _('Print: %s') % instance,
+        }
+
+        return context
+
+    def get_object(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_template_names(self):
-        if self.request.method == 'POST':
+        if self.page_group or self.page_range:
             return ('documents/document_print.html',)
         else:
             return (self.template_name,)
@@ -775,11 +786,7 @@ class DocumentPrint(FormView):
 
 class DuplicatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return Document.objects.filter(
-            pk__in=DuplicatedDocument.objects.values_list(
-                'document_id', flat=True
-            )
-        )
+        return DuplicatedDocument.objects.get_duplicated_documents()
 
     def get_extra_context(self):
         context = super(DuplicatedDocumentListView, self).get_extra_context()

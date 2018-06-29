@@ -35,7 +35,7 @@ api_urls = [
         name='search-view'
     ),
     url(
-        r'^advanced/(?P<search_model>[\.\w]+)/$', APIAdvancedSearchView.as_view(),
+        r'^search/advanced/(?P<search_model>[\.\w]+)/$', APIAdvancedSearchView.as_view(),
         name='advanced-search-view'
     ),
 ]

@@ -13,14 +13,12 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar
 )
-from common.classes import ModelAttribute, Filter
+from common.classes import ModelAttribute
 from common.widgets import two_state_template
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
-from documents.permissions import permission_document_view
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .classes import DocumentMetadataHelper
 from .handlers import (
@@ -38,8 +36,11 @@ from .links import (
 )
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
-    permission_metadata_document_remove, permission_metadata_document_view
+    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_metadata_type_delete, permission_metadata_type_edit,
+    permission_metadata_type_view
 )
+
 from .queues import *  # NOQA
 from .search import metadata_type_search  # NOQA
 from .widgets import get_metadata_string
@@ -48,12 +49,15 @@ logger = logging.getLogger(__name__)
 
 
 class MetadataApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'metadata'
     verbose_name = _('Metadata')
 
     def ready(self):
         super(MetadataApp, self).ready()
+
+        from .wizard_steps import WizardStepMetadata  # NOQA
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -70,44 +74,8 @@ class MetadataApp(MayanAppConfig):
         DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
         MetadataType = self.get_model('MetadataType')
 
-        APIEndPoint(app=self, version_string='2')
-
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor
-        )
-
-        Filter(
-            label=_('Documents missing required metadata'),
-            slug='documents-no-required-metadata',
-            filter_kwargs=[
-                {
-                    'document_type__metadata__required': True,
-                },
-                {
-                    'metadata__value__isnull': True
-                },
-                {
-                    'is_stub': False
-                }
-            ], model=Document, object_permission=permission_document_view,
-            hide_links=True
-        )
-
-        Filter(
-            label=_('Documents missing optional metadata'),
-            slug='documents-no-optional-metadata',
-            filter_kwargs=[
-                {
-                    'document_type__metadata__required': False,
-                },
-                {
-                    'metadata__value__isnull': True
-                },
-                {
-                    'is_stub': False
-                }
-            ], model=Document, object_permission=permission_document_view,
-            hide_links=True
         )
 
         ModelAttribute(
@@ -139,6 +107,13 @@ class MetadataApp(MayanAppConfig):
                 permission_metadata_document_edit,
                 permission_metadata_document_remove,
                 permission_metadata_document_view,
+            )
+        )
+        ModelPermission.register(
+            model=MetadataType, permissions=(
+                permission_metadata_type_delete,
+                permission_metadata_type_edit,
+                permission_metadata_type_view
             )
         )
 

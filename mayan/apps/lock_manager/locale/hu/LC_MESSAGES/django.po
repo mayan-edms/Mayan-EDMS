@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2017-08-04 13:01+0000\n"
+"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -34,10 +34,10 @@ msgstr "időtúllépés"
 msgid "Name"
 msgstr "Név"
 
-#: models.py:46
+#: models.py:26
 msgid "Lock"
 msgstr ""
 
-#: models.py:47
+#: models.py:27
 msgid "Locks"
 msgstr ""

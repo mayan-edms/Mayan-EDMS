@@ -20,12 +20,12 @@ from .search import cabinet_search  # NOQA
 @python_2_unicode_compatible
 class Cabinet(MPTTModel):
     parent = TreeForeignKey(
-        'self', blank=True, db_index=True, null=True,
-        on_delete=models.CASCADE, related_name='children'
+        blank=True, db_index=True, null=True, on_delete=models.CASCADE,
+        related_name='children', to='self'
     )
     label = models.CharField(max_length=128, verbose_name=_('Label'))
     documents = models.ManyToManyField(
-        Document, blank=True, related_name='cabinets',
+        blank=True, related_name='cabinets', to=Document,
         verbose_name=_('Documents')
     )
 

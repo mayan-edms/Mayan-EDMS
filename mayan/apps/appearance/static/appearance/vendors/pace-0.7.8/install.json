@@ -1,0 +1,136 @@
+{
+  "resources": {
+    "head": [
+      {
+        "type": "script",
+        "if": "options.advancedOptions.disableOnPushState",
+        "contents": "window.paceOptions = window.paceOptions || {}; window.paceOptions.restartOnPushState = false;"
+      },
+      {
+        "type": "script",
+        "if": "options.advancedOptions.disableOnAJAX",
+        "contents": "window.paceOptions = window.paceOptions || {}; window.paceOptions.restartOnRequestAfter = false;"
+      },
+      {
+        "type": "script",
+        "if": "options.hidePage",
+        "contents": "window.paceOptions = window.paceOptions || {}; window.paceOptions.hidePage = true;"
+      },
+
+      {
+        "type": "script",
+        "src": "./pace.js"
+      },
+      {
+        "type": "style",
+        "src": "./themes/{{ options.color }}/pace-theme-{{ options.theme }}.css"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "color": {
+        "order": 1,
+        "title": "Color",
+        "type": "string",
+        "enum": [
+          "black",
+          "white",
+          "silver",
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "pink",
+          "purple"
+        ],
+        "enumNames": {
+          "black": "Black",
+          "white": "White",
+          "silver": "Silver",
+          "red": "Red",
+          "orange": "Orange",
+          "yellow": "Yellow",
+          "green": "Green",
+          "blue": "Blue",
+          "pink": "Pink",
+          "purple": "Purple"
+        },
+        "default": "blue"
+      },
+      "theme": {
+        "order": 2,
+        "title": "Theme",
+        "type": "string",
+        "enum": [
+          "barber-shop",
+          "big-counter",
+          "bounce",
+          "center-atom",
+          "center-circle",
+          "center-radar",
+          "center-simple",
+          "corner-indicator",
+          "fill-left",
+          "flash",
+          "flat-top",
+          "loading-bar",
+          "mac-osx",
+          "minimal"
+        ],
+        "enumNames": {
+          "barber-shop": "Barber Shop",
+          "big-counter": "Big Counter",
+          "bounce": "Bounce",
+          "center-atom": "Center Atom",
+          "center-circle": "Center Circle",
+          "center-radar": "Center Radar",
+          "center-simple": "Center Simple",
+          "corner-indicator": "Corner Indicator",
+          "fill-left": "Fill Left",
+          "flash": "Flash",
+          "flat-top": "Flat Top",
+          "loading-bar": "Loading Bar",
+          "mac-osx": "Mac OS X",
+          "minimal": "Minimal"
+        },
+        "default": "barber-shop"
+      },
+      "hidePage": {
+        "order": 3,
+        "title": "Hide everything but PACE until the page has fully loaded",
+        "type": "boolean",
+        "default": false
+      },
+      "showAdvanced": {
+        "order": 3,
+        "title": "Show advanced options",
+        "type": "boolean",
+        "default": false
+      },
+      "advancedOptions": {
+        "order": 4,
+        "showIf": {
+          "showAdvanced": true
+        },
+        "notitle": true,
+        "type": "object",
+        "properties": {
+          "disableOnPushState": {
+            "order": 1,
+            "title": "Don’t restart the progress bar during <code class=\"inline\">pushState</code> navigations",
+            "type": "boolean",
+            "default": false
+          },
+          "disableOnAJAX": {
+            "order": 2,
+            "title": "Don’t restart the progress bar during long AJAX requests",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    }
+  }
+}

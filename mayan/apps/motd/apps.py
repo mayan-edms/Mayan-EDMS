@@ -4,19 +4,24 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls import ModelPermission
 from common import MayanAppConfig, menu_object, menu_secondary, menu_setup
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .links import (
     link_message_create, link_message_delete, link_message_edit,
     link_message_list
+)
+from .permissions import (
+    permission_message_delete, permission_message_edit,
+    permission_message_view
 )
 
 logger = logging.getLogger(__name__)
 
 
 class MOTDApp(MayanAppConfig):
+    has_rest_api = True
     has_tests = True
     name = 'motd'
     verbose_name = _('Message of the day')
@@ -24,10 +29,13 @@ class MOTDApp(MayanAppConfig):
     def ready(self):
         super(MOTDApp, self).ready()
 
-        APIEndPoint(app=self, version_string='1')
-
         Message = self.get_model('Message')
-
+        ModelPermission.register(
+            model=Message, permissions=(
+                permission_message_delete, permission_message_edit,
+                permission_message_view
+            )
+        )
         SourceColumn(
             source=Message, label=_('Enabled'), attribute='enabled'
         )

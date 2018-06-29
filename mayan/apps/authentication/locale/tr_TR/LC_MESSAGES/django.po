@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-07-30 19:10+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2017-09-22 21:28+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:17 settings.py:9
+#: apps.py:18 settings.py:9
 msgid "Authentication"
 msgstr "Doğrulama"
 
@@ -44,11 +44,11 @@ msgstr "Lütfen doğru bir e-posta ve şifre girin. Parola alanının büyük / 
 msgid "This account is inactive."
 msgstr "Bu hesap aktif değildir."
 
-#: links.py:13
+#: links.py:16
 msgid "Logout"
 msgstr "Çıkış"
 
-#: links.py:16
+#: links.py:20
 msgid "Change password"
 msgstr "Şifre değiştir"
 
@@ -64,10 +64,10 @@ msgid ""
 "logged in. Value is time in seconds."
 msgstr "Bir kullanıcının \"Beni hatırla\" onay kutusunu tıkladığı maksimum süre giriş olarak kalır. Değer saniye cinsindendir."
 
-#: views.py:59
+#: views.py:61
 msgid "Current user password change"
 msgstr "Geçerli kullanıcı şifre değişikliği"
 
-#: views.py:73
+#: views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Parolanız başarılı olarak değiştirildi."

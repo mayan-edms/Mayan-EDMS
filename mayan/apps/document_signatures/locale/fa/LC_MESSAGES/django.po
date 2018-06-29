@@ -3,43 +3,44 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:46-0400\n"
-"PO-Revision-Date: 2017-08-15 06:30+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-03-12 12:41+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:52 permissions.py:8 settings.py:7
+#: apps.py:48 permissions.py:8 settings.py:10
 msgid "Document signatures"
-msgstr "امضاهای سند"
+msgstr "امضا سند"
 
-#: apps.py:92
+#: apps.py:88
 msgid "Date"
 msgstr "تاریخ"
 
-#: apps.py:95 models.py:47
+#: apps.py:91 models.py:46
 msgid "Key ID"
-msgstr "شناسه کلید"
+msgstr "شناسه کلیدی"
 
-#: apps.py:99 forms.py:64 models.py:51
+#: apps.py:95 forms.py:64 models.py:50
 msgid "Signature ID"
-msgstr ""
+msgstr "شناسه امضا"
 
-#: apps.py:100 forms.py:76
+#: apps.py:96 forms.py:76
 msgid "None"
-msgstr "هیچ"
+msgstr "هیچ یک"
 
-#: apps.py:103
+#: apps.py:99
 msgid "Type"
-msgstr "نوع"
+msgstr "تایپ کنید"
 
 #: forms.py:21
 msgid "Key"
@@ -47,59 +48,59 @@ msgstr "کلید"
 
 #: forms.py:25
 msgid "Passphrase"
-msgstr ""
+msgstr "عبارت عبور"
 
 #: forms.py:46
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "امضا جاسازی شده است؟"
 
 #: forms.py:48
 msgid "Signature date"
-msgstr ""
+msgstr "تاریخ امضاء"
 
 #: forms.py:51
 msgid "Signature key ID"
-msgstr ""
+msgstr "شناسه کلید امضا"
 
 #: forms.py:53
 msgid "Signature key present?"
-msgstr ""
+msgstr "امضای کلیدی در حال حاضر"
 
 #: forms.py:66
 msgid "Key fingerprint"
-msgstr ""
+msgstr "اثر انگشت اصلی"
 
 #: forms.py:70
 msgid "Key creation date"
-msgstr ""
+msgstr "تاریخ ایجاد کلید"
 
 #: forms.py:75
 msgid "Key expiration date"
-msgstr ""
+msgstr "تاریخ انقضاء کلیدی"
 
 #: forms.py:80
 msgid "Key length"
-msgstr ""
+msgstr "طول کلید"
 
 #: forms.py:84
 msgid "Key algorithm"
-msgstr ""
+msgstr "الگوریتم کلیدی"
 
 #: forms.py:88
 msgid "Key user ID"
-msgstr ""
+msgstr "شناسه کلیدی"
 
 #: forms.py:92
 msgid "Key type"
-msgstr ""
+msgstr "نوع کلید"
 
 #: links.py:32
 msgid "Verify all documents"
-msgstr ""
+msgstr "همه اسناد را تأیید کنید"
 
 #: links.py:39 links.py:57 queues.py:8
 msgid "Signatures"
-msgstr "امضاها"
+msgstr "امضا"
 
 #: links.py:46
 msgid "Delete"
@@ -115,162 +116,162 @@ msgstr "دانلود"
 
 #: links.py:69
 msgid "Upload signature"
-msgstr "آپلود امضا"
+msgstr "امضا آپلود"
 
 #: links.py:75
 msgid "Sign detached"
-msgstr ""
+msgstr "مستقل نشوید"
 
 #: links.py:81
 msgid "Sign embedded"
-msgstr ""
+msgstr "ورودی جاسازی شده"
 
-#: models.py:41
+#: models.py:40
 msgid "Document version"
 msgstr "نسخه سند"
 
-#: models.py:45
+#: models.py:44
 msgid "Date signed"
-msgstr ""
+msgstr "تاریخ امضا شده"
 
-#: models.py:55
+#: models.py:54
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "اثر انگشت کلید عمومی"
+
+#: models.py:60
+msgid "Document version signature"
+msgstr "امضای نسخه اسناد"
 
 #: models.py:61
-msgid "Document version signature"
-msgstr "امضای نسخه سند"
-
-#: models.py:62
 msgid "Document version signatures"
-msgstr "امضاهای نسخه سند"
+msgstr "امضای سند نسخه"
 
-#: models.py:81
+#: models.py:80
 msgid "Detached"
-msgstr "جدا شده"
+msgstr "جدا"
 
-#: models.py:83
+#: models.py:82
 msgid "Embedded"
-msgstr "داخلی و یا جا سازی شده"
+msgstr "جاسازی شده"
+
+#: models.py:97
+msgid "Document version embedded signature"
+msgstr "نسخه سند embedded امضا"
 
 #: models.py:98
-msgid "Document version embedded signature"
-msgstr ""
-
-#: models.py:99
 msgid "Document version embedded signatures"
-msgstr ""
+msgstr "نسخه سند embedded امضا"
 
-#: models.py:132
+#: models.py:131
 msgid "Signature file"
 msgstr "فایل امضا"
 
-#: models.py:136
+#: models.py:138
 msgid "Document version detached signature"
-msgstr ""
+msgstr "نسخه سند امضای جداگانه"
 
-#: models.py:137
+#: models.py:139
 msgid "Document version detached signatures"
-msgstr ""
+msgstr "نسخه سند امضاهای جداگانه"
 
-#: models.py:140
+#: models.py:142
 msgid "signature"
-msgstr ""
+msgstr "امضا"
 
 #: permissions.py:13
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "اسناد را با امضاهای جداگانه امضا کنید"
 
 #: permissions.py:17
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "امضای اسناد با امضا های جاسازی شده"
 
 #: permissions.py:21
 msgid "Delete detached signatures"
-msgstr "حذف امضاهای جدا شده"
+msgstr "امضاهای جداگانه را حذف کنید"
 
 #: permissions.py:25
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "امضای سند جداگانه را دانلود کنید"
 
 #: permissions.py:29
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "امضای سند جداگانه را بارگیری کنید"
 
 #: permissions.py:33
 msgid "Verify document signatures"
-msgstr "بررسی امضای سند"
+msgstr "امضای سند را تأیید کنید"
 
 #: permissions.py:37
 msgid "View details of document signatures"
-msgstr ""
+msgstr "مشاهده جزئیات امضاء اسناد"
 
 #: queues.py:11
 msgid "Verify key signatures"
-msgstr ""
+msgstr "تأیید امضاهای کلیدی"
 
 #: queues.py:15
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "امضاهای کلیدی را تأیید نکنید"
 
 #: queues.py:19
 msgid "Verify document version"
-msgstr ""
+msgstr "نسخه سند را تایید کنید"
 
 #: queues.py:24
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "امضای جاسازی نشده را تأیید کنید"
 
 #: views.py:61 views.py:154
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "رمز عبور برای باز کردن قفل این کلید ضروری است."
 
 #: views.py:71 views.py:164
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "عبارت عبور اشتباه است"
 
 #: views.py:92 views.py:184
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "نسخه سند با موفقیت امضا شد"
 
 #: views.py:116
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr ""
+msgstr "نسخه سند \"%s\" را با امضای جداگانه وارد کنید"
 
 #: views.py:215
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr ""
+msgstr "نسخه سند \"%s\" را با امضای جاسازی شده وارد کنید"
 
 #: views.py:238
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "امضای جداگانه را حذف کنید: %s"
 
 #: views.py:259
 #, python-format
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "جزئیات برای امضا: %s"
 
 #: views.py:299
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "امضا برای نسخه سند: %s"
 
 #: views.py:328
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr ""
+msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
 
 #: views.py:345
 msgid "On large databases this operation may take some time to execute."
-msgstr "در پایگاه داده بزرگ این عملیات مدت زیادی بطول خواهد انجامید."
+msgstr "در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول بکشد."
 
 #: views.py:346
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "همه سند را برای امضاء تأیید کنید؟"
 
 #: views.py:356
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "تأیید امضا با موفقیت انجام شد."

@@ -23,13 +23,11 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
-            {% with document_list as object_list %}
-                {% if list_as_items %}
-                    {% include 'appearance/generic_list_items_subtemplate.html' %}
-                {% else %}
-                    {% include 'appearance/generic_list_subtemplate.html' %}
-                {% endif %}
-            {% endwith %}
+            {% if list_as_items %}
+                {% include 'appearance/generic_list_items_subtemplate.html' %}
+            {% else %}
+                {% include 'appearance/generic_list_subtemplate.html' %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
@@ -39,10 +37,11 @@
     <script>
         $(function () {
             var jstreeElement = $('.jstree');
+
             jstreeElement
-                .on("select_node.jstree", function (e, data) {
+                .on('select_node.jstree', function (e, data) {
                     if(data.selected.length) {
-                        window.location.href=data.instance.get_node(data.selected[0]).data.href;
+                        partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
                     }
                 })
                 .jstree({

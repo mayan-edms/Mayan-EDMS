@@ -22,14 +22,12 @@ class Lock(models.Model):
 
     objects = LockManager()
 
+    class Meta:
+        verbose_name = _('Lock')
+        verbose_name_plural = _('Locks')
+
     def __str__(self):
         return self.name
-
-    def save(self, *args, **kwargs):
-        if not self.timeout and not kwargs.get('timeout'):
-            self.timeout = setting_default_lock_timeout.value
-
-        super(Lock, self).save(*args, **kwargs)
 
     def release(self):
         try:
@@ -42,6 +40,8 @@ class Lock(models.Model):
         else:
             lock.delete()
 
-    class Meta:
-        verbose_name = _('Lock')
-        verbose_name_plural = _('Locks')
+    def save(self, *args, **kwargs):
+        if not self.timeout and not kwargs.get('timeout'):
+            self.timeout = setting_default_lock_timeout.value
+
+        super(Lock, self).save(*args, **kwargs)

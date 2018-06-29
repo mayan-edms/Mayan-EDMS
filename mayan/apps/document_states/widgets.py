@@ -25,8 +25,6 @@ def widget_workflow_diagram(workflow):
 
 class WorkflowImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
-        final_attrs = self.build_attrs(attrs)
-
         if value:
             output = []
             output.append(widget_workflow_diagram(value))

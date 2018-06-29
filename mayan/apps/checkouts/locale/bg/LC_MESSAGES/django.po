@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr ""
 
@@ -25,19 +25,19 @@ msgstr ""
 msgid "Checkedout documents"
 msgstr ""
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Автоматично регистрирани документи"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Докъментът е регистриран"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Документът е проверен."
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
 
@@ -73,15 +73,15 @@ msgstr "Да"
 msgid "No"
 msgstr "Не"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr ""
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr ""
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr ""
 
@@ -117,23 +117,23 @@ msgstr "Забранете качването на нова версия на т
 msgid "Block new version upload"
 msgstr ""
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr ""
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Проверка на документ"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr ""
 
-#: models.py:104
-msgid "New version block"
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
 #: models.py:105
+msgid "New version block"
+msgstr ""
+
+#: models.py:106
 msgid "New version blocks"
 msgstr ""
 
@@ -159,6 +159,10 @@ msgstr ""
 
 #: queues.py:12
 msgid "Check expired checkouts"
+msgstr ""
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
 msgstr ""
 
 #: views.py:53
@@ -219,6 +223,6 @@ msgstr "Грешка при регистрация на документ; %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Документ \"%s\" е регистриран успешно."
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr ""

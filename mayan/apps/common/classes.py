@@ -15,9 +15,10 @@ class Collection(object):
     def get_all(cls):
         return sorted(cls._registry, key=lambda entry: entry._order)
 
-    def __init__(self, label, icon=None, link=None, queryset=None, model=None, order=None):
+    def __init__(self, label, icon=None, icon_class=None, link=None, queryset=None, model=None, order=None):
         self._label = label
         self._icon = icon
+        self._icon_class = icon_class
         self._link = link
         self._queryset = queryset
         self._model = model
@@ -34,6 +35,7 @@ class Collection(object):
         self.url = None
         if self._link:
             self.icon = getattr(self._link, 'icon', self._icon)
+            self.icon_class = getattr(self._link, 'icon_class', self._icon_class)
             self.url = reverse(viewname=self._link.view, args=self._link.args)
         return ''
 
@@ -89,9 +91,10 @@ class DashboardWidget(object):
     def get_all(cls):
         return cls._registry
 
-    def __init__(self, label, func=None, icon=None, link=None, queryset=None, statistic_slug=None):
+    def __init__(self, label, func=None, icon=None, icon_class=None, link=None, queryset=None, statistic_slug=None):
         self.label = label
         self.icon = icon
+        self.icon_class = icon_class
         self.link = link
         self.queryset = queryset
         self.func = func
@@ -118,50 +121,6 @@ class ErrorLogNamespace(object):
         )
 
         return ErrorLogEntry.objects.filter(namespace=self.name)
-
-
-@python_2_unicode_compatible
-class Filter(object):
-    _registry = {}
-
-    @classmethod
-    def get(cls, slug):
-        return cls._registry[slug]
-
-    @classmethod
-    def all(cls):
-        return cls._registry
-
-    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
-        self.label = label
-        self.slug = slug
-        self.filter_kwargs = filter_kwargs
-        self.model = model
-        self.object_permission = object_permission
-        self.hide_links = hide_links
-
-        self.__class__._registry[self.slug] = self
-
-    def __str__(self):
-        return force_text(self.label)
-
-    def get_queryset(self, user):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        queryset = self.model.objects.all()
-        for kwargs in self.filter_kwargs:
-            queryset = queryset.filter(**kwargs)
-
-        queryset = queryset.distinct()
-
-        if self.object_permission:
-            return AccessControlList.objects.filter_by_access(
-                self.object_permission, user, queryset=queryset
-            )
-        else:
-            return queryset
 
 
 class MissingItem(object):

@@ -121,6 +121,8 @@ A the moment no, but it is something being considered.
 
 Not at the moment. When all the projects and libraries upon which Mayan is
 dependent support Python 3 then will the project move to fully support Python 3.
+Update 2018-06-04: Python 3 will be required from Django 2.0 onwards. As such
+this is now a bigger priority and the transition to Python 3 has begun.
 
 **Q: The watched folder feature is not working**
 

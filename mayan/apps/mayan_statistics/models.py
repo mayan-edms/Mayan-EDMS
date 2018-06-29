@@ -17,16 +17,16 @@ class StatisticResult(models.Model):
     )
     serialize_data = models.TextField(blank=True, verbose_name=_('Data'))
 
+    class Meta:
+        verbose_name = _('Statistics result')
+        verbose_name_plural = _('Statistics results')
+
+    def __str__(self):
+        return self.slug
+
     def get_data(self):
         return json.loads(self.serialize_data)
 
     def store_data(self, data):
         self.serialize_data = json.dumps(data)
         self.save()
-
-    def __str__(self):
-        return self.slug
-
-    class Meta:
-        verbose_name = _('Statistics result')
-        verbose_name_plural = _('Statistics results')

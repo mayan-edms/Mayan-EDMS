@@ -54,6 +54,12 @@ Whenever possible, but don't obsess over things like line length:
 
     $ flake8 --ignore=E501,E128,E122 |less
 
+To perform automatic PEP8 checks, install flake8's git hook using:
+
+.. code-block:: bash
+
+    $ flake8 --install-hook git
+
 Imports
 ~~~~~~~
 
@@ -245,55 +251,9 @@ Steps to deploy a development version
     $ ./manage.py runserver
 
 
-Setting up a development version using Vagrant
-----------------------------------------------
-Make sure you have Vagrant and a provider properly installed as per
-https://docs.vagrantup.com/v2/installation/index.html
-
-Start and provision a machine using:
-
-.. code-block:: bash
-
-    $ vagrant up development
-
-To launch a standalone development server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000
-
-To launch a development server with a celery worker and Redis as broker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ ./manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.celery_redis
-
-Then on a separate console launch a celery worker from the same provisioned Vagrant machine:
-
-.. code-block:: bash
-
-    $ vagrant ssh
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    $ vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
-
-
 Contributing changes
 --------------------
-Once your have created and committed some new code or feature, submit a Pull
-Request. Be sure to merge with the development branch before doing a Pull
-Request so that patches apply as cleanly as possible. If there are no conflicts,
-Merge Requests can be merged directly from the website UI otherwise a manual
-command line merge has to be done and your patches might take longer to get
-merged.
+Follow the latest contributing guidelines outlined here: https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md
 
 
 Debugging
@@ -366,7 +326,7 @@ first need to install the documentation editing dependencies with::
 Then, to build an HTML version of the documentation, run the following command
 from the **docs** directory::
 
-    $ make docs_serve
+    $ make docs-serve
 
 The generated documentation can be viewed by browsing to http://127.0.0.1:8000
 or by browsing to the ``docs/_build/html`` directory.
@@ -439,40 +399,52 @@ Release checklist
 
 1. Check for missing migrations::
 
-    $ ./manage.py makemigrations
+    make check-missing-migrations
 
 2. Synchronize translations::
 
-    $ make translations_pull
+    make translations-pull
 
 3. Compile translations::
 
-    $ make translations_compile
+    make translations-compile
 
 4. Write release notes.
 5. Update changelog.
-6. Update requirements version in `setup.py`
-7. Bump version in `mayan/__init__.py`
-8. Build source package and test::
+6. Scan the code with flake8 for simple style warnings.
+7. Check README.rst format with::
 
-    $ make test_sdist_via_docker_ubuntu
+    python setup.py check -r -s
 
-9. Build wheel package and test::
+or with::
 
-    $ make test_whell_via_docker_ubuntu
+    make check-readme
 
-10. Tag version::
+8. Bump version in `mayan/__init__.py` and in `docker/version`.
+9. Update requirements version in `setup.py` using::
 
-    $ git tag -a vX.Y.Z -m "Version X.Y.Z"
+    make generate-setup
 
-11. Push tag upstream::
+10. Build source package and test::
 
-    $ git push --tags
+     make test-sdist-via-docker-ubuntu
 
-12. Build and upload a test release::
+11. Build wheel package and test::
 
-    $ make release_test_via_docker_ubuntu
+     make test-wheel-via-docker-ubuntu
 
-13. Build and upload a final release::
+12. Tag version::
 
-    $ make release_via_docker_ubuntu
+     git tag -a vX.Y.Z -m "Version X.Y.Z"
+
+13. Push tag upstream::
+
+     git push --tags
+
+14. Build and upload a test release::
+
+     make release-test-via-docker-ubuntu
+
+15. Build and upload a final release::
+
+     make release-via-docker-ubuntu

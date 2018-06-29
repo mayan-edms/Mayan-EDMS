@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
@@ -82,7 +82,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Test creating a duplicate ACL entry: same object & role
         Result: Should redirect to existing ACL for object + role combination
         """
-
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role
         )
@@ -110,7 +109,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Test creating an ACL entry for an object with no model permissions.
         Result: Should display a blank permissions list (not optgroup)
         """
-
         self.login_user()
 
         self.role.permissions.add(

@@ -18,7 +18,6 @@ from common.permissions_runtime import permission_error_log_view
 from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
-from rest_api.classes import APIEndPoint
 
 from .classes import DocumentStateHelper, WorkflowAction
 from .handlers import (
@@ -52,14 +51,13 @@ from .widgets import widget_transition_events
 
 class DocumentStatesApp(MayanAppConfig):
     app_url = 'states'
+    has_rest_api = True
     has_tests = True
     name = 'document_states'
     verbose_name = _('Document states')
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
-
-        APIEndPoint(app=self, version_string='1')
 
         Action = apps.get_model(
             app_label='actstream', model_name='Action'
@@ -106,6 +104,9 @@ class DocumentStatesApp(MayanAppConfig):
             ), type_name=['property', 'indexing']
         )
 
+        ModelPermission.register(
+            model=Document, permissions=(permission_workflow_view,)
+        )
         ModelPermission.register(
             model=Workflow, permissions=(
                 permission_error_log_view, permission_workflow_delete,

@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario, 2015-2017
+# Roberto Rosario, 2015-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-07-15 04:09+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-11 19:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Reservaciones"
 
@@ -26,19 +26,19 @@ msgstr "Reservaciones"
 msgid "Checkedout documents"
 msgstr "Documentos reservados"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Documento devuelto automáticamente"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Documento devuelto"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Documento reservado"
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Documento devuelto forzosamente"
 
@@ -74,15 +74,15 @@ msgstr "Si"
 msgid "No"
 msgstr "No"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Reservar documento"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Devolver documento"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Reservas"
 
@@ -94,7 +94,7 @@ msgstr "Reservado"
 msgid "Checked in/available"
 msgstr "Devuelto/disponible"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "Documento"
 
@@ -118,23 +118,23 @@ msgstr "No permitir que nuevas versiones de este documento sean cargadas."
 msgid "Block new version upload"
 msgstr "Restringir la subida de nuevas versiones"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr "Fecha y hora de la expiración de la reserva deben ser en el futuro."
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Reserva de documentos"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Reservaciones de documentos"
 
-#: models.py:104
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "Fecha y hora de la expiración de la reserva deben ser en el futuro."
+
+#: models.py:105
 msgid "New version block"
 msgstr "Bloquear nueva version"
 
-#: models.py:105
+#: models.py:106
 msgid "New version blocks"
 msgstr "Bloquear nuevas versiones"
 
@@ -161,6 +161,10 @@ msgstr "Reservas periódicas"
 #: queues.py:12
 msgid "Check expired checkouts"
 msgstr "Comprobar reservaciones caducadas"
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
+msgstr "Llave primaria del documento que se va a reservar."
 
 #: views.py:53
 #, python-format
@@ -220,6 +224,6 @@ msgstr "Error tratando de devolver documento: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documento \"%s\" devuelto con éxito."
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr "Periodo"

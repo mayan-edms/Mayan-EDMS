@@ -7,14 +7,14 @@ from .api_views import APIContentTypeList
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, FilterResultListView, FilterSelectView, HomeView,
-    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    PackagesLicensesView, SetupListView, ToolsListView,
-    multi_object_action_view
+    FaviconRedirectView, HomeView, LicenseView, ObjectErrorLogEntryListClearView,
+    ObjectErrorLogEntryListView, PackagesLicensesView, RootView, SetupListView,
+    ToolsListView, multi_object_action_view
 )
 
 urlpatterns = [
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', RootView.as_view(), name='root'),
+    url(r'^home/$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(
         r'^check_version/$', CheckVersionView.as_view(),
@@ -46,14 +46,6 @@ urlpatterns = [
     url(
         r'^user/locale/edit/$', CurrentUserLocaleProfileEditView.as_view(),
         name='current_user_locale_profile_edit'
-    ),
-    url(
-        r'^filter/select/$', FilterSelectView.as_view(),
-        name='filter_selection'
-    ),
-    url(
-        r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
-        name='filter_results'
     ),
     url(
         r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',

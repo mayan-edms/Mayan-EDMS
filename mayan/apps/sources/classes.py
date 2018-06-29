@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
 import base64
-from io import BytesIO
 import os
 import time
 import urllib
 
 from django.core.files import File
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from converter import TransformationResize, converter_class
@@ -26,14 +26,6 @@ class SourceUploadedFile(File):
         self.file = file
         self.source = source
         self.extra_data = extra_data
-
-
-class Attachment(File):
-    def __init__(self, part, name):
-        self.name = name
-        self.file = PseudoFile(
-            BytesIO(part.get_payload(decode=True)), name=name
-        )
 
 
 @python_2_unicode_compatible
@@ -61,6 +53,14 @@ class StagingFile(object):
     def as_file(self):
         return File(
             file=open(self.get_full_path(), mode='rb'), name=self.filename
+        )
+
+    def get_api_image_url(self):
+        return reverse(
+            'rest_api:stagingfolderfile-image-view', args=(
+                self.staging_folder.pk,
+                self.encoded_filename
+            )
         )
 
     def get_date_time_created(self):

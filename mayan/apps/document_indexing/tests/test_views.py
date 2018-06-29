@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from documents.tests import GenericDocumentViewTestCase
 
 from ..models import Index
 from ..permissions import (

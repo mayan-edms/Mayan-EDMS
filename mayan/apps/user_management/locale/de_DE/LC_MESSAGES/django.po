@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
+# Fabian Solf <fabian.solf@gmail.com>, 2017
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:47-0400\n"
-"PO-Revision-Date: 2017-07-15 03:50+0000\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -23,47 +24,39 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 permissions.py:7
+#: apps.py:51 permissions.py:7
 msgid "User management"
 msgstr "Benutzerverwaltung"
 
-#: apps.py:59
+#: apps.py:66
 msgid "All the groups."
 msgstr "Alle Gruppen."
 
-#: apps.py:63
+#: apps.py:70
 msgid "All the users."
 msgstr "Alle Benutzer"
 
-#: apps.py:68 links.py:30
-msgid "Members"
-msgstr "Mitglieder"
+#: apps.py:88 links.py:30 links.py:54 links.py:70 views.py:242
+msgid "Users"
+msgstr "Benutzer"
 
-#: apps.py:72
+#: apps.py:92
 msgid "Full name"
 msgstr "Kompletter Name"
 
-#: apps.py:75 search.py:22
+#: apps.py:95 search.py:22
 msgid "Email"
 msgstr "E-Mail"
 
-#: apps.py:78
+#: apps.py:98
 msgid "Active"
 msgstr "Aktiv"
 
-#: apps.py:84
+#: apps.py:104
 msgid "Has usable password?"
 msgstr "Verwendbares Passwort"
 
-#: forms.py:18
-msgid "New password"
-msgstr "Neues Passwort"
-
-#: forms.py:21
-msgid "Confirm password"
-msgstr "Passwort bestätigen"
-
-#: links.py:14 views.py:27
+#: links.py:14 views.py:29
 msgid "Create new group"
 msgstr "Erstellen"
 
@@ -75,17 +68,13 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:50
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:52
 msgid "Groups"
 msgstr "Gruppen"
 
-#: links.py:38 views.py:116
+#: links.py:38 views.py:118
 msgid "Create new user"
 msgstr "Erstellen"
-
-#: links.py:54 links.py:70 views.py:240
-msgid "Users"
-msgstr "Benutzer"
 
 #: links.py:62 links.py:66
 msgid "Set password"
@@ -125,148 +114,148 @@ msgstr "Benutzer anzeigen"
 
 #: search.py:19
 msgid "First name"
-msgstr ""
+msgstr "Vorname"
 
 #: search.py:28
 msgid "Last name"
-msgstr ""
+msgstr "Nachname"
 
 #: search.py:31
 msgid "username"
-msgstr ""
+msgstr "Benutzername"
 
 #: search.py:41
 msgid "Name"
 msgstr "Name"
 
-#: serializers.py:29
+#: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr ""
 
-#: serializers.py:51
+#: serializers.py:64
 msgid "List of group primary keys to which to add the user."
 msgstr ""
 
-#: views.py:43
+#: views.py:45
 #, python-format
 msgid "Edit group: %s"
 msgstr "Gruppe %s bearbeiten"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Gruppe %s löschen?"
 
-#: views.py:70
+#: views.py:72
 msgid "Available users"
 msgstr "Verfügbare Nutzer"
 
-#: views.py:71
-msgid "Members of groups"
-msgstr "Gruppenmitglieder"
+#: views.py:73
+msgid "Users in group"
+msgstr ""
 
-#: views.py:92
+#: views.py:94
 #, python-format
-msgid "Members of group: %s"
-msgstr "Mitglieder von Gruppe %s"
+msgid "Users of group: %s"
+msgstr ""
 
-#: views.py:126
+#: views.py:128
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Benutzer \"%s\" erfolgreich angelegt"
 
-#: views.py:135
+#: views.py:138
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr ""
 
-#: views.py:137
+#: views.py:140
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr ""
 
-#: views.py:146
+#: views.py:148
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:156
+#: views.py:158
 #, python-format
 msgid "Delete user: %s"
 msgstr "Benutzer löschen: %s"
 
-#: views.py:168
+#: views.py:170
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die Administratoren-Oberfläche dafür."
 
-#: views.py:176
+#: views.py:178
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Benutzer \"%s\" erfolgreich gelöscht"
 
-#: views.py:182
+#: views.py:184
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Fehler beim Löschen des Benutzers \"%(user)s\": %(error)s"
 
-#: views.py:198
+#: views.py:200
 #, python-format
 msgid "Edit user: %s"
 msgstr "Benutzer %s bearbeiten"
 
-#: views.py:204
+#: views.py:206
 msgid "Available groups"
 msgstr "Verfügbare Gruppen"
 
-#: views.py:205
+#: views.py:207
 msgid "Groups joined"
 msgstr "Gruppen vereinigt"
 
-#: views.py:214
+#: views.py:216
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Gruppen von Benutzer %s"
 
-#: views.py:252
+#: views.py:255
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:254
+#: views.py:257
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:262
+#: views.py:264
 msgid "Submit"
 msgstr "Absenden"
 
-#: views.py:264
+#: views.py:266
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:274
+#: views.py:276
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Passwort ändern für Benutzer: %s"
 
-#: views.py:294
+#: views.py:297
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die Administratoren-Oberfläche dafür."
 
-#: views.py:304
+#: views.py:307
 #, python-format
-msgid "Successfull password reset for user: %s."
-msgstr "Passwort erfolgreich zurückgesetzt für Benutzer %s"
+msgid "Successful password reset for user: %s."
+msgstr ""
 
-#: views.py:310
+#: views.py:313
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": %(error)s"

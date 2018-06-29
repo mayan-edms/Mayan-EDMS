@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 12:45-0400\n"
-"PO-Revision-Date: 2017-06-23 05:43+0000\n"
+"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 links.py:30
+#: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Uscite"
 
@@ -26,19 +26,19 @@ msgstr "Uscite"
 msgid "Checkedout documents"
 msgstr "Documenti controllati"
 
-#: events.py:9
+#: events.py:11
 msgid "Document automatically checked in"
 msgstr "Documento automaticamente in entrata"
 
-#: events.py:12
+#: events.py:14
 msgid "Document checked in"
 msgstr "Documento in entrata"
 
-#: events.py:15
+#: events.py:17
 msgid "Document checked out"
 msgstr "Documento in uscita"
 
-#: events.py:19
+#: events.py:21
 msgid "Document forcefully checked in"
 msgstr "Forza documento in entrata"
 
@@ -74,15 +74,15 @@ msgstr "Si"
 msgid "No"
 msgstr "No"
 
-#: links.py:35
+#: links.py:37
 msgid "Check out document"
 msgstr "Documento in uscita"
 
-#: links.py:41
+#: links.py:42
 msgid "Check in document"
 msgstr "Documento in entrata"
 
-#: links.py:48
+#: links.py:49
 msgid "Check in/out"
 msgstr "Check in / out"
 
@@ -94,7 +94,7 @@ msgstr "Uscito"
 msgid "Checked in/available"
 msgstr "Check-in / disponibile"
 
-#: models.py:28 models.py:98
+#: models.py:28 models.py:99
 msgid "Document"
 msgstr "Documento"
 
@@ -118,23 +118,23 @@ msgstr "Non permettere che la nuova versione di questo documento sia caricata."
 msgid "Block new version upload"
 msgstr "Blocca la nuova versione in caricamento"
 
-#: models.py:59
-msgid "Check out expiration date and time must be in the future."
-msgstr "La data e ora di uscita deve essere nel futuro."
-
-#: models.py:92 permissions.py:7
+#: models.py:55 permissions.py:7
 msgid "Document checkout"
 msgstr "Documento uscito"
 
-#: models.py:93
+#: models.py:56
 msgid "Document checkouts"
 msgstr "Documenti usciti"
 
-#: models.py:104
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "La data e ora di uscita deve essere nel futuro."
+
+#: models.py:105
 msgid "New version block"
 msgstr "Nuova versione blocco"
 
-#: models.py:105
+#: models.py:106
 msgid "New version blocks"
 msgstr "Nuove versioni blocco"
 
@@ -160,6 +160,10 @@ msgstr ""
 
 #: queues.py:12
 msgid "Check expired checkouts"
+msgstr ""
+
+#: serializers.py:26
+msgid "Primary key of the document to be checked out."
 msgstr ""
 
 #: views.py:53
@@ -220,6 +224,6 @@ msgstr "Errore nel tentare il check out del documento; %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Il documento \"%s\" è entrato con successo"
 
-#: widgets.py:23
+#: widgets.py:22
 msgid "Period"
 msgstr "Periodo"

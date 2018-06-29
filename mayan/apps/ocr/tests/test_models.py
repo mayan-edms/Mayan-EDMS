@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from common.tests import BaseTestCase
 from documents.models import DocumentType
-from documents.settings import setting_language_choices
+from documents.runtime import language_choices
 from documents.tests import (
     TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
@@ -52,7 +52,7 @@ class GermanOCRSupportTestCase(BaseTestCase):
         # Get corresponding language code for German from the default language
         # choices list
         language_code = [
-            language for language in setting_language_choices.value if language[1] == 'German'
+            language for language in language_choices if language[1] == 'German'
         ][0][0]
 
         self.assertEqual('deu', language_code)
