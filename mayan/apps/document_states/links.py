@@ -4,6 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_document_workflow_instance_list, icon_setup_workflow_list,
+    icon_tool_launch_all_workflows, icon_workflow_list
+)
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_tools,
@@ -11,32 +15,32 @@ from .permissions import (
 )
 
 link_document_workflow_instance_list = Link(
-    icon='fa fa-sitemap', permissions=(permission_workflow_view,),
-    text=_('Workflows'),
+    args='resolved_object.pk', icon_class=icon_document_workflow_instance_list,
+    permissions=(permission_workflow_view,), text=_('Workflows'),
     view='document_states:document_workflow_instance_list',
-    args='resolved_object.pk'
 )
 link_setup_workflow_create = Link(
     permissions=(permission_workflow_create,), text=_('Create workflow'),
     view='document_states:setup_workflow_create'
 )
 link_setup_workflow_delete = Link(
-    permissions=(permission_workflow_delete,), tags='dangerous',
-    text=_('Delete'), view='document_states:setup_workflow_delete',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_delete,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:setup_workflow_delete',
 )
 link_setup_workflow_document_types = Link(
+    args='resolved_object.pk',
     permissions=(permission_workflow_edit,), text=_('Document types'),
     view='document_states:setup_workflow_document_types',
-    args='resolved_object.pk'
 )
 link_setup_workflow_edit = Link(
-    permissions=(permission_workflow_edit,), text=_('Edit'),
-    view='document_states:setup_workflow_edit', args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Edit'), view='document_states:setup_workflow_edit',
 )
 link_setup_workflow_list = Link(
-    permissions=(permission_workflow_view,), icon='fa fa-sitemap',
-    text=_('Workflows'), view='document_states:setup_workflow_list'
+    icon_class=icon_setup_workflow_list,
+    permissions=(permission_workflow_view,), text=_('Workflows'),
+    view='document_states:setup_workflow_list'
 )
 link_setup_workflow_state_action_delete = Link(
     args='resolved_object.pk', permissions=(permission_workflow_edit,),
@@ -58,78 +62,73 @@ link_setup_workflow_state_action_selection = Link(
     view='document_states:setup_workflow_state_action_selection',
 )
 link_setup_workflow_state_create = Link(
-    permissions=(permission_workflow_edit,), text=_('Create state'),
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Create state'),
     view='document_states:setup_workflow_state_create',
-    args='resolved_object.pk'
 )
 link_setup_workflow_state_delete = Link(
-    permissions=(permission_workflow_edit,), tags='dangerous',
-    text=_('Delete'), view='document_states:setup_workflow_state_delete',
-    args='object.pk'
+    args='object.pk', permissions=(permission_workflow_edit,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:setup_workflow_state_delete',
 )
 link_setup_workflow_state_edit = Link(
-    permissions=(permission_workflow_edit,), text=_('Edit'),
-    view='document_states:setup_workflow_state_edit',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Edit'), view='document_states:setup_workflow_state_edit',
 )
 link_setup_workflow_states = Link(
-    permissions=(permission_workflow_view,), text=_('States'),
-    view='document_states:setup_workflow_state_list',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
+    text=_('States'), view='document_states:setup_workflow_state_list',
 )
 link_setup_workflow_transition_create = Link(
-    permissions=(permission_workflow_edit,), text=_('Create transition'),
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Create transition'),
     view='document_states:setup_workflow_transition_create',
-    args='resolved_object.pk'
 )
 link_setup_workflow_transition_delete = Link(
-    permissions=(permission_workflow_edit,), tags='dangerous',
-    text=_('Delete'), view='document_states:setup_workflow_transition_delete',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:setup_workflow_transition_delete',
 )
 link_setup_workflow_transition_edit = Link(
-    permissions=(permission_workflow_edit,), text=_('Edit'),
-    view='document_states:setup_workflow_transition_edit',
-    args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    text=_('Edit'), view='document_states:setup_workflow_transition_edit',
 )
 link_setup_workflow_transitions = Link(
-    permissions=(permission_workflow_view,), text=_('Transitions'),
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
+    text=_('Transitions'),
     view='document_states:setup_workflow_transition_list',
-    args='resolved_object.pk'
 )
 link_tool_launch_all_workflows = Link(
-    icon='fa fa-sitemap',
+    icon_class=icon_tool_launch_all_workflows,
     permissions=(permission_workflow_tools,),
     text=_('Launch all workflows'),
     view='document_states:tool_launch_all_workflows'
 )
 link_workflow_instance_detail = Link(
-    permissions=(permission_workflow_view,), text=_('Detail'),
-    view='document_states:workflow_instance_detail', args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
+    text=_('Detail'), view='document_states:workflow_instance_detail',
 )
 link_workflow_instance_transition = Link(
-    text=_('Transition'),
+    args='resolved_object.pk', text=_('Transition'),
     view='document_states:workflow_instance_transition',
-    args='resolved_object.pk'
 )
 link_workflow_document_list = Link(
-    permissions=(permission_workflow_view,), text=_('Workflow documents'),
-    view='document_states:workflow_document_list', args='resolved_object.pk'
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
+    text=_('Workflow documents'),
+    view='document_states:workflow_document_list',
 )
 link_workflow_list = Link(
-    permissions=(permission_workflow_view,), icon='fa fa-sitemap',
+    icon_class=icon_workflow_list, permissions=(permission_workflow_view,),
     text=_('Workflows'), view='document_states:workflow_list'
 )
 link_workflow_state_document_list = Link(
-    permissions=(permission_workflow_view,),
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
     text=_('State documents'),
     view='document_states:workflow_state_document_list',
-    args='resolved_object.pk'
 )
 link_workflow_state_list = Link(
-    permissions=(permission_workflow_view,),
+    args='resolved_object.pk', permissions=(permission_workflow_view,),
     text=_('States'), view='document_states:workflow_state_list',
-    args='resolved_object.pk'
 )
 link_workflow_instance_transition_events = Link(
     args='resolved_object.pk', permissions=(permission_workflow_edit,),

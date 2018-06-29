@@ -4,14 +4,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_task_manager, icon_queue_list
 from .permissions import permission_task_view
 
 link_task_manager = Link(
-    icon='fa fa-braille', permissions=(permission_task_view,),
+    icon_class=icon_task_manager, permissions=(permission_task_view,),
     text=_('Task manager'), view='task_manager:queue_list'
 )
 link_queue_list = Link(
-    icon='fa fa-braille', permissions=(permission_task_view,),
+    icon_class=icon_queue_list, permissions=(permission_task_view,),
     text=_('Background task queues'), view='task_manager:queue_list'
 )
 link_queue_active_task_list = Link(

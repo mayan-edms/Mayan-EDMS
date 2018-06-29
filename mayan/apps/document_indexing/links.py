@@ -4,6 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_document_index_list, icon_index_main_menu, icon_index_setup,
+    icon_rebuild_index_instances
+)
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
     permission_document_indexing_delete, permission_document_indexing_rebuild,
@@ -15,14 +19,16 @@ def is_not_root_node(context):
 
 
 link_document_index_list = Link(
-    icon='fa fa-list-ul', text=_('Indexes'),
-    view='indexing:document_index_list', args='resolved_object.pk'
+    args='resolved_object.pk', icon_class=icon_document_index_list,
+    text=_('Indexes'), view='indexing:document_index_list',
 )
 link_index_main_menu = Link(
-    icon='fa fa-list-ul', text=_('Indexes'), view='indexing:index_list'
+    icon_class=icon_index_main_menu, text=_('Indexes'),
+    view='indexing:index_list'
 )
 link_index_setup = Link(
-    icon='fa fa-list-ul', text=_('Indexes'), view='indexing:index_setup_list'
+    icon_class=icon_index_setup, text=_('Indexes'),
+    view='indexing:index_setup_list'
 )
 link_index_setup_list = Link(
     text=_('Indexes'), view='indexing:index_setup_list'
@@ -32,24 +38,27 @@ link_index_setup_create = Link(
     view='indexing:index_setup_create'
 )
 link_index_setup_edit = Link(
+    args='resolved_object.pk',
     permissions=(permission_document_indexing_edit,), text=_('Edit'),
-    view='indexing:index_setup_edit', args='resolved_object.pk'
+    view='indexing:index_setup_edit',
 )
 link_index_setup_delete = Link(
+    args='resolved_object.pk',
     permissions=(permission_document_indexing_delete,), tags='dangerous',
     text=_('Delete'), view='indexing:index_setup_delete',
-    args='resolved_object.pk'
 )
 link_index_setup_view = Link(
+    args='resolved_object.pk',
     permissions=(permission_document_indexing_edit,), text=_('Tree template'),
-    view='indexing:index_setup_view', args='resolved_object.pk'
+    view='indexing:index_setup_view',
 )
 link_index_setup_document_types = Link(
+    args='resolved_object.pk',
     permissions=(permission_document_indexing_edit,), text=_('Document types'),
-    view='indexing:index_setup_document_types', args='resolved_object.pk'
+    view='indexing:index_setup_document_types',
 )
 link_rebuild_index_instances = Link(
-    icon='fa fa-list-ul',
+    icon_class=icon_rebuild_index_instances,
     description=_(
         'Deletes and creates from scratch all the document indexes.'
     ),
@@ -57,14 +66,14 @@ link_rebuild_index_instances = Link(
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'
 )
 link_template_node_create = Link(
-    text=_('New child node'), view='indexing:template_node_create',
-    args='resolved_object.pk'
+    args='resolved_object.pk', text=_('New child node'),
+    view='indexing:template_node_create',
 )
 link_template_node_edit = Link(
-    condition=is_not_root_node, text=_('Edit'),
-    view='indexing:template_node_edit', args='resolved_object.pk'
+    args='resolved_object.pk', condition=is_not_root_node, text=_('Edit'),
+    view='indexing:template_node_edit',
 )
 link_template_node_delete = Link(
-    condition=is_not_root_node, tags='dangerous', text=_('Delete'),
-    view='indexing:template_node_delete', args='resolved_object.pk'
+    args='resolved_object.pk', condition=is_not_root_node, tags='dangerous',
+    text=_('Delete'), view='indexing:template_node_delete',
 )

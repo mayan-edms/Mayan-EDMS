@@ -5,6 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_all_document_version_signature_verify, icon_document_signature_list,
+    icon_document_version_signature_list
+)
 from .permissions import (
     permission_document_version_sign_detached,
     permission_document_version_sign_embedded,
@@ -27,17 +31,16 @@ def is_detached_signature(context):
 
 
 link_all_document_version_signature_verify = Link(
-    icon='fa fa-certificate',
+    icon_class=icon_all_document_version_signature_verify,
     permissions=(permission_document_version_signature_verify,),
     text=_('Verify all documents'),
     view='signatures:all_document_version_signature_verify',
 )
 link_document_signature_list = Link(
     args='resolved_object.latest_version.pk',
-    icon='fa fa-certificate',
+    icon_class=icon_document_signature_list,
     permissions=(permission_document_version_signature_view,),
-    text=_('Signatures'),
-    view='signatures:document_version_signature_list',
+    text=_('Signatures'), view='signatures:document_version_signature_list',
 )
 link_document_version_signature_delete = Link(
     args='resolved_object.pk', condition=is_detached_signature,
@@ -52,7 +55,8 @@ link_document_version_signature_details = Link(
     view='signatures:document_version_signature_details',
 )
 link_document_version_signature_list = Link(
-    args='resolved_object.pk', icon='fa fa-certificate',
+    args='resolved_object.pk',
+    icon_class=icon_document_version_signature_list,
     permissions=(permission_document_version_signature_view,),
     permissions_related='document', text=_('Signatures'),
     view='signatures:document_version_signature_list',

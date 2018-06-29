@@ -5,6 +5,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import (
+    icon_events_list, icon_events_for_object,
+    icon_event_types_subscriptions_list,
+    icon_object_event_types_user_subcriptions_list_with_icon,
+    icon_user_notifications_list
+)
 from .permissions import permission_events_view
 
 
@@ -31,19 +37,21 @@ def get_notification_count(context):
 
 
 link_events_list = Link(
-    icon='fa fa-list-ol', permissions=(permission_events_view,),
+    icon_class=icon_events_list, permissions=(permission_events_view,),
     text=_('Events'), view='events:events_list'
 )
 link_events_details = Link(
     text=_('Events'), view='events:events_list'
 )
 link_events_for_object = Link(
-    icon='fa fa-list-ol', permissions=(permission_events_view,),
-    text=_('Events'), view='events:events_for_object',
-    kwargs=get_kwargs_factory('resolved_object')
+    icon_class=icon_events_for_object,
+    kwargs=get_kwargs_factory('resolved_object'),
+    permissions=(permission_events_view,), text=_('Events'),
+    view='events:events_for_object',
 )
 link_event_types_subscriptions_list = Link(
-    icon='fa fa-list-ol', text=_('Event subscriptions'),
+    icon_class=icon_event_types_subscriptions_list,
+    text=_('Event subscriptions'),
     view='events:event_types_user_subcriptions_list'
 )
 link_notification_mark_read = Link(
@@ -59,7 +67,8 @@ link_object_event_types_user_subcriptions_list = Link(
     view='events:object_event_types_user_subcriptions_list',
 )
 link_object_event_types_user_subcriptions_list_with_icon = Link(
-    kwargs=get_kwargs_factory('resolved_object'), icon='fa fa-rss',
+    icon_class=icon_object_event_types_user_subcriptions_list_with_icon,
+    kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),
     view='events:object_event_types_user_subcriptions_list',
 )
@@ -72,5 +81,6 @@ link_user_notifications_list = Link(
         'apw-attribute': 'count', 'apw-interval': '5000',
         'apw-url': '/api/notifications/?read=False',
         'apw-callback': 'App.mayanNotificationBadge'
-    }, icon='fa fa-bell', text='', view='events:user_notifications_list'
+    }, icon_class=icon_user_notifications_list, text='',
+    view='events:user_notifications_list'
 )
