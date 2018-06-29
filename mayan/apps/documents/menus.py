@@ -4,6 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Menu
 
+from .icons import icon_menu_documents
+
 menu_documents = Menu(
-    icon='fa fa-file', label=_('Documents'), name='documents menu'
+    icon_class=icon_menu_documents, label=_('Documents'),
+    name='documents menu'
 )

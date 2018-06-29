@@ -18,6 +18,7 @@ from .forms import (
     DocumentMailForm, UserMailerBackendSelectionForm, UserMailerDynamicForm,
     UserMailerTestForm
 )
+from .icons import icon_mail_document_submit
 from .models import LogEntry, UserMailer
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
@@ -55,7 +56,7 @@ class MailDocumentView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
 
         result = {
-            'submit_icon': 'fa fa-envelope',
+            'submit_icon_class': icon_mail_document_submit,
             'submit_label': _('Send'),
             'title': ungettext(
                 self.title,

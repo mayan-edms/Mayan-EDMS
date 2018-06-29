@@ -22,6 +22,7 @@ from django_downloadview import (
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
+from .icons import icon_assign_remove_add, icon_assign_remove_remove
 from .mixins import (
     DeleteExtraDataMixin, DynamicFormViewMixin, ExtraContextMixin,
     FormExtraKwargsMixin, MultipleObjectMixin, ObjectActionMixin,
@@ -158,7 +159,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
                         'form': self.unselected_list,
                         'title': self.left_list_title or ' ',
                         'submit_label': _('Add'),
-                        'submit_icon': 'fa fa-plus',
+                        'submit_icon_class': icon_assign_remove_add,
                         'hide_labels': True,
                     }
                 },
@@ -169,7 +170,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
                         'form': self.selected_list,
                         'title': self.right_list_title or ' ',
                         'submit_label': _('Remove'),
-                        'submit_icon': 'fa fa-minus',
+                        'submit_icon_class': icon_assign_remove_remove,
                         'hide_labels': True,
                     }
                 },

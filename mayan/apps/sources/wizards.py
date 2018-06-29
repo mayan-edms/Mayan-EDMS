@@ -12,6 +12,8 @@ from formtools.wizard.views import SessionWizardView
 
 from documents.forms import DocumentTypeSelectForm
 
+from .icons import icon_wizard_submit
+
 
 class WizardStep(object):
     _registry = {}
@@ -156,7 +158,7 @@ class DocumentCreateWizard(SessionWizardView):
                 'step_label': wizard_step.label,
             },
             'submit_label': _('Next step'),
-            'submit_icon': 'fa fa-arrow-right',
+            'submit_icon_class': icon_wizard_submit,
             'title': _('Document upload wizard'),
         })
         return context

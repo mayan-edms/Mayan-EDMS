@@ -3,6 +3,21 @@ from __future__ import absolute_import, unicode_literals
 from appearance.classes import Icon
 
 icon_clear_image_cache = Icon(driver_name='fontawesome', symbol='file-image')
+icon_dashboard_document_types = Icon(
+    driver_name='fontawesome', symbol='book'
+)
+icon_dashboard_documents_in_trash = Icon(
+    driver_name='fontawesome', symbol='book'
+)
+icon_dashboard_pages_per_month = Icon(
+    driver_name='fontawesome', symbol='trash'
+)
+icon_dashboard_new_documents_this_month = Icon(
+    driver_name='fontawesome', symbol='calendar'
+)
+icon_dashboard_total_document = Icon(
+    driver_name='fontawesome', symbol='file'
+)
 icon_document_duplicates_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )
@@ -54,3 +69,4 @@ icon_duplicated_document_list = Icon(
 icon_duplicated_document_scan = Icon(
     driver_name='fontawesome', symbol='clone'
 )
+icon_menu_documents = Icon(driver_name='fontawesome', symbol='file')

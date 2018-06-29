@@ -30,6 +30,7 @@ from .exceptions import SourceException
 from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
+from .icons import icon_upload_view_link
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .models import (
     InteractiveSource, Source, SaneScanner, StagingFolderSource
@@ -78,12 +79,12 @@ class UploadBaseView(MultiFormView):
             args = ('"{}"'.format(source.pk),)
 
         return Link(
-            text=source.label,
-            view=view,
             args=args,
+            icon_class=icon_upload_view_link,
             keep_query=True,
             remove_from_query=['page'],
-            icon='fa fa-upload',
+            text=source.label,
+            view=view,
         )
 
     @staticmethod

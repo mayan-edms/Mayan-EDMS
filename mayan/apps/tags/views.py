@@ -17,6 +17,7 @@ from documents.views import DocumentListView
 from documents.permissions import permission_document_view
 
 from .forms import TagMultipleSelectionForm
+from .icons import icon_tag_delete_submit, icon_tag_remove_submit
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -129,7 +130,7 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
 
         result = {
             'message': _('Will be removed from all documents.'),
-            'submit_icon': 'fa fa-times',
+            'submit_icon_class': icon_tag_delete_submit,
             'submit_label': _('Delete'),
             'title': ungettext(
                 'Delete the selected tag?',
@@ -252,6 +253,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
 
         result = {
+            'submit_icon_class': icon_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
                 singular='Remove tags to %(count)d document',

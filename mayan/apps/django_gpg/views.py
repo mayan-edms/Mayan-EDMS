@@ -14,6 +14,7 @@ from common.generics import (
 )
 
 from .forms import KeyDetailForm, KeySearchForm
+from .icons import icon_keyserver_search
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
 from .permissions import (
@@ -103,7 +104,7 @@ class KeyQueryView(SimpleView):
         return {
             'form': self.get_form(),
             'form_action': reverse('django_gpg:key_query_results'),
-            'submit_icon': 'fa fa-search',
+            'submit_icon_class': icon_keyserver_search,
             'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Query key server'),

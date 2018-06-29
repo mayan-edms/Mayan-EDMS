@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.classes import DashboardWidget
 
+from .icons import icon_dashboard_checkouts
+
 
 def checkedout_documents_queryset():
     DocumentCheckout = apps.get_model(
@@ -15,7 +17,8 @@ def checkedout_documents_queryset():
 
 
 widget_checkouts = DashboardWidget(
+    icon_class=icon_dashboard_checkouts,
     label=_('Checkedout documents'),
     link=reverse_lazy('checkouts:checkout_list'),
-    icon='fa fa-shopping-cart', queryset=checkedout_documents_queryset
+    queryset=checkedout_documents_queryset
 )

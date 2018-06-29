@@ -5,7 +5,13 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-2">
-                    <i class="dashboard-widget-icon {{ widget.icon }}"></i>
+                    {% if widget.icon %}
+                        <i class="dashboard-widget-icon {{ widget.icon }}"></i>
+                    {% elif widget.icon_class %}
+                        <div class="dashboard-widget-icon">
+                            {{ widget.icon_class.render }}
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="col-xs-10 text-right">
                     <strong>{{ widget.label }}</strong>
