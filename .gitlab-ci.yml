@@ -1,18 +1,24 @@
 stages:
   - test
   - build
+  - deploy
 
 job_docker_master:
   stage: build
   image: docker:latest
   services:
     - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
-    - docker run --rm "$CI_REGISTRY_IMAGE" run-tests
-    - docker push "$CI_REGISTRY_IMAGE"
+    - VERSION=`cat docker/version`
+    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$VERSION"
+    - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run-tests
+    - docker push "$CI_REGISTRY_IMAGE:$VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker logout
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
   only:
     - master
 
@@ -81,3 +87,33 @@ test-sqlite:
   <<: *test_base
   script:
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+
+deploy_demo:
+  environment:
+    name: demo
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "${DEMO_PRIVATE_KEY}" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+  script:
+    - scp contrib/scripts/install/docker.sh root@$DEMO_IP_ADDRESS:~
+    - ssh root@$DEMO_IP_ADDRESS "DELETE_VOLUMES=true ./docker.sh"
+  when: manual
+
+deploy_staging:
+  environment:
+    name: staging
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "${STAGING_PRIVATE_KEY}" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+  script:
+    - scp contrib/scripts/install/docker.sh root@$STAGING_IP_ADDRESS:~
+    - ssh root@$STAGING_IP_ADDRESS "DOCKER_MAYAN_IMAGE=registry.gitlab.com/mayan-edms/mayan-edms:staging ./docker.sh"
+  when: manual
