@@ -51,7 +51,7 @@ if [ "$INSTALL_DOCKER" = true ]; then
     echo "Done"
 fi
 
-echo -n "* Removing containers..."
+echo -n "* Removing existing Mayan EDMS and PostgreSQL containers (no data will be lost)..."
 docker stop $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
 docker rm $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
 docker stop $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
@@ -59,20 +59,21 @@ docker rm $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
 echo "Done"
 
 if [ "$DELETE_VOLUMES" = true ]; then
-echo -n "* Deleting volumes..."
+echo -n "* Deleting Docker volumes in 5 seconds (warning: this delete all document data)..."
+sleep 5
 rm /docker-volumes -Rf
 echo "Done"
 fi
 
-echo -n "* Pulling Mayan EDMS image..."
+echo -n "* Pulling (downloading) the Mayan EDMS Docker image..."
 docker pull $DOCKER_MAYAN_IMAGE >/dev/null
 echo "Done"
 
-echo -n "* Pulling Postgres image..."
+echo -n "* Pulling (downloading) the PostgreSQL Docker image..."
 docker pull $DOCKER_POSTGRES_IMAGE > /dev/null
 echo "Done"
 
-echo -n "* Deploying Postgres container..."
+echo -n "* Deploying the PostgreSQL container..."
 docker run -d \
 --name $DOCKER_POSTGRES_CONTAINER \
 --restart=always \
@@ -84,7 +85,7 @@ docker run -d \
 $DOCKER_POSTGRES_IMAGE >/dev/null
 echo "Done"
 
-echo -n "* Waiting for the Postgres container to be ready (10 seconds)..."
+echo -n "* Waiting for the PostgreSQL container to be ready (10 seconds)..."
 sleep 10
 echo "Done"
 
@@ -103,6 +104,6 @@ docker run -d \
 $DOCKER_MAYAN_IMAGE >/dev/null
 echo "Done"
 
-echo -n "* Waiting for the Mayan container to be ready (might take a few minutes)..."
+echo -n "* Waiting for the Mayan EDMS container to be ready (might take a few minutes)..."
 while ! curl --output /dev/null --silent --head --fail http://localhost:80; do sleep 1 && echo -n .; done;
 echo "Done"
