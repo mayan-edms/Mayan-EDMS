@@ -16,9 +16,11 @@ job_docker_master:
     - docker run --rm "$CI_REGISTRY_IMAGE:$VERSION" run-tests
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
   only:
     - master
 
