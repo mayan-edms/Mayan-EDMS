@@ -1,7 +1,7 @@
 #!/bin/sh
 
 : ${VERBOSE:=false}
-: ${INSTALL_DOCKER:=true}
+: ${INSTALL_DOCKER:=false}
 : ${DELETE_VOLUMES:=false}
 : ${DATABASE_USER:=mayan}
 : ${DATABASE_NAME:=mayan}
