@@ -112,6 +112,8 @@ COPY --from=BUILDER_IMAGE /code/contrib/scripts/docker/run-tests.sh .
 
 COPY --from=BUILDER_IMAGE /code/requirements/testing-base.txt requirements-testing.txt
 
+COPY --from=BUILDER_IMAGE /code/docker/version .
+
 # Install build Mayan EDMS
 RUN pip install *.whl && \
 rm *.whl
