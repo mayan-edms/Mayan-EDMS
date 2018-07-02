@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from sources.wizards import WizardStep
 
 from .forms import CabinetListForm
+from .permissions import permission_cabinet_add_document
 
 
 class WizardStepCabinets(WizardStep):
@@ -28,6 +29,7 @@ class WizardStepCabinets(WizardStep):
     def get_form_kwargs(self, wizard):
         return {
             'help_text': _('Cabinets to which the document will be added.'),
+            'permission': permission_cabinet_add_document,
             'user': wizard.request.user
         }
 

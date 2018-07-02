@@ -20,17 +20,30 @@ class WizardStep(object):
     _deregistry = {}
 
     @classmethod
+    def deregister(cls, step):
+        cls._deregistry[step.name] = step
+
+    @classmethod
+    def deregister_all(cls):
+        for step in cls.get_all():
+            cls.deregister(step=step)
+
+    @classmethod
     def done(cls, wizard):
         return {}
 
     @classmethod
     def get(cls, name):
-        return cls._registry[name]
+        for step in cls.get_all():
+            if name == step.name:
+                return step
 
     @classmethod
     def get_all(cls):
         return sorted(
-            cls._registry.values(), key=lambda x: x.number
+            [
+                step for step in cls._registry.values() if step.name not in cls._deregistry
+            ], key=lambda x: x.number
         )
 
     @classmethod
@@ -56,11 +69,6 @@ class WizardStep(object):
 
     @classmethod
     def register(cls, step):
-        if step in cls._deregistry:
-            # This step has been marked for reregistration before it was
-            # registered
-            return
-
         if step.name in cls._registry:
             raise Exception('A step with this name already exists: %s' % step.name)
 
@@ -70,13 +78,12 @@ class WizardStep(object):
         cls._registry[step.name] = step
 
     @classmethod
-    def deregister(cls, step):
-        try:
-            cls._registry.pop(step.name)
-        except KeyError:
-            cls._deregistry[step.name] = step
-        else:
-            cls._deregistry[step.name] = step
+    def reregister(cls, name):
+        cls._deregistry.pop(name)
+
+    @classmethod
+    def reregister_all(cls):
+        cls._deregistry = {}
 
     @classmethod
     def step_post_upload_process(cls, document, querystring=None):
@@ -125,6 +132,7 @@ class DocumentCreateWizard(SessionWizardView):
 
         form_list = WizardStep.get_choices(attribute_name='form_class')
         condition_dict = dict(WizardStep.get_choices(attribute_name='condition'))
+
         result = self.__class__.get_initkwargs(form_list=form_list, condition_dict=condition_dict)
         self.form_list = result['form_list']
         self.condition_dict = result['condition_dict']

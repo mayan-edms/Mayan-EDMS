@@ -621,6 +621,8 @@ Bugs fixed or issues closed
 * `GitLab issue #474 <https://gitlab.com/mayan-edms/mayan-edms/issues/474>`_ Provide option to serve Mayan EDMS without a webserver (using Tornado o similar).
 * `GitLab issue #480 <https://gitlab.com/mayan-edms/mayan-edms/issues/480>`_ Wrong Environment Variables names in documentation
 * `GitLab issue #481 <https://gitlab.com/mayan-edms/mayan-edms/issues/481>`_ IMAP sources with metadata not working in 3.0rc1
+* `GitLab issue #484 <https://gitlab.com/mayan-edms/mayan-edms/issues/484>`_ Document upload wizard only works as admin
+
 * `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
 * `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
 
