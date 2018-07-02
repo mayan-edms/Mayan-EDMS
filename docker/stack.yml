@@ -14,6 +14,8 @@ services:
       POSTGRES_DB: mayan
       POSTGRES_PASSWORD: mayan-password
       POSTGRES_USER: mayan
+    volumes:
+      - db:/var/lib/postgresql/data
 
   app:
     image: mayanedms/mayanedms:latest
@@ -25,6 +27,6 @@ services:
       MAYAN_DATABASE_NAME: mayan
       MAYAN_DATABASE_PASSWORD: mayan-password
       MAYAN_DATABASE_USER: mayan
+      MAYAN_DATABASE_CONN_MAX_AGE: 60
     volumes:
       - app:/var/lib/mayan
-
