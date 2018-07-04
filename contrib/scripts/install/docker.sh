@@ -1,4 +1,14 @@
 #!/bin/sh
+set -e
+
+# This script is meant for quick & easy install via:
+#   $ curl -fsSL get.mayan-edms.com -o get-mayan-edms.sh
+#   $ sh get-mayan-edms.sh
+#
+# NOTE: Make sure to verify the contents of the script
+#       you downloaded matches the contents of install.sh
+#       located at https://gitlab.com/mayan-edms/mayan-edms/blob/master/contrib/scripts/install/docker.sh
+#       before executing.
 
 : ${VERBOSE:=false}
 : ${INSTALL_DOCKER:=false}
@@ -9,7 +19,7 @@
 : ${DOCKER_POSTGRES_IMAGE:=postgres:9.5}
 : ${DOCKER_POSTGRES_CONTAINER:=mayan-edms-postgres}
 : ${DOCKER_POSTGRES_VOLUME:=/docker-volumes/mayan-edms/postgres}
-: ${DOCKER_MAYAN_IMAGE:=registry.gitlab.com/mayan-edms/mayan-edms:latest}
+: ${DOCKER_MAYAN_IMAGE:=mayanedms/mayanedms:latest}
 : ${DOCKER_MAYAN_CONTAINER:=mayan-edms}
 : ${DOCKER_MAYAN_VOLUME:=/docker-volumes/mayan-edms/media}
 
@@ -52,16 +62,17 @@ if [ "$INSTALL_DOCKER" = true ]; then
 fi
 
 echo -n "* Removing existing Mayan EDMS and PostgreSQL containers (no data will be lost)..."
-docker stop $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
-docker rm $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
-docker stop $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
-docker rm $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
+true || docker stop $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
+true || docker rm $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
+true || docker stop $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
+true || docker rm $DOCKER_POSTGRES_CONTAINER >/dev/null 2>&1
 echo "Done"
 
 if [ "$DELETE_VOLUMES" = true ]; then
 echo -n "* Deleting Docker volumes in 5 seconds (warning: this delete all document data)..."
 sleep 5
-rm /docker-volumes -Rf
+true || rm DOCKER_MAYAN_VOLUME -Rf
+true || rm DOCKER_POSTGRES_VOLUME -Rf
 echo "Done"
 fi
 
