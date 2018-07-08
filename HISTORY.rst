@@ -1,3 +1,8 @@
+3.0.1 (208-07-08)
+=================
+- Pin javascript libraries to specific versions to avoid using 
+  potentianlly broken updates automatically. GitLab issue #486.
+
 3.0 (2018-06-29)
 ================
 - Rename the role groups link label from "Members" to "Groups".
