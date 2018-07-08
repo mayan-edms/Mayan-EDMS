@@ -2,6 +2,7 @@
 =================
 - Pin javascript libraries to specific versions to avoid using 
   potentianlly broken updates automatically. GitLab issue #486.
+- French and Polish language translation updates.
 
 3.0 (2018-06-29)
 ================

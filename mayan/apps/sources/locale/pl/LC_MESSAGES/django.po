@@ -4,8 +4,8 @@
 # 
 # Translators:
 # mic <winterfall24@gmail.com>, 2012-2013
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016,2018
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"

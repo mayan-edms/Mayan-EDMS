@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"

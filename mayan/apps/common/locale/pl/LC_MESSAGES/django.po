@@ -8,15 +8,15 @@
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012,2015
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2017
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:03-0400\n"
 "PO-Revision-Date: 2018-06-08 01:08+0000\n"
-"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

@@ -6,7 +6,7 @@
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012
-# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"

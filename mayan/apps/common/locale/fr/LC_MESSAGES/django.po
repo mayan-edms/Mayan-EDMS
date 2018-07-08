@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2018
 # Franck Boucher <boucher.fk@gmail.com>, 2016
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2017
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:03-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-07-05 05:28+0000\n"
 "Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -296,7 +296,7 @@ msgstr "Répertoire temporaire utilisé pour stocker les vignettes, aperçus et 
 
 #: settings.py:62
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Activer la journalisation des erreurs en dehors des capacités de journalisation du système d'erreur."
 
 #: settings.py:69
 msgid "Path to the logfile that will track errors during production."
@@ -315,7 +315,7 @@ msgstr "La version que vous utilisez est obsolète. La dernière version est %s"
 
 #: views.py:54
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Il n'est pas possible de déterminer la dernière disponible"
 
 #: views.py:58
 msgid "Your version is up-to-date."
