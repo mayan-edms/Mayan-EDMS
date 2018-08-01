@@ -111,7 +111,7 @@ class MetadataType(models.Model):
         ).exists()
 
     def natural_key(self):
-        return (self.name,)
+        return self.name
 
     def validate_value(self, document_type, value):
         # Check default
@@ -188,6 +188,10 @@ class DocumentMetadata(models.Model):
             )
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
+
+    def natural_key(self):
+        return (self.metadata_type.name,) + self.document.natural_key()
+    natural_key.dependencies = ['documents.Document', 'metadata.MetadataType']
 
     @property
     def is_required(self):

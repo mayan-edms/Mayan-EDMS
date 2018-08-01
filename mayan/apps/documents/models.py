@@ -33,8 +33,9 @@ from .events import (
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, DuplicatedDocumentManager,
-    PassthroughManager, RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentVersionManager, DocumentTypeManager,
+    DuplicatedDocumentManager, PassthroughManager, RecentDocumentManager,
+    TrashCanManager
 )
 from .permissions import permission_document_view
 from .settings import (
@@ -415,6 +416,8 @@ class DocumentVersion(models.Model):
         verbose_name = _('Document version')
         verbose_name_plural = _('Document version')
 
+    objects = DocumentVersionManager()
+
     def __str__(self):
         return self.get_rendered_string()
 
@@ -504,6 +507,10 @@ class DocumentVersion(models.Model):
         return Template('{{ instance.timestamp }}').render(
             context=Context({'instance': self})
         )
+
+    def natural_key(self):
+        return (self.checksum,) + self.document.natural_key()
+    natural_key.dependencies = ['documents.Document']
 
     def invalidate_cache(self):
         storage_documentimagecache.delete(self.cache_filename)

@@ -20,7 +20,7 @@ class DocumentManager(models.Manager):
             stale_stub_document.delete(trash=False)
 
     def get_by_natural_key(self, uuid):
-        return self.get(uuid=uuid)
+        return self.model.passthrough.get(uuid=uuid)
 
     def get_queryset(self):
         return TrashCanQuerySet(
@@ -30,6 +30,19 @@ class DocumentManager(models.Manager):
     def invalidate_cache(self):
         for document in self.model.objects.all():
             document.invalidate_cache()
+
+
+class DocumentVersionManager(models.Manager):
+    def get_by_natural_key(self, checksum, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        try:
+            document = Document.objects.get_by_natural_key(document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return document.versions.get(checksum=checksum)
 
 
 class DocumentTypeManager(models.Manager):
