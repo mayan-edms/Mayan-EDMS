@@ -102,4 +102,4 @@ class DocumentTypeSettingsManager(models.Manager):
         except DocumentType.DoesNotExist:
             raise self.model.DoesNotExist
 
-        return document_type.ocr_settings
+        return self.get(document_type__pk=document_type.pk)

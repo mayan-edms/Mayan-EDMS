@@ -509,7 +509,7 @@ class DocumentVersion(models.Model):
         )
 
     def natural_key(self):
-        return (self.checksum,) + self.document.natural_key()
+        return self.document.natural_key() + (self.checksum,)
     natural_key.dependencies = ['documents.Document']
 
     def invalidate_cache(self):

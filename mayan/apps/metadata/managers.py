@@ -24,16 +24,24 @@ class MetadataTypeManager(models.Manager):
 
 
 class DocumentTypeMetadataTypeManager(models.Manager):
-    def get_by_natural_key(self, metadata_type_name, document_natural_key):
+    def get_by_natural_key(self, document_natural_key, metadata_type_natural_key):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        MetadataType = apps.get_model(
+            app_label='metadata', model_name='MetadataType'
         )
         try:
             document = Document.objects.get_by_natural_key(document_natural_key)
         except Document.DoesNotExist:
             raise self.model.DoesNotExist
+        else:
+            try:
+                metadata_type = MetadataType.objects.get_by_natural_key(metadata_type_natural_key)
+            except MetadataType.DoesNotExist:
+                raise self.model.DoesNotExist
 
-        return document.metadata.get(metadata_type_name=metadata_type_name)
+        return self.get(document__pk=document.pk, metadata_type__pk=metadata_type.pk)
 
     def get_metadata_types_for(self, document_type):
         DocumentType = apps.get_model(

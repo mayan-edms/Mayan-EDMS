@@ -11,7 +11,7 @@ from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import ErrorLogEntryManager
+from .managers import ErrorLogEntryManager, UserLocaleProfileManager
 from .storages import storage_sharedupload
 
 
@@ -88,9 +88,16 @@ class UserLocaleProfile(models.Model):
         choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language')
     )
 
+    objects = UserLocaleProfileManager()
+
     class Meta:
         verbose_name = _('User locale profile')
         verbose_name_plural = _('User locale profiles')
 
     def __str__(self):
         return force_text(self.user)
+
+    def natural_key(self):
+        return self.user.natural_key()
+    natural_key.dependencies = [settings.AUTH_USER_MODEL]
+

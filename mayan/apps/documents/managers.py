@@ -6,6 +6,7 @@ import logging
 from django.apps import apps
 from django.db import models
 from django.db.models import F, Max
+from django.utils.encoding import force_text
 from django.utils.timezone import now
 
 from .literals import STUB_EXPIRATION_INTERVAL
@@ -20,7 +21,7 @@ class DocumentManager(models.Manager):
             stale_stub_document.delete(trash=False)
 
     def get_by_natural_key(self, uuid):
-        return self.model.passthrough.get(uuid=uuid)
+        return self.model.passthrough.get(uuid=force_text(uuid))
 
     def get_queryset(self):
         return TrashCanQuerySet(
@@ -33,7 +34,7 @@ class DocumentManager(models.Manager):
 
 
 class DocumentVersionManager(models.Manager):
-    def get_by_natural_key(self, checksum, document_natural_key):
+    def get_by_natural_key(self, document_natural_key, checksum):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
