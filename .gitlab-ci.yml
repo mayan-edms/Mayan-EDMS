@@ -55,6 +55,11 @@ job_docker_nightly:
     - export LC_ALL=en_US.UTF-8
     - apt-get install -qq curl gcc ghostscript gpgv gnupg graphviz libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
     - pip install -r requirements/testing.txt
+  only:
+    - master
+    - versions/next
+    - nightly
+    - staging
 
 test-mysql:
   <<: *test_base
