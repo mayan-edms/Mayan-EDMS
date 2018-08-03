@@ -51,7 +51,9 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Source(models.Model):
-    label = models.CharField(max_length=64, verbose_name=_('Label'))
+    label = models.CharField(
+        db_index=True, max_length=64, unique=True, verbose_name=_('Label')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     objects = InheritanceManager()
