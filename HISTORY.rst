@@ -1,4 +1,9 @@
-3.0.1 (208-07-08)
+3.1 (2018-XX-XX)
+================
+- Improve database vendor migration support
+- Add convertdb management command.
+
+3.0.1 (2018-07-08)
 =================
 - Pin javascript libraries to specific versions to avoid using 
   potentianlly broken updates automatically. GitLab issue #486.
