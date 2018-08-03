@@ -83,6 +83,9 @@ class Index(models.Model):
     def instance_root(self):
         return self.template_root.index_instance_nodes.get()
 
+    def natural_key(self):
+        return (self.slug,)
+
     def rebuild(self):
         """
         Delete and reconstruct the index by deleting of all its instance nodes

@@ -9,8 +9,8 @@ class DocumentIndexInstanceNodeManager(models.Manager):
 
 
 class IndexManager(models.Manager):
-    def get_by_natural_key(self, name):
-        return self.get(name=name)
+    def get_by_natural_key(self, slug):
+        return self.get(slug=slug)
 
     def index_document(self, document):
         for index in self.filter(enabled=True, document_types=document.document_type):
