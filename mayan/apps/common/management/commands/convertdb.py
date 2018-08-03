@@ -68,7 +68,7 @@ class Command(management.BaseCommand):
             'dumpdata', all=True, database=options['from'],
             natural_primary=True, natural_foreign=True,
             output=convertdb_file_path, interactive=False,
-            indent=4,
+            format='json'
         )
 
         if DocumentType.objects.using('default').count() and not options['force']:
