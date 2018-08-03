@@ -31,6 +31,7 @@ logger = logging.getLogger(__name__)
 class CabinetCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Cabinet
+    post_action_redirect = reverse_lazy('cabinets:cabinet_list')
     view_permission = permission_cabinet_create
 
     def get_extra_context(self):
