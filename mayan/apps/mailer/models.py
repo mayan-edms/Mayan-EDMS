@@ -11,6 +11,7 @@ from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from .managers import UserMailerManager
 from .utils import split_recipient_list
 
 logger = logging.getLogger(__name__)
@@ -51,6 +52,8 @@ class UserMailer(models.Model):
         blank=True, verbose_name=_('Backend data')
     )
 
+    objects = UserMailerManager()
+
     class Meta:
         ordering = ('label',)
         verbose_name = _('User mailer')
@@ -76,6 +79,9 @@ class UserMailer(models.Model):
 
     def loads(self):
         return json.loads(self.backend_data)
+
+    def natural_key(self):
+        return (self.label,)
 
     def save(self, *args, **kwargs):
         if self.default:
