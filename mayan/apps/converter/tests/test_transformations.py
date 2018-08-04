@@ -2,9 +2,12 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
+from documents.tests import GenericDocumentTestCase
+
+from ..models import Transformation
 from ..transformations import (
-    BaseTransformation, TransformationResize, TransformationRotate,
-    TransformationZoom
+    BaseTransformation, TransformationCrop, TransformationResize,
+    TransformationRotate, TransformationZoom
 )
 
 TRANSFORMATION_RESIZE_WIDTH = 123
@@ -20,7 +23,7 @@ TRANSFORMATION_ZOOM_PERCENT = 49
 TRANSFORMATION_ZOOM_CACHE_HASH = '1b333603674469e0'
 
 
-class TransformationTestCase(TestCase):
+class TransformationBaseTestCase(TestCase):
     def test_cache_uniqness(self):
         transformation_1 = TransformationResize(width=640, height=640)
 
@@ -101,3 +104,50 @@ class TransformationTestCase(TestCase):
                 (transformation_rotate, transformation_resize, transformation_zoom)
             ), TRANSFORMATION_COMBINED_CACHE_HASH
         )
+
+
+class TransformationTestCase(GenericDocumentTestCase):
+    def test_crop_transformation_optional_arguments(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationCrop,
+            arguments={'top': '10'}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+    def test_crop_transformation_invalid_arguments(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationCrop,
+            arguments={'top': 'x', 'left': '-'}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+    def test_crop_transformation_non_valid_range_arguments(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationCrop,
+            arguments={'top': '-1000', 'bottom': '100000000'}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+    def test_crop_transformation_overlapping_ranges_arguments(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationCrop,
+            arguments={'top': '1000', 'bottom': '1000'}
+        )
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationCrop,
+            arguments={'left': '1000', 'right': '10000'}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
