@@ -13,6 +13,9 @@
 - Converter app: Add error checking to the crop transformation arguments.
   Thanks to Jordan Wages (@wagesj45) for the report and investigation on the issue.
   Closes GitLab issue #490
+- Common app: Fix post login redirection to honor the ?next= URL query string
+  argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
+  issue #489.
 
 3.0.1 (2018-07-08)
 =================
