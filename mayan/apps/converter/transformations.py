@@ -88,9 +88,47 @@ class TransformationCrop(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super(TransformationCrop, self).execute_on(*args, **kwargs)
 
-        return self.image.crop(
-            (self.left, self.top, self.right, self.bottom)
+        left = float(self.left or '0')
+        top = float(self.top or '0')
+        right = self.image.size[0] - float(self.right or '0')
+        bottom = self.image.size[1] - float(self.bottom or '0')
+
+        if left < 0:
+            left = 0
+
+        if left > self.image.size[0] - 1:
+            left = self.image.size[0] - 1
+
+        if top < 0:
+            top = 0
+
+        if top > self.image.size[1] - 1:
+            top = self.image.size[1] - 1
+
+        if right < 0:
+            right = 0
+
+        if right > self.image.size[0] - 1:
+            right = self.image.size[0] - 1
+
+        if bottom < 0:
+            bottom = 0
+
+        if bottom > self.image.size[1] - 1:
+            bottom = self.image.size[1] - 1
+
+        if left > right:
+            left = right - 1
+
+        if top > bottom:
+            top = bottom - 1
+
+        logger.debug(
+            'left: %f, top: %f, right: %f, bottom: %f', left, top, right,
+            bottom
         )
+
+        return self.image.crop((left, top, right, bottom))
 
 
 class TransformationFlip(BaseTransformation):

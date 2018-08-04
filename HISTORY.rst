@@ -9,6 +9,10 @@
 - Mailer app: Add natural key support to the mailer app.
 - Cabinets: Redirect to the cabinet list view after creating a new cabinet.
 - Builds: Limit the number of branches that trigger the full test suit.
+- Converter app: Fix crop transformation argument parsing.
+- Converter app: Add error checking to the crop transformation arguments.
+  Thanks to Jordan Wages (@wagesj45) for the report and investigation on the issue.
+  Closes GitLab issue #490
 
 3.0.1 (2018-07-08)
 =================
