@@ -5,8 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .icons import (
-    icon_document_index_list, icon_index_main_menu, icon_index_setup,
-    icon_rebuild_index_instances
+    icon_document_index_list, icon_index, icon_rebuild_index_instances
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
@@ -23,11 +22,11 @@ link_document_index_list = Link(
     text=_('Indexes'), view='indexing:document_index_list',
 )
 link_index_main_menu = Link(
-    icon_class=icon_index_main_menu, text=_('Indexes'),
+    icon_class=icon_index, text=_('Indexes'),
     view='indexing:index_list'
 )
 link_index_setup = Link(
-    icon_class=icon_index_setup, text=_('Indexes'),
+    icon_class=icon_index, text=_('Indexes'),
     view='indexing:index_setup_list'
 )
 link_index_setup_list = Link(
