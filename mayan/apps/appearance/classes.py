@@ -28,6 +28,19 @@ class FontAwesomeDriver(IconDriver):
         )
 
 
+class FontAwesomeCSSDriver(IconDriver):
+    name = 'fontawesomecss'
+    template_text = '<i class="hidden-xs hidden-sm hidden-md fa {{ css_classes }}"></i>'
+
+    def __init__(self, css_classes):
+        self.css_classes = css_classes
+
+    def render(self):
+        return Template(self.template_text).render(
+            context=Context({'css_classes': self.css_classes})
+        )
+
+
 class Icon(object):
     def __init__(self, driver_name, **kwargs):
         self.driver = IconDriver.get(name=driver_name)(**kwargs)
@@ -37,3 +50,4 @@ class Icon(object):
 
 
 IconDriver.register(driver_class=FontAwesomeDriver)
+IconDriver.register(driver_class=FontAwesomeCSSDriver)
