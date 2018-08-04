@@ -9,7 +9,7 @@ from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from metadata import MetadataLookup
 from navigation import SourceColumn
 from rest_api.fields import DynamicSerializerField
@@ -96,15 +96,15 @@ class UserManagementApp(MayanAppConfig):
         )
         SourceColumn(
             source=User, label=_('Active'),
-            func=lambda context: two_state_template(
-                context['object'].is_active
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].is_active
+            ).render()
         )
         SourceColumn(
             source=User, label=_('Has usable password?'),
-            func=lambda context: two_state_template(
-                context['object'].has_usable_password()
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].has_usable_password()
+            ).render()
         )
 
         menu_multi_item.bind_links(

@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from common import (
     MayanAppConfig, menu_object, menu_secondary, menu_tools
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from navigation import SourceColumn
 
 from .classes import CeleryQueue, Task
@@ -34,15 +34,15 @@ class TaskManagerApp(MayanAppConfig):
         )
         SourceColumn(
             source=CeleryQueue, label=_('Default queue?'),
-            func=lambda context: two_state_template(
-                context['object'].is_default_queue
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].is_default_queue
+            ).render()
         )
         SourceColumn(
             source=CeleryQueue, label=_('Is transient?'),
-            func=lambda context: two_state_template(
-                context['object'].is_transient
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].is_transient
+            ).render()
         )
         SourceColumn(
             source=Task, label=_('Type'), attribute='task_type'
@@ -56,9 +56,9 @@ class TaskManagerApp(MayanAppConfig):
         )
         SourceColumn(
             source=Task, label=_('Acknowledged'),
-            func=lambda context: two_state_template(
-                context['object'].kwargs['acknowledged']
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].kwargs['acknowledged']
+            ).render()
         )
         SourceColumn(
             source=Task, label=_('Arguments'),

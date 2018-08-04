@@ -14,7 +14,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from documents.signals import post_document_created, post_initial_document_type
 from mayan.celery import app
 from navigation import SourceColumn
@@ -80,7 +80,9 @@ class DocumentIndexingApp(MayanAppConfig):
         SourceColumn(source=Index, label=_('Slug'), attribute='slug')
         SourceColumn(
             source=Index, label=_('Enabled'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
 
         SourceColumn(
@@ -108,13 +110,15 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         SourceColumn(
             source=IndexTemplateNode, label=_('Enabled'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
         SourceColumn(
             source=IndexTemplateNode, label=_('Has document links?'),
-            func=lambda context: two_state_template(
-                context['object'].link_documents
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].link_documents
+            ).render()
         )
 
         SourceColumn(

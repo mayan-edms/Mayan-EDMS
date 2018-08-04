@@ -16,6 +16,9 @@ icon_current_user_locale_profile_edit = Icon(
     driver_name='fontawesome', symbol='globe'
 )
 icon_documentation = Icon(driver_name='fontawesome', symbol='book')
+icon_fail = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_forum = Icon(
     driver_name='fontawesome', symbol='life-ring'
 )
@@ -31,6 +34,9 @@ icon_menu_user = Icon(
 icon_object_error_list_with_icon = Icon(
     driver_name='fontawesome', symbol='lock'
 )
+icon_ok = Icon(
+    driver_name='fontawesome', symbol='check'
+)
 icon_packages_licenses = Icon(
     driver_name='fontawesome', symbol='certificate'
 )
@@ -43,3 +49,4 @@ icon_support = Icon(
 icon_tools = Icon(
     driver_name='fontawesome', symbol='wrench'
 )
+

@@ -17,7 +17,7 @@ from common import (
 from common.classes import ModelAttribute
 from common.dashboards import dashboard_main
 from common.signals import post_initial_setup
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from converter.links import link_transformation_list
 from converter.permissions import (
     permission_transformation_create,
@@ -251,7 +251,9 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DocumentTypeFilename, label=_('Enabled'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
 
         # DeletedDocument

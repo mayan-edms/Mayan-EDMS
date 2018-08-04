@@ -10,7 +10,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
     menu_sidebar
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from navigation import SourceColumn
 
 from .links import (
@@ -65,12 +65,16 @@ class LinkingApp(MayanAppConfig):
         )
         SourceColumn(
             source=SmartLink, label=_('Enabled'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
 
         SourceColumn(
             source=SmartLinkCondition, label=_('Enabled'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
 
         menu_facet.bind_links(

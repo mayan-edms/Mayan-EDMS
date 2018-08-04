@@ -15,7 +15,7 @@ from common import (
 from common.classes import ModelAttribute
 from common.links import link_object_error_list
 from common.permissions_runtime import permission_error_log_view
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from mayan.celery import app
 from navigation import SourceColumn
 
@@ -198,7 +198,9 @@ class DocumentStatesApp(MayanAppConfig):
 
         SourceColumn(
             source=WorkflowState, label=_('Is initial state?'),
-            func=lambda context: two_state_template(context['object'].initial)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].initial
+            ).render()
         )
         SourceColumn(
             source=WorkflowState, label=_('Completion'), attribute='completion'
@@ -209,7 +211,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
         SourceColumn(
             source=WorkflowStateAction, label=_('Enabled?'),
-            func=lambda context: two_state_template(context['object'].enabled)
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
         SourceColumn(
             source=WorkflowStateAction, label=_('When?'),

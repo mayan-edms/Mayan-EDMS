@@ -12,7 +12,7 @@ from common import (
     MayanAppConfig, menu_object, menu_multi_item, menu_secondary, menu_setup,
     menu_tools
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from mayan.celery import app
 from navigation import SourceColumn
 
@@ -60,15 +60,15 @@ class MailerApp(MayanAppConfig):
         )
         SourceColumn(
             source=UserMailer, label=_('Default?'),
-            func=lambda context: two_state_template(
-                context['object'].default
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].default
+            ).render()
         )
         SourceColumn(
             source=UserMailer, label=_('Enabled?'),
-            func=lambda context: two_state_template(
-                context['object'].enabled
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].enabled
+            ).render()
         )
         SourceColumn(
             source=UserMailer, label=_('Label'), attribute='backend_label'

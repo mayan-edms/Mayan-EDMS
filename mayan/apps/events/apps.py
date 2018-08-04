@@ -8,7 +8,7 @@ from common import (
     MayanAppConfig, menu_main, menu_object, menu_secondary, menu_tools,
     menu_user
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from navigation import SourceColumn
 
 from .links import (
@@ -75,9 +75,9 @@ class EventsApp(MayanAppConfig):
         )
         SourceColumn(
             source=Notification, label=_('Seen'),
-            func=lambda context: two_state_template(
+            func=lambda context: TwoStateWidget(
                 state=context['object'].read
-            )
+            ).render()
         )
 
         menu_main.bind_links(

@@ -14,7 +14,7 @@ from common import (
     menu_setup, menu_sidebar
 )
 from common.classes import ModelAttribute
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
 from mayan.celery import app
@@ -135,9 +135,9 @@ class MetadataApp(MayanAppConfig):
         )
         SourceColumn(
             source=DocumentMetadata, label=_('Required'),
-            func=lambda context: two_state_template(
-                context['object'].is_required
-            )
+            func=lambda context: TwoStateWidget(
+                state=context['object'].is_required
+            ).render()
         )
 
         app.conf.CELERY_QUEUES.append(

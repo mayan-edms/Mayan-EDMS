@@ -18,7 +18,7 @@ from common.views import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from common.widgets import two_state_template
+from common.widgets import TwoStateWidget
 from documents.models import DocumentType, Document
 from documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -574,7 +574,7 @@ class SetupSourceListView(SingleObjectListView):
             {
                 'name': _('Enabled'),
                 'attribute': encapsulate(
-                    lambda entry: two_state_template(entry.enabled)
+                    lambda entry: TwoStateWidget(state=entry.enabled).render()
                 )
             },
         ),
