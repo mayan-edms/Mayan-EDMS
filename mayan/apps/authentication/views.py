@@ -10,6 +10,7 @@ from django.contrib.auth.views import (
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, resolve_url
 from django.urls import reverse
+from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _
 
 from stronghold.decorators import public
@@ -26,6 +27,7 @@ def login_view(request):
     Control how the use is to be authenticated, options are 'email' and
     'username'
     """
+    success_url_allowed_hosts = set()
     kwargs = {'template_name': 'authentication/login.html'}
 
     if setting_login_method.value == 'email':
@@ -33,10 +35,25 @@ def login_view(request):
     else:
         kwargs['authentication_form'] = UsernameAuthenticationForm
 
+    allowed_hosts = {request.get_host()}
+    allowed_hosts.update(success_url_allowed_hosts)
+
+    redirect_to = request.POST.get(
+        REDIRECT_FIELD_NAME, request.GET.get(REDIRECT_FIELD_NAME, '')
+    )
+
+    url_is_safe = is_safe_url(
+        url=redirect_to,
+        allowed_hosts=allowed_hosts,
+        require_https=request.is_secure(),
+    )
+
+    url = redirect_to if url_is_safe else ''
+
     if not request.user.is_authenticated:
         extra_context = {
             'appearance_type': 'plain',
-            REDIRECT_FIELD_NAME: resolve_url(settings.LOGIN_REDIRECT_URL)
+            REDIRECT_FIELD_NAME: url or resolve_url(settings.LOGIN_REDIRECT_URL)
         }
 
         result = login(request, extra_context=extra_context, **kwargs)

@@ -134,6 +134,11 @@ Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``::
     stopwaitsecs = 1
     user = mayan
 
+Configure Redis to discard data when it runs out of memory::
+
+    echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
+    systemctl restart redis
+
 Enable and restart the services [1_]::
 
     systemctl enable supervisor
