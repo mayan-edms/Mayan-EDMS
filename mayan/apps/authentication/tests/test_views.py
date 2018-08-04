@@ -205,3 +205,18 @@ class UserLoginTestCase(BaseTestCase):
 
         response = self.client.get(reverse('documents:document_list'))
         self.assertEqual(response.status_code, 200)
+
+    def test_username_login_redirect(self):
+        TEST_REDIRECT_URL = '/about/'
+
+        response = self.client.post(
+            '{}?next={}'.format(
+                reverse(settings.LOGIN_URL), TEST_REDIRECT_URL
+            ), {
+                'username': TEST_ADMIN_USERNAME,
+                'password': TEST_ADMIN_PASSWORD,
+                'remember_me': False
+            }, follow=True
+        )
+
+        self.assertEqual(response.redirect_chain, [(TEST_REDIRECT_URL, 302)])
