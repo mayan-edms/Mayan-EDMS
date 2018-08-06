@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import DocumentPage, DocumentType, DocumentVersion
 
-from .managers import DocumentPageContentManager
+from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
 
 
 @python_2_unicode_compatible
@@ -36,6 +36,12 @@ class DocumentTypeSettings(models.Model):
         default=True,
         verbose_name=_('Automatically queue newly created documents for parsing.')
     )
+
+    objects = DocumentTypeSettingsManager()
+
+    def natural_key(self):
+        return self.document_type.natural_key()
+    natural_key.dependencies = ['documents.DocumentType']
 
     class Meta:
         verbose_name = _('Document type settings')
