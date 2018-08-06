@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.db import models
 from django.utils.timezone import now
 
@@ -88,6 +89,17 @@ class DocumentCheckoutManager(models.Manager):
         else:
             return not checkout_info.block_new_version
 
+    def get_by_natural_key(self, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        try:
+            document = Document.objects.get_by_natural_key(document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document__pk=document.pk)
+
 
 class NewVersionBlockManager(models.Manager):
     def block(self, document):
@@ -98,3 +110,14 @@ class NewVersionBlockManager(models.Manager):
 
     def is_blocked(self, document):
         return self.filter(document=document).exists()
+
+    def get_by_natural_key(self, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        try:
+            document = Document.objects.get_by_natural_key(document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document__pk=document.pk)
