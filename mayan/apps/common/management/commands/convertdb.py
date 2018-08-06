@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import errno
 import os
 
-from pathlib import Path
+from pathlib2 import Path
 
 from django.conf import settings
 from django.core import management
