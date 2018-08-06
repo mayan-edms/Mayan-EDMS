@@ -66,6 +66,11 @@ if [ "$INSTALL_DOCKER" = true ]; then
     echo "Done"
 fi
 
+if [ -z `which docker`  ]; then
+    echo "Docker is not installed. Rerun this script with the variable INSTALL_DOCKER set to true."
+    exit 1
+fi
+
 echo -n "* Removing existing Mayan EDMS and PostgreSQL containers (no data will be lost)..."
 true || docker stop $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
 true || docker rm $DOCKER_MAYAN_CONTAINER >/dev/null 2>&1
