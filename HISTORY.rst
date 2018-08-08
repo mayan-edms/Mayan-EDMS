@@ -18,7 +18,8 @@
   issue #489.
 - Docker install script: Detect if Docker installed and provide help
   text if not.
-
+- Update dropzone.js' timeout from 30 seconds to 120 to allow upload
+  of large files on slow connections.
 
 3.0.1 (2018-07-08)
 =================
