@@ -5,6 +5,8 @@ import logging
 import os
 import uuid
 
+from furl import furl
+
 from django.conf import settings
 from django.core.files import File
 from django.core.files.base import ContentFile
@@ -234,10 +236,10 @@ class Document(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_preview', args=(self.pk,))
 
-    def get_api_image_url(self):
+    def get_api_image_url(self, *args, **kwargs):
         latest_version = self.latest_version
         if latest_version:
-            return latest_version.get_api_image_url()
+            return latest_version.get_api_image_url(*args, **kwargs)
         else:
             return '#'
 
@@ -454,10 +456,10 @@ class DocumentVersion(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_version_view', args=(self.pk,))
 
-    def get_api_image_url(self):
+    def get_api_image_url(self, *args, **kwargs):
         first_page = self.pages.first()
         if first_page:
-            return first_page.get_api_image_url()
+            return first_page.get_api_image_url(*args, **kwargs)
         else:
             return '#'
 
@@ -774,6 +776,67 @@ class DocumentPage(models.Model):
         return self.document_version.document
 
     def generate_image(self, *args, **kwargs):
+        transformation_list = self.get_combined_transformation_list(*args, **kwargs)
+
+        cache_filename = '{}-{}'.format(
+            self.cache_filename, BaseTransformation.combine(transformation_list)
+        )
+
+        # Check is transformed image is available
+        logger.debug('transformations cache filename: %s', cache_filename)
+
+        if not setting_disable_transformed_image_cache.value and storage_documentimagecache.exists(cache_filename):
+            logger.debug(
+                'transformations cache file "%s" found', cache_filename
+            )
+        else:
+            logger.debug(
+                'transformations cache file "%s" not found', cache_filename
+            )
+            image = self.get_image(transformations=transformation_list)
+            with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
+                file_object.write(image.getvalue())
+
+            self.cached_images.create(filename=cache_filename)
+
+        return cache_filename
+
+    def get_absolute_url(self):
+        return reverse('documents:document_page_view', args=(self.pk,))
+
+    def get_api_image_url(self, *args, **kwargs):
+        """
+        Create an unique URL combining:
+        - the page's image URL
+        - the interactive argument
+        - a hash from the server side and interactive transformations
+        The purpose of this unique URL is to allow client side caching
+        if document page images.
+        """
+        transformations_hash = BaseTransformation.combine(
+            self.get_combined_transformation_list(*args, **kwargs)
+        )
+
+        kwargs.pop('transformations', None)
+
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
+            'rest_api:documentpage-image', args=(
+                self.document.pk, self.document_version.pk, self.pk
+            )
+        )
+        final_url.args['_hash'] = transformations_hash
+
+        return final_url.tostr()
+
+
+    def get_combined_transformation_list(self, *args, **kwargs):
+        """
+        Return a list of transformation containing the server side
+        document page transformation as well as tranformations created
+        from the arguments as transient interactive transformation.
+        """
         # Convert arguments into transformations
         transformations = kwargs.get('transformations', [])
 
@@ -815,38 +878,7 @@ class DocumentPage(models.Model):
         if zoom_level:
             transformation_list.append(TransformationZoom(percent=zoom_level))
 
-        cache_filename = '{}-{}'.format(
-            self.cache_filename, BaseTransformation.combine(transformation_list)
-        )
-
-        # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', cache_filename)
-
-        if not setting_disable_transformed_image_cache.value and storage_documentimagecache.exists(cache_filename):
-            logger.debug(
-                'transformations cache file "%s" found', cache_filename
-            )
-        else:
-            logger.debug(
-                'transformations cache file "%s" not found', cache_filename
-            )
-            image = self.get_image(transformations=transformation_list)
-            with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
-                file_object.write(image.getvalue())
-
-            self.cached_images.create(filename=cache_filename)
-
-        return cache_filename
-
-    def get_absolute_url(self):
-        return reverse('documents:document_page_view', args=(self.pk,))
-
-    def get_api_image_url(self):
-        return reverse(
-            'rest_api:documentpage-image', args=(
-                self.document.pk, self.document_version.pk, self.pk
-            )
-        )
+        return transformation_list
 
     def get_image(self, transformations=None):
         cache_filename = self.cache_filename

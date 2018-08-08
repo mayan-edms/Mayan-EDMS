@@ -19,6 +19,9 @@
   Whitenoise.
 - Display error when attempting to recalculate the page count of an empty
   document (document stub that has no document version).
+- Add support for client side caching of document page images. The time
+  the images are cached is controlled by the new setting
+  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 3600 seconds (1 hour).
 
 3.0.1 (2018-07-08)
 =================

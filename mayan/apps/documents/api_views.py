@@ -4,6 +4,7 @@ import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_control, patch_cache_control
 
 from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
@@ -34,6 +35,7 @@ from .serializers import (
     RecentDocumentSerializer, WritableDocumentSerializer,
     WritableDocumentTypeSerializer, WritableDocumentVersionSerializer
 )
+from .settings import settings_document_page_image_cache_time
 from .storages import storage_documentimagecache
 from .tasks import task_generate_document_page_image
 
@@ -147,93 +149,6 @@ class APIDocumentListView(generics.ListCreateAPIView):
         serializer.save(_user=self.request.user)
 
 
-class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
-    """
-    get: Download a document version.
-    """
-    lookup_url_kwarg = 'version_pk'
-
-    def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            permissions=(permission_document_download,), user=self.request.user,
-            obj=document
-        )
-        return document
-
-    def get_encoding(self):
-        return self.get_object().encoding
-
-    def get_file(self):
-        preserve_extension = self.request.GET.get(
-            'preserve_extension', self.request.POST.get(
-                'preserve_extension', False
-            )
-        )
-
-        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
-
-        instance = self.get_object()
-        return VirtualFile(
-            instance.file, name=instance.get_rendered_string(
-                preserve_extension=preserve_extension
-            )
-        )
-
-    def get_mimetype(self):
-        return self.get_object().mimetype
-
-    def get_serializer(self, *args, **kwargs):
-        return None
-
-    def get_serializer_class(self):
-        return None
-
-    def get_queryset(self):
-        return self.get_document().versions.all()
-
-    def retrieve(self, request, *args, **kwargs):
-        return self.render_to_response()
-
-
-class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Returns the selected document details.
-    delete: Move the selected document to the thrash.
-    get: Return the details of the selected document.
-    patch: Edit the properties of the selected document.
-    put: Edit the properties of the selected document.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_document_view,),
-        'PUT': (permission_document_properties_edit,),
-        'PATCH': (permission_document_properties_edit,),
-        'DELETE': (permission_document_trash,)
-    }
-    permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_context(self):
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentSerializer
-        else:
-            return WritableDocumentSerializer
-
-
 class APIDocumentPageImageView(generics.RetrieveAPIView):
     """
     get: Returns an image representation of the selected document.
@@ -267,6 +182,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
     def get_serializer_class(self):
         return None
 
+    @cache_control(private=True)
     def retrieve(self, request, *args, **kwargs):
         width = request.GET.get('width')
         height = request.GET.get('height')
@@ -289,7 +205,12 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
         cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
         with storage_documentimagecache.open(cache_filename) as file_object:
-            return HttpResponse(file_object.read(), content_type='image')
+            response = HttpResponse(file_object.read(), content_type='image')
+            if '_hash' in request.GET:
+                patch_cache_control(
+                    response, max_age=settings_document_page_image_cache_time
+                )
+            return response
 
 
 class APIDocumentPageView(generics.RetrieveUpdateAPIView):
@@ -393,6 +314,93 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
         )
 
         return document_type.documents.all()
+
+
+class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
+    """
+    get: Download a document version.
+    """
+    lookup_url_kwarg = 'version_pk'
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=(permission_document_download,), user=self.request.user,
+            obj=document
+        )
+        return document
+
+    def get_encoding(self):
+        return self.get_object().encoding
+
+    def get_file(self):
+        preserve_extension = self.request.GET.get(
+            'preserve_extension', self.request.POST.get(
+                'preserve_extension', False
+            )
+        )
+
+        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+
+        instance = self.get_object()
+        return VirtualFile(
+            instance.file, name=instance.get_rendered_string(
+                preserve_extension=preserve_extension
+            )
+        )
+
+    def get_mimetype(self):
+        return self.get_object().mimetype
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        return self.render_to_response()
+
+
+class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Returns the selected document details.
+    delete: Move the selected document to the thrash.
+    get: Return the details of the selected document.
+    patch: Edit the properties of the selected document.
+    put: Edit the properties of the selected document.
+    """
+    mayan_object_permissions = {
+        'GET': (permission_document_view,),
+        'PUT': (permission_document_properties_edit,),
+        'PATCH': (permission_document_properties_edit,),
+        'DELETE': (permission_document_trash,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = Document.objects.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentView, self).get_serializer(*args, **kwargs)
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentSerializer
+        else:
+            return WritableDocumentSerializer
 
 
 class APIRecentDocumentListView(generics.ListAPIView):

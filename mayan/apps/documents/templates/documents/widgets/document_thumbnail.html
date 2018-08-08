@@ -1,3 +1,5 @@
+{% load documents_tags %}
+
 <a
     class="fancybox"
     {% if disable_title_link %}
@@ -5,7 +7,7 @@
     {% else %}
         data-caption="<a class='a-caption' href='{{ instance.get_absolute_url }}'>{{ instance }} <i class='fa fa-external-link-alt'></i></a>"
     {% endif %}
-    href="{{ instance.get_api_image_url }}?width={{ size_preview_width }}&height={{ size_preview_height }}"
+    href="{% get_api_image_url instance width=size_preview_width height=size_preview_height %}"
     data-type="image"
     {% if gallery_name %}data-fancybox="{{ gallery_name }}"{% endif %}
 >

@@ -1,3 +1,5 @@
+{% load documents_tags %}
+
 {% extends 'appearance/base_plain.html' %}
 
 {% block title %}{{ title }}{% endblock title %}
@@ -5,7 +7,7 @@
 {% block content_plain %}
     {% for page in pages %}
         <img
-            src="{{ page.get_api_image_url }}?width={{ width }}&height={{ height }}" style="width: 100%;"
+            src="{% get_api_image_url page width=width height=height %}" style="width: 100%;"
         />
     {% endfor %}
 {% endblock %}
