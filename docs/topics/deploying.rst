@@ -87,7 +87,7 @@ Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``::
     [program:mayan-gunicorn]
     autorestart = true
     autostart = true
-    command = /opt/mayan-edms/bin/gunicorn -w 2 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000
+    command = /opt/mayan-edms/bin/gunicorn -w 2 mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
     user = mayan
 
     [program:mayan-worker-fast]
