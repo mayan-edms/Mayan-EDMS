@@ -208,7 +208,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
             response = HttpResponse(file_object.read(), content_type='image')
             if '_hash' in request.GET:
                 patch_cache_control(
-                    response, max_age=settings_document_page_image_cache_time
+                    response, max_age=settings_document_page_image_cache_time.value
                 )
             return response
 
