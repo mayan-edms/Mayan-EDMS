@@ -1,5 +1,7 @@
 3.1 (2018-XX-XX)
 ================
+- Improve database vendor migration support
+- Add convertdb management command.
 - Fix crop transformation argument parsing. Thanks to Jordan Wages
   (@wagesj45). Closes GitLab issue #490
 - Add error checking to the crop transformation arguments.

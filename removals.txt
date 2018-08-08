@@ -1,5 +1,7 @@
 # Packages to be remove during upgrades
+django-celery
 django-filetransfers
 django-rest-swagger
+pathlib
 pytesseract
 pdfminer

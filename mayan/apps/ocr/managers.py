@@ -90,3 +90,16 @@ class DocumentPageOCRContentManager(models.Manager):
             post_document_version_ocr.send(
                 sender=document_version.__class__, instance=document_version
             )
+
+
+class DocumentTypeSettingsManager(models.Manager):
+    def get_by_natural_key(self, document_type_natural_key):
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
+        try:
+            document_type = DocumentType.objects.get_by_natural_key(document_type_natural_key)
+        except DocumentType.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document_type__pk=document_type.pk)

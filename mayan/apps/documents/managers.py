@@ -4,8 +4,10 @@ from datetime import timedelta
 import logging
 
 from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import F, Max
+from django.utils.encoding import force_text
 from django.utils.timezone import now
 
 from .literals import STUB_EXPIRATION_INTERVAL
@@ -20,7 +22,7 @@ class DocumentManager(models.Manager):
             stale_stub_document.delete(trash=False)
 
     def get_by_natural_key(self, uuid):
-        return self.get(uuid=uuid)
+        return self.model.passthrough.get(uuid=force_text(uuid))
 
     def get_queryset(self):
         return TrashCanQuerySet(
@@ -30,6 +32,32 @@ class DocumentManager(models.Manager):
     def invalidate_cache(self):
         for document in self.model.objects.all():
             document.invalidate_cache()
+
+
+class DocumentPageManager(models.Manager):
+    def get_by_natural_key(self, page_number, document_version_natural_key):
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
+        try:
+            document_version = DocumentVersion.objects.get_by_natural_key(*document_version_natural_key)
+        except DocumentVersion.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document_version__pk=document_version.pk, page_number=page_number)
+
+
+class DocumentVersionManager(models.Manager):
+    def get_by_natural_key(self, checksum, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        try:
+            document = Document.objects.get_by_natural_key(*document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document__pk=document.pk, checksum=checksum)
 
 
 class DocumentTypeManager(models.Manager):
@@ -174,6 +202,26 @@ class RecentDocumentManager(models.Manager):
             recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_count.value:]
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
+
+    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        User = get_user_model()
+        try:
+            document = Document.objects.get_by_natural_key(*document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+        else:
+            try:
+                user = User.objects.get_by_natural_key(*user_natural_key)
+            except User.DoesNotExist:
+                raise self.model.DoesNotExist
+
+        return self.get(
+            document__pk=document.pk, user__pk=user.pk,
+            datetime_accessed=datetime_accessed
+        )
 
     def get_for_user(self, user):
         document_model = apps.get_model('documents', 'document')

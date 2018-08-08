@@ -189,6 +189,10 @@ class DocumentMetadata(models.Model):
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
+    def natural_key(self):
+        return self.document.natural_key() + self.metadata_type.natural_key()
+    natural_key.dependencies = ['documents.Document', 'metadata.MetadataType']
+
     @property
     def is_required(self):
         return self.metadata_type.get_required_for(

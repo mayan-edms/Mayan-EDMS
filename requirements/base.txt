@@ -6,7 +6,8 @@ cssmin==0.2.0
 
 django-activity-stream==0.6.5
 django-autoadmin==1.1.1
-django-celery==3.2.1
+#django-celery==3.2.1 - Use fork below until patch https://github.com/celery/django-celery/pull/552 is accepted.
+https://github.com/mayan-edms/django-celery/zipball/master#egg=django-celery
 django-colorful==1.2
 django-compressor==2.2
 django-cors-headers==2.2.0
@@ -38,7 +39,7 @@ mock==2.0.0
 
 node-semver==0.3.0
 
-pathlib==1.0.1
+pathlib2==2.3.2
 pycountry==18.5.26
 PyPDF2==1.26.0
 pyocr==0.5.1

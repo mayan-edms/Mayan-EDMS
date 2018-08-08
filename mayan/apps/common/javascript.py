@@ -8,7 +8,7 @@ import shutil
 import tarfile
 
 from furl import furl
-from pathlib import Path
+from pathlib2 import Path
 import requests
 from semver import max_satisfying
 

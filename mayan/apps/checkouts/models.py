@@ -72,6 +72,10 @@ class DocumentCheckout(models.Model):
     def get_absolute_url(self):
         return reverse('checkout:checkout_info', args=(self.document.pk,))
 
+    def natural_key(self):
+        return self.document.natural_key()
+    natural_key.dependencies = ['documents.Document']
+
     def save(self, *args, **kwargs):
         # TODO: enclose in transaction
         new_checkout = not self.pk
@@ -104,3 +108,7 @@ class NewVersionBlock(models.Model):
     class Meta:
         verbose_name = _('New version block')
         verbose_name_plural = _('New version blocks')
+
+    def natural_key(self):
+        return self.document.natural_key()
+    natural_key.dependencies = ['documents.Document']

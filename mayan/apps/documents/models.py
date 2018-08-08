@@ -33,8 +33,9 @@ from .events import (
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, DuplicatedDocumentManager,
-    PassthroughManager, RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentPageManager, DocumentVersionManager,
+    DocumentTypeManager, DuplicatedDocumentManager, PassthroughManager,
+    RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .settings import (
@@ -415,6 +416,8 @@ class DocumentVersion(models.Model):
         verbose_name = _('Document version')
         verbose_name_plural = _('Document version')
 
+    objects = DocumentVersionManager()
+
     def __str__(self):
         return self.get_rendered_string()
 
@@ -504,6 +507,10 @@ class DocumentVersion(models.Model):
         return Template('{{ instance.timestamp }}').render(
             context=Context({'instance': self})
         )
+
+    def natural_key(self):
+        return (self.checksum, self.document.natural_key())
+    natural_key.dependencies = ['documents.Document']
 
     def invalidate_cache(self):
         storage_documentimagecache.delete(self.cache_filename)
@@ -728,6 +735,8 @@ class DocumentPage(models.Model):
         verbose_name=_('Page number')
     )
 
+    objects = DocumentPageManager()
+
     class Meta:
         ordering = ('page_number',)
         verbose_name = _('Document page')
@@ -887,6 +896,10 @@ class DocumentPage(models.Model):
         for cached_image in self.cached_images.all():
             cached_image.delete()
 
+    def natural_key(self):
+        return (self.page_number, self.document_version.natural_key())
+    natural_key.dependencies = ['documents.DocumentVersion']
+
     @property
     def siblings(self):
         return DocumentPage.objects.filter(
@@ -955,7 +968,7 @@ class RecentDocument(models.Model):
         return force_text(self.document)
 
     def natural_key(self):
-        return self.document.natural_key() + self.user.natural_key()
+        return (self.datetime_accessed, self.document.natural_key(), self.user.natural_key())
     natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
 
 

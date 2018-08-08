@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import DocumentPage, DocumentType, DocumentVersion
 
-from .managers import DocumentPageOCRContentManager
+from .managers import (
+    DocumentPageOCRContentManager, DocumentTypeSettingsManager
+)
 
 
 class DocumentTypeSettings(models.Model):
@@ -22,9 +24,16 @@ class DocumentTypeSettings(models.Model):
         verbose_name=_('Automatically queue newly created documents for OCR.')
     )
 
+    objects = DocumentTypeSettingsManager()
+
     class Meta:
         verbose_name = _('Document type settings')
         verbose_name_plural = _('Document types settings')
+
+    def natural_key(self):
+        return self.document_type.natural_key()
+    natural_key.dependencies = ['documents.DocumentType']
+
 
 
 @python_2_unicode_compatible
