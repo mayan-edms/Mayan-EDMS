@@ -91,7 +91,12 @@ class DocumentForm(forms.ModelForm):
             ] = forms.ModelChoiceField(
                 queryset=filenames_qs,
                 required=False,
-                label=_('Quick document rename')
+                label=_('Quick document rename'),
+                widget=forms.Select(
+                    attrs={
+                        'class': 'select2'
+                    }
+                )
             )
 
     def clean(self):

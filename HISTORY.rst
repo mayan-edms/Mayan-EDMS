@@ -22,6 +22,7 @@
 - Add support for client side caching of document page images. The time
   the images are cached is controlled by the new setting
   DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 3600 seconds (1 hour).
+- The document quick label selection field now uses a select2 widget.
 
 3.0.1 (2018-07-08)
 =================
