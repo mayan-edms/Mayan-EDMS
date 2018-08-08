@@ -21,6 +21,8 @@
 - Update dropzone.js' timeout from 30 seconds to 120 to allow upload
   of large files on slow connections.
 - Increase gunicorn's timeout from 30 seconds to 120.
+- Display error when attempting to recalculate the page count of an empty
+  document (document stub that has no document version).
 
 3.0.1 (2018-07-08)
 =================
