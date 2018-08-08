@@ -8,6 +8,8 @@
 - Fix post login redirection to honor the ?next= URL query string
   argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
   issue #489.
+- Update dropzone.js' timeout from 30 seconds to 120 to allow upload
+  of large files on slow connections.
 
 3.0.1 (2018-07-08)
 =================
