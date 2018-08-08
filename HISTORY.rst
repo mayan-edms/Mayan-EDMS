@@ -11,10 +11,14 @@
 - Update dropzone.js' timeout from 30 seconds to 120 to allow upload
   of large files on slow connections.
 - Increase gunicorn's timeout from 30 seconds to 120.
+- Update packages versions: Pillow:5.2.0, PyYAML:3.13, django-environ:0.4.5,
+  django-model-utils:3.1.2, django-mptt:0.9.1, django-widget-tweaks: 1.4.2,
+  flanker:0.9.0, flex:6.13.2, furl:1.2, gevent:1.3.5, graphviz: 0.8.4,
+  gunicorn:19.9.0, pyocr:0.5.2, python-dateutil:2.7.3
 
 3.0.1 (2018-07-08)
 =================
-- Pin javascript libraries to specific versions to avoid using 
+- Pin javascript libraries to specific versions to avoid using
   potentianlly broken updates automatically. GitLab issue #486.
 - French and Polish language translation updates.
 - Merge request #25. Thanks to Daniel Albert @esclear
