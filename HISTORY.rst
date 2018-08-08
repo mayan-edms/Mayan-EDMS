@@ -17,6 +17,8 @@
   gunicorn:19.9.0, pyocr:0.5.2, python-dateutil:2.7.3
 - Remove use of django-compressor and cssmin now that the project used
   Whitenoise.
+- Display error when attempting to recalculate the page count of an empty
+  document (document stub that has no document version).
 
 3.0.1 (2018-07-08)
 =================
