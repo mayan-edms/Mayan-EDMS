@@ -15,6 +15,8 @@
   django-model-utils:3.1.2, django-mptt:0.9.1, django-widget-tweaks: 1.4.2,
   flanker:0.9.0, flex:6.13.2, furl:1.2, gevent:1.3.5, graphviz: 0.8.4,
   gunicorn:19.9.0, pyocr:0.5.2, python-dateutil:2.7.3
+- Remove use of django-compressor and cssmin now that the project used
+  Whitenoise.
 
 3.0.1 (2018-07-08)
 =================

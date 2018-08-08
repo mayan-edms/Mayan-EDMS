@@ -74,7 +74,6 @@ INSTALLED_APPS = (
     'actstream',
     'autoadmin',
     'colorful',
-    'compressor',
     'corsheaders',
     'djcelery',
     'formtools',
@@ -241,21 +240,11 @@ STATIC_ROOT = os.environ.get(
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TEST_RUNNER = 'common.tests.runner.MayanTestRunner'
-
-# --------- Django compressor -------------
-
-COMPRESS_CSS_FILTERS = (
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter'
-)
-COMPRESS_ENABLED = False
-COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 
 # --------- Django -------------------
 
