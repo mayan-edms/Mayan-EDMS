@@ -61,7 +61,7 @@ services:
     environment:
       MAYAN_BROKER_URL: amqp://mayan:mayan@broker:5672/mayan
       MAYAN_CELERY_RESULT_BACKEND: redis://results:6379/0
-      MAYAN_DATABASE_DRIVER: django.db.backends.postgres
+      MAYAN_DATABASE_ENGINE: django.db.backends.postgresql
       MAYAN_DATABASE_HOST: db
       MAYAN_DATABASE_NAME: mayan
       MAYAN_DATABASE_PASSWORD: mayan-password
