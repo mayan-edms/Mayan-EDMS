@@ -54,9 +54,6 @@
 {% endblock stylesheets %}
 
 {% block content %}
-    <h3>{% trans 'About' %}</h3>
-    <hr>
-
     {% build as build_number %}
     <div class="well">
         <h3 class="text-center">{% project_information '__title__' %} ({% trans 'Version' %} {% project_information '__version__' %})</h3>

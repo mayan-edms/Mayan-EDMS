@@ -45,6 +45,7 @@
             {% else %}
                 <div class="col-xs-12">
             {% endif %}
+                {% include 'appearance/calculate_form_title.html' %}
                 {% block content %}{% endblock %}
                 {% block footer %}{% endblock %}
             </div>

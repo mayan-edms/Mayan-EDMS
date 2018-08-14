@@ -177,23 +177,17 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         # TODO: add task launching this workflow for all the document types
         # of item
 
-    def dispatch(self, request, *args, **kwargs):
-        messages.warning(
-            self.request, _(
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'subtitle': _(
                 'Removing a document type from a workflow will also '
                 'remove all running instances of that workflow for '
                 'documents of the document type just removed.'
-            )
-        )
-
-        return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        return {
+            ),
             'title': _(
                 'Document types assigned the workflow: %s'
             ) % self.get_object(),
-            'object': self.get_object(),
         }
 
     def get_object(self):

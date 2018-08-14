@@ -34,7 +34,8 @@ from .permissions_runtime import permission_error_log_view
 from .utils import check_version
 
 
-class AboutView(TemplateView):
+class AboutView(SimpleView):
+    extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
 
 

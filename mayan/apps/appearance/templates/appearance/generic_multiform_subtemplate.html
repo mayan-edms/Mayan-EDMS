@@ -1,9 +1,5 @@
 {% load i18n %}
 {% load static %}
-    <h4>
-        {% include 'appearance/calculate_form_title.html' %}
-    </h4>
-    <hr>
     <div class="well">
         {% if is_multipart %}
             <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" id="{{ form_id|default:'' }}" method="{{ submit_method|default:'post' }}">

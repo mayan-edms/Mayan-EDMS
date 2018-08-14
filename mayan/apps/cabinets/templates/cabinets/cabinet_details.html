@@ -5,17 +5,13 @@
 
 {% load navigation_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'cabinets/packages/jstree/dist/themes/default/style.min.css' %}" />
 {% endblock %}
 
 {% block content %}
-    {% if title %}
-        <h3>{{ title }}</h3>
-        <hr>
-    {% endif %}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
             <h4>{% trans 'Navigation:' %}</h4>

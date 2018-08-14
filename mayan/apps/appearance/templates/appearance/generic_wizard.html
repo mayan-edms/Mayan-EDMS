@@ -2,12 +2,9 @@
 
 {% load i18n %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block content %}
-    <h3>{% include 'appearance/calculate_form_title.html' %}</h3>
-    <hr>
-
     {{ wizard.management_form }}
     {% with step_title as title %}
 

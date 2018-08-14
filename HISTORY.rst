@@ -31,6 +31,8 @@
 - Remove code statistics from the documentation.
 - Remove the pending work chapter. This is now available in the Wiki: 
   wiki.mayan-edms.com
+- Unify template title rendering.
+- Add support for template subtitles.
 
 3.0.1 (2018-07-08)
 =================

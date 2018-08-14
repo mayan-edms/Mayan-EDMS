@@ -4,14 +4,9 @@
 
 {% load navigation_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block content %}
-    {% if title %}
-        <h3>{% include 'appearance/calculate_form_title.html' %}</h3>
-        <hr>
-    {% endif %}
-
     {% if list_as_items %}
         {% include 'appearance/generic_list_items_subtemplate.html' %}
     {% else %}

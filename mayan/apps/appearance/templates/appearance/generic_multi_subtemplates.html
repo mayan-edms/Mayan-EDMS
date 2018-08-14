@@ -2,14 +2,9 @@
 
 {% load common_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' with html_title=True %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block content %}
-    {% if main_title %}
-        <h3>{{ main_title }}</h3>
-        <hr>
-    {% endif %}
-
     <div class="row">
         {% for subtemplate in subtemplates_list %}
             {% if subtemplate.column_class %}

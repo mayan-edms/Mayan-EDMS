@@ -3,30 +3,15 @@
 {% load i18n %}
 {% load static %}
 
-{% block title %}{% trans 'Confirm' %} {{ title }}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block content %}
-    <h3>
-        {% if delete_view %}
-            {% trans 'Confirm delete' %}
-        {% else %}
-            {% trans 'Confirm' %}
-        {% endif %}
-    </h3>
-    <hr>
-
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">
-                    {% if title %}
-                        <h3>{{ title }}</h3>
-                    {% else %}
-                        {% if delete_view %}
-                            <h3>{% blocktrans %}Delete: {{ object }}?{% endblocktrans %}</h3>
-                        {% endif %}
-                    {% endif %}
+                    <h3>{% trans 'Are you sure?' %}</h3>
                 </h4>
             </div>
             {% if message %}
