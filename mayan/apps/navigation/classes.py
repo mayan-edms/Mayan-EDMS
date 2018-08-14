@@ -143,8 +143,8 @@ class Menu(object):
         result = []
 
         try:
-            request = Variable('request').resolve(context)
-        except VariableDoesNotExist:
+            request = context.request
+        except AttributeError:
             # There is no request variable, most probable a 500 in a test view
             # Don't return any resolved links then.
             logger.warning('No request variable, aborting menu resolution')
@@ -286,7 +286,7 @@ class Link(object):
             app_label='acls', model_name='AccessControlList'
         )
 
-        request = Variable('request').resolve(context)
+        request = context.request
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
 

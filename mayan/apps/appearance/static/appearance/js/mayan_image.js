@@ -1,71 +1,80 @@
 'use strict';
 
-var MayanImage = function (options) {
-    this.element = options.element;
-    this.load();
-}
+class MayanImage {
+    constructor (options) {
+        this.element = options.element;
+        this.load();
+    }
 
-MayanImage.intialize = function () {
-    var app = this;
+    static intialize () {
+        var app = this;
 
-    this.fancybox = $().fancybox({
-        animationDuration : 400,
-        buttons : [
-            'fullScreen',
-            'close',
-        ],
-        selector: 'a.fancybox',
-        afterShow: function (instance, current) {
-            $('a.a-caption').on('click', function(event) {
-                instance.close(true);
-            });
-        },
-        infobar: true,
+        this.fancybox = $().fancybox({
+            animationDuration : 300,
+            buttons : [
+                'fullScreen',
+                'close',
+            ],
+            selector: 'a.fancybox',
+            afterShow: function (instance, current) {
+                $('a.a-caption').on('click', function(event) {
+                    instance.close(true);
+                });
+            },
+            infobar: true,
 
-    });
+        });
 
-    $('img.lazy-load').lazyload({
-        appear: function(elements_left, settings) {
-            new MayanImage({element: $(this)});
-        },
-        threshold: 400,
-    });
+        $('img.lazy-load').lazyload({
+            appear: function(elements_left, settings) {
+                new MayanImage({element: $(this)});
+            },
+            threshold: 400,
+        });
 
-    $('img.lazy-load-carousel').lazyload({
-        appear: function(elements_left, settings) {
-            new MayanImage({element: $(this)});
-        },
-        container: $('#carousel-container'),
-        threshold: 2000,
-    });
+        $('img.lazy-load-carousel').lazyload({
+            appear: function(elements_left, settings) {
+                new MayanImage({element: $(this)});
+            },
+            container: $('#carousel-container'),
+            threshold: 2000,
+        });
 
-    $('.lazy-load').on('load', function() {
-        $(this).hide();
-        $(this).fadeIn();
-        $(this).siblings('.spinner-container').remove();
-        $(this).removeClass('lazy-load pull-left');
-    });
+        $('.lazy-load').on('load', function() {
+            $(this).hide();
+            $(this).fadeIn(300);
+            $(this).siblings('.spinner-container').remove();
+            $(this).removeClass('lazy-load pull-left');
+        });
 
-    $('.lazy-load-carousel').on('load', function() {
-        $(this).hide();
-        $(this).fadeIn();
-        $(this).siblings('.spinner-container').remove();
-        $(this).removeClass('lazy-load-carousel pull-left');
-    });
+        $('.lazy-load-carousel').on('load', function() {
+            $(this).hide();
+            $(this).fadeIn(300);
+            $(this).siblings('.spinner-container').remove();
+            $(this).removeClass('lazy-load-carousel pull-left');
+        });
+    }
+
+    static timerFunction () {
+        $.fn.matchHeight._maintainScroll = true;
+        $.fn.matchHeight._update();
+    }
+
+    load () {
+        var self = this;
+        var container = this.element.parent().parent().parent();
+
+        this.element.on('error', (function(event) {
+            container.html(MayanImage.templateInvalidDocument);
+        }));
+
+        this.element.attr('src', this.element.attr('data-url'));
+        $.fn.matchHeight._maintainScroll = true;
+
+        clearTimeout(MayanImage.timer);
+        MayanImage.timer = setTimeout(MayanImage.timerFunction, 100);
+    };
 }
 
 MayanImage.templateInvalidDocument = $('#template-invalid-document').html();
-
-
-MayanImage.prototype.load = function () {
-    var self = this;
-    var container = this.element.parent().parent().parent();
-
-    this.element.on('error', (function(event) {
-        container.html(MayanImage.templateInvalidDocument);
-    }));
-
-    this.element.attr('src', this.element.attr('data-url'));
-    $.fn.matchHeight._update();
-    $.fn.matchHeight._maintainScroll = true;
-};
+MayanImage.timer = setTimeout(null);

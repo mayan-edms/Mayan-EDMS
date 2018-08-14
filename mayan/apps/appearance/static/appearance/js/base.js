@@ -1,26 +1,12 @@
 'use strict';
 
-var app = new App();
+// Make it globally available. Used by event.links
+
+var MayanAppClass = MayanApp;
+
 var partialNavigation = new PartialNavigation({
     initialURL: initialURL,
+    disabledAnchorClasses: ['disabled'],
     excludeAnchorClasses: ['fancybox', 'new_window', 'non-ajax'],
-    formBeforeSerializeCallbacks: [App.MultiObjectFormProcess],
+    formBeforeSerializeCallbacks: [MayanApp.MultiObjectFormProcess],
 });
-
-jQuery(document).ready(function() {
-    app.setupAutoSubmit();
-    app.setupFullHeightResizing();
-    app.setupItemsSelector();
-    app.setupNavbarCollapse();
-    app.setupNewWindowAnchor();
-    app.setupAJAXperiodicWorkers();
-    partialNavigation.initialize();
-});
-
-var afterBaseLoad = function () {
-    MayanImage.intialize();
-    app.doToastrMessages();
-    app.resizeFullHeight();
-    app.setupSelect2();
-    app.setupScrollView();
-}

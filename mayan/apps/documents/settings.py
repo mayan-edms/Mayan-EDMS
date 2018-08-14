@@ -32,7 +32,7 @@ setting_display_width = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_WIDTH', default='3600'
 )
 settings_document_page_image_cache_time = namespace.add_setting(
-    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='3600'
+    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='31556926'
 )
 setting_documentimagecache_storage = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',

@@ -11,7 +11,7 @@
          * current location's path as the new hash
          */
         document.write('<script type="text/undefined">')
-        var currentPath = window.location.pathname;
+        var currentPath = window.location.pathname + window.location.search;
         window.location = '/#' + currentPath;
     }
 </script>

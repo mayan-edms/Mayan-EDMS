@@ -31,16 +31,6 @@
             if (currentHash.length) {
                 window.location = currentHash.substring(1);
             }
-
-            function waitForJQuery(func) {
-                if (window.jQuery) {
-                    func();
-                } else {
-                    setTimeout(function() {
-                        waitForJQuery(func)
-                    }, 50);
-                }
-            }
         </script>
     </head>
     <body>

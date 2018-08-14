@@ -21,8 +21,16 @@
   document (document stub that has no document version).
 - Add support for client side caching of document page images. The time
   the images are cached is controlled by the new setting
-  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 3600 seconds (1 hour).
+  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 31556926 seconds (1 year).
 - The document quick label selection field now uses a select2 widget.
+- Include querystring when force reload of a bare template view.
+- Speed up document image fade in reveal.
+- Use reseteable timer to ensure more document panels heights are matched.
+- Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
+- Remove use is waitForJQuery.
+- Remove code statistics from the documentation.
+- Remove the pending work chapter. This is now available in the Wiki: 
+  wiki.mayan-edms.com
 
 3.0.1 (2018-07-08)
 =================

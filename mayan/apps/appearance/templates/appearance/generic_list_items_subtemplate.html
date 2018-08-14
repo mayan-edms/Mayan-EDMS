@@ -4,18 +4,6 @@
 {% load common_tags %}
 {% load navigation_tags %}
 
-<script>
-    'use strict';
-
-    waitForJQuery(function() {
-        $(function() {
-            $('.panel-item').matchHeight({
-                byRow: false,
-            });
-        });
-    });
-</script>
-
 <div class="row">
     <div class="col-xs-12">
         <h4>
@@ -53,12 +41,11 @@
                 <hr style="border-bottom: 1px solid lightgrey;">
             {% endif %}
 
-            <div class="row">
+            <div class="row row-items">
                 {% for object in object_list %}
                     <div class="{{ column_class|default:'col-xs-12 col-sm-4 col-md-3 col-lg-2' }}">
                         <div class="panel panel-primary panel-item">
                             <div class="panel-heading">
-
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label for="id_indexes_0">
@@ -125,3 +112,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    'use strict';
+
+    $(function() {
+        $('.row-items > [class*="col"] .panel-item .panel-heading').matchHeight();
+        $('.row-items > [class*="col"] .panel-item .panel-body').matchHeight();
+        $('.row-items > [class*="col"] .panel-item').matchHeight();
+    });
+</script>
