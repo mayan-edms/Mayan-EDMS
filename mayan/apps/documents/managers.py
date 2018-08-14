@@ -47,19 +47,6 @@ class DocumentPageManager(models.Manager):
         return self.get(document_version__pk=document_version.pk, page_number=page_number)
 
 
-class DocumentVersionManager(models.Manager):
-    def get_by_natural_key(self, checksum, document_natural_key):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-        try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
-        except Document.DoesNotExist:
-            raise self.model.DoesNotExist
-
-        return self.get(document__pk=document.pk, checksum=checksum)
-
-
 class DocumentTypeManager(models.Manager):
     def check_delete_periods(self):
         logger.info('Executing')
@@ -125,6 +112,19 @@ class DocumentTypeManager(models.Manager):
 
     def get_by_natural_key(self, label):
         return self.get(label=label)
+
+
+class DocumentVersionManager(models.Manager):
+    def get_by_natural_key(self, checksum, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        try:
+            document = Document.objects.get_by_natural_key(*document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document__pk=document.pk, checksum=checksum)
 
 
 class DuplicatedDocumentManager(models.Manager):

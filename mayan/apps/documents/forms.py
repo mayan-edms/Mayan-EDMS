@@ -84,12 +84,13 @@ class DocumentForm(forms.ModelForm):
         if self.instance and self.instance.pk:
             document_type = self.instance.document_type
 
-        filenames_qs = document_type.filenames.filter(enabled=True)
-        if filenames_qs.count():
+        filenames_queryset = document_type.filenames.filter(enabled=True)
+
+        if filenames_queryset:
             self.fields[
                 'document_type_available_filenames'
             ] = forms.ModelChoiceField(
-                queryset=filenames_qs,
+                queryset=filenames_queryset,
                 required=False,
                 label=_('Quick document rename'),
                 widget=forms.Select(
