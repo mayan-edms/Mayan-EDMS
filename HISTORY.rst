@@ -21,7 +21,11 @@
   document (document stub that has no document version).
 - Add support for client side caching of document page images. The time
   the images are cached is controlled by the new setting
-  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 3600 seconds (1 hour).
+  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 31556926 seconds (1 year).
+- Include querystring when force reload of a bare template view.
+- Speed up document image fade in reveal.
+- Use reseteable timer to ensure more document panels heights are matched.
+
 
 3.0.1 (2018-07-08)
 =================

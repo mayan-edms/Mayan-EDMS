@@ -9,7 +9,7 @@ MayanImage.intialize = function () {
     var app = this;
 
     this.fancybox = $().fancybox({
-        animationDuration : 400,
+        animationDuration : 300,
         buttons : [
             'fullScreen',
             'close',
@@ -41,14 +41,14 @@ MayanImage.intialize = function () {
 
     $('.lazy-load').on('load', function() {
         $(this).hide();
-        $(this).fadeIn();
+        $(this).fadeIn(300);
         $(this).siblings('.spinner-container').remove();
         $(this).removeClass('lazy-load pull-left');
     });
 
     $('.lazy-load-carousel').on('load', function() {
         $(this).hide();
-        $(this).fadeIn();
+        $(this).fadeIn(300);
         $(this).siblings('.spinner-container').remove();
         $(this).removeClass('lazy-load-carousel pull-left');
     });
@@ -56,6 +56,12 @@ MayanImage.intialize = function () {
 
 MayanImage.templateInvalidDocument = $('#template-invalid-document').html();
 
+MayanImage.timer = setTimeout(null);
+
+MayanImage.timerFunction = function () {
+    $.fn.matchHeight._maintainScroll = true;
+    $.fn.matchHeight._update();
+}
 
 MayanImage.prototype.load = function () {
     var self = this;
@@ -66,6 +72,8 @@ MayanImage.prototype.load = function () {
     }));
 
     this.element.attr('src', this.element.attr('data-url'));
-    $.fn.matchHeight._update();
     $.fn.matchHeight._maintainScroll = true;
+
+    clearTimeout(MayanImage.timer);
+    MayanImage.timer = setTimeout(MayanImage.timerFunction, 100);
 };
