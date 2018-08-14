@@ -27,6 +27,9 @@
 - Use reseteable timer to ensure more document panels heights are matched.
 - Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
 - Remove use is waitForJQuery.
+- Remove code statistics from the documentation.
+- Remove the pending work chapter. This is now available in the Wiki: 
+  wiki.mayan-edms.com
 
 3.0.1 (2018-07-08)
 =================
