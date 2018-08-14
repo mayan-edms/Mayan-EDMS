@@ -27,7 +27,9 @@
 - Fix trashed document count and document page count swapped dashboard icons.
 - Rename the multi document download link from "Download" to
   "Advanced download" for consistency.
-
+- Remove code statistics from the documentation.
+- Remove the pending work chapter. This is now available in the Wiki: 
+  wiki.mayan-edms.com
 
 3.0.1 (2018-07-08)
 =================
