@@ -25,7 +25,8 @@
 - Include querystring when force reload of a bare template view.
 - Speed up document image fade in reveal.
 - Use reseteable timer to ensure more document panels heights are matched.
-
+- Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
+- Remove use is waitForJQuery.
 
 3.0.1 (2018-07-08)
 =================
