@@ -55,9 +55,7 @@ class AttachTagAction(WorkflowAction):
 
     def execute(self, context):
         for tag in self.get_tags():
-            tag.attach_to(
-                document=context['entry_log'].workflow_instance.document
-            )
+            tag.attach_to(document=context['document'])
 
 
 class RemoveTagAction(AttachTagAction):
@@ -75,6 +73,4 @@ class RemoveTagAction(AttachTagAction):
 
     def execute(self, context):
         for tag in self.get_tags():
-            tag.remove_from(
-                document=context['entry_log'].workflow_instance.document
-            )
+            tag.remove_from(document=context['document'])

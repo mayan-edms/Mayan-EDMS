@@ -33,6 +33,8 @@
   wiki.mayan-edms.com
 - Unify template title rendering.
 - Add support for template subtitles.
+- Make sure the on entry action of the initial state of workflows
+  executes on document creation.
 
 3.0.1 (2018-07-08)
 =================

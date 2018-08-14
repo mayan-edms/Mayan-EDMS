@@ -76,7 +76,12 @@ class Workflow(models.Model):
             logger.info(
                 'Launching workflow %s for document %s', self, document
             )
-            self.instances.create(document=document)
+            workflow_instance = self.instances.create(document=document)
+            initial_state = self.get_initial_state()
+
+            if initial_state:
+                for action in initial_state.entry_actions.filter(enabled=True):
+                    action.execute(context=workflow_instance.get_context())
         except IntegrityError:
             logger.info(
                 'Workflow %s already launched for document %s', self, document
@@ -352,6 +357,12 @@ class WorkflowInstance(models.Model):
             'document_states:workflow_instance_detail', args=(str(self.pk),)
         )
 
+    def get_context(self):
+        return {
+            'document': self.document, 'workflow': self.workflow,
+            'workflow_instance': self,
+        }
+
     def get_current_state(self):
         """
         Actual State - The current state of the workflow. If there are
@@ -455,12 +466,19 @@ class WorkflowInstanceLogEntry(models.Model):
 
     def save(self, *args, **kwargs):
         result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
+        context = self.workflow_instance.get_context()
+        context.update(
+            {
+                'action': action,
+                'entry_log': self
+            }
+        )
 
         for action in self.transition.origin_state.exit_actions.filter(enabled=True):
-            action.execute(context={'action': action, 'entry_log': self})
+            action.execute(context=context)
 
         for action in self.transition.destination_state.entry_actions.filter(enabled=True):
-            action.execute(context={'action': action, 'entry_log': self})
+            action.execute(context=context)
 
         return result
 
