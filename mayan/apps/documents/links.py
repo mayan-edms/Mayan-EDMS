@@ -152,7 +152,7 @@ link_document_multiple_document_type_edit = Link(
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    text=_('Download'), view='documents:document_multiple_download_form'
+    text=_('Advanced download'), view='documents:document_multiple_download_form'
 )
 link_document_multiple_update_page_count = Link(
     text=_('Recalculate page count'),
