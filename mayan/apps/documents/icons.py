@@ -7,10 +7,10 @@ icon_dashboard_document_types = Icon(
     driver_name='fontawesome', symbol='book'
 )
 icon_dashboard_documents_in_trash = Icon(
-    driver_name='fontawesome', symbol='book'
+    driver_name='fontawesome', symbol='trash'
 )
 icon_dashboard_pages_per_month = Icon(
-    driver_name='fontawesome', symbol='trash'
+    driver_name='fontawesome', symbol='copy'
 )
 icon_dashboard_new_documents_this_month = Icon(
     driver_name='fontawesome', symbol='calendar'
