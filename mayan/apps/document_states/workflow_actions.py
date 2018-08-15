@@ -11,9 +11,73 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
 
-__all__ = ('HTTPPostAction',)
+__all__ = ('DocumentPropertiesEditAction', 'HTTPPostAction',)
 logger = logging.getLogger(__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
+
+
+class DocumentPropertiesEditAction(WorkflowAction):
+    fields = {
+        'document_label': {
+            'label': _('Label'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'The new label to be assigned to the document. Can be a '
+                    'string or a template.'
+                ), 'required': False
+            },
+        }, 'document_description': {
+            'label': _('Description'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'The new description to be assigned to the document. '
+                    'Can be a string or a template.'
+                ), 'required': False
+            },
+        },
+    }
+    field_order = ('document_label', 'document_description')
+    label = _('Modify the properties of the document')
+    widgets = {
+        'document_description': {
+            'class': 'django.forms.widgets.Textarea', 'kwargs': {
+                'attrs': {'rows': '10'},
+            }
+        }
+    }
+
+    def execute(self, context):
+        self.document_label = self.form_data.get('document_label')
+        self.document_description = self.form_data.get('document_description')
+
+        if self.document_label:
+            try:
+                new_label = Template(self.document_label).render(
+                    context=Context(context)
+                )
+            except Exception as exception:
+                raise WorkflowStateActionError(
+                    _('Document label template error: %s') % exception
+                )
+
+            logger.debug('Document label result: %s', new_label)
+
+        if self.document_description:
+            try:
+                new_description = Template(self.document_description or '{}').render(
+                    context=Context(context)
+                )
+            except Exception as exception:
+                raise WorkflowStateActionError(
+                    _('Document description template error: %s') % exception
+                )
+
+            logger.debug('Document description template result: %s', new_description)
+
+        document = context['document']
+        document.label = new_label
+        document.description = new_description
+        document.save()
 
 
 class HTTPPostAction(WorkflowAction):

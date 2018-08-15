@@ -47,6 +47,7 @@
 - Add the tag events view permissions to the tag model ACL.
 - Hide the title link of documents in the trash.
 - Add support for document metadata events: add, edit and remove.
+- Add workflow action to update the label and description of a document.
 
 
 3.0.1 (2018-07-08)
