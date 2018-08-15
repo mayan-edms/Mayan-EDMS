@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django.apps import apps
 from django.db.models.signals import m2m_changed, pre_delete
@@ -12,8 +12,15 @@ from common import (
     menu_sidebar
 )
 from documents.search import document_page_search, document_search
+from events import ModelEventType
+from events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+    link_object_event_types_user_subcriptions_list_with_icon
+)
+from events.permissions import permission_events_view
 from navigation import SourceColumn
 
+from .events import event_tag_attach, event_tag_remove
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
@@ -58,6 +65,12 @@ class TagsApp(MayanAppConfig):
             lambda document: DocumentTag.objects.filter(documents=document)
         )
 
+        ModelEventType.register(
+            model=Tag, event_types=(
+                event_tag_attach, event_tag_remove
+            )
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_tag_attach, permission_tag_remove,
@@ -68,9 +81,9 @@ class TagsApp(MayanAppConfig):
         ModelPermission.register(
             model=Tag, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_tag_attach, permission_tag_delete,
-                permission_tag_edit, permission_tag_remove,
-                permission_tag_view
+                permission_events_view, permission_tag_attach,
+                permission_tag_delete, permission_tag_edit,
+                permission_tag_remove, permission_tag_view,
             )
         )
 
@@ -139,6 +152,8 @@ class TagsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_tag_tagged_item_list, link_tag_edit, link_acl_list,
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
                 link_tag_delete
             ),
             sources=(Tag,)
