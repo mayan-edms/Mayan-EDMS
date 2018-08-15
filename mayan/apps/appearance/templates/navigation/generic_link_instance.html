@@ -13,6 +13,6 @@
             {% endfor %}
 
         href="{{ link.url }}"
-        >{% if link.icon %}<i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>{% endif %}{% if link.icon_class %}{{ link.icon_class.render }}{% endif %} {{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %}&nbsp;{% endif %}{% endif %}
+        >{% if link.icon %}{% if not hide_icon %}<i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>{% endif %}{% endif %}{% if link.icon_class and not hide_icon %}{{ link.icon_class.render }}{% endif %} {{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %}&nbsp;{% endif %}{% endif %}
     {% endif %}
 {% endif %}
