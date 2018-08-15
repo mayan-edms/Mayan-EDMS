@@ -286,7 +286,9 @@ class Link(object):
             app_label='acls', model_name='AccessControlList'
         )
 
-        request = context.request
+        request = getattr(
+            context, 'request', Variable('request').resolve(context)
+        )
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
 
