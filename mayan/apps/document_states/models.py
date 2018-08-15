@@ -469,15 +469,24 @@ class WorkflowInstanceLogEntry(models.Model):
         context = self.workflow_instance.get_context()
         context.update(
             {
-                'action': action,
                 'entry_log': self
             }
         )
 
         for action in self.transition.origin_state.exit_actions.filter(enabled=True):
+            context.update(
+                {
+                    'action': action,
+                }
+            )
             action.execute(context=context)
 
         for action in self.transition.destination_state.entry_actions.filter(enabled=True):
+            context.update(
+                {
+                    'action': action,
+                }
+            )
             action.execute(context=context)
 
         return result
