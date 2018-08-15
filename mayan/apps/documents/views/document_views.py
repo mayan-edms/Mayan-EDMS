@@ -119,6 +119,7 @@ class DeletedDocumentListView(DocumentListView):
         context = super(DeletedDocumentListView, self).get_extra_context()
         context.update(
             {
+                'hide_link': True,
                 'title': _('Documents in trash'),
             }
         )

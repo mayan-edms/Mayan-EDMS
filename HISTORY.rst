@@ -45,6 +45,7 @@
 - Add link to view the events of a tag.
 - Add support for subscribing to the events of a tag.
 - Add the tag events view permissions to the tag model ACL.
+- Hide the title link of documents in the trash.
 
 
 3.0.1 (2018-07-08)
