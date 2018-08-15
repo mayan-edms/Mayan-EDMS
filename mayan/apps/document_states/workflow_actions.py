@@ -49,6 +49,8 @@ class DocumentPropertiesEditAction(WorkflowAction):
     def execute(self, context):
         self.document_label = self.form_data.get('document_label')
         self.document_description = self.form_data.get('document_description')
+        new_label = None
+        new_description = None
 
         if self.document_label:
             try:
@@ -74,10 +76,12 @@ class DocumentPropertiesEditAction(WorkflowAction):
 
             logger.debug('Document description template result: %s', new_description)
 
-        document = context['document']
-        document.label = new_label
-        document.description = new_description
-        document.save()
+        if new_label or new_description:
+            document = context['document']
+            document.label = new_label or document.label
+            document.description = new_description or document.description
+
+            document.save()
 
 
 class HTTPPostAction(WorkflowAction):
