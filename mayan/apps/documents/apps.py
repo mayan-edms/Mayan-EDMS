@@ -42,6 +42,7 @@ from .dashboard_widgets import (
 from .events import (
     event_document_create, event_document_download,
     event_document_properties_edit, event_document_type_change,
+    event_document_type_created, event_document_type_edited,
     event_document_new_version, event_document_version_revert,
     event_document_view
 )
@@ -149,6 +150,7 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentType, event_types=(
                 event_document_create,
+                event_document_type_edited,
             )
         )
         ModelEventType.register(
@@ -408,7 +410,8 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_edit, link_document_type_filename_list,
                 link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_document_type_delete
+                link_document_type_delete,
+                link_events_for_object,
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(

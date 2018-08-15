@@ -31,6 +31,7 @@ from mimetype.api import get_mimetype
 from .events import (
     event_document_create, event_document_new_version,
     event_document_properties_edit, event_document_type_change,
+    event_document_type_created, event_document_type_edited,
     event_document_version_revert
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
@@ -147,6 +148,23 @@ class DocumentType(models.Model):
                 label or file_object.name, self, exception
             )
             raise
+
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        created = not self.pk
+
+        result = super(DocumentType, self).save(*args, **kwargs)
+
+        if created:
+            event_document_type_created.commit(
+                actor=user, target=self
+            )
+        else:
+            event_document_type_edited.commit(
+                actor=user, target=self
+            )
+
+        return result
 
 
 @python_2_unicode_compatible

@@ -35,6 +35,9 @@
 - Add support for template subtitles.
 - Make sure the on entry action of the initial state of workflows
   executes on document creation.
+- Add new document app events: document type created and document type
+  edited.
+- Add link to document type events.
 
 3.0.1 (2018-07-08)
 =================

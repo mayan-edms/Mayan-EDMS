@@ -67,6 +67,11 @@ class DocumentTypeCreateView(SingleObjectCreateView):
             'title': _('Create document type'),
         }
 
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
+        }
+
 
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
@@ -94,6 +99,11 @@ class DocumentTypeEditView(SingleObjectEditView):
         return {
             'object': self.get_object(),
             'title': _('Edit document type: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
         }
 
 
