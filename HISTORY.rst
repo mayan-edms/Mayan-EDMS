@@ -31,6 +31,7 @@
 - Remove the pending work chapter. This is now available in the Wiki: 
   wiki.mayan-edms.com
 - Add support for hiding a links icon. Hide all object menu links' icons.
+- Hide the title link of documents in the trash.
 
 3.0.1 (2018-07-08)
 =================

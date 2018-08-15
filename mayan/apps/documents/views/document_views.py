@@ -68,25 +68,6 @@ class DocumentListView(SingleObjectListView):
         return self.get_document_queryset().filter(is_stub=False)
 
 
-class DeletedDocumentListView(DocumentListView):
-    object_permission = None
-
-    def get_document_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            permission_document_view, self.request.user,
-            queryset=DeletedDocument.trash.all()
-        )
-
-    def get_extra_context(self):
-        context = super(DeletedDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'title': _('Documents in trash'),
-            }
-        )
-        return context
-
-
 class DeletedDocumentDeleteView(ConfirmView):
     extra_context = {
         'title': _('Delete the selected document?')
@@ -123,6 +104,26 @@ class DeletedDocumentDeleteManyView(MultipleInstanceActionMixin, DeletedDocument
     model = DeletedDocument
     success_message = '%(count)d document deleted.'
     success_message_plural = '%(count)d documents deleted.'
+
+
+class DeletedDocumentListView(DocumentListView):
+    object_permission = None
+
+    def get_document_queryset(self):
+        return AccessControlList.objects.filter_by_access(
+            permission_document_view, self.request.user,
+            queryset=DeletedDocument.trash.all()
+        )
+
+    def get_extra_context(self):
+        context = super(DeletedDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'hide_link': True,
+                'title': _('Documents in trash'),
+            }
+        )
+        return context
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
