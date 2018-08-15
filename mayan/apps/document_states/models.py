@@ -219,7 +219,10 @@ class WorkflowStateAction(models.Model):
         on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
         verbose_name=_('Workflow state')
     )
-    label = models.CharField(max_length=255, verbose_name=_('Label'))
+    label = models.CharField(
+        max_length=255, help_text=_('A simple identifier for this action.'),
+        verbose_name=_('Label')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     when = models.PositiveIntegerField(
         choices=WORKFLOW_ACTION_WHEN_CHOICES,
