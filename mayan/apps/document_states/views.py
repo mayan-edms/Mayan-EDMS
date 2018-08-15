@@ -310,6 +310,12 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
             request=self.request
         )
 
+    def get_post_action_redirect(self):
+        return reverse(
+            'document_states:setup_workflow_state_action_list',
+            args=(self.get_object().state.pk,)
+        )
+
 
 class SetupWorkflowStateActionListView(SingleObjectListView):
     object_permission = permission_workflow_edit
