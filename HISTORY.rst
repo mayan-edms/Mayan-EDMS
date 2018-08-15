@@ -38,6 +38,11 @@
 - Add new document app events: document type created and document type
   edited.
 - Add link to document type events.
+- Add new metadata app events: metadata type created, metadata type edited,
+  metadata type to document type relationship update.
+- Add link to metadata type events.
+- Add support for subscribing to metadata type events.
+
 
 3.0.1 (2018-07-08)
 =================

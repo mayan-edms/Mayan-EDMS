@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -17,10 +17,20 @@ from common.classes import ModelAttribute
 from common.widgets import TwoStateWidget
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
+from events import ModelEventType
+from events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+    link_object_event_types_user_subcriptions_list_with_icon
+)
+from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
 
 from .classes import DocumentMetadataHelper
+from .events import (
+    event_metadata_type_created, event_metadata_type_edited,
+    event_metadata_type_relationship
+)
 from .handlers import (
     handler_index_document, post_document_type_metadata_type_add,
     post_document_type_metadata_type_delete,
@@ -56,6 +66,7 @@ class MetadataApp(MayanAppConfig):
 
     def ready(self):
         super(MetadataApp, self).ready()
+        from actstream import registry
 
         from .wizard_steps import WizardStepMetadata  # NOQA
 
@@ -101,6 +112,13 @@ class MetadataApp(MayanAppConfig):
             type_name=['property', 'indexing']
         )
 
+        ModelEventType.register(
+            model=MetadataType, event_types=(
+                event_metadata_type_edited,
+                event_metadata_type_relationship,
+            )
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_metadata_document_add,
@@ -111,6 +129,7 @@ class MetadataApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=MetadataType, permissions=(
+                permission_events_view,
                 permission_metadata_type_delete,
                 permission_metadata_type_edit,
                 permission_metadata_type_view
@@ -187,7 +206,9 @@ class MetadataApp(MayanAppConfig):
             links=(
                 link_setup_metadata_type_edit,
                 link_setup_metadata_type_document_types,
-                link_setup_metadata_type_delete
+                link_object_event_types_user_subcriptions_list,
+                link_events_for_object,
+                link_setup_metadata_type_delete,
             ), sources=(MetadataType,)
         )
         menu_secondary.bind_links(
@@ -237,3 +258,6 @@ class MetadataApp(MayanAppConfig):
             dispatch_uid='metadata_handler_index_document_save',
             sender=DocumentMetadata
         )
+
+        registry.register(MetadataType)
+        registry.register(DocumentTypeMetadataType)

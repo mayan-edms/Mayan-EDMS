@@ -12,6 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document, DocumentType
 
 from .classes import MetadataLookup
+from .events import (
+    event_metadata_type_created, event_metadata_type_edited,
+    event_metadata_type_relationship
+)
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
 from .settings import setting_available_parsers, setting_available_validators
 
@@ -112,6 +116,23 @@ class MetadataType(models.Model):
 
     def natural_key(self):
         return (self.name,)
+
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        created = not self.pk
+
+        result = super(MetadataType, self).save(*args, **kwargs)
+
+        if created:
+            event_metadata_type_created.commit(
+                actor=user, target=self
+            )
+        else:
+            event_metadata_type_edited.commit(
+                actor=user, target=self
+            )
+
+        return result
 
     def validate_value(self, document_type, value):
         # Check default
@@ -230,3 +251,25 @@ class DocumentTypeMetadataType(models.Model):
 
     def __str__(self):
         return force_text(self.metadata_type)
+
+    def delete(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+
+        result = super(DocumentTypeMetadataType, self).delete(*args, **kwargs)
+
+        event_metadata_type_relationship.commit(
+            action_object=self.document_type, actor=user, target=self.metadata_type,
+        )
+
+        return result
+
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+
+        result = super(DocumentTypeMetadataType, self).save(*args, **kwargs)
+
+        event_metadata_type_relationship.commit(
+            action_object=self.document_type, actor=user, target=self.metadata_type,
+        )
+
+        return result

@@ -519,6 +519,11 @@ class MetadataTypeCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
     view_permission = permission_metadata_type_create
 
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
+        }
+
 
 class MetadataTypeDeleteView(SingleObjectDeleteView):
     model = MetadataType
@@ -543,6 +548,11 @@ class MetadataTypeEditView(SingleObjectEditView):
         return {
             'object': self.get_object(),
             'title': _('Edit metadata type: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
         }
 
 
@@ -589,6 +599,11 @@ class SetupDocumentTypeMetadataTypes(FormView):
         return super(
             SetupDocumentTypeMetadataTypes, self
         ).form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {
+            '_user': self.request.user,
+        }
 
     def get_object(self):
         return get_object_or_404(self.model, pk=self.kwargs['pk'])
