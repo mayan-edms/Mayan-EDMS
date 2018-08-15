@@ -28,8 +28,9 @@ from navigation import SourceColumn
 
 from .classes import DocumentMetadataHelper
 from .events import (
-    event_metadata_type_created, event_metadata_type_edited,
-    event_metadata_type_relationship
+    event_document_metadata_added, event_document_metadata_edited,
+    event_document_metadata_removed,event_metadata_type_created,
+    event_metadata_type_edited, event_metadata_type_relationship
 )
 from .handlers import (
     handler_index_document, post_document_type_metadata_type_add,
@@ -113,8 +114,25 @@ class MetadataApp(MayanAppConfig):
         )
 
         ModelEventType.register(
+            model=Document, event_types=(
+                event_document_metadata_added,
+                event_document_metadata_edited,
+                event_document_metadata_removed,
+            )
+        )
+
+        ModelEventType.register(
             model=MetadataType, event_types=(
+                event_document_metadata_added,
+                event_document_metadata_edited,
+                event_document_metadata_removed,
                 event_metadata_type_edited,
+                event_metadata_type_relationship,
+            )
+        )
+
+        ModelEventType.register(
+            model=DocumentType, event_types=(
                 event_metadata_type_relationship,
             )
         )

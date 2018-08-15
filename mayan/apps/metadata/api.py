@@ -35,28 +35,37 @@ def decode_metadata_from_querystring(querystring=None):
     return metadata_list
 
 
-def save_metadata_list(metadata_list, document, create=False):
+def save_metadata_list(metadata_list, document, create=False, _user=None):
     """
     Take a list of metadata dictionaries and associate them to a
     document
     """
     for item in metadata_list:
-        save_metadata(item, document, create)
+        save_metadata(
+            metadata_dict=item, document=document, create=create, _user=_user
+        )
 
 
-def save_metadata(metadata_dict, document, create=False):
+def save_metadata(metadata_dict, document, create=False, _user=None):
     """
     Take a dictionary of metadata type & value and associate it to a
     document
     """
+    parameters = {
+        'document': document,
+        'metadata_type': get_object_or_404(
+            MetadataType,
+            pk=metadata_dict['id']
+        )
+    }
+
     if create:
         # Use matched metadata now to create document metadata
-        document_metadata, created = DocumentMetadata.objects.get_or_create(
-            document=document,
-            metadata_type=get_object_or_404(
-                MetadataType,
-                pk=metadata_dict['id'])
-        )
+        try:
+            DocumentMetadata.objects.get(**parameters)
+        except DocumentMetadata.DoesNotExist:
+            document_metadata = DocumentMetadata(**parameters)
+            document_metadata.save(_user=_user)
     else:
         try:
             document_metadata = DocumentMetadata.objects.get(
@@ -77,7 +86,7 @@ def save_metadata(metadata_dict, document, create=False):
     # .decode('utf-8')
     if document_metadata:
         document_metadata.value = unquote_plus(metadata_dict['value'])
-        document_metadata.save()
+        document_metadata.save(_user=_user)
 
 
 def metadata_repr(metadata_list):

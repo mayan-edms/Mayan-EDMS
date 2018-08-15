@@ -149,11 +149,19 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
     def object_action(self, form, instance):
         for metadata_type in form.cleaned_data['metadata_type']:
             try:
-                document_metadata, created = DocumentMetadata.objects.get_or_create(
-                    document=instance,
-                    metadata_type=metadata_type,
-                    defaults={'value': ''}
-                )
+                created = False
+                try:
+                    DocumentMetadata.objects.get(
+                        document=instance,
+                        metadata_type=metadata_type,
+                    )
+                except DocumentMetadata.DoesNotExist:
+                    instance = DocumentMetadata(
+                        document=instance,
+                        metadata_type=metadata_type,
+                    )
+                    instance.save(_user=self.request.user)
+                    created = True
             except ValidationError as exception:
                 messages.error(
                     self.request,
@@ -310,7 +318,10 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
         for form in form.forms:
             if form.cleaned_data['update']:
                 try:
-                    save_metadata_list([form.cleaned_data], instance)
+                    save_metadata_list(
+                        metadata_list=[form.cleaned_data], document=instance,
+                        _user=self.request.user
+                    )
                 except Exception as exception:
                     errors.append(exception)
 
@@ -488,7 +499,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
                     document_metadata = DocumentMetadata.objects.get(
                         document=instance, metadata_type=metadata_type
                     )
-                    document_metadata.delete()
+                    document_metadata.delete(_user=self.request.user)
                     messages.success(
                         self.request,
                         _(

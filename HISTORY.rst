@@ -46,6 +46,7 @@
 - Add support for subscribing to the events of a tag.
 - Add the tag events view permissions to the tag model ACL.
 - Hide the title link of documents in the trash.
+- Add support for document metadata events: add, edit and remove.
 
 
 3.0.1 (2018-07-08)

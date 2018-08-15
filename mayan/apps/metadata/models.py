@@ -5,6 +5,7 @@ import shlex
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.template import Context, Template
+from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -13,8 +14,9 @@ from documents.models import Document, DocumentType
 
 from .classes import MetadataLookup
 from .events import (
-    event_metadata_type_created, event_metadata_type_edited,
-    event_metadata_type_relationship
+    event_document_metadata_added, event_document_metadata_edited,
+    event_document_metadata_removed,event_metadata_type_created,
+    event_metadata_type_edited, event_metadata_type_relationship
 )
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
 from .settings import setting_available_parsers, setting_available_validators
@@ -90,6 +92,9 @@ class MetadataType(models.Model):
 
     def __str__(self):
         return self.label
+
+    def get_absolute_url(self):
+        return reverse('metadata:setup_metadata_type_edit', args=(self.pk,))
 
     @staticmethod
     def comma_splitter(string):
@@ -208,7 +213,13 @@ class DocumentMetadata(models.Model):
                 _('Metadata type is required for this document type.')
             )
 
-        return super(DocumentMetadata, self).delete(*args, **kwargs)
+        user = kwargs.pop('_user', None)
+        result = super(DocumentMetadata, self).delete(*args, **kwargs)
+
+        event_document_metadata_removed.commit(
+            action_object=self.metadata_type, actor=user, target=self.document,
+        )
+        return result
 
     def natural_key(self):
         return self.document.natural_key() + self.metadata_type.natural_key()
@@ -226,7 +237,23 @@ class DocumentMetadata(models.Model):
                 _('Metadata type is not valid for this document type.')
             )
 
-        return super(DocumentMetadata, self).save(*args, **kwargs)
+        user = kwargs.pop('_user', None)
+        created = not self.pk
+
+        result = super(DocumentMetadata, self).save(*args, **kwargs)
+
+        if created:
+            event_document_metadata_added.commit(
+                action_object=self.metadata_type, actor=user,
+                target=self.document,
+            )
+        else:
+            event_document_metadata_edited.commit(
+                action_object=self.metadata_type, actor=user,
+                target=self.document,
+            )
+
+        return result
 
 
 @python_2_unicode_compatible
