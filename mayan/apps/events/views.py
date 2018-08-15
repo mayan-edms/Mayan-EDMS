@@ -161,11 +161,13 @@ class ObjectEventListView(EventListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
-        return {
+        context = super(ObjectEventListView, self).get_extra_context()
+        context.update({
             'hide_object': True,
             'object': self.content_object,
             'title': _('Events for: %s') % self.content_object,
-        }
+        })
+        return context
 
     def get_object_list(self):
         return any_stream(self.content_object)
