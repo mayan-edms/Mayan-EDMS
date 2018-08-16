@@ -3,7 +3,9 @@
 - Docker install script: Default to verbose.
 - Docker install script: Increase startup timer to 10 seconds.
 - Docker install script: Allow configuring the PostgreSQL port.
-   
+- Add deployment step that configures Redis to discard unused
+  task data when it runs out of memory.
+
 3.0.1 (2018-07-08)
 =================
 - Pin javascript libraries to specific versions to avoid using 
