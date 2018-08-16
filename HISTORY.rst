@@ -18,20 +18,24 @@
   issue #489.
 - Docker install script: Detect if Docker installed and provide help
   text if not.
-- Update dropzone.js' timeout from 30 seconds to 120 to allow upload
-  of large files on slow connections.
-- Increase gunicorn's timeout from 30 seconds to 120.
-- Display error when attempting to recalculate the page count of an empty
+- Sources app: Update dropzone.js' timeout from 30 seconds to 120 to allow
+  upload of large files on slow connections.
+- Documentation: Increase gunicorn's timeout from 30 seconds to 120.
+- Documents app: Display error when attempting to recalculate the page
+  count of an empty
   document (document stub that has no document version).
-- Include querystring when force reload of a bare template view.
-- Fix trashed document count and document page count swapped dashboard icons.
-- Rename the multi document download link from "Download" to
+- Appearance app: Include querystring when force reload of a bare template view.
+- Documents app: Fix trashed document count and document page count swapped
+  dashboard icons.
+- Documents app: Rename the multi document download link from "Download" to
   "Advanced download" for consistency.
-- Remove code statistics from the documentation.
-- Remove the pending work chapter. This is now available in the Wiki: 
-  wiki.mayan-edms.com
-- Add support for hiding a links icon. Hide all object menu links' icons.
-- Hide the title link of documents in the trash.
+- Documentation: Remove code statistics from the documentation.
+- Documentation: Remove the pending work chapter. This is now available in
+  the Wiki: wiki.mayan-edms.com
+- Appearance app: Add support for hiding a links icon. Hide all object menu
+  links' icons.
+- Documents app: Hide the title link of documents in the trash.
+- Workflow app: Define a redirection after workflow actions are edited.
 
 3.0.1 (2018-07-08)
 =================
