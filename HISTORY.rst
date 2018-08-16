@@ -30,6 +30,7 @@
 - Remove code statistics from the documentation.
 - Remove the pending work chapter. This is now available in the Wiki: 
   wiki.mayan-edms.com
+- Add support for hiding a links icon. Hide all object menu links' icons.
 
 3.0.1 (2018-07-08)
 =================
