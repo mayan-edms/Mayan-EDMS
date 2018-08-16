@@ -39,6 +39,9 @@
 - Appearance app: avoid setting window.location directly to avoid exploit
   of cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
   and solution. Closes GitLab issue #494.
+- Cabinets app: Escape cabinet labels to avoid possible exploit of
+  cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and proposed solutions. Closes GitLab issue #495.
 
 3.0.1 (2018-07-08)
 =================
