@@ -16,6 +16,9 @@
 - Common app: Fix post login redirection to honor the ?next= URL query string
   argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
   issue #489.
+- Docker install script: Detect if Docker installed and provide help
+  text if not.
+
 
 3.0.1 (2018-07-08)
 =================
