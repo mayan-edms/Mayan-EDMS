@@ -1,4 +1,10 @@
-3.0.1 (208-07-08)
+3.0.2 (2018-08-16)
+==================
+- Docker install script: Default to verbose.
+- Docker install script: Increase startup timer to 10 seconds.
+- Docker install script: Allow configuring the PostgreSQL port.
+   
+3.0.1 (2018-07-08)
 =================
 - Pin javascript libraries to specific versions to avoid using 
   potentianlly broken updates automatically. GitLab issue #486.
