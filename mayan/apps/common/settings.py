@@ -6,9 +6,11 @@ import tempfile
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+import mayan
 from smart_settings import Namespace
 
 namespace = Namespace(name='common', label=_('Common'))
+
 setting_auto_logging = namespace.add_setting(
     global_name='COMMON_AUTO_LOGGING',
     default=True,
@@ -20,13 +22,6 @@ settings_db_sync_task_delay = namespace.add_setting(
     help_text=_(
         'Time to delay background tasks that depend on a database commit to '
         'propagate.'
-    )
-)
-setting_local_settings_filename = namespace.add_setting(
-    global_name='COMMON_LOCAL_SETTINGS_FILENAME',
-    default='local', help_text=_(
-        'Filename of the local settings file (just the filename, extension '
-        'will be .py).'
     )
 )
 setting_paginate_by = namespace.add_setting(
@@ -45,7 +40,7 @@ setting_shared_storage_arguments = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
     default='{{location: {}}}'.format(
         os.path.join(settings.MEDIA_ROOT, 'shared_files')
-    )
+    ), quoted=True
 )
 setting_temporary_directory = namespace.add_setting(
     global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
@@ -69,4 +64,10 @@ setting_production_error_log_path = namespace.add_setting(
         'Path to the logfile that will track errors during production.'
     ),
     is_path=True
+)
+setting_project_title = namespace.add_setting(
+    global_name='COMMON_PROJECT_TITLE',
+    default=mayan.__title__, help_text=_(
+        'Name to be displayed in the main menu.'
+    ),
 )

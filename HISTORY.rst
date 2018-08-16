@@ -48,6 +48,9 @@
 - Hide the title link of documents in the trash.
 - Add support for document metadata events: add, edit and remove.
 - Add workflow action to update the label and description of a document.
+- Add COMMON_PROJECT_TITLE as a setting option to customize the title
+  string.
+
 
 
 3.0.1 (2018-07-08)

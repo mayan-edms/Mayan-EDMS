@@ -6,6 +6,7 @@
 {% load autoadmin_tags %}
 {% load common_tags %}
 {% load motd_tags %}
+{% load smart_settings_tags %}
 
 {% block base_title %}{% trans 'Login' %}{% endblock %}
 
@@ -21,7 +22,7 @@
                         <h3 class="panel-title">{% trans "First time login" %}</h3>
                     </div>
                     <div class="panel-body">
-                        {% project_information '__title__' as project_title %}
+                        {% smart_setting 'COMMON_PROJECT_TITLE' as project_title %}
                         <p>{% blocktrans %}You have just finished installing <strong>{{ project_title }}</strong>, congratulations!{% endblocktrans %}</p>
                         <p>{% trans 'Login using the following credentials:' %}</p>
                         <p>{% blocktrans with autoadmin_properties.account as account %}Username: <strong>{{ account }}</strong>{% endblocktrans %}</p>

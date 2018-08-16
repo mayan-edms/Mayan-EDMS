@@ -4,6 +4,7 @@
 {% load static %}
 
 {% load common_tags %}
+{% load smart_settings_tags %}
 
 {% block title %}{% trans 'About' %}{% endblock %}
 
@@ -55,8 +56,20 @@
 
 {% block content %}
     {% build as build_number %}
+    {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}
+    {% project_information '__title__' as project_title %}
+
     <div class="well">
-        <h3 class="text-center">{% project_information '__title__' %} ({% trans 'Version' %} {% project_information '__version__' %})</h3>
+        <h3 class="text-center">{{ setting_project_title }}</h3>
+        {% if project_title != setting_project_title %}
+            <br>
+            <p class="text-center">
+                {% blocktrans with setting_project_title as setting_project_title and project_title as project_title %}
+                    {{ setting_project_title }} is based on {{ project_title }}
+                {% endblocktrans %}
+            </p>
+        {% endif %}
+        <p class="text-center">{% trans 'Version' %} {% project_information '__version__' %}</p>
         {% if build_number %}
             <p class='text-center'>{% blocktrans with build_number as build_number %}Build number: {{ build_number }}{% endblocktrans %}</p>
         {% endif %}
