@@ -3,8 +3,12 @@
 - Docker install script: Default to verbose.
 - Docker install script: Increase startup timer to 10 seconds.
 - Docker install script: Allow configuring the PostgreSQL port.
-- Add deployment step that configures Redis to discard unused
-  task data when it runs out of memory.
+- Documentation: Add deployment step that configures Redis to discard
+  unused task data when it runs out of memory.
+- Index app: Add natural key support to the Index model.
+- Mailer app: Add natural key support to the mailer app.
+- Cabinets: Redirect to the cabinet list view after creating a new cabinet.
+- Builds: Limit the number of branches that trigger the full test suit.
 
 3.0.1 (2018-07-08)
 =================
