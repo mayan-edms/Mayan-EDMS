@@ -16,5 +16,5 @@ setting_storage_backend_arguments = namespace.add_setting(
     global_name='SIGNATURES_STORAGE_BACKEND_ARGUMENTS',
     default='{{location: {}}}'.format(
         os.path.join(settings.MEDIA_ROOT, 'document_signatures')
-    )
+    ), quoted=True
 )

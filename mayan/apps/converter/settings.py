@@ -32,5 +32,5 @@ setting_graphics_backend_config = namespace.add_setting(
         DEFAULT_PILLOW_FORMAT
     ), help_text=_(
         'Configuration options for the graphics conversion backend.'
-    ), global_name='CONVERTER_GRAPHICS_BACKEND_CONFIG',
+    ), global_name='CONVERTER_GRAPHICS_BACKEND_CONFIG', quoted=True
 )

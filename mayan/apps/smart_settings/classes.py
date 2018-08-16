@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from importlib import import_module
 import logging
 import os
+import sys
 
 import yaml
 
@@ -43,9 +44,6 @@ class Namespace(object):
         for namespace in cls.get_all():
             namespace.invalidate_cache()
 
-    def __str__(self):
-        return force_text(self.label)
-
     def __init__(self, name, label):
         if name in self.__class__._registry:
             raise Exception(
@@ -55,6 +53,9 @@ class Namespace(object):
         self.label = label
         self.__class__._registry[name] = self
         self._settings = []
+
+    def __str__(self):
+        return force_text(self.label)
 
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
@@ -90,14 +91,52 @@ class Setting(object):
         return result
 
     @classmethod
-    def get(cls, global_name):
-        return cls._registry[global_name].value
+    def dump_data(cls):
+        result = []
 
-    def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
+        for setting in cls.get_all():
+            # Ensure there is at least one newline
+            line = '{}: {}\n'.format(
+                setting.global_name, setting.serialized_value
+            )
+
+            # If there are two newlines, remove one
+            if line.endswith('\n\n'):
+                line = line[:-1]
+
+            result.append(line)
+
+        return ''.join(result)
+
+    @classmethod
+    def get(cls, global_name):
+        return cls._registry[global_name]
+
+    @classmethod
+    def get_all(cls):
+        return sorted(cls._registry.values(), key=lambda x: x.global_name)
+
+    @classmethod
+    def save_configuration(cls, path=settings.CONFIGURATION_FILEPATH):
+        with open(path, 'w') as file_object:
+            file_object.write(cls.dump_data())
+
+    @classmethod
+    def save_last_known_good(cls):
+        # Don't write over the last good configuration if we are trying
+        # to restore the last good configuration
+        if not 'revertsettings' in sys.argv:
+            cls.save_configuration(
+                path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
+            )
+
+    def __init__(self, namespace, global_name, default, help_text=None, is_path=False, quoted=False):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
         self.loaded = False
+        self.namespace = namespace
+        self.quoted = quoted
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
 
@@ -137,5 +176,9 @@ class Setting(object):
     @value.setter
     def value(self, value):
         # value is in YAML format
-        self.yaml = value
+        if self.quoted:
+            self.yaml = '\'{}\''.format(value)
+            value = '\'{}\''.format(value)
+        else:
+            self.yaml = value
         self.raw_value = Setting.deserialize_value(value)

@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from __future__ import unicode_literals
 
+import errno
 import os
 import sys
+
+import yaml
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -347,3 +350,44 @@ else:
 # ----- Debug -----
 
 DEBUG = env.bool('MAYAN_DEBUG', default=False)
+
+
+
+CONFIGURATION_FILENAME = '_settings.yml'
+CONFIGURATION_FILEPATH = os.path.join(MEDIA_ROOT, CONFIGURATION_FILENAME)
+
+CONFIGURATION_USER_FILENAME = 'config.yml'
+CONFIGURATION_USER_FILEPATH = os.path.join(
+    MEDIA_ROOT, CONFIGURATION_USER_FILENAME
+)
+
+CONFIGURATION_LAST_GOOD_FILENAME = '_settings_backup.yml'
+CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
+    MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
+)
+
+
+def read_configuration_file(path):
+    try:
+        with open(CONFIGURATION_FILEPATH) as file_object:
+            file_object.seek(0, os.SEEK_END)
+            if file_object.tell():
+                file_object.seek(0)
+                try:
+                    globals().update(yaml.safe_load(file_object))
+                except yaml.YAMLError as exception:
+                    exit(
+                        'Error loading configuration file: {}; {}'.format(
+                            CONFIGURATION_FILEPATH, exception
+                        )
+                    )
+    except IOError as exception:
+        if exception.errno == errno.ENOENT:
+            pass
+        else:
+            raise
+
+
+if not 'revertsettings' in sys.argv:
+    read_configuration_file(CONFIGURATION_FILEPATH)
+    read_configuration_file(CONFIGURATION_USER_FILEPATH)

@@ -6,6 +6,9 @@ from permissions import PermissionNamespace
 
 namespace = PermissionNamespace('smart_settings', _('Smart settings'))
 
+permission_settings_edit = namespace.add_permission(
+    name='permission_settings_edit', label=_('Edit settings')
+)
 permission_settings_view = namespace.add_permission(
     name='permission_settings_view', label=_('View settings')
 )

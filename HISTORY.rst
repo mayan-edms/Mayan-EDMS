@@ -50,8 +50,11 @@
 - Add workflow action to update the label and description of a document.
 - Add COMMON_PROJECT_TITLE as a setting option to customize the title
   string.
-
-
+- Add support for YAML configuration files.
+- Add support for editing setting options and saving them using the
+  new YAML configuration file support.
+- Add new revertsettings management command.
+- Add new permission to edit setting via the UI.
 
 3.0.1 (2018-07-08)
 =================

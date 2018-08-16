@@ -10,6 +10,17 @@ from smart_settings import Namespace
 from .literals import DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 
 namespace = Namespace(name='documents', label=_('Documents'))
+
+setting_documentimagecache_storage = namespace.add_setting(
+    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
+    default='django.core.files.storage.FileSystemStorage', quoted=True
+)
+setting_documentimagecache_storage_arguments = namespace.add_setting(
+    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'document_cache')
+    ), quoted=True
+)
 setting_disable_base_image_cache = namespace.add_setting(
     global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
     help_text=_(
@@ -31,19 +42,6 @@ setting_display_height = namespace.add_setting(
 setting_display_width = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_WIDTH', default='3600'
 )
-settings_document_page_image_cache_time = namespace.add_setting(
-    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='31556926'
-)
-setting_documentimagecache_storage = namespace.add_setting(
-    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
-    default='django.core.files.storage.FileSystemStorage'
-)
-setting_documentimagecache_storage_arguments = namespace.add_setting(
-    global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'document_cache')
-    )
-)
 setting_fix_orientation = namespace.add_setting(
     global_name='DOCUMENTS_FIX_ORIENTATION', default=False,
     help_text=_(
@@ -60,6 +58,9 @@ setting_language = namespace.add_setting(
 setting_language_codes = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE_CODES', default=DEFAULT_LANGUAGE_CODES,
     help_text=_('List of supported document languages. In ISO639-3 format.')
+)
+settings_document_page_image_cache_time = namespace.add_setting(
+    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='31556926'
 )
 setting_preview_height = namespace.add_setting(
     global_name='DOCUMENTS_PREVIEW_HEIGHT', default=''
