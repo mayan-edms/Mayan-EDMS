@@ -24,6 +24,10 @@
 - Display error when attempting to recalculate the page count of an empty
   document (document stub that has no document version).
 - Include querystring when force reload of a bare template view.
+- Fix trashed document count and document page count swapped dashboard icons.
+- Rename the multi document download link from "Download" to
+  "Advanced download" for consistency.
+
 
 3.0.1 (2018-07-08)
 =================
