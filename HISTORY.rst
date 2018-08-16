@@ -36,6 +36,9 @@
   links' icons.
 - Documents app: Hide the title link of documents in the trash.
 - Workflow app: Define a redirection after workflow actions are edited.
+- Appearance app: avoid setting window.location directly to avoid exploit
+  of cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and solution. Closes GitLab issue #494.
 
 3.0.1 (2018-07-08)
 =================
