@@ -22,7 +22,7 @@ job_docker_master:
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
   only:
-    - master
+    - releases
 
 job_docker_nightly:
   stage: build
