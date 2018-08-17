@@ -136,16 +136,16 @@ docs-serve:
 
 # Translations
 
-translations_make:
+translations-make:
 	contrib/scripts/process_messages.py -m
 
-translations_compile:
+translations-compile:
 	contrib/scripts/process_messages.py -c
 
-translations_push:
+translations-push:
 	tx push -s
 
-translations_pull:
+translations-pull:
 	tx pull -f
 
 
