@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -76,6 +76,13 @@ class TagAttachActionView(MultipleObjectFormActionView):
             )
 
         return result
+
+    def get_post_action_redirect(self):
+        queryset = self.get_queryset()
+        if queryset.count() == 1:
+            return reverse('tags:document_tags', args=(queryset.first().pk,))
+        else:
+            return super(TagAttachActionView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
         attached_tags = instance.attached_tags()
@@ -290,6 +297,13 @@ class TagRemoveActionView(MultipleObjectFormActionView):
             )
 
         return result
+
+    def get_post_action_redirect(self):
+        queryset = self.get_queryset()
+        if queryset.count() == 1:
+            return reverse('tags:document_tags', args=(queryset.first().pk,))
+        else:
+            return super(TagRemoveActionView, self).get_post_action_redirect()
 
     def object_action(self, form, instance):
         attached_tags = instance.attached_tags()

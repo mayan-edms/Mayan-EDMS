@@ -1,8 +1,10 @@
 3.0.3 (2018-08-17)
 ==================
-- Add explicit casting of escaped tag labels to prevent exploit
+- Tags app: Add explicit casting of escaped tag labels to prevent exploit
   of cross site scripting. Thanks to Lokesh (@lokesh1095) for
   the report and proposed solutions. Closes GitLab issue #496.
+- Tags app: Add explicit post action redirect for the tag attach and 
+  tag remove actions when working on a single document.
 
 3.0.2 (2018-08-16)
 ==================
