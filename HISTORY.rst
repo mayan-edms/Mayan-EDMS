@@ -45,7 +45,7 @@
 - Language translation synchonization.
 
 3.0.1 (2018-07-08)
-=================
+==================
 - Pin javascript libraries to specific versions to avoid using 
   potentianlly broken updates automatically. GitLab issue #486.
 - French and Polish language translation updates.
