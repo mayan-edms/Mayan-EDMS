@@ -42,6 +42,7 @@
 - Cabinets app: Escape cabinet labels to avoid possible exploit of
   cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
   and proposed solutions. Closes GitLab issue #495.
+- Language translation synchonization.
 
 3.0.1 (2018-07-08)
 =================

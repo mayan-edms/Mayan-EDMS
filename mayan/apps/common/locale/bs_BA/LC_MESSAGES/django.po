@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:03-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-08-08 09:49+0000\n"
+"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: apps.py:85 permissions_runtime.py:7 settings.py:11
 msgid "Common"
-msgstr ""
+msgstr "Zajednicki"
 
 #: apps.py:90
 msgid "Anonymous"
@@ -28,11 +29,11 @@ msgstr "Anonimni"
 
 #: classes.py:181
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Raspoloživi atributi:\n"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "Glavni"
 
 #: forms.py:25
 msgid "Selection"
@@ -41,7 +42,7 @@ msgstr "Odabir"
 #: generics.py:136
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "Nemoguće prenositi selekcije:%s."
 
 #: generics.py:160
 msgid "Add"
@@ -54,40 +55,40 @@ msgstr "Ukloniti"
 #: generics.py:353
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s nije kreiran, greška:%(error)s"
 
 #: generics.py:364
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s kreiran uspešno."
 
 #: generics.py:393
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s nije izbrisan, greška:%(error)s."
 
 #: generics.py:404
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s izbrisan uspešno."
 
 #: generics.py:450
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s nije ažuriran, greška:%(error)s."
 
 #: generics.py:461
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s ažuriran uspešno."
 
 #: links.py:33
 msgid "About this"
-msgstr ""
+msgstr "O ovome"
 
 #: links.py:36 views.py:61
 msgid "Check for updates"
-msgstr ""
+msgstr "Proveravanje za ažuriranje"
 
 #: links.py:40
 msgid "User details"
@@ -95,35 +96,35 @@ msgstr "Detalji o korisniku"
 
 #: links.py:44
 msgid "Edit details"
-msgstr ""
+msgstr "Uredite detalje"
 
 #: links.py:47
 msgid "Locale profile"
-msgstr ""
+msgstr "Lokalni profil"
 
 #: links.py:51
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Uredi lokalni profil"
 
 #: links.py:55
 msgid "Source code"
-msgstr ""
+msgstr "Izvorni kod"
 
 #: links.py:59
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacija"
 
 #: links.py:64 links.py:74
 msgid "Errors"
-msgstr ""
+msgstr "Greške"
 
 #: links.py:69
 msgid "Clear all"
-msgstr ""
+msgstr "Izbriši sve"
 
 #: links.py:78
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:82 views.py:164
 msgid "License"
@@ -131,7 +132,7 @@ msgstr "Licence"
 
 #: links.py:85 views.py:239
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Ostale license za pakete"
 
 #: links.py:89
 msgid "Setup"
@@ -139,7 +140,7 @@ msgstr "Setup"
 
 #: links.py:92
 msgid "Support"
-msgstr ""
+msgstr "Podrška"
 
 #: links.py:96 queues.py:10 views.py:274
 msgid "Tools"
@@ -149,7 +150,7 @@ msgstr "Alati"
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
 
 #: literals.py:18
 msgid "Days"
@@ -165,11 +166,11 @@ msgstr "Minuta"
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Obradite određenu aplikaciju"
 
 #: menus.py:12
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: menus.py:22 models.py:81
 msgid "User"
@@ -178,12 +179,12 @@ msgstr "Korisnik"
 #: mixins.py:82
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr ""
+msgstr "Izvršena operacija na %(count)d objektu"
 
 #: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgstr "Izvršena operacija na %(count)d objektima"
 
 #: mixins.py:254
 msgid "Object"
@@ -195,19 +196,19 @@ msgstr "Imenovani prostor"
 
 #: models.py:35 models.py:55
 msgid "Date time"
-msgstr ""
+msgstr "Datum vreme"
 
 #: models.py:37 views.py:209
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "Greška u unosu dnevnika"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "Greška u unosima dnevnika"
 
 #: models.py:51
 msgid "File"
@@ -219,31 +220,31 @@ msgstr "Naziv datoteke"
 
 #: models.py:59
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Deljeni otpremljeni fajl"
 
 #: models.py:60
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Deljeni otpremljeni fajlovi"
 
 #: models.py:85
 msgid "Timezone"
-msgstr ""
+msgstr "Vremenska zona"
 
 #: models.py:88
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: models.py:92
 msgid "User locale profile"
-msgstr ""
+msgstr "Koristnički lokalni profil"
 
 #: models.py:93
 msgid "User locale profiles"
-msgstr ""
+msgstr "Koristnički lokalni profili"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Pogledajte dnevnik grešaka"
 
 #: queues.py:8
 msgid "Default"
@@ -251,106 +252,106 @@ msgstr "default"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "Vremenski zajednički"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Obriši stare otpreme"
 
 #: settings.py:15
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Automatski omogućite evidenciju za sve aplikacije."
 
 #: settings.py:21
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr ""
+msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
 
 #: settings.py:28
 msgid ""
 "Filename of the local settings file (just the filename, extension will be "
 ".py)."
-msgstr ""
+msgstr "Filename lokalne datoteke za podešavanja (samo ime datoteke, ekstenzija će biti .pi)."
 
 #: settings.py:36
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "Broj koji određuje koliko objekata treba prikazati po stranici."
 
 #: settings.py:42
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
 #: settings.py:53
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, preglednika i privremenih datoteka."
 
 #: settings.py:62
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja grešaka."
 
 #: settings.py:69
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
 
 #: views.py:49
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Verzija koju koristite je zastarela. Najnovija verzija je %s"
 
 #: views.py:54
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Nije moguće odrediti najnoviju verziju koja je dostupna."
 
 #: views.py:58
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Vaša verzija je ažurna."
 
 #: views.py:75
 msgid "Current user details"
-msgstr ""
+msgstr "Podaci o trenutnom korisniku"
 
 #: views.py:80
 msgid "Edit current user details"
-msgstr ""
+msgstr "Izmenite podatke o trenutnom korisniku"
 
 #: views.py:100
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Detalji lokalnog profila trenutnog korisnika"
 
 #: views.py:107
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Uredi detalje lokalnog profila trenutnog korisnika"
 
 #: views.py:155
 msgid "Dashboard"
-msgstr ""
+msgstr "Komandna tabla"
 
 #: views.py:173
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Obrišite unose evidencije grešaka za:%s"
 
 #: views.py:190
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Dnevnik grešaka objekata je uspešno obrisan"
 
 #: views.py:208
 msgid "Date and time"
-msgstr ""
+msgstr "Datum i vreme"
 
 #: views.py:213
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Unos log grešaka za:%s"
 
 #: views.py:257
 msgid "Setup items"

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:05-0400\n"
-"PO-Revision-Date: 2018-04-10 08:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-08-09 10:51+0000\n"
+"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,11 +41,11 @@ msgstr "Ukini"
 
 #: links.py:27
 msgid "Create new role"
-msgstr ""
+msgstr "Kreirajte novu ulogu"
 
 #: links.py:31
 msgid "Delete"
-msgstr ""
+msgstr "Obriši"
 
 #: links.py:35
 msgid "Edit"
@@ -56,7 +57,7 @@ msgstr "Grupe"
 
 #: links.py:48
 msgid "Role permissions"
-msgstr ""
+msgstr "Dozvole za ulogu"
 
 #: models.py:19
 msgid "Namespace"
@@ -76,7 +77,7 @@ msgstr "Labela"
 
 #: models.py:88
 msgid "Role"
-msgstr ""
+msgstr "Uloga"
 
 #: permissions.py:10
 msgid "View roles"
@@ -104,58 +105,58 @@ msgstr "Ukini dozvole"
 
 #: search.py:20
 msgid "Group name"
-msgstr ""
+msgstr "Ime grupe"
 
 #: serializers.py:46
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili zamjenu u ovoj ulozi."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova za dodelu ove uloge."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Nema takve dozvole: %s"
 
 #: views.py:29
 msgid "Available roles"
-msgstr ""
+msgstr "Dostupne uloge"
 
 #: views.py:30
 msgid "Group roles"
-msgstr ""
+msgstr "Grupne uloge"
 
 #: views.py:40
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Uloge grupe: %s"
 
 #: views.py:82
 msgid "Available groups"
-msgstr ""
+msgstr "Dostupne grupe"
 
 #: views.py:83
 msgid "Role groups"
-msgstr ""
+msgstr "Uloge grupa"
 
 #: views.py:93
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Grupe uloge: %s"
 
 #: views.py:116
 msgid "Available permissions"
-msgstr ""
+msgstr "Dostupne dozvole"
 
 #: views.py:117
 msgid "Granted permissions"
-msgstr ""
+msgstr "Dodjeljene dozvole"
 
 #: views.py:157
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Dozvole za ulogu: %s"
