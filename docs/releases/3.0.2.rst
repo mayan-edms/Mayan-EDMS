@@ -131,6 +131,7 @@ Bugs fixed or issues closed
 
 * `GitLab issue #489 <https://gitlab.com/mayan-edms/mayan-edms/issues/489>`_ "next" parameter is not honored after login
 * `GitLab issue #490 <https://gitlab.com/mayan-edms/mayan-edms/issues/490>`_ Crop Transformation seems to not convert input to numeric values
+* `GitLab issue #491 <https://gitlab.com/mayan-edms/mayan-edms/issues/491>`_ "Warning Your database backend is set to use SQLite[...]" with docker compose
 * `GitLab issue #494 <https://gitlab.com/mayan-edms/mayan-edms/issues/494>`_ DOM based Cross Site Scripting
 * `GitLab issue #495 <https://gitlab.com/mayan-edms/mayan-edms/issues/495>`_ Persistent Cross Site Scripting
 
