@@ -396,7 +396,6 @@ X.Y     # Final release
 
 Release checklist
 ~~~~~~~~~~~~~~~~~
-
 1. Check for missing migrations::
 
     make check-missing-migrations
@@ -420,31 +419,40 @@ or with::
 
     make check-readme
 
-8. Bump version in `mayan/__init__.py` and in `docker/version`.
-9. Update requirements version in `setup.py` using::
+8. Bump version in `mayan/__init__.py`.
+9. Bump version in `docker/version`.
+10. Update requirements version in `setup.py` using::
 
     make generate-setup
 
-10. Build source package and test::
+11. Build source package and test::
 
      make test-sdist-via-docker-ubuntu
 
-11. Build wheel package and test::
+12. Build wheel package and test::
 
      make test-wheel-via-docker-ubuntu
 
-12. Tag version::
+13. Tag version::
 
      git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-13. Push tag upstream::
+14. Switch to the `releases` branch::
+
+    git checkout releases
+
+15. Push tag upstream::
 
      git push --tags
 
-14. Build and upload a test release::
+16. Push code to trigger builds::
+
+    git push
+
+17. Build and upload a test release::
 
      make release-test-via-docker-ubuntu
 
-15. Build and upload a final release::
+18. Build and upload a final release::
 
      make release-via-docker-ubuntu
