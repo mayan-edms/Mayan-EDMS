@@ -71,3 +71,173 @@ setting_project_title = namespace.add_setting(
         'Name to be displayed in the main menu.'
     ),
 )
+
+namespace = Namespace(name='django', label=_('Django'))
+
+setting_django_databases = namespace.add_setting(
+    global_name='ALLOWED_HOSTS', default=settings.ALLOWED_HOSTS,
+    help_text=_(
+        'A list of strings representing the host/domain names that this site '
+        'can serve. This is a security measure to prevent HTTP Host header '
+        'attacks, which are possible even under many seemingly-safe web '
+        'server configurations. Values in this list can be '
+        'fully qualified names (e.g. \'www.example.com\'), in which case '
+        'they will be matched against the request\'s Host header exactly '
+        '(case-insensitive, not including port). A value beginning with a '
+        'period can be used as a subdomain wildcard: \'.example.com\' will '
+        'match example.com, www.example.com, and any other subdomain of '
+        'example.com. A value of \'*\' will match anything; in this case you '
+        'are responsible to provide your own validation of the Host header '
+        '(perhaps in a middleware; if so this middleware must be listed '
+        'first in MIDDLEWARE).'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='APPEND_SLASH', default=settings.APPEND_SLASH,
+    help_text=_(
+        'When set to True, if the request URL does not match any of the '
+        'patterns in the URLconf and it doesn\'t end in a slash, an HTTP '
+        'redirect is issued to the same URL with a slash appended. Note '
+        'that the redirect may cause any data submitted in a POST request '
+        'to be lost. The APPEND_SLASH setting is only used if '
+        'CommonMiddleware is installed (see Middleware). See also '
+        'PREPEND_WWW.'
+    )
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='DATABASES', default=settings.DATABASES,
+    help_text=_(
+        'A dictionary containing the settings for all databases to be used '
+        'with Django. It is a nested dictionary whose contents map a '
+        'database alias to a dictionary containing the options for an '
+        'individual database. The DATABASES setting must configure a '
+        'default database; any number of additional databases may also '
+        'be specified.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='DATA_UPLOAD_MAX_MEMORY_SIZE',
+    default=settings.DATA_UPLOAD_MAX_MEMORY_SIZE,
+    help_text=_(
+        'Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a '
+        'request body may be before a SuspiciousOperation '
+        '(RequestDataTooBig) is raised. The check is done when accessing '
+        'request.body or request.POST and is calculated against the total '
+        'request size excluding any file upload data. You can set this to '
+        'None to disable the check. Applications that are expected to '
+        'receive unusually large form posts should tune this setting. The '
+        'amount of request data is correlated to the amount of memory '
+        'needed to process the request and populate the GET and POST '
+        'dictionaries. Large requests could be used as a '
+        'denial-of-service attack vector if left unchecked. Since web '
+        'servers don\'t typically perform deep request inspection, it\'s '
+        'not possible to perform a similar check at that level. See also '
+        'FILE_UPLOAD_MAX_MEMORY_SIZE.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='DISALLOWED_USER_AGENTS',
+    default=settings.DISALLOWED_USER_AGENTS,
+    help_text=_(
+        'Default: [] (Empty list). List of compiled regular expression '
+        'objects representing User-Agent strings that are not allowed to '
+        'visit any page, systemwide. Use this for bad robots/crawlers. '
+        'This is only used if CommonMiddleware is installed '
+        '(see Middleware).'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_BACKEND',
+    default=settings.EMAIL_BACKEND,
+    help_text=_(
+        'Default: \'django.core.mail.backends.smtp.EmailBackend\'. The '
+        'backend to use for sending emails.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_HOST',
+    default=settings.EMAIL_HOST,
+    help_text=_(
+        'Default: \'localhost\'. The host to use for sending email.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_HOST_PASSWORD',
+    default=settings.EMAIL_HOST_PASSWORD,
+    help_text=_(
+        'Default: \'\' (Empty string). Password to use for the SMTP '
+        'server defined in EMAIL_HOST. This setting is used in '
+        'conjunction with EMAIL_HOST_USER when authenticating to the '
+        'SMTP server. If either of these settings is empty, '
+        'Django won\'t attempt authentication.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_HOST_USER',
+    default=settings.EMAIL_HOST_USER,
+    help_text=_(
+        'Default: \'\' (Empty string). Username to use for the SMTP '
+        'server defined in EMAIL_HOST. If empty, Django won\'t attempt '
+        'authentication.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_PORT',
+    default=settings.EMAIL_PORT,
+    help_text=_(
+        'Default: 25. Port to use for the SMTP server defined in EMAIL_HOST.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_USE_TLS',
+    default=settings.EMAIL_USE_TLS,
+    help_text=_(
+        'Default: False. Whether to use a TLS (secure) connection when '
+        'talking to the SMTP server. This is used for explicit TLS '
+        'connections, generally on port 587. If you are experiencing '
+        'hanging connections, see the implicit TLS setting EMAIL_USE_SSL.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_USE_SSL',
+    default=settings.EMAIL_USE_SSL,
+    help_text=_(
+        'Default: False. Whether to use an implicit TLS (secure) connection '
+        'when talking to the SMTP server. In most email documentation this '
+        'type of TLS connection is referred to as SSL. It is generally used '
+        'on port 465. If you are experiencing problems, see the explicit '
+        'TLS setting EMAIL_USE_TLS. Note that EMAIL_USE_TLS/EMAIL_USE_SSL '
+        'are mutually exclusive, so only set one of those settings to True.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='EMAIL_TIMEOUT',
+    default=settings.EMAIL_TIMEOUT,
+    help_text=_(
+        'Default: None. Specifies a timeout in seconds for blocking '
+        'operations like the connection attempt.'
+    ),
+)
+
+setting_django_databases = namespace.add_setting(
+    global_name='FILE_UPLOAD_MAX_MEMORY_SIZE',
+    default=settings.FILE_UPLOAD_MAX_MEMORY_SIZE,
+    help_text=_(
+        'Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) '
+        'that an upload will be before it gets streamed to the file '
+        'system. See Managing files for details. See also '
+        'DATA_UPLOAD_MAX_MEMORY_SIZE.'
+    ),
+)
