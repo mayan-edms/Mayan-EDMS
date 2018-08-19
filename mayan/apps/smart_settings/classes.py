@@ -92,21 +92,14 @@ class Setting(object):
 
     @classmethod
     def dump_data(cls):
-        result = []
-
+        dictionary = {}
         for setting in cls.get_all():
-            # Ensure there is at least one newline
-            line = '{}: {}\n'.format(
-                setting.global_name, setting.serialized_value
-            )
+            if setting.quoted:
+                dictionary[setting.global_name] = '{}'.format(setting.value)
+            else:
+                dictionary[setting.global_name] = setting.value
 
-            # If there are two newlines, remove one
-            if line.endswith('\n\n'):
-                line = line[:-1]
-
-            result.append(line)
-
-        return ''.join(result)
+        return yaml.safe_dump(dictionary)
 
     @classmethod
     def get(cls, global_name):
