@@ -93,9 +93,10 @@ class Setting(object):
     @classmethod
     def dump_data(cls):
         dictionary = {}
+
         for setting in cls.get_all():
-            if setting.quoted:
-                dictionary[setting.global_name] = '{}'.format(setting.value)
+            if isinstance(setting.value, Promise):
+                dictionary[setting.global_name] = force_text(setting.value)
             else:
                 dictionary[setting.global_name] = setting.value
 
@@ -169,9 +170,5 @@ class Setting(object):
     @value.setter
     def value(self, value):
         # value is in YAML format
-        if self.quoted:
-            self.yaml = '\'{}\''.format(value)
-            value = '\'{}\''.format(value)
-        else:
-            self.yaml = value
+        self.yaml = value
         self.raw_value = Setting.deserialize_value(value)

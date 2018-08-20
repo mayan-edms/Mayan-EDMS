@@ -15,18 +15,28 @@ class SettingForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(SettingForm, self).__init__(*args, **kwargs)
-        self.fields['value'].help_text = self.initial['setting'].help_text
-        self.fields['value'].initial = self.initial['setting'].serialized_value
+        self.setting = self.initial['setting']
+        self.fields['value'].help_text = self.setting.help_text
+        self.fields['value'].initial = self.setting.serialized_value
 
     def clean(self):
+        quotes = ['"', "'"]
+
+        if self.setting.quoted:
+            stripped = self.cleaned_data['value'].strip()
+
+            if stripped[0] not in quotes or stripped[-1] not in quotes:
+                raise ValidationError(
+                    _(
+                        'Value must be properly quoted.'
+                    )
+                )
+
         try:
             yaml.safe_load(self.cleaned_data['value'])
         except yaml.YAMLError as exception:
-            try:
-                yaml.safe_load('{}'.format(self.cleaned_data['value']))
-            except yaml.YAMLError as exception:
-                raise ValidationError(
-                    _(
-                        '"%s" not a valid entry.'
-                    ) % self.cleaned_data['value']
-                )
+            raise ValidationError(
+                _(
+                    '"%s" not a valid entry.'
+                ) % self.cleaned_data['value']
+            )
