@@ -55,6 +55,8 @@
   new YAML configuration file support.
 - Add new revertsettings management command.
 - Add new permission to edit setting via the UI.
+- Renamed setting LOCK_MANAGER_DEFAULT_BACKEND to LOCK_MANAGER_BACKEND.
+- Add help text to settings.
 
 3.0.1 (2018-07-08)
 =================

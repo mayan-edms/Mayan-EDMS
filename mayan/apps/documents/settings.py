@@ -13,13 +13,18 @@ namespace = Namespace(name='documents', label=_('Documents'))
 
 setting_documentimagecache_storage = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',
-    default='django.core.files.storage.FileSystemStorage', quoted=True
+    default='django.core.files.storage.FileSystemStorage', help_text=_(
+        'Path to the Storage subclass to use when storing the cached '
+        'document image files.'
+    ), quoted=True
 )
 setting_documentimagecache_storage_arguments = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS',
     default='{{location: {}}}'.format(
         os.path.join(settings.MEDIA_ROOT, 'document_cache')
-    ), quoted=True
+    ), help_text=_(
+        'Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND.'
+    ),quoted=True,
 )
 setting_disable_base_image_cache = namespace.add_setting(
     global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,
@@ -60,7 +65,11 @@ setting_language_codes = namespace.add_setting(
     help_text=_('List of supported document languages. In ISO639-3 format.')
 )
 settings_document_page_image_cache_time = namespace.add_setting(
-    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='31556926'
+    global_name='DOCUMENTS_PAGE_IMAGE_CACHE_TIME', default='31556926',
+    help_text=_(
+        'Time in seconds that the browser should cache the supplied document '
+        'images. The default of 31559626 seconds corresponde to 1 year.'
+    )
 )
 setting_preview_height = namespace.add_setting(
     global_name='DOCUMENTS_PREVIEW_HEIGHT', default=''
@@ -89,19 +98,26 @@ setting_rotation_step = namespace.add_setting(
 )
 setting_storage_backend = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND',
-    default='django.core.files.storage.FileSystemStorage'
+    default='django.core.files.storage.FileSystemStorage', help_text=_(
+        'Path to the Storage subclass to use when storing document '
+        'files.'
+    )
 )
 setting_storage_backend_arguments = namespace.add_setting(
     global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
     default='{{location: {}}}'.format(
         os.path.join(settings.MEDIA_ROOT, 'document_storage')
-    )
+    ), help_text=_('Arguments to pass to the DOCUMENT_STORAGE_BACKEND.')
 )
 setting_thumbnail_height = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_HEIGHT', default=''
+    global_name='DOCUMENTS_THUMBNAIL_HEIGHT', default='', help_text=_(
+        'Height in pixels of the document thumbnail image.'
+    )
 )
 setting_thumbnail_width = namespace.add_setting(
-    global_name='DOCUMENTS_THUMBNAIL_WIDTH', default='800'
+    global_name='DOCUMENTS_THUMBNAIL_WIDTH', default='800', help_text=(
+        'Width in pixels of the document thumbnail image.'
+    )
 )
 setting_zoom_max_level = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_MAX_LEVEL', default=300,
