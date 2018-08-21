@@ -538,8 +538,8 @@ class MetadataTypeCreateView(SingleObjectCreateView):
 
 class MetadataTypeDeleteView(SingleObjectDeleteView):
     model = MetadataType
+    object_permission = permission_metadata_type_delete
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
-    view_permission = permission_metadata_type_delete
 
     def get_extra_context(self):
         return {
@@ -552,8 +552,8 @@ class MetadataTypeDeleteView(SingleObjectDeleteView):
 class MetadataTypeEditView(SingleObjectEditView):
     form_class = MetadataTypeForm
     model = MetadataType
+    object_permission = permission_metadata_type_edit
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
-    view_permission = permission_metadata_type_edit
 
     def get_extra_context(self):
         return {
@@ -568,7 +568,7 @@ class MetadataTypeEditView(SingleObjectEditView):
 
 
 class MetadataTypeListView(SingleObjectListView):
-    view_permission = permission_metadata_type_view
+    object_permission = permission_metadata_type_view
 
     def get_extra_context(self):
         return {
@@ -591,7 +591,6 @@ class SetupDocumentTypeMetadataTypes(FormView):
     main_model = 'document_type'
     model = DocumentType
     submodel = MetadataType
-    view_permission = permission_document_type_edit
 
     def form_valid(self, form):
         try:
@@ -617,7 +616,13 @@ class SetupDocumentTypeMetadataTypes(FormView):
         }
 
     def get_object(self):
-        return get_object_or_404(self.model, pk=self.kwargs['pk'])
+        obj = get_object_or_404(self.model, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=(permission_metadata_type_edit,),
+            user=self.request.user, obj=obj
+        )
+        return obj
 
     def get_extra_context(self):
         return {
@@ -647,7 +652,11 @@ class SetupDocumentTypeMetadataTypes(FormView):
         return reverse('documents:document_type_list')
 
     def get_queryset(self):
-        return self.submodel.objects.all()
+        queryset = self.submodel.objects.all()
+        return AccessControlList.objects.filter_by_access(
+            permission=permission_document_type_edit,
+            user=self.request.user, queryset=queryset
+        )
 
 
 class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):

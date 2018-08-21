@@ -3,26 +3,33 @@ from __future__ import unicode_literals
 import logging
 
 from django.core.files.base import File
+
+from common.tests import GenericViewTestCase
 from documents.models import DocumentType
 from documents.permissions import (
-    permission_document_properties_edit, permission_document_view
+    permission_document_properties_edit, permission_document_type_edit,
+    permission_document_view
 )
 from documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_TYPE_2_LABEL,
-    TEST_SMALL_DOCUMENT_PATH,
+    DocumentTestMixin, GenericDocumentViewTestCase,
+    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_PATH,
 )
 
 from ..models import MetadataType
 from ..permissions import (
     permission_metadata_document_add, permission_metadata_document_remove,
-    permission_metadata_document_edit
+    permission_metadata_document_edit, permission_metadata_type_create,
+    permission_metadata_type_delete, permission_metadata_type_edit,
+    permission_metadata_type_view
 )
 
 from .literals import (
     TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL,
-    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_NAME,
-    TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
+    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_LABEL_EDITED,
+    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2,
+    TEST_METADATA_TYPE_NAME_EDITED, TEST_METADATA_VALUE_EDITED
 )
+from .mixins import MetadataTestsMixin
 
 
 class DocumentMetadataTestCase(GenericDocumentViewTestCase):
@@ -295,3 +302,204 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, 'Edit', status_code=200)
+
+
+class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericViewTestCase):
+    auto_create_document_type = False
+    auto_upload_document = False
+
+    def test_metadata_type_create_view_no_permission(self):
+        self.login_user()
+
+        response = self._request_metadata_type_create_view()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_metadata_type_create_view_with_access(self):
+        self.login_user()
+
+        self.grant_permission(permission=permission_metadata_type_create)
+        response = self._request_metadata_type_create_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertQuerysetEqual(
+            qs=MetadataType.objects.values('label', 'name'),
+            values=[
+                {
+                    'label': TEST_METADATA_TYPE_LABEL,
+                    'name': TEST_METADATA_TYPE_NAME
+                }
+            ], transform=dict
+        )
+
+    def test_metadata_type_delete_view_no_permission(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        response = self._request_metadata_type_delete_view()
+
+        self.assertEqual(response.status_code, 403)
+        self.assertQuerysetEqual(
+            qs=MetadataType.objects.values('label', 'name'),
+            values=[
+                {
+                    'label': TEST_METADATA_TYPE_LABEL,
+                    'name': TEST_METADATA_TYPE_NAME
+                }
+            ], transform=dict
+        )
+
+    def test_metadata_type_delete_view_with_access(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        self.grant_access(
+            permission=permission_metadata_type_delete,
+            obj=self.metadata_type
+        )
+        response = self._request_metadata_type_delete_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(MetadataType.objects.count(), 0)
+
+    def test_metadata_type_edit_view_no_permission(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        response = self._request_metadata_type_edit_view()
+
+        self.assertEqual(response.status_code, 403)
+        self.assertQuerysetEqual(
+            qs=MetadataType.objects.values('label', 'name'),
+            values=[
+                {
+                    'label': TEST_METADATA_TYPE_LABEL,
+                    'name': TEST_METADATA_TYPE_NAME
+                }
+            ], transform=dict
+        )
+
+    def test_metadata_type_edit_view_with_access(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        self.grant_access(
+            permission=permission_metadata_type_edit,
+            obj=self.metadata_type
+        )
+        response = self._request_metadata_type_edit_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertQuerysetEqual(
+            qs=MetadataType.objects.values('label', 'name'),
+            values=[
+                {
+                    'label': TEST_METADATA_TYPE_LABEL_EDITED,
+                    'name': TEST_METADATA_TYPE_NAME_EDITED
+                }
+            ], transform=dict
+        )
+
+    def test_metadata_type_list_view_no_permission(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        response = self._request_metadata_type_list_view()
+        self.assertNotContains(
+            response=response, text=self.metadata_type, status_code=200
+        )
+
+    def test_metadata_type_list_view_with_access(self):
+        self.login_user()
+        self._create_metadata_type()
+
+        self.grant_access(
+            permission=permission_metadata_type_view,
+            obj=self.metadata_type
+        )
+        response = self._request_metadata_type_list_view()
+        self.assertContains(
+            response=response, text=self.metadata_type, status_code=200
+        )
+
+    def test_metadata_type_relationship_view_no_permission(self):
+        self.login_user()
+        self._create_metadata_type()
+        self.create_document_type()
+        self.upload_document()
+
+        response = self._request_metadata_type_relationship_edit_view()
+
+        self.assertEqual(response.status_code, 403)
+
+        self.document_type.refresh_from_db()
+
+        self.assertEqual(self.document_type.metadata.count(), 0)
+
+    def test_metadata_type_relationship_view_with_document_type_access(self):
+        self.login_user()
+        self._create_metadata_type()
+        self.create_document_type()
+        self.upload_document()
+
+        self.grant_access(
+            permission=permission_document_type_edit, obj=self.document_type
+        )
+
+        response = self._request_metadata_type_relationship_edit_view()
+
+        self.assertEqual(response.status_code, 403)
+
+        self.document_type.refresh_from_db()
+
+        self.assertEqual(self.document_type.metadata.count(), 0)
+
+    def test_metadata_type_relationship_view_with_metadata_type_access(self):
+        self.login_user()
+        self._create_metadata_type()
+        self.create_document_type()
+        self.upload_document()
+
+        self.grant_access(
+            permission=permission_metadata_type_edit, obj=self.metadata_type
+        )
+
+        response = self._request_metadata_type_relationship_edit_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.document_type.refresh_from_db()
+
+        self.assertEqual(self.document_type.metadata.count(), 0)
+
+    def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
+        self.login_user()
+        self._create_metadata_type()
+        self.create_document_type()
+        self.upload_document()
+
+        self.grant_access(
+            permission=permission_metadata_type_edit, obj=self.metadata_type
+        )
+        self.grant_access(
+            permission=permission_document_type_edit, obj=self.document_type
+        )
+
+        response = self._request_metadata_type_relationship_edit_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.document_type.refresh_from_db()
+
+        self.assertQuerysetEqual(
+            qs=self.document_type.metadata.values('metadata_type', 'required'),
+            values=[
+                {
+                    'metadata_type': self.metadata_type.pk,
+                    'required': True,
+                }
+            ], transform=dict
+        )

@@ -9,6 +9,8 @@ from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar
@@ -147,10 +149,9 @@ class MetadataApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=MetadataType, permissions=(
-                permission_events_view,
-                permission_metadata_type_delete,
-                permission_metadata_type_edit,
-                permission_metadata_type_view
+                permission_acl_edit, permission_acl_view,
+                permission_events_view, permission_metadata_type_delete,
+                permission_metadata_type_edit, permission_metadata_type_view
             )
         )
 
@@ -223,10 +224,9 @@ class MetadataApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_metadata_type_edit,
-                link_setup_metadata_type_document_types,
+                link_setup_metadata_type_document_types, link_acl_list,
                 link_object_event_types_user_subcriptions_list,
-                link_events_for_object,
-                link_setup_metadata_type_delete,
+                link_events_for_object, link_setup_metadata_type_delete,
             ), sources=(MetadataType,)
         )
         menu_secondary.bind_links(
