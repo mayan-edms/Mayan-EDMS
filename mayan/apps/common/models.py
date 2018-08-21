@@ -100,4 +100,3 @@ class UserLocaleProfile(models.Model):
     def natural_key(self):
         return self.user.natural_key()
     natural_key.dependencies = [settings.AUTH_USER_MODEL]
-

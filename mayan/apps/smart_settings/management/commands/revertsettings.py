@@ -1,12 +1,10 @@
 from __future__ import unicode_literals
 
 import errno
-import os
 from shutil import copyfile
 
 from django.conf import settings
 from django.core import management
-from django.core.management.utils import get_random_secret_key
 
 
 class Command(management.BaseCommand):

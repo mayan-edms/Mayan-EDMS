@@ -32,4 +32,3 @@ event_metadata_type_relationship = namespace.add_event_type(
         'Metadata type relationship updated'
     )
 )
-

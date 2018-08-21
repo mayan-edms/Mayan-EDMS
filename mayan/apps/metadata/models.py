@@ -5,7 +5,7 @@ import shlex
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.template import Context, Template
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -15,7 +15,7 @@ from documents.models import Document, DocumentType
 from .classes import MetadataLookup
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
-    event_document_metadata_removed,event_metadata_type_created,
+    event_document_metadata_removed, event_metadata_type_created,
     event_metadata_type_edited, event_metadata_type_relationship
 )
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager

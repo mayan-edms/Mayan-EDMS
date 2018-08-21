@@ -15,7 +15,6 @@ from documents.search import document_page_search, document_search
 from events import ModelEventType
 from events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
-    link_object_event_types_user_subcriptions_list_with_icon
 )
 from events.permissions import permission_events_view
 from navigation import SourceColumn

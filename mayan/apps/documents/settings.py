@@ -24,7 +24,7 @@ setting_documentimagecache_storage_arguments = namespace.add_setting(
         os.path.join(settings.MEDIA_ROOT, 'document_cache')
     ), help_text=_(
         'Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND.'
-    ),quoted=True,
+    ), quoted=True,
 )
 setting_disable_base_image_cache = namespace.add_setting(
     global_name='DOCUMENTS_DISABLE_BASE_IMAGE_CACHE', default=False,

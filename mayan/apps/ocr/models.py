@@ -35,7 +35,6 @@ class DocumentTypeSettings(models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-
 @python_2_unicode_compatible
 class DocumentPageOCRContent(models.Model):
     document_page = models.OneToOneField(

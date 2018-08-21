@@ -22,7 +22,6 @@ from documents.signals import post_document_type_change
 from events import ModelEventType
 from events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
-    link_object_event_types_user_subcriptions_list_with_icon
 )
 from events.permissions import permission_events_view
 from mayan.celery import app
@@ -31,8 +30,8 @@ from navigation import SourceColumn
 from .classes import DocumentMetadataHelper
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
-    event_document_metadata_removed,event_metadata_type_created,
-    event_metadata_type_edited, event_metadata_type_relationship
+    event_document_metadata_removed, event_metadata_type_edited,
+    event_metadata_type_relationship
 )
 from .handlers import (
     handler_index_document, post_document_type_metadata_type_add,

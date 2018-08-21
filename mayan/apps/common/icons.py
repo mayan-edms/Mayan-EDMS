@@ -49,4 +49,3 @@ icon_support = Icon(
 icon_tools = Icon(
     driver_name='fontawesome', symbol='wrench'
 )
-

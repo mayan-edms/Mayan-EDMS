@@ -48,12 +48,15 @@ class PyOCR(OCRBackendBase):
                 builder=pyocr.builders.TextBuilder()
             )
         except Exception as exception:
-            error_message = ('Exception calling pyocr with language option: '
-            '{}; {}').format(self.language, exception)
+            error_message = (
+                'Exception calling pyocr with language option: {}; {}'
+            ).format(self.language, exception)
 
             if self.language not in self.languages:
-                error_message = ('{}\nThe requested OCR language "{}" is not '
-                'available and needs to be installed.\n').format(
+                error_message = (
+                    '{}\nThe requested OCR language "{}" is not '
+                    'available and needs to be installed.\n'
+                ).format(
                     error_message, self.language
                 )
 

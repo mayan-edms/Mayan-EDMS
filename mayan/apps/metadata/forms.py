@@ -172,7 +172,6 @@ DocumentMetadataRemoveFormSet = formset_factory(
 )
 
 
-
 class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
     RELATIONSHIP_TYPE_NONE = 'none'
     RELATIONSHIP_TYPE_OPTIONAL = 'optional'
@@ -270,6 +269,7 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
 DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
     DocumentTypeMetadataTypeRelationshipForm, extra=0
 )
+
 
 class DocumentTypeMetadataTypeRelationshipFormSet(DocumentTypeMetadataTypeRelationshipFormSetBase):
     def __init__(self, *args, **kwargs):

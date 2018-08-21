@@ -848,7 +848,6 @@ class DocumentPage(models.Model):
 
         return final_url.tostr()
 
-
     def get_combined_transformation_list(self, *args, **kwargs):
         """
         Return a list of transformation containing the server side
