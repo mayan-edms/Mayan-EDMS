@@ -8,6 +8,8 @@ from ..models import DocumentType
 
 from .literals import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME
 
+__all__ = ('DocumentTestMixin',)
+
 
 class DocumentTestMixin(object):
     auto_create_document_type = True
