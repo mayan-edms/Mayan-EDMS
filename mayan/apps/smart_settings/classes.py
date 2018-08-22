@@ -117,10 +117,11 @@ class Setting(object):
             with open(path, 'w') as file_object:
                 file_object.write(cls.dump_data())
         except IOError as exception:
-            if exception.errno == errno.IONENT:
-                # The path for the configuration files doesn't exist.
-                # We can't save the backup file.
-                pass
+            if exception.errno == errno.ENOENT:
+                logger.warning(
+                    'The path to the configuration file doesn\'t '
+                    'exist. It is not possible to save the backup file.'
+                )
 
     @classmethod
     def save_last_known_good(cls):
