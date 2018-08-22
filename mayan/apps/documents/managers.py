@@ -11,7 +11,7 @@ from django.utils.encoding import force_text
 from django.utils.timezone import now
 
 from .literals import STUB_EXPIRATION_INTERVAL
-from .settings import setting_recent_count
+from .settings import setting_recent_access_count
 
 logger = logging.getLogger(__name__)
 
@@ -199,7 +199,7 @@ class RecentDocumentManager(models.Manager):
                 # accessed date and time update
                 new_recent.save()
 
-            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_count.value:]
+            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_access_count.value:]
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
 

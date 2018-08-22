@@ -23,7 +23,12 @@ icon_document_duplicates_list = Icon(
 )
 icon_document_list = Icon(driver_name='fontawesome', symbol='file')
 icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
-icon_document_list_recent = Icon(driver_name='fontawesome', symbol='clock')
+icon_document_list_recent_access = Icon(
+    driver_name='fontawesome', symbol='clock'
+)
+icon_document_list_recent_added = Icon(
+    driver_name='fontawesome', symbol='asterisk'
+)
 icon_document_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )

@@ -9,16 +9,16 @@ from navigation import Link
 
 from .icons import (
     icon_clear_image_cache, icon_document_duplicates_list, icon_document_list,
-    icon_document_list_deleted, icon_document_list_recent,
-    icon_document_page_navigation_first, icon_document_page_navigation_last,
-    icon_document_page_navigation_next, icon_document_page_navigation_previous,
-    icon_document_page_return, icon_document_page_rotate_left,
-    icon_document_page_rotate_right, icon_document_page_zoom_in,
-    icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
-    icon_document_properties, icon_document_type_setup,
-    icon_document_version_list, icon_document_version_return_document,
-    icon_document_version_return_list, icon_duplicated_document_list,
-    icon_duplicated_document_scan
+    icon_document_list_deleted, icon_document_list_recent_access,
+    icon_document_list_recent_added, icon_document_page_navigation_first,
+    icon_document_page_navigation_last, icon_document_page_navigation_next,
+    icon_document_page_navigation_previous, icon_document_page_return,
+    icon_document_page_rotate_left, icon_document_page_rotate_right,
+    icon_document_page_zoom_in, icon_document_page_zoom_out,
+    icon_document_pages, icon_document_preview, icon_document_properties,
+    icon_document_type_setup, icon_document_version_list,
+    icon_document_version_return_document, icon_document_version_return_list,
+    icon_duplicated_document_list, icon_duplicated_document_scan
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -189,9 +189,13 @@ link_document_list = Link(
     icon_class=icon_document_list, text=_('All documents'),
     view='documents:document_list'
 )
-link_document_list_recent = Link(
-    icon_class=icon_document_list_recent, text=_('Recent documents'),
-    view='documents:document_list_recent'
+link_document_list_recent_access = Link(
+    icon_class=icon_document_list_recent_access, text=_('Recently accessed'),
+    view='documents:document_list_recent_access'
+)
+link_document_list_recent_added = Link(
+    icon_class=icon_document_list_recent_added, text=_('Recently added'),
+    view='documents:document_list_recent_added'
 )
 link_document_list_deleted = Link(
     icon_class=icon_document_list_deleted, text=_('Trash can'),

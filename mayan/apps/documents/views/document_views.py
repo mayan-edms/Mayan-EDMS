@@ -41,7 +41,9 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..settings import setting_print_width, setting_print_height
+from ..settings import (
+    setting_print_width, setting_print_height, setting_recent_added_count
+)
 from ..tasks import task_delete_document, task_update_page_count
 from ..utils import parse_range
 
@@ -50,6 +52,7 @@ logger = logging.getLogger(__name__)
 
 class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
+    queryset_slice = None
 
     def get_document_queryset(self):
         return Document.objects.defer(
@@ -65,8 +68,11 @@ class DocumentListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return self.get_document_queryset().filter(is_stub=False)
-
+        queryset = self.get_document_queryset().filter(is_stub=False)
+        if self.queryset_slice:
+            return queryset.__getitem__(slice(*self.queryset_slice))
+        else:
+            return queryset
 
 class DeletedDocumentDeleteView(ConfirmView):
     extra_context = {
@@ -382,20 +388,6 @@ class EmptyTrashCanView(ConfirmView):
             )
 
         messages.success(self.request, _('Trash emptied successfully'))
-
-
-class RecentDocumentListView(DocumentListView):
-    def get_document_queryset(self):
-        return RecentDocument.objects.get_for_user(self.request.user)
-
-    def get_extra_context(self):
-        context = super(RecentDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'title': _('Recent documents'),
-            }
-        )
-        return context
 
 
 class DocumentDownloadFormView(FormView):
@@ -816,6 +808,36 @@ class DuplicatedDocumentListView(DocumentListView):
                     },
                 ),
                 'title': _('Duplicated documents')
+            }
+        )
+        return context
+
+
+class RecentAccessDocumentListView(DocumentListView):
+    def get_document_queryset(self):
+        return RecentDocument.objects.get_for_user(self.request.user)
+
+    def get_extra_context(self):
+        context = super(RecentAccessDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Recently accessed'),
+            }
+        )
+        return context
+
+
+class RecentAddedDocumentListView(DocumentListView):
+    queryset_slice = (0, setting_recent_added_count.value)
+
+    def get_document_queryset(self):
+        return Document.objects.order_by('-date_added')
+
+    def get_extra_context(self):
+        context = super(RecentAddedDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Recently added'),
             }
         )
         return context

@@ -32,15 +32,20 @@ from .views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
     DocumentView, DuplicatedDocumentListView, EmptyTrashCanView,
-    RecentDocumentListView, ScanDuplicatedDocuments
+    RecentAccessDocumentListView, RecentAddedDocumentListView,
+    ScanDuplicatedDocuments
 )
 
 
 urlpatterns = [
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(
-        r'^list/recent/$', RecentDocumentListView.as_view(),
-        name='document_list_recent'
+        r'^list/recent_access/$', RecentAccessDocumentListView.as_view(),
+        name='document_list_recent_access'
+    ),
+    url(
+        r'^list/recent_added/$', RecentAddedDocumentListView.as_view(),
+        name='document_list_recent_added'
     ),
     url(
         r'^list/deleted/$', DeletedDocumentListView.as_view(),

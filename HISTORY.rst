@@ -87,6 +87,10 @@
 - Add support for the fillcolor argument to the rotate
   transformation.
 - Sort documents by label.
+- Add recently added document list view. The setting 
+  DOCUMENTS_RECENT_COUNT has been renamed to
+  DOCUMENTS_RECENT_ACCESS_COUNT. New setting 
+  DOCUMENTS_RECENT_ADDED_COUNT added.
 
 3.0.3 (2018-08-17)
 ==================
