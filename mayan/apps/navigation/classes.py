@@ -77,10 +77,11 @@ class Menu(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, name, icon=None, icon_class=None, label=None):
+    def __init__(self, name, condition=None, icon=None, icon_class=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
+        self.condition = condition
         self.icon = icon
         self.icon_class = icon_class
         self.name = name
@@ -96,6 +97,16 @@ class Menu(object):
         for link in links:
             source_links.append(link)
             self.link_positions[link] = position
+
+    def check_condition(self, context):
+        """
+        Check to see if menu has a conditional display function and return
+        the result of the condition function against the context.
+        """
+        if self.condition:
+            return self.condition(context=context)
+        else:
+            return True
 
     def bind_links(self, links, sources=None, position=None):
         """
@@ -140,6 +151,9 @@ class Menu(object):
         return resolved_navigation_object_list
 
     def resolve(self, context, source=None):
+        if not self.check_condition(context=context):
+            return []
+
         result = []
 
         try:
@@ -217,9 +231,9 @@ class Menu(object):
         # Main menu links
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
-                resolved_link = link
-                if resolved_link not in self.unbound_links.get(None, ()):
-                    resolved_links.append(resolved_link)
+                condition = link.check_condition(context=context)
+                if condition and link not in self.unbound_links.get(None, ()):
+                    resolved_links.append(link)
             else:
                 # "Always show" links
                 resolved_link = link.resolve(context=context)
@@ -282,6 +296,13 @@ class Link(object):
         self.url = url
 
     def resolve(self, context, resolved_object=None):
+        # Check to see if link has conditional display function and only
+        # display it if the result of the conditional display function is
+        # True
+        if self.condition:
+            if not self.condition(context):
+                return None
+
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -319,13 +340,6 @@ class Link(object):
                     )
                 except PermissionDenied:
                     return None
-
-        # Check to see if link has conditional display function and only
-        # display it if the result of the conditional display function is
-        # True
-        if self.condition:
-            if not self.condition(context):
-                return None
 
         resolved_link = ResolvedLink(current_view=current_view, link=self)
 

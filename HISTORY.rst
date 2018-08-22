@@ -75,6 +75,7 @@
   user to view an index instance as opposed to the current
   permission which allows viewing an index definiton on the
   setup menu.
+- Add support to conditionally disable menus.
 
 3.0.1 (2018-07-08)
 =================
