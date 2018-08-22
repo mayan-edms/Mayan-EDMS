@@ -154,6 +154,10 @@ class SetupRolePermissionsView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
+            'subtitle': _(
+                'Permissions granted here will apply to the entire system '
+                'and all objects.'
+            ),
             'title': _('Permissions for role: %s') % self.get_object(),
         }
 
