@@ -17,7 +17,7 @@ class TagActionTestCase(ActionTestCase):
 
     def test_tag_attach_action(self):
         action = AttachTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'entry_log': self.entry_log})
+        action.execute(context={'document': self.document})
 
         self.assertEqual(self.tag.documents.count(), 1)
         self.assertEqual(list(self.tag.documents.all()), [self.document])
@@ -26,6 +26,6 @@ class TagActionTestCase(ActionTestCase):
         self.tag.attach_to(document=self.document)
 
         action = RemoveTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'entry_log': self.entry_log})
+        action.execute(context={'document': self.document})
 
         self.assertEqual(self.tag.documents.count(), 0)

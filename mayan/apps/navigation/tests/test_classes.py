@@ -181,7 +181,6 @@ class MenuClassTestCase(GenericViewTestCase):
 
         response = self.get(TEST_VIEW_NAME)
         context = Context({'request': response.wsgi_request})
-
         self.assertEqual(
             self.menu.resolve(context=context)[0][0].link, self.link
         )

@@ -159,10 +159,15 @@ class Menu(object):
         try:
             request = context.request
         except AttributeError:
-            # There is no request variable, most probable a 500 in a test view
-            # Don't return any resolved links then.
-            logger.warning('No request variable, aborting menu resolution')
-            return ()
+            # Simple request extraction failed. Might not be a view context.
+            # Try alternate method.
+            try:
+                request = Variable('request').resolve(context)
+            except VariableDoesNotExist:
+                # There is no request variable, most probable a 500 in a test
+                # view. Don't return any resolved links then.
+                logger.warning('No request variable, aborting menu resolution')
+                return ()
 
         current_path = request.META['PATH_INFO']
 
@@ -296,13 +301,6 @@ class Link(object):
         self.url = url
 
     def resolve(self, context, resolved_object=None):
-        # Check to see if link has conditional display function and only
-        # display it if the result of the conditional display function is
-        # True
-        if self.condition:
-            if not self.condition(context):
-                return None
-
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -379,6 +377,13 @@ class Link(object):
                 )
         elif self.url:
             resolved_link.url = self.url
+
+        # Check to see if link has conditional display function and only
+        # display it if the result of the conditional display function is
+        # True
+        if self.condition:
+            if not self.condition(context):
+                return None
 
         # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
