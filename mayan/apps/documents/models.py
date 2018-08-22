@@ -217,9 +217,9 @@ class Document(models.Model):
     trash = TrashCanManager()
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Document')
         verbose_name_plural = _('Documents')
-        ordering = ('-date_added',)
 
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk

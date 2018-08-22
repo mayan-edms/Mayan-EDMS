@@ -86,6 +86,7 @@
   relevant.
 - Add support for the fillcolor argument to the rotate
   transformation.
+- Sort documents by label.
 
 3.0.3 (2018-08-17)
 ==================
