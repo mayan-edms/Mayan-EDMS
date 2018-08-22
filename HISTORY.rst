@@ -76,6 +76,11 @@
   permission which allows viewing an index definiton on the
   setup menu.
 - Add support to conditionally disable menus.
+- Disable the Tags menu when the user doesn't have the 
+  tag create permission or the tag view access for any tag.
+- Disable the Cabinets menu when the user doesn't have the
+  cabinet create permission or the cabinet view permission
+  for any cabinet.
 
 3.0.1 (2018-07-08)
 =================

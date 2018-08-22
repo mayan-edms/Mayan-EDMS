@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.links import link_acl_list
 from documents.permissions import permission_document_view
-from navigation import Link
+from navigation import Link, get_cascade_condition
 
 from .icons import icon_cabinet_create, icon_cabinet_list
 from .permissions import (
@@ -68,7 +68,11 @@ link_cabinet_edit = Link(
     view='cabinets:cabinet_edit'
 )
 link_cabinet_list = Link(
-    icon_class=icon_cabinet_list, text=_('All'), view='cabinets:cabinet_list'
+    condition=get_cascade_condition(
+        app_label='cabinets', model_name='Cabinet',
+        object_permission=permission_cabinet_view,
+    ), icon_class=icon_cabinet_list, text=_('All'),
+    view='cabinets:cabinet_list'
 )
 link_cabinet_view = Link(
     args='object.pk', permissions=(permission_cabinet_view,), text=_('Details'),

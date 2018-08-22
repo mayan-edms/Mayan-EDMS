@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link
+from navigation import Link, get_cascade_condition
 
 from .icons import (
     icon_tag_create, icon_tag_document_list, icon_tag_list
@@ -45,7 +45,10 @@ link_tag_document_list = Link(
     view='tags:document_tags',
 )
 link_tag_list = Link(
-    icon_class=icon_tag_list, text=_('All'), view='tags:tag_list'
+    condition=get_cascade_condition(
+        app_label='tags', model_name='Tag',
+        object_permission=permission_tag_view,
+    ), icon_class=icon_tag_list, text=_('All'), view='tags:tag_list'
 )
 link_tag_multiple_delete = Link(
     permissions=(permission_tag_delete,), text=_('Delete'),
