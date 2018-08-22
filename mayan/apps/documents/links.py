@@ -335,6 +335,7 @@ link_document_duplicates_list = Link(
 )
 link_duplicated_document_scan = Link(
     icon_class=icon_duplicated_document_scan,
+    permissions=(permission_document_tools,),
     text=_('Duplicated document scan'),
     view='documents:duplicated_document_scan'
 )

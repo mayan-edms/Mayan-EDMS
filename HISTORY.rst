@@ -69,6 +69,8 @@
 - Add cascade permission check to the index rebuild tool link.
 - The index rebuild tool now responds with the number of indexes
   queued to rebuild instead of a static acknowledment.
+- Add missing permission check to the document duplicate scan
+  link.
 
 3.0.1 (2018-07-08)
 =================
