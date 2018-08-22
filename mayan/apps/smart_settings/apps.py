@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_secondary, menu_setup, menu_object
+from common import MayanAppConfig, menu_sidebar, menu_setup, menu_object
 from navigation import SourceColumn
 
 from .classes import Namespace, Setting
@@ -43,7 +43,11 @@ class SmartSettingsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_setting_edit,), sources=(Setting,)
         )
-        menu_secondary.bind_links(links=(link_namespace_root_list,))
+        menu_sidebar.bind_links(
+            links=(link_namespace_root_list,), sources=(
+                Namespace, Setting, 'settings:namespace_list',
+            )
+        )
         menu_setup.bind_links(links=(link_namespace_list,))
 
         Setting.save_last_known_good()

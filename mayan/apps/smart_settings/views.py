@@ -29,6 +29,7 @@ class NamespaceDetailView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'object': self.get_namespace(),
             'title': _('Settings in namespace: %s') % self.get_namespace(),
         }
 
@@ -59,6 +60,7 @@ class SettingEditView(FormView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'object': self.get_object(),
             'title': _('Edit setting: %s') % self.get_object(),
         }
 

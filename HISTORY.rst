@@ -82,6 +82,8 @@
   cabinet create permission or the cabinet view permission
   for any cabinet.
 - Update forum link in the about menu.
+- Only show the settings namespace list link where it is
+  relevant.
 
 3.0.1 (2018-07-08)
 =================
