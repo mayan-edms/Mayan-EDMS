@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from PIL import Image, ImageFilter
+from PIL import Image, ImageColor, ImageFilter
 
 from django.utils.six import text_type
 from django.utils.translation import string_concat, ugettext_lazy as _
@@ -202,7 +202,7 @@ class TransformationResize(BaseTransformation):
 
 
 class TransformationRotate(BaseTransformation):
-    arguments = ('degrees',)
+    arguments = ('degrees', 'fillcolor')
     label = _('Rotate')
     name = 'rotate'
 
@@ -214,8 +214,14 @@ class TransformationRotate(BaseTransformation):
         if self.degrees == 0:
             return self.image
 
+        if self.fillcolor:
+            fillcolor = ImageColor.getrgb(self.fillcolor)
+        else:
+            fillcolor = None
+
         return self.image.rotate(
-            360 - self.degrees, resample=Image.BICUBIC, expand=True
+            angle=360 - self.degrees, resample=Image.BICUBIC, expand=True,
+            fillcolor=fillcolor
         )
 
 
