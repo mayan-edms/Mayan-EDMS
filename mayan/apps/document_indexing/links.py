@@ -62,11 +62,13 @@ link_index_setup_document_types = Link(
     view='indexing:index_setup_document_types',
 )
 link_rebuild_index_instances = Link(
-    icon_class=icon_rebuild_index_instances,
+    condition=get_cascade_condition(
+        app_label='document_indexing', model_name='Index',
+        object_permission=permission_document_indexing_rebuild,
+    ), icon_class=icon_rebuild_index_instances,
     description=_(
         'Deletes and creates from scratch all the document indexes.'
     ),
-    permissions=(permission_document_indexing_rebuild,),
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'
 )
 link_template_node_create = Link(

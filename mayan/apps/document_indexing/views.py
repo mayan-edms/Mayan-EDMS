@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils.html import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.views import (
@@ -329,17 +329,31 @@ class RebuildIndexesView(FormView):
         'title': _('Rebuild indexes'),
     }
     form_class = IndexListForm
-    view_permission = permission_document_indexing_rebuild
 
     def form_valid(self, form):
+        count = 0
         for index in form.cleaned_data['indexes']:
             task_rebuild_index.apply_async(
                 kwargs=dict(index_id=index.pk)
             )
+            count += 1
 
-        messages.success(self.request, _('Index rebuild queued successfully.'))
+        messages.success(
+            self.request, ungettext(
+                singular='%(count)d index queued for rebuild.',
+                plural='%(count)d indexes queued for rebuild.',
+                number=count
+            ) % {
+                'count': count,
+            }
+        )
 
         return super(RebuildIndexesView, self).form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {
+            'user': self.request.user
+        }
 
     def get_post_action_redirect(self):
         return reverse('common:tools_list')

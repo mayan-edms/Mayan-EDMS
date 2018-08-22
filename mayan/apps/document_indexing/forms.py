@@ -4,18 +4,29 @@ from django import forms
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
 from common.classes import ModelAttribute
 from documents.models import Document
 
 from .models import Index, IndexTemplateNode
+from .permissions import permission_document_indexing_rebuild
 
 
 class IndexListForm(forms.Form):
     indexes = forms.ModelMultipleChoiceField(
         help_text=_('Indexes to be queued for rebuilding.'),
-        label=_('Indexes'), queryset=Index.objects.filter(enabled=True),
+        label=_('Indexes'), queryset=Index.objects.none(),
         required=False, widget=forms.widgets.CheckboxSelectMultiple()
     )
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super(IndexListForm, self).__init__(*args, **kwargs)
+        queryset = AccessControlList.objects.filter_by_access(
+            permission=permission_document_indexing_rebuild, user=user,
+            queryset=Index.objects.filter(enabled=True)
+        )
+        self.fields['indexes'].queryset = queryset
 
 
 class IndexTemplateNodeForm(forms.ModelForm):

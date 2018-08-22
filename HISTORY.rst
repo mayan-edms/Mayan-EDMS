@@ -64,6 +64,11 @@
 - Apply link permission cascade checks to the message of the day,
   indexing and parsing, setup link.
 - Add ACL support to the message of the day app.
+- The index rebuild permission can now be set as part of the index
+  ACL for each individual index.
+- Add cascade permission check to the index rebuild tool link.
+- The index rebuild tool now responds with the number of indexes
+  queued to rebuild instead of a static acknowledment.
 
 3.0.1 (2018-07-08)
 =================
