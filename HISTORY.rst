@@ -63,6 +63,7 @@
   the view's objects.
 - Apply link permission cascade checks to the message of the day,
   indexing and parsing, setup link.
+- Add ACL support to the message of the day app.
 
 3.0.1 (2018-07-08)
 =================

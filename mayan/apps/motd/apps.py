@@ -5,6 +5,8 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import MayanAppConfig, menu_object, menu_secondary, menu_setup
 from navigation import SourceColumn
 
@@ -32,6 +34,7 @@ class MOTDApp(MayanAppConfig):
         Message = self.get_model('Message')
         ModelPermission.register(
             model=Message, permissions=(
+                permission_acl_edit, permission_acl_view,
                 permission_message_delete, permission_message_edit,
                 permission_message_view
             )
@@ -50,7 +53,7 @@ class MOTDApp(MayanAppConfig):
 
         menu_object.bind_links(
             links=(
-                link_message_edit, link_message_delete
+                link_message_edit, link_acl_list, link_message_delete
             ), sources=(Message,)
         )
         menu_secondary.bind_links(
