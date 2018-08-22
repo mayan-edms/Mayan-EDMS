@@ -71,6 +71,10 @@
   queued to rebuild instead of a static acknowledment.
 - Add missing permission check to the document duplicate scan
   link.
+- Add new document indexing permission. This permission allows
+  user to view an index instance as opposed to the current
+  permission which allows viewing an index definiton on the
+  setup menu.
 
 3.0.1 (2018-07-08)
 =================

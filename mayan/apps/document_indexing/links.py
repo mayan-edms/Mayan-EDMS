@@ -9,8 +9,9 @@ from .icons import (
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
-    permission_document_indexing_delete, permission_document_indexing_rebuild,
-    permission_document_indexing_view
+    permission_document_indexing_delete,
+    permission_document_indexing_instance_view,
+    permission_document_indexing_rebuild,permission_document_indexing_view
 )
 
 
@@ -23,7 +24,10 @@ link_document_index_list = Link(
     text=_('Indexes'), view='indexing:document_index_list',
 )
 link_index_main_menu = Link(
-    icon_class=icon_index, text=_('Indexes'),
+    condition=get_cascade_condition(
+        app_label='document_indexing', model_name='Index',
+        object_permission=permission_document_indexing_instance_view,
+    ), icon_class=icon_index, text=_('Indexes'),
     view='indexing:index_list'
 )
 link_index_setup = Link(

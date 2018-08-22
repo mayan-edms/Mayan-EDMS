@@ -15,6 +15,10 @@ permission_document_indexing_edit = namespace.add_permission(
 permission_document_indexing_delete = namespace.add_permission(
     name='document_index_delete', label=_('Delete document indexes')
 )
+permission_document_indexing_instance_view = namespace.add_permission(
+    name='document_index_instance_view',
+    label=_('View document index instances')
+)
 permission_document_indexing_view = namespace.add_permission(
     name='document_index_view', label=_('View document indexes')
 )

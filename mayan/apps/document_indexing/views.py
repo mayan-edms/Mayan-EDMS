@@ -22,8 +22,9 @@ from .models import (
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
-    permission_document_indexing_edit, permission_document_indexing_rebuild,
-    permission_document_indexing_view
+    permission_document_indexing_edit,
+    permission_document_indexing_instance_view,
+    permission_document_indexing_rebuild, permission_document_indexing_view
 )
 from .tasks import task_rebuild_index
 from .widgets import node_tree
@@ -211,7 +212,7 @@ class TemplateNodeEditView(SingleObjectEditView):
 
 
 class IndexListView(SingleObjectListView):
-    object_permission = permission_document_indexing_view
+    object_permission = permission_document_indexing_instance_view
 
     def get_extra_context(self):
         return {
@@ -233,7 +234,7 @@ class IndexInstanceNodeView(DocumentListView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_indexing_view,
+            permissions=permission_document_indexing_instance_view,
             user=request.user, obj=self.index_instance_node.index()
         )
 
@@ -295,7 +296,7 @@ class DocumentIndexNodeListView(SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
-    object_permission = permission_document_indexing_view
+    object_permission = permission_document_indexing_instance_view
     object_permission_related = 'index'
 
     def dispatch(self, request, *args, **kwargs):
