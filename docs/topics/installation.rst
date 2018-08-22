@@ -26,7 +26,7 @@ Docker can be installed using their automated script::
 This installs the latest versions of Docker. If you don't want run an automated
 script follow the instructions outlined in their documentation: https://docs.docker.com/install/
 
-Once the Docker installtion is finished, proceed to the link below to install
+Once the Docker installation is finished, proceed to the link below to install
 the Docker image for Mayan EDMS.
 
 Docker image chapter: :ref:`docker`

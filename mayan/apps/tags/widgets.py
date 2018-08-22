@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django import forms
 from django.apps import apps
 from django.template.loader import render_to_string
+from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 
 from .permissions import permission_tag_view
@@ -17,8 +18,8 @@ class TagFormWidget(forms.SelectMultiple):
 
     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
         result = super(TagFormWidget, self).create_option(
-            name=name, value=value, label=label, selected=selected,
-            index=index, subindex=subindex, attrs=attrs
+            name=name, value=value, label='{}'.format(conditional_escape(label)),
+            selected=selected, index=index, subindex=subindex, attrs=attrs
         )
 
         result['attrs']['data-color'] = self.queryset.get(pk=value).color

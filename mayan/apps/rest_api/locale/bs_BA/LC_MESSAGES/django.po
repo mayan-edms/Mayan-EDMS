@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:05-0400\n"
-"PO-Revision-Date: 2018-04-10 08:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-08-09 10:42+0000\n"
+"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,17 +25,17 @@ msgstr "REST API "
 #: fields.py:33
 #, python-format
 msgid "Unable to find serializer class for: %s"
-msgstr ""
+msgstr "Nije moguće pronaći klasu za serializaciju za: %s"
 
 #: links.py:12
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "API dokumentacija (Swagger)"
 
 #: links.py:17
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "API dokumentacija (ReDoc)"
 
 #: schemas.py:10
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "%s API"

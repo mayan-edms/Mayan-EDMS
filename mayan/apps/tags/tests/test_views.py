@@ -166,7 +166,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             'tags:tag_attach', args=(self.document.pk,), data={
                 'tags': self.tag.pk,
                 'user': self.user.pk
-            }, follow=True
+            }
         )
 
     def test_document_attach_tag_view_no_permission(self):
@@ -181,7 +181,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         # Redirect to previous URL and show warning message about having to
         # select at least one object.
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.tags.count(), 0)
 
     def test_document_attach_tag_view_with_access(self):
@@ -198,7 +198,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self._request_attach_tag()
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         self.assertQuerysetEqual(
             self.document.tags.all(), (repr(self.tag),)
@@ -209,7 +209,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             'tags:multiple_documents_tag_attach', data={
                 'id_list': self.document.pk, 'tags': self.tag.pk,
                 'user': self.user.pk
-            }, follow=True
+            }
         )
 
     def test_document_multiple_attach_tag_view_no_permission(self):
@@ -236,7 +236,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self._request_multiple_attach_tag()
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
         self.assertQuerysetEqual(
             self.document.tags.all(), (repr(self.tag),)
@@ -248,7 +248,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             args=(self.document.pk,), data={
                 'id_list': self.document.pk,
                 'tags': self.tag.pk,
-            }, follow=True
+            }
         )
 
     def test_single_document_multiple_tag_remove_view_no_permissions(self):
@@ -276,7 +276,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self._request_single_document_multiple_tag_remove()
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.tags.count(), 0)
 
     def _request_multiple_documents_selection_tag_remove(self):
@@ -285,7 +285,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             data={
                 'id_list': self.document.pk,
                 'tags': self.tag.pk,
-            }, follow=True
+            }
         )
 
     def test_multiple_documents_selection_tag_remove_view_no_permissions(self):
@@ -313,5 +313,5 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self._request_multiple_documents_selection_tag_remove()
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.tags.count(), 0)

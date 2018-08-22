@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Rasmus Kierudsen <tebrasso@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:02-0400\n"
-"PO-Revision-Date: 2017-09-22 13:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-07-30 08:59+0000\n"
+"Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,24 +24,24 @@ msgstr "ACLs"
 
 #: apps.py:23 models.py:47
 msgid "Role"
-msgstr ""
+msgstr "Rolle"
 
 #: apps.py:26 links.py:50 models.py:43 workflow_actions.py:48
 msgid "Permissions"
-msgstr ""
+msgstr "Tilladelse"
 
 #: links.py:32
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #: links.py:45
 msgid "New ACL"
-msgstr ""
+msgstr "Ny ACL"
 
 #: managers.py:57 managers.py:86
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Utilstrækkelig adgang til: %s"
 
 #: models.py:55
 msgid "Access entry"
@@ -53,7 +54,7 @@ msgstr ""
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
+msgstr "Tilladelse \"%(permissions)s\" til rolle \"%(role)s\" for \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -65,11 +66,11 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Redigér ACL'er"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr ""
+msgstr "Se ACL'er"
 
 #: serializers.py:24 serializers.py:132
 msgid ""
@@ -109,7 +110,7 @@ msgstr ""
 #: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Slet ACL: %s"
 
 #: views.py:139
 #, python-format
@@ -118,7 +119,7 @@ msgstr ""
 
 #: views.py:151
 msgid "Available permissions"
-msgstr ""
+msgstr "Tilgængelige tilladelser"
 
 #: views.py:152
 msgid "Granted permissions"
@@ -152,7 +153,7 @@ msgstr ""
 
 #: workflow_actions.py:42
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."

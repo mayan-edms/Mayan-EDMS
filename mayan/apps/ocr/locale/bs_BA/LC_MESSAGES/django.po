@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:05-0400\n"
-"PO-Revision-Date: 2018-06-08 01:09+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-08-09 10:54+0000\n"
+"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,28 +26,28 @@ msgstr "OCR"
 
 #: apps.py:100
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: apps.py:104
 msgid "Added"
-msgstr ""
+msgstr "Dodaj"
 
 #: apps.py:108 models.py:57
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: events.py:10
 msgid "Document version submitted for OCR"
-msgstr ""
+msgstr "Verzija dokumenta dostavljena za OCR"
 
 #: events.py:14
 msgid "Document version OCR finished"
-msgstr ""
+msgstr "OCR dokumentacije je završen"
 
 #: forms.py:40
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Strana %(page_number)d"
 
 #: forms.py:48
 msgid "Contents"
@@ -54,23 +55,23 @@ msgstr "Sadržaj"
 
 #: links.py:18 links.py:21
 msgid "Submit for OCR"
-msgstr ""
+msgstr "Podnesite za OCR"
 
 #: links.py:24
 msgid "Setup OCR"
-msgstr ""
+msgstr "Setup OCR"
 
 #: links.py:29
 msgid "OCR documents per type"
-msgstr ""
+msgstr "OCR dokumenti po tipu"
 
 #: links.py:33 links.py:37 views.py:116
 msgid "OCR errors"
-msgstr ""
+msgstr "OCR greške"
 
 #: links.py:42
 msgid "Download OCR text"
-msgstr ""
+msgstr "Preuzmite OCR tekst"
 
 #: models.py:18
 msgid "Document type"
@@ -82,15 +83,15 @@ msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:26
 msgid "Document type settings"
-msgstr ""
+msgstr "Podešavanja tipa dokumenta"
 
 #: models.py:27
 msgid "Document types settings"
-msgstr ""
+msgstr "Podešavanja tipova dokumenata"
 
 #: models.py:34
 msgid "Document page"
-msgstr ""
+msgstr "Strnica dokumenta"
 
 #: models.py:36
 msgid "Content"
@@ -98,27 +99,27 @@ msgstr "Sadržaj"
 
 #: models.py:41
 msgid "Document page OCR content"
-msgstr ""
+msgstr "OCR sadržaj dokumenta"
 
 #: models.py:42
 msgid "Document pages OCR contents"
-msgstr ""
+msgstr "Dokumenti stranica OCR sadržaj"
 
 #: models.py:52
 msgid "Document version"
-msgstr ""
+msgstr "Verzija dokumenta"
 
 #: models.py:55
 msgid "Date time submitted"
-msgstr ""
+msgstr "Datum podnošenja vremena"
 
 #: models.py:61
 msgid "Document version OCR error"
-msgstr ""
+msgstr "Verzija dokumenta OCR greška"
 
 #: models.py:62
 msgid "Document version OCR errors"
-msgstr ""
+msgstr "OCR greške o verziji dokumenta"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -126,15 +127,15 @@ msgstr "Predati dokumente za OCR"
 
 #: permissions.py:14
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "Pogledajte transkribovani tekst iz dokumenta"
 
 #: permissions.py:18
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "Promenite postavke OCR dokumenta tipa"
 
 #: queues.py:9
 msgid "Document version OCR"
-msgstr ""
+msgstr "Verzija dokumenta OCR"
 
 #: settings.py:12
 msgid ""
@@ -144,39 +145,39 @@ msgstr "Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datote
 
 #: settings.py:19
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
+msgstr "Puni put do baze koja se koristi za izvršenje OCR-a."
 
 #: settings.py:28
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
+msgstr "Podesite nove tipove dokumenata koji automatski podrazumevaju OCR."
 
 #: views.py:41
 #, python-format
 msgid "OCR result for document: %s"
-msgstr ""
+msgstr "OCR rezultat za dokument: %s"
 
 #: views.py:56
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Podnesite odabrani dokument u OCR redosled?"
+msgstr[1] "Pošaljite odabrane dokumente u redosled OCR-a?"
+msgstr[2] "Pošaljite odabrane dokumente u redosled OCR-a?"
 
 #: views.py:71
 msgid "Submit all documents of a type for OCR"
-msgstr ""
+msgstr "Pošaljite sve dokumente vrste za OCR"
 
 #: views.py:85
 #, python-format
 msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
+msgstr "%(count)d dokumenti tipa \"%(document_type)s\" dodaje se u redosled OCR-a."
 
 #: views.py:108
 #, python-format
 msgid "Edit OCR settings for document type: %s"
-msgstr ""
+msgstr "Izmeni postavke OCR-a za tip dokumenta: %s"
 
 #: views.py:134
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr ""
+msgstr "OCR greške za dokument: %s"

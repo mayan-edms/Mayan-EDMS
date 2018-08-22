@@ -1,15 +1,16 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.utils.html import format_html_join
+from django.utils.html import format_html, format_html_join
 
 from .permissions import permission_cabinet_view
 
 
 def jstree_data(node, selected_node):
     result = []
+
     result.append('{')
-    result.append('"text": "{}",'.format(node.label))
+    result.append(format_html('"text": "{}",', node.label))
     result.append(
         '"state": {{ "opened": true, "selected": {} }},'.format(
             'true' if node == selected_node else 'false'

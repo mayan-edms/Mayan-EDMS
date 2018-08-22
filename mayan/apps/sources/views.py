@@ -280,7 +280,7 @@ class UploadInteractiveView(UploadBaseView):
                 messages.success(
                     self.request,
                     _(
-                        'New document queued for uploaded and will be available '
+                        'New document queued for upload and will be available '
                         'shortly.'
                     )
                 )
@@ -415,7 +415,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             messages.success(
                 self.request,
                 _(
-                    'New document version queued for uploaded and will be '
+                    'New document version queued for upload and will be '
                     'available shortly.'
                 )
             )

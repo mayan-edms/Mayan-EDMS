@@ -29,7 +29,7 @@
 - Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
 - Remove use is waitForJQuery.
 - Remove code statistics from the documentation.
-- Remove the pending work chapter. This is now available in the Wiki: 
+- Remove the pending work chapter. This is now available in the Wiki:
   wiki.mayan-edms.com
 - Unify template title rendering.
 - Add support for template subtitles.
@@ -76,7 +76,7 @@
   permission which allows viewing an index definiton on the
   setup menu.
 - Add support to conditionally disable menus.
-- Disable the Tags menu when the user doesn't have the 
+- Disable the Tags menu when the user doesn't have the
   tag create permission or the tag view access for any tag.
 - Disable the Cabinets menu when the user doesn't have the
   cabinet create permission or the cabinet view permission
@@ -87,8 +87,62 @@
 - Add support for the fillcolor argument to the rotate
   transformation.
 
+3.0.3 (2018-08-17)
+==================
+- Tags app: Add explicit casting of escaped tag labels to prevent exploit
+  of cross site scripting. Thanks to Lokesh (@lokesh1095) for
+  the report and proposed solutions. Closes GitLab issue #496.
+- Tags app: Add explicit post action redirect for the tag attach and
+  tag remove actions when working on a single document.
+
+3.0.2 (2018-08-16)
+==================
+- Docker install script: Default to verbose.
+- Docker install script: Increase startup timer to 10 seconds.
+- Docker install script: Allow configuring the PostgreSQL port.
+- Documentation: Add deployment step that configures Redis to discard
+  unused task data when it runs out of memory.
+- Index app: Add natural key support to the Index model.
+- Mailer app: Add natural key support to the mailer app.
+- Cabinets: Redirect to the cabinet list view after creating a new cabinet.
+- Builds: Limit the number of branches that trigger the full test suit.
+- Converter app: Fix crop transformation argument parsing.
+- Converter app: Add error checking to the crop transformation arguments.
+  Thanks to Jordan Wages (@wagesj45) for the report and investigation on the issue.
+  Closes GitLab issue #490
+- Common app: Fix post login redirection to honor the ?next= URL query string
+  argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
+  issue #489.
+- Docker install script: Detect if Docker installed and provide help
+  text if not.
+- Sources app: Update dropzone.js' timeout from 30 seconds to 120 to allow
+  upload of large files on slow connections.
+- Documentation: Increase gunicorn's timeout from 30 seconds to 120.
+- Documents app: Display error when attempting to recalculate the page
+  count of an empty
+  document (document stub that has no document version).
+- Appearance app: Include querystring when force reload of a bare template view.
+- Documents app: Fix trashed document count and document page count swapped
+  dashboard icons.
+- Documents app: Rename the multi document download link from "Download" to
+  "Advanced download" for consistency.
+- Documentation: Remove code statistics from the documentation.
+- Documentation: Remove the pending work chapter. This is now available in
+  the Wiki: wiki.mayan-edms.com
+- Appearance app: Add support for hiding a links icon. Hide all object menu
+  links' icons.
+- Documents app: Hide the title link of documents in the trash.
+- Workflow app: Define a redirection after workflow actions are edited.
+- Appearance app: avoid setting window.location directly to avoid exploit
+  of cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and solution. Closes GitLab issue #494.
+- Cabinets app: Escape cabinet labels to avoid possible exploit of
+  cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and proposed solutions. Closes GitLab issue #495.
+- Language translation synchonization.
+
 3.0.1 (2018-07-08)
-=================
+==================
 - Pin javascript libraries to specific versions to avoid using
   potentianlly broken updates automatically. GitLab issue #486.
 - French and Polish language translation updates.

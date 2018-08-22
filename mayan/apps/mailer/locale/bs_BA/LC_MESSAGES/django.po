@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-07 21:04-0400\n"
-"PO-Revision-Date: 2018-04-11 19:13+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2018-08-09 10:57+0000\n"
+"Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +20,15 @@ msgstr ""
 
 #: apps.py:38
 msgid "Mailer"
-msgstr ""
+msgstr "Mailer"
 
 #: apps.py:53
 msgid "Date and time"
-msgstr ""
+msgstr "Datum i vreme"
 
 #: apps.py:56 models.py:24 models.py:162
 msgid "Message"
-msgstr ""
+msgstr "Poruke"
 
 #: apps.py:59 apps.py:74 models.py:36
 msgid "Label"
@@ -35,61 +36,61 @@ msgstr "Labela"
 
 #: apps.py:62
 msgid "Default?"
-msgstr ""
+msgstr "Uobičajeno?"
 
 #: apps.py:68
 msgid "Enabled?"
-msgstr ""
+msgstr "Omogućeno?"
 
 #: forms.py:60
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
-msgstr ""
+msgstr "E-mail adresa primaoca. Mogu biti višestruke adrese razdvojene zarezom ili tačka-točka."
 
 #: forms.py:62 forms.py:119
 msgid "Email address"
-msgstr ""
+msgstr "E-mail adresa"
 
 #: forms.py:64
 msgid "Subject"
-msgstr ""
+msgstr "Predmet"
 
 #: forms.py:66
 msgid "Body"
-msgstr ""
+msgstr "Telo"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr ""
+msgstr "Profil e-pošte koji će se koristiti za slanje e-pošte."
 
 #: forms.py:71 views.py:217
 msgid "Mailing profile"
-msgstr ""
+msgstr "Mailing profil"
 
 #: forms.py:76
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: links.py:16 links.py:23
 msgid "Email document"
-msgstr ""
+msgstr "E-mail dokument"
 
 #: links.py:20 links.py:26
 msgid "Email link"
-msgstr ""
+msgstr "Email link"
 
 #: links.py:30
 msgid "System mailer error log"
-msgstr ""
+msgstr "Dnevnik grešaka sistemskog mailera"
 
 #: links.py:34
 msgid "User mailer create"
-msgstr ""
+msgstr "Kreirajte korisnički mailer"
 
 #: links.py:38
 msgid "Delete"
-msgstr ""
+msgstr "Obriši"
 
 #: links.py:42
 msgid "Edit"
@@ -97,19 +98,19 @@ msgstr "Urediti"
 
 #: links.py:46
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 #: links.py:50
 msgid "Mailing profiles list"
-msgstr ""
+msgstr "Lista poštanskih profila"
 
 #: links.py:54
 msgid "Mailing profiles"
-msgstr ""
+msgstr "Mailing profili"
 
 #: links.py:58 views.py:238
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: literals.py:7
 #, python-format
@@ -118,7 +119,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Priloženo ovoj poruci je dokument: {{document}}\n\n --------\n Ovaj email je poslat iz %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -127,37 +128,37 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Da biste pristupili ovom dokumentu, kliknite na sledeći link: {{link}}\n\n--------\n Ovaj email je poslat iz %(project_title)s (%(project_website)s)"
 
 #: mailers.py:14
 msgid "Host"
-msgstr ""
+msgstr "Domaćin"
 
 #: mailers.py:16
 msgid "The host to use for sending email."
-msgstr ""
+msgstr "Domaćin koji će koristiti za slanje e-pošte."
 
 #: mailers.py:21
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: mailers.py:23
 msgid "Port to use for the SMTP server."
-msgstr ""
+msgstr "Port koji će se koristiti za SMTP server."
 
 #: mailers.py:26
 msgid "Use TLS"
-msgstr ""
+msgstr "Koristite TLS"
 
 #: mailers.py:29
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr ""
+msgstr "Da li da koristite TLS (sigurno) vezu prilikom razgovora s SMTP serverom. Ovo se koristi za eksplicitne TLS veze, uglavnom na portu 587."
 
 #: mailers.py:34
 msgid "Use SSL"
-msgstr ""
+msgstr "Koristi SSL"
 
 #: mailers.py:37
 msgid ""
@@ -167,58 +168,58 @@ msgid ""
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
 "and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
 " True."
-msgstr ""
+msgstr "Da li da koristite implicitnu TLS (sigurnu) vezu prilikom razgovora s SMTP serverom. U većini dokumentacija za e-poštu ova vrsta TLS veze se naziva SSL. Obično se koristi na portu 465. Ako imate problema, pogledajte eksplicitnu postavku TLS \"Use TLS\". Imajte na umu da se \"Use TLS\" i \"Use SSL\" međusobno isključuju, tako da samo jedan od tih postavki podesite na True."
 
 #: mailers.py:46
 msgid "Username"
-msgstr ""
+msgstr "Korisničko ime"
 
 #: mailers.py:49
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr ""
+msgstr "Korisničko ime koje treba koristiti za SMTP server. Ako je prazna, autentikacija se neće pokušati."
 
 #: mailers.py:55
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 #: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
-msgstr ""
+msgstr "Lozinka za korištenje za SMTP server. Ovo podešavanje se koristi zajedno sa korisničkim imenom prilikom autentikacije na SMTP serveru. Ako je bilo koja od ovih podešavanja prazna, autentikacija neće biti pokušana."
 
 #: mailers.py:76
 msgid "Django SMTP backend"
-msgstr ""
+msgstr "Django SMTP backend"
 
 #: mailers.py:83
 msgid "File path"
-msgstr ""
+msgstr "Putanja fajla"
 
 #: mailers.py:89
 msgid "Django file based backend"
-msgstr ""
+msgstr "Django bazirani fajl"
 
 #: models.py:21 models.py:159
 msgid "Date time"
-msgstr ""
+msgstr "Datum vreme"
 
 #: models.py:30
 msgid "Log entry"
-msgstr ""
+msgstr "Ulazni tragovi"
 
 #: models.py:31
 msgid "Log entries"
-msgstr ""
+msgstr "Stavke tragova"
 
 #: models.py:40
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
+msgstr "Ako je podrazumevano, ovaj mailing profil će biti unapred izabran na obrazcu za dostavljanje dokumenata."
 
 #: models.py:42
 msgid "Default"
@@ -226,157 +227,157 @@ msgstr "default"
 
 #: models.py:44
 msgid "Enabled"
-msgstr ""
+msgstr "Omogućeno"
 
 #: models.py:47
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Podešena Python staza do backend klase."
 
 #: models.py:48
 msgid "Backend path"
-msgstr ""
+msgstr "Backend putanja"
 
 #: models.py:51
 msgid "Backend data"
-msgstr ""
+msgstr "Backend podaci"
 
 #: models.py:56 models.py:156
 msgid "User mailer"
-msgstr ""
+msgstr "Korisnički poštar"
 
 #: models.py:57
 msgid "User mailers"
-msgstr ""
+msgstr "Korisnički poštar"
 
 #: models.py:150
 msgid "Test email from Mayan EDMS"
-msgstr ""
+msgstr "Testirajte email od Mayan EDMS"
 
 #: models.py:168
 msgid "User mailer log entry"
-msgstr ""
+msgstr "Unos dnevnika korisnika mailera"
 
 #: models.py:169
 msgid "User mailer log entries"
-msgstr ""
+msgstr "Stavke evidencije korisnika mailera"
 
 #: permissions.py:7 queues.py:8 settings.py:11
 msgid "Mailing"
-msgstr ""
+msgstr "Mailing"
 
 #: permissions.py:10
 msgid "Send document link via email"
-msgstr ""
+msgstr "Pošaljite link dokumenta putem e-pošte"
 
 #: permissions.py:13
 msgid "Send document via email"
-msgstr ""
+msgstr "Pošaljite dokument putem e-pošte"
 
 #: permissions.py:16
 msgid "View system mailing error log"
-msgstr ""
+msgstr "Pogledajte evidenciju grešaka u sistemu"
 
 #: permissions.py:19
 msgid "Create a mailing profile"
-msgstr ""
+msgstr "Kreirajte mailing listu"
 
 #: permissions.py:22
 msgid "Delete a mailing profile"
-msgstr ""
+msgstr "Obrišite mailing listu"
 
 #: permissions.py:25
 msgid "Edit a mailing profile"
-msgstr ""
+msgstr "Izmenite mailing profil"
 
 #: permissions.py:28
 msgid "View a mailing profile"
-msgstr ""
+msgstr "Pregledajte mailing listu"
 
 #: permissions.py:31
 msgid "Use a mailing profile"
-msgstr ""
+msgstr "Koristite mailing listu"
 
 #: queues.py:12
 msgid "Send document"
-msgstr ""
+msgstr "Pošaljite dokument"
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
-msgstr ""
+msgstr "Veza za dokument: {{document}}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "Šablon za liniju naslova linka e-poruke."
 
 #: settings.py:20
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
+msgstr "Šablon za link dokumenta e-pošte oblikuje tekst tela. Može uključiti HTML."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
-msgstr ""
+msgstr "Dokument: {{document}}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
+msgstr "Šablon za temu linije naslova e-pošte dokumenta."
 
 #: settings.py:30
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
+msgstr "Šablon za tekst e-pošte oblikuje tekst tela. Može uključiti HTML."
 
 #: views.py:34
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Evidencija grešaka u dokumentaciji"
 
 #: views.py:46
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "%(count)d dokument postavljen za dostavljanje e-pošte"
 
 #: views.py:48
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "%(count)d dokumenata koji su stavljeni u red za dostavljanje e-pošte"
 
 #: views.py:59
 msgid "Send"
-msgstr ""
+msgstr "Pošalji"
 
 #: views.py:105
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "%(count)d dokument link je postavljen za dostavljanje e-pošte"
 
 #: views.py:107
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)d dokument linkova su postavljana za dostavljanje e-pošte"
 
 #: views.py:116
 msgid "New mailing profile backend selection"
-msgstr ""
+msgstr "Izbor novog profila pozadinskog profila"
 
 #: views.py:144
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr ""
+msgstr "Kreirajte mailing listu \"%s\""
 
 #: views.py:170
 #, python-format
 msgid "Delete mailing profile: %s"
-msgstr ""
+msgstr "Obriši mailing profil: %s"
 
 #: views.py:181
 #, python-format
 msgid "Edit mailing profile: %s"
-msgstr ""
+msgstr "Uredi mailing adresu: %s"
 
 #: views.py:204
 #, python-format
 msgid "%s error log"
-msgstr ""
+msgstr "%s error tragovi"
 
 #: views.py:239
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr ""
+msgstr "Test mailing profila: %s"

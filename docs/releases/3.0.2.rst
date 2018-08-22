@@ -1,0 +1,138 @@
+===============================
+Mayan EDMS v3.0.2 release notes
+===============================
+
+Released: August 16, 2018
+
+What's new
+==========
+This bug fix release also includes a few tweaks to improve user experience.
+
+Docker install script
+---------------------
+- Default to verbose.
+- Increase startup timer from 5 to 10 seconds to give more time to users to
+  examine the settings of the installation to be performed.
+- Add support for configuring the PostgreSQL port. Useful when there are
+  existing PostgreSQL installations.
+- Docker install script: Detect if Docker installed and provide help
+  text if not.
+
+Documentation
+-------------
+Add deployment step that configures Redis to discard unused task data when
+it runs out of memory. Redis is only used for volatile data therefore
+configuring it to discard data doesn't affect functionality but increases
+response time and reduced memory consumption.
+
+The default timeout for gunicorn has been increased from from 30 to 120
+seconds.
+
+The code statistics and pending work chapters have been removed from the
+documentation. The pending work list has been divided into a pending and a
+planned feature list and moved to the new Wiki at wiki.mayan-edms.com
+
+Builds
+------
+Limit the number of branches that trigger the full test suit. Makes better use
+of the amount of free continous integration available in GitLab.
+
+Program code
+------------
+- Index app: Add natural key support to the Index model.
+- Mailer app: Add natural key support to the mailer app.
+- Cabinets: Redirect to the cabinet list view after creating a new cabinet.
+- Converter app: Fix crop transformation argument parsing.
+- Converter app: Add error checking to the crop transformation arguments.
+  Thanks to Jordan Wages (@wagesj45) for the report and investigation on the issue.
+  Closes GitLab issue #490
+- Common app: Fix post login redirection to honor the ?next= URL query string
+  argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
+  issue #489.
+- Sources app: Update dropzone.js' timeout from 30 seconds to 120 to allow
+  upload of large files on slow connections.
+- Documents app: Display error when attempting to recalculate the page
+  count of an empty
+  document (document stub that has no document version).
+- Appearance app: Include querystring when force reload of a bare template view.
+- Documents app: Fix trashed document count and document page count swapped
+  dashboard icons.
+- Documents app: Rename the multi document download link from "Download" to
+  "Advanced download" for consistency.
+- Appearance app: Add support for hiding a links icon. Hide all object menu
+  links' icons.
+- Documents app: Hide the title link of documents in the trash.
+- Workflow app: Define a redirection after workflow actions are edited.
+
+Security
+--------
+- Appearance app: avoid setting window.location directly to avoid exploit
+  of cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and solution. Closes GitLab issue #494.
+- Cabinets app: Escape cabinet labels to avoid possible exploit of
+  cross site scripting. Thanks to Lokesh (@lokesh1095) for the report
+  and proposed solutions. Closes GitLab issue #495.
+
+Removals
+--------
+- None
+
+Upgrading from a previous version
+---------------------------------
+
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install mayan-edms==3.0.2
+
+the requirements will also be updated automatically.
+
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #489 <https://gitlab.com/mayan-edms/mayan-edms/issues/489>`_ "next" parameter is not honored after login
+* `GitLab issue #490 <https://gitlab.com/mayan-edms/mayan-edms/issues/490>`_ Crop Transformation seems to not convert input to numeric values
+* `GitLab issue #491 <https://gitlab.com/mayan-edms/mayan-edms/issues/491>`_ "Warning Your database backend is set to use SQLite[...]" with docker compose
+* `GitLab issue #494 <https://gitlab.com/mayan-edms/mayan-edms/issues/494>`_ DOM based Cross Site Scripting
+* `GitLab issue #495 <https://gitlab.com/mayan-edms/mayan-edms/issues/495>`_ Persistent Cross Site Scripting
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
