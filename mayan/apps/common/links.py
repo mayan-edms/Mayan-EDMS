@@ -84,7 +84,7 @@ link_object_error_list_with_icon = Link(
 )
 link_forum = Link(
     icon_class=icon_forum, tags='new_window', text=_('Forum'),
-    url='https://groups.google.com/forum/#!forum/mayan-edms'
+    url='https://forum.mayan-edms.com'
 )
 link_license = Link(
     icon_class=icon_license, text=_('License'), view='common:license_view'

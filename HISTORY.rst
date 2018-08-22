@@ -81,6 +81,7 @@
 - Disable the Cabinets menu when the user doesn't have the
   cabinet create permission or the cabinet view permission
   for any cabinet.
+- Update forum link in the about menu.
 
 3.0.1 (2018-07-08)
 =================
