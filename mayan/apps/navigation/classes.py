@@ -286,6 +286,8 @@ class Link(object):
             app_label='acls', model_name='AccessControlList'
         )
 
+        # Try to get the request object the faster way and fallback to the
+        # slower method.
         request = getattr(
             context, 'request', Variable('request').resolve(context)
         )
