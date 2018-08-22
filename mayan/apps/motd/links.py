@@ -1,14 +1,18 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.apps import apps
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link
+from navigation import Link, get_cascade_condition
+from permissions import Permission
 
 from .icons import icon_message_list
 from .permissions import (
     permission_message_create, permission_message_delete,
-    permission_message_edit,
+    permission_message_edit, permission_message_view
 )
+
 
 link_message_create = Link(
     permissions=(permission_message_create,), text=_('Create message'),
@@ -23,6 +27,10 @@ link_message_edit = Link(
     view='motd:message_edit'
 )
 link_message_list = Link(
-    icon_class=icon_message_list, text=_('Message of the day'),
+    condition=get_cascade_condition(
+        app_label='motd', model_name='Message',
+        object_permission=permission_message_view,
+        view_permission=permission_message_create,
+    ), icon_class=icon_message_list, text=_('Message of the day'),
     view='motd:message_list'
 )

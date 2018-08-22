@@ -58,6 +58,11 @@
 - Renamed setting LOCK_MANAGER_DEFAULT_BACKEND to LOCK_MANAGER_BACKEND.
 - Add help texts to more setting options.
 - Add ACL support for metadata types.
+- Add cascade permission checks for links. Avoid allowing users
+  to reach a empty views because they don't access to any of
+  the view's objects.
+- Apply link permission cascade checks to the message of the day,
+  indexing and parsing, setup link.
 
 3.0.1 (2018-07-08)
 =================

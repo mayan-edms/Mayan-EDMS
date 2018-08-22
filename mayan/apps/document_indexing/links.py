@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link
+from navigation import Link, get_cascade_condition
 
 from .icons import (
     icon_document_index_list, icon_index, icon_rebuild_index_instances
@@ -10,6 +10,7 @@ from .icons import (
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
     permission_document_indexing_delete, permission_document_indexing_rebuild,
+    permission_document_indexing_view
 )
 
 
@@ -26,7 +27,11 @@ link_index_main_menu = Link(
     view='indexing:index_list'
 )
 link_index_setup = Link(
-    icon_class=icon_index, text=_('Indexes'),
+    condition=get_cascade_condition(
+        app_label='document_indexing', model_name='Index',
+        object_permission=permission_document_indexing_view,
+        view_permission=permission_document_indexing_create,
+    ), icon_class=icon_index, text=_('Indexes'),
     view='indexing:index_setup_list'
 )
 link_index_setup_list = Link(
