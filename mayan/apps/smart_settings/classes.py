@@ -112,8 +112,14 @@ class Setting(object):
 
     @classmethod
     def save_configuration(cls, path=settings.CONFIGURATION_FILEPATH):
-        with open(path, 'w') as file_object:
-            file_object.write(cls.dump_data())
+        try:
+            with open(path, 'w') as file_object:
+                file_object.write(cls.dump_data())
+        except IOError as exception:
+            if exception.errno == errno.IONENT:
+                # The path for the configuration files doesn't exist.
+                # We can't save the backup file.
+                pass
 
     @classmethod
     def save_last_known_good(cls):
