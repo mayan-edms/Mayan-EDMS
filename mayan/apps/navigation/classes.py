@@ -339,6 +339,13 @@ class Link(object):
                 except PermissionDenied:
                     return None
 
+        # Check to see if link has conditional display function and only
+        # display it if the result of the conditional display function is
+        # True
+        if self.condition:
+            if not self.condition(context):
+                return None
+
         resolved_link = ResolvedLink(current_view=current_view, link=self)
 
         if self.view:
@@ -377,13 +384,6 @@ class Link(object):
                 )
         elif self.url:
             resolved_link.url = self.url
-
-        # Check to see if link has conditional display function and only
-        # display it if the result of the conditional display function is
-        # True
-        if self.condition:
-            if not self.condition(context):
-                return None
 
         # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
