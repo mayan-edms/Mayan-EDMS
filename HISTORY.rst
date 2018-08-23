@@ -105,6 +105,7 @@
   document.
 - After queuing a chart for update, the view will now redirect
   to the same chart.
+- The multiple document action dropdown is now sorted alphabetically.
 
 3.0.3 (2018-08-17)
 ==================
