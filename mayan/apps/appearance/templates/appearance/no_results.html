@@ -1,0 +1,38 @@
+{% load i18n %}
+
+<div class="text-center">
+    <div style="font-size: 150%;">
+        {% if no_results_icon %}
+            {{ no_results_icon.render }}
+        {% else %}
+            <i class="fa fa-times"></i>
+        {% endif %}
+    </div>
+
+    {% trans 'No results' as default_title %}
+    <h4>{{ no_results_title|default:default_title }}</h4>
+    {% if no_results_text %}
+        <p class="small">{{ no_results_text }}</p>
+    {% endif %}
+
+    {% if no_results_main_link %}
+        <div>
+            {% with no_results_main_link as link %}
+            {% with 'btn btn-primary btn-sm' as link_classes %}
+            {% include 'navigation/generic_subnavigation.html' %}
+            {% endwith %}
+            {% endwith %}
+        </div>
+    {% endif %}
+
+    {% if no_results_secondary_links %}
+        <div>
+            {% for link in no_results_secondary_links %}
+                {% with 'btn btn-default btn-sm' as link_classes %}
+                    {% include 'navigation/generic_subnavigation.html' %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+

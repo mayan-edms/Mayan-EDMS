@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.files import File
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -23,6 +24,12 @@ from documents.models import DocumentVersion
 from .forms import (
     DocumentVersionSignatureCreateForm,
     DocumentVersionSignatureDetailForm
+)
+from .icons import icon_document_signature_list
+from .links import (
+    link_document_version_signature_detached_create,
+    link_document_version_signature_embedded_create,
+    link_document_version_signature_upload
 )
 from .models import DetachedSignature, SignatureBaseModel
 from .permissions import (
@@ -294,6 +301,31 @@ class DocumentVersionSignatureListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_document_signature_list,
+            'no_results_text': _(
+                'Signatures help provide authorship evidence and tamper '
+                'detection. They are very secure and hard to '
+                'forge. A signature can be embedded as part of the document '
+                'itself or uploaded as a separate file.'
+            ),
+            'no_results_secondary_links': [
+                link_document_version_signature_detached_create.resolve(
+                    RequestContext(
+                        self.request, {'object': self.get_document_version()}
+                    )
+                ),
+                link_document_version_signature_embedded_create.resolve(
+                    RequestContext(
+                        self.request, {'object': self.get_document_version()}
+                    )
+                ),
+                link_document_version_signature_upload.resolve(
+                    RequestContext(
+                        self.request, {'object': self.get_document_version()}
+                    )
+                ),
+            ],
+            'no_results_title': _('There are no signatures for this document.'),
             'object': self.get_document_version(),
             'title': _(
                 'Signatures for document version: %s'

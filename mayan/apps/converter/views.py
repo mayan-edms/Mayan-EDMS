@@ -5,6 +5,7 @@ import logging
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,6 +15,8 @@ from common.views import (
     SingleObjectListView
 )
 
+from .icons import icon_transformation
+from .links import link_transformation_create
 from .models import Transformation
 from .permissions import (
     permission_transformation_create, permission_transformation_delete,
@@ -210,6 +213,18 @@ class TransformationListView(SingleObjectListView):
             'hide_link': True,
             'hide_object': True,
             'navigation_object_list': ('content_object',),
+            'no_results_icon': icon_transformation,
+            'no_results_main_link': link_transformation_create.resolve(
+                context=RequestContext(
+                    self.request, {'content_object': self.content_object,}
+                )
+            ),
+            'no_results_text': _(
+                'Transformations allow changing the visual appearance '
+                'of documents without making permanent changes to the '
+                'document file themselves.'
+            ),
+            'no_results_title': _('No transformations'),
             'title': _('Transformations for: %s') % self.content_object,
         }
 

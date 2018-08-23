@@ -29,6 +29,7 @@ from .generics import (  # NOQA
     SingleObjectDynamicFormEditView, SingleObjectDownloadView,
     SingleObjectEditView, SingleObjectListView, SimpleView
 )
+from .icons import icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions_runtime import permission_error_log_view
 from .utils import check_version
@@ -253,10 +254,18 @@ class SetupListView(TemplateView):
         data = super(SetupListView, self).get_context_data(**kwargs)
         context = RequestContext(self.request)
         context['request'] = self.request
-        data.update({
-            'resolved_links': menu_setup.resolve(context=context),
-            'title': _('Setup items'),
-        })
+        data.update(
+            {
+                'no_results_icon': icon_setup,
+                'no_results_label': _('No setup options available.'),
+                'no_results_text': _(
+                    'No results here means that don\'t have the required '
+                    'permissions to perform administrative task.'
+                ),
+                'resolved_links': menu_setup.resolve(context=context),
+                'title': _('Setup items'),
+            }
+        )
         return data
 
 

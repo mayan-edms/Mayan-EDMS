@@ -58,7 +58,11 @@
                     {% include 'appearance/generic_form_instance.html' %}
                 {% empty %}
                     <tr><td class="text-center" colspan=99>
-                        {% if form_empty_label %}{{ form_empty_label }}{% else %}{% trans 'No results' %}{% endif %}
+                        {% if form_empty_label %}{{ form_empty_label }}{% else %}
+
+                        {% include 'appearance/no_results.html' %}
+
+                        {% endif %}
                     </td></tr>
                 {% endfor %}
 
@@ -72,23 +76,26 @@
             {% include 'appearance/generic_form_instance.html' %}
         {% endif %}
         {% if not read_only %}
-            <div class="form-group">
-                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
-                    {% if submit_icon_class %}
-                        {{ submit_icon_class.render }}
-                    {% elif submit_icon %}
-                        <i class="{{ submit_icon }}"></i>
-                    {% else %}
-                        <i class="fa fa-check"></i>
+            {% if not form.management_form or wizard.management_form or form.forms %}
+            {# Is a normal form, a wizard form, or a formset with at least one form #}
+                <div class="form-group">
+                    <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
+                        {% if submit_icon_class %}
+                            {{ submit_icon_class.render }}
+                        {% elif submit_icon %}
+                            <i class="{{ submit_icon }}"></i>
+                        {% else %}
+                            <i class="fa fa-check"></i>
+                        {% endif %}
+                        {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                    </button>
+                    {% if previous %}
+                          &nbsp;<a class="btn btn-default" onclick='history.back();'>
+                            <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                          </a>
                     {% endif %}
-                    {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
-                </button>
-                {% if previous %}
-                      &nbsp;<a class="btn btn-default" onclick='history.back();'>
-                        <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
-                      </a>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         {% endif %}
     </form>
 </div>

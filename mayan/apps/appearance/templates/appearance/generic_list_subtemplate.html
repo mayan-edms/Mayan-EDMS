@@ -108,7 +108,11 @@
                             {% endif %}
                             </tr>
                         {% empty %}
-                            <tr><td class="text-center" colspan=99>{% trans 'No results' %}</td></tr>
+                            <tr>
+                                <td class="text-center" colspan=99>
+                                    {% include 'appearance/no_results.html' %}
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>

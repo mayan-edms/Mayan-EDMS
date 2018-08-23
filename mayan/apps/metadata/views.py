@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.http import urlencode
@@ -28,7 +29,11 @@ from .forms import (
 )
 from .icons import (
     icon_document_metadata_add_submit, icon_document_metadata_edit_submit,
-    icon_document_metadata_remove_submit
+    icon_document_metadata_remove_submit, icon_metadata
+)
+from .links import (
+    link_metadata_add, link_metadata_multiple_add,
+    link_setup_metadata_type_create
 )
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
@@ -262,8 +267,29 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
     def get_extra_context(self):
         queryset = self.get_queryset()
 
+        if queryset.count() == 1:
+            no_results_main_link = link_metadata_add.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={'object': queryset.first()}
+                )
+            )
+        else:
+            no_results_main_link = link_metadata_multiple_add.resolve(
+                context=RequestContext(request=self.request)
+            )
+            no_results_main_link.url = '{}?id_list={}'.format(
+                no_results_main_link.url, id_list
+            )
+
         result = {
             'form_display_mode_table': True,
+            'no_results_icon': icon_metadata,
+            'no_results_main_link': no_results_main_link,
+            'no_results_text': _(
+                'Add metadata types available for this document\'s type '
+                'and assign them corresponding values.'
+            ),
+            'no_results_title': _('There is no metadata to edit'),
             'submit_icon_class': icon_document_metadata_edit_submit,
             'submit_label': _('Edit'),
             'title': ungettext(
@@ -371,8 +397,22 @@ class DocumentMetadataListView(SingleObjectListView):
         return {
             'hide_link': True,
             'object': document,
+            'no_results_icon': icon_metadata,
+            'no_results_main_link': link_metadata_add.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={'object': document}
+                )
+            ),
+            'no_results_text': _(
+                'Add metadata types this document\'s type '
+                'to be able to add them to individual documents. '
+                'Once added to individual document, you can then edit their '
+                'values.'
+            ),
+            'no_results_title': _('This document doesn\'t have any metadata'),
             'title': _('Metadata for document: %s') % document,
         }
+
 
     def get_object_list(self):
         return self.get_document().metadata.all()
@@ -579,6 +619,19 @@ class MetadataTypeListView(SingleObjectListView):
                 },
             ),
             'hide_link': True,
+            'no_results_icon': icon_metadata,
+            'no_results_main_link': link_setup_metadata_type_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Metadata types are users defined properties that can be '
+                'assigned values. Once created they must be associated to '
+                'document types, either as optional or required, for each. '
+                'Setting a metadata type as required for a document type '
+                'will block the upload of documents of that type until a '
+                'metadata value is provided.'
+            ),
+            'no_results_title': _('There are no metadata types'),
             'title': _('Metadata types'),
         }
 

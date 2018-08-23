@@ -11,4 +11,5 @@ icon_document_metadata_edit_submit = Icon(
 icon_document_metadata_remove_submit = Icon(
     driver_name='fontawesome', symbol='minus'
 )
+icon_metadata = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_metadata_view = Icon(driver_name='fontawesome', symbol='pencil-alt')

@@ -4,6 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -17,6 +18,10 @@ from documents.models import Document
 from documents.views import DocumentListView
 
 from .forms import CabinetListForm
+from .icons import icon_cabinet
+from .links import (
+    link_cabinet_add_document, link_cabinet_child_add, link_cabinet_create
+)
 from .models import Cabinet
 from .permissions import (
     permission_cabinet_add_document, permission_cabinet_create,
@@ -108,6 +113,18 @@ class CabinetDetailView(DocumentListView):
                     jstree_data(node=cabinet.get_root(), selected_node=cabinet)
                 ),
                 'list_as_items': True,
+                'no_results_icon': icon_cabinet,
+                'no_results_main_link': link_cabinet_child_add.resolve(
+                    context=RequestContext(
+                        request=self.request, dict_={'object': cabinet}
+                    )
+                ),
+                'no_results_text': _(
+                    'Cabinets level can contain documents or other '
+                    'cabinet sub levels. Documents can be added from '
+                    'the document\'s cabinet section.'
+                ),
+                'no_results_title': _('This cabinet level is empty'),
                 'object': cabinet,
                 'title': _('Details of cabinet: %s') % cabinet.get_full_path(),
             }
@@ -151,6 +168,16 @@ class CabinetListView(SingleObjectListView):
         return {
             'hide_link': True,
             'title': _('Cabinets'),
+            'no_results_icon': icon_cabinet,
+            'no_results_main_link': link_cabinet_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Cabinets are a multi-level method to organize '
+                'documents. Each cabinet can contain documents as '
+                'well as other sub level cabinets.'
+            ),
+            'no_results_title': _('No cabinets available'),
         }
 
     def get_object_list(self):
@@ -175,6 +202,18 @@ class DocumentCabinetListView(CabinetListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_cabinet,
+            'no_results_main_link': link_cabinet_add_document.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={'object': self.document}
+                )
+            ),
+            'no_results_text': _(
+                'Documents can be added to many cabinets.'
+            ),
+            'no_results_title': _(
+                'This document is not in any cabinet'
+            ),
             'object': self.document,
             'title': _('Cabinets containing document: %s') % self.document,
         }

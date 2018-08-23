@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
+from .icons import icon_transformation
 from .permissions import (
     permission_transformation_create, permission_transformation_delete,
     permission_transformation_edit, permission_transformation_view
@@ -43,6 +44,7 @@ link_transformation_edit = Link(
     text=_('Edit'), view='converter:transformation_edit'
 )
 link_transformation_list = Link(
+    icon_class=icon_transformation,
     kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_transformation_view,), text=_('Transformations'),
     view='converter:transformation_list'

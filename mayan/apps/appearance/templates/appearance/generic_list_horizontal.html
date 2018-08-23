@@ -14,7 +14,9 @@
                 {% for object_navigation_links in resolved_links %}
                     {% include 'navigation/generic_navigation.html' %}
                 {% empty %}
-                    <p class="text-center" colspan=99>{% trans 'No results' %}</p>
+                    <p class="text-center" colspan=99>
+                        {% include 'appearance/no_results.html' %}
+                    </p>
                 {% endfor %}
             {% endwith %}
         </div>

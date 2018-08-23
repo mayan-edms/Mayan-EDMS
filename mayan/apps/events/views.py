@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,6 +20,8 @@ from .classes import EventType, ModelEventType
 from .forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
+from .icons import icon_user_notifications_list
+from .links import link_event_types_subscriptions_list
 from .models import StoredEventType
 from .permissions import permission_events_view
 from .widgets import event_object_link
@@ -109,6 +112,17 @@ class NotificationListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_user_notifications_list,
+            'no_results_main_link': link_event_types_subscriptions_list.resolve(
+                context=RequestContext(
+                    self.request, {}
+                )
+            ),
+            'no_results_text': _(
+                'Subscribe to global or object events to receive '
+                'notifications.'
+            ),
+            'no_results_title': _('There are no notifications'),
             'object': self.request.user,
             'title': _('Notifications'),
         }

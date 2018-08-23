@@ -4,6 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, reverse
+from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -17,7 +18,10 @@ from documents.views import DocumentListView
 from documents.permissions import permission_document_view
 
 from .forms import TagMultipleSelectionForm
-from .icons import icon_tag_delete_submit, icon_tag_remove_submit
+from .icons import (
+    icon_menu_tags, icon_tag_delete_submit, icon_tag_remove_submit
+)
+from .links import link_tag_attach, link_tag_create
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -190,6 +194,17 @@ class TagListView(SingleObjectListView):
         return {
             'hide_link': True,
             'hide_object': True,
+            'no_results_icon': icon_menu_tags,
+            'no_results_text': _(
+                'Tags are color coded properties that can be attached or '
+                'removed from documents.'
+            ),
+            'no_results_title': _('No tags available'),
+            'no_results_main_link': link_tag_create.resolve(
+                context=RequestContext(
+                    self.request, {}
+                )
+            ),
             'title': _('Tags'),
         }
 
@@ -237,6 +252,12 @@ class DocumentTagListView(TagListView):
         context.update(
             {
                 'hide_link': True,
+                'no_results_title': _('Document has no tags attached'),
+                'no_results_main_link': link_tag_attach.resolve(
+                    context=RequestContext(
+                        self.request, {'object': self.document}
+                    )
+                ),
                 'object': self.document,
                 'title': _('Tags for document: %s') % self.document,
             }

@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,6 +11,8 @@ from common.generics import (
 )
 from documents.models import Document
 
+from .icons import icon_comments_for_document
+from .links import link_comment_add
 from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
@@ -93,6 +96,15 @@ class DocumentCommentListView(SingleObjectListView):
         return {
             'hide_link': True,
             'hide_object': True,
+            'no_results_icon': icon_comments_for_document,
+            'no_results_text': _(
+                'Document comments are timestamped text entries from users. '
+                'They are great for collaboration.'
+            ),
+            'no_results_main_link': link_comment_add.resolve(
+                RequestContext(self.request, {'object': self.get_document()})
+            ),
+            'no_results_title': _('There are no comments'),
             'object': self.get_document(),
             'title': _('Comments for document: %s') % self.get_document(),
         }

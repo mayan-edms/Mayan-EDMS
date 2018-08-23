@@ -6,7 +6,8 @@ from navigation import Link
 
 from .icons import (
     icon_document_workflow_instance_list, icon_setup_workflow_list,
-    icon_tool_launch_all_workflows, icon_workflow_list
+    icon_tool_launch_all_workflows, icon_workflow_list,
+    icon_workflow_state, icon_workflow_state_action, icon_workflow_transition
 )
 from .permissions import (
     permission_workflow_create, permission_workflow_delete,
@@ -20,8 +21,8 @@ link_document_workflow_instance_list = Link(
     view='document_states:document_workflow_instance_list',
 )
 link_setup_workflow_create = Link(
-    permissions=(permission_workflow_create,), text=_('Create workflow'),
-    view='document_states:setup_workflow_create'
+    icon_class=icon_workflow_list, permissions=(permission_workflow_create,),
+    text=_('Create workflow'), view='document_states:setup_workflow_create'
 )
 link_setup_workflow_delete = Link(
     args='resolved_object.pk', permissions=(permission_workflow_delete,),
@@ -57,13 +58,13 @@ link_setup_workflow_state_action_list = Link(
     view='document_states:setup_workflow_state_action_list',
 )
 link_setup_workflow_state_action_selection = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Create action'),
+    args='resolved_object.pk', icon_class=icon_workflow_state_action,
+    permissions=(permission_workflow_edit,), text=_('Create action'),
     view='document_states:setup_workflow_state_action_selection',
 )
 link_setup_workflow_state_create = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Create state'),
+    args='resolved_object.pk', icon_class=icon_workflow_state,
+    permissions=(permission_workflow_edit,), text=_('Create state'),
     view='document_states:setup_workflow_state_create',
 )
 link_setup_workflow_state_delete = Link(
@@ -76,12 +77,13 @@ link_setup_workflow_state_edit = Link(
     text=_('Edit'), view='document_states:setup_workflow_state_edit',
 )
 link_setup_workflow_states = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_view,),
-    text=_('States'), view='document_states:setup_workflow_state_list',
+    args='resolved_object.pk', icon_class=icon_workflow_state,
+    permissions=(permission_workflow_view,), text=_('States'),
+    view='document_states:setup_workflow_state_list',
 )
 link_setup_workflow_transition_create = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
-    text=_('Create transition'),
+    args='resolved_object.pk', icon_class=icon_workflow_transition,
+    permissions=(permission_workflow_edit,), text=_('Create transition'),
     view='document_states:setup_workflow_transition_create',
 )
 link_setup_workflow_transition_delete = Link(
@@ -94,8 +96,8 @@ link_setup_workflow_transition_edit = Link(
     text=_('Edit'), view='document_states:setup_workflow_transition_edit',
 )
 link_setup_workflow_transitions = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_view,),
-    text=_('Transitions'),
+    args='resolved_object.pk', icon_class=icon_workflow_transition,
+    permissions=(permission_workflow_view,), text=_('Transitions'),
     view='document_states:setup_workflow_transition_list',
 )
 link_tool_launch_all_workflows = Link(

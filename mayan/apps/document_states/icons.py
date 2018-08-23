@@ -12,3 +12,12 @@ icon_tool_launch_all_workflows = Icon(
 icon_workflow_list = Icon(
     driver_name='fontawesome', symbol='sitemap'
 )
+icon_workflow_state = Icon(
+    driver_name='fontawesome', symbol='circle'
+)
+icon_workflow_state_action = Icon(
+    driver_name='fontawesome', symbol='code'
+)
+icon_workflow_transition = Icon(
+    driver_name='fontawesome', symbol='arrows-alt-h'
+)

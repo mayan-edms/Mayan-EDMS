@@ -6,6 +6,7 @@ import logging
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -18,6 +19,8 @@ from permissions import PermissionNamespace, Permission
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
+from .icons import icon_acl_list
+from .links import link_acl_create
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 
@@ -135,6 +138,19 @@ class ACLListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_acl_list,
+            'no_results_main_link': link_acl_create.resolve(
+                context=RequestContext(
+                    self.request, {'resolved_object': self.content_object}
+                )
+            ),
+            'no_results_title': _(
+                'There are no ACLs for this object'
+            ),
+            'no_results_text': _(
+                'ACL stands for Access Control List and is a precise method '
+                ' to control user access to objects in the system.'
+            ),
             'object': self.content_object,
             'title': _('Access control lists for: %s' % self.content_object),
         }

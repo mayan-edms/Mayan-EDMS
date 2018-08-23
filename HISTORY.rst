@@ -109,6 +109,9 @@
 - Improve statistics subclassing. Split class module into classes
   and renderers.
 - Sort facet link, object, secondady and sidebar actions.
+- Add support for extended templates when there are no results.
+- Add help messages and useful links to several apps when there
+  are no results available.
 
 3.0.3 (2018-08-17)
 ==================

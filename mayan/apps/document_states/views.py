@@ -6,6 +6,7 @@ from django.db import transaction
 from django.db.utils import IntegrityError
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -26,6 +27,15 @@ from .forms import (
     WorkflowActionSelectionForm, WorkflowForm, WorkflowInstanceTransitionForm,
     WorkflowPreviewForm, WorkflowStateActionDynamicForm, WorkflowStateForm,
     WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
+)
+from .icons import (
+    icon_workflow_list, icon_workflow_state, icon_workflow_state_action,
+    icon_workflow_transition
+)
+from .links import (
+    link_setup_workflow_create, link_setup_workflow_state_create,
+    link_setup_workflow_state_action_selection,
+    link_setup_workflow_transition_create
 )
 from .models import (
     Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
@@ -138,12 +148,26 @@ class WorkflowInstanceTransitionView(FormView):
 # Setup
 
 class SetupWorkflowListView(SingleObjectListView):
-    extra_context = {
-        'title': _('Workflows'),
-        'hide_object': True,
-    }
     model = Workflow
     object_permission = permission_workflow_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_workflow_list,
+            'no_results_main_link': link_setup_workflow_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Workflows store a series for states and keep track of the '
+                'current state of a document. Transitions are used to change the '
+                'current state to a new one.'
+            ),
+            'no_results_title': _(
+                'No workflows have been defined.'
+            ),
+            'title': _('Workflows'),
+        }
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
@@ -324,6 +348,21 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
         return {
             'hide_object': True,
             'navigation_object_list': ('object', 'workflow'),
+            'no_results_icon': icon_workflow_state_action,
+            'no_results_main_link': link_setup_workflow_state_action_selection.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.get_workflow_state()
+                    }
+                )
+            ),
+            'no_results_title': _(
+                'There are no actions for this workflow state.'
+            ),
+            'no_results_text': _(
+                'Workflow state actions are macros that get executed when '
+                'enters or leaves the state in which they reside.'
+            ),
             'object': self.get_workflow_state(),
             'title': _(
                 'Actions for workflow state: %s'
@@ -469,6 +508,18 @@ class SetupWorkflowStateListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_workflow_state,
+            'no_results_main_link': link_setup_workflow_state_create.resolve(
+                context=RequestContext(
+                    self.request, {'object': self.get_workflow()}
+                )
+            ),
+            'no_results_title': _(
+                'This workflow doesn\'t have any states'
+            ),
+            'no_results_text': _(
+                'Create states and link them using transitions.'
+            ),
             'object': self.get_workflow(),
             'title': _('States of workflow: %s') % self.get_workflow()
         }
@@ -584,6 +635,19 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_workflow_transition,
+            'no_results_main_link': link_setup_workflow_transition_create.resolve(
+                context=RequestContext(
+                    self.request, {'object': self.get_workflow()}
+                )
+            ),
+            'no_results_text': _(
+                'Create a transition and use it to move a workflow from '
+                ' one state to another.'
+            ),
+            'no_results_title': _(
+                'This workflow doesn\'t have any transitions'
+            ),
             'object': self.get_workflow(),
             'title': _(
                 'Transitions of workflow: %s'
@@ -606,7 +670,18 @@ class WorkflowListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'title': _('Workflows')
+            'no_results_main_link': link_setup_workflow_create.resolve(
+                context=RequestContext(
+                    self.request, {}
+                )
+            ),
+            'no_results_title': _('There are no workflows'),
+            'no_results_text': _(
+                'Create some workflows and associated them with a document '
+                'type. Active workflows will be shown here and the documents '
+                'for which they are executing.'
+            ),
+            'title': _('Workflows'),
         }
 
     def get_object_list(self):
@@ -635,6 +710,13 @@ class WorkflowDocumentListView(DocumentListView):
         context = super(WorkflowDocumentListView, self).get_extra_context()
         context.update(
             {
+                'no_results_title': _(
+                    'There are documents executing this workflow'
+                ),
+                'no_results_text': _(
+                    'Associate a workflow with some document types and '
+                    'documents of those types will be listed in this view.'
+                ),
                 'object': self.workflow,
                 'title': _('Documents with the workflow: %s') % self.workflow
             }
@@ -653,14 +735,17 @@ class WorkflowStateDocumentListView(DocumentListView):
             {
                 'object': workflow_state,
                 'navigation_object_list': ('object', 'workflow'),
-                'workflow': WorkflowRuntimeProxy.objects.get(
-                    pk=workflow_state.workflow.pk
+                'no_results_title': _(
+                    'There are documents in this workflow state'
                 ),
                 'title': _(
                     'Documents in the workflow "%s", state "%s"'
                 ) % (
                     workflow_state.workflow, workflow_state
-                )
+                ),
+                'workflow': WorkflowRuntimeProxy.objects.get(
+                    pk=workflow_state.workflow.pk
+                ),
             }
         )
         return context
@@ -693,6 +778,17 @@ class WorkflowStateListView(SingleObjectListView):
         return {
             'hide_columns': True,
             'hide_link': True,
+            'no_results_main_link': link_setup_workflow_state_create.resolve(
+                context=RequestContext(
+                    self.request, {'object': self.get_workflow()}
+                )
+            ),
+            'no_results_title': _(
+                'This workflow doesn\'t have any state.'
+            ),
+            'no_results_text': _(
+                'Create states and link them using transitions.'
+            ),
             'object': self.get_workflow(),
             'title': _('States of workflow: %s') % self.get_workflow()
         }
@@ -751,6 +847,10 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
             'form_display_mode_table': True,
             'navigation_object_list': ('object', 'workflow'),
             'object': self.get_object(),
+            'subtitle': _(
+                'Triggers are events that cause this transition to execute '
+                'automatically.'
+            ),
             'title': _(
                 'Workflow transition trigger events for: %s'
             ) % self.get_object(),

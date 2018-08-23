@@ -17,6 +17,7 @@ from common.utils import encapsulate
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm
+from .icons import icon_checkout_info
 from .models import DocumentCheckout
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
@@ -103,6 +104,13 @@ class CheckoutListView(DocumentListView):
                         )
                     },
                 ),
+                'no_results_icon': icon_checkout_info,
+                'no_results_text': _(
+                    'Checking out a document blocks certain document '
+                    'operations for a predetermined amount of '
+                    'time.'
+                ),
+                'no_results_title': _('No documents have been checked out'),
             }
         )
         return context
