@@ -10,17 +10,19 @@ from ..transformations import (
     TransformationRotate, TransformationZoom
 )
 
-TRANSFORMATION_RESIZE_WIDTH = 123
-TRANSFORMATION_RESIZE_HEIGHT = 528
-TRANSFORMATION_RESIZE_CACHE_HASH = '348d60cb7c028c95'
-TRANSFORMATION_RESIZE_WIDTH_2 = 124
-TRANSFORMATION_RESIZE_HEIGHT_2 = 529
-TRANSFORMATION_RESIZE_CACHE_HASH_2 = '348d78cb5709c1bf'
-TRANSFORMATION_ROTATE_DEGRESS = 34
-TRANSFORMATION_ROTATE_CACHE_HASH = '45148f480ad5f8bd'
-TRANSFORMATION_COMBINED_CACHE_HASH = '1267dbe78a1759da'
-TRANSFORMATION_ZOOM_PERCENT = 49
-TRANSFORMATION_ZOOM_CACHE_HASH = '1b333603674469e0'
+from .literals import (
+    TEST_TRANSFORMATION_COMBINED_CACHE_HASH,
+    TEST_TRANSFORMATION_RESIZE_CACHE_HASH,
+    TEST_TRANSFORMATION_RESIZE_CACHE_HASH_2,
+    TEST_TRANSFORMATION_RESIZE_HEIGHT,
+    TEST_TRANSFORMATION_RESIZE_HEIGHT_2,
+    TEST_TRANSFORMATION_RESIZE_WIDTH,
+    TEST_TRANSFORMATION_RESIZE_WIDTH_2,
+    TEST_TRANSFORMATION_ROTATE_CACHE_HASH,
+    TEST_TRANSFORMATION_ROTATE_DEGRESS,
+    TEST_TRANSFORMATION_ZOOM_CACHE_HASH,
+    TEST_TRANSFORMATION_ZOOM_PERCENT,
+)
 
 
 class TransformationBaseTestCase(TestCase):
@@ -45,64 +47,65 @@ class TransformationBaseTestCase(TestCase):
     def test_resize_cache_hashing(self):
         # Test if the hash is being generated correctly
         transformation = TransformationResize(
-            width=TRANSFORMATION_RESIZE_WIDTH,
-            height=TRANSFORMATION_RESIZE_HEIGHT
+            width=TEST_TRANSFORMATION_RESIZE_WIDTH,
+            height=TEST_TRANSFORMATION_RESIZE_HEIGHT
         )
 
         self.assertEqual(
-            transformation.cache_hash(), TRANSFORMATION_RESIZE_CACHE_HASH
+            transformation.cache_hash(), TEST_TRANSFORMATION_RESIZE_CACHE_HASH
         )
 
         # Test if the hash is being alternated correctly
         transformation = TransformationResize(
-            width=TRANSFORMATION_RESIZE_WIDTH_2,
-            height=TRANSFORMATION_RESIZE_HEIGHT_2
+            width=TEST_TRANSFORMATION_RESIZE_WIDTH_2,
+            height=TEST_TRANSFORMATION_RESIZE_HEIGHT_2
         )
 
         self.assertEqual(
-            transformation.cache_hash(), TRANSFORMATION_RESIZE_CACHE_HASH_2
+            transformation.cache_hash(),
+            TEST_TRANSFORMATION_RESIZE_CACHE_HASH_2
         )
 
     def test_rotate_cache_hashing(self):
         # Test if the hash is being generated correctly
         transformation = TransformationRotate(
-            degrees=TRANSFORMATION_ROTATE_DEGRESS
+            degrees=TEST_TRANSFORMATION_ROTATE_DEGRESS
         )
 
         self.assertEqual(
-            transformation.cache_hash(), TRANSFORMATION_ROTATE_CACHE_HASH
+            transformation.cache_hash(), TEST_TRANSFORMATION_ROTATE_CACHE_HASH
         )
 
     def test_rotate_zoom_hashing(self):
         # Test if the hash is being generated correctly
         transformation = TransformationZoom(
-            percent=TRANSFORMATION_ZOOM_PERCENT
+            percent=TEST_TRANSFORMATION_ZOOM_PERCENT
         )
 
         self.assertEqual(
-            transformation.cache_hash(), TRANSFORMATION_ZOOM_CACHE_HASH
+            transformation.cache_hash(), TEST_TRANSFORMATION_ZOOM_CACHE_HASH
         )
 
     def test_cache_hash_combining(self):
         # Test magic method and hash combining
 
         transformation_resize = TransformationResize(
-            width=TRANSFORMATION_RESIZE_WIDTH,
-            height=TRANSFORMATION_RESIZE_HEIGHT
+            width=TEST_TRANSFORMATION_RESIZE_WIDTH,
+            height=TEST_TRANSFORMATION_RESIZE_HEIGHT
         )
 
         transformation_rotate = TransformationRotate(
-            degrees=TRANSFORMATION_ROTATE_DEGRESS
+            degrees=TEST_TRANSFORMATION_ROTATE_DEGRESS
         )
 
         transformation_zoom = TransformationZoom(
-            percent=TRANSFORMATION_ZOOM_PERCENT
+            percent=TEST_TRANSFORMATION_ZOOM_PERCENT
         )
 
         self.assertEqual(
             BaseTransformation.combine(
                 (transformation_rotate, transformation_resize, transformation_zoom)
-            ), TRANSFORMATION_COMBINED_CACHE_HASH
+            ), TEST_TRANSFORMATION_COMBINED_CACHE_HASH
         )
 
 

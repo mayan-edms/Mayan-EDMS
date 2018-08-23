@@ -91,6 +91,7 @@
   DOCUMENTS_RECENT_COUNT has been renamed to
   DOCUMENTS_RECENT_ACCESS_COUNT. New setting 
   DOCUMENTS_RECENT_ADDED_COUNT added.
+- Use platform independant hashing for transformations.
 
 3.0.3 (2018-08-17)
 ==================

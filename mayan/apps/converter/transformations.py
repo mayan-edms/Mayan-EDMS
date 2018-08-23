@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
+import hashlib
 import logging
 
 from PIL import Image, ImageColor, ImageFilter
 
-from django.utils.six import text_type
 from django.utils.translation import string_concat, ugettext_lazy as _
+from django.utils.encoding import force_text
 
 logger = logging.getLogger(__name__)
 
@@ -20,24 +21,16 @@ class BaseTransformation(object):
     _registry = {}
 
     @staticmethod
-    def encode_hash(decoded_value):
-        return hex(abs(decoded_value))[2:]
-
-    @staticmethod
-    def decode_hash(encoded_value):
-        return int(encoded_value, 16)
-
-    @staticmethod
     def combine(transformations):
         result = None
 
-        for index, transformation in enumerate(transformations):
+        for transformation in transformations:
             if not result:
-                result = hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
+                result = hashlib.sha256(transformation.cache_hash())
             else:
-                result ^= hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
+                result.update(transformation.cache_hash())
 
-        return BaseTransformation.encode_hash(result)
+        return result.hexdigest()
 
     @classmethod
     def register(cls, transformation):
@@ -69,11 +62,14 @@ class BaseTransformation(object):
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
     def cache_hash(self):
-        result = text_type.__hash__(self.name)
-        for index, (key, value) in enumerate(self.kwargs.items()):
-            result ^= hash((key, index)) ^ hash((value, index))
+        result = hashlib.sha256(self.name)
 
-        return BaseTransformation.encode_hash(result)
+        # Sort arguments for guaranteed repeatability
+        for key, value in sorted(self.kwargs.items()):
+            result.update(force_text(key))
+            result.update(force_text(value))
+
+        return result.hexdigest()
 
     def execute_on(self, image):
         self.image = image
