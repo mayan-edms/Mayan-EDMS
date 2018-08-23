@@ -321,7 +321,7 @@ class DocumentTrashView(ConfirmView):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
-        return reverse('documents:document_list_recent')
+        return reverse('documents:document_list_recent_access')
 
     def object_action(self, instance):
         AccessControlList.objects.check_access(
