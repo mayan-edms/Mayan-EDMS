@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.db import models
+from django.template import loader
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext
@@ -83,24 +84,57 @@ class Dashboard(object):
     def remove_widget(self, widget):
         self.removed_widgets.append(widget)
 
+    def render(self, request):
+        rendered_widgets = [widget().render(request=request) for widget in self.get_widgets()]
 
-class DashboardWidget(object):
-    _registry = []
+        return loader.render_to_string(
+            template_name='dashboard/dashboard.html', context={
+                'widgets': rendered_widgets
+            }
+        )
+
+
+class BaseDashboardWidget(object):
+    _registry = {}
+    context = {}
+    template_name = None
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
 
     @classmethod
     def get_all(cls):
-        return cls._registry
+        return cls._registry.items()
 
-    def __init__(self, label, func=None, icon=None, icon_class=None, link=None, queryset=None, statistic_slug=None):
-        self.label = label
-        self.icon = icon
-        self.icon_class = icon_class
-        self.link = link
-        self.queryset = queryset
-        self.func = func
-        self.statistic_slug = statistic_slug
+    @classmethod
+    def register(cls, klass):
+        cls._registry[klass.name] = klass
 
-        self.__class__._registry.append(self)
+    def get_context(self):
+        return self.context
+
+    def render(self, request):
+        if self.template_name:
+            return loader.render_to_string(
+                template_name=self.template_name, context=self.get_context(),
+            )
+
+
+class DashboardWidgetNumeric(BaseDashboardWidget):
+    count = 0
+    icon_class = None
+    label = None
+    link = None
+    template_name = 'dashboard/numeric_widget.html'
+
+    def get_context(self):
+        return {
+            'count': self.count,
+            'icon_class': self.icon_class,
+            'label': self.label,
+            'link': self.link,
+        }
 
 
 @python_2_unicode_compatible

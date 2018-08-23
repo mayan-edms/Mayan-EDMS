@@ -5,28 +5,24 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-2">
-                    {% if widget.icon %}
-                        <i class="dashboard-widget-icon {{ widget.icon }}"></i>
-                    {% elif widget.icon_class %}
+                    {% if icon %}
+                        <i class="dashboard-widget-icon {{ icon }}"></i>
+                    {% elif icon_class %}
                         <div class="dashboard-widget-icon">
-                            {{ widget.icon_class.render }}
+                            {{ icon_class.render }}
                         </div>
                     {% endif %}
                 </div>
                 <div class="col-xs-10 text-right">
-                    <strong>{{ widget.label }}</strong>
+                    <strong>{{ label }}</strong>
                     <div class="huge">
-                        {% if widget.func %}
-                            {{ widget.func }}
-                        {% else %}
-                            {{ widget.queryset.count }}
-                        {% endif %}
+                        {{ count }}
                     </div>
                 </div>
             </div>
         </div>
-        {% if widget.link %}
-            <a href="{{ widget.link }}">
+        {% if link %}
+            <a href="{{ link }}">
                 <div class="panel-footer">
                     <span class="pull-left">{% trans 'View details' %}</span>
                     <span class="pull-right"><i class="fa fa-external-link-alt"></i></span>
@@ -36,3 +32,4 @@
         {% endif %}
     </div>
 </div>
+

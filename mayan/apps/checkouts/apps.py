@@ -14,7 +14,7 @@ from common.dashboards import dashboard_main
 from events import ModelEventType
 from mayan.celery import app
 
-from .dashboard_widgets import widget_checkouts
+from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
@@ -117,7 +117,9 @@ class CheckoutsApp(MayanAppConfig):
             }
         )
 
-        dashboard_main.add_widget(order=-1, widget=widget_checkouts)
+        dashboard_main.add_widget(
+            widget=DashboardWidgetTotalCheckouts, order=-1
+        )
 
         menu_facet.bind_links(links=(link_checkout_info,), sources=(Document,))
         menu_main.bind_links(links=(link_checkout_list,), position=98)

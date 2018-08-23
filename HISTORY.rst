@@ -97,6 +97,9 @@
   ActionError exception.
 - Add favorite documents per user. Adds new setting option
   DOCUMENTS_FAVORITE_COUNT.
+- Add new class based dashboard widget. This new widget supports
+  subclassing and is template based. All exising widgets have been
+  converted. ACL filtering was added to the widget results.
 
 3.0.3 (2018-08-17)
 ==================

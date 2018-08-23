@@ -45,12 +45,6 @@ def check_sqlite():
 def get_collections():
     return Collection.get_all()
 
-
-@register.simple_tag
-def get_dashboard(name):
-    return Dashboard.get(name=name)
-
-
 @register.filter
 def get_encoded_parameter(item, parameters_dict):
     result = {}
@@ -72,6 +66,11 @@ def object_property(value, arg):
 @register.simple_tag
 def project_information(attribute_name):
     return getattr(mayan, attribute_name)
+
+
+@register.simple_tag(takes_context=True)
+def render_dashboard(context, name):
+    return Dashboard.get(name=name).render(request=context.request)
 
 
 @register.simple_tag(takes_context=True)

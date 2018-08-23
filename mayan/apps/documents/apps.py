@@ -35,9 +35,9 @@ from navigation import SourceColumn
 from rest_api.fields import DynamicSerializerField
 
 from .dashboard_widgets import (
-    widget_document_types, widget_documents_in_trash,
-    widget_new_documents_this_month, widget_pages_per_month,
-    widget_total_documents
+    DashboardWidgetDocumentsInTrash, DashboardWidgetDocumentsNewThisMonth,
+    DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
+    DashboardWidgetDocumentsTypesTotal,
 )
 from .events import (
     event_document_create, event_document_download,
@@ -195,7 +195,7 @@ class DocumentsApp(MayanAppConfig):
             model=Document, related='document_type',
         )
         ModelPermission.register_inheritance(
-            model=DocumentPage, related='document',
+            model=DocumentPage, related='document_version__document',
         )
         ModelPermission.register_inheritance(
             model=DocumentPageResult, related='document_version__document',
@@ -389,11 +389,21 @@ class DocumentsApp(MayanAppConfig):
             }
         )
 
-        dashboard_main.add_widget(widget=widget_document_types)
-        dashboard_main.add_widget(widget=widget_documents_in_trash)
-        dashboard_main.add_widget(widget=widget_new_documents_this_month)
-        dashboard_main.add_widget(widget=widget_pages_per_month)
-        dashboard_main.add_widget(widget=widget_total_documents)
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsTotal, order=0
+        )
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsInTrash, order=1
+        )
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsTypesTotal, order=2
+        )
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsNewThisMonth, order=3
+        )
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsPagesNewThisMonth, order=4
+        )
 
         menu_documents.bind_links(
             links=(

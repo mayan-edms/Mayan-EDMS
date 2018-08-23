@@ -67,11 +67,6 @@
         </div>
     </div>
 
-    {% get_dashboard 'main' as dashboard %}
-    <div class="row">
-        {% for widget in dashboard.get_widgets %}
-            {% include 'appearance/dashboard_widget.html' %}
-        {% endfor %}
-    </div>
+    {% render_dashboard 'main' %}
 
 {% endblock %}
