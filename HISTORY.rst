@@ -100,6 +100,9 @@
 - Add new class based dashboard widget. This new widget supports
   subclassing and is template based. All exising widgets have been
   converted. ACL filtering was added to the widget results.
+- In addition to the document view permission, the checkout detail
+  view permission is now needed to view the list of checked out
+  document.
 
 3.0.3 (2018-08-17)
 ==================

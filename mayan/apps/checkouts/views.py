@@ -72,7 +72,11 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
 class CheckoutListView(DocumentListView):
     def get_document_queryset(self):
-        return DocumentCheckout.objects.checked_out_documents()
+        return AccessControlList.objects.filter_by_access(
+            permission=permission_document_checkout_detail_view,
+            user=self.request.user,
+            queryset=DocumentCheckout.objects.checked_out_documents()
+        )
 
     def get_extra_context(self):
         context = super(CheckoutListView, self).get_extra_context()
