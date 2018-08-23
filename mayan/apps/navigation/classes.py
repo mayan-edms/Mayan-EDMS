@@ -314,9 +314,11 @@ class Link(object):
 
         # Try to get the request object the faster way and fallback to the
         # slower method.
-        request = getattr(
-            context, 'request', Variable('request').resolve(context)
-        )
+        try:
+            request = context.request
+        except AttributeError:
+            request = Variable('request').resolve(context)
+
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
 
