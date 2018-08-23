@@ -150,7 +150,7 @@ class Menu(object):
         )
         return resolved_navigation_object_list
 
-    def resolve(self, context, source=None):
+    def resolve(self, context, source=None, sort_results=False):
         if not self.check_condition(context=context):
             return []
 
@@ -250,10 +250,17 @@ class Menu(object):
             result.append(resolved_links)
 
         if result:
-            # Sort links by position value passed during bind
-            result[0] = sorted(
-                result[0], key=lambda item: (self.link_positions.get(item.link) or 0) if isinstance(item, ResolvedLink) else (self.link_positions.get(item) or 0)
-            )
+            if sort_results:
+                result[0] = sorted(
+                    result[0], key=lambda item: (
+                        item.link.text if isinstance(item, ResolvedLink) else item.label
+                    )
+                )
+            else:
+                # Sort links by position value passed during bind
+                result[0] = sorted(
+                    result[0], key=lambda item: (self.link_positions.get(item.link) or 0) if isinstance(item, ResolvedLink) else (self.link_positions.get(item) or 0)
+                )
 
         return result
 
