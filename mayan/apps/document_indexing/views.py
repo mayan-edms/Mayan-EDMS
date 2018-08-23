@@ -322,7 +322,9 @@ class DocumentIndexNodeListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return DocumentIndexInstanceNode.objects.get_for(self.get_document())
+        return DocumentIndexInstanceNode.objects.get_for(
+            document=self.get_document()
+        )
 
 
 class RebuildIndexesView(FormView):
