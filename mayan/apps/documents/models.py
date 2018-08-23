@@ -37,8 +37,8 @@ from .events import (
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
     DocumentManager, DocumentPageManager, DocumentVersionManager,
-    DocumentTypeManager, DuplicatedDocumentManager, PassthroughManager,
-    RecentDocumentManager, TrashCanManager
+    DocumentTypeManager, DuplicatedDocumentManager, FavoriteDocumentManager,
+    PassthroughManager, RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .settings import (
@@ -989,39 +989,6 @@ class DocumentPageResult(DocumentPage):
 
 
 @python_2_unicode_compatible
-class RecentDocument(models.Model):
-    """
-    Keeps a list of the n most recent accessed or created document for
-    a given user
-    """
-    user = models.ForeignKey(
-        db_index=True, editable=False, on_delete=models.CASCADE,
-        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
-    )
-    document = models.ForeignKey(
-        editable=False, on_delete=models.CASCADE, to=Document,
-        verbose_name=_('Document')
-    )
-    datetime_accessed = models.DateTimeField(
-        auto_now=True, db_index=True, verbose_name=_('Accessed')
-    )
-
-    objects = RecentDocumentManager()
-
-    class Meta:
-        ordering = ('-datetime_accessed',)
-        verbose_name = _('Recent document')
-        verbose_name_plural = _('Recent documents')
-
-    def __str__(self):
-        return force_text(self.document)
-
-    def natural_key(self):
-        return (self.datetime_accessed, self.document.natural_key(), self.user.natural_key())
-    natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
-
-
-@python_2_unicode_compatible
 class DuplicatedDocument(models.Model):
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='duplicates', to=Document,
@@ -1042,3 +1009,64 @@ class DuplicatedDocument(models.Model):
 
     def __str__(self):
         return force_text(self.document)
+
+
+@python_2_unicode_compatible
+class FavoriteDocument(models.Model):
+    """
+    Keeps a list of the favorited documents of a given user
+    """
+    user = models.ForeignKey(
+        db_index=True, editable=False, on_delete=models.CASCADE,
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
+    )
+    document = models.ForeignKey(
+        editable=False, on_delete=models.CASCADE, related_name='favorites',
+        to=Document, verbose_name=_('Document')
+    )
+
+    objects = FavoriteDocumentManager()
+
+    class Meta:
+        verbose_name = _('Favorite document')
+        verbose_name_plural = _('Favorite documents')
+
+    def __str__(self):
+        return force_text(self.document)
+
+    def natural_key(self):
+        return (self.document.natural_key(), self.user.natural_key())
+    natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
+
+
+@python_2_unicode_compatible
+class RecentDocument(models.Model):
+    """
+    Keeps a list of the n most recent accessed or created document for
+    a given user
+    """
+    user = models.ForeignKey(
+        db_index=True, editable=False, on_delete=models.CASCADE,
+        to=settings.AUTH_USER_MODEL, verbose_name=_('User')
+    )
+    document = models.ForeignKey(
+        editable=False, on_delete=models.CASCADE, related_name='recent',
+        to=Document, verbose_name=_('Document')
+    )
+    datetime_accessed = models.DateTimeField(
+        auto_now=True, db_index=True, verbose_name=_('Accessed')
+    )
+
+    objects = RecentDocumentManager()
+
+    class Meta:
+        ordering = ('-datetime_accessed',)
+        verbose_name = _('Recent document')
+        verbose_name_plural = _('Recent documents')
+
+    def __str__(self):
+        return force_text(self.document)
+
+    def natural_key(self):
+        return (self.datetime_accessed, self.document.natural_key(), self.user.natural_key())
+    natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]

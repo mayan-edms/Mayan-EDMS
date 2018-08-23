@@ -32,6 +32,7 @@ from .views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
     DocumentView, DuplicatedDocumentListView, EmptyTrashCanView,
+    FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView,
     RecentAccessDocumentListView, RecentAddedDocumentListView,
     ScanDuplicatedDocuments
 )
@@ -57,6 +58,10 @@ urlpatterns = [
         name='duplicated_document_list'
     ),
     url(
+        r'^list/favorites/$', FavoriteDocumentListView.as_view(),
+        name='document_list_favorites'
+    ),
+    url(
         r'^(?P<pk>\d+)/preview/$', DocumentPreviewView.as_view(),
         name='document_preview'
     ),
@@ -67,6 +72,22 @@ urlpatterns = [
     url(
         r'^(?P<pk>\d+)/duplicates/$', DocumentDuplicatesListView.as_view(),
         name='document_duplicates_list'
+    ),
+    url(
+        r'^(?P<pk>\d+)/add_to_favorites/$', FavoriteAddView.as_view(),
+        name='document_add_to_favorites'
+    ),
+    url(
+        r'^multiple/add_to_favorites/$', FavoriteAddView.as_view(),
+        name='document_multiple_add_to_favorites'
+    ),
+    url(
+        r'^(?P<pk>\d+)/remove_from_favorites/$', FavoriteRemoveView.as_view(),
+        name='document_remove_from_favorites'
+    ),
+    url(
+        r'^multiple/remove_from_favorites/$', FavoriteRemoveView.as_view(),
+        name='document_multiple_remove_from_favorites'
     ),
     url(
         r'^(?P<pk>\d+)/restore/$', DocumentRestoreView.as_view(),

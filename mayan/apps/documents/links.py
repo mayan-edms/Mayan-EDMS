@@ -9,16 +9,17 @@ from navigation import Link
 
 from .icons import (
     icon_clear_image_cache, icon_document_duplicates_list, icon_document_list,
-    icon_document_list_deleted, icon_document_list_recent_access,
-    icon_document_list_recent_added, icon_document_page_navigation_first,
-    icon_document_page_navigation_last, icon_document_page_navigation_next,
-    icon_document_page_navigation_previous, icon_document_page_return,
-    icon_document_page_rotate_left, icon_document_page_rotate_right,
-    icon_document_page_zoom_in, icon_document_page_zoom_out,
-    icon_document_pages, icon_document_preview, icon_document_properties,
-    icon_document_type_setup, icon_document_version_list,
-    icon_document_version_return_document, icon_document_version_return_list,
-    icon_duplicated_document_list, icon_duplicated_document_scan
+    icon_document_list_deleted, icon_document_list_favorites,
+    icon_document_list_recent_access, icon_document_list_recent_added,
+    icon_document_page_navigation_first, icon_document_page_navigation_last,
+    icon_document_page_navigation_next, icon_document_page_navigation_previous,
+    icon_document_page_return, icon_document_page_rotate_left,
+    icon_document_page_rotate_right, icon_document_page_zoom_in,
+    icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
+    icon_document_properties, icon_document_type_setup,
+    icon_document_version_list, icon_document_version_return_document,
+    icon_document_version_return_list, icon_duplicated_document_list,
+    icon_duplicated_document_scan
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -98,6 +99,16 @@ link_document_delete = Link(
     args='resolved_object.id', permissions=(permission_document_delete,),
     tags='dangerous', text=_('Delete'), view='documents:document_delete',
 )
+link_document_favorites_add = Link(
+    args='resolved_object.id',
+    permissions=(permission_document_view,), text=_('Add to favorites'),
+    view='documents:document_add_to_favorites',
+)
+link_document_favorites_remove = Link(
+    args='resolved_object.id',
+    permissions=(permission_document_view,), text=_('Remove from favorites'),
+    view='documents:document_remove_from_favorites',
+)
 link_document_trash = Link(
     args='resolved_object.id', permissions=(permission_document_trash,),
     tags='dangerous', text=_('Move to trash'),
@@ -147,6 +158,14 @@ link_document_multiple_delete = Link(
     tags='dangerous', text=_('Delete'),
     view='documents:document_multiple_delete'
 )
+link_document_multiple_favorites_add = Link(
+    text=_('Add to favorites'),
+    view='documents:document_multiple_add_to_favorites',
+)
+link_document_multiple_favorites_remove = Link(
+    text=_('Remove from favorites'),
+    view='documents:document_multiple_remove_from_favorites',
+)
 link_document_multiple_document_type_edit = Link(
     text=_('Change type'),
     view='documents:document_multiple_document_type_edit'
@@ -188,6 +207,10 @@ link_document_version_view = Link(
 link_document_list = Link(
     icon_class=icon_document_list, text=_('All documents'),
     view='documents:document_list'
+)
+link_document_list_favorites = Link(
+    icon_class=icon_document_list_favorites, text=_('Favorites'),
+    view='documents:document_list_favorites'
 )
 link_document_list_recent_access = Link(
     icon_class=icon_document_list_recent_access, text=_('Recently accessed'),

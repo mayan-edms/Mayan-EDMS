@@ -53,14 +53,17 @@ from .handlers import (
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
     link_document_clone_transformations, link_document_delete,
-    link_document_document_type_edit, link_document_duplicates_list,
-    link_document_multiple_document_type_edit, link_document_download,
-    link_document_edit, link_document_list, link_document_list_deleted,
-    link_document_list_recent_access, link_document_list_recent_added,
-    link_document_multiple_delete, link_document_multiple_trash,
+    link_document_document_type_edit, link_document_download,
+    link_document_duplicates_list, link_document_edit,
+    link_document_favorites_add, link_document_favorites_remove,
+    link_document_list, link_document_list_deleted,
+    link_document_list_favorites, link_document_list_recent_access,
+    link_document_list_recent_added,
     link_document_multiple_clear_transformations,
-    link_document_multiple_download, link_document_multiple_restore,
-    link_document_multiple_update_page_count,
+    link_document_multiple_delete, link_document_multiple_document_type_edit,
+    link_document_multiple_download, link_document_multiple_favorites_add,
+    link_document_multiple_favorites_remove, link_document_multiple_restore,
+    link_document_multiple_trash, link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next, link_document_page_navigation_previous,
     link_document_page_return, link_document_page_rotate_left,
@@ -395,8 +398,9 @@ class DocumentsApp(MayanAppConfig):
         menu_documents.bind_links(
             links=(
                 link_document_list_recent_access,
-                link_document_list_recent_added, link_document_list,
-                link_document_list_deleted, link_duplicated_document_list
+                link_document_list_recent_added, link_document_list_favorites,
+                link_document_list, link_document_list_deleted,
+                link_duplicated_document_list,
             )
         )
 
@@ -446,6 +450,7 @@ class DocumentsApp(MayanAppConfig):
         # Document object links
         menu_object.bind_links(
             links=(
+                link_document_favorites_add, link_document_favorites_remove,
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
                 link_document_quick_download, link_document_download,
@@ -488,10 +493,12 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
+                link_document_multiple_favorites_add,
+                link_document_multiple_favorites_remove,
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash, link_document_multiple_download,
                 link_document_multiple_update_page_count,
-                link_document_multiple_document_type_edit
+                link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
         menu_multi_item.bind_links(

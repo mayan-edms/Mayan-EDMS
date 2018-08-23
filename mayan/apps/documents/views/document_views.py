@@ -12,10 +12,12 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
+from common.exceptions import ActionError
 from common.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
-    MultipleObjectFormActionView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
+    SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from common.utils import encapsulate
@@ -30,9 +32,11 @@ from ..forms import (
     DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
     DocumentTypeSelectForm,
 )
+from ..icons import icon_document_list_favorites
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import (
-    DeletedDocument, Document, DuplicatedDocument, RecentDocument
+    DeletedDocument, Document, DuplicatedDocument, FavoriteDocument,
+    RecentDocument
 )
 from ..permissions import (
     permission_document_delete, permission_document_download,
@@ -813,9 +817,85 @@ class DuplicatedDocumentListView(DocumentListView):
         return context
 
 
+class FavoriteDocumentListView(DocumentListView):
+    def get_document_queryset(self):
+        return FavoriteDocument.objects.get_for_user(user=self.request.user)
+
+    def get_extra_context(self):
+        context = super(FavoriteDocumentListView, self).get_extra_context()
+        context.update(
+            {
+                'title': _('Favorites'),
+            }
+        )
+        return context
+
+
+class FavoriteAddView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_document_view
+    success_message = _(
+        '%(count)d document added to favorites.'
+    )
+    success_message_plural = _(
+        '%(count)d documents added to favorites.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        return {
+            'submit_label': _('Add'),
+            'submit_icon_class': icon_document_list_favorites,
+            'title': ungettext(
+                singular='Add the selected document to favorites',
+                plural='Add the selected documents to favorites',
+                number=queryset.count()
+            )
+        }
+
+    def object_action(self, form, instance):
+        FavoriteDocument.objects.add_for_user(
+            user=self.request.user, document=instance
+        )
+
+
+class FavoriteRemoveView(MultipleObjectConfirmActionView):
+    error_message = _('Document "%(instance)s" is not in favorites.')
+    model = Document
+    object_permission = permission_document_view
+    success_message = _(
+        '%(count)d document removed to favorites.'
+    )
+    success_message_plural = _(
+        '%(count)d documents removed to favorites.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        return {
+            'submit_label': _('Remove'),
+            'submit_icon_class': icon_document_list_favorites,
+            'title': ungettext(
+                singular='Remove the selected document to favorites',
+                plural='Remove the selected documents to favorites',
+                number=queryset.count()
+            )
+        }
+
+    def object_action(self, form, instance):
+        try:
+            FavoriteDocument.objects.remove_for_user(
+                user=self.request.user, document=instance
+            )
+        except FavoriteDocument.DoesNotExist:
+            raise ActionError
+
+
 class RecentAccessDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return RecentDocument.objects.get_for_user(self.request.user)
+        return RecentDocument.objects.get_for_user(user=self.request.user)
 
     def get_extra_context(self):
         context = super(RecentAccessDocumentListView, self).get_extra_context()

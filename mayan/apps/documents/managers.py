@@ -11,7 +11,7 @@ from django.utils.encoding import force_text
 from django.utils.timezone import now
 
 from .literals import STUB_EXPIRATION_INTERVAL
-from .settings import setting_recent_access_count
+from .settings import setting_favorite_count, setting_recent_access_count
 
 logger = logging.getLogger(__name__)
 
@@ -184,6 +184,43 @@ class DuplicatedDocumentManager(models.Manager):
                 self.scan_for(document=document, scan_children=False)
 
 
+class FavoriteDocumentManager(models.Manager):
+    def add_for_user(self, user, document):
+        favorite_document, created = self.model.objects.get_or_create(
+            user=user, document=document
+        )
+
+        old_favorites_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_favorite_count.value:]
+        self.filter(pk__in=list(old_favorites_to_delete)).delete()
+
+    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        User = get_user_model()
+        try:
+            document = Document.objects.get_by_natural_key(*document_natural_key)
+        except Document.DoesNotExist:
+            raise self.model.DoesNotExist
+        else:
+            try:
+                user = User.objects.get_by_natural_key(*user_natural_key)
+            except User.DoesNotExist:
+                raise self.model.DoesNotExist
+
+        return self.get(document__pk=document.pk, user__pk=user.pk)
+
+    def get_for_user(self, user):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        return Document.objects.filter(favorites__user=user)
+
+    def remove_for_user(self, user, document):
+        self.get(user=user, document=document).delete()
+
+
 class PassthroughManager(models.Manager):
     pass
 
@@ -224,14 +261,16 @@ class RecentDocumentManager(models.Manager):
         )
 
     def get_for_user(self, user):
-        document_model = apps.get_model('documents', 'document')
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         if user.is_authenticated:
-            return document_model.objects.filter(
-                recentdocument__user=user
-            ).order_by('-recentdocument__datetime_accessed')
+            return Document.objects.filter(
+                recent__user=user
+            ).order_by('-recent__datetime_accessed')
         else:
-            return document_model.objects.none()
+            return Document.objects.none()
 
 
 class TrashCanManager(models.Manager):

@@ -95,7 +95,8 @@
 - Add support to the ObjectActionMixin to report on instance action
   failures. Add also an error_message class property and the new
   ActionError exception.
-
+- Add favorite documents per user. Adds new setting option
+  DOCUMENTS_FAVORITE_COUNT.
 
 3.0.3 (2018-08-17)
 ==================

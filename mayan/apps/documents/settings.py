@@ -47,6 +47,12 @@ setting_display_height = namespace.add_setting(
 setting_display_width = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_WIDTH', default='3600'
 )
+setting_favorite_count = namespace.add_setting(
+    global_name='DOCUMENTS_FAVORITE_COUNT', default=40,
+    help_text=_(
+        'Maximum number of favorite documents to remember per user.'
+    )
+)
 setting_fix_orientation = namespace.add_setting(
     global_name='DOCUMENTS_FIX_ORIENTATION', default=False,
     help_text=_(
