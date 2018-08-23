@@ -63,6 +63,16 @@ class AccessControlListManager(models.Manager):
                         obj=getattr(obj, parent_accessor),
                         permissions=permissions, user=user
                     )
+                except AttributeError:
+                    # Has no such attribute, try it as a related field
+                    try:
+                        return self.check_access(
+                            obj=return_related(
+                                instance=obj, related_field=parent_accessor
+                            ), permissions=permissions, user=user
+                        )
+                    except PermissionDenied:
+                        pass
                 except PermissionDenied:
                     pass
 
@@ -117,7 +127,9 @@ class AccessControlListManager(models.Manager):
             else:
                 instance = queryset.first()
                 if instance:
-                    parent_object = return_related(instance, parent_accessor)
+                    parent_object = return_related(
+                        instance=instance, related_field=parent_accessor
+                    )
 
                     try:
                         # Try to see if parent_object is a function
@@ -185,7 +197,16 @@ class AccessControlListManager(models.Manager):
         except KeyError:
             return StoredPermission.objects.none()
         else:
-            parent_object = return_attrib(instance, parent_accessor)
+            try:
+                parent_object = return_attrib(
+                    obj=instance, attrib=parent_accessor
+                )
+            except AttributeError:
+                # Parent accessor is not an attribute, try it as a related
+                # field.
+                parent_object = return_related(
+                    instance=instance, related_field=parent_accessor
+                )
             content_type = ContentType.objects.get_for_model(parent_object)
             try:
                 return self.get(
