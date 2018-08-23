@@ -12,6 +12,7 @@ from permissions import Permission
 
 from acls.models import AccessControlList
 
+from .exceptions import ActionError
 from .forms import DynamicForm
 
 __all__ = (
@@ -181,8 +182,9 @@ class ObjectActionMixin(object):
     """
     Mixin that performs an user action to a queryset
     """
-    success_message = 'Operation performed on %(count)d object'
-    success_message_plural = 'Operation performed on %(count)d objects'
+    error_message = 'Unable to perform operation on object %(instance)s.'
+    success_message = 'Operation performed on %(count)d object.'
+    success_message_plural = 'Operation performed on %(count)d objects.'
 
     def get_success_message(self, count):
         return ungettext(
@@ -194,7 +196,8 @@ class ObjectActionMixin(object):
         }
 
     def object_action(self, instance, form=None):
-        pass
+        # User supplied method
+        raise NotImplementedError
 
     def view_action(self, form=None):
         self.action_count = 0
@@ -204,6 +207,10 @@ class ObjectActionMixin(object):
                 self.object_action(form=form, instance=instance)
             except PermissionDenied:
                 pass
+            except ActionError:
+                messages.error(
+                    self.request, self.error_message % {'instance': instance}
+                )
             else:
                 self.action_count += 1
 

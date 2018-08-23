@@ -8,6 +8,14 @@ class BaseCommonException(Exception):
     pass
 
 
+class ActionError(BaseCommonException):
+    """
+    Raise by the MultiActionConfirmView to announce when the object action
+    failed for one or more items.  This exception doesn't stop the iteration,
+    it is used to announce that one item in the queryset failed to process.
+    """
+
+
 class NotLatestVersion(BaseCommonException):
     """
     The installed version is not the latest available version

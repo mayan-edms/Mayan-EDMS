@@ -92,6 +92,10 @@
   DOCUMENTS_RECENT_ACCESS_COUNT. New setting 
   DOCUMENTS_RECENT_ADDED_COUNT added.
 - Use platform independant hashing for transformations.
+- Add support to the ObjectActionMixin to report on instance action
+  failures. Add also an error_message class property and the new
+  ActionError exception.
+
 
 3.0.3 (2018-08-17)
 ==================
