@@ -106,6 +106,8 @@
 - After queuing a chart for update, the view will now redirect
   to the same chart.
 - The multiple document action dropdown is now sorted alphabetically.
+- Improve statistics subclassing. Split class module into classes
+  and renderers.
 
 3.0.3 (2018-08-17)
 ==================

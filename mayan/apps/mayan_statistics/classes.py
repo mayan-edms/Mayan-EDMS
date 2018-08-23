@@ -9,6 +9,8 @@ from celery.schedules import crontab
 
 from mayan.celery import app
 
+from .renderers import ChartJSLine
+
 
 @python_2_unicode_compatible
 class StatisticNamespace(object):
@@ -31,8 +33,8 @@ class StatisticNamespace(object):
     def __str__(self):
         return force_text(self.label)
 
-    def add_statistic(self, *args, **kwargs):
-        statistic = Statistic(*args, **kwargs)
+    def add_statistic(self, klass, *args, **kwargs):
+        statistic = klass(*args, **kwargs)
         statistic.namespace = self
         self._statistics.append(statistic)
 
@@ -44,6 +46,7 @@ class StatisticNamespace(object):
 @python_2_unicode_compatible
 class Statistic(object):
     _registry = {}
+    renderer = None
 
     @staticmethod
     def purge_schedules():
@@ -82,11 +85,10 @@ class Statistic(object):
     def get_task_names(cls):
         return [task.get_task_name() for task in cls.get_all()]
 
-    def __init__(self, slug, label, func, renderer, minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'):
+    def __init__(self, slug, label, func, minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'):
         self.slug = slug
         self.label = label
         self.func = func
-        self.renderer = renderer
 
         self.schedule = crontab(
             minute=minute, hour=hour, day_of_week=day_of_week,
@@ -123,7 +125,9 @@ class Statistic(object):
         return 'mayan_statistics.task_execute_statistic_{}'.format(self.slug)
 
     def store_results(self, results):
-        from .models import StatisticResult
+        StatisticResult = apps.get_model(
+            app_label='mayan_statistics', model_name='StatisticResult'
+        )
 
         StatisticResult.objects.filter(slug=self.slug).delete()
 
@@ -133,7 +137,9 @@ class Statistic(object):
         statistic_result.store_data(data=results)
 
     def get_results(self):
-        from .models import StatisticResult
+        StatisticResult = apps.get_model(
+            app_label='mayan_statistics', model_name='StatisticResult'
+        )
 
         try:
             return StatisticResult.objects.get(slug=self.slug).get_data()
@@ -144,66 +150,5 @@ class Statistic(object):
         return self.renderer(data=self.get_results()).get_chart_data()
 
 
-class ChartRenderer(object):
-    def __init__(self, data):
-        self.data = data
-
-    def get_chart_data(self):
-        raise NotImplementedError
-
-
-class CharJSLine(ChartRenderer):
-    template_name = 'statistics/backends/chartjs/line.html'
-
-    dataset_palette = (
-        {
-            'fillColor': "rgba(220,220,220,0.2)",
-            'strokeColor': "rgba(220,220,220,1)",
-            'pointColor': "rgba(220,220,220,1)",
-            'pointStrokeColor': "#fff",
-            'pointHighlightFill': "#fff",
-            'pointHighlightStroke': "rgba(220,220,220,1)",
-        },
-        {
-            'fillColor': "rgba(151,187,205,0.2)",
-            'strokeColor': "rgba(151,187,205,1)",
-            'pointColor': "rgba(151,187,205,1)",
-            'pointStrokeColor': "#fff",
-            'pointHighlightFill': "#fff",
-            'pointHighlightStroke': "rgba(151,187,205,1)",
-        },
-    )
-
-    def get_chart_data(self):
-        labels = []
-        datasets = []
-
-        for count, serie in enumerate(self.data['series'].items()):
-            series_name, series_data = serie
-            dataset_labels = []
-            dataset_values = []
-
-            for data_point in series_data:
-                dataset_labels.extend(data_point.keys())
-                dataset_values.extend(data_point.values())
-
-            labels = dataset_labels
-            dataset = {
-                'label': series_name,
-                'data': dataset_values,
-            }
-            dataset.update(
-                CharJSLine.dataset_palette[
-                    count % len(CharJSLine.dataset_palette)
-                ]
-            )
-
-            datasets.append(dataset)
-
-        data = {
-            'labels': labels,
-            'datasets': datasets,
-
-        }
-
-        return json.dumps(data)
+class StatisticLineChart(Statistic):
+    renderer = ChartJSLine

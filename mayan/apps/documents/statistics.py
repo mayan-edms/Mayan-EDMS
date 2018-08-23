@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import qsstats
 
-from mayan_statistics.classes import StatisticNamespace, CharJSLine
+from mayan_statistics import StatisticLineChart, StatisticNamespace
 
 from .permissions import permission_document_view
 
@@ -230,44 +230,44 @@ def total_document_page_per_month():
 
 namespace = StatisticNamespace(slug='documents', label=_('Documents'))
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='new-documents-per-month',
     label=_('New documents per month'),
     func=new_documents_per_month,
-    renderer=CharJSLine,
     minute='0'
 )
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='new-document-versions-per-month',
     label=_('New document versions per month'),
     func=new_document_versions_per_month,
-    renderer=CharJSLine,
     minute='0'
 )
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='new-document-pages-per-month',
     label=_('New document pages per month'),
     func=new_document_pages_per_month,
-    renderer=CharJSLine,
     minute='0'
 )
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='total-documents-at-each-month',
     label=_('Total documents at each month'),
     func=total_document_per_month,
-    renderer=CharJSLine,
     minute='0'
 )
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='total-document-versions-at-each-month',
     label=_('Total document versions at each month'),
     func=total_document_version_per_month,
-    renderer=CharJSLine,
     minute='0'
 )
 namespace.add_statistic(
+    klass=StatisticLineChart,
     slug='total-document-pages-at-each-month',
     label=_('Total document pages at each month'),
     func=total_document_page_per_month,
-    renderer=CharJSLine,
     minute='0'
 )

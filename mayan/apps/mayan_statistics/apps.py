@@ -9,7 +9,7 @@ from common import MayanAppConfig, menu_object, menu_secondary, menu_tools
 
 from navigation import SourceColumn
 
-from .classes import Statistic, StatisticNamespace
+from .classes import Statistic, StatisticLineChart, StatisticNamespace
 from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view
@@ -29,9 +29,9 @@ class StatisticsApp(MayanAppConfig):
         super(StatisticsApp, self).ready()
 
         SourceColumn(
-            source=Statistic,
-            # Translators: Schedule here is a verb, the 'schedule' at which the
-            # statistic will be updated
+            source=StatisticLineChart,
+            # Translators: Schedule here is a verb, the 'schedule' at
+            # which the statistic will be updated
             label=_('Schedule'),
             attribute='schedule',
         )
@@ -54,7 +54,7 @@ class StatisticsApp(MayanAppConfig):
         )
 
         menu_object.bind_links(
-            links=(link_execute, link_view), sources=(Statistic,)
+            links=(link_execute, link_view), sources=(StatisticLineChart,)
         )
         menu_object.bind_links(
             links=(link_namespace_details,), sources=(StatisticNamespace,)
