@@ -123,36 +123,30 @@ def resolve(path, urlconf=None):
 
 
 def return_attrib(obj, attrib, arguments=None):
-    try:
-        if isinstance(attrib, types.FunctionType):
-            return attrib(obj)
-        elif isinstance(
-            obj, dict_type
-        ) or isinstance(obj, dictionary_type):
-            return obj[attrib]
-        else:
-            result = reduce_function(getattr, attrib.split('.'), obj)
-            if isinstance(result, types.MethodType):
-                if arguments:
-                    return result(**arguments)
-                else:
-                    return result()
+    if isinstance(attrib, types.FunctionType):
+        return attrib(obj)
+    elif isinstance(
+        obj, dict_type
+    ) or isinstance(obj, dictionary_type):
+        return obj[attrib]
+    else:
+        result = reduce_function(getattr, attrib.split('.'), obj)
+        if isinstance(result, types.MethodType):
+            if arguments:
+                return result(**arguments)
             else:
-                return result
-    except Exception as exception:
-        if settings.DEBUG:
-            return 'Attribute error: %s; %s' % (attrib, exception)
+                return result()
         else:
-            return force_text(exception)
+            return result
 
 
-def return_related(instance, attribute):
+def return_related(instance, related_field):
     """
     This functions works in a similar method to return_attrib but is
     meant for related models. Support multiple levels of relationship
     using double underscore.
     """
-    return reduce_function(getattr, attribute.split('__'), instance)
+    return reduce_function(getattr, related_field.split('__'), instance)
 
 
 def urlquote(link=None, get=None):
