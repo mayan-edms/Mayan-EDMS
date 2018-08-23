@@ -108,6 +108,7 @@
 - The multiple document action dropdown is now sorted alphabetically.
 - Improve statistics subclassing. Split class module into classes
   and renderers.
+- Sort facet link, object, secondady and sidebar actions.
 
 3.0.3 (2018-08-17)
 ==================

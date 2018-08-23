@@ -9,16 +9,16 @@ register = Library()
 
 
 @register.simple_tag(takes_context=True)
-def get_menu_links(context, name, source=None):
-    return Menu.get(name).resolve(context=context, source=source)
+def get_menu_links(context, name, source=None, sort_results=None):
+    return Menu.get(name).resolve(context=context, source=source, sort_results=sort_results)
 
 
 @register.simple_tag(takes_context=True)
-def get_menus_links(context, names, source=None):
+def get_menus_links(context, names, source=None, sort_results=None):
     result = []
 
     for name in names.split(','):
-        for links in Menu.get(name=name).resolve(context=context):
+        for links in Menu.get(name=name).resolve(context=context, sort_results=sort_results):
             if links:
                 result.append(links)
 
