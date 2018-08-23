@@ -23,7 +23,7 @@ class SmartLink(models.Model):
         blank=True, max_length=96, help_text=_(
             'Enter a template to render. '
             'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). '
+            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). '
             'The {{ document }} context variable is available.'
         ), verbose_name=_('Dynamic label')
     )
@@ -122,7 +122,7 @@ class SmartLinkCondition(models.Model):
         help_text=_(
             'Enter a template to render. '
             'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). '
+            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). '
             'The {{ document }} context variable is available.'
         ), verbose_name=_('Expression')
     )

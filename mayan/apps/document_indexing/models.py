@@ -159,7 +159,7 @@ class IndexTemplateNode(MPTTModel):
         help_text=_(
             'Enter a template to render. '
             'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)'
+            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
         ),
         verbose_name=_('Indexing expression')
     )

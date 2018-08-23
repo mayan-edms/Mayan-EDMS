@@ -55,7 +55,7 @@ class MetadataType(models.Model):
         help_text=_(
             'Enter a template to render. '
             'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)'
+            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
         ),
         verbose_name=_('Default')
     )
@@ -65,7 +65,7 @@ class MetadataType(models.Model):
             'Enter a template to render. '
             'Must result in a comma delimited string. '
             'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/).'
+            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/).'
         ),
         verbose_name=_('Lookup')
     )
