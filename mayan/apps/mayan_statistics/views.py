@@ -87,8 +87,8 @@ class StatisticQueueView(ConfirmView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'statistics:namespace_details',
-            args=(self.get_object().namespace.slug,)
+            'statistics:statistic_detail',
+            args=(self.get_object().slug,)
         )
 
     def view_action(self):

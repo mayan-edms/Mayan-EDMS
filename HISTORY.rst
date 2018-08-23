@@ -103,6 +103,8 @@
 - In addition to the document view permission, the checkout detail
   view permission is now needed to view the list of checked out
   document.
+- After queuing a chart for update, the view will now redirect
+  to the same chart.
 
 3.0.3 (2018-08-17)
 ==================
