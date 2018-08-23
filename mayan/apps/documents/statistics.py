@@ -10,6 +10,8 @@ import qsstats
 
 from mayan_statistics.classes import StatisticNamespace, CharJSLine
 
+from .permissions import permission_document_view
+
 MONTH_NAMES = [
     _('January'), _('February'), _('March'), _('April'), _('May'),
     _('June'), _('July'), _('August'), _('September'), _('October'),
@@ -57,10 +59,21 @@ def new_document_pages_per_month():
     }
 
 
-def new_documents_this_month():
+def new_documents_this_month(user=None):
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
+    queryset = Document.objects.all()
+
+    if user:
+        queryset = AccessControlList.objects.filter_by_access(
+            permission=permission_document_view, user=user,
+            queryset=queryset
+        )
+
+    qss = qsstats.QuerySetStats(queryset, 'date_added')
     return qss.this_month() or '0'
 
 
@@ -86,13 +99,24 @@ def new_document_versions_per_month():
     }
 
 
-def new_document_pages_this_month():
+def new_document_pages_this_month(user=None):
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
 
+    queryset = DocumentPage.objects.all()
+
+    if user:
+        queryset = AccessControlList.objects.filter_by_access(
+            permission=permission_document_view, user=user,
+            queryset=queryset
+        )
+
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_version__document__date_added'
+        queryset, 'document_version__document__date_added'
     )
     return qss.this_month() or '0'
 
