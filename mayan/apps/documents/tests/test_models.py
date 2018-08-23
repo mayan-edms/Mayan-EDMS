@@ -102,7 +102,7 @@ class DocumentTestCase(BaseTestCase):
 
         # Needed by MySQL as milliseconds value is not store in timestamp
         # field
-        time.sleep(2)
+        time.sleep(1.01)
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(DeletedDocument.objects.count(), 0)
@@ -130,9 +130,9 @@ class DocumentTestCase(BaseTestCase):
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        # Needed by MySQL as milliseconds value is not store in timestamp
+        # Needed by MySQL as milliseconds value is not stored in timestamp
         # field
-        time.sleep(2)
+        time.sleep(1.01)
 
         DocumentType.objects.check_delete_periods()
 
@@ -235,7 +235,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
 
         # Needed by MySQL as milliseconds value is not store in timestamp
         # field
-        time.sleep(2)
+        time.sleep(1.01)
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(

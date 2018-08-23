@@ -240,7 +240,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         # Artifical delay since MySQL doesn't store microsecond data in
         # timestamps. Version timestamp is used to determine which version
         # is the latest.
-        time.sleep(2)
+        time.sleep(1)
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
 
@@ -264,8 +264,8 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
         super(EmbeddedSignaturesTestCase, self).tearDown()
 
     def test_unsigned_document_version_method(self):
-        TEST_UNSIGNED_DOCUMENT_COUNT = 3
-        TEST_SIGNED_DOCUMENT_COUNT = 3
+        TEST_UNSIGNED_DOCUMENT_COUNT = 2
+        TEST_SIGNED_DOCUMENT_COUNT = 2
 
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             with open(TEST_DOCUMENT_PATH) as file_object:
@@ -292,7 +292,7 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
 
         DocumentVersion._post_save_hooks = {}
 
-        TEST_UNSIGNED_DOCUMENT_COUNT = 4
+        TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):

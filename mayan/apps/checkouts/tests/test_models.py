@@ -104,14 +104,14 @@ class DocumentCheckoutTestCase(BaseTestCase):
             self.document.check_in()
 
     def test_auto_checkin(self):
-        expiration_datetime = now() + datetime.timedelta(seconds=1)
+        expiration_datetime = now() + datetime.timedelta(seconds=.1)
 
         DocumentCheckout.objects.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
-        time.sleep(2)
+        time.sleep(.11)
 
         DocumentCheckout.objects.check_in_expired_check_outs()
 
