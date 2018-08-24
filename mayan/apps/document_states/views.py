@@ -514,11 +514,11 @@ class SetupWorkflowStateListView(SingleObjectListView):
                     self.request, {'object': self.get_workflow()}
                 )
             ),
-            'no_results_title': _(
-                'This workflow doesn\'t have any states'
-            ),
             'no_results_text': _(
                 'Create states and link them using transitions.'
+            ),
+            'no_results_title': _(
+                'This workflow doesn\'t have any states'
             ),
             'object': self.get_workflow(),
             'title': _('States of workflow: %s') % self.get_workflow()

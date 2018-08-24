@@ -267,6 +267,13 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
     def get_extra_context(self):
         queryset = self.get_queryset()
 
+        id_list = ','.join(
+            map(
+                force_text,
+                queryset.values_list('pk', flat=True)
+            )
+        )
+
         if queryset.count() == 1:
             no_results_main_link = link_metadata_add.resolve(
                 context=RequestContext(

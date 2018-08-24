@@ -83,7 +83,6 @@ class CheckoutListView(DocumentListView):
         context = super(CheckoutListView, self).get_extra_context()
         context.update(
             {
-                'title': _('Documents checked out'),
                 'extra_columns': (
                     {
                         'name': _('User'),
@@ -111,6 +110,7 @@ class CheckoutListView(DocumentListView):
                     'time.'
                 ),
                 'no_results_title': _('No documents have been checked out'),
+                'title': _('Documents checked out'),                
             }
         )
         return context
