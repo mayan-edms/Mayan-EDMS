@@ -1,10 +1,13 @@
 stages:
   - test
-  - build
+  - build_python
+  - build_docker
+  - push_python
+  - push_docker
   - deploy
 
 job_docker_master:
-  stage: build
+  stage: build_docker
   image: docker:latest
   services:
     - docker:dind
@@ -18,6 +21,15 @@ job_docker_master:
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - docker logout
+  only:
+    - releases
+
+job_docker_master:
+  stage: push_docker
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
@@ -25,7 +37,7 @@ job_docker_master:
     - releases
 
 job_docker_nightly:
-  stage: build
+  stage: build_docker
   image: docker:latest
   services:
     - docker:dind
@@ -38,6 +50,31 @@ job_docker_nightly:
   only:
     - nightly
     - staging
+
+job_build_python:
+  stage: build_python
+  image: ubuntu:18.04
+  script:
+    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
+    - locale-gen en_US.UTF-8
+    - update-locale LANG=en_US.UTF-8
+    - export LC_ALL=en_US.UTF-8
+    - apt-get update -y
+    - apt-get install -y make python-pip
+    - pip install -r requirements/build.txt
+    - make wheel
+  only:
+    - releases
+
+job_push_python:
+  stage: push_python
+  image: ubuntu:18.04
+  before_script:
+  script:
+    - echo "$PYPIRC" ~/.pypirc
+    - twine upload dist/* -r pypi
+  only:
+    - releases
 
 .test_base: &test_base
   stage: test
@@ -58,9 +95,8 @@ job_docker_nightly:
   only:
     - releases
     - master
-    - versions/next
-    - nightly
     - staging
+    - nightly
 
 test-mysql:
   <<: *test_base
