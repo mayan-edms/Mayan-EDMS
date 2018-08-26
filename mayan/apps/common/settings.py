@@ -31,25 +31,6 @@ setting_paginate_by = namespace.add_setting(
         'An integer specifying how many objects should be displayed per page.'
     )
 )
-setting_shared_storage = namespace.add_setting(
-    global_name='COMMON_SHARED_STORAGE',
-    default='django.core.files.storage.FileSystemStorage',
-    help_text=_('A storage backend that all workers can use to share files.')
-)
-setting_shared_storage_arguments = namespace.add_setting(
-    global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
-    default='{{location: {}}}'.format(
-        os.path.join(settings.MEDIA_ROOT, 'shared_files')
-    ), quoted=True
-)
-setting_temporary_directory = namespace.add_setting(
-    global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
-    help_text=_(
-        'Temporary directory used site wide to store thumbnails, previews '
-        'and temporary files.'
-    ),
-    is_path=True
-)
 setting_production_error_logging = namespace.add_setting(
     global_name='COMMON_PRODUCTION_ERROR_LOGGING',
     default=False,
@@ -71,10 +52,29 @@ setting_project_title = namespace.add_setting(
         'Name to be displayed in the main menu.'
     ),
 )
+setting_shared_storage = namespace.add_setting(
+    global_name='COMMON_SHARED_STORAGE',
+    default='django.core.files.storage.FileSystemStorage',
+    help_text=_('A storage backend that all workers can use to share files.')
+)
+setting_shared_storage_arguments = namespace.add_setting(
+    global_name='COMMON_SHARED_STORAGE_ARGUMENTS',
+    default='{{location: {}}}'.format(
+        os.path.join(settings.MEDIA_ROOT, 'shared_files')
+    ), quoted=True
+)
+setting_temporary_directory = namespace.add_setting(
+    global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
+    help_text=_(
+        'Temporary directory used site wide to store thumbnails, previews '
+        'and temporary files.'
+    ),
+    is_path=True
+)
 
 namespace = Namespace(name='django', label=_('Django'))
 
-setting_django_databases = namespace.add_setting(
+setting_django_allowed_hosts = namespace.add_setting(
     global_name='ALLOWED_HOSTS', default=settings.ALLOWED_HOSTS,
     help_text=_(
         'A list of strings representing the host/domain names that this site '
@@ -92,8 +92,7 @@ setting_django_databases = namespace.add_setting(
         'first in MIDDLEWARE).'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_append_slash = namespace.add_setting(
     global_name='APPEND_SLASH', default=settings.APPEND_SLASH,
     help_text=_(
         'When set to True, if the request URL does not match any of the '
@@ -105,7 +104,6 @@ setting_django_databases = namespace.add_setting(
         'PREPEND_WWW.'
     )
 )
-
 setting_django_databases = namespace.add_setting(
     global_name='DATABASES', default=settings.DATABASES,
     help_text=_(
@@ -117,8 +115,7 @@ setting_django_databases = namespace.add_setting(
         'be specified.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_data_upload_max_memory_size = namespace.add_setting(
     global_name='DATA_UPLOAD_MAX_MEMORY_SIZE',
     default=settings.DATA_UPLOAD_MAX_MEMORY_SIZE,
     help_text=_(
@@ -138,8 +135,7 @@ setting_django_databases = namespace.add_setting(
         'FILE_UPLOAD_MAX_MEMORY_SIZE.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_disallowed_user_agents = namespace.add_setting(
     global_name='DISALLOWED_USER_AGENTS',
     default=settings.DISALLOWED_USER_AGENTS,
     help_text=_(
@@ -150,8 +146,7 @@ setting_django_databases = namespace.add_setting(
         '(see Middleware).'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_backend = namespace.add_setting(
     global_name='EMAIL_BACKEND',
     default=settings.EMAIL_BACKEND,
     help_text=_(
@@ -159,16 +154,14 @@ setting_django_databases = namespace.add_setting(
         'backend to use for sending emails.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_host = namespace.add_setting(
     global_name='EMAIL_HOST',
     default=settings.EMAIL_HOST,
     help_text=_(
         'Default: \'localhost\'. The host to use for sending email.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_host_password = namespace.add_setting(
     global_name='EMAIL_HOST_PASSWORD',
     default=settings.EMAIL_HOST_PASSWORD,
     help_text=_(
@@ -179,8 +172,7 @@ setting_django_databases = namespace.add_setting(
         'Django won\'t attempt authentication.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_host_user = namespace.add_setting(
     global_name='EMAIL_HOST_USER',
     default=settings.EMAIL_HOST_USER,
     help_text=_(
@@ -189,16 +181,14 @@ setting_django_databases = namespace.add_setting(
         'authentication.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_port = namespace.add_setting(
     global_name='EMAIL_PORT',
     default=settings.EMAIL_PORT,
     help_text=_(
         'Default: 25. Port to use for the SMTP server defined in EMAIL_HOST.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_user_tls = namespace.add_setting(
     global_name='EMAIL_USE_TLS',
     default=settings.EMAIL_USE_TLS,
     help_text=_(
@@ -208,8 +198,7 @@ setting_django_databases = namespace.add_setting(
         'hanging connections, see the implicit TLS setting EMAIL_USE_SSL.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_user_ssl = namespace.add_setting(
     global_name='EMAIL_USE_SSL',
     default=settings.EMAIL_USE_SSL,
     help_text=_(
@@ -221,8 +210,7 @@ setting_django_databases = namespace.add_setting(
         'are mutually exclusive, so only set one of those settings to True.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_email_timeout = namespace.add_setting(
     global_name='EMAIL_TIMEOUT',
     default=settings.EMAIL_TIMEOUT,
     help_text=_(
@@ -230,8 +218,7 @@ setting_django_databases = namespace.add_setting(
         'operations like the connection attempt.'
     ),
 )
-
-setting_django_databases = namespace.add_setting(
+setting_django_file_upload_max_memory_size = namespace.add_setting(
     global_name='FILE_UPLOAD_MAX_MEMORY_SIZE',
     default=settings.FILE_UPLOAD_MAX_MEMORY_SIZE,
     help_text=_(
@@ -239,6 +226,38 @@ setting_django_databases = namespace.add_setting(
         'that an upload will be before it gets streamed to the file '
         'system. See Managing files for details. See also '
         'DATA_UPLOAD_MAX_MEMORY_SIZE.'
+    ),
+)
+# Not really a Django setting, but since it is flat and defined in setting.py
+# We need to put it here.
+setting_home_view = namespace.add_setting(
+    global_name='HOME_VIEW',
+    default=settings.HOME_VIEW, help_text=_(
+        'Name of the view attached to the branch anchor in the main menu.'
+    ),
+)
+setting_django_login_url = namespace.add_setting(
+    global_name='LOGIN_URL',
+    default=settings.LOGIN_URL,
+    help_text=_(
+        'Default: \'/accounts/login/\' The URL where requests are '
+        'redirected for login, especially when using the login_required() '
+        'decorator. This setting also accepts named URL patterns which '
+        'can be used to reduce configuration duplication since you '
+        'don\'t have to define the URL in two places (settings '
+        'and URLconf).'
+    )
+)
+setting_django_login_redirect_url = namespace.add_setting(
+    global_name='LOGIN_REDIRECT_URL',
+    default=settings.LOGIN_REDIRECT_URL,
+    help_text=_(
+        'Default: \'/accounts/profile/\' The URL where requests are '
+        'redirected after login when the contrib.auth.login view gets no '
+        'next parameter. This is used by the login_required() decorator, '
+        'for example. This setting also accepts named URL patterns which '
+        'can be used to reduce configuration duplication since you don\'t '
+        'have to define the URL in two places (settings and URLconf).'
     ),
 )
 
@@ -253,7 +272,6 @@ setting_celery_broker_url = namespace.add_setting(
         'optional, and defaults to the specific transports default values.'
     ),
 )
-
 setting_celery_result_backend = namespace.add_setting(
     global_name='CELERY_RESULT_BACKEND',
     default=settings.CELERY_RESULT_BACKEND,

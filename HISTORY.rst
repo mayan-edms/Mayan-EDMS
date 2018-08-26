@@ -119,6 +119,8 @@
 - Don't show the document types of an index instance.
 - Add the tag created and tag edited events.
 - Add support for blocking the changing of password for specify users.
+- Add support for changing the HOME_VIEW, LOGIN_URL and LOGIN_REDIRECT_URL
+  from the settings view.
 
 3.0.3 (2018-08-17)
 ==================
