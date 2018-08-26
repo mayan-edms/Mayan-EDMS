@@ -116,7 +116,7 @@
   via environment variable.
 - The official config filename is config.yml.
 - Interpret ALLOWED_HOSTS as YAML.
-
+- Don't show the document types of an index instance.
 
 3.0.3 (2018-08-17)
 ==================

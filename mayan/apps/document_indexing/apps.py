@@ -103,10 +103,6 @@ class DocumentIndexingApp(MayanAppConfig):
                 user=context['request'].user
             )
         )
-        SourceColumn(
-            source=IndexInstance, label=_('Document types'),
-            attribute='get_document_types_names'
-        )
 
         SourceColumn(
             source=IndexTemplateNode, label=_('Level'),
