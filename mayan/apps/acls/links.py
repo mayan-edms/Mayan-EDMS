@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
-from .icons import icon_acl_list
+from .icons import icon_acl_list, icon_acl_new
 from .permissions import permission_acl_view, permission_acl_edit
 
 
@@ -41,7 +41,7 @@ link_acl_list_with_icon = Link(
     permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
 )
 link_acl_create = Link(
-    kwargs=get_kwargs_factory('resolved_object'),
+    icon_class=icon_acl_new, kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_acl_edit,), text=_('New ACL'),
     view='acls:acl_create'
 )

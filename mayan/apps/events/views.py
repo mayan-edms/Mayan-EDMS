@@ -20,7 +20,9 @@ from .classes import EventType, ModelEventType
 from .forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
-from .icons import icon_events_list, icon_user_notifications_list
+from .icons import (
+    icon_events_list, icon_events_user_list, icon_user_notifications_list
+)
 from .links import link_event_types_subscriptions_list
 from .models import StoredEventType
 from .permissions import permission_events_view
@@ -277,6 +279,12 @@ class UserEventListView(SingleObjectListView):
                 },
             ),
             'hide_object': True,
+            'no_results_icon': icon_events_user_list,
+            'no_results_text': _(
+                'Events are actions that have been performed to this '
+                'user account or by this user account.'
+            ),
+            'no_results_title': _('There are no events for this user'),
             'object': self.get_user(),
             'title': _(
                 'Events for user: %s'
