@@ -1,12 +1,10 @@
 from __future__ import unicode_literals
 
-from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 
 def setting_widget(instance):
-    return mark_safe(
-        '''
-            <strong>{}</strong>
-            <p class="small">{}</p>
-        '''.format(instance, instance.help_text or '')
+    return format_html(
+        '<strong>{}</strong><p class="small">{}</p>', instance,
+        instance.help_text or ''
     )
