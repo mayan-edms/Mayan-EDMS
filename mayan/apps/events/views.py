@@ -20,7 +20,7 @@ from .classes import EventType, ModelEventType
 from .forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
-from .icons import icon_user_notifications_list
+from .icons import icon_events_list, icon_user_notifications_list
 from .links import link_event_types_subscriptions_list
 from .models import StoredEventType
 from .permissions import permission_events_view
@@ -178,6 +178,12 @@ class ObjectEventListView(EventListView):
         context = super(ObjectEventListView, self).get_extra_context()
         context.update({
             'hide_object': True,
+            'no_results_icon': icon_events_list,
+            'no_results_text': _(
+                'Events are actions that have been performed to this object '
+                'or using this object.'
+            ),
+            'no_results_title': _('There are no events for this object'),
             'object': self.content_object,
             'title': _('Events for: %s') % self.content_object,
         })
