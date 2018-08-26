@@ -112,6 +112,9 @@
 - Add support for extended templates when there are no results.
 - Add help messages and useful links to several apps when there
   are no results available.
+- Add a new column to settings showing if they are overrided
+  via environment variable.
+
 
 3.0.3 (2018-08-17)
 ==================

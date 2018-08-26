@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_sidebar, menu_setup, menu_object
+from common.widgets import TwoStateWidget
 from navigation import SourceColumn
 
 from .classes import Namespace, Setting
@@ -35,6 +36,13 @@ class SmartSettingsApp(MayanAppConfig):
         )
         SourceColumn(
             source=Setting, label=_('Value'), attribute='serialized_value'
+        )
+        SourceColumn(
+            source=Setting, label=_('Environment variable'),
+            func=lambda context: TwoStateWidget(
+                center=True,
+                state=context['object'].environment_variable
+            ).render()
         )
 
         menu_object.bind_links(
