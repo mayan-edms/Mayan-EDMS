@@ -117,6 +117,7 @@
 - The official config filename is config.yml.
 - Interpret ALLOWED_HOSTS as YAML.
 - Don't show the document types of an index instance.
+- Add the tag created and tag edited events.
 
 3.0.3 (2018-08-17)
 ==================

@@ -19,7 +19,9 @@ from events.links import (
 from events.permissions import permission_events_view
 from navigation import SourceColumn
 
-from .events import event_tag_attach, event_tag_remove
+from .events import (
+    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+)
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
@@ -66,7 +68,8 @@ class TagsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Tag, event_types=(
-                event_tag_attach, event_tag_remove
+                event_tag_attach, event_tag_created, event_tag_edited,
+                event_tag_remove
             )
         )
 

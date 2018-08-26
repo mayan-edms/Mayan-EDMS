@@ -11,7 +11,9 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 
-from .events import event_tag_attach, event_tag_remove
+from .events import (
+    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+)
 from .widgets import widget_single_tag
 
 
@@ -58,6 +60,19 @@ class Tag(models.Model):
         event_tag_remove.commit(
             action_object=self, actor=user, target=document
         )
+
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        created = not self.pk
+
+        result = super(Tag, self).save(*args, **kwargs)
+
+        if created:
+            event_tag_created.commit(actor=user, target=self)
+        else:
+            event_tag_edited.commit(actor=user, target=self)
+
+        return result
 
 
 class DocumentTag(Tag):
