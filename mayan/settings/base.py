@@ -23,7 +23,11 @@ import environ
 
 import mayan
 
-from .literals import DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
+from .literals import (
+    CONFIGURATION_FILENAME, CONFIGURATION_LAST_GOOD_FILENAME,
+    DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
+)
+from .utils import yaml_loads, read_configuration_file
 
 env = environ.Env()
 
@@ -50,10 +54,12 @@ else:
         SECRET_KEY = DEFAULT_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env.bool('MAYAN_DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list(
-    'MAYAN_ALLOWED_HOSTS', default=['127.0.0.1', 'localhost', '[::1]']
+ALLOWED_HOSTS = yaml_loads(
+    env(
+        'MAYAN_ALLOWED_HOSTS', default="['127.0.0.1', 'localhost', '[::1]']"
+    )
 )
 
 # Application definition
@@ -347,47 +353,11 @@ else:
             'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),
         }
     }
-# ----- Debug -----
 
-DEBUG = env.bool('MAYAN_DEBUG', default=False)
-
-
-
-CONFIGURATION_FILENAME = '_settings.yml'
 CONFIGURATION_FILEPATH = os.path.join(MEDIA_ROOT, CONFIGURATION_FILENAME)
-
-CONFIGURATION_USER_FILENAME = 'config.yml'
-CONFIGURATION_USER_FILEPATH = os.path.join(
-    MEDIA_ROOT, CONFIGURATION_USER_FILENAME
-)
-
-CONFIGURATION_LAST_GOOD_FILENAME = '_settings_backup.yml'
 CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
     MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
 )
 
-
-def read_configuration_file(path):
-    try:
-        with open(CONFIGURATION_FILEPATH) as file_object:
-            file_object.seek(0, os.SEEK_END)
-            if file_object.tell():
-                file_object.seek(0)
-                try:
-                    globals().update(yaml.safe_load(file_object))
-                except yaml.YAMLError as exception:
-                    exit(
-                        'Error loading configuration file: {}; {}'.format(
-                            CONFIGURATION_FILEPATH, exception
-                        )
-                    )
-    except IOError as exception:
-        if exception.errno == errno.ENOENT:
-            pass
-        else:
-            raise
-
-
 if not 'revertsettings' in sys.argv:
-    read_configuration_file(CONFIGURATION_FILEPATH)
-    read_configuration_file(CONFIGURATION_USER_FILEPATH)
+    globals().update(read_configuration_file(CONFIGURATION_FILEPATH))
