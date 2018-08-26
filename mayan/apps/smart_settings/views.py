@@ -30,6 +30,10 @@ class NamespaceDetailView(SingleObjectListView):
         return {
             'hide_object': True,
             'object': self.get_namespace(),
+            'subtitle': _(
+                'Settings inherited from an environment variable take '
+                'precedence and cannot be changed in this view. '
+            ),
             'title': _('Settings in namespace: %s') % self.get_namespace(),
         }
 
