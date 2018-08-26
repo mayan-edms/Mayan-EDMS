@@ -139,6 +139,7 @@ class Setting(object):
         self.loaded = False
         self.namespace = namespace
         self.quoted = quoted
+        self.environment_variable = False
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
 
@@ -148,7 +149,16 @@ class Setting(object):
     def cache_value(self):
         environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))
         if environment_value:
-            self.raw_value = yaml.safe_load(environment_value)
+            self.environment_variable = True
+            try:
+                self.raw_value = yaml.safe_load(environment_value)
+            except yaml.YAMLError as exception:
+                raise type(exception)(
+                    'Error interpreting environment variable: {} with '
+                    'value: {}; {}'.format(
+                        self.global_name, environment_value, exception
+                    )
+                )
         else:
             self.raw_value = getattr(settings, self.global_name, self.default)
         self.yaml = Setting.serialize_value(self.raw_value)
