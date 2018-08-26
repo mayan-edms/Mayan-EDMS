@@ -133,8 +133,10 @@ class UserCreateView(SingleObjectCreateView):
 
 
 class UserDeleteView(MultipleObjectConfirmActionView):
-    model = get_user_model()
     object_permission = permission_user_delete
+    queryset = get_user_model().objects.filter(
+        is_superuser=False, is_staff=False
+    )
     success_message = _('User delete request performed on %(count)d user')
     success_message_plural = _(
         'User delete request performed on %(count)d users'
@@ -216,8 +218,11 @@ class UserGroupsView(AssignRemoveView):
             'title': _('Groups of user: %s') % self.get_object()
         }
 
-    def get_object(self):
-        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            get_user_model().objects.filter(
+                is_superuser=False, is_staff=False
+            ), pk=self.kwargs['pk']
+        )
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
@@ -246,6 +251,31 @@ class UserListView(SingleObjectListView):
         return get_user_model().objects.exclude(
             is_superuser=True
         ).exclude(is_staff=True).order_by('last_name', 'first_name')
+
+
+class UserOptionsEditView(SingleObjectEditView):
+    fields = ('block_password_change',)
+    object_permission = permission_user_edit
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit options for user: %s'
+            ) % self.get_user()
+        }
+
+    def get_object(self, queryset=None):
+        return self.get_user().user_options
+
+    def get_post_action_redirect(self):
+        return reverse('user_management:user_list')
+
+    def get_user(self):
+        return get_object_or_404(
+            get_user_model().objects.filter(
+                is_superuser=False, is_staff=False
+            ), pk=self.kwargs['pk']
+        )
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):

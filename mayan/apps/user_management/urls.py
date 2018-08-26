@@ -9,7 +9,7 @@ from .api_views import (
 from .views import (
     GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
     GroupMembersView, UserCreateView, UserDeleteView, UserEditView,
-    UserGroupsView, UserListView, UserSetPasswordView
+    UserGroupsView, UserListView, UserOptionsEditView, UserSetPasswordView
 )
 
 urlpatterns = [
@@ -50,6 +50,11 @@ urlpatterns = [
     url(
         r'^user/(?P<pk>\d+)/groups/$', UserGroupsView.as_view(),
         name='user_groups'
+    ),
+    url(
+        r'^user/(?P<pk>\d+)/options/$',
+        UserOptionsEditView.as_view(),
+        name='user_options'
     ),
 ]
 

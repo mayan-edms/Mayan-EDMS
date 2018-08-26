@@ -63,6 +63,10 @@ link_user_multiple_set_password = Link(
     permissions=(permission_user_edit,), text=_('Set password'),
     view='user_management:user_multiple_set_password'
 )
+link_user_set_options = Link(
+    args='object.id', permissions=(permission_user_edit,),
+    text=_('User options'), view='user_management:user_options',
+)
 link_user_set_password = Link(
     args='object.id', permissions=(permission_user_edit,),
     text=_('Set password'), view='user_management:user_set_password',

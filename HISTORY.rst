@@ -118,6 +118,7 @@
 - Interpret ALLOWED_HOSTS as YAML.
 - Don't show the document types of an index instance.
 - Add the tag created and tag edited events.
+- Add support for blocking the changing of password for specify users.
 
 3.0.3 (2018-08-17)
 ==================

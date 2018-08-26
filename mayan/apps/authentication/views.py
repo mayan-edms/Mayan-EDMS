@@ -2,13 +2,14 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.contrib.auth import REDIRECT_FIELD_NAME, get_user_model
 from django.contrib.auth.views import (
     login, password_change, password_reset, password_reset_confirm,
     password_reset_complete, password_reset_done
 )
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, resolve_url
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _
@@ -76,6 +77,14 @@ def password_change_view(request):
     Password change wrapper for better control
     """
     extra_context = {'title': _('Current user password change')}
+
+    if request.user.user_options.block_password_change:
+        messages.error(
+            request, _(
+                'Changing the password is not allowed for this account.'
+            )
+        )
+        return HttpResponseRedirect(reverse(settings.HOME_VIEW))
 
     return password_change(
         request, extra_context=extra_context,

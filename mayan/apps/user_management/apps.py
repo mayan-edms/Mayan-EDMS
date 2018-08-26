@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -14,12 +15,13 @@ from metadata import MetadataLookup
 from navigation import SourceColumn
 from rest_api.fields import DynamicSerializerField
 
+from .handlers import handler_initialize_new_user_options
 from .links import (
     link_group_add, link_group_delete, link_group_edit, link_group_list,
     link_group_members, link_group_setup, link_user_add, link_user_delete,
     link_user_edit, link_user_groups, link_user_list,
     link_user_multiple_delete, link_user_multiple_set_password,
-    link_user_set_password, link_user_setup
+    link_user_set_options, link_user_set_password, link_user_setup
 )
 from .permissions import (
     permission_group_delete, permission_group_edit,
@@ -116,12 +118,13 @@ class UserManagementApp(MayanAppConfig):
             sources=(Group,)
         )
         menu_object.bind_links(
-            links=(link_acl_list, link_group_delete,), position=99, sources=(Group,)
+            links=(link_acl_list, link_group_delete,), position=99,
+            sources=(Group,)
         )
         menu_object.bind_links(
             links=(
                 link_user_edit, link_user_set_password, link_user_groups,
-                link_acl_list, link_user_delete
+                link_user_set_options, link_acl_list, link_user_delete
             ), sources=(User,)
         )
         menu_secondary.bind_links(
@@ -140,5 +143,10 @@ class UserManagementApp(MayanAppConfig):
         )
         menu_setup.bind_links(links=(link_user_setup, link_group_setup))
 
+        post_save.connect(
+            dispatch_uid='user_management_handler_initialize_new_user_options',
+            receiver=handler_initialize_new_user_options,
+            sender=User
+        )
         registry.register(Group)
         registry.register(User)
