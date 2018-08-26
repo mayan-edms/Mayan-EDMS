@@ -46,7 +46,8 @@ from ..permissions import (
     permission_empty_trash
 )
 from ..settings import (
-    setting_print_width, setting_print_height, setting_recent_added_count
+    setting_favorite_count, setting_print_width, setting_print_height,
+    setting_recent_added_count
 )
 from ..tasks import task_delete_document, task_update_page_count
 from ..utils import parse_range
@@ -825,6 +826,12 @@ class FavoriteDocumentListView(DocumentListView):
         context = super(FavoriteDocumentListView, self).get_extra_context()
         context.update(
             {
+                'no_results_icon': icon_document_list_favorites,
+                'no_results_text': _(
+                    'Favorited documents will be listed in this view. '
+                    'Up to %(count)d documents can be favorited per user. '
+                ) % {'count': setting_favorite_count.value},
+                'no_results_title': _('There are no favorited documents.'),
                 'title': _('Favorites'),
             }
         )

@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link, get_cascade_condition
 
 from .icons import (
-    icon_document_index_list, icon_index, icon_rebuild_index_instances
+    icon_document_index_list, icon_index, icon_index_create,
+    icon_rebuild_index_instances,
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
@@ -42,6 +43,7 @@ link_index_setup_list = Link(
     text=_('Indexes'), view='indexing:index_setup_list'
 )
 link_index_setup_create = Link(
+    icon_class=icon_index_create,
     permissions=(permission_document_indexing_create,), text=_('Create index'),
     view='indexing:index_setup_create'
 )

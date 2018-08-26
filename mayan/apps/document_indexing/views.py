@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -16,6 +17,8 @@ from documents.permissions import permission_document_view
 from documents.views import DocumentListView
 
 from .forms import IndexListForm, IndexTemplateNodeForm
+from .icons import icon_index
+from .links import link_index_setup_create
 from .models import (
     DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
     IndexTemplateNode
@@ -71,6 +74,17 @@ class SetupIndexListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_index,
+            'no_results_main_link': link_index_setup_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Indexes group document automatically into levels. Indexe are '
+                'defined using template whose markers are replaced with '
+                'direct properties of documents like label or description, or '
+                'that of extended properties like metadata.'
+            ),
+            'no_results_title': _('There are no indexes.'),
             'title': _('Indexes'),
         }
 
@@ -217,6 +231,16 @@ class IndexListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_links': True,
+            'no_results_icon': icon_index,
+            'no_results_main_link': link_index_setup_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'This could mean that no index templates have been '
+                'created or that there index templates '
+                'but they are no properly defined.'
+            ),
+            'no_results_title': _('There are no index instances available.'),
             'title': _('Indexes'),
         }
 

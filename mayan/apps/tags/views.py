@@ -201,16 +201,14 @@ class TagListView(SingleObjectListView):
             'hide_link': True,
             'hide_object': True,
             'no_results_icon': icon_menu_tags,
+            'no_results_main_link': link_tag_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
             'no_results_text': _(
                 'Tags are color coded properties that can be attached or '
                 'removed from documents.'
             ),
             'no_results_title': _('No tags available'),
-            'no_results_main_link': link_tag_create.resolve(
-                context=RequestContext(
-                    self.request, {}
-                )
-            ),
             'title': _('Tags'),
         }
 
