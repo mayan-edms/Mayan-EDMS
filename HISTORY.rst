@@ -114,6 +114,8 @@
   are no results available.
 - Add a new column to settings showing if they are overrided
   via environment variable.
+- The official config filename is config.yml.
+- Interpret ALLOWED_HOSTS as YAML.
 
 
 3.0.3 (2018-08-17)
