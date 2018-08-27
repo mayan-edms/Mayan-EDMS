@@ -32,7 +32,10 @@ from ..forms import (
     DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
     DocumentTypeSelectForm,
 )
-from ..icons import icon_document_list_favorites
+from ..icons import (
+    icon_document_list_deleted, icon_document_list_favorites,
+    icon_duplicated_document_list
+)
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import (
     DeletedDocument, Document, DuplicatedDocument, FavoriteDocument,
@@ -131,6 +134,15 @@ class DeletedDocumentListView(DocumentListView):
         context.update(
             {
                 'hide_link': True,
+                'no_results_icon': icon_document_list_deleted,
+                'no_results_text': _(
+                    'To avoid loss of data, documents are not deleted '
+                    'instantly. First, they are placed in the trash can. '
+                    'From here they can be then finally deleted or restored.'
+                ),
+                'no_results_title': _(
+                    'There are no documents in the trash can'
+                ),
                 'title': _('Documents in trash'),
             }
         )
@@ -209,6 +221,17 @@ class DocumentDuplicatesListView(DocumentListView):
         context = super(DocumentDuplicatesListView, self).get_extra_context()
         context.update(
             {
+                'no_results_icon': icon_duplicated_document_list,
+                'no_results_text': _(
+                    'Duplicates are documents that are composed of the exact '
+                    'same file, down to the last byte. Files that have the '
+                    'same text or OCR but are not identical or were saved '
+                    'using a different file format will not appear as '
+                    'duplicates.'
+                ),
+                'no_results_title': _(
+                    'There are no duplicates for this document'
+                ),
                 'object': self.get_document(),
                 'title': _('Duplicates for document: %s') % self.get_document(),
             }
