@@ -360,4 +360,6 @@ CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
 )
 
 if not 'revertsettings' in sys.argv:
-    globals().update(read_configuration_file(CONFIGURATION_FILEPATH))
+    result = read_configuration_file(CONFIGURATION_FILEPATH)
+    if result:
+        globals().update(result)
