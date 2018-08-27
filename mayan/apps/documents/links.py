@@ -17,9 +17,9 @@ from .icons import (
     icon_document_page_rotate_right, icon_document_page_zoom_in,
     icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
     icon_document_properties, icon_document_type_setup,
-    icon_document_version_list, icon_document_version_return_document,
-    icon_document_version_return_list, icon_duplicated_document_list,
-    icon_duplicated_document_scan
+    icon_document_type_filename_create, icon_document_version_list,
+    icon_document_version_return_document, icon_document_version_return_list,
+    icon_duplicated_document_list, icon_duplicated_document_scan
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -325,7 +325,8 @@ link_document_type_edit = Link(
     text=_('Edit'), view='documents:document_type_edit',
 )
 link_document_type_filename_create = Link(
-    args='document_type.id', permissions=(permission_document_type_edit,),
+    args='document_type.id', icon_class=icon_document_type_filename_create,
+    permissions=(permission_document_type_edit,),
     text=_('Add quick label to document type'),
     view='documents:document_type_filename_create',
 )

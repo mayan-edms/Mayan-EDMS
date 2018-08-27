@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -13,6 +14,10 @@ from common.generics import (
 )
 
 from ..forms import DocumentTypeFilenameForm_create
+from ..icons import (
+    icon_document_type_filename, icon_document_type_filename_create
+)
+from ..links import link_document_type_filename_create
 from ..models import DocumentType, DocumentTypeFilename
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
@@ -201,6 +206,19 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             'document_type': self.get_document_type(),
             'hide_link': True,
             'navigation_object_list': ('document_type',),
+            'no_results_icon': icon_document_type_filename,
+            'no_results_main_link': link_document_type_filename_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Quick labels are predetermined filenames that allow '
+                'the quick renaming of documents as they are uploaded '
+                'by selecting them from a list. Quick labels can also '
+                'be used after the documents have been uploaded.'
+            ),
+            'no_results_title': _(
+                'There are no quick labels for this document type'
+            ),
             'title': _(
                 'Quick labels for document type: %s'
             ) % self.get_document_type(),
