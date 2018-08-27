@@ -76,11 +76,15 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
+        DocumentTypeSettings = self.get_model(
+            model_name='DocumentTypeSettings'
+        )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
-
-        DocumentVersionParseError = self.get_model('DocumentVersionParseError')
+        DocumentVersionParseError = self.get_model(
+            model_name='DocumentVersionParseError'
+        )
 
         Document.add_to_class('submit_for_parsing', document_parsing_submit)
         Document.add_to_class(
@@ -103,7 +107,9 @@ class DocumentParsingApp(MayanAppConfig):
                 permission_document_type_parsing_setup,
             )
         )
-
+        ModelPermission.register_inheritance(
+            model=DocumentTypeSettings, related='document_type',
+        )
         SourceColumn(
             source=DocumentVersionParseError, label=_('Document'),
             func=lambda context: document_link(context['object'].document_version.document)

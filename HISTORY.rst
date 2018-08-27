@@ -121,6 +121,10 @@
 - Add support for blocking the changing of password for specify users.
 - Add support for changing the HOME_VIEW, LOGIN_URL and LOGIN_REDIRECT_URL
   from the settings view.
+- Instead of the document content view, the document type parsing setup
+  permissions is now required to view the parsing error list.
+- The document type parsing setup permission can now be granted for
+  individual document types.
 
 3.0.3 (2018-08-17)
 ==================

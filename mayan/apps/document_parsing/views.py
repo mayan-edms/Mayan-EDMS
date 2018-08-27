@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from common.generics import (
@@ -115,19 +115,22 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):
     fields = ('auto_parsing',)
-    view_permission = permission_document_type_parsing_setup
+    object_permission = permission_document_type_parsing_setup
+    post_action_redirect = reverse_lazy('documents:document_type_list')
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(
-            DocumentType, pk=self.kwargs['pk']
-        ).parsing_settings
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
+            'object': self.get_document_type(),
             'title': _(
                 'Edit parsing settings for document type: %s'
-            ) % self.get_object().document_type
+            ) % self.get_document_type()
         }
+
+    def get_object(self, queryset=None):
+        return self.get_document_type().parsing_settings
 
 
 class DocumentTypeSubmitView(FormView):
@@ -135,14 +138,6 @@ class DocumentTypeSubmitView(FormView):
     extra_context = {
         'title': _('Submit all documents of a type for parsing')
     }
-
-    def get_form_extra_kwargs(self):
-        return {
-            'user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse('common:tools_list')
 
     def form_valid(self, form):
         count = 0
@@ -162,13 +157,21 @@ class DocumentTypeSubmitView(FormView):
 
         return HttpResponseRedirect(self.get_success_url())
 
+    def get_form_extra_kwargs(self):
+        return {
+            'user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
 
 class ParseErrorListView(SingleObjectListView):
     extra_context = {
         'hide_object': True,
         'title': _('Parsing errors'),
     }
-    view_permission = permission_content_view
+    view_permission = permission_document_type_parsing_setup
 
     def get_object_list(self):
         return DocumentVersionParseError.objects.all()
