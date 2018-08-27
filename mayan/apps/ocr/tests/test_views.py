@@ -2,7 +2,10 @@ from __future__ import unicode_literals
 
 from documents.tests import GenericDocumentViewTestCase
 
-from ..permissions import permission_ocr_content_view, permission_ocr_document
+from ..permissions import (
+    permission_ocr_content_view, permission_ocr_document,
+    permission_document_type_ocr_setup
+)
 from ..utils import get_document_ocr_content
 
 
@@ -109,3 +112,23 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
                 ''.join(get_document_ocr_content(document=self.document))
             ),
         )
+
+    def test_document_type_ocr_settings_view_no_permission(self):
+        response = self.get(
+            viewname='ocr:document_type_ocr_settings',
+            args=(self.document.document_type.pk,)
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_type_ocr_settings_view_with_access(self):
+        self.grant_access(
+            permission=permission_document_type_ocr_setup,
+            obj=self.document.document_type
+        )
+        response = self.get(
+            viewname='ocr:document_type_ocr_settings',
+            args=(self.document.document_type.pk,)
+        )
+
+        self.assertEqual(response.status_code, 200)

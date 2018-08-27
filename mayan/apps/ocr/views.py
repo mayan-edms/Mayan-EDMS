@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from common.generics import (
@@ -66,13 +66,10 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 
 
 class DocumentTypeSubmitView(FormView):
-    form_class = DocumentTypeSelectForm
     extra_context = {
         'title': _('Submit all documents of a type for OCR')
     }
-
-    def get_post_action_redirect(self):
-        return reverse('common:tools_list')
+    form_class = DocumentTypeSelectForm
 
     def form_valid(self, form):
         count = 0
@@ -92,22 +89,28 @@ class DocumentTypeSubmitView(FormView):
 
         return HttpResponseRedirect(self.get_success_url())
 
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):
     fields = ('auto_ocr',)
-    view_permission = permission_document_type_ocr_setup
+    object_permission = permission_document_type_ocr_setup
+    post_action_redirect = reverse_lazy('documents:document_type_list')
 
-    def get_object(self, queryset=None):
-        return get_object_or_404(
-            DocumentType, pk=self.kwargs['pk']
-        ).ocr_settings
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
+            'object': self.get_document_type(),
             'title': _(
                 'Edit OCR settings for document type: %s'
-            ) % self.get_object().document_type
+            ) % self.get_document_type()
         }
+
+    def get_object(self, queryset=None):
+        return self.get_document_type().ocr_settings
 
 
 class EntryListView(SingleObjectListView):
@@ -115,14 +118,14 @@ class EntryListView(SingleObjectListView):
         'hide_object': True,
         'title': _('OCR errors'),
     }
-    view_permission = permission_ocr_document
+    view_permission = permission_document_type_ocr_setup
 
     def get_object_list(self):
         return DocumentVersionOCRError.objects.all()
 
 
 class DocumentOCRErrorsListView(SingleObjectListView):
-    view_permission = permission_ocr_document
+    object_permission = permission_ocr_document
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])

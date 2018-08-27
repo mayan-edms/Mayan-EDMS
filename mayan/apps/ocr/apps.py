@@ -32,7 +32,10 @@ from .links import (
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
-from .permissions import permission_ocr_document, permission_ocr_content_view
+from .permissions import (
+    permission_document_type_ocr_setup, permission_ocr_document,
+    permission_ocr_content_view
+)
 from .queues import *  # NOQA
 from .utils import get_document_ocr_content
 
@@ -71,11 +74,12 @@ class OCRApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
-
+        DocumentTypeSettings = self.get_model(
+            model_name='DocumentTypeSettings'
+        )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
         )
@@ -95,7 +99,14 @@ class OCRApp(MayanAppConfig):
                 permission_ocr_document, permission_ocr_content_view
             )
         )
-
+        ModelPermission.register(
+            model=DocumentType, permissions=(
+                permission_document_type_ocr_setup,
+            )
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentTypeSettings, related='document_type',
+        )
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Document'),
             func=lambda context: document_link(context['object'].document_version.document)
