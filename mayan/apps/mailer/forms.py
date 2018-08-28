@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.forms import DynamicModelForm
+from common.settings import setting_project_title
 
 import mayan
 
@@ -32,7 +33,7 @@ class DocumentMailForm(forms.Form):
             self.fields[
                 'body'
             ].initial = setting_document_body_template.value % {
-                'project_title': mayan.__title__,
+                'project_title': setting_project_title.value,
                 'project_website': mayan.__website__
             }
         else:
@@ -40,7 +41,7 @@ class DocumentMailForm(forms.Form):
                 'subject'
             ].initial = setting_link_subject_template.value
             self.fields['body'].initial = setting_link_body_template.value % {
-                'project_title': mayan.__title__,
+                'project_title': setting_project_title.value,
                 'project_website': mayan.__website__
             }
 

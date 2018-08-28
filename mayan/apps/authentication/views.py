@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from stronghold.decorators import public
 
+from common.settings import setting_project_title
 import mayan
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
@@ -152,7 +153,7 @@ def password_reset_view(request):
         request, extra_context=extra_context,
         email_template_name='authentication/password_reset_email.html',
         extra_email_context={
-            'project_title': mayan.__title__,
+            'project_title': setting_project_title.value,
             'project_website': mayan.__website__,
             'project_copyright': mayan.__copyright__,
             'project_license': mayan.__license__,

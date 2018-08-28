@@ -3,6 +3,7 @@
 
 {% load common_tags %}
 {% load navigation_tags %}
+{% load smart_settings_tags %}
 
 {% spaceless %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -15,7 +16,7 @@
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
         <title>
             {% block base_title %}
-                {% block title %}{% endblock %} :: {% block project_name %}{% project_information '__title__' %}{% endblock %}
+                {% block title %}{% endblock %} :: {% block project_name %}    {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}{% endblock %}
             {% endblock base_title %}
         </title>
 
