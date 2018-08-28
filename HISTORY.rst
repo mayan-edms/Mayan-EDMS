@@ -125,6 +125,7 @@
   permissions is now required to view the parsing error list.
 - The document type parsing setup permission can now be granted for
   individual document types.
+- Add link to view a specific page's OCR content.
 
 3.0.3 (2018-08-17)
 ==================

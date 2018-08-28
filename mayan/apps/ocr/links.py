@@ -14,10 +14,15 @@ from .permissions import (
     permission_document_type_ocr_setup
 )
 
-link_document_content = Link(
+link_document_page_ocr_content = Link(
     args='resolved_object.id', icon_class=icon_document_content,
     permissions=(permission_ocr_content_view,), text=_('OCR'),
-    view='ocr:document_content',
+    view='ocr:document_page_ocr_content',
+)
+link_document_ocr_content = Link(
+    args='resolved_object.id', icon_class=icon_document_content,
+    permissions=(permission_ocr_content_view,), text=_('OCR'),
+    view='ocr:document_ocr_content',
 )
 link_document_submit = Link(
     args='resolved_object.id', permissions=(permission_ocr_document,),

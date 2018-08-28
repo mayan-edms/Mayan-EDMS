@@ -27,10 +27,11 @@ from .handlers import (
     handler_initialize_new_ocr_settings, handler_ocr_document_version,
 )
 from .links import (
-    link_document_content, link_document_ocr_download,
-    link_document_ocr_errors_list, link_document_submit,
-    link_document_submit_multiple, link_document_type_ocr_settings,
-    link_document_type_submit, link_entry_list
+    link_document_page_ocr_content, link_document_ocr_content,
+    link_document_ocr_download, link_document_ocr_errors_list,
+    link_document_submit, link_document_submit_multiple,
+    link_document_type_ocr_settings, link_document_type_submit,
+    link_entry_list
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
@@ -73,6 +74,9 @@ class OCRApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
         )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -141,7 +145,10 @@ class OCRApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=(link_document_content,), sources=(Document,)
+            links=(link_document_ocr_content,), sources=(Document,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_page_ocr_content,), sources=(DocumentPage,)
         )
         menu_multi_item.bind_links(
             links=(link_document_submit_multiple,), sources=(Document,)
@@ -150,11 +157,14 @@ class OCRApp(MayanAppConfig):
             links=(link_document_submit,), sources=(Document,)
         )
         menu_object.bind_links(
+            links=(link_document_page_ocr_content,), sources=(DocumentPage,)
+        )
+        menu_object.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_content, link_document_ocr_errors_list,
+                link_document_ocr_content, link_document_ocr_errors_list,
                 link_document_ocr_download
             ),
             sources=(

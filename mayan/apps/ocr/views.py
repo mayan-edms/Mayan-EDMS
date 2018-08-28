@@ -10,9 +10,12 @@ from common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from documents.models import Document, DocumentType
+from documents.models import Document, DocumentPage, DocumentType
 
-from .forms import DocumentOCRContentForm, DocumentTypeSelectForm
+from .forms import (
+    DocumentPageOCRContentForm, DocumentOCRContentForm,
+    DocumentTypeSelectForm
+)
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -30,7 +33,7 @@ class DocumentOCRContent(SingleObjectDetailView):
         result = super(DocumentOCRContent, self).dispatch(
             request, *args, **kwargs
         )
-        self.get_object().add_as_recent_document_for_user(request.user)
+        self.get_object().add_as_recent_document_for_user(user=request.user)
         return result
 
     def get_extra_context(self):
@@ -39,6 +42,28 @@ class DocumentOCRContent(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('OCR result for document: %s') % self.get_object(),
+        }
+
+
+class DocumentPageOCRContent(SingleObjectDetailView):
+    form_class = DocumentPageOCRContentForm
+    model = DocumentPage
+    object_permission = permission_ocr_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentPageOCRContent, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('OCR result for document page: %s') % self.get_object(),
         }
 
 

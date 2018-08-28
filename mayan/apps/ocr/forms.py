@@ -12,6 +12,33 @@ from documents.models import DocumentType
 from .models import DocumentPageOCRContent
 
 
+class DocumentPageOCRContentForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        page = kwargs.pop('instance', None)
+        super(DocumentPageOCRContentForm, self).__init__(*args, **kwargs)
+        content = ''
+        self.fields['contents'].initial = ''
+
+        try:
+            page_content = page.ocr_content.content
+        except DocumentPageOCRContent.DoesNotExist:
+            pass
+        else:
+            content = conditional_escape(force_text(page_content))
+
+        self.fields['contents'].initial = mark_safe(content)
+
+    contents = forms.CharField(
+        label=_('Contents'),
+        widget=TextAreaDiv(
+            attrs={
+                'class': 'text_area_div full-height',
+                'data-height-difference': 360
+            }
+        )
+    )
+
+
 class DocumentOCRContentForm(forms.Form):
     """
     Form that concatenates all of a document pages' text content into a

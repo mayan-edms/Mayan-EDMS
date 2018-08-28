@@ -8,14 +8,18 @@ from .api_views import (
 )
 from .views import (
     DocumentOCRContent, DocumentOCRDownloadView, DocumentOCRErrorsListView,
-    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView,
-    EntryListView
+    DocumentPageOCRContent, DocumentSubmitView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView, EntryListView
 )
 
 urlpatterns = [
     url(
-        r'^(?P<pk>\d+)/content/$', DocumentOCRContent.as_view(),
-        name='document_content'
+        r'^document/page/(?P<pk>\d+)/content/$',
+        DocumentPageOCRContent.as_view(), name='document_page_ocr_content'
+    ),
+    url(
+        r'^document/(?P<pk>\d+)/content/$', DocumentOCRContent.as_view(),
+        name='document_ocr_content'
     ),
     url(
         r'^document/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(),
