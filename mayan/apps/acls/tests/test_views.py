@@ -189,4 +189,3 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
             viewname='acls:acl_list', kwargs=view_arguments
         )
         self.assertContains(response, text=document.label, status_code=200)
-        self.assertContains(response, text='otal: 1', status_code=200)

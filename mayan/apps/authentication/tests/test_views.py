@@ -5,7 +5,7 @@ from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
 
-from common.tests import BaseTestCase
+from common.tests import BaseTestCase, GenericViewTestCase
 from smart_settings.classes import Namespace
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_USER_PASSWORD_EDITED,
@@ -17,7 +17,7 @@ from ..settings import setting_maximum_session_length
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
 
 
-class UserLoginTestCase(BaseTestCase):
+class UserLoginTestCase(GenericViewTestCase):
     """
     Test that users can login via the supported authentication methods
     """
@@ -156,58 +156,51 @@ class UserLoginTestCase(BaseTestCase):
     @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_dont_remember_me(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
-            response = self.client.post(
-                reverse(settings.LOGIN_URL), {
+            response = self.post(
+                viewname=settings.LOGIN_URL, data={
                     'email': TEST_ADMIN_EMAIL,
                     'password': TEST_ADMIN_PASSWORD,
                     'remember_me': False
-                }, follow=True
+                }
             )
 
-            response = self.client.get(reverse('documents:document_list'))
+            response = self.get(viewname='documents:document_list')
             self.assertEqual(response.status_code, 200)
 
             self.assertTrue(self.client.session.get_expire_at_browser_close())
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_password_reset(self):
-        response = self.client.post(
-            reverse('authentication:password_reset_view'), {
+        response = self.post(
+            viewname='authentication:password_reset_view', data={
                 'email': TEST_ADMIN_EMAIL,
-            }, follow=True
+            }
         )
 
-        self.assertContains(
-            response, text='Password reset email sent!', status_code=200
-        )
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
 
         uid_token = mail.outbox[0].body.replace('\n', '').split('/')
 
-        response = self.client.post(
-            reverse('authentication:password_reset_confirm_view', args=uid_token[-3:-1]), {
+        response = self.post(
+            viewname='authentication:password_reset_confirm_view',
+            args=uid_token[-3:-1], data={
                 'new_password1': TEST_USER_PASSWORD_EDITED,
                 'new_password2': TEST_USER_PASSWORD_EDITED,
-            }, follow=True
+            }
         )
 
-        self.assertContains(
-            response, text='Password reset complete!', status_code=200
+        self.assertEqual(response.status_code, 302)
+
+        self.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
 
-        response = self.client.post(
-            reverse(settings.LOGIN_URL), {
-                'username': TEST_ADMIN_USERNAME,
-                'password': TEST_USER_PASSWORD_EDITED,
-                'remember_me': True
-            }, follow=True
-        )
-
-        response = self.client.get(reverse('documents:document_list'))
+        response = self.get(viewname='documents:document_list')
         self.assertEqual(response.status_code, 200)
 
     def test_username_login_redirect(self):
-        TEST_REDIRECT_URL = '/about/'
+        TEST_REDIRECT_URL = reverse('common:about_view')
 
         response = self.client.post(
             '{}?next={}'.format(

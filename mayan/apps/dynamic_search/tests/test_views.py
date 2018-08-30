@@ -44,23 +44,42 @@ class Issue46TestCase(GenericViewTestCase):
         self.assertEqual(queryset.count(), self.document_count)
 
         with self.settings(COMMON_PAGINATE_BY=2):
-            # Funcitonal test for the first page of advanced results
+            # Functional test for the first page of advanced results
             response = self.get(
-                'search:results', args=(document_search.get_full_name(),),
+                viewname='search:results',
+                args=(document_search.get_full_name(),),
                 data={'label': 'test'}
             )
 
-            self.assertContains(
-                response, 'Total (1 - 2 out of 4) (Page 1 of 2)',
-                status_code=200
+            # Total (1 - 2 out of 4) (Page 1 of 2)
+            # 4 results total, 2 pages, current page is 1,
+            # object in this page: 2
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(
+                response.context['paginator'].object_list.count(), 4
+            )
+            self.assertEqual(response.context['paginator'].num_pages, 2)
+            self.assertEqual(response.context['page_obj'].number, 1)
+            self.assertEqual(
+                response.context['page_obj'].object_list.count(), 2
             )
 
             # Functional test for the second page of advanced results
             response = self.get(
-                'search:results', args=(document_search.get_full_name(),),
+                viewname='search:results',
+                args=(document_search.get_full_name(),),
                 data={'label': 'test', 'page': 2}
             )
-            self.assertContains(
-                response, 'Total (3 - 4 out of 4) (Page 2 of 2)',
-                status_code=200
+
+            # Total (3 - 4 out of 4) (Page 2 of 2)
+            # 4 results total, 2 pages, current page is 1,
+            # object in this page: 2
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(
+                response.context['paginator'].object_list.count(), 4
+            )
+            self.assertEqual(response.context['paginator'].num_pages, 2)
+            self.assertEqual(response.context['page_obj'].number, 2)
+            self.assertEqual(
+                response.context['page_obj'].object_list.count(), 2
             )

@@ -81,7 +81,8 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             args=(document.latest_version.pk,)
         )
 
-        self.assertContains(response, 'Total: 1', status_code=200)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['object_list'].count(), 1)
 
     def test_signature_detail_view_no_permission(self):
         with open(TEST_KEY_FILE) as file_object:

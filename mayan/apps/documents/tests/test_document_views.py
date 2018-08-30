@@ -51,7 +51,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_list_view_no_permissions(self):
         response = self.get('documents:document_list')
-        self.assertContains(response, 'Total: 0', status_code=200)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['object_list'].count(), 0)
 
     def test_document_list_view_with_access(self):
         self.grant_access(
