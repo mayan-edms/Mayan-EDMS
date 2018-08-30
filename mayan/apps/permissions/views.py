@@ -4,6 +4,7 @@ import itertools
 
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -16,6 +17,8 @@ from common.views import (
 from user_management.permissions import permission_group_edit
 
 from .classes import Permission, PermissionNamespace
+from .icons import icon_role_list
+from .links import link_role_create
 from .models import Role, StoredPermission
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
@@ -90,7 +93,11 @@ class SetupRoleMembersView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Groups of role: %s') % self.get_object()
+            'title': _('Groups of role: %s') % self.get_object(),
+            'subtitle': _(
+                'Add groups to be part of a role. They will '
+                'inherit the role\'s permissions and access controls.'
+            ),
         }
 
     def get_object(self):
@@ -187,10 +194,24 @@ class SetupRolePermissionsView(AssignRemoveView):
 
 
 class RoleListView(SingleObjectListView):
-    extra_context = {
-        'hide_link': True,
-        'title': _('Roles'),
-    }
-
     model = Role
     object_permission = permission_role_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'no_results_icon': icon_role_list,
+            'no_results_main_link': link_role_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Roles are authorization units. They contain '
+                'user groups which inherit the role permissions for the '
+                'entire system. Roles can also part of access '
+                'controls lists. Access controls list are permissions '
+                'granted to a role for specific objects which its group '
+                'members inherit.'
+            ),
+            'no_results_title': _('There are no roles'),
+            'title': _('Roles'),
+        }

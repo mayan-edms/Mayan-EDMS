@@ -8,6 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
@@ -18,6 +19,8 @@ from common.views import (
 )
 
 from .forms import UserForm
+from .icons import icon_group_setup, icon_user_setup
+from .links import link_group_create, link_user_create
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -47,12 +50,26 @@ class GroupEditView(SingleObjectEditView):
 
 
 class GroupListView(SingleObjectListView):
-    extra_context = {
-        'hide_link': True,
-        'title': _('Groups'),
-    }
     model = Group
     object_permission = permission_group_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'no_results_icon': icon_group_setup,
+            'no_results_main_link': link_group_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'User groups are organizational units. They should '
+                'mirror the organizational units of your organization. '
+                'Groups can\'t be used for access control. Use roles '
+                'for permissions and access control, add groups to '
+                'them.'
+            ),
+            'no_results_title': _('There are no user groups'),
+            'title': _('Groups'),
+        }
 
 
 class GroupDeleteView(SingleObjectDeleteView):
@@ -244,6 +261,15 @@ class UserListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_user_setup,
+            'no_results_main_link': link_user_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'User accounts can be create from this view. After creating '
+                'an user account you will prompted to set a password for it. '
+            ),
+            'no_results_title': _('There are no user accounts'),
             'title': _('Users'),
         }
 

@@ -6,6 +6,7 @@ from documents.permissions import permission_document_view
 from navigation import Link
 
 from .icons import (
+    icon_smart_link_condition_create, icon_smart_link_create,
     icon_smart_link_instances_for_document, icon_smart_link_setup
 )
 from .permissions import (
@@ -14,8 +15,9 @@ from .permissions import (
 )
 
 link_smart_link_condition_create = Link(
-    args='object.pk', permissions=(permission_smart_link_edit,),
-    text=_('Create condition'), view='linking:smart_link_condition_create',
+    args='object.pk', icon_class=icon_smart_link_condition_create,
+    permissions=(permission_smart_link_edit,), text=_('Create condition'),
+    view='linking:smart_link_condition_create',
 )
 link_smart_link_condition_delete = Link(
     args='resolved_object.pk', permissions=(permission_smart_link_edit,),
@@ -31,6 +33,7 @@ link_smart_link_condition_list = Link(
     text=_('Conditions'), view='linking:smart_link_condition_list',
 )
 link_smart_link_create = Link(
+    icon_class=icon_smart_link_create,
     permissions=(permission_smart_link_create,),
     text=_('Create new smart link'), view='linking:smart_link_create'
 )

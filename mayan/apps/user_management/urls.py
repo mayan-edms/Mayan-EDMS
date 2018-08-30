@@ -14,7 +14,7 @@ from .views import (
 
 urlpatterns = [
     url(r'^group/list/$', GroupListView.as_view(), name='group_list'),
-    url(r'^group/add/$', GroupCreateView.as_view(), name='group_add'),
+    url(r'^group/create/$', GroupCreateView.as_view(), name='group_create'),
     url(
         r'^group/(?P<pk>\d+)/edit/$', GroupEditView.as_view(),
         name='group_edit'
@@ -29,7 +29,7 @@ urlpatterns = [
     ),
 
     url(r'^user/list/$', UserListView.as_view(), name='user_list'),
-    url(r'^user/add/$', UserCreateView.as_view(), name='user_add'),
+    url(r'^user/create/$', UserCreateView.as_view(), name='user_create'),
     url(r'^user/(?P<pk>\d+)/edit/$', UserEditView.as_view(), name='user_edit'),
     url(
         r'^user/(?P<pk>\d+)/delete/$', UserDeleteView.as_view(),

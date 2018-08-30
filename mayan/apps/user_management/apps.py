@@ -17,8 +17,8 @@ from rest_api.fields import DynamicSerializerField
 
 from .handlers import handler_initialize_new_user_options
 from .links import (
-    link_group_add, link_group_delete, link_group_edit, link_group_list,
-    link_group_members, link_group_setup, link_user_add, link_user_delete,
+    link_group_create, link_group_delete, link_group_edit, link_group_list,
+    link_group_members, link_group_setup, link_user_create, link_user_delete,
     link_user_edit, link_user_groups, link_user_list,
     link_user_multiple_delete, link_user_multiple_set_password,
     link_user_set_options, link_user_set_password, link_user_setup
@@ -128,17 +128,17 @@ class UserManagementApp(MayanAppConfig):
             ), sources=(User,)
         )
         menu_secondary.bind_links(
-            links=(link_group_list, link_group_add), sources=(
+            links=(link_group_list, link_group_create), sources=(
                 'user_management:group_multiple_delete',
-                'user_management:group_list', 'user_management:group_add',
+                'user_management:group_list', 'user_management:group_create',
                 Group
             )
         )
         menu_secondary.bind_links(
-            links=(link_user_list, link_user_add), sources=(
+            links=(link_user_list, link_user_create), sources=(
                 User, 'user_management:user_multiple_set_password',
                 'user_management:user_multiple_delete',
-                'user_management:user_list', 'user_management:user_add'
+                'user_management:user_list', 'user_management:user_create'
             )
         )
         menu_setup.bind_links(links=(link_user_setup, link_group_setup))

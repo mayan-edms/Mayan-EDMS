@@ -66,6 +66,14 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_workflow_list,
+            'no_results_text': _(
+                'Assign workflows to the document type of this document '
+                'to have this document execute those workflows. '
+            ),
+            'no_results_title': _(
+                'There are no workflow for this document'
+            ),
             'object': self.get_document(),
             'title': _(
                 'Workflows for document: %s'
@@ -164,7 +172,7 @@ class SetupWorkflowListView(SingleObjectListView):
                 'current state to a new one.'
             ),
             'no_results_title': _(
-                'No workflows have been defined.'
+                'No workflows have been defined'
             ),
             'title': _('Workflows'),
         }
@@ -356,12 +364,12 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
                     }
                 )
             ),
-            'no_results_title': _(
-                'There are no actions for this workflow state.'
-            ),
             'no_results_text': _(
                 'Workflow state actions are macros that get executed when '
                 'enters or leaves the state in which they reside.'
+            ),
+            'no_results_title': _(
+                'There are no actions for this workflow state'
             ),
             'object': self.get_workflow_state(),
             'title': _(
@@ -710,12 +718,12 @@ class WorkflowDocumentListView(DocumentListView):
         context = super(WorkflowDocumentListView, self).get_extra_context()
         context.update(
             {
-                'no_results_title': _(
-                    'There are documents executing this workflow'
-                ),
                 'no_results_text': _(
                     'Associate a workflow with some document types and '
                     'documents of those types will be listed in this view.'
+                ),
+                'no_results_title': _(
+                    'There are no documents executing this workflow'
                 ),
                 'object': self.workflow,
                 'title': _('Documents with the workflow: %s') % self.workflow
@@ -783,11 +791,11 @@ class WorkflowStateListView(SingleObjectListView):
                     self.request, {'object': self.get_workflow()}
                 )
             ),
-            'no_results_title': _(
-                'This workflow doesn\'t have any state.'
-            ),
             'no_results_text': _(
                 'Create states and link them using transitions.'
+            ),
+            'no_results_title': _(
+                'This workflow doesn\'t have any state'
             ),
             'object': self.get_workflow(),
             'title': _('States of workflow: %s') % self.get_workflow()

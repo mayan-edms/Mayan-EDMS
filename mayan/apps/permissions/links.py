@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 from user_management.permissions import permission_group_edit
 
-from .icons import icon_role_list
+from .icons import icon_role_create, icon_role_list
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
     permission_role_create, permission_role_delete, permission_role_edit,
@@ -25,8 +25,8 @@ link_permission_revoke = Link(
     view='permissions:permission_multiple_revoke'
 )
 link_role_create = Link(
-    permissions=(permission_role_create,), text=_('Create new role'),
-    view='permissions:role_create'
+    icon_class=icon_role_create, permissions=(permission_role_create,),
+    text=_('Create new role'), view='permissions:role_create'
 )
 link_role_delete = Link(
     args='object.id', permissions=(permission_role_delete,), tags='dangerous',

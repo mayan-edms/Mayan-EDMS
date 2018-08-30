@@ -34,6 +34,7 @@ from ..forms import (
 )
 from ..icons import (
     icon_document_list_deleted, icon_document_list_favorites,
+    icon_document_list_recent_access, icon_document_list_recent_added,
     icon_duplicated_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
@@ -223,11 +224,8 @@ class DocumentDuplicatesListView(DocumentListView):
             {
                 'no_results_icon': icon_duplicated_document_list,
                 'no_results_text': _(
-                    'Duplicates are documents that are composed of the exact '
-                    'same file, down to the last byte. Files that have the '
-                    'same text or OCR but are not identical or were saved '
-                    'using a different file format will not appear as '
-                    'duplicates.'
+                    'Only exact copies of this document will be shown in the '
+                    'this list.'
                 ),
                 'no_results_title': _(
                     'There are no duplicates for this document'
@@ -835,6 +833,17 @@ class DuplicatedDocumentListView(DocumentListView):
                         )
                     },
                 ),
+                'no_results_icon': icon_duplicated_document_list,
+                'no_results_text': _(
+                    'Duplicates are documents that are composed of the exact '
+                    'same file, down to the last byte. Files that have the '
+                    'same text or OCR but are not identical or were saved '
+                    'using a different file format will not appear as '
+                    'duplicates.'
+                ),
+                'no_results_title': _(
+                    'There are no duplicated documents'
+                ),
                 'title': _('Duplicated documents')
             }
         )
@@ -931,6 +940,14 @@ class RecentAccessDocumentListView(DocumentListView):
         context = super(RecentAccessDocumentListView, self).get_extra_context()
         context.update(
             {
+                'no_results_icon': icon_document_list_recent_access,
+                'no_results_text': _(
+                    'This view will list the latest documents viewed or '
+                    'manipulated in any way by this user account.'
+                ),
+                'no_results_title': _(
+                    'There are no recently accessed document'
+                ),
                 'title': _('Recently accessed'),
             }
         )
@@ -947,6 +964,14 @@ class RecentAddedDocumentListView(DocumentListView):
         context = super(RecentAddedDocumentListView, self).get_extra_context()
         context.update(
             {
+                'no_results_icon': icon_document_list_recent_added,
+                'no_results_text': _(
+                    'This view will list the latest documents uploaded '
+                    'in the system.'
+                ),
+                'no_results_title': _(
+                    'There are no recently added document'
+                ),
                 'title': _('Recently added'),
             }
         )

@@ -4,16 +4,18 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
-from .icons import icon_group_setup, icon_user_setup
+from .icons import (
+    icon_group_create, icon_group_setup, icon_user_create, icon_user_setup
+)
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
 
-link_group_add = Link(
-    permissions=(permission_group_create,), text=_('Create new group'),
-    view='user_management:group_add'
+link_group_create = Link(
+    icon_class=icon_group_create, permissions=(permission_group_create,),
+    text=_('Create new group'), view='user_management:group_create'
 )
 link_group_delete = Link(
     args='object.id', permissions=(permission_group_delete,), tags='dangerous',
@@ -35,9 +37,9 @@ link_group_setup = Link(
     icon_class=icon_group_setup, permissions=(permission_group_view,),
     text=_('Groups'), view='user_management:group_list'
 )
-link_user_add = Link(
-    permissions=(permission_user_create,), text=_('Create new user'),
-    view='user_management:user_add'
+link_user_create = Link(
+    icon_class=icon_user_create, permissions=(permission_user_create,),
+    text=_('Create new user'), view='user_management:user_create'
 )
 link_user_delete = Link(
     args='object.id', permissions=(permission_user_delete,), tags='dangerous',

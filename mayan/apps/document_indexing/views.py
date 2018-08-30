@@ -109,7 +109,12 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
             'object': self.get_object(),
             'title': _(
                 'Document types linked to index: %s'
-            ) % self.get_object()
+            ) % self.get_object(),
+            'subtitle': _(
+                'Only the documents of the types selected will be shown '
+                'in the index when built. Only the events of the documents '
+                'of the types select will trigger updates in the index.'
+            ),
         }
 
     def get_object(self):
@@ -339,6 +344,15 @@ class DocumentIndexNodeListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_index,
+            'no_results_text': _(
+                'Assign the document type of this document '
+                'to an index to have it appear in instances of '
+                'those indexes organization units. '
+            ),
+            'no_results_title': _(
+                'This document is not in any index'
+            ),
             'object': self.get_document(),
             'title': _(
                 'Indexes nodes containing document: %s'

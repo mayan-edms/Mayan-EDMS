@@ -4,6 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,6 +18,8 @@ from documents.permissions import permission_document_view
 from documents.views import DocumentListView
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
+from .icons import icon_smart_link_setup, icon_smart_link_condition
+from .links import link_smart_link_create, link_smart_link_condition_create
 from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
     permission_smart_link_create, permission_smart_link_delete,
@@ -129,6 +132,20 @@ class SmartLinkListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_smart_link_setup,
+            'no_results_main_link': link_smart_link_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Indexes group documents into units, usually with similar '
+                'properties and of equal or similar types. Smart links '
+                'allow defining relationships between documents even '
+                'if they are in different indexes and are of different '
+                'types.'
+            ),
+            'no_results_title': _(
+                'There are no smart links'
+            ),
             'title': _('Smart links'),
         }
 
@@ -157,6 +174,15 @@ class DocumentSmartLinkListView(SmartLinkListView):
             'document': self.document,
             'hide_link': True,
             'hide_object': True,
+            'no_results_icon': icon_smart_link_setup,
+            'no_results_text': _(
+                'Smart links allow defining relationships between '
+                'documents even if they are in different indexes and '
+                'are of different types.'
+            ),
+            'no_results_title': _(
+                'There are no smart links for this document'
+            ),
             'object': self.document,
             'title': _('Smart links for document: %s') % self.document,
         }
@@ -203,6 +229,21 @@ class SmartLinkConditionListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_smart_link_condition,
+            'no_results_main_link': link_smart_link_condition_create.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.get_smart_link()
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Conditions are small logic units that when combined '
+                'define how the smart link will behave.'
+            ),
+            'no_results_title': _(
+                'There are no conditions for this smart link'
+            ),
             'object': self.get_smart_link(),
             'title': _(
                 'Conditions for smart link: %s'
