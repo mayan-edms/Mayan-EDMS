@@ -20,7 +20,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def _request_document_content_view(self):
         return self.get(
-            'ocr:document_content', args=(self.document.pk,)
+            'ocr:document_ocr_content', args=(self.document.pk,)
         )
 
     def test_document_content_view_no_permissions(self):
@@ -113,12 +113,14 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
             ),
         )
 
-    def test_document_type_ocr_settings_view_no_permission(self):
-        response = self.get(
+    def _request_document_type_ocr_settings_view(self):
+        return self.get(
             viewname='ocr:document_type_ocr_settings',
             args=(self.document.document_type.pk,)
         )
 
+    def test_document_type_ocr_settings_view_no_permission(self):
+        response = self._request_document_type_ocr_settings_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_type_ocr_settings_view_with_access(self):
@@ -126,9 +128,6 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
             permission=permission_document_type_ocr_setup,
             obj=self.document.document_type
         )
-        response = self.get(
-            viewname='ocr:document_type_ocr_settings',
-            args=(self.document.document_type.pk,)
-        )
+        response = self._request_document_type_ocr_settings_view()
 
         self.assertEqual(response.status_code, 200)
