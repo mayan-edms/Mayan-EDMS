@@ -31,7 +31,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
 
     def _request_user_create_view(self):
         return self.post(
-            viewname='user_management:user_add', data={
+            viewname='user_management:user_create', data={
                 'username': TEST_USER_2_USERNAME
             }
         )
