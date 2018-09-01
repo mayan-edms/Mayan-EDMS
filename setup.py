@@ -62,6 +62,7 @@ PyYAML==3.13
 celery==3.1.24
 django-activity-stream==0.6.5
 django-autoadmin==1.1.1
+django-celery==3.2.1
 django-colorful==1.2
 django-cors-headers==2.2.0
 django-downloadview==1.9
@@ -125,10 +126,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
     ],
-    description='Free Open Source Electronic Document Management System',
-    dependency_links=[
-        "https://github.com/mayan-edms/django-celery/zipball/master#egg=django-celery"
-    ],
+    description=mayan.__description__,
     include_package_data=True,
     install_requires=install_requires,
     license='Apache 2.0',

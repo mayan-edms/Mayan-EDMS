@@ -64,6 +64,8 @@ class Command(management.BaseCommand):
             )
         )
 
+        management.call_command('purgeperiodictasks')
+
         management.call_command(
             'dumpdata', all=True, database=options['from'],
             natural_primary=True, natural_foreign=True,

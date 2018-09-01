@@ -5,8 +5,7 @@ celery==3.1.24
 
 django-activity-stream==0.6.5
 django-autoadmin==1.1.1
-#django-celery==3.2.1 - Use fork below until patch https://github.com/celery/django-celery/pull/552 is accepted.
-https://github.com/mayan-edms/django-celery/zipball/master#egg=django-celery
+django-celery==3.2.1
 django-colorful==1.2
 django-cors-headers==2.2.0
 django-downloadview==1.9
