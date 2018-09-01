@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
-from .icons import icon_transformation
+from .icons import icon_transformation, icon_transformation_create
 from .permissions import (
     permission_transformation_create, permission_transformation_delete,
     permission_transformation_edit, permission_transformation_view
@@ -31,6 +31,7 @@ def get_kwargs_factory(variable_name):
 
 
 link_transformation_create = Link(
+    icon_class = icon_transformation_create,
     kwargs=get_kwargs_factory('content_object'),
     permissions=(permission_transformation_create,),
     text=_('Create new transformation'), view='converter:transformation_create'

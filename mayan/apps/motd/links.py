@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link, get_cascade_condition
 from permissions import Permission
 
-from .icons import icon_message_list
+from .icons import icon_message_create, icon_message_list
 from .permissions import (
     permission_message_create, permission_message_delete,
     permission_message_edit, permission_message_view
@@ -15,8 +15,8 @@ from .permissions import (
 
 
 link_message_create = Link(
-    permissions=(permission_message_create,), text=_('Create message'),
-    view='motd:message_create'
+    icon_class=icon_message_create, permissions=(permission_message_create,),
+    text=_('Create message'), view='motd:message_create'
 )
 link_message_delete = Link(
     args='object.pk', permissions=(permission_message_delete,),

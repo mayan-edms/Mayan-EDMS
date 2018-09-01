@@ -33,9 +33,9 @@ from ..forms import (
     DocumentTypeSelectForm,
 )
 from ..icons import (
-    icon_document_list_deleted, icon_document_list_favorites,
-    icon_document_list_recent_access, icon_document_list_recent_added,
-    icon_duplicated_document_list
+    icon_document_list, icon_document_list_deleted,
+    icon_document_list_favorites, icon_document_list_recent_access,
+    icon_document_list_recent_added, icon_duplicated_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import (
@@ -73,6 +73,13 @@ class DocumentListView(SingleObjectListView):
         return {
             'hide_links': True,
             'list_as_items': True,
+            'no_results_icon': icon_document_list,
+            'no_results_text': _(
+                'This could mean that no documents have been uploaded or '
+                'that your user account has not been granted the view '
+                'permission for any document or document type.'
+            ),
+            'no_results_title': _('No documents available'),
             'title': _('All documents'),
         }
 

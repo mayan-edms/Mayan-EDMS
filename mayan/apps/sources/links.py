@@ -8,7 +8,9 @@ from documents.permissions import (
 )
 from navigation import Link
 
-from .icons import icon_document_create_multiple, icon_setup_sources
+from .icons import (
+    icon_document_create_multiple, icon_setup_sources, icon_source_create
+)
 from .literals import (
     SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
     SOURCE_CHOICE_SANE_SCANNER, SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH
@@ -55,32 +57,32 @@ link_setup_sources = Link(
     view='sources:setup_source_list'
 )
 link_setup_source_create_imap_email = Link(
-    args='"%s"' % SOURCE_CHOICE_EMAIL_IMAP,
+    args='"%s"' % SOURCE_CHOICE_EMAIL_IMAP, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new IMAP email'), view='sources:setup_source_create',
 )
 link_setup_source_create_pop3_email = Link(
-    args='"%s"' % SOURCE_CHOICE_EMAIL_POP3,
+    args='"%s"' % SOURCE_CHOICE_EMAIL_POP3, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new POP3 email'), view='sources:setup_source_create',
 )
 link_setup_source_create_staging_folder = Link(
-    args='"%s"' % SOURCE_CHOICE_STAGING,
+    args='"%s"' % SOURCE_CHOICE_STAGING, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new staging folder'), view='sources:setup_source_create',
 )
 link_setup_source_create_watch_folder = Link(
-    args='"%s"' % SOURCE_CHOICE_WATCH,
+    args='"%s"' % SOURCE_CHOICE_WATCH, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new watch folder'), view='sources:setup_source_create',
 )
 link_setup_source_create_webform = Link(
-    args='"%s"' % SOURCE_CHOICE_WEB_FORM,
+    args='"%s"' % SOURCE_CHOICE_WEB_FORM, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new webform source'), view='sources:setup_source_create',
 )
 link_setup_source_create_sane_scanner = Link(
-    args='"%s"' % SOURCE_CHOICE_SANE_SCANNER,
+    args='"%s"' % SOURCE_CHOICE_SANE_SCANNER, icon_class=icon_source_create,
     permissions=(permission_sources_setup_create,),
     text=_('Add new SANE scanner'), view='sources:setup_source_create',
 )

@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,6 +11,8 @@ from common.views import (
     SingleObjectListView
 )
 
+from .icons import icon_message_list
+from .links import link_message_create
 from .models import Message
 from .permissions import (
     permission_message_create, permission_message_delete,
@@ -63,5 +66,15 @@ class MessageListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_message_list,
+            'no_results_main_link': link_message_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Messages are displayed in the login view. You can use '
+                'messages to convery information about your organzation, '
+                'announcements or usage guidelines for your users.'
+            ),
+            'no_results_title': _('No messages available'),
             'title': _('Messages'),
         }

@@ -16,10 +16,11 @@ from .icons import (
     icon_document_page_return, icon_document_page_rotate_left,
     icon_document_page_rotate_right, icon_document_page_zoom_in,
     icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
-    icon_document_properties, icon_document_type_setup,
-    icon_document_type_filename_create, icon_document_version_list,
-    icon_document_version_return_document, icon_document_version_return_list,
-    icon_duplicated_document_list, icon_duplicated_document_scan
+    icon_document_properties, icon_document_type_create,
+    icon_document_type_filename_create, icon_document_type_setup,
+    icon_document_version_list, icon_document_version_return_document,
+    icon_document_version_return_list, icon_duplicated_document_list,
+    icon_duplicated_document_scan
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -313,6 +314,7 @@ link_document_version_revert = Link(
 
 # Document type related links
 link_document_type_create = Link(
+    icon_class=icon_document_type_create,
     permissions=(permission_document_type_create,),
     text=_('Create document type'), view='documents:document_type_create'
 )

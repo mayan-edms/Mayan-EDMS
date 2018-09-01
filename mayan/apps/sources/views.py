@@ -5,6 +5,7 @@ import logging
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text, uri_to_iri
 from django.utils.translation import ugettext_lazy as _
@@ -30,8 +31,14 @@ from .exceptions import SourceException
 from .forms import (
     NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
-from .icons import icon_upload_view_link
+from .icons import icon_log, icon_setup_sources, icon_upload_view_link
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
+from .links import (
+    link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
+    link_setup_source_create_staging_folder,
+    link_setup_source_create_watch_folder, link_setup_source_create_webform,
+    link_setup_source_create_sane_scanner
+)
 from .models import (
     InteractiveSource, Source, SaneScanner, StagingFolderSource
 )
@@ -52,6 +59,12 @@ class SourceLogListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_log,
+            'no_results_text': _(
+                'Any error produced during the usage of a source will be '
+                'listed here to assist in debugging.'
+            ),
+            'no_results_title': _('No log entries available'),
             'object': self.get_source(),
             'title': _('Log entries for source: %s') % self.get_source(),
         }
@@ -565,21 +578,51 @@ class SetupSourceEditView(SingleObjectEditView):
 
 
 class SetupSourceListView(SingleObjectListView):
-    extra_context = {
-        'extra_columns': (
-            {
-                'name': _('Type'),
-                'attribute': encapsulate(lambda entry: entry.class_fullname())
-            },
-            {
-                'name': _('Enabled'),
-                'attribute': encapsulate(
-                    lambda entry: TwoStateWidget(state=entry.enabled).render()
-                )
-            },
-        ),
-        'hide_link': True,
-        'title': _('Sources'),
-    }
     queryset = Source.objects.select_subclasses()
     view_permission = permission_sources_setup_view
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Type'),
+                    'attribute': encapsulate(lambda entry: entry.class_fullname())
+                },
+                {
+                    'name': _('Enabled'),
+                    'attribute': encapsulate(
+                        lambda entry: TwoStateWidget(state=entry.enabled).render()
+                    )
+                },
+            ),
+            'hide_link': True,
+            'no_results_icon': icon_setup_sources,
+            'no_results_secondary_links': [
+                link_setup_source_create_webform.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+                link_setup_source_create_imap_email.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+                link_setup_source_create_pop3_email.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+                link_setup_source_create_sane_scanner.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+                link_setup_source_create_staging_folder.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+                link_setup_source_create_watch_folder.resolve(
+                    context=RequestContext(request=self.request)
+                ),
+            ],
+            'no_results_text': _(
+                'Sources provide the means to upload documents. '
+                'Some sources like the webform, are interactive and require '
+                'user input to operate. Others like the email sources, are '
+                'automatic and run on the background without user intervention.'
+            ),
+            'no_results_title': _('No sources available'),
+            'title': _('Sources'),
+        }

@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
@@ -18,7 +19,8 @@ from .forms import (
     DocumentMailForm, UserMailerBackendSelectionForm, UserMailerDynamicForm,
     UserMailerTestForm
 )
-from .icons import icon_mail_document_submit
+from .icons import icon_mail_document_submit, icon_user_mailer_setup
+from .links import link_user_mailer_create
 from .models import LogEntry, UserMailer
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
@@ -213,12 +215,24 @@ class UserMailerLogEntryListView(SingleObjectListView):
 
 
 class UserMailerListView(SingleObjectListView):
-    extra_context = {
-        'hide_object': True,
-        'title': _('Mailing profile'),
-    }
     model = UserMailer
     object_permission = permission_user_mailer_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_user_mailer_setup,
+            'no_results_main_link': link_user_mailer_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Mailing profiles are email configurations. '
+                'Mailing profiles are used to send documents '
+                'via email.'
+            ),
+            'no_results_title': _('No mailing profiles available'),
+            'title': _('Mailing profile'),
+        }
 
     def get_form_schema(self):
         return {'fields': self.get_backend().fields}

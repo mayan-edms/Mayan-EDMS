@@ -15,9 +15,12 @@ from common.generics import (
 
 from ..forms import DocumentTypeFilenameForm_create
 from ..icons import (
-    icon_document_type_filename, icon_document_type_filename_create
+    icon_document_type_filename, icon_document_type_filename_create,
+    icon_document_type_setup
 )
-from ..links import link_document_type_filename_create
+from ..links import (
+    link_document_type_create, link_document_type_filename_create
+)
 from ..models import DocumentType, DocumentTypeFilename
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
@@ -54,6 +57,18 @@ class DocumentTypeListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'no_results_icon': icon_document_type_setup,
+            'no_results_main_link': link_document_type_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Document types are the most basic units of configuration. '
+                'Everything in the system will depend on them. '
+                'Define a document type for each type of physical '
+                'document you intend to upload. Example document types: '
+                'invoice, receipt, manual, prescription, balance sheet.'
+            ),
+            'no_results_title': _('No document types available'),
             'title': _('Document types'),
         }
 
