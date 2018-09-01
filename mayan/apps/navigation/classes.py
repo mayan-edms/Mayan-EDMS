@@ -77,7 +77,7 @@ class Menu(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, name, condition=None, icon=None, icon_class=None, label=None):
+    def __init__(self, name, condition=None, icon=None, icon_class=None, label=None, non_sorted_sources=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
@@ -90,6 +90,7 @@ class Menu(object):
         self.unbound_links = {}
         self.link_positions = {}
         self.__class__._registry[name] = self
+        self.non_sorted_sources = non_sorted_sources or []
 
     def _map_links_to_source(self, links, source, map_variable='bound_links', position=None):
         source_links = getattr(self, map_variable).setdefault(source, [])
@@ -97,6 +98,9 @@ class Menu(object):
         for link in links:
             source_links.append(link)
             self.link_positions[link] = position
+
+    def add_unsorted_source(self, source):
+        self.non_sorted_sources.append(source)
 
     def check_condition(self, context):
         """
@@ -250,7 +254,14 @@ class Menu(object):
             result.append(resolved_links)
 
         if result:
-            if sort_results:
+            unsorted_source = False
+            for resolved_navigation_object in resolved_navigation_object_list:
+                for source in self.non_sorted_sources:
+                    if isinstance(resolved_navigation_object, source):
+                        unsorted_source = True
+                        break;
+
+            if sort_results and not unsorted_source:
                 result[0] = sorted(
                     result[0], key=lambda item: (
                         item.link.text if isinstance(item, ResolvedLink) else item.label

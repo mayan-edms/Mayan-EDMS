@@ -518,6 +518,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document pages
+        menu_facet.add_unsorted_source(source=DocumentPage)
         menu_facet.bind_links(
             links=(
                 link_document_page_rotate_left,
