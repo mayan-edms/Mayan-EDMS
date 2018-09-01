@@ -14,3 +14,8 @@ def get_choice_value(field):
         return ', '.join([subwidget.data['label'] for subwidget in field.subwidgets if subwidget.data['selected']])
     except KeyError:
         return _('None')
+
+
+@register.filter
+def get_form_media_js(form):
+    return [form.media.absolute_path(path) for path in form.media._js]

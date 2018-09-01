@@ -3,7 +3,9 @@
 
 {% include 'appearance/generic_multiform_subtemplate.html' %}
 
-<script type="text/javascript" src="{% url 'common:javascript_catalog' 'sources' %}"></script>
+<script>
+    $.getScript( "{% url 'common:javascript_catalog' 'sources' %}" );
+</script>
 
 <script type="text/x-template" id="previewTemplate">
     <div class="dz-preview dz-file-preview">
@@ -39,25 +41,29 @@
 </script>
 
 <script>
-    jQuery(document).ready(function() {
-        var previewTemplate = document.querySelector('#previewTemplate').innerHTML;
+    $.getScript( "{% static 'sources/node_modules/dropzone/dist/dropzone.js' %}" )
+        .done(function( script, textStatus ) {
+            Dropzone.autoDiscover = false;
+            jQuery(document).ready(function() {
+                var previewTemplate = document.querySelector('#previewTemplate').innerHTML;
 
-        {% verbatim %}
-            $('.dropzone').dropzone({
-                addRemoveLinks: true,
-                createImageThumbnails: false,
-                dictCancelUpload: gettext('Cancel upload'),
-                dictCancelUploadConfirmation: gettext('Are you sure you want to cancel this upload?'),
-                dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + gettext('Drop files or click here to upload files'),
-                dictFallbackMessage: gettext('Your browser does not support drag\'n\'drop file uploads.'),
-                dictFallbackText: gettext('Please use the fallback form below to upload your files like in the olden days.'),
-                dictRemoveFile: gettext('Clear'),
-                dictResponseError: gettext('Server responded with {{statusCode}} code.'),
-                paramName: 'source-file',
-                previewTemplate: previewTemplate,
-                timeout: 1200000
+                {% verbatim %}
+                    $('.dropzone').dropzone({
+                        addRemoveLinks: true,
+                        createImageThumbnails: false,
+                        dictCancelUpload: gettext('Cancel upload'),
+                        dictCancelUploadConfirmation: gettext('Are you sure you want to cancel this upload?'),
+                        dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + gettext('Drop files or click here to upload files'),
+                        dictFallbackMessage: gettext('Your browser does not support drag\'n\'drop file uploads.'),
+                        dictFallbackText: gettext('Please use the fallback form below to upload your files like in the olden days.'),
+                        dictRemoveFile: gettext('Clear'),
+                        dictResponseError: gettext('Server responded with {{statusCode}} code.'),
+                        paramName: 'source-file',
+                        previewTemplate: previewTemplate,
+                        timeout: 1200000
+                    });
+                {% endverbatim %}
             });
-        {% endverbatim %}
-    });
+        });
 </script>
 

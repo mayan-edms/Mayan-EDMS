@@ -29,28 +29,30 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static 'cabinets/packages/jstree/dist/jstree.min.js' %}"></script>
     <script>
-        $(function () {
-            var jstreeElement = $('.jstree');
+        $.getScript( "{% static 'cabinets/packages/jstree/dist/jstree.min.js' %}" )
+            .done(function( script, textStatus ) {
+            $(function () {
+                var jstreeElement = $('.jstree');
 
-            jstreeElement
-                .on('select_node.jstree', function (e, data) {
-                    if(data.selected.length) {
-                        partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
-                    }
-                })
-                .jstree({
-                    'core' : {
-                        'data' : [
-                            {{ jstree_data|safe }}
-
-                        ],
-                        'themes' : {
-                            'responsive' : true,
+                jstreeElement
+                    .on('select_node.jstree', function (e, data) {
+                        if(data.selected.length) {
+                            partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
                         }
-                    },
+                    })
+                    .jstree({
+                        'core' : {
+                            'data' : [
+                                {{ jstree_data|safe }}
+
+                            ],
+                            'themes' : {
+                                'responsive' : true,
+                            }
+                        },
+                    });
                 });
-        });
+            });
     </script>
 {% endblock %}

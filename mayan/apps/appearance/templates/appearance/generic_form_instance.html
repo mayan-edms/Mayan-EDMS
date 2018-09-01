@@ -4,7 +4,7 @@
 
 {% load appearance_tags %}
 
-{{ form.media|safe }}
+{{ form.media.render_css|safe }}
 
 {% for group, errors in form.errors.items %}
     {% for error in errors %}
@@ -116,3 +116,9 @@
             </div>
         {% endfor %}
 {% endif %}
+
+<script>
+    {% for script in form|get_form_media_js %}
+        $.getScript('{{ script }}');
+    {% endfor %}
+</script>
