@@ -6,14 +6,6 @@ from smart_settings import Namespace
 
 namespace = Namespace(name='ocr', label=_('OCR'))
 
-setting_pdftotext_path = namespace.add_setting(
-    global_name='OCR_PDFTOTEXT_PATH', default='/usr/bin/pdftotext',
-    help_text=_(
-        'File path to poppler\'s pdftotext program used to extract text '
-        'from PDF files.'
-    ),
-    is_path=True
-)
 setting_ocr_backend = namespace.add_setting(
     global_name='OCR_BACKEND', default='ocr.backends.pyocr.PyOCR',
     help_text=_('Full path to the backend to be used to do OCR.')

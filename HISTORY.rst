@@ -2,12 +2,7 @@
 ================
 - Improve database vendor migration support
 - Add convertdb management command.
-- Fix crop transformation argument parsing. Thanks to Jordan Wages
-  (@wagesj45). Closes GitLab issue #490
 - Add error checking to the crop transformation arguments.
-- Fix post login redirection to honor the ?next= URL query string
-  argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
-  issue #489.
 - Update dropzone.js' timeout from 30 seconds to 120 to allow upload
   of large files on slow connections.
 - Increase gunicorn's timeout from 30 seconds to 120.
@@ -126,6 +121,8 @@
 - The document type parsing setup permission can now be granted for
   individual document types.
 - Add link to view a specific page's OCR content.
+- Remove the duplicated setting pdftotext_path from the OCR path.
+  This is now handled by the document parsing app.
 
 3.0.3 (2018-08-17)
 ==================
