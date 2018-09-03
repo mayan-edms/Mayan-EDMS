@@ -678,17 +678,18 @@ class WorkflowListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_workflow_list,
             'no_results_main_link': link_setup_workflow_create.resolve(
                 context=RequestContext(
                     self.request, {}
                 )
             ),
-            'no_results_title': _('There are no workflows'),
             'no_results_text': _(
                 'Create some workflows and associated them with a document '
                 'type. Active workflows will be shown here and the documents '
                 'for which they are executing.'
             ),
+            'no_results_title': _('There are no workflows'),
             'title': _('Workflows'),
         }
 
