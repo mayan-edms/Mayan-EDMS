@@ -123,6 +123,7 @@
 - Add link to view a specific page's OCR content.
 - Remove the duplicated setting pdftotext_path from the OCR path.
   This is now handled by the document parsing app.
+- Implement partial refresh of the main menu.
 
 3.0.3 (2018-08-17)
 ==================

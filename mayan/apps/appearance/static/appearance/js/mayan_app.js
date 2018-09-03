@@ -105,6 +105,19 @@ class MayanApp {
       });
     }
 
+    doRefreshMainMenu () {
+        console.log('doRefreshMainMenu');
+        $.ajax({
+            complete: function() {
+                setTimeout(app.doRefreshMainMenu, 5000);
+            },
+            success: function(data) {
+                $('#main-menu').html(data);
+            },
+            url: '/main_menu',
+        });
+    }
+
     doToastrMessages () {
         toastr.options = {
             'closeButton': true,
@@ -183,6 +196,7 @@ class MayanApp {
         this.setupItemsSelector();
         this.setupNavbarCollapse();
         this.setupNewWindowAnchor();
+        this.doRefreshMainMenu();
         partialNavigation.initialize();
     }
 

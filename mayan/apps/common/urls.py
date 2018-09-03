@@ -7,9 +7,10 @@ from .api_views import APIContentTypeList
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, HomeView, LicenseView, ObjectErrorLogEntryListClearView,
-    ObjectErrorLogEntryListView, PackagesLicensesView, RootView, SetupListView,
-    ToolsListView, multi_object_action_view
+    FaviconRedirectView, HomeView, LicenseView, MainMenuView,
+    ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
+    PackagesLicensesView, RootView, SetupListView, ToolsListView,
+    multi_object_action_view
 )
 
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
         name='check_version_view'
     ),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
+    url(r'^main_menu/$', MainMenuView.as_view(), name='main_menu_view'),
     url(
         r'^packages/licenses/$', PackagesLicensesView.as_view(),
         name='packages_licenses_view'
