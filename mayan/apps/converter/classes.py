@@ -213,14 +213,14 @@ class ConverterBase(object):
         if not self.image:
             self.seek(0)
 
-        self.image = transformation.execute_on(self.image)
+        self.image = transformation.execute_on(image=self.image)
 
     def transform_many(self, transformations):
         if not self.image:
             self.seek(0)
 
         for transformation in transformations:
-            self.image = transformation.execute_on(self.image)
+            self.image = transformation.execute_on(image=self.image)
 
     def get_page_count(self):
         try:
