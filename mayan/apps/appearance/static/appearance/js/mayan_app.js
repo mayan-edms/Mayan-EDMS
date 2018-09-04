@@ -105,16 +105,19 @@ class MayanApp {
       });
     }
 
-    doRefreshMainMenu () {
-        console.log('doRefreshMainMenu');
+    doRefreshMainMenu (options) {
         $.ajax({
             complete: function() {
-                setTimeout(app.doRefreshMainMenu, 5000);
+                setTimeout(app.doRefreshMainMenu, options.interval, options);
             },
             success: function(data) {
-                $('#main-menu').html(data);
+                var $elements = $('.dropdown.open');
+                if ($elements.length === 0) {
+                    // Don't refresh the HTML if there are open dropdowns
+                    $('#main-menu').html(data);
+                }
             },
-            url: '/main_menu',
+            url: options.url,
         });
     }
 
@@ -196,7 +199,10 @@ class MayanApp {
         this.setupItemsSelector();
         this.setupNavbarCollapse();
         this.setupNewWindowAnchor();
-        this.doRefreshMainMenu();
+        this.doRefreshMainMenu({
+            interval: 5000,
+            url: '/main_menu'
+        });
         partialNavigation.initialize();
     }
 
