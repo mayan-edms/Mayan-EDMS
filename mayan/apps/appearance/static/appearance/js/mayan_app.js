@@ -6,6 +6,8 @@ class MayanApp {
 
         parameters = parameters || {}
 
+        this.ajaxSpinnerSeletor = '#ajax-spinner';
+        this.ajaxExecuting = false;
         this.window = $(window);
     }
 
@@ -105,6 +107,12 @@ class MayanApp {
       });
     }
 
+    callbackAJAXSpinnerUpdate () {
+        if (this.ajaxExecuting) {
+            $(this.ajaxSpinnerSeletor).fadeIn(50);
+        }
+    }
+
     doRefreshMainMenu (options) {
         $.ajax({
             complete: function() {
@@ -112,7 +120,7 @@ class MayanApp {
             },
             success: function(data) {
                 var $elements = $('.dropdown.open');
-                if ($elements.length === 0) {
+                if (($elements.length === 0) && (this.ajaxExecuting === false)) {
                     // Don't refresh the HTML if there are open dropdowns
                     $('#main-menu').html(data);
                 }
@@ -193,7 +201,8 @@ class MayanApp {
     }
 
     initialize () {
-        this.setupAJAXperiodicWorkers();
+        this.setupAJAXPeriodicWorkers();
+        this.setupAJAXSpinner();
         this.setupAutoSubmit();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
@@ -206,7 +215,7 @@ class MayanApp {
         partialNavigation.initialize();
     }
 
-    setupAJAXperiodicWorkers () {
+    setupAJAXPeriodicWorkers () {
         var app = this;
 
         $('a[data-apw-url]').each(function() {
@@ -218,6 +227,26 @@ class MayanApp {
                 callback: $this.data('apw-callback'),
                 element: $this,
                 interval: $this.data('apw-interval'),
+            });
+        });
+    }
+
+    setupAJAXSpinner () {
+        var self = this;
+
+        $(document).ajaxStart(function() {
+            self.ajaxExecuting = true;
+            setTimeout(
+                function () {
+                    self.callbackAJAXSpinnerUpdate();
+                }, 150
+            );
+        });
+
+        $(document).ready(function() {
+            $(document).ajaxStop(function() {
+                $(self.ajaxSpinnerSeletor).fadeOut();
+                self.ajaxExecuting = false;
             });
         });
     }
