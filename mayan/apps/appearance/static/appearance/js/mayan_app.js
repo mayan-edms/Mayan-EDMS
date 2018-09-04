@@ -240,7 +240,7 @@ class MayanApp {
             setTimeout(
                 function () {
                     self.callbackAJAXSpinnerUpdate();
-                }, 150
+                }, 250
             );
         });
 

@@ -2,13 +2,286 @@
 Mayan EDMS v3.1 release notes
 =============================
 
-Released: XX, 2018
+Released: September XX, 2018
 
 What's new
 ==========
 
-- Improve database vendor migration support.
-- Add convertdb management command.
+When one hears the word software bug, one first think of critical errors.
+We might think about data loss, privacy issues or user interface breakage.
+However there is a special kind of "bug" dubbed a "papercut". It is not really
+a bug in the practical sense as it doesn't stop the software from working.
+It doesn't cause data loss or system errors either. It is just somethig the
+software does or doesn't do that is annoying, breaks the flow of
+actions or interfieres with the user experience.
+
+This release as with all others brings all manner of updates to the backend in
+terms of features or improvement to existing feature but also focussed in fixing
+(or at least improving) some of Mayan's "papercuts".
+
+
+Client side caching of images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Mayan EDMS already does extensive caching of content. Currently the caching
+happens on the environment running the Python code. This release adds code
+that allows browsers to cache some of the more used images like thumbnails
+increasing the display speed of frequently used views. We devised a hashing
+method that allow browsers to discard cached images automatically if the
+document representation changes. This allows caching images for as long
+as needed (default is 1 year) while still performing cache invalidation
+without user intervention. The amount of time images are cached in the browser
+is determined by the new ``DOCUMENTS_PAGE_IMAGE_CACHE_TIME`` setting. This
+setting defaults to 31556926 seconds which is equivalent to 1 year.
+
+Web-based setting editing
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Historically since most settings were performed modifying a Python setting file,
+it was impossible or impractical to add a settings editor that worked using the
+web interface. Over the last few versions we have been introducing updates
+to the settings system to make it easier to customize how Mayan works without
+having to learn Python syntax. These changes started first with the introduction
+YAML serialization and then expanded by supporting environment variables.
+With those changes now proven to be reliable we ahve introduced in this version
+the ability to save settings in a YAML file.
+
+This new change allows for three new features that make customizing Mayan a lot easier:
+
+The first feature allow users to create configuration files without using Python
+files (like the historical local.py file). The configuration file is called
+config.yml and resides in the media folder. Just add the setting name in all
+capital letters, followed by a collon sign (:), and a value for that settings.
+Example::
+
+    DOCUMENTS_THUMBNAIL_HEIGHT: ''
+    DOCUMENTS_THUMBNAIL_WIDTH: '800'
+    DOCUMENTS_ZOOM_MAX_LEVEL: 300
+    DOCUMENTS_ZOOM_MIN_LEVEL: 25
+    DOCUMENTS_ZOOM_PERCENT_STEP: 25
+
+The second feature allow users to make changes to the settings options from the
+web interface. Just navigate to [System] -> [Setup] -> [Settings]. Settings are
+grouped by namespaces based on the app of type of system their control.
+To change the default width of thumnails, navigate to [Documents] -> [DOCUMENTS_THUMBNAIL_WIDTH]
+ and click on [Edit] to change the current value. Upon clicking on [Save] the
+ ``config.yml`` will be updated to include this new value. A restart of the installation
+ is required to make the change effective. This is not a Mayan limitation but a
+ design decision of Django, the framework upon which Mayan is built.
+
+The third feature creates a backup configuration file every time the installation
+of Mayan successfully starts. This keeps one backup of the last configuration
+known to be valid. If your installation doesn't start due to an mistake when
+editing one or a multiple settings, execute the ``revertsettings`` command to use
+the backup copy of the last configuration known to be valid and override the
+current invalid configuration file.
+
+Previously viewing settings was an activity reserved for superusers. We've improved
+upon this by adding permissions to view and edit settings. This makes it possible
+to delegate to roles the ability to make configuration changes.
+
+Support was added for changing the ``HOME_VIEW``, ``LOGIN_URL`` and ``LOGIN_REDIRECT_URL``
+from the settings view. These control the URL of the home archor that is located
+on the top left corner of the screen, the URL used to login users and
+the URL where users are taken after login.
+
+Add a new column was added to show if a setting can be changed from the web
+interface or if it can't because that setting has been overrided via an environment
+variable passed from the operating system. Environment variable have presedence
+over changes via the web interface. This is to avoid Mayan administrators to
+go over the settings as configure by the server administrators that made the
+deployment. This settings hierachy is as follows:
+
+1- Python settings file in mayan_settings directory and imported via ``DJANGO_SETTINGS_MODULE``
+   environment variable of the ``--settings=`` option of the ``mayan_edms.py`` executable.
+2- Values passed via environment variables. These are passed using the shell's
+   ``export`` command, by prepending then before calling ``mayan_edms.py`` or by
+   setting the context using something like ``supervisor``. They use the same
+   name as the setting but with the prefix ``MAYAN_``.
+3- The setting as configured in the ``media`` folder with the new ``config.yml`` file.
+   Settings here use the normal name (without the ``MAYAN_`` prefix) and use
+   a YAML syntax.
+4- Setting modified via the new web interface, which upon saved will overrite the
+   ``mayan/config.yml`` file.
+
+Customization
+~~~~~~~~~~~~~
+Along with improvements in the ease of customizing Mayan, we've added more
+even more cutomization options via new settings. We've added the
+``COMMON_PROJECT_TITLE`` setting to allow administrator to change the name of their
+deployments without having to make code changes. We added several base Django
+settings to allow how administrative emails are sent (like the password recovery
+emails). These new settings can be found in their one namespace, named "Django".
+
+Database conversion improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This release adds support for natural keys to many models. This feature
+allows exporting data in a format that is database agnostic so that it can then
+be imported back using a different database engine. With this feature eases
+the migration from SQLite to other database managers like PostgreSQL, MySQL or
+MariaDB.
+
+The export and import can be done using the dumpdata and loadata command or
+the new command convertdb.
+
+Changed settings
+~~~~~~~~~~~~~~~~
+We renamed the setting ``LOCK_MANAGER_DEFAULT_BACKEND`` to ``LOCK_MANAGER_BACKEND``.
+Functionally it exactly the same but the addition of the term 'DEFAULT` was
+confusing users so it was removed.
+
+The ``ALLOWED_HOSTS`` setting was interpreted in a customized way. It is
+now interpreted as a YAML string like the rest of the setting options.
+This means that the previously entry as used in the recommended deployment
+method of::
+
+    MAYAN_ALLOWED_HOSTS="*"
+
+must be updated to::
+
+    MAYAN_ALLOWED_HOSTS='["*"]'
+
+
+Workflow improvements
+~~~~~~~~~~~~~~~~~~~~~
+We fixed an minor issue that prevented actions attached to initial states to
+execute reliably. Similarly we added support for viewing only the events of a
+tag via a new events link for tags.
+
+We added support for subscribing to metadata type events as well as subscribing
+to the events of a tag.
+
+Add new workflow action was added that allows workflows to update the label
+and description of a document. The label and description can use a character
+string or a template. The template is passed the {{ document }} context variable.
+From the {{ document }} variable, properties like metadata and tags are available.
+This allows those properties to be used when changing the label or the
+description of the document.
+
+Event changes
+~~~~~~~~~~~~~
+It is now possible to view the events of a document type via a new events links
+associated to the document type.
+
+New events were added to the documents app. These are document type created
+and document type edited. The metadata app also has new events. These are
+metadata type created, metadata type edited, and metadata type to document type
+relationship update. Events were also added when a document adds, edit or remove
+a metadata field.
+
+Events were added to track the creation and editing of tags.
+
+Permission changes
+~~~~~~~~~~~~~~~~~~
+Add new document indexing permission was added. This permission allow users
+to view an index instance as opposed to the current permission which allows
+viewing an index definition on the setup menu. This new permission allows
+administrators to assing a permission to some roles to edit the index definitions
+while assigning a different permission to other roles to only view the resulting
+evaluation of those indexes. The first is usually assigned to administrative users,
+while the second is assgined to normal users.
+
+ACL support was added to metadata types. This allows fine control delegation of
+metadata definition administration. One role can be given control over some
+metadata types while other roles can control other metadata types.
+
+ACL support was added to the message of the day app. The index rebuild
+permission can now be set as part of the index ACL for each individual index.
+This allow granting the access to rebuild some indexes to specific roles.
+
+Smarter menu and link display
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Support was added to conditionally disable menus. This gives an user a clearer
+idea of the section they can access. Previously menus were always displayed
+even if an user didn't have access to any of the objects in that menu. Now
+when a menu is about to be display, the menu will check the user's access level
+and if the user doesn't have access to see any of the objects in that menu, the
+menu will not be displayed. For example, if an user doesn't have access to create
+tags, the tag create link will not appear. If the user doesn't have access to create
+tags or view any of the existing tags, the entire tag entry on the main menu will
+be removed from view. Most entries in the main menu have been updated to support
+this new feature. For now this feature is mostly used in the main menu, and in the
+Tools and System menus.
+
+Document sorting
+~~~~~~~~~~~~~~~~
+We've been researching methods to provide a way to sort documents via the user
+interface. Efforts continue towards this goal but for the time being we've
+settled on the common request to sort documents by label. This provides a quick
+method to scan documents visually using a custom sorting feature is added.
+
+Transformations
+~~~~~~~~~~~~~~~
+The rotate transformation now has a new argument. This argument is named
+``fillcolor`` and is used to provide a background color to fill the blank areas
+after rotating a document. The arguments uses the web notation of three color
+indicating the red, green and blue components of the color in unit of 0 to 255
+or 0 to FF as hexadecimal is used. For example white is '#FFFFFF', red is
+'#FF0000', green is '#00FF00' and so on.
+
+Link sorting
+~~~~~~~~~~~~
+Another papercut solved was the sorting of the links to help visual scan.
+The action in the multiple document dropdown are now sorted alphabetically.
+This is also true for the actions in the facet, secondary and sidebar sections.
+
+Blanks views and auto documentation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Previously when an user navigated to a view with no results a simple "No results"
+message was displayed. This has now been improved with a new template that will
+display several pices of information. An icon will be displayed to help the user
+identify where they are located in the case of clicking an incorrect link or button.
+Instead of "No results" a more explicit text message will be displayed like
+"No indexes available" or "There are no tags for this document". Third, a short
+description of the object meant to be displayed in that view will be displayed.
+Some messages include a short explanation of how that object works or the steps
+to create and configure it. Lastly a link will be displayed to direct the user
+to the view where they need to create or make changes so that view displays
+something other than a blank template.
+
+This update help users understand what they are supposed to do in specific
+views and act as a built in reference for the terminology used in Mayan.
+
+Password changes
+~~~~~~~~~~~~~~~~
+Some installations allow for demo or read only access. For example some
+installations of Mayan used in governments provide a free read only account
+for citizen access. This feature allow administrators to block the ability of these
+read only accounts to change the password so that they remain available. This new
+feature was added into a user account view accessible via a new user link. It
+can be found in the user list view. Next to each user entry a new button
+called [User options] was added.
+
+Document page view changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+To improve usability after searching for a term a link to examine the OCR of each
+page was added. The link can be found in the [Action] dropdown in the page list
+view or when examining a single document page in the top facet menu next to the
+transformations link.
+
+Dashboard changes
+~~~~~~~~~~~~~~~~~
+The dashboard widget system has been refactored to make it class based. This
+allows developers to subclass the base class for the dashboard widget and more
+easily add their own widget system. The new widget class can also access
+stored templates. A sample numberic dashboard widget is included and a
+corresponding template in ``dashboard/numeric_widget.html``. All the default
+dashboard widgets have been updated to this new interface.
+
+ACL filtering has added to the default widgets. This way users cannot get
+access to the knowledge or the total number documents in the system. The totals
+displayed in the dashboard widgets be updated based on the user's access controls.
+
+Chart changes
+~~~~~~~~~~~~~
+The statistics class system was refactored to improve the subclassing support.
+The class module was split into statistic classes and renderer classes to support
+new frontend rendering libraries. This will allow developer to add other chart
+classes beyond the provide line chart.
+
+
+- Add recently added document list view. The setting
+  DOCUMENTS_RECENT_COUNT has been renamed to
+  DOCUMENTS_RECENT_ACCESS_COUNT. New setting
+  DOCUMENTS_RECENT_ADDED_COUNT added.
 - Fix crop transformation argument parsing. Thanks to Jordan Wages
   (@wagesj45). Closes GitLab issue #490
 - Add error checking to the crop transformation arguments.
@@ -22,13 +295,8 @@ What's new
   django-model-utils:3.1.2, django-mptt:0.9.1, django-widget-tweaks: 1.4.2,
   flanker:0.9.0, flex:6.13.2, furl:1.2, gevent:1.3.5, graphviz: 0.8.4,
   gunicorn:19.9.0, pyocr:0.5.2, python-dateutil:2.7.3
-- Remove use of django-compressor and cssmin now that the project used
-  Whitenoise.
 - Display error when attempting to recalculate the page count of an empty
   document (document stub that has no document version).
-- Add support for client side caching of document page images. The time
-  the images are cached is controlled by the new setting
-  DOCUMENTS_PAGE_IMAGE_CACHE_TIME which defaults to 31556926 seconds (1 year).
 - The document quick label selection field now uses a select2 widget.
 - Include querystring when force reload of a bare template view.
 - Speed up document image fade in reveal.
@@ -40,26 +308,52 @@ What's new
   wiki.mayan-edms.com
 - Unify template title rendering.
 - Add support for template subtitles.
-- Make sure the on entry action of the initial state of workflows
-  executes on document creation.
-- Add new document app events: document type created and document type
-  edited.
-- Add link to document type events.
-- Add new metadata app events: metadata type created, metadata type edited,
-  metadata type to document type relationship update.
-- Add link to metadata type events.
-- Add support for subscribing to metadata type events.
-- Add link to view the events of a tag.
-- Add support for subscribing to the events of a tag.
 - Add the tag events view permissions to the tag model ACL.
 - Hide the title link of documents in the trash.
-- Add support for document metadata events: add, edit and remove.
-- Add workflow action to update the label and description of a document.
+- Add help texts to more setting options.
+- Add cascade permission checks for links. Avoid allowing users
+  to reach a empty views because they don't access to any of
+  the view's objects.
+- Apply link permission cascade checks to the message of the day,
+  indexing and parsing, setup link.
+- Add cascade permission check to the index rebuild tool link.
+- The index rebuild tool now responds with the number of indexes
+  queued to rebuild instead of a static acknowledment.
+- Add missing permission check to the document duplicate scan
+  link.
+- Update forum link in the about menu.
+- Only show the settings namespace list link where it is
+  relevant.
+- Use platform independant hashing for transformations.
+- Add support to the ObjectActionMixin to report on instance action
+  failures. Add also an error_message class property and the new
+  ActionError exception.
+- Add favorite documents per user. Adds new setting option
+  DOCUMENTS_FAVORITE_COUNT.
+- In addition to the document view permission, the checkout detail
+  view permission is now needed to view the list of checked out
+  document.
+- After queuing a chart for update, the view will now redirect
+  to the same chart.
+- Don't show the document types of an index instance.
+- Instead of the document content view, the document type parsing setup
+  permissions is now required to view the parsing error list.
+- The document type parsing setup permission can now be granted for
+  individual document types.
+- Remove the duplicated setting pdftotext_path from the OCR path.
+  This is now handled by the document parsing app.
+- Implement partial refresh of the main menu.
 
 
 Removals
 --------
-- None
+
+* Internally pace.js was removed as it is no longer maintained and caused
+  AJAX requests to fallback to synchronous mode slowing the performance of the
+  rest of the user interface. Replace with a custom spinner.
+* Remove use of django-compressor and cssmin now that the project uses
+  Whitenoise these are not needed and cssmin has not seen update in some time.
+
 
 Upgrading from a previous version
 ---------------------------------
@@ -117,7 +411,15 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 =============================
 
-* None
+* ``LOCK_MANAGER_DEFAULT_BACKEND`` was renamed to ``LOCK_MANAGER_BACKEND``.
+* ``ALLOWED_HOSTS`` is interpreted as YAML.
+
+    MAYAN_ALLOWED_HOSTS="*"
+
+must be changed::
+
+    MAYAN_ALLOWED_HOSTS='["*"]'
+
 
 Bugs fixed or issues closed
 ===========================
