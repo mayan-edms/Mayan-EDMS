@@ -114,13 +114,14 @@ class MayanApp {
     }
 
     doRefreshMainMenu (options) {
+        var self = this;
         $.ajax({
             complete: function() {
                 setTimeout(app.doRefreshMainMenu, options.interval, options);
             },
             success: function(data) {
                 var $elements = $('.dropdown.open');
-                if (($elements.length === 0) && (this.ajaxExecuting === false)) {
+                if ($elements.length === 0) {
                     // Don't refresh the HTML if there are open dropdowns
                     $('#main-menu').html(data);
                 }

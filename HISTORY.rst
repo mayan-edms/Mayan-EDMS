@@ -124,6 +124,9 @@
 - Remove the duplicated setting pdftotext_path from the OCR path.
   This is now handled by the document parsing app.
 - Implement partial refresh of the main menu.
+- Remove usage of pace.js. Would cause XMLRequest to fallback to
+  synchronous mode.
+- Add custom AJAX spinner.
 
 3.0.3 (2018-08-17)
 ==================
