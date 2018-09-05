@@ -2,12 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from documents.tests import GenericDocumentViewTestCase
 
-from ..models import Index
+from ..models import Index, IndexInstanceNode
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
     permission_document_indexing_instance_view,
-    permission_document_indexing_view
+    permission_document_indexing_rebuild, permission_document_indexing_view
 )
 
 from .literals import (
@@ -17,6 +17,10 @@ from .literals import (
 
 
 class IndexViewTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(IndexViewTestCase, self).setUp()
+        self.login_user()
+
     def _request_index_create_view(self):
         return self.post(
             'indexing:index_setup_create', data={
@@ -25,15 +29,11 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_index_create_view_no_permission(self):
-        self.login_user()
-
         response = self._request_index_create_view()
         self.assertEquals(response.status_code, 403)
         self.assertEqual(Index.objects.count(), 0)
 
     def test_index_create_view_with_permission(self):
-        self.login_user()
-
         self.grant_permission(
             permission=permission_document_indexing_create
         )
@@ -48,8 +48,6 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         return self.post('indexing:index_setup_delete', args=(index.pk,))
 
     def test_index_delete_view_no_permission(self):
-        self.login_user()
-
         index = Index.objects.create(
             label=TEST_INDEX_LABEL, slug=TEST_INDEX_SLUG
         )
@@ -59,8 +57,6 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Index.objects.count(), 1)
 
     def test_index_delete_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_document_indexing_delete.stored_permission
         )
@@ -82,8 +78,6 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_index_edit_view_no_permission(self):
-        self.login_user()
-
         index = Index.objects.create(
             label=TEST_INDEX_LABEL, slug=TEST_INDEX_SLUG
         )
@@ -94,8 +88,6 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(index.label, TEST_INDEX_LABEL)
 
     def test_index_edit_view_with_access(self):
-        self.login_user()
-
         index = Index.objects.create(
             label=TEST_INDEX_LABEL, slug=TEST_INDEX_SLUG
         )
@@ -110,24 +102,23 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         index.refresh_from_db()
         self.assertEqual(index.label, TEST_INDEX_LABEL_EDITED)
 
-    def create_test_index(self):
+    def _create_index(self, rebuild=True):
         # Create empty index
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
+        self.index = Index.objects.create(label=TEST_INDEX_LABEL)
 
         # Add our document type to the new index
-        index.document_types.add(self.document_type)
+        self.index.document_types.add(self.document_type)
 
         # Create simple index template
-        root = index.template_root
-        index.node_templates.create(
+        root = self.index.template_root
+        self.index.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_LABEL_EXPRESSION,
             link_documents=True
         )
 
         # Rebuild indexes
-        Index.objects.rebuild()
-
-        return index
+        if rebuild:
+            Index.objects.rebuild()
 
     def _request_index_instance_node_view(self, index_instance_node):
         return self.get(
@@ -135,28 +126,65 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_index_instance_node_view_no_permission(self):
-        index = self.create_test_index()
-
-        self.login_user()
+        self._create_index()
 
         response = self._request_index_instance_node_view(
-            index_instance_node=index.instance_root
+            index_instance_node=self.index.instance_root
         )
 
         self.assertEqual(response.status_code, 403)
 
     def test_index_instance_node_view_with_access(self):
-        index = self.create_test_index()
-
-        self.login_user()
+        self._create_index()
 
         self.grant_access(
             permission=permission_document_indexing_instance_view,
-            obj=index
+            obj=self.index
         )
 
         response = self._request_index_instance_node_view(
-            index_instance_node=index.instance_root
+            index_instance_node=self.index.instance_root
         )
 
         self.assertContains(response, text=TEST_INDEX_LABEL, status_code=200)
+
+    def _request_index_rebuild_get_view(self):
+        return self.get(
+            viewname='indexing:rebuild_index_instances',
+        )
+
+    def _request_index_rebuild_post_view(self):
+        return self.post(
+            viewname='indexing:rebuild_index_instances', data={
+                'indexes': self.index.pk
+            }
+        )
+
+    def test_index_rebuild_no_permission(self):
+        self._create_index(rebuild=False)
+
+        response = self._request_index_rebuild_get_view()
+        self.assertNotContains(response=response, text=self.index.label, status_code=200)
+
+        response = self._request_index_rebuild_post_view()
+        # No error since we just don't see the index
+        self.assertEqual(response.status_code, 200)
+
+        with self.assertRaises(IndexInstanceNode.DoesNotExist):
+            self.index.instance_root
+
+    def test_index_rebuild_with_access(self):
+        self._create_index(rebuild=False)
+
+        self.grant_access(
+            permission=permission_document_indexing_rebuild, obj=self.index
+        )
+
+        response = self._request_index_rebuild_get_view()
+        self.assertContains(response=response, text=self.index.label, status_code=200)
+
+        response = self._request_index_rebuild_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        # An instance root exists
+        self.assertTrue(self.index.instance_root.pk)
