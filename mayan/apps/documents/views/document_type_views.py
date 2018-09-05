@@ -223,7 +223,11 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             'navigation_object_list': ('document_type',),
             'no_results_icon': icon_document_type_filename,
             'no_results_main_link': link_document_type_filename_create.resolve(
-                context=RequestContext(request=self.request)
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'document_type': self.get_document_type()
+                    }
+                )
             ),
             'no_results_text': _(
                 'Quick labels are predetermined filenames that allow '
