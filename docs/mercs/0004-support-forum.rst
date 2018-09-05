@@ -1,13 +1,13 @@
-======================
-MERC XX: Support forum
-======================
+=====================
+MERC 4: Support forum
+=====================
 
-:MERC: XX
+:MERC: 4
 :Author: Michael Price
-:Status: Draft
+:Status: Accepted
 :Type: Process
 :Created: 2018-02-27
-:Last-Modified: 2018-02-27
+:Last-Modified: 2018-09-04
 
 .. contents:: Table of Contents
    :depth: 3
@@ -42,7 +42,5 @@ issues regarding Google, reinforce the need for a self hosted solution.
 Specification
 =============
 
-The proposed solution is to use the bbPress (https://wordpress.org/plugins/bbpress/)
-forum plugin for Wordpress. After 14 years, Wordpress dominance continues
-unrivaled. The wealth of material, themes, templates and professional avaialbe make
-it a safe option.
+Platform choosen was phpBB. Factors were: written in PHP, ease of installation,
+compatible with several database managers, mature, extersive development history.

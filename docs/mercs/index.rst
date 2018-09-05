@@ -28,7 +28,6 @@ Draft
    :maxdepth: 1
 
    merging-roles-and-groups
-   support-forum
 
 
 Type
@@ -40,6 +39,7 @@ Process
    :maxdepth: 1
 
    0001-merc-process
+   0004-support-forum
 
 
 Feature
