@@ -430,6 +430,33 @@ class DocumentDownloadFormView(FormView):
     querystring_form_fields = ('compressed', 'zip_filename')
     single_download_view = 'documents:document_download'
 
+    def form_valid(self, form):
+        querystring_dictionary = {}
+
+        for field in self.querystring_form_fields:
+            data = form.cleaned_data[field]
+            if data:
+                querystring_dictionary[field] = data
+
+        querystring_dictionary.update(
+            {
+                'id_list': ','.join(
+                    map(str, self.queryset.values_list('pk', flat=True))
+                )
+            }
+        )
+
+        querystring = urlencode(querystring_dictionary, doseq=True)
+
+        if self.queryset.count() > 1:
+            url = reverse(self.multiple_download_view)
+        else:
+            url = reverse(
+                self.single_download_view, args=(self.queryset.first().pk,)
+            )
+
+        return HttpResponseRedirect('{}?{}'.format(url, querystring))
+
     def get_document_queryset(self):
         id_list = self.request.GET.get(
             'id_list', self.request.POST.get('id_list', '')
@@ -471,36 +498,6 @@ class DocumentDownloadFormView(FormView):
         self.queryset = self.get_queryset()
         kwargs.update({'queryset': self.queryset})
         return kwargs
-
-    def form_valid(self, form):
-        querystring_dictionary = {}
-
-        for field in self.querystring_form_fields:
-            data = form.cleaned_data[field]
-            if data:
-                querystring_dictionary[field] = data
-
-        querystring_dictionary.update(
-            {
-                'id_list': ','.join(
-                    map(str, self.queryset.values_list('pk', flat=True))
-                )
-            }
-        )
-
-        querystring = urlencode(querystring_dictionary, doseq=True)
-
-        if self.queryset.count() > 1:
-            url = reverse(self.multiple_download_view)
-        else:
-            url = reverse(
-                self.single_download_view, args=(self.queryset.first().pk,)
-            )
-
-        return HttpResponseRedirect('{}?{}'.format(url, querystring))
-
-    def get_post_action_redirect(self):
-        return self.post_action_redirect
 
     def get_queryset(self):
         return AccessControlList.objects.filter_by_access(
