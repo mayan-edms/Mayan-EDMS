@@ -15,6 +15,7 @@ class ActionError(BaseCommonException):
     it is used to announce that one item in the queryset failed to process.
     """
 
+
 class CompressionFileError(BaseCommonException):
     """
     Base exception for file decompression class

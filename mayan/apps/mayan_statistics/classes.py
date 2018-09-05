@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import json
-
 from django.apps import apps
 from django.utils.encoding import force_text, python_2_unicode_compatible
 

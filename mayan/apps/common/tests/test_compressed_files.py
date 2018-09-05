@@ -1,15 +1,13 @@
 from __future__ import unicode_literals
 
 from common.tests import BaseTestCase
-from django.test import override_settings
 
 from ..compressed_files import Archive, TarArchive, ZipArchive
 
 from .literals import (
-    TEST_COMPRESSED_FILE_CONTENTS, TEST_FILE_CONTENTS_1, TEST_FILE_CONTENTS_2,
-    TEST_FILE3_PATH, TEST_FILENAME1, TEST_FILENAME2, TEST_FILENAME3,
-    TEST_TAR_BZ2_FILE_PATH, TEST_TAR_FILE_PATH, TEST_TAR_GZ_FILE_PATH,
-    TEST_ZIP_FILE_PATH
+    TEST_COMPRESSED_FILE_CONTENTS, TEST_FILE_CONTENTS_1, TEST_FILE3_PATH,
+    TEST_FILENAME1, TEST_FILENAME3, TEST_TAR_BZ2_FILE_PATH,
+    TEST_TAR_FILE_PATH, TEST_TAR_GZ_FILE_PATH, TEST_ZIP_FILE_PATH
 )
 
 
@@ -43,7 +41,8 @@ class TarArchiveClassTestCase(BaseTestCase):
         with open(self.archive_path) as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertEqual(
-                archive.member_contents(filename=self.member_name), self.member_contents
+                archive.member_contents(filename=self.member_name),
+                self.member_contents
             )
 
     def test_open_member(self):

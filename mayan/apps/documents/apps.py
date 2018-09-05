@@ -154,6 +154,7 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentType, event_types=(
                 event_document_create,
+                event_document_type_created,
                 event_document_type_edited,
             )
         )

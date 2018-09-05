@@ -27,16 +27,16 @@ def index_instance_item_link(index_instance_item):
 
     if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index_template_node.link_documents:
-            icon = icon_node_with_documents
+            icon = icon_node_with_documents.render()
         else:
-            icon = icon_index_level_up
+            icon = icon_index_level_up.render()
     else:
-        icon_template = ''
+        icon = ''
 
     return mark_safe(
         '%(icon)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
             'url': index_instance_item.get_absolute_url(),
-            'icon': icon.render(),
+            'icon': icon,
             'text': index_instance_item
         }
     )

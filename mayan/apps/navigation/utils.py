@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
-from django.utils.translation import ugettext_lazy as _
 
 from permissions import Permission
 

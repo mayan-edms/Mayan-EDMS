@@ -9,7 +9,7 @@ from common import MayanAppConfig, menu_object, menu_secondary, menu_tools
 
 from navigation import SourceColumn
 
-from .classes import Statistic, StatisticLineChart, StatisticNamespace
+from .classes import StatisticLineChart, StatisticNamespace
 from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view

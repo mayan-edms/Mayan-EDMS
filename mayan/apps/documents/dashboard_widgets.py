@@ -79,7 +79,7 @@ class DashboardWidgetDocumentsTypesTotal(DashboardWidgetNumeric):
 class DashboardWidgetDocumentsNewThisMonth(DashboardWidgetNumeric):
     icon_class = icon_dashboard_new_documents_this_month
     label = _('New documents this month')
-    link=reverse_lazy(
+    link = reverse_lazy(
         'statistics:statistic_detail',
         args=('new-documents-per-month',)
     )
@@ -92,7 +92,7 @@ class DashboardWidgetDocumentsNewThisMonth(DashboardWidgetNumeric):
 class DashboardWidgetDocumentsPagesNewThisMonth(DashboardWidgetNumeric):
     icon_class = icon_dashboard_pages_per_month
     label = _('New pages this month')
-    link=reverse_lazy(
+    link = reverse_lazy(
         'statistics:statistic_detail',
         args=('new-document-pages-per-month',)
     )

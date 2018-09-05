@@ -7,9 +7,8 @@ from django.contrib.auth.views import (
     login, password_change, password_reset, password_reset_confirm,
     password_reset_complete, password_reset_done
 )
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, resolve_url
-from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.http import is_safe_url
 from django.utils.translation import ugettext_lazy as _

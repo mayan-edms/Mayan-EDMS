@@ -259,7 +259,7 @@ class Menu(object):
                 for source in self.non_sorted_sources:
                     if isinstance(resolved_navigation_object, source):
                         unsorted_source = True
-                        break;
+                        break
 
             if sort_results and not unsorted_source:
                 result[0] = sorted(

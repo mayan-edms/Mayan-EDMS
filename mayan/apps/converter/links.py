@@ -31,7 +31,7 @@ def get_kwargs_factory(variable_name):
 
 
 link_transformation_create = Link(
-    icon_class = icon_transformation_create,
+    icon_class=icon_transformation_create,
     kwargs=get_kwargs_factory('content_object'),
     permissions=(permission_transformation_create,),
     text=_('Create new transformation'), view='converter:transformation_create'

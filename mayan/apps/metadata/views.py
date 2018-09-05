@@ -420,7 +420,6 @@ class DocumentMetadataListView(SingleObjectListView):
             'title': _('Metadata for document: %s') % document,
         }
 
-
     def get_object_list(self):
         return self.get_document().metadata.all()
 

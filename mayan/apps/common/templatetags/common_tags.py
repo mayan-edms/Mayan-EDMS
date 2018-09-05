@@ -45,6 +45,7 @@ def check_sqlite():
 def get_collections():
     return Collection.get_all()
 
+
 @register.filter
 def get_encoded_parameter(item, parameters_dict):
     result = {}

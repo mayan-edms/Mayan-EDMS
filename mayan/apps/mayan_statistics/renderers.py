@@ -2,13 +2,6 @@ from __future__ import unicode_literals
 
 import json
 
-from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
-
-from celery.schedules import crontab
-
-from mayan.celery import app
-
 
 class ChartRenderer(object):
     def __init__(self, data):

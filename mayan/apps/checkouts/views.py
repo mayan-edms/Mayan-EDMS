@@ -110,7 +110,7 @@ class CheckoutListView(DocumentListView):
                     'time.'
                 ),
                 'no_results_title': _('No documents have been checked out'),
-                'title': _('Documents checked out'),                
+                'title': _('Documents checked out'),
             }
         )
         return context

@@ -10,7 +10,6 @@ from django.conf import settings
 from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
-from django.utils.encoding import force_text
 from django.utils.http import (
     urlencode as django_urlencode, urlquote as django_urlquote
 )

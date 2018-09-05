@@ -1,11 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.apps import apps
-from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link, get_cascade_condition
-from permissions import Permission
 
 from .icons import icon_message_create, icon_message_list
 from .permissions import (

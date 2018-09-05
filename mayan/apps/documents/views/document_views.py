@@ -15,9 +15,8 @@ from common.compressed_files import ZipArchive
 from common.exceptions import ActionError
 from common.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
-    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
-    SingleObjectListView
+    MultipleObjectFormActionView, SingleObjectDetailView,
+    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from common.utils import encapsulate
@@ -89,6 +88,7 @@ class DocumentListView(SingleObjectListView):
             return queryset.__getitem__(slice(*self.queryset_slice))
         else:
             return queryset
+
 
 class DeletedDocumentDeleteView(ConfirmView):
     extra_context = {
