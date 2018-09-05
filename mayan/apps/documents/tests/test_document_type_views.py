@@ -14,6 +14,7 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
+from .mixins import DocumentTypeQuickLabelTestMixin
 
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
@@ -98,7 +99,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentTypeQuickLabelViewsTestCase(GenericDocumentViewTestCase):
+class DocumentTypeQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentTypeQuickLabelViewsTestCase, self).setUp()
         self.login_user()
@@ -129,11 +130,6 @@ class DocumentTypeQuickLabelViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.document_type.filenames.count(), 1)
-
-    def _create_quick_label(self):
-        self.document_type_filename = self.document_type.filenames.create(
-            filename=TEST_DOCUMENT_TYPE_QUICK_LABEL
-        )
 
     def _request_quick_label_delete(self):
         return self.post(

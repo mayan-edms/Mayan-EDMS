@@ -6,7 +6,10 @@ from django.conf import settings
 
 from ..models import DocumentType
 
-from .literals import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME
+from .literals import (
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_DOCUMENT_TYPE_QUICK_LABEL
+)
 
 __all__ = ('DocumentTestMixin',)
 
@@ -16,7 +19,7 @@ class DocumentTestMixin(object):
     auto_upload_document = True
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
 
-    def create_document_type(self):
+    def _create_document_type(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -36,7 +39,7 @@ class DocumentTestMixin(object):
         )
 
         if self.auto_create_document_type:
-            self.create_document_type()
+            self._create_document_type()
 
             if self.auto_upload_document:
                 self.document = self.upload_document()
@@ -45,3 +48,10 @@ class DocumentTestMixin(object):
         for document_type in DocumentType.objects.all():
             document_type.delete()
         super(DocumentTestMixin, self).tearDown()
+
+
+class DocumentTypeQuickLabelTestMixin(object):
+    def _create_quick_label(self):
+        self.document_type_filename = self.document_type.filenames.create(
+            filename=TEST_DOCUMENT_TYPE_QUICK_LABEL
+        )

@@ -95,7 +95,9 @@ class DocumentVersionDownloadFormView(DocumentDownloadFormView):
             DocumentVersionDownloadFormView, self
         ).get_extra_context()
 
-        result['title'] = _('Download document version')
+        result.update({
+            'title': _('Download document version'),
+        })
 
         return result
 

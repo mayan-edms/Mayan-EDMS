@@ -11,13 +11,13 @@ class DocumentAutoParsingTestCase(GenericDocumentTestCase):
 
     @override_settings(DOCUMENT_PARSING_AUTO_PARSING=False)
     def test_disable_auto_parsing(self):
-        self.create_document_type()
+        self._create_document_type()
         self.document = self.upload_document()
         with self.assertRaises(StopIteration):
             self.document.latest_version.content().next()
 
     @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
     def test_enabled_auto_parsing(self):
-        self.create_document_type()
+        self._create_document_type()
         self.document = self.upload_document()
         self.assertTrue('Mayan' in self.document.content().next())

@@ -343,6 +343,12 @@ classes beyond the provide line chart.
 - Remove the duplicated setting pdftotext_path from the OCR path.
   This is now handled by the document parsing app.
 - Implement partial refresh of the main menu.
+- Complete refactor of the compress archive class support. Closes
+  GitLab issue #7.
+- Add support for preserving the extension of document files when
+  using the quick label feature. Added to the document properties
+  edit view and the document upload view. Closes GitLab issue
+  #360.
 
 
 Removals
@@ -426,5 +432,6 @@ Bugs fixed or issues closed
 
 * `GitLab issue #7 <https://gitlab.com/mayan-edms/mayan-edms/issues/7>`_ Feature: other compressors than zip for compressed documents
 * `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
-
+* `GitLab issue #360 <https://gitlab.com/mayan-edms/mayan-edms/issues/360>`_ Should quick rename (optionally) retain original file type extension?
+  
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

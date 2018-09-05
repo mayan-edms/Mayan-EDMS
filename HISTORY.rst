@@ -129,6 +129,10 @@
 - Add custom AJAX spinner.
 - Complete refactor of the compress archive class support. Closes
   GitLab issue #7.
+- Add support for preserving the extension of document files when
+  using the quick label feature. Added to the document properties
+  edit view and the document upload view. Closes GitLab issue
+  #360.
 
 3.0.3 (2018-08-17)
 ==================

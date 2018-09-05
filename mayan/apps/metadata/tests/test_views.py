@@ -428,7 +428,7 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
     def test_metadata_type_relationship_view_no_permission(self):
         self.login_user()
         self._create_metadata_type()
-        self.create_document_type()
+        self._create_document_type()
         self.upload_document()
 
         response = self._request_metadata_type_relationship_edit_view()
@@ -442,7 +442,7 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
     def test_metadata_type_relationship_view_with_document_type_access(self):
         self.login_user()
         self._create_metadata_type()
-        self.create_document_type()
+        self._create_document_type()
         self.upload_document()
 
         self.grant_access(
@@ -460,7 +460,7 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
     def test_metadata_type_relationship_view_with_metadata_type_access(self):
         self.login_user()
         self._create_metadata_type()
-        self.create_document_type()
+        self._create_document_type()
         self.upload_document()
 
         self.grant_access(
@@ -478,7 +478,7 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
     def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
         self.login_user()
         self._create_metadata_type()
-        self.create_document_type()
+        self._create_document_type()
         self.upload_document()
 
         self.grant_access(

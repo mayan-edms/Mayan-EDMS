@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+import os
 
 from django import forms
 from django.template.defaultfilters import filesizeformat
@@ -99,15 +100,41 @@ class DocumentForm(forms.ModelForm):
                     }
                 )
             )
+            self.fields['preserve_extension'] = forms.BooleanField(
+                label=_('Preserve extension'), required=False,
+                help_text=_(
+                    'Takes the file extension and moves it to the end of the '
+                    'filename allowing operating systems that rely on file '
+                    'extensions to open document correctly.'
+                )
+            )
 
     def clean(self):
-        if 'document_type_available_filenames' in self.cleaned_data:
-            if self.cleaned_data['document_type_available_filenames']:
-                self.cleaned_data['label'] = self.cleaned_data[
-                    'document_type_available_filenames'
-                ]
+        self.cleaned_data['label'] = self.get_final_label(
+            # Fallback to the instance label if there is no label key or
+            # there is a label key and is an empty string
+            filename=self.cleaned_data.get('label') or self.instance.label
+        )
 
         return self.cleaned_data
+
+    def get_final_label(self, filename):
+        if 'document_type_available_filenames' in self.cleaned_data:
+            if self.cleaned_data['document_type_available_filenames']:
+                if self.cleaned_data['preserve_extension']:
+                    filename, extension = os.path.splitext(filename)
+
+                    filename = '{}{}'.format(
+                        self.cleaned_data[
+                            'document_type_available_filenames'
+                        ].filename, extension
+                    )
+                else:
+                    filename = self.cleaned_data[
+                        'document_type_available_filenames'
+                    ].filename
+
+        return filename
 
 
 class DocumentPropertiesForm(DetailForm):

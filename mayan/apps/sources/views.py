@@ -243,12 +243,6 @@ class UploadInteractiveView(UploadBaseView):
                 file=uploaded_file.file
             )
 
-            label = None
-
-            if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
-                if forms['document_form'].cleaned_data['document_type_available_filenames']:
-                    label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
-
             if not self.request.user.is_anonymous:
                 user_id = self.request.user.pk
             else:
@@ -265,7 +259,9 @@ class UploadInteractiveView(UploadBaseView):
                         description=forms['document_form'].cleaned_data.get('description'),
                         document_type_id=self.document_type.pk,
                         expand=expand,
-                        label=label,
+                        label=forms['document_form'].get_final_label(
+                            filename=force_text(shared_uploaded_file)
+                        ),
                         language=forms['document_form'].cleaned_data.get('language'),
                         querystring=uri_to_iri(
                             '?{}&{}'.format(
