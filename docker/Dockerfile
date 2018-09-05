@@ -73,7 +73,7 @@ ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
 ; fi
 
 # Discard data when Redis runs out of memory
-echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
+RUN echo "maxmemory-policy allkeys-lru" >> /etc/redis/redis.conf
 
 #####################
 # Build image start #
