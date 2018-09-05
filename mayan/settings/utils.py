@@ -36,5 +36,5 @@ def yaml_loads(data, error_message=None):
         return yaml.safe_load(data)
     except yaml.YAMLError as exception:
         exit(
-            error_message.format(string, exception)
+            error_message.format(error_message, exception)
         )
