@@ -192,8 +192,8 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(
             [instance.value for instance in IndexInstanceNode.objects.all().order_by('pk')],
             [
-                '', force_text(self.document.uuid), self.document.label,
-                force_text(self.document_2.uuid), self.document_2.label
+                '', force_text(self.document_2.uuid), self.document_2.label,
+                force_text(self.document.uuid), self.document.label
             ]
         )
 
