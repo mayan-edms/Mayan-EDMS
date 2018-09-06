@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
 
 import datetime
 from errno import ENOENT
@@ -119,7 +119,7 @@ class IndexFS(Operations):
         try:
             self.index = Index.objects.get(slug=index_slug)
         except Index.DoesNotExist:
-            print 'Unknown index slug: {}.'.format(index_slug)
+            print('Unknown index slug: {}.'.format(index_slug))
             exit(1)
 
     def access(self, path, fh=None):

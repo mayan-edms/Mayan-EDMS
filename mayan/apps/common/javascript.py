@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
 
 import base64
 import hashlib
@@ -79,7 +79,7 @@ class NPMPackage(object):
             self._best_version = max_satisfying(
                 self.versions, force_bytes(self.version), loose=True
             )
-            print 'Best version: {}'.format(self._best_version)
+            print('Best version: {}'.format(self._best_version))
 
         return self._best_version
 
@@ -97,7 +97,7 @@ class NPMPackage(object):
         return f.tostr()
 
     def install(self, include_dependencies=False):
-        print 'Installing package: {}{}'.format(self.name, self.version)
+        print('Installing package: {}{}'.format(self.name, self.version))
 
         self._download()
         self._extract()
@@ -186,7 +186,7 @@ class JSDependencyManager(object):
         for app in app_config_list:
             for root, dirs, files in os.walk(os.path.join(app.path, 'static')):
                 if 'package.json' in files and not (set(Path(root).parts) & set(['node_modules', 'packages', 'vendors'])):
-                    print 'Installing JavaScript packages for app: {} - {}'.format(app.label, root)
+                    print('Installing JavaScript packages for app: {} - {}'.format(app.label, root))
                     npm_client = NPMRegistry(
                         module_directory=os.path.join(root, 'node_modules'),
                         package_filename=os.path.join(root, 'package.json')
