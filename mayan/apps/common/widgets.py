@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from icons import icon_fail as default_icon_fail, icon_ok as default_icon_ok
+from .icons import icon_fail as default_icon_fail, icon_ok as default_icon_ok
 
 
 class DisableableSelectWidget(forms.SelectMultiple):
