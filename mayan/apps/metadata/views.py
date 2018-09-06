@@ -28,8 +28,8 @@ from .forms import (
     DocumentTypeMetadataTypeRelationshipFormSet, MetadataTypeForm
 )
 from .icons import (
-    icon_document_metadata_add_submit, icon_document_metadata_edit_submit,
-    icon_document_metadata_remove_submit, icon_metadata
+    icon_document_metadata_add, icon_document_metadata_edit,
+    icon_document_metadata_remove, icon_metadata
 )
 from .links import (
     link_metadata_add, link_metadata_multiple_add,
@@ -103,7 +103,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
 
         result = {
-            'submit_icon_class': icon_document_metadata_add_submit,
+            'submit_icon_class': icon_document_metadata_add,
             'submit_label': _('Add'),
             'title': ungettext(
                 'Add metadata types to document',
@@ -297,7 +297,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
                 'and assign them corresponding values.'
             ),
             'no_results_title': _('There is no metadata to edit'),
-            'submit_icon_class': icon_document_metadata_edit_submit,
+            'submit_icon_class': icon_document_metadata_edit,
             'submit_label': _('Edit'),
             'title': ungettext(
                 'Edit document metadata',
@@ -486,7 +486,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
         result = {
             'form_display_mode_table': True,
-            'submit_icon_class': icon_document_metadata_remove_submit,
+            'submit_icon_class': icon_document_metadata_remove,
             'submit_label': _('Remove'),
             'title': ungettext(
                 'Remove metadata types from the document',

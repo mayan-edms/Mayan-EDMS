@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import permission_document_type_edit
 from navigation import Link
 
-from .icons import icon_metadata_view
+from .icons import icon_document_metadata_add, icon_metadata_view
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view,
@@ -14,8 +14,9 @@ from .permissions import (
 )
 
 link_metadata_add = Link(
-    args='object.pk', permissions=(permission_metadata_document_add,),
-    text=_('Add metadata'), view='metadata:metadata_add',
+    args='object.pk', icon_class=icon_document_metadata_add,
+    permissions=(permission_metadata_document_add,), text=_('Add metadata'),
+    view='metadata:metadata_add',
 )
 link_metadata_edit = Link(
     args='object.pk', permissions=(permission_metadata_document_edit,),

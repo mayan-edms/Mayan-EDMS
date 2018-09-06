@@ -8,7 +8,7 @@ from acls.links import link_acl_list
 from documents.permissions import permission_document_view
 from navigation import Link, get_cascade_condition
 
-from .icons import icon_cabinet_create, icon_cabinet_list
+from .icons import icon_cabinet_add, icon_cabinet_create, icon_cabinet_list
 from .permissions import (
     permission_cabinet_add_document, permission_cabinet_create,
     permission_cabinet_delete, permission_cabinet_edit,
@@ -28,8 +28,9 @@ link_document_cabinet_remove = Link(
     text=_('Remove from cabinets'), view='cabinets:document_cabinet_remove'
 )
 link_cabinet_add_document = Link(
-    args='object.pk', permissions=(permission_cabinet_add_document,),
-    text=_('Add to cabinets'), view='cabinets:cabinet_add_document',
+    args='object.pk', icon_class=icon_cabinet_add,
+    permissions=(permission_cabinet_add_document,), text=_('Add to cabinets'),
+    view='cabinets:cabinet_add_document',
 )
 link_cabinet_add_multiple_documents = Link(
     text=_('Add to cabinets'), view='cabinets:cabinet_add_multiple_documents'

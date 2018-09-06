@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link, get_cascade_condition
 
 from .icons import (
-    icon_tag_create, icon_tag_document_list, icon_tag_list
+    icon_tag_attach, icon_tag_create, icon_tag_document_list, icon_tag_list
 )
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -24,8 +24,9 @@ link_single_document_multiple_tag_remove = Link(
     text=_('Remove tags'), view='tags:single_document_multiple_tag_remove',
 )
 link_tag_attach = Link(
-    args='object.pk', permissions=(permission_tag_attach,),
-    text=_('Attach tags'), view='tags:tag_attach',
+    args='object.pk', icon_class=icon_tag_attach,
+    permissions=(permission_tag_attach,), text=_('Attach tags'),
+    view='tags:tag_attach',
 )
 link_tag_create = Link(
     icon_class=icon_tag_create, permissions=(permission_tag_create,),
