@@ -27,7 +27,7 @@ class TaggedDocumentUploadTestCase(GenericDocumentViewTestCase):
         self.document.delete()
 
     def _request_upload_interactive_document_create_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             return self.post(
                 viewname='sources:upload_interactive', args=(self.source.pk,),
                 data={

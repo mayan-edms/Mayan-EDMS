@@ -87,7 +87,7 @@ TEST_SIGNED_FILE = os.path.join(
     settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.gpg'
 )
-TEST_SIGNED_FILE_CONTENT = 'test_file.txt\n'
+TEST_SIGNED_FILE_CONTENT = b'test_file.txt\n'
 
 TEST_RECEIVE_KEY = '''-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5

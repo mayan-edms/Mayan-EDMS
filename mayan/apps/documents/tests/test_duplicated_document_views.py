@@ -16,7 +16,7 @@ class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.login_user()
 
     def _upload_duplicate_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document_duplicate = self.document_type.new_document(
                 file_object=file_object, label=TEST_SMALL_DOCUMENT_FILENAME
             )

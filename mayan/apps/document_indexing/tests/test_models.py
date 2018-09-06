@@ -4,8 +4,7 @@ from django.test import override_settings
 from django.utils.encoding import force_text
 
 from common.tests import BaseTestCase
-from documents.models import DocumentType
-from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
+from documents.tests import DocumentTestMixin, TEST_SMALL_DOCUMENT_PATH
 from metadata.models import MetadataType, DocumentTypeMetadataType
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
@@ -17,21 +16,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class IndexTestCase(BaseTestCase):
+class IndexTestCase(DocumentTestMixin, BaseTestCase):
     def setUp(self):
         super(IndexTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(IndexTestCase, self).tearDown()
 
     def test_indexing(self):
         metadata_type = MetadataType.objects.create(
@@ -177,7 +164,7 @@ class IndexTestCase(BaseTestCase):
         values and two second levels with the same value but as separate
         children of each of the first levels. GitLab issue #391
         """
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document_2 = self.document_type.new_document(
                 file_object=file_object
             )

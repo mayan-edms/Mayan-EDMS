@@ -5,9 +5,8 @@ from django.utils.encoding import force_text
 
 from rest_framework import status
 
-from documents.models import DocumentType
 from documents.permissions import permission_document_view
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin
 from rest_api.tests import BaseAPITestCase
 
 from ..models import Tag
@@ -23,7 +22,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TagAPITestCase(BaseAPITestCase):
+class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
+    auto_upload_document = False
+
     def setUp(self):
         super(TagAPITestCase, self).setUp()
         self.login_user()
@@ -37,18 +38,6 @@ class TagAPITestCase(BaseAPITestCase):
         return Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
-
-    def _document_create(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-        return document
 
     def _request_tag_create(self):
         return self.post(
@@ -99,16 +88,15 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_tag_document_list_view_no_access(self):
         self.tag = self._create_tag()
-        document = self._document_create()
-        self.tag.documents.add(document)
-
+        self.document = self.upload_document()
+        self.tag.documents.add(self.document)
         response = self._request_tag_document_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_tag_document_list_view_with_tag_access(self):
         self.tag = self._create_tag()
-        document = self._document_create()
-        self.tag.documents.add(document)
+        self.document = self.upload_document()
+        self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
         response = self._request_tag_document_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -116,22 +104,27 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_tag_document_list_view_with_document_access(self):
         self.tag = self._create_tag()
-        document = self._document_create()
-        self.tag.documents.add(document)
-        self.grant_access(permission=permission_document_view, obj=document)
+        self.document = self.upload_document()
+        self.tag.documents.add(self.document)
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
         response = self._request_tag_document_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_tag_document_list_view_with_access(self):
         self.tag = self._create_tag()
-        document = self._document_create()
-        self.tag.documents.add(document)
+        self.document = self.upload_document()
+        self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
-        self.grant_access(permission=permission_document_view, obj=document)
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
         response = self._request_tag_document_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['uuid'], force_text(document.uuid)
+            response.data['results'][0]['uuid'],
+            force_text(self.document.uuid)
         )
 
     def _request_tag_edit_via_patch(self):
@@ -192,15 +185,14 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_attach_tag_view_no_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
-
+        self.document = self.upload_document()
         response = self._request_document_attach_tag()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertFalse(self.tag in self.document.tags.all())
 
     def test_document_attach_tag_view_with_document_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.document)
         response = self._request_document_attach_tag()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -208,7 +200,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_attach_tag_view_with_tag_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.tag)
         response = self._request_document_attach_tag()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -216,7 +208,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_attach_tag_view_with_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.document)
         self.grant_access(permission=permission_tag_attach, obj=self.tag)
         response = self._request_document_attach_tag()
@@ -232,14 +224,14 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_detail_view_no_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         response = self._request_document_tag_detail_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_tag_detail_view_with_document_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_document_view, obj=self.document)
         response = self._request_document_tag_detail_view()
@@ -247,7 +239,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_detail_view_with_tag_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
         response = self._request_document_tag_detail_view()
@@ -255,7 +247,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_detail_view_with_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
         self.grant_access(permission=permission_document_view, obj=self.document)
@@ -270,14 +262,14 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_list_view_no_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         response = self._request_document_tag_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_tag_list_view_with_document_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_document_view, obj=self.document)
         response = self._request_document_tag_list_view()
@@ -286,7 +278,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_list_view_with_tag_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
         response = self._request_document_tag_list_view()
@@ -294,7 +286,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_list_view_with_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_document_view, obj=self.document)
         self.grant_access(permission=permission_tag_view, obj=self.tag)
@@ -311,7 +303,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_remove_view_no_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         response = self._request_document_tag_remove()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -319,7 +311,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_remove_view_with_document_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.document)
         response = self._request_document_tag_remove()
@@ -328,7 +320,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_remove_view_with_tag_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.tag)
         response = self._request_document_tag_remove()
@@ -337,7 +329,7 @@ class TagAPITestCase(BaseAPITestCase):
 
     def test_document_tag_remove_view_with_access(self):
         self.tag = self._create_tag()
-        self.document = self._document_create()
+        self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_document_view, obj=self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.tag)

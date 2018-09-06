@@ -8,8 +8,7 @@ from django.utils.timezone import now
 
 from rest_framework import status
 
-from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin
 from documents.permissions import permission_document_view
 from rest_api.tests import BaseAPITestCase
 
@@ -20,22 +19,10 @@ from ..permissions import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class CheckoutsAPITestCase(BaseAPITestCase):
+class CheckoutsAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def setUp(self):
         super(CheckoutsAPITestCase, self).setUp()
         self.login_user()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(CheckoutsAPITestCase, self).tearDown()
 
     def _request_checkedout_document_view(self):
         return self.get(

@@ -23,7 +23,7 @@ from .literals import TEST_SMALL_DOCUMENT_PATH
 
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_version_revert_link_no_permission(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(file_object=file_object)
 
         self.assertTrue(self.document.versions.count(), 2)
@@ -41,7 +41,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         # field
         time.sleep(2)
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(file_object=file_object)
 
         self.assertTrue(self.document.versions.count(), 2)

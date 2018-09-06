@@ -26,17 +26,17 @@ class PermissionTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document_1 = self.document_type_1.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document_2 = self.document_type_1.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document_3 = self.document_type_2.new_document(
                 file_object=file_object
             )

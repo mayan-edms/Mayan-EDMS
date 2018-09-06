@@ -4,10 +4,7 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from documents.models import DocumentType
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
-)
+from documents.tests import DocumentTestMixin
 from rest_api.tests import BaseAPITestCase
 
 from ..models import Comment
@@ -20,23 +17,10 @@ from .literals import TEST_COMMENT_TEXT
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class CommentAPITestCase(BaseAPITestCase):
+class CommentAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def setUp(self):
         super(CommentAPITestCase, self).setUp()
         self.login_user()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        if hasattr(self, 'document_type'):
-            self.document_type.delete()
-        super(CommentAPITestCase, self).tearDown()
 
     def _create_comment(self):
         return self.document.comments.create(

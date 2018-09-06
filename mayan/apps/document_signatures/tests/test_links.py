@@ -25,7 +25,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
         self.login_user()
 
     def test_document_version_signature_detail_link_no_permission(self):
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -41,7 +41,7 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_version_signature_detail_link_with_permission(self):
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -68,12 +68,12 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_version_signature_delete_link_no_permission(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -90,12 +90,12 @@ class DocumentSignatureLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_version_signature_delete_link_with_permission(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)

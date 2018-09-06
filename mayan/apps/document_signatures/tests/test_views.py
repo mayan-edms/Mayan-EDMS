@@ -31,15 +31,15 @@ TEST_SIGNED_DOCUMENT_COUNT = 2
 
 class SignaturesViewTestCase(GenericDocumentViewTestCase):
     def test_signature_list_view_no_permission(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -55,15 +55,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_signature_list_view_with_access(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -85,15 +85,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.context['object_list'].count(), 1)
 
     def test_signature_detail_view_no_permission(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -109,15 +109,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_signature_detail_view_with_access(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -138,14 +138,14 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, signature.signature_id, status_code=200)
 
     def test_signature_upload_view_no_permission(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
         self.login_user()
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             response = self.post(
                 'signatures:document_version_signature_upload',
                 args=(document.latest_version.pk,),
@@ -156,7 +156,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_signature_upload_view_with_access(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -168,7 +168,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_upload
         )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             response = self.post(
                 'signatures:document_version_signature_upload',
                 args=(document.latest_version.pk,),
@@ -179,12 +179,12 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_download_view_no_permission(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -200,12 +200,12 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_signature_download_view_with_access(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -231,15 +231,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             )
 
     def test_signature_delete_view_no_permission(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -261,15 +261,15 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -304,13 +304,13 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH) as file_object:
+            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
@@ -345,13 +345,13 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH) as file_object:
+            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )

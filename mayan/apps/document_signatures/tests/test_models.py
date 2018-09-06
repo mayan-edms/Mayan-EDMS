@@ -35,7 +35,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         super(DocumentSignaturesTestCase, self).tearDown()
 
     def test_embedded_signature_no_key(self):
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             signed_document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -51,7 +51,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_post_key_verify(self):
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             signed_document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -66,7 +66,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.key_id, TEST_KEY_ID)
         self.assertEqual(signature.signature_id, None)
 
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
         signature = EmbeddedSignature.objects.first()
@@ -74,10 +74,10 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
     def test_embedded_signature_post_no_key_verify(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             key = Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             signed_document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -99,10 +99,10 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_with_key(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             key = Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             self.signed_document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -120,12 +120,12 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
     def test_detached_signature_no_key(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -140,15 +140,15 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.public_key_fingerprint, None)
 
     def test_detached_signature_with_key(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             key = Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -163,12 +163,12 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
 
     def test_detached_signature_post_key_verify(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -182,7 +182,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.key_id, TEST_KEY_ID)
         self.assertEqual(signature.public_key_fingerprint, None)
 
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             key = Key.objects.create(key_data=file_object.read())
 
         signature = DetachedSignature.objects.first()
@@ -190,15 +190,15 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
 
     def test_detached_signature_post_no_key_verify(self):
-        with open(TEST_KEY_FILE) as file_object:
+        with open(TEST_KEY_FILE, 'rb') as file_object:
             key = Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -219,7 +219,7 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(signature.public_key_fingerprint, None)
 
     def test_document_no_signature(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             self.document_type.new_document(
                 file_object=file_object
             )
@@ -227,12 +227,12 @@ class DocumentSignaturesTestCase(BaseTestCase):
         self.assertEqual(EmbeddedSignature.objects.count(), 0)
 
     def test_new_signed_version(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
             signed_version = document.new_version(
                 file_object=file_object, comment='test comment 1'
             )
@@ -268,13 +268,13 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH) as file_object:
+            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
@@ -296,13 +296,13 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH) as file_object:
+            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
@@ -324,7 +324,7 @@ class EmbeddedSignaturesTestCase(BaseTestCase):
     def test_signing(self):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )

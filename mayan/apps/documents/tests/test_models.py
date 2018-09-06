@@ -16,48 +16,36 @@ from .base import GenericDocumentTestCase
 from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_SMALL_DOCUMENT_MIMETYPE, TEST_SMALL_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_SIZE
 )
+from .mixins import DocumentTestMixin
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(BaseTestCase):
-    def setUp(self):
-        super(DocumentTestCase, self).setUp()
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object, label='mayan_11_1.pdf'
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentTestCase, self).tearDown()
-
+class DocumentTestCase(DocumentTestMixin, BaseTestCase):
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE_LABEL)
 
         self.assertEqual(self.document.exists(), True)
-        self.assertEqual(self.document.size, 272213)
+        self.assertEqual(self.document.size, TEST_SMALL_DOCUMENT_SIZE)
 
-        self.assertEqual(self.document.file_mimetype, 'application/pdf')
-        self.assertEqual(self.document.file_mime_encoding, 'binary')
-        self.assertEqual(self.document.label, 'mayan_11_1.pdf')
         self.assertEqual(
-            self.document.checksum,
-            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+            self.document.file_mimetype, TEST_SMALL_DOCUMENT_MIMETYPE
         )
-        self.assertEqual(self.document.page_count, 47)
+        self.assertEqual(self.document.file_mime_encoding, 'binary')
+        self.assertEqual(self.document.label, TEST_SMALL_DOCUMENT_FILENAME)
+        self.assertEqual(
+            self.document.checksum, TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+        self.assertEqual(self.document.page_count, 1)
 
     def test_version_creation(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(file_object=file_object)
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 file_object=file_object, comment='test comment 1'
             )
@@ -147,7 +135,7 @@ class PDFCompatibilityTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_PDF_INDIRECT_ROTATE_PATH) as file_object:
+        with open(TEST_PDF_INDIRECT_ROTATE_PATH, 'rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -166,7 +154,7 @@ class OfficeDocumentTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
+        with open(TEST_OFFICE_DOCUMENT_PATH, 'rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -195,7 +183,7 @@ class MultiPageTiffTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
+        with open(TEST_MULTI_PAGE_TIFF_PATH, 'rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -218,7 +206,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )
@@ -237,7 +225,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         # field
         time.sleep(1.01)
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )

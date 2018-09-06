@@ -8,10 +8,8 @@ from django.test import override_settings
 from django.utils.timezone import now
 
 from common.tests import BaseTestCase
-from documents.models import DocumentType
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
-)
+from documents.tests import DocumentTestMixin
+from documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
@@ -21,22 +19,7 @@ from ..models import DocumentCheckout, NewVersionBlock
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(BaseTestCase):
-    def setUp(self):
-        super(DocumentCheckoutTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentCheckoutTestCase, self).tearDown()
-
+class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
     def test_document_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
@@ -64,7 +47,7 @@ class DocumentCheckoutTestCase(BaseTestCase):
         )
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
                 self.document.new_version(file_object=file_object)
 
     def test_checkin_in(self):
@@ -124,29 +107,12 @@ class DocumentCheckoutTestCase(BaseTestCase):
         NewVersionBlock.objects.block(document=self.document)
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
                 self.document.new_version(file_object=file_object)
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(BaseTestCase):
-    def setUp(self):
-        super(NewVersionBlockTestCase, self).setUp()
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()
-        super(NewVersionBlockTestCase, self).tearDown()
-
+class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
     def test_blocking(self):
         NewVersionBlock.objects.block(document=self.document)
 

@@ -23,22 +23,22 @@ class TarArchiveClassTestCase(BaseTestCase):
     def test_add_file(self):
         archive = self.cls()
         archive.create()
-        with open(self.file_path) as file_object:
+        with open(self.file_path, 'rb') as file_object:
             archive.add_file(file_object=file_object, filename=self.filename)
             self.assertTrue(archive.members(), [self.filename])
 
     def test_open(self):
-        with open(self.archive_path) as file_object:
+        with open(self.archive_path, 'rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertTrue(isinstance(archive, self.cls))
 
     def test_members(self):
-        with open(self.archive_path) as file_object:
+        with open(self.archive_path, 'rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertEqual(archive.members(), self.members_list)
 
     def test_member_contents(self):
-        with open(self.archive_path) as file_object:
+        with open(self.archive_path, 'rb') as file_object:
             archive = Archive.open(file_object=file_object)
             self.assertEqual(
                 archive.member_contents(filename=self.member_name),
@@ -46,7 +46,7 @@ class TarArchiveClassTestCase(BaseTestCase):
             )
 
     def test_open_member(self):
-        with open(self.archive_path) as file_object:
+        with open(self.archive_path, 'rb') as file_object:
             archive = Archive.open(file_object=file_object)
             file_object = archive.open_member(filename=self.member_name)
             self.assertEqual(

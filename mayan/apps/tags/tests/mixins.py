@@ -1,13 +1,6 @@
 from __future__ import unicode_literals
 
-from documents.permissions import permission_document_view
-from documents.tests import GenericDocumentViewTestCase
-
 from ..models import Tag
-from ..permissions import (
-    permission_tag_attach, permission_tag_create, permission_tag_delete,
-    permission_tag_edit, permission_tag_remove, permission_tag_view
-)
 
 from .literals import (
     TEST_TAG_COLOR, TEST_TAG_COLOR_EDITED, TEST_TAG_LABEL,
@@ -31,7 +24,7 @@ class TagTestMixin(object):
 
     def _request_tag_delete_view(self):
         return self.post(
-           viewname='tags:tag_delete', args=(self.tag.pk,)
+            viewname='tags:tag_delete', args=(self.tag.pk,)
         )
 
     def _request_tag_edit_view(self):

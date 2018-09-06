@@ -18,7 +18,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
         self.login_user()
 
     def test_document_version_list_no_permission(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 comment=TEST_VERSION_COMMENT, file_object=file_object
             )
@@ -34,7 +34,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_document_version_view
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 comment=TEST_VERSION_COMMENT, file_object=file_object
             )
@@ -48,7 +48,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
     def test_document_version_revert_no_permission(self):
         first_version = self.document.latest_version
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )
@@ -63,7 +63,7 @@ class DocumentVersionTestCase(GenericDocumentViewTestCase):
     def test_document_version_revert_with_access(self):
         first_version = self.document.latest_version
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )
