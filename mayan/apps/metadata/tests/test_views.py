@@ -201,7 +201,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
             )
@@ -247,7 +247,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_remove)
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
             )
@@ -289,7 +289,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
             )

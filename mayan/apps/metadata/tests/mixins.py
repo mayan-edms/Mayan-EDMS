@@ -8,9 +8,9 @@ from .literals import (
 )
 
 
-class MetadataTypeMixin(object):
+class MetadataTypeTestMixin(object):
     def setUp(self):
-        super(MetadataTypeMixin, self).setUp()
+        super(MetadataTypeTestMixin, self).setUp()
         self.metadata_type = MetadataType.objects.create(
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )

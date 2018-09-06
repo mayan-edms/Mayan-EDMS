@@ -6,10 +6,7 @@ from django.test import override_settings
 
 from common.tests import BaseTestCase
 from documents.models import DocumentType
-from documents.tests import (
-    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_PATH,
-    TEST_DOCUMENT_TYPE_LABEL
-)
+from documents.tests import DocumentTestMixin, TEST_DOCUMENT_TYPE_2_LABEL
 
 from ..models import DocumentMetadata
 
@@ -18,27 +15,14 @@ from .literals import (
     TEST_CORRECT_LOOKUP_VALUE, TEST_DATE_VALIDATOR, TEST_DATE_PARSER,
     TEST_INVALID_DATE, TEST_VALID_DATE, TEST_PARSED_VALID_DATE
 )
-from .mixins import MetadataTypeMixin
+from .mixins import MetadataTypeTestMixin
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MetadataTestCase(MetadataTypeMixin, BaseTestCase):
+class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
         self.document_type.metadata.create(metadata_type=self.metadata_type)
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(MetadataTestCase, self).tearDown()
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

@@ -9,17 +9,16 @@ from documents.permissions import permission_document_create
 from documents.tests import (
     GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH,
 )
-from metadata.tests.literals import TEST_METADATA_VALUE_UNICODE
-from metadata.tests.mixins import MetadataTypeMixin
-
 from sources.models import WebFormSource
-
 from sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,
 )
 
+from .literals import TEST_METADATA_VALUE_UNICODE
+from .mixins import MetadataTypeTestMixin
 
-class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestCase):
+
+class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentUploadMetadataTestCase, self).setUp()
         self.login_user()
@@ -43,7 +42,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeMixin, GenericDocumentViewTestC
             permission=permission_document_create, obj=self.document_type
         )
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_descriptor:
             response = self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
