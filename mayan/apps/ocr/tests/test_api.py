@@ -4,8 +4,7 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin
 from rest_api.tests import BaseAPITestCase
 
 from ..permissions import (
@@ -15,25 +14,13 @@ from ..permissions import (
 
 @override_settings(OCR_AUTO_OCR=False)
 @override_settings(DOCUMENT_PARSING_PDFTOTEXT_PATH='')
-class OCRAPITestCase(BaseAPITestCase):
+class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
     """
     Test the OCR app API endpoints
     """
     def setUp(self):
         super(OCRAPITestCase, self).setUp()
         self.login_user()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(OCRAPITestCase, self).tearDown()
 
     def _request_document_ocr_submit_view(self):
         return self.post(
