@@ -33,6 +33,9 @@ class EventTypeNamespace(object):
         self.event_types = []
         self.__class__._registry[name] = self
 
+    def __lt__(self, other):
+        return self.label < other.label
+
     def __str__(self):
         return force_text(self.label)
 
