@@ -475,7 +475,7 @@ class SourceColumn(object):
                     try:
                         # Special case for queryset items produced from
                         # .defer() or .only() optimizations
-                        return SourceColumn.sort(columns=cls._registry[source._meta.parents.items()[0][0]])
+                        return SourceColumn.sort(columns=cls._registry[list(source._meta.parents.items())[0][0]])
                     except (AttributeError, KeyError, IndexError):
                         return ()
         except TypeError:
