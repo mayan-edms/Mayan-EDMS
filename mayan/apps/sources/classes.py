@@ -3,7 +3,14 @@ from __future__ import unicode_literals
 import base64
 import os
 import time
-import urllib
+
+try:
+    # Python 2
+    from urllib import unquote_plus
+except ImportError:
+    # Python 3
+    from urllib.parse import unquote_plus
+
 
 from django.core.files import File
 from django.urls import reverse
@@ -39,7 +46,7 @@ class StagingFile(object):
         if encoded_filename:
             self.encoded_filename = str(encoded_filename)
             self.filename = base64.urlsafe_b64decode(
-                urllib.unquote_plus(self.encoded_filename)
+                unquote_plus(self.encoded_filename)
             ).decode('utf8')
         else:
             self.filename = filename

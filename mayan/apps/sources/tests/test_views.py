@@ -40,7 +40,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.document.delete()
 
     def _request_upload_wizard(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             return self.post(
                 'sources:upload_interactive', args=(self.source.pk,), data={
                     'source-file': file_object,
@@ -82,7 +82,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             obj=self.document_type, permission=permission_document_create
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             response = self.post(
                 'sources:upload_interactive', args=(self.source.pk,), data={
                     'source-file': file_object,
@@ -142,7 +142,7 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_descriptor:
             self.post(
                 'sources:upload_interactive', data={
                     'document-language': 'eng', 'source-file': file_descriptor,
