@@ -6,6 +6,7 @@ from rest_framework import status
 
 from documents.models import DocumentType
 from documents.permissions import permission_document_view
+from documents.tests import DocumentTestMixin
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
@@ -27,26 +28,13 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class SmartLinkAPITestCase(BaseAPITestCase):
+class SmartLinkAPITestCase(DocumentTestMixin, BaseAPITestCase):
+    auto_create_document_type = False
+    auto_upload_document = False
+
     def setUp(self):
         super(SmartLinkAPITestCase, self).setUp()
         self.login_user()
-
-    def tearDown(self):
-        if hasattr(self, 'document_type'):
-            self.document_type.delete()
-        super(SmartLinkAPITestCase, self).tearDown()
-
-    def _create_document_type(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def _create_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
 
     def _create_smart_link(self):
         return SmartLink.objects.create(
@@ -219,7 +207,7 @@ class SmartLinkConditionAPITestCase(BaseAPITestCase):
         )
 
     def _create_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
