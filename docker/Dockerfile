@@ -11,7 +11,7 @@ MAINTAINER Roberto Rosario "roberto.rosario@mayan-edms.com"
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV LC_ALL C.UTF-8
-ENV PROJECT_INSTALL_DIR=/usr/local/lib/python2.7/dist-packages/mayan
+ENV PROJECT_INSTALL_DIR=/opt/mayan-edms
 
 ARG APT_PROXY
 # Package caching
@@ -38,6 +38,7 @@ apt-get install -y --no-install-recommends \
         python-dev \
         python-pip \
         python-setuptools \
+        python-virtualenv \
         python-wheel \
         redis-server \
         sane-utils \
@@ -54,8 +55,8 @@ rm -f /var/cache/apt/archives/*.deb
 ADD https://raw.githubusercontent.com/guilhem/apt-get-install/master/apt-get-install /usr/bin/
 RUN chmod +x /usr/bin/apt-get-install
 
-# Install Python clients for PostgreSQL, REDIS, librabbitmq
-RUN pip install psycopg2==2.7.3.2 redis==2.10.6 mysql-python==1.2.5 librabbitmq==1.6.1
+# Install Python clients for librabbitmq, MySQL, PostgreSQL, REDIS
+RUN pip install librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6
 
 RUN adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
 
@@ -107,7 +108,11 @@ RUN chmod 777 dist -R
 
 FROM BASE_IMAGE
 
-WORKDIR /root/
+RUN mkdir -p /opt
+
+RUN virtualenv $PROJECT_INSTALL_DIR
+
+WORKDIR /opt/mayan-edms/
 
 COPY --from=BUILDER_IMAGE /code/dist/*.whl .
 
@@ -117,18 +122,18 @@ COPY --from=BUILDER_IMAGE /code/requirements/testing-base.txt requirements-testi
 
 COPY --from=BUILDER_IMAGE /code/docker/version .
 
+# Fix ownership
+RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
+
 # Install build Mayan EDMS
-RUN pip install *.whl && \
+RUN pip -u mayan $PROJECT_INSTALL_DIR/bin/pip install --no-cache-dir *.whl && \
 rm *.whl
 
 # Setup supervisor
 COPY docker/etc/supervisor/mayan.conf /etc/supervisor/conf.d
 
-# Fix ownership
-RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
-
 # Allow flanker to autogenerate its PLY files
-RUN chown -R mayan:mayan /usr/local/lib/python2.7/dist-packages/flanker/
+RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR/lib/python2.7/site-packages/flanker/
 
 RUN mkdir /var/lib/mayan
 VOLUME ["/var/lib/mayan"]

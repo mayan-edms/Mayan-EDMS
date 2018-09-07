@@ -3,20 +3,22 @@
 set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/media/system/SECRET_KEY
-export DOCKER_ROOT=/root
+export DOCKER_ROOT=/opt/mayan-edms
 
 export MAYAN_DEFAULT_BROKER_URL=redis://127.0.0.1:6379/0
 export MAYAN_DEFAULT_CELERY_RESULT_BACKEND=redis://127.0.0.1:6379/0
 
-export MAYAN_ALLOWED_HOSTS=*
-export MAYAN_BIN=/usr/local/lib/python2.7/dist-packages/mayan/bin/mayan-edms.py
+export MAYAN_ALLOWED_HOSTS='["*"]'
+export MAYAN_BIN=/opt/mayan-edms/bin/mayan-edms.py
 export MAYAN_BROKER_URL=${MAYAN_BROKER_URL:-${MAYAN_DEFAULT_BROKER_URL}}
 export MAYAN_CELERY_RESULT_BACKEND=${MAYAN_CELERY_RESULT_BACKEND:-${MAYAN_DEFAULT_CELERY_RESULT_BACKEND}}
-export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
-export MAYAN_INSTALL_DIR=/usr/local/lib/python2.7/dist-packages/mayan
-export MAYAN_PYTHON_DIR=/usr/local/bin
+export MAYAN_INSTALL_DIR=/opt/mayan-edms
+export MAYAN_PYTHON_BIN_DIR=/opt/mayan-edms/bin/
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
+
+export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
+export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
 
 export CELERY_ALWAYS_EAGER=False
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
@@ -25,14 +27,14 @@ chown mayan:mayan /var/lib/mayan -R
 
 initialize() {
     echo "mayan: initialize()"
-    su mayan -c "mayan-edms.py initialsetup --force"
-    su mayan -c "mayan-edms.py collectstatic --noinput --clear"
+    su mayan -c "${MAYAN_BIN} initialsetup --force"
+    su mayan -c "${MAYAN_BIN} collectstatic --noinput --clear"
 }
 
 upgrade() {
     echo "mayan: upgrade()"
-    su mayan -c "mayan-edms.py performupgrade"
-    su mayan -c "mayan-edms.py collectstatic --noinput --clear"
+    su mayan -c "${MAYAN_BIN} performupgrade"
+    su mayan -c "${MAYAN_BIN} collectstatic --noinput --clear"
 }
 
 start() {
