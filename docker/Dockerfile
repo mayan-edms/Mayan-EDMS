@@ -12,6 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV LC_ALL C.UTF-8
 ENV PROJECT_INSTALL_DIR=/opt/mayan-edms
+ENV PYTHON_PIP=${PROJECT_INSTALL_DIR}/bin/pip
 
 ARG APT_PROXY
 # Package caching
@@ -42,6 +43,7 @@ apt-get install -y --no-install-recommends \
         python-wheel \
         redis-server \
         sane-utils \
+        sudo \
         supervisor \
         tesseract-ocr \
         zlib1g-dev \
@@ -54,9 +56,6 @@ rm -f /var/cache/apt/archives/*.deb
 # Install apt-get-install
 ADD https://raw.githubusercontent.com/guilhem/apt-get-install/master/apt-get-install /usr/bin/
 RUN chmod +x /usr/bin/apt-get-install
-
-# Install Python clients for librabbitmq, MySQL, PostgreSQL, REDIS
-RUN pip install librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6
 
 RUN adduser mayan --disabled-password --disabled-login --no-create-home --gecos ""
 
@@ -110,9 +109,9 @@ FROM BASE_IMAGE
 
 RUN mkdir -p /opt
 
-RUN virtualenv $PROJECT_INSTALL_DIR
+RUN python /usr/lib/python2.7/dist-packages/virtualenv.py $PROJECT_INSTALL_DIR
 
-WORKDIR /opt/mayan-edms/
+WORKDIR $PROJECT_INSTALL_DIR
 
 COPY --from=BUILDER_IMAGE /code/dist/*.whl .
 
@@ -126,14 +125,14 @@ COPY --from=BUILDER_IMAGE /code/docker/version .
 RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
 
 # Install build Mayan EDMS
-RUN pip -u mayan $PROJECT_INSTALL_DIR/bin/pip install --no-cache-dir *.whl && \
+RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir *.whl && \
 rm *.whl
+
+# Install Python clients for librabbitmq, MySQL, PostgreSQL, REDIS
+RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6
 
 # Setup supervisor
 COPY docker/etc/supervisor/mayan.conf /etc/supervisor/conf.d
-
-# Allow flanker to autogenerate its PLY files
-RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR/lib/python2.7/site-packages/flanker/
 
 RUN mkdir /var/lib/mayan
 VOLUME ["/var/lib/mayan"]
