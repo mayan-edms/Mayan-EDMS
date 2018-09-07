@@ -19,6 +19,7 @@ export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
 
 export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-2}
+export MAYAN_PIP_BIN=${MAYAN_PYTHON_BIN_DIR}pip
 
 export CELERY_ALWAYS_EAGER=False
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
@@ -53,7 +54,7 @@ os_package_installs() {
 pip_installs() {
     echo "mayan: pip_installs()"
     if [ "${MAYAN_PIP_INSTALLS}" ]; then
-        pip install $MAYAN_PIP_INSTALLS
+        $MAYAN_PIP_BIN install $MAYAN_PIP_INSTALLS
     fi
 }
 
