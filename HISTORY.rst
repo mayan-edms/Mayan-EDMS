@@ -133,7 +133,8 @@
   using the quick label feature. Added to the document properties
   edit view and the document upload view. Closes GitLab issue
   #360.
-
+- Add new dashboard item to display the total page count.
+  
 3.0.3 (2018-08-17)
 ==================
 - Tags app: Add explicit casting of escaped tag labels to prevent exploit

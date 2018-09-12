@@ -11,12 +11,12 @@ When one hears the word software bug, one first think of critical errors.
 We might think about data loss, privacy issues or user interface breakage.
 However there is a special kind of "bug" dubbed a "papercut". It is not really
 a bug in the practical sense as it doesn't stop the software from working.
-It doesn't cause data loss or system errors either. It is just somethig the
+It doesn't cause data loss or system errors either. It is just something the
 software does or doesn't do that is annoying, breaks the flow of
-actions or interfieres with the user experience.
+actions or interferes with the user experience.
 
 This release as with all others brings all manner of updates to the backend in
-terms of features or improvement to existing feature but also focussed in fixing
+terms of features or improvement to existing feature but also focused in fixing
 (or at least improving) some of Mayan's "papercuts".
 
 
@@ -41,7 +41,7 @@ web interface. Over the last few versions we have been introducing updates
 to the settings system to make it easier to customize how Mayan works without
 having to learn Python syntax. These changes started first with the introduction
 YAML serialization and then expanded by supporting environment variables.
-With those changes now proven to be reliable we ahve introduced in this version
+With those changes now proven to be reliable we have introduced in this version
 the ability to save settings in a YAML file.
 
 This new change allows for three new features that make customizing Mayan a lot easier:
@@ -49,7 +49,7 @@ This new change allows for three new features that make customizing Mayan a lot 
 The first feature allow users to create configuration files without using Python
 files (like the historical local.py file). The configuration file is called
 config.yml and resides in the media folder. Just add the setting name in all
-capital letters, followed by a collon sign (:), and a value for that settings.
+capital letters, followed by a colon sign (:), and a value for that settings.
 Example::
 
     DOCUMENTS_THUMBNAIL_HEIGHT: ''
@@ -61,7 +61,7 @@ Example::
 The second feature allow users to make changes to the settings options from the
 web interface. Just navigate to [System] -> [Setup] -> [Settings]. Settings are
 grouped by namespaces based on the app of type of system their control.
-To change the default width of thumnails, navigate to [Documents] -> [DOCUMENTS_THUMBNAIL_WIDTH]
+To change the default width of thumbnails, navigate to [Documents] -> [DOCUMENTS_THUMBNAIL_WIDTH]
  and click on [Edit] to change the current value. Upon clicking on [Save] the
  ``config.yml`` will be updated to include this new value. A restart of the installation
  is required to make the change effective. This is not a Mayan limitation but a
@@ -79,16 +79,16 @@ upon this by adding permissions to view and edit settings. This makes it possibl
 to delegate to roles the ability to make configuration changes.
 
 Support was added for changing the ``HOME_VIEW``, ``LOGIN_URL`` and ``LOGIN_REDIRECT_URL``
-from the settings view. These control the URL of the home archor that is located
+from the settings view. These control the URL of the home anchor that is located
 on the top left corner of the screen, the URL used to login users and
 the URL where users are taken after login.
 
 Add a new column was added to show if a setting can be changed from the web
-interface or if it can't because that setting has been overrided via an environment
-variable passed from the operating system. Environment variable have presedence
+interface or if it can't because that setting has been overided via an environment
+variable passed from the operating system. Environment variable have precedence
 over changes via the web interface. This is to avoid Mayan administrators to
 go over the settings as configure by the server administrators that made the
-deployment. This settings hierachy is as follows:
+deployment. This settings hierarchy is as follows:
 
 1- Python settings file in mayan_settings directory and imported via ``DJANGO_SETTINGS_MODULE``
    environment variable of the ``--settings=`` option of the ``mayan_edms.py`` executable.
@@ -99,13 +99,13 @@ deployment. This settings hierachy is as follows:
 3- The setting as configured in the ``media`` folder with the new ``config.yml`` file.
    Settings here use the normal name (without the ``MAYAN_`` prefix) and use
    a YAML syntax.
-4- Setting modified via the new web interface, which upon saved will overrite the
+4- Setting modified via the new web interface, which upon saved will overwrite the
    ``mayan/config.yml`` file.
 
 Customization
 ~~~~~~~~~~~~~
 Along with improvements in the ease of customizing Mayan, we've added more
-even more cutomization options via new settings. We've added the
+even more customization options via new settings. We've added the
 ``COMMON_PROJECT_TITLE`` setting to allow administrator to change the name of their
 deployments without having to make code changes. We added several base Django
 settings to allow how administrative emails are sent (like the password recovery
@@ -174,10 +174,10 @@ Permission changes
 Add new document indexing permission was added. This permission allow users
 to view an index instance as opposed to the current permission which allows
 viewing an index definition on the setup menu. This new permission allows
-administrators to assing a permission to some roles to edit the index definitions
+administrators to assign a permission to some roles to edit the index definitions
 while assigning a different permission to other roles to only view the resulting
 evaluation of those indexes. The first is usually assigned to administrative users,
-while the second is assgined to normal users.
+while the second is assigned to normal users.
 
 ACL support was added to metadata types. This allows fine control delegation of
 metadata definition administration. One role can be given control over some
@@ -227,7 +227,7 @@ Blanks views and auto documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Previously when an user navigated to a view with no results a simple "No results"
 message was displayed. This has now been improved with a new template that will
-display several pices of information. An icon will be displayed to help the user
+display several pieces of information. An icon will be displayed to help the user
 identify where they are located in the case of clicking an incorrect link or button.
 Instead of "No results" a more explicit text message will be displayed like
 "No indexes available" or "There are no tags for this document". Third, a short
@@ -262,7 +262,7 @@ Dashboard changes
 The dashboard widget system has been refactored to make it class based. This
 allows developers to subclass the base class for the dashboard widget and more
 easily add their own widget system. The new widget class can also access
-stored templates. A sample numberic dashboard widget is included and a
+stored templates. A sample numeric dashboard widget is included and a
 corresponding template in ``dashboard/numeric_widget.html``. All the default
 dashboard widgets have been updated to this new interface.
 
@@ -349,6 +349,7 @@ classes beyond the provide line chart.
   using the quick label feature. Added to the document properties
   edit view and the document upload view. Closes GitLab issue
   #360.
+- Add new dashboard item to display the total page count.
 
 
 Removals
@@ -433,5 +434,5 @@ Bugs fixed or issues closed
 * `GitLab issue #7 <https://gitlab.com/mayan-edms/mayan-edms/issues/7>`_ Feature: other compressors than zip for compressed documents
 * `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
 * `GitLab issue #360 <https://gitlab.com/mayan-edms/mayan-edms/issues/360>`_ Should quick rename (optionally) retain original file type extension?
-  
+
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

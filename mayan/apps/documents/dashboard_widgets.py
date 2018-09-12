@@ -19,6 +19,28 @@ from .statistics import (
 )
 
 
+class DashboardWidgetDocumentPagesTotal(DashboardWidgetNumeric):
+    icon_class = icon_dashboard_pages_per_month
+    label = _('Total pages')
+    link = reverse_lazy(
+        'statistics:statistic_detail',
+        args=('total-document-pages-at-each-month',)
+    )
+
+    def render(self, request):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        self.count = AccessControlList.objects.filter_by_access(
+            permission=permission_document_view, user=request.user,
+            queryset=DocumentPage.objects.all()
+        ).count()
+        return super(DashboardWidgetDocumentPagesTotal, self).render(request)
+
+
 class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
     icon_class = icon_dashboard_total_document
     label = _('Total documents')

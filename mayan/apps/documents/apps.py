@@ -35,7 +35,8 @@ from navigation import SourceColumn
 from rest_api.fields import DynamicSerializerField
 
 from .dashboard_widgets import (
-    DashboardWidgetDocumentsInTrash, DashboardWidgetDocumentsNewThisMonth,
+    DashboardWidgetDocumentPagesTotal, DashboardWidgetDocumentsInTrash,
+    DashboardWidgetDocumentsNewThisMonth,
     DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
     DashboardWidgetDocumentsTypesTotal,
 )
@@ -394,16 +395,19 @@ class DocumentsApp(MayanAppConfig):
             widget=DashboardWidgetDocumentsTotal, order=0
         )
         dashboard_main.add_widget(
-            widget=DashboardWidgetDocumentsInTrash, order=1
+            widget=DashboardWidgetDocumentPagesTotal, order=1
         )
         dashboard_main.add_widget(
-            widget=DashboardWidgetDocumentsTypesTotal, order=2
+            widget=DashboardWidgetDocumentsInTrash, order=2
         )
         dashboard_main.add_widget(
-            widget=DashboardWidgetDocumentsNewThisMonth, order=3
+            widget=DashboardWidgetDocumentsTypesTotal, order=3
         )
         dashboard_main.add_widget(
-            widget=DashboardWidgetDocumentsPagesNewThisMonth, order=4
+            widget=DashboardWidgetDocumentsNewThisMonth, order=4
+        )
+        dashboard_main.add_widget(
+            widget=DashboardWidgetDocumentsPagesNewThisMonth, order=5
         )
 
         menu_documents.bind_links(
