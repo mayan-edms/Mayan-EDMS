@@ -94,6 +94,10 @@ class SourcesApp(MayanAppConfig):
                     'sources', Exchange('sources'), routing_key='sources'
                 ),
                 Queue(
+                    'sources_fast', Exchange('sources_fast'),
+                    routing_key='sources_fast', delivery_mode=1
+                ),
+                Queue(
                     'sources_periodic', Exchange('sources_periodic'),
                     routing_key='sources_periodic', delivery_mode=1
                 ),
@@ -104,6 +108,9 @@ class SourcesApp(MayanAppConfig):
             {
                 'sources.tasks.task_check_interval_source': {
                     'queue': 'sources_periodic'
+                },
+                'sources.tasks.task_generate_staging_file_image': {
+                    'queue': 'sources_fast'
                 },
                 'sources.tasks.task_source_handle_upload': {
                     'queue': 'sources'

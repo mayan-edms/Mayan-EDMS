@@ -1,8 +1,11 @@
 from __future__ import unicode_literals
 
 import base64
+import logging
 import os
 import time
+
+from furl import furl
 
 try:
     # Python 2
@@ -13,10 +16,15 @@ except ImportError:
 
 
 from django.core.files import File
+from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 
 from converter import TransformationResize, converter_class
+
+from .storages import storage_staging_file_image_cache
+
+logger = logging.getLogger(__name__)
 
 
 class PseudoFile(File):
@@ -62,13 +70,73 @@ class StagingFile(object):
             file=open(self.get_full_path(), mode='rb'), name=self.filename
         )
 
-    def get_api_image_url(self):
-        return reverse(
+    @property
+    def cache_filename(self):
+        return '{}{}'.format(self.staging_folder.pk, self.encoded_filename)
+
+    def delete(self):
+        storage_staging_file_image_cache.delete(self.cache_filename)
+        os.unlink(self.get_full_path())
+
+    def generate_image(self, *args, **kwargs):
+        transformation_list = self.get_combined_transformation_list(*args, **kwargs)
+
+        # Check is transformed image is available
+        logger.debug('transformations cache filename: %s', self.cache_filename)
+
+        if storage_staging_file_image_cache.exists(self.cache_filename):
+            logger.debug(
+                'staging file cache file "%s" found', self.cache_filename
+            )
+        else:
+            logger.debug(
+                'staging file cache file "%s" not found', self.cache_filename
+            )
+            image = self.get_image(transformations=transformation_list)
+            with storage_staging_file_image_cache.open(self.cache_filename, 'wb+') as file_object:
+                file_object.write(image.getvalue())
+
+        return self.cache_filename
+
+    def get_api_image_url(self, *args, **kwargs):
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
             'rest_api:stagingfolderfile-image-view', args=(
                 self.staging_folder.pk,
                 self.encoded_filename
             )
         )
+
+        return final_url.tostr()
+
+    def get_combined_transformation_list(self, *args, **kwargs):
+        """
+        Return a list of transformation containing the server side
+        staging file transformation as well as tranformations created
+        from the arguments as transient interactive transformation.
+        """
+        # Convert arguments into transformations
+        transformations = kwargs.get('transformations', [])
+
+        # Set sensible defaults if the argument is not specified or if the
+        # argument is None
+        width = self.staging_folder.preview_width
+        height = self.staging_folder.preview_height
+
+        # Generate transformation hash
+        transformation_list = []
+
+        # Interactive transformations second
+        for transformation in transformations:
+            transformation_list.append(transformation)
+
+        if width:
+            transformation_list.append(
+                TransformationResize(width=width, height=height)
+            )
+
+        return transformation_list
 
     def get_date_time_created(self):
         return time.ctime(os.path.getctime(self.get_full_path()))
@@ -76,21 +144,37 @@ class StagingFile(object):
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
 
-    def get_image(self, size=None, as_base64=False, transformations=None):
-        converter = converter_class(file_object=open(self.get_full_path()))
+    def get_image(self, transformations=None):
+        cache_filename = self.cache_filename
+        file_object = None
 
-        if size:
-            converter.transform(
-                transformation=TransformationResize(
-                    **dict(zip(('width', 'height'), (size.split('x'))))
-                )
+        try:
+            file_object = open(self.get_full_path())
+            converter = converter_class(file_object=file_object)
+
+            page_image = converter.get_page()
+
+            # Since open "wb+" doesn't create files, check if the file
+            # exists, if not then create it
+            if not storage_staging_file_image_cache.exists(cache_filename):
+                storage_staging_file_image_cache.save(name=cache_filename, content=ContentFile(content=''))
+
+            with storage_staging_file_image_cache.open(cache_filename, 'wb+') as file_object:
+                file_object.write(page_image.getvalue())
+        except Exception as exception:
+            # Cleanup in case of error
+            logger.error(
+                'Error creating staging file cache "%s"; %s',
+                cache_filename, exception
             )
+            storage_staging_file_image_cache.delete(cache_filename)
+            if file_object:
+                file_object.close()
+            raise
 
-        # Interactive transformations
         for transformation in transformations:
             converter.transform(transformation=transformation)
 
-        return converter.get_page(as_base64=as_base64)
-
-    def delete(self):
-        os.unlink(self.get_full_path())
+        result = converter.get_page()
+        file_object.close()
+        return result
