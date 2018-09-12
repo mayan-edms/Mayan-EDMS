@@ -350,7 +350,7 @@ classes beyond the provide line chart.
   edit view and the document upload view. Closes GitLab issue
   #360.
 - Add new dashboard item to display the total page count.
-
+- Show the document type being uploaded in the source view title.
 
 Removals
 --------
