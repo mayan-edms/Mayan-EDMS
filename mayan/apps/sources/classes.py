@@ -20,8 +20,7 @@ from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 
-from converter import BaseTransformation, TransformationResize, converter_class
-from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from converter import TransformationResize, converter_class
 
 from .storages import storage_staging_file_image_cache
 
@@ -76,42 +75,30 @@ class StagingFile(object):
         return '{}{}'.format(self.staging_folder.pk, self.encoded_filename)
 
     def delete(self):
-        #TODO: delete cached files
+        storage_staging_file_image_cache.delete(self.cache_filename)
         os.unlink(self.get_full_path())
 
     def generate_image(self, *args, **kwargs):
         transformation_list = self.get_combined_transformation_list(*args, **kwargs)
 
-        cache_filename = '{}-{}'.format(
-            self.cache_filename, BaseTransformation.combine(transformation_list)
-        )
-
         # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', cache_filename)
+        logger.debug('transformations cache filename: %s', self.cache_filename)
 
-        if storage_staging_file_image_cache.exists(cache_filename):
+        if storage_staging_file_image_cache.exists(self.cache_filename):
             logger.debug(
-                'transformations cache file "%s" found', cache_filename
+                'staging file cache file "%s" found', self.cache_filename
             )
         else:
             logger.debug(
-                'transformations cache file "%s" not found', cache_filename
+                'staging file cache file "%s" not found', self.cache_filename
             )
             image = self.get_image(transformations=transformation_list)
-            with storage_staging_file_image_cache.open(cache_filename, 'wb+') as file_object:
+            with storage_staging_file_image_cache.open(self.cache_filename, 'wb+') as file_object:
                 file_object.write(image.getvalue())
 
-            #self.cached_images.create(filename=cache_filename)
-
-        return cache_filename
+        return self.cache_filename
 
     def get_api_image_url(self, *args, **kwargs):
-        transformations_hash = BaseTransformation.combine(
-            self.get_combined_transformation_list(*args, **kwargs)
-        )
-
-        kwargs.pop('transformations', None)
-
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
@@ -120,7 +107,6 @@ class StagingFile(object):
                 self.encoded_filename
             )
         )
-        final_url.args['_hash'] = transformations_hash
 
         return final_url.tostr()
 
@@ -135,8 +121,8 @@ class StagingFile(object):
 
         # Set sensible defaults if the argument is not specified or if the
         # argument is None
-        width = kwargs.get('width', self.staging_folder.preview_width) or self.staging_folder.preview_width
-        height = kwargs.get('height', self.staging_folder.preview_height) or self.staging_folder.preview_height
+        width = self.staging_folder.preview_width
+        height = self.staging_folder.preview_height
 
         # Generate transformation hash
         transformation_list = []
@@ -161,39 +147,30 @@ class StagingFile(object):
     def get_image(self, transformations=None):
         cache_filename = self.cache_filename
         file_object = None
-        logger.debug('Page cache filename: %s', cache_filename)
 
-        if storage_staging_file_image_cache.exists(cache_filename):
-            logger.debug('Page cache file "%s" found', cache_filename)
-            file_object = storage_staging_file_image_cache.open(cache_filename)
+        try:
+            file_object = open(self.get_full_path())
             converter = converter_class(file_object=file_object)
 
-            converter.seek(0)
-        else:
-            logger.debug('Page cache file "%s" not found', cache_filename)
-            try:
-                file_object = open(self.get_full_path())
-                converter = converter_class(file_object=file_object)
+            page_image = converter.get_page()
 
-                page_image = converter.get_page()
+            # Since open "wb+" doesn't create files, check if the file
+            # exists, if not then create it
+            if not storage_staging_file_image_cache.exists(cache_filename):
+                storage_staging_file_image_cache.save(name=cache_filename, content=ContentFile(content=''))
 
-                # Since open "wb+" doesn't create files, check if the file
-                # exists, if not then create it
-                if not storage_staging_file_image_cache.exists(cache_filename):
-                    storage_staging_file_image_cache.save(name=cache_filename, content=ContentFile(content=''))
-
-                with storage_staging_file_image_cache.open(cache_filename, 'wb+') as file_object:
-                    file_object.write(page_image.getvalue())
-            except Exception as exception:
-                # Cleanup in case of error
-                logger.error(
-                    'Error creating page cache file "%s"; %s',
-                    cache_filename, exception
-                )
-                storage_staging_file_image_cache.delete(cache_filename)
-                if file_object:
-                    file_object.close()
-                raise
+            with storage_staging_file_image_cache.open(cache_filename, 'wb+') as file_object:
+                file_object.write(page_image.getvalue())
+        except Exception as exception:
+            # Cleanup in case of error
+            logger.error(
+                'Error creating staging file cache "%s"; %s',
+                cache_filename, exception
+            )
+            storage_staging_file_image_cache.delete(cache_filename)
+            if file_object:
+                file_object.close()
+            raise
 
         for transformation in transformations:
             converter.transform(transformation=transformation)

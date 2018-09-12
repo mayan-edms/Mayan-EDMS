@@ -14,7 +14,6 @@ from common.exceptions import NoMIMETypeMatch
 from lock_manager import LockError
 from lock_manager.runtime import locking_backend
 
-from .classes import StagingFile
 from .literals import (
     DEFAULT_SOURCE_LOCK_EXPIRE, DEFAULT_SOURCE_TASK_RETRY_DELAY
 )

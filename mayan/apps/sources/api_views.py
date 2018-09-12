@@ -2,16 +2,13 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from django.views.decorators.cache import cache_control, patch_cache_control
 
-from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
 from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT
 from .models import StagingFolderSource
 from .serializers import StagingFolderFileSerializer, StagingFolderSerializer
-from .settings import settings_staging_file_image_cache_time
 from .storages import storage_staging_file_image_cache
 from .tasks import task_generate_staging_file_image
 
@@ -76,8 +73,4 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
 
         with storage_staging_file_image_cache.open(cache_filename) as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
-            if '_hash' in request.GET:
-                patch_cache_control(
-                    response, max_age=settings_staging_file_image_cache_time.value
-                )
             return response

@@ -31,10 +31,3 @@ setting_staging_file_image_cache_storage_arguments = namespace.add_setting(
         'Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND.'
     ), quoted=True,
 )
-settings_staging_file_image_cache_time = namespace.add_setting(
-    global_name='SOURCES_STAGING_FILE_IMAGE_CACHE_TIME', default='31556926',
-    help_text=_(
-        'Time in seconds that the browser should cache the supplied staging '
-        'file images. The default of 31559626 seconds corresponde to 1 year.'
-    )
-)
