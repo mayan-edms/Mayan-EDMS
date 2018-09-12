@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 __title__ = 'Mayan EDMS'
-__version__ = '3.1b1'
+__version__ = '3.1b2'
 __build__ = 0x030100
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'
