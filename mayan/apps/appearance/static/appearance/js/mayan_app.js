@@ -115,6 +115,9 @@ class MayanApp {
 
     doRefreshMainMenu (options) {
         var self = this;
+        var $mainMenu = $('#main-menu');
+        var $mainMenuBuffer = $('#main-menu-buffer');
+
         $.ajax({
             complete: function() {
                 setTimeout(app.doRefreshMainMenu, options.interval, options);
@@ -123,7 +126,12 @@ class MayanApp {
                 var $elements = $('.dropdown.open');
                 if ($elements.length === 0) {
                     // Don't refresh the HTML if there are open dropdowns
-                    $('#main-menu').html(data);
+                    $mainMenuBuffer.html(data);
+                    $mainMenuBuffer.show();
+                    $mainMenu.hide();
+                    $mainMenu.html($mainMenuBuffer.html());
+                    $mainMenu.show();
+                    $mainMenuBuffer.hide();
                 }
             },
             url: options.url,
@@ -240,7 +248,7 @@ class MayanApp {
             setTimeout(
                 function () {
                     self.callbackAJAXSpinnerUpdate();
-                }, 350
+                }, 450
             );
         });
 
