@@ -120,9 +120,9 @@ class CabinetDetailView(DocumentListView):
                     )
                 ),
                 'no_results_text': _(
-                    'Cabinets level can contain documents or other '
-                    'cabinet sub levels. Documents can be added from '
-                    'the document\'s cabinet section.'
+                    'Cabinet levels can contain documents or other '
+                    'cabinet sub levels. To add documents to a cabinet, '
+                    'select the cabinet view of a document view.'
                 ),
                 'no_results_title': _('This cabinet level is empty'),
                 'object': cabinet,
