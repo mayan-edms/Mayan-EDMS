@@ -135,6 +135,8 @@
   #360.
 - Add new dashboard item to display the total page count.
 - Show the document type being uploaded in the source view title.
+- Setting SOURCE_SCANIMAGE_PATH is now SOURCES_SCANIMAGE_PATH.
+- New queue: sources_fast. Used for staging file generation.
 
 3.0.3 (2018-08-17)
 ==================

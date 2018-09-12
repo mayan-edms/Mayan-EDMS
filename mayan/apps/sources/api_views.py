@@ -2,13 +2,18 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.cache import cache_control, patch_cache_control
 
 from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
+from .literals import STAGING_FILE_IMAGE_TASK_TIMEOUT
 from .models import StagingFolderSource
 from .serializers import StagingFolderFileSerializer, StagingFolderSerializer
+from .settings import settings_staging_file_image_cache_time
+from .storages import storage_staging_file_image_cache
+from .tasks import task_generate_staging_file_image
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):
@@ -56,20 +61,23 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        staging_folder = get_object_or_404(
-            StagingFolderSource, pk=self.kwargs['staging_folder_pk']
-        )
-        staging_file = staging_folder.get_file(
-            encoded_filename=self.kwargs['encoded_filename']
+        width = request.GET.get('width')
+        height = request.GET.get('height')
+
+        task = task_generate_staging_file_image.apply_async(
+            kwargs=dict(
+                staging_folder_pk=self.kwargs['staging_folder_pk'],
+                encoded_filename=self.kwargs['encoded_filename'],
+                width=width, height=height
+            )
         )
 
-        size = request.GET.get('size')
+        cache_filename = task.get(timeout=STAGING_FILE_IMAGE_TASK_TIMEOUT)
 
-        return HttpResponse(
-            staging_file.get_image(
-                size=size,
-                transformations=Transformation.objects.get_for_model(
-                    staging_folder, as_classes=True
+        with storage_staging_file_image_cache.open(cache_filename) as file_object:
+            response = HttpResponse(file_object.read(), content_type='image')
+            if '_hash' in request.GET:
+                patch_cache_control(
+                    response, max_age=settings_staging_file_image_cache_time.value
                 )
-            ), content_type='image'
-        )
+            return response

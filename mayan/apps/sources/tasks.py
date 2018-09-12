@@ -14,6 +14,7 @@ from common.exceptions import NoMIMETypeMatch
 from lock_manager import LockError
 from lock_manager.runtime import locking_backend
 
+from .classes import StagingFile
 from .literals import (
     DEFAULT_SOURCE_LOCK_EXPIRE, DEFAULT_SOURCE_TASK_RETRY_DELAY
 )
@@ -197,3 +198,14 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
             task_upload_document.delay(
                 shared_uploaded_file_id=shared_upload.pk, **kwargs
             )
+
+
+@app.task()
+def task_generate_staging_file_image(staging_folder_pk, encoded_filename, *args, **kwargs):
+    StagingFolderSource = apps.get_model(
+        app_label='sources', model_name='StagingFolderSource'
+    )
+    staging_folder = StagingFolderSource.objects.get(pk=staging_folder_pk)
+    staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
+
+    return staging_file.generate_image(*args, **kwargs)
