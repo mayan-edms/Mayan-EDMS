@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-03-12 12:41+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:48 permissions.py:8 settings.py:10
@@ -94,35 +95,35 @@ msgstr "شناسه کلیدی"
 msgid "Key type"
 msgstr "نوع کلید"
 
-#: links.py:32
+#: links.py:36
 msgid "Verify all documents"
 msgstr "همه اسناد را تأیید کنید"
 
-#: links.py:39 links.py:57 queues.py:8
+#: links.py:43 links.py:61 queues.py:8
 msgid "Signatures"
 msgstr "امضا"
 
-#: links.py:46
+#: links.py:49
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:51
+#: links.py:54
 msgid "Details"
 msgstr "جزئیات"
 
-#: links.py:63
+#: links.py:67
 msgid "Download"
 msgstr "دانلود"
 
-#: links.py:69
+#: links.py:73
 msgid "Upload signature"
 msgstr "امضا آپلود"
 
-#: links.py:75
+#: links.py:79
 msgid "Sign detached"
 msgstr "مستقل نشوید"
 
-#: links.py:81
+#: links.py:85
 msgid "Sign embedded"
 msgstr "ورودی جاسازی شده"
 
@@ -222,56 +223,77 @@ msgstr "نسخه سند را تایید کنید"
 msgid "Verify missing embedded signature"
 msgstr "امضای جاسازی نشده را تأیید کنید"
 
-#: views.py:61 views.py:154
+#: settings.py:14
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:23
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
+msgstr ""
+
+#: views.py:68 views.py:161
 msgid "Passphrase is needed to unlock this key."
 msgstr "رمز عبور برای باز کردن قفل این کلید ضروری است."
 
-#: views.py:71 views.py:164
+#: views.py:78 views.py:171
 msgid "Passphrase is incorrect."
 msgstr "عبارت عبور اشتباه است"
 
-#: views.py:92 views.py:184
+#: views.py:99 views.py:191
 msgid "Document version signed successfully."
 msgstr "نسخه سند با موفقیت امضا شد"
 
-#: views.py:116
+#: views.py:123
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "نسخه سند \"%s\" را با امضای جداگانه وارد کنید"
 
-#: views.py:215
+#: views.py:222
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "نسخه سند \"%s\" را با امضای جاسازی شده وارد کنید"
 
-#: views.py:238
+#: views.py:245
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "امضای جداگانه را حذف کنید: %s"
 
-#: views.py:259
+#: views.py:266
 #, python-format
 msgid "Details for signature: %s"
 msgstr "جزئیات برای امضا: %s"
 
-#: views.py:299
+#: views.py:306
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+
+#: views.py:328
+msgid "There are no signatures for this document."
+msgstr ""
+
+#: views.py:331
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "امضا برای نسخه سند: %s"
 
-#: views.py:328
+#: views.py:360
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
 
-#: views.py:345
+#: views.py:377
 msgid "On large databases this operation may take some time to execute."
-msgstr "در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول بکشد."
+msgstr ""
+"در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول "
+"بکشد."
 
-#: views.py:346
+#: views.py:378
 msgid "Verify all document for signatures?"
 msgstr "همه سند را برای امضاء تأیید کنید؟"
 
-#: views.py:356
+#: views.py:388
 msgid "Signature verification queued successfully."
 msgstr "تأیید امضا با موفقیت انجام شد."

@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-08-09 10:33+0000\n"
 "Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:27 links.py:35 links.py:38 links.py:42 permissions.py:7 views.py:41
+#: apps.py:27 links.py:41 links.py:44 links.py:49 permissions.py:7 views.py:46
 msgid "Events"
 msgstr "Događaji"
 
@@ -46,7 +48,7 @@ msgstr "Imenovani prostor"
 msgid "Label"
 msgstr "Labela"
 
-#: apps.py:73 views.py:34 views.py:251 views.py:276
+#: apps.py:73 views.py:39 views.py:275 views.py:306
 msgid "Target"
 msgstr "Cilj"
 
@@ -54,7 +56,7 @@ msgstr "Cilj"
 msgid "Seen"
 msgstr "Viđen"
 
-#: classes.py:68
+#: classes.py:71
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Nepoznati ili zastarjeli tip događaja:%s"
@@ -71,23 +73,23 @@ msgstr "Ne"
 msgid "Subscribed"
 msgstr "Pretplaćen"
 
-#: links.py:46 models.py:59 views.py:83
+#: links.py:54 models.py:59 views.py:88
 msgid "Event subscriptions"
 msgstr "Pretplate za događaj"
 
-#: links.py:50
+#: links.py:58
 msgid "Mark as seen"
 msgstr "Označi kao vidjeno"
 
-#: links.py:54
+#: links.py:62
 msgid "Mark all as seen"
 msgstr "Označi sve kao vidjeno"
 
-#: links.py:58 links.py:63
+#: links.py:66 links.py:72
 msgid "Subscriptions"
 msgstr "Pretplate"
 
-#: links.py:67
+#: links.py:76
 msgid "User events"
 msgstr "Korisnički događaji"
 
@@ -127,7 +129,7 @@ msgstr "Čitati"
 msgid "Notification"
 msgstr "Obaveštenje"
 
-#: models.py:81 views.py:113
+#: models.py:81 views.py:129
 msgid "Notifications"
 msgstr "Obaveštenja"
 
@@ -143,40 +145,72 @@ msgstr "Pretplate događaja objekata"
 msgid "Access the events of an object"
 msgstr "Pristup događajima objekta"
 
-#: views.py:64
+#: views.py:69
 #, python-format
 msgid "Error updating event subscription; %s"
 msgstr "Greška u ažuriranju pretplate za događaje;%s"
 
-#: views.py:68
+#: views.py:73
 msgid "Event subscriptions updated successfully"
 msgstr "Pretplate za događaj su uspešno ažurirane"
 
-#: views.py:167
+#: views.py:124
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+
+#: views.py:127
+#, fuzzy
+#| msgid "Notifications"
+msgid "There are no notifications"
+msgstr "Obaveštenja"
+
+#: views.py:185
+msgid ""
+"Events are actions that have been performed to this object or using this "
+"object."
+msgstr ""
+
+#: views.py:188
+#, fuzzy
+#| msgid "Access the events of an object"
+msgid "There are no events for this object"
+msgstr "Pristup događajima objekta"
+
+#: views.py:190
 #, python-format
 msgid "Events for: %s"
 msgstr "Događaji za:%s"
 
-#: views.py:188
+#: views.py:212
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Greška u ažuriranju pretplate događaja objekta; %s"
 
-#: views.py:192
+#: views.py:216
 msgid "Object event subscriptions updated successfully"
 msgstr "Pretplate za objekat događaja su uspešno ažurirane"
 
-#: views.py:224
+#: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Pretplate za događaj:%s"
 
-#: views.py:260
+#: views.py:284
+msgid ""
+"Events are actions that have been performed to this user account or by this "
+"user account."
+msgstr ""
+
+#: views.py:287
+msgid "There are no events for this user"
+msgstr ""
+
+#: views.py:290
 #, python-format
 msgid "Events for user: %s"
 msgstr "Događaji za korisnika:%s"
 
-#: views.py:284
+#: views.py:314
 #, python-format
 msgid "Events of type: %s"
 msgstr "Događaji tipa:%s"

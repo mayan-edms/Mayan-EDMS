@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-08-09 06:43+0000\n"
 "Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:12
 msgid "Converter"
@@ -53,19 +55,19 @@ msgstr "Nije format kancelarijskog fajla."
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nije instaliran ili nije pronađen."
 
-#: links.py:35
+#: links.py:37
 msgid "Create new transformation"
 msgstr "Kreirajte novu transformaciju"
 
-#: links.py:39
+#: links.py:41
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:43
+#: links.py:45
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:47 models.py:58
+#: links.py:50 models.py:58
 msgid "Transformations"
 msgstr "Transformacije"
 
@@ -73,7 +75,9 @@ msgstr "Transformacije"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Red u kojem će se transformacije izvršiti. Ako je ostalo nepromenjeno, biće dodeljena automatska vrijednost porudžbine."
+msgstr ""
+"Red u kojem će se transformacije izvršiti. Ako je ostalo nepromenjeno, biće "
+"dodeljena automatska vrijednost porudžbine."
 
 #: models.py:43
 msgid "Name"
@@ -83,7 +87,9 @@ msgstr "Ime"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Unesite argumente za transformaciju kao IAML rečnik. npr .: {\"stepeni\": 180}"
+msgstr ""
+"Unesite argumente za transformaciju kao IAML rečnik. npr .: {\"stepeni\": "
+"180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -109,51 +115,51 @@ msgstr "Grafička pretvorba grafike za upotrebu."
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opcije konfiguracije za backend konverziju grafike."
 
-#: transformations.py:85
+#: transformations.py:81
 msgid "Crop"
 msgstr "Crop"
 
-#: transformations.py:98
+#: transformations.py:132
 msgid "Flip"
 msgstr "Flip"
 
-#: transformations.py:109
+#: transformations.py:143
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: transformations.py:119
+#: transformations.py:153
 msgid "Line art"
 msgstr "Line art"
 
-#: transformations.py:130
+#: transformations.py:164
 msgid "Mirror"
 msgstr "Ogledalo"
 
-#: transformations.py:141
+#: transformations.py:175
 msgid "Resize"
 msgstr "Promjeni veličinu"
 
-#: transformations.py:168
+#: transformations.py:202
 msgid "Rotate"
 msgstr "Rotiraj"
 
-#: transformations.py:187
+#: transformations.py:227
 msgid "Rotate 90 degrees"
 msgstr "Rotirati 90 stepeni"
 
-#: transformations.py:198
+#: transformations.py:238
 msgid "Rotate 180 degrees"
 msgstr "Rotirati 180 stepeni"
 
-#: transformations.py:209
+#: transformations.py:249
 msgid "Rotate 270 degrees"
 msgstr "Rotirati 270 stepeni"
 
-#: transformations.py:219
+#: transformations.py:259
 msgid "Unsharp masking"
 msgstr "Neoštećeno maskiranje"
 
-#: transformations.py:235
+#: transformations.py:275
 msgid "Zoom"
 msgstr "Uvećaj"
 
@@ -161,22 +167,34 @@ msgstr "Uvećaj"
 msgid "Enter a valid YAML value."
 msgstr "Unesite važeći IAML"
 
-#: views.py:64
+#: views.py:67
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Izbriši transformaciju \"%(transformation)s\" za:%(content_object)s?"
 
-#: views.py:116
+#: views.py:119
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "Kreiraj novu transformaciju za:%s"
 
-#: views.py:166
+#: views.py:169
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Edituj transformaciju \"%(transformation)s\" za:%(content_object)s"
 
-#: views.py:213
+#: views.py:223
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+
+#: views.py:227
+#, fuzzy
+#| msgid "Transformations"
+msgid "No transformations"
+msgstr "Transformacije"
+
+#: views.py:228
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Transformacije za:%s"

@@ -2,56 +2,65 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2017\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
-#: links.py:23 menus.py:10 models.py:38 permissions.py:7 views.py:152
+#: links.py:23 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr ""
 
-#: links.py:28 links.py:38
+#: events.py:10
+msgid "Document added to cabinet"
+msgstr ""
+
+#: events.py:13
+msgid "Document removed from cabinet"
+msgstr ""
+
+#: links.py:28 links.py:39
 msgid "Remove from cabinets"
 msgstr ""
 
-#: links.py:32 links.py:35
+#: links.py:32 links.py:36
 msgid "Add to cabinets"
 msgstr ""
 
-#: links.py:56
+#: links.py:57
 msgid "Add new level"
 msgstr ""
 
-#: links.py:60 views.py:38
+#: links.py:61 views.py:44
 msgid "Create cabinet"
 msgstr ""
 
-#: links.py:64
+#: links.py:65
 msgid "Delete"
 msgstr ""
 
-#: links.py:67
+#: links.py:68
 msgid "Edit"
 msgstr "تحرير"
 
-#: links.py:71
+#: links.py:75
 msgid "All"
 msgstr ""
 
-#: links.py:74
+#: links.py:79
 msgid "Details"
 msgstr "التفاصيل"
 
@@ -121,8 +130,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:180
@@ -135,92 +143,155 @@ msgid ""
 "URL is different than the canonical document URL."
 msgstr ""
 
-#: templates/cabinets/cabinet_details.html:21
+#: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
 msgstr ""
 
-#: views.py:69
+#: views.py:75
 #, python-format
 msgid "Add new level to: %s"
 msgstr ""
 
-#: views.py:82
+#: views.py:88
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr ""
 
-#: views.py:111
+#: views.py:123
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+
+#: views.py:127
+msgid "This cabinet level is empty"
+msgstr ""
+
+#: views.py:129
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr ""
 
-#: views.py:142
+#: views.py:160
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr ""
 
-#: views.py:178
+#: views.py:176
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+
+#: views.py:180
+msgid "No cabinets available"
+msgstr ""
+
+#: views.py:212
+msgid "Documents can be added to many cabinets."
+msgstr ""
+
+#: views.py:215
+msgid "This document is not in any cabinet"
+msgstr ""
+
+#: views.py:218
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr ""
 
-#: views.py:190
+#: views.py:230
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:193
+#: views.py:233
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:200
+#: views.py:240
 msgid "Add"
 msgstr "إضافة"
 
-#: views.py:215
+#: views.py:242
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr ""
 
-#: views.py:226
+#: views.py:266
 msgid "Cabinets to which the selected documents will be added."
 msgstr ""
 
-#: views.py:254
+#: views.py:294
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:266
+#: views.py:306
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr ""
 
-#: views.py:279
+#: views.py:319
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr ""
 
-#: views.py:282
+#: views.py:322
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:289
+#: views.py:329
 msgid "Remove"
 msgstr "إزالة"
 
-#: views.py:315
+#: views.py:331
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:344
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr ""
+
+#: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr ""
 
-#: views.py:342
+#: views.py:382
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:354
+#: views.py:394
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+msgstr ""
+
+#: wizard_steps.py:17
+msgid "Select cabinets"
+msgstr ""
+
+#: wizard_steps.py:31
+msgid "Cabinets to which the document will be added."
 msgstr ""

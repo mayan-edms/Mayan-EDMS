@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-03-12 13:26+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:30 events.py:8
@@ -35,7 +36,7 @@ msgstr "کاربر"
 msgid "Comment"
 msgstr "شرح"
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr "توضیحات"
 
@@ -47,11 +48,11 @@ msgstr "توضیحات سند ایجاد شده است"
 msgid "Document comment deleted"
 msgstr "سند توضیحات حذف شده است"
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr "اضافه کردن توضیحات"
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr "حذف"
 
@@ -75,17 +76,29 @@ msgstr "حذف توضیحات"
 msgid "View comments"
 msgstr "بازبینی توضیحات"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "اضافه کردن توضیحات به سند: %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "حذف توضیحات: %s"
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+#, fuzzy
+#| msgid "Create new comments"
+msgid "There are no comments"
+msgstr "ایجاد توضیحات "
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr "توضیحات سند %s"

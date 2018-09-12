@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48 permissions.py:8 settings.py:10
@@ -94,35 +95,35 @@ msgstr ""
 msgid "Key type"
 msgstr "Sleutelsoort"
 
-#: links.py:32
+#: links.py:36
 msgid "Verify all documents"
 msgstr "Verifieer alle documenten"
 
-#: links.py:39 links.py:57 queues.py:8
+#: links.py:43 links.py:61 queues.py:8
 msgid "Signatures"
 msgstr "Handtekeningen"
 
-#: links.py:46
+#: links.py:49
 msgid "Delete"
 msgstr "Verwijder"
 
-#: links.py:51
+#: links.py:54
 msgid "Details"
 msgstr "Gegevens"
 
-#: links.py:63
+#: links.py:67
 msgid "Download"
 msgstr "Download"
 
-#: links.py:69
+#: links.py:73
 msgid "Upload signature"
 msgstr "Handtekening uploaden"
 
-#: links.py:75
+#: links.py:79
 msgid "Sign detached"
 msgstr ""
 
-#: links.py:81
+#: links.py:85
 msgid "Sign embedded"
 msgstr "Teken ingesloten"
 
@@ -222,56 +223,75 @@ msgstr ""
 msgid "Verify missing embedded signature"
 msgstr ""
 
-#: views.py:61 views.py:154
+#: settings.py:14
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:23
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
+msgstr ""
+
+#: views.py:68 views.py:161
 msgid "Passphrase is needed to unlock this key."
 msgstr ""
 
-#: views.py:71 views.py:164
+#: views.py:78 views.py:171
 msgid "Passphrase is incorrect."
 msgstr ""
 
-#: views.py:92 views.py:184
+#: views.py:99 views.py:191
 msgid "Document version signed successfully."
 msgstr ""
 
-#: views.py:116
+#: views.py:123
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:215
+#: views.py:222
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:238
+#: views.py:245
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr ""
 
-#: views.py:259
+#: views.py:266
 #, python-format
 msgid "Details for signature: %s"
 msgstr ""
 
-#: views.py:299
+#: views.py:306
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+
+#: views.py:328
+msgid "There are no signatures for this document."
+msgstr ""
+
+#: views.py:331
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr ""
 
-#: views.py:328
+#: views.py:360
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr ""
 
-#: views.py:345
+#: views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr "Voor een grote database kan deze operatie lang duren."
 
-#: views.py:346
+#: views.py:378
 msgid "Verify all document for signatures?"
 msgstr ""
 
-#: views.py:356
+#: views.py:388
 msgid "Signature verification queued successfully."
 msgstr ""

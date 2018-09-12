@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Johan Braeken\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30 events.py:8
@@ -36,7 +37,7 @@ msgstr "Gebruiker"
 msgid "Comment"
 msgstr "Opmerking"
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr "Opmerkingen"
 
@@ -48,11 +49,11 @@ msgstr "Documentopmerking aangemaakt"
 msgid "Document comment deleted"
 msgstr "Documentopmerking verwijderd"
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr "Voeg opmerking toe"
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -76,17 +77,29 @@ msgstr "Verwijderen van commentaar"
 msgid "View comments"
 msgstr "Bekijk commentaar"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Opmerking toevoegen aan document: %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Verwijder opmerking: %s?"
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+#, fuzzy
+#| msgid "Create new comments"
+msgid "There are no comments"
+msgstr "Aanmaken van commentaar"
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Opmerkingen voor document: %s"

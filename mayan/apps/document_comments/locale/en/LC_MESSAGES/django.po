@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr ""
 
@@ -46,11 +46,11 @@ msgstr ""
 msgid "Document comment deleted"
 msgstr ""
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr ""
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr ""
 
@@ -74,17 +74,27 @@ msgstr ""
 msgid "View comments"
 msgstr ""
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr ""
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+msgid "There are no comments"
+msgstr ""
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

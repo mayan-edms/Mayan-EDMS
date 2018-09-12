@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30 events.py:8
@@ -34,7 +35,7 @@ msgstr "Потребител"
 msgid "Comment"
 msgstr "Коментар"
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr "Коментари"
 
@@ -46,11 +47,11 @@ msgstr ""
 msgid "Document comment deleted"
 msgstr ""
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr ""
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr ""
 
@@ -74,17 +75,29 @@ msgstr "Изтриване на коментари"
 msgid "View comments"
 msgstr "Преглед на коментари"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Добавяне на коментар към документ:  %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+#, fuzzy
+#| msgid "Create new comments"
+msgid "There are no comments"
+msgstr "Създаване на нови коментари"
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

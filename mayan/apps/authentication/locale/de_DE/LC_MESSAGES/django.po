@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: 2017-09-23 21:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:18 settings.py:9
@@ -38,17 +39,19 @@ msgstr ""
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass das Passwortfeld Groß- und Kleinschreibung unterscheidet."
+msgstr ""
+"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
+"das Passwortfeld Groß- und Kleinschreibung unterscheidet."
 
 #: forms.py:28
 msgid "This account is inactive."
 msgstr "Dieses Konto ist inaktiv."
 
-#: links.py:16
+#: links.py:19
 msgid "Logout"
 msgstr "Abmelden"
 
-#: links.py:20
+#: links.py:23
 msgid "Change password"
 msgstr "Passwort ändern"
 
@@ -56,7 +59,9 @@ msgstr "Passwort ändern"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-Mail-Adresse"
+msgstr ""
+"Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-"
+"Mail-Adresse"
 
 #: settings.py:20
 msgid ""
@@ -64,10 +69,14 @@ msgid ""
 "logged in. Value is time in seconds."
 msgstr ""
 
-#: views.py:61
+#: views.py:79
 msgid "Current user password change"
 msgstr "Passwortänderung für aktuellen Benutzer"
 
-#: views.py:75
+#: views.py:84
+msgid "Changing the password is not allowed for this account."
+msgstr ""
+
+#: views.py:101
 msgid "Your password has been successfully changed."
 msgstr "Das Passwort wurde erfolgreich geändert."

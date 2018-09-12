@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"POT-Creation-Date: 2018-09-08 04:14-0400\n"
 "PO-Revision-Date: 2018-08-09 10:51+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:32 models.py:28 models.py:78 permissions.py:7
 msgid "Permissions"
@@ -27,35 +29,35 @@ msgstr "Dozvole"
 msgid "Insufficient permissions."
 msgstr "Nedovoljne dozvole."
 
-#: links.py:15 links.py:40 models.py:89 views.py:188
+#: links.py:16 links.py:41 models.py:89 views.py:216
 msgid "Roles"
 msgstr "Role"
 
-#: links.py:19
+#: links.py:20
 msgid "Grant"
 msgstr "Odobri"
 
-#: links.py:23
+#: links.py:24
 msgid "Revoke"
 msgstr "Ukini"
 
-#: links.py:27
+#: links.py:29
 msgid "Create new role"
 msgstr "Kreirajte novu ulogu"
 
-#: links.py:31
+#: links.py:33
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:35
+#: links.py:36
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:43 models.py:81
+#: links.py:44 models.py:81
 msgid "Groups"
 msgstr "Grupe"
 
-#: links.py:48
+#: links.py:50
 msgid "Role permissions"
 msgstr "Dozvole za ulogu"
 
@@ -111,52 +113,81 @@ msgstr "Ime grupe"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili zamjenu u ovoj ulozi."
+msgstr ""
+"Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili "
+"zamjenu u ovoj ulozi."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova za dodelu ove uloge."
+msgstr ""
+"Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova "
+"za dodelu ove uloge."
 
 #: serializers.py:90
 #, python-format
 msgid "No such permission: %s"
 msgstr "Nema takve dozvole: %s"
 
-#: views.py:29
+#: views.py:32
 msgid "Available roles"
 msgstr "Dostupne uloge"
 
-#: views.py:30
+#: views.py:33
 msgid "Group roles"
 msgstr "Grupne uloge"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Uloge grupe: %s"
 
-#: views.py:82
+#: views.py:85
 msgid "Available groups"
 msgstr "Dostupne grupe"
 
-#: views.py:83
+#: views.py:86
 msgid "Role groups"
 msgstr "Uloge grupa"
 
-#: views.py:93
+#: views.py:96
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupe uloge: %s"
 
-#: views.py:116
+#: views.py:98
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr ""
+
+#: views.py:123
 msgid "Available permissions"
 msgstr "Dostupne dozvole"
 
-#: views.py:117
+#: views.py:124
 msgid "Granted permissions"
 msgstr "Dodjeljene dozvole"
 
-#: views.py:157
+#: views.py:165
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr ""
+
+#: views.py:168
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Dozvole za ulogu: %s"
+
+#: views.py:208
+msgid ""
+"Roles are authorization units. They contain user groups which inherit the "
+"role permissions for the entire system. Roles can also part of access "
+"controls lists. Access controls list are permissions granted to a role for "
+"specific objects which its group members inherit."
+msgstr ""
+
+#: views.py:215
+#, fuzzy
+#| msgid "Create roles"
+msgid "There are no roles"
+msgstr "Kreiraj role"

@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: 2018-08-08 07:01+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:18 settings.py:9
 msgid "Authentication"
@@ -38,17 +40,19 @@ msgstr "Zapamti"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za lozinku osetljivo na slovo."
+msgstr ""
+"Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za "
+"lozinku osetljivo na slovo."
 
 #: forms.py:28
 msgid "This account is inactive."
 msgstr "Ovaj account nije aktivan."
 
-#: links.py:16
+#: links.py:19
 msgid "Logout"
 msgstr "Logout"
 
-#: links.py:20
+#: links.py:23
 msgid "Change password"
 msgstr "Promijeni lozinku"
 
@@ -56,18 +60,26 @@ msgstr "Promijeni lozinku"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije su: korisničko ime, e-pošta"
+msgstr ""
+"Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije "
+"su: korisničko ime, e-pošta"
 
 #: settings.py:20
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr "Uskoro će se prijaviti maksimalno vreme koje korisnik klikne na polje \"Zapamti me\". Vrednost je u sekundama."
+msgstr ""
+"Uskoro će se prijaviti maksimalno vreme koje korisnik klikne na polje "
+"\"Zapamti me\". Vrednost je u sekundama."
 
-#: views.py:61
+#: views.py:79
 msgid "Current user password change"
 msgstr "Promjeniti trenutni pasvord"
 
-#: views.py:75
+#: views.py:84
+msgid "Changing the password is not allowed for this account."
+msgstr ""
+
+#: views.py:101
 msgid "Your password has been successfully changed."
 msgstr "Vaš password je uspješno promjenjen"

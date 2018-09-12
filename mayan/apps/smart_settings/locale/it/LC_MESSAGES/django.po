@@ -1,57 +1,107 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"POT-Creation-Date: 2018-09-08 04:14-0400\n"
 "PO-Revision-Date: 2017-09-23 21:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 permissions.py:7
+#: apps.py:22 permissions.py:7
 msgid "Smart settings"
 msgstr "Impostazioni intelligenti"
 
-#: apps.py:26
+#: apps.py:30
 msgid "Setting count"
 msgstr "Conteggio impostazioni"
 
-#: apps.py:30
+#: apps.py:34
 msgid "Name"
 msgstr "Nome "
 
-#: apps.py:34
+#: apps.py:38
 msgid "Value"
 msgstr "Valore"
 
-#: links.py:11 links.py:14
+#: apps.py:41
+msgid "Environment variable"
+msgstr ""
+
+#: forms.py:12
+msgid "Enter the new setting value."
+msgstr ""
+
+#: forms.py:31
+msgid "Value must be properly quoted."
+msgstr ""
+
+#: forms.py:40
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr ""
+
+#: links.py:12 links.py:16
 msgid "Settings"
 msgstr "Impostazioni"
 
+#: links.py:21
+#, fuzzy
+#| msgid "Setting namespaces"
+msgid "Namespaces"
+msgstr "Spazio dei nomi impostazioni"
+
+#: links.py:25
+msgid "Edit"
+msgstr ""
+
 #: permissions.py:10
+#, fuzzy
+#| msgid "View settings"
+msgid "Edit settings"
+msgstr "Vedi impostazioni"
+
+#: permissions.py:13
 msgid "View settings"
 msgstr "Vedi impostazioni"
 
-#: views.py:15
+#: views.py:18
 msgid "Setting namespaces"
 msgstr "Spazio dei nomi impostazioni"
 
-#: views.py:29
+#: views.py:34
+msgid ""
+"Settings inherited from an environment variable take precedence and cannot "
+"be changed in this view. "
+msgstr ""
+
+#: views.py:37
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Impostazioni nello spazio dei nomi: %s"
 
-#: views.py:37
+#: views.py:45
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Spazio dei nomi: %s, non trovato"
+
+#: views.py:60
+msgid "Setting updated successfully."
+msgstr ""
+
+#: views.py:68
+#, fuzzy, python-format
+#| msgid "View settings"
+msgid "Edit setting: %s"
+msgstr "Vedi impostazioni"

@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:31
 msgid "Django GPG"
@@ -70,39 +72,39 @@ msgstr "Termen"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nume, e-mail, ID-ul de cheie sau amprenta cheii pentru a căuta."
 
-#: links.py:13
+#: links.py:15
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:17
+#: links.py:19
 msgid "Details"
 msgstr "Detalii"
 
-#: links.py:21
+#: links.py:23
 msgid "Download"
 msgstr "Descarcă"
 
-#: links.py:25 permissions.py:28
+#: links.py:26 permissions.py:28
 msgid "Query keyservers"
 msgstr "Interogare keyservers"
 
-#: links.py:29
+#: links.py:31
 msgid "Import"
 msgstr ""
 
-#: links.py:34 permissions.py:7
+#: links.py:36 permissions.py:7
 msgid "Key management"
 msgstr "gestionare chei"
 
-#: links.py:37
+#: links.py:39
 msgid "Upload key"
 msgstr ""
 
-#: links.py:41 views.py:160
+#: links.py:43 views.py:161
 msgid "Private keys"
 msgstr ""
 
-#: links.py:45 views.py:149
+#: links.py:47 views.py:150
 msgid "Public keys"
 msgstr ""
 
@@ -140,7 +142,9 @@ msgstr "Eroare semnătură."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru verificare."
+msgstr ""
+"Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru "
+"verificare."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -204,7 +208,9 @@ msgstr ""
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Cale director utilizată pentru a stoca cheile, precum și fișiere de configurare."
+msgstr ""
+"Cale director utilizată pentru a stoca cheile, precum și fișiere de "
+"configurare."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
@@ -214,47 +220,47 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr ""
 
-#: views.py:38
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr ""
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Details for key: %s"
 msgstr ""
 
-#: views.py:68
+#: views.py:69
 #, python-format
 msgid "Import key ID: %s?"
 msgstr ""
 
-#: views.py:69
+#: views.py:70
 msgid "Import key"
 msgstr "Import cheie"
 
-#: views.py:78
+#: views.py:79
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:85
+#: views.py:86
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:107
+#: views.py:108
 msgid "Search"
 msgstr "Căută"
 
-#: views.py:109
+#: views.py:110
 msgid "Query key server"
 msgstr "Interogare cheie serverul"
 
-#: views.py:119
+#: views.py:120
 msgid "Key query results"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 msgid "Upload new key"
 msgstr ""

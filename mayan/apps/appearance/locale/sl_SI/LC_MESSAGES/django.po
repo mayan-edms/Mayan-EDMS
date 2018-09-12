@@ -1,26 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # kontrabant <kontrabant@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:02-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: 2018-06-08 01:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/sl_SI/)\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl_SI\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
 msgstr "Videz"
+
+#: settings.py:13
+msgid "Maximum number of characters that will be displayed as the view title."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -38,34 +44,44 @@ msgstr "Stran ni najdena"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Žal, toda zahtevane strani ni bilo mogoče najti."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:98
+#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Napaka strežnika"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Prišlo je do napake. Sporočena je administratorjem spletnega mesta po elektronski pošti in naj bi bila kmalu odpravljena. Hvala za potrpljenje."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Prišlo je do napake. Sporočena je administratorjem spletnega mesta po "
+"elektronski pošti in naj bi bila kmalu odpravljena. Hvala za potrpljenje."
 
-#: templates/appearance/about.html:8 templates/appearance/about.html:57
+#: templates/appearance/about.html:9
 msgid "About"
 msgstr " O programu"
 
-#: templates/appearance/about.html:62
+#: templates/appearance/about.html:67
+#, python-format
+msgid ""
+"\n"
+"                    %(setting_project_title)s is based on %(project_title)s\n"
+"                "
+msgstr ""
+
+#: templates/appearance/about.html:72
 msgid "Version"
 msgstr "Različica"
 
-#: templates/appearance/about.html:64
+#: templates/appearance/about.html:74
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Številka izgradnje: %(build_number)s"
 
-#: templates/appearance/about.html:77
+#: templates/appearance/about.html:87
 msgid "Released under the license:"
 msgstr ""
 
-#: templates/appearance/base.html:33
+#: templates/appearance/base.html:32
 msgid "Warning"
 msgstr ""
 
@@ -78,87 +94,76 @@ msgstr "Akcije"
 msgid "Toggle Dropdown"
 msgstr "Preklopi spustni seznam"
 
-#: templates/appearance/calculate_form_title.html:16
+#: templates/appearance/calculate_form_title.html:15
+msgid "Confirm delete"
+msgstr "Potrdi izbris"
+
+#: templates/appearance/calculate_form_title.html:18
+msgid "Confirm"
+msgstr "Potrdi"
+
+#: templates/appearance/calculate_form_title.html:21
 #, python-format
 msgid "Details for: %(object)s"
 msgstr "Podrobnosti za: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:19
+#: templates/appearance/calculate_form_title.html:24
 #, python-format
 msgid "Edit: %(object)s"
 msgstr "Uredi: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:21
+#: templates/appearance/calculate_form_title.html:26
 msgid "Create"
 msgstr "Ustvari"
 
-#: templates/appearance/dashboard_widget.html:25
-msgid "View details"
-msgstr "Ogled podrobnosti"
+#: templates/appearance/generic_confirm.html:14
+msgid "Are you sure?"
+msgstr ""
 
-#: templates/appearance/generic_confirm.html:6
-#: templates/appearance/generic_confirm.html:13
-msgid "Confirm"
-msgstr "Potrdi"
-
-#: templates/appearance/generic_confirm.html:11
-msgid "Confirm delete"
-msgstr "Potrdi izbris"
-
-#: templates/appearance/generic_confirm.html:27
-#, python-format
-msgid "Delete: %(object)s?"
-msgstr "Izbris: %(object)s?"
-
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:40
 msgid "Yes"
 msgstr "Da"
 
-#: templates/appearance/generic_confirm.html:52
+#: templates/appearance/generic_confirm.html:44
 msgid "No"
 msgstr "Ne"
 
 #: templates/appearance/generic_form_instance.html:49
 #: templates/appearance/generic_form_instance.html:55
 #: templates/appearance/generic_form_subtemplate.html:51
-#: templates/appearance/generic_multiform_subtemplate.html:41
+#: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
 msgstr "zahtevano"
 
-#: templates/appearance/generic_form_subtemplate.html:61
-#: templates/appearance/generic_list_horizontal.html:21
-#: templates/appearance/generic_list_items_subtemplate.html:118
-#: templates/appearance/generic_list_subtemplate.html:109
-msgid "No results"
-msgstr "Ni rezultatov"
-
-#: templates/appearance/generic_form_subtemplate.html:76
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Shrani"
 
-#: templates/appearance/generic_form_subtemplate.html:76
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_multiform_subtemplate.html:59
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Pošlji"
 
-#: templates/appearance/generic_form_subtemplate.html:79
-#: templates/appearance/generic_multiform_subtemplate.html:67
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: templates/appearance/generic_list_items_subtemplate.html:24
+#: templates/appearance/generic_list_items_subtemplate.html:12
 #: templates/appearance/generic_list_subtemplate.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Skupaj (%(start)s - %(end)s od %(total)s) (Stran %(page_number)s od %(total_pages)s)"
+msgstr ""
+"Skupaj (%(start)s - %(end)s od %(total)s) (Stran %(page_number)s od "
+"%(total_pages)s)"
 
-#: templates/appearance/generic_list_items_subtemplate.html:26
-#: templates/appearance/generic_list_items_subtemplate.html:29
+#: templates/appearance/generic_list_items_subtemplate.html:14
+#: templates/appearance/generic_list_items_subtemplate.html:17
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
@@ -169,96 +174,100 @@ msgstr "Skupaj: %(total)s"
 msgid "Identifier"
 msgstr "Identifikator"
 
-#: templates/appearance/home.html:9 templates/appearance/home.html:21
+#: templates/appearance/home.html:9
 msgid "Dashboard"
 msgstr "Nadzorna plošča"
 
-#: templates/appearance/home.html:30
+#: templates/appearance/home.html:25
 msgid "Getting started"
 msgstr ""
 
-#: templates/appearance/home.html:33
+#: templates/appearance/home.html:28
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 
-#: templates/appearance/home.html:54
+#: templates/appearance/home.html:49
 msgid "Search pages"
 msgstr ""
 
-#: templates/appearance/home.html:56 templates/appearance/home.html:66
+#: templates/appearance/home.html:51 templates/appearance/home.html:61
 msgid "Search"
 msgstr ""
 
-#: templates/appearance/home.html:57 templates/appearance/home.html:67
+#: templates/appearance/home.html:52 templates/appearance/home.html:62
 msgid "Advanced"
 msgstr ""
 
-#: templates/appearance/home.html:64
+#: templates/appearance/home.html:59
 msgid "Search documents"
 msgstr ""
 
-#: templates/appearance/root.html:54
+#: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"
 msgstr "Preklopi navigacijo"
 
-#: templates/appearance/root.html:103
+#: templates/appearance/no_results.html:18
+msgid "No results"
+msgstr "Ni rezultatov"
+
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:122
+#: templates/appearance/root.html:77
 msgid "Server communication error"
 msgstr ""
 
-#: templates/appearance/root.html:124
+#: templates/appearance/root.html:79
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 
-#: templates/authentication/login.html:10
+#: templates/authentication/login.html:11
 msgid "Login"
 msgstr ""
 
-#: templates/authentication/login.html:21
+#: templates/authentication/login.html:22
 msgid "First time login"
 msgstr ""
 
-#: templates/authentication/login.html:25
+#: templates/authentication/login.html:26
 #, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
 
-#: templates/authentication/login.html:26
-msgid "Login using the following credentials:"
-msgstr ""
-
 #: templates/authentication/login.html:27
-#, python-format
-msgid "Username: <strong>%(account)s</strong>"
+msgid "Login using the following credentials:"
 msgstr ""
 
 #: templates/authentication/login.html:28
 #, python-format
-msgid "Email: <strong>%(email)s</strong>"
+msgid "Username: <strong>%(account)s</strong>"
 msgstr ""
 
 #: templates/authentication/login.html:29
 #, python-format
-msgid "Password: <strong>%(password)s</strong>"
+msgid "Email: <strong>%(email)s</strong>"
 msgstr ""
 
 #: templates/authentication/login.html:30
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/authentication/login.html:31
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
 
-#: templates/authentication/login.html:46
-#: templates/authentication/login.html:54
+#: templates/authentication/login.html:47
+#: templates/authentication/login.html:55
 msgid "Sign in"
 msgstr ""
 
-#: templates/authentication/login.html:59
+#: templates/authentication/login.html:60
 msgid "Forgot your password?"
 msgstr ""
 
@@ -283,6 +292,13 @@ msgstr ""
 msgid "Password reset email sent!"
 msgstr ""
 
+#: templates/dashboard/numeric_widget.html:27
+msgid "View details"
+msgstr "Ogled podrobnosti"
+
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Brez"
+
+#~ msgid "Delete: %(object)s?"
+#~ msgstr "Izbris: %(object)s?"

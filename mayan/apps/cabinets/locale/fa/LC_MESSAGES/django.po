@@ -2,56 +2,68 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
-#: links.py:23 menus.py:10 models.py:38 permissions.py:7 views.py:152
+#: links.py:23 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "کابینت"
 
-#: links.py:28 links.py:38
+#: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "کابینه سند"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "حذف از کابینت"
+
+#: links.py:28 links.py:39
 msgid "Remove from cabinets"
 msgstr "حذف از کابینت"
 
-#: links.py:32 links.py:35
+#: links.py:32 links.py:36
 msgid "Add to cabinets"
 msgstr "اضافه کردن به کابینت"
 
-#: links.py:56
+#: links.py:57
 msgid "Add new level"
 msgstr "اضافه کردن سطح جدید"
 
-#: links.py:60 views.py:38
+#: links.py:61 views.py:44
 msgid "Create cabinet"
 msgstr "ایجاد کابینه"
 
-#: links.py:64
+#: links.py:65
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:67
+#: links.py:68
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:71
+#: links.py:75
 msgid "All"
 msgstr "همه"
 
-#: links.py:74
+#: links.py:79
 msgid "Details"
 msgstr "جزئیات"
 
@@ -121,8 +133,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "نام این سطح کابینه به نام اجداد آن اضافه شده است."
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "URL نقطه پایان API نشان دادن اسناد لیست در داخل این کابینه."
 
 #: serializers.py:69 serializers.py:180
@@ -138,92 +149,158 @@ msgstr ""
 "URL API اشاره به یک سند در رابطه با ذخیره آن کابینت است. این URL متفاوت از "
 "URL سند کانون است."
 
-#: templates/cabinets/cabinet_details.html:21
+#: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
 msgstr "جهت یابی:"
 
-#: views.py:69
+#: views.py:75
 #, python-format
 msgid "Add new level to: %s"
 msgstr "افزودن سطح جدید به: %s"
 
-#: views.py:82
+#: views.py:88
 #, python-format
 msgid "Delete the cabinet: %s?"
 msgstr "کابینه را حذف کنید: %s"
 
-#: views.py:111
+#: views.py:123
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+
+#: views.py:127
+msgid "This cabinet level is empty"
+msgstr ""
+
+#: views.py:129
 #, python-format
 msgid "Details of cabinet: %s"
 msgstr "جزئیات کابینت: %s"
 
-#: views.py:142
+#: views.py:160
 #, python-format
 msgid "Edit cabinet: %s"
 msgstr "ویرایش کابینه: %s"
 
-#: views.py:178
+#: views.py:176
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+
+#: views.py:180
+msgid "No cabinets available"
+msgstr ""
+
+#: views.py:212
+#, fuzzy
+#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+msgid "Documents can be added to many cabinets."
+msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
+
+#: views.py:215
+#, fuzzy
+#| msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
+msgid "This document is not in any cabinet"
+msgstr "سند: %(document)s در کابینه نیست: %(cabinet)s."
+
+#: views.py:218
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "کابینت حاوی اسناد: %s"
 
-#: views.py:190
+#: views.py:230
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document"
 msgstr "اضافه کردن به درخواست کابینه بر روی %(count)d سند انجام شده است"
 
-#: views.py:193
+#: views.py:233
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents"
 msgstr "اضافه کردن به درخواست کابینه در اسناد %(count)d انجام شده است"
 
-#: views.py:200
+#: views.py:240
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:215
+#: views.py:242
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "اسناد را به کابینت اضافه کنید"
+msgstr[1] "اسناد را به کابینت اضافه کنید"
+
+#: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "سند %s را به کابینت اضافه کنید"
 
-#: views.py:226
+#: views.py:266
 msgid "Cabinets to which the selected documents will be added."
 msgstr "کابینت هایی که اسناد انتخاب شده اضافه خواهند شد."
 
-#: views.py:254
+#: views.py:294
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "سند: %(document)s در حال حاضر در کابینه است: %(cabinet)s."
 
-#: views.py:266
+#: views.py:306
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
 
-#: views.py:279
+#: views.py:319
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document"
 msgstr "حذف از درخواست کابینت بر روی %(count)d سند انجام شده است"
 
-#: views.py:282
+#: views.py:322
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents"
 msgstr "از درخواست کابینت بر روی اسناد %(count)d انجام شود"
 
-#: views.py:289
+#: views.py:329
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:315
+#: views.py:331
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "اسناد را از کابینت حذف کنید"
+msgstr[1] "اسناد را از کابینت حذف کنید"
+
+#: views.py:344
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "اسناد را از کابینت حذف کنید"
+
+#: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "کابینت هایی که اسناد انتخاب شده حذف خواهند شد."
 
-#: views.py:342
+#: views.py:382
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgstr "سند: %(document)s در کابینه نیست: %(cabinet)s."
 
-#: views.py:354
+#: views.py:394
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
+
+#: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "حذف کابینت"
+
+#: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "کابینت هایی که اسناد انتخاب شده اضافه خواهند شد."

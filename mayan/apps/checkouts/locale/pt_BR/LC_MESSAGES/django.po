@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -9,21 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: 2018-04-10 08:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:41 events.py:7 links.py:31
 msgid "Checkouts"
 msgstr "Reservas"
 
-#: dashboard_widgets.py:18
+#: dashboard_widgets.py:16
 msgid "Checkedout documents"
 msgstr "Documentos verificados"
 
@@ -43,7 +44,7 @@ msgstr "Documento reservado"
 msgid "Document forcefully checked in"
 msgstr "Documento devolvido forçosamente"
 
-#: exceptions.py:27 views.py:49
+#: exceptions.py:27 views.py:50
 msgid "Document already checked out."
 msgstr "Documento já está reservado."
 
@@ -51,7 +52,7 @@ msgstr "Documento já está reservado."
 msgid "Document status"
 msgstr "Status do documento"
 
-#: forms.py:37 models.py:41 views.py:84
+#: forms.py:37 models.py:41 views.py:88
 msgid "User"
 msgstr "Usuário"
 
@@ -95,7 +96,7 @@ msgstr "Reservado"
 msgid "Checked in/available"
 msgstr "Devolvido/disponível"
 
-#: models.py:28 models.py:99
+#: models.py:28 models.py:103
 msgid "Document"
 msgstr "Documento"
 
@@ -131,11 +132,11 @@ msgstr "Reservas de documentos"
 msgid "Check out expiration date and time must be in the future."
 msgstr "Data e hora da expiração da reserva deve ser no futuro."
 
-#: models.py:105
+#: models.py:109
 msgid "New version block"
 msgstr "Bloqueio de nova versão"
 
-#: models.py:106
+#: models.py:110
 msgid "New version blocks"
 msgstr "Bloqueios de nova versão"
 
@@ -167,60 +168,74 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:53
+#: views.py:54
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Erro tentando reservar documeto; %s"
 
-#: views.py:58
+#: views.py:59
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Documento \"%s\" reservado com êxito."
 
-#: views.py:66
+#: views.py:67
 #, python-format
 msgid "Check out document: %s"
 msgstr "Reservar o documento: %s"
 
-#: views.py:81
-msgid "Documents checked out"
-msgstr "Documentos reservados"
-
-#: views.py:90
+#: views.py:94
 msgid "Checkout time and date"
 msgstr "Data e hora da reserva"
 
-#: views.py:96
+#: views.py:100
 msgid "Checkout expiration"
 msgstr "Expiração da reserva"
 
-#: views.py:116
+#: views.py:108
+msgid ""
+"Checking out a document blocks certain document operations for a "
+"predetermined amount of time."
+msgstr ""
+
+#: views.py:112
+#, fuzzy
+#| msgid "Document has not been checked out."
+msgid "No documents have been checked out"
+msgstr "O documento não foi reservado."
+
+#: views.py:113
+msgid "Documents checked out"
+msgstr "Documentos reservados"
+
+#: views.py:128
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Detalhes da reserva para o documento: %s "
 
-#: views.py:134
+#: views.py:146
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr "Você não reservou inicialmente este documento. Devolver forçosamente o documento: %s?"
+msgstr ""
+"Você não reservou inicialmente este documento. Devolver forçosamente o "
+"documento: %s?"
 
-#: views.py:138
+#: views.py:150
 #, python-format
 msgid "Check in the document: %s?"
 msgstr "Devolver o documento: %s?"
 
-#: views.py:166
+#: views.py:178
 msgid "Document has not been checked out."
 msgstr "O documento não foi reservado."
 
-#: views.py:171
+#: views.py:183
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Erro tentando devolver o documento: %s"
 
-#: views.py:176
+#: views.py:188
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documento \"%s\" devolvido com sucesso."

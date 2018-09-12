@@ -1,37 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"POT-Creation-Date: 2018-09-08 04:13-0400\n"
 "PO-Revision-Date: 2018-06-08 01:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:66 apps.py:125 apps.py:129 events.py:7 links.py:14 permissions.py:7
-#: queues.py:7 settings.py:7
+#: apps.py:70 apps.py:140 apps.py:144 events.py:7 links.py:19 links.py:24
+#: permissions.py:7 queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:100
+#: apps.py:115
 msgid "Document"
 msgstr "سند"
 
-#: apps.py:104
+#: apps.py:119
 msgid "Added"
 msgstr "اضافه شده"
 
-#: apps.py:108 models.py:57
+#: apps.py:123 models.py:65
 msgid "Result"
 msgstr "جواب"
 
@@ -43,80 +44,80 @@ msgstr "نسخه سند ارسال شده برای OCR"
 msgid "Document version OCR finished"
 msgstr "نسخه سند OCR شده"
 
-#: forms.py:40
+#: forms.py:32 forms.py:75
+msgid "Contents"
+msgstr "محتوا"
+
+#: forms.py:67
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "صفحه  %(page_number)d"
 
-#: forms.py:48
-msgid "Contents"
-msgstr "محتوا"
-
-#: links.py:18 links.py:21
+#: links.py:29 links.py:32
 msgid "Submit for OCR"
 msgstr "ارسال برای OCR"
 
-#: links.py:24
+#: links.py:36
 msgid "Setup OCR"
 msgstr "نصب OCR"
 
-#: links.py:29
+#: links.py:41
 msgid "OCR documents per type"
 msgstr "اسناد OCR در هر نوع"
 
-#: links.py:33 links.py:37 views.py:116
+#: links.py:46 links.py:50 views.py:144
 msgid "OCR errors"
 msgstr "خطای OCR "
 
-#: links.py:42
+#: links.py:55
 msgid "Download OCR text"
 msgstr "دانلود متن OCR"
 
-#: models.py:18
+#: models.py:20
 msgid "Document type"
 msgstr "نوع سند"
 
-#: models.py:22
+#: models.py:24
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automatically queue newly created documents for OCR."
 
-#: models.py:26
+#: models.py:30
 msgid "Document type settings"
 msgstr "Document type settings"
 
-#: models.py:27
+#: models.py:31
 msgid "Document types settings"
 msgstr "Document types settings"
 
-#: models.py:34
+#: models.py:42
 msgid "Document page"
 msgstr "صفحه سند"
 
-#: models.py:36
+#: models.py:44
 msgid "Content"
 msgstr "محتوا"
 
-#: models.py:41
+#: models.py:49
 msgid "Document page OCR content"
 msgstr "محتوای OCR صفحه سند"
 
-#: models.py:42
+#: models.py:50
 msgid "Document pages OCR contents"
 msgstr "محتوای OCR صفحات سند"
 
-#: models.py:52
+#: models.py:60
 msgid "Document version"
 msgstr "نسخه مستندات"
 
-#: models.py:55
+#: models.py:63
 msgid "Date time submitted"
 msgstr "تاریخ و زمان ارسال"
 
-#: models.py:61
+#: models.py:69
 msgid "Document version OCR error"
 msgstr "نسخه سند دارای خطای OCR"
 
-#: models.py:62
+#: models.py:70
 msgid "Document version OCR errors"
 msgstr "نسخه سند دارای خطاهای OCR"
 
@@ -136,46 +137,53 @@ msgstr "تغییر نوع سند تنظیمات OCR"
 msgid "Document version OCR"
 msgstr "نسخه اسناد OCR"
 
-#: settings.py:12
-msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
-msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
-
-#: settings.py:19
+#: settings.py:11
 msgid "Full path to the backend to be used to do OCR."
 msgstr "محل اجرای نرم افزار OCR"
 
-#: settings.py:28
+#: settings.py:20
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
+msgstr ""
+"انواع سند جدید را برای انجام OCR به طور پیش فرض به صورت خودکار تنظیم کنید."
 
-#: views.py:41
+#: views.py:44
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "نتیبجه OCR سند : 1%s"
 
-#: views.py:56
+#: views.py:66
+#, fuzzy, python-format
+#| msgid "OCR result for document: %s"
+msgid "OCR result for document page: %s"
+msgstr "نتیبجه OCR سند : 1%s"
+
+#: views.py:81
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:71
+#: views.py:95
 msgid "Submit all documents of a type for OCR"
 msgstr "ارسال تمامی اسناد این نوع چهت OCR"
 
-#: views.py:85
+#: views.py:107
 #, python-format
-msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d اسناد نوع \"%(document_type)s\" اضافه شده به صف OCR."
 
-#: views.py:108
+#: views.py:133
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "نام فایل برای نوع سند %s"
 
-#: views.py:134
+#: views.py:162
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "خطاهای OCR برای سند: %s"
+
+#~ msgid ""
+#~ "File path to poppler's pdftotext program used to extract text from PDF "
+#~ "files."
+#~ msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"

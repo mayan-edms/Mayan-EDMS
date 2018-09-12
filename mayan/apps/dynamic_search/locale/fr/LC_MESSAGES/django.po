@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014-2015
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-04-11 13:12+0000\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:16
@@ -38,17 +39,20 @@ msgstr "Correspond à tous"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Lorsqu'il est coché, seuls les résultats correspondant à tous les champs seront renvoyés. Lorsqu'il ne l'est pas, les résultats correspondant à au moins un champ seront retournés."
+msgstr ""
+"Lorsqu'il est coché, seuls les résultats correspondant à tous les champs "
+"seront renvoyés. Lorsqu'il ne l'est pas, les résultats correspondant à au "
+"moins un champ seront retournés."
 
 #: forms.py:29
 msgid "Search terms"
 msgstr "Termes de recherche"
 
-#: links.py:8 settings.py:8 views.py:52 views.py:63
+#: links.py:8 settings.py:8 views.py:53 views.py:64
 msgid "Search"
 msgstr "Recherche"
 
-#: links.py:11 views.py:77
+#: links.py:11 views.py:78
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
@@ -60,12 +64,12 @@ msgstr "Rechercher à nouveau"
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Nombre maximum de résultats de recherche à traiter et afficher."
 
-#: views.py:25
+#: views.py:26
 #, python-format
 msgid "Search results for: %s"
 msgstr "Résultats de recherche pour : %s"
 
-#: views.py:65
+#: views.py:66
 #, python-format
 msgid "Search for: %s"
 msgstr "Recherche pour : %s"

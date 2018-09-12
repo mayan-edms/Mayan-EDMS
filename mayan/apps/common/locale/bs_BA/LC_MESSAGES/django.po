@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: 2018-08-08 09:49+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:85 permissions_runtime.py:7 settings.py:11
+#: apps.py:85 permissions_runtime.py:7 settings.py:12
 msgid "Common"
 msgstr "Zajednicki"
 
@@ -27,7 +29,7 @@ msgstr "Zajednicki"
 msgid "Anonymous"
 msgstr "Anonimni"
 
-#: classes.py:181
+#: classes.py:218
 msgid "Available attributes: \n"
 msgstr "Raspoloživi atributi:\n"
 
@@ -39,110 +41,110 @@ msgstr "Glavni"
 msgid "Selection"
 msgstr "Odabir"
 
-#: generics.py:136
+#: generics.py:137
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Nemoguće prenositi selekcije:%s."
 
-#: generics.py:160
+#: generics.py:161
 msgid "Add"
 msgstr "Dodati"
 
-#: generics.py:171
+#: generics.py:172
 msgid "Remove"
 msgstr "Ukloniti"
 
-#: generics.py:353
+#: generics.py:354
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s nije kreiran, greška:%(error)s"
 
-#: generics.py:364
+#: generics.py:365
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s kreiran uspešno."
 
-#: generics.py:393
+#: generics.py:394
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s nije izbrisan, greška:%(error)s."
 
-#: generics.py:404
+#: generics.py:405
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s izbrisan uspešno."
 
-#: generics.py:450
+#: generics.py:451
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s nije ažuriran, greška:%(error)s."
 
-#: generics.py:461
+#: generics.py:462
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s ažuriran uspešno."
 
-#: links.py:33
+#: links.py:37
 msgid "About this"
 msgstr "O ovome"
 
-#: links.py:36 views.py:61
+#: links.py:40 views.py:63
 msgid "Check for updates"
 msgstr "Proveravanje za ažuriranje"
 
-#: links.py:40
+#: links.py:44
 msgid "User details"
 msgstr "Detalji o korisniku"
 
-#: links.py:44
+#: links.py:48
 msgid "Edit details"
 msgstr "Uredite detalje"
 
-#: links.py:47
+#: links.py:53
 msgid "Locale profile"
 msgstr "Lokalni profil"
 
-#: links.py:51
+#: links.py:58
 msgid "Edit locale profile"
 msgstr "Uredi lokalni profil"
 
-#: links.py:55
+#: links.py:62
 msgid "Source code"
 msgstr "Izvorni kod"
 
-#: links.py:59
+#: links.py:67
 msgid "Documentation"
 msgstr "Dokumentacija"
 
-#: links.py:64 links.py:74
+#: links.py:71 links.py:82
 msgid "Errors"
 msgstr "Greške"
 
-#: links.py:69
+#: links.py:76
 msgid "Clear all"
 msgstr "Izbriši sve"
 
-#: links.py:78
+#: links.py:86
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:82 views.py:164
+#: links.py:90 views.py:166
 msgid "License"
 msgstr "Licence"
 
-#: links.py:85 views.py:239
+#: links.py:93 views.py:246
 msgid "Other packages licenses"
 msgstr "Ostale license za pakete"
 
-#: links.py:89
+#: links.py:97
 msgid "Setup"
 msgstr "Setup"
 
-#: links.py:92
+#: links.py:100
 msgid "Support"
 msgstr "Podrška"
 
-#: links.py:96 queues.py:10 views.py:274
+#: links.py:104 queues.py:10 views.py:289
 msgid "Tools"
 msgstr "Alati"
 
@@ -150,7 +152,9 @@ msgstr "Alati"
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
+msgstr ""
+"Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti "
+"samo za razvoj i testiranje, a ne za proizvodnju."
 
 #: literals.py:18
 msgid "Days"
@@ -164,29 +168,47 @@ msgstr "Sati"
 msgid "Minutes"
 msgstr "Minuta"
 
+#: management/commands/convertdb.py:28
+msgid ""
+"The database from which data will be exported. If omitted the database named "
+"\"default\" will be used."
+msgstr ""
+
+#: management/commands/convertdb.py:35
+msgid ""
+"The database to which data will be imported. If omitted the database named "
+"\"default\" will be used."
+msgstr ""
+
+#: management/commands/convertdb.py:42
+msgid ""
+"Force the conversion of the database even if the receving database is not "
+"empty."
+msgstr ""
+
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
 msgstr "Obradite određenu aplikaciju"
 
-#: menus.py:12
+#: menus.py:15
 msgid "System"
 msgstr "Sistem"
 
-#: menus.py:22 models.py:81
+#: menus.py:26 models.py:81
 msgid "User"
 msgstr "Korisnik"
 
-#: mixins.py:82
+#: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d object"
 msgstr "Izvršena operacija na %(count)d objektu"
 
-#: mixins.py:83
+#: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d objects"
 msgstr "Izvršena operacija na %(count)d objektima"
 
-#: mixins.py:254
+#: mixins.py:261
 msgid "Object"
 msgstr "Objekat"
 
@@ -198,7 +220,7 @@ msgstr "Imenovani prostor"
 msgid "Date time"
 msgstr "Datum vreme"
 
-#: models.py:37 views.py:209
+#: models.py:37 views.py:216
 msgid "Result"
 msgstr "Rezultat"
 
@@ -234,11 +256,11 @@ msgstr "Vremenska zona"
 msgid "Language"
 msgstr "Jezik"
 
-#: models.py:92
+#: models.py:94
 msgid "User locale profile"
 msgstr "Koristnički lokalni profil"
 
-#: models.py:93
+#: models.py:95
 msgid "User locale profiles"
 msgstr "Koristnički lokalni profili"
 
@@ -258,109 +280,297 @@ msgstr "Vremenski zajednički"
 msgid "Delete stale uploads"
 msgstr "Obriši stare otpreme"
 
-#: settings.py:15
+#: settings.py:17
 msgid "Automatically enable logging to all apps."
 msgstr "Automatski omogućite evidenciju za sve aplikacije."
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka "
+"obavezuju se da se propagiraju."
 
-#: settings.py:28
-msgid ""
-"Filename of the local settings file (just the filename, extension will be "
-".py)."
-msgstr "Filename lokalne datoteke za podešavanja (samo ime datoteke, ekstenzija će biti .pi)."
-
-#: settings.py:36
+#: settings.py:31
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr "Broj koji određuje koliko objekata treba prikazati po stranici."
 
-#: settings.py:42
-msgid "A storage backend that all workers can use to share files."
-msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
+#: settings.py:38
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+"Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja "
+"grešaka."
 
-#: settings.py:53
+#: settings.py:45
+msgid "Path to the logfile that will track errors during production."
+msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
+
+#: settings.py:52
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:58
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+" Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
+
+#: settings.py:69
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, preglednika i privremenih datoteka."
+msgstr ""
+"Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, "
+"preglednika i privremenih datoteka."
 
-#: settings.py:62
-msgid "Enable error logging outside of the system error logging capabilities."
-msgstr "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti evidentiranja grešaka."
+#: settings.py:75
+msgid "Django"
+msgstr ""
 
-#: settings.py:69
-msgid "Path to the logfile that will track errors during production."
-msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
+#: settings.py:80
+msgid ""
+"A list of strings representing the host/domain names that this site can "
+"serve. This is a security measure to prevent HTTP Host header attacks, which "
+"are possible even under many seemingly-safe web server configurations. "
+"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
+"in which case they will be matched against the request's Host header exactly "
+"(case-insensitive, not including port). A value beginning with a period can "
+"be used as a subdomain wildcard: '.example.com' will match example.com, www."
+"example.com, and any other subdomain of example.com. A value of '*' will "
+"match anything; in this case you are responsible to provide your own "
+"validation of the Host header (perhaps in a middleware; if so this "
+"middleware must be listed first in MIDDLEWARE)."
+msgstr ""
+
+#: settings.py:98
+msgid ""
+"When set to True, if the request URL does not match any of the patterns in "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
+"same URL with a slash appended. Note that the redirect may cause any data "
+"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
+"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
+msgstr ""
+
+#: settings.py:110
+msgid ""
+"A dictionary containing the settings for all databases to be used with "
+"Django. It is a nested dictionary whose contents map a database alias to a "
+"dictionary containing the options for an individual database. The DATABASES "
+"setting must configure a default database; any number of additional "
+"databases may also be specified."
+msgstr ""
+
+#: settings.py:122
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
+"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
+"check is done when accessing request.body or request.POST and is calculated "
+"against the total request size excluding any file upload data. You can set "
+"this to None to disable the check. Applications that are expected to receive "
+"unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and "
+"populate the GET and POST dictionaries. Large requests could be used as a "
+"denial-of-service attack vector if left unchecked. Since web servers don't "
+"typically perform deep request inspection, it's not possible to perform a "
+"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+
+#: settings.py:142
+msgid ""
+"Default: [] (Empty list). List of compiled regular expression objects "
+"representing User-Agent strings that are not allowed to visit any page, "
+"systemwide. Use this for bad robots/crawlers. This is only used if "
+"CommonMiddleware is installed (see Middleware)."
+msgstr ""
+
+#: settings.py:153
+msgid ""
+"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
+"for sending emails."
+msgstr ""
+
+#: settings.py:161
+msgid "Default: 'localhost'. The host to use for sending email."
+msgstr ""
+
+#: settings.py:168
+msgid ""
+"Default: '' (Empty string). Password to use for the SMTP server defined in "
+"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
+"authenticating to the SMTP server. If either of these settings is empty, "
+"Django won't attempt authentication."
+msgstr ""
+
+#: settings.py:179
+msgid ""
+"Default: '' (Empty string). Username to use for the SMTP server defined in "
+"EMAIL_HOST. If empty, Django won't attempt authentication."
+msgstr ""
+
+#: settings.py:188
+msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
+msgstr ""
+
+#: settings.py:195
+msgid ""
+"Default: False. Whether to use a TLS (secure) connection when talking to the "
+"SMTP server. This is used for explicit TLS connections, generally on port "
+"587. If you are experiencing hanging connections, see the implicit TLS "
+"setting EMAIL_USE_SSL."
+msgstr ""
+
+#: settings.py:205
+msgid ""
+"Default: False. Whether to use an implicit TLS (secure) connection when "
+"talking to the SMTP server. In most email documentation this type of TLS "
+"connection is referred to as SSL. It is generally used on port 465. If you "
+"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
+"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
+"those settings to True."
+msgstr ""
+
+#: settings.py:217
+msgid ""
+"Default: None. Specifies a timeout in seconds for blocking operations like "
+"the connection attempt."
+msgstr ""
+
+#: settings.py:225
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
+"will be before it gets streamed to the file system. See Managing files for "
+"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+
+#: settings.py:236
+msgid "Name of the view attached to the branch anchor in the main menu."
+msgstr ""
+
+#: settings.py:243
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login, "
+"especially when using the login_required() decorator. This setting also "
+"accepts named URL patterns which can be used to reduce configuration "
+"duplication since you don't have to define the URL in two places (settings "
+"and URLconf)."
+msgstr ""
+
+#: settings.py:255
+msgid ""
+"Default: '/accounts/profile/' The URL where requests are redirected after "
+"login when the contrib.auth.login view gets no next parameter. This is used "
+"by the login_required() decorator, for example. This setting also accepts "
+"named URL patterns which can be used to reduce configuration duplication "
+"since you don't have to define the URL in two places (settings and URLconf)."
+msgstr ""
+
+#: settings.py:264
+msgid "Celery"
+msgstr ""
+
+#: settings.py:269
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
+"transport://userid:password@hostname:port/virtual_host Only the scheme part "
+"(transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:279
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
+"userguide/configuration.html#result-backend"
+msgstr ""
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
+msgstr ""
+"Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
 
-#: views.py:49
+#: views.py:39
+#, fuzzy
+#| msgid "About this"
+msgid "About"
+msgstr "O ovome"
+
+#: views.py:51
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr "Verzija koju koristite je zastarela. Najnovija verzija je %s"
 
-#: views.py:54
+#: views.py:56
 msgid "It is not possible to determine the latest version available."
 msgstr "Nije moguće odrediti najnoviju verziju koja je dostupna."
 
-#: views.py:58
+#: views.py:60
 msgid "Your version is up-to-date."
 msgstr "Vaša verzija je ažurna."
 
-#: views.py:75
+#: views.py:77
 msgid "Current user details"
 msgstr "Podaci o trenutnom korisniku"
 
-#: views.py:80
+#: views.py:82
 msgid "Edit current user details"
 msgstr "Izmenite podatke o trenutnom korisniku"
 
-#: views.py:100
+#: views.py:102
 msgid "Current user locale profile details"
 msgstr "Detalji lokalnog profila trenutnog korisnika"
 
-#: views.py:107
+#: views.py:109
 msgid "Edit current user locale profile details"
 msgstr "Uredi detalje lokalnog profila trenutnog korisnika"
 
-#: views.py:155
+#: views.py:157
 msgid "Dashboard"
 msgstr "Komandna tabla"
 
-#: views.py:173
+#: views.py:180
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Obrišite unose evidencije grešaka za:%s"
 
-#: views.py:190
+#: views.py:197
 msgid "Object error log cleared successfully"
 msgstr "Dnevnik grešaka objekata je uspešno obrisan"
 
-#: views.py:208
+#: views.py:215
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: views.py:213
+#: views.py:220
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Unos log grešaka za:%s"
 
-#: views.py:257
+#: views.py:265
+msgid "No setup options available."
+msgstr ""
+
+#: views.py:267
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+
+#: views.py:271
 msgid "Setup items"
 msgstr "Stavke setup-a"
 
-#: views.py:300
+#: views.py:315
 msgid "No action selected."
 msgstr "Nijedna akcija nije odabrana."
 
-#: views.py:308
+#: views.py:323
 msgid "Must select at least one item."
 msgstr "Mora biti izabrana barem jedna stanka."
+
+#~ msgid ""
+#~ "Filename of the local settings file (just the filename, extension will "
+#~ "be .py)."
+#~ msgstr ""
+#~ "Filename lokalne datoteke za podešavanja (samo ime datoteke, ekstenzija "
+#~ "će biti .pi)."

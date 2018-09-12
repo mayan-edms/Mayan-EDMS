@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:02-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "New ACL"
 msgstr ""
 
-#: managers.py:57 managers.py:86
+#: managers.py:57 managers.py:96
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
@@ -101,35 +101,45 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr ""
 
-#: views.py:74
+#: views.py:77
 #, python-format
 msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:101
+#: views.py:104
 #, python-format
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:139
+#: views.py:148
+msgid "There are no ACLs for this object"
+msgstr ""
+
+#: views.py:151
+msgid ""
+"ACL stands for Access Control List and is a precise method  to control user "
+"access to objects in the system."
+msgstr ""
+
+#: views.py:155
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:151
+#: views.py:167
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:152
+#: views.py:168
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:214
+#: views.py:230
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
-#: views.py:234
+#: views.py:250
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 

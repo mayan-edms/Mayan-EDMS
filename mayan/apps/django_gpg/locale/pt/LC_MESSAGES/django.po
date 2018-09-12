@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario, 2012
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-09-22 13:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -71,39 +72,39 @@ msgstr "Termo"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nome, e-mail, ID da chave ou impressão digital da chave a procurar."
 
-#: links.py:13
+#: links.py:15
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:17
+#: links.py:19
 msgid "Details"
 msgstr "Detalhes"
 
-#: links.py:21
+#: links.py:23
 msgid "Download"
 msgstr "Descarregar"
 
-#: links.py:25 permissions.py:28
+#: links.py:26 permissions.py:28
 msgid "Query keyservers"
 msgstr "Consultar servidores de chaves"
 
-#: links.py:29
+#: links.py:31
 msgid "Import"
 msgstr ""
 
-#: links.py:34 permissions.py:7
+#: links.py:36 permissions.py:7
 msgid "Key management"
 msgstr "Gestão de chaves"
 
-#: links.py:37
+#: links.py:39
 msgid "Upload key"
 msgstr ""
 
-#: links.py:41 views.py:160
+#: links.py:43 views.py:161
 msgid "Private keys"
 msgstr ""
 
-#: links.py:45 views.py:149
+#: links.py:47 views.py:150
 msgid "Public keys"
 msgstr ""
 
@@ -141,7 +142,9 @@ msgstr "Erro de assinatura."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "O documento está assinado, mas não está disponível uma chave pública para verificação."
+msgstr ""
+"O documento está assinado, mas não está disponível uma chave pública para "
+"verificação."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -215,47 +218,47 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr ""
 
-#: views.py:38
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr ""
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Details for key: %s"
 msgstr ""
 
-#: views.py:68
+#: views.py:69
 #, python-format
 msgid "Import key ID: %s?"
 msgstr ""
 
-#: views.py:69
+#: views.py:70
 msgid "Import key"
 msgstr "Importar chave"
 
-#: views.py:78
+#: views.py:79
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:85
+#: views.py:86
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:107
+#: views.py:108
 msgid "Search"
 msgstr "Procurar"
 
-#: views.py:109
+#: views.py:110
 msgid "Query key server"
 msgstr "Consultar servidor de chaves"
 
-#: views.py:119
+#: views.py:120
 msgid "Key query results"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 msgid "Upload new key"
 msgstr ""

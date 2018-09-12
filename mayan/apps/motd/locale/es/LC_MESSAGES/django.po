@@ -1,52 +1,53 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"POT-Creation-Date: 2018-09-08 04:13-0400\n"
 "PO-Revision-Date: 2017-09-22 21:37+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:26 permissions.py:7
+#: apps.py:29 links.py:31 permissions.py:7
 msgid "Message of the day"
 msgstr "Mensaje del día "
 
-#: apps.py:40 models.py:20
+#: apps.py:43 models.py:20
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps.py:43 models.py:24
+#: apps.py:46 models.py:24
 msgid "Start date time"
 msgstr "Fecha y hora de comienzo"
 
-#: apps.py:44 apps.py:48
+#: apps.py:47 apps.py:51
 msgid "None"
 msgstr "Ninguno"
 
-#: apps.py:47 models.py:29
+#: apps.py:50 models.py:29
 msgid "End date time"
 msgstr "Fecha y hora cancelación"
 
-#: links.py:14 views.py:29
+#: links.py:16 views.py:32
 msgid "Create message"
 msgstr "Crear mensaje"
 
-#: links.py:19
+#: links.py:20
 msgid "Delete"
 msgstr "Borrar"
 
-#: links.py:22
+#: links.py:23
 msgid "Edit"
 msgstr "Editar"
 
@@ -68,13 +69,14 @@ msgstr "Mensaje"
 
 #: models.py:23
 msgid "Date and time after which this message will be displayed."
-msgstr "Fecha y hora después de la cual este mensaje comenzara a ser desplegado."
+msgstr ""
+"Fecha y hora después de la cual este mensaje comenzara a ser desplegado."
 
 #: models.py:28
 msgid "Date and time until when this message is to be displayed."
 msgstr "Fecha y hora hasta la cual este mensaje será desplegado."
 
-#: models.py:36 views.py:66
+#: models.py:36 views.py:79
 msgid "Messages"
 msgstr "Mensajes"
 
@@ -98,12 +100,23 @@ msgstr "Ver mensajes"
 msgid "Messages of the day"
 msgstr "Mensajes del día"
 
-#: views.py:42
+#: views.py:45
 #, python-format
 msgid "Delete the message: %s?"
 msgstr "¿Borrar el mensaje: %s?"
 
-#: views.py:55
+#: views.py:58
 #, python-format
 msgid "Edit message: %s"
 msgstr "¿Editar el mensaje: %s?"
+
+#: views.py:74
+msgid ""
+"Messages are displayed in the login view. You can use messages to convery "
+"information about your organzation, announcements or usage guidelines for "
+"your users."
+msgstr ""
+
+#: views.py:78
+msgid "No messages available"
+msgstr ""

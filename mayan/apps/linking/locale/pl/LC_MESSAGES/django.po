@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -10,15 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:04-0400\n"
+"POT-Creation-Date: 2018-09-08 04:13-0400\n"
 "PO-Revision-Date: 2018-01-22 19:19+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:34
 msgid "Linking"
@@ -32,7 +35,7 @@ msgstr "Etykieta"
 msgid "Dynamic label"
 msgstr "Dynamiczna etykieta"
 
-#: apps.py:67 apps.py:72 models.py:30 models.py:133
+#: apps.py:67 apps.py:74 models.py:30 models.py:133
 msgid "Enabled"
 msgstr "Włączony"
 
@@ -40,36 +43,36 @@ msgstr "Włączony"
 msgid "Foreign document attribute"
 msgstr "Atrybut obcego dokumentu"
 
-#: links.py:14
+#: links.py:19
 msgid "Create condition"
 msgstr "Utwórz warunek"
 
-#: links.py:19 links.py:36
+#: links.py:24 links.py:42
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:23 links.py:43
+#: links.py:29 links.py:50
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:27
+#: links.py:33
 msgid "Conditions"
 msgstr "Warunki"
 
-#: links.py:32 views.py:169
+#: links.py:38 views.py:195
 msgid "Create new smart link"
 msgstr "Utwórz nowe łącze"
 
-#: links.py:39 models.py:32
+#: links.py:46 models.py:32
 msgid "Document types"
 msgstr "Typy dokumentów"
 
-#: links.py:47
+#: links.py:54
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: links.py:54 links.py:58 links.py:63 models.py:40 permissions.py:7
-#: views.py:132
+#: links.py:60 links.py:64 links.py:69 models.py:40 permissions.py:7
+#: views.py:149
 msgid "Smart links"
 msgstr "Łącza"
 
@@ -142,11 +145,19 @@ msgid "is in regular expression (case insensitive)"
 msgstr "jest w wyrażeniu regularnym (wielkość liter ma znaczenie)"
 
 #: models.py:24 models.py:123
+#, fuzzy
+#| msgid ""
+#| "Enter a template to render. Use Django's default templating language "
+#| "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
+#| "{{ document }} context variable is available."
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
-msgstr "Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Zmienna kontekstowa {{ document }} jest dostępna."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
+msgstr ""
+"Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Zmienna "
+"kontekstowa {{ document }} jest dostępna."
 
 #: models.py:39 models.py:109
 msgid "Smart link"
@@ -213,71 +224,111 @@ msgstr "Edytuj łącza"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Lista rozdzielonych przecinkami kluczy głównych dotyczących typów dokumentów, do których łącze będzie się odnosić."
+msgstr ""
+"Lista rozdzielonych przecinkami kluczy głównych dotyczących typów "
+"dokumentów, do których łącze będzie się odnosić."
 
 #: serializers.py:139
 #, python-format
 msgid "No such document type: %s"
 msgstr "Brak dokumentów typu: %s"
 
-#: views.py:60
+#: views.py:63
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Błąd zapytania o łącze: %s"
 
-#: views.py:68
+#: views.py:71
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "Dokumenty w łączu: %s"
 
-#: views.py:71
+#: views.py:74
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Dokumenty w łączu \"%(smart_link)s\" powiązane z \"%(document)s\""
 
-#: views.py:90
+#: views.py:93
 msgid "Available document types"
 msgstr "Dostępne typy dokumentów"
 
-#: views.py:92
+#: views.py:95
 msgid "Document types enabled"
 msgstr "Typy dokumentów z udostępnionym łączem"
 
-#: views.py:101
+#: views.py:104
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Typy dokumentów, dla których zostanie udostępnione łącze: %s"
 
-#: views.py:161
+#: views.py:140
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr ""
+
+#: views.py:147
+#, fuzzy
+#| msgid "Create new smart links"
+msgid "There are no smart links"
+msgstr "Utwórz nowe łącza"
+
+#: views.py:179
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr ""
+
+#: views.py:184
+#, fuzzy
+#| msgid "Smart links for document: %s"
+msgid "There are no smart links for this document"
+msgstr "Łącza dla dokumentu: %s"
+
+#: views.py:187
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Łącza dla dokumentu: %s"
 
-#: views.py:184
+#: views.py:210
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Edytuj łącze: %s"
 
-#: views.py:196
+#: views.py:222
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Usuń łącze: %s"
 
-#: views.py:208
+#: views.py:241
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+
+#: views.py:245
+#, fuzzy
+#| msgid "Conditions for smart link: %s"
+msgid "There are no conditions for this smart link"
+msgstr "Warunki łącza: %s"
+
+#: views.py:249
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Warunki łącza: %s"
 
-#: views.py:235
+#: views.py:276
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Dodaj nowe warunki do łącza: \"%s\""
 
-#: views.py:276
+#: views.py:317
 msgid "Edit smart link condition"
 msgstr "Edycja warunku łącza"
 
-#: views.py:306
+#: views.py:347
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Usunąć warunek łącza: \"%s\"?"

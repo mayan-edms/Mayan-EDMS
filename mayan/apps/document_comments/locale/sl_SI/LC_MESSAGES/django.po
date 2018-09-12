@@ -1,21 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2017-10-11 09:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/sl_SI/)\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl_SI\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: apps.py:30 events.py:8
 msgid "Document comments"
@@ -34,7 +36,7 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentar"
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr "Komentarji"
 
@@ -46,11 +48,11 @@ msgstr ""
 msgid "Document comment deleted"
 msgstr ""
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr ""
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -74,17 +76,29 @@ msgstr "Izbriši komentarje"
 msgid "View comments"
 msgstr "Poglej komentarje"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Dodaj komentar datotekei: %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+#, fuzzy
+#| msgid "Create new comments"
+msgid "There are no comments"
+msgstr "Kreiraj nove komentarje"
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

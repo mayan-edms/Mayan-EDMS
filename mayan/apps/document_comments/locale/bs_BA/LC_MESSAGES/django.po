@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:12-0400\n"
 "PO-Revision-Date: 2018-08-09 07:00+0000\n"
 "Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:30 events.py:8
 msgid "Document comments"
@@ -35,7 +37,7 @@ msgstr "Korisnik"
 msgid "Comment"
 msgstr "Komentar"
 
-#: apps.py:63 apps.py:67 links.py:22 models.py:40 permissions.py:7
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
 msgid "Comments"
 msgstr "Komentari"
 
@@ -47,11 +49,11 @@ msgstr "Izrađen komentar dokumenta"
 msgid "Document comment deleted"
 msgstr "Izbrisan komentar dokumenta"
 
-#: links.py:13
+#: links.py:15
 msgid "Add comment"
 msgstr "Dodaj komentar"
 
-#: links.py:18
+#: links.py:20
 msgid "Delete"
 msgstr "Obriši"
 
@@ -75,17 +77,29 @@ msgstr "Obriši komentare"
 msgid "View comments"
 msgstr "Pregledaj komentare"
 
-#: views.py:40
+#: views.py:43
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Dodaj komentar za dokument: %s"
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Izbriši komentar:%s?"
 
-#: views.py:97
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+#, fuzzy
+#| msgid "Create new comments"
+msgid "There are no comments"
+msgstr "Kreiraj novi komentar"
+
+#: views.py:109
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Komantari za dokumenat:%s"

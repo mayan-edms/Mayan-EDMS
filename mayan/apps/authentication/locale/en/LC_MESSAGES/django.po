@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:03-0400\n"
+"POT-Creation-Date: 2018-09-08 04:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgstr ""
 msgid "This account is inactive."
 msgstr ""
 
-#: links.py:16
+#: links.py:19
 msgid "Logout"
 msgstr ""
 
-#: links.py:20
+#: links.py:23
 msgid "Change password"
 msgstr ""
 
@@ -63,10 +63,14 @@ msgid ""
 "logged in. Value is time in seconds."
 msgstr ""
 
-#: views.py:61
+#: views.py:79
 msgid "Current user password change"
 msgstr ""
 
-#: views.py:75
+#: views.py:84
+msgid "Changing the password is not allowed for this account."
+msgstr ""
+
+#: views.py:101
 msgid "Your password has been successfully changed."
 msgstr ""
