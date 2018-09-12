@@ -136,7 +136,12 @@
 - Add new dashboard item to display the total page count.
 - Show the document type being uploaded in the source view title.
 - Setting SOURCE_SCANIMAGE_PATH is now SOURCES_SCANIMAGE_PATH.
+- Refactor the staging file image generation to support 
+  background task generation, caching and cache sharing.
 - New queue: sources_fast. Used for staging file generation.
+- New settings: SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND and 
+  SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS to control
+  where and how staging file caching is done.
 
 3.0.3 (2018-08-17)
 ==================
