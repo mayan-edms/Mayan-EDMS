@@ -73,15 +73,15 @@ class DjangoGPGApp(MayanAppConfig):
             links=(link_private_keys, link_public_keys),
             sources=(
                 'django_gpg:key_public_list', 'django_gpg:key_private_list',
-                'django_gpg:key_query', 'django_gpg:key_query_results', Key,
-                KeyStub
+                'django_gpg:key_query', 'django_gpg:key_query_results',
+                'django_gpg:key_upload', Key, KeyStub
             )
         )
         menu_sidebar.bind_links(
             links=(link_key_query, link_key_upload),
             sources=(
                 'django_gpg:key_public_list', 'django_gpg:key_private_list',
-                'django_gpg:key_query', 'django_gpg:key_query_results', Key,
-                KeyStub
+                'django_gpg:key_query', 'django_gpg:key_query_results',
+                'django_gpg:key_upload', Key, KeyStub
             )
         )
