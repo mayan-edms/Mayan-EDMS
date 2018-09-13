@@ -217,3 +217,38 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
         )
 
         Index.objects.rebuild()
+
+    def test_date_based_index(self):
+        index = Index.objects.create(label=TEST_INDEX_LABEL)
+        index.document_types.add(self.document_type)
+
+        level_year = index.node_templates.create(
+            parent=index.template_root,
+            expression='{{ document.date_added|date:"Y" }}',
+            link_documents=False
+        )
+
+        index.node_templates.create(
+            parent=level_year,
+            expression='{{ document.date_added|date:"m" }}',
+            link_documents=True
+        )
+        # Index the document created by default
+        Index.objects.rebuild()
+
+        self.document.delete()
+
+        # Uploading a new should not trigger an error
+        document = self.upload_document()
+
+        self.assertEqual(
+            [instance.value for instance in IndexInstanceNode.objects.all().order_by('pk')],
+            [
+                '', force_text(document.date_added.year),
+                force_text(document.date_added.month).zfill(2)
+            ]
+        )
+
+        self.assertTrue(
+            document in list(IndexInstanceNode.objects.order_by('pk').last().documents.all())
+        )

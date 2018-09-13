@@ -190,15 +190,16 @@ class IndexTemplateNode(MPTTModel):
         else:
             return self.expression
 
+    def get_lock_string(self):
+        return 'indexing:indexing_template_node_{}'.format(self.pk)
+
     def index_document(self, document, acquire_lock=True, index_instance_node_parent=None):
         # Avoid another process indexing this same document for the same
         # template node. This prevents this template node's index instance
         # nodes from being deleted while the template is evaluated and
         # documents added to it.
         if acquire_lock:
-            lock = locking_backend.acquire_lock(
-                'indexing:indexing_template_node_{}'.format(self.pk)
-            )
+            lock = locking_backend.acquire_lock(self.get_lock_string())
 
         # Start transaction after the lock in case the locking backend uses
         # the database.
@@ -212,11 +213,12 @@ class IndexTemplateNode(MPTTModel):
                     'Removing document "%s" from all index instance nodes',
                     document
                 )
-                for index_template_node in self.index_instance_nodes.all():
-                    index_template_node.remove_document(
+                for index_instance_node in self.index_instance_nodes.all():
+                    index_instance_node.remove_document(
                         document=document, acquire_lock=False
                     )
 
+            with transaction.atomic():
                 if not self.parent:
                     logger.debug(
                         'IndexTemplateNode; parent: creating empty root index '
@@ -263,6 +265,7 @@ class IndexTemplateNode(MPTTModel):
                                 parent=index_instance_node_parent,
                                 value=result
                             )
+
                             if self.link_documents:
                                 index_instance_node.documents.add(document)
 
@@ -302,11 +305,6 @@ class IndexInstanceNode(MPTTModel):
     def __str__(self):
         return self.value
 
-    @property
-    def children(self):
-        # Convenience method for serializer
-        return self.get_children()
-
     def delete_empty(self, acquire_lock=True):
         """
         The argument `acquire_lock` controls whether or not this method
@@ -318,17 +316,18 @@ class IndexInstanceNode(MPTTModel):
         # parent template node for the lock
         if acquire_lock:
             lock = locking_backend.acquire_lock(
-                'indexing:indexing_template_node_{}'.format(
-                    self.index_template_node.pk
-                )
+                self.index_template_node.get_lock_string()
             )
         # Start transaction after the lock in case the locking backend uses
         # the database.
         with transaction.atomic():
             if self.documents.count() == 0 and self.get_children().count() == 0:
                 if self.parent:
-                    self.delete()
                     self.parent.delete_empty(acquire_lock=False)
+                    # Delete ourselves after the parent is deleted
+                    # Sound counterintuitive but otherwise the tree becomes
+                    # corrupted. Reference: test_models.test_date_based_index
+                self.delete()
             if acquire_lock:
                 lock.release()
 
@@ -385,10 +384,9 @@ class IndexInstanceNode(MPTTModel):
         # parent template node for the lock
         if acquire_lock:
             lock = locking_backend.acquire_lock(
-                'indexing:indexing_template_node_{}'.format(
-                    self.index_template_node.pk
-                )
+                self.index_template_node.get_lock_string()
             )
+
         self.documents.remove(document)
         self.delete_empty(acquire_lock=False)
 

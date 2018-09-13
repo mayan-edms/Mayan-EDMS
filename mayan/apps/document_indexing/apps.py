@@ -206,18 +206,22 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_rebuild_index_instances,))
 
         post_delete.connect(
-            handler_delete_empty, dispatch_uid='handler_delete_empty',
+            dispatch_uid='document_indexing_handler_delete_empty',
+            receiver=handler_delete_empty,
             sender=Document
         )
         pre_delete.connect(
-            handler_remove_document, dispatch_uid='handler_remove_document',
+            dispatch_uid='document_indexing_handler_remove_document',
+            receiver=handler_remove_document,
             sender=Document
         )
         post_document_created.connect(
-            handler_index_document,
-            dispatch_uid='handler_index_document', sender=Document
+            dispatch_uid='document_indexing_handler_index_document',
+            receiver=handler_index_document,
+            sender=Document
         )
         post_initial_document_type.connect(
-            create_default_document_index,
-            dispatch_uid='create_default_document_index', sender=DocumentType
+            dispatch_uid='document_indexing_create_default_document_index',
+            receiver=create_default_document_index,
+            sender=DocumentType
         )
