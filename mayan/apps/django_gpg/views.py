@@ -4,6 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.core.files.base import ContentFile
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +15,8 @@ from common.generics import (
 )
 
 from .forms import KeyDetailForm, KeySearchForm
-from .icons import icon_keyserver_search
+from .icons import icon_key_setup, icon_keyserver_search
+from .links import link_key_query, link_key_upload
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
 from .permissions import (
@@ -117,6 +119,17 @@ class KeyQueryResultView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_key_setup,
+            'no_results_main_link': link_key_query.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Use names, last names, key ids or emails to search '
+                'public keys to import from the keyserver.'
+            ),
+            'no_results_title': _(
+                'No results returned'
+            ),
             'title': _('Key query results'),
         }
 
@@ -147,6 +160,19 @@ class PublicKeyListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_key_setup,
+            'no_results_main_link': link_key_upload.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Public keys are used to verify signed documents. '
+                'Public keys can be uploaded by the user or downloaded '
+                'from keyservers. The view to upload private and public '
+                'keys is the same.'
+            ),
+            'no_results_title': _(
+                'There no public keys'
+            ),
             'title': _('Public keys')
         }
 
@@ -158,5 +184,17 @@ class PrivateKeyListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
+            'no_results_icon': icon_key_setup,
+            'no_results_main_link': link_key_upload.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Private keys are used to signed documents. '
+                'Private keys can only be uploaded by the user.'
+                'The view to upload private and public keys is the same.'
+            ),
+            'no_results_title': _(
+                'There no private keys'
+            ),
             'title': _('Private keys')
         }

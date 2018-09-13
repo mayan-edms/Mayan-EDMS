@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import permission_document_type_edit
 from navigation import Link
 
-from .icons import icon_document_metadata_add, icon_metadata_view
+from .icons import (
+    icon_document_metadata_add, icon_metadata_view, icon_metadata_type_create
+)
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view,
@@ -49,6 +51,7 @@ link_setup_metadata_type_document_types = Link(
     text=_('Document types'), view='metadata:setup_metadata_type_document_types',
 )
 link_setup_metadata_type_create = Link(
+    icon_class=icon_metadata_type_create,
     permissions=(permission_metadata_type_create,), text=_('Create new'),
     view='metadata:setup_metadata_type_create'
 )

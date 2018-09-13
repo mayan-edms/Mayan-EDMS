@@ -9,6 +9,9 @@ icon_setup_workflow_list = Icon(driver_name='fontawesome', symbol='sitemap')
 icon_tool_launch_all_workflows = Icon(
     driver_name='fontawesome', symbol='sitemap'
 )
+icon_workflow_create = Icon(
+    driver_name='fontawesome', symbol='plus'
+)
 icon_workflow_list = Icon(
     driver_name='fontawesome', symbol='sitemap'
 )

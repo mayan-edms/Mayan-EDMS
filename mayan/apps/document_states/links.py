@@ -6,7 +6,7 @@ from navigation import Link
 
 from .icons import (
     icon_document_workflow_instance_list, icon_setup_workflow_list,
-    icon_tool_launch_all_workflows, icon_workflow_list,
+    icon_tool_launch_all_workflows, icon_workflow_create, icon_workflow_list,
     icon_workflow_state, icon_workflow_state_action, icon_workflow_transition
 )
 from .permissions import (
@@ -21,7 +21,7 @@ link_document_workflow_instance_list = Link(
     view='document_states:document_workflow_instance_list',
 )
 link_setup_workflow_create = Link(
-    icon_class=icon_workflow_list, permissions=(permission_workflow_create,),
+    icon_class=icon_workflow_create, permissions=(permission_workflow_create,),
     text=_('Create workflow'), view='document_states:setup_workflow_create'
 )
 link_setup_workflow_delete = Link(
