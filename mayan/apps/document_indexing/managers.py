@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from mptt.managers import TreeManager
+
 
 class DocumentIndexInstanceNodeManager(models.Manager):
     def get_for(self, document):
@@ -21,7 +23,7 @@ class IndexManager(models.Manager):
             index.rebuild()
 
 
-class IndexInstanceNodeManager(models.Manager):
+class IndexInstanceNodeManager(TreeManager):
     def delete_empty(self):
         # Select leaf nodes only because .delete_empty() bubbles up
         for root_nodes in self.filter(parent=None):
