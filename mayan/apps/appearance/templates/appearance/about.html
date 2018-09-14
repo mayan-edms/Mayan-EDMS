@@ -55,7 +55,7 @@
 {% endblock stylesheets %}
 
 {% block content %}
-    {% build as build_number %}
+    {% project_information '__build_string__' as build_number %}
     {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}
     {% project_information '__title__' as project_title %}
 
@@ -102,11 +102,11 @@
         </p>
 
         <p class="text-center">
-            If you found a bug or got a feature idea, visit the <a class="new_window" href="https://groups.google.com/forum/#!forum/mayan-edms">forum <i class="far fa-life-ring"></i></a> or open a ticket in the <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms">GitLab repository <i class="fab fa-gitlab"></i></a>.
+            If you found a bug or got a feature idea, visit the <a class="new_window" href="https://forum.mayan-edms.com">forum <i class="far fa-life-ring"></i></a> or open a ticket in the <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms">GitLab repository <i class="fab fa-gitlab"></i></a>.
         </p>
         <p class="text-center">
             Spread the word. Talk to your friends and colleagues about how awesome {% project_information '__title__' %} is!
-            Follow us on <a class="new_window" href="https://twitter.com/mayanedms">Twitter <i class="fab fa-twitter"></i></a> or <a class="new_window" href="https://www.facebook.com/MayanEDMS/">Facebook <i class="fab fa-facebook"></i></a>
+            Follow us on <a class="new_window" href="https://twitter.com/mayanedms">Twitter <i class="fab fa-twitter"></i></a>, <a class="new_window" href="https://www.facebook.com/MayanEDMS/">Facebook <i class="fab fa-facebook"></i></a>, or <a class="new_window" href="https://www.instagram.com/mayan_edms/">Instagram <i class="fab fa-instagram"></i></a>
         </p>
     </div>
 {% endblock %}

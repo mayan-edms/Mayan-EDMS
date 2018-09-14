@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 from json import dumps
 
-import sh
-
 from django.template import Context, Library
 from django.template.loader import get_template
 from django.utils.encoding import force_text
@@ -15,24 +13,6 @@ from ..literals import MESSAGE_SQLITE_WARNING
 from ..utils import check_for_sqlite, return_attrib
 
 register = Library()
-
-try:
-    BUILD = sh.Command('git').bake('describe', '--tags', '--always', 'HEAD')
-    DATE = sh.Command('git').bake('--no-pager', 'log', '-1', '--format=%cd')
-except sh.CommandNotFound:
-    BUILD = None
-    DATE = None
-
-
-@register.simple_tag
-def build():
-    if BUILD:
-        try:
-            return '{} {}'.format(BUILD(), DATE())
-        except sh.ErrorReturnCode_128:
-            return ''
-    else:
-        return ''
 
 
 @register.simple_tag

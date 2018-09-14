@@ -4,14 +4,44 @@ from __future__ import unicode_literals
 
 import os
 
+from dateutil import parser
+import sh
+
 import django
 from django.conf import settings
 from django.template import Template, Context
+from django.utils.encoding import force_text
+
+import mayan
+
+try:
+    BUILD = sh.Command('git').bake('describe', '--tags', '--always', 'HEAD')
+    DATE = sh.Command('git').bake('--no-pager', 'log', '-1', '--format=%cd')
+except sh.CommandNotFound:
+    BUILD = None
+    DATE = None
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 REQUIREMENTS_FILE = 'requirements.txt'
 SETUP_TEMPLATE = 'setup.py.tmpl'
+MAYAN_TEMPLATE = '__init__.py.tmpl'
+
+
+def generate_build_number():
+    if BUILD and DATE:
+        try:
+            result = '{} {}'.format(BUILD(), DATE()).replace('\n', '')
+        except sh.ErrorReturnCode_128:
+            result = ''
+    else:
+        result = ''
+    return result
+
+
+def generate_commit_timestamp():
+    datetime = parser.parse(force_text(DATE()))
+    return datetime.strftime('%y%m%d%H%M')
 
 
 def get_requirements(base_directory, filename):
@@ -48,4 +78,25 @@ if __name__ == '__main__':
         )
 
     with open('setup.py', 'w') as file_object:
+        file_object.write(result)
+
+    with open(MAYAN_TEMPLATE) as file_object:
+        template = file_object.read()
+
+        # Ignore local version if any
+        upstream_version = '.'.join(
+            mayan.__version__.split('+')[0].split('.')
+        )
+
+        result = Template(template).render(
+            context=Context(
+                {
+                    'build_string': generate_build_number(),
+                    'timestamp': generate_commit_timestamp(),
+                    'version': upstream_version
+                }
+            )
+        )
+
+    with open(os.path.join(BASE_DIR, 'mayan', '__init__.py'), 'w') as file_object:
         file_object.write(result)
