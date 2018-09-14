@@ -58,7 +58,7 @@ def post_document_type_change_metadata(sender, instance, **kwargs):
     )
 
     # Add the metadata types of the new document type to the document
-    # excluding exisitng document metadata
+    # excluding existing document metadata
     # get_or_create is not used to avoid a possible triggering of indexes
     # or workflow on document change by metadata save signal
     new_document_type_metadata_types = instance.document_type.metadata.filter(
