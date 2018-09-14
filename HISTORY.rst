@@ -142,6 +142,9 @@
 - New settings: SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND and 
   SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS to control
   where and how staging file caching is done.
+- Fix an egde case on the document indexing where an empty
+  node could be left behind.
+- Improve the speed of the document indexing.
 
 3.0.3 (2018-08-17)
 ==================
