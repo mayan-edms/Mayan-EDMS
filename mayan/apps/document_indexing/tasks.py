@@ -26,27 +26,6 @@ def task_delete_empty(self):
 
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
-def task_remove_document(self, document_id):
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-    IndexInstanceNode = apps.get_model(
-        app_label='document_indexing', model_name='IndexInstanceNode'
-    )
-
-    try:
-        document = Document.objects.get(pk=document_id)
-    except Document.DoesNotExist:
-        # Document was deleted before we could execute, abort
-        pass
-    else:
-        try:
-            IndexInstanceNode.objects.remove_document(document=document)
-        except LockError as exception:
-            raise self.retry(exc=exception)
-
-
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_index_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
@@ -90,3 +69,29 @@ def task_rebuild_index(self, index_id):
     except LockError as exception:
         # This index is being rebuilt by another task, retry later
         raise self.retry(exc=exception)
+
+
+@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
+def task_remove_document(self, document_id):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+    IndexInstanceNode = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstanceNode'
+    )
+
+    try:
+        document = Document.objects.get(pk=document_id)
+    except Document.DoesNotExist:
+        # Document was deleted before we could execute
+        # Since it was automatically removed from the document M2M
+        # we just now delete the empty instance nodes
+        try:
+            IndexInstanceNode.objects.delete_empty()
+        except LockError as exception:
+            raise self.retry(exc=exception)
+    else:
+        try:
+            IndexInstanceNode.objects.remove_document(document=document)
+        except LockError as exception:
+            raise self.retry(exc=exception)
