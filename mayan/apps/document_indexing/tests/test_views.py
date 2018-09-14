@@ -2,12 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from documents.tests import GenericDocumentViewTestCase
 
-from ..models import Index, IndexInstanceNode
+from ..models import Index
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
     permission_document_indexing_instance_view,
-    permission_document_indexing_rebuild, permission_document_indexing_view
+    permission_document_indexing_rebuild
 )
 
 from .literals import (
@@ -170,8 +170,9 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         # No error since we just don't see the index
         self.assertEqual(response.status_code, 200)
 
-        with self.assertRaises(IndexInstanceNode.DoesNotExist):
-            self.index.instance_root
+        self.assertEqual(
+            self.index.instance_root.get_children_count(), 0
+        )
 
     def test_index_rebuild_with_access(self):
         self._create_index(rebuild=False)
