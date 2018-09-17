@@ -8,7 +8,7 @@ from navigation import Link
 from .icons import (
     icon_events_list, icon_events_for_object,
     icon_event_types_subscriptions_list,
-    icon_object_event_types_user_subcriptions_list_with_icon,
+    icon_object_event_types_user_subcriptions_list,
     icon_user_notifications_list
 )
 from .permissions import permission_events_view
@@ -62,12 +62,7 @@ link_notification_mark_read_all = Link(
     text=_('Mark all as seen'), view='events:notification_mark_read_all'
 )
 link_object_event_types_user_subcriptions_list = Link(
-    kwargs=get_kwargs_factory('resolved_object'),
-    permissions=(permission_events_view,), text=_('Subscriptions'),
-    view='events:object_event_types_user_subcriptions_list',
-)
-link_object_event_types_user_subcriptions_list_with_icon = Link(
-    icon_class=icon_object_event_types_user_subcriptions_list_with_icon,
+    icon_class=icon_object_event_types_user_subcriptions_list,
     kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),
     view='events:object_event_types_user_subcriptions_list',

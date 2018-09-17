@@ -60,6 +60,8 @@ icon_document_pages = Icon(driver_name='fontawesome', symbol='copy')
 icon_document_preview = Icon(driver_name='fontawesome', symbol='eye')
 icon_document_properties = Icon(driver_name='fontawesome', symbol='info')
 icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
+icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_document_type_setup = Icon(driver_name='fontawesome', symbol='file')
 icon_document_type_filename = Icon(
     driver_name='fontawesome', symbol='keyboard'

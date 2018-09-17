@@ -17,6 +17,7 @@ from .icons import (
     icon_document_page_rotate_right, icon_document_page_zoom_in,
     icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
     icon_document_properties, icon_document_type_create,
+    icon_document_type_delete, icon_document_type_edit,
     icon_document_type_filename_create, icon_document_type_setup,
     icon_document_version_list, icon_document_version_return_document,
     icon_document_version_return_list, icon_duplicated_document_list,
@@ -319,12 +320,14 @@ link_document_type_create = Link(
     text=_('Create document type'), view='documents:document_type_create'
 )
 link_document_type_delete = Link(
-    args='resolved_object.id', permissions=(permission_document_type_delete,),
-    tags='dangerous', text=_('Delete'), view='documents:document_type_delete',
+    args='resolved_object.id', icon_class=icon_document_type_delete,
+    permissions=(permission_document_type_delete,), tags='dangerous',
+    text=_('Delete'), view='documents:document_type_delete',
 )
 link_document_type_edit = Link(
-    args='resolved_object.id', permissions=(permission_document_type_edit,),
-    text=_('Edit'), view='documents:document_type_edit',
+    args='resolved_object.id', icon_class=icon_document_type_edit,
+    permissions=(permission_document_type_edit,), text=_('Edit'),
+    view='documents:document_type_edit',
 )
 link_document_type_filename_create = Link(
     args='document_type.id', icon_class=icon_document_type_filename_create,

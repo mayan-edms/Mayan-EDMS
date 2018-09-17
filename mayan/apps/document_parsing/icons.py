@@ -9,6 +9,9 @@ icon_document_parsing_errors_list = Icon(
 icon_document_content_download = Icon(
     driver_name='fontawesome', symbol='file-alt'
 )
+icon_document_type_parsing_settings = Icon(
+    driver_name='fontawesome', symbol='font'
+)
 icon_document_type_submit = Icon(
     driver_name='fontawesome', symbol='crosshairs'
 )

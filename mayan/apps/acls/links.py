@@ -33,10 +33,6 @@ link_acl_delete = Link(
     view='acls:acl_delete',
 )
 link_acl_list = Link(
-    kwargs=get_kwargs_factory('resolved_object'),
-    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
-)
-link_acl_list_with_icon = Link(
     icon_class=icon_acl_list, kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
 )

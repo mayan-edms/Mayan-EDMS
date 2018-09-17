@@ -8,7 +8,7 @@ from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
-from acls.links import link_acl_list, link_acl_list_with_icon
+from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
@@ -27,7 +27,6 @@ from converter.permissions import (
 from events import ModelEventType
 from events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
-    link_object_event_types_user_subcriptions_list_with_icon
 )
 from events.permissions import permission_events_view
 from mayan.celery import app
@@ -496,7 +495,7 @@ class DocumentsApp(MayanAppConfig):
 
         # Document facet links
         menu_facet.bind_links(
-            links=(link_document_duplicates_list, link_acl_list_with_icon,),
+            links=(link_document_duplicates_list, link_acl_list,),
             sources=(Document,)
         )
         menu_facet.bind_links(
@@ -508,7 +507,7 @@ class DocumentsApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(
                 link_events_for_object,
-                link_object_event_types_user_subcriptions_list_with_icon,
+                link_object_event_types_user_subcriptions_list,
                 link_document_version_list,
             ), sources=(Document,), position=2
         )

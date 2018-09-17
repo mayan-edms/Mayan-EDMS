@@ -6,8 +6,8 @@ from navigation import Link, get_cascade_condition
 
 from .icons import (
     icon_document_content, icon_document_parsing_errors_list,
-    icon_document_content_download, icon_document_type_submit,
-    icon_link_error_list
+    icon_document_content_download, icon_document_type_parsing_settings,
+    icon_document_type_submit, icon_link_error_list
 )
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
@@ -39,6 +39,7 @@ link_document_submit = Link(
 )
 link_document_type_parsing_settings = Link(
     args='resolved_object.id',
+    icon_class=icon_document_type_parsing_settings,
     permissions=(permission_document_type_parsing_setup,),
     text=_('Setup parsing'),
     view='document_parsing:document_type_parsing_settings',

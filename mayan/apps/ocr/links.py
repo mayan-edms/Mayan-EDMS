@@ -6,8 +6,8 @@ from navigation import Link
 
 from .icons import (
     icon_document_content, icon_document_ocr_download,
-    icon_document_ocr_errors_list, icon_document_type_submit,
-    icon_entry_list
+    icon_document_ocr_errors_list, icon_document_type_ocr_settings,
+    icon_document_type_submit, icon_entry_list
 )
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -32,7 +32,7 @@ link_document_submit_multiple = Link(
     text=_('Submit for OCR'), view='ocr:document_submit_multiple'
 )
 link_document_type_ocr_settings = Link(
-    args='resolved_object.id',
+    args='resolved_object.id', icon_class=icon_document_type_ocr_settings,
     permissions=(permission_document_type_ocr_setup,), text=_('Setup OCR'),
     view='ocr:document_type_ocr_settings',
 )
