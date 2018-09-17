@@ -2,10 +2,20 @@ from __future__ import unicode_literals
 
 from django.template import Library
 
-from ..classes import Menu, SourceColumn
+from ..classes import Link, Menu, SourceColumn
 from ..forms import MultiItemForm
 
 register = Library()
+
+
+@register.simple_tag()
+def get_link(name):
+    return Link.get(name)
+
+
+@register.simple_tag()
+def get_menu(name):
+    return Menu.get(name)
 
 
 @register.simple_tag(takes_context=True)
@@ -58,6 +68,12 @@ def get_source_columns(source):
             pass
 
     return SourceColumn.get_for_source(source)
+
+
+@register.simple_tag(takes_context=True)
+def resolve_link(context, link):
+    # This can be used to resolve links or menus too
+    return link.resolve(context=context)
 
 
 @register.simple_tag(takes_context=True)

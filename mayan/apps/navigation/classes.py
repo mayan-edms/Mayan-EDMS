@@ -293,10 +293,20 @@ class Menu(object):
 
 
 class Link(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def remove(cls, name):
+        del cls._registry[name]
+
     def __init__(self, text, view=None, args=None, condition=None,
                  conditional_disable=None, description=None, html_data=None,
                  html_extra_classes=None, icon=None, icon_class=None,
-                 keep_query=False, kwargs=None, permissions=None,
+                 keep_query=False, kwargs=None, name=None, permissions=None,
                  permissions_related=None, remove_from_query=None, tags=None,
                  url=None):
 
@@ -310,6 +320,7 @@ class Link(object):
         self.icon_class = icon_class
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
+        self.name = name
         self.permissions = permissions or []
         self.permissions_related = permissions_related
         self.remove_from_query = remove_from_query or []
@@ -317,6 +328,9 @@ class Link(object):
         self.text = text
         self.view = view
         self.url = url
+
+        if name:
+            self.__class__._registry[name] = self
 
     def resolve(self, context, resolved_object=None):
         AccessControlList = apps.get_model(
