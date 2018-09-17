@@ -26,8 +26,7 @@ from .links import (
     link_about, link_check_version, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
     link_license, link_object_error_list_clear, link_packages_licenses,
-    link_setup, link_support, link_tools, separator_user_label,
-    text_user_label
+    link_setup, link_tools, separator_user_label, text_user_label
 )
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING

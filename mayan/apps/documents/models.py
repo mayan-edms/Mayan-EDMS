@@ -1018,7 +1018,6 @@ class DocumentPageCachedImage(models.Model):
         return super(DocumentPageCachedImage, self).save(*args, **kwargs)
 
 
-
 class DocumentPageResult(DocumentPage):
     class Meta:
         ordering = ('document_version__document', 'page_number')
