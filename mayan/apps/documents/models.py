@@ -997,7 +997,13 @@ class DocumentPageCachedImage(models.Model):
         on_delete=models.CASCADE, related_name='cached_images',
         to=DocumentPage, verbose_name=_('Document page')
     )
+    datetime = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Date time')
+    )
     filename = models.CharField(max_length=128, verbose_name=_('Filename'))
+    file_size = models.PositiveIntegerField(
+        db_index=True, default=0, verbose_name=_('File size')
+    )
 
     class Meta:
         verbose_name = _('Document page cached image')
@@ -1006,6 +1012,11 @@ class DocumentPageCachedImage(models.Model):
     def delete(self, *args, **kwargs):
         storage_documentimagecache.delete(self.filename)
         return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.file_size = storage_documentimagecache.size(self.filename)
+        return super(DocumentPageCachedImage, self).save(*args, **kwargs)
+
 
 
 class DocumentPageResult(DocumentPage):

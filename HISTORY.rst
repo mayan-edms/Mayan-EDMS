@@ -157,6 +157,8 @@
 - Expose more document fields for use in smart links.
 - The size of the document type label field has been increased
   from 32 to 96 characters.
+- Add file_size and datetime fields to the DocumentPageCachedImage
+  model.
 
 3.0.3 (2018-08-17)
 ==================
