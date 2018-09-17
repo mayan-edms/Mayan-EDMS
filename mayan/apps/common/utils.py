@@ -68,6 +68,13 @@ def encapsulate(function):
     return lambda: function
 
 
+def get_user_label_text(context):
+    if not context['request'].user.is_authenticated:
+        return _('Anonymous')
+    else:
+        return context['request'].user.get_full_name() or context['request'].user
+
+
 def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
     """
     Tries to remove the given filename. Ignores non-existent files

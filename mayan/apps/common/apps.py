@@ -16,7 +16,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
-from navigation.classes import Separator, Text
 
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
@@ -26,7 +25,8 @@ from .links import (
     link_about, link_check_version, link_code, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
     link_documentation, link_forum, link_license, link_object_error_list_clear,
-    link_packages_licenses, link_setup, link_support, link_tools
+    link_packages_licenses, link_setup, link_support, link_tools,
+    separator_user_label, text_user_label
 )
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
@@ -84,13 +84,6 @@ class CommonApp(MayanAppConfig):
     name = 'common'
     verbose_name = _('Common')
 
-    @staticmethod
-    def get_user_label_text(context):
-        if not context['request'].user.is_authenticated:
-            return _('Anonymous')
-        else:
-            return context['request'].user.get_full_name() or context['request'].user
-
     def ready(self):
         super(CommonApp, self).ready()
         if check_for_sqlite():
@@ -129,7 +122,7 @@ class CommonApp(MayanAppConfig):
         )
         menu_user.bind_links(
             links=(
-                Text(text=CommonApp.get_user_label_text), Separator(),
+                separator_user_label, text_user_label,
                 link_current_user_details, link_current_user_edit,
                 link_current_user_locale_profile_edit,
             )

@@ -4,6 +4,7 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
+from navigation.classes import Separator, Text
 
 from .icons import (
     icon_about, icon_check_version, icon_code, icon_current_user_details,
@@ -13,6 +14,7 @@ from .icons import (
     icon_packages_licenses, icon_setup, icon_support, icon_tools
 )
 from .permissions_runtime import permission_error_log_view
+from .utils import get_user_label_text
 
 
 def get_kwargs_factory(variable_name):
@@ -103,3 +105,5 @@ link_support = Link(
 link_tools = Link(
     icon_class=icon_tools, text=_('Tools'), view='common:tools_list'
 )
+separator_user_label = Separator()
+text_user_label = Text(text=get_user_label_text)
