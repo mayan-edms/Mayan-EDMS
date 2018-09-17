@@ -160,6 +160,7 @@
 - Add file_size and datetime fields to the DocumentPageCachedImage
   model.
 - Make icon classes file template based.
+- Add the current step and total steps of a wizard in the template context.
 
 3.0.3 (2018-08-17)
 ==================

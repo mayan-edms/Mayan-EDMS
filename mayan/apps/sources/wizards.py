@@ -168,6 +168,8 @@ class DocumentCreateWizard(SessionWizardView):
             'submit_label': _('Next step'),
             'submit_icon_class': icon_wizard_submit,
             'title': _('Document upload wizard'),
+            'wizard_step': wizard_step,
+            'wizard_steps': WizardStep.get_all(),
         })
         return context
 
