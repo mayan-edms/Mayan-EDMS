@@ -71,7 +71,7 @@ job_push_python:
   image: ubuntu:18.04
   before_script:
   script:
-    - echo "$PYPIRC" ~/.pypirc
+    - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
   only:
     - releases

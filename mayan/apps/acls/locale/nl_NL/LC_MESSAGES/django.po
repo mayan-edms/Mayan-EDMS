@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-07-29 11:03+0000\n"
-"Last-Translator: Martin Horseling <martin.horseling@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 links.py:37 links.py:41
@@ -57,9 +56,7 @@ msgstr "Authorisaties invoer"
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-"Permissies \"%(permissions)s\" voor gebruikersrol \"%(role)s\" voor "
-"\"%(object)s\""
+msgstr "Permissies \"%(permissions)s\" voor gebruikersrol \"%(role)s\" voor \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -80,32 +77,32 @@ msgstr "Bekijk authorisatielijsten"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "UPI URL wijzend naar de permissielijst voor deze toegangscontrolelijst"
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "UPI URL wijzend naar een permissie gerelateerd aan de toegangscontrolelijst waarvan het een aanhangsel is. Dit URL is anders dan de canonical Workflow URL"
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Primaire sleutel van de nieuwe permissie om toegang te geven tot de toeganscontrolelijst"
 
 #: serializers.py:111 serializers.py:187
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Permissie niet gevonden: %s\n\nAlternative translation: Permissie bestaat niet (Permission does not exist)"
 
 #: serializers.py:126
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Kommagescheiden lijst van primaire permissie sleutels om toegang te geven tot deze toegangscontrole lijst"
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Primaire Sleutel van de rol waar deze togangscontrolelijst aan gekoppeld is. "
 
 #: views.py:77
 #, python-format
@@ -151,18 +148,19 @@ msgstr "Uitgeschakelde permissies zijn  geërfd van een parent object."
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Objecttype"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Objecttype waarvoor de toegang gewijzigd gaat worden"
 
 #: workflow_actions.py:34
 msgid "Object ID"
 msgstr "voorwerp identificatie"
 
 #: workflow_actions.py:37
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Nummer van het voorwerp waarvoor de toegang wordt gewijzigd"
 
 #: workflow_actions.py:42
@@ -176,7 +174,7 @@ msgstr "Gebruikersrol waarvoor de toegang wordt gewijzigd"
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Permissies to geven/verwijderen naar/van de rol voor het geselecteerde object hierboven "
 
 #: workflow_actions.py:59
 msgid "Grant access"

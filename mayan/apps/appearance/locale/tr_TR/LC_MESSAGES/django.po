@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -50,11 +49,9 @@ msgstr "Server hatası"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Bir hata oldu. Site yöneticilerine e-posta yoluyla bildirildi ve kısa süre "
-"içinde düzeltilmesi gerekiyor. Sabrınız için teşekkürler."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Bir hata oldu. Site yöneticilerine e-posta yoluyla bildirildi ve kısa süre içinde düzeltilmesi gerekiyor. Sabrınız için teşekkürler."
 
 #: templates/appearance/about.html:9
 msgid "About"
@@ -158,9 +155,7 @@ msgstr "İptal"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Toplam (%(start)s - %(end)s / %(total)s) (Sayfa %(page_number)s / "
-"%(total_pages)s)"
+msgstr "Toplam (%(start)s - %(end)s / %(total)s) (Sayfa %(page_number)s / %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -184,8 +179,7 @@ msgstr "Başlarken"
 
 #: templates/appearance/home.html:28
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
-"Maya EDMS'i tam olarak kullanabilmeniz için aşağıdakilere ihtiyacınız vardır:"
+msgstr "Maya EDMS'i tam olarak kullanabilmeniz için aşağıdakilere ihtiyacınız vardır:"
 
 #: templates/appearance/home.html:49
 msgid "Search pages"
@@ -261,9 +255,7 @@ msgstr "Parola: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Güvenliği arttırmak ve bu mesajı devre dışı bırakmak için şifreyi "
-"değiştirdiğinizden emin olun."
+msgstr "Güvenliği arttırmak ve bu mesajı devre dışı bırakmak için şifreyi değiştirdiğinizden emin olun."
 
 #: templates/authentication/login.html:47
 #: templates/authentication/login.html:55
@@ -285,8 +277,7 @@ msgstr "Parola sıfırlama"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
-"Şifre sıfırlama tamamlandı! Giriş yapmak için aşağıdaki bağlantıyı tıklayın."
+msgstr "Şifre sıfırlama tamamlandı! Giriş yapmak için aşağıdaki bağlantıyı tıklayın."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -303,6 +294,3 @@ msgstr "Detayları göster"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Yok"
-
-#~ msgid "Delete: %(object)s?"
-#~ msgstr "%(object)s silinecek?"

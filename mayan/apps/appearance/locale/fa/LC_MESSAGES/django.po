@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -49,11 +48,9 @@ msgstr "خطای سرور"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"یک خطا وجود دارد از طریق پست الکترونیکی به مدیران سایت گزارش شده است و باید "
-"به زودی تنظیم شود. از صبر و شکیبایی شما متشکریم"
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "یک خطا وجود دارد از طریق پست الکترونیکی به مدیران سایت گزارش شده است و باید به زودی تنظیم شود. از صبر و شکیبایی شما متشکریم"
 
 #: templates/appearance/about.html:9
 msgid "About"
@@ -157,9 +154,7 @@ msgstr "لغو"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"مجموع (%(start)s - %(end)s از %(total)s) (صفحه %(page_number)s از "
-"%(total_pages)s)"
+msgstr "مجموع (%(start)s - %(end)s از %(total)s) (صفحه %(page_number)s از %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -183,9 +178,7 @@ msgstr "شروع کردن"
 
 #: templates/appearance/home.html:28
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
-"قبل از اینکه بتوانید به طور کامل از EDMS مایان استفاده کنید، به موارد زیر "
-"نیاز دارید:"
+msgstr "قبل از اینکه بتوانید به طور کامل از EDMS مایان استفاده کنید، به موارد زیر نیاز دارید:"
 
 #: templates/appearance/home.html:49
 msgid "Search pages"
@@ -300,6 +293,3 @@ msgstr "دیدن جزئیات"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "هیچکدام."
-
-#~ msgid "Delete: %(object)s?"
-#~ msgstr "حذف: %(object)s"

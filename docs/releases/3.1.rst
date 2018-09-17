@@ -2,7 +2,7 @@
 Mayan EDMS v3.1 release notes
 =============================
 
-Released: September XX, 2018
+Released: September 17, 2018
 
 What's new
 ==========

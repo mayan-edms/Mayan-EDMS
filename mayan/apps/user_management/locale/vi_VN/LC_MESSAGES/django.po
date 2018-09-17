@@ -1,98 +1,77 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
-"mayan-edms/language/vi_VN/)\n"
-"Language: vi_VN\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:53 permissions.py:7
+#: apps.py:51 permissions.py:7
 msgid "User management"
 msgstr "Quản lý người dùng"
 
-#: apps.py:68
+#: apps.py:66
 msgid "All the groups."
 msgstr ""
 
-#: apps.py:72
+#: apps.py:70
 msgid "All the users."
 msgstr ""
 
-#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:273
+#: apps.py:88 links.py:30 links.py:54 links.py:70 views.py:242
 msgid "Users"
 msgstr ""
 
-#: apps.py:94
+#: apps.py:92
 msgid "Full name"
 msgstr ""
 
-#: apps.py:97 search.py:22
+#: apps.py:95 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:100
+#: apps.py:98
 msgid "Active"
 msgstr ""
 
-#: apps.py:106
+#: apps.py:104
 msgid "Has usable password?"
 msgstr ""
 
-#: links.py:18 views.py:32
+#: links.py:14 views.py:29
 msgid "Create new group"
 msgstr ""
 
-#: links.py:22 links.py:46 links.py:61
+#: links.py:18 links.py:42 links.py:58
 msgid "Delete"
 msgstr ""
 
-#: links.py:25 links.py:49
+#: links.py:22 links.py:46
 msgid "Edit"
 msgstr "Sửa"
 
-#: links.py:29 links.py:38 links.py:53 search.py:25 views.py:71
+#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:52
 msgid "Groups"
 msgstr ""
 
-#: links.py:42 views.py:135
+#: links.py:38 views.py:118
 msgid "Create new user"
 msgstr ""
 
-#: links.py:65 links.py:74
+#: links.py:62 links.py:66
 msgid "Set password"
-msgstr ""
-
-#: links.py:70
-msgid "User options"
-msgstr ""
-
-#: models.py:11
-msgid "User"
-msgstr ""
-
-#: models.py:15
-msgid "Forbid this user from changing their password."
-msgstr ""
-
-#: models.py:19
-msgid "User settings"
-msgstr ""
-
-#: models.py:20
-msgid "Users settings"
 msgstr ""
 
 #: permissions.py:10
@@ -151,157 +130,124 @@ msgstr ""
 msgid "List of group primary keys to which to add the user."
 msgstr ""
 
-#: views.py:48
+#: views.py:45
 #, python-format
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:64
-msgid ""
-"User groups are organizational units. They should mirror the organizational "
-"units of your organization. Groups can't be used for access control. Use "
-"roles for permissions and access control, add groups to them."
-msgstr ""
-
-#: views.py:70
-#, fuzzy
-#| msgid "Create new groups"
-msgid "There are no user groups"
-msgstr "Tạo nhóm mới"
-
-#: views.py:83
+#: views.py:66
 #, python-format
 msgid "Delete the group: %s?"
 msgstr ""
 
-#: views.py:89
+#: views.py:72
 msgid "Available users"
 msgstr ""
 
-#: views.py:90
+#: views.py:73
 msgid "Users in group"
 msgstr ""
 
-#: views.py:111
+#: views.py:94
 #, python-format
 msgid "Users of group: %s"
 msgstr ""
 
-#: views.py:145
+#: views.py:128
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Người dùng \"%s\" được tạo thành công."
 
-#: views.py:157
+#: views.py:138
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr ""
 
-#: views.py:159
+#: views.py:140
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr ""
 
-#: views.py:167
+#: views.py:148
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] ""
 
-#: views.py:177
+#: views.py:158
 #, python-format
 msgid "Delete user: %s"
 msgstr ""
 
-#: views.py:189
+#: views.py:170
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
+msgstr "Super user and staff user deleting is not allowed, use the admin interface for these cases."
 
-#: views.py:197
+#: views.py:178
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Người dùng \"%s\" đã xóa thành công."
 
-#: views.py:203
+#: views.py:184
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Lỗi xóa người dùng \"%(user)s\": %(error)s"
 
-#: views.py:219
+#: views.py:200
 #, python-format
 msgid "Edit user: %s"
 msgstr ""
 
-#: views.py:225
+#: views.py:206
 msgid "Available groups"
 msgstr ""
 
-#: views.py:226
+#: views.py:207
 msgid "Groups joined"
 msgstr ""
 
-#: views.py:235
+#: views.py:216
 #, python-format
 msgid "Groups of user: %s"
 msgstr ""
 
-#: views.py:269
-msgid ""
-"User accounts can be create from this view. After creating an user account "
-"you will prompted to set a password for it. "
-msgstr ""
-
-#: views.py:272
-msgid "There are no user accounts"
-msgstr ""
-
-#: views.py:289
-#, fuzzy, python-format
-#| msgid "Edit existing users"
-msgid "Edit options for user: %s"
-msgstr "Sửa  người dùng"
-
-#: views.py:311
+#: views.py:255
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:313
+#: views.py:257
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:320
+#: views.py:264
 msgid "Submit"
 msgstr ""
 
-#: views.py:322
+#: views.py:266
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 
-#: views.py:332
+#: views.py:276
 #, python-format
 msgid "Change password for user: %s"
 msgstr ""
 
-#: views.py:353
+#: views.py:297
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
+msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
 
-#: views.py:363
+#: views.py:307
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr ""
 
-#: views.py:369
+#: views.py:313
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Lỗi reset mật khẩu \"%(user)s\": %(error)s"

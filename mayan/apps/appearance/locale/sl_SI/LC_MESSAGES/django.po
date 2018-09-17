@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # kontrabant <kontrabant@gmail.com>, 2017
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/sl_SI/)\n"
-"Language: sl_SI\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
@@ -50,11 +48,9 @@ msgstr "Napaka strežnika"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Prišlo je do napake. Sporočena je administratorjem spletnega mesta po "
-"elektronski pošti in naj bi bila kmalu odpravljena. Hvala za potrpljenje."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Prišlo je do napake. Sporočena je administratorjem spletnega mesta po elektronski pošti in naj bi bila kmalu odpravljena. Hvala za potrpljenje."
 
 #: templates/appearance/about.html:9
 msgid "About"
@@ -158,9 +154,7 @@ msgstr "Prekliči"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Skupaj (%(start)s - %(end)s od %(total)s) (Stran %(page_number)s od "
-"%(total_pages)s)"
+msgstr "Skupaj (%(start)s - %(end)s od %(total)s) (Stran %(page_number)s od %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -299,6 +293,3 @@ msgstr "Ogled podrobnosti"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Brez"
-
-#~ msgid "Delete: %(object)s?"
-#~ msgstr "Izbris: %(object)s?"

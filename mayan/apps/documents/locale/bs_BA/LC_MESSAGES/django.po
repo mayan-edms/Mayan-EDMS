@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:12-0400\n"
-"PO-Revision-Date: 2018-08-09 09:55+0000\n"
-"Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:115 apps.py:253 events.py:7 menus.py:10 models.py:222
 #: permissions.py:7 queues.py:18 settings.py:12 statistics.py:231
@@ -34,9 +32,7 @@ msgstr "Kreirajte tip dokumenta"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Svaki uploadovani dokument mora biti dodeljen tipu dokumenta, to je osnovni "
-"način koji Maian EDMS kategorizuje dokumente."
+msgstr "Svaki uploadovani dokument mora biti dodeljen tipu dokumenta, to je osnovni način koji Maian EDMS kategorizuje dokumente."
 
 #: apps.py:145 models.py:73 models.py:186 models.py:730 search.py:21
 #: search.py:42
@@ -113,16 +109,12 @@ msgid "Document type changed"
 msgstr "Tip dokumenta promenjen"
 
 #: events.py:27
-#, fuzzy
-#| msgid "Document created"
 msgid "Document type created"
-msgstr "Kreirani dokument"
+msgstr ""
 
 #: events.py:31
-#, fuzzy
-#| msgid "Document type"
 msgid "Document type edited"
-msgstr "Tip dokumenta"
+msgstr ""
 
 #: events.py:34
 msgid "Document version reverted"
@@ -141,18 +133,10 @@ msgid "Preserve extension"
 msgstr "Sačuvaj produžetak"
 
 #: forms.py:106
-#, fuzzy
-#| msgid ""
-#| "Takes the file extension and moves it to the end of the filename allowing "
-#| "operating systems that rely on file extensions to open the downloaded "
-#| "document version correctly."
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr ""
-"Uzima produžetak datoteke i pomera je do kraja imena datoteke koja omogućava "
-"operativne sisteme koji se oslanjaju na produžetak datoteka da bi ispravno "
-"otvorili preuzetu verziju dokumenta."
 
 #: forms.py:149
 msgid "Date added"
@@ -209,13 +193,10 @@ msgstr "Kompresuj"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Preuzmite dokument u originalnom formatu ili na kompresivan način. Ova "
-"opcija se može izabrati samo prilikom preuzimanja jednog dokumenta, za više "
-"dokumenata, paket će uvek biti preuzet kao komprimirana datoteka."
+msgstr "Preuzmite dokument u originalnom formatu ili na kompresivan način. Ova opcija se može izabrati samo prilikom preuzimanja jednog dokumenta, za više dokumenata, paket će uvek biti preuzet kao komprimirana datoteka."
 
 #: forms.py:238
 msgid "Compressed filename"
@@ -225,19 +206,14 @@ msgstr "Naziv kompresovane datoteke"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Naziv kompresovane datoteke koji sadrži dokumente koji su za download, ako "
-"je ova opcija odabrana."
+msgstr "Naziv kompresovane datoteke koji sadrži dokumente koji su za download, ako je ova opcija odabrana."
 
 #: forms.py:258
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"Uzima produžetak datoteke i pomera je do kraja imena datoteke koja omogućava "
-"operativne sisteme koji se oslanjaju na produžetak datoteka da bi ispravno "
-"otvorili preuzetu verziju dokumenta."
+msgstr "Uzima produžetak datoteke i pomera je do kraja imena datoteke koja omogućava operativne sisteme koji se oslanjaju na produžetak datoteka da bi ispravno otvorili preuzetu verziju dokumenta."
 
 #: forms.py:270 literals.py:39
 msgid "Page range"
@@ -247,9 +223,7 @@ msgstr "Opseg stranice"
 msgid ""
 "Page number from which all the transformation will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"Broj stranice sa koje će se sve transformacije klonirati. Postojeće "
-"transformacije će biti izgubljene."
+msgstr "Broj stranice sa koje će se sve transformacije klonirati. Postojeće transformacije će biti izgubljene."
 
 #: links.py:69
 msgid "Preview"
@@ -296,20 +270,16 @@ msgid "Change type"
 msgstr "Izmjeni tip"
 
 #: links.py:130 links.py:175
-#, fuzzy
-#| msgid "Document downloaded"
 msgid "Advanced download"
-msgstr "Dokument je preuzet"
+msgstr ""
 
 #: links.py:134
 msgid "Print"
 msgstr "Print"
 
 #: links.py:138
-#, fuzzy
-#| msgid "Quick label"
 msgid "Quick download"
-msgstr "Brza etiketa"
+msgstr ""
 
 #: links.py:142 links.py:178
 msgid "Recalculate page count"
@@ -341,16 +311,12 @@ msgid "Favorites"
 msgstr ""
 
 #: links.py:217 views/document_views.py:955
-#, fuzzy
-#| msgid "Recent documents"
 msgid "Recently accessed"
-msgstr "Nedavni dokumenti"
+msgstr ""
 
 #: links.py:221 views/document_views.py:979
-#, fuzzy
-#| msgid "Recent document"
 msgid "Recently added"
-msgstr "Predhodni dokument"
+msgstr ""
 
 #: links.py:225
 msgid "Trash can"
@@ -360,9 +326,7 @@ msgstr "Kanta za smeće"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Obriši grafičku prezentaciju korištenu za ubrzanje prikaza dokumenata i "
-"interaktivnu transformaciju rezultata."
+msgstr "Obriši grafičku prezentaciju korištenu za ubrzanje prikaza dokumenata i interaktivnu transformaciju rezultata."
 
 #: links.py:236
 msgid "Clear document image cache"
@@ -450,9 +414,9 @@ msgstr "Sve stranice"
 
 #: models.py:77
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Količina vremena nakon koje će se dokumenti ove vrste prebaciti u smeće."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Količina vremena nakon koje će se dokumenti ove vrste prebaciti u smeće."
 
 #: models.py:79
 msgid "Trash time period"
@@ -466,8 +430,7 @@ msgstr "Jedinica za otpatke"
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
-"Količina vremena nakon čega će se dokumenti ove vrste u smeću izbrisati."
+msgstr "Količina vremena nakon čega će se dokumenti ove vrste u smeću izbrisati."
 
 #: models.py:89
 msgid "Delete time period"
@@ -506,10 +469,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Stub dokumenta je dokument sa unosom u bazu podataka, ali datoteka nije "
-"otpremljena. Ovo bi moglo biti prekinuto otpremanje ili odloženo otpremanje "
-"preko API-ja."
+msgstr "Stub dokumenta je dokument sa unosom u bazu podataka, ali datoteka nije otpremljena. Ovo bi moglo biti prekinuto otpremanje ili odloženo otpremanje preko API-ja."
 
 #: models.py:212
 msgid "Is stub?"
@@ -582,16 +542,12 @@ msgid "User"
 msgstr "Korisnik"
 
 #: models.py:1031
-#, fuzzy
-#| msgid "Print documents"
 msgid "Favorite document"
-msgstr "Štampajte dokumente"
+msgstr ""
 
 #: models.py:1032
-#, fuzzy
-#| msgid "Print documents"
 msgid "Favorite documents"
-msgstr "Štampajte dokumente"
+msgstr ""
 
 #: models.py:1057
 msgid "Accessed"
@@ -735,37 +691,24 @@ msgstr ""
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
-"Onemogućava prvu tačku keša koja skladišti visoke rezolucije, nepreformirane "
-"verzije dokumenata."
+msgstr "Onemogućava prvu tačku keša koja skladišti visoke rezolucije, nepreformirane verzije dokumenata."
 
 #: settings.py:39
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
-"Onemogućava drugi sloj keša koji čuva medije do niske rezolucije, "
-"transformiše (rotira, zumira, itd.) Verzije stranica dokumenata."
+msgstr "Onemogućava drugi sloj keša koji čuva medije do niske rezolucije, transformiše (rotira, zumira, itd.) Verzije stranica dokumenata."
 
 #: settings.py:53
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of favorite documents to remember per user."
 msgstr ""
-"Maksimalni broj nedavnih (kreiran, izmijenjen, pregledan) dokumenata za "
-"pamćenje po korisniku."
 
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
-msgstr ""
-"Otkrijte orijentaciju svake stranice dokumenta i kreirajte odgovarajuću "
-"transformaciju rotacije da biste je prikazali. Ovo je eksperimentalna "
-"funkcija i ona je podrazumevano onemogućena."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
+msgstr "Otkrijte orijentaciju svake stranice dokumenta i kreirajte odgovarajuću transformaciju rotacije da biste je prikazali. Ovo je eksperimentalna funkcija i ona je podrazumevano onemogućena."
 
 #: settings.py:67
 msgid "Default documents language (in ISO639-3 format)."
@@ -782,26 +725,14 @@ msgid ""
 msgstr ""
 
 #: settings.py:95
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr ""
-"Maksimalni broj nedavnih (kreiran, izmijenjen, pregledan) dokumenata za "
-"pamćenje po korisniku."
 
 #: settings.py:102
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of recently created documents to show."
 msgstr ""
-"Maksimalni broj nedavnih (kreiran, izmijenjen, pregledan) dokumenata za "
-"pamćenje po korisniku."
 
 #: settings.py:108
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -823,17 +754,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maksimalni dozvoljeni iznos u procentima (%)  korisniku da zumira stranicu "
-"dokumenta."
+msgstr "Maksimalni dozvoljeni iznos u procentima (%)  korisniku da zumira stranicu dokumenta."
 
 #: settings.py:144
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimalni dozvoljeni iznos u procentima (%) po korisniku da zumira stranicu "
-"dokumenta."
+msgstr "Minimalni dozvoljeni iznos u procentima (%) po korisniku da zumira stranicu dokumenta."
 
 #: settings.py:151
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -917,10 +844,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
-"\n"
-"                    Stranica %(page_number)s od %(total_pages)s\n"
-"                "
+msgstr "\n                    Stranica %(page_number)s od %(total_pages)s\n                "
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -933,8 +857,7 @@ msgstr "Stranice za dokument: %s"
 
 #: views/document_page_views.py:104
 msgid "Unknown view keyword argument schema, unable to redirect."
-msgstr ""
-"Nepoznati prikaz schema argumenta ključne riječi, ne može se preusmjeriti."
+msgstr "Nepoznati prikaz schema argumenta ključne riječi, ne može se preusmjeriti."
 
 #: views/document_page_views.py:136
 msgid "There are no more pages in this document"
@@ -957,16 +880,14 @@ msgstr "Dokumenti tipa: %s"
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
 #: views/document_type_views.py:70
-#, fuzzy
-#| msgid "Edit document types"
 msgid "No document types available"
-msgstr "Izmijeni tipove dokumenata"
+msgstr ""
 
 #: views/document_type_views.py:102
 msgid "All documents of this type will be deleted too."
@@ -989,17 +910,14 @@ msgstr "Kreirajte brzu etiketu za tip dokumenta: %s"
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Izmenite brzi znak \"%(filename)s\" iz dokumenta tipa \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Izmenite brzi znak \"%(filename)s\" iz dokumenta tipa \"%(document_type)s\""
 
 #: views/document_type_views.py:196
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
-"Izbrišite brzu etiketu: %(label)s, iz dokumenta tipa \"%(document_type)s\"?"
+msgstr "Izbrišite brzu etiketu: %(label)s, iz dokumenta tipa \"%(document_type)s\"?"
 
 #: views/document_type_views.py:232
 msgid ""
@@ -1009,10 +927,8 @@ msgid ""
 msgstr ""
 
 #: views/document_type_views.py:238
-#, fuzzy
-#| msgid "Create quick label for document type: %s"
 msgid "There are no quick labels for this document type"
-msgstr "Kreirajte brzu etiketu za tip dokumenta: %s"
+msgstr ""
 
 #: views/document_type_views.py:241
 #, python-format
@@ -1082,10 +998,8 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:152
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no documents in the trash can"
-msgstr "Ovaj dokument nema više stranica."
+msgstr ""
 
 #: views/document_views.py:165
 #, python-format
@@ -1123,10 +1037,8 @@ msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 
 #: views/document_views.py:238
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no duplicates for this document"
-msgstr "Ovaj dokument nema više stranica."
+msgstr ""
 
 #: views/document_views.py:241
 #, python-format
@@ -1195,8 +1107,7 @@ msgstr "%(count)d dokument stavljen u red za ponovni izračun broja stranica"
 #: views/document_views.py:595
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
-msgstr ""
-"%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
+msgstr "%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
 
 #: views/document_views.py:603
 msgid "Recalculate the page count of the selected document?"
@@ -1267,15 +1178,13 @@ msgstr "Štampa: %s"
 #: views/document_views.py:842
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:849
-#, fuzzy
-#| msgid "Scan for duplicated documents?"
 msgid "There are no duplicated documents"
-msgstr "Skeniraj za duplirana dokumenta?"
+msgstr ""
 
 #: views/document_views.py:867
 #, python-format
@@ -1285,38 +1194,29 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:870
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no favorited documents."
-msgstr "Ovaj dokument nema više stranica."
+msgstr ""
 
 #: views/document_views.py:881
-#, fuzzy, python-format
-#| msgid "%(count)d document queued for page count recalculation"
+#, python-format
 msgid "%(count)d document added to favorites."
-msgstr "%(count)d dokument stavljen u red za ponovni izračun broja stranica"
+msgstr ""
 
 #: views/document_views.py:884
-#, fuzzy, python-format
-#| msgid "%(count)d documents queued for page count recalculation"
+#, python-format
 msgid "%(count)d documents added to favorites."
 msgstr ""
-"%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
 
 #: views/document_views.py:891
-#, fuzzy
-#| msgid "Added"
 msgid "Add"
-msgstr "Dodaj"
+msgstr "Dodati"
 
 #: views/document_views.py:894
-#, fuzzy
-#| msgid "Move the selected documents to the trash?"
 msgid "Add the selected document to favorites"
 msgid_plural "Add the selected documents to favorites"
-msgstr[0] "Pomerite odabrane dokumente u smeće?"
-msgstr[1] "Pomerite odabrane dokumente u smeće?"
-msgstr[2] "Pomerite odabrane dokumente u smeće?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:907
 #, python-format
@@ -1324,52 +1224,43 @@ msgid "Document \"%(instance)s\" is not in favorites."
 msgstr ""
 
 #: views/document_views.py:911
-#, fuzzy, python-format
-#| msgid "%(count)d document queued for page count recalculation"
+#, python-format
 msgid "%(count)d document removed to favorites."
-msgstr "%(count)d dokument stavljen u red za ponovni izračun broja stranica"
+msgstr ""
 
 #: views/document_views.py:914
-#, fuzzy, python-format
-#| msgid "%(count)d documents queued for page count recalculation"
+#, python-format
 msgid "%(count)d documents removed to favorites."
 msgstr ""
-"%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
 
 #: views/document_views.py:921
 msgid "Remove"
-msgstr ""
+msgstr "Ukloniti"
 
 #: views/document_views.py:924
-#, fuzzy
-#| msgid "Move the selected documents to the trash?"
 msgid "Remove the selected document to favorites"
 msgid_plural "Remove the selected documents to favorites"
-msgstr[0] "Pomerite odabrane dokumente u smeće?"
-msgstr[1] "Pomerite odabrane dokumente u smeće?"
-msgstr[2] "Pomerite odabrane dokumente u smeće?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:949
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:953
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently accessed document"
-msgstr "Ovaj dokument nema više stranica."
+msgstr ""
 
 #: views/document_views.py:973
 msgid "This view will list the latest documents uploaded in the system."
 msgstr ""
 
 #: views/document_views.py:977
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently added document"
-msgstr "Ovaj dokument nema više stranica."
+msgstr ""
 
 #: views/misc_views.py:18
 msgid "Clear the document image cache?"

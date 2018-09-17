@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Ingo, 2013
@@ -15,14 +15,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:14-0400\n"
-"PO-Revision-Date: 2018-06-08 01:09+0000\n"
+"PO-Revision-Date: 2018-09-12 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:7 views.py:623
@@ -38,10 +37,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung "
-"in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist "
-"erforderlich."
+msgstr "Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist erforderlich."
 
 #: apps.py:67
 msgid "Created"
@@ -383,9 +379,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 "
-"für IMAP über SSL"
+msgstr "Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 für IMAP über SSL"
 
 #: models.py:496
 msgid "Port"
@@ -404,10 +398,7 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr ""
-"Name des Anhangs, der die Metadatentypen (Paare von Namen und Werten) für "
-"die folgenden Anhänge enthält (Bemerkung: dieser Anhang muss der erste "
-"Anhang sein)."
+msgstr "Name des Anhangs, der die Metadatentypen (Paare von Namen und Werten) für die folgenden Anhänge enthält (Bemerkung: dieser Anhang muss der erste Anhang sein)."
 
 #: models.py:507
 msgid "Metadata attachment name"
@@ -417,9 +408,7 @@ msgstr "Name Metadatenattachment"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für den ausgewählten Dokumententyp zulässig ist"
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -429,9 +418,7 @@ msgstr "Metadatentyp des Betreffs"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für den ausgewählten Dokumententyp zulässig ist"
 
 #: models.py:521
 msgid "From metadata type"
@@ -458,18 +445,14 @@ msgstr "E-Mail Quellen"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp "
-"\"%(document_type)s\" nicht zulässig."
+msgstr "Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp \"%(document_type)s\" nicht zulässig."
 
 #: models.py:555
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp "
-"\"%(document_type)s\" nicht zulässig."
+msgstr "Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp \"%(document_type)s\" nicht zulässig."
 
 #: models.py:654
 msgid "IMAP Mailbox from which to check for messages."
@@ -565,11 +548,9 @@ msgstr "Logeinträge für Quelle %s"
 
 #: views.py:125 wizards.py:144
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen "
-"oder aktivieren Sie eine bevor Sie fortsetzen."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen oder aktivieren Sie eine bevor Sie fortsetzen."
 
 #: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
@@ -590,11 +571,8 @@ msgid ""
 msgstr ""
 
 #: views.py:292
-#, fuzzy
-#| msgid "New document queued for uploaded and will be available shortly."
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
-"Neues Dokument in die Upload-Warteschlange eingereiht und demnächst verfügbar"
 
 #: views.py:343
 #, python-format
@@ -607,13 +585,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Vom Dokument \"%s\" können keine neuen Versionen hochgeladen werden."
 
 #: views.py:427
-#, fuzzy
-#| msgid ""
-#| "New document version queued for uploaded and will be available shortly."
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
-"Neue Dokumentenvrsion in die Upload-Warteschlange eingereiht und demnächst "
-"verfügbar"
 
 #: views.py:466
 #, python-format

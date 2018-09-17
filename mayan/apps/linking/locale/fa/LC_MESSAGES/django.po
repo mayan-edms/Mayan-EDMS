@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:13-0400\n"
-"PO-Revision-Date: 2018-03-12 14:30+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2018-09-12 07:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
@@ -142,19 +141,11 @@ msgid "is in regular expression (case insensitive)"
 msgstr "موجود در عبارات منظم  (case insensitive)"
 
 #: models.py:24 models.py:123
-#, fuzzy
-#| msgid ""
-#| "Enter a template to render. Use Django's default templating language "
-#| "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-#| "{{ document }} context variable is available."
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
-"یک قالب برای رندر وارد کنید استفاده از زبان پیش فرض قالب دنجو (https://docs."
-"djangoproject.com/en/1.7/ref/templates/builtins/). متغیر متنی {{document}} "
-"در دسترس است."
 
 #: models.py:39 models.py:109
 msgid "Smart link"
@@ -221,9 +212,7 @@ msgstr "ویرایش پیوند هوشمند "
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده "
-"است."
+msgstr "لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده است."
 
 #: serializers.py:139
 #, python-format
@@ -242,10 +231,8 @@ msgstr "اسناد در لینک هوشمند: %s"
 
 #: views.py:74
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
 
 #: views.py:93
 msgid "Available document types"
@@ -268,10 +255,8 @@ msgid ""
 msgstr ""
 
 #: views.py:147
-#, fuzzy
-#| msgid "Create new smart links"
 msgid "There are no smart links"
-msgstr "ایجاد پیوند هوشمند جدید"
+msgstr ""
 
 #: views.py:179
 msgid ""
@@ -280,10 +265,8 @@ msgid ""
 msgstr ""
 
 #: views.py:184
-#, fuzzy
-#| msgid "Smart links for document: %s"
 msgid "There are no smart links for this document"
-msgstr "ارتباطات هوشمند برای سند :%s"
+msgstr ""
 
 #: views.py:187
 #, python-format
@@ -307,10 +290,8 @@ msgid ""
 msgstr ""
 
 #: views.py:245
-#, fuzzy
-#| msgid "Conditions for smart link: %s"
 msgid "There are no conditions for this smart link"
-msgstr "شرایط پیوند هوشمند : %s"
+msgstr ""
 
 #: views.py:249
 #, python-format

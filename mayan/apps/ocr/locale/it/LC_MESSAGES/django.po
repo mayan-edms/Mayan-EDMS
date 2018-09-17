@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:13-0400\n"
-"PO-Revision-Date: 2018-06-08 01:09+0000\n"
+"PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:70 apps.py:140 apps.py:144 events.py:7 links.py:19 links.py:24
@@ -144,9 +143,7 @@ msgstr "Percorso completo al backend utilizzato per eseguire l'OCR."
 
 #: settings.py:20
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Imposta i nuovi tipi documento per eseguire automaticamente l'OCR per "
-"default."
+msgstr "Imposta i nuovi tipi documento per eseguire automaticamente l'OCR per default."
 
 #: views.py:44
 #, python-format
@@ -154,10 +151,9 @@ msgid "OCR result for document: %s"
 msgstr "Risultati OCR per il documento: %s"
 
 #: views.py:66
-#, fuzzy, python-format
-#| msgid "OCR result for document: %s"
+#, python-format
 msgid "OCR result for document page: %s"
-msgstr "Risultati OCR per il documento: %s"
+msgstr ""
 
 #: views.py:81
 msgid "Submit the selected document to the OCR queue?"
@@ -171,10 +167,8 @@ msgstr "Invia tutti i documenti del tipo alla coda OCR"
 
 #: views.py:107
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
-"%(count)d documenti di tipo \"%(document_type)s\" aggiunti alla coda OCR."
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "%(count)d documenti di tipo \"%(document_type)s\" aggiunti alla coda OCR."
 
 #: views.py:133
 #, python-format
@@ -185,10 +179,3 @@ msgstr "Modifica le impostazioni OCR per il tipo documento: %s"
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr ""
-
-#~ msgid ""
-#~ "File path to poppler's pdftotext program used to extract text from PDF "
-#~ "files."
-#~ msgstr ""
-#~ "Percorso del programma poppler pdftotext.usato per estrarre il testo dai "
-#~ "file PDF."

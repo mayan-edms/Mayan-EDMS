@@ -2,25 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-06-07 21:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/"
-"rosarior/teams/13584/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:24 links.py:12 permissions.py:7
+#: apps.py:24 links.py:11 permissions.py:7
 msgid "Task manager"
 msgstr "Menadzer rada"
 
@@ -68,19 +66,19 @@ msgstr "Argumenti ključnih riječi"
 msgid "Worker process ID"
 msgstr "Id procesa rada"
 
-#: links.py:16 views.py:15
+#: links.py:15 views.py:15
 msgid "Background task queues"
 msgstr "Rad u pozadini"
 
-#: links.py:20
+#: links.py:19
 msgid "Active tasks"
 msgstr "Aktivni zadaci"
 
-#: links.py:24
+#: links.py:23
 msgid "Reserved tasks"
 msgstr "Rezervisani zadaci"
 
-#: links.py:28
+#: links.py:27
 msgid "Scheduled tasks"
 msgstr "Zakazani zadaci"
 

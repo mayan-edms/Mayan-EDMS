@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
-"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:68 events.py:8 permissions.py:7 settings.py:7
@@ -155,7 +155,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 
 #: views.py:41
@@ -202,7 +203,8 @@ msgstr "برای تجزیه و تحلیل تمام اسناد یک نوع را �
 #: views.py:150
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing "
+"queue."
 msgstr ""
 "\"%(count)d \" اسناد از نوع \"%(document_type)s\" اضافه شده به صف جهت تجزیه "
 "و تحلیل."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:14-0400\n"
-"PO-Revision-Date: 2018-07-05 05:25+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2018-09-12 07:49+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:7 views.py:623
@@ -36,10 +35,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Les sources de documents sont les manières par lesquelles les nouveaux "
-"documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web "
-"pour pouvoir télécharger des documents depuis le navigateur."
+msgstr "Les sources de documents sont les manières par lesquelles les nouveaux documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web pour pouvoir télécharger des documents depuis le navigateur."
 
 #: apps.py:67
 msgid "Created"
@@ -67,9 +63,7 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
-"individuels"
+msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
 #: forms.py:68 views.py:479
 msgid "Staging file"
@@ -231,10 +225,7 @@ msgstr "Nom du périphérique"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Sélectionne le mode de balayage (par exemple, lineart, monochrome ou "
-"couleur). Si cette option n'est pas prise en charge par votre scanner, "
-"laissez-la vierge."
+msgstr "Sélectionne le mode de balayage (par exemple, lineart, monochrome ou couleur). Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
 
 #: models.py:195
 msgid "Mode"
@@ -245,10 +236,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Définit la résolution de l'image scannée en PPP (points par pouce). La "
-"valeur typique est 200. Si cette option n'est pas prise en charge par votre "
-"scanner, laissez-la vierge."
+msgstr "Définit la résolution de l'image scannée en PPP (points par pouce). La valeur typique est 200. Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
 
 #: models.py:202
 msgid "Resolution"
@@ -258,9 +246,7 @@ msgstr "Résolution"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Sélectionne la source d'analyse (comme un chargeur de documents). Si cette "
-"option n'est pas prise en charge par votre scanner, laissez-la vierge."
+msgstr "Sélectionne la source d'analyse (comme un chargeur de documents). Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
 
 #: models.py:208
 msgid "Paper source"
@@ -270,9 +256,7 @@ msgstr "Source du papier"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Sélectionne le mode d'alimentation du document (recto / recto-verso). Si "
-"cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
+msgstr "Sélectionne le mode d'alimentation du document (recto / recto-verso). Si cette option n'est pas prise en charge par votre scanner, laissez-la vierge."
 
 #: models.py:215
 msgid "ADF mode"
@@ -363,9 +347,7 @@ msgstr "Intervalle"
 
 #: models.py:420
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Assigner un type de document aux documents transférés à partir de cette "
-"source."
+msgstr "Assigner un type de document aux documents transférés à partir de cette source."
 
 #: models.py:422
 msgid "Document type"
@@ -395,9 +377,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 "
-"pour l'IMAP, 993 pour l'IMAP over SSL."
+msgstr "Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 pour l'IMAP, 993 pour l'IMAP over SSL."
 
 #: models.py:496
 msgid "Port"
@@ -416,10 +396,7 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr ""
-"Le nom de la pièce jointe qui contiendra les couples nom/valeur des types de "
-"métadonnées qui seront assignés au reste des documents importés. Note : "
-"cette pièce jointe devra obligatoirement être la première."
+msgstr "Le nom de la pièce jointe qui contiendra les couples nom/valeur des types de métadonnées qui seront assignés au reste des documents importés. Note : cette pièce jointe devra obligatoirement être la première."
 
 #: models.py:507
 msgid "Metadata attachment name"
@@ -429,9 +406,7 @@ msgstr "Nom de la pièce jointe de métadonnées"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Sélectionner un type de métadonnée valide pour le type de document "
-"sélectionné, dans lequel enregistrer le sujet du courriel."
+msgstr "Sélectionner un type de métadonnée valide pour le type de document sélectionné, dans lequel enregistrer le sujet du courriel."
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -441,9 +416,7 @@ msgstr "Type de métadonnée du sujet"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Sélectionner un type de métadonnée valide pour le type de document "
-"sélectionné, dans lequel enregistrer l'expéditeur du courriel."
+msgstr "Sélectionner un type de métadonnée valide pour le type de document sélectionné, dans lequel enregistrer l'expéditeur du courriel."
 
 #: models.py:521
 msgid "From metadata type"
@@ -470,18 +443,14 @@ msgstr "Sources de courriel"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Le type de métadonnée du sujet \"%(metadata_type)s\" n'est pas valide pour "
-"le document de type : %(document_type)s"
+msgstr "Le type de métadonnée du sujet \"%(metadata_type)s\" n'est pas valide pour le document de type : %(document_type)s"
 
 #: models.py:555
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Le type de métadonnée de l'expéditeur \"%(metadata_type)s\" n'est pas valide "
-"pour le document de type : %(document_type)s"
+msgstr "Le type de métadonnée de l'expéditeur \"%(metadata_type)s\" n'est pas valide pour le document de type : %(document_type)s"
 
 #: models.py:654
 msgid "IMAP Mailbox from which to check for messages."
@@ -553,9 +522,7 @@ msgstr "Transférer le document"
 
 #: settings.py:12
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Chemin d'accès vers le programme scanimage utilisé pour contrôler les "
-"scanners d'image."
+msgstr "Chemin d'accès vers le programme scanimage utilisé pour contrôler les scanners d'image."
 
 #: tasks.py:46
 #, python-format
@@ -579,11 +546,9 @@ msgstr "Entrées du journal pour la source : %s"
 
 #: views.py:125 wizards.py:144
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Aucune source interactive d'import de documents n'a été définie ou activée, "
-"créez-en une avant de continuer."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Aucune source interactive d'import de documents n'a été définie ou activée, créez-en une avant de continuer."
 
 #: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
@@ -601,17 +566,11 @@ msgstr "Numériser"
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
-msgstr ""
-"Tâche en erreur d'exécution lors du téléversement; %(exception)s, "
-"%(exception_class)s"
+msgstr "Tâche en erreur d'exécution lors du téléversement; %(exception)s, %(exception_class)s"
 
 #: views.py:292
-#, fuzzy
-#| msgid "New document queued for uploaded and will be available shortly."
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
-"Nouveau document ajouté en file d'attente pour transfert ; il sera "
-"disponible dans les plus bref délai."
 
 #: views.py:343
 #, python-format
@@ -624,13 +583,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "L'ajout de nouvelles versions du document \"%s\" est bloqué."
 
 #: views.py:427
-#, fuzzy
-#| msgid ""
-#| "New document version queued for uploaded and will be available shortly."
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
-"Nouvelle version du document ajoutée en file d'attente pour transfert ; elle "
-"sera disponible dans les plus brefs délai."
 
 #: views.py:466
 #, python-format

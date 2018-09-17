@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Johan Braeken, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:12-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:115 apps.py:253 events.py:7 menus.py:10 models.py:222
@@ -110,16 +109,12 @@ msgid "Document type changed"
 msgstr "Documentsoort veranderd"
 
 #: events.py:27
-#, fuzzy
-#| msgid "Document created"
 msgid "Document type created"
-msgstr "Document aangemaakt"
+msgstr ""
 
 #: events.py:31
-#, fuzzy
-#| msgid "Document type"
 msgid "Document type edited"
-msgstr "Documentsoort"
+msgstr ""
 
 #: events.py:34
 msgid "Document version reverted"
@@ -198,8 +193,8 @@ msgstr "Comprimeren"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -211,10 +206,7 @@ msgstr "Bestandsnaam gecomprimeerde archiefbestand"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten "
-"bevat die dienen te worden gedownload, als de voorgaande optie is "
-"geselecteerd."
+msgstr "De bestandsnaam van het gecomprimeerde archiefbestand dat alle documenten bevat die dienen te worden gedownload, als de voorgaande optie is geselecteerd."
 
 #: forms.py:258
 msgid ""
@@ -278,20 +270,16 @@ msgid "Change type"
 msgstr "Verander soort"
 
 #: links.py:130 links.py:175
-#, fuzzy
-#| msgid "Document downloaded"
 msgid "Advanced download"
-msgstr "Document gedownload"
+msgstr ""
 
 #: links.py:134
 msgid "Print"
 msgstr "Printe"
 
 #: links.py:138
-#, fuzzy
-#| msgid "Download"
 msgid "Quick download"
-msgstr "Download"
+msgstr ""
 
 #: links.py:142 links.py:178
 msgid "Recalculate page count"
@@ -323,16 +311,12 @@ msgid "Favorites"
 msgstr ""
 
 #: links.py:217 views/document_views.py:955
-#, fuzzy
-#| msgid "Recent documents"
 msgid "Recently accessed"
-msgstr "Recente documenten"
+msgstr ""
 
 #: links.py:221 views/document_views.py:979
-#, fuzzy
-#| msgid "Recent documents"
 msgid "Recently added"
-msgstr "Recente documenten"
+msgstr ""
 
 #: links.py:225
 msgid "Trash can"
@@ -342,9 +326,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Opschonen van de grafische afbeeldingen, die gebuikt worden bij het "
-"versnellen van de documentweergave en interactive transformatie resultaten."
+msgstr "Opschonen van de grafische afbeeldingen, die gebuikt worden bij het versnellen van de documentweergave en interactive transformatie resultaten."
 
 #: links.py:236
 msgid "Clear document image cache"
@@ -432,7 +414,8 @@ msgstr "Alle bladzijden"
 
 #: models.py:77
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:79
@@ -559,16 +542,12 @@ msgid "User"
 msgstr "Gebruiker"
 
 #: models.py:1031
-#, fuzzy
-#| msgid "Print documents"
 msgid "Favorite document"
-msgstr "Druk documenten af"
+msgstr ""
 
 #: models.py:1032
-#, fuzzy
-#| msgid "Print documents"
 msgid "Favorite documents"
-msgstr "Druk documenten af"
+msgstr ""
 
 #: models.py:1057
 msgid "Accessed"
@@ -721,20 +700,14 @@ msgid ""
 msgstr ""
 
 #: settings.py:53
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of favorite documents to remember per user."
 msgstr ""
-"Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te "
-"onthouden per gebruiker."
 
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:67
@@ -752,26 +725,14 @@ msgid ""
 msgstr ""
 
 #: settings.py:95
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr ""
-"Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te "
-"onthouden per gebruiker."
 
 #: settings.py:102
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of recently created documents to show."
 msgstr ""
-"Maximum aantal recente docmenten (aangemaakt, bewerkt, bekeken), te "
-"onthouden per gebruiker."
 
 #: settings.py:108
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -793,15 +754,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
+msgstr "Maximaal toegestane documentpagina zoom percentage (%) per gebruikeractie."
 
 #: settings.py:144
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
+msgstr "Minimaal toegestane documentpagina zoom percentage (%) per gebruikeractie. "
 
 #: settings.py:151
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -921,16 +880,14 @@ msgstr ""
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
 #: views/document_type_views.py:70
-#, fuzzy
-#| msgid "Edit document types"
 msgid "No document types available"
-msgstr "Documentsoorten bewerken"
+msgstr ""
 
 #: views/document_type_views.py:102
 msgid "All documents of this type will be deleted too."
@@ -953,8 +910,7 @@ msgstr ""
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:196
@@ -971,10 +927,8 @@ msgid ""
 msgstr ""
 
 #: views/document_type_views.py:238
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no quick labels for this document type"
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/document_type_views.py:241
 #, python-format
@@ -1044,10 +998,8 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:152
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no documents in the trash can"
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/document_views.py:165
 #, python-format
@@ -1084,10 +1036,8 @@ msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 
 #: views/document_views.py:238
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no duplicates for this document"
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/document_views.py:241
 #, python-format
@@ -1202,9 +1152,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Fout bij verwijderen van de pagina transformaties voor document: "
-"%(document)s ; %(error)s ."
+msgstr "Fout bij verwijderen van de pagina transformaties voor document: %(document)s ; %(error)s ."
 
 #: views/document_views.py:716
 msgid "Transformations cloned successfully."
@@ -1227,15 +1175,13 @@ msgstr "Afdrukken: %s"
 #: views/document_views.py:842
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:849
-#, fuzzy
-#| msgid "The name of the document"
 msgid "There are no duplicated documents"
-msgstr "De naam van het document"
+msgstr ""
 
 #: views/document_views.py:867
 #, python-format
@@ -1245,10 +1191,8 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:870
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no favorited documents."
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/document_views.py:881
 #, python-format
@@ -1261,18 +1205,14 @@ msgid "%(count)d documents added to favorites."
 msgstr ""
 
 #: views/document_views.py:891
-#, fuzzy
-#| msgid "Added"
 msgid "Add"
-msgstr "Toegevoegd"
+msgstr "Voeg toe"
 
 #: views/document_views.py:894
-#, fuzzy
-#| msgid "Restore the selected documents?"
 msgid "Add the selected document to favorites"
 msgid_plural "Add the selected documents to favorites"
-msgstr[0] "De geselecteerde documenten terugzetten?"
-msgstr[1] "De geselecteerde documenten terugzetten?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_views.py:907
 #, python-format
@@ -1291,37 +1231,31 @@ msgstr ""
 
 #: views/document_views.py:921
 msgid "Remove"
-msgstr ""
+msgstr "Verwijder"
 
 #: views/document_views.py:924
-#, fuzzy
-#| msgid "Restore the selected documents?"
 msgid "Remove the selected document to favorites"
 msgid_plural "Remove the selected documents to favorites"
-msgstr[0] "De geselecteerde documenten terugzetten?"
-msgstr[1] "De geselecteerde documenten terugzetten?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_views.py:949
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:953
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently accessed document"
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/document_views.py:973
 msgid "This view will list the latest documents uploaded in the system."
 msgstr ""
 
 #: views/document_views.py:977
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently added document"
-msgstr "Er zijn verder geen pagina's meer in dit document"
+msgstr ""
 
 #: views/misc_views.py:18
 msgid "Clear the document image cache?"

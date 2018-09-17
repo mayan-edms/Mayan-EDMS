@@ -1,4 +1,4 @@
-3.1 (2018-XX-XX)
+3.1 (2018-09-17)
 ================
 - Improve database vendor migration support
 - Add convertdb management command.

@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Johan Braeken, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Martin Horseling <martin.horseling@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -50,12 +50,9 @@ msgstr "Server fout"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de "
-"beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor "
-"uw geduld."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor uw geduld."
 
 #: templates/appearance/about.html:9
 msgid "About"
@@ -80,7 +77,7 @@ msgstr "Build nummer: %(build_number)s"
 
 #: templates/appearance/about.html:87
 msgid "Released under the license:"
-msgstr ""
+msgstr "Uitgegeven onder de licentie:"
 
 #: templates/appearance/base.html:32
 msgid "Warning"
@@ -159,9 +156,7 @@ msgstr "Onderbreek"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van "
-"%(total_pages)s)"
+msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -177,7 +172,7 @@ msgstr "Identifier"
 
 #: templates/appearance/home.html:9
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: templates/appearance/home.html:25
 msgid "Getting started"
@@ -185,13 +180,11 @@ msgstr "Beginnen"
 
 #: templates/appearance/home.html:28
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
-"Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende "
-"nodig:"
+msgstr "Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende nodig:"
 
 #: templates/appearance/home.html:49
 msgid "Search pages"
-msgstr ""
+msgstr "Zoek paginas"
 
 #: templates/appearance/home.html:51 templates/appearance/home.html:61
 msgid "Search"
@@ -203,7 +196,7 @@ msgstr "Geavanceerd"
 
 #: templates/appearance/home.html:59
 msgid "Search documents"
-msgstr ""
+msgstr "Zoek documenten"
 
 #: templates/appearance/main_menu.html:10
 msgid "Toggle navigation"
@@ -215,15 +208,15 @@ msgstr "Geen resultaten"
 
 #: templates/appearance/root.html:58
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #: templates/appearance/root.html:77
 msgid "Server communication error"
-msgstr ""
+msgstr "Server communicatie probleem"
 
 #: templates/appearance/root.html:79
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Controleer uw netwerkverbinding en probeer nog eens een beetje later."
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -238,7 +231,7 @@ msgstr "Eerste aanmelding"
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr ""
+msgstr "U heeft zojuist de installatie voltooid  %(project_title)s, gefeliciteerd!"
 
 #: templates/authentication/login.html:27
 msgid "Login using the following credentials:"
@@ -263,9 +256,7 @@ msgstr "Wachtwoord: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding "
-"uit te schakelen."
+msgstr "Pas het wachtwoord aan om de beveiliging te verbeteren en om deze melding uit te schakelen."
 
 #: templates/authentication/login.html:47
 #: templates/authentication/login.html:55
@@ -274,7 +265,7 @@ msgstr "Meld u aan"
 
 #: templates/authentication/login.html:60
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Paswoord vergeten?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -283,27 +274,24 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "Paswoord opnieuw instellen"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Aanmeld pagina"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "Paswoord instel email verstuurd!"
 
 #: templates/dashboard/numeric_widget.html:27
 msgid "View details"
-msgstr ""
+msgstr "Zie details"
 
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Geen"
-
-#~ msgid "Delete: %(object)s?"
-#~ msgstr "Verwijder: %(object)s?"

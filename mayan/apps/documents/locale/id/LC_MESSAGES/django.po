@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:12-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"Last-Translator: Dzikri Hakim <dzikers@gmail.com>\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:115 apps.py:253 events.py:7 menus.py:10 models.py:222
@@ -108,16 +107,12 @@ msgid "Document type changed"
 msgstr ""
 
 #: events.py:27
-#, fuzzy
-#| msgid "Document type"
 msgid "Document type created"
-msgstr "Jenis dokumen"
+msgstr ""
 
 #: events.py:31
-#, fuzzy
-#| msgid "Document type"
 msgid "Document type edited"
-msgstr "Jenis dokumen"
+msgstr ""
 
 #: events.py:34
 msgid "Document version reverted"
@@ -196,8 +191,8 @@ msgstr "Kompresi"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -209,9 +204,7 @@ msgstr "Nama berkas terkompresi"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang "
-"akan diunduh, bila pilihan sebelumnya terpilih."
+msgstr "Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang akan diunduh, bila pilihan sebelumnya terpilih."
 
 #: forms.py:258
 msgid ""
@@ -283,10 +276,8 @@ msgid "Print"
 msgstr ""
 
 #: links.py:138
-#, fuzzy
-#| msgid "Download"
 msgid "Quick download"
-msgstr "Unduh"
+msgstr ""
 
 #: links.py:142 links.py:178
 msgid "Recalculate page count"
@@ -333,9 +324,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat "
-"menampilkan dokumen dan hasil transformasi interaktif."
+msgstr "Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat menampilkan dokumen dan hasil transformasi interaktif."
 
 #: links.py:236
 msgid "Clear document image cache"
@@ -423,7 +412,8 @@ msgstr ""
 
 #: models.py:77
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:79
@@ -550,16 +540,12 @@ msgid "User"
 msgstr "Pengguna"
 
 #: models.py:1031
-#, fuzzy
-#| msgid "Create documents"
 msgid "Favorite document"
-msgstr "Buat dokumen"
+msgstr ""
 
 #: models.py:1032
-#, fuzzy
-#| msgid "Create documents"
 msgid "Favorite documents"
-msgstr "Buat dokumen"
+msgstr ""
 
 #: models.py:1057
 msgid "Accessed"
@@ -712,20 +698,14 @@ msgid ""
 msgstr ""
 
 #: settings.py:53
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of favorite documents to remember per user."
 msgstr ""
-"Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini "
-"per pengguna."
 
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:67
@@ -743,31 +723,18 @@ msgid ""
 msgstr ""
 
 #: settings.py:95
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr ""
-"Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini "
-"per pengguna."
 
 #: settings.py:102
-#, fuzzy
-#| msgid ""
-#| "Maximum number of recent (created, edited, viewed) documents to remember "
-#| "per user."
 msgid "Maximum number of recently created documents to show."
 msgstr ""
-"Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini "
-"per pengguna."
 
 #: settings.py:108
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
+msgstr "Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
 
 #: settings.py:114
 msgid "Path to the Storage subclass to use when storing document files."
@@ -785,23 +752,17 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperbesar tampilan halaman dokumen secara interaktif"
+msgstr "Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperbesar tampilan halaman dokumen secara interaktif"
 
 #: settings.py:144
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperkecil tampilan halaman dokumen secara interaktif."
+msgstr "Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperkecil tampilan halaman dokumen secara interaktif."
 
 #: settings.py:151
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman "
-"dokumen per interaksi pengguna."
+msgstr "Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman dokumen per interaksi pengguna."
 
 #: statistics.py:16
 msgid "January"
@@ -917,16 +878,14 @@ msgstr ""
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
 #: views/document_type_views.py:70
-#, fuzzy
-#| msgid "Edit document types"
 msgid "No document types available"
-msgstr "Sunting jenis dokumen"
+msgstr ""
 
 #: views/document_type_views.py:102
 msgid "All documents of this type will be deleted too."
@@ -949,8 +908,7 @@ msgstr ""
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:196
@@ -967,10 +925,8 @@ msgid ""
 msgstr ""
 
 #: views/document_type_views.py:238
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no quick labels for this document type"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_type_views.py:241
 #, python-format
@@ -1040,10 +996,8 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:152
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no documents in the trash can"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_views.py:165
 #, python-format
@@ -1079,10 +1033,8 @@ msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 
 #: views/document_views.py:238
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no duplicates for this document"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_views.py:241
 #, python-format
@@ -1195,9 +1147,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Masalah dalam menghapus transformasi-transformasi untuk halaman: "
-"%(document)s; %(error)s."
+msgstr "Masalah dalam menghapus transformasi-transformasi untuk halaman: %(document)s; %(error)s."
 
 #: views/document_views.py:716
 msgid "Transformations cloned successfully."
@@ -1220,15 +1170,13 @@ msgstr ""
 #: views/document_views.py:842
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:849
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no duplicated documents"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_views.py:867
 #, python-format
@@ -1238,10 +1186,8 @@ msgid ""
 msgstr ""
 
 #: views/document_views.py:870
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no favorited documents."
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_views.py:881
 #, python-format
@@ -1255,14 +1201,12 @@ msgstr ""
 
 #: views/document_views.py:891
 msgid "Add"
-msgstr ""
+msgstr "tambah"
 
 #: views/document_views.py:894
-#, fuzzy
-#| msgid "Delete document types"
 msgid "Add the selected document to favorites"
 msgid_plural "Add the selected documents to favorites"
-msgstr[0] "Hapus jenis dokumen"
+msgstr[0] ""
 
 #: views/document_views.py:907
 #, python-format
@@ -1281,7 +1225,7 @@ msgstr ""
 
 #: views/document_views.py:921
 msgid "Remove"
-msgstr ""
+msgstr "hapus"
 
 #: views/document_views.py:924
 msgid "Remove the selected document to favorites"
@@ -1290,25 +1234,21 @@ msgstr[0] ""
 
 #: views/document_views.py:949
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:953
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently accessed document"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/document_views.py:973
 msgid "This view will list the latest documents uploaded in the system."
 msgstr ""
 
 #: views/document_views.py:977
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently added document"
-msgstr "Tidak ada halaman lagi dalam dokumen ini"
+msgstr ""
 
 #: views/misc_views.py:18
 msgid "Clear the document image cache?"

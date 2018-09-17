@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,28 +12,16 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:23 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "Archivadores"
-
-#: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
-msgid "Document added to cabinet"
-msgstr "Archivador de documento"
-
-#: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
-msgid "Document removed from cabinet"
-msgstr "Remover de archivador"
 
 #: links.py:28 links.py:39
 msgid "Remove from cabinets"
@@ -135,7 +123,8 @@ msgstr ""
 "contienen. "
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL del servicio de la API que muetra los documentos contenidos en este "
 "archivador. "
@@ -199,17 +188,12 @@ msgid "No cabinets available"
 msgstr ""
 
 #: views.py:212
-#, fuzzy
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgid "Documents can be added to many cabinets."
 msgstr ""
-"Documento: %(document)s añadido al gabinete: %(cabinet)s correctamente."
 
 #: views.py:215
-#, fuzzy
-#| msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
 msgid "This document is not in any cabinet"
-msgstr "Documento: %(document)s no está en el gabinete: %(cabinet)s."
+msgstr ""
 
 #: views.py:218
 #, python-format
@@ -229,14 +213,6 @@ msgstr "Solicitud de añadir a gabinete realizada en %(count)d documentos"
 #: views.py:240
 msgid "Add"
 msgstr "Agregar"
-
-#: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "Agregar documentos a archivadores"
-msgstr[1] "Agregar documentos a archivadores"
 
 #: views.py:255
 #, python-format
@@ -272,20 +248,6 @@ msgstr "Solicitud de retirar del gabinete realizada en el documento %(count)d"
 msgid "Remove"
 msgstr "Eliminar"
 
-#: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "Remover documentos de archivadores"
-msgstr[1] "Remover documentos de archivadores"
-
-#: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove document \"%s\" from cabinets"
-msgstr "Remover documentos de archivadores"
-
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
@@ -299,15 +261,3 @@ msgstr "Documento: %(document)s no está en el gabinete: %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s retirado del gabinete: %(cabinet)s."
-
-#: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
-msgid "Select cabinets"
-msgstr "Borrar archivadores"
-
-#: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
-msgid "Cabinets to which the document will be added."
-msgstr "Archivador a los cuales el documento seleccionado va a ser agregado."

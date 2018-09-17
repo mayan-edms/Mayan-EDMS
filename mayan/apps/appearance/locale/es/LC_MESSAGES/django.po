@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roberto Rosario, 2015-2018
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:11-0400\n"
-"PO-Revision-Date: 2018-06-08 01:08+0000\n"
+"PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -49,11 +48,9 @@ msgstr "Error de servidor"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Ha habido un error. Se ha informado a los administradores del sitio vía e-"
-"mail y debería corregirse en breve. Gracias por su paciencia."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Ha habido un error. Se ha informado a los administradores del sitio vía e-mail y debería corregirse en breve. Gracias por su paciencia."
 
 #: templates/appearance/about.html:9
 msgid "About"
@@ -157,9 +154,7 @@ msgstr "Cancelar"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de "
-"%(total_pages)s)"
+msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -259,9 +254,7 @@ msgstr "Contraseña: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Asegúrese de cambiar su contraseña para aumentar la seguridad y para "
-"desactivar este mensaje"
+msgstr "Asegúrese de cambiar su contraseña para aumentar la seguridad y para desactivar este mensaje"
 
 #: templates/authentication/login.html:47
 #: templates/authentication/login.html:55
@@ -283,9 +276,7 @@ msgstr "Restablecimiento de contraseña"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
-"Reajuste de contraseña completado! Haga clic en el enlace de abajo para "
-"iniciar sesión."
+msgstr "Reajuste de contraseña completado! Haga clic en el enlace de abajo para iniciar sesión."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -302,6 +293,3 @@ msgstr "Ver detalles"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Ninguno"
-
-#~ msgid "Delete: %(object)s?"
-#~ msgstr "¿Borrar: %(object)s?"

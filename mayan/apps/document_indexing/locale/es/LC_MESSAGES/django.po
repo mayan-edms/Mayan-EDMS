@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-08 04:12-0400\n"
-"PO-Revision-Date: 2017-09-22 13:25+0000\n"
+"PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -112,15 +111,12 @@ msgstr "nuevo nodo secundario"
 
 #: models.py:37
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Este valor será utilizado por otras aplicaciones para hacer referencia a "
-"este índice."
+msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este índice."
 
 #: models.py:43
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Hace que este índice sea visible y actualizado cuando los datos de "
-"documentos cambien."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
 
 #: models.py:56 models.py:156
 msgid "Index"
@@ -135,16 +131,10 @@ msgid "Index instances"
 msgstr "Instancias de índices"
 
 #: models.py:160
-#, fuzzy
-#| msgid ""
-#| "Enter a template to render. Use Django's default templating language "
-#| "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
-"Introduzca una plantilla para generar. Use el lenguaje de plantillas de "
-"Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:164
 msgid "Indexing expression"
@@ -152,17 +142,13 @@ msgstr "expresión de indexación"
 
 #: models.py:169
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Hace que este nodo sea visible y actualizado cuando los datos de los "
-"documentos son cambiados."
+msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
 
 #: models.py:177
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
-"no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
 
 #: models.py:180
 msgid "Link documents"
@@ -185,9 +171,7 @@ msgstr "raíz"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Error indexando documento: %(document)s; expresión: %(expression)s; "
-"%(exception)s"
+msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
 
 #: models.py:286
 msgid "Index template node"
@@ -230,10 +214,8 @@ msgid "Delete document indexes"
 msgstr "Eliminar los índices de documentos"
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "View document indexes"
 msgid "View document index instances"
-msgstr "Ver los índices de documentos"
+msgstr ""
 
 #: permissions.py:23
 msgid "View document indexes"
@@ -272,15 +254,13 @@ msgstr "Editar índice: %s"
 #: views.py:82
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:87
-#, fuzzy
-#| msgid "Create new document indexes"
 msgid "There are no indexes."
-msgstr "Crear nuevos índices de documentos"
+msgstr ""
 
 #: views.py:94
 msgid "Available document types"
@@ -358,12 +338,8 @@ msgid "Indexes nodes containing document: %s"
 msgstr "Nodos de indices que contienen el documento: %s"
 
 #: views.py:384
-#, fuzzy, python-format
-#| msgid "Indexes to be queued for rebuilding."
+#, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
-msgstr[0] "Los índices a someter para reconstrucción."
-msgstr[1] "Los índices a someter para reconstrucción."
-
-#~ msgid "Index rebuild queued successfully."
-#~ msgstr "Reconstrucción de Índices en espera de forma exitosa."
+msgstr[0] ""
+msgstr[1] ""
