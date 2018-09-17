@@ -54,13 +54,18 @@ job_docker_nightly:
 job_build_python:
   stage: build_python
   image: ubuntu:18.04
+  artifacts:
+    expire_in: 1 hr
+    paths:
+    - dist
+  before_script:
+    - apt-get -qq update
+    - apt-get install -qq locales make python-pip
   script:
     - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
     - export LC_ALL=en_US.UTF-8
-    - apt-get update -y
-    - apt-get install -y make python-pip
     - pip install -r requirements/build.txt
     - make wheel
   only:
@@ -70,7 +75,10 @@ job_push_python:
   stage: push_python
   image: ubuntu:18.04
   before_script:
+    - apt-get -qq update
+    - apt-get install -qq python-pip
   script:
+    - pip install -r requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
   only:
