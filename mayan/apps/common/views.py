@@ -168,11 +168,6 @@ class LicenseView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
 
-class MainMenuView(SimpleView):
-    extra_context = {'home_view': settings.HOME_VIEW}
-    template_name = 'appearance/main_menu.html'
-
-
 class ObjectErrorLogEntryListClearView(ConfirmView):
     def get_extra_context(self):
         return {

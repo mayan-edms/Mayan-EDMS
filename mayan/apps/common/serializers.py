@@ -9,3 +9,9 @@ class ContentTypeSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('app_label', 'id', 'model')
         model = ContentType
+
+
+class TemplateSerializer(serializers.Serializer):
+    hex_hash = serializers.CharField(read_only=True)
+    name = serializers.CharField(read_only=True)
+    html = serializers.CharField(read_only=True)

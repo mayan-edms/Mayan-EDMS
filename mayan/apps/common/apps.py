@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
+from .classes import Template
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
     user_locale_profile_session_config, user_locale_profile_create
@@ -88,6 +89,10 @@ class CommonApp(MayanAppConfig):
         super(CommonApp, self).ready()
         if check_for_sqlite():
             warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
+
+        Template(
+            name='main_menu', template_name='appearance/main_menu.html'
+        )
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {

@@ -8,6 +8,15 @@ class MayanApp {
 
         this.ajaxSpinnerSeletor = '#ajax-spinner';
         this.ajaxExecuting = false;
+        this.ajaxMenusOptions = [
+            {
+                app: this,
+                interval: 5000,
+                menuSelector: '#main-menu',
+                url: apiTemplateMainMenuURL,
+            }
+        ];
+        this.ajaxMenuHashes = {};
         this.window = $(window);
     }
 
@@ -113,25 +122,22 @@ class MayanApp {
         }
     }
 
-    doRefreshMainMenu (options) {
-        var self = this;
-        var $mainMenu = $('#main-menu');
-        var $mainMenuBuffer = $('#main-menu-buffer');
-
+    doRefreshAJAXMenu (options) {
         $.ajax({
             complete: function() {
-                setTimeout(app.doRefreshMainMenu, options.interval, options);
+                setTimeout(app.doRefreshAJAXMenu, options.interval, options);
             },
             success: function(data) {
-                var $elements = $('.dropdown.open');
-                if ($elements.length === 0) {
-                    // Don't refresh the HTML if there are open dropdowns
-                    $mainMenuBuffer.html(data);
-                    $mainMenuBuffer.show();
-                    $mainMenu.hide();
-                    $mainMenu.html($mainMenuBuffer.html());
-                    $mainMenu.show();
-                    $mainMenuBuffer.hide();
+                console.log(data);
+                var menuHash = options.app.ajaxMenuHashes[data.name];
+                console.log('menuHash' + menuHash);
+
+                if ((menuHash === undefined) || (menuHash !== data.hex_hash)) {
+                    $(options.menuSelector).html(data.html);
+                    if (options.callback !== undefined) {
+                        options.callback();
+                    }
+                    options.app.ajaxMenuHashes[data.name] = data.hex_hash;
                 }
             },
             url: options.url,
@@ -217,9 +223,8 @@ class MayanApp {
         this.setupItemsSelector();
         this.setupNavbarCollapse();
         this.setupNewWindowAnchor();
-        this.doRefreshMainMenu({
-            interval: 5000,
-            url: '/main_menu'
+        $.each(this.ajaxMenusOptions, function(index, value) {
+            app.doRefreshAJAXMenu(value);
         });
         partialNavigation.initialize();
     }

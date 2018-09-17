@@ -363,6 +363,10 @@ classes beyond the provide line chart.
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.
   Reduces the chance of wrongly sized cards.
+- Generalize the Javascript menu rendering into an API for 
+  templates that only refresh the menu when there are changes.
+  Closes GitLab issue #511. Thanks to Daniel Carrico
+  @daniel1113 for the report.
 
 Removals
 --------
@@ -446,5 +450,6 @@ Bugs fixed or issues closed
 * `GitLab issue #7 <https://gitlab.com/mayan-edms/mayan-edms/issues/7>`_ Feature: other compressors than zip for compressed documents
 * `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
 * `GitLab issue #360 <https://gitlab.com/mayan-edms/mayan-edms/issues/360>`_ Should quick rename (optionally) retain original file type extension?
-
+* `GitLab issue #511 <https://gitlab.com/mayan-edms/mayan-edms/issues/511>`_ Menu bar flickering in 3.1b1
+  
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

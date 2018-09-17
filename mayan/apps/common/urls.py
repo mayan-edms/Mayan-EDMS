@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 from django.views.i18n import javascript_catalog, set_language
 
-from .api_views import APIContentTypeList
+from .api_views import APIContentTypeList, APITemplateView
 from .views import (
     AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, HomeView, LicenseView, MainMenuView,
+    FaviconRedirectView, HomeView, LicenseView,
     ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
     PackagesLicensesView, RootView, SetupListView, ToolsListView,
     multi_object_action_view
@@ -22,7 +22,6 @@ urlpatterns = [
         name='check_version_view'
     ),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
-    url(r'^main_menu/$', MainMenuView.as_view(), name='main_menu_view'),
     url(
         r'^packages/licenses/$', PackagesLicensesView.as_view(),
         name='packages_licenses_view'
@@ -77,5 +76,9 @@ api_urls = [
     url(
         r'^content_types/$', APIContentTypeList.as_view(),
         name='content-type-list'
+    ),
+    url(
+        r'^templates/(?P<name>[-\w]+)/$', APITemplateView.as_view(),
+        name='template-detail'
     ),
 ]

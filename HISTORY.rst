@@ -147,6 +147,10 @@
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.
   Reduces the chance of wrongly sized cards.
+- Generalize the Javascript menu rendering into an API for 
+  templates that only refresh the menu when there are changes.
+  Closes GitLab issue #511. Thanks to Daniel Carrico
+  @daniel1113 for the report.
 
 3.0.3 (2018-08-17)
 ==================

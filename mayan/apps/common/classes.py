@@ -1,8 +1,12 @@
 from __future__ import unicode_literals
 
+import hashlib
+
 from django.apps import apps
+from django.conf import settings
 from django.db import models
 from django.template import loader
+from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext
@@ -287,3 +291,33 @@ class PropertyHelper(object):
         by each subclass.
         """
         raise NotImplementedError
+
+
+class Template(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    def __init__(self, name, template_name):
+        self.name = name
+        self.template_name = template_name
+        self.__class__._registry[name] = self
+
+    def get_absolute_url(self):
+        return reverse('rest_api:template-detail', args=(self.name,))
+
+    def render(self, request):
+        context = {
+            'home_view': settings.HOME_VIEW,
+        }
+        result = TemplateResponse(
+            request=request,
+            template=self.template_name,
+            context=context,
+        ).render()
+
+        self.html = result.content
+        self.hex_hash = hashlib.sha256(result.content).hexdigest()
+        return self
