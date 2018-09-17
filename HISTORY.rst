@@ -145,6 +145,8 @@
 - Fix an egde case on the document indexing where an empty
   node could be left behind.
 - Improve the speed of the document indexing.
+- Move the matchHeight call from lazy loading to image loading.
+  Reduces the chance of wrongly sized cards.
 
 3.0.3 (2018-08-17)
 ==================

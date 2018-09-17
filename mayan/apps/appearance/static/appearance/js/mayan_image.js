@@ -45,6 +45,8 @@ class MayanImage {
             $(this).fadeIn(300);
             $(this).siblings('.spinner-container').remove();
             $(this).removeClass('lazy-load pull-left');
+            clearTimeout(MayanImage.timer);
+            MayanImage.timer = setTimeout(MayanImage.timerFunction, 100);
         });
 
         $('.lazy-load-carousel').on('load', function() {
@@ -70,9 +72,6 @@ class MayanImage {
 
         this.element.attr('src', this.element.attr('data-url'));
         $.fn.matchHeight._maintainScroll = true;
-
-        clearTimeout(MayanImage.timer);
-        MayanImage.timer = setTimeout(MayanImage.timerFunction, 100);
     };
 }
 
