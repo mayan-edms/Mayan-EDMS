@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import REDIRECT_FIELD_NAME, get_user_model
+from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import (
     login, password_change, password_reset, password_reset_confirm,
     password_reset_complete, password_reset_done

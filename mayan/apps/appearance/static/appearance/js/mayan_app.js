@@ -128,9 +128,7 @@ class MayanApp {
                 setTimeout(app.doRefreshAJAXMenu, options.interval, options);
             },
             success: function(data) {
-                console.log(data);
                 var menuHash = options.app.ajaxMenuHashes[data.name];
-                console.log('menuHash' + menuHash);
 
                 if ((menuHash === undefined) || (menuHash !== data.hex_hash)) {
                     $(options.menuSelector).html(data.html);

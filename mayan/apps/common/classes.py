@@ -182,8 +182,6 @@ class ModelAttribute(object):
 
     @classmethod
     def get_for(cls, model):
-        result = []
-
         try:
             return cls._registry[model]
         except KeyError:

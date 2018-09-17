@@ -6,7 +6,7 @@ import logging
 from PIL import Image, ImageColor, ImageFilter
 
 from django.utils.translation import string_concat, ugettext_lazy as _
-from django.utils.encoding import force_bytes, force_text
+from django.utils.encoding import force_bytes
 
 logger = logging.getLogger(__name__)
 
