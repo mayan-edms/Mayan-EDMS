@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.template import Context, Template
+from django.template.loader import get_template
 
 
 class IconDriver(object):
@@ -17,27 +17,27 @@ class IconDriver(object):
 
 class FontAwesomeDriver(IconDriver):
     name = 'fontawesome'
-    template_text = '<i class="hidden-xs hidden-sm hidden-md fa fa-{{ symbol }}"></i>'
+    template_name = 'appearance/icons/font_awesome_symbol.html'
 
     def __init__(self, symbol):
         self.symbol = symbol
 
     def render(self):
-        return Template(self.template_text).render(
-            context=Context({'symbol': self.symbol})
+        return get_template(self.template_name).render(
+            context={'symbol': self.symbol}
         )
 
 
 class FontAwesomeCSSDriver(IconDriver):
     name = 'fontawesomecss'
-    template_text = '<i class="hidden-xs hidden-sm hidden-md fa {{ css_classes }}"></i>'
+    template_name = 'appearance/icons/font_awesome_css.html'
 
     def __init__(self, css_classes):
         self.css_classes = css_classes
 
     def render(self):
-        return Template(self.template_text).render(
-            context=Context({'css_classes': self.css_classes})
+        return get_template(self.template_name).render(
+            context={'css_classes': self.css_classes}
         )
 
 

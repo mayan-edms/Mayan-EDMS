@@ -159,6 +159,7 @@
   from 32 to 96 characters.
 - Add file_size and datetime fields to the DocumentPageCachedImage
   model.
+- Make icon classes file template based.
 
 3.0.3 (2018-08-17)
 ==================

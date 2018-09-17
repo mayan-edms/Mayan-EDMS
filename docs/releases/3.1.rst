@@ -373,6 +373,9 @@ classes beyond the provide line chart.
 - Expose more document fields for use in smart links.
 - The size of the document type label field has been increased
   from 32 to 96 characters.
+- Add file_size and datetime fields to the DocumentPageCachedImage
+  model.
+- Make icon classes file template based.
 
 Removals
 --------
