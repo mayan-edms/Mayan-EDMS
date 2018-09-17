@@ -11,6 +11,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_object, menu_main, menu_multi_item,
     menu_sidebar
 )
+from common.classes import ModelField
 from documents.search import document_page_search, document_search
 from events import ModelEventType
 from events.links import (
@@ -71,6 +72,13 @@ class TagsApp(MayanAppConfig):
                 event_tag_attach, event_tag_created, event_tag_edited,
                 event_tag_remove
             )
+        )
+
+        ModelField(
+            Document, name='tags__label'
+        )
+        ModelField(
+            Document, name='tags__color'
         )
 
         ModelPermission.register(

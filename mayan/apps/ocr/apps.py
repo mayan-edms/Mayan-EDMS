@@ -15,6 +15,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
+from common.classes import ModelField
 from common.settings import settings_db_sync_task_delay
 from documents.search import document_search, document_page_search
 from documents.signals import post_version_upload
@@ -98,6 +99,10 @@ class OCRApp(MayanAppConfig):
             'submit_for_ocr', document_version_ocr_submit
         )
 
+        ModelField(
+            Document, name='versions__pages__ocr_content__content'
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_ocr_document, permission_ocr_content_view
@@ -111,6 +116,7 @@ class OCRApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentTypeSettings, related='document_type',
         )
+
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Document'),
             func=lambda context: document_link(context['object'].document_version.document)

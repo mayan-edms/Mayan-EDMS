@@ -14,7 +14,7 @@ from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from common.classes import ModelAttribute
+from common.classes import ModelAttribute, ModelField
 from common.dashboards import dashboard_main
 from common.signals import post_initial_setup
 from common.widgets import TwoStateWidget
@@ -142,14 +142,29 @@ class DocumentsApp(MayanAppConfig):
             view='documents:document_type_list'
         )
 
-        ModelAttribute(
-            Document, label=_('Label'), name='label', type_name='field'
+        ModelField(Document, name='description')
+        ModelField(Document, name='date_added')
+        ModelField(Document, name='deleted_date_time')
+        ModelField(Document, name='document_type__label')
+        ModelField(Document, name='in_trash')
+        ModelField(Document, name='is_stub')
+        ModelField(Document, name='label')
+        ModelField(Document, name='language')
+        ModelField(Document, name='uuid')
+        ModelField(
+            Document, name='versions__checksum'
         )
-
-        ModelAttribute(
-            Document,
-            description=_('The MIME type of any of the versions of a document'),
-            label=_('MIME type'), name='versions__mimetype', type_name='field'
+        ModelField(
+            Document, label=_('Versions comment'), name='versions__comment'
+        )
+        ModelField(
+            Document, label=_('Versions encoding'), name='versions__encoding'
+        )
+        ModelField(
+            Document, label=_('Versions mime type'), name='versions__mimetype'
+        )
+        ModelField(
+            Document, label=_('Versions timestamp'), name='versions__timestamp'
         )
 
         ModelEventType.register(

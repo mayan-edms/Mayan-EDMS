@@ -90,18 +90,19 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowAction.initialize()
 
         ModelAttribute(
-            Document, 'workflow.< workflow internal name >.get_current_state',
+            model=Document,
+            name='workflow.< workflow internal name >.get_current_state',
             label=_('Current state of a workflow'), description=_(
                 'Return the current state of the selected workflow'
-            ), type_name=['property', 'indexing']
+            )
         )
         ModelAttribute(
-            Document,
-            'workflow.< workflow internal name >.get_current_state.completion',
+            model=Document,
+            name='workflow.< workflow internal name >.get_current_state.completion',
             label=_('Current state of a workflow'), description=_(
                 'Return the completion value of the current state of the '
                 'selected workflow'
-            ), type_name=['property', 'indexing']
+            )
         )
 
         ModelPermission.register(

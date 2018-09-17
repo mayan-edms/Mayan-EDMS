@@ -15,7 +15,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar
 )
-from common.classes import ModelAttribute
+from common.classes import ModelAttribute, ModelField
 from common.widgets import TwoStateWidget
 from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
@@ -92,26 +92,18 @@ class MetadataApp(MayanAppConfig):
         )
 
         ModelAttribute(
-            Document, 'metadata', type_name='related',
-            description=_(
-                'Queryset containing a MetadataType instance reference and a '
-                'value for that metadata type'
-            )
-        )
-        ModelAttribute(
-            Document, 'metadata__metadata_type__name',
-            label=_('Metadata type name'), type_name='query'
-        )
-        ModelAttribute(
-            Document, 'metadata__value', label=_('Metadata type value'),
-            type_name='query'
-        )
-        ModelAttribute(
-            Document, 'metadata_value_of', label=_('Value of a metadata'),
+            Document, 'metadata_value_of',
             description=_(
                 'Return the value of a specific document metadata'
             ),
-            type_name=['property', 'indexing']
+        )
+
+        ModelField(
+            Document, 'metadata__metadata_type__name',
+            label=_('Metadata type name')
+        )
+        ModelField(
+            Document, 'metadata__value', label=_('Metadata type value'),
         )
 
         ModelEventType.register(

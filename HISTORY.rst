@@ -151,6 +151,10 @@
   templates that only refresh the menu when there are changes.
   Closes GitLab issue #511. Thanks to Daniel Carrico
   @daniel1113 for the report.
+- Refactor the ModelAttribute class into two separate classes:
+  ModelAttribute for executable model attributes and ModelField
+  for actual ORM fields.
+- Expose more document fields for use in smart links.
 
 3.0.3 (2018-08-17)
 ==================

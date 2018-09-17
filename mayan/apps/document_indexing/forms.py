@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.classes import ModelAttribute
+from common.classes import ModelProperty
 from documents.models import Document
 
 from .models import Index, IndexTemplateNode
@@ -40,8 +40,9 @@ class IndexTemplateNodeForm(forms.ModelForm):
         self.fields['expression'].help_text = ' '.join(
             [
                 force_text(self.fields['expression'].help_text),
-                ModelAttribute.help_text_for(
-                    Document, type_names=['indexing']
+                '<br>',
+                ModelProperty.get_help_text_for(
+                    model=Document, show_name=True
                 ).replace('\n', '<br>')
             ]
         )

@@ -4,7 +4,7 @@ from django import forms
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from common.classes import ModelAttribute
+from common.classes import ModelAttribute, ModelField, ModelProperty
 from documents.models import Document
 
 from .models import SmartLink, SmartLinkCondition
@@ -16,8 +16,8 @@ class SmartLinkForm(forms.ModelForm):
         self.fields['dynamic_label'].help_text = ' '.join(
             [
                 force_text(self.fields['dynamic_label'].help_text),
-                ModelAttribute.help_text_for(
-                    Document, type_names=['field', 'related', 'property']
+                ModelProperty.get_help_text_for(
+                    model=Document, show_name=True
                 ).replace('\n', '<br>')
             ]
         )
@@ -31,15 +31,15 @@ class SmartLinkConditionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkConditionForm, self).__init__(*args, **kwargs)
         self.fields['foreign_document_data'] = forms.ChoiceField(
-            choices=ModelAttribute.get_choices_for(
-                Document, type_names=['field', 'query']
-            ), label=_('Foreign document attribute')
+            choices=ModelField.get_choices_for(
+                model=Document,
+            ), label=_('Foreign document field')
         )
         self.fields['expression'].help_text = ' '.join(
             [
                 force_text(self.fields['expression'].help_text),
-                ModelAttribute.help_text_for(
-                    Document, type_names=['field', 'related', 'property']
+                ModelProperty.get_help_text_for(
+                    model=Document, show_name=True
                 ).replace('\n', '<br>')
             ]
         )

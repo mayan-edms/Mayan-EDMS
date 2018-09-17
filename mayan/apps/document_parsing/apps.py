@@ -15,6 +15,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
+from common.classes import ModelField
 from common.settings import settings_db_sync_task_delay
 from documents.search import document_search, document_page_search
 from documents.signals import post_version_upload
@@ -97,6 +98,10 @@ class DocumentParsingApp(MayanAppConfig):
             'submit_for_parsing', document_version_parsing_submit
         )
 
+        ModelField(
+            Document, name='versions__pages__content__content'
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_content_view, permission_parse_document
@@ -110,6 +115,7 @@ class DocumentParsingApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentTypeSettings, related='document_type',
         )
+
         SourceColumn(
             source=DocumentVersionParseError, label=_('Document'),
             func=lambda context: document_link(context['object'].document_version.document)

@@ -178,19 +178,15 @@ class MissingItem(object):
 
 @python_2_unicode_compatible
 class ModelAttribute(object):
-    __registry = {}
+    _registry = {}
 
     @classmethod
-    def get_for(cls, model, type_names=None):
+    def get_for(cls, model):
         result = []
 
         try:
-            for type_name, attributes in cls.__registry[model].items():
-                if not type_names or type_name in type_names:
-                    result.extend(attributes)
-
-            return result
-        except IndexError:
+            return cls._registry[model]
+        except KeyError:
             # We were passed a model instance, try again using the model of
             # the instance
 
@@ -198,29 +194,38 @@ class ModelAttribute(object):
             if model.__class__ == models.base.ModelBase:
                 raise
 
-            return cls.get_for[type(model)]
+            return cls.get_for(model=type(model))
 
     @classmethod
-    def get_choices_for(cls, model, type_names=None):
+    def get_choices_for(cls, model):
         return [
-            (
-                attribute.name, attribute
-            ) for attribute in cls.get_for(model, type_names)
+            (attribute.name, attribute) for attribute in cls.get_for(model)
         ]
 
     @classmethod
-    def help_text_for(cls, model, type_names=None):
+    def get_help_text_for(cls, model, show_name=False):
         result = []
-        for count, attribute in enumerate(cls.get_for(model, type_names), 1):
+        for count, attribute in enumerate(cls.get_for(model=model), 1):
             result.append(
                 '{}) {}'.format(
-                    count, force_text(attribute.get_display(show_name=True))
+                    count, force_text(attribute.get_display(show_name=show_name))
                 )
             )
 
         return ' '.join(
-            [ugettext('Available attributes: \n'), ', \n'.join(result)]
+            [ugettext('Available attributes: \n'), '\n'.join(result)]
         )
+
+    def __init__(self, model, name, label=None, description=None):
+        self.model = model
+        self.label = label
+        self.name = name
+        self.description = description
+        self._registry.setdefault(model, [])
+        self._registry[model].append(self)
+
+    def __str__(self):
+        return self.get_display()
 
     def get_display(self, show_name=False):
         if self.description:
@@ -230,29 +235,101 @@ class ModelAttribute(object):
         else:
             return force_text(self.name if show_name else self.label)
 
-    def __str__(self):
-        return self.get_display()
 
-    def __init__(self, model, name, label=None, description=None, type_name=None):
-        self.model = model
-        self.label = label
-        self.name = name
-        self.description = description
+class ModelField(ModelAttribute):
+    """Subclass to handle model database fields"""
+    _registry = {}
 
-        for field in model._meta.fields:
-            if field.name == name:
-                self.label = field.verbose_name
-                self.description = field.help_text
+    @classmethod
+    def get_help_text_for(cls, model, show_name=False):
+        result = []
+        for count, model_field in enumerate(cls.get_for(model=model), 1):
+            result.append(
+                '{}) {} - {}'.format(
+                    count,
+                    model_field.name if show_name else model_field.label,
+                    model_field.description
+                )
+            )
 
-        self.__registry.setdefault(model, {})
+        return ' '.join(
+            [ugettext('Available fields: \n'), '\n'.join(result)]
+        )
 
-        if isinstance(type_name, list):
-            for single_type in type_name:
-                self.__registry[model].setdefault(single_type, [])
-                self.__registry[model][single_type].append(self)
+    def __init__(self, *args, **kwargs):
+        super(ModelField, self).__init__(*args, **kwargs)
+        self._final_model_verbose_name = None
+
+        if not self.label:
+            self.label = self.get_field_attribute(
+                attribute='verbose_name'
+            )
+            if self.label != self._final_model_verbose_name:
+                self.label = '{} {}'.format(
+                    self._final_model_verbose_name, self.label
+                )
+
+        if not self.description:
+            self.description = self.get_field_attribute(
+                attribute='help_text'
+            )
+
+    def get_field_attribute(self, attribute, model=None, field_name=None):
+        if not model:
+            model = self.model
+
+        if not field_name:
+            field_name = self.name
+
+        parts = field_name.split('__')
+        if len(parts) > 1:
+            return self.get_field_attribute(
+                model=model._meta.get_field(parts[0]).related_model,
+                field_name='__'.join(parts[1:]), attribute=attribute
+            )
         else:
-            self.__registry[model].setdefault(type_name, [])
-            self.__registry[model][type_name].append(self)
+            self._final_model_verbose_name = model._meta.verbose_name
+            return getattr(
+                model._meta.get_field(field_name=field_name),
+                attribute
+            )
+
+
+class ModelProperty(object):
+    _registry = []
+
+    @classmethod
+    def get_for(cls, model):
+        result = []
+
+        for klass in cls._registry:
+            result.extend(klass.get_for(model=model))
+
+        return result
+
+    @classmethod
+    def get_choices_for(cls, model):
+        result = []
+
+        for klass in cls._registry:
+            result.extend(klass.get_choices_for(model=model))
+
+        return result
+
+    @classmethod
+    def get_help_text_for(cls, model, show_name=False):
+        result = []
+
+        for klass in cls._registry:
+            result.append(
+                klass.get_help_text_for(model=model, show_name=show_name)
+            )
+
+        return '\n'.join(result)
+
+    @classmethod
+    def register(cls, klass):
+        cls._registry.append(klass)
 
 
 class Package(object):
@@ -321,3 +398,7 @@ class Template(object):
         self.html = result.content
         self.hex_hash = hashlib.sha256(result.content).hexdigest()
         return self
+
+
+ModelProperty.register(ModelAttribute)
+ModelProperty.register(ModelField)
