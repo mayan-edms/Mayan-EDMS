@@ -155,6 +155,8 @@
   ModelAttribute for executable model attributes and ModelField
   for actual ORM fields.
 - Expose more document fields for use in smart links.
+- The size of the document type label field has been increased
+  from 32 to 96 characters.
 
 3.0.3 (2018-08-17)
 ==================

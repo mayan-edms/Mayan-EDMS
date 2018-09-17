@@ -70,7 +70,7 @@ class DocumentType(models.Model):
     properties can be attached
     """
     label = models.CharField(
-        help_text=_('The name of the document type.'), max_length=32,
+        help_text=_('The name of the document type.'), max_length=96,
         unique=True, verbose_name=_('Label')
     )
     trash_time_period = models.PositiveIntegerField(
