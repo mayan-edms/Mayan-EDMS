@@ -44,7 +44,7 @@ class MetadataType(models.Model):
     name = models.CharField(
         max_length=48,
         help_text=_(
-            'Name used by other apps to reference this value. '
+            'Name used by other apps to reference this metadata type. '
             'Do not use python reserved words, or spaces.'
         ),
         unique=True, verbose_name=_('Name')
@@ -182,8 +182,10 @@ class DocumentMetadata(models.Model):
         on_delete=models.CASCADE, to=MetadataType, verbose_name=_('Type')
     )
     value = models.CharField(
-        blank=True, db_index=True, max_length=255, null=True,
-        verbose_name=_('Value')
+        blank=True, db_index=True, help_text=_(
+            'The actual value stored in the metadata type field for '
+            'the document.'
+        ), max_length=255, null=True, verbose_name=_('Value')
     )
 
     class Meta:

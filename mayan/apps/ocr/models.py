@@ -41,7 +41,11 @@ class DocumentPageOCRContent(models.Model):
         on_delete=models.CASCADE, related_name='ocr_content',
         to=DocumentPage, verbose_name=_('Document page')
     )
-    content = models.TextField(blank=True, verbose_name=_('Content'))
+    content = models.TextField(
+        blank=True, help_text=_(
+            'The actual text content extracted by the OCR backend.'
+        ), verbose_name=_('Content')
+    )
 
     objects = DocumentPageOCRContentManager()
 

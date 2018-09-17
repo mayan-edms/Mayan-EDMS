@@ -70,7 +70,8 @@ class DocumentType(models.Model):
     properties can be attached
     """
     label = models.CharField(
-        max_length=32, unique=True, verbose_name=_('Label')
+        help_text=_('The name of the document type.'), max_length=32,
+        unique=True, verbose_name=_('Label')
     )
     trash_time_period = models.PositiveIntegerField(
         blank=True, help_text=_(
@@ -176,33 +177,47 @@ class Document(models.Model):
     generated for each document. No two documents can ever have the same UUID.
     This ID is generated automatically.
     """
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    uuid = models.UUIDField(
+        default=uuid.uuid4, editable=False, help_text=_(
+            'UUID of a document, universally Unique ID. An unique identifier'
+            'generated for each document.'
+        ), verbose_name=_('UUID')
+    )
     document_type = models.ForeignKey(
         on_delete=models.CASCADE, related_name='documents', to=DocumentType,
         verbose_name=_('Document type')
     )
     label = models.CharField(
         blank=True, db_index=True, default='', max_length=255,
-        help_text=_('The name of the document'), verbose_name=_('Label')
+        help_text=_('The name of the document.'), verbose_name=_('Label')
     )
     description = models.TextField(
-        blank=True, default='', verbose_name=_('Description')
+        blank=True, default='', help_text=_(
+            'An optional short text describing a document.'
+        ), verbose_name=_('Description')
     )
     date_added = models.DateTimeField(
-        auto_now_add=True, db_index=True, verbose_name=_('Added')
+        auto_now_add=True, db_index=True, help_text=_(
+            'The server date and time when the document was finally '
+            'processed and added to the system.'
+        ), verbose_name=_('Added')
     )
     language = models.CharField(
-        blank=True, default=setting_language.value, max_length=8,
-        verbose_name=_('Language')
+        blank=True, default=setting_language.value, help_text=_(
+            'The dominant language in the document.'
+        ), max_length=8, verbose_name=_('Language')
     )
     in_trash = models.BooleanField(
-        db_index=True, default=False, editable=False,
-        verbose_name=_('In trash?')
+        db_index=True, default=False, help_text=_(
+            'Whether or not this document is in the trash.'
+        ), editable=False, verbose_name=_('In trash?')
     )
     # TODO: set editable to False
     deleted_date_time = models.DateTimeField(
-        blank=True, editable=True, null=True,
-        verbose_name=_('Date and time trashed')
+        blank=True, editable=True, help_text=_(
+            'The server date and time when the document was moved to the '
+            'trash.'
+        ), null=True, verbose_name=_('Date and time trashed')
     )
     is_stub = models.BooleanField(
         db_index=True, default=True, editable=False, help_text=_(
@@ -407,10 +422,14 @@ class DocumentVersion(models.Model):
         verbose_name=_('Document')
     )
     timestamp = models.DateTimeField(
-        auto_now_add=True, db_index=True, verbose_name=_('Timestamp')
+        auto_now_add=True, db_index=True, help_text=_(
+            'The server date and time when the document version was processed.'
+        ), verbose_name=_('Timestamp')
     )
     comment = models.TextField(
-        blank=True, default='', verbose_name=_('Comment')
+        blank=True, default='', help_text=_(
+            'An optional short text describing the document version.'
+        ), verbose_name=_('Comment')
     )
 
     # File related fields
@@ -419,16 +438,25 @@ class DocumentVersion(models.Model):
         verbose_name=_('File')
     )
     mimetype = models.CharField(
-        blank=True, editable=False, max_length=255, null=True,
-        verbose_name=_('MIME type')
+        blank=True, editable=False, help_text=_(
+            'The document version\'s file mimetype. MIME types are a '
+            'standard way to describe the format of a file, in this case '
+            'the file format of the document. Some examples: "text/plain" '
+            'or "image/jpeg". '
+        ), max_length=255, null=True, verbose_name=_('MIME type')
     )
     encoding = models.CharField(
-        blank=True, editable=False, max_length=64, null=True,
-        verbose_name=_('Encoding')
+        blank=True, editable=False, help_text=_(
+            'The document version file encoding. binary 7-bit, binary 8-bit, '
+            'text, base64, etc.'
+        ), max_length=64, null=True, verbose_name=_('Encoding')
     )
     checksum = models.CharField(
-        blank=True, db_index=True, editable=False, max_length=64, null=True,
-        verbose_name=_('Checksum')
+        blank=True, db_index=True, editable=False, help_text=(
+            'A hash/checkdigit/fingerprint generated from the document\'s '
+            'binary data. Only identical documents will have the same '
+            'checksum.'
+        ), max_length=64, null=True, verbose_name=_('Checksum')
     )
 
     class Meta:

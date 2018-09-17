@@ -15,7 +15,12 @@ class DocumentPageContent(models.Model):
         on_delete=models.CASCADE, related_name='content', to=DocumentPage,
         verbose_name=_('Document page')
     )
-    content = models.TextField(blank=True, verbose_name=_('Content'))
+    content = models.TextField(
+        blank=True, help_text=_(
+            'The actual text content as extracted by the document '
+            'parsing backend.'
+        ), verbose_name=_('Content')
+    )
 
     objects = DocumentPageContentManager()
 
@@ -33,8 +38,9 @@ class DocumentTypeSettings(models.Model):
         to=DocumentType, unique=True, verbose_name=_('Document type')
     )
     auto_parsing = models.BooleanField(
-        default=True,
-        verbose_name=_('Automatically queue newly created documents for parsing.')
+        default=True, verbose_name=_(
+            'Automatically queue newly created documents for parsing.'
+        )
     )
 
     objects = DocumentTypeSettingsManager()
