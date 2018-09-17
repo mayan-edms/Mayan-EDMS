@@ -21,6 +21,11 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
         context = {
             'hide_links': True,
             'list_as_items': True,
+            'no_results_icon': icon_search_submit,
+            'no_results_text': _(
+                'Try again using different terms. '
+            ),
+            'no_results_title': _('No search results'),
             'search_model': self.search_model,
             'search_results_limit': setting_limit.value,
             'title': _('Search results for: %s') % self.search_model.label,
