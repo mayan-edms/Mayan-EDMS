@@ -19,3 +19,12 @@ def get_choice_value(field):
 @register.filter
 def get_form_media_js(form):
     return [form.media.absolute_path(path) for path in form.media._js]
+
+
+@register.simple_tag
+def get_icon(icon_path):
+    from django.utils.module_loading import import_string
+    icon_class = import_string(icon_path)
+    return icon_class.render()
+    #return [form.media.absolute_path(path) for path in form.media._js]
+

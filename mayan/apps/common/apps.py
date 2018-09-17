@@ -23,11 +23,11 @@ from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
 )
 from .links import (
-    link_about, link_check_version, link_code, link_current_user_details,
+    link_about, link_check_version, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_edit,
-    link_documentation, link_forum, link_license, link_object_error_list_clear,
-    link_packages_licenses, link_setup, link_support, link_tools,
-    separator_user_label, text_user_label
+    link_license, link_object_error_list_clear, link_packages_licenses,
+    link_setup, link_support, link_tools, separator_user_label,
+    text_user_label
 )
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
@@ -135,8 +135,7 @@ class CommonApp(MayanAppConfig):
 
         menu_about.bind_links(
             links=(
-                link_tools, link_setup, link_about, link_support,
-                link_documentation, link_forum, link_code, link_license,
+                link_tools, link_setup, link_about, link_license,
                 link_packages_licenses, link_check_version
             )
         )

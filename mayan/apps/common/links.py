@@ -7,11 +7,12 @@ from navigation import Link
 from navigation.classes import Separator, Text
 
 from .icons import (
-    icon_about, icon_check_version, icon_code, icon_current_user_details,
+    icon_about, icon_check_version, icon_current_user_details,
     icon_current_user_edit, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
     icon_forum, icon_license, icon_object_error_list_with_icon,
-    icon_packages_licenses, icon_setup, icon_support, icon_tools
+    icon_packages_licenses, icon_setup, icon_source_code, icon_support,
+    icon_tools
 )
 from .permissions_runtime import permission_error_log_view
 from .utils import get_user_label_text
@@ -60,10 +61,6 @@ link_current_user_locale_profile_edit = Link(
     text=_('Edit locale profile'),
     view='common:current_user_locale_profile_edit'
 )
-link_code = Link(
-    icon_class=icon_code, tags='new_window', text=_('Source code'),
-    url='https://gitlab.com/mayan-edms/mayan-edms'
-)
 link_documentation = Link(
     icon_class=icon_documentation, tags='new_window',
     text=_('Documentation'), url='https://mayan.readthedocs.io/en/stable/'
@@ -97,6 +94,10 @@ link_packages_licenses = Link(
 )
 link_setup = Link(
     icon_class=icon_setup, text=_('Setup'), view='common:setup_list'
+)
+link_source_code = Link(
+    icon_class=icon_source_code, tags='new_window', text=_('Source code'),
+    url='https://gitlab.com/mayan-edms/mayan-edms'
 )
 link_support = Link(
     icon_class=icon_support, tags='new_window', text=_('Support'),
