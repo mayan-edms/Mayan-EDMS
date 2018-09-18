@@ -31,7 +31,10 @@ job_docker_master:
   services:
     - docker:dind
   script:
+    - VERSION=`cat docker/version`
     - docker pull "$CI_REGISTRY_IMAGE:$VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
