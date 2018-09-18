@@ -23,7 +23,8 @@ job_docker_build:
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - docker logout
   only:
-    - releases
+    - releases/all
+    - releases/docker
 
 job_docker_push:
   stage: push_docker
@@ -39,7 +40,8 @@ job_docker_push:
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
   only:
-    - releases
+    - releases/all
+    - releases/docker
 
 job_docker_nightly:
   stage: build_docker
@@ -74,7 +76,8 @@ job_build_python:
     - pip install -r requirements/build.txt
     - make wheel
   only:
-    - releases
+    - releases/all
+    - releases/python
 
 job_push_python:
   stage: push_python
@@ -87,7 +90,8 @@ job_push_python:
     - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
   only:
-    - releases
+    - releases/all
+    - releases/python
 
 .test_base: &test_base
   stage: test
@@ -106,7 +110,9 @@ job_push_python:
     - apt-get install -qq curl gcc ghostscript gpgv gnupg graphviz libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils libreoffice poppler-utils python-dev python-pip tesseract-ocr tesseract-ocr-deu
     - pip install -r requirements/testing.txt
   only:
-    - releases
+    - releases/all
+    - releases/docker
+    - releases/python
     - master
     - staging
     - nightly
