@@ -42,7 +42,7 @@ class APIGroupListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_group_view,)}
     mayan_view_permissions = {'POST': (permission_group_create,)}
     permission_classes = (MayanPermission,)
-    queryset = Group.objects.all()
+    queryset = Group.objects.order_by('id')
     serializer_class = GroupSerializer
 
 
@@ -60,7 +60,7 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_group_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Group.objects.all()
+    queryset = Group.objects.order_by('id')
     serializer_class = GroupSerializer
 
 
@@ -137,7 +137,7 @@ class APIUserGroupList(generics.ListCreateAPIView):
 
         return AccessControlList.objects.filter_by_access(
             permission_group_view, self.request.user,
-            queryset=user.groups.all()
+            queryset=user.groups.order_by('id')
         )
 
     def get_user(self):
