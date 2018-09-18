@@ -6,7 +6,7 @@ stages:
   - push_docker
   - deploy
 
-job_docker_master:
+job_docker_build:
   stage: build_docker
   image: docker:latest
   services:
@@ -25,7 +25,7 @@ job_docker_master:
   only:
     - releases
 
-job_docker_master:
+job_docker_push:
   stage: push_docker
   image: docker:latest
   services:
