@@ -278,6 +278,8 @@ new frontend rendering libraries. This will allow developer to add other chart
 classes beyond the provide line chart.
 
 
+Other changes
+~~~~~~~~~~~~~
 - Add recently added document list view. The setting
   DOCUMENTS_RECENT_COUNT has been renamed to
   DOCUMENTS_RECENT_ACCESS_COUNT. New setting

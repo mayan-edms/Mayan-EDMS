@@ -1,3 +1,8 @@
+3.1.1 (2018-09-18)
+==================
+* CSS tweak to make sure the AJAX spinner stays in place.
+* Fix 90, 180 and 270 degrees rotation transformations.
+
 3.1 (2018-09-17)
 ================
 - Improve database vendor migration support
