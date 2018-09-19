@@ -210,8 +210,9 @@ class TransformationRotate(BaseTransformation):
         if self.degrees == 0:
             return self.image
 
-        if self.fillcolor:
-            fillcolor = ImageColor.getrgb(self.fillcolor)
+        fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value:
+            fillcolor = ImageColor.getrgb(fillcolor_value)
         else:
             fillcolor = None
 

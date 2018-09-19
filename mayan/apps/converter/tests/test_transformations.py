@@ -6,8 +6,9 @@ from documents.tests import GenericDocumentTestCase
 
 from ..models import Transformation
 from ..transformations import (
-    BaseTransformation, TransformationCrop, TransformationResize,
-    TransformationRotate, TransformationZoom
+    BaseTransformation, TransformationCrop, TransformationLineArt,
+    TransformationResize, TransformationRotate, TransformationRotate90,
+    TransformationRotate180, TransformationRotate270, TransformationZoom
 )
 
 from .literals import (
@@ -151,6 +152,40 @@ class TransformationTestCase(GenericDocumentTestCase):
         Transformation.objects.add_for_model(
             obj=document_page, transformation=TransformationCrop,
             arguments={'left': '1000', 'right': '10000'}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+    def test_lineart_transformations(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationLineArt,
+            arguments={}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+    def test_rotate_transformations(self):
+        document_page = self.document.pages.first()
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationRotate90,
+            arguments={}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationRotate180,
+            arguments={}
+        )
+
+        self.assertTrue(document_page.generate_image().startswith('page'))
+
+        Transformation.objects.add_for_model(
+            obj=document_page, transformation=TransformationRotate270,
+            arguments={}
         )
 
         self.assertTrue(document_page.generate_image().startswith('page'))
