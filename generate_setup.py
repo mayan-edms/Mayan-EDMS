@@ -31,7 +31,7 @@ MAYAN_TEMPLATE = '__init__.py.tmpl'
 def generate_build_number():
     if BUILD and DATE:
         try:
-            result = '{} {}'.format(BUILD(), DATE()).replace('\n', '')
+            result = '{}_{}'.format(BUILD(), DATE()).replace('\n', '')
         except sh.ErrorReturnCode_128:
             result = ''
     else:
