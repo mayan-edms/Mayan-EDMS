@@ -720,7 +720,7 @@ a i {
 }
 
 #ajax-spinner {
-    position: absolute;
+    position: fixed;
     top: 12px;
     right: 10px;
     z-index: 9999;
