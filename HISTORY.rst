@@ -1,3 +1,8 @@
+3.1.2 (2018-09-XX)
+==================
+* Database access in data migrations defaults to the 'default' database. Force it to the user selected database instead.
+* Don't use a hardcoded database alias for the destination of the database conversion.
+
 3.1.1 (2018-09-18)
 ==================
 * CSS tweak to make sure the AJAX spinner stays in place.
