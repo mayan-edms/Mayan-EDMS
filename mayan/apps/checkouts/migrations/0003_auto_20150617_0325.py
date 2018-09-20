@@ -11,7 +11,7 @@ def move_from_content_type_user_to_foreign_key_field_user(apps, schema_editor):
 
     DocumentCheckout = apps.get_model('checkouts', 'DocumentCheckout')
 
-    for document_checkout in DocumentCheckout.objects.all():
+    for document_checkout in DocumentCheckout.objects.using(schema_editor.connection.alias).all():
         document_checkout.user = document_checkout.user_object
         document_checkout.save()
 

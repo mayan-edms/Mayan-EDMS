@@ -9,7 +9,7 @@ from django.db import migrations
 def change_bibliographic_to_terminology(apps, schema_editor):
     Document = apps.get_model('documents', 'Document')
 
-    for document in Document.objects.all():
+    for document in Document.objects.using(schema_editor.connection.alias).all():
         try:
             language = pycountry.languages.get(bibliographic=document.language)
         except KeyError:

@@ -22,13 +22,13 @@ def update_event_types_names(apps, schema_editor):
 
     pattern = re.compile('|'.join(known_namespaces.keys()))
 
-    for event_type in StoredEventType.objects.all():
+    for event_type in StoredEventType.objects.using(schema_editor.connection.alias).all():
         event_type.name = pattern.sub(
             lambda x: known_namespaces[x.group()], event_type.name
         )
         event_type.save()
 
-    for action in Action.objects.all():
+    for action in Action.objects.using(schema_editor.connection.alias).all():
         action.verb = pattern.sub(
             lambda x: known_namespaces[x.group()], action.verb
         )
@@ -50,7 +50,7 @@ def revert_event_types_names(apps, schema_editor):
 
     pattern = re.compile('|'.join(known_namespaces.keys()))
 
-    for event_type in StoredEventType.objects.all():
+    for event_type in StoredEventType.objects.using(schema_editor.connection.alias).all():
         old_name = event_type.name
         new_name = pattern.sub(
             lambda x: known_namespaces[x.group().replace('.', '\\.')],
@@ -62,7 +62,7 @@ def revert_event_types_names(apps, schema_editor):
         else:
             event_type.save()
 
-    for action in Action.objects.all():
+    for action in Action.objects.using(schema_editor.connection.alias).all():
         new_name = pattern.sub(
             lambda x: known_namespaces[x.group().replace('.', '\\.')],
             action.verb

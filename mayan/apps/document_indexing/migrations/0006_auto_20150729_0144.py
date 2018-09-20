@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 def assign_slugs(apps, schema_editor):
     Index = apps.get_model('document_indexing', 'Index')
 
-    for index in Index.objects.all():
+    for index in Index.objects.using(schema_editor.connection.alias).all():
         index.slug = slugify(index.label)
         index.save()
 

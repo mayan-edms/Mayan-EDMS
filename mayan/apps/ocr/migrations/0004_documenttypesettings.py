@@ -8,9 +8,11 @@ def create_ocr_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model('documents', 'DocumentType')
     DocumentTypeSettings = apps.get_model('ocr', 'DocumentTypeSettings')
 
-    for document_type in DocumentType.objects.all():
+    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
         try:
-            DocumentTypeSettings.objects.create(document_type=document_type)
+            DocumentTypeSettings.objects.using(
+                schema_editor.connection.alias
+            ).create(document_type=document_type)
         except DocumentTypeSettings.DoesNotExist:
             pass
 

@@ -12,7 +12,7 @@ def generate_internal_name(apps, schema_editor):
     Workflow = apps.get_model('document_states', 'Workflow')
     internal_names = []
 
-    for workflow in Workflow.objects.all():
+    for workflow in Workflow.objects.using(schema_editor.connection.alias).all():
         # Slugify and replace dashes (not allowed) by underscores
         workflow.internal_name = slugify(workflow.label).replace('-', '_')
         if workflow.internal_name in internal_names:

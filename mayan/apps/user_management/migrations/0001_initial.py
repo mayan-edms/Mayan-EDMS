@@ -13,8 +13,10 @@ def add_user_options_to_existing_users(apps, schema_editor):
         app_label='user_management', model_name='UserOptions'
     )
 
-    for user in User.objects.all():
-        UserOptions.objects.create(user=user)
+    for user in User.objects.using(schema_editor.connection.alias).all():
+        UserOptions.objects.using(
+            schema_editor.connection.alias
+        ).create(user=user)
 
 
 def remove_user_options_from_existing_users(apps, schema_editor):
@@ -23,8 +25,10 @@ def remove_user_options_from_existing_users(apps, schema_editor):
         app_label='user_management', model_name='UserOptions'
     )
 
-    for user in User.objects.all():
-        UserOptions.objects.filter(user=user).delete()
+    for user in User.objects.using(schema_editor.connection.alias).all():
+        UserOptions.objects.using(
+            schema_editor.connection.alias
+        ).filter(user=user).delete()
 
 
 class Migration(migrations.Migration):

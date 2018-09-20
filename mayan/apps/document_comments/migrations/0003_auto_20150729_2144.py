@@ -21,9 +21,9 @@ def migrate_old_comments(apps, schema_editor):
         Document = apps.get_model('documents', 'Document')
         User = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
 
-        for old_comment in OldComment.objects.all():
+        for old_comment in OldComment.objects.using(schema_editor.connection.alias).all():
             comment = Comment(
-                document=Document.objects.get(pk=old_comment.object_pk),
+                document=Document.objects.using(schema_editor.connection.alias).get(pk=old_comment.object_pk),
                 user=User(old_comment.user.pk),
                 comment=old_comment.comment,
                 submit_date=old_comment.submit_date,

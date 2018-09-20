@@ -34,7 +34,7 @@ RGB_VALUES = {
 def convert_color_names_to_rgb(apps, schema_editor):
     Tag = apps.get_model('tags', 'Tag')
 
-    for tag in Tag.objects.all():
+    for tag in Tag.objects.using(schema_editor.connection.alias).all():
         tag.selection = RGB_VALUES[tag.color]
         tag.save()
 
