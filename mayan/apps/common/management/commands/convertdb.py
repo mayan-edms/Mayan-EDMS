@@ -73,7 +73,7 @@ class Command(management.BaseCommand):
             format='json'
         )
 
-        if DocumentType.objects.using('default').count() and not options['force']:
+        if DocumentType.objects.using(options['to']).count() and not options['force']:
             fs_cleanup(convertdb_file_path)
             raise CommandError(
                 'There is existing data in the database that will be '
