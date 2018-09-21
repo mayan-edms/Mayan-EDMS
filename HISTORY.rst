@@ -9,6 +9,7 @@
 * Add an user test mixin to group user testing.
 * Add test the user managament app for database conversion.
 * Add support for natural keys to the DocumentPageImageCache model.
+* Add database conversion test to the common app.
 
 3.1.1 (2018-09-18)
 ==================
