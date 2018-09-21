@@ -62,6 +62,20 @@ class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
     queryset_slice = None
 
+    def get_context_data(self, **kwargs):
+        try:
+            return super(DocumentListView, self).get_context_data(**kwargs)
+        except Exception as exception:
+            messages.error(
+                self.request, _(
+                    'Error retrieving document list: %(exception)s.'
+                ) % {
+                    'exception': exception
+                }
+            )
+            self.object_list = Document.objects.none()
+            return super(DocumentListView, self).get_context_data(**kwargs)
+
     def get_document_queryset(self):
         return Document.objects.defer(
             'description', 'uuid', 'date_added', 'language', 'in_trash',
