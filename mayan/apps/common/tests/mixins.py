@@ -49,7 +49,7 @@ class ContentTypeCheckMixin(object):
 class DatabaseConversionMixin(object):
     def _test_database_conversion(self, *app_labels):
         management.call_command(
-            'convertdb', *app_labels
+            'convertdb', *app_labels, force=True
         )
 
 
