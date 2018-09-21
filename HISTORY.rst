@@ -1,4 +1,4 @@
-3.1.2 (2018-09-XX)
+3.1.2 (2018-09-21)
 ==================
 * Database access in data migrations defaults to the 'default' database. Force it to the user selected database instead.
 * Don't use a hardcoded database alias for the destination of the database conversion.
