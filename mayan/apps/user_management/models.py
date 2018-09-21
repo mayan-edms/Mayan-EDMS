@@ -4,6 +4,8 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from .managers import UserOptionsManager
+
 
 class UserOptions(models.Model):
     user = models.OneToOneField(
@@ -14,6 +16,8 @@ class UserOptions(models.Model):
         default=False,
         verbose_name=_('Forbid this user from changing their password.')
     )
+
+    objects = UserOptionsManager()
 
     class Meta:
         verbose_name = _('User settings')
