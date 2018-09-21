@@ -23,6 +23,13 @@ class Command(management.BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
+            'args', metavar='app_label[.ModelName]', nargs='*',
+            help=_(
+                'Restricts dumped data to the specified app_label or '
+                'app_label.ModelName.'
+            )
+        )
+        parser.add_argument(
             '--from', action='store', default='default', dest='from',
             help=_(
                 'The database from which data will be exported. If omitted '
@@ -44,7 +51,7 @@ class Command(management.BaseCommand):
             ),
         )
 
-    def handle(self, *args, **options):
+    def handle(self, *app_labels, **options):
         # Create the media/convertdb folder
         convertdb_folder_path = force_text(
             Path(
@@ -67,10 +74,10 @@ class Command(management.BaseCommand):
         management.call_command('purgeperiodictasks')
 
         management.call_command(
-            'dumpdata', all=True, database=options['from'],
-            natural_primary=True, natural_foreign=True,
-            output=convertdb_file_path, interactive=False,
-            format='json'
+            'dumpdata', *app_labels, all=True,
+            database=options['from'], natural_primary=True,
+            natural_foreign=True, output=convertdb_file_path,
+            interactive=False, format='json'
         )
 
         if DocumentType.objects.using(options['to']).count() and not options['force']:
@@ -78,11 +85,11 @@ class Command(management.BaseCommand):
             raise CommandError(
                 'There is existing data in the database that will be '
                 'used for the import. If you proceed with the conversion '
-                'you might lose data. Please check you settings.'
+                'you might lose data. Please check your settings.'
             )
 
         management.call_command(
             'loaddata', convertdb_file_path, database=options['to'],
-            interactive=False
+            interactive=False, verbosity=3
         )
         fs_cleanup(convertdb_file_path)

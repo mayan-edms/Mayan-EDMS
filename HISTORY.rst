@@ -4,6 +4,7 @@
 * Don't use a hardcoded database alias for the destination of the database conversion.
 * Improve natural key support in the UserOptions model.
 * Update from Django 1.11.11 to 1.11.16
+* Add support to the convertdb command to operate on specified apps too.
 
 3.1.1 (2018-09-18)
 ==================
