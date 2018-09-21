@@ -10,6 +10,7 @@
 * Add test the user managament app for database conversion.
 * Add support for natural keys to the DocumentPageImageCache model.
 * Add database conversion test to the common app.
+* Fix label display for resolved smart links when not using a dynamic label.
 
 3.1.1 (2018-09-18)
 ==================

@@ -93,13 +93,18 @@ class SmartLink(models.Model):
 
     def resolve_for(self, document):
         return ResolvedSmartLink(
-            smart_link=self, queryset=self.get_linked_document_for(document)
+            smart_link=self, queryset=self.get_linked_document_for(
+                document=document
+            )
         )
 
 
 class ResolvedSmartLink(SmartLink):
     class Meta:
         proxy = True
+
+    def get_label_for(self, document):
+        return self.get_dynamic_label(document=document) or self.label
 
 
 @python_2_unicode_compatible
