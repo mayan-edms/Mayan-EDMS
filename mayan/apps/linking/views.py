@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
@@ -58,7 +59,14 @@ class ResolvedSmartLinkView(DocumentListView):
         except Exception as exception:
             queryset = Document.objects.none()
 
-            if self.request.user.is_staff or self.request.user.is_superuser:
+            try:
+                AccessControlList.objects.check_access(
+                    permissions=permission_smart_link_edit, user=request.user,
+                    obj=self.smart_link
+                )
+            except PermissionDenied:
+                pass
+            else:
                 messages.error(
                     self.request, _('Smart link query error: %s' % exception)
                 )

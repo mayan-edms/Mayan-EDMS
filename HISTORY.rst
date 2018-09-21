@@ -11,6 +11,7 @@
 * Add support for natural keys to the DocumentPageImageCache model.
 * Add database conversion test to the common app.
 * Fix label display for resolved smart links when not using a dynamic label.
+* Only show smart link resolution errors to the user with the smart link edit permission.
 
 3.1.1 (2018-09-18)
 ==================
