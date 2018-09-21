@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 __title__ = 'Mayan EDMS'
 __version__ = '3.1.2'
 __build__ = 0x030101
-__build_string__ = 'v3.1.2_Fri Sep 21 02:42:20 2018 -0400'
+__build_string__ = 'v3.1.2-2-g8c229d4b3_Fri Sep 21 03:01:57 2018 -0400'
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'
 __description__ = 'Free Open Source Electronic Document Management System'
