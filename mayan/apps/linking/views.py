@@ -61,7 +61,7 @@ class ResolvedSmartLinkView(DocumentListView):
 
             try:
                 AccessControlList.objects.check_access(
-                    permissions=permission_smart_link_edit, user=request.user,
+                    permissions=permission_smart_link_edit, user=self.request.user,
                     obj=self.smart_link
                 )
             except PermissionDenied:
