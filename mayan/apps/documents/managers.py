@@ -34,6 +34,21 @@ class DocumentManager(models.Manager):
             document.invalidate_cache()
 
 
+class DocumentPageCachedImage(models.Manager):
+    def get_by_natural_key(self, filename, document_page_natural_key):
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
+        )
+        try:
+            document_page = DocumentPage.objects.get_by_natural_key(
+                *document_page_natural_key
+            )
+        except DocumentPage.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document_page__pk=document_page.pk, filename=filename)
+
+
 class DocumentPageManager(models.Manager):
     def get_by_natural_key(self, page_number, document_version_natural_key):
         DocumentVersion = apps.get_model(

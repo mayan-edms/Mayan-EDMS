@@ -18,13 +18,18 @@ from .literals import (
     TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_FILENAME,
     TEST_SMALL_DOCUMENT_MIMETYPE, TEST_SMALL_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_SIZE
+    TEST_SMALL_DOCUMENT_SIZE, TEST_DOCUMENT_FILENAME
 )
 from .mixins import DocumentTestMixin
 
 
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentTestCase(DocumentTestMixin, BaseTestCase):
+    def test_natural_keys(self):
+        self.document.pages.first().generate_image()
+
+        self._test_database_conversion('documents')
+
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE_LABEL)
 

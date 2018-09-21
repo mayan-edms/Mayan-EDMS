@@ -8,6 +8,7 @@
 * Add test mixin to test the db conversion (dumping and loading) of a specific app.
 * Add an user test mixin to group user testing.
 * Add test the user managament app for database conversion.
+* Add support for natural keys to the DocumentPageImageCache model.
 
 3.1.1 (2018-09-18)
 ==================

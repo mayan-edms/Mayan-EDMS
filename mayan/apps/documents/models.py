@@ -36,9 +36,10 @@ from .events import (
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentPageManager, DocumentVersionManager,
-    DocumentTypeManager, DuplicatedDocumentManager, FavoriteDocumentManager,
-    PassthroughManager, RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentPageCachedImage, DocumentPageManager,
+    DocumentVersionManager, DocumentTypeManager, DuplicatedDocumentManager,
+    FavoriteDocumentManager, PassthroughManager, RecentDocumentManager,
+    TrashCanManager
 )
 from .permissions import permission_document_view
 from .settings import (
@@ -1005,6 +1006,8 @@ class DocumentPageCachedImage(models.Model):
         db_index=True, default=0, verbose_name=_('File size')
     )
 
+    objects = DocumentPageCachedImage()
+
     class Meta:
         verbose_name = _('Document page cached image')
         verbose_name_plural = _('Document page cached images')
@@ -1012,6 +1015,10 @@ class DocumentPageCachedImage(models.Model):
     def delete(self, *args, **kwargs):
         storage_documentimagecache.delete(self.filename)
         return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
+
+    def natural_key(self):
+        return (self.filename, self.document_page.natural_key())
+    natural_key.dependencies = ['documents.DocumentPage']
 
     def save(self, *args, **kwargs):
         self.file_size = storage_documentimagecache.size(self.filename)
