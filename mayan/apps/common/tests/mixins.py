@@ -6,6 +6,7 @@ import os
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.core import management
 
 if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
     import psutil
@@ -43,6 +44,13 @@ class ContentTypeCheckMixin(object):
                 return response
 
         self.client = CustomClient()
+
+
+class DatabaseConversionMixin(object):
+    def _test_database_conversion(self, *app_labels):
+        management.call_command(
+            'convertdb', *app_labels
+        )
 
 
 class OpenFileCheckMixin(object):

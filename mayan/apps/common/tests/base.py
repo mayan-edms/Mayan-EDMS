@@ -19,11 +19,12 @@ from user_management.tests import (
 
 from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 from .mixins import (
-    ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, UserMixin
+    ContentTypeCheckMixin, DatabaseConversionMixin, OpenFileCheckMixin,
+    TempfileCheckMixin, UserMixin
 )
 
 
-class BaseTestCase(UserMixin, ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, TestCase):
+class BaseTestCase(DatabaseConversionMixin, UserMixin, ContentTypeCheckMixin, OpenFileCheckMixin, TempfileCheckMixin, TestCase):
     """
     This is the most basic test case class any test in the project should use.
     """
