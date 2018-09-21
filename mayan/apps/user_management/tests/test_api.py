@@ -19,21 +19,15 @@ from .literals import (
     TEST_USER_2_PASSWORD, TEST_USER_2_USERNAME, TEST_USER_2_USERNAME_EDITED,
     TEST_USER_2_PASSWORD_EDITED
 )
+from .mixins import UserTestMixin
 
 
-class UserManagementUserAPITestCase(BaseAPITestCase):
+class UserManagementUserAPITestCase(UserTestMixin, BaseAPITestCase):
     def setUp(self):
         super(UserManagementUserAPITestCase, self).setUp()
         self.login_user()
 
     # User create
-
-    def _create_user(self):
-        return get_user_model().objects.create_user(
-            username=TEST_USER_2_USERNAME, email=TEST_USER_2_EMAIL,
-            password=TEST_USER_2_PASSWORD
-        )
-
     def _request_user_create(self):
         return self.post(
             viewname='rest_api:user-list', data={

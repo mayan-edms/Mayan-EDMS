@@ -20,11 +20,12 @@ from ..permissions import (
 from .literals import (
     TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME, TEST_USER_2_USERNAME
 )
+from .mixins import UserTestMixin
 
 TEST_USER_TO_DELETE_USERNAME = 'user_to_delete'
 
 
-class UserManagementViewTestCase(GenericViewTestCase):
+class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
     def setUp(self):
         super(UserManagementViewTestCase, self).setUp()
         self.login_user()
@@ -55,11 +56,6 @@ class UserManagementViewTestCase(GenericViewTestCase):
             data={
                 'new_password1': password, 'new_password2': password
             }
-        )
-
-    def _create_test_user_2(self):
-        self.user_2 = get_user_model().objects.create(
-            username=TEST_USER_2_USERNAME
         )
 
     def test_user_set_password_view_no_access(self):
