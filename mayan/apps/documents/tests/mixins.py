@@ -25,18 +25,22 @@ class DocumentTestMixin(object):
         )
 
     def upload_document(self):
+        self._calculate_test_document_path()
+
         with open(self.test_document_path, 'rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object, label=self.test_document_filename
             )
         return document
 
-    def setUp(self):
-        super(DocumentTestMixin, self).setUp()
+    def _calculate_test_document_path(self):
         self.test_document_path = os.path.join(
             settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
             'sample_documents', self.test_document_filename
         )
+
+    def setUp(self):
+        super(DocumentTestMixin, self).setUp()
 
         if self.auto_create_document_type:
             self._create_document_type()
