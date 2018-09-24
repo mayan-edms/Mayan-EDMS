@@ -71,7 +71,7 @@ Create the supervisor file at ``/etc/supervisor/conf.d/mayan.conf``::
 
     [supervisord]
     environment=
-        MAYAN_ALLOWED_HOSTS="*",  # Allow access to other network hosts other than localhost
+        MAYAN_ALLOWED_HOSTS='["*"]',  # Allow access to other network hosts other than localhost
         MAYAN_CELERY_RESULT_BACKEND="redis://127.0.0.1:6379/0",
         MAYAN_BROKER_URL="redis://127.0.0.1:6379/0",
         PYTHONPATH=/opt/mayan-edms/lib/python2.7/site-packages:/opt/mayan-edms/data,
