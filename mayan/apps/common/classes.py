@@ -393,7 +393,7 @@ class Template(object):
             context=context,
         ).render()
 
-        self.html = result.content
+        self.html = result.rendered_content
         self.hex_hash = hashlib.sha256(result.content).hexdigest()
         return self
 

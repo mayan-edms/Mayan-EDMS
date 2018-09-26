@@ -1,7 +1,14 @@
+3.1.3 (2018-09-26)
+==================
+* Make sure template API renders in non US languages.
+
+
 3.1.2 (2018-09-21)
 ==================
-* Database access in data migrations defaults to the 'default' database. Force it to the user selected database instead.
-* Don't use a hardcoded database alias for the destination of the database conversion.
+* Database access in data migrations defaults to the 'default' database.
+  Force it to the user selected database instead.
+* Don't use a hardcoded database alias for the destination of the database
+  conversion.
 * Improve natural key support in the UserOptions model.
 * Update from Django 1.11.11 to 1.11.15.
 * Add support to the convertdb command to operate on specified apps too.
@@ -11,7 +18,8 @@
 * Add support for natural keys to the DocumentPageImageCache model.
 * Add database conversion test to the common app.
 * Fix label display for resolved smart links when not using a dynamic label.
-* Only show smart link resolution errors to the user with the smart link edit permission.
+* Only show smart link resolution errors to the user with the smart link edit
+  permission.
 * Intercept document list view exception and display them as an error message.
 
 3.1.1 (2018-09-18)
