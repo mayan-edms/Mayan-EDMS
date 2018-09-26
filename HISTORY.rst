@@ -1,8 +1,9 @@
 3.1.3 (2018-09-26)
 ==================
 * Make sure template API renders in non US languages.
-* Fix Fix user groups view.
-
+* Fix user groups view.
+* Add no results help text to the document type -> metadata type
+  association view.
 
 3.1.2 (2018-09-21)
 ==================

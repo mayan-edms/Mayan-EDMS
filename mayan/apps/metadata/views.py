@@ -669,30 +669,27 @@ class SetupDocumentTypeMetadataTypes(FormView):
             SetupDocumentTypeMetadataTypes, self
         ).form_valid(form=form)
 
-    def get_form_extra_kwargs(self):
-        return {
-            '_user': self.request.user,
-        }
-
-    def get_object(self):
-        obj = get_object_or_404(self.model, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            permissions=(permission_metadata_type_edit,),
-            user=self.request.user, obj=obj
-        )
-        return obj
-
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
-            'form_empty_label': _(
-                'No metadata types available. Add at least one.'
+            'no_results_icon': icon_metadata,
+            'no_results_main_link': link_setup_metadata_type_create.resolve(
+                context=RequestContext(request=self.request)
+             ),
+            'no_results_text': _(
+                'Create metadata types to be able to associates them '
+                'to this document type.'
             ),
+            'no_results_title': _('There are no metadata types available'),
             'object': self.get_object(),
             'title': _(
                 'Metadata types for document type: %s'
             ) % self.get_object()
+        }
+
+    def get_form_extra_kwargs(self):
+        return {
+            '_user': self.request.user,
         }
 
     def get_initial(self):
@@ -706,6 +703,15 @@ class SetupDocumentTypeMetadataTypes(FormView):
                 'metadata_type': element,
             })
         return initial
+
+    def get_object(self):
+        obj = get_object_or_404(self.model, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=(permission_metadata_type_edit,),
+            user=self.request.user, obj=obj
+        )
+        return obj
 
     def get_post_action_redirect(self):
         return reverse('documents:document_type_list')
