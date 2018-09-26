@@ -1,6 +1,7 @@
 3.1.3 (2018-09-26)
 ==================
 * Make sure template API renders in non US languages.
+* Fix Fix user groups view.
 
 
 3.1.2 (2018-09-21)

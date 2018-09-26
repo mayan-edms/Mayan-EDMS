@@ -50,6 +50,25 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
         self.assertEqual(get_user_model().objects.count(), 3)
         self.assertTrue(TEST_USER_2_USERNAME in get_user_model().objects.values_list('username', flat=True))
 
+    def _request_user_groups_view(self):
+        return self.post(
+            viewname='user_management:user_groups', args=(self.user_2.pk,)
+        )
+
+    def test_user_groups_view_no_permission(self):
+        self._create_test_user_2()
+        response = self._request_user_groups_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_user_groups_view_with_access(self):
+        self._create_test_user_2()
+        self.grant_access(permission=permission_user_edit, obj=self.user_2)
+
+        response = self._request_user_groups_view()
+        self.assertContains(
+            response=response, text=self.user_2.username, status_code=200
+        )
+
     def _request_set_password(self, password):
         return self.post(
             viewname='user_management:user_set_password', args=(self.user_2.pk,),

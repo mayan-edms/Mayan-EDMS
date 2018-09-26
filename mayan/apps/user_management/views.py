@@ -235,6 +235,7 @@ class UserGroupsView(AssignRemoveView):
             'title': _('Groups of user: %s') % self.get_object()
         }
 
+    def get_object(self):
         return get_object_or_404(
             get_user_model().objects.filter(
                 is_superuser=False, is_staff=False
