@@ -922,10 +922,10 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_view
     success_message = _(
-        '%(count)d document removed to favorites.'
+        '%(count)d document removed from favorites.'
     )
     success_message_plural = _(
-        '%(count)d documents removed to favorites.'
+        '%(count)d documents removed from favorites.'
     )
 
     def get_extra_context(self):
@@ -935,8 +935,8 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
             'submit_label': _('Remove'),
             'submit_icon_class': icon_document_list_favorites,
             'title': ungettext(
-                singular='Remove the selected document to favorites',
-                plural='Remove the selected documents to favorites',
+                singular='Remove the selected document from favorites',
+                plural='Remove the selected documents from favorites',
                 number=queryset.count()
             )
         }

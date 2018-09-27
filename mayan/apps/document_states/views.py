@@ -167,7 +167,7 @@ class SetupWorkflowListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Workflows store a series for states and keep track of the '
+                'Workflows store a series of states and keep track of the '
                 'current state of a document. Transitions are used to change the '
                 'current state to a new one.'
             ),
@@ -366,7 +366,7 @@ class SetupWorkflowStateActionListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'Workflow state actions are macros that get executed when '
-                'enters or leaves the state in which they reside.'
+                'documents enters or leaves the state in which they reside.'
             ),
             'no_results_title': _(
                 'There are no actions for this workflow state'
