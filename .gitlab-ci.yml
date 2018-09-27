@@ -80,6 +80,7 @@ job_documentation_build:
     - cd docs
     - make html
   only:
+    - releases/all
     - releases/documentation
 
 job_documentation_push:
@@ -96,6 +97,7 @@ job_documentation_push:
   script:
     - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
   only:
+    - releases/all
     - releases/documentation
 
 job_build_python:
