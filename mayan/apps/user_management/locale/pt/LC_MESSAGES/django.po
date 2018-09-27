@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:24-0400\n"
-"PO-Revision-Date: 2018-04-10 08:25+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"PO-Revision-Date: 2018-09-27 02:32+0000\n"
+"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 permissions.py:7
@@ -83,10 +82,8 @@ msgid "User options"
 msgstr ""
 
 #: models.py:13
-#, fuzzy
-#| msgid "Users"
 msgid "User"
-msgstr "Utilizadores"
+msgstr "Utilizador"
 
 #: models.py:17
 msgid "Forbid this user from changing their password."
@@ -169,10 +166,8 @@ msgid ""
 msgstr ""
 
 #: views.py:70
-#, fuzzy
-#| msgid "Create new groups"
 msgid "There are no user groups"
-msgstr "Criar novos grupos"
+msgstr ""
 
 #: views.py:83
 #, python-format
@@ -222,9 +217,7 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Não é permitida a eliminação de administradores ou membros da equipa, "
-"utilize a interface de administrador para estes casos."
+msgstr "Não é permitida a eliminação de administradores ou membros da equipa, utilize a interface de administrador para estes casos."
 
 #: views.py:197
 #, python-format
@@ -265,10 +258,9 @@ msgid "There are no user accounts"
 msgstr ""
 
 #: views.py:290
-#, fuzzy, python-format
-#| msgid "Edit user: %s"
+#, python-format
 msgid "Edit options for user: %s"
-msgstr "Editar utilizador: %s"
+msgstr ""
 
 #: views.py:312
 #, python-format
@@ -299,9 +291,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Não é permitido redefinir a senha de administradores ou de membros da "
-"equipa, utilize a interface de administrador para estes casos."
+msgstr "Não é permitido redefinir a senha de administradores ou de membros da equipa, utilize a interface de administrador para estes casos."
 
 #: views.py:364
 #, python-format

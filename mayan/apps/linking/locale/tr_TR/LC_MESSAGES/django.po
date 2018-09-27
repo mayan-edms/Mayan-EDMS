@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-12 07:47+0000\n"
+"PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
@@ -37,10 +36,8 @@ msgid "Enabled"
 msgstr "Açık"
 
 #: forms.py:36
-#, fuzzy
-#| msgid "Foreign document attribute"
 msgid "Foreign document field"
-msgstr "Yabancı belge özniteliği"
+msgstr ""
 
 #: links.py:19
 msgid "Create condition"
@@ -146,8 +143,8 @@ msgstr "Düzenli ifadede (harf büyüklüğüne duyarsız)"
 #: models.py:24 models.py:128
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:39 models.py:114
@@ -219,9 +216,7 @@ msgstr "Akıllı bağlantıları güncelle"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Bu akıllı bağlantının ekleneceği belge türü birincil anahtarların virgülle "
-"ayrılmış listesi."
+msgstr "Bu akıllı bağlantının ekleneceği belge türü birincil anahtarların virgülle ayrılmış listesi."
 
 #: serializers.py:139
 #, python-format
@@ -240,10 +235,8 @@ msgstr "Akıllı dokümanlar: %s"
 
 #: views.py:82
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"\"%(document)s\" ile ilişkili \"%(smart_link)s\" akıllı bağlantıdaki belgeler"
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "\"%(document)s\" ile ilişkili \"%(smart_link)s\" akıllı bağlantıdaki belgeler"
 
 #: views.py:101
 msgid "Available document types"

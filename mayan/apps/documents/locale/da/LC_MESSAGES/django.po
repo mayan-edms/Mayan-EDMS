@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2018
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:115 apps.py:268 events.py:7 menus.py:10 models.py:238
@@ -43,10 +42,8 @@ msgid "Versions encoding"
 msgstr ""
 
 #: apps.py:163
-#, fuzzy
-#| msgid "File mimetype"
 msgid "Versions mime type"
-msgstr "File MIME-type"
+msgstr ""
 
 #: apps.py:166
 msgid "Versions timestamp"
@@ -202,8 +199,8 @@ msgstr "Komprimér"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -215,9 +212,7 @@ msgstr "Pakket filnavn"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Filnavnet for den pakkede fil, der vil indeholde dokumenterne til download. "
-"Dette hvis den tidligere mulighed er valg."
+msgstr "Filnavnet for den pakkede fil, der vil indeholde dokumenterne til download. Dette hvis den tidligere mulighed er valg."
 
 #: forms.py:258
 msgid ""
@@ -337,9 +332,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Fjern grafiske repræsentationer brugt til at fremskynde visning af de "
-"dokumenter og interaktivt transformerede resultater."
+msgstr "Fjern grafiske repræsentationer brugt til at fremskynde visning af de dokumenter og interaktivt transformerede resultater."
 
 #: links.py:237
 msgid "Clear document image cache"
@@ -426,10 +419,8 @@ msgid "All pages"
 msgstr ""
 
 #: models.py:74
-#, fuzzy
-#| msgid "Create document types"
 msgid "The name of the document type."
-msgstr "Opret dokumenttyper"
+msgstr ""
 
 #: models.py:75 models.py:193 models.py:759 search.py:21 search.py:42
 msgid "Label"
@@ -437,7 +428,8 @@ msgstr ""
 
 #: models.py:79
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:81
@@ -468,15 +460,13 @@ msgstr ""
 
 #: models.py:183
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for "
-"each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for"
+" each document."
 msgstr ""
 
 #: models.py:193
-#, fuzzy
-#| msgid "Create documents"
 msgid "The name of the document."
-msgstr "Opret dokumenter"
+msgstr ""
 
 #: models.py:197
 msgid "An optional short text describing a document."
@@ -497,10 +487,8 @@ msgid "Added"
 msgstr ""
 
 #: models.py:208
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "The dominant language in the document."
-msgstr "Der er ikke flere sider i dette dokument"
+msgstr ""
 
 #: models.py:213
 msgid "Whether or not this document is in the trash."
@@ -557,8 +545,8 @@ msgstr "Fil"
 #: models.py:443
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models.py:447 search.py:19 search.py:39
@@ -601,10 +589,8 @@ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Side %(page_num)d ud af %(total_pages)d i %(document)s "
 
 #: models.py:1002
-#, fuzzy
-#| msgid "Date added"
 msgid "Date time"
-msgstr "Dato tilføjet"
+msgstr ""
 
 #: models.py:1004
 msgid "Filename"
@@ -791,8 +777,8 @@ msgstr ""
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:67
@@ -839,17 +825,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maksimal mængde i procent (%) en bruger kan zoome i et dokuments side "
-"interaktivt."
+msgstr "Maksimal mængde i procent (%) en bruger kan zoome i et dokuments side interaktivt."
 
 #: settings.py:144
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimum procent (%) en brugeren er tilladt at zoome ud af en dokumentside "
-"interaktivt."
+msgstr "Minimum procent (%) en brugeren er tilladt at zoome ud af en dokumentside interaktivt."
 
 #: settings.py:151
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -969,8 +951,8 @@ msgstr ""
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -999,8 +981,7 @@ msgstr ""
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:196
@@ -1057,10 +1038,9 @@ msgid "Preview of document version: %s"
 msgstr ""
 
 #: views/document_views.py:71
-#, fuzzy, python-format
-#| msgid "Error reverting document version; %s"
+#, python-format
 msgid "Error retrieving document list: %(exception)s."
-msgstr "Fejl ved genskabelse af dokumentversion; %s"
+msgstr ""
 
 #: views/document_views.py:91
 msgid ""
@@ -1248,9 +1228,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Fejl ved sletning af sidens transformationer for dokument: %(document)s ; "
-"%(error)s ."
+msgstr "Fejl ved sletning af sidens transformationer for dokument: %(document)s ; %(error)s ."
 
 #: views/document_views.py:730
 msgid "Transformations cloned successfully."
@@ -1273,8 +1251,8 @@ msgstr ""
 #: views/document_views.py:856
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:863
@@ -1339,8 +1317,8 @@ msgstr[1] ""
 
 #: views/document_views.py:963
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:967

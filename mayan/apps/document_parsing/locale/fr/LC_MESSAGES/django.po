@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:69 events.py:8 permissions.py:7 settings.py:7
@@ -98,8 +98,8 @@ msgstr "Type de document"
 #: models.py:42
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
-"Ajouter automatiquement les documents nouvellement créés à la file d'attente "
-"d'analyse."
+"Ajouter automatiquement les documents nouvellement créés à la file d'attente"
+" d'analyse."
 
 #: models.py:53
 msgid "Document type settings"
@@ -158,15 +158,16 @@ msgstr "Analyse de version de document"
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
-"Les nouveaux types de documents, par défaut, réaliseront automatiquement une "
-"analyse."
+"Les nouveaux types de documents, par défaut, réaliseront automatiquement une"
+" analyse."
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
-"Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à "
-"partir des fichiers PDF."
+"Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à"
+" partir des fichiers PDF."
 
 #: views.py:41
 #, python-format
@@ -212,7 +213,8 @@ msgstr "Ajouter tous les documents d'un type à la file d'attente d'analyse"
 #: views.py:150
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing "
+"queue."
 msgstr ""
 "%(count)d documents du type \"%(document_type)s\" ajoutés à la file "
 "d'attente d'analyse"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2017-09-23 21:29+0000\n"
-"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -72,9 +71,7 @@ msgstr "Begriff"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
-"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
-"wird"
+msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird"
 
 #: links.py:15
 msgid "Delete"
@@ -146,9 +143,7 @@ msgstr "Signaturfehler"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
-"verfügbar."
+msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -279,25 +274,21 @@ msgstr "Neuen Schlüssel hochladen"
 
 #: views.py:168
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 
 #: views.py:174
-#, fuzzy
-#| msgid "Public keys"
 msgid "There no public keys"
-msgstr "Öffentliche Schlüssel"
+msgstr ""
 
 #: views.py:192
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user.The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user.The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:197
-#, fuzzy
-#| msgid "Private keys"
 msgid "There no private keys"
-msgstr "Private Schlüssel"
+msgstr ""

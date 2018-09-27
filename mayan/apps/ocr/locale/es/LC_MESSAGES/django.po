@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2017
+# Roberto Rosario, 2015-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:24-0400\n"
-"PO-Revision-Date: 2018-09-12 07:48+0000\n"
+"PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:71 apps.py:146 apps.py:150 events.py:7 links.py:19 links.py:24
@@ -159,13 +158,13 @@ msgstr "Resultados del OCR para documento: %s"
 #: views.py:66
 #, python-format
 msgid "OCR result for document page: %s"
-msgstr ""
+msgstr "Resultado de OCR para la página del documento: %s"
 
 #: views.py:81
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Presentar el documento seleccionado en la cola de OCR?"
+msgstr[1] "¿Envía los documentos seleccionados a la cola de OCR?"
 
 #: views.py:95
 msgid "Submit all documents of a type for OCR"
@@ -173,8 +172,7 @@ msgstr "Enviar todos los documentos de un tipo para OCR"
 
 #: views.py:107
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr "%(count)d documentos de tipo \"%(document_type)s\" enviados para OCR."
 
 #: views.py:133

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:24-0400\n"
-"PO-Revision-Date: 2018-09-12 07:49+0000\n"
+"PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:624
@@ -506,10 +505,8 @@ msgid "Sources periodic"
 msgstr ""
 
 #: queues.py:14
-#, fuzzy
-#| msgid "Sources setup"
 msgid "Sources fast"
-msgstr "Kilde setup"
+msgstr ""
 
 #: queues.py:19
 msgid "Generate staging file image"
@@ -563,8 +560,8 @@ msgstr ""
 
 #: views.py:125 wizards.py:144
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:151 views.py:169 views.py:179

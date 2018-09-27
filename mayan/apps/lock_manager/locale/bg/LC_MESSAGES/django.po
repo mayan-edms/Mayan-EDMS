@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
@@ -10,12 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2018-09-26 22:23-0400\n"
 "PO-Revision-Date: 2018-09-12 07:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:10 settings.py:10

@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,30 +11,17 @@ msgstr ""
 "POT-Creation-Date: 2018-09-26 22:21-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2017\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:23 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "Aktenschrank"
-
-#: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
-msgid "Document added to cabinet"
-msgstr "Dokumenten-Aktenschrank"
-
-#: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
-msgid "Document removed from cabinet"
-msgstr "Aus Aktenschrank entfernen"
 
 #: links.py:28 links.py:39
 msgid "Remove from cabinets"
@@ -134,7 +121,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:180
@@ -218,14 +206,6 @@ msgstr ""
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "Dokumente zu Aktenschrank hinzufügen"
-msgstr[1] "Dokumente zu Aktenschrank hinzufügen"
-
 #: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -259,20 +239,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Entfernen"
 
-#: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "Dokumente aus Aktenschrank entfernen"
-msgstr[1] "Dokumente aus Aktenschrank entfernen"
-
-#: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove document \"%s\" from cabinets"
-msgstr "Dokumente aus Aktenschrank entfernen"
-
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."
@@ -286,15 +252,3 @@ msgstr "Dokument: %(document)s ist nicht im Aktenschrank: %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument: %(document)s entfernt aus Aktenschrank: %(cabinet)s."
-
-#: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
-msgid "Select cabinets"
-msgstr "Aktenschränke löschen"
-
-#: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
-msgid "Cabinets to which the document will be added."
-msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."

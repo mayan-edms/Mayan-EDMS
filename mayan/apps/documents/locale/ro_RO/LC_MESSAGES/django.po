@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Stefaniu Criste <gupi@hangar.ro>, 2016
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:115 apps.py:268 events.py:7 menus.py:10 models.py:238
 #: permissions.py:7 queues.py:18 settings.py:12 statistics.py:231
@@ -44,10 +42,8 @@ msgid "Versions encoding"
 msgstr ""
 
 #: apps.py:163
-#, fuzzy
-#| msgid "File mimetype"
 msgid "Versions mime type"
-msgstr "Tip fişier "
+msgstr ""
 
 #: apps.py:166
 msgid "Versions timestamp"
@@ -74,10 +70,8 @@ msgid "Duplicates"
 msgstr ""
 
 #: dashboard_widgets.py:24
-#, fuzzy
-#| msgid "Document pages"
 msgid "Total pages"
-msgstr "Pagini document"
+msgstr ""
 
 #: dashboard_widgets.py:46
 msgid "Total documents"
@@ -205,8 +199,8 @@ msgstr "Comprimă"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -218,9 +212,7 @@ msgstr "Nume fişier comprimat"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Nume fișier comprimat, care va conține documentele ce urmează să fie "
-"descărcate, în cazul în care această opțiunea a fost selectată anterior."
+msgstr "Nume fișier comprimat, care va conține documentele ce urmează să fie descărcate, în cazul în care această opțiunea a fost selectată anterior."
 
 #: forms.py:258
 msgid ""
@@ -340,9 +332,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Goliți reprezentările grafice folosite pentru a accelera afișarea "
-"documentelor și rezultatele interactive de transformari."
+msgstr "Goliți reprezentările grafice folosite pentru a accelera afișarea documentelor și rezultatele interactive de transformari."
 
 #: links.py:237
 msgid "Clear document image cache"
@@ -429,10 +419,8 @@ msgid "All pages"
 msgstr ""
 
 #: models.py:74
-#, fuzzy
-#| msgid "Create document types"
 msgid "The name of the document type."
-msgstr "Tip nou"
+msgstr ""
 
 #: models.py:75 models.py:193 models.py:759 search.py:21 search.py:42
 msgid "Label"
@@ -440,7 +428,8 @@ msgstr "Etichetă"
 
 #: models.py:79
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr ""
 
 #: models.py:81
@@ -471,15 +460,13 @@ msgstr ""
 
 #: models.py:183
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for "
-"each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for"
+" each document."
 msgstr ""
 
 #: models.py:193
-#, fuzzy
-#| msgid "Create documents"
 msgid "The name of the document."
-msgstr "Document nou"
+msgstr ""
 
 #: models.py:197
 msgid "An optional short text describing a document."
@@ -500,10 +487,8 @@ msgid "Added"
 msgstr ""
 
 #: models.py:208
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "The dominant language in the document."
-msgstr "Nu mai sunt pagini în acest document."
+msgstr ""
 
 #: models.py:213
 msgid "Whether or not this document is in the trash."
@@ -560,8 +545,8 @@ msgstr "Fișier"
 #: models.py:443
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models.py:447 search.py:19 search.py:39
@@ -604,10 +589,8 @@ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Pag %(page_num)d din %(total_pages)d din %(document)s"
 
 #: models.py:1002
-#, fuzzy
-#| msgid "Date added"
 msgid "Date time"
-msgstr "Dată adaugată"
+msgstr "Data și ora"
 
 #: models.py:1004
 msgid "Filename"
@@ -794,8 +777,8 @@ msgstr ""
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:67
@@ -824,9 +807,7 @@ msgstr ""
 
 #: settings.py:108
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Ce rotaţie pentru pagină (în grade) este folosită în interacțiunea cu "
-"utilizatorul."
+msgstr "Ce rotaţie pentru pagină (în grade) este folosită în interacțiunea cu utilizatorul."
 
 #: settings.py:114
 msgid "Path to the Storage subclass to use when storing document files."
@@ -844,23 +825,17 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Suma maximă în procente (%), permisă utilizatorilor pentru mărirea "
-"interactiv a unei pagini ."
+msgstr "Suma maximă în procente (%), permisă utilizatorilor pentru mărirea interactiv a unei pagini ."
 
 #: settings.py:144
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Suma minimă în procente (%), permisă utilizatorului pentru micșorarea "
-"interactivă a unei pagini ."
+msgstr "Suma minimă în procente (%), permisă utilizatorului pentru micșorarea interactivă a unei pagini ."
 
 #: settings.py:151
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Suma în procente folosită pentru a mării sau micşora un document interactiv "
-"cu utilizatorul."
+msgstr "Suma în procente folosită pentru a mării sau micşora un document interactiv cu utilizatorul."
 
 #: statistics.py:16
 msgid "January"
@@ -976,8 +951,8 @@ msgstr ""
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1006,8 +981,7 @@ msgstr ""
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
 #: views/document_type_views.py:196
@@ -1064,10 +1038,9 @@ msgid "Preview of document version: %s"
 msgstr ""
 
 #: views/document_views.py:71
-#, fuzzy, python-format
-#| msgid "Error reverting document version; %s"
+#, python-format
 msgid "Error retrieving document list: %(exception)s."
-msgstr "Eroare la revenirea la versiunea documentului; %s"
+msgstr ""
 
 #: views/document_views.py:91
 msgid ""
@@ -1281,8 +1254,8 @@ msgstr "Tipărește: %s"
 #: views/document_views.py:856
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:863
@@ -1349,8 +1322,8 @@ msgstr[2] ""
 
 #: views/document_views.py:963
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:967

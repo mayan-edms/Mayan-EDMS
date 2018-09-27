@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-12 07:48+0000\n"
+"PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:67 apps.py:150 apps.py:155 events.py:7 links.py:42 permissions.py:7
@@ -157,7 +156,7 @@ msgstr ""
 
 #: links.py:60
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: links.py:64 views.py:301
 msgid "Edit"
@@ -182,8 +181,8 @@ msgstr ""
 #: models.py:65
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
-"ref/templates/builtins/)."
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 msgstr ""
 
 #: models.py:70 search.py:25
@@ -202,7 +201,8 @@ msgstr ""
 
 #: models.py:81
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 
 #: models.py:83 search.py:31
@@ -339,7 +339,8 @@ msgstr ""
 #: views.py:190
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr "元数据类型: %(metadata_type)s成功加入到文档%(document)s"
 
 #: views.py:200
@@ -390,8 +391,9 @@ msgstr "文档 %s 的元数据编辑成功。"
 
 #: views.py:414
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:419
@@ -483,10 +485,8 @@ msgid ""
 msgstr ""
 
 #: views.py:683
-#, fuzzy
-#| msgid "Create new metadata types"
 msgid "There are no metadata types available"
-msgstr "新建元数据类型"
+msgstr ""
 
 #: views.py:686
 #, python-format

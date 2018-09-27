@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Ford Guo <agile.guo@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:21-0400\n"
-"PO-Revision-Date: 2018-09-08 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2018-09-19 03:20+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:15 links.py:37
@@ -24,7 +24,7 @@ msgstr "访问控制列表"
 
 #: apps.py:23 models.py:47
 msgid "Role"
-msgstr ""
+msgstr "角色"
 
 #: apps.py:26 links.py:46 models.py:43 workflow_actions.py:48
 msgid "Permissions"
@@ -32,7 +32,7 @@ msgstr "权限"
 
 #: links.py:32
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: links.py:41
 msgid "New ACL"
@@ -157,7 +157,8 @@ msgid "Object ID"
 msgstr ""
 
 #: workflow_actions.py:37
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr ""
 
 #: workflow_actions.py:42

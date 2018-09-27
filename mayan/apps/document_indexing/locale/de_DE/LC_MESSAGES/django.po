@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -15,12 +15,11 @@ msgstr ""
 "POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -117,10 +116,9 @@ msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:44
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:57 models.py:168
 msgid "Index"
@@ -146,18 +144,13 @@ msgstr "Indexierungsausdruck"
 
 #: models.py:181
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:189
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden "
-"sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-"
-"Knotenpunkte fungieren soll)."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-Knotenpunkte fungieren soll)."
 
 #: models.py:192
 msgid "Link documents"
@@ -180,9 +173,7 @@ msgstr "Wurzel"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: "
-"%(expression)s; %(exception)s"
+msgstr "Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: %(expression)s; %(exception)s"
 
 #: models.py:294
 msgid "Index template node"
@@ -265,8 +256,8 @@ msgstr "Index %s bearbeiten"
 #: views.py:82
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:87

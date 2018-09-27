@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-26 22:24-0400\n"
-"PO-Revision-Date: 2018-08-31 10:22+0000\n"
-"Last-Translator: Martin Horseling <martin.horseling@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2018-09-27 02:32+0000\n"
+"Last-Translator: Justin Albstbstmeijer <justin@albstmeijer.nl>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 permissions.py:7
@@ -82,10 +81,8 @@ msgid "User options"
 msgstr ""
 
 #: models.py:13
-#, fuzzy
-#| msgid "Users"
 msgid "User"
-msgstr "Gebruikers"
+msgstr "Gebruiker"
 
 #: models.py:17
 msgid "Forbid this user from changing their password."
@@ -96,10 +93,8 @@ msgid "User settings"
 msgstr ""
 
 #: models.py:24
-#, fuzzy
-#| msgid "Users in group"
 msgid "Users settings"
-msgstr "Gebruikers in groep"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -170,10 +165,8 @@ msgid ""
 msgstr ""
 
 #: views.py:70
-#, fuzzy
-#| msgid "Create new groups"
 msgid "There are no user groups"
-msgstr "Maak nieuwe groepen aan"
+msgstr ""
 
 #: views.py:83
 #, python-format
@@ -223,9 +216,7 @@ msgstr "Verwijder gebruiker: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de "
-"admin gebruiker voor deze zaken."
+msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:197
 #, python-format
@@ -266,10 +257,9 @@ msgid "There are no user accounts"
 msgstr ""
 
 #: views.py:290
-#, fuzzy, python-format
-#| msgid "Edit user: %s"
+#, python-format
 msgid "Edit options for user: %s"
-msgstr "Bewerk gebruiker: %s"
+msgstr ""
 
 #: views.py:312
 #, python-format
@@ -300,9 +290,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
-"gebruik de admin gebruiker voor deze zaken."
+msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:364
 #, python-format
@@ -312,6 +300,4 @@ msgstr ""
 #: views.py:370
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
-"%(error)s"
+msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"
