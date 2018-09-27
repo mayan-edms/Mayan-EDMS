@@ -675,9 +675,9 @@ class SetupDocumentTypeMetadataTypes(FormView):
             'no_results_icon': icon_metadata,
             'no_results_main_link': link_setup_metadata_type_create.resolve(
                 context=RequestContext(request=self.request)
-             ),
+            ),
             'no_results_text': _(
-                'Create metadata types to be able to associates them '
+                'Create metadata types to be able to associate them '
                 'to this document type.'
             ),
             'no_results_title': _('There are no metadata types available'),
