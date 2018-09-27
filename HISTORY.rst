@@ -4,6 +4,7 @@
 * Fix user groups view.
 * Add no results help text to the document type -> metadata type
   association view.
+* Expose the Django INSTALLED_APPS setting.
 
 3.1.2 (2018-09-21)
 ==================

@@ -236,6 +236,16 @@ setting_home_view = namespace.add_setting(
         'Name of the view attached to the branch anchor in the main menu.'
     ),
 )
+setting_django_installed_apps = namespace.add_setting(
+    global_name='INSTALLED_APPS',
+    default=settings.INSTALLED_APPS,
+    help_text=_(
+        'A list of strings designating all applications that are enabled '
+        'in this Django installation. Each string should be a dotted '
+        'Python path to: an application configuration class (preferred), '
+        'or a package containing an application.'
+    ),
+)
 setting_django_login_url = namespace.add_setting(
     global_name='LOGIN_URL',
     default=settings.LOGIN_URL,
