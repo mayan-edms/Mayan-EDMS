@@ -8,6 +8,9 @@
 * Add support for changing the concurrency of the Celery workers in the 
   Docker image. Add environment variables MAYAN_WORKER_FAST_CONCURRENCY,
   MAYAN_WORKER_MEDIUM_CONCURRENCY and MAYAN_WORKER_SLOW_CONCURRENCY.
+* Add latest translation updates.
+* Fixes a few text typos.
+* Documentation updates in the deployment and docker chapters.
 
 3.1.2 (2018-09-21)
 ==================
