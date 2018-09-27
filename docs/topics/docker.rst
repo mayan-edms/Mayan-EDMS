@@ -178,7 +178,6 @@ be disabled.
 
 Optional. Allows loading an alternate settings file.
 
-
 ``MAYAN_DATABASE_CONN_MAX_AGE``
 
 Amount in seconds to keep a database connection alive. Allow reuse of database
@@ -186,19 +185,6 @@ connections. For more information read the pertinent Django documentation
 page: `Settings, CONN_MAX_AGE`_
 
 .. _Settings, CONN_MAX_AGE: https://docs.djangoproject.com/en/1.10/ref/settings/#conn-max-age
-
-
-``MAYAN_SETTINGS_FILE``
-
-Optional. Previously only the ``local.py`` file was the only settings file
-available to allow users to make configuration changes to their installations.
-Now with this environment variable, users are free to create multiple settings
-files and tell the Mayan EDMS container which setting file to import. The
-only requirement is that the setting file starts with a global import of
-``mayan.settings.production``. In the form::
-
-    from mayan.settings.production import *
-
 
 ``MAYAN_GUNICORN_WORKERS``
 
