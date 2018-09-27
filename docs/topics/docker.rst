@@ -207,6 +207,30 @@ that will be executed. If not specified the default is 2. For heavier loads,
 user a higher number. A formula recommended for this setting is the number
 of CPU cores + 1.
 
+``MAYAN_WORKER_FAST_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the fast (low latency, short tasks) category.
+Default is 1. Use 0 to disable hardcoded concurrency and allow the Celery
+worker to launch its default number of child processes (equal to the number
+of CPUs detected).
+
+``MAYAN_WORKER_MEDIUM_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the medium (medium latency, long running tasks)
+category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+Celery worker to launch its default number of child processes (equal to the
+number of CPUs detected).
+
+``MAYAN_WORKER_SLOW_CONCURRENCY``
+
+Optional. Changes the concurrency (number of child processes) of the Celery
+worker consuming the queues in the slow (high latency, very long running tasks)
+category. Default is 1. Use 0 to disable hardcoded concurrency and allow the
+Celery worker to launch its default number of child processes (equal to the
+number of CPUs detected).
+
 Accessing outside data
 ======================
 
