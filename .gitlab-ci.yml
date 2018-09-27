@@ -2,8 +2,10 @@ stages:
   - test
   - build_python
   - build_docker
+  - build_documentation
   - push_python
   - push_docker
+  - push_documentation
   - deploy
 
 job_docker_build:
@@ -58,6 +60,43 @@ job_docker_nightly:
   only:
     - nightly
     - staging
+
+job_documentation_build:
+  stage: build_documentation
+  image: ubuntu:18.04
+  artifacts:
+    expire_in: 1 hr
+    paths:
+    - docs
+  before_script:
+    - apt-get -qq update
+    - apt-get install -qq locales make python-pip
+    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
+    - locale-gen en_US.UTF-8
+    - update-locale LANG=en_US.UTF-8
+    - export LC_ALL=en_US.UTF-8
+  script:
+    - pip install -r requirements/documentation.txt
+    - cd docs
+    - make html
+  only:
+    - releases/documentation
+
+job_documentation_push:
+  stage: push_documentation
+  image: ubuntu:18.04
+  before_script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client rsync -y )'
+    - eval $(ssh-agent -s)
+    - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  script:
+    - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
+  only:
+    - releases/documentation
 
 job_build_python:
   stage: build_python
