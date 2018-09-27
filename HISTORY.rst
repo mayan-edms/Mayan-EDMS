@@ -1,4 +1,4 @@
-3.1.3 (2018-09-26)
+3.1.3 (2018-09-27)
 ==================
 * Make sure template API renders in non US languages.
 * Fix user groups view.
