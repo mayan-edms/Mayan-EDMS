@@ -5,6 +5,9 @@
 * Add no results help text to the document type -> metadata type
   association view.
 * Expose the Django INSTALLED_APPS setting.
+* Add support for changing the concurrency of the Celery workers in the 
+  Docker image. Add environment variables MAYAN_WORKER_FAST_CONCURRENCY,
+  MAYAN_WORKER_MEDIUM_CONCURRENCY and MAYAN_WORKER_SLOW_CONCURRENCY.
 
 3.1.2 (2018-09-21)
 ==================
