@@ -42,18 +42,15 @@ repository for electronic documents.
     Versioning <topics/versioning>
 
     Docker image <topics/docker>
-    Advanced deployment <topics/deploying>
+    Direct deployments <topics/deploying>
 
     Development <topics/development>
     App creation <topics/app_creation>
-    Pending work <topics/pending_work>
-    Code statistics <topics/code_statistics>
     Translations <topics/translations>
     Licensing <topics/license>
     FAQ <topics/faq>
     Contact <topics/contact>
     MERCs <mercs/index>
-    Pending work <topics/pending_work>
     Individual Contributor Assignment Agreement <topics/caa_individual>
     Entity Contributor Assignment Agreement <topics/caa_entity>
 

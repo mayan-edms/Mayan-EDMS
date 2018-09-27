@@ -36,7 +36,7 @@ Direct installation
 
 For users with knowledge of Python, Django, Ubuntu, and databases.
 
-Advanced deployment chapter: :ref:`deploying`
+Deployments chapter: :ref:`deploying`
 
 
 .. _Docker: https://www.docker.com/
