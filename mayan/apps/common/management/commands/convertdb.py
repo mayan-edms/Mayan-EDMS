@@ -46,7 +46,7 @@ class Command(management.BaseCommand):
         parser.add_argument(
             '--force', action='store_true', dest='force',
             help=_(
-                'Force the conversion of the database even if the receving '
+                'Force the conversion of the database even if the receiving '
                 'database is not empty.'
             ),
         )
