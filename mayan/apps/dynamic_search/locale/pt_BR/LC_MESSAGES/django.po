@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:23-0400\n"
 "PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:16
@@ -37,17 +38,20 @@ msgstr "Corresponder a todos"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Quando marcado, somente os resultados que correspondem a todos os campos serão retornados. Quando os resultados não verificados correspondentes a pelo menos um campo serão retornados."
+msgstr ""
+"Quando marcado, somente os resultados que correspondem a todos os campos "
+"serão retornados. Quando os resultados não verificados correspondentes a "
+"pelo menos um campo serão retornados."
 
 #: forms.py:29
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
-#: links.py:8 settings.py:8 views.py:53 views.py:64
+#: links.py:8 settings.py:8 views.py:58 views.py:69
 msgid "Search"
 msgstr "Pesquisa"
 
-#: links.py:11 views.py:78
+#: links.py:11 views.py:83
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
@@ -60,11 +64,21 @@ msgid "Maximum amount search hits to fetch and display."
 msgstr "Quantidade máxima acessos para a pesquisa buscar e mostrar."
 
 #: views.py:26
+msgid "Try again using different terms. "
+msgstr ""
+
+#: views.py:28
+#, fuzzy
+#| msgid "Search results for: %s"
+msgid "No search results"
+msgstr "Resultados da pesquisa para: %s"
+
+#: views.py:31
 #, python-format
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: views.py:66
+#: views.py:71
 #, python-format
 msgid "Search for: %s"
 msgstr "Pesquisar por: %s"

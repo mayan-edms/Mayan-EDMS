@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -10,21 +10,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "Brak"
 
-#: admin.py:26 links.py:67 models.py:49
+#: admin.py:26 links.py:67 models.py:50
 msgid "Document types"
 msgstr "Typy dokumentów"
 
@@ -32,15 +35,15 @@ msgstr "Typy dokumentów"
 msgid "Document indexing"
 msgstr "Indeksowanie dokumentu"
 
-#: apps.py:83 models.py:33
+#: apps.py:83 models.py:34
 msgid "Label"
 msgstr "Etykieta"
 
-#: apps.py:84 models.py:38
+#: apps.py:84 models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: apps.py:86 apps.py:112 models.py:46 models.py:172
+#: apps.py:86 apps.py:112 models.py:47 models.py:184
 msgid "Enabled"
 msgstr "Włączony"
 
@@ -64,7 +67,7 @@ msgstr "Czy dokument ma odnośniki?"
 msgid "Levels"
 msgstr "Poziomy"
 
-#: apps.py:133 apps.py:152 models.py:293
+#: apps.py:133 apps.py:152 models.py:301
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -72,7 +75,7 @@ msgstr "Dokumenty"
 msgid "Indexes to be queued for rebuilding."
 msgstr "Indeksy w kolejce do przebudowania."
 
-#: forms.py:18 links.py:25 links.py:31 links.py:39 links.py:43 models.py:57
+#: forms.py:18 links.py:25 links.py:31 links.py:39 links.py:43 models.py:58
 #: views.py:88 views.py:249
 msgid "Indexes"
 msgstr "Indeksy"
@@ -109,91 +112,98 @@ msgstr "Przebudowa indeksów"
 msgid "New child node"
 msgstr "Nowy węzeł potomny"
 
-#: models.py:37
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
-msgstr "Wartość ta zostanie użyta przez inne aplikacje w celu odniesienia się do tego indeksu."
+msgstr ""
+"Wartość ta zostanie użyta przez inne aplikacje w celu odniesienia się do "
+"tego indeksu."
 
-#: models.py:43
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany danych dokumentów."
+#: models.py:44
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany "
+"danych dokumentów."
 
-#: models.py:56 models.py:156
+#: models.py:57 models.py:168
 msgid "Index"
 msgstr "Indeks"
 
-#: models.py:128
+#: models.py:140
 msgid "Index instance"
 msgstr "index instance"
 
-#: models.py:129
+#: models.py:141
 msgid "Index instances"
 msgstr "Instancje indeksów"
 
-#: models.py:160
+#: models.py:172
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:164
+#: models.py:176
 msgid "Indexing expression"
 msgstr "Wyrażenie indeksujące"
 
-#: models.py:169
+#: models.py:181
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Causes this node to be visible and updated when document data changes."
 
-#: models.py:177
+#: models.py:189
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
-#: models.py:180
+#: models.py:192
 msgid "Link documents"
 msgstr "Skojarz dokumenty"
 
-#: models.py:184
+#: models.py:196
 msgid "Index node template"
 msgstr "Szablon węzła indeksu"
 
-#: models.py:185
+#: models.py:197
 msgid "Indexes node template"
 msgstr "Szablon węzła indeksów"
 
-#: models.py:189
+#: models.py:201
 msgid "Root"
 msgstr "Korzeń"
 
-#: models.py:250
+#: models.py:257
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; %(exception)s"
+msgstr ""
+"Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; "
+"%(exception)s"
 
-#: models.py:286
+#: models.py:294
 msgid "Index template node"
 msgstr "Węzeł szablonu indeksu"
 
-#: models.py:289
+#: models.py:297
 msgid "Value"
 msgstr "Wartość"
 
-#: models.py:299
+#: models.py:307
 msgid "Index node instance"
 msgstr "Instancja węzła indeksu"
 
-#: models.py:300
+#: models.py:308
 msgid "Indexes node instances"
 msgstr "Instancje węzła indeksów"
 
-#: models.py:404
+#: models.py:406
 msgid "Document index node instance"
 msgstr "Instancja węzła indeksu dokumentu"
 
-#: models.py:405
+#: models.py:407
 msgid "Document indexes node instances"
 msgstr "Instancje węzła indeksów dokumentu"
 
@@ -254,8 +264,8 @@ msgstr "Edytuj indeks: %s"
 #: views.py:82
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:87

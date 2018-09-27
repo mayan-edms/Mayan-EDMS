@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "All the users."
 msgstr ""
 
-#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:273
+#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:274
 msgid "Users"
 msgstr ""
 
@@ -78,19 +78,19 @@ msgstr ""
 msgid "User options"
 msgstr ""
 
-#: models.py:11
+#: models.py:13
 msgid "User"
 msgstr ""
 
-#: models.py:15
+#: models.py:17
 msgid "Forbid this user from changing their password."
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "User settings"
 msgstr ""
 
-#: models.py:20
+#: models.py:24
 msgid "Users settings"
 msgstr ""
 
@@ -244,58 +244,58 @@ msgstr ""
 msgid "Groups of user: %s"
 msgstr ""
 
-#: views.py:269
+#: views.py:270
 msgid ""
 "User accounts can be create from this view. After creating an user account "
 "you will prompted to set a password for it. "
 msgstr ""
 
-#: views.py:272
+#: views.py:273
 msgid "There are no user accounts"
 msgstr ""
 
-#: views.py:289
+#: views.py:290
 #, python-format
 msgid "Edit options for user: %s"
 msgstr ""
 
-#: views.py:311
+#: views.py:312
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:313
+#: views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:320
+#: views.py:321
 msgid "Submit"
 msgstr ""
 
-#: views.py:322
+#: views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:332
+#: views.py:333
 #, python-format
 msgid "Change password for user: %s"
 msgstr ""
 
-#: views.py:353
+#: views.py:354
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr ""
 
-#: views.py:363
+#: views.py:364
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr ""
 
-#: views.py:369
+#: views.py:370
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""

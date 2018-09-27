@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014,2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,34 +9,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:22 permissions.py:7
+#: apps.py:21 permissions.py:7
 msgid "Smart settings"
 msgstr "تنظیمات هوشمند"
 
-#: apps.py:30
+#: apps.py:29
 msgid "Setting count"
 msgstr "شمارش تنظیم"
 
-#: apps.py:34
+#: apps.py:33
 msgid "Name"
 msgstr "نام"
 
-#: apps.py:38
+#: apps.py:37
 msgid "Value"
 msgstr "مقدار"
 
+#: apps.py:40
+msgid "Overrided by environment variable?"
+msgstr ""
+
 #: apps.py:41
-msgid "Environment variable"
+msgid "Yes"
+msgstr ""
+
+#: apps.py:41
+msgid "No"
 msgstr ""
 
 #: forms.py:12

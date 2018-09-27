@@ -1,31 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:13-0400\n"
+"POT-Creation-Date: 2018-09-26 22:23-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:67 apps.py:158 apps.py:163 events.py:7 links.py:40 permissions.py:7
+#: apps.py:67 apps.py:150 apps.py:155 events.py:7 links.py:42 permissions.py:7
 #: queues.py:8 settings.py:10
 msgid "Metadata"
 msgstr ""
 
 #: apps.py:97
-msgid ""
-"Queryset containing a MetadataType instance reference and a value for that "
-"metadata type"
+msgid "Return the value of a specific document metadata"
 msgstr ""
 
 #: apps.py:103
@@ -36,27 +35,19 @@ msgstr ""
 msgid "Metadata type value"
 msgstr ""
 
-#: apps.py:110
-msgid "Value of a metadata"
-msgstr ""
-
-#: apps.py:112
-msgid "Return the value of a specific document metadata"
-msgstr ""
-
-#: apps.py:170 forms.py:20 models.py:186
+#: apps.py:162 forms.py:20 models.py:188
 msgid "Value"
 msgstr ""
 
-#: apps.py:174 forms.py:46 forms.py:182 models.py:269
+#: apps.py:166 forms.py:46 forms.py:182 models.py:271
 msgid "Required"
 msgstr ""
 
-#: apps.py:196 apps.py:204 forms.py:123 models.py:90 models.py:267
+#: apps.py:188 apps.py:196 forms.py:123 models.py:90 models.py:269
 msgid "Metadata type"
 msgstr "Jenis 'metadata'"
 
-#: apps.py:199 apps.py:208
+#: apps.py:191 apps.py:200
 msgid "Metadata value"
 msgstr "Nilai 'metadata'"
 
@@ -139,42 +130,42 @@ msgstr ""
 msgid "Relationship"
 msgstr ""
 
-#: links.py:18 links.py:26
+#: links.py:20 links.py:28
 msgid "Add metadata"
 msgstr ""
 
-#: links.py:23 links.py:29
+#: links.py:25 links.py:31
 msgid "Edit metadata"
 msgstr ""
 
-#: links.py:32 links.py:36
+#: links.py:34 links.py:38
 msgid "Remove metadata"
 msgstr ""
 
-#: links.py:45 links.py:65 models.py:91 views.py:641
+#: links.py:47 links.py:68 models.py:91 views.py:641
 msgid "Metadata types"
 msgstr ""
 
-#: links.py:49
+#: links.py:51
 msgid "Document types"
 msgstr ""
 
-#: links.py:52
+#: links.py:55
 msgid "Create new"
 msgstr ""
 
-#: links.py:57
+#: links.py:60
 msgid "Delete"
 msgstr ""
 
-#: links.py:61 views.py:301
+#: links.py:64 views.py:301
 msgid "Edit"
 msgstr ""
 
 #: models.py:47
 msgid ""
-"Name used by other apps to reference this value. Do not use python reserved "
-"words, or spaces."
+"Name used by other apps to reference this metadata type. Do not use python "
+"reserved words, or spaces."
 msgstr ""
 
 #: models.py:56
@@ -190,8 +181,8 @@ msgstr ""
 #: models.py:65
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
 msgstr ""
 
 #: models.py:70 search.py:25
@@ -210,8 +201,7 @@ msgstr ""
 
 #: models.py:81
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
+"The parser will reformat the value entered to conform to the expected format."
 msgstr ""
 
 #: models.py:83 search.py:31
@@ -230,27 +220,31 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: models.py:192 models.py:193
+#: models.py:186
+msgid "The actual value stored in the metadata type field for the document."
+msgstr ""
+
+#: models.py:194 models.py:195
 msgid "Document metadata"
 msgstr ""
 
-#: models.py:213
+#: models.py:215
 msgid "Metadata type is required for this document type."
 msgstr ""
 
-#: models.py:237
+#: models.py:239
 msgid "Metadata type is not valid for this document type."
 msgstr ""
 
-#: models.py:263
+#: models.py:265
 msgid "Document type"
 msgstr "Jenis dokumen"
 
-#: models.py:276
+#: models.py:278
 msgid "Document type metadata type options"
 msgstr ""
 
-#: models.py:277
+#: models.py:279
 msgid "Document type metadata types options"
 msgstr ""
 
@@ -344,8 +338,7 @@ msgstr ""
 #: views.py:190
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr ""
 
 #: views.py:200
@@ -396,9 +389,8 @@ msgstr ""
 
 #: views.py:414
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 
 #: views.py:419
@@ -484,16 +476,21 @@ msgstr ""
 msgid "Relationships updated successfully"
 msgstr ""
 
-#: views.py:690
-msgid "No metadata types available. Add at least one."
+#: views.py:680
+msgid ""
+"Create metadata types to be able to associates them to this document type."
 msgstr ""
 
-#: views.py:694
+#: views.py:683
+msgid "There are no metadata types available"
+msgstr ""
+
+#: views.py:686
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr ""
 
-#: views.py:731
+#: views.py:737
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr ""

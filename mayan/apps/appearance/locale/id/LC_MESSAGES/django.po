@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:11-0400\n"
+"POT-Creation-Date: 2018-09-26 22:21-0400\n"
 "PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:12 settings.py:9
@@ -47,15 +48,15 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
-#: templates/appearance/about.html:9
+#: templates/appearance/about.html:10
 msgid "About"
 msgstr "Tentang"
 
-#: templates/appearance/about.html:67
+#: templates/appearance/about.html:77
 #, python-format
 msgid ""
 "\n"
@@ -63,17 +64,83 @@ msgid ""
 "                "
 msgstr ""
 
-#: templates/appearance/about.html:72
+#: templates/appearance/about.html:82
 msgid "Version"
 msgstr ""
 
-#: templates/appearance/about.html:74
+#: templates/appearance/about.html:84
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr ""
 
-#: templates/appearance/about.html:87
+#: templates/appearance/about.html:97
 msgid "Released under the license:"
+msgstr ""
+
+#: templates/appearance/about.html:103
+#, python-format
+msgid ""
+"\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\"></i> by Roberto Rosario and "
+"contributors.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:109
+#, python-format
+msgid ""
+"\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is. We need all the help we can get!\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:115
+#, python-format
+msgid ""
+"\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation "
+"%(icon_social_paypal)s</a>\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:121
+#, python-format
+msgid ""
+"\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">documentation %(icon_documentation)s</a> or "
+"the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">wiki "
+"%(icon_wiki)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:127
+#, python-format
+msgid ""
+"\n"
+"                If you found a bug or got a feature idea, visit the <a class="
+"\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</"
+"a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/"
+"mayan-edms/mayan-edms\">source code repository %(icon_source_code)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:132
+#, python-format
+msgid ""
+"\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
+"                Follow us on <a class=\"new_window\" href=\"https://twitter."
+"com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" "
+"href=\"https://www.facebook.com/MayanEDMS/\">Facebook "
+"%(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www."
+"instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
+"            "
 msgstr ""
 
 #: templates/appearance/base.html:32
@@ -289,6 +356,6 @@ msgstr ""
 msgid "View details"
 msgstr ""
 
-#: templatetags/appearance_tags.py:16
+#: templatetags/appearance_tags.py:17
 msgid "None"
 msgstr ""

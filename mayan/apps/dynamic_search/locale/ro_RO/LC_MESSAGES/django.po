@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:23-0400\n"
 "PO-Revision-Date: 2017-09-22 13:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:16
 msgid "Dynamic search"
@@ -40,11 +42,11 @@ msgstr ""
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:8 settings.py:8 views.py:53 views.py:64
+#: links.py:8 settings.py:8 views.py:58 views.py:69
 msgid "Search"
 msgstr "Căută"
 
-#: links.py:11 views.py:78
+#: links.py:11 views.py:83
 msgid "Advanced search"
 msgstr ""
 
@@ -57,11 +59,19 @@ msgid "Maximum amount search hits to fetch and display."
 msgstr "Căutare suma maximă hit-uri pentru a prelua și afișa."
 
 #: views.py:26
+msgid "Try again using different terms. "
+msgstr ""
+
+#: views.py:28
+msgid "No search results"
+msgstr ""
+
+#: views.py:31
 #, python-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:66
+#: views.py:71
 #, python-format
 msgid "Search for: %s"
 msgstr ""

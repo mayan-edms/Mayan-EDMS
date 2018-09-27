@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,26 +9,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:11-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:85 permissions_runtime.py:7 settings.py:12
 msgid "Common"
 msgstr "مشترک"
 
-#: apps.py:90
-msgid "Anonymous"
-msgstr "ناشناس"
-
-#: classes.py:218
+#: classes.py:214
 msgid "Available attributes: \n"
+msgstr "ویژگی های موجود:\n"
+
+#: classes.py:254
+#, fuzzy
+#| msgid "Available attributes: \n"
+msgid "Available fields: \n"
 msgstr "ویژگی های موجود:\n"
 
 #: dashboards.py:7
@@ -82,67 +85,67 @@ msgstr "%(object)s به روز نشده، خطا: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s با موفقیت به روز شد"
 
-#: links.py:37
+#: links.py:40
 msgid "About this"
 msgstr "در مورد این"
 
-#: links.py:40 views.py:63
+#: links.py:43 views.py:63
 msgid "Check for updates"
 msgstr "بررسی برای به روز رسانی"
 
-#: links.py:44
+#: links.py:47
 msgid "User details"
 msgstr "جزئیات کاربر"
 
-#: links.py:48
+#: links.py:51
 msgid "Edit details"
 msgstr "ویرایش جزئیات"
 
-#: links.py:53
+#: links.py:56
 msgid "Locale profile"
 msgstr "پروفایل محلی"
 
-#: links.py:58
+#: links.py:61
 msgid "Edit locale profile"
 msgstr "ویرایش پروفایل محلی"
 
-#: links.py:62
-msgid "Source code"
-msgstr "کد منبع"
-
-#: links.py:67
+#: links.py:66
 msgid "Documentation"
 msgstr "مستندات"
 
-#: links.py:71 links.py:82
+#: links.py:70 links.py:81
 msgid "Errors"
 msgstr "خطاها"
 
-#: links.py:76
+#: links.py:75
 msgid "Clear all"
 msgstr ""
 
-#: links.py:86
+#: links.py:85
 msgid "Forum"
 msgstr "انجمن"
 
-#: links.py:90 views.py:166
+#: links.py:89 views.py:166
 msgid "License"
 msgstr "لیسانس"
 
-#: links.py:93 views.py:246
+#: links.py:92 views.py:241
 msgid "Other packages licenses"
 msgstr "مجوزهای دیگر بسته"
 
-#: links.py:97
+#: links.py:96
 msgid "Setup"
 msgstr "نصب"
 
-#: links.py:100
+#: links.py:99
+msgid "Source code"
+msgstr "کد منبع"
+
+#: links.py:103
 msgid "Support"
 msgstr "حمایت کردن"
 
-#: links.py:104 queues.py:10 views.py:289
+#: links.py:107 queues.py:10 views.py:284
 msgid "Tools"
 msgstr "ابزار"
 
@@ -166,19 +169,24 @@ msgstr "دقایق"
 
 #: management/commands/convertdb.py:28
 msgid ""
-"The database from which data will be exported. If omitted the database named"
-" \"default\" will be used."
+"Restricts dumped data to the specified app_label or app_label.ModelName."
 msgstr ""
 
 #: management/commands/convertdb.py:35
 msgid ""
-"The database to which data will be imported. If omitted the database named "
+"The database from which data will be exported. If omitted the database named "
 "\"default\" will be used."
 msgstr ""
 
 #: management/commands/convertdb.py:42
 msgid ""
-"Force the conversion of the database even if the receving database is not "
+"The database to which data will be imported. If omitted the database named "
+"\"default\" will be used."
+msgstr ""
+
+#: management/commands/convertdb.py:49
+msgid ""
+"Force the conversion of the database even if the receiving database is not "
 "empty."
 msgstr ""
 
@@ -216,7 +224,7 @@ msgstr "فضای نام"
 msgid "Date time"
 msgstr "تاریخ زمان"
 
-#: models.py:37 views.py:216
+#: models.py:37 views.py:211
 msgid "Result"
 msgstr "جواب"
 
@@ -282,9 +290,10 @@ msgstr "به طور خودکار ورود به سیستم را به تمام ب�
 
 #: settings.py:23
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار است."
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار "
+"است."
 
 #: settings.py:31
 msgid "An integer specifying how many objects should be displayed per page."
@@ -310,7 +319,9 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr "دایرکتوری موقت از سایت گسترده برای ذخیره ریز عکسها، پیش نمایش ها و فایل های موقت استفاده می کند."
+msgstr ""
+"دایرکتوری موقت از سایت گسترده برای ذخیره ریز عکسها، پیش نمایش ها و فایل های "
+"موقت استفاده می کند."
 
 #: settings.py:75
 msgid "Django"
@@ -319,14 +330,14 @@ msgstr ""
 #: settings.py:80
 msgid ""
 "A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which"
-" are possible even under many seemingly-safe web server configurations. "
+"serve. This is a security measure to prevent HTTP Host header attacks, which "
+"are possible even under many seemingly-safe web server configurations. "
 "Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly"
-" (case-insensitive, not including port). A value beginning with a period can"
-" be used as a subdomain wildcard: '.example.com' will match example.com, "
-"www.example.com, and any other subdomain of example.com. A value of '*' will"
-" match anything; in this case you are responsible to provide your own "
+"in which case they will be matched against the request's Host header exactly "
+"(case-insensitive, not including port). A value beginning with a period can "
+"be used as a subdomain wildcard: '.example.com' will match example.com, www."
+"example.com, and any other subdomain of example.com. A value of '*' will "
+"match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
@@ -334,11 +345,10 @@ msgstr ""
 #: settings.py:98
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
-" same URL with a slash appended. Note that the redirect may cause any data "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
+"same URL with a slash appended. Note that the redirect may cause any data "
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also "
-"PREPEND_WWW."
+"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
 msgstr ""
 
 #: settings.py:110
@@ -356,10 +366,10 @@ msgid ""
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
 "check is done when accessing request.body or request.POST and is calculated "
 "against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive"
-" unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and"
-" populate the GET and POST dictionaries. Large requests could be used as a "
+"this to None to disable the check. Applications that are expected to receive "
+"unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and "
+"populate the GET and POST dictionaries. Large requests could be used as a "
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
@@ -403,8 +413,8 @@ msgstr ""
 
 #: settings.py:195
 msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the"
-" SMTP server. This is used for explicit TLS connections, generally on port "
+"Default: False. Whether to use a TLS (secure) connection when talking to the "
+"SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
@@ -438,14 +448,22 @@ msgstr ""
 
 #: settings.py:243
 msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login,"
-" especially when using the login_required() decorator. This setting also "
+"A list of strings designating all applications that are enabled in this "
+"Django installation. Each string should be a dotted Python path to: an "
+"application configuration class (preferred), or a package containing an "
+"application."
+msgstr ""
+
+#: settings.py:253
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login, "
+"especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
 msgstr ""
 
-#: settings.py:255
+#: settings.py:265
 msgid ""
 "Default: '/accounts/profile/' The URL where requests are redirected after "
 "login when the contrib.auth.login view gets no next parameter. This is used "
@@ -454,25 +472,28 @@ msgid ""
 "since you don't have to define the URL in two places (settings and URLconf)."
 msgstr ""
 
-#: settings.py:264
+#: settings.py:274
 msgid "Celery"
-msgstr ""
-
-#: settings.py:269
-msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
-" transport://userid:password@hostname:port/virtual_host Only the scheme part"
-" (transport://) is required, the rest is optional, and defaults to the "
-"specific transports default values."
 msgstr ""
 
 #: settings.py:279
 msgid ""
-"Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to "
-"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
-"backend"
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
+"transport://userid:password@hostname:port/virtual_host Only the scheme part "
+"(transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
 msgstr ""
+
+#: settings.py:289
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
+"userguide/configuration.html#result-backend"
+msgstr ""
+
+#: utils.py:74
+msgid "Anonymous"
+msgstr "ناشناس"
 
 #: validators.py:29
 msgid ""
@@ -517,42 +538,42 @@ msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 msgid "Dashboard"
 msgstr "داشبورد"
 
-#: views.py:180
+#: views.py:175
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:197
+#: views.py:192
 msgid "Object error log cleared successfully"
 msgstr ""
 
-#: views.py:215
+#: views.py:210
 msgid "Date and time"
 msgstr "تاریخ و زمان"
 
-#: views.py:220
+#: views.py:215
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "ورودی های ورود به سیستم خطا برای: %s"
 
-#: views.py:265
+#: views.py:260
 msgid "No setup options available."
 msgstr ""
 
-#: views.py:267
+#: views.py:262
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
 
-#: views.py:271
+#: views.py:266
 msgid "Setup items"
 msgstr "اقلام نصب"
 
-#: views.py:315
+#: views.py:310
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:323
+#: views.py:318
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."

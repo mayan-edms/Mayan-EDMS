@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -11,17 +11,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: 2018-09-12 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:7 views.py:623
+#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:624
 msgid "Sources"
 msgstr "Fontes"
 
@@ -34,7 +35,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Fontes de documentos são a forma como os novos documentos são alimentados ao Mayan EDMS, crie pelo menos uma fonte de formulário da web para poder carregar documentos a partir de um navegador."
+msgstr ""
+"Fontes de documentos são a forma como os novos documentos são alimentados ao "
+"Mayan EDMS, crie pelo menos uma fonte de formulário da web para poder "
+"carregar documentos a partir de um navegador."
 
 #: apps.py:67
 msgid "Created"
@@ -62,9 +66,10 @@ msgstr "Expandir arquivos compactados"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Upload de um arquivo compactado contendo arquivos como documentos individuais"
+msgstr ""
+"Upload de um arquivo compactado contendo arquivos como documentos individuais"
 
-#: forms.py:68 views.py:479
+#: forms.py:68 views.py:480
 msgid "Staging file"
 msgstr "Preparação de arquivo"
 
@@ -128,67 +133,67 @@ msgstr "Logs"
 msgid "Check now"
 msgstr "Verifique agora"
 
-#: literals.py:9
+#: literals.py:16
 msgid "Flatbed"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:17
 msgid "Document feeder"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:24
 msgid "Simplex"
 msgstr ""
 
-#: literals.py:18
+#: literals.py:25
 msgid "Duplex"
 msgstr ""
 
-#: literals.py:26
+#: literals.py:33
 msgid "Lineart"
 msgstr ""
 
-#: literals.py:27
+#: literals.py:34
 msgid "Monochrome"
 msgstr ""
 
-#: literals.py:28
+#: literals.py:35
 msgid "Color"
 msgstr "Cor"
 
-#: literals.py:36 literals.py:41
+#: literals.py:43 literals.py:48
 msgid "Always"
 msgstr "Sempre"
 
-#: literals.py:37 literals.py:42
+#: literals.py:44 literals.py:49
 msgid "Never"
 msgstr "Nunca"
 
-#: literals.py:43
+#: literals.py:50
 msgid "Ask user"
 msgstr "Pergunte ao usuário"
 
-#: literals.py:54
+#: literals.py:61
 msgid "Scanner"
 msgstr ""
 
-#: literals.py:55 models.py:393
+#: literals.py:62 models.py:393
 msgid "Web form"
 msgstr "formulário web"
 
-#: literals.py:56 models.py:329
+#: literals.py:63 models.py:329
 msgid "Staging folder"
 msgstr "Pasta teste"
 
-#: literals.py:57 models.py:764
+#: literals.py:64 models.py:764
 msgid "Watch folder"
 msgstr "Pasta Temporária"
 
-#: literals.py:58
+#: literals.py:65
 msgid "POP3 email"
 msgstr "E-mail POP3"
 
-#: literals.py:59 models.py:661 models.py:662
+#: literals.py:66 models.py:661 models.py:662
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
@@ -196,7 +201,7 @@ msgstr "E-mail IMAP"
 msgid "Label"
 msgstr "Label"
 
-#: models.py:57 views.py:588
+#: models.py:57 views.py:589
 msgid "Enabled"
 msgstr "habilitado"
 
@@ -346,7 +351,8 @@ msgstr "intervalo"
 
 #: models.py:420
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Atribuir um tipo de documento para documentos enviados a partir desta fonte."
+msgstr ""
+"Atribuir um tipo de documento para documentos enviados a partir desta fonte."
 
 #: models.py:422
 msgid "Document type"
@@ -376,7 +382,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
+msgstr ""
+"Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, "
+"993 para IMAP sobre SSL."
 
 #: models.py:496
 msgid "Port"
@@ -395,7 +403,10 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Nome do anexo que contém os nomes de tipo de metadados e os pares de valores a serem atribuídos ao restante dos anexos transferidos. Nota: Este anexo tem de ser o primeiro anexo."
+msgstr ""
+"Nome do anexo que contém os nomes de tipo de metadados e os pares de valores "
+"a serem atribuídos ao restante dos anexos transferidos. Nota: Este anexo tem "
+"de ser o primeiro anexo."
 
 #: models.py:507
 msgid "Metadata attachment name"
@@ -405,7 +416,9 @@ msgstr "Nome do metadado anexado"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Selecione um tipo de metadados válido para o tipo de documento selecionado para armazenar o assunto do e-mail."
+msgstr ""
+"Selecione um tipo de metadados válido para o tipo de documento selecionado "
+"para armazenar o assunto do e-mail."
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -415,7 +428,9 @@ msgstr "Tipo de metadado do assunto"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Selecione um tipo de metadados válido para o tipo de documento selecionado para armazenar o valor \"de\" do e-mail."
+msgstr ""
+"Selecione um tipo de metadados válido para o tipo de documento selecionado "
+"para armazenar o valor \"de\" do e-mail."
 
 #: models.py:521
 msgid "From metadata type"
@@ -442,14 +457,18 @@ msgstr "E-mail Fontes"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Tipo de metadado do assunto \"%(metadata_type)s\" não é válido para o documento do tipo: %(document_type)s"
+msgstr ""
+"Tipo de metadado do assunto \"%(metadata_type)s\" não é válido para o "
+"documento do tipo: %(document_type)s"
 
 #: models.py:555
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Tipo de metadados do campo \"de\" \"%(metadata_type)s\" não é válido para o tipo de documento: %(document_type)s"
+msgstr ""
+"Tipo de metadados do campo \"de\" \"%(metadata_type)s\" não é válido para o "
+"tipo de documento: %(document_type)s"
 
 #: models.py:654
 msgid "IMAP Mailbox from which to check for messages."
@@ -507,20 +526,42 @@ msgstr "Apagar arquivos temporários"
 msgid "Sources periodic"
 msgstr ""
 
-#: queues.py:16
+#: queues.py:14
+#, fuzzy
+#| msgid "Sources setup"
+msgid "Sources fast"
+msgstr "Configuração de fontes"
+
+#: queues.py:19
+#, fuzzy
+#| msgid "Delete staging files"
+msgid "Generate staging file image"
+msgstr "Apagar arquivos temporários"
+
+#: queues.py:23
 msgid "Check interval source"
 msgstr ""
 
-#: queues.py:21
+#: queues.py:27
 msgid "Handle upload"
 msgstr ""
 
-#: queues.py:25
+#: queues.py:31
 msgid "Upload document"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
+msgstr ""
+
+#: settings.py:22
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr ""
+
+#: settings.py:31
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
 #: tasks.py:46
@@ -545,9 +586,11 @@ msgstr "Registrar entradas para fonte: %s"
 
 #: views.py:125 wizards.py:144
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. Criar uma antes de prosseguir."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. "
+"Criar uma antes de prosseguir."
 
 #: views.py:151 views.py:169 views.py:179
 msgid "Document properties"
@@ -572,53 +615,54 @@ msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
 #: views.py:343
-#, python-format
-msgid "Upload a local document from source: %s"
+#, fuzzy, python-format
+#| msgid "Upload a local document from source: %s"
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Carregar um documento no local de origem:%s "
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Documento \"%s\" está bloqueado para carregar novas versões."
 
-#: views.py:427
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:466
+#: views.py:467
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Carregar uma nova versão da Origem: %s"
 
-#: views.py:506
+#: views.py:507
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Verificar a origem \"%s\"?"
 
-#: views.py:519
+#: views.py:520
 msgid "Source check queued."
 msgstr "Cheque de origem enfileirado."
 
-#: views.py:533
+#: views.py:534
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Criar nova fonte do tipo: %s"
 
-#: views.py:553
+#: views.py:554
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Apagar a fonte: %s?"
 
-#: views.py:572
+#: views.py:573
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editar fonte: %s"
 
-#: views.py:584
+#: views.py:585
 msgid "Type"
 msgstr "Tipo"
 
-#: views.py:617
+#: views.py:618
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -626,7 +670,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:622
+#: views.py:623
 msgid "No sources available"
 msgstr ""
 

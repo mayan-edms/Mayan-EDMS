@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,23 +135,23 @@ msgstr ""
 msgid "Rotate"
 msgstr ""
 
-#: transformations.py:227
+#: transformations.py:228
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: transformations.py:238
+#: transformations.py:239
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: transformations.py:249
+#: transformations.py:250
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: transformations.py:259
+#: transformations.py:260
 msgid "Unsharp masking"
 msgstr ""
 
-#: transformations.py:275
+#: transformations.py:276
 msgid "Zoom"
 msgstr ""
 

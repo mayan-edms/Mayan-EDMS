@@ -1,36 +1,37 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:13-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:70 apps.py:140 apps.py:144 events.py:7 links.py:19 links.py:24
+#: apps.py:71 apps.py:146 apps.py:150 events.py:7 links.py:19 links.py:24
 #: permissions.py:7 queues.py:7 settings.py:7
 msgid "OCR"
 msgstr ""
 
-#: apps.py:115
+#: apps.py:121
 msgid "Document"
 msgstr ""
 
-#: apps.py:119
+#: apps.py:125
 msgid "Added"
 msgstr ""
 
-#: apps.py:123 models.py:65
+#: apps.py:129 models.py:69
 msgid "Result"
 msgstr ""
 
@@ -91,31 +92,35 @@ msgstr ""
 msgid "Document page"
 msgstr ""
 
-#: models.py:44
+#: models.py:46
+msgid "The actual text content extracted by the OCR backend."
+msgstr ""
+
+#: models.py:47
 msgid "Content"
 msgstr "Isi"
 
-#: models.py:49
+#: models.py:53
 msgid "Document page OCR content"
 msgstr ""
 
-#: models.py:50
+#: models.py:54
 msgid "Document pages OCR contents"
 msgstr ""
 
-#: models.py:60
+#: models.py:64
 msgid "Document version"
 msgstr ""
 
-#: models.py:63
+#: models.py:67
 msgid "Date time submitted"
 msgstr ""
 
-#: models.py:69
+#: models.py:73
 msgid "Document version OCR error"
 msgstr ""
 
-#: models.py:70
+#: models.py:74
 msgid "Document version OCR errors"
 msgstr ""
 
@@ -164,7 +169,8 @@ msgstr ""
 
 #: views.py:107
 #, python-format
-msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
 msgstr ""
 
 #: views.py:133

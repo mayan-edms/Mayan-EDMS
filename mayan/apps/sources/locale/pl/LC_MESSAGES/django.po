@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2012-2013
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -10,17 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:14-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: 2018-09-12 07:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:7 views.py:623
+#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:624
 msgid "Sources"
 msgstr "Źródła"
 
@@ -63,7 +66,7 @@ msgstr "Rozpakuj skompresowane pliki"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
 
-#: forms.py:68 views.py:479
+#: forms.py:68 views.py:480
 msgid "Staging file"
 msgstr ""
 
@@ -127,67 +130,67 @@ msgstr "Logi"
 msgid "Check now"
 msgstr "Sprawdź teraz"
 
-#: literals.py:9
+#: literals.py:16
 msgid "Flatbed"
 msgstr "Platforma"
 
-#: literals.py:10
+#: literals.py:17
 msgid "Document feeder"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:24
 msgid "Simplex"
 msgstr "Sympleks"
 
-#: literals.py:18
+#: literals.py:25
 msgid "Duplex"
 msgstr "Dupleks"
 
-#: literals.py:26
+#: literals.py:33
 msgid "Lineart"
 msgstr "Rysunek kreskowy"
 
-#: literals.py:27
+#: literals.py:34
 msgid "Monochrome"
 msgstr "Monochromia"
 
-#: literals.py:28
+#: literals.py:35
 msgid "Color"
 msgstr "Kolor"
 
-#: literals.py:36 literals.py:41
+#: literals.py:43 literals.py:48
 msgid "Always"
 msgstr "Zawsze"
 
-#: literals.py:37 literals.py:42
+#: literals.py:44 literals.py:49
 msgid "Never"
 msgstr "Nigdy"
 
-#: literals.py:43
+#: literals.py:50
 msgid "Ask user"
 msgstr "Pytaj użytkownika"
 
-#: literals.py:54
+#: literals.py:61
 msgid "Scanner"
 msgstr "Skaner"
 
-#: literals.py:55 models.py:393
+#: literals.py:62 models.py:393
 msgid "Web form"
 msgstr ""
 
-#: literals.py:56 models.py:329
+#: literals.py:63 models.py:329
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:57 models.py:764
+#: literals.py:64 models.py:764
 msgid "Watch folder"
 msgstr ""
 
-#: literals.py:58
+#: literals.py:65
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:59 models.py:661 models.py:662
+#: literals.py:66 models.py:661 models.py:662
 msgid "IMAP email"
 msgstr ""
 
@@ -195,7 +198,7 @@ msgstr ""
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:57 views.py:588
+#: models.py:57 views.py:589
 msgid "Enabled"
 msgstr "Włączone"
 
@@ -506,20 +509,40 @@ msgstr ""
 msgid "Sources periodic"
 msgstr ""
 
-#: queues.py:16
+#: queues.py:14
+#, fuzzy
+#| msgid "Sources"
+msgid "Sources fast"
+msgstr "Źródła"
+
+#: queues.py:19
+msgid "Generate staging file image"
+msgstr ""
+
+#: queues.py:23
 msgid "Check interval source"
 msgstr ""
 
-#: queues.py:21
+#: queues.py:27
 msgid "Handle upload"
 msgstr ""
 
-#: queues.py:25
+#: queues.py:31
 msgid "Upload document"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
+msgstr ""
+
+#: settings.py:22
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr ""
+
+#: settings.py:31
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
 #: tasks.py:46
@@ -544,8 +567,8 @@ msgstr ""
 
 #: views.py:125 wizards.py:144
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:151 views.py:169 views.py:179
@@ -572,52 +595,52 @@ msgstr ""
 
 #: views.py:343
 #, python-format
-msgid "Upload a local document from source: %s"
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:427
+#: views.py:428
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:466
+#: views.py:467
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:506
+#: views.py:507
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:519
+#: views.py:520
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:533
+#: views.py:534
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Utwórz nowe typ źródło:%s"
 
-#: views.py:553
+#: views.py:554
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:572
+#: views.py:573
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:584
+#: views.py:585
 msgid "Type"
 msgstr "Typ"
 
-#: views.py:617
+#: views.py:618
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -625,7 +648,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:622
+#: views.py:623
 msgid "No sources available"
 msgstr ""
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -10,71 +10,96 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 21:05-0400\n"
+"POT-Creation-Date: 2018-09-26 22:24-0400\n"
 "PO-Revision-Date: 2018-08-31 10:22+0000\n"
 "Last-Translator: Martin Horseling <martin.horseling@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:51 permissions.py:7
+#: apps.py:53 permissions.py:7
 msgid "User management"
 msgstr "Gebruikersbeheer"
 
-#: apps.py:66
+#: apps.py:68
 msgid "All the groups."
 msgstr "Alle groepen."
 
-#: apps.py:70
+#: apps.py:72
 msgid "All the users."
 msgstr "Alle gebruikers."
 
-#: apps.py:88 links.py:30 links.py:54 links.py:70 views.py:242
+#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:274
 msgid "Users"
 msgstr "Gebruikers"
 
-#: apps.py:92
+#: apps.py:94
 msgid "Full name"
 msgstr "Volledige naam"
 
-#: apps.py:95 search.py:22
+#: apps.py:97 search.py:22
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:98
+#: apps.py:100
 msgid "Active"
 msgstr "Actief"
 
-#: apps.py:104
+#: apps.py:106
 msgid "Has usable password?"
 msgstr "Heeft bruikbaar wachtwoord?"
 
-#: links.py:14 views.py:29
+#: links.py:18 views.py:32
 msgid "Create new group"
 msgstr " Maak nieuwe groep aan"
 
-#: links.py:18 links.py:42 links.py:58
+#: links.py:22 links.py:46 links.py:61
 msgid "Delete"
 msgstr "Verwijder"
 
-#: links.py:22 links.py:46
+#: links.py:25 links.py:49
 msgid "Edit"
 msgstr "Bewerken"
 
-#: links.py:26 links.py:34 links.py:50 search.py:25 views.py:52
+#: links.py:29 links.py:38 links.py:53 search.py:25 views.py:71
 msgid "Groups"
 msgstr "Groepen"
 
-#: links.py:38 views.py:118
+#: links.py:42 views.py:135
 msgid "Create new user"
 msgstr "Maak nieuwe gebruiker aan"
 
-#: links.py:62 links.py:66
+#: links.py:65 links.py:74
 msgid "Set password"
 msgstr "Stel paswoord in"
+
+#: links.py:70
+msgid "User options"
+msgstr ""
+
+#: models.py:13
+#, fuzzy
+#| msgid "Users"
+msgid "User"
+msgstr "Gebruikers"
+
+#: models.py:17
+msgid "Forbid this user from changing their password."
+msgstr ""
+
+#: models.py:23
+msgid "User settings"
+msgstr ""
+
+#: models.py:24
+#, fuzzy
+#| msgid "Users in group"
+msgid "Users settings"
+msgstr "Gebruikers in groep"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -132,126 +157,161 @@ msgstr ""
 msgid "List of group primary keys to which to add the user."
 msgstr ""
 
-#: views.py:45
+#: views.py:48
 #, python-format
 msgid "Edit group: %s"
 msgstr "Bewerk groep: %s"
 
-#: views.py:66
+#: views.py:64
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+
+#: views.py:70
+#, fuzzy
+#| msgid "Create new groups"
+msgid "There are no user groups"
+msgstr "Maak nieuwe groepen aan"
+
+#: views.py:83
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Verwijder de groep:  %s?"
 
-#: views.py:72
+#: views.py:89
 msgid "Available users"
 msgstr "Beschikbare gebruikers"
 
-#: views.py:73
+#: views.py:90
 msgid "Users in group"
 msgstr "Gebruikers in groep"
 
-#: views.py:94
+#: views.py:111
 #, python-format
 msgid "Users of group: %s"
 msgstr "Gebruikers van groep %s"
 
-#: views.py:128
+#: views.py:145
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Gebuiker \"%s\" is succesvol aangemaakt."
 
-#: views.py:138
+#: views.py:157
 #, python-format
 msgid "User delete request performed on %(count)d user"
 msgstr ""
 
-#: views.py:140
+#: views.py:159
 #, python-format
 msgid "User delete request performed on %(count)d users"
 msgstr ""
 
-#: views.py:148
+#: views.py:167
 msgid "Delete user"
 msgid_plural "Delete users"
 msgstr[0] "Verwijder gebruiker"
 msgstr[1] "Verwijder gebruikers"
 
-#: views.py:158
+#: views.py:177
 #, python-format
 msgid "Delete user: %s"
 msgstr "Verwijder gebruiker: %s"
 
-#: views.py:170
+#: views.py:189
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de "
+"admin gebruiker voor deze zaken."
 
-#: views.py:178
+#: views.py:197
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Gebruiker \"%s\" succesvol verwijderd."
 
-#: views.py:184
+#: views.py:203
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Fout tijdens het verwijderen van gebruiker \"%(user)s\": %(error)s"
 
-#: views.py:200
+#: views.py:219
 #, python-format
 msgid "Edit user: %s"
 msgstr "Bewerk gebruiker: %s"
 
-#: views.py:206
+#: views.py:225
 msgid "Available groups"
 msgstr "Beschikbare groepen"
 
-#: views.py:207
+#: views.py:226
 msgid "Groups joined"
 msgstr "Lid van groepen"
 
-#: views.py:216
+#: views.py:235
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Groepen van gebruiker: %s"
 
-#: views.py:255
+#: views.py:270
+msgid ""
+"User accounts can be create from this view. After creating an user account "
+"you will prompted to set a password for it. "
+msgstr ""
+
+#: views.py:273
+msgid "There are no user accounts"
+msgstr ""
+
+#: views.py:290
+#, fuzzy, python-format
+#| msgid "Edit user: %s"
+msgid "Edit options for user: %s"
+msgstr "Bewerk gebruiker: %s"
+
+#: views.py:312
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 
-#: views.py:257
+#: views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 
-#: views.py:264
+#: views.py:321
 msgid "Submit"
 msgstr "Verstuur"
 
-#: views.py:266
+#: views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:276
+#: views.py:333
 #, python-format
 msgid "Change password for user: %s"
 msgstr ""
 
-#: views.py:297
+#: views.py:354
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
+"gebruik de admin gebruiker voor deze zaken."
 
-#: views.py:307
+#: views.py:364
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr ""
 
-#: views.py:313
+#: views.py:370
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"
+msgstr ""
+"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
+"%(error)s"

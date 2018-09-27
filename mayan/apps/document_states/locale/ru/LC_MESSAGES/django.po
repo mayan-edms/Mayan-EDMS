@@ -1,110 +1,113 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: 2018-09-12 07:47+0000\n"
 "Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:57 queues.py:8
 msgid "Document states"
 msgstr "Статусы документа"
 
-#: apps.py:94 apps.py:101
+#: apps.py:95 apps.py:102
 msgid "Current state of a workflow"
 msgstr ""
 
-#: apps.py:95
+#: apps.py:96
 msgid "Return the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:102
+#: apps.py:103
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:145 apps.py:210 forms.py:117 models.py:47 models.py:153
+#: apps.py:146 apps.py:211 forms.py:117 models.py:47 models.py:153
 #: models.py:224 models.py:287 workflow_actions.py:22
 msgid "Label"
 msgstr "Надпись"
 
-#: apps.py:148 models.py:44
+#: apps.py:149 models.py:44
 msgid "Internal name"
 msgstr "Внутреннее имя"
 
-#: apps.py:152
+#: apps.py:153
 msgid "Initial state"
 msgstr "Исходное состояние"
 
-#: apps.py:153 apps.py:163 apps.py:173 apps.py:179
+#: apps.py:154 apps.py:164 apps.py:174 apps.py:180
 msgid "None"
 msgstr "Ничего"
 
-#: apps.py:157
+#: apps.py:158
 msgid "Current state"
 msgstr "Текущее состояние"
 
-#: apps.py:161 apps.py:188 models.py:454
+#: apps.py:162 apps.py:189 models.py:454
 msgid "User"
 msgstr "Пользователь"
 
-#: apps.py:167
+#: apps.py:168
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:171 apps.py:184
+#: apps.py:172 apps.py:185
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:177 apps.py:206 models.py:165
+#: apps.py:178 apps.py:207 models.py:165
 msgid "Completion"
 msgstr "Завершение"
 
-#: apps.py:191 forms.py:173 links.py:114 models.py:313 models.py:450
+#: apps.py:192 forms.py:173 links.py:114 models.py:313 models.py:450
 msgid "Transition"
 msgstr "Переход"
 
-#: apps.py:195 forms.py:176 models.py:456
+#: apps.py:196 forms.py:176 models.py:456
 msgid "Comment"
 msgstr "Комментарий"
 
-#: apps.py:200
+#: apps.py:201
 msgid "Is initial state?"
 msgstr ""
 
-#: apps.py:213
+#: apps.py:214
 msgid "Enabled?"
 msgstr ""
 
-#: apps.py:219
+#: apps.py:220
 msgid "When?"
 msgstr ""
 
-#: apps.py:223
+#: apps.py:224
 msgid "Action type"
 msgstr ""
 
-#: apps.py:228 models.py:290
+#: apps.py:229 models.py:290
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:232 models.py:294
+#: apps.py:233 models.py:294
 msgid "Destination state"
 msgstr ""
 
-#: apps.py:236
+#: apps.py:237
 msgid "Triggers"
 msgstr ""
 
@@ -403,8 +406,8 @@ msgstr ""
 
 #: views.py:71
 msgid ""
-"Assign workflows to the document type of this document to have this document"
-" execute those workflows. "
+"Assign workflows to the document type of this document to have this document "
+"execute those workflows. "
 msgstr ""
 
 #: views.py:75
@@ -437,8 +440,8 @@ msgstr ""
 
 #: views.py:170
 msgid ""
-"Workflows store a series for states and keep track of the current state of a"
-" document. Transitions are used to change the current state to a new one."
+"Workflows store a series of states and keep track of the current state of a "
+"document. Transitions are used to change the current state to a new one."
 msgstr ""
 
 #: views.py:175
@@ -481,8 +484,8 @@ msgstr ""
 
 #: views.py:368
 msgid ""
-"Workflow state actions are macros that get executed when enters or leaves "
-"the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or "
+"leaves the state in which they reside."
 msgstr ""
 
 #: views.py:372
@@ -527,8 +530,7 @@ msgstr ""
 
 #: views.py:653
 msgid ""
-"Create a transition and use it to move a workflow from  one state to "
-"another."
+"Create a transition and use it to move a workflow from  one state to another."
 msgstr ""
 
 #: views.py:657
@@ -645,10 +647,10 @@ msgstr ""
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow "
+"log entry instance as part of their context via the variable \"entry_log\". "
+"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:103
@@ -666,10 +668,10 @@ msgstr ""
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
+"\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:125

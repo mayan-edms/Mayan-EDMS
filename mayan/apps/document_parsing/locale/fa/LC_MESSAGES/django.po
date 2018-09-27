@@ -2,39 +2,39 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Roberto Rosario, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:68 events.py:8 permissions.py:7 settings.py:7
+#: apps.py:69 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr "تجزیه و تحلیل سند"
 
-#: apps.py:114
+#: apps.py:120
 msgid "Document"
 msgstr "سند"
 
-#: apps.py:118
+#: apps.py:124
 msgid "Added"
 msgstr "اضافه شده"
 
-#: apps.py:122 models.py:60
+#: apps.py:128 models.py:66
 msgid "Result"
 msgstr "جواب"
 
-#: apps.py:139 apps.py:143 links.py:19 models.py:18
+#: apps.py:145 apps.py:149 links.py:19 models.py:22
 msgid "Content"
 msgstr "محتوا"
 
@@ -55,7 +55,7 @@ msgstr "صفحه  %(page_number)d"
 msgid "Contents"
 msgstr "محتوا"
 
-#: links.py:24 links.py:56 views.py:172
+#: links.py:24 links.py:57 views.py:172
 msgid "Parsing errors"
 msgstr "خطاهای تجزیه"
 
@@ -67,11 +67,11 @@ msgstr "دانلود محتوا"
 msgid "Submit for parsing"
 msgstr "ارسال برای تجزیه و تحلیل"
 
-#: links.py:43
+#: links.py:44
 msgid "Setup parsing"
 msgstr ""
 
-#: links.py:51
+#: links.py:52
 msgid "Parse documents per type"
 msgstr "هر نوع اسناد را تجزیه کنید"
 
@@ -79,43 +79,47 @@ msgstr "هر نوع اسناد را تجزیه کنید"
 msgid "Document page"
 msgstr "صفحه سند"
 
-#: models.py:23
+#: models.py:20
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr ""
+
+#: models.py:28
 msgid "Document page content"
 msgstr "محتوای صفحه سند"
 
-#: models.py:24
+#: models.py:29
 msgid "Document pages contents"
 msgstr "محتویات صفحات سند"
 
-#: models.py:33
+#: models.py:38
 msgid "Document type"
 msgstr "نوع سند"
 
-#: models.py:37
+#: models.py:42
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 
-#: models.py:47
+#: models.py:53
 msgid "Document type settings"
 msgstr "Document type settings"
 
-#: models.py:48
+#: models.py:54
 msgid "Document types settings"
 msgstr "Document types settings"
 
-#: models.py:55
+#: models.py:61
 msgid "Document version"
 msgstr "نسخه سند"
 
-#: models.py:58
+#: models.py:64
 msgid "Date time submitted"
 msgstr "تاریخ و زمان ارسال"
 
-#: models.py:64
+#: models.py:70
 msgid "Document version parse error"
 msgstr "نسخه سند خطا را تجزیه می کند"
 
-#: models.py:65
+#: models.py:71
 msgid "Document version parse errors"
 msgstr "نسخه سند خطاهای تجزیه"
 
@@ -155,8 +159,7 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 
 #: views.py:41
@@ -203,8 +206,7 @@ msgstr "برای تجزیه و تحلیل تمام اسناد یک نوع را �
 #: views.py:150
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing "
-"queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
 msgstr ""
 "\"%(count)d \" اسناد از نوع \"%(document_type)s\" اضافه شده به صف جهت تجزیه "
 "و تحلیل."

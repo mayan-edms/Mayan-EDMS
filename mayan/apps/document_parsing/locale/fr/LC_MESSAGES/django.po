@@ -2,39 +2,39 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-08 04:12-0400\n"
+"POT-Creation-Date: 2018-09-26 22:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>, 2018\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:68 events.py:8 permissions.py:7 settings.py:7
+#: apps.py:69 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr "Analyse de document"
 
-#: apps.py:114
+#: apps.py:120
 msgid "Document"
 msgstr "Document"
 
-#: apps.py:118
+#: apps.py:124
 msgid "Added"
 msgstr "Ajouté"
 
-#: apps.py:122 models.py:60
+#: apps.py:128 models.py:66
 msgid "Result"
 msgstr "Résultat"
 
-#: apps.py:139 apps.py:143 links.py:19 models.py:18
+#: apps.py:145 apps.py:149 links.py:19 models.py:22
 msgid "Content"
 msgstr "Contenu"
 
@@ -55,7 +55,7 @@ msgstr "Page %(page_number)d"
 msgid "Contents"
 msgstr "Contenus"
 
-#: links.py:24 links.py:56 views.py:172
+#: links.py:24 links.py:57 views.py:172
 msgid "Parsing errors"
 msgstr "Erreurs d'analyse"
 
@@ -67,11 +67,11 @@ msgstr "Télécharger le contenu"
 msgid "Submit for parsing"
 msgstr "Soumettre pour analyse"
 
-#: links.py:43
+#: links.py:44
 msgid "Setup parsing"
 msgstr "Configurer l'analyse"
 
-#: links.py:51
+#: links.py:52
 msgid "Parse documents per type"
 msgstr "Analyser les documents par type"
 
@@ -79,45 +79,49 @@ msgstr "Analyser les documents par type"
 msgid "Document page"
 msgstr "Page du document"
 
-#: models.py:23
+#: models.py:20
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr ""
+
+#: models.py:28
 msgid "Document page content"
 msgstr "Contenu de la page du document"
 
-#: models.py:24
+#: models.py:29
 msgid "Document pages contents"
 msgstr "Contenu des pages du document"
 
-#: models.py:33
+#: models.py:38
 msgid "Document type"
 msgstr "Type de document"
 
-#: models.py:37
+#: models.py:42
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
-"Ajouter automatiquement les documents nouvellement créés à la file d'attente"
-" d'analyse."
+"Ajouter automatiquement les documents nouvellement créés à la file d'attente "
+"d'analyse."
 
-#: models.py:47
+#: models.py:53
 msgid "Document type settings"
 msgstr "Paramétrages de type de document"
 
-#: models.py:48
+#: models.py:54
 msgid "Document types settings"
 msgstr "Paramétrages de types de documents"
 
-#: models.py:55
+#: models.py:61
 msgid "Document version"
 msgstr "Version du document"
 
-#: models.py:58
+#: models.py:64
 msgid "Date time submitted"
 msgstr "Date et heure de soumission"
 
-#: models.py:64
+#: models.py:70
 msgid "Document version parse error"
 msgstr "Erreur d'analyse de la version de document"
 
-#: models.py:65
+#: models.py:71
 msgid "Document version parse errors"
 msgstr "Erreurs d'analyse de la version de document"
 
@@ -154,16 +158,15 @@ msgstr "Analyse de version de document"
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
-"Les nouveaux types de documents, par défaut, réaliseront automatiquement une"
-" analyse."
+"Les nouveaux types de documents, par défaut, réaliseront automatiquement une "
+"analyse."
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
-"Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à"
-" partir des fichiers PDF."
+"Chemin vers l'exécutable poppler pdftotext, utilisé pour extraire du texte à "
+"partir des fichiers PDF."
 
 #: views.py:41
 #, python-format
@@ -209,8 +212,7 @@ msgstr "Ajouter tous les documents d'un type à la file d'attente d'analyse"
 #: views.py:150
 #, python-format
 msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing "
-"queue."
+"%(count)d documents of type \"%(document_type)s\" added to the parsing queue."
 msgstr ""
 "%(count)d documents du type \"%(document_type)s\" ajoutés à la file "
 "d'attente d'analyse"
