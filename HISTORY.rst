@@ -7,6 +7,8 @@
   saving the database and to only provision 1 database.
 * Remove use of hard coded font icon for document page
   rendering busy indicator.
+* Disable the fancybox caption link if the document is
+  in the trash.
 
 3.1.3 (2018-09-27)
 ==================
