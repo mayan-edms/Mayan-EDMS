@@ -21,6 +21,9 @@ icon_dashboard_total_document = Icon(
 icon_document_duplicates_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )
+icon_document_image_loading = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
+)
 icon_document_list = Icon(driver_name='fontawesome', symbol='file')
 icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
 icon_document_list_favorites = Icon(driver_name='fontawesome', symbol='star')
