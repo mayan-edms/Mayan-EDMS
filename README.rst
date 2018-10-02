@@ -34,16 +34,14 @@ Hardware requirements
 Important links
 
 - `Homepage <http://www.mayan-edms.com>`__
-- `Videos <https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw>`__
 - `Documentation <https://docs.mayan-edms.com>`__
-- `Paid support <http://www.mayan-edms.com/providers/>`__
-- `Roadmap <https://gitlab.com/mayan-edms/mayan-edms/wikis/roadmap>`__
+- `Wiki <https://wiki.mayan-edms.com>`__
 - `Contributing <https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md>`__
-- `Community forum <https://groups.google.com/forum/#!forum/mayan-edms>`__
-- `Community forum archive <http://mayan-edms.1003.x6.nabble.com/>`__
+- `Forum <https://forum.mayan-edms.com>`__
 - `Source code, issues, bugs <https://gitlab.com/mayan-edms/mayan-edms>`__
 - `Plug-ins, other related projects <https://gitlab.com/mayan-edms/>`__
 - `Translations <https://www.transifex.com/rosarior/mayan-edms/>`__
+- `Videos <https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw>`__
 
 
 .. |pypi| image:: http://img.shields.io/pypi/v/mayan-edms.svg

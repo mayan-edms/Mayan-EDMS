@@ -61,14 +61,12 @@ at: https://docs.mayan-edms.com/topics/installation.html
 
 
 - [Homepage](http://www.mayan-edms.com)
-- [Videos](https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw)
 - [Documentation](https://docs.mayan-edms.com)
-- [Paid support](http://www.mayan-edms.com/providers/)
-- [Roadmap](https://gitlab.com/mayan-edms/mayan-edms/wikis/roadmap)
+- [Wiki](https://wiki.mayan-edms.com/)
 - [Contributing](https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md)
-- [Community forum](https://groups.google.com/forum/#!forum/mayan-edms)
-- [Community forum archive](http://mayan-edms.1003.x6.nabble.com/)
+- [Forum](https://forum.mayan-edms.com/)
 - [Source code, issues, bugs](https://gitlab.com/mayan-edms/mayan-edms)
 - [Plug-ins, other related projects](https://gitlab.com/mayan-edms/)
 - [Translations](https://www.transifex.com/rosarior/mayan-edms/)
+- [Videos](https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw)
 

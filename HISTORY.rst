@@ -2,6 +2,7 @@
 ==================
 * Fix the link to the documenation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
+* Update related links. Add links to the new Wiki and Forum.
 
 3.1.3 (2018-09-27)
 ==================
