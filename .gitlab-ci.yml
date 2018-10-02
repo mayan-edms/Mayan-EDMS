@@ -34,11 +34,14 @@ job_docker_push:
   image: docker:latest
   services:
     - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - VERSION=`cat docker/version`
     - docker pull "$CI_REGISTRY_IMAGE:$VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
