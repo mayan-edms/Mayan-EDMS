@@ -3,6 +3,8 @@
 * Fix the link to the documenation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
 * Update related links. Add links to the new Wiki and Forum.
+* Add Redis config entries in the Docker images to disable
+  saving the database and to only provision 1 database.
 
 3.1.3 (2018-09-27)
 ==================
