@@ -4,9 +4,17 @@ import logging
 
 from django.apps import apps
 
+from document_indexing.tasks import task_index_document
+
 from .settings import setting_auto_ocr
 
 logger = logging.getLogger(__name__)
+
+
+def handler_index_document(sender, **kwargs):
+    task_index_document.apply_async(
+        kwargs=dict(document_id=kwargs['instance'].document.pk)
+    )
 
 
 def handler_initialize_new_ocr_settings(sender, instance, **kwargs):

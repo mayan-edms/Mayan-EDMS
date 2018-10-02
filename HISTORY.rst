@@ -11,6 +11,7 @@
   in the trash.
 * Load the DropZone CSS from package and remove the
   hard code CSS from appearance/base.css.
+* Add support for indexing on OCR content changes.
 
 3.1.3 (2018-09-27)
 ==================

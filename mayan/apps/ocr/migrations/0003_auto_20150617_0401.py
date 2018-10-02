@@ -9,7 +9,7 @@ def move_content_from_documents_to_ocr_app(apps, schema_editor):
     DocumentPageContent = apps.get_model('ocr', 'DocumentPageContent')
 
     for document_page in DocumentPage.objects.using(schema_editor.connection.alias).all():
-        document_page_content = DocumentPageContent.objects.using(schema_editor.connection.alias).create(
+        DocumentPageContent.objects.using(schema_editor.connection.alias).create(
             document_page=document_page,
             content=document_page.content_old or ''
         )

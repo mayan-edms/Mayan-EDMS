@@ -25,7 +25,8 @@ from navigation import SourceColumn
 
 from .events import event_ocr_document_version_submit
 from .handlers import (
-    handler_initialize_new_ocr_settings, handler_ocr_document_version,
+    handler_index_document, handler_initialize_new_ocr_settings,
+    handler_ocr_document_version,
 )
 from .links import (
     link_document_page_ocr_content, link_document_ocr_content,
@@ -39,6 +40,7 @@ from .permissions import (
     permission_ocr_content_view
 )
 from .queues import *  # NOQA
+from .signals import post_document_version_ocr
 from .utils import get_document_ocr_content
 
 logger = logging.getLogger(__name__)
@@ -191,6 +193,11 @@ class OCRApp(MayanAppConfig):
             )
         )
 
+        post_document_version_ocr.connect(
+            dispatch_uid='ocr_handler_index_document',
+            receiver=handler_index_document,
+            sender=DocumentVersion
+        )
         post_save.connect(
             dispatch_uid='ocr_handler_initialize_new_ocr_settings',
             receiver=handler_initialize_new_ocr_settings,
