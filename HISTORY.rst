@@ -9,6 +9,8 @@
   rendering busy indicator.
 * Disable the fancybox caption link if the document is
   in the trash.
+* Load the DropZone CSS from package and remove the
+  hard code CSS from appearance/base.css.
 
 3.1.3 (2018-09-27)
 ==================
