@@ -50,7 +50,7 @@ The easiest way to use Mayan EDMS is by using the official
 and working before attempting to install Mayan EDMS.
 
 For the complete set of installation instructions visit the Mayan EDMS documentation
-at: http://mayan.readthedocs.io/en/latest/topics/installation.html
+at: https://docs.mayan-edms.com/topics/installation.html
 
 <h2 align="center">Hardware requirements</h2>
 
@@ -62,7 +62,7 @@ at: http://mayan.readthedocs.io/en/latest/topics/installation.html
 
 - [Homepage](http://www.mayan-edms.com)
 - [Videos](https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw)
-- [Documentation](http://mayan.readthedocs.io/en/stable/)
+- [Documentation](https://docs.mayan-edms.com)
 - [Paid support](http://www.mayan-edms.com/providers/)
 - [Roadmap](https://gitlab.com/mayan-edms/mayan-edms/wikis/roadmap)
 - [Contributing](https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md)

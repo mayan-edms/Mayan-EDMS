@@ -63,7 +63,7 @@ link_current_user_locale_profile_edit = Link(
 )
 link_documentation = Link(
     icon_class=icon_documentation, tags='new_window',
-    text=_('Documentation'), url='https://mayan.readthedocs.io/en/stable/'
+    text=_('Documentation'), url='https://docs.mayan-edms.com'
 )
 link_object_error_list = Link(
     kwargs=get_kwargs_factory('resolved_object'),

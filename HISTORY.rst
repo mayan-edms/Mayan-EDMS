@@ -1,3 +1,8 @@
+3.1.4 (2018-10-XX)
+==================
+* Fix the link to the documenation. Closes GitLab issue #516.
+  Thanks to Matthias Urlichs @smurfix for the report.
+
 3.1.3 (2018-09-27)
 ==================
 * Make sure template API renders in non US languages.

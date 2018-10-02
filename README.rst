@@ -21,7 +21,7 @@ Make sure Docker is properly installed and working before attempting to install
 Mayan EDMS.
 
 For the complete set of installation instructions visit the Mayan EDMS documentation
-at: http://mayan.readthedocs.io/en/latest/topics/installation.html
+at: https://docs.mayan-edms.com/topics/installation.html
 
 .. _Docker: https://www.docker.com/
 
@@ -35,7 +35,7 @@ Important links
 
 - `Homepage <http://www.mayan-edms.com>`__
 - `Videos <https://www.youtube.com/channel/UCJOOXHP1MJ9lVA7d8ZTlHPw>`__
-- `Documentation <http://mayan.readthedocs.io/en/stable/>`__
+- `Documentation <https://docs.mayan-edms.com>`__
 - `Paid support <http://www.mayan-edms.com/providers/>`__
 - `Roadmap <https://gitlab.com/mayan-edms/mayan-edms/wikis/roadmap>`__
 - `Contributing <https://gitlab.com/mayan-edms/mayan-edms/blob/master/CONTRIBUTING.md>`__
