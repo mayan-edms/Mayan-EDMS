@@ -30,7 +30,6 @@ class ParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
 
         self.document = self.upload_document()
         self.document.submit_for_parsing()
-        print '@@@', list(self.document.latest_version.content())
 
         self.assertTrue(
             self.document in IndexInstanceNode.objects.get(
