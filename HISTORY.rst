@@ -1,8 +1,3 @@
-3.2 (2018-XX-XX)
-================
-* Add support for reindexing document on content parsing
-  changes.
-
 3.1.4 (2018-10-XX)
 ==================
 * Fix the link to the documenation. Closes GitLab issue #516.
@@ -17,6 +12,8 @@
 * Load the DropZone CSS from package and remove the
   hard code CSS from appearance/base.css.
 * Add support for indexing on OCR content changes.
+* Add support for reindexing document on content parsing
+  changes.
 
 3.1.3 (2018-09-27)
 ==================
