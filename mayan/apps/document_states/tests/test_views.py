@@ -18,20 +18,14 @@ from .literals import (
     TEST_WORKFLOW_LABEL_EDITED, TEST_WORKFLOW_STATE_LABEL,
     TEST_WORKFLOW_STATE_LABEL_EDITED, TEST_WORKFLOW_STATE_COMPLETION,
     TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
-    TEST_WORKFLOW_TRANSITION_LABEL_2
 )
+from .mixins import WorkflowTestMixin
 
 
-class DocumentStateViewTestCase(GenericViewTestCase):
+class DocumentStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
     def setUp(self):
         super(DocumentStateViewTestCase, self).setUp()
         self.login_user()
-
-    def _create_workflow(self):
-        self.workflow = Workflow.objects.create(
-            label=TEST_WORKFLOW_LABEL,
-            internal_name=TEST_WORKFLOW_INTERNAL_NAME
-        )
 
     def _request_workflow_create_view(self):
         return self.post(
@@ -77,7 +71,10 @@ class DocumentStateViewTestCase(GenericViewTestCase):
         return self.post(
             viewname='document_states:setup_workflow_edit', args=(
                 self.workflow.pk,
-            ), data={'label': TEST_WORKFLOW_LABEL_EDITED}
+            ), data={
+                'label': TEST_WORKFLOW_LABEL_EDITED,
+                'internal_name': self.workflow.internal_name
+            }
         )
 
     def test_workflow_edit_view_no_access(self):
@@ -85,15 +82,15 @@ class DocumentStateViewTestCase(GenericViewTestCase):
         response = self._request_workflow_edit_view()
         self.assertEquals(response.status_code, 403)
         self.workflow.refresh_from_db()
-        self.assertTrue(self.workflow.label, TEST_WORKFLOW_LABEL)
+        self.assertEqual(self.workflow.label, TEST_WORKFLOW_LABEL)
 
     def test_workflow_edit_view_with_access(self):
         self._create_workflow()
         self.grant_access(permission=permission_workflow_edit, obj=self.workflow)
         response = self._request_workflow_edit_view()
-        self.assertEquals(response.status_code, 200)
+        self.assertEquals(response.status_code, 302)
         self.workflow.refresh_from_db()
-        self.assertTrue(self.workflow.label, TEST_WORKFLOW_LABEL_EDITED)
+        self.assertEqual(self.workflow.label, TEST_WORKFLOW_LABEL_EDITED)
 
     def _request_workflow_list_view(self):
         return self.get(
@@ -133,26 +130,10 @@ class DocumentStateViewTestCase(GenericViewTestCase):
         self.assertEquals(response.status_code, 200)
 
 
-class DocumentStateStateViewTestCase(GenericViewTestCase):
+class DocumentStateStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
     def setUp(self):
         super(DocumentStateStateViewTestCase, self).setUp()
         self.login_user()
-
-    def _create_workflow(self):
-        self.workflow = Workflow.objects.create(
-            label=TEST_WORKFLOW_LABEL,
-            internal_name=TEST_WORKFLOW_INTERNAL_NAME
-        )
-
-    def _create_workflow_states(self):
-        self.workflow_initial_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_INITIAL_STATE_LABEL,
-            completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION, initial=True
-        )
-        self.workflow_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_STATE_LABEL,
-            completion=TEST_WORKFLOW_STATE_COMPLETION
-        )
 
     def _request_workflow_state_create_view(self):
         return self.post(
@@ -300,46 +281,10 @@ class DocumentStateToolViewTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentStateTransitionViewTestCase(GenericDocumentViewTestCase):
+class DocumentStateTransitionViewTestCase(WorkflowTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentStateTransitionViewTestCase, self).setUp()
         self.login_user()
-
-    def _create_workflow(self):
-        self.workflow = Workflow.objects.create(
-            label=TEST_WORKFLOW_LABEL,
-            internal_name=TEST_WORKFLOW_INTERNAL_NAME
-        )
-
-    def _create_workflow_states(self):
-        self.workflow_initial_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_INITIAL_STATE_LABEL,
-            completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION, initial=True
-        )
-        self.workflow_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_STATE_LABEL,
-            completion=TEST_WORKFLOW_STATE_COMPLETION
-        )
-
-    def _create_workflow_transition(self):
-        self.workflow_transition = WorkflowTransition.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_TRANSITION_LABEL,
-            origin_state=self.workflow_initial_state,
-            destination_state=self.workflow_state
-        )
-
-    def _create_workflow_transitions(self):
-        self.workflow_transition = WorkflowTransition.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_TRANSITION_LABEL,
-            origin_state=self.workflow_initial_state,
-            destination_state=self.workflow_state
-        )
-
-        self.workflow_transition_2 = WorkflowTransition.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_TRANSITION_LABEL_2,
-            origin_state=self.workflow_initial_state,
-            destination_state=self.workflow_state
-        )
 
     def _create_document(self):
         with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
@@ -528,33 +473,10 @@ class DocumentStateTransitionViewTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentStateTransitionEventViewTestCase(GenericDocumentViewTestCase):
+class DocumentStateTransitionEventViewTestCase(WorkflowTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentStateTransitionEventViewTestCase, self).setUp()
         self.login_user()
-
-    def _create_workflow(self):
-        self.workflow = Workflow.objects.create(
-            label=TEST_WORKFLOW_LABEL,
-            internal_name=TEST_WORKFLOW_INTERNAL_NAME
-        )
-
-    def _create_workflow_states(self):
-        self.workflow_initial_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_INITIAL_STATE_LABEL,
-            completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION, initial=True
-        )
-        self.workflow_state = WorkflowState.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_STATE_LABEL,
-            completion=TEST_WORKFLOW_STATE_COMPLETION
-        )
-
-    def _create_workflow_transition(self):
-        self.workflow_transition = WorkflowTransition.objects.create(
-            workflow=self.workflow, label=TEST_WORKFLOW_TRANSITION_LABEL,
-            origin_state=self.workflow_initial_state,
-            destination_state=self.workflow_state
-        )
 
     def _request_workflow_transition_event_list_view(self):
         return self.get(
