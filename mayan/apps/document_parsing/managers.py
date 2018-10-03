@@ -10,6 +10,7 @@ from django.db import models
 
 from .events import event_parsing_document_version_finish
 from .parsers import Parser
+from .signals import post_document_version_parsing
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +49,10 @@ class DocumentPageContentManager(models.Manager):
             event_parsing_document_version_finish.commit(
                 action_object=document_version.document,
                 target=document_version
+            )
+
+            post_document_version_parsing.send(
+                sender=document_version.__class__, instance=document_version
             )
 
 

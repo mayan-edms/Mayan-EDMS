@@ -25,7 +25,8 @@ from navigation import SourceColumn
 
 from .events import event_parsing_document_version_submit
 from .handlers import (
-    handler_initialize_new_parsing_settings, handler_parse_document_version
+    handler_index_document, handler_initialize_new_parsing_settings,
+    handler_parse_document_version
 )
 from .links import (
     link_document_content, link_document_content_download,
@@ -37,6 +38,7 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
+from .signals import post_document_version_parsing
 from .utils import get_document_content
 
 logger = logging.getLogger(__name__)
@@ -178,8 +180,14 @@ class DocumentParsingApp(MayanAppConfig):
                 link_document_type_submit, link_error_list,
             )
         )
+
+        post_document_version_parsing.connect(
+            dispatch_uid='document_parsing_handler_index_document',
+            receiver=handler_index_document,
+            sender=DocumentVersion
+        )
         post_save.connect(
-            dispatch_uid='handler_initialize_new_parsing_settings',
+            dispatch_uid='document_parsing_handler_initialize_new_parsing_settings',
             receiver=handler_initialize_new_parsing_settings,
             sender=DocumentType
         )
