@@ -15,7 +15,11 @@
             {% trans 'Confirm delete' %}
         {% else %}
             {% if form %}
-                {% trans 'Confirm' %}
+                {% if object %}
+                    {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
+                {% else %}
+                    {% trans 'Confirm' %}
+                {% endif %}
             {% else %}
                 {% if read_only %}
                     {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
