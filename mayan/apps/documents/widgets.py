@@ -60,7 +60,7 @@ class DocumentPageThumbnailWidget(object):
             template_name='documents/widgets/document_thumbnail.html',
             context={
                 # Disable the clickable link if the document is in the trash
-                'disable_title_link': instance.in_trash,
+                'disable_title_link': instance.is_in_trash,
                 'gallery_name': 'document_list',
                 'instance': instance,
                 'size_preview_width': setting_preview_width.value,

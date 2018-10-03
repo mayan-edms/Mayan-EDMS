@@ -281,6 +281,10 @@ class Document(models.Model):
         for document_version in self.versions.all():
             document_version.invalidate_cache()
 
+    @property
+    def is_in_trash(self):
+        return self.in_trash
+
     def natural_key(self):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
@@ -565,6 +569,10 @@ class DocumentVersion(models.Model):
         storage_documentimagecache.delete(self.cache_filename)
         for page in self.pages.all():
             page.invalidate_cache()
+
+    @property
+    def is_in_trash(self):
+        return self.document.is_in_trash
 
     def open(self, raw=False):
         """
@@ -973,6 +981,10 @@ class DocumentPage(models.Model):
         storage_documentimagecache.delete(self.cache_filename)
         for cached_image in self.cached_images.all():
             cached_image.delete()
+
+    @property
+    def is_in_trash(self):
+        return self.document.is_in_trash
 
     def natural_key(self):
         return (self.page_number, self.document_version.natural_key())
