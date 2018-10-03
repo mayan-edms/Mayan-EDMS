@@ -160,13 +160,13 @@ class PartialNavigation {
          */
 
         if (djangoDEBUG) {
-            $('#ajax-content').html('<pre class="text-primary" style="background-color:#ffe7ae"><code>' + jqXHR.responseText + '</code></pre>');
+            $('#ajax-content').html('<pre class="text-primary" style="background-color:#ffe7ae"><code>' + jqXHR.statusText + '</code></pre>');
         } else {
           if (jqXHR.status == 0) {
               $('#modal-server-error .modal-body').html($('#template-error').html());
               $('#modal-server-error').modal('show')
           } else {
-              $('#ajax-content').html(jqXHR.responseText);
+              $('#ajax-content').html(jqXHR.statusText);
           }
         }
     }
