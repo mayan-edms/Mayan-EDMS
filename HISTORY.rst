@@ -1,5 +1,5 @@
-3.1.4 (2018-10-XX)
-==================
+3.1.4 (2018-10-4)
+=================
 * Fix the link to the documenation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
 * Update related links. Add links to the new Wiki and Forum.
@@ -19,6 +19,7 @@
   for the report.
 * Improve search app. Refactored to resolve search queries
   by terms first then by field.
+* Add explanation to the launch workflows tool.
 
 3.1.3 (2018-09-27)
 ==================

@@ -892,7 +892,11 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
 
 class ToolLaunchAllWorkflows(ConfirmView):
     extra_context = {
-        'title': _('Launch all workflows?')
+        'title': _('Launch all workflows?'),
+        'subtitle': _(
+            'This will launch all workflows created after documents have '
+            'already been uploaded.'
+        )
     }
     view_permission = permission_workflow_tools
 
