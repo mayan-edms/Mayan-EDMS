@@ -14,6 +14,9 @@
 * Add support for indexing on OCR content changes.
 * Add support for reindexing document on content parsing
   changes.
+* Strip HTML entities from the browser's window title.
+  Closes GitLab issue #517. Thanks to Daniel Carrico @daniel1113
+  for the report.
 
 3.1.3 (2018-09-27)
 ==================
