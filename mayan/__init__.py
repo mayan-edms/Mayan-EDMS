@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
 __title__ = 'Mayan EDMS'
-__version__ = '3.1.3'
-__build__ = 0x030101
-__build_string__ = '3.1.3-19-g72678e31f_Wed Oct 3 15:14:18 2018 -0400'
+__version__ = '3.1.4'
+__build__ = 0x030104
+__build_string__ = '3.1.3-28-g8e3484663_Thu Oct 4 19:34:07 2018 -0400'
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'
 __description__ = 'Free Open Source Electronic Document Management System'
