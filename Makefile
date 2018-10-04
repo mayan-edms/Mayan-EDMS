@@ -133,6 +133,9 @@ test-with-oracle-all: test-launch-oracle
 docs-serve:
 	cd docs;make livehtml
 
+docs-spellcheck:
+
+	sphinx-build -b spelling -d docs/_build/ docs docs/_build/spelling
 
 # Translations
 

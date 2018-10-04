@@ -33,7 +33,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "_ext"))
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 #extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 #extensions = ["djangodocs", "sphinx.ext.intersphinx"]
-extensions = ['sphinxcontrib.blockdiag']
+extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.spelling']
 
 blockdiag_antialias = True
 blockdiag_html_image_format = "SVG"
