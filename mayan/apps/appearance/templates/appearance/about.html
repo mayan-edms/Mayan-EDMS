@@ -101,7 +101,7 @@
 
         <p class="text-center">
             {% blocktrans with project_title as project_title %}
-                {{ project_title }} is a free and open-source software brought to you with <i class="fa fa-heart text-danger"></i> by Roberto Rosario and contributors.
+                {{ project_title }} is a free and open-source software brought to you with <i class="fa fa-heart text-danger" style="transform: rotate(10deg);"></i> by Roberto Rosario and contributors.
             {% endblocktrans %}
         </p>
 
@@ -119,13 +119,19 @@
 
         <p class="text-center">
             {% blocktrans with icon_documentation as icon_documentation and icon_wiki as icon_wiki %}
-                For questions check the <a class="new_window" href="https://docs.mayan-edms.com">documentation {{ icon_documentation }}</a> or the <a class="new_window" href="https://wiki.mayan-edms.com">wiki {{ icon_wiki }}</a>.
+                The complete list of changes is available via the <a class="new_window" href="https://docs.mayan-edms.com/releases/index.html">Release notes {{ icon_documentation }}</a> or the short version <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst">Changelog {{ icon_documentation }}</a>.
+            {% endblocktrans %}
+        </p>
+
+        <p class="text-center">
+            {% blocktrans with icon_documentation as icon_documentation and icon_wiki as icon_wiki %}
+                For questions check the <a class="new_window" href="https://docs.mayan-edms.com">Documentation {{ icon_documentation }}</a> or the <a class="new_window" href="https://wiki.mayan-edms.com">Wiki {{ icon_wiki }}</a>.
             {% endblocktrans %}
         </p>
 
         <p class="text-center">
             {% blocktrans with icon_forum as icon_forum and icon_source_code as icon_source_code %}
-                If you found a bug or got a feature idea, visit the <a class="new_window" href="https://forum.mayan-edms.com">forum {{ icon_forum }}</a> or open a ticket in the <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms">source code repository {{ icon_source_code }}</a>.
+                If you found a bug or have a feature idea, visit the <a class="new_window" href="https://forum.mayan-edms.com">Forum {{ icon_forum }}</a> or open a ticket in the <a class="new_window" href="https://gitlab.com/mayan-edms/mayan-edms">Source code repository {{ icon_source_code }}</a>.
             {% endblocktrans %}
         </p>
         <p class="text-center">
