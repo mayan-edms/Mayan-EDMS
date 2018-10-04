@@ -406,7 +406,7 @@ Migrate existing database schema with::
 
 During the migration several messages of stale content types can occur:
 
-.. code-block:: bash
+::
 
     The following content types are stale and need to be deleted:
 

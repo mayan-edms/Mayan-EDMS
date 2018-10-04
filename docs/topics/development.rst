@@ -421,38 +421,47 @@ or with::
 
 8. Bump version in `mayan/__init__.py`.
 9. Bump version in `docker/version`.
-10. Update requirements version in `setup.py` using::
+10. Update requirements version in `setup.py` using:
+    ::
 
-    make generate-setup
+        make generate-setup
 
-11. Build source package and test::
+11. Build source package and test:
+    ::
 
-     make test-sdist-via-docker-ubuntu
+        make test-sdist-via-docker-ubuntu
 
-12. Build wheel package and test::
+12. Build wheel package and test:
+    ::
 
-     make test-wheel-via-docker-ubuntu
+        make test-wheel-via-docker-ubuntu
 
-13. Tag version::
+13. Tag version:
+    ::
 
-     git tag -a vX.Y.Z -m "Version X.Y.Z"
+        git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-14. Switch to the `releases` branch::
+14. Switch to the `releases` branch:
+    ::
 
-    git checkout releases
+        git checkout releases
 
-15. Push tag upstream::
+15. Push tag upstream:
+    ::
 
-     git push --tags
+        git push --tags
 
-16. Push code to trigger builds::
+16. Push code to trigger builds:
+    ::
 
-    git push
+        git push
 
-17. Build and upload a test release::
+17. Build and upload a test release:
+    ::
 
-     make release-test-via-docker-ubuntu
+        make release-test-via-docker-ubuntu
 
-18. Build and upload a final release::
+18. Build and upload a final release:
+    ::
 
-     make release-via-docker-ubuntu
+        make release-via-docker-ubuntu

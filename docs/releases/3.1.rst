@@ -61,11 +61,12 @@ Example::
 The second feature allow users to make changes to the settings options from the
 web interface. Just navigate to [System] -> [Setup] -> [Settings]. Settings are
 grouped by namespaces based on the app of type of system their control.
-To change the default width of thumbnails, navigate to [Documents] -> [DOCUMENTS_THUMBNAIL_WIDTH]
- and click on [Edit] to change the current value. Upon clicking on [Save] the
- ``config.yml`` will be updated to include this new value. A restart of the installation
- is required to make the change effective. This is not a Mayan limitation but a
- design decision of Django, the framework upon which Mayan is built.
+To change the default width of thumbnails, navigate to [Documents] ->
+[DOCUMENTS_THUMBNAIL_WIDTH]
+and click on [Edit] to change the current value. Upon clicking on [Save] the
+``config.yml`` will be updated to include this new value. A restart of the installation
+is required to make the change effective. This is not a Mayan limitation but a
+design decision of Django, the framework upon which Mayan is built.
 
 The third feature creates a backup configuration file every time the installation
 of Mayan successfully starts. This keeps one backup of the last configuration
@@ -365,7 +366,7 @@ Other changes
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.
   Reduces the chance of wrongly sized cards.
-- Generalize the Javascript menu rendering into an API for 
+- Generalize the Javascript menu rendering into an API for
   templates that only refresh the menu when there are changes.
   Closes GitLab issue #511. Thanks to Daniel Carrico
   @daniel1113 for the report.
@@ -463,5 +464,5 @@ Bugs fixed or issues closed
 * `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
 * `GitLab issue #360 <https://gitlab.com/mayan-edms/mayan-edms/issues/360>`_ Should quick rename (optionally) retain original file type extension?
 * `GitLab issue #511 <https://gitlab.com/mayan-edms/mayan-edms/issues/511>`_ Menu bar flickering in 3.1b1
-  
+
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
