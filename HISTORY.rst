@@ -17,6 +17,8 @@
 * Strip HTML entities from the browser's window title.
   Closes GitLab issue #517. Thanks to Daniel Carrico @daniel1113
   for the report.
+* Improve search app. Refactored to resolve search queries
+  by terms first then by field.
 
 3.1.3 (2018-09-27)
 ==================

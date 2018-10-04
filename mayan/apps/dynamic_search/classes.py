@@ -13,6 +13,13 @@ from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
 
+QUERY_OPERATION_AND = 1
+QUERY_OPERATION_OR = 2
+
+TERM_OPERATION_AND = 'AND'
+TERM_OPERATION_OR = 'OR'
+TERM_OPERATIONS = [TERM_OPERATION_AND, TERM_OPERATION_OR]
+
 
 class SearchModel(object):
     _registry = {}
@@ -61,7 +68,7 @@ class SearchModel(object):
 
         inside_quotes = False
         negated = False
-        term = []
+        term_letters = []
         terms = []
 
         for letter in text:
@@ -70,22 +77,23 @@ class SearchModel(object):
             else:
                 if letter in QUOTES:
                     if inside_quotes:
-                        if term:
+                        if term_letters:
                             terms.append(
                                 {
                                     'meta': False,
                                     'negated': negated,
-                                    'string': ''.join(term)
+                                    'string': ''.join(term_letters)
                                 }
                             )
                             negated = False
-                            term = []
+                            term_letters = []
 
                     inside_quotes = not inside_quotes
                 else:
                     if not inside_quotes and letter == SPACE_CHARACTER:
-                        if term:
-                            if term == ['O', 'R']:
+                        if term_letters:
+                            term_string = ''.join(term_letters)
+                            if term_string in TERM_OPERATIONS:
                                 meta = True
                             else:
                                 meta = False
@@ -94,20 +102,20 @@ class SearchModel(object):
                                 {
                                     'meta': meta,
                                     'negated': negated,
-                                    'string': ''.join(term)
+                                    'string': term_string
                                 }
                             )
                             negated = False
-                            term = []
+                            term_letters = []
                     else:
-                        term.append(letter)
+                        term_letters.append(letter)
 
-        if term:
+        if term_letters:
             terms.append(
                 {
                     'meta': False,
                     'negated': negated,
-                    'string': ''.join(term)
+                    'string': ''.join(term_letters)
                 }
             )
 
@@ -146,31 +154,6 @@ class SearchModel(object):
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
 
-    def assemble_query(self, terms, search_fields):
-        """
-        Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search
-        fields.
-        """
-        queries = []
-
-        for term in terms:
-            query = None
-            if term['string'] != 'OR':
-                for field in search_fields:
-                    q = Q(**{'%s__%s' % (field, 'icontains'): term['string']})
-
-                    if term['negated']:
-                        q = ~q
-
-                    if query is None:
-                        query = q
-                    else:
-                        query = query | q
-
-            queries.append(query)
-        return queries
-
     def get_all_search_fields(self):
         return self.search_fields
 
@@ -197,106 +180,27 @@ class SearchModel(object):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-
         elapsed_time = 0
         start_time = datetime.datetime.now()
-        result_set = set()
-        search_dict = {}
 
-        if 'q' in query_string:
-            # Simple search
-            for search_field in self.get_all_search_fields():
-                search_dict.setdefault(search_field.get_model(), {
-                    'searches': [],
-                    'label': search_field.label,
-                    'return_value': search_field.return_value
-                })
-                search_dict[search_field.get_model()]['searches'].append(
-                    {
-                        'field_name': [search_field.field],
-                        'terms': SearchModel.get_terms(
-                            query_string.get('q', '').strip()
-                        )
-                    }
-                )
-        else:
-            for search_field in self.get_all_search_fields():
-                if search_field.field in query_string and query_string[search_field.field]:
-                    search_dict.setdefault(search_field.get_model(), {
-                        'searches': [],
-                        'label': search_field.label,
-                        'return_value': search_field.return_value
-                    })
-                    search_dict[search_field.get_model()]['searches'].append(
-                        {
-                            'field_name': [search_field.field],
-                            'terms': SearchModel.get_terms(
-                                query_string[search_field.field]
-                            )
-                        }
-                    )
+        result = None
+        for search_field in self.get_all_search_fields():
 
-        for model, data in search_dict.items():
-            logger.debug('model: %s', model)
+            terms = self.get_terms(
+                query_string.get(
+                    search_field.field, query_string.get('q', '')
+                ).strip()
+            )
 
-            # Initialize per model result set
-            model_result_set = set()
-
-            for query_entry in data['searches']:
-                # Fashion a list of queries for a field for each term
-                field_query_list = self.assemble_query(
-                    query_entry['terms'], query_entry['field_name']
-                )
-
-                logger.debug('field_query_list: %s', field_query_list)
-
-                # Initialize per field result set
-                field_result_set = set()
-
-                # Get results per search field
-                intersection = True
-                for query in field_query_list:
-                    logger.debug('query: %s', query)
-
-                    if query:
-                        term_query_result_set = set(
-                            model.objects.filter(query).values_list(
-                                data['return_value'], flat=True
-                            )
-                        )
-
-                        # Convert the QuerySet to a Python set and perform the
-                        # AND operation on the program and not as a query.
-                        # This operation ANDs all the field term results
-                        # belonging to a single model, making sure to only include
-                        # results in the final field result variable if all the
-                        # terms are found in a single field.
-                        if not field_result_set:
-                            field_result_set = term_query_result_set
-                        else:
-                            if intersection:
-                                field_result_set &= term_query_result_set
-                            else:
-                                field_result_set |= term_query_result_set
-
-                        logger.debug(
-                            'term_query_result_set: %s', len(term_query_result_set)
-                        )
-                        logger.debug('field_result_set: %s', len(field_result_set))
-
-                        intersection = True
-                    else:
-                        intersection = False
-
-                if global_and_search:
-                    if not model_result_set:
-                        model_result_set = field_result_set
-                    else:
-                        model_result_set &= field_result_set
+            field_query = search_field.get_query(terms=terms)
+            if field_query:
+                if result is None:
+                    result = field_query
                 else:
-                    model_result_set |= field_result_set
-
-            result_set = result_set | model_result_set
+                    if global_and_search:
+                        result = result & field_query
+                    else:
+                        result = result | field_query
 
         elapsed_time = force_text(
             datetime.datetime.now() - start_time
@@ -304,9 +208,8 @@ class SearchModel(object):
 
         logger.debug('elapsed_time: %s', elapsed_time)
 
-        queryset = self.model.objects.filter(
-            pk__in=list(result_set)[:setting_limit.value]
-        )
+        pk_list = set(self.model.objects.filter(result or Q()).values_list('pk', flat=True)[:setting_limit.value])
+        queryset = self.model.objects.filter(pk__in=pk_list)
 
         if self.permission:
             queryset = AccessControlList.objects.filter_by_access(
@@ -316,7 +219,6 @@ class SearchModel(object):
         return queryset, elapsed_time
 
 
-# SearchField classes
 class SearchField(object):
     """
     Search for terms in fields that directly belong to the parent SearchModel
@@ -325,10 +227,36 @@ class SearchField(object):
         self.search_model = search_model
         self.field = field
         self.label = label
-        self.return_value = 'pk'
 
     def get_full_name(self):
         return self.field
 
     def get_model(self):
         return self.search_model.model
+
+    def get_query(self, terms):
+        query_operation = QUERY_OPERATION_AND
+        result = None
+
+        for term in terms:
+            if term['meta']:
+                # It is a meta term, modifies the query operation
+                # and is not searched
+                if term['string'] == TERM_OPERATION_OR:
+                    query_operation = QUERY_OPERATION_OR
+            else:
+                q_object = Q(
+                    **{'%s__%s' % (self.field, 'icontains'): term['string']}
+                )
+                if term['negated']:
+                    q_object = ~q_object
+
+            if result is None:
+                result = q_object
+            else:
+                if query_operation == QUERY_OPERATION_AND:
+                    result = result & q_object
+                else:
+                    result = result | q_object
+
+        return result
