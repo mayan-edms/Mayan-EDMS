@@ -1,0 +1,94 @@
+===============================
+Mayan EDMS v3.1.4 release notes
+===============================
+
+Released: October XX, 2018
+
+* Fix the link to the documenation. Closes GitLab issue #516.
+  Thanks to Matthias Urlichs @smurfix for the report.
+* Update related links. Add links to the new Wiki and Forum.
+* Add Redis config entries in the Docker images to disable
+  saving the database and to only provision 1 database.
+* Remove use of hard coded font icon for document page
+  rendering busy indicator.
+* Disable the fancybox caption link if the document is
+  in the trash.
+* Load the DropZone CSS from package and remove the
+  hard code CSS from appearance/base.css.
+* Add support for indexing on OCR content changes.
+* Add support for reindexing document on content parsing
+  changes.
+* Strip HTML entities from the browser's window title.
+  Closes GitLab issue #517. Thanks to Daniel Carrico @daniel1113
+  for the report.
+
+Removals
+--------
+
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+
+If installed via Python's PIP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Remove deprecated requirements::
+
+    $ curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt | pip uninstall -r /dev/stdin
+
+Type in the console::
+
+    $ pip install mayan-edms==3.1.3
+
+the requirements will also be updated automatically.
+
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+~~~~~~~~~~~~
+Perform these steps after updating the code from either step above.
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #516 <https://gitlab.com/mayan-edms/mayan-edms/issues/516>`_ The readthedocs.io link is broken (page doesn't exist).
+* `GitLab issue #517 <https://gitlab.com/mayan-edms/mayan-edms/issues/517>`_ Quotes in workflow state document web browser title
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
