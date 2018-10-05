@@ -10,16 +10,14 @@ from metadata.models import MetadataType, DocumentTypeMetadataType
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 
 from .literals import (
-    TEST_INDEX_LABEL, TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
-    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME
+    TEST_INDEX_TEMPLATE_METADATA_EXPRESSION, TEST_METADATA_TYPE_LABEL,
+    TEST_METADATA_TYPE_NAME
 )
+from .mixins import DocumentIndexingTestMixin
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class IndexTestCase(DocumentTestMixin, BaseTestCase):
-    def setUp(self):
-        super(IndexTestCase, self).setUp()
-
+class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
     def test_indexing(self):
         metadata_type = MetadataType.objects.create(
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
@@ -28,15 +26,11 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
             document_type=self.document_type, metadata_type=metadata_type
         )
 
-        # Create empty index
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
-
-        # Add our document type to the new index
-        index.document_types.add(self.document_type)
+        self._create_index()
 
         # Create simple index template
-        root = index.template_root
-        index.node_templates.create(
+        root = self.index.template_root
+        self.index.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
         )
@@ -124,19 +118,11 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
             metadata_type=metadata_type, value='0001'
         )
 
-        # Create empty index
-        index = Index.objects.create(label='test')
-        self.assertEqual(list(Index.objects.all()), [index])
-
-        # Add our document type to the new index
-        index.document_types.add(self.document_type)
-        self.assertQuerysetEqual(
-            index.document_types.all(), [repr(self.document_type)]
-        )
+        self._create_index()
 
         # Create simple index template
-        root = index.template_root
-        index.node_templates.create(
+        root = self.index.template_root
+        self.index.node_templates.create(
             parent=root, expression='{{ document.metadata_value_of.test }}',
             link_documents=True
         )
@@ -169,20 +155,16 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
                 file_object=file_object
             )
 
-        # Create empty index
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
-
-        # Add our document type to the new index
-        index.document_types.add(self.document_type)
+        self._create_index()
 
         # Create simple index template
-        root = index.template_root
-        level_1 = index.node_templates.create(
+        root = self.index.template_root
+        level_1 = self.index.node_templates.create(
             parent=root, expression='{{ document.uuid }}',
             link_documents=False
         )
 
-        index.node_templates.create(
+        self.index.node_templates.create(
             parent=level_1, expression='{{ document.label }}',
             link_documents=True
         )
@@ -202,16 +184,15 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
         On a two level template if the first level doesn't return a result
         the indexing should stop. GitLab issue #391.
         """
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
-        index.document_types.add(self.document_type)
+        self._create_index()
 
-        level_1 = index.node_templates.create(
-            parent=index.template_root,
+        level_1 = self.index.node_templates.create(
+            parent=self.index.template_root,
             expression='',
             link_documents=True
         )
 
-        index.node_templates.create(
+        self.index.node_templates.create(
             parent=level_1, expression='{{ document.label }}',
             link_documents=True
         )
@@ -219,16 +200,15 @@ class IndexTestCase(DocumentTestMixin, BaseTestCase):
         Index.objects.rebuild()
 
     def test_date_based_index(self):
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
-        index.document_types.add(self.document_type)
+        self._create_index()
 
-        level_year = index.node_templates.create(
-            parent=index.template_root,
+        level_year = self.index.node_templates.create(
+            parent=self.index.template_root,
             expression='{{ document.date_added|date:"Y" }}',
             link_documents=False
         )
 
-        index.node_templates.create(
+        self.index.node_templates.create(
             parent=level_year,
             expression='{{ document.date_added|date:"m" }}',
             link_documents=True
