@@ -73,7 +73,7 @@ job_documentation_build:
     - docs
   before_script:
     - apt-get -qq update
-    - apt-get install -qq locales make python-pip
+    - apt-get install -qq locales make python-pip enchant
     - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
     - locale-gen en_US.UTF-8
     - update-locale LANG=en_US.UTF-8
