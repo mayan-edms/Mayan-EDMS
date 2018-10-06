@@ -12,7 +12,7 @@
   YAML validation of arguments.
 * Add stricted error checking to the crop transformation.
 * Update compressed files class module to work with Python 3.
-
+* Update document parsing app tests to work with Python 3.
 
 3.1.4 (2018-10-4)
 =================
