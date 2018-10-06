@@ -27,5 +27,6 @@ static_collected/
 /misc/mayan.geany
 /mayan/media/static/
 /venv/
+/venv3/
 /whoosh_index/
 node_modules/
