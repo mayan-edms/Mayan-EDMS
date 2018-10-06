@@ -5,14 +5,19 @@ from django.conf.urls import url
 from .api_views import APIDocumentPageContentView
 from .views import (
     DocumentContentView, DocumentContentDownloadView,
-    DocumentParsingErrorsListView, DocumentSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
+    DocumentPageContentView, DocumentParsingErrorsListView,
+    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView,
+    ParseErrorListView
 )
 
 urlpatterns = [
     url(
         r'^documents/(?P<pk>\d+)/content/$', DocumentContentView.as_view(),
         name='document_content'
+    ),
+    url(
+        r'^documents/pages/(?P<pk>\d+)/content/$',
+        DocumentPageContentView.as_view(), name='document_page_content'
     ),
     url(
         r'^documents/(?P<pk>\d+)/content/download/$',

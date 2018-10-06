@@ -29,10 +29,11 @@ from .handlers import (
     handler_parse_document_version
 )
 from .links import (
-    link_document_content, link_document_content_download,
-    link_document_parsing_errors_list, link_document_submit_multiple,
-    link_document_submit, link_document_type_parsing_settings,
-    link_document_type_submit, link_error_list
+    link_document_content, link_document_page_content,
+    link_document_content_download, link_document_parsing_errors_list,
+    link_document_submit_multiple, link_document_submit,
+    link_document_type_parsing_settings, link_document_type_submit,
+    link_error_list
 )
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
@@ -75,6 +76,9 @@ class DocumentParsingApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentPage = apps.get_model(
+            app_label='documents', model_name='DocumentPage'
         )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -153,6 +157,9 @@ class DocumentParsingApp(MayanAppConfig):
 
         menu_facet.bind_links(
             links=(link_document_content,), sources=(Document,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_page_content,), sources=(DocumentPage,)
         )
         menu_multi_item.bind_links(
             links=(link_document_submit_multiple,), sources=(Document,)

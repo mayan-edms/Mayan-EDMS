@@ -19,6 +19,11 @@ link_document_content = Link(
     permissions=(permission_content_view,), text=_('Content'),
     view='document_parsing:document_content',
 )
+link_document_page_content = Link(
+    args='resolved_object.id', icon_class=icon_document_content,
+    permissions=(permission_content_view,), text=_('Content'),
+    view='document_parsing:document_page_content',
+)
 link_document_parsing_errors_list = Link(
     args='resolved_object.id', icon_class=icon_document_parsing_errors_list,
     permissions=(permission_content_view,), text=_('Parsing errors'),

@@ -25,13 +25,13 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
         super(DocumentContentViewsTestCase, self).setUp()
         self.login_user()
 
-    def _document_content_view(self):
+    def _request_document_content_view(self):
         return self.get(
             'document_parsing:document_content', args=(self.document.pk,)
         )
 
     def test_document_content_view_no_permissions(self):
-        response = self._document_content_view()
+        response = self._request_document_content_view()
 
         self.assertEqual(response.status_code, 403)
 
@@ -39,7 +39,29 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
         self.grant_access(
             permission=permission_content_view, obj=self.document
         )
-        response = self._document_content_view()
+        response = self._request_document_content_view()
+
+        self.assertContains(
+            response, 'Mayan EDMS Documentation', status_code=200
+        )
+
+    def _request_document_page_content_view(self):
+        return self.get(
+            'document_parsing:document_page_content', args=(
+                self.document.pages.first().pk,
+            )
+        )
+
+    def test_document_page_content_view_no_permissions(self):
+        response = self._request_document_page_content_view()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_page_content_view_with_access(self):
+        self.grant_access(
+            permission=permission_content_view, obj=self.document
+        )
+        response = self._request_document_page_content_view()
 
         self.assertContains(
             response, 'Mayan EDMS Documentation', status_code=200

@@ -10,9 +10,11 @@ from common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from documents.models import Document, DocumentType
+from documents.models import Document, DocumentPage, DocumentType
 
-from .forms import DocumentContentForm, DocumentTypeSelectForm
+from .forms import (
+    DocumentContentForm, DocumentPageContentForm, DocumentTypeSelectForm
+)
 from .models import DocumentVersionParseError
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
@@ -53,6 +55,28 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
         return DocumentContentDownloadView.VirtualFile(
             file=file_object, name='{}-content'.format(self.get_object())
         )
+
+
+class DocumentPageContentView(SingleObjectDetailView):
+    form_class = DocumentPageContentForm
+    model = DocumentPage
+    object_permission = permission_content_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentPageContentView, self).dispatch(
+            request, *args, **kwargs
+        )
+        self.get_object().document.add_as_recent_document_for_user(
+            request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('Content for document page: %s') % self.get_object(),
+        }
 
 
 class DocumentParsingErrorsListView(SingleObjectListView):

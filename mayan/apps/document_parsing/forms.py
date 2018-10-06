@@ -57,6 +57,33 @@ class DocumentContentForm(forms.Form):
     )
 
 
+class DocumentPageContentForm(forms.Form):
+    contents = forms.CharField(
+        label=_('Contents'),
+        widget=TextAreaDiv(
+            attrs={
+                'class': 'text_area_div full-height',
+                'data-height-difference': 360
+            }
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        document_page = kwargs.pop('instance', None)
+        super(DocumentPageContentForm, self).__init__(*args, **kwargs)
+        content = ''
+        self.fields['contents'].initial = ''
+
+        try:
+            page_content = document_page.content.content
+        except DocumentPageContent.DoesNotExist:
+            pass
+        else:
+            content = conditional_escape(force_text(page_content))
+
+        self.fields['contents'].initial = mark_safe(content)
+
+
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(
         queryset=DocumentType.objects.none(), label=('Document type')

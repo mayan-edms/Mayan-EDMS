@@ -7,6 +7,7 @@
 * Remove newlines from the index name levels before using them as FUSE
   directories.
 * Fixed duplicated FUSE directory removal.
+* Add link and view to show the parsed content of each document page.
 
 3.1.4 (2018-10-4)
 =================
