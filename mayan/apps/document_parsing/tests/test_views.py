@@ -2,15 +2,14 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH
-)
+from documents.tests import GenericDocumentViewTestCase, TEST_HYBRID_DOCUMENT
 
 from ..permissions import (
     permission_content_view, permission_document_type_parsing_setup
 )
 from ..utils import get_document_content
+
+TEST_DOCUMENT_CONTENT = 'Sample text'
 
 
 @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
@@ -18,8 +17,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     _skip_file_descriptor_test = True
 
     # Ensure we use a PDF file
-    test_document_filename = TEST_DOCUMENT_FILENAME
-    test_document_path = TEST_DOCUMENT_PATH
+    test_document_filename = TEST_HYBRID_DOCUMENT
 
     def setUp(self):
         super(DocumentContentViewsTestCase, self).setUp()
@@ -42,12 +40,12 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_content_view()
 
         self.assertContains(
-            response, 'Mayan EDMS Documentation', status_code=200
+            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_page_content_view(self):
         return self.get(
-            'document_parsing:document_page_content', args=(
+            viewname='document_parsing:document_page_content', args=(
                 self.document.pages.first().pk,
             )
         )
@@ -64,7 +62,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_page_content_view()
 
         self.assertContains(
-            response, 'Mayan EDMS Documentation', status_code=200
+            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_content_download_view(self):
@@ -87,7 +85,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
-            response, content=(
+            response=response, content=(
                 ''.join(get_document_content(document=self.document))
             ),
         )

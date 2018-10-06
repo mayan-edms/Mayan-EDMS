@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from documents.tests import GenericDocumentTestCase, TEST_DOCUMENT_PATH
+from documents.tests import GenericDocumentTestCase, TEST_HYBRID_DOCUMENT
+
+TEST_DOCUMENT_CONTENT = 'Sample text'
 
 
 class DocumentAutoParsingTestCase(GenericDocumentTestCase):
-    test_document_filename = TEST_DOCUMENT_PATH
+    test_document_filename = TEST_HYBRID_DOCUMENT
     auto_create_document_type = False
 
     @override_settings(DOCUMENT_PARSING_AUTO_PARSING=False)
@@ -20,4 +22,6 @@ class DocumentAutoParsingTestCase(GenericDocumentTestCase):
     def test_enabled_auto_parsing(self):
         self._create_document_type()
         self.document = self.upload_document()
-        self.assertTrue('Mayan' in self.document.content().next())
+        self.assertTrue(
+            TEST_DOCUMENT_CONTENT in self.document.content().next()
+        )

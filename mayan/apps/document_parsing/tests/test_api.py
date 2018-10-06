@@ -4,30 +4,21 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
 from rest_api.tests import BaseAPITestCase
 
 from ..permissions import permission_content_view
 
+TEST_DOCUMENT_CONTENT = 'Sample text'
+
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentParsingAPITestCase(BaseAPITestCase):
+class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
+    test_document_filename = TEST_HYBRID_DOCUMENT
+
     def setUp(self):
         super(DocumentParsingAPITestCase, self).setUp()
         self.login_user()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentParsingAPITestCase, self).tearDown()
 
     def _request_document_page_content_view(self):
         return self.get(
@@ -49,5 +40,5 @@ class DocumentParsingAPITestCase(BaseAPITestCase):
         response = self._request_document_page_content_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(
-            'Mayan EDMS Documentation' in response.data['content']
+            TEST_DOCUMENT_CONTENT in response.data['content']
         )
