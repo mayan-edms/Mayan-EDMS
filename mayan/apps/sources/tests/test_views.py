@@ -39,10 +39,11 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.document.delete()
 
-    def _request_upload_wizard(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+    def _request_upload_wizard_view(self):
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
-                'sources:upload_interactive', args=(self.source.pk,), data={
+                viewname='sources:upload_interactive', args=(self.source.pk,),
+                data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
                 }, follow=True
@@ -51,8 +52,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
     def test_upload_wizard_without_permission(self):
         self.login_user()
 
-        response = self._request_upload_wizard()
-
+        response = self._request_upload_wizard_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Document.objects.count(), 0)
 
@@ -61,7 +61,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_document_create)
 
-        response = self._request_upload_wizard()
+        response = self._request_upload_wizard_view()
 
         self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
@@ -82,9 +82,10 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             obj=self.document_type, permission=permission_document_create
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
-                'sources:upload_interactive', args=(self.source.pk,), data={
+                viewname='sources:upload_interactive', args=(self.source.pk,),
+                data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
                 }, follow=True
@@ -95,7 +96,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
     def _request_upload_interactive_view(self):
         return self.get(
-            'sources:upload_interactive', data={
+            viewname='sources:upload_interactive', data={
                 'document_type_id': self.document_type.pk,
             }
         )
@@ -104,7 +105,6 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.login_user()
 
         response = self._request_upload_interactive_view()
-
         self.assertEqual(response.status_code, 403)
 
     def test_upload_interactive_view_with_access(self):
@@ -113,9 +113,8 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             permission=permission_document_create, obj=self.document_type
         )
         response = self._request_upload_interactive_view()
-
         self.assertContains(
-            response, text=self.source.label, status_code=200
+            response=response, text=self.source.label, status_code=200
         )
 
 
@@ -136,7 +135,8 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
 
         # Create new webform source
         self.post(
-            'sources:setup_source_create', args=(SOURCE_CHOICE_WEB_FORM,),
+            viewname='sources:setup_source_create',
+            args=(SOURCE_CHOICE_WEB_FORM,),
             data={'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
         self.assertEqual(WebFormSource.objects.count(), 1)
@@ -144,8 +144,9 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_descriptor:
             self.post(
-                'sources:upload_interactive', data={
-                    'document-language': 'eng', 'source-file': file_descriptor,
+                viewname='sources:upload_interactive', data={
+                    'document-language': 'eng',
+                    'source-file': file_descriptor,
                     'document_type_id': self.document_type.pk
                 }
             )
@@ -163,7 +164,7 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
 
         # Test for issue 25 during editing
         self.post(
-            'documents:document_edit', args=(document.pk,), data={
+            viewname='documents:document_edit', args=(document.pk,), data={
                 'description': TEST_DOCUMENT_DESCRIPTION,
                 'language': document.language, 'label': document.label
             }
@@ -189,7 +190,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         NewVersionBlock.objects.block(self.document)
 
         response = self.post(
-            'sources:upload_version', args=(self.document.pk,),
+            viewname='sources:upload_version', args=(self.document.pk,),
             follow=True
         )
 
@@ -222,6 +223,13 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         fs_cleanup(self.temporary_directory)
         super(StagingFolderViewTestCase, self).tearDown()
 
+    def _request_staging_file_delete_view(self, staging_folder, staging_file):
+        return self.post(
+            viewname='sources:staging_file_delete', args=(
+                staging_folder.pk, staging_file.encoded_filename
+            )
+        )
+
     def test_staging_folder_delete_no_permission(self):
         self.login_user()
 
@@ -236,12 +244,9 @@ class StagingFolderViewTestCase(GenericViewTestCase):
 
         staging_file = list(staging_folder.get_files())[0]
 
-        response = self.post(
-            'sources:staging_file_delete', args=(
-                staging_folder.pk, staging_file.encoded_filename
-            ), follow=True
+        response = self._request_staging_file_delete_view(
+            staging_folder=staging_folder, staging_file=staging_file
         )
-
         self.assertEqual(response.status_code, 403)
         self.assertEqual(len(list(staging_folder.get_files())), 1)
 
@@ -261,13 +266,10 @@ class StagingFolderViewTestCase(GenericViewTestCase):
 
         staging_file = list(staging_folder.get_files())[0]
 
-        response = self.post(
-            'sources:staging_file_delete', args=(
-                staging_folder.pk, staging_file.encoded_filename
-            ), follow=True
+        response = self._request_staging_file_delete_view(
+            staging_folder=staging_folder, staging_file=staging_file
         )
-
-        self.assertContains(response, 'deleted', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(list(staging_folder.get_files())), 0)
 
 
@@ -278,6 +280,17 @@ class SourcesTestCase(GenericDocumentViewTestCase):
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
+    def _request_setup_source_list_view(self):
+        return self.get(viewname='sources:setup_source_list')
+
+    def test_source_list_view_no_permission(self):
+        self._create_web_source()
+
+        self.login_user()
+
+        response = self._request_setup_source_list_view()
+        self.assertEqual(response.status_code, 403)
+
     def test_source_list_view_with_permission(self):
         self._create_web_source()
 
@@ -285,18 +298,29 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_sources_setup_view)
 
-        response = self.get(viewname='sources:setup_source_list')
+        response = self._request_setup_source_list_view()
+        self.assertContains(
+            response=response, text=self.source.label, status_code=200
+        )
 
-        self.assertContains(response, text=self.source.label, status_code=200)
+    def _request_setup_source_create_view(self):
+        return self.post(
+            args=(SOURCE_CHOICE_WEB_FORM,),
+            viewname='sources:setup_source_create', data={
+                'enabled': True, 'label': TEST_SOURCE_LABEL,
+                'uncompress': TEST_SOURCE_UNCOMPRESS_N
+            }
+        )
 
-    def test_source_list_view_no_permission(self):
-        self._create_web_source()
-
+    def test_source_create_view_no_permission(self):
         self.login_user()
 
-        response = self.get(viewname='sources:setup_source_list')
+        self.grant_permission(permission=permission_sources_setup_view)
 
+        response = self._request_setup_source_create_view()
         self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_create_view_with_permission(self):
         self.login_user()
@@ -304,36 +328,18 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_sources_setup_create)
         self.grant_permission(permission=permission_sources_setup_view)
 
-        response = self.post(
-            args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
-            viewname='sources:setup_source_create', data={
-                'enabled': True, 'label': TEST_SOURCE_LABEL,
-                'uncompress': TEST_SOURCE_UNCOMPRESS_N
-            }
-        )
+        response = self._request_setup_source_create_view()
+        self.assertEquals(response.status_code, 302)
 
         webform_source = WebFormSource.objects.first()
-
         self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)
         self.assertEqual(webform_source.uncompress, TEST_SOURCE_UNCOMPRESS_N)
 
-        self.assertEquals(response.status_code, 200)
-
-    def test_source_create_view_no_permission(self):
-        self.login_user()
-
-        self.grant_permission(permission=permission_sources_setup_view)
-
-        response = self.post(
-            args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
-            viewname='sources:setup_source_create', data={
-                'enabled': True, 'label': TEST_SOURCE_LABEL,
-                'uncompress': TEST_SOURCE_UNCOMPRESS_N
-            }
+    def _request_setup_source_delete_view(self):
+        return self.post(
+            args=(self.source.pk,),
+            viewname='sources:setup_source_delete'
         )
-
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_delete_view_with_permission(self):
         self._create_web_source()
@@ -343,12 +349,8 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.grant_permission(permission=permission_sources_setup_delete)
         self.grant_permission(permission=permission_sources_setup_view)
 
-        response = self.post(
-            args=(self.source.pk,), follow=True,
-            viewname='sources:setup_source_delete'
-        )
-
-        self.assertEqual(response.status_code, 200)
+        response = self._request_setup_source_delete_view()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_delete_view_no_permission(self):
@@ -358,10 +360,6 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_sources_setup_view)
 
-        response = self.post(
-            args=(self.source.pk,), follow=True,
-            viewname='sources:setup_source_delete'
-        )
-
+        response = self._request_setup_source_delete_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(WebFormSource.objects.count(), 1)

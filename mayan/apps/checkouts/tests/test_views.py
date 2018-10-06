@@ -21,6 +21,11 @@ from ..permissions import (
 
 
 class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
+    def _request_document_check_in_view(self):
+        return self.post(
+            viewname='checkouts:checkin_document', args=(self.document.pk,),
+        )
+
     def test_checkin_document_view_no_permission(self):
         self.login_user()
 
@@ -33,12 +38,8 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.is_checked_out())
 
-        response = self.post(
-            'checkouts:checkin_document', args=(self.document.pk,), follow=True
-        )
-
+        response = self._request_document_check_in_view()
         self.assertEquals(response.status_code, 403)
-
         self.assertTrue(self.document.is_checked_out())
 
     def test_checkin_document_view_with_access(self):
@@ -61,33 +62,30 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_checkout_detail_view
         )
 
-        response = self.post(
-            'checkouts:checkin_document', args=(self.document.pk,), follow=True
-        )
-
-        self.assertEquals(response.status_code, 200)
-
+        response = self._request_document_check_in_view()
+        self.assertEquals(response.status_code, 302)
         self.assertFalse(self.document.is_checked_out())
-
         self.assertFalse(
             DocumentCheckout.objects.is_document_checked_out(
                 document=self.document
             )
         )
 
-    def test_checkout_document_view_no_permission(self):
-        self.login_user()
-
-        response = self.post(
-            'checkouts:checkout_document', args=(self.document.pk,), data={
+    def _request_document_checkout_view(self):
+        return self.post(
+            viewname='checkouts:checkout_document', args=(self.document.pk,),
+            data={
                 'expiration_datetime_0': 2,
                 'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
                 'block_new_version': True
-            }, follow=True
+            }
         )
 
-        self.assertEquals(response.status_code, 403)
+    def test_checkout_document_view_no_permission(self):
+        self.login_user()
 
+        response = self._request_document_checkout_view()
+        self.assertEquals(response.status_code, 403)
         self.assertFalse(self.document.is_checked_out())
 
     def test_checkout_document_view_with_access(self):
@@ -100,16 +98,8 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_checkout_detail_view
         )
 
-        response = self.post(
-            'checkouts:checkout_document', args=(self.document.pk,), data={
-                'expiration_datetime_0': 2,
-                'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
-                'block_new_version': True
-            }, follow=True
-        )
-
-        self.assertEquals(response.status_code, 200)
-
+        response = self._request_document_checkout_view()
+        self.assertEquals(response.status_code, 302)
         self.assertTrue(self.document.is_checked_out())
 
     def test_document_new_version_after_checkout(self):

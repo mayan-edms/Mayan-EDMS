@@ -24,13 +24,13 @@ from .permissions import (
 from .utils import get_document_ocr_content
 
 
-class DocumentOCRContent(SingleObjectDetailView):
+class DocumentOCRContentView(SingleObjectDetailView):
     form_class = DocumentOCRContentForm
     model = Document
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentOCRContent, self).dispatch(
+        result = super(DocumentOCRContentView, self).dispatch(
             request, *args, **kwargs
         )
         self.get_object().add_as_recent_document_for_user(user=request.user)
@@ -45,13 +45,13 @@ class DocumentOCRContent(SingleObjectDetailView):
         }
 
 
-class DocumentPageOCRContent(SingleObjectDetailView):
+class DocumentPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentPageOCRContentForm
     model = DocumentPage
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentPageOCRContent, self).dispatch(
+        result = super(DocumentPageOCRContentView, self).dispatch(
             request, *args, **kwargs
         )
         self.get_object().document.add_as_recent_document_for_user(

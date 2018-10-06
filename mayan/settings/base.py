@@ -11,17 +11,12 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 from __future__ import unicode_literals
 
-import errno
 import os
 import sys
-
-import yaml
 
 from django.utils.translation import ugettext_lazy as _
 
 import environ
-
-import mayan
 
 from .literals import (
     CONFIGURATION_FILENAME, CONFIGURATION_LAST_GOOD_FILENAME,
@@ -359,7 +354,7 @@ CONFIGURATION_LAST_GOOD_FILEPATH = os.path.join(
     MEDIA_ROOT, CONFIGURATION_LAST_GOOD_FILENAME
 )
 
-if not 'revertsettings' in sys.argv:
+if 'revertsettings' not in sys.argv:
     result = read_configuration_file(CONFIGURATION_FILEPATH)
     if result:
         globals().update(result)

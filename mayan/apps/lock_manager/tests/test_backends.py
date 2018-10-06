@@ -60,7 +60,7 @@ class FileLockTestCase(TestCase):
         # would be successfull, even after an extended lapse of time
 
     def test_release_expired_reaquired(self):
-        lock_1 = self.locking_backend.acquire_lock(name=TEST_LOCK_1, timeout=1)
+        self.locking_backend.acquire_lock(name=TEST_LOCK_1, timeout=1)
         time.sleep(1.01)
         # TEST_LOCK_1 is expired so trying to acquire it should not return an
         # error.

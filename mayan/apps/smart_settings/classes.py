@@ -127,7 +127,7 @@ class Setting(object):
     def save_last_known_good(cls):
         # Don't write over the last good configuration if we are trying
         # to restore the last good configuration
-        if not 'revertsettings' in sys.argv:
+        if 'revertsettings' not in sys.argv:
             cls.save_configuration(
                 path=settings.CONFIGURATION_LAST_GOOD_FILEPATH
             )

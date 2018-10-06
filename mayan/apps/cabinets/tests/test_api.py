@@ -5,10 +5,10 @@ from django.test import override_settings
 from django.urls import reverse
 from django.utils.encoding import force_text
 
+from rest_framework import status
 from rest_framework.test import APITestCase
 
-from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -19,10 +19,12 @@ from .literals import TEST_CABINET_EDITED_LABEL, TEST_CABINET_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class CabinetAPITestCase(APITestCase):
+class CabinetAPITestCase(DocumentTestMixin, APITestCase):
     """
     Test the cabinet API endpoints
     """
+    auto_upload_document = False
+
     def setUp(self):
         super(CabinetAPITestCase, self).setUp()
 
@@ -35,28 +37,14 @@ class CabinetAPITestCase(APITestCase):
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
 
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document_2 = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(CabinetAPITestCase, self).tearDown()
+        self.document = self.upload_document()
+        self.document_2 = self.upload_document()
 
     def test_cabinet_create(self):
         response = self.client.post(
             reverse('rest_api:cabinet-list'), {'label': TEST_CABINET_LABEL}
         )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         cabinet = Cabinet.objects.first()
 
@@ -74,6 +62,7 @@ class CabinetAPITestCase(APITestCase):
                 )
             }
         )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         cabinet = Cabinet.objects.first()
 
@@ -94,6 +83,7 @@ class CabinetAPITestCase(APITestCase):
                 )
             }
         )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         cabinet = Cabinet.objects.first()
 
@@ -114,12 +104,13 @@ class CabinetAPITestCase(APITestCase):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
         cabinet.documents.add(self.document)
 
-        self.client.delete(
+        response = self.client.delete(
             reverse(
                 'rest_api:cabinet-document',
                 args=(cabinet.pk, self.document.pk)
             )
         )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(cabinet.documents.count(), 0)
 
@@ -133,8 +124,11 @@ class CabinetAPITestCase(APITestCase):
                 args=(cabinet.pk, self.document.pk)
             )
         )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['uuid'], force_text(self.document.uuid))
+        self.assertEqual(
+            response.data['uuid'], force_text(self.document.uuid)
+        )
 
     def test_cabinet_document_list(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
@@ -143,6 +137,7 @@ class CabinetAPITestCase(APITestCase):
         response = self.client.get(
             reverse('rest_api:cabinet-document-list', args=(cabinet.pk,))
         )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
             response.data['results'][0]['uuid'], force_text(self.document.uuid)
@@ -151,19 +146,21 @@ class CabinetAPITestCase(APITestCase):
     def test_cabinet_delete(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.client.delete(
+        response = self.client.delete(
             reverse('rest_api:cabinet-detail', args=(cabinet.pk,))
         )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(Cabinet.objects.count(), 0)
 
     def test_cabinet_edit_via_patch(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.client.patch(
+        response = self.client.patch(
             reverse('rest_api:cabinet-detail', args=(cabinet.pk,)),
             {'label': TEST_CABINET_EDITED_LABEL}
         )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         cabinet.refresh_from_db()
 
@@ -172,10 +169,11 @@ class CabinetAPITestCase(APITestCase):
     def test_cabinet_edit_via_put(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.client.put(
+        response = self.client.put(
             reverse('rest_api:cabinet-detail', args=(cabinet.pk,)),
             {'label': TEST_CABINET_EDITED_LABEL}
         )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         cabinet.refresh_from_db()
 
@@ -184,11 +182,12 @@ class CabinetAPITestCase(APITestCase):
     def test_cabinet_add_document(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:cabinet-document-list', args=(cabinet.pk,)), {
                 'documents_pk_list': '{}'.format(self.document.pk)
             }
         )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
             cabinet.documents.all(), (repr(self.document),)
@@ -197,13 +196,14 @@ class CabinetAPITestCase(APITestCase):
     def test_cabinet_add_multiple_documents(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:cabinet-document-list', args=(cabinet.pk,)), {
                 'documents_pk_list': '{},{}'.format(
                     self.document.pk, self.document_2.pk
                 )
             }
         )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
             cabinet.documents.all(), map(
@@ -220,8 +220,7 @@ class CabinetAPITestCase(APITestCase):
         response = self.client.get(
             reverse('rest_api:cabinet-list')
         )
-
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'][0]['label'], cabinet.label)
 
     def test_cabinet_remove_document(self):
@@ -229,12 +228,12 @@ class CabinetAPITestCase(APITestCase):
 
         cabinet.documents.add(self.document)
 
-        self.client.delete(
+        response = self.client.delete(
             reverse(
                 'rest_api:cabinet-document', args=(
                     cabinet.pk, self.document.pk
                 )
             ),
         )
-
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(cabinet.documents.count(), 0)

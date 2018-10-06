@@ -32,28 +32,30 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         super(DocumentsViewsTestCase, self).setUp()
         self.login_user()
 
-    def test_document_view_no_permissions(self):
-        response = self.get(
-            'documents:document_properties', args=(self.document.pk,)
+    def _request_document_properties_view(self):
+        return self.get(
+            viewname='documents:document_properties',
+            args=(self.document.pk,)
         )
 
+    def test_document_view_no_permissions(self):
+        response = self._request_document_properties_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_view_with_permissions(self):
         self.grant_access(
             obj=self.document, permission=permission_document_view
         )
-        response = self.get(
-            'documents:document_properties', args=(self.document.pk,),
-            follow=True
+        response = self._request_document_properties_view()
+        self.assertContains(
+            response=response, text=self.document.label, status_code=200
         )
 
-        self.assertContains(
-            response, 'roperties for document', status_code=200
-        )
+    def _request_document_list_view(self):
+        return self.get(viewname='documents:document_list')
 
     def test_document_list_view_no_permissions(self):
-        response = self.get('documents:document_list')
+        response = self._request_document_list_view()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['object_list'].count(), 0)
 
@@ -61,12 +63,14 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.grant_access(
             obj=self.document, permission=permission_document_view
         )
-        response = self.get('documents:document_list')
-        self.assertContains(response, self.document.label, status_code=200)
+        response = self._request_document_list_view()
+        self.assertContains(
+            response=response, text=self.document.label, status_code=200
+        )
 
     def _request_document_type_edit(self, document_type):
         return self.post(
-            'documents:document_document_type_edit',
+            viewname='documents:document_document_type_edit',
             args=(self.document.pk,),
             data={'document_type': document_type.pk}
         )
@@ -85,7 +89,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(
-            response, text='Select a valid choice', status_code=200
+            response=response, text='Select a valid choice', status_code=200
         )
 
         self.assertEqual(
@@ -122,7 +126,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
     def _request_multiple_document_type_edit(self, document_type):
         return self.post(
-            'documents:document_multiple_document_type_edit',
+            viewname='documents:document_multiple_document_type_edit',
             data={
                 'id_list': self.document.pk,
                 'document_type': document_type.pk
@@ -143,7 +147,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(
-            response, text='Select a valid choice.', status_code=200
+            response=response, text='Select a valid choice.', status_code=200
         )
 
         self.assertEqual(
@@ -178,15 +182,15 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
     def _request_document_download_form_view(self):
         return self.get(
-            'documents:document_download_form', args=(self.document.pk,),
-            follow=True,
+            viewname='documents:document_download_form',
+            args=(self.document.pk,),
         )
 
     def test_document_download_form_view_no_permission(self):
         response = self._request_document_download_form_view()
 
         self.assertNotContains(
-            response, text=self.document.label, status_code=200
+            response=response, text=self.document.label, status_code=200
         )
 
     def test_document_download_form_view_with_access(self):
@@ -196,14 +200,16 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_download_form_view()
 
         self.assertContains(
-            response, text=self.document.label, status_code=200
+            response=response, text=self.document.label, status_code=200
+        )
+
+    def _request_document_download_view(self):
+        return self.get(
+            viewname='documents:document_download', args=(self.document.pk,)
         )
 
     def test_document_download_view_no_permission(self):
-        response = self.get(
-            'documents:document_download', args=(self.document.pk,)
-        )
-
+        response = self._request_document_download_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_download_view_with_permission(self):
@@ -216,25 +222,24 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.grant_access(
             obj=self.document, permission=permission_document_download
         )
-        response = self.get(
-            'documents:document_download', args=(self.document.pk,)
-        )
-
+        response = self._request_document_download_view()
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                response, content=file_object.read(),
+                response=response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
 
-    def test_document_multiple_download_view_no_permission(self):
-        response = self.get(
-            'documents:document_multiple_download',
+    def _request_document_multiple_download_view(self):
+        return self.get(
+            viewname='documents:document_multiple_download',
             data={'id_list': self.document.pk}
         )
 
+    def test_document_multiple_download_view_no_permission(self):
+        response = self._request_document_multiple_download_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_multiple_download_view_with_permission(self):
@@ -247,16 +252,12 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_document_download
         )
 
-        response = self.get(
-            'documents:document_multiple_download',
-            data={'id_list': self.document.pk}
-        )
-
+        response = self._request_document_multiple_download_view()
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                response, content=file_object.read(),
+                response=response, content=file_object.read(),
                 basename=TEST_SMALL_DOCUMENT_FILENAME,
                 mime_type=self.document.file_mimetype
             )
@@ -264,14 +265,13 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
     def _request_document_version_download(self, data=None):
         data = data or {}
         return self.get(
-            'documents:document_version_download', args=(
+            viewname='documents:document_version_download', args=(
                 self.document.latest_version.pk,
             ), data=data
         )
 
     def test_document_version_download_view_no_permission(self):
         response = self._request_document_version_download()
-
         self.assertEqual(response.status_code, 403)
 
     def test_document_version_download_view_with_permission(self):
@@ -285,12 +285,11 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_document_download
         )
         response = self._request_document_version_download()
-
         self.assertEqual(response.status_code, 200)
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                response, content=file_object.read(),
+                response=response, content=file_object.read(),
                 basename=force_text(self.document.latest_version),
                 mime_type='{}; charset=utf-8'.format(
                     self.document.latest_version.mimetype
@@ -315,7 +314,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         with self.document.open() as file_object:
             self.assert_download_response(
-                response, content=file_object.read(),
+                response=response, content=file_object.read(),
                 basename=self.document.latest_version.get_rendered_string(
                     preserve_extension=True
                 ), mime_type='{}; charset=utf-8'.format(
@@ -323,14 +322,17 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
                 )
             )
 
+    def _request_document_update_page_count_view(self):
+        return self.post(
+            viewname='documents:document_update_page_count',
+            args=(self.document.pk,)
+        )
+
     def test_document_update_page_count_view_no_permission(self):
         self.document.pages.all().delete()
         self.assertEqual(self.document.pages.count(), 0)
 
-        response = self.post(
-            'documents:document_update_page_count', args=(self.document.pk,)
-        )
-
+        response = self._request_document_update_page_count_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), 0)
 
@@ -343,22 +345,21 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_document_tools)
 
-        response = self.post(
-            'documents:document_update_page_count',
-            args=(self.document.pk,)
-        )
+        response = self._request_document_update_page_count_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), page_count)
+
+    def _request_document_multiple_update_page_count_view(self):
+        return self.post(
+            viewname='documents:document_multiple_update_page_count',
+            data={'id_list': self.document.pk}
+        )
 
     def test_document_multiple_update_page_count_view_no_permission(self):
         self.document.pages.all().delete()
         self.assertEqual(self.document.pages.count(), 0)
 
-        response = self.post(
-            'documents:document_multiple_update_page_count',
-            data={'id_list': self.document.pk}
-        )
-
+        response = self._request_document_multiple_update_page_count_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), 0)
 
@@ -369,12 +370,15 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_document_tools)
 
-        response = self.post(
-            'documents:document_multiple_update_page_count',
-            data={'id_list': self.document.pk}
-        )
+        response = self._request_document_multiple_update_page_count_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.pages.count(), page_count)
+
+    def _request_document_clear_transformations_view(self):
+        return self.post(
+            viewname='documents:document_clear_transformations',
+            args=(self.document.pk,)
+        )
 
     def test_document_clear_transformations_view_no_permission(self):
         document_page = self.document.pages.first()
@@ -394,11 +398,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_document_view
         )
 
-        response = self.post(
-            'documents:document_clear_transformations',
-            args=(self.document.pk,)
-        )
-
+        response = self._request_document_clear_transformations_view()
         self.assertEqual(response.status_code, 302)
         self.assertQuerysetEqual(
             Transformation.objects.get_for_model(document_page),
@@ -425,14 +425,16 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_document_view
         )
 
-        response = self.post(
-            'documents:document_clear_transformations',
-            args=(self.document.pk,)
-        )
-
+        response = self._request_document_clear_transformations_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             Transformation.objects.get_for_model(document_page).count(), 0
+        )
+
+    def _request_document_multiple_clear_transformations(self):
+        return self.post(
+            viewname='documents:document_multiple_clear_transformations',
+            data={'id_list': self.document.pk}
         )
 
     def test_document_multiple_clear_transformations_view_no_permission(self):
@@ -451,11 +453,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_document_view)
 
-        response = self.post(
-            'documents:document_multiple_clear_transformations',
-            data={'id_list': self.document.pk}
-        )
-
+        response = self._request_document_multiple_clear_transformations()
         self.assertEqual(response.status_code, 302)
         self.assertQuerysetEqual(
             Transformation.objects.get_for_model(document_page),
@@ -483,27 +481,21 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             obj=self.document, permission=permission_transformation_delete
         )
 
-        response = self.post(
-            'documents:document_multiple_clear_transformations',
-            data={'id_list': self.document.pk}, follow=True
-        )
-
-        self.assertEqual(response.status_code, 200)
+        response = self._request_document_multiple_clear_transformations()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(
             Transformation.objects.get_for_model(document_page).count(), 0
         )
 
-    def _empty_trash(self):
-        return self.post('documents:trash_can_empty')
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
 
     def test_trash_can_empty_view_no_permission(self):
         self.document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        response = self._empty_trash()
-
+        response = self._request_empty_trash_view()
         self.assertEqual(response.status_code, 403)
-
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
     def test_trash_can_empty_view_with_permission(self):
@@ -512,39 +504,39 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_empty_trash)
 
-        response = self._empty_trash()
-
+        response = self._request_empty_trash_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
-    def test_document_page_view_no_permissions(self):
-        response = self.get(
-            'documents:document_page_view', args=(
-                self.document.pages.first().pk,
+    def _request_document_page_view(self, document_page):
+        return self.get(
+            viewname='documents:document_page_view', args=(
+                document_page.pk,
             )
         )
 
+    def test_document_page_view_no_permissions(self):
+        response = self._request_document_page_view(
+            document_page=self.document.pages.first()
+        )
         self.assertEqual(response.status_code, 403)
 
     def test_document_page_view_with_access(self):
         self.grant_access(
             obj=self.document, permission=permission_document_view
         )
-        response = self.get(
-            'documents:document_page_view', args=(
-                self.document.pages.first().pk,
-            ),
-            follow=True
+        response = self._request_document_page_view(
+            document_page=self.document.pages.first()
         )
-
         self.assertContains(
-            response, force_text(self.document.pages.first()), status_code=200
+            response=response, text=force_text(self.document.pages.first()),
+            status_code=200
         )
 
-    def _request_print_view(self):
+    def _request_document_print_view(self):
         return self.get(
-            'documents:document_print', args=(
+            viewname='documents:document_print', args=(
                 self.document.pk,
             ), data={
                 'page_group': PAGE_RANGE_ALL
@@ -552,14 +544,14 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_print_view_no_access(self):
-        response = self ._request_print_view()
+        response = self._request_document_print_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_print_view_with_access(self):
         self.grant_access(
             obj=self.document, permission=permission_document_print
         )
-        response = self._request_print_view()
+        response = self._request_document_print_view()
         self.assertEqual(response.status_code, 200)
 
 
@@ -571,7 +563,8 @@ class DocumentsQuickLabelViewsTestCase(DocumentTypeQuickLabelTestMixin, GenericD
     def _request_document_quick_label_edit_view(self, extra_data=None):
         data = {
             'document_type_available_filenames': self.document_type_filename.pk,
-            'label': ''  # View needs at least an empty label for quick
+            'label': ''
+            # View needs at least an empty label for quick
             # label to work. Cause is unknown.
         }
         data.update(extra_data or {})

@@ -99,7 +99,7 @@ class CheckoutsAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self._checkout_document()
         response = self._request_checkout_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertNotContains(response, text=self.document.uuid)
+        self.assertNotContains(response=response, text=self.document.uuid)
 
     def test_checkout_list_view_with_document_access(self):
         self._checkout_document()
@@ -108,7 +108,7 @@ class CheckoutsAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
         response = self._request_checkout_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertNotContains(response, text=self.document.uuid)
+        self.assertNotContains(response=response, text=self.document.uuid)
 
     def test_checkout_list_view_with_checkout_access(self):
         self._checkout_document()
@@ -117,7 +117,7 @@ class CheckoutsAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
         response = self._request_checkout_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertNotContains(response, text=self.document.uuid)
+        self.assertNotContains(response=response, text=self.document.uuid)
 
     def test_checkout_list_view_with_access(self):
         self._checkout_document()
@@ -129,4 +129,4 @@ class CheckoutsAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
         response = self._request_checkout_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertContains(response, text=self.document.uuid)
+        self.assertContains(response=response, text=self.document.uuid)

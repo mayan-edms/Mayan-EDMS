@@ -7,7 +7,9 @@ from documents.tests import DocumentTestMixin
 from document_indexing.models import Index, IndexInstanceNode
 from document_indexing.tests.literals import TEST_INDEX_LABEL
 
-from .literals import TEST_OCR_INDEX_NODE_TEMPLATE
+from .literals import (
+    TEST_OCR_INDEX_NODE_TEMPLATE, TEST_OCR_INDEX_NODE_TEMPLATE_LEVEL
+)
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -30,6 +32,6 @@ class OCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
 
         self.assertTrue(
             self.document in IndexInstanceNode.objects.get(
-                value='mayan'
+                value=TEST_OCR_INDEX_NODE_TEMPLATE_LEVEL
             ).documents.all()
         )

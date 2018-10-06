@@ -3,11 +3,10 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
 
-from documents.models import DocumentType
+from rest_framework import status
+
 from documents.permissions import permission_document_view
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
-)
+from documents.tests import DocumentTestMixin
 from permissions.tests.literals import TEST_ROLE_LABEL
 from rest_api.tests import BaseAPITestCase
 
@@ -16,26 +15,14 @@ from ..permissions import permission_acl_view
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class ACLAPITestCase(BaseAPITestCase):
+class ACLAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def setUp(self):
         super(ACLAPITestCase, self).setUp()
         self.login_admin_user()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
 
         self.document_content_type = ContentType.objects.get_for_model(
             self.document
         )
-
-    def tearDown(self):
-        if hasattr(self, 'document_type'):
-            self.document_type.delete()
 
     def _create_acl(self):
         self.acl = AccessControlList.objects.create(
@@ -77,7 +64,7 @@ class ACLAPITestCase(BaseAPITestCase):
             )
         )
 
-        self.assertEqual(response.status_code, 204)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(AccessControlList.objects.count(), 0)
 
     def test_object_acl_detail_view(self):
@@ -112,7 +99,7 @@ class ACLAPITestCase(BaseAPITestCase):
                 permission.pk
             )
         )
-        self.assertEqual(response.status_code, 204)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(self.acl.permissions.count(), 0)
 
     def test_object_acl_permission_detail_view(self):
@@ -162,7 +149,7 @@ class ACLAPITestCase(BaseAPITestCase):
             ), data={'permission_pk': permission_acl_view.pk}
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertQuerysetEqual(
             ordered=False, qs=self.acl.permissions.all(), values=(
                 repr(permission_document_view.stored_permission),
@@ -180,7 +167,7 @@ class ACLAPITestCase(BaseAPITestCase):
             ), data={'role_pk': self.role.pk}
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(
             self.document.acls.first().role, self.role
         )
@@ -205,7 +192,7 @@ class ACLAPITestCase(BaseAPITestCase):
             }
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(
             self.document.acls.first().content_object, self.document
         )

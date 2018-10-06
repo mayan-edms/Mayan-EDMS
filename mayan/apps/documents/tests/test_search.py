@@ -12,12 +12,12 @@ from documents.tests import DocumentTestMixin
 class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
     def _perform_document_page_search(self):
         return document_page_search.search(
-            {'q': self.document.label}, user=self.user
+            query_string={'q': self.document.label}, user=self.user
         )
 
     def _perform_document_search(self):
         return document_search.search(
-            {'q': self.document.label}, user=self.user
+            query_string={'q': self.document.label}, user=self.user
         )
 
     def test_document_page_search_no_access(self):
@@ -25,7 +25,9 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
         self.assertFalse(self.document.pages.first() in queryset)
 
     def test_document_page_search_with_access(self):
-        self.grant_access(permission=permission_document_view, obj=self.document)
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
         queryset, elapsed_time = self._perform_document_page_search()
         self.assertTrue(self.document.pages.first() in queryset)
 
@@ -34,6 +36,8 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
         self.assertFalse(self.document in queryset)
 
     def test_document_search_with_access(self):
-        self.grant_access(permission=permission_document_view, obj=self.document)
+        self.grant_access(
+            permission=permission_document_view, obj=self.document
+        )
         queryset, elapsed_time = self._perform_document_search()
         self.assertTrue(self.document in queryset)

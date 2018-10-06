@@ -25,7 +25,7 @@ class Issue46TestCase(GenericViewTestCase):
 
         # Upload many instances of the same test document
         for i in range(self.document_count):
-            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object,
                     label='test document',

@@ -13,6 +13,16 @@ from .models import DocumentPageOCRContent
 
 
 class DocumentPageOCRContentForm(forms.Form):
+    contents = forms.CharField(
+        label=_('Contents'),
+        widget=TextAreaDiv(
+            attrs={
+                'class': 'text_area_div full-height',
+                'data-height-difference': 360
+            }
+        )
+    )
+
     def __init__(self, *args, **kwargs):
         page = kwargs.pop('instance', None)
         super(DocumentPageOCRContentForm, self).__init__(*args, **kwargs)
@@ -28,6 +38,12 @@ class DocumentPageOCRContentForm(forms.Form):
 
         self.fields['contents'].initial = mark_safe(content)
 
+
+class DocumentOCRContentForm(forms.Form):
+    """
+    Form that concatenates all of a document pages' text content into a
+    single textarea widget
+    """
     contents = forms.CharField(
         label=_('Contents'),
         widget=TextAreaDiv(
@@ -38,12 +54,6 @@ class DocumentPageOCRContentForm(forms.Form):
         )
     )
 
-
-class DocumentOCRContentForm(forms.Form):
-    """
-    Form that concatenates all of a document pages' text content into a
-    single textarea widget
-    """
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('instance', None)
         super(DocumentOCRContentForm, self).__init__(*args, **kwargs)
@@ -70,16 +80,6 @@ class DocumentOCRContentForm(forms.Form):
                 )
 
         self.fields['contents'].initial = mark_safe(''.join(content))
-
-    contents = forms.CharField(
-        label=_('Contents'),
-        widget=TextAreaDiv(
-            attrs={
-                'class': 'text_area_div full-height',
-                'data-height-difference': 360
-            }
-        )
-    )
 
 
 class DocumentTypeSelectForm(forms.Form):

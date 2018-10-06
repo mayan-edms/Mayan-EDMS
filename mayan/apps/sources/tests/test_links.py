@@ -22,6 +22,8 @@ class SourcesLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_create_link_with_access(self):
-        self.grant_access(permission=permission_document_create, obj=self.document_type)
+        self.grant_access(
+            permission=permission_document_create, obj=self.document_type
+        )
         resolved_link = self._get_document_create_link()
         self.assertNotEqual(resolved_link, None)

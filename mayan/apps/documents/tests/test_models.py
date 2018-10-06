@@ -18,7 +18,7 @@ from .literals import (
     TEST_PDF_INDIRECT_ROTATE_PATH, TEST_OFFICE_DOCUMENT_PATH,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_FILENAME,
     TEST_SMALL_DOCUMENT_MIMETYPE, TEST_SMALL_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_SIZE, TEST_DOCUMENT_FILENAME
+    TEST_SMALL_DOCUMENT_SIZE
 )
 from .mixins import DocumentTestMixin
 
@@ -27,7 +27,6 @@ from .mixins import DocumentTestMixin
 class DocumentTestCase(DocumentTestMixin, BaseTestCase):
     def test_natural_keys(self):
         self.document.pages.first().generate_image()
-
         self._test_database_conversion('documents')
 
     def test_document_creation(self):
@@ -47,10 +46,10 @@ class DocumentTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(self.document.page_count, 1)
 
     def test_version_creation(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(file_object=file_object)
 
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(
                 file_object=file_object, comment='test comment 1'
             )

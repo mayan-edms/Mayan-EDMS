@@ -14,19 +14,6 @@ from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 class TagTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
 
-    def setUp(self):
-        super(TagTestCase, self).setUp()
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()
-        super(TagTestCase, self).tearDown()
-
-    def runTest(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
-        self.assertEqual(tag.label, TEST_TAG_LABEL)
-        self.assertEqual(tag.get_color_code(), 'red')
-
     def test_addition_and_deletion_of_documents(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
         self.document = self.upload_document()

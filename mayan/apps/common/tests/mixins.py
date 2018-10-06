@@ -8,9 +8,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core import management
 
-if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
-    import psutil
-
 from acls.models import AccessControlList
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
@@ -20,6 +17,9 @@ from user_management.tests import (
 )
 
 from ..settings import setting_temporary_directory
+
+if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
+    import psutil
 
 
 class ContentTypeCheckMixin(object):

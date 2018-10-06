@@ -29,17 +29,12 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         super(TagAPITestCase, self).setUp()
         self.login_user()
 
-    def tearDown(self):
-        if hasattr(self, 'document_type'):
-            self.document_type.delete()
-        super(TagAPITestCase, self).tearDown()
-
     def _create_tag(self):
         return Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
 
-    def _request_tag_create(self):
+    def _request_tag_create_view(self):
         return self.post(
             viewname='rest_api:tag-list', data={
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
@@ -47,13 +42,13 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_tag_create_view_no_permission(self):
-        response = self._request_tag_create()
+        response = self._request_tag_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(Tag.objects.count(), 0)
 
     def test_tag_create_view_with_permission(self):
         self.grant_permission(permission=permission_tag_create)
-        response = self._request_tag_create()
+        response = self._request_tag_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         tag = Tag.objects.first()
@@ -65,19 +60,21 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
-    def _request_tag_delete(self):
-        return self.delete(viewname='rest_api:tag-detail', args=(self.tag.pk,))
+    def _request_tag_delete_view(self):
+        return self.delete(
+            viewname='rest_api:tag-detail', args=(self.tag.pk,)
+        )
 
     def test_tag_delete_view_no_access(self):
         self.tag = self._create_tag()
-        response = self._request_tag_delete()
+        response = self._request_tag_delete_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertTrue(self.tag in Tag.objects.all())
 
     def test_tag_delete_view_with_access(self):
         self.tag = self._create_tag()
         self.grant_access(permission=permission_tag_delete, obj=self.tag)
-        response = self._request_tag_delete()
+        response = self._request_tag_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(self.tag in Tag.objects.all())
 
@@ -127,7 +124,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
             force_text(self.document.uuid)
         )
 
-    def _request_tag_edit_via_patch(self):
+    def _request_tag_edit_via_patch_view(self):
         return self.patch(
             viewname='rest_api:tag-detail', args=(self.tag.pk,), data={
                 'label': TEST_TAG_LABEL_EDITED,
@@ -137,7 +134,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_tag_edit_via_patch_no_access(self):
         self.tag = self._create_tag()
-        response = self._request_tag_edit_via_patch()
+        response = self._request_tag_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.tag.refresh_from_db()
         self.assertEqual(self.tag.label, TEST_TAG_LABEL)
@@ -146,13 +143,13 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_tag_edit_via_patch_with_access(self):
         self.tag = self._create_tag()
         self.grant_access(permission=permission_tag_edit, obj=self.tag)
-        response = self._request_tag_edit_via_patch()
+        response = self._request_tag_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.tag.refresh_from_db()
         self.assertEqual(self.tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(self.tag.color, TEST_TAG_COLOR_EDITED)
 
-    def _request_tag_edit_via_put(self):
+    def _request_tag_edit_via_put_view(self):
         return self.put(
             viewname='rest_api:tag-detail', args=(self.tag.pk,), data={
                 'label': TEST_TAG_LABEL_EDITED,
@@ -162,7 +159,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
     def test_tag_edit_via_put_no_access(self):
         self.tag = self._create_tag()
-        response = self._request_tag_edit_via_put()
+        response = self._request_tag_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.tag.refresh_from_db()
         self.assertEqual(self.tag.label, TEST_TAG_LABEL)
@@ -171,13 +168,13 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_tag_edit_via_put_with_access(self):
         self.tag = self._create_tag()
         self.grant_access(permission=permission_tag_edit, obj=self.tag)
-        response = self._request_tag_edit_via_put()
+        response = self._request_tag_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.tag.refresh_from_db()
         self.assertEqual(self.tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(self.tag.color, TEST_TAG_COLOR_EDITED)
 
-    def _request_document_attach_tag(self):
+    def _request_document_attach_tag_view(self):
         return self.post(
             viewname='rest_api:document-tag-list', args=(self.document.pk,),
             data={'tag_pk': self.tag.pk}
@@ -186,7 +183,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def test_document_attach_tag_view_no_access(self):
         self.tag = self._create_tag()
         self.document = self.upload_document()
-        response = self._request_document_attach_tag()
+        response = self._request_document_attach_tag_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertFalse(self.tag in self.document.tags.all())
 
@@ -194,7 +191,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.tag = self._create_tag()
         self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.document)
-        response = self._request_document_attach_tag()
+        response = self._request_document_attach_tag_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertFalse(self.tag in self.document.tags.all())
 
@@ -202,7 +199,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.tag = self._create_tag()
         self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.tag)
-        response = self._request_document_attach_tag()
+        response = self._request_document_attach_tag_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(self.tag in self.document.tags.all())
 
@@ -211,7 +208,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.document = self.upload_document()
         self.grant_access(permission=permission_tag_attach, obj=self.document)
         self.grant_access(permission=permission_tag_attach, obj=self.tag)
-        response = self._request_document_attach_tag()
+        response = self._request_document_attach_tag_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(self.tag in self.document.tags.all())
 
@@ -294,7 +291,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'][0]['label'], self.tag.label)
 
-    def _request_document_tag_remove(self):
+    def _request_document_tag_remove_view(self):
         return self.delete(
             viewname='rest_api:document-tag-detail', args=(
                 self.document.pk, self.tag.pk
@@ -305,7 +302,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.tag = self._create_tag()
         self.document = self.upload_document()
         self.tag.documents.add(self.document)
-        response = self._request_document_tag_remove()
+        response = self._request_document_tag_remove_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(self.tag in self.document.tags.all())
 
@@ -314,7 +311,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.document)
-        response = self._request_document_tag_remove()
+        response = self._request_document_tag_remove_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(self.tag in self.document.tags.all())
 
@@ -323,7 +320,7 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.document = self.upload_document()
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.tag)
-        response = self._request_document_tag_remove()
+        response = self._request_document_tag_remove_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(self.tag in self.document.tags.all())
 
@@ -333,6 +330,6 @@ class TagAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.tag.documents.add(self.document)
         self.grant_access(permission=permission_document_view, obj=self.document)
         self.grant_access(permission=permission_tag_remove, obj=self.tag)
-        response = self._request_document_tag_remove()
+        response = self._request_document_tag_remove_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(self.tag in self.document.tags.all())

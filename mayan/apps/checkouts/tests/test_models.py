@@ -47,7 +47,7 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
         )
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document.new_version(file_object=file_object)
 
     def test_checkin_in(self):
@@ -107,7 +107,7 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
         NewVersionBlock.objects.block(document=self.document)
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document.new_version(file_object=file_object)
 
 

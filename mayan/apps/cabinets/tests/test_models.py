@@ -4,8 +4,7 @@ from django.core.exceptions import ValidationError
 from django.test import override_settings
 
 from common.tests import BaseTestCase
-from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import DocumentTestMixin
 
 from ..models import Cabinet
 
@@ -13,22 +12,7 @@ from .literals import TEST_CABINET_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class CabinetTestCase(BaseTestCase):
-    def setUp(self):
-        super(CabinetTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(CabinetTestCase, self).tearDown()
-
+class CabinetTestCase(DocumentTestMixin, BaseTestCase):
     def test_cabinet_creation(self):
         cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 

@@ -8,6 +8,8 @@ from ..permissions import (
 )
 from ..utils import get_document_ocr_content
 
+TEST_DOCUMENT_CONTENT = 'Mayan EDMS Documentation'
+
 
 class OCRViewsTestCase(GenericDocumentViewTestCase):
     # PyOCR's leak descriptor in get_available_languages and image_to_string
@@ -20,7 +22,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def _request_document_content_view(self):
         return self.get(
-            'ocr:document_ocr_content', args=(self.document.pk,)
+            viewname='ocr:document_ocr_content', args=(self.document.pk,)
         )
 
     def test_document_content_view_no_permissions(self):
@@ -38,12 +40,37 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_content_view()
 
         self.assertContains(
-            response, 'Mayan EDMS Documentation', status_code=200
+            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
+        )
+
+    def _request_document_page_content_view(self):
+        return self.get(
+            viewname='ocr:document_page_ocr_content', args=(
+                self.document.pages.first().pk,
+            )
+        )
+
+    def test_document_page_content_view_no_permissions(self):
+        self.document.submit_for_ocr()
+        response = self._request_document_page_content_view()
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_page_content_view_with_access(self):
+        self.document.submit_for_ocr()
+        self.grant_access(
+            permission=permission_ocr_content_view, obj=self.document
+        )
+
+        response = self._request_document_page_content_view()
+
+        self.assertContains(
+            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_submit_view(self):
         return self.post(
-            'ocr:document_submit', args=(self.document.pk,)
+            viewname='ocr:document_submit', args=(self.document.pk,)
         )
 
     def test_document_submit_view_no_permission(self):
@@ -58,14 +85,14 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         )
         self._request_document_submit_view()
         self.assertTrue(
-            'Mayan EDMS Documentation' in ''.join(
+            TEST_DOCUMENT_CONTENT in ''.join(
                 self.document.latest_version.ocr_content()
             )
         )
 
     def _request_multiple_document_submit_view(self):
         return self.post(
-            'ocr:document_submit_multiple',
+            viewname='ocr:document_submit_multiple',
             data={
                 'id_list': self.document.pk,
             }
@@ -83,14 +110,14 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         )
         self._request_multiple_document_submit_view()
         self.assertTrue(
-            'Mayan EDMS Documentation' in ''.join(
+            TEST_DOCUMENT_CONTENT in ''.join(
                 self.document.latest_version.ocr_content()
             )
         )
 
     def _request_document_ocr_download_view(self):
         return self.get(
-            'ocr:document_ocr_download', args=(self.document.pk,)
+            viewname='ocr:document_ocr_download', args=(self.document.pk,)
         )
 
     def test_document_ocr_download_view_no_permission(self):
@@ -108,7 +135,7 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
-            response, content=(
+            response=response, content=(
                 ''.join(get_document_ocr_content(document=self.document))
             ),
         )

@@ -32,14 +32,18 @@ class PermissionsViewsTestCase(GenericViewTestCase):
         response = self._request_create_role_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Role.objects.count(), 1)
-        self.assertFalse(TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True))
+        self.assertFalse(
+            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
+        )
 
     def test_role_creation_view_with_permission(self):
         self.grant_permission(permission=permission_role_create)
         response = self._request_create_role_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Role.objects.count(), 2)
-        self.assertTrue(TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True))
+        self.assertTrue(
+            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
+        )
 
     def _request_role_delete_view(self):
         return self.post(
@@ -54,7 +58,9 @@ class PermissionsViewsTestCase(GenericViewTestCase):
         response = self._request_role_delete_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Role.objects.count(), 2)
-        self.assertTrue(TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True))
+        self.assertTrue(
+            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
+        )
 
     def test_role_delete_view_with_access(self):
         self._create_role()
@@ -62,7 +68,9 @@ class PermissionsViewsTestCase(GenericViewTestCase):
         response = self._request_role_delete_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Role.objects.count(), 1)
-        self.assertFalse(TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True))
+        self.assertFalse(
+            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
+        )
 
     def _request_role_edit_view(self):
         return self.post(
@@ -99,13 +107,17 @@ class PermissionsViewsTestCase(GenericViewTestCase):
         self._create_role()
         response = self._request_role_list_view()
         self.assertEqual(response.status_code, 200)
-        self.assertNotContains(response, text=TEST_ROLE_2_LABEL, status_code=200)
+        self.assertNotContains(
+            response=response, text=TEST_ROLE_2_LABEL, status_code=200
+        )
 
     def test_role_list_view_with_access(self):
         self._create_role()
         self.grant_access(permission=permission_role_view, obj=self.role_2)
         response = self._request_role_list_view()
-        self.assertContains(response, text=TEST_ROLE_2_LABEL, status_code=200)
+        self.assertContains(
+            response=response, text=TEST_ROLE_2_LABEL, status_code=200
+        )
 
     def _request_role_permissions_view(self):
         return self.get(
@@ -119,13 +131,17 @@ class PermissionsViewsTestCase(GenericViewTestCase):
 
     def test_role_permissions_view_with_permission_grant(self):
         self._create_role()
-        self.grant_access(permission=permission_permission_grant, obj=self.role_2)
+        self.grant_access(
+            permission=permission_permission_grant, obj=self.role_2
+        )
         response = self._request_role_permissions_view()
         self.assertEqual(response.status_code, 200)
 
     def test_role_permissions_view_with_permission_revoke(self):
         self._create_role()
-        self.grant_access(permission=permission_permission_revoke, obj=self.role_2)
+        self.grant_access(
+            permission=permission_permission_revoke, obj=self.role_2
+        )
         response = self._request_role_permissions_view()
         self.assertEqual(response.status_code, 200)
 

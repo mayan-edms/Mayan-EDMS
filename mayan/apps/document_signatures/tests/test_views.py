@@ -30,16 +30,22 @@ TEST_SIGNED_DOCUMENT_COUNT = 2
 
 
 class SignaturesViewTestCase(GenericDocumentViewTestCase):
+    def _request_document_version_signature_list_view(self, document):
+        return self.get(
+            viewname='signatures:document_version_signature_list',
+            args=(document.latest_version.pk,)
+        )
+
     def test_signature_list_view_no_permission(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -47,23 +53,21 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        response = self.get(
-            'signatures:document_version_signature_list',
-            args=(document.latest_version.pk,)
+        response = self._request_document_version_signature_list_view(
+            document=document
         )
-
         self.assertEqual(response.status_code, 403)
 
     def test_signature_list_view_with_access(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -76,24 +80,28 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_view
         )
 
-        response = self.get(
-            'signatures:document_version_signature_list',
-            args=(document.latest_version.pk,)
+        response = self._request_document_version_signature_list_view(
+            document=document
         )
-
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['object_list'].count(), 1)
 
+    def _request_document_version_signature_details_view(self, signature):
+        return self.get(
+            viewname='signatures:document_version_signature_details',
+            args=(signature.pk,)
+        )
+
     def test_signature_detail_view_no_permission(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -101,23 +109,21 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        response = self.get(
-            'signatures:document_version_signature_details',
-            args=(signature.pk,)
+        response = self._request_document_version_signature_details_view(
+            signature=signature
         )
-
         self.assertEqual(response.status_code, 403)
 
     def test_signature_detail_view_with_access(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -130,33 +136,37 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_view
         )
 
-        response = self.get(
-            'signatures:document_version_signature_details',
-            args=(signature.pk,)
+        response = self._request_document_version_signature_details_view(
+            signature=signature
+        )
+        self.assertContains(
+            response=response, text=signature.signature_id, status_code=200
         )
 
-        self.assertContains(response, signature.signature_id, status_code=200)
+    def _request_document_version_signature_upload_view(self, document_version):
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='signatures:document_version_signature_upload',
+                args=(document_version.pk,),
+                data={'signature_file': file_object}
+            )
 
     def test_signature_upload_view_no_permission(self):
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
         self.login_user()
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
-            response = self.post(
-                'signatures:document_version_signature_upload',
-                args=(document.latest_version.pk,),
-                data={'signature_file': file_object}
-            )
-
+        response = self._request_document_version_signature_upload_view(
+            document_version=document.latest_version
+        )
         self.assertEqual(response.status_code, 403)
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
     def test_signature_upload_view_with_access(self):
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -168,23 +178,25 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_upload
         )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
-            response = self.post(
-                'signatures:document_version_signature_upload',
-                args=(document.latest_version.pk,),
-                data={'signature_file': file_object}
-            )
-
+        response = self._request_document_version_signature_upload_view(
+            document_version=document.latest_version
+        )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
+    def _request_document_version_signature_download_view(self, signature):
+        return self.get(
+            viewname='signatures:document_version_signature_download',
+            args=(signature.pk,),
+        )
+
     def test_signature_download_view_no_permission(self):
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -192,20 +204,18 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        response = self.get(
-            'signatures:document_version_signature_download',
-            args=(signature.pk,),
+        response = self._request_document_version_signature_download_view(
+            signature=signature
         )
-
         self.assertEqual(response.status_code, 403)
 
     def test_signature_download_view_with_access(self):
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -220,9 +230,8 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.expected_content_type = 'application/octet-stream; charset=utf-8'
 
-        response = self.get(
-            'signatures:document_version_signature_download',
-            args=(signature.pk,),
+        response = self._request_document_version_signature_download_view(
+            signature=signature
         )
 
         with signature.signature_file as file_object:
@@ -230,16 +239,22 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 self, response=response, content=file_object.read(),
             )
 
+    def _request_document_version_signature_delete_view(self, signature):
+        return self.post(
+            viewname='signatures:document_version_signature_delete',
+            args=(signature.pk,)
+        )
+
     def test_signature_delete_view_no_permission(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -252,24 +267,22 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_view
         )
 
-        response = self.post(
-            'signatures:document_version_signature_delete',
-            args=(signature.pk,)
+        response = self._request_document_version_signature_delete_view(
+            signature=signature
         )
-
         self.assertEqual(response.status_code, 403)
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
     def test_signature_delete_view_with_access(self):
-        with open(TEST_KEY_FILE, 'rb') as file_object:
+        with open(TEST_KEY_FILE, mode='rb') as file_object:
             Key.objects.create(key_data=file_object.read())
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
+        with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             signature = DetachedSignature.objects.create(
                 document_version=document.latest_version,
                 signature_file=File(file_object)
@@ -286,13 +299,16 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_view
         )
 
-        response = self.post(
-            'signatures:document_version_signature_delete',
-            args=(signature.pk,), follow=True
+        response = self._request_document_version_signature_delete_view(
+            signature=signature
         )
-
-        self.assertContains(response, 'deleted', status_code=200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(DetachedSignature.objects.count(), 0)
+
+    def _request_all_document_version_signature_verify_view(self):
+        return self.post(
+            viewname='signatures:all_document_version_signature_verify'
+        )
 
     def test_missing_signature_verify_view_no_permission(self):
         # Silence converter logging
@@ -304,13 +320,13 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
@@ -324,10 +340,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.login_user()
 
-        response = self.post(
-            'signatures:all_document_version_signature_verify', follow=True
-        )
-
+        response = self._request_all_document_version_signature_verify_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
@@ -345,13 +358,13 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
-            with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
 
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
-            with open(TEST_SIGNED_DOCUMENT_PATH, 'rb') as file_object:
+            with open(TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
                 self.document_type.new_document(
                     file_object=file_object
                 )
@@ -369,11 +382,8 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission=permission_document_version_signature_verify
         )
 
-        response = self.post(
-            'signatures:all_document_version_signature_verify', follow=True
-        )
-
-        self.assertContains(response, 'queued', status_code=200)
+        response = self._request_all_document_version_signature_verify_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
             EmbeddedSignature.objects.unsigned_document_versions().count(),

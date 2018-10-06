@@ -27,7 +27,7 @@ class TaggedDocumentUploadTestCase(GenericDocumentViewTestCase):
         self.document.delete()
 
     def _request_upload_interactive_document_create_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:upload_interactive', args=(self.source.pk,),
                 data={
@@ -48,6 +48,5 @@ class TaggedDocumentUploadTestCase(GenericDocumentViewTestCase):
             permission=permission_document_create, obj=self.document_type
         )
         response = self._request_upload_interactive_document_create_view()
-
         self.assertEqual(response.status_code, 302)
         self.assertTrue(self.tag in Document.objects.first().tags.all())

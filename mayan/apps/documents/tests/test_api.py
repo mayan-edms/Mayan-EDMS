@@ -155,7 +155,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.login_user()
 
     def _request_document_upload(self):
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
             return self.post(
                 viewname='rest_api:document-list', data={
                     'document_type': self.document_type.pk,
@@ -208,7 +208,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         # is the latest.
         time.sleep(1)
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_descriptor:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
             return self.post(
                 viewname='rest_api:document-version-list', args=(
                     self.document.pk,
@@ -245,7 +245,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
         # Needed by MySQL as milliseconds value is not store in timestamp field
         time.sleep(1)
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(file_object=file_object)
 
     def _request_document_version_revert(self):

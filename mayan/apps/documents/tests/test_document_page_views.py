@@ -14,7 +14,7 @@ class DocumentPageViewTestCase(GenericDocumentViewTestCase):
 
     def _document_page_list_view(self):
         return self.get(
-            'documents:document_pages', args=(self.document.pk,)
+            viewname='documents:document_pages', args=(self.document.pk,)
         )
 
     def test_document_page_list_view_no_permission(self):
@@ -27,5 +27,5 @@ class DocumentPageViewTestCase(GenericDocumentViewTestCase):
         )
         response = self._document_page_list_view()
         self.assertContains(
-            response, text=self.document.label, status_code=200
+            response=response, text=self.document.label, status_code=200
         )

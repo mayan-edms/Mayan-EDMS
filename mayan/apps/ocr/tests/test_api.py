@@ -11,6 +11,8 @@ from ..permissions import (
     permission_ocr_document, permission_ocr_content_view,
 )
 
+TEST_DOCUMENT_CONTENT = 'Mayan EDMS Documentation'
+
 
 @override_settings(OCR_AUTO_OCR=False)
 @override_settings(DOCUMENT_PARSING_PDFTOTEXT_PATH='')
@@ -85,5 +87,5 @@ class OCRAPITestCase(DocumentTestMixin, BaseAPITestCase):
         response = self._request_document_page_content_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(
-            'Mayan EDMS Documentation' in response.data['content']
+            TEST_DOCUMENT_CONTENT in response.data['content']
         )

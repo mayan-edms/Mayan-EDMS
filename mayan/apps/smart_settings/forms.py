@@ -34,7 +34,7 @@ class SettingForm(forms.Form):
 
         try:
             yaml.safe_load(self.cleaned_data['value'])
-        except yaml.YAMLError as exception:
+        except yaml.YAMLError:
             raise ValidationError(
                 _(
                     '"%s" not a valid entry.'
