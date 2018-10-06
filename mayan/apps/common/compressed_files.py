@@ -114,9 +114,18 @@ class ZipArchive(Archive):
         self._archive = zipfile.ZipFile(file_object)
 
     def add_file(self, file_object, filename):
+        # Remove the zinfo_or_arcname and bytes keyword arguments
+        # so that the writestr methods works on Python 2 and 3
+        # Python 2 syntax:
+        # ZipFile.writestr(zinfo_or_arcname, bytes[, compress_type])
+        # Python 3 syntax:
+        # ZipFile.writestr(
+        #    zinfo_or_arcname, data, compress_type=None, compresslevel=None
+        # )
+        # TODO: Change this to keyword arguments when the move to Python 3
+        # and Django 2.x is complete.
         self._archive.writestr(
-            zinfo_or_arcname=filename, bytes=file_object.read(),
-            compress_type=COMPRESSION
+            filename, file_object.read(), compress_type=COMPRESSION
         )
 
     def create(self):
