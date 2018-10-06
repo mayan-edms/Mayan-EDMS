@@ -1,3 +1,13 @@
+3.1.5 (2018-10-XX)
+==================
+* Consolidate some document indexing test code into a new mixin.
+* Split the code of the mountindex command to be able to add tests.
+* Fix the way the children of IndexInstanceNode are accessed. Fixes
+  GitLab issue #518. Thanks to TheOneValen @TheOneValen for the report.
+* Remove newlines from the index name levels before using them as FUSE
+  directories.
+* Fixed duplicated FUSE directory removal.
+
 3.1.4 (2018-10-4)
 =================
 * Fix the link to the documenation. Closes GitLab issue #516.

@@ -5,5 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class MirroringApp(apps.AppConfig):
+    has_tests = True
     name = 'mirroring'
     verbose_name = _('Mirroring')
