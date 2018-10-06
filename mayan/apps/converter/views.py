@@ -15,6 +15,7 @@ from common.views import (
     SingleObjectListView
 )
 
+from .forms import TransformationForm
 from .icons import icon_transformation
 from .links import link_transformation_create
 from .models import Transformation
@@ -75,7 +76,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
 
 class TransformationCreateView(SingleObjectCreateView):
-    fields = ('name', 'arguments')
+    form_class = TransformationForm
 
     def dispatch(self, request, *args, **kwargs):
         content_type = get_object_or_404(
@@ -133,7 +134,7 @@ class TransformationCreateView(SingleObjectCreateView):
 
 
 class TransformationEditView(SingleObjectEditView):
-    fields = ('name', 'arguments', 'order')
+    form_class = TransformationForm
     model = Transformation
 
     def dispatch(self, request, *args, **kwargs):

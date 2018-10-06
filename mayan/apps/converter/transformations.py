@@ -84,10 +84,25 @@ class TransformationCrop(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super(TransformationCrop, self).execute_on(*args, **kwargs)
 
-        left = float(self.left or '0')
-        top = float(self.top or '0')
-        right = self.image.size[0] - float(self.right or '0')
-        bottom = self.image.size[1] - float(self.bottom or '0')
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = int(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = int(self.bottom or '0')
+        except ValueError:
+            bottom = 0
 
         if left < 0:
             left = 0
@@ -112,6 +127,15 @@ class TransformationCrop(BaseTransformation):
 
         if bottom > self.image.size[1] - 1:
             bottom = self.image.size[1] - 1
+
+        # Invert right value
+        # Pillow uses left, top, right, bottom to define a viewport
+        # of real coordinates
+        # We invert the right and bottom to define a viewport
+        # that can crop from the right and bottom borders without
+        # having to know the real dimensions of an image
+        right = self.image.size[0] - right
+        bottom = self.image.size[1] - bottom
 
         if left > right:
             left = right - 1

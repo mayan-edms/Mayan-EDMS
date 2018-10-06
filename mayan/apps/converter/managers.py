@@ -18,7 +18,7 @@ class TransformationManager(models.Manager):
 
         self.create(
             content_type=content_type, object_id=obj.pk,
-            name=transformation.name, arguments=arguments
+            name=transformation.name, arguments=yaml.safe_dump(arguments)
         )
 
     def copy(self, source, targets):
