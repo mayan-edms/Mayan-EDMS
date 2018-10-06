@@ -169,7 +169,7 @@ class ConverterBase(object):
         )
         logger.debug('converted_output: %s', converted_output)
 
-        with open(converted_output) as converted_file_object:
+        with open(converted_output, mode='rb') as converted_file_object:
             while True:
                 data = converted_file_object.read(CHUNK_SIZE)
                 if not data:
