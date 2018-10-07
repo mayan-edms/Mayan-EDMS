@@ -238,7 +238,7 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         response = self._request_document_type_metadata_type_create_view()
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data.keys()[0], 'non_field_errors')
+        self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
     def _request_document_type_metadata_type_delete_view(self):
         return self.delete(
@@ -396,7 +396,7 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self.grant_permission(permission=permission_metadata_document_add)
         response = self._request_document_metadata_create_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data.keys()[0], 'non_field_errors')
+        self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
     def test_document_metadata_create_invalid_lookup_value_view(self):
         self.metadata_type.lookup = 'invalid,lookup,values,on,purpose'
@@ -404,7 +404,7 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self.grant_permission(permission=permission_metadata_document_add)
         response = self._request_document_metadata_create_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data.keys()[0], 'non_field_errors')
+        self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
     def _request_document_metadata_delete_view(self):
         return self.delete(
