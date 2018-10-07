@@ -28,6 +28,7 @@ apt-get install -y --no-install-recommends \
         gnupg1 \
         graphviz \
         libffi-dev \
+        libfuse2 \
         libjpeg-dev \
         libmagic1 \
         default-libmysqlclient-dev \
@@ -37,7 +38,6 @@ apt-get install -y --no-install-recommends \
         libtiff-dev \
         poppler-utils \
         python-dev \
-        python-pip \
         python-setuptools \
         python-virtualenv \
         python-wheel \
