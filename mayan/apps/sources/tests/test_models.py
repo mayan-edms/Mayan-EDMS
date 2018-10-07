@@ -160,6 +160,28 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
             TEST_EMAIL_BASE64_FILENAME_SUBJECT
         )
 
+    def test_document_upload_no_body(self):
+        self._create_email_source()
+        self.source.store_body = False
+        self.source.save()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_ATTACHMENT_AND_INLINE
+        )
+
+        # Only two attachments, no body document
+        self.assertEqual(2, Document.objects.count())
+
+    def test_document_upload_with_body(self):
+        self._create_email_source()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_ATTACHMENT_AND_INLINE
+        )
+
+        # Only two attachments and a body document
+        self.assertEqual(3, Document.objects.count())
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class POP3SourceTestCase(BaseTestCase):

@@ -632,18 +632,19 @@ class EmailBaseModel(IntervalBaseModel):
                 else:
                     label = 'email_body.txt'
 
-                with ContentFile(content=message.body, name=label) as file_object:
-                    documents = source.handle_upload(
-                        document_type=source.document_type,
-                        file_object=file_object,
-                        expand=SOURCE_UNCOMPRESS_CHOICE_N
-                    )
-                    if metadata_dictionary:
-                        for document in documents:
-                            set_bulk_metadata(
-                                document=document,
-                                metadata_dictionary=metadata_dictionary
-                            )
+                if source.store_body:
+                    with ContentFile(content=message.body, name=label) as file_object:
+                        documents = source.handle_upload(
+                            document_type=source.document_type,
+                            file_object=file_object,
+                            expand=SOURCE_UNCOMPRESS_CHOICE_N
+                        )
+                        if metadata_dictionary:
+                            for document in documents:
+                                set_bulk_metadata(
+                                    document=document,
+                                    metadata_dictionary=metadata_dictionary
+                                )
 
 
 class IMAPEmail(EmailBaseModel):
