@@ -30,7 +30,7 @@ related news tidbits.
 Bugs/ticket tracker
 -------------------
 
-Report bugs with Mayan EDMS or search existing ones using Gitlab's `ticket tracker`_.
+Report bugs with Mayan EDMS or search existing ones using GitLab's `ticket tracker`_.
 
 
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/

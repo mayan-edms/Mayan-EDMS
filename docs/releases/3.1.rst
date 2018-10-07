@@ -321,7 +321,7 @@ Other changes
   indexing and parsing, setup link.
 - Add cascade permission check to the index rebuild tool link.
 - The index rebuild tool now responds with the number of indexes
-  queued to rebuild instead of a static acknowledment.
+  queued to rebuild instead of a static acknowledgment.
 - Add missing permission check to the document duplicate scan
   link.
 - Update forum link in the about menu.

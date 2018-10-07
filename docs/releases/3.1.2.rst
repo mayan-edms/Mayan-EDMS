@@ -15,7 +15,7 @@ Released: September 21, 2018
 - Add test mixin to test the db conversion (dumping and loading) of a
   specific app.
 - Add an user test mixin to group user testing.
-- Add test the user managament app for database conversion.
+- Add test the user management app for database conversion.
 - Add support for natural keys to the DocumentPageImageCache model.
 - Add database conversion test to the common app.
 - Fix label display for resolved smart links when not using a dynamic

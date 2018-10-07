@@ -46,7 +46,7 @@ The same applies to text content extracted for the document::
 
 Other changes
 ~~~~~~~~~~~~~
-* Fix the link to the documenation. Closes GitLab issue #516.
+* Fix the link to the documentation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
 * Update related links. Add links to the new Wiki and Forum.
 * Add Redis config entries in the Docker images to disable

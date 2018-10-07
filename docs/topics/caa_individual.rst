@@ -138,7 +138,7 @@ OR OTHERWISE) UPON WHICH THE CLAIM IS BASED.
 
 6. Miscellaneous
 ----------------
-6.1 Juristiction
+6.1 Jurisdiction
 ~~~~~~~~~~~~~~~~
 This Agreement will be governed by and construed in accordance with the laws of
 Puerto Rico excluding its conflicts of law provisions. Under certain circumstances,
