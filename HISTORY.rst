@@ -22,6 +22,8 @@
 * Add separate Python 2 and Python 3 versions of the 
   MetadataType model .comma_splitter() static method.
 * Update the metadata app tests to work on Python 3.
+* Make sure metadata lookup choices are a list to be able to add the
+  optional marker (Python 3). 
 
 3.1.4 (2018-10-4)
 =================

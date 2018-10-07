@@ -62,7 +62,7 @@ class DocumentMetadataForm(forms.Form):
                         label=self.fields['value'].label
                     )
                     choices = self.metadata_type.get_lookup_values()
-                    choices = zip(choices, choices)
+                    choices = list(zip(choices, choices))
                     if not required:
                         choices.insert(0, ('', '------'))
                     self.fields['value'].choices = choices
