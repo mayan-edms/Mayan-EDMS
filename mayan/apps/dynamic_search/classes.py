@@ -26,7 +26,7 @@ class SearchModel(object):
 
     @classmethod
     def all(cls):
-        return cls._registry.values()
+        return list(cls._registry.values())
 
     @classmethod
     def as_choices(cls):
