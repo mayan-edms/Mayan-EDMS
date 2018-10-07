@@ -7,18 +7,11 @@ import time
 
 from furl import furl
 
-try:
-    # Python 2
-    from urllib import unquote_plus
-except ImportError:
-    # Python 3
-    from urllib.parse import unquote_plus
-
-
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
 from converter import TransformationResize, converter_class
 
@@ -58,9 +51,9 @@ class StagingFile(object):
             ).decode('utf8')
         else:
             self.filename = filename
-            self.encoded_filename = base64.urlsafe_b64encode(
+            self.encoded_filename = quote_plus(base64.urlsafe_b64encode(
                 filename.encode('utf8')
-            )
+            ))
 
     def __str__(self):
         return force_text(self.filename)
@@ -149,7 +142,7 @@ class StagingFile(object):
         file_object = None
 
         try:
-            file_object = open(self.get_full_path())
+            file_object = open(self.get_full_path(), mode='rb')
             converter = converter_class(file_object=file_object)
 
             page_image = converter.get_page()

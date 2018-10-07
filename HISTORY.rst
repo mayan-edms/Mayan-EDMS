@@ -16,6 +16,9 @@
 * Handle office files in explicit binary mode for Python 3.
 * Return a proper list of SearchModel instances (Python 3).
 * Specify FUSE literals in explicit octal notation (Python 3).
+* URL quote the encoded names of the staging files using
+  Django's compat module. (Python 3)
+* Open staging file in explicit binary mode. (Python 3)
 
 3.1.4 (2018-10-4)
 =================
