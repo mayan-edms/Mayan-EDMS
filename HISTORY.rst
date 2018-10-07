@@ -15,6 +15,7 @@
 * Update document parsing app tests to work with Python 3.
 * Handle office files in explicit binary mode for Python 3.
 * Return a proper list of SearchModel instances (Python 3).
+* Specify FUSE literals in explicit octal notation (Python 3).
 
 3.1.4 (2018-10-4)
 =================
