@@ -1,5 +1,5 @@
-3.1.5 (2018-10-XX)
-==================
+3.1.5 (2018-10-7)
+=================
 * Consolidate some document indexing test code into a new mixin.
 * Split the code of the mountindex command to be able to add tests.
 * Fix the way the children of IndexInstanceNode are accessed. Fixes GitLab
@@ -23,9 +23,12 @@
   .comma_splitter() static method.
 * Update the metadata app tests to work on Python 3.
 * Make sure metadata lookup choices are a list to be able to add the
-  optional marker (Python 3). 
+  optional marker (Python 3).
 * Make sure the image in the document preview view is centered when it is
   smaller than the viewport.
+* Restore use of the .store_body variable accidentally remove in
+  63a77d0235ffef3cd49924ba280879313c622682. Closes GitLab issue #519.
+  Thanks to TheOneValen @TheOneValen for the report.
 
 3.1.4 (2018-10-4)
 =================

@@ -2,15 +2,61 @@
 Mayan EDMS v3.1.5 release notes
 ===============================
 
-Released: October XX, 2018
+Released: October 7, 2018
 
+Index mirroring fixes
+~~~~~~~~~~~~~~~~~~~~~
+This release fixes the mountindex management command that mounts an index
+as a FUSE filesystem. It also includes a fix for indexes that return a
+multi line value. The carriage returns and newlines characters are now
+converted into spaces to make the index value a valid filesystem directory.
+Lastly an issue with the duplicated value was fixed. Indexes levels that
+return a duplicated value will now show as directory entried when mounted
+as a FUSE filesystem.
+
+Page parsed text link
+~~~~~~~~~~~~~~~~~~~~~
+Recently a link was added to each document page to show the OCR text for
+that particular page. This release adds another link but to allow users
+to view the parsed text of each page.
+
+Python 3
+~~~~~~~~
+This release includes several fixes for Python 3 compatibility and reduce
+the fail count of the test suit to just one test.
+
+Transformations arguments
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Visually the view to create or edit a transformation remains the same. But
+internally those views now use an explicit form to allow performing YAML
+format validation of arguments.
+
+Crop transformation
+~~~~~~~~~~~~~~~~~~~
+Stricter error checking was added to the crop transformation.
+
+
+Other changes
+~~~~~~~~~~~~~
 * Consolidate some document indexing test code into a new mixin.
-* Split the code of the mountindex command to be able to add tests.
-* Fix the way the children of IndexInstanceNode are accessed. Fixes
-  GitLab issue #518. Thanks to TheOneValen @TheOneValen for the report.
-* Remove newlines from the index name levels before using them as FUSE
-  directories.
-* Fixed duplicated FUSE directory removal.
+* Update compressed files class module to work with Python 3.
+* Update document parsing app tests to work with Python 3.
+* Handle office files in explicit binary mode for Python 3.
+* Return a proper list of SearchModel instances (Python 3).
+* Specify FUSE literals in explicit octal notation (Python 3).
+* URL quote the encoded names of the staging files using Django's compat
+  module. (Python 3)
+* Open staging file in explicit binary mode. (Python 3)
+* Add separate Python 2 and Python 3 versions of the MetadataType model
+  .comma_splitter() static method.
+* Update the metadata app tests to work on Python 3.
+* Make sure metadata lookup choices are a list to be able to add the
+  optional marker (Python 3).
+* Make sure the image in the document preview view is centered when it is
+  smaller than the viewport.
+* Restore use of the .store_body variable accidentally remove in
+  63a77d0235ffef3cd49924ba280879313c622682. Closes GitLab issue #519.
+  Thanks to TheOneValen @TheOneValen for the report.
 
 Removals
 --------
@@ -79,5 +125,6 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #518 <https://gitlab.com/mayan-edms/mayan-edms/issues/518>`_ mountindex broken (3.1.x)
+* `GitLab issue #519 <https://gitlab.com/mayan-edms/mayan-edms/issues/519>`_ Mail body fetched despite setting not to
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
