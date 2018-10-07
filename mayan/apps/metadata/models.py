@@ -8,6 +8,7 @@ from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
+from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
@@ -96,13 +97,24 @@ class MetadataType(models.Model):
     def get_absolute_url(self):
         return reverse('metadata:setup_metadata_type_edit', args=(self.pk,))
 
-    @staticmethod
-    def comma_splitter(string):
-        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
-        splitter.whitespace = ','.encode('utf-8')
-        splitter.whitespace_split = True
-        splitter.commenters = ''.encode('utf-8')
-        return [force_text(e) for e in splitter]
+    if PY2:
+        # Python 2 non unicode version
+        @staticmethod
+        def comma_splitter(string):
+            splitter = shlex.shlex(string.encode('utf-8'), posix=True)
+            splitter.whitespace = ','.encode('utf-8')
+            splitter.whitespace_split = True
+            splitter.commenters = ''.encode('utf-8')
+            return [force_text(e) for e in splitter]
+    else:
+        # Python 3 unicode version
+        @staticmethod
+        def comma_splitter(string):
+            splitter = shlex.shlex(string, posix=True)
+            splitter.whitespace = ','
+            splitter.whitespace_split = True
+            splitter.commenters = ''
+            return [force_text(e) for e in splitter]
 
     def get_default_value(self):
         template = Template(self.default)

@@ -19,6 +19,8 @@
 * URL quote the encoded names of the staging files using
   Django's compat module. (Python 3)
 * Open staging file in explicit binary mode. (Python 3)
+* Add separate Python 2 and Python 3 versions of the 
+  MetadataType model .comma_splitter() static method.
 
 3.1.4 (2018-10-4)
 =================
