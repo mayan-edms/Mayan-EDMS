@@ -2,28 +2,30 @@
 ==================
 * Consolidate some document indexing test code into a new mixin.
 * Split the code of the mountindex command to be able to add tests.
-* Fix the way the children of IndexInstanceNode are accessed. Fixes
-  GitLab issue #518. Thanks to TheOneValen @TheOneValen for the report.
+* Fix the way the children of IndexInstanceNode are accessed. Fixes GitLab
+  issue #518. Thanks to TheOneValen @TheOneValen for the report.
 * Remove newlines from the index name levels before using them as FUSE
   directories.
 * Fixed duplicated FUSE directory removal.
 * Add link and view to show the parsed content of each document page.
-* Add a modelform for adding and editing transformation and perform
-  YAML validation of arguments.
+* Add a modelform for adding and editing transformation and perform YAML
+  validation of arguments.
 * Add stricted error checking to the crop transformation.
 * Update compressed files class module to work with Python 3.
 * Update document parsing app tests to work with Python 3.
 * Handle office files in explicit binary mode for Python 3.
 * Return a proper list of SearchModel instances (Python 3).
 * Specify FUSE literals in explicit octal notation (Python 3).
-* URL quote the encoded names of the staging files using
-  Django's compat module. (Python 3)
+* URL quote the encoded names of the staging files using Django's compat
+  module. (Python 3)
 * Open staging file in explicit binary mode. (Python 3)
-* Add separate Python 2 and Python 3 versions of the 
-  MetadataType model .comma_splitter() static method.
+* Add separate Python 2 and Python 3 versions of the MetadataType model
+  .comma_splitter() static method.
 * Update the metadata app tests to work on Python 3.
 * Make sure metadata lookup choices are a list to be able to add the
   optional marker (Python 3). 
+* Make sure the image in the document preview view is centered when it is
+  smaller than the viewport.
 
 3.1.4 (2018-10-4)
 =================
