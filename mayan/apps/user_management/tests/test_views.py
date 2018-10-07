@@ -69,7 +69,7 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
             response=response, text=self.user_2.username, status_code=200
         )
 
-    def _request_set_password(self, password):
+    def _request_set_password_view(self, password):
         return self.post(
             viewname='user_management:user_set_password', args=(self.user_2.pk,),
             data={
@@ -79,7 +79,7 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
     def test_user_set_password_view_no_access(self):
         self._create_test_user_2()
-        response = self._request_set_password(
+        response = self._request_set_password_view(
             password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -100,7 +100,7 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
         self._create_test_user_2()
         self.grant_access(permission=permission_user_edit, obj=self.user_2)
 
-        response = self._request_set_password(
+        response = self._request_set_password_view(
             password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -114,9 +114,10 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def _request_multiple_user_set_password(self, password):
+    def _request_multiple_user_set_password_view(self, password):
         return self.post(
-            'user_management:user_multiple_set_password', data={
+            viewname='user_management:user_multiple_set_password',
+            data={
                 'id_list': self.user_2.pk,
                 'new_password1': password,
                 'new_password2': password
@@ -125,7 +126,7 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
     def test_user_multiple_set_password_view_no_access(self):
         self._create_test_user_2()
-        response = self._request_multiple_user_set_password(
+        response = self._request_multiple_user_set_password_view(
             password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -145,7 +146,7 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
         self._create_test_user_2()
         self.grant_access(permission=permission_user_edit, obj=self.user_2)
 
-        response = self._request_multiple_user_set_password(
+        response = self._request_multiple_user_set_password_view(
             password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -159,21 +160,21 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def _request_user_delete(self):
+    def _request_user_delete_view(self):
         return self.post(
             viewname='user_management:user_delete', args=(self.user_2.pk,)
         )
 
     def test_user_delete_view_no_access(self):
         self._create_test_user_2()
-        response = self._request_user_delete()
+        response = self._request_user_delete_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(get_user_model().objects.count(), 3)
 
     def test_user_delete_view_with_access(self):
         self._create_test_user_2()
         self.grant_access(permission=permission_user_delete, obj=self.user_2)
-        response = self._request_user_delete()
+        response = self._request_user_delete_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(get_user_model().objects.count(), 2)
 
@@ -201,7 +202,6 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(MetadataLookupIntegrationTestCase, self).setUp()
-
         self.metadata_type = MetadataType.objects.create(
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
@@ -221,9 +221,8 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         response = self.get(
             viewname='metadata:metadata_edit', args=(self.document.pk,)
         )
-
         self.assertContains(
-            response, text='<option value="{}">{}</option>'.format(
+            response=response, text='<option value="{}">{}</option>'.format(
                 TEST_USER_USERNAME, TEST_USER_USERNAME
             ), status_code=200
         )
@@ -241,7 +240,7 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(
-            response, text='<option value="{}">{}</option>'.format(
+            response=response, text='<option value="{}">{}</option>'.format(
                 Group.objects.first().name, Group.objects.first().name
             ), status_code=200
         )
