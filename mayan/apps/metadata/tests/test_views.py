@@ -303,6 +303,35 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, 'Edit', status_code=200)
 
+    def test_single_document_multiple_metadata_add_view(self):
+        self.login_user()
+
+        self.grant_permission(permission=permission_document_view)
+        self.grant_permission(permission=permission_metadata_document_add)
+        self.grant_permission(permission=permission_metadata_document_edit)
+
+        metadata_type_2 = MetadataType.objects.create(
+            name=TEST_METADATA_TYPE_NAME_2, label=TEST_METADATA_TYPE_LABEL_2
+        )
+
+        self.document_type.metadata.create(
+            metadata_type=metadata_type_2
+        )
+
+        response = self.post(
+            'metadata:metadata_add', args=(self.document.pk,), data={
+                'metadata_type': [self.metadata_type.pk, metadata_type_2.pk],
+            }
+        )
+
+        document_metadata_types = self.document.metadata.values_list(
+            'metadata_type', flat=True
+        )
+        self.assertTrue(
+            self.metadata_type.pk in document_metadata_types and
+            metadata_type_2.pk in document_metadata_types
+        )
+
 
 class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericViewTestCase):
     auto_create_document_type = False

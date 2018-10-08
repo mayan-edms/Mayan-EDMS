@@ -1,5 +1,5 @@
-3.1.5 (2018-10-7)
-=================
+3.1.5 (2018-10-08)
+==================
 * Consolidate some document indexing test code into a new mixin.
 * Split the code of the mountindex command to be able to add tests.
 * Fix the way the children of IndexInstanceNode are accessed. Fixes GitLab
@@ -31,9 +31,12 @@
   Thanks to TheOneValen @TheOneValen for the report.
 * Add shared cache class and add mounted index cache invalidation when
   document and index instance nodes are updated or deleted.
+* Fix document metadata app view error when adding multiple optional
+  metadata types. Closes GitLab issue #521. Thanks to the TheOneValen
+  @TheOneValen for the report.
 
-3.1.4 (2018-10-4)
-=================
+3.1.4 (2018-10-04)
+==================
 * Fix the link to the documenation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
 * Update related links. Add links to the new Wiki and Forum.

@@ -161,13 +161,13 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                         metadata_type=metadata_type,
                     )
                 except DocumentMetadata.DoesNotExist:
-                    instance = DocumentMetadata(
+                    document_metadata = DocumentMetadata(
                         document=instance,
                         metadata_type=metadata_type,
                     )
-                    instance.save(_user=self.request.user)
+                    document_metadata.save(_user=self.request.user)
                     created = True
-            except ValidationError as exception:
+            except Exception as exception:
                 messages.error(
                     self.request,
                     _(

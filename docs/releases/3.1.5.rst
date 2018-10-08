@@ -2,7 +2,7 @@
 Mayan EDMS v3.1.5 release notes
 ===============================
 
-Released: October 7, 2018
+Released: October 8, 2018
 
 Index mirroring fixes
 ~~~~~~~~~~~~~~~~~~~~~
@@ -59,6 +59,9 @@ Other changes
   Thanks to TheOneValen @TheOneValen for the report.
 * Add shared cache class and add mounted index cache invalidation when
   document and index instance nodes are updated or deleted.
+* Fix document metadata app view error when adding multiple optional
+  metadata types. Closes GitLab issue #521. Thanks to the TheOneValen
+  @TheOneValen for the report.
 
 Removals
 --------
@@ -128,5 +131,6 @@ Bugs fixed or issues closed
 
 * `GitLab issue #518 <https://gitlab.com/mayan-edms/mayan-edms/issues/518>`_ mountindex broken (3.1.x)
 * `GitLab issue #519 <https://gitlab.com/mayan-edms/mayan-edms/issues/519>`_ Mail body fetched despite setting not to
+* `GitLab issue #521 <https://gitlab.com/mayan-edms/mayan-edms/issues/521>`_ Adding multiple metadata at once fails
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
