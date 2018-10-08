@@ -29,6 +29,8 @@
 * Restore use of the .store_body variable accidentally remove in
   63a77d0235ffef3cd49924ba280879313c622682. Closes GitLab issue #519.
   Thanks to TheOneValen @TheOneValen for the report.
+* Add shared cache class and add mounted index cache invalidation when
+  document and index instance nodes are updated or deleted.
 
 3.1.4 (2018-10-4)
 =================

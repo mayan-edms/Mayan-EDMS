@@ -11,7 +11,7 @@ from documents.tests import DocumentTestMixin
 
 from document_indexing.tests import DocumentIndexingTestMixin
 
-from ..classes import IndexFilesystem
+from ..filesystems import IndexFilesystem
 
 from .literals import (
     TEST_NODE_EXPRESSION, TEST_NODE_EXPRESSION_MULTILINE
@@ -19,7 +19,7 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class IndexFSTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
+class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
 
     def test_document_access(self):

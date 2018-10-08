@@ -7,7 +7,7 @@ from fuse import FUSE
 from django.core import management
 from django.core.management.base import CommandError
 
-from ...classes import IndexFilesystem
+from ...filesystems import IndexFilesystem
 
 logger = logging.getLogger(__name__)
 

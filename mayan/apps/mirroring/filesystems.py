@@ -8,7 +8,6 @@ from time import time
 
 from fuse import FuseOSError, Operations
 
-from django.core.cache import caches
 from django.core.exceptions import MultipleObjectsReturned
 from django.db.models import Count, F, Func, Value
 
@@ -18,9 +17,8 @@ from documents.models import Document
 from .literals import (
     MAX_FILE_DESCRIPTOR, MIN_FILE_DESCRIPTOR, FILE_MODE, DIRECTORY_MODE
 )
-from .settings import (
-    setting_document_lookup_cache_timeout, setting_node_lookup_cache_timeout
-)
+from .runtime import cache
+
 
 logger = logging.getLogger(__name__)
 
@@ -59,17 +57,17 @@ class IndexFilesystem(Operations):
         node = self.index.instance_root
 
         if len(parts) > 1 and parts[1] != '':
-            obj = self.cache.get(path)
+            path_cache = cache.get_path(path=path)
 
-            if obj:
-                node_pk = obj.get('node_pk')
+            if path_cache:
+                node_pk = path_cache.get('node_pk')
                 if node_pk:
                     if access_only:
                         return True
                     else:
                         return IndexInstanceNode.objects.get(pk=node_pk)
 
-                document_pk = obj.get('document_pk')
+                document_pk = path_cache.get('document_pk')
                 if document_pk:
                     if access_only:
                         return True
@@ -87,16 +85,13 @@ class IndexFilesystem(Operations):
                     else:
                         try:
                             if node.index_template_node.link_documents:
-                                result = node.documents.get(label=part)
+                                document = node.documents.get(label=part)
                                 logger.debug(
                                     'path %s is a valid file path', path
                                 )
-                                self.cache.set(
-                                    path, {'document_pk': result.pk},
-                                    setting_document_lookup_cache_timeout.value
-                                )
+                                cache.set_path(path=path, document=document)
 
-                                return result
+                                return document
                             else:
                                 return None
                         except Document.DoesNotExist:
@@ -109,10 +104,7 @@ class IndexFilesystem(Operations):
                 except MultipleObjectsReturned:
                     return None
 
-            self.cache.set(
-                path, {'node_pk': node.pk},
-                setting_node_lookup_cache_timeout.value
-            )
+            cache.set_path(path=path, node=node)
 
         logger.debug('node: %s', node)
         logger.debug('node is root: %s', node.is_root_node())
@@ -122,7 +114,6 @@ class IndexFilesystem(Operations):
     def __init__(self, index_slug):
         self.file_descriptor_count = MIN_FILE_DESCRIPTOR
         self.file_descriptors = {}
-        self.cache = caches['default']
 
         try:
             self.index = Index.objects.get(slug=index_slug)
