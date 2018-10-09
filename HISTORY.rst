@@ -1,4 +1,4 @@
-3.1.6 (2018-10-XX)
+3.1.6 (2018-10-09)
 ==================
 * Improve index mirroring value clean up code to remove the spaces at the
   starts and at the end of directories. Closes again GitLab issue #520
