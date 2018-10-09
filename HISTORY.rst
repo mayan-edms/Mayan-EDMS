@@ -7,6 +7,8 @@
   instead of the literal keys. Avoid warning about invalid key 
   characters. Closes GitLab issue #518. Thanks to TheOneValen @ for the
   report.
+* Only render the Template API view for authenticated users.
+  Thanks rgarcia for the report.
 
 3.1.5 (2018-10-08)
 ==================
