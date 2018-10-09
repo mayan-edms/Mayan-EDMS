@@ -1,10 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
+import warnings
+
 from common.tests import BaseTestCase
 
 from ..caches import IndexFilesystemCache
 
-from .literals import TEST_DOCUMENT_PK, TEST_NODE_PK, TEST_PATH
+from .literals import (
+    TEST_CACHE_KEY_BAD_CHARACTERS, TEST_DOCUMENT_PK, TEST_NODE_PK, TEST_PATH
+)
 
 
 class MockDocument(object):
@@ -47,3 +51,14 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
         self.cache.clear_node(node=self.node)
 
         self.assertEquals(None, self.cache.get_path(path=TEST_PATH))
+
+    def test_valid_cache_key_characters(self):
+        with warnings.catch_warnings(record=True) as warning_list:
+            self.cache.cache.validate_key(TEST_CACHE_KEY_BAD_CHARACTERS)
+            self.assertTrue(len(warning_list) == 1)
+
+        with warnings.catch_warnings(record=True) as warning_list:
+            self.cache.cache.validate_key(
+                self.cache.get_key_hash(key=TEST_CACHE_KEY_BAD_CHARACTERS)
+            )
+            self.assertTrue(len(warning_list) == 0)

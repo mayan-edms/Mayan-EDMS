@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import hashlib
+
 from django.core.cache import caches
 
 from .settings import (
@@ -9,16 +11,26 @@ from .settings import (
 
 class IndexFilesystemCache(object):
     @staticmethod
+    def get_key_hash(key):
+        return hashlib.sha256(key).hexdigest()
+
+    @staticmethod
     def get_document_key(document):
-        return 'document_pk_{}'.format(document.pk)
+        return IndexFilesystemCache.get_key_hash(
+            key='document_pk_{}'.format(document.pk)
+        )
 
     @staticmethod
     def get_node_key(node):
-        return 'node_pk_{}'.format(node.pk)
+        return IndexFilesystemCache.get_key_hash(
+            key='node_pk_{}'.format(node.pk)
+        )
 
     @staticmethod
     def get_path_key(path):
-        return 'path_{}'.format(path)
+        return IndexFilesystemCache.get_key_hash(
+            key='path_{}'.format(path)
+        )
 
     def __init__(self, name='default'):
         self.cache = caches[name]

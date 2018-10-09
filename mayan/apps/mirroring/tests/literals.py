@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+TEST_CACHE_KEY_BAD_CHARACTERS = ' \r\n!@#$%^&*()+_{}|:"<>?-=[];\',./'
 TEST_DOCUMENT_PK = 99
 TEST_NODE_EXPRESSION = 'level_1'
 TEST_NODE_EXPRESSION_MULTILINE = 'first\r\nsecond\r\nthird'

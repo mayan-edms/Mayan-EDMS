@@ -1,8 +1,12 @@
 3.1.6 (2018-10-XX)
 ==================
-* Improve index mounting value clean up code to remove the spaces at the
+* Improve index mirroring value clean up code to remove the spaces at the
   starts and at the end of directories. Closes again GitLab issue #520
   Thanks to TheOneValen @ for the report.
+* Improve index mirroring cache class to use the hash of the keys
+  instead of the literal keys. Avoid warning about invalid key 
+  characters. Closes GitLab issue #518. Thanks to TheOneValen @ for the
+  report.
 
 3.1.5 (2018-10-08)
 ==================
