@@ -14,7 +14,9 @@ from document_indexing.tests import DocumentIndexingTestMixin
 from ..filesystems import IndexFilesystem
 
 from .literals import (
-    TEST_NODE_EXPRESSION, TEST_NODE_EXPRESSION_MULTILINE
+    TEST_NODE_EXPRESSION, TEST_NODE_EXPRESSION_MULTILINE,
+    TEST_NODE_EXPRESSION_MULTILINE_EXPECTED, TEST_NODE_EXPRESSION_MULTILINE_2,
+    TEST_NODE_EXPRESSION_MULTILINE_2_EXPECTED
 )
 
 
@@ -93,7 +95,24 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
 
         self.assertEqual(
             list(index_filesystem.readdir('/', ''))[2:],
-            [TEST_NODE_EXPRESSION_MULTILINE.replace('\r\n', ' ')]
+            [TEST_NODE_EXPRESSION_MULTILINE_EXPECTED]
+        )
+
+    def test_multiline_indexes_first_and_last(self):
+        self._create_index()
+
+        self.index.node_templates.create(
+            parent=self.index.template_root,
+            expression=TEST_NODE_EXPRESSION_MULTILINE_2,
+            link_documents=True
+        )
+
+        self.upload_document()
+        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+
+        self.assertEqual(
+            list(index_filesystem.readdir('/', ''))[2:],
+            [TEST_NODE_EXPRESSION_MULTILINE_2_EXPECTED]
         )
 
     def test_duplicated_indexes(self):

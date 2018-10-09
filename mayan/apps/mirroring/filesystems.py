@@ -9,7 +9,7 @@ from time import time
 from fuse import FuseOSError, Operations
 
 from django.core.exceptions import MultipleObjectsReturned
-from django.db.models import Count, F, Func, Value
+from django.db.models import Count, F, Func, Transform, Value
 
 from document_indexing.models import Index, IndexInstanceNode
 from documents.models import Document
@@ -23,14 +23,22 @@ from .runtime import cache
 logger = logging.getLogger(__name__)
 
 
+class Trim(Transform):
+    function = 'TRIM'
+    lookup_name = 'trim'
+
+
 class IndexFilesystem(Operations):
     @staticmethod
     def _clean_queryset(queryset):
-        # Remove newline carriage return to make multiline indexes
+        # Remove newline carriage returns and the first and last space
+        # to make multiline indexes
         # valid directoy names
         return queryset.annotate(
-            clean_value=Func(
-                F('value'), Value('\r\n'), Value(' '), function='replace'
+            clean_value=Trim(
+                Func(
+                    F('value'), Value('\r\n'), Value(' '), function='replace'
+                ),
             )
         )
 

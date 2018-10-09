@@ -1,3 +1,9 @@
+3.1.6 (2018-10-XX)
+==================
+* Improve index mounting value clean up code to remove the spaces at the
+  starts and at the end of directories. Closes again GitLab issue #520
+  Thanks to TheOneValen @ for the report.
+
 3.1.5 (2018-10-08)
 ==================
 * Consolidate some document indexing test code into a new mixin.
