@@ -10,6 +10,7 @@
 * Only render the Template API view for authenticated users.
   Thanks rgarcia for the report.
 * Add icon to the cabinet "Add new level" link.
+* Display the cabinet "Add new level" link in the top level view too.
 
 3.1.5 (2018-10-08)
 ==================
