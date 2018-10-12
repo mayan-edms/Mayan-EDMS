@@ -1,3 +1,8 @@
+3.1.7 (2018-10-XX)
+==================
+* Fix an issue with some browsers not firing the .load event on cached
+  images. Ref: http://api.jquery.com/load-event/
+
 3.1.6 (2018-10-09)
 ==================
 * Improve index mirroring value clean up code to remove the spaces at the

@@ -40,7 +40,7 @@ class MayanImage {
             threshold: 2000,
         });
 
-        $('.lazy-load').on('load', function() {
+        $('.lazy-load').one('load', function() {
             $(this).hide();
             $(this).fadeIn(300);
             $(this).siblings('.spinner-container').remove();
@@ -49,7 +49,7 @@ class MayanImage {
             MayanImage.timer = setTimeout(MayanImage.timerFunction, 100);
         });
 
-        $('.lazy-load-carousel').on('load', function() {
+        $('.lazy-load-carousel').one('load', function() {
             $(this).hide();
             $(this).fadeIn(300);
             $(this).siblings('.spinner-container').remove();
@@ -66,11 +66,19 @@ class MayanImage {
         var self = this;
         var container = this.element.parent().parent().parent();
 
-        this.element.on('error', (function(event) {
-            container.html(MayanImage.templateInvalidDocument);
-        }));
-
         this.element.attr('src', this.element.attr('data-url'));
+        this.element.on('error', function() {
+            // Check the .complete property to see if it is a real error
+            // or it was a cached image
+            if (this.complete === false) {
+                // It is a cached image, set the src attribute to trigger
+                // it's display.
+                this.src = this.src;
+            } else {
+                container.html(MayanImage.templateInvalidDocument);
+            }
+        });
+
         $.fn.matchHeight._maintainScroll = true;
     };
 }
