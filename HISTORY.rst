@@ -3,6 +3,7 @@
 * Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
 * Remove duplicate YAML loading of environment variables.
+* Don't load development apps if they are already loaded.
 
 3.1.6 (2018-10-09)
 ==================

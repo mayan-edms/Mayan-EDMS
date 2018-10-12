@@ -6,9 +6,10 @@ from .development import *  # NOQA
 # see https://github.com/django-debug-toolbar/django-debug-toolbar/issues/524
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
-INSTALLED_APPS += (
-    'debug_toolbar',
-)
+if 'debug_toolbar' not in INSTALLED_APPS:
+    INSTALLED_APPS += (
+        'debug_toolbar',
+    )
 
 MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
