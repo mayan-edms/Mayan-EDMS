@@ -151,7 +151,7 @@ class Setting(object):
         if environment_value:
             self.environment_variable = True
             try:
-                self.raw_value = yaml.safe_load(environment_value)
+                self.raw_value = environment_value
             except yaml.YAMLError as exception:
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
