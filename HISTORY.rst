@@ -4,6 +4,9 @@
   images. Ref: http://api.jquery.com/load-event/
 * Remove duplicate YAML loading of environment variables.
 * Don't load development apps if they are already loaded.
+* Make sure all key used as input for the cache key hash are
+  bytes and not unicode. GitLab issue #520. Thanks to TheOneValen
+  @TheOneValen for the report.
 
 3.1.6 (2018-10-09)
 ==================

@@ -7,7 +7,8 @@ from common.tests import BaseTestCase
 from ..caches import IndexFilesystemCache
 
 from .literals import (
-    TEST_CACHE_KEY_BAD_CHARACTERS, TEST_DOCUMENT_PK, TEST_NODE_PK, TEST_PATH
+    TEST_CACHE_KEY_BAD_CHARACTERS, TEST_DOCUMENT_PK, TEST_KEY_UNICODE,
+    TEST_KEY_UNICODE_HASH, TEST_NODE_PK, TEST_PATH,
 )
 
 
@@ -62,3 +63,9 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
                 self.cache.get_key_hash(key=TEST_CACHE_KEY_BAD_CHARACTERS)
             )
             self.assertTrue(len(warning_list) == 0)
+
+    def test_hash_non_ascii_key(self):
+        self.assertEqual(
+            self.cache.get_key_hash(key=TEST_KEY_UNICODE),
+            TEST_KEY_UNICODE_HASH
+        )

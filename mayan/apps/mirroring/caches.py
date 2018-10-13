@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import hashlib
 
 from django.core.cache import caches
+from django.utils.encoding import force_bytes
 
 from .settings import (
     setting_document_lookup_cache_timeout, setting_node_lookup_cache_timeout
@@ -12,7 +13,7 @@ from .settings import (
 class IndexFilesystemCache(object):
     @staticmethod
     def get_key_hash(key):
-        return hashlib.sha256(key).hexdigest()
+        return hashlib.sha256(force_bytes(key)).hexdigest()
 
     @staticmethod
     def get_document_key(document):

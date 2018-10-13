@@ -1,0 +1,85 @@
+===============================
+Mayan EDMS v3.1.7 release notes
+===============================
+
+Released: October XX, 2018
+
+Changes
+~~~~~~~
+* Fix an issue with some browsers not firing the .load event on cached
+  images. Ref: http://api.jquery.com/load-event/
+* Remove duplicate YAML loading of environment variables.
+* Don't load development apps if they are already loaded.
+* Make sure all key used as input for the cache key hash are
+  bytes and not unicode. GitLab issue #520. Thanks to TheOneValen
+  @TheOneValen for the report.
+
+
+Removals
+--------
+
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+
+If installed via Python's PIP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Remove deprecated requirements::
+
+    $ curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt | pip uninstall -r /dev/stdin
+
+Type in the console::
+
+    $ pip install mayan-edms==3.1.5
+
+the requirements will also be updated automatically.
+
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+~~~~~~~~~~~~
+Perform these steps after updating the code from either step above.
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* None
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
