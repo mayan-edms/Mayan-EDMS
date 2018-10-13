@@ -7,6 +7,8 @@
 * Make sure all key used as input for the cache key hash are
   bytes and not unicode. GitLab issue #520. Thanks to TheOneValen
   @TheOneValen for the report.
+* Ignore document stub from the index mirror. GitLab issue
+  #520. Thanks to TheOneValen @TheOneValen for the report.
 
 3.1.6 (2018-10-09)
 ==================

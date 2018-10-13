@@ -7,6 +7,7 @@ from fuse import FuseOSError
 from django.test import override_settings
 
 from common.tests import BaseTestCase
+from documents.models import Document
 from documents.tests import DocumentTestMixin
 
 from document_indexing.tests import DocumentIndexingTestMixin
@@ -133,3 +134,26 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
         self.assertEqual(
             list(index_filesystem.readdir('/', ''))[2:], []
         )
+
+    def test_ignore_stub_documents(self):
+        self._create_index()
+
+        self.index.node_templates.create(
+            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+            link_documents=True
+        )
+
+        self.document = Document.objects.create(
+            document_type=self.document_type, label='document_stub'
+        )
+        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        self.index.rebuild()
+
+        self.assertEqual(
+            list(
+                index_filesystem.readdir(
+                    '/{}'.format(TEST_NODE_EXPRESSION), ''
+                )
+            )[2:], []
+           )
+

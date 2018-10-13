@@ -80,7 +80,9 @@ class IndexFilesystem(Operations):
                     if access_only:
                         return True
                     else:
-                        return Document.objects.get(pk=document_pk)
+                        return Document.objects.get(
+                            is_stub=False, pk=document_pk
+                        )
 
             for count, part in enumerate(parts[1:]):
                 try:
@@ -93,7 +95,9 @@ class IndexFilesystem(Operations):
                     else:
                         try:
                             if node.index_template_node.link_documents:
-                                document = node.documents.get(label=part)
+                                document = node.documents.get(
+                                    is_stub=False, label=part
+                                )
                                 logger.debug(
                                     'path %s is a valid file path', path
                                 )
@@ -203,7 +207,7 @@ class IndexFilesystem(Operations):
 
         # Documents
         if node.index_template_node.link_documents:
-            queryset = node.documents.values('label').exclude(
+            queryset = node.documents.filter(is_stub=False).values('label').exclude(
                 label__contains='/'
             )
 
