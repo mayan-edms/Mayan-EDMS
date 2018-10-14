@@ -77,7 +77,7 @@ From: Test Sender <test-sender@example.com>
 To: test-receiver@example.com
 
 Test email without a content type'''
-TEST_EMAIL_NO_CONTENT_TYPE_STRING = 'Test email without a content type'
+TEST_EMAIL_NO_CONTENT_TYPE_STRING = b'Test email without a content type'
 TEST_EMAIL_INLINE_IMAGE = '''Subject: Test 01: inline only
 To: Renat Gilmanov
 Content-Type: multipart/related; boundary=089e0149bb0ea4e55c051712afb5
