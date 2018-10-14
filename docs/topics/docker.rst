@@ -71,6 +71,47 @@ If another web server is running on port 80 use a different port in the
 ``-p`` option. For example: ``-p 81:8000``.
 
 
+Using a dedicated Docker network
+--------------------------------
+Use this method to avoid having to expose PostreSQL port to the host's network
+or if you have other PostgreSQL instances but still want to use the default
+port of 5432 for this installation.
+
+Create the network::
+
+    docker network create mayan
+
+Launch the PostgreSQL container with the network option and remove the port
+binding (``-p 5432:5432``)::
+
+    docker run -d \
+    --name mayan-edms-postgres \
+    --network=mayan \
+    --restart=always \
+    -e POSTGRES_USER=mayan \
+    -e POSTGRES_DB=mayan \
+    -e POSTGRES_PASSWORD=mayanuserpass \
+    -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
+    -d postgres:9.5
+
+Launch the Mayan EDMS container with the network option and change the
+database hostname to the PostgreSQL container name (``mayan-edms-postgres``)
+instead of the IP address of the Docker host (``172.17.0.1``)::
+
+    docker run -d \
+    --name mayan-edms \
+    --network=mayan \
+    --restart=always \
+    -p 80:8000 \
+    -e MAYAN_DATABASE_ENGINE=django.db.backends.postgresql \
+    -e MAYAN_DATABASE_HOST=mayan-edms-postgres \
+    -e MAYAN_DATABASE_NAME=mayan \
+    -e MAYAN_DATABASE_PASSWORD=mayanuserpass \
+    -e MAYAN_DATABASE_USER=mayan \
+    -e MAYAN_DATABASE_CONN_MAX_AGE=60 \
+    -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+    mayanedms/mayanedms:<version>
+
 Stopping and starting the container
 --------------------------------------
 

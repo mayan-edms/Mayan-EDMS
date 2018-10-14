@@ -43,6 +43,7 @@ repository for electronic documents.
 
     Docker image <topics/docker>
     Direct deployments <topics/deploying>
+    Scaling up <topics/scaling_up>
 
     Development <topics/development>
     App creation <topics/app_creation>

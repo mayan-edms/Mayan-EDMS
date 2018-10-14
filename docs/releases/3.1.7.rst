@@ -2,7 +2,7 @@
 Mayan EDMS v3.1.7 release notes
 ===============================
 
-Released: October XX, 2018
+Released: October 14, 2018
 
 Changes
 ~~~~~~~
@@ -24,7 +24,7 @@ Changes
 * Add a noop OCR backend that disables OCR and the check for the
   Tesseract OCR binaries. Set the OCR_BACKEND setting or MAYAN_OCR_BACKEND
   environment variable to ocr.backends.pyocr.PyOCR to use this.
-
+* All tests pass on Python 3.
 
 Removals
 --------

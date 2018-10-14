@@ -1,4 +1,4 @@
-3.1.7 (2018-10-XX)
+3.1.7 (2018-10-14)
 ==================
 * Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
@@ -18,6 +18,11 @@
 * Add a noop OCR backend that disables OCR and the check for the
   Tesseract OCR binaries. Set the OCR_BACKEND setting or MAYAN_OCR_BACKEND
   environment variable to ocr.backends.pyocr.PyOCR to use this.
+* All tests pass on Python 3.
+* documentation: Add Docker installation method using a dedicated
+  Docker network.
+* documentation: Add scaling up chapter.
+* documentation: Add S3 storage configuration section.
 
 3.1.6 (2018-10-09)
 ==================
