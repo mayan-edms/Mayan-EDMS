@@ -155,5 +155,4 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
                     '/{}'.format(TEST_NODE_EXPRESSION), ''
                 )
             )[2:], []
-           )
-
+        )
