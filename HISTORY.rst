@@ -9,6 +9,15 @@
   @TheOneValen for the report.
 * Ignore document stub from the index mirror. GitLab issue
   #520. Thanks to TheOneValen @TheOneValen for the report.
+* Fix for the Docker image INSTALL_FLAG path. Thanks to 
+  Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
+  for the patch. GitLab issue #525.
+* Fix the typo in the Docker variable for worker concurrency. Thanks to 
+  Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
+  for the patch. GitLab issue #527.
+* Add a noop OCR backend that disables OCR and the check for the
+  Tesseract OCR binaries. Set the OCR_BACKEND setting or MAYAN_OCR_BACKEND
+  environment variable to ocr.backends.pyocr.PyOCR to use this.
 
 3.1.6 (2018-10-09)
 ==================

@@ -15,6 +15,15 @@ Changes
   @TheOneValen for the report.
 * Ignore document stub from the index mirror. GitLab issue
   #520. Thanks to TheOneValen @TheOneValen for the report.
+* Fix for the Docker image INSTALL_FLAG path. Thanks to 
+  Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
+  for the patch. GitLab issue #525.
+* Fix the typo in the Docker variable for worker concurrency. Thanks to 
+  Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
+  for the patch. GitLab issue #527.
+* Add a noop OCR backend that disables OCR and the check for the
+  Tesseract OCR binaries. Set the OCR_BACKEND setting or MAYAN_OCR_BACKEND
+  environment variable to ocr.backends.pyocr.PyOCR to use this.
 
 
 Removals
@@ -83,5 +92,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* None
+* `GitLab issue #525 <https://gitlab.com/mayan-edms/mayan-edms/issues/525>`_ path to SECRET_KEY in entrypoint.sh seems to be a mistake
+* `GitLab issue #527 <https://gitlab.com/mayan-edms/mayan-edms/issues/527>`_ Celery concurrency flag names don't match
+
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
