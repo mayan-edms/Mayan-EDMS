@@ -2,7 +2,7 @@
 
 set -e
 echo "mayan: starting entrypoint.sh"
-INSTALL_FLAG=/var/lib/mayan/media/system/SECRET_KEY
+INSTALL_FLAG=/var/lib/mayan/system/SECRET_KEY
 CONCURRENCY_ARGUMENT=--concurrency=
 export DOCKER_ROOT=/opt/mayan-edms
 
