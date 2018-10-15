@@ -16,36 +16,36 @@ Version 0.10
     * LibreOffice (https://www.libreoffice.org/)
     * unoconv [version 0.5] (https://github.com/dagwieers/unoconv)
 
-* The new office documents converter won't convert files with the extension 
-  .docx because these files are recognized as zip files instead.  This 
+* The new office documents converter won't convert files with the extension
+  .docx because these files are recognized as zip files instead.  This
   is an issue of the libmagic library.
 
-* New configuration option added ``CONVERTER_UNOCONV_USE_PIPE`` that controls 
-  how unoconv handles the communication with LibreOffice.  The default of 
-  ``True`` causes unoconv to use **pipes**, this approach is slower than using 
+* New configuration option added ``CONVERTER_UNOCONV_USE_PIPE`` that controls
+  how unoconv handles the communication with LibreOffice.  The default of
+  ``True`` causes unoconv to use **pipes**, this approach is slower than using
   **TCP/IP** ports but it is more stable.
-  
-* Initial `REST` `API` that exposes documents properties and one method, this 
-  new `API` is used by the new smart document widget and requires the 
+
+* Initial `REST` `API` that exposes documents properties and one method, this
+  new `API` is used by the new smart document widget and requires the
   package ``djangorestframework``, users must issue a::
-  
+
   $ pip install -r requirements/production.txt
-  
+
   to install this new requirement.
-  
+
 * MIME type detection and caching performance updates.
 * Updated the included version of ``jQuery`` to 1.7
 * Updated the included version of ``JqueryAsynchImageLoader`` to 0.9.7
-* Document image serving response now specifies a MIME type for increased 
+* Document image serving response now specifies a MIME type for increased
   browser compatibility.
 * Small change in the scheduler that increases stability.
 * Russian translation updates Sergey Glita
-* Improved and generalized the OCR queue locking mechanism, this should 
-  eliminate any posibility of race conditions between Mayan EDMS OCR nodes.
+* Improved and generalized the OCR queue locking mechanism, this should
+  eliminate any possibility of race conditions between Mayan EDMS OCR nodes.
 * Added support for signals to the OCR queue, this results in instant OCR
   processing upon submittal of a document to the OCR queue, this works in
   addition to the current polling processing which eliminates the
-  posibility of stale documents in the OCR queue.
+  possibility of stale documents in the OCR queue.
 * Added multiple document OCR submit link
-* Re enabled tesseract language specific OCR processing and added a one
+* Re enabled Tesseract language specific OCR processing and added a one
   (1) time language neutral retry for failed language specific OCR

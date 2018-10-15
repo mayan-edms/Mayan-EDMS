@@ -1,6 +1,6 @@
-============
+************
 File storage
-============
+************
 
 The files are stored and placed under Mayan EDMS "control" to avoid
 filename clashes each file gets renamed to its ``UUID`` (Universally Unique ID),

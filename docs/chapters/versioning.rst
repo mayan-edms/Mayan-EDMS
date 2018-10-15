@@ -1,6 +1,6 @@
-===================
+*******************
 Document versioning
-===================
+*******************
 
 Mayan EDMS has the ability to store different versions of the same
 document. A comment field is provided to allow users to summarize the new

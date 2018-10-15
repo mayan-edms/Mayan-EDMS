@@ -1,21 +1,35 @@
-==============
+.. _document_types:
+
 Document types
 ==============
 
 The basic unit of data in Mayan EDMS is the ``document type``. A document
 type can be interpreted also as a document category, a document class, or a
-document template. Document types need to be created before documents can be
+document template. Every other aspect of the system will rely or be tied to
+one or more document type. Create one document type for each type or class of
+document you intend to upload into Mayan EDMS.
+
+Document types need to be created before documents can be
 uploaded. It is not possible to upload documents without assigning them a
-document type. Examples of document type: **invoices**, **blueprints**,
-**receipts**.
+document type.
+
+Document types usually mirror the type of physical, paper document they
+represent.
+
+Example document types:
+
+* Letter
+* Invoice
+* Timesheet
+* Blueprint
 
 .. blockdiag::
 
    blockdiag {
       default_shape = roundedbox
 
-      document_type [ label = 'Document type' ];
-      documents [ label = 'Documents' ];
+      document_type [ label = 'each document type' ];
+      documents [ label = 'many documents' ];
 
       document_type -> documents;
    }
@@ -55,3 +69,6 @@ assigned when uploaded into Mayan EDMS. A document can only be of one
 type at a given moment, but if needed, the type of a document can be changed.
 Upon changing its type, the document will lose its previous settings and
 attributes, and will inherit the settings and attributes of its new type.
+
+Document types are create in the
+:menuselection:`System --> Setup --> Document types` menu.

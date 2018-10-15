@@ -1,6 +1,6 @@
-====================
+********************
 Access control lists
-====================
+********************
 
 Besides the permissions system explained in :doc:`permissions`, Mayan EDMS
 provides per object permission granting. This feature is used to grant a

@@ -1,6 +1,6 @@
-===========
+***********
 Permissions
-===========
+***********
 
 Mayan EDMS provides very fine control over which actions users can
 perform. Action control works by allowing ``roles``, that are composed of

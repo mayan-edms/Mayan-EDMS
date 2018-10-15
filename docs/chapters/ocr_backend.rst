@@ -1,6 +1,6 @@
-===========
+***********
 OCR backend
-===========
+***********
 
 Mayan EDMS ships an OCR backend that uses the FLOSS engine Tesseract
 (https://github.com/tesseract-ocr/tesseract/), but it can

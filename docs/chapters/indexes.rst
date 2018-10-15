@@ -1,4 +1,3 @@
-=======
 Indexes
 =======
 
@@ -77,8 +76,11 @@ that will be generate based on the tree template would be as follows:
 
    }
 
+.. include:: ../chapters/index_examples.rst
+
+
 Mirroring
-=========
+---------
 
 Indexes can be exported as `FUSE <https://en.wikipedia.org/wiki/Filesystem_in_Userspace>`_
 filesystems. Using the management command ``mountindex`` we could export the

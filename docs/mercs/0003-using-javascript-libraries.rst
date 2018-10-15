@@ -1,5 +1,5 @@
 ==================================
-MERC 3: Using javascript libraries
+MERC 3: Using JavaScript libraries
 ==================================
 
 :MERC: 3
@@ -17,13 +17,13 @@ MERC 3: Using javascript libraries
 Abstract
 ========
 
-This MERC proposes a standard way to use javascript libraries.
+This MERC proposes a standard way to use JavaScript libraries.
 
 Rationale
 =========
 
-Mayan EDMS uses several javascript libraries for user interface features.
-Currently, the libraries are not installed using any javascript package
+Mayan EDMS uses several JavaScript libraries for user interface features.
+Currently, the libraries are not installed using any JavaScript package
 manager but copied uncompressed. Installing the libraries in this manner
 carries some disadvantages.
 
@@ -32,7 +32,7 @@ Motivation
 
 The inclusion of the libraries in source form is required by many licenses
 if the library is not installed by a package manager in distributable form.
-There are several disavantages with the current approach:
+There are several disadvantages with the current approach:
 
 1. Having the library in source form means that the entire weight of the
    library's size carries over the overall size of the Mayan EDMS distribution files.
@@ -42,7 +42,7 @@ There are several disavantages with the current approach:
    installed in the project and manually searching, downloading, compressing
    and adding the files to the repository.
 3. The source form of the libraries includes normal and minified versions
-   of the code and the accompaning CSS files. There is no define preference
+   of the code and the accompanying CSS files. There is no define preference
    and through the project both versions of the libraries are loaded
    interchangeably. Using a packager manager the minified version would be
    used of a pipeline to minify the installed libraries should be added.
@@ -58,10 +58,10 @@ Specification
 
 Changes needed:
 
-1. Python based javascript package manager. Alternatively a Python wrapper
-   for a javascript package manager could be used.
-2. Package manifest for the javascript libraries used.
-3. Installation pipeline to install the javascript libraries during the
+1. Python based JavaScript package manager. Alternatively a Python wrapper
+   for a JavaScript package manager could be used.
+2. Package manifest for the JavaScript libraries used.
+3. Installation pipeline to install the JavaScript libraries during the
    installation and setup of the project.
 
 References:

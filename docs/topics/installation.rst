@@ -1,18 +1,23 @@
+############
 Installation
-============
+############
 
 The easiest way to use Mayan EDMS is by using the official Docker_ image.
 Make sure Docker is properly installed and working before attempting to install
 Mayan EDMS.
 
-Hardware requirements
----------------------
+*****************************
+Minimum hardware requirements
+*****************************
 
 - 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
 - Multiple core CPU (64 bit, faster than 1 GHz recommended).
+- Unix-like operating system like Linux and OpenBSD. For other operating systems
+  user container technologies like Docker or virtual machines.
 
+****************
 Docker procedure
-----------------
+****************
 
 Docker is a computer program that performs operating-system-level
 virtualization also known as containerization. It allows independent
@@ -31,12 +36,13 @@ the Docker image for Mayan EDMS.
 
 Docker image chapter: :ref:`docker`
 
+*******************
 Direct installation
--------------------
+*******************
 
 For users with knowledge of Python, Django, Ubuntu, and databases.
 
-Deployments chapter: :ref:`deploying`
+Deployments chapter: :ref:`development`
 
 
 .. _Docker: https://www.docker.com/

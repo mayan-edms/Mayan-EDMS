@@ -42,5 +42,5 @@ issues regarding Google, reinforce the need for a self hosted solution.
 Specification
 =============
 
-Platform choosen was phpBB. Factors were: written in PHP, ease of installation,
-compatible with several database managers, mature, extersive development history.
+Platform chosen was phpBB. Factors were: written in PHP, ease of installation,
+compatible with several database managers, mature, extensive development history.

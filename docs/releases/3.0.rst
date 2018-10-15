@@ -389,7 +389,7 @@ Other changes worth mentioning
 - Unify all document widgets.
 - Printed pages are now full width.
 - Move the invalid document markup to a separate HTML template.
-- Move transfomations to their own module.
+- Move transformations to their own module.
 - Split documents.tests.test_views into:
 
   - base.py
@@ -408,7 +408,7 @@ Other changes worth mentioning
 - Fix documentation formatting.
 - Add upload wizard step documentation chapter.
 - Improve and add additional diagrams.
-- Change documenation theme to rtd.
+- Change documentation theme to rtd.
 - Add the "to=" keyword argument to all ForeignKey, ManayToMany and
   OneToOne Fields.
 - Rename the role groups link label from "Members" to "Groups".
@@ -511,7 +511,7 @@ Other changes worth mentioning
   errors in production. Defaults to False.
 - Change the error log file handle class to RotatingFileHandle to avoid an
   indefinitely growing log file.
-- Disable embedded signatute verification during the perform upgrade command.
+- Disable embedded signature verification during the perform upgrade command.
 - Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the
   new DOCUMENTS_LANGUAGE_CODES.
 - Reduce default language code choice from 7800 to the top 100 spoken

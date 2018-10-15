@@ -1,6 +1,6 @@
-============
+************
 Translations
-============
+************
 
 Translations are handled online via the **Transifex** website:
 https://www.transifex.com/projects/p/mayan-edms/. To create a translation team

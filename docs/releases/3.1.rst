@@ -120,7 +120,7 @@ be imported back using a different database engine. With this feature eases
 the migration from SQLite to other database managers like PostgreSQL, MySQL or
 MariaDB.
 
-The export and import can be done using the dumpdata and loadata command or
+The export and import can be done using the dumpdata and loaddata command or
 the new command convertdb.
 
 Changed settings
@@ -327,7 +327,7 @@ Other changes
 - Update forum link in the about menu.
 - Only show the settings namespace list link where it is
   relevant.
-- Use platform independant hashing for transformations.
+- Use platform independent hashing for transformations.
 - Add support to the ObjectActionMixin to report on instance action
   failures. Add also an error_message class property and the new
   ActionError exception.
@@ -366,7 +366,7 @@ Other changes
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.
   Reduces the chance of wrongly sized cards.
-- Generalize the Javascript menu rendering into an API for
+- Generalize the JavaScript menu rendering into an API for
   templates that only refresh the menu when there are changes.
   Closes GitLab issue #511. Thanks to Daniel Carrico
   @daniel1113 for the report.

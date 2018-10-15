@@ -1,13 +1,13 @@
-========
+########
 Features
-========
+########
 
-* :doc:`Document versioning <../topics/versioning>`.
+* :doc:`Document versioning <../chapters/versioning>`.
 
   * Store many versions of the same document, download or revert to a previous
     version.
 
-* :doc:`Electronic signature verification <../topics/signatures>`.
+* :doc:`Electronic signature verification <../chapters/signatures>`.
 
   * Check the authenticity of documents by verifying their embedded
     cryptographic signatures or upload detached signatures for document

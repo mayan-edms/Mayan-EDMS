@@ -17,43 +17,22 @@ repository for electronic documents.
 .. toctree::
     :hidden:
 
-    Installation <topics/installation>
     Features <topics/features>
+    Installation <topics/installation>
+    Getting started <topics/getting_started>
     Release notes and upgrading <releases/index>
-
-    ACLs <topics/acls>
-    Backups <topics/backups>
-    Checkouts <topics/checkouts>
-    Document types <topics/document_types>
-    File storage <topics/file_storage>
-    Document indexes <topics/indexes>
-    Document languages <topics/languages>
-    Document signatures <topics/signatures>
-    Mailing <topics/mailing>
-    Metadata <topics/metadata>
-    OCR <topics/ocr_backend>
-    Permissions <topics/permissions>
+    Access control <topics/access_control>
+    Categorization <topics/categorization>
+    Collaboration <topics/collaboration>
     Settings <topics/settings>
-    Sources <topics/sources>
-    Smart links <topics/smart_links>
-    Tags <topics/tags>
-    Transformations <topics/transformations>
-    Upload wizard <topics/upload_wizard>
-    Versioning <topics/versioning>
-
-    Docker image <topics/docker>
-    Direct deployments <topics/deploying>
-    Scaling up <topics/scaling_up>
-
+    Storage <topics/storage>
+    Maintenance <topics/maintenance>
+    Advanced topics <topics/advanced>
     Development <topics/development>
-    App creation <topics/app_creation>
-    Translations <topics/translations>
-    Licensing <topics/license>
     FAQ <topics/faq>
+    Licensing <topics/license>
     Contact <topics/contact>
-    MERCs <mercs/index>
-    Individual Contributor Assignment Agreement <topics/caa_individual>
-    Entity Contributor Assignment Agreement <topics/caa_entity>
+
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/

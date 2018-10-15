@@ -1,6 +1,6 @@
-===================
+*******************
 Document signatures
-===================
+*******************
 
 Mayan EDMS supports two types of document signatures: embedded and
 detached signatures. When a document with an embedded signature is
@@ -25,7 +25,7 @@ signatures sections of a document.
 
 Signed documents are tamper-proof. That means that if any part of the document's
 file is edited (even just one character or one pixel), the document's
-signature becomes invalid alerting that an unathorized change has ocurred.
+signature becomes invalid alerting that an unauthorized change has occurred.
 
 Existing non signed documents can be signed in one of two ways:
 by downloading the document, signing it, and uploading the signed document

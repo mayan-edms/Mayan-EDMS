@@ -1,6 +1,6 @@
-=============
+*************
 Upload wizard
-=============
+*************
 
 The steps needed to upgrade a document using form-tools' ``SessionWizard``
 were hardcoded in the ``source`` app. This made it very difficult to add or remove

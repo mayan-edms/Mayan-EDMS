@@ -1,6 +1,6 @@
-============
+************
 App creation
-============
+************
 
 Mayan EDMS apps are essentially Django app with some extra code to register
 navigation, permissions and other relationships.

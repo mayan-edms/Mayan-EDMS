@@ -1,8 +1,8 @@
 .. _deploying:
 
-==================
+******************
 Direct deployments
-==================
+******************
 
 Mayan EDMS should be deployed like any other Django_ project and
 preferably using virtualenv_. Below are some ways to deploy and use Mayan EDMS.

@@ -1,6 +1,6 @@
-=======
+*******
 Backups
-=======
+*******
 
 To backup your install of Mayan EDMS just copy the actual document files and
 the database content. If you are using the default storage backend, the

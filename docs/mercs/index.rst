@@ -1,6 +1,6 @@
-=====
+*****
 MECRs
-=====
+*****
 
 Mayan EDMS Request For Comment documents index.
 
@@ -17,9 +17,9 @@ Accepted
 .. toctree::
    :maxdepth: 1
 
-   0001-merc-process
-   0002-test-writing
-   0003-using-javascript-libraries
+   ../mercs/0001-merc-process
+   ../mercs/0002-test-writing
+   ../mercs/0003-using-javascript-libraries
 
 Draft
 -----
@@ -27,7 +27,7 @@ Draft
 .. toctree::
    :maxdepth: 1
 
-   merging-roles-and-groups
+   ../mercs/merging-roles-and-groups
 
 
 Type
@@ -38,8 +38,8 @@ Process
 .. toctree::
    :maxdepth: 1
 
-   0001-merc-process
-   0004-support-forum
+   ../mercs/0001-merc-process
+   ../mercs/0004-support-forum
 
 
 Feature
@@ -47,5 +47,5 @@ Feature
 .. toctree::
    :maxdepth: 1
 
-   0002-test-writing
-   0003-using-javascript-libraries
+   ../mercs/0002-test-writing
+   ../mercs/0003-using-javascript-libraries

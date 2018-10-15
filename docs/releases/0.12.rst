@@ -26,7 +26,7 @@ releases:
 * All app permissions have been move to a separate permissions.py file
   per app
 * Complete permission system refactor.
-* Document signining code move to it's own app
+* Document signing code moved to it's own app
 * Initial unit tests
 * A lot of logging used throught the entire project.
 * Much functionality moved to model managers.

@@ -1,6 +1,6 @@
-=========
+*********
 Checkouts
-=========
+*********
 
 Checkouts are a way to block certain accesses or actions of a document for a
 period of time.

@@ -1,6 +1,6 @@
-========
+********
 Metadata
-========
+********
 
 Metadata is the name of the attribute of a document. The concept of metadata is
 divided in two: **metadata types** (size, color, distance) and **metadata values** for

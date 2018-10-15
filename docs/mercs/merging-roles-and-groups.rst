@@ -30,7 +30,7 @@ overheads without providing advantages in the day to day operations.
 
 In reality there is almost a 1 to 1 correlation between Roles and Groups.
 Other permissions systems already use Groups as permission units without
-disavantages. An example of this is LDAP and its commercial counterpart
+disadvantages. An example of this is LDAP and its commercial counterpart
 Active Directory.
 
 Motivation
@@ -43,7 +43,7 @@ favor of using a native Django model for the same task.
 Merging the Role and Group models will also provide a speed boost in every
 permission check and queryset filtering. These checks are nested in nature.
 Since the access checks are performed for every view and for every link
-in the view the performace gain should be substantial.
+in the view the performance gain should be substantial.
 
 Backwards Compatibility
 =======================

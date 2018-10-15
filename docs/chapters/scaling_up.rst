@@ -1,9 +1,9 @@
 .. _scaling_up:
 
 
-==========
+**********
 Scaling up
-==========
+**********
 
 The default installation method fits most use cases. If you use case requires
 more speed or capacity here are some suggestion that can help you improve the
@@ -146,38 +146,18 @@ host dedicated to serving only Mayan EDMS.
 
 Storage
 =======
-Mayan EDMS stores documents in their original file format only changing the
-filename to avoid collision. For best input and output speed use a block
-based local filesystem for the ``/media`` sub folder of the path specified by
-the MEDIA_ROOT setting. For increased storage capacity use an object storage
-filesystem like S3.
+For best input and output speed use a block based local filesystem on an
+SSD drive for the ``/media`` sub folder. The location of the ``/media`` folder
+will be specified by the ``MEDIA_ROOT`` setting.
 
-To use a S3 compatible object storage do the following:
-
-* Install the Python packages ``django-storages`` and ``boto3``:
-
-  * Using Python::
-
-      pip install django-storages boto3
-
-  * Using Docker::
-
-    -e MAYAN_PIP_INSTALLS='django-storages boto3'
-
-On the Mayan EDMS user interface, go to ``System``, ``Setup``, ``Settings``,
-``Documents`` and change the following setting:
-
-* ``DOCUMENTS_STORAGE_BACKEND`` to ``storages.backends.s3boto3.S3Boto3Storage``
-* ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` to ``'{access_key: <your access key>, secret_key: <your secret key>, bucket_name: <bucket name>}'``.
-
-Restart Mayan EDMS for the changes to take effect.
-
+If capacity is your bottom line, switch to an
+:ref:`object storage <object_storage>` system.
 
 Use additional hosts
 ====================
 When one host is not enough you can use multiple hosts and share the load.
 Make sure that all hosts share the ``/media`` folder as specified by the
-MEDIA_ROOT setting, also the database, the broker, and the result storage.
+``MEDIA_ROOT`` setting, also the database, the broker, and the result storage.
 One setting that needs to be changed in this configuration is the lock
 manager backend.
 
@@ -187,9 +167,9 @@ its own lock manager. By default the lock manager with use a simple file
 based lock backend ideal for single host installations. For multiple hosts
 installation the database backend must be used in other to coordinate the
 resource locks between the different hosts over a share data medium. This is
-accomplished by modifying the environment variable LOCK_MANAGER_BACKEND in
+accomplished by modifying the environment variable ``LOCK_MANAGER_BACKEND`` in
 both the direct deployment or the Docker image. Use the value
-"lock_manager.backends.model_lock.ModelLock" to switch to the database
+``lock_manager.backends.model_lock.ModelLock`` to switch to the database
 resource lock backend. If you can also write your own lock manager backend
 for other data sharing mediums with better performance than a relational
 database like Redis, Memcached, Zoo Keeper.
