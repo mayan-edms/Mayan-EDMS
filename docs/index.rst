@@ -19,8 +19,8 @@ repository for electronic documents.
 
     Features <topics/features>
     Installation <topics/installation>
-    Getting started <topics/getting_started>
     Release notes and upgrading <releases/index>
+    Getting started <topics/getting_started>
     Access control <topics/access_control>
     Categorization <topics/categorization>
     Collaboration <topics/collaboration>
