@@ -318,7 +318,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             metadata_type=metadata_type_2
         )
 
-        response = self.post(
+        self.post(
             'metadata:metadata_add', args=(self.document.pk,), data={
                 'metadata_type': [self.metadata_type.pk, metadata_type_2.pk],
             }

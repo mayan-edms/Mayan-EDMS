@@ -5,6 +5,9 @@
 * Add new material from the Wiki to the documentation.
 * Add data migrations to the sources app migraton 0019 to ensure all labels
   are unique before performing the schema migations.
+* Add improvements to the metadata URL encoding and decoding to support
+  ampersand characters as part of the metadata value. GitLab issue 
+  #529. Thanks to Mark Maglana @relaxdiego for the report.
 
 3.1.7 (2018-10-14)
 ==================

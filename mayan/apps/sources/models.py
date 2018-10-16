@@ -14,7 +14,7 @@ from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.utils.encoding import (
-    force_bytes, force_str, force_text, python_2_unicode_compatible
+    force_bytes, force_text, python_2_unicode_compatible
 )
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _

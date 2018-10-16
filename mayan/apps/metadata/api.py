@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from furl import furl
 
 from django.shortcuts import get_object_or_404
-from django.utils.six.moves.urllib.parse import unquote_plus
+from django.utils.encoding import force_bytes
 
 from .models import DocumentMetadata, MetadataType
 
@@ -19,7 +19,7 @@ def decode_metadata_from_querystring(querystring=None):
     metadata_list = []
     if querystring:
         # Match out of order metadata_type ids with metadata values from request
-        for key, value in furl(querystring).args.items():
+        for key, value in furl(force_bytes(querystring)).args.items():
             if 'metadata' in key:
                 index, element = key[8:].split('_')
                 metadata_dict[element][index] = value
@@ -79,13 +79,8 @@ def save_metadata(metadata_dict, document, create=False, _user=None):
             # TODO: Maybe return warning to caller?
             document_metadata = None
 
-    # Handle 'plus sign as space' in the url
-
-    # unquote_plus handles utf-8?!?
-    # http://stackoverflow.com/questions/4382875/handling-iri-in-django
-    # .decode('utf-8')
     if document_metadata:
-        document_metadata.value = unquote_plus(metadata_dict['value'])
+        document_metadata.value = metadata_dict['value']
         document_metadata.save(_user=_user)
 
 

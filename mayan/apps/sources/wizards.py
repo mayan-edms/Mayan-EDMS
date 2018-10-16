@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
+from furl import furl
+
 from django.apps import apps
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.decorators import classonlymethod
-from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
@@ -185,11 +186,9 @@ class DocumentCreateWizard(SessionWizardView):
         for step in WizardStep.get_all():
             query_dict.update(step.done(wizard=self) or {})
 
-        url = '?'.join(
-            [
-                reverse('sources:upload_interactive'),
-                urlencode(query_dict, doseq=True)
-            ]
-        )
+        url = furl(reverse('sources:upload_interactive'))
+        # Use equal and not .update() to get the same result as using
+        # urlencode(doseq=True)
+        url.args = query_dict
 
         return HttpResponseRedirect(url)

@@ -2,12 +2,14 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from furl import furl
+
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
-from django.utils.encoding import force_text, uri_to_iri
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -191,6 +193,7 @@ class UploadBaseView(MultiFormView):
 
 
 class UploadInteractiveView(UploadBaseView):
+
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
@@ -253,6 +256,10 @@ class UploadInteractiveView(UploadBaseView):
             except Exception as exception:
                 messages.error(self.request, exception)
 
+            querystring = furl()
+            querystring.args.update(self.request.GET)
+            querystring.args.update(self.request.POST)
+
             try:
                 task_source_handle_upload.apply_async(
                     kwargs=dict(
@@ -263,11 +270,7 @@ class UploadInteractiveView(UploadBaseView):
                             filename=force_text(shared_uploaded_file)
                         ),
                         language=forms['document_form'].cleaned_data.get('language'),
-                        querystring=uri_to_iri(
-                            '?{}&{}'.format(
-                                self.request.GET.urlencode(), self.request.POST.urlencode()
-                            )
-                        ),
+                        querystring=querystring,
                         shared_uploaded_file_id=shared_uploaded_file.pk,
                         source_id=self.source.pk,
                         user_id=user_id,

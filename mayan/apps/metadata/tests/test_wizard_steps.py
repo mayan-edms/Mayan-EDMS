@@ -14,7 +14,9 @@ from sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,
 )
 
-from .literals import TEST_METADATA_VALUE_UNICODE
+from .literals import (
+    TEST_METADATA_VALUE_UNICODE, TEST_METADATA_VALUE_WITH_AMPERSAND
+)
 from .mixins import MetadataTypeTestMixin
 
 
@@ -33,7 +35,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
             metadata_type=self.metadata_type, required=True
         )
 
-    def test_unicode_interactive_with_unicode_metadata(self):
+    def test_upload_interactive_with_unicode_metadata(self):
         url = furl(reverse('sources:upload_interactive'))
         url.args['metadata0_id'] = self.metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
@@ -41,8 +43,9 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         self.grant_access(
             permission=permission_document_create, obj=self.document_type
         )
+
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_descriptor:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
             response = self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
@@ -54,4 +57,27 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         self.assertEqual(
             Document.objects.first().metadata.first().value,
             TEST_METADATA_VALUE_UNICODE
+        )
+
+    def test_upload_interactive_with_ampersand_metadata(self):
+        url = furl(reverse('sources:upload_interactive'))
+        url.args['metadata0_id'] = self.metadata_type.pk
+        url.args['metadata0_value'] = TEST_METADATA_VALUE_WITH_AMPERSAND
+
+        self.grant_access(
+            permission=permission_document_create, obj=self.document_type
+        )
+        # Upload the test document
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+            response = self.post(
+                path=url, data={
+                    'document-language': 'eng', 'source-file': file_descriptor,
+                    'document_type_id': self.document_type.pk,
+                }
+            )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(
+            Document.objects.first().metadata.first().value,
+            TEST_METADATA_VALUE_WITH_AMPERSAND
         )
