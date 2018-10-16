@@ -26,6 +26,7 @@ repository for electronic documents.
     Collaboration <topics/collaboration>
     Settings <topics/settings>
     Storage <topics/storage>
+    Integration <topics/integration>
     Maintenance <topics/maintenance>
     Advanced topics <topics/advanced>
     Development <topics/development>

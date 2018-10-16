@@ -3,6 +3,7 @@ Advanced topics
 ###############
 
 
+.. include:: ../chapters/workflows.rst
 .. include:: ../chapters/languages.rst
 .. include:: ../chapters/signatures.rst
 .. include:: ../chapters/metadata.rst

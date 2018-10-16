@@ -57,12 +57,12 @@ Features
   * Automatic linking of documents based on metadata values or document
     properties.
 
-* :doc:`Roles support <../topics/permissions>`.
+* :doc:`Roles support <../chapters/permissions>`.
 
   * It is possible to create an unlimited amount of different roles not being
     restricted to the traditional admin, operator, guest paradigm.
 
-* :doc:`Fine grained permissions system <../topics/permissions>`.
+* :doc:`Fine grained permissions system <../chapters/permissions>`.
 
   * There is a permission for every atomic operation performed by users.
 
@@ -87,12 +87,12 @@ Features
   * The current language of the document is passed to the corresponding OCR
     engine to increase the text recognition rate.
 
-* :doc:`Plugable storage backends <../topics/file_storage>`.
+* :doc:`Plugable storage backends <../chapters/file_storage>`.
 
   * It is very easy to use 3rd party plugins such as the ones available for
     Amazon EC2.
 
-* Color coded tagging.
+* Color coded <../chapters/tags>`.
 
   * Labeled and color coded tags can be assigned for intuitive recognition.
 

@@ -16,6 +16,7 @@ links to the document of each respective type.
 #. Select :menuselection:`New child node` to create a new level in which the
    following template code will be entered.
    ::
+
        {{ document.document_type }}
 
 #. Save the template.
@@ -63,16 +64,19 @@ sub level for months.
 
 **First level: Year**
 ::
+
     {{ document.metadata_value_of.date_issued|slice:"0:4" }}
 
 
 **Second level: Months**
 ::
+
     {{ document.metadata_value_of.date_issued|slice:"5:7" }}
 
 
 **Optional: Third level: Day**
 ::
+
     {{ document.metadata_value_of.date_issued|slice:"8:10" }}
 
 
