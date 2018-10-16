@@ -1,3 +1,11 @@
+3.1.8 (2018-10-XX)
+==================
+* Reorganize documentation into topics and chapters.
+* Add Workflows and API chapters.
+* Add new material from the Wiki to the documentation.
+* Add data migrations to the sources app migraton 0019 to ensure all labels
+  are unique before performing the schema migations.
+
 3.1.7 (2018-10-14)
 ==================
 * Fix an issue with some browsers not firing the .load event on cached
