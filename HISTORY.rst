@@ -8,6 +8,10 @@
 * Add improvements to the metadata URL encoding and decoding to support
   ampersand characters as part of the metadata value. GitLab issue 
   #529. Thanks to Mark Maglana @relaxdiego for the report.
+* Add custom validator for multiple emails in a single text field.
+  Change the widget of the email fields in the mailer app to avoid
+  browser side email validation. Closes GitLab issue #530.
+  Thanks to Mark Maglana @relaxdiego for the report.
 
 3.1.7 (2018-10-14)
 ==================

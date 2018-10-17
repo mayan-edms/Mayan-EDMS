@@ -4,26 +4,16 @@ from django.core import mail
 
 from documents.tests.test_models import GenericDocumentTestCase
 
-from ..models import UserMailer
-
 from .literals import (
     TEST_BODY_HTML, TEST_EMAIL_ADDRESS, TEST_RECIPIENTS_MULTIPLE_COMMA,
-    TEST_RECIPIENTS_MULTIPLE_SEMICOLON, TEST_RECIPIENTS_MULTIPLE_MIXED,
-    TEST_RECIPIENTS_MULTIPLE_MIXED_LIST, TEST_USER_MAILER_LABEL,
-    TEST_USER_MAILER_BACKEND_PATH
+    TEST_RECIPIENTS_MULTIPLE_COMMA_RESULT, TEST_RECIPIENTS_MULTIPLE_SEMICOLON,
+    TEST_RECIPIENTS_MULTIPLE_SEMICOLON_RESULT, TEST_RECIPIENTS_MULTIPLE_MIXED,
+    TEST_RECIPIENTS_MULTIPLE_MIXED_RESULT,
 )
+from .mixins import MailerTestMixin
 
 
-class ModelTestCase(GenericDocumentTestCase):
-    def _create_user_mailer(self):
-        self.user_mailer = UserMailer.objects.create(
-            default=True,
-            enabled=True,
-            label=TEST_USER_MAILER_LABEL,
-            backend_path=TEST_USER_MAILER_BACKEND_PATH,
-            backend_data='{}'
-        )
-
+class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
     def test_send_simple(self):
         self._create_user_mailer()
         self.user_mailer.send(to=TEST_EMAIL_ADDRESS)
@@ -61,7 +51,7 @@ class ModelTestCase(GenericDocumentTestCase):
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(
-            mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_COMMA.split(',')
+            mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_COMMA_RESULT
         )
 
     def test_send_multiple_recipients_semicolon(self):
@@ -70,7 +60,7 @@ class ModelTestCase(GenericDocumentTestCase):
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(
-            mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_SEMICOLON.split(';')
+            mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_SEMICOLON_RESULT
         )
 
     def test_send_multiple_recipient_mixed(self):
@@ -79,5 +69,5 @@ class ModelTestCase(GenericDocumentTestCase):
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(
-            list(mail.outbox[0].to), list(TEST_RECIPIENTS_MULTIPLE_MIXED_LIST)
+            mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_MIXED_RESULT
         )

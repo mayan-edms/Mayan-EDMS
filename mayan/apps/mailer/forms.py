@@ -18,6 +18,7 @@ from .settings import (
     setting_document_body_template, setting_document_subject_template,
     setting_link_body_template, setting_link_subject_template
 )
+from .validators import validate_email_multiple
 
 
 class DocumentMailForm(forms.Form):
@@ -56,11 +57,11 @@ class DocumentMailForm(forms.Form):
         except UserMailer.DoesNotExist:
             pass
 
-    email = forms.EmailField(
+    email = forms.CharField(
         help_text=_(
             'Email address of the recipient. Can be multiple addresses '
             'separated by comma or semicolon.'
-        ), label=_('Email address')
+        ), label=_('Email address'), validators=[validate_email_multiple]
     )
     subject = forms.CharField(label=_('Subject'), required=False)
     body = forms.CharField(
@@ -117,4 +118,9 @@ class UserMailerDynamicForm(DynamicModelForm):
 
 
 class UserMailerTestForm(forms.Form):
-    email = forms.EmailField(label=_('Email address'))
+    email = forms.CharField(
+        help_text=_(
+            'Email address of the recipient. Can be multiple addresses '
+            'separated by comma or semicolon.'
+        ), label=_('Email address'), validators=[validate_email_multiple]
+    )
