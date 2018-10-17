@@ -17,7 +17,7 @@ def widget_transition_events(transition):
 
 def widget_workflow_diagram(workflow):
     return mark_safe(
-        '<img class="img-responsive" src="{}">'.format(
+        '<img class="img-responsive" src="{}" style="margin:auto;">'.format(
             reverse('document_states:workflow_image', args=(workflow.pk,))
         )
     )
