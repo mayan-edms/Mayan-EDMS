@@ -94,7 +94,7 @@ class Workflow(models.Model):
     def render(self):
         diagram = Digraph(
             name='finite_state_machine', graph_attr={
-                'rankdir': 'LR', 'size': '8,5'
+                'rankdir': 'LR',
             }, format='png'
         )
 
