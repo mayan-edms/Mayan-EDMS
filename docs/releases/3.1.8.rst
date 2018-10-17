@@ -1,22 +1,12 @@
 ===============================
-Mayan EDMS v3.1.6 release notes
+Mayan EDMS v3.1.8 release notes
 ===============================
 
-Released: October 9, 2018
+Released: October XX, 2018
 
 Changes
 ~~~~~~~
-* Improve index mirroring value clean up code to remove the spaces at the
-  starts and at the end of directories. Closes again GitLab issue #520
-  Thanks to TheOneValen @ for the report.
-* Improve index mirroring cache class to use the hash of the keys
-  instead of the literal keys. Avoid warning about invalid key
-  characters. Closes GitLab issue #518. Thanks to TheOneValen @ for the
-  report.
-* Only render the Template API view for authenticated users.
-  Thanks rgarcia for the report.
-* Add icon to the cabinet "Add new level" link.
-* Display the cabinet "Add new level" link in the top level view too.
+
 
 Removals
 --------
@@ -36,7 +26,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.1.6
+    $ pip install mayan-edms==3.1.8
 
 the requirements will also be updated automatically.
 
@@ -84,7 +74,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `GitLab issue #518 <https://gitlab.com/mayan-edms/mayan-edms/issues/518>`_ mountindex broken (3.1.x)
-* `GitLab issue #520 <https://gitlab.com/mayan-edms/mayan-edms/issues/520>`_ Newline handling in template expression for index when mounting the index
+* `GitLab issue #529 <https://gitlab.com/mayan-edms/mayan-edms/issues/529>`_ Submitting a metadata value with the `&` character truncates string
+* `GitLab issue #530 <https://gitlab.com/mayan-edms/mayan-edms/issues/530>`_ Email Link form does not accept commas or semicolons to separate multiple addresses
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

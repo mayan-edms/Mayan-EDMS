@@ -15,10 +15,10 @@ Changes
   @TheOneValen for the report.
 * Ignore document stub from the index mirror. GitLab issue
   #520. Thanks to TheOneValen @TheOneValen for the report.
-* Fix for the Docker image INSTALL_FLAG path. Thanks to 
+* Fix for the Docker image INSTALL_FLAG path. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #525.
-* Fix the typo in the Docker variable for worker concurrency. Thanks to 
+* Fix the typo in the Docker variable for worker concurrency. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #527.
 * Add a noop OCR backend that disables OCR and the check for the
@@ -44,7 +44,7 @@ Remove deprecated requirements::
 
 Type in the console::
 
-    $ pip install mayan-edms==3.1.5
+    $ pip install mayan-edms==3.1.7
 
 the requirements will also be updated automatically.
 
