@@ -15,6 +15,10 @@
 * Add configuration option to change the project/installation URL.
   This is used in the password reset emails and in the default
   document mailing templates.
+* Increase the size of the workflow preview image.
+* Center the workflow preview image.
+* Move the noop OCR backend to the right place.
+
 
 3.1.7 (2018-10-14)
 ==================
