@@ -12,6 +12,9 @@
   Change the widget of the email fields in the mailer app to avoid
   browser side email validation. Closes GitLab issue #530.
   Thanks to Mark Maglana @relaxdiego for the report.
+* Add configuration option to change the project/installation URL.
+  This is used in the password reset emails and in the default
+  document mailing templates.
 
 3.1.7 (2018-10-14)
 ==================

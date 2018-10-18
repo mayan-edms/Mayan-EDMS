@@ -52,6 +52,12 @@ setting_project_title = namespace.add_setting(
         'Name to be displayed in the main menu.'
     ),
 )
+setting_project_url = namespace.add_setting(
+    global_name='COMMON_PROJECT_URL',
+    default=mayan.__website__, help_text=_(
+        'URL of the installation or homepage of the project.'
+    ),
+)
 setting_shared_storage = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE',
     default='django.core.files.storage.FileSystemStorage',
