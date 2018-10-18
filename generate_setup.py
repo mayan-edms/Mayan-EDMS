@@ -88,9 +88,12 @@ if __name__ == '__main__':
             mayan.__version__.split('+')[0].split('.')
         )
 
+        upstream_build = '0x{:06X}'.format(mayan.__build__)
+
         result = Template(template).render(
             context=Context(
                 {
+                    'build': upstream_build,
                     'build_string': generate_build_number(),
                     'timestamp': generate_commit_timestamp(),
                     'version': upstream_version
