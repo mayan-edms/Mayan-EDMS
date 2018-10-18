@@ -1,3 +1,7 @@
+********
+Settings
+********
+
 
 Mayan EDMS can be configure via environment variables or by setting files.
 

@@ -1,6 +1,6 @@
-#############
-Release notes
-#############
+###########################
+Release notes and upgrading
+###########################
 
 Release notes for the official Mayan EDMS releases. Each release note will tell you
 what's new in each version, and will also describe any backwards-incompatible

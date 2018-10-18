@@ -18,4 +18,9 @@ To add support to OCR more languages when using Tesseract, install the
 corresponding language file. If using a Debian based OS, this command will
 display the available language files:
 
-   apt-cache search tesseract-ocr
+    apt-cache search tesseract-ocr
+
+If using the Docker image, pass the environment variable MAYAN_APT_INSTALLS
+with the corresponding Tesseract language option. Example::
+
+    -e MAYAN_APT_INSTALLS='tesseract-ocr-deu'

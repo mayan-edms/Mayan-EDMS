@@ -30,7 +30,7 @@ Example::
   -e MAYAN_DOCUMENTS_LANGUAGE_CODES='["eng", "spa"]'
 
 For more information check out the
-:ref:`environment variables <environment_variables>` section of the
-:doc:`../chapters/settings` chapter.
+:ref:`environment variables <environment_variables>` chapter of the
+:doc:`../topics/settings` topic.
 
 

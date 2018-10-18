@@ -17,23 +17,23 @@ repository for electronic documents.
 .. toctree::
     :hidden:
 
-    Features <topics/features>
-    Installation <topics/installation>
-    Release notes and upgrading <releases/index>
-    Getting started <topics/getting_started>
-    Access control <topics/access_control>
-    Categorization <topics/categorization>
-    Collaboration <topics/collaboration>
-    Settings <topics/settings>
-    Storage <topics/storage>
-    Integration <topics/integration>
-    Maintenance <topics/maintenance>
-    Advanced topics <topics/advanced>
-    Development <topics/development>
-    FAQ <topics/faq>
-    Licensing <topics/license>
-    Contact <topics/contact>
-
+    topics/features
+    topics/installation
+    releases/index
+    topics/getting_started
+    topics/access_control
+    topics/categorization
+    topics/collaboration
+    topics/settings
+    topics/storage
+    topics/integration
+    topics/maintenance
+    topics/administration
+    topics/advanced
+    topics/development
+    topics/faq
+    topics/license
+    topics/contact
 
 .. _Docker: https://www.docker.com/
 .. _Django: http://www.djangoproject.com/

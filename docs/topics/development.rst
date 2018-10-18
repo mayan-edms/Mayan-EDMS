@@ -1,7 +1,6 @@
-###############
-Advanced topics
-###############
-
+##############
+For developers
+##############
 
 .. include:: ../chapters/development.rst
 .. include:: ../chapters/app_creation.rst
