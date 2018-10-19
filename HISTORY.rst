@@ -18,7 +18,9 @@
 * Increase the size of the workflow preview image.
 * Center the workflow preview image.
 * Move the noop OCR backend to the right place.
-
+* Add new management command to display the current configuration
+  settings.
+* Default the YAML flow format to False which never uses inline.
 
 3.1.7 (2018-10-14)
 ==================
