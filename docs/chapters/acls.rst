@@ -2,11 +2,11 @@
 Access control lists
 ********************
 
-Besides the permissions system explained in :doc:`permissions`, Mayan EDMS
-provides per object permission granting. This feature is used to grant a
-permission to a role, but this permission can only be executed for a limited
-number of objects (documents, folders, tags) instead of being effective
-system-wide.
+Besides the permissions system explained in :doc:`../chapters/permissions`,
+Mayan EDMS provides per object permission granting. This feature is used to
+grant a permission to a role, but this permission can only be executed for a
+limited number of objects (documents, folders, tags) instead of being
+effective system-wide.
 
 .. blockdiag::
 
@@ -40,9 +40,10 @@ would be able to view the ``2015 Payroll report.txt`` document.
 Inherited access control
 ========================
 
-It is also possible to grant a permission to a role for a specific document type (:doc:`document_types`).
-Under this scheme all users in groups belonging to that role will inherit that
-permission for all documents of that type.
+It is also possible to grant a permission to a role for a specific document
+type (:doc:`../chapters/document_types`). Under this scheme all users in
+groups belonging to that role will inherit that permission for all documents
+of that type.
 
 .. blockdiag::
 

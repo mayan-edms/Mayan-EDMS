@@ -1,5 +1,3 @@
-.. _development:
-
 ***********
 Development
 ***********
@@ -270,7 +268,9 @@ Follow the latest contributing guidelines outlined here: https://gitlab.com/maya
 Debugging
 =========
 
-Mayan EDMS makes extensive use of Django's new `logging capabilities`_.
+Mayan EDMS makes extensive use of Django's new
+:django-docs:`logging capabilities <topics/logging>`.
+
 By default debug logging for all apps is turned on. If you wish to customize
 how logging is managed turn off automatic logging by setting
 `COMMON_AUTO_LOGGING` to ``False`` and add the following lines to your
@@ -320,9 +320,6 @@ Likewise, to see the debug output of the ``tags`` app, just add the following in
         'propagate': True,
         'level':'DEBUG',
     },
-
-
-.. _`logging capabilities`: https://docs.djangoproject.com/en/dev/topics/logging
 
 
 Documentation

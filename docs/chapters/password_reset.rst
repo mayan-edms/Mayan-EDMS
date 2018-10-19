@@ -5,7 +5,7 @@ Password reset
 To use the password reset feature, administrative emails need to be configured.
 These are sent by the system itself and not by the users. Their usage and
 configuration is different than the
-:ref:`email system used to share documents via email<mailing>`.
+:doc:`email system used to share documents via email<../chapters/mailing>`.
 
 Sending administrative emails
 =============================
@@ -23,9 +23,6 @@ Example::
     EMAIL_TIMEOUT:
     EMAIL_USE_SSL: true
     EMAIL_USE_TLS: false
-
-For more details consult Django's documentation on the topic:
-https://docs.djangoproject.com/en/1.11/ref/settings/#email-backend
 
 To change the reference URL in the password reset emails on in the
 default document mailing template modify the ``COMMON_PROJECT_URL`` setting.

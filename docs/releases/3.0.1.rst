@@ -1,27 +1,29 @@
-===============================
-Mayan EDMS v3.0.1 release notes
-===============================
+Version 3.0.1
+=============
 
 Released: July 08, 2018
 
-What's new
-==========
+Changes
+-------
+
 - Pin javascript libraries to specific versions to avoid using
   potentianlly broken updates automatically. GitLab issue #486.
 - French and Polish language translation updates.
 - Merge request #25. Thanks to Daniel Albert @esclear
   for the patch.
 
+
 Removals
 --------
+
 - None
+
 
 Upgrading from a previous version
 ---------------------------------
 
-
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -31,7 +33,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -47,7 +49,7 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -61,13 +63,14 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #486 <https://gitlab.com/mayan-edms/mayan-edms/issues/486>`_ Docker Verison 3.0 not working
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`486` Docker Verison 3.0 not working
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -98,7 +98,6 @@ _mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_s
 
 References:
 
-* http://www.djangoshmango.com/?p=99
 * http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
 
 
@@ -111,6 +110,7 @@ Use utf-8 collation on MySQL server, or at least in table
 ‘documents_documentpage', ‘content' field
 
 References:
+
 * http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
 * http://markmail.org/message/bqajx2utvmtriixi
 
@@ -188,10 +188,8 @@ testing. For production deployments the management command::
     $ mayan-edms.py collectstatic
 
 should be used and the resulting static folder served from a webserver.
-For more information,
-read https://docs.djangoproject.com/en/dev/howto/static-files/ and
-https://docs.djangoproject.com/en/1.2/howto/static-files/ or
-http://mayan-edms-ru.blogspot.com/2011/11/blog-post_09.html
+For more information check the
+:django-docs:`howto/static-files/`
 
 Watchfolders
 ============

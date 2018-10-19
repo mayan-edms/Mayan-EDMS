@@ -1,24 +1,26 @@
-===============================
-Mayan EDMS v2.5.1 release notes
-===============================
+Version 2.5.1
+=============
 
 Released: July 07, 2017
 
-What's new
-==========
+Changes
+-------
 
 This version is identical to version 2.5. It was released to workaround some
 issues with the recent migration of PyPI (https://mail.python.org/pipermail/distutils-sig/2017-June/030766.html)
 
+
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -26,8 +28,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -41,8 +44,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -56,14 +60,15 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #378 <https://gitlab.com/mayan-edms/mayan-edms/issues/378>`_ Add metadata widget changes from @Macrobb
-* `GitLab issue #379 <https://gitlab.com/mayan-edms/mayan-edms/issues/379>`_ Add new document version list view permission.
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`378` Add metadata widget changes from @Macrobb
+* :gitlab-issue:`379` Add new document version list view permission.
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

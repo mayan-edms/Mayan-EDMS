@@ -1,13 +1,10 @@
-=============================
-Mayan EDMS v1.0 release notes
-=============================
+Version 1.0
+===========
 
 *August 26, 2014*
 
-Welcome to Mayan EDMS v1.0!
-
 Overview
-========
+--------
 After a year of low activity the focus of this release was to get the code
 updated to work with the most recent version of Django and the most recent
 version of the dependencies Mayan EDMS uses. The goal was to have a strong
@@ -16,25 +13,30 @@ fixes were the primary focus of this cycle. Because of this not much
 emphasis was placed on adding new features, or at least new features
 that could have the potential to break things.
 
-What's new in Mayan EDMS v1.0
-=============================
+Changes
+-------
 
 New home
-~~~~~~~~
+^^^^^^^^
+
 The growth and reach of the project has necessitaded for a while the move
 of the project to its own organization in Github. This move has finally been
 done, the new URL of the project is: https://github.com/mayan-edms/mayan-edms
 
+
 Django 1.6
-~~~~~~~~~~
+^^^^^^^^^^
+
 This release updates the required version of Django to 1.6, bringing with it
 not only new features, but also a lot of security updates, a new project
 directory structure and new deployment methods.
 
+
 Translation updates
-~~~~~~~~~~~~~~~~~~~
-The translation for all languages were synchronized to the latest transifex project sources.
-Translation completion as reported by Transifex:
+^^^^^^^^^^^^^^^^^^^
+
+The translation for all languages were synchronized to the latest transifex
+project sources. Translation completion as reported by Transifex:
 
 * English - 100%
 * Spanish - 100%
@@ -59,96 +61,127 @@ Translation completion as reported by Transifex:
 * Croatian - 3%
 * Turkish - 3%
 
+
 Model updates
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 There were some convenience properties created to allow quick access to
 a document's version and pages. These custom properties were removed and
 an official method to access these properties as provided by Django is now
 used.
 
+
 Source code improvements
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 A circular import of metadata and document_index apps code from the documents app
 was removed. Document index updates are now handled via signals, not called
 directly as before. Hundreds of PEP8 style fixes, unused import removals,
 unused variables removals and removal of remarked or unused code. Removal of the
-DEVELOPMENT flag (was used to trigger static media serving during development),
-this is now handled by the DEBUG flag. The DEBUG flag is now set to `True` by
+``DEVELOPMENT`` flag (was used to trigger static media serving during development),
+this is now handled by the ``DEBUG`` flag. The ``DEBUG`` flag is now set to ``True`` by
 default as per Django 1.6 defaults. Removed usage of Django's JSON libraries
 using Python's JSON library instead. Update of time and date use to use Django's
 new timezone aware data and time handling. Removal of custom code in favor of using
 modules provided by Django or by existing 3rd party libraries. Unification of code
 used for equal or similar purpose in various modules.
 
+
 Removal of included 3rd party modules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 One last 3rd party module was included with the source code of Mayan EDMS.
 This module is now available on PyPI and fetched during the installation instead
 of being included.
 
+
 Automatic testing and code coverage check
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Some initial tests were added, which will help with the detection of
 regressions or bugs when adding new features. More tests are needed, but
 the initial work has being started.
 
+
 Update of required modules and libraries versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Many of the required modules and libraries have been updated to a more
 recent version if not to their most recent released version.
 
+
 Database connection leaks
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Stale database connection being left open by scheduler tasks are now explictly
 closed. This avoids consumption of the pool of database connections, increases
 stability and reduces memory usage.
 
+
 Deletion of detached signatures
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Detached signatures can now be deleted, if accidentally added to the wrong document.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Detached signatures can now be deleted, if accidentally added to the wrong
+document.
+
 
 Removal of fabric based installations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 These files are now part of their own project and located at https://github.com/mayan-edms/mayan-fabric
 
+
 Pluggable OCR backends
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
+
 A commonly requested feature, it is now possible to write backends drivers
 to do document OCR using software or services other than Tesseract.
 
+
 OCR improvements
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
 OCR queue state is now reset when reloading Mayan EMDS, avoiding the OCR queue
 to remain locked. `unpaper` binary is now an optional pre OCR requirement, the OCR
-queue will now continue working is `unpaper` is not installed. Addition of post
+queue will now continue working is ``unpaper`` is not installed. Addition of post
 OCR processing support for French and German.
 
+
 License change
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
+
 Mayan EDMS is now licensed under the Apache 2.0 license. This means many
 things but the main change is that inclusion of Mayan EDMS into
 commercial products is now explicitly allowed.
 
+
 PyPI package
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Mayan EDMS has been packaged and submitted to the PyPI_ Python Package Index
 making it even easier to install and use.
 
+
 New REST API
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 This release feature a completely new REST API and automatic API documentation.
-This new API is also used internally by *Mayan EDMS* itself.
+This new API is also used internally by Mayan EDMS itself.
+
 
 Other changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 More office document types are now recognized and supported. More file types are now
 supported as text files and properly previewed and parsed. Removal of the legacy
 runserver.sh and runserver_plus.sh scripts. New document preview generation and
 display pipeline, faster, simpler. Inclusion of a proof of concept compressed storage
 backend.
 
+
 Upgrading from a previous version
-=================================
+---------------------------------
+
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
     $ git reset --hard HEAD
@@ -175,7 +208,8 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
+
 * If using the SQLite3 database option, rename the file named `mayan.sqlite` file to `db.sqlite3` and
   move it to the new `media` provided folder.
 * Also move to the `media` folder any `gpg_home`, `document_storage` and `image_cache` folders
@@ -183,7 +217,8 @@ Backward incompatible changes
 
 
 Bugs fixed or issues closed
-===========================
+---------------------------
+
 * None
 
 

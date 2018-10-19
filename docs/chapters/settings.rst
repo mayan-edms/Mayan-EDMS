@@ -2,8 +2,8 @@
 Settings
 ********
 
-
 Mayan EDMS can be configure via environment variables or by setting files.
+
 
 .. _environment_variables:
 
@@ -22,6 +22,7 @@ use::
 Restart Mayan EDMS and the new value will take effect. The "Settings" menu
 can be used to verify if the overridden setting value is being interpreted
 correctly.
+
 
 .. _configuration_file:
 
@@ -53,20 +54,21 @@ This file is used to revert to the last know configuration file known
 to be valid. You can revert manually by copy the file or by using the
 ``revertsettings`` management command from the command line.
 
+
 Via Python settings files
 =========================
 
 Another way to configure Mayan EDMS is via Python-style, settings files.
 If Mayan EDMS was installed using the Python package a ``mayan_settings``
 folder will created for this purpose. If you installed Mayan EDMS
-according to the :ref:`deploying` instructions provided in this
+according to the :doc:`../chapters/deploying` instructions provided in this
 documentation your ``mayan_settings`` folder should be located in the directory:
 ``/usr/share/mayan-edms/mayan/media/mayan_settings``.
 
 If Mayan EDMS was installed using Docker, the ``mayan_settings`` folder
 will be found inside the install Docker volume. If you installed Mayan EDMS
-according to the :ref:`docker` instructions provided in this documentation
-your ``mayan_settings`` folder should be located in the directory:
+according to the :doc:`../chapters/docker` instructions provided in this
+documentation your ``mayan_settings`` folder should be located in the directory:
 ``/docker-volumes/mayan/mayan_settings``.
 
 Create a file with any valid name and a ``.py`` extension in the
@@ -94,7 +96,7 @@ For this example let's assume the file was saved with the name ``mysettings.py``
 The way used to tell Mayan EDMS to import this file will vary based on the
 installation method.
 
-For the :ref:`deploying` method, the full import path will be
+For the :doc:`../chapters/deploying` method, the full import path will be
 ``mayan.media.mayan_settings.mysettings`` and can be passed via the
 ``--settings`` command line argument like this::
 
@@ -104,7 +106,7 @@ or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this::
 
     export DJANGO_SETTINGS_MODULE=mayan.media.mayan_settings.mysettings
 
-For the :ref:`docker` installation method, the full import path will be
+For the :doc:`../chapters/docker` installation method, the full import path will be
 ``mayan_settings.mysettings`` and can only be passed via the
 ``MAYAN_SETTINGS_MODULE`` environment variable like this::
 

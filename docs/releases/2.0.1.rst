@@ -1,31 +1,34 @@
-===============================
-Mayan EDMS v2.0.1 release notes
-===============================
+Version 2.0.1
+=============
 
 Released: January 22, 2016
 
-Welcome to Mayan EDMS v2.0.1
-
-
-What's new in Mayan EDMS v2.0.1
-===============================
+Changes
+-------
 
 Required metadata was not enforce correctly
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Fixed a situation where documents having required metadata could still be
 uploaded without entering a value for the required metadata.
 
+
 Fix multiple document metadata adding
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Fixed a bug when adding metadata to multiple documents.
 
+
 Fix multiple document metadata editing
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Fixed a bug that made it impossible to edit multiple documents' metadata values
 if one of the documents had no previous value for it's metadata.
 
+
 Updated Vagrant file
---------------------
+^^^^^^^^^^^^^^^^^^^^
+
 The included Vagrant file now provide 2 boxes: development and production.
 Selection which kind of box to provision is as easy as executing::
 
@@ -37,18 +40,22 @@ or
 
 
 Other changes
--------------
+^^^^^^^^^^^^^
+
 * None
+
 
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -56,8 +63,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -71,8 +79,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -86,14 +95,15 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #243 <https://gitlab.com/mayan-edms/mayan-edms/issues/243>`_  System allows a user to skip entering values for a required metadata field while uploading a new document
-* `GitLab issue #245 <https://gitlab.com/mayan-edms/mayan-edms/issues/245>`_  Add multiple metadata not possible
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`243` System allows a user to skip entering values for a required metadata field while uploading a new document
+* :gitlab-issue:`245` Add multiple metadata not possible
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

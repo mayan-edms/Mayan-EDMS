@@ -1,14 +1,14 @@
-=============================
-Mayan EDMS v2.1 release notes
-=============================
+Version 2.1
+===========
 
 Released: May 14, 2016
 
-What's new
-==========
+Changes
+-------
 
 Upgrade to use Django 1.8.13
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 With the end of life support for Django 1.7, moving to the next Mayan EDMS
 minor version was a target for this release. The Django minor release chosen was
 1.8 as it is very compatible with 1.7 and required minimal changes. Django 1.8
@@ -16,28 +16,35 @@ is an LTS release (Long Term Support) meaning that is no new big feature of a
 new Django version is required, the project can stay in Django 1.8 for a good
 amount of time with no downsides.
 
+
 Remove remaining references to Django's User model
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The few remaining hard code references to Django's User model that were missed
 in a previous release have been removed. Using a custom User model with Mayan
 should present very little if any obstacles.
 
+
 Remove included login required middleware
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The custom middleware include with Mayan EDMS that forces user to be
 authenticated before being able to access any view has been removed in favor of
 a dedicated 3rd party Django app for that purpose. The app chosen was
 django-stronghold (http://mikegrouchy.com/django-stronghold/).
 
+
 Improve generation of success and error messages for class based views
-----------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In the past success messages for actions would show a generic mention to the
 object being manipulated (document, folder, tag). Now the errors and success
 messages with be more explicit in describing what the view has or was trying
 to manipulate.
 
+
 Remove ownership concept from folders
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Currently Folders in Mayan EDMS have a field that stores a reference to the
 user that has created that folders. One of the design decisions of Mayan EDMS
 is that there should never be any explicit ownership of any object. Ownership
@@ -45,8 +52,10 @@ is relative and is defined by the Access Control List of an object. The
 removal of the user field from the Folders model brings this app in line with
 the defined behavior.
 
+
 Replacement of strip_spaces middleware with the spaceless template tag
-----------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 As a size optimization technique HTML content was dynamically stripped of spaces
 as it was being served. The technique used involved detecting the MIME type of
 the content being served and if found to be of text/HTML type spaces between
@@ -57,50 +66,64 @@ when the template is compiled and not at each HTTP response. The optimization
 is minimal but since it happened at every response a small increase in speed
 is expected for all deployment scenarios.
 
+
 Deselect the update checkbox for optional metadata by default
--------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 During the last releases the behavior of the of metadata edit checkbox has seen
 several tune ups. Thanks to community feedback one small change has been
 introduced. The edit checkbox will be deselected by default for all optional
 document type metadata entries.
 
+
 Implement per document type document creation permission
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If is now possible to grant the document creation permission to a role for a
 document type. Previously document creation was a "blanket" permission. Having
 the permission meant that user could create any type of document. With this
 change it is now possible to restrict which types of document users of a
 specific role can create.
 
+
 Make document type delete time period optional
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The entries that defined after how long a document in the trash would be
 permanently deleted have been made optional. This means that if a document
 type has this option blank, the corresponding document of this type would never
 be deleted from the trash can.
 
+
 Fixed date locale handling in document properties, checkout and user detail views
----------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 A few releases back the ability to for users to set their timezone was added.
 This change also included a smart date rendering update to adjust the dates
 and times fields to the user's timezone. Some users reported a few views where
 this timezone adjustment was not happening, this has been fully fixed.
 
+
 Default index
--------------
+^^^^^^^^^^^^^
+
 During new installations a default index that organizes document by year/month
 when they were uploaded will be created to help users better understand the
 concept of indexes in Mayan EDMS.
 
+
 HTML5 upload widget
--------------------
+^^^^^^^^^^^^^^^^^^^
+
 A common request is the ability to just drap and drop documents from other
 windows into Mayan EDMS's document upload wizard. This release includes that
 capability and will also show a completion bar for the upload. Document
 uploading is sped up dramatically with this change.
 
+
 Message of the Day app
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
+
 Administrators wanting to display announcements has no other way to do so
 than to customize the login template. To avoid this a new app has been added
 that allows for the creation of messages to be shown at the user login
@@ -108,8 +131,10 @@ screen. These messages can have an activation and an expiration date and
 time. These messages are useful for display company access policies,
 maintenance announcement, etc.
 
+
 Document signing
-----------------
+^^^^^^^^^^^^^^^^
+
 The biggest change for this release if the addition of document signing from
 within the UI. Enterprise users request this feature very often as in those
 environments cryptographic signatures are a basic requirement. Previously
@@ -129,8 +154,10 @@ Finally documents are now checked just once for signatures and not every time
 they are accessed, this provides a very sizable speed improvement in document
 access and availability.
 
+
 Other changes
-=============
+^^^^^^^^^^^^^
+
 - Upgrade Python requirements to recent versions.
 - Rename 'Content' search box to 'OCR'.
 - Silence all Django 1.8 model import warnings.
@@ -161,11 +188,12 @@ Removals
 --------
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -173,8 +201,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -188,8 +217,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -203,36 +233,37 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #137 <https://gitlab.com/mayan-edms/mayan-edms/issues/137>`_   Add app creation chapter to documentation.
-* `GitLab issue #147 <https://gitlab.com/mayan-edms/mayan-edms/issues/147>`_   Add in app document signing.
-* `GitLab issue #161 <https://gitlab.com/mayan-edms/mayan-edms/issues/161>`_   Email backend setup documentation.
-* `GitLab issue #162 <https://gitlab.com/mayan-edms/mayan-edms/issues/162>`_   Add HTML5 file uploader.
-* `GitLab issue #191 <https://gitlab.com/mayan-edms/mayan-edms/issues/191>`_   Split index contents title into title and path/breadcrumb widget.
-* `GitLab issue #206 <https://gitlab.com/mayan-edms/mayan-edms/issues/206>`_   Support for dynamic LOGIN_EXEMPT_URLS.
-* `GitLab issue #208 <https://gitlab.com/mayan-edms/mayan-edms/issues/208>`_   Add tagging step to upload wizard.
-* `GitLab issue #218 <https://gitlab.com/mayan-edms/mayan-edms/issues/218>`_   Cookie cutter template for Mayan apps.
-* `GitLab issue #222 <https://gitlab.com/mayan-edms/mayan-edms/issues/222>`_   Add notice board or Message of the Day.
-* `GitLab issue #225 <https://gitlab.com/mayan-edms/mayan-edms/issues/225>`_   Remove hard coded User model.
-* `GitLab issue #232 <https://gitlab.com/mayan-edms/mayan-edms/issues/232>`_   "Create documents" is a blanket permission for a user to create a document of any document type.
-* `GitLab issue #246 <https://gitlab.com/mayan-edms/mayan-edms/issues/246>`_   Upgrade to Django version 1.8 as Django 1.7 is end-of-life.
-* `GitLab issue #251 <https://gitlab.com/mayan-edms/mayan-edms/issues/251>`_   Add method to disable metadata edit form "update" checkbox when not needed.
-* `GitLab issue #255 <https://gitlab.com/mayan-edms/mayan-edms/issues/255>`_   UnicodeDecodeError in apps/common/middleware/strip_spaces_widdleware.py.
-* `GitLab issue #256 <https://gitlab.com/mayan-edms/mayan-edms/issues/256>`_   typo in locale settings (Dutch).
-* `GitLab issue #261 <https://gitlab.com/mayan-edms/mayan-edms/issues/261>`_   Feature: Document Access Audit Logging.
-* `GitLab issue #265 <https://gitlab.com/mayan-edms/mayan-edms/issues/265>`_   Indexes show list (show indexe only if the user has ACLs on document type).
-* `GitLab issue #266 <https://gitlab.com/mayan-edms/mayan-edms/issues/266>`_   Smart links : Dynamic label with Postgresql.
-* `GitLab issue #267 <https://gitlab.com/mayan-edms/mayan-edms/issues/267>`_   Release 2.1 RC1 : Notes and ideas.
-* `GitLab issue #268 <https://gitlab.com/mayan-edms/mayan-edms/issues/268>`_   Release 2.1 RC1 : Bug to access inside an indexes.
-* `GitLab issue #270 <https://gitlab.com/mayan-edms/mayan-edms/issues/270>`_   Release 2.1 RC1 : Bug statistics.
-* `GitLab issue #274 <https://gitlab.com/mayan-edms/mayan-edms/issues/274>`_   [Release 2.1 RC2] Web Tests.
-* `GitLab issue #275 <https://gitlab.com/mayan-edms/mayan-edms/issues/275>`_   [Release 2.1 RC2] Notes.
-* `GitLab issue #276 <https://gitlab.com/mayan-edms/mayan-edms/issues/276>`_   [Release 2.1 RC2] API Tests.
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`137` Add app creation chapter to documentation.
+* :gitlab-issue:`147` Add in app document signing.
+* :gitlab-issue:`161` Email backend setup documentation.
+* :gitlab-issue:`162` Add HTML5 file uploader.
+* :gitlab-issue:`191` Split index contents title into title and path/breadcrumb widget.
+* :gitlab-issue:`206` Support for dynamic LOGIN_EXEMPT_URLS.
+* :gitlab-issue:`208` Add tagging step to upload wizard.
+* :gitlab-issue:`218` Cookie cutter template for Mayan apps.
+* :gitlab-issue:`222` Add notice board or Message of the Day.
+* :gitlab-issue:`255` Remove hard coded User model.
+* :gitlab-issue:`232` "Create documents" is a blanket permission for a user to create a document of any document type.
+* :gitlab-issue:`246` Upgrade to Django version 1.8 as Django 1.7 is end-of-life.
+* :gitlab-issue:`251` Add method to disable metadata edit form "update" checkbox when not needed.
+* :gitlab-issue:`255` UnicodeDecodeError in apps/common/middleware/strip_spaces_widdleware.py.
+* :gitlab-issue:`256` typo in locale settings (Dutch).
+* :gitlab-issue:`261` Feature: Document Access Audit Logging.
+* :gitlab-issue:`265` Indexes show list (show indexe only if the user has ACLs on document type).
+* :gitlab-issue:`266` Smart links : Dynamic label with Postgresql.
+* :gitlab-issue:`267` Release 2.1 RC1 : Notes and ideas.
+* :gitlab-issue:`268` Release 2.1 RC1 : Bug to access inside an indexes.
+* :gitlab-issue:`270` Release 2.1 RC1 : Bug statistics.
+* :gitlab-issue:`274` [Release 2.1 RC2] Web Tests.
+* :gitlab-issue:`275` [Release 2.1 RC2] Notes.
+* :gitlab-issue:`276` [Release 2.1 RC2] API Tests.
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -1,11 +1,10 @@
-=============================
-Mayan EDMS v3.1 release notes
-=============================
+Version 3.1
+===========
 
 Released: September 17, 2018
 
-What's new
-==========
+Changes
+-------
 
 When one hears the word software bug, one first think of critical errors.
 We might think about data loss, privacy issues or user interface breakage.
@@ -21,7 +20,8 @@ terms of features or improvement to existing feature but also focused in fixing
 
 
 Client side caching of images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Mayan EDMS already does extensive caching of content. Currently the caching
 happens on the environment running the Python code. This release adds code
 that allows browsers to cache some of the more used images like thumbnails
@@ -33,8 +33,10 @@ without user intervention. The amount of time images are cached in the browser
 is determined by the new ``DOCUMENTS_PAGE_IMAGE_CACHE_TIME`` setting. This
 setting defaults to 31556926 seconds which is equivalent to 1 year.
 
+
 Web-based setting editing
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Historically since most settings were performed modifying a Python setting file,
 it was impossible or impractical to add a settings editor that worked using the
 web interface. Over the last few versions we have been introducing updates
@@ -59,10 +61,11 @@ Example::
     DOCUMENTS_ZOOM_PERCENT_STEP: 25
 
 The second feature allow users to make changes to the settings options from the
-web interface. Just navigate to [System] -> [Setup] -> [Settings]. Settings are
-grouped by namespaces based on the app of type of system their control.
-To change the default width of thumbnails, navigate to [Documents] ->
-[DOCUMENTS_THUMBNAIL_WIDTH]
+web interface. Just navigate to :menuselection:`System --> Setup --> Settings`.
+Settings are grouped by namespaces based on the app of type of system their control.
+To change the default width of thumbnails, navigate to
+web interface. Just navigate to
+:menuselection:`System --> Setup --> Settings --> Documents -> DOCUMENTS_THUMBNAIL_WIDTH`
 and click on [Edit] to change the current value. Upon clicking on [Save] the
 ``config.yml`` will be updated to include this new value. A restart of the installation
 is required to make the change effective. This is not a Mayan limitation but a
@@ -103,8 +106,10 @@ deployment. This settings hierarchy is as follows:
 4- Setting modified via the new web interface, which upon saved will overwrite the
    ``mayan/config.yml`` file.
 
+
 Customization
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 Along with improvements in the ease of customizing Mayan, we've added more
 even more customization options via new settings. We've added the
 ``COMMON_PROJECT_TITLE`` setting to allow administrator to change the name of their
@@ -112,8 +117,10 @@ deployments without having to make code changes. We added several base Django
 settings to allow how administrative emails are sent (like the password recovery
 emails). These new settings can be found in their one namespace, named "Django".
 
+
 Database conversion improvements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 This release adds support for natural keys to many models. This feature
 allows exporting data in a format that is database agnostic so that it can then
 be imported back using a different database engine. With this feature eases
@@ -121,10 +128,12 @@ the migration from SQLite to other database managers like PostgreSQL, MySQL or
 MariaDB.
 
 The export and import can be done using the dumpdata and loaddata command or
-the new command convertdb.
+the new command ``convertdb``.
+
 
 Changed settings
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
 We renamed the setting ``LOCK_MANAGER_DEFAULT_BACKEND`` to ``LOCK_MANAGER_BACKEND``.
 Functionally it exactly the same but the addition of the term 'DEFAULT` was
 confusing users so it was removed.
@@ -142,7 +151,8 @@ must be updated to::
 
 
 Workflow improvements
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
+
 We fixed an minor issue that prevented actions attached to initial states to
 execute reliably. Similarly we added support for viewing only the events of a
 tag via a new events link for tags.
@@ -157,8 +167,10 @@ From the {{ document }} variable, properties like metadata and tags are availabl
 This allows those properties to be used when changing the label or the
 description of the document.
 
+
 Event changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 It is now possible to view the events of a document type via a new events links
 associated to the document type.
 
@@ -170,8 +182,10 @@ a metadata field.
 
 Events were added to track the creation and editing of tags.
 
+
 Permission changes
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
+
 Add new document indexing permission was added. This permission allow users
 to view an index instance as opposed to the current permission which allows
 viewing an index definition on the setup menu. This new permission allows
@@ -188,8 +202,10 @@ ACL support was added to the message of the day app. The index rebuild
 permission can now be set as part of the index ACL for each individual index.
 This allow granting the access to rebuild some indexes to specific roles.
 
+
 Smarter menu and link display
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Support was added to conditionally disable menus. This gives an user a clearer
 idea of the section they can access. Previously menus were always displayed
 even if an user didn't have access to any of the objects in that menu. Now
@@ -202,15 +218,19 @@ be removed from view. Most entries in the main menu have been updated to support
 this new feature. For now this feature is mostly used in the main menu, and in the
 Tools and System menus.
 
+
 Document sorting
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
 We've been researching methods to provide a way to sort documents via the user
 interface. Efforts continue towards this goal but for the time being we've
 settled on the common request to sort documents by label. This provides a quick
 method to scan documents visually using a custom sorting feature is added.
 
+
 Transformations
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
+
 The rotate transformation now has a new argument. This argument is named
 ``fillcolor`` and is used to provide a background color to fill the blank areas
 after rotating a document. The arguments uses the web notation of three color
@@ -218,14 +238,18 @@ indicating the red, green and blue components of the color in unit of 0 to 255
 or 0 to FF as hexadecimal is used. For example white is '#FFFFFF', red is
 '#FF0000', green is '#00FF00' and so on.
 
+
 Link sorting
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Another papercut solved was the sorting of the links to help visual scan.
 The action in the multiple document dropdown are now sorted alphabetically.
 This is also true for the actions in the facet, secondary and sidebar sections.
 
+
 Blanks views and auto documentation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Previously when an user navigated to a view with no results a simple "No results"
 message was displayed. This has now been improved with a new template that will
 display several pieces of information. An icon will be displayed to help the user
@@ -241,8 +265,10 @@ something other than a blank template.
 This update help users understand what they are supposed to do in specific
 views and act as a built in reference for the terminology used in Mayan.
 
+
 Password changes
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
 Some installations allow for demo or read only access. For example some
 installations of Mayan used in governments provide a free read only account
 for citizen access. This feature allow administrators to block the ability of these
@@ -251,15 +277,19 @@ feature was added into a user account view accessible via a new user link. It
 can be found in the user list view. Next to each user entry a new button
 called [User options] was added.
 
+
 Document page view changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To improve usability after searching for a term a link to examine the OCR of each
 page was added. The link can be found in the [Action] dropdown in the page list
 view or when examining a single document page in the top facet menu next to the
 transformations link.
 
+
 Dashboard changes
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
+
 The dashboard widget system has been refactored to make it class based. This
 allows developers to subclass the base class for the dashboard widget and more
 easily add their own widget system. The new widget class can also access
@@ -271,8 +301,10 @@ ACL filtering has added to the default widgets. This way users cannot get
 access to the knowledge or the total number documents in the system. The totals
 displayed in the dashboard widgets be updated based on the user's access controls.
 
+
 Chart changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 The statistics class system was refactored to improve the subclassing support.
 The class module was split into statistic classes and renderer classes to support
 new frontend rendering libraries. This will allow developer to add other chart
@@ -280,15 +312,16 @@ classes beyond the provide line chart.
 
 
 Other changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 - Add recently added document list view. The setting
-  DOCUMENTS_RECENT_COUNT has been renamed to
-  DOCUMENTS_RECENT_ACCESS_COUNT. New setting
-  DOCUMENTS_RECENT_ADDED_COUNT added.
+  ``DOCUMENTS_RECENT_COUNT`` has been renamed to
+  ``DOCUMENTS_RECENT_ACCESS_COUNT``. New setting
+  ``DOCUMENTS_RECENT_ADDED_COUNT`` added.
 - Fix crop transformation argument parsing. Thanks to Jordan Wages
   (@wagesj45). Closes GitLab issue #490
 - Add error checking to the crop transformation arguments.
-- Fix post login redirection to honor the ?next= URL query string
+- Fix post login redirection to honor the ``?next=`` URL query string
   argument. Thanks go to K.C. Wong (@dvusboy1). Closes GitLab
   issue #489.
 - Update dropzone.js' timeout from 30 seconds to 120 to allow upload
@@ -305,10 +338,10 @@ Other changes
 - Speed up document image fade in reveal.
 - Use reseteable timer to ensure more document panels heights are matched.
 - Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
-- Remove use is waitForJQuery.
+- Remove use of ``waitForJQuery``.
 - Remove code statistics from the documentation.
 - Remove the pending work chapter. This is now available in the Wiki:
-  wiki.mayan-edms.com
+  https://wiki.mayan-edms.com
 - Unify template title rendering.
 - Add support for template subtitles.
 - Add the tag events view permissions to the tag model ACL.
@@ -328,11 +361,11 @@ Other changes
 - Only show the settings namespace list link where it is
   relevant.
 - Use platform independent hashing for transformations.
-- Add support to the ObjectActionMixin to report on instance action
+- Add support to the ``ObjectActionMixin`` to report on instance action
   failures. Add also an error_message class property and the new
-  ActionError exception.
+  ``ActionError`` exception.
 - Add favorite documents per user. Adds new setting option
-  DOCUMENTS_FAVORITE_COUNT.
+  ``DOCUMENTS_FAVORITE_COUNT``.
 - In addition to the document view permission, the checkout detail
   view permission is now needed to view the list of checked out
   document.
@@ -343,7 +376,7 @@ Other changes
   permissions is now required to view the parsing error list.
 - The document type parsing setup permission can now be granted for
   individual document types.
-- Remove the duplicated setting pdftotext_path from the OCR path.
+- Remove the duplicated setting ``pdftotext_path`` from the OCR path.
   This is now handled by the document parsing app.
 - Implement partial refresh of the main menu.
 - Complete refactor of the compress archive class support. Closes
@@ -354,12 +387,12 @@ Other changes
   #360.
 - Add new dashboard item to display the total page count.
 - Show the document type being uploaded in the source view title.
-- Setting SOURCE_SCANIMAGE_PATH is now SOURCES_SCANIMAGE_PATH.
+- Setting ``SOURCE_SCANIMAGE_PATH`` is now ``SOURCES_SCANIMAGE_PATH``.
 - Refactor the staging file image generation to support
   background task generation, caching and cache sharing.
 - New queue: sources_fast. Used for staging file generation.
-- New settings: SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND and
-  SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS to control
+- New settings: ``SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND`` and
+  ``SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS`` to control
   where and how staging file caching is done.
 - Fix an egde case on the document indexing where an empty
   node could be left behind.
@@ -370,16 +403,17 @@ Other changes
   templates that only refresh the menu when there are changes.
   Closes GitLab issue #511. Thanks to Daniel Carrico
   @daniel1113 for the report.
-- Refactor the ModelAttribute class into two separate classes:
-  ModelAttribute for executable model attributes and ModelField
+- Refactor the ``ModelAttribute`` class into two separate classes:
+  ``ModelAttribute`` for executable model attributes and ``ModelField``
   for actual ORM fields.
 - Expose more document fields for use in smart links.
 - The size of the document type label field has been increased
   from 32 to 96 characters.
-- Add file_size and datetime fields to the DocumentPageCachedImage
+- Add file_size and datetime fields to the ``DocumentPageCachedImage``
   model.
 - Make icon classes file template based.
 - Add the current step and total steps of a wizard in the template context.
+
 
 Removals
 --------
@@ -394,9 +428,8 @@ Removals
 Upgrading from a previous version
 ---------------------------------
 
-
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -410,7 +443,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -430,7 +463,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -445,7 +479,7 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * ``LOCK_MANAGER_DEFAULT_BACKEND`` was renamed to ``LOCK_MANAGER_BACKEND``.
 * ``ALLOWED_HOSTS`` is interpreted as YAML.
@@ -458,11 +492,11 @@ must be changed::
 
 
 Bugs fixed or issues closed
-===========================
+---------------------------
 
-* `GitLab issue #7 <https://gitlab.com/mayan-edms/mayan-edms/issues/7>`_ Feature: other compressors than zip for compressed documents
-* `GitLab issue #259 <https://gitlab.com/mayan-edms/mayan-edms/issues/259>`_ Thumbnails: why are they created on the fly (therefore: not cached)
-* `GitLab issue #360 <https://gitlab.com/mayan-edms/mayan-edms/issues/360>`_ Should quick rename (optionally) retain original file type extension?
-* `GitLab issue #511 <https://gitlab.com/mayan-edms/mayan-edms/issues/511>`_ Menu bar flickering in 3.1b1
+* :gitlab-issue:`7` Feature: other compressors than zip for compressed documents
+* :gitlab-issue:`259` Thumbnails: why are they created on the fly (therefore: not cached)
+* :gitlab-issue:`360` Should quick rename (optionally) retain original file type extension?
+* :gitlab-issue:`511` Menu bar flickering in 3.1b1
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

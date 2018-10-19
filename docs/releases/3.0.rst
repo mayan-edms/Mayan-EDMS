@@ -1,14 +1,14 @@
-=============================
-Mayan EDMS v3.0 release notes
-=============================
+Version 3.0
+===========
 
 Released: June 29, 2018
 
-What's new
-==========
+Changes
+-------
 
 Turning Mayan EDMS into a single page app
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Historically, Mayan EDMS has steered away from adding too much Javascript
 in its code. The goal was to be able to maintain a robust, backend-based
 page rendering method that will be as future-proof as possible.
@@ -33,7 +33,8 @@ improvements are now possible.
 
 
 Upgrading to Django 1.11
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 The move to Django 1.11 proved to be a real challenge. Even though
 Django 1.11 is a minor release, it breaks compatibility and interfaces
 in several key areas. Among these were templates and form widgets.
@@ -49,7 +50,8 @@ warning were fixed in preparation for an eventual upgrade to Django 2.0.
 
 
 Notification improvements
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 These work by allowing users to subscribe to a particular event like Document
 Uploads or to an event of a particular document like when an invoice is edited.
 If these events occurs, the user gets a reminder next to the bell icon in the
@@ -57,7 +59,8 @@ main menu bar.
 
 
 Dependencies upgrades
----------------------
+^^^^^^^^^^^^^^^^^^^^^
+
 Most of the requirements, dependencies and libraries were upgraded to
 their latest release.
 
@@ -81,7 +84,8 @@ their latest release.
 
 
 Search syntax
--------------
+^^^^^^^^^^^^^
+
 Searching without using a specialized search database is difficult.
 Mayan’s design calls avoiding a separate search engine at the cost of some
 missing search syntax. The OR and the negative term support are the first
@@ -115,7 +119,8 @@ This will return only documents with the exact phrase “blue car”.
 
 
 Running multiple instances of Mayan EDMS
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you've ever tried running two instances of Mayan EDMS, you would
 have noticed that they both try to create a lock file in the ``/tmp``
 directory with the same name. Only the first instance will be able to run.
@@ -130,7 +135,8 @@ all practical purposes.
 
 
 Display resolution settings
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Display sizes for document display, previews, and thumbnail were specified
 as a string that included the horizontal and the vertical resolution
 separated by the character “x”. Using an “x” character to separate
@@ -148,7 +154,7 @@ The settings are now:
 
 
 Dynamic upload wizard steps
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The steps needed to upgrade a document using form-tools' SessionWizard
 were hardcoded in the source app. This made it very difficult to add or remove
 wizard steps.
@@ -232,7 +238,8 @@ wizard anymore.
 
 
 New upload step
----------------
+^^^^^^^^^^^^^^^
+
 Using the new ``WizardStep`` class a new upload wizard step was added
 to assign documents being uploaded to any number of cabinets while
 being uploaded. This step was been assigned number 4 in the order of
@@ -240,20 +247,23 @@ step for uploading a file.
 
 
 Fix carousel item height issues
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 On some devices the height of the pages on the document preview view were
 squashed. The CSS for this view was updated to fix this issue.
 
 
 Orientation detection
----------------------
+^^^^^^^^^^^^^^^^^^^^^
+
 After reports that it is not working in 100% of the cases, the feature that
 detects and fixes the orientation of PDF has been marked experimental and
 now defaults to being disabled.
 
 
 New proposal system
--------------------
+^^^^^^^^^^^^^^^^^^^
+
 The Mayan EDMS Request for Comments or MERCs will be use to propose and or
 document the new features, the existing code, and the processes governing the
 project. MERCs 1 and 2 have been approved. MERC-1 outlines the MERC process
@@ -261,7 +271,8 @@ itself and MERC-2 documents the way API tests are to be written for Mayan EDMS.
 
 
 Duplicated documents
---------------------
+^^^^^^^^^^^^^^^^^^^^
+
 The duplicated documents system has been improved to also better detect when
 the duplicate of a primary document has been move to the trash. In this
 instance the duplicate count of the primary document would be zero and will
@@ -271,8 +282,10 @@ If the duplicated document is deleted from the trash the system now will launch
 a background clean up task to permanently delete the empty primary document's
 duplicate document entry from the database.
 
+
 Storage
--------
+^^^^^^^
+
 It is now possible to pass arguments to the document, document cache and
 document signatures storage backends. To pass the arguments, use the new
 settings: ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS``,
@@ -295,24 +308,30 @@ If no path is specified the backend will default to ``mayan/media/document_stora
 Finally, to standardize the way app use storage, the ``storages.py`` modules is now used
 instead of the ``runtime.py`` module.
 
+
 User event filtering
---------------------
+^^^^^^^^^^^^^^^^^^^^
+
 When viewing the event list, the Actor (user) column is not displayed
 as a link. Clicking this link will filter the event list and display
 the events performed by that user. The view of event for each user can
 also be viewed using a new link added to the user list view in the setup
 menu.
 
+
 Smart checkbox selection
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 A faster way to select multiple item has been added. Click the checkbox of the first,
 hold the Shift key, and then click the checkbox of the last item of the selection.
 This will select the first, the last and all items in between. To deselect multiple
 items the same procedure is used. This code was donated by the Paperattor
 project (www.paperattor.com).
 
+
 Add JavaScript dependency manager
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 An internal utility to install and upgrade the JavaScript dependencies was added.
 This depency manager allows for the easier maintenace of the JavaScript libraries
 used through the project.
@@ -326,13 +345,17 @@ allows apps to specify their own dependencies. These dependecies are then
 downloaded when the project is installed or upgraded. As such they are not
 part of the repository and lower the file size of the project.
 
+
 Workflow changes
-----------------
+^^^^^^^^^^^^^^^^
+
 Removing a document type from a workflow will now also remove all running
 instances of that workflow for documents of the document type just removed.
 
+
 Adoption of Contributor Assignment Agreements
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To facilitate the inclusion of submissions provided by third parties,
 the project has adopted the use of individual and entity contributor
 assignment agreements. These agreements make clear the process to
@@ -340,8 +363,10 @@ transfer the rights to submissions. With these agreements in place
 we now have a documented and legally sound method to accept
 submissions that we couldn't before.
 
+
 SQLite
-------
+^^^^^^
+
 Starting with version 3.0, a warning message will be shown in the console and
 in the user interface when using SQLite as the database engine. When it comes to
 Mayan EDMS, SQLite should only be used for development or testing, never for
@@ -350,8 +375,10 @@ SQLite. The results are duplicated documents, frequency database locked errors,
 among other issues. Suggested database backends are PostgreSQL and MySQL
 (or MariaDB) using a transaction aware storage engine like InnoDB.
 
+
 Received email processing
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Parsing email messages is a complex task. To increase compatibility with the
 many interpretations of the standards that govern email messaging, Mayan EDMS
 now uses Mailgun's flanker library (https://github.com/mailgun/flanker).
@@ -359,8 +386,10 @@ Thanks to flanker, Mayan EDMS now gains new capabilities when it comes to
 parsing incoming email. For example, in addition to mail attachments, it is now
 possible to process files included in emails as inline content.
 
+
 Other changes worth mentioning
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - Add Makefile target to check the format of the README.rst file.
 - Fix permission filtering when performing document page searching
 - base.js was splitted into mayan_app.js, mayan_image.js, and
@@ -488,18 +517,19 @@ Other changes worth mentioning
 - Add a new setting option to enable automatic parsing for each new document
   type created.
 - Add support for HTML bodies to the user mailers.
-- Production ALLOWED_HOSTS settings now defaults to a safer
-  ['127.0.0.1', 'localhost', '[::1]']
+- Production ``ALLOWED_HOSTS`` settings now defaults to a safer
+  ``['127.0.0.1', 'localhost', '[::1]']``
 - Capture menu resolution errors on invalid URLs. Closes GitLab issue #420.
-- New environment variables: MAYAN_SECRET_KEY, MAYAN_CELERY_ALWAYS_EAGER,
-  MAYAN_CELERY_RESULT_BACKEND, MAYAN_BROKER_URL, MAYAN_DATABASE_ENGINE,
-  MAYAN_DATABASE_CONN_MAX_AGE, MAYAN_DATABASE_NAME, MAYAN_DATABASE_USER,
-  MAYAN_DATABASE_PASSWORD, MAYAN_DATABASE_HOST, MAYAN_DATABASE_PORT,
-  MAYAN_DEBUG.
-- Stricter defaults. CELERY_ALWAYS_EAGER to False, ALLOWED_HOSTS to
-  ['127.0.0.1', 'localhost', '[::1]'].
+- New environment variables: ``MAYAN_SECRET_KEY``,
+  ``MAYAN_CELERY_ALWAYS_EAGER``, ``MAYAN_CELERY_RESULT_BACKEND``,
+  ``MAYAN_BROKER_URL``, ``MAYAN_DATABASE_ENGINE``,
+  ``MAYAN_DATABASE_CONN_MAX_AGE``, ``MAYAN_DATABASE_NAME``,
+  ``MAYAN_DATABASE_USER``, ``MAYAN_DATABASE_PASSWORD``,
+  ``MAYAN_DATABASE_HOST``, ``MAYAN_DATABASE_PORT``, ``MAYAN_DEBUG``.
+- Stricter defaults. CELERY_ALWAYS_EAGER to False, ``ALLOWED_HOSTS`` to
+  ``['127.0.0.1', 'localhost', '[::1]']``.
 - New initialization command. Creates media/system and populates the
-  SECRET_KEY and VERSION files.
+  ``SECRET_KEY`` and ``VERSION`` files.
 - Sane scanner source paper source now defaults to blank.
 - Merge Docker image creation back into the main repository.
 - Docker image now uses gunicorn and whitenoise instead of NGINX to server
@@ -507,32 +537,43 @@ Other changes worth mentioning
 - All installation artifact are now created and read from the media folder.
 - Debian is now the Linux distribution used for the Docker image.
 - Most Docker Celery workers are now execute using a lower OS priority number.
-- Add COMMON_PRODUCTION_ERROR_LOGGING setting to control the logging of
+- Add ``COMMON_PRODUCTION_ERROR_LOGGING`` setting to control the logging of
   errors in production. Defaults to False.
 - Change the error log file handle class to RotatingFileHandle to avoid an
   indefinitely growing log file.
 - Disable embedded signature verification during the perform upgrade command.
-- Replace the DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with the
-  new DOCUMENTS_LANGUAGE_CODES.
+- Replace the ``DOCUMENTS_LANGUAGE_CHOICES`` setting option. Replaced with the
+  new ``DOCUMENTS_LANGUAGE_CODES``.
 - Reduce default language code choice from 7800 to the top 100 spoken
-  languages and related (https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers)
-- Fix error when trying to upload a document from and email account with 'from' and 'subject' metadata.
+  languages and related
+  (https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers)
+- Fix error when trying to upload a document from and email account with
+  'from' and 'subject' metadata.
 - Fix typo on message.header get from 'Suject' to 'Subject'.
-- On multi part emails keep the original From and Subject properties for all subsequent parts if the sub parts don't specify them. Fixes issue #481. Thanks to Robert Schöftner @robert.schoeftner for the report and debug information.
-- Don't provide a default for the scanner source adf_mode. Some scanners throw an error even when the selection
-  if supported.
-- Add a "Quick Download" action to reduce the number of steps to download a single document. GitLab issue #338.
-- Recalculate a document's indexes when attaching or removing a tag from or to it.
+- On multi part emails keep the original From and Subject properties for
+  all subsequent parts if the sub parts don't specify them. Fixes issue
+  #481. Thanks to Robert Schöftner @robert.schoeftner for the report and
+  debug information.
+- Don't provide a default for the scanner source adf_mode. Some scanners
+  throw an error even when the selection if supported.
+- Add a "Quick Download" action to reduce the number of steps to download
+  a single document. GitLab issue #338.
+- Recalculate a document's indexes when attaching or removing a tag from or
+  to it.
 - Recalculate all of a tag's documents when a tag is about to be deleted.
+
 
 Removals
 --------
+
 * Data filters app.
-* DOCUMENTS_LANGUAGE_CHOICES setting option. Replaced with
-  DOCUMENTS_LANGUAGE_CODES.
+* ``DOCUMENTS_LANGUAGE_CHOICES`` setting option. Replaced with
+  ``DOCUMENTS_LANGUAGE_CODES``.
+
 
 Known issues
 ------------
+
 The newly added 'flanker' dependency used to process email, produces a number
 of warnings on the console that are imposible to turn off. These are not
 critical and are related to coding practices in the library. All warning
@@ -544,9 +585,8 @@ Example: "WARNING:flanker.addresslib._parser.parser:Symbol 'domain' is unreachab
 Upgrading from a previous version
 ---------------------------------
 
-
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -556,7 +596,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -572,7 +612,7 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -586,44 +626,45 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
+
 Bugs fixed or issues closed
-===========================
+---------------------------
 
-* `GitLab issue #211 <https://gitlab.com/mayan-edms/mayan-edms/issues/211>`_ Remove all workflows when removing them from a document type
-* `GitLab issue #262 <https://gitlab.com/mayan-edms/mayan-edms/issues/262>`_ Event notifications
-* `GitLab issue #278 <https://gitlab.com/mayan-edms/mayan-edms/issues/278>`_ Detect non migrated models
-* `GitLab issue #302 <https://gitlab.com/mayan-edms/mayan-edms/issues/302>`_ 'New Document' button available to users who do not have permission
-* `GitLab issue #332 <https://gitlab.com/mayan-edms/mayan-edms/issues/332>`_ Add option to pass configuration parameters to the OCR backend as mentioned in #319
-* `GitLab issue #338 <https://gitlab.com/mayan-edms/mayan-edms/issues/338>`_ Quick download link in documents list view
-* `GitLab issue #370 <https://gitlab.com/mayan-edms/mayan-edms/issues/370>`_ Advanced search appears to OR the fields instead of AND them
-* `GitLab issue #380 <https://gitlab.com/mayan-edms/mayan-edms/issues/380>`_ Features removal for version 3.0
-* `GitLab issue #405 <https://gitlab.com/mayan-edms/mayan-edms/issues/405>`_ Add wizard steps from external apps
-* `GitLab issue #407 <https://gitlab.com/mayan-edms/mayan-edms/issues/407>`_ Improve search syntax to support search query types: AND, OR
-* `GitLab issue #408 <https://gitlab.com/mayan-edms/mayan-edms/issues/408>`_ Improve document checkbox selection.
-* `GitLab issue #420 <https://gitlab.com/mayan-edms/mayan-edms/issues/420>`_ Mayan raises a 500 instead of 404 in production mode
-* `GitLab issue #427 <https://gitlab.com/mayan-edms/mayan-edms/issues/427>`_ /tmp/mayan_locks.tmp is always owned by root
-* `GitLab issue #430 <https://gitlab.com/mayan-edms/mayan-edms/issues/430>`_ Can't use STATICFILES_STORAGE that requires running collectstatic first
-* `GitLab issue #437 <https://gitlab.com/mayan-edms/mayan-edms/issues/437>`_ Record users who upload or edit documents
-* `GitLab issue #439 <https://gitlab.com/mayan-edms/mayan-edms/issues/439>`_ Toastr library missing after update
-* `GitLab issue #444 <https://gitlab.com/mayan-edms/mayan-edms/issues/444>`_ Error in retrieving documents via POP3
-* `GitLab issue #446 <https://gitlab.com/mayan-edms/mayan-edms/issues/446>`_ Document searcher
-* `GitLab issue #447 <https://gitlab.com/mayan-edms/mayan-edms/issues/447>`_ API Security Bug Chinese wall breach
-* `GitLab issue #449 <https://gitlab.com/mayan-edms/mayan-edms/issues/449>`_ OCR Error: 'int' object has no attribute 'split'
-* `GitLab issue #452 <https://gitlab.com/mayan-edms/mayan-edms/issues/452>`_ Workflow ACL Doesn't works
-* `GitLab issue #454 <https://gitlab.com/mayan-edms/mayan-edms/issues/454>`_ Invalid next month calculation in statistics app, causes failstop
-* `GitLab issue #467 <https://gitlab.com/mayan-edms/mayan-edms/issues/467>`_ mail attachments without content-disposition are lost
-* `GitLab issue #468 <https://gitlab.com/mayan-edms/mayan-edms/issues/468>`_ plain text e-mails without charset do not work
-* `GitLab issue #470 <https://gitlab.com/mayan-edms/mayan-edms/issues/470>`_ Enable Django variable for HTML encoded emails
-* `GitLab issue #474 <https://gitlab.com/mayan-edms/mayan-edms/issues/474>`_ Provide option to serve Mayan EDMS without a webserver (using Tornado o similar).
-* `GitLab issue #480 <https://gitlab.com/mayan-edms/mayan-edms/issues/480>`_ Wrong Environment Variables names in documentation
-* `GitLab issue #481 <https://gitlab.com/mayan-edms/mayan-edms/issues/481>`_ IMAP sources with metadata not working in 3.0rc1
-* `GitLab issue #484 <https://gitlab.com/mayan-edms/mayan-edms/issues/484>`_ Document upload wizard only works as admin
+* :gitlab-issue:`211` Remove all workflows when removing them from a document type
+* :gitlab-issue:`262` Event notifications
+* :gitlab-issue:`278` Detect non migrated models
+* :gitlab-issue:`302` 'New Document' button available to users who do not have permission
+* :gitlab-issue:`332` Add option to pass configuration parameters to the OCR backend as mentioned in #319
+* :gitlab-issue:`338` Quick download link in documents list view
+* :gitlab-issue:`370` Advanced search appears to OR the fields instead of AND them
+* :gitlab-issue:`380` Features removal for version 3.0
+* :gitlab-issue:`405` Add wizard steps from external apps
+* :gitlab-issue:`407` Improve search syntax to support search query types: AND, OR
+* :gitlab-issue:`408` Improve document checkbox selection.
+* :gitlab-issue:`420` Mayan raises a 500 instead of 404 in production mode
+* :gitlab-issue:`427` /tmp/mayan_locks.tmp is always owned by root
+* :gitlab-issue:`430` Can't use STATICFILES_STORAGE that requires running collectstatic first
+* :gitlab-issue:`437` Record users who upload or edit documents
+* :gitlab-issue:`439` Toastr library missing after update
+* :gitlab-issue:`444` Error in retrieving documents via POP3
+* :gitlab-issue:`446` Document searcher
+* :gitlab-issue:`447` API Security Bug Chinese wall breach
+* :gitlab-issue:`449` OCR Error: 'int' object has no attribute 'split'
+* :gitlab-issue:`452` Workflow ACL Doesn't works
+* :gitlab-issue:`454` Invalid next month calculation in statistics app, causes failstop
+* :gitlab-issue:`467` mail attachments without content-disposition are lost
+* :gitlab-issue:`468` plain text e-mails without charset do not work
+* :gitlab-issue:`470` Enable Django variable for HTML encoded emails
+* :gitlab-issue:`474` Provide option to serve Mayan EDMS without a webserver (using Tornado o similar).
+* :gitlab-issue:`480` Wrong Environment Variables names in documentation
+* :gitlab-issue:`481` IMAP sources with metadata not working in 3.0rc1
+* :gitlab-issue:`484` Document upload wizard only works as admin
 
-* `GitHub issue #264 <https://github.com/mayan-edms/mayan-edms/issues/264>`_ migrate fails on document_states 0004_workflow_internal_name
-* `GitHub issue #269 <https://github.com/mayan-edms/mayan-edms/issues/269>`_ Lack of authentication for document previews
+* :github-issue:`264` migrate fails on document_states 0004_workflow_internal_name
+* :github-issue:`269` Lack of authentication for document previews
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

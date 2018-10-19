@@ -1,11 +1,15 @@
-===============================
-Mayan EDMS v3.1.5 release notes
-===============================
+Version 3.1.5
+=============
 
 Released: October 8, 2018
 
+Changes
+-------
+
+
 Index mirroring fixes
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
+
 This release fixes the mountindex management command that mounts an index
 as a FUSE filesystem. It also includes a fix for indexes that return a
 multi line value. The carriage returns and newlines characters are now
@@ -14,30 +18,39 @@ Lastly an issue with the duplicated value was fixed. Indexes levels that
 return a duplicated value will now show as directory entried when mounted
 as a FUSE filesystem.
 
+
 Page parsed text link
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
+
 Recently a link was added to each document page to show the OCR text for
 that particular page. This release adds another link but to allow users
 to view the parsed text of each page.
 
+
 Python 3
-~~~~~~~~
+^^^^^^^^
+
 This release includes several fixes for Python 3 compatibility and reduce
 the fail count of the test suit to just one test.
 
+
 Transformations arguments
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Visually the view to create or edit a transformation remains the same. But
 internally those views now use an explicit form to allow performing YAML
 format validation of arguments.
 
+
 Crop transformation
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
+
 Stricter error checking was added to the crop transformation.
 
 
 Other changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 * Consolidate some document indexing test code into a new mixin.
 * Update compressed files class module to work with Python 3.
 * Update document parsing app tests to work with Python 3.
@@ -63,17 +76,18 @@ Other changes
   metadata types. Closes GitLab issue #521. Thanks to the TheOneValen
   @TheOneValen for the report.
 
+
 Removals
 --------
 
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
-
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -87,7 +101,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -107,7 +121,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -126,11 +141,12 @@ Backward incompatible changes
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #518 <https://gitlab.com/mayan-edms/mayan-edms/issues/518>`_ mountindex broken (3.1.x)
-* `GitLab issue #519 <https://gitlab.com/mayan-edms/mayan-edms/issues/519>`_ Mail body fetched despite setting not to
-* `GitLab issue #521 <https://gitlab.com/mayan-edms/mayan-edms/issues/521>`_ Adding multiple metadata at once fails
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`518` mountindex broken (3.1.x)
+* :gitlab-issue:`519` Mail body fetched despite setting not to
+* :gitlab-issue:`521` Adding multiple metadata at once fails
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

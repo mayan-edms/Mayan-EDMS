@@ -26,8 +26,8 @@ revert to a previous version of the document is provided.
         document_1 -> document_2;
    }
 
-Only the interactive document sources (:doc:`sources`) (``Web`` and ``Staging folders``) are
-available to upload new document versions.
+Only the interactive document sources (:doc:`../chapters/sources`)
+(``Web`` and ``Staging folders``) are available to upload new document versions.
 
 There is no limit to the number of versions a document can have.
 

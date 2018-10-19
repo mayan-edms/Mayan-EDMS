@@ -1,5 +1,3 @@
-.. _mailing:
-
 *****************
 Mailing documents
 *****************

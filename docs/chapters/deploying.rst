@@ -1,5 +1,3 @@
-.. _deploying:
-
 ******************
 Direct deployments
 ******************
@@ -171,6 +169,9 @@ Enable and restart the services [1_]:
 
     systemctl enable supervisor
     systemctl restart supervisor
+
+
+.. _deployment_advanced:
 
 Advanced deployment
 ===================

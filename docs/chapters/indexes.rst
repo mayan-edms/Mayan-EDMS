@@ -1,12 +1,10 @@
-.. _indexes:
-
 Indexes
 =======
 
 Indexes are an automatic method to hierarchically organize documents in
-relation to their properties (:doc:`metadata`, label, MIME type, etc). To use
-indexes you need to first create an index template. Once created, associate
-the index to one or more :doc:`document_types`.
+relation to their properties (:doc:`../chapters/metadata`, label, MIME type,
+etc). To use indexes you need to first create an index template. Once created,
+associate the index to one or more :doc:`../chapters/document_types`.
 
 Index are hierarchical models so a tree template needs to be specified for them.
 This tree template will contain references to document metadata or properties

@@ -6,7 +6,7 @@ in their respective indexes. Smart links are useful when two documents are
 related somehow but are of different type or different hierarchical units.
 
 Example: A patient record can be related to a prescription drug information
-document, but they each belong to their own :doc:`indexes`.
+document, but they each belong to their own :doc:`../chapters/indexes`.
 
 Smart links are rule based, but don't create any organizational structure.
 Smart links just show the documents that match the rules as evaluated against

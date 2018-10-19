@@ -1,11 +1,11 @@
-===============================
-Mayan EDMS v3.1.8 release notes
-===============================
+Version 3.1.8
+=============
 
 Released: October XX, 2018
 
+
 Changes
-~~~~~~~
+-------
 
 
 Removals
@@ -13,12 +13,12 @@ Removals
 
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
-
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -32,7 +32,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -52,7 +52,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -71,10 +72,11 @@ Backward incompatible changes
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #529 <https://gitlab.com/mayan-edms/mayan-edms/issues/529>`_ Submitting a metadata value with the `&` character truncates string
-* `GitLab issue #530 <https://gitlab.com/mayan-edms/mayan-edms/issues/530>`_ Email Link form does not accept commas or semicolons to separate multiple addresses
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`592` Submitting a metadata value with the `&` character truncates string
+* :gitlab-issue:`530` Email Link form does not accept commas or semicolons to separate multiple addresses
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

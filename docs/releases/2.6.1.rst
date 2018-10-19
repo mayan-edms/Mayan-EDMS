@@ -1,25 +1,25 @@
-=============================
-Mayan EDMS v2.6 release notes
-=============================
+Version 2.6
+===========
 
 Released: July 18, 2017
 
-What's new
-==========
+Changes
+-------
 
-Other Changes
--------------
 - Fix issue when editing or removing metadata from multiple documents.
+
 
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -27,8 +27,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -42,8 +43,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -57,13 +59,15 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
+
 
 Bugs fixed or issues closed
-===========================
+---------------------------
 
 * None
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

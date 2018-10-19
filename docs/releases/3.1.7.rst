@@ -1,11 +1,11 @@
-===============================
-Mayan EDMS v3.1.7 release notes
-===============================
+Version 3.1.7
+=============
 
 Released: October 14, 2018
 
+
 Changes
-~~~~~~~
+-------
 * Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
 * Remove duplicate YAML loading of environment variables.
@@ -26,6 +26,7 @@ Changes
   environment variable to ocr.backends.pyocr.PyOCR to use this.
 * All tests pass on Python 3.
 
+
 Removals
 --------
 
@@ -36,7 +37,7 @@ Upgrading from a previous version
 
 
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -50,7 +51,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -70,7 +71,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -89,10 +91,11 @@ Backward incompatible changes
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #525 <https://gitlab.com/mayan-edms/mayan-edms/issues/525>`_ path to SECRET_KEY in entrypoint.sh seems to be a mistake
-* `GitLab issue #527 <https://gitlab.com/mayan-edms/mayan-edms/issues/527>`_ Celery concurrency flag names don't match
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`525` path to SECRET_KEY in entrypoint.sh seems to be a mistake
+* :gitlab-issue:`527` Celery concurrency flag names don't match
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

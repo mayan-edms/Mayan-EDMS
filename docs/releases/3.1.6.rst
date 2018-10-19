@@ -1,11 +1,12 @@
-===============================
-Mayan EDMS v3.1.6 release notes
-===============================
+Version 3.1.6
+=============
 
 Released: October 9, 2018
 
+
 Changes
-~~~~~~~
+-------
+
 * Improve index mirroring value clean up code to remove the spaces at the
   starts and at the end of directories. Closes again GitLab issue #520
   Thanks to TheOneValen @ for the report.
@@ -18,17 +19,18 @@ Changes
 * Add icon to the cabinet "Add new level" link.
 * Display the cabinet "Add new level" link in the top level view too.
 
+
 Removals
 --------
 
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
-
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -42,7 +44,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -62,7 +64,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -81,10 +84,11 @@ Backward incompatible changes
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #518 <https://gitlab.com/mayan-edms/mayan-edms/issues/518>`_ mountindex broken (3.1.x)
-* `GitLab issue #520 <https://gitlab.com/mayan-edms/mayan-edms/issues/520>`_ Newline handling in template expression for index when mounting the index
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`518` mountindex broken (3.1.x)
+* :gitlab-issue:`520` Newline handling in template expression for index when mounting the index
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

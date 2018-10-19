@@ -1,17 +1,13 @@
-================================
-Mayan EDMS v2.1.11 release notes
-================================
+Version 2.1.11
+==============
 
 Released: March 14, 2017
-
-What's new
-==========
 
 This is a bug-fix release and all users are encouraged to upgrade. The focus
 of this micro release was REST API improvement.
 
 Changes
--------------
+-------
 
 - Added a quick rename serializer to the document type API serializer.
 - Added per document type, workflow list API view. The URL for this endpoint is
@@ -24,7 +20,7 @@ Changes
 - Implemented document workflows transition ACLs. GitLab issue #321.
 - Add document comments API endpoints. GitHub issue #249.
 - Add support for overriding the Celery class. The setting is named
-  MAYAN_CELERY_CLASS and expects a dotted python path to the class to use.
+  ``MAYAN_CELERY_CLASS`` and expects a dotted python path to the class to use.
 - Changed the document upload view in source app to not use the HTTP referer
   URL blindly, but instead recompose the URL using known view name. Needed
   when integrating Mayan EDMS into other app via using iframes.
@@ -34,15 +30,18 @@ Changes
 - Added support for adding or editing document types to smart links via the
   API.
 
+
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -50,8 +49,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -65,8 +65,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -80,15 +81,16 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `Github issue #249 <https://github.com/mayan-edms/mayan-edms/issues/249>`_ Add document comments API [$50 US]
-* `GitLab issue #321 <https://gitlab.com/mayan-edms/mayan-edms/issues/321>`_ Transition ACLS
-* `GitLab issue #357 <https://gitlab.com/mayan-edms/mayan-edms/issues/357>`_ It should be possible to retrieve all workflows for a given DocumentType from the API
+Bugs fixed or issues closed
+---------------------------
+
+* :github-issue:`355` Add document comments API [$50 US]
+* :gitlab-issue:`321` Transition ACLS
+* :gitlab-issue:`357` It should be possible to retrieve all workflows for a given DocumentType from the API
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -1,33 +1,37 @@
-===============================
-Mayan EDMS v3.0.3 release notes
-===============================
+Versin 3.0.3
+============
 
 Released: August 17, 2018
 
-What's new
-==========
+Changes
+-------
 
 Program code
-------------
+^^^^^^^^^^^^
+
 - Tags app: Add explicit post action redirect for the tag attach and
   tag remove actions when working on a single document.
 
+
 Security
---------
+^^^^^^^^
+
 - Tags app: Add explicit casting of escaped tag labels to prevent exploit
   of cross site scripting. Thanks to Lokesh (@lokesh1095) for
   the report and proposed solutions. Closes GitLab issue #496.
 
+
 Removals
 --------
+
 - None
+
 
 Upgrading from a previous version
 ---------------------------------
 
-
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -37,7 +41,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -53,7 +57,7 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -67,13 +71,14 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #496 <https://gitlab.com/mayan-edms/mayan-edms/issues/496>`_ Persistent Cross Site Scripting
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`496` Persistent Cross Site Scripting
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

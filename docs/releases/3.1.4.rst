@@ -1,11 +1,15 @@
-===============================
-Mayan EDMS v3.1.4 release notes
-===============================
+Version 3.1.4
+=============
 
 Released: October 4, 2018
 
+Changes
+-------
+
+
 Improved search logic
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
+
 The previous search code was optimized for speed and this was
 achieved by analyzing and then performing searches on a field
 basis and then on a term basis, merging the results. This
@@ -22,8 +26,10 @@ The word 'AND' is now explicitly supported and interpreted
 to be a search syntax modifier. Adding 'AND' will not affect
 the search results.
 
+
 Indexing by OCR text
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
+
 The indexing system has been updated to respond to the signal
 raise when the OCR engine finished processing a document. This
 allows the system to update location of a document in the
@@ -45,7 +51,8 @@ The same applies to text content extracted for the document::
 
 
 Other changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 * Fix the link to the documentation. Closes GitLab issue #516.
   Thanks to Matthias Urlichs @smurfix for the report.
 * Update related links. Add links to the new Wiki and Forum.
@@ -62,17 +69,19 @@ Other changes
   for the report.
 * Add explanation to the launch workflows tool.
 
+
 Removals
 --------
 
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -86,7 +95,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -106,7 +115,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -125,10 +135,11 @@ Backward incompatible changes
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #516 <https://gitlab.com/mayan-edms/mayan-edms/issues/516>`_ The readthedocs.io link is broken (page doesn't exist).
-* `GitLab issue #517 <https://gitlab.com/mayan-edms/mayan-edms/issues/517>`_ Quotes in workflow state document web browser title
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`516` The readthedocs.io link is broken (page doesn't exist).
+* :gitlab-issue:`517` Quotes in workflow state document web browser title
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

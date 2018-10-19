@@ -1,6 +1,3 @@
-.. _scaling_up:
-
-
 **********
 Scaling up
 **********
@@ -22,9 +19,9 @@ The Gunicorn workers process HTTP requests and affect the speed at which the
 website responds.
 
 If you are using the Docker image, change the value of the
-MAYAN_GUNICORN_WORKERS (https://docs.mayan-edms.com/topics/docker.html#environment-variables)
-environment variable. Normally this variable defaults to 2. Increase this
-number to match the number of CPU cores + 1.
+``MAYAN_GUNICORN_WORKERS`` environment variable (check the Docker image chapter:
+:ref:`docker_environment_variables`). Normally this variable defaults to 2.
+Increase this number to match the number of CPU cores + 1.
 
 If you are using the direct deployment methods, change the line that reads::
 
@@ -111,9 +108,8 @@ Redis as a message broker. To increase capacity and reduce volatility of
 messages (pending tasks are not lost during shutdown) use RabbitMQ to
 shuffle messages.
 
-For direct installs refer to the Advanced deployment method
-(https://docs.mayan-edms.com/topics/deploying.html#advanced-deployment) for
-the required changes.
+For direct installs refer to the :ref:`deployment_advanced` documentation
+section for the required changes.
 
 For the Docker image, launch a separate RabbitMQ container
 (https://hub.docker.com/_/rabbitmq/)::
@@ -151,7 +147,7 @@ SSD drive for the ``/media`` sub folder. The location of the ``/media`` folder
 will be specified by the ``MEDIA_ROOT`` setting.
 
 If capacity is your bottom line, switch to an
-:ref:`object storage <object_storage>` system.
+:doc:`object storage <../chapters/object_storage>` system.
 
 Use additional hosts
 ====================

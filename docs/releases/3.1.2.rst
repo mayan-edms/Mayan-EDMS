@@ -1,8 +1,10 @@
-===============================
-Mayan EDMS v3.1.2 release notes
-===============================
+Version 3.1.2
+=============
 
 Released: September 21, 2018
+
+Changes
+-------
 
 - Database access in data migrations defaults to the 'default' database.
   Force it to the user selected database instead.
@@ -25,17 +27,19 @@ Released: September 21, 2018
 - Intercept document list view exception and display them as an error
   message.
 
+
 Removals
 --------
 
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -49,7 +53,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -69,7 +73,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -84,12 +89,13 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
+
 Bugs fixed or issues closed
-===========================
+---------------------------
 
 * None
 

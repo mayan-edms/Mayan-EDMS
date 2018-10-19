@@ -1,40 +1,45 @@
-===============================
-Mayan EDMS v2.1.2 release notes
-===============================
+Version 2.1.2
+=============
 
 Released: May 20, 2016
 
-What's new
-==========
-
 This is a bugfix release and all users are encouraged to upgrade.
 
+Changes
+-------
+
 Language list sorting
----------------------
+^^^^^^^^^^^^^^^^^^^^^
+
 The document language list and the user locale profile language list are now
 sorted to make it easier to find the desired language.
 
+
 Fixed the metadata lookup options: {{ users }} and {{ groups }}
----------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 When configuring metadata type lookup options the {{ users }} and {{ groups }}
 special options can be used to display a list of users or a list of groups.
 These options where producing a list in the wrong format and were updated.
 
 
 Other changes
--------------
+^^^^^^^^^^^^^
+
 - Add Makefile for common development tasks
 
 
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -42,8 +47,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -57,8 +63,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -72,15 +79,15 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
+
 Bugs fixed or issues closed
-===========================
+---------------------------
 
-* `GitLab issue #290 <https://gitlab.com/mayan-edms/mayan-edms/issues/290>`_   Unicode characters not supported as metadata values
-* `GitLab issue #292 <https://gitlab.com/mayan-edms/mayan-edms/issues/292>`_   Sort languages by name not by abbreviation
-
+* :gitlab-issue:`290` Unicode characters not supported as metadata values
+* :gitlab-issue:`292` Sort languages by name not by abbreviation
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -1,5 +1,3 @@
-.. _metadata:
-
 ********
 Metadata
 ********

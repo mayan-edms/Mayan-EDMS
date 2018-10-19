@@ -1,17 +1,14 @@
-=============================
-Mayan EDMS v1.1 release notes
-=============================
+Version 1.1
+===========
 
 Released: February 10, 2015
 
-Welcome to Mayan EDMS v1.1
-
-
-What's new in Mayan EDMS v1.1
-=============================
+Changes
+-------
 
 Celery
-~~~~~~
+^^^^^^
+
 All background tasks processing has been converted to use Celery_. By default
 Mayan EDMS runs in "Eager" until a broker and result backend are configured
 as per `Celery's documentation`_. This change made the built-in scheduler and
@@ -19,72 +16,83 @@ job_processing apps obsolete, both were removed.
 
 
 Views namespaces
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
+
 All views are namespaced_ with the name of the app which defines them. If you have
 developed 3rd party apps for Mayan EDMS be sure to update any reference to a view
 by prepending the app name to the view name.
 
 
 Removal of the splash screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The static image home screen has been replaced with a quick links view, showing
 the most used actions: Uploading documents, viewing recent documents, viewing
 all documents and searching documents.
 
 
 Sending and receiving documents via email
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 A link or entire documents can be sent as attachments via email. Documents can
-also be received via email with the addition of two document sources named IMAP and POP3
-which correspond to the mail protocol used to fetch the documents. Read Django's
-`email configuration settings documentation`_ for more details on how to set up
-mail serving.
+also be received via email with the addition of two document sources named IMAP
+and POP3 which correspond to the mail protocol used to fetch the documents.
+Read Django's `email configuration settings documentation`_ for more details
+on how to set up mail serving.
 
 
 Update to Django 1.6.8
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
+
 Mayan EDMS has been updated to use Django 1.6.8.
 
 
 Events app
-~~~~~~~~~~
+^^^^^^^^^^
+
 The built-in history app has been removed in favor of a new events wrapper app
 for `Django activity stream`_
 
 
 Watch folders
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 Filesystem folders can be monitored for change and their files automatically
 uploaded as documents in Mayan EDMS.
 
 
 Vagrant file included
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
+
 A vagrant file is now included to allow developers to provision a virtual machine
 with the latest development version of Mayan EDMS.
 
 
 User locale profile (language and timezone)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Interface language and locale setting can now be setup for each user and are not
 installation wide as before. Date and times offsets are automatically ajusted to
 each user's timezone settings.
 
 
 Document states
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
+
 A new simple workflow app that can represent document states has been included.
 
 
 Explicit document types needed per index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Indexes can now be tied to document types, eliminating the need to update
 indexes for every document update. Indexes will only update when a document of
 the type to which they are associated is updated.
 
 
 Optional and required metadata types
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Metadata types can now be assigned in two ways to documents types, as optional or
 required. Values for required metadata types as the name implies, must be entered
 for documents to be able to be uploaded. Optional metadata types on the other hand
@@ -92,14 +100,16 @@ can be left blank by the user.
 
 
 Bulk document type change
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 It is now possible to change the document type of previously uploaded documents.
 When the document type of a document is changed the metadata values are reset and
 the metadata types of the new document type are automatically assigned.
 
 
 New release cycle
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
+
 Starting with this version a new release cycle methodology will come into effect.
 The goal of this release cycle is to allow two series of versions of Mayan EDMS to be
 active at a given time: A new major version with new functionality and a minor version
@@ -110,29 +120,36 @@ maintenance mode.
 
 
 Deprecation of Python 2.6
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Series 1.0 of Mayan EDMS will be the last series supporting Python 2.6. Series
 2.0 will be using Django 1.7.x which itself requires Python 2.7 or later.
 
 
 Improved testings
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
+
 Mayan EDMS is now automatically tested against SQLite, MySQL and PostgreSQL.
 
 
 API updates
-~~~~~~~~~~~
-Many new API endpoints have been added exposing the majority of Mayan EDMS functionality.
+^^^^^^^^^^^
+
+Many new API endpoints have been added exposing the majority of Mayan EDMS
+functionality.
 
 
 Messages contextual improvements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Many updates and simplifications were made to the source text messages to reduce the
-difficulty of translating Mayan EDMS and maintaing the contextual meaning of the
-text messages.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Many updates and simplifications were made to the source text messages to
+reduce the difficulty of translating Mayan EDMS and maintaing the contextual
+meaning of the text messages.
+
 
 Improved method for custom settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Custom settings now use a string based value, it is longer needed to import
 classes when customizing a setting::
 
@@ -145,64 +162,71 @@ Instead the fully qualified name of the class must be passed as the setting valu
 
 
 Removal of the OCR config setting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 OCR behavior is now a document type property meaning that it can be turned
 on or off for specific document types.
 
 
 Per document language setting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Previously the document language used for OCR was specified for the entire
 installation. If documents in multiple languages were uploaded some suffered
 lower success rates. Now the language of each document can be specified.
 
 
 Metadata validation and parsing support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 It is now possible to create functions to validate metadata value input or
 parse and store corrected values. Three sample metadata validations functions
 are included: ``Parse date and time``, ``Parse date`` and ``Parse time``.
 
 
 Removal of 960 grid system in favor Pure CSS's grid system
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 By using Pure CSS's columns based grid system, the move towards a
 Bootstrap UI migration has advanced greatly.
 
 
 Simplified UI
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
+
 All user actions as well as the logout button are now under the user functions
 section.
 
 
 Stable PDF previews generation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The way PDF were being generated has been improved greatly eliminating
 spurious segmentation faults at the expense of a small speed penalty.
 
 
 More technical documentation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Many new sub topics were added to the development section of the documentation
 to allow developers to better understand the inner workings and philosophies
 of Mayan EDMS.
 
 
 Other changes
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-* Removal of the MAIN_SIDE_BAR_SEARCH setting
-* Removal of THEMES and themes support
-* Removal of VERBOSE_LOGIN setting
+* Removal of the ``MAIN_SIDE_BAR_SEARCH`` setting
+* Removal of ``THEMES`` setting and themes support
+* Removal of ``VERBOSE_LOGIN`` setting
 * Removal of graphics backend supported file format list view
-* Removal of the MAIN_DISABLE_ICONS setting
+* Removal of the ``MAIN_DISABLE_ICONS`` setting
 * Removal of specialized Sentry support
-* Removal of the MAIN_ENABLE_SCROLL_JS setting
+* Removal of the ``MAIN_ENABLE_SCROLL_JS`` setting
 * Remove hardcoded root (/) redirections
-* Removal of APSCheduler as a requirement
+* Removal of ``APSCheduler`` as a requirement
 * Removal of the scheduled jobs view
-* Removal of the web_theme app
+* Removal of the ``web_theme`` app
 * Removal of the sources icon selection support
 * Removal of the in-app help panels
 * Removal of the duplicate document search feature
@@ -212,7 +236,8 @@ Other changes
 
 
 Upgrading from a previous version
-=================================
+---------------------------------
+
 IMPORTANT! Before running the upgrade make sure none of your documents have
 duplicated metadata types, meaning that the same metadata type must not appear
 twice for any given document.
@@ -278,7 +303,7 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * You will have to redefine your document sources due to the new extended models
   for this app.
@@ -287,80 +312,80 @@ Backward incompatible changes
 
 
 Bugs fixed or issues closed
-===========================
+---------------------------
 
-* `issue #30 <https://github.com/mayan-edms/mayan-edms/issues/30>`_ Document workflows
-* `issue #32 <https://github.com/mayan-edms/mayan-edms/issues/32>`_ Watched folders
-* `issue #34 <https://github.com/mayan-edms/mayan-edms/issues/34>`_ Postprocessing document queue
-* `issue #35 <https://github.com/mayan-edms/mayan-edms/issues/35>`_ Metadata validation
-* `issue #37 <https://github.com/mayan-edms/mayan-edms/issues/37>`_ Add from __future__ import unicode_literals
-* `issue #39 <https://github.com/mayan-edms/mayan-edms/issues/39>`_ Capitalization of messages
-* `issue #40 <https://github.com/mayan-edms/mayan-edms/issues/40>`_ Update references to root ('/') path
-* `issue #46 <https://github.com/mayan-edms/mayan-edms/issues/46>`_ Advanced search past 1st page
-* `issue #49 <https://github.com/mayan-edms/mayan-edms/issues/49>`_ Problems with large pdf files
-* `issue #50 <https://github.com/mayan-edms/mayan-edms/issues/50>`_ raise CommandNotFound(path)
-* `issue #51 <https://github.com/mayan-edms/mayan-edms/issues/51>`_ Search with ANONYMOUS error
-* `issue #55 <https://github.com/mayan-edms/mayan-edms/issues/55>`_ Document approval cicle?
-* `issue #56 <https://github.com/mayan-edms/mayan-edms/issues/56>`_ Removal of non essential features, views, models
-* `issue #57 <https://github.com/mayan-edms/mayan-edms/issues/57>`_ Migrate to Celery for task query and periodic tasks
-* `issue #64 <https://github.com/mayan-edms/mayan-edms/issues/64>`_ Pluralize messages properly
-* `issue #65 <https://github.com/mayan-edms/mayan-edms/issues/65>`_ Backport the ability to receive documents via email
-* `issue #66 <https://github.com/mayan-edms/mayan-edms/issues/66>`_ Python 3 compatibility: Add from __future__ import unicode_literals and remove all u''
-* `issue #68 <https://github.com/mayan-edms/mayan-edms/issues/68>`_ Revise and update the use gettext vs. gettext_lazy
-* `issue #69 <https://github.com/mayan-edms/mayan-edms/issues/69>`_ Feature removal: remove "Unregistered" message from the title bar
-* `issue #71 <https://github.com/mayan-edms/mayan-edms/issues/71>`_ Add retry support to the converter task
-* `issue #72 <https://github.com/mayan-edms/mayan-edms/issues/72>`_ Delete unused static icons
-* `issue #74 <https://github.com/mayan-edms/mayan-edms/issues/74>`_ Cache a document's first document version
-* `issue #75 <https://github.com/mayan-edms/mayan-edms/issues/75>`_ Move automatic OCR queueing from a configuration settings to a property of Document Type model
-* `issue #77 <https://github.com/mayan-edms/mayan-edms/issues/77>`_ Add document view permission support to the search app
-* `issue #78 <https://github.com/mayan-edms/mayan-edms/issues/78>`_ COMMON_TEMPORARY_DIRECTORY seems not to be used everywhere
-* `issue #79 <https://github.com/mayan-edms/mayan-edms/issues/79>`_ Error installing
-* `issue #82 <https://github.com/mayan-edms/mayan-edms/issues/82>`_ Make document type a required field
-* `issue #83 <https://github.com/mayan-edms/mayan-edms/issues/83>`_ Simplify source app views and navigation
-* `issue #84 <https://github.com/mayan-edms/mayan-edms/issues/84>`_ Remove template context variable 'object_name' to improve translations
-* `issue #85 <https://github.com/mayan-edms/mayan-edms/issues/85>`_ Reset page count for a single document
-* `issue #86 <https://github.com/mayan-edms/mayan-edms/issues/86>`_ Move migrations to new 'south_migrations' folders
-* `issue #87 <https://github.com/mayan-edms/mayan-edms/issues/87>`_ Per document language selection
-* `issue #88 <https://github.com/mayan-edms/mayan-edms/issues/88>`_ Remove metadata type selection from the upload wizard
-* `issue #89 <https://github.com/mayan-edms/mayan-edms/issues/89>`_ Allow metadata types to be required for specific document types
-* `issue #90 <https://github.com/mayan-edms/mayan-edms/issues/90>`_ Remove the app_registry app
-* `issue #91 <https://github.com/mayan-edms/mayan-edms/issues/91>`_ Don't preserve the ?page= URL query string value when switching sources during document upload
-* `issue #92 <https://github.com/mayan-edms/mayan-edms/issues/92>`_ Make register_multi_item_links class aware
-* `issue #95 <https://github.com/mayan-edms/mayan-edms/issues/95>`_ Installation error on Mac OSX; OSError: [Errno 2] No such file or directory
-* `issue #96 <https://github.com/mayan-edms/mayan-edms/issues/96>`_ Remove hard code User model references
-* `issue #97 <https://github.com/mayan-edms/mayan-edms/issues/97>`_ Make multi item links a drop down list
-* `issue #104 <https://github.com/mayan-edms/mayan-edms/issues/104>`_ Finish polishing metadata validation patch
-* `issue #105 <https://github.com/mayan-edms/mayan-edms/issues/105>`_ Tie smart links setups to document types
-* `issue #106 <https://github.com/mayan-edms/mayan-edms/issues/106>`_ Convert document indexing app actions to Celery
-* `issue #107 <https://github.com/mayan-edms/mayan-edms/issues/107>`_ Restrict document metadata addition and removal
-* `issue #108 <https://github.com/mayan-edms/mayan-edms/issues/108>`_ New home screen
-* `issue #109 <https://github.com/mayan-edms/mayan-edms/issues/109>`_ Add Roles API endpoints
-* `issue #111 <https://github.com/mayan-edms/mayan-edms/issues/111>`_ Add Checkouts API endpoints
-* `issue #112 <https://github.com/mayan-edms/mayan-edms/issues/112>`_ Add OCR API endpoints
-* `issue #114 <https://github.com/mayan-edms/mayan-edms/issues/114>`_ Implement UI language as user preference
-* `issue #116 <https://github.com/mayan-edms/mayan-edms/issues/116>`_ Add documentation topic explicitly noting the binary requirements
-* `issue #118 <https://github.com/mayan-edms/mayan-edms/issues/118>`_ When a metadata type is removed from a document type, remove it from all the documents of that type
-* `issue #119 <https://github.com/mayan-edms/mayan-edms/issues/119>`_ When a required metadata type is added to a document type, add it to all documents of that type
-* `issue #126 <https://github.com/mayan-edms/mayan-edms/issues/126>`_ Failing migration with SQLite
-* `issue #127 <https://github.com/mayan-edms/mayan-edms/issues/127>`_ Failing migration with Postgres
-* `issue #128 <https://github.com/mayan-edms/mayan-edms/issues/128>`_ Add Indexes API endpoints
-* `issue #129 <https://github.com/mayan-edms/mayan-edms/issues/129>`_ Search api shouldn't memorize requested page as part of the query
-* `issue #130 <https://github.com/mayan-edms/mayan-edms/issues/130>`_ Users API is not working correctly
-* `issue #131 <https://github.com/mayan-edms/mayan-edms/issues/131>`_ Is there an API to update a user's password?
-* `issue #137 <https://github.com/mayan-edms/mayan-edms/issues/137>`_ Enhancement of language selection
-* `issue #138 <https://github.com/mayan-edms/mayan-edms/issues/138>`_ Possibility to keep zoom factor
-* `issue #139 <https://github.com/mayan-edms/mayan-edms/issues/139>`_ Translatability of language selection
-* `issue #140 <https://github.com/mayan-edms/mayan-edms/issues/140>`_ Thumbnail creation for ods crashing
-* `issue #143 <https://github.com/mayan-edms/mayan-edms/issues/143>`_ Exception Value: 'exceptions.ValueError' object has no attribute 'messages'
-* `issue #144 <https://github.com/mayan-edms/mayan-edms/issues/144>`_ Behavior of 'Edit metadata' (Recent Documents)
-* `issue #146 <https://github.com/mayan-edms/mayan-edms/issues/146>`_ Periodic task not initiated for mail boxes and watch folders
-* `issue #149 <https://github.com/mayan-edms/mayan-edms/issues/149>`_ Attribute error in document download
-* `issue #150 <https://github.com/mayan-edms/mayan-edms/issues/150>`_ Double second menu entry
-* `issue #152 <https://github.com/mayan-edms/mayan-edms/issues/152>`_ Document content empty
-* `issue #153 <https://github.com/mayan-edms/mayan-edms/issues/153>`_ south migration with postgres: documents: 031_remove_orphan_documents
-* `issue #154 <https://github.com/mayan-edms/mayan-edms/issues/154>`_ south migration with postgres: tags: 0002_auto__add_tag__chg_field_tagproperties_tag
-* `issue #157 <https://github.com/mayan-edms/mayan-edms/issues/157>`_ upload new version of a document not working
-* `issue #158 <https://github.com/mayan-edms/mayan-edms/issues/158>`_ Plural form not matching singular form in ocr app  bug i18n
+* :github-issue:`30` Document workflows
+* :github-issue:`32` Watched folders
+* :github-issue:`34` Postprocessing document queue
+* :github-issue:`35` Metadata validation
+* :github-issue:`37` Add from __future__ import unicode_literals
+* :github-issue:`39` Capitalization of messages
+* :github-issue:`40` Update references to root ('/') path
+* :github-issue:`46` Advanced search past 1st page
+* :github-issue:`49` Problems with large pdf files
+* :github-issue:`50` raise CommandNotFound(path)
+* :github-issue:`51` Search with ANONYMOUS error
+* :github-issue:`55` Document approval cicle?
+* :github-issue:`56` Removal of non essential features, views, models
+* :github-issue:`57` Migrate to Celery for task query and periodic tasks
+* :github-issue:`64` Pluralize messages properly
+* :github-issue:`65` Backport the ability to receive documents via email
+* :github-issue:`66` Python 3 compatibility: Add from __future__ import unicode_literals and remove all u''
+* :github-issue:`68` Revise and update the use gettext vs. gettext_lazy
+* :github-issue:`69` Feature removal: remove "Unregistered" message from the title bar
+* :github-issue:`71` Add retry support to the converter task
+* :github-issue:`72` Delete unused static icons
+* :github-issue:`74` Cache a document's first document version
+* :github-issue:`75` Move automatic OCR queueing from a configuration settings to a property of Document Type model
+* :github-issue:`77` Add document view permission support to the search app
+* :github-issue:`78` COMMON_TEMPORARY_DIRECTORY seems not to be used everywhere
+* :github-issue:`79` Error installing
+* :github-issue:`82` Make document type a required field
+* :github-issue:`83` Simplify source app views and navigation
+* :github-issue:`84` Remove template context variable 'object_name' to improve translations
+* :github-issue:`85` Reset page count for a single document
+* :github-issue:`86` Move migrations to new 'south_migrations' folders
+* :github-issue:`87` Per document language selection
+* :github-issue:`88` Remove metadata type selection from the upload wizard
+* :github-issue:`89` Allow metadata types to be required for specific document types
+* :github-issue:`90` Remove the app_registry app
+* :github-issue:`91` Don't preserve the ?page= URL query string value when switching sources during document upload
+* :github-issue:`92` Make register_multi_item_links class aware
+* :github-issue:`95` Installation error on Mac OSX; OSError: [Errno 2] No such file or directory
+* :github-issue:`96` Remove hard code User model references
+* :github-issue:`97` Make multi item links a drop down list
+* :github-issue:`104` Finish polishing metadata validation patch
+* :github-issue:`105` Tie smart links setups to document types
+* :github-issue:`106` Convert document indexing app actions to Celery
+* :github-issue:`107` Restrict document metadata addition and removal
+* :github-issue:`108` New home screen
+* :github-issue:`109` Add Roles API endpoints
+* :github-issue:`111` Add Checkouts API endpoints
+* :github-issue:`112` Add OCR API endpoints
+* :github-issue:`114` Implement UI language as user preference
+* :github-issue:`116` Add documentation topic explicitly noting the binary requirements
+* :github-issue:`118` When a metadata type is removed from a document type, remove it from all the documents of that type
+* :github-issue:`119` When a required metadata type is added to a document type, add it to all documents of that type
+* :github-issue:`126` Failing migration with SQLite
+* :github-issue:`127` Failing migration with Postgres
+* :github-issue:`128` Add Indexes API endpoints
+* :github-issue:`129` Search api shouldn't memorize requested page as part of the query
+* :github-issue:`130` Users API is not working correctly
+* :github-issue:`131` Is there an API to update a user's password?
+* :github-issue:`137` Enhancement of language selection
+* :github-issue:`138` Possibility to keep zoom factor
+* :github-issue:`139` Translatability of language selection
+* :github-issue:`140` Thumbnail creation for ods crashing
+* :github-issue:`143` Exception Value: 'exceptions.ValueError' object has no attribute 'messages'
+* :github-issue:`144` Behavior of 'Edit metadata' (Recent Documents)
+* :github-issue:`146` Periodic task not initiated for mail boxes and watch folders
+* :github-issue:`149` Attribute error in document download
+* :github-issue:`150` Double second menu entry
+* :github-issue:`152` Document content empty
+* :github-issue:`153` south migration with postgres: documents: 031_remove_orphan_documents
+* :github-issue:`154` south migration with postgres: tags: 0002_auto__add_tag__chg_field_tagproperties_tag
+* :github-issue:`157` upload new version of a document not working
+* :github-issue:`158` Plural form not matching singular form in ocr app  bug i18n
 
 
 .. _Celery: http://www.celeryproject.org/

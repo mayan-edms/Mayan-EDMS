@@ -1,6 +1,3 @@
-.. _docker:
-
-
 ============
 Docker image
 ============
@@ -8,8 +5,10 @@ Docker image
 How to use this image
 =====================
 
-Start a Mayan EDMS instance
-------------------------------
+.. _docker_install:
+
+Start a Mayan EDMS image
+------------------------
 
 With Docker properly installed, proceed to download the Mayan EDMS image using the command::
 
@@ -113,7 +112,7 @@ instead of the IP address of the Docker host (``172.17.0.1``)::
     mayanedms/mayanedms:<version>
 
 Stopping and starting the container
---------------------------------------
+-----------------------------------
 
 To stop the container use::
 
@@ -124,6 +123,8 @@ To start the container again::
 
     docker start mayan-edms
 
+
+.. _docker_environment_variables:
 
 Environment Variables
 ---------------------
@@ -148,43 +149,38 @@ or testing, never use it in production.
 
 Defaults to 'mayan'. This optional environment variable can be used to define
 the database name that Mayan EDMS will connect to. For more information read
-the pertinent Django documentation page: `Connecting to the database`_
-
-.. _Connecting to the database: https://docs.djangoproject.com/en/1.10/ref/databases/#connecting-to-the-database
+the pertinent Django documentation page:
+:django-docs:`Connecting to the database <ref/databases/#connecting-to-the-database>`
 
 ``MAYAN_DATABASE_USER``
 
 Defaults to 'mayan'. This optional environment variable is used to set the
 username that will be used to connect to the database. For more information
-read the pertinent Django documentation page: `Settings, USER`_
-
-.. _Settings, USER: https://docs.djangoproject.com/en/1.10/ref/settings/#user
+read the pertinent Django documentation page:
+:django-docs:`Settings, USER <ref/settings/#user>`
 
 ``MAYAN_DATABASE_PASSWORD``
 
 Defaults to ''. This optional environment variable is used to set the
 password that will be used to connect to the database. For more information
-read the pertinent Django documentation page: `Settings, PASSWORD`_
-
-.. _Settings, PASSWORD: https://docs.djangoproject.com/en/1.10/ref/settings/#password
+read the pertinent Django documentation page:
+:django-docs:`Settings, PASSWORD <ref/settings/#password>`
 
 ``MAYAN_DATABASE_HOST``
 
 Defaults to `None`. This optional environment variable is used to set the
 hostname that will be used to connect to the database. This can be the
 hostname of another container or an IP address. For more information read
-the pertinent Django documentation page: `Settings, HOST`_
-
-.. _Settings, HOST: https://docs.djangoproject.com/en/1.10/ref/settings/#host
+the pertinent Django documentation page:
+:django-docs:`Settings, HOST <ref/settings/#host>`
 
 ``MAYAN_DATABASE_PORT``
 
 Defaults to `None`. This optional environment variable is used to set the
 port number to use when connecting to the database. An empty string means
 the default port. Not used with SQLite. For more information read the
-pertinent Django documentation page: `Settings, PORT`_
-
-.. _Settings, PORT: https://docs.djangoproject.com/en/1.11/ref/settings/#port
+pertinent Django documentation page:
+:django-docs:`Settings, PORT <ref/settings/#port>`
 
 ``MAYAN_BROKER_URL``
 
@@ -223,9 +219,7 @@ Optional. Allows loading an alternate settings file.
 
 Amount in seconds to keep a database connection alive. Allow reuse of database
 connections. For more information read the pertinent Django documentation
-page: `Settings, CONN_MAX_AGE`_
-
-.. _Settings, CONN_MAX_AGE: https://docs.djangoproject.com/en/1.10/ref/settings/#conn-max-age
+page: :django-docs:`Settings, CONN_MAX_AGE <ref/settings/#conn-max-age>`
 
 ``MAYAN_GUNICORN_WORKERS``
 

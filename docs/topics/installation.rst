@@ -34,7 +34,7 @@ script follow the instructions outlined in their documentation: https://docs.doc
 Once the Docker installation is finished, proceed to the link below to install
 the Docker image for Mayan EDMS.
 
-Docker image chapter: :ref:`docker`
+Docker image chapter: :ref:`docker_install`
 
 *******************
 Direct installation
@@ -42,7 +42,7 @@ Direct installation
 
 For users with knowledge of Python, Django, Ubuntu, and databases.
 
-Deployments chapter: :ref:`deploying`
+Deployments chapter: :doc:`../chapters/deploying`
 
 
 .. _Docker: https://www.docker.com/

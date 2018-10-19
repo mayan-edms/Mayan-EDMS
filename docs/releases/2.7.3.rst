@@ -1,11 +1,10 @@
-===============================
-Mayan EDMS v2.7.3 release notes
-===============================
+Version 2.7.3
+=============
 
 Released: September 11, 2017
 
-What's new
-==========
+Changes
+-------
 
 - Fix task manager queue list view. Thanks to LeVon Smoker for
   the report.
@@ -14,15 +13,18 @@ What's new
   Nick Douma (LordGaav) for the report and diagnostic information. GitLab
   issue #436.
 
+
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -30,8 +32,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -45,8 +48,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -60,15 +64,16 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #431 <https://gitlab.com/mayan-edms/mayan-edms/issues/431>`_ can't create new mailer
-* `GitLab issue #436 <https://gitlab.com/mayan-edms/mayan-edms/issues/436>`_ New document source menu does not contain source_ids
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`431` can't create new mailer
+* :gitlab-issue:`436` New document source menu does not contain source_ids
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

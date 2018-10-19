@@ -1,23 +1,26 @@
-===============================
-Mayan EDMS v3.1.1 release notes
-===============================
+Version 3.1.1
+=============
 
 Released: September 18, 2018
 
+Changes
+-------
+
 - CSS tweak to make sure the AJAX spinner stays in place.
 - Fix 90, 180 and 270 degrees rotation transformations.
+
 
 Removals
 --------
 
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
-
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -31,7 +34,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -51,7 +54,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -66,12 +70,13 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
+
 Bugs fixed or issues closed
-===========================
+---------------------------
 
 * None
 

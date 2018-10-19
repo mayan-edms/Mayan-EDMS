@@ -1,29 +1,33 @@
-===============================
-Mayan EDMS v3.1.3 release notes
-===============================
+Version 3.1.3
+=============
 
 Released: September 26, 2018
+
+Changes
+-------
 
 * Make sure template API renders in non US languages.
 * Fix user groups view.
 * Add no results help text to the document type -> metadata type
   association view.
-* Expose the Django INSTALLED_APPS setting.
+* Expose the Django ``INSTALLED_APPS`` setting.
 * Add support for changing the concurrency of the Celery workers in the
-  Docker image. Add environment variables MAYAN_WORKER_FAST_CONCURRENCY,
-  MAYAN_WORKER_MEDIUM_CONCURRENCY and MAYAN_WORKER_SLOW_CONCURRENCY.
+  Docker image. Add environment variables ``MAYAN_WORKER_FAST_CONCURRENCY``,
+  ``MAYAN_WORKER_MEDIUM_CONCURRENCY`` and ``MAYAN_WORKER_SLOW_CONCURRENCY``.
+
 
 Removals
 --------
 
 * None
 
+
 Upgrading from a previous version
 ---------------------------------
 
 
 If installed via Python's PIP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove deprecated requirements::
 
@@ -37,7 +41,7 @@ the requirements will also be updated automatically.
 
 
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -57,7 +61,8 @@ Next upgrade/add the new requirements::
 
 
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
+
 Perform these steps after updating the code from either step above.
 
 Migrate existing database schema with::
@@ -72,13 +77,14 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
-Bugs fixed or issues closed
-===========================
 
-* `GitLab issue #513 <https://gitlab.com/mayan-edms/mayan-edms/issues/513>`_ Unicode problem on GET '/api/templates/main_menu/' with german translation
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`513` Unicode problem on GET '/api/templates/main_menu/' with german translation
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -1,5 +1,3 @@
-.. _object_storage:
-
 **************
 Object storage
 **************

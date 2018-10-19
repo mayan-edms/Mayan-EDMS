@@ -1,29 +1,28 @@
-===============================
-Mayan EDMS v2.1.6 release notes
-===============================
+Version 2.1.6
+=============
 
 Released: November 23, 2016
-
-What's new
-==========
 
 This is a bug-fix release and all users are encouraged to upgrade.
 
 Changes
--------------
+-------
 
 - Fix variable name typo in the rotation transformation class.
 - Update translations
 
+
 Removals
 --------
+
 * None
+
 
 Upgrading from a previous version
 ---------------------------------
 
 Using PIP
-~~~~~~~~~
+^^^^^^^^^
 
 Type in the console::
 
@@ -31,8 +30,9 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
+
 Using Git
-~~~~~~~~~
+^^^^^^^^^
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -46,8 +46,9 @@ Next upgrade/add the new requirements::
 
     $ pip install --upgrade -r requirements.txt
 
+
 Common steps
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 Migrate existing database schema with::
 
@@ -61,12 +62,13 @@ The upgrade procedure is now complete.
 
 
 Backward incompatible changes
-=============================
+-----------------------------
 
 * None
 
+
 Bugs fixed or issues closed
-===========================
+---------------------------
 
 * None
 
