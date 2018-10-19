@@ -92,16 +92,18 @@ class Setting(object):
         return result
 
     @classmethod
-    def dump_data(cls):
+    def dump_data(cls, filter_term=None, namespace=None):
         dictionary = {}
 
         for setting in cls.get_all():
-            if isinstance(setting.value, Promise):
-                dictionary[setting.global_name] = force_text(setting.value)
-            else:
-                dictionary[setting.global_name] = setting.value
+            if (namespace and setting.namespace.name == namespace) or not namespace:
+                if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
+                    if isinstance(setting.value, Promise):
+                        dictionary[setting.global_name] = force_text(setting.value)
+                    else:
+                        dictionary[setting.global_name] = setting.value
 
-        return yaml.safe_dump(dictionary)
+        return yaml.safe_dump(dictionary, default_flow_style=False)
 
     @classmethod
     def get(cls, global_name):

@@ -15,6 +15,9 @@
 * Add configuration option to change the project/installation URL.
   This is used in the password reset emails and in the default
   document mailing templates.
+* Add new management command to display the current configuration
+  settings.
+* Default the YAML flow format to False which never uses inline.
 
 3.1.7 (2018-10-14)
 ==================
