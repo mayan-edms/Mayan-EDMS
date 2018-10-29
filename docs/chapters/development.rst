@@ -405,72 +405,91 @@ X.Y     # Final release
 Release checklist
 =================
 
-1. Check for missing migrations::
+#. Check for missing migrations::
 
     make check-missing-migrations
 
-2. Synchronize translations::
+#. Synchronize translations::
 
     make translations-pull
 
-3. Compile translations::
+#. Compile translations::
 
     make translations-compile
 
-4. Write release notes.
-5. Update changelog.
-6. Scan the code with flake8 for simple style warnings.
-7. Check README.rst format with::
+#. Update changelog.
+#. Write release notes.
+#. Scan the code with flake8 for simple style warnings.
+#. Check README.rst format with::
 
     python setup.py check -r -s
 
-or with::
+   or with::
 
-    make check-readme
+       make check-readme
 
-8. Bump version in `mayan/__init__.py`.
-9. Bump version in `docker/version`.
-10. Update requirements version in `setup.py` using:
-    ::
+#. Bump version in ``mayan/__init__.py`` and ``docker/version``::
 
-        make generate-setup
+    make increase-version PART=<major, minor or micro>
 
-11. Build source package and test:
-    ::
+#. Update requirements version in ``setup.py`` using:
+   ::
 
-        make test-sdist-via-docker-ubuntu
+       make generate-setup
 
-12. Build wheel package and test:
-    ::
+#. Build source package and test:
+   ::
 
-        make test-wheel-via-docker-ubuntu
+       make test-sdist-via-docker-ubuntu
 
-13. Tag version:
-    ::
+#. Build wheel package and test:
+   ::
 
-        git tag -a vX.Y.Z -m "Version X.Y.Z"
+       make test-wheel-via-docker-ubuntu
 
-14. Switch to the `releases` branch:
-    ::
+#. Tag version:
+   ::
 
-        git checkout releases
+       git tag -a vX.Y.Z -m "Version X.Y.Z"
 
-15. Push tag upstream:
-    ::
+#. Generate set ``setup.py`` again to update the build number::
 
-        git push --tags
+    make generate-setup
 
-16. Push code to trigger builds:
-    ::
+#. Commit the new ``setup.py`` file.
 
-        git push
+#. Release the version using one of the two following methods: GitLab CI or
+   manual
 
-17. Build and upload a test release:
-    ::
+Release using GitLab CI
+-----------------------
 
-        make release-test-via-docker-ubuntu
+#. Switch to the ``releases/all`` branch and merge the latest changes:
+   ::
 
-18. Build and upload a final release:
-    ::
+       git checkout releases/all
+       git merge versions/next
 
-        make release-via-docker-ubuntu
+#. Push code to trigger builds:
+   ::
+
+       git push
+
+#. Push tag upstream:
+   ::
+
+       git push --tags
+
+
+Manual release
+--------------
+
+#. Build and upload a test release:
+   ::
+
+       make release-test-via-docker-ubuntu
+
+#. Build and upload a final release:
+   ::
+
+       make release-via-docker-ubuntu

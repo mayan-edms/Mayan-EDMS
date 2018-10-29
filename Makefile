@@ -158,6 +158,13 @@ generate-setup:
 
 # Releases
 
+increase-version:
+	@VERSION=`grep "__version__ =" mayan/__init__.py| cut -d\' -f 2|./increase_version.py - $(PART)`; \
+	BUILD=`echo $$VERSION|awk '{split($$VERSION,a,"."); printf("0x%02d%02d%02d\n", a[1],a[2], a[3])}'`; \
+	sed -i -e "s/__build__ = 0x[0-9]*/__build__ = $${BUILD}/g" mayan/__init__.py; \
+	sed -i -e "s/__version__ = '[0-9\.]*'/__version__ = '$${VERSION}'/g" mayan/__init__.py; \
+	echo $$VERSION > docker/version
+	make generate-setup
 
 test-release: clean wheel
 	twine upload dist/* -r testpypi
