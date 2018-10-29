@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-27 02:31+0000\n"
+"POT-Creation-Date: 2018-10-29 12:44-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -36,15 +36,15 @@ msgstr "نام نوع متا داده"
 msgid "Metadata type value"
 msgstr "مقدار نوع متاداده"
 
-#: apps.py:162 forms.py:20 models.py:188
+#: apps.py:162 forms.py:20 models.py:200
 msgid "Value"
 msgstr "مقدار"
 
-#: apps.py:166 forms.py:46 forms.py:182 models.py:271
+#: apps.py:166 forms.py:46 forms.py:182 models.py:283
 msgid "Required"
 msgstr "الزامی"
 
-#: apps.py:188 apps.py:196 forms.py:123 models.py:90 models.py:269
+#: apps.py:188 apps.py:196 forms.py:123 models.py:91 models.py:281
 msgid "Metadata type"
 msgstr "نوع متادیتا"
 
@@ -80,7 +80,7 @@ msgstr ""
 msgid "ID"
 msgstr "شناسه"
 
-#: forms.py:16 models.py:50 search.py:16
+#: forms.py:16 models.py:51 search.py:16
 msgid "Name"
 msgstr "نام"
 
@@ -98,7 +98,7 @@ msgstr "خطای گرین کارت: %s"
 msgid "Default value error: %s"
 msgstr "خطای مقدار پیش فرض: %s"
 
-#: forms.py:104 models.py:149
+#: forms.py:104 models.py:161
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" برای این نوع سند مورد نیاز است."
@@ -123,7 +123,7 @@ msgstr "هیچکدام."
 msgid "Optional"
 msgstr "اختیاری"
 
-#: forms.py:186 models.py:52 search.py:19
+#: forms.py:186 models.py:53 search.py:19
 msgid "Label"
 msgstr "برچسب"
 
@@ -143,7 +143,7 @@ msgstr "ویرایش متادیتا"
 msgid "Remove metadata"
 msgstr "حذف کردن متادیتا"
 
-#: links.py:47 links.py:68 models.py:91 views.py:641
+#: links.py:47 links.py:68 models.py:92 views.py:641
 msgid "Metadata types"
 msgstr "انواه متادیتا"
 
@@ -163,90 +163,90 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: models.py:47
+#: models.py:48
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:56
+#: models.py:57
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:60 search.py:22
+#: models.py:61 search.py:22
 msgid "Default"
 msgstr "پیش فرض"
 
-#: models.py:65
+#: models.py:66
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 msgstr ""
 
-#: models.py:70 search.py:25
+#: models.py:71 search.py:25
 msgid "Lookup"
 msgstr "بررسی و یا پیدا کردن"
 
-#: models.py:75
+#: models.py:76
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr "اعتبار سنج ورودی داده را رد خواهد کرد اگر مقدار وارد شده با فرمت مورد نظر مطابقت نداشته باشد."
 
-#: models.py:77 search.py:28
+#: models.py:78 search.py:28
 msgid "Validator"
 msgstr "تأیید اعتبار"
 
-#: models.py:81
+#: models.py:82
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr "تجزیه کننده مقدار ورودی را برای مطابقت با فرمت مورد انتظار بازنویسی خواهد کرد."
 
-#: models.py:83 search.py:31
+#: models.py:84 search.py:31
 msgid "Parser"
 msgstr "تجزیه کننده"
 
-#: models.py:157
+#: models.py:169
 msgid "Value is not one of the provided options."
 msgstr "ارزش یکی از گزینه های ارائه شده نیست."
 
-#: models.py:179
+#: models.py:191
 msgid "Document"
 msgstr "سند"
 
-#: models.py:182
+#: models.py:194
 msgid "Type"
 msgstr "نوع"
 
-#: models.py:186
+#: models.py:198
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:194 models.py:195
+#: models.py:206 models.py:207
 msgid "Document metadata"
 msgstr "متادیتای سند"
 
-#: models.py:215
+#: models.py:227
 msgid "Metadata type is required for this document type."
 msgstr "نوع متاداده برای این نوع سند مورد نیاز است"
 
-#: models.py:239
+#: models.py:251
 msgid "Metadata type is not valid for this document type."
 msgstr "این نوع از متادیتا برای این نوع سند قابل قبول نیست."
 
-#: models.py:265
+#: models.py:277
 msgid "Document type"
 msgstr "نوع سند"
 
-#: models.py:278
+#: models.py:290
 msgid "Document type metadata type options"
 msgstr "متادیتای قابل قبول برای این نوع از سند."
 
-#: models.py:279
+#: models.py:291
 msgid "Document type metadata types options"
 msgstr "متادیتاهای قابل قبول برای این نوع از سند"
 
@@ -485,7 +485,7 @@ msgstr "روابط با موفقیت به روز شد"
 
 #: views.py:680
 msgid ""
-"Create metadata types to be able to associates them to this document type."
+"Create metadata types to be able to associate them to this document type."
 msgstr ""
 
 #: views.py:683

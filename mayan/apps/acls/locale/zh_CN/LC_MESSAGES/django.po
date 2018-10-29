@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:21-0400\n"
-"PO-Revision-Date: 2018-09-19 03:20+0000\n"
+"POT-Creation-Date: 2018-10-29 12:42-0400\n"
+"PO-Revision-Date: 2018-10-11 03:19+0000\n"
 "Last-Translator: Ford Guo <agile.guo@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr "删除"
 
 #: links.py:41
 msgid "New ACL"
-msgstr ""
+msgstr "新建访问控制表"
 
 #: managers.py:57 managers.py:96
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "访问: %s权限不足"
 
 #: models.py:55
 msgid "Access entry"
@@ -54,7 +54,7 @@ msgstr "多个访问入口"
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
+msgstr "把 \"%(object)s\"的权限\"%(permissions)s\"给角色\"%(role)s\""
 
 #: models.py:77
 msgid "None"
@@ -75,7 +75,7 @@ msgstr "查看访问控制列表"
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "指向这个访问控制列表的权限列表的API URL"
 
 #: serializers.py:57
 msgid ""
@@ -90,7 +90,7 @@ msgstr ""
 #: serializers.py:111 serializers.py:187
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "无此权限: %s"
 
 #: serializers.py:126
 msgid ""
@@ -105,16 +105,16 @@ msgstr ""
 #: views.py:77
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "为 %s新建访问控制列表"
 
 #: views.py:104
 #, python-format
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "删除访问控制列表: %s"
 
 #: views.py:148
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "无此对象的访问控制列表"
 
 #: views.py:151
 msgid ""
@@ -125,15 +125,15 @@ msgstr ""
 #: views.py:155
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "%s的访问控制列表"
 
 #: views.py:167
 msgid "Available permissions"
-msgstr ""
+msgstr "有效的权限"
 
 #: views.py:168
 msgid "Granted permissions"
-msgstr ""
+msgstr "被授权的权限"
 
 #: views.py:230
 #, python-format
@@ -146,7 +146,7 @@ msgstr ""
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "对象类型"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
@@ -154,7 +154,7 @@ msgstr ""
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "对象ID"
 
 #: workflow_actions.py:37
 msgid ""
@@ -176,8 +176,8 @@ msgstr ""
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "授权访问"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr ""
+msgstr "撤销访问"

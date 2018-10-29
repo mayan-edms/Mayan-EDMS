@@ -5,14 +5,15 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Mathias Behrle <mathiasb@m9s.biz>, 2018
 # Tobias Paepke <tobias.paepke@paepke.net>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:21-0400\n"
-"PO-Revision-Date: 2018-09-08 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2018-10-29 12:42-0400\n"
+"PO-Revision-Date: 2018-10-07 11:53+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr "Neue Berechtigung"
 #: managers.py:57 managers.py:96
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Unzureichende Berechtigung für: %s"
 
 #: models.py:55
 msgid "Access entry"
@@ -56,7 +57,7 @@ msgstr "Berechtigungseinträge"
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr "Berechtigungen \"%(permissions)s\" zur Rolle \"%(role)s\" für \"%(object)s\""
+msgstr "Berechtigungen \"%(permissions)s\" von Rolle \"%(role)s\" für \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -83,11 +84,11 @@ msgstr "API URL für die Liste der Berechtigungen dieser ACL"
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "API URL für die Berechtigung in Relation zur ACL zu der sie zugeordnet ist. Diese URL unterscheidet sich von der normalen Workflow URL."
+msgstr "API URL für die Berechtigung in Beziehung zur Zugriffsberechtigungsliste der sie zugeordnet ist. Diese URL unterscheidet sich von der normalen Workflow URL."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Primary key der zur ACL hinzuzufügenden Berechtigung."
+msgstr "Primärschlüssel der neuen Berechtigung für die Zugriffsberechtigungsliste."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -98,31 +99,31 @@ msgstr "Keine solche Berechtigung: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Durch Komma getrennte Liste von Primary Keys der zu dieser ACL hinzuzufügenden Berechtigungen."
+msgstr "Durch Komma getrennte Liste von Primärschlüsseln der zu dieser Zugriffsberechtigungsliste hinzuzufügenden Berechtigungen."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr "Primary Key der Rolle die dieser ACL zugeordnet ist."
+msgstr "Primärschlüssel der Rolle die dieser Zugriffsberechtigung zugeordnet ist."
 
 #: views.py:77
 #, python-format
 msgid "New access control lists for: %s"
-msgstr "Neue Zugriffsberechtigung für %s"
+msgstr "Neue Zugriffsberechtigunglisten für %s"
 
 #: views.py:104
 #, python-format
 msgid "Delete ACL: %s"
-msgstr "ACL \"%s\" löschen"
+msgstr "Zugriffsberechtigung \"%s\" löschen"
 
 #: views.py:148
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Keine Zugriffsberechtigungen für dieses Objekt verfügbar"
 
 #: views.py:151
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
+msgstr "Über Zugriffsberechtigungen wird der Zugriff von Benutzern zu Systemobjekten kontrolliert."
 
 #: views.py:155
 #, python-format
@@ -148,20 +149,20 @@ msgstr "Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererb
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Objekttyp"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Objekttyp für den der Zugang bearbeitet wird."
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "Objekt ID"
 
 #: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Numerischer Identifikator des Objekts"
 
 #: workflow_actions.py:42
 msgid "Roles"
@@ -169,17 +170,17 @@ msgstr "Rollen"
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Rollen deren Zugang bearbeitet wird."
 
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Berechtigungen, die der Rolle für das ausgewählte Objekt erteilt oder entzogen werden."
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "Zugriff erteilen"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr ""
+msgstr "Zugriff entziehen"

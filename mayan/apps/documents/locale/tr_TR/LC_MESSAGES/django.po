@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:23-0400\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
 "PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -62,7 +62,7 @@ msgstr "Sayfalar"
 msgid "Type"
 msgstr "Tür"
 
-#: apps.py:275 models.py:761
+#: apps.py:275 models.py:769
 msgid "Enabled"
 msgstr "Etkin"
 
@@ -173,7 +173,7 @@ msgstr "Yok"
 msgid "File encoding"
 msgstr "Dosya şifreleme"
 
-#: forms.py:175 models.py:1006
+#: forms.py:175 models.py:1018
 msgid "File size"
 msgstr "Dosya büyüklüğü"
 
@@ -185,11 +185,11 @@ msgstr "Depoda varolan varlıklar"
 msgid "File path in storage"
 msgstr "Depoda dosya yolu"
 
-#: forms.py:185 models.py:460 search.py:24 search.py:48
+#: forms.py:185 models.py:464 search.py:24 search.py:48
 msgid "Checksum"
 msgstr "Sağlama"
 
-#: forms.py:213 models.py:103 models.py:189 models.py:756 search.py:16
+#: forms.py:213 models.py:103 models.py:189 models.py:764 search.py:16
 #: search.py:35
 msgid "Document type"
 msgstr "Belge Türü"
@@ -300,8 +300,8 @@ msgstr "Geri yükle"
 msgid "Download version"
 msgstr "Sürümü indir"
 
-#: links.py:194 links.py:275 models.py:237 models.py:423 models.py:1040
-#: models.py:1070 models.py:1099
+#: links.py:194 links.py:275 models.py:237 models.py:427 models.py:1052
+#: models.py:1082 models.py:1111
 msgid "Document"
 msgstr "Belge"
 
@@ -399,11 +399,11 @@ msgstr "Düzenleme"
 msgid "Add quick label to document type"
 msgstr "Belge türüne hızlı etiket ekleme"
 
-#: links.py:349 models.py:767
+#: links.py:349 models.py:775
 msgid "Quick labels"
 msgstr "Hızlı etiketler"
 
-#: links.py:361 models.py:1043 models.py:1053 views/document_views.py:865
+#: links.py:361 models.py:1055 models.py:1065 views/document_views.py:865
 msgid "Duplicated documents"
 msgstr ""
 
@@ -423,7 +423,7 @@ msgstr "Tüm sayfalar"
 msgid "The name of the document type."
 msgstr ""
 
-#: models.py:75 models.py:193 models.py:759 search.py:21 search.py:42
+#: models.py:75 models.py:193 models.py:767 search.py:21 search.py:42
 msgid "Label"
 msgstr "Etiket"
 
@@ -483,7 +483,7 @@ msgid ""
 "to the system."
 msgstr ""
 
-#: models.py:204 models.py:1046
+#: models.py:204 models.py:1058
 msgid "Added"
 msgstr "Eklendi"
 
@@ -523,113 +523,113 @@ msgstr "Koçan mı?"
 msgid "Document stub, id: %d"
 msgstr "Belge koçanı, kimliği: %d"
 
-#: models.py:427
+#: models.py:431
 msgid "The server date and time when the document version was processed."
 msgstr ""
 
-#: models.py:428
+#: models.py:432
 msgid "Timestamp"
 msgstr "Zaman Damgası"
 
-#: models.py:432
+#: models.py:436
 msgid "An optional short text describing the document version."
 msgstr ""
 
-#: models.py:433
+#: models.py:437
 msgid "Comment"
 msgstr "Yorum Yap"
 
-#: models.py:439
+#: models.py:443
 msgid "File"
 msgstr "Dosya"
 
-#: models.py:443
+#: models.py:447
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
-#: models.py:447 search.py:19 search.py:39
+#: models.py:451 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "MIME türü"
 
-#: models.py:451
+#: models.py:455
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
 msgstr ""
 
-#: models.py:453
+#: models.py:457
 msgid "Encoding"
 msgstr "Kodlama"
 
-#: models.py:465 models.py:466 models.py:780
+#: models.py:469 models.py:470 models.py:788
 msgid "Document version"
 msgstr "Doküman sürümü"
 
-#: models.py:766
+#: models.py:774
 msgid "Quick label"
 msgstr "Hızlı etiket"
 
-#: models.py:784
+#: models.py:792
 msgid "Page number"
 msgstr "Sayfa numarası"
 
-#: models.py:791 models.py:999 models.py:1032
+#: models.py:799 models.py:1011 models.py:1044
 msgid "Document page"
 msgstr "Belge sayfası"
 
-#: models.py:792 models.py:1033
+#: models.py:800 models.py:1045
 msgid "Document pages"
 msgstr "Doküman sayfaları"
 
-#: models.py:796
+#: models.py:804
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Sayfa %(page_num)d dışarı-in %(total_pages)d of %(document)s"
 
-#: models.py:1002
+#: models.py:1014
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: models.py:1004
+#: models.py:1016
 msgid "Filename"
 msgstr "Dosya adı"
 
-#: models.py:1012
+#: models.py:1024
 msgid "Document page cached image"
 msgstr "Belge sayfası ön belleğe alınan resim"
 
-#: models.py:1013
+#: models.py:1025
 msgid "Document page cached images"
 msgstr "Belge sayfası ön belleğe alınan resimler"
 
-#: models.py:1052
+#: models.py:1064
 msgid "Duplicated document"
 msgstr "Yinelenen doküman"
 
-#: models.py:1066 models.py:1095
+#: models.py:1078 models.py:1107
 msgid "User"
 msgstr "Kullanıcı"
 
-#: models.py:1076
+#: models.py:1088
 msgid "Favorite document"
 msgstr ""
 
-#: models.py:1077
+#: models.py:1089
 msgid "Favorite documents"
 msgstr ""
 
-#: models.py:1102
+#: models.py:1114
 msgid "Accessed"
 msgstr "Erişilen"
 
-#: models.py:1109
+#: models.py:1121
 msgid "Recent document"
 msgstr "Son belge"
 
-#: models.py:1110
+#: models.py:1122
 msgid "Recent documents"
 msgstr "Son belgeler"
 
@@ -1350,7 +1350,7 @@ msgstr "Yinelenen belgeleri tara?"
 msgid "Duplicated document scan queued successfully."
 msgstr "Çoğaltılan doküman taraması başarıyla sıraya girdi."
 
-#: widgets.py:80 widgets.py:84
+#: widgets.py:81 widgets.py:85
 #, python-format
 msgid "Pages: %d"
 msgstr ""

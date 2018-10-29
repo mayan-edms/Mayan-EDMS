@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-27 02:17+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,11 @@ msgstr "No es un formato de archivo de la oficina."
 #: classes.py:119
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice no instalado o no encontrado."
+
+#: forms.py:23
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "\"%s\" no es una entrada válida."
 
 #: links.py:37
 msgid "Create new transformation"
@@ -113,47 +118,47 @@ msgstr "Opciones de configuración para el backend de conversión de gráficos."
 msgid "Crop"
 msgstr "Recortar"
 
-#: transformations.py:132
+#: transformations.py:156
 msgid "Flip"
 msgstr "Dar la vuelta"
 
-#: transformations.py:143
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr "Desenfoque gaussiano"
 
-#: transformations.py:153
+#: transformations.py:177
 msgid "Line art"
 msgstr "Arte lineal"
 
-#: transformations.py:164
+#: transformations.py:188
 msgid "Mirror"
 msgstr "Espejo"
 
-#: transformations.py:175
+#: transformations.py:199
 msgid "Resize"
 msgstr "Cambiar el tamaño"
 
-#: transformations.py:202
+#: transformations.py:226
 msgid "Rotate"
 msgstr "Girar"
 
-#: transformations.py:228
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 grados"
 
-#: transformations.py:239
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 grados"
 
-#: transformations.py:250
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 grados"
 
-#: transformations.py:260
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: transformations.py:276
+#: transformations.py:300
 msgid "Zoom"
 msgstr "Ampliar"
 
@@ -161,32 +166,32 @@ msgstr "Ampliar"
 msgid "Enter a valid YAML value."
 msgstr "Entre un valor YAML."
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "Crear transformación para :%s"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Editar transformación \"%(transformation)s\" para: %(content_object)s"
 
-#: views.py:223
+#: views.py:224
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr "Las transformaciones permiten cambiar la apariencia visual de los documentos sin realizar cambios permanentes en el archivo del documento."
 
-#: views.py:227
+#: views.py:228
 msgid "No transformations"
 msgstr "Sin transformaciones"
 
-#: views.py:228
+#: views.py:229
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Transformaciones para: %s"

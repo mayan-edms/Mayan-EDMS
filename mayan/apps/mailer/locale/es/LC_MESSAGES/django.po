@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:23-0400\n"
-"PO-Revision-Date: 2018-09-27 02:21+0000\n"
+"POT-Creation-Date: 2018-10-29 12:44-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -44,33 +44,33 @@ msgstr "¿Por defecto?"
 msgid "Enabled?"
 msgstr "¿Habilitado?"
 
-#: forms.py:61
+#: forms.py:62 forms.py:123
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Dirección de correo electrónico del destinatario. Pueden ser varias direcciones separadas por coma o punto y coma."
 
-#: forms.py:63 forms.py:120
+#: forms.py:64 forms.py:125
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: forms.py:65
+#: forms.py:66
 msgid "Subject"
 msgstr "Tema"
 
-#: forms.py:67
+#: forms.py:68
 msgid "Body"
 msgstr "Cuerpo"
 
-#: forms.py:71
+#: forms.py:72
 msgid "The email profile that will be used to send this email."
 msgstr "El perfil de correo electrónico que se utilizará para enviar este correo electrónico."
 
-#: forms.py:72 views.py:234
+#: forms.py:73 views.py:234
 msgid "Mailing profile"
 msgstr "Perfil de correo"
 
-#: forms.py:77
+#: forms.py:78
 msgid "Backend"
 msgstr "Backend"
 
@@ -326,6 +326,11 @@ msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de d
 #: settings.py:30
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Plantilla para el texto del cuerpo del correo electrónico con documento anejado. Puede incluir HTML."
+
+#: validators.py:14
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr ""
 
 #: views.py:37
 msgid "Document mailing error log"

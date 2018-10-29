@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -602,11 +602,17 @@ msgstr "Eventos de activación de transición de flujo de trabajo para: %s"
 msgid "Launch all workflows?"
 msgstr "¿Lanzar todos los flujos de trabajo?"
 
-#: views.py:902
+#: views.py:897
+msgid ""
+"This will launch all workflows created after documents have already been "
+"uploaded."
+msgstr ""
+
+#: views.py:906
 msgid "Workflow launch queued successfully."
 msgstr "Lanzamiento de flujos de trabajo sometido con éxito."
 
-#: views.py:927
+#: views.py:931
 #, python-format
 msgid "Preview of: %s"
 msgstr "Vista previa de: %s"

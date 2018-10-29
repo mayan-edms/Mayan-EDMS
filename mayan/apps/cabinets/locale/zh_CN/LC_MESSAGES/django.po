@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:21-0400\n"
+"POT-Creation-Date: 2018-10-29 12:42-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Genlin Jiao <jiaogl@pkusz.edu.cn>, 2017\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/rosarior/teams/13584/zh_CN/)\n"
@@ -19,39 +19,39 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
-#: links.py:23 menus.py:15 models.py:38 permissions.py:7 views.py:170
+#: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr ""
 
-#: links.py:28 links.py:39
+#: links.py:31 links.py:42
 msgid "Remove from cabinets"
 msgstr ""
 
-#: links.py:32 links.py:36
+#: links.py:35 links.py:39
 msgid "Add to cabinets"
 msgstr ""
 
-#: links.py:57
+#: links.py:60
 msgid "Add new level"
 msgstr ""
 
-#: links.py:61 views.py:44
+#: links.py:65 views.py:44
 msgid "Create cabinet"
 msgstr ""
 
-#: links.py:65
+#: links.py:69
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:68
+#: links.py:72
 msgid "Edit"
 msgstr ""
 
-#: links.py:75
+#: links.py:79
 msgid "All"
 msgstr ""
 
-#: links.py:79
+#: links.py:83
 msgid "Details"
 msgstr "细节"
 

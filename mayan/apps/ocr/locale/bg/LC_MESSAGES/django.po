@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:24-0400\n"
+"POT-Creation-Date: 2018-10-29 12:44-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -18,20 +18,20 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:71 apps.py:146 apps.py:150 events.py:7 links.py:19 links.py:24
+#: apps.py:73 apps.py:148 apps.py:152 events.py:7 links.py:19 links.py:24
 #: permissions.py:7 queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:121
+#: apps.py:123
 msgid "Document"
 msgstr ""
 
-#: apps.py:125
+#: apps.py:127
 msgid "Added"
 msgstr ""
 
-#: apps.py:129 models.py:69
+#: apps.py:131 models.py:69
 msgid "Result"
 msgstr ""
 
@@ -43,11 +43,11 @@ msgstr ""
 msgid "Document version OCR finished"
 msgstr ""
 
-#: forms.py:32 forms.py:75
+#: forms.py:17 forms.py:48
 msgid "Contents"
 msgstr "Съдържание"
 
-#: forms.py:67
+#: forms.py:77
 #, python-format
 msgid "Page %(page_number)d"
 msgstr ""

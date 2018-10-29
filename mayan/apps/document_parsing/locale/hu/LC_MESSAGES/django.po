@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Dezső József <dejo60@gmail.com>, 2017\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:69 events.py:8 permissions.py:7 settings.py:7
+#: apps.py:72 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
 msgstr "dokumentum értelmezés"
 
-#: apps.py:120
+#: apps.py:126
 msgid "Document"
 msgstr "Dokumentum"
 
-#: apps.py:124
+#: apps.py:130
 msgid "Added"
 msgstr "Hozzáadva"
 
-#: apps.py:128 models.py:66
+#: apps.py:134 models.py:66
 msgid "Result"
 msgstr "Eredmény"
 
-#: apps.py:145 apps.py:149 links.py:19 models.py:22
+#: apps.py:151 apps.py:155 links.py:19 links.py:24 models.py:22
 msgid "Content"
 msgstr "Tartalom"
 
@@ -51,27 +51,27 @@ msgstr "dokumentum verzió értelmezve"
 msgid "Page %(page_number)d"
 msgstr "Oldal %(page_number)d"
 
-#: forms.py:50
+#: forms.py:50 forms.py:62
 msgid "Contents"
 msgstr "Tartalom"
 
-#: links.py:24 links.py:57 views.py:172
+#: links.py:29 links.py:62 views.py:196
 msgid "Parsing errors"
 msgstr "értelmezési hiba"
 
-#: links.py:29
+#: links.py:34
 msgid "Download content"
 msgstr "dokumentum tartalom"
 
-#: links.py:33 links.py:38
+#: links.py:38 links.py:43
 msgid "Submit for parsing"
 msgstr "értelmezésre küld"
 
-#: links.py:44
+#: links.py:49
 msgid "Setup parsing"
 msgstr ""
 
-#: links.py:52
+#: links.py:57
 msgid "Parse documents per type"
 msgstr "dokumentum értelmezés típusonként"
 
@@ -165,48 +165,53 @@ msgstr ""
 "elérési útvonal a poppler féle pdftotext programhoz ami PDF-ből szöveget "
 "nyer ki"
 
-#: views.py:41
+#: views.py:43
 #, python-format
 msgid "Content for document: %s"
 msgstr "dokumentum: %s tartalma"
 
-#: views.py:69
+#: views.py:78
+#, python-format
+msgid "Content for document page: %s"
+msgstr ""
+
+#: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "dokumentum értelmezési hibái: %s"
 
-#: views.py:81
+#: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "%(count)d dokumentum hozzáadva az értelmezési munkasorhoz"
 
-#: views.py:84
+#: views.py:108
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "%(count)d dokumentumok hozzáadva az értelmezési munkasorhoz"
 
-#: views.py:92
+#: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "%(count)d dokumentum feladása az értelmezési sorhoz"
 msgstr[1] "%(count)d dokumentum feladása az értelmezési sorba"
 
-#: views.py:105
+#: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "\"%s\" dokumentum feladása az értelmezési sorba"
 
-#: views.py:128
+#: views.py:152
 #, python-format
 msgid "Edit parsing settings for document type: %s"
 msgstr ""
 
-#: views.py:139
+#: views.py:163
 msgid "Submit all documents of a type for parsing"
 msgstr "minden típusú dokumentum beküldése értelmezésre"
 
-#: views.py:150
+#: views.py:174
 #, python-format
 msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the parsing "

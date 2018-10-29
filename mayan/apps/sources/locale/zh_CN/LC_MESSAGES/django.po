@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:24-0400\n"
+"POT-Creation-Date: 2018-10-29 12:45-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:624
+#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
 msgid "Sources"
 msgstr ""
 
@@ -42,11 +42,11 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:82 models.py:788
+#: apps.py:82 models.py:789
 msgid "Date time"
 msgstr ""
 
-#: apps.py:87 models.py:791
+#: apps.py:87 models.py:792
 msgid "Message"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr "展开压缩文件"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "上传一个压缩文件的包含文件作为单个文档"
 
-#: forms.py:68 views.py:480
+#: forms.py:68 views.py:483
 msgid "Staging file"
 msgstr "临时文件"
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:64 models.py:764
+#: literals.py:64 models.py:765
 msgid "Watch folder"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:66 models.py:661 models.py:662
+#: literals.py:66 models.py:662 models.py:663
 msgid "IMAP email"
 msgstr ""
 
@@ -194,11 +194,11 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: models.py:57 views.py:589
+#: models.py:57 views.py:592
 msgid "Enabled"
 msgstr ""
 
-#: models.py:63 models.py:785
+#: models.py:63 models.py:786
 msgid "Source"
 msgstr ""
 
@@ -272,11 +272,11 @@ msgstr ""
 msgid "Error while scanning; %s"
 msgstr ""
 
-#: models.py:301 models.py:757
+#: models.py:301 models.py:758
 msgid "Server side filesystem path."
 msgstr "服务器端文件路径"
 
-#: models.py:302 models.py:758
+#: models.py:302 models.py:759
 msgid "Folder path"
 msgstr ""
 
@@ -449,31 +449,31 @@ msgid ""
 "type: %(document_type)s"
 msgstr ""
 
-#: models.py:654
+#: models.py:655
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models.py:655
+#: models.py:656
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:700
+#: models.py:701
 msgid "Timeout"
 msgstr ""
 
-#: models.py:706 models.py:707
+#: models.py:707 models.py:708
 msgid "POP email"
 msgstr ""
 
-#: models.py:765
+#: models.py:766
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:797
+#: models.py:798
 msgid "Log entry"
 msgstr ""
 
-#: models.py:798
+#: models.py:799
 msgid "Log entries"
 msgstr ""
 
@@ -544,97 +544,97 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr ""
 
-#: views.py:64
+#: views.py:66
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:67
+#: views.py:69
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:69
+#: views.py:71
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:125 wizards.py:144
+#: views.py:127 wizards.py:145
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr ""
 
-#: views.py:151 views.py:169 views.py:179
+#: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
 msgstr ""
 
-#: views.py:159
+#: views.py:161
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:170
+#: views.py:172
 msgid "Scan"
 msgstr ""
 
-#: views.py:278
+#: views.py:281
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:292
+#: views.py:295
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:343
+#: views.py:346
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:376
+#: views.py:379
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:428
+#: views.py:431
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:467
+#: views.py:470
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:507
+#: views.py:510
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:520
+#: views.py:523
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:534
+#: views.py:537
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "新建数据源类型:%s"
 
-#: views.py:554
+#: views.py:557
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:573
+#: views.py:576
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:585
+#: views.py:588
 msgid "Type"
 msgstr ""
 
-#: views.py:618
+#: views.py:621
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -642,23 +642,23 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:623
+#: views.py:626
 msgid "No sources available"
 msgstr ""
 
-#: wizards.py:95
+#: wizards.py:96
 msgid "Select document type"
 msgstr ""
 
-#: wizards.py:163
+#: wizards.py:164
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr ""
 
-#: wizards.py:168
+#: wizards.py:169
 msgid "Next step"
 msgstr "下一步"
 
-#: wizards.py:170
+#: wizards.py:171
 msgid "Document upload wizard"
 msgstr ""

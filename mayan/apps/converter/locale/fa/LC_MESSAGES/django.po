@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,11 @@ msgstr "فرمت فایل دفتر نیست"
 #: classes.py:119
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice نصب نشده یا یافت نشد"
+
+#: forms.py:23
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr ""
 
 #: links.py:37
 msgid "Create new transformation"
@@ -112,47 +117,47 @@ msgstr "گزینه های پیکربندی برای backend تبدیل گراف�
 msgid "Crop"
 msgstr "محصول"
 
-#: transformations.py:132
+#: transformations.py:156
 msgid "Flip"
 msgstr "تلنگر"
 
-#: transformations.py:143
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr "تار گاوسی"
 
-#: transformations.py:153
+#: transformations.py:177
 msgid "Line art"
 msgstr "هنر خط"
 
-#: transformations.py:164
+#: transformations.py:188
 msgid "Mirror"
 msgstr "آینه"
 
-#: transformations.py:175
+#: transformations.py:199
 msgid "Resize"
 msgstr "تغییر اندازه"
 
-#: transformations.py:202
+#: transformations.py:226
 msgid "Rotate"
 msgstr "چرخش"
 
-#: transformations.py:228
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr "چرخش 90 درجه"
 
-#: transformations.py:239
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr "چرخش 180 درجه"
 
-#: transformations.py:250
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr "چرخش 270 درجه"
 
-#: transformations.py:260
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr "ماسک غیرشفاف"
 
-#: transformations.py:276
+#: transformations.py:300
 msgid "Zoom"
 msgstr "بزرگنمایی"
 
@@ -160,32 +165,32 @@ msgstr "بزرگنمایی"
 msgid "Enter a valid YAML value."
 msgstr "یک مقدار معتبر YAML را وارد کنید"
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "حذف \"%(transformation)s\" برای: %(content_object)s؟"
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "ایجاد تغییر جدید برای: %s"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "ویرایش \"%(transformation)s\" برای: %(content_object)s"
 
-#: views.py:223
+#: views.py:224
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: views.py:227
+#: views.py:228
 msgid "No transformations"
 msgstr ""
 
-#: views.py:228
+#: views.py:229
 #, python-format
 msgid "Transformations for: %s"
 msgstr "تبدیل برای: %s"

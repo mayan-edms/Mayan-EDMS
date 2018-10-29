@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -602,11 +602,17 @@ msgstr "حوادث ماژول انتقال گردش کار برای: %s"
 msgid "Launch all workflows?"
 msgstr "همه جریانهای کاری را راه اندازی کنید؟"
 
-#: views.py:902
+#: views.py:897
+msgid ""
+"This will launch all workflows created after documents have already been "
+"uploaded."
+msgstr ""
+
+#: views.py:906
 msgid "Workflow launch queued successfully."
 msgstr "راه اندازی کار در صف با موفقیت."
 
-#: views.py:927
+#: views.py:931
 #, python-format
 msgid "Preview of: %s"
 msgstr "پیش نمایش از: %s"

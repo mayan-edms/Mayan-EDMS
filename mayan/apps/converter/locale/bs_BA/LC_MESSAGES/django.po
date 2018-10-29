@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,11 @@ msgstr "Nije format kancelarijskog fajla."
 #: classes.py:119
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nije instaliran ili nije pronađen."
+
+#: forms.py:23
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr ""
 
 #: links.py:37
 msgid "Create new transformation"
@@ -113,47 +118,47 @@ msgstr "Opcije konfiguracije za backend konverziju grafike."
 msgid "Crop"
 msgstr "Crop"
 
-#: transformations.py:132
+#: transformations.py:156
 msgid "Flip"
 msgstr "Flip"
 
-#: transformations.py:143
+#: transformations.py:167
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: transformations.py:153
+#: transformations.py:177
 msgid "Line art"
 msgstr "Line art"
 
-#: transformations.py:164
+#: transformations.py:188
 msgid "Mirror"
 msgstr "Ogledalo"
 
-#: transformations.py:175
+#: transformations.py:199
 msgid "Resize"
 msgstr "Promjeni veličinu"
 
-#: transformations.py:202
+#: transformations.py:226
 msgid "Rotate"
 msgstr "Rotiraj"
 
-#: transformations.py:228
+#: transformations.py:252
 msgid "Rotate 90 degrees"
 msgstr "Rotirati 90 stepeni"
 
-#: transformations.py:239
+#: transformations.py:263
 msgid "Rotate 180 degrees"
 msgstr "Rotirati 180 stepeni"
 
-#: transformations.py:250
+#: transformations.py:274
 msgid "Rotate 270 degrees"
 msgstr "Rotirati 270 stepeni"
 
-#: transformations.py:260
+#: transformations.py:284
 msgid "Unsharp masking"
 msgstr "Neoštećeno maskiranje"
 
-#: transformations.py:276
+#: transformations.py:300
 msgid "Zoom"
 msgstr "Uvećaj"
 
@@ -161,32 +166,32 @@ msgstr "Uvećaj"
 msgid "Enter a valid YAML value."
 msgstr "Unesite važeći IAML"
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Izbriši transformaciju \"%(transformation)s\" za:%(content_object)s?"
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "Kreiraj novu transformaciju za:%s"
 
-#: views.py:169
+#: views.py:170
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Edituj transformaciju \"%(transformation)s\" za:%(content_object)s"
 
-#: views.py:223
+#: views.py:224
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: views.py:227
+#: views.py:228
 msgid "No transformations"
 msgstr ""
 
-#: views.py:228
+#: views.py:229
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Transformacije za:%s"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:22-0400\n"
-"PO-Revision-Date: 2018-09-27 02:29+0000\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -308,20 +308,24 @@ msgid "Name to be displayed in the main menu."
 msgstr ""
 
 #: settings.py:58
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: settings.py:64
 msgid "A storage backend that all workers can use to share files."
 msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
-#: settings.py:69
+#: settings.py:75
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, preglednika i privremenih datoteka."
 
-#: settings.py:75
+#: settings.py:81
 msgid "Django"
 msgstr ""
 
-#: settings.py:80
+#: settings.py:86
 msgid ""
 "A list of strings representing the host/domain names that this site can "
 "serve. This is a security measure to prevent HTTP Host header attacks, which"
@@ -336,7 +340,7 @@ msgid ""
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
 
-#: settings.py:98
+#: settings.py:104
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
 "the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
@@ -346,7 +350,7 @@ msgid ""
 "PREPEND_WWW."
 msgstr ""
 
-#: settings.py:110
+#: settings.py:116
 msgid ""
 "A dictionary containing the settings for all databases to be used with "
 "Django. It is a nested dictionary whose contents map a database alias to a "
@@ -355,7 +359,7 @@ msgid ""
 "databases may also be specified."
 msgstr ""
 
-#: settings.py:122
+#: settings.py:128
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
@@ -370,7 +374,7 @@ msgid ""
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
 msgstr ""
 
-#: settings.py:142
+#: settings.py:148
 msgid ""
 "Default: [] (Empty list). List of compiled regular expression objects "
 "representing User-Agent strings that are not allowed to visit any page, "
@@ -378,17 +382,17 @@ msgid ""
 "CommonMiddleware is installed (see Middleware)."
 msgstr ""
 
-#: settings.py:153
+#: settings.py:159
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
 msgstr ""
 
-#: settings.py:161
+#: settings.py:167
 msgid "Default: 'localhost'. The host to use for sending email."
 msgstr ""
 
-#: settings.py:168
+#: settings.py:174
 msgid ""
 "Default: '' (Empty string). Password to use for the SMTP server defined in "
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
@@ -396,17 +400,17 @@ msgid ""
 "Django won't attempt authentication."
 msgstr ""
 
-#: settings.py:179
+#: settings.py:185
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
 msgstr ""
 
-#: settings.py:188
+#: settings.py:194
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
 msgstr ""
 
-#: settings.py:195
+#: settings.py:201
 msgid ""
 "Default: False. Whether to use a TLS (secure) connection when talking to the"
 " SMTP server. This is used for explicit TLS connections, generally on port "
@@ -414,7 +418,7 @@ msgid ""
 "setting EMAIL_USE_SSL."
 msgstr ""
 
-#: settings.py:205
+#: settings.py:211
 msgid ""
 "Default: False. Whether to use an implicit TLS (secure) connection when "
 "talking to the SMTP server. In most email documentation this type of TLS "
@@ -424,24 +428,24 @@ msgid ""
 "those settings to True."
 msgstr ""
 
-#: settings.py:217
+#: settings.py:223
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
 msgstr ""
 
-#: settings.py:225
+#: settings.py:231
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
 msgstr ""
 
-#: settings.py:236
+#: settings.py:242
 msgid "Name of the view attached to the branch anchor in the main menu."
 msgstr ""
 
-#: settings.py:243
+#: settings.py:249
 msgid ""
 "A list of strings designating all applications that are enabled in this "
 "Django installation. Each string should be a dotted Python path to: an "
@@ -449,7 +453,7 @@ msgid ""
 "application."
 msgstr ""
 
-#: settings.py:253
+#: settings.py:259
 msgid ""
 "Default: '/accounts/login/' The URL where requests are redirected for login,"
 " especially when using the login_required() decorator. This setting also "
@@ -458,7 +462,7 @@ msgid ""
 "and URLconf)."
 msgstr ""
 
-#: settings.py:265
+#: settings.py:271
 msgid ""
 "Default: '/accounts/profile/' The URL where requests are redirected after "
 "login when the contrib.auth.login view gets no next parameter. This is used "
@@ -467,11 +471,11 @@ msgid ""
 "since you don't have to define the URL in two places (settings and URLconf)."
 msgstr ""
 
-#: settings.py:274
+#: settings.py:280
 msgid "Celery"
 msgstr ""
 
-#: settings.py:279
+#: settings.py:285
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -479,7 +483,7 @@ msgid ""
 "specific transports default values."
 msgstr ""
 
-#: settings.py:289
+#: settings.py:295
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

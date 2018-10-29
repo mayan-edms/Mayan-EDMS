@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:21-0400\n"
-"PO-Revision-Date: 2018-09-27 02:29+0000\n"
+"POT-Creation-Date: 2018-10-29 12:42-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">wiki %(icon_wiki)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -112,11 +112,19 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or got a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">source code repository %(icon_source_code)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
 "            "
 msgstr ""
 
-#: templates/appearance/about.html:132
+#: templates/appearance/about.html:133
+#, python-format
+msgid ""
+"\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"            "
+msgstr ""
+
+#: templates/appearance/about.html:138
 #, python-format
 msgid ""
 "\n"
@@ -142,21 +150,22 @@ msgstr ""
 msgid "Confirm delete"
 msgstr "Confirmar eliminação"
 
-#: templates/appearance/calculate_form_title.html:18
-msgid "Confirm"
-msgstr "Confirmar"
-
-#: templates/appearance/calculate_form_title.html:21
-#, python-format
-msgid "Details for: %(object)s"
-msgstr "Detalhes para: %(object)s "
-
-#: templates/appearance/calculate_form_title.html:24
+#: templates/appearance/calculate_form_title.html:19
+#: templates/appearance/calculate_form_title.html:28
 #, python-format
 msgid "Edit: %(object)s"
 msgstr "Editar: %(object)s"
 
-#: templates/appearance/calculate_form_title.html:26
+#: templates/appearance/calculate_form_title.html:21
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/appearance/calculate_form_title.html:25
+#, python-format
+msgid "Details for: %(object)s"
+msgstr "Detalhes para: %(object)s "
+
+#: templates/appearance/calculate_form_title.html:30
 msgid "Create"
 msgstr "Criar"
 

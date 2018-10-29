@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-26 22:23-0400\n"
+"POT-Creation-Date: 2018-10-29 12:43-0400\n"
 "PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -61,7 +61,7 @@ msgstr "صفحات"
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:275 models.py:761
+#: apps.py:275 models.py:769
 msgid "Enabled"
 msgstr "فعال شده"
 
@@ -172,7 +172,7 @@ msgstr "هیچکدام."
 msgid "File encoding"
 msgstr "فایل Encoding"
 
-#: forms.py:175 models.py:1006
+#: forms.py:175 models.py:1018
 msgid "File size"
 msgstr "اندازه فایل"
 
@@ -184,11 +184,11 @@ msgstr "موجود در مخزن"
 msgid "File path in storage"
 msgstr "آدرس فایل در مخزن"
 
-#: forms.py:185 models.py:460 search.py:24 search.py:48
+#: forms.py:185 models.py:464 search.py:24 search.py:48
 msgid "Checksum"
 msgstr "چک سام"
 
-#: forms.py:213 models.py:103 models.py:189 models.py:756 search.py:16
+#: forms.py:213 models.py:103 models.py:189 models.py:764 search.py:16
 #: search.py:35
 msgid "Document type"
 msgstr "نوع سند"
@@ -299,8 +299,8 @@ msgstr "بازگرداندن"
 msgid "Download version"
 msgstr "دانلود نسخه"
 
-#: links.py:194 links.py:275 models.py:237 models.py:423 models.py:1040
-#: models.py:1070 models.py:1099
+#: links.py:194 links.py:275 models.py:237 models.py:427 models.py:1052
+#: models.py:1082 models.py:1111
 msgid "Document"
 msgstr "سند"
 
@@ -398,11 +398,11 @@ msgstr "ویرایش"
 msgid "Add quick label to document type"
 msgstr "برچسب سریع را به نوع سند اضافه کنید"
 
-#: links.py:349 models.py:767
+#: links.py:349 models.py:775
 msgid "Quick labels"
 msgstr "برچسب های سریع"
 
-#: links.py:361 models.py:1043 models.py:1053 views/document_views.py:865
+#: links.py:361 models.py:1055 models.py:1065 views/document_views.py:865
 msgid "Duplicated documents"
 msgstr "اسناد تکراری"
 
@@ -422,7 +422,7 @@ msgstr "تمام صفحات"
 msgid "The name of the document type."
 msgstr ""
 
-#: models.py:75 models.py:193 models.py:759 search.py:21 search.py:42
+#: models.py:75 models.py:193 models.py:767 search.py:21 search.py:42
 msgid "Label"
 msgstr "برچسب"
 
@@ -482,7 +482,7 @@ msgid ""
 "to the system."
 msgstr ""
 
-#: models.py:204 models.py:1046
+#: models.py:204 models.py:1058
 msgid "Added"
 msgstr "اضافه شده"
 
@@ -522,113 +522,113 @@ msgstr "آیا خرد است؟"
 msgid "Document stub, id: %d"
 msgstr "مستند مستند، شناسه: %d"
 
-#: models.py:427
+#: models.py:431
 msgid "The server date and time when the document version was processed."
 msgstr ""
 
-#: models.py:428
+#: models.py:432
 msgid "Timestamp"
 msgstr "علامت زمان"
 
-#: models.py:432
+#: models.py:436
 msgid "An optional short text describing the document version."
 msgstr ""
 
-#: models.py:433
+#: models.py:437
 msgid "Comment"
 msgstr "شرح"
 
-#: models.py:439
+#: models.py:443
 msgid "File"
 msgstr "فایل"
 
-#: models.py:443
+#: models.py:447
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
-#: models.py:447 search.py:19 search.py:39
+#: models.py:451 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "نوع MIME"
 
-#: models.py:451
+#: models.py:455
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
 msgstr ""
 
-#: models.py:453
+#: models.py:457
 msgid "Encoding"
 msgstr "Encoding"
 
-#: models.py:465 models.py:466 models.py:780
+#: models.py:469 models.py:470 models.py:788
 msgid "Document version"
 msgstr "نسخه سند"
 
-#: models.py:766
+#: models.py:774
 msgid "Quick label"
 msgstr "برچسب سریع"
 
-#: models.py:784
+#: models.py:792
 msgid "Page number"
 msgstr "شماره صفحه"
 
-#: models.py:791 models.py:999 models.py:1032
+#: models.py:799 models.py:1011 models.py:1044
 msgid "Document page"
 msgstr "صفحه سند"
 
-#: models.py:792 models.py:1033
+#: models.py:800 models.py:1045
 msgid "Document pages"
 msgstr "صفحات سند"
 
-#: models.py:796
+#: models.py:804
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "صفحه  شماره%(page_num)d   از%(total_pages)d  از سند %(document)s"
 
-#: models.py:1002
+#: models.py:1014
 msgid "Date time"
 msgstr "زمان قرار"
 
-#: models.py:1004
+#: models.py:1016
 msgid "Filename"
 msgstr "نام فایل"
 
-#: models.py:1012
+#: models.py:1024
 msgid "Document page cached image"
 msgstr "صفحه مستند cached image"
 
-#: models.py:1013
+#: models.py:1025
 msgid "Document page cached images"
 msgstr "صفحه های ذخیره شده در صفحه سند"
 
-#: models.py:1052
+#: models.py:1064
 msgid "Duplicated document"
 msgstr "سند تکثیر شده"
 
-#: models.py:1066 models.py:1095
+#: models.py:1078 models.py:1107
 msgid "User"
 msgstr "کاربر"
 
-#: models.py:1076
+#: models.py:1088
 msgid "Favorite document"
 msgstr ""
 
-#: models.py:1077
+#: models.py:1089
 msgid "Favorite documents"
 msgstr ""
 
-#: models.py:1102
+#: models.py:1114
 msgid "Accessed"
 msgstr "دسترسی یافته"
 
-#: models.py:1109
+#: models.py:1121
 msgid "Recent document"
 msgstr "سند تازه"
 
-#: models.py:1110
+#: models.py:1122
 msgid "Recent documents"
 msgstr "اسناد تازه"
 
@@ -1349,7 +1349,7 @@ msgstr "برای اسناد تکراری اسکن کنید؟"
 msgid "Duplicated document scan queued successfully."
 msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
 
-#: widgets.py:80 widgets.py:84
+#: widgets.py:81 widgets.py:85
 #, python-format
 msgid "Pages: %d"
 msgstr ""
