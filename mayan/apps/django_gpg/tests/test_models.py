@@ -86,7 +86,7 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.close()
 
     def test_embedded_verification_no_key(self):
-        with open(TEST_SIGNED_FILE, 'rb') as signed_file:
+        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(signed_file)
 
         self.assertTrue(result.key_id in TEST_KEY_FINGERPRINT)
@@ -94,7 +94,7 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_key(self):
         Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_SIGNED_FILE, 'rb') as signed_file:
+        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(signed_file)
 
         self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
@@ -102,7 +102,7 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_correct_fingerprint(self):
         Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_SIGNED_FILE, 'rb') as signed_file:
+        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(
                 signed_file, key_fingerprint=TEST_KEY_FINGERPRINT
             )
@@ -113,14 +113,14 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_incorrect_fingerprint(self):
         Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_SIGNED_FILE, 'rb') as signed_file:
+        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
             with self.assertRaises(KeyDoesNotExist):
                 Key.objects.verify_file(signed_file, key_fingerprint='999')
 
     def test_signed_file_decryption(self):
         Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_SIGNED_FILE, 'rb') as signed_file:
+        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.decrypt_file(file_object=signed_file)
 
         self.assertEqual(result.read(), TEST_SIGNED_FILE_CONTENT)
@@ -136,8 +136,8 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.close()
 
     def test_detached_verification_no_key(self):
-        with open(TEST_DETACHED_SIGNATURE, 'rb') as signature_file:
-            with open(TEST_FILE, 'rb') as test_file:
+        with open(TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
+            with open(TEST_FILE, mode='rb') as test_file:
                 result = Key.objects.verify_file(
                     file_object=test_file, signature_file=signature_file
                 )
@@ -147,8 +147,8 @@ class KeyTestCase(BaseTestCase):
     def test_detached_verification_with_key(self):
         Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_DETACHED_SIGNATURE, 'rb') as signature_file:
-            with open(TEST_FILE, 'rb') as test_file:
+        with open(TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
+            with open(TEST_FILE, mode='rb') as test_file:
                 result = Key.objects.verify_file(
                     file_object=test_file, signature_file=signature_file
                 )
@@ -160,7 +160,7 @@ class KeyTestCase(BaseTestCase):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
 
         with self.assertRaises(NeedPassphrase):
-            with open(TEST_FILE, 'rb') as test_file:
+            with open(TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,
                 )
@@ -169,7 +169,7 @@ class KeyTestCase(BaseTestCase):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
 
         with self.assertRaises(PassphraseError):
-            with open(TEST_FILE, 'rb') as test_file:
+            with open(TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,
                     passphrase='bad passphrase'
@@ -178,7 +178,7 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_with_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
 
-        with open(TEST_FILE, 'rb') as test_file:
+        with open(TEST_FILE, mode='rb') as test_file:
             detached_signature = key.sign_file(
                 file_object=test_file, detached=True,
                 passphrase=TEST_KEY_PASSPHRASE
@@ -188,7 +188,7 @@ class KeyTestCase(BaseTestCase):
         signature_file.write(force_bytes(detached_signature))
         signature_file.seek(0)
 
-        with open(TEST_FILE, 'rb') as test_file:
+        with open(TEST_FILE, mode='rb') as test_file:
             result = Key.objects.verify_file(
                 file_object=test_file, signature_file=signature_file
             )

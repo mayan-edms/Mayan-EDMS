@@ -38,7 +38,7 @@ class WorkflowAPITestCase(BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -372,7 +372,7 @@ class WorkflowStatesAPITestCase(BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -548,7 +548,7 @@ class WorkflowTransitionsAPITestCase(BaseAPITestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -790,7 +790,7 @@ class DocumentWorkflowsAPITestCase(BaseAPITestCase):
         super(DocumentWorkflowsAPITestCase, self).tearDown()
 
     def _create_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )

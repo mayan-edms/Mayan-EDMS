@@ -207,7 +207,7 @@ class SmartLinkConditionAPITestCase(BaseAPITestCase):
         )
 
     def _create_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )

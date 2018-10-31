@@ -40,7 +40,7 @@ class EmbeddedSignatureManager(models.Manager):
         except Exception:
             raise
         else:
-            with open(temporary_filename, 'rb') as file_object:
+            with open(temporary_filename, mode='rb') as file_object:
                 new_version = document_version.document.new_version(
                     file_object=file_object, _user=user
                 )

@@ -529,7 +529,7 @@ class DocumentVersion(models.Model):
                 converter = converter_class(file_object=self.open())
                 pdf_file_object = converter.to_pdf()
 
-                with storage_documentimagecache.open(cache_filename, 'wb+') as file_object:
+                with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
                     for chunk in pdf_file_object:
                         file_object.write(chunk)
 

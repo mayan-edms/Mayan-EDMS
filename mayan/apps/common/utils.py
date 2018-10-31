@@ -102,9 +102,9 @@ def get_descriptor(file_input, read=True):
     except AttributeError:
         # If not, try open it.
         if read:
-            return open(file_input, 'rb')
+            return open(file_input, mode='rb')
         else:
-            return open(file_input, 'wb')
+            return open(file_input, mode='wb')
     else:
         return file_input
 
