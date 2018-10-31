@@ -27,7 +27,7 @@ Legal Entity or (iii) beneficial ownership of such entity.
 "Contribution" means any work of authorship that is Submitted by You to Us in
 which You own or assert ownership of the Copyright. We cannot accept
 contributions for which you do not own the Copyright or for which you don't
-have the necesary legal power to transfer.
+have the necessary legal power to transfer.
 
 "Copyright" means all rights protecting works of authorship owned or controlled
 by You or Your Affiliates, including copyright, moral and neighboring rights,

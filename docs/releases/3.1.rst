@@ -337,7 +337,7 @@ Other changes
 - Include querystring when force reload of a bare template view.
 - Speed up document image fade in reveal.
 - Use reseteable timer to ensure more document panels heights are matched.
-- Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
+- Rewrote Mayan's JavaScript suite MayanApp into ECMAScript2015.
 - Remove use of ``waitForJQuery``.
 - Remove code statistics from the documentation.
 - Remove the pending work chapter. This is now available in the Wiki:
@@ -394,7 +394,7 @@ Other changes
 - New settings: ``SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND`` and
   ``SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS`` to control
   where and how staging file caching is done.
-- Fix an egde case on the document indexing where an empty
+- Fix an edge case on the document indexing where an empty
   node could be left behind.
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.

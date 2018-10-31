@@ -18,5 +18,5 @@ email backends. Mailing Profiles are created from the
 :menuselection:`System --> Setup` menu.
 
 Once created mailing profiles allow users to send email messages from
-within the user interafce containing either an URL link to the document or
+within the user interface containing either an URL link to the document or
 the actual document as an attachment.

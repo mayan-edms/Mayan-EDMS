@@ -4,7 +4,7 @@ OCR backend
 
 Mayan EDMS ships an OCR backend that uses the FLOSS engine Tesseract
 (https://github.com/tesseract-ocr/tesseract/), but it can
-use other engines. To support other engines crate a wrapper that subclasess the
+use other engines. To support other engines crate a wrapper that subclasses the
 ``OCRBackendBase`` class defined in mayan/apps/ocr/classes. This subclass should
 expose the ``execute`` method. For an example of how the Tesseract backend
 is implemented take a look at the file ``mayan/apps/ocr/backends/tesseract.py``

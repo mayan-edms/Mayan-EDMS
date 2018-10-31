@@ -9,7 +9,7 @@ Changes
 Turning Mayan EDMS into a single page app
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Historically, Mayan EDMS has steered away from adding too much Javascript
+Historically, Mayan EDMS has steered away from adding too much JavaScript
 in its code. The goal was to be able to maintain a robust, backend-based
 page rendering method that will be as future-proof as possible.
 This approach comes at the cost of some page loading speed, and reduced
@@ -19,7 +19,7 @@ The whole system has been update to work as a modern Single Page App.
 Single Page Applications (SPAs) rewrite the current page dynamically
 rather than loading the entire page on each click of the mouse. This
 makes the web application feel and behave more like a desktop
-application. Because the majority of the styling and Javascript code
+application. Because the majority of the styling and JavaScript code
 is loaded only once, there is also the added benefit of less data down
 the wire. Thus the application becomes lighter and provides a faster
 response time to user events. Because the style is loaded and
@@ -233,7 +233,7 @@ module. Example::
             WizardStep.deregister(WizardStepTags)
 
 
-This will cause the tags assigment step to not be assigned to the upload
+This will cause the tags assignment step to not be assigned to the upload
 wizard anymore.
 
 
@@ -333,15 +333,15 @@ Add JavaScript dependency manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An internal utility to install and upgrade the JavaScript dependencies was added.
-This depency manager allows for the easier maintenace of the JavaScript libraries
+This depency manager allows for the easier maintenance of the JavaScript libraries
 used through the project.
 
 Previously JavaScript libraries we downloaded and installed by manually. These
 libraries were them checked into the Git repository. Finally to enable them
-the correspoding imports were added to the base templates in the apppeance app.
+the corresponding imports were added to the base templates in the appeance app.
 
 This new manager is the first step to start resolving these issues. The manager
-allows apps to specify their own dependencies. These dependecies are then
+allows apps to specify their own dependencies. These dependencies are then
 downloaded when the project is installed or upgraded. As such they are not
 part of the repository and lower the file size of the project.
 

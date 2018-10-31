@@ -61,7 +61,7 @@
 - Convert document version view to item list view.
 - Add support for browsing individual document versions.
 - Add support for dropdown menus to the item list view template.
-- Add support for preserving the file extenstion when downloading a document
+- Add support for preserving the file extension when downloading a document
   version. GitLab #415.
 - Split OCR app into OCR and parsing.
 - Remove Folders app.
@@ -164,7 +164,7 @@
 - Document cache disabling.
 - Translation improvements.
 - Image loading improvements.
-- Lower Javascript memory utilization.
+- Lower JavaScript memory utilization.
 - HTML reponsive layout improvements.
 - Make document deletion a background task.
 - Unicode handling improvements.

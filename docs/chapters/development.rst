@@ -188,8 +188,8 @@ Double quote is used for multiple line comments or HTML markup.
 Migrations
 ----------
 
-Migrations should do only one thing (eg: either create a table, move data to a
-new table or remove an old table) to aid retrying on failure.
+Migrations should do only one thing (example: either create a table, move data
+to a new table or remove an old table) to aid retrying on failure.
 
 
 General
@@ -256,7 +256,7 @@ Special branches:
     of a new Docker image based on development code to the GitLab image
     repository.
 
-Each release is tagged separately using annotaded Git tags.
+Each release is tagged separately using annotated Git tags.
 
 When submitting patches, please place your code in its own ``feature/`` branch
 prior to opening a Merge Request on GitLab_.

@@ -10,7 +10,7 @@ Change the database manager
 ===========================
 Use PostgreSQL or MySQL as the database manager.
 Tweak the memory setting of the database manager to increase memory allocation.
-More PostgreSQL especific examples are available in their wiki page:
+More PostgreSQL specific examples are available in their wiki page:
 https://wiki.postgresql.org/wiki/Performance_Optimization
 
 Increase the number of Gunicorn workers

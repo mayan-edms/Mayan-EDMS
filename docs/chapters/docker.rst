@@ -55,7 +55,7 @@ identifier::
 
 The Mayan EDMS container will connect to the PostgreSQL container via the
 ``172.17.0.1`` IP address (the Docker host's default IP address). It will
-connect using the ``django.db.backends.postgresql`` database drivern and
+connect using the ``django.db.backends.postgresql`` database driver and
 connect to the ``mayan`` database using the ``mayan`` user with the password
 ``mayanuserpass``. The container will keep connections to the database
 for up to 60 seconds in an attempt to reuse them increasing response time
@@ -409,7 +409,7 @@ These are:
 
 Nightly images
 ==============
-The continious integration pipeline used for testing development builds also
+The continuous integration pipeline used for testing development builds also
 produces a resulting Docker image. These are build automatically and their
 stability is not guaranteed. They should never be used in production.
 If you want to try out the Docker images the development uses or want a sneak

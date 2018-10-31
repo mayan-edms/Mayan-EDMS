@@ -347,9 +347,9 @@ Enable and restart the services [1_]:
 
 [1]: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740
 
-.. _Debian: http://www.debian.org/
-.. _Django: http://www.djangoproject.com/
-.. _Python: http://www.python.org/
+.. _Debian: https://www.debian.org/
+.. _Django: https://www.djangoproject.com/
+.. _Python: https://www.python.org/
 .. _SQLite: https://www.sqlite.org/
 .. _Ubuntu: http://www.ubuntu.com/
 .. _virtualenv: http://www.virtualenv.org/en/latest/index.html

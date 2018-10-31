@@ -23,7 +23,7 @@ links to the document of each respective type.
 #. Go to :menuselection:`Document types` and associate this index with
    existing document types in the system.
 #. Finally go to :menuselection:`Tools --> Rebuild indexes` to execute the
-   index template. The rebuild process is only necesary when changes are
+   index template. The rebuild process is only necessary when changes are
    made to the index templates. Otherwise they update automatically whenever
    a new document is uploaded or existing documents properties are modified.
 #. A new index should appear under :menuselection:`Indexes` menu.

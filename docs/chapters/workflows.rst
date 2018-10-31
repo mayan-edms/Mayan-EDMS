@@ -70,7 +70,7 @@ Internally, workflows are implemented as a finite state machines
 that only one state can be the current active state for a workflow being
 executed. The other limitation of the current implementation is that every
 workflow needs at least one state marked as the initial state. These limitations
-are the result of a compromised in the design between flexilibiy and ease of
+are the result of a compromised in the design between flexibility and ease of
 use.
 
 
@@ -78,7 +78,7 @@ Visualizations
 ==============
 
 The graphical representation of a workflow (or a finite state machine style
-in Mayan EDMS's case) is similar to a flowchart. The states are presetended
+in Mayan EDMS's case) is similar to a flowchart. The states are represented
 with circles. The transitions are represented with arrows. Circle with a
 double border represent the initial state of the workflow.
 

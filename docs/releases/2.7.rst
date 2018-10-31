@@ -170,7 +170,7 @@ Other Changes
 - Improve mailer URL regex.
 - Add ordering support to the ``SourceColumn`` class. GitLab issue #417.
 - Shows the cabinets in the document list. GitLab #417 @corneliusludmann
-- Update the index information colums to show the
+- Update the index information columns to show the
   total number of documents and nodes contained in a level.
 - Add workaround for pycountry versions without the bibliographical key.
   GitHub issue #250.
@@ -191,7 +191,7 @@ Other Changes
 - Convert document version view to item list view.
 - Add support for browsing individual document versions.
 - Add support for dropdown menus to the item list view template.
-- Add support for preserving the file extenstion when downloading a document
+- Add support for preserving the file extension when downloading a document
   version. GitLab #415.
 - Split OCR app into OCR and parsing.
 - Use the literal 'System' instead of the target name when
@@ -211,7 +211,7 @@ Other Changes
 - Implement field order for the action dynamic forms.
   Perform action class validation by importing the class and
   not relying on an instance of action model, which might not
-  exisit when still creating the action.
+  exist when still creating the action.
 - Navigation improvements in the workflow app.
 - Rename index nodes to index levels.
 - Avoid Maximum recursion depth exceeded exception on index document

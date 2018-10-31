@@ -80,5 +80,5 @@ module. Example::
             WizardStep.deregister(WizardStepTags)
 
 
-This will cause the tags assigment step to not be assigned to the upload
+This will cause the tags assignment step to not be assigned to the upload
 wizard anymore.

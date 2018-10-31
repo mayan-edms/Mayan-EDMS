@@ -177,7 +177,12 @@ The complete command line would then be:
 $ docker run -d --name mayan-edms --restart=always -p 80:80 -v mayan_data:/var/lib/mayan -v /opt/scanned_files:/srv/watch_folder mayanedms/mayanedms:2.7.3
 ```
 
-Now create a watch folder in Mayan EDMS using the path `/srv/watch_folder` and the documents from the host folder `/opt/scanned_files` will be automatically available. Use the same procedure to mount host folders to be used as staging folderes. In this example `/srv/watch_folder` was as the container directory, but any path can be used as long as it is not an already existing path or a path used by any other program.
+Now create a watch folder in Mayan EDMS using the path `/srv/watch_folder` and
+the documents from the host folder `/opt/scanned_files` will be automatically
+available. Use the same procedure to mount host folders to be used as staging
+folders. In this example `/srv/watch_folder` was as the container directory,
+but any path can be used as long as it is not an already existing path or a
+path used by any other program.
 
 
 ## Performing backups
@@ -366,7 +371,7 @@ from .base import *
 SECRET_KEY = '< keep your random secret key >'
 ```
 
-This is necesary because version 2.2 included experimental support for Postgres as a database backend. Now that Postgres support has been made standard, the custom configuration lines that version 2.2 added to the `local.py` file are not necesary and need to be removed to avoid configuration conflicts.
+This is necessary because version 2.2 included experimental support for Postgres as a database backend. Now that Postgres support has been made standard, the custom configuration lines that version 2.2 added to the `local.py` file are not necesary and need to be removed to avoid configuration conflicts.
 
 Save the file and launch a container using the new version.
 

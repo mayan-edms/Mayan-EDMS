@@ -65,6 +65,6 @@ Example::
 
 More information at:
 
- - Postgresl: http://www.postgresql.org/docs/current/static/backup.html
+ - PostgreSQL: https://www.postgresql.org/docs/current/static/backup.html
  - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
  - SQLite: Just copy the file ``mayan/media/db.sqlite3``

@@ -6,7 +6,7 @@
 * Add data migrations to the sources app migraton 0019 to ensure all labels
   are unique before performing the schema migations.
 * Add improvements to the metadata URL encoding and decoding to support
-  ampersand characters as part of the metadata value. GitLab issue 
+  ampersand characters as part of the metadata value. GitLab issue
   #529. Thanks to Mark Maglana @relaxdiego for the report.
 * Add custom validator for multiple emails in a single text field.
   Change the widget of the email fields in the mailer app to avoid
@@ -35,10 +35,10 @@
   @TheOneValen for the report.
 * Ignore document stub from the index mirror. GitLab issue
   #520. Thanks to TheOneValen @TheOneValen for the report.
-* Fix for the Docker image INSTALL_FLAG path. Thanks to 
+* Fix for the Docker image INSTALL_FLAG path. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #525.
-* Fix the typo in the Docker variable for worker concurrency. Thanks to 
+* Fix the typo in the Docker variable for worker concurrency. Thanks to
   Mark Maglana @relaxdiego for the report and to Hamish Farroq @farroq_HAM
   for the patch. GitLab issue #527.
 * Add a noop OCR backend that disables OCR and the check for the
@@ -56,7 +56,7 @@
   starts and at the end of directories. Closes again GitLab issue #520
   Thanks to TheOneValen @ for the report.
 * Improve index mirroring cache class to use the hash of the keys
-  instead of the literal keys. Avoid warning about invalid key 
+  instead of the literal keys. Avoid warning about invalid key
   characters. Closes GitLab issue #518. Thanks to TheOneValen @ for the
   report.
 * Only render the Template API view for authenticated users.
@@ -185,7 +185,7 @@
 - Include querystring when force reload of a bare template view.
 - Speed up document image fade in reveal.
 - Use reseteable timer to ensure more document panels heights are matched.
-- Rewrote Mayan's Javascript suite MayanApp into ECMAScript2015.
+- Rewrote Mayan's JavaScript suite MayanApp into ECMAScript2015.
 - Remove use is waitForJQuery.
 - Remove code statistics from the documentation.
 - Remove the pending work chapter. This is now available in the Wiki:
@@ -306,12 +306,12 @@
 - New settings: SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND and
   SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS to control
   where and how staging file caching is done.
-- Fix an egde case on the document indexing where an empty
+- Fix an edge case on the document indexing where an empty
   node could be left behind.
 - Improve the speed of the document indexing.
 - Move the matchHeight call from lazy loading to image loading.
   Reduces the chance of wrongly sized cards.
-- Generalize the Javascript menu rendering into an API for
+- Generalize the JavaScript menu rendering into an API for
   templates that only refresh the menu when there are changes.
   Closes GitLab issue #511. Thanks to Daniel Carrico
   @daniel1113 for the report.

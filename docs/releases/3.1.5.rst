@@ -15,7 +15,7 @@ as a FUSE filesystem. It also includes a fix for indexes that return a
 multi line value. The carriage returns and newlines characters are now
 converted into spaces to make the index value a valid filesystem directory.
 Lastly an issue with the duplicated value was fixed. Indexes levels that
-return a duplicated value will now show as directory entried when mounted
+return a duplicated value will not show as directory entries when mounted
 as a FUSE filesystem.
 
 

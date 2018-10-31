@@ -29,7 +29,7 @@ class Command(management.BaseCommand):
 
         parser.add_argument(
             '--no-javascript', action='store_true', dest='no_javascript',
-            help='Don\'t download the Javascript dependencies.',
+            help='Don\'t download the JavaScript dependencies.',
         )
 
     def initialize_system(self, force=False):
