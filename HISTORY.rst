@@ -1,4 +1,4 @@
-3.1.8 (2018-10-XX)
+3.1.8 (2018-10-31)
 ==================
 * Reorganize documentation into topics and chapters.
 * Add Workflows and API chapters.

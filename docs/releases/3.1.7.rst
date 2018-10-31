@@ -6,6 +6,7 @@ Released: October 14, 2018
 
 Changes
 -------
+
 * Fix an issue with some browsers not firing the .load event on cached
   images. Ref: http://api.jquery.com/load-event/
 * Remove duplicate YAML loading of environment variables.

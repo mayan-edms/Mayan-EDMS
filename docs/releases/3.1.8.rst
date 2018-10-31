@@ -1,11 +1,89 @@
 Version 3.1.8
 =============
 
-Released: October XX, 2018
+Released: October 31, 2018
 
 
 Changes
 -------
+
+Documentation reorganization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The documentation has been reorganized into smaller chapters and these
+chapters grouped into topics. This makes finding a specific documentation
+chapter easier. A "getting started" chapter was also added.
+
+Several pages from the Wiki have been transferred to the documentation (
+scaling up, workflows, password_reset, and others). Many thanks to all
+who contributed to the creation and improvement of these pages. The
+Wiki experiment has been proven a success in improving the quality and
+amount of documentation.
+
+The documentation markup has also been improved to comply with Sphinx's best
+practices.
+
+Finally a new make file target has been added to help reduce the number of
+spelling errors before publishing documentation content.
+
+
+New command to diagnose settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A new management command named ``showsettings`` has been added. This command
+will display all the setting options and their current value. This command is
+helpful in testing setting value override from the command line via environment
+variables.
+
+
+Workflow previews
+^^^^^^^^^^^^^^^^^
+
+The usability of the workflow previews has been improved by increasing their
+default render resolution and showing them centered in the page. This increases
+the details in large or complex workflows with many states.
+
+
+Re-indexing improvements
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Previously it was possible to index a document by its base properties (label,
+description, checksum, UUID, etc). Support has been added to trigger a
+re-indexing of the document if any of these properties is updated.
+
+
+Fix sending documents to multiple emails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Several versions ago support for sending documents to multiple emails
+was added. Recently the user interface began using HTML5 form widgets
+including the email widget. This widget default validation allows only one
+email per field. This broke the support for multiple email sending. The
+field in question has been changed to a normal text field and a custom
+validation code has been added to allow multiple emails. Each email can
+be separated by a comma or a semmicolon. Each email enterred will be
+validated individually.
+
+
+Change the project/installation URL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A new setting option has been added to allow changing the default URL
+used as the homepage and the password reset URL. This options is named
+``COMMON_PROJECT_URL`` and can be changed from the user interface or
+with environment variable ``MAYAN_COMMON_PROJECT_URL``.
+
+
+Other changes
+^^^^^^^^^^^^^
+
+* Add data migrations to the sources app migration 0019 to ensure all labels
+  are unique before performing the schema migations.
+* Add improvements to the metadata URL encoding and decoding to support
+  ampersand characters as part of the metadata value. GitLab issue
+  #529. Thanks to Mark Maglana @relaxdiego for the report.
+* Move the noop OCR backend to the right place.
+* Default the YAML flow format to False which never uses inline.
 
 
 Removals
@@ -76,7 +154,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-* :gitlab-issue:`592` Submitting a metadata value with the `&` character truncates string
+* :gitlab-issue:`529` Submitting a metadata value with the `&` character truncates string
 * :gitlab-issue:`530` Email Link form does not accept commas or semicolons to separate multiple addresses
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
