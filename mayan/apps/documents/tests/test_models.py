@@ -139,7 +139,7 @@ class PDFCompatibilityTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_PDF_INDIRECT_ROTATE_PATH, 'rb') as file_object:
+        with open(TEST_PDF_INDIRECT_ROTATE_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -158,7 +158,7 @@ class OfficeDocumentTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_OFFICE_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_OFFICE_DOCUMENT_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -187,7 +187,7 @@ class MultiPageTiffTestCase(BaseTestCase):
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        with open(TEST_MULTI_PAGE_TIFF_PATH, 'rb') as file_object:
+        with open(TEST_MULTI_PAGE_TIFF_PATH, mode='rb') as file_object:
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
@@ -210,7 +210,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )
@@ -229,7 +229,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         # field
         time.sleep(1.01)
 
-        with open(TEST_DOCUMENT_PATH, 'rb') as file_object:
+        with open(TEST_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(
                 file_object=file_object
             )

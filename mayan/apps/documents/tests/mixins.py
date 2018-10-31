@@ -27,7 +27,7 @@ class DocumentTestMixin(object):
     def upload_document(self):
         self._calculate_test_document_path()
 
-        with open(self.test_document_path, 'rb') as file_object:
+        with open(self.test_document_path, mode='rb') as file_object:
             document = self.document_type.new_document(
                 file_object=file_object, label=self.test_document_filename
             )

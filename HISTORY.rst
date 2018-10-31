@@ -21,6 +21,8 @@
 * Add new management command to display the current configuration
   settings.
 * Default the YAML flow format to False which never uses inline.
+* Add support for reindexing documents when their base properties like
+  the label and description are edited.
 
 3.1.7 (2018-10-14)
 ==================

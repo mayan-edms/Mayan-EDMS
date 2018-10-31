@@ -43,6 +43,18 @@ def handler_index_document(sender, **kwargs):
     )
 
 
+def handler_post_save_index_document(sender, **kwargs):
+    """
+    Reindex documents when they get edited. For indexing documents
+    when they are first created the handler_index_document is called
+    from the custom post_document_created signal.
+    """
+    if not kwargs['created']:
+        task_index_document.apply_async(
+            kwargs=dict(document_id=kwargs['instance'].pk)
+        )
+
+
 def handler_remove_document(sender, **kwargs):
     task_remove_document.apply_async(
         kwargs=dict(document_id=kwargs['instance'].pk)

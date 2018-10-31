@@ -12,7 +12,7 @@ from ..permissions import (
 
 from .literals import (
     TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED, TEST_INDEX_SLUG,
-    TEST_INDEX_TEMPLATE_LABEL_EXPRESSION
+    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
 )
 
 
@@ -112,7 +112,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
         # Create simple index template
         root = self.index.template_root
         self.index.node_templates.create(
-            parent=root, expression=TEST_INDEX_TEMPLATE_LABEL_EXPRESSION,
+            parent=root, expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
             link_documents=True
         )
 

@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from kombu import Exchange, Queue
 
 from django.apps import apps
-from django.db.models.signals import post_delete, pre_delete
+from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -21,7 +21,8 @@ from navigation import SourceColumn
 
 from .handlers import (
     create_default_document_index, handler_delete_empty,
-    handler_index_document, handler_remove_document
+    handler_index_document, handler_remove_document,
+    handler_post_save_index_document
 )
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_setup,
@@ -210,11 +211,6 @@ class DocumentIndexingApp(MayanAppConfig):
             receiver=handler_delete_empty,
             sender=Document
         )
-        pre_delete.connect(
-            dispatch_uid='document_indexing_handler_remove_document',
-            receiver=handler_remove_document,
-            sender=Document
-        )
         post_document_created.connect(
             dispatch_uid='document_indexing_handler_index_document',
             receiver=handler_index_document,
@@ -224,4 +220,14 @@ class DocumentIndexingApp(MayanAppConfig):
             dispatch_uid='document_indexing_create_default_document_index',
             receiver=create_default_document_index,
             sender=DocumentType
+        )
+        post_save.connect(
+            dispatch_uid='document_indexing_handler_post_save_index_document',
+            receiver=handler_post_save_index_document,
+            sender=Document
+        )
+        pre_delete.connect(
+            dispatch_uid='document_indexing_handler_remove_document',
+            receiver=handler_remove_document,
+            sender=Document
         )
