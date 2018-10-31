@@ -226,23 +226,77 @@ Git branch structure
 Mayan EDMS follows a simplified model layout based on Vincent Driessen's
 `Successful Git Branching Model`_ blog post.
 
-``develop``
-    The "next release" branch, likely unstable.
+``development``
+    The "next release" branch, likely unstable, don't use in production.
 ``master``
-    Current production release (|version|).
+    Current production release (|version|). Points to the latest version of
+    the latest series. Production quality code.
 ``feature/``
-    Unfinished/unmerged feature.
-``series/``
-    Released versions.
+    Unfinished/unmerged feature. Likely unstable, don't use in production.
 
+Special branches:
 
-Each release is tagged separately.
+``releases/all``
+    Used by the continuous delivery system to trigger the build and release
+    a new Docker image, Documentation and Python package.
+``releases/docker``
+    Used by the continuous delivery system to trigger the build and release
+    of a new Docker image to Docker Hub.
+``releases/documentation``
+    Used by the continuous delivery system to trigger the build and release
+    of new documentation.
+``releases/python``
+    Used by the continuous delivery system to trigger the build and release
+    of a new Python package to PyPI.
+``releases/python``
+    Used by the continuous delivery system to trigger the build and release
+    of a new Python package to PyPI.
+``nightly``
+    Used by the continuous delivery system to trigger the build and release
+    of a new Docker image based on development code to the GitLab image
+    repository.
+
+Each release is tagged separately using annotaded Git tags.
 
 When submitting patches, please place your code in its own ``feature/`` branch
 prior to opening a Merge Request on GitLab_.
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
+
+
+Commit messages
+---------------
+
+#. Use English as the language for the commit messages.
+#. Provide a subject line composed of a tag and a short explanation::
+
+    Indexing: Add document base property reindex
+
+#. Keep the subject line to 50 or less characters.
+#. Capitalize the subject line.
+#. Don't end the subject line with a period, leave like a phrase in English.
+#. Use active voice in the. Say what the commit will do when applied not what
+   you did::
+
+       Add new properties to the model.
+
+   Vs.
+   ::
+
+       Added new properties to the model.
+
+#. Limit the body of the commit to 72 characters.
+#. When a commit fixes or improves an issue add the issue number in the commit
+   message. Either in the subject or in the body.
+#. Sign commit messages.
+#. Use explicit language even for minor commits. Don't do::
+
+       Fix typo
+
+   Use::
+
+       Document: Fix typo in label description
 
 
 Steps to deploy a development version
