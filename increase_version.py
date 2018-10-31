@@ -162,5 +162,4 @@ if __name__ == '__main__':
         print('Unknown part')
         exit(1)
 
-    #sys.stdout.write(version.get_version_string())
     print(version.get_version_string())
