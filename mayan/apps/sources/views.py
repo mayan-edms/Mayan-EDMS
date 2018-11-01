@@ -270,7 +270,7 @@ class UploadInteractiveView(UploadBaseView):
                             filename=force_text(shared_uploaded_file)
                         ),
                         language=forms['document_form'].cleaned_data.get('language'),
-                        querystring=querystring,
+                        querystring=querystring.tostr(),
                         shared_uploaded_file_id=shared_uploaded_file.pk,
                         source_id=self.source.pk,
                         user_id=user_id,
