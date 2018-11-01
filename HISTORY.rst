@@ -1,3 +1,8 @@
+3.1.9 (2018-11-01)
+==================
+* Convert the furl instance to text to allow serializing it into
+  JSON to be passed as arguments to the background task.
+
 3.1.8 (2018-10-31)
 ==================
 * Reorganize documentation into topics and chapters.
