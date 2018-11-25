@@ -77,6 +77,14 @@ class Index(models.Model):
         )
 
     def index_document(self, document):
+        """
+        Method to start the indexing process for a document. The entire process
+        happens inside one transaction. The document is first removed from all
+        the index nodes to which it already belongs. The different index
+        templates that match this document's type are evaluated and for each
+        result a node is fetched or created and the document is added to that
+        node.
+        """
         logger.debug('Index; Indexing document: %s', document)
 
         with transaction.atomic():
@@ -131,10 +139,18 @@ class Index(models.Model):
 
     @property
     def template_root(self):
+        """
+        Return the root node for this index.
+        """
         return self.node_templates.get(parent=None)
 
 
 class IndexInstance(Index):
+    """
+    Model that represents an evaluated index. This is an index whose nodes
+    have been evaluated against a series of documents. If is a proxy model
+    at the moment.
+    """
     class Meta:
         proxy = True
         verbose_name = _('Index instance')
@@ -286,6 +302,12 @@ class IndexTemplateNode(MPTTModel):
 
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
+    """
+    This model represent one instance node from a index template node. That is
+    a node template that has been evaluated against a document and the result
+    from that evaluation is this node's stored values. Instances of this
+    model also point to the original node template.
+    """
     parent = TreeForeignKey(
         blank=True, null=True, on_delete=models.CASCADE, to='self',
     )
@@ -311,6 +333,9 @@ class IndexInstanceNode(MPTTModel):
         return self.value
 
     def delete_empty(self):
+        """
+        Method to delete all empty node instances in a recursive manner.
+        """
         # Prevent another process to delete this node.
         try:
             lock = locking_backend.acquire_lock(
@@ -374,6 +399,9 @@ class IndexInstanceNode(MPTTModel):
         return 'indexing:index_instance_node_{}'.format(self.pk)
 
     def index(self):
+        """
+        Return's the index instance of this node instance.
+        """
         return IndexInstance.objects.get(pk=self.index_template_node.index.pk)
 
     def remove_document(self, document):
@@ -399,6 +427,11 @@ class IndexInstanceNode(MPTTModel):
 
 
 class DocumentIndexInstanceNode(IndexInstanceNode):
+    """
+    Proxy model of node instance. It is used to represent the node instance
+    in which a document is currently located. It is used to aid in column
+    registration. The inherited methods of this model should not be used.
+    """
     objects = DocumentIndexInstanceNodeManager()
 
     class Meta:

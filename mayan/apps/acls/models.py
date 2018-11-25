@@ -70,6 +70,9 @@ class AccessControlList(models.Model):
         )
 
     def get_permission_titles(self):
+        """
+        Returns the descriptibe labels for the permissions.
+        """
         result = ', '.join(
             [force_text(permission) for permission in self.permissions.all()]
         )

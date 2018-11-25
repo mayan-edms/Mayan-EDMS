@@ -17,6 +17,9 @@ from .managers import (
 
 @python_2_unicode_compatible
 class StoredEventType(models.Model):
+    """
+    Model to mirror the real event classes as database objects.
+    """
     name = models.CharField(
         max_length=64, unique=True, verbose_name=_('Name')
     )
@@ -42,6 +45,10 @@ class StoredEventType(models.Model):
 
 @python_2_unicode_compatible
 class EventSubscription(models.Model):
+    """
+    This model stores the event subscriptions of an user for the entire
+    system.
+    """
     user = models.ForeignKey(
         db_index=True, on_delete=models.CASCADE,
         related_name='event_subscriptions', to=settings.AUTH_USER_MODEL,
@@ -64,6 +71,11 @@ class EventSubscription(models.Model):
 
 @python_2_unicode_compatible
 class Notification(models.Model):
+    """
+    This model keeps track of the notifications for an user. Notifications are
+    created when an event to which this user has been subscribed, are
+    commited elsewhere in the system.
+    """
     user = models.ForeignKey(
         db_index=True, on_delete=models.CASCADE,
         related_name='notifications', to=settings.AUTH_USER_MODEL,

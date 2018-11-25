@@ -13,6 +13,9 @@ from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
 
 @python_2_unicode_compatible
 class DocumentPageContent(models.Model):
+    """
+    This model store's the parsed content of a document page.
+    """
     document_page = models.OneToOneField(
         on_delete=models.CASCADE, related_name='content', to=DocumentPage,
         verbose_name=_('Document page')
@@ -35,6 +38,9 @@ class DocumentPageContent(models.Model):
 
 
 class DocumentTypeSettings(models.Model):
+    """
+    This model stores the parsing settings for a document type.
+    """
     document_type = models.OneToOneField(
         on_delete=models.CASCADE, related_name='parsing_settings',
         to=DocumentType, unique=True, verbose_name=_('Document type')
@@ -58,6 +64,10 @@ class DocumentTypeSettings(models.Model):
 
 @python_2_unicode_compatible
 class DocumentVersionParseError(models.Model):
+    """
+    This module stores the errors captures when attempting to parse a
+    document version.
+    """
     document_version = models.ForeignKey(
         on_delete=models.CASCADE, related_name='parsing_errors',
         to=DocumentVersion, verbose_name=_('Document version')

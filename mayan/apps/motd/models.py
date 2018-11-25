@@ -9,6 +9,10 @@ from .managers import MessageManager
 
 @python_2_unicode_compatible
 class Message(models.Model):
+    """
+    Model to store an information message that will be displayed at the login
+    screen. Messages can have an activation and deactivation date.
+    """
     label = models.CharField(
         max_length=32, help_text=_('Short description of this message.'),
         verbose_name=_('Label')

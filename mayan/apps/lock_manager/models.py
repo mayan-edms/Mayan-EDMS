@@ -10,6 +10,9 @@ from .settings import setting_default_lock_timeout
 
 @python_2_unicode_compatible
 class Lock(models.Model):
+    """
+    Model to provide distributed resource locking using the database.
+    """
     creation_datetime = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Creation datetime')
     )
@@ -30,6 +33,9 @@ class Lock(models.Model):
         return self.name
 
     def release(self):
+        """
+        Release a previously held lock.
+        """
         try:
             lock = Lock.objects.get(
                 name=self.name, creation_datetime=self.creation_datetime

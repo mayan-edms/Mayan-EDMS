@@ -40,7 +40,9 @@ def parser_choices():
 @python_2_unicode_compatible
 class MetadataType(models.Model):
     """
-    Define a type of metadata
+    Model to store a type of metadata. Metadata are user defined properties
+    that can be assigned a value for each document. Metadata types need
+    to be assigned to a document type before they can be used.
     """
     name = models.CharField(
         max_length=48,
@@ -127,6 +129,10 @@ class MetadataType(models.Model):
         return MetadataType.comma_splitter(template.render(context=context))
 
     def get_required_for(self, document_type):
+        """
+        Return a queryset of metadata types that are required for the
+        specified document type.
+        """
         return document_type.metadata.filter(
             required=True, metadata_type=self
         ).exists()
@@ -183,8 +189,8 @@ class MetadataType(models.Model):
 @python_2_unicode_compatible
 class DocumentMetadata(models.Model):
     """
-    Link a document to a specific instance of a metadata type with it's
-    current value
+    Model used to link an instance of a metadata type with a value to a
+    document.
     """
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='metadata', to=Document,
@@ -218,9 +224,10 @@ class DocumentMetadata(models.Model):
 
     def delete(self, enforce_required=True, *args, **kwargs):
         """
-        enforce_required prevents deletion of required metadata at the
-        model level. It used set to False when deleting document metadata
-        on document type change.
+        Delete a metadata from a document. enforce_required which defaults
+        to True, prevents deletion of required metadata at the model level.
+        It used set to False when deleting document metadata on document
+        type change.
         """
         if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
             raise ValidationError(
@@ -241,6 +248,10 @@ class DocumentMetadata(models.Model):
 
     @property
     def is_required(self):
+        """
+        Return a boolean value of True of this metadata instance's parent type
+        is required for the stored document type.
+        """
         return self.metadata_type.get_required_for(
             document_type=self.document.document_type
         )
@@ -272,6 +283,10 @@ class DocumentMetadata(models.Model):
 
 @python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
+    """
+    Model used to store the relationship between a metadata type and a
+    document type.
+    """
     document_type = models.ForeignKey(
         on_delete=models.CASCADE, related_name='metadata', to=DocumentType,
         verbose_name=_('Document type')

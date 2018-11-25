@@ -20,6 +20,10 @@ def upload_to(instance, filename):
 
 
 class ErrorLogEntry(models.Model):
+    """
+    Class to store an error log for any object. Uses generic foreign keys to
+    reference the parent object.
+    """
     namespace = models.CharField(
         max_length=128, verbose_name=_('Namespace')
     )
@@ -46,6 +50,10 @@ class ErrorLogEntry(models.Model):
 
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
+    """
+    Keep a database link to a stored file. Used to share files between code
+    that runs out of process.
+    """
     file = models.FileField(
         storage=storage_sharedupload, upload_to=upload_to,
         verbose_name=_('File')
@@ -76,6 +84,10 @@ class SharedUploadedFile(models.Model):
 
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
+    """
+    Stores the locale preferences of an user. Stores timezone and language
+    at the moment.
+    """
     user = models.OneToOneField(
         on_delete=models.CASCADE, related_name='locale_profile',
         to=settings.AUTH_USER_MODEL, verbose_name=_('User')

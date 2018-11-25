@@ -16,6 +16,11 @@ from .managers import SmartLinkManager
 
 @python_2_unicode_compatible
 class SmartLink(models.Model):
+    """
+    This model stores the basic fields for a smart link. Smart links allow
+    linking documents using a programmatic method of conditions that mirror
+    Django's database filter operations.
+    """
     label = models.CharField(
         db_index=True, max_length=96, verbose_name=_('Label')
     )
@@ -43,6 +48,10 @@ class SmartLink(models.Model):
         return self.label
 
     def get_dynamic_label(self, document):
+        """
+        If the smart links was created using a template label instead of a
+        static label, resolve the template and return the result.
+        """
         if self.dynamic_label:
             context = Context({'document': document})
             try:
@@ -58,6 +67,10 @@ class SmartLink(models.Model):
             return None
 
     def get_linked_document_for(self, document):
+        """
+        Execute the corresponding smart links conditions for the document
+        provided and return the resulting document queryset.
+        """
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
             raise Exception(
                 _(
@@ -100,6 +113,10 @@ class SmartLink(models.Model):
 
 
 class ResolvedSmartLink(SmartLink):
+    """
+    Proxy model to represent an already resolved smart link. Used for easier
+    colums registration.
+    """
     class Meta:
         proxy = True
 
@@ -109,6 +126,10 @@ class ResolvedSmartLink(SmartLink):
 
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
+    """
+    This model stores a single smart link condition. A smart link is a
+    collection of one of more smart link conditions.
+    """
     smart_link = models.ForeignKey(
         on_delete=models.CASCADE, related_name='conditions', to=SmartLink,
         verbose_name=_('Smart link')

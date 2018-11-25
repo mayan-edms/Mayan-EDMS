@@ -13,7 +13,7 @@ from .managers import (
 
 class DocumentTypeSettings(models.Model):
     """
-    Define for OCR for a specific document should behave
+    Model to store the OCR settings for a document type.
     """
     document_type = models.OneToOneField(
         on_delete=models.CASCADE, related_name='ocr_settings',
@@ -37,6 +37,9 @@ class DocumentTypeSettings(models.Model):
 
 @python_2_unicode_compatible
 class DocumentPageOCRContent(models.Model):
+    """
+    This model stores the OCR results for a document page.
+    """
     document_page = models.OneToOneField(
         on_delete=models.CASCADE, related_name='ocr_content',
         to=DocumentPage, verbose_name=_('Document page')
@@ -59,6 +62,10 @@ class DocumentPageOCRContent(models.Model):
 
 @python_2_unicode_compatible
 class DocumentVersionOCRError(models.Model):
+    """
+    This models keeps track of the errors captured during the OCR of a
+    document version.
+    """
     document_version = models.ForeignKey(
         on_delete=models.CASCADE, related_name='ocr_errors',
         to=DocumentVersion, verbose_name=_('Document version')

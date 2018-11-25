@@ -33,6 +33,12 @@ class LogEntry(models.Model):
 
 
 class UserMailer(models.Model):
+    """
+    This model is used to create mailing profiles that can be used from inside
+    the system. These profiles differ from the system mailing profile in that
+    they can be created at runtime and can be assigned ACLs to restrict
+    their use.
+    """
     label = models.CharField(
         max_length=128, unique=True, verbose_name=_('Label')
     )
@@ -122,6 +128,9 @@ class UserMailer(models.Model):
                 self.error_log.all().delete()
 
     def send_document(self, document, to, subject='', body='', as_attachment=False):
+        """
+        Send a document using this user mailing profile.
+        """
         context_dictionary = {
             'link': 'http://%s%s' % (
                 Site.objects.get_current().domain,
@@ -153,6 +162,10 @@ class UserMailer(models.Model):
         )
 
     def test(self, to):
+        """
+        Send a test message to make sure the mailing profile settings are
+        correct.
+        """
         self.send(subject=_('Test email from Mayan EDMS'), to=to)
 
 

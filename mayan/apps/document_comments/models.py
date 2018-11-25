@@ -18,6 +18,9 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Comment(models.Model):
+    """
+    Model to store one comment per document per user per date & time.
+    """
     document = models.ForeignKey(
         db_index=True, on_delete=models.CASCADE, related_name='comments',
         to=Document, verbose_name=_('Document')

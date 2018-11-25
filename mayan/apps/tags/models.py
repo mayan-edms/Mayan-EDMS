@@ -19,6 +19,10 @@ from .widgets import widget_single_tag
 
 @python_2_unicode_compatible
 class Tag(models.Model):
+    """
+    This model represents a binary property that can be applied to a document.
+    The tag can have a label and a color.
+    """
     label = models.CharField(
         db_index=True, help_text=_(
             'A short text used as the tag name.'
@@ -41,6 +45,9 @@ class Tag(models.Model):
         return self.label
 
     def attach_to(self, document, user=None):
+        """
+        Attach a tag to a document and commit the corresponding event.
+        """
         self.documents.add(document)
         event_tag_attach.commit(
             action_object=self, actor=user, target=document
@@ -50,6 +57,10 @@ class Tag(models.Model):
         return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     def get_document_count(self, user):
+        """
+        Return the numeric count of documents that have this tag attached.
+        The count if filtered by access.
+        """
         queryset = AccessControlList.objects.filter_by_access(
             permission_document_view, user, queryset=self.documents
         )
@@ -61,6 +72,9 @@ class Tag(models.Model):
     get_preview_widget.short_description = _('Preview')
 
     def remove_from(self, document, user=None):
+        """
+        Remove a tag from a document and commit the corresponding event.
+        """
         self.documents.remove(document)
         event_tag_remove.commit(
             action_object=self, actor=user, target=document

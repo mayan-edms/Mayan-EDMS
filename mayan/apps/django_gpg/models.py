@@ -65,6 +65,9 @@ class Key(models.Model):
         return '{} - {}'.format(self.key_id, self.user_id)
 
     def clean(self):
+        """
+        Validate the key before saving.
+        """
         import_results = gpg_backend.import_key(key_data=self.key_data)
 
         if not import_results.count:
@@ -78,6 +81,9 @@ class Key(models.Model):
 
     @property
     def key_id(self):
+        """
+        Short form key ID (using the first 8 characters).
+        """
         return self.fingerprint[-8:]
 
     def save(self, *args, **kwargs):
@@ -101,13 +107,15 @@ class Key(models.Model):
         super(Key, self).save(*args, **kwargs)
 
     def sign_file(self, file_object, passphrase=None, clearsign=False, detached=False, binary=False, output=None):
-        # WARNING: using clearsign=True and subsequent decryption corrupts the
-        # file. Appears to be a problem in python-gnupg or gpg itself.
-        # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=55647
-        # "The problems differ from run to run and file to
-        # file, and appear to be due to random data being inserted in the
-        # output data stream."
-
+        """
+        Digitally sign a file
+        WARNING: using clearsign=True and subsequent decryption corrupts the
+        file. Appears to be a problem in python-gnupg or gpg itself.
+        https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=55647
+        "The problems differ from run to run and file to
+        file, and appear to be due to random data being inserted in the
+        output data stream."
+        """
         file_sign_results = gpg_backend.sign_file(
             file_object=file_object, key_data=self.key_data,
             passphrase=passphrase, clearsign=clearsign, detached=detached,

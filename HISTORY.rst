@@ -22,7 +22,7 @@
 * Remove Django suit from requirements.
 * Remove development URLs from main URL file.
 * Move API documentation generation from the root URLs module
-  to the API app's URLs module. 
+  to the REST API app's URLs module.
 * Update Pillow to version 6.0.0
 * Update PyYAML to version 5.1. Update use of safe_load and
   safe_dump to load and dump using the SafeLoader.

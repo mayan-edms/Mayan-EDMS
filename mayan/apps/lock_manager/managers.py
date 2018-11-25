@@ -14,6 +14,11 @@ logger = logging.getLogger(__name__)
 
 class LockManager(models.Manager):
     def acquire_lock(self, name, timeout=None):
+        """
+        Attempts to acquire a lock. Return a LockError is the lock is already
+        held by someone else or if is not possible to acquire the lock due to
+        database or operational errors.
+        """
         logger.debug('trying to acquire lock: %s', name)
         lock = self.model(name=name, timeout=timeout)
 

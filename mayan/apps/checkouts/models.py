@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 @python_2_unicode_compatible
 class DocumentCheckout(models.Model):
     """
-    Model to store the state and information of a document checkout
+    Model to store the state and information of a document checkout.
     """
     document = models.OneToOneField(
         on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
@@ -99,6 +99,9 @@ class DocumentCheckout(models.Model):
 
 
 class NewVersionBlock(models.Model):
+    """
+    Model to keep track of which documents have new version upload restricted.
+    """
     document = models.ForeignKey(
         on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
     )
