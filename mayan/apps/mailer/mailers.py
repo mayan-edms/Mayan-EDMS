@@ -4,13 +4,31 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import MailerBackend
 
-__all__ = ('DjangoSMTP', 'DjangoFileBased')
+__all__ = ('DjangoFileBased', 'DjangoSMTP')
 
 
 class DjangoSMTP(MailerBackend):
+    """
+    Backend that wraps Django's SMTP backend
+    """
+    class_fields = (
+        'host', 'port', 'use_tls', 'use_ssl', 'user', 'password'
+    )
     class_path = 'django.core.mail.backends.smtp.EmailBackend'
+    field_order = (
+        'host', 'port', 'use_tls', 'use_ssl', 'user', 'password', 'from'
+    )
     fields = {
-        'host': {
+        'from': {
+            'label': _('From'),
+            'class': 'django.forms.CharField', 'default': '',
+            'help_text': _(
+                'The sender\'s address. Some system will refuse to send '
+                'messages if this value is not set.'
+            ), 'kwargs': {
+                'max_length': 48
+            }, 'required': False
+        }, 'host': {
             'label': _('Host'),
             'class': 'django.forms.CharField', 'default': 'localhost',
             'help_text': _('The host to use for sending email.'),
@@ -64,7 +82,7 @@ class DjangoSMTP(MailerBackend):
             }, 'required': False
         },
     }
-    field_order = ('host', 'port', 'use_tls', 'use_ssl', 'user', 'password')
+    label = _('Django SMTP backend')
     widgets = {
         'password': {
             'class': 'django.forms.widgets.PasswordInput',
@@ -73,17 +91,32 @@ class DjangoSMTP(MailerBackend):
             }
         }
     }
-    label = _('Django SMTP backend')
 
 
 class DjangoFileBased(MailerBackend):
+    """
+    Mailing backend that wraps Django's file based email backend
+    """
+    class_fields = ('file_path',)
     class_path = 'django.core.mail.backends.filebased.EmailBackend'
+    field_order = (
+        'file_path', 'from'
+    )
     fields = {
         'file_path': {
             'label': _('File path'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'max_length': 48
             }
-        },
+        }, 'from': {
+            'label': _('From'),
+            'class': 'django.forms.CharField', 'default': '',
+            'help_text': _(
+                'The sender\'s address. Some system will refuse to send '
+                'messages if this value is not set.'
+            ), 'kwargs': {
+                'max_length': 48
+            }, 'required': False
+        }
     }
     label = _('Django file based backend')

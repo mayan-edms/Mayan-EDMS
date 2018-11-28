@@ -48,6 +48,11 @@ class MailerBackendBase(object):
     class_path = ''  # Dot path to the actual class that will handle the mail
     fields = {}
 
+    @classmethod
+    def get_class_fields(cls):
+        backend_field_list = getattr(cls, 'fields', {}).keys()
+        return getattr(cls, 'class_fields', backend_field_list)
+
 
 class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)):
     @classmethod

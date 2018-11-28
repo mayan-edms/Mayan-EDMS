@@ -69,21 +69,49 @@ class UserMailer(models.Model):
         return self.label
 
     def backend_label(self):
+        """
+        Return the label that the backend itself provides. The backend is
+        loaded but not initialized. As such the label returned is a class
+        property.
+        """
         return self.get_backend().label
 
     def dumps(self, data):
+        """
+        Serialize the backend configuration data.
+        """
         self.backend_data = json.dumps(data)
         self.save()
 
+    def get_class_data(self):
+        """
+        Return the actual mailing class initialization data
+        """
+        backend = self.get_backend()
+        return {
+            key: value for key, value in self.loads().items() if key in backend.get_class_fields()
+        }
+
     def get_backend(self):
+        """
+        Retrieves the backend by importing the module and the class
+        """
         return import_string(self.backend_path)
 
     def get_connection(self):
+        """
+        Establishes a reusable connection to the server by loading the
+        backend, initializing it, and the using the backend instance to get
+        a connection.
+        """
         return mail.get_connection(
-            backend=self.get_backend().class_path, **self.loads()
+            backend=self.get_backend().class_path, **self.get_class_data()
         )
 
     def loads(self):
+        """
+        Deserialize the stored backend data.
+        """
         return json.loads(self.backend_data)
 
     def natural_key(self):
@@ -104,10 +132,12 @@ class UserMailer(models.Model):
         filename, content, and  mimetype.
         """
         recipient_list = split_recipient_list(recipients=[to])
+        backend_data = self.loads()
 
         with self.get_connection() as connection:
             email_message = mail.EmailMultiAlternatives(
-                body=strip_tags(body), connection=connection, subject=subject,
+                body=strip_tags(body), connection=connection,
+                from_email=backend_data.get('from'), subject=subject,
                 to=recipient_list,
             )
 
@@ -152,13 +182,15 @@ class UserMailer(models.Model):
             with document.open() as file_object:
                 attachments.append(
                     {
-                        'filename': document.label, 'content': file_object.read(),
+                        'content': file_object.read(),
+                        'filename': document.label,
                         'mimetype': document.file_mimetype
                     }
                 )
 
         return self.send(
-            subject=subject_text, body=body_html_content, to=to, attachments=attachments
+            attachments=attachments, body=body_html_content,
+            subject=subject_text, to=to,
         )
 
     def test(self, to):

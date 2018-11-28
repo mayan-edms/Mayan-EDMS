@@ -96,6 +96,9 @@ Other changes
 * Use FilteredSelectionForm for IndexTemplateFilteredForm.
 * Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
 * Improve document signatures tests.
+* Add docstrings to most models.
+* Add support to the mailing profiles for specifying a from
+  address. Closes GitLab issue #522.
 
 Removals
 --------
@@ -166,6 +169,7 @@ Bugs fixed or issues closed
 ---------------------------
 
 * :gitlab-issue:`498` Can't scan subdirectories
+* :gitlab-issue:`522` Office 365 SMTP
 * :gitlab-issue:`563` Recursive Watch Folder
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

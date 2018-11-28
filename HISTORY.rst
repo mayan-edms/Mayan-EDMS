@@ -64,6 +64,9 @@
 * Use FilteredSelectionForm for IndexTemplateFilteredForm.
 * Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
 * Improve document signatures tests.
+* Add docstrings to most models.
+* Add support to the mailing profiles for specifying a from
+  address. Closes GitLab issue #522.
 
 3.1.11 (2019-04-XX)
 ===================
