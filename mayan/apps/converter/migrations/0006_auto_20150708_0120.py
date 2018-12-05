@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import converter.models
+
+import mayan.apps.converter.models
 
 
 class Migration(migrations.Migration):
@@ -19,7 +20,7 @@ class Migration(migrations.Migration):
                 help_text='Enter the arguments for the transformation as a '
                 'YAML dictionary. ie: {"degrees": 180}', blank=True,
                 verbose_name='Arguments', validators=getattr(
-                    converter.models, 'validators', []
+                    mayan.apps.converter.models, 'validators', []
                 )
             ),
             preserve_default=True,

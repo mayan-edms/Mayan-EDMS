@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 
 import django.core.files.storage
 from django.db import migrations, models
-import document_signatures.models
+
+import mayan.apps.document_signatures.models
 
 
 class Migration(migrations.Migration):
@@ -17,6 +18,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='detachedsignature',
             name='signature_file',
-            field=models.FileField(blank=True, null=True, storage=django.core.files.storage.FileSystemStorage(location=b'/home/rosarior/development/mayan-edms/mayan/media/document_signatures'), upload_to=document_signatures.models.upload_to, verbose_name='Signature file'),
+            field=models.FileField(
+                blank=True, null=True, storage=django.core.files.storage.FileSystemStorage(
+                    location=b'/home/rosarior/development/mayan-edms/mayan/media/document_signatures'
+                ),
+                upload_to=mayan.apps.document_signatures.models.upload_to, verbose_name='Signature file'
+            ),
         ),
     ]

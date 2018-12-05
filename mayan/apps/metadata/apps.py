@@ -8,24 +8,24 @@ from django.apps import apps
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar
 )
-from common.classes import ModelAttribute, ModelField
-from common.widgets import TwoStateWidget
-from documents.search import document_page_search, document_search
-from documents.signals import post_document_type_change
-from events import ModelEventType
-from events.links import (
+from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.documents.signals import post_document_type_change
+from mayan.apps.events import ModelEventType
+from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
-from events.permissions import permission_events_view
+from mayan.apps.events.permissions import permission_events_view
 from mayan.celery import app
-from navigation import SourceColumn
+from mayan.apps.navigation import SourceColumn
 
 from .classes import DocumentMetadataHelper
 from .events import (
@@ -61,9 +61,11 @@ logger = logging.getLogger(__name__)
 
 
 class MetadataApp(MayanAppConfig):
+    app_namespace = 'metadata'
+    app_url = 'metadata'
     has_rest_api = True
     has_tests = True
-    name = 'metadata'
+    name = 'mayan.apps.metadata'
     verbose_name = _('Metadata')
 
     def ready(self):
@@ -175,10 +177,10 @@ class MetadataApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'metadata.tasks.task_remove_metadata_type': {
+                'mayan.apps.metadata.tasks.task_remove_metadata_type': {
                     'queue': 'metadata'
                 },
-                'metadata.tasks.task_add_required_metadata_type': {
+                'mayan.apps.metadata.tasks.task_add_required_metadata_type': {
                     'queue': 'metadata'
                 },
             }

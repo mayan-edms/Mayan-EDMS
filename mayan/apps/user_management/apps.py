@@ -5,15 +5,15 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import menu_multi_item, menu_object, menu_secondary, menu_setup
-from common.apps import MayanAppConfig
-from common.widgets import TwoStateWidget
-from metadata import MetadataLookup
-from navigation import SourceColumn
-from rest_api.fields import DynamicSerializerField
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import menu_multi_item, menu_object, menu_secondary, menu_setup
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.metadata import MetadataLookup
+from mayan.apps.navigation import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 
 from .handlers import handler_initialize_new_user_options
 from .links import (
@@ -46,10 +46,11 @@ def get_users():
 
 
 class UserManagementApp(MayanAppConfig):
+    app_namespace = 'user_management'
     app_url = 'accounts'
     has_rest_api = True
     has_tests = True
-    name = 'user_management'
+    name = 'mayan.apps.user_management'
     verbose_name = _('User management')
 
     def ready(self):
@@ -61,7 +62,7 @@ class UserManagementApp(MayanAppConfig):
 
         DynamicSerializerField.add_serializer(
             klass=get_user_model(),
-            serializer_class='user_management.serializers.UserSerializer'
+            serializer_class='mayan.apps.user_management.serializers.UserSerializer'
         )
 
         MetadataLookup(

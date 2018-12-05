@@ -11,7 +11,7 @@ TEST_LOCK_1 = 'test lock 1'
 
 
 class FileLockTestCase(TestCase):
-    backend_string = 'lock_manager.backends.file_lock.FileLock'
+    backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
     def setUp(self):
         self.locking_backend = import_string(self.backend_string)
@@ -71,4 +71,4 @@ class FileLockTestCase(TestCase):
 
 
 class ModelLockTestCase(FileLockTestCase):
-    backend_string = 'lock_manager.backends.model_lock.ModelLock'
+    backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'

@@ -10,18 +10,18 @@ from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessControlList
-from common.compressed_files import ZipArchive
-from common.exceptions import ActionError
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.compressed_files import ZipArchive
+from mayan.apps.common.exceptions import ActionError
+from mayan.apps.common.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from common.mixins import MultipleInstanceActionMixin
-from common.utils import encapsulate
-from converter.models import Transformation
-from converter.permissions import (
+from mayan.apps.common.mixins import MultipleInstanceActionMixin
+from mayan.apps.common.utils import encapsulate
+from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
 

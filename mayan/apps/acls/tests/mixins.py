@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from acls.models import AccessControlList
-from permissions.models import Role
-from permissions.tests.literals import TEST_ROLE_LABEL
-from permissions.tests.mixins import RoleTestCaseMixin
-from user_management.tests.literals import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.permissions.models import Role
+from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
+from mayan.apps.permissions.tests.mixins import RoleTestCaseMixin
+from mayan.apps.user_management.tests.literals import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_GROUP_NAME, TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )

@@ -4,13 +4,13 @@ from furl import furl
 
 from django.urls import reverse
 
-from documents.models import Document
-from documents.permissions import permission_document_create
-from documents.tests import (
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH,
 )
-from sources.models import WebFormSource
-from sources.tests.literals import (
+from mayan.apps.sources.models import WebFormSource
+from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,
 )
 

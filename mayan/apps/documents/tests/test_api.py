@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 from django_downloadview import assert_download_response
 from rest_framework import status
 
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import Document, DocumentType
 from ..permissions import (

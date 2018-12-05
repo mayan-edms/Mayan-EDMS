@@ -7,7 +7,7 @@ from django.contrib import admin
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-from rest_api.schemas import openapi_info
+from mayan.apps.rest_api.schemas import openapi_info
 
 admin.autodiscover()
 schema_view = get_schema_view(

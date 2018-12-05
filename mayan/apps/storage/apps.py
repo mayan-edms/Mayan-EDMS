@@ -5,5 +5,5 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class StorageApp(apps.AppConfig):
-    name = 'storage'
+    name = 'mayan.apps.storage'
     verbose_name = _('Storage')

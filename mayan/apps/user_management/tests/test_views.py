@@ -3,13 +3,11 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from common.tests import GenericViewTestCase
-from documents.tests import GenericDocumentViewTestCase
-
-from metadata.models import MetadataType
-from metadata.permissions import permission_metadata_document_edit
-
-from metadata.tests.literals import (
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.metadata.models import MetadataType
+from mayan.apps.metadata.permissions import permission_metadata_document_edit
+from mayan.apps.metadata.tests.literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME,
 )
 

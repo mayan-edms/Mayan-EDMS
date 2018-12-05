@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import Group
 
-from common.tests import GenericViewTestCase
-from user_management.permissions import permission_group_edit
-from user_management.tests.literals import TEST_GROUP_2_NAME
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.user_management.permissions import permission_group_edit
+from mayan.apps.user_management.tests.literals import TEST_GROUP_2_NAME
 
 from ..models import Role
 from ..permissions import (

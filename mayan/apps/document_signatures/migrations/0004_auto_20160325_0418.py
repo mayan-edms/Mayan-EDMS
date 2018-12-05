@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             model_name='documentversionsignature',
             name='document_version',
             field=models.ForeignKey(
-                editable=False, to='documents.DocumentVersion',
+                editable=False, to='mayan.apps.documents.DocumentVersion',
                 verbose_name='Document version'
             ),
         ),
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             name='document_version',
             field=models.ForeignKey(
                 related_name='signatures', editable=False,
-                to='documents.DocumentVersion', verbose_name='Document version'
+                to='mayan.apps.documents.DocumentVersion', verbose_name='Document version'
             ),
         ),
         migrations.AlterField(

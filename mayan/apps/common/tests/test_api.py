@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.urls import reverse
 from django.test import override_settings
 
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..classes import Template
 

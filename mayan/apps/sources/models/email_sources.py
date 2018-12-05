@@ -12,8 +12,8 @@ from django.db import models
 from django.utils.encoding import force_bytes
 from django.utils.translation import ugettext_lazy as _
 
-from metadata.api import set_bulk_metadata
-from metadata.models import MetadataType
+from mayan.apps.metadata.api import set_bulk_metadata
+from mayan.apps.metadata.models import MetadataType
 
 from ..literals import (
     DEFAULT_IMAP_MAILBOX, DEFAULT_METADATA_ATTACHMENT_NAME,

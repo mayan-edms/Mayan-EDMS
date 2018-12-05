@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 from django.utils.text import slugify
 
-from common.validators import validate_internal_name
+from mayan.apps.common.validators import validate_internal_name
 
 
 def generate_internal_name(apps, schema_editor):

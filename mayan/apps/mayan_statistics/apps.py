@@ -4,10 +4,9 @@ from kombu import Exchange, Queue
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common import MayanAppConfig, menu_object, menu_secondary, menu_tools
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from common import MayanAppConfig, menu_object, menu_secondary, menu_tools
-
-from navigation import SourceColumn
 
 from .classes import StatisticLineChart, StatisticNamespace
 from .links import (
@@ -21,8 +20,9 @@ from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 class StatisticsApp(MayanAppConfig):
     app_namespace = 'statistics'
+    app_url = 'statistics'
     has_tests = True
-    name = 'mayan_statistics'
+    name = 'mayan.apps.mayan_statistics'
     verbose_name = _('Statistics')
 
     def ready(self):
@@ -47,7 +47,7 @@ class StatisticsApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'mayan_statistics.tasks.task_execute_statistic': {
+                'mayan.apps.mayan_statistics.tasks.task_execute_statistic': {
                     'queue': 'statistics'
                 },
             }

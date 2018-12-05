@@ -4,10 +4,10 @@ from django.test import TestCase
 
 from django_downloadview import assert_download_response
 
-from acls.tests.mixins import ACLTestCaseMixin
-from permissions.classes import Permission
-from smart_settings.classes import Namespace
-from user_management.tests.mixins import UserTestCaseMixin
+from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
+from mayan.apps.permissions.classes import Permission
+from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.user_management.tests.mixins import UserTestCaseMixin
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,

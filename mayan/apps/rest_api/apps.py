@@ -5,7 +5,7 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_tools
+from mayan.apps.common import MayanAppConfig, menu_tools
 
 from .links import (
     link_api, link_api_documentation, link_api_documentation_redoc
@@ -15,7 +15,8 @@ from .licenses import *  # NOQA
 
 class RESTAPIApp(MayanAppConfig):
     app_url = 'api'
-    name = 'rest_api'
+    app_namespace = 'rest_api'
+    name = 'mayan.apps.rest_api'
     verbose_name = _('REST API')
 
     def ready(self):
@@ -31,5 +32,5 @@ class RESTAPIApp(MayanAppConfig):
 
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):
-                app_api_urls = import_string('{}.urls.api_urls'.format(app.label))
+                app_api_urls = import_string('{}.urls.api_urls'.format(app.name))
                 api_urls.extend(app_api_urls)

@@ -11,15 +11,15 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
-from common.utils import TemporaryFile
-from django_gpg.exceptions import NeedPassphrase, PassphraseError
-from django_gpg.permissions import permission_key_sign
-from documents.models import DocumentVersion
+from mayan.apps.common.utils import TemporaryFile
+from mayan.apps.django_gpg.exceptions import NeedPassphrase, PassphraseError
+from mayan.apps.django_gpg.permissions import permission_key_sign
+from mayan.apps.documents.models import DocumentVersion
 
 from .forms import (
     DocumentVersionSignatureCreateForm,

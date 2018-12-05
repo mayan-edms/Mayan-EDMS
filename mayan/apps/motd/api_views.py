@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from rest_framework import generics
 
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .models import Message
 from .permissions import (

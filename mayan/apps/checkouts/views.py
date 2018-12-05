@@ -6,14 +6,13 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document
-from documents.views import DocumentListView
-
-from acls.models import AccessControlList
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDetailView
 )
-from common.utils import encapsulate
+from mayan.apps.common.utils import encapsulate
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.views import DocumentListView
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm

@@ -6,4 +6,4 @@ from .transformations import (  # NOQA
     TransformationZoom
 )
 
-default_app_config = 'converter.apps.ConverterApp'
+default_app_config = 'mayan.apps.converter.apps.ConverterApp'

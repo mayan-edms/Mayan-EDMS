@@ -6,9 +6,9 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
-from acls.models import AccessControlList
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,

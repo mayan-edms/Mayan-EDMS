@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='Pillow', license_text='''
 The Python Imaging Library (PIL) is

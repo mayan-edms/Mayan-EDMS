@@ -12,22 +12,22 @@ from django.urls import reverse, reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from checkouts.models import NewVersionBlock
-from common import menu_facet
-from common.models import SharedUploadedFile
-from common.utils import encapsulate
-from common.views import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.checkouts.models import NewVersionBlock
+from mayan.apps.common import menu_facet
+from mayan.apps.common.models import SharedUploadedFile
+from mayan.apps.common.utils import encapsulate
+from mayan.apps.common.views import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from common.widgets import TwoStateWidget
-from documents.models import DocumentType, Document
-from documents.permissions import (
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.documents.models import DocumentType, Document
+from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
 )
-from documents.tasks import task_upload_new_version
-from navigation import Link
+from mayan.apps.documents.tasks import task_upload_new_version
+from mayan.apps.navigation import Link
 
 from .exceptions import SourceException
 from .forms import (

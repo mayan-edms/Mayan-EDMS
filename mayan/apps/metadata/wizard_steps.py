@@ -2,12 +2,12 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from metadata.api import (
+from mayan.apps.metadata.api import (
     decode_metadata_from_querystring, save_metadata_list
 )
-from metadata.forms import DocumentMetadataFormSet
+from mayan.apps.metadata.forms import DocumentMetadataFormSet
 
-from sources.wizards import WizardStep, WizardStepDocumentType
+from mayan.apps.sources.wizards import WizardStep, WizardStepDocumentType
 
 
 class WizardStepMetadata(WizardStep):

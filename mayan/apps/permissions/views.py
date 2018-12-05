@@ -9,12 +9,12 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.views import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from user_management.permissions import permission_group_edit
+from mayan.apps.user_management.permissions import permission_group_edit
 
 from .classes import Permission, PermissionNamespace
 from .icons import icon_role_list

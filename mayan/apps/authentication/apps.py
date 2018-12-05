@@ -4,8 +4,8 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_user
-from navigation.classes import Separator
+from mayan.apps.common import MayanAppConfig, menu_user
+from mayan.apps.navigation.classes import Separator
 
 from .links import link_logout, link_password_change
 
@@ -13,8 +13,10 @@ logger = logging.getLogger(__name__)
 
 
 class AuthenticationApp(MayanAppConfig):
+    app_namespace = 'authentication'
+    app_url = 'authentication'
     has_tests = True
-    name = 'authentication'
+    name = 'mayan.apps.authentication'
     verbose_name = _('Authentication')
 
     def ready(self):

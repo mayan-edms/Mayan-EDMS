@@ -4,16 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
 
-from common import (
+from mayan.apps.common import (
     MayanAppConfig, MissingItem, menu_object, menu_secondary, menu_sidebar,
     menu_setup
 )
-from common.signals import post_initial_setup, post_upgrade
-from converter.links import link_transformation_list
-from documents.menus import menu_documents
-from documents.signals import post_version_upload
+from mayan.apps.common.signals import post_initial_setup, post_upgrade
+from mayan.apps.converter.links import link_transformation_list
+from mayan.apps.documents.menus import menu_documents
+from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .classes import StagingFile
 from .handlers import (
@@ -34,9 +34,11 @@ from .widgets import StagingFileThumbnailWidget
 
 
 class SourcesApp(MayanAppConfig):
+    app_namespace = 'sources'
+    app_url = 'sources'
     has_rest_api = True
     has_tests = True
-    name = 'sources'
+    name = 'mayan.apps.sources'
     verbose_name = _('Sources')
 
     def ready(self):
@@ -106,16 +108,16 @@ class SourcesApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'sources.tasks.task_check_interval_source': {
+                'mayan.apps.sources.tasks.task_check_interval_source': {
                     'queue': 'sources_periodic'
                 },
-                'sources.tasks.task_generate_staging_file_image': {
+                'mayan.apps.sources.tasks.task_generate_staging_file_image': {
                     'queue': 'sources_fast'
                 },
-                'sources.tasks.task_source_handle_upload': {
+                'mayan.apps.sources.tasks.task_source_handle_upload': {
                     'queue': 'sources'
                 },
-                'sources.tasks.task_upload_document': {
+                'mayan.apps.sources.tasks.task_upload_document': {
                     'queue': 'sources'
                 },
             }

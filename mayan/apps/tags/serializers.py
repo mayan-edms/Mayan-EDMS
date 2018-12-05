@@ -7,8 +7,8 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
-from acls.models import AccessControlList
-from documents.models import Document
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document
 
 from .models import Tag
 from .permissions import permission_tag_attach

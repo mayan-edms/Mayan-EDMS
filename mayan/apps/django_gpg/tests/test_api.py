@@ -4,7 +4,7 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import Key
 from ..permissions import (

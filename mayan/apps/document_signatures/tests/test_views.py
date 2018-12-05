@@ -6,9 +6,9 @@ from django.core.files import File
 
 from django_downloadview.test import assert_download_response
 
-from django_gpg.models import Key
-from documents.models import DocumentVersion
-from documents.tests import (
+from mayan.apps.django_gpg.models import Key
+from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
 )
 

@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 
-from acls import ModelPermission
+from mayan.apps.acls import ModelPermission
 
 from ..models import ErrorLogEntry
 from ..permissions_runtime import permission_error_log_view

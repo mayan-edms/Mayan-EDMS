@@ -5,8 +5,8 @@ import logging
 from django.apps import apps
 from django.db import OperationalError
 
-from lock_manager import LockError
-from lock_manager.runtime import locking_backend
+from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.celery import app
 
 from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE

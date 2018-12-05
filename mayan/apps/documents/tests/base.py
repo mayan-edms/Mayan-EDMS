@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase, GenericViewTestCase
+from mayan.apps.common.tests import BaseTestCase, GenericViewTestCase
 
 from .mixins import DocumentTestMixin
 

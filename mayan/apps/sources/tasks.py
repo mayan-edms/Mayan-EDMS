@@ -9,10 +9,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
-from common.compressed_files import Archive
-from common.exceptions import NoMIMETypeMatch
-from lock_manager import LockError
-from lock_manager.runtime import locking_backend
+from mayan.apps.common.compressed_files import Archive
+from mayan.apps.common.exceptions import NoMIMETypeMatch
+from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.runtime import locking_backend
 
 from .literals import (
     DEFAULT_SOURCE_LOCK_EXPIRE, DEFAULT_SOURCE_TASK_RETRY_DELAY

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-from documents.tests import GenericDocumentTestCase
+from mayan.apps.documents.tests import GenericDocumentTestCase
 
 from ..models import Transformation
 from ..transformations import (

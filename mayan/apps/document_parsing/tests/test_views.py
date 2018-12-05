@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from documents.tests import GenericDocumentViewTestCase, TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests import (
+    GenericDocumentViewTestCase, TEST_HYBRID_DOCUMENT
+)
 
 from ..permissions import (
     permission_content_view, permission_document_type_parsing_setup

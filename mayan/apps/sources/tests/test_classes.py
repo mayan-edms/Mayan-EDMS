@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 import os
 import shutil
 
-from common.tests import BaseTestCase
-from common.utils import mkdtemp
-from documents.tests import TEST_NON_ASCII_DOCUMENT_PATH
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.utils import mkdtemp
+from mayan.apps.documents.tests import TEST_NON_ASCII_DOCUMENT_PATH
 
 from ..classes import StagingFile
 

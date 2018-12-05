@@ -17,16 +17,16 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.literals import TIME_DELTA_UNIT_CHOICES
-from converter import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.converter import (
     converter_class, BaseTransformation, TransformationResize,
     TransformationRotate, TransformationZoom
 )
-from converter.exceptions import InvalidOfficeFormat, PageCountError
-from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
-from converter.models import Transformation
-from mimetype.api import get_mimetype
+from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
+from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
+from mayan.apps.converter.models import Transformation
+from mayan.apps.mimetype.api import get_mimetype
 
 from .events import (
     event_document_create, event_document_new_version,

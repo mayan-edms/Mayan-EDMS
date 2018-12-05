@@ -11,9 +11,9 @@ import yaml
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import setting_temporary_directory
-from common.utils import fs_cleanup, mkdtemp, mkstemp
-from mimetype.api import get_mimetype
+from mayan.apps.common.settings import setting_temporary_directory
+from mayan.apps.common.utils import fs_cleanup, mkdtemp, mkstemp
+from mayan.apps.mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (

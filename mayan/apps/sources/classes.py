@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
-from converter import TransformationResize, converter_class
+from mayan.apps.converter import TransformationResize, converter_class
 
 from .storages import storage_staging_file_image_cache
 

@@ -4,11 +4,11 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import MayanAppConfig, menu_object, menu_secondary, menu_setup
-from navigation import SourceColumn
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import MayanAppConfig, menu_object, menu_secondary, menu_setup
+from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_message_create, link_message_delete, link_message_edit,
@@ -23,9 +23,11 @@ logger = logging.getLogger(__name__)
 
 
 class MOTDApp(MayanAppConfig):
+    app_namespace = 'motd'
+    app_url = 'messages'
     has_rest_api = True
     has_tests = True
-    name = 'motd'
+    name = 'mayan.apps.motd'
     verbose_name = _('Message of the day')
 
     def ready(self):

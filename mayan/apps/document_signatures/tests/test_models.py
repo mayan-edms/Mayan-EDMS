@@ -7,11 +7,13 @@ import time
 from django.core.files import File
 from django.test import override_settings
 
-from common.tests import BaseTestCase
-from django_gpg.models import Key
-from django_gpg.tests.literals import TEST_KEY_DATA, TEST_KEY_PASSPHRASE
-from documents.models import DocumentType, DocumentVersion
-from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.django_gpg.models import Key
+from mayan.apps.django_gpg.tests.literals import (
+    TEST_KEY_DATA, TEST_KEY_PASSPHRASE
+)
+from mayan.apps.documents.models import DocumentType, DocumentVersion
+from mayan.apps.documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature

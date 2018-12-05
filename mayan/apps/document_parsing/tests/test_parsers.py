@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase
-from documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
 
 from ..parsers import PopplerParser
 

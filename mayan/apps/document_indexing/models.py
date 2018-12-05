@@ -11,11 +11,11 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
-from acls.models import AccessControlList
-from documents.models import Document, DocumentType
-from documents.permissions import permission_document_view
-from lock_manager import LockError
-from lock_manager.runtime import locking_backend
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.runtime import locking_backend
 
 from .managers import (
     DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager

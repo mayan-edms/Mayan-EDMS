@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from common.tests import BaseTestCase
-from user_management.tests.mixins import UserTestMixin
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 
 class UserLocaleProfileTestCase(UserTestMixin, BaseTestCase):

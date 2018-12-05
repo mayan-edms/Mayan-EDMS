@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link
-from user_management.permissions import permission_group_edit
+from mayan.apps.navigation import Link
+from mayan.apps.user_management.permissions import permission_group_edit
 
 from .icons import icon_role_create, icon_role_list
 from .permissions import (

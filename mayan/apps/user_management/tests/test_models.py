@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.tests import BaseTestCase
+from mayan.apps.common.tests import BaseTestCase
 
 from .mixins import UserTestMixin
 

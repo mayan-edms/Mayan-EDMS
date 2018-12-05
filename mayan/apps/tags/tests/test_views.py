@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from documents.permissions import permission_document_view
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import Tag
 from ..permissions import (

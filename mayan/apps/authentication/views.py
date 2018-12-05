@@ -15,8 +15,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from stronghold.decorators import public
 
-from common.settings import setting_project_title, setting_project_url
 import mayan
+from mayan.apps.common.settings import setting_project_title, setting_project_url
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
 from .settings import setting_login_method, setting_maximum_session_length

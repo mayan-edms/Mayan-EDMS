@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import SingleObjectListView
+from mayan.apps.common.generics import SingleObjectListView
 
 from .classes import CeleryQueue
 from .permissions import permission_task_view

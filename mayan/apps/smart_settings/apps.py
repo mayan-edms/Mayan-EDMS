@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_sidebar, menu_setup, menu_object
-from navigation import SourceColumn
+from mayan.apps.common import (
+    MayanAppConfig, menu_sidebar, menu_setup, menu_object
+)
+from mayan.apps.navigation import SourceColumn
 
 from .classes import Namespace, Setting
 from .links import (
@@ -17,7 +19,7 @@ class SmartSettingsApp(MayanAppConfig):
     app_namespace = 'settings'
     app_url = 'settings'
     has_tests = True
-    name = 'smart_settings'
+    name = 'mayan.apps.smart_settings'
     verbose_name = _('Smart settings')
 
     def ready(self):

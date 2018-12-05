@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings import Namespace
+from mayan.apps.smart_settings import Namespace
 
 
 namespace = Namespace(name='dynamic_search', label=_('Search'))

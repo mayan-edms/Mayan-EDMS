@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import (
+from mayan.apps.common.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView,
     SimpleView

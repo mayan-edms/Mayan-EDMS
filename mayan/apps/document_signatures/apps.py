@@ -8,12 +8,12 @@ from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_object, menu_sidebar, menu_tools
 )
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .handlers import unverify_key_signatures, verify_key_signatures
 from .links import (
@@ -44,7 +44,7 @@ class DocumentSignaturesApp(MayanAppConfig):
     app_namespace = 'signatures'
     app_url = 'signatures'
     has_tests = True
-    name = 'document_signatures'
+    name = 'mayan.apps.document_signatures'
     verbose_name = _('Document signatures')
 
     def ready(self):
@@ -110,16 +110,16 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_signatures.tasks.task_verify_key_signatures': {
+                'mayan.apps.document_signatures.tasks.task_verify_key_signatures': {
                     'queue': 'signatures'
                 },
-                'document_signatures.tasks.task_unverify_key_signatures': {
+                'mayan.apps.document_signatures.tasks.task_unverify_key_signatures': {
                     'queue': 'signatures'
                 },
-                'document_signatures.tasks.task_verify_document_version': {
+                'mayan.apps.document_signatures.tasks.task_verify_document_version': {
                     'queue': 'signatures'
                 },
-                'document_signatures.tasks.task_verify_missing_embedded_signature': {
+                'mayan.apps.document_signatures.tasks.task_verify_missing_embedded_signature': {
                     'queue': 'tools'
                 },
             }

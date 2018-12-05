@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from user_management.serializers import GroupSerializer
+from mayan.apps.user_management.serializers import GroupSerializer
 
 from .classes import Permission
 from .models import Role, StoredPermission

@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.tests import GenericViewTestCase
+from mayan.apps.common.tests import GenericViewTestCase
 
 from ..classes import CeleryQueue
 from ..permissions import permission_task_view

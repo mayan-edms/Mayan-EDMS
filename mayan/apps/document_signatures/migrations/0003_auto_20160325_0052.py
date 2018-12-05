@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 from django.core.files.storage import FileSystemStorage
 
-import document_signatures.models
+import mayan.apps.document_signatures.models
 
 
 class Migration(migrations.Migration):
@@ -92,7 +92,7 @@ class Migration(migrations.Migration):
                 (
                     'signature_file', models.FileField(
                         storage=FileSystemStorage(),
-                        upload_to=document_signatures.models.upload_to,
+                        upload_to=mayan.apps.document_signatures.models.upload_to,
                         null=True, verbose_name='Signature file', blank=True
                     )
                 ),

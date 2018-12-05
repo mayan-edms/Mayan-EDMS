@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='Django REST framework', license_text='''
 Copyright (c) 2011-2015, Tom Christie All rights reserved.

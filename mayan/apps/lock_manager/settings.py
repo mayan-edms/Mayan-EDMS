@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings import Namespace
+from mayan.apps.smart_settings import Namespace
 
-DEFAULT_BACKEND = 'lock_manager.backends.file_lock.FileLock'
+DEFAULT_BACKEND = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 DEFAULT_LOCK_TIMEOUT_VALUE = 30
 
 namespace = Namespace(name='lock_manager', label=_('Lock manager'))

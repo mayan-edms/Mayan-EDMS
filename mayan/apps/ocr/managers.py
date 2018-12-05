@@ -8,9 +8,9 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 
-from documents.storages import storage_documentimagecache
-from documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from documents.tasks import task_generate_document_page_image
+from mayan.apps.documents.storages import storage_documentimagecache
+from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from mayan.apps.documents.tasks import task_generate_document_page_image
 
 from .events import event_ocr_document_version_finish
 from .runtime import ocr_backend

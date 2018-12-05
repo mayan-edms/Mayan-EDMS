@@ -47,10 +47,11 @@ logger = logging.getLogger(__name__)
 
 
 class MayanAppConfig(apps.AppConfig):
-    app_url = None
     app_namespace = None
+    app_url = None
 
     def ready(self):
+        logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns
 
         if self.app_url:
@@ -70,7 +71,7 @@ class MayanAppConfig(apps.AppConfig):
             ),
         except ImportError as exception:
             if force_text(exception) not in ('No module named urls', 'No module named \'{}.urls\''.format(self.name)):
-                logger.error(
+                logger.exception(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
                 )
@@ -78,10 +79,11 @@ class MayanAppConfig(apps.AppConfig):
 
 
 class CommonApp(MayanAppConfig):
+    app_namespace = 'common'
     app_url = ''
     has_rest_api = True
     has_tests = True
-    name = 'common'
+    name = 'mayan.apps.common'
     verbose_name = _('Common')
 
     def ready(self):
@@ -96,7 +98,7 @@ class CommonApp(MayanAppConfig):
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 'task_delete_stale_uploads': {
-                    'task': 'common.tasks.task_delete_stale_uploads',
+                    'task': 'mayan.apps.common.tasks.task_delete_stale_uploads',
                     'schedule': timedelta(
                         seconds=DELETE_STALE_UPLOADS_INTERVAL
                     ),
@@ -119,7 +121,7 @@ class CommonApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'common.tasks.task_delete_stale_uploads': {
+                'mayan.apps.common.tasks.task_delete_stale_uploads': {
                     'queue': 'common_periodic'
                 },
             }
@@ -191,7 +193,7 @@ class CommonApp(MayanAppConfig):
                 'disable_existing_loggers': False,
                 'formatters': {
                     'intermediate': {
-                        'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'
+                        'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"',
                     },
                     'logfile': {
                         'format': '%(asctime)s %(name)s <%(process)d> [%(levelname)s] "%(funcName)s() line %(lineno)d %(message)s"'

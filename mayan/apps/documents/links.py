@@ -2,10 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from converter.permissions import (
+from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
-from navigation import Link
+from mayan.apps.navigation import Link
 
 from .icons import (
     icon_clear_image_cache, icon_document_duplicates_list, icon_document_list,

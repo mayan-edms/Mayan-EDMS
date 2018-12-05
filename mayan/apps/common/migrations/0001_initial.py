@@ -5,7 +5,7 @@ from django.db import models, migrations
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
-import common.models
+import mayan.apps.common.models
 
 
 class Migration(migrations.Migration):
@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'file', models.FileField(
-                        upload_to=common.models.upload_to,
+                        upload_to=mayan.apps.common.models.upload_to,
                         storage=FileSystemStorage(),
                         verbose_name='File'
                     )

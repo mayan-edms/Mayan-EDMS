@@ -6,7 +6,7 @@ import shutil
 
 import gnupg
 
-from common.utils import mkdtemp
+from mayan.apps.common.utils import mkdtemp
 
 
 class GPGBackend(object):

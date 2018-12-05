@@ -4,9 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 
-from acls.models import AccessControlList
-from documents.models import Document
-from documents.serializers import DocumentSerializer
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.serializers import DocumentSerializer
 
 from .models import DocumentCheckout
 from .permissions import permission_document_checkout

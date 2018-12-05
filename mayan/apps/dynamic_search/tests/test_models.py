@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase
-from documents.search import document_search
-from documents.tests import (
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.search import document_search
+from mayan.apps.documents.tests import (
     DocumentTestMixin, TEST_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_FILENAME
 )
 

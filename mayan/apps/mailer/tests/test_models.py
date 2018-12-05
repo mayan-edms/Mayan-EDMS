@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.core import mail
 
-from documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
 
 from .literals import (
     TEST_BODY_HTML, TEST_EMAIL_ADDRESS, TEST_RECIPIENTS_MULTIPLE_COMMA,

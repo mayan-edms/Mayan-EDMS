@@ -4,13 +4,13 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from documents.models import DocumentType
-from documents.permissions import permission_document_view
-from documents.tests import DocumentTestMixin
-from documents.tests.literals import (
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import SmartLink, SmartLinkCondition
 from ..permissions import (

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
-from documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
 
 from ..events import (
     event_cabinets_add_document, event_cabinets_remove_document

@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
-from acls.models import AccessControlList
-from documents.models import Document
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document
 
 from .permissions import (
     permission_comment_create, permission_comment_delete,

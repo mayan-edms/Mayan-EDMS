@@ -4,8 +4,8 @@ from django.contrib.auth.models import Group
 
 from rest_framework import status
 
-from rest_api.tests import BaseAPITestCase
-from user_management.tests.literals import TEST_GROUP_2_NAME
+from mayan.apps.rest_api.tests import BaseAPITestCase
+from mayan.apps.user_management.tests.literals import TEST_GROUP_2_NAME
 
 from ..classes import Permission
 from ..models import Role

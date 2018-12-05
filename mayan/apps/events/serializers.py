@@ -6,9 +6,9 @@ from actstream.models import Action
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from common.serializers import ContentTypeSerializer
-from rest_api.fields import DynamicSerializerField
-from user_management.serializers import UserSerializer
+from mayan.apps.common.serializers import ContentTypeSerializer
+from mayan.apps.rest_api.fields import DynamicSerializerField
+from mayan.apps.user_management.serializers import UserSerializer
 
 from .classes import EventType
 from .models import Notification, StoredEventType

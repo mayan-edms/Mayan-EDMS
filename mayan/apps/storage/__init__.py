@@ -1,3 +1,3 @@
 from __future__ import unicode_literals
 
-default_app_config = 'storage.apps.StorageApp'
+default_app_config = 'mayan.apps.storage.apps.StorageApp'

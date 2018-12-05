@@ -5,9 +5,9 @@ from django.utils.encoding import force_text
 
 from rest_framework import status
 
-from documents.permissions import permission_document_view
-from documents.tests import DocumentTestMixin
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import Tag
 from ..permissions import (

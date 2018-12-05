@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from acls.models import AccessControlList
+from mayan.apps.acls.models import AccessControlList
 
 from .permissions import permission_group_view
 

@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from common.models import SharedUploadedFile
+from mayan.apps.common.models import SharedUploadedFile
 
 from .models import (
     Document, DocumentVersion, DocumentPage, DocumentType,

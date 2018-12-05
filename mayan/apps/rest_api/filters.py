@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from rest_framework.filters import BaseFilterBackend
 
-from acls.models import AccessControlList
+from mayan.apps.acls.models import AccessControlList
 
 
 class MayanObjectPermissionsFilter(BaseFilterBackend):

@@ -10,18 +10,18 @@ from django.db.models.signals import post_save
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from common.classes import ModelField
-from common.settings import settings_db_sync_task_delay
-from documents.search import document_search, document_page_search
-from documents.signals import post_version_upload
-from documents.widgets import document_link
+from mayan.apps.common.classes import ModelField
+from mayan.apps.common.settings import settings_db_sync_task_delay
+from mayan.apps.documents.search import document_search, document_page_search
+from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.documents.widgets import document_link
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .events import event_parsing_document_version_submit
 from .handlers import (
@@ -66,9 +66,11 @@ def document_version_parsing_submit(self):
 
 
 class DocumentParsingApp(MayanAppConfig):
+    app_namespace = 'document_parsing'
+    app_url = 'parsing'
     has_rest_api = True
     has_tests = True
-    name = 'document_parsing'
+    name = 'mayan.apps.document_parsing'
     verbose_name = _('Document parsing')
 
     def ready(self):
@@ -141,7 +143,7 @@ class DocumentParsingApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_parsing.tasks.task_parse_document_version': {
+                'mayan.apps.document_parsing.tasks.task_parse_document_version': {
                     'queue': 'parsing'
                 },
             }

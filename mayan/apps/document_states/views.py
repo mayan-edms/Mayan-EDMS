@@ -10,17 +10,17 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.views import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.views import (
     AssignRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from documents.models import Document
-from documents.views import DocumentListView
-from events.classes import EventType
-from events.models import StoredEventType
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.views import DocumentListView
+from mayan.apps.events.classes import EventType
+from mayan.apps.events.models import StoredEventType
 
 from .classes import WorkflowAction
 from .forms import (

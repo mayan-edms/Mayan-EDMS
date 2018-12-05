@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions import PermissionNamespace
+from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace('tags', _('Tags'))
 

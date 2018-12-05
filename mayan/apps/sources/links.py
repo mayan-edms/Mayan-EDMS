@@ -3,10 +3,10 @@ from __future__ import absolute_import, unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from documents.permissions import (
+from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
 )
-from navigation import Link
+from mayan.apps.navigation import Link
 
 from .icons import (
     icon_document_create_multiple, icon_setup_sources, icon_source_create

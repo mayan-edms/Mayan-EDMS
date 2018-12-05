@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from rest_framework import generics
 from rest_framework.exceptions import ParseError
 
-from rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
 
 from .classes import SearchModel
 from .mixins import SearchModelMixin

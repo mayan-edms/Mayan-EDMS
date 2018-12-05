@@ -2,10 +2,10 @@
 
 from __future__ import unicode_literals
 
-from common.tests import BaseTestCase
-from documents.models import DocumentType
-from documents.runtime import language_choices
-from documents.tests import (
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.runtime import language_choices
+from mayan.apps.documents.tests import (
     DocumentTestMixin, TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 )
 

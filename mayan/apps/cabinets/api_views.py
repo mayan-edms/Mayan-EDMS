@@ -5,11 +5,11 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
 
-from acls.models import AccessControlList
-from documents.models import Document
-from documents.permissions import permission_document_view
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .models import Cabinet
 from .permissions import (

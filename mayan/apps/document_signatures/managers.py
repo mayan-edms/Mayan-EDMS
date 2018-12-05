@@ -5,10 +5,10 @@ import os
 
 from django.db import models
 
-from common.utils import mkstemp
-from django_gpg.exceptions import DecryptionError
-from django_gpg.models import Key
-from documents.models import DocumentVersion
+from mayan.apps.common.utils import mkstemp
+from mayan.apps.django_gpg.exceptions import DecryptionError
+from mayan.apps.django_gpg.models import Key
+from mayan.apps.documents.models import DocumentVersion
 
 logger = logging.getLogger(__name__)
 

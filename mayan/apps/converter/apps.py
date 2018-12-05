@@ -3,9 +3,8 @@ from __future__ import unicode_literals
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_object, menu_sidebar
-
-from navigation import SourceColumn
+from mayan.apps.common import MayanAppConfig, menu_object, menu_sidebar
+from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_transformation_create, link_transformation_delete,
@@ -15,8 +14,10 @@ from .licenses import *  # NOQA
 
 
 class ConverterApp(MayanAppConfig):
+    app_namespace = 'converter'
+    app_url = 'converter'
     has_tests = True
-    name = 'converter'
+    name = 'mayan.apps.converter'
     verbose_name = _('Converter')
 
     def ready(self):

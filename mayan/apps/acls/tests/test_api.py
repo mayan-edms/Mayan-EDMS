@@ -5,10 +5,10 @@ from django.test import override_settings
 
 from rest_framework import status
 
-from documents.permissions import permission_document_view
-from documents.tests import DocumentTestMixin
-from permissions.tests.literals import TEST_ROLE_LABEL
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_view

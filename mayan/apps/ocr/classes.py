@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from converter import converter_class
+from mayan.apps.converter import converter_class
 
 
 class OCRBackendBase(object):

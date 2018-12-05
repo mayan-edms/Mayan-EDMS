@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
 
-from documents.forms import DocumentTypeSelectForm
+from mayan.apps.documents.forms import DocumentTypeSelectForm
 
 from .icons import icon_wizard_submit
 

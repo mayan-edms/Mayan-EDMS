@@ -9,14 +9,14 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from documents.models import Document, DocumentType
-from documents.permissions import permission_document_view
-from documents.views import DocumentListView
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.views import DocumentListView
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
 from .icons import icon_smart_link_setup, icon_smart_link_condition

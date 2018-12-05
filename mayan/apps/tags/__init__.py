@@ -1,3 +1,3 @@
 from __future__ import unicode_literals
 
-default_app_config = 'tags.apps.TagsApp'
+default_app_config = 'mayan.apps.tags.apps.TagsApp'

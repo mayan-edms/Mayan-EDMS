@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.classes import PropertyHelper
+from mayan.apps.common.classes import PropertyHelper
 
 
 class DocumentMetadataHelper(PropertyHelper):

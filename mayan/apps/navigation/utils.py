@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
 
-from permissions import Permission
+from mayan.apps.permissions import Permission
 
 
 def get_cascade_condition(app_label, model_name, object_permission, view_permission=None):

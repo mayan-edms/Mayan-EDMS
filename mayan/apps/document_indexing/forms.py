@@ -4,9 +4,9 @@ from django import forms
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.classes import ModelProperty
-from documents.models import Document
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.classes import ModelProperty
+from mayan.apps.documents.models import Document
 
 from .models import Index, IndexTemplateNode
 from .permissions import permission_document_indexing_rebuild

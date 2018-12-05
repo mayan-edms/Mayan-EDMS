@@ -6,18 +6,18 @@ from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
 )
-from common.classes import ModelAttribute
-from common.links import link_object_error_list
-from common.permissions_runtime import permission_error_log_view
-from common.widgets import TwoStateWidget
+from mayan.apps.common.classes import ModelAttribute
+from mayan.apps.common.links import link_object_error_list
+from mayan.apps.common.permissions_runtime import permission_error_log_view
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .classes import DocumentStateHelper, WorkflowAction
 from .handlers import (
@@ -50,11 +50,12 @@ from .widgets import widget_transition_events
 
 
 class DocumentStatesApp(MayanAppConfig):
-    app_url = 'states'
+    app_namespace = 'document_states'
+    app_url = 'workflows'
     has_rest_api = True
     has_tests = True
-    name = 'document_states'
-    verbose_name = _('Document states')
+    name = 'mayan.apps.document_states'
+    verbose_name = _('Workflows')
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
@@ -251,7 +252,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_states.tasks.task_launch_all_workflows': {
+                'mayan.apps.document_states.tasks.task_launch_all_workflows': {
                     'queue': 'document_states'
                 },
             }

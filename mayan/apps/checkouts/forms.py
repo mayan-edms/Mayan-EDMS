@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from common.forms import DetailForm
+from mayan.apps.common.forms import DetailForm
 
 from .literals import STATE_LABELS
 from .models import DocumentCheckout

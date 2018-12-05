@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from dynamic_search.classes import SearchModel
+from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_group_view, permission_user_view
 
@@ -12,7 +12,7 @@ user_app, user_model = settings.AUTH_USER_MODEL.split('.')
 user_search = SearchModel(
     app_label=user_app, model_name=user_model,
     permission=permission_user_view,
-    serializer_string='user_management.serializers.UserSerializer'
+    serializer_string='mayan.apps.user_management.serializers.UserSerializer'
 )
 
 user_search.add_model_field(

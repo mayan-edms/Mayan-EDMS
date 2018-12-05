@@ -7,31 +7,31 @@ from kombu import Exchange, Queue
 from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from common.classes import ModelField
-from common.dashboards import dashboard_main
-from common.signals import post_initial_setup
-from common.widgets import TwoStateWidget
-from converter.links import link_transformation_list
-from converter.permissions import (
+from mayan.apps.common.classes import ModelField
+from mayan.apps.common.dashboards import dashboard_main
+from mayan.apps.common.signals import post_initial_setup
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.converter.links import link_transformation_list
+from mayan.apps.converter.permissions import (
     permission_transformation_create,
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from events import ModelEventType
-from events.links import (
+from mayan.apps.events import ModelEventType
+from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
-from events.permissions import permission_events_view
+from mayan.apps.events.permissions import permission_events_view
+from mayan.apps.navigation import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.celery import app
-from navigation import SourceColumn
-from rest_api.fields import DynamicSerializerField
 
 from .dashboard_widgets import (
     DashboardWidgetDocumentPagesTotal, DashboardWidgetDocumentsInTrash,
@@ -109,9 +109,11 @@ from .widgets import (
 
 
 class DocumentsApp(MayanAppConfig):
+    app_namespace = 'documents'
+    app_url = 'documents'
     has_rest_api = True
     has_tests = True
-    name = 'documents'
+    name = 'mayan.apps.documents'
     verbose_name = _('Documents')
 
     def ready(self):
@@ -129,7 +131,7 @@ class DocumentsApp(MayanAppConfig):
 
         DynamicSerializerField.add_serializer(
             klass=Document,
-            serializer_class='documents.serializers.DocumentSerializer'
+            serializer_class='mayan.apps.documents.serializers.DocumentSerializer'
         )
 
         MissingItem(
@@ -334,17 +336,17 @@ class DocumentsApp(MayanAppConfig):
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 'task_check_delete_periods': {
-                    'task': 'documents.tasks.task_check_delete_periods',
+                    'task': 'mayan.apps.documents.tasks.task_check_delete_periods',
                     'schedule': timedelta(
                         seconds=CHECK_DELETE_PERIOD_INTERVAL
                     ),
                 },
                 'task_check_trash_periods': {
-                    'task': 'documents.tasks.task_check_trash_periods',
+                    'task': 'mayan.apps.documents.tasks.task_check_trash_periods',
                     'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
                 },
                 'task_delete_stubs': {
-                    'task': 'documents.tasks.task_delete_stubs',
+                    'task': 'mayan.apps.documents.tasks.task_delete_stubs',
                     'schedule': timedelta(seconds=DELETE_STALE_STUBS_INTERVAL),
                 },
             }
@@ -369,37 +371,37 @@ class DocumentsApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'documents.tasks.task_check_delete_periods': {
+                'mayan.apps.documents.tasks.task_check_delete_periods': {
                     'queue': 'documents_periodic'
                 },
-                'documents.tasks.task_check_trash_periods': {
+                'mayan.apps.documents.tasks.task_check_trash_periods': {
                     'queue': 'documents_periodic'
                 },
-                'documents.tasks.task_clean_empty_duplicate_lists': {
+                'mayan.apps.documents.tasks.task_clean_empty_duplicate_lists': {
                     'queue': 'documents'
                 },
-                'documents.tasks.task_clear_image_cache': {
+                'mayan.apps.documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
                 },
-                'documents.tasks.task_delete_document': {
+                'mayan.apps.documents.tasks.task_delete_document': {
                     'queue': 'documents'
                 },
-                'documents.tasks.task_delete_stubs': {
+                'mayan.apps.documents.tasks.task_delete_stubs': {
                     'queue': 'documents_periodic'
                 },
-                'documents.tasks.task_generate_document_page_image': {
+                'mayan.apps.documents.tasks.task_generate_document_page_image': {
                     'queue': 'converter'
                 },
-                'documents.tasks.task_scan_duplicates_all': {
+                'mayan.apps.documents.tasks.task_scan_duplicates_all': {
                     'queue': 'tools'
                 },
-                'documents.tasks.task_scan_duplicates_for': {
+                'mayan.apps.documents.tasks.task_scan_duplicates_for': {
                     'queue': 'uploads'
                 },
-                'documents.tasks.task_update_page_count': {
+                'mayan.apps.documents.tasks.task_update_page_count': {
                     'queue': 'uploads'
                 },
-                'documents.tasks.task_upload_new_version': {
+                'mayan.apps.documents.tasks.task_upload_new_version': {
                     'queue': 'uploads'
                 },
             }

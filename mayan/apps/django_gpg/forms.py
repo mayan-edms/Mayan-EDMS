@@ -4,7 +4,7 @@ from django import forms
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
-from common.forms import DetailForm
+from mayan.apps.common.forms import DetailForm
 
 from .models import Key
 

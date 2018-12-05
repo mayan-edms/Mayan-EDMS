@@ -9,7 +9,7 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from common.forms import DynamicModelForm
+from mayan.apps.common.forms import DynamicModelForm
 
 from .classes import WorkflowAction
 from .models import (

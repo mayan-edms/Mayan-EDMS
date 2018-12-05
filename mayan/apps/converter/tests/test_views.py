@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import Transformation
 from ..permissions import (

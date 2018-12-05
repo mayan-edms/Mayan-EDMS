@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='Django MPTT', license_text='''
 Django MPTT

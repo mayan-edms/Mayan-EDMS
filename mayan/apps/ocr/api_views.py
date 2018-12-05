@@ -5,8 +5,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from documents.models import Document, DocumentVersion
-from rest_api.permissions import MayanPermission
+from mayan.apps.documents.models import Document, DocumentVersion
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .models import DocumentPageOCRContent
 from .permissions import permission_ocr_content_view, permission_ocr_document

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from document_indexing.tasks import task_index_document
-from events.classes import EventType
+from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.events.classes import EventType
 
 
 def handler_index_document(sender, **kwargs):

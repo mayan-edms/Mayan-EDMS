@@ -14,10 +14,10 @@ from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.validators import validate_internal_name
-from documents.models import Document, DocumentType
-from events.models import StoredEventType
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.validators import validate_internal_name
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.events.models import StoredEventType
 
 from .error_logs import error_log_state_actions
 from .literals import (

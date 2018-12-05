@@ -8,14 +8,14 @@ from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessControlList
-from common.views import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.views import (
     MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from documents.permissions import permission_document_view
-from documents.models import Document
-from documents.views import DocumentListView
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.views import DocumentListView
 
 from .forms import CabinetListForm
 from .icons import icon_cabinet

@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='django-activity-stream', license_text='''
 Copyright (c) 2010-2015, Justin Quick

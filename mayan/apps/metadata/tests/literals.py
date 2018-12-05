@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 TEST_CORRECT_LOOKUP_VALUE = '1'
-TEST_DATE_PARSER = 'metadata.parsers.DateParser'
-TEST_DATE_VALIDATOR = 'metadata.validators.DateValidator'
+TEST_DATE_PARSER = 'mayan.apps.metadata.parsers.DateParser'
+TEST_DATE_VALIDATOR = 'mayan.apps.metadata.validators.DateValidator'
 TEST_DOCUMENT_METADATA_VALUE_2 = 'test document metadata value 2'
 TEST_DEFAULT_VALUE = 'test'
 TEST_INCORRECT_LOOKUP_VALUE = '0'

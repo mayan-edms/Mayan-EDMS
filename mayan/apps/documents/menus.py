@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Menu
+from mayan.apps.navigation import Menu
 
 from .icons import icon_menu_documents
 

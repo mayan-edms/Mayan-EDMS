@@ -16,8 +16,8 @@ from django.utils.http import (
 from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
 from django.utils.translation import ugettext_lazy as _
 
-from common.compat import dict_type, dictionary_type
 import mayan
+from mayan.apps.common.compat import dict_type, dictionary_type
 
 from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .literals import DJANGO_SQLITE_BACKEND, MAYAN_PYPI_NAME, PYPI_URL

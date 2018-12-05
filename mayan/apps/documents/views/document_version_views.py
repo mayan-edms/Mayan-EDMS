@@ -6,8 +6,8 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import (
     ConfirmView, SingleObjectDetailView, SingleObjectListView
 )
 

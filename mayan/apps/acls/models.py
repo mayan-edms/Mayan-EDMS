@@ -8,7 +8,7 @@ from django.db import models
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Role, StoredPermission
+from mayan.apps.permissions.models import Role, StoredPermission
 
 from .managers import AccessControlListManager
 

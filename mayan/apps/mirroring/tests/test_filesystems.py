@@ -6,11 +6,10 @@ from fuse import FuseOSError
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase
-from documents.models import Document
-from documents.tests import DocumentTestMixin
-
-from document_indexing.tests import DocumentIndexingTestMixin
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.document_indexing.tests import DocumentIndexingTestMixin
 
 from ..filesystems import IndexFilesystem
 

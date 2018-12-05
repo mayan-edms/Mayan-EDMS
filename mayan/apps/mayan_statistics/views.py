@@ -5,7 +5,7 @@ from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import ConfirmView, SimpleView, SingleObjectListView
+from mayan.apps.common.generics import ConfirmView, SimpleView, SingleObjectListView
 
 from .classes import Statistic, StatisticNamespace
 from .permissions import permission_statistics_view

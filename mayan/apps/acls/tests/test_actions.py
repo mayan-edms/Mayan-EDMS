@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from document_states.tests.test_actions import ActionTestCase
-from documents.permissions import permission_document_view
+from mayan.apps.document_states.tests.test_actions import ActionTestCase
+from mayan.apps.documents.permissions import permission_document_view
 
 from ..workflow_actions import GrantAccessAction, RevokeAccessAction
 

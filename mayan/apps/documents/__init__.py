@@ -1,3 +1,3 @@
 from __future__ import unicode_literals
 
-default_app_config = 'documents.apps.DocumentsApp'
+default_app_config = 'mayan.apps.documents.apps.DocumentsApp'

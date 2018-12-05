@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from common.tests import GenericViewTestCase
-from documents.tests import (
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH
 )
 

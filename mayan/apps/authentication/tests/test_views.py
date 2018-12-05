@@ -5,9 +5,9 @@ from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
 
-from common.tests import GenericViewTestCase
-from smart_settings.classes import Namespace
-from user_management.tests.literals import (
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_USER_PASSWORD_EDITED,
     TEST_ADMIN_USERNAME
 )

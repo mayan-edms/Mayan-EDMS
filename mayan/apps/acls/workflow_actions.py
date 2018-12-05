@@ -7,10 +7,10 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from document_states.classes import WorkflowAction
-from permissions.classes import Permission
-from permissions.models import Role
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.document_states.classes import WorkflowAction
+from mayan.apps.permissions.classes import Permission
+from mayan.apps.permissions.models import Role
 
 from .classes import ModelPermission
 from .permissions import permission_acl_edit

@@ -8,8 +8,8 @@ from django.utils.encoding import force_text
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from documents.tests import DocumentTestMixin
-from user_management.tests.literals import (
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 

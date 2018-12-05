@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
 
 
 class ActionTestCase(GenericDocumentTestCase):

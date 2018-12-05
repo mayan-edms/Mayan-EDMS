@@ -7,9 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from colorful.fields import RGBColorField
 
-from acls.models import AccessControlList
-from documents.models import Document
-from documents.permissions import permission_document_view
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (
     event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove

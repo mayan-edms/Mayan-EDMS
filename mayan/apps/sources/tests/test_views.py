@@ -5,12 +5,12 @@ import shutil
 
 from django.test import override_settings
 
-from checkouts.models import NewVersionBlock
-from common.tests import GenericViewTestCase
-from common.utils import fs_cleanup, mkdtemp
-from documents.models import Document, DocumentType
-from documents.permissions import permission_document_create
-from documents.tests import (
+from mayan.apps.checkouts.models import NewVersionBlock
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.utils import fs_cleanup, mkdtemp
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,

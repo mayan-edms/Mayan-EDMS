@@ -3,11 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
-from documents.search import document_page_search, document_search
-from events import ModelEventType
-from navigation import SourceColumn
+from mayan.apps.acls import ModelPermission
+from mayan.apps.common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
+from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.events import ModelEventType
+from mayan.apps.navigation import SourceColumn
 
 from .events import (
     event_document_comment_create, event_document_comment_delete
@@ -26,7 +26,7 @@ class DocumentCommentsApp(MayanAppConfig):
     app_url = 'comments'
     has_rest_api = True
     has_tests = True
-    name = 'document_comments'
+    name = 'mayan.apps.document_comments'
     verbose_name = _('Document comments')
 
     def ready(self):

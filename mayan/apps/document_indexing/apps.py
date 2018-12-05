@@ -6,18 +6,17 @@ from django.apps import apps
 from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
-from common.widgets import TwoStateWidget
-from documents.signals import post_document_created, post_initial_document_type
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.documents.signals import post_document_created, post_initial_document_type
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .handlers import (
     create_default_document_index, handler_delete_empty,
@@ -48,7 +47,7 @@ class DocumentIndexingApp(MayanAppConfig):
     app_url = 'indexing'
     has_rest_api = True
     has_tests = True
-    name = 'document_indexing'
+    name = 'mayan.apps.document_indexing'
     verbose_name = _('Document indexing')
 
     def ready(self):
@@ -164,16 +163,16 @@ class DocumentIndexingApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_indexing.tasks.task_delete_empty': {
+                'mayan.apps.document_indexing.tasks.task_delete_empty': {
                     'queue': 'indexing'
                 },
-                'document_indexing.tasks.task_remove_document': {
+                'mayan.apps.document_indexing.tasks.task_remove_document': {
                     'queue': 'indexing'
                 },
-                'document_indexing.tasks.task_index_document': {
+                'mayan.apps.document_indexing.tasks.task_index_document': {
                     'queue': 'indexing'
                 },
-                'document_indexing.tasks.task_rebuild_index': {
+                'mayan.apps.document_indexing.tasks.task_rebuild_index': {
                     'queue': 'tools'
                 },
             }

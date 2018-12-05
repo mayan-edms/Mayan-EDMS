@@ -9,10 +9,10 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
-from common.serializers import ContentTypeSerializer
-from permissions import Permission
-from permissions.models import Role, StoredPermission
-from permissions.serializers import PermissionSerializer, RoleSerializer
+from mayan.apps.common.serializers import ContentTypeSerializer
+from mayan.apps.permissions import Permission
+from mayan.apps.permissions.models import Role, StoredPermission
+from mayan.apps.permissions.serializers import PermissionSerializer, RoleSerializer
 
 from .models import AccessControlList
 

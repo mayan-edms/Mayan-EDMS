@@ -11,10 +11,10 @@ from django.utils.six.moves.urllib.parse import parse_qs, urlparse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
-from acls.models import AccessControlList
-from common.generics import SimpleView, SingleObjectListView
-from common.utils import resolve
-from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import SimpleView, SingleObjectListView
+from mayan.apps.common.utils import resolve
+from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
 from ..forms import DocumentPageForm
 from ..models import Document, DocumentPage

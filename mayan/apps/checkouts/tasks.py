@@ -4,8 +4,8 @@ import logging
 
 from django.apps import apps
 
-from lock_manager import LockError
-from lock_manager.runtime import locking_backend
+from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.celery import app
 
 from .literals import CHECKOUT_EXPIRATION_LOCK_EXPIRE

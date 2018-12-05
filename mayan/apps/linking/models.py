@@ -6,7 +6,7 @@ from django.template import Context, Template
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document, DocumentType
+from mayan.apps.documents.models import Document, DocumentType
 
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES

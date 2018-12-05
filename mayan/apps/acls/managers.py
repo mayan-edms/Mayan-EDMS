@@ -9,9 +9,9 @@ from django.db.models import Q
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 
-from common.utils import return_attrib, return_related
-from permissions import Permission
-from permissions.models import StoredPermission
+from mayan.apps.common.utils import return_attrib, return_related
+from mayan.apps.permissions import Permission
+from mayan.apps.permissions.models import StoredPermission
 
 from .exceptions import PermissionNotValidForClass
 from .classes import ModelPermission

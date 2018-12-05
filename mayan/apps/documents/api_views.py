@@ -10,9 +10,9 @@ from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from acls.models import AccessControlList
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (

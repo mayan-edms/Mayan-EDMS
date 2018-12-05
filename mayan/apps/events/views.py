@@ -11,10 +11,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action, any_stream
 
-from acls.models import AccessControlList
-from common.generics import FormView, SimpleView
-from common.utils import encapsulate
-from common.views import SingleObjectListView
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import FormView, SimpleView
+from mayan.apps.common.utils import encapsulate
+from mayan.apps.common.views import SingleObjectListView
 
 from .classes import EventType, ModelEventType
 from .forms import (

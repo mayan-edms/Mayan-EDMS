@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_main, menu_multi_item, menu_object,
     menu_sidebar
 )
-from documents.search import document_page_search, document_search
-from navigation import SourceColumn
+from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
@@ -30,9 +30,11 @@ from .widgets import widget_document_cabinets
 
 
 class CabinetsApp(MayanAppConfig):
+    app_namespace = 'cabinets'
+    app_url = 'cabinets'
     has_rest_api = True
     has_tests = True
-    name = 'cabinets'
+    name = 'mayan.apps.cabinets'
     verbose_name = _('Cabinets')
 
     def ready(self):

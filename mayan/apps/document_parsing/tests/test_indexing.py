@@ -2,11 +2,10 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase
-from documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
-
-from document_indexing.models import Index, IndexInstanceNode
-from document_indexing.tests.literals import TEST_INDEX_LABEL
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.tests import DocumentTestMixin, TEST_HYBRID_DOCUMENT
+from mayan.apps.document_indexing.models import Index, IndexInstanceNode
+from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
 
 from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 

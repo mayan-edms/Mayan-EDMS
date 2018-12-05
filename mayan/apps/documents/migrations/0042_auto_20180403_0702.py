@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 
 import django.core.files.storage
 from django.db import migrations, models
-import documents.models
+
+import mayan.apps.documents.models
 
 
 class Migration(migrations.Migration):
@@ -17,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversion',
             name='file',
-            field=models.FileField(storage=django.core.files.storage.FileSystemStorage(location=b'mayan/media/document_storage'), upload_to=documents.models.UUID_FUNCTION, verbose_name='File'),
+            field=models.FileField(storage=django.core.files.storage.FileSystemStorage(location=b'mayan/media/document_storage'), upload_to=mayan.apps.documents.models.UUID_FUNCTION, verbose_name='File'),
         ),
     ]

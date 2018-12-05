@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core.exceptions import PermissionDenied
 
-from common.tests import BaseTestCase
+from mayan.apps.common.tests import BaseTestCase
 
 from ..classes import Permission
 from ..permissions import permission_role_view

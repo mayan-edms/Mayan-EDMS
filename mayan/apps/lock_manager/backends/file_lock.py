@@ -12,7 +12,7 @@ from django.conf import settings
 from django.core.files import locks
 from django.utils.encoding import force_bytes, force_text
 
-from common.settings import setting_temporary_directory
+from mayan.apps.common.settings import setting_temporary_directory
 
 from ..exceptions import LockError
 from ..settings import setting_default_lock_timeout

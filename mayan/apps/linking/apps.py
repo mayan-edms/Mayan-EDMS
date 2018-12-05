@@ -3,15 +3,15 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
     menu_sidebar
 )
-from common.widgets import TwoStateWidget
-from navigation import SourceColumn
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,
@@ -28,9 +28,11 @@ from .permissions import (
 
 
 class LinkingApp(MayanAppConfig):
+    app_namespace = 'linking'
+    app_url = 'smart_links'
     has_rest_api = True
     has_tests = True
-    name = 'linking'
+    name = 'mayan.apps.linking'
     verbose_name = _('Linking')
 
     def ready(self):

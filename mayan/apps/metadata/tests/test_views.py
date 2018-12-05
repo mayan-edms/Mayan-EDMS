@@ -4,13 +4,13 @@ import logging
 
 from django.core.files.base import File
 
-from common.tests import GenericViewTestCase
-from documents.models import DocumentType
-from documents.permissions import (
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.permissions import (
     permission_document_properties_edit, permission_document_type_edit,
     permission_document_view
 )
-from documents.tests import (
+from mayan.apps.documents.tests import (
     DocumentTestMixin, GenericDocumentViewTestCase,
     TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_PATH,
 )

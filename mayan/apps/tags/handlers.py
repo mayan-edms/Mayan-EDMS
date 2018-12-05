@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_document
 
 logger = logging.getLogger(__name__)
 

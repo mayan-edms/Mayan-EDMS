@@ -7,8 +7,8 @@ import os
 from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import force_text
 
-from converter.models import Transformation
-from converter.permissions import permission_transformation_delete
+from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.permissions import permission_transformation_delete
 
 from ..literals import PAGE_RANGE_ALL
 from ..models import DeletedDocument, Document, DocumentType

@@ -4,10 +4,10 @@ import resource
 
 from django.test import override_settings, tag
 
-from common.tests import BaseTestCase
-from common.tests.literals import EXCLUDE_TEST_TAG
-from documents.models import Document
-from documents.tests import DocumentTestMixin, TEST_DOCUMENT_FILENAME
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.tests.literals import EXCLUDE_TEST_TAG
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.tests import DocumentTestMixin, TEST_DOCUMENT_FILENAME
 
 # This constant may need tweaking as document upload code path changes.
 # The value is targeted at making the document upload process fail exactly

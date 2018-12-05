@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import TemporaryFile
+from mayan.apps.common.utils import TemporaryFile
 
 from ..classes import PseudoFile, SourceUploadedFile
 from ..exceptions import SourceException

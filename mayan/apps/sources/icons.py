@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from appearance.classes import Icon
+from mayan.apps.appearance.classes import Icon
 
 icon_document_create_multiple = Icon(
     driver_name='fontawesome', symbol='upload'

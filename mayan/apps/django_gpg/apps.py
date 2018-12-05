@@ -2,13 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_facet, menu_object, menu_setup, menu_sidebar
 )
-from navigation import SourceColumn
+from mayan.apps.navigation import SourceColumn
 
 from .classes import KeyStub
 from .links import (
@@ -24,10 +24,11 @@ from .permissions import (
 
 
 class DjangoGPGApp(MayanAppConfig):
-    app_url = 'gpg'
+    app_namespace = 'django_gpg'
+    app_url = 'keys'
     has_rest_api = True
     has_tests = True
-    name = 'django_gpg'
+    name = 'mayan.apps.django_gpg'
     verbose_name = _('Django GPG')
 
     def ready(self):

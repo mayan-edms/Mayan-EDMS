@@ -6,7 +6,7 @@ from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from sources.wizards import WizardStep
+from mayan.apps.sources.wizards import WizardStep
 
 from .forms import CabinetListForm
 from .permissions import permission_cabinet_add_document

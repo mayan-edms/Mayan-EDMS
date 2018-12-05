@@ -6,7 +6,7 @@ import time
 
 from django.urls import reverse
 
-from acls.models import AccessControlList
+from mayan.apps.acls.models import AccessControlList
 
 from ..links import (
     link_document_restore, link_document_version_download,

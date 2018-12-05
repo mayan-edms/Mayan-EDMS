@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from document_states.tests.test_actions import ActionTestCase
+from mayan.apps.document_states.tests.test_actions import ActionTestCase
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction

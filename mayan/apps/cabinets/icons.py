@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from appearance.classes import Icon
+from mayan.apps.appearance.classes import Icon
 
 icon_cabinet = Icon(driver_name='fontawesome', symbol='columns')
 icon_cabinet_add = Icon(driver_name='fontawesome', symbol='plus')

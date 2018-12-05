@@ -4,7 +4,7 @@ from django.apps import apps
 
 import logging
 
-from document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_document
 
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 

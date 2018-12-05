@@ -14,7 +14,7 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView, TemplateView
 
-from acls.models import AccessControlList
+from mayan.apps.acls.models import AccessControlList
 
 from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import (

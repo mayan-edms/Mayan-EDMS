@@ -7,14 +7,14 @@ from django.db import models, transaction
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from djcelery.models import PeriodicTask, IntervalSchedule
 from model_utils.managers import InheritanceManager
 
-from common.compressed_files import Archive
-from common.exceptions import NoMIMETypeMatch
-from converter.models import Transformation
-from djcelery.models import PeriodicTask, IntervalSchedule
-from documents.models import Document, DocumentType
-from documents.settings import setting_language
+from mayan.apps.common.compressed_files import Archive
+from mayan.apps.common.exceptions import NoMIMETypeMatch
+from mayan.apps.converter.models import Transformation
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.settings import setting_language
 
 from ..literals import (
     DEFAULT_INTERVAL, SOURCE_CHOICES, SOURCE_UNCOMPRESS_CHOICES

@@ -5,16 +5,16 @@ from kombu import Exchange, Queue
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
-from common import (
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.common import (
     MayanAppConfig, menu_object, menu_multi_item, menu_secondary, menu_setup,
     menu_tools
 )
-from common.widgets import TwoStateWidget
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
-from navigation import SourceColumn
 
 from .classes import MailerBackend
 from .links import (
@@ -33,8 +33,10 @@ from .queues import *  # NOQA
 
 
 class MailerApp(MayanAppConfig):
+    app_namespace = 'mailer'
+    app_url = 'mailer'
     has_tests = True
-    name = 'mailer'
+    name = 'mayan.apps.mailer'
     verbose_name = _('Mailer')
 
     def ready(self):
@@ -94,7 +96,7 @@ class MailerApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'mailer.tasks.task_send_document': {
+                'mayan.apps.mailer.tasks.task_send_document': {
                     'queue': 'mailing'
                 },
             }

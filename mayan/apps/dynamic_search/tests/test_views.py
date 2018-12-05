@@ -2,10 +2,10 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
-from common.tests import GenericViewTestCase
-from documents.models import DocumentType
-from documents.search import document_search
-from documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.search import document_search
+from mayan.apps.documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
 
 
 @override_settings(OCR_AUTO_OCR=False)

@@ -5,7 +5,7 @@ import time
 
 from django.test import override_settings
 
-from common.tests import BaseTestCase
+from mayan.apps.common.tests import BaseTestCase
 
 from ..literals import STUB_EXPIRATION_INTERVAL
 from ..models import (

@@ -1,3 +1,3 @@
 from __future__ import unicode_literals
 
-default_app_config = 'appearance.apps.AppearanceApp'
+default_app_config = 'mayan.apps.appearance.apps.AppearanceApp'

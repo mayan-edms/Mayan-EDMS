@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
-from common.generics import SimpleView, SingleObjectListView
+from mayan.apps.common.generics import SimpleView, SingleObjectListView
 
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit

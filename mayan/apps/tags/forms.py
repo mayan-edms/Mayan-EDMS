@@ -5,7 +5,7 @@ import logging
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
+from mayan.apps.acls.models import AccessControlList
 
 from .models import Tag
 from .permissions import permission_tag_view

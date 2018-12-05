@@ -61,8 +61,7 @@ ALLOWED_HOSTS = yaml_loads(
 
 INSTALLED_APPS = (
     # Placed at the top so it can override any template
-    'appearance',
-    # 3rd party
+    'mayan.apps.appearance',
     'suit',
     # Django
     'django.contrib.admin',
@@ -89,47 +88,47 @@ INSTALLED_APPS = (
     'solo',
     'stronghold',
     'widget_tweaks',
-    # Base generic
-    'acls',
-    'authentication',
-    'common',
-    'converter',
-    'django_gpg',
-    'dynamic_search',
-    'lock_manager',
-    'mimetype',
-    'navigation',
-    'permissions',
-    'smart_settings',
-    'user_management',
-    # Mayan EDMS
-    'cabinets',
-    'checkouts',
-    'document_comments',
-    'document_indexing',
-    'document_parsing',
-    'document_signatures',
-    'document_states',
-    'documents',
-    'events',
-    'linking',
-    'mailer',
-    'mayan_statistics',
-    'metadata',
-    'mirroring',
-    'motd',
-    'ocr',
-    'rest_api',
-    'sources',
-    'storage',
-    'tags',
-    'task_manager',
+    # Base apps
+    'mayan.apps.acls',
+    'mayan.apps.authentication',
+    'mayan.apps.common',
+    'mayan.apps.converter',
+    'mayan.apps.django_gpg',
+    'mayan.apps.dynamic_search',
+    'mayan.apps.events',
+    'mayan.apps.lock_manager',
+    'mayan.apps.mimetype',
+    'mayan.apps.navigation',
+    'mayan.apps.permissions',
+    'mayan.apps.smart_settings',
+    'mayan.apps.user_management',
+    # Document apps
+    'mayan.apps.cabinets',
+    'mayan.apps.checkouts',
+    'mayan.apps.document_comments',
+    'mayan.apps.document_indexing',
+    'mayan.apps.document_parsing',
+    'mayan.apps.document_signatures',
+    'mayan.apps.document_states',
+    'mayan.apps.documents',
+    'mayan.apps.linking',
+    'mayan.apps.mailer',
+    'mayan.apps.mayan_statistics',
+    'mayan.apps.metadata',
+    'mayan.apps.mirroring',
+    'mayan.apps.motd',
+    'mayan.apps.ocr',
+    'mayan.apps.rest_api',
+    'mayan.apps.sources',
+    'mayan.apps.storage',
+    'mayan.apps.tags',
+    'mayan.apps.task_manager',
     # Placed after rest_api to allow template overriding
     'drf_yasg',
 )
 
 MIDDLEWARE_CLASSES = (
-    'common.middleware.error_logging.ErrorLoggingMiddleware',
+    'mayan.apps.common.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,9 +139,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'common.middleware.timezone.TimezoneMiddleware',
+    'mayan.apps.common.middleware.timezone.TimezoneMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
-    'common.middleware.ajax_redirect.AjaxRedirect',
+    'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect',
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -236,8 +235,6 @@ LANGUAGES = (
 
 SITE_ID = 1
 
-sys.path.append(os.path.join(BASE_DIR, 'apps'))
-
 STATIC_ROOT = os.environ.get(
     'MAYAN_STATIC_ROOT', os.path.join(MEDIA_ROOT, 'static')
 )
@@ -249,7 +246,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-TEST_RUNNER = 'common.tests.runner.MayanTestRunner'
+TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
 
 # --------- Django -------------------
 

@@ -4,8 +4,8 @@ from django.apps import apps
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from common.classes import DashboardWidgetNumeric
-from documents.permissions import permission_document_view
+from mayan.apps.common.classes import DashboardWidgetNumeric
+from mayan.apps.documents.permissions import permission_document_view
 
 from .icons import icon_dashboard_checkouts
 from .permissions import permission_document_checkout_detail_view

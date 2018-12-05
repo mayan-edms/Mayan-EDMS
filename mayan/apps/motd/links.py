@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link, get_cascade_condition
+from mayan.apps.navigation import Link, get_cascade_condition
 
 from .icons import icon_message_create, icon_message_list
 from .permissions import (

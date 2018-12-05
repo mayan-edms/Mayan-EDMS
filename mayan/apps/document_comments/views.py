@@ -5,11 +5,11 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.generics import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectListView
 )
-from documents.models import Document
+from mayan.apps.documents.models import Document
 
 from .icons import icon_comments_for_document
 from .links import link_comment_add

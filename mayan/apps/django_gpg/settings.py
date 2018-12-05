@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings import Namespace
+from mayan.apps.smart_settings import Namespace
 
 namespace = Namespace(name='django_gpg', label=_('Signatures'))
 setting_gpg_home = namespace.add_setting(

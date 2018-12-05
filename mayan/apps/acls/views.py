@@ -11,12 +11,12 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from common.views import (
+from mayan.apps.common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from permissions import PermissionNamespace, Permission
-from permissions.models import StoredPermission
+from mayan.apps.permissions import PermissionNamespace, Permission
+from mayan.apps.permissions.models import StoredPermission
 
 from .classes import ModelPermission
 from .icons import icon_acl_list

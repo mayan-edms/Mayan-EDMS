@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.literals import TIME_DELTA_UNIT_DAYS
+from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
 
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60

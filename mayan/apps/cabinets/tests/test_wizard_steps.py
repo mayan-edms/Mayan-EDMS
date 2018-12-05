@@ -1,15 +1,15 @@
 from __future__ import unicode_literals
 
-from documents.models import Document
-from documents.permissions import permission_document_create
-from documents.tests import (
+from mayan.apps.documents.models import Document
+from mayan.apps.documents.permissions import permission_document_create
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_SMALL_DOCUMENT_PATH,
 )
-from sources.models import WebFormSource
-from sources.tests.literals import (
+from mayan.apps.sources.models import WebFormSource
+from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
-from sources.wizards import WizardStep
+from mayan.apps.sources.wizards import WizardStep
 
 from ..models import Cabinet
 from ..wizard_steps import WizardStepCabinets

@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..permissions import (
     permission_ocr_content_view, permission_ocr_document,

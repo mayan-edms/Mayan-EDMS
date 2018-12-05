@@ -4,12 +4,12 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
-from common import (
+from mayan.apps.common import (
     MayanAppConfig, menu_main, menu_object, menu_secondary, menu_tools,
     menu_user
 )
-from common.widgets import TwoStateWidget
-from navigation import SourceColumn
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_events_list, link_event_types_subscriptions_list,
@@ -21,9 +21,11 @@ from .widgets import event_object_link, event_type_link, event_user_link
 
 
 class EventsApp(MayanAppConfig):
+    app_namespace = 'events'
+    app_url = 'events'
     has_rest_api = True
     has_tests = True
-    name = 'events'
+    name = 'mayan.apps.events'
     verbose_name = _('Events')
 
     def ready(self):

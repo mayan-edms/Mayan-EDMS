@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='Bootstrap', license_text='''
 The MIT License (MIT)

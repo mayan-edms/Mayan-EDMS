@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from acls import ModelPermission
-from acls.links import link_acl_list
-from acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 
-from common import (
+from mayan.apps.common import (
     MayanAppConfig, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
-from common.signals import perform_upgrade
+from mayan.apps.common.signals import perform_upgrade
 
 from .handlers import purge_permissions
 from .links import (
@@ -26,9 +26,11 @@ from .search import *  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):
+    app_namespace = 'permissions'
+    app_url = 'permissions'
     has_rest_api = True
     has_tests = True
-    name = 'permissions'
+    name = 'mayan.apps.permissions'
     verbose_name = _('Permissions')
 
     def ready(self):

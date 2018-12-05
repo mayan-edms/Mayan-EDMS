@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.urls import reverse
 
-from rest_api.tests import BaseAPITestCase
+from mayan.apps.rest_api.tests import BaseAPITestCase
 
 
 class EventAPITestCase(BaseAPITestCase):

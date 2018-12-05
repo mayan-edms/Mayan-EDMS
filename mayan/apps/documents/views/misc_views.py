@@ -5,7 +5,7 @@ import logging
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import ConfirmView
+from mayan.apps.common.generics import ConfirmView
 
 from ..permissions import permission_document_tools
 from ..tasks import task_clear_image_cache, task_scan_duplicates_all

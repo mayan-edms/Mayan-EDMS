@@ -11,7 +11,7 @@ from django.utils.module_loading import import_string
 from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document, DocumentType
+from mayan.apps.documents.models import Document, DocumentType
 
 from .classes import MetadataLookup
 from .events import (

@@ -12,7 +12,7 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
-from common.views import (
+from mayan.apps.common.views import (
     AssignRemoveView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView

@@ -5,10 +5,10 @@ from django.urls import reverse
 
 from furl import furl
 
-from acls.models import AccessControlList
-from common.tests import GenericViewTestCase
-from common.tests.literals import TEST_VIEW_NAME
-from permissions import Permission, PermissionNamespace
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.common.tests.literals import TEST_VIEW_NAME
+from mayan.apps.permissions import Permission, PermissionNamespace
 
 from ..classes import Link, Menu
 

@@ -4,8 +4,8 @@ from django import forms
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from common.classes import ModelField, ModelProperty
-from documents.models import Document
+from mayan.apps.common.classes import ModelField, ModelProperty
+from mayan.apps.documents.models import Document
 
 from .models import SmartLink, SmartLinkCondition
 

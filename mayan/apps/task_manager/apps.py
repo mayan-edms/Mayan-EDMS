@@ -2,11 +2,11 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from common import (
+from mayan.apps.common import (
     MayanAppConfig, menu_object, menu_secondary, menu_tools
 )
-from common.widgets import TwoStateWidget
-from navigation import SourceColumn
+from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.navigation import SourceColumn
 
 from .classes import CeleryQueue, Task
 from .links import (
@@ -20,7 +20,7 @@ class TaskManagerApp(MayanAppConfig):
     app_namespace = 'task_manager'
     app_url = 'task_manager'
     has_tests = True
-    name = 'task_manager'
+    name = 'mayan.apps.task_manager'
     verbose_name = _('Task manager')
 
     def ready(self):

@@ -7,9 +7,9 @@ import time
 from django.test import override_settings
 from django.utils.timezone import now
 
-from common.tests import BaseTestCase
-from documents.tests import DocumentTestMixin
-from documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,

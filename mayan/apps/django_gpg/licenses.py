@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from common.classes import Package
+from mayan.apps.common.classes import Package
 
 Package(label='python-gnupg', license_text='''
 Copyright (c) 2008-2014 by Vinay Sajip.

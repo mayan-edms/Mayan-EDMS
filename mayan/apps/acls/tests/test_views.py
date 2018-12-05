@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view

@@ -1,3 +1,3 @@
 from __future__ import unicode_literals
 
-default_app_config = 'mimetype.apps.MIMETypesApp'
+default_app_config = 'mayan.apps.mimetype.apps.MIMETypesApp'

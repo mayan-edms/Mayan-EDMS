@@ -6,8 +6,8 @@ from django.core.exceptions import PermissionDenied
 
 from rest_framework.permissions import BasePermission
 
-from acls.models import AccessControlList
-from permissions import Permission
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.permissions import Permission
 
 
 class MayanPermission(BasePermission):

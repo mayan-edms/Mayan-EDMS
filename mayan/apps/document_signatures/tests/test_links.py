@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.core.files import File
 from django.urls import reverse
 
-from documents.tests import (
+from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_DOCUMENT_PATH
 )
 

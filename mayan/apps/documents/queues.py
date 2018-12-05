@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.queues import queue_tools
-from task_manager.classes import CeleryQueue
+from mayan.apps.common.queues import queue_tools
+from mayan.apps.task_manager.classes import CeleryQueue
 
 queue_converter = CeleryQueue(
     name='converter', label=_('Converter'), transient=True
@@ -19,42 +19,42 @@ queue_documents = CeleryQueue(
 )
 
 queue_converter.add_task_type(
-    name='documents.tasks.task_generate_document_page_image',
+    name='mayan.apps.documents.tasks.task_generate_document_page_image',
     label=_('Generate document page image')
 )
 
 queue_documents.add_task_type(
-    name='documents.tasks.task_delete_document',
+    name='mayan.apps.documents.tasks.task_delete_document',
     label=_('Delete a document')
 )
 queue_documents.add_task_type(
-    name='documents.tasks.task_clean_empty_duplicate_lists',
+    name='mayan.apps.documents.tasks.task_clean_empty_duplicate_lists',
     label=_('Clean empty duplicate lists')
 )
 
 queue_documents_periodic.add_task_type(
-    name='documents.tasks.task_check_delete_periods',
+    name='mayan.apps.documents.tasks.task_check_delete_periods',
     label=_('Check document type delete periods')
 )
 queue_documents_periodic.add_task_type(
-    name='documents.tasks.task_check_trash_periods',
+    name='mayan.apps.documents.tasks.task_check_trash_periods',
     label=_('Check document type trash periods')
 )
 queue_documents_periodic.add_task_type(
-    name='documents.tasks.task_delete_stubs',
+    name='mayan.apps.documents.tasks.task_delete_stubs',
     label=_('Delete document stubs')
 )
 
 queue_tools.add_task_type(
-    name='documents.tasks.task_clear_image_cache',
+    name='mayan.apps.documents.tasks.task_clear_image_cache',
     label=_('Clear image cache')
 )
 
 queue_uploads.add_task_type(
-    name='documents.tasks.task_update_page_count',
+    name='mayan.apps.documents.tasks.task_update_page_count',
     label=_('Update document page count')
 )
 queue_uploads.add_task_type(
-    name='documents.tasks.task_upload_new_version',
+    name='mayan.apps.documents.tasks.task_upload_new_version',
     label=_('Upload new document version')
 )

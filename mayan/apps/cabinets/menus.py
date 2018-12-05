@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Menu, get_cascade_condition
+from mayan.apps.navigation import Menu, get_cascade_condition
 
 from .icons import icon_cabinet_list
 from .permissions import permission_cabinet_create, permission_cabinet_view

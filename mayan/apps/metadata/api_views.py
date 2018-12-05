@@ -4,13 +4,13 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
-from acls.models import AccessControlList
-from documents.models import Document, DocumentType
-from documents.permissions import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
+from mayan.apps.rest_api.filters import MayanObjectPermissionsFilter
+from mayan.apps.rest_api.permissions import MayanPermission
 
 from .models import MetadataType
 from .permissions import (

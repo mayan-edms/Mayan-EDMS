@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from events import EventTypeNamespace
+from mayan.apps.events import EventTypeNamespace
 
 namespace = EventTypeNamespace(name='ocr', label=_('OCR'))
 

@@ -7,8 +7,8 @@ import mock
 
 from django.utils.encoding import force_bytes
 
-from common.tests import BaseTestCase
-from common.utils import TemporaryFile
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.common.utils import TemporaryFile
 
 from ..exceptions import (
     DecryptionError, KeyDoesNotExist, NeedPassphrase, PassphraseError,

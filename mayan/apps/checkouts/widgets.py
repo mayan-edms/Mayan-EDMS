@@ -6,7 +6,7 @@ from django import forms
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
 
 
 class SplitTimeDeltaWidget(forms.widgets.MultiWidget):

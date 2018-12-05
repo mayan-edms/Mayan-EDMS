@@ -15,8 +15,8 @@ from django.template.defaulttags import URLNode
 from django.urls import Resolver404, resolve
 from django.utils.encoding import force_str, force_text
 
-from common.utils import return_attrib
-from permissions import Permission
+from mayan.apps.common.utils import return_attrib
+from mayan.apps.permissions import Permission
 
 logger = logging.getLogger(__name__)
 

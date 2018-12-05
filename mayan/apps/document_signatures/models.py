@@ -10,9 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from django_gpg.exceptions import VerificationError
-from django_gpg.models import Key
-from documents.models import DocumentVersion
+from mayan.apps.django_gpg.exceptions import VerificationError
+from mayan.apps.django_gpg.models import Key
+from mayan.apps.documents.models import DocumentVersion
 
 from .managers import EmbeddedSignatureManager
 from .storages import storage_detachedsignature

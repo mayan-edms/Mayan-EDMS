@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core import mail
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import UserMailer
 from ..permissions import (

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings import Namespace
+from mayan.apps.smart_settings import Namespace
 
 from .literals import (
     DEFAULT_LIBREOFFICE_PATH, DEFAULT_PDFTOPPM_DPI, DEFAULT_PDFTOPPM_FORMAT,
@@ -11,7 +11,7 @@ from .literals import (
 
 namespace = Namespace(name='converter', label=_('Converter'))
 setting_graphics_backend = namespace.add_setting(
-    default='converter.backends.python.Python',
+    default='mayan.apps.converter.backends.python.Python',
     help_text=_('Graphics conversion backend to use.'),
     global_name='CONVERTER_GRAPHICS_BACKEND',
 )

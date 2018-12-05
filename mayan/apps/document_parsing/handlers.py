@@ -4,7 +4,7 @@ import logging
 
 from django.apps import apps
 
-from document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_document
 
 from .settings import setting_auto_parsing
 

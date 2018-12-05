@@ -2,9 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from rest_framework.test import APITestCase
 
-from common.tests import GenericViewTestCase
-from permissions.classes import Permission
-from smart_settings.classes import Namespace
+from mayan.apps.common.tests import GenericViewTestCase
+from mayan.apps.permissions.classes import Permission
+from mayan.apps.smart_settings.classes import Namespace
 
 
 class BaseAPITestCase(APITestCase, GenericViewTestCase):

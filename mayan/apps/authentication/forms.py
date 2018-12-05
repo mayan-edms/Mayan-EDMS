@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
-from common.widgets import EmailInput
+from mayan.apps.common.widgets import EmailInput
 
 
 class EmailAuthenticationForm(forms.Form):

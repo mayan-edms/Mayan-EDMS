@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from appearance.classes import Icon
+from mayan.apps.appearance.classes import Icon
 
 icon_document_content = Icon(driver_name='fontawesome', symbol='font')
 icon_document_parsing_errors_list = Icon(

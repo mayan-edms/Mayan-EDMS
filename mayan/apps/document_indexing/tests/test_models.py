@@ -3,13 +3,15 @@ from __future__ import unicode_literals
 from django.test import override_settings
 from django.utils.encoding import force_text
 
-from common.tests import BaseTestCase
-from documents.tests import DocumentTestMixin, TEST_SMALL_DOCUMENT_PATH
-from documents.tests.literals import (
+from mayan.apps.common.tests import BaseTestCase
+from mayan.apps.documents.tests import (
+    DocumentTestMixin, TEST_SMALL_DOCUMENT_PATH
+)
+from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
     TEST_DOCUMENT_LABEL_EDITED
 )
-from metadata.models import MetadataType, DocumentTypeMetadataType
+from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 

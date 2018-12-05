@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import warnings
 
-from common.tests import BaseTestCase
+from mayan.apps.common.tests import BaseTestCase
 
 from ..caches import IndexFilesystemCache
 

@@ -7,7 +7,7 @@ from django.apps import apps
 from django.utils import six
 from django.utils.encoding import force_text
 
-from common.classes import PropertyHelper
+from mayan.apps.common.classes import PropertyHelper
 
 __all__ = ('WorkflowAction',)
 logger = logging.getLogger(__name__)

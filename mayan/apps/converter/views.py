@@ -9,8 +9,8 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessControlList
-from common.views import (
+from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
 )

@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..models import Cabinet
 from ..permissions import (

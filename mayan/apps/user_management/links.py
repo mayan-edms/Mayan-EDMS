@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from navigation import Link
+from mayan.apps.navigation import Link
 
 from .icons import (
     icon_group_create, icon_group_setup, icon_user_create, icon_user_setup

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from documents.serializers import DocumentSerializer
-from user_management.serializers import UserSerializer
+from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import Comment
 
