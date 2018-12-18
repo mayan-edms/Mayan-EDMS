@@ -80,35 +80,6 @@ class EmailBaseModel(IntervalBaseModel):
         verbose_name = _('Email source')
         verbose_name_plural = _('Email sources')
 
-    def clean(self):
-        if self.subject_metadata_type:
-            if self.subject_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
-                raise ValidationError(
-                    {
-                        'subject_metadata_type': _(
-                            'Subject metadata type "%(metadata_type)s" is not '
-                            'valid for the document type: %(document_type)s'
-                        ) % {
-                            'metadata_type': self.subject_metadata_type,
-                            'document_type': self.document_type
-                        }
-                    }
-                )
-
-        if self.from_metadata_type:
-            if self.from_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
-                raise ValidationError(
-                    {
-                        'from_metadata_type': _(
-                            '"From" metadata type "%(metadata_type)s" is not '
-                            'valid for the document type: %(document_type)s'
-                        ) % {
-                            'metadata_type': self.from_metadata_type,
-                            'document_type': self.document_type
-                        }
-                    }
-                )
-
     @staticmethod
     def process_message(source, message_text, message_properties=None):
         from flanker import mime
@@ -199,6 +170,35 @@ class EmailBaseModel(IntervalBaseModel):
                                     metadata_dictionary=metadata_dictionary
                                 )
 
+    def clean(self):
+        if self.subject_metadata_type:
+            if self.subject_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
+                raise ValidationError(
+                    {
+                        'subject_metadata_type': _(
+                            'Subject metadata type "%(metadata_type)s" is not '
+                            'valid for the document type: %(document_type)s'
+                        ) % {
+                            'metadata_type': self.subject_metadata_type,
+                            'document_type': self.document_type
+                        }
+                    }
+                )
+
+        if self.from_metadata_type:
+            if self.from_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
+                raise ValidationError(
+                    {
+                        'from_metadata_type': _(
+                            '"From" metadata type "%(metadata_type)s" is not '
+                            'valid for the document type: %(document_type)s'
+                        ) % {
+                            'metadata_type': self.from_metadata_type,
+                            'document_type': self.document_type
+                        }
+                    }
+                )
+
 
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_IMAP
@@ -216,7 +216,7 @@ class IMAPEmail(EmailBaseModel):
         verbose_name_plural = _('IMAP email')
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
-    def check_source(self):
+    def check_source(self, test=False):
         logger.debug('Starting IMAP email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
@@ -240,7 +240,8 @@ class IMAPEmail(EmailBaseModel):
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
-                mailbox.store(message_number, '+FLAGS', '\\Deleted')
+                if not test:
+                    mailbox.store(message_number, '+FLAGS', '\\Deleted')
 
         mailbox.expunge()
         mailbox.close()
@@ -260,7 +261,7 @@ class POP3Email(EmailBaseModel):
         verbose_name = _('POP email')
         verbose_name_plural = _('POP email')
 
-    def check_source(self):
+    def check_source(self, test=False):
         logger.debug('Starting POP3 email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
@@ -289,6 +290,7 @@ class POP3Email(EmailBaseModel):
             EmailBaseModel.process_message(
                 source=self, message_text=complete_message
             )
-            mailbox.dele(message_number)
+            if not test:
+                mailbox.dele(message_number)
 
         mailbox.quit()

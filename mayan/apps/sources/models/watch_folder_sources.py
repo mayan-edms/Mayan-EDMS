@@ -46,7 +46,7 @@ class WatchFolderSource(IntervalBaseModel):
         verbose_name = _('Watch folder')
         verbose_name_plural = _('Watch folders')
 
-    def check_source(self):
+    def check_source(self, test=False):
         path = Path(self.folder_path)
 
         if self.include_subdirectories:
@@ -62,4 +62,5 @@ class WatchFolderSource(IntervalBaseModel):
                         expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y),
                         label=entry.name
                     )
-                    entry.unlink()
+                    if not test:
+                        entry.unlink()

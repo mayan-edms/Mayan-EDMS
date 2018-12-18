@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
-def task_check_interval_source(source_id):
+def task_check_interval_source(source_id, test=False):
     Source = apps.get_model(
         app_label='sources', model_name='Source'
     )
@@ -38,8 +38,8 @@ def task_check_interval_source(source_id):
 
         try:
             source = Source.objects.get_subclass(pk=source_id)
-            if source.enabled:
-                source.check_source()
+            if source.enabled or test:
+                source.check_source(test=test)
         except Exception as exception:
             logger.error('Error processing source: %s; %s', source, exception)
             source.logs.create(
@@ -51,54 +51,15 @@ def task_check_interval_source(source_id):
             lock.release()
 
 
-@app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, querystring=None, user_id=None):
-    SharedUploadedFile = apps.get_model(
-        app_label='common', model_name='SharedUploadedFile'
+@app.task()
+def task_generate_staging_file_image(staging_folder_pk, encoded_filename, *args, **kwargs):
+    StagingFolderSource = apps.get_model(
+        app_label='sources', model_name='StagingFolderSource'
     )
+    staging_folder = StagingFolderSource.objects.get(pk=staging_folder_pk)
+    staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
 
-    DocumentType = apps.get_model(
-        app_label='documents', model_name='DocumentType'
-    )
-
-    Source = apps.get_model(
-        app_label='sources', model_name='Source'
-    )
-
-    try:
-        document_type = DocumentType.objects.get(pk=document_type_id)
-        source = Source.objects.get_subclass(pk=source_id)
-        shared_upload = SharedUploadedFile.objects.get(
-            pk=shared_uploaded_file_id
-        )
-
-        if user_id:
-            user = get_user_model().objects.get(pk=user_id)
-        else:
-            user = None
-
-        with shared_upload.open() as file_object:
-            source.upload_document(
-                file_object=file_object, document_type=document_type,
-                description=description, label=label, language=language,
-                querystring=querystring, user=user,
-            )
-
-    except OperationalError as exception:
-        logger.warning(
-            'Operational exception while trying to create new document "%s" '
-            'from source id %d; %s. Retying.',
-            label or shared_upload.filename, source_id, exception
-        )
-        raise self.retry(exc=exception)
-    else:
-        try:
-            shared_upload.delete()
-        except OperationalError as exception:
-            logger.warning(
-                'Operational error during attempt to delete shared upload '
-                'file: %s; %s. Retrying.', shared_upload, exception
-            )
+    return staging_file.generate_image(*args, **kwargs)
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
@@ -199,12 +160,51 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
             )
 
 
-@app.task()
-def task_generate_staging_file_image(staging_folder_pk, encoded_filename, *args, **kwargs):
-    StagingFolderSource = apps.get_model(
-        app_label='sources', model_name='StagingFolderSource'
+@app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
+def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, querystring=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
     )
-    staging_folder = StagingFolderSource.objects.get(pk=staging_folder_pk)
-    staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
 
-    return staging_file.generate_image(*args, **kwargs)
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
+    try:
+        document_type = DocumentType.objects.get(pk=document_type_id)
+        source = Source.objects.get_subclass(pk=source_id)
+        shared_upload = SharedUploadedFile.objects.get(
+            pk=shared_uploaded_file_id
+        )
+
+        if user_id:
+            user = get_user_model().objects.get(pk=user_id)
+        else:
+            user = None
+
+        with shared_upload.open() as file_object:
+            source.upload_document(
+                file_object=file_object, document_type=document_type,
+                description=description, label=label, language=language,
+                querystring=querystring, user=user,
+            )
+
+    except OperationalError as exception:
+        logger.warning(
+            'Operational exception while trying to create new document "%s" '
+            'from source id %d; %s. Retying.',
+            label or shared_upload.filename, source_id, exception
+        )
+        raise self.retry(exc=exception)
+    else:
+        try:
+            shared_upload.delete()
+        except OperationalError as exception:
+            logger.warning(
+                'Operational error during attempt to delete shared upload '
+                'file: %s; %s. Retrying.', shared_upload, exception
+            )

@@ -502,12 +502,20 @@ class SetupSourceCheckView(ConfirmView):
     Trigger the task_check_interval_source task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
     """
-    view_permission = permission_sources_setup_view
+    view_permission = permission_sources_setup_create
 
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Trigger check for source "%s"?') % self.get_object(),
+            'subtitle': _(
+                'This will execute the source check code even if the source '
+                'is not enabled. Sources that delete content after '
+                'downloading will not do so while being tested. Check the '
+                'source\'s error log for information during testing. A '
+                'successful test will clear the error log.'
+            ), 'title': _(
+                'Trigger check for source "%s"?'
+            ) % self.get_object(),
         }
 
     def get_object(self):
@@ -516,7 +524,7 @@ class SetupSourceCheckView(ConfirmView):
     def view_action(self):
         task_check_interval_source.apply_async(
             kwargs={
-                'source_id': self.get_object().pk
+                'source_id': self.get_object().pk, 'test': True
             }
         )
 
