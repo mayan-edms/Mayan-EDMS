@@ -47,6 +47,7 @@ apt-get install -y --no-install-recommends \
         supervisor \
         tesseract-ocr \
         zlib1g-dev \
+        libssl-dev \
 && \
 apt-get clean autoclean && \
 apt-get autoremove --purge -y && \
@@ -67,7 +68,6 @@ ln -s /usr/lib/aarch64-linux-gnu/libjpeg.so /usr/lib/ \
 
 # Pillow can't find zlib or libjpeg on armv7l (ODROID HC1)
 RUN if [ "$(uname -m)" = "armv7l" ]; then \
-apt-get install libssl-dev -y && \
 ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ && \
 ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
 ; fi
