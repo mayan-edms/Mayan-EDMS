@@ -4,3 +4,7 @@ sphinx-autobuild==0.7.1
 sphinx_rtd_theme==0.2.4
 sphinxcontrib-blockdiag==1.5.5
 sphinxcontrib-spelling==4.2.0
+
+# sphinx-autobuild has a dependency on Tornado,
+# but Tornado 6.0 dropped support for Python 2.7
+tornado<6.0
