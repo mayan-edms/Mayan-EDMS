@@ -14,6 +14,8 @@
   assertion errors from pip (https://github.com/pypa/pip/issues/6197).
 * Apply merge !37 by Roger Hunwicks (@roger.hunwicks) to allow
   TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue #566.
+* Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado version
+  used to 6.0 and continue supporting Python 2.7. GitLab issue #568.
 
 3.1.9 (2018-11-01)
 ==================
