@@ -12,6 +12,8 @@
 * Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
   on the armv7l platform (RasperryPi, Odroid XU4, Odroid HC2). Also fixes
   assertion errors from pip (https://github.com/pypa/pip/issues/6197).
+* Apply merge !37 by Roger Hunwicks (@roger.hunwicks) to allow
+  TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue #566.
 
 3.1.9 (2018-11-01)
 ==================
