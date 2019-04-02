@@ -34,7 +34,7 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
         else:
             if user:
-                if self.document_checkout_info(document).user != user:
+                if self.document_checkout_info(document=document).user != user:
                     event_document_forceful_check_in.commit(
                         actor=user, target=document
                     )
@@ -51,15 +51,13 @@ class DocumentCheckoutManager(models.Manager):
 
     def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
         return self.create(
-            document=document, expiration_datetime=expiration_datetime,
-            user=user, block_new_version=block_new_version
+            block_new_version=block_new_version, document=document,
+            expiration_datetime=expiration_datetime, user=user
         )
 
     def checked_out_documents(self):
         return Document.objects.filter(
-            pk__in=self.model.objects.all().values_list(
-                'document__pk', flat=True
-            )
+            pk__in=self.model.objects.values('document__id')
         )
 
     def document_checkout_info(self, document):
@@ -69,7 +67,7 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
 
     def document_checkout_state(self, document):
-        if self.is_document_checked_out(document):
+        if self.is_document_checked_out(document=document):
             return STATE_CHECKED_OUT
         else:
             return STATE_CHECKED_IN
@@ -95,10 +93,7 @@ class DocumentCheckoutManager(models.Manager):
         return self.get(document__pk=document.pk)
 
     def is_document_checked_out(self, document):
-        if self.model.objects.filter(document=document):
-            return True
-        else:
-            return False
+        return self.filter(document=document).exists()
 
 
 class NewVersionBlockManager(models.Manager):
