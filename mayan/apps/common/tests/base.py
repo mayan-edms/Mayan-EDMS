@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
+import importlib
 
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
@@ -42,15 +44,15 @@ class GenericViewTestCase(BaseTestCase):
         self.has_test_view = False
 
     def tearDown(self):
-        from mayan.urls import urlpatterns
+        urlconf = importlib.import_module(settings.ROOT_URLCONF)
 
         self.client.logout()
         if self.has_test_view:
-            urlpatterns.pop(0)
+            urlconf.urlpatterns.pop(0)
         super(GenericViewTestCase, self).tearDown()
 
     def add_test_view(self, test_object):
-        from mayan.urls import urlpatterns
+        urlconf = importlib.import_module(settings.ROOT_URLCONF)
 
         def test_view(request):
             template = Template('{{ object }}')
@@ -59,7 +61,7 @@ class GenericViewTestCase(BaseTestCase):
             )
             return HttpResponse(template.render(context=context))
 
-        urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))
+        urlconf.urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))
         clear_url_caches()
         self.has_test_view = True
 
