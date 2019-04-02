@@ -81,6 +81,6 @@ class SearchAPITestCase(DocumentTestMixin, BaseAPITestCase):
         response = self._request_advanced_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['label'], self.document.label
+            response.data['results'][0]['label'], self.test_document.label
         )
         self.assertEqual(response.data['count'], 1)
