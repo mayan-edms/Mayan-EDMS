@@ -67,10 +67,10 @@ clean-pyc:
 # Testing
 
 test:
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
 test-all:
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --nomigrations $(ARGUMENTS)
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true
