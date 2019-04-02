@@ -53,6 +53,7 @@ class ACLAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_object_acl_delete_view(self):
+        self.expected_content_type = None
         self._create_acl()
 
         response = self.delete(
@@ -87,6 +88,7 @@ class ACLAPITestCase(DocumentTestMixin, BaseAPITestCase):
         )
 
     def test_object_acl_permission_delete_view(self):
+        self.expected_content_type = None
         self._create_acl()
         permission = self.acl.permissions.first()
 

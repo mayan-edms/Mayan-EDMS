@@ -8,7 +8,7 @@ from django.utils.timezone import now
 from common.literals import TIME_DELTA_UNIT_DAYS
 from documents.tests import GenericDocumentViewTestCase
 from sources.links import link_upload_version
-from user_management.tests import (
+from user_management.tests.literals import (
     TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_PASSWORD,
     TEST_ADMIN_USERNAME,
 )

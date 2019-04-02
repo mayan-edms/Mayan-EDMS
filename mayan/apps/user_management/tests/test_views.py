@@ -87,10 +87,11 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
         self.logout()
 
-        with self.assertRaises(AssertionError):
-            self.login(
-                username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-            )
+        result = self.login(
+            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
+        )
+
+        self.assertFalse(result)
 
         response = self.get('common:current_user_details')
 
@@ -134,10 +135,11 @@ class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
 
         self.logout()
 
-        with self.assertRaises(AssertionError):
-            self.login(
-                username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-            )
+        result = self.login(
+            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
+        )
+
+        self.assertFalse(result)
 
         response = self.get('common:current_user_details')
         self.assertEqual(response.status_code, 302)

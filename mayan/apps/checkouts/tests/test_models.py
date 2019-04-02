@@ -35,21 +35,6 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
             )
         )
 
-    def test_version_creation_blocking(self):
-        # Silence unrelated logging
-        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
-
-        expiration_datetime = now() + datetime.timedelta(days=1)
-
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
-
-        with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.document.new_version(file_object=file_object)
-
     def test_checkin_in(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
@@ -100,16 +85,6 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
 
         self.assertFalse(self.document.is_checked_out())
 
-    def test_blocking_new_versions(self):
-        # Silence unrelated logging
-        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
-
-        NewVersionBlock.objects.block(document=self.document)
-
-        with self.assertRaises(NewDocumentVersionNotAllowed):
-            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.document.new_version(file_object=file_object)
-
 
 @override_settings(OCR_AUTO_OCR=False)
 class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
@@ -120,6 +95,16 @@ class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(
             NewVersionBlock.objects.first().document, self.document
         )
+
+    def test_blocking_new_versions(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
+        NewVersionBlock.objects.block(document=self.document)
+
+        with self.assertRaises(NewDocumentVersionNotAllowed):
+            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+                self.document.new_version(file_object=file_object)
 
     def test_unblocking(self):
         NewVersionBlock.objects.create(document=self.document)
@@ -140,3 +125,18 @@ class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
         self.assertFalse(
             NewVersionBlock.objects.is_blocked(document=self.document)
         )
+
+    def test_version_creation_blocking(self):
+        # Silence unrelated logging
+        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+
+        expiration_datetime = now() + datetime.timedelta(days=1)
+
+        DocumentCheckout.objects.checkout_document(
+            document=self.document, expiration_datetime=expiration_datetime,
+            user=self.admin_user, block_new_version=True
+        )
+
+        with self.assertRaises(NewDocumentVersionNotAllowed):
+            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+                self.document.new_version(file_object=file_object)
