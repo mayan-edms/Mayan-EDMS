@@ -9,6 +9,9 @@
 * Add test for the advanced search API.
 * Apply merge fix !36 by Simeon Walker (@simeon-walker) to the advanced search
   API.
+* Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
+  on the armv7l platform (RasperryPi, Odroid XU4, Odroid HC2). Also fixes
+  assertion errors from pip (https://github.com/pypa/pip/issues/6197).
 
 3.1.9 (2018-11-01)
 ==================
