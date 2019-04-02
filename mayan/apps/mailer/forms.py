@@ -9,8 +9,6 @@ from acls.models import AccessControlList
 from common.forms import DynamicModelForm
 from common.settings import setting_project_title, setting_project_url
 
-import mayan
-
 from .classes import MailerBackend
 from .models import UserMailer
 from .permissions import permission_user_mailer_use
