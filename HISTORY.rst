@@ -7,7 +7,7 @@
 * Add support for disabling the content type checking test case mixin.
 * Update document indexing tests to be order agnostic. GitLab issue #559.
 * Add test for the advanced search API.
-* Apply merge fix !36 by Simeon Walker (@simeon-walker) to the advanced search
+* Apply merge !36 by Simeon Walker (@simeon-walker) to fix the advanced search
   API.
 * Apply merge !35 by Manoel Brunnen (@mbru) to fix building the Docker image
   on the armv7l platform (RasperryPi, Odroid XU4, Odroid HC2). Also fixes
@@ -16,6 +16,8 @@
   TestViewTestCaseMixin to work with a custom ROOT_URLCONF. GitLab issue #566.
 * Apply merge !40 by Roger Hunwicks (@/roger.hunwicks) to pin the Tornado version
   used to 6.0 and continue supporting Python 2.7. GitLab issue #568.
+* Apply merge !41 by Jorge E. Gomez (@jorgeegomez) to fix the compressed class
+  method name. GitLab issue #572.
 
 3.1.9 (2018-11-01)
 ==================

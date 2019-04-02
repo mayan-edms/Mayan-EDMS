@@ -11,13 +11,13 @@ from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
-    GenericDocumentViewTestCase, TEST_DOCUMENT_DESCRIPTION,
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_CHECKSUM,
-    TEST_SMALL_DOCUMENT_PATH,
+    GenericDocumentViewTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
 )
 
 from ..links import link_upload_version
-from ..literals import SOURCE_CHOICE_WEB_FORM
+from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import StagingFolderSource, WebFormSource
 from ..permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -38,9 +38,10 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         )
 
         self.document.delete()
+        self.login_user()
 
-    def _request_upload_wizard_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+    def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
+        with open(document_path, mode='rb') as file_object:
             return self.post(
                 viewname='sources:upload_interactive', args=(self.source.pk,),
                 data={
@@ -49,16 +50,34 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
                 }, follow=True
             )
 
-    def test_upload_wizard_without_permission(self):
-        self.login_user()
+    def test_upload_compressed_file(self):
+        self.source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
+        self.source.save()
 
+        self.grant_access(
+            obj=self.document_type, permission=permission_document_create
+        )
+        self._request_upload_wizard_view(
+            document_path=TEST_COMPRESSED_DOCUMENT_PATH
+        )
+        self.assertEqual(Document.objects.count(), 2)
+        self.assertTrue(
+            'first document.pdf' in Document.objects.values_list(
+                'label', flat=True
+            )
+        )
+        self.assertTrue(
+            'second document.pdf' in Document.objects.values_list(
+                'label', flat=True
+            )
+        )
+
+    def test_upload_wizard_without_permission(self):
         response = self._request_upload_wizard_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_upload_wizard_with_permission(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_create)
 
         response = self._request_upload_wizard_view()
@@ -74,8 +93,6 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         Test uploading of documents by granting the document create
         permssion for the document type to the user
         """
-        self.login_user()
-
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
         self.grant_access(
@@ -102,13 +119,10 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         )
 
     def test_upload_interactive_view_no_permission(self):
-        self.login_user()
-
         response = self._request_upload_interactive_view()
         self.assertEqual(response.status_code, 403)
 
     def test_upload_interactive_view_with_access(self):
-        self.login_user()
         self.grant_access(
             permission=permission_document_create, obj=self.document_type
         )

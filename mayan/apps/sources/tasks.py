@@ -142,7 +142,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                 compressed_file = Archive.open(file_object=file_object)
                 for compressed_file_child in compressed_file.get_members():
                     # TODO: find way to uniquely identify child files
-                    # Use filename in the mean time.
+                    # Use filename in the meantime.
                     if force_text(compressed_file_child) not in skip_list:
                         kwargs.update(
                             {'label': force_text(compressed_file_child)}
