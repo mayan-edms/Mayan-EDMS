@@ -1,3 +1,14 @@
+3.1.10 (2019-04-XX)
+===================
+* Backport test case improvements from the development branch. Add random
+  primary key mixin. Split test case code into mixins. Make the view test
+  case and the API test cases part of the same class hierachy. Update tests
+  that failed due to the new import locations.
+* Update document indexing tests to be order agnostic. GitLab issue #559.
+* Add test for the advanced search API.
+* Apply merge fix !36 by Simeon Walker (@simeon-walker) to the advanced search
+  API.
+
 3.1.9 (2018-11-01)
 ==================
 * Convert the furl instance to text to allow serializing it into
