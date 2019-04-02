@@ -47,6 +47,7 @@ apt-get install -y --no-install-recommends \
         supervisor \
         tesseract-ocr \
         zlib1g-dev \
+        libssl-dev \
 && \
 apt-get clean autoclean && \
 apt-get autoremove --purge -y && \
@@ -67,7 +68,6 @@ ln -s /usr/lib/aarch64-linux-gnu/libjpeg.so /usr/lib/ \
 
 # Pillow can't find zlib or libjpeg on armv7l (ODROID HC1)
 RUN if [ "$(uname -m)" = "armv7l" ]; then \
-apt-get install libssl-dev -y && \
 ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ && \
 ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
 ; fi
@@ -131,11 +131,11 @@ COPY --from=BUILDER_IMAGE /code/docker/version .
 RUN chown -R mayan:mayan $PROJECT_INSTALL_DIR
 
 # Install build Mayan EDMS
-RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir *.whl && \
+RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir --no-use-pep517 *.whl && \
 rm *.whl
 
 # Install Python clients for librabbitmq, MySQL, PostgreSQL, REDIS
-RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6
+RUN sudo -u mayan $PYTHON_PIP install --no-cache-dir --no-use-pep517 librabbitmq==1.6.1 mysql-python==1.2.5 psycopg2==2.7.3.2 redis==2.10.6
 
 # Setup supervisor
 COPY docker/etc/supervisor/mayan.conf /etc/supervisor/conf.d
