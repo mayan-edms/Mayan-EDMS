@@ -119,11 +119,11 @@ msgstr "Type de document modifié"
 
 #: events.py:27
 msgid "Document type created"
-msgstr ""
+msgstr "Type de document créé"
 
 #: events.py:31
 msgid "Document type edited"
-msgstr ""
+msgstr "Type de document modifié"
 
 #: events.py:34
 msgid "Document version reverted"
@@ -260,11 +260,11 @@ msgstr "Supprimer"
 
 #: links.py:106 links.py:164
 msgid "Add to favorites"
-msgstr ""
+msgstr "Ajouter aux favoris"
 
 #: links.py:111 links.py:168
 msgid "Remove from favorites"
-msgstr ""
+msgstr "Retirer des favoris"
 
 #: links.py:116 links.py:156
 msgid "Move to trash"
@@ -280,7 +280,7 @@ msgstr "Changer le type"
 
 #: links.py:131 links.py:176
 msgid "Advanced download"
-msgstr ""
+msgstr "Téléchargement avancé"
 
 #: links.py:135
 msgid "Print"
@@ -288,7 +288,7 @@ msgstr "Imprimer"
 
 #: links.py:139
 msgid "Quick download"
-msgstr ""
+msgstr "Téléchargement rapide"
 
 #: links.py:143 links.py:179
 msgid "Recalculate page count"
@@ -317,15 +317,15 @@ msgstr "Tous les documents"
 
 #: links.py:214 views/document_views.py:885
 msgid "Favorites"
-msgstr ""
+msgstr "Favoris"
 
 #: links.py:218 views/document_views.py:969
 msgid "Recently accessed"
-msgstr ""
+msgstr "Recemment consulté"
 
 #: links.py:222 views/document_views.py:993
 msgid "Recently added"
-msgstr ""
+msgstr "Récemment ajouté"
 
 #: links.py:226
 msgid "Trash can"
@@ -423,7 +423,7 @@ msgstr "Toutes les pages"
 
 #: models.py:74
 msgid "The name of the document type."
-msgstr ""
+msgstr "Le nom du type de document"
 
 #: models.py:75 models.py:193 models.py:767 search.py:21 search.py:42
 msgid "Label"
@@ -469,7 +469,7 @@ msgstr ""
 
 #: models.py:193
 msgid "The name of the document."
-msgstr ""
+msgstr "Le nom du document"
 
 #: models.py:197
 msgid "An optional short text describing a document."
@@ -491,7 +491,7 @@ msgstr "Ajouté"
 
 #: models.py:208
 msgid "The dominant language in the document."
-msgstr ""
+msgstr "La langue dominante du document"
 
 #: models.py:213
 msgid "Whether or not this document is in the trash."
@@ -617,11 +617,11 @@ msgstr "Utilisateur"
 
 #: models.py:1088
 msgid "Favorite document"
-msgstr ""
+msgstr "Document favori"
 
 #: models.py:1089
 msgid "Favorite documents"
-msgstr ""
+msgstr "Documents favoris"
 
 #: models.py:1114
 msgid "Accessed"
@@ -759,7 +759,7 @@ msgstr ""
 
 #: settings.py:26
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Arguments à passer à DOCUMENT_CACHE_STORAGE_BACKEND"
 
 #: settings.py:32
 msgid ""
@@ -775,7 +775,7 @@ msgstr "Désactive le deuxième niveau de cache qui stocke des versions de moyen
 
 #: settings.py:53
 msgid "Maximum number of favorite documents to remember per user."
-msgstr ""
+msgstr "Nombre maximum de documents favoris à mémoriser par utilisateur"
 
 #: settings.py:59
 msgid ""
@@ -806,7 +806,7 @@ msgstr ""
 
 #: settings.py:102
 msgid "Maximum number of recently created documents to show."
-msgstr ""
+msgstr "Nombre maximum des documents créés récemment à afficher"
 
 #: settings.py:108
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -818,11 +818,11 @@ msgstr ""
 
 #: settings.py:122
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
-msgstr ""
+msgstr "Arguments à passer à DOCUMENT_STORAGE_BACKEND"
 
 #: settings.py:126
 msgid "Height in pixels of the document thumbnail image."
-msgstr ""
+msgstr "Hauteur en pixels de la vignette du document"
 
 #: settings.py:137
 msgid ""
@@ -961,7 +961,7 @@ msgstr ""
 
 #: views/document_type_views.py:70
 msgid "No document types available"
-msgstr ""
+msgstr "Aucun type de document disponible"
 
 #: views/document_type_views.py:102
 msgid "All documents of this type will be deleted too."
@@ -1002,7 +1002,7 @@ msgstr ""
 
 #: views/document_type_views.py:238
 msgid "There are no quick labels for this document type"
-msgstr ""
+msgstr "Il n'y a aucun libellé rapide défini pour ce type de document"
 
 #: views/document_type_views.py:241
 #, python-format
@@ -1043,7 +1043,7 @@ msgstr "Prévisualiser la version du document : %s"
 #: views/document_views.py:71
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
-msgstr ""
+msgstr "Erreur lors de la récupération de la liste de documents: %(exception)s."
 
 #: views/document_views.py:91
 msgid ""
@@ -1054,7 +1054,7 @@ msgstr ""
 
 #: views/document_views.py:95
 msgid "No documents available"
-msgstr ""
+msgstr "Aucun document disponible"
 
 #: views/document_views.py:109
 msgid "Delete the selected document?"
@@ -1078,7 +1078,7 @@ msgstr ""
 
 #: views/document_views.py:166
 msgid "There are no documents in the trash can"
-msgstr ""
+msgstr "Il n'y a aucun document dans la corbeille"
 
 #: views/document_views.py:179
 #, python-format
@@ -1112,11 +1112,11 @@ msgstr "Type de document de \"%s\" modifié avec succès."
 
 #: views/document_views.py:248
 msgid "Only exact copies of this document will be shown in the this list."
-msgstr ""
+msgstr "Seules les copies exactes de ce document seront affichées dans cette liste"
 
 #: views/document_views.py:252
 msgid "There are no duplicates for this document"
-msgstr ""
+msgstr "Il n'y a aucun doublon pour ce document"
 
 #: views/document_views.py:255
 #, python-format
@@ -1260,7 +1260,7 @@ msgstr ""
 
 #: views/document_views.py:863
 msgid "There are no duplicated documents"
-msgstr ""
+msgstr "Il n'y a aucun document dupliqué"
 
 #: views/document_views.py:881
 #, python-format
@@ -1271,17 +1271,17 @@ msgstr ""
 
 #: views/document_views.py:884
 msgid "There are no favorited documents."
-msgstr ""
+msgstr "Il n'y a aucun document favori"
 
 #: views/document_views.py:895
 #, python-format
 msgid "%(count)d document added to favorites."
-msgstr ""
+msgstr "%(count)d document ajouté aux favoris"
 
 #: views/document_views.py:898
 #, python-format
 msgid "%(count)d documents added to favorites."
-msgstr ""
+msgstr "%(count)d documents ajoutés aux favoris"
 
 #: views/document_views.py:905
 msgid "Add"
@@ -1296,17 +1296,17 @@ msgstr[1] ""
 #: views/document_views.py:921
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
-msgstr ""
+msgstr "Le document \"%(instance)s\" n'est pas dans les favoris"
 
 #: views/document_views.py:925
 #, python-format
 msgid "%(count)d document removed from favorites."
-msgstr ""
+msgstr "%(count)d document retiré des favoris"
 
 #: views/document_views.py:928
 #, python-format
 msgid "%(count)d documents removed from favorites."
-msgstr ""
+msgstr "%(count)d documents retirés des favoris"
 
 #: views/document_views.py:935
 msgid "Remove"
@@ -1326,15 +1326,15 @@ msgstr ""
 
 #: views/document_views.py:967
 msgid "There are no recently accessed document"
-msgstr ""
+msgstr "Il n'y a aucun document consulté récemment"
 
 #: views/document_views.py:987
 msgid "This view will list the latest documents uploaded in the system."
-msgstr ""
+msgstr "Cette vue listera les documents les plus récents qui ont été chargés dans le système"
 
 #: views/document_views.py:991
 msgid "There are no recently added document"
-msgstr ""
+msgstr "Il n'y a aucun document ajouté récemment"
 
 #: views/misc_views.py:18
 msgid "Clear the document image cache?"
