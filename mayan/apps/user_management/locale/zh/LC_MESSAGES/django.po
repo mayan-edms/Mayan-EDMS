@@ -1,0 +1,299 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:33-0400\n"
+"PO-Revision-Date: 2019-01-24 00:42+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:53 permissions.py:7
+msgid "User management"
+msgstr "用户管理"
+
+#: apps.py:68
+msgid "All the groups."
+msgstr "所有用户组"
+
+#: apps.py:72
+msgid "All the users."
+msgstr "所有用户"
+
+#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:274
+msgid "Users"
+msgstr "用户"
+
+#: apps.py:94
+msgid "Full name"
+msgstr "全名"
+
+#: apps.py:97 search.py:22
+msgid "Email"
+msgstr "电子邮件"
+
+#: apps.py:100
+msgid "Active"
+msgstr "活跃的"
+
+#: apps.py:106
+msgid "Has usable password?"
+msgstr "有可用的密码吗？"
+
+#: links.py:18 views.py:32
+msgid "Create new group"
+msgstr "创建新用户组"
+
+#: links.py:22 links.py:46 links.py:61
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:25 links.py:49
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:29 links.py:38 links.py:53 search.py:25 views.py:71
+msgid "Groups"
+msgstr "用户组"
+
+#: links.py:42 views.py:135
+msgid "Create new user"
+msgstr "创建新用户"
+
+#: links.py:65 links.py:74
+msgid "Set password"
+msgstr "设置密码"
+
+#: links.py:70
+msgid "User options"
+msgstr "用户选项"
+
+#: models.py:13
+msgid "User"
+msgstr "用户"
+
+#: models.py:17
+msgid "Forbid this user from changing their password."
+msgstr "禁止此用户更改密码。"
+
+#: models.py:23
+msgid "User settings"
+msgstr "用户设置"
+
+#: models.py:24
+msgid "Users settings"
+msgstr "用户设置"
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "创建新用户组"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "删除现有用户组"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "编辑现有用户组"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "查看现有用户组"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "创建新用户"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "删除现有用户"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "编辑现有用户"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "查看现有用户"
+
+#: search.py:19
+msgid "First name"
+msgstr "名字"
+
+#: search.py:28
+msgid "Last name"
+msgstr "姓氏"
+
+#: search.py:31
+msgid "username"
+msgstr "用户名"
+
+#: search.py:41
+msgid "Name"
+msgstr "名称"
+
+#: serializers.py:34
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr "用于分配此用户的逗号分隔的用户组主键列表。"
+
+#: serializers.py:64
+msgid "List of group primary keys to which to add the user."
+msgstr "要添加用户的用户组主键列表。"
+
+#: views.py:48
+#, python-format
+msgid "Edit group: %s"
+msgstr "编辑用户组：%s"
+
+#: views.py:64
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr "用户组是组织单位。它们应反映你组织的组织单位。用户组不能用于访问控制。使用角色进行权限和访问控制，并向其中添加用户组。"
+
+#: views.py:70
+msgid "There are no user groups"
+msgstr "没有用户组"
+
+#: views.py:83
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "删除用户组：%s？"
+
+#: views.py:89
+msgid "Available users"
+msgstr "可用用户"
+
+#: views.py:90
+msgid "Users in group"
+msgstr "用户组中的用户"
+
+#: views.py:111
+#, python-format
+msgid "Users of group: %s"
+msgstr "用户组的用户：%s"
+
+#: views.py:145
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr "用户“%s”创建成功。"
+
+#: views.py:157
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "在%(count)d用户上执行的用户删除请求"
+
+#: views.py:159
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "在%(count)d用户上执行的用户删除请求"
+
+#: views.py:167
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "删除用户"
+
+#: views.py:177
+#, python-format
+msgid "Delete user: %s"
+msgstr "删除用户：%s"
+
+#: views.py:189
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "不允许超级用户和员工用户的删除，在这些情况下请使用管理界面。"
+
+#: views.py:197
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "用户“%s”已成功删除。"
+
+#: views.py:203
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "删除用户“%(user)s”时出错：%(error)s"
+
+#: views.py:219
+#, python-format
+msgid "Edit user: %s"
+msgstr "编辑用户：%s"
+
+#: views.py:225
+msgid "Available groups"
+msgstr "可用的用户组"
+
+#: views.py:226
+msgid "Groups joined"
+msgstr "加入的用户组"
+
+#: views.py:235
+#, python-format
+msgid "Groups of user: %s"
+msgstr "用户组：%s"
+
+#: views.py:270
+msgid ""
+"User accounts can be create from this view. After creating an user account "
+"you will prompted to set a password for it. "
+msgstr "可以从此视图创建用户帐户。创建用户帐户后，系统会提示您为其设置密码。"
+
+#: views.py:273
+msgid "There are no user accounts"
+msgstr "没有用户帐户"
+
+#: views.py:290
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "编辑用户选项：%s"
+
+#: views.py:312
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:314
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:321
+msgid "Submit"
+msgstr "提交"
+
+#: views.py:323
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "更改用户密码"
+
+#: views.py:333
+#, python-format
+msgid "Change password for user: %s"
+msgstr "更改用户密码：%s"
+
+#: views.py:354
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "不允许超级用户和员工用户的密码重置，在这些情况下请使用管理界面。"
+
+#: views.py:364
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "用户成功重置密码：%s。"
+
+#: views.py:370
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "重置用户“%(user)s”的密码时出错：%(error)s"

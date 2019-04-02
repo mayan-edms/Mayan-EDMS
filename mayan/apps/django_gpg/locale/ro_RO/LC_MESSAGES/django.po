@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-15 21:25+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: apps.py:31
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:49 forms.py:17
 msgid "Key ID"
@@ -28,7 +29,7 @@ msgstr "ID cheie"
 
 #: apps.py:47 apps.py:60 forms.py:19 models.py:52
 msgid "User ID"
-msgstr ""
+msgstr "Identificatorul utilizatorului"
 
 #: apps.py:50 forms.py:34 models.py:55
 msgid "Type"
@@ -36,19 +37,19 @@ msgstr "Tip"
 
 #: apps.py:52 forms.py:23 models.py:36
 msgid "Creation date"
-msgstr ""
+msgstr "Data creării"
 
 #: apps.py:55 forms.py:27 models.py:40
 msgid "Expiration date"
-msgstr ""
+msgstr "Data expirării"
 
 #: apps.py:56
 msgid "No expiration"
-msgstr ""
+msgstr "Fără dată de expirare"
 
 #: apps.py:58 forms.py:32 models.py:47
 msgid "Length"
-msgstr ""
+msgstr "Lungime"
 
 #: forms.py:28
 msgid "None"
@@ -56,11 +57,11 @@ msgstr "Nici unul"
 
 #: forms.py:31 models.py:44
 msgid "Fingerprint"
-msgstr ""
+msgstr "Amprentă digitală"
 
 #: forms.py:33 models.py:50
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritm"
 
 #: forms.py:47
 msgid "Term"
@@ -68,7 +69,7 @@ msgstr "Termen"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Nume, e-mail, ID-ul de cheie sau amprenta cheii pentru a căuta."
+msgstr "Numele, e-mailul, ID-ul cheii sau amprenta cheie de căutat."
 
 #: links.py:15
 msgid "Delete"
@@ -88,23 +89,23 @@ msgstr "Interogare keyservers"
 
 #: links.py:32
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: links.py:37 permissions.py:7
 msgid "Key management"
-msgstr "gestionare chei"
+msgstr "Gestionare chei"
 
 #: links.py:41
 msgid "Upload key"
-msgstr ""
+msgstr "Încărcare chei"
 
 #: links.py:44 views.py:199
 msgid "Private keys"
-msgstr ""
+msgstr "Chei private"
 
 #: links.py:48 views.py:176
 msgid "Public keys"
-msgstr ""
+msgstr "Chei publice"
 
 #: literals.py:6 literals.py:14
 msgid "Public"
@@ -128,7 +129,7 @@ msgstr "Elgamal"
 
 #: literals.py:43
 msgid "Bad signature."
-msgstr "Semnătură nereuşită."
+msgstr "Semnătura nepotrivită."
 
 #: literals.py:46
 msgid "Document not signed or invalid signature."
@@ -152,27 +153,27 @@ msgstr "Documentul este semnat cu o semnătură validă."
 
 #: models.py:32
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "Versiunea blindată ASCII a cheii."
 
 #: models.py:33
 msgid "Key data"
-msgstr ""
+msgstr "Datele cheii"
 
 #: models.py:61
 msgid "Key"
-msgstr ""
+msgstr "Cheie"
 
 #: models.py:62
 msgid "Keys"
-msgstr ""
+msgstr "Chei"
 
 #: models.py:71
 msgid "Invalid key data"
-msgstr ""
+msgstr "Datele cheii sunt  incorecte"
 
 #: models.py:74
 msgid "Key already exists."
-msgstr ""
+msgstr "Cheia există deja."
 
 #: permissions.py:10
 msgid "Delete keys"
@@ -180,7 +181,7 @@ msgstr "Ștergeți cheile"
 
 #: permissions.py:13
 msgid "Download keys"
-msgstr ""
+msgstr "Descărcați cheile"
 
 #: permissions.py:16
 msgid "Import keys from keyservers"
@@ -188,19 +189,19 @@ msgstr "Importă cheile din keyservers"
 
 #: permissions.py:19
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "Utilizați cheile pentru a semna conținutul"
 
 #: permissions.py:22
 msgid "Upload keys"
-msgstr ""
+msgstr "Încărcați chei"
 
 #: permissions.py:25
 msgid "View keys"
-msgstr "Vizualiza cheile"
+msgstr "Vedeți cheile"
 
 #: settings.py:10
 msgid "Signatures"
-msgstr ""
+msgstr "Semnături"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
@@ -208,26 +209,26 @@ msgstr "Cale director utilizată pentru a stoca cheile, precum și fișiere de c
 
 #: settings.py:21
 msgid "Path to the GPG binary."
-msgstr ""
+msgstr "Calea către binarul GPG."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Keyserver-ul  folosit la interogarea cheilor."
 
 #: views.py:41
 #, python-format
 msgid "Delete key: %s"
-msgstr ""
+msgstr "Ștergeți cheia: %s"
 
 #: views.py:51
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "Detalii pentru cheia: %s"
 
 #: views.py:71
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "Importați cheia cu ID-ul:  %s?"
 
 #: views.py:72
 msgid "Import key"
@@ -236,12 +237,12 @@ msgstr "Import cheie"
 #: views.py:81
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Imposibil de importat cheia: %(key_id)s; %(error)s"
 
 #: views.py:88
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "Ați primit cu succes cheia: %(key_id)s"
 
 #: views.py:110
 msgid "Search"
@@ -249,43 +250,43 @@ msgstr "Căută"
 
 #: views.py:112
 msgid "Query key server"
-msgstr "Interogare cheie serverul"
+msgstr "Interogare keyserver"
 
 #: views.py:127
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile pentru a căuta cheile publice de importat de pe serverul de chei."
 
 #: views.py:131
 msgid "No results returned"
-msgstr ""
+msgstr "Nu s-au întors rezultate"
 
 #: views.py:133
 msgid "Key query results"
-msgstr ""
+msgstr "Rezultatele interogării cheii"
 
 #: views.py:152
 msgid "Upload new key"
-msgstr ""
+msgstr "Încărcați o cheie nouă"
 
 #: views.py:168
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile publice pot fi încărcate de utilizator sau descărcate de la serverele de chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
 #: views.py:174
 msgid "There no public keys"
-msgstr ""
+msgstr "Nu există chei publice"
 
 #: views.py:192
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user.The view to upload private and public keys is the same."
-msgstr ""
+msgstr "Cheile private sunt folosite pentru semnarea documentelor. Cheile private pot fi încărcate numai de utilizator. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
 #: views.py:197
 msgid "There no private keys"
-msgstr ""
+msgstr "Nu există chei private"

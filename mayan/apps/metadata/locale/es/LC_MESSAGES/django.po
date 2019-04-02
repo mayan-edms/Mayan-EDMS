@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:44-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
+"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"PO-Revision-Date: 2018-11-05 22:17+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -169,7 +169,7 @@ msgstr "Editar"
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
-msgstr ""
+msgstr "Nombre utilizado por otras aplicaciones para hacer referencia a este tipo de metadatos. No utilice palabras reservadas de python, o espacios."
 
 #: models.py:57
 msgid ""
@@ -226,7 +226,7 @@ msgstr "Tipo"
 
 #: models.py:198
 msgid "The actual value stored in the metadata type field for the document."
-msgstr ""
+msgstr "El valor real almacenado en el campo de tipo de metadatos para el documento."
 
 #: models.py:206 models.py:207
 msgid "Document metadata"
@@ -488,11 +488,11 @@ msgstr "Relaciones actualizadas con éxito"
 #: views.py:680
 msgid ""
 "Create metadata types to be able to associate them to this document type."
-msgstr ""
+msgstr "Cree tipos de metadatos para poder asociarlos a este tipo de documento."
 
 #: views.py:683
 msgid "There are no metadata types available"
-msgstr ""
+msgstr "No hay tipos de metadatos disponibles."
 
 #: views.py:686
 #, python-format

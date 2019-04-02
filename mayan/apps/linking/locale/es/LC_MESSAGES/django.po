@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:44-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"PO-Revision-Date: 2018-11-05 22:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Habilitado"
 
 #: forms.py:36
 msgid "Foreign document field"
-msgstr ""
+msgstr "Campo de documento extranjero"
 
 #: links.py:19
 msgid "Create condition"

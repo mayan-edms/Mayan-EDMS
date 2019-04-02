@@ -1,0 +1,295 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2018-09-12 07:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:48 permissions.py:8 settings.py:10
+msgid "Document signatures"
+msgstr "Υπογραφές εγγράφου"
+
+#: apps.py:88
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: apps.py:91 models.py:46
+msgid "Key ID"
+msgstr "Αναγνωριστικό κλειδιού"
+
+#: apps.py:95 forms.py:64 models.py:50
+msgid "Signature ID"
+msgstr "Αναγνωριστικό υπογραφής"
+
+#: apps.py:96 forms.py:76
+msgid "None"
+msgstr "Κανένα"
+
+#: apps.py:99
+msgid "Type"
+msgstr "Τύπος"
+
+#: forms.py:21
+msgid "Key"
+msgstr "Κλειδί"
+
+#: forms.py:25
+msgid "Passphrase"
+msgstr "Μυστική φράση"
+
+#: forms.py:46
+msgid "Signature is embedded?"
+msgstr "Ενσωματωμένη υπογραφή;"
+
+#: forms.py:48
+msgid "Signature date"
+msgstr "Ημερομηνία υπογραφής"
+
+#: forms.py:51
+msgid "Signature key ID"
+msgstr "Αναγνωριστικό κλειδιού υπογραφής"
+
+#: forms.py:53
+msgid "Signature key present?"
+msgstr "Υπάρχει κλειδί υπογραφής;"
+
+#: forms.py:66
+msgid "Key fingerprint"
+msgstr "Δακτυλικό αποτύπωμα κλειδιού"
+
+#: forms.py:70
+msgid "Key creation date"
+msgstr "Ημερομηνία δημιουργίας κλειδιού"
+
+#: forms.py:75
+msgid "Key expiration date"
+msgstr "Ημερομηνία λήξης κλειδιού"
+
+#: forms.py:80
+msgid "Key length"
+msgstr "Μήκος κλειδιού"
+
+#: forms.py:84
+msgid "Key algorithm"
+msgstr "Αλγόρυθμος κλειδιού"
+
+#: forms.py:88
+msgid "Key user ID"
+msgstr "Αναγνωριστικό χρήστη του κλειδιού"
+
+#: forms.py:92
+msgid "Key type"
+msgstr "Τύπος κλειδιού"
+
+#: links.py:36
+msgid "Verify all documents"
+msgstr "Απολήθευση όλων τωνεγγράφων"
+
+#: links.py:43 links.py:61 queues.py:8
+msgid "Signatures"
+msgstr "Υπογραφές"
+
+#: links.py:49
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:54
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+#: links.py:67
+msgid "Download"
+msgstr "Κατέβασμα"
+
+#: links.py:73
+msgid "Upload signature"
+msgstr "Ανέβασμα υπογραφής"
+
+#: links.py:79
+msgid "Sign detached"
+msgstr "Υπογραφή με αποσπασμένο κλειδί"
+
+#: links.py:85
+msgid "Sign embedded"
+msgstr "Υπογαφή με συμπερίληψη του κελιδιού"
+
+#: models.py:40
+msgid "Document version"
+msgstr "Έκδοση εγγράφου"
+
+#: models.py:44
+msgid "Date signed"
+msgstr "Ημερομηνία υπογραφής"
+
+#: models.py:54
+msgid "Public key fingerprint"
+msgstr "Δακτυλικό αποτύπωμα δημόσιου κλειδιού"
+
+#: models.py:60
+msgid "Document version signature"
+msgstr "Υπογραφή έκδοσης εγγράφου"
+
+#: models.py:61
+msgid "Document version signatures"
+msgstr "Υπογραφές έκδοσης εγγράφου"
+
+#: models.py:80
+msgid "Detached"
+msgstr "Αποσπασμένο"
+
+#: models.py:82
+msgid "Embedded"
+msgstr "Συμπεριλαμβανόμενο"
+
+#: models.py:97
+msgid "Document version embedded signature"
+msgstr "Συμπεριλαμβανόμενο κλειδί έκδοσης εγγράφου"
+
+#: models.py:98
+msgid "Document version embedded signatures"
+msgstr "Συμπεριλαμβανόμενα κλειδιά έκδοσης εγγράφου"
+
+#: models.py:131
+msgid "Signature file"
+msgstr "Αρχείο υπογραφής"
+
+#: models.py:138
+msgid "Document version detached signature"
+msgstr "Αποσπασμένο κλειδί έκδοσης εγγράφου"
+
+#: models.py:139
+msgid "Document version detached signatures"
+msgstr "Αποσπασμένα κλειδιά έκδοσης εγγράφου"
+
+#: models.py:142
+msgid "signature"
+msgstr "Υπογραφή"
+
+#: permissions.py:13
+msgid "Sign documents with detached signatures"
+msgstr "Υπογραφή εγγράφων με αποσπασμένα κλειδιά"
+
+#: permissions.py:17
+msgid "Sign documents with embedded signatures"
+msgstr "Υπογραφή εγγράφων με συμπεριλαμβανόμενα κλειδιά"
+
+#: permissions.py:21
+msgid "Delete detached signatures"
+msgstr "Διαγραφή αποσπασμένων υπογραφών"
+
+#: permissions.py:25
+msgid "Download detached document signatures"
+msgstr "Κατέβασμα αποσπασμένων υπογραφών εγγράφου"
+
+#: permissions.py:29
+msgid "Upload detached document signatures"
+msgstr "Ανέβασμα αποσπασμένων υπογραφών εγγράφου"
+
+#: permissions.py:33
+msgid "Verify document signatures"
+msgstr "Επαλήθευση υπογραφών εγγράφου"
+
+#: permissions.py:37
+msgid "View details of document signatures"
+msgstr "Εμφάνιση λεπτομεριών των υπογραφών εγγράφου"
+
+#: queues.py:11
+msgid "Verify key signatures"
+msgstr "Επαλήθευση κλειδιών υπογραφής"
+
+#: queues.py:15
+msgid "Unverify key signatures"
+msgstr "Ανάκληση επαλήθευσης κλειδιών υπογραφής"
+
+#: queues.py:19
+msgid "Verify document version"
+msgstr "Επαλήθευση έκδοσης εγγράφου"
+
+#: queues.py:24
+msgid "Verify missing embedded signature"
+msgstr "Επαλήθευση συμπεριλαμβανόμενης υπογραφής που λείπει"
+
+#: settings.py:14
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:23
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
+msgstr ""
+
+#: views.py:68 views.py:161
+msgid "Passphrase is needed to unlock this key."
+msgstr "Απαιτείται η φράση ασφαλείας για να ξεκλειδώσετε αυτό το κλειδί."
+
+#: views.py:78 views.py:171
+msgid "Passphrase is incorrect."
+msgstr "Η φράση ασφαλείας δεν είναι ορθή."
+
+#: views.py:99 views.py:191
+msgid "Document version signed successfully."
+msgstr "Η έκδοση του εγγράφου υπογράφηκε επιτυχώς."
+
+#: views.py:123
+#, python-format
+msgid "Sign document version \"%s\" with a detached signature"
+msgstr "Υπογραφή έκδοσης εγγράφου \"%s\" με μια αποσπασμένη υπογραφή\\"
+
+#: views.py:222
+#, python-format
+msgid "Sign document version \"%s\" with a embedded signature"
+msgstr "Υπογραφή έκδοσης εγγράφου \"%s\" με μια συμπεριλαμβανόμενη υπογραφή"
+
+#: views.py:245
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "Διαγραφή αποσπασμένης υπογραφής: %s"
+
+#: views.py:266
+#, python-format
+msgid "Details for signature: %s"
+msgstr "Λεπτομέρειες της υπογραφής: %s"
+
+#: views.py:306
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+
+#: views.py:328
+msgid "There are no signatures for this document."
+msgstr ""
+
+#: views.py:331
+#, python-format
+msgid "Signatures for document version: %s"
+msgstr "Υπογραφές για την έκδοση του εγγράφου: %s"
+
+#: views.py:360
+#, python-format
+msgid "Upload detached signature for document version: %s"
+msgstr "Ανέβασμα αποσπασμένης υπογραφής για την έκδοση του εγγράφου: %s"
+
+#: views.py:377
+msgid "On large databases this operation may take some time to execute."
+msgstr "Σε μεγάλες βάσεις δεδομένων αυτή η ενέργεια μπορεί να χρειαστεί αρκετό χρόνο για να ολοκληρωθεί."
+
+#: views.py:378
+msgid "Verify all document for signatures?"
+msgstr "Επαλήθευση όλων των υπογρφών για έγγραφα;"
+
+#: views.py:388
+msgid "Signature verification queued successfully."
+msgstr "Η ενέργεια επαλήθευσης υπογραφών προστέθηκε στην λίστα επιτυχώς."

@@ -4,16 +4,19 @@
 # 
 # Translators:
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Mathias Behrle <mathiasb@m9s.biz>, 2018
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# Stefan Rempe, 2018
+# Stefan Rempe, 2018
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2018-11-16 15:21+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +30,7 @@ msgstr "Dynamische Suche"
 
 #: classes.py:40
 msgid "No search model matching the query"
-msgstr "Kein passendes Such-Model gefunden"
+msgstr "Kein passendes Suchmodell zur Abfrage gefunden"
 
 #: forms.py:9
 msgid "Match all"
@@ -61,11 +64,11 @@ msgstr "Maximale Anzahl an Treffern, die angezeigt werden soll"
 
 #: views.py:26
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Bitte erneut mit anderen Suchbegriffen versuchen."
 
 #: views.py:28
 msgid "No search results"
-msgstr ""
+msgstr "Keine Suchergebnisse"
 
 #: views.py:31
 #, python-format

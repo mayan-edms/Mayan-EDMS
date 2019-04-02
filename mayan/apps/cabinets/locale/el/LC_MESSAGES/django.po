@@ -1,0 +1,257 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2018
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2018\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
+#: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
+msgid "Cabinets"
+msgstr "Ερμάρια"
+
+#: links.py:31 links.py:42
+msgid "Remove from cabinets"
+msgstr "Αφαίρεση από ερμάρια"
+
+#: links.py:35 links.py:39
+msgid "Add to cabinets"
+msgstr "Προθήκη στα ερμάρια"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Προσθήκη νέου επιπέδου"
+
+#: links.py:65 views.py:44
+msgid "Create cabinet"
+msgstr "Δημιουργία ερμαρίου"
+
+#: links.py:69
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:72
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:79
+msgid "All"
+msgstr "Όλα"
+
+#: links.py:83
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+#: models.py:26 search.py:16
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: models.py:29
+msgid "Documents"
+msgstr "Έγγραφα"
+
+#: models.py:37 models.py:87 serializers.py:139
+msgid "Cabinet"
+msgstr "Ερμάριο"
+
+#: models.py:88 serializers.py:140
+msgid "Parent and Label"
+msgstr "Γονέας και ετικέτα"
+
+#: models.py:95 serializers.py:146
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s με την ετικέτα %(field_labels)s υπάρχει ήδη."
+
+#: models.py:107
+msgid "Document cabinet"
+msgstr "Ερμάριο εγγράφων"
+
+#: models.py:108
+msgid "Document cabinets"
+msgstr "Ερμάρια εγγράφων"
+
+#: permissions.py:12
+msgid "Add documents to cabinets"
+msgstr "Προσθήκη εγγράφων στα ερμάρια"
+
+#: permissions.py:15
+msgid "Create cabinets"
+msgstr "Δημιουργία ερμαρίων"
+
+#: permissions.py:18
+msgid "Delete cabinets"
+msgstr "Διαγραφή ερμαρίων"
+
+#: permissions.py:21
+msgid "Edit cabinets"
+msgstr "Τροποποίηση ερμαρίων"
+
+#: permissions.py:24
+msgid "Remove documents from cabinets"
+msgstr "Αφαίρεση εγγράφων από ερμάρια"
+
+#: permissions.py:27
+msgid "View cabinets"
+msgstr "Εμφάνηση ερμαρίων"
+
+#: serializers.py:20
+msgid "List of children cabinets."
+msgstr "Λίστα υπο-ερμαρίων"
+
+#: serializers.py:23
+msgid "Number of documents on this cabinet level."
+msgstr "Αριθμός εγγράφων σε αυτό το επίπεδο του ερμάριο."
+
+#: serializers.py:27
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+
+#: serializers.py:33
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+
+#: serializers.py:69 serializers.py:180
+msgid "Comma separated list of document primary keys to add to this cabinet."
+msgstr ""
+
+#: serializers.py:159
+msgid ""
+"API URL pointing to a document in relation to the cabinet storing it. This "
+"URL is different than the canonical document URL."
+msgstr ""
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Πλοήγηση:"
+
+#: views.py:75
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Προσθήκη νέου επιπέδου στο: %s"
+
+#: views.py:88
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Διαγραφή του ερμαρίου: %s?"
+
+#: views.py:123
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+
+#: views.py:127
+msgid "This cabinet level is empty"
+msgstr ""
+
+#: views.py:129
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Λεπτομέρειες ερμαρίου: %s"
+
+#: views.py:160
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Τροποποίηση ερμαρίου: %s"
+
+#: views.py:176
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+
+#: views.py:180
+msgid "No cabinets available"
+msgstr ""
+
+#: views.py:212
+msgid "Documents can be added to many cabinets."
+msgstr ""
+
+#: views.py:215
+msgid "This document is not in any cabinet"
+msgstr ""
+
+#: views.py:218
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Ερμάρια που περιέχουν έγγραφο: %s"
+
+#: views.py:230
+#, python-format
+msgid "Add to cabinet request performed on %(count)d document"
+msgstr "Προσθήκη σε ερμάριο πραγματοποιήθηκε για %(count)d έγγραφο"
+
+#: views.py:233
+#, python-format
+msgid "Add to cabinet request performed on %(count)d documents"
+msgstr "Προσθήκη σε ερμάριο πραγματοποιήθηκε σε %(count)d έγγραφα"
+
+#: views.py:240
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: views.py:255
+#, python-format
+msgid "Add document \"%s\" to cabinets"
+msgstr "Προσθήκη \"%s\" εγγράφου σε ερμάρια"
+
+#: views.py:266
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Ερμάρια στα οποία τα επιλεγμένα έγγραφα θα προστεθούν."
+
+#: views.py:294
+#, python-format
+msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
+msgstr "Έγγραφο: %(document)s υπάρχει ήδη στο ερμάριο: %(cabinet)s."
+
+#: views.py:306
+#, python-format
+msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+msgstr "Έγγραφο: %(document)s προστέθηκε στο ερμάριο: %(cabinet)s επιτυχώς."
+
+#: views.py:319
+#, python-format
+msgid "Remove from cabinet request performed on %(count)d document"
+msgstr "Αφαίρεση από ερμάριο πραγματοποιήθηκε σε %(count)d έγγραφο"
+
+#: views.py:322
+#, python-format
+msgid "Remove from cabinet request performed on %(count)d documents"
+msgstr "Αφαίρεση από ερμάριο πραγματοποιήθηκε σε %(count)d έγγραφα"
+
+#: views.py:329
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#: views.py:355
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Ερμάρια από τα οποία τα επιλεγμένα έγγραφα θα αφαιρεθούν."
+
+#: views.py:382
+#, python-format
+msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
+msgstr "Έγγραφο: %(document)s δεν περιέχεται στο ερμάριο: %(cabinet)s."
+
+#: views.py:394
+#, python-format
+msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+msgstr "Έγγραφο: %(document)s αφαιρέθηκε από το ερμάριο: %(cabinet)s."

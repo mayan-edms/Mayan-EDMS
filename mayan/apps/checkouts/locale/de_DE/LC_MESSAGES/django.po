@@ -4,14 +4,16 @@
 # 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Mathias Behrle <mathiasb@m9s.biz>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-31 21:38+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +47,7 @@ msgstr "Dokument zwingend eingebucht"
 
 #: exceptions.py:27 views.py:50
 msgid "Document already checked out."
-msgstr "Dokument bereits ausgebucht"
+msgstr "Dokument bereits ausgebucht."
 
 #: forms.py:28
 msgid "Document status"
@@ -65,7 +67,7 @@ msgstr "Ausbuchungsende"
 
 #: forms.py:51
 msgid "New versions allowed?"
-msgstr "Neue Versionen erlaubt?"
+msgstr "Neue Versionen erlaubt"
 
 #: forms.py:52
 msgid "Yes"
@@ -133,7 +135,7 @@ msgstr "Ausbuchungsende muss in der Zukunft liegen."
 
 #: models.py:109
 msgid "New version block"
-msgstr "Akutialisierungsschutz"
+msgstr "Aktualisierungsschutz"
 
 #: models.py:110
 msgid "New version blocks"
@@ -157,15 +159,15 @@ msgstr "Ansicht der Ausbuchungsdetails"
 
 #: queues.py:8
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Wiederkehrende Ausbuchungen"
 
 #: queues.py:12
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Prüfe abgelaufene Ausbuchungen"
 
 #: serializers.py:26
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Primärschlüssel des auszubuchenden Dokuments."
 
 #: views.py:54
 #, python-format
@@ -175,12 +177,12 @@ msgstr "Fehler bei der Ausbuchung: %s"
 #: views.py:59
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr "Dokument \"%s\" erfolgreich ausgebucht"
+msgstr "Dokument \"%s\" erfolgreich ausgebucht."
 
 #: views.py:67
 #, python-format
 msgid "Check out document: %s"
-msgstr "Dokument %s ausbuchen "
+msgstr "Dokument %s ausbuchen"
 
 #: views.py:94
 msgid "Checkout time and date"
@@ -194,11 +196,11 @@ msgstr "Ausbuchungsende"
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
-msgstr ""
+msgstr "Das Ausbuchen eines Dokuments verhindert für eine bestimmte Zeit gewisse Operationen."
 
 #: views.py:112
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Keine Dokumente ausgebucht"
 
 #: views.py:113
 msgid "Documents checked out"
@@ -233,7 +235,7 @@ msgstr "Fehler bei der Einbuchung von Dokument %s"
 #: views.py:188
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr "Dokument \"%s\" erfolgreich eingebucht"
+msgstr "Dokument \"%s\" erfolgreich eingebucht."
 
 #: widgets.py:22
 msgid "Period"

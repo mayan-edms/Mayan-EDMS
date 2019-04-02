@@ -6,13 +6,13 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011,2013
-# Roberto Rosario, 2015,2017
+# Roberto Rosario, 2015,2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2018-11-05 22:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -61,11 +61,11 @@ msgstr "La cantidad máxima de resultados de búsqueda a recabar y mostrar."
 
 #: views.py:26
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Inténtalo de nuevo usando diferentes términos."
 
 #: views.py:28
 msgid "No search results"
-msgstr ""
+msgstr "No hay resultados de búsqueda"
 
 #: views.py:31
 #, python-format

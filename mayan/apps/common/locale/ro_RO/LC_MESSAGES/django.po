@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-19 10:02+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,106 +21,106 @@ msgstr ""
 
 #: apps.py:85 permissions_runtime.py:7 settings.py:12
 msgid "Common"
-msgstr ""
+msgstr "Comune"
 
 #: classes.py:214
 msgid "Available attributes: \n"
-msgstr ""
+msgstr "Atributele disponibile:\n"
 
 #: classes.py:254
 msgid "Available fields: \n"
-msgstr ""
+msgstr "Câmpuri disponibile:\n"
 
 #: dashboards.py:7
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #: forms.py:25
 msgid "Selection"
-msgstr "selecţie"
+msgstr "Selecţie"
 
 #: generics.py:137
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "Imposibil de transferat selecția: %s."
 
 #: generics.py:161
 msgid "Add"
-msgstr "Adaugă"
+msgstr "Adăugți"
 
 #: generics.py:172
 msgid "Remove"
-msgstr "Şterge"
+msgstr "Eliminați"
 
 #: generics.py:354
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "Obiectul tip %(object)s nu a fost creat, eroare: %(error)s"
 
 #: generics.py:365
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "Obiectul tip %(object)s a fost creat cu succes."
 
 #: generics.py:394
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "Obiectul tip %(object)s nu a fost șters, eroare: %(error)s."
 
 #: generics.py:405
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "Obiectul tip %(object)s a fost șters cu succes."
 
 #: generics.py:451
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
 
 #: generics.py:462
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
 
 #: links.py:40
 msgid "About this"
-msgstr ""
+msgstr "Despre asta"
 
 #: links.py:43 views.py:63
 msgid "Check for updates"
-msgstr ""
+msgstr "Verifică pentru actualizări"
 
 #: links.py:47
 msgid "User details"
-msgstr "detalii utilizator"
+msgstr "Detalii utilizator"
 
 #: links.py:51
 msgid "Edit details"
-msgstr ""
+msgstr "Editează detaliile"
 
 #: links.py:56
 msgid "Locale profile"
-msgstr ""
+msgstr "Profilul localizării"
 
 #: links.py:61
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Editați profilul localizării"
 
 #: links.py:66
 msgid "Documentation"
-msgstr ""
+msgstr "Documentație"
 
 #: links.py:70 links.py:81
 msgid "Errors"
-msgstr ""
+msgstr "Erori"
 
 #: links.py:75
 msgid "Clear all"
-msgstr ""
+msgstr "Curăță tot"
 
 #: links.py:85
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:89 views.py:166
 msgid "License"
@@ -127,33 +128,33 @@ msgstr "Licenţă"
 
 #: links.py:92 views.py:241
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Licențe pentru alte pachete"
 
 #: links.py:96
 msgid "Setup"
-msgstr ""
+msgstr "Configurare"
 
 #: links.py:99
 msgid "Source code"
-msgstr ""
+msgstr "Cod sursă"
 
 #: links.py:103
 msgid "Support"
-msgstr ""
+msgstr "Suport tehnic"
 
 #: links.py:107 queues.py:10 views.py:284
 msgid "Tools"
-msgstr ""
+msgstr "Unelte"
 
 #: literals.py:9
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui folosit numai pentru dezvoltare și testare, nu pentru producție."
 
 #: literals.py:18
 msgid "Days"
-msgstr "Zi"
+msgstr "Zile"
 
 #: literals.py:19
 msgid "Hours"
@@ -166,47 +167,47 @@ msgstr "Minute"
 #: management/commands/convertdb.py:28
 msgid ""
 "Restricts dumped data to the specified app_label or app_label.ModelName."
-msgstr ""
+msgstr "Restricționează datele care fac obiectul unui dumping la etichetele app_label sau app_label.ModelName specificate."
 
 #: management/commands/convertdb.py:35
 msgid ""
 "The database from which data will be exported. If omitted the database named"
 " \"default\" will be used."
-msgstr ""
+msgstr "Baza de date din care vor fi exportate datele. Dacă este omisă, va fi utilizată baza de date numită \"default\" ."
 
 #: management/commands/convertdb.py:42
 msgid ""
 "The database to which data will be imported. If omitted the database named "
 "\"default\" will be used."
-msgstr ""
+msgstr "Baza de date în care vor fi importate datele. Dacă este omisă, va fi utilizată baza de date numită \"default\"."
 
 #: management/commands/convertdb.py:49
 msgid ""
 "Force the conversion of the database even if the receiving database is not "
 "empty."
-msgstr ""
+msgstr "Forțați conversia bazei de date chiar dacă baza de date de primire nu este goală."
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Procesați o aplicație specifică."
 
 #: menus.py:15
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: menus.py:26 models.py:81
 msgid "User"
-msgstr "utilizator"
+msgstr "Utilizator"
 
 #: mixins.py:83
 #, python-format
 msgid "Operation performed on %(count)d object"
-msgstr ""
+msgstr "Operațiune efectuată pe obiectul %(count)d"
 
 #: mixins.py:84
 #, python-format
 msgid "Operation performed on %(count)d objects"
-msgstr ""
+msgstr "Operațiune efectuată pe %(count)dobiecte  "
 
 #: mixins.py:261
 msgid "Object"
@@ -214,7 +215,7 @@ msgstr "Obiect"
 
 #: models.py:24
 msgid "Namespace"
-msgstr ""
+msgstr "Spațiu de nume"
 
 #: models.py:35 models.py:55
 msgid "Date time"
@@ -222,15 +223,15 @@ msgstr "Data și ora"
 
 #: models.py:37 views.py:211
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: models.py:43
 msgid "Error log entry"
-msgstr ""
+msgstr "Intrare jurnal eroare"
 
 #: models.py:44
 msgid "Error log entries"
-msgstr ""
+msgstr "Înregistrări de eroare"
 
 #: models.py:51
 msgid "File"
@@ -242,87 +243,87 @@ msgstr "Nume fişier"
 
 #: models.py:59
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Fișier încărcat în comun"
 
 #: models.py:60
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Fișiere încărcate în comun"
 
 #: models.py:85
 msgid "Timezone"
-msgstr ""
+msgstr "Fus orar"
 
 #: models.py:88
 msgid "Language"
-msgstr ""
+msgstr "Limba"
 
 #: models.py:94
 msgid "User locale profile"
-msgstr ""
+msgstr "Profilul de localizare utilizator"
 
 #: models.py:95
 msgid "User locale profiles"
-msgstr ""
+msgstr "Profile de localizare pentru utilizatori"
 
 #: permissions_runtime.py:10
 msgid "View error log"
-msgstr ""
+msgstr "Vizualizați jurnalul de erori"
 
 #: queues.py:8
 msgid "Default"
-msgstr "Iniţial"
+msgstr "Implicit"
 
 #: queues.py:12
 msgid "Common periodic"
-msgstr ""
+msgstr "Obșnuite periodice"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Ștergeți încărcările învechite"
 
 #: settings.py:17
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Activați juranlizarea automată la toate aplicațiile."
 
 #: settings.py:23
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr ""
+msgstr "Timpul de întârziere pentru sarcini de fundal care depind de propagarea schimbărilor în  baza de date."
 
 #: settings.py:31
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
+msgstr "Un număr întreg ce specifică câte obiecte ar trebui să fie afișate pe pagină."
 
 #: settings.py:38
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Activați înregistrarea erorilor în afara capabilităților de înregistrare a erorilor de sistem."
 
 #: settings.py:45
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Calea către fișierul jurnal care va urmări erorile în timpul producției."
 
 #: settings.py:52
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Numele care urmează să fie afișat în meniul principal."
 
 #: settings.py:58
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "Adresa URL a instalării sau a paginii de pornire a proiectului."
 
 #: settings.py:64
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Un backend de stocare pe care toți lucrătorii îl pot folosi pentru partajarea fișierelor."
 
 #: settings.py:75
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "Directorul temporar a folosit în server pentru a stoca miniaturi, previzualizări și fișiere temporare."
 
 #: settings.py:81
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:86
 msgid ""
@@ -337,7 +338,7 @@ msgid ""
 " match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
-msgstr ""
+msgstr "O listă de șiruri reprezentând numele gazdă / domenii pe care acest site le poate difuza. Aceasta este o măsură de securitate pentru a preveni atacurile de antet gazdă HTTP, care sunt posibile chiar și în cazul multor configurații aparent confortabile ale serverului web. Valorile din această listă pot fi nume calificate complet (de exemplu, \"www.example.com\"), caz în care acestea vor fi potrivite exact cu antetul gazdei gazdă (fără majuscule, fără a include portul). O valoare care începe cu o un punct poate fi folosită ca un wildcard subdomeniu: '.example.com' se va potrivi cu example.com, www.example.com și orice alt subdomeniu al example.com. O valoare de '*' se va potrivi cu orice; în acest caz, sunteți responsabil să vă asigurați validarea propriu-zisă a antetului Host (poate într-un middleware, dacă acest lucru trebuie să fie menționat mai întâi în MIDDLEWARE)."
 
 #: settings.py:104
 msgid ""
@@ -347,7 +348,7 @@ msgid ""
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
-msgstr ""
+msgstr "Când este setat la True, dacă adresa URL a solicitării nu se potrivește cu niciunul dintre modelele din URLconf și nu se termină într-un / , redirecționarea HTTP se emite aceluiași URL cu  / adăugat. Rețineți că redirecționarea poate duce la pierderea datelor transmise într-o solicitare POST. Setarea APPEND_SLASH este utilizată numai dacă este instalat CommonMiddleware (consultați Middleware). Consultați și PREPEND_WWW."
 
 #: settings.py:116
 msgid ""
@@ -356,7 +357,7 @@ msgid ""
 "dictionary containing the options for an individual database. The DATABASES "
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
-msgstr ""
+msgstr "Un dicționar care conține setările pentru toate bazele de date care vor fi utilizate cu Django. Acesta este un dicționar imbricat al cărui conținut alcătuiește un alias de bază de date într-un dicționar care conține opțiunile pentru o bază de date individuală. Setarea DATABASES trebuie să configureze o bază de date implicită; poate fi specificat orice număr de baze de date adiționale."
 
 #: settings.py:128
 msgid ""
@@ -371,7 +372,7 @@ msgid ""
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
+msgstr "Implicit: 2621440 (adică 2,5 MB). Dimensiunea maximă în octeți pe care un corp de solicitare ar putea fi înainte ca o SuspiciousOperation (RequestDataTooBig) să fie ridicată. Verificarea se face când se accesează request.body sau request.POST și se calculează în funcție de dimensiunea totală a solicitării, excluzând datele de încărcare a fișierelor. Puteți seta această opțiune la None pentru a dezactiva verificarea. Aplicațiile care sunt așteptate să primească posturi neobișnuit de mari trebuie să ajusteze această setare. Suma datelor solicitate este corelată cu cantitatea de memorie necesară pentru procesarea solicitării și cu conținutul dicționarelor GET și POST. Solicitările mari ar putea fi folosite ca vector de atac al refuzului de serviciu dacă nu sunt bifate. Întrucât serverele web nu efectuează în mod obișnuit o inspecție profundă a solicitărilor, nu este posibil să efectuați o verificare similară la acel nivel. Consultați și FILE_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:148
 msgid ""
@@ -379,17 +380,17 @@ msgid ""
 "representing User-Agent strings that are not allowed to visit any page, "
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
-msgstr ""
+msgstr "Implicit: [] (Listă goală). Lista de obiecte de expresie obișnuită compilate care reprezintă șiruri de caractere ale utilizatorilor care nu au permisiunea de a vizita nicio pagină, la nivel de sistem. Utilizați acest lucru pentru roboți / crawlere rele. Acest lucru este folosit numai dacă este instalat CommonMiddleware (consultați Middleware)."
 
 #: settings.py:159
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
-msgstr ""
+msgstr "Implicit: 'django.core.mail.backends.smtp.EmailBackend'. Backend-ul de utilizat pentru trimiterea de e-mailuri."
 
 #: settings.py:167
 msgid "Default: 'localhost'. The host to use for sending email."
-msgstr ""
+msgstr "Implicit: \"localhost\". Gazda de utilizat pentru trimiterea de e-mailuri."
 
 #: settings.py:174
 msgid ""
@@ -397,17 +398,17 @@ msgid ""
 "EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
 "authenticating to the SMTP server. If either of these settings is empty, "
 "Django won't attempt authentication."
-msgstr ""
+msgstr "Implicit: '' (Șir gol). Parolă de utilizat pentru serverul SMTP definit în EMAIL_HOST. Această setare este utilizată împreună cu EMAIL_HOST_USER atunci când se autentifică la serverul SMTP. Dacă oricare dintre aceste setări este goală, Django nu va încerca autentificarea."
 
 #: settings.py:185
 msgid ""
 "Default: '' (Empty string). Username to use for the SMTP server defined in "
 "EMAIL_HOST. If empty, Django won't attempt authentication."
-msgstr ""
+msgstr "Implicit: '' (Șir gol). Utilizator de utilizat pentru serverul SMTP definit în EMAIL_HOST. Dacă este gol, Django nu va încerca autentificarea."
 
 #: settings.py:194
 msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
-msgstr ""
+msgstr "Implicit: 25. Portul de utilizat pentru serverul SMTP definit în EMAIL_HOST."
 
 #: settings.py:201
 msgid ""
@@ -415,7 +416,7 @@ msgid ""
 " SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
-msgstr ""
+msgstr "Implicit: Fals. Dacă să utilizați o conexiune TLS (securizată) atunci când vorbiți cu serverul SMTP. Acesta este utilizat pentru conexiuni TLS explicite, în general pe portul 587. Dacă întâmpinați conexiuni suspendate, consultați setarea implicită TLS EMAIL_USE_SSL."
 
 #: settings.py:211
 msgid ""
@@ -425,24 +426,24 @@ msgid ""
 "are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
 "that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
 "those settings to True."
-msgstr ""
+msgstr "Implicit: Fals. Dacă să utilizați o conexiune implicită TLS (securizată) atunci când vorbiți cu serverul SMTP. În majoritatea documentelor de e-mail, acest tip de conexiune TLS este denumit SSL. În general, este folosit pe portul 465. Dacă întâmpinați probleme, consultați setarea explicită TLS EMAIL_USE_TLS. Rețineți că EMAIL_USE_TLS / EMAIL_USE_SSL se exclud reciproc, deci setați numai una dintre aceste setări la True."
 
 #: settings.py:223
 msgid ""
 "Default: None. Specifies a timeout in seconds for blocking operations like "
 "the connection attempt."
-msgstr ""
+msgstr "Implicit: Niciuna. Specifică un interval de timp în secunde pentru blocarea operațiilor, cum ar fi încercarea de conectare."
 
 #: settings.py:231
 msgid ""
 "Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
 "will be before it gets streamed to the file system. See Managing files for "
 "details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
-msgstr ""
+msgstr "Implicit: 2621440 (adică 2,5 MB). Dimensiunea maximă (în octeți) pe care o încărcare va declanșa transmiterea în flux la sistemul de fișiere. Consultați Gestionarea fișierelor pentru detalii. Consultați și DATA_UPLOAD_MAX_MEMORY_SIZE."
 
 #: settings.py:242
 msgid "Name of the view attached to the branch anchor in the main menu."
-msgstr ""
+msgstr "Numele vizualizării atașată la ancora de ramură din meniul principal."
 
 #: settings.py:249
 msgid ""
@@ -450,7 +451,7 @@ msgid ""
 "Django installation. Each string should be a dotted Python path to: an "
 "application configuration class (preferred), or a package containing an "
 "application."
-msgstr ""
+msgstr "O listă de șiruri care indică toate aplicațiile activate în această instalare Django. Fiecare șir ar trebui să fie o cale Python punctată la: o clasă de configurare a aplicației (preferată) sau un pachet care conține o aplicație."
 
 #: settings.py:259
 msgid ""
@@ -459,7 +460,7 @@ msgid ""
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
-msgstr ""
+msgstr "Implicit: '/ accounts / login /' URL-ul în cazul în care cererile sunt redirecționate pentru autentificare, mai ales când utilizați decoratorul login_required (). Această setare acceptă, de asemenea, șabloanele URL denumite care pot fi utilizate pentru a reduce duplicarea configurației, deoarece nu trebuie să definiți adresa URL în două locuri (setări și URLconf)."
 
 #: settings.py:271
 msgid ""
@@ -468,11 +469,11 @@ msgid ""
 "by the login_required() decorator, for example. This setting also accepts "
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
-msgstr ""
+msgstr "Implicit: '/ accounts / profile /' Adresa URL unde cererile sunt redirecționate după autentificare când vizualizarea contrib.auth.login nu primește niciun alt parametru. Acest lucru este folosit, de exemplu, de decoratorul login_required (). Această setare acceptă, de asemenea, șabloanele URL denumite care pot fi utilizate pentru a reduce duplicarea configurației, deoarece nu trebuie să definiți adresa URL în două locuri (setări și URLconf)."
 
 #: settings.py:280
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:285
 msgid ""
@@ -480,7 +481,7 @@ msgid ""
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
-msgstr ""
+msgstr "Implicit: \"amqp: //\". Adresa URL a brokerului implicit. Aceasta trebuie să fie o adresă URL sub forma: transport://userid:password@hostname:port/virtual_host Este necesar doar partea sistemului (transport: //), restul este opțional și are implicit valorile implicite pentru transport."
 
 #: settings.py:295
 msgid ""
@@ -488,17 +489,17 @@ msgid ""
 "task results (tombstones). Refer to "
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
-msgstr ""
+msgstr "Implicit: niciun rezultat de backend activat în mod implicit. Backend-ul folosit pentru a stoca rezultatele sarcinilor (pietre funerare). Consultați http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend "
 
 #: utils.py:74
 msgid "Anonymous"
-msgstr "anonim"
+msgstr "Anonim"
 
 #: validators.py:29
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Introduceți un \"nume intern\" valabil format din litere, numere și subliniere."
 
 #: views.py:39
 msgid "About"
@@ -507,67 +508,67 @@ msgstr "Despre"
 #: views.py:51
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Versiunea pe care o utilizați este depășită. Ultima versiune este %s"
 
 #: views.py:56
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Nu este posibil să se determine cea mai recentă versiune disponibilă."
 
 #: views.py:60
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Versiunea dvs. este actualizată."
 
 #: views.py:77
 msgid "Current user details"
-msgstr ""
+msgstr "Detaliile utilizatorului actual"
 
 #: views.py:82
 msgid "Edit current user details"
-msgstr ""
+msgstr "Editați detaliile utilizatorului curent"
 
 #: views.py:102
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Detaliile  profilului locației utilizatorului curent"
 
 #: views.py:109
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Editați detaliile profilului de localizare a utilizatorului actual"
 
 #: views.py:157
 msgid "Dashboard"
-msgstr ""
+msgstr "Panou principal"
 
 #: views.py:175
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Eliminați intrările din jurnalul de erori pentru: %s"
 
 #: views.py:192
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Jurnalului erorilor de obiecte a fost curățat cu succes"
 
 #: views.py:210
 msgid "Date and time"
-msgstr ""
+msgstr "Data și ora"
 
 #: views.py:215
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Intrările de eroare pentru: %s"
 
 #: views.py:260
 msgid "No setup options available."
-msgstr ""
+msgstr "Nu sunt disponibile opțiuni de configurare."
 
 #: views.py:262
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Niciun rezultat aici înseamnă că nu aveți permisiunile necesare pentru a efectua o sarcină administrativă."
 
 #: views.py:266
 msgid "Setup items"
-msgstr ""
+msgstr "Configurați elemente"
 
 #: views.py:310
 msgid "No action selected."

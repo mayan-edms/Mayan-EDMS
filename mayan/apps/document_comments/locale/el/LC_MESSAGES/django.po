@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:30 events.py:8
+msgid "Document comments"
+msgstr "Σχόλια εγγράφου"
+
+#: apps.py:54
+msgid "Date"
+msgstr "Ημερομηνία"
+
+#: apps.py:56 models.py:27
+msgid "User"
+msgstr "Χρήστης"
+
+#. Translators: Comment here is a noun and refers to the actual text stored
+#: apps.py:59 models.py:30 models.py:39
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: events.py:12
+msgid "Document comment created"
+msgstr "Σχόλιο εγγράφου δημιουργήθηκε"
+
+#: events.py:15
+msgid "Document comment deleted"
+msgstr "Σχόλιο εγγράφου διαγράφηκε"
+
+#: links.py:15
+msgid "Add comment"
+msgstr "Προσθήκη σχολίου"
+
+#: links.py:20
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: models.py:23
+msgid "Document"
+msgstr "Έγγραφο"
+
+#: models.py:33
+msgid "Date time submitted"
+msgstr "Ημερομηνία και ώρα κατάθεσης"
+
+#: permissions.py:10
+msgid "Create new comments"
+msgstr "Δημιουργία νέων σχολίων"
+
+#: permissions.py:13
+msgid "Delete comments"
+msgstr "Διαγραφή σχολίων"
+
+#: permissions.py:16
+msgid "View comments"
+msgstr "Εμφάνηση σχολίων"
+
+#: views.py:43
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "Προσθήκη σχολίου στο έγγραφο: %s"
+
+#: views.py:81
+#, python-format
+msgid "Delete comment: %s?"
+msgstr "Διαγραφή σχολίου: %s"
+
+#: views.py:101
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:107
+msgid "There are no comments"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Comments for document: %s"
+msgstr "Σχόλια για το έγγραφο: %s"

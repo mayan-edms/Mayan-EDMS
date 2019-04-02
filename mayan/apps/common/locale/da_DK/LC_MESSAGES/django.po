@@ -1,0 +1,577 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da_DK/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da_DK\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:85 permissions_runtime.py:7 settings.py:12
+msgid "Common"
+msgstr ""
+
+#: classes.py:214
+msgid "Available attributes: \n"
+msgstr ""
+
+#: classes.py:254
+msgid "Available fields: \n"
+msgstr ""
+
+#: dashboards.py:7
+msgid "Main"
+msgstr ""
+
+#: forms.py:25
+msgid "Selection"
+msgstr ""
+
+#: generics.py:137
+#, python-format
+msgid "Unable to transfer selection: %s."
+msgstr ""
+
+#: generics.py:161
+msgid "Add"
+msgstr "Tilføj"
+
+#: generics.py:172
+msgid "Remove"
+msgstr "Fjern"
+
+#: generics.py:354
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
+
+#: generics.py:365
+#, python-format
+msgid "%(object)s created successfully."
+msgstr ""
+
+#: generics.py:394
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
+
+#: generics.py:405
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr ""
+
+#: generics.py:451
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
+
+#: generics.py:462
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr ""
+
+#: links.py:40
+msgid "About this"
+msgstr ""
+
+#: links.py:43 views.py:63
+msgid "Check for updates"
+msgstr ""
+
+#: links.py:47
+msgid "User details"
+msgstr ""
+
+#: links.py:51
+msgid "Edit details"
+msgstr ""
+
+#: links.py:56
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:61
+msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:66
+msgid "Documentation"
+msgstr ""
+
+#: links.py:70 links.py:81
+msgid "Errors"
+msgstr ""
+
+#: links.py:75
+msgid "Clear all"
+msgstr ""
+
+#: links.py:85
+msgid "Forum"
+msgstr ""
+
+#: links.py:89 views.py:166
+msgid "License"
+msgstr ""
+
+#: links.py:92 views.py:241
+msgid "Other packages licenses"
+msgstr ""
+
+#: links.py:96
+msgid "Setup"
+msgstr ""
+
+#: links.py:99
+msgid "Source code"
+msgstr ""
+
+#: links.py:103
+msgid "Support"
+msgstr ""
+
+#: links.py:107 queues.py:10 views.py:284
+msgid "Tools"
+msgstr ""
+
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:18
+msgid "Days"
+msgstr ""
+
+#: literals.py:19
+msgid "Hours"
+msgstr ""
+
+#: literals.py:20
+msgid "Minutes"
+msgstr ""
+
+#: management/commands/convertdb.py:28
+msgid ""
+"Restricts dumped data to the specified app_label or app_label.ModelName."
+msgstr ""
+
+#: management/commands/convertdb.py:35
+msgid ""
+"The database from which data will be exported. If omitted the database named"
+" \"default\" will be used."
+msgstr ""
+
+#: management/commands/convertdb.py:42
+msgid ""
+"The database to which data will be imported. If omitted the database named "
+"\"default\" will be used."
+msgstr ""
+
+#: management/commands/convertdb.py:49
+msgid ""
+"Force the conversion of the database even if the receiving database is not "
+"empty."
+msgstr ""
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr ""
+
+#: menus.py:15
+msgid "System"
+msgstr ""
+
+#: menus.py:26 models.py:81
+msgid "User"
+msgstr "Bruger"
+
+#: mixins.py:83
+#, python-format
+msgid "Operation performed on %(count)d object"
+msgstr ""
+
+#: mixins.py:84
+#, python-format
+msgid "Operation performed on %(count)d objects"
+msgstr ""
+
+#: mixins.py:261
+msgid "Object"
+msgstr ""
+
+#: models.py:24
+msgid "Namespace"
+msgstr ""
+
+#: models.py:35 models.py:55
+msgid "Date time"
+msgstr ""
+
+#: models.py:37 views.py:211
+msgid "Result"
+msgstr "Resultat"
+
+#: models.py:43
+msgid "Error log entry"
+msgstr ""
+
+#: models.py:44
+msgid "Error log entries"
+msgstr ""
+
+#: models.py:51
+msgid "File"
+msgstr "Fil"
+
+#: models.py:53
+msgid "Filename"
+msgstr "Filnavn"
+
+#: models.py:59
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:60
+msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:85
+msgid "Timezone"
+msgstr ""
+
+#: models.py:88
+msgid "Language"
+msgstr "Sprog"
+
+#: models.py:94
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:95
+msgid "User locale profiles"
+msgstr ""
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr ""
+
+#: queues.py:8
+msgid "Default"
+msgstr "Standard"
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
+#: settings.py:17
+msgid "Automatically enable logging to all apps."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+
+#: settings.py:31
+msgid "An integer specifying how many objects should be displayed per page."
+msgstr ""
+
+#: settings.py:38
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr ""
+
+#: settings.py:45
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
+
+#: settings.py:52
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:58
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: settings.py:64
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: settings.py:75
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr ""
+
+#: settings.py:81
+msgid "Django"
+msgstr ""
+
+#: settings.py:86
+msgid ""
+"A list of strings representing the host/domain names that this site can "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
+"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
+"validation of the Host header (perhaps in a middleware; if so this "
+"middleware must be listed first in MIDDLEWARE)."
+msgstr ""
+
+#: settings.py:104
+msgid ""
+"When set to True, if the request URL does not match any of the patterns in "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
+"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
+msgstr ""
+
+#: settings.py:116
+msgid ""
+"A dictionary containing the settings for all databases to be used with "
+"Django. It is a nested dictionary whose contents map a database alias to a "
+"dictionary containing the options for an individual database. The DATABASES "
+"setting must configure a default database; any number of additional "
+"databases may also be specified."
+msgstr ""
+
+#: settings.py:128
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
+"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
+"check is done when accessing request.body or request.POST and is calculated "
+"against the total request size excluding any file upload data. You can set "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
+"denial-of-service attack vector if left unchecked. Since web servers don't "
+"typically perform deep request inspection, it's not possible to perform a "
+"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+
+#: settings.py:148
+msgid ""
+"Default: [] (Empty list). List of compiled regular expression objects "
+"representing User-Agent strings that are not allowed to visit any page, "
+"systemwide. Use this for bad robots/crawlers. This is only used if "
+"CommonMiddleware is installed (see Middleware)."
+msgstr ""
+
+#: settings.py:159
+msgid ""
+"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
+"for sending emails."
+msgstr ""
+
+#: settings.py:167
+msgid "Default: 'localhost'. The host to use for sending email."
+msgstr ""
+
+#: settings.py:174
+msgid ""
+"Default: '' (Empty string). Password to use for the SMTP server defined in "
+"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
+"authenticating to the SMTP server. If either of these settings is empty, "
+"Django won't attempt authentication."
+msgstr ""
+
+#: settings.py:185
+msgid ""
+"Default: '' (Empty string). Username to use for the SMTP server defined in "
+"EMAIL_HOST. If empty, Django won't attempt authentication."
+msgstr ""
+
+#: settings.py:194
+msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
+msgstr ""
+
+#: settings.py:201
+msgid ""
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
+"587. If you are experiencing hanging connections, see the implicit TLS "
+"setting EMAIL_USE_SSL."
+msgstr ""
+
+#: settings.py:211
+msgid ""
+"Default: False. Whether to use an implicit TLS (secure) connection when "
+"talking to the SMTP server. In most email documentation this type of TLS "
+"connection is referred to as SSL. It is generally used on port 465. If you "
+"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
+"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
+"those settings to True."
+msgstr ""
+
+#: settings.py:223
+msgid ""
+"Default: None. Specifies a timeout in seconds for blocking operations like "
+"the connection attempt."
+msgstr ""
+
+#: settings.py:231
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
+"will be before it gets streamed to the file system. See Managing files for "
+"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+
+#: settings.py:242
+msgid "Name of the view attached to the branch anchor in the main menu."
+msgstr ""
+
+#: settings.py:249
+msgid ""
+"A list of strings designating all applications that are enabled in this "
+"Django installation. Each string should be a dotted Python path to: an "
+"application configuration class (preferred), or a package containing an "
+"application."
+msgstr ""
+
+#: settings.py:259
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
+"accepts named URL patterns which can be used to reduce configuration "
+"duplication since you don't have to define the URL in two places (settings "
+"and URLconf)."
+msgstr ""
+
+#: settings.py:271
+msgid ""
+"Default: '/accounts/profile/' The URL where requests are redirected after "
+"login when the contrib.auth.login view gets no next parameter. This is used "
+"by the login_required() decorator, for example. This setting also accepts "
+"named URL patterns which can be used to reduce configuration duplication "
+"since you don't have to define the URL in two places (settings and URLconf)."
+msgstr ""
+
+#: settings.py:280
+msgid "Celery"
+msgstr ""
+
+#: settings.py:285
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+
+#: settings.py:295
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+
+#: utils.py:74
+msgid "Anonymous"
+msgstr ""
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: views.py:39
+msgid "About"
+msgstr "Om"
+
+#: views.py:51
+#, python-format
+msgid "The version you are using is outdated. The latest version is %s"
+msgstr ""
+
+#: views.py:56
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:60
+msgid "Your version is up-to-date."
+msgstr ""
+
+#: views.py:77
+msgid "Current user details"
+msgstr ""
+
+#: views.py:82
+msgid "Edit current user details"
+msgstr ""
+
+#: views.py:102
+msgid "Current user locale profile details"
+msgstr ""
+
+#: views.py:109
+msgid "Edit current user locale profile details"
+msgstr ""
+
+#: views.py:157
+msgid "Dashboard"
+msgstr ""
+
+#: views.py:175
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr ""
+
+#: views.py:192
+msgid "Object error log cleared successfully"
+msgstr ""
+
+#: views.py:210
+msgid "Date and time"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Error log entries for: %s"
+msgstr ""
+
+#: views.py:260
+msgid "No setup options available."
+msgstr ""
+
+#: views.py:262
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+
+#: views.py:266
+msgid "Setup items"
+msgstr ""
+
+#: views.py:310
+msgid "No action selected."
+msgstr ""
+
+#: views.py:318
+msgid "Must select at least one item."
+msgstr ""

@@ -1,0 +1,578 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-02-01 08:59+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:85 permissions_runtime.py:7 settings.py:12
+msgid "Common"
+msgstr "常用"
+
+#: classes.py:214
+msgid "Available attributes: \n"
+msgstr "可用属性：\n"
+
+#: classes.py:254
+msgid "Available fields: \n"
+msgstr "可用字段：\n"
+
+#: dashboards.py:7
+msgid "Main"
+msgstr "重点"
+
+#: forms.py:25
+msgid "Selection"
+msgstr "选择"
+
+#: generics.py:137
+#, python-format
+msgid "Unable to transfer selection: %s."
+msgstr "无法转移选择：%s。"
+
+#: generics.py:161
+msgid "Add"
+msgstr "添加"
+
+#: generics.py:172
+msgid "Remove"
+msgstr "移除"
+
+#: generics.py:354
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s未创建，错误：%(error)s"
+
+#: generics.py:365
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s创建成功。"
+
+#: generics.py:394
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s未删除，错误：%(error)s。"
+
+#: generics.py:405
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s已成功删除。"
+
+#: generics.py:451
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s未更新，错误：%(error)s。"
+
+#: generics.py:462
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s已成功更新。"
+
+#: links.py:40
+msgid "About this"
+msgstr "关于这个"
+
+#: links.py:43 views.py:63
+msgid "Check for updates"
+msgstr "检查更新"
+
+#: links.py:47
+msgid "User details"
+msgstr "用户详情"
+
+#: links.py:51
+msgid "Edit details"
+msgstr "编辑详情"
+
+#: links.py:56
+msgid "Locale profile"
+msgstr "区域配置文件"
+
+#: links.py:61
+msgid "Edit locale profile"
+msgstr "编辑区域配置文件"
+
+#: links.py:66
+msgid "Documentation"
+msgstr "文档"
+
+#: links.py:70 links.py:81
+msgid "Errors"
+msgstr "错误"
+
+#: links.py:75
+msgid "Clear all"
+msgstr "清除所有"
+
+#: links.py:85
+msgid "Forum"
+msgstr "论坛"
+
+#: links.py:89 views.py:166
+msgid "License"
+msgstr "许可"
+
+#: links.py:92 views.py:241
+msgid "Other packages licenses"
+msgstr "其他软件包许可证"
+
+#: links.py:96
+msgid "Setup"
+msgstr "设置"
+
+#: links.py:99
+msgid "Source code"
+msgstr "源代码"
+
+#: links.py:103
+msgid "Support"
+msgstr "支持"
+
+#: links.py:107 queues.py:10 views.py:284
+msgid "Tools"
+msgstr "工具"
+
+#: literals.py:9
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr "您的数据库后端设置为使用SQLite。 SQLite只应用于开发和测试，而不能用于生产。"
+
+#: literals.py:18
+msgid "Days"
+msgstr "天"
+
+#: literals.py:19
+msgid "Hours"
+msgstr "时"
+
+#: literals.py:20
+msgid "Minutes"
+msgstr "分"
+
+#: management/commands/convertdb.py:28
+msgid ""
+"Restricts dumped data to the specified app_label or app_label.ModelName."
+msgstr "将转储数据限制为指定的app_label或app_label.ModelName。"
+
+#: management/commands/convertdb.py:35
+msgid ""
+"The database from which data will be exported. If omitted the database named"
+" \"default\" will be used."
+msgstr "将从中导出数据的数据库。如果省略，将使用名为“default”的数据库。"
+
+#: management/commands/convertdb.py:42
+msgid ""
+"The database to which data will be imported. If omitted the database named "
+"\"default\" will be used."
+msgstr "要导入数据的数据库。如果省略，将使用名为“default”的数据库。"
+
+#: management/commands/convertdb.py:49
+msgid ""
+"Force the conversion of the database even if the receiving database is not "
+"empty."
+msgstr "即使接收数据库不为空，也强制转换数据库。"
+
+#: management/commands/installjavascript.py:15
+msgid "Process a specific app."
+msgstr "处理特定的应用程序。"
+
+#: menus.py:15
+msgid "System"
+msgstr "系统"
+
+#: menus.py:26 models.py:81
+msgid "User"
+msgstr "用户"
+
+#: mixins.py:83
+#, python-format
+msgid "Operation performed on %(count)d object"
+msgstr "在%(count)d对象上执行的操作"
+
+#: mixins.py:84
+#, python-format
+msgid "Operation performed on %(count)d objects"
+msgstr "在%(count)d对象上执行的操作"
+
+#: mixins.py:261
+msgid "Object"
+msgstr "对象"
+
+#: models.py:24
+msgid "Namespace"
+msgstr "命名空间"
+
+#: models.py:35 models.py:55
+msgid "Date time"
+msgstr "日期时间"
+
+#: models.py:37 views.py:211
+msgid "Result"
+msgstr "结果"
+
+#: models.py:43
+msgid "Error log entry"
+msgstr "错误日志条目"
+
+#: models.py:44
+msgid "Error log entries"
+msgstr "错误日志条目"
+
+#: models.py:51
+msgid "File"
+msgstr "文件"
+
+#: models.py:53
+msgid "Filename"
+msgstr "文件名"
+
+#: models.py:59
+msgid "Shared uploaded file"
+msgstr "共享的上传文件"
+
+#: models.py:60
+msgid "Shared uploaded files"
+msgstr "共享的上传文件"
+
+#: models.py:85
+msgid "Timezone"
+msgstr "时区"
+
+#: models.py:88
+msgid "Language"
+msgstr "语言"
+
+#: models.py:94
+msgid "User locale profile"
+msgstr "用户区域配置文件"
+
+#: models.py:95
+msgid "User locale profiles"
+msgstr "用户区域配置文件"
+
+#: permissions_runtime.py:10
+msgid "View error log"
+msgstr "查看错误日志"
+
+#: queues.py:8
+msgid "Default"
+msgstr "默认"
+
+#: queues.py:12
+msgid "Common periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "删除旧的上传"
+
+#: settings.py:17
+msgid "Automatically enable logging to all apps."
+msgstr "自动启用所有应用程序的日志记录。"
+
+#: settings.py:23
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "是时候延迟依赖于数据库提交传播的后台任务了。"
+
+#: settings.py:31
+msgid "An integer specifying how many objects should be displayed per page."
+msgstr "一个整数，指定每页应显示的对象数。"
+
+#: settings.py:38
+msgid "Enable error logging outside of the system error logging capabilities."
+msgstr "在系统错误日志记录功能之外启用错误日志记录。"
+
+#: settings.py:45
+msgid "Path to the logfile that will track errors during production."
+msgstr "日志文件的路径，用于跟踪生产期间的错误。"
+
+#: settings.py:52
+msgid "Name to be displayed in the main menu."
+msgstr "要在主菜单中显示的名称。"
+
+#: settings.py:58
+msgid "URL of the installation or homepage of the project."
+msgstr "项目的安装或主页的URL。"
+
+#: settings.py:64
+msgid "A storage backend that all workers can use to share files."
+msgstr "所有工作人员可用于共享文件的存储后端。"
+
+#: settings.py:75
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr "临时目录用于站点范围以存储缩略图，预览和临时文件。"
+
+#: settings.py:81
+msgid "Django"
+msgstr "Django"
+
+#: settings.py:86
+msgid ""
+"A list of strings representing the host/domain names that this site can "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
+"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
+"validation of the Host header (perhaps in a middleware; if so this "
+"middleware must be listed first in MIDDLEWARE)."
+msgstr "表示此站点可以提供的主机/域名的字符串列表。这是一种防止HTTP主机头攻击的安全措施，即使在许多看似安全的Web服务器配置下也是如此。此列表中的值可以是完全限定名称（例如“www.example.com”），在这种情况下，它们将与请求的主机标头完全匹配（不区分大小写，不包括端口）。以句点开头的值可用作子域通配符：'.example.com'将匹配example.com，www.example.com和example.com的任何其他子域。值'*'将匹配任何内容;在这种情况下，您有责任提供自己的主机头验证（可能在中间件中;如果是这样，则必须首先在MIDDLEWARE中列出此中间件）。"
+
+#: settings.py:104
+msgid ""
+"When set to True, if the request URL does not match any of the patterns in "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
+"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
+msgstr "设置为True时，如果请求URL与URLconf中的任何模式都不匹配，并且不以斜杠结尾，则会向相同的URL发出HTTP重定向，并附加斜杠。请注意，重定向可能导致POST请求中提交的任何数据丢失。 APPEND_SLASH设置仅在安装了CommonMiddleware时使用（请参阅Middleware）。另见PREPEND_WWW。"
+
+#: settings.py:116
+msgid ""
+"A dictionary containing the settings for all databases to be used with "
+"Django. It is a nested dictionary whose contents map a database alias to a "
+"dictionary containing the options for an individual database. The DATABASES "
+"setting must configure a default database; any number of additional "
+"databases may also be specified."
+msgstr "包含要与Django一起使用的所有数据库的设置的字典。它是一个嵌套字典，其内容将数据库别名映射到包含单个数据库选项的字典。 DATABASES设置必须配置默认数据库;还可以指定任意数量的附加数据库。"
+
+#: settings.py:128
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
+"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
+"check is done when accessing request.body or request.POST and is calculated "
+"against the total request size excluding any file upload data. You can set "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
+"denial-of-service attack vector if left unchecked. Since web servers don't "
+"typically perform deep request inspection, it's not possible to perform a "
+"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr "默认值：2621440（即2.5 MB）。引发可疑操作（请求数据太大）之前请求正文的最大大小（以字节为单位）。在访问request.body或request.POST时完成检查，并根据不包括任何文件上传数据的总请求大小计算。您可以将其设置为“无”以禁用检查。预计会收到异常大型表单提交的应用程序应调整此设置。请求数据量与处理请求和填充GET和POST词典所需的内存量相关联。如果不加以检查，大请求可以用作拒绝服务攻击载体。由于Web服务器通常不执行深度请求检查，因此无法在该级别执行类似检查。另请参见FILE_UPLOAD_MAX_MEMORY_SIZE。"
+
+#: settings.py:148
+msgid ""
+"Default: [] (Empty list). List of compiled regular expression objects "
+"representing User-Agent strings that are not allowed to visit any page, "
+"systemwide. Use this for bad robots/crawlers. This is only used if "
+"CommonMiddleware is installed (see Middleware)."
+msgstr "默认值：[]（空列表）。在系统范围内表示不允许访问任何页面的用户代理字符串的已编译正则表达式对象的列表。用于防范恶意的机器人/爬虫。这仅在安装了CommonMiddleware时使用（请参阅Middleware）。"
+
+#: settings.py:159
+msgid ""
+"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
+"for sending emails."
+msgstr "默认值：'django.core.mail.backends.smtp.EmailBackend'。用于发送电子邮件的后端。"
+
+#: settings.py:167
+msgid "Default: 'localhost'. The host to use for sending email."
+msgstr "默认值：'localhost'。用于发送电子邮件的主机。"
+
+#: settings.py:174
+msgid ""
+"Default: '' (Empty string). Password to use for the SMTP server defined in "
+"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
+"authenticating to the SMTP server. If either of these settings is empty, "
+"Django won't attempt authentication."
+msgstr "默认值：''（空字符串）。用于EMAIL_HOST中定义的SMTP服务器的密码。在向SMTP服务器进行身份验证时，此设置与EMAIL_HOST_USER结合使用。如果这些设置中的任何一个为空，Django将不会尝试身份验证。"
+
+#: settings.py:185
+msgid ""
+"Default: '' (Empty string). Username to use for the SMTP server defined in "
+"EMAIL_HOST. If empty, Django won't attempt authentication."
+msgstr "默认值：''（空字符串）。用于EMAIL_HOST中定义的SMTP服务器的用户名。如果为空，Django将不会尝试身份验证。"
+
+#: settings.py:194
+msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
+msgstr "默认值：25。用于EMAIL_HOST中定义的SMTP服务器的端口。"
+
+#: settings.py:201
+msgid ""
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
+"587. If you are experiencing hanging connections, see the implicit TLS "
+"setting EMAIL_USE_SSL."
+msgstr "默认值：False。与SMTP服务器通信时是否使用TLS（安全）连接。这用于显式TLS连接，通常在端口587上。如果遇到挂起连接，请参阅隐式TLS设置EMAIL_USE_SSL。"
+
+#: settings.py:211
+msgid ""
+"Default: False. Whether to use an implicit TLS (secure) connection when "
+"talking to the SMTP server. In most email documentation this type of TLS "
+"connection is referred to as SSL. It is generally used on port 465. If you "
+"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
+"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
+"those settings to True."
+msgstr "默认值：False。与SMTP服务器通信时是否使用隐式TLS（安全）连接。在大多数电子邮件文档中，此类型的TLS连接称为SSL。它通常用于端口465.如果遇到问题，请参阅显式TLS设置EMAIL_USE_TLS。请注意，EMAIL_USE_TLS / EMAIL_USE_SSL是互斥的，因此只将其中一个设置为True。"
+
+#: settings.py:223
+msgid ""
+"Default: None. Specifies a timeout in seconds for blocking operations like "
+"the connection attempt."
+msgstr "默认值：无。指定阻塞操作（如连接尝试）的超时（以秒为单位）。"
+
+#: settings.py:231
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
+"will be before it gets streamed to the file system. See Managing files for "
+"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
+msgstr "默认值：2621440（即2.5 MB）。上传在流式传输到文件系统之前的最大大小（以字节为单位）。有关详情，请参阅管理文件。另请参见DATA_UPLOAD_MAX_MEMORY_SIZE。"
+
+#: settings.py:242
+msgid "Name of the view attached to the branch anchor in the main menu."
+msgstr "在主菜单中附加到分支锚点的视图的名称。"
+
+#: settings.py:249
+msgid ""
+"A list of strings designating all applications that are enabled in this "
+"Django installation. Each string should be a dotted Python path to: an "
+"application configuration class (preferred), or a package containing an "
+"application."
+msgstr "指定在此Django安装中启用的所有应用程序的字符串列表。每个字符串应该是一个虚线的Python路径：应用程序配置类（首选）或包含应用程序的包。"
+
+#: settings.py:259
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
+"accepts named URL patterns which can be used to reduce configuration "
+"duplication since you don't have to define the URL in two places (settings "
+"and URLconf)."
+msgstr "默认值：'/ accounts / login /'，重定向请求以进行登录的URL，尤其是在使用login_required（）装饰器时。此设置还接受命名的URL模式，可用于减少配置重复，因为您不必在两个位置（设置和URLconf）定义URL。"
+
+#: settings.py:271
+msgid ""
+"Default: '/accounts/profile/' The URL where requests are redirected after "
+"login when the contrib.auth.login view gets no next parameter. This is used "
+"by the login_required() decorator, for example. This setting also accepts "
+"named URL patterns which can be used to reduce configuration duplication "
+"since you don't have to define the URL in two places (settings and URLconf)."
+msgstr "默认值：'/ accounts / profile /'，当contrib.auth.login视图没有下一个参数时，登录后重定向请求的URL。例如，login_required（）装饰器使用它。此设置还接受命名的URL模式，可用于减少重复配置，因此您不必在两个位置（设置和URLconf）定义URL。"
+
+#: settings.py:280
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:285
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr "默认值：“amqp：//”。默认代理URL。这必须是以下形式的URL：transport:// userid:password @ hostname:port / virtual_host只需要方案部分（transport://），其余部分是可选的，默认为特定传输的默认值。"
+
+#: settings.py:295
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr "默认值：默认情况下未启用结果后端。后端用于存储任务结果（墓碑）。请参阅http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend"
+
+#: utils.py:74
+msgid "Anonymous"
+msgstr "匿名"
+
+#: validators.py:29
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr "输入由字母，数字和下划线组成的有效“内部名称”。"
+
+#: views.py:39
+msgid "About"
+msgstr "关于"
+
+#: views.py:51
+#, python-format
+msgid "The version you are using is outdated. The latest version is %s"
+msgstr "您使用的版本已过时。最新版本为%s"
+
+#: views.py:56
+msgid "It is not possible to determine the latest version available."
+msgstr "无法确定最新版本。"
+
+#: views.py:60
+msgid "Your version is up-to-date."
+msgstr "您的版本是最新的。"
+
+#: views.py:77
+msgid "Current user details"
+msgstr "当前用户详情"
+
+#: views.py:82
+msgid "Edit current user details"
+msgstr "编辑当前用户详情"
+
+#: views.py:102
+msgid "Current user locale profile details"
+msgstr "当前用户区域配置文件详情"
+
+#: views.py:109
+msgid "Edit current user locale profile details"
+msgstr "编辑当前用户区域配置文件"
+
+#: views.py:157
+msgid "Dashboard"
+msgstr "仪表板"
+
+#: views.py:175
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "清除错误日志条目：%s"
+
+#: views.py:192
+msgid "Object error log cleared successfully"
+msgstr "对象错误日志已成功清除"
+
+#: views.py:210
+msgid "Date and time"
+msgstr "日期和时间"
+
+#: views.py:215
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "错误日志条目：%s"
+
+#: views.py:260
+msgid "No setup options available."
+msgstr "没有可用的设置选项。"
+
+#: views.py:262
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr "此处没有结果表示没有执行管理任务所需的权限。"
+
+#: views.py:266
+msgid "Setup items"
+msgstr "设置项目"
+
+#: views.py:310
+msgid "No action selected."
+msgstr "未选择任何操作。"
+
+#: views.py:318
+msgid "Must select at least one item."
+msgstr "必须至少选择一个项目。"

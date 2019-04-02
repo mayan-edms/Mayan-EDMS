@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2019-01-24 04:41+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:21 permissions.py:7
+msgid "Smart settings"
+msgstr "智能设置"
+
+#: apps.py:29
+msgid "Setting count"
+msgstr "设定计数"
+
+#: apps.py:33
+msgid "Name"
+msgstr "名称"
+
+#: apps.py:37
+msgid "Value"
+msgstr "值"
+
+#: apps.py:40
+msgid "Overrided by environment variable?"
+msgstr "被环境变量覆盖？"
+
+#: apps.py:41
+msgid "Yes"
+msgstr "是"
+
+#: apps.py:41
+msgid "No"
+msgstr "否"
+
+#: forms.py:12
+msgid "Enter the new setting value."
+msgstr "输入新的设定值。"
+
+#: forms.py:31
+msgid "Value must be properly quoted."
+msgstr "值必须正确引用。"
+
+#: forms.py:40
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "“%s”不是有效的许可。"
+
+#: links.py:12 links.py:16
+msgid "Settings"
+msgstr "设置"
+
+#: links.py:21
+msgid "Namespaces"
+msgstr "命名空间"
+
+#: links.py:25
+msgid "Edit"
+msgstr "编辑"
+
+#: permissions.py:10
+msgid "Edit settings"
+msgstr "编辑设置"
+
+#: permissions.py:13
+msgid "View settings"
+msgstr "查看设置"
+
+#: views.py:18
+msgid "Setting namespaces"
+msgstr "设置命名空间"
+
+#: views.py:34
+msgid ""
+"Settings inherited from an environment variable take precedence and cannot "
+"be changed in this view. "
+msgstr "从环境变量继承的设置优先，在此视图中无法更改。"
+
+#: views.py:37
+#, python-format
+msgid "Settings in namespace: %s"
+msgstr "命名空间中的设置：%s"
+
+#: views.py:45
+#, python-format
+msgid "Namespace: %s, not found"
+msgstr "命名空间：%s，未找到"
+
+#: views.py:60
+msgid "Setting updated successfully."
+msgstr "设置已成功更新。"
+
+#: views.py:68
+#, python-format
+msgid "Edit setting: %s"
+msgstr "编辑设定：%s"

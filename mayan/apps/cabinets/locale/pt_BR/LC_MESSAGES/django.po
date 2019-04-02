@@ -3,14 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2017
+# Roberto Rosario, 2017
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -161,10 +167,13 @@ msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
+"Cada nível das pastas pode conter documentos ou outras subpastas. Para "
+"adicionar documentos a uma pasta, selecione a opção \"pasta\" no menu "
+"lateral do documento."
 
 #: views.py:127
 msgid "This cabinet level is empty"
-msgstr ""
+msgstr "Este nível da pasta está vazio"
 
 #: views.py:129
 #, python-format
@@ -181,18 +190,21 @@ msgid ""
 "Cabinets are a multi-level method to organize documents. Each cabinet can "
 "contain documents as well as other sub level cabinets."
 msgstr ""
+"As pastas funcionam como um método multinível de organização dos documentos."
+" Cada pasta pode conter tanto documentos como outras pastas de nível "
+"inferior."
 
 #: views.py:180
 msgid "No cabinets available"
-msgstr ""
+msgstr "Sem pastas disponíveis"
 
 #: views.py:212
 msgid "Documents can be added to many cabinets."
-msgstr ""
+msgstr "Documentos podem ser adicionados a mais de uma pasta."
 
 #: views.py:215
 msgid "This document is not in any cabinet"
-msgstr ""
+msgstr "Este documento não está em nenhuma pasta"
 
 #: views.py:218
 #, python-format

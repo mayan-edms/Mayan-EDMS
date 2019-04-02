@@ -1,0 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"PO-Revision-Date: 2019-01-17 19:32+0000\n"
+"Last-Translator: Jiri Fait <fait@orkasolutions.cz>\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:38
+msgid "Mailer"
+msgstr ""
+
+#: apps.py:53
+msgid "Date and time"
+msgstr ""
+
+#: apps.py:56 models.py:25 models.py:168
+msgid "Message"
+msgstr ""
+
+#: apps.py:59 apps.py:74 models.py:37
+msgid "Label"
+msgstr "Označení"
+
+#: apps.py:62
+msgid "Default?"
+msgstr ""
+
+#: apps.py:68
+msgid "Enabled?"
+msgstr ""
+
+#: forms.py:60 forms.py:121
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr ""
+
+#: forms.py:62 forms.py:123
+msgid "Email address"
+msgstr ""
+
+#: forms.py:64
+msgid "Subject"
+msgstr ""
+
+#: forms.py:66
+msgid "Body"
+msgstr ""
+
+#: forms.py:70
+msgid "The email profile that will be used to send this email."
+msgstr ""
+
+#: forms.py:71 views.py:234
+msgid "Mailing profile"
+msgstr ""
+
+#: forms.py:76
+msgid "Backend"
+msgstr ""
+
+#: links.py:20 links.py:27
+msgid "Email document"
+msgstr ""
+
+#: links.py:24 links.py:30
+msgid "Email link"
+msgstr ""
+
+#: links.py:35
+msgid "System mailer error log"
+msgstr ""
+
+#: links.py:40
+msgid "User mailer create"
+msgstr ""
+
+#: links.py:44
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:48
+msgid "Edit"
+msgstr "Editovat"
+
+#: links.py:52
+msgid "Log"
+msgstr ""
+
+#: links.py:57
+msgid "Mailing profiles list"
+msgstr ""
+
+#: links.py:62
+msgid "Mailing profiles"
+msgstr ""
+
+#: links.py:66 views.py:253
+msgid "Test"
+msgstr ""
+
+#: literals.py:7
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+
+#: literals.py:13
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+
+#: mailers.py:14
+msgid "Host"
+msgstr ""
+
+#: mailers.py:16
+msgid "The host to use for sending email."
+msgstr ""
+
+#: mailers.py:21
+msgid "Port"
+msgstr ""
+
+#: mailers.py:23
+msgid "Port to use for the SMTP server."
+msgstr ""
+
+#: mailers.py:26
+msgid "Use TLS"
+msgstr ""
+
+#: mailers.py:29
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr ""
+
+#: mailers.py:34
+msgid "Use SSL"
+msgstr ""
+
+#: mailers.py:37
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr ""
+
+#: mailers.py:46
+msgid "Username"
+msgstr ""
+
+#: mailers.py:49
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr ""
+
+#: mailers.py:55
+msgid "Password"
+msgstr ""
+
+#: mailers.py:58
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr ""
+
+#: mailers.py:76
+msgid "Django SMTP backend"
+msgstr ""
+
+#: mailers.py:83
+msgid "File path"
+msgstr ""
+
+#: mailers.py:89
+msgid "Django file based backend"
+msgstr ""
+
+#: models.py:22 models.py:165
+msgid "Date time"
+msgstr ""
+
+#: models.py:31
+msgid "Log entry"
+msgstr ""
+
+#: models.py:32
+msgid "Log entries"
+msgstr ""
+
+#: models.py:41
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr ""
+
+#: models.py:43
+msgid "Default"
+msgstr ""
+
+#: models.py:45
+msgid "Enabled"
+msgstr ""
+
+#: models.py:48
+msgid "The dotted Python path to the backend class."
+msgstr ""
+
+#: models.py:49
+msgid "Backend path"
+msgstr ""
+
+#: models.py:52
+msgid "Backend data"
+msgstr ""
+
+#: models.py:59 models.py:162
+msgid "User mailer"
+msgstr ""
+
+#: models.py:60
+msgid "User mailers"
+msgstr ""
+
+#: models.py:156
+msgid "Test email from Mayan EDMS"
+msgstr ""
+
+#: models.py:174
+msgid "User mailer log entry"
+msgstr ""
+
+#: models.py:175
+msgid "User mailer log entries"
+msgstr ""
+
+#: permissions.py:7 queues.py:8 settings.py:11
+msgid "Mailing"
+msgstr ""
+
+#: permissions.py:10
+msgid "Send document link via email"
+msgstr ""
+
+#: permissions.py:13
+msgid "Send document via email"
+msgstr ""
+
+#: permissions.py:16
+msgid "View system mailing error log"
+msgstr ""
+
+#: permissions.py:19
+msgid "Create a mailing profile"
+msgstr ""
+
+#: permissions.py:22
+msgid "Delete a mailing profile"
+msgstr ""
+
+#: permissions.py:25
+msgid "Edit a mailing profile"
+msgstr ""
+
+#: permissions.py:28
+msgid "View a mailing profile"
+msgstr ""
+
+#: permissions.py:31
+msgid "Use a mailing profile"
+msgstr ""
+
+#: queues.py:12
+msgid "Send document"
+msgstr ""
+
+#: settings.py:14
+msgid "Link for document: {{ document }}"
+msgstr ""
+
+#: settings.py:15
+msgid "Template for the document link email form subject line."
+msgstr ""
+
+#: settings.py:20
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
+
+#: settings.py:24
+msgid "Document: {{ document }}"
+msgstr ""
+
+#: settings.py:25
+msgid "Template for the document email form subject line."
+msgstr ""
+
+#: settings.py:30
+msgid "Template for the document email form body text. Can include HTML."
+msgstr ""
+
+#: validators.py:14
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr ""
+
+#: views.py:37
+msgid "Document mailing error log"
+msgstr ""
+
+#: views.py:49
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr ""
+
+#: views.py:51
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr ""
+
+#: views.py:62
+msgid "Send"
+msgstr ""
+
+#: views.py:108
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr ""
+
+#: views.py:119
+msgid "New mailing profile backend selection"
+msgstr ""
+
+#: views.py:147
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr ""
+
+#: views.py:173
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr ""
+
+#: views.py:207
+#, python-format
+msgid "%s error log"
+msgstr ""
+
+#: views.py:229
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles are used to send"
+" documents via email."
+msgstr ""
+
+#: views.py:233
+msgid "No mailing profiles available"
+msgstr ""
+
+#: views.py:254
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr ""

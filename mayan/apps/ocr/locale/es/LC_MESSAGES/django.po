@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:44-0400\n"
-"PO-Revision-Date: 2018-09-27 02:31+0000\n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2018-11-05 22:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "Página de documento"
 
 #: models.py:46
 msgid "The actual text content extracted by the OCR backend."
-msgstr ""
+msgstr "El contenido de texto real extraído por el backend OCR."
 
 #: models.py:47
 msgid "Content"

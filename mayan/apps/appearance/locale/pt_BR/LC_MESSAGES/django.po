@@ -5,13 +5,14 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-12-22 00:58+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +26,11 @@ msgstr "Aparência"
 
 #: settings.py:13
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Número máximo de caracteres que serão mostrados como o título da vista."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
-msgstr "Permissão insuficiente"
+msgstr "Permissões insuficientes"
 
 #: templates/403.html:11
 msgid "You don't have enough permissions for this operation."
@@ -63,7 +64,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n%(setting_project_title)s é baseado em %(project_title)s"
 
 #: templates/appearance/about.html:82
 msgid "Version"
@@ -76,7 +77,7 @@ msgstr "Número de compilação: %(build_number)s"
 
 #: templates/appearance/about.html:97
 msgid "Released under the license:"
-msgstr ""
+msgstr "Lançado sob a licença:"
 
 #: templates/appearance/about.html:103
 #, python-format
@@ -84,7 +85,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n%(project_title)s é um software gratuito e de código aberto feito para você com <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> por Roberto Rosario e seus colaboradores."
 
 #: templates/appearance/about.html:109
 #, python-format
@@ -92,7 +93,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
 "            "
-msgstr ""
+msgstr "\nMuito esforço é necessário para tornar %(project_title)s tão rico em recursos. Precisamos de toda a ajuda que pudermos obter!"
 
 #: templates/appearance/about.html:115
 #, python-format
@@ -100,7 +101,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nSe você utiliza %(project_title)s, por favor, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">considere realizar uma doação %(icon_social_paypal)s"
 
 #: templates/appearance/about.html:121
 #, python-format
@@ -108,7 +109,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nA lista de mudanças está disponível de maneira detalhada nas <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Notas de Lançamento %(icon_documentation)s</a> ou,  em versão mais curta, <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">no Registro de Mudanças%(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:127
 #, python-format
@@ -116,7 +117,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nCaso tenha dúvidas consulte a <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentação%(icon_documentation)s</a> ou a <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki%(icon_wiki)s</a>."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -124,7 +125,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nSe você encontrar algum erro ou tiver ideias para novos recursos, visite o <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Fórum%(icon_forum)s</a> ou abra um chamado no <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de Código Fonte%(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:138
 #, python-format
@@ -133,7 +134,7 @@ msgid ""
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n\nEspalhe a palavra! Fale com seus amigos e colegas sobre como o %(project_title)s é incrível!\nSiga-nos no <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, ou <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram%(icon_social_instagram)s</a>"
 
 #: templates/appearance/base.html:32
 msgid "Warning"
@@ -173,7 +174,7 @@ msgstr "Criar"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Tem certeza?"
 
 #: templates/appearance/generic_confirm.html:40
 msgid "Yes"
@@ -265,15 +266,15 @@ msgstr "Nenhum resultado"
 
 #: templates/appearance/root.html:58
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: templates/appearance/root.html:77
 msgid "Server communication error"
-msgstr ""
+msgstr "Erro na comunicação com o servidor"
 
 #: templates/appearance/root.html:79
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Verifique sua conexão de rede e tente novamente em alguns instantes. "
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -288,16 +289,16 @@ msgstr "Primeiro início de sessão"
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr ""
+msgstr "Você acabou de instalar o <strong>%(project_title)s</strong>, parabéns!"
 
 #: templates/authentication/login.html:27
 msgid "Login using the following credentials:"
-msgstr "Entre usando as seguintes credenciais"
+msgstr "Entre usando as seguintes credenciais:"
 
 #: templates/authentication/login.html:28
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr "Nome: <strong>%(account)s</strong>"
+msgstr "Nome de usuário: <strong>%(account)s</strong>"
 
 #: templates/authentication/login.html:29
 #, python-format
@@ -322,7 +323,7 @@ msgstr "Entrar"
 
 #: templates/authentication/login.html:60
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Esqueceu sua senha?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -331,19 +332,19 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "Redefinir senha"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Redefinição de senha concluída! Click no link abaixo para entrar."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Página de entrada"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "E-mail de redefinição de senha enviado!"
 
 #: templates/dashboard/numeric_widget.html:27
 msgid "View details"

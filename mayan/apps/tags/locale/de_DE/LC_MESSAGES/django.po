@@ -5,13 +5,14 @@
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Jesaja Everling <jeverling@gmail.com>, 2017
+# Mathias Behrle <mathiasb@m9s.biz>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:45-0400\n"
-"PO-Revision-Date: 2018-09-27 02:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2018-11-16 18:22+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +134,7 @@ msgstr "Tags von Dokumenten entfernen"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Komma getrennte Liste der Primary Keys der Dokumente denen dieser Tag zugeordnet werden soll"
+msgstr "Kommagetrennte Liste der Primärschlüssel von Dokumenten, denen dieser Tag zugeordnet werden soll."
 
 #: serializers.py:86
 msgid ""
@@ -169,7 +170,7 @@ msgstr[1] ""
 #: views.py:61
 #, python-format
 msgid "Attach tags to document: %s"
-msgstr "Tags Dokument zuweisen: %s"
+msgstr "Tags für Dokument %s zuweisen:"
 
 #: views.py:70 wizard_steps.py:28
 msgid "Tags to be attached."
@@ -277,7 +278,7 @@ msgstr[1] ""
 #: views.py:303
 #, python-format
 msgid "Remove tags from document: %s"
-msgstr "Tags entfernen für Dokument: %s"
+msgstr "Tags entfernen von Dokument: %s"
 
 #: views.py:312
 msgid "Tags to be removed."
@@ -303,7 +304,7 @@ msgstr ""
 
 #: workflow_actions.py:26
 msgid "Attach tag"
-msgstr "Tag anhängen"
+msgstr "Tag zuweisen"
 
 #: workflow_actions.py:66
 msgid "Tags to remove from the document"

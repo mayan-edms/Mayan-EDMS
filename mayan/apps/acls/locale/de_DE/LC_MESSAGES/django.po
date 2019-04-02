@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: 2018-10-07 11:53+0000\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-31 21:36+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -179,8 +179,8 @@ msgstr "Berechtigungen, die der Rolle für das ausgewählte Objekt erteilt oder 
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr "Zugriff erteilen"
+msgstr "Zugriffsberechtigung erteilen"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr "Zugriff entziehen"
+msgstr "Zugriffsberechtigung entziehen"

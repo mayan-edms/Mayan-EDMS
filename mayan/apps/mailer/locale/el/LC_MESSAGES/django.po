@@ -1,0 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"PO-Revision-Date: 2018-10-29 16:55+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:38
+msgid "Mailer"
+msgstr "Ηλεκτρονική ταχυδρόμηση"
+
+#: apps.py:53
+msgid "Date and time"
+msgstr "Ημερομηνία και ώρα"
+
+#: apps.py:56 models.py:25 models.py:168
+msgid "Message"
+msgstr "Μήνυμα"
+
+#: apps.py:59 apps.py:74 models.py:37
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: apps.py:62
+msgid "Default?"
+msgstr "Προκαθορισμένο;"
+
+#: apps.py:68
+msgid "Enabled?"
+msgstr "Ενεργοποιημένο;"
+
+#: forms.py:60 forms.py:121
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
+
+#: forms.py:62 forms.py:123
+msgid "Email address"
+msgstr "Διευθύνσεις ηλ. ταχυδρομείου"
+
+#: forms.py:64
+msgid "Subject"
+msgstr "Θέμα"
+
+#: forms.py:66
+msgid "Body"
+msgstr "Σώμα"
+
+#: forms.py:70
+msgid "The email profile that will be used to send this email."
+msgstr "Το προφίλ που θα χρησιμοποιηθεί για την αποστολή αυτού του μηνύματος."
+
+#: forms.py:71 views.py:234
+msgid "Mailing profile"
+msgstr "Προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: forms.py:76
+msgid "Backend"
+msgstr ""
+
+#: links.py:20 links.py:27
+msgid "Email document"
+msgstr "Αποστολή εγγράφου"
+
+#: links.py:24 links.py:30
+msgid "Email link"
+msgstr "Αποστολή συνδέσμου"
+
+#: links.py:35
+msgid "System mailer error log"
+msgstr "Ημερολόγιο καταγραφής σφλμάτων αλληλογραφίας του συστήματος"
+
+#: links.py:40
+msgid "User mailer create"
+msgstr ""
+
+#: links.py:44
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:48
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:52
+msgid "Log"
+msgstr "Ημερολόγιο καταγραφής"
+
+#: links.py:57
+msgid "Mailing profiles list"
+msgstr "Λίστα προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: links.py:62
+msgid "Mailing profiles"
+msgstr "Προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: links.py:66 views.py:253
+msgid "Test"
+msgstr "Δοκιμή"
+
+#: literals.py:7
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Το μήνυμα αυτό περιέχει συνημμένο το έγγραφο: {{document}}\\n\n\n--------\nΑυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+
+#: literals.py:13
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Για να δείτε αυτό το έγγραφο πιέστε τον παρακάτω σύνδεσμο: {{ link }}\n\n--------\n Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+
+#: mailers.py:14
+msgid "Host"
+msgstr "Διεύθυνση διακομιστή"
+
+#: mailers.py:16
+msgid "The host to use for sending email."
+msgstr "Ο δικομηστής αλληλογρφίας που θα χρησιμοποιηθεί."
+
+#: mailers.py:21
+msgid "Port"
+msgstr "Θύρα"
+
+#: mailers.py:23
+msgid "Port to use for the SMTP server."
+msgstr "Το port του διακομηστή αλληλογραφίας SMTP"
+
+#: mailers.py:26
+msgid "Use TLS"
+msgstr "Χρήση TLS"
+
+#: mailers.py:29
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr "Αν θα γίνει χρήση του TLS (ασφαλής σύνδεση) κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Χρησιμοποιείται όταν έχει ζητηθεί ρητά η χρήση σύνδεσης TLS, συνήθως στην θύρα 587."
+
+#: mailers.py:34
+msgid "Use SSL"
+msgstr "Χρήση SSL"
+
+#: mailers.py:37
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "Αν θα γίνει χρήση ασφαλούς σύνδεσης TLS κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν συναντήσετε προβλήματα κατά την σύνδεση,δοκιμάστε να ρυθμίσετε ρητή χρήση του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση SSL\" δεν μπορεύν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο μια."
+
+#: mailers.py:46
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: mailers.py:49
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr "Όνομα χρήστη που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αν μείνει κενό, δεν θα γίνει προσπάθεια ταυτοποίησης."
+
+#: mailers.py:55
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: mailers.py:58
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση στον διακομιστή SMTP. Αν οποιοδήποτε από τα δύο πεδία είναι κενό, δεν θα πραγματοποιηθεί ταυτοποίηση. "
+
+#: mailers.py:76
+msgid "Django SMTP backend"
+msgstr ""
+
+#: mailers.py:83
+msgid "File path"
+msgstr "Διαδρομή αρχείου"
+
+#: mailers.py:89
+msgid "Django file based backend"
+msgstr ""
+
+#: models.py:22 models.py:165
+msgid "Date time"
+msgstr "Ηερομηνία ώρα"
+
+#: models.py:31
+msgid "Log entry"
+msgstr "Εγγραφή ημερολογίου"
+
+#: models.py:32
+msgid "Log entries"
+msgstr "Εγγραφές ημερολογίου"
+
+#: models.py:41
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr "Αν οριστεί σαν προκαθορισμένο, αυτό το προφίλ θα είναι προ-επιλεγμένο στην φόρμα αποστολής εγγράφου. "
+
+#: models.py:43
+msgid "Default"
+msgstr "Προκαθορισμένο"
+
+#: models.py:45
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: models.py:48
+msgid "The dotted Python path to the backend class."
+msgstr ""
+
+#: models.py:49
+msgid "Backend path"
+msgstr ""
+
+#: models.py:52
+msgid "Backend data"
+msgstr ""
+
+#: models.py:59 models.py:162
+msgid "User mailer"
+msgstr ""
+
+#: models.py:60
+msgid "User mailers"
+msgstr ""
+
+#: models.py:156
+msgid "Test email from Mayan EDMS"
+msgstr "Δοκιμαστικό μήνυμα από το Σύστημα Διαχείρισης Ηλεκτρονικών  Εγγράφων Mayan"
+
+#: models.py:174
+msgid "User mailer log entry"
+msgstr ""
+
+#: models.py:175
+msgid "User mailer log entries"
+msgstr ""
+
+#: permissions.py:7 queues.py:8 settings.py:11
+msgid "Mailing"
+msgstr ""
+
+#: permissions.py:10
+msgid "Send document link via email"
+msgstr "Αποστολή συνδέσμου εγγράφου μεμήνυμα"
+
+#: permissions.py:13
+msgid "Send document via email"
+msgstr "Αποστολή εγγράφου μεμήνυμα"
+
+#: permissions.py:16
+msgid "View system mailing error log"
+msgstr "Εμφάνιση ημερολογίου καταγραφής σφαλατων αλληλογραφίας του συστήματος"
+
+#: permissions.py:19
+msgid "Create a mailing profile"
+msgstr "Δημιουργία ενός προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: permissions.py:22
+msgid "Delete a mailing profile"
+msgstr "Διαγραφή ενός προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: permissions.py:25
+msgid "Edit a mailing profile"
+msgstr "Τροποποίηση ενός προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: permissions.py:28
+msgid "View a mailing profile"
+msgstr "Εμφάνηση ενός προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: permissions.py:31
+msgid "Use a mailing profile"
+msgstr "Χρήση ενός προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: queues.py:12
+msgid "Send document"
+msgstr "Αποστολή εγγρου"
+
+#: settings.py:14
+msgid "Link for document: {{ document }}"
+msgstr "Δεσμός για το έγγραφο: {{document}}"
+
+#: settings.py:15
+msgid "Template for the document link email form subject line."
+msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου σε έγγραφο."
+
+#: settings.py:20
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
+
+#: settings.py:24
+msgid "Document: {{ document }}"
+msgstr "Έγγραφο: {{document}}"
+
+#: settings.py:25
+msgid "Template for the document email form subject line."
+msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος αποστολής εγγράφου."
+
+#: settings.py:30
+msgid "Template for the document email form body text. Can include HTML."
+msgstr ""
+
+#: validators.py:14
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr ""
+
+#: views.py:37
+msgid "Document mailing error log"
+msgstr "Ημερολόγιοκαταγραφής σφαλμάτων ηλεκτρονικής ταχυδρόμησης."
+
+#: views.py:49
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr "%(count)d έγγραφο στην λίστα προς παράδοση"
+
+#: views.py:51
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr "%(count)d έγγραφα στην λίστα προς παράδοση"
+
+#: views.py:62
+msgid "Send"
+msgstr "Αποστολή"
+
+#: views.py:108
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr "%(count)d σύνδεσμος εγγράφου προς παράδοση"
+
+#: views.py:110
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr "%(count)d σύνδεσμοι εγγράφων προς παράδοση"
+
+#: views.py:119
+msgid "New mailing profile backend selection"
+msgstr ""
+
+#: views.py:147
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr "Δημιουργία ενός \"%s\"  προφίλ ηλεκτρονικού ταχυδρομείου"
+
+#: views.py:173
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr "Διαγραφή προφίλ ηλεκτρονικού ταχυδρομείου: %s"
+
+#: views.py:184
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr "Τροποποίηση προφίλ ηλεκτρονικού ταχυδρομείου: %s"
+
+#: views.py:207
+#, python-format
+msgid "%s error log"
+msgstr "%s ημερολόγιο καταγραφής"
+
+#: views.py:229
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles are used to send"
+" documents via email."
+msgstr ""
+
+#: views.py:233
+msgid "No mailing profiles available"
+msgstr ""
+
+#: views.py:254
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr "Δοκιμή προφίλ ηλεκτρονικού ταχυδρομείου: %s"

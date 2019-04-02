@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Rasmus Kierudsen <tebrasso@gmail.com>, 2018
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2018\n"
+"Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/teams/13584/da_DK/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da_DK\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:72 events.py:8 permissions.py:7 settings.py:7
+msgid "Document parsing"
+msgstr ""
+
+#: apps.py:126
+msgid "Document"
+msgstr "Dokument"
+
+#: apps.py:130
+msgid "Added"
+msgstr "Tilføjet"
+
+#: apps.py:134 models.py:66
+msgid "Result"
+msgstr "Resultat"
+
+#: apps.py:151 apps.py:155 links.py:19 links.py:24 models.py:22
+msgid "Content"
+msgstr "Indhold"
+
+#: events.py:12
+msgid "Document version submitted for parsing"
+msgstr ""
+
+#: events.py:15
+msgid "Document version parsing finished"
+msgstr ""
+
+#: forms.py:42
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "Side %(page_number)d"
+
+#: forms.py:50 forms.py:62
+msgid "Contents"
+msgstr "Indeholder"
+
+#: links.py:29 links.py:62 views.py:196
+msgid "Parsing errors"
+msgstr ""
+
+#: links.py:34
+msgid "Download content"
+msgstr "Download indhold"
+
+#: links.py:38 links.py:43
+msgid "Submit for parsing"
+msgstr ""
+
+#: links.py:49
+msgid "Setup parsing"
+msgstr ""
+
+#: links.py:57
+msgid "Parse documents per type"
+msgstr ""
+
+#: models.py:16
+msgid "Document page"
+msgstr "Dokumentside"
+
+#: models.py:20
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr ""
+
+#: models.py:28
+msgid "Document page content"
+msgstr "Indhold i dokumentside"
+
+#: models.py:29
+msgid "Document pages contents"
+msgstr "Indhold i dokumentsider"
+
+#: models.py:38
+msgid "Document type"
+msgstr "Dokumenttype"
+
+#: models.py:42
+msgid "Automatically queue newly created documents for parsing."
+msgstr ""
+
+#: models.py:53
+msgid "Document type settings"
+msgstr "Indstillinger for dokumenttype"
+
+#: models.py:54
+msgid "Document types settings"
+msgstr "Indstillinger for dokumenttyper"
+
+#: models.py:61
+msgid "Document version"
+msgstr "Dokumentversion"
+
+#: models.py:64
+msgid "Date time submitted"
+msgstr ""
+
+#: models.py:70
+msgid "Document version parse error"
+msgstr ""
+
+#: models.py:71
+msgid "Document version parse errors"
+msgstr ""
+
+#: parsers.py:90
+#, python-format
+msgid "Exception parsing page; %s"
+msgstr ""
+
+#: parsers.py:116
+#, python-format
+msgid "Cannot find pdftotext executable at: %s"
+msgstr ""
+
+#: permissions.py:10
+msgid "View the content of a document"
+msgstr "Se indholdet i et dokument"
+
+#: permissions.py:14
+msgid "Change document type parsing settings"
+msgstr ""
+
+#: permissions.py:17
+msgid "Parse the content of a document"
+msgstr "Gennemse indholdet i et dokument"
+
+#: queues.py:7
+msgid "Parsing"
+msgstr "Gennemse"
+
+#: queues.py:10
+msgid "Document version parsing"
+msgstr "Gennemse dokumentversion"
+
+#: settings.py:12
+msgid "Set new document types to perform parsing automatically by default."
+msgstr ""
+
+#: settings.py:19
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Content for document: %s"
+msgstr "Indhold i dokument: %s"
+
+#: views.py:78
+#, python-format
+msgid "Content for document page: %s"
+msgstr ""
+
+#: views.py:93
+#, python-format
+msgid "Parsing errors for document: %s"
+msgstr "Gennemgår dokument: %s for fejl"
+
+#: views.py:105
+#, python-format
+msgid "%(count)d document added to the parsing queue"
+msgstr "%(count)d dokument tilføjet køen for gennemgang"
+
+#: views.py:108
+#, python-format
+msgid "%(count)d documents added to the parsing queue"
+msgstr "%(count)d dokumenter tilføjet køen for gennemgang"
+
+#: views.py:116
+#, python-format
+msgid "Submit %(count)d document to the parsing queue?"
+msgid_plural "Submit %(count)d documents to the parsing queue"
+msgstr[0] "Klargører %(count)d dokumenter til køen for gennemgang"
+msgstr[1] "Klargør %(count)d dokumenter til køen for gennemgang"
+
+#: views.py:129
+#, python-format
+msgid "Submit document \"%s\" to the parsing queue"
+msgstr "Klargør dokumentet \"%s\" til køen for gennegang"
+
+#: views.py:152
+#, python-format
+msgid "Edit parsing settings for document type: %s"
+msgstr "Rediger indstillinger for gennemgang af dokumenttype: %s"
+
+#: views.py:163
+msgid "Submit all documents of a type for parsing"
+msgstr "Klargør alle dokumenter af en type til gennemgang"
+
+#: views.py:174
+#, python-format
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the parsing "
+"queue."
+msgstr ""
+"%(count)d af dokumenttypen \"%(document_type)s\" tilføjet køen for "
+"gennemgang."

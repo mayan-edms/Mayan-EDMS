@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-15 12:15+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,46 +21,46 @@ msgstr ""
 
 #: apps.py:20 permissions.py:7 settings.py:12
 msgid "Converter"
-msgstr ""
+msgstr "Convertizor"
 
 #: apps.py:27 models.py:39
 msgid "Order"
-msgstr ""
+msgstr "Ordine"
 
 #: apps.py:29 models.py:57
 msgid "Transformation"
-msgstr ""
+msgstr "Transformare"
 
 #: apps.py:33 models.py:49
 msgid "Arguments"
-msgstr ""
+msgstr "Argumente"
 
 #: backends/python.py:176 backends/python.py:182
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Excepție determinând numărul de pagini PDF; %s"
 
 #: backends/python.py:196
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Excepție de determinare a numărului de pagini PDF; %s"
 
 #: classes.py:98
 msgid "Not an office file format."
-msgstr ""
+msgstr "Nu este un format de fișier Office."
 
 #: classes.py:119
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice nu este instalat sau nu a fost găsit."
 
 #: forms.py:23
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" nu este o intrare validă."
 
 #: links.py:37
 msgid "Create new transformation"
-msgstr ""
+msgstr "Creați o nouă transformare"
 
 #: links.py:41
 msgid "Delete"
@@ -71,13 +72,13 @@ msgstr "Editează"
 
 #: links.py:50 models.py:58
 msgid "Transformations"
-msgstr ""
+msgstr "Transformări"
 
 #: models.py:37
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, va fi alocată o ordine automată."
 
 #: models.py:43
 msgid "Name"
@@ -87,75 +88,75 @@ msgstr "Nume"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Introduceți argumentele pentru transformare ca dicționar YAML. adică: {\"grade\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Creați noi transformări"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Ștergeți transformări"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Editați transformări"
 
 #: permissions.py:19
 msgid "View existing transformations"
-msgstr ""
+msgstr "Vizualizați transformările existente"
 
 #: settings.py:15
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Back-end de conversie grafică."
 
 #: settings.py:34
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
 
 #: transformations.py:81
 msgid "Crop"
-msgstr ""
+msgstr "Decupare"
 
 #: transformations.py:156
 msgid "Flip"
-msgstr ""
+msgstr "Basculare"
 
 #: transformations.py:167
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Încețoșare Gaussiană"
 
 #: transformations.py:177
 msgid "Line art"
-msgstr ""
+msgstr "Linie de arta"
 
 #: transformations.py:188
 msgid "Mirror"
-msgstr ""
+msgstr "Oglindire"
 
 #: transformations.py:199
 msgid "Resize"
-msgstr "Redimensionarea"
+msgstr "Redimensionare"
 
 #: transformations.py:226
 msgid "Rotate"
-msgstr "Roti"
+msgstr "Rotire"
 
 #: transformations.py:252
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Rotiți 90 de grade"
 
 #: transformations.py:263
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Rotiți 180 de grade"
 
 #: transformations.py:274
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Rotiți 270 de grade"
 
 #: transformations.py:284
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Unsharp masking"
 
 #: transformations.py:300
 msgid "Zoom"
@@ -163,34 +164,34 @@ msgstr "Zoom"
 
 #: validators.py:21
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Introduceți o valoare validă YAML."
 
 #: views.py:68
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
 
 #: views.py:120
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Creați o nouă transformare pentru: %s"
 
 #: views.py:170
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
 
 #: views.py:224
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Transformările permit modificarea aspectului vizual al documentelor, fără a face modificări permanente ale fișierului documentului în sine."
 
 #: views.py:228
 msgid "No transformations"
-msgstr ""
+msgstr "Fără transformări"
 
 #: views.py:229
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformări pentru: %s"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
 "PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
@@ -27,43 +27,43 @@ msgstr "Nijedno"
 msgid "Document types"
 msgstr "Tipovi dokumenta"
 
-#: apps.py:51
+#: apps.py:52
 msgid "Document indexing"
 msgstr "Indeksiranje dokumenata"
 
-#: apps.py:83 models.py:34
+#: apps.py:84 models.py:34
 msgid "Label"
 msgstr "Labela"
 
-#: apps.py:84 models.py:39
+#: apps.py:85 models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: apps.py:86 apps.py:112 models.py:47 models.py:184
+#: apps.py:87 apps.py:113 models.py:47 models.py:184
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: apps.py:93
+#: apps.py:94
 msgid "Total levels"
 msgstr "Ukupni nivoi"
 
-#: apps.py:99
+#: apps.py:100
 msgid "Total documents"
 msgstr "Ukupni dokumenti"
 
-#: apps.py:108 apps.py:125 apps.py:142
+#: apps.py:109 apps.py:126 apps.py:143
 msgid "Level"
 msgstr "Nivo"
 
-#: apps.py:118
+#: apps.py:119
 msgid "Has document links?"
 msgstr "Ima li dokumenat linkove?"
 
-#: apps.py:129 apps.py:148
+#: apps.py:130 apps.py:149
 msgid "Levels"
 msgstr "Nivoa"
 
-#: apps.py:133 apps.py:152 models.py:301
+#: apps.py:134 apps.py:153 models.py:301
 msgid "Documents"
 msgstr "Dokumenti"
 

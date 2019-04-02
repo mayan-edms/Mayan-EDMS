@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2018-11-05 22:17+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -35,19 +35,19 @@ msgstr "Cada documento cargado debe tener asignado un tipo de documento, es la f
 
 #: apps.py:157
 msgid "Versions comment"
-msgstr ""
+msgstr "Comentario de versiones"
 
 #: apps.py:160
 msgid "Versions encoding"
-msgstr ""
+msgstr "Codificación de versiones"
 
 #: apps.py:163
 msgid "Versions mime type"
-msgstr ""
+msgstr "Tipo MIME de versiones"
 
 #: apps.py:166
 msgid "Versions timestamp"
-msgstr ""
+msgstr "Fecha y hora de versiones"
 
 #: apps.py:231 apps.py:248 apps.py:255 apps.py:283 apps.py:298 apps.py:324
 msgid "Thumbnail"
@@ -71,7 +71,7 @@ msgstr "Duplicados"
 
 #: dashboard_widgets.py:24
 msgid "Total pages"
-msgstr ""
+msgstr "Paginas totales"
 
 #: dashboard_widgets.py:46
 msgid "Total documents"
@@ -420,7 +420,7 @@ msgstr "Todas las páginas"
 
 #: models.py:74
 msgid "The name of the document type."
-msgstr ""
+msgstr "El nombre del tipo de documento."
 
 #: models.py:75 models.py:193 models.py:767 search.py:21 search.py:42
 msgid "Label"
@@ -462,15 +462,15 @@ msgstr "Tipos de documentos"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifiergenerated for"
 " each document."
-msgstr ""
+msgstr "UUID de un documento, ID único universalmente. Un identificador único generado por cada documento."
 
 #: models.py:193
 msgid "The name of the document."
-msgstr ""
+msgstr "El nombre del documento."
 
 #: models.py:197
 msgid "An optional short text describing a document."
-msgstr ""
+msgstr "Un texto breve opcional que describe el documento."
 
 #: models.py:198 search.py:22 search.py:45
 msgid "Description"
@@ -480,7 +480,7 @@ msgstr "Descripción"
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr ""
+msgstr "La fecha y hora del servidor en que finalmente se procesó el documento y se agregó al sistema."
 
 #: models.py:204 models.py:1058
 msgid "Added"
@@ -488,11 +488,11 @@ msgstr "Añadido"
 
 #: models.py:208
 msgid "The dominant language in the document."
-msgstr ""
+msgstr "La lengua dominante en el documento."
 
 #: models.py:213
 msgid "Whether or not this document is in the trash."
-msgstr ""
+msgstr "Si este documento está o no en la papelera."
 
 #: models.py:214
 msgid "In trash?"
@@ -500,7 +500,7 @@ msgstr "¿En la papelera?"
 
 #: models.py:219
 msgid "The server date and time when the document was moved to the trash."
-msgstr ""
+msgstr "La fecha y hora del servidor cuando el documento fue movido a la papelera."
 
 #: models.py:221
 msgid "Date and time trashed"
@@ -524,7 +524,7 @@ msgstr "Recibo de documento, id: %d"
 
 #: models.py:431
 msgid "The server date and time when the document version was processed."
-msgstr ""
+msgstr "La fecha y hora del servidor cuando se procesó la versión del documento."
 
 #: models.py:432
 msgid "Timestamp"
@@ -532,7 +532,7 @@ msgstr "Marca de tiempo"
 
 #: models.py:436
 msgid "An optional short text describing the document version."
-msgstr ""
+msgstr "Un texto breve opcional que describe la versión del documento."
 
 #: models.py:437
 msgid "Comment"
@@ -547,7 +547,7 @@ msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr ""
+msgstr "El tipo de archivo de la versión del documento. Los tipos MIME son una forma estándar de describir el formato de un archivo, en este caso el formato de archivo del documento. Algunos ejemplos: \"text/plain\" o \"image/jpeg\"."
 
 #: models.py:451 search.py:19 search.py:39
 msgid "MIME type"
@@ -557,7 +557,7 @@ msgstr "Tipo MIME"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
+msgstr "La codificación del archivo de la versión del documento. Binario de 7 bits, binario de 8 bits, texto, base64, etc."
 
 #: models.py:457
 msgid "Encoding"
@@ -1040,7 +1040,7 @@ msgstr "Vista preliminar de la versión de documento: %s"
 #: views/document_views.py:71
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
-msgstr ""
+msgstr "Error al recuperar la lista de documentos: %(exception)s."
 
 #: views/document_views.py:91
 msgid ""
@@ -1298,12 +1298,12 @@ msgstr "El documento \"%(instance)s\" no está en favoritos."
 #: views/document_views.py:925
 #, python-format
 msgid "%(count)d document removed from favorites."
-msgstr ""
+msgstr "%(count)d documento eliminado de favoritos."
 
 #: views/document_views.py:928
 #, python-format
 msgid "%(count)d documents removed from favorites."
-msgstr ""
+msgstr "%(count)d documentos eliminados de los favoritos."
 
 #: views/document_views.py:935
 msgid "Remove"
@@ -1312,8 +1312,8 @@ msgstr "Eliminar"
 #: views/document_views.py:938
 msgid "Remove the selected document from favorites"
 msgid_plural "Remove the selected documents from favorites"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Eliminar el documento seleccionado de favoritos"
+msgstr[1] "Eliminar los documentos seleccionados de favoritos"
 
 #: views/document_views.py:963
 msgid ""

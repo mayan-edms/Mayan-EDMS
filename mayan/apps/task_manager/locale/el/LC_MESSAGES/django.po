@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2018
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2017-06-30 22:04+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2018\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:24 links.py:12 permissions.py:7
+msgid "Task manager"
+msgstr "Διαχειρστής εργασιών"
+
+#: apps.py:30
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: apps.py:33
+msgid "Name"
+msgstr "Όνομα"
+
+#: apps.py:36
+msgid "Default queue?"
+msgstr "Προκαθορισμένη λίστα;"
+
+#: apps.py:42
+msgid "Is transient?"
+msgstr "Είναι παροδική"
+
+#: apps.py:48
+msgid "Type"
+msgstr "Τύπος"
+
+#: apps.py:51
+msgid "Start time"
+msgstr "Ώρα έναρκης"
+
+#: apps.py:54
+msgid "Host"
+msgstr "Διεύθυνση διακομιστή"
+
+#: apps.py:58
+msgid "Acknowledged"
+msgstr ""
+
+#: apps.py:64
+msgid "Arguments"
+msgstr "Παράμετροι"
+
+#: apps.py:68
+msgid "Keyword arguments"
+msgstr ""
+
+#: apps.py:72
+msgid "Worker process ID"
+msgstr ""
+
+#: links.py:16 views.py:15
+msgid "Background task queues"
+msgstr "Λίστες εργασιών παρασκηνίου"
+
+#: links.py:20
+msgid "Active tasks"
+msgstr "Ενεργές εργασίες"
+
+#: links.py:24
+msgid "Reserved tasks"
+msgstr "Κρατημένες εργασίες"
+
+#: links.py:28
+msgid "Scheduled tasks"
+msgstr "Προγραμματισμένες εργασίες"
+
+#: permissions.py:10
+msgid "View tasks"
+msgstr "Εμφάνιση εργασιών"
+
+#: tests/literals.py:5
+msgid "Test queue"
+msgstr ""
+
+#: views.py:30
+#, python-format
+msgid "Active tasks in queue: %s"
+msgstr "Ενεργές εργασίες στην λίστα: %s"
+
+#: views.py:42
+#, python-format
+msgid "Unable to retrieve task list; %s"
+msgstr "Αδυναμία ανάκτησης εργασιών στην λίστα: %s"
+
+#: views.py:55
+#, python-format
+msgid "Scheduled tasks in queue: %s"
+msgstr "Προγραμματισμένες εργασίες στην λίστα: %s"
+
+#: views.py:67
+#, python-format
+msgid "Reserved tasks in queue: %s"
+msgstr "Κρατημένες εργασίες στην λίστα: %s"

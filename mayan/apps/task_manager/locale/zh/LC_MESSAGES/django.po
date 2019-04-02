@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2017-06-30 22:04+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
+"Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:24 links.py:12 permissions.py:7
+msgid "Task manager"
+msgstr "任务管理器"
+
+#: apps.py:30
+msgid "Label"
+msgstr "标签"
+
+#: apps.py:33
+msgid "Name"
+msgstr "名称"
+
+#: apps.py:36
+msgid "Default queue?"
+msgstr "默认队列？"
+
+#: apps.py:42
+msgid "Is transient?"
+msgstr "是临时的吗？"
+
+#: apps.py:48
+msgid "Type"
+msgstr "类型"
+
+#: apps.py:51
+msgid "Start time"
+msgstr "开始时间"
+
+#: apps.py:54
+msgid "Host"
+msgstr "主机"
+
+#: apps.py:58
+msgid "Acknowledged"
+msgstr "已确认"
+
+#: apps.py:64
+msgid "Arguments"
+msgstr "参数"
+
+#: apps.py:68
+msgid "Keyword arguments"
+msgstr "关键字参数"
+
+#: apps.py:72
+msgid "Worker process ID"
+msgstr "工作进程ID"
+
+#: links.py:16 views.py:15
+msgid "Background task queues"
+msgstr "后台任务队列"
+
+#: links.py:20
+msgid "Active tasks"
+msgstr "活动任务"
+
+#: links.py:24
+msgid "Reserved tasks"
+msgstr "预留任务"
+
+#: links.py:28
+msgid "Scheduled tasks"
+msgstr "计划任务"
+
+#: permissions.py:10
+msgid "View tasks"
+msgstr "查看任务"
+
+#: tests/literals.py:5
+msgid "Test queue"
+msgstr "测试队列"
+
+#: views.py:30
+#, python-format
+msgid "Active tasks in queue: %s"
+msgstr "队列中的活动任务：%s"
+
+#: views.py:42
+#, python-format
+msgid "Unable to retrieve task list; %s"
+msgstr "无法检索任务列表; %s"
+
+#: views.py:55
+#, python-format
+msgid "Scheduled tasks in queue: %s"
+msgstr "队列中的计划任务：%s"
+
+#: views.py:67
+#, python-format
+msgid "Reserved tasks in queue: %s"
+msgstr "队列中的预留任务：%s"

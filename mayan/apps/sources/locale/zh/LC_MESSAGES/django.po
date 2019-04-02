@@ -1,0 +1,663 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2019-02-01 02:23+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
+msgid "Sources"
+msgstr "来源"
+
+#: apps.py:55
+msgid "Create a document source"
+msgstr "创建文档源"
+
+#: apps.py:57
+msgid ""
+"Document sources are the way in which new documents are feed to Mayan EDMS, "
+"create at least a web form source to be able to upload documents from a "
+"browser."
+msgstr "文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览器上传文档。"
+
+#: apps.py:67
+msgid "Created"
+msgstr "已创建"
+
+#: apps.py:74
+msgid "Thumbnail"
+msgstr "缩略图"
+
+#: apps.py:82 models.py:789
+msgid "Date time"
+msgstr "日期时间"
+
+#: apps.py:87 models.py:792
+msgid "Message"
+msgstr "信息"
+
+#: forms.py:30
+msgid "Comment"
+msgstr "评论"
+
+#: forms.py:45
+msgid "Expand compressed files"
+msgstr "展开压缩文件"
+
+#: forms.py:47
+msgid "Upload a compressed file's contained files as individual documents"
+msgstr "将压缩文件包含的文件作为单个文档上载"
+
+#: forms.py:68 views.py:483
+msgid "Staging file"
+msgstr "暂存文件"
+
+#: forms.py:72 forms.py:77
+msgid "File"
+msgstr "文件"
+
+#: handlers.py:16
+msgid "Default"
+msgstr "默认"
+
+#: links.py:51
+msgid "New document"
+msgstr "新文档"
+
+#: links.py:62
+msgid "Add new IMAP email"
+msgstr "添加新的IMAP电子邮件"
+
+#: links.py:67
+msgid "Add new POP3 email"
+msgstr "添加新的POP3电子邮件"
+
+#: links.py:72
+msgid "Add new staging folder"
+msgstr "添加新的暂存文件夹"
+
+#: links.py:77
+msgid "Add new watch folder"
+msgstr "添加新的监视文件夹"
+
+#: links.py:82
+msgid "Add new webform source"
+msgstr "添加新的webform源"
+
+#: links.py:87
+msgid "Add new SANE scanner"
+msgstr "添加新的SANE扫描仪"
+
+#: links.py:92 links.py:106
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:96
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:100
+msgid "Document sources"
+msgstr "文件源"
+
+#: links.py:111
+msgid "Upload new version"
+msgstr "上传新版本"
+
+#: links.py:115
+msgid "Logs"
+msgstr "日志"
+
+#: links.py:120
+msgid "Check now"
+msgstr "现在检查"
+
+#: literals.py:16
+msgid "Flatbed"
+msgstr "平板"
+
+#: literals.py:17
+msgid "Document feeder"
+msgstr "文件送纸器"
+
+#: literals.py:24
+msgid "Simplex"
+msgstr "单面"
+
+#: literals.py:25
+msgid "Duplex"
+msgstr "双面"
+
+#: literals.py:33
+msgid "Lineart"
+msgstr "艺术线条"
+
+#: literals.py:34
+msgid "Monochrome"
+msgstr "单色"
+
+#: literals.py:35
+msgid "Color"
+msgstr "颜色"
+
+#: literals.py:43 literals.py:48
+msgid "Always"
+msgstr "总是"
+
+#: literals.py:44 literals.py:49
+msgid "Never"
+msgstr "从不"
+
+#: literals.py:50
+msgid "Ask user"
+msgstr "询问用户"
+
+#: literals.py:61
+msgid "Scanner"
+msgstr "扫描仪"
+
+#: literals.py:62 models.py:393
+msgid "Web form"
+msgstr "网络表单"
+
+#: literals.py:63 models.py:329
+msgid "Staging folder"
+msgstr "暂存文件夹"
+
+#: literals.py:64 models.py:765
+msgid "Watch folder"
+msgstr "监视文件夹"
+
+#: literals.py:65
+msgid "POP3 email"
+msgstr "POP3电子邮件"
+
+#: literals.py:66 models.py:662 models.py:663
+msgid "IMAP email"
+msgstr "IMAP电子邮件"
+
+#: models.py:55
+msgid "Label"
+msgstr "标签"
+
+#: models.py:57 views.py:592
+msgid "Enabled"
+msgstr "启用"
+
+#: models.py:63 models.py:786
+msgid "Source"
+msgstr "来源"
+
+#: models.py:176
+msgid "Interactive source"
+msgstr "互动来源"
+
+#: models.py:177
+msgid "Interactive sources"
+msgstr "互动来源"
+
+#: models.py:187
+msgid "Device name as returned by the SANE backend."
+msgstr "SANE后端返回的设备名称。"
+
+#: models.py:188
+msgid "Device name"
+msgstr "设备名称"
+
+#: models.py:193
+msgid ""
+"Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
+"is not supported by your scanner, leave it blank."
+msgstr "选择扫描模式（例如，艺术线条，单色或彩色）。如果扫描仪不支持此选项，请将其留空。"
+
+#: models.py:195
+msgid "Mode"
+msgstr "模式"
+
+#: models.py:199
+msgid ""
+"Sets the resolution of the scanned image in DPI (dots per inch). Typical "
+"value is 200. If this option is not supported by your scanner, leave it "
+"blank."
+msgstr "以DPI（每英寸点数）设置扫描图像的分辨率。典型值为200.如果扫描仪不支持此选项，请将其留空。"
+
+#: models.py:202
+msgid "Resolution"
+msgstr "分辨率"
+
+#: models.py:206
+msgid ""
+"Selects the scan source (such as a document-feeder). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr "选择扫描源（例如文档进纸器）。如果扫描仪不支持此选项，请将其留空。"
+
+#: models.py:208
+msgid "Paper source"
+msgstr "纸张来源"
+
+#: models.py:213
+msgid ""
+"Selects the document feeder mode (simplex/duplex). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr "选择文档进纸器模式（单面/双面）。如果扫描仪不支持此选项，请将其留空。"
+
+#: models.py:215
+msgid "ADF mode"
+msgstr "ADF模式"
+
+#: models.py:221
+msgid "SANE Scanner"
+msgstr "SANE扫描仪"
+
+#: models.py:222
+msgid "SANE Scanners"
+msgstr "SANE扫描仪"
+
+#: models.py:269
+#, python-format
+msgid "Error while scanning; %s"
+msgstr "扫描时出错; %s"
+
+#: models.py:301 models.py:758
+msgid "Server side filesystem path."
+msgstr "服务器端文件系统路径。"
+
+#: models.py:302 models.py:759
+msgid "Folder path"
+msgstr "文件夹路径"
+
+#: models.py:305
+msgid "Width value to be passed to the converter backend."
+msgstr "要传递给转换器后端的宽度值。"
+
+#: models.py:306
+msgid "Preview width"
+msgstr "预览宽度"
+
+#: models.py:310
+msgid "Height value to be passed to the converter backend."
+msgstr "要传递给转换器后端的高度值。"
+
+#: models.py:311
+msgid "Preview height"
+msgstr "预览高度"
+
+#: models.py:315 models.py:386
+msgid "Whether to expand or not compressed archives."
+msgstr "是否解压压缩的档案。"
+
+#: models.py:316 models.py:387 models.py:427
+msgid "Uncompress"
+msgstr "解压缩"
+
+#: models.py:321
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "成功上传后删除文件。"
+
+#: models.py:323
+msgid "Delete after upload"
+msgstr "上传后删除"
+
+#: models.py:330
+msgid "Staging folders"
+msgstr "暂存文件夹"
+
+#: models.py:342
+#, python-format
+msgid "Error deleting staging file; %s"
+msgstr "删除暂存文件时出错; %s"
+
+#: models.py:358
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr "无法获取暂存文件列表：%s"
+
+#: models.py:394
+msgid "Web forms"
+msgstr "网络表单"
+
+#: models.py:407 models.py:408
+msgid "Out of process"
+msgstr "进程外"
+
+#: models.py:414
+msgid "Interval in seconds between checks for new documents."
+msgstr "检查新文档的间隔（秒）。"
+
+#: models.py:415
+msgid "Interval"
+msgstr "间隔"
+
+#: models.py:420
+msgid "Assign a document type to documents uploaded from this source."
+msgstr "将文档类型分配给从此源上传的文档。"
+
+#: models.py:422
+msgid "Document type"
+msgstr "文件类型"
+
+#: models.py:426
+msgid "Whether to expand or not, compressed archives."
+msgstr "是否解压压缩的档案。"
+
+#: models.py:433
+msgid "Interval source"
+msgstr "间隔来源"
+
+#: models.py:434
+msgid "Interval sources"
+msgstr "间隔来源"
+
+#: models.py:492
+msgid "Host"
+msgstr "主机"
+
+#: models.py:493
+msgid "SSL"
+msgstr "SSL"
+
+#: models.py:495
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr "对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL的IMAP为993。"
+
+#: models.py:496
+msgid "Port"
+msgstr "端口"
+
+#: models.py:498
+msgid "Username"
+msgstr "用户名"
+
+#: models.py:499
+msgid "Password"
+msgstr "密码"
+
+#: models.py:503
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments. Note: This "
+"attachment has to be the first attachment."
+msgstr "附件的名称，其中包含要分配给其余下载附件的元数据类型名称和值对。注意：此附件必须是第一个附件。"
+
+#: models.py:507
+msgid "Metadata attachment name"
+msgstr "元数据附件名称"
+
+#: models.py:511
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's subject."
+msgstr "选择对所选文档类型有效的元数据类型，以便存储电子邮件的主题。"
+
+#: models.py:514
+msgid "Subject metadata type"
+msgstr "主题元数据类型"
+
+#: models.py:518
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's \"from\" value."
+msgstr "选择对所选文档类型有效的元数据类型，以存储电子邮件的“发件人”值。"
+
+#: models.py:521
+msgid "From metadata type"
+msgstr "发件人元数据类型"
+
+#: models.py:525
+msgid "Store the body of the email as a text document."
+msgstr "将电子邮件正文存储为文本文档。"
+
+#: models.py:526
+msgid "Store email body"
+msgstr "存储邮件正文"
+
+#: models.py:532
+msgid "Email source"
+msgstr "电邮来源"
+
+#: models.py:533
+msgid "Email sources"
+msgstr "电邮来源"
+
+#: models.py:541
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr "主题元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
+
+#: models.py:555
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr "“发件人”元数据类型“%(metadata_type)s”对于文档类型%(document_type)s无效"
+
+#: models.py:655
+msgid "IMAP Mailbox from which to check for messages."
+msgstr "IMAP邮箱，用于检查邮件。"
+
+#: models.py:656
+msgid "Mailbox"
+msgstr "邮箱"
+
+#: models.py:701
+msgid "Timeout"
+msgstr "超时"
+
+#: models.py:707 models.py:708
+msgid "POP email"
+msgstr "POP电子邮件"
+
+#: models.py:766
+msgid "Watch folders"
+msgstr "监视文件夹"
+
+#: models.py:798
+msgid "Log entry"
+msgstr "日志条目"
+
+#: models.py:799
+msgid "Log entries"
+msgstr "日志条目"
+
+#: permissions.py:7
+msgid "Sources setup"
+msgstr "来源设置"
+
+#: permissions.py:9
+msgid "Create new document sources"
+msgstr "创建新的文档源"
+
+#: permissions.py:12
+msgid "Delete document sources"
+msgstr "删除文档源"
+
+#: permissions.py:15
+msgid "Edit document sources"
+msgstr "编辑文档源"
+
+#: permissions.py:18
+msgid "View existing document sources"
+msgstr "查看现有文档源"
+
+#: permissions.py:21
+msgid "Delete staging files"
+msgstr "删除暂存文件"
+
+#: queues.py:11
+msgid "Sources periodic"
+msgstr ""
+
+#: queues.py:14
+msgid "Sources fast"
+msgstr ""
+
+#: queues.py:19
+msgid "Generate staging file image"
+msgstr "生成暂存文件映像"
+
+#: queues.py:23
+msgid "Check interval source"
+msgstr "检查间隔源"
+
+#: queues.py:27
+msgid "Handle upload"
+msgstr "处理上传"
+
+#: queues.py:31
+msgid "Upload document"
+msgstr "上传文档"
+
+#: settings.py:15
+msgid "File path to the scanimage program used to control image scanners."
+msgstr "用于控制图像扫描仪的scanimage程序的文件路径。"
+
+#: settings.py:22
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr "存储缓存的staging_file映像文件时要使用的Storage子类的路径。"
+
+#: settings.py:31
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+msgstr "传递给SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND的参数。"
+
+#: tasks.py:46
+#, python-format
+msgid "Error processing source: %s"
+msgstr "处理源错误：%s"
+
+#: views.py:66
+msgid ""
+"Any error produced during the usage of a source will be listed here to "
+"assist in debugging."
+msgstr "此处列出了在使用源期间产生的任何错误，以帮助调试。"
+
+#: views.py:69
+msgid "No log entries available"
+msgstr "没有可用的日志条目"
+
+#: views.py:71
+#, python-format
+msgid "Log entries for source: %s"
+msgstr "源%s的日志条目"
+
+#: views.py:127 wizards.py:145
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "没有定义交互式文档源或没有启用任何交互式文档源，在继续之前创建一个。"
+
+#: views.py:153 views.py:171 views.py:181
+msgid "Document properties"
+msgstr "文档属性"
+
+#: views.py:161
+msgid "Files in staging path"
+msgstr "暂存路径中的文件"
+
+#: views.py:172
+msgid "Scan"
+msgstr "扫描"
+
+#: views.py:281
+#, python-format
+msgid ""
+"Error executing document upload task; %(exception)s, %(exception_class)s"
+msgstr "执行文档上传任务时出错; %(exception)s，%(exception_class)s"
+
+#: views.py:295
+msgid "New document queued for upload and will be available shortly."
+msgstr "新文档排队等待上传，很快将可用。"
+
+#: views.py:346
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "从源%(source)s上传类型为“%(document_type)s”的文档"
+
+#: views.py:379
+#, python-format
+msgid "Document \"%s\" is blocked from uploading new versions."
+msgstr "文档“%s”被阻止上传新版本。"
+
+#: views.py:431
+msgid "New document version queued for upload and will be available shortly."
+msgstr "新文档版本排队等待上传，很快将可用。"
+
+#: views.py:470
+#, python-format
+msgid "Upload a new version from source: %s"
+msgstr "从源%s上传新版本"
+
+#: views.py:510
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr "检查源“%s”的触发器？"
+
+#: views.py:523
+msgid "Source check queued."
+msgstr "源检查排队。"
+
+#: views.py:537
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "创建%s类型的新来源"
+
+#: views.py:557
+#, python-format
+msgid "Delete the source: %s?"
+msgstr "删除源：%s？"
+
+#: views.py:576
+#, python-format
+msgid "Edit source: %s"
+msgstr "编辑源：%s"
+
+#: views.py:588
+msgid "Type"
+msgstr "类型"
+
+#: views.py:621
+msgid ""
+"Sources provide the means to upload documents. Some sources like the "
+"webform, are interactive and require user input to operate. Others like the "
+"email sources, are automatic and run on the background without user "
+"intervention."
+msgstr "来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
+
+#: views.py:626
+msgid "No sources available"
+msgstr "没有可用的来源"
+
+#: wizards.py:96
+msgid "Select document type"
+msgstr "选择文档类型"
+
+#: wizards.py:164
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr "步骤%(step)d ：%(step_label)s，总步骤%(total_steps)d"
+
+#: wizards.py:169
+msgid "Next step"
+msgstr "下一步"
+
+#: wizards.py:171
+msgid "Document upload wizard"
+msgstr "文档上传向导"

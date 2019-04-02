@@ -3,14 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Roberto Rosario, 2017
+# Stefaniu Criste <gupi@hangar.ro>, 2017
+# Badea Gabriel <gcbadea@gmail.com>, 2018
+# Harald Ersch, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2017\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,19 +26,19 @@ msgstr ""
 
 #: apps.py:72 events.py:8 permissions.py:7 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "Analiza documentelor"
 
 #: apps.py:126
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: apps.py:130
 msgid "Added"
-msgstr ""
+msgstr "Adăugat"
 
 #: apps.py:134 models.py:66
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: apps.py:151 apps.py:155 links.py:19 links.py:24 models.py:22
 msgid "Content"
@@ -40,16 +46,16 @@ msgstr "Conținut"
 
 #: events.py:12
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Versiunea documentului trimisă pentru analiză"
 
 #: events.py:15
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Analiza de versiuni a documentelor a fost terminată"
 
 #: forms.py:42
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Pagina %(page_number)d"
 
 #: forms.py:50 forms.py:62
 msgid "Contents"
@@ -57,39 +63,41 @@ msgstr "Conţinut"
 
 #: links.py:29 links.py:62 views.py:196
 msgid "Parsing errors"
-msgstr ""
+msgstr "Erori de analiză"
 
 #: links.py:34
 msgid "Download content"
-msgstr ""
+msgstr "Descărcați conținut"
 
 #: links.py:38 links.py:43
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Trimiteți pentru analiză"
 
 #: links.py:49
 msgid "Setup parsing"
-msgstr ""
+msgstr "Configurarea analizării"
 
 #: links.py:57
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Analizare pe tipuri de documente"
 
 #: models.py:16
 msgid "Document page"
-msgstr ""
+msgstr "Pagina documentului"
 
 #: models.py:20
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
+"Conținutul actual de text extras de către backend-ul de analiză a "
+"documentelor."
 
 #: models.py:28
 msgid "Document page content"
-msgstr ""
+msgstr "Conținutul paginii documentului"
 
 #: models.py:29
 msgid "Document pages contents"
-msgstr ""
+msgstr "Conținutul paginilor documentului"
 
 #: models.py:38
 msgid "Document type"
@@ -97,15 +105,15 @@ msgstr "Tip document"
 
 #: models.py:42
 msgid "Automatically queue newly created documents for parsing."
-msgstr ""
+msgstr "Analiză automată a documentelor nou create"
 
 #: models.py:53
 msgid "Document type settings"
-msgstr ""
+msgstr "Setările tipului de document"
 
 #: models.py:54
 msgid "Document types settings"
-msgstr ""
+msgstr "Setările pentru tipurile de documente"
 
 #: models.py:61
 msgid "Document version"
@@ -113,49 +121,51 @@ msgstr "Versiune document"
 
 #: models.py:64
 msgid "Date time submitted"
-msgstr ""
+msgstr "Marcaj temporal al trimiterii"
 
 #: models.py:70
 msgid "Document version parse error"
-msgstr ""
+msgstr "Eroare de analiză pentru versiunea de document"
 
 #: models.py:71
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Erori de analiză pentru versiunea de document"
 
 #: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Eroare de analiză la pagina; %s"
 
 #: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Nu se poate găsi executabilul pdftotext la: %s"
 
 #: permissions.py:10
 msgid "View the content of a document"
-msgstr ""
+msgstr "Vizualizați conținutul unui document"
 
 #: permissions.py:14
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Modificați setările de analiză pentru tipul de document"
 
 #: permissions.py:17
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "Analizează conținutul unui document"
 
 #: queues.py:7
 msgid "Parsing"
-msgstr ""
+msgstr "Analizare"
 
 #: queues.py:10
 msgid "Document version parsing"
-msgstr ""
+msgstr "Analiza versiunilor documentelor"
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
+"Setați tipuri noi de documente pentru a efectua analiza în mod automat în "
+"mod prestabilit."
 
 #: settings.py:19
 msgid ""
@@ -168,49 +178,49 @@ msgstr ""
 #: views.py:43
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "Conținutul pentru documentul: %s"
 
 #: views.py:78
 #, python-format
 msgid "Content for document page: %s"
-msgstr ""
+msgstr "Conținutul pentru pagina documentului: %s"
 
 #: views.py:93
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Erori de analiză pentru documentul: %s"
 
 #: views.py:105
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d document adăugat la coada de analiză"
 
 #: views.py:108
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d documente adăugate la coada de analiză"
 
 #: views.py:116
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Trimiteți documentul %(count)d la coada de analiză?"
+msgstr[1] "Trimiteți documente %(count)d în coada de analiză"
+msgstr[2] "Trimiteți %(count)d documente  în coada de analiză"
 
 #: views.py:129
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Trimiteți documentul \"%s\" în coada de analiză"
 
 #: views.py:152
 #, python-format
 msgid "Edit parsing settings for document type: %s"
-msgstr ""
+msgstr "Editați setările de analiză pentru tipul de document: %s"
 
 #: views.py:163
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Trimiteți toate documentele de un tip la analiză"
 
 #: views.py:174
 #, python-format
@@ -218,3 +228,5 @@ msgid ""
 "%(count)d documents of type \"%(document_type)s\" added to the parsing "
 "queue."
 msgstr ""
+"%(count)d documente de tipul \"%(document_type)s\" adăugate la coada de "
+"analiză."

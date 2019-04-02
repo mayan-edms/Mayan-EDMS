@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2019-02-02 03:12+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:46 apps.py:108 apps.py:115 apps.py:136 apps.py:138 events.py:7
+#: forms.py:32 links.py:45 menus.py:15 models.py:38 permissions.py:7
+#: views.py:212 workflow_actions.py:19 workflow_actions.py:64
+msgid "Tags"
+msgstr "标签"
+
+#: apps.py:129 models.py:32
+msgid "Documents"
+msgstr "文档"
+
+#: events.py:10
+msgid "Tag attached to document"
+msgstr "附加到文档的标签"
+
+#: events.py:13
+msgid "Tag created"
+msgstr "标签已创建"
+
+#: events.py:16
+msgid "Tag edited"
+msgstr "标签已编辑"
+
+#: events.py:19
+msgid "Tag removed from document"
+msgstr "标签已从文档中删除"
+
+#: links.py:17 workflow_actions.py:71
+msgid "Remove tag"
+msgstr "删除标签"
+
+#: links.py:20 links.py:28
+msgid "Attach tags"
+msgstr "附加标签"
+
+#: links.py:24
+msgid "Remove tags"
+msgstr "删除标签"
+
+#: links.py:33
+msgid "Create new tag"
+msgstr "创建新标签"
+
+#: links.py:37 links.py:55 views.py:148
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:40
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:52
+msgid "All"
+msgstr "所有"
+
+#: models.py:24
+msgid "A short text used as the tag name."
+msgstr "用作标签名称的简短文本。"
+
+#: models.py:25 search.py:16
+msgid "Label"
+msgstr "标签"
+
+#: models.py:28
+msgid "The RGB color values for the tag."
+msgstr "标签的RGB颜色值。"
+
+#: models.py:29 search.py:20
+msgid "Color"
+msgstr "颜色"
+
+#: models.py:37
+msgid "Tag"
+msgstr "标签"
+
+#: models.py:61
+msgid "Preview"
+msgstr "预览"
+
+#: models.py:86
+msgid "Document tag"
+msgstr "文件标签"
+
+#: models.py:87
+msgid "Document tags"
+msgstr "文档标签"
+
+#: permissions.py:10
+msgid "Create new tags"
+msgstr "创建新标签"
+
+#: permissions.py:13
+msgid "Delete tags"
+msgstr "删除标签"
+
+#: permissions.py:16
+msgid "View tags"
+msgstr "查看标签"
+
+#: permissions.py:19
+msgid "Edit tags"
+msgstr "编辑标签"
+
+#: permissions.py:22
+msgid "Attach tags to documents"
+msgstr "将标签附加到文档"
+
+#: permissions.py:25
+msgid "Remove tags from documents"
+msgstr "从文档中删除标签"
+
+#: serializers.py:39
+msgid ""
+"Comma separated list of document primary keys to which this tag will be "
+"attached."
+msgstr "将附加此标签的以逗号分隔的文档主键列表。"
+
+#: serializers.py:86
+msgid ""
+"API URL pointing to a tag in relation to the document attached to it. This "
+"URL is different than the canonical tag URL."
+msgstr "API URL指向与附加到其上的文档相关的标签。此URL与规范标记URL不同。"
+
+#: serializers.py:106
+msgid "Primary key of the tag to be added."
+msgstr "要添加的标签的主键。"
+
+#: views.py:38
+#, python-format
+msgid "Tag attach request performed on %(count)d document"
+msgstr "在%(count)d文档上执行的标签附加请求"
+
+#: views.py:40
+#, python-format
+msgid "Tag attach request performed on %(count)d documents"
+msgstr "在%(count)d文档上执行的标签附加请求"
+
+#: views.py:47
+msgid "Attach"
+msgstr "附加"
+
+#: views.py:49
+#, python-format
+msgid "Attach tags to %(count)d document"
+msgid_plural "Attach tags to %(count)d documents"
+msgstr[0] "将标签附加到%(count)d文档"
+
+#: views.py:61
+#, python-format
+msgid "Attach tags to document: %s"
+msgstr "将标签附加到文档：%s"
+
+#: views.py:70 wizard_steps.py:28
+msgid "Tags to be attached."
+msgstr "要附加的标签。"
+
+#: views.py:103
+#, python-format
+msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+msgstr "文档“%(document)s”已标记为“%(tag)s”"
+
+#: views.py:114
+#, python-format
+msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+msgstr "标签“%(tag)s”已成功附加到文档“%(document)s”。"
+
+#: views.py:123
+msgid "Create tag"
+msgstr "创建标签"
+
+#: views.py:137
+#, python-format
+msgid "Tag delete request performed on %(count)d tag"
+msgstr "在%(count)d标签上执行的标签删除请求"
+
+#: views.py:139
+#, python-format
+msgid "Tag delete request performed on %(count)d tags"
+msgstr "在%(count)d标签上执行的标签删除请求"
+
+#: views.py:146
+msgid "Will be removed from all documents."
+msgstr "将从所有文件中删除。"
+
+#: views.py:150
+msgid "Delete the selected tag?"
+msgid_plural "Delete the selected tags?"
+msgstr[0] "删除所选标签？"
+
+#: views.py:160
+#, python-format
+msgid "Delete tag: %s"
+msgstr "删除标签：%s"
+
+#: views.py:170
+#, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr "标签“%s”已成功删除。"
+
+#: views.py:174
+#, python-format
+msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgstr "删除标签“%(tag)s”时出错：%(error)s"
+
+#: views.py:189
+#, python-format
+msgid "Edit tag: %s"
+msgstr "编辑标签：%s"
+
+#: views.py:208
+msgid ""
+"Tags are color coded properties that can be attached or removed from "
+"documents."
+msgstr "标签是可以在文档中附加或删除的颜色编码属性。"
+
+#: views.py:211
+msgid "No tags available"
+msgstr "没有可用的标签"
+
+#: views.py:235
+#, python-format
+msgid "Documents with the tag: %s"
+msgstr "标签为%s的文件"
+
+#: views.py:259
+msgid "Document has no tags attached"
+msgstr "文档没有附加标签"
+
+#: views.py:266
+#, python-format
+msgid "Tags for document: %s"
+msgstr "文档标签：%s"
+
+#: views.py:279
+#, python-format
+msgid "Tag remove request performed on %(count)d document"
+msgstr "在%(count)d文档上执行的标记删除请求"
+
+#: views.py:281
+#, python-format
+msgid "Tag remove request performed on %(count)d documents"
+msgstr "在%(count)d文档上执行的标记删除请求"
+
+#: views.py:289
+msgid "Remove"
+msgstr "移除"
+
+#: views.py:291
+#, python-format
+msgid "Remove tags to %(count)d document"
+msgid_plural "Remove tags to %(count)d documents"
+msgstr[0] "%(count)d文件删除标签"
+
+#: views.py:303
+#, python-format
+msgid "Remove tags from document: %s"
+msgstr "从文档%s中删除标签"
+
+#: views.py:312
+msgid "Tags to be removed."
+msgstr "要删除的标签。"
+
+#: views.py:345
+#, python-format
+msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
+msgstr "文档“%(document)s”未标记为“%(tag)s"
+
+#: views.py:355
+#, python-format
+msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+msgstr "标签“%(tag)s”已从文档“%(document)s”中成功删除。"
+
+#: wizard_steps.py:16
+msgid "Select tags"
+msgstr "选择标签"
+
+#: workflow_actions.py:21
+msgid "Tags to attach to the document"
+msgstr "要附加到文档的标签"
+
+#: workflow_actions.py:26
+msgid "Attach tag"
+msgstr "附加标签"
+
+#: workflow_actions.py:66
+msgid "Tags to remove from the document"
+msgstr "要从文档中删除的标签"

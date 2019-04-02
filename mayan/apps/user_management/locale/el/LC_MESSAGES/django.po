@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:33-0400\n"
+"PO-Revision-Date: 2018-09-27 02:32+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:53 permissions.py:7
+msgid "User management"
+msgstr "Διαχείριση χρηστών"
+
+#: apps.py:68
+msgid "All the groups."
+msgstr "Όλες οι ομάδες."
+
+#: apps.py:72
+msgid "All the users."
+msgstr "Όλοι οι χρήστες."
+
+#: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:274
+msgid "Users"
+msgstr "Χρήστες"
+
+#: apps.py:94
+msgid "Full name"
+msgstr "Πλήρες όνομα"
+
+#: apps.py:97 search.py:22
+msgid "Email"
+msgstr "Λογαριασμός email"
+
+#: apps.py:100
+msgid "Active"
+msgstr "Ενεργό"
+
+#: apps.py:106
+msgid "Has usable password?"
+msgstr "Έχει κωδικό ενεργοποίησης;"
+
+#: links.py:18 views.py:32
+msgid "Create new group"
+msgstr "Δημιουργία νέας ομάδας."
+
+#: links.py:22 links.py:46 links.py:61
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:25 links.py:49
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:29 links.py:38 links.py:53 search.py:25 views.py:71
+msgid "Groups"
+msgstr "Ομάδες"
+
+#: links.py:42 views.py:135
+msgid "Create new user"
+msgstr "Δημιουργία νέου χρήστη"
+
+#: links.py:65 links.py:74
+msgid "Set password"
+msgstr "Ορισμός κωδικού"
+
+#: links.py:70
+msgid "User options"
+msgstr ""
+
+#: models.py:13
+msgid "User"
+msgstr "Χρήστης"
+
+#: models.py:17
+msgid "Forbid this user from changing their password."
+msgstr ""
+
+#: models.py:23
+msgid "User settings"
+msgstr ""
+
+#: models.py:24
+msgid "Users settings"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "Δημιουργία νέας ομάδας"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "Διαγραφή υπαρχόντων ομάδων"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "Τροποποιηση υπαρχόντων ομάδων"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "Εμφάνιση υπαρχόντων ομαδων"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "Δημιουργία νέων χρηστών"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "Διαγρφή υπαρχόντων χρηστν"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "Τροποποίηση υπαρχόντων χρηστών"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "Εμφάνιση υπαρχόντων χρηστών"
+
+#: search.py:19
+msgid "First name"
+msgstr "Όνομα"
+
+#: search.py:28
+msgid "Last name"
+msgstr "Επώνυμο"
+
+#: search.py:31
+msgid "username"
+msgstr "Όνομα χρήστη"
+
+#: search.py:41
+msgid "Name"
+msgstr "Όνομα"
+
+#: serializers.py:34
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr "Λίστα (με κόμμα) πρωτευόντων κλειδιών ομάδων που θα ανήκει ο χρήστης."
+
+#: serializers.py:64
+msgid "List of group primary keys to which to add the user."
+msgstr "Λίστα πρωτευόντων κλειδιών ομάδων που θα ανήκει ο χρήστης."
+
+#: views.py:48
+#, python-format
+msgid "Edit group: %s"
+msgstr "Τροποποίηση ομάδας: %s"
+
+#: views.py:64
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+
+#: views.py:70
+msgid "There are no user groups"
+msgstr ""
+
+#: views.py:83
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Διαγραφή της ομάδας: %s"
+
+#: views.py:89
+msgid "Available users"
+msgstr "Διαθέσιμοι χρήστες"
+
+#: views.py:90
+msgid "Users in group"
+msgstr ""
+
+#: views.py:111
+#, python-format
+msgid "Users of group: %s"
+msgstr ""
+
+#: views.py:145
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr "Ο χρήστης \"%s\" δημιουργήθηκε επιτυχώς."
+
+#: views.py:157
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d χρήστη"
+
+#: views.py:159
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d χρήστες"
+
+#: views.py:167
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Διαγραφή χρήστη"
+msgstr[1] "Διαγραφή χρηστών"
+
+#: views.py:177
+#, python-format
+msgid "Delete user: %s"
+msgstr "Διαγραφή χρήστη: %s"
+
+#: views.py:189
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Η διαγραφή υπερχρήστη και προσωπικού δενεπιτρέπεται. Χρησιμοποιήστε το περιβάλλον διαχείρησης γι' αυτές τις περιπτώσεις."
+
+#: views.py:197
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Ο χρήστης \"%s\" διαγράφηκε επιτυχώς."
+
+#: views.py:203
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Σφάλμα κατά την διαγραφή του χρήστη \"%(user)s\": %(error)s"
+
+#: views.py:219
+#, python-format
+msgid "Edit user: %s"
+msgstr "Τροποποίηση χρήστη: %s"
+
+#: views.py:225
+msgid "Available groups"
+msgstr "Διαθέσιμες ομάδες"
+
+#: views.py:226
+msgid "Groups joined"
+msgstr "Μέλος ομάδων"
+
+#: views.py:235
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Ομάδες που ανήκει ο χρήστης: %s"
+
+#: views.py:270
+msgid ""
+"User accounts can be create from this view. After creating an user account "
+"you will prompted to set a password for it. "
+msgstr ""
+
+#: views.py:273
+msgid "There are no user accounts"
+msgstr ""
+
+#: views.py:290
+#, python-format
+msgid "Edit options for user: %s"
+msgstr ""
+
+#: views.py:312
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστη"
+
+#: views.py:314
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστες"
+
+#: views.py:321
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: views.py:323
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Αλλαγή κωδικού χρήστη"
+msgstr[1] "Αλλαγή κωδικών χρηστών"
+
+#: views.py:333
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Αλλαγή κωδικού για τον χρήστη: %s"
+
+#: views.py:354
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Η αρχικοποίηση κωδικών για τον υπερχρήστη και το προσωπικό δεν επιτρέπεται. Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις περιπτώσεις."
+
+#: views.py:364
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr ""
+
+#: views.py:370
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Σφάλμακατά την αρχικοποίηση του κωδικού του χρήστη \"%(user)s\": %(error)s"

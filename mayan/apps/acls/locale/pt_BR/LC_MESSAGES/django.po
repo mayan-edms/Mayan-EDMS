@@ -5,13 +5,14 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: 2018-09-08 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-12-21 01:11+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr "Controle Acesso \"ACLs\""
 
 #: apps.py:23 models.py:47
 msgid "Role"
-msgstr "Regras"
+msgstr "Papéis"
 
 #: apps.py:26 links.py:46 models.py:43 workflow_actions.py:48
 msgid "Permissions"
@@ -42,7 +43,7 @@ msgstr "Nova regra"
 #: managers.py:57 managers.py:96
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Acesso insuficiente para: %s"
 
 #: models.py:55
 msgid "Access entry"
@@ -67,11 +68,11 @@ msgstr "Listas de controle de acesso"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Editar regras"
+msgstr "Editar Controle de Acesso \"ACLs\""
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "Visualizar regras"
+msgstr "Visualizar Controle de Acesso \"ACLs\""
 
 #: serializers.py:24 serializers.py:132
 msgid ""
@@ -86,7 +87,7 @@ msgstr "API URL apontando para uma permissão em relação à lista de controle 
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Chave primária da nova permissão para conceder à lista de controle de acesso."
+msgstr "Chave primária da nova permissão para aceder à lista de controle de acesso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -115,13 +116,13 @@ msgstr "Apagar ACL: %s"
 
 #: views.py:148
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Não há Controle de Acesso \"ACLs\" para este objeto"
 
 #: views.py:151
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr ""
+msgstr "ACL significa Lista de Controle de Acesso - \"Acess Control List\" -  e é um método preciso para controlar o acesso do usuário a objetos do sistema."
 
 #: views.py:155
 #, python-format
@@ -147,38 +148,38 @@ msgstr "As permissões inativas foram herdadas de um objeto precedente."
 
 #: workflow_actions.py:25
 msgid "Object type"
-msgstr ""
+msgstr "Tipo do objeto"
 
 #: workflow_actions.py:28
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Tipo do objeto cujo acesso será modificado."
 
 #: workflow_actions.py:34
 msgid "Object ID"
-msgstr ""
+msgstr "ID do objeto"
 
 #: workflow_actions.py:37
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Identificador numérico do objeto cujo acesso será modificado."
 
 #: workflow_actions.py:42
 msgid "Roles"
-msgstr "Regras"
+msgstr "Papéis"
 
 #: workflow_actions.py:44
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Papéis cujo acesso será modificado."
 
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Permissões a serem concedidas/revogadas para o papel em relação ao objeto selecionado acima."
 
 #: workflow_actions.py:59
 msgid "Grant access"
-msgstr ""
+msgstr "Conceder acesso"
 
 #: workflow_actions.py:129
 msgid "Revoke access"
-msgstr ""
+msgstr "Revogar acesso"

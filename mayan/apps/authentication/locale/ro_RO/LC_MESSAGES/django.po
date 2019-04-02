@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: 2018-09-08 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-03-15 07:45+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: apps.py:18 settings.py:9
 msgid "Authentication"
-msgstr ""
+msgstr "Autentificare"
 
 #: forms.py:18
 msgid "Email"
@@ -27,17 +28,17 @@ msgstr "email"
 
 #: forms.py:21
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
 #: forms.py:23 forms.py:72
 msgid "Remember me"
-msgstr ""
+msgstr "Amintește-ți de mine"
 
 #: forms.py:26
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "Introduceți un e-mail și o parolă corecte. Rețineți!  Câmpul parolei este sensibil la minuscule."
 
 #: forms.py:28
 msgid "This account is inactive."
@@ -45,31 +46,31 @@ msgstr "Acest cont este inactiv."
 
 #: links.py:19
 msgid "Logout"
-msgstr "deconectare"
+msgstr "Deconectare"
 
 #: links.py:23
 msgid "Change password"
-msgstr ""
+msgstr "Schimbați parola"
 
 #: settings.py:13
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "Controlează mecanismul utilizat pentru utilizatorul autentificat. Opțiunile sunt: numele de utilizator, e-mailul"
 
 #: settings.py:20
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr ""
+msgstr "Perioada maximă de timp în care un utilizator dă clic pe caseta de selectare \"Reține-mă\" va rămâne logat. Valoarea este timpul în secunde."
 
 #: views.py:79
 msgid "Current user password change"
-msgstr "Schimbare parola pentru utilizatorul curent"
+msgstr "Schimbare parolă pentru utilizatorul curent"
 
 #: views.py:84
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Schimbarea parolei nu este permisă pentru acest cont."
 
 #: views.py:101
 msgid "Your password has been successfully changed."

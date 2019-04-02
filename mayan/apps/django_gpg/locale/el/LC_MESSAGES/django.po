@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:31
+msgid "Django GPG"
+msgstr ""
+
+#: apps.py:46 apps.py:49 forms.py:17
+msgid "Key ID"
+msgstr "Αναγνωριστικό κλειδιού"
+
+#: apps.py:47 apps.py:60 forms.py:19 models.py:52
+msgid "User ID"
+msgstr "Αναγνωριστικό χρήστη"
+
+#: apps.py:50 forms.py:34 models.py:55
+msgid "Type"
+msgstr "Τύπος"
+
+#: apps.py:52 forms.py:23 models.py:36
+msgid "Creation date"
+msgstr "Ημερομηνία δημιουργίας"
+
+#: apps.py:55 forms.py:27 models.py:40
+msgid "Expiration date"
+msgstr "Ημερομηνία λήξης"
+
+#: apps.py:56
+msgid "No expiration"
+msgstr "Χωρίς λήξη"
+
+#: apps.py:58 forms.py:32 models.py:47
+msgid "Length"
+msgstr "Μήκος"
+
+#: forms.py:28
+msgid "None"
+msgstr "Κανένα"
+
+#: forms.py:31 models.py:44
+msgid "Fingerprint"
+msgstr "Δακτυλικό αποτύπωμα"
+
+#: forms.py:33 models.py:50
+msgid "Algorithm"
+msgstr "Αλγόρυθμος"
+
+#: forms.py:47
+msgid "Term"
+msgstr "Όρος"
+
+#: forms.py:48
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Όνομα, e-mail, αναγνωριστικό κλειδιού ή δακτυλικό αποτύπωμα προς αναζήτηση."
+
+#: links.py:15
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:19
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+#: links.py:23
+msgid "Download"
+msgstr "Κατέβασμα"
+
+#: links.py:27 permissions.py:28
+msgid "Query keyservers"
+msgstr "Ερώτημα προς διακομηστές"
+
+#: links.py:32
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: links.py:37 permissions.py:7
+msgid "Key management"
+msgstr "Διαχείρηση κλειδιών"
+
+#: links.py:41
+msgid "Upload key"
+msgstr "Ανέβασμα κλειδιού"
+
+#: links.py:44 views.py:199
+msgid "Private keys"
+msgstr "Προσωπικά κλειδιά"
+
+#: links.py:48 views.py:176
+msgid "Public keys"
+msgstr "Δημόσια κλειδιά"
+
+#: literals.py:6 literals.py:14
+msgid "Public"
+msgstr "Δημόσια"
+
+#: literals.py:7 literals.py:15
+msgid "Secret"
+msgstr "Μυστική φράση"
+
+#: literals.py:23 literals.py:28
+msgid "RSA"
+msgstr ""
+
+#: literals.py:24
+msgid "DSA"
+msgstr ""
+
+#: literals.py:29
+msgid "Elgamal"
+msgstr ""
+
+#: literals.py:43
+msgid "Bad signature."
+msgstr "Άκυρη υπογραφή"
+
+#: literals.py:46
+msgid "Document not signed or invalid signature."
+msgstr "Ανυπόγραφο έγγραφο ή άκυρη υπογραφή"
+
+#: literals.py:49
+msgid "Signature error."
+msgstr "Σφάλμα υπογραφής."
+
+#: literals.py:53
+msgid "Document is signed but no public key is available for verification."
+msgstr "Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
+
+#: literals.py:58
+msgid "Document is signed, and signature is good."
+msgstr "Το έγγρφο είναι υπογεγραμμένο ψηφιακά και η υπογραφή είναι έγκυρη."
+
+#: literals.py:61
+msgid "Document is signed with a valid signature."
+msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη ψηφιακή υπογραφή."
+
+#: models.py:32
+msgid "ASCII armored version of the key."
+msgstr "Το κλειδί σε μορφή ASCII armored,"
+
+#: models.py:33
+msgid "Key data"
+msgstr "Δεδομένα κλειδιού"
+
+#: models.py:61
+msgid "Key"
+msgstr "Κλειδί"
+
+#: models.py:62
+msgid "Keys"
+msgstr "Κλειδιά"
+
+#: models.py:71
+msgid "Invalid key data"
+msgstr "Άκυρα δεδομένα κλειδιού"
+
+#: models.py:74
+msgid "Key already exists."
+msgstr "Το κλειδί υπάρχει ήδη."
+
+#: permissions.py:10
+msgid "Delete keys"
+msgstr "Διαγραφή κλειδιών"
+
+#: permissions.py:13
+msgid "Download keys"
+msgstr "Κατέβασμακλειδιών"
+
+#: permissions.py:16
+msgid "Import keys from keyservers"
+msgstr "Εισαγωγή κλειδιών από διακομιστή"
+
+#: permissions.py:19
+msgid "Use keys to sign content"
+msgstr "Χρήση κλειδιών για υπογραφή περιεχομένου"
+
+#: permissions.py:22
+msgid "Upload keys"
+msgstr "Ανέβασμα κλειδιών"
+
+#: permissions.py:25
+msgid "View keys"
+msgstr "Εμφάνιση κλειδιών"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "Υπογραφές"
+
+#: settings.py:15
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Ο προσωπικός φάκελος θα χρησιμοποιηθεί για την αποθήκευση κλειδιών και αρχείων ρυθμήσεων."
+
+#: settings.py:21
+msgid "Path to the GPG binary."
+msgstr "Διαδρομή εκτελέσιμου αρχείου GPG"
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "Διακομηστής που θα χρησιμοποιηθεί γιααναζήτηση κλειδιών."
+
+#: views.py:41
+#, python-format
+msgid "Delete key: %s"
+msgstr "Διαγραφή κλειδιού: %s"
+
+#: views.py:51
+#, python-format
+msgid "Details for key: %s"
+msgstr "Λεπτομέρειες κλειδιού: %s"
+
+#: views.py:71
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "Εισαγωγή κλειδιού με αναγνωριστικό: %s;"
+
+#: views.py:72
+msgid "Import key"
+msgstr "Εισαγωγή κλειδιού"
+
+#: views.py:81
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "Αδυναμία εισαγωγής κλειδιού: %(key_id)s, %(error)s"
+
+#: views.py:88
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "Επιτυχής παραλαβή κλειδιού: %(key_id)s"
+
+#: views.py:110
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: views.py:112
+msgid "Query key server"
+msgstr "Ερώτημα προς διακομηστή κλειδιών"
+
+#: views.py:127
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+
+#: views.py:131
+msgid "No results returned"
+msgstr ""
+
+#: views.py:133
+msgid "Key query results"
+msgstr "Αποτελέσματα ερωτήματος"
+
+#: views.py:152
+msgid "Upload new key"
+msgstr "Ανέβασμανέου κλειδιού"
+
+#: views.py:168
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+
+#: views.py:174
+msgid "There no public keys"
+msgstr ""
+
+#: views.py:192
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user.The view to upload private and public keys is the same."
+msgstr ""
+
+#: views.py:197
+msgid "There no private keys"
+msgstr ""

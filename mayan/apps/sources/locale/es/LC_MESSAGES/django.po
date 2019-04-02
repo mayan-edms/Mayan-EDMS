@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:45-0400\n"
-"PO-Revision-Date: 2018-09-27 02:31+0000\n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2018-11-05 22:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -509,11 +509,11 @@ msgstr "Fuentes periódicas"
 
 #: queues.py:14
 msgid "Sources fast"
-msgstr ""
+msgstr "Fuentes rapidas"
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr ""
+msgstr "Generar imagen de archivo de ensayo"
 
 #: queues.py:23
 msgid "Check interval source"
@@ -535,11 +535,11 @@ msgstr "Ruta de acceso al programa scanimage utilizado para controlar los escán
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
+msgstr "Ruta a la subclase de almacenamiento para usar cuando se almacenan los archivos de imagen de staging_file almacenados en caché."
 
 #: settings.py:31
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos para pasar a SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
 #: tasks.py:46
 #, python-format
@@ -592,7 +592,7 @@ msgstr "Nuevo documento puesto en cola para su carga y estará disponible en bre
 #: views.py:346
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
+msgstr "Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
 
 #: views.py:379
 #, python-format

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:44-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"PO-Revision-Date: 2019-03-16 22:54+0000\n"
+"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: forms.py:186 models.py:53 search.py:19
 msgid "Label"
-msgstr ""
+msgstr "العنوان"
 
 #: forms.py:190
 msgid "Relationship"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: links.py:60
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: links.py:64 views.py:301
 msgid "Edit"
@@ -219,7 +219,7 @@ msgstr ""
 
 #: models.py:194
 msgid "Type"
-msgstr ""
+msgstr "النوع"
 
 #: models.py:198
 msgid "The actual value stored in the metadata type field for the document."

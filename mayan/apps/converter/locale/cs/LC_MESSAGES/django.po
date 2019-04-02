@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2019-01-17 19:28+0000\n"
+"Last-Translator: Jiri Fait <fait@orkasolutions.cz>\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:20 permissions.py:7 settings.py:12
+msgid "Converter"
+msgstr ""
+
+#: apps.py:27 models.py:39
+msgid "Order"
+msgstr ""
+
+#: apps.py:29 models.py:57
+msgid "Transformation"
+msgstr ""
+
+#: apps.py:33 models.py:49
+msgid "Arguments"
+msgstr ""
+
+#: backends/python.py:176 backends/python.py:182
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr ""
+
+#: backends/python.py:196
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr ""
+
+#: classes.py:98
+msgid "Not an office file format."
+msgstr ""
+
+#: classes.py:119
+msgid "LibreOffice not installed or not found."
+msgstr ""
+
+#: forms.py:23
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr ""
+
+#: links.py:37
+msgid "Create new transformation"
+msgstr ""
+
+#: links.py:41
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:45
+msgid "Edit"
+msgstr "Editovat"
+
+#: links.py:50 models.py:58
+msgid "Transformations"
+msgstr ""
+
+#: models.py:37
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+
+#: models.py:43
+msgid "Name"
+msgstr ""
+
+#: models.py:47
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new transformations"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete transformations"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit transformations"
+msgstr ""
+
+#: permissions.py:19
+msgid "View existing transformations"
+msgstr ""
+
+#: settings.py:15
+msgid "Graphics conversion backend to use."
+msgstr ""
+
+#: settings.py:34
+msgid "Configuration options for the graphics conversion backend."
+msgstr ""
+
+#: transformations.py:81
+msgid "Crop"
+msgstr ""
+
+#: transformations.py:156
+msgid "Flip"
+msgstr ""
+
+#: transformations.py:167
+msgid "Gaussian blur"
+msgstr ""
+
+#: transformations.py:177
+msgid "Line art"
+msgstr ""
+
+#: transformations.py:188
+msgid "Mirror"
+msgstr ""
+
+#: transformations.py:199
+msgid "Resize"
+msgstr ""
+
+#: transformations.py:226
+msgid "Rotate"
+msgstr ""
+
+#: transformations.py:252
+msgid "Rotate 90 degrees"
+msgstr ""
+
+#: transformations.py:263
+msgid "Rotate 180 degrees"
+msgstr ""
+
+#: transformations.py:274
+msgid "Rotate 270 degrees"
+msgstr ""
+
+#: transformations.py:284
+msgid "Unsharp masking"
+msgstr ""
+
+#: transformations.py:300
+msgid "Zoom"
+msgstr ""
+
+#: validators.py:21
+msgid "Enter a valid YAML value."
+msgstr ""
+
+#: views.py:68
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr ""
+
+#: views.py:120
+#, python-format
+msgid "Create new transformation for: %s"
+msgstr ""
+
+#: views.py:170
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr ""
+
+#: views.py:224
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+
+#: views.py:228
+msgid "No transformations"
+msgstr ""
+
+#: views.py:229
+#, python-format
+msgid "Transformations for: %s"
+msgstr ""

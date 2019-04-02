@@ -5,13 +5,14 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-12-22 01:02+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,15 +158,15 @@ msgstr "Detalhes da reserva"
 
 #: queues.py:8
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Reservas periódicas"
 
 #: queues.py:12
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Verificar reservas expiradas"
 
 #: serializers.py:26
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Chave primária do documento que será reservado."
 
 #: views.py:54
 #, python-format
@@ -194,11 +195,11 @@ msgstr "Expiração da reserva"
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
-msgstr ""
+msgstr "Reservar um documento bloqueia certas operações  do documento por um período de tempo pré-determinado."
 
 #: views.py:112
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Nenhum documento foi reservado."
 
 #: views.py:113
 msgid "Documents checked out"
@@ -228,7 +229,7 @@ msgstr "O documento não foi reservado."
 #: views.py:183
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr "Erro tentando devolver o documento: %s"
+msgstr "Erro ao tentar devolver o documento: %s"
 
 #: views.py:188
 #, python-format

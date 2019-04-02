@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2019-03-15 12:02+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,21 +21,21 @@ msgstr ""
 
 #: apps.py:16
 msgid "Dynamic search"
-msgstr ""
+msgstr "Căutarea dinamică"
 
 #: classes.py:40
 msgid "No search model matching the query"
-msgstr ""
+msgstr "Niciun model de căutare nu corespunde interogării"
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Se potrivește cu toate"
 
 #: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
+msgstr "Atunci când este bifată, vor fi returnate numai rezultatele care corespund tuturor câmpurilor. Atunci când rezultatele neconfirmate care corespund cel puțin un câmp vor fi returnate."
 
 #: forms.py:29
 msgid "Search terms"
@@ -46,11 +47,11 @@ msgstr "Căută"
 
 #: links.py:11 views.py:83
 msgid "Advanced search"
-msgstr ""
+msgstr "Cautare avansată"
 
 #: links.py:15
 msgid "Search again"
-msgstr ""
+msgstr "Caută din nou"
 
 #: settings.py:11
 msgid "Maximum amount search hits to fetch and display."
@@ -58,18 +59,18 @@ msgstr "Căutare suma maximă hit-uri pentru a prelua și afișa."
 
 #: views.py:26
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Încercați din nou folosind termeni diferiți."
 
 #: views.py:28
 msgid "No search results"
-msgstr ""
+msgstr "Nu există rezultate"
 
 #: views.py:31
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Rezultatele căutării pentru: %s"
 
 #: views.py:71
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Caută după: %s"

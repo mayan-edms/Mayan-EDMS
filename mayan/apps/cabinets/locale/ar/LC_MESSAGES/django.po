@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Roberto Rosario, 2017
+# Mohammed ALDOUB <voulnet@gmail.com>, 2017
+# Yaman Sanobar <yman.snober@gmail.com>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2017\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,27 +26,27 @@ msgstr ""
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
-msgstr ""
+msgstr "الخزائن"
 
 #: links.py:31 links.py:42
 msgid "Remove from cabinets"
-msgstr ""
+msgstr "ازالة من الخزائن"
 
 #: links.py:35 links.py:39
 msgid "Add to cabinets"
-msgstr ""
+msgstr "اضافة الى الخزائن"
 
 #: links.py:60
 msgid "Add new level"
-msgstr ""
+msgstr "اضافة مستوى جديد"
 
 #: links.py:65 views.py:44
 msgid "Create cabinet"
-msgstr ""
+msgstr "انشاء خزانة "
 
 #: links.py:69
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: links.py:72
 msgid "Edit"
@@ -49,7 +54,7 @@ msgstr "تحرير"
 
 #: links.py:79
 msgid "All"
-msgstr ""
+msgstr "الكل"
 
 #: links.py:83
 msgid "Details"
@@ -57,7 +62,7 @@ msgstr "التفاصيل"
 
 #: models.py:26 search.py:16
 msgid "Label"
-msgstr ""
+msgstr "العنوان"
 
 #: models.py:29
 msgid "Documents"
@@ -65,7 +70,7 @@ msgstr "الوثائق"
 
 #: models.py:37 models.py:87 serializers.py:139
 msgid "Cabinet"
-msgstr ""
+msgstr "خزانة"
 
 #: models.py:88 serializers.py:140
 msgid "Parent and Label"

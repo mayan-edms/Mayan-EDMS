@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:42-0400\n"
-"PO-Revision-Date: 2018-10-29 16:55+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"PO-Revision-Date: 2018-11-23 09:58+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +86,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n%(project_title)s ist eine Freie Open-Source Software, die Ihnen mit <i class=\"fa fa-heart text-danger\"></i> durch Roberto Rosario und andere Mitwirkende zur Verfügung gestellt wird..\n            "
 
 #: templates/appearance/about.html:109
 #, python-format
@@ -109,7 +110,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nEine umfassende Liste der Neuerungen ist einsehbar in den <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release Notes %(icon_documentation)s oder als Kurzversion<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">im Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:127
 #, python-format
@@ -117,7 +118,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nBei Fragen schauen Sie zunächst in die <a class=\"new_window\" href=\"https://docs.mayan-edms.com\"> Dokumentation %(icon_documentation)s</a> oder die <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\"> Wiki %(icon_wiki)s</a>."
 
 #: templates/appearance/about.html:133
 #, python-format
@@ -125,7 +126,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nSollten Sie einen Bug gefunden oder eine Idee für eine neue Funktion haben, dann besuchen Sie entweder das<a class=\"new_window\" href=\"https://forum.mayan-edms.com\"> Forum %(icon_forum)s</a> oder erstellen Sie ein Ticket in der <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\"> Quellenverwaltung %(icon_source_code)s</a>. "
 
 #: templates/appearance/about.html:138
 #, python-format

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 12:43-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"PO-Revision-Date: 2019-03-16 06:56+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: apps.py:30 events.py:8
 msgid "Document comments"
-msgstr ""
+msgstr "Comentariile documentului"
 
 #: apps.py:54
 msgid "Date"
@@ -40,15 +41,15 @@ msgstr "Comentarii"
 
 #: events.py:12
 msgid "Document comment created"
-msgstr ""
+msgstr "Comentariul documentului a fost creat"
 
 #: events.py:15
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Comentariul documentului a fost șters"
 
 #: links.py:15
 msgid "Add comment"
-msgstr ""
+msgstr "Adăugați comentariu"
 
 #: links.py:20
 msgid "Delete"
@@ -56,11 +57,11 @@ msgstr "Șterge"
 
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: models.py:33
 msgid "Date time submitted"
-msgstr ""
+msgstr "Marcaj temporal al trimiterii"
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -82,19 +83,19 @@ msgstr "Adaugă comentariu la document:% s"
 #: views.py:81
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Ștergeți comentariul: %s?"
 
 #: views.py:101
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
-msgstr ""
+msgstr "Comentariile documentului sunt înregistrări de text marcate temporal de la utilizatori. Ele sunt  excelente pentru colaborare."
 
 #: views.py:107
 msgid "There are no comments"
-msgstr ""
+msgstr "Nu există comentarii"
 
 #: views.py:109
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Comentarii pentru documentul: %s"

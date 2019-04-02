@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# yulin Gong <540538248@qq.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"PO-Revision-Date: 2019-01-29 03:54+0000\n"
+"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:73 apps.py:148 apps.py:152 events.py:7 links.py:19 links.py:24
+#: permissions.py:7 queues.py:7 settings.py:7
+msgid "OCR"
+msgstr "光学字符识别"
+
+#: apps.py:123
+msgid "Document"
+msgstr "文档"
+
+#: apps.py:127
+msgid "Added"
+msgstr "已添加"
+
+#: apps.py:131 models.py:69
+msgid "Result"
+msgstr "结果"
+
+#: events.py:10
+msgid "Document version submitted for OCR"
+msgstr "提交给OCR的文档版本"
+
+#: events.py:14
+msgid "Document version OCR finished"
+msgstr "文档版本OCR已完成"
+
+#: forms.py:17 forms.py:48
+msgid "Contents"
+msgstr "内容"
+
+#: forms.py:77
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "第%(page_number)d页"
+
+#: links.py:29 links.py:32
+msgid "Submit for OCR"
+msgstr "提交OCR"
+
+#: links.py:36
+msgid "Setup OCR"
+msgstr "设置OCR"
+
+#: links.py:41
+msgid "OCR documents per type"
+msgstr "每种类型的OCR文档"
+
+#: links.py:46 links.py:50 views.py:144
+msgid "OCR errors"
+msgstr "OCR错误"
+
+#: links.py:55
+msgid "Download OCR text"
+msgstr "下载OCR文本"
+
+#: models.py:20
+msgid "Document type"
+msgstr "文档类型"
+
+#: models.py:24
+msgid "Automatically queue newly created documents for OCR."
+msgstr "自动将新创建的文档进行OCR排队。"
+
+#: models.py:30
+msgid "Document type settings"
+msgstr "文档类型设置"
+
+#: models.py:31
+msgid "Document types settings"
+msgstr "文档类型设置"
+
+#: models.py:42
+msgid "Document page"
+msgstr "文档页面"
+
+#: models.py:46
+msgid "The actual text content extracted by the OCR backend."
+msgstr "OCR后端提取的实际文本内容。"
+
+#: models.py:47
+msgid "Content"
+msgstr "内容"
+
+#: models.py:53
+msgid "Document page OCR content"
+msgstr "文档页面OCR内容"
+
+#: models.py:54
+msgid "Document pages OCR contents"
+msgstr "文档页面OCR内容"
+
+#: models.py:64
+msgid "Document version"
+msgstr "文档版本"
+
+#: models.py:67
+msgid "Date time submitted"
+msgstr "提交的日期时间"
+
+#: models.py:73
+msgid "Document version OCR error"
+msgstr "文档版本OCR错误"
+
+#: models.py:74
+msgid "Document version OCR errors"
+msgstr "文档版本OCR错误"
+
+#: permissions.py:10
+msgid "Submit documents for OCR"
+msgstr "提交文档进行OCR"
+
+#: permissions.py:14
+msgid "View the transcribed text from document"
+msgstr "查看文档中的转录文本"
+
+#: permissions.py:18
+msgid "Change document type OCR settings"
+msgstr "更改文档类型OCR设置"
+
+#: queues.py:9
+msgid "Document version OCR"
+msgstr "文档版本OCR"
+
+#: settings.py:11
+msgid "Full path to the backend to be used to do OCR."
+msgstr "用于执行OCR的后端完整路径。"
+
+#: settings.py:20
+msgid "Set new document types to perform OCR automatically by default."
+msgstr "默认情况下，设置新文档类型以自动执行OCR。"
+
+#: views.py:44
+#, python-format
+msgid "OCR result for document: %s"
+msgstr "文档的OCR结果：%s"
+
+#: views.py:66
+#, python-format
+msgid "OCR result for document page: %s"
+msgstr "文档页面的OCR结果：%s"
+
+#: views.py:81
+msgid "Submit the selected document to the OCR queue?"
+msgid_plural "Submit the selected documents to the OCR queue?"
+msgstr[0] "将所选文档提交到OCR队列？"
+
+#: views.py:95
+msgid "Submit all documents of a type for OCR"
+msgstr "提交某类型的所有文件进行OCR"
+
+#: views.py:107
+#, python-format
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "将类型为“%(document_type)s”的%(count)d个文档添加到OCR队列中。"
+
+#: views.py:133
+#, python-format
+msgid "Edit OCR settings for document type: %s"
+msgstr "编辑文档类型的OCR设置：%s"
+
+#: views.py:162
+#, python-format
+msgid "OCR errors for document: %s"
+msgstr "文档OCR错误：%s"
