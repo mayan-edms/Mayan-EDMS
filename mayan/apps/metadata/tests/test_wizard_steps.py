@@ -81,3 +81,17 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
             Document.objects.first().metadata.first().value,
             TEST_METADATA_VALUE_WITH_AMPERSAND
         )
+
+    def test_initial_step_conditions(self):
+        self.grant_access(
+            obj=self.document_type, permission=permission_document_create
+        )
+
+        response = self.post(
+            viewname='sources:document_create_multiple', data={
+                'document_type_selection-document_type': self.document_type.pk,
+                'document_create_wizard-current_step': 0
+            }
+        )
+
+        self.assertContains(response=response, text='Step 2', status_code=200)
