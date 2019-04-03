@@ -372,6 +372,16 @@ class Template(object):
     _registry = {}
 
     @classmethod
+    def all(cls, rendered=False, request=None):
+        if not rendered:
+            return cls._registry.values()
+        else:
+            result = []
+            for template in cls._registry.values():
+                result.append(template.render(request=request))
+            return result
+
+    @classmethod
     def get(cls, name):
         return cls._registry[name]
 
@@ -381,7 +391,9 @@ class Template(object):
         self.__class__._registry[name] = self
 
     def get_absolute_url(self):
-        return reverse('rest_api:template-detail', args=(self.name,))
+        return reverse(
+            kwargs={'name': self.name}, viewname='rest_api:template-detail'
+        )
 
     def render(self, request):
         context = {
@@ -393,8 +405,10 @@ class Template(object):
             context=context,
         ).render()
 
-        self.html = result.rendered_content
-        self.hex_hash = hashlib.sha256(result.content).hexdigest()
+        content = result.content.replace('\n', '')
+
+        self.html = content
+        self.hex_hash = hashlib.sha256(content).hexdigest()
         return self
 
 
