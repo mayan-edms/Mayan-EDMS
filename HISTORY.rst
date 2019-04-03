@@ -28,7 +28,8 @@
   (@robert.schoeftner)for the report and solution. GitLab issue #574.
 * Add missing document index API view create permission.
 * Fix index list API view. Add index create, delete, detail API tests.
-  GitLab issue #564.
+  GitLab issue #564. Thanks to the Stéphane (@shoyu) for the report and debug
+  information.
 
 3.1.9 (2018-11-01)
 ==================
