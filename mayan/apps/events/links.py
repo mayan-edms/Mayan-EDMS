@@ -32,8 +32,13 @@ def get_kwargs_factory(variable_name):
     return get_kwargs
 
 
-def get_notification_count(context):
-    return context['request'].user.notifications.filter(read=False).count()
+def get_unread_notification_count(context):
+    Notification = apps.get_model(
+        app_label='events', model_name='Notification'
+    )
+    return Notification.objects.filter(
+        user=context.request.user
+    ).filter(read=False).count()
 
 
 link_events_list = Link(
@@ -72,6 +77,7 @@ link_user_events = Link(
     view='events:user_events'
 )
 link_user_notifications_list = Link(
+    badge_text=get_unread_notification_count,
     icon_class=icon_user_notifications_list, text='',
     view='events:user_notifications_list'
 )

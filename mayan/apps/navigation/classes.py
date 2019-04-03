@@ -35,6 +35,11 @@ class ResolvedLink(object):
         return self.link.view == self.current_view
 
     @property
+    def badge_text(self):
+        if self.link.badge_text:
+            return self.link.badge_text(context=self.context)
+
+    @property
     def description(self):
         return self.link.description
 
@@ -303,7 +308,7 @@ class Link(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, text, view=None, args=None, condition=None,
+    def __init__(self, badge_text=None, text=None, view=None, args=None, condition=None,
                  conditional_disable=None, description=None, html_data=None,
                  html_extra_classes=None, icon=None, icon_class=None,
                  keep_query=False, kwargs=None, name=None, permissions=None,
@@ -311,6 +316,7 @@ class Link(object):
                  url=None):
 
         self.args = args or []
+        self.badge_text = badge_text
         self.condition = condition
         self.conditional_disable = conditional_disable
         self.description = description
