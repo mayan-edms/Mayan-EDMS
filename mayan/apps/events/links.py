@@ -72,10 +72,6 @@ link_user_events = Link(
     view='events:user_events'
 )
 link_user_notifications_list = Link(
-    html_data={
-        'apw-attribute': 'count', 'apw-interval': '5000',
-        'apw-url': '/api/notifications/?read=False',
-        'apw-callback': 'MayanAppClass.mayanNotificationBadge'
-    }, icon_class=icon_user_notifications_list, text='',
+    icon_class=icon_user_notifications_list, text='',
     view='events:user_notifications_list'
 )
