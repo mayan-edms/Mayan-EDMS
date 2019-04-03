@@ -7,7 +7,7 @@ from .models import Index, IndexInstanceNode, IndexTemplateNode
 
 
 class IndexInstanceNodeSerializer(serializers.ModelSerializer):
-    children = serializers.ListField(child=RecursiveField())
+    children = RecursiveField(many=True, read_only=True)
     documents_count = serializers.SerializerMethodField()
     documents = serializers.HyperlinkedIdentityField(
         view_name='rest_api:index-node-documents'

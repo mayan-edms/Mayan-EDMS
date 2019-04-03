@@ -27,6 +27,8 @@
 * Reject emails attachments of size 0. Thanks to Robert Schoeftner
   (@robert.schoeftner)for the report and solution. GitLab issue #574.
 * Add missing document index API view create permission.
+* Fix index list API view. Add index create, delete, detail API tests.
+  GitLab issue #564.
 
 3.1.9 (2018-11-01)
 ==================

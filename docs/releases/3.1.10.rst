@@ -80,6 +80,14 @@ don't contain at least one version, and don't contain a single page. All these
 are requirements for a valid document in Mayan EDMS.
 
 
+Other changes
+^^^^^^^^^^^^^
+
+* Add missing document index API view create permission.
+* Fix index list API view. Add index create, delete, detail API tests.
+  GitLab issue #564.
+
+
 Removals
 --------
 
@@ -151,6 +159,7 @@ Bugs fixed or issues closed
 * :gitlab-issue:`559` IndexTestCase.test_dual_level_dual_document_index failure
 * :gitlab-issue:`562` events.links.link_user_notifications_list should use
   reverse
+* :gitlab-issue:`564` API REST /api/indexes/ generates an "Internal Server Error"
 * :gitlab-issue:`566` apps.common.tests.base.GenericViewTestCase doesn't work
   with a custom ROOT_URLCONF
 * :gitlab-issue:`568` Tornado 6.0 doesn't support Python 2.7
