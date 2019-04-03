@@ -135,13 +135,17 @@ class DocumentStateStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         super(DocumentStateStateViewTestCase, self).setUp()
         self.login_user()
 
-    def _request_workflow_state_create_view(self):
+    def _request_workflow_state_create_view(self, extra_data=None):
+        data = {
+            'label': TEST_WORKFLOW_STATE_LABEL,
+            'completion': TEST_WORKFLOW_STATE_COMPLETION,
+        }
+        if extra_data:
+            data.update(extra_data)
+
         return self.post(
             viewname='document_states:setup_workflow_state_create',
-            args=(self.workflow.pk,), data={
-                'label': TEST_WORKFLOW_STATE_LABEL,
-                'completion': TEST_WORKFLOW_STATE_COMPLETION,
-            }
+            args=(self.workflow.pk,), data=data
         )
 
     def test_create_workflow_state_no_access(self):
@@ -162,6 +166,23 @@ class DocumentStateStateViewTestCase(WorkflowTestMixin, GenericViewTestCase):
         self.assertEquals(
             WorkflowState.objects.all()[0].completion,
             TEST_WORKFLOW_STATE_COMPLETION
+        )
+
+    def test_create_workflow_state_invalid_completion_with_access(self):
+        self._create_workflow()
+
+        self.grant_access(obj=self.workflow, permission=permission_workflow_edit)
+
+        response = self._request_workflow_state_create_view(
+            extra_data={'completion': ''}
+        )
+        self.assertEquals(response.status_code, 302)
+        self.assertEquals(WorkflowState.objects.count(), 1)
+        self.assertEquals(
+            WorkflowState.objects.all()[0].label, TEST_WORKFLOW_STATE_LABEL
+        )
+        self.assertEquals(
+            WorkflowState.objects.all()[0].completion, 0
         )
 
     def _request_workflow_state_delete_view(self):

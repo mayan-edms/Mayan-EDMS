@@ -156,6 +156,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
+* :gitlab-issue:`557` Break workflows with invalid input
 * :gitlab-issue:`559` IndexTestCase.test_dual_level_dual_document_index failure
 * :gitlab-issue:`562` events.links.link_user_notifications_list should use
   reverse

@@ -30,6 +30,8 @@
 * Fix index list API view. Add index create, delete, detail API tests.
   GitLab issue #564. Thanks to the Stéphane (@shoyu) for the report and debug
   information.
+* Validate the state completion value before saving. Thanks to Manoel Brunnen
+  (@mbru) for the report and debug information. GitLab issue #557.
 
 3.1.9 (2018-11-01)
 ==================

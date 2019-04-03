@@ -208,6 +208,19 @@ class WorkflowState(models.Model):
         ).distinct()
 
     def save(self, *args, **kwargs):
+        # Solve issue #557 "Break workflows with invalid input"
+        # without using a migration.
+        # Remove blank=True, remove this, and create a migration in the next
+        # minor version.
+
+        try:
+            self.completion = int(self.completion)
+        except (TypeError, ValueError):
+            self.completion = 0
+
+        #if not self.completion:
+        #    self.completion = 0
+
         if self.initial:
             self.workflow.states.all().update(initial=False)
         return super(WorkflowState, self).save(*args, **kwargs)
