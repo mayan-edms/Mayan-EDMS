@@ -24,6 +24,8 @@
 * Add support for server side link badges.
 * Add API to list all templates.
 * Remove newlines from the rendered templates.
+* Reject emails attachments of size 0. Thanks to Robert Schoeftner
+  (@robert.schoeftner)for the report and solution. GitLab issue #574.
 
 3.1.9 (2018-11-01)
 ==================

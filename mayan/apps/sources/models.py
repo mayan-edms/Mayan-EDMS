@@ -602,6 +602,11 @@ class EmailBaseModel(IntervalBaseModel):
             # Treat inlines as attachments, both are extracted and saved as
             # documents
             if message.is_attachment() or message.is_inline():
+
+                # Reject zero length attachments
+                if len(message.body) == 0:
+                    return
+
                 label = message.detected_file_name or 'attachment-{}'.format(counter)
                 with ContentFile(content=message.body, name=label) as file_object:
                     if label == source.metadata_attachment_name:

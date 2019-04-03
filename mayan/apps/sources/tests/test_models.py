@@ -25,7 +25,7 @@ from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,
     TEST_EMAIL_INLINE_IMAGE, TEST_EMAIL_NO_CONTENT_TYPE,
-    TEST_EMAIL_NO_CONTENT_TYPE_STRING
+    TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
 )
 
 
@@ -106,6 +106,17 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
             TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().open().read()
         )
 
+    def test_decode_email_zero_length_attachment(self):
+        self._create_email_source()
+        self.source.store_body=False
+        self.source.save()
+
+        EmailBaseModel.process_message(
+            source=self.source, message_text=TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
+        )
+
+        self.assertEqual(Document.objects.count(), 0)
+
     def test_decode_email_with_inline_image(self):
         self._create_email_source()
         EmailBaseModel.process_message(
@@ -127,7 +138,6 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         self.assertQuerysetEqual(
             ordered=False, qs=Document.objects.all(), values=(
                 '<Document: test-01.png>', '<Document: email_body.html>',
-                '<Document: test-02.png>'
             ),
         )
 
@@ -170,7 +180,7 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         )
 
         # Only two attachments, no body document
-        self.assertEqual(2, Document.objects.count())
+        self.assertEqual(1, Document.objects.count())
 
     def test_document_upload_with_body(self):
         self._create_email_source()
@@ -180,7 +190,7 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         )
 
         # Only two attachments and a body document
-        self.assertEqual(3, Document.objects.count())
+        self.assertEqual(2, Document.objects.count())
 
 
 @override_settings(OCR_AUTO_OCR=False)

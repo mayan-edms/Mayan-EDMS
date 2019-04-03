@@ -109,6 +109,31 @@ AAALewAAC3sBSRnwgAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALnSURB
 QCDLAIEsAwSyDBDIMkAgywCBLAMEsgwQyDJAIMsAgSwDBLIMEMgyQCDLAIEsAwSyDBDIMkAg6wK+
 4gU280YtuwAAAABJRU5ErkJggg==
 --089e0149bb0ea4e55c051712afb5--'''
+TEST_EMAIL_ZERO_LENGTH_ATTACHMENT = '''From rosarior@localhost Tue Apr  2 23:40:26 2019
+Received: from rosarior (uid 1000)
+    (envelope-from rosarior@localhost)
+    id 2011e6
+    by localhost (DragonFly Mail Agent v0.11);
+    Tue, 02 Apr 2019 23:40:26 -0400
+Message-ID: <22514.1554262827@localhost>
+Mime-Version: 1.0
+To: rosarior@localhost
+Subject: mpack
+Content-Type: multipart/mixed; boundary="-"
+Date: Tue, 02 Apr 2019 23:40:26 -0400
+From: <rosarior@localhost>
+
+This is a MIME encoded message.  Decode it with "munpack"
+or any other MIME reading software.  Mpack/munpack is available
+via anonymous FTP in ftp.andrew.cmu.edu:pub/mpack/
+---
+Content-Type: application/octet-stream; name="zero"
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename="zero"
+Content-MD5: 1B2M2Y8AsgTpgAmY7PhCfg==
+
+
+-----'''
 TEST_SOURCE_LABEL = 'test source'
 TEST_SOURCE_UNCOMPRESS_N = 'n'
 TEST_STAGING_PREVIEW_WIDTH = 640
