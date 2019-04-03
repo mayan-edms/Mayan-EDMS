@@ -54,13 +54,13 @@ Install Mayan EDMS from PyPI:
 -----------------------------
 ::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir mayan-edms
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 mayan-edms
 
 Install the Python client for PostgreSQL and Redis:
 ---------------------------------------------------
 ::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir psycopg2==2.7.3.2 redis==2.10.6
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==2.7.3.2 redis==2.10.6
 
 Create the database for the installation:
 -----------------------------------------
@@ -221,13 +221,13 @@ Install Mayan EDMS from PyPI:
 -----------------------------
 ::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir mayan-edms
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 mayan-edms
 
 Install the Python client for PostgreSQL and Redis:
 ---------------------------------------------------
 ::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir librabbitmq==2.0.0 psycopg2==2.7.3.2 redis==2.10.6
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 librabbitmq==2.0.0 psycopg2==2.7.3.2 redis==2.10.6
 
 Create the database for the installation:
 -----------------------------------------

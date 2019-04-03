@@ -2,7 +2,7 @@
 ===================
 * Backport test case improvements from the development branch. Add random
   primary key mixin. Split test case code into mixins. Make the view test
-  case and the API test cases part of the same class hierachy. Update tests
+  case and the API test cases part of the same class hierarchy. Update tests
   that failed due to the new import locations.
 * Add support for disabling the content type checking test case mixin.
 * Update document indexing tests to be order agnostic. GitLab issue #559.

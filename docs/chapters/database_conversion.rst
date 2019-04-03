@@ -27,7 +27,7 @@ Direct install
 
 * Install the Python client for PostgreSQL::
 
-    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir psycopg2==2.7.3.2
+    sudo -u mayan /opt/mayan-edms/bin/pip install --no-cache-dir --no-use-pep517 psycopg2==2.7.3.2
 
 * Copy the newly created fallback config file::
 

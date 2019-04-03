@@ -1,0 +1,161 @@
+Version 3.1.10
+==============
+
+Released: April XX, 2019
+
+
+Changes
+-------
+
+Test improvements
+^^^^^^^^^^^^^^^^^
+
+A number of test improvements were backported from the development branch. These
+include a mixin to assign random primary keys to the test objects. Normally
+primary keys are sequential and their predictability can hide edge cases that
+would normally only manifest in production. The tests case code was also split
+into smaller mixin units separating them by purpose. All code to perform HTTP
+requests now resides in the ClientMethodsTestCaseMixin. Changes in the
+ContentTypeCheckTestCaseMixin were added to enable this mixin for the API views
+in a future minor version. The test view code was moved into its own mixin
+called TestViewTestCaseMixin. This mixin allows creating dynamic views to test
+object and link resolution among other things. The API base test case class is
+now part of the same class hierarchy, this means that the API test code will
+now behave the same and will benefit from all improvements in the base test case
+classes. Some indexing tests were failing randomly. This was caused by the way
+the test were built and not because of faulty code. The tests were updated and
+now operate as expected. While there is no official support for installing
+Mayan EDMS as a sub URL updates to the TestViewTestCaseMixin will allow it to
+execute with custom ROOT_URLCONF configurations. Further work and feedback is
+needed to officially support this installation method.
+
+
+Fixes
+^^^^^
+
+The advanced search API endpoint was fixed and is now usable. Tests for all
+the issues fixed were added to avoid future regressions. A fix was applied
+to the compressed class that caused compressed files uploads to fail from the
+web form.
+
+Docker
+^^^^^^
+
+Updates were added to the Docker image that allow it to build on armv7l
+platforms like the RasperryPi, Odroid XU4, and Odroid HC2. This doesn't imply
+official support for these platforms. Further experimentation and optimization
+is needed and this changed will now allow users to build the image and provide
+feedback in an easier manner.
+
+
+Installation
+^^^^^^^^^^^^
+
+The installation process has been updated to work around the Python pip
+issue #6197 (https://github.com/pypa/pip/issues/6197).
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Improvements in the AJAX menu rendering were conflicting with an old method
+of refreshing the unread notification counter badge. This conflict would cause
+the unread notification counter badge to blink and/or disappear. The older
+badge refresh method was removed and improvements to the menu rendering from
+the development branch were backported to support displaying link badges from
+the templates completing fixing the issue. An API entrypoint was also backported
+showing a list of all the server side AJAX templates. This change doesn't affect
+the API layout and it remains compatible with the previous version. Newlines
+are now explicitly removed from the rendered AJAX templates avoiding rendering
+issues on some browsers.
+
+
+Emails
+^^^^^^
+
+An update was added to will now cause Mayan EDMS to reject all email attachments
+with a size 0 even if the attachment is valid. Documents of size 0 are not
+consideref valid in Mayan EDMS since they can't be introspected for MIME type,
+don't contain at least one version, and don't contain a single page. All these
+are requirements for a valid document in Mayan EDMS.
+
+
+Removals
+--------
+
+* None
+
+
+Upgrading from a previous version
+---------------------------------
+
+If installed via Python's PIP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Remove deprecated requirements::
+
+    $ curl https://gitlab.com/mayan-edms/mayan-edms/raw/master/removals.txt | pip uninstall -r /dev/stdin
+
+Type in the console::
+
+    $ pip install mayan-edms==3.1.10
+
+the requirements will also be updated automatically.
+
+
+Using Git
+^^^^^^^^^
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+
+Common steps
+^^^^^^^^^^^^
+
+Perform these steps after updating the code from either step above.
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+* None
+
+
+Bugs fixed or issues closed
+---------------------------
+
+* :gitlab-issue:`559` IndexTestCase.test_dual_level_dual_document_index failure
+* :gitlab-issue:`562` events.links.link_user_notifications_list should use
+  reverse
+* :gitlab-issue:`566` apps.common.tests.base.GenericViewTestCase doesn't work
+  with a custom ROOT_URLCONF
+* :gitlab-issue:`568` Tornado 6.0 doesn't support Python 2.7
+* :gitlab-issue:`572` Error when sending compressed files: ziparchive object
+  has no attribute children
+* :gitlab-issue:`574` import of E-Mails with empty attachment fails
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
