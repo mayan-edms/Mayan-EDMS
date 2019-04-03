@@ -29,6 +29,7 @@ class APIIndexListView(generics.ListCreateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
     mayan_view_permissions = {'POST': (permission_document_indexing_create,)}
+    permission_classes = (MayanPermission,)
     queryset = Index.objects.all()
     serializer_class = IndexSerializer
 
