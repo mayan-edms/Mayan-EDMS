@@ -218,9 +218,6 @@ class WorkflowState(models.Model):
         except (TypeError, ValueError):
             self.completion = 0
 
-        #if not self.completion:
-        #    self.completion = 0
-
         if self.initial:
             self.workflow.states.all().update(initial=False)
         return super(WorkflowState, self).save(*args, **kwargs)

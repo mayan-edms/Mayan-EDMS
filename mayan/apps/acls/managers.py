@@ -7,7 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.db.models import Q
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext
 
 from common.utils import return_attrib, return_related
 from permissions import Permission

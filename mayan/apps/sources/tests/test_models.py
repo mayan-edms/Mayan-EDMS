@@ -108,7 +108,7 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
 
     def test_decode_email_zero_length_attachment(self):
         self._create_email_source()
-        self.source.store_body=False
+        self.source.store_body = False
         self.source.save()
 
         EmailBaseModel.process_message(
