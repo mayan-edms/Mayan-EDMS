@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 import resource
 
-from django.test import override_settings
+from django.test import override_settings, tag
 
 from common.tests import BaseTestCase
+from common.tests.literals import EXCLUDE_TEST_TAG
 from documents.models import Document
 from documents.tests import DocumentTestMixin, TEST_DOCUMENT_FILENAME
 
@@ -17,6 +18,7 @@ MAXIMUM_HEAP_MEMORY = 140000000
 
 @override_settings(OCR_AUTO_OCR=False)
 @override_settings(DOCUMENT_PARSING_AUTO_PARSING=False)
+@tag('memory', EXCLUDE_TEST_TAG)
 class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
     test_document_filename = TEST_DOCUMENT_FILENAME

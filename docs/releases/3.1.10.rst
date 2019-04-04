@@ -1,7 +1,7 @@
 Version 3.1.10
 ==============
 
-Released: April XX, 2019
+Released: April 04, 2019
 
 
 Changes
@@ -100,7 +100,8 @@ Other changes
 
 * Add missing document index API view create permission.
 * Fix index list API view. Add index create, delete, detail API tests.
-
+* Add support for skipping a default set of tests. Tests to be excluded
+  by default should be tagged as 'exclude'.
 
 Removals
 --------

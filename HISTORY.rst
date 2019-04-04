@@ -1,4 +1,4 @@
-3.1.10 (2019-04-XX)
+3.1.10 (2019-04-04)
 ===================
 * Backport test case improvements from the development branch. Add random
   primary key mixin. Split test case code into mixins. Make the view test
@@ -37,7 +37,7 @@
 * Force object to text when raising PermissionDenied to avoid
   UnicodeDecodeError. Thanks to Mathias Behrle (@mbehrle) for the report
   and the debug information. GitLab issue #576.
-
+* Add support for skipping a default set of tests.
 
 3.1.9 (2018-11-01)
 ==================
