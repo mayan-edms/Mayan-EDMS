@@ -29,32 +29,3 @@ to use a S3 style storage for documents.
     '{access_key: <your S3 access key>, secret_key: <your S3 secret key>, bucket_name: <S3 bucket name>}'
 
 5. Save and restart your Mayan EDMS installation for the setting to take effect.
-
-
-Storage
-=======
-Mayan EDMS stores documents in their original file format only changing the
-filename to avoid collision. For best input and output speed use a block
-based local filesystem for the ``/media`` sub folder of the path specified by
-the MEDIA_ROOT setting. For increased storage capacity use an object storage
-filesystem like S3.
-
-To use a S3 compatible object storage do the following:
-
-* Install the Python packages ``django-storages`` and ``boto3``:
-
-  * Using Python::
-
-      pip install django-storages boto3
-
-  * Using Docker::
-
-    -e MAYAN_PIP_INSTALLS='django-storages boto3'
-
-On the Mayan EDMS user interface, go to ``System``, ``Setup``, ``Settings``,
-``Documents`` and change the following setting:
-
-* ``DOCUMENTS_STORAGE_BACKEND`` to ``storages.backends.s3boto3.S3Boto3Storage``
-* ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` to ``'{access_key: <your access key>, secret_key: <your secret key>, bucket_name: <bucket name>}'``.
-
-Restart Mayan EDMS for the changes to take effect.
