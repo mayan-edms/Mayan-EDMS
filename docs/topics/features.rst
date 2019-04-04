@@ -92,7 +92,7 @@ Features
   * It is very easy to use 3rd party plugins such as the ones available for
     Amazon EC2.
 
-* Color coded <../chapters/tags>`.
+* :doc:`Color coded tags <../chapters/tags>`.
 
   * Labeled and color coded tags can be assigned for intuitive recognition.
 
