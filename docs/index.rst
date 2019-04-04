@@ -29,6 +29,7 @@ repository for electronic documents.
     topics/integration
     topics/advanced
     topics/administration
+    topics/troubleshooting
     topics/development
     topics/faq
     topics/license

@@ -83,43 +83,6 @@ moment this could cause problems is when running South migrations during
 upgrades, if a migration fails the database structure is left in a transitory
 state and has to be reverted manually before trying again.
 
-_mysql_exceptions. OperationalError: (1267, "Illegal mix of collations (latin1_swedish_ci, IMPLICIT) and (utf8_general_ci, COERCIBLE) for operation ‘='”)
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-::
-
-    $ mayan-edms.py shell
-    >>> from django.db import connection
-    >>> cursor = connection.cursor()
-    >>> cursor.execute('SHOW TABLES')
-    >>> results=[]
-    >>> for row in cursor.fetchall(): results.append(row)
-    >>> for row in results: cursor.execute('ALTER TABLE %s CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;' % (row[0]))
-
-References:
-
-* http://stackoverflow.com/questions/1073295/django-character-set-with-mysql-weirdness
-
-
-Incorrect string value: ``'xE2x80x95rs6…'`` for column ``'content'`` at row 1
------------------------------------------------------------------------------
-
-When using MySQL and doing OCR on languages other than English
-
-Use utf-8 collation on MySQL server, or at least in table
-‘documents_documentpage', ‘content' field
-
-References:
-
-* http://groups.google.com/group/django-users/browse_thread/thread/429447086fca6412
-* http://markmail.org/message/bqajx2utvmtriixi
-
-Error "django.db.utils.IntegrityError IntegrityError: (1452, ‘Cannot add or update a child row: a foreign key constraint fails (`…`.`…`, CONSTRAINT `…_refs_id_b0252274` FOREIGN KEY (`…`) REFERENCES `…` (`…`))')
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Solution:
-Convert all MySQL tables to the same type, either all MyISAM or InnoDB
-
 
 Document versions
 =================
