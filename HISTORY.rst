@@ -32,6 +32,9 @@
   information.
 * Validate the state completion value before saving. Thanks to Manoel Brunnen
   (@mbru) for the report and debug information. GitLab issue #557.
+* Add the MIMETYPE_FILE_READ_SIZE setting to limit the number of bytes read
+  to determine the MIME type of a new document.
+
 
 3.1.9 (2018-11-01)
 ==================

@@ -9,6 +9,7 @@ from .licenses import *  # NOQA
 
 class MIMETypesApp(MayanAppConfig):
     name = 'mimetype'
+    has_tests = True
     verbose_name = _('MIME types')
 
     def ready(self, *args, **kwargs):

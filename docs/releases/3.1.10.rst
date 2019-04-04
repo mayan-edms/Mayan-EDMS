@@ -80,6 +80,21 @@ don't contain at least one version, and don't contain a single page. All these
 are requirements for a valid document in Mayan EDMS.
 
 
+Memory usage
+^^^^^^^^^^^^
+
+The MIMETYPE_FILE_READ_SIZE setting was added to limit the number of bytes that
+will be read into memory to determine the MIME type of a new document. For
+compatibility with the current bevahor this setting defaults to 0 which means
+that it is disabled. Disabling the setting will cause the entire document's
+file to be loaded into memory. If documents are not processing due to out of
+memory errors (large documents or devices with limited memory), set
+MIMETYPE_FILE_READ_SIZE to a value other than 0. Limited tests suggest 1024
+to be a good alternative as most "magic numbers" used for MIME type detection
+are located at the start of the file and just reading the first 1024 bytes will
+result in a positive identification with little memory usage.
+
+
 Other changes
 ^^^^^^^^^^^^^
 
