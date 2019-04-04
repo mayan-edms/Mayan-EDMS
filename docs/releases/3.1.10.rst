@@ -15,18 +15,18 @@ include a mixin to assign random primary keys to the test objects. Normally
 primary keys are sequential and their predictability can hide edge cases that
 would normally only manifest in production. The tests case code was also split
 into smaller mixin units separating them by purpose. All code to perform HTTP
-requests now resides in the ClientMethodsTestCaseMixin. Changes in the
-ContentTypeCheckTestCaseMixin were added to enable this mixin for the API views
+requests now resides in the ``ClientMethodsTestCaseMixin``. Changes in the
+``ContentTypeCheckTestCaseMixin`` were added to enable this mixin for the API views
 in a future minor version. The test view code was moved into its own mixin
-called TestViewTestCaseMixin. This mixin allows creating dynamic views to test
+called ``TestViewTestCaseMixin``. This mixin allows creating dynamic views to test
 object and link resolution among other things. The API base test case class is
 now part of the same class hierarchy, this means that the API test code will
 now behave the same and will benefit from all improvements in the base test case
 classes. Some indexing tests were failing randomly. This was caused by the way
 the test were built and not because of faulty code. The tests were updated and
 now operate as expected. While there is no official support for installing
-Mayan EDMS as a sub URL updates to the TestViewTestCaseMixin will allow it to
-execute with custom ROOT_URLCONF configurations. Further work and feedback is
+Mayan EDMS as a sub URL updates to the ``TestViewTestCaseMixin`` will allow it to
+execute with custom ``ROOT_URLCONF`` configurations. Further work and feedback is
 needed to officially support this installation method.
 
 
@@ -83,13 +83,13 @@ are requirements for a valid document in Mayan EDMS.
 Memory usage
 ^^^^^^^^^^^^
 
-The MIMETYPE_FILE_READ_SIZE setting was added to limit the number of bytes that
+The ``MIMETYPE_FILE_READ_SIZE`` setting was added to limit the number of bytes that
 will be read into memory to determine the MIME type of a new document. For
 compatibility with the current bevahor this setting defaults to 0 which means
 that it is disabled. Disabling the setting will cause the entire document's
 file to be loaded into memory. If documents are not processing due to out of
 memory errors (large documents or devices with limited memory), set
-MIMETYPE_FILE_READ_SIZE to a value other than 0. Limited tests suggest 1024
+``MIMETYPE_FILE_READ_SIZE`` to a value other than 0. Limited tests suggest 1024
 to be a good alternative as most "magic numbers" used for MIME type detection
 are located at the start of the file and just reading the first 1024 bytes will
 result in a positive identification with little memory usage.
@@ -100,7 +100,6 @@ Other changes
 
 * Add missing document index API view create permission.
 * Fix index list API view. Add index create, delete, detail API tests.
-  GitLab issue #564.
 
 
 Removals
