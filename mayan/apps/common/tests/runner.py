@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django import apps
 from django.test.runner import DiscoverRunner
 
+from .literals import EXCLUDE_TEST_TAG
+
 
 class MayanTestRunner(DiscoverRunner):
     @classmethod
@@ -17,6 +19,11 @@ class MayanTestRunner(DiscoverRunner):
     def __init__(self, *args, **kwargs):
         self.mayan_apps = kwargs.pop('mayan_apps')
         super(MayanTestRunner, self).__init__(*args, **kwargs)
+
+        # Test that should be excluded by default
+        # To include then pass --tag=exclude to the test runner invocation
+        if EXCLUDE_TEST_TAG not in self.tags:
+            self.exclude_tags |= set((EXCLUDE_TEST_TAG,))
 
     def build_suite(self, *args, **kwargs):
         # Apps that report they have tests
