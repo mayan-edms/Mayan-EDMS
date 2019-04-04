@@ -182,5 +182,7 @@ Bugs fixed or issues closed
 * :gitlab-issue:`572` Error when sending compressed files: ziparchive object
   has no attribute children
 * :gitlab-issue:`574` import of E-Mails with empty attachment fails
+* :gitlab-issue:`576` Exception with access check for cabinets containing
+  NON-ASCII chars
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

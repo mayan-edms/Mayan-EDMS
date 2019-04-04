@@ -34,6 +34,9 @@
   (@mbru) for the report and debug information. GitLab issue #557.
 * Add the MIMETYPE_FILE_READ_SIZE setting to limit the number of bytes read
   to determine the MIME type of a new document.
+* Force object to text when raising PermissionDenied to avoid
+  UnicodeDecodeError. Thanks to Mathias Behrle (@mbehrle) for the report
+  and the debug information. GitLab issue #576.
 
 
 3.1.9 (2018-11-01)

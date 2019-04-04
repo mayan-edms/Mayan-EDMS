@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.db.models import Q
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.utils import return_attrib, return_related
@@ -54,7 +55,11 @@ class AccessControlListManager(models.Manager):
             except AttributeError:
                 # AttributeError means non model objects: ie Statistics
                 # These can't have ACLs so we raise PermissionDenied
-                raise PermissionDenied(_('Insufficient access for: %s') % obj)
+
+                # Force object to text to avoid UnicodeDecodeError
+                raise PermissionDenied(
+                    ugettext('Insufficient access for: %s') % force_text(obj)
+                )
             except KeyError:
                 pass
             else:
@@ -93,7 +98,9 @@ class AccessControlListManager(models.Manager):
                     'Permissions "%s" on "%s" denied for user "%s"',
                     permissions, obj, user
                 )
-                raise PermissionDenied(ugettext('Insufficient access for: %s') % obj)
+                raise PermissionDenied(
+                    ugettext('Insufficient access for: %s') % force_text(obj)
+                )
 
             logger.debug(
                 'Permissions "%s" on "%s" granted to user "%s" through roles "%s" by direct ACL',
