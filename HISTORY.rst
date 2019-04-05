@@ -1,3 +1,7 @@
+3.2 (2019-04-XX)
+================
+* Split sources models into separate modules
+
 3.1.10 (2019-04-04)
 ===================
 * Backport test case improvements from the development branch. Add random
