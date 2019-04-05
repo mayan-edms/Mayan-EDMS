@@ -405,10 +405,10 @@ class Template(object):
             context=context,
         ).render()
 
-        content = result.content.replace('\n', '')
-
-        self.html = content
-        self.hex_hash = hashlib.sha256(content).hexdigest()
+        # Calculate the hash of the bytes version but return the unicode
+        # version
+        self.html = result.rendered_content.replace('\n', '')
+        self.hex_hash = hashlib.sha256(result.content).hexdigest()
         return self
 
 
