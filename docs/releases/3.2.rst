@@ -7,6 +7,18 @@ Released: XX XX, 2019
 Changes
 -------
 
+Switch to full app paths
+^^^^^^^^^^^^^^^^^^^^^^^^
+Instead of inserting the path of the apps into the Python app,
+the apps are now referenced by their full import path.
+
+This solves name clashes with external or native Python libraries.
+Example: Mayan statistics app vs. Python new statistics library.
+
+Every app reference is now prepended with 'mayan.apps'.
+
+Existing config.yml files need to be updated manually.
+
 
 Other changes
 ^^^^^^^^^^^^^

@@ -6,6 +6,7 @@
 * Updated the source check behavior to allow checking a source
   even when the source is disabled and to not deleted processed files
   during a check.
+* Switch to full app paths
 
 3.1.10 (2019-04-04)
 ===================
