@@ -3,29 +3,31 @@ from __future__ import unicode_literals
 import shutil
 
 import mock
+from pathlib2 import Path
 
 from django.test import override_settings
+from django.utils.encoding import force_text
 
 from common.utils import mkdtemp
 from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.tests import (
-    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    DocumentTestMixin, TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
 from metadata.models import MetadataType
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import (
-    EmailBaseModel, POP3Email, WatchFolderSource, WebFormSource
-)
+from ..models import POP3Email, WatchFolderSource, WebFormSource
+from ..models.email_sources import EmailBaseModel
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,
     TEST_EMAIL_INLINE_IMAGE, TEST_EMAIL_NO_CONTENT_TYPE,
-    TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
+    TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT,
+    TEST_WATCHFOLDER_SUBFOLDER
 )
 
 
@@ -244,35 +246,47 @@ class POP3SourceTestCase(BaseTestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class UploadDocumentTestCase(BaseTestCase):
-    """
-    Test creating documents
-    """
-    def setUp(self):
-        super(UploadDocumentTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
+class WatchFolderTestCase(DocumentTestMixin, BaseTestCase):
+    auto_upload_document = False
 
-    def tearDown(self):
-        self.document_type.delete()
-        super(UploadDocumentTestCase, self).tearDown()
-
-    def test_issue_gh_163(self):
-        """
-        Non-ASCII chars in document name failing in upload via watch folder
-        gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
-        """
-
-        temporary_directory = mkdtemp()
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
-
-        watch_folder = WatchFolderSource.objects.create(
-            document_type=self.document_type, folder_path=temporary_directory,
+    def _create_watchfolder(self):
+        return WatchFolderSource.objects.create(
+            document_type=self.document_type,
+            folder_path=self.temporary_directory,
+            include_subdirectories=False,
             uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
         )
-        watch_folder.check_source()
 
+    def setUp(self):
+        super(WatchFolderTestCase, self).setUp()
+        self.temporary_directory = mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.temporary_directory)
+        super(WatchFolderTestCase, self).tearDown()
+
+    def test_subfolder_support_disabled(self):
+        watch_folder = self._create_watchfolder()
+
+        test_path = Path(self.temporary_directory)
+        test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
+        test_subfolder.mkdir()
+
+        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, force_text(test_subfolder))
+        watch_folder.check_source()
+        self.assertEqual(Document.objects.count(), 0)
+
+    def test_subfolder_support_enabled(self):
+        watch_folder = self._create_watchfolder()
+        watch_folder.include_subdirectories = True
+        watch_folder.save()
+
+        test_path = Path(self.temporary_directory)
+        test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
+        test_subfolder.mkdir()
+
+        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, force_text(test_subfolder))
+        watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
@@ -285,16 +299,18 @@ class UploadDocumentTestCase(BaseTestCase):
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
         self.assertEqual(document.page_count, 1)
 
-        # Test Non-ASCII named documents inside Non-ASCII named compressed file
+    def test_issue_gh_163(self):
+        """
+        Non-ASCII chars in document name failing in upload via watch folder
+        gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
+        """
+        watch_folder = self._create_watchfolder()
 
-        shutil.copy(
-            TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, temporary_directory
-        )
-
+        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
         watch_folder.check_source()
-        document = Document.objects.all()[1]
+        self.assertEqual(Document.objects.count(), 1)
 
-        self.assertEqual(Document.objects.count(), 2)
+        document = Document.objects.first()
 
         self.assertEqual(document.exists(), True)
         self.assertEqual(document.size, 17436)
@@ -304,4 +320,24 @@ class UploadDocumentTestCase(BaseTestCase):
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
         self.assertEqual(document.page_count, 1)
 
-        shutil.rmtree(temporary_directory)
+    def test_issue_gh_163_expanded(self):
+        """
+        Test Non-ASCII named documents inside Non-ASCII named compressed file
+        """
+        watch_folder = self._create_watchfolder()
+
+        shutil.copy(
+            TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, self.temporary_directory
+        )
+        watch_folder.check_source()
+        self.assertEqual(Document.objects.count(), 1)
+
+        document = Document.objects.first()
+
+        self.assertEqual(document.exists(), True)
+        self.assertEqual(document.size, 17436)
+
+        self.assertEqual(document.file_mimetype, 'image/png')
+        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
+        self.assertEqual(document.page_count, 1)

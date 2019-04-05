@@ -1,6 +1,8 @@
 3.2 (2019-04-XX)
 ================
 * Split sources models into separate modules
+* Add support for subfolder scanning to watchfolders. Closes
+  GitLab issue #498 and #563.
 
 3.1.10 (2019-04-04)
 ===================

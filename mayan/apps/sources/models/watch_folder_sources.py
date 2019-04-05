@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
 import logging
-import os
 
-from django.core.files import File
+from pathlib2 import Path
+
 from django.db import models
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from ..literals import SOURCE_CHOICE_WATCH, SOURCE_UNCOMPRESS_CHOICE_Y
@@ -30,8 +29,15 @@ class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
     folder_path = models.CharField(
-        help_text=_('Server side filesystem path.'), max_length=255,
-        verbose_name=_('Folder path')
+        help_text=_('Server side filesystem path to scan for files.'),
+        max_length=255, verbose_name=_('Folder path')
+    )
+    include_subdirectories = models.BooleanField(
+        help_text=_(
+            'If checked, not only will the folder path be scanned for files '
+            'but also its subdirectories.'
+        ),
+        verbose_name=_('Include subdirectories?')
     )
 
     objects = models.Manager()
@@ -41,15 +47,19 @@ class WatchFolderSource(IntervalBaseModel):
         verbose_name_plural = _('Watch folders')
 
     def check_source(self):
-        # Force self.folder_path to unicode to avoid os.listdir returning
-        # str for non-latin filenames, gh-issue #163
-        for file_name in os.listdir(force_text(self.folder_path)):
-            full_path = os.path.join(self.folder_path, file_name)
-            if os.path.isfile(full_path):
-                with File(file=open(full_path, mode='rb')) as file_object:
+        path = Path(self.folder_path)
+
+        if self.include_subdirectories:
+            iterator = path.rglob('*')
+        else:
+            iterator = path.glob('*')
+
+        for entry in iterator:
+            if entry.is_file() or entry.is_symlink():
+                with entry.open(mode='rb') as file_object:
                     self.handle_upload(
                         file_object=file_object,
                         expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y),
-                        label=file_name
+                        label=entry.name
                     )
-                    os.unlink(full_path)
+                    entry.unlink()

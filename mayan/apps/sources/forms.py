@@ -137,6 +137,6 @@ class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
         fields = (
             'label', 'enabled', 'interval', 'document_type', 'uncompress',
-            'folder_path'
+            'folder_path', 'include_subdirectories'
         )
         model = WatchFolderSource
