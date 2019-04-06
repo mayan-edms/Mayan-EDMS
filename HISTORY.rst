@@ -1,3 +1,7 @@
+3.1.11 (2019-04-XX)
+===================
+* Fix multiple tag selection wizard step.
+
 3.1.10 (2019-04-04)
 ===================
 * Backport test case improvements from the development branch. Add random
