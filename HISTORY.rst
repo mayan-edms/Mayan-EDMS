@@ -1,12 +1,13 @@
 3.2 (2019-04-XX)
 ================
-* Split sources models into separate modules
+* Split sources models into separate modules.
 * Add support for subfolder scanning to watchfolders. Closes
   GitLab issue #498 and #563.
 * Updated the source check behavior to allow checking a source
   even when the source is disabled and to not deleted processed files
   during a check.
-* Switch to full app paths
+* Switch to full app paths.
+* Fix multiple tag selection wizard step.
 
 3.1.10 (2019-04-04)
 ===================

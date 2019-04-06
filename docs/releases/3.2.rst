@@ -24,6 +24,7 @@ Other changes
 ^^^^^^^^^^^^^
 
 * Split source models into different modules.
+* Fix multiple tag selection wizard step.
 
 Removals
 --------
