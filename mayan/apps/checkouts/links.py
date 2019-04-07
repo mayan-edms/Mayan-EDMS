@@ -7,7 +7,8 @@ from navigation import Link
 from .icons import icon_checkout_info
 from .permissions import (
     permission_document_checkout, permission_document_checkin,
-    permission_document_checkin_override
+    permission_document_checkin_override,
+    permission_document_checkout_detail_view
 )
 
 
@@ -40,11 +41,9 @@ link_checkin_document = Link(
     args='object.pk', condition=is_checked_out, permissions=(
         permission_document_checkin, permission_document_checkin_override
     ), text=_('Check in document'), view='checkouts:checkin_document',
-
 )
 link_checkout_info = Link(
     args='resolved_object.pk', icon_class=icon_checkout_info, permissions=(
-        permission_document_checkin, permission_document_checkin_override,
-        permission_document_checkout
+        permission_document_checkout_detail_view,
     ), text=_('Check in/out'), view='checkouts:checkout_info',
 )
