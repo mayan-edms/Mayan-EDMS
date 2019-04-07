@@ -20,20 +20,13 @@ from ..permissions import (
     permission_document_checkout, permission_document_checkout_detail_view
 )
 
+from .mixins import DocumentCheckoutTestMixin
 
-class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
+
+class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentCheckoutViewTestCase, self).setUp()
         self.login_user()
-
-    def _checkout_document(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
-
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.user, block_new_version=True
-        )
-        self.assertTrue(self.document.is_checked_out())
 
     def _request_document_check_in_view(self):
         return self.post(
@@ -116,6 +109,10 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
     def test_checkout_detail_view_no_permission(self):
         self._checkout_document()
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_checkout
+        )
 
         response = self._request_checkout_detail_view()
 
