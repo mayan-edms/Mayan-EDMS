@@ -3,6 +3,7 @@
 * Fix multiple tag selection wizard step.
 * Change the required permission for the checkout info link from
   document check in to document checkout details view.
+* Lower the log severity when links don't resolve.
 
 3.1.10 (2019-04-04)
 ===================

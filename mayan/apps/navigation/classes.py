@@ -419,7 +419,7 @@ class Link(object):
             try:
                 resolved_link.url = node.render(context)
             except Exception as exception:
-                logger.error(
+                logger.debug(
                     'Error resolving link "%s" URL; %s', self.text, exception
                 )
         elif self.url:
