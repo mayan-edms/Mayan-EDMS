@@ -4,6 +4,8 @@
 * Change the required permission for the checkout info link from
   document check in to document checkout details view.
 * Lower the log severity when links don't resolve.
+* Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
+  block when calculating a document's checksum.
 
 3.1.10 (2019-04-04)
 ===================

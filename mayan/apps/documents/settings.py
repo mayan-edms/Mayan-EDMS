@@ -62,6 +62,14 @@ setting_fix_orientation = namespace.add_setting(
         'feature and it is disabled by default.'
     )
 )
+setting_hash_block_size = namespace.add_setting(
+    global_name='DOCUMENTS_HASH_BLOCK_SIZE', default=0,
+    help_text=_(
+        'Size of blocks to use when calculating the document file\'s '
+        'checksum. A value of 0 disables the block calculation and the entire '
+        'file will be loaded into memory.'
+    )
+)
 setting_language = namespace.add_setting(
     global_name='DOCUMENTS_LANGUAGE', default=DEFAULT_LANGUAGE,
     help_text=_('Default documents language (in ISO639-3 format).')

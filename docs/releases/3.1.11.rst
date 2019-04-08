@@ -7,12 +7,43 @@ Released: April XX, 2019
 Changes
 -------
 
+Memory usage
+^^^^^^^^^^^^
+
+The ``DOCUMENTS_HASH_BLOCK_SIZE`` setting was added to limit the number of
+bytes that will be read into memory when calculating the checksum of a new
+document. For compatibility with the current bevahor this setting defaults to
+0 which means that it is disabled. Disabling the setting will cause the
+entire document's file to be loaded into memory. If documents are not
+processing due to out of memory errors (large documents or devices with
+limited memory), set ``DOCUMENTS_HASH_BLOCK_SIZE`` to a value other than 0.
+Limited tests suggest 65535 to be a good alternative.
+
+
+Tag wizard step
+^^^^^^^^^^^^^^^
+
+The tag wizard step was fixed and will now allow attaching multple tags to a
+new document.
+
+
+Permissions
+^^^^^^^^^^^
+
+Previously the document checkout information link required one of the following
+permissions: document check in, document check in override, or document
+checkout. Meanwhile the document checkout information view would require the
+document checkout detail view permission. This difference in permissions
+has been eliminated and the link will now required the document checkout
+detail view permission, same as the view. Update your user role permissions
+accordingly.
+
+
 Other changes
 ^^^^^^^^^^^^^
 
-* Fix multiple tag selection wizard step.
-* Update the check out info link permission. Update the link permission to
-  match the same required permission as the view.
+* Lower the log severity when links don't resolve.
+
 
 Removals
 --------
@@ -112,6 +143,6 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ---------------------------
 
-* :gitlab-issue:`563` Recursive Watch Folder
+* None
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -45,7 +45,8 @@ from .permissions import permission_document_view
 from .settings import (
     setting_disable_base_image_cache, setting_disable_transformed_image_cache,
     setting_display_width, setting_display_height, setting_fix_orientation,
-    setting_language, setting_zoom_max_level, setting_zoom_min_level
+    setting_hash_block_size, setting_language, setting_zoom_max_level,
+    setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
@@ -56,8 +57,8 @@ logger = logging.getLogger(__name__)
 
 
 # document image cache name hash function
-def HASH_FUNCTION(data):
-    return hashlib.sha256(data).hexdigest()
+def hash_function():
+    return hashlib.sha256()
 
 
 def UUID_FUNCTION(*args, **kwargs):
@@ -697,10 +698,25 @@ class DocumentVersion(models.Model):
         Open a document version's file and update the checksum field using
         the user provided checksum function
         """
+        block_size = setting_hash_block_size.value
+        if block_size == 0:
+            # If the setting value is 0 that means disable read limit. To disable
+            # the read limit passing None won't work, we pass -1 instead as per
+            # the Python documentation.
+            # https://docs.python.org/2/tutorial/inputoutput.html#methods-of-file-objects
+            block_size = -1
+
         if self.exists():
-            source = self.open()
-            self.checksum = force_text(HASH_FUNCTION(source.read()))
-            source.close()
+            hash_object = hash_function()
+            with self.open() as file_object:
+                while (True):
+                    data = file_object.read(block_size)
+                    if not data:
+                        break
+
+                    hash_object.update(data)
+
+            self.checksum = force_text(hash_object.hexdigest())
             if save:
                 self.save()
 
