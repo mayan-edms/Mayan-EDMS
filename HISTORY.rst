@@ -7,7 +7,15 @@
   even when the source is disabled and to not deleted processed files
   during a check.
 * Switch to full app paths.
+
+3.1.11 (2019-04-XX)
+===================
 * Fix multiple tag selection wizard step.
+* Change the required permission for the checkout info link from
+  document check in to document checkout details view.
+* Lower the log severity when links don't resolve.
+* Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
+  block when calculating a document's checksum.
 
 3.1.10 (2019-04-04)
 ===================
