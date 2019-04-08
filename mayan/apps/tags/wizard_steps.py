@@ -45,7 +45,12 @@ class WizardStepTags(WizardStep):
         furl_instance = furl(querystring)
         Tag = apps.get_model(app_label='tags', model_name='Tag')
 
-        for tag in Tag.objects.filter(pk__in=furl_instance.args['tags'].split(',')):
+        tag_id_list = furl_instance.args.get('tags', '')
+
+        if tag_id_list:
+            tag_id_list = tag_id_list.split(',')
+
+        for tag in Tag.objects.filter(pk__in=tag_id_list):
             tag.documents.add(document)
 
 
