@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Felix <felix.com@gmx.com>, 2018
@@ -14,17 +14,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
 "PO-Revision-Date: 2019-03-31 21:42+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:115 apps.py:268 events.py:7 menus.py:10 models.py:238
+#: apps.py:115 apps.py:268 events.py:7 menus.py:10 models.py:239
 #: permissions.py:7 queues.py:18 settings.py:12 statistics.py:231
 msgid "Documents"
 msgstr "Dokumente"
@@ -37,7 +38,9 @@ msgstr "Dokumententyp erstellen"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr "Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert."
+msgstr ""
+"Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da "
+"Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert."
 
 #: apps.py:157
 msgid "Versions comment"
@@ -67,7 +70,7 @@ msgstr "Seiten"
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:275 models.py:769
+#: apps.py:275 models.py:785
 msgid "Enabled"
 msgstr "Aktiviert"
 
@@ -148,17 +151,20 @@ msgstr "Erweiterung beibehalten"
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
-msgstr "Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das Dokument korrekt zu öffnen."
+msgstr ""
+"Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es "
+"Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das "
+"Dokument korrekt zu öffnen."
 
 #: forms.py:149
 msgid "Date added"
 msgstr "Hinzugefügt am"
 
-#: forms.py:153 models.py:185
+#: forms.py:153 models.py:186
 msgid "UUID"
 msgstr "UUID"
 
-#: forms.py:155 models.py:209
+#: forms.py:155 models.py:210
 msgid "Language"
 msgstr "Sprache"
 
@@ -178,7 +184,7 @@ msgstr "Keine"
 msgid "File encoding"
 msgstr "Dateikodierung"
 
-#: forms.py:175 models.py:1018
+#: forms.py:175 models.py:1034
 msgid "File size"
 msgstr "Dateigröße"
 
@@ -190,11 +196,11 @@ msgstr "Im Dateispeicher"
 msgid "File path in storage"
 msgstr "Pfad im Dateispeicher"
 
-#: forms.py:185 models.py:464 search.py:24 search.py:48
+#: forms.py:185 models.py:465 search.py:24 search.py:48
 msgid "Checksum"
 msgstr "Prüfsumme"
 
-#: forms.py:213 models.py:103 models.py:189 models.py:764 search.py:16
+#: forms.py:213 models.py:104 models.py:190 models.py:780 search.py:16
 #: search.py:35
 msgid "Document type"
 msgstr "Dokumententyp"
@@ -205,10 +211,13 @@ msgstr "Komprimieren"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This"
-" option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This "
+"option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr "Datei im Originalformat oder als komprimiertes Archiv herunterladen.  Diese Option ist nur wählbar, wenn ein einzelnes Dokument heruntergeladen wird. Mehrere Dateien werden immer als komprimiertes Archiv heruntergeladen."
+msgstr ""
+"Datei im Originalformat oder als komprimiertes Archiv herunterladen.  Diese "
+"Option ist nur wählbar, wenn ein einzelnes Dokument heruntergeladen wird. "
+"Mehrere Dateien werden immer als komprimiertes Archiv heruntergeladen."
 
 #: forms.py:238
 msgid "Compressed filename"
@@ -218,14 +227,19 @@ msgstr "Name der komprimierten Datei"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr "Name der komprimierten Datei, die die Dokumente zum Download beeinhaltet, wenn die vorherige Option gewählt wurde."
+msgstr ""
+"Name der komprimierten Datei, die die Dokumente zum Download beeinhaltet, "
+"wenn die vorherige Option gewählt wurde."
 
 #: forms.py:258
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr "Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das heruntergeladene Dokument korrekt zu öffnen."
+msgstr ""
+"Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es "
+"Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das "
+"heruntergeladene Dokument korrekt zu öffnen."
 
 #: forms.py:270 literals.py:39
 msgid "Page range"
@@ -235,7 +249,9 @@ msgstr "Seitenbereich"
 msgid ""
 "Page number from which all the transformation will be cloned. Existing "
 "transformations will be lost."
-msgstr "Seitenzahl von der alle Transformationen übernommen werden. Bestehende Transformationen gehen verloren."
+msgstr ""
+"Seitenzahl von der alle Transformationen übernommen werden. Bestehende "
+"Transformationen gehen verloren."
 
 #: links.py:70
 msgid "Preview"
@@ -305,8 +321,8 @@ msgstr "Wiederherstellen"
 msgid "Download version"
 msgstr "Version herunterladen"
 
-#: links.py:194 links.py:275 models.py:237 models.py:427 models.py:1052
-#: models.py:1082 models.py:1111
+#: links.py:194 links.py:275 models.py:238 models.py:428 models.py:1068
+#: models.py:1098 models.py:1127
 msgid "Document"
 msgstr "Dokument"
 
@@ -338,7 +354,9 @@ msgstr "Papierkorb"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr "Grafiken löschen, die benutzt werden um die Dokumentendarstellung und interaktive Transformationsausgabe zu beschleunigen."
+msgstr ""
+"Grafiken löschen, die benutzt werden um die Dokumentendarstellung und "
+"interaktive Transformationsausgabe zu beschleunigen."
 
 #: links.py:237
 msgid "Clear document image cache"
@@ -404,11 +422,11 @@ msgstr "Bearbeiten"
 msgid "Add quick label to document type"
 msgstr "Schnellbezeichner zu Dokumententyp hinzufügen"
 
-#: links.py:349 models.py:775
+#: links.py:349 models.py:791
 msgid "Quick labels"
 msgstr "Schnellbezeichner"
 
-#: links.py:361 models.py:1055 models.py:1065 views/document_views.py:865
+#: links.py:361 models.py:1071 models.py:1081 views/document_views.py:865
 msgid "Duplicated documents"
 msgstr "Duplikate"
 
@@ -424,217 +442,231 @@ msgstr "Standard"
 msgid "All pages"
 msgstr "Alle Seiten"
 
-#: models.py:74
+#: models.py:75
 msgid "The name of the document type."
 msgstr "Name des Dokumententyps."
 
-#: models.py:75 models.py:193 models.py:767 search.py:21 search.py:42
+#: models.py:76 models.py:194 models.py:783 search.py:21 search.py:42
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:79
+#: models.py:80
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
-msgstr "Zeitspanne nach der Dokumente dieses Typs in den Papierkorb verschoben werden."
+"Amount of time after which documents of this type will be moved to the trash."
+msgstr ""
+"Zeitspanne nach der Dokumente dieses Typs in den Papierkorb verschoben "
+"werden."
 
-#: models.py:81
+#: models.py:82
 msgid "Trash time period"
 msgstr "Papierkorb nach"
 
-#: models.py:85
+#: models.py:86
 msgid "Trash time unit"
 msgstr "Einheit (Papierkorb)"
 
-#: models.py:89
+#: models.py:90
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr "Zeitspanne nach der Dokumente dieses Typs die sich im Papierkorb befinden endgültig gelöscht werden."
+msgstr ""
+"Zeitspanne nach der Dokumente dieses Typs die sich im Papierkorb befinden "
+"endgültig gelöscht werden."
 
-#: models.py:91
+#: models.py:92
 msgid "Delete time period"
 msgstr "Endgültig löschen nach"
 
-#: models.py:96
+#: models.py:97
 msgid "Delete time unit"
 msgstr "Einheit (Löschen)"
 
-#: models.py:104
+#: models.py:105
 msgid "Documents types"
 msgstr "Dokumententypen"
 
-#: models.py:183
+#: models.py:184
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for"
-" each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for "
+"each document."
 msgstr "UUID des Dokuments. Eine eindeutige Identifikation für jedes Dokument."
 
-#: models.py:193
+#: models.py:194
 msgid "The name of the document."
 msgstr "Name des Dokuments."
 
-#: models.py:197
+#: models.py:198
 msgid "An optional short text describing a document."
 msgstr "Optionaler Kurztext zur Beschreibung eines Dokuments."
 
-#: models.py:198 search.py:22 search.py:45
+#: models.py:199 search.py:22 search.py:45
 msgid "Description"
 msgstr "Beschreibung"
 
-#: models.py:202
+#: models.py:203
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr "Datum und Uhrzeit in Serverzeit, zu dem das Dokument auf dem System verarbeitet wurde."
+msgstr ""
+"Datum und Uhrzeit in Serverzeit, zu dem das Dokument auf dem System "
+"verarbeitet wurde."
 
-#: models.py:204 models.py:1058
+#: models.py:205 models.py:1074
 msgid "Added"
 msgstr "Hinzugefügt"
 
-#: models.py:208
+#: models.py:209
 msgid "The dominant language in the document."
 msgstr "Die vorherrschende Sprache des Dokuments."
 
-#: models.py:213
+#: models.py:214
 msgid "Whether or not this document is in the trash."
 msgstr "Unabhängig davon, ob dieses Dokument im Papierkorb ist."
 
-#: models.py:214
+#: models.py:215
 msgid "In trash?"
 msgstr "Im Papierkorb?"
 
-#: models.py:219
+#: models.py:220
 msgid "The server date and time when the document was moved to the trash."
-msgstr "Datum und Uhrzeit, zu dem das Dokument in den Papierkorb verschoben wurde."
+msgstr ""
+"Datum und Uhrzeit, zu dem das Dokument in den Papierkorb verschoben wurde."
 
-#: models.py:221
+#: models.py:222
 msgid "Date and time trashed"
 msgstr "Zeitpunkt der Löschung"
 
-#: models.py:225
+#: models.py:226
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr "Ein Fragment ist ein Dokument mit einem Eintrag in der Datenbank, für das keine Datei hochgeladen wurde. Die Ursache könnte ein fehlgeschlagener Uploadvorgang sein oder ein verzögerter Upload über die API-Schnittstelle."
+msgstr ""
+"Ein Fragment ist ein Dokument mit einem Eintrag in der Datenbank, für das "
+"keine Datei hochgeladen wurde. Die Ursache könnte ein fehlgeschlagener "
+"Uploadvorgang sein oder ein verzögerter Upload über die API-Schnittstelle."
 
-#: models.py:228
+#: models.py:229
 msgid "Is stub?"
 msgstr "Inkomplett"
 
-#: models.py:241
+#: models.py:242
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Fragment, ID: %d"
 
-#: models.py:431
+#: models.py:432
 msgid "The server date and time when the document version was processed."
 msgstr "Serverdatum und -zeit der Verarbeitung der Dokumentenversion."
 
-#: models.py:432
+#: models.py:433
 msgid "Timestamp"
 msgstr "Zeitstempel"
 
-#: models.py:436
+#: models.py:437
 msgid "An optional short text describing the document version."
 msgstr "Ein optionaler kurzer Text, der die Dokumentenversion beschreibt."
 
-#: models.py:437
+#: models.py:438
 msgid "Comment"
 msgstr "Kommentar"
 
-#: models.py:443
+#: models.py:444
 msgid "File"
 msgstr "Datei"
 
-#: models.py:447
+#: models.py:448
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document."
-" Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr "Der MIME-Typ der Datei der Dokumentenversion. MIME-Typen sind eine standardisierte Art zur Beschreibung des Dateiformats, in diesem Fall des Dokuments. Besipiele: \"text/plain\" oder \"image/jpeg\"."
+"describe the format of a file, in this case the file format of the document. "
+"Some examples: \"text/plain\" or \"image/jpeg\". "
+msgstr ""
+"Der MIME-Typ der Datei der Dokumentenversion. MIME-Typen sind eine "
+"standardisierte Art zur Beschreibung des Dateiformats, in diesem Fall des "
+"Dokuments. Besipiele: \"text/plain\" oder \"image/jpeg\"."
 
-#: models.py:451 search.py:19 search.py:39
+#: models.py:452 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "MIME Typ"
 
-#: models.py:455
+#: models.py:456
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr "Die Kodierung der Datei der Dokumentenversion. binary 7-bit, binary 8-bit, text, base64, etc."
+msgstr ""
+"Die Kodierung der Datei der Dokumentenversion. binary 7-bit, binary 8-bit, "
+"text, base64, etc."
 
-#: models.py:457
+#: models.py:458
 msgid "Encoding"
 msgstr "Kodierung"
 
-#: models.py:469 models.py:470 models.py:788
+#: models.py:470 models.py:471 models.py:804
 msgid "Document version"
 msgstr "Dokumentenversion"
 
-#: models.py:774
+#: models.py:790
 msgid "Quick label"
 msgstr "Schnellbezeichner"
 
-#: models.py:792
+#: models.py:808
 msgid "Page number"
 msgstr "Seitennummer"
 
-#: models.py:799 models.py:1011 models.py:1044
+#: models.py:815 models.py:1027 models.py:1060
 msgid "Document page"
 msgstr "Dokumentenseite"
 
-#: models.py:800 models.py:1045
+#: models.py:816 models.py:1061
 msgid "Document pages"
 msgstr "Dokumentenseiten"
 
-#: models.py:804
+#: models.py:820
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Seite %(page_num)d von %(total_pages)d des Dokuments %(document)s"
 
-#: models.py:1014
+#: models.py:1030
 msgid "Date time"
 msgstr "Datum & Zeit"
 
-#: models.py:1016
+#: models.py:1032
 msgid "Filename"
 msgstr "Dateiname"
 
-#: models.py:1024
+#: models.py:1040
 msgid "Document page cached image"
 msgstr "Zwischengespeichertes Bild für Dokumentenseite"
 
-#: models.py:1025
+#: models.py:1041
 msgid "Document page cached images"
 msgstr "Zwischengespeicherte Bilder für Dokumentenseite"
 
-#: models.py:1064
+#: models.py:1080
 msgid "Duplicated document"
 msgstr "Duplikat"
 
-#: models.py:1078 models.py:1107
+#: models.py:1094 models.py:1123
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:1088
+#: models.py:1104
 msgid "Favorite document"
 msgstr "Favoritendokument"
 
-#: models.py:1089
+#: models.py:1105
 msgid "Favorite documents"
 msgstr "Favoritendokumente"
 
-#: models.py:1114
+#: models.py:1130
 msgid "Accessed"
 msgstr "Letzter Zugriff"
 
-#: models.py:1121
+#: models.py:1137
 msgid "Recent document"
 msgstr "Letztes Dokument"
 
-#: models.py:1122
+#: models.py:1138
 msgid "Recent documents"
 msgstr "Letzte Dokumente"
 
@@ -762,19 +794,26 @@ msgstr "Pfad zu der Speicherklasse für die Speicherung des Bildercaches."
 
 #: settings.py:26
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
-msgstr "Argumente, die an das DOCUMENT_CACHE_STORAGE_BACKEND weitergeleitet werden."
+msgstr ""
+"Argumente, die an das DOCUMENT_CACHE_STORAGE_BACKEND weitergeleitet werden."
 
 #: settings.py:32
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr "Deaktiviert die erste Cache-Ebene, die für die Speicherung der hochauflösenden, nicht transformierten Versionen von Dokumentenseiten zuständig ist."
+msgstr ""
+"Deaktiviert die erste Cache-Ebene, die für die Speicherung der "
+"hochauflösenden, nicht transformierten Versionen von Dokumentenseiten "
+"zuständig ist."
 
 #: settings.py:39
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr "Deaktiviert die zweite Cache-Ebene, die für die Speicherung der mittel- und niedrigauflösenden, transformierten (gedeht, gezoomt, etc.) Versionen von Dokumentenseiten zuständig ist."
+msgstr ""
+"Deaktiviert die zweite Cache-Ebene, die für die Speicherung der mittel- und "
+"niedrigauflösenden, transformierten (gedeht, gezoomt, etc.) Versionen von "
+"Dokumentenseiten zuständig ist."
 
 #: settings.py:53
 msgid "Maximum number of favorite documents to remember per user."
@@ -783,65 +822,85 @@ msgstr "Maximale Anzahl von Favoriten pro Benutzer."
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an"
-" experimental feature and it is disabled by default."
-msgstr "Erkennung der Ausrichtung von Dokumentenseiten und Erstellung einer entsprechenden Rotationstransformation, um die Seite in der korrekten Ausrichtung anzuzeigen. Dies ist eine experimentelle Eigenschaft, weshalb sie standardmäßig deaktiviert ist."
+"corresponding rotation transformation to display it rightside up. This is an "
+"experimental feature and it is disabled by default."
+msgstr ""
+"Erkennung der Ausrichtung von Dokumentenseiten und Erstellung einer "
+"entsprechenden Rotationstransformation, um die Seite in der korrekten "
+"Ausrichtung anzuzeigen. Dies ist eine experimentelle Eigenschaft, weshalb "
+"sie standardmäßig deaktiviert ist."
 
-#: settings.py:67
+#: settings.py:68
+msgid ""
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
+msgstr ""
+
+#: settings.py:75
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Standarddokumentensprache (in ISO639-3 Format)."
 
-#: settings.py:71
+#: settings.py:79
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Liste der unterstützten Dokumentensprachen. In ISO639-3 Format."
 
-#: settings.py:76
+#: settings.py:84
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr "Zeit in Sekunden, die der Browser die übermittelten Dokumentengraphiken im Cache speichern sollte. Der Standard von 31559626 Sekunden entspricht 1 Jahr."
+msgstr ""
+"Zeit in Sekunden, die der Browser die übermittelten Dokumentengraphiken im "
+"Cache speichern sollte. Der Standard von 31559626 Sekunden entspricht 1 Jahr."
 
-#: settings.py:95
+#: settings.py:103
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr "Maximale Anzahl der letztens zugegriffenen (erstellten, bearbeiteten, angesehenen) Dokumente, die pro Benutzer gemerkt werden sollen."
+msgstr ""
+"Maximale Anzahl der letztens zugegriffenen (erstellten, bearbeiteten, "
+"angesehenen) Dokumente, die pro Benutzer gemerkt werden sollen."
 
-#: settings.py:102
+#: settings.py:110
 msgid "Maximum number of recently created documents to show."
-msgstr "Maximale Anzahl der letztens erstellten Dokumente, die angezeigt werden soll."
+msgstr ""
+"Maximale Anzahl der letztens erstellten Dokumente, die angezeigt werden soll."
 
-#: settings.py:108
+#: settings.py:116
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Gradzahl, die ein Dokument pro Benutzer Aktion gedreht wird."
 
-#: settings.py:114
-msgid "Path to the Storage subclass to use when storing document files."
-msgstr "Pfad zur Speicher-Unterklasse (Storage subclass) für die Speicherung der Dokumentendateien."
-
 #: settings.py:122
-msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
-msgstr "Argumente, die an das DOCUMENT_STORAGE_BACKEND übergeben werden sollen."
+msgid "Path to the Storage subclass to use when storing document files."
+msgstr ""
+"Pfad zur Speicher-Unterklasse (Storage subclass) für die Speicherung der "
+"Dokumentendateien."
 
-#: settings.py:126
+#: settings.py:130
+msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
+msgstr ""
+"Argumente, die an das DOCUMENT_STORAGE_BACKEND übergeben werden sollen."
+
+#: settings.py:134
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Höhe des Dokumentenminiaturbilds (Thumbnail) in Pixeln."
 
-#: settings.py:137
+#: settings.py:145
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maximaler erlaubter Zoom in %, den Benutzer interaktiv wählen können."
 
-#: settings.py:144
+#: settings.py:152
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimaler erlaubter Zoom in %, den Benutzer interaktiv wählen können."
 
-#: settings.py:151
+#: settings.py:159
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr "Betrag in Prozent für Ansicht vergrößern/verkleinern pro Benutzer Aktion."
+msgstr ""
+"Betrag in Prozent für Ansicht vergrößern/verkleinern pro Benutzer Aktion."
 
 #: statistics.py:16
 msgid "January"
@@ -921,7 +980,10 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr "\n                    Seite %(page_number)s von %(total_pages)s\n                "
+msgstr ""
+"\n"
+"                    Seite %(page_number)s von %(total_pages)s\n"
+"                "
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -934,7 +996,8 @@ msgstr "Seiten des Dokuments: %s"
 
 #: views/document_page_views.py:104
 msgid "Unknown view keyword argument schema, unable to redirect."
-msgstr "Unbekanntes Schema für Schlüsselwortargument, Weiterleitung nicht möglich."
+msgstr ""
+"Unbekanntes Schema für Schlüsselwortargument, Weiterleitung nicht möglich."
 
 #: views/document_page_views.py:136
 msgid "There are no more pages in this document"
@@ -957,10 +1020,14 @@ msgstr "Dokumente des Typs: %s"
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
-msgstr "Dokumententypen sind grundlegensten Elemente der Konfiguration. Alle weiteren Programmeinheiten des Systems hängen davon ab. Definieren Sie einen Dokumententyp für jede Dokumentenart, die Sie hochzuladen beabsichtigen. Beispiele sind: Rechnung, Beleg, Handbuch, Vorschrift, Bilanz."
+msgstr ""
+"Dokumententypen sind grundlegensten Elemente der Konfiguration. Alle "
+"weiteren Programmeinheiten des Systems hängen davon ab. Definieren Sie einen "
+"Dokumententyp für jede Dokumentenart, die Sie hochzuladen beabsichtigen. "
+"Beispiele sind: Rechnung, Beleg, Handbuch, Vorschrift, Bilanz."
 
 #: views/document_type_views.py:70
 msgid "No document types available"
@@ -987,21 +1054,29 @@ msgstr "Schnellbezeichner erstellen für Dokumentenyp %s"
 
 #: views/document_type_views.py:171
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr "Schnellbezeichner \"%(filename)s\" von Dokumententyp \"%(document_type)s\" bearbeiten"
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr ""
+"Schnellbezeichner \"%(filename)s\" von Dokumententyp \"%(document_type)s\" "
+"bearbeiten"
 
 #: views/document_type_views.py:196
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "Schnellbezeichner %(label)s von Dokumententyp \"%(document_type)s\" löschen?"
+msgstr ""
+"Schnellbezeichner %(label)s von Dokumententyp \"%(document_type)s\" löschen?"
 
 #: views/document_type_views.py:232
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
-msgstr "Schnellbezeichner sind voreingestellte Dateinamen, die eine schnelle Umbenennung von Dokumenten beim Hochladen ermöglichen, indem man sie von einer Liste auswählt. Schnellbezeichner können auch nach dem Hochladen von Dokumenten angewendet werden."
+msgstr ""
+"Schnellbezeichner sind voreingestellte Dateinamen, die eine schnelle "
+"Umbenennung von Dokumenten beim Hochladen ermöglichen, indem man sie von "
+"einer Liste auswählt. Schnellbezeichner können auch nach dem Hochladen von "
+"Dokumenten angewendet werden."
 
 #: views/document_type_views.py:238
 msgid "There are no quick labels for this document type"
@@ -1053,7 +1128,10 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr "Das könnte bedeuten, dass keine Dokumente hochgeladen wurden oder dass Ihr Benutzerkonto nicht die notwendigen Berechtigungen hat, um Dokumente oder Dokumententypen anzusehen."
+msgstr ""
+"Das könnte bedeuten, dass keine Dokumente hochgeladen wurden oder dass Ihr "
+"Benutzerkonto nicht die notwendigen Berechtigungen hat, um Dokumente oder "
+"Dokumententypen anzusehen."
 
 #: views/document_views.py:95
 msgid "No documents available"
@@ -1077,7 +1155,10 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr "Um Datenverlust zu verhindern werden Dokumente nicht sofort gelöscht, sondern in den Papierkorb verschoben. Von hier aus können sie dann endgültig gelöscht oder wiederhergestellt werden."
+msgstr ""
+"Um Datenverlust zu verhindern werden Dokumente nicht sofort gelöscht, "
+"sondern in den Papierkorb verschoben. Von hier aus können sie dann endgültig "
+"gelöscht oder wiederhergestellt werden."
 
 #: views/document_views.py:166
 msgid "There are no documents in the trash can"
@@ -1206,7 +1287,9 @@ msgstr "Seitenzahl neu berechnen für Dokument: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr "Dokument \"%(document)s\" hat keinen Inhalt. Laden Sie wenigstens eine Dokumentenversion hoch, bevor Sie versuchen die Seitenzahl zu ermitteln."
+msgstr ""
+"Dokument \"%(document)s\" hat keinen Inhalt. Laden Sie wenigstens eine "
+"Dokumentenversion hoch, bevor Sie versuchen die Seitenzahl zu ermitteln."
 
 #: views/document_views.py:657
 #, python-format
@@ -1234,7 +1317,8 @@ msgstr "Transformationen zurücksetzen für Dokument: %s?"
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr "Fehler beim Löschen der Seitentransformation von %(document)s; %(error)s."
+msgstr ""
+"Fehler beim Löschen der Seitentransformation von %(document)s; %(error)s."
 
 #: views/document_views.py:730
 msgid "Transformations cloned successfully."
@@ -1257,9 +1341,13 @@ msgstr "%s drucken"
 #: views/document_views.py:856
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or"
-" were saved using a different file format will not appear as duplicates."
-msgstr "Duplikate sind Dokumente, die von exakt derselben (byte-identischen) Datei stammen. Dateien mit demselben Text oder OCR-Ergebnis, aber mit nicht exakt identischer Ursprungsdatei oder einem unterschiedlichen Speicherformat werden nicht als Duplikate geführt."
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+"Duplikate sind Dokumente, die von exakt derselben (byte-identischen) Datei "
+"stammen. Dateien mit demselben Text oder OCR-Ergebnis, aber mit nicht exakt "
+"identischer Ursprungsdatei oder einem unterschiedlichen Speicherformat "
+"werden nicht als Duplikate geführt."
 
 #: views/document_views.py:863
 msgid "There are no duplicated documents"
@@ -1270,7 +1358,9 @@ msgstr "Keine Duplikate vorhanden"
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr "Favoriten werden in dieser Ansicht gelistet. Bis zu %(count)d Dokumente werden pro Benutzer als Favoriten gemerkt."
+msgstr ""
+"Favoriten werden in dieser Ansicht gelistet. Bis zu %(count)d Dokumente "
+"werden pro Benutzer als Favoriten gemerkt."
 
 #: views/document_views.py:884
 msgid "There are no favorited documents."
@@ -1323,9 +1413,11 @@ msgstr[1] "Ausgewählte Dokumente aus den Favoriten entfernen"
 
 #: views/document_views.py:963
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
-msgstr "Diese Sicht zeigt die letzten in diesem Benutzerkonto angesehenen oder irgendwie bearbeiteten Bilder."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
+msgstr ""
+"Diese Sicht zeigt die letzten in diesem Benutzerkonto angesehenen oder "
+"irgendwie bearbeiteten Bilder."
 
 #: views/document_views.py:967
 msgid "There are no recently accessed document"

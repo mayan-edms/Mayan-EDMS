@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
 "PO-Revision-Date: 2019-03-29 23:12+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -118,9 +119,10 @@ msgid "This value will be used by other apps to reference this index."
 msgstr "Interner Name um diesen Index zu identifizieren"
 
 #: models.py:44
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
+"werden."
 
 #: models.py:57 models.py:168
 msgid "Index"
@@ -138,7 +140,10 @@ msgstr "Index-Instanzen"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Vorlage/Template zur Generierung eingeben. Django's Standard-Vorlagen-Sprache benutzen (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Vorlage/Template zur Generierung eingeben. Django's Standard-Vorlagen-"
+"Sprache benutzen (https://docs.djangoproject.com/en/1.11/ref/templates/"
+"builtins/)"
 
 #: models.py:176
 msgid "Indexing expression"
@@ -146,13 +151,18 @@ msgstr "Indexierungsausdruck"
 
 #: models.py:181
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
+msgstr ""
+"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
+"werden."
 
 #: models.py:189
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-Knotenpunkte fungieren soll)."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden "
+"sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-"
+"Knotenpunkte fungieren soll)."
 
 #: models.py:192
 msgid "Link documents"
@@ -175,7 +185,9 @@ msgstr "Wurzel"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: %(expression)s; %(exception)s"
+msgstr ""
+"Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: "
+"%(expression)s; %(exception)s"
 
 #: models.py:294
 msgid "Index template node"
@@ -258,9 +270,14 @@ msgstr "Index %s bearbeiten"
 #: views.py:82
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
-msgstr "Indizes gruppieren Dokumente automatisch in unterschiedliche Ebenen. Indizes werden in Vorlagen definiert, in denen bestimmte Markierungen direkt durch entsprechende Dokumenteneigenschaften ersetzt werden, wie zum Beispiel Beschriftung oder Beschreibung, oder durch erweiterte Eigenschaften wie Metadaten."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
+msgstr ""
+"Indizes gruppieren Dokumente automatisch in unterschiedliche Ebenen. Indizes "
+"werden in Vorlagen definiert, in denen bestimmte Markierungen direkt durch "
+"entsprechende Dokumenteneigenschaften ersetzt werden, wie zum Beispiel "
+"Beschriftung oder Beschreibung, oder durch erweiterte Eigenschaften wie "
+"Metadaten."
 
 #: views.py:87
 msgid "There are no indexes."
@@ -284,7 +301,10 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr "Nach der Erstellung werden nur Dokumente des ausgewählten Typs im Index angezeigt. Eine Aktualisierung des Indexes kann nur durch Ereignisse von Dokumenten des ausgewählten Typs ausgelöst werden."
+msgstr ""
+"Nach der Erstellung werden nur Dokumente des ausgewählten Typs im Index "
+"angezeigt. Eine Aktualisierung des Indexes kann nur durch Ereignisse von "
+"Dokumenten des ausgewählten Typs ausgelöst werden."
 
 #: views.py:147
 #, python-format
@@ -310,7 +330,9 @@ msgstr "Indexvorlagen-Knotenpunkt %s bearbeiten"
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr "Dies könnte bedeuten, dass keine Index Vorlagen erstellt wurden, oder das erstellte Index Vorlagen nicht korrekt definiert wurden."
+msgstr ""
+"Dies könnte bedeuten, dass keine Index Vorlagen erstellt wurden, oder das "
+"erstellte Index Vorlagen nicht korrekt definiert wurden."
 
 #: views.py:248
 msgid "There are no index instances available."
@@ -330,7 +352,9 @@ msgstr "Inhalt von Index %s"
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr "Weisen Sie dem Dokumententyp dieses Dokuments einen Index zu, damit es als Instanz der Organisationseinheiten dieses Indexes auftaucht."
+msgstr ""
+"Weisen Sie dem Dokumententyp dieses Dokuments einen Index zu, damit es als "
+"Instanz der Organisationseinheiten dieses Indexes auftaucht."
 
 #: views.py:354
 msgid "This document is not in any index"

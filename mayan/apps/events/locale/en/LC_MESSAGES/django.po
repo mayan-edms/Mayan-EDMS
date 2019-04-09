@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:27 links.py:41 links.py:44 links.py:49 permissions.py:7 views.py:46
+#: apps.py:27 links.py:46 links.py:49 links.py:54 permissions.py:7 views.py:46
 msgid "Events"
 msgstr ""
 
@@ -70,23 +70,23 @@ msgstr ""
 msgid "Subscribed"
 msgstr ""
 
-#: links.py:54 models.py:59 views.py:88
+#: links.py:59 models.py:59 views.py:88
 msgid "Event subscriptions"
 msgstr ""
 
-#: links.py:58
+#: links.py:63
 msgid "Mark as seen"
 msgstr ""
 
-#: links.py:62
+#: links.py:67
 msgid "Mark all as seen"
 msgstr ""
 
-#: links.py:67
+#: links.py:72
 msgid "Subscriptions"
 msgstr ""
 
-#: links.py:71
+#: links.py:76
 msgid "User events"
 msgstr ""
 

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-09 00:28-0400\n"
 "PO-Revision-Date: 2019-02-02 01:21+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:67 apps.py:150 apps.py:155 events.py:7 links.py:42 permissions.py:7
@@ -172,7 +173,9 @@ msgstr "其他应用程序用于引用此元数据类型的名称。不要使用
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "输入要渲染的模板。使用Django的默认模板语言（https://docs.djangoproject.com/en/1.11/ref/templates/builtins/）"
+msgstr ""
+"输入要渲染的模板。使用Django的默认模板语言（https://docs.djangoproject.com/"
+"en/1.11/ref/templates/builtins/）"
 
 #: models.py:61 search.py:22
 msgid "Default"
@@ -181,9 +184,11 @@ msgstr "默认"
 #: models.py:66
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
-msgstr "输入要渲染的模板。必须是以逗号分隔的字符串。使用Django的默认模板语言(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)。"
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
+msgstr ""
+"输入要渲染的模板。必须是以逗号分隔的字符串。使用Django的默认模板语言(https://"
+"docs.djangoproject.com/en/1.11/ref/templates/builtins/)。"
 
 #: models.py:71 search.py:25
 msgid "Lookup"
@@ -201,8 +206,7 @@ msgstr "验证器"
 
 #: models.py:82
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
+"The parser will reformat the value entered to conform to the expected format."
 msgstr "解析器将重新格式化输入的值以符合预期的格式。"
 
 #: models.py:84 search.py:31
@@ -334,13 +338,13 @@ msgstr "将元数据类型添加到文档：%s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "将元数据类型“%(metadata_type)s”添加到文档时出错：%(document)s; %(exception)s"
+msgstr ""
+"将元数据类型“%(metadata_type)s”添加到文档时出错：%(document)s; %(exception)s"
 
 #: views.py:190
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr "元数据类型：%(metadata_type)s已成功添加到文档%(document)s。"
 
 #: views.py:200
@@ -391,10 +395,11 @@ msgstr "文档%s的元数据已成功编辑。"
 
 #: views.py:414
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
-msgstr "添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个文档，您就可以编辑它们的值。"
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
+msgstr ""
+"添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个"
+"文档，您就可以编辑它们的值。"
 
 #: views.py:419
 msgid "This document doesn't have any metadata"
@@ -437,7 +442,8 @@ msgstr "从文档:%(document)s中成功删除元数据类型“%(metadata_type)s
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "从文档中删除元数据类型“%(metadata_type)s”时出错：%(document)s; %(exception)s"
+msgstr ""
+"从文档中删除元数据类型“%(metadata_type)s”时出错：%(document)s; %(exception)s"
 
 #: views.py:573
 msgid "Create metadata type"
@@ -464,7 +470,10 @@ msgid ""
 "or required, for each. Setting a metadata type as required for a document "
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
-msgstr "元数据类型是可以为其分配值的用户定义属性。创建后，它们必须与文档类型相关联，可以是每个文档类型的可选项或必需项。设置元数据类型作为文档类型的必需项将阻止上传该类型的文档，直到提供元数据值。"
+msgstr ""
+"元数据类型是可以为其分配值的用户定义属性。创建后，它们必须与文档类型相关联，"
+"可以是每个文档类型的可选项或必需项。设置元数据类型作为文档类型的必需项将阻止"
+"上传该类型的文档，直到提供元数据值。"
 
 #: views.py:640
 msgid "There are no metadata types"

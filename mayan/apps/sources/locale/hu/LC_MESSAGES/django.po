@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Dezső József <dejo60@gmail.com>, 2014
 # molnars <szabolcs.molnar@gmail.com>, 2017
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-09 00:30-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
@@ -42,11 +43,11 @@ msgstr "Létrehozva"
 msgid "Thumbnail"
 msgstr "bélyegkép"
 
-#: apps.py:82 models.py:789
+#: apps.py:82 models.py:794
 msgid "Date time"
 msgstr "Dátum idő"
 
-#: apps.py:87 models.py:792
+#: apps.py:87 models.py:797
 msgid "Message"
 msgstr "Üzenet"
 
@@ -178,7 +179,7 @@ msgstr ""
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:64 models.py:765
+#: literals.py:64 models.py:770
 msgid "Watch folder"
 msgstr ""
 
@@ -186,7 +187,7 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:66 models.py:662 models.py:663
+#: literals.py:66 models.py:667 models.py:668
 msgid "IMAP email"
 msgstr ""
 
@@ -198,7 +199,7 @@ msgstr "Cimke"
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: models.py:63 models.py:786
+#: models.py:63 models.py:791
 msgid "Source"
 msgstr ""
 
@@ -272,11 +273,11 @@ msgstr ""
 msgid "Error while scanning; %s"
 msgstr ""
 
-#: models.py:301 models.py:758
+#: models.py:301 models.py:763
 msgid "Server side filesystem path."
 msgstr ""
 
-#: models.py:302 models.py:759
+#: models.py:302 models.py:764
 msgid "Folder path"
 msgstr ""
 
@@ -449,31 +450,31 @@ msgid ""
 "type: %(document_type)s"
 msgstr ""
 
-#: models.py:655
+#: models.py:660
 msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models.py:656
+#: models.py:661
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:701
+#: models.py:706
 msgid "Timeout"
 msgstr "időtúllépés"
 
-#: models.py:707 models.py:708
+#: models.py:712 models.py:713
 msgid "POP email"
 msgstr ""
 
-#: models.py:766
+#: models.py:771
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:798
+#: models.py:803
 msgid "Log entry"
 msgstr ""
 
-#: models.py:799
+#: models.py:804
 msgid "Log entries"
 msgstr ""
 
@@ -561,8 +562,8 @@ msgstr ""
 
 #: views.py:127 wizards.py:145
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:153 views.py:171 views.py:181

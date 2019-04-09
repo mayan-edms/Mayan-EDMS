@@ -2,31 +2,45 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # www.ping.ba <jomer@ping.ba>, 2017
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/rosarior/teams/13584/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/"
+"rosarior/teams/13584/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "Ormarić"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "Kabinet za dokumente"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Izbrišite iz ormarića"
 
 #: links.py:31 links.py:42
 msgid "Remove from cabinets"
@@ -126,16 +140,15 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Ime ovog nivoa kabineta dodato imenima svojih pretka."
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL krajnje tačke API koja prikazuje dokumente liste unutar ovog kabineta."
 
 #: serializers.py:69 serializers.py:180
 msgid "Comma separated list of document primary keys to add to this cabinet."
 msgstr ""
-"Spisak primarnih ključeva dokumenata koji su odvojeni zarezom za dodavanje u"
-" ovaj kabinet."
+"Spisak primarnih ključeva dokumenata koji su odvojeni zarezom za dodavanje u "
+"ovaj kabinet."
 
 #: serializers.py:159
 msgid ""
@@ -216,6 +229,15 @@ msgstr "Dodajte zahtevu u kabinu na %(count)d dokumentima"
 msgid "Add"
 msgstr "Dodati"
 
+#: views.py:242
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Dodajte dokumente u ormare"
+msgstr[1] "Dodajte dokumente u ormare"
+msgstr[2] "Dodajte dokumente u ormare"
+
 #: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -249,6 +271,21 @@ msgstr "Uklonite sa zahteva u kabini izvršenom na %(count)d dokumenata"
 msgid "Remove"
 msgstr "Ukloniti"
 
+#: views.py:331
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Ukloni dokumente is kabineta"
+msgstr[1] "Ukloni dokumente is kabineta"
+msgstr[2] "Ukloni dokumente is kabineta"
+
+#: views.py:344
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Ukloni dokumente is kabineta"
+
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Ormari iz kojih će izabrani dokumenti biti uklonjeni."
@@ -262,3 +299,15 @@ msgstr "Dokument:%(document)s ne nalazi se u kabinetu:%(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument:%(document)s je izbrisan sa kabineta:%(cabinet)s."
+
+#: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Izbriši kabinete"
+
+#: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "Ormari na koje će se dodati odabrani dokumenti."

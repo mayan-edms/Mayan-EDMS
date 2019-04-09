@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2018-11-23 09:58+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:12 settings.py:9
@@ -27,7 +28,8 @@ msgstr "Erscheinungsbild"
 
 #: settings.py:13
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "Maximale Anzahl der Zeichen, die als Titel einer Ansicht angezeigt werden."
+msgstr ""
+"Maximale Anzahl der Zeichen, die als Titel einer Ansicht angezeigt werden."
 
 #: templates/403.html:5 templates/403.html:9
 msgid "Insufficient permissions"
@@ -51,9 +53,11 @@ msgstr "Serverfehler"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren "
+"gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -65,7 +69,10 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr "\n                    %(setting_project_title)s basiert auf %(project_title)s\n                "
+msgstr ""
+"\n"
+"                    %(setting_project_title)s basiert auf %(project_title)s\n"
+"                "
 
 #: templates/appearance/about.html:82
 msgid "Version"
@@ -84,58 +91,119 @@ msgstr "Veröffentlicht unter der Lizenz:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr "\n%(project_title)s ist eine Freie Open-Source Software, die Ihnen mit <i class=\"fa fa-heart text-danger\"></i> durch Roberto Rosario und andere Mitwirkende zur Verfügung gestellt wird..\n            "
+msgstr ""
+"\n"
+"%(project_title)s ist eine Freie Open-Source Software, die Ihnen mit <i "
+"class=\"fa fa-heart text-danger\"></i> durch Roberto Rosario und andere "
+"Mitwirkende zur Verfügung gestellt wird..\n"
+"            "
 
 #: templates/appearance/about.html:109
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is. We need all the help we can get!\n"
 "            "
-msgstr "\nEs bedeutet einen großen Aufwand, %(project_title)s so funktionsreich zu machen, wie es ist. Wir brauchen alle Hilfe, die wir bekommen können!"
+msgstr ""
+"\n"
+"Es bedeutet einen großen Aufwand, %(project_title)s so funktionsreich zu "
+"machen, wie es ist. Wir brauchen alle Hilfe, die wir bekommen können!"
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
-msgstr "\nWenn Sie %(project_title)s verwenden, erwägen Sie bitte <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\"> eine Spende %(icon_social_paypal)s </a>"
+msgstr ""
+"\n"
+"Wenn Sie %(project_title)s verwenden, erwägen Sie bitte <a class=\"new_window"
+"\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\"> eine Spende %(icon_social_paypal)s "
+"</a>"
 
 #: templates/appearance/about.html:121
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nEine umfassende Liste der Neuerungen ist einsehbar in den <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release Notes %(icon_documentation)s oder als Kurzversion<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">im Changelog %(icon_documentation)s</a>."
+msgstr ""
+"\n"
+"Eine umfassende Liste der Neuerungen ist einsehbar in den <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release Notes %(icon_documentation)s oder als Kurzversion<a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">im Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:127
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or "
+"the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki "
+"%(icon_wiki)s</a>.\n"
 "            "
-msgstr "\nBei Fragen schauen Sie zunächst in die <a class=\"new_window\" href=\"https://docs.mayan-edms.com\"> Dokumentation %(icon_documentation)s</a> oder die <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\"> Wiki %(icon_wiki)s</a>."
+msgstr ""
+"\n"
+"Bei Fragen schauen Sie zunächst in die <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\"> Dokumentation %(icon_documentation)s</a> "
+"oder die <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\"> Wiki "
+"%(icon_wiki)s</a>."
 
 #: templates/appearance/about.html:133
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
-msgstr "\nSollten Sie einen Bug gefunden oder eine Idee für eine neue Funktion haben, dann besuchen Sie entweder das<a class=\"new_window\" href=\"https://forum.mayan-edms.com\"> Forum %(icon_forum)s</a> oder erstellen Sie ein Ticket in der <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\"> Quellenverwaltung %(icon_source_code)s</a>. "
+msgstr ""
+"\n"
+"Sollten Sie einen Bug gefunden oder eine Idee für eine neue Funktion haben, "
+"dann besuchen Sie entweder das<a class=\"new_window\" href=\"https://forum."
+"mayan-edms.com\"> Forum %(icon_forum)s</a> oder erstellen Sie ein Ticket in "
+"der <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms"
+"\"> Quellenverwaltung %(icon_source_code)s</a>. "
 
 #: templates/appearance/about.html:138
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
-"                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
+"                Follow us on <a class=\"new_window\" href=\"https://twitter."
+"com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" "
+"href=\"https://www.facebook.com/MayanEDMS/\">Facebook "
+"%(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www."
+"instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
-msgstr "\nMachen Sie dieses Projekt bekannt. Berichten Sie Ihren Freunden und Kollegen, wie angenehm die Arbeit mit %(project_title)s ist!\n Folgen Sie uns auf <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, oder <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n            "
+msgstr ""
+"\n"
+"Machen Sie dieses Projekt bekannt. Berichten Sie Ihren Freunden und "
+"Kollegen, wie angenehm die Arbeit mit %(project_title)s ist!\n"
+" Folgen Sie uns auf <a class=\"new_window\" href=\"https://twitter.com/"
+"mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" "
+"href=\"https://www.facebook.com/MayanEDMS/\">Facebook "
+"%(icon_social_facebook)s</a>, oder <a class=\"new_window\" href=\"https://"
+"www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
+"            "
 
 #: templates/appearance/base.html:32
 msgid "Warning"
@@ -215,7 +283,9 @@ msgstr "Abbrechen"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
+msgstr ""
+"Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_items_subtemplate.html:14
 #: templates/appearance/generic_list_items_subtemplate.html:17
@@ -290,7 +360,9 @@ msgstr "Erstanmeldung"
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr "Glückwunsch, Sie haben <strong>%(project_title)s</strong> nun erfolgreich installiert!"
+msgstr ""
+"Glückwunsch, Sie haben <strong>%(project_title)s</strong> nun erfolgreich "
+"installiert!"
 
 #: templates/authentication/login.html:27
 msgid "Login using the following credentials:"
@@ -315,7 +387,9 @@ msgstr "Passwort: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese Nachricht zu deaktivieren."
+msgstr ""
+"Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese "
+"Nachricht zu deaktivieren."
 
 #: templates/authentication/login.html:47
 #: templates/authentication/login.html:55
@@ -337,7 +411,8 @@ msgstr "Passwort zurücksetzen"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Passwortrücksetzung erfolgreich! Klicken Sie auf den Link um sich anzumelden."
+msgstr ""
+"Passwortrücksetzung erfolgreich! Klicken Sie auf den Link um sich anzumelden."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-09 00:26-0400\n"
 "PO-Revision-Date: 2019-03-15 21:25+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:31
 msgid "Django GPG"
@@ -141,7 +143,9 @@ msgstr "Eroare semnătură."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru verificare."
+msgstr ""
+"Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru "
+"verificare."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -205,7 +209,9 @@ msgstr "Semnături"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Cale director utilizată pentru a stoca cheile, precum și fișiere de configurare."
+msgstr ""
+"Cale director utilizată pentru a stoca cheile, precum și fișiere de "
+"configurare."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
@@ -256,7 +262,9 @@ msgstr "Interogare keyserver"
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile pentru a căuta cheile publice de importat de pe serverul de chei."
+msgstr ""
+"Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile "
+"pentru a căuta cheile publice de importat de pe serverul de chei."
 
 #: views.py:131
 msgid "No results returned"
@@ -272,10 +280,13 @@ msgstr "Încărcați o cheie nouă"
 
 #: views.py:168
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile publice pot fi încărcate de utilizator sau descărcate de la serverele de chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
+msgstr ""
+"Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile "
+"publice pot fi încărcate de utilizator sau descărcate de la serverele de "
+"chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
 #: views.py:174
 msgid "There no public keys"
@@ -283,9 +294,12 @@ msgstr "Nu există chei publice"
 
 #: views.py:192
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user.The view to upload private and public keys is the same."
-msgstr "Cheile private sunt folosite pentru semnarea documentelor. Cheile private pot fi încărcate numai de utilizator. Vizualizarea pentru a încărca cheile private și publice este aceeași."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user.The view to upload private and public keys is the same."
+msgstr ""
+"Cheile private sunt folosite pentru semnarea documentelor. Cheile private "
+"pot fi încărcate numai de utilizator. Vizualizarea pentru a încărca cheile "
+"private și publice este aceeași."
 
 #: views.py:197
 msgid "There no private keys"

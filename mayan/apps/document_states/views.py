@@ -748,10 +748,12 @@ class WorkflowStateDocumentListView(DocumentListView):
                     'There are documents in this workflow state'
                 ),
                 'title': _(
-                    'Documents in the workflow "%s", state "%s"'
-                ) % (
-                    workflow_state.workflow, workflow_state
-                ),
+                    'Documents in the workflow "%(workflow)s", '
+                    'state "%(workflow_state)s"'
+                ) % {
+                    'workflow': workflow_state.workflow,
+                    'workflow_state': workflow_state
+                },
                 'workflow': WorkflowRuntimeProxy.objects.get(
                     pk=workflow_state.workflow.pk
                 ),

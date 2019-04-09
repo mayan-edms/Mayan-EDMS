@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2015,2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
 "PO-Revision-Date: 2018-09-12 07:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:27 links.py:41 links.py:44 links.py:49 permissions.py:7 views.py:46
+#: apps.py:27 links.py:46 links.py:49 links.py:54 permissions.py:7 views.py:46
 msgid "Events"
 msgstr "رویداد"
 
@@ -71,23 +72,23 @@ msgstr "نه"
 msgid "Subscribed"
 msgstr ""
 
-#: links.py:54 models.py:59 views.py:88
+#: links.py:59 models.py:59 views.py:88
 msgid "Event subscriptions"
 msgstr ""
 
-#: links.py:58
+#: links.py:63
 msgid "Mark as seen"
 msgstr ""
 
-#: links.py:62
+#: links.py:67
 msgid "Mark all as seen"
 msgstr ""
 
-#: links.py:67
+#: links.py:72
 msgid "Subscriptions"
 msgstr ""
 
-#: links.py:71
+#: links.py:76
 msgid "User events"
 msgstr ""
 

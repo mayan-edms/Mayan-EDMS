@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-09 00:26-0400\n"
 "PO-Revision-Date: 2018-12-26 12:46+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:31
@@ -207,7 +208,9 @@ msgstr "Assinaturas"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Diretório inicial usado para armazenar as chaves, assim como os arquivos de configuração."
+msgstr ""
+"Diretório inicial usado para armazenar as chaves, assim como os arquivos de "
+"configuração."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
@@ -258,7 +261,9 @@ msgstr "Consultar servidor de chaves"
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Use nomes, sobrenomes, ID's de chaves ou e-mails para procurar chaves públicas a serem importadas do servidor de chaves."
+msgstr ""
+"Use nomes, sobrenomes, ID's de chaves ou e-mails para procurar chaves "
+"públicas a serem importadas do servidor de chaves."
 
 #: views.py:131
 msgid "No results returned"
@@ -274,10 +279,13 @@ msgstr "Carregar nova chave"
 
 #: views.py:168
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Chaves públicas são usadas para verificar documentos assinados digitalmente. Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores de chaves. A vista para carregamento de chaves públicas e privadas é a mesma."
+msgstr ""
+"Chaves públicas são usadas para verificar documentos assinados digitalmente. "
+"Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores "
+"de chaves. A vista para carregamento de chaves públicas e privadas é a mesma."
 
 #: views.py:174
 msgid "There no public keys"
@@ -285,9 +293,12 @@ msgstr "Não há chaves públicas"
 
 #: views.py:192
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user.The view to upload private and public keys is the same."
-msgstr "Chaves privadas são usadas para assinar documentos digitalmente. Chaves públicas podem ser carregadas apenas pelo usuário. A vista para carregamento de chaves públicas e privadas é a mesma."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user.The view to upload private and public keys is the same."
+msgstr ""
+"Chaves privadas são usadas para assinar documentos digitalmente. Chaves "
+"públicas podem ser carregadas apenas pelo usuário. A vista para carregamento "
+"de chaves públicas e privadas é a mesma."
 
 #: views.py:197
 msgid "There no private keys"

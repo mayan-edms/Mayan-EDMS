@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # mizhgan <i@mizhgan.ru>, 2018
 # lilo.panic, 2016
@@ -9,15 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-09 00:30-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
 msgid "Sources"
@@ -32,7 +35,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Источники документов - это способы получения Mayan EDMS новых документов. Как минимум, чтобы можно было загружать документы из браузера, создайте веб-форму."
+msgstr ""
+"Источники документов - это способы получения Mayan EDMS новых документов. "
+"Как минимум, чтобы можно было загружать документы из браузера, создайте веб-"
+"форму."
 
 #: apps.py:67
 msgid "Created"
@@ -42,11 +48,11 @@ msgstr "Создано"
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
-#: apps.py:82 models.py:789
+#: apps.py:82 models.py:794
 msgid "Date time"
 msgstr "Дата и время"
 
-#: apps.py:87 models.py:792
+#: apps.py:87 models.py:797
 msgid "Message"
 msgstr "Сообщение"
 
@@ -178,7 +184,7 @@ msgstr "Веб-форма"
 msgid "Staging folder"
 msgstr "Промежуточная папка"
 
-#: literals.py:64 models.py:765
+#: literals.py:64 models.py:770
 msgid "Watch folder"
 msgstr "Наблюдаемая папка"
 
@@ -186,7 +192,7 @@ msgstr "Наблюдаемая папка"
 msgid "POP3 email"
 msgstr "почтовый ящик POP3"
 
-#: literals.py:66 models.py:662 models.py:663
+#: literals.py:66 models.py:667 models.py:668
 msgid "IMAP email"
 msgstr "почтовый ящик IMAP"
 
@@ -198,7 +204,7 @@ msgstr "Надпись"
 msgid "Enabled"
 msgstr "Доступно"
 
-#: models.py:63 models.py:786
+#: models.py:63 models.py:791
 msgid "Source"
 msgstr "Источник"
 
@@ -272,11 +278,11 @@ msgstr ""
 msgid "Error while scanning; %s"
 msgstr ""
 
-#: models.py:301 models.py:758
+#: models.py:301 models.py:763
 msgid "Server side filesystem path."
 msgstr "Путь на сервере"
 
-#: models.py:302 models.py:759
+#: models.py:302 models.py:764
 msgid "Folder path"
 msgstr "Путь к папке"
 
@@ -344,7 +350,8 @@ msgstr "Интервал"
 
 #: models.py:420
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Назначить тип документов для документов, загружаемых из этого источника."
+msgstr ""
+"Назначить тип документов для документов, загружаемых из этого источника."
 
 #: models.py:422
 msgid "Document type"
@@ -374,7 +381,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP с SSL"
+msgstr ""
+"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP "
+"с SSL"
 
 #: models.py:496
 msgid "Port"
@@ -403,7 +412,9 @@ msgstr "Название файла-вложения с метаданными"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Выберите тип метаданных, подходящий для выбранного типа документа, в котором сохранять тему письма."
+msgstr ""
+"Выберите тип метаданных, подходящий для выбранного типа документа, в котором "
+"сохранять тему письма."
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -413,7 +424,9 @@ msgstr "Тип метаданных для темы письма"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Выберите тип метаданных, подходящий для выбранного типа документа, в котором сохранять корреспондента письма."
+msgstr ""
+"Выберите тип метаданных, подходящий для выбранного типа документа, в котором "
+"сохранять корреспондента письма."
 
 #: models.py:521
 msgid "From metadata type"
@@ -449,31 +462,31 @@ msgid ""
 "type: %(document_type)s"
 msgstr ""
 
-#: models.py:655
+#: models.py:660
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP ящик в котором проверять сообщения."
 
-#: models.py:656
+#: models.py:661
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:701
+#: models.py:706
 msgid "Timeout"
 msgstr "Таймаут"
 
-#: models.py:707 models.py:708
+#: models.py:712 models.py:713
 msgid "POP email"
 msgstr "POP email"
 
-#: models.py:766
+#: models.py:771
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:798
+#: models.py:803
 msgid "Log entry"
 msgstr "Запись журнала"
 
-#: models.py:799
+#: models.py:804
 msgid "Log entries"
 msgstr "Записи журнала"
 
@@ -561,9 +574,11 @@ msgstr "Записи журнала для источника: %s"
 
 #: views.py:127 wizards.py:145
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Интерактивные источники документов не были определены или включены, создайте один для продолжения."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Интерактивные источники документов не были определены или включены, создайте "
+"один для продолжения."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"

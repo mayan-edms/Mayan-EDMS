@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
 "PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34
@@ -145,8 +146,8 @@ msgstr "est une expression régulière (insensible à la casse)"
 #: models.py:24 models.py:128
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
 msgstr ""
 
 #: models.py:39 models.py:114
@@ -160,7 +161,8 @@ msgstr "Erreur de génération du libellé dynamique ; %s"
 
 #: models.py:64
 msgid "This smart link is not allowed for the selected document's type."
-msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr ""
+"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:118
 msgid "The inclusion is ignored for the first item."
@@ -218,7 +220,9 @@ msgstr "Modifier les liens intelligents"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de type de document "
+"auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:139
 #, python-format
@@ -237,8 +241,11 @@ msgstr "Lien inetlligent du document : %s"
 
 #: views.py:82
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
+"\"%(document)s\""
 
 #: views.py:101
 msgid "Available document types"
