@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:56-0400\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
 "PO-Revision-Date: 2018-11-05 13:47+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>\n"
-"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-edms/language/da_DK/)\n"
+"Language-Team: Danish (Denmark) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/da_DK/)\n"
+"Language: da_DK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da_DK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
@@ -373,7 +374,9 @@ msgstr ""
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Typiske muligheder er 110 for POP3, 995 for POP3 via SSL, 143 for IMAP, 993 for IMAP via SSL."
+msgstr ""
+"Typiske muligheder er 110 for POP3, 995 for POP3 via SSL, 143 for IMAP, 993 "
+"for IMAP via SSL."
 
 #: models.py:496
 msgid "Port"
@@ -560,8 +563,8 @@ msgstr ""
 
 #: views.py:127 wizards.py:145
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:153 views.py:171 views.py:181

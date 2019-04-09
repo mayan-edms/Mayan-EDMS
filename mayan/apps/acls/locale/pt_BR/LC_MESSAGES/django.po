@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:52-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2018-12-21 01:11+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 links.py:37
@@ -56,7 +57,8 @@ msgstr "Entradas de acesso"
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr "Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
+msgstr ""
+"Permissões \"%(permissions)s\"  do papel \"%(role)s\" para \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -77,17 +79,23 @@ msgstr "Visualizar Controle de Acesso \"ACLs\""
 #: serializers.py:24 serializers.py:132
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr "API URL apontando para a lista de permissões para esta lista de controle de acesso."
+msgstr ""
+"API URL apontando para a lista de permissões para esta lista de controle de "
+"acesso."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "API URL apontando para uma permissão em relação à lista de controle de acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de trabalho canônico."
+msgstr ""
+"API URL apontando para uma permissão em relação à lista de controle de "
+"acesso à qual ela está anexada. Esse URL é diferente do URL de fluxo de "
+"trabalho canônico."
 
 #: serializers.py:87
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Chave primária da nova permissão para aceder à lista de controle de acesso."
+msgstr ""
+"Chave primária da nova permissão para aceder à lista de controle de acesso."
 
 #: serializers.py:111 serializers.py:187
 #, python-format
@@ -98,11 +106,14 @@ msgstr "Sem permissão: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Lista de chaves primárias de permissão separadas por vírgulas para conceder a esta lista de controle de acesso."
+msgstr ""
+"Lista de chaves primárias de permissão separadas por vírgulas para conceder "
+"a esta lista de controle de acesso."
 
 #: serializers.py:138
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr "As chaves primárias da função a que esta lista de controle de acesso se liga."
+msgstr ""
+"As chaves primárias da função a que esta lista de controle de acesso se liga."
 
 #: views.py:77
 #, python-format
@@ -122,7 +133,9 @@ msgstr "Não há Controle de Acesso \"ACLs\" para este objeto"
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
-msgstr "ACL significa Lista de Controle de Acesso - \"Acess Control List\" -  e é um método preciso para controlar o acesso do usuário a objetos do sistema."
+msgstr ""
+"ACL significa Lista de Controle de Acesso - \"Acess Control List\" -  e é um "
+"método preciso para controlar o acesso do usuário a objetos do sistema."
 
 #: views.py:155
 #, python-format
@@ -159,8 +172,7 @@ msgid "Object ID"
 msgstr "ID do objeto"
 
 #: workflow_actions.py:37
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Identificador numérico do objeto cujo acesso será modificado."
 
 #: workflow_actions.py:42
@@ -174,7 +186,9 @@ msgstr "Papéis cujo acesso será modificado."
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr "Permissões a serem concedidas/revogadas para o papel em relação ao objeto selecionado acima."
+msgstr ""
+"Permissões a serem concedidas/revogadas para o papel em relação ao objeto "
+"selecionado acima."
 
 #: workflow_actions.py:59
 msgid "Grant access"

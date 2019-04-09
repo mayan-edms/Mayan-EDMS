@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:53-0400\n"
+"POT-Creation-Date: 2019-04-09 02:07-0400\n"
 "PO-Revision-Date: 2019-02-07 11:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:12
@@ -81,7 +82,9 @@ msgstr "Transformationen"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Reihenfolge in der die Transformationen ausgeführt werden. Ohne Eintrag wird automatisch eine Reihenfolge zugewiesen."
+msgstr ""
+"Reihenfolge in der die Transformationen ausgeführt werden. Ohne Eintrag wird "
+"automatisch eine Reihenfolge zugewiesen."
 
 #: models.py:43
 msgid "Name"
@@ -91,7 +94,9 @@ msgstr "Name"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Argumemte für die Transformation als YAML dictionary eingeben, z.B: {\"degrees\": 180}"
+msgstr ""
+"Argumemte für die Transformation als YAML dictionary eingeben, z.B: "
+"{\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -172,7 +177,9 @@ msgstr "Einen gültigen YAML Wert eingeben"
 #: views.py:68
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Transformation \"%(transformation)s\" für %(content_object)s wirklich löschen?"
+msgstr ""
+"Transformation \"%(transformation)s\" für %(content_object)s wirklich "
+"löschen?"
 
 #: views.py:120
 #, python-format
@@ -182,13 +189,16 @@ msgstr "Transformation erstellen für %s"
 #: views.py:170
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Transformation \"%(transformation)s\" für %(content_object)s bearbeiten"
+msgstr ""
+"Transformation \"%(transformation)s\" für %(content_object)s bearbeiten"
 
 #: views.py:224
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr "Transformationen erlauben Veränderungen in der visuellen Darstellung eines Dokuments ohne diese im Dokument selbst zu speichern."
+msgstr ""
+"Transformationen erlauben Veränderungen in der visuellen Darstellung eines "
+"Dokuments ohne diese im Dokument selbst zu speichern."
 
 #: views.py:228
 msgid "No transformations"

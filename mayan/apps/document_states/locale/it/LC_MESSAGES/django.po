@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:54-0400\n"
+"POT-Creation-Date: 2019-04-09 02:07-0400\n"
 "PO-Revision-Date: 2019-04-09 04:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 queues.py:8
@@ -223,7 +224,9 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr "Seleziona se questo è lo stato da utilizzare quando il workflow inizia. Solo uno stato può essere quello iniziale."
+msgstr ""
+"Seleziona se questo è lo stato da utilizzare quando il workflow inizia. Solo "
+"uno stato può essere quello iniziale."
 
 #: models.py:159
 msgid "Initial"
@@ -233,7 +236,9 @@ msgstr "Iniziale"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr "Inserisci la percentuale di completamento che questo stato rappresenta in relazione al workflow. Usa i numeri senza segno di percentuale."
+msgstr ""
+"Inserisci la percentuale di completamento che questo stato rappresenta in "
+"relazione al workflow. Usa i numeri senza segno di percentuale."
 
 #: models.py:171 models.py:230
 msgid "Workflow state"
@@ -403,8 +408,8 @@ msgstr ""
 
 #: views.py:71
 msgid ""
-"Assign workflows to the document type of this document to have this document"
-" execute those workflows. "
+"Assign workflows to the document type of this document to have this document "
+"execute those workflows. "
 msgstr ""
 
 #: views.py:75
@@ -481,8 +486,8 @@ msgstr ""
 
 #: views.py:368
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or"
-" leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or "
+"leaves the state in which they reside."
 msgstr ""
 
 #: views.py:372
@@ -527,8 +532,7 @@ msgstr "Crea trasizioni per il workflow: %s"
 
 #: views.py:653
 msgid ""
-"Create a transition and use it to move a workflow from  one state to "
-"another."
+"Create a transition and use it to move a workflow from  one state to another."
 msgstr ""
 
 #: views.py:657
@@ -571,7 +575,8 @@ msgstr ""
 
 #: views.py:751
 #, python-format
-msgid "Documents in the workflow \"%(workflow)s\", state \"%(workflow_state)s\""
+msgid ""
+"Documents in the workflow \"%(workflow)s\", state \"%(workflow_state)s\""
 msgstr ""
 
 #: views.py:801
@@ -651,10 +656,10 @@ msgstr ""
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow "
+"log entry instance as part of their context via the variable \"entry_log\". "
+"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:103
@@ -672,10 +677,10 @@ msgstr ""
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
+"\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:125

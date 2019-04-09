@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:55-0400\n"
+"POT-Creation-Date: 2019-04-09 02:08-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:38
@@ -43,9 +44,11 @@ msgstr "Ενεργοποιημένο;"
 
 #: forms.py:60 forms.py:121
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες "
+"με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
 
 #: forms.py:62 forms.py:123
 msgid "Email address"
@@ -118,7 +121,11 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Το μήνυμα αυτό περιέχει συνημμένο το έγγραφο: {{document}}\\n\n\n--------\nΑυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+msgstr ""
+"Το μήνυμα αυτό περιέχει συνημμένο το έγγραφο: {{document}}\\n\n"
+"\n"
+"--------\n"
+"Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -127,7 +134,11 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Για να δείτε αυτό το έγγραφο πιέστε τον παρακάτω σύνδεσμο: {{ link }}\n\n--------\n Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
+msgstr ""
+"Για να δείτε αυτό το έγγραφο πιέστε τον παρακάτω σύνδεσμο: {{ link }}\n"
+"\n"
+"--------\n"
+" Αυτό το μήνυμα έχει σταλεί από %(project_title)s (%(project_website)s)"
 
 #: mailers.py:14
 msgid "Host"
@@ -153,7 +164,10 @@ msgstr "Χρήση TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Αν θα γίνει χρήση του TLS (ασφαλής σύνδεση) κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Χρησιμοποιείται όταν έχει ζητηθεί ρητά η χρήση σύνδεσης TLS, συνήθως στην θύρα 587."
+msgstr ""
+"Αν θα γίνει χρήση του TLS (ασφαλής σύνδεση) κατά την σύνδεση με τον "
+"διακομιστή αλληλογραφίας SMTP. Χρησιμοποιείται όταν έχει ζητηθεί ρητά η "
+"χρήση σύνδεσης TLS, συνήθως στην θύρα 587."
 
 #: mailers.py:34
 msgid "Use SSL"
@@ -165,9 +179,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Αν θα γίνει χρήση ασφαλούς σύνδεσης TLS κατά την σύνδεση με τον διακομιστή αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν συναντήσετε προβλήματα κατά την σύνδεση,δοκιμάστε να ρυθμίσετε ρητή χρήση του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση SSL\" δεν μπορεύν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο μια."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Αν θα γίνει χρήση ασφαλούς σύνδεσης TLS κατά την σύνδεση με τον διακομιστή "
+"αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης "
+"TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν "
+"συναντήσετε προβλήματα κατά την σύνδεση,δοκιμάστε να ρυθμίσετε ρητή χρήση "
+"του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση SSL"
+"\" δεν μπορεύν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο μια."
 
 #: mailers.py:46
 msgid "Username"
@@ -177,7 +197,9 @@ msgstr "Όνομα χρήστη"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Όνομα χρήστη που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αν μείνει κενό, δεν θα γίνει προσπάθεια ταυτοποίησης."
+msgstr ""
+"Όνομα χρήστη που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αν μείνει κενό, "
+"δεν θα γίνει προσπάθεια ταυτοποίησης."
 
 #: mailers.py:55
 msgid "Password"
@@ -186,9 +208,13 @@ msgstr "Κωδικός πρόσβασης"
 #: mailers.py:58
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση στον διακομιστή SMTP. Αν οποιοδήποτε από τα δύο πεδία είναι κενό, δεν θα πραγματοποιηθεί ταυτοποίηση. "
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η "
+"επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση "
+"στον διακομιστή SMTP. Αν οποιοδήποτε από τα δύο πεδία είναι κενό, δεν θα "
+"πραγματοποιηθεί ταυτοποίηση. "
 
 #: mailers.py:76
 msgid "Django SMTP backend"
@@ -218,7 +244,9 @@ msgstr "Εγγραφές ημερολογίου"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Αν οριστεί σαν προκαθορισμένο, αυτό το προφίλ θα είναι προ-επιλεγμένο στην φόρμα αποστολής εγγράφου. "
+msgstr ""
+"Αν οριστεί σαν προκαθορισμένο, αυτό το προφίλ θα είναι προ-επιλεγμένο στην "
+"φόρμα αποστολής εγγράφου. "
 
 #: models.py:43
 msgid "Default"
@@ -250,7 +278,8 @@ msgstr ""
 
 #: models.py:156
 msgid "Test email from Mayan EDMS"
-msgstr "Δοκιμαστικό μήνυμα από το Σύστημα Διαχείρισης Ηλεκτρονικών  Εγγράφων Mayan"
+msgstr ""
+"Δοκιμαστικό μήνυμα από το Σύστημα Διαχείρισης Ηλεκτρονικών  Εγγράφων Mayan"
 
 #: models.py:174
 msgid "User mailer log entry"
@@ -306,7 +335,9 @@ msgstr "Δεσμός για το έγγραφο: {{document}}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου σε έγγραφο."
+msgstr ""
+"Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου "
+"σε έγγραφο."
 
 #: settings.py:20
 msgid "Template for the document link email form body text. Can include HTML."
@@ -383,8 +414,8 @@ msgstr "%s ημερολόγιο καταγραφής"
 
 #: views.py:229
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
+"Mailing profiles are email configurations. Mailing profiles are used to send "
+"documents via email."
 msgstr ""
 
 #: views.py:233

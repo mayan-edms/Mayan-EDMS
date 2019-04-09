@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:56-0400\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:40 links.py:56 models.py:64 queues.py:8 settings.py:10 views.py:627
 msgid "Sources"
@@ -32,7 +34,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Izvori dokumenata su način na koji se novi dokumenti hraniti za Mayan EDMS, kreirati barem izvor web oblik kako bi mogli da otpremaju dokumente iz pretraživača."
+msgstr ""
+"Izvori dokumenata su način na koji se novi dokumenti hraniti za Mayan EDMS, "
+"kreirati barem izvor web oblik kako bi mogli da otpremaju dokumente iz "
+"pretraživača."
 
 #: apps.py:67
 msgid "Created"
@@ -222,7 +227,9 @@ msgstr "Naziv uređaja"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "Odabire režim skeniranja (npr. Lineart, monohromatski ili boji). Ako ovu opciju ne podržava vaš skener, ostavite je praznim."
+msgstr ""
+"Odabire režim skeniranja (npr. Lineart, monohromatski ili boji). Ako ovu "
+"opciju ne podržava vaš skener, ostavite je praznim."
 
 #: models.py:195
 msgid "Mode"
@@ -233,7 +240,9 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "Podešava rezoluciju skenirane slike u DPI (tačke po inču). Tipična vrednost je 200. Ako vaš skener ne podržava ovu opciju, ostavite je praznim."
+msgstr ""
+"Podešava rezoluciju skenirane slike u DPI (tačke po inču). Tipična vrednost "
+"je 200. Ako vaš skener ne podržava ovu opciju, ostavite je praznim."
 
 #: models.py:202
 msgid "Resolution"
@@ -243,7 +252,9 @@ msgstr "Rezolucija"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Odabir izvora skeniranja (kao što je uvući dokument). Ako ovu opciju ne podržava vaš skener, ostavite je praznim."
+msgstr ""
+"Odabir izvora skeniranja (kao što je uvući dokument). Ako ovu opciju ne "
+"podržava vaš skener, ostavite je praznim."
 
 #: models.py:208
 msgid "Paper source"
@@ -253,7 +264,9 @@ msgstr "Izvor papira"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Izbor režima za uvlačenje dokumenata (simplex / duplex). Ako ovu opciju ne podržava vaš skener, ostavite je praznim."
+msgstr ""
+"Izbor režima za uvlačenje dokumenata (simplex / duplex). Ako ovu opciju ne "
+"podržava vaš skener, ostavite je praznim."
 
 #: models.py:215
 msgid "ADF mode"
@@ -374,7 +387,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Tipični izbori su 110 za POP3, 995 za POP3 preko SSL-a, 143 za IMAP, 993 za IMAP preko SSL-a."
+msgstr ""
+"Tipični izbori su 110 za POP3, 995 za POP3 preko SSL-a, 143 za IMAP, 993 za "
+"IMAP preko SSL-a."
 
 #: models.py:496
 msgid "Port"
@@ -393,7 +408,10 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Ime priloga koji će sadržavati imena metapodataka i par vrijednosti koje će biti dodijeljene ostalim preuzjenim prilozima. Napomena: Ovaj prilog mora biti prvi prilog."
+msgstr ""
+"Ime priloga koji će sadržavati imena metapodataka i par vrijednosti koje će "
+"biti dodijeljene ostalim preuzjenim prilozima. Napomena: Ovaj prilog mora "
+"biti prvi prilog."
 
 #: models.py:507
 msgid "Metadata attachment name"
@@ -403,7 +421,9 @@ msgstr "Ime priloga metapodataka"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Izaberite tip metapodataka koji važi za odabrani tip dokumenta za čuvanje objekta e-pošte."
+msgstr ""
+"Izaberite tip metapodataka koji važi za odabrani tip dokumenta za čuvanje "
+"objekta e-pošte."
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -413,7 +433,9 @@ msgstr "Tip metapodataka predmeta"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Izaberite vrstu metapodataka koja važi za odabrani tip dokumenta u kojem će se vrednost e-pošte \"sa\"."
+msgstr ""
+"Izaberite vrstu metapodataka koja važi za odabrani tip dokumenta u kojem će "
+"se vrednost e-pošte \"sa\"."
 
 #: models.py:521
 msgid "From metadata type"
@@ -440,14 +462,18 @@ msgstr "E-mail izvori"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Tip metapodataka predmeta \"%(metadata_type)s\" ne važi za tip dokumenta: %(document_type)s"
+msgstr ""
+"Tip metapodataka predmeta \"%(metadata_type)s\" ne važi za tip dokumenta: "
+"%(document_type)s"
 
 #: models.py:555
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "\"Od\" metapodataka tipa \"%(metadata_type)s\" ne važi za tip dokumenta: %(document_type)s"
+msgstr ""
+"\"Od\" metapodataka tipa \"%(metadata_type)s\" ne važi za tip dokumenta: "
+"%(document_type)s"
 
 #: models.py:660
 msgid "IMAP Mailbox from which to check for messages."
@@ -527,7 +553,8 @@ msgstr "Upload dokument"
 
 #: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
-msgstr "Putanja do skenirajućeg programa koji se koristi za kontrolu skenera slike."
+msgstr ""
+"Putanja do skenirajućeg programa koji se koristi za kontrolu skenera slike."
 
 #: settings.py:22
 msgid ""
@@ -561,9 +588,11 @@ msgstr "Stavke dnevnika za izvor: %s"
 
 #: views.py:127 wizards.py:145
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nisu definisani nikakvi interaktivni izvori dokumenta ili nijedan nije omogućen, stvoriti jedan prije nastavka."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Nisu definisani nikakvi interaktivni izvori dokumenta ili nijedan nije "
+"omogućen, stvoriti jedan prije nastavka."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
@@ -581,7 +610,9 @@ msgstr "Skeniraj"
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
-msgstr "Greška u izvršenju zadatka za otpremanje dokumenta; %(exception)s, %(exception_class)s"
+msgstr ""
+"Greška u izvršenju zadatka za otpremanje dokumenta; %(exception)s, "
+"%(exception_class)s"
 
 #: views.py:295
 msgid "New document queued for upload and will be available shortly."

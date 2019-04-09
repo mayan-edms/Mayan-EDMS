@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:56-0400\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:46 apps.py:108 apps.py:115 apps.py:136 apps.py:138 events.py:7
@@ -135,13 +136,17 @@ msgstr "Rimuovi  etichetta dal documento"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Lista separata da virgole di chiavi primarie di tipi documento da allegare a questo tag."
+msgstr ""
+"Lista separata da virgole di chiavi primarie di tipi documento da allegare a "
+"questo tag."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "API URL che indica un tag in relazione al documento a cui è associato. Questo URL è diverso dall'originale canonico URL."
+msgstr ""
+"API URL che indica un tag in relazione al documento a cui è associato. "
+"Questo URL è diverso dall'originale canonico URL."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -185,7 +190,9 @@ msgstr "Il documento \"%(document)s\" è stato già etichettato come \"%(tag)s\"
 #: views.py:114
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "L'etichetta \"%(tag)s\" è stata allegata con successo al documento \"%(document)s\""
+msgstr ""
+"L'etichetta \"%(tag)s\" è stata allegata con successo al documento "
+"\"%(document)s\""
 
 #: views.py:123
 msgid "Create tag"
@@ -293,7 +300,8 @@ msgstr ""
 #: views.py:355
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etichetta \"%(tag)s\" rimossa con successo dal documento \"%(document)s\"."
+msgstr ""
+"Etichetta \"%(tag)s\" rimossa con successo dal documento \"%(document)s\"."
 
 #: wizard_steps.py:16
 msgid "Select tags"

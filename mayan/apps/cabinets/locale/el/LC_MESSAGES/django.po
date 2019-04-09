@@ -2,29 +2,37 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2018
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:53-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "Ερμάρια"
+
+#: events.py:10
+msgid "Document added to cabinet"
+msgstr "Ερμάριο εγγράφων"
+
+#: events.py:13
+msgid "Document removed from cabinet"
+msgstr "Αφαίρεση από ερμάρια"
 
 #: links.py:31 links.py:42
 msgid "Remove from cabinets"
@@ -124,8 +132,7 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr ""
 
 #: serializers.py:33
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 
 #: serializers.py:69 serializers.py:180
@@ -209,6 +216,13 @@ msgstr "Προσθήκη σε ερμάριο πραγματοποιήθηκε σ
 msgid "Add"
 msgstr "Προσθήκη"
 
+#: views.py:242
+#, python-format
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Προσθήκη εγγράφων στα ερμάρια"
+msgstr[1] "Προσθήκη εγγράφων στα ερμάρια"
+
 #: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -242,6 +256,18 @@ msgstr "Αφαίρεση από ερμάριο πραγματοποιήθηκε 
 msgid "Remove"
 msgstr "Αφαίρεση"
 
+#: views.py:331
+#, python-format
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Αφαίρεση εγγράφων από ερμάρια"
+msgstr[1] "Αφαίρεση εγγράφων από ερμάρια"
+
+#: views.py:344
+#, python-format
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Αφαίρεση εγγράφων \"%s\" από ερμάρια"
+
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Ερμάρια από τα οποία τα επιλεγμένα έγγραφα θα αφαιρεθούν."
@@ -255,3 +281,11 @@ msgstr "Έγγραφο: %(document)s δεν περιέχεται στο ερμά
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Έγγραφο: %(document)s αφαιρέθηκε από το ερμάριο: %(cabinet)s."
+
+#: wizard_steps.py:17
+msgid "Select cabinets"
+msgstr "Διαγραφή ερμαρίων"
+
+#: wizard_steps.py:31
+msgid "Cabinets to which the document will be added."
+msgstr "Ερμάρια στα οποία τα επιλεγμένα έγγραφα θα προστεθούν."

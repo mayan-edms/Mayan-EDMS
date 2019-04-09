@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:56-0400\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:46 apps.py:108 apps.py:115 apps.py:136 apps.py:138 events.py:7
@@ -131,7 +132,9 @@ msgstr "Αφαίρεση ετικετών από έγγραφα"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κελιδιών εγγράφων στα οποία θα προσαρτηθεί αυτή η ετικέτα."
+msgstr ""
+"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κελιδιών εγγράφων στα οποία θα "
+"προσαρτηθεί αυτή η ετικέτα."
 
 #: serializers.py:86
 msgid ""
@@ -181,7 +184,8 @@ msgstr "Έγγραφο \"%(document)s\" είναι ήδη σημασμένο ω�
 #: views.py:114
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Ετικέτα \"%(tag)s\" επικολήθηκε με επιτυχία στο έγγραφο \"%(document)s\"."
+msgstr ""
+"Ετικέτα \"%(tag)s\" επικολήθηκε με επιτυχία στο έγγραφο \"%(document)s\"."
 
 #: views.py:123
 msgid "Create tag"
@@ -289,7 +293,8 @@ msgstr "Το έγγραφο \"%(document)s\" δεν ήταν σημασμένο 
 #: views.py:355
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Η ετικέτα \"%(tag)s\" αφαιρέθηκε επιτυχώς από το έγγραφο \"%(document)s\"."
+msgstr ""
+"Η ετικέτα \"%(tag)s\" αφαιρέθηκε επιτυχώς από το έγγραφο \"%(document)s\"."
 
 #: wizard_steps.py:16
 msgid "Select tags"
