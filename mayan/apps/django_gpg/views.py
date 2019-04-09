@@ -189,7 +189,7 @@ class PrivateKeyListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Private keys are used to signed documents. '
+                'Private keys are used to sign documents. '
                 'Private keys can only be uploaded by the user.'
                 'The view to upload private and public keys is the same.'
             ),
