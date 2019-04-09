@@ -2,42 +2,30 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2017
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 00:53-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
-"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 apps.py:77 apps.py:85 apps.py:88 events.py:7 forms.py:30
 #: links.py:26 menus.py:15 models.py:38 permissions.py:7 views.py:170
 msgid "Cabinets"
 msgstr "کابینت"
-
-#: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
-msgid "Document added to cabinet"
-msgstr "کابینه سند"
-
-#: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
-msgid "Document removed from cabinet"
-msgstr "حذف از کابینت"
 
 #: links.py:31 links.py:42
 msgid "Remove from cabinets"
@@ -137,7 +125,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "نام این سطح کابینه به نام اجداد آن اضافه شده است."
 
 #: serializers.py:33
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "URL نقطه پایان API نشان دادن اسناد لیست در داخل این کابینه."
 
 #: serializers.py:69 serializers.py:180
@@ -224,14 +213,6 @@ msgstr "اضافه کردن به درخواست کابینه در اسناد %(c
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
-msgid "Add %(count)d document to cabinets"
-msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "اسناد را به کابینت اضافه کنید"
-msgstr[1] "اسناد را به کابینت اضافه کنید"
-
 #: views.py:255
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -265,20 +246,6 @@ msgstr "از درخواست کابینت بر روی اسناد %(count)d انج
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove %(count)d document from cabinets"
-msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "اسناد را از کابینت حذف کنید"
-msgstr[1] "اسناد را از کابینت حذف کنید"
-
-#: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
-msgid "Remove document \"%s\" from cabinets"
-msgstr "اسناد را از کابینت حذف کنید"
-
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "کابینت هایی که اسناد انتخاب شده حذف خواهند شد."
@@ -292,15 +259,3 @@ msgstr "سند: %(document)s در کابینه نیست: %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
-
-#: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
-msgid "Select cabinets"
-msgstr "حذف کابینت"
-
-#: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
-msgid "Cabinets to which the document will be added."
-msgstr "کابینت هایی که اسناد انتخاب شده اضافه خواهند شد."

@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:27-0400\n"
+"POT-Creation-Date: 2019-04-09 00:54-0400\n"
 "PO-Revision-Date: 2019-03-31 21:42+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:46 links.py:49 links.py:54 permissions.py:7 views.py:46
@@ -154,9 +153,7 @@ msgstr "Ereignissubskriptionen erfolgreich aktualisiert"
 
 #: views.py:124
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
-"Subskription für globale oder Objektereignisse um Benachrichtigungen zu "
-"erhalten."
+msgstr "Subskription für globale oder Objektereignisse um Benachrichtigungen zu erhalten."
 
 #: views.py:127
 msgid "There are no notifications"
@@ -166,9 +163,7 @@ msgstr "Keine Benachrichtigungen vorhanden"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
-"Ereignisse sind Aktionen, die an diesem Objekt vorgenommen wurden oder durch "
-"die Benutzung des Objekts hervorgerufen werden."
+msgstr "Ereignisse sind Aktionen, die an diesem Objekt vorgenommen wurden oder durch die Benutzung des Objekts hervorgerufen werden."
 
 #: views.py:188
 msgid "There are no events for this object"
@@ -197,9 +192,7 @@ msgstr "Ereignissubskriptionen für %s"
 msgid ""
 "Events are actions that have been performed to this user account or by this "
 "user account."
-msgstr ""
-"Ereignisse sind Aktionen, die an diesem oder durch dieses Benutzerkonto "
-"vorgenommen wurden."
+msgstr "Ereignisse sind Aktionen, die an diesem oder durch dieses Benutzerkonto vorgenommen wurden."
 
 #: views.py:287
 msgid "There are no events for this user"

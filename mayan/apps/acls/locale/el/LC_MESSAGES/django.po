@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 00:52-0400\n"
 "PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 links.py:37
@@ -54,8 +53,7 @@ msgstr ""
 #: models.py:60
 #, python-format
 msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-"Δικαιώματα \"%(permissions)s\" στον ρόλο \"%(role)s\" για \"%(object)s\""
+msgstr "Δικαιώματα \"%(permissions)s\" στον ρόλο \"%(role)s\" για \"%(object)s\""
 
 #: models.py:77
 msgid "None"
@@ -143,8 +141,7 @@ msgstr "Δικαιώματα του Ρόλου \"%(role)s\" για  \"%(object)s
 
 #: views.py:250
 msgid "Disabled permissions are inherited from a parent object."
-msgstr ""
-"Απενεργοποιημένα δικαιώματα κληρονομούνται από το \"γοννικό\" αντικείμενο"
+msgstr "Απενεργοποιημένα δικαιώματα κληρονομούνται από το \"γοννικό\" αντικείμενο"
 
 #: workflow_actions.py:25
 msgid "Object type"
@@ -159,10 +156,9 @@ msgid "Object ID"
 msgstr "Αναγνωριστικό αντικειμένου"
 
 #: workflow_actions.py:37
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr ""
-"Αριθμητικό αναγνωριστικό του αντικειμένου για το οποίο η πρόσβαση θα "
-"τροποποιηθεί."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "Αριθμητικό αναγνωριστικό του αντικειμένου για το οποίο η πρόσβαση θα τροποποιηθεί."
 
 #: workflow_actions.py:42
 msgid "Roles"
@@ -175,9 +171,7 @@ msgstr "Ρόλοι των οποιων η πρόσβαση θα τροποποι
 #: workflow_actions.py:51
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
-"Δικαιώματα προς χορήγηση/ανάληση προς/από τον ρόλο για το ανωτέρω επιλεγμένο "
-"αντικείμενο."
+msgstr "Δικαιώματα προς χορήγηση/ανάληση προς/από τον ρόλο για το ανωτέρω επιλεγμένο αντικείμενο."
 
 #: workflow_actions.py:59
 msgid "Grant access"
