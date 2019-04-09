@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Sebastian Fait <seba.fait@gmail.com>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -29,14 +29,10 @@ msgid "Cabinets"
 msgstr "Kabinety"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Kabinet dokumentu"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Odstranit z kabinetů"
 
@@ -223,8 +219,7 @@ msgid "Add"
 msgstr "Přidat"
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Přidat dokument do kabinetu"
@@ -266,8 +261,7 @@ msgid "Remove"
 msgstr "Odstranit"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Odstranit dokument z kabinetů"
@@ -276,10 +270,9 @@ msgstr[2] "Odstranit dokument z kabinetů"
 msgstr[3] "Odstranit dokument z kabinetů"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Odstranit dokument z kabinetů"
+msgstr "Odstranit dokument \"%s\" z kabinetů"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -296,13 +289,9 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr ""
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Odstranit kabinet"
 
 #: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets to which the document will be added."
 msgstr "Kabinety ze kterých budou vybrané dokumenty odstraněny"

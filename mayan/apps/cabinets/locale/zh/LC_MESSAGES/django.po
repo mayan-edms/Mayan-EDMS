@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
@@ -27,14 +27,10 @@ msgid "Cabinets"
 msgstr "文档柜"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "文档柜"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "从文档柜中删除"
 
@@ -224,11 +220,10 @@ msgid "Add"
 msgstr "添加"
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] "将文档添加至文档柜"
+msgstr[0] "将文档%(count)d添加至文档柜"
 
 #: views.py:255
 #, python-format
@@ -264,17 +259,15 @@ msgid "Remove"
 msgstr "移除"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] "将文档从文档柜中删除"
+msgstr[0] "将文档从文%(count)d档柜中删除"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "将文档从文档柜中删除"
+msgstr "将文档从\"%s\"文档柜中删除"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -291,13 +284,9 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "文档：%(document)s从文档柜中删除：%(cabinet)s。"
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "删除文档柜"
 
 #: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "将添加所选文档的文档柜。"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,14 +24,10 @@ msgid "Cabinets"
 msgstr "Cabinets"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Document cabinet"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Remove from cabinets"
 
@@ -225,9 +221,7 @@ msgid "Add"
 msgstr "Add"
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add document to cabinets"
-#| msgid_plural "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Add document to cabinets"
@@ -267,17 +261,14 @@ msgid "Remove"
 msgstr "Remove"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove document from cabinets"
-#| msgid_plural "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Remove document from cabinets"
 msgstr[1] "Remove documents from cabinets"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove document \"%s\" to cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
 msgstr "Remove document \"%s\" to cabinets"
 
@@ -296,13 +287,9 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Document: %(document)s removed from cabinet: %(cabinet)s."
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Delete cabinets"
 
 #: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Cabinets to which the selected documents will be added."

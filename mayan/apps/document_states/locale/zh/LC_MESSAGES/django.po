@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:27-0400\n"
-"PO-Revision-Date: 2019-01-30 02:32+0000\n"
-"Last-Translator: yulin Gong <540538248@qq.com>\n"
+"POT-Creation-Date: 2019-04-09 02:07-0400\n"
+"PO-Revision-Date: 2019-04-09 04:32+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
 "language/zh/)\n"
 "Language: zh\n"
@@ -575,11 +575,10 @@ msgid "There are documents in this workflow state"
 msgstr "此工作流状态中有文档"
 
 #: views.py:751
-#, fuzzy, python-format
-#| msgid "Documents in the workflow \"%s\", state \"%s\""
+#, python-format
 msgid ""
 "Documents in the workflow \"%(workflow)s\", state \"%(workflow_state)s\""
-msgstr "工作流“%s”中的文档，状态“%s”"
+msgstr ""
 
 #: views.py:801
 msgid "This workflow doesn't have any state"

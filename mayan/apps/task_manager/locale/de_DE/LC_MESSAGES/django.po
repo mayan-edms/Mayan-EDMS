@@ -5,17 +5,17 @@
 #
 # Translators:
 # Roberto Rosario, 2017
-# Mathias Behrle <mathiasb@m9s.biz>, 2017
 # Felix <felix.com@gmx.com>, 2018
+# Mathias Behrle <mathiasb@m9s.biz>, 2019
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:30-0400\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Felix <felix.com@gmx.com>, 2018\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
 "teams/13584/de_DE/)\n"
 "Language: de_DE\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: apps.py:24 links.py:12 permissions.py:7
 msgid "Task manager"
-msgstr ""
+msgstr "Task-Manager"
 
 #: apps.py:30
 msgid "Label"
@@ -38,11 +38,11 @@ msgstr "Name"
 
 #: apps.py:36
 msgid "Default queue?"
-msgstr ""
+msgstr "Standardwarteschlange"
 
 #: apps.py:42
 msgid "Is transient?"
-msgstr ""
+msgstr "Vorübergehend"
 
 #: apps.py:48
 msgid "Type"
@@ -58,7 +58,7 @@ msgstr "Host"
 
 #: apps.py:58
 msgid "Acknowledged"
-msgstr ""
+msgstr "Bestätigt"
 
 #: apps.py:64
 msgid "Arguments"
@@ -66,52 +66,52 @@ msgstr "Argumente"
 
 #: apps.py:68
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Schlüsselwortargumente"
 
 #: apps.py:72
 msgid "Worker process ID"
-msgstr ""
+msgstr "Worker Prozess-ID"
 
 #: links.py:16 views.py:15
 msgid "Background task queues"
-msgstr ""
+msgstr "Hintergrund-Warteschlangen"
 
 #: links.py:20
 msgid "Active tasks"
-msgstr ""
+msgstr "Aktive Tasks"
 
 #: links.py:24
 msgid "Reserved tasks"
-msgstr ""
+msgstr "Reservierte Tasks"
 
 #: links.py:28
 msgid "Scheduled tasks"
-msgstr ""
+msgstr "Geplante Tasks"
 
 #: permissions.py:10
 msgid "View tasks"
-msgstr ""
+msgstr "Tasks ansehen"
 
 #: tests/literals.py:5
 msgid "Test queue"
-msgstr ""
+msgstr "Warteschlange testen"
 
 #: views.py:30
 #, python-format
 msgid "Active tasks in queue: %s"
-msgstr ""
+msgstr "Aktive Tasks in Warteschlange %s"
 
 #: views.py:42
 #, python-format
 msgid "Unable to retrieve task list; %s"
-msgstr ""
+msgstr "Taskliste kann nicht erstellte werden; %s"
 
 #: views.py:55
 #, python-format
 msgid "Scheduled tasks in queue: %s"
-msgstr ""
+msgstr "Geplante Tasks in Warteschlange %s"
 
 #: views.py:67
 #, python-format
 msgid "Reserved tasks in queue: %s"
-msgstr ""
+msgstr "Resrvierte Tasks in Warteschlange %s"

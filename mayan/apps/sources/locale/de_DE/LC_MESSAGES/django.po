@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:30-0400\n"
-"PO-Revision-Date: 2018-11-16 18:17+0000\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
+"PO-Revision-Date: 2019-04-03 22:30+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
@@ -73,7 +73,7 @@ msgstr "Ein komprimiertes Archiv hochladen, das einzelne Dokumente enthält"
 
 #: forms.py:68 views.py:483
 msgid "Staging file"
-msgstr "Arbeitsdatei"
+msgstr "Bereitgestellte Datei"
 
 #: forms.py:72 forms.py:77
 msgid "File"
@@ -97,7 +97,7 @@ msgstr "Neue POP3 Quelle hinzufügen"
 
 #: links.py:72
 msgid "Add new staging folder"
-msgstr "Neuen Staging-Ordner hinzufügen"
+msgstr "Neuen Bereitstellungs-Ordner hinzufügen"
 
 #: links.py:77
 msgid "Add new watch folder"
@@ -109,7 +109,7 @@ msgstr "Neue Quelle für Webformular hinzufügen"
 
 #: links.py:87
 msgid "Add new SANE scanner"
-msgstr ""
+msgstr "Neuen SANE Scanner hinzufügen"
 
 #: links.py:92 links.py:106
 msgid "Delete"
@@ -137,27 +137,27 @@ msgstr "Jetzt prüfen"
 
 #: literals.py:16
 msgid "Flatbed"
-msgstr ""
+msgstr "Flachbett"
 
 #: literals.py:17
 msgid "Document feeder"
-msgstr ""
+msgstr "Dokumenteneinzug"
 
 #: literals.py:24
 msgid "Simplex"
-msgstr ""
+msgstr "Simplex"
 
 #: literals.py:25
 msgid "Duplex"
-msgstr ""
+msgstr "Duplex"
 
 #: literals.py:33
 msgid "Lineart"
-msgstr ""
+msgstr "Lineart"
 
 #: literals.py:34
 msgid "Monochrome"
-msgstr ""
+msgstr "Monochrom"
 
 #: literals.py:35
 msgid "Color"
@@ -177,7 +177,7 @@ msgstr "Benutzer fragen"
 
 #: literals.py:61
 msgid "Scanner"
-msgstr ""
+msgstr "Scanner"
 
 #: literals.py:62 models.py:393
 msgid "Web form"
@@ -185,7 +185,7 @@ msgstr "Webformular"
 
 #: literals.py:63 models.py:329
 msgid "Staging folder"
-msgstr "Staging-Ordner"
+msgstr "Bereitstellungs-Ordner"
 
 #: literals.py:64 models.py:770
 msgid "Watch folder"
@@ -221,21 +221,23 @@ msgstr "Interaktive Quellen"
 
 #: models.py:187
 msgid "Device name as returned by the SANE backend."
-msgstr ""
+msgstr "Gerätename wie vom SANE Backend zurückgegeben."
 
 #: models.py:188
 msgid "Device name"
-msgstr ""
+msgstr "Gerätename"
 
 #: models.py:193
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
 msgstr ""
+"Scanmodus auswählen (z.B. lineart, monochrom, oder farbig). Leer lassen, "
+"wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models.py:195
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #: models.py:199
 msgid ""
@@ -243,47 +245,55 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
+"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
+"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
+"nicht unterstützt wird."
 
 #: models.py:202
 msgid "Resolution"
-msgstr ""
+msgstr "Auflösung"
 
 #: models.py:206
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
 msgstr ""
+"Setzt die Scanquelle (etwa wie Dokuemteneinzug). Leer lassen, wenn diese "
+"Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models.py:208
 msgid "Paper source"
-msgstr ""
+msgstr "Papierquelle"
 
 #: models.py:213
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
 msgstr ""
+"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
+"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
+"nicht unterstützt wird."
 
 #: models.py:215
 msgid "ADF mode"
-msgstr ""
+msgstr "ADF Modus"
 
 #: models.py:221
 msgid "SANE Scanner"
-msgstr ""
+msgstr "SANE Scanner"
 
 #: models.py:222
 msgid "SANE Scanners"
-msgstr ""
+msgstr "SANE Scanner"
 
 #: models.py:269
 #, python-format
 msgid "Error while scanning; %s"
-msgstr ""
+msgstr "Fehler beim Scannen; %s"
 
 #: models.py:301 models.py:763
 msgid "Server side filesystem path."
-msgstr "Pfad auf dem Server"
+msgstr "Dateipfad auf dem Server."
 
 #: models.py:302 models.py:764
 msgid "Folder path"
@@ -291,7 +301,7 @@ msgstr "Ordnerpfad"
 
 #: models.py:305
 msgid "Width value to be passed to the converter backend."
-msgstr "Breite, die an den Konverter übergeben wird"
+msgstr "Breite, die an den Konverter übergeben wird."
 
 #: models.py:306
 msgid "Preview width"
@@ -299,7 +309,7 @@ msgstr "Vorschaubreite"
 
 #: models.py:310
 msgid "Height value to be passed to the converter backend."
-msgstr "Höhe, die an den Konverter übergeben wird"
+msgstr "Höhe, die an den Konverter übergeben wird."
 
 #: models.py:311
 msgid "Preview height"
@@ -307,7 +317,7 @@ msgstr "Vorschauhöhe"
 
 #: models.py:315 models.py:386
 msgid "Whether to expand or not compressed archives."
-msgstr "Sollen komprimierte Archive entpackt werden?"
+msgstr "Ob komprimierte Archive entpackt werden sollen."
 
 #: models.py:316 models.py:387 models.py:427
 msgid "Uncompress"
@@ -323,17 +333,17 @@ msgstr "Nach Hochladen löschen"
 
 #: models.py:330
 msgid "Staging folders"
-msgstr "Staging-Ordner"
+msgstr "Bereitstellungs-Ordner"
 
 #: models.py:342
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr "Fehler beim Löschen von Staging-Datei: %s"
+msgstr "Fehler beim Löschen von bereitgestellter Datei: %s"
 
 #: models.py:358
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
+msgstr "Die Liste der bereitgestellten Dateien kann nicht ermittelt werden: %s"
 
 #: models.py:394
 msgid "Web forms"
@@ -345,7 +355,7 @@ msgstr "Außer Kontrolle"
 
 #: models.py:414
 msgid "Interval in seconds between checks for new documents."
-msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente"
+msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente."
 
 #: models.py:415
 msgid "Interval"
@@ -353,7 +363,7 @@ msgstr "Intervall"
 
 #: models.py:420
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu"
+msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu."
 
 #: models.py:422
 msgid "Document type"
@@ -361,7 +371,7 @@ msgstr "Dokumententyp"
 
 #: models.py:426
 msgid "Whether to expand or not, compressed archives."
-msgstr "Ob komprimierte Archive entpackt werden sollen"
+msgstr "Ob komprimierte Archive entpackt werden sollen."
 
 #: models.py:433
 msgid "Interval source"
@@ -385,7 +395,7 @@ msgid ""
 "for IMAP over SSL."
 msgstr ""
 "Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 "
-"für IMAP über SSL"
+"für IMAP über SSL."
 
 #: models.py:496
 msgid "Port"
@@ -419,7 +429,7 @@ msgid ""
 "store the email's subject."
 msgstr ""
 "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+"den ausgewählten Dokumententyp zulässig ist."
 
 #: models.py:514
 msgid "Subject metadata type"
@@ -431,7 +441,7 @@ msgid ""
 "store the email's \"from\" value."
 msgstr ""
 "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+"den ausgewählten Dokumententyp zulässig ist."
 
 #: models.py:521
 msgid "From metadata type"
@@ -439,7 +449,7 @@ msgstr "Metadatentyp des Absenders"
 
 #: models.py:525
 msgid "Store the body of the email as a text document."
-msgstr "Textkörper der Nachricht als Textdokument speichern"
+msgstr "Textkörper der Nachricht als Textdokument speichern."
 
 #: models.py:526
 msgid "Store email body"
@@ -459,7 +469,7 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp "
+"Metadatentyp \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp "
 "\"%(document_type)s\" nicht zulässig."
 
 #: models.py:555
@@ -473,7 +483,7 @@ msgstr ""
 
 #: models.py:660
 msgid "IMAP Mailbox from which to check for messages."
-msgstr "IMAP-Mailbox, die auf Nachrichten überprüft werden soll. "
+msgstr "IMAP-Mailbox, die auf Nachrichten überprüft werden soll."
 
 #: models.py:661
 msgid "Mailbox"
@@ -521,45 +531,51 @@ msgstr "Existierende Dokumentenquellen anzeigen"
 
 #: permissions.py:21
 msgid "Delete staging files"
-msgstr "Staging-Datei löschen"
+msgstr "Bereitgestellte Dateien löschen"
 
 #: queues.py:11
 msgid "Sources periodic"
-msgstr ""
+msgstr "Quellen periodisch"
 
 #: queues.py:14
 msgid "Sources fast"
-msgstr ""
+msgstr "Quellen schnell"
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr ""
+msgstr "Bild für bereitgestellte Datei erzeugen"
 
 #: queues.py:23
 msgid "Check interval source"
-msgstr ""
+msgstr "Überprüfungsintervall für Quellen"
 
 #: queues.py:27
 msgid "Handle upload"
-msgstr ""
+msgstr "Hochladen erledigen"
 
 #: queues.py:31
 msgid "Upload document"
-msgstr ""
+msgstr "Dokument hochladen"
 
 #: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
 msgstr ""
+"Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern "
+"verwendet wird."
 
 #: settings.py:22
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr ""
+"Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte "
+"Dateien."
 
 #: settings.py:31
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND "
+"weitergeleitet werden."
 
 #: tasks.py:46
 #, python-format
@@ -571,10 +587,12 @@ msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
+"Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird "
+"hier gelistet, um bei der Fehlerbehebung zu helfen."
 
 #: views.py:69
 msgid "No log entries available"
-msgstr ""
+msgstr "Keine Protokolleinträge vorhanden"
 
 #: views.py:71
 #, python-format
@@ -595,26 +613,30 @@ msgstr "Dokumenteneigenschaften"
 
 #: views.py:161
 msgid "Files in staging path"
-msgstr "Dateien im Staging Pfad"
+msgstr "Dateien im Bereitstellungs-Pfad"
 
 #: views.py:172
 msgid "Scan"
-msgstr ""
+msgstr "Scannen"
 
 #: views.py:281
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
+"Fehler beim Hochladen von Dokumenten; %(exception)s, %(exception_class)s"
 
 #: views.py:295
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
+"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
+"verfügbar sein."
 
 #: views.py:346
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
+"Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
 
 #: views.py:379
 #, python-format
@@ -624,6 +646,8 @@ msgstr "Vom Dokument \"%s\" können keine neuen Versionen hochgeladen werden."
 #: views.py:431
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
+"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
+"verfügbar sein."
 
 #: views.py:470
 #, python-format
@@ -665,19 +689,23 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
+"Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige "
+"Quellen wie z.B. das Webformular sind interaktiv und erfordern "
+"Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und "
+"laufen ohne Benutzereingriff im Hintergrund."
 
 #: views.py:626
 msgid "No sources available"
-msgstr ""
+msgstr "Keine Quellen verfügbar"
 
 #: wizards.py:96
 msgid "Select document type"
-msgstr ""
+msgstr "Dokumententyp auswählen"
 
 #: wizards.py:164
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
-msgstr ""
+msgstr "Schritt %(step)d von %(total_steps)d: %(step_label)s"
 
 #: wizards.py:169
 msgid "Next step"

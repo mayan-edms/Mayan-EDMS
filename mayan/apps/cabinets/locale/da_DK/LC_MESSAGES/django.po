@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2018\n"
 "Language-Team: Danish (Denmark) (https://www.transifex.com/rosarior/"
@@ -28,14 +28,10 @@ msgid "Cabinets"
 msgstr "Samlesager"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Documents can be added to many cabinets."
 msgid "Document added to cabinet"
 msgstr "Dokumenter kan tilføjes flere samlesager"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Fjern fra samlesag"
 
@@ -222,8 +218,7 @@ msgid "Add"
 msgstr "Tilføj"
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Tilføj dokumenter til samlesag"
@@ -263,18 +258,16 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Fjern dokumenter fra samlesager"
 msgstr[1] "Fjern dokumenter fra samlesager"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Fjern dokumenter fra samlesager"
+msgstr "Fjern dokumenter \"%s\" fra samlesager"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -291,13 +284,9 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokumentet: %(document)s er fjernet fra samlesagen: %(cabinet)s"
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Slet samlesager"
 
 #: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets from which the selected documents will be removed."
 msgid "Cabinets to which the document will be added."
 msgstr "Samlesager hvorfra dokumentet bliver fjernet"

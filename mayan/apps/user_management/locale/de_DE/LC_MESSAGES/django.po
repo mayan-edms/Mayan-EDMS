@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:30-0400\n"
-"PO-Revision-Date: 2018-11-16 18:23+0000\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
+"PO-Revision-Date: 2019-04-03 22:29+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
@@ -36,7 +36,7 @@ msgstr "Alle Gruppen."
 
 #: apps.py:72
 msgid "All the users."
-msgstr "Alle Benutzer"
+msgstr "Alle Benutzer."
 
 #: apps.py:90 links.py:33 links.py:57 links.py:78 views.py:274
 msgid "Users"
@@ -56,7 +56,7 @@ msgstr "Aktiv"
 
 #: apps.py:106
 msgid "Has usable password?"
-msgstr "Verwendbares Passwort"
+msgstr "Passwort verwendbar"
 
 #: links.py:18 views.py:32
 msgid "Create new group"
@@ -84,7 +84,7 @@ msgstr "Passwort festlegen"
 
 #: links.py:70
 msgid "User options"
-msgstr ""
+msgstr "Benutzeroptionen"
 
 #: models.py:13
 msgid "User"
@@ -92,15 +92,15 @@ msgstr "Benutzer"
 
 #: models.py:17
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Diesem Benutzer das Änder des Passworts verbieten."
 
 #: models.py:23
 msgid "User settings"
-msgstr ""
+msgstr "Benutzereinstellungen"
 
 #: models.py:24
 msgid "Users settings"
-msgstr ""
+msgstr "Benutzereinstellungen"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -153,10 +153,14 @@ msgstr "Name"
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
 msgstr ""
+"Kommagetrennte Liste von Gruppen-Primärschlüsseln, denen der Benutzer "
+"zugeordnet werden soll."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
 msgstr ""
+"Liste von Gruppen-Primärschlüsseln, denen der Benutzer zugeordnet werden "
+"soll."
 
 #: views.py:48
 #, python-format
@@ -169,10 +173,14 @@ msgid ""
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr ""
+"Benutzergruppen sind Organisationseinheiten. Sie sollten die "
+"Organisationseinheiten Ihrer Organisation wiederspiegeln. Gruppen können "
+"nicht für die Zugriffskontrolle verwendet werden. Benutzen Sie Rollen für "
+"Berechtigungen und Zugriffskontrollen und fügen Sie ihnen Gruppen hinzu."
 
 #: views.py:70
 msgid "There are no user groups"
-msgstr ""
+msgstr "Keine Benutzergruppen vorhanden"
 
 #: views.py:83
 #, python-format
@@ -185,27 +193,27 @@ msgstr "Verfügbare Nutzer"
 
 #: views.py:90
 msgid "Users in group"
-msgstr ""
+msgstr "Benutzer in Gruppe"
 
 #: views.py:111
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Benutzer von Gruppe %s"
 
 #: views.py:145
 #, python-format
 msgid "User \"%s\" created successfully."
-msgstr "Benutzer \"%s\" erfolgreich angelegt"
+msgstr "Benutzer \"%s\" erfolgreich angelegt."
 
 #: views.py:157
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
+msgstr "%(count)d Benutzer gelöscht"
 
 #: views.py:159
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
+msgstr "%(count)d Benutzer gelöscht"
 
 #: views.py:167
 msgid "Delete user"
@@ -229,7 +237,7 @@ msgstr ""
 #: views.py:197
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr "Benutzer \"%s\" erfolgreich gelöscht"
+msgstr "Benutzer \"%s\" erfolgreich gelöscht."
 
 #: views.py:203
 #, python-format
@@ -259,25 +267,27 @@ msgid ""
 "User accounts can be create from this view. After creating an user account "
 "you will prompted to set a password for it. "
 msgstr ""
+"Benutzerkonten können auf dieser Seite erstellt werden. Nach der Erstellung "
+"werden Sie nach dem Passwort gefragt."
 
 #: views.py:273
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Keine Benutzerkonten vorhanden"
 
 #: views.py:290
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Optionen für Benutzer %s bearbeiten"
 
 #: views.py:312
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
 #: views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
 #: views.py:321
 msgid "Submit"
@@ -286,8 +296,8 @@ msgstr "Absenden"
 #: views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Benutzerpasswort wechseln"
+msgstr[1] "Benutzerpasswörter wechseln"
 
 #: views.py:333
 #, python-format
@@ -305,7 +315,7 @@ msgstr ""
 #: views.py:364
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Passwort für Benutzer %s erfolgreich zurückgesetzt."
 
 #: views.py:370
 #, python-format

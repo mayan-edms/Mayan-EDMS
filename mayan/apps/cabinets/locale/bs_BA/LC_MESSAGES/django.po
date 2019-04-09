@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Atdhe Tabaku <Atdhe617@gmail.com>, 2018\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (https://www.transifex.com/"
@@ -31,14 +31,10 @@ msgid "Cabinets"
 msgstr "Ormarić"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Kabinet za dokumente"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Izbrišite iz ormarića"
 
@@ -230,8 +226,7 @@ msgid "Add"
 msgstr "Dodati"
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Dodajte dokumente u ormare"
@@ -272,8 +267,7 @@ msgid "Remove"
 msgstr "Ukloniti"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Ukloni dokumente is kabineta"
@@ -281,10 +275,9 @@ msgstr[1] "Ukloni dokumente is kabineta"
 msgstr[2] "Ukloni dokumente is kabineta"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Ukloni dokumente is kabineta"
+msgstr "Ukloni dokumente \"%s\" is kabineta"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -301,13 +294,9 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument:%(document)s je izbrisan sa kabineta:%(cabinet)s."
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Izbriši kabinete"
 
 #: wizard_steps.py:31
-#, fuzzy
-#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Ormari na koje će se dodati odabrani dokumenti."

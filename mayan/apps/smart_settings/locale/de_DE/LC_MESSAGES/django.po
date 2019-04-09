@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:29-0400\n"
-"PO-Revision-Date: 2019-02-07 11:49+0000\n"
+"POT-Creation-Date: 2019-04-09 02:09-0400\n"
+"PO-Revision-Date: 2019-04-03 22:30+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:21 permissions.py:7
 msgid "Smart settings"
-msgstr "Einstellungen"
+msgstr "Smart Einstellungen"
 
 #: apps.py:29
 msgid "Setting count"
@@ -39,7 +39,7 @@ msgstr "Wert"
 
 #: apps.py:40
 msgid "Overrided by environment variable?"
-msgstr ""
+msgstr "Durch Umgebungsvariable überschrieben"
 
 #: apps.py:41
 msgid "Yes"
@@ -51,11 +51,11 @@ msgstr "Nein"
 
 #: forms.py:12
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Den neuen Wert eingeben."
 
 #: forms.py:31
 msgid "Value must be properly quoted."
-msgstr ""
+msgstr "Der Wert muss korrekt in Anführungszeichen gesetzt sein."
 
 #: forms.py:40
 #, python-format
@@ -68,7 +68,7 @@ msgstr "Einstellungen"
 
 #: links.py:21
 msgid "Namespaces"
-msgstr ""
+msgstr "Namensräume"
 
 #: links.py:25
 msgid "Edit"
@@ -76,7 +76,7 @@ msgstr "Bearbeiten"
 
 #: permissions.py:10
 msgid "Edit settings"
-msgstr ""
+msgstr "Einstellungen bearbeiten"
 
 #: permissions.py:13
 msgid "View settings"
@@ -84,29 +84,31 @@ msgstr "Einstellungen anzeigen"
 
 #: views.py:18
 msgid "Setting namespaces"
-msgstr "Einstellungsbereiche"
+msgstr "Namensräume einstellen"
 
 #: views.py:34
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr ""
+"Einstellungen die durch Umgebungsvariablen vorgenommen wurden sind vorrangig "
+"und können auf dieser Seite nicht geändert werden."
 
 #: views.py:37
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr "Einstellungen für Bereich %s"
+msgstr "Einstellungen für Namensraum %s"
 
 #: views.py:45
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr "Bereich %s nicht gefunden"
+msgstr "Namensraum %s nicht gefunden"
 
 #: views.py:60
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Einstellung erfolgreich aktualisiert."
 
 #: views.py:68
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Einstellung %s bearbeiten"

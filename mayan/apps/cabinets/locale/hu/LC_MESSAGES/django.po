@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:25-0400\n"
+"POT-Creation-Date: 2019-04-09 02:06-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2017\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
@@ -29,14 +29,10 @@ msgid "Cabinets"
 msgstr "Fiók"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Add to cabinets"
 msgid "Document added to cabinet"
 msgstr "Fiókhoz adás"
 
 #: events.py:13
-#, fuzzy
-#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Fiókból törlés"
 
@@ -223,8 +219,7 @@ msgid "Add"
 msgstr ""
 
 #: views.py:242
-#, fuzzy, python-format
-#| msgid "Add to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Fiókhoz adás"
@@ -264,18 +259,16 @@ msgid "Remove"
 msgstr "Levétel"
 
 #: views.py:331
-#, fuzzy, python-format
-#| msgid "Remove from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Fiókból törlés"
 msgstr[1] "Fiókból törlés"
 
 #: views.py:344
-#, fuzzy, python-format
-#| msgid "Remove from cabinets"
+#, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Fiókból törlés"
+msgstr "Fiókból törlés \"%s\""
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -292,8 +285,6 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr ""
 
 #: wizard_steps.py:17
-#, fuzzy
-#| msgid "Add to cabinets"
 msgid "Select cabinets"
 msgstr "Fiókhoz adás"
 
