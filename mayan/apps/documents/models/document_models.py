@@ -22,7 +22,7 @@ from ..signals import post_document_type_change
 
 from .document_type_models import DocumentType
 
-__all__ = ('Document',)
+__all__ = ('Document', 'UUID_FUNCTION')
 logger = logging.getLogger(__name__)
 
 
