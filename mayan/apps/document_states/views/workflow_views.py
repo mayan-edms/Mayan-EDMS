@@ -17,143 +17,48 @@ from mayan.apps.common.views import (
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.documents.models import Document
-from mayan.apps.documents.views import DocumentListView
 from mayan.apps.events.classes import EventType
 from mayan.apps.events.models import StoredEventType
 
-from .classes import WorkflowAction
-from .forms import (
-    WorkflowActionSelectionForm, WorkflowForm, WorkflowInstanceTransitionForm,
-    WorkflowPreviewForm, WorkflowStateActionDynamicForm, WorkflowStateForm,
-    WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
+from ..classes import WorkflowAction
+from ..forms import (
+    WorkflowActionSelectionForm, WorkflowForm, WorkflowPreviewForm,
+    WorkflowStateActionDynamicForm, WorkflowStateForm, WorkflowTransitionForm,
+    WorkflowTransitionTriggerEventRelationshipFormSet
 )
-from .icons import (
+from ..icons import (
     icon_workflow_list, icon_workflow_state, icon_workflow_state_action,
     icon_workflow_transition
 )
-from .links import (
+from ..links import (
     link_setup_workflow_create, link_setup_workflow_state_create,
     link_setup_workflow_state_action_selection,
     link_setup_workflow_transition_create
 )
-from .models import (
-    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
-    WorkflowTransition, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
+from ..models import (
+    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
 )
-from .permissions import (
+from ..permissions import (
     permission_workflow_create, permission_workflow_delete,
     permission_workflow_edit, permission_workflow_tools,
     permission_workflow_view,
 )
-from .tasks import task_launch_all_workflows
+from ..tasks import task_launch_all_workflows
 
+__all__ = (
+    'WorkflowImageView', 'WorkflowPreviewView',
+    'SetupWorkflowListView', 'SetupWorkflowCreateView', 'SetupWorkflowEditView',
+    'SetupWorkflowDeleteView', 'SetupWorkflowDocumentTypesView',
+    'SetupWorkflowStateActionCreateView', 'SetupWorkflowStateActionDeleteView',
+    'SetupWorkflowStateActionEditView', 'SetupWorkflowStateActionListView',
+    'SetupWorkflowStateActionSelectionView', 'SetupWorkflowStateCreateView',
+    'SetupWorkflowStateDeleteView', 'SetupWorkflowStateEditView',
+    'SetupWorkflowStateListView', 'SetupWorkflowTransitionCreateView',
+    'SetupWorkflowTransitionDeleteView', 'SetupWorkflowTransitionEditView',
+    'SetupWorkflowTransitionListView',
+    'SetupWorkflowTransitionTriggerEventListView', 'ToolLaunchAllWorkflows'
+)
 
-class DocumentWorkflowInstanceListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.get_document()
-        )
-
-        return super(
-            DocumentWorkflowInstanceListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'no_results_icon': icon_workflow_list,
-            'no_results_text': _(
-                'Assign workflows to the document type of this document '
-                'to have this document execute those workflows. '
-            ),
-            'no_results_title': _(
-                'There are no workflow for this document'
-            ),
-            'object': self.get_document(),
-            'title': _(
-                'Workflows for document: %s'
-            ) % self.get_document(),
-        }
-
-    def get_object_list(self):
-        return self.get_document().workflows.all()
-
-
-class WorkflowInstanceDetailView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.get_workflow_instance().document
-        )
-
-        return super(
-            WorkflowInstanceDetailView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'navigation_object_list': ('object', 'workflow_instance'),
-            'object': self.get_workflow_instance().document,
-            'title': _('Detail of workflow: %(workflow)s') % {
-                'workflow': self.get_workflow_instance()
-            },
-            'workflow_instance': self.get_workflow_instance(),
-        }
-
-    def get_object_list(self):
-        return self.get_workflow_instance().log_entries.order_by('-datetime')
-
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
-
-
-class WorkflowInstanceTransitionView(FormView):
-    form_class = WorkflowInstanceTransitionForm
-    template_name = 'appearance/generic_form.html'
-
-    def form_valid(self, form):
-        self.get_workflow_instance().do_transition(
-            comment=form.cleaned_data['comment'],
-            transition=form.cleaned_data['transition'], user=self.request.user
-        )
-        messages.success(
-            self.request, _(
-                'Document "%s" transitioned successfully'
-            ) % self.get_workflow_instance().document
-        )
-        return HttpResponseRedirect(self.get_success_url())
-
-    def get_extra_context(self):
-        return {
-            'navigation_object_list': ('object', 'workflow_instance'),
-            'object': self.get_workflow_instance().document,
-            'submit_label': _('Submit'),
-            'title': _(
-                'Do transition for workflow: %s'
-            ) % self.get_workflow_instance(),
-            'workflow_instance': self.get_workflow_instance(),
-        }
-
-    def get_form_extra_kwargs(self):
-        return {
-            'user': self.request.user,
-            'workflow_instance': self.get_workflow_instance()
-        }
-
-    def get_success_url(self):
-        return self.get_workflow_instance().get_absolute_url()
-
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
-
-
-# Setup
 
 class SetupWorkflowListView(SingleObjectListView):
     model = Workflow
@@ -667,148 +572,6 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
 
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
-
-
-# Other
-
-
-class WorkflowListView(SingleObjectListView):
-    object_permission = permission_workflow_view
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'no_results_icon': icon_workflow_list,
-            'no_results_main_link': link_setup_workflow_create.resolve(
-                context=RequestContext(
-                    self.request, {}
-                )
-            ),
-            'no_results_text': _(
-                'Create some workflows and associated them with a document '
-                'type. Active workflows will be shown here and the documents '
-                'for which they are executing.'
-            ),
-            'no_results_title': _('There are no workflows'),
-            'title': _('Workflows'),
-        }
-
-    def get_object_list(self):
-        return WorkflowRuntimeProxy.objects.all()
-
-
-class WorkflowDocumentListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.workflow = get_object_or_404(
-            WorkflowRuntimeProxy, pk=self.kwargs['pk']
-        )
-
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.workflow
-        )
-
-        return super(
-            WorkflowDocumentListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document_queryset(self):
-        return Document.objects.filter(workflows__workflow=self.workflow)
-
-    def get_extra_context(self):
-        context = super(WorkflowDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_text': _(
-                    'Associate a workflow with some document types and '
-                    'documents of those types will be listed in this view.'
-                ),
-                'no_results_title': _(
-                    'There are no documents executing this workflow'
-                ),
-                'object': self.workflow,
-                'title': _('Documents with the workflow: %s') % self.workflow
-            }
-        )
-        return context
-
-
-class WorkflowStateDocumentListView(DocumentListView):
-    def get_document_queryset(self):
-        return self.get_workflow_state().get_documents()
-
-    def get_extra_context(self):
-        workflow_state = self.get_workflow_state()
-        context = super(WorkflowStateDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'object': workflow_state,
-                'navigation_object_list': ('object', 'workflow'),
-                'no_results_title': _(
-                    'There are documents in this workflow state'
-                ),
-                'title': _(
-                    'Documents in the workflow "%s", state "%s"'
-                ) % (
-                    workflow_state.workflow, workflow_state
-                ),
-                'workflow': WorkflowRuntimeProxy.objects.get(
-                    pk=workflow_state.workflow.pk
-                ),
-            }
-        )
-        return context
-
-    def get_workflow_state(self):
-        workflow_state = get_object_or_404(
-            WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
-        )
-
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=self.request.user,
-            obj=workflow_state.workflow
-        )
-
-        return workflow_state
-
-
-class WorkflowStateListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.get_workflow()
-        )
-
-        return super(
-            WorkflowStateListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        return {
-            'hide_columns': True,
-            'hide_link': True,
-            'no_results_main_link': link_setup_workflow_state_create.resolve(
-                context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
-                )
-            ),
-            'no_results_text': _(
-                'Create states and link them using transitions.'
-            ),
-            'no_results_title': _(
-                'This workflow doesn\'t have any state'
-            ),
-            'object': self.get_workflow(),
-            'title': _('States of workflow: %s') % self.get_workflow()
-        }
-
-    def get_object_list(self):
-        return WorkflowStateRuntimeProxy.objects.filter(
-            workflow=self.get_workflow()
-        )
-
-    def get_workflow(self):
-        return get_object_or_404(WorkflowRuntimeProxy, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowTransitionTriggerEventListView(FormView):

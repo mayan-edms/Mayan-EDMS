@@ -26,6 +26,7 @@ Other changes
 * Split source models into different modules.
 * Fix multiple tag selection wizard step.
 * Split document app models into separate modules.
+* Split workflow views into separate modules.
 
 Removals
 --------
