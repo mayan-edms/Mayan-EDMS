@@ -9,11 +9,12 @@
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:06-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
@@ -30,10 +31,14 @@ msgid "Cabinets"
 msgstr "Aktenschrank"
 
 #: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Dokumenten-Aktenschrank"
 
 #: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Aus Aktenschrank entfernen"
 
@@ -235,7 +240,8 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #: views.py:242
-#, python-format
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Dokumente zu Aktenschrank hinzufügen"
@@ -278,16 +284,18 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: views.py:331
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Dokumente aus Aktenschrank entfernen"
 msgstr[1] "Dokumente aus Aktenschrank entfernen"
 
 #: views.py:344
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Dokumente \"%s\" aus Aktenschrank entfernen"
+msgstr "Dokumente aus Aktenschrank entfernen"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -304,9 +312,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument %(document)s entfernt aus Aktenschrank %(cabinet)s."
 
 #: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Aktenschränke löschen"
 
 #: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."

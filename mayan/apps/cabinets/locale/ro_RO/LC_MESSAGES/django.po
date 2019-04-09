@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:06-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
@@ -32,10 +32,14 @@ msgid "Cabinets"
 msgstr "Fișete"
 
 #: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Fișet de documente"
 
 #: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Scoateți din fișete"
 
@@ -238,7 +242,8 @@ msgid "Add"
 msgstr "Adaugă"
 
 #: views.py:242
-#, python-format
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Adăugați documente la fișete"
@@ -279,7 +284,8 @@ msgid "Remove"
 msgstr "Elimină"
 
 #: views.py:331
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Scoateți documente din fișete"
@@ -287,9 +293,10 @@ msgstr[1] "Scoateți documente din fișete"
 msgstr[2] "Scoateți documente din fișete"
 
 #: views.py:344
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Scoateți documente \"%s\" din fișete"
+msgstr "Scoateți documente din fișete"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -306,9 +313,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documentul: %(document)sa fost scos din fișetul: %(cabinet)s."
 
 #: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Ștergeți fișete"
 
 #: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Fișetele la care vor fi adăugate documentele selectate."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:06-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2017\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -28,10 +28,14 @@ msgid "Cabinets"
 msgstr "کابینت"
 
 #: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "کابینه سند"
 
 #: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "حذف از کابینت"
 
@@ -221,7 +225,8 @@ msgid "Add"
 msgstr "افزودن"
 
 #: views.py:242
-#, python-format
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "اسناد را به کابینت اضافه کنید"
@@ -261,16 +266,18 @@ msgid "Remove"
 msgstr "حذف"
 
 #: views.py:331
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "اسناد را از کابینت حذف کنید"
 msgstr[1] "اسناد را از کابینت حذف کنید"
 
 #: views.py:344
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
-msgstr "اسناد را از کابینت \"%s\" حذف کنید"
+msgstr "اسناد را از کابینت حذف کنید"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -287,9 +294,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
 
 #: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "حذف کابینت"
 
 #: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "کابینت هایی که اسناد انتخاب شده اضافه خواهند شد."

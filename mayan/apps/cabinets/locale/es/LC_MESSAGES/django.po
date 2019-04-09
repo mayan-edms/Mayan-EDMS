@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:06-0400\n"
+"POT-Creation-Date: 2019-04-09 00:25-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -27,10 +27,14 @@ msgid "Cabinets"
 msgstr "Archivadores"
 
 #: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
 msgid "Document added to cabinet"
 msgstr "Archivador de documento"
 
 #: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
 msgid "Document removed from cabinet"
 msgstr "Remover de archivador"
 
@@ -231,7 +235,8 @@ msgid "Add"
 msgstr "Agregar"
 
 #: views.py:242
-#, python-format
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] "Agregar documentos a archivadores"
@@ -272,16 +277,18 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: views.py:331
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
 msgstr[0] "Remover documentos de archivadores"
 msgstr[1] "Remover documentos de archivadores"
 
 #: views.py:344
-#, python-format
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
 msgid "Remove document \"%s\" from cabinets"
-msgstr "Remover documento \"%s\" de archivadores"
+msgstr "Remover documentos de archivadores"
 
 #: views.py:355
 msgid "Cabinets from which the selected documents will be removed."
@@ -298,9 +305,13 @@ msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Documento: %(document)s retirado del gabinete: %(cabinet)s."
 
 #: wizard_steps.py:17
+#, fuzzy
+#| msgid "Delete cabinets"
 msgid "Select cabinets"
 msgstr "Borrar archivadores"
 
 #: wizard_steps.py:31
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
 msgid "Cabinets to which the document will be added."
 msgstr "Archivador a los cuales el documento seleccionado va a ser agregado."

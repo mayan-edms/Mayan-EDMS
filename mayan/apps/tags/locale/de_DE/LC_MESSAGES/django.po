@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:09-0400\n"
-"PO-Revision-Date: 2019-04-03 22:30+0000\n"
+"POT-Creation-Date: 2019-04-09 00:30-0400\n"
+"PO-Revision-Date: 2018-11-16 18:22+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
@@ -33,19 +33,19 @@ msgstr "Dokumente"
 
 #: events.py:10
 msgid "Tag attached to document"
-msgstr "Tag an Dokument angehängt"
+msgstr ""
 
 #: events.py:13
 msgid "Tag created"
-msgstr "Tag erstellt"
+msgstr ""
 
 #: events.py:16
 msgid "Tag edited"
-msgstr "Tag bearbeitet"
+msgstr ""
 
 #: events.py:19
 msgid "Tag removed from document"
-msgstr "Tag von Dokument entfernt"
+msgstr ""
 
 #: links.py:17 workflow_actions.py:71
 msgid "Remove tag"
@@ -77,7 +77,7 @@ msgstr "Alle"
 
 #: models.py:24
 msgid "A short text used as the tag name."
-msgstr "Ein kurzer Text für den Namen des Tags."
+msgstr ""
 
 #: models.py:25 search.py:16
 msgid "Label"
@@ -85,7 +85,7 @@ msgstr "Text"
 
 #: models.py:28
 msgid "The RGB color values for the tag."
-msgstr "Die RGB-Farbenwerte für den Tag."
+msgstr ""
 
 #: models.py:29 search.py:20
 msgid "Color"
@@ -144,22 +144,20 @@ msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr ""
-"API URL, die auf den Tag in Beziehung auf das Dokument verweist. Diese URL "
-"ist unterschiedlich von der kanonischen Tag-URL."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
-msgstr "Primärschlüssel des hinzuzufügenden Tags."
+msgstr "Primärschlüssel des hinzuzufügenden Tags"
 
 #: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr "Tag an %(count)d Dokument angehängt"
+msgstr ""
 
 #: views.py:40
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr "Tag an %(count)d Dokumente angehängt"
+msgstr ""
 
 #: views.py:47
 msgid "Attach"
@@ -169,13 +167,13 @@ msgstr "Hinzufügen"
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] "Tags an %(count)d Dokument anhängen"
-msgstr[1] "Tags an %(count)d Dokumente anhängen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:61
 #, python-format
 msgid "Attach tags to document: %s"
-msgstr "Tags für Dokument %s zuweisen"
+msgstr "Tags für Dokument %s zuweisen:"
 
 #: views.py:70 wizard_steps.py:28
 msgid "Tags to be attached."
@@ -189,7 +187,7 @@ msgstr "Dokument \"%(document)s\" ist schon mit \"%(tag)s\" markiert"
 #: views.py:114
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Tag \"%(tag)s\" erfolgreich an Dokument \"%(document)s\" angehängt."
+msgstr "Tag \"%(tag)s\" erfolgreich an Dokument \"%(document)s\" angehängt"
 
 #: views.py:123
 msgid "Create tag"
@@ -198,16 +196,16 @@ msgstr "Tag erstellen"
 #: views.py:137
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
-msgstr "%(count)d Tag gelöscht"
+msgstr ""
 
 #: views.py:139
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr "%(count)d Tags gelöscht"
+msgstr ""
 
 #: views.py:146
 msgid "Will be removed from all documents."
-msgstr "Wird von allen Dokumenten entfernt."
+msgstr "Wird von allen Dokumenten entfernt"
 
 #: views.py:150
 msgid "Delete the selected tag?"
@@ -223,7 +221,7 @@ msgstr "Tag löschen: %s"
 #: views.py:170
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr "Tag \"%s\" erfolgreich gelöscht."
+msgstr "Tag \"%s\" erfolgreich gelöscht"
 
 #: views.py:174
 #, python-format
@@ -239,11 +237,11 @@ msgstr "Tag %s bearbeiten"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr "Tags sind Farbencodes die an Dokumente angehängt werden können."
+msgstr ""
 
 #: views.py:211
 msgid "No tags available"
-msgstr "Keine Tags verfügbar"
+msgstr ""
 
 #: views.py:235
 #, python-format
@@ -252,7 +250,7 @@ msgstr "Dokumente mit Tag %s"
 
 #: views.py:259
 msgid "Document has no tags attached"
-msgstr "Keine Tags am Dokument angehängt"
+msgstr ""
 
 #: views.py:266
 #, python-format
@@ -262,12 +260,12 @@ msgstr "Tags für Dokument %s"
 #: views.py:279
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr "Tag von %(count)d Dokument entfernt"
+msgstr ""
 
 #: views.py:281
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr "Tag von %(count)d Dokumenten entfernt"
+msgstr ""
 
 #: views.py:289
 msgid "Remove"
@@ -277,8 +275,8 @@ msgstr "Entfernen"
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
-msgstr[0] "Tags von %(count)d Dokument entfernen"
-msgstr[1] "Tags von %(count)d Dokumenten entfernen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:303
 #, python-format
@@ -301,11 +299,11 @@ msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."
 
 #: wizard_steps.py:16
 msgid "Select tags"
-msgstr "Tags auswählen"
+msgstr ""
 
 #: workflow_actions.py:21
 msgid "Tags to attach to the document"
-msgstr "Tags die an das Dokument angehängt werden sollen"
+msgstr ""
 
 #: workflow_actions.py:26
 msgid "Attach tag"
@@ -313,4 +311,4 @@ msgstr "Tag zuweisen"
 
 #: workflow_actions.py:66
 msgid "Tags to remove from the document"
-msgstr "Tags die vom Dokument entfernt werden sollen"
+msgstr ""

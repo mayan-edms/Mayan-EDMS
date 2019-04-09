@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Roberto Rosario, 2015-2019
+# Roberto Rosario, 2015-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 02:07-0400\n"
-"PO-Revision-Date: 2019-04-09 04:48+0000\n"
+"POT-Creation-Date: 2019-04-09 00:27-0400\n"
+"PO-Revision-Date: 2018-11-05 22:17+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
 "language/es/)\n"
@@ -834,9 +834,6 @@ msgid ""
 "of 0 disables the block calculation and the entire file will be loaded into "
 "memory."
 msgstr ""
-"Tamaño de los bloques que se utilizarán al calcular la suma de comprobación "
-"del archivo de documento. Un valor de 0 desactiva el cálculo de bloque y "
-"todo el archivo se cargará en la memoria."
 
 #: settings.py:75
 msgid "Default documents language (in ISO639-3 format)."
