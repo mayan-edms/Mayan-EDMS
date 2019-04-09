@@ -7,6 +7,7 @@
   even when the source is disabled and to not deleted processed files
   during a check.
 * Switch to full app paths.
+* Split document app models into separate modules.
 
 3.1.11 (2019-04-XX)
 ===================
