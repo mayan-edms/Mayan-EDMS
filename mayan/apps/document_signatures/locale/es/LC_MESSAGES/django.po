@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2015-2018
+# Roberto Rosario, 2015-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:27-0400\n"
-"PO-Revision-Date: 2018-09-27 02:20+0000\n"
+"POT-Creation-Date: 2019-04-09 00:54-0400\n"
+"PO-Revision-Date: 2019-04-09 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48 permissions.py:8 settings.py:10
@@ -32,7 +31,7 @@ msgstr "Fecha"
 
 #: apps.py:91 models.py:46
 msgid "Key ID"
-msgstr "Identificador de clave"
+msgstr "Identificador de llave"
 
 #: apps.py:95 forms.py:64 models.py:50
 msgid "Signature ID"
@@ -68,7 +67,7 @@ msgstr "ID de llave de firma"
 
 #: forms.py:53
 msgid "Signature key present?"
-msgstr "¿Llave de la firma presente?"
+msgstr "¿Llave de la firma esta presente?"
 
 #: forms.py:66
 msgid "Key fingerprint"
@@ -172,11 +171,11 @@ msgstr "Archivo de firma"
 
 #: models.py:138
 msgid "Document version detached signature"
-msgstr "Firma anejada de version de documento"
+msgstr "Firma aparte de versión de documento"
 
 #: models.py:139
 msgid "Document version detached signatures"
-msgstr "Firmas anejadas de version de documento"
+msgstr "Firmas aparte de versión de documento"
 
 #: models.py:142
 msgid "signature"
@@ -192,7 +191,7 @@ msgstr "Firmar documentos con firma integrada"
 
 #: permissions.py:21
 msgid "Delete detached signatures"
-msgstr "Borrar firmas separadas"
+msgstr "Borrar firmas aparte"
 
 #: permissions.py:25
 msgid "Download detached document signatures"
@@ -228,8 +227,7 @@ msgstr "Verificar la firma integrada que falta"
 
 #: settings.py:14
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
-"Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
+msgstr "Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
 
 #: settings.py:23
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -272,11 +270,7 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
-"Las firmas ayudan a proporcionar evidencia de autoría y detección de "
-"manipulación. Son muy seguras y difíciles de falsificar. Una firma puede "
-"integrarse como parte del documento en sí o cargarse como un archivo "
-"separado."
+msgstr "Las firmas ayudan a proporcionar evidencia de autoría y detección de manipulación. Son muy seguras y difíciles de falsificar. Una firma puede integrarse como parte del documento en sí o cargarse como un archivo separado."
 
 #: views.py:328
 msgid "There are no signatures for this document."
@@ -294,9 +288,7 @@ msgstr "Subir firma aparte para la versión de documento: %s"
 
 #: views.py:377
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:378
 msgid "Verify all document for signatures?"

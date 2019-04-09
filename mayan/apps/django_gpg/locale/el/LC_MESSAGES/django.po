@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:26-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"POT-Creation-Date: 2019-04-09 00:53-0400\n"
+"PO-Revision-Date: 2019-04-09 05:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -68,8 +67,7 @@ msgstr "Όρος"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
-"Όνομα, e-mail, αναγνωριστικό κλειδιού ή δακτυλικό αποτύπωμα προς αναζήτηση."
+msgstr "Όνομα, e-mail, αναγνωριστικό κλειδιού ή δακτυλικό αποτύπωμα προς αναζήτηση."
 
 #: links.py:15
 msgid "Delete"
@@ -141,9 +139,7 @@ msgstr "Σφάλμα υπογραφής."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο "
-"κλειδί για επαλήθευση."
+msgstr "Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -207,9 +203,7 @@ msgstr "Υπογραφές"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Ο προσωπικός φάκελος θα χρησιμοποιηθεί για την αποθήκευση κλειδιών και "
-"αρχείων ρυθμήσεων."
+msgstr "Ο προσωπικός φάκελος θα χρησιμοποιηθεί για την αποθήκευση κλειδιών και αρχείων ρυθμήσεων."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
@@ -276,8 +270,8 @@ msgstr "Ανέβασμανέου κλειδιού"
 
 #: views.py:168
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 
@@ -287,7 +281,7 @@ msgstr ""
 
 #: views.py:192
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
+"Private keys are used to sign documents. Private keys can only be uploaded "
 "by the user.The view to upload private and public keys is the same."
 msgstr ""
 

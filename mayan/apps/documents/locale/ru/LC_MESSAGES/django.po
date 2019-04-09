@@ -1,25 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:27-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2019-04-09 00:54-0400\n"
+"PO-Revision-Date: 2019-04-09 04:32+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:115 apps.py:268 events.py:7 menus.py:10 models.py:239
 #: permissions.py:7 queues.py:18 settings.py:12 statistics.py:231
@@ -34,9 +31,7 @@ msgstr "Создать тип документа"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Каждому загруженому документу должен быть присвоен тип документа, - это "
-"основной способ, которым Mayan EDMS  распределяет документы по категориям."
+msgstr "Каждому загруженому документу должен быть присвоен тип документа, - это основной способ, которым Mayan EDMS  распределяет документы по категориям."
 
 #: apps.py:157
 msgid "Versions comment"
@@ -204,13 +199,10 @@ msgstr "Сжать"
 
 #: forms.py:231
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Скачать документ в исходном, или в сжатом формате. Этот вариант доступен "
-"только при загрузке одного документа, для нескольких документов будет "
-"использован сжатый файл."
+msgstr "Скачать документ в исходном, или в сжатом формате. Этот вариант доступен только при загрузке одного документа, для нескольких документов будет использован сжатый файл."
 
 #: forms.py:238
 msgid "Compressed filename"
@@ -220,9 +212,7 @@ msgstr "Имя сжатого файла"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Имя файла сжатого файла, который будет содержать загружаемые документы, если "
-"выбран предыдущий параметр."
+msgstr "Имя файла сжатого файла, который будет содержать загружаемые документы, если выбран предыдущий параметр."
 
 #: forms.py:258
 msgid ""
@@ -342,9 +332,7 @@ msgstr ""
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Очистить графику для ускорения отображения документов и интерактивных "
-"преобразований."
+msgstr "Очистить графику для ускорения отображения документов и интерактивных преобразований."
 
 #: links.py:237
 msgid "Clear document image cache"
@@ -440,10 +428,9 @@ msgstr "Надпись"
 
 #: models.py:80
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Сколько должно пройти времени, прежде чем документы этого типа будут "
-"перемещены в корзину."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Сколько должно пройти времени, прежде чем документы этого типа будут перемещены в корзину."
 
 #: models.py:82
 msgid "Trash time period"
@@ -457,9 +444,7 @@ msgstr "Единица измерения периода жизни"
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
-"Сколько должно пройти времени, прежде чем документы этого типа будут удалены "
-"из корзины."
+msgstr "Сколько должно пройти времени, прежде чем документы этого типа будут удалены из корзины."
 
 #: models.py:92
 msgid "Delete time period"
@@ -475,8 +460,8 @@ msgstr "Типы документов"
 
 #: models.py:184
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for "
-"each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for"
+" each document."
 msgstr ""
 
 #: models.py:194
@@ -526,10 +511,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Заглушка документа - это запись в базе данных без самого документа. Документ "
-"может оказатсья заглушкой, если его загрузка оборвалась, или выполняется его "
-"отложенная загрузка через API."
+msgstr "Заглушка документа - это запись в базе данных без самого документа. Документ может оказатсья заглушкой, если его загрузка оборвалась, или выполняется его отложенная загрузка через API."
 
 #: models.py:229
 msgid "Is stub?"
@@ -563,8 +545,8 @@ msgstr "Файл"
 #: models.py:448
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models.py:452 search.py:19 search.py:39
@@ -795,15 +777,15 @@ msgstr ""
 #: settings.py:59
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:68
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:75
@@ -976,8 +958,8 @@ msgstr "Документы с типом: %s"
 #: views/document_type_views.py:64
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1006,11 +988,8 @@ msgstr "Создать быструю метку для типа докумен�
 
 #: views/document_type_views.py:171
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Редактировать быструю метку %(filename)s\" с типа документов "
-"\"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Редактировать быструю метку %(filename)s\" с типа документов \"%(document_type)s\""
 
 #: views/document_type_views.py:196
 #, python-format
@@ -1262,9 +1241,7 @@ msgstr ""
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Ошибка при удалении страницы для преобразования документов: %(document)s; "
-"%(error)s."
+msgstr "Ошибка при удалении страницы для преобразования документов: %(document)s; %(error)s."
 
 #: views/document_views.py:730
 msgid "Transformations cloned successfully."
@@ -1287,8 +1264,8 @@ msgstr "Печать: %s"
 #: views/document_views.py:856
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:863
@@ -1357,8 +1334,8 @@ msgstr[3] ""
 
 #: views/document_views.py:963
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:967

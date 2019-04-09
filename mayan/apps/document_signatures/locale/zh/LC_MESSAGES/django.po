@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:27-0400\n"
+"POT-Creation-Date: 2019-04-09 00:54-0400\n"
 "PO-Revision-Date: 2019-02-02 02:48+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh/)\n"
-"Language: zh\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:48 permissions.py:8 settings.py:10
@@ -268,9 +267,7 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
-"签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本"
-"身的一部分嵌入，也可以作为单独的文件上传。"
+msgstr "签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本身的一部分嵌入，也可以作为单独的文件上传。"
 
 #: views.py:328
 msgid "There are no signatures for this document."

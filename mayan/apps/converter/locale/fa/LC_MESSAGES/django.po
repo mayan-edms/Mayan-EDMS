@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:26-0400\n"
+"POT-Creation-Date: 2019-04-09 00:53-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:20 permissions.py:7 settings.py:12
@@ -78,9 +77,7 @@ msgstr "تغییرات"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"سفارش که در آن تحولات اجرا خواهد شد. اگر بدون تغییر باقی بماند، یک مقدار "
-"سفارش خودکار تعیین می شود."
+msgstr "سفارش که در آن تحولات اجرا خواهد شد. اگر بدون تغییر باقی بماند، یک مقدار سفارش خودکار تعیین می شود."
 
 #: models.py:43
 msgid "Name"
@@ -90,9 +87,7 @@ msgstr "نام"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"آرگومان را برای تبدیل به عنوان یک فرهنگ لغت YAML وارد کنید. یعنی: {\"درجه\": "
-"180}"
+msgstr "آرگومان را برای تبدیل به عنوان یک فرهنگ لغت YAML وارد کنید. یعنی: {\"درجه\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"

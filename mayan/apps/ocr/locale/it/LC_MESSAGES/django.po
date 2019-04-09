@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:29-0400\n"
+"POT-Creation-Date: 2019-04-09 00:55-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:73 apps.py:148 apps.py:152 events.py:7 links.py:19 links.py:24
@@ -148,9 +147,7 @@ msgstr "Percorso completo al backend utilizzato per eseguire l'OCR."
 
 #: settings.py:20
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Imposta i nuovi tipi documento per eseguire automaticamente l'OCR per "
-"default."
+msgstr "Imposta i nuovi tipi documento per eseguire automaticamente l'OCR per default."
 
 #: views.py:44
 #, python-format
@@ -174,10 +171,8 @@ msgstr "Invia tutti i documenti del tipo alla coda OCR"
 
 #: views.py:107
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
-"%(count)d documenti di tipo \"%(document_type)s\" aggiunti alla coda OCR."
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "%(count)d documenti di tipo \"%(document_type)s\" aggiunti alla coda OCR."
 
 #: views.py:133
 #, python-format
