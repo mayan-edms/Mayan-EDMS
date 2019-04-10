@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from documents.tests import GenericDocumentViewTestCase
+from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..links import link_checkout_document, link_checkout_info
 from ..permissions import (
