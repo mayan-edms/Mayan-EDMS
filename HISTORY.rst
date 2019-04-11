@@ -9,6 +9,7 @@
 * Switch to full app paths.
 * Split document app models into separate modules.
 * Split workflow views into separate modules.
+* Add custom DatabaseWarning to tag the SQLite usage warning.
 
 3.1.11 (2019-04-XX)
 ===================

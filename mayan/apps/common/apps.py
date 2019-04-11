@@ -42,6 +42,7 @@ from .settings import (
 from .signals import pre_initial_setup, pre_upgrade
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 from .utils import check_for_sqlite
+from .warnings import DatabaseWarning
 
 logger = logging.getLogger(__name__)
 
@@ -89,7 +90,9 @@ class CommonApp(MayanAppConfig):
     def ready(self):
         super(CommonApp, self).ready()
         if check_for_sqlite():
-            warnings.warn(force_text(MESSAGE_SQLITE_WARNING))
+            warnings.warn(
+                category=DatabaseWarning, message=force_text(MESSAGE_SQLITE_WARNING)
+            )
 
         Template(
             name='main_menu', template_name='appearance/main_menu.html'
