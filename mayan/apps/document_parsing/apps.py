@@ -1,13 +1,11 @@
 from __future__ import unicode_literals
 
-from datetime import timedelta
 import logging
 
 from kombu import Exchange, Queue
 
 from django.apps import apps
 from django.db.models.signals import post_save
-from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls import ModelPermission
@@ -16,14 +14,12 @@ from mayan.apps.common import (
     menu_tools
 )
 from mayan.apps.common.classes import ModelField
-from mayan.apps.common.settings import settings_db_sync_task_delay
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.documents.widgets import document_link
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 
-from .events import event_parsing_document_version_submit
 from .handlers import (
     handler_index_document, handler_initialize_new_parsing_settings,
     handler_parse_document_version
@@ -35,6 +31,9 @@ from .links import (
     link_document_type_parsing_settings, link_document_type_submit,
     link_error_list
 )
+from .methods import (
+    method_document_parsing_submit, method_document_version_parsing_submit
+)
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
@@ -43,26 +42,6 @@ from .signals import post_document_version_parsing
 from .utils import get_document_content
 
 logger = logging.getLogger(__name__)
-
-
-def document_parsing_submit(self):
-    latest_version = self.latest_version
-    # Don't error out if document has no version
-    if latest_version:
-        latest_version.submit_for_parsing()
-
-
-def document_version_parsing_submit(self):
-    from .tasks import task_parse_document_version
-
-    event_parsing_document_version_submit.commit(
-        action_object=self.document, target=self
-    )
-
-    task_parse_document_version.apply_async(
-        eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
-        kwargs={'document_version_pk': self.pk},
-    )
 
 
 class DocumentParsingApp(MayanAppConfig):
@@ -95,15 +74,18 @@ class DocumentParsingApp(MayanAppConfig):
             model_name='DocumentVersionParseError'
         )
 
-        Document.add_to_class('submit_for_parsing', document_parsing_submit)
         Document.add_to_class(
-            'content', get_document_content
+            name='submit_for_parsing', value=method_document_parsing_submit
+        )
+        Document.add_to_class(
+            name='content', value=get_document_content
         )
         DocumentVersion.add_to_class(
-            'content', get_document_content
+            name='content', value=get_document_content
         )
         DocumentVersion.add_to_class(
-            'submit_for_parsing', document_version_parsing_submit
+            name='submit_for_parsing',
+            value=method_document_version_parsing_submit
         )
 
         ModelField(

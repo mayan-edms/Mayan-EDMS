@@ -83,7 +83,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            'workflow', DocumentStateHelper.constructor
+            name='workflow', value=DocumentStateHelper.constructor
         )
 
         ErrorLogEntry.objects.register(model=WorkflowStateAction)

@@ -9,18 +9,18 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^list/$', CheckoutListView.as_view(), name='checkout_list'),
+    url(r'^list/$', CheckoutListView.as_view(), name='check_out_list'),
     url(
         r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(),
-        name='checkout_document'
+        name='check_out_document'
     ),
     url(
         r'^(?P<pk>\d+)/check/in/$', DocumentCheckinView.as_view(),
-        name='checkin_document'
+        name='check_in_document'
     ),
     url(
         r'^(?P<pk>\d+)/check/info/$', CheckoutDetailView.as_view(),
-        name='checkout_info'
+        name='check_out_info'
     ),
 ]
 

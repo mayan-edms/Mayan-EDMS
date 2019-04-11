@@ -21,13 +21,17 @@ from .events import (
 )
 from .handlers import check_new_version_creation
 from .links import (
-    link_checkin_document, link_checkout_document, link_checkout_info,
-    link_checkout_list
+    link_check_in_document, link_check_out_document, link_check_out_info,
+    link_check_out_list
 )
 from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
+from .methods import (
+    method_check_in, method_get_check_out_info, method_get_check_out_state,
+    method_is_checked_out
+)
 from .permissions import (
-    permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout, permission_document_checkout_detail_view
+    permission_document_check_in, permission_document_check_in_override,
+    permission_document_check_out, permission_document_check_out_detail_view
 )
 from .queues import *  # NOQA
 from .tasks import task_check_expired_check_outs  # NOQA
@@ -52,29 +56,15 @@ class CheckoutsApp(MayanAppConfig):
             app_label='documents', model_name='DocumentVersion'
         )
 
-        DocumentCheckout = self.get_model('DocumentCheckout')
-
+        Document.add_to_class(name='check_in', value=method_check_in)
         Document.add_to_class(
-            'check_in',
-            lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user)
+            name='get_check_out_info', value=method_get_check_out_info
         )
         Document.add_to_class(
-            'checkout_info',
-            lambda document: DocumentCheckout.objects.document_checkout_info(
-                document
-            )
+            name='get_check_out_state', value=method_get_check_out_state
         )
         Document.add_to_class(
-            'checkout_state',
-            lambda document: DocumentCheckout.objects.document_checkout_state(
-                document
-            )
-        )
-        Document.add_to_class(
-            'is_checked_out',
-            lambda document: DocumentCheckout.objects.is_document_checked_out(
-                document
-            )
+            name='is_checked_out', value=method_is_checked_out
         )
 
         ModelEventType.register(
@@ -86,10 +76,10 @@ class CheckoutsApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_document_checkout,
-                permission_document_checkin,
-                permission_document_checkin_override,
-                permission_document_checkout_detail_view
+                permission_document_check_out,
+                permission_document_check_in,
+                permission_document_check_in_override,
+                permission_document_check_out_detail_view
             )
         )
 
@@ -123,13 +113,13 @@ class CheckoutsApp(MayanAppConfig):
             widget=DashboardWidgetTotalCheckouts, order=-1
         )
 
-        menu_facet.bind_links(links=(link_checkout_info,), sources=(Document,))
-        menu_main.bind_links(links=(link_checkout_list,), position=98)
+        menu_facet.bind_links(links=(link_check_out_info,), sources=(Document,))
+        menu_main.bind_links(links=(link_check_out_list,), position=98)
         menu_sidebar.bind_links(
-            links=(link_checkout_document, link_checkin_document),
+            links=(link_check_out_document, link_check_in_document),
             sources=(
-                'checkouts:checkout_info', 'checkouts:checkout_document',
-                'checkouts:checkin_document'
+                'checkouts:check_out_info', 'checkouts:check_out_document',
+                'checkouts:check_in_document'
             )
         )
 

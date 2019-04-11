@@ -90,7 +90,7 @@ class MetadataApp(MayanAppConfig):
         MetadataType = self.get_model('MetadataType')
 
         Document.add_to_class(
-            'metadata_value_of', DocumentMetadataHelper.constructor
+            name='metadata_value_of', value=DocumentMetadataHelper.constructor
         )
 
         ModelAttribute(

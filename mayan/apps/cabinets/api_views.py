@@ -39,7 +39,7 @@ class APIDocumentCabinetListView(generics.ListAPIView):
             obj=document
         )
 
-        queryset = document.document_cabinets().all()
+        queryset = document.get_cabinets()
         return queryset
 
 

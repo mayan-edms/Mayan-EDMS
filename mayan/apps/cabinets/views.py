@@ -219,7 +219,7 @@ class DocumentCabinetListView(CabinetListView):
         }
 
     def get_object_list(self):
-        return self.document.document_cabinets().all()
+        return self.document.document_cabinets()
 
 
 class DocumentAddToCabinetView(MultipleObjectFormActionView):

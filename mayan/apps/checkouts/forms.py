@@ -26,12 +26,14 @@ class DocumentCheckoutDefailForm(DetailForm):
         extra_fields = (
             {
                 'label': _('Document status'),
-                'field': lambda instance: STATE_LABELS[instance.checkout_state()]
+                'field': lambda instance: STATE_LABELS[
+                    instance.get_check_out_state()
+                ]
             },
         )
 
         if instance.is_checked_out():
-            checkout_info = instance.checkout_info()
+            checkout_info = instance.get_check_out_info()
             extra_fields += (
                 {
                     'label': _('User'),

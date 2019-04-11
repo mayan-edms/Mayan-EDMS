@@ -21,20 +21,20 @@ logger = logging.getLogger(__name__)
 class DocumentCheckoutManager(models.Manager):
     def are_document_new_versions_allowed(self, document, user=None):
         try:
-            checkout_info = self.document_checkout_info(document)
+            check_out_info = self.document_check_out_info(document=document)
         except DocumentNotCheckedOut:
             return True
         else:
-            return not checkout_info.block_new_version
+            return not check_out_info.block_new_version
 
     def check_in_document(self, document, user=None):
         try:
-            document_checkout = self.model.objects.get(document=document)
+            document_check_out = self.model.objects.get(document=document)
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
         else:
             if user:
-                if self.document_checkout_info(document=document).user != user:
+                if self.get_check_out_info(document=document).user != user:
                     event_document_forceful_check_in.commit(
                         actor=user, target=document
                     )
@@ -43,13 +43,13 @@ class DocumentCheckoutManager(models.Manager):
             else:
                 event_document_auto_check_in.commit(target=document)
 
-            document_checkout.delete()
+            document_check_out.delete()
 
     def check_in_expired_check_outs(self):
         for document in self.expired_check_outs():
             document.check_in()
 
-    def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
+    def check_out_document(self, document, expiration_datetime, user, block_new_version=True):
         return self.create(
             block_new_version=block_new_version, document=document,
             expiration_datetime=expiration_datetime, user=user
@@ -60,14 +60,14 @@ class DocumentCheckoutManager(models.Manager):
             pk__in=self.model.objects.values('document__id')
         )
 
-    def document_checkout_info(self, document):
+    def get_check_out_info(self, document):
         try:
             return self.model.objects.get(document=document)
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
 
-    def document_checkout_state(self, document):
-        if self.is_document_checked_out(document=document):
+    def get_check_out_state(self, document):
+        if self.is_checked_out(document=document):
             return STATE_CHECKED_OUT
         else:
             return STATE_CHECKED_IN
@@ -92,7 +92,7 @@ class DocumentCheckoutManager(models.Manager):
 
         return self.get(document__pk=document.pk)
 
-    def is_document_checked_out(self, document):
+    def is_checked_out(self, document):
         return self.filter(document=document).exists()
 
 

@@ -24,7 +24,9 @@ class ModelPermission(object):
             app_label='acls', model_name='AccessControlList'
         )
 
-        model.add_to_class('acls', GenericRelation(AccessControlList))
+        model.add_to_class(
+            name='acls', value=GenericRelation(AccessControlList)
+        )
 
     @classmethod
     def get_classes(cls, as_content_type=False):

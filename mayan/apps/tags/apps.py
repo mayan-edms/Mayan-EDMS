@@ -31,6 +31,7 @@ from .links import (
     link_tag_multiple_delete, link_tag_tagged_item_list
 )
 from .menus import menu_tags
+from .methods import method_document_get_tags
 from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
@@ -65,8 +66,7 @@ class TagsApp(MayanAppConfig):
         Tag = self.get_model('Tag')
 
         Document.add_to_class(
-            'attached_tags',
-            lambda document: DocumentTag.objects.filter(documents=document)
+            name='attached_tags', value=method_document_get_tags
         )
 
         ModelEventType.register(

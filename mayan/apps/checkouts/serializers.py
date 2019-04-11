@@ -9,7 +9,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.serializers import DocumentSerializer
 
 from .models import DocumentCheckout
-from .permissions import permission_document_checkout
+from .permissions import permission_document_check_out
 
 
 class DocumentCheckoutSerializer(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
         document = Document.objects.get(pk=validated_data.pop('document_pk'))
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_checkout,
+            permissions=permission_document_check_out,
             user=self.context['request'].user, obj=document
         )
 

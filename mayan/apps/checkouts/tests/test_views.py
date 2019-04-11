@@ -1,23 +1,16 @@
 from __future__ import unicode_literals
 
-import datetime
 import logging
-
-from django.utils.timezone import now
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 from mayan.apps.sources.links import link_upload_version
-from mayan.apps.user_management.tests.literals import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_PASSWORD,
-    TEST_ADMIN_USERNAME,
-)
 
 from ..literals import STATE_CHECKED_OUT, STATE_LABELS
 from ..models import DocumentCheckout
 from ..permissions import (
-    permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout, permission_document_checkout_detail_view
+    permission_document_check_in, permission_document_check_in_override,
+    permission_document_check_out, permission_document_check_out_detail_view
 )
 
 from .mixins import DocumentCheckoutTestMixin
@@ -28,55 +21,68 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         super(DocumentCheckoutViewTestCase, self).setUp()
         self.login_user()
 
-    def _request_document_check_in_view(self):
+    def _request_document_check_in_get_view(self):
+        return self.get(
+            viewname='checkouts:check_in_document', args=(self.document.pk,),
+        )
+
+    def test_check_in_document_get_view_no_permission(self):
+        self._check_out_document()
+
+        response = self._request_document_check_in_get_view()
+        self.assertContains(
+            response=response, text=self.document.label, status_code=200
+        )
+
+        self.assertTrue(self.document.is_checked_out())
+
+    def test_check_in_document_get_view_with_access(self):
+        self._check_out_document()
+
+        self.grant_access(
+            obj=self.document, permission=permission_document_check_in
+        )
+
+        response = self._request_document_check_in_get_view()
+        self.assertContains(
+            response=response, text=self.document.label, status_code=200
+        )
+
+        self.assertTrue(self.document.is_checked_out())
+
+    def _request_document_check_in_post_view(self):
         return self.post(
-            viewname='checkouts:checkin_document', args=(self.document.pk,),
+            viewname='checkouts:check_in_document', args=(self.document.pk,),
         )
 
-    def test_checkin_document_view_no_permission(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
+    def test_check_in_document_post_view_no_permission(self):
+        self._check_out_document()
 
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.user, block_new_version=True
-        )
-
-        self.assertTrue(self.document.is_checked_out())
-
-        response = self._request_document_check_in_view()
+        response = self._request_document_check_in_post_view()
         self.assertEquals(response.status_code, 403)
-        self.assertTrue(self.document.is_checked_out())
-
-    def test_checkin_document_view_with_access(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
-
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.user, block_new_version=True
-        )
 
         self.assertTrue(self.document.is_checked_out())
 
+    def test_check_in_document_post_view_with_access(self):
+        self._check_out_document()
+
         self.grant_access(
-            obj=self.document, permission=permission_document_checkin
-        )
-        self.grant_access(
-            obj=self.document,
-            permission=permission_document_checkout_detail_view
+            obj=self.document, permission=permission_document_check_in
         )
 
-        response = self._request_document_check_in_view()
+        response = self._request_document_check_in_post_view()
         self.assertEquals(response.status_code, 302)
+
         self.assertFalse(self.document.is_checked_out())
         self.assertFalse(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.objects.is_checked_out(
                 document=self.document
             )
         )
 
     def _request_document_checkout_view(self):
         return self.post(
-            viewname='checkouts:checkout_document', args=(self.document.pk,),
+            viewname='checkouts:check_out_document', args=(self.document.pk,),
             data={
                 'expiration_datetime_0': 2,
                 'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
@@ -84,55 +90,57 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             }
         )
 
-    def test_checkout_document_view_no_permission(self):
+    def test_check_out_document_view_no_permission(self):
         response = self._request_document_checkout_view()
         self.assertEquals(response.status_code, 403)
         self.assertFalse(self.document.is_checked_out())
 
-    def test_checkout_document_view_with_access(self):
+    def test_check_out_document_view_with_access(self):
         self.grant_access(
-            obj=self.document, permission=permission_document_checkout
+            obj=self.document, permission=permission_document_check_out
         )
         self.grant_access(
             obj=self.document,
-            permission=permission_document_checkout_detail_view
+            permission=permission_document_check_out_detail_view
         )
 
         response = self._request_document_checkout_view()
         self.assertEquals(response.status_code, 302)
         self.assertTrue(self.document.is_checked_out())
 
-    def _request_checkout_detail_view(self):
+    def _request_check_out_detail_view(self):
         return self.get(
-            viewname='checkouts:checkout_info', args=(self.document.pk,),
+            viewname='checkouts:check_out_info', args=(self.document.pk,),
         )
 
     def test_checkout_detail_view_no_permission(self):
-        self._checkout_document()
+        self._check_out_document()
         self.grant_access(
             obj=self.document,
-            permission=permission_document_checkout
+            permission=permission_document_check_out
         )
 
-        response = self._request_checkout_detail_view()
+        response = self._request_check_out_detail_view()
 
         self.assertNotContains(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=403
         )
 
     def test_checkout_detail_view_with_access(self):
-        self._checkout_document()
+        self._check_out_document()
 
         self.grant_access(
             obj=self.document,
-            permission=permission_document_checkout_detail_view
+            permission=permission_document_check_out_detail_view
         )
 
-        response = self._request_checkout_detail_view()
+        response = self._request_check_out_detail_view()
 
-        self.assertContains(response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200)
+        self.assertContains(
+            response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200
+        )
 
-    def test_document_new_version_after_checkout(self):
+    def test_document_new_version_after_check_out(self):
         """
         Gitlab issue #231
         User shown option to upload new version of a document even though it
@@ -142,18 +150,9 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             - Link to upload version view should not resolve
             - Upload version view should reject request
         """
-        self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
+        self._check_out_document()
 
-        expiration_datetime = now() + datetime.timedelta(days=1)
-
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
-
-        self.assertTrue(self.document.is_checked_out())
+        self.login_admin_user()
 
         response = self.post(
             'sources:upload_version', args=(self.document.pk,),
@@ -184,30 +183,15 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         # Silence unrelated logging
         logging.getLogger('navigation.classes').setLevel(logging.CRITICAL)
 
-        expiration_datetime = now() + datetime.timedelta(days=1)
+        self._check_out_document(user=self.admin_user)
 
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
-
-        self.assertTrue(self.document.is_checked_out())
-
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
-        self.role.permissions.add(
-            permission_document_checkin.stored_permission
-        )
-        self.role.permissions.add(
-            permission_document_checkout.stored_permission
+        self.grant_access(
+            obj=self.document, permission=permission_document_check_in
         )
 
         response = self.post(
-            'checkouts:checkin_document', args=(self.document.pk,), follow=True
+            'checkouts:check_in_document', args=(self.document.pk,)
         )
-
         self.assertContains(
             response, text='Insufficient permissions', status_code=403
         )
@@ -215,37 +199,18 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
         self.assertTrue(self.document.is_checked_out())
 
     def test_forcefull_check_in_document_view_with_permission(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
+        self._check_out_document(user=self.admin_user)
 
-        DocumentCheckout.objects.checkout_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
+        self.grant_access(
+            obj=self.document, permission=permission_document_check_in
         )
-
-        self.assertTrue(self.document.is_checked_out())
-
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        self.grant_access(
+            obj=self.document, permission=permission_document_check_in_override
         )
 
-        self.role.permissions.add(
-            permission_document_checkin.stored_permission
-        )
-        self.role.permissions.add(
-            permission_document_checkin.stored_permission
-        )
-        self.role.permissions.add(
-            permission_document_checkin_override.stored_permission
-        )
-        self.role.permissions.add(
-            permission_document_checkout_detail_view.stored_permission
-        )
         response = self.post(
-            'checkouts:checkin_document', args=(self.document.pk,), follow=True
+            'checkouts:check_in_document', args=(self.document.pk,)
         )
-
-        self.assertContains(
-            response, text='hecked in successfully', status_code=200
-        )
+        self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.document.is_checked_out())

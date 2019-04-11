@@ -10,6 +10,11 @@
 * Split document app models into separate modules.
 * Split workflow views into separate modules.
 * Add custom DatabaseWarning to tag the SQLite usage warning.
+* Add keyword arguments to add_to_class instances.
+* Move add_to_class function to their own module called methods.py
+* Remove catch all exception handling for the check in and 
+  check out views.
+* Improve checkouts tests code reducing redundant code.
 
 3.1.11 (2019-04-XX)
 ===================

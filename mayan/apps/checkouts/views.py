@@ -16,11 +16,11 @@ from mayan.apps.documents.views import DocumentListView
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm
-from .icons import icon_checkout_info
+from .icons import icon_check_out_info
 from .models import DocumentCheckout
 from .permissions import (
-    permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout, permission_document_checkout_detail_view
+    permission_document_check_in, permission_document_check_in_override,
+    permission_document_check_out, permission_document_check_out_detail_view
 )
 
 
@@ -31,7 +31,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_checkout, user=request.user,
+            permissions=permission_document_check_out, user=request.user,
             obj=self.document
         )
 
@@ -47,11 +47,6 @@ class CheckoutDocumentView(SingleObjectCreateView):
             instance.save()
         except DocumentAlreadyCheckedOut:
             messages.error(self.request, _('Document already checked out.'))
-        except Exception as exception:
-            messages.error(
-                self.request,
-                _('Error trying to check out document; %s') % exception
-            )
         else:
             messages.success(
                 self.request,
@@ -67,13 +62,13 @@ class CheckoutDocumentView(SingleObjectCreateView):
         }
 
     def get_post_action_redirect(self):
-        return reverse('checkouts:checkout_info', args=(self.document.pk,))
+        return reverse('checkouts:check_out_info', args=(self.document.pk,))
 
 
 class CheckoutListView(DocumentListView):
     def get_document_queryset(self):
         return AccessControlList.objects.filter_by_access(
-            permission=permission_document_checkout_detail_view,
+            permission=permission_document_check_out_detail_view,
             user=self.request.user,
             queryset=DocumentCheckout.objects.checked_out_documents()
         )
@@ -86,23 +81,23 @@ class CheckoutListView(DocumentListView):
                     {
                         'name': _('User'),
                         'attribute': encapsulate(
-                            lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
+                            lambda document: document.check_out_info().user.get_full_name() or document.check_out_info().user
                         )
                     },
                     {
                         'name': _('Checkout time and date'),
                         'attribute': encapsulate(
-                            lambda document: document.checkout_info().checkout_datetime
+                            lambda document: document.check_out_info().checkout_datetime
                         )
                     },
                     {
                         'name': _('Checkout expiration'),
                         'attribute': encapsulate(
-                            lambda document: document.checkout_info().expiration_datetime
+                            lambda document: document.check_out_info().expiration_datetime
                         )
                     },
                 ),
-                'no_results_icon': icon_checkout_info,
+                'no_results_icon': icon_check_out_info,
                 'no_results_text': _(
                     'Checking out a document blocks certain document '
                     'operations for a predetermined amount of '
@@ -118,7 +113,7 @@ class CheckoutListView(DocumentListView):
 class CheckoutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckoutDefailForm
     model = Document
-    object_permission = permission_document_checkout_detail_view
+    object_permission = permission_document_check_out_detail_view
 
     def get_extra_context(self):
         return {
@@ -140,7 +135,7 @@ class DocumentCheckinView(ConfirmView):
             'object': document,
         }
 
-        if document.checkout_info().user != self.request.user:
+        if document.get_check_out_info().user != self.request.user:
             context['title'] = _(
                 'You didn\'t originally checked out this document. '
                 'Forcefully check in the document: %s?'
@@ -154,19 +149,19 @@ class DocumentCheckinView(ConfirmView):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
-        return reverse('checkouts:checkout_info', args=(self.get_object().pk,))
+        return reverse('checkouts:check_out_info', args=(self.get_object().pk,))
 
     def view_action(self):
         document = self.get_object()
 
-        if document.checkout_info().user == self.request.user:
+        if document.get_check_out_info().user == self.request.user:
             AccessControlList.objects.check_access(
-                permissions=permission_document_checkin,
+                permissions=permission_document_check_in,
                 user=self.request.user, obj=document
             )
         else:
             AccessControlList.objects.check_access(
-                permissions=permission_document_checkin_override,
+                permissions=permission_document_check_in_override,
                 user=self.request.user, obj=document
             )
 
@@ -175,11 +170,6 @@ class DocumentCheckinView(ConfirmView):
         except DocumentNotCheckedOut:
             messages.error(
                 self.request, _('Document has not been checked out.')
-            )
-        except Exception as exception:
-            messages.error(
-                self.request,
-                _('Error trying to check in document; %s') % exception
             )
         else:
             messages.success(

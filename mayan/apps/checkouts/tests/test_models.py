@@ -20,17 +20,17 @@ from ..models import DocumentCheckout, NewVersionBlock
 
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
-    def test_document_checkout(self):
+    def test_document_check_out(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.objects.check_out_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
         self.assertTrue(self.document.is_checked_out())
         self.assertTrue(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.objects.is_checked_out(
                 document=self.document
             )
         )
@@ -38,7 +38,7 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
     def test_checkin_in(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.objects.check_out_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -47,21 +47,21 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
 
         self.assertFalse(self.document.is_checked_out())
         self.assertFalse(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.objects.is_checked_out(
                 document=self.document
             )
         )
 
-    def test_double_checkout(self):
+    def test_double_check_out(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.objects.check_out_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
         with self.assertRaises(DocumentAlreadyCheckedOut):
-            DocumentCheckout.objects.checkout_document(
+            DocumentCheckout.objects.check_out_document(
                 document=self.document,
                 expiration_datetime=expiration_datetime, user=self.admin_user,
                 block_new_version=True
@@ -71,10 +71,10 @@ class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
         with self.assertRaises(DocumentNotCheckedOut):
             self.document.check_in()
 
-    def test_auto_checkin(self):
+    def test_auto_check_in(self):
         expiration_datetime = now() + datetime.timedelta(seconds=.1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.objects.check_out_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -132,7 +132,7 @@ class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.objects.check_out_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )

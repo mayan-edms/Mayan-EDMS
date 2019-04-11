@@ -11,7 +11,9 @@ class ErrorLogEntryManager(models.Manager):
         ErrorLogEntry = apps.get_model(
             app_label='common', model_name='ErrorLogEntry'
         )
-        model.add_to_class('error_logs', GenericRelation(ErrorLogEntry))
+        model.add_to_class(
+            name='error_logs', value=GenericRelation(ErrorLogEntry)
+        )
 
 
 class UserLocaleProfileManager(models.Manager):
