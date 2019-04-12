@@ -47,6 +47,6 @@ pytz==2018.3
 requests==2.18.4
 
 sh==1.12.14
-swagger-spec-validator==2.1.0
+swagger-spec-validator==2.4.3
 
 whitenoise==3.3.1
