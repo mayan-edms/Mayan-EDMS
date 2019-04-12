@@ -3,7 +3,7 @@ PyYAML==5.1
 
 celery==3.1.24
 
-django-activity-stream==0.6.5
+django-activity-stream==0.7.0
 django-autoadmin==1.1.1
 django-celery==3.2.1
 django-colorful==1.2
