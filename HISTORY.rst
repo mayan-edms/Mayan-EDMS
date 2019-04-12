@@ -26,6 +26,8 @@
 * Update Pillow to version 6.0.0
 * Update PyYAML to version 5.1. Update use of safe_load and
   safe_dump to load and dump using the SafeLoader.
+* Add SilenceLoggerTestCaseMixin to lower level of loggers
+  during tests.
 
 3.1.11 (2019-04-XX)
 ===================

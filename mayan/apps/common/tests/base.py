@@ -12,12 +12,12 @@ from mayan.apps.user_management.tests.mixins import UserTestCaseMixin
 from .mixins import (
     ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
     DatabaseConversionMixin, OpenFileCheckTestCaseMixin,
-    RandomPrimaryKeyModelMonkeyPatchMixin, TempfileCheckTestCasekMixin,
-    TestViewTestCaseMixin
+    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
+    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
 )
 
 
-class BaseTestCase(RandomPrimaryKeyModelMonkeyPatchMixin, DatabaseConversionMixin, ACLTestCaseMixin, OpenFileCheckTestCaseMixin, TempfileCheckTestCasekMixin, TestCase):
+class BaseTestCase(SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin, DatabaseConversionMixin, ACLTestCaseMixin, OpenFileCheckTestCaseMixin, TempfileCheckTestCasekMixin, TestCase):
     """
     This is the most basic test case class any test in the project should use.
     """

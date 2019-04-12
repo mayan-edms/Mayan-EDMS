@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import glob
 import importlib
+import logging
 import os
 import random
 
@@ -207,6 +208,23 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
     def tearDown(self):
         models.Model.save = self.method_save_original
         super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
+
+
+class SilenceLoggerTestCaseMixin(object):
+    test_case_logger = None
+
+    def tearDown(self):
+        if self.test_case_logger:
+            self.test_case_logger.setLevel(level=self.test_case_logger_level)
+
+        super(SilenceLoggerTestCaseMixin, self).tearDown()
+
+    def _silence_logger(self, name):
+        self.test_case_logger = logging.getLogger(name=name)
+        self.test_case_logger_level = self.test_case_logger.level
+        self.test_case_logger.setLevel(
+            level=logging.CRITICAL
+        )
 
 
 class TempfileCheckTestCasekMixin(object):

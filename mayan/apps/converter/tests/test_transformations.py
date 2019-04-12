@@ -112,6 +112,8 @@ class TransformationBaseTestCase(TestCase):
 
 class TransformationTestCase(GenericDocumentTestCase):
     def test_crop_transformation_optional_arguments(self):
+        self._silence_logger(name='mayan.apps.converter.managers')
+
         document_page = self.document.pages.first()
 
         Transformation.objects.add_for_model(
@@ -122,6 +124,8 @@ class TransformationTestCase(GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image().startswith('page'))
 
     def test_crop_transformation_invalid_arguments(self):
+        self._silence_logger(name='mayan.apps.converter.managers')
+
         document_page = self.document.pages.first()
 
         Transformation.objects.add_for_model(
@@ -132,6 +136,8 @@ class TransformationTestCase(GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image().startswith('page'))
 
     def test_crop_transformation_non_valid_range_arguments(self):
+        self._silence_logger(name='mayan.apps.converter.managers')
+
         document_page = self.document.pages.first()
 
         Transformation.objects.add_for_model(
@@ -142,6 +148,8 @@ class TransformationTestCase(GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image().startswith('page'))
 
     def test_crop_transformation_overlapping_ranges_arguments(self):
+        self._silence_logger(name='mayan.apps.converter.managers')
+
         document_page = self.document.pages.first()
 
         Transformation.objects.add_for_model(

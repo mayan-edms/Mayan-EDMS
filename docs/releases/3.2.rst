@@ -50,6 +50,8 @@ Other changes
   to the API app's URLs module.
 * Update PyYAML to version 5.1. Update use of safe_load and
   safe_dump to load and dump using the CSafeLoader and SafeLoader as fallback.
+* Add SilenceLoggerTestCaseMixin to lower level of loggers
+  during tests.
 
 Removals
 --------
