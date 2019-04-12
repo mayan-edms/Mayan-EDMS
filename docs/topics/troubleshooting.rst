@@ -2,6 +2,19 @@
 Troubleshooting
 ###############
 
+***********
+Starting up
+***********
+
+Error !strcmp(locale, "C"):Error:Assert failed:in file baseapi.cpp, line 201
+============================================================================
+Cause by an issue with Tesseract 4.0 under Python 3.
+
+Solution::
+
+    export LC_ALL=C
+
+
 
 ********
 Database
