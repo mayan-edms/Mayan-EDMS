@@ -24,6 +24,14 @@ from ..settings import (
     setting_zoom_min_level
 )
 
+__all__ = (
+    'DocumentPageListView', 'DocumentPageNavigationFirst',
+    'DocumentPageNavigationLast', 'DocumentPageNavigationNext',
+    'DocumentPageNavigationPrevious', 'DocumentPageView',
+    'DocumentPageViewResetView', 'DocumentPageInteractiveTransformation',
+    'DocumentPageZoomInView', 'DocumentPageZoomOutView',
+    'DocumentPageRotateLeftView', 'DocumentPageRotateRightView'
+)
 logger = logging.getLogger(__name__)
 
 

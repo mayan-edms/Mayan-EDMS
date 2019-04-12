@@ -34,9 +34,8 @@ Other changes
 * Fix multiple tag selection wizard step.
 * Split document app models into separate modules.
 * Split workflow views into separate modules.
-* Change how the HOME_VIEW setting is defined
-
-HOME_VIEW is now COMMON_HOME_VIEW.
+* Change how the HOME_VIEW setting is defined. HOME_VIEW is now COMMON_HOME_VIEW.
+* Split trashed document views into their own module.
 
 
 Removals

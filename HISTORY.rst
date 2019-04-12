@@ -17,6 +17,7 @@
 * Improve checkouts tests code reducing redundant code.
 * Change how the HOME_VIEW setting is defined.
 * Remove the role permission grant and revoke permission.
+* Split trashed document views into their own module.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -10,6 +10,7 @@ from mayan.apps.common.generics import ConfirmView
 from ..permissions import permission_document_tools
 from ..tasks import task_clear_image_cache, task_scan_duplicates_all
 
+__all__ = ('ClearImageCacheView', 'ScanDuplicatedDocuments')
 logger = logging.getLogger(__name__)
 
 

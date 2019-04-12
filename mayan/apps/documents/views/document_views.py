@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -14,11 +14,10 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.compressed_files import ZipArchive
 from mayan.apps.common.exceptions import ActionError
 from mayan.apps.common.generics import (
-    ConfirmView, FormView, MultipleObjectConfirmActionView,
-    MultipleObjectFormActionView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
+    SingleObjectListView
 )
-from mayan.apps.common.mixins import MultipleInstanceActionMixin
 from mayan.apps.common.utils import encapsulate
 from mayan.apps.converter.models import Transformation
 from mayan.apps.converter.permissions import (
@@ -32,29 +31,36 @@ from ..forms import (
     DocumentTypeSelectForm,
 )
 from ..icons import (
-    icon_document_list, icon_document_list_deleted,
-    icon_document_list_favorites, icon_document_list_recent_access,
-    icon_document_list_recent_added, icon_duplicated_document_list
+    icon_document_list, icon_document_list_favorites,
+    icon_document_list_recent_access, icon_document_list_recent_added,
+    icon_duplicated_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import (
-    DeletedDocument, Document, DuplicatedDocument, FavoriteDocument,
-    RecentDocument
+    Document, DuplicatedDocument, FavoriteDocument, RecentDocument
 )
 from ..permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_print, permission_document_properties_edit,
-    permission_document_restore, permission_document_tools,
-    permission_document_trash, permission_document_view,
-    permission_empty_trash
+    permission_document_download, permission_document_print,
+    permission_document_properties_edit, permission_document_tools,
+    permission_document_view
 )
 from ..settings import (
     setting_favorite_count, setting_print_width, setting_print_height,
     setting_recent_added_count
 )
-from ..tasks import task_delete_document, task_update_page_count
+from ..tasks import task_update_page_count
 from ..utils import parse_range
 
+__all__ = (
+    'DocumentListView', 'DocumentDocumentTypeEditView',
+    'DocumentDuplicatesListView', 'DocumentEditView', 'DocumentPreviewView',
+    'DocumentView', 'DocumentDownloadFormView', 'DocumentDownloadView',
+    'DocumentUpdatePageCountView', 'DocumentTransformationsClearView',
+    'DocumentTransformationsCloneView', 'DocumentPrint',
+    'DuplicatedDocumentListView', 'FavoriteDocumentListView',
+    'FavoriteAddView', 'FavoriteRemoveView', 'RecentAccessDocumentListView',
+    'RecentAddedDocumentListView'
+)
 logger = logging.getLogger(__name__)
 
 
@@ -102,75 +108,6 @@ class DocumentListView(SingleObjectListView):
             return queryset.__getitem__(slice(*self.queryset_slice))
         else:
             return queryset
-
-
-class DeletedDocumentDeleteView(ConfirmView):
-    extra_context = {
-        'title': _('Delete the selected document?')
-    }
-
-    def object_action(self, instance):
-        source_document = get_object_or_404(
-            klass=Document.passthrough, pk=instance.pk
-        )
-
-        AccessControlList.objects.check_access(
-            permissions=permission_document_delete, user=self.request.user,
-            obj=source_document
-        )
-
-        task_delete_document.apply_async(
-            kwargs={'deleted_document_id': instance.pk}
-        )
-
-    def view_action(self):
-        instance = get_object_or_404(
-            klass=DeletedDocument, pk=self.kwargs['pk']
-        )
-        self.object_action(instance=instance)
-        messages.success(
-            self.request, _('Document: %(document)s deleted.') % {
-                'document': instance
-            }
-        )
-
-
-class DeletedDocumentDeleteManyView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
-    extra_context = {
-        'title': _('Delete the selected documents?')
-    }
-    model = DeletedDocument
-    success_message = '%(count)d document deleted.'
-    success_message_plural = '%(count)d documents deleted.'
-
-
-class DeletedDocumentListView(DocumentListView):
-    object_permission = None
-
-    def get_document_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            permission_document_view, self.request.user,
-            queryset=DeletedDocument.trash.all()
-        )
-
-    def get_extra_context(self):
-        context = super(DeletedDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'hide_link': True,
-                'no_results_icon': icon_document_list_deleted,
-                'no_results_text': _(
-                    'To avoid loss of data, documents are not deleted '
-                    'instantly. First, they are placed in the trash can. '
-                    'From here they can be then finally deleted or restored.'
-                ),
-                'no_results_title': _(
-                    'There are no documents in the trash can'
-                ),
-                'title': _('Documents in trash'),
-            }
-        )
-        return context
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
@@ -225,220 +162,6 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
                 'Document type for "%s" changed successfully.'
             ) % instance
         )
-
-
-class DocumentDuplicatesListView(DocumentListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=self.get_document()
-        )
-
-        return super(
-            DocumentDuplicatesListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        context = super(DocumentDuplicatesListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_duplicated_document_list,
-                'no_results_text': _(
-                    'Only exact copies of this document will be shown in the '
-                    'this list.'
-                ),
-                'no_results_title': _(
-                    'There are no duplicates for this document'
-                ),
-                'object': self.get_document(),
-                'title': _('Duplicates for document: %s') % self.get_document(),
-            }
-        )
-        return context
-
-    def get_object_list(self):
-        try:
-            return DuplicatedDocument.objects.get(
-                document=self.get_document()
-            ).documents.all()
-        except DuplicatedDocument.DoesNotExist:
-            return Document.objects.none()
-
-
-class DocumentEditView(SingleObjectEditView):
-    form_class = DocumentForm
-    model = Document
-    object_permission = permission_document_properties_edit
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentEditView, self
-        ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit properties of document: %s') % self.get_object(),
-        }
-
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_properties', args=(self.get_object().pk,)
-        )
-
-
-class DocumentPreviewView(SingleObjectDetailView):
-    form_class = DocumentPreviewForm
-    model = Document
-    object_permission = permission_document_view
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentPreviewView, self
-        ).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        event_document_view.commit(
-            actor=request.user, target=self.get_object()
-        )
-
-        return result
-
-    def get_extra_context(self):
-        return {
-            'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Preview of document: %s') % self.get_object(),
-        }
-
-
-class DocumentRestoreView(ConfirmView):
-    extra_context = {
-        'title': _('Restore the selected document?')
-    }
-
-    def object_action(self, instance):
-        source_document = get_object_or_404(
-            klass=Document.passthrough, pk=instance.pk
-        )
-
-        AccessControlList.objects.check_access(
-            permissions=permission_document_restore, user=self.request.user,
-            obj=source_document
-        )
-
-        instance.restore()
-
-    def view_action(self):
-        instance = get_object_or_404(
-            klass=DeletedDocument, pk=self.kwargs['pk']
-        )
-
-        self.object_action(instance=instance)
-
-        messages.success(
-            self.request, _('Document: %(document)s restored.') % {
-                'document': instance
-            }
-        )
-
-
-class DocumentRestoreManyView(MultipleInstanceActionMixin, DocumentRestoreView):
-    extra_context = {
-        'title': _('Restore the selected documents?')
-    }
-    model = DeletedDocument
-    success_message = '%(count)d document restored.'
-    success_message_plural = '%(count)d documents restored.'
-
-
-class DocumentTrashView(ConfirmView):
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Move "%s" to the trash?') % self.get_object()
-        }
-
-    def get_object(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
-
-    def get_post_action_redirect(self):
-        return reverse('documents:document_list_recent_access')
-
-    def object_action(self, instance):
-        AccessControlList.objects.check_access(
-            permissions=permission_document_trash, user=self.request.user,
-            obj=instance
-        )
-
-        instance.delete()
-
-    def view_action(self):
-        instance = self.get_object()
-
-        self.object_action(instance=instance)
-
-        messages.success(
-            self.request, _('Document: %(document)s moved to trash successfully.') % {
-                'document': instance
-            }
-        )
-
-
-class DocumentTrashManyView(MultipleInstanceActionMixin, DocumentTrashView):
-    model = Document
-    success_message = '%(count)d document moved to the trash.'
-    success_message_plural = '%(count)d documents moved to the trash.'
-
-    def get_extra_context(self):
-        return {
-            'title': _('Move the selected documents to the trash?')
-        }
-
-
-class DocumentView(SingleObjectDetailView):
-    form_class = DocumentPropertiesForm
-    model = Document
-    object_permission = permission_document_view
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentView, self).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'document': self.get_object(),
-            'object': self.get_object(),
-            'title': _('Properties for document: %s') % self.get_object(),
-        }
-
-
-class EmptyTrashCanView(ConfirmView):
-    extra_context = {
-        'title': _('Empty trash?')
-    }
-    view_permission = permission_empty_trash
-    action_cancel_redirect = post_action_redirect = reverse_lazy(
-        'documents:document_list_deleted'
-    )
-
-    def view_action(self):
-        for deleted_document in DeletedDocument.objects.all():
-            task_delete_document.apply_async(
-                kwargs={'deleted_document_id': deleted_document.pk}
-            )
-
-        messages.success(self.request, _('Trash emptied successfully'))
 
 
 class DocumentDownloadFormView(FormView):
@@ -601,6 +324,118 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
     def get_item_label(self, item):
         return item.label
+
+
+class DocumentDuplicatesListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=self.get_document()
+        )
+
+        return super(
+            DocumentDuplicatesListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        context = super(DocumentDuplicatesListView, self).get_extra_context()
+        context.update(
+            {
+                'no_results_icon': icon_duplicated_document_list,
+                'no_results_text': _(
+                    'Only exact copies of this document will be shown in the '
+                    'this list.'
+                ),
+                'no_results_title': _(
+                    'There are no duplicates for this document'
+                ),
+                'object': self.get_document(),
+                'title': _('Duplicates for document: %s') % self.get_document(),
+            }
+        )
+        return context
+
+    def get_object_list(self):
+        try:
+            return DuplicatedDocument.objects.get(
+                document=self.get_document()
+            ).documents.all()
+        except DuplicatedDocument.DoesNotExist:
+            return Document.objects.none()
+
+
+class DocumentEditView(SingleObjectEditView):
+    form_class = DocumentForm
+    model = Document
+    object_permission = permission_document_properties_edit
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentEditView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit properties of document: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_properties', args=(self.get_object().pk,)
+        )
+
+
+class DocumentPreviewView(SingleObjectDetailView):
+    form_class = DocumentPreviewForm
+    model = Document
+    object_permission = permission_document_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentPreviewView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        event_document_view.commit(
+            actor=request.user, target=self.get_object()
+        )
+
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('Preview of document: %s') % self.get_object(),
+        }
+
+
+class DocumentView(SingleObjectDetailView):
+    form_class = DocumentPropertiesForm
+    model = Document
+    object_permission = permission_document_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentView, self).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_object(),
+            'object': self.get_object(),
+            'title': _('Properties for document: %s') % self.get_object(),
+        }
 
 
 class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):

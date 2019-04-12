@@ -21,6 +21,11 @@ from ..permissions import (
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView
 
+__all__ = (
+    'DocumentVersionListView', 'DocumentVersionRevertView',
+    'DocumentVersionDownloadFormView', 'DocumentVersionDownloadView',
+    'DocumentVersionView'
+)
 logger = logging.getLogger(__name__)
 
 

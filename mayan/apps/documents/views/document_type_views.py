@@ -28,6 +28,12 @@ from ..permissions import (
 
 from .document_views import DocumentListView
 
+__all__ = (
+    'DocumentTypeDocumentListView', 'DocumentTypeListView',
+    'DocumentTypeCreateView', 'DocumentTypeDeleteView', 'DocumentTypeEditView',
+    'DocumentTypeFilenameCreateView', 'DocumentTypeFilenameEditView',
+    'DocumentTypeFilenameDeleteView', 'DocumentTypeFilenameListView'
+)
 logger = logging.getLogger(__name__)
 
 
