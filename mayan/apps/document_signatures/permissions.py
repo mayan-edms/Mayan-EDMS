@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(
-    name='document_signatures', _('Document signatures')
+    name='document_signatures', label=_('Document signatures')
 )
 
 permission_document_version_sign_detached = namespace.add_permission(
