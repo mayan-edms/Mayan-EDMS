@@ -18,9 +18,3 @@ permission_role_create = namespace.add_permission(
 permission_role_delete = namespace.add_permission(
     name='role_delete', label=_('Delete roles')
 )
-permission_permission_grant = namespace.add_permission(
-    name='permission_grant', label=_('Grant permissions')
-)
-permission_permission_revoke = namespace.add_permission(
-    name='permission_revoke', label=_('Revoke permissions')
-)

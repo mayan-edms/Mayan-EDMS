@@ -19,7 +19,6 @@ from .links import (
     link_role_list, link_role_permissions
 )
 from .permissions import (
-    permission_permission_grant, permission_permission_revoke,
     permission_role_delete, permission_role_edit, permission_role_view
 )
 from .search import *  # NOQA
@@ -42,7 +41,6 @@ class PermissionsApp(MayanAppConfig):
         ModelPermission.register(
             model=Role, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_permission_grant, permission_permission_revoke,
                 permission_role_delete, permission_role_edit,
                 permission_role_view
             )

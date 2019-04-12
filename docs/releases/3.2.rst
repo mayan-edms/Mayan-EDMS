@@ -20,6 +20,13 @@ Every app reference is now prepended with 'mayan.apps'.
 Existing config.yml files need to be updated manually.
 
 
+Permissions
+^^^^^^^^^^^
+
+The role permission grant and revoke permissions were removed. Instead only the
+role edit permission is required to grant or revoke permissions to a role.
+
+
 Other changes
 ^^^^^^^^^^^^^
 
@@ -27,9 +34,9 @@ Other changes
 * Fix multiple tag selection wizard step.
 * Split document app models into separate modules.
 * Split workflow views into separate modules.
-* Change how the HOME_VIEW setting is defined 
+* Change how the HOME_VIEW setting is defined
 
-HOME_VIEW is now COMMON_HOME_VIEW. 
+HOME_VIEW is now COMMON_HOME_VIEW.
 
 
 Removals

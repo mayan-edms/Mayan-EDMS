@@ -21,7 +21,6 @@ from .icons import icon_role_list
 from .links import link_role_create
 from .models import Role, StoredPermission
 from .permissions import (
-    permission_permission_grant, permission_permission_revoke,
     permission_role_view, permission_role_create, permission_role_delete,
     permission_role_edit
 )
@@ -145,15 +144,12 @@ class SetupRolePermissionsView(AssignRemoveView):
         return results
 
     def add(self, item):
-        Permission.check_permissions(
-            self.request.user, permissions=(permission_permission_grant,)
-        )
         permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=(permission_permission_grant, permission_permission_revoke),
+            permissions=(permission_role_edit,),
             user=self.request.user, obj=self.get_object()
         )
         return super(SetupRolePermissionsView, self).dispatch(request, *args, **kwargs)
@@ -186,9 +182,6 @@ class SetupRolePermissionsView(AssignRemoveView):
         )
 
     def remove(self, item):
-        Permission.check_permissions(
-            self.request.user, permissions=(permission_permission_revoke,)
-        )
         permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.remove(permission)
 

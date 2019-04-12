@@ -7,7 +7,6 @@ from mayan.apps.user_management.permissions import permission_group_edit
 
 from .icons import icon_role_create, icon_role_list
 from .permissions import (
-    permission_permission_grant, permission_permission_revoke,
     permission_role_create, permission_role_delete, permission_role_edit,
     permission_role_view
 )
@@ -17,11 +16,11 @@ link_group_roles = Link(
     view='permissions:group_roles',
 )
 link_permission_grant = Link(
-    permissions=(permission_permission_grant,), text=_('Grant'),
+    permissions=(permission_role_edit,), text=_('Grant'),
     view='permissions:permission_multiple_grant'
 )
 link_permission_revoke = Link(
-    permissions=(permission_permission_revoke,), text=_('Revoke'),
+    permissions=(permission_role_edit,), text=_('Revoke'),
     view='permissions:permission_multiple_revoke'
 )
 link_role_create = Link(
@@ -46,6 +45,6 @@ link_role_groups = Link(
 )
 link_role_permissions = Link(
     args='object.id',
-    permissions=(permission_permission_grant, permission_permission_revoke),
+    permissions=(permission_role_edit,),
     text=_('Role permissions'), view='permissions:role_permissions',
 )
