@@ -4,7 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('metadata', _('Metadata'))
+namespace = PermissionNamespace(name='metadata', label=_('Metadata'))
+
 permission_metadata_document_edit = namespace.add_permission(
     name='metadata_document_edit', label=_('Edit a document\'s metadata')
 )
@@ -18,7 +19,10 @@ permission_metadata_document_view = namespace.add_permission(
     name='metadata_document_view', label=_('View metadata from a document')
 )
 
-setup_namespace = PermissionNamespace('metadata_setup', _('Metadata setup'))
+setup_namespace = PermissionNamespace(
+    name='metadata_setup', label=_('Metadata setup')
+)
+
 permission_metadata_type_edit = setup_namespace.add_permission(
     name='metadata_type_edit', label=_('Edit metadata types')
 )

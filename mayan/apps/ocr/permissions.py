@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('ocr', _('OCR'))
+namespace = PermissionNamespace(name='ocr', label=_('OCR'))
 
 permission_ocr_document = namespace.add_permission(
     name='ocr_document', label=_('Submit documents for OCR')

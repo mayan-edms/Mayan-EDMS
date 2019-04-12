@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('document_indexing', _('Indexing'))
+namespace = PermissionNamespace(name='document_indexing', label=_('Indexing'))
 
 permission_document_indexing_create = namespace.add_permission(
     name='document_index_create', label=_('Create new document indexes')

@@ -15,7 +15,7 @@ from mayan.apps.common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from mayan.apps.permissions import PermissionNamespace, Permission
+from mayan.apps.permissions import Permission, PermissionNamespace
 from mayan.apps.permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -183,7 +183,7 @@ class ACLPermissionsView(AssignRemoveView):
                 (force_text(permission.pk), permission) for permission in permissions
             ]
             results.append(
-                (PermissionNamespace.get(namespace), permission_options)
+                (PermissionNamespace.get(name=namespace), permission_options)
             )
 
         return results

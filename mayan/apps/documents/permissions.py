@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('documents', _('Documents'))
+namespace = PermissionNamespace(name='documents', label=_('Documents'))
 
 permission_document_create = namespace.add_permission(
     name='document_create', label=_('Create documents')
@@ -52,7 +52,7 @@ permission_empty_trash = namespace.add_permission(
 )
 
 setup_namespace = PermissionNamespace(
-    'documents_types', label=_('Document types')
+    name='documents_types', label=_('Document types')
 )
 permission_document_type_create = setup_namespace.add_permission(
     name='document_type_create', label=_('Create document types')

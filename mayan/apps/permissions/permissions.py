@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from . import PermissionNamespace
 
-namespace = PermissionNamespace('permissions', _('Permissions'))
+namespace = PermissionNamespace(name='permissions', label=_('Permissions'))
 
 permission_role_view = namespace.add_permission(
     name='role_view', label=_('View roles')

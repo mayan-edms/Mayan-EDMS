@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('acls', _('Access control lists'))
+namespace = PermissionNamespace(name='acls', label=_('Access control lists'))
 
 permission_acl_edit = namespace.add_permission(
     name='acl_edit', label=_('Edit ACLs')

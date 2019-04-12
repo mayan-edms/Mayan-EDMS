@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('django_gpg', _('Key management'))
+namespace = PermissionNamespace(name='django_gpg', label=_('Key management'))
 
 permission_key_delete = namespace.add_permission(
     name='key_delete', label=_('Delete keys')

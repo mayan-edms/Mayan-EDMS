@@ -4,7 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('sources_setup', _('Sources setup'))
+namespace = PermissionNamespace(name='sources_setup', label=_('Sources setup'))
+
 permission_sources_setup_create = namespace.add_permission(
     name='sources_setup_create', label=_('Create new document sources')
 )

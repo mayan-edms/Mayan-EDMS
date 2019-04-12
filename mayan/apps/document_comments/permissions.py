@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('comments', _('Comments'))
+namespace = PermissionNamespace(name='comments', label=_('Comments'))
 
 permission_comment_create = namespace.add_permission(
     name='comment_create', label=_('Create new comments')

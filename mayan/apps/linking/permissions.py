@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('linking', _('Smart links'))
+namespace = PermissionNamespace(name='linking', label=_('Smart links'))
 
 permission_smart_link_view = namespace.add_permission(
     name='smart_link_view', label=_('View existing smart links')

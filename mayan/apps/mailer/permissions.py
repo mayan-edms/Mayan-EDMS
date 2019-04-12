@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('mailing', _('Mailing'))
+namespace = PermissionNamespace(name='mailing', label=_('Mailing'))
 
 permission_mailing_link = namespace.add_permission(
     name='mail_link', label=_('Send document link via email')

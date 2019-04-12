@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('common', _('Common'))
+namespace = PermissionNamespace(name='common', label=_('Common'))
 
 permission_error_log_view = namespace.add_permission(
     name='error_log_view', label=_('View error log')

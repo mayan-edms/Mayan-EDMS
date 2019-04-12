@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace('task_manager', _('Task manager'))
+namespace = PermissionNamespace(name='task_manager', label=_('Task manager'))
 
 permission_task_view = namespace.add_permission(
     name='task_view', label=_('View tasks')
