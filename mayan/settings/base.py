@@ -62,7 +62,6 @@ ALLOWED_HOSTS = yaml_loads(
 INSTALLED_APPS = (
     # Placed at the top so it can override any template
     'mayan.apps.appearance',
-    'suit',
     # Django
     'django.contrib.admin',
     'django.contrib.admindocs',

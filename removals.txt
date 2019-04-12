@@ -1,5 +1,6 @@
 # Packages to be remove during upgrades
 cssmin
+django-suit
 django-celery
 django-compressor
 django-filetransfers

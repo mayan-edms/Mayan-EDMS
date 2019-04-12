@@ -36,12 +36,12 @@ Other changes
 * Split workflow views into separate modules.
 * Change how the HOME_VIEW setting is defined. HOME_VIEW is now COMMON_HOME_VIEW.
 * Split trashed document views into their own module.
-
+* Remove Django suit from requirements.
 
 Removals
 --------
 
-* None
+* Django suit third party app.
 
 
 Upgrading from a previous version
