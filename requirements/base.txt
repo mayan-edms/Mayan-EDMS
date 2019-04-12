@@ -36,7 +36,7 @@ mock==2.0.0
 node-semver==0.6.1
 
 pathlib2==2.3.3
-pycountry==18.5.26
+pycountry==18.12.8
 PyPDF2==1.26.0
 pyocr==0.5.2
 python-dateutil==2.7.3
