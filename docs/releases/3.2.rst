@@ -46,6 +46,8 @@ Other changes
 * Change how the HOME_VIEW setting is defined. HOME_VIEW is now COMMON_HOME_VIEW.
 * Split trashed document views into their own module.
 * Remove Django suit from requirements.
+* Move API documentation generation from the root URLs module
+  to the API app's URLs module.
 
 Removals
 --------

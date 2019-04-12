@@ -21,7 +21,9 @@
 * Show entire sys trace when an App import exception is raised.
 * Remove Django suit from requirements.
 * Remove development URLs from main URL file.
-    
+* Move API documentation generation from the root URLs module
+  to the API app's URLs module. 
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

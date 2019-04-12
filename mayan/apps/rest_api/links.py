@@ -15,10 +15,10 @@ link_api = Link(
 )
 link_api_documentation = Link(
     icon_class=icon_api_documentation, tags='new_window',
-    text=_('API Documentation (Swagger)'), view='schema-swagger-ui'
+    text=_('API Documentation (Swagger)'), view='rest_api:schema-swagger-ui'
 )
 
 link_api_documentation_redoc = Link(
     icon_class=icon_api_documentation_redoc, tags='new_window',
-    text=_('API Documentation (ReDoc)'), view='schema-redoc'
+    text=_('API Documentation (ReDoc)'), view='rest_api:schema-redoc'
 )
