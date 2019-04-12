@@ -24,7 +24,7 @@ drf-yasg==1.6.0
 
 flanker==0.9.0
 flex==6.14.0
-furl==1.2
+furl==2.0.0
 fusepy==2.0.4
 
 gevent==1.3.5
