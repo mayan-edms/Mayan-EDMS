@@ -4,6 +4,11 @@ import logging
 
 import yaml
 
+try:
+    from yaml import CSafeLoader as SafeLoader, CDumper as Dumper
+except ImportError:
+    from yaml import SafeLoader, Dumper
+
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 
@@ -18,7 +23,9 @@ class TransformationManager(models.Manager):
 
         self.create(
             content_type=content_type, object_id=obj.pk,
-            name=transformation.name, arguments=yaml.safe_dump(arguments)
+            name=transformation.name, arguments=yaml.dump(
+                data=arguments, Dumper=Dumper
+            )
         )
 
     def copy(self, source, targets):
@@ -89,7 +96,10 @@ class TransformationManager(models.Manager):
                         # Some transformations don't require arguments
                         # return an empty dictionary as ** doesn't allow None
                         if transformation.arguments:
-                            kwargs = yaml.safe_load(transformation.arguments)
+                            kwargs = yaml.load(
+                                stream=transformation.arguments,
+                                Loader=SafeLoader
+                            )
                         else:
                             kwargs = {}
 

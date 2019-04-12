@@ -8,6 +8,11 @@ import sys
 
 import yaml
 
+try:
+    from yaml import CSafeLoader as SafeLoader, CDumper as Dumper
+except ImportError:
+    from yaml import SafeLoader, Dumper
+
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
@@ -76,14 +81,14 @@ class Setting(object):
 
     @staticmethod
     def deserialize_value(value):
-        return yaml.safe_load(value)
+        return yaml.load(stream=value, Loader=SafeLoader)
 
     @staticmethod
     def serialize_value(value):
         if isinstance(value, Promise):
             value = force_text(value)
 
-        result = yaml.safe_dump(value, allow_unicode=True)
+        result = yaml.dump(data=value, allow_unicode=True, Dumper=Dumper)
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
         if force_text(result).endswith('...\n'):
@@ -103,7 +108,9 @@ class Setting(object):
                     else:
                         dictionary[setting.global_name] = setting.value
 
-        return yaml.safe_dump(dictionary, default_flow_style=False)
+        return yaml.dump(
+            data=dictionary, default_flow_style=False, Dumper=Dumper
+        )
 
     @classmethod
     def get(cls, global_name):

@@ -5,6 +5,10 @@ import logging
 import poplib
 
 import yaml
+try:
+    from yaml import CSafeLoader as SafeLoader
+except ImportError:
+    from yaml import SafeLoader
 
 from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
@@ -129,8 +133,8 @@ class EmailBaseModel(IntervalBaseModel):
                 label = message.detected_file_name or 'attachment-{}'.format(counter)
                 with ContentFile(content=message.body, name=label) as file_object:
                     if label == source.metadata_attachment_name:
-                        metadata_dictionary = yaml.safe_load(
-                            file_object.read()
+                        metadata_dictionary = yaml.load(
+                            stream=file_object.read(), Loader=SafeLoader
                         )
                         logger.debug(
                             'Got metadata dictionary: %s', metadata_dictionary
