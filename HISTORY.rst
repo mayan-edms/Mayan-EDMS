@@ -15,6 +15,7 @@
 * Remove catch all exception handling for the check in and 
   check out views.
 * Improve checkouts tests code reducing redundant code.
+* Change how the HOME_VIEW setting is defined. 
 
 3.1.11 (2019-04-XX)
 ===================

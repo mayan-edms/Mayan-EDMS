@@ -16,7 +16,9 @@ from django.utils.translation import ugettext_lazy as _
 from stronghold.decorators import public
 
 import mayan
-from mayan.apps.common.settings import setting_project_title, setting_project_url
+from mayan.apps.common.settings import (
+    setting_home_view, setting_project_title, setting_project_url
+)
 
 from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
 from .settings import setting_login_method, setting_maximum_session_length
@@ -84,7 +86,7 @@ def password_change_view(request):
                 'Changing the password is not allowed for this account.'
             )
         )
-        return HttpResponseRedirect(reverse(settings.HOME_VIEW))
+        return HttpResponseRedirect(reverse(setting_home_view.view))
 
     return password_change(
         request, extra_context=extra_context,

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+DEFAULT_COMMON_HOME_VIEW = 'common:home'
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 MAYAN_PYPI_NAME = 'mayan-edms'

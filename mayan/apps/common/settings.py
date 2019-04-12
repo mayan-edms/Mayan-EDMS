@@ -9,6 +9,9 @@ from django.utils.translation import ugettext_lazy as _
 import mayan
 from mayan.apps.smart_settings import Namespace
 
+from .literals import DEFAULT_COMMON_HOME_VIEW
+
+
 namespace = Namespace(name='common', label=_('Common'))
 
 setting_auto_logging = namespace.add_setting(
@@ -23,6 +26,14 @@ settings_db_sync_task_delay = namespace.add_setting(
         'Time to delay background tasks that depend on a database commit to '
         'propagate.'
     )
+)
+setting_home_view = namespace.add_setting(
+    global_name='COMMON_HOME_VIEW',
+    default=DEFAULT_COMMON_HOME_VIEW, help_text=_(
+        'Name of the view attached to the branch anchor in the main menu. '
+        'This is also the view to which users will be redirected after '
+        'log in.'
+    ),
 )
 setting_paginate_by = namespace.add_setting(
     global_name='COMMON_PAGINATE_BY',
@@ -232,14 +243,6 @@ setting_django_file_upload_max_memory_size = namespace.add_setting(
         'that an upload will be before it gets streamed to the file '
         'system. See Managing files for details. See also '
         'DATA_UPLOAD_MAX_MEMORY_SIZE.'
-    ),
-)
-# Not really a Django setting, but since it is flat and defined in setting.py
-# We need to put it here.
-setting_home_view = namespace.add_setting(
-    global_name='HOME_VIEW',
-    default=settings.HOME_VIEW, help_text=_(
-        'Name of the view attached to the branch anchor in the main menu.'
     ),
 )
 setting_django_installed_apps = namespace.add_setting(

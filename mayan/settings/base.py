@@ -250,7 +250,6 @@ TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
 
 # --------- Django -------------------
 
-HOME_VIEW = env('MAYAN_HOME_VIEW', default='common:home')
 LOGIN_URL = env('MAYAN_LOGIN_URL', default='authentication:login_view')
 LOGIN_REDIRECT_URL = env('MAYAN_LOGIN_REDIRECT_URL', default='common:root')
 INTERNAL_IPS = ('127.0.0.1',)

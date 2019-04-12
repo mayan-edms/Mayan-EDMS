@@ -3,13 +3,14 @@ from __future__ import unicode_literals
 import hashlib
 
 from django.apps import apps
-from django.conf import settings
 from django.db import models
 from django.template import loader
 from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext
+
+from .settings import setting_home_view
 
 
 @python_2_unicode_compatible
@@ -397,7 +398,7 @@ class Template(object):
 
     def render(self, request):
         context = {
-            'home_view': settings.HOME_VIEW,
+            'home_view': setting_home_view.value,
         }
         result = TemplateResponse(
             request=request,
