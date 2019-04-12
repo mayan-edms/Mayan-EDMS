@@ -28,7 +28,7 @@ furl==2.0.0
 fusepy==3.0.1
 
 gevent==1.4.0
-graphviz==0.8.4
+graphviz==0.10.1
 gunicorn==19.9.0
 
 mock==2.0.0
