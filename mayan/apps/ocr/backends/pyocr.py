@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from contextlib import contextmanager
+import locale
 import logging
 
 from PIL import Image
@@ -10,6 +12,14 @@ from ..classes import OCRBackendBase
 from ..exceptions import OCRError
 
 logger = logging.getLogger(__name__)
+
+
+@contextmanager
+def c_locale():
+    locale_current = locale.getlocale()
+    locale.setlocale(locale.LC_ALL, 'C')
+    yield
+    locale.setlocale(locale.LC_ALL, locale_current)
 
 
 class PyOCR(OCRBackendBase):
@@ -31,7 +41,9 @@ class PyOCR(OCRBackendBase):
 
         logger.debug('Will use tool \'%s\'', self.tool.get_name())
 
-        self.languages = self.tool.get_available_languages()
+        with c_locale():
+            self.languages = self.tool.get_available_languages()
+
         logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def execute(self, *args, **kwargs):
@@ -42,11 +54,12 @@ class PyOCR(OCRBackendBase):
 
         image = Image.open(self.converter.get_page())
         try:
-            result = self.tool.image_to_string(
-                image,
-                lang=self.language,
-                builder=pyocr.builders.TextBuilder()
-            )
+            with c_locale():
+                result = self.tool.image_to_string(
+                    image,
+                    lang=self.language,
+                    builder=pyocr.builders.TextBuilder()
+                )
         except Exception as exception:
             error_message = (
                 'Exception calling pyocr with language option: {}; {}'
