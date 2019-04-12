@@ -20,7 +20,8 @@
 * Split trashed document views into their own module.
 * Show entire sys trace when an App import exception is raised.
 * Remove Django suit from requirements.
-
+* Remove development URLs from main URL file.
+    
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

@@ -27,6 +27,15 @@ The role permission grant and revoke permissions were removed. Instead only the
 role edit permission is required to grant or revoke permissions to a role.
 
 
+Development
+^^^^^^^^^^^
+URLs: Remove development URLs from main URL file
+
+Move the development URL definitions for Rosetta and Debug toolbar
+to a separate URL file. Convert the single urls.py to a module to
+allow multiple URL files to be used.
+
+
 Other changes
 ^^^^^^^^^^^^^
 

@@ -10,14 +10,26 @@ CELERY_ALWAYS_EAGER = True
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = CELERY_ALWAYS_EAGER
 
 if 'rosetta' not in INSTALLED_APPS:
-    INSTALLED_APPS += (
-        'rosetta',
-    )
+    try:
+        import rosetta
+    except ImportError:
+        pass
+    else:
+        INSTALLED_APPS += (
+            'rosetta',
+        )
 
 if 'django_extensions' not in INSTALLED_APPS:
-    INSTALLED_APPS += (
-        'django_extensions',
-    )
+    try:
+        import django_extensions
+    except ImportError:
+        pass
+    else:
+        INSTALLED_APPS += (
+            'django_extensions',
+        )
+
+ROOT_URLCONF = 'mayan.urls.development'
 
 TEMPLATES[0]['OPTIONS']['loaders'] = (
     'django.template.loaders.filesystem.Loader',
