@@ -33,7 +33,7 @@ gunicorn==19.9.0
 
 mock==2.0.0
 
-node-semver==0.3.0
+node-semver==0.6.1
 
 pathlib2==2.3.2
 pycountry==18.5.26
