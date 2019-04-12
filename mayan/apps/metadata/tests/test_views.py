@@ -41,10 +41,9 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
-
-    def test_metadata_add_view_no_permission(self):
         self.login_user()
 
+    def test_metadata_add_view_no_permission(self):
         self.grant_permission(permission=permission_document_view)
 
         response = self.post(
@@ -58,8 +57,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(len(self.document.metadata.all()), 0)
 
     def test_metadata_add_view_with_permission(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
@@ -75,8 +72,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_metadata_edit_after_document_type_change(self):
         # Gitlab issue #204
         # Problems to add required metadata after changing the document type
-
-        self.login_user()
 
         self.grant_permission(permission=permission_document_properties_edit)
         self.grant_permission(permission=permission_metadata_document_edit)
@@ -120,8 +115,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
     def test_metadata_remove_view_no_permission(self):
-        self.login_user()
-
         document_metadata = self.document.metadata.create(
             metadata_type=self.metadata_type, value=''
         )
@@ -156,8 +149,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def test_metadata_remove_view_with_permission(self):
         # Silence unrelated logging
         logging.getLogger('navigation.classes').setLevel(logging.CRITICAL)
-
-        self.login_user()
 
         document_metadata = self.document.metadata.create(
             metadata_type=self.metadata_type, value=''
@@ -195,8 +186,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(len(self.document.metadata.all()), 0)
 
     def test_multiple_document_metadata_edit(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
@@ -242,8 +231,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
     def test_multiple_document_metadata_remove(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_remove)
 
@@ -283,8 +270,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(document_2.metadata.count(), 0)
 
     def test_multiple_document_metadata_add(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
@@ -304,8 +289,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'Edit', status_code=200)
 
     def test_single_document_multiple_metadata_add_view(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_metadata_document_add)
         self.grant_permission(permission=permission_metadata_document_edit)
@@ -337,16 +320,16 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
     auto_create_document_type = False
     auto_upload_document = False
 
-    def test_metadata_type_create_view_no_permission(self):
+    def setUp(self):
+        super(MetadataTypeViewTestCase, self).setUp()
         self.login_user()
 
+    def test_metadata_type_create_view_no_permission(self):
         response = self._request_metadata_type_create_view()
 
         self.assertEqual(response.status_code, 403)
 
     def test_metadata_type_create_view_with_access(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_metadata_type_create)
         response = self._request_metadata_type_create_view()
 
@@ -363,7 +346,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_delete_view_no_permission(self):
-        self.login_user()
         self._create_metadata_type()
 
         response = self._request_metadata_type_delete_view()
@@ -380,7 +362,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_delete_view_with_access(self):
-        self.login_user()
         self._create_metadata_type()
 
         self.grant_access(
@@ -394,7 +375,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         self.assertEqual(MetadataType.objects.count(), 0)
 
     def test_metadata_type_edit_view_no_permission(self):
-        self.login_user()
         self._create_metadata_type()
 
         response = self._request_metadata_type_edit_view()
@@ -411,7 +391,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_edit_view_with_access(self):
-        self.login_user()
         self._create_metadata_type()
 
         self.grant_access(
@@ -433,7 +412,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_list_view_no_permission(self):
-        self.login_user()
         self._create_metadata_type()
 
         response = self._request_metadata_type_list_view()
@@ -442,7 +420,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_list_view_with_access(self):
-        self.login_user()
         self._create_metadata_type()
 
         self.grant_access(
@@ -455,7 +432,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         )
 
     def test_metadata_type_relationship_view_no_permission(self):
-        self.login_user()
         self._create_metadata_type()
         self._create_document_type()
         self.upload_document()
@@ -469,7 +445,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         self.assertEqual(self.document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_document_type_access(self):
-        self.login_user()
         self._create_metadata_type()
         self._create_document_type()
         self.upload_document()
@@ -487,7 +462,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         self.assertEqual(self.document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_metadata_type_access(self):
-        self.login_user()
         self._create_metadata_type()
         self._create_document_type()
         self.upload_document()
@@ -505,7 +479,6 @@ class MetadataTypeViewTestCase(DocumentTestMixin, MetadataTestsMixin, GenericVie
         self.assertEqual(self.document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
-        self.login_user()
         self._create_metadata_type()
         self._create_document_type()
         self.upload_document()

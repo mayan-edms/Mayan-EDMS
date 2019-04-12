@@ -232,6 +232,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
 
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
+        self.login_user()
 
     def tearDown(self):
         fs_cleanup(self.temporary_directory)
@@ -245,8 +246,6 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         )
 
     def test_staging_folder_delete_no_permission(self):
-        self.login_user()
-
         staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
             folder_path=self.temporary_directory,
@@ -265,8 +264,6 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         self.assertEqual(len(list(staging_folder.get_files())), 1)
 
     def test_staging_folder_delete_with_permission(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_staging_file_delete)
 
         staging_folder = StagingFolderSource.objects.create(
@@ -288,6 +285,10 @@ class StagingFolderViewTestCase(GenericViewTestCase):
 
 
 class SourcesTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(SourcesTestCase, self).setUp()
+        self.login_user()
+
     def _create_web_source(self):
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
@@ -300,15 +301,11 @@ class SourcesTestCase(GenericDocumentViewTestCase):
     def test_source_list_view_no_permission(self):
         self._create_web_source()
 
-        self.login_user()
-
         response = self._request_setup_source_list_view()
         self.assertEqual(response.status_code, 403)
 
     def test_source_list_view_with_permission(self):
         self._create_web_source()
-
-        self.login_user()
 
         self.grant_permission(permission=permission_sources_setup_view)
 
@@ -327,8 +324,6 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         )
 
     def test_source_create_view_no_permission(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_sources_setup_view)
 
         response = self._request_setup_source_create_view()
@@ -337,8 +332,6 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_create_view_with_permission(self):
-        self.login_user()
-
         self.grant_permission(permission=permission_sources_setup_create)
         self.grant_permission(permission=permission_sources_setup_view)
 
@@ -358,8 +351,6 @@ class SourcesTestCase(GenericDocumentViewTestCase):
     def test_source_delete_view_with_permission(self):
         self._create_web_source()
 
-        self.login_user()
-
         self.grant_permission(permission=permission_sources_setup_delete)
         self.grant_permission(permission=permission_sources_setup_view)
 
@@ -369,8 +360,6 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
     def test_source_delete_view_no_permission(self):
         self._create_web_source()
-
-        self.login_user()
 
         self.grant_permission(permission=permission_sources_setup_view)
 

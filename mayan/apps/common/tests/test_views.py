@@ -13,9 +13,11 @@ from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
 class CommonViewTestCase(GenericViewTestCase):
-    def test_about_view(self):
+    def setUp(self):
+        super(CommonViewTestCase, self).setUp()
         self.login_user()
 
+    def test_about_view(self):
         response = self.get('common:about_view')
         self.assertContains(response, text='About', status_code=200)
 
@@ -43,7 +45,6 @@ class CommonViewTestCase(GenericViewTestCase):
     def test_object_error_list_view_with_permissions(self):
             self._create_error_log_entry()
 
-            self.login_user()
             self.grant_access(
                 obj=self.user, permission=permission_error_log_view
             )
@@ -57,8 +58,6 @@ class CommonViewTestCase(GenericViewTestCase):
 
     def test_object_error_list_view_no_permissions(self):
             self._create_error_log_entry()
-
-            self.login_user()
 
             response = self._request_object_error_log_list()
 

@@ -13,13 +13,16 @@ from ..permissions import permission_acl_edit, permission_acl_view
 
 
 class ACLsLinksTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(ACLsLinksTestCase, self).setUp()
+        self.login_user()
+
     def test_document_acl_create_link(self):
         acl = AccessControlList.objects.create(
             content_object=self.document, role=self.role
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login_user()
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()
@@ -44,7 +47,6 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login_user()
 
         self.add_test_view(test_object=acl)
         context = self.get_test_view()
@@ -62,7 +64,6 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_edit.stored_permission)
-        self.login_user()
 
         self.add_test_view(test_object=acl)
         context = self.get_test_view()
@@ -80,7 +81,6 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         )
 
         acl.permissions.add(permission_acl_view.stored_permission)
-        self.login_user()
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()

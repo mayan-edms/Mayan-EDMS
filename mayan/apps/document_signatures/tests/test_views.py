@@ -30,6 +30,10 @@ TEST_SIGNED_DOCUMENT_COUNT = 2
 
 
 class SignaturesViewTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(SignaturesViewTestCase, self).setUp()
+        self.login_user()
+
     def _request_document_version_signature_list_view(self, document):
         return self.get(
             viewname='signatures:document_version_signature_list',
@@ -51,8 +55,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login_user()
-
         response = self._request_document_version_signature_list_view(
             document=document
         )
@@ -72,8 +74,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 document_version=document.latest_version,
                 signature_file=File(file_object)
             )
-
-        self.login_user()
 
         self.grant_access(
             obj=document,
@@ -107,8 +107,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login_user()
-
         response = self._request_document_version_signature_details_view(
             signature=signature
         )
@@ -128,8 +126,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 document_version=document.latest_version,
                 signature_file=File(file_object)
             )
-
-        self.login_user()
 
         self.grant_access(
             obj=document,
@@ -157,8 +153,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 file_object=file_object
             )
 
-        self.login_user()
-
         response = self._request_document_version_signature_upload_view(
             document_version=document.latest_version
         )
@@ -170,8 +164,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             document = self.document_type.new_document(
                 file_object=file_object
             )
-
-        self.login_user()
 
         self.grant_access(
             obj=document,
@@ -202,8 +194,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login_user()
-
         response = self._request_document_version_signature_download_view(
             signature=signature
         )
@@ -220,8 +210,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 document_version=document.latest_version,
                 signature_file=File(file_object)
             )
-
-        self.login_user()
 
         self.grant_access(
             obj=document,
@@ -260,8 +248,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 signature_file=File(file_object)
             )
 
-        self.login_user()
-
         self.grant_access(
             obj=document,
             permission=permission_document_version_signature_view
@@ -287,8 +273,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
                 document_version=document.latest_version,
                 signature_file=File(file_object)
             )
-
-        self.login_user()
 
         self.grant_access(
             obj=document,
@@ -338,8 +322,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         DocumentVersion._post_save_hooks = old_hooks
 
-        self.login_user()
-
         response = self._request_all_document_version_signature_verify_view()
         self.assertEqual(response.status_code, 403)
 
@@ -375,8 +357,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         )
 
         DocumentVersion._post_save_hooks = old_hooks
-
-        self.login_user()
 
         self.grant_permission(
             permission=permission_document_version_signature_verify

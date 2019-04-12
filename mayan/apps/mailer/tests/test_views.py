@@ -23,6 +23,10 @@ from .mixins import MailerTestMixin
 
 
 class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
+    def setUp(self):
+        super(MailerViewsTestCase, self).setUp()
+        self.login_user()
+
     def _request_document_link_send(self):
         return self.post(
             'mailer:send_document_link', args=(self.document.pk,),
@@ -72,7 +76,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_link_view_no_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         response = self._request_document_link_send()
 
@@ -82,7 +85,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_link_view_with_permission(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_link)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -94,7 +96,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_document_view_no_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         response = self._request_document_send()
         self.assertContains(
@@ -103,7 +104,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_document_view_with_permission(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_send_document)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -114,7 +114,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
     def test_user_mailer_create_view_no_permissions(self):
-        self.login_user()
         self.grant_permission(permission=permission_user_mailer_view)
 
         response = self._request_user_mailer_create()
@@ -125,7 +124,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(UserMailer.objects.count(), 0)
 
     def test_user_mailer_create_view_with_permissions(self):
-        self.login_user()
         self.grant_permission(permission=permission_user_mailer_create)
         self.grant_permission(permission=permission_user_mailer_view)
 
@@ -139,7 +137,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_delete_view_no_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         self._request_user_mailer_delete()
 
@@ -149,7 +146,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_delete_view_with_access(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_access(
             obj=self.user_mailer, permission=permission_user_mailer_delete
@@ -161,7 +157,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_list_view_no_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         response = self.get(
             'mailer:user_mailer_list',
@@ -172,7 +167,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_list_view_with_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_user_mailer_view)
 
@@ -186,7 +180,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_test_view_no_permissions(self):
         self._create_user_mailer()
-        self.login_user()
 
         response = self._request_user_mailer_test()
 
@@ -196,7 +189,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_user_mailer_test_view_with_access(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_access(
             obj=self.user_mailer, permission=permission_user_mailer_use
@@ -210,7 +202,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_send_multiple_recipients_comma(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_access(
             obj=self.user_mailer, permission=permission_user_mailer_use
@@ -226,7 +217,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_send_multiple_recipients_mixed(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_access(
             obj=self.user_mailer, permission=permission_user_mailer_use
@@ -242,7 +232,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_send_multiple_recipients_semicolon(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_access(
             obj=self.user_mailer, permission=permission_user_mailer_use
@@ -258,7 +247,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_link_view_recipients_comma(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_link)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -273,7 +261,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_link_view_recipients_mixed(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_link)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -288,7 +275,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_link_view_recipients_semicolon(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_link)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -303,7 +289,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_document_view_recipients_comma(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_send_document)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -318,7 +303,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_document_view_recipients_mixed(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_send_document)
         self.grant_permission(permission=permission_user_mailer_use)
@@ -333,7 +317,6 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
 
     def test_mail_document_view_recipients_semicolon(self):
         self._create_user_mailer()
-        self.login_user()
 
         self.grant_permission(permission=permission_mailing_send_document)
         self.grant_permission(permission=permission_user_mailer_use)

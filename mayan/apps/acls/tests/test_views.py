@@ -19,10 +19,9 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
             'model': content_type.model,
             'object_id': self.document.pk
         }
-
-    def test_acl_create_view_no_permission(self):
         self.login_user()
 
+    def test_acl_create_view_no_permission(self):
         response = self.get(
             viewname='acls:acl_create', kwargs=self.view_arguments, data={
                 'role': self.role.pk
@@ -33,8 +32,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), 0)
 
     def test_acl_create_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_acl_edit.stored_permission
         )
@@ -50,8 +47,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_acl_create_view_post_no_permission(self):
-        self.login_user()
-
         response = self.post(
             viewname='acls:acl_create', kwargs=self.view_arguments, data={
                 'role': self.role.pk
@@ -62,8 +57,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), 0)
 
     def test_acl_create_view_with_post_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_acl_edit.stored_permission
         )
@@ -86,8 +79,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
             content_object=self.document, role=self.role
         )
 
-        self.login_user()
-
         self.role.permissions.add(
             permission_acl_edit.stored_permission
         )
@@ -109,8 +100,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Test creating an ACL entry for an object with no model permissions.
         Result: Should display a blank permissions list (not optgroup)
         """
-        self.login_user()
-
         self.role.permissions.add(
             permission_acl_edit.stored_permission
         )
@@ -135,8 +124,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), 1)
 
     def test_acl_list_view_no_permission(self):
-        self.login_user()
-
         document = self.document.add_as_recent_document_for_user(
             self.user
         ).document
@@ -162,8 +149,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertNotContains(response, text='otal: 1', status_code=403)
 
     def test_acl_list_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(
             permission_acl_view.stored_permission
         )

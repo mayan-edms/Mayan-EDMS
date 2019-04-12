@@ -12,9 +12,11 @@ from .mixins import TagTestMixin
 
 
 class TagEventsTestCase(TagTestMixin, GenericDocumentViewTestCase):
-    def test_tag_create_event_no_permissions(self):
+    def setUp(self):
+        super(TagEventsTestCase, self).setUp()
         self.login_user()
 
+    def test_tag_create_event_no_permissions(self):
         Action.objects.all().delete()
 
         response = self._request_tag_create_view()
@@ -22,8 +24,6 @@ class TagEventsTestCase(TagTestMixin, GenericDocumentViewTestCase):
         self.assertEqual(Action.objects.count(), 0)
 
     def test_tag_create_event_with_permissions(self):
-        self.login_user()
-
         Action.objects.all().delete()
 
         self.grant_permission(permission=permission_tag_create)
@@ -43,8 +43,6 @@ class TagEventsTestCase(TagTestMixin, GenericDocumentViewTestCase):
     def test_tag_edit_event_no_permissions(self):
         self._create_tag()
 
-        self.login_user()
-
         Action.objects.all().delete()
 
         response = self._request_tag_edit_view()
@@ -53,8 +51,6 @@ class TagEventsTestCase(TagTestMixin, GenericDocumentViewTestCase):
 
     def test_tag_edit_event_with_access(self):
         self._create_tag()
-
-        self.login_user()
 
         Action.objects.all().delete()
 

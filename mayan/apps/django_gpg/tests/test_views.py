@@ -11,10 +11,12 @@ from .literals import TEST_KEY_DATA, TEST_KEY_FINGERPRINT
 
 
 class KeyViewTestCase(GenericViewTestCase):
+    def setUp(self):
+        super(KeyViewTestCase, self).setUp()
+        self.login_user()
+
     def test_key_download_view_no_permission(self):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
-
-        self.login_user()
 
         response = self.get(
             viewname='django_gpg:key_download', args=(key.pk,)
@@ -24,8 +26,6 @@ class KeyViewTestCase(GenericViewTestCase):
 
     def test_key_download_view_with_permission(self):
         key = Key.objects.create(key_data=TEST_KEY_DATA)
-
-        self.login_user()
 
         self.role.permissions.add(permission_key_download.stored_permission)
 
@@ -41,8 +41,6 @@ class KeyViewTestCase(GenericViewTestCase):
         )
 
     def test_key_upload_view_no_permission(self):
-        self.login_user()
-
         response = self.post(
             viewname='django_gpg:key_upload', data={'key_data': TEST_KEY_DATA}
         )
@@ -51,8 +49,6 @@ class KeyViewTestCase(GenericViewTestCase):
         self.assertEqual(Key.objects.count(), 0)
 
     def test_key_upload_view_with_permission(self):
-        self.login_user()
-
         self.role.permissions.add(permission_key_upload.stored_permission)
 
         response = self.post(
