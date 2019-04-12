@@ -76,7 +76,7 @@ class SourceLogListView(SingleObjectListView):
 
     def get_source(self):
         return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
         )
 
 
@@ -112,7 +112,7 @@ class UploadBaseView(MultiFormView):
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
             self.source = get_object_or_404(
-                Source.objects.filter(enabled=True).select_subclasses(),
+                klass=Source.objects.filter(enabled=True).select_subclasses(),
                 pk=kwargs['source_id']
             )
         else:
@@ -198,7 +198,7 @@ class UploadInteractiveView(UploadBaseView):
         self.subtemplates_list = []
 
         self.document_type = get_object_or_404(
-            DocumentType,
+            klass=DocumentType,
             pk=self.request.GET.get(
                 'document_type_id', self.request.POST.get('document_type_id')
             )
@@ -369,7 +369,9 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.subtemplates_list = []
 
-        self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
+        self.document = get_object_or_404(
+            klass=Document, pk=kwargs['document_pk']
+        )
 
         # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
@@ -492,7 +494,7 @@ class StagingFileDeleteView(SingleObjectDeleteView):
 
     def get_source(self):
         return get_object_or_404(
-            StagingFolderSource, pk=self.kwargs['pk']
+            klass=StagingFolderSource, pk=self.kwargs['pk']
         )
 
 
@@ -519,7 +521,9 @@ class SetupSourceCheckView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
     def view_action(self):
         task_check_interval_source.apply_async(
@@ -553,7 +557,7 @@ class SetupSourceDeleteView(SingleObjectDeleteView):
 
     def get_object(self):
         return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
         )
 
     def get_form_class(self):
@@ -572,7 +576,7 @@ class SetupSourceEditView(SingleObjectEditView):
 
     def get_object(self):
         return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+            klass=Source.objects.select_subclasses(), pk=self.kwargs['pk']
         )
 
     def get_form_class(self):

@@ -32,7 +32,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         self.transformation = get_object_or_404(
-            Transformation, pk=self.kwargs['pk']
+            klass=Transformation, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
@@ -80,7 +80,7 @@ class TransformationCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
@@ -139,7 +139,7 @@ class TransformationEditView(SingleObjectEditView):
 
     def dispatch(self, request, *args, **kwargs):
         self.transformation = get_object_or_404(
-            Transformation, pk=self.kwargs['pk']
+            klass=Transformation, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
@@ -188,7 +188,7 @@ class TransformationEditView(SingleObjectEditView):
 class TransformationListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 

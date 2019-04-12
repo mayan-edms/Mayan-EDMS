@@ -124,7 +124,7 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy('documents:document_type_list')
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -153,7 +153,7 @@ class DocumentOCRErrorsListView(SingleObjectListView):
     object_permission = permission_ocr_document
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {

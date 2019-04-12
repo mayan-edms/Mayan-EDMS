@@ -146,7 +146,7 @@ class APIUserGroupList(generics.ListCreateAPIView):
         else:
             permission = permission_user_edit
 
-        user = get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+        user = get_object_or_404(klass=get_user_model(), pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=(permission,), user=self.request.user,

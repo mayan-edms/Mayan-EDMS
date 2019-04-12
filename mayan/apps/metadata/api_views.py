@@ -39,7 +39,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             permission_required = permission_metadata_document_add
 
         document = get_object_or_404(
-            Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_pk']
         )
 
         AccessControlList.objects.check_access(
@@ -99,7 +99,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
             permission_required = permission_metadata_document_remove
 
         document = get_object_or_404(
-            Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_pk']
         )
 
         AccessControlList.objects.check_access(
@@ -171,7 +171,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
             permission_required = permission_document_type_edit
 
         document_type = get_object_or_404(
-            DocumentType, pk=self.kwargs['document_type_pk']
+            klass=DocumentType, pk=self.kwargs['document_type_pk']
         )
 
         AccessControlList.objects.check_access(
@@ -228,7 +228,7 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
             permission_required = permission_document_type_edit
 
         document_type = get_object_or_404(
-            DocumentType, pk=self.kwargs['document_type_pk']
+            klass=DocumentType, pk=self.kwargs['document_type_pk']
         )
 
         AccessControlList.objects.check_access(

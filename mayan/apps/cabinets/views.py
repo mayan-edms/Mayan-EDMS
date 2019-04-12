@@ -133,7 +133,7 @@ class CabinetDetailView(DocumentListView):
         return context
 
     def get_object(self):
-        cabinet = get_object_or_404(Cabinet, pk=self.kwargs['pk'])
+        cabinet = get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
 
         if cabinet.is_root_node():
             permission_object = cabinet
@@ -188,7 +188,7 @@ class CabinetListView(SingleObjectListView):
 
 class DocumentCabinetListView(CabinetListView):
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_document_view, user=request.user,

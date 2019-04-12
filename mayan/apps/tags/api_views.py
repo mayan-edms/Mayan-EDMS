@@ -86,7 +86,7 @@ class APITagDocumentListView(generics.ListAPIView):
     serializer_class = DocumentSerializer
 
     def get_queryset(self):
-        tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
+        tag = get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_tag_view, user=self.request.user, obj=tag
@@ -107,7 +107,7 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
     }
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
     def get_queryset(self):
         document = self.get_document()
@@ -162,7 +162,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     serializer_class = DocumentTagSerializer
 
     def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        document = get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_document_view, user=self.request.user,

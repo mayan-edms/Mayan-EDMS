@@ -33,7 +33,7 @@ class APIDocumentCabinetListView(generics.ListAPIView):
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
 
     def get_queryset(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
             permissions=permission_document_view, user=self.request.user,
             obj=document
@@ -135,7 +135,7 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         return context
 
     def get_cabinet(self):
-        return get_object_or_404(Cabinet, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         cabinet = self.get_cabinet()
@@ -163,7 +163,7 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
     serializer_class = CabinetDocumentSerializer
 
     def get_cabinet(self):
-        return get_object_or_404(Cabinet, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         return self.get_cabinet().documents.all()

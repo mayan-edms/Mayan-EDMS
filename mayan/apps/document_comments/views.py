@@ -35,7 +35,7 @@ class DocumentCommentCreateView(SingleObjectCreateView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -90,7 +90,7 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 
 class DocumentCommentListView(SingleObjectListView):
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {

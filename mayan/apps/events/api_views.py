@@ -27,7 +27,7 @@ class APIObjectEventListView(generics.ListAPIView):
 
     def get_object(self):
         content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 

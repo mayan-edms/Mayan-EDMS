@@ -33,10 +33,10 @@ logger = logging.getLogger(__name__)
 class ResolvedSmartLinkView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(
-            Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_pk']
         )
         self.smart_link = get_object_or_404(
-            SmartLink, pk=self.kwargs['smart_link_pk']
+            klass=SmartLink, pk=self.kwargs['smart_link_pk']
         )
 
         AccessControlList.objects.check_access(
@@ -114,7 +114,7 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
     def left_list(self):
         # TODO: filter document type list by user ACL
@@ -166,7 +166,7 @@ class SmartLinkListView(SingleObjectListView):
 
 class DocumentSmartLinkListView(SmartLinkListView):
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_document_view, user=request.user,
@@ -262,7 +262,7 @@ class SmartLinkConditionListView(SingleObjectListView):
         return self.get_smart_link().conditions.all()
 
     def get_smart_link(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
 
 class SmartLinkConditionCreateView(SingleObjectCreateView):
@@ -300,7 +300,7 @@ class SmartLinkConditionCreateView(SingleObjectCreateView):
         return self.get_smart_link().conditions.all()
 
     def get_smart_link(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
 
 class SmartLinkConditionEditView(SingleObjectEditView):

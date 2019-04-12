@@ -221,7 +221,7 @@ class TagListView(SingleObjectListView):
 
 class TagTaggedItemListView(DocumentListView):
     def get_tag(self):
-        return get_object_or_404(Tag, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
 
     def get_document_queryset(self):
         return self.get_tag().documents.all()
@@ -240,7 +240,7 @@ class TagTaggedItemListView(DocumentListView):
 
 class DocumentTagListView(TagListView):
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_document_view, user=request.user,

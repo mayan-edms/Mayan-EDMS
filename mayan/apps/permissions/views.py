@@ -34,7 +34,7 @@ class GroupRoleMembersView(AssignRemoveView):
     object_permission = permission_group_edit
 
     def add(self, item):
-        role = get_object_or_404(Role, pk=item)
+        role = get_object_or_404(klass=Role, pk=item)
         self.get_object().roles.add(role)
 
     def get_extra_context(self):
@@ -44,7 +44,7 @@ class GroupRoleMembersView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Group, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Group, pk=self.kwargs['pk'])
 
     def left_list(self):
         return [
@@ -57,7 +57,7 @@ class GroupRoleMembersView(AssignRemoveView):
         ]
 
     def remove(self, item):
-        role = get_object_or_404(Role, pk=item)
+        role = get_object_or_404(klass=Role, pk=item)
         self.get_object().roles.remove(role)
 
 
@@ -87,7 +87,7 @@ class SetupRoleMembersView(AssignRemoveView):
     object_permission = permission_role_edit
 
     def add(self, item):
-        group = get_object_or_404(Group, pk=item)
+        group = get_object_or_404(klass=Group, pk=item)
         self.get_object().groups.add(group)
 
     def get_extra_context(self):
@@ -101,7 +101,7 @@ class SetupRoleMembersView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Role, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Role, pk=self.kwargs['pk'])
 
     def left_list(self):
         return [
@@ -114,7 +114,7 @@ class SetupRoleMembersView(AssignRemoveView):
         ]
 
     def remove(self, item):
-        group = get_object_or_404(Group, pk=item)
+        group = get_object_or_404(klass=Group, pk=item)
         self.get_object().groups.remove(group)
 
 
@@ -148,7 +148,7 @@ class SetupRolePermissionsView(AssignRemoveView):
         Permission.check_permissions(
             self.request.user, permissions=(permission_permission_grant,)
         )
-        permission = get_object_or_404(StoredPermission, pk=item)
+        permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
 
     def dispatch(self, request, *args, **kwargs):
@@ -169,7 +169,7 @@ class SetupRolePermissionsView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Role, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Role, pk=self.kwargs['pk'])
 
     def left_list(self):
         Permission.refresh()
@@ -189,7 +189,7 @@ class SetupRolePermissionsView(AssignRemoveView):
         Permission.check_permissions(
             self.request.user, permissions=(permission_permission_revoke,)
         )
-        permission = get_object_or_404(StoredPermission, pk=item)
+        permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.remove(permission)
 
 

@@ -397,7 +397,7 @@ class DocumentMetadataListView(SingleObjectListView):
         )
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         document = self.get_document()
@@ -539,7 +539,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
         for form in form.forms:
             if form.cleaned_data['update']:
                 metadata_type = get_object_or_404(
-                    MetadataType, pk=form.cleaned_data['id']
+                    klass=MetadataType, pk=form.cleaned_data['id']
                 )
                 try:
                     document_metadata = DocumentMetadata.objects.get(
@@ -705,7 +705,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
         return initial
 
     def get_object(self):
-        obj = get_object_or_404(self.model, pk=self.kwargs['pk'])
+        obj = get_object_or_404(klass=self.model, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=(permission_metadata_type_edit,),

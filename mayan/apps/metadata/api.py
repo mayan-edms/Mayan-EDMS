@@ -54,8 +54,7 @@ def save_metadata(metadata_dict, document, create=False, _user=None):
     parameters = {
         'document': document,
         'metadata_type': get_object_or_404(
-            MetadataType,
-            pk=metadata_dict['id']
+            klass=MetadataType, pk=metadata_dict['id']
         )
     }
 
@@ -71,8 +70,7 @@ def save_metadata(metadata_dict, document, create=False, _user=None):
             document_metadata = DocumentMetadata.objects.get(
                 document=document,
                 metadata_type=get_object_or_404(
-                    MetadataType,
-                    pk=metadata_dict['id']
+                    klass=MetadataType, pk=metadata_dict['id']
                 ),
             )
         except DocumentMetadata.DoesNotExist:

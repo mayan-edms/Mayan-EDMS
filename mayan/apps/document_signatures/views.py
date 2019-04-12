@@ -114,7 +114,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -213,7 +213,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -296,7 +296,7 @@ class DocumentVersionSignatureListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -351,7 +351,7 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {

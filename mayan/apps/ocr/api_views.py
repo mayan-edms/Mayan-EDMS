@@ -46,7 +46,7 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
     queryset = DocumentVersion.objects.all()
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
     def get_queryset(self):
         return self.get_document().versions.all()
@@ -74,11 +74,12 @@ class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     serializer_class = DocumentPageOCRContentSerializer
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
     def get_document_version(self):
         return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+            klass=self.get_document().versions.all(),
+            pk=self.kwargs['version_pk']
         )
 
     def get_queryset(self):

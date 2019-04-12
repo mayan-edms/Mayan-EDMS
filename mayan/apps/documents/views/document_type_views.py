@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 class DocumentTypeDocumentListView(DocumentListView):
     def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
 
     def get_document_queryset(self):
         return self.get_document_type().documents.all()
@@ -140,7 +140,7 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
         )
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -213,7 +213,7 @@ class DocumentTypeFilenameListView(SingleObjectListView):
     object_permission = permission_document_type_view
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {

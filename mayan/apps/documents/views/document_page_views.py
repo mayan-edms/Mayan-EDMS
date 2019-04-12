@@ -39,7 +39,7 @@ class DocumentPageListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -67,7 +67,7 @@ class DocumentPageNavigationBase(RedirectView):
         )
 
     def get_object(self):
-        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentPage, pk=self.kwargs['pk'])
 
     def get_redirect_url(self, *args, **kwargs):
         parse_result = urlparse(
@@ -197,7 +197,7 @@ class DocumentPageView(SimpleView):
         }
 
     def get_object(self):
-        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentPage, pk=self.kwargs['pk'])
 
 
 class DocumentPageViewResetView(RedirectView):
@@ -218,7 +218,7 @@ class DocumentPageInteractiveTransformation(RedirectView):
         )
 
     def get_object(self):
-        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentPage, pk=self.kwargs['pk'])
 
     def get_redirect_url(self, *args, **kwargs):
         url = reverse(

@@ -23,7 +23,7 @@ __all__ = (
 class WorkflowDocumentListView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.workflow = get_object_or_404(
-            WorkflowRuntimeProxy, pk=self.kwargs['pk']
+            klass=WorkflowRuntimeProxy, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
@@ -109,7 +109,7 @@ class WorkflowStateDocumentListView(DocumentListView):
 
     def get_workflow_state(self):
         workflow_state = get_object_or_404(
-            WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
+            klass=WorkflowStateRuntimeProxy, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
@@ -156,4 +156,6 @@ class WorkflowStateListView(SingleObjectListView):
         )
 
     def get_workflow(self):
-        return get_object_or_404(WorkflowRuntimeProxy, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=WorkflowRuntimeProxy, pk=self.kwargs['pk']
+        )

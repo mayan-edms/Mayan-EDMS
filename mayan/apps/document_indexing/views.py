@@ -118,7 +118,7 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Index, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Index, pk=self.kwargs['pk'])
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
@@ -148,7 +148,7 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
         }
 
     def get_index(self):
-        return get_object_or_404(Index, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Index, pk=self.kwargs['pk'])
 
     def get_object_list(self):
         return self.get_index().template_root.get_descendants(
@@ -184,7 +184,7 @@ class TemplateNodeCreateView(SingleObjectCreateView):
         }
 
     def get_parent_node(self):
-        return get_object_or_404(IndexTemplateNode, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=IndexTemplateNode, pk=self.kwargs['pk'])
 
 
 class TemplateNodeDeleteView(SingleObjectDeleteView):
@@ -259,7 +259,7 @@ class IndexInstanceNodeView(DocumentListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.index_instance_node = get_object_or_404(
-            IndexInstanceNode, pk=self.kwargs['pk']
+            klass=IndexInstanceNode, pk=self.kwargs['pk']
         )
 
         AccessControlList.objects.check_access(
@@ -339,7 +339,7 @@ class DocumentIndexNodeListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {

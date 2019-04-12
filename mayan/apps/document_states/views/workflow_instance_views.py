@@ -32,7 +32,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -81,7 +81,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=WorkflowInstance, pk=self.kwargs['pk'])
 
 
 class WorkflowInstanceTransitionView(FormView):
@@ -121,4 +121,4 @@ class WorkflowInstanceTransitionView(FormView):
         return self.get_workflow_instance().get_absolute_url()
 
     def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=WorkflowInstance, pk=self.kwargs['pk'])

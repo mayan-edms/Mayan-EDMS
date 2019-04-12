@@ -33,7 +33,7 @@ class ACLCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         self.object_content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
@@ -89,7 +89,7 @@ class ACLDeleteView(SingleObjectDeleteView):
     model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
-        acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
+        acl = get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_acl_edit, user=request.user,
@@ -117,7 +117,7 @@ class ACLDeleteView(SingleObjectDeleteView):
 class ACLListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         self.object_content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
@@ -189,11 +189,11 @@ class ACLPermissionsView(AssignRemoveView):
         return results
 
     def add(self, item):
-        permission = get_object_or_404(StoredPermission, pk=item)
+        permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
 
     def dispatch(self, request, *args, **kwargs):
-        acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
+        acl = get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_acl_edit, user=request.user,
@@ -242,7 +242,7 @@ class ACLPermissionsView(AssignRemoveView):
         return StoredPermission.objects.filter(pk__in=merged_pks)
 
     def get_object(self):
-        return get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
 
     def get_right_list_help_text(self):
         if self.get_object().get_inherited_permissions():
@@ -257,7 +257,7 @@ class ACLPermissionsView(AssignRemoveView):
         return ACLPermissionsView.generate_choices(self.get_available_list())
 
     def remove(self, item):
-        permission = get_object_or_404(StoredPermission, pk=item)
+        permission = get_object_or_404(klass=StoredPermission, pk=item)
         self.get_object().permissions.remove(permission)
 
     def right_list(self):

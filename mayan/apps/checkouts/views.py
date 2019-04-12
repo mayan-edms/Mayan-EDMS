@@ -28,7 +28,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
     form_class = DocumentCheckoutForm
 
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
             permissions=permission_document_check_out, user=request.user,
@@ -124,7 +124,7 @@ class CheckoutDetailView(SingleObjectDetailView):
         }
 
     def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
 
 class DocumentCheckinView(ConfirmView):
@@ -146,7 +146,7 @@ class DocumentCheckinView(ConfirmView):
         return context
 
     def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
         return reverse('checkouts:check_out_info', args=(self.get_object().pk,))

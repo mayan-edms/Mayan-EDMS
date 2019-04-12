@@ -156,7 +156,7 @@ class ObjectEventListView(EventListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.object_content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
@@ -222,7 +222,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
 
     def get_object(self):
         object_content_type = get_object_or_404(
-            ContentType, app_label=self.kwargs['app_label'],
+            klass=ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
@@ -295,7 +295,7 @@ class UserEventListView(SingleObjectListView):
         return Action.objects.actor(obj=self.get_user())
 
     def get_user(self):
-        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+        return get_object_or_404(klass=get_user_model(), pk=self.kwargs['pk'])
 
 
 class VerbEventListView(SingleObjectListView):

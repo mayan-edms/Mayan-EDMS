@@ -211,7 +211,7 @@ class UserMailerLogEntryListView(SingleObjectListView):
         return self.get_user_mailer().error_log.all()
 
     def get_user_mailer(self):
-        return get_object_or_404(UserMailer, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
 
 
 class UserMailerListView(SingleObjectListView):
@@ -255,7 +255,7 @@ class UserMailerTestView(FormView):
         }
 
     def get_object(self):
-        user_mailer = get_object_or_404(UserMailer, pk=self.kwargs['pk'])
+        user_mailer = get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
             permissions=permission_user_mailer_use, user=self.request.user,
             obj=user_mailer

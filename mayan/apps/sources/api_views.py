@@ -21,7 +21,7 @@ class APIStagingSourceFileView(generics.GenericAPIView):
 
     def get(self, request, staging_folder_pk, encoded_filename):
         staging_folder = get_object_or_404(
-            StagingFolderSource, pk=staging_folder_pk
+            klass=StagingFolderSource, pk=staging_folder_pk
         )
         return Response(
             StagingFolderFileSerializer(

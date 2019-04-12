@@ -112,7 +112,7 @@ class GroupMembersView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Group, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Group, pk=self.kwargs['pk'])
 
     def left_list(self):
         return GroupMembersView.generate_choices(
@@ -237,7 +237,7 @@ class UserGroupsView(AssignRemoveView):
 
     def get_object(self):
         return get_object_or_404(
-            get_user_model().objects.filter(
+            klass=get_user_model().objects.filter(
                 is_superuser=False, is_staff=False
             ), pk=self.kwargs['pk']
         )
@@ -299,7 +299,7 @@ class UserOptionsEditView(SingleObjectEditView):
 
     def get_user(self):
         return get_object_or_404(
-            get_user_model().objects.filter(
+            klass=get_user_model().objects.filter(
                 is_superuser=False, is_staff=False
             ), pk=self.kwargs['pk']
         )

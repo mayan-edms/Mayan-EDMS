@@ -38,7 +38,7 @@ class DocumentVersionListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -66,7 +66,7 @@ class DocumentVersionRevertView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=DocumentVersion, pk=self.kwargs['pk'])
 
     def view_action(self):
         try:
