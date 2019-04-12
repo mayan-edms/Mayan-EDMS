@@ -28,6 +28,11 @@
   safe_dump to load and dump using the SafeLoader.
 * Add SilenceLoggerTestCaseMixin to lower level of loggers
   during tests.
+* New default value for setting DOCUMENTS_HASH_BLOCK_SIZE is
+  65535.
+* New default value for setting MIMETYPE_FILE_READ_SIZE is
+  1024.
+
 
 3.1.11 (2019-04-XX)
 ===================

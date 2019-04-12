@@ -22,7 +22,6 @@ Existing config.yml files need to be updated manually.
 
 Permissions
 ^^^^^^^^^^^
-
 The role permission grant and revoke permissions were removed. Instead only the
 role edit permission is required to grant or revoke permissions to a role.
 
@@ -35,6 +34,11 @@ Move the development URL definitions for Rosetta and Debug toolbar
 to a separate URL file. Convert the single urls.py to a module to
 allow multiple URL files to be used.
 
+Settings
+^^^^^^^^
+
+New default value for setting DOCUMENTS_HASH_BLOCK_SIZE is 65535.
+New default value for setting MIMETYPE_FILE_READ_SIZE is 1024.
 
 Other changes
 ^^^^^^^^^^^^^

@@ -7,7 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-from .literals import DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
+from .literals import (
+    DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
+)
 
 namespace = Namespace(name='documents', label=_('Documents'))
 
@@ -63,8 +65,8 @@ setting_fix_orientation = namespace.add_setting(
     )
 )
 setting_hash_block_size = namespace.add_setting(
-    global_name='DOCUMENTS_HASH_BLOCK_SIZE', default=0,
-    help_text=_(
+    global_name='DOCUMENTS_HASH_BLOCK_SIZE',
+    default=DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, help_text=_(
         'Size of blocks to use when calculating the document file\'s '
         'checksum. A value of 0 disables the block calculation and the entire '
         'file will be loaded into memory.'
