@@ -3,6 +3,8 @@ from __future__ import absolute_import, unicode_literals
 from datetime import timedelta
 import logging
 import os
+import sys
+import traceback
 import warnings
 
 from kombu import Exchange, Queue
@@ -76,6 +78,8 @@ class MayanAppConfig(apps.AppConfig):
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
                 )
+                exc_info = sys.exc_info()
+                traceback.print_exception(*exc_info)
                 raise exception
 
 

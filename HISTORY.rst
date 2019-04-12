@@ -18,6 +18,7 @@
 * Change how the HOME_VIEW setting is defined.
 * Remove the role permission grant and revoke permission.
 * Split trashed document views into their own module.
+* Show entire sys trace when an App import exception is raised.
 
 3.1.11 (2019-04-XX)
 ===================
