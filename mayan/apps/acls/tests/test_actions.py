@@ -18,7 +18,7 @@ class ACLActionTestCase(ActionTestCase):
                 'content_type': ContentType.objects.get_for_model(model=self.document).pk,
                 'object_id': self.document.pk,
                 'roles': [self.role.pk],
-                'permissions': [permission_document_view.uuid],
+                'permissions': [permission_document_view.pk],
             }
         )
         action.execute(context={'entry_log': self.entry_log})
@@ -40,7 +40,7 @@ class ACLActionTestCase(ActionTestCase):
                 'content_type': ContentType.objects.get_for_model(model=self.document).pk,
                 'object_id': self.document.pk,
                 'roles': [self.role.pk],
-                'permissions': [permission_document_view.uuid],
+                'permissions': [permission_document_view.pk],
             }
         )
         action.execute(context={'entry_log': self.entry_log})

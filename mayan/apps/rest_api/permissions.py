@@ -19,7 +19,7 @@ class MayanPermission(BasePermission):
         if required_permission:
             try:
                 Permission.check_permissions(
-                    requester=request.user, permissions=required_permission
+                    permissions=required_permission, user=request.user
                 )
             except PermissionDenied:
                 return False

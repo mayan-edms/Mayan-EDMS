@@ -34,7 +34,7 @@ class AccessControlListManager(models.Manager):
 
         try:
             return Permission.check_permissions(
-                requester=user, permissions=permissions
+                permissions=permissions, user=user
             )
         except PermissionDenied:
             try:
@@ -117,7 +117,7 @@ class AccessControlListManager(models.Manager):
 
         try:
             Permission.check_permissions(
-                requester=user, permissions=(permission,)
+                permissions=(permission,), user=user
             )
         except PermissionDenied:
             user_roles = []

@@ -39,6 +39,7 @@
 * Move setting COMMON_TEMPORARY_DIRECTORY to the storage app.
   The setting is now STORAGE_TEMPORARY_DIRECTORY.
 * Move file related utilities to the storage app.
+* Backport and remove unused code from the permission app.
 
 3.1.11 (2019-04-XX)
 ===================

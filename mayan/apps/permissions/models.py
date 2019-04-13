@@ -16,6 +16,11 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class StoredPermission(models.Model):
+    """
+    This model is the counterpart of the permissions.classes.Permission
+    class. Allows storing a database counterpart of a permission class.
+    It is used to store the permissions help by a role or in an ACL.
+    """
     namespace = models.CharField(max_length=64, verbose_name=_('Namespace'))
     name = models.CharField(max_length=64, verbose_name=_('Name'))
 
@@ -29,22 +34,38 @@ class StoredPermission(models.Model):
 
     def __str__(self):
         try:
-            return force_text(self.get_volatile_permission())
+            return force_text(self.volatile_permission)
         except KeyError:
             return self.name
 
-    def get_volatile_permission_id(self):
+    @property
+    def volatile_permission_id(self):
+        """
+        Return the identifier of the real permission class represented by
+        this model instance.
+        """
         return '{}.{}'.format(self.namespace, self.name)
 
-    def get_volatile_permission(self):
+    @property
+    def volatile_permission(self):
+        """
+        Returns the real class of the permission represented by this model
+        instance.
+        """
         return Permission.get(
-            pk=self.get_volatile_permission_id(), proxy_only=True
+            pk=self.volatile_permission_id, proxy_only=True
         )
 
     def natural_key(self):
         return (self.namespace, self.name)
 
-    def requester_has_this(self, user):
+    def user_has_this(self, user):
+        """
+        Helper method to check if an user has been granted this permission.
+        The check is done sequentially over all of the user's groups and
+        roles. The check is interrupted at the first positive result.
+        The check always returns True for superusers or staff users.
+        """
         if user.is_superuser or user.is_staff:
             logger.debug(
                 'Permission "%s" granted to user "%s" as superuser or staff',
@@ -52,24 +73,24 @@ class StoredPermission(models.Model):
             )
             return True
 
-        # Request is one of the permission's holders?
-        for group in user.groups.all():
-            for role in group.roles.all():
-                if self in role.permissions.all():
-                    logger.debug(
-                        'Permission "%s" granted to user "%s" through role "%s"',
-                        self, user, role
-                    )
-                    return True
-
-        logger.debug(
-            'Fallthru: Permission "%s" not granted to user "%s"', self, user
-        )
-        return False
+        if Role.objects.filter(groups__user=user, permissions=self).exists():
+            return True
+        else:
+            logger.debug(
+                'Fallthru: Permission "%s" not granted to user "%s"', self, user
+            )
+            return False
 
 
 @python_2_unicode_compatible
 class Role(models.Model):
+    """
+    This model represents a Role. Roles are permission units. They are the
+    only object to which permissions can be granted. They are themselves
+    containers too, containing Groups, which are organization units. Roles
+    are the basic method to grant a permission to a group. Permissions granted
+    to a group using a role, are granted for the entire system.
+    """
     label = models.CharField(
         max_length=64, unique=True, verbose_name=_('Label')
     )
@@ -92,7 +113,7 @@ class Role(models.Model):
         return self.label
 
     def get_absolute_url(self):
-        return reverse('permissions:role_list')
+        return reverse(viewname='permissions:role_list')
 
     def natural_key(self):
         return (self.label,)

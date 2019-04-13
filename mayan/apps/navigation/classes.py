@@ -366,15 +366,15 @@ class Link(object):
             if resolved_object:
                 try:
                     AccessControlList.objects.check_access(
-                        permissions=self.permissions, user=request.user,
-                        obj=resolved_object, related=self.permissions_related
+                        obj=resolved_object, permissions=self.permissions,
+                        related=self.permissions_related, user=request.user
                     )
                 except PermissionDenied:
                     return None
             else:
                 try:
                     Permission.check_permissions(
-                        requester=request.user, permissions=self.permissions
+                        permissions=self.permissions, user=request.user
                     )
                 except PermissionDenied:
                     return None

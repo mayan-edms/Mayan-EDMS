@@ -59,7 +59,7 @@ class Permission(object):
 
             for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.uuid), permission) for permission in permissions
+                    (force_text(permission.pk), permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)
@@ -73,19 +73,19 @@ class Permission(object):
             )
 
     @classmethod
-    def check_permissions(cls, requester, permissions):
+    def check_permissions(cls, permissions, user):
         try:
             for permission in permissions:
-                if permission.stored_permission.requester_has_this(requester):
+                if permission.stored_permission.user_has_this(user=user):
                     return True
         except TypeError:
             # Not a list of permissions, just one
-            if permissions.stored_permission.requester_has_this(requester):
+            if permissions.stored_permission.user_has_this(user=user):
                 return True
 
-        logger.debug('User "%s" does not have permissions "%s"',
-                     requester,
-                     permissions)
+        logger.debug(
+            'User "%s" does not have permissions "%s"', user, permissions
+        )
         raise PermissionDenied(_('Insufficient permissions.'))
 
     @classmethod
@@ -94,14 +94,6 @@ class Permission(object):
             return cls._permissions[pk]
         else:
             return cls._permissions[pk].stored_permission
-
-    @classmethod
-    def get_for_holder(cls, holder):
-        StoredPermission = apps.get_model(
-            app_label='permissions', model_name='StoredPermission'
-        )
-
-        return StoredPermission.get_for_holder(holder)
 
     @classmethod
     def invalidate_cache(cls):
@@ -116,8 +108,8 @@ class Permission(object):
         self.namespace = namespace
         self.name = name
         self.label = label
-        self.pk = self.uuid
-        self.__class__._permissions[self.uuid] = self
+        self.pk = self.get_pk()
+        self.__class__._permissions[self.pk] = self
 
     def __repr__(self):
         return self.pk
@@ -125,25 +117,22 @@ class Permission(object):
     def __str__(self):
         return force_text(self.label)
 
+    def get_pk(self):
+        return '%s.%s' % (self.namespace.name, self.name)
+
     @property
     def stored_permission(self):
-        StoredPermission = apps.get_model(
-            app_label='permissions', model_name='StoredPermission'
-        )
-
         try:
-            return self.__class__._stored_permissions_cache[self.uuid]
+            return self.__class__._stored_permissions_cache[self.pk]
         except KeyError:
+            StoredPermission = apps.get_model(
+                app_label='permissions', model_name='StoredPermission'
+            )
+
             stored_permission, created = StoredPermission.objects.get_or_create(
                 namespace=self.namespace.name,
                 name=self.name,
             )
-            stored_permission.volatile_permission = self
-            self.__class__._stored_permissions_cache[
-                self.uuid
-            ] = stored_permission
-            return stored_permission
 
-    @property
-    def uuid(self):
-        return '%s.%s' % (self.namespace.name, self.name)
+            self.__class__._stored_permissions_cache[self.pk] = stored_permission
+            return stored_permission

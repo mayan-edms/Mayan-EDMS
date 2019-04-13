@@ -335,8 +335,7 @@ class ViewPermissionCheckMixin(object):
     def dispatch(self, request, *args, **kwargs):
         if self.view_permission:
             Permission.check_permissions(
-                requester=self.request.user,
-                permissions=(self.view_permission,)
+                permissions=(self.view_permission,), user=self.request.user
             )
 
         return super(
