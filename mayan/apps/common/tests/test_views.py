@@ -43,25 +43,25 @@ class CommonViewTestCase(GenericViewTestCase):
         )
 
     def test_object_error_list_view_with_permissions(self):
-            self._create_error_log_entry()
+        self._create_error_log_entry()
 
-            self.grant_access(
-                obj=self.user, permission=permission_error_log_view
-            )
+        self.grant_access(
+            obj=self.user, permission=permission_error_log_view
+        )
 
-            response = self._request_object_error_log_list()
+        response = self._request_object_error_log_list()
 
-            self.assertContains(
-                response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-                status_code=200
-            )
+        self.assertContains(
+            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
+            status_code=200
+        )
 
     def test_object_error_list_view_no_permissions(self):
-            self._create_error_log_entry()
+        self._create_error_log_entry()
 
-            response = self._request_object_error_log_list()
+        response = self._request_object_error_log_list()
 
-            self.assertNotContains(
-                response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-                status_code=403
-            )
+        self.assertNotContains(
+            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
+            status_code=403
+        )

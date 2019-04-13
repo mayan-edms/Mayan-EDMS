@@ -1,9 +1,6 @@
 from __future__ import unicode_literals
 
 import logging
-import os
-import shutil
-import tempfile
 import types
 
 from django.conf import settings

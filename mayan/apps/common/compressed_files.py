@@ -83,7 +83,7 @@ class Archive(object):
         """
         Return a file-like object to a member of the archive
         """
-        raise NotImplemented
+        raise NotImplementedError
 
 
 class TarArchive(Archive):

@@ -4,20 +4,6 @@ import logging
 import os
 import shutil
 import tempfile
-import types
-
-from django.conf import settings
-from django.urls import resolve as django_resolve
-from django.urls.base import get_script_prefix
-from django.utils.datastructures import MultiValueDict
-from django.utils.http import (
-    urlencode as django_urlencode, urlquote as django_urlquote
-)
-from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
-from django.utils.translation import ugettext_lazy as _
-
-import mayan
-from mayan.apps.common.compat import dict_type, dictionary_type
 
 from .settings import setting_temporary_directory
 

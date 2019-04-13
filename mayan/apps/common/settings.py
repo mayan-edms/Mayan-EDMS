@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import os
-import tempfile
 
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
