@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 from mayan.apps.sources.links import link_upload_version
 
@@ -138,6 +139,43 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
         self.assertContains(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200
+        )
+
+    def _request_check_out_list_view(self):
+        return self.get(viewname='checkouts:check_out_list')
+
+    def test_checkout_list_view_no_permission(self):
+        self._check_out_document()
+
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_view
+        )
+
+        response = self._request_check_out_list_view()
+
+        self.assertNotContains(
+            response=response, text=self.document.label, status_code=200
+        )
+
+
+    def test_checkout_list_view_with_access(self):
+        self._check_out_document()
+
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        self.grant_access(
+            obj=self.document,
+            permission=permission_document_view
+        )
+
+        response = self._request_check_out_list_view()
+
+        self.assertContains(
+            response=response, text=self.document.label, status_code=200
         )
 
     def test_document_new_version_after_check_out(self):

@@ -81,19 +81,19 @@ class CheckoutListView(DocumentListView):
                     {
                         'name': _('User'),
                         'attribute': encapsulate(
-                            lambda document: document.check_out_info().user.get_full_name() or document.check_out_info().user
+                            lambda document: document.get_check_out_info().user.get_full_name() or document.get_check_out_info().user
                         )
                     },
                     {
                         'name': _('Checkout time and date'),
                         'attribute': encapsulate(
-                            lambda document: document.check_out_info().checkout_datetime
+                            lambda document: document.get_check_out_info().checkout_datetime
                         )
                     },
                     {
                         'name': _('Checkout expiration'),
                         'attribute': encapsulate(
-                            lambda document: document.check_out_info().expiration_datetime
+                            lambda document: document.get_check_out_info().expiration_datetime
                         )
                     },
                 ),
