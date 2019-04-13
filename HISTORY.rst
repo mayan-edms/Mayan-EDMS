@@ -40,6 +40,8 @@
   The setting is now STORAGE_TEMPORARY_DIRECTORY.
 * Move file related utilities to the storage app.
 * Backport and remove unused code from the permission app.
+* Move the navigation and authentication templates to their
+  respective apps.
 
 3.1.11 (2019-04-XX)
 ===================
