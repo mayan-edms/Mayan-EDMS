@@ -7,5 +7,5 @@ from mayan.apps.rest_api.tests import BaseAPITestCase
 
 class EventAPITestCase(BaseAPITestCase):
     def test_evet_type_list_view(self):
-        response = self.client.get(reverse('rest_api:event-type-list'))
+        response = self.get(viewname='rest_api:event-type-list')
         self.assertEqual(response.status_code, 200)
