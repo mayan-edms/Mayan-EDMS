@@ -66,6 +66,7 @@ Other changes
 * Backport and remove unused code from the permission app.
 * Move the navigation and authentication templates to their
   respective apps.
+* Add dashboard app.
 
 
 Removals

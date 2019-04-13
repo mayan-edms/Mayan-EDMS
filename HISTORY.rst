@@ -42,6 +42,7 @@
 * Backport and remove unused code from the permission app.
 * Move the navigation and authentication templates to their
   respective apps.
+* Add dashboard app.
 
 3.1.11 (2019-04-XX)
 ===================

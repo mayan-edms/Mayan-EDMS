@@ -15,9 +15,9 @@ from mayan.apps.common import (
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
 from mayan.apps.common.classes import ModelField
-from mayan.apps.common.dashboards import dashboard_main
 from mayan.apps.common.signals import post_initial_setup
 from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
     permission_transformation_create,

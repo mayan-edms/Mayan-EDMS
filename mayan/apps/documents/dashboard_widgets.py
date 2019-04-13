@@ -4,7 +4,7 @@ from django.apps import apps
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import DashboardWidgetNumeric
+from mayan.apps.dashboards.classes import DashboardWidgetNumeric
 
 from .icons import (
     icon_dashboard_documents_in_trash, icon_dashboard_document_types,

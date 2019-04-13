@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls import ModelPermission
 from mayan.apps.common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
-from mayan.apps.common.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events import ModelEventType
 from mayan.celery import app
 

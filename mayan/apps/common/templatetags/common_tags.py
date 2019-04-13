@@ -8,7 +8,7 @@ from django.utils.encoding import force_text
 
 import mayan
 
-from ..classes import Collection, Dashboard
+from ..classes import Collection
 from ..literals import MESSAGE_SQLITE_WARNING
 from ..utils import check_for_sqlite, return_attrib
 
@@ -47,11 +47,6 @@ def object_property(value, arg):
 @register.simple_tag
 def project_information(attribute_name):
     return getattr(mayan, attribute_name)
-
-
-@register.simple_tag(takes_context=True)
-def render_dashboard(context, name):
-    return Dashboard.get(name=name).render(request=context.request)
 
 
 @register.simple_tag(takes_context=True)
