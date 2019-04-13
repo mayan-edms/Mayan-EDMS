@@ -7,7 +7,6 @@ from django.test import override_settings
 
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.common.utils import fs_cleanup, mkdtemp
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests import (
@@ -15,6 +14,7 @@ from mayan.apps.documents.tests import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
 )
+from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y

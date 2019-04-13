@@ -18,9 +18,10 @@ from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
 
+from mayan.apps.storage.settings import setting_temporary_directory
+
 from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 
-from ..settings import setting_temporary_directory
 
 if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
     import psutil

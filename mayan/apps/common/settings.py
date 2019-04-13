@@ -80,14 +80,6 @@ setting_shared_storage_arguments = namespace.add_setting(
         os.path.join(settings.MEDIA_ROOT, 'shared_files')
     ), quoted=True
 )
-setting_temporary_directory = namespace.add_setting(
-    global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
-    help_text=_(
-        'Temporary directory used site wide to store thumbnails, previews '
-        'and temporary files.'
-    ),
-    is_path=True
-)
 
 namespace = Namespace(name='django', label=_('Django'))
 

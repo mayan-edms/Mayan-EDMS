@@ -6,7 +6,7 @@ import os
 
 from django.db import models
 
-from mayan.apps.common.utils import mkstemp
+from mayan.apps.storage.utils import mkstemp
 
 from .classes import KeyStub, SignatureVerification
 from .exceptions import (

@@ -11,8 +11,8 @@ from django.core.management.base import CommandError
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.utils import fs_cleanup
 from mayan.apps.documents.models import DocumentType
+from mayan.apps.storage.utils import fs_cleanup
 
 CONVERTDB_FOLDER = 'convertdb'
 CONVERTDB_OUTPUT_FILENAME = 'migrate.json'

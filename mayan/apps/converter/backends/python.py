@@ -16,7 +16,7 @@ except ImportError:
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.utils import fs_cleanup, mkstemp
+from mayan.apps.storage.utils import fs_cleanup, mkstemp
 
 from ..classes import ConverterBase
 from ..exceptions import PageCountError

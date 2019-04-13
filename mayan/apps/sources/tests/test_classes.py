@@ -4,8 +4,8 @@ import os
 import shutil
 
 from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.common.utils import mkdtemp
 from mayan.apps.documents.tests import TEST_NON_ASCII_DOCUMENT_PATH
+from mayan.apps.storage.utils import mkdtemp
 
 from ..classes import StagingFile
 

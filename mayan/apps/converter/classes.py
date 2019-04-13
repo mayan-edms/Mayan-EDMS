@@ -16,9 +16,9 @@ except ImportError:
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.settings import setting_temporary_directory
-from mayan.apps.common.utils import fs_cleanup, mkdtemp, mkstemp
 from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.storage.settings import setting_temporary_directory
+from mayan.apps.storage.utils import fs_cleanup, mkdtemp, mkstemp
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (

@@ -7,7 +7,7 @@ import subprocess
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.utils import copyfile, fs_cleanup, mkstemp
+from mayan.apps.storage.utils import copyfile, fs_cleanup, mkstemp
 
 from .exceptions import ParserError
 from .settings import setting_pdftotext_path

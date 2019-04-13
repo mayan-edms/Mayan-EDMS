@@ -16,10 +16,10 @@ from mayan.apps.common.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
-from mayan.apps.common.utils import TemporaryFile
 from mayan.apps.django_gpg.exceptions import NeedPassphrase, PassphraseError
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.storage.utils import TemporaryFile
 
 from .forms import (
     DocumentVersionSignatureCreateForm,

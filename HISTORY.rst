@@ -36,6 +36,9 @@
   https://github.com/tesseract-ocr/tesseract/issues/1670
   https://github.com/tesseract-ocr/tesseract/commit/3292484f67af8bdda23aa5e510918d0115785291
   https://gitlab.gnome.org/World/OpenPaperwork/pyocr/issues/104
+* Move setting COMMON_TEMPORARY_DIRECTORY to the storage app.
+  The setting is now STORAGE_TEMPORARY_DIRECTORY.
+* Move file related utilities to the storage app.
 
 3.1.11 (2019-04-XX)
 ===================
