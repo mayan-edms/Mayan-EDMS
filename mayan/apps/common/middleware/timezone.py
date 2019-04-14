@@ -4,9 +4,10 @@ import pytz
 
 from django.conf import settings
 from django.utils import timezone
+from django.utils.deprecation import MiddlewareMixin
 
 
-class TimezoneMiddleware(object):
+class TimezoneMiddleware(MiddlewareMixin):
     def process_request(self, request):
         if hasattr(request, 'session'):
             tzname = request.session.get(settings.TIMEZONE_SESSION_KEY)

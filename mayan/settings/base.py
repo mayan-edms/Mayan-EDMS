@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'drf_yasg',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'mayan.apps.common.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',

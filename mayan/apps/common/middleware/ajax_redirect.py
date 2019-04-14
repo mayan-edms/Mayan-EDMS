@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.utils.deprecation import MiddlewareMixin
 
 
-class AjaxRedirect(object):
+class AjaxRedirect(MiddlewareMixin):
     def process_request(self, request):
         ajax_referer = request.META.get('HTTP_X_ALT_REFERER')
 

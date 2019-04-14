@@ -12,8 +12,8 @@ COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
 
 # Remove whitenoise from middlewares. Causes out of memory errors during test
 # suit
-MIDDLEWARE_CLASSES = [
-    cls for cls in MIDDLEWARE_CLASSES if cls != 'whitenoise.middleware.WhiteNoiseMiddleware'
+MIDDLEWARE = [
+    cls for cls in MIDDLEWARE if cls != 'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 # User a simpler password hasher
@@ -38,8 +38,8 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 BROKER_BACKEND = 'memory'
 
 # Remove middlewares not used for tests
-MIDDLEWARE_CLASSES = [
-    cls for cls in MIDDLEWARE_CLASSES if cls not in [
+MIDDLEWARE = [
+    cls for cls in MIDDLEWARE if cls not in [
         'common.middleware.error_logging.ErrorLoggingMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'corsheaders.middleware.CorsMiddleware',
