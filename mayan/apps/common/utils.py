@@ -4,6 +4,8 @@ import logging
 import types
 
 from django.conf import settings
+from django.core.exceptions import FieldDoesNotExist
+from django.db.models.constants import LOOKUP_SEP
 from django.urls import resolve as django_resolve
 from django.urls.base import get_script_prefix
 from django.utils.datastructures import MultiValueDict
@@ -51,9 +53,76 @@ def get_user_label_text(context):
         return context['request'].user.get_full_name() or context['request'].user
 
 
+def introspect_attribute(attribute_name, obj):
+    """
+    Resolve the attribute of model. Supports nested reference using dotted
+    paths or double underscore.
+    """
+    try:
+        # Try as a related field
+        obj._meta.get_field(field_name=attribute_name)
+    except (AttributeError, FieldDoesNotExist):
+        attribute_name = attribute_name.replace('__', '.')
+
+        try:
+            # If there are separators in the attribute name, traverse them
+            # to the final attribute
+            attribute_part, attribute_remaining = attribute_name.split(
+                '.', 1
+            )
+        except ValueError:
+            return attribute_name, obj
+        else:
+            related_field = obj._meta.get_field(field_name=attribute_part)
+            return introspect_attribute(
+                attribute_name=attribute_part,
+                obj=related_field.related_model,
+            )
+    else:
+        return attribute_name, obj
+
+
 def resolve(path, urlconf=None):
     path = '/{}'.format(path.replace(get_script_prefix(), '', 1))
     return django_resolve(path=path, urlconf=urlconf)
+
+
+def resolve_attribute(attribute, obj, kwargs=None):
+    """
+    Resolve the attribute of an object. Behaves like the Python REPL but with
+    an unified dotted path schema regardless of the attribute type.
+    Supports callables, dictionaries, properties, related model fields.
+    """
+    if not kwargs:
+        kwargs = {}
+
+    # Try as a callable
+    try:
+        return attribute(obj, **kwargs)
+    except TypeError:
+        # Try as a dictionary
+        try:
+            return obj[attribute]
+        except TypeError:
+            try:
+                # If there are dots in the attribute name, traverse them
+                # to the final attribute
+                result = reduce_function(getattr, attribute.split('.'), obj)
+                try:
+                    # Try it as a method
+                    return result(**kwargs)
+                except TypeError:
+                    # Try it as a property
+                    return result
+            except AttributeError:
+                # Try as a related model field
+                if LOOKUP_SEP in attribute:
+                    attribute_replaced = attribute.replace(LOOKUP_SEP, '.')
+                    return resolve_attribute(
+                        obj=obj, attribute=attribute_replaced, kwargs=kwargs
+                    )
+                else:
+                    raise
 
 
 def return_attrib(obj, attrib, arguments=None):

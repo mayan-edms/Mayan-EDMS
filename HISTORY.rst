@@ -52,6 +52,9 @@
 * Update middleware to new style classes.
 * Add server side invalid document template.
 * Move tag specific JavaScript to the tags app.
+* Reduce form boilerplate code with new FormOptions class.
+* Use FormOptions for the DetailForm class.
+* DetailForm now support help text on extra fields.
 
 3.1.11 (2019-04-XX)
 ===================

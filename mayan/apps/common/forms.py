@@ -4,14 +4,16 @@ import os
 
 from django import forms
 from django.conf import settings
+from django.contrib.admin.utils import label_for_field
 from django.contrib.auth import get_user_model
+from django.core.exceptions import FieldDoesNotExist
 from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Package
 from .models import UserLocaleProfile
-from .utils import return_attrib
+from .utils import introspect_attribute, resolve_attribute
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 
 
@@ -37,26 +39,98 @@ class ChoiceForm(forms.Form):
     selection = forms.MultipleChoiceField(widget=DisableableSelectWidget())
 
 
+class FormOptions(object):
+    def __init__(self, form, kwargs, options=None):
+        """
+        Option definitions will be iterated. The option value will be
+        determined in the following order: as passed via keyword
+        arguments during form intialization, as form get_... method or
+        finally as static Meta options. This is to allow a form with
+        Meta options or method to be overrided at initialization
+        and increase the usability of a single class.
+        """
+        for name, default_value in self.option_definitions.items():
+            try:
+                # Check for a runtime value via kwargs
+                value = kwargs.pop(name)
+            except KeyError:
+                try:
+                    # Check if there is a get_... method
+                    value = getattr(self, 'get_{}'.format(name))()
+                except AttributeError:
+                    try:
+                        # Check the meta class options
+                        value = getattr(options, name)
+                    except AttributeError:
+                        value = default_value
+
+            setattr(self, name, value)
+
+
+class DetailFormOption(FormOptions):
+    # Dictionary list of option names and default values
+    option_definitions = {'extra_fields': []}
+
+
 class DetailForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        self.extra_fields = kwargs.pop('extra_fields', ())
+        self.opts = DetailFormOption(
+            form=self, kwargs=kwargs, options=getattr(self, 'Meta', None)
+        )
         super(DetailForm, self).__init__(*args, **kwargs)
 
-        for extra_field in self.extra_fields:
-            result = return_attrib(self.instance, extra_field['field'])
-            label = 'label' in extra_field and extra_field['label'] or None
+        for extra_field in self.opts.extra_fields:
+            obj = extra_field.get('object', self.instance)
+            field = extra_field['field']
+
+            result = resolve_attribute(
+                attribute=field, obj=obj
+            )
+
+            label = extra_field.get('label', None)
+
+            # If label is not specified try to get it from the object itself
+            if not label:
+                attribute_name, obj = introspect_attribute(
+                    attribute_name=field, obj=obj
+                )
+
+                if not obj:
+                    label = _('None')
+                else:
+                    try:
+                        label = getattr(
+                            getattr(obj, attribute_name), 'short_description'
+                        )
+                    except AttributeError:
+                        label = label_for_field(
+                            name=attribute_name, model=obj
+                        )
+
+            help_text = extra_field.get('help_text', None)
+            # If help_text is not specified try to get it from the object itself
+            if not help_text:
+                if obj:
+                    try:
+                        field_object = obj._meta.get_field(field_name=field)
+                    except FieldDoesNotExist:
+                        field_object = field
+
+                    help_text = getattr(
+                        field_object, 'help_text', None
+                    )
+
             # TODO: Add others result types <=> Field types
             if isinstance(result, models.query.QuerySet):
-                self.fields[extra_field['field']] = \
-                    forms.ModelMultipleChoiceField(
-                        queryset=result, label=label)
+                self.fields[field] = forms.ModelMultipleChoiceField(
+                    queryset=result, label=label
+                )
             else:
-                self.fields[extra_field['field']] = forms.CharField(
-                    label=extra_field['label'],
-                    initial=return_attrib(
-                        self.instance,
-                        extra_field['field'], None
-                    ),
+                self.fields[field] = forms.CharField(
+                    initial=resolve_attribute(
+                        obj=obj,
+                        attribute=field
+                    ), label=label, help_text=help_text,
                     widget=extra_field.get('widget', PlainWidget)
                 )
 
