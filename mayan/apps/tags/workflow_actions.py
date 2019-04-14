@@ -28,7 +28,6 @@ class AttachTagAction(WorkflowAction):
         'tags': {
             'class': 'tags.widgets.TagFormWidget', 'kwargs': {
                 'attrs': {'class': 'select2-tags'},
-                'queryset': Tag.objects.none()
             }
         }
     }
@@ -43,7 +42,6 @@ class AttachTagAction(WorkflowAction):
         )
 
         self.fields['tags']['kwargs']['queryset'] = queryset
-        self.widgets['tags']['kwargs']['queryset'] = queryset
 
         return {
             'fields': self.fields,

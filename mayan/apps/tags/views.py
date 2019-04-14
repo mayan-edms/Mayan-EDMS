@@ -69,6 +69,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
         result = {
             'help_text': _('Tags to be attached.'),
             'permission': permission_tag_attach,
+            'queryset': Tag.objects.all(),
             'user': self.request.user
         }
 
@@ -311,6 +312,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         result = {
             'help_text': _('Tags to be removed.'),
             'permission': permission_tag_remove,
+            'queryset': Tag.objects.all(),
             'user': self.request.user
         }
 

@@ -6,10 +6,12 @@ from django import forms
 from django.conf import settings
 from django.contrib.admin.utils import label_for_field
 from django.contrib.auth import get_user_model
-from django.core.exceptions import FieldDoesNotExist
+from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.acls.models import AccessControlList
 
 from .classes import Package
 from .models import UserLocaleProfile
@@ -196,6 +198,74 @@ class FileDisplayForm(forms.Form):
             )
             with open(file_path) as file_object:
                 self.fields['text'].initial = file_object.read()
+
+
+class FilteredSelectionFormOptions(FormOptions):
+    # Dictionary list of option names and default values
+    option_definitions = {
+        'allow_multiple': False,
+        'field_name': None,
+        'help_text': None,
+        'label': None,
+        'model': None,
+        'permission': None,
+        'queryset': None,
+        'required': True,
+        'user': None,
+        'widget_class': None,
+        'widget_attributes': {'size': '10'},
+    }
+
+
+class FilteredSelectionForm(forms.Form):
+    """
+    Form to select the from a list of choice filtered by access. Can be
+    configure to allow single or multiple selection.
+    """
+    def __init__(self, *args, **kwargs):
+        opts = FilteredSelectionFormOptions(
+            form=self, kwargs=kwargs, options=getattr(self, 'Meta', None)
+        )
+
+        if opts.queryset is None:
+            if not opts.model:
+                raise ImproperlyConfigured(
+                    '{} requires a queryset or a model to be specified as '
+                    'a meta option or passed during initialization.'.format(
+                        self.__class__.__name__
+                    )
+                )
+
+            queryset = opts.model.objects.all()
+        else:
+            queryset = opts.queryset
+
+        if opts.allow_multiple:
+            extra_kwargs = {}
+            field_class = forms.ModelMultipleChoiceField
+            widget_class = forms.widgets.SelectMultiple
+        else:
+            extra_kwargs = {'empty_label': None}
+            field_class = forms.ModelChoiceField
+            widget_class = forms.widgets.Select
+
+        if opts.widget_class:
+            widget_class = opts.widget_class
+
+        if opts.permission:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission=opts.permission, queryset=queryset,
+                user=opts.user
+            )
+
+        super(FilteredSelectionForm, self).__init__(*args, **kwargs)
+
+        self.fields[opts.field_name] = field_class(
+            help_text=opts.help_text, label=opts.label,
+            queryset=queryset, required=opts.required,
+            widget=widget_class(attrs=opts.widget_attributes),
+            **extra_kwargs
+        )
 
 
 class LicenseForm(FileDisplayForm):

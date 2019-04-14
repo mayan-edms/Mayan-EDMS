@@ -10,19 +10,17 @@ from .permissions import permission_tag_view
 
 
 class TagFormWidget(forms.SelectMultiple):
-    option_template_name = 'tags/forms/widgets/tag_select_option.html'
-
     def __init__(self, *args, **kwargs):
-        self.queryset = kwargs.pop('queryset')
         return super(TagFormWidget, self).__init__(*args, **kwargs)
 
     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
         result = super(TagFormWidget, self).create_option(
-            name=name, value=value, label='{}'.format(conditional_escape(label)),
-            selected=selected, index=index, subindex=subindex, attrs=attrs
+            attrs=attrs, index=index,
+            label='{}'.format(conditional_escape(label)), name=name,
+            selected=selected, subindex=subindex, value=value
         )
 
-        result['attrs']['data-color'] = self.queryset.get(pk=value).color
+        result['attrs']['data-color'] = self.choices.queryset.get(pk=value).color
 
         return result
 

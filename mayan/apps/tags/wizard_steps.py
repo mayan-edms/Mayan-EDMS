@@ -9,6 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.sources.wizards import WizardStep
 
 from .forms import TagMultipleSelectionForm
+from .models import Tag
+from .permissions import permission_tag_attach
 
 
 class WizardStepTags(WizardStep):
@@ -26,6 +28,8 @@ class WizardStepTags(WizardStep):
     def get_form_kwargs(self, wizard):
         return {
             'help_text': _('Tags to be attached.'),
+            'model': Tag,
+            'permission': permission_tag_attach,
             'user': wizard.request.user
         }
 

@@ -55,6 +55,8 @@
 * Reduce form boilerplate code with new FormOptions class.
 * Use FormOptions for the DetailForm class.
 * DetailForm now support help text on extra fields.
+* Add FilteredSelectionForm class.
+* Use FilteredSelectionForm for TagMultipleSelectionForm.
 
 3.1.11 (2019-04-XX)
 ===================
