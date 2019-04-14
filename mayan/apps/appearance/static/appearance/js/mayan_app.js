@@ -1,49 +1,21 @@
 'use strict';
 
 class MayanApp {
-    constructor (parameters) {
+    constructor (options) {
         var self = this;
 
-        parameters = parameters || {}
+        options = options || {
+            ajaxMenusOptions: []
+        }
 
-        this.ajaxSpinnerSeletor = '#ajax-spinner';
         this.ajaxExecuting = false;
-        this.ajaxMenusOptions = [
-            {
-                app: this,
-                interval: 5000,
-                menuSelector: '#main-menu',
-                url: apiTemplateMainMenuURL,
-            }
-        ];
+        this.ajaxMenusOptions = options.ajaxMenusOptions;
         this.ajaxMenuHashes = {};
+        this.ajaxSpinnerSeletor = '#ajax-spinner';
         this.window = $(window);
     }
 
     // Class methods and variables
-
-    static mayanNotificationBadge (options, data) {
-        // Callback to add the notifications count inside a badge markup
-        var notifications = data[options.attributeName];
-
-        if (notifications > 0) {
-            // Save the original link text before adding the initial badge markup
-            if (!options.element.data('mn-saved-text')) {
-                options.element.data('mn-saved-text', options.element.html());
-            }
-
-            options.element.html(
-                options.element.data('mn-saved-text') + ' <span class="badge">' + notifications + '</span>'
-            );
-        } else {
-            if (options.element.data('mn-saved-text')) {
-                // If there is a saved original link text, restore it
-                options.element.html(
-                    options.element.data('mn-saved-text')
-                );
-            }
-        }
-    }
 
     static MultiObjectFormProcess ($form, options) {
         /*
@@ -69,6 +41,17 @@ class MayanApp {
         }
     }
 
+    static updateNavbarState () {
+        var uri = new URI(window.location.hash);
+        var uriFragment = uri.fragment();
+        $('.a-main-menu-accordion-link').each(function (index, value) {
+            if (value.pathname === uriFragment) {
+                $(this).closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
+                $(this).parent().addClass('active');
+            }
+        });
+    }
+
     static tagSelectionTemplate (tag, container) {
         var $tag = $(
             '<span class="label label-tag" style="background: ' + tag.element.dataset.color + ';"> ' + tag.text + '</span>'
@@ -87,35 +70,6 @@ class MayanApp {
 
     // Instance methods
 
-    AJAXperiodicWorker (options) {
-        var app = this;
-
-        $.ajax({
-            complete: function() {
-                if (!options.app) {
-                    // Preserve the app reference between consecutive calls
-                    options.app = app;
-                }
-                setTimeout(options.app.AJAXperiodicWorker, options.interval, options);
-            },
-            success: function(data) {
-                if (options.callback) {
-                    // Conver the callback string to an actual function
-                    var callbackFunction = window;
-
-                    $.each(options.callback.split('.'), function (index, value) {
-                        callbackFunction = callbackFunction[value]
-                    });
-
-                    callbackFunction(options, data);
-                } else {
-                    options.element.text(data[options.attributeName]);
-                }
-            },
-            url: options.APIURL
-      });
-    }
-
     callbackAJAXSpinnerUpdate () {
         if (this.ajaxExecuting) {
             $(this.ajaxSpinnerSeletor).fadeIn(50);
@@ -132,10 +86,10 @@ class MayanApp {
 
                 if ((menuHash === undefined) || (menuHash !== data.hex_hash)) {
                     $(options.menuSelector).html(data.html);
+                    options.app.ajaxMenuHashes[data.name] = data.hex_hash;
                     if (options.callback !== undefined) {
                         options.callback();
                     }
-                    options.app.ajaxMenuHashes[data.name] = data.hex_hash;
                 }
             },
             url: options.url,
@@ -214,7 +168,8 @@ class MayanApp {
     }
 
     initialize () {
-        this.setupAJAXPeriodicWorkers();
+        var self = this;
+
         this.setupAJAXSpinner();
         this.setupAutoSubmit();
         this.setupFullHeightResizing();
@@ -222,25 +177,10 @@ class MayanApp {
         this.setupNavbarCollapse();
         this.setupNewWindowAnchor();
         $.each(this.ajaxMenusOptions, function(index, value) {
+            value.app = self;
             app.doRefreshAJAXMenu(value);
         });
         partialNavigation.initialize();
-    }
-
-    setupAJAXPeriodicWorkers () {
-        var app = this;
-
-        $('a[data-apw-url]').each(function() {
-            var $this = $(this);
-
-            app.AJAXperiodicWorker({
-                attributeName: $this.data('apw-attribute'),
-                APIURL: $this.data('apw-url'),
-                callback: $this.data('apw-callback'),
-                element: $this,
-                interval: $this.data('apw-interval'),
-            });
-        });
     }
 
     setupAJAXSpinner () {

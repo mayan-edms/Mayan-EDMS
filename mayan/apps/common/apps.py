@@ -99,7 +99,7 @@ class CommonApp(MayanAppConfig):
             )
 
         Template(
-            name='main_menu', template_name='appearance/main_menu.html'
+            name='menu_main', template_name='appearance/main_menu.html'
         )
 
         app.conf.CELERYBEAT_SCHEDULE.update(
