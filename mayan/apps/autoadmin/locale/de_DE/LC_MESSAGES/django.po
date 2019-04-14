@@ -2,20 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Mathias Behrle <mathiasb@m9s.biz>, 2019
+# Berny <berny@bernhard-marx.de>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-07 02:23-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-14 04:06+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>, 2019\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
@@ -29,15 +34,15 @@ msgstr ""
 
 #: models.py:64
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: models.py:67
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: models.py:70
 msgid "Password hash"
-msgstr ""
+msgstr "Passworthash"
 
 #: models.py:76
 msgid "Autoadmin properties"
@@ -49,8 +54,8 @@ msgstr ""
 
 #: settings.py:20
 msgid ""
-"The password of the automatically created super user account. If it is equal "
-"to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
 msgstr ""
 
 #: settings.py:27
@@ -59,7 +64,7 @@ msgstr ""
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
-msgstr ""
+msgstr "Erstanmeldung"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -67,28 +72,32 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"Glückwunsch, Sie haben <strong>%(project_title)s</strong> nun erfolgreich "
+"installiert!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr ""
+msgstr "Einloggen mit folgenden Zugangsdaten:"
 
 #: templates/autoadmin/credentials.html:18
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
+msgstr "Benutzername: <strong>%(account)s</strong>"
 
 #: templates/autoadmin/credentials.html:19
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "E-Mail: <strong>%(email)s</strong>"
 
 #: templates/autoadmin/credentials.html:20
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
-msgstr ""
+msgstr "Passwort: <strong>%(password)s</strong>"
 
 #: templates/autoadmin/credentials.html:21
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
+"Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese "
+"Nachricht zu deaktivieren."
