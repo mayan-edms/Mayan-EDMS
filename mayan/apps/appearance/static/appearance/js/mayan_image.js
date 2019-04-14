@@ -77,7 +77,7 @@ class MayanImage {
                     // error or it was a cached image
                     if (this.complete === false) {
                         // It is a cached image, set the src attribute to
-                        // trigger it's display.
+                        // trigger its display.
                         this.src = dataURL;
                     } else {
                         container.html(
@@ -93,3 +93,4 @@ class MayanImage {
 MayanImage.timer = setTimeout(null);
 
 $.fn.matchHeight._maintainScroll = true;
+

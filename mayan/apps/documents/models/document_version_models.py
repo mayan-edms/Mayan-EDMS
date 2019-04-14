@@ -155,8 +155,6 @@ class DocumentVersion(models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
-        else:
-            return '#'
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename

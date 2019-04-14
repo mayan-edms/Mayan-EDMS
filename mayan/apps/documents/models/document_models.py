@@ -143,8 +143,6 @@ class Document(models.Model):
         latest_version = self.latest_version
         if latest_version:
             return latest_version.get_api_image_url(*args, **kwargs)
-        else:
-            return '#'
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
