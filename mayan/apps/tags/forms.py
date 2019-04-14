@@ -15,6 +15,9 @@ logger = logging.getLogger(__name__)
 
 
 class TagMultipleSelectionForm(forms.Form):
+    class Media:
+        js = ('tags/js/tags_form.js',)
+
     def __init__(self, *args, **kwargs):
         help_text = kwargs.pop('help_text', None)
         permission = kwargs.pop('permission', permission_tag_view)

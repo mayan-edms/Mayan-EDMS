@@ -75,6 +75,7 @@ Other changes
 * Integrate django-autoadmin into the core apps.
 * Update middleware to new style classes.
 * Add server side invalid document template.
+* Move tag specific JavaScript to the tags app.
 
 Removals
 --------

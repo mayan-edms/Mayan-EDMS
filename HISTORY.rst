@@ -51,6 +51,7 @@
 * Integrate django-autoadmin into the core apps.
 * Update middleware to new style classes.
 * Add server side invalid document template.
+* Move tag specific JavaScript to the tags app.
 
 3.1.11 (2019-04-XX)
 ===================
