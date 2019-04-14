@@ -71,7 +71,7 @@ def task_delete_stubs():
     )
 
     logger.info('Executing')
-    Document.objects.delete_stubs()
+    Document.passthrough.delete_stubs()
     logger.info('Finshed')
 
 

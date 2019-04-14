@@ -102,7 +102,7 @@ class DocumentListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return self.get_document_queryset().filter(is_stub=False)
+        return self.get_document_queryset()
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
@@ -203,7 +203,7 @@ class DocumentDownloadFormView(FormView):
 
         return self.model.objects.filter(
             pk__in=id_list.split(',')
-        ).filter(is_stub=False)
+        )
 
     def get_extra_context(self):
         subtemplates_list = [

@@ -258,18 +258,18 @@ class DocumentManagerTestCase(BaseTestCase):
             document_type=self.document_type
         )
 
-        Document.objects.delete_stubs()
+        Document.passthrough.delete_stubs()
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.passthrough.count(), 1)
 
         document_stub.date_added = document_stub.date_added - timedelta(
             seconds=STUB_EXPIRATION_INTERVAL + 1
         )
         document_stub.save()
 
-        Document.objects.delete_stubs()
+        Document.passthrough.delete_stubs()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.passthrough.count(), 0)
 
 
 class DuplicatedDocumentsTestCase(GenericDocumentTestCase):

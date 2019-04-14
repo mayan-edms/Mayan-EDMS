@@ -17,17 +17,13 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentManager(models.Manager):
-    def delete_stubs(self):
-        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
-            stale_stub_document.delete(trash=False)
-
     def get_by_natural_key(self, uuid):
         return self.model.passthrough.get(uuid=force_text(uuid))
 
     def get_queryset(self):
         return TrashCanQuerySet(
             self.model, using=self._db
-        ).filter(in_trash=False)
+        ).filter(in_trash=False).filter(is_stub=False)
 
     def invalidate_cache(self):
         for document in self.model.objects.all():
@@ -237,7 +233,9 @@ class FavoriteDocumentManager(models.Manager):
 
 
 class PassthroughManager(models.Manager):
-    pass
+    def delete_stubs(self):
+        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
+            stale_stub_document.delete(to_trash=False)
 
 
 class RecentDocumentManager(models.Manager):

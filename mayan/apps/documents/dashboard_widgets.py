@@ -55,7 +55,7 @@ class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
         )
         self.count = AccessControlList.objects.filter_by_access(
             permission=permission_document_view, user=request.user,
-            queryset=Document.objects.filter(is_stub=False)
+            queryset=Document.objects.all()
         ).count()
         return super(DashboardWidgetDocumentsTotal, self).render(request)
 

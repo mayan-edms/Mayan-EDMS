@@ -45,6 +45,7 @@
 * Add dashboard app.
 * Remove queryset slicing hack from the Document list view.
   And slice the Recently Added Document queryset itself.
+* Move stub filtering to the Document model manager.
 
 3.1.11 (2019-04-XX)
 ===================
