@@ -61,17 +61,6 @@
             </div>
         </div>
 
-        <script id="template-invalid-document" type="text/x-template">
-            <div class="text-center" style="border: height: 100%;">
-                <div class="fa-3x">
-                    <span class="fa-layers fa-fw">
-                        <i class="far fa-file text-primary"></i>
-                        <i class="fa-inverse fas fa-times text-danger" data-fa-transform="shrink-6"></i>
-                    </span>
-                </div>
-            </div>
-        </script>
-
         <script id="template-error" type="text/x-template">
             <div class="content">
                 <h2 class="title">{% blocktrans %}Server communication error{% endblocktrans %}</h2>
@@ -120,7 +109,9 @@
             var app = new MayanApp();
 
             var afterBaseLoad = function () {
-                MayanImage.intialize();
+                MayanImage.intialize({
+                    templateInvalidDocument: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
+                });
                 app.doToastrMessages();
                 app.resizeFullHeight();
                 app.setupSelect2();

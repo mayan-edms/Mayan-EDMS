@@ -50,6 +50,7 @@
   recently accessed documents from 40 to 400.
 * Integrate django-autoadmin into the core apps.
 * Update middleware to new style classes.
+* Add server side invalid document template.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -14,7 +14,7 @@ from mayan.apps.common import (
     MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from mayan.apps.common.classes import ModelField
+from mayan.apps.common.classes import ModelField, Template
 from mayan.apps.common.signals import post_initial_setup
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.dashboards.dashboards import dashboard_main
@@ -331,6 +331,11 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             source=DuplicatedDocument, label=_('Duplicates'),
             func=lambda context: context['object'].documents.count()
+        )
+
+        Template(
+            name='invalid_document',
+            template_name='documents/invalid_document.html'
         )
 
         app.conf.CELERYBEAT_SCHEDULE.update(

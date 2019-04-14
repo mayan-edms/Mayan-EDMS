@@ -74,6 +74,7 @@ Other changes
   recently accessed documents from 40 to 400.
 * Integrate django-autoadmin into the core apps.
 * Update middleware to new style classes.
+* Add server side invalid document template.
 
 Removals
 --------
