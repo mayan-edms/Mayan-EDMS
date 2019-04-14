@@ -74,7 +74,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party
     'actstream',
-    'autoadmin',
     'colorful',
     'corsheaders',
     'djcelery',
@@ -90,6 +89,7 @@ INSTALLED_APPS = (
     # Base apps
     'mayan.apps.acls',
     'mayan.apps.authentication',
+    'mayan.apps.autoadmin',
     'mayan.apps.common',
     'mayan.apps.converter',
     'mayan.apps.dashboards',

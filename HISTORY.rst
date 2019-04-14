@@ -48,6 +48,7 @@
 * Move stub filtering to the Document model manager.
 * Increase the default number of recently added documents and
   recently accessed documents from 40 to 400.
+* Integrate django-autoadmin into the core apps.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -9,12 +9,13 @@ import sh
 
 
 APP_LIST = (
-    'acls', 'appearance', 'authentication', 'cabinets', 'checkouts',
-    'common', 'converter', 'dashboards', 'django_gpg', 'document_comments',
-    'document_indexing', 'document_parsing', 'document_signatures',
-    'document_states', 'documents', 'dynamic_search', 'events', 'linking',
-    'lock_manager', 'mayan_statistics', 'mailer', 'metadata', 'mirroring',
-    'motd', 'navigation', 'ocr', 'permissions', 'rest_api', 'smart_settings',
+    'acls', 'appearance', 'authentication', 'autoadmin', 'cabinets',
+    'checkouts', 'common', 'converter', 'dashboards', 'django_gpg',
+    'document_comments', 'document_indexing', 'document_parsing',
+    'document_signatures', 'document_states', 'documents',
+    'dynamic_search', 'events', 'linking', 'lock_manager',
+    'mayan_statistics', 'mailer', 'metadata', 'mirroring', 'motd',
+    'navigation', 'ocr', 'permissions', 'rest_api', 'smart_settings',
     'sources', 'storage', 'tags', 'task_manager', 'user_management'
 )
 

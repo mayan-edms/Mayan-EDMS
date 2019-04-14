@@ -19,6 +19,12 @@ source_lang = en
 source_file = mayan/apps/authentication/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.autoadmin-2-0]
+file_filter = mayan/apps/autoadmin/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/autoadmin/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.cabinets-2-0]
 file_filter = mayan/apps/cabinets/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
