@@ -46,6 +46,8 @@
 * Remove queryset slicing hack from the Document list view.
   And slice the Recently Added Document queryset itself.
 * Move stub filtering to the Document model manager.
+* Increase the default number of recently added documents and
+  recently accessed documents from 40 to 400.
 
 3.1.11 (2019-04-XX)
 ===================
