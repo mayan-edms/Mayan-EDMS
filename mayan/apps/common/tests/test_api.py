@@ -18,7 +18,7 @@ class CommonAPITestCase(BaseAPITestCase):
     @override_settings(LANGUAGE_CODE='de')
     def test_template_detail_view(self):
         self.login_user()
-        template_main_menu = Template.get(name='main_menu')
+        template_main_menu = Template.get(name='menu_main')
         response = self.get(path=template_main_menu.get_absolute_url())
 
         self.assertContains(
@@ -26,7 +26,7 @@ class CommonAPITestCase(BaseAPITestCase):
         )
 
     def test_template_detail_anonymous_view(self):
-        template_main_menu = Template.get(name='main_menu')
+        template_main_menu = Template.get(name='menu_main')
         response = self.get(path=template_main_menu.get_absolute_url())
         self.assertNotContains(
             response=response, text=TEST_TEMPLATE_RESULT, status_code=403
