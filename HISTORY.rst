@@ -59,6 +59,7 @@
 * Use FilteredSelectionForm for TagMultipleSelectionForm.
 * Use FilteredSelectionForm for the class CabinetListForm.
 * Add keyword arguments to URL definitions.
+* Use FilteredSelectionForm to add a new ACLCreateForm.
 
 3.1.11 (2019-04-XX)
 ===================

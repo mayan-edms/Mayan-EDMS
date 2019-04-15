@@ -4,7 +4,7 @@ import itertools
 import logging
 
 from django.contrib.contenttypes.models import ContentType
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse
@@ -16,9 +16,10 @@ from mayan.apps.common.views import (
     SingleObjectListView
 )
 from mayan.apps.permissions import Permission, PermissionNamespace
-from mayan.apps.permissions.models import StoredPermission
+from mayan.apps.permissions.models import Role, StoredPermission
 
 from .classes import ModelPermission
+from .forms import ACLCreateForm
 from .icons import icon_acl_list
 from .links import link_acl_create
 from .models import AccessControlList
@@ -28,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 class ACLCreateView(SingleObjectCreateView):
-    fields = ('role',)
+    form_class = ACLCreateForm
     model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
@@ -56,20 +57,6 @@ class ACLCreateView(SingleObjectCreateView):
             'content_object': self.content_object
         }
 
-    def form_valid(self, form):
-        try:
-            acl = AccessControlList.objects.get(
-                content_type=self.object_content_type,
-                object_id=self.content_object.pk,
-                role=form.cleaned_data['role']
-            )
-        except AccessControlList.DoesNotExist:
-            return super(ACLCreateView, self).form_valid(form)
-        else:
-            return HttpResponseRedirect(
-                reverse('acls:acl_permissions', args=(acl.pk,))
-            )
-
     def get_extra_context(self):
         return {
             'object': self.content_object,
@@ -78,11 +65,16 @@ class ACLCreateView(SingleObjectCreateView):
             ) % self.content_object
         }
 
+    def get_form_extra_kwargs(self):
+        return {
+            'queryset': Role.objects.exclude(
+                pk__in=self.content_object.acls.values('role')
+            ),
+            'user': self.request.user
+        }
+
     def get_success_url(self):
-        if self.object.pk:
-            return reverse('acls:acl_permissions', args=(self.object.pk,))
-        else:
-            return super(ACLCreateView, self).get_success_url()
+        return reverse('acls:acl_permissions', args=(self.object.pk,))
 
 
 class ACLDeleteView(SingleObjectDeleteView):
