@@ -5,7 +5,8 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import MayanAppConfig, menu_tools
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import menu_tools
 
 from .links import (
     link_api, link_api_documentation, link_api_documentation_redoc

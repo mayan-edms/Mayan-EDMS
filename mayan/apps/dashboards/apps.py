@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import MayanAppConfig
+from mayan.apps.common.apps import MayanAppConfig
 
 
 class DashboardsApp(MayanAppConfig):

@@ -4,10 +4,11 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
-from mayan.apps.common import MayanAppConfig, menu_object, menu_secondary, menu_setup
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
 from mayan.apps.navigation import SourceColumn
 
 from .links import (

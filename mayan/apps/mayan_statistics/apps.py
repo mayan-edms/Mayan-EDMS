@@ -4,7 +4,8 @@ from kombu import Exchange, Queue
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import MayanAppConfig, menu_object, menu_secondary, menu_tools
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 

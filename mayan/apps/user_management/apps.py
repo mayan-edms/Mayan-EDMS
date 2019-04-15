@@ -5,11 +5,13 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
-from mayan.apps.common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import (
+    menu_multi_item, menu_object, menu_secondary, menu_setup
+)
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.metadata import MetadataLookup
 from mayan.apps.navigation import SourceColumn

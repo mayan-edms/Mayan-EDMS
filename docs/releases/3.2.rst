@@ -108,6 +108,7 @@ Other changes
   format.
 * Move Pillow initialization from the module to the backend
   class initialization.
+* Remove star import from the ACL and Common apps.
 
 Removals
 --------

@@ -4,9 +4,9 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import (
-    MayanAppConfig, menu_main, menu_object, menu_secondary, menu_tools,
-    menu_user
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import (
+    menu_main, menu_object, menu_secondary, menu_tools, menu_user
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn

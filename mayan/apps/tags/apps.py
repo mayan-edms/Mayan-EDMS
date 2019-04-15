@@ -4,14 +4,14 @@ from django.apps import apps
 from django.db.models.signals import m2m_changed, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
-from mayan.apps.common import (
-    MayanAppConfig, menu_facet, menu_object, menu_main, menu_multi_item,
-    menu_sidebar
-)
+from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
+from mayan.apps.common.menus import (
+    menu_facet, menu_object, menu_main, menu_multi_item, menu_sidebar
+)
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events import ModelEventType
 from mayan.apps.events.links import (

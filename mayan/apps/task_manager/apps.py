@@ -2,9 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import (
-    MayanAppConfig, menu_object, menu_secondary, menu_tools
-)
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn
 

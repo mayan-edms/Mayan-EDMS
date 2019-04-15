@@ -6,14 +6,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.common import (
-    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_sidebar, menu_tools
-)
+from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.common.links import link_object_error_list
+from mayan.apps.common.menus import (
+    menu_facet, menu_main, menu_object, menu_secondary, menu_setup,
+    menu_sidebar, menu_tools
+)
 from mayan.apps.common.permissions_runtime import permission_error_log_view
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn

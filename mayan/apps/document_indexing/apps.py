@@ -6,12 +6,12 @@ from django.apps import apps
 from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
-from mayan.apps.common import (
-    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_tools
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import (
+    menu_facet, menu_main, menu_object, menu_secondary, menu_setup, menu_tools
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type

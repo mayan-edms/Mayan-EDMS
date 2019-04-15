@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common import MayanAppConfig, menu_object, menu_sidebar
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import menu_object, menu_sidebar
 from mayan.apps.navigation import SourceColumn
 
 from .links import link_acl_create, link_acl_delete, link_acl_permissions

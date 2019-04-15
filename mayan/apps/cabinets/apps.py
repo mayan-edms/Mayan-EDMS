@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls import ModelPermission
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
-from mayan.apps.common import (
-    MayanAppConfig, menu_facet, menu_main, menu_multi_item, menu_object,
-    menu_sidebar
+from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.menus import (
+    menu_facet, menu_main, menu_multi_item, menu_object, menu_sidebar
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation import SourceColumn
