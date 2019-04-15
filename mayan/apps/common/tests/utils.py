@@ -13,4 +13,3 @@ def mute_stdout():
     sys.stdout = NullFile()
     yield
     sys.stdout = stdout_old
-

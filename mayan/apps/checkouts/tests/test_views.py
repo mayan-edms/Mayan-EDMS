@@ -158,7 +158,6 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
             response=response, text=self.document.label, status_code=200
         )
 
-
     def test_checkout_list_view_with_access(self):
         self._check_out_document()
 

@@ -12,4 +12,3 @@ class DashboardsApp(MayanAppConfig):
     has_tests = False
     name = 'mayan.apps.dashboards'
     verbose_name = _('Dashboards')
-

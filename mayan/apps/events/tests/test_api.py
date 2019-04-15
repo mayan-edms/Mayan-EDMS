@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.urls import reverse
-
 from mayan.apps.rest_api.tests import BaseAPITestCase
 
 
