@@ -34,11 +34,19 @@ Move the development URL definitions for Rosetta and Debug toolbar
 to a separate URL file. Convert the single urls.py to a module to
 allow multiple URL files to be used.
 
+
 Settings
 ^^^^^^^^
 
 New default value for setting DOCUMENTS_HASH_BLOCK_SIZE is 65535.
 New default value for setting MIMETYPE_FILE_READ_SIZE is 1024.
+
+User interface
+^^^^^^^^^^^^^^
+
+Usage of select2 in more places (FilteredSelectionForm).
+Cabinets, Tags, Rebuild index.
+
 
 Other changes
 ^^^^^^^^^^^^^
@@ -86,6 +94,8 @@ Other changes
 * Use FilteredSelectionForm to add a new ACLCreateForm.
 * Rename IndexListForm to IndexTemplateFilteredForm.
 * Use FilteredSelectionForm for IndexTemplateFilteredForm.
+* Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
+* Improve document signatures tests.
 
 Removals
 --------

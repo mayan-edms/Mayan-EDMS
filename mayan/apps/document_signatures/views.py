@@ -54,7 +54,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         passphrase = form.cleaned_data['passphrase'] or None
 
         AccessControlList.objects.check_access(
-            permissions=permission_key_sign, user=self.request.user, obj=key
+            obj=key, permissions=permission_key_sign, user=self.request.user
         )
 
         try:
@@ -124,14 +124,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             ) % self.get_document_version(),
         }
 
-    def get_form_kwargs(self):
-        result = super(
-            DocumentVersionDetachedSignatureCreateView, self
-        ).get_form_kwargs()
-
-        result.update({'user': self.request.user})
-
-        return result
+    def get_form_extra_kwargs(self):
+        return {'user': self.request.user}
 
     def get_post_action_redirect(self):
         return reverse(
@@ -193,7 +187,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 
             return HttpResponseRedirect(
                 reverse(
-                    'signatures:document_version_signature_list',
+                    viewname='signatures:document_version_signature_list',
                     args=(new_version.pk,)
                 )
             )
@@ -223,14 +217,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             ) % self.get_document_version(),
         }
 
-    def get_form_kwargs(self):
-        result = super(
-            DocumentVersionEmbeddedSignatureCreateView, self
-        ).get_form_kwargs()
-
-        result.update({'user': self.request.user})
-
-        return result
+    def get_form_extra_kwargs(self):
+        return {'user': self.request.user}
 
 
 class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):

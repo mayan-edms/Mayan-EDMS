@@ -62,6 +62,8 @@
 * Use FilteredSelectionForm to add a new ACLCreateForm.
 * Rename IndexListForm to IndexTemplateFilteredForm.
 * Use FilteredSelectionForm for IndexTemplateFilteredForm.
+* Use FilteredSelectionForm for DocumentVersionSignatureCreateForm.
+* Improve document signatures tests.
 
 3.1.11 (2019-04-XX)
 ===================
