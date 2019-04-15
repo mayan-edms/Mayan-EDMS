@@ -70,31 +70,6 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, text='created', status_code=200)
         self.assertEqual(AccessControlList.objects.count(), 1)
 
-    def test_acl_create_duplicate_view_with_permission(self):
-        """
-        Test creating a duplicate ACL entry: same object & role
-        Result: Should redirect to existing ACL for object + role combination
-        """
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
-        )
-
-        self.role.permissions.add(
-            permission_acl_edit.stored_permission
-        )
-
-        response = self.post(
-            viewname='acls:acl_create', kwargs=self.view_arguments, data={
-                'role': self.role.pk
-            }, follow=True
-        )
-
-        self.assertContains(
-            response, text='vailable permissions', status_code=200
-        )
-        self.assertEqual(AccessControlList.objects.count(), 1)
-        self.assertEqual(AccessControlList.objects.first().pk, acl.pk)
-
     def test_orphan_acl_create_view_with_permission(self):
         """
         Test creating an ACL entry for an object with no model permissions.
