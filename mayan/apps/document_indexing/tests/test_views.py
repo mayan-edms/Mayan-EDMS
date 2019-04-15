@@ -156,7 +156,7 @@ class IndexViewTestCase(GenericDocumentViewTestCase):
     def _request_index_rebuild_post_view(self):
         return self.post(
             viewname='indexing:rebuild_index_instances', data={
-                'indexes': self.index.pk
+                'index_templates': self.index.pk
             }
         )
 

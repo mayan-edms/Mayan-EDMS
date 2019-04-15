@@ -60,6 +60,8 @@
 * Use FilteredSelectionForm for the class CabinetListForm.
 * Add keyword arguments to URL definitions.
 * Use FilteredSelectionForm to add a new ACLCreateForm.
+* Rename IndexListForm to IndexTemplateFilteredForm.
+* Use FilteredSelectionForm for IndexTemplateFilteredForm.
 
 3.1.11 (2019-04-XX)
 ===================

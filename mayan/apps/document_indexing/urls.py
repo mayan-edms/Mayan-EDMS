@@ -9,7 +9,7 @@ from .api_views import (
 )
 from .views import (
     DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
-    RebuildIndexesView, SetupIndexDocumentTypesView, SetupIndexCreateView,
+    IndexesRebuildView, SetupIndexDocumentTypesView, SetupIndexCreateView,
     SetupIndexDeleteView, SetupIndexEditView, SetupIndexListView,
     SetupIndexTreeTemplateListView, TemplateNodeCreateView,
     TemplateNodeDeleteView, TemplateNodeEditView
@@ -63,7 +63,7 @@ urlpatterns = [
     ),
 
     url(
-        regex=r'^rebuild/all/$', view=RebuildIndexesView.as_view(),
+        regex=r'^indexes/rebuild/$', view=IndexesRebuildView.as_view(),
         name='rebuild_index_instances'
     ),
     url(

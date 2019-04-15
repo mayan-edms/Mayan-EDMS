@@ -16,7 +16,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.views import DocumentListView
 
-from .forms import IndexListForm, IndexTemplateNodeForm
+from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
 from .icons import icon_index
 from .links import link_index_setup_create
 from .models import (
@@ -365,15 +365,15 @@ class DocumentIndexNodeListView(SingleObjectListView):
         )
 
 
-class RebuildIndexesView(FormView):
+class IndexesRebuildView(FormView):
     extra_context = {
         'title': _('Rebuild indexes'),
     }
-    form_class = IndexListForm
+    form_class = IndexTemplateFilteredForm
 
     def form_valid(self, form):
         count = 0
-        for index in form.cleaned_data['indexes']:
+        for index in form.cleaned_data['index_templates']:
             task_rebuild_index.apply_async(
                 kwargs=dict(index_id=index.pk)
             )
@@ -389,7 +389,7 @@ class RebuildIndexesView(FormView):
             }
         )
 
-        return super(RebuildIndexesView, self).form_valid(form=form)
+        return super(IndexesRebuildView, self).form_valid(form=form)
 
     def get_form_extra_kwargs(self):
         return {
