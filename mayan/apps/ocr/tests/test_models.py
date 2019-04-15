@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.models import DocumentType
-from mayan.apps.documents.runtime import language_choices
 from mayan.apps.documents.tests import (
     DocumentTestMixin, TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
 )
+from mayan.apps.documents.utils import get_language_choices
 
 TEST_DOCUMENT_CONTENT = 'Mayan EDMS Documentation'
 TEST_DOCUMENT_CONTENT_DEU_1 = 'Repository für elektronische Dokumente.'
@@ -39,7 +39,7 @@ class GermanOCRSupportTestCase(BaseTestCase):
         # Get corresponding language code for German from the default language
         # choices list
         language_code = [
-            language for language in language_choices if language[1] == 'German'
+            language for language in get_language_choices() if language[1] == 'German'
         ][0][0]
 
         self.assertEqual('deu', language_code)

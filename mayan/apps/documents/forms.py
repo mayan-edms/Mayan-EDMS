@@ -18,7 +18,7 @@ from .models import (
 )
 from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 from .permissions import permission_document_create
-from .runtime import language_choices
+from .utils import get_language_choices
 
 logger = logging.getLogger(__name__)
 
@@ -68,7 +68,7 @@ class DocumentForm(forms.ModelForm):
         model = Document
         widgets = {
             'language': forms.Select(
-                choices=language_choices, attrs={
+                choices=get_language_choices(), attrs={
                     'class': 'select2'
                 }
             )
@@ -153,7 +153,7 @@ class DocumentPropertiesForm(DetailForm):
             {'label': _('UUID'), 'field': 'uuid'},
             {
                 'label': _('Language'),
-                'field': lambda x: dict(language_choices).get(
+                'field': lambda x: dict(get_language_choices()).get(
                     document.language, _('Unknown')
                 )
             },

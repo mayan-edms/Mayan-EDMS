@@ -70,6 +70,8 @@
 * Expose new Django settings: AUTH_PASSWORD_VALIDATORS, DEFAULT_FROM_EMAIL,
   EMAIL_TIMEOUT, INTERNAL_IPS, LANGUAGES, LANGUAGE_CODE, STATIC_URL,
   STATICFILES_STORAGE, TIME_ZONE, WSGI_APPLICATION.
+* Convert language choices into a function.
+* Move language choices generation to documents.utils.
 
 3.1.11 (2019-04-XX)
 ===================
