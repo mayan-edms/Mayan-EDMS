@@ -74,7 +74,7 @@ class ACLCreateView(SingleObjectCreateView):
         }
 
     def get_success_url(self):
-        return reverse('acls:acl_permissions', args=(self.object.pk,))
+        return self.object.get_absolute_url()
 
 
 class ACLDeleteView(SingleObjectDeleteView):
