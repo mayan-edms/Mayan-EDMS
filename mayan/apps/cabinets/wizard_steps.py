@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.sources.wizards import WizardStep
 
 from .forms import CabinetListForm
+from .models import Cabinet
 from .permissions import permission_cabinet_add_document
 
 
@@ -30,6 +31,7 @@ class WizardStepCabinets(WizardStep):
         return {
             'help_text': _('Cabinets to which the document will be added.'),
             'permission': permission_cabinet_add_document,
+            'queryset': Cabinet.objects.all(),
             'user': wizard.request.user
         }
 

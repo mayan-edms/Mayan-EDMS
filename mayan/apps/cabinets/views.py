@@ -266,6 +266,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
                 'Cabinets to which the selected documents will be added.'
             ),
             'permission': permission_cabinet_add_document,
+            'queryset': Cabinet.objects.all(),
             'user': self.request.user
         }
 
@@ -355,6 +356,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
                 'Cabinets from which the selected documents will be removed.'
             ),
             'permission': permission_cabinet_remove_document,
+            'queryset': Cabinet.objects.all(),
             'user': self.request.user
         }
 

@@ -57,6 +57,7 @@
 * DetailForm now support help text on extra fields.
 * Add FilteredSelectionForm class.
 * Use FilteredSelectionForm for TagMultipleSelectionForm.
+* Use FilteredSelectionForm for the class CabinetListForm.
 
 3.1.11 (2019-04-XX)
 ===================
