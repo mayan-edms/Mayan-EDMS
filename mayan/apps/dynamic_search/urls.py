@@ -10,32 +10,35 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^(?P<search_model>[\.\w]+)/$', SearchView.as_view(), name='search'),
     url(
-        r'^advanced/(?P<search_model>[\.\w]+)/$', AdvancedSearchView.as_view(),
-        name='search_advanced'
+        regex=r'^(?P<search_model>[\.\w]+)/$', view=SearchView.as_view(),
+        name='search'
     ),
     url(
-        r'^again/(?P<search_model>[\.\w]+)/$', SearchAgainView.as_view(),
-        name='search_again'
+        regex=r'^advanced/(?P<search_model>[\.\w]+)/$',
+        view=AdvancedSearchView.as_view(), name='search_advanced'
     ),
     url(
-        r'^results/(?P<search_model>[\.\w]+)/$', ResultsView.as_view(),
-        name='results'
+        regex=r'^again/(?P<search_model>[\.\w]+)/$',
+        view=SearchAgainView.as_view(), name='search_again'
+    ),
+    url(
+        regex=r'^results/(?P<search_model>[\.\w]+)/$',
+        view=ResultsView.as_view(), name='results'
     ),
 ]
 
 api_urls = [
     url(
-        r'^search_models/$', APISearchModelList.as_view(),
+        regex=r'^search_models/$', view=APISearchModelList.as_view(),
         name='searchmodel-list'
     ),
     url(
-        r'^search/(?P<search_model>[\.\w]+)/$', APISearchView.as_view(),
-        name='search-view'
+        regex=r'^search/(?P<search_model>[\.\w]+)/$',
+        view=APISearchView.as_view(), name='search-view'
     ),
     url(
-        r'^search/advanced/(?P<search_model>[\.\w]+)/$', APIAdvancedSearchView.as_view(),
-        name='advanced-search-view'
+        regex=r'^search/advanced/(?P<search_model>[\.\w]+)/$',
+        view=APIAdvancedSearchView.as_view(), name='advanced-search-view'
     ),
 ]

@@ -66,8 +66,8 @@ class MayanAppConfig(apps.AppConfig):
 
         try:
             urlpatterns += url(
-                r'^{}'.format(top_url),
-                include(
+                regex=r'^{}'.format(top_url),
+                view=include(
                     '{}.urls'.format(self.name),
                     namespace=self.app_namespace or self.name
                 )

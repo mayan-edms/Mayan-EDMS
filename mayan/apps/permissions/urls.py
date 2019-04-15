@@ -10,28 +10,40 @@ from .views import (
 
 urlpatterns = [
     url(
-        r'^group/(?P<pk>\d+)/roles/$', GroupRoleMembersView.as_view(),
-        name='group_roles'
+        regex=r'^group/(?P<pk>\d+)/roles/$',
+        view=GroupRoleMembersView.as_view(), name='group_roles'
     ),
-    url(r'^role/list/$', RoleListView.as_view(), name='role_list'),
-    url(r'^role/create/$', RoleCreateView.as_view(), name='role_create'),
+    url(regex=r'^role/list/$', view=RoleListView.as_view(), name='role_list'),
     url(
-        r'^role/(?P<pk>\d+)/permissions/$', SetupRolePermissionsView.as_view(),
-        name='role_permissions'
+        regex=r'^role/create/$', view=RoleCreateView.as_view(),
+        name='role_create'
     ),
-    url(r'^role/(?P<pk>\d+)/edit/$', RoleEditView.as_view(), name='role_edit'),
     url(
-        r'^role/(?P<pk>\d+)/delete/$', RoleDeleteView.as_view(),
+        regex=r'^role/(?P<pk>\d+)/permissions/$',
+        view=SetupRolePermissionsView.as_view(), name='role_permissions'
+    ),
+    url(
+        regex=r'^role/(?P<pk>\d+)/edit/$', view=RoleEditView.as_view(),
+        name='role_edit'
+    ),
+    url(
+        regex=r'^role/(?P<pk>\d+)/delete/$', view=RoleDeleteView.as_view(),
         name='role_delete'
     ),
     url(
-        r'^role/(?P<pk>\d+)/groups/$', SetupRoleMembersView.as_view(),
-        name='role_groups'
+        regex=r'^role/(?P<pk>\d+)/groups/$',
+        view=SetupRoleMembersView.as_view(), name='role_groups'
     ),
 ]
 
 api_urls = [
-    url(r'^permissions/$', APIPermissionList.as_view(), name='permission-list'),
-    url(r'^roles/$', APIRoleListView.as_view(), name='role-list'),
-    url(r'^roles/(?P<pk>[0-9]+)/$', APIRoleView.as_view(), name='role-detail'),
+    url(
+        regex=r'^permissions/$', view=APIPermissionList.as_view(),
+        name='permission-list'
+    ),
+    url(regex=r'^roles/$', view=APIRoleListView.as_view(), name='role-list'),
+    url(
+        regex=r'^roles/(?P<pk>[0-9]+)/$', view=APIRoleView.as_view(),
+        name='role-detail'
+    ),
 ]

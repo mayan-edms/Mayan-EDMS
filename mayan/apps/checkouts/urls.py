@@ -9,28 +9,31 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^list/$', CheckoutListView.as_view(), name='check_out_list'),
     url(
-        r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(),
+        regex=r'^list/$', view=CheckoutListView.as_view(), name='check_out_list'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/check/out/$', view=CheckoutDocumentView.as_view(),
         name='check_out_document'
     ),
     url(
-        r'^(?P<pk>\d+)/check/in/$', DocumentCheckinView.as_view(),
+        regex=r'^(?P<pk>\d+)/check/in/$', view=DocumentCheckinView.as_view(),
         name='check_in_document'
     ),
     url(
-        r'^(?P<pk>\d+)/check/info/$', CheckoutDetailView.as_view(),
+        regex=r'^(?P<pk>\d+)/check/info/$', view=CheckoutDetailView.as_view(),
         name='check_out_info'
     ),
 ]
 
 api_urls = [
     url(
-        r'^checkouts/$', APICheckedoutDocumentListView.as_view(),
+        regex=r'^checkouts/$', view=APICheckedoutDocumentListView.as_view(),
         name='checkout-document-list'
     ),
     url(
-        r'^checkouts/(?P<pk>[0-9]+)/checkout_info/$', APICheckedoutDocumentView.as_view(),
+        regex=r'^checkouts/(?P<pk>[0-9]+)/checkout_info/$',
+        view=APICheckedoutDocumentView.as_view(),
         name='checkedout-document-view'
     ),
 ]

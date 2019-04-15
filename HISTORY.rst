@@ -58,6 +58,7 @@
 * Add FilteredSelectionForm class.
 * Use FilteredSelectionForm for TagMultipleSelectionForm.
 * Use FilteredSelectionForm for the class CabinetListForm.
+* Add keyword arguments to URL definitions.
 
 3.1.11 (2019-04-XX)
 ===================

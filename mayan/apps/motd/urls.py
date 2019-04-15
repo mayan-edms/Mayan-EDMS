@@ -8,21 +8,28 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^list/$', MessageListView.as_view(), name='message_list'),
-    url(r'^create/$', MessageCreateView.as_view(), name='message_create'),
+    url(regex=r'^list/$', view=MessageListView.as_view(), name='message_list'),
     url(
-        r'^(?P<pk>\d+)/edit/$', MessageEditView.as_view(), name='message_edit'
+        regex=r'^create/$', view=MessageCreateView.as_view(),
+        name='message_create'
     ),
     url(
-        r'^(?P<pk>\d+)/delete/$', MessageDeleteView.as_view(),
+        regex=r'^(?P<pk>\d+)/edit/$', view=MessageEditView.as_view(),
+        name='message_edit'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/delete/$', view=MessageDeleteView.as_view(),
         name='message_delete'
     ),
 ]
 
 api_urls = [
-    url(r'^messages/$', APIMessageListView.as_view(), name='message-list'),
     url(
-        r'^messages/(?P<pk>[0-9]+)/$', APIMessageView.as_view(),
+        regex=r'^messages/$', view=APIMessageListView.as_view(),
+        name='message-list'
+    ),
+    url(
+        regex=r'^messages/(?P<pk>[0-9]+)/$', view=APIMessageView.as_view(),
         name='message-detail'
     ),
 ]

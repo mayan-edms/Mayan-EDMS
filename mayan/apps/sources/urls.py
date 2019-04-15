@@ -15,79 +15,77 @@ from .wizards import DocumentCreateWizard
 
 urlpatterns = [
     url(
-        r'^staging_file/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
-        StagingFileDeleteView.as_view(), name='staging_file_delete'
-    ),
-
-    url(
-        r'^upload/document/new/interactive/(?P<source_id>\d+)/$',
-        UploadInteractiveView.as_view(), name='upload_interactive'
+        regex=r'^staging_file/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
+        view=StagingFileDeleteView.as_view(), name='staging_file_delete'
     ),
     url(
-        r'^upload/document/new/interactive/$', UploadInteractiveView.as_view(),
-        name='upload_interactive'
-    ),
-
-    url(
-        r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_id>\d+)/$',
-        UploadInteractiveVersionView.as_view(), name='upload_version'
+        regex=r'^upload/document/new/interactive/(?P<source_id>\d+)/$',
+        view=UploadInteractiveView.as_view(), name='upload_interactive'
     ),
     url(
-        r'^upload/document/(?P<document_pk>\d+)/version/interactive/$',
-        UploadInteractiveVersionView.as_view(), name='upload_version'
+        regex=r'^upload/document/new/interactive/$',
+        view=UploadInteractiveView.as_view(), name='upload_interactive'
+    ),
+    url(
+        regex=r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_id>\d+)/$',
+        view=UploadInteractiveVersionView.as_view(), name='upload_version'
+    ),
+    url(
+        regex=r'^upload/document/(?P<document_pk>\d+)/version/interactive/$',
+        view=UploadInteractiveVersionView.as_view(), name='upload_version'
     ),
 
     # Setup views
 
     url(
-        r'^setup/list/$', SetupSourceListView.as_view(),
+        regex=r'^setup/list/$', view=SetupSourceListView.as_view(),
         name='setup_source_list'
     ),
     url(
-        r'^setup/(?P<pk>\d+)/edit/$', SetupSourceEditView.as_view(),
+        regex=r'^setup/(?P<pk>\d+)/edit/$', view=SetupSourceEditView.as_view(),
         name='setup_source_edit'
     ),
     url(
-        r'^setup/(?P<pk>\d+)/logs/$', SourceLogListView.as_view(),
+        regex=r'^setup/(?P<pk>\d+)/logs/$', view=SourceLogListView.as_view(),
         name='setup_source_logs'
     ),
     url(
-        r'^setup/(?P<pk>\d+)/delete/$', SetupSourceDeleteView.as_view(),
-        name='setup_source_delete'
+        regex=r'^setup/(?P<pk>\d+)/delete/$',
+        view=SetupSourceDeleteView.as_view(), name='setup_source_delete'
     ),
     url(
-        r'^setup/(?P<source_type>\w+)/create/$',
-        SetupSourceCreateView.as_view(), name='setup_source_create'
+        regex=r'^setup/(?P<source_type>\w+)/create/$',
+        view=SetupSourceCreateView.as_view(), name='setup_source_create'
     ),
     url(
-        r'^setup/(?P<pk>\d+)/check/$', SetupSourceCheckView.as_view(),
-        name='setup_source_check'
+        regex=r'^setup/(?P<pk>\d+)/check/$',
+        view=SetupSourceCheckView.as_view(), name='setup_source_check'
     ),
 
     # Document create views
 
     url(
-        r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(),
-        name='document_create_multiple'
+        regex=r'^create/from/local/multiple/$',
+        view=DocumentCreateWizard.as_view(), name='document_create_multiple'
     ),
 ]
 
 api_urls = [
     url(
-        r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
-        APIStagingSourceFileImageView.as_view(),
+        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
+        view=APIStagingSourceFileImageView.as_view(),
         name='stagingfolderfile-image-view'
     ),
     url(
-        r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$',
-        APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'
+        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$',
+        view=APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'
     ),
     url(
-        r'^staging_folders/$', APIStagingSourceListView.as_view(),
+        regex=r'^staging_folders/$', view=APIStagingSourceListView.as_view(),
         name='stagingfolder-list'
     ),
     url(
-        r'^staging_folders/(?P<pk>[0-9]+)/$', APIStagingSourceView.as_view(),
-        name='stagingfolder-detail'
+        regex=r'^staging_folders/(?P<pk>[0-9]+)/$',
+        view=APIStagingSourceView.as_view(), name='stagingfolder-detail'
     )
 ]

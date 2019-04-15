@@ -6,9 +6,9 @@ from .api_views import APIRoot, BrowseableObtainAuthToken, schema_view
 
 
 api_urls = [
-    url(r'^$', APIRoot.as_view(), name='api_root'),
+    url(regex=r'^$', view=APIRoot.as_view(), name='api_root'),
     url(
-        r'^auth/token/obtain/$', BrowseableObtainAuthToken.as_view(),
+        regex=r'^auth/token/obtain/$', view=BrowseableObtainAuthToken.as_view(),
         name='auth_token_obtain'
     ),
 ]
@@ -30,5 +30,5 @@ urlpatterns = [
         regex=r'^redoc/$', name='schema-redoc',
         view=schema_view.with_ui('redoc', cache_timeout=None)
     ),
-    url(r'^', include(api_urls)),
+    url(regex=r'^', view=include(api_urls)),
 ]

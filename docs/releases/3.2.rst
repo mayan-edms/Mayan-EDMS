@@ -82,6 +82,8 @@ Other changes
 * Add FilteredSelectionForm class.
 * Use FilteredSelectionForm for TagMultipleSelectionForm.
 * Use FilteredSelectionForm for the class CabinetListForm.
+* Add keyword arguments to URL definitions.
+
 
 Removals
 --------

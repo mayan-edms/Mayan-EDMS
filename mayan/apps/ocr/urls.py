@@ -14,54 +14,56 @@ from .views import (
 
 urlpatterns = [
     url(
-        r'^documents/pages/(?P<pk>\d+)/content/$',
-        DocumentPageOCRContentView.as_view(), name='document_page_ocr_content'
+        regex=r'^documents/pages/(?P<pk>\d+)/content/$',
+        view=DocumentPageOCRContentView.as_view(),
+        name='document_page_ocr_content'
     ),
     url(
-        r'^documents/(?P<pk>\d+)/content/$', DocumentOCRContentView.as_view(),
-        name='document_ocr_content'
+        regex=r'^documents/(?P<pk>\d+)/content/$',
+        view=DocumentOCRContentView.as_view(), name='document_ocr_content'
     ),
     url(
-        r'^documents/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(),
-        name='document_submit'
+        regex=r'^documents/(?P<pk>\d+)/submit/$',
+        view=DocumentSubmitView.as_view(), name='document_submit'
     ),
     url(
-        r'^document_types/submit/$', DocumentTypeSubmitView.as_view(),
-        name='document_type_submit'
+        regex=r'^document_types/submit/$',
+        view=DocumentTypeSubmitView.as_view(), name='document_type_submit'
     ),
     url(
-        r'^documents/multiple/submit/$', DocumentSubmitView.as_view(),
-        name='document_submit_multiple'
+        regex=r'^documents/multiple/submit/$',
+        view=DocumentSubmitView.as_view(), name='document_submit_multiple'
     ),
     url(
-        r'^document_types/(?P<pk>\d+)/ocr/settings/$',
-        DocumentTypeSettingsEditView.as_view(),
+        regex=r'^document_types/(?P<pk>\d+)/ocr/settings/$',
+        view=DocumentTypeSettingsEditView.as_view(),
         name='document_type_ocr_settings'
     ),
     url(
-        r'^documents/(?P<pk>\d+)/ocr/errors/$',
-        DocumentOCRErrorsListView.as_view(), name='document_ocr_error_list'
+        regex=r'^documents/(?P<pk>\d+)/ocr/errors/$',
+        view=DocumentOCRErrorsListView.as_view(),
+        name='document_ocr_error_list'
     ),
     url(
-        r'^documents/(?P<pk>\d+)/ocr/download/$',
-        DocumentOCRDownloadView.as_view(), name='document_ocr_download'
+        regex=r'^documents/(?P<pk>\d+)/ocr/download/$',
+        view=DocumentOCRDownloadView.as_view(), name='document_ocr_download'
     ),
-    url(r'^all/$', EntryListView.as_view(), name='entry_list'),
+    url(regex=r'^all/$', view=EntryListView.as_view(), name='entry_list'),
 ]
 
 api_urls = [
     url(
-        r'^documents/(?P<pk>\d+)/submit/$', APIDocumentOCRView.as_view(),
-        name='document-ocr-submit-view'
+        regex=r'^documents/(?P<pk>\d+)/submit/$',
+        view=APIDocumentOCRView.as_view(), name='document-ocr-submit-view'
     ),
     url(
-        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/ocr/$',
-        APIDocumentVersionOCRView.as_view(),
+        regex=r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/ocr/$',
+        view=APIDocumentVersionOCRView.as_view(),
         name='document-version-ocr-submit-view'
     ),
     url(
-        r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$',
-        APIDocumentPageOCRContentView.as_view(),
+        regex=r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/ocr/$',
+        view=APIDocumentPageOCRContentView.as_view(),
         name='document-page-ocr-content-view'
     ),
 ]

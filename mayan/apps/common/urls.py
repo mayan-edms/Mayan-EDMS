@@ -16,75 +16,77 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^$', RootView.as_view(), name='root'),
-    url(r'^home/$', HomeView.as_view(), name='home'),
-    url(r'^about/$', AboutView.as_view(), name='about_view'),
+    url(regex=r'^$', view=RootView.as_view(), name='root'),
+    url(regex=r'^home/$', view=HomeView.as_view(), name='home'),
+    url(regex=r'^about/$', view=AboutView.as_view(), name='about_view'),
     url(
-        r'^check_version/$', CheckVersionView.as_view(),
+        regex=r'^check_version/$', view=CheckVersionView.as_view(),
         name='check_version_view'
     ),
-    url(r'^license/$', LicenseView.as_view(), name='license_view'),
+    url(regex=r'^license/$', view=LicenseView.as_view(), name='license_view'),
     url(
-        r'^packages/licenses/$', PackagesLicensesView.as_view(),
+        regex=r'^packages/licenses/$', view=PackagesLicensesView.as_view(),
         name='packages_licenses_view'
     ),
     url(
-        r'^object/multiple/action/$', multi_object_action_view,
+        regex=r'^object/multiple/action/$', view=multi_object_action_view,
         name='multi_object_action_view'
     ),
-    url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
-    url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),
+    url(regex=r'^setup/$', view=SetupListView.as_view(), name='setup_list'),
+    url(regex=r'^tools/$', view=ToolsListView.as_view(), name='tools_list'),
     url(
-        r'^user/$', CurrentUserDetailsView.as_view(),
+        regex=r'^user/$', view=CurrentUserDetailsView.as_view(),
         name='current_user_details'
     ),
     url(
-        r'^user/edit/$', CurrentUserEditView.as_view(),
+        regex=r'^user/edit/$', view=CurrentUserEditView.as_view(),
         name='current_user_edit'
     ),
     url(
-        r'^user/locale/$', CurrentUserLocaleProfileDetailsView.as_view(),
+        regex=r'^user/locale/$',
+        view=CurrentUserLocaleProfileDetailsView.as_view(),
         name='current_user_locale_profile_details'
     ),
     url(
-        r'^user/locale/edit/$', CurrentUserLocaleProfileEditView.as_view(),
+        regex=r'^user/locale/edit/$',
+        view=CurrentUserLocaleProfileEditView.as_view(),
         name='current_user_locale_profile_edit'
     ),
     url(
-        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
-        ObjectErrorLogEntryListView.as_view(), name='object_error_list'
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/$',
+        view=ObjectErrorLogEntryListView.as_view(), name='object_error_list'
     ),
     url(
-        r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/clear/$',
-        ObjectErrorLogEntryListClearView.as_view(),
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/errors/clear/$',
+        view=ObjectErrorLogEntryListClearView.as_view(),
         name='object_error_list_clear'
     ),
 ]
 
 urlpatterns += [
     url(
-        r'^favicon\.ico$', FaviconRedirectView.as_view()
+        regex=r'^favicon\.ico$', view=FaviconRedirectView.as_view()
     ),
     url(
-        r'^jsi18n/(?P<packages>\S+?)/$', javascript_catalog,
+        regex=r'^jsi18n/(?P<packages>\S+?)/$', view=javascript_catalog,
         name='javascript_catalog'
     ),
     url(
-        r'^set_language/$', set_language, name='set_language'
+        regex=r'^set_language/$', view=set_language, name='set_language'
     ),
 ]
 
 api_urls = [
     url(
-        r'^content_types/$', APIContentTypeList.as_view(),
+        regex=r'^content_types/$', view=APIContentTypeList.as_view(),
         name='content-type-list'
     ),
     url(
-        r'^templates/$', APITemplateListView.as_view(),
+        regex=r'^templates/$', view=APITemplateListView.as_view(),
         name='template-list'
     ),
     url(
-        r'^templates/(?P<name>[-\w]+)/$', APITemplateDetailView.as_view(),
-        name='template-detail'
+        regex=r'^templates/(?P<name>[-\w]+)/$',
+        view=APITemplateDetailView.as_view(), name='template-detail'
     ),
 ]

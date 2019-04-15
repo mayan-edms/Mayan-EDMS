@@ -9,19 +9,19 @@ from .views import (
 
 urlpatterns = [
     url(
-        r'^create_for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
-        TransformationCreateView.as_view(), name='transformation_create'
+        regex=r'^create_for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
+        view=TransformationCreateView.as_view(), name='transformation_create'
     ),
     url(
-        r'^list_for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
-        TransformationListView.as_view(), name='transformation_list'
+        regex=r'^list_for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
+        view=TransformationListView.as_view(), name='transformation_list'
     ),
     url(
-        r'^delete/(?P<pk>\d+)/$', TransformationDeleteView.as_view(),
+        regex=r'^delete/(?P<pk>\d+)/$', view=TransformationDeleteView.as_view(),
         name='transformation_delete'
     ),
     url(
-        r'^edit/(?P<pk>\d+)/$', TransformationEditView.as_view(),
+        regex=r'^edit/(?P<pk>\d+)/$', view=TransformationEditView.as_view(),
         name='transformation_edit'
     ),
 ]

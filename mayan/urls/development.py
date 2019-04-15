@@ -12,7 +12,7 @@ if 'rosetta' in settings.INSTALLED_APPS:
         pass
     else:
         urlpatterns += [  # NOQA
-            url(r'^rosetta/', include('rosetta.urls'), name='rosetta')
+            url(regex=r'^rosetta/', view=include('rosetta.urls'), name='rosetta')
         ]
 
 if 'debug_toolbar' in settings.INSTALLED_APPS:
@@ -22,5 +22,5 @@ if 'debug_toolbar' in settings.INSTALLED_APPS:
         pass
     else:
         urlpatterns += [  # NOQA
-            url(r'^__debug__/', include(debug_toolbar.urls))
+            url(regex=r'^__debug__/', view=include(debug_toolbar.urls))
         ]
