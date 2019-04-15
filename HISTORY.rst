@@ -67,6 +67,9 @@
 * Add docstrings to most models.
 * Add support to the mailing profiles for specifying a from
   address. Closes GitLab issue #522.
+* Expose new Django settings: AUTH_PASSWORD_VALIDATORS, DEFAULT_FROM_EMAIL,
+  EMAIL_TIMEOUT, INTERNAL_IPS, LANGUAGES, LANGUAGE_CODE, STATIC_URL,
+  STATICFILES_STORAGE, TIME_ZONE, WSGI_APPLICATION.
 
 3.1.11 (2019-04-XX)
 ===================
