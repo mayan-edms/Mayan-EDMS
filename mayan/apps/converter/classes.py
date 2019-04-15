@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-import base64
 from io import BytesIO
 import logging
 import os
@@ -186,7 +185,7 @@ class ConverterBase(object):
         fs_cleanup(input_filepath)
         fs_cleanup(converted_output)
 
-    def get_page(self, output_format=None, as_base64=False):
+    def get_page(self, output_format=None):
         output_format = output_format or yaml.load(
             stream=setting_graphics_backend_config.value, Loader=SafeLoader
         ).get(
@@ -206,10 +205,7 @@ class ConverterBase(object):
 
         self.image.convert(new_mode).save(image_buffer, format=output_format)
 
-        if as_base64:
-            return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
-        else:
-            image_buffer.seek(0)
+        image_buffer.seek(0)
 
         return image_buffer
 

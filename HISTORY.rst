@@ -72,6 +72,8 @@
   STATICFILES_STORAGE, TIME_ZONE, WSGI_APPLICATION.
 * Convert language choices into a function.
 * Move language choices generation to documents.utils.
+* Remove support for generating documents images in base 64
+  format.
 
 3.1.11 (2019-04-XX)
 ===================
