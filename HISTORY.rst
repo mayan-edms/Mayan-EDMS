@@ -74,6 +74,8 @@
 * Move language choices generation to documents.utils.
 * Remove support for generating documents images in base 64
   format.
+* Move Pillow initialization from the module to the backend
+  class initialization.
 
 3.1.11 (2019-04-XX)
 ===================
