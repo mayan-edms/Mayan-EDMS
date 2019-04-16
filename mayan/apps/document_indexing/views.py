@@ -17,6 +17,7 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.views import DocumentListView
 
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
+from .html_widgets import node_tree
 from .icons import icon_index
 from .links import link_index_setup_create
 from .models import (
@@ -30,7 +31,6 @@ from .permissions import (
     permission_document_indexing_view
 )
 from .tasks import task_rebuild_index
-from .widgets import node_tree
 
 
 # Setup views

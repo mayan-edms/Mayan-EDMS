@@ -23,6 +23,9 @@ from .handlers import (
     handler_index_document, handler_remove_document,
     handler_post_save_index_document
 )
+from .html_widgets import (
+    get_instance_link, index_instance_item_link, node_level
+)
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_setup,
     link_index_setup_create, link_index_setup_document_types,
@@ -39,7 +42,6 @@ from .permissions import (
     permission_document_indexing_rebuild, permission_document_indexing_view
 )
 from .queues import *  # NOQA
-from .widgets import get_instance_link, index_instance_item_link, node_level
 
 
 class DocumentIndexingApp(MayanAppConfig):

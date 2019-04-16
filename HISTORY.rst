@@ -80,6 +80,8 @@
 * Add dependencies app
 * Convert the document tags widget to use HTML templates.
 * Move Tag app HTML widgets to their own module.
+* Move the document index app widgets to the html_widget.py
+  module.
 
 3.1.11 (2019-04-XX)
 ===================
