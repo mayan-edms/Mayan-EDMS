@@ -31,9 +31,9 @@ for Mayan EDMS. Most MERCs will be Feature MERCs.
 2. An **Informational** MERC describes a Mayan EDMS design issue, or
 provides general guidelines or information to the Mayan EDMS community,
 but does not propose a new feature. Informational MERCs do not
-necessarily represent a community consensus or
-recommendation, so users and implementers are free to ignore
-Informational MERCs or follow their advice.
+necessarily represent a community consensus or recommendation, so users
+and implementers are free to ignore Informational MERCs or follow their
+advice.
 
 3. A **Process** MERC describes a process surrounding Mayan EDMS, or
 proposes a change to (or an event in) a process.  Process MERCs are

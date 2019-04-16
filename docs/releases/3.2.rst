@@ -118,6 +118,7 @@ Other changes
   user edit permission are now required.
 * Add keyword arguments to messages uses.
 * Add keyword arguments to the reverse use in views.
+* Add MERCs 5 and 6. 
 
 Removals
 --------

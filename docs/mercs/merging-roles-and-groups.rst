@@ -63,5 +63,5 @@ Changes needed:
    the Role model's permissions many to many field.
 4. Update the ``AccessControlList`` models roles field to point to the group
    models.
-5. Update the role checks in the ``check_access`` and ``filter_by_access``
+5. Update the role checks in the ``check_access`` and ``restrict_queryset``
    ``AccessControlList`` model manager methods.
