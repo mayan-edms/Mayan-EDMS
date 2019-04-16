@@ -77,6 +77,7 @@
 * Move Pillow initialization from the module to the backend
   class initialization.
 * Remove star import from the ACL and Common apps.
+* Add dependencies app
 
 3.1.11 (2019-04-XX)
 ===================
