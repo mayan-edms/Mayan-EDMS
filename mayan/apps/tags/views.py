@@ -85,7 +85,11 @@ class TagAttachActionView(MultipleObjectFormActionView):
     def get_post_action_redirect(self):
         queryset = self.get_queryset()
         if queryset.count() == 1:
-            return reverse('tags:document_tags', args=(queryset.first().pk,))
+            return reverse(
+                viewname='tags:document_tags', kwargs={
+                    'pk': queryset.first().pk
+                }
+            )
         else:
             return super(TagAttachActionView, self).get_post_action_redirect()
 
@@ -123,7 +127,7 @@ class TagCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create tag')}
     fields = ('label', 'color')
     model = Tag
-    post_action_redirect = reverse_lazy('tags:tag_list')
+    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     view_permission = permission_tag_create
 
     def get_save_extra_data(self):
@@ -132,7 +136,7 @@ class TagCreateView(SingleObjectCreateView):
 
 class TagDeleteActionView(MultipleObjectConfirmActionView):
     model = Tag
-    post_action_redirect = reverse_lazy('tags:tag_list')
+    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     object_permission = permission_tag_delete
     success_message = _('Tag delete request performed on %(count)d tag')
     success_message_plural = _(
@@ -183,7 +187,7 @@ class TagEditView(SingleObjectEditView):
     fields = ('label', 'color')
     model = Tag
     object_permission = permission_tag_edit
-    post_action_redirect = reverse_lazy('tags:tag_list')
+    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
 
     def get_extra_context(self):
         return {
@@ -329,7 +333,11 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     def get_post_action_redirect(self):
         queryset = self.get_queryset()
         if queryset.count() == 1:
-            return reverse('tags:document_tags', args=(queryset.first().pk,))
+            return reverse(
+                viewname='tags:document_tags', kwargs={
+                    'pk': queryset.first().pk
+                }
+            )
         else:
             return super(TagRemoveActionView, self).get_post_action_redirect()
 

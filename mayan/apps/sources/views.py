@@ -127,7 +127,9 @@ class UploadBaseView(MultiFormView):
                     'none have been enabled, create one before proceeding.'
                 ), request=request
             )
-            return HttpResponseRedirect(reverse('sources:setup_source_list'))
+            return HttpResponseRedirect(
+                reverse(viewname='sources:setup_source_list')
+            )
 
         return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
 
@@ -298,7 +300,7 @@ class UploadInteractiveView(UploadBaseView):
         return HttpResponseRedirect(
             '{}?{}'.format(
                 reverse(
-                    self.request.resolver_match.view_name,
+                    viewname=self.request.resolver_match.view_name,
                     kwargs=self.request.resolver_match.kwargs
                 ), self.request.META['QUERY_STRING']
             ),
@@ -350,7 +352,7 @@ class UploadInteractiveView(UploadBaseView):
                 {
                     'form_action': '{}?{}'.format(
                         reverse(
-                            self.request.resolver_match.view_name,
+                            viewname=self.request.resolver_match.view_name,
                             kwargs=self.request.resolver_match.kwargs
                         ), self.request.META['QUERY_STRING']
                     ),
@@ -380,7 +382,9 @@ class UploadInteractiveVersionView(UploadBaseView):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'documents:document_version_list', args=(self.document.pk,)
+                    viewname='documents:document_version_list', kwargs={
+                        'pk': self.document.pk
+                    }
                 )
             )
 
@@ -433,7 +437,9 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         return HttpResponseRedirect(
             reverse(
-                'documents:document_version_list', args=(self.document.pk,)
+                viewname='documents:document_version_list', kwargs={
+                    'pk': self.document.pk
+                }
             )
         )
 
@@ -534,7 +540,9 @@ class SetupSourceCheckView(ConfirmView):
 
 
 class SetupSourceCreateView(SingleObjectCreateView):
-    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    post_action_redirect = reverse_lazy(
+        viewname='sources:setup_source_list'
+    )
     view_permission = permission_sources_setup_create
 
     def get_form_class(self):
@@ -550,7 +558,9 @@ class SetupSourceCreateView(SingleObjectCreateView):
 
 
 class SetupSourceDeleteView(SingleObjectDeleteView):
-    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    post_action_redirect = reverse_lazy(
+        viewname='sources:setup_source_list'
+    )
     view_permission = permission_sources_setup_delete
 
     def get_object(self):
@@ -569,7 +579,9 @@ class SetupSourceDeleteView(SingleObjectDeleteView):
 
 
 class SetupSourceEditView(SingleObjectEditView):
-    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    post_action_redirect = reverse_lazy(
+        viewname='sources:setup_source_list'
+    )
     view_permission = permission_sources_setup_edit
 
     def get_object(self):

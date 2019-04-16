@@ -33,7 +33,9 @@ class GroupCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create new group')}
     fields = ('name',)
     model = Group
-    post_action_redirect = reverse_lazy('user_management:group_list')
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:group_list'
+    )
     view_permission = permission_group_create
 
 
@@ -41,7 +43,9 @@ class GroupEditView(SingleObjectEditView):
     fields = ('name',)
     model = Group
     object_permission = permission_group_edit
-    post_action_redirect = reverse_lazy('user_management:group_list')
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:group_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -76,7 +80,9 @@ class GroupListView(SingleObjectListView):
 class GroupDeleteView(SingleObjectDeleteView):
     model = Group
     object_permission = permission_group_delete
-    post_action_redirect = reverse_lazy('user_management:group_list')
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:group_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -158,7 +164,10 @@ class UserCreateView(SingleObjectCreateView):
             request=self.request
         )
         return HttpResponseRedirect(
-            reverse('user_management:user_set_password', args=(user.pk,))
+            reverse(
+                viewname='user_management:user_set_password', kwargs={
+                    'pk': user.pk}
+                )
         )
 
 
@@ -221,7 +230,9 @@ class UserDeleteView(MultipleObjectConfirmActionView):
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
     object_permission = permission_user_edit
-    post_action_redirect = reverse_lazy('user_management:user_list')
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:user_list'
+    )
     queryset = get_user_model().objects.filter(
         is_superuser=False, is_staff=False
     )
@@ -308,7 +319,7 @@ class UserOptionsEditView(SingleObjectEditView):
         return self.get_user().user_options
 
     def get_post_action_redirect(self):
-        return reverse('user_management:user_list')
+        return reverse(viewname='user_management:user_list')
 
     def get_user(self):
         return get_object_or_404(

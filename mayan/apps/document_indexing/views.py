@@ -38,13 +38,17 @@ class SetupIndexCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create index')}
     fields = ('label', 'slug', 'enabled')
     model = Index
-    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    post_action_redirect = reverse_lazy(
+        viewname='indexing:index_setup_list'
+    )
     view_permission = permission_document_indexing_create
 
 
 class SetupIndexDeleteView(SingleObjectDeleteView):
     model = Index
-    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    post_action_redirect = reverse_lazy(
+        viewname='indexing:index_setup_list'
+    )
     object_permission = permission_document_indexing_delete
 
     def get_extra_context(self):
@@ -57,7 +61,9 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
 class SetupIndexEditView(SingleObjectEditView):
     fields = ('label', 'slug', 'enabled')
     model = Index
-    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    post_action_redirect = reverse_lazy(
+        viewname='indexing:index_setup_list'
+    )
     object_permission = permission_document_indexing_edit
 
     def get_extra_context(self):
@@ -204,7 +210,9 @@ class TemplateNodeDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'indexing:index_setup_view', args=(self.get_object().index.pk,)
+            viewname='indexing:index_setup_view', kwargs={
+                'pk': self.get_object().index.pk
+            }
         )
 
 
@@ -226,7 +234,9 @@ class TemplateNodeEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'indexing:index_setup_view', args=(self.get_object().index.pk,)
+            viewname='indexing:index_setup_view', kwargs={
+                'pk': self.get_object().index.pk
+            }
         )
 
 
@@ -397,4 +407,4 @@ class IndexesRebuildView(FormView):
         }
 
     def get_post_action_redirect(self):
-        return reverse('common:tools_list')
+        return reverse(viewname='common:tools_list')

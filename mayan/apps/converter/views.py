@@ -46,11 +46,11 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=(
-                self.transformation.content_type.app_label,
-                self.transformation.content_type.model,
-                self.transformation.object_id
-            )
+            viewname='converter:transformation_list', kwargs={
+                'app_label': self.transformation.content_type.app_label,
+                'model': self.transformation.content_type.model,
+                'object_id': self.transformation.object_id
+            }
         )
 
     def get_extra_context(self):
@@ -58,11 +58,11 @@ class TransformationDeleteView(SingleObjectDeleteView):
             'content_object': self.transformation.content_object,
             'navigation_object_list': ('content_object', 'transformation'),
             'previous': reverse(
-                'converter:transformation_list', args=(
-                    self.transformation.content_type.app_label,
-                    self.transformation.content_type.model,
-                    self.transformation.object_id
-                )
+                viewname='converter:transformation_list', kwargs={
+                    'app_label': self.transformation.content_type.app_label,
+                    'model': self.transformation.content_type.model,
+                    'object_id': self.transformation.object_id
+                }
             ),
             'title': _(
                 'Delete transformation "%(transformation)s" for: '
@@ -123,10 +123,11 @@ class TransformationCreateView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=(
-                self.kwargs['app_label'], self.kwargs['model'],
-                self.kwargs['object_id']
-            )
+            viewname='converter:transformation_list', kwargs={
+                'app_label': self.kwargs['app_label'],
+                'model': self.kwargs['model'],
+                'object_id': self.kwargs['object_id']
+            }
         )
 
     def get_queryset(self):
@@ -177,11 +178,11 @@ class TransformationEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=(
-                self.transformation.content_type.app_label,
-                self.transformation.content_type.model,
-                self.transformation.object_id
-            )
+            viewname='converter:transformation_list', kwargs={
+                'app_label': self.transformation.content_type.app_label,
+                'model': self.transformation.content_type.model,
+                'object_id': self.transformation.object_id
+            }
         )
 
 

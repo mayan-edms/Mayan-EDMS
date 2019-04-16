@@ -66,7 +66,11 @@ class CheckoutDocumentView(SingleObjectCreateView):
         }
 
     def get_post_action_redirect(self):
-        return reverse('checkouts:check_out_info', args=(self.document.pk,))
+        return reverse(
+            viewname='checkouts:check_out_info', kwargs={
+                'pk': self.document.pk
+            }
+        )
 
 
 class CheckoutListView(DocumentListView):
@@ -153,7 +157,11 @@ class DocumentCheckinView(ConfirmView):
         return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
-        return reverse('checkouts:check_out_info', args=(self.get_object().pk,))
+        return reverse(
+            viewname='checkouts:check_out_info', kwargs={
+                'pk': self.get_object().pk
+            }
+        )
 
     def view_action(self):
         document = self.get_object()

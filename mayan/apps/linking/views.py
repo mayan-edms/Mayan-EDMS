@@ -203,14 +203,18 @@ class DocumentSmartLinkListView(SmartLinkListView):
 class SmartLinkCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create new smart link')}
     form_class = SmartLinkForm
-    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    post_action_redirect = reverse_lazy(
+        viewname='linking:smart_link_list'
+    )
     view_permission = permission_smart_link_create
 
 
 class SmartLinkEditView(SingleObjectEditView):
     form_class = SmartLinkForm
     model = SmartLink
-    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    post_action_redirect = reverse_lazy(
+        viewname='linking:smart_link_list'
+    )
     view_permission = permission_smart_link_edit
 
     def get_extra_context(self):
@@ -222,7 +226,9 @@ class SmartLinkEditView(SingleObjectEditView):
 
 class SmartLinkDeleteView(SingleObjectDeleteView):
     model = SmartLink
-    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    post_action_redirect = reverse_lazy(
+        viewname='linking:smart_link_list'
+    )
     view_permission = permission_smart_link_delete
 
     def get_extra_context(self):
@@ -292,9 +298,9 @@ class SmartLinkConditionCreateView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'linking:smart_link_condition_list', args=(
-                self.get_smart_link().pk,
-            )
+            viewname='linking:smart_link_condition_list', kwargs={
+                'pk': self.get_smart_link().pk
+            }
         )
 
     def get_queryset(self):
@@ -328,9 +334,9 @@ class SmartLinkConditionEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'linking:smart_link_condition_list', args=(
-                self.get_object().smart_link.pk,
-            )
+            viewname='linking:smart_link_condition_list', kwargs={
+                'pk': self.get_object().smart_link.pk
+            }
         )
 
 
@@ -359,7 +365,7 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'linking:smart_link_condition_list', args=(
-                self.get_object().smart_link.pk,
-            )
+            viewname='linking:smart_link_condition_list', kwargs={
+                'pk': self.get_object().smart_link.pk
+            }
         )

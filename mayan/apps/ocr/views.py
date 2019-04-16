@@ -115,13 +115,15 @@ class DocumentTypeSubmitView(FormView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_post_action_redirect(self):
-        return reverse('common:tools_list')
+        return reverse(viewname='common:tools_list')
 
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):
     fields = ('auto_ocr',)
     object_permission = permission_document_type_ocr_setup
-    post_action_redirect = reverse_lazy('documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
 
     def get_document_type(self):
         return get_object_or_404(klass=DocumentType, pk=self.kwargs['pk'])

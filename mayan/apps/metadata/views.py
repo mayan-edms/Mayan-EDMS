@@ -80,12 +80,16 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse('metadata:metadata_edit', args=(queryset.first().pk,)),
+                reverse(
+                    viewname='metadata:metadata_edit', kwargs={
+                        'pk': queryset.first().pk
+                    }
+                )
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
                 '%s?%s' % (
-                    reverse('metadata:metadata_multiple_edit'),
+                    reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
                             'id_list': ','.join(
@@ -244,12 +248,16 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse('metadata:metadata_edit', args=(queryset.first().pk,)),
+                reverse(
+                    viewname='metadata:metadata_edit', kwargs={
+                        'pk': queryset.first().pk
+                    }
+                )
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
                 '%s?%s' % (
-                    reverse('metadata:metadata_multiple_edit'),
+                    reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
                             'id_list': ','.join(
@@ -463,12 +471,16 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse('metadata:metadata_edit', args=(queryset.first().pk,)),
+                reverse(
+                    viewname='metadata:metadata_edit', kwargs={
+                        'pk': queryset.first().pk
+                    }
+                )
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
                 '%s?%s' % (
-                    reverse('metadata:metadata_multiple_edit'),
+                    reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
                             'id_list': ','.join(
@@ -574,7 +586,9 @@ class MetadataTypeCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create metadata type')}
     form_class = MetadataTypeForm
     model = MetadataType
-    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='metadata:setup_metadata_type_list'
+    )
     view_permission = permission_metadata_type_create
 
     def get_save_extra_data(self):
@@ -586,7 +600,9 @@ class MetadataTypeCreateView(SingleObjectCreateView):
 class MetadataTypeDeleteView(SingleObjectDeleteView):
     model = MetadataType
     object_permission = permission_metadata_type_delete
-    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='metadata:setup_metadata_type_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -600,7 +616,9 @@ class MetadataTypeEditView(SingleObjectEditView):
     form_class = MetadataTypeForm
     model = MetadataType
     object_permission = permission_metadata_type_edit
-    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='metadata:setup_metadata_type_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -717,7 +735,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
         return obj
 
     def get_post_action_redirect(self):
-        return reverse('documents:document_type_list')
+        return reverse(viewname='documents:document_type_list')
 
     def get_queryset(self):
         queryset = self.submodel.objects.all()
@@ -754,4 +772,4 @@ class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):
         return initial
 
     def get_post_action_redirect(self):
-        return reverse('metadata:setup_metadata_type_list')
+        return reverse(viewname='metadata:setup_metadata_type_list')

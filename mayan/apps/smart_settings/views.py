@@ -77,7 +77,7 @@ class SettingEditView(FormView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'settings:namespace_detail', args=(
-                self.get_object().namespace.name,
-            )
+            viewname='settings:namespace_detail', kwargs={
+                'namespace_name': self.get_object().namespace.name
+            }
         )

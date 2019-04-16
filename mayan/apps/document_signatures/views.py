@@ -70,8 +70,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'signatures:document_version_signature_detached_create',
-                    args=(self.get_document_version().pk,)
+                    viewname='signatures:document_version_signature_detached_create',
+                    kwargs={'pk': self.get_document_version().pk}
                 )
             )
         except PassphraseError:
@@ -81,8 +81,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'signatures:document_version_signature_detached_create',
-                    args=(self.get_document_version().pk,)
+                    viewname='signatures:document_version_signature_detached_create',
+                    kwargs={'pk': self.get_document_version().pk}
                 )
             )
         else:
@@ -132,8 +132,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'signatures:document_version_signature_list',
-            args=(self.get_document_version().pk,)
+            viewname='signatures:document_version_signature_list',
+            kwargs={'pk': self.get_document_version().pk}
         )
 
 
@@ -160,8 +160,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'signatures:document_version_signature_embedded_create',
-                    args=(self.get_document_version().pk,)
+                    viewname='signatures:document_version_signature_embedded_create',
+                    kwargs={'pk': self.get_document_version().pk}
                 )
             )
         except PassphraseError:
@@ -171,8 +171,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'signatures:document_version_signature_embedded_create',
-                    args=(self.get_document_version().pk,)
+                    viewname='signatures:document_version_signature_embedded_create',
+                    kwargs={'pk': self.get_document_version().pk}
                 )
             )
         else:
@@ -194,7 +194,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 reverse(
                     viewname='signatures:document_version_signature_list',
-                    args=(new_version.pk,)
+                    kwargs={'pk': new_version.pk}
                 )
             )
 
@@ -241,8 +241,8 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'signatures:document_version_signature_list',
-            args=(self.get_object().document_version.pk,)
+            viewname='signatures:document_version_signature_list',
+            kwargs={'pk': self.get_object().document_version.pk}
         )
 
 
@@ -360,8 +360,8 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'signatures:document_version_signature_list',
-            args=(self.get_document_version().pk,)
+            viewname='signatures:document_version_signature_list',
+            kwargs={'pk': self.get_document_version().pk}
         )
 
 
@@ -374,7 +374,7 @@ class AllDocumentSignatureVerifyView(ConfirmView):
     view_permission = permission_document_version_signature_verify
 
     def get_post_action_redirect(self):
-        return reverse('common:tools_list')
+        return reverse(viewname='common:tools_list')
 
     def view_action(self):
         task_verify_missing_embedded_signature.delay()

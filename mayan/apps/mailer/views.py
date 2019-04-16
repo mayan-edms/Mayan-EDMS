@@ -124,7 +124,11 @@ class UserMailerBackendSelectionView(FormView):
     def form_valid(self, form):
         backend = form.cleaned_data['backend']
         return HttpResponseRedirect(
-            reverse('mailer:user_mailer_create', args=(backend,),)
+            reverse(
+                viewname='mailer:user_mailer_create', kwargs={
+                    'class_path': backend
+                }
+            )
         )
 
 

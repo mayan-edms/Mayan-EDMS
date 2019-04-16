@@ -50,7 +50,9 @@ class DocumentCommentCreateView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'comments:comments_for_document', args=(self.kwargs['pk'],)
+            viewname='comments:comments_for_document', kwargs={
+                'pk': self.kwargs['pk']
+            }
         )
 
     def get_save_extra_data(self):
@@ -83,8 +85,9 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'comments:comments_for_document',
-            args=(self.get_object().document.pk,)
+            viewname='comments:comments_for_document', kwargs={
+                'pk': self.get_object().document.pk
+            }
         )
 
 

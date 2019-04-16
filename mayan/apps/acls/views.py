@@ -99,10 +99,11 @@ class ACLDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         instance = self.get_object()
         return reverse(
-            'acls:acl_list', args=(
-                instance.content_type.app_label,
-                instance.content_type.model, instance.object_id
-            )
+            viewname='acls:acl_list', kwargs={
+                'app_label': instance.content_type.app_label,
+                'model': instance.content_type.model,
+                'object_id': instance.object_id
+            }
         )
 
 
