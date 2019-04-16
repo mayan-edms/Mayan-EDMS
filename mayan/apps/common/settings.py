@@ -115,7 +115,7 @@ setting_django_append_slash = namespace.add_setting(
 setting_django_auth_password_validators = namespace.add_setting(
     global_name='AUTH_PASSWORD_VALIDATORS',
     default=settings.AUTH_PASSWORD_VALIDATORS,
-     help_text=_(
+    help_text=_(
         'The list of validators that are used to check the strength of '
         'user\'s passwords.'
     )
@@ -156,7 +156,7 @@ setting_django_default_from_email = namespace.add_setting(
     default=settings.DEFAULT_FROM_EMAIL,
     help_text=_(
         'Default: \'webmaster@localhost\' '
-       'Default email address to use for various automated correspondence '
+        'Default email address to use for various automated correspondence '
         'from the site manager(s). This doesn\'t include error messages sent '
         'to ADMINS and MANAGERS; for that, see SERVER_EMAIL.'
     ),
@@ -217,7 +217,7 @@ setting_django_email_port = namespace.add_setting(
 setting_django_email_timeout = namespace.add_setting(
     global_name='EMAIL_TIMEOUT',
     default=settings.EMAIL_TIMEOUT,
-        help_text=_(
+    help_text=_(
         'Default: None. Specifies a timeout in seconds for blocking '
         'operations like the connection attempt.'
     ),

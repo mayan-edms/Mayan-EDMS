@@ -11,7 +11,7 @@ def get_language_choices():
     return sorted(
         [
             (
-            iso639_3, _(pycountry.languages.get(alpha_3=iso639_3).name)
+                iso639_3, _(pycountry.languages.get(alpha_3=iso639_3).name)
             ) for iso639_3 in setting_language_codes.value
         ], key=lambda x: x[1]
     )
