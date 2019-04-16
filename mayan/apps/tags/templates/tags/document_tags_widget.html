@@ -1,0 +1,5 @@
+<div class="tag-container">
+    {% for tag in tags %}
+        {% include 'tags/tag_widget.html' with tag=tag %}
+    {% endfor %}
+</div>

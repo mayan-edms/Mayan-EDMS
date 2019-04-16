@@ -24,6 +24,7 @@ from .events import (
     event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
+from .html_widgets import widget_document_tags
 from .links import (
     link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
     link_single_document_multiple_tag_remove, link_tag_attach, link_tag_create,
@@ -37,7 +38,6 @@ from .permissions import (
     permission_tag_remove, permission_tag_view
 )
 from .search import tag_search  # NOQA
-from .widgets import widget_document_tags
 
 
 class TagsApp(MayanAppConfig):

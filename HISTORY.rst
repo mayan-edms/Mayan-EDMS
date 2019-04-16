@@ -78,6 +78,8 @@
   class initialization.
 * Remove star import from the ACL and Common apps.
 * Add dependencies app
+* Convert the document tags widget to use HTML templates.
+* Move Tag app HTML widgets to their own module.
 
 3.1.11 (2019-04-XX)
 ===================

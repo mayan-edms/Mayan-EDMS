@@ -14,7 +14,7 @@ from mayan.apps.documents.permissions import permission_document_view
 from .events import (
     event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
 )
-from .widgets import widget_single_tag
+from .html_widgets import widget_single_tag
 
 
 @python_2_unicode_compatible
