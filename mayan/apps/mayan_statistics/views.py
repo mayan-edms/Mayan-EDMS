@@ -94,7 +94,7 @@ class StatisticQueueView(ConfirmView):
     def view_action(self):
         task_execute_statistic.delay(slug=self.get_object().slug)
         messages.success(
-            self.request, _(
+            message=_(
                 'Statistic "%s" queued successfully for update.'
-            ) % self.get_object().label
+            ) % self.get_object().label, request=self.request
         )

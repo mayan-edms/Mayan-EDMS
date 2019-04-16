@@ -46,11 +46,15 @@ class CheckoutDocumentView(SingleObjectCreateView):
             instance.document = self.document
             instance.save()
         except DocumentAlreadyCheckedOut:
-            messages.error(self.request, _('Document already checked out.'))
+            messages.error(
+                message=_('Document already checked out.'),
+                request=self.request
+            )
         else:
             messages.success(
-                self.request,
-                _('Document "%s" checked out successfully.') % self.document
+                message=_(
+                    'Document "%s" checked out successfully.'
+                ) % self.document, request=self.request
             )
 
         return HttpResponseRedirect(self.get_success_url())
@@ -169,10 +173,12 @@ class DocumentCheckinView(ConfirmView):
             document.check_in(user=self.request.user)
         except DocumentNotCheckedOut:
             messages.error(
-                self.request, _('Document has not been checked out.')
+                message=_('Document has not been checked out.'),
+                request=self.request
             )
         else:
             messages.success(
-                self.request,
-                _('Document "%s" checked in successfully.') % document
+                message=_(
+                    'Document "%s" checked in successfully.'
+                ) % document, request=self.request
             )

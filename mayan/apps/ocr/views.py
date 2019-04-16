@@ -103,13 +103,13 @@ class DocumentTypeSubmitView(FormView):
             count += 1
 
         messages.success(
-            self.request, _(
+            message=_(
                 '%(count)d documents of type "%(document_type)s" added to the '
                 'OCR queue.'
             ) % {
                 'count': count,
                 'document_type': form.cleaned_data['document_type']
-            }
+            }, request=self.request
         )
 
         return HttpResponseRedirect(self.get_success_url())

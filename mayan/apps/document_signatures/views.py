@@ -65,7 +65,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 )
         except NeedPassphrase:
             messages.error(
-                self.request, _('Passphrase is needed to unlock this key.')
+                message=_('Passphrase is needed to unlock this key.'),
+                request=self.request
             )
             return HttpResponseRedirect(
                 reverse(
@@ -75,7 +76,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             )
         except PassphraseError:
             messages.error(
-                self.request, _('Passphrase is incorrect.')
+                message=_('Passphrase is incorrect.'),
+                request=self.request
             )
             return HttpResponseRedirect(
                 reverse(
@@ -96,7 +98,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             temporary_file_object.close()
 
             messages.success(
-                self.request, _('Document version signed successfully.')
+                message=_('Document version signed successfully.'),
+                request=self.request
             )
 
         return super(
@@ -152,7 +155,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 )
         except NeedPassphrase:
             messages.error(
-                self.request, _('Passphrase is needed to unlock this key.')
+                message=_('Passphrase is needed to unlock this key.'),
+                request=self.request
             )
             return HttpResponseRedirect(
                 reverse(
@@ -162,7 +166,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             )
         except PassphraseError:
             messages.error(
-                self.request, _('Passphrase is incorrect.')
+                message=_('Passphrase is incorrect.'),
+                request=self.request
             )
             return HttpResponseRedirect(
                 reverse(
@@ -182,7 +187,8 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             temporary_file_object.close()
 
             messages.success(
-                self.request, _('Document version signed successfully.')
+                message=_('Document version signed successfully.'),
+                request=self.request
             )
 
             return HttpResponseRedirect(
@@ -373,5 +379,6 @@ class AllDocumentSignatureVerifyView(ConfirmView):
     def view_action(self):
         task_verify_missing_embedded_signature.delay()
         messages.success(
-            self.request, _('Signature verification queued successfully.')
+            message=_('Signature verification queued successfully.'),
+            request=self.request
         )

@@ -68,7 +68,8 @@ class ResolvedSmartLinkView(DocumentListView):
                 pass
             else:
                 messages.error(
-                    self.request, _('Smart link query error: %s' % exception)
+                    message=_('Smart link query error: %s' % exception),
+                    request=self.request
                 )
 
         return queryset

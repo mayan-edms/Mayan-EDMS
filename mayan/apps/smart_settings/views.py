@@ -57,7 +57,8 @@ class SettingEditView(FormView):
         self.get_object().value = form.cleaned_data['value']
         Setting.save_configuration()
         messages.success(
-            self.request, _('Setting updated successfully.')
+            message=_('Setting updated successfully.'),
+            request=self.request
         )
         return super(SettingEditView, self).form_valid(form=form)
 

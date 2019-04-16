@@ -77,17 +77,18 @@ class KeyReceive(ConfirmView):
             Key.objects.receive_key(key_id=self.kwargs['key_id'])
         except Exception as exception:
             messages.error(
-                self.request,
-                _('Unable to import key: %(key_id)s; %(error)s') % {
+                message=_(
+                    'Unable to import key: %(key_id)s; %(error)s'
+                ) % {
                     'key_id': self.kwargs['key_id'],
                     'error': exception,
-                }
+                }, request=self.request
             )
         else:
             messages.success(
-                self.request, _('Successfully received key: %(key_id)s') % {
+                message=_('Successfully received key: %(key_id)s') % {
                     'key_id': self.kwargs['key_id'],
-                }
+                }, request=self.request
             )
 
 

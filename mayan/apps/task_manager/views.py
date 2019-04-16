@@ -38,8 +38,9 @@ class QueueActiveTaskListView(SingleObjectListView):
             return self.get_task_list()
         except Exception as exception:
             messages.error(
-                self.request,
-                _('Unable to retrieve task list; %s') % exception
+                message=_(
+                    'Unable to retrieve task list; %s'
+                ) % exception, request=self.request
             )
             return ()
 

@@ -100,23 +100,22 @@ class TagAttachActionView(MultipleObjectFormActionView):
 
             if tag in attached_tags:
                 messages.warning(
-                    self.request, _(
+                    message=_(
                         'Document "%(document)s" is already tagged as '
                         '"%(tag)s"'
                     ) % {
                         'document': instance, 'tag': tag
-                    }
+                    }, request=self.request
                 )
             else:
                 tag.attach_to(document=instance, user=self.request.user)
                 messages.success(
-                    self.request,
-                    _(
+                    message=_(
                         'Tag "%(tag)s" attached successfully to document '
                         '"%(document)s".'
                     ) % {
                         'document': instance, 'tag': tag
-                    }
+                    }, request=self.request
                 )
 
 
@@ -168,13 +167,15 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
         try:
             instance.delete()
             messages.success(
-                self.request, _('Tag "%s" deleted successfully.') % instance
+                message=_(
+                    'Tag "%s" deleted successfully.'
+                ) % instance, request=self.request
             )
         except Exception as exception:
             messages.error(
-                self.request, _('Error deleting tag "%(tag)s": %(error)s') % {
+                message=_('Error deleting tag "%(tag)s": %(error)s') % {
                     'tag': instance, 'error': exception
-                }
+                }, request=self.request
             )
 
 
@@ -343,20 +344,19 @@ class TagRemoveActionView(MultipleObjectFormActionView):
 
             if tag not in attached_tags:
                 messages.warning(
-                    self.request, _(
+                    message=_(
                         'Document "%(document)s" wasn\'t tagged as "%(tag)s'
                     ) % {
                         'document': instance, 'tag': tag
-                    }
+                    }, request=self.request
                 )
             else:
                 tag.remove_from(document=instance, user=self.request.user)
                 messages.success(
-                    self.request,
-                    _(
+                    message=_(
                         'Tag "%(tag)s" removed successfully from document '
                         '"%(document)s".'
                     ) % {
                         'document': instance, 'tag': tag
-                    }
+                    }, request=self.request
                 )

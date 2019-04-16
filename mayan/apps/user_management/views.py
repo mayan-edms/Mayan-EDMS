@@ -154,7 +154,8 @@ class UserCreateView(SingleObjectCreateView):
         user.set_unusable_password()
         user.save()
         messages.success(
-            self.request, _('User "%s" created successfully.') % user
+            message=_('User "%s" created successfully.') % user,
+            request=self.request
         )
         return HttpResponseRedirect(
             reverse('user_management:user_set_password', args=(user.pk,))
@@ -196,24 +197,24 @@ class UserDeleteView(MultipleObjectConfirmActionView):
         try:
             if instance.is_superuser or instance.is_staff:
                 messages.error(
-                    self.request,
-                    _(
+                    message=_(
                         'Super user and staff user deleting is not '
                         'allowed, use the admin interface for these cases.'
-                    )
+                    ), request=self.request
                 )
             else:
                 instance.delete()
                 messages.success(
-                    self.request, _(
+                    message=_(
                         'User "%s" deleted successfully.'
-                    ) % instance
+                    ) % instance, request=self.request
                 )
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error deleting user "%(user)s": %(error)s'
-                ) % {'user': instance, 'error': exception}
+                ) % {'user': instance, 'error': exception},
+                request=self.request
             )
 
 
@@ -361,26 +362,25 @@ class UserSetPasswordView(MultipleObjectFormActionView):
         try:
             if instance.is_superuser or instance.is_staff:
                 messages.error(
-                    self.request,
-                    _(
+                    message=_(
                         'Super user and staff user password '
                         'reseting is not allowed, use the admin '
                         'interface for these cases.'
-                    )
+                    ), request=self.request
                 )
             else:
                 instance.set_password(form.cleaned_data['new_password1'])
                 instance.save()
                 messages.success(
-                    self.request, _(
+                    message=_(
                         'Successful password reset for user: %s.'
-                    ) % instance
+                    ) % instance, request=self.request
                 )
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error reseting password for user "%(user)s": %(error)s'
                 ) % {
                     'user': instance, 'error': exception
-                }
+                }, request=self.request
             )

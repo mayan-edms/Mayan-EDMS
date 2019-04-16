@@ -65,7 +65,9 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 
         if len(set([document.document_type.pk for document in queryset])) > 1:
             messages.error(
-                request, _('Selected documents must be of the same type.')
+                message=_(
+                    'Selected documents must be of the same type.'
+                ), request=request
             )
             return HttpResponseRedirect(self.previous_url)
 
@@ -169,8 +171,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                     created = True
             except Exception as exception:
                 messages.error(
-                    self.request,
-                    _(
+                    message=_(
                         'Error adding metadata type '
                         '"%(metadata_type)s" to document: '
                         '%(document)s; %(exception)s'
@@ -180,29 +181,28 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                         'exception': ', '.join(
                             getattr(exception, 'messages', exception)
                         )
-                    }
+                    }, request=self.request
                 )
             else:
                 if created:
                     messages.success(
-                        self.request,
-                        _(
+                        message=_(
                             'Metadata type: %(metadata_type)s '
                             'successfully added to document %(document)s.'
                         ) % {
                             'metadata_type': metadata_type,
                             'document': instance
-                        }
+                        }, request=self.request
                     )
                 else:
                     messages.warning(
-                        self.request, _(
+                        message=_(
                             'Metadata type: %(metadata_type)s already '
                             'present in document %(document)s.'
                         ) % {
                             'metadata_type': metadata_type,
                             'document': instance
-                        }
+                        }, request=self.request
                     )
 
 
@@ -229,7 +229,9 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
 
         if len(set([document.document_type.pk for document in queryset])) > 1:
             messages.error(
-                request, _('Selected documents must be of the same type.')
+                message=_(
+                    'Selected documents must be of the same type.'
+                ), request=request
             )
             return HttpResponseRedirect(self.previous_url)
 
@@ -368,20 +370,19 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
                     exception_message = force_text(error)
 
                 messages.error(
-                    self.request, _(
+                    message=_(
                         'Error editing metadata for document: '
                         '%(document)s; %(exception)s.'
                     ) % {
                         'document': instance,
                         'exception': exception_message
-                    }
+                    }, request=self.request
                 )
         else:
             messages.success(
-                self.request,
-                _(
+                message=_(
                     'Metadata for document %s edited successfully.'
-                ) % instance
+                ) % instance, request=self.request
             )
 
 
@@ -447,7 +448,9 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
         if len(set([document.document_type.pk for document in queryset])) > 1:
             messages.error(
-                request, _('Selected documents must be of the same type.')
+                message=_(
+                    'Selected documents must be of the same type.'
+                ), request=request
             )
             return HttpResponseRedirect(self.previous_url)
 
@@ -547,24 +550,22 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
                     )
                     document_metadata.delete(_user=self.request.user)
                     messages.success(
-                        self.request,
-                        _(
+                        message=_(
                             'Successfully remove metadata type "%(metadata_type)s" from document: %(document)s.'
                         ) % {
                             'metadata_type': metadata_type,
                             'document': instance
-                        }
+                        }, request=self.request
                     )
                 except Exception as exception:
                     messages.error(
-                        self.request,
-                        _(
+                        message=_(
                             'Error removing metadata type "%(metadata_type)s" from document: %(document)s; %(exception)s'
                         ) % {
                             'metadata_type': metadata_type,
                             'document': instance,
                             'exception': ', '.join(exception.messages)
-                        }
+                        }, request=self.request
                     )
 
 
@@ -657,12 +658,14 @@ class SetupDocumentTypeMetadataTypes(FormView):
                 instance.save()
         except Exception as exception:
             messages.error(
-                self.request,
-                _('Error updating relationship; %s') % exception
+                message=_(
+                    'Error updating relationship; %s'
+                ) % exception, request=self.request
             )
         else:
             messages.success(
-                self.request, _('Relationships updated successfully')
+                message=_('Relationships updated successfully'),
+                request=self.request
             )
 
         return super(

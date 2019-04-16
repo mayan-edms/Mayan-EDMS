@@ -84,6 +84,7 @@
   module.
 * Update group members view permission. The group edit and 
   user edit permission are now required.
+* Add keyword arguments to messages uses.
 
 3.1.11 (2019-04-XX)
 ===================

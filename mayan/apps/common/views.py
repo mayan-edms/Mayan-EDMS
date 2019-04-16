@@ -190,7 +190,8 @@ class ObjectErrorLogEntryListClearView(ConfirmView):
     def view_action(self):
         self.get_object().error_logs.all().delete()
         messages.success(
-            self.request, _('Object error log cleared successfully')
+            message_('Object error log cleared successfully'),
+            request=self.request
         )
 
 
@@ -308,7 +309,9 @@ def multi_object_action_view(request):
     ]
 
     if not action:
-        messages.error(request, _('No action selected.'))
+        messages.error(
+            message=_('No action selected.'), request=request
+        )
         return HttpResponseRedirect(
             request.META.get(
                 'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
@@ -316,7 +319,10 @@ def multi_object_action_view(request):
         )
 
     if not id_list and not items_property_list:
-        messages.error(request, _('Must select at least one item.'))
+        messages.error(
+            message=_('Must select at least one item.'),
+            request=request
+        )
         return HttpResponseRedirect(
             request.META.get(
                 'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)

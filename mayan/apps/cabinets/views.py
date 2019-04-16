@@ -291,24 +291,24 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
             )
             if cabinet in cabinet_membership:
                 messages.warning(
-                    self.request, _(
+                    message=_(
                         'Document: %(document)s is already in '
                         'cabinet: %(cabinet)s.'
                     ) % {
                         'document': instance, 'cabinet': cabinet
-                    }
+                    }, request=self.request
                 )
             else:
                 cabinet.add_document(
                     document=instance, user=self.request.user
                 )
                 messages.success(
-                    self.request, _(
+                    message=_(
                         'Document: %(document)s added to cabinet: '
                         '%(cabinet)s successfully.'
                     ) % {
                         'document': instance, 'cabinet': cabinet
-                    }
+                    }, request=self.request
                 )
 
 
@@ -380,22 +380,22 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
 
             if cabinet not in cabinet_membership:
                 messages.warning(
-                    self.request, _(
+                    message=_(
                         'Document: %(document)s is not in cabinet: '
                         '%(cabinet)s.'
                     ) % {
                         'document': instance, 'cabinet': cabinet
-                    }
+                    }, request=self.request
                 )
             else:
                 cabinet.remove_document(
                     document=instance, user=self.request.user
                 )
                 messages.success(
-                    self.request, _(
+                    message=_(
                         'Document: %(document)s removed from cabinet: '
                         '%(cabinet)s.'
                     ) % {
                         'document': instance, 'cabinet': cabinet
-                    }
+                    }, request=self.request
                 )

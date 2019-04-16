@@ -380,13 +380,13 @@ class IndexesRebuildView(FormView):
             count += 1
 
         messages.success(
-            self.request, ungettext(
+            message=ungettext(
                 singular='%(count)d index queued for rebuild.',
                 plural='%(count)d indexes queued for rebuild.',
                 number=count
             ) % {
                 'count': count,
-            }
+            }, request=self.request
         )
 
         return super(IndexesRebuildView, self).form_valid(form=form)

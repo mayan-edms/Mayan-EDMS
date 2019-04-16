@@ -65,12 +65,14 @@ class EventTypeSubscriptionListView(FormView):
                 instance.save()
         except Exception as exception:
             messages.error(
-                self.request,
-                _('Error updating event subscription; %s') % exception
+                message=_(
+                    'Error updating event subscription; %s'
+                ) % exception, request=self.request
             )
         else:
             messages.success(
-                self.request, _('Event subscriptions updated successfully')
+                message=_('Event subscriptions updated successfully'),
+                request=self.request
             )
 
         return super(
@@ -208,12 +210,15 @@ class ObjectEventTypeSubscriptionListView(FormView):
                 instance.save()
         except Exception as exception:
             messages.error(
-                self.request,
-                _('Error updating object event subscription; %s') % exception
+                message=_(
+                    'Error updating object event subscription; %s'
+                ) % exception, request=self.request
             )
         else:
             messages.success(
-                self.request, _('Object event subscriptions updated successfully')
+                message=_(
+                    'Object event subscriptions updated successfully'
+                ), request=self.request
             )
 
         return super(

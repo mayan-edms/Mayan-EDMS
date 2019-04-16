@@ -122,11 +122,10 @@ class UploadBaseView(MultiFormView):
 
         if not InteractiveSource.objects.filter(enabled=True).exists():
             messages.error(
-                request,
-                _(
+                message=_(
                     'No interactive document sources have been defined or '
                     'none have been enabled, create one before proceeding.'
-                )
+                ), request=request
             )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
 
@@ -142,7 +141,7 @@ class UploadBaseView(MultiFormView):
             try:
                 staging_filelist = list(self.source.get_files())
             except Exception as exception:
-                messages.error(self.request, exception)
+                messages.error(message=exception, request=self.request)
                 staging_filelist = []
             finally:
                 subtemplates_list = [
@@ -240,7 +239,7 @@ class UploadInteractiveView(UploadBaseView):
                 forms['source_form'].cleaned_data
             )
         except SourceException as exception:
-            messages.error(self.request, exception)
+            messages.error(message=exception, request=self.request)
         else:
             shared_uploaded_file = SharedUploadedFile.objects.create(
                 file=uploaded_file.file
@@ -254,7 +253,7 @@ class UploadInteractiveView(UploadBaseView):
             try:
                 self.source.clean_up_upload_file(uploaded_file)
             except Exception as exception:
-                messages.error(self.request, exception)
+                messages.error(message=exception, request=self.request)
 
             querystring = furl()
             querystring.args.update(self.request.GET)
@@ -290,11 +289,10 @@ class UploadInteractiveView(UploadBaseView):
                 raise type(exception)(message)
             else:
                 messages.success(
-                    self.request,
-                    _(
+                    message=_(
                         'New document queued for upload and will be available '
                         'shortly.'
-                    )
+                    ), request=self.request
                 )
 
         return HttpResponseRedirect(
@@ -376,10 +374,9 @@ class UploadInteractiveVersionView(UploadBaseView):
         # TODO: Try to remove this new version block check from here
         if NewVersionBlock.objects.is_blocked(self.document):
             messages.error(
-                self.request,
-                _(
+                message=_(
                     'Document "%s" is blocked from uploading new versions.'
-                ) % self.document
+                ) % self.document, request=self.request
             )
             return HttpResponseRedirect(
                 reverse(
@@ -404,7 +401,7 @@ class UploadInteractiveVersionView(UploadBaseView):
                 forms['source_form'].cleaned_data
             )
         except SourceException as exception:
-            messages.error(self.request, exception)
+            messages.error(message=exception, request=self.request)
         else:
             shared_uploaded_file = SharedUploadedFile.objects.create(
                 file=uploaded_file.file
@@ -413,7 +410,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             try:
                 self.source.clean_up_upload_file(uploaded_file)
             except Exception as exception:
-                messages.error(self.request, exception)
+                messages.error(message=exception, request=self.request)
 
             if not self.request.user.is_anonymous:
                 user_id = self.request.user.pk
@@ -428,11 +425,10 @@ class UploadInteractiveVersionView(UploadBaseView):
             ))
 
             messages.success(
-                self.request,
-                _(
+                message=_(
                     'New document version queued for upload and will be '
                     'available shortly.'
-                )
+                ), request=self.request
             )
 
         return HttpResponseRedirect(
@@ -532,7 +528,9 @@ class SetupSourceCheckView(ConfirmView):
             }
         )
 
-        messages.success(self.request, _('Source check queued.'))
+        messages.success(
+            message=_('Source check queued.'), request=self.request
+        )
 
 
 class SetupSourceCreateView(SingleObjectCreateView):
