@@ -12,6 +12,7 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
+from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.views import (
     AssignRemoveView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectCreateView,
@@ -114,16 +115,27 @@ class GroupMembersView(AssignRemoveView):
     def get_object(self):
         return get_object_or_404(klass=Group, pk=self.kwargs['pk'])
 
+    def get_choices_queryset(self):
+        return AccessControlList.objects.filter_by_access(
+            permission=permission_user_edit,
+            queryset=get_user_model().objects.exclude(
+                is_staff=True
+            ).exclude(is_superuser=True),
+            user=self.request.user
+        )
+
     def left_list(self):
         return GroupMembersView.generate_choices(
-            get_user_model().objects.exclude(
+            self.get_choices_queryset().exclude(
                 groups=self.get_object()
-            ).exclude(is_staff=True).exclude(is_superuser=True)
+            )
         )
 
     def right_list(self):
         return GroupMembersView.generate_choices(
-            self.get_object().user_set.all()
+            self.get_choices_queryset().filter(
+                pk__in=self.get_object().user_set.all()
+            )
         )
 
     def remove(self, item):

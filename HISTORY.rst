@@ -82,6 +82,8 @@
 * Move Tag app HTML widgets to their own module.
 * Move the document index app widgets to the html_widget.py
   module.
+* Update group members view permission. The group edit and 
+  user edit permission are now required.
 
 3.1.11 (2019-04-XX)
 ===================
