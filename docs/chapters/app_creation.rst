@@ -59,6 +59,17 @@ App modules
   corresponding signal in the ready() method of the MayanAppConfig subclass in
   apps.py
 
+- html_widgets.py
+
+  Classes to render an HTML widget. HTML widget are not the same as Django's
+  native form widgets. Form widgets only work as part of a form field.
+  HTML widgets are for use outside of forms, such as in a table cell.
+
+- licenses.py
+
+  This module outlines the license text of the third party content used in 
+  the app. It could be other Python libraries, JavaScript libraries, etc.  
+
 - links.py
 
   Defines the links to be used by the app. Import only from the navigation app
@@ -91,6 +102,11 @@ App modules
   Use this module when you need the same instance of a class for the entire app.
   This module acts as a shared memory space for the other modules of the app or
   other apps.
+
+- search.py
+
+  Search model definitions. Define which field of the app's models are
+  searchable.
 
 - serializers.py
 
@@ -127,7 +143,7 @@ App modules
 
 - widgets.py
 
-  HTML widgets go here. This should be the only place with presentation
+  Custom form widgets go here. This should be the only place with presentation
   directives in the app (aside the templates).
 
 
