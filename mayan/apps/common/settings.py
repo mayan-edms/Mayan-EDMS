@@ -296,6 +296,19 @@ setting_django_login_redirect_url = namespace.add_setting(
         'have to define the URL in two places (settings and URLconf).'
     ),
 )
+setting_django_logout_redirect_url = namespace.add_setting(
+    global_name='LOGOUT_REDIRECT_URL',
+    default=settings.LOGOUT_REDIRECT_URL,
+    help_text=_(
+        'Default: None. The URL where requests are redirected after a user '
+        'logs out using LogoutView (if the view doesn\'t get a next_page '
+        'argument). If None, no redirect will be performed and the logout '
+        'view will be rendered. This setting also accepts named URL '
+        'patterns which can be used to reduce configuration duplication '
+        'since you don\'t have to define the URL in two places (settings '
+        'and URLconf).'
+    )
+)
 setting_django_internal_ips = namespace.add_setting(
     global_name='INTERNAL_IPS',
     default=settings.INTERNAL_IPS,

@@ -89,6 +89,7 @@
 * Add MERCs 5 and 6.
 * Update authentication function views to use Django's new class
   based authentication views.
+* Expose Django's LOGOUT_REDIRECT_URL setting.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -253,6 +253,9 @@ TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
 
 LOGIN_URL = env('MAYAN_LOGIN_URL', default='authentication:login_view')
 LOGIN_REDIRECT_URL = env('MAYAN_LOGIN_REDIRECT_URL', default='common:root')
+LOGOUT_REDIRECT_URL = env(
+    'MAYAN_LOGOUT_REDIRECT_URL', default='authentication:login_view'
+)
 INTERNAL_IPS = ('127.0.0.1',)
 
 # ---------- Django REST framework -----------
