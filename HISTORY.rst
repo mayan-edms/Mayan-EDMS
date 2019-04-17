@@ -87,6 +87,8 @@
 * Add keyword arguments to messages uses.
 * Add keyword arguments to the reverse use in views.
 * Add MERCs 5 and 6.
+* Update authentication function views to use Django's new class
+  based authentication views.
 
 3.1.11 (2019-04-XX)
 ===================

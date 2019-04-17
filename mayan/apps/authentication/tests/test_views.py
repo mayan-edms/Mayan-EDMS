@@ -1,15 +1,17 @@
 from __future__ import absolute_import, unicode_literals
 
+from furl import furl
+
 from django.conf import settings
 from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
+from django.utils.http import urlunquote_plus
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.smart_settings.classes import Namespace
 from mayan.apps.user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_USER_PASSWORD_EDITED,
-    TEST_ADMIN_USERNAME
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 from ..settings import setting_maximum_session_length
@@ -21,70 +23,83 @@ class UserLoginTestCase(GenericViewTestCase):
     """
     Test that users can login via the supported authentication methods
     """
+    authenticated_url = reverse(viewname='common:home')
+    # Unquote directly until furl 2.1.0 is released which will include
+    # the tostr() argument query_dont_quote=True
+    # TODO: Remove after release and update to furl 2.1.0
+    authentication_url = urlunquote_plus(
+        furl(
+            path=reverse(settings.LOGIN_URL), args={
+                'next': authenticated_url
+            }
+        ).tostr()
+    )
+    auto_login_user = False
+
     def setUp(self):
         super(UserLoginTestCase, self).setUp()
         Namespace.invalidate_cache_all()
 
+    def _request_authenticated_view(self):
+        return self.get(path=self.authenticated_url)
+
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
-    def test_normal_behavior(self):
-        response = self.get(viewname='documents:document_list')
+    def test_non_authenticated_request(self):
+        response = self._request_authenticated_view()
         self.assertRedirects(
-            response,
-            'http://testserver/authentication/login/?next=/documents/list/'
+            response=response, expected_url=self.authentication_url
         )
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login(self):
-        logged_in = self.client.login(
+        logged_in = self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
         self.assertTrue(logged_in)
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_login(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
-            logged_in = self.client.login(
+            logged_in = self.login(
                 username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
             )
             self.assertFalse(logged_in)
 
-            logged_in = self.client.login(
+            logged_in = self.login(
                 email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD
             )
             self.assertTrue(logged_in)
 
-            response = self.get(viewname='documents:document_list')
+            response = self._request_authenticated_view()
             # We didn't get redirected to the login URL
             self.assertEqual(response.status_code, 200)
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login_via_views(self):
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         self.assertRedirects(
-            response,
-            'http://testserver/authentication/login/?next=/documents/list/'
+            response=response, expected_url=self.authentication_url
         )
 
         response = self.post(
-            data={
+            viewname=settings.LOGIN_URL, data={
                 'username': TEST_ADMIN_USERNAME,
                 'password': TEST_ADMIN_PASSWORD
-            }, viewname=settings.LOGIN_URL
+            }
         )
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_login_via_views(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
-            response = self.get(viewname='documents:document_list')
+            response = self._request_authenticated_view()
             self.assertRedirects(
-                response,
-                'http://testserver/authentication/login/?next=/documents/list/'
+                response=response, expected_url=self.authentication_url
             )
 
             response = self.post(
@@ -94,7 +109,7 @@ class UserLoginTestCase(GenericViewTestCase):
             )
             self.assertEqual(response.status_code, 200)
 
-            response = self.get(viewname='documents:document_list')
+            response = self._request_authenticated_view()
             # We didn't get redirected to the login URL
             self.assertEqual(response.status_code, 200)
 
@@ -108,7 +123,7 @@ class UserLoginTestCase(GenericViewTestCase):
             }, follow=True
         )
 
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -127,7 +142,7 @@ class UserLoginTestCase(GenericViewTestCase):
             }, follow=True
         )
 
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(self.client.session.get_expire_at_browser_close())
@@ -143,7 +158,7 @@ class UserLoginTestCase(GenericViewTestCase):
                 }, follow=True
             )
 
-            response = self.get(viewname='documents:document_list')
+            response = self._request_authenticated_view()
             self.assertEqual(response.status_code, 200)
 
             self.assertEqual(
@@ -163,7 +178,7 @@ class UserLoginTestCase(GenericViewTestCase):
                 }
             )
 
-            response = self.get(viewname='documents:document_list')
+            response = self._request_authenticated_view()
             self.assertEqual(response.status_code, 200)
 
             self.assertTrue(self.client.session.get_expire_at_browser_close())
@@ -184,26 +199,27 @@ class UserLoginTestCase(GenericViewTestCase):
         response = self.post(
             viewname='authentication:password_reset_confirm_view',
             args=uid_token[-3:-1], data={
-                'new_password1': TEST_USER_PASSWORD_EDITED,
-                'new_password2': TEST_USER_PASSWORD_EDITED,
+                'new_password1': TEST_ADMIN_PASSWORD,
+                'new_password2': TEST_ADMIN_PASSWORD,
             }
         )
 
         self.assertEqual(response.status_code, 302)
 
         self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_USER_PASSWORD_EDITED
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
 
-        response = self.get(viewname='documents:document_list')
+        response = self._request_authenticated_view()
         self.assertEqual(response.status_code, 200)
 
     def test_username_login_redirect(self):
         TEST_REDIRECT_URL = reverse(viewname='common:about_view')
 
         response = self.post(
-            viewname=settings.LOGIN_URL, query={'next': TEST_REDIRECT_URL},
-            data={
+            path='{}?next={}'.format(
+                reverse(settings.LOGIN_URL), TEST_REDIRECT_URL
+            ), data={
                 'username': TEST_ADMIN_USERNAME,
                 'password': TEST_ADMIN_PASSWORD,
                 'remember_me': False
