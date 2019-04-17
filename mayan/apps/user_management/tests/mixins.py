@@ -23,12 +23,20 @@ class UserTestMixin(object):
 
 
 class UserTestCaseMixin(object):
+    auto_login_user = False
+
+    def setUp(self):
+        super(UserTestCaseMixin, self).setUp()
+        if self.auto_login_user:
+            self.login_user()
+
     def tearDown(self):
         self.client.logout()
         super(UserTestCaseMixin, self).tearDown()
 
-    def login(self, username, password):
-        logged_in = self.client.login(username=username, password=password)
+    def login(self, *args, **kwargs):
+        logged_in = self.client.login(*args, **kwargs)
+
         return logged_in
 
     def login_user(self):
