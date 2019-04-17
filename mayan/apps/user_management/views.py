@@ -16,7 +16,8 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.views import (
     AssignRemoveView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
+    SingleObjectListView
 )
 
 from .forms import UserForm
@@ -27,6 +28,33 @@ from .permissions import (
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
+
+
+class CurrentUserDetailsView(SingleObjectDetailView):
+    fields = (
+        'username', 'first_name', 'last_name', 'email', 'last_login',
+        'date_joined', 'groups'
+    )
+
+    def get_object(self):
+        return self.request.user
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'object': None,
+            'title': _('Current user details'),
+        }
+
+
+class CurrentUserEditView(SingleObjectEditView):
+    extra_context = {'object': None, 'title': _('Edit current user details')}
+    form_class = UserForm
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:current_user_details'
+    )
+
+    def get_object(self):
+        return self.request.user
 
 
 class GroupCreateView(SingleObjectCreateView):
@@ -166,8 +194,9 @@ class UserCreateView(SingleObjectCreateView):
         return HttpResponseRedirect(
             reverse(
                 viewname='user_management:user_set_password', kwargs={
-                    'pk': user.pk}
-                )
+                    'pk': user.pk
+                }
+            )
         )
 
 

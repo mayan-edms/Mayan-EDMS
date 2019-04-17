@@ -90,6 +90,8 @@
 * Update authentication function views to use Django's new class
   based authentication views.
 * Expose Django's LOGOUT_REDIRECT_URL setting.
+* Move current user views from the common app to the user
+  management app.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -2,17 +2,27 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link, Separator, Text
 
 from .icons import (
-    icon_group_create, icon_group_setup, icon_user_create, icon_user_setup
+    icon_current_user_details, icon_current_user_edit, icon_group_create,
+    icon_group_setup, icon_user_create, icon_user_setup
 )
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
+from .utils import get_user_label_text
 
+link_current_user_details = Link(
+    icon_class=icon_current_user_details, text=_('User details'),
+    view='user_management:current_user_details'
+)
+link_current_user_edit = Link(
+    icon_class=icon_current_user_edit, text=_('Edit details'),
+    view='user_management:current_user_edit'
+)
 link_group_create = Link(
     icon_class=icon_group_create, permissions=(permission_group_create,),
     text=_('Create new group'), view='user_management:group_create'
@@ -77,3 +87,5 @@ link_user_setup = Link(
     icon_class=icon_user_setup, permissions=(permission_user_view,),
     text=_('Users'), view='user_management:user_list'
 )
+separator_user_label = Separator()
+text_user_label = Text(text=get_user_label_text)

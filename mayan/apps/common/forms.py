@@ -5,7 +5,6 @@ import os
 from django import forms
 from django.conf import settings
 from django.contrib.admin.utils import label_for_field
-from django.contrib.auth import get_user_model
 from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
 from django.utils.module_loading import import_string
@@ -303,24 +302,3 @@ class PackagesLicensesForm(FileDisplayForm):
         self.fields['text'].initial = '\n\n'.join(
             ['{}\n{}'.format(package.label, package.license_text) for package in Package.get_all()]
         )
-
-
-class UserForm(forms.ModelForm):
-    """
-    Form used to edit an user's mininal fields by the user himself
-    """
-    class Meta:
-        fields = ('username', 'first_name', 'last_name', 'email')
-        model = get_user_model()
-
-
-class UserForm_view(DetailForm):
-    """
-    Form used to display an user's public details
-    """
-    class Meta:
-        fields = (
-            'username', 'first_name', 'last_name', 'email', 'last_login',
-            'date_joined', 'groups'
-        )
-        model = get_user_model()

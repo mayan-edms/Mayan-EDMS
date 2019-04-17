@@ -13,7 +13,6 @@ from django.utils.http import (
     urlencode as django_urlencode, urlquote as django_urlquote
 )
 from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
-from django.utils.translation import ugettext_lazy as _
 
 import mayan
 from mayan.apps.common.compat import dict_type, dictionary_type
@@ -44,13 +43,6 @@ def encapsulate(function):
     # http://stackoverflow.com/questions/6861601/
     # cannot-resolve-callable-context-variable/6955045#6955045
     return lambda: function
-
-
-def get_user_label_text(context):
-    if not context['request'].user.is_authenticated:
-        return _('Anonymous')
-    else:
-        return context['request'].user.get_full_name() or context['request'].user
 
 
 def introspect_attribute(attribute_name, obj):

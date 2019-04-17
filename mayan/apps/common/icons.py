@@ -6,8 +6,6 @@ icon_about = Icon(driver_name='fontawesome', symbol='info')
 icon_assign_remove_add = Icon(driver_name='fontawesome', symbol='plus')
 icon_assign_remove_remove = Icon(driver_name='fontawesome', symbol='minus')
 icon_check_version = Icon(driver_name='fontawesome', symbol='sync')
-icon_current_user_details = Icon(driver_name='fontawesome', symbol='user')
-icon_current_user_edit = Icon(driver_name='fontawesome', symbol='user')
 icon_current_user_locale_profile_details = Icon(
     driver_name='fontawesome', symbol='globe'
 )

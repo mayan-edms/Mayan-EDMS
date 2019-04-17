@@ -96,4 +96,6 @@ class EventsApp(MayanAppConfig):
             sources=('events:user_notifications_list',)
         )
         menu_tools.bind_links(links=(link_events_list,))
-        menu_user.bind_links(links=(link_event_types_subscriptions_list,))
+        menu_user.bind_links(
+            links=(link_event_types_subscriptions_list,), position=50
+        )

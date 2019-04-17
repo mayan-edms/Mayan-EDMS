@@ -19,7 +19,7 @@ from mayan.apps.acls.models import AccessControlList
 from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
-    PackagesLicensesForm, UserForm, UserForm_view
+    PackagesLicensesForm
 )
 from .generics import (  # NOQA
     AssignRemoveView, ConfirmView, FormView, MultiFormView,
@@ -64,28 +64,6 @@ class CheckVersionView(SimpleView):
             'title': _('Check for updates'),
             'content': message
         }
-
-
-class CurrentUserDetailsView(SingleObjectDetailView):
-    form_class = UserForm_view
-
-    def get_object(self):
-        return self.request.user
-
-    def get_extra_context(self, **kwargs):
-        return {
-            'object': None,
-            'title': _('Current user details'),
-        }
-
-
-class CurrentUserEditView(SingleObjectEditView):
-    extra_context = {'object': None, 'title': _('Edit current user details')}
-    form_class = UserForm
-    post_action_redirect = reverse_lazy('common:current_user_details')
-
-    def get_object(self):
-        return self.request.user
 
 
 class CurrentUserLocaleProfileDetailsView(TemplateView):
@@ -190,7 +168,7 @@ class ObjectErrorLogEntryListClearView(ConfirmView):
     def view_action(self):
         self.get_object().error_logs.all().delete()
         messages.success(
-            message_('Object error log cleared successfully'),
+            message=_('Object error log cleared successfully'),
             request=self.request
         )
 

@@ -7,12 +7,24 @@ from .api_views import (
     APIUserListView, APIUserView
 )
 from .views import (
-    GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
-    GroupMembersView, UserCreateView, UserDeleteView, UserEditView,
-    UserGroupsView, UserListView, UserOptionsEditView, UserSetPasswordView
+    CurrentUserDetailsView, CurrentUserEditView, GroupCreateView,
+    GroupDeleteView, GroupEditView, GroupListView, GroupMembersView,
+    UserCreateView, UserDeleteView, UserEditView, UserGroupsView, UserListView,
+    UserOptionsEditView, UserSetPasswordView
 )
 
-urlpatterns = [
+urlpatterns_current_user = [
+    url(
+        regex=r'^user/$', view=CurrentUserDetailsView.as_view(),
+        name='current_user_details'
+    ),
+    url(
+        regex=r'^user/edit/$', view=CurrentUserEditView.as_view(),
+        name='current_user_edit'
+    )
+]
+
+urlpatterns_groups = [
     url(
         regex=r'^group/list/$', view=GroupListView.as_view(), name='group_list'
     ),
@@ -31,42 +43,49 @@ urlpatterns = [
     url(
         regex=r'^group/(?P<pk>\d+)/members/$', view=GroupMembersView.as_view(),
         name='group_members'
-    ),
+    )
+]
 
-    url(regex=r'^user/list/$', view=UserListView.as_view(), name='user_list'),
+urlpatterns_users = [
+    url(regex=r'^users/$', view=UserListView.as_view(), name='user_list'),
     url(
-        regex=r'^user/create/$', view=UserCreateView.as_view(),
+        regex=r'^users/create/$', view=UserCreateView.as_view(),
         name='user_create'
     ),
     url(
-        regex=r'^user/(?P<pk>\d+)/edit/$', view=UserEditView.as_view(),
+        regex=r'^users/(?P<pk>\d+)/edit/$', view=UserEditView.as_view(),
         name='user_edit'
     ),
     url(
-        regex=r'^user/(?P<pk>\d+)/delete/$', view=UserDeleteView.as_view(),
+        regex=r'^users/(?P<pk>\d+)/delete/$', view=UserDeleteView.as_view(),
         name='user_delete'
     ),
     url(
-        regex=r'^user/multiple/delete/$', view=UserDeleteView.as_view(),
+        regex=r'^users/multiple/delete/$', view=UserDeleteView.as_view(),
         name='user_multiple_delete'
     ),
     url(
-        regex=r'^user/(?P<pk>\d+)/set_password/$',
+        regex=r'^users/(?P<pk>\d+)/set_password/$',
         view=UserSetPasswordView.as_view(), name='user_set_password'
     ),
     url(
-        regex=r'^user/multiple/set_password/$',
+        regex=r'^users/multiple/set_password/$',
         view=UserSetPasswordView.as_view(), name='user_multiple_set_password'
     ),
     url(
-        regex=r'^user/(?P<pk>\d+)/groups/$', view=UserGroupsView.as_view(),
+        regex=r'^users/(?P<pk>\d+)/groups/$', view=UserGroupsView.as_view(),
         name='user_groups'
     ),
     url(
-        regex=r'^user/(?P<pk>\d+)/options/$',
+        regex=r'^users/(?P<pk>\d+)/options/$',
         view=UserOptionsEditView.as_view(), name='user_options'
     ),
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_groups)
+urlpatterns.extend(urlpatterns_current_user)
+urlpatterns.extend(urlpatterns_users)
 
 api_urls = [
     url(regex=r'^groups/$', view=APIGroupListView.as_view(), name='group-list'),

@@ -7,10 +7,9 @@ from .api_views import (
     APIContentTypeList, APITemplateDetailView, APITemplateListView
 )
 from .views import (
-    AboutView, CheckVersionView, CurrentUserDetailsView, CurrentUserEditView,
-    CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    FaviconRedirectView, HomeView, LicenseView,
-    ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
+    AboutView, CheckVersionView, CurrentUserLocaleProfileDetailsView,
+    CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
+    LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
     PackagesLicensesView, RootView, SetupListView, ToolsListView,
     multi_object_action_view
 )
@@ -34,14 +33,6 @@ urlpatterns = [
     ),
     url(regex=r'^setup/$', view=SetupListView.as_view(), name='setup_list'),
     url(regex=r'^tools/$', view=ToolsListView.as_view(), name='tools_list'),
-    url(
-        regex=r'^user/$', view=CurrentUserDetailsView.as_view(),
-        name='current_user_details'
-    ),
-    url(
-        regex=r'^user/edit/$', view=CurrentUserEditView.as_view(),
-        name='current_user_edit'
-    ),
     url(
         regex=r'^user/locale/$',
         view=CurrentUserLocaleProfileDetailsView.as_view(),

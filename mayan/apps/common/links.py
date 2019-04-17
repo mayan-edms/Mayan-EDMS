@@ -4,18 +4,15 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation import Link
-from mayan.apps.navigation.classes import Separator, Text
 
 from .icons import (
-    icon_about, icon_check_version, icon_current_user_details,
-    icon_current_user_edit, icon_current_user_locale_profile_details,
+    icon_about, icon_check_version, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
     icon_forum, icon_license, icon_object_error_list_with_icon,
     icon_packages_licenses, icon_setup, icon_source_code, icon_support,
     icon_tools
 )
 from .permissions_runtime import permission_error_log_view
-from .utils import get_user_label_text
 
 
 def get_kwargs_factory(variable_name):
@@ -42,14 +39,6 @@ link_about = Link(
 link_check_version = Link(
     icon_class=icon_check_version, text=_('Check for updates'),
     view='common:check_version_view'
-)
-link_current_user_details = Link(
-    icon_class=icon_current_user_details, text=_('User details'),
-    view='common:current_user_details'
-)
-link_current_user_edit = Link(
-    icon_class=icon_current_user_edit, text=_('Edit details'),
-    view='common:current_user_edit'
 )
 link_current_user_locale_profile_details = Link(
     icon_class=icon_current_user_locale_profile_details,
@@ -106,5 +95,3 @@ link_support = Link(
 link_tools = Link(
     icon_class=icon_tools, text=_('Tools'), view='common:tools_list'
 )
-separator_user_label = Separator()
-text_user_label = Text(text=get_user_label_text)
