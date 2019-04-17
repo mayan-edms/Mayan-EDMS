@@ -15,3 +15,10 @@ class RoleManager(models.Manager):
 class StoredPermissionManager(models.Manager):
     def get_by_natural_key(self, namespace, name):
         return self.get(namespace=namespace, name=name)
+
+    def purge_obsolete(self):
+        for permission in self.all():
+            try:
+                permission.volatile_permission
+            except KeyError:
+                permission.delete()
