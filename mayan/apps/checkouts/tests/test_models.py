@@ -1,14 +1,9 @@
 from __future__ import unicode_literals
 
-import datetime
-import logging
 import time
 
-from django.test import override_settings
-from django.utils.timezone import now
-
 from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.tests import DocumentTestMixin
+from mayan.apps.documents.tests import GenericDocumentTestCase, DocumentTestMixin
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..exceptions import (
@@ -17,126 +12,107 @@ from ..exceptions import (
 )
 from ..models import DocumentCheckout, NewVersionBlock
 
+from .mixins import DocumentCheckoutTestMixin
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(DocumentTestMixin, BaseTestCase):
+
+class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCase):
+    # auto
+
     def test_document_check_out(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
+        self._check_out_test_document()
 
-        DocumentCheckout.objects.check_out_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
-
-        self.assertTrue(self.document.is_checked_out())
         self.assertTrue(
             DocumentCheckout.objects.is_checked_out(
-                document=self.document
+                document=self.test_document
             )
         )
 
     def test_checkin_in(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
+        self._check_out_test_document()
 
-        DocumentCheckout.objects.check_out_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
+        self.test_document.check_in()
 
-        self.document.check_in()
-
-        self.assertFalse(self.document.is_checked_out())
+        self.assertFalse(self.test_document.is_checked_out())
         self.assertFalse(
             DocumentCheckout.objects.is_checked_out(
-                document=self.document
+                document=self.test_document
             )
         )
 
     def test_double_check_out(self):
-        expiration_datetime = now() + datetime.timedelta(days=1)
-
-        DocumentCheckout.objects.check_out_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
+        self._create_test_case_superuser()
+        self._check_out_test_document()
 
         with self.assertRaises(DocumentAlreadyCheckedOut):
             DocumentCheckout.objects.check_out_document(
-                document=self.document,
-                expiration_datetime=expiration_datetime, user=self.admin_user,
+                document=self.test_document,
+                expiration_datetime=self._check_out_expiration_datetime,
+                user=self._test_case_superuser,
                 block_new_version=True
             )
 
     def test_checkin_without_checkout(self):
         with self.assertRaises(DocumentNotCheckedOut):
-            self.document.check_in()
+            self.test_document.check_in()
 
     def test_auto_check_in(self):
-        expiration_datetime = now() + datetime.timedelta(seconds=.1)
+        self._check_out_test_document()
 
-        DocumentCheckout.objects.check_out_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
-
-        time.sleep(.11)
+        # Ensure we wait from longer than the document check out expiration
+        time.sleep(self._test_document_check_out_seconds + 0.1)
 
         DocumentCheckout.objects.check_in_expired_check_outs()
 
-        self.assertFalse(self.document.is_checked_out())
+        self.assertFalse(self.test_document.is_checked_out())
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(DocumentTestMixin, BaseTestCase):
+class NewVersionBlockTestCase(DocumentCheckoutTestMixin, DocumentTestMixin, BaseTestCase):
     def test_blocking(self):
-        NewVersionBlock.objects.block(document=self.document)
+        NewVersionBlock.objects.block(document=self.test_document)
 
         self.assertEqual(NewVersionBlock.objects.count(), 1)
         self.assertEqual(
-            NewVersionBlock.objects.first().document, self.document
+            NewVersionBlock.objects.first().document, self.test_document
         )
 
     def test_blocking_new_versions(self):
         # Silence unrelated logging
-        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+        self._silence_logger(name='mayan.apps.documents.models')
 
-        NewVersionBlock.objects.block(document=self.document)
+        NewVersionBlock.objects.block(document=self.test_document)
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.document.new_version(file_object=file_object)
+                self.test_document.new_version(file_object=file_object)
 
     def test_unblocking(self):
-        NewVersionBlock.objects.create(document=self.document)
+        NewVersionBlock.objects.create(document=self.test_document)
 
-        NewVersionBlock.objects.unblock(document=self.document)
+        NewVersionBlock.objects.unblock(document=self.test_document)
 
         self.assertEqual(NewVersionBlock.objects.count(), 0)
 
     def test_is_blocked(self):
-        NewVersionBlock.objects.create(document=self.document)
+        NewVersionBlock.objects.create(document=self.test_document)
 
         self.assertTrue(
-            NewVersionBlock.objects.is_blocked(document=self.document)
+            NewVersionBlock.objects.is_blocked(document=self.test_document)
         )
 
         NewVersionBlock.objects.all().delete()
 
         self.assertFalse(
-            NewVersionBlock.objects.is_blocked(document=self.document)
+            NewVersionBlock.objects.is_blocked(document=self.test_document)
         )
 
     def test_version_creation_blocking(self):
         # Silence unrelated logging
-        logging.getLogger('documents.models').setLevel(logging.CRITICAL)
+        self._silence_logger(name='mayan.apps.documents.models')
 
-        expiration_datetime = now() + datetime.timedelta(days=1)
+        self._create_test_case_superuser()
 
-        DocumentCheckout.objects.check_out_document(
-            document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
-        )
+        self._check_out_test_document()
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.document.new_version(file_object=file_object)
+                self.test_document.new_version(file_object=file_object)

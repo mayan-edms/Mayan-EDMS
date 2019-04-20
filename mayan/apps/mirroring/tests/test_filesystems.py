@@ -4,8 +4,6 @@ import hashlib
 
 from fuse import FuseOSError
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests import DocumentTestMixin
@@ -20,20 +18,19 @@ from .literals import (
 )
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
 
     def test_document_access(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
 
         document = self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
             index_filesystem.access(
@@ -42,15 +39,15 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
         )
 
     def test_document_access_failure(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
 
         document = self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         with self.assertRaises(FuseOSError):
             index_filesystem.access(
@@ -58,15 +55,15 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
             )
 
     def test_document_open(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
 
         document = self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         file_handle = index_filesystem.open(
             '/{}/{}'.format(TEST_NODE_EXPRESSION, document.label), 'rb'
@@ -82,16 +79,16 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
         )
 
     def test_multiline_indexes(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression=TEST_NODE_EXPRESSION_MULTILINE,
             link_documents=True
         )
 
         self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
             list(index_filesystem.readdir('/', ''))[2:],
@@ -99,16 +96,16 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
         )
 
     def test_multiline_indexes_first_and_last(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression=TEST_NODE_EXPRESSION_MULTILINE_2,
             link_documents=True
         )
 
         self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
             list(index_filesystem.readdir('/', ''))[2:],
@@ -116,37 +113,37 @@ class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, Base
         )
 
     def test_duplicated_indexes(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
 
         self.upload_document()
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self.assertEqual(
             list(index_filesystem.readdir('/', ''))[2:], []
         )
 
     def test_ignore_stub_documents(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root, expression=TEST_NODE_EXPRESSION,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root, expression=TEST_NODE_EXPRESSION,
             link_documents=True
         )
 
         self.document = Document.objects.create(
             document_type=self.document_type, label='document_stub'
         )
-        index_filesystem = IndexFilesystem(index_slug=self.index.slug)
-        self.index.rebuild()
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
+        self.test_index.rebuild()
 
         self.assertEqual(
             list(

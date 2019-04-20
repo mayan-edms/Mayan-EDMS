@@ -10,9 +10,6 @@ from django.utils.http import urlunquote_plus
 
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.smart_settings.classes import Namespace
-from mayan.apps.user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 
 from ..settings import setting_maximum_session_length
 
@@ -35,6 +32,7 @@ class UserLoginTestCase(GenericViewTestCase):
         ).tostr()
     )
     auto_login_user = False
+    create_test_case_superuser = True
 
     def setUp(self):
         super(UserLoginTestCase, self).setUp()
@@ -53,7 +51,8 @@ class UserLoginTestCase(GenericViewTestCase):
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login(self):
         logged_in = self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+            username=self._test_case_superuser.username,
+            password=self._test_case_superuser.cleartext_password
         )
         self.assertTrue(logged_in)
         response = self._request_authenticated_view()
@@ -64,12 +63,14 @@ class UserLoginTestCase(GenericViewTestCase):
     def test_email_login(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             logged_in = self.login(
-                username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+                username=self._test_case_superuser.username,
+                password=self._test_case_superuser.cleartext_password
             )
             self.assertFalse(logged_in)
 
             logged_in = self.login(
-                email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD
+                email=self._test_case_superuser.email,
+                password=self._test_case_superuser.cleartext_password
             )
             self.assertTrue(logged_in)
 
@@ -86,8 +87,8 @@ class UserLoginTestCase(GenericViewTestCase):
 
         response = self.post(
             viewname=settings.LOGIN_URL, data={
-                'username': TEST_ADMIN_USERNAME,
-                'password': TEST_ADMIN_PASSWORD
+                'username': self._test_case_superuser.username,
+                'password': self._test_case_superuser.cleartext_password
             }
         )
         response = self._request_authenticated_view()
@@ -104,7 +105,8 @@ class UserLoginTestCase(GenericViewTestCase):
 
             response = self.post(
                 viewname=settings.LOGIN_URL, data={
-                    'email': TEST_ADMIN_EMAIL, 'password': TEST_ADMIN_PASSWORD
+                    'email': self._test_case_superuser.email,
+                    'password': self._test_case_superuser.cleartext_password
                 }, follow=True
             )
             self.assertEqual(response.status_code, 200)
@@ -117,8 +119,8 @@ class UserLoginTestCase(GenericViewTestCase):
     def test_username_remember_me(self):
         response = self.post(
             viewname=settings.LOGIN_URL, data={
-                'username': TEST_ADMIN_USERNAME,
-                'password': TEST_ADMIN_PASSWORD,
+                'username': self._test_case_superuser.username,
+                'password': self._test_case_superuser.cleartext_password,
                 'remember_me': True
             }, follow=True
         )
@@ -136,8 +138,8 @@ class UserLoginTestCase(GenericViewTestCase):
     def test_username_dont_remember_me(self):
         response = self.post(
             viewname=settings.LOGIN_URL, data={
-                'username': TEST_ADMIN_USERNAME,
-                'password': TEST_ADMIN_PASSWORD,
+                'username': self._test_case_superuser.username,
+                'password': self._test_case_superuser.cleartext_password,
                 'remember_me': False
             }, follow=True
         )
@@ -152,8 +154,8 @@ class UserLoginTestCase(GenericViewTestCase):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             response = self.post(
                 viewname=settings.LOGIN_URL, data={
-                    'email': TEST_ADMIN_EMAIL,
-                    'password': TEST_ADMIN_PASSWORD,
+                    'email': self._test_case_superuser.email,
+                    'password': self._test_case_superuser.cleartext_password,
                     'remember_me': True
                 }, follow=True
             )
@@ -172,8 +174,8 @@ class UserLoginTestCase(GenericViewTestCase):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             response = self.post(
                 viewname=settings.LOGIN_URL, data={
-                    'email': TEST_ADMIN_EMAIL,
-                    'password': TEST_ADMIN_PASSWORD,
+                    'email': self._test_case_superuser.email,
+                    'password': self._test_case_superuser.cleartext_password,
                     'remember_me': False
                 }
             )
@@ -187,28 +189,31 @@ class UserLoginTestCase(GenericViewTestCase):
     def test_password_reset(self):
         response = self.post(
             viewname='authentication:password_reset_view', data={
-                'email': TEST_ADMIN_EMAIL,
+                'email': self._test_case_superuser.email,
             }
         )
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
 
-        uid_token = mail.outbox[0].body.replace('\n', '').split('/')
+        email_parts = mail.outbox[0].body.replace('\n', '').split('/')
+        uidb64 = email_parts[-3]
+        token = email_parts[-2]
 
+        new_password = 'new_password_123'
         response = self.post(
             viewname='authentication:password_reset_confirm_view',
-            args=uid_token[-3:-1], data={
-                'new_password1': TEST_ADMIN_PASSWORD,
-                'new_password2': TEST_ADMIN_PASSWORD,
+            kwargs={'uidb64': uidb64, 'token': token}, data={
+                'new_password1': new_password,
+                'new_password2': new_password
             }
         )
-
         self.assertEqual(response.status_code, 302)
 
-        self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        logged_in = self.login(
+            username=self._test_case_superuser.username, password=new_password
         )
+        self.assertTrue(logged_in)
 
         response = self._request_authenticated_view()
         self.assertEqual(response.status_code, 200)
@@ -220,8 +225,8 @@ class UserLoginTestCase(GenericViewTestCase):
             path='{}?next={}'.format(
                 reverse(settings.LOGIN_URL), TEST_REDIRECT_URL
             ), data={
-                'username': TEST_ADMIN_USERNAME,
-                'password': TEST_ADMIN_PASSWORD,
+                'username': self._test_case_superuser.username,
+                'password': self._test_case_superuser.cleartext_password,
                 'remember_me': False
             }, follow=True
         )

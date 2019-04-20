@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
 from django.utils.encoding import force_text
 
 from mayan.apps.common.tests import BaseTestCase
@@ -24,13 +23,12 @@ from .literals import (
 from .mixins import DocumentIndexingTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
     def test_document_description_index(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION,
             link_documents=True
         )
@@ -38,7 +36,7 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
         self.document.description = TEST_DOCUMENT_DESCRIPTION
         self.document.save()
 
-        self.index.rebuild()
+        self.test_index.rebuild()
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value, self.document.description
@@ -51,15 +49,15 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
     def test_document_label_index(self):
-        self._create_index()
+        self._create_test_index()
 
-        self.index.node_templates.create(
-            parent=self.index.template_root,
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
             link_documents=True
         )
 
-        self.index.rebuild()
+        self.test_index.rebuild()
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value, self.document.label
@@ -72,15 +70,15 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
     def test_date_based_index(self):
-        self._create_index()
+        self._create_test_index()
 
-        level_year = self.index.node_templates.create(
-            parent=self.index.template_root,
+        level_year = self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression='{{ document.date_added|date:"Y" }}',
             link_documents=False
         )
 
-        self.index.node_templates.create(
+        self.test_index.node_templates.create(
             parent=level_year,
             expression='{{ document.date_added|date:"m" }}',
             link_documents=True
@@ -116,16 +114,16 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
                 file_object=file_object
             )
 
-        self._create_index()
+        self._create_test_index()
 
         # Create simple index template
-        root = self.index.template_root
-        level_1 = self.index.node_templates.create(
+        root = self.test_index.template_root
+        level_1 = self.test_index.node_templates.create(
             parent=root, expression='{{ document.uuid }}',
             link_documents=False
         )
 
-        self.index.node_templates.create(
+        self.test_index.node_templates.create(
             parent=level_1, expression='{{ document.label }}',
             link_documents=True
         )
@@ -151,11 +149,11 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
             document_type=self.document_type, metadata_type=metadata_type
         )
 
-        self._create_index()
+        self._create_test_index()
 
         # Create simple index template
-        root = self.index.template_root
-        self.index.node_templates.create(
+        root = self.test_index.template_root
+        self.test_index.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
         )
@@ -236,15 +234,15 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
         On a two level template if the first level doesn't return a result
         the indexing should stop. GitLab issue #391.
         """
-        self._create_index()
+        self._create_test_index()
 
-        level_1 = self.index.node_templates.create(
-            parent=self.index.template_root,
+        level_1 = self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
             expression='',
             link_documents=True
         )
 
-        self.index.node_templates.create(
+        self.test_index.node_templates.create(
             parent=level_1, expression='{{ document.label }}',
             link_documents=True
         )
@@ -263,11 +261,11 @@ class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
             metadata_type=metadata_type, value='0001'
         )
 
-        self._create_index()
+        self._create_test_index()
 
         # Create simple index template
-        root = self.index.template_root
-        self.index.node_templates.create(
+        root = self.test_index.template_root
+        self.test_index.node_templates.create(
             parent=root, expression='{{ document.metadata_value_of.test }}',
             link_documents=True
         )

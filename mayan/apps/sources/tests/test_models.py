@@ -5,13 +5,11 @@ import shutil
 import mock
 from pathlib2 import Path
 
-from django.test import override_settings
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests import (
-    DocumentTestMixin, TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
+    GenericDocumentTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
@@ -31,17 +29,8 @@ from .literals import (
 )
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class CompressedUploadsTestCase(BaseTestCase):
-    def setUp(self):
-        super(CompressedUploadsTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(CompressedUploadsTestCase, self).tearDown()
+class CompressedUploadsTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
 
     def test_upload_compressed_file(self):
         source = WebFormSource(
@@ -50,7 +39,7 @@ class CompressedUploadsTestCase(BaseTestCase):
 
         with open(TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
             source.handle_upload(
-                document_type=self.document_type,
+                document_type=self.test_document_type,
                 file_object=file_object,
                 expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
             )
@@ -68,21 +57,12 @@ class CompressedUploadsTestCase(BaseTestCase):
         )
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class EmailFilenameDecodingTestCase(BaseTestCase):
-    def setUp(self):
-        super(EmailFilenameDecodingTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(EmailFilenameDecodingTestCase, self).tearDown()
+class EmailFilenameDecodingTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
 
     def _create_email_source(self):
         self.source = EmailBaseModel(
-            document_type=self.document_type,
+            document_type=self.test_document_type,
             host='', username='', password='', store_body=True
         )
 
@@ -120,6 +100,9 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         self.assertEqual(Document.objects.count(), 0)
 
     def test_decode_email_with_inline_image(self):
+        # Silence expected errors in other apps
+        self._silence_logger(name='mayan.apps.converter.backends')
+
         self._create_email_source()
         EmailBaseModel.process_message(
             source=self.source, message_text=TEST_EMAIL_INLINE_IMAGE
@@ -132,6 +115,9 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         )
 
     def test_decode_email_with_attachment_and_inline_image(self):
+        # Silence expected errors in other apps
+        self._silence_logger(name='mayan.apps.converter.backends')
+
         self._create_email_source()
         EmailBaseModel.process_message(
             source=self.source, message_text=TEST_EMAIL_ATTACHMENT_AND_INLINE
@@ -146,8 +132,8 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
     def test_decode_email_and_store_from_and_subject_as_metadata(self):
         metadata_from = MetadataType.objects.create(name='from')
         metadata_subject = MetadataType.objects.create(name='subject')
-        self.document_type.metadata.create(metadata_type=metadata_from)
-        self.document_type.metadata.create(metadata_type=metadata_subject)
+        self.test_document_type.metadata.create(metadata_type=metadata_from)
+        self.test_document_type.metadata.create(metadata_type=metadata_subject)
 
         self._create_email_source()
         self.source.from_metadata_type = metadata_from
@@ -173,6 +159,9 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         )
 
     def test_document_upload_no_body(self):
+        # Silence expected errors in other apps
+        self._silence_logger(name='mayan.apps.converter.backends')
+
         self._create_email_source()
         self.source.store_body = False
         self.source.save()
@@ -185,6 +174,9 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         self.assertEqual(1, Document.objects.count())
 
     def test_document_upload_with_body(self):
+        # Silence expected errors in other apps
+        self._silence_logger(name='mayan.apps.converter.backends')
+
         self._create_email_source()
 
         EmailBaseModel.process_message(
@@ -195,8 +187,9 @@ class EmailFilenameDecodingTestCase(BaseTestCase):
         self.assertEqual(2, Document.objects.count())
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class POP3SourceTestCase(BaseTestCase):
+class POP3SourceTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
+
     class MockMailbox(object):
         def dele(self, which):
             return
@@ -221,21 +214,11 @@ class POP3SourceTestCase(BaseTestCase):
         def user(self, username):
             return
 
-    def setUp(self):
-        super(POP3SourceTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(POP3SourceTestCase, self).tearDown()
-
     @mock.patch('poplib.POP3_SSL')
     def test_download_document(self, mock_poplib):
         mock_poplib.return_value = POP3SourceTestCase.MockMailbox()
         self.source = POP3Email.objects.create(
-            document_type=self.document_type, label='', host='', password='',
+            document_type=self.test_document_type, label='', host='', password='',
             username=''
         )
 
@@ -245,13 +228,12 @@ class POP3SourceTestCase(BaseTestCase):
         )
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class WatchFolderTestCase(DocumentTestMixin, BaseTestCase):
+class WatchFolderTestCase(GenericDocumentTestCase):
     auto_upload_document = False
 
     def _create_watchfolder(self):
         return WatchFolderSource.objects.create(
-            document_type=self.document_type,
+            document_type=self.test_document_type,
             folder_path=self.temporary_directory,
             include_subdirectories=False,
             uncompress=SOURCE_UNCOMPRESS_CHOICE_Y

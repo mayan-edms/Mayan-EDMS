@@ -9,15 +9,14 @@ from ..workflow_actions import GrantAccessAction, RevokeAccessAction
 
 
 class ACLActionTestCase(ActionTestCase):
-    def setUp(self):
-        super(ACLActionTestCase, self).setUp()
-
     def test_grant_access_action(self):
         action = GrantAccessAction(
             form_data={
-                'content_type': ContentType.objects.get_for_model(model=self.document).pk,
+                'content_type': ContentType.objects.get_for_model(
+                    model=self.test_document
+                ).pk,
                 'object_id': self.document.pk,
-                'roles': [self.role.pk],
+                'roles': [self._test_case_role.pk],
                 'permissions': [permission_document_view.pk],
             }
         )
@@ -28,7 +27,7 @@ class ACLActionTestCase(ActionTestCase):
             list(self.document.acls.first().permissions.all()),
             [permission_document_view.stored_permission]
         )
-        self.assertEqual(self.document.acls.first().role, self.role)
+        self.assertEqual(self.document.acls.first().role, self._test_case_role)
 
     def test_revoke_access_action(self):
         self.grant_access(
@@ -37,9 +36,11 @@ class ACLActionTestCase(ActionTestCase):
 
         action = RevokeAccessAction(
             form_data={
-                'content_type': ContentType.objects.get_for_model(model=self.document).pk,
+                'content_type': ContentType.objects.get_for_model(
+                    model=self.document
+                ).pk,
                 'object_id': self.document.pk,
-                'roles': [self.role.pk],
+                'roles': [self._test_case_role.pk],
                 'permissions': [permission_document_view.pk],
             }
         )

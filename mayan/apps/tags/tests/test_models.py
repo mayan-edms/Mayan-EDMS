@@ -1,31 +1,26 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.tests import DocumentTestMixin
 
-from ..models import Tag
-
-from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
+from .mixins import TagTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class TagTestCase(DocumentTestMixin, BaseTestCase):
+class TagTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
     auto_upload_document = False
 
-    def test_addition_and_deletion_of_documents(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
-        self.document = self.upload_document()
+    def test_document_addition(self):
+        self._create_test_tag()
+        self.test_document = self.upload_document()
 
-        tag.documents.add(self.document)
+        self.test_tag.documents.add(self.test_document)
 
-        self.assertEqual(tag.documents.count(), 1)
-        self.assertEqual(list(tag.documents.all()), [self.document])
+        self.assertTrue(self.test_document in self.test_tag.documents.all())
 
-        tag.documents.remove(self.document)
+    def test_document_remove(self):
+        self._create_test_tag()
+        self.test_document = self.upload_document()
 
-        self.assertEqual(tag.documents.count(), 0)
-        self.assertEqual(list(tag.documents.all()), [])
+        self.test_tag.documents.remove(self.test_document)
 
-        tag.delete()
+        self.assertTrue(self.test_document not in self.test_tag.documents.all())

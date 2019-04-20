@@ -11,22 +11,20 @@ from mayan.apps.sources.tests.literals import (
 )
 from mayan.apps.sources.wizards import WizardStep
 
-from ..models import Cabinet
 from ..wizard_steps import WizardStepCabinets
 
-from .literals import TEST_CABINET_LABEL
+from .mixins import CabinetTestMixin
 
 
-class CabinetDocumentUploadTestCase(GenericDocumentViewTestCase):
+class CabinetDocumentUploadTestCase(CabinetTestMixin, GenericDocumentViewTestCase):
+    auto_upload_document = False
+
     def setUp(self):
         super(CabinetDocumentUploadTestCase, self).setUp()
-        self.login_user()
-        self.source = WebFormSource.objects.create(
+        self.test_source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
-
-        self.document.delete()
 
     def tearDown(self):
         super(CabinetDocumentUploadTestCase, self).tearDown()
@@ -35,26 +33,24 @@ class CabinetDocumentUploadTestCase(GenericDocumentViewTestCase):
     def _request_upload_interactive_document_create_view(self):
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
-                viewname='sources:upload_interactive', args=(self.source.pk,),
-                data={
-                    'document_type_id': self.document_type.pk,
+                viewname='sources:upload_interactive', kwargs={
+                    'source_id': self.test_source.pk
+                }, data={
+                    'document_type_id': self.test_document_type.pk,
                     'source-file': file_object,
-                    'cabinets': self.cabinet.pk
+                    'cabinets': self.test_cabinet.pk
                 }
             )
 
-    def _create_cabinet(self):
-        self.cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
-
     def test_upload_interactive_view_with_access(self):
-        self._create_cabinet()
+        self._create_test_cabinet()
         self.grant_access(
             permission=permission_document_create, obj=self.document_type
         )
         response = self._request_upload_interactive_document_create_view()
 
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(self.cabinet in Document.objects.first().cabinets.all())
+        self.assertTrue(self.test_cabinet in Document.objects.first().cabinets.all())
 
     def _request_wizard_view(self):
         return self.get(viewname='sources:document_create_multiple')
@@ -63,9 +59,10 @@ class CabinetDocumentUploadTestCase(GenericDocumentViewTestCase):
         WizardStep.deregister_all()
         WizardStep.reregister(name=WizardStepCabinets.name)
 
-        self._create_cabinet()
+        self._create_test_cabinet()
         self.grant_access(
             permission=permission_document_create, obj=self.document_type
+
         )
         response = self._request_wizard_view()
         self.assertEqual(response.status_code, 200)

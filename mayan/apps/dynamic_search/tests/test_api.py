@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from rest_framework import status
 
 from mayan.apps.documents.search import document_search
@@ -25,15 +23,7 @@ class SearchModelAPITestCase(BaseAPITestCase):
         )
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class SearchAPITestCase(DocumentTestMixin, BaseAPITestCase):
-    auto_upload_document = False
-
-    def setUp(self):
-        super(SearchAPITestCase, self).setUp()
-        self.login_user()
-        self.test_document = self.upload_document()
-
     def _request_search_view(self):
         query = {'q': self.test_document.label}
         return self.get(
@@ -51,9 +41,9 @@ class SearchAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+
         response = self._request_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
         self.assertEqual(
             response.data['results'][0]['label'], self.test_document.label
         )

@@ -1,56 +1,50 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.tests import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
 
-from ..models import Tag
-
 from .literals import (
-    TEST_TAG_COLOR, TEST_TAG_LABEL, TEST_TAG_INDEX_HAS_TAG,
-    TEST_TAG_INDEX_NO_TAG, TEST_TAG_INDEX_NODE_TEMPLATE
+    TEST_TAG_INDEX_HAS_TAG, TEST_TAG_INDEX_NO_TAG, TEST_TAG_INDEX_NODE_TEMPLATE
 )
+from .mixins import TagTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class TagSignalIndexingTestCase(DocumentTestMixin, BaseTestCase):
+class TagSignalIndexingTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
     auto_upload_document = False
 
     def test_tag_indexing(self):
-        index = Index.objects.create(label=TEST_INDEX_LABEL)
+        self._create_test_tag()
+        self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
+        self.test_index.document_types.add(self.test_document_type)
 
-        index.document_types.add(self.document_type)
-
-        root = index.template_root
-        index.node_templates.create(
+        root = self.test_index.template_root
+        self.test_index.node_templates.create(
             parent=root, expression=TEST_TAG_INDEX_NODE_TEMPLATE,
             link_documents=True
         )
 
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
-        self.document = self.upload_document()
+        self.upload_document()
 
         self.assertTrue(
-            self.document in IndexInstanceNode.objects.get(
+            self.test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_NO_TAG
             ).documents.all()
         )
 
-        tag.documents.add(self.document)
+        self.test_tag.documents.add(self.test_document)
 
         self.assertTrue(
-            self.document in IndexInstanceNode.objects.get(
+            self.test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_HAS_TAG
             ).documents.all()
         )
 
-        tag.delete()
+        self.test_tag.delete()
 
         self.assertTrue(
-            self.document in IndexInstanceNode.objects.get(
+            self.test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_NO_TAG
             ).documents.all()
         )

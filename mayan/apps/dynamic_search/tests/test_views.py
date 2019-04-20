@@ -1,54 +1,46 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
-from mayan.apps.documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests import DocumentTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class Issue46TestCase(GenericViewTestCase):
+class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
     def setUp(self):
         super(Issue46TestCase, self).setUp()
-        self.login_admin_user()
-
-        self.document_count = 4
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
+        self.test_document_count = 4
+        self.uploaded_documents = []
 
         # Upload many instances of the same test document
-        for i in range(self.document_count):
-            with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.document_type.new_document(
-                    file_object=file_object,
-                    label='test document',
-                )
-
-    def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
-        super(Issue46TestCase, self).tearDown()
+        for i in range(self.test_document_count):
+            self.uploaded_documents.append(
+                self.upload_document()
+            )
 
     def test_advanced_search_past_first_page(self):
+        test_document_label = self.uploaded_documents[0].label
+
+        for document in self.uploaded_documents:
+            self.grant_access(
+                obj=document, permission=permission_document_view
+            )
+
         # Make sure all documents are returned by the search
         queryset, elapsed_time = document_search.search(
-            {'label': 'test document'}, user=self.admin_user
+            {'label': test_document_label}, user=self._test_case_user
         )
-        self.assertEqual(queryset.count(), self.document_count)
+        self.assertEqual(queryset.count(), self.test_document_count)
 
         with self.settings(COMMON_PAGINATE_BY=2):
             # Functional test for the first page of advanced results
             response = self.get(
                 viewname='search:results',
                 args=(document_search.get_full_name(),),
-                data={'label': 'test'}
+                data={'label': test_document_label}
             )
 
             # Total (1 - 2 out of 4) (Page 1 of 2)
@@ -68,7 +60,7 @@ class Issue46TestCase(GenericViewTestCase):
             response = self.get(
                 viewname='search:results',
                 args=(document_search.get_full_name(),),
-                data={'label': 'test', 'page': 2}
+                data={'label': test_document_label, 'page': 2}
             )
 
             # Total (3 - 4 out of 4) (Page 2 of 2)

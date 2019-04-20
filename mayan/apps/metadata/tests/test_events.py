@@ -16,15 +16,12 @@ from .mixins import MetadataTestsMixin
 
 
 class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase):
-    def setUp(self):
-        super(MetadataTypeEventsTestCase, self).setUp()
-        self.login_user()
-
     def test_metadata_type_create_event_no_permissions(self):
         Action.objects.all().delete()
 
         response = self._request_metadata_type_create_view()
         self.assertEqual(response.status_code, 403)
+
         self.assertEqual(Action.objects.count(), 0)
 
     def test_metadata_type_create_event_with_permissions(self):
@@ -33,16 +30,15 @@ class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase
         self.grant_permission(permission=permission_metadata_type_create)
 
         response = self._request_metadata_type_create_view()
-
         self.assertEqual(response.status_code, 302)
 
         event = Action.objects.first()
 
         metadata_type = MetadataType.objects.first()
 
-        self.assertEqual(event.verb, event_metadata_type_created.id)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, metadata_type)
-        self.assertEqual(event.actor, self.user)
+        self.assertEqual(event.verb, event_metadata_type_created.id)
 
     def test_metadata_type_edit_event_no_permissions(self):
         self._create_metadata_type()
@@ -51,6 +47,7 @@ class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase
 
         response = self._request_metadata_type_edit_view()
         self.assertEqual(response.status_code, 403)
+
         self.assertEqual(Action.objects.count(), 0)
 
     def test_metadata_type_edit_event_with_access(self):
@@ -59,7 +56,7 @@ class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase
         Action.objects.all().delete()
 
         self.grant_access(
-            permission=permission_metadata_type_edit, obj=self.metadata_type
+            obj=self.metadata_type, permission=permission_metadata_type_edit
         )
 
         response = self._request_metadata_type_edit_view()
@@ -68,6 +65,6 @@ class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase
 
         event = Action.objects.first()
 
-        self.assertEqual(event.verb, event_metadata_type_edited.id)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.metadata_type)
-        self.assertEqual(event.actor, self.user)
+        self.assertEqual(event.verb, event_metadata_type_edited.id)

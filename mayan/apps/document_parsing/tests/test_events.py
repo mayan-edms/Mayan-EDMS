@@ -17,10 +17,10 @@ class DocumentParsingEventsTestCase(GenericDocumentTestCase):
 
     def test_document_version_submit_event(self):
         Action.objects.all().delete()
-        self.document.submit_for_parsing()
+        self.test_document.submit_for_parsing()
 
         self.assertEqual(
-            Action.objects.last().target, self.document.latest_version
+            Action.objects.last().target, self.test_document.latest_version
         )
         self.assertEqual(
             Action.objects.last().verb,
@@ -29,9 +29,9 @@ class DocumentParsingEventsTestCase(GenericDocumentTestCase):
 
     def test_document_version_finish_event(self):
         Action.objects.all().delete()
-        self.document.submit_for_parsing()
+        self.test_document.submit_for_parsing()
         self.assertEqual(
-            Action.objects.first().target, self.document.latest_version
+            Action.objects.first().target, self.test_document.latest_version
         )
         self.assertEqual(
             Action.objects.first().verb,

@@ -48,8 +48,8 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_smart_link_view, user=self.request.user,
-            obj=smart_link
+            obj=smart_link, permissions=permission_smart_link_view,
+            user=self.request.user
         )
 
         return smart_link

@@ -4,8 +4,6 @@ import time
 
 from django.urls import reverse
 
-from mayan.apps.acls.models import AccessControlList
-
 from ..links import (
     link_document_restore, link_document_version_download,
     link_document_version_revert
@@ -21,10 +19,6 @@ from .literals import TEST_SMALL_DOCUMENT_PATH
 
 
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(DocumentsLinksTestCase, self).setUp()
-        self.login_user()
-
     def test_document_version_revert_link_no_permission(self):
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.document.new_version(file_object=file_object)
@@ -47,11 +41,9 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
         self.assertTrue(self.document.versions.count(), 2)
 
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
-        )
-        acl.permissions.add(
-            permission_document_version_revert.stored_permission
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_revert
         )
 
         self.add_test_view(test_object=self.document.versions.first())
@@ -62,7 +54,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             resolved_link.url,
             reverse(
-                'documents:document_version_revert',
+                viewname=link_document_version_revert.view,
                 args=(self.document.versions.first().pk,)
             )
         )
@@ -75,10 +67,10 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_version_download_link_with_permission(self):
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_download
         )
-        acl.permissions.add(permission_document_download.stored_permission)
 
         self.add_test_view(test_object=self.document.latest_version)
         context = self.get_test_view()
@@ -88,7 +80,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             resolved_link.url,
             reverse(
-                'documents:document_version_download_form',
+                viewname=link_document_version_download.view,
                 args=(self.document.latest_version.pk,)
             )
         )

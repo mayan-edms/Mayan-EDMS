@@ -11,7 +11,7 @@ from ..permissions import (
 )
 from ..utils import get_document_content
 
-TEST_DOCUMENT_CONTENT = 'Sample text'
+from .literals import TEST_DOCUMENT_CONTENT
 
 
 @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
@@ -21,48 +21,44 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
 
-    def setUp(self):
-        super(DocumentContentViewsTestCase, self).setUp()
-        self.login_user()
-
     def _request_document_content_view(self):
         return self.get(
-            'document_parsing:document_content', args=(self.document.pk,)
+            'document_parsing:document_content', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
     def test_document_content_view_no_permissions(self):
         response = self._request_document_content_view()
-
         self.assertEqual(response.status_code, 403)
 
     def test_document_content_view_with_access(self):
         self.grant_access(
-            permission=permission_content_view, obj=self.document
+            obj=self.test_document, permission=permission_content_view
         )
-        response = self._request_document_content_view()
 
+        response = self._request_document_content_view()
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_page_content_view(self):
         return self.get(
-            viewname='document_parsing:document_page_content', args=(
-                self.document.pages.first().pk,
-            )
+            viewname='document_parsing:document_page_content', kwargs={
+                'pk': self.test_document.pages.first().pk,
+            }
         )
 
     def test_document_page_content_view_no_permissions(self):
         response = self._request_document_page_content_view()
-
         self.assertEqual(response.status_code, 403)
 
     def test_document_page_content_view_with_access(self):
         self.grant_access(
-            permission=permission_content_view, obj=self.document
+            permission=permission_content_view, obj=self.test_document
         )
-        response = self._request_document_page_content_view()
 
+        response = self._request_document_page_content_view()
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
@@ -70,7 +66,7 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     def _request_document_content_download_view(self):
         return self.get(
             viewname='document_parsing:document_content_download',
-            args=(self.document.pk,)
+            kwargs={'pk': self.test_document.pk}
         )
 
     def test_document_parsing_download_view_no_permission(self):
@@ -80,34 +76,33 @@ class DocumentContentViewsTestCase(GenericDocumentViewTestCase):
     def test_download_view_with_access(self):
         self.expected_content_type = 'application/octet-stream; charset=utf-8'
         self.grant_access(
-            permission=permission_content_view, obj=self.document
+            permission=permission_content_view, obj=self.test_document
         )
-        response = self._request_document_content_download_view()
 
+        response = self._request_document_content_download_view()
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
             response=response, content=(
-                ''.join(get_document_content(document=self.document))
+                ''.join(get_document_content(document=self.test_document))
             ),
         )
 
-    def test_document_type_parsing_settings_view_no_permission(self):
-        response = self.get(
+    def _request_test_document_type_parsing_settings(self):
+        return self.get(
             viewname='document_parsing:document_type_parsing_settings',
-            args=(self.document.document_type.pk,)
+            kwargs={'pk': self.test_document.document_type.pk}
         )
 
+    def test_document_type_parsing_settings_view_no_permission(self):
+        response = self._request_test_document_type_parsing_settings()
         self.assertEqual(response.status_code, 403)
 
     def test_document_type_parsing_settings_view_with_access(self):
         self.grant_access(
             permission=permission_document_type_parsing_setup,
-            obj=self.document.document_type
-        )
-        response = self.get(
-            viewname='document_parsing:document_type_parsing_settings',
-            args=(self.document.document_type.pk,)
+            obj=self.test_document.document_type
         )
 
+        response = self._request_test_document_type_parsing_settings()
         self.assertEqual(response.status_code, 200)

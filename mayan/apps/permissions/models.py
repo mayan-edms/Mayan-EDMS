@@ -115,6 +115,9 @@ class Role(models.Model):
     def get_absolute_url(self):
         return reverse(viewname='permissions:role_list')
 
+    def grant(self, permission):
+        self.permissions.add(permission.stored_permission)
+
     def natural_key(self):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']

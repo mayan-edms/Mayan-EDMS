@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
-from django.test import override_settings
 
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.tests import DocumentTestMixin
@@ -9,18 +8,18 @@ from mayan.apps.documents.tests import DocumentTestMixin
 from ..models import Cabinet
 
 from .literals import TEST_CABINET_LABEL
+from .mixins import CabinetTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class CabinetTestCase(DocumentTestMixin, BaseTestCase):
+class CabinetTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
     def test_cabinet_creation(self):
-        cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+        self._create_test_cabinet()
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
-        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(cabinet),))
+        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(self.test_cabinet),))
 
     def test_cabinet_duplicate_creation(self):
-        cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+        self._create_test_cabinet()
 
         with self.assertRaises(ValidationError):
             cabinet_2 = Cabinet(label=TEST_CABINET_LABEL)
@@ -28,39 +27,39 @@ class CabinetTestCase(DocumentTestMixin, BaseTestCase):
             cabinet_2.save()
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
-        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(cabinet),))
+        self.assertQuerysetEqual(Cabinet.objects.all(), (repr(self.test_cabinet),))
 
     def test_inner_cabinet_creation(self):
-        cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+        self._create_test_cabinet()
 
         inner_cabinet = Cabinet.objects.create(
-            parent=cabinet, label=TEST_CABINET_LABEL
+            parent=self.test_cabinet, label=TEST_CABINET_LABEL
         )
 
         self.assertEqual(Cabinet.objects.all().count(), 2)
         self.assertQuerysetEqual(
-            Cabinet.objects.all(), map(repr, (cabinet, inner_cabinet))
+            Cabinet.objects.all(), map(repr, (self.test_cabinet, inner_cabinet))
         )
 
     def test_addition_of_documents(self):
-        cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
-        cabinet.documents.add(self.document)
+        self._create_test_cabinet()
+        self.test_cabinet.documents.add(self.test_document)
 
-        self.assertEqual(cabinet.documents.count(), 1)
+        self.assertEqual(self.test_cabinet.documents.count(), 1)
         self.assertQuerysetEqual(
-            cabinet.documents.all(), (repr(self.document),)
+            self.test_cabinet.documents.all(), (repr(self.test_document),)
         )
 
     def test_addition_and_deletion_of_documents(self):
-        cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
-        cabinet.documents.add(self.document)
+        self._create_test_cabinet()
+        self.test_cabinet.documents.add(self.test_document)
 
-        self.assertEqual(cabinet.documents.count(), 1)
+        self.assertEqual(self.test_cabinet.documents.count(), 1)
         self.assertQuerysetEqual(
-            cabinet.documents.all(), (repr(self.document),)
+            self.test_cabinet.documents.all(), (repr(self.test_document),)
         )
 
-        cabinet.documents.remove(self.document)
+        self.test_cabinet.documents.remove(self.test_document)
 
-        self.assertEqual(cabinet.documents.count(), 0)
-        self.assertQuerysetEqual(cabinet.documents.all(), ())
+        self.assertEqual(self.test_cabinet.documents.count(), 0)
+        self.assertQuerysetEqual(self.test_cabinet.documents.all(), ())

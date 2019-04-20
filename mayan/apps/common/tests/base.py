@@ -7,7 +7,6 @@ from django_downloadview import assert_download_response
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.smart_settings.classes import Namespace
-from mayan.apps.user_management.tests.mixins import UserTestCaseMixin
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
@@ -29,7 +28,7 @@ class BaseTestCase(SilenceLoggerTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchM
         Permission.invalidate_cache()
 
 
-class GenericViewTestCase(ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin, TestViewTestCaseMixin, UserTestCaseMixin, BaseTestCase):
+class GenericViewTestCase(ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin, TestViewTestCaseMixin, BaseTestCase):
     """
     A generic view test case built on top of the base test case providing
     a single, user customizable view to test object resolution and shorthand

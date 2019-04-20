@@ -16,8 +16,6 @@ from mayan.apps.documents.tests import DocumentTestMixin, TEST_DOCUMENT_FILENAME
 MAXIMUM_HEAP_MEMORY = 140000000
 
 
-@override_settings(OCR_AUTO_OCR=False)
-@override_settings(DOCUMENT_PARSING_AUTO_PARSING=False)
 @tag('memory', EXCLUDE_TEST_TAG)
 class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False

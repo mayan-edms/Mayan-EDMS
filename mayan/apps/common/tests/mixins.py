@@ -8,12 +8,10 @@ import random
 
 from furl import furl
 
-from django.apps import apps
 from django.conf import settings
 from django.conf.urls import url
-from django.contrib.contenttypes.models import ContentType
 from django.core import management
-from django.db import connection, models
+from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
 from django.template import Context, Template

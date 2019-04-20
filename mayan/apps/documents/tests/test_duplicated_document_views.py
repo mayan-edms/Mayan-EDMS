@@ -3,21 +3,11 @@ from __future__ import unicode_literals
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .literals import (
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
-)
 
 
 class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(DuplicatedDocumentsViewsTestCase, self).setUp()
-        self.login_user()
-
     def _upload_duplicate_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document_duplicate = self.document_type.new_document(
-                file_object=file_object, label=TEST_SMALL_DOCUMENT_FILENAME
-            )
+        self.test_duplicated_document = self.upload_document()
 
     def _request_duplicated_document_list_view(self):
         return self.get(viewname='documents:duplicated_document_list')
@@ -25,49 +15,49 @@ class DuplicatedDocumentsViewsTestCase(GenericDocumentViewTestCase):
     def _request_document_duplicates_list_view(self):
         return self.get(
             viewname='documents:document_duplicates_list',
-            args=(self.document.pk,)
+            kwargs={'pk': self.test_document.pk}
         )
 
     def test_duplicated_document_list_no_permissions(self):
         self._upload_duplicate_document()
-        response = self._request_duplicated_document_list_view()
 
+        response = self._request_duplicated_document_list_view()
         self.assertNotContains(
-            response=response, text=self.document.label, status_code=200
+            response=response, text=self.test_document.label, status_code=200
         )
 
     def test_duplicated_document_list_with_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.document, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
         self.grant_access(
-            obj=self.document_duplicate,
+            obj=self.test_duplicated_document,
             permission=permission_document_view
         )
-        response = self._request_duplicated_document_list_view()
 
+        response = self._request_duplicated_document_list_view()
         self.assertContains(
-            response=response, text=self.document.label, status_code=200
+            response=response, text=self.test_document.label, status_code=200
         )
 
     def test_document_duplicates_list_no_permissions(self):
         self._upload_duplicate_document()
-        response = self._request_document_duplicates_list_view()
 
+        response = self._request_document_duplicates_list_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_duplicates_list_with_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.document, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
         self.grant_access(
-            obj=self.document_duplicate,
+            obj=self.test_duplicated_document,
             permission=permission_document_view
         )
-        response = self._request_document_duplicates_list_view()
 
+        response = self._request_document_duplicates_list_view()
         self.assertContains(
-            response=response, text=self.document.label, status_code=200
+            response=response, text=self.test_document.label, status_code=200
         )

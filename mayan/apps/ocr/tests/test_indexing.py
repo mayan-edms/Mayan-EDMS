@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.tests import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
@@ -12,7 +10,6 @@ from .literals import (
 )
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class OCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
 
@@ -27,11 +24,11 @@ class OCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self.document = self.upload_document()
-        self.document.submit_for_ocr()
+        self.upload_document()
+        self.test_document.submit_for_ocr()
 
         self.assertTrue(
-            self.document in IndexInstanceNode.objects.get(
+            self.test_document in IndexInstanceNode.objects.get(
                 value=TEST_OCR_INDEX_NODE_TEMPLATE_LEVEL
             ).documents.all()
         )

@@ -2,19 +2,41 @@ from __future__ import absolute_import, unicode_literals
 
 from .. import *  # NOQA
 
+CELERY_ALWAYS_EAGER = True
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+BROKER_BACKEND = 'memory'
+
+COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
+
+DOCUMENT_PARSING_AUTO_PARSING = False
+
 INSTALLED_APPS += ('test_without_migrations',)
 
 INSTALLED_APPS = [
     cls for cls in INSTALLED_APPS if cls != 'whitenoise.runserver_nostatic'
 ]
 
-COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
-
 # Remove whitenoise from middlewares. Causes out of memory errors during test
 # suit
 MIDDLEWARE = [
     cls for cls in MIDDLEWARE if cls != 'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
+
+# Remove middlewares not used for tests
+MIDDLEWARE = [
+    cls for cls in MIDDLEWARE if cls not in [
+        'common.middleware.error_logging.ErrorLoggingMiddleware',
+        'django.middleware.security.SecurityMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django.middleware.locale.LocaleMiddleware',
+        'common.middleware.timezone.TimezoneMiddleware',
+        'common.middleware.ajax_redirect.AjaxRedirect',
+    ]
+]
+
+OCR_AUTO_OCR = False
 
 # User a simpler password hasher
 PASSWORD_HASHERS = (
@@ -32,21 +54,3 @@ TEMPLATES[0]['OPTIONS']['loaders'] = (
         )
     ),
 )
-
-CELERY_ALWAYS_EAGER = True
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
-BROKER_BACKEND = 'memory'
-
-# Remove middlewares not used for tests
-MIDDLEWARE = [
-    cls for cls in MIDDLEWARE if cls not in [
-        'common.middleware.error_logging.ErrorLoggingMiddleware',
-        'django.middleware.security.SecurityMiddleware',
-        'corsheaders.middleware.CorsMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.locale.LocaleMiddleware',
-        'common.middleware.timezone.TimezoneMiddleware',
-        'common.middleware.ajax_redirect.AjaxRedirect',
-    ]
-]

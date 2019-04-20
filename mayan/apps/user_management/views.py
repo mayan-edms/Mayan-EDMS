@@ -256,6 +256,24 @@ class UserDeleteView(MultipleObjectConfirmActionView):
             )
 
 
+class UserDetailsView(SingleObjectDetailView):
+    fields = (
+        'username', 'first_name', 'last_name', 'email', 'last_login',
+        'date_joined', 'groups',
+    )
+    object_permission = permission_user_view
+    pk_url_kwarg = 'pk'
+    queryset = get_user_model().objects.filter(
+        is_superuser=False, is_staff=False
+    )
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'object': self.get_object(),
+            'title': _('Details of user: %s') % self.get_object()
+        }
+
+
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
     object_permission = permission_user_edit
@@ -295,14 +313,20 @@ class UserGroupsView(AssignRemoveView):
             ), pk=self.kwargs['pk']
         )
 
+    def get_choices_queryset(self):
+        return AccessControlList.objects.filter_by_access(
+            queryset=Group.objects.filter(user=self.get_object()),
+            permission=permission_group_edit, user=self.request.user
+        )
+
     def left_list(self):
         return AssignRemoveView.generate_choices(
-            Group.objects.exclude(user=self.get_object())
+            self.get_choices_queryset().exclude(user=self.get_object())
         )
 
     def right_list(self):
         return AssignRemoveView.generate_choices(
-            Group.objects.filter(user=self.get_object())
+            self.get_choices_queryset().filter(user=self.get_object())
         )
 
     def remove(self, item):

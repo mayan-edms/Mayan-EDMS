@@ -8,21 +8,20 @@ from mayan.apps.documents.tests import GenericDocumentViewTestCase
 from ..links import (
     link_acl_delete, link_acl_list, link_acl_create, link_acl_permissions
 )
-from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
 
+from .mixins import ACLTestMixin
 
-class ACLsLinksTestCase(GenericDocumentViewTestCase):
+
+class ACLsLinksTestCase(ACLTestMixin, GenericDocumentViewTestCase):
     def setUp(self):
         super(ACLsLinksTestCase, self).setUp()
-        self.login_user()
+        self.test_object = self.test_document
 
     def test_document_acl_create_link(self):
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
+        self.grant_access(
+            obj=self.test_document, permission=permission_acl_edit
         )
-
-        acl.permissions.add(permission_acl_edit.stored_permission)
 
         self.add_test_view(test_object=self.document)
         context = self.get_test_view()
@@ -30,7 +29,7 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
 
         self.assertNotEqual(resolved_link, None)
 
-        content_type = ContentType.objects.get_for_model(self.document)
+        content_type = ContentType.objects.get_for_model(self.test_document)
         kwargs = {
             'app_label': content_type.app_label,
             'model': content_type.model,
@@ -38,63 +37,69 @@ class ACLsLinksTestCase(GenericDocumentViewTestCase):
         }
 
         self.assertEqual(
-            resolved_link.url, reverse('acls:acl_create', kwargs=kwargs)
+            resolved_link.url, reverse(
+                viewname=link_acl_create.view, kwargs=kwargs
+            )
         )
 
     def test_document_acl_delete_link(self):
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
+        self._create_test_acl()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_acl_edit
         )
 
-        acl.permissions.add(permission_acl_edit.stored_permission)
-
-        self.add_test_view(test_object=acl)
+        self.add_test_view(test_object=self.test_acl)
         context = self.get_test_view()
         resolved_link = link_acl_delete.resolve(context=context)
 
         self.assertNotEqual(resolved_link, None)
 
         self.assertEqual(
-            resolved_link.url, reverse('acls:acl_delete', args=(acl.pk,))
+            resolved_link.url, reverse(
+                viewname=link_acl_delete.view, args=(self.test_acl.pk,)
+            )
         )
 
     def test_document_acl_edit_link(self):
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
+        self._create_test_acl()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_acl_edit
         )
 
-        acl.permissions.add(permission_acl_edit.stored_permission)
-
-        self.add_test_view(test_object=acl)
+        self.add_test_view(test_object=self.test_acl)
         context = self.get_test_view()
         resolved_link = link_acl_permissions.resolve(context=context)
 
         self.assertNotEqual(resolved_link, None)
 
         self.assertEqual(
-            resolved_link.url, reverse('acls:acl_permissions', args=(acl.pk,))
+            resolved_link.url, reverse(
+                viewname=link_acl_permissions.view,
+                args=(self.test_acl.pk,)
+            )
         )
 
     def test_document_acl_list_link(self):
-        acl = AccessControlList.objects.create(
-            content_object=self.document, role=self.role
+        self.grant_access(
+            obj=self.test_document, permission=permission_acl_view
         )
 
-        acl.permissions.add(permission_acl_view.stored_permission)
-
-        self.add_test_view(test_object=self.document)
+        self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
         resolved_link = link_acl_list.resolve(context=context)
-
         self.assertNotEqual(resolved_link, None)
 
-        content_type = ContentType.objects.get_for_model(self.document)
+        content_type = ContentType.objects.get_for_model(self.test_document)
         kwargs = {
             'app_label': content_type.app_label,
             'model': content_type.model,
-            'object_id': self.document.pk
+            'object_id': self.test_document.pk
         }
 
         self.assertEqual(
-            resolved_link.url, reverse('acls:acl_list', kwargs=kwargs)
+            resolved_link.url, reverse(
+                viewname=link_acl_list.view, kwargs=kwargs
+            )
         )

@@ -11,14 +11,10 @@ from .mixins import DocumentCheckoutTestMixin
 
 
 class CheckoutLinksTestCase(DocumentCheckoutTestMixin, GenericDocumentViewTestCase):
-    def setUp(self):
-        super(CheckoutLinksTestCase, self).setUp()
-        self.login_user()
-
     def _resolve_checkout_link(self):
-        self.add_test_view(test_object=self.document)
+        self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
-        context['user'] = self.user
+        context['user'] = self._test_case_user
         return link_check_out_document.resolve(context=context)
 
     def test_checkout_link_no_access(self):
@@ -27,15 +23,15 @@ class CheckoutLinksTestCase(DocumentCheckoutTestMixin, GenericDocumentViewTestCa
 
     def test_checkout_link_with_access(self):
         self.grant_access(
-            obj=self.document, permission=permission_document_check_out
+            obj=self.test_document, permission=permission_document_check_out
         )
         resolved_link = self._resolve_checkout_link()
         self.assertNotEqual(resolved_link, None)
 
     def _resolve_checkout_info_link(self):
-        self.add_test_view(test_object=self.document)
+        self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
-        context['user'] = self.user
+        context['user'] = self._test_case_user
         return link_check_out_info.resolve(context=context)
 
     def test_checkout_info_link_no_access(self):
@@ -44,7 +40,8 @@ class CheckoutLinksTestCase(DocumentCheckoutTestMixin, GenericDocumentViewTestCa
 
     def test_checkout_info_link_with_access(self):
         self.grant_access(
-            obj=self.document, permission=permission_document_check_out_detail_view
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
         )
         resolved_link = self._resolve_checkout_info_link()
         self.assertNotEqual(resolved_link, None)

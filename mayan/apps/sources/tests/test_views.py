@@ -3,16 +3,14 @@ from __future__ import unicode_literals
 import os
 import shutil
 
-from django.test import override_settings
-
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.tests import GenericViewTestCase
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests import (
     GenericDocumentViewTestCase, TEST_COMPRESSED_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE_LABEL,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_CHECKSUM,
+    TEST_SMALL_DOCUMENT_PATH,
 )
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
@@ -30,6 +28,8 @@ from .literals import (
 
 
 class DocumentUploadTestCase(GenericDocumentViewTestCase):
+    auto_upload_document = False
+
     def setUp(self):
         super(DocumentUploadTestCase, self).setUp()
         self.source = WebFormSource.objects.create(
@@ -37,17 +37,15 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
-        self.document.delete()
-        self.login_user()
-
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
         with open(document_path, mode='rb') as file_object:
             return self.post(
-                viewname='sources:upload_interactive', args=(self.source.pk,),
-                data={
+                viewname='sources:upload_interactive', kwargs={
+                    'source_id': self.source.pk
+                }, data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
-                }, follow=True
+                }
             )
 
     def test_upload_compressed_file(self):
@@ -57,9 +55,12 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.grant_access(
             obj=self.document_type, permission=permission_document_create
         )
-        self._request_upload_wizard_view(
+
+        response = self._request_upload_wizard_view(
             document_path=TEST_COMPRESSED_DOCUMENT_PATH
         )
+        self.assertEqual(response.status_code, 302)
+
         self.assertEqual(Document.objects.count(), 2)
         self.assertTrue(
             'first document.pdf' in Document.objects.values_list(
@@ -75,14 +76,15 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
     def test_upload_wizard_without_permission(self):
         response = self._request_upload_wizard_view()
         self.assertEqual(response.status_code, 403)
+
         self.assertEqual(Document.objects.count(), 0)
 
     def test_upload_wizard_with_permission(self):
         self.grant_permission(permission=permission_document_create)
 
         response = self._request_upload_wizard_view()
+        self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().checksum, TEST_SMALL_DOCUMENT_CHECKSUM
@@ -101,14 +103,15 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
-                viewname='sources:upload_interactive', args=(self.source.pk,),
-                data={
+                viewname='sources:upload_interactive', kwargs={
+                    'source_id': self.source.pk
+                }, data={
                     'source-file': file_object,
                     'document_type_id': self.document_type.pk,
-                }, follow=True
+                }
             )
+        self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(b'queued' in response.content)
         self.assertEqual(Document.objects.count(), 1)
 
     def _request_upload_interactive_view(self):
@@ -132,25 +135,18 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         )
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentUploadIssueTestCase(GenericViewTestCase):
-    def setUp(self):
-        super(DocumentUploadIssueTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentUploadIssueTestCase, self).tearDown()
+class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
+    auto_upload_document = False
+    auto_login_superuser = True
+    auto_login_user = False
+    create_test_case_superuser = True
+    create_test_case_user = False
 
     def test_issue_25(self):
-        self.login_admin_user()
-
         # Create new webform source
         self.post(
             viewname='sources:setup_source_create',
-            args=(SOURCE_CHOICE_WEB_FORM,),
+            kwargs={'source_type': SOURCE_CHOICE_WEB_FORM},
             data={'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
         self.assertEqual(WebFormSource.objects.count(), 1)
@@ -161,7 +157,7 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
                 viewname='sources:upload_interactive', data={
                     'document-language': 'eng',
                     'source-file': file_descriptor,
-                    'document_type_id': self.document_type.pk
+                    'document_type_id': self.test_document_type.pk
                 }
             )
         self.assertEqual(Document.objects.count(), 1)
@@ -189,6 +185,11 @@ class DocumentUploadIssueTestCase(GenericViewTestCase):
 
 
 class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
+    auto_login_superuser = True
+    auto_login_user = False
+    create_test_case_superuser = True
+    create_test_case_user = False
+
     def test_new_version_block(self):
         """
         Gitlab issue #231
@@ -199,9 +200,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
             - Link to upload version view should not resolve
             - Upload version view should reject request
         """
-        self.login_admin_user()
-
-        NewVersionBlock.objects.block(self.document)
+        NewVersionBlock.objects.block(self.test_document)
 
         response = self.post(
             viewname='sources:upload_version', args=(self.document.pk,),
@@ -232,7 +231,6 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
 
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
-        self.login_user()
 
     def tearDown(self):
         fs_cleanup(self.temporary_directory)
@@ -285,10 +283,6 @@ class StagingFolderViewTestCase(GenericViewTestCase):
 
 
 class SourcesTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(SourcesTestCase, self).setUp()
-        self.login_user()
-
     def _create_web_source(self):
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
@@ -344,8 +338,8 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
     def _request_setup_source_delete_view(self):
         return self.post(
-            args=(self.source.pk,),
-            viewname='sources:setup_source_delete'
+            viewname='sources:setup_source_delete',
+            kwargs={'pk': self.source.pk}
         )
 
     def test_source_delete_view_with_permission(self):
@@ -356,6 +350,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         response = self._request_setup_source_delete_view()
         self.assertEqual(response.status_code, 302)
+
         self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_delete_view_no_permission(self):
@@ -365,4 +360,5 @@ class SourcesTestCase(GenericDocumentViewTestCase):
 
         response = self._request_setup_source_delete_view()
         self.assertEqual(response.status_code, 403)
+
         self.assertEqual(WebFormSource.objects.count(), 1)

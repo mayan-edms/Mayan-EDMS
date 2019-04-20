@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from rest_framework import status
 
 from mayan.apps.rest_api.tests import BaseAPITestCase
@@ -17,12 +15,7 @@ from .literals import (
 )
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class MOTDAPITestCase(BaseAPITestCase):
-    def setUp(self):
-        super(MOTDAPITestCase, self).setUp()
-        self.login_user()
-
     def _create_message(self):
         return Message.objects.create(
             label=TEST_LABEL, message=TEST_MESSAGE

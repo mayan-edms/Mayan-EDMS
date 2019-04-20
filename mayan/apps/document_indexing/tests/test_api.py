@@ -18,10 +18,6 @@ from .mixins import DocumentIndexingTestMixin
 class DocumentIndexingAPITestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
-    def setUp(self):
-        super(DocumentIndexingAPITestCase, self).setUp()
-        self.login_user()
-
     def _request_index_create_api_view(self):
         return self.post(
             viewname='rest_api:index-list', data={
@@ -53,39 +49,39 @@ class DocumentIndexingAPITestCase(DocumentIndexingTestMixin, DocumentTestMixin, 
     def _request_index_delete_api_view(self):
         return self.delete(
             viewname='rest_api:index-detail', kwargs={
-                'pk': self.index.pk
+                'pk': self.test_index.pk
             }
         )
 
     def test_index_delete_api_view_no_permission(self):
-        self._create_index()
+        self._create_test_index()
 
         response = self._request_index_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertTrue(self.index in Index.objects.all())
+        self.assertTrue(self.test_index in Index.objects.all())
 
     def test_index_delete_api_view_with_access(self):
-        self._create_index()
+        self._create_test_index()
 
         self.grant_access(
-            obj=self.index, permission=permission_document_indexing_delete
+            obj=self.test_index, permission=permission_document_indexing_delete
         )
 
         response = self._request_index_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertTrue(self.index not in Index.objects.all())
+        self.assertTrue(self.test_index not in Index.objects.all())
 
     def _request_index_detail_api_view(self):
         return self.get(
             viewname='rest_api:index-detail', kwargs={
-                'pk': self.index.pk
+                'pk': self.test_index.pk
             }
         )
 
     def test_index_detail_api_view_no_access(self):
-        self._create_index()
+        self._create_test_index()
 
         response = self._request_index_detail_api_view()
 
@@ -93,15 +89,15 @@ class DocumentIndexingAPITestCase(DocumentIndexingTestMixin, DocumentTestMixin, 
         self.assertTrue('id' not in response.data)
 
     def test_index_detail_api_view_with_access(self):
-        self._create_index()
+        self._create_test_index()
 
         self.grant_access(
-            obj=self.index, permission=permission_document_indexing_view
+            obj=self.test_index, permission=permission_document_indexing_view
         )
 
         response = self._request_index_detail_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['id'], self.index.pk
+            response.data['id'], self.test_index.pk
         )

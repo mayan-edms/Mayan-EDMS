@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Group
-
 from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.user_management.permissions import permission_group_edit
-from mayan.apps.user_management.tests.literals import TEST_GROUP_2_NAME
+from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..models import Role
 from ..permissions import (
@@ -12,161 +10,128 @@ from ..permissions import (
     permission_role_view,
 )
 
-from .literals import TEST_ROLE_2_LABEL, TEST_ROLE_LABEL_EDITED
+from .mixins import GroupRoleViewTestMixin, RoleTestMixin, RoleViewTestMixin
 
 
-class PermissionsViewsTestCase(GenericViewTestCase):
-    def setUp(self):
-        super(PermissionsViewsTestCase, self).setUp()
-        self.login_user()
-
-    def _request_create_role_view(self):
-        return self.post(
-            viewname='permissions:role_create', data={
-                'label': TEST_ROLE_2_LABEL,
-            }
-        )
-
+class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
     def test_role_creation_view_no_permission(self):
-        response = self._request_create_role_view()
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_create_view()
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(Role.objects.count(), 1)
-        self.assertFalse(
-            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
-        )
+
+        self.assertEqual(Role.objects.count(), role_count)
 
     def test_role_creation_view_with_permission(self):
         self.grant_permission(permission=permission_role_create)
-        response = self._request_create_role_view()
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_create_view()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Role.objects.count(), 2)
-        self.assertTrue(
-            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
-        )
 
-    def _request_role_delete_view(self):
-        return self.post(
-            viewname='permissions:role_delete', args=(self.role_2.pk,),
-        )
-
-    def _create_role(self):
-        self.role_2 = Role.objects.create(label=TEST_ROLE_2_LABEL)
+        self.assertEqual(Role.objects.count(), role_count + 1)
 
     def test_role_delete_view_no_access(self):
-        self._create_role()
-        response = self._request_role_delete_view()
+        self._create_test_role()
+
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_delete_view()
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(Role.objects.count(), 2)
-        self.assertTrue(
-            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
-        )
+
+        self.assertEqual(Role.objects.count(), role_count)
 
     def test_role_delete_view_with_access(self):
-        self._create_role()
-        self.grant_access(permission=permission_role_delete, obj=self.role_2)
-        response = self._request_role_delete_view()
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(Role.objects.count(), 1)
-        self.assertFalse(
-            TEST_ROLE_2_LABEL in Role.objects.values_list('label', flat=True)
-        )
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_delete)
 
-    def _request_role_edit_view(self):
-        return self.post(
-            viewname='permissions:role_edit', args=(self.role_2.pk,), data={
-                'label': TEST_ROLE_LABEL_EDITED,
-            }
-        )
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Role.objects.count(), role_count - 1)
 
     def test_role_edit_view_no_access(self):
-        self._create_role()
-        response = self._request_role_edit_view()
+        self._create_test_role()
+        role_label = self.test_role.label
+
+        response = self._request_test_role_edit_view()
 
         self.assertEqual(response.status_code, 403)
 
-        self.role_2.refresh_from_db()
-        self.assertEqual(Role.objects.count(), 2)
-        self.assertEqual(self.role_2.label, TEST_ROLE_2_LABEL)
+        self.test_role.refresh_from_db()
+        self.assertEqual(self.test_role.label, role_label)
 
     def test_role_edit_view_with_access(self):
-        self._create_role()
-        self.grant_access(permission=permission_role_edit, obj=self.role_2)
-        response = self._request_role_edit_view()
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
 
+        role_label = self.test_role.label
+
+        response = self._request_test_role_edit_view()
         self.assertEqual(response.status_code, 302)
-        self.role_2.refresh_from_db()
 
-        self.assertEqual(Role.objects.count(), 2)
-        self.assertEqual(self.role_2.label, TEST_ROLE_LABEL_EDITED)
-
-    def _request_role_list_view(self):
-        return self.get(viewname='permissions:role_list')
+        self.test_role.refresh_from_db()
+        self.assertNotEqual(self.test_role.label, role_label)
 
     def test_role_list_view_no_access(self):
-        self._create_role()
-        response = self._request_role_list_view()
+        self._create_test_role()
+
+        response = self._request_test_role_list_view()
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(
-            response=response, text=TEST_ROLE_2_LABEL, status_code=200
+            response=response, text=self.test_role.label, status_code=200
         )
 
     def test_role_list_view_with_access(self):
-        self._create_role()
-        self.grant_access(permission=permission_role_view, obj=self.role_2)
-        response = self._request_role_list_view()
-        self.assertContains(
-            response=response, text=TEST_ROLE_2_LABEL, status_code=200
-        )
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_view)
 
-    def _request_role_permissions_view(self):
-        return self.get(
-            viewname='permissions:role_permissions', args=(self.role_2.pk,)
+        response = self._request_test_role_list_view()
+        self.assertContains(
+            response=response, text=self.test_role.label, status_code=200
         )
 
     def test_role_permissions_view_no_access(self):
-        self._create_role()
-        response = self._request_role_permissions_view()
+        self._create_test_role()
+
+        response = self._request_test_role_permissions_view()
         self.assertEqual(response.status_code, 403)
 
     def test_role_permissions_view_with_access(self):
-        self._create_role()
+        self._create_test_role()
         self.grant_access(
-            permission=permission_role_edit, obj=self.role_2
+            obj=self.test_role, permission=permission_role_edit
         )
-        response = self._request_role_permissions_view()
+
+        response = self._request_test_role_permissions_view()
         self.assertEqual(response.status_code, 200)
 
-    def _request_role_groups_view(self):
-        return self.get(
-            viewname='permissions:role_groups', args=(self.role_2.pk,)
-        )
-
     def test_role_groups_view_no_access(self):
-        self._create_role()
-        response = self._request_role_groups_view()
+        self._create_test_role()
+
+        response = self._request_test_role_groups_view()
         self.assertEqual(response.status_code, 403)
 
     def test_role_groups_view_with_access(self):
-        self._create_role()
-        self.grant_access(permission=permission_role_edit, obj=self.role_2)
-        response = self._request_role_groups_view()
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+
+        response = self._request_test_role_groups_view()
         self.assertEqual(response.status_code, 200)
 
-    def _create_group(self):
-        self.group_2 = Group.objects.create(name=TEST_GROUP_2_NAME)
 
-    def _request_group_roles_view(self):
-        return self.get(
-            viewname='permissions:group_roles', args=(self.group_2.pk,)
-        )
-
+class GroupRoleViewTestCase(GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixin, GenericViewTestCase):
     def test_group_roles_view_no_access(self):
-        self._create_group()
-        response = self._request_group_roles_view()
+        self._create_test_group()
+
+        response = self._request_test_group_roles_view()
         self.assertEqual(response.status_code, 403)
 
     def test_group_roles_view_with_access(self):
-        self._create_group()
-        self.grant_access(permission=permission_group_edit, obj=self.group_2)
-        response = self._request_group_roles_view()
+        self._create_test_group()
+        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+
+        response = self._request_test_group_roles_view()
         self.assertEqual(response.status_code, 200)

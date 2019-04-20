@@ -14,417 +14,336 @@ from ..permissions import (
     permission_user_edit, permission_user_view
 )
 
-from .literals import (
-    TEST_GROUP_2_NAME, TEST_GROUP_2_NAME_EDITED, TEST_USER_2_EMAIL,
-    TEST_USER_2_PASSWORD, TEST_USER_2_USERNAME, TEST_USER_2_USERNAME_EDITED,
-    TEST_USER_2_PASSWORD_EDITED
+from .mixins import (
+    GroupAPITestMixin, GroupTestMixin, UserAPITestMixin, UserTestMixin
 )
-from .mixins import UserTestMixin
 
 
-class UserManagementUserAPITestCase(UserTestMixin, BaseAPITestCase):
-    def setUp(self):
-        super(UserManagementUserAPITestCase, self).setUp()
-        self.login_user()
+class GroupAPITestCase(GroupAPITestMixin, GroupTestMixin, BaseAPITestCase):
+    def test_group_create_no_permission(self):
+        group_count = Group.objects.count()
 
-    # User create
-    def _request_user_create(self):
-        return self.post(
-            viewname='rest_api:user-list', data={
-                'email': TEST_USER_2_EMAIL, 'password': TEST_USER_2_PASSWORD,
-                'username': TEST_USER_2_USERNAME,
-            }
-        )
-
-    def test_user_create_no_permission(self):
-        response = self._request_user_create()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        # Default two users, the test admin and the test user
-        self.assertEqual(get_user_model().objects.count(), 2)
-
-    def test_user_create_with_permission(self):
-        self.grant_permission(permission=permission_user_create)
-        response = self._request_user_create()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        user = get_user_model().objects.get(pk=response.data['id'])
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-        self.assertEqual(get_user_model().objects.count(), 3)
-
-    def _request_create_user_with_extra_data(self):
-        return self.post(
-            viewname='rest_api:user-list', data={
-                'email': TEST_USER_2_EMAIL, 'password': TEST_USER_2_PASSWORD,
-                'username': TEST_USER_2_USERNAME,
-                'groups_pk_list': self.groups_pk_list
-            }
-        )
-
-    def test_user_create_with_group_no_permission(self):
-        group_1 = Group.objects.create(name=TEST_GROUP_2_NAME)
-        self.groups_pk_list = '{}'.format(group_1.pk)
-
-        response = self._request_create_user_with_extra_data()
+        response = self._request_test_group_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_user_create_with_group_with_permission(self):
-        group_1 = Group.objects.create(name=TEST_GROUP_2_NAME)
-        self.groups_pk_list = '{}'.format(group_1.pk)
+        self.assertEqual(Group.objects.count(), group_count)
 
-        self.grant_permission(permission=permission_user_create)
-        response = self._request_create_user_with_extra_data()
+    def test_group_create_with_permission(self):
+        self.grant_permission(permission=permission_group_create)
 
+        group_count = Group.objects.count()
+
+        response = self._request_test_group_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        user = get_user_model().objects.get(pk=response.data['id'])
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-        self.assertQuerysetEqual(user.groups.all(), (repr(group_1),))
+        self.assertEqual(Group.objects.count(), group_count + 1)
 
-    def test_user_create_with_groups_no_permission(self):
-        group_1 = Group.objects.create(name='test group 1')
-        group_2 = Group.objects.create(name='test group 2')
-        self.groups_pk_list = '{},{}'.format(group_1.pk, group_2.pk)
-        response = self._request_create_user_with_extra_data()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    def test_group_delete_no_access(self):
+        self._create_test_group()
+        group_count = Group.objects.count()
 
-    def test_user_create_with_groups_with_permission(self):
-        group_1 = Group.objects.create(name='test group 1')
-        group_2 = Group.objects.create(name='test group 2')
-        self.groups_pk_list = '{},{}'.format(group_1.pk, group_2.pk)
-        self.grant_permission(permission=permission_user_create)
-        response = self._request_create_user_with_extra_data()
-
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-        user = get_user_model().objects.get(pk=response.data['id'])
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-        self.assertQuerysetEqual(
-            user.groups.all().order_by('name'), (repr(group_1), repr(group_2))
-        )
-
-    # User login
-
-    def test_user_create_login(self):
-        self._create_user()
-
-        self.assertTrue(
-            self.login(
-                username=TEST_USER_2_USERNAME, password=TEST_USER_2_PASSWORD
-            )
-        )
-
-    # User password change
-
-    def test_user_create_login_password_change_no_access(self):
-        user = self._create_user()
-
-        self.patch(
-            viewname='rest_api:user-detail', args=(user.pk,), data={
-                'password': TEST_USER_2_PASSWORD_EDITED,
-            }
-        )
-
-        self.assertFalse(
-            self.client.login(
-                username=TEST_USER_2_USERNAME, password=TEST_USER_2_PASSWORD_EDITED
-            )
-        )
-
-    def test_user_create_login_password_change_with_access(self):
-        user = self._create_user()
-
-        self.grant_access(permission=permission_user_edit, obj=user)
-        self.patch(
-            viewname='rest_api:user-detail', args=(user.pk,), data={
-                'password': TEST_USER_2_PASSWORD_EDITED,
-            }
-        )
-
-        self.assertTrue(
-            self.client.login(
-                username=TEST_USER_2_USERNAME, password=TEST_USER_2_PASSWORD_EDITED
-            )
-        )
-
-    # User edit
-
-    def _request_user_edit_via_put(self, user):
-        return self.put(
-            viewname='rest_api:user-detail', args=(user.pk,),
-            data={'username': TEST_USER_2_USERNAME_EDITED}
-        )
-
-    def test_user_edit_via_put_no_access(self):
-        user = self._create_user()
-        response = self._request_user_edit_via_put(user=user)
+        response = self._request_test_group_delete_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
+        self.assertEqual(Group.objects.count(), group_count)
 
-    def test_user_edit_via_put_with_access(self):
-        user = self._create_user()
-        self.grant_access(permission=permission_user_edit, obj=user)
-        response = self._request_user_edit_via_put(user=user)
+    def test_group_delete_with_access(self):
+        self._create_test_group()
+        self.grant_access(obj=self.test_group, permission=permission_group_delete)
+        group_count = Group.objects.count()
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME_EDITED)
-
-    def _request_user_edit_via_patch(self, user):
-        return self.patch(
-            viewname='rest_api:user-detail', args=(user.pk,),
-            data={'username': TEST_USER_2_USERNAME_EDITED}
-        )
-
-    def test_user_edit_via_patch_no_access(self):
-        user = self._create_user()
-        response = self._request_user_edit_via_patch(user=user)
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-
-    def test_user_edit_via_patch_with_access(self):
-        user = self._create_user()
-        self.grant_access(permission=permission_user_edit, obj=user)
-        response = self._request_user_edit_via_patch(user=user)
-
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME_EDITED)
-
-    def _request_user_edit_via_patch_with_extra_data(self, user, group):
-        return self.patch(
-            viewname='rest_api:user-detail', args=(user.pk,),
-            data={'groups_pk_list': '{}'.format(group.pk)}
-        )
-
-    def test_user_edit_add_groups_via_patch_no_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-
-        response = self._request_user_edit_via_patch_with_extra_data(
-            user=user, group=group
-        )
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-
-        self.assertQuerysetEqual(
-            user.groups.all(), ()
-        )
-
-    def test_user_edit_add_groups_via_patch_with_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        self.grant_access(permission=permission_user_edit, obj=user)
-        response = self._request_user_edit_via_patch_with_extra_data(
-            user=user, group=group
-        )
-
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        user.refresh_from_db()
-        self.assertEqual(user.username, TEST_USER_2_USERNAME)
-
-        self.assertQuerysetEqual(
-            user.groups.all(), (repr(group),)
-        )
-
-    # User delete
-
-    def _request_user_delete(self, user):
-        return self.delete(
-            viewname='rest_api:user-detail', args=(user.pk,)
-        )
-
-    def test_user_delete_no_access(self):
-        user = self._create_user()
-        response = self._request_user_delete(user=user)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-        self.assertTrue(get_user_model().objects.filter(pk=user.pk).exists())
-
-    def test_user_delete_with_access(self):
-        user = self._create_user()
-        self.grant_access(permission=permission_user_delete, obj=user)
-        response = self._request_user_delete(user=user)
+        response = self._request_test_group_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertFalse(get_user_model().objects.filter(pk=user.pk).exists())
+        self.assertEqual(Group.objects.count(), group_count - 1)
 
-    # User view
+    def test_group_edit_via_patch_no_access(self):
+        self._create_test_group()
 
-    def _request_user_group_view(self, user):
-        return self.get(
-            viewname='rest_api:users-group-list', args=(user.pk,)
-        )
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.name, group_name)
+
+    def test_group_edit_via_patch_with_access(self):
+        self._create_test_group()
+
+        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_group.refresh_from_db()
+        self.assertNotEqual(self.test_group.name, group_name)
+
+    def test_group_edit_via_put_no_access(self):
+        self._create_test_group()
+
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.name, group_name)
+
+    def test_group_edit_via_put_with_access(self):
+        self._create_test_group()
+
+        self.grant_access(obj=self.test_group, permission=permission_group_edit)
+
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_group.refresh_from_db()
+        self.assertNotEqual(self.test_group.name, group_name)
+
+
+class UserAPITestCase(UserAPITestMixin, UserTestMixin, BaseAPITestCase):
+    def test_user_create_api_view_no_permission(self):
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
+
+    def test_user_create_api_view_with_permission(self):
+        self.grant_permission(permission=permission_user_create)
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.assertEqual(get_user_model().objects.count(), user_count + 1)
+
+    def test_user_delete_no_access(self):
+        self._create_test_user()
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
+
+    def test_user_delete_with_access(self):
+        self._create_test_user()
+        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(get_user_model().objects.count(), user_count - 1)
+
+    def test_user_edit_patch_api_view_no_access(self):
+        self._create_test_user()
+
+        user_username = self.test_user.username
+
+        response = self._request_test_user_edit_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.username, user_username)
+
+    def test_user_edit_patch_api_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        user_username = self.test_user.username
+        response = self._request_test_user_edit_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.username, user_username)
+
+    def test_user_edit_put_api_view_no_access(self):
+        self._create_test_user()
+
+        user_username = self.test_user.username
+
+        response = self._request_test_user_edit_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.username, user_username)
+
+    def test_user_edit_put_api_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        user_username = self.test_user.username
+        response = self._request_test_user_edit_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.username, user_username)
+
+
+class UserGroupAPITestCase(GroupTestMixin, UserAPITestMixin, UserTestMixin, BaseAPITestCase):
+    def test_user_create_with_group_api_view_no_permission(self):
+        self._create_test_group()
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_create_api_view_extra_data()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
+
+    def test_user_create_with_group_api_view_with_permission(self):
+        self._create_test_group()
+        self.grant_permission(permission=permission_user_create)
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_create_api_view_extra_data()
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.assertEqual(get_user_model().objects.count(), user_count + 1)
+
+        self.test_user.refresh_from_db()
+        self.assertTrue(self.test_group in self.test_user.groups.all())
+
+    def test_user_group_add_api_view_no_permission(self):
+        self._create_test_user()
+        self._create_test_group()
+
+        user_group_count = self.test_user.groups.count()
+
+        response = self._request_test_user_group_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.groups.count(), user_group_count)
+
+    def test_user_group_add_api_view_with_user_access(self):
+        self._create_test_user()
+        self._create_test_group()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        user_group_count = self.test_user.groups.count()
+
+        response = self._request_test_user_group_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.test_user.refresh_from_db()
+
+        self.assertEqual(self.test_user.groups.count(), user_group_count)
+
+    def test_user_group_add_api_view_with_group_access(self):
+        self._create_test_user()
+        self._create_test_group()
+
+        self.grant_access(obj=self.test_group, permission=permission_group_view)
+
+        user_group_count = self.test_user.groups.count()
+
+        response = self._request_test_user_group_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.groups.count(), user_group_count)
+
+    def test_user_group_add_api_view_with_full_access(self):
+        self._create_test_user()
+        self._create_test_group()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+        self.grant_access(obj=self.test_group, permission=permission_group_view)
+
+        user_group_count = self.test_user.groups.count()
+
+        response = self._request_test_user_group_add_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.groups.count(), user_group_count + 1)
+
+    def _create_test_user_with_test_group(self):
+        self._create_test_group()
+        self._create_test_user()
+        self.test_user.groups.add(self.test_group)
 
     def test_user_group_list_no_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        user.groups.add(group)
-        response = self._request_user_group_view(user=user)
+        self._create_test_user_with_test_group()
+
+        response = self._request_test_user_group_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_user_group_list_with_user_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        user.groups.add(group)
-        self.grant_access(permission=permission_user_view, obj=user)
-        response = self._request_user_group_view(user=user)
+        self._create_test_user_with_test_group()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_view)
+        response = self._request_test_user_group_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
     def test_user_group_list_with_group_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        user.groups.add(group)
-        self.grant_access(permission=permission_group_view, obj=group)
-        response = self._request_user_group_view(user=user)
+        self._create_test_user_with_test_group()
+
+        self.grant_access(obj=self.test_group, permission=permission_group_view)
+        response = self._request_test_user_group_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_user_group_list_with_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        user.groups.add(group)
-        self.grant_access(permission=permission_user_view, obj=user)
-        self.grant_access(permission=permission_group_view, obj=group)
-        response = self._request_user_group_view(user=user)
+    def test_user_group_list_with_full_access(self):
+        self._create_test_user_with_test_group()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_view)
+        self.grant_access(obj=self.test_group, permission=permission_group_view)
+        response = self._request_test_user_group_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 1)
 
-    def _request_user_group_add(self, user, group):
-        return self.post(
-            viewname='rest_api:users-group-list', args=(user.pk,), data={
-                'group_pk_list': '{}'.format(group.pk)
-            }
-        )
+    def test_user_login_api_view(self):
+        self._create_test_user()
 
-    def test_user_group_add_no_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        response = self._request_user_group_add(user=user, group=group)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        user.refresh_from_db()
-        self.assertEqual(group.user_set.first(), None)
-
-    def test_user_group_add_with_user_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        self.grant_access(permission=permission_user_edit, obj=user)
-        response = self._request_user_group_add(user=user, group=group)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        # FIXME: Should this endpoint return a 201 or a 200 since
-        # the user is being edited and there is not resource creation
-        # happening.
-        user.refresh_from_db()
-        self.assertEqual(group.user_set.first(), None)
-
-    def test_user_group_add_with_group_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        self.grant_access(permission=permission_group_view, obj=group)
-        response = self._request_user_group_add(user=user, group=group)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        # FIXME: Should this endpoint return a 201 or a 200 since
-        # the user is being edited and there is not resource creation
-        # happening.
-        user.refresh_from_db()
-        self.assertEqual(group.user_set.first(), None)
-
-    def test_user_group_add_with_access(self):
-        group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        user = self._create_user()
-        self.grant_access(permission=permission_user_edit, obj=user)
-        self.grant_access(permission=permission_group_view, obj=group)
-        response = self._request_user_group_add(user=user, group=group)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        # FIXME: Should this endpoint return a 201 or a 200 since
-        # the user is being edited and there is not resource creation
-        # happening.
-        user.refresh_from_db()
-        self.assertEqual(group.user_set.first(), user)
-
-
-class UserManagementGroupAPITestCase(BaseAPITestCase):
-    def setUp(self):
-        super(UserManagementGroupAPITestCase, self).setUp()
-        self.login_user()
-
-    def _request_group_create(self):
-        return self.post(
-            viewname='rest_api:group-list', data={
-                'name': TEST_GROUP_2_NAME
-            }
-        )
-
-    def test_group_create_no_permission(self):
-        response = self._request_group_create()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertFalse(
-            TEST_GROUP_2_NAME in list(Group.objects.values_list('name', flat=True))
-        )
-
-    def test_group_create_with_permission(self):
-        self.grant_permission(permission=permission_group_create)
-        response = self._request_group_create()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(
-            TEST_GROUP_2_NAME in list(Group.objects.values_list('name', flat=True))
+            self.login(
+                username=self.test_user.username,
+                password=self.test_user.cleartext_password
+            )
         )
 
-    def _request_group_edit_via_patch(self):
-        return self.patch(
-            viewname='rest_api:group-detail', args=(self.group.pk,),
-            data={
-                'name': TEST_GROUP_2_NAME_EDITED
-            }
-        )
+    def test_user_create_login_password_change_api_view_no_access(self):
+        self._create_test_user()
 
-    def test_group_edit_via_patch_no_access(self):
-        self.group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        response = self._request_group_edit_via_patch()
+        response = self._request_test_user_password_change_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.group.refresh_from_db()
-        self.assertEqual(self.group.name, TEST_GROUP_2_NAME)
+        self.assertFalse(
+            self.login(
+                username=self.test_user.username,
+                password=self.test_user.cleartext_password
+            )
+        )
 
-    def test_group_edit_via_patch_with_access(self):
-        self.group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        self.grant_access(permission=permission_group_edit, obj=self.group)
-        response = self._request_group_edit_via_patch()
+    def test_user_create_login_password_change_api_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        response = self._request_test_user_password_change_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.group.refresh_from_db()
-        self.assertEqual(self.group.name, TEST_GROUP_2_NAME_EDITED)
-
-    def _request_group_delete(self):
-        return self.delete(
-            viewname='rest_api:group-detail', args=(self.group.pk,)
-        )
-
-    def test_group_delete_no_access(self):
-        self.group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        response = self._request_group_delete()
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(
-            TEST_GROUP_2_NAME in list(Group.objects.values_list('name', flat=True))
-        )
-
-    def test_group_delete_with_access(self):
-        self.group = Group.objects.create(name=TEST_GROUP_2_NAME)
-        self.grant_access(permission=permission_group_delete, obj=self.group)
-        response = self._request_group_delete()
-
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertFalse(
-            TEST_GROUP_2_NAME in list(Group.objects.values_list('name', flat=True))
+            self.login(
+                username=self.test_user.username,
+                password=self.test_user.cleartext_password
+            )
         )

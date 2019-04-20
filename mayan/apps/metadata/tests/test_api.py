@@ -1,14 +1,11 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
 from rest_framework import status
 
-from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_type_view
 )
-from mayan.apps.documents.tests import TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests import DocumentTestMixin
 from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import DocumentTypeMetadataType, MetadataType
@@ -27,10 +24,6 @@ from .literals import (
 
 
 class MetadataTypeAPITestCase(BaseAPITestCase):
-    def setUp(self):
-        super(MetadataTypeAPITestCase, self).setUp()
-        self.login_user()
-
     def _create_metadata_type(self):
         self.metadata_type = MetadataType.objects.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
@@ -188,32 +181,24 @@ class MetadataTypeAPITestCase(BaseAPITestCase):
         )
 
 
-class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
+class DocumentTypeMetadataTypeAPITestCase(DocumentTestMixin, BaseAPITestCase):
+    auto_upload_document = False
+
     def setUp(self):
         super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
-        self.login_user()
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
         self.metadata_type = MetadataType.objects.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
 
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentTypeMetadataTypeAPITestCase, self).tearDown()
-
     def _create_document_type_metadata_type(self):
-        self.document_type_metadata_type = self.document_type.metadata.create(
+        self.test_document_type_metadata_type = self.test_document_type.metadata.create(
             metadata_type=self.metadata_type, required=False
         )
 
     def _request_document_type_metadata_type_create_view(self):
         return self.post(
             viewname='rest_api:documenttypemetadatatype-list',
-            args=(self.document_type.pk,), data={
+            args=(self.test_document_type.pk,), data={
                 'metadata_type_pk': self.metadata_type.pk, 'required': False
             }
         )
@@ -221,11 +206,11 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
     def test_document_type_metadata_type_create_view_no_access(self):
         response = self._request_document_type_metadata_type_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(self.document_type.metadata.count(), 0)
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
 
     def test_document_type_metadata_type_create_view_with_access(self):
         self.grant_access(
-            permission=permission_document_type_edit, obj=self.document_type
+            permission=permission_document_type_edit, obj=self.test_document_type
         )
         response = self._request_document_type_metadata_type_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -244,7 +229,7 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         return self.delete(
             viewname='rest_api:documenttypemetadatatype-detail',
             args=(
-                self.document_type.pk, self.document_type_metadata_type.pk,
+                self.test_document_type.pk, self.test_document_type_metadata_type.pk,
             ),
         )
 
@@ -252,20 +237,20 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         self._create_document_type_metadata_type()
         response = self._request_document_type_metadata_type_delete_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(self.document_type.metadata.count(), 1)
+        self.assertEqual(self.test_document_type.metadata.count(), 1)
 
     def test_document_type_metadata_type_delete_view_with_access(self):
         self._create_document_type_metadata_type()
-        self.grant_access(permission=permission_document_type_edit, obj=self.document_type)
+        self.grant_access(permission=permission_document_type_edit, obj=self.test_document_type)
         response = self._request_document_type_metadata_type_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(self.document_type.metadata.all().count(), 0)
+        self.assertEqual(self.test_document_type.metadata.all().count(), 0)
 
     def _request_document_type_metadata_type_list_view(self):
         return self.get(
             viewname='rest_api:documenttypemetadatatype-list',
             args=(
-                self.document_type.pk,
+                self.test_document_type.pk,
             ),
         )
 
@@ -276,20 +261,20 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
 
     def test_document_type_metadata_type_list_view_with_access(self):
         self._create_document_type_metadata_type()
-        self.grant_access(permission=permission_document_type_view, obj=self.document_type)
+        self.grant_access(permission=permission_document_type_view, obj=self.test_document_type)
         response = self._request_document_type_metadata_type_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.document_type_metadata_type.pk
+            self.test_document_type_metadata_type.pk
         )
 
     def _request_document_type_metadata_type_edit_view_via_patch(self):
         return self.patch(
             viewname='rest_api:documenttypemetadatatype-detail',
             args=(
-                self.document_type.pk, self.document_type_metadata_type.pk,
+                self.test_document_type.pk, self.test_document_type_metadata_type.pk,
             ), data={
                 'required': True
             }
@@ -304,7 +289,7 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
 
     def test_document_type_metadata_type_patch_view_with_access(self):
         self._create_document_type_metadata_type()
-        self.grant_access(permission=permission_document_type_edit, obj=self.document_type)
+        self.grant_access(permission=permission_document_type_edit, obj=self.test_document_type)
         response = self._request_document_type_metadata_type_edit_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
@@ -314,7 +299,7 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
         return self.put(
             viewname='rest_api:documenttypemetadatatype-detail',
             args=(
-                self.document_type.pk, self.document_type_metadata_type.pk,
+                self.test_document_type.pk, self.test_document_type_metadata_type.pk,
             ), data={
                 'required': True
             }
@@ -329,49 +314,32 @@ class DocumentTypeMetadataTypeAPITestCase(BaseAPITestCase):
 
     def test_document_type_metadata_type_put_view_with_access(self):
         self._create_document_type_metadata_type()
-        self.grant_access(permission=permission_document_type_edit, obj=self.document_type)
+        self.grant_access(permission=permission_document_type_edit, obj=self.test_document_type)
         response = self._request_document_type_metadata_type_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertEqual(document_type_metadata_type.required, True)
 
 
-class DocumentMetadataAPITestCase(BaseAPITestCase):
-    @override_settings(OCR_AUTO_OCR=False)
+class DocumentMetadataAPITestCase(DocumentTestMixin, BaseAPITestCase):
     def setUp(self):
         super(DocumentMetadataAPITestCase, self).setUp()
-        self.login_user()
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
         self.metadata_type = MetadataType.objects.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
-
-        self.document_type.metadata.create(
+        self.test_document_type.metadata.create(
             metadata_type=self.metadata_type, required=False
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object,
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentMetadataAPITestCase, self).tearDown()
-
     def _create_document_metadata(self):
-        self.document_metadata = self.document.metadata.create(
+        self.test_document_metadata = self.test_document.metadata.create(
             metadata_type=self.metadata_type, value=TEST_METADATA_VALUE
         )
 
     def _request_document_metadata_create_view(self):
         return self.post(
             viewname='rest_api:documentmetadata-list',
-            args=(self.document.pk,), data={
+            args=(self.test_document.pk,), data={
                 'metadata_type_pk': self.metadata_type.pk,
                 'value': TEST_METADATA_VALUE
             }
@@ -380,13 +348,13 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
     def test_document_metadata_create_view_no_access(self):
         response = self._request_document_metadata_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(self.document.metadata.count(), 0)
+        self.assertEqual(self.test_document.metadata.count(), 0)
 
     def test_document_metadata_create_view_with_access(self):
-        self.grant_access(permission=permission_metadata_document_add, obj=self.document)
+        self.grant_access(permission=permission_metadata_document_add, obj=self.test_document)
         response = self._request_document_metadata_create_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        document_metadata = self.document.metadata.first()
+        document_metadata = self.test_document.metadata.first()
         self.assertEqual(response.data['id'], document_metadata.pk)
         self.assertEqual(document_metadata.metadata_type, self.metadata_type)
         self.assertEqual(document_metadata.value, TEST_METADATA_VALUE)
@@ -409,28 +377,28 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
     def _request_document_metadata_delete_view(self):
         return self.delete(
             viewname='rest_api:documentmetadata-detail',
-            args=(self.document.pk, self.document_metadata.pk,)
+            args=(self.test_document.pk, self.test_document_metadata.pk,)
         )
 
     def test_document_metadata_delete_view_no_access(self):
         self._create_document_metadata()
         response = self._request_document_metadata_delete_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(self.document.metadata.all().count(), 1)
+        self.assertEqual(self.test_document.metadata.all().count(), 1)
 
     def test_document_metadata_delete_view_with_access(self):
         self._create_document_metadata()
         self.grant_access(
-            permission=permission_metadata_document_remove, obj=self.document
+            permission=permission_metadata_document_remove, obj=self.test_document
         )
         response = self._request_document_metadata_delete_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(self.document.metadata.all().count(), 0)
+        self.assertEqual(self.test_document.metadata.all().count(), 0)
 
     def _request_document_metadata_list_view(self):
         return self.get(
             viewname='rest_api:documentmetadata-list', args=(
-                self.document.pk,
+                self.test_document.pk,
             )
         )
 
@@ -442,12 +410,12 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
     def test_document_metadata_list_view_with_access(self):
         self._create_document_metadata()
         self.grant_access(
-            permission=permission_metadata_document_view, obj=self.document
+            permission=permission_metadata_document_view, obj=self.test_document
         )
         response = self._request_document_metadata_list_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['document']['id'], self.document.pk
+            response.data['results'][0]['document']['id'], self.test_document.pk
         )
         self.assertEqual(
             response.data['results'][0]['metadata_type']['id'],
@@ -457,13 +425,13 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
             response.data['results'][0]['value'], TEST_METADATA_VALUE
         )
         self.assertEqual(
-            response.data['results'][0]['id'], self.document_metadata.pk
+            response.data['results'][0]['id'], self.test_document_metadata.pk
         )
 
     def _request_document_metadata_edit_view_via_patch(self):
         return self.patch(
             viewname='rest_api:documentmetadata-detail',
-            args=(self.document.pk, self.document_metadata.pk,), data={
+            args=(self.test_document.pk, self.test_document_metadata.pk,), data={
                 'value': TEST_METADATA_VALUE_EDITED
             }
         )
@@ -472,28 +440,28 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self._create_document_metadata()
         response = self._request_document_metadata_edit_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.document_metadata.refresh_from_db()
-        self.assertEqual(self.document_metadata.value, TEST_METADATA_VALUE)
+        self.test_document_metadata.refresh_from_db()
+        self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
     def test_document_metadata_patch_view_with_access(self):
         self._create_document_metadata()
         self.grant_access(
-            permission=permission_metadata_document_edit, obj=self.document
+            permission=permission_metadata_document_edit, obj=self.test_document
         )
         response = self._request_document_metadata_edit_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.document_metadata.refresh_from_db()
+        self.test_document_metadata.refresh_from_db()
         self.assertEqual(
             response.data['value'], TEST_METADATA_VALUE_EDITED
         )
         self.assertEqual(
-            self.document_metadata.value, TEST_METADATA_VALUE_EDITED
+            self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )
 
     def _request_document_metadata_edit_view_via_put(self):
         return self.put(
             viewname='rest_api:documentmetadata-detail',
-            args=(self.document.pk, self.document_metadata.pk,), data={
+            args=(self.test_document.pk, self.test_document_metadata.pk,), data={
                 'value': TEST_METADATA_VALUE_EDITED
             }
         )
@@ -502,20 +470,20 @@ class DocumentMetadataAPITestCase(BaseAPITestCase):
         self._create_document_metadata()
         response = self._request_document_metadata_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.document_metadata.refresh_from_db()
-        self.assertEqual(self.document_metadata.value, TEST_METADATA_VALUE)
+        self.test_document_metadata.refresh_from_db()
+        self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
     def test_document_metadata_put_view_with_access(self):
         self._create_document_metadata()
         self.grant_access(
-            permission=permission_metadata_document_edit, obj=self.document
+            permission=permission_metadata_document_edit, obj=self.test_document
         )
         response = self._request_document_metadata_edit_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.document_metadata.refresh_from_db()
+        self.test_document_metadata.refresh_from_db()
         self.assertEqual(
             response.data['value'], TEST_METADATA_VALUE_EDITED
         )
         self.assertEqual(
-            self.document_metadata.value, TEST_METADATA_VALUE_EDITED
+            self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )

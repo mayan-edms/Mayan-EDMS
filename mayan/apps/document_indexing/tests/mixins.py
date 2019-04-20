@@ -6,9 +6,13 @@ from .literals import TEST_INDEX_LABEL
 
 
 class DocumentIndexingTestMixin(object):
-    def _create_index(self):
+    def _create_test_index(self, rebuild=False):
         # Create empty index
-        self.index = Index.objects.create(label=TEST_INDEX_LABEL)
+        self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
 
         # Add our document type to the new index
-        self.index.document_types.add(self.document_type)
+        self.test_index.document_types.add(self.test_document_type)
+
+        # Rebuild indexes
+        if rebuild:
+            Index.objects.rebuild()

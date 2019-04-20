@@ -7,14 +7,10 @@ from ..links import link_document_create_multiple
 
 
 class SourcesLinksTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(SourcesLinksTestCase, self).setUp()
-        self.login_user()
-
     def _get_document_create_link(self):
-        self.add_test_view(test_object=self.document)
+        self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
-        context['user'] = self.user
+        context['user'] = self._test_case_user
         return link_document_create_multiple.resolve(context=context)
 
     def test_document_create_link_no_access(self):
@@ -23,7 +19,7 @@ class SourcesLinksTestCase(GenericDocumentViewTestCase):
 
     def test_document_create_link_with_access(self):
         self.grant_access(
-            permission=permission_document_create, obj=self.document_type
+            obj=self.test_document_type, permission=permission_document_create
         )
         resolved_link = self._get_document_create_link()
         self.assertNotEqual(resolved_link, None)

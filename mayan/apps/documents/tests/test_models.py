@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
-from django.test import override_settings
-
 from mayan.apps.common.tests import BaseTestCase
 
 from ..literals import STUB_EXPIRATION_INTERVAL
@@ -23,7 +21,6 @@ from .literals import (
 from .mixins import DocumentTestMixin
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class DocumentTestCase(DocumentTestMixin, BaseTestCase):
     def test_natural_keys(self):
         self.document.pages.first().generate_image()
@@ -132,7 +129,6 @@ class DocumentTestCase(DocumentTestMixin, BaseTestCase):
         self.assertEqual(DeletedDocument.objects.count(), 0)
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class PDFCompatibilityTestCase(BaseTestCase):
     def test_indirect_rotate(self):
         self.document_type = DocumentType.objects.create(
@@ -149,7 +145,6 @@ class PDFCompatibilityTestCase(BaseTestCase):
         )
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class OfficeDocumentTestCase(BaseTestCase):
     def setUp(self):
         super(OfficeDocumentTestCase, self).setUp()
@@ -179,7 +174,6 @@ class OfficeDocumentTestCase(BaseTestCase):
         self.assertEqual(self.document.page_count, 2)
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class MultiPageTiffTestCase(BaseTestCase):
     def setUp(self):
         super(MultiPageTiffTestCase, self).setUp()
@@ -241,7 +235,6 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         self.assertEqual(self.document.versions.count(), 1)
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class DocumentManagerTestCase(BaseTestCase):
     def setUp(self):
         super(DocumentManagerTestCase, self).setUp()

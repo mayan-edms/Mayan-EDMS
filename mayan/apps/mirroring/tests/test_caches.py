@@ -24,19 +24,19 @@ class IndexFilesystemCacheTestCase(BaseTestCase):
     def setUp(self):
         super(IndexFilesystemCacheTestCase, self).setUp()
         self.cache = IndexFilesystemCache()
-        self.document = MockDocument()
+        self.test_document = MockDocument()
         self.node = MockNode()
 
     def test_set_path_document(self):
-        self.cache.set_path(path=TEST_PATH, document=self.document)
+        self.cache.set_path(path=TEST_PATH, document=self.test_document)
         self.assertEquals(
             {'document_pk': TEST_DOCUMENT_PK},
             self.cache.get_path(path=TEST_PATH)
         )
 
     def test_set_path_document_clear_document(self):
-        self.cache.set_path(path=TEST_PATH, document=self.document)
-        self.cache.clear_document(document=self.document)
+        self.cache.set_path(path=TEST_PATH, document=self.test_document)
+        self.cache.clear_document(document=self.test_document)
 
         self.assertEquals(None, self.cache.get_path(path=TEST_PATH))
 

@@ -3,10 +3,6 @@ from __future__ import unicode_literals
 from actstream.models import Action
 from django_downloadview import assert_download_response
 
-from mayan.apps.user_management.tests.literals import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME
-)
-
 from ..events import event_document_download, event_document_view
 from ..permissions import (
     permission_document_download, permission_document_view
@@ -22,80 +18,69 @@ TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 
 
 class DocumentEventsTestCase(GenericDocumentViewTestCase):
-    def test_document_download_event_no_permissions(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+    def _request_test_document_download_view(self):
+        return self.get(
+            'documents:document_download', kwargs={'pk': self.test_document.pk}
         )
 
+    def test_document_download_event_no_permissions(self):
         Action.objects.all().delete()
 
-        response = self.get(
-            'documents:document_download', args=(self.document.pk,)
-        )
+        response = self._request_test_document_download_view()
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(list(Action.objects.any(obj=self.document)), [])
+        self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 
     def test_document_download_event_with_permissions(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
-        Action.objects.all().delete()
-
-        self.role.permissions.add(
-            permission_document_download.stored_permission
-        )
-
         self.expected_content_type = 'image/png; charset=utf-8'
 
-        response = self.get(
-            viewname='documents:document_download', args=(self.document.pk,),
+        Action.objects.all().delete()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_download
         )
+
+        response = self._request_test_document_download_view()
 
         # Download the file to close the file descriptor
-        with self.document.open() as file_object:
+        with self.test_document.open() as file_object:
             assert_download_response(
                 self, response, content=file_object.read(),
-                mime_type=self.document.file_mimetype
+                mime_type=self.test_document.file_mimetype
             )
 
-        event = Action.objects.any(obj=self.document).first()
+        event = Action.objects.any(obj=self.test_document).first()
 
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_document_download.id)
-        self.assertEqual(event.target, self.document)
-        self.assertEqual(event.actor, self.user)
+
+    def _request_test_document_preview_view(self):
+        return self.get(
+            viewname='documents:document_preview', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
 
     def test_document_view_event_no_permissions(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
         Action.objects.all().delete()
 
-        response = self.get(
-            viewname='documents:document_preview', args=(self.document.pk,)
-        )
-
+        response = self._request_test_document_preview_view()
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(list(Action.objects.any(obj=self.document)), [])
+
+        self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 
     def test_document_view_event_with_permissions(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
         Action.objects.all().delete()
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-        self.get(
-            viewname='documents:document_preview', args=(self.document.pk,),
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
         )
 
-        event = Action.objects.any(obj=self.document).first()
+        response = self._request_test_document_preview_view()
+        self.assertEqual(response.status_code, 200)
 
+        event = Action.objects.any(obj=self.test_document).first()
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_document_view.id)
-        self.assertEqual(event.target, self.document)
-        self.assertEqual(event.actor, self.user)

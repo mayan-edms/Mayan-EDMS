@@ -29,9 +29,9 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
-        self.document.delete()
+        self.test_document.delete()
 
-        self.document_type.metadata.create(
+        self.test_document_type.metadata.create(
             metadata_type=self.metadata_type, required=True
         )
 
@@ -41,7 +41,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
 
         self.grant_access(
-            permission=permission_document_create, obj=self.document_type
+            permission=permission_document_create, obj=self.test_document_type
         )
 
         # Upload the test document
@@ -49,7 +49,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
             response = self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
-                    'document_type_id': self.document_type.pk,
+                    'document_type_id': self.test_document_type.pk,
                 }
             )
         self.assertEqual(response.status_code, 302)
@@ -65,14 +65,14 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         url.args['metadata0_value'] = TEST_METADATA_VALUE_WITH_AMPERSAND
 
         self.grant_access(
-            permission=permission_document_create, obj=self.document_type
+            permission=permission_document_create, obj=self.test_document_type
         )
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
             response = self.post(
                 path=url, data={
                     'document-language': 'eng', 'source-file': file_descriptor,
-                    'document_type_id': self.document_type.pk,
+                    'document_type_id': self.test_document_type.pk,
                 }
             )
         self.assertEqual(response.status_code, 302)
@@ -84,12 +84,12 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
 
     def test_initial_step_conditions(self):
         self.grant_access(
-            obj=self.document_type, permission=permission_document_create
+            obj=self.test_document_type, permission=permission_document_create
         )
 
         response = self.post(
             viewname='sources:document_create_multiple', data={
-                'document_type_selection-document_type': self.document_type.pk,
+                'document_type_selection-document_type': self.test_document_type.pk,
                 'document_create_wizard-current_step': 0
             }
         )

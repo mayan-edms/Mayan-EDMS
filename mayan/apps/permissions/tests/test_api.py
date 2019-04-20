@@ -1,11 +1,9 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Group
-
 from rest_framework import status
 
 from mayan.apps.rest_api.tests import BaseAPITestCase
-from mayan.apps.user_management.tests.literals import TEST_GROUP_2_NAME
+from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import Permission
 from ..models import Role
@@ -14,234 +12,269 @@ from ..permissions import (
     permission_role_edit, permission_role_view
 )
 
-from .literals import (
-    TEST_ROLE_2_LABEL, TEST_ROLE_LABEL, TEST_ROLE_LABEL_EDITED
+from .mixins import (
+    PermissionAPIViewTestMixin, PermissionTestMixin, RoleAPIViewTestMixin,
+    RoleTestMixin
 )
 
 
-class PermissionAPITestCase(BaseAPITestCase):
+class PermissionAPIViewTestCase(PermissionAPIViewTestMixin, BaseAPITestCase):
     def setUp(self):
-        super(PermissionAPITestCase, self).setUp()
-        self.login_user()
+        super(PermissionAPIViewTestCase, self).setUp()
         Permission.invalidate_cache()
 
-    def test_permissions_list_view(self):
-        response = self.get(viewname='rest_api:permission-list')
+    def test_permissions_list_api_view(self):
+        response = self._request_permissions_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    # Role view
 
-    def test_roles_list_view_no_access(self):
-        response = self.get(viewname='rest_api:role-list')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['count'], 0)
+class RoleAPIViewTestCase(GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMixin, RoleTestMixin, BaseAPITestCase):
+    def test_role_create_api_view_no_permission(self):
+        response = self._request_test_role_create_api_view()
 
-    def test_roles_list_view_with_access(self):
-        self.grant_access(
-            permission=permission_role_view, obj=self.role
-        )
-        response = self.get(viewname='rest_api:role-list')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['count'], 1)
-        self.assertEqual(response.data['results'][0]['label'], self.role.label)
+        role_count = Role.objects.count()
 
-    # Role create
-
-    def _role_create_request(self, extra_data=None):
-        data = {
-            'label': TEST_ROLE_2_LABEL
-        }
-
-        if extra_data:
-            data.update(extra_data)
-
-        return self.post(
-            viewname='rest_api:role-list', data=data
-        )
-
-    def test_role_create_view_no_permission(self):
-        response = self._role_create_request()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(Role.objects.count(), 1)
 
-    def test_role_create_view_with_permission(self):
+        self.assertEqual(Role.objects.count(), role_count)
+
+    def test_role_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_role_create)
-        response = self._role_create_request()
+
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        role = Role.objects.get(label=TEST_ROLE_2_LABEL)
-        self.assertEqual(response.data, {'label': role.label, 'id': role.pk})
-        self.assertEqual(Role.objects.count(), 2)
-        self.assertEqual(role.label, TEST_ROLE_2_LABEL)
+        self.assertEqual(Role.objects.count(), role_count + 1)
 
-    def _create_group(self):
-        self.group_2 = Group.objects.create(name=TEST_GROUP_2_NAME)
+    def _request_role_create_api_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_create_api_view(extra_data=extra_data)
 
-    def _request_role_create_with_extra_data(self):
-        self._create_group()
+    def test_role_create_api_view_extra_data_no_permission(self):
+        self._create_test_group()
+        self._create_test_permission()
 
-        return self._role_create_request(
-            extra_data={
-                'groups_pk_list': '{}'.format(self.group_2.pk),
-                'permissions_pk_list': '{}'.format(permission_role_view.pk)
-            }
-        )
+        role_count = Role.objects.count()
 
-    def test_role_create_complex_view_no_permission(self):
-        response = self._request_role_create_with_extra_data()
-
+        response = self._request_role_create_api_view_extra_data()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(Role.objects.count(), 1)
-        self.assertEqual(
-            list(Role.objects.values_list('label', flat=True)),
-            [TEST_ROLE_LABEL]
-        )
+
+        self.assertEqual(Role.objects.count(), role_count)
 
     def test_role_create_complex_view_with_permission(self):
+        self._create_test_group()
+        self._create_test_permission()
+
         self.grant_permission(permission=permission_role_create)
-        response = self._request_role_create_with_extra_data()
 
+        role_count = Role.objects.count()
+
+        response = self._request_role_create_api_view_extra_data()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Role.objects.count(), 2)
-        role = Role.objects.get(label=TEST_ROLE_2_LABEL)
-        self.assertEqual(role.label, TEST_ROLE_2_LABEL)
-        self.assertQuerysetEqual(
-            role.groups.all(), (repr(self.group_2),)
+
+        self.assertEqual(Role.objects.count(), role_count + 1)
+
+        new_role = Role.objects.get(pk=response.data['id'])
+
+        self.assertTrue(
+            self.test_group in new_role.groups.all()
         )
-        self.assertQuerysetEqual(
-            role.permissions.all(),
-            (repr(permission_role_view.stored_permission),)
-        )
-
-    # Role edit
-
-    def _request_role_edit(self, extra_data=None, request_type='patch'):
-        data = {
-            'label': TEST_ROLE_LABEL_EDITED
-        }
-
-        if extra_data:
-            data.update(extra_data)
-
-        return getattr(self, request_type)(
-            viewname='rest_api:role-detail', args=(self.role.pk,),
-            data=data
-        )
-
-    def test_role_edit_via_patch_no_access(self):
-        response = self._request_role_edit(request_type='patch')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL)
-
-    def test_role_edit_via_patch_with_access(self):
-        self.grant_access(permission=permission_role_edit, obj=self.role)
-        response = self._request_role_edit(request_type='patch')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL_EDITED)
-
-    def _request_role_edit_via_patch_with_extra_data(self):
-        self._create_group()
-        return self._request_role_edit(
-            extra_data={
-                'groups_pk_list': '{}'.format(self.group_2.pk),
-                'permissions_pk_list': '{}'.format(permission_role_view.pk)
-            },
-            request_type='patch'
-        )
-
-    def test_role_edit_complex_via_patch_no_access(self):
-        response = self._request_role_edit_via_patch_with_extra_data()
-
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL)
-
-        self.assertQuerysetEqual(
-            self.role.groups.all(), (repr(self.group),)
-        )
-        self.assertQuerysetEqual(self.role.permissions.all(), ())
-
-    def test_role_edit_complex_via_patch_with_access(self):
-        self.grant_access(permission=permission_role_edit, obj=self.role)
-        response = self._request_role_edit_via_patch_with_extra_data()
-
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL_EDITED)
-        self.assertQuerysetEqual(
-            self.role.groups.all(), (repr(self.group_2),)
-        )
-        self.assertQuerysetEqual(
-            self.role.permissions.all(),
-            (repr(permission_role_view.stored_permission),)
-        )
-
-    def test_role_edit_via_put_no_access(self):
-        response = self._request_role_edit(request_type='put')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL)
-
-    def test_role_edit_via_put_with_access(self):
-        self.grant_access(permission=permission_role_edit, obj=self.role)
-        response = self._request_role_edit(request_type='put')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL_EDITED)
-
-    def _request_role_edit_via_put_with_extra_data(self):
-        self._create_group()
-
-        return self._request_role_edit(
-            extra_data={
-                'groups_pk_list': '{}'.format(self.group_2.pk),
-                'permissions_pk_list': '{}'.format(permission_role_view.pk)
-            }, request_type='put'
-        )
-
-    def test_role_edit_complex_via_put_no_access(self):
-        response = self._request_role_edit_via_put_with_extra_data()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL)
-        self.assertQuerysetEqual(
-            self.role.groups.all(), (repr(self.group),)
-        )
-        self.assertQuerysetEqual(
-            self.role.permissions.all(),
-            ()
-        )
-
-    def test_role_edit_complex_via_put_with_access(self):
-        self.grant_access(permission=permission_role_edit, obj=self.role)
-        response = self._request_role_edit_via_put_with_extra_data()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.role.refresh_from_db()
-        self.assertEqual(self.role.label, TEST_ROLE_LABEL_EDITED)
-        self.assertQuerysetEqual(
-            self.role.groups.all(), (repr(self.group_2),)
-        )
-        self.assertQuerysetEqual(
-            self.role.permissions.all(),
-            (repr(permission_role_view.stored_permission),)
-        )
-
-    # Role delete
-
-    def _request_role_delete_view(self):
-        return self.delete(
-            viewname='rest_api:role-detail', args=(self.role.pk,)
+        self.assertTrue(
+            self.test_permission.stored_permission in new_role.permissions.all()
         )
 
     def test_role_delete_view_no_access(self):
-        response = self._request_role_delete_view()
+        self._create_test_role()
+
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertEqual(Role.objects.count(), 1)
+
+        self.assertEqual(Role.objects.count(), role_count)
 
     def test_role_delete_view_with_access(self):
-        self.grant_access(permission=permission_role_delete, obj=self.role)
-        response = self._request_role_delete_view()
+        self._create_test_role()
+
+        self.grant_access(obj=self.test_role, permission=permission_role_delete)
+
+        role_count = Role.objects.count()
+
+        response = self._request_test_role_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(Role.objects.count(), 0)
+
+        self.assertEqual(Role.objects.count(), role_count - 1)
+
+    def test_role_edit_via_patch_no_access(self):
+        self._create_test_role()
+
+        response = self._request_test_role_edit_api_view(request_type='patch')
+
+        role_label = self.test_role.label
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_role.refresh_from_db()
+        self.assertEqual(self.test_role.label, role_label)
+
+    def test_role_edit_via_patch_with_access(self):
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+
+        role_label = self.test_role.label
+
+        response = self._request_test_role_edit_api_view(request_type='patch')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_role.refresh_from_db()
+        self.assertNotEqual(self.test_role.label, role_label)
+
+    def test_role_edit_via_put_no_access(self):
+        self._create_test_role()
+
+        response = self._request_test_role_edit_api_view(request_type='put')
+
+        role_label = self.test_role.label
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_role.refresh_from_db()
+        self.assertEqual(self.test_role.label, role_label)
+
+    def test_role_edit_via_put_with_access(self):
+        self._create_test_role()
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+
+        role_label = self.test_role.label
+
+        response = self._request_test_role_edit_api_view(request_type='put')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_role.refresh_from_db()
+        self.assertNotEqual(self.test_role.label, role_label)
+
+    def _request_role_edit_api_patch_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_edit_api_view(
+            extra_data=extra_data, request_type='patch'
+        )
+
+    def test_role_edit_api_patch_view_extra_data_no_access(self):
+        self._create_test_group()
+        self._create_test_permission()
+        self._create_test_role()
+
+        role_label = self.test_role.label
+
+        response = self._request_role_edit_api_patch_view_extra_data()
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_role.refresh_from_db()
+        self.assertEqual(self.test_role.label, role_label)
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+        self.assertTrue(
+            self.test_permission.stored_permission not in self.test_role.permissions.all()
+        )
+
+    def test_role_edit_api_patch_view_extra_data_with_access(self):
+        self._create_test_group()
+        self._create_test_permission()
+        self._create_test_role()
+
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+
+        role_label = self.test_role.label
+
+        response = self._request_role_edit_api_patch_view_extra_data()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_role.refresh_from_db()
+        self.assertNotEqual(self.test_role.label, role_label)
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+        self.assertTrue(
+            self.test_permission.stored_permission in self.test_role.permissions.all()
+        )
+
+    def _request_role_edit_api_put_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_edit_api_view(
+            extra_data=extra_data, request_type='put'
+        )
+
+    def test_role_edit_api_put_view_extra_data_no_access(self):
+        self._create_test_group()
+        self._create_test_permission()
+        self._create_test_role()
+
+        role_label = self.test_role.label
+
+        response = self._request_role_edit_api_put_view_extra_data()
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_role.refresh_from_db()
+        self.assertEqual(self.test_role.label, role_label)
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+        self.assertTrue(
+            self.test_permission.stored_permission not in self.test_role.permissions.all()
+        )
+
+    def test_role_edit_api_put_view_extra_data_with_access(self):
+        self._create_test_group()
+        self._create_test_permission()
+        self._create_test_role()
+
+        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+
+        role_label = self.test_role.label
+
+        response = self._request_role_edit_api_put_view_extra_data()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_role.refresh_from_db()
+        self.assertNotEqual(self.test_role.label, role_label)
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+        self.assertTrue(
+            self.test_permission.stored_permission in self.test_role.permissions.all()
+        )
+
+    def test_roles_list_view_no_access(self):
+        self._create_test_role()
+
+        response = self._request_role_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(response.data['count'], 0)
+
+    def test_roles_list_view_with_access(self):
+        self._create_test_role()
+        self.grant_access(
+            obj=self.test_role, permission=permission_role_view
+        )
+
+        response = self._request_role_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 1)
+        self.assertEqual(
+            response.data['results'][0]['label'], self.test_role.label
+        )

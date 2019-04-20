@@ -12,191 +12,350 @@ from mayan.apps.metadata.tests.literals import (
 )
 
 from ..permissions import (
-    permission_user_create, permission_user_delete, permission_user_edit
+    permission_group_create, permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_create, permission_user_delete,
+    permission_user_edit, permission_user_view
 )
 
-from .literals import (
-    TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME, TEST_USER_2_USERNAME
+from .literals import TEST_USER_PASSWORD_EDITED
+from .mixins import (
+    GroupTestMixin, GroupViewTestMixin, UserTestMixin, UserViewTestMixin
 )
-from .mixins import UserTestMixin
-
-TEST_USER_TO_DELETE_USERNAME = 'user_to_delete'
 
 
-class UserManagementViewTestCase(UserTestMixin, GenericViewTestCase):
-    def setUp(self):
-        super(UserManagementViewTestCase, self).setUp()
-        self.login_user()
+class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, GenericViewTestCase):
+    def test_group_create_view_no_permission(self):
+        group_count = Group.objects.count()
 
-    def _request_user_create_view(self):
-        return self.post(
-            viewname='user_management:user_create', data={
-                'username': TEST_USER_2_USERNAME
-            }
+        response = self._request_test_group_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Group.objects.count(), group_count)
+
+    def test_group_create_view_with_permission(self):
+        self.grant_permission(permission=permission_group_create)
+
+        group_count = Group.objects.count()
+
+        response = self._request_test_group_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Group.objects.count(), group_count + 1)
+
+    def test_group_delete_view_no_permission(self):
+        self._create_test_group()
+
+        group_count = Group.objects.count()
+
+        response = self._request_test_group_delete_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Group.objects.count(), group_count)
+
+    def test_group_delete_view_with_access(self):
+        self._create_test_group()
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_delete
         )
 
-    def test_user_create_view_no_permission(self):
-        response = self._request_user_create_view()
+        group_count = Group.objects.count()
+
+        response = self._request_test_group_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Group.objects.count(), group_count - 1)
+
+    def test_group_edit_view_no_permission(self):
+        self._create_test_group()
+
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_view()
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(get_user_model().objects.count(), 2)
-        self.assertFalse(TEST_USER_2_USERNAME in get_user_model().objects.values_list('username', flat=True))
+
+        self.test_group.refresh_from_db()
+        self.assertEqual(self.test_group.name, group_name)
+
+    def test_group_edit_view_with_access(self):
+        self._create_test_group()
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        group_name = self.test_group.name
+
+        response = self._request_test_group_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_group.refresh_from_db()
+        self.assertNotEqual(self.test_group.name, group_name)
+
+    def test_group_list_view_no_permission(self):
+        self._create_test_group()
+
+        response = self._request_test_group_list_view()
+        self.assertNotContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
+
+    def test_group_list_view_with_permission(self):
+        self._create_test_group()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_view
+        )
+        response = self._request_test_group_list_view()
+        self.assertContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
+
+    def test_group_members_view_no_permission(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+
+        response = self._request_test_group_members_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_group_members_view_with_group_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        response = self._request_test_group_members_view()
+        self.assertContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=self.test_user.username, status_code=200
+        )
+
+    def test_group_members_view_with_user_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        response = self._request_test_group_members_view()
+        self.assertNotContains(
+            response=response, text=self.test_group.name, status_code=403
+        )
+
+    def test_group_members_view_with_full_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        response = self._request_test_group_members_view()
+        self.assertContains(
+            response=response, text=self.test_user.username, status_code=200
+        )
+        self.assertContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
+
+
+class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+    def test_superuser_delete_view_with_access(self):
+        self._create_test_superuser()
+
+        superuser_count = get_user_model().objects.filter(is_superuser=True).count()
+        self.grant_access(
+            obj=self.test_superuser, permission=permission_user_delete
+        )
+        response = self._request_test_superuser_delete_view()
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            get_user_model().objects.filter(is_superuser=True).count(),
+            superuser_count
+        )
+
+    def test_superuser_detail_view_with_access(self):
+        self._create_test_superuser()
+
+        self.grant_access(
+            obj=self.test_superuser, permission=permission_user_view
+        )
+        response = self._request_test_superuser_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+
+class UserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+    def test_user_create_view_no_permission(self):
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
 
     def test_user_create_view_with_permission(self):
         self.grant_permission(permission=permission_user_create)
-        response = self._request_user_create_view()
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_user_model().objects.count(), 3)
-        self.assertTrue(TEST_USER_2_USERNAME in get_user_model().objects.values_list('username', flat=True))
 
-    def _request_user_groups_view(self):
-        return self.post(
-            viewname='user_management:user_groups', args=(self.user_2.pk,)
-        )
+        user_count = get_user_model().objects.count()
 
-    def test_user_groups_view_no_permission(self):
-        self._create_test_user_2()
-        response = self._request_user_groups_view()
-        self.assertEqual(response.status_code, 403)
-
-    def test_user_groups_view_with_access(self):
-        self._create_test_user_2()
-        self.grant_access(permission=permission_user_edit, obj=self.user_2)
-
-        response = self._request_user_groups_view()
-        self.assertContains(
-            response=response, text=self.user_2.username, status_code=200
-        )
-
-    def _request_set_password_view(self, password):
-        return self.post(
-            viewname='user_management:user_set_password', args=(self.user_2.pk,),
-            data={
-                'new_password1': password, 'new_password2': password
-            }
-        )
-
-    def test_user_set_password_view_no_access(self):
-        self._create_test_user_2()
-        response = self._request_set_password_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertEqual(response.status_code, 403)
-
-        self.logout()
-
-        result = self.login(
-            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertFalse(result)
-
-        response = self.get('common:current_user_details')
-
+        response = self._request_test_user_create_view()
         self.assertEqual(response.status_code, 302)
 
-    def test_user_set_password_view_with_access(self):
-        self._create_test_user_2()
-        self.grant_access(permission=permission_user_edit, obj=self.user_2)
-
-        response = self._request_set_password_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertEqual(response.status_code, 302)
-
-        self.logout()
-        self.login(
-            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
-        response = self.get('common:current_user_details')
-
-        self.assertEqual(response.status_code, 200)
-
-    def _request_multiple_user_set_password_view(self, password):
-        return self.post(
-            viewname='user_management:user_multiple_set_password',
-            data={
-                'id_list': self.user_2.pk,
-                'new_password1': password,
-                'new_password2': password
-            }
-        )
-
-    def test_user_multiple_set_password_view_no_access(self):
-        self._create_test_user_2()
-        response = self._request_multiple_user_set_password_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertEqual(response.status_code, 403)
-
-        self.logout()
-
-        result = self.login(
-            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertFalse(result)
-
-        response = self.get('common:current_user_details')
-        self.assertEqual(response.status_code, 302)
-
-    def test_user_multiple_set_password_view_with_access(self):
-        self._create_test_user_2()
-        self.grant_access(permission=permission_user_edit, obj=self.user_2)
-
-        response = self._request_multiple_user_set_password_view(
-            password=TEST_USER_PASSWORD_EDITED
-        )
-
-        self.assertEqual(response.status_code, 302)
-
-        self.logout()
-        self.login(
-            username=TEST_USER_2_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
-        response = self.get('common:current_user_details')
-
-        self.assertEqual(response.status_code, 200)
-
-    def _request_user_delete_view(self):
-        return self.post(
-            viewname='user_management:user_delete', args=(self.user_2.pk,)
-        )
+        self.assertEqual(get_user_model().objects.count(), user_count + 1)
 
     def test_user_delete_view_no_access(self):
-        self._create_test_user_2()
-        response = self._request_user_delete_view()
+        self._create_test_user()
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_delete_view()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_user_model().objects.count(), 3)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
 
     def test_user_delete_view_with_access(self):
-        self._create_test_user_2()
-        self.grant_access(permission=permission_user_delete, obj=self.user_2)
-        response = self._request_user_delete_view()
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_user_model().objects.count(), 2)
+        self._create_test_user()
 
-    def _request_user_multiple_delete_view(self):
-        return self.post(
-            viewname='user_management:user_multiple_delete', data={
-                'id_list': self.user_2.pk
-            }
-        )
+        user_count = get_user_model().objects.count()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+
+        response = self._request_test_user_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
     def test_user_multiple_delete_view_no_access(self):
-        self._create_test_user_2()
-        response = self._request_user_multiple_delete_view()
+        self._create_test_user()
+
+        user_count = get_user_model().objects.count()
+
+        response = self._request_test_user_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_user_model().objects.count(), 3)
+
+        self.assertEqual(get_user_model().objects.count(), user_count)
 
     def test_user_multiple_delete_view_with_access(self):
-        self._create_test_user_2()
-        self.grant_access(permission=permission_user_delete, obj=self.user_2)
-        response = self._request_user_multiple_delete_view()
+        self._create_test_user()
+
+        user_count = get_user_model().objects.count()
+
+        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+
+        response = self._request_test_user_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(get_user_model().objects.count(), 2)
+
+        self.assertEqual(get_user_model().objects.count(), user_count - 1)
+
+    def test_user_set_password_view_no_access(self):
+        self._create_test_user()
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 403)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.password, password_hash)
+
+    def test_user_set_password_view_with_access(self):
+        self._create_test_user()
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.password, password_hash)
+
+    def test_user_multiple_set_password_view_no_access(self):
+        self._create_test_user()
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_multiple_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 403)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.password, password_hash)
+
+    def test_user_multiple_set_password_view_with_access(self):
+        self._create_test_user()
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        password_hash = self.test_user.password
+
+        response = self._request_test_user_password_set_multiple_view(
+            password=TEST_USER_PASSWORD_EDITED
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.password, password_hash)
+
+
+class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+    def test_user_groups_view_no_permission(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+
+        response = self._request_test_user_groups_view()
+        self.assertEqual(response.status_code, 403)
+
+    def test_user_groups_view_with_group_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        response = self._request_test_user_groups_view()
+        self.assertNotContains(
+            response=response, text=self.test_user.username, status_code=403
+        )
+
+    def test_user_groups_view_with_user_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        response = self._request_test_user_groups_view()
+        self.assertContains(
+            response=response, text=self.test_user.username, status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
+
+    def test_user_groups_view_with_full_access(self):
+        self._create_test_user()
+        self._create_test_group()
+        self.test_user.groups.add(self.test_group)
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+
+        response = self._request_test_user_groups_view()
+        self.assertContains(
+            response=response, text=self.test_user.username, status_code=200
+        )
+        self.assertContains(
+            response=response, text=self.test_group.name, status_code=200
+        )
 
 
 class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
@@ -208,22 +367,22 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 
-        self.login_user()
-
     def test_user_list_lookup_render(self):
         self.metadata_type.lookup = '{{ users }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
+        self.grant_access(
+            obj=self.document, permission=permission_metadata_document_edit
         )
 
         response = self.get(
-            viewname='metadata:metadata_edit', args=(self.document.pk,)
+            viewname='metadata:metadata_edit', kwargs={
+                'pk': self.document.pk
+            }
         )
         self.assertContains(
             response=response, text='<option value="{}">{}</option>'.format(
-                TEST_USER_USERNAME, TEST_USER_USERNAME
+                self._test_case_user.username, self._test_case_user.username
             ), status_code=200
         )
 
@@ -231,16 +390,16 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         self.metadata_type.lookup = '{{ groups }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
+        self.grant_access(
+            obj=self.document, permission=permission_metadata_document_edit
         )
 
         response = self.get(
-            viewname='metadata:metadata_edit', args=(self.document.pk,)
+            viewname='metadata:metadata_edit', kwargs={'pk': self.document.pk}
         )
 
         self.assertContains(
             response=response, text='<option value="{}">{}</option>'.format(
-                Group.objects.first().name, Group.objects.first().name
+                self._test_case_group.name, self._test_case_group.name
             ), status_code=200
         )

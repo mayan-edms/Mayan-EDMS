@@ -8,7 +8,7 @@ from ..permissions import (
 )
 from ..utils import get_document_ocr_content
 
-TEST_DOCUMENT_CONTENT = 'Mayan EDMS Documentation'
+from .literals import TEST_DOCUMENT_CONTENT
 
 
 class OCRViewsTestCase(GenericDocumentViewTestCase):
@@ -16,77 +16,79 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
     # Disable descriptor leak test until fixed in upstream
     _skip_file_descriptor_test = True
 
-    def setUp(self):
-        super(OCRViewsTestCase, self).setUp()
-        self.login_user()
-
     def _request_document_content_view(self):
         return self.get(
-            viewname='ocr:document_ocr_content', args=(self.document.pk,)
+            viewname='ocr:document_ocr_content', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
     def test_document_content_view_no_permissions(self):
-        self.document.submit_for_ocr()
-        response = self._request_document_content_view()
+        self.test_document.submit_for_ocr()
 
+        response = self._request_document_content_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_content_view_with_access(self):
-        self.document.submit_for_ocr()
+        self.test_document.submit_for_ocr()
         self.grant_access(
-            permission=permission_ocr_content_view, obj=self.document
+            obj=self.test_document, permission=permission_ocr_content_view
         )
 
         response = self._request_document_content_view()
-
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_page_content_view(self):
         return self.get(
-            viewname='ocr:document_page_ocr_content', args=(
-                self.document.pages.first().pk,
-            )
+            viewname='ocr:document_page_ocr_content', kwargs={
+                'pk': self.test_document.pages.first().pk
+            }
         )
 
     def test_document_page_content_view_no_permissions(self):
-        self.document.submit_for_ocr()
-        response = self._request_document_page_content_view()
+        self.test_document.submit_for_ocr()
 
+        response = self._request_document_page_content_view()
         self.assertEqual(response.status_code, 403)
 
     def test_document_page_content_view_with_access(self):
-        self.document.submit_for_ocr()
+        self.test_document.submit_for_ocr()
         self.grant_access(
-            permission=permission_ocr_content_view, obj=self.document
+            obj=self.test_document, permission=permission_ocr_content_view
         )
 
         response = self._request_document_page_content_view()
-
         self.assertContains(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
     def _request_document_submit_view(self):
         return self.post(
-            viewname='ocr:document_submit', args=(self.document.pk,)
+            viewname='ocr:document_submit', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
     def test_document_submit_view_no_permission(self):
-        self._request_document_submit_view()
+        response = self._request_document_submit_view()
+        self.assertEqual(response.status_code, 302)
+
         self.assertEqual(
-            ''.join(self.document.latest_version.ocr_content()), ''
+            ''.join(self.test_document.latest_version.ocr_content()), ''
         )
 
     def test_document_submit_view_with_access(self):
         self.grant_access(
-            permission=permission_ocr_document, obj=self.document
+            permission=permission_ocr_document, obj=self.test_document
         )
-        self._request_document_submit_view()
+        response = self._request_document_submit_view()
+        self.assertEqual(response.status_code, 302)
+
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in ''.join(
-                self.document.latest_version.ocr_content()
+                self.test_document.latest_version.ocr_content()
             )
         )
 
@@ -94,56 +96,65 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
         return self.post(
             viewname='ocr:document_submit_multiple',
             data={
-                'id_list': self.document.pk,
+                'id_list': self.test_document.pk,
             }
         )
 
     def test_multiple_document_submit_view_no_permission(self):
-        self._request_multiple_document_submit_view()
+        response = self._request_multiple_document_submit_view()
+        self.assertEqual(response.status_code, 302)
+
         self.assertEqual(
-            ''.join(self.document.latest_version.ocr_content()), ''
+            ''.join(self.test_document.latest_version.ocr_content()), ''
         )
 
     def test_multiple_document_submit_view_with_access(self):
         self.grant_access(
-            permission=permission_ocr_document, obj=self.document
+            permission=permission_ocr_document, obj=self.test_document
         )
-        self._request_multiple_document_submit_view()
+        response = self._request_multiple_document_submit_view()
+        self.assertEqual(response.status_code, 302)
+
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in ''.join(
-                self.document.latest_version.ocr_content()
+                self.test_document.latest_version.ocr_content()
             )
         )
 
     def _request_document_ocr_download_view(self):
         return self.get(
-            viewname='ocr:document_ocr_download', args=(self.document.pk,)
+            viewname='ocr:document_ocr_download', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
     def test_document_ocr_download_view_no_permission(self):
-        self.document.submit_for_ocr()
+        self.test_document.submit_for_ocr()
+
         response = self._request_document_ocr_download_view()
         self.assertEqual(response.status_code, 403)
 
-    def test_document_ocr_download_view_with_permission(self):
-        self.document.submit_for_ocr()
+    def test_document_ocr_download_view_with_access(self):
+        self.test_document.submit_for_ocr()
         self.expected_content_type = 'application/octet-stream; charset=utf-8'
 
-        self.grant_permission(permission=permission_ocr_content_view)
-        response = self._request_document_ocr_download_view()
+        self.grant_access(
+            obj=self.test_document, permission=permission_ocr_content_view
+        )
 
+        response = self._request_document_ocr_download_view()
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
             response=response, content=(
-                ''.join(get_document_ocr_content(document=self.document))
+                ''.join(get_document_ocr_content(document=self.test_document))
             ),
         )
 
     def _request_document_type_ocr_settings_view(self):
         return self.get(
             viewname='ocr:document_type_ocr_settings',
-            args=(self.document.document_type.pk,)
+            kwargs={'pk': self.test_document.document_type.pk}
         )
 
     def test_document_type_ocr_settings_view_no_permission(self):
@@ -152,9 +163,9 @@ class OCRViewsTestCase(GenericDocumentViewTestCase):
 
     def test_document_type_ocr_settings_view_with_access(self):
         self.grant_access(
-            permission=permission_document_type_ocr_setup,
-            obj=self.document.document_type
+            obj=self.test_document.document_type,
+            permission=permission_document_type_ocr_setup
         )
-        response = self._request_document_type_ocr_settings_view()
 
+        response = self._request_document_type_ocr_settings_view()
         self.assertEqual(response.status_code, 200)

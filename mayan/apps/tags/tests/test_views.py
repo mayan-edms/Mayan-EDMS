@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
@@ -9,290 +10,285 @@ from ..permissions import (
     permission_tag_edit, permission_tag_remove, permission_tag_view
 )
 
-from .literals import (
-    TEST_TAG_COLOR, TEST_TAG_COLOR_EDITED, TEST_TAG_LABEL,
-    TEST_TAG_LABEL_EDITED
-)
+from .mixins import TagTestMixin, TagViewTestMixin
 
 
-class TagViewTestCase(GenericDocumentViewTestCase):
-    def setUp(self):
-        super(TagViewTestCase, self).setUp()
-        self.login_user()
-
-    def _create_tag(self):
-        self.tag = Tag.objects.create(
-            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
-        )
-
-    def _request_create_tag_view(self):
-        return self.post(
-            viewname='tags:tag_create', data={
-                'label': TEST_TAG_LABEL,
-                'color': TEST_TAG_COLOR
-            }
-        )
-
+class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_create_view_no_permissions(self):
-        response = self._request_create_tag_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_create_view()
         self.assertEqual(response.status_code, 403)
 
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.objects.count(), tag_count)
 
     def test_tag_create_view_with_permissions(self):
         self.grant_permission(permission=permission_tag_create)
 
-        response = self._request_create_tag_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_create_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Tag.objects.count(), 1)
-        tag = Tag.objects.first()
-        self.assertEqual(tag.label, TEST_TAG_LABEL)
-        self.assertEqual(tag.color, TEST_TAG_COLOR)
-
-    def _request_delete_tag_view(self):
-        return self.post(
-            viewname='tags:tag_delete', args=(self.tag.pk,)
-        )
+        self.assertEqual(Tag.objects.count(), tag_count + 1)
 
     def test_tag_delete_view_no_permissions(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        response = self._request_delete_tag_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_delete_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.objects.count(), tag_count)
 
     def test_tag_delete_view_with_access(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.grant_access(obj=self.tag, permission=permission_tag_delete)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
 
-        response = self._request_delete_tag_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_delete_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Tag.objects.count(), 0)
-
-    def _request_multiple_delete_view(self):
-        return self.post(
-            viewname='tags:tag_multiple_delete',
-            data={'id_list': self.tag.pk},
-        )
+        self.assertEqual(Tag.objects.count(), tag_count - 1)
 
     def test_tag_multiple_delete_view_no_permissions(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        response = self._request_multiple_delete_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.objects.count(), tag_count)
 
     def test_tag_multiple_delete_view_with_access(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.grant_access(obj=self.tag, permission=permission_tag_delete)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
 
-        response = self._request_multiple_delete_view()
+        tag_count = Tag.objects.count()
+
+        response = self._request_test_tag_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Tag.objects.count(), 0)
-
-    def _request_edit_tag_view(self):
-        return self.post(
-            viewname='tags:tag_edit', args=(self.tag.pk,), data={
-                'label': TEST_TAG_LABEL_EDITED, 'color': TEST_TAG_COLOR_EDITED
-            }
-        )
+        self.assertEqual(Tag.objects.count(), tag_count - 1)
 
     def test_tag_edit_view_no_permissions(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        response = self._request_edit_tag_view()
+        tag_label = self.test_tag.label
+
+        response = self._request_test_tag_edit_view()
         self.assertEqual(response.status_code, 403)
 
-        tag = Tag.objects.get(pk=self.tag.pk)
-        self.assertEqual(tag.label, TEST_TAG_LABEL)
-        self.assertEqual(tag.color, TEST_TAG_COLOR)
+        self.test_tag.refresh_from_db()
+        self.assertEqual(self.test_tag.label, tag_label)
 
     def test_tag_edit_view_with_access(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.grant_access(obj=self.tag, permission=permission_tag_edit)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
 
-        response = self._request_edit_tag_view()
+        tag_label = self.test_tag.label
+
+        response = self._request_test_tag_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        tag = Tag.objects.get(pk=self.tag.pk)
-        self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
-        self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
+        self.test_tag.refresh_from_db()
+        self.assertNotEqual(self.test_tag.label, tag_label)
 
-    def _request_document_list_view(self):
-        return self.get(viewname='documents:document_list')
 
+class TagDocumentViewTestCase(TagTestMixin, TagViewTestMixin, GenericDocumentViewTestCase):
     def test_document_tags_widget_no_permissions(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.tag.documents.add(self.document)
-        response = self._request_document_list_view()
+        self.test_tag.documents.add(self.test_document)
+
+        response = self._request_test_tag_document_list_view()
         self.assertNotContains(
-            response=response, text=TEST_TAG_LABEL, status_code=200
+            response=response, text=self.test_tag.label, status_code=200
         )
 
-    def test_document_tags_widget_with_access(self):
-        self._create_tag()
+    def test_document_tags_widget_with_tag_access(self):
+        self._create_test_tag()
 
-        self.tag.documents.add(self.document)
+        self.test_tag.documents.add(self.test_document)
 
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
         self.grant_access(
             obj=self.document, permission=permission_document_view
         )
 
-        response = self._request_document_list_view()
+        response = self._request_test_tag_document_list_view()
         self.assertContains(
-            response=response, text=TEST_TAG_LABEL, status_code=200
-        )
-
-    def _request_attach_tag_view(self):
-        return self.post(
-            viewname='tags:tag_attach', args=(self.document.pk,), data={
-                'tags': self.tag.pk,
-                'user': self.user.pk
-            }
+            response=response, text=self.test_tag.label, status_code=200
         )
 
     def test_document_attach_tag_view_no_permission(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.assertEqual(self.document.tags.count(), 0)
+        response = self._request_test_document_tag_attach_view()
+        # Show same view with a warning message that ID XX is not one of the
+        # available choices.
+        self.assertEqual(response.status_code, 200)
 
-        self.grant_access(obj=self.tag, permission=permission_tag_attach)
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-        response = self._request_attach_tag_view()
-        # Redirect to previous URL and show warning message about having to
-        # select at least one object.
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(self.document.tags.count(), 0)
+    def test_document_attach_tag_view_with_tag_access(self):
+        self._create_test_tag()
 
-    def test_document_attach_tag_view_with_access(self):
-        self._create_tag()
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
 
-        self.assertEqual(self.document.tags.count(), 0)
-
-        self.grant_access(obj=self.document, permission=permission_tag_attach)
-        self.grant_access(obj=self.tag, permission=permission_tag_attach)
-        # permission_tag_view is needed because the form filters the
-        # choices
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_attach_tag_view()
+        response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertQuerysetEqual(
-            self.document.tags.all(), (repr(self.tag),)
-        )
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def _request_multiple_attach_tag_view(self):
-        return self.post(
-            viewname='tags:multiple_documents_tag_attach', data={
-                'id_list': self.document.pk, 'tags': self.tag.pk,
-                'user': self.user.pk
-            }
-        )
+    def test_document_attach_tag_view_with_document_access(self):
+        self._create_test_tag()
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_attach_tag_view_with_full_access(self):
+        self._create_test_tag()
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
 
     def test_document_multiple_attach_tag_view_no_permission(self):
-        self._create_tag()
+        self._create_test_tag()
 
-        self.grant_permission(permission=permission_tag_view)
-
-        response = self._request_multiple_attach_tag_view()
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(self.document.tags.count(), 0)
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_multiple_attach_tag_view_with_access(self):
-        self._create_tag()
+    def test_document_multiple_attach_tag_view_with_tag_access(self):
+        self._create_test_tag()
 
-        self.grant_access(obj=self.document, permission=permission_tag_attach)
-        self.grant_access(obj=self.tag, permission=permission_tag_attach)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
 
-        # permission_tag_view is needed because the form filters the
-        # choices
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_multiple_attach_tag_view()
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertQuerysetEqual(
-            self.document.tags.all(), (repr(self.tag),)
-        )
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def _request_single_document_multiple_tag_remove_view(self):
-        return self.post(
-            viewname='tags:single_document_multiple_tag_remove',
-            args=(self.document.pk,), data={
-                'id_list': self.document.pk,
-                'tags': self.tag.pk,
-            }
-        )
+    def test_document_multiple_attach_tag_view_with_document_access(self):
+        self._create_test_tag()
 
-    def test_single_document_multiple_tag_remove_view_no_permissions(self):
-        self._create_tag()
+        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
 
-        self.document.tags.add(self.tag)
-
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_single_document_multiple_tag_remove_view()
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_single_document_multiple_tag_remove_view_with_access(self):
-        self._create_tag()
+    def test_document_multiple_attach_tag_view_with_full_access(self):
+        self._create_test_tag()
 
-        self.document.tags.add(self.tag)
+        self.grant_access(obj=self.test_document, permission=permission_tag_attach)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
 
-        self.grant_access(obj=self.document, permission=permission_tag_remove)
-        self.grant_access(obj=self.tag, permission=permission_tag_remove)
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_single_document_multiple_tag_remove_view()
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.document.tags.count(), 0)
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def _request_multiple_documents_selection_tag_remove_view(self):
-        return self.post(
-            viewname='tags:multiple_documents_selection_tag_remove',
-            data={
-                'id_list': self.document.pk,
-                'tags': self.tag.pk,
-            }
-        )
+    def test_document_tag_multiple_remove_view_no_permissions(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
 
-    def test_multiple_documents_selection_tag_remove_view_no_permissions(self):
-        self._create_tag()
-
-        self.document.tags.add(self.tag)
-
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_multiple_documents_selection_tag_remove_view()
+        response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertQuerysetEqual(self.document.tags.all(), (repr(self.tag),))
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def test_multiple_documents_selection_tag_remove_view_with_access(self):
-        self._create_tag()
+    def test_document_tag_multiple_remove_view_with_tag_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
 
-        self.document.tags.add(self.tag)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
-        self.grant_access(obj=self.document, permission=permission_tag_remove)
-        self.grant_access(obj=self.tag, permission=permission_tag_remove)
-        self.grant_access(obj=self.tag, permission=permission_tag_view)
-
-        response = self._request_multiple_documents_selection_tag_remove_view()
+        response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.document.tags.count(), 0)
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_with_document_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_tag_multiple_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_document_multiple_tag_multiple_remove_view_no_permissions(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_tag_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_document_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_document_multiple_tag_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(obj=self.test_document, permission=permission_tag_remove)
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())

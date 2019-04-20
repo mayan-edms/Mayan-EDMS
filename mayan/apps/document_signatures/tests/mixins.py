@@ -10,10 +10,10 @@ from .literals import TEST_KEY_FILE, TEST_SIGNATURE_FILE_PATH
 
 
 class SignaturesTestMixin(object):
-    def _create_detached_signature(self):
+    def _create_test_detached_signature(self):
         with open(TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
-                document_version=self.document.latest_version,
+                document_version=self.test_document.latest_version,
                 signature_file=File(file_object)
             )
 

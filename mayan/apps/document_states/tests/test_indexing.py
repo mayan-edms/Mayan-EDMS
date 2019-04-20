@@ -1,12 +1,6 @@
 from __future__ import unicode_literals
 
-from django.test import override_settings
-
-from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.models import DocumentType
-from mayan.apps.documents.tests import (
-    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL
-)
+from mayan.apps.documents.tests import GenericDocumentTestCase
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 
 from ..models import Workflow
@@ -20,55 +14,41 @@ from .literals import (
 )
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentStateIndexingTestCase(BaseTestCase):
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentStateIndexingTestCase, self).tearDown()
+class DocumentStateIndexingTestCase(GenericDocumentTestCase):
+    auto_upload_document = False
 
-    def _create_document_type(self):
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-    def _create_document(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def _create_workflow(self):
-        self.workflow = Workflow.objects.create(
+    def _create_test_workflow(self):
+        self.test_workflow = Workflow.objects.create(
             label=TEST_WORKFLOW_LABEL,
             internal_name=TEST_WORKFLOW_INTERNAL_NAME
         )
-        self.workflow.document_types.add(self.document_type)
+        self.test_workflow.document_types.add(self.test_document_type)
 
-    def _create_workflow_states(self):
-        self._create_workflow()
-        self.workflow_state_1 = self.workflow.states.create(
+    def _create_test_workflow_states(self):
+        self._create_test_workflow()
+        self.test_workflow_state_1 = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
             initial=True, label=TEST_WORKFLOW_INITIAL_STATE_LABEL
         )
-        self.workflow_state_2 = self.workflow.states.create(
+        self.test_workflow_state_2 = self.test_workflow.states.create(
             completion=TEST_WORKFLOW_STATE_COMPLETION,
             label=TEST_WORKFLOW_STATE_LABEL
         )
 
-    def _create_workflow_transition(self):
-        self._create_workflow_states()
-        self.workflow_transition = self.workflow.transitions.create(
+    def _create_test_workflow_transition(self):
+        self._create_test_workflow_states()
+        self.test_workflow_transition = self.test_workflow.transitions.create(
             label=TEST_WORKFLOW_TRANSITION_LABEL,
-            origin_state=self.workflow_state_1,
-            destination_state=self.workflow_state_2,
+            origin_state=self.test_workflow_state_1,
+            destination_state=self.test_workflow_state_2,
         )
 
-    def _create_index(self):
+    def _create_test_index(self):
         # Create empty index
         index = Index.objects.create(label=TEST_INDEX_LABEL)
 
         # Add our document type to the new index
-        index.document_types.add(self.document_type)
+        index.document_types.add(self.test_document_type)
 
         # Create simple index template
         root = index.template_root
@@ -78,10 +58,9 @@ class DocumentStateIndexingTestCase(BaseTestCase):
         )
 
     def test_workflow_indexing_initial_state(self):
-        self._create_document_type()
-        self._create_workflow_transition()
-        self._create_index()
-        self._create_document()
+        self._create_test_workflow_transition()
+        self._create_test_index()
+        self.upload_document()
 
         self.assertEqual(
             list(
@@ -90,14 +69,13 @@ class DocumentStateIndexingTestCase(BaseTestCase):
         )
 
     def test_workflow_indexing_transition(self):
-        self._create_document_type()
-        self._create_workflow_transition()
-        self._create_index()
-        self._create_document()
+        self._create_test_workflow_transition()
+        self._create_test_index()
+        self.upload_document()
 
-        self.document.workflows.first().do_transition(
-            transition=self.workflow_transition,
-            user=self.admin_user
+        self.test_document.workflows.first().do_transition(
+            transition=self.test_workflow_transition,
+            user=self._test_case_user
         )
 
         self.assertEqual(
@@ -107,17 +85,16 @@ class DocumentStateIndexingTestCase(BaseTestCase):
         )
 
     def test_workflow_indexing_document_delete(self):
-        self._create_document_type()
-        self._create_workflow_transition()
-        self._create_index()
-        self._create_document()
+        self._create_test_workflow_transition()
+        self._create_test_index()
+        self.upload_document()
 
-        self.document.workflows.first().do_transition(
-            transition=self.workflow_transition,
-            user=self.admin_user
+        self.test_document.workflows.first().do_transition(
+            transition=self.test_workflow_transition,
+            user=self._test_case_user
         )
 
-        self.document.delete(to_trash=False)
+        self.test_document.delete(to_trash=False)
 
         self.assertEqual(
             list(
