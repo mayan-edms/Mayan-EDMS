@@ -124,9 +124,13 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
             klass=content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
+        if self.request.method == 'GET':
+            permission = permission_acl_view
+        else:
+            permission = permission_acl_edit
+
         AccessControlList.objects.check_access(
-            permissions=permission_acl_view, user=self.request.user,
-            obj=content_object
+            obj=content_object, permissions=permission, user=self.request.user
         )
 
         return content_object
@@ -181,9 +185,13 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
             klass=content_type.model_class(), pk=self.kwargs['object_pk']
         )
 
+        if self.request.method == 'GET':
+            permission = permission_acl_view
+        else:
+            permission = permission_acl_edit
+
         AccessControlList.objects.check_access(
-            permissions=permission_acl_view, user=self.request.user,
-            obj=content_object
+            obj=content_object, permissions=permission, user=self.request.user
         )
 
         return content_object

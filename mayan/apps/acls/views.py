@@ -66,9 +66,13 @@ class ACLCreateView(SingleObjectCreateView):
         }
 
     def get_form_extra_kwargs(self):
+        acls = AccessControlList.objects.filter(
+            content_type=self.content_type, object_id=self.content_object.pk
+        )
+
         return {
             'queryset': Role.objects.exclude(
-                pk__in=self.content_object.acls.values('role')
+                pk__in=acls.values('role')
             ),
             'user': self.request.user
         }

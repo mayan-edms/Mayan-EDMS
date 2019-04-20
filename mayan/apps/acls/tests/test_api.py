@@ -10,7 +10,7 @@ from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
 from mayan.apps.rest_api.tests import BaseAPITestCase
 
 from ..models import AccessControlList
-from ..permissions import permission_acl_view
+from ..permissions import permission_acl_edit, permission_acl_view
 
 from .mixins import ACLTestMixin
 
@@ -18,12 +18,12 @@ from .mixins import ACLTestMixin
 class ACLAPITestCase(ACLTestMixin, DocumentTestMixin, BaseAPITestCase):
     def setUp(self):
         super(ACLAPITestCase, self).setUp()
-        self.test_document_content_type = ContentType.objects.get_for_model(
-            self.test_document
-        )
         self.test_object = self.test_document
+        self.test_object_content_type = ContentType.objects.get_for_model(
+            self.test_object
+        )
 
-    def test_object_acl_list_view(self):
+    def test_acl_list_api_view_with_access(self):
         self._create_test_acl()
 
         self.grant_access(obj=self.test_object, permission=permission_acl_view)
@@ -31,169 +31,213 @@ class ACLAPITestCase(ACLTestMixin, DocumentTestMixin, BaseAPITestCase):
         response = self.get(
             viewname='rest_api:accesscontrollist-list',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk
             )
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            response.data['results'][0]['content_type']['app_label'],
-            self.test_object_content_type.app_label
+        self.assertContains(
+            response=response, text=self.test_object_content_type.app_label,
+            status_code=200
         )
-        self.assertEqual(
-            response.data['results'][0]['role']['label'],
-            self.test_acl.role.label
+        self.assertContains(
+            response=response, text=self.test_acl.role.label,
+            status_code=200
         )
 
-    def test_object_acl_delete_view(self):
+    def _request_test_acl_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:accesscontrollist-detail',
+            args=(
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk
+            )
+        )
+
+    def test_acl_delete_api_view_with_access(self):
         self.expected_content_type = None
         self._create_test_acl()
 
-        response = self.delete(
+        self.grant_access(self.test_object, permission=permission_acl_edit)
+
+        acl_count = AccessControlList.objects.count()
+
+        response = self._request_test_acl_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(AccessControlList.objects.count(), acl_count - 1)
+
+    def _request_test_acl_detail_api_view(self):
+        return self.get(
             viewname='rest_api:accesscontrollist-detail',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk
             )
         )
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(AccessControlList.objects.count(), 0)
 
-    def test_object_acl_detail_view(self):
+
+    def test_acl_detail_api_view_with_access(self):
         self._create_test_acl()
 
-        response = self.get(
-            viewname='rest_api:accesscontrollist-detail',
-            args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk
-            )
-        )
+        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+
+        response = self._request_test_acl_detail_api_view()
+
         self.assertEqual(
             response.data['content_type']['app_label'],
-            self.test_document_content_type.app_label
+            self.test_object_content_type.app_label
         )
         self.assertEqual(
             response.data['role']['label'], TEST_ROLE_LABEL
         )
 
-    def test_object_acl_permission_delete_view(self):
-        self.expected_content_type = None
-        self._create_test_acl()
-        self.test_acls.grant_permission(permission=permission_document_view)
-        permission = self.test_acl.permissions.first()
-
-        response = self.delete(
+    def _request_test_acl_permission_delete_api_view(self):
+        return self.delete(
             viewname='rest_api:accesscontrollist-permission-detail',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk,
-                permission.pk
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk,
+                self.test_permission.stored_permission.pk
             )
         )
+
+
+    def test_acl_permission_delete_view_with_access(self):
+        self.expected_content_type = None
+        self.test_permission = permission_document_view
+        self._create_test_acl()
+        self.test_acl.permissions.add(self.test_permission.stored_permission)
+
+        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+
+        response = self._request_test_acl_permission_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
         self.assertEqual(self.test_acl.permissions.count(), 0)
 
-    def test_object_acl_permission_detail_view(self):
-        self._create_test_acl()
-        permission = self.test_acl.permissions.first()
-
-        response = self.get(
+    def _request_test_acl_permission_detail_api_view(self):
+        return self.get(
             viewname='rest_api:accesscontrollist-permission-detail',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk,
-                permission.pk
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk,
+                self.test_acl.permissions.first().pk
             )
         )
+
+    def test_acl_permission_detail_api_view_with_access(self):
+        self._create_test_acl()
+        self.test_acl.permissions.add(permission_document_view.stored_permission)
+
+        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+
+        response = self._request_test_acl_permission_detail_api_view()
         self.assertEqual(
             response.data['pk'], permission_document_view.pk
         )
 
-    def test_object_acl_permission_list_view(self):
-        self._create_test_acl()
-
-        response = self.get(
+    def _request_test_acl_permission_list_api_get_view(self):
+        return self.get(
             viewname='rest_api:accesscontrollist-permission-list',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk
             )
         )
+
+    def test_acl_permission_list_api_get_view_with_access(self):
+        self._create_test_acl()
+        self.test_acl.permissions.add(permission_document_view.stored_permission)
+
+        self.grant_access(obj=self.test_object, permission=permission_acl_view)
+
+        response = self._request_test_acl_permission_list_api_get_view()
         self.assertEqual(
             response.data['results'][0]['pk'],
             permission_document_view.pk
         )
 
-    def test_object_acl_permission_list_post_view(self):
-        self._create_test_acl()
-
-        response = self.post(
+    def _request_acl_permssion_list_api_post_view(self):
+        return self.post(
             viewname='rest_api:accesscontrollist-permission-list',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk, self.test_acl.pk
-            ), data={'permission_pk': permission_acl_view.pk}
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk, self.test_acl.pk
+            ), data={'permission_pk': self.test_permission.pk}
         )
+
+    def test_acl_permission_list_api_post_view_with_access(self):
+        self._create_test_acl()
+        self.test_permission = permission_document_view
+
+        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+
+        response = self._request_acl_permssion_list_api_post_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        self.assertQuerysetEqual(
-            ordered=False, qs=self.test_acl.permissions.all(), values=(
-                repr(permission_document_view.stored_permission),
-                repr(permission_acl_view.stored_permission)
-            )
+        self.assertTrue(
+            self.test_permission.stored_permission in self.test_acl.permissions.all()
         )
 
-    def test_object_acl_post_no_permissions_added_view(self):
-        response = self.post(
+    def _request_acl_create_api_view(self, extra_data=None):
+        data = {'role_pk': self.test_role.pk}
+
+        if extra_data:
+            data.update(extra_data)
+
+        return self.post(
             viewname='rest_api:accesscontrollist-list',
             args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk
-            ), data={'role_pk': self.test_role.pk}
+                self.test_object_content_type.app_label,
+                self.test_object_content_type.model,
+                self.test_object.pk
+            ), data=data
+        )
+
+    def test_acl_create_api_api_view_with_access(self):
+        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+
+        response = self._request_acl_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        pk = response.data['id']
+
+        test_object_acl = self.test_object.acls.get(pk=pk)
+        self.assertEqual(
+            test_object_acl.role, self.test_role
+        )
+        self.assertEqual(
+            test_object_acl.content_object, self.test_object
+        )
+        self.assertEqual(
+            test_object_acl.permissions.count(), 0
+        )
+
+    def test_acl_create_post_api_extra_data_view_with_access(self):
+        self.grant_access(obj=self.test_object, permission=permission_acl_edit)
+
+        response = self._request_acl_create_api_view(
+            extra_data={'permissions_pk_list': permission_acl_view.pk}
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        pk = response.data['id']
+
+        test_object_acl = self.test_object.acls.get(pk=pk)
 
         self.assertEqual(
-            self.test_document.acls.first().role, self.test_role
+            test_object_acl.content_object, self.test_object
         )
         self.assertEqual(
-            self.test_document.acls.first().content_object, self.test_document
+            test_object_acl.role, self.test_role
         )
         self.assertEqual(
-            self.test_document.acls.first().permissions.count(), 0
-        )
-
-    def test_object_acl_post_with_permissions_added_view(self):
-        response = self.post(
-            viewname='rest_api:accesscontrollist-list',
-            args=(
-                self.test_document_content_type.app_label,
-                self.test_document_content_type.model,
-                self.test_document.pk
-            ), data={
-                'role_pk': self.role.pk,
-                'permissions_pk_list': permission_acl_view.pk
-
-            }
-        )
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-        self.assertEqual(
-            self.test_document.acls.first().content_object, self.test_document
-        )
-        self.assertEqual(
-            self.test_document.acls.first().role, self.role
-        )
-        self.assertEqual(
-            self.test_document.acls.first().permissions.first(),
+            test_object_acl.permissions.first(),
             permission_acl_view.stored_permission
         )
