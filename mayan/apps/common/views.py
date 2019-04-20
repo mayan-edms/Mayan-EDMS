@@ -52,7 +52,7 @@ class CheckVersionView(SimpleView):
                 'The version you are using is outdated. The latest version '
                 'is %s'
             ) % exception.upstream_version
-        except UnknownLatestVersion as exception:
+        except UnknownLatestVersion:
             message = _(
                 'It is not possible to determine the latest version '
                 'available.'

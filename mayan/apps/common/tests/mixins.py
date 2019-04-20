@@ -8,10 +8,12 @@ import random
 
 from furl import furl
 
+from django.apps import apps
 from django.conf import settings
 from django.conf.urls import url
+from django.contrib.contenttypes.models import ContentType
 from django.core import management
-from django.db import models
+from django.db import connection, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
 from django.template import Context, Template
@@ -212,19 +214,27 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
 
 
 class SilenceLoggerTestCaseMixin(object):
-    test_case_logger = None
+    """
+    Changes the log level of a specific logger for the duration of a test.
+    The default level for silenced loggers is CRITICAL.
+    Example: self._silence_logger(name='mayan.apps.converter.managers')
+    """
+    test_case_silenced_logger = None
+    test_case_silenced_logger_new_level = logging.CRITICAL
 
     def tearDown(self):
-        if self.test_case_logger:
-            self.test_case_logger.setLevel(level=self.test_case_logger_level)
+        if self.test_case_silenced_logger:
+            self.test_case_silenced_logger.setLevel(
+                level=self.test_case_silenced_logger_level
+            )
 
         super(SilenceLoggerTestCaseMixin, self).tearDown()
 
     def _silence_logger(self, name):
-        self.test_case_logger = logging.getLogger(name=name)
-        self.test_case_logger_level = self.test_case_logger.level
-        self.test_case_logger.setLevel(
-            level=logging.CRITICAL
+        self.test_case_silenced_logger = logging.getLogger(name=name)
+        self.test_case_silenced_logger_level = self.test_case_silenced_logger.level
+        self.test_case_silenced_logger.setLevel(
+            level=self.test_case_silenced_logger_new_level
         )
 
 
