@@ -126,6 +126,7 @@ Other changes
   management app.
 * Move the purge permission logic to the StorePermission
   manager.
+* Remove the MIMETYPE_FILE_READ_SIZE setting.
 
 Removals
 --------
