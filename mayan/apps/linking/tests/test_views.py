@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
@@ -13,9 +14,10 @@ from .literals import (
     TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_LABEL_EDITED,
     TEST_SMART_LINK_LABEL
 )
+from .mixins import SmartLinkTestMixin
 
 
-class SmartLinkViewTestCase(GenericDocumentViewTestCase):
+class SmartLinkViewTestCase(SmartLinkTestMixin, GenericViewTestCase):
     def _request_test_smart_link_create_view(self):
         return self.post(
             viewname='linking:smart_link_create', data={
@@ -45,11 +47,6 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             viewname='linking:smart_link_delete', kwargs={
                 'pk': self.test_smart_link.pk
             }
-        )
-
-    def _create_test_smart_link(self):
-        self.test_smart_link = SmartLink.objects.create(
-            label=TEST_SMART_LINK_LABEL
         )
 
     def test_smart_link_delete_view_no_permission(self):
@@ -98,6 +95,8 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         self.test_smart_link.refresh_from_db()
         self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL_EDITED)
 
+
+class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestCase):
     def setup_smart_links(self):
         self.test_smart_link = SmartLink.objects.create(
             label=TEST_SMART_LINK_LABEL,
