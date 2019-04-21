@@ -9,6 +9,9 @@ DEBUG = True
 CELERY_ALWAYS_EAGER = True
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = CELERY_ALWAYS_EAGER
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 if 'rosetta' not in INSTALLED_APPS:
     try:
         import rosetta
