@@ -165,7 +165,7 @@ class OfficeDocumentTestCase(BaseTestCase):
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'application/msword')
         self.assertEqual(
-            self.document.file_mime_encoding, 'application/mswordbinary'
+            self.document.file_mime_encoding, 'binary'
         )
         self.assertEqual(
             self.document.checksum,
