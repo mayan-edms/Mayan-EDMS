@@ -95,6 +95,7 @@
 * Move the purge permission logic to the StorePermission
   manager.
 * Remove the MIMETYPE_FILE_READ_SIZE setting.
+* Use copyfileobj in the document parsers.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -2,12 +2,13 @@ from __future__ import unicode_literals
 
 import logging
 import os
+from shutil import copyfileobj
 import subprocess
 
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.storage.utils import copyfile, fs_cleanup, mkstemp
+from mayan.apps.storage.utils import NamedTemporaryFile
 
 from .exceptions import ParserError
 from .settings import setting_pdftotext_path
@@ -123,8 +124,9 @@ class PopplerParser(Parser):
     def execute(self, file_object, page_number):
         logger.debug('Parsing PDF page: %d', page_number)
 
-        destination_descriptor, temp_filepath = mkstemp()
-        copyfile(file_object, temp_filepath)
+        temporary_file_object = NamedTemporaryFile()
+        copyfileobj(fsrc=file_object, fdst=temporary_file_object)
+        temporary_file_object.seek(0)
 
         command = []
         command.append(self.pdftotext_path)
@@ -132,7 +134,7 @@ class PopplerParser(Parser):
         command.append(str(page_number))
         command.append('-l')
         command.append(str(page_number))
-        command.append(temp_filepath)
+        command.append(temporary_file_object.name)
         command.append('-')
 
         proc = subprocess.Popen(
@@ -142,12 +144,12 @@ class PopplerParser(Parser):
         return_code = proc.wait()
         if return_code != 0:
             logger.error(proc.stderr.readline())
-            fs_cleanup(temp_filepath, file_descriptor=destination_descriptor)
+            temporary_file_object.close()
 
             raise ParserError
 
         output = proc.stdout.read()
-        fs_cleanup(temp_filepath, file_descriptor=destination_descriptor)
+        temporary_file_object.close()
 
         if output == b'\x0c':
             logger.debug('Parser didn\'t return any output')
