@@ -79,7 +79,6 @@ class ACLAPITestCase(ACLTestMixin, DocumentTestMixin, BaseAPITestCase):
             )
         )
 
-
     def test_acl_detail_api_view_with_access(self):
         self._create_test_acl()
 
@@ -105,7 +104,6 @@ class ACLAPITestCase(ACLTestMixin, DocumentTestMixin, BaseAPITestCase):
                 self.test_permission.stored_permission.pk
             )
         )
-
 
     def test_acl_permission_delete_view_with_access(self):
         self.expected_content_type = None
