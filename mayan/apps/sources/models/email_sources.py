@@ -161,7 +161,7 @@ class EmailBaseModel(IntervalBaseModel):
                     label = 'email_body.txt'
 
                 if source.store_body:
-                    with ContentFile(content=message.body, name=label) as file_object:
+                    with ContentFile(content=force_bytes(message.body), name=label) as file_object:
                         documents = source.handle_upload(
                             document_type=source.document_type,
                             file_object=file_object,
