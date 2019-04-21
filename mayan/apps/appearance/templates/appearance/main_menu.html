@@ -16,7 +16,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                {% get_menu_links 'main menu' as menu_links %}
+                {% get_menu_links name='main' as menu_links %}
                 {% for link_set in menu_links %}
                     {% for link in link_set %}
                         {% with 'true' as as_li %}

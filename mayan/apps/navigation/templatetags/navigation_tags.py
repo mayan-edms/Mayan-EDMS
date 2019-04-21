@@ -38,7 +38,7 @@ def get_menus_links(context, names, source=None, sort_results=None):
 @register.simple_tag(takes_context=True)
 def get_multi_item_links_form(context, object_list):
     actions = []
-    for link_set in Menu.get('multi item menu').resolve(context=context, source=object_list[0], sort_results=True):
+    for link_set in Menu.get('multi item').resolve(context=context, source=object_list[0], sort_results=True):
         for link in link_set:
             actions.append((link.url, link.text))
 

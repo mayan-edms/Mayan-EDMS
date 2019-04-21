@@ -96,7 +96,7 @@
                             {% endfor %}
                             {% if not hide_links %}
                                 <td class="last">
-                                    {% get_menu_links 'object menu' source=object as resolved_links %}
+                                    {% get_menu_links 'object' source=object as resolved_links %}
                                     {% for object_navigation_links in resolved_links %}
                                         {% with 'true' as horizontal %}
                                         {% with 'true' as hide_icon %}

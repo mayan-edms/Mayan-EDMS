@@ -12,16 +12,16 @@ __all__ = (
 )
 
 menu_about = Menu(
-    icon_class=icon_menu_about, label=_('System'), name='about menu'
+    icon_class=icon_menu_about, label=_('System'), name='about'
 )
-menu_facet = Menu(name='object facet')
-menu_object = Menu(name='object menu')
-menu_main = Menu(name='main menu')
-menu_multi_item = Menu(name='multi item menu')
-menu_secondary = Menu(name='secondary menu')
-menu_setup = Menu(name='setup menu')
-menu_sidebar = Menu(name='sidebar menu')
-menu_tools = Menu(name='tools menu')
+menu_facet = Menu(label=_('Facet'), name='facet')
+menu_main = Menu(name='main')
+menu_multi_item = Menu(name='multi item')
+menu_object = Menu(label=_('Actions'), name='object')
+menu_secondary = Menu(label=_('Secondary'), name='secondary')
+menu_setup = Menu(name='setup')
+menu_sidebar = Menu(name='sidebar')
+menu_tools = Menu(name='tools')
 menu_user = Menu(
-    icon_class=icon_menu_user, name='user menu', label=_('User')
+    icon_class=icon_menu_user, name='user', label=_('User')
 )

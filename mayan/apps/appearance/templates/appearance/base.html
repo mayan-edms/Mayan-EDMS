@@ -37,8 +37,8 @@
             </div>
         </div>
 
-        {% get_menus_links names='object menu,sidebar menu,secondary menu' sort_results=True as links %}
-        {% get_menu_links 'object facet' sort_results=True as form_navigation_links %}
+        {% get_menus_links names='object,sidebar,secondary' sort_results=True as links %}
+        {% get_menu_links name='facet' sort_results=True as form_navigation_links %}
 
         <div class="row">
             {% if links or form_navigation_links %}
