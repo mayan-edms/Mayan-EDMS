@@ -3,6 +3,9 @@ from __future__ import absolute_import, unicode_literals
 from furl import furl
 
 from django.conf import settings
+from django.contrib.auth.views import (
+    INTERNAL_RESET_SESSION_TOKEN, INTERNAL_RESET_URL_TOKEN,
+)
 from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
@@ -187,6 +190,7 @@ class UserLoginTestCase(GenericViewTestCase):
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_password_reset(self):
+        self.logout()
         response = self.post(
             viewname='authentication:password_reset_view', data={
                 'email': self._test_case_superuser.email,
@@ -200,23 +204,24 @@ class UserLoginTestCase(GenericViewTestCase):
         uidb64 = email_parts[-3]
         token = email_parts[-2]
 
+        # Add the token to the session
+        session = self.client.session
+        session[INTERNAL_RESET_SESSION_TOKEN] = token
+        session.save()
+
         new_password = 'new_password_123'
         response = self.post(
             viewname='authentication:password_reset_confirm_view',
-            kwargs={'uidb64': uidb64, 'token': token}, data={
+            kwargs={'uidb64': uidb64, 'token': INTERNAL_RESET_URL_TOKEN}, data={
                 'new_password1': new_password,
                 'new_password2': new_password
             }
         )
-        self.assertEqual(response.status_code, 302)
 
-        logged_in = self.login(
-            username=self._test_case_superuser.username, password=new_password
-        )
-        self.assertTrue(logged_in)
+        self.assertNotIn(INTERNAL_RESET_SESSION_TOKEN, self.client.session)
 
-        response = self._request_authenticated_view()
-        self.assertEqual(response.status_code, 200)
+        self._test_case_superuser.refresh_from_db()
+        self.assertTrue(self._test_case_superuser.check_password(new_password))
 
     def test_username_login_redirect(self):
         TEST_REDIRECT_URL = reverse(viewname='common:about_view')
