@@ -2,7 +2,6 @@
 cssmin
 django-autoadmin
 django-suit
-django-celery
 django-compressor
 django-filetransfers
 django-rest-swagger
