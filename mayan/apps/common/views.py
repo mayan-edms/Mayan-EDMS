@@ -244,6 +244,9 @@ class SetupListView(TemplateView):
                 ),
                 'resolved_links': menu_setup.resolve(context=context),
                 'title': _('Setup items'),
+                'subtitle': _(
+                    'Here you can configure all aspects of the system.'
+                )
             }
         )
         return data
@@ -262,6 +265,9 @@ class ToolsListView(SimpleView):
         return {
             'resolved_links': self.get_menu_links(),
             'title': _('Tools'),
+            'subtitle': _(
+                'These modules are used to do system maintenance.'
+            )
         }
 
 
