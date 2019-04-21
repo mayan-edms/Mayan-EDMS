@@ -69,7 +69,7 @@ class MayanPasswordChangeDoneView(PasswordChangeDoneView):
             message=_('Your password has been successfully changed.'),
             request=self.request
         )
-        return redirect(to='common:current_user_details')
+        return redirect(to='user_management:current_user_details')
 
 
 class MayanPasswordChangeView(PasswordChangeView):

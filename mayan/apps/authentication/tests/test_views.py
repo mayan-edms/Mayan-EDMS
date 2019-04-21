@@ -19,6 +19,25 @@ from ..settings import setting_maximum_session_length
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
 
 
+class CurrentUserViewTestCase(GenericViewTestCase):
+    def test_current_user_set_password_view(self):
+        new_password = 'new_password_123'
+
+        response = self.post(
+            viewname='authentication:password_change_view', data={
+                'old_password': self._test_case_user.cleartext_password,
+                'new_password1': new_password,
+                'new_password2': new_password
+            }, follow=True
+            # The follow is to test this and the next redirect, two tests in
+            # one.
+        )
+        self.assertEqual(response.status_code, 200)
+
+        self._test_case_user.refresh_from_db()
+        self.assertTrue(self._test_case_user.check_password(raw_password=new_password))
+
+
 class UserLoginTestCase(GenericViewTestCase):
     """
     Test that users can login via the supported authentication methods
