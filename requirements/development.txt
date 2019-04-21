@@ -7,7 +7,7 @@ django-rosetta==0.9.2
 
 flake8==3.7.7
 
-ipython==7.4.0
+ipython==5.5.0
 
 readme==0.7.1
 
