@@ -108,6 +108,8 @@
 * Add support kwargs to the SourceColumn class.
 * Improve the event widgets, views and tests.
 * Add mailer use event.
+* Remove the include fontawesome and download it from
+  the NPMregistry.
 
 3.1.11 (2019-04-XX)
 ===================
