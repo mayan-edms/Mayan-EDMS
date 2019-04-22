@@ -110,6 +110,7 @@
 * Add mailer use event.
 * Remove the include fontawesome and download it from
   the NPMregistry.
+* Fix issue installing scoped NPM packages.
 
 3.1.11 (2019-04-XX)
 ===================
@@ -120,7 +121,7 @@
 * Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
   block when calculating a document's checksum.
 
-3.1.10 (2019-04-04)
+a3.1.10 (2019-04-04)
 ===================
 * Backport test case improvements from the development branch. Add random
   primary key mixin. Split test case code into mixins. Make the view test

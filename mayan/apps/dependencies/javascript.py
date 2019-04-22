@@ -18,11 +18,10 @@ from django.utils.functional import cached_property
 from mayan.apps.storage.utils import mkdtemp
 
 from .exceptions import DependenciesException
-
-DEFAULT_REGISTRY_URL = 'http://registry.npmjs.com'
-DEFAULT_MODULE_DIRECTORY = 'node_modules'
-DEFAULT_PACKAGE_FILENAME = 'package.json'
-DEFAULT_LOCK_FILENAME = 'package-lock.json'
+from .literals import (
+    DEFAULT_LOCK_FILENAME, DEFAULT_MODULE_DIRECTORY, DEFAULT_PACKAGE_FILENAME,
+    DEFAULT_REGISTRY_URL,
+)
 
 
 class NPMPackage(object):
@@ -49,21 +48,25 @@ class NPMPackage(object):
             )
 
     def extract(self):
-        shutil.rmtree(
-            path=force_text(
-                Path(
-                    self.registry.module_directory, self.name
-                )
-            ), ignore_errors=True
+        download_path = force_text(
+            Path(
+                self.registry.module_directory, self.name
+            )
         )
+        shutil.rmtree(path=download_path, ignore_errors=True)
 
-        with tarfile.open(name=force_text(self.get_tar_file_path()), mode='r') as file_object:
+        compressed_filepath = force_text(self.get_tar_file_path())
+        with tarfile.open(name=compressed_filepath, mode='r') as file_object:
             file_object.extractall(
                 path=force_text(self.registry.module_directory)
             )
 
+        target_path = Path(self.registry.module_directory, self.name)
+        # Scoped packages are nested under a parent directory
+        # create it to avoid rename errors.
+        target_path.mkdir(parents=True)
         Path(self.registry.module_directory, 'package').rename(
-            target=Path(self.registry.module_directory, self.name)
+            target=target_path
         )
 
     def get_algorithm_function(self):
