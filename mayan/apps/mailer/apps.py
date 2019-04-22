@@ -14,10 +14,15 @@ from mayan.apps.common.menus import (
     menu_tools
 )
 from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.events import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 
 from .classes import MailerBackend
+from .events import event_email_sent
 from .links import (
     link_send_document_link, link_send_document, link_send_multiple_document,
     link_send_multiple_document_link, link_system_mailer_error_log,
@@ -42,6 +47,7 @@ class MailerApp(MayanAppConfig):
 
     def ready(self):
         super(MailerApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -51,6 +57,10 @@ class MailerApp(MayanAppConfig):
         UserMailer = self.get_model('UserMailer')
 
         MailerBackend.initialize()
+
+        ModelEventType.register(
+            model=UserMailer, event_types=(event_email_sent,)
+        )
 
         SourceColumn(
             source=LogEntry, label=_('Date and time'), attribute='datetime'
@@ -105,7 +115,9 @@ class MailerApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_user_mailer_log_list
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_user_mailer_log_list
             ), sources=(UserMailer,)
         )
 
@@ -140,3 +152,5 @@ class MailerApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_system_mailer_error_log,))
 
         menu_setup.bind_links(links=(link_user_mailer_setup,))
+
+        registry.register(UserMailer)

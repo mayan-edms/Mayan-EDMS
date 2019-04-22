@@ -12,105 +12,59 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS, TEST_USER_MAILER_BACKEND_PATH,
-    TEST_USER_MAILER_LABEL, TEST_RECIPIENTS_MULTIPLE_COMMA,
+    TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS, TEST_RECIPIENTS_MULTIPLE_COMMA,
     TEST_RECIPIENTS_MULTIPLE_COMMA_RESULT, TEST_RECIPIENTS_MULTIPLE_MIXED,
     TEST_RECIPIENTS_MULTIPLE_MIXED_RESULT, TEST_RECIPIENTS_MULTIPLE_SEMICOLON,
     TEST_RECIPIENTS_MULTIPLE_SEMICOLON_RESULT
 )
 from .mailers import TestBackend
-from .mixins import MailerTestMixin
+from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
-class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
-    def setUp(self):
-        super(MailerViewsTestCase, self).setUp()
-        self.login_user()
-
-    def _request_document_link_send(self):
-        return self.post(
-            'mailer:send_document_link', args=(self.document.pk,),
-            data={
-                'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
-                ),
-                'user_mailer': self.user_mailer.pk
-            },
-        )
-
-    def _request_document_send(self):
-        return self.post(
-            'mailer:send_document', args=(self.document.pk,),
-            data={
-                'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
-                ),
-                'user_mailer': self.user_mailer.pk
-            },
-        )
-
-    def _request_user_mailer_create(self):
-        return self.post(
-            'mailer:user_mailer_create', args=(
-                TEST_USER_MAILER_BACKEND_PATH,
-            ), data={
-                'default': True,
-                'enabled': True,
-                'label': TEST_USER_MAILER_LABEL,
-            }, follow=True
-        )
-
-    def _request_user_mailer_delete(self):
-        return self.post(
-            'mailer:user_mailer_delete', args=(self.user_mailer.pk,)
-        )
-
-    def _request_user_mailer_test(self):
-        return self.post(
-            'mailer:user_mailer_test', args=(self.user_mailer.pk,), data={
-                'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
-                )
-            }, follow=True
-        )
-
+class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericDocumentViewTestCase):
     def test_mail_link_view_no_permissions(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        response = self._request_document_link_send()
+        response = self._request_test_document_link_send_view()
 
         self.assertContains(
-            response, 'Select a valid choice', status_code=200
+            response=response, text='Select a valid choice', status_code=200
         )
 
-    def test_mail_link_view_with_permission(self):
-        self._create_user_mailer()
+    def test_mail_link_view_with_access(self):
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_link)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_link
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
-        self._request_document_link_send()
-
+        self._request_test_document_link_send_view()
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
     def test_mail_document_view_no_permissions(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        response = self._request_document_send()
+        response = self._request_test_document_send_view()
         self.assertContains(
-            response, 'Select a valid choice', status_code=200
+            response=response, text='Select a valid choice', status_code=200
         )
 
-    def test_mail_document_view_with_permission(self):
-        self._create_user_mailer()
+    def test_mail_document_view_with_access(self):
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_send_document)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_send_document
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
-        self._request_document_send()
-
+        self._request_test_document_send_view()
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -118,101 +72,98 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
     def test_user_mailer_create_view_no_permissions(self):
         self.grant_permission(permission=permission_user_mailer_view)
 
-        response = self._request_user_mailer_create()
-
+        response = self._request_test_user_mailer_create_view()
         self.assertNotContains(
             response, text=TestBackend.label, status_code=403
         )
+
         self.assertEqual(UserMailer.objects.count(), 0)
 
     def test_user_mailer_create_view_with_permissions(self):
         self.grant_permission(permission=permission_user_mailer_create)
         self.grant_permission(permission=permission_user_mailer_view)
 
-        response = self._request_user_mailer_create()
-
-        self.assertContains(
-            response, text=TestBackend.label, status_code=200
-        )
+        response = self._request_test_user_mailer_create_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(UserMailer.objects.count(), 1)
 
     def test_user_mailer_delete_view_no_permissions(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self._request_user_mailer_delete()
+        response = self._request_test_user_mailer_delete_view()
+        self.assertEqual(response.status_code, 403)
 
         self.assertQuerysetEqual(
-            UserMailer.objects.all(), (repr(self.user_mailer),)
+            UserMailer.objects.all(), (repr(self.test_user_mailer),)
         )
 
     def test_user_mailer_delete_view_with_access(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.user_mailer, permission=permission_user_mailer_delete
+            obj=self.test_user_mailer, permission=permission_user_mailer_delete
         )
 
-        self._request_user_mailer_delete()
+        response = self._request_test_user_mailer_delete_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(UserMailer.objects.count(), 0)
 
     def test_user_mailer_list_view_no_permissions(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        response = self.get(
-            'mailer:user_mailer_list',
-        )
+        response = self._request_test_user_mailer_list_view()
         self.assertNotContains(
-            response, text=self.user_mailer.label, status_code=200
+            response, text=self.test_user_mailer.label, status_code=200
         )
 
-    def test_user_mailer_list_view_with_permissions(self):
-        self._create_user_mailer()
+    def test_user_mailer_list_view_with_access(self):
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_user_mailer_view)
-
-        response = self.get(
-            'mailer:user_mailer_list',
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_send_document
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_view
         )
 
+        response = self._request_test_user_mailer_list_view()
         self.assertContains(
-            response, text=self.user_mailer.label, status_code=200
+            response=response, text=self.test_user_mailer.label, status_code=200
         )
 
     def test_user_mailer_test_view_no_permissions(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        response = self._request_user_mailer_test()
-
+        response = self._request_test_user_mailer_test_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(len(mail.outbox), 0)
 
     def test_user_mailer_test_view_with_access(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.user_mailer, permission=permission_user_mailer_use
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
 
-        response = self._request_user_mailer_test()
-
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_user_mailer_test_view()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
     def test_send_multiple_recipients_comma(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.user_mailer, permission=permission_user_mailer_use
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
-        response = self._request_user_mailer_test()
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_user_mailer_test_view()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(
@@ -220,15 +171,15 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_send_multiple_recipients_mixed(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.user_mailer, permission=permission_user_mailer_use
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
-        response = self._request_user_mailer_test()
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_user_mailer_test_view()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(
@@ -236,15 +187,15 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_send_multiple_recipients_semicolon(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.user_mailer, permission=permission_user_mailer_use
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
-        response = self._request_user_mailer_test()
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_user_mailer_test_view()
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(
@@ -252,13 +203,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_link_view_recipients_comma(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_link)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_link
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
-        self._request_document_link_send()
+        response = self._request_test_document_link_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -267,13 +223,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_link_view_recipients_mixed(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_link)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_link
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
-        self._request_document_link_send()
+        response = self._request_test_document_link_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -282,13 +243,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_link_view_recipients_semicolon(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_link)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_link
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
-        self._request_document_link_send()
+        response = self._request_test_document_link_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -297,13 +263,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_document_view_recipients_comma(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_send_document)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_send_document
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
-        self._request_document_send()
+        response = self._request_test_document_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -312,13 +283,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_document_view_recipients_mixed(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_send_document)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_send_document
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
-        self._request_document_send()
+        response = self._request_test_document_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -327,13 +303,18 @@ class MailerViewsTestCase(MailerTestMixin, GenericDocumentViewTestCase):
         )
 
     def test_mail_document_view_recipients_semicolon(self):
-        self._create_user_mailer()
+        self._create_test_user_mailer()
 
-        self.grant_permission(permission=permission_mailing_send_document)
-        self.grant_permission(permission=permission_user_mailer_use)
+        self.grant_access(
+            obj=self.test_document, permission=permission_mailing_send_document
+        )
+        self.grant_access(
+            obj=self.test_user_mailer, permission=permission_user_mailer_use
+        )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
-        self._request_document_send()
+        response = self._request_test_document_send_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)

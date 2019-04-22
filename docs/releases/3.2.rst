@@ -139,6 +139,7 @@ Other changes
 * Add support for showing the current user's events.
 * Add support kwargs to the SourceColumn class.
 * Improve the event widgets, views and tests.
+* Add mailer use event.
 
 Removals
 --------

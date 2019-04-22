@@ -107,7 +107,8 @@
 * Add support for showing the current user's events.
 * Add support kwargs to the SourceColumn class.
 * Improve the event widgets, views and tests.
-  
+* Add mailer use event.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

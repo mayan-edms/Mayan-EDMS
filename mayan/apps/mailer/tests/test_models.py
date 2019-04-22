@@ -16,16 +16,16 @@ from .mixins import MailerTestMixin
 
 class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
     def test_send_simple(self):
-        self._create_user_mailer()
-        self.user_mailer.send(to=TEST_EMAIL_ADDRESS)
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
     def test_send_simple_with_html(self):
-        self._create_user_mailer()
-        self.user_mailer.send(to=TEST_EMAIL_ADDRESS, body=TEST_BODY_HTML)
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS, body=TEST_BODY_HTML)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -33,8 +33,8 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(mail.outbox[0].alternatives[0][0], TEST_BODY_HTML)
 
     def test_send_attachment(self):
-        self._create_user_mailer()
-        self.user_mailer.send_document(
+        self._create_test_user_mailer()
+        self.test_user_mailer.send_document(
             to=TEST_EMAIL_ADDRESS, document=self.document, as_attachment=True
         )
 
@@ -50,8 +50,8 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
             )
 
     def test_send_multiple_recipients_comma(self):
-        self._create_user_mailer()
-        self.user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_COMMA)
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_COMMA)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -60,8 +60,8 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         )
 
     def test_send_multiple_recipients_semicolon(self):
-        self._create_user_mailer()
-        self.user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_SEMICOLON)
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_SEMICOLON)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -70,8 +70,8 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         )
 
     def test_send_multiple_recipient_mixed(self):
-        self._create_user_mailer()
-        self.user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_MIXED)
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_MIXED)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
