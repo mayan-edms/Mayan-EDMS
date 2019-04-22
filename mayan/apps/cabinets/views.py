@@ -74,6 +74,7 @@ class CabinetChildAddView(SingleObjectCreateView):
             'title': _(
                 'Add new level to: %s'
             ) % self.get_object().get_full_path(),
+            'object': self.get_object()
         }
 
 
