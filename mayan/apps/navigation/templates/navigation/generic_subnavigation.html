@@ -4,9 +4,6 @@
 {% if link|get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-            {% if link.icon %}
-            <i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>
-            {% endif %}
             {% if link.icon_class %}{{ link.icon_class.render }}{% endif %}
             {{ link.label }}
             <span class="caret"></span>

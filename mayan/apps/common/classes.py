@@ -20,9 +20,11 @@ class Collection(object):
     def get_all(cls):
         return sorted(cls._registry, key=lambda entry: entry._order)
 
-    def __init__(self, label, icon=None, icon_class=None, link=None, queryset=None, model=None, order=None):
+    def __init__(
+        self, label, icon_class=None, link=None, queryset=None, model=None,
+        order=None
+    ):
         self._label = label
-        self._icon = icon
         self._icon_class = icon_class
         self._link = link
         self._queryset = queryset
@@ -39,7 +41,6 @@ class Collection(object):
         self.label = self._label
         self.url = None
         if self._link:
-            self.icon = getattr(self._link, 'icon', self._icon)
             self.icon_class = getattr(self._link, 'icon_class', self._icon_class)
             self.url = reverse(viewname=self._link.view, args=self._link.args)
         return ''

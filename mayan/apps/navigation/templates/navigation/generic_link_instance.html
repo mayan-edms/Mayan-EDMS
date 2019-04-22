@@ -4,7 +4,7 @@
     <li class="text-center link-text-span" >{{ link.text }}</li>
 {% else %}
     {% if link.disabled %}
-        <a class="{{ link.html_extra_classes }} {% if link_classes %}{{ link_classes }} {% else %}btn {% if 'dangerous' in link.tags %}btn-danger{% else %}btn-primary{% endif %} btn-xs{% endif %} {% if link.active %}{{ link_class_active }}{% endif %} {% if 'new_window' in link.tags %}new_window{% endif %} disabled" disabled='disabled' style="cursor: default;" href="#">{% if link.icon %}<i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>{% endif %}{% if link.icon_class %}{{ link.icon_class.render }}{% endif %} {{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %}&nbsp;{% endif %}{% endif %}
+        <a class="{{ link.html_extra_classes }} {% if link_classes %}{{ link_classes }} {% else %}btn {% if 'dangerous' in link.tags %}btn-danger{% else %}btn-primary{% endif %} btn-xs{% endif %} {% if link.active %}{{ link_class_active }}{% endif %} {% if 'new_window' in link.tags %}new_window{% endif %} disabled" disabled='disabled' style="cursor: default;" href="#">{% if link.icon_class %}{{ link.icon_class.render }}{% endif %} {{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}</a>{% if horizontal %}{% if not forloop.last %}&nbsp;{% endif %}{% endif %}
     {% else %}
         <a
             class="{{ link.html_extra_classes }} {% if link_classes %}{{ link_classes }} {% else %}btn {% if 'dangerous' in link.tags %}btn-danger{% else %}btn-primary{% endif %} btn-xs{% endif %} {% if link.active %}{{ link_class_active }}{% endif %} {% if 'new_window' in link.tags %}new_window{% endif %}"
@@ -13,10 +13,7 @@
             {% endfor %}
 
         href="{{ link.url }}"
-        >{% if link.icon %}{% if not hide_icon %}
-            <i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>
-        {% endif %}{% endif %}
-        {% if link.icon_class and not hide_icon %}{{ link.icon_class.render }}{% endif %}
+        >{% if link.icon_class and not hide_icon %}{{ link.icon_class.render }}{% endif %}
         {{ link.text|default:'' }}{% if link.badge_text %}&nbsp;<span class="badge">{{ link.badge_text }}</span>
         {% endif %}{% if link.error %} - {{ link.error }}{% endif %}
         </a>{% if horizontal %}{% if not forloop.last %}&nbsp;{% endif %}{% endif %}
