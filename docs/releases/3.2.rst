@@ -135,6 +135,7 @@ Other changes
 * Add user created and user edited events.
 * Add group created and group edited events.
 * Add support for SourceColumn widgets.
+* Improve styling of the template debug view.
 
 Removals
 --------

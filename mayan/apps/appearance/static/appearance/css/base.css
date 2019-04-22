@@ -335,6 +335,14 @@ a i {
     }
 }
 
+/* Imitate the default look of Django's debug template */
+.pre-server-error {
+    background-color:#ffe7ae;
+    color: black;
+    font-size: 110%;
+    font-weight: bold;
+}
+
 /*
  * Main content
  */

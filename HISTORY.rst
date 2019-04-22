@@ -103,7 +103,8 @@
 * Add user created and user edited events.
 * Add group created and group edited events.
 * Add support for SourceColumn widgets.
-
+* Improve styling of the template debug view.
+  
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.
