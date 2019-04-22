@@ -1,9 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
+from django.urls import Resolver404, resolve
 
 from mayan.apps.permissions import Permission
+
+logger = logging.getLogger(__name__)
 
 
 def get_cascade_condition(app_label, model_name, object_permission, view_permission=None):
@@ -37,3 +42,20 @@ def get_cascade_condition(app_label, model_name, object_permission, view_permiss
         return queryset.count() > 0
 
     return condition
+
+
+def get_current_view_name(request):
+    current_path = request.META['PATH_INFO']
+
+    # Get sources: view name, view objects
+    try:
+        current_view_name = resolve(current_path).view_name
+    except Resolver404:
+        # Can't figure out which view corresponds to this URL.
+        # Most likely it is an invalid URL.
+        logger.warning(
+            'Can\'t figure out which view corresponds to this '
+            'URL: %s; aborting menu resolution.', current_path
+        )
+    else:
+        return current_view_name

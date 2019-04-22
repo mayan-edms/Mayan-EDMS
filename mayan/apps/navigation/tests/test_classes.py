@@ -29,7 +29,8 @@ class LinkClassTestCase(GenericViewTestCase):
         self.add_test_view(test_object=self.test_object)
 
         self.namespace = PermissionNamespace(
-            TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT
+            label=TEST_PERMISSION_NAMESPACE_TEXT,
+            name=TEST_PERMISSION_NAMESPACE_NAME
         )
 
         self.test_permission = self.namespace.add_permission(
@@ -45,32 +46,30 @@ class LinkClassTestCase(GenericViewTestCase):
         Permission.invalidate_cache()
 
     def test_link_resolve(self):
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
+
         context = Context({'request': response.wsgi_request})
 
         resolved_link = self.link.resolve(context=context)
-
-        self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
+        self.assertEqual(
+            resolved_link.url, reverse(viewname=TEST_VIEW_NAME)
+        )
 
     def test_link_permission_resolve_no_permission(self):
-        self.login_user()
-
         link = Link(
             permissions=(self.test_permission,), text=TEST_LINK_TEXT,
             view=TEST_VIEW_NAME
         )
 
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
         response.context.update({'request': response.wsgi_request})
+
         context = Context(response.context)
 
         resolved_link = link.resolve(context=context)
-
         self.assertEqual(resolved_link, None)
 
     def test_link_permission_resolve_with_permission(self):
-        self.login_user()
-
         link = Link(
             permissions=(self.test_permission,), text=TEST_LINK_TEXT,
             view=TEST_VIEW_NAME
@@ -78,17 +77,16 @@ class LinkClassTestCase(GenericViewTestCase):
 
         self.grant_access(obj=self.test_object, permission=self.test_permission)
 
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
         response.context.update({'request': response.wsgi_request})
+
         context = Context(response.context)
 
         resolved_link = link.resolve(context=context)
-
-        self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
+        self.assertEqual(resolved_link.url, reverse(viewname=TEST_VIEW_NAME))
 
     def test_link_permission_resolve_with_acl(self):
         # ACL is tested agains the resolved_object or just {{ object }} if not
-
         link = Link(
             permissions=(self.test_permission,), text=TEST_LINK_TEXT,
             view=TEST_VIEW_NAME
@@ -96,14 +94,14 @@ class LinkClassTestCase(GenericViewTestCase):
 
         self.grant_access(obj=self.test_object, permission=self.test_permission)
 
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
         response.context.update({'request': response.wsgi_request})
+
         context = Context(response.context)
 
         resolved_link = link.resolve(context=context)
-
         self.assertNotEqual(resolved_link, None)
-        self.assertEqual(resolved_link.url, reverse(TEST_VIEW_NAME))
+        self.assertEqual(resolved_link.url, reverse(viewname=TEST_VIEW_NAME))
 
     def test_link_with_unicode_querystring_request(self):
         url = furl(reverse(TEST_VIEW_NAME))
@@ -130,7 +128,6 @@ class LinkClassTestCase(GenericViewTestCase):
         context = Context({'request': response.wsgi_request})
 
         resolved_link = self.link.resolve(context=context)
-
         self.assertEqual(
             resolved_link.url,
             '{}?{}'.format(TEST_URL, TEST_QUERYSTRING_TWO_KEYS)
@@ -184,10 +181,10 @@ class MenuClassTestCase(GenericViewTestCase):
     def test_null_source_link_unbinding(self):
         self.menu.bind_links(links=(self.link,))
 
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
         context = Context({'request': response.wsgi_request})
         self.assertEqual(
-            self.menu.resolve(context=context)[0][0].link, self.link
+            self.menu.resolve(context=context)[0]['links'][0].link, self.link
         )
 
         self.menu.unbind_links(links=(self.link,))
@@ -197,10 +194,12 @@ class MenuClassTestCase(GenericViewTestCase):
     def test_null_source_submenu_unbinding(self):
         self.menu.bind_links(links=(self.sub_menu,))
 
-        response = self.get(TEST_VIEW_NAME)
+        response = self.get(viewname=TEST_VIEW_NAME)
         context = Context({'request': response.wsgi_request})
 
-        self.assertEqual(self.menu.resolve(context=context), [[self.sub_menu]])
+        self.assertEqual(
+            self.menu.resolve(context=context)[0]['links'], [self.sub_menu]
+        )
 
         self.menu.unbind_links(links=(self.sub_menu,))
 

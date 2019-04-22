@@ -22,7 +22,7 @@
 {% if appearance_type == 'plain' %}
     {% block content_plain %}{% endblock %}
 {% else %}
-    <div class="container-fluid">
+    <div class="">
         <div class="row">
             <div class="col-xs-12">
                 {% check_sqlite as check_sqlite %}
@@ -36,6 +36,86 @@
                 {% endblock %}
             </div>
         </div>
+
+        {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
+
+        <div class="row">
+            <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
+                {% include 'appearance/calculate_form_title.html' %}
+
+                {# action menu #}
+                {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
+                {% if action_menus_link_results %}
+                    <div class="pull-right btn-group" id="menu-actions">
+                        <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+                            {% trans 'Actions' %}
+                            <span class="caret"></span>
+                            <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for menus_link_result in action_menus_link_results %}
+                                {% if action_menus_link_results|length > 1 %}
+                                    <li class="dropdown-header">{{ menus_link_result.menu.label }}</li>
+                                {% endif %}
+
+                                {% for link_group in menus_link_result.link_groups %}
+                                    {% if navigation_object_list %}
+
+                                        {% ifchanged link_group.object %}
+                                            <li class="dropdown-header">{% common_get_object_verbose_name obj=link_group.object %}</li>
+                                        {% endifchanged %}
+                                    {% endif %}
+
+                                    {% with link_group.links as object_navigation_links %}
+                                    {% with 'true' as as_li %}
+                                    {% with 'true' as hide_active_anchor %}
+                                    {% with 'btn-sm' as link_classes %}
+                                        {% include 'navigation/generic_navigation.html' %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                    {% endwith %}
+
+                                    {% if not forloop.last and link_group %}
+                                        <li class="divider"></li>
+                                    {% endif %}
+
+                                {% endfor %}
+                                {% if not forloop.last and menus_link_result %}
+                                    <li class="divider"></li>
+                                {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                {% endif %}
+
+                {% block content %}{% endblock %}
+                {% block footer %}{% endblock %}
+            </div>
+
+            {% if facet_menus_link_results %}
+                <div id="sidebar">
+                    <div class="pull-right list-group">
+                        {% for menu_link_result in facet_menus_link_results %}
+                            {% for link_group in menu_link_result.link_groups %}
+                                {% with link_group.links as object_navigation_links %}
+                                {% with 'true' as hide_active_anchor %}
+                                {% with 'active' as link_class_active %}
+                                {% with 'list-group-item btn-sm' as link_classes %}
+                                    {% include 'navigation/generic_navigation.html' %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+{% comment %}
 
         {% get_menus_links names='object,sidebar,secondary' sort_results=True as links %}
         {% get_menu_links name='facet' sort_results=True as form_navigation_links %}
@@ -97,6 +177,8 @@
                 </div>
             {% endif %}
         </div>
+{% endcomment %}
+
     </div>
 {% endif %}
 

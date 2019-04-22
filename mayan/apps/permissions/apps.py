@@ -9,7 +9,7 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_multi_item, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import perform_upgrade
 
@@ -47,13 +47,17 @@ class PermissionsApp(MayanAppConfig):
             )
         )
 
-        menu_object.bind_links(
-            links=(link_group_roles,), position=98, sources=(Group,)
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_role_groups, link_role_permissions,
+            ), sources=(Role,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_group_roles,), sources=(Group,)
         )
         menu_object.bind_links(
             links=(
-                link_role_edit, link_role_groups, link_role_permissions,
-                link_acl_list, link_role_delete
+                link_role_delete, link_role_edit
             ), sources=(Role,)
         )
         menu_multi_item.bind_links(

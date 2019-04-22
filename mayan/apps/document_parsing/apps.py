@@ -12,7 +12,8 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
-    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
+    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
+    menu_tools
 )
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload
@@ -145,15 +146,15 @@ class DocumentParsingApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_page_content,), sources=(DocumentPage,)
         )
+        menu_list_facet.bind_links(
+            links=(link_document_type_parsing_settings,),
+            sources=(DocumentType,)
+        )
         menu_multi_item.bind_links(
             links=(link_document_submit_multiple,), sources=(Document,)
         )
         menu_object.bind_links(
             links=(link_document_submit,), sources=(Document,)
-        )
-        menu_object.bind_links(
-            links=(link_document_type_parsing_settings,), sources=(DocumentType,),
-            position=99
         )
         menu_secondary.bind_links(
             links=(

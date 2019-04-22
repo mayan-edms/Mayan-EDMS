@@ -12,13 +12,15 @@
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            {% get_menu_links link.name as menu_links %}
-            {% for linkset in menu_links %}
-                {% with '' as li_class_active %}
-                {% with linkset as object_navigation_links %}
-                    {% include 'navigation/generic_navigation.html' %}
-                {% endwith %}
-                {% endwith %}
+            {% navigation_resolve_menu name=link.name as sub_menus_results %}
+            {% for sub_menu_results in sub_menus_results %}
+                {% for link_group in sub_menu_results.link_groups %}
+                    {% with '' as li_class_active %}
+                    {% with link_group.links as object_navigation_links %}
+                        {% include 'navigation/generic_navigation.html' %}
+                    {% endwith %}
+                    {% endwith %}
+                {% endfor %}
             {% endfor %}
         </ul>
     </li>

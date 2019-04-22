@@ -12,8 +12,8 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.menus import (
-    menu_facet, menu_main, menu_object, menu_secondary, menu_setup,
-    menu_sidebar, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
+    menu_setup, menu_sidebar, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
 from mayan.apps.common.widgets import TwoStateWidget
@@ -262,13 +262,17 @@ class DocumentStatesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_workflow_instance_list,), sources=(Document,)
         )
+        menu_list_facet.bind_links(
+            links=(
+                link_setup_workflow_document_types,
+                link_setup_workflow_states, link_setup_workflow_transitions,
+                link_workflow_preview, link_acl_list
+            ), sources=(Workflow,)
+        )
         menu_main.bind_links(links=(link_workflow_list,), position=10)
         menu_object.bind_links(
             links=(
-                link_setup_workflow_states, link_setup_workflow_transitions,
-                link_setup_workflow_document_types, link_setup_workflow_edit,
-                link_acl_list, link_workflow_preview,
-                link_setup_workflow_delete
+                link_setup_workflow_delete, link_setup_workflow_edit
             ), sources=(Workflow,)
         )
         menu_object.bind_links(
@@ -291,12 +295,14 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_instance_transition
             ), sources=(WorkflowInstance,)
         )
-        menu_object.bind_links(
+
+        menu_list_facet.bind_links(
             links=(
-                link_workflow_document_list, link_workflow_state_list,
+                link_workflow_document_list,
+                link_workflow_state_list,
             ), sources=(WorkflowRuntimeProxy,)
         )
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(
                 link_workflow_state_document_list,
             ), sources=(WorkflowStateRuntimeProxy,)

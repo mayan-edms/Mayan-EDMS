@@ -334,3 +334,70 @@ a i {
         transform: rotate(360deg);
     }
 }
+
+/*
+ * Main content
+ */
+
+.main {
+}
+
+/* Remove scroll bar caused by bootstraps -15px on .row margins */
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .main {
+        padding-right: 0px;
+        padding-left: 0px;
+        /*margin-left: 210px;*/
+    }
+}
+
+
+/* Side bar */
+#menu-actions {
+    position: fixed;
+    right: 5px;
+    top: 65px;
+    z-index: 1020;
+}
+
+#viewport {
+    width: 100%;
+}
+
+.has-sidebar {
+    padding-right: 0px;
+}
+
+#sidebar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #sidebar {
+        bottom: 0;
+        display: block;
+        overflow-x: visible;
+        overflow-y: auto;
+        padding-top: 10px;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 150px;
+        z-index: 1000;
+    }
+
+    .has-sidebar {
+        padding-right: 130px;
+    }
+}

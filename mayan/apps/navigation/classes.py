@@ -6,33 +6,37 @@ import logging
 from furl import furl
 
 from django.apps import apps
-from django.conf import settings
 from django.contrib.admin.utils import label_for_field
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import resolve_url
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
-from django.urls import Resolver404, resolve
+from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
 
+from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import return_attrib
 from mayan.apps.permissions import Permission
+
+from .utils import get_current_view_name
 
 logger = logging.getLogger(__name__)
 
 
 class ResolvedLink(object):
-    def __init__(self, link, current_view):
-        self.current_view = current_view
+    def __init__(self, link, current_view_name):
+        self.context = None
+        self.current_view_name = current_view_name
         self.disabled = False
         self.link = link
-        self.url = '#'
-        self.context = None
         self.request = None
+        self.url = '#'
+
+    def __repr__(self):
+        return '<ResolvedLink: {}>'.format(self.url)
 
     @property
     def active(self):
-        return self.link.view == self.current_view
+        return self.link.view == self.current_view_name
 
     @property
     def badge_text(self):
@@ -97,12 +101,15 @@ class Menu(object):
         self.__class__._registry[name] = self
         self.non_sorted_sources = non_sorted_sources or []
 
+    def __repr__(self):
+        return '<Menu: {}>'.format(self.name)
+
     def _map_links_to_source(self, links, source, map_variable='bound_links', position=None):
         source_links = getattr(self, map_variable).setdefault(source, [])
 
         for link in links:
             source_links.append(link)
-            self.link_positions[link] = position
+            self.link_positions[link] = position or 0
 
     def add_unsorted_source(self, source):
         self.non_sorted_sources.append(source)
@@ -159,6 +166,24 @@ class Menu(object):
         )
         return resolved_navigation_object_list
 
+    def get_result_position(self, item):
+        """
+        Method to help sort results by position.
+        """
+        if isinstance(item, ResolvedLink):
+            return self.link_positions.get(item.link, 0)
+        else:
+            return self.link_positions.get(item, 0) or 0
+
+    def get_result_label(self, item):
+        """
+        Method to help sort results by label.
+        """
+        if isinstance(item, ResolvedLink):
+            return item.link.text
+        else:
+            return item.label
+
     def resolve(self, context, source=None, sort_results=False):
         if not self.check_condition(context=context):
             return []
@@ -178,15 +203,8 @@ class Menu(object):
                 logger.warning('No request variable, aborting menu resolution')
                 return ()
 
-        current_path = request.META['PATH_INFO']
-
-        # Get sources: view name, view objects
-        try:
-            current_view = resolve(current_path).view_name
-        except Resolver404:
-            # Can't figure out which view corresponds to this URL.
-            # Most likely it is an invalid URL.
-            logger.warning('Can\'t figure out which view corresponds to this URL: %s; aborting menu resolution.', current_path)
+        current_view_name = get_current_view_name(request=request)
+        if not current_view_name:
             return ()
 
         resolved_navigation_object_list = self.get_resolved_navigation_object_list(
@@ -227,18 +245,28 @@ class Menu(object):
                     pass
 
             if resolved_links:
-                result.append(resolved_links)
+                result.append(
+                    {
+                        'object': resolved_navigation_object,
+                        'links': resolved_links
+                    }
+                )
 
         resolved_links = []
         # View links
-        for link in self.bound_links.get(current_view, []):
+        for link in self.bound_links.get(current_view_name, []):
             resolved_link = link.resolve(context=context)
             if resolved_link:
-                if resolved_link.link not in self.unbound_links.get(current_view, ()):
+                if resolved_link.link not in self.unbound_links.get(current_view_name, ()):
                     resolved_links.append(resolved_link)
 
         if resolved_links:
-            result.append(resolved_links)
+            result.append(
+                {
+                    'object': current_view_name,
+                    'links': resolved_links
+                }
+            )
 
         resolved_links = []
 
@@ -256,7 +284,12 @@ class Menu(object):
                         resolved_links.append(resolved_link)
 
         if resolved_links:
-            result.append(resolved_links)
+            result.append(
+                {
+                    'object': None,
+                    'links': resolved_links
+                }
+            )
 
         if result:
             unsorted_source = False
@@ -267,16 +300,15 @@ class Menu(object):
                         break
 
             if sort_results and not unsorted_source:
-                result[0] = sorted(
-                    result[0], key=lambda item: (
-                        item.link.text if isinstance(item, ResolvedLink) else item.label
+                for link_group in result:
+                    link_group['links'] = sorted(
+                        link_group['links'], key=self.get_result_label
                     )
-                )
             else:
-                # Sort links by position value passed during bind
-                result[0] = sorted(
-                    result[0], key=lambda item: (self.link_positions.get(item.link) or 0) if isinstance(item, ResolvedLink) else (self.link_positions.get(item) or 0)
-                )
+                for link_group in result:
+                    link_group['links'] = sorted(
+                        link_group['links'], key=self.get_result_position
+                    )
 
         return result
 
@@ -308,7 +340,7 @@ class Link(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, badge_text=None, text=None, view=None, args=None, condition=None,
+    def __init__(self, text=None, view=None, args=None, badge_text=None, condition=None,
                  conditional_disable=None, description=None, html_data=None,
                  html_extra_classes=None, icon=None, icon_class=None,
                  keep_query=False, kwargs=None, name=None, permissions=None,
@@ -351,7 +383,7 @@ class Link(object):
             request = Variable('request').resolve(context)
 
         current_path = request.META['PATH_INFO']
-        current_view = resolve(current_path).view_name
+        current_view_name = resolve(current_path).view_name
 
         # ACL is tested agains the resolved_object or just {{ object }} if not
         if not resolved_object:
@@ -386,7 +418,9 @@ class Link(object):
             if not self.condition(context):
                 return None
 
-        resolved_link = ResolvedLink(current_view=current_view, link=self)
+        resolved_link = ResolvedLink(
+            current_view_name=current_view_name, link=self
+        )
 
         if self.view:
             view_name = Variable('"{}"'.format(self.view))
@@ -419,7 +453,7 @@ class Link(object):
             try:
                 resolved_link.url = node.render(context)
             except Exception as exception:
-                logger.debug(
+                logger.error(
                     'Error resolving link "%s" URL; %s', self.text, exception
                 )
         elif self.url:
@@ -437,7 +471,7 @@ class Link(object):
             parsed_url = furl(
                 force_str(
                     request.get_full_path() or request.META.get(
-                        'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
+                        'HTTP_REFERER', reverse(setting_home_view.value)
                     )
                 )
             )
@@ -467,7 +501,7 @@ class Separator(Link):
         self.view = None
 
     def resolve(self, *args, **kwargs):
-        result = ResolvedLink(current_view=None, link=self)
+        result = ResolvedLink(current_view_name=None, link=self)
         result.separator = True
         return result
 
@@ -543,7 +577,7 @@ class Text(Link):
         self.view = None
 
     def resolve(self, *args, **kwargs):
-        result = ResolvedLink(current_view=None, link=self)
+        result = ResolvedLink(current_view_name=None, link=self)
         result.context = kwargs.get('context')
         result.text_span = True
         return result

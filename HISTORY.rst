@@ -96,6 +96,9 @@
   manager.
 * Remove the MIMETYPE_FILE_READ_SIZE setting.
 * Use copyfileobj in the document parsers.
+* Backport list facet menu code.
+* Backport sidebar code.
+* CSS updates to maximize usable width.
 
 3.1.11 (2019-04-XX)
 ===================

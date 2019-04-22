@@ -87,14 +87,40 @@
                                 {% endfor %}
 
                                 {% if not hide_links %}
-                                    <p class="text-center">
-                                        {% get_menu_links name='object' source=object as resolved_links %}
-                                        {% for object_navigation_links in resolved_links %}
-                                            {% with 'true' as as_dropdown %}
-                                                {% include 'navigation/generic_navigation.html' %}
-                                            {% endwith %}
-                                        {% endfor %}
-                                    </p>
+
+                                    {% navigation_resolve_menus names='list facet,object' source=object as facet_menus_link_results %}
+
+                                    {% if facet_menus_link_results %}
+                                        <div class="dropdown text-center">
+                                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-default btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                {% trans 'Actions' %}
+                                                <span class="caret"></span>
+                                                <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                {% for facet_menu_link_result in facet_menus_link_results %}
+                                                    {% for link_group in facet_menu_link_result.link_groups %}
+
+                                                        {% with link_group.links as object_navigation_links %}
+                                                        {% with 'true' as as_li %}
+                                                        {% with 'true' as hide_active_anchor %}
+                                                        {% with 'btn-sm' as link_classes %}
+                                                            {% include 'navigation/generic_navigation.html' %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+                                                        {% endwith %}
+
+                                                    {% endfor %}
+
+                                                    {% if not forloop.last and facet_menu_link_result %}
+                                                        <li class="divider"></li>
+                                                    {% endif %}
+
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
 
                             </div>

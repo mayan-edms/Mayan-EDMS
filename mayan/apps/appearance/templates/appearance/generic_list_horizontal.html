@@ -11,10 +11,12 @@
     <div class="well center-block">
         <div class="row">
             {% with 'navigation/large_button_link.html' as link_template %}
-                {% for object_navigation_links in resolved_links %}
-                    {% include 'navigation/generic_navigation.html' %}
+                {% for menu_results in resolved_links %}
+                    {% with menu_results.links as object_navigation_links %}
+                        {% include 'navigation/generic_navigation.html' %}
+                    {% endwith %}
                 {% empty %}
-                    <p class="text-center" colspan=99>
+                    <p class="text-center">
                         {% include 'appearance/no_results.html' %}
                     </p>
                 {% endfor %}

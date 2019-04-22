@@ -15,6 +15,7 @@ menu_about = Menu(
     icon_class=icon_menu_about, label=_('System'), name='about'
 )
 menu_facet = Menu(label=_('Facet'), name='facet')
+menu_list_facet = Menu(label=_('Facet'), name='list facet')
 menu_main = Menu(name='main')
 menu_multi_item = Menu(name='multi item')
 menu_object = Menu(label=_('Actions'), name='object')

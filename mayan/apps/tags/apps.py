@@ -10,7 +10,8 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
-    menu_facet, menu_object, menu_main, menu_multi_item, menu_sidebar
+    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
+    menu_sidebar
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events import ModelEventType
@@ -42,7 +43,7 @@ from .search import tag_search  # NOQA
 
 class TagsApp(MayanAppConfig):
     app_namespace = 'tags'
-    app_urls = 'tags'
+    app_url = 'tags'
     has_rest_api = True
     has_tests = True
     name = 'mayan.apps.tags'
@@ -143,6 +144,14 @@ class TagsApp(MayanAppConfig):
             links=(link_tag_document_list,), sources=(Document,)
         )
 
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_tag_tagged_item_list,
+            ), sources=(Tag,)
+        )
+
         menu_tags.bind_links(
             links=(
                 link_tag_list, link_tag_create
@@ -163,10 +172,7 @@ class TagsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_tag_tagged_item_list, link_tag_edit, link_acl_list,
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-                link_tag_delete
+                link_tag_edit, link_tag_delete
             ),
             sources=(Tag,)
         )

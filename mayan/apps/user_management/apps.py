@@ -10,7 +10,8 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_multi_item, menu_object, menu_secondary, menu_setup, menu_user
+    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
+    menu_user
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.metadata import MetadataLookup
@@ -114,22 +115,31 @@ class UserManagementApp(MayanAppConfig):
             ).render()
         )
 
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_group_members
+            ), sources=(Group,)
+        )
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_user_groups, link_user_set_options
+            ), sources=(User,)
+        )
         menu_multi_item.bind_links(
             links=(link_user_multiple_set_password, link_user_multiple_delete),
             sources=('user_management:user_list',)
         )
         menu_object.bind_links(
-            links=(link_group_edit, link_group_members,),
+            links=(link_group_edit,),
             sources=(Group,)
         )
         menu_object.bind_links(
-            links=(link_acl_list, link_group_delete,), position=99,
+            links=(link_group_delete,), position=99,
             sources=(Group,)
         )
         menu_object.bind_links(
             links=(
-                link_user_edit, link_user_set_password, link_user_groups,
-                link_user_set_options, link_acl_list, link_user_delete
+                link_user_delete, link_user_edit, link_user_set_password
             ), sources=(User,)
         )
         menu_secondary.bind_links(

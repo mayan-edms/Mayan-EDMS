@@ -13,8 +13,8 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem, ModelField, Template
 from mayan.apps.common.menus import (
-    menu_facet, menu_main, menu_object, menu_secondary, menu_setup,
-    menu_sidebar, menu_multi_item, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
+    menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import post_initial_setup
 from mayan.apps.common.widgets import TwoStateWidget
@@ -459,12 +459,17 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document type links
+        menu_list_facet.bind_links(
+            links=(
+                link_document_type_filename_list,
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_events_for_object,
+            ), sources=(DocumentType,)
+        )
+
         menu_object.bind_links(
             links=(
-                link_document_type_edit, link_document_type_filename_list,
-                link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_document_type_delete,
-                link_events_for_object,
+                link_document_type_delete, link_document_type_edit
             ), sources=(DocumentType,)
         )
         menu_object.bind_links(
@@ -572,10 +577,10 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_first,
                 link_document_page_navigation_previous,
                 link_document_page_navigation_next,
-                link_document_page_navigation_last, link_transformation_list
+                link_document_page_navigation_last
             ), sources=(DocumentPage,)
         )
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
         )
 

@@ -11,7 +11,8 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_facet, menu_main, menu_object, menu_secondary, menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
+    menu_setup, menu_tools
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
@@ -183,11 +184,15 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_index_list,), sources=(Document,)
         )
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_index_setup_document_types,
+                link_index_setup_view,
+            ), sources=(Index,)
+        )
         menu_object.bind_links(
             links=(
-                link_index_setup_edit, link_index_setup_view,
-                link_index_setup_document_types, link_acl_list,
-                link_index_setup_delete
+                link_index_setup_delete, link_index_setup_edit,
             ), sources=(Index,)
         )
         menu_object.bind_links(

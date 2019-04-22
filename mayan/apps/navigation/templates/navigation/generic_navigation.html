@@ -1,5 +1,6 @@
 {% load i18n %}
 
+{% spaceless %}
 {% if as_dropdown %}
     <div class="dropdown text-center">
         <button class="btn btn-default dropdown-toggle btn-danger btn-sm" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,3 +24,4 @@
         {% include 'navigation/generic_subnavigation.html' %}
     {% endfor %}
 {% endif %}
+{% endspaceless %}

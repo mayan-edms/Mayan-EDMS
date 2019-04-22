@@ -8,7 +8,8 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_facet, menu_object, menu_secondary, menu_setup, menu_sidebar
+    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup,
+    menu_sidebar
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn
@@ -83,6 +84,12 @@ class LinkingApp(MayanAppConfig):
             links=(link_smart_link_instances_for_document,),
             sources=(Document,)
         )
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_smart_link_document_types,
+                link_smart_link_condition_list,
+            ), sources=(SmartLink,)
+        )
         menu_object.bind_links(
             links=(
                 link_smart_link_condition_edit,
@@ -91,9 +98,7 @@ class LinkingApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_smart_link_edit, link_smart_link_document_types,
-                link_smart_link_condition_list, link_acl_list,
-                link_smart_link_delete
+                link_smart_link_delete, link_smart_link_edit
             ), sources=(SmartLink,)
         )
         menu_object.bind_links(

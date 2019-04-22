@@ -39,8 +39,9 @@ def get_menus_links(context, names, source=None, sort_results=None):
 def get_multi_item_links_form(context, object_list):
     actions = []
     for link_set in Menu.get('multi item').resolve(context=context, source=object_list[0], sort_results=True):
-        for link in link_set:
-            actions.append((link.url, link.text))
+        for link in link_set['links']:
+            if hasattr(link, 'url'):
+                actions.append((link.url, link.text))
 
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
@@ -68,6 +69,35 @@ def get_source_columns(source):
             pass
 
     return SourceColumn.get_for_source(source)
+
+
+@register.simple_tag(takes_context=True)
+def navigation_resolve_menu(context, name, source=None, sort_results=None):
+    result = []
+
+    menu = Menu.get(name)
+    link_groups = menu.resolve(
+        context=context, source=source, sort_results=sort_results
+    )
+
+    if link_groups:
+        result.append({'link_groups': link_groups, 'menu': menu})
+
+    return result
+
+
+@register.simple_tag(takes_context=True)
+def navigation_resolve_menus(context, names, source=None, sort_results=None):
+    result = []
+
+    for name in names.split(','):
+        menu = Menu.get(name=name)
+        link_groups = menu.resolve(context=context, sort_results=sort_results)
+
+        if link_groups:
+            result.append({'link_groups': link_groups, 'menu': menu})
+
+    return result
 
 
 @register.simple_tag(takes_context=True)
