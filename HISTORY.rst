@@ -99,6 +99,7 @@
 * Backport list facet menu code.
 * Backport sidebar code.
 * CSS updates to maximize usable width.
+* Improve partial navigation error messages and display.
 
 3.1.11 (2019-04-XX)
 ===================

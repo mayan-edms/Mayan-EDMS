@@ -131,6 +131,7 @@ Other changes
 * Backport list facet menu code.
 * Backport sidebar code.
 * CSS updates to maximize usable width.
+* Improve partial navigation error messages and display.
 
 Removals
 --------

@@ -160,7 +160,25 @@ class PartialNavigation {
          */
 
         if (djangoDEBUG) {
-            $('#ajax-content').html('<pre class="text-primary" style="background-color:#ffe7ae"><code>' + jqXHR.statusText + '</code></pre>');
+            var errorMessage = null;
+
+            if (jqXHR.status != 0) {
+                errorMessage = jqXHR.responseText || jqXHR.statusText;
+            } else {
+                errorMessage = 'Server communication error.';
+            }
+
+            $('#ajax-content').html(
+                ' \
+                    <div class="row">\
+                    <div class="col-xs-12">\
+                    <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Server Error, status code: ' + jqXHR.status + '</div> \
+                    <pre class="pre-server-error"><code>' +  errorMessage +'</code> \
+                    </pre> \
+                    </div>\
+                    </div>\
+                '
+            );
         } else {
           if (jqXHR.status == 0) {
               $('#modal-server-error .modal-body').html($('#template-error').html());
@@ -170,6 +188,7 @@ class PartialNavigation {
           }
         }
     }
+
 
     setLocation (newLocation, pushState) {
         /*
