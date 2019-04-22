@@ -365,7 +365,8 @@ class UserOptionsEditView(SingleObjectEditView):
         return {
             'title': _(
                 'Edit options for user: %s'
-            ) % self.get_user()
+            ) % self.get_user(),
+            'object': self.get_user()
         }
 
     def get_object(self, queryset=None):
