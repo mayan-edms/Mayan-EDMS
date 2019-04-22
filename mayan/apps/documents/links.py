@@ -8,19 +8,47 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation import Link
 
 from .icons import (
-    icon_clear_image_cache, icon_document_duplicates_list, icon_document_list,
-    icon_document_list_deleted, icon_document_list_favorites,
-    icon_document_list_recent_access, icon_document_list_recent_added,
-    icon_document_page_navigation_first, icon_document_page_navigation_last,
-    icon_document_page_navigation_next, icon_document_page_navigation_previous,
-    icon_document_page_return, icon_document_page_rotate_left,
-    icon_document_page_rotate_right, icon_document_page_zoom_in,
-    icon_document_page_zoom_out, icon_document_pages, icon_document_preview,
-    icon_document_properties, icon_document_type_create,
-    icon_document_type_delete, icon_document_type_edit,
-    icon_document_type_filename_create, icon_document_type_setup,
-    icon_document_version_list, icon_document_version_return_document,
-    icon_document_version_return_list, icon_duplicated_document_list,
+    icon_clear_image_cache,
+    icon_document_download,
+
+    icon_document_edit,
+    icon_document_favorites_add,
+    icon_document_favorites_remove,
+
+    icon_document_quick_download,
+
+    icon_document_duplicates_list,
+    icon_document_list,
+    icon_document_list_deleted,
+    icon_document_list_favorites,
+    icon_document_list_recent_access,
+    icon_document_list_recent_added,
+    icon_document_page_navigation_first,
+    icon_document_page_navigation_last,
+    icon_document_page_navigation_next,
+    icon_document_page_navigation_previous,
+    icon_document_page_return,
+    icon_document_page_rotate_left,
+    icon_document_page_rotate_right,
+    icon_document_page_zoom_in,
+    icon_document_page_zoom_out,
+    icon_document_pages,
+
+    icon_document_preview,
+    icon_document_properties,
+
+    icon_document_type_create,
+    icon_document_type_delete,
+    icon_document_type_edit,
+    icon_document_type_filename_create,
+    icon_document_type_setup,
+
+    icon_document_version_download,
+    icon_document_version_list,
+    icon_document_version_return_document,
+    icon_document_version_return_list,
+
+    icon_duplicated_document_list,
     icon_duplicated_document_scan
 )
 from .permissions import (
@@ -65,22 +93,26 @@ def is_min_zoom(context):
 
 # Facet
 link_document_preview = Link(
-    args='resolved_object.id', icon_class=icon_document_preview,
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_preview',
     permissions=(permission_document_view,),
     text=_('Preview'), view='documents:document_preview',
 )
 link_document_properties = Link(
-    args='resolved_object.id', icon_class=icon_document_properties,
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_properties',
     permissions=(permission_document_view,),
     text=_('Properties'), view='documents:document_properties',
 )
 link_document_version_list = Link(
-    args='resolved_object.pk', icon_class=icon_document_version_list,
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_list',
     permissions=(permission_document_version_view,),
     text=_('Versions'), view='documents:document_version_list',
 )
 link_document_pages = Link(
-    args='resolved_object.pk', icon_class=icon_document_pages,
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_pages',
     permissions=(permission_document_view,), text=_('Pages'),
     view='documents:document_pages',
 )
@@ -88,126 +120,161 @@ link_document_pages = Link(
 # Actions
 link_document_clear_transformations = Link(
     args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_transformations_clear',
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_clear_transformations',
 )
 link_document_clone_transformations = Link(
-    args='resolved_object.id', permissions=(permission_transformation_edit,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_transformations_clone',
+    permissions=(permission_transformation_edit,),
     text=_('Clone transformations'),
     view='documents:document_clone_transformations',
 )
 link_document_delete = Link(
-    args='resolved_object.id', permissions=(permission_document_delete,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_trashed_document_delete',
+    permissions=(permission_document_delete,),
     tags='dangerous', text=_('Delete'), view='documents:document_delete',
 )
 link_document_favorites_add = Link(
     args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_add',
     permissions=(permission_document_view,), text=_('Add to favorites'),
     view='documents:document_add_to_favorites',
 )
 link_document_favorites_remove = Link(
     args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_remove',
     permissions=(permission_document_view,), text=_('Remove from favorites'),
     view='documents:document_remove_from_favorites',
 )
 link_document_trash = Link(
     args='resolved_object.id', permissions=(permission_document_trash,),
+    icon_class_path='mayan.apps.documents.icons.icon_document_trash_send',
     tags='dangerous', text=_('Move to trash'),
     view='documents:document_trash',
 )
 link_document_edit = Link(
     args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_edit',
     permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_edit',
 )
 link_document_document_type_edit = Link(
     args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_change',
     permissions=(permission_document_properties_edit,), text=_('Change type'),
     view='documents:document_document_type_edit',
 )
 link_document_download = Link(
-    args='resolved_object.id', permissions=(permission_document_download,),
-    text=_('Advanced download'), view='documents:document_download_form',
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_download',
+    permissions=(permission_document_download,), text=_('Advanced download'),
+    view='documents:document_download_form',
 )
 link_document_print = Link(
-    args='resolved_object.id', permissions=(permission_document_print,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_print',
+    permissions=(permission_document_print,),
     text=_('Print'), view='documents:document_print',
 )
 link_document_quick_download = Link(
-    args='resolved_object.id', permissions=(permission_document_download,),
-    text=_('Quick download'), view='documents:document_download',
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_quick_download',
+    permissions=(permission_document_download,), text=_('Quick download'),
+    view='documents:document_download',
 )
 link_document_update_page_count = Link(
-    args='resolved_object.pk', permissions=(permission_document_tools,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_count_update',
+    permissions=(permission_document_tools,),
     text=_('Recalculate page count'),
     view='documents:document_update_page_count'
 )
 link_document_restore = Link(
-    permissions=(permission_document_restore,), text=_('Restore'),
+    permissions=(permission_document_restore,),
+    icon_class_path='mayan.apps.documents.icons.icon_trashed_document_restore',
+    text=_('Restore'),
     view='documents:document_restore', args='object.pk'
 )
 link_document_multiple_clear_transformations = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_transformations_clear',
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_multiple_clear_transformations'
 )
 link_document_multiple_trash = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_trash_send',
     tags='dangerous', text=_('Move to trash'),
     view='documents:document_multiple_trash'
 )
 link_document_multiple_delete = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_trashed_document_delete',
     tags='dangerous', text=_('Delete'),
     view='documents:document_multiple_delete'
 )
 link_document_multiple_favorites_add = Link(
     text=_('Add to favorites'),
+    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_add',
     view='documents:document_multiple_add_to_favorites',
 )
 link_document_multiple_favorites_remove = Link(
     text=_('Remove from favorites'),
+    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_remove',
     view='documents:document_multiple_remove_from_favorites',
 )
 link_document_multiple_document_type_edit = Link(
     text=_('Change type'),
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_change',
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    text=_('Advanced download'), view='documents:document_multiple_download_form'
+    icon_class_path='mayan.apps.documents.icons.icon_document_download',
+    text=_('Advanced download'),
+    view='documents:document_multiple_download_form'
 )
 link_document_multiple_update_page_count = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_count_update',
     text=_('Recalculate page count'),
     view='documents:document_multiple_update_page_count'
 )
 link_document_multiple_restore = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_trashed_document_restore',
     text=_('Restore'), view='documents:document_multiple_restore'
 )
 
 # Versions
 link_document_version_download = Link(
-    args='resolved_object.pk', permissions=(permission_document_download,),
-    text=_('Download version'), view='documents:document_version_download_form'
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_download',
+    permissions=(permission_document_download,), text=_('Download version'),
+    view='documents:document_version_download_form'
 )
 link_document_version_return_document = Link(
     args='resolved_object.document.pk',
-    icon_class=icon_document_version_return_document,
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_return_document',
     permissions=(permission_document_view,), text=_('Document'),
     view='documents:document_preview',
 )
 link_document_version_return_list = Link(
     args='resolved_object.document.pk',
-    icon_class=icon_document_version_return_list,
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_return_list',
     permissions=(permission_document_version_view,), text=_('Versions'),
     view='documents:document_version_list',
 )
 link_document_version_view = Link(
-    args='resolved_object.pk', permissions=(permission_document_version_view,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_view',
+    permissions=(permission_document_version_view,),
     text=_('Details'), view='documents:document_version_view'
 )
 
 # Views
 link_document_list = Link(
-    icon_class=icon_document_list, text=_('All documents'),
+    icon_class_path='mayan.apps.documents.icons.icon_document_list',
+    text=_('All documents'),
     view='documents:document_list'
 )
 link_document_list_favorites = Link(
