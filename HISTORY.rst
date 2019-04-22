@@ -112,6 +112,7 @@
   the NPMregistry.
 * Fix issue installing scoped NPM packages.
 * Add new icons classes and templates.
+* Add support for link icon path imports.
 
 3.1.11 (2019-04-XX)
 ===================

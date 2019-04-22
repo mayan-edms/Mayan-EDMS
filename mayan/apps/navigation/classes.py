@@ -12,6 +12,7 @@ from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
+from django.utils.module_loading import import_string
 
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve_attribute, return_attrib
@@ -33,13 +34,13 @@ class Link(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, text=None, view=None, args=None, badge_text=None, condition=None,
-                 conditional_disable=None, description=None, html_data=None,
-                 html_extra_classes=None, icon=None, icon_class=None,
-                 keep_query=False, kwargs=None, name=None, permissions=None,
-                 permissions_related=None, remove_from_query=None, tags=None,
-                 url=None):
-
+    def __init__(
+        self, text=None, view=None, args=None, badge_text=None, condition=None,
+        conditional_disable=None, description=None, html_data=None,
+        html_extra_classes=None, icon_class=None, icon_class_path=None,
+        keep_query=False, kwargs=None, name=None, permissions=None,
+        permissions_related=None, remove_from_query=None, tags=None, url=None
+    ):
         self.args = args or []
         self.badge_text = badge_text
         self.condition = condition
@@ -47,7 +48,6 @@ class Link(object):
         self.description = description
         self.html_data = html_data
         self.html_extra_classes = html_extra_classes
-        self.icon = icon
         self.icon_class = icon_class
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
@@ -59,6 +59,22 @@ class Link(object):
         self.text = text
         self.view = view
         self.url = url
+
+        if icon_class_path:
+            if self.icon_class:
+                raise ImproperlyConfigured(
+                    'Specify the icon_class or the icon_class_path but not '
+                    'both.'
+                )
+            else:
+                try:
+                    self.icon_class = import_string(dotted_path=icon_class_path)
+                except ImportError as exception:
+                    logger.error(
+                        'Exception importing icon: %s; %s', icon_class_path,
+                        exception
+                    )
+                    raise
 
         if name:
             self.__class__._registry[name] = self
@@ -195,12 +211,14 @@ class Menu(object):
     def remove(cls, name):
         del cls._registry[name]
 
-    def __init__(self, name, condition=None, icon=None, icon_class=None, label=None, non_sorted_sources=None):
+    def __init__(
+        self, name, condition=None, icon_class=None, label=None,
+        non_sorted_sources=None
+    ):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
         self.condition = condition
-        self.icon = icon
         self.icon_class = icon_class
         self.name = name
         self.label = label
@@ -470,10 +488,6 @@ class ResolvedLink(object):
     @property
     def html_extra_classes(self):
         return self.link.html_extra_classes
-
-    @property
-    def icon(self):
-        return self.link.icon
 
     @property
     def icon_class(self):
