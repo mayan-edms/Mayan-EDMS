@@ -143,6 +143,7 @@ Other changes
 * Remove the include fontawesome and download it from
   the NPMregistry.
 * Fix issue installing scoped NPM packages.
+* Add new icons classes and templates.
 
 Removals
 --------
