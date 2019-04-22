@@ -22,57 +22,166 @@ from .utils import get_current_view_name
 logger = logging.getLogger(__name__)
 
 
-class ResolvedLink(object):
-    def __init__(self, link, current_view_name):
-        self.context = None
-        self.current_view_name = current_view_name
-        self.disabled = False
-        self.link = link
-        self.request = None
-        self.url = '#'
+class Link(object):
+    _registry = {}
 
-    def __repr__(self):
-        return '<ResolvedLink: {}>'.format(self.url)
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
 
-    @property
-    def active(self):
-        return self.link.view == self.current_view_name
+    @classmethod
+    def remove(cls, name):
+        del cls._registry[name]
 
-    @property
-    def badge_text(self):
-        if self.link.badge_text:
-            return self.link.badge_text(context=self.context)
+    def __init__(self, text=None, view=None, args=None, badge_text=None, condition=None,
+                 conditional_disable=None, description=None, html_data=None,
+                 html_extra_classes=None, icon=None, icon_class=None,
+                 keep_query=False, kwargs=None, name=None, permissions=None,
+                 permissions_related=None, remove_from_query=None, tags=None,
+                 url=None):
 
-    @property
-    def description(self):
-        return self.link.description
+        self.args = args or []
+        self.badge_text = badge_text
+        self.condition = condition
+        self.conditional_disable = conditional_disable
+        self.description = description
+        self.html_data = html_data
+        self.html_extra_classes = html_extra_classes
+        self.icon = icon
+        self.icon_class = icon_class
+        self.keep_query = keep_query
+        self.kwargs = kwargs or {}
+        self.name = name
+        self.permissions = permissions or []
+        self.permissions_related = permissions_related
+        self.remove_from_query = remove_from_query or []
+        self.tags = tags
+        self.text = text
+        self.view = view
+        self.url = url
 
-    @property
-    def html_data(self):
-        return self.link.html_data
+        if name:
+            self.__class__._registry[name] = self
 
-    @property
-    def html_extra_classes(self):
-        return self.link.html_extra_classes
+    def resolve(self, context, resolved_object=None):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
 
-    @property
-    def icon(self):
-        return self.link.icon
-
-    @property
-    def icon_class(self):
-        return self.link.icon_class
-
-    @property
-    def tags(self):
-        return self.link.tags
-
-    @property
-    def text(self):
+        # Try to get the request object the faster way and fallback to the
+        # slower method.
         try:
-            return self.link.text(context=self.context)
-        except TypeError:
-            return self.link.text
+            request = context.request
+        except AttributeError:
+            request = Variable('request').resolve(context)
+
+        current_path = request.META['PATH_INFO']
+        current_view_name = resolve(current_path).view_name
+
+        # ACL is tested agains the resolved_object or just {{ object }} if not
+        if not resolved_object:
+            try:
+                resolved_object = Variable('object').resolve(context=context)
+            except VariableDoesNotExist:
+                pass
+
+        # If this link has a required permission check that the user has it
+        # too
+        if self.permissions:
+            if resolved_object:
+                try:
+                    AccessControlList.objects.check_access(
+                        obj=resolved_object, permissions=self.permissions,
+                        related=self.permissions_related, user=request.user
+                    )
+                except PermissionDenied:
+                    return None
+            else:
+                try:
+                    Permission.check_permissions(
+                        permissions=self.permissions, user=request.user
+                    )
+                except PermissionDenied:
+                    return None
+
+        # Check to see if link has conditional display function and only
+        # display it if the result of the conditional display function is
+        # True
+        if self.condition:
+            if not self.condition(context):
+                return None
+
+        resolved_link = ResolvedLink(
+            current_view_name=current_view_name, link=self
+        )
+
+        if self.view:
+            view_name = Variable('"{}"'.format(self.view))
+            if isinstance(self.args, list) or isinstance(self.args, tuple):
+                # TODO: Don't check for instance check for iterable in try/except
+                # block. This update required changing all 'args' argument in
+                # links.py files to be iterables and not just strings.
+                args = [Variable(arg) for arg in self.args]
+            else:
+                args = [Variable(self.args)]
+
+            # If we were passed an instance of the view context object we are
+            # resolving, inject it into the context. This help resolve links for
+            # object lists.
+            if resolved_object:
+                context['resolved_object'] = resolved_object
+
+            try:
+                kwargs = self.kwargs(context)
+            except TypeError:
+                # Is not a callable
+                kwargs = self.kwargs
+
+            kwargs = {key: Variable(value) for key, value in kwargs.items()}
+
+            # Use Django's exact {% url %} code to resolve the link
+            node = URLNode(
+                view_name=view_name, args=args, kwargs=kwargs, asvar=None
+            )
+            try:
+                resolved_link.url = node.render(context)
+            except Exception as exception:
+                logger.error(
+                    'Error resolving link "%s" URL; %s', self.text, exception
+                )
+        elif self.url:
+            resolved_link.url = self.url
+
+        # This is for links that should be displayed but that are not clickable
+        if self.conditional_disable:
+            resolved_link.disabled = self.conditional_disable(context)
+        else:
+            resolved_link.disabled = False
+
+        # Lets a new link keep the same URL query string of the current URL
+        if self.keep_query:
+            # Sometimes we are required to remove a key from the URL QS
+            parsed_url = furl(
+                force_str(
+                    request.get_full_path() or request.META.get(
+                        'HTTP_REFERER', reverse(setting_home_view.value)
+                    )
+                )
+            )
+
+            for key in self.remove_from_query:
+                try:
+                    parsed_url.query.remove(key)
+                except KeyError:
+                    pass
+
+            # Use the link's URL but with the previous URL querystring
+            new_url = furl(resolved_link.url)
+            new_url.args = parsed_url.querystr
+            resolved_link.url = new_url.url
+
+        resolved_link.context = context
+        return resolved_link
 
 
 class Menu(object):
@@ -329,166 +438,57 @@ class Menu(object):
             )
 
 
-class Link(object):
-    _registry = {}
+class ResolvedLink(object):
+    def __init__(self, link, current_view_name):
+        self.context = None
+        self.current_view_name = current_view_name
+        self.disabled = False
+        self.link = link
+        self.request = None
+        self.url = '#'
 
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def __repr__(self):
+        return '<ResolvedLink: {}>'.format(self.url)
 
-    @classmethod
-    def remove(cls, name):
-        del cls._registry[name]
+    @property
+    def active(self):
+        return self.link.view == self.current_view_name
 
-    def __init__(self, text=None, view=None, args=None, badge_text=None, condition=None,
-                 conditional_disable=None, description=None, html_data=None,
-                 html_extra_classes=None, icon=None, icon_class=None,
-                 keep_query=False, kwargs=None, name=None, permissions=None,
-                 permissions_related=None, remove_from_query=None, tags=None,
-                 url=None):
+    @property
+    def badge_text(self):
+        if self.link.badge_text:
+            return self.link.badge_text(context=self.context)
 
-        self.args = args or []
-        self.badge_text = badge_text
-        self.condition = condition
-        self.conditional_disable = conditional_disable
-        self.description = description
-        self.html_data = html_data
-        self.html_extra_classes = html_extra_classes
-        self.icon = icon
-        self.icon_class = icon_class
-        self.keep_query = keep_query
-        self.kwargs = kwargs or {}
-        self.name = name
-        self.permissions = permissions or []
-        self.permissions_related = permissions_related
-        self.remove_from_query = remove_from_query or []
-        self.tags = tags
-        self.text = text
-        self.view = view
-        self.url = url
+    @property
+    def description(self):
+        return self.link.description
 
-        if name:
-            self.__class__._registry[name] = self
+    @property
+    def html_data(self):
+        return self.link.html_data
 
-    def resolve(self, context, resolved_object=None):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
+    @property
+    def html_extra_classes(self):
+        return self.link.html_extra_classes
 
-        # Try to get the request object the faster way and fallback to the
-        # slower method.
+    @property
+    def icon(self):
+        return self.link.icon
+
+    @property
+    def icon_class(self):
+        return self.link.icon_class
+
+    @property
+    def tags(self):
+        return self.link.tags
+
+    @property
+    def text(self):
         try:
-            request = context.request
-        except AttributeError:
-            request = Variable('request').resolve(context)
-
-        current_path = request.META['PATH_INFO']
-        current_view_name = resolve(current_path).view_name
-
-        # ACL is tested agains the resolved_object or just {{ object }} if not
-        if not resolved_object:
-            try:
-                resolved_object = Variable('object').resolve(context=context)
-            except VariableDoesNotExist:
-                pass
-
-        # If this link has a required permission check that the user has it
-        # too
-        if self.permissions:
-            if resolved_object:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=resolved_object, permissions=self.permissions,
-                        related=self.permissions_related, user=request.user
-                    )
-                except PermissionDenied:
-                    return None
-            else:
-                try:
-                    Permission.check_permissions(
-                        permissions=self.permissions, user=request.user
-                    )
-                except PermissionDenied:
-                    return None
-
-        # Check to see if link has conditional display function and only
-        # display it if the result of the conditional display function is
-        # True
-        if self.condition:
-            if not self.condition(context):
-                return None
-
-        resolved_link = ResolvedLink(
-            current_view_name=current_view_name, link=self
-        )
-
-        if self.view:
-            view_name = Variable('"{}"'.format(self.view))
-            if isinstance(self.args, list) or isinstance(self.args, tuple):
-                # TODO: Don't check for instance check for iterable in try/except
-                # block. This update required changing all 'args' argument in
-                # links.py files to be iterables and not just strings.
-                args = [Variable(arg) for arg in self.args]
-            else:
-                args = [Variable(self.args)]
-
-            # If we were passed an instance of the view context object we are
-            # resolving, inject it into the context. This help resolve links for
-            # object lists.
-            if resolved_object:
-                context['resolved_object'] = resolved_object
-
-            try:
-                kwargs = self.kwargs(context)
-            except TypeError:
-                # Is not a callable
-                kwargs = self.kwargs
-
-            kwargs = {key: Variable(value) for key, value in kwargs.items()}
-
-            # Use Django's exact {% url %} code to resolve the link
-            node = URLNode(
-                view_name=view_name, args=args, kwargs=kwargs, asvar=None
-            )
-            try:
-                resolved_link.url = node.render(context)
-            except Exception as exception:
-                logger.error(
-                    'Error resolving link "%s" URL; %s', self.text, exception
-                )
-        elif self.url:
-            resolved_link.url = self.url
-
-        # This is for links that should be displayed but that are not clickable
-        if self.conditional_disable:
-            resolved_link.disabled = self.conditional_disable(context)
-        else:
-            resolved_link.disabled = False
-
-        # Lets a new link keep the same URL query string of the current URL
-        if self.keep_query:
-            # Sometimes we are required to remove a key from the URL QS
-            parsed_url = furl(
-                force_str(
-                    request.get_full_path() or request.META.get(
-                        'HTTP_REFERER', reverse(setting_home_view.value)
-                    )
-                )
-            )
-
-            for key in self.remove_from_query:
-                try:
-                    parsed_url.query.remove(key)
-                except KeyError:
-                    pass
-
-            # Use the link's URL but with the previous URL querystring
-            new_url = furl(resolved_link.url)
-            new_url.args = parsed_url.querystr
-            resolved_link.url = new_url.url
-
-        resolved_link.context = context
-        return resolved_link
+            return self.link.text(context=self.context)
+        except TypeError:
+            return self.link.text
 
 
 class Separator(Link):
