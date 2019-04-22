@@ -14,11 +14,15 @@ from .literals import (
 
 class GroupAPITestMixin(object):
     def _request_test_group_create_api_view(self):
-        return self.post(
+        result = self.post(
             viewname='rest_api:group-list', data={
                 'name': TEST_GROUP_NAME
             }
         )
+        if 'id' in result.json():
+            self.test_group = Group.objects.get(pk=result.json()['id'])
+
+        return result
 
     def _request_test_group_delete_api_view(self):
         return self.delete(

@@ -14,10 +14,18 @@ from mayan.apps.common.menus import (
     menu_user
 )
 from mayan.apps.common.widgets import TwoStateWidget
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
 from mayan.apps.metadata import MetadataLookup
 from mayan.apps.navigation import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 
+from .events import (
+    event_group_created, event_group_edited, event_user_created,
+    event_user_edited
+)
 from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
@@ -28,6 +36,10 @@ from .links import (
     link_user_set_password, link_user_setup, separator_user_label,
     text_user_label
 )
+from .methods import (
+    get_method_group_save, get_method_user_save, method_user_get_absolute_url
+)
+
 from .permissions import (
     permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_delete, permission_user_edit,
@@ -70,6 +82,13 @@ class UserManagementApp(MayanAppConfig):
             serializer_class='mayan.apps.user_management.serializers.UserSerializer'
         )
 
+        # Silence UnorderedObjectListWarning
+        # "Pagination may yield inconsistent result"
+        # TODO: Remove on Django 2.x
+        Group._meta.ordering = ('name',)
+
+        Group.add_to_class(name='save', value=get_method_group_save())
+
         MetadataLookup(
             description=_('All the groups.'), name='groups',
             value=get_groups
@@ -78,6 +97,15 @@ class UserManagementApp(MayanAppConfig):
             description=_('All the users.'), name='users',
             value=get_users
         )
+
+        ModelEventType.register(
+            event_types=(event_group_created, event_group_edited), model=Group
+        )
+
+        ModelEventType.register(
+            event_types=(event_user_created, event_user_edited), model=User
+        )
+
         ModelPermission.register(
             model=Group, permissions=(
                 permission_acl_edit, permission_acl_view,
@@ -115,14 +143,28 @@ class UserManagementApp(MayanAppConfig):
             ).render()
         )
 
+        # Silence UnorderedObjectListWarning
+        # "Pagination may yield inconsistent result"
+        # TODO: Remove on Django 2.x
+        User._meta.ordering = ('pk',)
+
+        User.add_to_class(
+            name='get_absolute_url', value=method_user_get_absolute_url
+        )
+        User.add_to_class(name='save', value=get_method_user_save())
+
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_group_members
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_group_members,
             ), sources=(Group,)
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_user_groups, link_user_set_options
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_user_groups, link_user_set_options
             ), sources=(User,)
         )
         menu_multi_item.bind_links(
