@@ -102,6 +102,7 @@
 * Improve partial navigation error messages and display.
 * Add user created and user edited events.
 * Add group created and group edited events.
+* Add support for SourceColumn widgets.
 
 3.1.11 (2019-04-XX)
 ===================

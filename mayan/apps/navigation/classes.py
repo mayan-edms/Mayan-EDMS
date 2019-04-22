@@ -536,7 +536,7 @@ class SourceColumn(object):
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label=None, attribute=None, func=None, order=None):
+    def __init__(self, source, label=None, attribute=None, func=None, order=None, widget=None):
         self.source = source
         self._label = label
         self.attribute = attribute
@@ -544,6 +544,7 @@ class SourceColumn(object):
         self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
+        self.widget = widget
 
     @property
     def label(self):
@@ -563,6 +564,10 @@ class SourceColumn(object):
             result = return_attrib(context['object'], self.attribute)
         elif self.func:
             result = self.func(context=context)
+
+        if self.widget:
+            widget_instance = self.widget()
+            return widget_instance.render(name=self.attribute, value=result)
 
         return result
 
