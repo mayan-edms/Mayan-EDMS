@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -13,7 +12,6 @@ from actstream.models import Action, any_stream
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import FormView, SimpleView
-from mayan.apps.common.utils import encapsulate
 from mayan.apps.common.views import SingleObjectListView
 
 from .classes import EventType, ModelEventType
@@ -21,12 +19,11 @@ from .forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
 from .icons import (
-    icon_events_list, icon_events_user_list, icon_user_notifications_list
+    icon_events_list, icon_user_notifications_list
 )
 from .links import link_event_types_subscriptions_list
 from .models import StoredEventType
 from .permissions import permission_events_view
-from .widgets import event_object_link
 
 
 class EventListView(SingleObjectListView):
@@ -34,14 +31,6 @@ class EventListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Target'),
-                    'attribute': encapsulate(
-                        lambda entry: event_object_link(entry)
-                    )
-                },
-            ),
             'hide_object': True,
             'title': _('Events'),
         }
@@ -154,26 +143,10 @@ class NotificationMarkReadAll(SimpleView):
 
 
 class ObjectEventListView(EventListView):
-    view_permissions = None
+    view_permission = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.object_content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
-
-        try:
-            self.content_object = self.object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except self.object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            permissions=permission_events_view, user=request.user,
-            obj=self.content_object
-        )
-
+        self.object = self.get_object()
         return super(
             ObjectEventListView, self
         ).dispatch(request, *args, **kwargs)
@@ -188,13 +161,28 @@ class ObjectEventListView(EventListView):
                 'or using this object.'
             ),
             'no_results_title': _('There are no events for this object'),
-            'object': self.content_object,
-            'title': _('Events for: %s') % self.content_object,
+            'object': self.object,
+            'title': _('Events for: %s') % self.object,
         })
         return context
 
+    def get_object(self):
+        content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
+
+        queryset = AccessControlList.objects.filter_by_access(
+            permission=permission_events_view,
+            queryset=content_type.model_class().objects.all(),
+            user=self.request.user
+        )
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['object_id']
+        )
+
     def get_object_list(self):
-        return any_stream(self.content_object)
+        return any_stream(self.object)
 
 
 class ObjectEventTypeSubscriptionListView(FormView):
@@ -270,50 +258,14 @@ class ObjectEventTypeSubscriptionListView(FormView):
         return ModelEventType.get_for_instance(instance=self.get_object())
 
 
-class UserEventListView(SingleObjectListView):
-    view_permission = permission_events_view
-
-    def get_extra_context(self):
-        return {
-            'extra_columns': (
-                {
-                    'name': _('Target'),
-                    'attribute': encapsulate(
-                        lambda entry: event_object_link(entry)
-                    )
-                },
-            ),
-            'hide_object': True,
-            'no_results_icon': icon_events_user_list,
-            'no_results_text': _(
-                'Events are actions that have been performed to this '
-                'user account or by this user account.'
-            ),
-            'no_results_title': _('There are no events for this user'),
-            'object': self.get_user(),
-            'title': _(
-                'Events for user: %s'
-            ) % self.get_user(),
-        }
-
-    def get_object_list(self):
-        return Action.objects.actor(obj=self.get_user())
-
-    def get_user(self):
-        return get_object_or_404(klass=get_user_model(), pk=self.kwargs['pk'])
+class CurrentUserEventListView(ObjectEventListView):
+    def get_object(self):
+        return self.request.user
 
 
 class VerbEventListView(SingleObjectListView):
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Target'),
-                    'attribute': encapsulate(
-                        lambda entry: event_object_link(entry)
-                    )
-                },
-            ),
             'hide_object': True,
             'title': _(
                 'Events of type: %s'

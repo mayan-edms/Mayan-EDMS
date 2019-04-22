@@ -8,9 +8,10 @@ from .api_views import (
     APINotificationListView, APIObjectEventListView
 )
 from .views import (
-    EventListView, EventTypeSubscriptionListView, NotificationListView,
-    NotificationMarkRead, NotificationMarkReadAll, ObjectEventListView,
-    ObjectEventTypeSubscriptionListView, UserEventListView, VerbEventListView
+    CurrentUserEventListView, EventListView, EventTypeSubscriptionListView,
+    NotificationListView, NotificationMarkRead, NotificationMarkReadAll,
+    ObjectEventListView, ObjectEventTypeSubscriptionListView,
+    VerbEventListView
 )
 
 urlpatterns = [
@@ -32,13 +33,13 @@ urlpatterns = [
         view=NotificationMarkReadAll.as_view(), name='notification_mark_read_all'
     ),
     url(
+        regex=r'^user/events/$', name='current_user_events',
+        view=CurrentUserEventListView.as_view()
+    ),
+    url(
         regex=r'^user/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
         view=ObjectEventTypeSubscriptionListView.as_view(),
         name='object_event_types_user_subcriptions_list'
-    ),
-    url(
-        regex=r'^user/(?P<pk>\d+)/events/$', view=UserEventListView.as_view(),
-        name='user_events'
     ),
     url(
         regex=r'^user/event_types/subscriptions/$',

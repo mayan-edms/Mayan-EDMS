@@ -104,6 +104,9 @@
 * Add group created and group edited events.
 * Add support for SourceColumn widgets.
 * Improve styling of the template debug view.
+* Add support for showing the current user's events.
+* Add support kwargs to the SourceColumn class.
+* Improve the event widgets, views and tests.
   
 3.1.11 (2019-04-XX)
 ===================

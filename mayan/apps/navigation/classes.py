@@ -14,7 +14,7 @@ from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.utils import return_attrib
+from mayan.apps.common.utils import resolve_attribute, return_attrib
 from mayan.apps.permissions import Permission
 
 from .utils import get_current_view_name
@@ -536,11 +536,12 @@ class SourceColumn(object):
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label=None, attribute=None, func=None, order=None, widget=None):
+    def __init__(self, source, label=None, attribute=None, func=None, kwargs=None, order=None, widget=None):
         self.source = source
         self._label = label
         self.attribute = attribute
         self.func = func
+        self.kwargs = kwargs or {}
         self.order = order or 0
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
@@ -561,9 +562,12 @@ class SourceColumn(object):
 
     def resolve(self, context):
         if self.attribute:
-            result = return_attrib(context['object'], self.attribute)
+            result = resolve_attribute(
+                attribute=self.attribute, kwargs=self.kwargs,
+                obj=context['object']
+            )
         elif self.func:
-            result = self.func(context=context)
+            result = self.func(context=context, **self.kwargs)
 
         if self.widget:
             widget_instance = self.widget()
