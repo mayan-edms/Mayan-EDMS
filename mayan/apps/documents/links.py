@@ -9,18 +9,8 @@ from mayan.apps.navigation import Link
 
 from .icons import (
     icon_clear_image_cache,
-    icon_document_download,
-
-    icon_document_edit,
-    icon_document_favorites_add,
-    icon_document_favorites_remove,
-
-    icon_document_quick_download,
 
     icon_document_duplicates_list,
-    icon_document_list,
-    icon_document_list_deleted,
-    icon_document_list_favorites,
     icon_document_list_recent_access,
     icon_document_list_recent_added,
     icon_document_page_navigation_first,
@@ -34,19 +24,11 @@ from .icons import (
     icon_document_page_zoom_out,
     icon_document_pages,
 
-    icon_document_preview,
-    icon_document_properties,
-
     icon_document_type_create,
     icon_document_type_delete,
     icon_document_type_edit,
     icon_document_type_filename_create,
     icon_document_type_setup,
-
-    icon_document_version_download,
-    icon_document_version_list,
-    icon_document_version_return_document,
-    icon_document_version_return_list,
 
     icon_duplicated_document_list,
     icon_duplicated_document_scan
@@ -137,16 +119,23 @@ link_document_delete = Link(
     icon_class_path='mayan.apps.documents.icons.icon_trashed_document_delete',
     permissions=(permission_document_delete,),
     tags='dangerous', text=_('Delete'), view='documents:document_delete',
+
+)
+
+link_document_list_favorites = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_favorite_document_list',
+    text=_('Favorites'),
+    view='documents:document_list_favorites'
 )
 link_document_favorites_add = Link(
     args='resolved_object.id',
-    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_add',
+    icon_class_path='mayan.apps.documents.icons.icon_favorite_document_add',
     permissions=(permission_document_view,), text=_('Add to favorites'),
     view='documents:document_add_to_favorites',
 )
 link_document_favorites_remove = Link(
     args='resolved_object.id',
-    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_remove',
+    icon_class_path='mayan.apps.documents.icons.icon_favorite_document_remove',
     permissions=(permission_document_view,), text=_('Remove from favorites'),
     view='documents:document_remove_from_favorites',
 )
@@ -217,12 +206,12 @@ link_document_multiple_delete = Link(
 )
 link_document_multiple_favorites_add = Link(
     text=_('Add to favorites'),
-    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_add',
+    icon_class_path='mayan.apps.documents.icons.icon_favorite_document_add',
     view='documents:document_multiple_add_to_favorites',
 )
 link_document_multiple_favorites_remove = Link(
     text=_('Remove from favorites'),
-    icon_class_path='mayan.apps.documents.icons.icon_document_favorites_remove',
+    icon_class_path='mayan.apps.documents.icons.icon_favorite_document_remove',
     view='documents:document_multiple_remove_from_favorites',
 )
 link_document_multiple_document_type_edit = Link(
@@ -277,10 +266,6 @@ link_document_list = Link(
     text=_('All documents'),
     view='documents:document_list'
 )
-link_document_list_favorites = Link(
-    icon_class=icon_document_list_favorites, text=_('Favorites'),
-    view='documents:document_list_favorites'
-)
 link_document_list_recent_access = Link(
     icon_class=icon_document_list_recent_access, text=_('Recently accessed'),
     view='documents:document_list_recent_access'
@@ -290,8 +275,8 @@ link_document_list_recent_added = Link(
     view='documents:document_list_recent_added'
 )
 link_document_list_deleted = Link(
-    icon_class=icon_document_list_deleted, text=_('Trash can'),
-    view='documents:document_list_deleted'
+    icon_class_path='mayan.apps.documents.icons.icon_trashed_document_list',
+    text=_('Trash can'), view='documents:document_list_deleted'
 )
 
 # Tools

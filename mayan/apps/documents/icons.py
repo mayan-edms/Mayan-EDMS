@@ -44,14 +44,6 @@ icon_document_duplicates_list = Icon(
 icon_document_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
-icon_document_favorites_add = Icon(
-    driver_name='fontawesome-dual', primary_symbol='star',
-    secondary_symbol='plus'
-)
-icon_document_favorites_remove = Icon(
-    driver_name='fontawesome-dual', primary_symbol='star',
-    secondary_symbol='minus'
-)
 icon_document_page_count_update = Icon(
     driver_name='fontawesome', symbol='copy'
 )
@@ -78,6 +70,15 @@ icon_document_type_filename_create = Icon(
 )
 icon_document_type_list = icon_document_type
 
+icon_favorite_document_add = Icon(
+    driver_name='fontawesome-dual', primary_symbol='star',
+    secondary_symbol='plus'
+)
+icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
+icon_favorite_document_remove = Icon(
+    driver_name='fontawesome-dual', primary_symbol='star',
+    secondary_symbol='minus'
+)
 
 icon_trash_can_empty = Icon(
     driver_name='fontawesome', symbol='trash-alt'
@@ -113,7 +114,6 @@ icon_document_image_loading = Icon(
 )
 icon_document_list = Icon(driver_name='fontawesome', symbol='file')
 icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
-icon_document_list_favorites = Icon(driver_name='fontawesome', symbol='star')
 icon_document_list_recent_access = Icon(
     driver_name='fontawesome', symbol='clock'
 )
