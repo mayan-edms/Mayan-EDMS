@@ -28,7 +28,7 @@ from .links import (
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
-    link_upload_version
+    link_document_version_upload
 )
 from .queues import *  # NOQA
 from .widgets import StagingFileThumbnailWidget
@@ -165,7 +165,7 @@ class SourcesApp(MayanAppConfig):
         )
         menu_setup.bind_links(links=(link_setup_sources,))
         menu_secondary.bind_links(
-            links=(link_upload_version,),
+            links=(link_document_version_upload,),
             sources=(
                 'documents:document_version_list', 'documents:upload_version',
                 'documents:document_version_revert'
