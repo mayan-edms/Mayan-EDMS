@@ -12,7 +12,6 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.compressed_files import ZipArchive
-from mayan.apps.common.exceptions import ActionError
 from mayan.apps.common.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
@@ -28,25 +27,21 @@ from ..events import event_document_download, event_document_view
 from ..forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageNumberForm,
     DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
-    DocumentTypeSelectForm,
+    DocumentTypeFilteredSelectForm,
 )
 from ..icons import (
-    icon_document_list, icon_document_list_favorites,
-    icon_document_list_recent_access, icon_document_list_recent_added,
-    icon_duplicated_document_list
+    icon_document_list, icon_document_list_recent_access,
+    icon_document_list_recent_added, icon_duplicated_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-from ..models import (
-    Document, DuplicatedDocument, FavoriteDocument, RecentDocument
-)
+from ..models import Document, DuplicatedDocument, RecentDocument
 from ..permissions import (
     permission_document_download, permission_document_print,
     permission_document_properties_edit, permission_document_tools,
     permission_document_view
 )
 from ..settings import (
-    setting_favorite_count, setting_print_width, setting_print_height,
-    setting_recent_added_count
+    setting_print_width, setting_print_height, setting_recent_added_count
 )
 from ..tasks import task_update_page_count
 from ..utils import parse_range
@@ -57,8 +52,7 @@ __all__ = (
     'DocumentView', 'DocumentDownloadFormView', 'DocumentDownloadView',
     'DocumentUpdatePageCountView', 'DocumentTransformationsClearView',
     'DocumentTransformationsCloneView', 'DocumentPrint',
-    'DuplicatedDocumentListView', 'FavoriteDocumentListView',
-    'FavoriteAddView', 'FavoriteRemoveView', 'RecentAccessDocumentListView',
+    'DuplicatedDocumentListView', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(__name__)
@@ -106,7 +100,7 @@ class DocumentListView(SingleObjectListView):
 
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
-    form_class = DocumentTypeSelectForm
+    form_class = DocumentTypeFilteredSelectForm
     model = Document
     object_permission = permission_document_properties_edit
     success_message = _(
@@ -700,88 +694,6 @@ class DuplicatedDocumentListView(DocumentListView):
             }
         )
         return context
-
-
-class FavoriteDocumentListView(DocumentListView):
-    def get_document_queryset(self):
-        return FavoriteDocument.objects.get_for_user(user=self.request.user)
-
-    def get_extra_context(self):
-        context = super(FavoriteDocumentListView, self).get_extra_context()
-        context.update(
-            {
-                'no_results_icon': icon_document_list_favorites,
-                'no_results_text': _(
-                    'Favorited documents will be listed in this view. '
-                    'Up to %(count)d documents can be favorited per user. '
-                ) % {'count': setting_favorite_count.value},
-                'no_results_title': _('There are no favorited documents.'),
-                'title': _('Favorites'),
-            }
-        )
-        return context
-
-
-class FavoriteAddView(MultipleObjectConfirmActionView):
-    model = Document
-    object_permission = permission_document_view
-    success_message = _(
-        '%(count)d document added to favorites.'
-    )
-    success_message_plural = _(
-        '%(count)d documents added to favorites.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.get_queryset()
-
-        return {
-            'submit_label': _('Add'),
-            'submit_icon_class': icon_document_list_favorites,
-            'title': ungettext(
-                singular='Add the selected document to favorites',
-                plural='Add the selected documents to favorites',
-                number=queryset.count()
-            )
-        }
-
-    def object_action(self, form, instance):
-        FavoriteDocument.objects.add_for_user(
-            user=self.request.user, document=instance
-        )
-
-
-class FavoriteRemoveView(MultipleObjectConfirmActionView):
-    error_message = _('Document "%(instance)s" is not in favorites.')
-    model = Document
-    object_permission = permission_document_view
-    success_message = _(
-        '%(count)d document removed from favorites.'
-    )
-    success_message_plural = _(
-        '%(count)d documents removed from favorites.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.get_queryset()
-
-        return {
-            'submit_label': _('Remove'),
-            'submit_icon_class': icon_document_list_favorites,
-            'title': ungettext(
-                singular='Remove the selected document from favorites',
-                plural='Remove the selected documents from favorites',
-                number=queryset.count()
-            )
-        }
-
-    def object_action(self, form, instance):
-        try:
-            FavoriteDocument.objects.remove_for_user(
-                user=self.request.user, document=instance
-            )
-        except FavoriteDocument.DoesNotExist:
-            raise ActionError
 
 
 class RecentAccessDocumentListView(DocumentListView):

@@ -115,6 +115,7 @@
 * Add support for link icon path imports.
 * Remove support for link icon strings.
 * Split document app form into separate modules.
+* Move the favorite document views to their own module.
 
 3.1.11 (2019-04-XX)
 ===================
