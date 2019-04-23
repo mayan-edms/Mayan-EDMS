@@ -52,6 +52,8 @@ icon_social_paypal = Icon(
 icon_social_twitter = Icon(
     driver_name='fontawesomecss', css_classes='fab fa-twitter'
 )
+icon_sort_down = Icon(driver_name='fontawesome', symbol='sort-down')
+icon_sort_up = Icon(driver_name='fontawesome', symbol='sort-up')
 icon_source_code = Icon(driver_name='fontawesome', symbol='code-branch')
 icon_support = Icon(
     driver_name='fontawesome', symbol='phone'

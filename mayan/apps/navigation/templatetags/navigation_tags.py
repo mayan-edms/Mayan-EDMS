@@ -48,8 +48,13 @@ def get_multi_item_links_form(context, object_list):
     return ''
 
 
-@register.filter
-def get_source_columns(source):
+@register.simple_tag(takes_context=True)
+def navigation_get_sort_field_querystring(context, column):
+    return column.get_sort_field_querystring(context=context)
+
+
+@register.simple_tag(takes_context=True)
+def navigation_get_source_columns(context, source, exclude_identifier=False, only_identifier=False):
     try:
         # Is it a query set?
         source = source.model
@@ -68,7 +73,10 @@ def get_source_columns(source):
             # It a list and it's empty
             pass
 
-    return SourceColumn.get_for_source(source)
+    return SourceColumn.get_for_source(
+        context=context, source=source, exclude_identifier=exclude_identifier,
+        only_identifier=only_identifier
+    )
 
 
 @register.simple_tag(takes_context=True)
@@ -107,6 +115,10 @@ def resolve_link(context, link):
 
 
 @register.simple_tag(takes_context=True)
-def source_column_resolve(context, column):
-    context['column_result'] = column.resolve(context=context)
-    return ''
+def navigation_source_column_resolve(context, column):
+    if column:
+        result = column.resolve(context=context)
+        return result
+    else:
+        return ''
+

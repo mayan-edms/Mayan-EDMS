@@ -14,6 +14,11 @@ from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
 from django.utils.module_loading import import_string
 
+from mayan.apps.common.literals import (
+    TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME,
+    TEXT_SORT_ORDER_CHOICE_ASCENDING, TEXT_SORT_ORDER_CHOICE_DESCENDING,
+    TEXT_SORT_ORDER_PARAMETER, TEXT_SORT_ORDER_VARIABLE_NAME
+)
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.permissions import Permission
@@ -528,38 +533,90 @@ class SourceColumn(object):
         return sorted(columns, key=lambda x: x.order)
 
     @classmethod
-    def get_for_source(cls, source):
+    def get_for_source(cls, context, source, exclude_identifier=False, only_identifier=False):
         try:
-            return SourceColumn.sort(columns=cls._registry[source])
+            result = cls._registry[source]
         except KeyError:
             try:
-                # Try it as a queryset
-                return SourceColumn.sort(columns=cls._registry[source.model])
-            except AttributeError:
+                # Might be an instance, try its class
+                result = cls._registry[source.__class__]
+            except KeyError:
                 try:
-                    # It seems to be an instance, try its class
-                    return SourceColumn.sort(columns=cls._registry[source.__class__])
-                except KeyError:
+                    # Might be an inherited class insance, try its source class
+                    result = cls._registry[source.source_ptr.__class__]
+                except (KeyError, AttributeError):
                     try:
-                        # Special case for queryset items produced from
-                        # .defer() or .only() optimizations
-                        return SourceColumn.sort(columns=cls._registry[list(source._meta.parents.items())[0][0]])
-                    except (AttributeError, KeyError, IndexError):
-                        return ()
+                        # Try it as a queryset
+                        result = cls._registry[source.model]
+                    except AttributeError:
+                        try:
+                            # Special case for queryset items produced from
+                            # .defer() or .only() optimizations
+                            result = cls._registry[list(source._meta.parents.items())[0][0]]
+                        except (AttributeError, KeyError, IndexError):
+                            result = ()
         except TypeError:
             # unhashable type: list
-            return ()
+            result = ()
 
-    def __init__(self, source, label=None, attribute=None, func=None, kwargs=None, order=None, widget=None):
+        result = SourceColumn.sort(columns=result)
+
+        if exclude_identifier:
+            result = [item for item in result if not item.is_identifier]
+        else:
+            if only_identifier:
+                for item in result:
+                    if item.is_identifier:
+                        return item
+                return None
+
+        final_result = []
+
+        try:
+            request = context.request
+        except AttributeError:
+            # Simple request extraction failed. Might not be a view context.
+            # Try alternate method.
+            try:
+                request = Variable('request').resolve(context)
+            except VariableDoesNotExist:
+                # There is no request variable, most probable a 500 in a test
+                # view. Don't return any resolved request.
+                logger.warning(
+                    'No request variable, aborting request resolution'
+                )
+                return result
+
+        current_view_name = get_current_view_name(request=request)
+        for item in result:
+            if item.views:
+                if current_view_name in item.views:
+                    final_result.append(item)
+            else:
+                final_result.append(item)
+
+        return final_result
+
+    def __init__(
+        self, source, label=None, attribute=None, func=None,
+        is_absolute_url=False, is_identifier=False, is_sortable=False,
+        kwargs=None, order=None, sort_field=None, views=None, widget=None
+    ):
         self.source = source
         self._label = label
         self.attribute = attribute
         self.func = func
+        self.is_absolute_url = is_absolute_url
+        self.is_identifier = is_identifier
+        self.is_sortable = is_sortable
         self.kwargs = kwargs or {}
         self.order = order or 0
+        self.sort_field = sort_field
+        self.views = views or []
+        self.widget = widget
+
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
-        self.widget = widget
 
     @property
     def label(self):
@@ -574,7 +631,39 @@ class SourceColumn(object):
 
         return self._label
 
+    def get_sort_field(self):
+        if self.sort_field:
+            return self.sort_field
+        else:
+            return self.attribute
+
+    def get_sort_field_querystring(self, context):
+        # We do this to get an mutable copy we can modify
+        querystring = context.request.GET.copy()
+
+        previous_sort_field = context.get(TEXT_SORT_FIELD_VARIABLE_NAME, None)
+        previous_sort_order = context.get(
+            TEXT_SORT_ORDER_VARIABLE_NAME, TEXT_SORT_ORDER_CHOICE_DESCENDING
+        )
+
+        if previous_sort_field != self.get_sort_field():
+            sort_order = TEXT_SORT_ORDER_CHOICE_ASCENDING
+        else:
+            if previous_sort_order == TEXT_SORT_ORDER_CHOICE_DESCENDING:
+                sort_order = TEXT_SORT_ORDER_CHOICE_ASCENDING
+            else:
+                sort_order = TEXT_SORT_ORDER_CHOICE_DESCENDING
+
+        querystring[TEXT_SORT_FIELD_PARAMETER] = self.get_sort_field()
+        querystring[TEXT_SORT_ORDER_PARAMETER] = sort_order
+
+        return '?{}'.format(querystring.urlencode())
+
     def resolve(self, context):
+        if self.views:
+            if get_current_view_name(request=context.request) not in self.views:
+                return
+
         if self.attribute:
             result = resolve_attribute(
                 attribute=self.attribute, kwargs=self.kwargs,

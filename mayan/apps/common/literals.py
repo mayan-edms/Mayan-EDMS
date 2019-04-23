@@ -11,6 +11,14 @@ MESSAGE_SQLITE_WARNING = _(
     'for development and testing, not for production.'
 )
 PYPI_URL = 'https://pypi.python.org/pypi'
+
+TEXT_SORT_FIELD_PARAMETER = '_sort_field'
+TEXT_SORT_FIELD_VARIABLE_NAME = 'sort_field'
+TEXT_SORT_ORDER_CHOICE_ASCENDING = 'asc'
+TEXT_SORT_ORDER_CHOICE_DESCENDING = 'desc'
+TEXT_SORT_ORDER_PARAMETER = '_sort_order'
+TEXT_SORT_ORDER_VARIABLE_NAME = 'sort_order'
+
 TIME_DELTA_UNIT_DAYS = 'days'
 TIME_DELTA_UNIT_HOURS = 'hours'
 TIME_DELTA_UNIT_MINUTES = 'minutes'

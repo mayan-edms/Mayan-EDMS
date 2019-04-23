@@ -38,7 +38,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-condensed table-striped">
+                <table class="table table-condensed table-striped table-hover">
                     <tbody>
                         {% if not hide_header %}
                             <tr>
@@ -48,11 +48,37 @@
 
                                 {% if not hide_object %}
                                     <th>{% trans 'Identifier' %}</th>
+                                {% else %}
+                                    {% navigation_get_source_columns source=object_list only_identifier=True as source_column %}
+                                    {% if source_column %}
+                                        <th>
+                                            {% if source_column.is_sortable %}
+                                                <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}
+                                                {% if navigation_source_column.get_sort_field == sort_field %}
+                                                    {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                {% endif %}
+                                                </a>
+                                            {% else %}
+                                                {{ source_column.label }}
+                                            {% endif %}
+                                        </th>
+                                    {% endif %}
                                 {% endif %}
 
                                 {% if not hide_columns %}
-                                    {% for column in object_list|get_source_columns %}
-                                        <th>{{ column.label }}</th>
+                                    {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns %}
+                                    {% for column in source_columns %}
+                                        <th>
+                                            {% if column.is_sortable %}
+                                                <a href="{% navigation_get_sort_field_querystring column=column %}">{{ column.label }}
+                                                {% if column.get_sort_field == sort_field %}
+                                                    {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                {% endif %}
+                                                </a>
+                                            {% else %}
+                                                {{ column.label }}
+                                            {% endif %}
+                                        </th>
                                     {% endfor %}
                                 {% endif %}
 
@@ -68,60 +94,68 @@
                         {% for object in object_list %}
                             <tr>
 
-                            {% if multi_item_actions %}
-                                <td>
-                                {% if multi_select_item_properties %}
-                                    <input type="checkbox" class="form-multi-object-action-checkbox check-all-slave checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" value="" />
-                                {% else %}
-                                    <input type="checkbox" class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" value="" />
+                                {% if multi_item_actions %}
+                                    <td>
+                                        <input type="checkbox" class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" value="" />
+                                    </td>
                                 {% endif %}
-                                </td>
-                            {% endif %}
-                            {% if not hide_object %}
-                                {% if main_object %}
-                                    {% with object|object_property:main_object as object %}
-                                        <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
-                                    {% endwith %}
-                                {% else %}
+
+                                {% if not hide_object %}
                                     <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
+                                {% else %}
+                                    {% navigation_get_source_columns source=object only_identifier=True as source_column %}
+                                    {% navigation_source_column_resolve column=source_column as column_value %}
+                                    {% if column_value %}
+                                        <td>
+                                            {% if source_column.is_absolute_url %}
+                                                <a href="{{ column_value.get_absolute_url|default:object.get_absolute_url }}">{{ column_value }}</a>
+                                            {% else %}
+                                                {{ column_value }}
+                                            {% endif %}
+                                        </td>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
-                             {% if not hide_columns %}
-                                {% for column in object|get_source_columns %}
-                                    <td>{% source_column_resolve column=column %}{{ column_result }}</td>
-                                {% endfor %}
-                            {% endif %}
-                            {% for column in extra_columns %}
-                                <td>{{ object|object_property:column.attribute }}</td>
-                            {% endfor %}
-                            {% if not hide_links %}
-                                <td class="last">
-                                    {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
-                                    {% for facet_menu_results in facet_menus_results %}
-                                        {% for link_group in facet_menu_results.link_groups %}
-                                            {% with link_group.links as object_navigation_links %}
-                                            {% with 'true' as horizontal %}
-                                            {% with 'true' as hide_icon %}
-                                                {% include 'navigation/generic_navigation.html' %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                        {% endfor %}
+
+                                {% if not hide_columns %}
+                                    {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
+                                    {% for column in source_columns %}
+                                        <td>
+                                            <div class="{{ table_cell_container_classes }}">
+                                                {% navigation_source_column_resolve column=column as column_value %}{{ column_value }}
+                                                {# Use explicit 'as column_value ' to force date rendering #}
+                                            </div>
+                                        </td>
                                     {% endfor %}
-                                    {% navigation_resolve_menu name='object' source=object as object_menus_results %}
-                                    {% for object_menu_results in object_menus_results %}
-                                        {% for link_group in object_menu_results.link_groups %}
-                                            {% with link_group.links as object_navigation_links %}
-                                            {% with 'true' as horizontal %}
-                                            {% with 'true' as hide_icon %}
-                                                {% include 'navigation/generic_navigation.html' %}
-                                            {% endwith %}
-                                            {% endwith %}
-                                            {% endwith %}
+                                {% endif %}
+
+                                {% if not hide_links %}
+                                    <td class="last">
+                                        {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
+                                        {% for facet_menu_results in facet_menus_results %}
+                                            {% for link_group in facet_menu_results.link_groups %}
+                                                {% with link_group.links as object_navigation_links %}
+                                                {% with 'true' as horizontal %}
+                                                {% with 'true' as hide_icon %}
+                                                    {% include 'navigation/generic_navigation.html' %}
+                                                {% endwith %}
+                                                {% endwith %}
+                                                {% endwith %}
+                                            {% endfor %}
                                         {% endfor %}
-                                    {% endfor %}
-                                </td>
-                            {% endif %}
+                                        {% navigation_resolve_menu name='object' source=object as object_menus_results %}
+                                        {% for object_menu_results in object_menus_results %}
+                                            {% for link_group in object_menu_results.link_groups %}
+                                                {% with link_group.links as object_navigation_links %}
+                                                {% with 'true' as horizontal %}
+                                                {% with 'true' as hide_icon %}
+                                                    {% include 'navigation/generic_navigation.html' %}
+                                                {% endwith %}
+                                                {% endwith %}
+                                                {% endwith %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </td>
+                                {% endif %}
                             </tr>
                         {% empty %}
                             <tr>

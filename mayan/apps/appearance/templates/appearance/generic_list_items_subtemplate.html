@@ -50,24 +50,25 @@
                                     <div class="checkbox">
                                         <label for="id_indexes_0">
                                             {% if multi_item_actions %}
-                                                {% if multi_select_item_properties %}
-                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="properties_{{ object|get_encoded_parameter:multi_select_item_properties }}" />
-                                                {% else %}
-                                                    <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="pk_{{ object.pk }}" />
-                                                {% endif %}
+                                                <input class="form-multi-object-action-checkbox check-all-slave checkbox" type="checkbox" name="pk_{{ object.pk }}" />
                                             {% endif %}
 
                                             <span style="color: white; word-break: break-all; overflow-wrap: break-word;">
                                                 {% if not hide_object %}
-                                                    {% if main_object %}
-                                                        {% with object|object_property:main_object as object %}
-                                                            {% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}
-                                                        {% endwith %}
+                                                    {% if not hide_link %}
+                                                        <a href="{{ object.get_absolute_url }}">{{ object }}</a>
                                                     {% else %}
-                                                        {% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}
+                                                        {{ object }}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% navigation_get_source_columns source=object only_identifier=True as source_column %}
+                                                    {% navigation_source_column_resolve column=source_column as column_value %}
+                                                    {% if source_column.is_absolute_url %}
+                                                        <a href="{{ column_value.get_absolute_url|default:object.get_absolute_url }}">{{ column_value }}</a>
+                                                    {% else %}
+                                                        {{ column_value }}
                                                     {% endif %}
                                                 {% endif %}
-
                                             </span>
                                         </label>
                                     </div>
@@ -77,8 +78,9 @@
                             <div class="panel-body">
 
                                 {% if not hide_columns %}
-                                    {% for column in object|get_source_columns %}
-                                        <div class="text-center" style="">{% source_column_resolve column=column %}{{ column_result }}</div>
+                                    {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
+                                    {% for column in source_columns %}
+                                        <div class="text-center" style="">{% navigation_source_column_resolve column=column as column_value %}{% if column_value != '' %}{% if column.include_label %}{{ column.label }}: {% endif %}{{ column_value }}{% endif %}</div>
                                     {% endfor %}
                                 {% endif %}
 
