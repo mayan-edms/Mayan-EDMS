@@ -79,6 +79,8 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
+            'comment': self.get_object(),
+            'navigation_object_list': ('object', 'comment'),
             'object': self.get_object().document,
             'title': _('Delete comment: %s?') % self.get_object(),
         }
