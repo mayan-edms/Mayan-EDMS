@@ -5,6 +5,7 @@ from json import dumps
 from django.template import Context, Library
 from django.template.loader import get_template
 from django.utils.encoding import force_text
+from django.utils.six import string_types
 
 import mayan
 
@@ -26,7 +27,10 @@ def common_get_object_verbose_name(obj):
     try:
         return obj._meta.verbose_name
     except AttributeError:
-        return type(obj)
+        if isinstance(obj, string_types):
+            return ''
+        else:
+            return type(obj)
 
 
 @register.simple_tag
