@@ -122,6 +122,8 @@
 * Update document parsing link activation.
 * Add favorite document views tests.
 * Add document state action view test.
+* Remove sidebar menu instance. The secondary menu and the
+  previour sidebar menu now perform the same function.
 
 3.1.11 (2019-04-XX)
 ===================
@@ -132,7 +134,7 @@
 * Add DOCUMENTS_HASH_BLOCK_SIZE to control the size of the file
   block when calculating a document's checksum.
 
-a3.1.10 (2019-04-04)
+3.1.10 (2019-04-04)
 ===================
 * Backport test case improvements from the development branch. Add random
   primary key mixin. Split test case code into mixins. Make the view test

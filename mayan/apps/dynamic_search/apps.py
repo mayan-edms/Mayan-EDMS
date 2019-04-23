@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_sidebar
+from mayan.apps.common.menus import menu_facet, menu_secondary
 
 from .links import link_search, link_search_advanced, link_search_again
 
@@ -25,6 +25,6 @@ class DynamicSearchApp(MayanAppConfig):
                 'search:search', 'search:search_advanced', 'search:results'
             )
         )
-        menu_sidebar.bind_links(
+        menu_secondary.bind_links(
             links=(link_search_again,), sources=('search:results',)
         )

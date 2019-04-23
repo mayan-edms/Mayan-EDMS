@@ -7,7 +7,7 @@ from kombu import Exchange, Queue
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_sidebar, menu_setup
+    menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import post_initial_setup, post_upgrade
 from mayan.apps.converter.links import link_transformation_list
@@ -164,7 +164,7 @@ class SourcesApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_setup_sources,))
-        menu_sidebar.bind_links(
+        menu_secondary.bind_links(
             links=(link_upload_version,),
             sources=(
                 'documents:document_version_list', 'documents:upload_version',

@@ -15,7 +15,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute, ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
-    menu_setup, menu_sidebar
+    menu_setup
 )
 from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.search import document_page_search, document_search
@@ -237,7 +237,7 @@ class MetadataApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_setup_metadata_type_list,))
-        menu_sidebar.bind_links(
+        menu_secondary.bind_links(
             links=(
                 link_metadata_add, link_metadata_edit, link_metadata_remove
             ), sources=(

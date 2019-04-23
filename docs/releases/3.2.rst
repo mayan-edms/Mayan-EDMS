@@ -154,6 +154,8 @@ Other changes
 * Update document parsing link activation.
 * Add favorite document views tests.
 * Add document state action view test.
+* Remove sidebar menu instance. The secondary menu and the
+  previour sidebar menu now perform the same function.
 
 Removals
 --------
