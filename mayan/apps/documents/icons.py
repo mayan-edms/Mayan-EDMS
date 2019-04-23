@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.appearance.classes import Icon
-from mayan.apps.converter.icons import icon_transformation
+from mayan.apps.converter.icons import icon_transformations
 
 icon_document_type = Icon(
     driver_name='fontawesome-layers', data=[
@@ -38,7 +38,8 @@ icon_document_download = Icon(
 icon_document_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
-icon_document_list = Icon(driver_name='fontawesome', symbol='book')
+icon_document = Icon(driver_name='fontawesome', symbol='book')
+icon_document_list = icon_document
 icon_document_page_count_update = Icon(
     driver_name='fontawesome', symbol='copy'
 )
@@ -51,8 +52,16 @@ icon_document_trash_send = Icon(
     driver_name='fontawesome', symbol='trash-alt'
 )
 
-icon_document_transformations_clear = icon_transformation
-icon_document_transformations_clone = icon_transformation
+icon_document_transformations_clear = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='times'
+)
+icon_document_transformations_clone = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='arrow-right'
+)
 
 icon_document_type_change = icon_document_type
 icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
@@ -98,12 +107,18 @@ icon_document_page_navigation_next = Icon(
 icon_document_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
 )
-icon_document_page_return = Icon(driver_name='fontawesome', symbol='file')
+icon_document_page_return = icon_document
 icon_document_page_rotate_left = Icon(
     driver_name='fontawesome', symbol='undo'
 )
 icon_document_page_rotate_right = Icon(
     driver_name='fontawesome', symbol='redo'
+)
+icon_document_page_view = Icon(
+    driver_name='fontawesome', symbol='image'
+)
+icon_document_page_view_reset = Icon(
+    driver_name='fontawesome', symbol='sync'
 )
 icon_document_page_zoom_in = Icon(
     driver_name='fontawesome', symbol='search-plus'
@@ -132,9 +147,7 @@ icon_document_version_download = Icon(
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
-icon_document_version_return_document = Icon(
-    driver_name='fontawesome', symbol='file'
-)
+icon_document_version_return_document = icon_document
 icon_document_version_return_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )

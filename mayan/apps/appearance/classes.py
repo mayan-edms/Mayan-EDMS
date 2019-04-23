@@ -96,6 +96,7 @@ class FontAwesomeLayersDriver(IconDriver):
 
 class Icon(object):
     def __init__(self, driver_name, **kwargs):
+        self.kwargs = kwargs
         self.driver = IconDriver.get(name=driver_name)(**kwargs)
 
     def render(self, **kwargs):
