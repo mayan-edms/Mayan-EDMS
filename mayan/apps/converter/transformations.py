@@ -33,8 +33,15 @@ class BaseTransformation(object):
         return result.hexdigest()
 
     @classmethod
-    def register(cls, transformation):
-        cls._registry[transformation.name] = transformation
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def get_label(cls):
+        if cls.arguments:
+            return string_concat(cls.label, ': ', ', '.join(cls.arguments))
+        else:
+            return cls.label
 
     @classmethod
     def get_transformation_choices(cls):
@@ -45,15 +52,8 @@ class BaseTransformation(object):
         )
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
-    @classmethod
-    def get_label(cls):
-        if cls.arguments:
-            return string_concat(cls.label, ': ', ', '.join(cls.arguments))
-        else:
-            return cls.label
+    def register(cls, transformation):
+        cls._registry[transformation.name] = transformation
 
     def __init__(self, **kwargs):
         self.kwargs = {}
