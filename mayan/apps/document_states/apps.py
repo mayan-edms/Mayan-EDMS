@@ -13,7 +13,7 @@ from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.common.links import link_object_error_list
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_sidebar, menu_tools
+    menu_setup, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
 from mayan.apps.common.widgets import TwoStateWidget
@@ -334,13 +334,25 @@ class DocumentStatesApp(MayanAppConfig):
                 WorkflowState,
             )
         )
-        menu_setup.bind_links(links=(link_setup_workflow_list,))
-        menu_sidebar.bind_links(
+        menu_secondary.bind_links(
+            links=(
+                link_setup_workflow_transition_create,
+            ), sources=(
+                WorkflowTransition,
+                'document_states:setup_workflow_transition_list',
+            )
+        )
+        menu_secondary.bind_links(
             links=(
                 link_setup_workflow_state_create,
-                link_setup_workflow_transition_create
-            ), sources=(Workflow,)
+            ), sources=(
+                WorkflowState,
+                'document_states:setup_workflow_state_list',
+            )
         )
+
+        menu_setup.bind_links(links=(link_setup_workflow_list,))
+
         menu_tools.bind_links(links=(link_tool_launch_all_workflows,))
 
         post_save.connect(
