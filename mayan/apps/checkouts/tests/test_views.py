@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
-from mayan.apps.sources.links import link_upload_version
+from mayan.apps.sources.links import link_document_version_upload
 
 from ..literals import STATE_CHECKED_OUT, STATE_LABELS
 from ..models import DocumentCheckout
@@ -208,7 +208,7 @@ class DocumentCheckoutViewTestCase(DocumentCheckoutTestMixin, GenericDocumentVie
 
         # Needed by the url view resolver
         response.context.current_app = None
-        resolved_link = link_upload_version.resolve(context=response.context)
+        resolved_link = link_document_version_upload.resolve(context=response.context)
 
         self.assertEqual(resolved_link, None)
 

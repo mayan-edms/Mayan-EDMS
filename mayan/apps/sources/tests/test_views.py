@@ -14,7 +14,7 @@ from mayan.apps.documents.tests import (
 )
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
-from ..links import link_upload_version
+from ..links import link_document_version_upload
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import StagingFolderSource, WebFormSource
 from ..permissions import (
@@ -219,7 +219,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
 
         # Needed by the url view resolver
         response.context.current_app = None
-        resolved_link = link_upload_version.resolve(context=response.context)
+        resolved_link = link_document_version_upload.resolve(context=response.context)
 
         self.assertEqual(resolved_link, None)
 
