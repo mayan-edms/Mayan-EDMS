@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import migrations
 
 
-
 def operation_add_full_path(apps, schema_editor):
     WorkflowStateAction = apps.get_model('document_states', 'WorkflowStateAction')
 
@@ -16,7 +15,7 @@ def operation_remove_full_path(apps, schema_editor):
     WorkflowStateAction = apps.get_model('document_states', 'WorkflowStateAction')
 
     for workflow_state_action in WorkflowStateAction.objects.using(schema_editor.connection.alias).all():
-        workflow_state_action.action_path = workflow_state_action.action_path.replace('mayan.apps.','')
+        workflow_state_action.action_path = workflow_state_action.action_path.replace('mayan.apps.', '')
         workflow_state_action.save()
 
 

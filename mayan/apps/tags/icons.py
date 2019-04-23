@@ -36,6 +36,3 @@ icon_tag_delete_submit = Icon(driver_name='fontawesome', symbol='times')
 icon_tag_edit = Icon(driver_name='fontawesome', symbol='pen')
 icon_tag_document_list = icon_document_list
 icon_tag_list = Icon(driver_name='fontawesome', symbol='tag')
-
-
-

@@ -12,8 +12,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
-    menu_tools
+    menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
 from mayan.apps.documents.search import document_search, document_page_search
 from mayan.apps.documents.signals import post_version_upload

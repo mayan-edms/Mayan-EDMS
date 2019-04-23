@@ -7,7 +7,7 @@ from furl import furl
 
 from django.apps import apps
 from django.contrib.admin.utils import label_for_field
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
@@ -15,7 +15,7 @@ from django.utils.encoding import force_str, force_text
 from django.utils.module_loading import import_string
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.utils import resolve_attribute, return_attrib
+from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.permissions import Permission
 
 from .utils import get_current_view_name

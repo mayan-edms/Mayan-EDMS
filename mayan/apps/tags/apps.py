@@ -11,7 +11,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_sidebar, menu_secondary
+    menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events import ModelEventType

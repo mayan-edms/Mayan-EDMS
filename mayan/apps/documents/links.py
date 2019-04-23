@@ -10,7 +10,6 @@ from mayan.apps.navigation import Link
 from .icons import (
     icon_clear_image_cache,
 
-    icon_duplicated_document_list,
     icon_document_list_recent_access,
     icon_recent_added_document_list,
     icon_document_page_navigation_first,
@@ -22,7 +21,6 @@ from .icons import (
     icon_document_page_rotate_right,
     icon_document_page_zoom_in,
     icon_document_page_zoom_out,
-    icon_document_pages,
 
     icon_document_type_create,
     icon_document_type_delete,

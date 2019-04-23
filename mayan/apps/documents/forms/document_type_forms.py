@@ -6,7 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 
 from ..models import DocumentType, DocumentTypeFilename
-from ..permissions import permission_document_create
 
 __all__ = ('DocumentTypeFilteredSelectForm', 'DocumentTypeFilenameForm_create')
 
