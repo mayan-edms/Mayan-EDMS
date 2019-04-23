@@ -334,7 +334,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
         if queryset.count() == 1:
             return reverse(
-                viewname='tags:document_tag_llist', kwargs={
+                viewname='tags:document_tag_list', kwargs={
                     'pk': queryset.first().pk
                 }
             )
