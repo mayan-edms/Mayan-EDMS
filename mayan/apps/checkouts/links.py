@@ -4,7 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation import Link
 
-from .icons import icon_check_out_info
+from .icons import (
+    icon_check_in_document, icon_check_out_document, icon_check_out_info
+)
 from .permissions import (
     permission_document_check_out, permission_document_check_in,
     permission_document_check_in_override,
@@ -34,11 +36,13 @@ link_check_out_list = Link(
 )
 link_check_out_document = Link(
     args='object.pk', condition=is_not_checked_out,
+    icon_class=icon_check_out_document,
     permissions=(permission_document_check_out,),
     text=_('Check out document'), view='checkouts:check_out_document',
 )
 link_check_in_document = Link(
-    args='object.pk', condition=is_checked_out, permissions=(
+    args='object.pk', icon_class=icon_check_in_document,
+    condition=is_checked_out, permissions=(
         permission_document_check_in, permission_document_check_in_override
     ), text=_('Check in document'), view='checkouts:check_in_document',
 )

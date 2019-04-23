@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_main, menu_sidebar
+from mayan.apps.common.menus import menu_facet, menu_main, menu_secondary
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events import ModelEventType
 from mayan.celery import app
@@ -116,7 +116,7 @@ class CheckoutsApp(MayanAppConfig):
 
         menu_facet.bind_links(links=(link_check_out_info,), sources=(Document,))
         menu_main.bind_links(links=(link_check_out_list,), position=98)
-        menu_sidebar.bind_links(
+        menu_secondary.bind_links(
             links=(link_check_out_document, link_check_in_document),
             sources=(
                 'checkouts:check_out_info', 'checkouts:check_out_document',
