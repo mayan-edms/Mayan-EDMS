@@ -10,14 +10,11 @@ icon_document_type = Icon(
     ]
 )
 
+icon_menu_documents = Icon(driver_name='fontawesome', symbol='book')
+
 icon_clear_image_cache = Icon(driver_name='fontawesome', symbol='file-image')
 
-icon_dashboard_document_types = Icon(
-    driver_name='fontawesome', symbol='book'
-)
-icon_dashboard_document_types = Icon(
-    driver_name='fontawesome', symbol='book'
-)
+icon_dashboard_document_types = icon_document_type
 icon_dashboard_documents_in_trash = Icon(
     driver_name='fontawesome', symbol='trash-alt'
 )
@@ -28,7 +25,7 @@ icon_dashboard_new_documents_this_month = Icon(
     driver_name='fontawesome', symbol='calendar'
 )
 icon_dashboard_total_document = Icon(
-    driver_name='fontawesome', symbol='file'
+    driver_name='fontawesome', symbol='book'
 )
 
 
@@ -38,26 +35,26 @@ icon_document_quick_download = Icon(
 icon_document_download = Icon(
     driver_name='fontawesome', symbol='download'
 )
-icon_document_duplicates_list = Icon(
-    driver_name='fontawesome', symbol='clone'
-)
 icon_document_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
+icon_document_list = Icon(driver_name='fontawesome', symbol='book')
 icon_document_page_count_update = Icon(
     driver_name='fontawesome', symbol='copy'
 )
+icon_document_preview = Icon(driver_name='fontawesome', symbol='eye')
 icon_document_print = Icon(
     driver_name='fontawesome', symbol='print'
 )
+icon_document_properties = Icon(driver_name='fontawesome', symbol='info')
 icon_document_trash_send = Icon(
     driver_name='fontawesome', symbol='trash-alt'
 )
+
 icon_document_transformations_clear = icon_transformation
 icon_document_transformations_clone = icon_transformation
 
 icon_document_type_change = icon_document_type
-
 icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
 icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
@@ -74,52 +71,21 @@ icon_favorite_document_add = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
     secondary_symbol='plus'
 )
+icon_document_image_loading = Icon(
+    driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
+)
+icon_document_list = Icon(driver_name='fontawesome', symbol='book')
+icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
+icon_document_list_recent_access = Icon(
+    driver_name='fontawesome', symbol='clock'
+)
+
 icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
 icon_favorite_document_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
     secondary_symbol='minus'
 )
 
-icon_trash_can_empty = Icon(
-    driver_name='fontawesome', symbol='trash-alt'
-)
-icon_trashed_document_delete = Icon(
-    driver_name='fontawesome', symbol='times'
-)
-icon_trashed_document_list = Icon(
-    driver_name='fontawesome', symbol='trash-alt'
-)
-icon_trashed_document_multiple_delete = Icon(
-    driver_name='fontawesome', symbol='trash-alt'
-)
-icon_trashed_document_multiple_restore = Icon(
-    driver_name='fontawesome', symbol='recycle'
-)
-icon_trashed_document_restore = Icon(
-    driver_name='fontawesome', symbol='recycle'
-)
-
-icon_document_version_download = Icon(
-    driver_name='fontawesome', symbol='download'
-)
-icon_document_version_view = Icon(
-    driver_name='fontawesome', symbol='eye'
-)
-
-icon_document_duplicates_list = Icon(
-    driver_name='fontawesome', symbol='clone'
-)
-icon_document_image_loading = Icon(
-    driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
-)
-icon_document_list = Icon(driver_name='fontawesome', symbol='file')
-icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
-icon_document_list_recent_access = Icon(
-    driver_name='fontawesome', symbol='clock'
-)
-icon_document_list_recent_added = Icon(
-    driver_name='fontawesome', symbol='asterisk'
-)
 icon_document_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )
@@ -145,19 +111,23 @@ icon_document_page_zoom_in = Icon(
 icon_document_page_zoom_out = Icon(
     driver_name='fontawesome', symbol='search-minus'
 )
-
 icon_document_pages = Icon(driver_name='fontawesome', symbol='copy')
-icon_document_preview = Icon(driver_name='fontawesome', symbol='eye')
-icon_document_properties = Icon(driver_name='fontawesome', symbol='info')
+
+
 icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
 icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
-icon_document_type_setup = Icon(driver_name='fontawesome', symbol='file')
 icon_document_type_filename = Icon(
     driver_name='fontawesome', symbol='keyboard'
 )
 icon_document_type_filename_create = Icon(
     driver_name='fontawesome', symbol='plus'
+)
+icon_document_type_setup = Icon(driver_name='fontawesome', symbol='file')
+
+
+icon_document_version_download = Icon(
+    driver_name='fontawesome', symbol='download'
 )
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
@@ -168,10 +138,37 @@ icon_document_version_return_document = Icon(
 icon_document_version_return_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
+icon_document_version_view = Icon(
+    driver_name='fontawesome', symbol='eye'
+)
+
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )
 icon_duplicated_document_scan = Icon(
     driver_name='fontawesome', symbol='clone'
 )
-icon_menu_documents = Icon(driver_name='fontawesome', symbol='file')
+
+icon_recent_added_document_list = Icon(
+    driver_name='fontawesome', symbol='asterisk'
+)
+
+
+icon_trash_can_empty = Icon(
+    driver_name='fontawesome', symbol='trash-alt'
+)
+icon_trashed_document_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_trashed_document_list = Icon(
+    driver_name='fontawesome', symbol='trash-alt'
+)
+icon_trashed_document_multiple_delete = Icon(
+    driver_name='fontawesome', symbol='trash-alt'
+)
+icon_trashed_document_multiple_restore = Icon(
+    driver_name='fontawesome', symbol='recycle'
+)
+icon_trashed_document_restore = Icon(
+    driver_name='fontawesome', symbol='recycle'
+)
