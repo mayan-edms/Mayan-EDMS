@@ -128,6 +128,10 @@
                                     {% endfor %}
                                 {% endif %}
 
+                                {% for column in extra_columns %}
+                                    <td>{{ object|object_property:column.attribute }}</td>
+                                {% endfor %}
+
                                 {% if not hide_links %}
                                     <td class="last">
                                         {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
