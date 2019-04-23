@@ -25,7 +25,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^(?P<pk>\d+)/documents/$', view=TagTaggedItemListView.as_view(),
-        name='tag_tagged_item_list'
+        name='tag_document_list'
     ),
     url(
         regex=r'^multiple/delete/$', view=TagDeleteActionView.as_view(),
@@ -51,7 +51,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^document/(?P<pk>\d+)/tags/$',
-        view=DocumentTagListView.as_view(), name='document_tags'
+        view=DocumentTagListView.as_view(), name='document_tag_list'
     ),
 ]
 

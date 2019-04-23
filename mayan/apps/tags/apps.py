@@ -11,7 +11,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelField
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_sidebar
+    menu_sidebar, menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.events import ModelEventType
@@ -27,10 +27,11 @@ from .events import (
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .html_widgets import widget_document_tags
 from .links import (
-    link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
-    link_single_document_multiple_tag_remove, link_tag_attach, link_tag_create,
-    link_tag_delete, link_tag_document_list, link_tag_edit, link_tag_list,
-    link_tag_multiple_delete, link_tag_tagged_item_list
+    link_document_tag_list, link_document_multiple_attach_multiple_tag,
+    link_document_multiple_tag_multiple_remove,
+    link_document_tag_multiple_remove, link_document_tag_multiple_attach, link_tag_create,
+    link_tag_delete, link_tag_edit, link_tag_list,
+    link_tag_multiple_delete, link_tag_document_list
 )
 from .menus import menu_tags
 from .methods import method_document_get_tags
@@ -141,14 +142,14 @@ class TagsApp(MayanAppConfig):
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 
         menu_facet.bind_links(
-            links=(link_tag_document_list,), sources=(Document,)
+            links=(link_document_tag_list,), sources=(Document,)
         )
 
         menu_list_facet.bind_links(
             links=(
                 link_acl_list, link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_tag_tagged_item_list,
+                link_tag_document_list,
             ), sources=(Tag,)
         )
 
@@ -162,8 +163,8 @@ class TagsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_multiple_documents_attach_tag,
-                link_multiple_documents_tag_remove
+                link_document_multiple_attach_multiple_tag,
+                link_document_multiple_tag_multiple_remove
             ),
             sources=(Document,)
         )
@@ -176,10 +177,10 @@ class TagsApp(MayanAppConfig):
             ),
             sources=(Tag,)
         )
-        menu_sidebar.bind_links(
-            links=(link_tag_attach, link_single_document_multiple_tag_remove),
+        menu_secondary.bind_links(
+            links=(link_document_tag_multiple_attach, link_document_tag_multiple_remove),
             sources=(
-                'tags:tag_attach', 'tags:document_tags',
+                'tags:tag_attach', 'tags:document_tag_list',
                 'tags:single_document_multiple_tag_remove'
             )
         )

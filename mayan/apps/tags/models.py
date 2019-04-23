@@ -54,7 +54,9 @@ class Tag(models.Model):
         )
 
     def get_absolute_url(self):
-        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
+        return reverse(
+            viewname='tags:tag_document_list', kwargs={'pk': self.pk}
+        )
 
     def get_document_count(self, user):
         """

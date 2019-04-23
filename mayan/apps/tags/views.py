@@ -19,9 +19,9 @@ from mayan.apps.documents.permissions import permission_document_view
 
 from .forms import TagMultipleSelectionForm
 from .icons import (
-    icon_menu_tags, icon_tag_delete_submit, icon_tag_remove_submit
+    icon_menu_tags, icon_tag_delete_submit, icon_document_tag_remove_submit
 )
-from .links import link_tag_attach, link_tag_create
+from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -86,7 +86,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
         if queryset.count() == 1:
             return reverse(
-                viewname='tags:document_tags', kwargs={
+                viewname='tags:document_tag_list', kwargs={
                     'pk': queryset.first().pk
                 }
             )
@@ -263,7 +263,7 @@ class DocumentTagListView(TagListView):
             {
                 'hide_link': True,
                 'no_results_title': _('Document has no tags attached'),
-                'no_results_main_link': link_tag_attach.resolve(
+                'no_results_main_link': link_document_tag_multiple_attach.resolve(
                     context=RequestContext(
                         self.request, {'object': self.document}
                     )
@@ -291,7 +291,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
 
         result = {
-            'submit_icon_class': icon_tag_remove_submit,
+            'submit_icon_class': icon_document_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
                 singular='Remove tags to %(count)d document',
@@ -334,7 +334,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.get_queryset()
         if queryset.count() == 1:
             return reverse(
-                viewname='tags:document_tags', kwargs={
+                viewname='tags:document_tag_llist', kwargs={
                     'pk': queryset.first().pk
                 }
             )
