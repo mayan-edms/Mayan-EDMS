@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation import Link
 
-from .icons import icon_transformation, icon_transformation_create
 from .permissions import (
     permission_transformation_create, permission_transformation_delete,
     permission_transformation_edit, permission_transformation_view
@@ -31,21 +30,25 @@ def get_kwargs_factory(variable_name):
 
 
 link_transformation_create = Link(
-    icon_class=icon_transformation_create,
+    icon_class_path='mayan.apps.converter.icons.icon_transformation_create',
     kwargs=get_kwargs_factory('content_object'),
     permissions=(permission_transformation_create,),
     text=_('Create new transformation'), view='converter:transformation_create'
 )
 link_transformation_delete = Link(
-    args='resolved_object.pk', permissions=(permission_transformation_delete,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.converter.icons.icon_transformation_delete',
+    permissions=(permission_transformation_delete,),
     tags='dangerous', text=_('Delete'), view='converter:transformation_delete'
 )
 link_transformation_edit = Link(
-    args='resolved_object.pk', permissions=(permission_transformation_edit,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.converter.icons.icon_transformation_edit',
+    permissions=(permission_transformation_edit,),
     text=_('Edit'), view='converter:transformation_edit'
 )
 link_transformation_list = Link(
-    icon_class=icon_transformation,
+    icon_class_path='mayan.apps.converter.icons.icon_transformation_list',
     kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_transformation_view,), text=_('Transformations'),
     view='converter:transformation_list'

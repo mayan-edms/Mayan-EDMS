@@ -16,7 +16,7 @@ from mayan.apps.common.views import (
 )
 
 from .forms import TransformationForm
-from .icons import icon_transformation
+from .icons import icon_transformation_list
 from .links import link_transformation_create
 from .models import Transformation
 from .permissions import (
@@ -215,7 +215,7 @@ class TransformationListView(SingleObjectListView):
             'hide_link': True,
             'hide_object': True,
             'navigation_object_list': ('content_object',),
-            'no_results_icon': icon_transformation,
+            'no_results_icon': icon_transformation_list,
             'no_results_main_link': link_transformation_create.resolve(
                 context=RequestContext(
                     self.request, {'content_object': self.content_object}
