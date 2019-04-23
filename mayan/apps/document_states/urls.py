@@ -109,11 +109,6 @@ urlpatterns = [
         name='setup_workflow_state_action_list'
     ),
     url(
-        regex=r'^setup/workflow/state/(?P<pk>\d+)/actions/$',
-        view=SetupWorkflowStateActionListView.as_view(),
-        name='setup_workflow_state_action_list'
-    ),
-    url(
         regex=r'^setup/workflow/state/(?P<pk>\d+)/actions/selection/$',
         view=SetupWorkflowStateActionSelectionView.as_view(),
         name='setup_workflow_state_action_selection'
