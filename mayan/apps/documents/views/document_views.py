@@ -31,7 +31,7 @@ from ..forms import (
 )
 from ..icons import (
     icon_document_list, icon_document_list_recent_access,
-    icon_document_list_recent_added, icon_duplicated_document_list
+    icon_recent_added_document_list, icon_duplicated_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from ..models import Document, DuplicatedDocument, RecentDocument
@@ -730,7 +730,7 @@ class RecentAddedDocumentListView(DocumentListView):
         context = super(RecentAddedDocumentListView, self).get_extra_context()
         context.update(
             {
-                'no_results_icon': icon_document_list_recent_added,
+                'no_results_icon': icon_recent_added_document_list,
                 'no_results_text': _(
                     'This view will list the latest documents uploaded '
                     'in the system.'

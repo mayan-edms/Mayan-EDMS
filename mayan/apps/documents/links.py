@@ -10,9 +10,9 @@ from mayan.apps.navigation import Link
 from .icons import (
     icon_clear_image_cache,
 
-    icon_document_duplicates_list,
+    icon_duplicated_document_list,
     icon_document_list_recent_access,
-    icon_document_list_recent_added,
+    icon_recent_added_document_list,
     icon_document_page_navigation_first,
     icon_document_page_navigation_last,
     icon_document_page_navigation_next,
@@ -271,7 +271,7 @@ link_document_list_recent_access = Link(
     view='documents:document_list_recent_access'
 )
 link_document_list_recent_added = Link(
-    icon_class=icon_document_list_recent_added, text=_('Recently added'),
+    icon_class=icon_recent_added_document_list, text=_('Recently added'),
     view='documents:document_list_recent_added'
 )
 link_document_list_deleted = Link(
@@ -414,7 +414,7 @@ link_duplicated_document_list = Link(
     view='documents:duplicated_document_list'
 )
 link_document_duplicates_list = Link(
-    args='resolved_object.id', icon_class=icon_document_duplicates_list,
+    args='resolved_object.id', icon_class=icon_duplicated_document_list,
     permissions=(permission_document_view,), text=_('Duplicates'),
     view='documents:document_duplicates_list',
 )
