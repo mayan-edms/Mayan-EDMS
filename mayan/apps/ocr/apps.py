@@ -148,17 +148,14 @@ class OCRApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(link_document_submit_multiple,), sources=(Document,)
         )
-        menu_object.bind_links(
-            links=(link_document_submit,), sources=(Document,)
-        )
         menu_secondary.bind_links(
             links=(
-                link_document_ocr_content, link_document_ocr_errors_list,
-                link_document_ocr_download
+                link_document_ocr_errors_list,
+                link_document_ocr_download, link_document_submit
             ),
             sources=(
-                'ocr:document_content', 'ocr:document_ocr_error_list',
-                'ocr:document_ocr_download',
+                'ocr:document_submit', 'ocr:document_ocr_content',
+                'ocr:document_ocr_download', 'ocr:document_ocr_error_list'
             )
         )
         menu_secondary.bind_links(

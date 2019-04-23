@@ -118,6 +118,7 @@
 * Move the favorite document views to their own module.
 * Replace DocumentTypeSelectioForm with an improved
   version that does filtering.
+* Update OCR links activation.
 
 3.1.11 (2019-04-XX)
 ===================
