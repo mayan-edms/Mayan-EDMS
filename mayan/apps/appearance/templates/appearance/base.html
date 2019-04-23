@@ -62,7 +62,8 @@
                                     {% if navigation_object_list %}
 
                                         {% ifchanged link_group.object %}
-                                            <li class="dropdown-header">{% common_get_object_verbose_name obj=link_group.object %}</li>
+                                        {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
+                                            {% if link_group_object_verbose_name %}<li class="dropdown-header">{{ link_group_object_verbose_name }}</li>{% endif %}
                                         {% endifchanged %}
                                     {% endif %}
 
