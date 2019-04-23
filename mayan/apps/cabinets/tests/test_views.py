@@ -104,7 +104,7 @@ class CabinetViewTestCase(CabinetTestMixin, GenericViewTestCase):
 class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase):
     def _add_document_to_cabinet(self):
         return self.post(
-            viewname='cabinets:cabinet_add_document', kwargs={
+            viewname='cabinets:document_cabinet_add', kwargs={
                 'pk': self.test_document.pk
             }, data={
                 'cabinets': self.test_cabinet.pk
@@ -146,7 +146,7 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase)
 
     def _request_add_multiple_documents_to_cabinet(self):
         return self.post(
-            viewname='cabinets:cabinet_add_multiple_documents', data={
+            viewname='cabinets:document_multiple_cabinet_add', data={
                 'id_list': (self.test_document.pk,), 'cabinets': self.test_cabinet.pk
             }
         )

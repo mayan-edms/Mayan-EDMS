@@ -8,15 +8,15 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_sidebar
+    menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation import SourceColumn
 
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
-    link_document_cabinet_remove, link_cabinet_add_document,
-    link_cabinet_add_multiple_documents, link_cabinet_child_add,
+    link_document_cabinet_remove, link_document_cabinet_add,
+    link_document_multiple_cabinet_add, link_cabinet_child_add,
     link_cabinet_create, link_cabinet_delete, link_cabinet_edit,
     link_cabinet_view, link_custom_acl_list,
     link_multiple_document_cabinet_remove
@@ -109,7 +109,7 @@ class CabinetsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_cabinet_add_multiple_documents,
+                link_document_multiple_cabinet_add,
                 link_multiple_document_cabinet_remove
             ), sources=(Document,)
         )
@@ -123,11 +123,11 @@ class CabinetsApp(MayanAppConfig):
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
             ), sources=(Cabinet,)
         )
-        menu_sidebar.bind_links(
-            links=(link_cabinet_add_document, link_document_cabinet_remove),
+        menu_secondary.bind_links(
+            links=(link_document_cabinet_add, link_document_cabinet_remove),
             sources=(
                 'cabinets:document_cabinet_list',
-                'cabinets:cabinet_add_document',
+                'cabinets:document_cabinet_add',
                 'cabinets:document_cabinet_remove'
             )
         )

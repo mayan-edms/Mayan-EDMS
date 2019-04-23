@@ -38,12 +38,12 @@ urlpatterns = [
     ),
     url(
         regex=r'^document/(?P<pk>\d+)/cabinet/add/$',
-        view=DocumentAddToCabinetView.as_view(), name='cabinet_add_document'
+        view=DocumentAddToCabinetView.as_view(), name='document_cabinet_add'
     ),
     url(
         regex=r'^document/multiple/cabinet/add/$',
         view=DocumentAddToCabinetView.as_view(),
-        name='cabinet_add_multiple_documents'
+        name='document_multiple_cabinet_add'
     ),
     url(
         regex=r'^document/(?P<pk>\d+)/cabinet/remove/$',

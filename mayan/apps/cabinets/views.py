@@ -20,7 +20,7 @@ from mayan.apps.documents.views import DocumentListView
 from .forms import CabinetListForm
 from .icons import icon_cabinet
 from .links import (
-    link_cabinet_add_document, link_cabinet_child_add, link_cabinet_create
+    link_document_cabinet_add, link_cabinet_child_add, link_cabinet_create
 )
 from .models import Cabinet
 from .permissions import (
@@ -204,7 +204,7 @@ class DocumentCabinetListView(CabinetListView):
         return {
             'hide_link': True,
             'no_results_icon': icon_cabinet,
-            'no_results_main_link': link_cabinet_add_document.resolve(
+            'no_results_main_link': link_document_cabinet_add.resolve(
                 context=RequestContext(
                     request=self.request, dict_={'object': self.document}
                 )
