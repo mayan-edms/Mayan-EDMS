@@ -121,6 +121,8 @@
 * Update OCR links activation.
 * Update document parsing link activation.
 * Add favorite document views tests.
+* Add document state action view test.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

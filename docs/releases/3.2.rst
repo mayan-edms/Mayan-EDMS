@@ -153,6 +153,7 @@ Other changes
 * Update OCR links activation.
 * Update document parsing link activation.
 * Add favorite document views tests.
+* Add document state action view test.
 
 Removals
 --------

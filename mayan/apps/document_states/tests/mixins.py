@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from ..classes import WorkflowAction
 from ..models import Workflow
 
 from .literals import (
@@ -9,6 +10,21 @@ from .literals import (
     TEST_WORKFLOW_STATE_COMPLETION, TEST_WORKFLOW_TRANSITION_LABEL,
     TEST_WORKFLOW_TRANSITION_LABEL_2
 )
+
+
+class TestWorkflowAction(WorkflowAction):
+    label = 'test workflow state action'
+
+
+class WorkflowStateActionTestMixin(object):
+    TestWorkflowAction = TestWorkflowAction
+    test_workflow_state_action_path = 'mayan.apps.document_states.tests.mixins.TestWorkflowAction'
+
+    def _create_test_workflow_state_action(self):
+        self.test_workflow_state.actions.create(
+            label=self.TestWorkflowAction.label,
+            action_path=self.test_workflow_state_action_path
+        )
 
 
 class WorkflowTestMixin(object):
