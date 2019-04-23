@@ -82,18 +82,3 @@ class DocumentPageContentForm(forms.Form):
             content = conditional_escape(force_text(page_content))
 
         self.fields['contents'].initial = mark_safe(content)
-
-
-class DocumentTypeSelectForm(forms.Form):
-    document_type = forms.ModelChoiceField(
-        queryset=DocumentType.objects.none(), label=('Document type')
-    )
-
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
-        super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
-        queryset = AccessControlList.objects.filter_by_access(
-            permission=permission_parse_document,
-            queryset=DocumentType.objects.all(), user=user,
-        )
-        self.fields['document_type'].queryset = queryset

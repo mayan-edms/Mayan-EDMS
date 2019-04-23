@@ -80,9 +80,3 @@ class DocumentOCRContentForm(forms.Form):
                 )
 
         self.fields['contents'].initial = mark_safe(''.join(content))
-
-
-class DocumentTypeSelectForm(forms.Form):
-    document_type = forms.ModelChoiceField(
-        queryset=DocumentType.objects.all(), label=('Document type')
-    )

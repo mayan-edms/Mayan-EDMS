@@ -10,12 +10,10 @@ from mayan.apps.common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.models import Document, DocumentPage, DocumentType
 
-from .forms import (
-    DocumentPageOCRContentForm, DocumentOCRContentForm,
-    DocumentTypeSelectForm
-)
+from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -84,6 +82,9 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
             )
         }
 
+        if queryset.count() == 1:
+            result['object'] = queryset.first()
+
         return result
 
     def object_action(self, form, instance):
@@ -94,25 +95,32 @@ class DocumentTypeSubmitView(FormView):
     extra_context = {
         'title': _('Submit all documents of a type for OCR')
     }
-    form_class = DocumentTypeSelectForm
+    form_class = DocumentTypeFilteredSelectForm
+    post_action_redirect = reverse_lazy(viewname='common:tools_list')
 
     def form_valid(self, form):
         count = 0
-        for document in form.cleaned_data['document_type'].documents.all():
-            document.submit_for_ocr()
-            count += 1
+        for document_type in form.cleaned_data['document_type']:
+            for document in document_type.documents.all():
+                document.submit_for_ocr()
+                count += 1
 
         messages.success(
             message=_(
-                '%(count)d documents of type "%(document_type)s" added to the '
-                'OCR queue.'
+                '%(count)d documents added to the OCR queue.'
             ) % {
                 'count': count,
-                'document_type': form.cleaned_data['document_type']
             }, request=self.request
         )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
+
+    def get_form_extra_kwargs(self):
+        return {
+            'allow_multiple': True,
+            'permission': permission_ocr_document,
+            'user': self.request.user
+        }
 
     def get_post_action_redirect(self):
         return reverse(viewname='common:tools_list')

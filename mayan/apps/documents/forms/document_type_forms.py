@@ -8,26 +8,41 @@ from mayan.apps.acls.models import AccessControlList
 from ..models import DocumentType, DocumentTypeFilename
 from ..permissions import permission_document_create
 
-__all__ = ('DocumentTypeSelectForm', 'DocumentTypeFilenameForm_create')
+__all__ = ('DocumentTypeFilteredSelectForm', 'DocumentTypeFilenameForm_create')
 
 
-class DocumentTypeSelectForm(forms.Form):
+class DocumentTypeFilteredSelectForm(forms.Form):
     """
-    Form to select the document type of a document to be created, used
-    as form #1 in the document creation wizard
+    Form to select the document type of a document to be created. This form
+    is meant to be reused and reconfigured by other apps. Example: Used
+    as form #1 in the document creation wizard.
     """
     def __init__(self, *args, **kwargs):
+        help_text = kwargs.pop('help_text', None)
+        if kwargs.pop('allow_multiple', False):
+            extra_kwargs = {}
+            field_class = forms.ModelMultipleChoiceField
+            widget_class = forms.widgets.SelectMultiple
+        else:
+            extra_kwargs = {'empty_label': None}
+            field_class = forms.ModelChoiceField
+            widget_class = forms.widgets.Select
+
+        permission = kwargs.pop('permission', None)
         user = kwargs.pop('user', None)
-        super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
 
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_document_create, user,
-            queryset=DocumentType.objects.all()
-        )
+        super(DocumentTypeFilteredSelectForm, self).__init__(*args, **kwargs)
 
-        self.fields['document_type'] = forms.ModelChoiceField(
-            empty_label=None, label=_('Document type'), queryset=queryset,
-            required=True, widget=forms.widgets.Select(attrs={'size': 10})
+        queryset = DocumentType.objects.all()
+        if permission:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission=permission, queryset=queryset, user=user
+            )
+
+        self.fields['document_type'] = field_class(
+            help_text=help_text, label=_('Document type'),
+            queryset=queryset, required=True,
+            widget=widget_class(attrs={'size': 10}), **extra_kwargs
         )
 
 

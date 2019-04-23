@@ -11,7 +11,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
 
-from mayan.apps.documents.forms import DocumentTypeSelectForm
+from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.permissions import permission_document_create
 
 from .icons import icon_wizard_submit
 
@@ -92,7 +93,7 @@ class WizardStep(object):
 
 
 class WizardStepDocumentType(WizardStep):
-    form_class = DocumentTypeSelectForm
+    form_class = DocumentTypeFilteredSelectForm
     label = _('Select document type')
     name = 'document_type_selection'
     number = 0
@@ -111,7 +112,10 @@ class WizardStepDocumentType(WizardStep):
 
     @classmethod
     def get_form_kwargs(cls, wizard):
-        return {'user': wizard.request.user}
+        return {
+            'permission': permission_document_create,
+            'user': wizard.request.user
+        }
 
 
 WizardStep.register(WizardStepDocumentType)
