@@ -26,7 +26,7 @@ class AttachTagAction(WorkflowAction):
     label = _('Attach tag')
     widgets = {
         'tags': {
-            'class': 'tags.widgets.TagFormWidget', 'kwargs': {
+            'class': 'mayan.apps.tags.widgets.TagFormWidget', 'kwargs': {
                 'attrs': {'class': 'select2-tags'},
             }
         }
