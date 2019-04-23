@@ -84,9 +84,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_type_edit(
             document_type=document_type_2
         )
-        self.assertContains(
-            response=response, text='Select a valid choice', status_code=200
-        )
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
             Document.objects.get(pk=self.test_document.pk).document_type,
@@ -140,9 +138,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_multiple_document_type_edit(
             document_type=document_type_2
         )
-        self.assertContains(
-            response=response, text='Select a valid choice.', status_code=200
-        )
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
             Document.objects.first().document_type, self.test_document_type
