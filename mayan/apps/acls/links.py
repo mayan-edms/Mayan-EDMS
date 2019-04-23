@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation import Link
 
-from .icons import icon_acl_list, icon_acl_new
+from .icons import icon_acl_delete, icon_acl_list, icon_acl_new
 from .permissions import permission_acl_view, permission_acl_edit
 
 
@@ -28,9 +28,9 @@ def get_kwargs_factory(variable_name):
 
 
 link_acl_delete = Link(
-    args='resolved_object.pk', permissions=(permission_acl_edit,),
-    permissions_related='content_object', tags='dangerous', text=_('Delete'),
-    view='acls:acl_delete',
+    args='resolved_object.pk', icon_class=icon_acl_delete,
+    permissions=(permission_acl_edit,), permissions_related='content_object',
+    tags='dangerous', text=_('Delete'), view='acls:acl_delete',
 )
 link_acl_list = Link(
     icon_class=icon_acl_list, kwargs=get_kwargs_factory('resolved_object'),
