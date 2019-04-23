@@ -7,56 +7,45 @@ from django import forms
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.forms import DetailForm
 
-from .fields import (
-    DocumentField, DocumentPageField, DocumentVersionField
-)
-from .models import (
-    Document, DocumentType, DocumentTypeFilename
-)
-from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
-from .permissions import permission_document_create
-from .utils import get_language_choices
+from ..fields import DocumentField
+from ..models import Document
+from ..literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
+from ..utils import get_language_choices
 
+__all__ = (
+    'DocumentDownloadForm', 'DocumentForm', 'DocumentPreviewForm',
+    'DocumentPropertiesForm', 'DocumentPrintForm'
+)
 logger = logging.getLogger(__name__)
 
-# Document page forms
 
+class DocumentDownloadForm(forms.Form):
+    compressed = forms.BooleanField(
+        label=_('Compress'), required=False,
+        help_text=_(
+            'Download the document in the original format or in a compressed '
+            'manner. This option is selectable only when downloading one '
+            'document, for multiple documents, the bundle will always be '
+            'downloads as a compressed file.'
+        )
+    )
+    zip_filename = forms.CharField(
+        initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'),
+        required=False,
+        help_text=_(
+            'The filename of the compressed file that will contain the '
+            'documents to be downloaded, if the previous option is selected.'
+        )
+    )
 
-class DocumentPageForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        instance = kwargs.pop('instance', None)
-        rotation = kwargs.pop('rotation', None)
-        zoom = kwargs.pop('zoom', None)
-        super(DocumentPageForm, self).__init__(*args, **kwargs)
-        self.fields['document_page'].initial = instance
-        self.fields['document_page'].widget.attrs.update({
-            'zoom': zoom,
-            'rotation': rotation,
-        })
-
-    document_page = DocumentPageField()
-
-
-# Document forms
-class DocumentPreviewForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        document = kwargs.pop('instance', None)
-        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['document'].initial = document
-
-    document = DocumentField()
-
-
-class DocumentVersionPreviewForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        document_version = kwargs.pop('instance', None)
-        super(DocumentVersionPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['document_version'].initial = document_version
-
-    document_version = DocumentVersionField()
+        self.queryset = kwargs.pop('queryset', None)
+        super(DocumentDownloadForm, self).__init__(*args, **kwargs)
+        if self.queryset.count() > 1:
+            self.fields['compressed'].initial = True
+            self.fields['compressed'].widget.attrs.update({'disabled': True})
 
 
 class DocumentForm(forms.ModelForm):
@@ -137,6 +126,15 @@ class DocumentForm(forms.ModelForm):
         return filename
 
 
+class DocumentPreviewForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        document = kwargs.pop('instance', None)
+        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
+        self.fields['document'].initial = document
+
+    document = DocumentField()
+
+
 class DocumentPropertiesForm(DetailForm):
     """
     Detail class form to display a document file based properties
@@ -194,91 +192,9 @@ class DocumentPropertiesForm(DetailForm):
         model = Document
 
 
-class DocumentTypeSelectForm(forms.Form):
-    """
-    Form to select the document type of a document to be created, used
-    as form #1 in the document creation wizard
-    """
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        logger.debug('user: %s', user)
-        super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
-
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_document_create, user,
-            queryset=DocumentType.objects.all()
-        )
-
-        self.fields['document_type'] = forms.ModelChoiceField(
-            empty_label=None, label=_('Document type'), queryset=queryset,
-            required=True, widget=forms.widgets.Select(attrs={'size': 10})
-        )
-
-
-class DocumentTypeFilenameForm_create(forms.ModelForm):
-    """
-    Model class form to create a new document type filename
-    """
-    class Meta:
-        fields = ('filename',)
-        model = DocumentTypeFilename
-
-
-class DocumentDownloadForm(forms.Form):
-    compressed = forms.BooleanField(
-        label=_('Compress'), required=False,
-        help_text=_(
-            'Download the document in the original format or in a compressed '
-            'manner. This option is selectable only when downloading one '
-            'document, for multiple documents, the bundle will always be '
-            'downloads as a compressed file.'
-        )
-    )
-    zip_filename = forms.CharField(
-        initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'),
-        required=False,
-        help_text=_(
-            'The filename of the compressed file that will contain the '
-            'documents to be downloaded, if the previous option is selected.'
-        )
-    )
-
-    def __init__(self, *args, **kwargs):
-        self.queryset = kwargs.pop('queryset', None)
-        super(DocumentDownloadForm, self).__init__(*args, **kwargs)
-        if self.queryset.count() > 1:
-            self.fields['compressed'].initial = True
-            self.fields['compressed'].widget.attrs.update({'disabled': True})
-
-
-class DocumentVersionDownloadForm(DocumentDownloadForm):
-    preserve_extension = forms.BooleanField(
-        label=_('Preserve extension'), required=False,
-        help_text=_(
-            'Takes the file extension and moves it to the end of the '
-            'filename allowing operating systems that rely on file '
-            'extensions to open the downloaded document version correctly.'
-        )
-    )
-
-
 class DocumentPrintForm(forms.Form):
     page_group = forms.ChoiceField(
         choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,
         widget=forms.RadioSelect
     )
     page_range = forms.CharField(label=_('Page range'), required=False)
-
-
-class DocumentPageNumberForm(forms.Form):
-    page = forms.ModelChoiceField(
-        help_text=_(
-            'Page number from which all the transformation will be cloned. '
-            'Existing transformations will be lost.'
-        ), queryset=None
-    )
-
-    def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('document')
-        super(DocumentPageNumberForm, self).__init__(*args, **kwargs)
-        self.fields['page'].queryset = self.document.pages.all()

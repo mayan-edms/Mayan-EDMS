@@ -114,7 +114,8 @@
 * Add new icons classes and templates.
 * Add support for link icon path imports.
 * Remove support for link icon strings.
-  
+* Split document app form into separate modules.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.
