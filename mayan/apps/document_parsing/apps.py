@@ -153,18 +153,17 @@ class DocumentParsingApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(link_document_submit_multiple,), sources=(Document,)
         )
-        menu_object.bind_links(
-            links=(link_document_submit,), sources=(Document,)
-        )
         menu_secondary.bind_links(
             links=(
-                link_document_content, link_document_parsing_errors_list,
-                link_document_content_download
+                link_document_content_download,
+                link_document_parsing_errors_list,
+                link_document_submit
             ),
             sources=(
                 'document_parsing:document_content',
                 'document_parsing:document_content_download',
                 'document_parsing:document_parsing_error_list',
+                'document_parsing:document_submit',
             )
         )
         menu_tools.bind_links(

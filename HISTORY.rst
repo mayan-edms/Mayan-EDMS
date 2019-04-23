@@ -119,6 +119,7 @@
 * Replace DocumentTypeSelectioForm with an improved
   version that does filtering.
 * Update OCR links activation.
+* Update document parsing link activation.
 
 3.1.11 (2019-04-XX)
 ===================
