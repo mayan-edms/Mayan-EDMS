@@ -32,11 +32,37 @@ from .views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
     DocumentView, DuplicatedDocumentListView, EmptyTrashCanView,
-    FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView,
     RecentAccessDocumentListView, RecentAddedDocumentListView,
     ScanDuplicatedDocuments
 )
+from .views.favorite_document_views import (
+    FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
+)
 
+urlpatterns_favorite_documents = [
+    url(
+        regex=r'^list/favorites/$', view=FavoriteDocumentListView.as_view(),
+        name='document_list_favorites'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/add_to_favorites/$',
+        view=FavoriteAddView.as_view(), name='document_add_to_favorites'
+    ),
+    url(
+        regex=r'^multiple/add_to_favorites/$', view=FavoriteAddView.as_view(),
+        name='document_multiple_add_to_favorites'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/remove_from_favorites/$',
+        view=FavoriteRemoveView.as_view(),
+        name='document_remove_from_favorites'
+    ),
+    url(
+        regex=r'^multiple/remove_from_favorites/$',
+        view=FavoriteRemoveView.as_view(),
+        name='document_multiple_remove_from_favorites'
+    ),
+]
 
 urlpatterns = [
     url(
@@ -62,10 +88,6 @@ urlpatterns = [
         name='duplicated_document_list'
     ),
     url(
-        regex=r'^list/favorites/$', view=FavoriteDocumentListView.as_view(),
-        name='document_list_favorites'
-    ),
-    url(
         regex=r'^(?P<pk>\d+)/preview/$', view=DocumentPreviewView.as_view(),
         name='document_preview'
     ),
@@ -77,24 +99,6 @@ urlpatterns = [
         regex=r'^(?P<pk>\d+)/duplicates/$',
         view=DocumentDuplicatesListView.as_view(),
         name='document_duplicates_list'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/add_to_favorites/$',
-        view=FavoriteAddView.as_view(), name='document_add_to_favorites'
-    ),
-    url(
-        regex=r'^multiple/add_to_favorites/$', view=FavoriteAddView.as_view(),
-        name='document_multiple_add_to_favorites'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/remove_from_favorites/$',
-        view=FavoriteRemoveView.as_view(),
-        name='document_remove_from_favorites'
-    ),
-    url(
-        regex=r'^multiple/remove_from_favorites/$',
-        view=FavoriteRemoveView.as_view(),
-        name='document_multiple_remove_from_favorites'
     ),
     url(
         regex=r'^(?P<pk>\d+)/restore/$', view=DocumentRestoreView.as_view(),
@@ -318,6 +322,8 @@ urlpatterns = [
         name='duplicated_document_scan'
     ),
 ]
+urlpatterns.extend(urlpatterns_favorite_documents)
+
 
 api_urls = [
     url(
