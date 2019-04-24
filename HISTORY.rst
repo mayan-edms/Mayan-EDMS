@@ -140,6 +140,7 @@
   Reduces clutter and unpredictable column size.
 * Remove the full name from the user list.
 * Add the first name and last name to the user list.
+* Add file metadata app.
 
 3.1.11 (2019-04-XX)
 ===================
