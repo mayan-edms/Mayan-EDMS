@@ -4,7 +4,9 @@ from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.html import mark_safe, escape
 
-from .icons import icon_index, icon_index_level_up, icon_node_with_documents
+from .icons import (
+    icon_index, icon_index_level_up, icon_index_instance_node_with_documents
+)
 
 
 def get_instance_link(index_instance_node):
@@ -26,7 +28,7 @@ def index_instance_item_link(index_instance_item):
 
     if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index_template_node.link_documents:
-            icon = icon_node_with_documents.render()
+            icon = icon_index_instance_node_with_documents.render()
         else:
             icon = icon_index_level_up.render()
     else:
@@ -68,7 +70,7 @@ def node_tree(node, user):
         else:
             element = ancestor
             if element.index_template_node.link_documents:
-                icon = icon_node_with_documents
+                icon = icon_index_instance_node_with_documents
             else:
                 icon = icon_index_level_up
 

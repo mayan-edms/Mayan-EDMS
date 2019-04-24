@@ -19,7 +19,7 @@ from mayan.apps.documents.views import DocumentListView
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
 from .html_widgets import node_tree
 from .icons import icon_index
-from .links import link_index_setup_create
+from .links import link_index_template_create
 from .models import (
     DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
     IndexTemplateNode
@@ -81,7 +81,7 @@ class SetupIndexListView(SingleObjectListView):
         return {
             'hide_object': True,
             'no_results_icon': icon_index,
-            'no_results_main_link': link_index_setup_create.resolve(
+            'no_results_main_link': link_index_template_create.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
@@ -247,7 +247,7 @@ class IndexListView(SingleObjectListView):
         return {
             'hide_links': True,
             'no_results_icon': icon_index,
-            'no_results_main_link': link_index_setup_create.resolve(
+            'no_results_main_link': link_index_template_create.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(

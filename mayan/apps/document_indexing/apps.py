@@ -28,12 +28,12 @@ from .html_widgets import (
     get_instance_link, index_instance_item_link, node_level
 )
 from .links import (
-    link_document_index_list, link_index_main_menu, link_index_setup,
-    link_index_setup_create, link_index_setup_document_types,
-    link_index_setup_delete, link_index_setup_edit, link_index_setup_list,
-    link_index_setup_view, link_rebuild_index_instances,
-    link_template_node_create, link_template_node_delete,
-    link_template_node_edit
+    link_document_index_instance_list, link_index_instance_menu, link_index_template_setup,
+    link_index_template_create, link_index_template_document_types,
+    link_index_template_delete, link_index_template_edit, link_index_template_list,
+    link_index_template_node_tree_view, link_index_instances_rebuild,
+    link_index_template_node_create, link_index_template_node_delete,
+    link_index_template_node_edit
 )
 from .licenses import *  # NOQA
 from .permissions import (
@@ -182,35 +182,35 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=(link_document_index_list,), sources=(Document,)
+            links=(link_document_index_instance_list,), sources=(Document,)
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_index_setup_document_types,
-                link_index_setup_view,
+                link_acl_list, link_index_template_document_types,
+                link_index_template_node_tree_view,
             ), sources=(Index,)
         )
         menu_object.bind_links(
             links=(
-                link_index_setup_delete, link_index_setup_edit,
+                link_index_template_delete, link_index_template_edit,
             ), sources=(Index,)
         )
         menu_object.bind_links(
             links=(
-                link_template_node_create, link_template_node_edit,
-                link_template_node_delete
+                link_index_template_node_create, link_index_template_node_edit,
+                link_index_template_node_delete
             ), sources=(IndexTemplateNode,)
         )
-        menu_main.bind_links(links=(link_index_main_menu,), position=98)
+        menu_main.bind_links(links=(link_index_instance_menu,), position=98)
         menu_secondary.bind_links(
-            links=(link_index_setup_list, link_index_setup_create),
+            links=(link_index_template_list, link_index_template_create),
             sources=(
                 Index, 'indexing:index_setup_list',
                 'indexing:index_setup_create'
             )
         )
-        menu_setup.bind_links(links=(link_index_setup,))
-        menu_tools.bind_links(links=(link_rebuild_index_instances,))
+        menu_setup.bind_links(links=(link_index_template_setup,))
+        menu_tools.bind_links(links=(link_index_instances_rebuild,))
 
         post_delete.connect(
             dispatch_uid='document_indexing_handler_delete_empty',
