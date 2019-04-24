@@ -59,7 +59,7 @@
                                             <th>
                                                 {% if source_column.is_sortable %}
                                                     <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}
-                                                    {% if navigation_source_column.get_sort_field == sort_field %}
+                                                    {% if source_column.get_sort_field == sort_field %}
                                                         {% if icon_sort %}{{ icon_sort.render }}{% endif %}
                                                     {% endif %}
                                                     </a>
@@ -113,7 +113,7 @@
                                         {% if column_value %}
                                             <td>
                                                 {% if source_column.is_absolute_url %}
-                                                    <a href="{{ column_value.get_absolute_url|default:object.get_absolute_url }}">{{ column_value }}</a>
+                                                    <a href="{{ column_value.get_absolute_url }}">{{ column_value }}</a>
                                                 {% else %}
                                                     {{ column_value }}
                                                 {% endif %}
