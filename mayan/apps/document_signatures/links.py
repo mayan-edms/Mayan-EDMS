@@ -5,10 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation import Link
 
-from .icons import (
-    icon_all_document_version_signature_verify, icon_document_signature_list,
-    icon_document_version_signature_list
-)
 from .permissions import (
     permission_document_version_sign_detached,
     permission_document_version_sign_embedded,
@@ -30,33 +26,35 @@ def is_detached_signature(context):
     ).is_detached
 
 
-link_all_document_version_signature_verify = Link(
-    icon_class=icon_all_document_version_signature_verify,
+link_document_version_all_signature_verify = Link(
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_all_signature_verify',
     permissions=(permission_document_version_signature_verify,),
     text=_('Verify all documents'),
     view='signatures:all_document_version_signature_verify',
 )
 link_document_signature_list = Link(
     args='resolved_object.latest_version.pk',
-    icon_class=icon_document_signature_list,
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_signature_list',
     permissions=(permission_document_version_signature_view,),
     text=_('Signatures'), view='signatures:document_version_signature_list',
 )
 link_document_version_signature_delete = Link(
     args='resolved_object.pk', condition=is_detached_signature,
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_delete',
     permissions=(permission_document_version_signature_delete,),
     permissions_related='document_version.document', tags='dangerous',
     text=_('Delete'), view='signatures:document_version_signature_delete',
 )
 link_document_version_signature_details = Link(
     args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_details',
     permissions=(permission_document_version_signature_view,),
     permissions_related='document_version.document', text=_('Details'),
     view='signatures:document_version_signature_details',
 )
 link_document_version_signature_list = Link(
     args='resolved_object.pk',
-    icon_class=icon_document_version_signature_list,
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_list',
     permissions=(permission_document_version_signature_view,),
     permissions_related='document', text=_('Signatures'),
     view='signatures:document_version_signature_list',
@@ -69,18 +67,21 @@ link_document_version_signature_download = Link(
 )
 link_document_version_signature_upload = Link(
     args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_upload',
     permissions=(permission_document_version_signature_upload,),
     permissions_related='document', text=_('Upload signature'),
     view='signatures:document_version_signature_upload',
 )
 link_document_version_signature_detached_create = Link(
     args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_detached_create',
     permissions=(permission_document_version_sign_detached,),
     permissions_related='document', text=_('Sign detached'),
     view='signatures:document_version_signature_detached_create',
 )
 link_document_version_signature_embedded_create = Link(
     args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_signatures.icons.icon_document_version_signature_embedded_create',
     permissions=(permission_document_version_sign_embedded,),
     permissions_related='document', text=_('Sign embedded'),
     view='signatures:document_version_signature_embedded_create',

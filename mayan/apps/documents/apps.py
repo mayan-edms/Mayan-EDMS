@@ -308,13 +308,14 @@ class DocumentsApp(MayanAppConfig):
 
         # DocumentVersion
         SourceColumn(
+            source=DocumentVersion, attribute='timestamp', is_identifier=True,
+            is_absolute_url=True
+        )
+        SourceColumn(
             source=DocumentVersion, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
-        )
-        SourceColumn(
-            source=DocumentVersion, attribute='timestamp'
         )
         SourceColumn(
             source=DocumentVersion, label=_('Pages'),
@@ -591,7 +592,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )
 

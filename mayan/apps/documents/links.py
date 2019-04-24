@@ -336,10 +336,12 @@ link_document_page_rotate_right = Link(
     text=_('Rotate right'), view='documents:document_page_rotate_right',
 )
 link_document_page_view = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_view',
     permissions=(permission_document_view,), text=_('Page image'),
     view='documents:document_page_view', args='resolved_object.pk'
 )
 link_document_page_view_reset = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_page_view_reset',
     permissions=(permission_document_view,), text=_('Reset view'),
     view='documents:document_page_view_reset', args='resolved_object.pk'
 )
@@ -359,6 +361,7 @@ link_document_page_zoom_out = Link(
 # Document versions
 link_document_version_revert = Link(
     args='object.pk', condition=is_not_current_version,
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_revert',
     permissions=(permission_document_version_revert,), tags='dangerous',
     text=_('Revert'), view='documents:document_version_revert',
 )

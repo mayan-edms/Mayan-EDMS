@@ -18,7 +18,7 @@ from mayan.celery import app
 
 from .handlers import unverify_key_signatures, verify_key_signatures
 from .links import (
-    link_all_document_version_signature_verify,
+    link_document_version_all_signature_verify,
     link_document_signature_list,
     link_document_version_signature_delete,
     link_document_version_signature_detached_create,
@@ -154,7 +154,7 @@ class DocumentSignaturesApp(MayanAppConfig):
             ), sources=(DocumentVersion,)
         )
         menu_tools.bind_links(
-            links=(link_all_document_version_signature_verify,)
+            links=(link_document_version_all_signature_verify,)
         )
 
         post_delete.connect(

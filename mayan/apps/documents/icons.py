@@ -154,6 +154,9 @@ icon_document_version_return_list = Icon(
 icon_document_version_view = Icon(
     driver_name='fontawesome', symbol='eye'
 )
+icon_document_version_revert = Icon(
+    driver_name='fontawesome', symbol='undo'
+)
 
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'

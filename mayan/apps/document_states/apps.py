@@ -37,10 +37,10 @@ from .links import (
     link_setup_workflow_transition_create,
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
     link_tool_launch_all_workflows, link_workflow_instance_detail,
-    link_workflow_instance_transition, link_workflow_document_list,
-    link_workflow_list, link_workflow_preview,
-    link_workflow_state_document_list, link_workflow_state_list,
-    link_workflow_instance_transition_events
+    link_workflow_instance_transition, link_workflow_runtime_proxy_document_list,
+    link_workflow_runtime_proxy_list, link_workflow_preview,
+    link_workflow_runtime_proxy_state_document_list, link_workflow_runtime_proxy_state_list,
+    link_workflow_transition_events
 )
 from .permissions import (
     permission_workflow_delete, permission_workflow_edit,
@@ -269,7 +269,7 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_preview, link_acl_list
             ), sources=(Workflow,)
         )
-        menu_main.bind_links(links=(link_workflow_list,), position=10)
+        menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
         menu_object.bind_links(
             links=(
                 link_setup_workflow_delete, link_setup_workflow_edit
@@ -285,7 +285,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_setup_workflow_transition_edit,
-                link_workflow_instance_transition_events, link_acl_list,
+                link_workflow_transition_events, link_acl_list,
                 link_setup_workflow_transition_delete
             ), sources=(WorkflowTransition,)
         )
@@ -298,13 +298,13 @@ class DocumentStatesApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_workflow_document_list,
-                link_workflow_state_list,
+                link_workflow_runtime_proxy_document_list,
+                link_workflow_runtime_proxy_state_list,
             ), sources=(WorkflowRuntimeProxy,)
         )
         menu_list_facet.bind_links(
             links=(
-                link_workflow_state_document_list,
+                link_workflow_runtime_proxy_state_document_list,
             ), sources=(WorkflowStateRuntimeProxy,)
         )
         menu_object.bind_links(
@@ -323,7 +323,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
-            links=(link_workflow_list,),
+            links=(link_workflow_runtime_proxy_list,),
             sources=(
                 WorkflowRuntimeProxy,
             )
