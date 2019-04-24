@@ -8,6 +8,7 @@ from furl import furl
 from django.apps import apps
 from django.contrib.admin.utils import label_for_field
 from django.core.exceptions import ImproperlyConfigured, PermissionDenied
+from django.db.models.constants import LOOKUP_SEP
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
@@ -529,6 +530,26 @@ class SourceColumn(object):
     _registry = {}
 
     @staticmethod
+    def get_attribute_recursive(attribute, model):
+        """
+        Walk over the double underscore (__) separated path to the last
+        field. Returns the field name and the corresponding model class.
+        Used to introspect the label or short_description of a model's
+        attribute.
+        """
+        last_model = model
+        for part in attribute.split(LOOKUP_SEP):
+            last_model = model
+            try:
+                field = model._meta.get_field(part)
+            except FieldDoesNotExist:
+                break
+            else:
+                model = field.related_model or field.model
+
+        return part, last_model
+
+    @staticmethod
     def sort(columns):
         return sorted(columns, key=lambda x: x.order)
 
@@ -618,18 +639,29 @@ class SourceColumn(object):
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
 
-    @property
-    def label(self):
-        # TODO: Add support for related fields (dotted or double underscore attributes)
+        self._calculate_label()
+
+    def _calculate_label(self):
         if not self._label:
             if self.attribute:
-                self._label = label_for_field(
-                    name=self.attribute, model=self.source._meta.model
-                )
+                try:
+                    attribute = resolve_attribute(
+                        obj=self.source, attribute=self.attribute
+                    )
+                    self._label = getattr(attribute, 'short_description')
+                except AttributeError:
+                    name, model = SourceColumn.get_attribute_recursive(
+                        attribute=self.attribute, model=self.source._meta.model
+                    )
+                    self._label = label_for_field(
+                        name=name, model=model
+                    )
             else:
-                self._label = 'Function'
+                self._label = getattr(
+                    self.func, 'short_description', _('Unnamed function')
+                )
 
-        return self._label
+        self.label = self._label
 
     def get_sort_field(self):
         if self.sort_field:

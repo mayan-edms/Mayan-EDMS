@@ -130,6 +130,8 @@
 * Update the way the no-result template is shown.
 * Improve TwoStateWidget to use a template. Make
   it compatible with the SourceColumn.
+* Update SourceColumn to support related attributes.
+
 
 3.1.11 (2019-04-XX)
 ===================
