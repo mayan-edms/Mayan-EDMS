@@ -180,7 +180,6 @@ class MetadataApp(MayanAppConfig):
         )
         SourceColumn(attribute='name', is_sortable=True, source=MetadataType)
 
-
         app.conf.CELERY_QUEUES.append(
             Queue('metadata', Exchange('metadata'), routing_key='metadata'),
         )

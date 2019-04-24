@@ -9,7 +9,7 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import perform_upgrade
 

@@ -25,7 +25,6 @@ from .icons import (
     icon_document_type_create,
     icon_document_type_delete,
     icon_document_type_edit,
-    icon_document_type_filename_create,
     icon_document_type_setup,
 
     icon_duplicated_document_list,

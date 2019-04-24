@@ -17,7 +17,6 @@ from mayan.apps.common.generics import (
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.common.utils import encapsulate
 from mayan.apps.converter.models import Transformation
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
@@ -670,16 +669,6 @@ class DuplicatedDocumentListView(DocumentListView):
         context = super(DuplicatedDocumentListView, self).get_extra_context()
         context.update(
             {
-                #'extra_columns': (
-                #    {
-                #        'name': _('Duplicates'),
-                #        'attribute': encapsulate(
-                #            lambda document: DuplicatedDocument.objects.get(
-                #                document=document
-                #            ).documents.count()
-                #        )
-                #    },
-                #),
                 'no_results_icon': icon_duplicated_document_list,
                 'no_results_text': _(
                     'Duplicates are documents that are composed of the exact '
