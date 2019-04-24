@@ -31,4 +31,3 @@ icon_document_version_signature_list = Icon(
 icon_document_version_signature_upload = Icon(
     driver_name='fontawesome', symbol='upload'
 )
-

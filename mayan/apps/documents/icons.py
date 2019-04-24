@@ -68,12 +68,23 @@ icon_document_type_create = Icon(driver_name='fontawesome', symbol='plus')
 icon_document_type_delete = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_document_type_setup = icon_document_type
+
 icon_document_type_filename = Icon(
     driver_name='fontawesome', symbol='keyboard'
 )
 icon_document_type_filename_create = Icon(
     driver_name='fontawesome', symbol='plus'
 )
+icon_document_type_filename_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_document_type_filename_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
+icon_document_type_filename_list = Icon(
+    driver_name='fontawesome', symbol='keyboard'
+)
+
 icon_document_type_list = icon_document_type
 
 icon_favorite_document_add = Icon(
@@ -138,7 +149,7 @@ icon_document_type_filename = Icon(
 icon_document_type_filename_create = Icon(
     driver_name='fontawesome', symbol='plus'
 )
-icon_document_type_setup = Icon(driver_name='fontawesome', symbol='file')
+icon_document_type_setup = icon_document_type
 
 
 icon_document_version_download = Icon(
