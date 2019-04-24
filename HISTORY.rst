@@ -128,6 +128,8 @@
 * Backport source column identifiable and sortable 
   improvements.
 * Update the way the no-result template is shown.
+* Improve TwoStateWidget to use a template. Make
+  it compatible with the SourceColumn.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -13,11 +13,11 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute, ModelField
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_document_type_change
 from mayan.apps.events import ModelEventType
@@ -166,10 +166,8 @@ class MetadataApp(MayanAppConfig):
             attribute='value'
         )
         SourceColumn(
-            source=DocumentMetadata, label=_('Required'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].is_required
-            ).render()
+            attribute='is_required', label=_('Required'),
+            source=DocumentMetadata, widget=TwoStateWidget
         )
 
         app.conf.CELERY_QUEUES.append(

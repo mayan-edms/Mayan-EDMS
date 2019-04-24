@@ -11,12 +11,12 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.common.links import link_object_error_list
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 
@@ -200,10 +200,8 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=WorkflowState, label=_('Is initial state?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].initial
-            ).render()
+            attribute='initial', label=_('Is initial state?'),
+            source=WorkflowState, widget=TwoStateWidget
         )
         SourceColumn(
             source=WorkflowState, label=_('Completion'), attribute='completion'
@@ -213,10 +211,8 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowStateAction, label=_('Label'), attribute='label'
         )
         SourceColumn(
-            source=WorkflowStateAction, label=_('Enabled?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled?'),
+            source=WorkflowStateAction, widget=TwoStateWidget
         )
         SourceColumn(
             source=WorkflowStateAction, label=_('When?'),

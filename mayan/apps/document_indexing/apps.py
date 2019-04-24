@@ -10,11 +10,11 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
@@ -86,10 +86,8 @@ class DocumentIndexingApp(MayanAppConfig):
         SourceColumn(source=Index, label=_('Label'), attribute='label')
         SourceColumn(source=Index, label=_('Slug'), attribute='slug')
         SourceColumn(
-            source=Index, label=_('Enabled'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled'), source=Index,
+            widget=TwoStateWidget
         )
 
         SourceColumn(
@@ -112,18 +110,13 @@ class DocumentIndexingApp(MayanAppConfig):
             func=lambda context: node_level(context['object'])
         )
         SourceColumn(
-            source=IndexTemplateNode, label=_('Enabled'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled'), source=IndexTemplateNode,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            source=IndexTemplateNode, label=_('Has document links?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].link_documents
-            ).render()
+            attribute='enabled', label=_('Has document links?'),
+            source=IndexTemplateNode, widget=TwoStateWidget
         )
-
         SourceColumn(
             source=IndexInstanceNode, label=_('Level'),
             func=lambda context: index_instance_item_link(context['object'])

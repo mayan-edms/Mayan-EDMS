@@ -12,12 +12,12 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem, ModelField, Template
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import post_initial_setup
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -285,10 +285,8 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentTypeFilename, label=_('Enabled'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled'),
+            source=DocumentTypeFilename, widget=TwoStateWidget
         )
 
         # DeletedDocument

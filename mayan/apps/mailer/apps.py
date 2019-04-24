@@ -9,11 +9,11 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_tools
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.events import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -72,16 +72,12 @@ class MailerApp(MayanAppConfig):
             source=UserMailer, label=_('Label'), attribute='label'
         )
         SourceColumn(
-            source=UserMailer, label=_('Default?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].default
-            ).render()
+            attribute='default', label=_('Default?'), source=UserMailer,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            source=UserMailer, label=_('Enabled?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled?'), source=UserMailer,
+            widget=TwoStateWidget
         )
         SourceColumn(
             source=UserMailer, label=_('Label'), attribute='backend_label'

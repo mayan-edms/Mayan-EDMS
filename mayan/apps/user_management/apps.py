@@ -9,11 +9,11 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_user
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -131,16 +131,12 @@ class UserManagementApp(MayanAppConfig):
             source=User, label=_('Email'), attribute='email'
         )
         SourceColumn(
-            source=User, label=_('Active'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].is_active
-            ).render()
+            attribute='is_active', label=_('Active'), source=User,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            source=User, label=_('Has usable password?'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].has_usable_password()
-            ).render()
+            attribute='has_usable_password', label=_('Has usable password?'),
+            source=User, widget=TwoStateWidget
         )
 
         # Silence UnorderedObjectListWarning

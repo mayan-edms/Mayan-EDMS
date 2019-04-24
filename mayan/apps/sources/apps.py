@@ -6,6 +6,7 @@ from kombu import Exchange, Queue
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
@@ -63,6 +64,23 @@ class SourcesApp(MayanAppConfig):
             ),
             condition=lambda: not Source.objects.exists(),
             view='sources:setup_source_list'
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True,
+            source=Source
+        )
+        SourceColumn(
+            attribute='class_fullname', label=_('Type'), source=Source
+        )
+        SourceColumn(
+            attribute='enabled', source=Source,
+            widget=TwoStateWidget
+        )
+
+        SourceColumn(
+            attribute='enabled', is_sortable=True, source=Source,
+            widget=TwoStateWidget
         )
 
         SourceColumn(

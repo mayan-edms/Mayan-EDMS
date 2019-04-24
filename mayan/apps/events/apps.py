@@ -4,10 +4,10 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_main, menu_object, menu_secondary, menu_tools, menu_user
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn
 
 from .html_widgets import (
@@ -79,10 +79,8 @@ class EventsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Notification, label=_('Seen'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].read
-            ).render()
+            attribute='read', label=_('Seen'), source=Notification,
+            widget=TwoStateWidget
         )
 
         menu_main.bind_links(

@@ -7,10 +7,10 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.navigation import SourceColumn
 
 from .links import (
@@ -66,17 +66,13 @@ class LinkingApp(MayanAppConfig):
             attribute='dynamic_label'
         )
         SourceColumn(
-            source=SmartLink, label=_('Enabled'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled'), source=SmartLink,
+            widget=TwoStateWidget
         )
 
         SourceColumn(
-            source=SmartLinkCondition, label=_('Enabled'),
-            func=lambda context: TwoStateWidget(
-                state=context['object'].enabled
-            ).render()
+            attribute='enabled', label=_('Enabled'), source=SmartLinkCondition,
+            widget=TwoStateWidget
         )
 
         menu_facet.bind_links(

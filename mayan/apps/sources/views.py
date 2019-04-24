@@ -16,12 +16,10 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.menus import menu_facet
 from mayan.apps.common.models import SharedUploadedFile
-from mayan.apps.common.utils import encapsulate
 from mayan.apps.common.views import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.common.widgets import TwoStateWidget
 from mayan.apps.documents.models import DocumentType, Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -605,19 +603,8 @@ class SetupSourceListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Type'),
-                    'attribute': encapsulate(lambda entry: entry.class_fullname())
-                },
-                {
-                    'name': _('Enabled'),
-                    'attribute': encapsulate(
-                        lambda entry: TwoStateWidget(state=entry.enabled).render()
-                    )
-                },
-            ),
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_setup_sources,
             'no_results_secondary_links': [
                 link_setup_source_create_webform.resolve(

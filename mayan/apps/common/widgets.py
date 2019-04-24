@@ -5,8 +5,6 @@ from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .icons import icon_fail as default_icon_fail, icon_ok as default_icon_ok
-
 
 class DisableableSelectWidget(forms.SelectMultiple):
     allow_multiple_selected = True
@@ -76,29 +74,3 @@ class TextAreaDiv(forms.widgets.Widget):
         if attrs:
             default_attrs.update(attrs)
         super(TextAreaDiv, self).__init__(default_attrs)
-
-
-class TwoStateWidget(object):
-    def __init__(self, state, center=False, icon_ok=None, icon_fail=None):
-        self.state = state
-        self.icon_ok = icon_ok or default_icon_ok
-        self.icon_fail = icon_fail or default_icon_fail
-        self.center = center
-
-    def render(self):
-        center_class = ''
-        if self.center:
-            center_class = 'text-center'
-
-        if self.state:
-            return mark_safe(
-                '<div class="{} text-success">{}</div>'.format(
-                    center_class, self.icon_ok.render()
-                )
-            )
-        else:
-            return mark_safe(
-                '<div class="{} text-danger">{}</div>'.format(
-                    center_class, self.icon_fail.render()
-                )
-            )
