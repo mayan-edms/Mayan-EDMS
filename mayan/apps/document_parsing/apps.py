@@ -107,12 +107,13 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentVersionParseError, label=_('Document'),
-            func=lambda context: document_link(context['object'].document_version.document)
+            attribute='document_version__document',
+            is_attribute_absolute_url=True, is_identifier=True, is_sortable=True,
+            source=DocumentVersionParseError
         )
         SourceColumn(
-            source=DocumentVersionParseError, label=_('Added'),
-            attribute='datetime_submitted'
+            attribute='datetime_submitted', is_sortable=True,
+            source=DocumentVersionParseError
         )
         SourceColumn(
             source=DocumentVersionParseError, label=_('Result'),

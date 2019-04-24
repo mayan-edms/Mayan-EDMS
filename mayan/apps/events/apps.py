@@ -36,7 +36,8 @@ class EventsApp(MayanAppConfig):
         StoredEventType = self.get_model(model_name='StoredEventType')
 
         SourceColumn(
-            source=Action, label=_('Timestamp'), attribute='timestamp'
+            attribute='timestamp', is_identifier=True,
+            is_sortable=True, label=_('Date and time'), source=Action
         )
         SourceColumn(
             func=widget_event_actor_link, label=_('Actor'), source=Action
@@ -61,10 +62,9 @@ class EventsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Notification, label=_('Timestamp'),
-            attribute='action.timestamp'
+            attribute='action__timestamp', is_identifier=True,
+            is_sortable=True, label=_('Date and time'), source=Notification
         )
-
         SourceColumn(
             func=widget_event_actor_link, label=_('Actor'),
             kwargs={'attribute': 'action'}, source=Notification
@@ -79,8 +79,8 @@ class EventsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='read', label=_('Seen'), source=Notification,
-            widget=TwoStateWidget
+            attribute='read', is_sortable=True, label=_('Seen'),
+            source=Notification, widget=TwoStateWidget
         )
 
         menu_main.bind_links(

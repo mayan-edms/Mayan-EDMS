@@ -23,11 +23,7 @@ class ACLsApp(MayanAppConfig):
         AccessControlList = self.get_model('AccessControlList')
 
         SourceColumn(
-            source=AccessControlList, label=_('Role'), attribute='role'
-        )
-        SourceColumn(
-            source=AccessControlList, label=_('Permissions'),
-            attribute='get_permission_titles'
+            attribute='role', is_sortable=True, source=AccessControlList,
         )
 
         menu_object.bind_links(

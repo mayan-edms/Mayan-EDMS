@@ -66,6 +66,7 @@ class MessageListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_message_list,
             'no_results_main_link': link_message_create.resolve(
                 context=RequestContext(request=self.request)

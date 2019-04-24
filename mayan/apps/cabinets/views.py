@@ -168,6 +168,7 @@ class CabinetListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'title': _('Cabinets'),
             'no_results_icon': icon_cabinet,
             'no_results_main_link': link_cabinet_create.resolve(

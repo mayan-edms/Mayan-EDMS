@@ -77,6 +77,11 @@ class CabinetsApp(MayanAppConfig):
         )
 
         SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Cabinet
+        )
+
+        SourceColumn(
             source=Document, label=_('Cabinets'),
             func=lambda context: widget_document_cabinets(
                 document=context['object'], user=context['request'].user

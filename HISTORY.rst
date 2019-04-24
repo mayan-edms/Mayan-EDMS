@@ -135,6 +135,11 @@
   source columns.
 * Add support for source column object or attribute
   absolute URLs.
+* Add sortable columns to all apps.
+* Remove permission list display from the ACL list view.
+  Reduces clutter and unpredictable column size.
+* Remove the full name from the user list.
+* Add the first name and last name to the user list.
 
 3.1.11 (2019-04-XX)
 ===================

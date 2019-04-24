@@ -67,17 +67,12 @@ class SourcesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True,
+            attribute='label', is_identifier=True, is_sortable=True,
             source=Source
         )
         SourceColumn(
             attribute='class_fullname', label=_('Type'), source=Source
         )
-        SourceColumn(
-            attribute='enabled', source=Source,
-            widget=TwoStateWidget
-        )
-
         SourceColumn(
             attribute='enabled', is_sortable=True, source=Source,
             widget=TwoStateWidget

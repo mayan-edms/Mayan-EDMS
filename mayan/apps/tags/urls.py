@@ -9,7 +9,7 @@ from .api_views import (
 from .views import (
     DocumentTagListView, TagAttachActionView, TagCreateView,
     TagDeleteActionView, TagEditView, TagListView, TagRemoveActionView,
-    TagTaggedItemListView
+    TagDocumentListView
 )
 
 urlpatterns = [
@@ -24,7 +24,7 @@ urlpatterns = [
         name='tag_edit'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/documents/$', view=TagTaggedItemListView.as_view(),
+        regex=r'^(?P<pk>\d+)/documents/$', view=TagDocumentListView.as_view(),
         name='tag_document_list'
     ),
     url(

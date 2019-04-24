@@ -84,6 +84,7 @@ class DocumentListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_links': True,
+            'hide_object': True,
             'list_as_items': True,
             'no_results_icon': icon_document_list,
             'no_results_text': _(
@@ -669,16 +670,16 @@ class DuplicatedDocumentListView(DocumentListView):
         context = super(DuplicatedDocumentListView, self).get_extra_context()
         context.update(
             {
-                'extra_columns': (
-                    {
-                        'name': _('Duplicates'),
-                        'attribute': encapsulate(
-                            lambda document: DuplicatedDocument.objects.get(
-                                document=document
-                            ).documents.count()
-                        )
-                    },
-                ),
+                #'extra_columns': (
+                #    {
+                #        'name': _('Duplicates'),
+                #        'attribute': encapsulate(
+                #            lambda document: DuplicatedDocument.objects.get(
+                #                document=document
+                #            ).documents.count()
+                #        )
+                #    },
+                #),
                 'no_results_icon': icon_duplicated_document_list,
                 'no_results_text': _(
                     'Duplicates are documents that are composed of the exact '

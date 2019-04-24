@@ -89,6 +89,7 @@ class GroupListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_group_setup,
             'no_results_main_link': link_group_create.resolve(
                 context=RequestContext(request=self.request)
@@ -339,6 +340,7 @@ class UserListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_user_setup,
             'no_results_main_link': link_user_create.resolve(
                 context=RequestContext(request=self.request)

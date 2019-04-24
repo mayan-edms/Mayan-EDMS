@@ -29,9 +29,9 @@ from .events import (
 from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
-    link_group_delete, link_group_edit, link_group_list, link_group_members,
+    link_group_delete, link_group_edit, link_group_list, link_group_user_list,
     link_group_setup, link_user_create, link_user_delete, link_user_edit,
-    link_user_groups, link_user_list, link_user_multiple_delete,
+    link_user_group_list, link_user_list, link_user_multiple_delete,
     link_user_multiple_set_password, link_user_set_options,
     link_user_set_password, link_user_setup, separator_user_label,
     text_user_label
@@ -120,25 +120,39 @@ class UserManagementApp(MayanAppConfig):
                 permission_user_view
             )
         )
+
         SourceColumn(
-            source=Group, label=_('Users'), attribute='user_set.count'
+            attribute='name', is_identifier=True, is_sortable=True,
+            label=_('Name'), source=Group
+        )
+        SourceColumn(
+            attribute='user_set.count', label=_('Users'), source=Group
         )
 
         SourceColumn(
-            source=User, label=_('Full name'), attribute='get_full_name'
+            attribute='username', is_object_absolute_url=True,
+            is_identifier=True, is_sortable=True, label=_('Username'),
+            source=User
         )
         SourceColumn(
-            source=User, label=_('Email'), attribute='email'
+            attribute='first_name', is_sortable=True, label=_('First name'),
+            source=User
         )
         SourceColumn(
-            attribute='is_active', label=_('Active'), source=User,
-            widget=TwoStateWidget
+            attribute='last_name', is_sortable=True, label=_('Last name'),
+            source=User
+        )
+        SourceColumn(
+            attribute='email', is_sortable=True, label=_('Email'), source=User
+        )
+        SourceColumn(
+            attribute='is_active', is_sortable=True, label=_('Active'),
+            source=User, widget=TwoStateWidget
         )
         SourceColumn(
             attribute='has_usable_password', label=_('Has usable password?'),
             source=User, widget=TwoStateWidget
         )
-
         # Silence UnorderedObjectListWarning
         # "Pagination may yield inconsistent result"
         # TODO: Remove on Django 2.x
@@ -153,14 +167,14 @@ class UserManagementApp(MayanAppConfig):
             links=(
                 link_acl_list, link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_group_members,
+                link_group_user_list,
             ), sources=(Group,)
         )
         menu_list_facet.bind_links(
             links=(
                 link_acl_list, link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_user_groups, link_user_set_options
+                link_user_group_list, link_user_set_options
             ), sources=(User,)
         )
         menu_multi_item.bind_links(

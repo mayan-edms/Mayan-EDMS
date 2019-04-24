@@ -241,19 +241,33 @@ class DocumentsApp(MayanAppConfig):
 
         # Document
         SourceColumn(
+            attribute='label', is_object_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=Document
+        )
+        SourceColumn(
             source=Document, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
         SourceColumn(
-            source=Document, attribute='document_type'
+            attribute='document_type', is_sortable=True, source=Document,
         )
         SourceColumn(
             source=Document, label=_('Pages'),
             func=lambda context: widget_document_page_number(
                 document=context['object']
             )
+        )
+        SourceColumn(
+            attribute='date_added', include_label=True, is_sortable=True,
+            source=Document, views=('documents:document_list_recent_added',)
+        )
+        SourceColumn(
+            func=lambda context: DuplicatedDocument.objects.get(
+                document=context['object']
+            ).documents.count(), include_label=True, label=_('Duplicates'),
+            source=Document, views=('documents:duplicated_document_list',)
         )
 
         # DocumentPage
@@ -278,6 +292,11 @@ class DocumentsApp(MayanAppConfig):
 
         # DocumentType
         SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DocumentType
+        )
+
+        SourceColumn(
             source=DocumentType, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
@@ -285,20 +304,27 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='enabled', label=_('Enabled'),
-            source=DocumentTypeFilename, widget=TwoStateWidget
+            attribute='filename', is_identifier=True, is_sortable=True,
+            source=DocumentTypeFilename
+        )
+        SourceColumn(
+            attribute='enabled', is_sortable=True, source=DocumentTypeFilename,
+            widget=TwoStateWidget
         )
 
         # DeletedDocument
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DeletedDocument
+        )
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             )
         )
-
         SourceColumn(
-            source=DeletedDocument, attribute='document_type'
+            attribute='document_type', is_sortable=True, source=DeletedDocument
         )
         SourceColumn(
             source=DeletedDocument, attribute='deleted_date_time'
@@ -307,7 +333,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentVersion
         SourceColumn(
             source=DocumentVersion, attribute='timestamp', is_identifier=True,
-            is_absolute_url=True
+            is_object_absolute_url=True
         )
         SourceColumn(
             source=DocumentVersion, label=_('Thumbnail'),
@@ -322,25 +348,13 @@ class DocumentsApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=DocumentVersion, attribute='mimetype'
+            attribute='mimetype', is_sortable=True, source=DocumentVersion
         )
         SourceColumn(
-            source=DocumentVersion, attribute='encoding'
+            attribute='encoding', is_sortable=True, source=DocumentVersion
         )
         SourceColumn(
-            source=DocumentVersion, attribute='comment'
-        )
-
-        # DuplicatedDocument
-        SourceColumn(
-            source=DuplicatedDocument, label=_('Thumbnail'),
-            func=lambda context: document_page_thumbnail_widget.render(
-                instance=context['object'].document
-            )
-        )
-        SourceColumn(
-            source=DuplicatedDocument, label=_('Duplicates'),
-            func=lambda context: context['object'].documents.count()
+            attribute='comment', is_sortable=True, source=DocumentVersion
         )
 
         Template(

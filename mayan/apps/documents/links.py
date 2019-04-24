@@ -383,25 +383,33 @@ link_document_type_edit = Link(
     view='documents:document_type_edit',
 )
 link_document_type_filename_create = Link(
-    args='document_type.id', icon_class=icon_document_type_filename_create,
+    args='document_type.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_filename_create',
     permissions=(permission_document_type_edit,),
     text=_('Add quick label to document type'),
     view='documents:document_type_filename_create',
 )
 link_document_type_filename_delete = Link(
-    args='resolved_object.id', permissions=(permission_document_type_edit,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_filename_delete',
+    permissions=(permission_document_type_edit,),
     tags='dangerous', text=_('Delete'),
     view='documents:document_type_filename_delete',
 )
 link_document_type_filename_edit = Link(
-    args='resolved_object.id', permissions=(permission_document_type_edit,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_filename_edit',
+    permissions=(permission_document_type_edit,),
     text=_('Edit'), view='documents:document_type_filename_edit',
 )
 link_document_type_filename_list = Link(
-    args='resolved_object.id', permissions=(permission_document_type_view,),
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_filename_list',
+    permissions=(permission_document_type_view,),
     text=_('Quick labels'), view='documents:document_type_filename_list',
 )
 link_document_type_list = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_list',
     permissions=(permission_document_type_view,), text=_('Document types'),
     view='documents:document_type_list'
 )

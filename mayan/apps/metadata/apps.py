@@ -162,13 +162,24 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentMetadata, label=_('Value'),
-            attribute='value'
+            attribute='metadata_type', is_identifier=True,
+            is_sortable=True, source=DocumentMetadata
         )
         SourceColumn(
-            attribute='is_required', label=_('Required'),
-            source=DocumentMetadata, widget=TwoStateWidget
+            attribute='value', is_sortable=True, source=DocumentMetadata
         )
+
+        SourceColumn(
+            attribute='is_required', source=DocumentMetadata,
+            widget=TwoStateWidget
+        )
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=MetadataType
+        )
+        SourceColumn(attribute='name', is_sortable=True, source=MetadataType)
+
 
         app.conf.CELERY_QUEUES.append(
             Queue('metadata', Exchange('metadata'), routing_key='metadata'),

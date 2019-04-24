@@ -15,9 +15,8 @@ from mayan.apps.common.signals import perform_upgrade
 
 from .handlers import purge_permissions
 from .links import (
-    link_group_roles, link_permission_grant, link_permission_revoke,
-    link_role_create, link_role_delete, link_role_edit, link_role_groups,
-    link_role_list, link_role_permissions
+    link_group_roles, link_role_create, link_role_delete, link_role_edit,
+    link_role_groups, link_role_list, link_role_permissions
 )
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
@@ -59,10 +58,6 @@ class PermissionsApp(MayanAppConfig):
             links=(
                 link_role_delete, link_role_edit
             ), sources=(Role,)
-        )
-        menu_multi_item.bind_links(
-            links=(link_permission_grant, link_permission_revoke),
-            sources=('permissions:role_permissions',)
         )
         menu_secondary.bind_links(
             links=(link_role_list, link_role_create),

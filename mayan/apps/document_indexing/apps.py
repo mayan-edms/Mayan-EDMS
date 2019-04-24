@@ -83,10 +83,15 @@ class DocumentIndexingApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(source=Index, label=_('Label'), attribute='label')
-        SourceColumn(source=Index, label=_('Slug'), attribute='slug')
         SourceColumn(
-            attribute='enabled', label=_('Enabled'), source=Index,
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Index
+        )
+        SourceColumn(
+            attribute='slug', is_sortable=True, source=Index
+        )
+        SourceColumn(
+            attribute='enabled', is_sortable=True, source=Index,
             widget=TwoStateWidget
         )
 
@@ -110,12 +115,12 @@ class DocumentIndexingApp(MayanAppConfig):
             func=lambda context: node_level(context['object'])
         )
         SourceColumn(
-            attribute='enabled', label=_('Enabled'), source=IndexTemplateNode,
+            attribute='enabled', is_sortable=True, source=IndexTemplateNode,
             widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='enabled', label=_('Has document links?'),
-            source=IndexTemplateNode, widget=TwoStateWidget
+            attribute='enabled', is_sortable=True, source=IndexTemplateNode,
+            widget=TwoStateWidget
         )
         SourceColumn(
             source=IndexInstanceNode, label=_('Level'),
@@ -135,10 +140,10 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Level'),
+            label=_('Level'),
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
-            )
+            ), source=DocumentIndexInstanceNode,
         )
         SourceColumn(
             source=DocumentIndexInstanceNode, label=_('Levels'),

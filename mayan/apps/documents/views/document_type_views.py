@@ -62,6 +62,7 @@ class DocumentTypeListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_document_type_setup,
             'no_results_main_link': link_document_type_create.resolve(
                 context=RequestContext(request=self.request)
@@ -225,6 +226,7 @@ class DocumentTypeFilenameListView(SingleObjectListView):
         return {
             'document_type': self.get_document_type(),
             'hide_link': True,
+            'hide_object': True,
             'navigation_object_list': ('document_type',),
             'no_results_icon': icon_document_type_filename,
             'no_results_main_link': link_document_type_filename_create.resolve(

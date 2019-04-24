@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions.models import Role, StoredPermission
@@ -58,11 +58,10 @@ class AccessControlList(models.Model):
 
     def __str__(self):
         return _(
-            'Permissions "%(permissions)s" to role "%(role)s" for "%(object)s"'
+            'Role "%(role)s" permission\'s for "%(object)s"'
         ) % {
-            'permissions': self.get_permission_titles(),
             'object': self.content_object,
-            'role': self.role
+            'role': self.role,
         }
 
     def get_absolute_url(self):
@@ -74,13 +73,3 @@ class AccessControlList(models.Model):
         return AccessControlList.objects.get_inherited_permissions(
             role=self.role, obj=self.content_object
         )
-
-    def get_permission_titles(self):
-        """
-        Returns the descriptibe labels for the permissions.
-        """
-        result = ', '.join(
-            [force_text(permission) for permission in self.permissions.all()]
-        )
-
-        return result or _('None')

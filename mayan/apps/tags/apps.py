@@ -102,7 +102,8 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentTag, attribute='label'
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DocumentTag
         )
         SourceColumn(
             source=DocumentTag, attribute='get_preview_widget'
@@ -124,7 +125,8 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Tag, attribute='label'
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Tag
         )
         SourceColumn(
             source=Tag, attribute='get_preview_widget'

@@ -103,12 +103,12 @@ class OCRApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentVersionOCRError, label=_('Document'),
-            func=lambda context: document_link(context['object'].document_version.document)
+            attribute='document_version__document', is_attribute_absolute_url=True,
+            is_identifier=True, is_sortable=True, source=DocumentVersionOCRError
         )
         SourceColumn(
-            source=DocumentVersionOCRError, label=_('Added'),
-            attribute='datetime_submitted'
+            attribute='datetime_submitted', is_sortable=True,
+            label=_('Date and time'), source=DocumentVersionOCRError
         )
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Result'),

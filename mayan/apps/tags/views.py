@@ -225,7 +225,7 @@ class TagListView(SingleObjectListView):
         return Tag.objects.all()
 
 
-class TagTaggedItemListView(DocumentListView):
+class TagDocumentListView(DocumentListView):
     def get_tag(self):
         return get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
 
@@ -233,7 +233,7 @@ class TagTaggedItemListView(DocumentListView):
         return self.get_tag().documents.all()
 
     def get_extra_context(self):
-        context = super(TagTaggedItemListView, self).get_extra_context()
+        context = super(TagDocumentListView, self).get_extra_context()
         context.update(
             {
                 'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
