@@ -127,7 +127,8 @@
   previour sidebar menu now perform the same function.
 * Backport source column identifiable and sortable 
   improvements.
-  
+* Update the way the no-result template is shown.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

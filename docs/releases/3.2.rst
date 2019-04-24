@@ -159,6 +159,7 @@ Other changes
   previour sidebar menu now perform the same function.
 * Backport source column identifiable and sortable
   improvements.
+* Update the way the no-result template is shown.
 
 
 Removals
