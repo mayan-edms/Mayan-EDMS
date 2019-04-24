@@ -131,7 +131,10 @@
 * Improve TwoStateWidget to use a template. Make
   it compatible with the SourceColumn.
 * Update SourceColumn to support related attributes.
-
+* Add support for display for empty values for 
+  source columns.
+* Add support for source column object or attribute
+  absolute URLs.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -7,7 +7,9 @@ from furl import furl
 
 from django.apps import apps
 from django.contrib.admin.utils import label_for_field
-from django.core.exceptions import ImproperlyConfigured, PermissionDenied
+from django.core.exceptions import (
+    FieldDoesNotExist, ImproperlyConfigured, PermissionDenied
+)
 from django.db.models.constants import LOOKUP_SEP
 from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
@@ -619,16 +621,19 @@ class SourceColumn(object):
         return final_result
 
     def __init__(
-        self, source, label=None, attribute=None, func=None,
-        include_label=False, is_absolute_url=False, is_identifier=False,
-        is_sortable=False,
-        kwargs=None, order=None, sort_field=None, views=None, widget=None
+        self, source, attribute=None, empty_value=None, func=None,
+        include_label=False, is_attribute_absolute_url=False,
+        is_object_absolute_url=False, is_identifier=False, is_sortable=False,
+        kwargs=None, label=None, order=None, sort_field=None, views=None,
+        widget=None
     ):
         self.source = source
         self._label = label
         self.attribute = attribute
+        self.empty_value = empty_value
         self.func = func
-        self.is_absolute_url = is_absolute_url
+        self.is_attribute_absolute_url = is_attribute_absolute_url
+        self.is_object_absolute_url = is_object_absolute_url
         self.is_identifier = is_identifier
         self.is_sortable = is_sortable
         self.kwargs = kwargs or {}
@@ -664,6 +669,16 @@ class SourceColumn(object):
                 )
 
         self.label = self._label
+
+    def get_absolute_url(self, obj):
+        if self.is_object_absolute_url:
+            return obj.get_absolute_url()
+        elif self.is_attribute_absolute_url:
+            result = resolve_attribute(
+                attribute=self.attribute, kwargs=self.kwargs,
+                obj=obj
+            )
+            return result.get_absolute_url()
 
     def get_sort_field(self):
         if self.sort_field:
@@ -710,7 +725,13 @@ class SourceColumn(object):
             widget_instance = self.widget()
             return widget_instance.render(name=self.attribute, value=result)
 
-        return result
+        if not result:
+            if self.empty_value:
+                return self.empty_value
+            else:
+                return result
+        else:
+            return result
 
 
 class Text(Link):
