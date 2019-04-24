@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
-from django.shortcuts import resolve_url
+from django.shortcuts import get_object_or_404, resolve_url
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -42,6 +42,62 @@ class DynamicFormViewMixin(object):
         data = super(DynamicFormViewMixin, self).get_form_kwargs()
         data.update({'schema': self.get_form_schema()})
         return data
+
+
+class ExternalObjectMixin(object):
+    external_object_class = None
+    external_object_permission = None
+    external_object_pk_url_kwarg = 'pk'
+    external_object_pk_url_kwargs = None  # Usage: {'pk': 'pk'}
+    external_object_queryset = None
+
+    def dispatch(self, *args, **kwargs):
+        self.external_object = self.get_external_object()
+        return super(ExternalObjectMixin, self).dispatch(*args, **kwargs)
+
+    def get_pk_url_kwargs(self):
+        pk_url_kwargs = {}
+
+        if self.external_object_pk_url_kwargs:
+            pk_url_kwargs = self.external_object_pk_url_kwargs
+        else:
+            pk_url_kwargs['pk'] = self.external_object_pk_url_kwarg
+
+        for key, value in pk_url_kwargs.items():
+            pk_url_kwargs[key] = self.kwargs[value]
+
+        return pk_url_kwargs
+
+    def get_external_object(self):
+        return get_object_or_404(
+            klass=self.get_external_object_queryset_filtered(),
+            **self.get_pk_url_kwargs()
+        )
+
+    def get_external_object_permission(self):
+        return self.external_object_permission
+
+    def get_external_object_queryset(self):
+        if not self.external_object_queryset and not self.external_object_class:
+            raise ImproperlyConfigured(
+                'View must provide either an external_object_queryset, '
+                'an external_object_class or a custom '
+                'get_external_object_queryset() method.'
+            )
+
+        return self.external_object_queryset or self.external_object_class.objects.all()
+
+    def get_external_object_queryset_filtered(self):
+        queryset = self.get_external_object_queryset()
+        permission = self.get_external_object_permission()
+
+        if permission:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission=permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return queryset
 
 
 class ExtraContextMixin(object):
