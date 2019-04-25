@@ -86,6 +86,8 @@ class UserManagementApp(MayanAppConfig):
         # "Pagination may yield inconsistent result"
         # TODO: Remove on Django 2.x
         Group._meta.ordering = ('name',)
+        Group._meta.verbose_name = _('Group')
+        Group._meta.verbose_name_plural = _('Groups')
 
         Group.add_to_class(name='save', value=get_method_group_save())
 
@@ -157,6 +159,8 @@ class UserManagementApp(MayanAppConfig):
         # "Pagination may yield inconsistent result"
         # TODO: Remove on Django 2.x
         User._meta.ordering = ('pk',)
+        User._meta.verbose_name = _('User')
+        User._meta.verbose_name_plural = _('Users')
 
         User.add_to_class(
             name='get_absolute_url', value=method_user_get_absolute_url
