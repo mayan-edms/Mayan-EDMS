@@ -22,7 +22,7 @@ urlpatterns = [
         view=DocumentSubmitView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<document_type_id>\d+)/ocr/settings/$',
+        regex=r'^document_types/(?P<document_type_id>\d+)/file_metadata/settings/$',
         name='document_type_settings',
         view=DocumentTypeSettingsEditView.as_view()
     ),
