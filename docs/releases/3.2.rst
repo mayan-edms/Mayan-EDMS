@@ -180,6 +180,7 @@ Other changes
   default submit and cancel.
 * Update ChoiceForm to be full height.
 * Add AddRemoveView to replace AssignRemoveView
+* Update the group roles view to use the new AddRemoveView.
 
 Removals
 --------

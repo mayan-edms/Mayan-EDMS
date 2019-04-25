@@ -18,6 +18,7 @@ from .links import (
     link_group_roles, link_role_create, link_role_delete, link_role_edit,
     link_role_groups, link_role_list, link_role_permissions
 )
+from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
 )
@@ -37,6 +38,9 @@ class PermissionsApp(MayanAppConfig):
 
         Role = self.get_model('Role')
         Group = apps.get_model(app_label='auth', model_name='Group')
+
+        Group.add_to_class(name='roles_add', value=method_group_roles_add)
+        Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
 
         ModelPermission.register(
             model=Role, permissions=(

@@ -10,6 +10,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import AddRemoveView
 from mayan.apps.common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -26,38 +27,26 @@ from .permissions import (
 )
 
 
-class GroupRoleMembersView(AssignRemoveView):
-    grouped = False
-    left_list_title = _('Available roles')
-    right_list_title = _('Group roles')
-    object_permission = permission_group_edit
+class GroupRolesView(AddRemoveView):
+    action_add_method = 'roles_add'
+    action_remove_method = 'roles_remove'
+    main_object_model = Group
+    main_object_permission = permission_group_edit
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = Role
+    secondary_object_permission = permission_role_edit
+    list_available_title = _('Available roles')
+    list_added_title = _('Group roles')
+    related_field = 'roles'
 
-    def add(self, item):
-        role = get_object_or_404(klass=Role, pk=item)
-        self.get_object().roles.add(role)
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Roles of group: %s') % self.get_object()
+            'object': self.main_object,
+            'title': _('Roles of group: %s') % self.main_object,
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=Group, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return [
-            (force_text(role.pk), role.label) for role in set(Role.objects.all()) - set(self.get_object().roles.all())
-        ]
-
-    def right_list(self):
-        return [
-            (force_text(role.pk), role.label) for role in self.get_object().roles.all()
-        ]
-
-    def remove(self, item):
-        role = get_object_or_404(klass=Role, pk=item)
-        self.get_object().roles.remove(role)
 
 
 class RoleCreateView(SingleObjectCreateView):
