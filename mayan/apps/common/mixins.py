@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import ImproperlyConfigured, PermissionDenied
 from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, resolve_url
@@ -383,6 +383,43 @@ class RedirectionMixin(object):
 
     def get_success_url(self):
         return self.next_url or self.previous_url
+
+
+class RestrictedQuerysetMixin(object):
+    """
+    Restrict the view's queryset against a permission via ACL checking.
+    Used to restrict the object list of a multiple object view or the source
+    queryset of the .get_object() method.
+    """
+    model = None
+    object_permission = None
+    source_queryset = None
+
+    def get_source_queryset(self):
+        if self.source_queryset is None:
+            if self.model:
+                return self.model._default_manager.all()
+            else:
+                raise ImproperlyConfigured(
+                    "%(cls)s is missing a QuerySet. Define "
+                    "%(cls)s.model, %(cls)s.source_queryset, or override "
+                    "%(cls)s.get_source_queryset()." % {
+                        'cls': self.__class__.__name__
+                    }
+                )
+
+        return self.source_queryset.all()
+
+    def get_queryset(self):
+        queryset = self.get_source_queryset()
+
+        if self.object_permission:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission=self.object_permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return queryset
 
 
 class ViewPermissionCheckMixin(object):
