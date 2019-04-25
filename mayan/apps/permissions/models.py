@@ -3,12 +3,13 @@ from __future__ import unicode_literals
 import logging
 
 from django.contrib.auth.models import Group
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Permission
+from .events import event_role_created, event_role_edited
 from .managers import RoleManager, StoredPermissionManager
 
 logger = logging.getLogger(__name__)
@@ -121,3 +122,18 @@ class Role(models.Model):
     def natural_key(self):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
+
+    def save(self, *args, **kwargs):
+        _user = kwargs.pop('_user', None)
+
+        with transaction.atomic():
+            is_new = not self.pk
+            super(Role, self).save(*args, **kwargs)
+            if is_new:
+                event_role_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_role_edited.commit(
+                    actor=_user, target=self
+                )

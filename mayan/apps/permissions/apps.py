@@ -12,7 +12,9 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import perform_upgrade
+from mayan.apps.events import ModelEventType
 
+from .events import event_role_created, event_role_edited
 from .handlers import purge_permissions
 from .links import (
     link_group_roles, link_role_create, link_role_delete, link_role_edit,
@@ -35,12 +37,17 @@ class PermissionsApp(MayanAppConfig):
 
     def ready(self):
         super(PermissionsApp, self).ready()
+        from actstream import registry
 
         Role = self.get_model('Role')
         Group = apps.get_model(app_label='auth', model_name='Group')
 
         Group.add_to_class(name='roles_add', value=method_group_roles_add)
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
+
+        ModelEventType.register(
+            event_types=(event_role_created, event_role_edited), model=Role
+        )
 
         ModelPermission.register(
             model=Role, permissions=(
@@ -72,3 +79,5 @@ class PermissionsApp(MayanAppConfig):
         perform_upgrade.connect(
             purge_permissions, dispatch_uid='purge_permissions'
         )
+
+        registry.register(Role)

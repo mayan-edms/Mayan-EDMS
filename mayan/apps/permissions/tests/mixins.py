@@ -100,11 +100,18 @@ class RoleTestMixin(object):
 
 class RoleViewTestMixin(object):
     def _request_test_role_create_view(self):
-        return self.post(
+        # Typecast to list to force queryset evaluation
+        values = list(Role.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='permissions:role_create', data={
                 'label': TEST_ROLE_LABEL,
             }
         )
+
+        self.test_role = Role.objects.exclude(pk__in=values).first()
+
+        return response
 
     def _request_test_role_delete_view(self):
         return self.post(
