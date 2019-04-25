@@ -16,7 +16,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.checkouts.models import NewVersionBlock
 from mayan.apps.common.menus import menu_facet
 from mayan.apps.common.models import SharedUploadedFile
-from mayan.apps.common.views import (
+from mayan.apps.common.generics import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )

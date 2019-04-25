@@ -11,11 +11,11 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
-from mayan.apps.common.generics import AddRemoveView
-from mayan.apps.common.views import (
-    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectEditView, SingleObjectListView
+from mayan.apps.common.generics import (
+    AddRemoveView, MultipleObjectConfirmActionView,
+    MultipleObjectFormActionView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
+    SingleObjectListView
 )
 
 from .forms import UserForm

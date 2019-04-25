@@ -11,8 +11,9 @@ from django.utils.translation import ugettext_lazy as _
 from actstream.models import Action, any_stream
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import FormView, SimpleView
-from mayan.apps.common.views import SingleObjectListView
+from mayan.apps.common.generics import (
+    FormView, SimpleView, SingleObjectListView
+)
 
 from .classes import EventType, ModelEventType
 from .forms import (

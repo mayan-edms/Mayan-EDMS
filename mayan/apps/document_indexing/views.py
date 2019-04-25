@@ -8,7 +8,7 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.views import (
+from mayan.apps.common.generics import (
     AssignRemoveView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )

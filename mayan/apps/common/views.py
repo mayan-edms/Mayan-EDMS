@@ -21,13 +21,8 @@ from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     PackagesLicensesForm
 )
-from .generics import (  # NOQA
-    AssignRemoveView, ConfirmView, FormView, MultiFormView,
-    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectDynamicFormCreateView,
-    SingleObjectDynamicFormEditView, SingleObjectDownloadView,
-    SingleObjectEditView, SingleObjectListView, SimpleView
+from .generics import (
+    ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
 )
 from .icons import icon_setup
 from .menus import menu_tools, menu_setup

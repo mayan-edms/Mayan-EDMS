@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.views import (
+from mayan.apps.common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
