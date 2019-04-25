@@ -156,6 +156,7 @@ class MayanApp {
 
         this.setupAJAXSpinner();
         this.setupAutoSubmit();
+        this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
         this.setupNavbarCollapse();
@@ -192,6 +193,21 @@ class MayanApp {
             if ($(this).val()) {
                 $(this.form).trigger('submit');
             }
+        });
+    }
+
+    setupFormHotkeys () {
+        $('body').on('keypress', '.form-hotkey-enter', function (e) {
+            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+                $(this).find('.btn-hotkey-default').click();
+                return false;
+            } else {
+                return true;
+            }
+        });
+        $('body').on('dblclick', '.form-hotkey-double-click', function (e) {
+            $(this).find('.btn-hotkey-default').click();
+            return false;
         });
     }
 

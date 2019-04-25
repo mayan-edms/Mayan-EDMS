@@ -10,9 +10,9 @@
 
 <div class="well">
     {% if form.is_multipart %}
-        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
+        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% else %}
-        <form action="{{ form_action }}" class="{{ form_class|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
+        <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" method="{{ submit_method|default:'post' }}" name="{{ form.prefix }}" target="{{ submit_target|default:'_self' }}">
     {% endif %}
 
         {{ wizard.management_form }}
@@ -58,11 +58,7 @@
                     {% include 'appearance/generic_form_instance.html' %}
                 {% empty %}
                     <tr><td class="text-center" colspan=99>
-                        {% if form_empty_label %}{{ form_empty_label }}{% else %}
-
                         {% include 'appearance/no_results.html' %}
-
-                        {% endif %}
                     </td></tr>
                 {% endfor %}
 
@@ -79,7 +75,7 @@
             {% if not form.management_form or wizard.management_form or form.forms %}
             {# Is a normal form, a wizard form, or a formset with at least one form #}
                 <div class="form-group">
-                    <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
+                    <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
                         {% if submit_icon_class %}
                             {{ submit_icon_class.render }}
                         {% elif submit_icon %}
@@ -94,6 +90,15 @@
                             <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
                           </a>
                     {% endif %}
+
+                    {% for button in extra_buttons %}
+                        <button class="btn btn-default" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
+                            {% if button.icon_class %}
+                                {{ button.icon_class.render }}
+                            {% endif %}
+                            {% if button.label %}{{ button.label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                        </button>
+                    {% endfor %}
                 </div>
             {% endif %}
         {% endif %}

@@ -141,6 +141,11 @@
 * Remove the full name from the user list.
 * Add the first name and last name to the user list.
 * Add file metadata app.
+* Add support for submitting forms by pressing the 
+  Enter key or by double clicking.
+* Rename form template 'form_class' to 'form_css_classes'.
+* Add support for adding form button aside from the 
+  default submit and cancel.
 
 3.1.11 (2019-04-XX)
 ===================
