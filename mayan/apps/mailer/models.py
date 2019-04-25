@@ -77,6 +77,8 @@ class UserMailer(models.Model):
         """
         return self.get_backend().label
 
+    backend_label.short_description = _('Backend label')
+
     def dumps(self, data):
         """
         Serialize the backend configuration data.

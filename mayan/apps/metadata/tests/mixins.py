@@ -33,15 +33,16 @@ class MetadataTestsMixin(object):
 
     def _request_metadata_type_delete_view(self):
         return self.post(
-            viewname='metadata:setup_metadata_type_delete', args=(
-                self.metadata_type.pk,
-            ),
+            viewname='metadata:setup_metadata_type_delete', kwargs={
+                'pk': self.metadata_type.pk
+            }
         )
 
     def _request_metadata_type_edit_view(self):
         return self.post(
-            viewname='metadata:setup_metadata_type_edit', args=(
-                self.metadata_type.pk,), data={
+            viewname='metadata:setup_metadata_type_edit', kwargs={
+                'pk': self.metadata_type.pk
+            }, data={
                 'label': TEST_METADATA_TYPE_LABEL_EDITED,
                 'name': TEST_METADATA_TYPE_NAME_EDITED
             }
@@ -53,10 +54,10 @@ class MetadataTestsMixin(object):
 
         return self.post(
             viewname='metadata:setup_metadata_type_document_types',
-            args=(self.metadata_type.pk,), data={
+            kwargs={'pk': self.metadata_type.pk}, data={
                 'form-TOTAL_FORMS': '1',
                 'form-INITIAL_FORMS': '0',
-                'form-0-relationship_type': 'required',
+                'form-0-relationship_type': 'required'
             }
         )
 

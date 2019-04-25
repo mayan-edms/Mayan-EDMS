@@ -5,10 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.task_manager.classes import CeleryQueue
 
 queue_statistics = CeleryQueue(
-    name='statistics', label=_('Statistics'), transient=True
+    label=_('Statistics'), name='statistics', transient=True
 )
 
 queue_statistics.add_task_type(
-    name='mayan.apps.mayan_statistics.tasks.task_execute_statistic',
-    label=_('Execute statistic')
+    label=_('Execute statistic'),
+    name='mayan.apps.mayan_statistics.tasks.task_execute_statistic'
 )

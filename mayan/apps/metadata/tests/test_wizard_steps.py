@@ -21,15 +21,14 @@ from .mixins import MetadataTypeTestMixin
 
 
 class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewTestCase):
+    auto_upload_document = False
+
     def setUp(self):
         super(DocumentUploadMetadataTestCase, self).setUp()
-        self.login_user()
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
-
-        self.test_document.delete()
 
         self.test_document_type.metadata.create(
             metadata_type=self.metadata_type, required=True
@@ -41,7 +40,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
 
         self.grant_access(
-            permission=permission_document_create, obj=self.test_document_type
+            obj=self.test_document_type, permission=permission_document_create
         )
 
         # Upload the test document
@@ -53,6 +52,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
                 }
             )
         self.assertEqual(response.status_code, 302)
+
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().metadata.first().value,
@@ -76,6 +76,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
                 }
             )
         self.assertEqual(response.status_code, 302)
+
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().metadata.first().value,
@@ -93,5 +94,4 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
                 'document_create_wizard-current_step': 0
             }
         )
-
         self.assertContains(response=response, text='Step 2', status_code=200)

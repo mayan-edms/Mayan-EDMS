@@ -29,4 +29,3 @@ def method_group_roles_remove(self, queryset, _user):
             event_role_edited.commit(
                 actor=_user, action_object=self, target=role
             )
-

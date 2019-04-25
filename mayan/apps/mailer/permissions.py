@@ -4,29 +4,29 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='mailing', label=_('Mailing'))
+namespace = PermissionNamespace(label=_('Mailing'), name='mailing')
 
 permission_mailing_link = namespace.add_permission(
-    name='mail_link', label=_('Send document link via email')
+    label=_('Send document link via email'), name='mail_link'
 )
 permission_mailing_send_document = namespace.add_permission(
-    name='mail_document', label=_('Send document via email')
+    label=_('Send document via email'), name='mail_document'
 )
 permission_view_error_log = namespace.add_permission(
-    name='view_error_log', label=_('View system mailing error log')
+    label=_('View system mailing error log'), name='view_error_log'
 )
 permission_user_mailer_create = namespace.add_permission(
-    name='user_mailer_create', label=_('Create a mailing profile')
+    label=_('Create a mailing profile'), name='user_mailer_create'
 )
 permission_user_mailer_delete = namespace.add_permission(
-    name='user_mailer_delete', label=_('Delete a mailing profile')
+    label=_('Delete a mailing profile'), name='user_mailer_delete'
 )
 permission_user_mailer_edit = namespace.add_permission(
-    name='user_mailer_edit', label=_('Edit a mailing profile')
+    label=_('Edit a mailing profile'), name='user_mailer_edit'
 )
 permission_user_mailer_view = namespace.add_permission(
-    name='user_mailer_view', label=_('View a mailing profile')
+    label=_('View a mailing profile'), name='user_mailer_view'
 )
 permission_user_mailer_use = namespace.add_permission(
-    name='user_mailer_use', label=_('Use a mailing profile')
+    label=_('Use a mailing profile'), name='user_mailer_use'
 )

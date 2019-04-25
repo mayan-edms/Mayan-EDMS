@@ -35,7 +35,7 @@ class NamespaceDetailView(SingleObjectListView):
         }
 
     def get_namespace(self):
-        return StatisticNamespace.get(self.kwargs['slug'])
+        return StatisticNamespace.get(slug=self.kwargs['slug'])
 
     def get_object_list(self):
         return self.get_namespace().statistics
@@ -45,13 +45,15 @@ class StatisticDetailView(SimpleView):
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
+        obj = self.get_object()
+
         return {
-            'chart_data': self.get_object().get_chart_data(),
-            'namespace': self.get_object().namespace,
+            'chart_data': obj.get_chart_data(),
+            'namespace': obj.namespace,
             'navigation_object_list': ('namespace', 'object'),
-            'no_data': not self.get_object().get_results()['series'],
-            'object': self.get_object(),
-            'title': _('Results for: %s') % self.get_object(),
+            'no_data': not obj.get_results()['series'],
+            'object': obj,
+            'title': _('Results for: %s') % obj,
         }
 
     def get_object(self):
@@ -68,20 +70,21 @@ class StatisticQueueView(ConfirmView):
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
+        obj = self.get_object()
         return {
-            'namespace': self.get_object().namespace,
-            'object': self.get_object(),
+            'namespace': obj.namespace,
+            'object': obj,
             # Translators: This text is asking users if they want to queue
             # (to send to the queue) a statistic for it to be update ahead
             # of schedule
             'title': _(
                 'Queue statistic "%s" to be updated?'
-            ) % self.get_object(),
+            ) % obj,
         }
 
     def get_object(self):
         try:
-            return Statistic.get(self.kwargs['slug'])
+            return Statistic.get(slug=self.kwargs['slug'])
         except KeyError:
             raise Http404(_('Statistic "%s" not found.') % self.kwargs['slug'])
 

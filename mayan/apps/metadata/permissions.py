@@ -4,34 +4,35 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='metadata', label=_('Metadata'))
+namespace = PermissionNamespace(label=_('Metadata'), name='metadata')
 
 permission_metadata_document_edit = namespace.add_permission(
-    name='metadata_document_edit', label=_('Edit a document\'s metadata')
+    label=_('Edit a document\'s metadata'), name='metadata_document_edit'
 )
 permission_metadata_document_add = namespace.add_permission(
-    name='metadata_document_add', label=_('Add metadata to a document'))
+    label=_('Add metadata to a document'), name='metadata_document_add'
+)
 permission_metadata_document_remove = namespace.add_permission(
-    name='metadata_document_remove',
-    label=_('Remove metadata from a document')
+    label=_('Remove metadata from a document'),
+    name='metadata_document_remove'
 )
 permission_metadata_document_view = namespace.add_permission(
-    name='metadata_document_view', label=_('View metadata from a document')
+    label=_('View metadata from a document'), name='metadata_document_view'
 )
 
 setup_namespace = PermissionNamespace(
-    name='metadata_setup', label=_('Metadata setup')
+    label=_('Metadata setup'), name='metadata_setup'
 )
 
 permission_metadata_type_edit = setup_namespace.add_permission(
-    name='metadata_type_edit', label=_('Edit metadata types')
+    label=_('Edit metadata types'), name='metadata_type_edit'
 )
 permission_metadata_type_create = setup_namespace.add_permission(
-    name='metadata_type_create', label=_('Create new metadata types')
+    label=_('Create new metadata types'), name='metadata_type_create'
 )
 permission_metadata_type_delete = setup_namespace.add_permission(
-    name='metadata_type_delete', label=_('Delete metadata types')
+    label=_('Delete metadata types'), name='metadata_type_delete'
 )
 permission_metadata_type_view = setup_namespace.add_permission(
-    name='metadata_type_view', label=_('View metadata types')
+    label=_('View metadata types'), name='metadata_type_view'
 )

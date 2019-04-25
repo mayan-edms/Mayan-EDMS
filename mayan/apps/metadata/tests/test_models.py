@@ -20,7 +20,9 @@ from .mixins import MetadataTypeTestMixin
 class MetadataTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
     def setUp(self):
         super(MetadataTestCase, self).setUp()
-        self.test_document_type.metadata.create(metadata_type=self.metadata_type)
+        self.test_document_type.metadata.create(
+            metadata_type=self.metadata_type
+        )
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

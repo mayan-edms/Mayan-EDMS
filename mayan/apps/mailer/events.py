@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events import EventTypeNamespace
 
-namespace = EventTypeNamespace(name='mailing', label=_('Mailing'))
+namespace = EventTypeNamespace(label=_('Mailing'), name='mailing')
 
 event_email_sent = namespace.add_event_type(
-    name='email_send', label=_('Email sent')
+    label=_('Email sent'), name='email_send'
 )

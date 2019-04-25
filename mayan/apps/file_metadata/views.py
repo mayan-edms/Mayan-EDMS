@@ -2,12 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectEditView,
     SingleObjectListView

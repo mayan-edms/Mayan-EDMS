@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests import GenericViewTestCase
 
 from ..events import (
     event_metadata_type_created, event_metadata_type_edited
@@ -15,7 +15,7 @@ from ..permissions import (
 from .mixins import MetadataTestsMixin
 
 
-class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericDocumentViewTestCase):
+class MetadataTypeEventsTestCase(MetadataTestsMixin, GenericViewTestCase):
     def test_metadata_type_create_event_no_permissions(self):
         Action.objects.all().delete()
 

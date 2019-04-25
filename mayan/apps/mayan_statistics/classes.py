@@ -72,12 +72,12 @@ class Statistic(object):
         ).delete()
 
     @classmethod
-    def get_all(cls):
-        return list(cls._registry.values())
-
-    @classmethod
     def get(cls, slug):
         return cls._registry[slug]
+
+    @classmethod
+    def get_all(cls):
+        return list(cls._registry.values())
 
     @classmethod
     def get_task_names(cls):
@@ -119,6 +119,19 @@ class Statistic(object):
     def execute(self):
         self.store_results(results=self.func())
 
+    def get_chart_data(self):
+        return self.renderer(data=self.get_results()).get_chart_data()
+
+    def get_results(self):
+        StatisticResult = apps.get_model(
+            app_label='mayan_statistics', model_name='StatisticResult'
+        )
+
+        try:
+            return StatisticResult.objects.get(slug=self.slug).get_data()
+        except StatisticResult.DoesNotExist:
+            return {'series': {}}
+
     def get_task_name(self):
         return 'mayan_statistics.task_execute_statistic_{}'.format(self.slug)
 
@@ -133,19 +146,6 @@ class Statistic(object):
             slug=self.slug
         )
         statistic_result.store_data(data=results)
-
-    def get_results(self):
-        StatisticResult = apps.get_model(
-            app_label='mayan_statistics', model_name='StatisticResult'
-        )
-
-        try:
-            return StatisticResult.objects.get(slug=self.slug).get_data()
-        except StatisticResult.DoesNotExist:
-            return {'series': {}}
-
-    def get_chart_data(self):
-        return self.renderer(data=self.get_results()).get_chart_data()
 
 
 class StatisticLineChart(Statistic):

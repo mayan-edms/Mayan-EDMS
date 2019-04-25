@@ -124,7 +124,7 @@ class UserMailerBackendSelectionView(FormView):
     def form_valid(self, form):
         backend = form.cleaned_data['backend']
         return HttpResponseRedirect(
-            reverse(
+            redirect_to=reverse(
                 viewname='mailer:user_mailer_create', kwargs={
                     'class_path': backend
                 }
@@ -170,7 +170,7 @@ class UserMailingCreateView(SingleObjectDynamicFormCreateView):
 class UserMailingDeleteView(SingleObjectDeleteView):
     model = UserMailer
     object_permission = permission_user_mailer_delete
-    post_action_redirect = reverse_lazy('mailer:user_mailer_list')
+    post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
 
     def get_extra_context(self):
         return {

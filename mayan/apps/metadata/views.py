@@ -80,7 +80,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='metadata:metadata_edit', kwargs={
                         'pk': queryset.first().pk
                     }
@@ -88,7 +88,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
-                '%s?%s' % (
+                redirect_to='%s?%s' % (
                     reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
@@ -112,9 +112,9 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
             'submit_icon_class': icon_document_metadata_add,
             'submit_label': _('Add'),
             'title': ungettext(
-                'Add metadata types to document',
-                'Add metadata types to documents',
-                queryset.count()
+                singular='Add metadata types to document',
+                plural='Add metadata types to documents',
+                number=queryset.count()
             )
         }
 
@@ -248,7 +248,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='metadata:metadata_edit', kwargs={
                         'pk': queryset.first().pk
                     }
@@ -256,7 +256,7 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
-                '%s?%s' % (
+                redirect_to='%s?%s' % (
                     reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
@@ -472,7 +472,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
 
         if self.action_count == 1:
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='metadata:metadata_edit', kwargs={
                         'pk': queryset.first().pk
                     }
@@ -480,7 +480,7 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
             )
         elif self.action_count > 1:
             return HttpResponseRedirect(
-                '%s?%s' % (
+                redirect_to='%s?%s' % (
                     reverse(viewname='metadata:metadata_multiple_edit'),
                     urlencode(
                         {
@@ -505,9 +505,9 @@ class DocumentMetadataRemoveView(MultipleObjectFormActionView):
             'submit_icon_class': icon_document_metadata_remove,
             'submit_label': _('Remove'),
             'title': ungettext(
-                'Remove metadata types from the document',
-                'Remove metadata types from the documents',
-                queryset.count()
+                singular='Remove metadata types from the document',
+                plural='Remove metadata types from the documents',
+                number=queryset.count()
             )
         }
 
