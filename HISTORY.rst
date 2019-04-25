@@ -146,6 +146,7 @@
 * Rename form template 'form_class' to 'form_css_classes'.
 * Add support for adding form button aside from the 
   default submit and cancel.
+* Update ChoiceForm to be full height.
 
 3.1.11 (2019-04-XX)
 ===================
