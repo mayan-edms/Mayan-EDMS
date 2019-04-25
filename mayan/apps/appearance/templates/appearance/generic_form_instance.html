@@ -4,7 +4,9 @@
 
 {% load appearance_tags %}
 
-{{ form.media.render_css|safe }}
+{% for asset in form.media.render_css %}
+    {{ asset|safe }}
+{% endfor %}
 
 {% for group, errors in form.errors.items %}
     {% for error in errors %}
@@ -111,7 +113,6 @@
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}
-
                 {% if field.help_text %}<p class="help-block">{{ field.help_text|safe }}</p>{% endif %}
             </div>
         {% endfor %}
