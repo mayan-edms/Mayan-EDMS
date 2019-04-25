@@ -164,6 +164,7 @@ class DocumentCreateWizard(SessionWizardView):
         wizard_step = WizardStep.get(name=self.steps.current)
 
         context.update({
+            'form_css_classes': 'form-hotkey-double-click',
             'step_title': _(
                 'Step %(step)d of %(total_steps)d: %(step_label)s'
             ) % {
