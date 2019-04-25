@@ -120,7 +120,7 @@ class GroupDeleteView(SingleObjectDeleteView):
         }
 
 
-class GroupMembersView(AssignRemoveView):
+class GroupUsersView(AssignRemoveView):
     decode_content_type = True
     left_list_title = _('Available users')
     right_list_title = _('Users in group')
@@ -160,14 +160,14 @@ class GroupMembersView(AssignRemoveView):
         )
 
     def left_list(self):
-        return GroupMembersView.generate_choices(
+        return GroupUsersView.generate_choices(
             self.get_choices_queryset().exclude(
                 groups=self.get_object()
             )
         )
 
     def right_list(self):
-        return GroupMembersView.generate_choices(
+        return GroupUsersView.generate_choices(
             self.get_choices_queryset().filter(
                 pk__in=self.get_object().user_set.all()
             )

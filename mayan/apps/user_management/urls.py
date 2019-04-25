@@ -8,7 +8,7 @@ from .api_views import (
 )
 from .views import (
     CurrentUserDetailsView, CurrentUserEditView, GroupCreateView,
-    GroupDeleteView, GroupEditView, GroupListView, GroupMembersView,
+    GroupDeleteView, GroupEditView, GroupListView, GroupUsersView,
     UserCreateView, UserDeleteView, UserDetailsView, UserEditView,
     UserGroupsView, UserListView, UserOptionsEditView, UserSetPasswordView
 )
@@ -41,7 +41,7 @@ urlpatterns_groups = [
         name='group_delete'
     ),
     url(
-        regex=r'^group/(?P<pk>\d+)/members/$', view=GroupMembersView.as_view(),
+        regex=r'^group/(?P<pk>\d+)/users/$', view=GroupUsersView.as_view(),
         name='group_members'
     )
 ]
