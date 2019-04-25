@@ -3,6 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from mayan.apps.appearance.classes import Icon
 
 icon_about = Icon(driver_name='fontawesome', symbol='info')
+icon_add_all = Icon(
+    driver_name='fontawesome-layers', data=[
+        {'class': 'far fa-circle'},
+        {'class': 'fas fa-plus', 'transform': 'shrink-6'}
+    ]
+)
 icon_assign_remove_add = Icon(driver_name='fontawesome', symbol='plus')
 icon_assign_remove_remove = Icon(driver_name='fontawesome', symbol='minus')
 icon_check_version = Icon(driver_name='fontawesome', symbol='sync')
@@ -36,6 +42,12 @@ icon_ok = Icon(
 )
 icon_packages_licenses = Icon(
     driver_name='fontawesome', symbol='certificate'
+)
+icon_remove_all = Icon(
+    driver_name='fontawesome-layers', data=[
+        {'class': 'far fa-circle'},
+        {'class': 'fas fa-minus', 'transform': 'shrink-6'}
+    ]
 )
 icon_setup = Icon(
     driver_name='fontawesome', symbol='cog'

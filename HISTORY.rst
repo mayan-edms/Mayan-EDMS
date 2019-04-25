@@ -147,6 +147,7 @@
 * Add support for adding form button aside from the 
   default submit and cancel.
 * Update ChoiceForm to be full height.
+* Add AddRemoveView to replace AssignRemoveView
 
 3.1.11 (2019-04-XX)
 ===================
