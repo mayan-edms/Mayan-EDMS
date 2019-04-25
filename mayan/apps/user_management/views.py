@@ -66,6 +66,9 @@ class GroupCreateView(SingleObjectCreateView):
     )
     view_permission = permission_group_create
 
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
+
 
 class GroupEditView(SingleObjectEditView):
     fields = ('name',)
@@ -80,6 +83,9 @@ class GroupEditView(SingleObjectEditView):
             'object': self.get_object(),
             'title': _('Edit group: %s') % self.get_object(),
         }
+
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class GroupListView(SingleObjectListView):
@@ -185,20 +191,17 @@ class UserCreateView(SingleObjectCreateView):
     view_permission = permission_user_create
 
     def form_valid(self, form):
-        user = form.save(commit=False)
-        user.set_unusable_password()
-        user.save()
-        messages.success(
-            message=_('User "%s" created successfully.') % user,
-            request=self.request
-        )
+        super(UserCreateView, self).form_valid(form=form)
         return HttpResponseRedirect(
             reverse(
-                viewname='user_management:user_set_password', kwargs={
-                    'pk': user.pk
-                }
+                viewname='user_management:user_set_password',
+                kwargs={'pk': self.object.pk}
             )
         )
+
+
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class UserDeleteView(MultipleObjectConfirmActionView):
@@ -290,6 +293,9 @@ class UserEditView(SingleObjectEditView):
             'object': self.get_object(),
             'title': _('Edit user: %s') % self.get_object(),
         }
+
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class UserGroupsView(AssignRemoveView):

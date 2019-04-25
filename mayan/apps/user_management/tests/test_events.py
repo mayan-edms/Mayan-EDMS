@@ -30,6 +30,7 @@ class GroupEventsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gen
         )
         self._request_test_group_create_view()
 
+        self.assertEqual(Action.objects.last().actor, self._test_case_user)
         self.assertEqual(Action.objects.last().target, self.test_group)
         self.assertEqual(Action.objects.last().verb, event_group_created.id)
 
@@ -55,6 +56,9 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         )
         self._request_test_group_create_api_view()
 
+        # TODO: Future improvement, find method to record the user who
+        # commited the event. Will required custom serializer .create method
+        self.assertEqual(Action.objects.last().actor, self.test_group)
         self.assertEqual(Action.objects.last().target, self.test_group)
         self.assertEqual(Action.objects.last().verb, event_group_created.id)
 
@@ -67,6 +71,9 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         )
         self._request_test_group_edit_patch_api_view()
 
+        # TODO: Future improvement, find method to record the user who
+        # commited the event. Will required custom serializer .update method
+        self.assertEqual(Action.objects.last().actor, self.test_group)
         self.assertEqual(Action.objects.last().target, self.test_group)
         self.assertEqual(Action.objects.last().verb, event_group_edited.id)
 
@@ -80,6 +87,7 @@ class UserEventsTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, Gen
         )
         self._request_test_user_create_view()
 
+        self.assertEqual(Action.objects.last().actor, self._test_case_user)
         self.assertEqual(Action.objects.last().target, self.test_user)
         self.assertEqual(Action.objects.last().verb, event_user_created.id)
 
@@ -92,6 +100,7 @@ class UserEventsTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, Gen
         )
         self._request_test_user_edit_view()
 
+        self.assertEqual(Action.objects.last().actor, self._test_case_user)
         self.assertEqual(Action.objects.last().target, self.test_user)
         self.assertEqual(Action.objects.last().verb, event_user_edited.id)
 
@@ -105,6 +114,9 @@ class UserEventsAPITestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, 
         )
         self._request_test_user_create_api_view()
 
+        # TODO: Future improvement, find method to record the user who
+        # commited the event. Will required custom serializer .create method
+        self.assertEqual(Action.objects.last().actor, self.test_user)
         self.assertEqual(Action.objects.last().target, self.test_user)
         self.assertEqual(Action.objects.last().verb, event_user_created.id)
 
@@ -117,5 +129,8 @@ class UserEventsAPITestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, 
         )
         self._request_test_user_edit_patch_api_view()
 
+        # TODO: Future improvement, find method to record the user who
+        # commited the event. Will required custom serializer .update method
+        self.assertEqual(Action.objects.last().actor, self.test_user)
         self.assertEqual(Action.objects.last().target, self.test_user)
         self.assertEqual(Action.objects.last().verb, event_user_edited.id)
