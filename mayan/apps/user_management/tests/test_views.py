@@ -115,7 +115,7 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
         self.test_user.groups.add(self.test_group)
 
         response = self._request_test_group_members_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_group_members_view_with_group_access(self):
         self._create_test_user()
@@ -141,7 +141,7 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
 
         response = self._request_test_group_members_view()
         self.assertNotContains(
-            response=response, text=self.test_group.name, status_code=403
+            response=response, text=self.test_group.name, status_code=404
         )
 
     def test_group_members_view_with_full_access(self):
@@ -311,7 +311,7 @@ class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, Ge
         self.test_user.groups.add(self.test_group)
 
         response = self._request_test_user_groups_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_user_groups_view_with_group_access(self):
         self._create_test_user()
@@ -323,7 +323,7 @@ class UserGroupViewTestCase(GroupTestMixin, UserTestMixin, UserViewTestMixin, Ge
 
         response = self._request_test_user_groups_view()
         self.assertNotContains(
-            response=response, text=self.test_user.username, status_code=403
+            response=response, text=self.test_user.username, status_code=404
         )
 
     def test_user_groups_view_with_user_access(self):

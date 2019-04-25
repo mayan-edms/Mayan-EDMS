@@ -37,7 +37,9 @@ from .links import (
     text_user_label
 )
 from .methods import (
-    get_method_group_save, get_method_user_save, method_user_get_absolute_url
+    get_method_group_save, get_method_user_save, method_user_get_absolute_url,
+    method_group_get_users, method_group_users_add, method_group_users_remove,
+    method_user_get_groups, method_user_groups_add, method_user_groups_remove
 )
 
 from .permissions import (
@@ -89,6 +91,15 @@ class UserManagementApp(MayanAppConfig):
         Group._meta.verbose_name = _('Group')
         Group._meta.verbose_name_plural = _('Groups')
 
+        Group.add_to_class(
+            name='get_users', value=method_group_get_users
+        )
+        Group.add_to_class(
+            name='users_add', value=method_group_users_add
+        )
+        Group.add_to_class(
+            name='users_remove', value=method_group_users_remove
+        )
         Group.add_to_class(name='save', value=get_method_group_save())
 
         MetadataLookup(
@@ -161,9 +172,19 @@ class UserManagementApp(MayanAppConfig):
         User._meta.ordering = ('pk',)
         User._meta.verbose_name = _('User')
         User._meta.verbose_name_plural = _('Users')
+        User._meta.ordering = ('last_name', 'first_name')
 
         User.add_to_class(
             name='get_absolute_url', value=method_user_get_absolute_url
+        )
+        User.add_to_class(
+            name='get_groups', value=method_user_get_groups
+        )
+        User.add_to_class(
+            name='groups_add', value=method_user_groups_add
+        )
+        User.add_to_class(
+            name='groups_remove', value=method_user_groups_remove
         )
         User.add_to_class(name='save', value=get_method_user_save())
 

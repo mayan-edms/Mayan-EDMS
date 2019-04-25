@@ -182,6 +182,14 @@ Other changes
 * Add AddRemoveView to replace AssignRemoveView
 * Update the group roles view to use the new AddRemoveView.
 * Add role create and edit events.
+* Sort users by lastname, firstname.
+* Switch user groups and group users views to AddRemoveView.
+* Commit user edit event when an user is added or removed
+  from a group.
+* Commit the group edit event when a group is added or remove
+  from an user.
+* Require dual permissions when add or removing users to and
+  from group. Same with group to users.
 
 Removals
 --------

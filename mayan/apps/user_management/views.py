@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import Group
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -12,12 +11,11 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.generics import AddRemoveView
 from mayan.apps.common.views import (
-    AssignRemoveView, MultipleObjectConfirmActionView,
-    MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
 )
 
 from .forms import UserForm
@@ -28,6 +26,7 @@ from .permissions import (
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
+from .querysets import get_user_queryset
 
 
 class CurrentUserDetailsView(SingleObjectDetailView):
@@ -126,61 +125,30 @@ class GroupDeleteView(SingleObjectDeleteView):
         }
 
 
-class GroupUsersView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available users')
-    right_list_title = _('Users in group')
-    object_permission = permission_group_edit
+class GroupUsersView(AddRemoveView):
+    action_add_method = 'users_add'
+    action_remove_method = 'users_remove'
+    main_object_model = Group
+    main_object_permission = permission_group_edit
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_permission = permission_user_edit
+    secondary_object_source_queryset = get_user_queryset()
+    list_available_title = _('Available users')
+    list_added_title = _('Group users')
 
-    @staticmethod
-    def generate_choices(choices):
-        results = []
-        for choice in choices:
-            ct = ContentType.objects.get_for_model(choice)
-            label = choice.get_full_name() if choice.get_full_name() else choice
-
-            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
-
-        # Sort results by the label not the key value
-        return sorted(results, key=lambda x: x[1])
-
-    def add(self, item):
-        self.get_object().user_set.add(item)
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Users of group: %s') % self.get_object()
+            'object': self.main_object,
+            'title': _('Users of group: %s') % self.main_object,
         }
 
-    def get_object(self):
-        return get_object_or_404(klass=Group, pk=self.kwargs['pk'])
-
-    def get_choices_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            permission=permission_user_edit,
-            queryset=get_user_model().objects.exclude(
-                is_staff=True
-            ).exclude(is_superuser=True),
-            user=self.request.user
+    def get_list_added_queryset(self):
+        return self.main_object.get_users(
+            permission=permission_user_edit, user=self.request.user
         )
-
-    def left_list(self):
-        return GroupUsersView.generate_choices(
-            self.get_choices_queryset().exclude(
-                groups=self.get_object()
-            )
-        )
-
-    def right_list(self):
-        return GroupUsersView.generate_choices(
-            self.get_choices_queryset().filter(
-                pk__in=self.get_object().user_set.all()
-            )
-        )
-
-    def remove(self, item):
-        self.get_object().user_set.remove(item)
 
 
 class UserCreateView(SingleObjectCreateView):
@@ -199,16 +167,13 @@ class UserCreateView(SingleObjectCreateView):
             )
         )
 
-
     def get_save_extra_data(self):
         return {'_user': self.request.user}
 
 
 class UserDeleteView(MultipleObjectConfirmActionView):
     object_permission = permission_user_delete
-    queryset = get_user_model().objects.filter(
-        is_superuser=False, is_staff=False
-    )
+    queryset = get_user_queryset()
     success_message = _('User delete request performed on %(count)d user')
     success_message_plural = _(
         'User delete request performed on %(count)d users'
@@ -267,9 +232,7 @@ class UserDetailsView(SingleObjectDetailView):
     )
     object_permission = permission_user_view
     pk_url_kwarg = 'pk'
-    queryset = get_user_model().objects.filter(
-        is_superuser=False, is_staff=False
-    )
+    queryset = get_user_queryset()
 
     def get_extra_context(self, **kwargs):
         return {
@@ -284,9 +247,7 @@ class UserEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='user_management:user_list'
     )
-    queryset = get_user_model().objects.filter(
-        is_superuser=False, is_staff=False
-    )
+    queryset = get_user_queryset()
 
     def get_extra_context(self):
         return {
@@ -298,46 +259,30 @@ class UserEditView(SingleObjectEditView):
         return {'_user': self.request.user}
 
 
-class UserGroupsView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available groups')
-    right_list_title = _('Groups joined')
-    object_permission = permission_user_edit
+class UserGroupsView(AddRemoveView):
+    action_add_method = 'groups_add'
+    action_remove_method = 'groups_remove'
+    main_object_permission = permission_user_edit
+    main_object_source_queryset = get_user_queryset()
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = Group
+    secondary_object_permission = permission_group_edit
+    list_available_title = _('Available groups')
+    list_added_title = _('User groups')
 
-    def add(self, item):
-        item.user_set.add(self.get_object())
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Groups of user: %s') % self.get_object()
+            'object': self.main_object,
+            'title': _('Groups of user: %s') % self.main_object,
         }
 
-    def get_object(self):
-        return get_object_or_404(
-            klass=get_user_model().objects.filter(
-                is_superuser=False, is_staff=False
-            ), pk=self.kwargs['pk']
-        )
-
-    def get_choices_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            queryset=Group.objects.filter(user=self.get_object()),
+    def get_list_added_queryset(self):
+        return self.main_object.get_groups(
             permission=permission_group_edit, user=self.request.user
         )
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_choices_queryset().exclude(user=self.get_object())
-        )
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_choices_queryset().filter(user=self.get_object())
-        )
-
-    def remove(self, item):
-        item.user_set.remove(self.get_object())
 
 
 class UserListView(SingleObjectListView):
@@ -360,9 +305,7 @@ class UserListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return get_user_model().objects.exclude(
-            is_superuser=True
-        ).exclude(is_staff=True).order_by('last_name', 'first_name')
+        return get_user_queryset()
 
 
 class UserOptionsEditView(SingleObjectEditView):
@@ -385,9 +328,7 @@ class UserOptionsEditView(SingleObjectEditView):
 
     def get_user(self):
         return get_object_or_404(
-            klass=get_user_model().objects.filter(
-                is_superuser=False, is_staff=False
-            ), pk=self.kwargs['pk']
+            klass=get_user_queryset(), pk=self.kwargs['pk']
         )
 
 
