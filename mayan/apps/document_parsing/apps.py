@@ -88,7 +88,7 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         ModelField(
-            Document, name='versions__pages__content__content'
+            model=Document, name='versions__pages__content__content'
         )
 
         ModelPermission.register(
@@ -107,8 +107,8 @@ class DocumentParsingApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_version__document',
-            is_attribute_absolute_url=True, is_identifier=True, is_sortable=True,
-            source=DocumentVersionParseError
+            is_attribute_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=DocumentVersionParseError
         )
         SourceColumn(
             attribute='datetime_submitted', is_sortable=True,

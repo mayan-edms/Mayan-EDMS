@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events import EventTypeNamespace
 
-namespace = EventTypeNamespace(name='tags', label=_('Tags'))
+namespace = EventTypeNamespace(label=_('Tags'), name='tags')
 
 event_tag_attach = namespace.add_event_type(
     label=_('Tag attached to document'), name='attach'

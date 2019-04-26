@@ -44,8 +44,8 @@ class UserGroupListSerializer(serializers.Serializer):
             for group in Group.objects.filter(pk__in=pk_list):
                 try:
                     AccessControlList.objects.check_access(
-                        permissions=(permission_group_view,),
-                        user=self.context['request'].user, obj=group
+                        obj=group, permissions=(permission_group_view,),
+                        user=self.context['request'].user
                     )
                 except PermissionDenied:
                     pass

@@ -5,13 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.task_manager.classes import CeleryQueue
 
 queue_metadata = CeleryQueue(
-    name='metadata', label=_('Metadata')
+    label=_('Metadata'), name='metadata'
 )
 queue_metadata.add_task_type(
-    name='mayan.apps.metadata.tasks.task_remove_metadata_type',
-    label=_('Remove metadata type')
+    label=_('Remove metadata type'),
+    name='mayan.apps.metadata.tasks.task_remove_metadata_type'
 )
 queue_metadata.add_task_type(
-    name='mayan.apps.metadata.tasks.task_add_required_metadata_type',
-    label=_('Add required metadata type')
+    label=_('Add required metadata type'),
+    name='mayan.apps.metadata.tasks.task_add_required_metadata_type'
 )

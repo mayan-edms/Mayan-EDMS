@@ -23,7 +23,7 @@ class DashboardWidgetDocumentPagesTotal(DashboardWidgetNumeric):
     icon_class = icon_dashboard_pages_per_month
     label = _('Total pages')
     link = reverse_lazy(
-        'statistics:statistic_detail',
+        viewname='statistics:statistic_detail',
         args=('total-document-pages-at-each-month',)
     )
 

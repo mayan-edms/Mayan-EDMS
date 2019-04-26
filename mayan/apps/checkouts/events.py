@@ -4,19 +4,19 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events import EventTypeNamespace
 
-namespace = EventTypeNamespace(name='checkouts', label=_('Checkouts'))
+namespace = EventTypeNamespace(label=_('Checkouts'), name='checkouts')
 
 event_document_auto_check_in = namespace.add_event_type(
-    name='document_auto_check_in',
-    label=_('Document automatically checked in')
+    label=_('Document automatically checked in'),
+    name='document_auto_check_in'
 )
 event_document_check_in = namespace.add_event_type(
-    name='document_check_in', label=_('Document checked in')
+    label=_('Document checked in'), name='document_check_in'
 )
 event_document_check_out = namespace.add_event_type(
-    name='document_check_out', label=_('Document checked out')
+    label=_('Document checked out'), name='document_check_out'
 )
 event_document_forceful_check_in = namespace.add_event_type(
-    name='document_forceful_check_in',
-    label=_('Document forcefully checked in')
+    label=_('Document forcefully checked in'),
+    name='document_forceful_check_in'
 )

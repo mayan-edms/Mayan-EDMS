@@ -50,9 +50,9 @@ class WatchFolderSource(IntervalBaseModel):
         path = Path(self.folder_path)
 
         if self.include_subdirectories:
-            iterator = path.rglob('*')
+            iterator = path.rglob(pattern='*')
         else:
-            iterator = path.glob('*')
+            iterator = path.glob(pattern='*')
 
         for entry in iterator:
             if entry.is_file() or entry.is_symlink():

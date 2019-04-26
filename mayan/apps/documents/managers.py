@@ -60,7 +60,7 @@ class DocumentPageManager(models.Manager):
 
 class DocumentTypeManager(models.Manager):
     def check_delete_periods(self):
-        logger.info('Executing')
+        logger.info(msg='Executing')
 
         for document_type in self.all():
             logger.info(
@@ -88,10 +88,10 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a no retention delta', document_type
                 )
 
-        logger.info('Finshed')
+        logger.info(msg='Finshed')
 
     def check_trash_periods(self):
-        logger.info('Executing')
+        logger.info(msg='Executing')
 
         for document_type in self.all():
             logger.info(
@@ -119,7 +119,7 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a no retention delta', document_type
                 )
 
-        logger.info('Finshed')
+        logger.info(msg='Finshed')
 
     def get_by_natural_key(self, label):
         return self.get(label=label)

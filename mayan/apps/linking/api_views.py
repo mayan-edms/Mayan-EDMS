@@ -35,8 +35,8 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=permission_document_view,
+            user=self.request.user
         )
 
         return document
@@ -58,7 +58,9 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIResolvedSmartLinkDocumentListView, self).get_serializer_context()
+        context = super(
+            APIResolvedSmartLinkDocumentListView, self
+        ).get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -89,8 +91,8 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=permission_document_view,
+            user=self.request.user
         )
 
         return document
@@ -126,8 +128,8 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=permission_document_view,
+            user=self.request.user
         )
 
         return document
@@ -185,8 +187,8 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
         smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=smart_link
+            obj=smart_link, permissions=permission_required,
+            user=self.request.user
         )
 
         return smart_link
@@ -228,8 +230,8 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
         smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=smart_link
+            obj=smart_link, permissions=permission_required,
+            user=self.request.user
         )
 
         return smart_link

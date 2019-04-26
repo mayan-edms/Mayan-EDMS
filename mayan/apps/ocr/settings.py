@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-namespace = Namespace(name='ocr', label=_('OCR'))
+namespace = Namespace(label=_('OCR'), name='ocr')
 
 setting_ocr_backend = namespace.add_setting(
     global_name='OCR_BACKEND', default='mayan.apps.ocr.backends.pyocr.PyOCR',

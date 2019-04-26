@@ -63,7 +63,7 @@ class Archive(object):
     def get_members(self):
         return (
             SimpleUploadedFile(
-                name=filename, content=self.member_contents(filename)
+                content=self.member_contents(filename=filename), name=filename
             ) for filename in self.members()
         )
 
@@ -161,14 +161,14 @@ class ZipArchive(Archive):
 
 
 Archive.register(
-    mime_types=('application/zip',), archive_classes=(ZipArchive,)
+    archive_classes=(ZipArchive,), mime_types=('application/zip',)
 )
 Archive.register(
-    mime_types=('application/x-tar',), archive_classes=(TarArchive,)
+    archive_classes=(TarArchive,), mime_types=('application/x-tar',)
 )
 Archive.register(
-    mime_types=('application/gzip',), archive_classes=(TarArchive,)
+    archive_classes=(TarArchive,), mime_types=('application/gzip',)
 )
 Archive.register(
-    mime_types=('application/x-bzip2',), archive_classes=(TarArchive,)
+    archive_classes=(TarArchive,), mime_types=('application/x-bzip2',)
 )

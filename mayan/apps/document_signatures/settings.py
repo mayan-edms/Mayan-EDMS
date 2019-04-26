@@ -7,7 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-namespace = Namespace(name='signatures', label=_('Document signatures'))
+namespace = Namespace(label=_('Document signatures'), name='signatures')
+
 setting_storage_backend = namespace.add_setting(
     default='django.core.files.storage.FileSystemStorage',
     global_name='SIGNATURES_STORAGE_BACKEND', help_text=_(

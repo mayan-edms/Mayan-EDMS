@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-import hashlib
 import logging
-import uuid
 
 from django.conf import settings
 from django.db import models
@@ -21,15 +19,6 @@ __all__ = (
     'RecentDocument'
 )
 logger = logging.getLogger(__name__)
-
-
-# document image cache name hash function
-def hash_function():
-    return hashlib.sha256()
-
-
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
 
 
 class DeletedDocument(Document):

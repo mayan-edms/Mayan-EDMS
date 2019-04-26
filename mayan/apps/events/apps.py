@@ -35,6 +35,8 @@ class EventsApp(MayanAppConfig):
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
 
+        # Add labels to Action model, they are not marked translatable in the
+        # upstream package.
         SourceColumn(
             attribute='timestamp', is_identifier=True,
             is_sortable=True, label=_('Date and time'), source=Action

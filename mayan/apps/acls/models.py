@@ -71,5 +71,5 @@ class AccessControlList(models.Model):
 
     def get_inherited_permissions(self):
         return AccessControlList.objects.get_inherited_permissions(
-            role=self.role, obj=self.content_object
+            obj=self.content_object, role=self.role
         )

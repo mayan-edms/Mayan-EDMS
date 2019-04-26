@@ -4,17 +4,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='motd', label=_('Message of the day'))
+namespace = PermissionNamespace(label=_('Message of the day'), name='motd')
 
 permission_message_create = namespace.add_permission(
-    name='message_create', label=_('Create messages')
+    label=_('Create messages'), name='message_create'
 )
 permission_message_delete = namespace.add_permission(
-    name='message_delete', label=_('Delete messages')
+    label=_('Delete messages'), name='message_delete'
 )
 permission_message_edit = namespace.add_permission(
-    name='message_edit', label=_('Edit messages')
+    label=_('Edit messages'), name='message_edit'
 )
 permission_message_view = namespace.add_permission(
-    name='message_view', label=_('View messages')
+    label=_('View messages'), name='message_view'
 )

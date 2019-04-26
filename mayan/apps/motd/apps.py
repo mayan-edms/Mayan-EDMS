@@ -37,7 +37,7 @@ class MOTDApp(MayanAppConfig):
     def ready(self):
         super(MOTDApp, self).ready()
 
-        Message = self.get_model('Message')
+        Message = self.get_model(model_name='Message')
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,

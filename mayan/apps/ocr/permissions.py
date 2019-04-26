@@ -4,16 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='ocr', label=_('OCR'))
+namespace = PermissionNamespace(label=_('OCR'), name='ocr')
 
 permission_ocr_document = namespace.add_permission(
-    name='ocr_document', label=_('Submit documents for OCR')
+    label=_('Submit documents for OCR'), name='ocr_document'
 )
 permission_ocr_content_view = namespace.add_permission(
-    name='ocr_content_view',
-    label=_('View the transcribed text from document')
+    label=_('View the transcribed text from document'),
+    name='ocr_content_view'
 )
 permission_document_type_ocr_setup = namespace.add_permission(
-    name='ocr_document_type_setup',
-    label=_('Change document type OCR settings')
+    label=_('Change document type OCR settings'),
+    name='ocr_document_type_setup'
 )

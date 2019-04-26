@@ -31,9 +31,15 @@ class EmailInput(forms.widgets.Input):
     def render(self, name, value, attrs=None):
         if attrs is None:
             attrs = {}
-        attrs.update(dict(autocorrect='off',
-                          autocapitalize='off',
-                          spellcheck='false'))
+
+        attrs.update(
+            {
+                'autocorrect': 'off',
+                'autocapitalize': 'off',
+                'spellcheck': 'false'
+            }
+        )
+
         return super(EmailInput, self).render(name, value, attrs=attrs)
 
 
@@ -43,7 +49,7 @@ class PlainWidget(forms.widgets.Widget):
     widget and reduces the output to only it's value
     """
     def render(self, name, value, attrs=None):
-        return mark_safe('%s' % value)
+        return mark_safe(s='%s' % value)
 
 
 class TextAreaDiv(forms.widgets.Widget):

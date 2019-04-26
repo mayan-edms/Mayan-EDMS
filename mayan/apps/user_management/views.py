@@ -35,14 +35,14 @@ class CurrentUserDetailsView(SingleObjectDetailView):
         'date_joined', 'groups'
     )
 
-    def get_object(self):
-        return self.request.user
-
     def get_extra_context(self, **kwargs):
         return {
             'object': None,
             'title': _('Current user details'),
         }
+
+    def get_object(self):
+        return self.request.user
 
 
 class CurrentUserEditView(SingleObjectEditView):
@@ -67,6 +67,20 @@ class GroupCreateView(SingleObjectCreateView):
 
     def get_save_extra_data(self):
         return {'_user': self.request.user}
+
+
+class GroupDeleteView(SingleObjectDeleteView):
+    model = Group
+    object_permission = permission_group_delete
+    post_action_redirect = reverse_lazy(
+        viewname='user_management:group_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete the group: %s?') % self.get_object(),
+        }
 
 
 class GroupEditView(SingleObjectEditView):
@@ -108,20 +122,6 @@ class GroupListView(SingleObjectListView):
             ),
             'no_results_title': _('There are no user groups'),
             'title': _('Groups'),
-        }
-
-
-class GroupDeleteView(SingleObjectDeleteView):
-    model = Group
-    object_permission = permission_group_delete
-    post_action_redirect = reverse_lazy(
-        viewname='user_management:group_list'
-    )
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Delete the group: %s?') % self.get_object(),
         }
 
 

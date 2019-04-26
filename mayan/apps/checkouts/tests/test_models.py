@@ -16,8 +16,6 @@ from .mixins import DocumentCheckoutTestMixin
 
 
 class DocumentCheckoutTestCase(DocumentCheckoutTestMixin, GenericDocumentTestCase):
-    # auto
-
     def test_document_check_out(self):
         self._check_out_test_document()
 

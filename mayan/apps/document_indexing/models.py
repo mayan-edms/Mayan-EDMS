@@ -63,8 +63,8 @@ class Index(models.Model):
     def get_absolute_url(self):
         try:
             return reverse(
-                'indexing:index_instance_node_view',
-                args=(self.instance_root.pk,)
+                viewname='indexing:index_instance_node_view',
+                kwargs={'pk': self.instance_root.pk}
             )
         except IndexInstanceNode.DoesNotExist:
             return '#'
@@ -357,7 +357,11 @@ class IndexInstanceNode(MPTTModel):
                 lock.release()
 
     def get_absolute_url(self):
-        return reverse('indexing:index_instance_node_view', args=(self.pk,))
+        return reverse(
+            viewname='indexing:index_instance_node_view', kwargs={
+                'pk': self.pk
+            }
+        )
 
     def get_children_count(self):
         return self.get_children().count()
@@ -367,12 +371,12 @@ class IndexInstanceNode(MPTTModel):
 
     def get_descendants_document_count(self, user):
         return AccessControlList.objects.filter_by_access(
-            permission=permission_document_view, user=user,
+            permission=permission_document_view,
             queryset=Document.objects.filter(
                 index_instance_nodes__in=self.get_descendants(
                     include_self=True
                 )
-            )
+            ), user=user
         ).count()
 
     def get_full_path(self):
@@ -388,7 +392,8 @@ class IndexInstanceNode(MPTTModel):
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
             queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset=self.documents
+                permission=permission_document_view, queryset=self.documents,
+                user=user
             )
 
             return queryset.count()

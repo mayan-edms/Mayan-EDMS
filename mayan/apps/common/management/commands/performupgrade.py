@@ -19,7 +19,9 @@ class Command(management.BaseCommand):
                 )
             )
 
-        management.call_command('installjavascript', interactive=False)
+        management.call_command(
+            command_name='installjavascript', interactive=False
+        )
 
         try:
             perform_upgrade.send(sender=self)

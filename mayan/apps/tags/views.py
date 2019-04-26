@@ -76,7 +76,9 @@ class TagAttachActionView(MultipleObjectFormActionView):
         if queryset.count() == 1:
             result.update(
                 {
-                    'queryset': Tag.objects.exclude(pk__in=queryset.first().tags.all())
+                    'queryset': Tag.objects.exclude(
+                        pk__in=queryset.first().tags.all()
+                    )
                 }
             )
 
@@ -249,8 +251,8 @@ class DocumentTagListView(TagListView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=self.document
+            obj=self.document, permissions=permission_document_view,
+            user=request.user,
         )
 
         return super(DocumentTagListView, self).dispatch(

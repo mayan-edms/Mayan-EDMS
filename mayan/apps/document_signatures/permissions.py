@@ -5,34 +5,34 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(
-    name='document_signatures', label=_('Document signatures')
+    label=_('Document signatures'), name='document_signatures'
 )
 
 permission_document_version_sign_detached = namespace.add_permission(
-    name='document_version_sign_detached',
-    label=_('Sign documents with detached signatures')
+    label=_('Sign documents with detached signatures'),
+    name='document_version_sign_detached'
 )
 permission_document_version_sign_embedded = namespace.add_permission(
-    name='document_version_sign_embedded',
-    label=_('Sign documents with embedded signatures')
+    label=_('Sign documents with embedded signatures'),
+    name='document_version_sign_embedded'
 )
 permission_document_version_signature_delete = namespace.add_permission(
-    name='document_version_signature_delete',
-    label=_('Delete detached signatures')
+    label=_('Delete detached signatures'),
+    name='document_version_signature_delete'
 )
 permission_document_version_signature_download = namespace.add_permission(
-    name='document_version_signature_download',
-    label=_('Download detached document signatures')
+    label=_('Download detached document signatures'),
+    name='document_version_signature_download'
 )
 permission_document_version_signature_upload = namespace.add_permission(
-    name='document_version_signature_upload',
-    label=_('Upload detached document signatures')
+    label=_('Upload detached document signatures'),
+    name='document_version_signature_upload'
 )
 permission_document_version_signature_verify = namespace.add_permission(
-    name='document_version_signature_verify',
-    label=_('Verify document signatures')
+    label=_('Verify document signatures'),
+    name='document_version_signature_verify'
 )
 permission_document_version_signature_view = namespace.add_permission(
-    name='document_version_signature_view',
-    label=_('View details of document signatures')
+    label=_('View details of document signatures'),
+    name='document_version_signature_view'
 )

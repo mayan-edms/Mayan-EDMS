@@ -75,8 +75,8 @@ class StagingFolderSource(InteractiveSource):
                 upload_file_object.extra_data.delete()
             except Exception as exception:
                 logger.error(
-                    'Error deleting staging file: %s; %s', upload_file_object,
-                    exception
+                    'Error deleting staging file: %s; %s',
+                    upload_file_object, exception
                 )
                 raise Exception(
                     _('Error deleting staging file; %s') % exception
@@ -91,8 +91,8 @@ class StagingFolderSource(InteractiveSource):
                 yield self.get_file(filename=entry)
         except OSError as exception:
             logger.error(
-                'Unable get list of staging files from source: %s; %s', self,
-                exception
+                'Unable get list of staging files from source: %s; %s',
+                self, exception
             )
             raise Exception(
                 _('Unable get list of staging files: %s') % exception

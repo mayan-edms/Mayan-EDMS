@@ -1,13 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-import hashlib
 import logging
-import uuid
 
 from django.apps import apps
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -21,15 +19,6 @@ from ..settings import setting_language
 
 __all__ = ('DocumentType', 'DocumentTypeFilename')
 logger = logging.getLogger(__name__)
-
-
-# document image cache name hash function
-def hash_function():
-    return hashlib.sha256()
-
-
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible

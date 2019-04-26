@@ -6,7 +6,7 @@ from mayan.apps.smart_settings import Namespace
 
 from .literals import DEFAULT_LOGIN_METHOD, DEFAULT_MAXIMUM_SESSION_LENGTH
 
-namespace = Namespace(name='authentication', label=_('Authentication'))
+namespace = Namespace(label=_('Authentication'), name='authentication')
 setting_login_method = namespace.add_setting(
     global_name='AUTHENTICATION_LOGIN_METHOD', default=DEFAULT_LOGIN_METHOD,
     help_text=_(

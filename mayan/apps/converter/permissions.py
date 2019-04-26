@@ -4,17 +4,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='converter', label=_('Converter'))
+namespace = PermissionNamespace(label=_('Converter'), name='converter')
 
 permission_transformation_create = namespace.add_permission(
-    name='transformation_create', label=_('Create new transformations')
+    label=_('Create new transformations'), name='transformation_create'
 )
 permission_transformation_delete = namespace.add_permission(
-    name='transformation_delete', label=_('Delete transformations')
+    label=_('Delete transformations'), name='transformation_delete'
 )
 permission_transformation_edit = namespace.add_permission(
-    name='transformation_edit', label=_('Edit transformations')
+    label=_('Edit transformations'), name='transformation_edit'
 )
 permission_transformation_view = namespace.add_permission(
-    name='transformation_view', label=_('View existing transformations')
+    label=_('View existing transformations'), name='transformation_view'
 )

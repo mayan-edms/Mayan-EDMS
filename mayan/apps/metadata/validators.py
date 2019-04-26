@@ -32,6 +32,6 @@ class TimeValidator(MetadataValidator):
         return parse(input_data).time().isoformat()
 
 
-MetadataValidator.register(DateAndTimeValidator)
-MetadataValidator.register(DateValidator)
-MetadataValidator.register(TimeValidator)
+MetadataValidator.register(parser=DateAndTimeValidator)
+MetadataValidator.register(parser=DateValidator)
+MetadataValidator.register(parser=TimeValidator)

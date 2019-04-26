@@ -11,7 +11,6 @@ from mayan.apps.common.generics import SimpleView, SingleObjectListView
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .mixins import SearchModelMixin
-from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +26,6 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             ),
             'no_results_title': _('No search results'),
             'search_model': self.search_model,
-            'search_results_limit': setting_limit.value,
             'title': _('Search results for: %s') % self.search_model.label,
         }
 

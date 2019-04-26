@@ -178,14 +178,14 @@ class DocumentTypeSubmitView(FormView):
                 count += 1
 
         messages.success(
-            self.request, _(
+            message=_(
                 '%(count)d documents added to the parsing queue.'
             ) % {
                 'count': count,
-            }
+            }, requrest=self.request
         )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
 
 class ParseErrorListView(SingleObjectListView):

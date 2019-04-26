@@ -69,7 +69,7 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                     'Selected documents must be of the same type.'
                 ), request=request
             )
-            return HttpResponseRedirect(self.previous_url)
+            return HttpResponseRedirect(redirect_to=self.previous_url)
 
         return result
 

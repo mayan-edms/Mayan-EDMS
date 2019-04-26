@@ -26,8 +26,8 @@ class DocumentCommentCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_comment_create, user=request.user,
-            obj=self.get_document()
+            obj=self.get_document(), permissions=permission_comment_create,
+            user=request.user
         )
 
         return super(
@@ -66,8 +66,8 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_comment_delete, user=request.user,
-            obj=self.get_object().document
+            obj=self.get_object().document,
+            permissions=permission_comment_delete, user=request.user
         )
 
         return super(
@@ -116,8 +116,8 @@ class DocumentCommentListView(SingleObjectListView):
 
     def get_object_list(self):
         AccessControlList.objects.check_access(
-            permissions=permission_comment_view, user=self.request.user,
-            obj=self.get_document()
+            obj=self.get_document(), permissions=permission_comment_view,
+            user=self.request.user
         )
 
         return self.get_document().comments.all()

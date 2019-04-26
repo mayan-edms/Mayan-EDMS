@@ -4,26 +4,26 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='django_gpg', label=_('Key management'))
+namespace = PermissionNamespace(label=_('Key management'), name='django_gpg')
 
 permission_key_delete = namespace.add_permission(
-    name='key_delete', label=_('Delete keys')
+    label=_('Delete keys'), name='key_delete'
 )
 permission_key_download = namespace.add_permission(
-    name='key_download', label=_('Download keys')
+    label=_('Download keys'), name='key_download'
 )
 permission_key_receive = namespace.add_permission(
-    name='key_receive', label=_('Import keys from keyservers')
+    label=_('Import keys from keyservers'), name='key_receive'
 )
 permission_key_sign = namespace.add_permission(
-    name='key_sign', label=_('Use keys to sign content')
+    label=_('Use keys to sign content'), name='key_sign'
 )
 permission_key_upload = namespace.add_permission(
-    name='key_upload', label=_('Upload keys')
+    label=_('Upload keys'), name='key_upload'
 )
 permission_key_view = namespace.add_permission(
-    name='key_view', label=_('View keys')
+    label=_('View keys'), name='key_view'
 )
 permission_keyserver_query = namespace.add_permission(
-    name='keyserver_query', label=_('Query keyservers')
+    label=_('Query keyservers'), name='keyserver_query'
 )

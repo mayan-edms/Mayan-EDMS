@@ -5,7 +5,7 @@ from django.apps import apps
 from .exceptions import NewDocumentVersionNotAllowed
 
 
-def check_new_version_creation(sender, instance, **kwargs):
+def handler_check_new_version_creation(sender, instance, **kwargs):
     """
     Make sure that new version creation is allowed for this document
     """

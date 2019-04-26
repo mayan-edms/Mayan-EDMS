@@ -488,7 +488,7 @@ class DocumentMetadataAPITestCase(DocumentTestMixin, BaseAPITestCase):
             viewname='rest_api:documentmetadata-detail',
             kwargs={
                 'document_pk': self.test_document.pk,
-                'metadata_type': self.test_document_metadata.pk
+                'metadata_pk': self.test_document_metadata.pk
             }, data={
                 'value': TEST_METADATA_VALUE_EDITED
             }

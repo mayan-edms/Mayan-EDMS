@@ -89,7 +89,11 @@ class Command(management.BaseCommand):
         pre_initial_setup.send(sender=self)
 
         if not options.get('no_javascript', False):
-            management.call_command('installjavascript', interactive=False)
+            management.call_command(
+                command_name='installjavascript', interactive=False
+            )
 
-        management.call_command('createautoadmin', interactive=False)
+        management.call_command(
+            command_name='createautoadmin', interactive=False
+        )
         post_initial_setup.send(sender=self)

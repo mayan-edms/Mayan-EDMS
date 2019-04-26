@@ -27,8 +27,8 @@ def condition_check_document_creation_acls(context):
     )
 
     queryset = AccessControlList.objects.filter_by_access(
-        permission=permission_document_create, user=context['user'],
-        queryset=DocumentType.objects.all()
+        permission=permission_document_create,
+        queryset=DocumentType.objects.all(), user=context['user']
     )
 
     if queryset:

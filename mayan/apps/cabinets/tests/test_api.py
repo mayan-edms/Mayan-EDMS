@@ -41,9 +41,7 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
         response = self._request_cabinet_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
         cabinet = Cabinet.objects.first()
-
         self.assertEqual(response.data['id'], cabinet.pk)
         self.assertEqual(response.data['label'], TEST_CABINET_LABEL)
 
@@ -300,7 +298,8 @@ class CabinetDocumentAPITestCase(CabinetTestMixin, DocumentTestMixin, BaseAPITes
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            response.data['results'][0]['uuid'], force_text(self.test_document.uuid)
+            response.data['results'][0]['uuid'],
+            force_text(self.test_document.uuid)
         )
 
     def test_cabinet_add_document_api_view(self):

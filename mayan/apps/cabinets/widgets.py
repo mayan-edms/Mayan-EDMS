@@ -43,7 +43,8 @@ def widget_document_cabinets(document, user):
     )
 
     cabinets = AccessControlList.objects.filter_by_access(
-        permission_cabinet_view, user, queryset=document.document_cabinets()
+        permission_cabinet_view, queryset=document.document_cabinets(),
+        user=user
     )
 
     return format_html_join(

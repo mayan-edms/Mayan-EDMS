@@ -42,9 +42,9 @@ class LinkingApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        ResolvedSmartLink = self.get_model('ResolvedSmartLink')
-        SmartLink = self.get_model('SmartLink')
-        SmartLinkCondition = self.get_model('SmartLinkCondition')
+        ResolvedSmartLink = self.get_model(model_name='ResolvedSmartLink')
+        SmartLink = self.get_model(model_name='SmartLink')
+        SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
         ModelPermission.register(
             model=SmartLink, permissions=(
@@ -62,16 +62,14 @@ class LinkingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=SmartLink, label=_('Dynamic label'),
-            attribute='dynamic_label'
+            attribute='dynamic_label', source=SmartLink
         )
         SourceColumn(
-            attribute='enabled', label=_('Enabled'), source=SmartLink,
-            widget=TwoStateWidget
+            attribute='enabled', source=SmartLink, widget=TwoStateWidget
         )
 
         SourceColumn(
-            attribute='enabled', label=_('Enabled'), source=SmartLinkCondition,
+            attribute='enabled', source=SmartLinkCondition,
             widget=TwoStateWidget
         )
 

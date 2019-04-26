@@ -5,16 +5,16 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(
-    name='document_parsing', label=_('Document parsing')
+    label=_('Document parsing'), name='document_parsing'
 )
 
 permission_content_view = namespace.add_permission(
-    name='content_view', label=_('View the content of a document')
+    label=_('View the content of a document'), name='content_view'
 )
 permission_document_type_parsing_setup = namespace.add_permission(
-    name='document_type_setup',
-    label=_('Change document type parsing settings')
+    label=_('Change document type parsing settings'),
+    name='document_type_setup'
 )
 permission_parse_document = namespace.add_permission(
-    name='parse_document', label=_('Parse the content of a document')
+    label=_('Parse the content of a document'), name='parse_document'
 )

@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-namespace = Namespace(name='document_parsing', label=_('Document parsing'))
+namespace = Namespace(label=_('Document parsing'), name='document_parsing')
 
 setting_auto_parsing = namespace.add_setting(
     global_name='DOCUMENT_PARSING_AUTO_PARSING', default=True,

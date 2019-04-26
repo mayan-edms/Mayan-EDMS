@@ -714,7 +714,7 @@ class RecentAddedDocumentListView(DocumentListView):
             pk__in=Document.objects.order_by('-date_added')[
                 :setting_recent_added_count.value
             ].values('pk')
-        ). order_by('-date_added')
+        ).order_by('-date_added')
 
     def get_extra_context(self):
         context = super(RecentAddedDocumentListView, self).get_extra_context()

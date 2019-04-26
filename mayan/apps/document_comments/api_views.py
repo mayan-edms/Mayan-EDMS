@@ -30,8 +30,8 @@ class APICommentListView(generics.ListCreateAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document
+            obj=document, permissions=permission_required,
+            user=self.request.user
         )
 
         return document
@@ -85,8 +85,8 @@ class APICommentView(generics.RetrieveDestroyAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document
+            obj=document, permissions=permission_required,
+            user=self.request.user
         )
 
         return document

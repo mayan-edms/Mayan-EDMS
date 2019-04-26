@@ -52,7 +52,10 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, user=None):
+    def handle_upload(
+        self, file_object, description=None, document_type=None, expand=False,
+        label=None, language=None, user=None
+    ):
         """
         Handle an upload request from a file object which may be an individual
         document or a compressed file containing multiple documents.
@@ -80,7 +83,7 @@ class Source(models.Model):
                             )
                         )
             except NoMIMETypeMatch:
-                logging.debug('Exception: NoMIMETypeMatch')
+                logging.debug(msg='Exception: NoMIMETypeMatch')
                 documents.append(
                     self.upload_document(file_object=file_object, **kwargs)
                 )
@@ -97,7 +100,10 @@ class Source(models.Model):
         pass
         # TODO: Should raise NotImplementedError?
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, querystring=None, user=None):
+    def upload_document(
+        self, file_object, document_type, description=None, label=None,
+        language=None, querystring=None, user=None
+    ):
         """
         Upload an individual document
         """
@@ -123,7 +129,7 @@ class Source(models.Model):
                 )
 
                 if user:
-                    document.add_as_recent_document_for_user(user)
+                    document.add_as_recent_document_for_user(user=user)
 
                 Transformation.objects.copy(
                     source=self, targets=document_version.pages.all()

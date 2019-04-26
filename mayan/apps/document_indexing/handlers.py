@@ -8,7 +8,7 @@ from .tasks import (
 )
 
 
-def create_default_document_index(sender, **kwargs):
+def handler_create_default_document_index(sender, **kwargs):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )

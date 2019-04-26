@@ -127,7 +127,9 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase)
     def test_cabinet_add_document_view_with_access(self):
         self._create_test_cabinet()
 
-        self.grant_access(obj=self.test_cabinet, permission=permission_cabinet_view)
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view
+        )
         self.grant_access(
             obj=self.test_cabinet, permission=permission_cabinet_add_document
         )
@@ -147,7 +149,8 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase)
     def _request_add_multiple_documents_to_cabinet(self):
         return self.post(
             viewname='cabinets:document_multiple_cabinet_add', data={
-                'id_list': (self.test_document.pk,), 'cabinets': self.test_cabinet.pk
+                'id_list': (self.test_document.pk,),
+                'cabinets': self.test_cabinet.pk
             }
         )
 
@@ -211,10 +214,12 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase)
         self.test_cabinet.documents.add(self.test_document)
 
         self.grant_access(
-            obj=self.test_cabinet, permission=permission_cabinet_remove_document
+            obj=self.test_cabinet,
+            permission=permission_cabinet_remove_document
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_cabinet_remove_document
+            obj=self.test_document,
+            permission=permission_cabinet_remove_document
         )
 
         response = self._request_remove_document_from_cabinet()
@@ -236,7 +241,9 @@ class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase)
 
     def test_cabinet_list_view_with_access(self):
         self._create_test_cabinet()
-        self.grant_access(obj=self.test_cabinet, permission=permission_cabinet_view)
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_view
+        )
 
         response = self._request_cabinet_list()
         self.assertContains(

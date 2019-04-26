@@ -31,13 +31,13 @@ class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_smart_link_url(self, instance):
         return reverse(
-            'rest_api:smartlink-detail', args=(instance.smart_link.pk,),
+            viewname='rest_api:smartlink-detail', args=(instance.smart_link.pk,),
             request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:smartlinkcondition-detail', args=(
+            viewname='rest_api:smartlinkcondition-detail', args=(
                 instance.smart_link.pk, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -71,7 +71,7 @@ class ResolvedSmartLinkDocumentSerializer(DocumentSerializer):
 
     def get_resolved_smart_link_url(self, instance):
         return reverse(
-            'rest_api:resolvedsmartlink-detail', args=(
+            viewname='rest_api:resolvedsmartlink-detail', args=(
                 self.context['document'].pk, self.context['smart_link'].pk
             ), request=self.context['request'],
             format=self.context['format']
@@ -92,7 +92,7 @@ class ResolvedSmartLinkSerializer(SmartLinkSerializer):
 
     def get_resolved_documents_url(self, instance):
         return reverse(
-            'rest_api:resolvedsmartlinkdocument-list',
+            viewname='rest_api:resolvedsmartlinkdocument-list',
             args=(self.context['document'].pk, instance.pk,),
             request=self.context['request'], format=self.context['format']
         )
@@ -102,7 +102,7 @@ class ResolvedSmartLinkSerializer(SmartLinkSerializer):
 
     def get_resolved_smart_link_url(self, instance):
         return reverse(
-            'rest_api:resolvedsmartlink-detail',
+            viewname='rest_api:resolvedsmartlink-detail',
             args=(self.context['document'].pk, instance.pk,),
             request=self.context['request'], format=self.context['format']
         )

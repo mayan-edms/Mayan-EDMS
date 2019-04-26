@@ -95,7 +95,7 @@ class DocumentTagSerializer(TagSerializer):
 
     def get_document_tag_url(self, instance):
         return reverse(
-            'rest_api:document-tag-detail', args=(
+            viewname='rest_api:document-tag-detail', args=(
                 self.context['document'].pk, instance.pk
             ), request=self.context['request'], format=self.context['format']
         )
@@ -112,8 +112,8 @@ class NewDocumentTagSerializer(serializers.Serializer):
 
             try:
                 AccessControlList.objects.check_access(
-                    permissions=permission_tag_attach,
-                    user=self.context['request'].user, obj=tag
+                    obj=tag, permissions=permission_tag_attach,
+                    user=self.context['request'].user
                 )
             except PermissionDenied:
                 pass

@@ -17,7 +17,7 @@ register = Library()
 
 
 @register.simple_tag
-def check_sqlite():
+def common_check_sqlite():
     if check_for_sqlite():
         return MESSAGE_SQLITE_WARNING
 

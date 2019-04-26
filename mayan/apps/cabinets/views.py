@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 class CabinetCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Cabinet
-    post_action_redirect = reverse_lazy('cabinets:cabinet_list')
+    post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
     view_permission = permission_cabinet_create
 
     def get_extra_context(self):
@@ -57,14 +57,14 @@ class CabinetChildAddView(SingleObjectCreateView):
         self.object.parent = self.get_object()
         self.object.save()
 
-        return super(CabinetChildAddView, self).form_valid(form)
+        return super(CabinetChildAddView, self).form_valid(form=form)
 
     def get_object(self, *args, **kwargs):
         cabinet = super(CabinetChildAddView, self).get_object(*args, **kwargs)
 
         AccessControlList.objects.check_access(
-            permissions=permission_cabinet_edit, user=self.request.user,
-            obj=cabinet.get_root()
+            obj=cabinet.get_root(), permissions=permission_cabinet_edit,
+            user=self.request.user
         )
 
         return cabinet
@@ -81,7 +81,7 @@ class CabinetChildAddView(SingleObjectCreateView):
 class CabinetDeleteView(SingleObjectDeleteView):
     model = Cabinet
     object_permission = permission_cabinet_delete
-    post_action_redirect = reverse_lazy('cabinets:cabinet_list')
+    post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
 
     def get_extra_context(self):
         return {
@@ -95,8 +95,8 @@ class CabinetDetailView(DocumentListView):
 
     def get_document_queryset(self):
         queryset = AccessControlList.objects.filter_by_access(
-            permission=permission_document_view, user=self.request.user,
-            queryset=self.get_object().documents.all()
+            permission=permission_document_view,
+            queryset=self.get_object().documents.all(), user=self.request.user
         )
 
         return queryset
@@ -142,8 +142,8 @@ class CabinetDetailView(DocumentListView):
             permission_object = cabinet.get_root()
 
         AccessControlList.objects.check_access(
-            permissions=permission_cabinet_view, user=self.request.user,
-            obj=permission_object
+            obj=permission_object, permissions=permission_cabinet_view,
+            user=self.request.user
         )
 
         return cabinet
@@ -153,7 +153,7 @@ class CabinetEditView(SingleObjectEditView):
     fields = ('label',)
     model = Cabinet
     object_permission = permission_cabinet_edit
-    post_action_redirect = reverse_lazy('cabinets:cabinet_list')
+    post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
 
     def get_extra_context(self):
         return {
@@ -193,8 +193,8 @@ class DocumentCabinetListView(CabinetListView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=self.document
+            obj=self.document, permissions=permission_document_view,
+            user=request.user
         )
 
         return super(DocumentCabinetListView, self).dispatch(

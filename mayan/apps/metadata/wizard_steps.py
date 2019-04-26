@@ -67,4 +67,4 @@ class WizardStepMetadata(WizardStep):
             )
 
 
-WizardStep.register(WizardStepMetadata)
+WizardStep.register(step=WizardStepMetadata)

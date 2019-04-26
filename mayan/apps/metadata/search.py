@@ -9,7 +9,7 @@ from .permissions import permission_metadata_type_view
 metadata_type_search = SearchModel(
     app_label='metadata', model_name='MetadataType',
     permission=permission_metadata_type_view,
-    serializer_string='mayan.apps.metadata.serializers.MetadataTypeSerializer'
+    serializer_path='mayan.apps.metadata.serializers.MetadataTypeSerializer'
 )
 
 metadata_type_search.add_model_field(

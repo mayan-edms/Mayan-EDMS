@@ -71,7 +71,7 @@ class Command(management.BaseCommand):
             )
         )
 
-        management.call_command('purgeperiodictasks')
+        management.call_command(command_name='purgeperiodictasks')
 
         management.call_command(
             'dumpdata', *app_labels, all=True,
@@ -89,7 +89,7 @@ class Command(management.BaseCommand):
             )
 
         management.call_command(
-            'loaddata', convertdb_file_path, database=options['to'],
-            interactive=False, verbosity=3
+            'loaddata', convertdb_file_path, database=options['to'], interactive=False,
+            verbosity=3
         )
         fs_cleanup(convertdb_file_path)

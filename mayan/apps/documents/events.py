@@ -4,35 +4,35 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events import EventTypeNamespace
 
-namespace = EventTypeNamespace(name='documents', label=_('Documents'))
+namespace = EventTypeNamespace(label=_('Documents'), name='documents')
 
 event_document_create = namespace.add_event_type(
-    name='document_create', label=_('Document created')
+    label=_('Document created'), name='document_create'
 )
 event_document_download = namespace.add_event_type(
-    name='document_download', label=_('Document downloaded')
+    label=_('Document downloaded'), name='document_download'
 )
 event_document_new_version = namespace.add_event_type(
-    name='document_new_version', label=_('New version uploaded')
+    label=_('New version uploaded'), name='document_new_version'
 )
 event_document_properties_edit = namespace.add_event_type(
-    name='document_edit', label=_('Document properties edited')
+    label=_('Document properties edited'), name='document_edit'
 )
 # The type of an existing document is changed to another type
 event_document_type_change = namespace.add_event_type(
-    name='document_type_change', label=_('Document type changed')
+    label=_('Document type changed'), name='document_type_change'
 )
 # A document type is created
 event_document_type_created = namespace.add_event_type(
-    name='document_type_created', label=_('Document type created')
+    label=_('Document type created'), name='document_type_created'
 )
 # An existing document type is modified
 event_document_type_edited = namespace.add_event_type(
-    name='document_type_edit', label=_('Document type edited')
+    label=_('Document type edited'), name='document_type_edit'
 )
 event_document_version_revert = namespace.add_event_type(
-    name='document_version_revert', label=_('Document version reverted')
+    label=_('Document version reverted'), name='document_version_revert'
 )
 event_document_view = namespace.add_event_type(
-    name='document_view', label=_('Document viewed')
+    label=_('Document viewed'), name='document_view'
 )

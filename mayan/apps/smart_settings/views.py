@@ -12,17 +12,6 @@ from .forms import SettingForm
 from .permissions import permission_settings_edit, permission_settings_view
 
 
-class NamespaceListView(SingleObjectListView):
-    extra_context = {
-        'hide_link': True,
-        'title': _('Setting namespaces'),
-    }
-    view_permission = permission_settings_view
-
-    def get_object_list(self):
-        return Namespace.get_all()
-
-
 class NamespaceDetailView(SingleObjectListView):
     view_permission = permission_settings_view
 
@@ -39,7 +28,7 @@ class NamespaceDetailView(SingleObjectListView):
 
     def get_namespace(self):
         try:
-            return Namespace.get(self.kwargs['namespace_name'])
+            return Namespace.get(name=self.kwargs['namespace_name'])
         except KeyError:
             raise Http404(
                 _('Namespace: %s, not found') % self.kwargs['namespace_name']
@@ -47,6 +36,17 @@ class NamespaceDetailView(SingleObjectListView):
 
     def get_object_list(self):
         return self.get_namespace().settings
+
+
+class NamespaceListView(SingleObjectListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Setting namespaces'),
+    }
+    view_permission = permission_settings_view
+
+    def get_object_list(self):
+        return Namespace.get_all()
 
 
 class SettingEditView(FormView):

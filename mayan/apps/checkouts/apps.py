@@ -20,7 +20,7 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
 )
-from .handlers import check_new_version_creation
+from .handlers import handler_check_new_version_creation
 from .links import (
     link_check_in_document, link_check_out_document, link_check_out_info,
     link_check_out_list
@@ -114,7 +114,9 @@ class CheckoutsApp(MayanAppConfig):
             widget=DashboardWidgetTotalCheckouts, order=-1
         )
 
-        menu_facet.bind_links(links=(link_check_out_info,), sources=(Document,))
+        menu_facet.bind_links(
+            links=(link_check_out_info,), sources=(Document,)
+        )
         menu_main.bind_links(links=(link_check_out_list,), position=98)
         menu_secondary.bind_links(
             links=(link_check_out_document, link_check_in_document),
@@ -125,7 +127,7 @@ class CheckoutsApp(MayanAppConfig):
         )
 
         pre_save.connect(
-            check_new_version_creation,
-            dispatch_uid='check_new_version_creation',
+            dispatch_uid='checkouts_handler_check_new_version_creation',
+            receiver=handler_check_new_version_creation,
             sender=DocumentVersion
         )

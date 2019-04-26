@@ -8,9 +8,9 @@ logger = logging.getLogger(__name__)
 
 
 class ModelPermission(object):
-    _registry = {}
-    _proxies = {}
     _inheritances = {}
+    _proxies = {}
+    _registry = {}
 
     @classmethod
     def register(cls, model, permissions):
@@ -36,7 +36,7 @@ class ModelPermission(object):
 
         if as_content_type:
             content_type_dictionary = ContentType.objects.get_for_models(
-                *cls._registry.keys()
+                models=cls._registry.keys()
             )
             content_type_ids = [
                 content_type.pk for content_type in content_type_dictionary.values()

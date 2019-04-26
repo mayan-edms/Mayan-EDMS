@@ -46,10 +46,10 @@ class SetupIndexCreateView(SingleObjectCreateView):
 
 class SetupIndexDeleteView(SingleObjectDeleteView):
     model = Index
+    object_permission = permission_document_indexing_delete
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_setup_list'
     )
-    object_permission = permission_document_indexing_delete
 
     def get_extra_context(self):
         return {
@@ -61,10 +61,10 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
 class SetupIndexEditView(SingleObjectEditView):
     fields = ('label', 'slug', 'enabled')
     model = Index
+    object_permission = permission_document_indexing_edit
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_setup_list'
     )
-    object_permission = permission_document_indexing_edit
 
     def get_extra_context(self):
         return {
@@ -106,8 +106,9 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
 
     def get_document_queryset(self):
         return AccessControlList.objects.filter_by_access(
-            permission_document_view, self.request.user,
-            queryset=DocumentType.objects.all()
+            permission=permission_document_view,
+            queryset=DocumentType.objects.all(),
+            user=self.request.user
         )
 
     def get_extra_context(self):
@@ -168,8 +169,8 @@ class TemplateNodeCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_indexing_edit, user=request.user,
-            obj=self.get_parent_node().index
+            obj=self.get_parent_node().index,
+            permissions=permission_document_indexing_edit, user=request.user
         )
 
         return super(
@@ -261,7 +262,9 @@ class IndexListView(SingleObjectListView):
 
     def get_object_list(self):
         queryset = IndexInstance.objects.filter(enabled=True)
-        return queryset.filter(node_templates__index_instance_nodes__isnull=False).distinct()
+        return queryset.filter(
+            node_templates__index_instance_nodes__isnull=False
+        ).distinct()
 
 
 class IndexInstanceNodeView(DocumentListView):
@@ -273,8 +276,9 @@ class IndexInstanceNodeView(DocumentListView):
         )
 
         AccessControlList.objects.check_access(
+            obj=self.index_instance_node.index(),
             permissions=permission_document_indexing_instance_view,
-            user=request.user, obj=self.index_instance_node.index()
+            user=request.user
         )
 
         if self.index_instance_node:
@@ -340,8 +344,8 @@ class DocumentIndexNodeListView(SingleObjectListView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=self.get_document()
+            obj=self.get_document(), permissions=permission_document_view,
+            user=request.user
         )
 
         return super(

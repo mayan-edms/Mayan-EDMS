@@ -71,7 +71,9 @@ class OCRApp(MayanAppConfig):
             app_label='documents', model_name='DocumentVersion'
         )
 
-        DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
+        DocumentVersionOCRError = self.get_model(
+            model_name='DocumentVersionOCRError'
+        )
 
         Document.add_to_class(
             name='submit_for_ocr', value=method_document_ocr_submit
@@ -84,7 +86,7 @@ class OCRApp(MayanAppConfig):
         )
 
         ModelField(
-            Document, name='versions__pages__ocr_content__content'
+            model=Document, name='versions__pages__ocr_content__content'
         )
 
         ModelPermission.register(

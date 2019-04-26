@@ -35,6 +35,13 @@ class Collection(object):
     def __str__(self):
         return force_text(self.label)
 
+    def _get_children(self):
+        if self._queryset:
+            return self._queryset
+        else:
+            if self._model:
+                return self._model.objects.all()
+
     def resolve(self):
         self.children = self._get_children()
         self.icon = self._icon
@@ -44,13 +51,6 @@ class Collection(object):
             self.icon_class = getattr(self._link, 'icon_class', self._icon_class)
             self.url = reverse(viewname=self._link.view, args=self._link.args)
         return ''
-
-    def _get_children(self):
-        if self._queryset:
-            return self._queryset
-        else:
-            if self._model:
-                return self._model.objects.all()
 
 
 @python_2_unicode_compatible
@@ -62,15 +62,15 @@ class ErrorLogNamespace(object):
     def __str__(self):
         return force_text(self.label)
 
-    def create(self, obj, result):
-        obj.error_logs.create(namespace=self.name, result=result)
-
     def all(self):
         ErrorLogEntry = apps.get_model(
             app_label='common', model_name='ErrorLogEntry'
         )
 
         return ErrorLogEntry.objects.filter(namespace=self.name)
+
+    def create(self, obj, result):
+        obj.error_logs.create(namespace=self.name, result=result)
 
 
 class MissingItem(object):
@@ -93,6 +93,12 @@ class ModelAttribute(object):
     _registry = {}
 
     @classmethod
+    def get_choices_for(cls, model):
+        return [
+            (attribute.name, attribute) for attribute in cls.get_for(model=model)
+        ]
+
+    @classmethod
     def get_for(cls, model):
         try:
             return cls._registry[model]
@@ -105,12 +111,6 @@ class ModelAttribute(object):
                 raise
 
             return cls.get_for(model=type(model))
-
-    @classmethod
-    def get_choices_for(cls, model):
-        return [
-            (attribute.name, attribute) for attribute in cls.get_for(model)
-        ]
 
     @classmethod
     def get_help_text_for(cls, model, show_name=False):
@@ -209,20 +209,20 @@ class ModelProperty(object):
     _registry = []
 
     @classmethod
-    def get_for(cls, model):
-        result = []
-
-        for klass in cls._registry:
-            result.extend(klass.get_for(model=model))
-
-        return result
-
-    @classmethod
     def get_choices_for(cls, model):
         result = []
 
         for klass in cls._registry:
             result.extend(klass.get_choices_for(model=model))
+
+        return result
+
+    @classmethod
+    def get_for(cls, model):
+        result = []
+
+        for klass in cls._registry:
+            result.extend(klass.get_for(model=model))
 
         return result
 
@@ -324,5 +324,5 @@ class Template(object):
         return self
 
 
-ModelProperty.register(ModelAttribute)
-ModelProperty.register(ModelField)
+ModelProperty.register(klass=ModelAttribute)
+ModelProperty.register(klass=ModelField)

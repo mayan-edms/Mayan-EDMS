@@ -76,9 +76,9 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 
         result = {
             'title': ungettext(
-                'Submit the selected document to the OCR queue?',
-                'Submit the selected documents to the OCR queue?',
-                queryset.count()
+                singular='Submit the selected document to the OCR queue?',
+                plural='Submit the selected documents to the OCR queue?',
+                number=queryset.count()
             )
         }
 

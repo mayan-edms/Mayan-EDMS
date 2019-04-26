@@ -17,14 +17,14 @@ class StagingFolderFileSerializer(serializers.Serializer):
 
     def get_image_url(self, obj):
         return reverse(
-            'stagingfolderfile-image-view',
+            viewname='stagingfolderfile-image-view',
             args=(obj.staging_folder.pk, obj.encoded_filename,),
             request=self.context.get('request')
         )
 
     def get_url(self, obj):
         return reverse(
-            'stagingfolderfile-detail',
+            viewname='stagingfolderfile-detail',
             args=(obj.staging_folder.pk, obj.encoded_filename,),
             request=self.context.get('request')
         )

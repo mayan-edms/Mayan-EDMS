@@ -137,7 +137,8 @@ class EmailBaseModel(IntervalBaseModel):
                             stream=file_object.read(), Loader=SafeLoader
                         )
                         logger.debug(
-                            'Got metadata dictionary: %s', metadata_dictionary
+                            'Got metadata dictionary: %s',
+                            metadata_dictionary
                         )
                     else:
                         documents = source.handle_upload(
@@ -164,8 +165,8 @@ class EmailBaseModel(IntervalBaseModel):
                     with ContentFile(content=force_bytes(message.body), name=label) as file_object:
                         documents = source.handle_upload(
                             document_type=source.document_type,
-                            file_object=file_object,
-                            expand=SOURCE_UNCOMPRESS_CHOICE_N
+                            expand=SOURCE_UNCOMPRESS_CHOICE_N,
+                            file_object=file_object
                         )
                         if metadata_dictionary:
                             for document in documents:
@@ -221,17 +222,17 @@ class IMAPEmail(EmailBaseModel):
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self, test=False):
-        logger.debug('Starting IMAP email fetch')
+        logger.debug(msg='Starting IMAP email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = imaplib.IMAP4_SSL(self.host, self.port)
+            mailbox = imaplib.IMAP4_SSL(host=self.host, port=self.port)
         else:
-            mailbox = imaplib.IMAP4(self.host, self.port)
+            mailbox = imaplib.IMAP4(host=self.host, port=self.port)
 
-        mailbox.login(self.username, self.password)
-        mailbox.select(self.mailbox)
+        mailbox.login(user=self.username, password=self.password)
+        mailbox.select(mailbox=self.mailbox)
 
         status, data = mailbox.search(None, 'NOT', 'DELETED')
         if data:
@@ -240,12 +241,17 @@ class IMAPEmail(EmailBaseModel):
 
             for message_number in messages_info:
                 logger.debug('message_number: %s', message_number)
-                status, data = mailbox.fetch(message_number, '(RFC822)')
+                status, data = mailbox.fetch(
+                    message_set=message_number, message_parts='(RFC822)'
+                )
                 EmailBaseModel.process_message(
                     source=self, message_text=data[0][1]
                 )
                 if not test:
-                    mailbox.store(message_number, '+FLAGS', '\\Deleted')
+                    mailbox.store(
+                        message_set=message_number, command='+FLAGS',
+                        flag_list='\\Deleted'
+                    )
 
         mailbox.expunge()
         mailbox.close()
@@ -266,22 +272,24 @@ class POP3Email(EmailBaseModel):
         verbose_name_plural = _('POP email')
 
     def check_source(self, test=False):
-        logger.debug('Starting POP3 email fetch')
+        logger.debug(msg='Starting POP3 email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
 
         if self.ssl:
-            mailbox = poplib.POP3_SSL(self.host, self.port)
+            mailbox = poplib.POP3_SSL(host=self.host, post=self.port)
         else:
-            mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
+            mailbox = poplib.POP3(
+                host=self.host, post=self.port, timeout=self.timeout
+            )
 
         mailbox.getwelcome()
-        mailbox.user(self.username)
-        mailbox.pass_(self.password)
+        mailbox.user(username=self.username)
+        mailbox.pass_(password=self.password)
         messages_info = mailbox.list()
 
-        logger.debug('messages_info:')
-        logger.debug(messages_info)
+        logger.debug(msg='messages_info:')
+        logger.debug(msg=messages_info)
         logger.debug('messages count: %s', len(messages_info[1]))
 
         for message_info in messages_info[1]:
@@ -295,6 +303,6 @@ class POP3Email(EmailBaseModel):
                 source=self, message_text=complete_message
             )
             if not test:
-                mailbox.dele(message_number)
+                mailbox.dele(which=message_number)
 
         mailbox.quit()

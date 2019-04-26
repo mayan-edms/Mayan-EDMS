@@ -58,10 +58,10 @@ def task_delete_document(deleted_document_id):
         app_label='documents', model_name='DeletedDocument'
     )
 
-    logger.debug('Executing')
+    logger.debug(msg='Executing')
     deleted_document = DeletedDocument.objects.get(pk=deleted_document_id)
     deleted_document.delete()
-    logger.debug('Finshed')
+    logger.debug(msg='Finshed')
 
 
 @app.task(ignore_result=True)
@@ -70,9 +70,9 @@ def task_delete_stubs():
         app_label='documents', model_name='Document'
     )
 
-    logger.info('Executing')
+    logger.info(msg='Executing')
     Document.passthrough.delete_stubs()
-    logger.info('Finshed')
+    logger.info(msg='Finshed')
 
 
 @app.task()

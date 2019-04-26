@@ -23,7 +23,7 @@ class KeyManager(models.Manager):
     def _preload_keys(self, all_keys=False, key_fingerprint=None, key_id=None):
         # Preload keys
         if all_keys:
-            logger.debug('preloading all keys')
+            logger.debug(msg='preloading all keys')
             keys = self.values()
         elif key_fingerprint:
             logger.debug('preloading key fingerprint: %s', key_fingerprint)
@@ -121,17 +121,17 @@ class KeyManager(models.Manager):
 
         if verify_result:
             # Signed and key present
-            logger.debug('signed and key present')
+            logger.debug(msg='signed and key present')
             return SignatureVerification(verify_result.__dict__)
         elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys or key_id):
             # Signed but key not present, retry with key fetch
-            logger.debug('no public key')
+            logger.debug(msg='no public key')
             file_object.seek(0)
             return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
         elif verify_result.key_id:
             # Signed, retried and key still not found
-            logger.debug('signed, retried and key still not found')
+            logger.debug(msg='signed, retried and key still not found')
             return SignatureVerification(verify_result.__dict__)
         else:
-            logger.debug('file not signed')
+            logger.debug(msg='file not signed')
             raise VerificationError('File not signed')

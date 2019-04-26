@@ -5,13 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.task_manager.classes import CeleryQueue
 
 queue_default = CeleryQueue(
-    name='default', label=_('Default'), is_default_queue=True
+    is_default_queue=True, label=_('Default'), name='default'
 )
-queue_tools = CeleryQueue(name='tools', label=_('Tools'))
+queue_tools = CeleryQueue(label=_('Tools'), name='tools')
 queue_common_periodic = CeleryQueue(
-    name='common_periodic', label=_('Common periodic'), transient=True
+    label=_('Common periodic'), name='common_periodic', transient=True
 )
 queue_common_periodic.add_task_type(
-    name='mayan.apps.common.tasks.task_delete_stale_uploads',
-    label=_('Delete stale uploads')
+    label=_('Delete stale uploads'),
+    name='mayan.apps.common.tasks.task_delete_stale_uploads'
 )

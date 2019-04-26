@@ -65,8 +65,8 @@ class SignatureBaseModel(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'document_signatures:document_version_signature_detail',
-            args=(self.pk,)
+            viewname='document_signatures:document_version_signature_detail',
+            kwargs={'pk': self.pk}
         )
 
     def get_key_id(self):
@@ -98,7 +98,7 @@ class EmbeddedSignature(SignatureBaseModel):
         verbose_name_plural = _('Document version embedded signatures')
 
     def save(self, *args, **kwargs):
-        logger.debug('checking for embedded signature')
+        logger.debug(msg='checking for embedded signature')
 
         if self.pk:
             raw = True

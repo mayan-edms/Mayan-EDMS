@@ -48,8 +48,8 @@ class CabinetsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        DocumentCabinet = self.get_model('DocumentCabinet')
-        Cabinet = self.get_model('Cabinet')
+        DocumentCabinet = self.get_model(model_name='DocumentCabinet')
+        Cabinet = self.get_model(model_name='Cabinet')
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
         # effect.

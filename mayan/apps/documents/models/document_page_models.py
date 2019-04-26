@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-import hashlib
 import logging
-import uuid
 
 from furl import furl
 
@@ -31,15 +29,6 @@ from .document_version_models import DocumentVersion
 
 __all__ = ('DocumentPage', 'DocumentPageCachedImage', 'DocumentPageResult')
 logger = logging.getLogger(__name__)
-
-
-# document image cache name hash function
-def hash_function():
-    return hashlib.sha256()
-
-
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
 
 
 @python_2_unicode_compatible

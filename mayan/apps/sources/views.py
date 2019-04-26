@@ -126,7 +126,7 @@ class UploadBaseView(MultiFormView):
                 ), request=request
             )
             return HttpResponseRedirect(
-                reverse(viewname='sources:setup_source_list')
+                redirect_to=reverse(viewname='sources:setup_source_list')
             )
 
         return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
@@ -184,9 +184,11 @@ class UploadBaseView(MultiFormView):
         menu_facet.bound_links['sources:upload_interactive'] = self.tab_links
         menu_facet.bound_links['sources:upload_version'] = self.tab_links
 
-        context.update({
-            'subtemplates_list': subtemplates_list,
-        })
+        context.update(
+            {
+                'subtemplates_list': subtemplates_list,
+            }
+        )
 
         return context
 
@@ -203,8 +205,8 @@ class UploadInteractiveView(UploadBaseView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_create, user=request.user,
-            obj=self.document_type
+            obj=self.document_type, permissions=permission_document_create,
+            user=request.user
         )
 
         self.tab_links = UploadBaseView.get_active_tab_links()
@@ -282,9 +284,7 @@ class UploadInteractiveView(UploadBaseView):
                     'exception': exception,
                     'exception_class': type(exception),
                 }
-                logger.critical(
-                    message, exc_info=True
-                )
+                logger.critical(msg=message, exc_info=True)
                 raise type(exception)(message)
             else:
                 messages.success(
@@ -295,7 +295,7 @@ class UploadInteractiveView(UploadBaseView):
                 )
 
         return HttpResponseRedirect(
-            '{}?{}'.format(
+            redirect_to='{}?{}'.format(
                 reverse(
                     viewname=self.request.resolver_match.view_name,
                     kwargs=self.request.resolver_match.kwargs
@@ -378,7 +378,7 @@ class UploadInteractiveVersionView(UploadBaseView):
                 ) % self.document, request=self.request
             )
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='documents:document_version_list', kwargs={
                         'pk': self.document.pk
                     }
@@ -386,8 +386,8 @@ class UploadInteractiveVersionView(UploadBaseView):
             )
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_new_version,
-            user=self.request.user, obj=self.document
+            obj=self.document, permissions=permission_document_new_version,
+            user=self.request.user
         )
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
@@ -433,7 +433,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             )
 
         return HttpResponseRedirect(
-            reverse(
+            redirect_to=reverse(
                 viewname='documents:document_version_list', kwargs={
                     'pk': self.document.pk
                 }

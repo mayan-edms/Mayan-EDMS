@@ -127,7 +127,7 @@ class GroupRoleViewTestCase(GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixi
         self._create_test_group()
 
         response = self._request_test_group_roles_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_group_roles_view_with_access(self):
         self._create_test_group()

@@ -9,7 +9,7 @@ from .permissions import permission_role_view
 role_search = SearchModel(
     app_label='permissions', model_name='Role',
     permission=permission_role_view,
-    serializer_string='mayan.apps.permissions.serializers.RoleSerializer'
+    serializer_path='mayan.apps.permissions.serializers.RoleSerializer'
 )
 
 role_search.add_model_field(

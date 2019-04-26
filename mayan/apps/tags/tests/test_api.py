@@ -166,7 +166,6 @@ class TagDocumentAPIViewTestCase(DocumentTestMixin, TagAPIViewTestMixin, TagTest
             force_text(self.test_document.uuid)
         )
 
-    ###
     def test_document_attach_tag_view_no_access(self):
         self._create_test_tag()
         self.upload_document()

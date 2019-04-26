@@ -11,7 +11,7 @@ from .literals import (
     DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES
 )
 
-namespace = Namespace(name='documents', label=_('Documents'))
+namespace = Namespace(label=_('Documents'), name='documents')
 
 setting_documentimagecache_storage = namespace.add_setting(
     global_name='DOCUMENTS_CACHE_STORAGE_BACKEND',

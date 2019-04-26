@@ -20,7 +20,7 @@ from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 
 from .handlers import (
-    create_default_document_index, handler_delete_empty,
+    handler_create_default_document_index, handler_delete_empty,
     handler_index_document, handler_remove_document,
     handler_post_save_index_document
 )
@@ -64,12 +64,14 @@ class DocumentIndexingApp(MayanAppConfig):
             app_label='documents', model_name='DocumentType'
         )
 
-        DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
+        DocumentIndexInstanceNode = self.get_model(
+            model_name='DocumentIndexInstanceNode'
+        )
 
-        Index = self.get_model('Index')
-        IndexInstance = self.get_model('IndexInstance')
-        IndexInstanceNode = self.get_model('IndexInstanceNode')
-        IndexTemplateNode = self.get_model('IndexTemplateNode')
+        Index = self.get_model(model_name='Index')
+        IndexInstance = self.get_model(model_name='IndexInstance')
+        IndexInstanceNode = self.get_model(model_name='IndexInstanceNode')
+        IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
 
         ModelPermission.register(
             model=Index, permissions=(
@@ -96,23 +98,22 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=IndexInstance, label=_('Total levels'),
             func=lambda context: context[
                 'object'
-            ].instance_root.get_descendants_count()
+            ].instance_root.get_descendants_count(), label=_('Total levels'),
+            source=IndexInstance
         )
         SourceColumn(
-            source=IndexInstance, label=_('Total documents'),
             func=lambda context: context[
                 'object'
             ].instance_root.get_descendants_document_count(
                 user=context['request'].user
-            )
+            ), label=_('Total documents'), source=IndexInstance
         )
 
         SourceColumn(
-            source=IndexTemplateNode, label=_('Level'),
-            func=lambda context: node_level(context['object'])
+            func=lambda context: node_level(context['object']),
+            label=_('Level'), source=IndexTemplateNode
         )
         SourceColumn(
             attribute='enabled', is_sortable=True, source=IndexTemplateNode,
@@ -123,39 +124,36 @@ class DocumentIndexingApp(MayanAppConfig):
             widget=TwoStateWidget
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Level'),
-            func=lambda context: index_instance_item_link(context['object'])
+            func=lambda context: index_instance_item_link(context['object']),
+            label=_('Level'), source=IndexInstanceNode
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Levels'),
-            func=lambda context: context['object'].get_descendants_count()
+            func=lambda context: context['object'].get_descendants_count(),
+            label=_('Levels'), source=IndexInstanceNode
         )
         SourceColumn(
-            source=IndexInstanceNode, label=_('Documents'),
             func=lambda context: context[
                 'object'
             ].get_descendants_document_count(
                 user=context['request'].user
-            )
+            ), label=_('Documents'), source=IndexInstanceNode
         )
 
         SourceColumn(
-            label=_('Level'),
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
-            ), source=DocumentIndexInstanceNode,
+            ), label=_('Level'), source=DocumentIndexInstanceNode
         )
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Levels'),
-            func=lambda context: context['object'].get_descendants_count()
+            func=lambda context: context['object'].get_descendants_count(),
+            label=_('Levels'), source=DocumentIndexInstanceNode
         )
         SourceColumn(
-            source=DocumentIndexInstanceNode, label=_('Documents'),
             func=lambda context: context[
                 'object'
             ].get_descendants_document_count(
                 user=context['request'].user
-            )
+            ), label=_('Documents'), source=DocumentIndexInstanceNode
         )
 
         app.conf.CELERY_QUEUES.append(
@@ -221,8 +219,8 @@ class DocumentIndexingApp(MayanAppConfig):
             sender=Document
         )
         post_initial_document_type.connect(
-            dispatch_uid='document_indexing_create_default_document_index',
-            receiver=create_default_document_index,
+            dispatch_uid='document_indexing_handler_create_default_document_index',
+            receiver=handler_create_default_document_index,
             sender=DocumentType
         )
         post_save.connect(

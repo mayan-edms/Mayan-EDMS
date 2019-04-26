@@ -69,7 +69,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 request=self.request
             )
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='signatures:document_version_signature_detached_create',
                     kwargs={'pk': self.get_document_version().pk}
                 )
@@ -80,7 +80,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 request=self.request
             )
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='signatures:document_version_signature_detached_create',
                     kwargs={'pk': self.get_document_version().pk}
                 )
@@ -108,8 +108,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
+            obj=self.get_document_version().document,
             permissions=permission_document_version_sign_detached,
-            user=request.user, obj=self.get_document_version().document
+            user=request.user
         )
 
         return super(
@@ -145,7 +146,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         passphrase = form.cleaned_data['passphrase'] or None
 
         AccessControlList.objects.check_access(
-            permissions=permission_key_sign, user=self.request.user, obj=key
+            obj=key, permissions=permission_key_sign, user=self.request.user
         )
 
         try:
@@ -159,7 +160,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 request=self.request
             )
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='signatures:document_version_signature_embedded_create',
                     kwargs={'pk': self.get_document_version().pk}
                 )
@@ -170,7 +171,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 request=self.request
             )
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='signatures:document_version_signature_embedded_create',
                     kwargs={'pk': self.get_document_version().pk}
                 )
@@ -192,7 +193,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             )
 
             return HttpResponseRedirect(
-                reverse(
+                redirect_to=reverse(
                     viewname='signatures:document_version_signature_list',
                     kwargs={'pk': new_version.pk}
                 )
@@ -204,8 +205,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
+            obj=self.get_document_version().document,
             permissions=permission_document_version_sign_embedded,
-            user=request.user, obj=self.get_document_version().document
+            user=request.user
         )
 
         return super(
@@ -336,8 +338,9 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
+            obj=self.get_document_version(),
             permissions=permission_document_version_signature_upload,
-            user=request.user, obj=self.get_document_version()
+            user=request.user
         )
 
         return super(

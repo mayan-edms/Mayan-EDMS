@@ -18,8 +18,8 @@ from .icons import icon_wizard_submit
 
 
 class WizardStep(object):
-    _registry = {}
     _deregistry = {}
+    _registry = {}
 
     @classmethod
     def deregister(cls, step):
@@ -104,7 +104,7 @@ class WizardStepDocumentType(WizardStep):
 
     @classmethod
     def done(cls, wizard):
-        cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
+        cleaned_data = wizard.get_cleaned_data_for_step(step=cls.name)
         if cleaned_data:
             return {
                 'document_type_id': cleaned_data['document_type'].pk
@@ -127,7 +127,9 @@ class DocumentCreateWizard(SessionWizardView):
     @classonlymethod
     def as_view(cls, *args, **kwargs):
         cls.form_list = WizardStep.get_choices(attribute_name='form_class')
-        cls.condition_dict = dict(WizardStep.get_choices(attribute_name='condition'))
+        cls.condition_dict = dict(
+            WizardStep.get_choices(attribute_name='condition')
+        )
         return super(DocumentCreateWizard, cls).as_view(*args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):
@@ -136,21 +138,27 @@ class DocumentCreateWizard(SessionWizardView):
         )
 
         form_list = WizardStep.get_choices(attribute_name='form_class')
-        condition_dict = dict(WizardStep.get_choices(attribute_name='condition'))
+        condition_dict = dict(
+            WizardStep.get_choices(attribute_name='condition')
+        )
 
-        result = self.__class__.get_initkwargs(form_list=form_list, condition_dict=condition_dict)
+        result = self.__class__.get_initkwargs(
+            condition_dict=condition_dict, form_list=form_list
+        )
         self.form_list = result['form_list']
         self.condition_dict = result['condition_dict']
 
         if not InteractiveSource.objects.filter(enabled=True).exists():
             messages.error(
-                request,
-                _(
+                message=_(
                     'No interactive document sources have been defined or '
                     'none have been enabled, create one before proceeding.'
-                )
+                ),
+                request=request
             )
-            return HttpResponseRedirect(reverse('sources:setup_source_list'))
+            return HttpResponseRedirect(
+                redirect_to=reverse(viewname='sources:setup_source_list')
+            )
 
         return super(
             DocumentCreateWizard, self
@@ -163,20 +171,22 @@ class DocumentCreateWizard(SessionWizardView):
 
         wizard_step = WizardStep.get(name=self.steps.current)
 
-        context.update({
-            'form_css_classes': 'form-hotkey-double-click',
-            'step_title': _(
-                'Step %(step)d of %(total_steps)d: %(step_label)s'
-            ) % {
-                'step': self.steps.step1, 'total_steps': len(self.form_list),
-                'step_label': wizard_step.label,
-            },
-            'submit_label': _('Next step'),
-            'submit_icon_class': icon_wizard_submit,
-            'title': _('Document upload wizard'),
-            'wizard_step': wizard_step,
-            'wizard_steps': WizardStep.get_all(),
-        })
+        context.update(
+            {
+                'form_css_classes': 'form-hotkey-double-click',
+                'step_title': _(
+                    'Step %(step)d of %(total_steps)d: %(step_label)s'
+                ) % {
+                    'step': self.steps.step1, 'total_steps': len(self.form_list),
+                    'step_label': wizard_step.label,
+                },
+                'submit_label': _('Next step'),
+                'submit_icon_class': icon_wizard_submit,
+                'title': _('Document upload wizard'),
+                'wizard_step': wizard_step,
+                'wizard_steps': WizardStep.get_all(),
+            }
+        )
         return context
 
     def get_form_initial(self, step):
@@ -196,4 +206,4 @@ class DocumentCreateWizard(SessionWizardView):
         # urlencode(doseq=True)
         url.args = query_dict
 
-        return HttpResponseRedirect(url)
+        return HttpResponseRedirect(redirect_to=url)

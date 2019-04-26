@@ -7,7 +7,7 @@ from .signals import post_initial_document_type
 from .tasks import task_clean_empty_duplicate_lists, task_scan_duplicates_for
 
 
-def create_default_document_type(sender, **kwargs):
+def handler_create_default_document_type(sender, **kwargs):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )

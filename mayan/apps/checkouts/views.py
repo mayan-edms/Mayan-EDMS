@@ -31,8 +31,8 @@ class CheckoutDocumentView(SingleObjectCreateView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_check_out, user=request.user,
-            obj=self.document
+            obj=self.document, permissions=permission_document_check_out,
+            user=request.user
         )
 
         return super(
@@ -57,7 +57,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
                 ) % self.document, request=self.request
             )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
     def get_extra_context(self):
         return {
@@ -77,8 +77,8 @@ class CheckoutListView(DocumentListView):
     def get_document_queryset(self):
         return AccessControlList.objects.filter_by_access(
             permission=permission_document_check_out_detail_view,
-            user=self.request.user,
-            queryset=DocumentCheckout.objects.checked_out_documents()
+            queryset=DocumentCheckout.objects.checked_out_documents(),
+            user=self.request.user
         )
 
     def get_extra_context(self):
@@ -168,13 +168,14 @@ class DocumentCheckinView(ConfirmView):
 
         if document.get_check_out_info().user == self.request.user:
             AccessControlList.objects.check_access(
-                permissions=permission_document_check_in,
-                user=self.request.user, obj=document
+                obj=document, permissions=permission_document_check_in,
+                user=self.request.user
             )
         else:
             AccessControlList.objects.check_access(
+                obj=document,
                 permissions=permission_document_check_in_override,
-                user=self.request.user, obj=document
+                user=self.request.user
             )
 
         try:

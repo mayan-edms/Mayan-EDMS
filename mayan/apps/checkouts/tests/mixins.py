@@ -19,7 +19,7 @@ class DocumentCheckoutTestMixin(object):
         )
 
         self.test_check_out = DocumentCheckout.objects.check_out_document(
-            document=self.test_document,
+            block_new_version=True, document=self.test_document,
             expiration_datetime=self._check_out_expiration_datetime,
-            block_new_version=True, user=user
+            user=user
         )

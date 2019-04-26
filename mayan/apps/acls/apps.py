@@ -20,7 +20,7 @@ class ACLsApp(MayanAppConfig):
     def ready(self):
         super(ACLsApp, self).ready()
 
-        AccessControlList = self.get_model('AccessControlList')
+        AccessControlList = self.get_model(model_name='AccessControlList')
 
         SourceColumn(
             attribute='role', is_sortable=True, source=AccessControlList,

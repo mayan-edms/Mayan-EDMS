@@ -9,7 +9,8 @@ from .literals import (
     DEFAULT_PDFTOPPM_PATH, DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_FORMAT
 )
 
-namespace = Namespace(name='converter', label=_('Converter'))
+namespace = Namespace(label=_('Converter'), name='converter')
+
 setting_graphics_backend = namespace.add_setting(
     default='mayan.apps.converter.backends.python.Python',
     help_text=_('Graphics conversion backend to use.'),

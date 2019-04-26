@@ -64,8 +64,8 @@ class TagsApp(MayanAppConfig):
             app_label='documents', model_name='DocumentPageResult'
         )
 
-        DocumentTag = self.get_model('DocumentTag')
-        Tag = self.get_model('Tag')
+        DocumentTag = self.get_model(model_name='DocumentTag')
+        Tag = self.get_model(model_name='Tag')
 
         Document.add_to_class(
             name='attached_tags', value=method_document_get_tags
@@ -78,12 +78,8 @@ class TagsApp(MayanAppConfig):
             )
         )
 
-        ModelField(
-            Document, name='tags__label'
-        )
-        ModelField(
-            Document, name='tags__color'
-        )
+        ModelField(model=Document, name='tags__label')
+        ModelField(model=Document, name='tags__color')
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -106,7 +102,7 @@ class TagsApp(MayanAppConfig):
             source=DocumentTag
         )
         SourceColumn(
-            source=DocumentTag, attribute='get_preview_widget'
+            attribute='get_preview_widget', source=DocumentTag
         )
 
         SourceColumn(
@@ -129,7 +125,7 @@ class TagsApp(MayanAppConfig):
             source=Tag
         )
         SourceColumn(
-            source=Tag, attribute='get_preview_widget'
+            attribute='get_preview_widget', source=Tag
         )
         SourceColumn(
             source=Tag, label=_('Documents'),
@@ -191,13 +187,13 @@ class TagsApp(MayanAppConfig):
         # Index update
 
         m2m_changed.connect(
-            handler_index_document,
             dispatch_uid='tags_handler_index_document',
+            receiver=handler_index_document,
             sender=Tag.documents.through
         )
 
         pre_delete.connect(
-            handler_tag_pre_delete,
             dispatch_uid='tags_handler_tag_pre_delete',
+            receiver=handler_tag_pre_delete,
             sender=Tag
         )

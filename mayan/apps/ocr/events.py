@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events import EventTypeNamespace
 
-namespace = EventTypeNamespace(name='ocr', label=_('OCR'))
+namespace = EventTypeNamespace(label=_('OCR'), name='ocr')
 
 event_ocr_document_version_submit = namespace.add_event_type(
     label=_('Document version submitted for OCR'),

@@ -58,4 +58,4 @@ class WizardStepTags(WizardStep):
             tag.documents.add(document)
 
 
-WizardStep.register(WizardStepTags)
+WizardStep.register(step=WizardStepTags)

@@ -10,7 +10,8 @@ except ImportError:
 from django.utils.module_loading import import_string
 
 from .settings import (
-    setting_documentimagecache_storage, setting_documentimagecache_storage_arguments,
+    setting_documentimagecache_storage,
+    setting_documentimagecache_storage_arguments,
     setting_storage_backend, setting_storage_backend_arguments
 )
 

@@ -57,12 +57,13 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
     def get_queryset(self):
         if self.request.method == 'GET':
             filtered_documents = AccessControlList.objects.filter_by_access(
-                permission=permission_document_view, user=self.request.user,
-                queryset=DocumentCheckout.objects.checked_out_documents()
+                permission=permission_document_view,
+                queryset=DocumentCheckout.objects.checked_out_documents(),
+                user=self.request.user
             )
             filtered_documents = AccessControlList.objects.filter_by_access(
-                permission=permission_document_check_out_detail_view, user=self.request.user,
-                queryset=filtered_documents
+                permission=permission_document_check_out_detail_view,
+                queryset=filtered_documents, user=self.request.user
             )
 
             return DocumentCheckout.objects.filter(
@@ -78,13 +79,13 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
         if document.checkout_info().user == request.user:
             AccessControlList.objects.check_access(
-                permissions=permission_document_check_in, user=request.user,
-                obj=document
+                obj=document, permissions=permission_document_check_in,
+                user=request.user
             )
         else:
             AccessControlList.objects.check_access(
-                permissions=permission_document_check_in_override,
-                user=request.user, obj=document
+                obj=document, permissions=permission_document_check_in_override,
+                user=request.user
             )
 
         return super(

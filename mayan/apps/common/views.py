@@ -84,14 +84,14 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
     }
     form_class = LocaleProfileForm
     post_action_redirect = reverse_lazy(
-        'common:current_user_locale_profile_details'
+        viewname='common:current_user_locale_profile_details'
     )
 
     def form_valid(self, form):
         form.save()
 
-        timezone.activate(form.cleaned_data['timezone'])
-        translation.activate(form.cleaned_data['language'])
+        timezone.activate(timezone=form.cleaned_data['timezone'])
+        translation.activate(language=form.cleaned_data['language'])
 
         if hasattr(self.request, 'session'):
             self.request.session[
@@ -108,7 +108,9 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
                 settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone']
             )
 
-        return super(CurrentUserLocaleProfileEditView, self).form_valid(form)
+        return super(CurrentUserLocaleProfileEditView, self).form_valid(
+            form=form
+        )
 
     def get_object(self):
         return self.request.user.locale_profile
@@ -123,7 +125,7 @@ class FaviconRedirectView(RedirectView):
         processors
         """
         from django.contrib.staticfiles.templatetags.staticfiles import static
-        return static('appearance/images/favicon.ico')
+        return static(path='appearance/images/favicon.ico')
 
 
 class HomeView(SimpleView):
@@ -292,7 +294,7 @@ def multi_object_action_view(request):
             message=_('No action selected.'), request=request
         )
         return HttpResponseRedirect(
-            request.META.get(
+            redirect_to=request.META.get(
                 'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
             )
         )
@@ -303,7 +305,7 @@ def multi_object_action_view(request):
             request=request
         )
         return HttpResponseRedirect(
-            request.META.get(
+            redirect_to=request.META.get(
                 'HTTP_REFERER', resolve_url(settings.LOGIN_REDIRECT_URL)
             )
         )
@@ -312,7 +314,7 @@ def multi_object_action_view(request):
     # functions that don't expect a properties_list parameter
     if items_property_list:
         return HttpResponseRedirect(
-            '%s?%s' % (
+            redirect_to='%s?%s' % (
                 action,
                 urlencode(
                     {
@@ -323,7 +325,8 @@ def multi_object_action_view(request):
             )
         )
     else:
-        return HttpResponseRedirect('%s?%s' % (
-            action,
-            urlencode({'id_list': id_list, 'next': next}))
+        return HttpResponseRedirect(
+            redirect_to='%s?%s' % (
+                action, urlencode({'id_list': id_list, 'next': next})
+            )
         )

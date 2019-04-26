@@ -19,8 +19,8 @@ from mayan.celery import app
 
 from .classes import StagingFile
 from .handlers import (
-    copy_transformations_to_version, create_default_document_source,
-    initialize_periodic_tasks
+    handler_copy_transformations_to_version, handler_create_default_document_source,
+    handler_initialize_periodic_tasks
 )
 from .links import (
     link_document_create_multiple, link_setup_sources,
@@ -46,14 +46,14 @@ class SourcesApp(MayanAppConfig):
     def ready(self):
         super(SourcesApp, self).ready()
 
-        POP3Email = self.get_model('POP3Email')
-        IMAPEmail = self.get_model('IMAPEmail')
-        Source = self.get_model('Source')
-        SourceLog = self.get_model('SourceLog')
-        SaneScanner = self.get_model('SaneScanner')
-        StagingFolderSource = self.get_model('StagingFolderSource')
-        WatchFolderSource = self.get_model('WatchFolderSource')
-        WebFormSource = self.get_model('WebFormSource')
+        POP3Email = self.get_model(model_name='POP3Email')
+        IMAPEmail = self.get_model(model_name='IMAPEmail')
+        Source = self.get_model(model_name='Source')
+        SourceLog = self.get_model(model_name='SourceLog')
+        SaneScanner = self.get_model(model_name='SaneScanner')
+        StagingFolderSource = self.get_model(model_name='StagingFolderSource')
+        WatchFolderSource = self.get_model(model_name='WatchFolderSource')
+        WebFormSource = self.get_model(model_name='WebFormSource')
 
         MissingItem(
             label=_('Create a document source'),
@@ -186,14 +186,14 @@ class SourcesApp(MayanAppConfig):
         )
 
         post_upgrade.connect(
-            initialize_periodic_tasks,
-            dispatch_uid='initialize_periodic_tasks'
+            receiver=handler_initialize_periodic_tasks,
+            dispatch_uid='sources_handler_initialize_periodic_tasks'
         )
         post_initial_setup.connect(
-            create_default_document_source,
-            dispatch_uid='create_default_document_source'
+            receiver=handler_create_default_document_source,
+            dispatch_uid='sources_handler_create_default_document_source'
         )
         post_version_upload.connect(
-            copy_transformations_to_version,
-            dispatch_uid='copy_transformations_to_version'
+            receiver=handler_copy_transformations_to_version,
+            dispatch_uid='sources_handler_copy_transformations_to_version'
         )

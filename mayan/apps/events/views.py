@@ -128,7 +128,9 @@ class NotificationListView(SingleObjectListView):
 class NotificationMarkRead(SimpleView):
     def dispatch(self, *args, **kwargs):
         self.get_queryset().filter(pk=self.kwargs['pk']).update(read=True)
-        return HttpResponseRedirect(reverse('events:user_notifications_list'))
+        return HttpResponseRedirect(
+            redirect_to=reverse(viewname='events:user_notifications_list')
+        )
 
     def get_queryset(self):
         return self.request.user.notifications.all()
@@ -137,7 +139,9 @@ class NotificationMarkRead(SimpleView):
 class NotificationMarkReadAll(SimpleView):
     def dispatch(self, *args, **kwargs):
         self.get_queryset().update(read=True)
-        return HttpResponseRedirect(reverse('events:user_notifications_list'))
+        return HttpResponseRedirect(
+            redirect_to=reverse(viewname='events:user_notifications_list')
+        )
 
     def get_queryset(self):
         return self.request.user.notifications.all()
@@ -191,7 +195,9 @@ class ObjectEventTypeSubscriptionListView(FormView):
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
-        return super(ObjectEventTypeSubscriptionListView, self).dispatch(*args, **kwargs)
+        return super(ObjectEventTypeSubscriptionListView, self).dispatch(
+            *args, **kwargs
+        )
 
     def form_valid(self, form):
         try:
@@ -228,8 +234,8 @@ class ObjectEventTypeSubscriptionListView(FormView):
             raise Http404
 
         AccessControlList.objects.check_access(
-            permissions=permission_events_view, user=self.request.user,
-            obj=content_object
+            obj=content_object, permissions=permission_events_view,
+            user=self.request.user
         )
 
         return content_object
@@ -248,11 +254,13 @@ class ObjectEventTypeSubscriptionListView(FormView):
         initial = []
 
         for element in self.get_queryset():
-            initial.append({
-                'user': self.request.user,
-                'object': obj,
-                'stored_event_type': element,
-            })
+            initial.append(
+                {
+                    'user': self.request.user,
+                    'object': obj,
+                    'stored_event_type': element,
+                }
+            )
         return initial
 
     def get_queryset(self):

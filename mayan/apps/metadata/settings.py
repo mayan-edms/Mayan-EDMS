@@ -7,7 +7,8 @@ from mayan.apps.smart_settings import Namespace
 from .parsers import MetadataParser
 from .validators import MetadataValidator
 
-namespace = Namespace(name='metadata', label=_('Metadata'))
+namespace = Namespace(label=_('Metadata'), name='metadata')
+
 setting_available_validators = namespace.add_setting(
     global_name='METADATA_AVAILABLE_VALIDATORS',
     default=MetadataValidator.get_import_paths()

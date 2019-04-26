@@ -23,7 +23,9 @@ lock = threading.Lock()
 logger = logging.getLogger(__name__)
 
 lock_file = os.path.join(
-    setting_temporary_directory.value, hashlib.sha256(force_bytes(settings.SECRET_KEY)).hexdigest()
+    setting_temporary_directory.value, hashlib.sha256(
+        force_bytes(settings.SECRET_KEY)
+    ).hexdigest()
 )
 open(lock_file, 'a').close()
 logger.debug('lock_file: %s', lock_file)

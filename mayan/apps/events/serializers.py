@@ -26,7 +26,7 @@ class EventTypeNamespaceSerializer(serializers.Serializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:event-type-namespace-detail', args=(
+            viewname='rest_api:event-type-namespace-detail', args=(
                 instance.name,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -40,7 +40,7 @@ class EventTypeSerializer(serializers.Serializer):
 
     def get_event_type_namespace_url(self, instance):
         return reverse(
-            'rest_api:event-type-namespace-detail', args=(
+            viewname='rest_api:event-type-namespace-detail', args=(
                 instance.namespace.name,
             ), request=self.context['request'], format=self.context['format']
         )

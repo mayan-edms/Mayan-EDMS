@@ -16,7 +16,9 @@ from mayan.apps.common.menus import (
 from mayan.apps.navigation import SourceColumn
 from mayan.celery import app
 
-from .handlers import unverify_key_signatures, verify_key_signatures
+from .handlers import (
+    handler_unverify_key_signatures, handler_verify_key_signatures
+)
 from .links import (
     link_document_version_all_signature_verify,
     link_document_signature_list,
@@ -63,9 +65,9 @@ class DocumentSignaturesApp(MayanAppConfig):
             app_label='django_gpg', model_name='Key'
         )
 
-        EmbeddedSignature = self.get_model('EmbeddedSignature')
+        EmbeddedSignature = self.get_model(model_name='EmbeddedSignature')
 
-        SignatureBaseModel = self.get_model('SignatureBaseModel')
+        SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
 
         DocumentVersion.register_post_save_hook(
             order=1, func=EmbeddedSignature.objects.create
@@ -111,10 +113,10 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'mayan.apps.document_signatures.tasks.task_verify_key_signatures': {
+                'mayan.apps.document_signatures.tasks.task_handler_verify_key_signatures': {
                     'queue': 'signatures'
                 },
-                'mayan.apps.document_signatures.tasks.task_unverify_key_signatures': {
+                'mayan.apps.document_signatures.tasks.task_handler_unhandler_verify_key_signatures': {
                     'queue': 'signatures'
                 },
                 'mayan.apps.document_signatures.tasks.task_verify_document_version': {
@@ -158,12 +160,12 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
 
         post_delete.connect(
-            unverify_key_signatures,
-            dispatch_uid='unverify_key_signatures',
+            dispatch_uid='signatures_handler_unverify_key_signatures',
+            receiver=handler_unverify_key_signatures,
             sender=Key
         )
         post_save.connect(
-            verify_key_signatures,
-            dispatch_uid='verify_key_signatures',
+            dispatch_uid='signatures_handler_verify_key_signatures',
+            receiver=handler_verify_key_signatures,
             sender=Key
         )

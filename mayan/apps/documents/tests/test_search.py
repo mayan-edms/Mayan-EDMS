@@ -18,23 +18,23 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
         )
 
     def test_document_page_search_no_access(self):
-        queryset, elapsed_time = self._perform_document_page_search()
+        queryset = self._perform_document_page_search()
         self.assertFalse(self.document.pages.first() in queryset)
 
     def test_document_page_search_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
-        queryset, elapsed_time = self._perform_document_page_search()
+        queryset = self._perform_document_page_search()
         self.assertTrue(self.document.pages.first() in queryset)
 
     def test_document_search_no_access(self):
-        queryset, elapsed_time = self._perform_document_search()
+        queryset = self._perform_document_search()
         self.assertFalse(self.document in queryset)
 
     def test_document_search_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
-        queryset, elapsed_time = self._perform_document_search()
+        queryset = self._perform_document_search()
         self.assertTrue(self.document in queryset)

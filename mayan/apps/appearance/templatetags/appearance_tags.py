@@ -24,4 +24,4 @@ def get_form_media_js(form):
 
 @register.simple_tag
 def get_icon(icon_path):
-    return import_string(icon_path).render()
+    return import_string(dotted_path=icon_path).render()

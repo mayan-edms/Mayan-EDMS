@@ -7,7 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-namespace = Namespace(name='django_gpg', label=_('Signatures'))
+namespace = Namespace(label=_('Signatures'), name='django_gpg')
+
 setting_gpg_home = namespace.add_setting(
     global_name='SIGNATURES_GPG_HOME',
     default=os.path.join(settings.MEDIA_ROOT, 'gpg_home'),

@@ -31,14 +31,14 @@ class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
 
-    def get_post_action_redirect(self):
-        if self.get_object().key_type == KEY_TYPE_PUBLIC:
-            return reverse_lazy('django_gpg:key_public_list')
-        else:
-            return reverse_lazy('django_gpg:key_private_list')
-
     def get_extra_context(self):
         return {'title': _('Delete key: %s') % self.get_object()}
+
+    def get_post_action_redirect(self):
+        if self.get_object().key_type == KEY_TYPE_PUBLIC:
+            return reverse_lazy(viewname='django_gpg:key_public_list')
+        else:
+            return reverse_lazy(viewname='django_gpg:key_private_list')
 
 
 class KeyDetailView(SingleObjectDetailView):
@@ -92,28 +92,6 @@ class KeyReceive(ConfirmView):
             )
 
 
-class KeyQueryView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-    view_permission = permission_keyserver_query
-
-    def get_form(self):
-        if ('term' in self.request.GET) and self.request.GET['term'].strip():
-            term = self.request.GET['term']
-            return KeySearchForm(initial={'term': term})
-        else:
-            return KeySearchForm()
-
-    def get_extra_context(self):
-        return {
-            'form': self.get_form(),
-            'form_action': reverse('django_gpg:key_query_results'),
-            'submit_icon_class': icon_keyserver_search,
-            'submit_label': _('Search'),
-            'submit_method': 'GET',
-            'title': _('Query key server'),
-        }
-
-
 class KeyQueryResultView(SingleObjectListView):
     view_permission = permission_keyserver_query
 
@@ -142,6 +120,28 @@ class KeyQueryResultView(SingleObjectListView):
             return ()
 
 
+class KeyQueryView(SimpleView):
+    template_name = 'appearance/generic_form.html'
+    view_permission = permission_keyserver_query
+
+    def get_extra_context(self):
+        return {
+            'form': self.get_form(),
+            'form_action': reverse('django_gpg:key_query_results'),
+            'submit_icon_class': icon_keyserver_search,
+            'submit_label': _('Search'),
+            'submit_method': 'GET',
+            'title': _('Query key server'),
+        }
+
+    def get_form(self):
+        if ('term' in self.request.GET) and self.request.GET['term'].strip():
+            term = self.request.GET['term']
+            return KeySearchForm(initial={'term': term})
+        else:
+            return KeySearchForm()
+
+
 class KeyUploadView(SingleObjectCreateView):
     fields = ('key_data',)
     model = Key
@@ -151,6 +151,29 @@ class KeyUploadView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'title': _('Upload new key'),
+        }
+
+
+class PrivateKeyListView(SingleObjectListView):
+    object_permission = permission_key_view
+    queryset = Key.objects.private_keys()
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_key_setup,
+            'no_results_main_link': link_key_upload.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Private keys are used to signed documents. '
+                'Private keys can only be uploaded by the user.'
+                'The view to upload private and public keys is the same.'
+            ),
+            'no_results_title': _(
+                'There no private keys'
+            ),
+            'title': _('Private keys')
         }
 
 
@@ -175,27 +198,4 @@ class PublicKeyListView(SingleObjectListView):
                 'There no public keys'
             ),
             'title': _('Public keys')
-        }
-
-
-class PrivateKeyListView(SingleObjectListView):
-    object_permission = permission_key_view
-    queryset = Key.objects.private_keys()
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'no_results_icon': icon_key_setup,
-            'no_results_main_link': link_key_upload.resolve(
-                context=RequestContext(request=self.request)
-            ),
-            'no_results_text': _(
-                'Private keys are used to signed documents. '
-                'Private keys can only be uploaded by the user.'
-                'The view to upload private and public keys is the same.'
-            ),
-            'no_results_title': _(
-                'There no private keys'
-            ),
-            'title': _('Private keys')
         }

@@ -93,13 +93,13 @@ class SearchModel(object):
 
         return result
 
-    def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
+    def __init__(self, app_label, model_name, serializer_path, label=None, permission=None):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = []
         self._model = None  # Lazy
         self._label = label
-        self.serializer_path = serializer_string
+        self.serializer_path = serializer_path
         self.permission = permission
         self.__class__._registry[self.get_full_name()] = self
 

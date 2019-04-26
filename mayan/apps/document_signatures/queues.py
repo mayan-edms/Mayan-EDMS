@@ -5,21 +5,22 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
 
-queue_signatures = CeleryQueue(name='signatures', label=_('Signatures'))
+queue_signatures = CeleryQueue(label=_('Signatures'), name='signatures')
+
 queue_signatures.add_task_type(
-    name='mayan.apps.document_signatures.tasks.task_verify_key_signatures',
-    label=_('Verify key signatures')
+    label=_('Verify key signatures'),
+    name='mayan.apps.document_signatures.tasks.task_verify_key_signatures'
 )
 queue_signatures.add_task_type(
-    name='mayan.apps.document_signatures.tasks.task_unverify_key_signatures',
-    label=_('Unverify key signatures')
+    label=_('Unverify key signatures'),
+    name='mayan.apps.document_signatures.tasks.task_unverify_key_signatures'
 )
 queue_signatures.add_task_type(
-    name='mayan.apps.document_signatures.tasks.task_verify_document_version',
-    label=_('Verify document version')
+    label=_('Verify document version'),
+    name='mayan.apps.document_signatures.tasks.task_verify_document_version'
 )
 
 queue_tools.add_task_type(
-    name='mayan.apps.document_signatures.tasks.task_verify_missing_embedded_signature',
-    label=_('Verify missing embedded signature')
+    label=_('Verify missing embedded signature'),
+    name='mayan.apps.document_signatures.tasks.task_verify_missing_embedded_signature'
 )

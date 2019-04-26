@@ -4,14 +4,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions import PermissionNamespace
 
-namespace = PermissionNamespace(name='comments', label=_('Comments'))
+namespace = PermissionNamespace(label=_('Comments'), name='comments')
 
 permission_comment_create = namespace.add_permission(
-    name='comment_create', label=_('Create new comments')
+    label=_('Create new comments'), name='comment_create'
 )
 permission_comment_delete = namespace.add_permission(
-    name='comment_delete', label=_('Delete comments')
+    label=_('Delete comments'), name='comment_delete'
 )
 permission_comment_view = namespace.add_permission(
-    name='comment_view', label=_('View comments')
+    label=_('View comments'), name='comment_view'
 )

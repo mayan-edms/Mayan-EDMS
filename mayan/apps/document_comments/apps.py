@@ -37,7 +37,7 @@ class DocumentCommentsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        Comment = self.get_model('Comment')
+        Comment = self.get_model(model_name='Comment')
 
         ModelEventType.register(
             model=Document, event_types=(
@@ -52,12 +52,12 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(source=Comment, label=_('Date'), attribute='submit_date')
+        SourceColumn(attribute='submit_date', source=Comment)
         SourceColumn(
-            source=Comment, label=_('User'),
-            func=lambda context: context['object'].user.get_full_name() if context['object'].user.get_full_name() else context['object'].user
+            func=lambda context: context['object'].user.get_full_name() if context['object'].user.get_full_name() else context['object'].user,
+            source=Comment
         )
-        SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
+        SourceColumn(attribute='comment', source=Comment)
 
         document_page_search.add_model_field(
             field='document_version__document__comments__comment',

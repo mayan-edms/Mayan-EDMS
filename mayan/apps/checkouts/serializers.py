@@ -42,8 +42,8 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
         document = Document.objects.get(pk=validated_data.pop('document_pk'))
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_check_out,
-            user=self.context['request'].user, obj=document
+            obj=document, permissions=permission_document_check_out,
+            user=self.context['request'].user
         )
 
         validated_data['document'] = document

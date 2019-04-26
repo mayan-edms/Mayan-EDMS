@@ -48,7 +48,7 @@ from .events import (
     event_document_view
 )
 from .handlers import (
-    create_default_document_type, handler_remove_empty_duplicates_lists,
+    handler_create_default_document_type, handler_remove_empty_duplicates_lists,
     handler_scan_duplicates_for,
 )
 from .links import (
@@ -121,14 +121,14 @@ class DocumentsApp(MayanAppConfig):
         super(DocumentsApp, self).ready()
         from actstream import registry
 
-        DeletedDocument = self.get_model('DeletedDocument')
-        Document = self.get_model('Document')
-        DocumentPage = self.get_model('DocumentPage')
-        DocumentPageResult = self.get_model('DocumentPageResult')
-        DocumentType = self.get_model('DocumentType')
-        DocumentTypeFilename = self.get_model('DocumentTypeFilename')
-        DocumentVersion = self.get_model('DocumentVersion')
-        DuplicatedDocument = self.get_model('DuplicatedDocument')
+        DeletedDocument = self.get_model(model_name='DeletedDocument')
+        Document = self.get_model(model_name='Document')
+        DocumentPage = self.get_model(model_name='DocumentPage')
+        DocumentPageResult = self.get_model(model_name='DocumentPageResult')
+        DocumentType = self.get_model(model_name='DocumentType')
+        DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
+        DocumentVersion = self.get_model(model_name='DocumentVersion')
+        DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -144,29 +144,33 @@ class DocumentsApp(MayanAppConfig):
             view='documents:document_type_list'
         )
 
-        ModelField(Document, name='description')
-        ModelField(Document, name='date_added')
-        ModelField(Document, name='deleted_date_time')
-        ModelField(Document, name='document_type__label')
-        ModelField(Document, name='in_trash')
-        ModelField(Document, name='is_stub')
-        ModelField(Document, name='label')
-        ModelField(Document, name='language')
-        ModelField(Document, name='uuid')
+        ModelField(model=Document, name='description')
+        ModelField(model=Document, name='date_added')
+        ModelField(model=Document, name='deleted_date_time')
+        ModelField(model=Document, name='document_type__label')
+        ModelField(model=Document, name='in_trash')
+        ModelField(model=Document, name='is_stub')
+        ModelField(model=Document, name='label')
+        ModelField(model=Document, name='language')
+        ModelField(model=Document, name='uuid')
         ModelField(
-            Document, name='versions__checksum'
+            model=Document, name='versions__checksum'
         )
         ModelField(
-            Document, label=_('Versions comment'), name='versions__comment'
+            model=Document, label=_('Versions comment'),
+            name='versions__comment'
         )
         ModelField(
-            Document, label=_('Versions encoding'), name='versions__encoding'
+            model=Document, label=_('Versions encoding'),
+            name='versions__encoding'
         )
         ModelField(
-            Document, label=_('Versions mime type'), name='versions__mimetype'
+            model=Document, label=_('Versions mime type'),
+            name='versions__mimetype'
         )
         ModelField(
-            Document, label=_('Versions timestamp'), name='versions__timestamp'
+            model=Document, label=_('Versions timestamp'),
+            name='versions__timestamp'
         )
 
         ModelEventType.register(
@@ -245,19 +249,17 @@ class DocumentsApp(MayanAppConfig):
             is_sortable=True, source=Document
         )
         SourceColumn(
-            source=Document, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            )
+            ), label=_('Thumbnail'), source=Document
         )
         SourceColumn(
             attribute='document_type', is_sortable=True, source=Document,
         )
         SourceColumn(
-            source=Document, label=_('Pages'),
             func=lambda context: widget_document_page_number(
                 document=context['object']
-            )
+            ), label=_('Pages'), source=Document
         )
         SourceColumn(
             attribute='date_added', include_label=True, is_sortable=True,
@@ -272,22 +274,20 @@ class DocumentsApp(MayanAppConfig):
 
         # DocumentPage
         SourceColumn(
-            source=DocumentPage, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            )
+            ), label=_('Thumbnail'), source=DocumentPage
         )
 
         SourceColumn(
-            source=DocumentPageResult, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            )
+            ), label=_('Thumbnail'), source=DocumentPageResult
         )
 
         SourceColumn(
-            source=DocumentPageResult, label=_('Type'),
-            attribute='document_version.document.document_type'
+            attribute='document_version.document.document_type',
+            label=_('Type'), source=DocumentPageResult
         )
 
         # DocumentType
@@ -297,10 +297,9 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentType, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
                 user=context['request'].user
-            )
+            ), label=_('Documents'), source=DocumentType
         )
 
         SourceColumn(
@@ -318,16 +317,15 @@ class DocumentsApp(MayanAppConfig):
             source=DeletedDocument
         )
         SourceColumn(
-            source=DeletedDocument, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            )
+            ), label=_('Thumbnail'), source=DeletedDocument
         )
         SourceColumn(
             attribute='document_type', is_sortable=True, source=DeletedDocument
         )
         SourceColumn(
-            source=DeletedDocument, attribute='deleted_date_time'
+            attribute='deleted_date_time', source=DeletedDocument
         )
 
         # DocumentVersion
@@ -336,16 +334,14 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            source=DocumentVersion, label=_('Thumbnail'),
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
-            )
+            ), label=_('Thumbnail'), source=DocumentVersion
         )
         SourceColumn(
-            source=DocumentVersion, label=_('Pages'),
             func=lambda context: widget_document_version_page_number(
                 document_version=context['object']
-            )
+            ), label=_('Pages'), source=DocumentVersion
         )
         SourceColumn(
             attribute='mimetype', is_sortable=True, source=DocumentVersion
@@ -611,15 +607,15 @@ class DocumentsApp(MayanAppConfig):
         post_delete.connect(
             dispatch_uid='handler_remove_empty_duplicates_lists',
             receiver=handler_remove_empty_duplicates_lists,
-            sender=Document,
+            sender=Document
         )
         post_initial_setup.connect(
-            create_default_document_type,
-            dispatch_uid='create_default_document_type'
+            dispatch_uid='handler_create_default_document_type',
+            receiver=handler_create_default_document_type
         )
         post_version_upload.connect(
-            handler_scan_duplicates_for,
             dispatch_uid='handler_scan_duplicates_for',
+            receiver=handler_scan_duplicates_for
         )
 
         registry.register(DeletedDocument)

@@ -5,30 +5,30 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(
-    name='user_management', label=_('User management')
+    label=_('User management'), name='user_management'
 )
 
 permission_group_create = namespace.add_permission(
-    name='group_create', label=_('Create new groups')
+    label=_('Create new groups'), name='group_create'
 )
 permission_group_delete = namespace.add_permission(
-    name='group_delete', label=_('Delete existing groups')
+    label=_('Delete existing groups'), name='group_delete'
 )
 permission_group_edit = namespace.add_permission(
-    name='group_edit', label=_('Edit existing groups')
+    label=_('Edit existing groups'), name='group_edit'
 )
 permission_group_view = namespace.add_permission(
-    name='group_view', label=_('View existing groups')
+    label=_('View existing groups'), name='group_view'
 )
 permission_user_create = namespace.add_permission(
-    name='user_create', label=_('Create new users')
+    label=_('Create new users'), name='user_create'
 )
 permission_user_delete = namespace.add_permission(
-    name='user_delete', label=_('Delete existing users')
+    label=_('Delete existing users'), name='user_delete'
 )
 permission_user_edit = namespace.add_permission(
-    name='user_edit', label=_('Edit existing users')
+    label=_('Edit existing users'), name='user_edit'
 )
 permission_user_view = namespace.add_permission(
-    name='user_view', label=_('View existing users')
+    label=_('View existing users'), name='user_view'
 )

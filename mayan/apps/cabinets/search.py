@@ -9,7 +9,7 @@ from .permissions import permission_cabinet_view
 cabinet_search = SearchModel(
     app_label='cabinets', model_name='Cabinet',
     permission=permission_cabinet_view,
-    serializer_string='mayan.apps.cabinets.serializers.CabinetSerializer'
+    serializer_path='mayan.apps.cabinets.serializers.CabinetSerializer'
 )
 
 cabinet_search.add_model_field(

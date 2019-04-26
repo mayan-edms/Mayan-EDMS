@@ -4,10 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings import Namespace
 
-DEFAULT_BACKEND = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
-DEFAULT_LOCK_TIMEOUT_VALUE = 30
+from .literals import DEFAULT_BACKEND, DEFAULT_LOCK_TIMEOUT_VALUE
 
-namespace = Namespace(name='lock_manager', label=_('Lock manager'))
+namespace = Namespace(label=_('Lock manager'), name='lock_manager')
 
 setting_backend = namespace.add_setting(
     default=DEFAULT_BACKEND,

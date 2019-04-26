@@ -203,23 +203,27 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         NewVersionBlock.objects.block(self.test_document)
 
         response = self.post(
-            viewname='sources:upload_version', args=(self.document.pk,),
-            follow=True
+            viewname='sources:upload_version', kwargs={
+                'document_pk': self.document.pk
+            }, follow=True
         )
 
         self.assertContains(
-            response, text='blocked from uploading',
+            response=response, text='blocked from uploading',
             status_code=200
         )
 
         response = self.get(
-            'documents:document_version_list', args=(self.document.pk,),
-            follow=True
+            viewname='documents:document_version_list', kwargs={
+                'pk': self.document.pk
+            }, follow=True
         )
 
         # Needed by the url view resolver
         response.context.current_app = None
-        resolved_link = link_document_version_upload.resolve(context=response.context)
+        resolved_link = link_document_version_upload.resolve(
+            context=response.context
+        )
 
         self.assertEqual(resolved_link, None)
 
@@ -228,7 +232,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
     def setUp(self):
         super(StagingFolderViewTestCase, self).setUp()
         self.temporary_directory = mkdtemp()
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
+        shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=self.temporary_directory)
 
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
 
@@ -238,9 +242,10 @@ class StagingFolderViewTestCase(GenericViewTestCase):
 
     def _request_staging_file_delete_view(self, staging_folder, staging_file):
         return self.post(
-            viewname='sources:staging_file_delete', args=(
-                staging_folder.pk, staging_file.encoded_filename
-            )
+            viewname='sources:staging_file_delete', kwargs={
+                'pk': staging_folder.pk,
+                'encoded_filename': staging_file.encoded_filename
+            }
         )
 
     def test_staging_folder_delete_no_permission(self):
@@ -259,6 +264,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
             staging_folder=staging_folder, staging_file=staging_file
         )
         self.assertEqual(response.status_code, 403)
+
         self.assertEqual(len(list(staging_folder.get_files())), 1)
 
     def test_staging_folder_delete_with_permission(self):
@@ -279,6 +285,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
             staging_folder=staging_folder, staging_file=staging_file
         )
         self.assertEqual(response.status_code, 302)
+
         self.assertEqual(len(list(staging_folder.get_files())), 0)
 
 
