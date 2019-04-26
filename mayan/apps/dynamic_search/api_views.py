@@ -29,7 +29,7 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
             self.mayan_object_permissions = {'GET': (search_model.permission,)}
 
         try:
-            queryset, timedelta = search_model.search(
+            queryset = search_model.search(
                 query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
@@ -68,9 +68,9 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
             global_and_search = False
 
         try:
-            queryset, timedelta = self.search_model.search(
-                query_string=self.request.GET, user=self.request.user,
-                global_and_search=global_and_search
+            queryset = self.search_model.search(
+                global_and_search=global_and_search,
+                query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
             raise ParseError(force_text(exception))

@@ -3,28 +3,25 @@ from __future__ import unicode_literals
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
-from mayan.apps.documents.tests import (
-    DocumentTestMixin, TEST_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_FILENAME
-)
+from mayan.apps.documents.tests import DocumentTestMixin
 
 
 class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
-    test_document_filename = TEST_DOCUMENT_FILENAME
 
     def test_simple_search_after_related_name_change(self):
         """
         Test that simple search works after related_name changes to
         document versions and document version pages
         """
-        self.upload_document()
+        self.upload_document(label='first_doc')
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
 
-        queryset, elapsed_time = document_search.search(
-            {'q': 'Mayan'}, user=self._test_case_user
+        queryset = document_search.search(
+            {'q': 'first'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
@@ -36,90 +33,109 @@ class DocumentSearchTestCase(DocumentTestMixin, BaseTestCase):
             obj=self.test_document, permission=permission_document_view
         )
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': self.test_document.label}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
 
         # Test versions__mimetype
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'versions__mimetype': self.test_document.file_mimetype},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
 
-    def test_simple_or_search(self):
-        self.upload_document(label='first_doc.pdf')
-
+    def test_meta_only(self):
+        self.upload_document(label='first_doc')
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+        queryset = document_search.search(
+            {'q': 'OR first'}, user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
 
-        self.test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
-        self.test_document_2 = self.upload_document(label='second_doc.pdf')
-
+    def test_simple_or_search(self):
+        self.upload_document(label='first_doc')
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        self.test_document_2 = self.upload_document(label='second_doc')
         self.grant_access(
             obj=self.test_document_2, permission=permission_document_view
         )
-
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'q': 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self.test_document in queryset)
         self.assertTrue(self.test_document_2 in queryset)
 
-    def test_simple_and_search(self):
-        self.test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
-        self.test_document_2 = self.upload_document(label='second_doc.pdf')
+    def test_advanced_or_search(self):
+        self.upload_document(label='first_doc')
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
 
+        self.test_document_2 = self.upload_document(label='second_doc')
         self.grant_access(
             obj=self.test_document_2, permission=permission_document_view
         )
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
+            {'label': 'first OR second'}, user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 2)
+        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self.test_document_2 in queryset)
+
+    def test_simple_and_search(self):
+        self.upload_document(label='second_doc')
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        queryset = document_search.search(
             {'q': 'non_valid second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'q': 'second non_valid'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
     def test_simple_negated_search(self):
-        self.test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
-        self.test_document_2 = self.upload_document()
-        self.test_document_2.label = 'second_doc.pdf'
-        self.test_document_2.save()
+        self.test_document_2 = self.upload_document(label='second_doc')
 
         self.grant_access(
             obj=self.test_document_2, permission=permission_document_view
         )
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'q': '-non_valid second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': '-second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': '-second -Mayan'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': '-second OR -Mayan'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': '-non_valid -second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)

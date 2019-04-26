@@ -158,6 +158,9 @@
   from an user.
 * Require dual permissions when add or removing users to and
   from group. Same with group to users.
+* Backport search improvements.
+* Remove search elapsed time calculation.
+* Remove SEARCH_LIMIT setting.
 
 3.1.11 (2019-04-XX)
 ===================

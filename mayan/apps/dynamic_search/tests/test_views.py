@@ -30,7 +30,7 @@ class Issue46TestCase(DocumentTestMixin, GenericViewTestCase):
             )
 
         # Make sure all documents are returned by the search
-        queryset, elapsed_time = document_search.search(
+        queryset = document_search.search(
             {'label': test_document_label}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), self.test_document_count)
