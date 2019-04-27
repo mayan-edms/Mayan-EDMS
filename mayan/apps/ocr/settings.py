@@ -7,7 +7,8 @@ from mayan.apps.smart_settings import Namespace
 namespace = Namespace(label=_('OCR'), name='ocr')
 
 setting_ocr_backend = namespace.add_setting(
-    global_name='OCR_BACKEND', default='mayan.apps.ocr.backends.pyocr.PyOCR',
+    global_name='OCR_BACKEND',
+    default='mayan.apps.ocr.backends.tesseract.Tesseract',
     help_text=_('Full path to the backend to be used to do OCR.')
 )
 setting_ocr_backend_arguments = namespace.add_setting(

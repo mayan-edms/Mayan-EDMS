@@ -176,6 +176,9 @@
 * Remove app top level star imports.
 * Monkeypatch group and user models to make their fields
   translatable.
+* Add new and default Tesseract OCR backend to avoid
+  Tesseract bug 1670 
+  (https://github.com/tesseract-ocr/tesseract/issues/1670)
 
 3.1.11 (2019-04-XX)
 ===================
