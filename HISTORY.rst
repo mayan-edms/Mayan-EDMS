@@ -161,6 +161,7 @@
 * Backport search improvements.
 * Remove search elapsed time calculation.
 * Remove SEARCH_LIMIT setting.
+* Use the 'handler' prefix for all the signal handler functions.
 
 3.1.11 (2019-04-XX)
 ===================

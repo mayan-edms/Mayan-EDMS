@@ -3,5 +3,5 @@ from __future__ import unicode_literals
 from django.core import management
 
 
-def purge_permissions(**kwargs):
-    management.call_command('purgepermissions')
+def handler_purge_permissions(**kwargs):
+    management.call_command(command_name='purgepermissions')

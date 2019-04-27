@@ -22,7 +22,7 @@ from mayan.celery import app
 
 from .classes import DocumentStateHelper, WorkflowAction
 from .handlers import (
-    handler_index_document, handler_trigger_transition, launch_workflow
+    handler_index_document, handler_launch_workflow, handler_trigger_transition
 )
 from .links import (
     link_document_workflow_instance_list, link_setup_workflow_document_types,
@@ -352,18 +352,20 @@ class DocumentStatesApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_tool_launch_all_workflows,))
 
         post_save.connect(
-            launch_workflow, dispatch_uid='launch_workflow', sender=Document
+            dispatch_uid='workflows_handler_launch_workflow',
+            receiver=handler_launch_workflow,
+            sender=Document
         )
 
         # Index updating
 
         post_save.connect(
-            handler_index_document,
-            dispatch_uid='handler_index_document_save',
+            dispatch_uid='workflows_handler_index_document_save',
+            receiver=handler_index_document,
             sender=WorkflowInstanceLogEntry
         )
         post_save.connect(
-            handler_trigger_transition,
-            dispatch_uid='document_states_handler_trigger_transition',
+            dispatch_uid='workflows_handler_trigger_transition',
+            receiver=handler_trigger_transition,
             sender=Action
         )

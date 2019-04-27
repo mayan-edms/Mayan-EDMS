@@ -15,6 +15,15 @@ def handler_index_document(sender, **kwargs):
     )
 
 
+def handler_launch_workflow(sender, instance, created, **kwargs):
+    Workflow = apps.get_model(
+        app_label='document_states', model_name='Workflow'
+    )
+
+    if created:
+        Workflow.objects.launch_for(instance)
+
+
 def handler_trigger_transition(sender, **kwargs):
     action = kwargs['instance']
 
@@ -45,12 +54,3 @@ def handler_trigger_transition(sender, **kwargs):
                 comment=_('Event trigger: %s') % EventType.get(name=action.verb).label,
                 transition=valid_transitions[0]
             )
-
-
-def launch_workflow(sender, instance, created, **kwargs):
-    Workflow = apps.get_model(
-        app_label='document_states', model_name='Workflow'
-    )
-
-    if created:
-        Workflow.objects.launch_for(instance)

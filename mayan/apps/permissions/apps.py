@@ -15,7 +15,7 @@ from mayan.apps.common.signals import perform_upgrade
 from mayan.apps.events import ModelEventType
 
 from .events import event_role_created, event_role_edited
-from .handlers import purge_permissions
+from .handlers import handler_purge_permissions
 from .links import (
     link_group_roles, link_role_create, link_role_delete, link_role_edit,
     link_role_groups, link_role_list, link_role_permissions
@@ -77,7 +77,8 @@ class PermissionsApp(MayanAppConfig):
         menu_setup.bind_links(links=(link_role_list,))
 
         perform_upgrade.connect(
-            purge_permissions, dispatch_uid='purge_permissions'
+            dispatch_uid='permissions_handler_purge_permissions',
+            receiver=handler_purge_permissions
         )
 
         registry.register(Role)

@@ -193,6 +193,7 @@ Other changes
 * Backport search improvements.
 * Remove search elapsed time calculation.
 * Remove SEARCH_LIMIT setting.
+* Use the 'handler' prefix for all the signal handler functions.
 
 Removals
 --------
