@@ -20,29 +20,6 @@ class DisableableSelectWidget(forms.widgets.SelectMultiple):
         return result
 
 
-# From: http://www.peterbe.com/plog/emailinput-html5-django
-class EmailInput(forms.widgets.Input):
-    """
-    Class for a login form widget that accepts only well formated
-    email address
-    """
-    input_type = 'email'
-
-    def render(self, name, value, attrs=None):
-        if attrs is None:
-            attrs = {}
-
-        attrs.update(
-            {
-                'autocorrect': 'off',
-                'autocapitalize': 'off',
-                'spellcheck': 'false'
-            }
-        )
-
-        return super(EmailInput, self).render(name, value, attrs=attrs)
-
-
 class PlainWidget(forms.widgets.Widget):
     """
     Class to define a form widget that effectively nulls the htmls of a
