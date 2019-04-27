@@ -172,6 +172,7 @@
   add_to_object.
 * Rename transformation manager method get_for_model to
   get_for_object.
+* Load the converter class on demand.
 
 3.1.11 (2019-04-XX)
 ===================

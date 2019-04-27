@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from mayan.apps.converter import converter_class
+from mayan.apps.converter.utils import get_converter_class
 
 
 class OCRBackendBase(object):
@@ -10,7 +10,7 @@ class OCRBackendBase(object):
         if not transformations:
             transformations = []
 
-        self.converter = converter_class(file_object=file_object)
+        self.converter = get_converter_class()(file_object=file_object)
 
         for transformation in transformations:
             self.converter.transform(transformation=transformation)

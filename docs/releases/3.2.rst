@@ -204,6 +204,7 @@ Other changes
   add_to_object.
 * Rename transformation manager method get_for_model to
   get_for_object.
+* Load the converter class on demand.
 
 Removals
 --------

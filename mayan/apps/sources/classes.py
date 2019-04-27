@@ -13,7 +13,8 @@ from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.six.moves.urllib.parse import quote_plus, unquote_plus
 
-from mayan.apps.converter import TransformationResize, converter_class
+from mayan.apps.converter import TransformationResize
+from mayan.apps.converter.utils import get_converter_class
 
 from .storages import storage_staging_file_image_cache
 
@@ -143,7 +144,7 @@ class StagingFile(object):
 
         try:
             file_object = open(self.get_full_path(), mode='rb')
-            converter = converter_class(file_object=file_object)
+            converter = get_converter_class()(file_object=file_object)
 
             page_image = converter.get_page()
 

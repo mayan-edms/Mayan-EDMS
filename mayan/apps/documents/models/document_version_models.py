@@ -12,9 +12,10 @@ from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.converter import converter_class, TransformationRotate
+from mayan.apps.converter import TransformationRotate
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
 from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 
 from ..events import event_document_new_version, event_document_version_revert
@@ -168,7 +169,7 @@ class DocumentVersion(models.Model):
             logger.debug('Intermidiate file "%s" not found.', cache_filename)
 
             try:
-                converter = converter_class(file_object=self.open())
+                converter = get_converter_class()(file_object=self.open())
                 pdf_file_object = converter.to_pdf()
 
                 with storage_documentimagecache.open(cache_filename, mode='wb+') as file_object:
@@ -382,7 +383,7 @@ class DocumentVersion(models.Model):
     def update_page_count(self, save=True):
         try:
             with self.open() as file_object:
-                converter = converter_class(
+                converter = get_converter_class()(
                     file_object=file_object, mime_type=self.mimetype
                 )
                 detected_pages = converter.get_page_count()
