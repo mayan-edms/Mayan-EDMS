@@ -167,6 +167,7 @@
 * Update the role group list view to use the new AddRemoveView.
 * Commit the group event in conjunction with the role event
   when a group is added or remove from role.
+* Update the role permission view to use the new AddRemoveView.
 
 3.1.11 (2019-04-XX)
 ===================

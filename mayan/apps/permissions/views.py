@@ -99,72 +99,52 @@ class SetupRoleMembersView(AddRemoveView):
         }
 
 
-class SetupRolePermissionsView(AssignRemoveView):
+class SetupRolePermissionsView(AddRemoveView):
+    action_add_method = 'permissions_add'
+    action_remove_method = 'permissions_remove'
     grouped = True
-    left_list_title = _('Available permissions')
-    right_list_title = _('Granted permissions')
+    main_object_model = Role
+    main_object_permission = permission_role_edit
+    main_object_pk_url_kwarg = 'pk'
+    list_available_title = _('Available permissions')
+    list_added_title = _('Granted permissions')
+    related_field = 'permissions'
+    secondary_object_model = StoredPermission
 
-    @staticmethod
-    def generate_choices(entries):
-        results = []
+    def generate_choices(self, queryset):
+        namespaces_dictionary = {}
 
         # Sort permissions by their translatable label
-        entries = sorted(
-            entries, key=lambda permission: permission.volatile_permission.label
+        object_list = sorted(
+            queryset, key=lambda permission: permission.volatile_permission.label
         )
 
         # Group permissions by namespace
-        for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
-            permission_options = [
-                (force_text(permission.pk), permission) for permission in permissions
-            ]
-            results.append(
-                (PermissionNamespace.get(namespace), permission_options)
+        for permission in object_list:
+            namespaces_dictionary.setdefault(
+                permission.volatile_permission.namespace.label,
+                []
+            )
+            namespaces_dictionary[permission.volatile_permission.namespace.label].append(
+                (permission.pk, force_text(permission))
             )
 
-        return results
+        # Sort permissions by their translatable namespace label
+        return sorted(namespaces_dictionary.items())
 
-    def add(self, item):
-        permission = get_object_or_404(klass=StoredPermission, pk=item)
-        self.get_object().permissions.add(permission)
-
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            permissions=(permission_role_edit,),
-            user=self.request.user, obj=self.get_object()
-        )
-        return super(SetupRolePermissionsView, self).dispatch(request, *args, **kwargs)
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.main_object,
             'subtitle': _(
                 'Permissions granted here will apply to the entire system '
                 'and all objects.'
             ),
-            'title': _('Permissions for role: %s') % self.get_object(),
+            'title': _('Permissions for role: %s') % self.main_object,
         }
 
-    def get_object(self):
-        return get_object_or_404(klass=Role, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        Permission.refresh()
-
-        return SetupRolePermissionsView.generate_choices(
-            entries=StoredPermission.objects.exclude(
-                id__in=self.get_object().permissions.values_list('pk', flat=True)
-            )
-        )
-
-    def right_list(self):
-        return SetupRolePermissionsView.generate_choices(
-            entries=self.get_object().permissions.all()
-        )
-
-    def remove(self, item):
-        permission = get_object_or_404(klass=StoredPermission, pk=item)
-        self.get_object().permissions.remove(permission)
 
 
 class RoleListView(SingleObjectListView):

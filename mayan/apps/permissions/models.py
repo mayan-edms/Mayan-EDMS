@@ -147,6 +147,20 @@ class Role(models.Model):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
 
+    def permissions_add(self, queryset, _user=None):
+        with transaction.atomic():
+            event_role_edited.commit(
+                actor=_user, target=self
+            )
+            self.permissions.add(*queryset)
+
+    def permissions_remove(self, queryset, _user=None):
+        with transaction.atomic():
+            event_role_edited.commit(
+                actor=_user, target=self
+            )
+            self.permissions.remove(*queryset)
+
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
 
