@@ -163,6 +163,7 @@
 * Remove SEARCH_LIMIT setting.
 * Use the 'handler' prefix for all the signal handler functions.
 * Remove custom email widget and use Django's.
+* Increase default maximum number of favorite documents to 400.
 
 3.1.11 (2019-04-XX)
 ===================

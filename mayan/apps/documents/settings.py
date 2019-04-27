@@ -50,7 +50,7 @@ setting_display_width = namespace.add_setting(
     global_name='DOCUMENTS_DISPLAY_WIDTH', default='3600'
 )
 setting_favorite_count = namespace.add_setting(
-    global_name='DOCUMENTS_FAVORITE_COUNT', default=40,
+    global_name='DOCUMENTS_FAVORITE_COUNT', default=400,
     help_text=_(
         'Maximum number of favorite documents to remember per user.'
     )
