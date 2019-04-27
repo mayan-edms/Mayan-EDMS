@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
+from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -91,6 +92,29 @@ class UserManagementApp(MayanAppConfig):
         Group._meta.ordering = ('name',)
         Group._meta.verbose_name = _('Group')
         Group._meta.verbose_name_plural = _('Groups')
+        Group._meta.get_field('name').verbose_name = _('Name')
+
+        # Silence UnorderedObjectListWarning
+        # "Pagination may yield inconsistent result"
+        # TODO: Remove on Django 2.x
+        User._meta.ordering = ('pk',)
+        User._meta.verbose_name = _('User')
+        User._meta.verbose_name_plural = _('Users')
+        User._meta.ordering = ('last_name', 'first_name')
+
+        User._meta.get_field('username').verbose_name = _('Username')
+        User._meta.get_field('first_name').verbose_name = _('First name')
+        User._meta.get_field('last_name').verbose_name = _('Last name')
+        User._meta.get_field('email').verbose_name = _('Email')
+        User._meta.get_field('is_active').verbose_name = _('Is active?')
+        if six.PY3:
+            User.has_usable_password.short_description = _(
+                'Has usable password?'
+            )
+        else:
+            User.has_usable_password.__func__.short_description = _(
+                'Has usable password?'
+            )
 
         Group.add_to_class(
             name='get_users', value=method_group_get_users
@@ -137,7 +161,7 @@ class UserManagementApp(MayanAppConfig):
 
         SourceColumn(
             attribute='name', is_identifier=True, is_sortable=True,
-            label=_('Name'), source=Group
+            source=Group
         )
         SourceColumn(
             attribute='user_set.count', label=_('Users'), source=Group
@@ -145,35 +169,25 @@ class UserManagementApp(MayanAppConfig):
 
         SourceColumn(
             attribute='username', is_object_absolute_url=True,
-            is_identifier=True, is_sortable=True, label=_('Username'),
-            source=User
+            is_identifier=True, is_sortable=True, source=User
         )
         SourceColumn(
-            attribute='first_name', is_sortable=True, label=_('First name'),
-            source=User
+            attribute='first_name', is_sortable=True, source=User
         )
         SourceColumn(
-            attribute='last_name', is_sortable=True, label=_('Last name'),
-            source=User
+            attribute='last_name', is_sortable=True, source=User
         )
         SourceColumn(
-            attribute='email', is_sortable=True, label=_('Email'), source=User
+            attribute='email', is_sortable=True, source=User
         )
         SourceColumn(
-            attribute='is_active', is_sortable=True, label=_('Active'),
-            source=User, widget=TwoStateWidget
+            attribute='is_active', is_sortable=True, source=User,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='has_usable_password', label=_('Has usable password?'),
-            source=User, widget=TwoStateWidget
+            attribute='has_usable_password', source=User,
+            widget=TwoStateWidget
         )
-        # Silence UnorderedObjectListWarning
-        # "Pagination may yield inconsistent result"
-        # TODO: Remove on Django 2.x
-        User._meta.ordering = ('pk',)
-        User._meta.verbose_name = _('User')
-        User._meta.verbose_name_plural = _('Users')
-        User._meta.ordering = ('last_name', 'first_name')
 
         User.add_to_class(
             name='get_absolute_url', value=method_user_get_absolute_url

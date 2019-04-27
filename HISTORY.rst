@@ -174,6 +174,8 @@
   get_for_object.
 * Load the converter class on demand.
 * Remove app top level star imports.
+* Monkeypatch group and user models to make their fields
+  translatable.
 
 3.1.11 (2019-04-XX)
 ===================
