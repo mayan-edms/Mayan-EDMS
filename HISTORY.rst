@@ -179,6 +179,7 @@
 * Add new and default Tesseract OCR backend to avoid
   Tesseract bug 1670 
   (https://github.com/tesseract-ocr/tesseract/issues/1670)
+* Load only one language in the document properties form.
 
 3.1.11 (2019-04-XX)
 ===================

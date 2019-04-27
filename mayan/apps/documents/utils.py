@@ -7,6 +7,17 @@ from django.utils.translation import ugettext_lazy as _
 from .settings import setting_language_codes
 
 
+def get_language(language_code):
+    language = getattr(
+        pycountry.languages.get(alpha_3=language_code), 'name', None
+    )
+
+    if language:
+        return _(language)
+    else:
+        return _('Unknown language "%s"') % language_code
+
+
 def get_language_choices():
     return sorted(
         [

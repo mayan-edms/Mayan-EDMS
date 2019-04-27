@@ -12,7 +12,7 @@ from mayan.apps.common.forms import DetailForm
 from ..fields import DocumentField
 from ..models import Document
 from ..literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
-from ..utils import get_language_choices
+from ..utils import get_language, get_language_choices
 
 __all__ = (
     'DocumentDownloadForm', 'DocumentForm', 'DocumentPreviewForm',
@@ -151,9 +151,7 @@ class DocumentPropertiesForm(DetailForm):
             {'label': _('UUID'), 'field': 'uuid'},
             {
                 'label': _('Language'),
-                'field': lambda x: dict(get_language_choices()).get(
-                    document.language, _('Unknown')
-                )
+                'field': lambda x: get_language(language_code=document.language)
             },
         ]
 
