@@ -164,6 +164,9 @@
 * Use the 'handler' prefix for all the signal handler functions.
 * Remove custom email widget and use Django's.
 * Increase default maximum number of favorite documents to 400.
+* Update the role group list view to use the new AddRemoveView.
+* Commit the group event in conjunction with the role event
+  when a group is added or remove from role.
 
 3.1.11 (2019-04-XX)
 ===================

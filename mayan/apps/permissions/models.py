@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.user_management.events import event_group_edited
+
 from .classes import Permission
 from .events import event_role_created, event_role_edited
 from .managers import RoleManager, StoredPermissionManager
@@ -118,6 +120,28 @@ class Role(models.Model):
 
     def grant(self, permission):
         self.permissions.add(permission.stored_permission)
+
+    def groups_add(self, queryset, _user=None):
+        with transaction.atomic():
+            event_role_edited.commit(
+                actor=_user, target=self
+            )
+            for obj in queryset:
+                self.groups.add(obj)
+                event_group_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
+
+    def groups_remove(self, queryset, _user=None):
+        with transaction.atomic():
+            event_role_edited.commit(
+                actor=_user, target=self
+            )
+            for obj in queryset:
+                self.groups.remove(obj)
+                event_group_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
 
     def natural_key(self):
         return (self.label,)

@@ -73,42 +73,30 @@ class RoleEditView(SingleObjectEditView):
         return {'_user': self.request.user}
 
 
-class SetupRoleMembersView(AssignRemoveView):
-    grouped = False
-    left_list_title = _('Available groups')
-    right_list_title = _('Role groups')
-    object_permission = permission_role_edit
+class SetupRoleMembersView(AddRemoveView):
+    action_add_method = 'groups_add'
+    action_remove_method = 'groups_remove'
+    main_object_model = Role
+    main_object_permission = permission_role_edit
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = Group
+    secondary_object_permission = permission_group_edit
+    list_available_title = _('Available groups')
+    list_added_title = _('Role groups')
+    related_field = 'groups'
 
-    def add(self, item):
-        group = get_object_or_404(klass=Group, pk=item)
-        self.get_object().groups.add(group)
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _('Groups of role: %s') % self.get_object(),
+            'object': self.main_object,
+            'title': _('Groups of role: %s') % self.main_object,
             'subtitle': _(
                 'Add groups to be part of a role. They will '
                 'inherit the role\'s permissions and access controls.'
             ),
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=Role, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return [
-            (force_text(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())
-        ]
-
-    def right_list(self):
-        return [
-            (force_text(group.pk), group.name) for group in self.get_object().groups.all()
-        ]
-
-    def remove(self, item):
-        group = get_object_or_404(klass=Group, pk=item)
-        self.get_object().groups.remove(group)
 
 
 class SetupRolePermissionsView(AssignRemoveView):
