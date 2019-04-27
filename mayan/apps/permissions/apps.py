@@ -13,6 +13,10 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.common.signals import perform_upgrade
 from mayan.apps.events import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
+from mayan.apps.events.permissions import permission_events_view
 
 from .events import event_role_created, event_role_edited
 from .handlers import handler_purge_permissions
@@ -52,14 +56,16 @@ class PermissionsApp(MayanAppConfig):
         ModelPermission.register(
             model=Role, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_role_delete, permission_role_edit,
-                permission_role_view
+                permission_events_view, permission_role_delete,
+                permission_role_edit, permission_role_view
             )
         )
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_role_groups, link_role_permissions,
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_role_groups, link_role_permissions,
             ), sources=(Role,)
         )
         menu_list_facet.bind_links(
