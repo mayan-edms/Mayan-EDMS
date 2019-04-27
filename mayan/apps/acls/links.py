@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
 
-from .icons import icon_acl_delete, icon_acl_list, icon_acl_new
+from .icons import (
+    icon_acl_delete, icon_acl_list, icon_acl_new, icon_acl_permissions
+)
 from .permissions import permission_acl_view, permission_acl_edit
 
 
@@ -42,7 +44,8 @@ link_acl_create = Link(
     view='acls:acl_create'
 )
 link_acl_permissions = Link(
-    args='resolved_object.pk', permissions=(permission_acl_edit,),
+    args='resolved_object.pk', icon_class=icon_acl_permissions,
+    permissions=(permission_acl_edit,),
     permissions_related='content_object', text=_('Permissions'),
     view='acls:acl_permissions',
 )
