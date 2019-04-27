@@ -8,15 +8,18 @@ import random
 
 from furl import furl
 
+from django.apps import apps
 from django.conf import settings
 from django.conf.urls import url
+from django.contrib.contenttypes.models import ContentType
 from django.core import management
-from django.db import models
+from django.db import connection, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
+from django.utils.encoding import force_bytes
 
 from mayan.apps.storage.settings import setting_temporary_directory
 
@@ -277,6 +280,64 @@ class TempfileCheckTestCasekMixin(object):
                 )
             )
         super(TempfileCheckTestCasekMixin, self).tearDown()
+
+
+class TestModelTestMixin(object):
+    def _create_test_model(self, fields=None, model_name='TestModel', options=None):
+        # Obtain the app_config and app_label from the test's module path
+        app_config = apps.get_containing_app_config(
+            object_name=self.__class__.__module__
+        )
+        app_label = app_config.label
+
+        class Meta:
+            pass
+
+        setattr(Meta, 'app_label', app_label)
+
+        if options is not None:
+            for key, value in options.items():
+                setattr(Meta, key, value)
+
+        def save(instance, *args, **kwargs):
+            # Custom .save() method to use random primary key values.
+            if instance.pk:
+                return models.Model.self(instance, *args, **kwargs)
+            else:
+                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
+                    model=instance._meta.model
+                )
+                instance.id = instance.pk
+
+                return instance.save_base(force_insert=True)
+
+        attrs = {
+            '__module__': self.__class__.__module__, 'save': save, 'Meta': Meta
+        }
+
+        if fields:
+            attrs.update(fields)
+
+        # Clear previous model registration before re-registering it again to
+        # avoid conflict with test models with the same name, in the same app
+        # but from another test module.
+        apps.all_models[app_label].pop(model_name.lower(), None)
+
+        TestModel = type(
+            force_bytes(model_name), (models.Model,), attrs
+        )
+
+        setattr(self, model_name, TestModel)
+
+        with connection.schema_editor() as schema_editor:
+            schema_editor.create_model(model=TestModel)
+
+        ContentType.objects.clear_cache()
+
+    def _create_test_object(self, model_name='TestModel', **kwargs):
+        TestModel = getattr(self, model_name)
+
+        self.test_object = TestModel.objects.create(**kwargs)
 
 
 class TestViewTestCaseMixin(object):
