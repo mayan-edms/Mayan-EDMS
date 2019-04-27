@@ -3,12 +3,9 @@ from __future__ import unicode_literals
 import sys
 import types
 
-# Useful for very coarse version differentiation.
-PY2 = sys.version_info[0] == 2
-PY3 = sys.version_info[0] == 3
-PY34 = sys.version_info[0:2] >= (3, 4)
+from django.utils import six
 
-if PY3:
+if six.PY3:
     dict_type = dict
     dictionary_type = dict
 else:
