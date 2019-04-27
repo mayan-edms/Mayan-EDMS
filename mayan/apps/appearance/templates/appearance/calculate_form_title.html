@@ -1,42 +1,15 @@
 {% load i18n %}
 
-{% load smart_settings_tags %}
+{% load common_tags %}
 
-{% smart_setting 'APPEARANCE_MAXIMUM_TITLE_LENGTH' as maximum_title_length %}
+{% common_calculate_title as result %}
 
 {% if not non_html_title %}
-    <h3>
+    <h3 title='{{ result.title_full }}'>
 {% endif %}
-
-    {% if title %}
-        {{ title|truncatechars:maximum_title_length }}
-    {% else %}
-        {% if delete_view %}
-            {% trans 'Confirm delete' %}
-        {% else %}
-            {% if form %}
-                {% if object %}
-                    {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
-                {% else %}
-                    {% trans 'Confirm' %}
-                {% endif %}
-            {% else %}
-                {% if read_only %}
-                    {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
-                {% else %}
-                    {% if object %}
-                        {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
-                    {% else %}
-                        {% trans 'Create' %}
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-        {% endif %}
-    {% endif %}
-
+    {{ result.title }}
 {% if not non_html_title %}
     </h3>
-
     {% if subtitle %}
         <small>{{ subtitle }}</small>
     {% endif %}

@@ -3,17 +3,53 @@ from __future__ import unicode_literals
 from json import dumps
 
 from django.template import Context, Library
+from django.template.defaultfilters import truncatechars
 from django.template.loader import get_template
 from django.utils.encoding import force_text
 from django.utils.six import string_types
 
 import mayan
+from mayan.apps.appearance.settings import setting_max_title_length
 
 from ..classes import Collection
 from ..literals import MESSAGE_SQLITE_WARNING
 from ..utils import check_for_sqlite, return_attrib
 
 register = Library()
+
+
+@register.simple_tag(takes_context=True)
+def common_calculate_title(context):
+    if context.get('title'):
+        title_full = context.get('title')
+        title = truncatechars(
+            value=title_full, arg=setting_max_title_length.value
+        )
+    else:
+        if context.get('delete_view'):
+            title =  _('Confirm delete')
+            title_full = title
+        else:
+            if context.get('form'):
+                if context.get('object'):
+                    title = _('Edit %s') % context.get('object')
+                    title_full = title
+                else:
+                    title = _('Confirm')
+                    title_full = title
+            else:
+                if context.get('read_only'):
+                    title = _('Details for: %s') % context.get('object')
+                    title_full = title
+                else:
+                    if context.get('object'):
+                        title = _('Edit: %s') % context.get('object')
+                        title_full = title
+                    else:
+                        title = _('Create')
+                        title_full = title
+
+    return {'title': title, 'title_full': title_full}
 
 
 @register.simple_tag

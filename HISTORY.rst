@@ -180,6 +180,8 @@
   Tesseract bug 1670 
   (https://github.com/tesseract-ocr/tesseract/issues/1670)
 * Load only one language in the document properties form.
+* Convert title calculation form to a template tag.
+* Show the full title as a hover title even when truncated.
 
 3.1.11 (2019-04-XX)
 ===================
