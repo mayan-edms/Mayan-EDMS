@@ -96,6 +96,7 @@ class ConverterBase(object):
             file_object=file_object, mimetype_only=False
         )[0]
         self.soffice_file = None
+        Image.init()
 
     def to_pdf(self):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
