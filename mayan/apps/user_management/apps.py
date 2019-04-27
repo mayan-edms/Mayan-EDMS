@@ -18,6 +18,7 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.metadata import MetadataLookup
 from mayan.apps.navigation import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
@@ -122,15 +123,15 @@ class UserManagementApp(MayanAppConfig):
         ModelPermission.register(
             model=Group, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_group_delete, permission_group_edit,
-                permission_group_view,
+                permission_events_view, permission_group_delete,
+                permission_group_edit, permission_group_view,
             )
         )
         ModelPermission.register(
             model=User, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_user_delete, permission_user_edit,
-                permission_user_view
+                permission_events_view, permission_user_delete,
+                permission_user_edit, permission_user_view
             )
         )
 
