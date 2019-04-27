@@ -13,10 +13,11 @@ APP_LIST = (
     'checkouts', 'common', 'converter', 'dashboards', 'dependencies',
     'django_gpg', 'document_comments', 'document_indexing',
     'document_parsing', 'document_signatures', 'document_states',
-    'documents', 'dynamic_search', 'events', 'linking', 'lock_manager',
-    'mayan_statistics', 'mailer', 'metadata', 'mirroring', 'motd',
-    'navigation', 'ocr', 'permissions', 'rest_api', 'smart_settings',
-    'sources', 'storage', 'tags', 'task_manager', 'user_management'
+    'documents', 'dynamic_search', 'events', 'file_metadata', 'linking',
+    'lock_manager', 'mayan_statistics', 'mailer', 'metadata', 'mirroring',
+    'motd', 'navigation', 'ocr', 'permissions', 'rest_api',
+    'smart_settings', 'sources', 'storage', 'tags', 'task_manager',
+    'user_management'
 )
 
 LANGUAGE_LIST = (

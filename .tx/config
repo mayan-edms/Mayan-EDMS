@@ -67,12 +67,6 @@ source_lang = en
 source_file = mayan/apps/django_gpg/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.documents-2-0]
-file_filter = mayan/apps/documents/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/documents/locale/en/LC_MESSAGES/django.po
-type = PO
-
 [mayan-edms.document_comments-2-0]
 file_filter = mayan/apps/document_comments/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
@@ -103,6 +97,12 @@ source_lang = en
 source_file = mayan/apps/document_states/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.documents-2-0]
+file_filter = mayan/apps/documents/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/documents/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.dynamic_search-2-0]
 file_filter = mayan/apps/dynamic_search/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
@@ -113,6 +113,12 @@ type = PO
 file_filter = mayan/apps/events/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/events/locale/en/LC_MESSAGES/django.po
+type = PO
+
+[mayan-edms.file_metadata-2-0]
+file_filter = mayan/apps/file_metadata/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/file_metadata/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.linking-2-0]
