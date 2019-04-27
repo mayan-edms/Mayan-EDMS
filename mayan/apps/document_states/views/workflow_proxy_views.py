@@ -64,9 +64,7 @@ class WorkflowListView(SingleObjectListView):
             'hide_object': True,
             'no_results_icon': icon_workflow_list,
             'no_results_main_link': link_setup_workflow_create.resolve(
-                context=RequestContext(
-                    self.request, {}
-                )
+                context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
                 'Create some workflows and associated them with a document '
@@ -137,7 +135,7 @@ class WorkflowStateListView(SingleObjectListView):
             'hide_link': True,
             'no_results_main_link': link_setup_workflow_state_create.resolve(
                 context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
+                    request=self.request, dict_={'object': self.get_workflow()}
                 )
             ),
             'no_results_text': _(

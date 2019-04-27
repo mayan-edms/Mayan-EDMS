@@ -424,7 +424,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
             'no_results_icon': icon_workflow_state,
             'no_results_main_link': link_setup_workflow_state_create.resolve(
                 context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
+                    request=self.request, dict_={'object': self.get_workflow()}
                 )
             ),
             'no_results_text': _(
@@ -551,7 +551,7 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
             'no_results_icon': icon_workflow_transition,
             'no_results_main_link': link_setup_workflow_transition_create.resolve(
                 context=RequestContext(
-                    self.request, {'object': self.get_workflow()}
+                    request=self.request, dict_={'object': self.get_workflow()}
                 )
             ),
             'no_results_text': _(

@@ -267,7 +267,7 @@ class DocumentTagListView(TagListView):
                 'no_results_title': _('Document has no tags attached'),
                 'no_results_main_link': link_document_tag_multiple_attach.resolve(
                     context=RequestContext(
-                        self.request, {'object': self.document}
+                        request=self.request, dict_={'object': self.document}
                     )
                 ),
                 'object': self.document,

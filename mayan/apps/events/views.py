@@ -108,9 +108,7 @@ class NotificationListView(SingleObjectListView):
             'hide_object': True,
             'no_results_icon': icon_user_notifications_list,
             'no_results_main_link': link_event_types_subscriptions_list.resolve(
-                context=RequestContext(
-                    self.request, {}
-                )
+                context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
                 'Subscribe to global or object events to receive '

@@ -107,7 +107,11 @@ class DocumentCommentListView(SingleObjectListView):
                 'They are great for collaboration.'
             ),
             'no_results_main_link': link_comment_add.resolve(
-                RequestContext(self.request, {'object': self.get_document()})
+                RequestContext(
+                    request=self.request, dict_={
+                        'object': self.get_document()
+                    }
+                )
             ),
             'no_results_title': _('There are no comments'),
             'object': self.get_document(),

@@ -307,17 +307,23 @@ class DocumentVersionSignatureListView(SingleObjectListView):
             'no_results_secondary_links': [
                 link_document_version_signature_detached_create.resolve(
                     RequestContext(
-                        self.request, {'object': self.get_document_version()}
+                        request=self.request, dict_={
+                            'object': self.get_document_version()
+                        }
                     )
                 ),
                 link_document_version_signature_embedded_create.resolve(
                     RequestContext(
-                        self.request, {'object': self.get_document_version()}
+                        request=self.request, dict_={
+                            'object': self.get_document_version()
+                        }
                     )
                 ),
                 link_document_version_signature_upload.resolve(
                     RequestContext(
-                        self.request, {'object': self.get_document_version()}
+                        request=self.request, dict_={
+                            'object': self.get_document_version()
+                        }
                     )
                 ),
             ],

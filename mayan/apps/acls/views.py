@@ -138,7 +138,9 @@ class ACLListView(SingleObjectListView):
             'no_results_icon': icon_acl_list,
             'no_results_main_link': link_acl_create.resolve(
                 context=RequestContext(
-                    self.request, {'resolved_object': self.content_object}
+                    request=self.request, dict_={
+                        'resolved_object': self.content_object
+                    }
                 )
             ),
             'no_results_title': _(

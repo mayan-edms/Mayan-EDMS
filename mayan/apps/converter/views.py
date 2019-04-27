@@ -218,7 +218,9 @@ class TransformationListView(SingleObjectListView):
             'no_results_icon': icon_transformation_list,
             'no_results_main_link': link_transformation_create.resolve(
                 context=RequestContext(
-                    self.request, {'content_object': self.content_object}
+                    request=self.request, dict_={
+                        'content_object': self.content_object
+                    }
                 )
             ),
             'no_results_text': _(
