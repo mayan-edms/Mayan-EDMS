@@ -168,6 +168,10 @@
 * Commit the group event in conjunction with the role event
   when a group is added or remove from role.
 * Update the role permission view to use the new AddRemoveView.
+* Rename transformation manager method add_for_model to
+  add_to_object.
+* Rename transformation manager method get_for_model to
+  get_for_object.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -83,7 +83,7 @@ class TransformationCreateView(SingleObjectCreateView):
         )
 
     def get_queryset(self):
-        return Transformation.objects.get_for_model(self.content_object)
+        return Transformation.objects.get_for_object(obj=self.content_object)
 
 
 class TransformationDeleteView(SingleObjectDeleteView):
@@ -233,4 +233,4 @@ class TransformationListView(SingleObjectListView):
         }
 
     def get_object_list(self):
-        return Transformation.objects.get_for_model(obj=self.content_object)
+        return Transformation.objects.get_for_object(obj=self.content_object)

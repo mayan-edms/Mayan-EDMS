@@ -116,7 +116,7 @@ class TransformationTestCase(GenericDocumentTestCase):
 
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationCrop,
             arguments={'top': '10'}
         )
@@ -128,7 +128,7 @@ class TransformationTestCase(GenericDocumentTestCase):
 
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationCrop,
             arguments={'top': 'x', 'left': '-'}
         )
@@ -140,7 +140,7 @@ class TransformationTestCase(GenericDocumentTestCase):
 
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationCrop,
             arguments={'top': '-1000', 'bottom': '100000000'}
         )
@@ -152,12 +152,12 @@ class TransformationTestCase(GenericDocumentTestCase):
 
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationCrop,
             arguments={'top': '1000', 'bottom': '1000'}
         )
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationCrop,
             arguments={'left': '1000', 'right': '10000'}
         )
@@ -167,7 +167,7 @@ class TransformationTestCase(GenericDocumentTestCase):
     def test_lineart_transformations(self):
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationLineArt,
             arguments={}
         )
@@ -177,21 +177,21 @@ class TransformationTestCase(GenericDocumentTestCase):
     def test_rotate_transformations(self):
         document_page = self.document.pages.first()
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationRotate90,
             arguments={}
         )
 
         self.assertTrue(document_page.generate_image().startswith('page'))
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationRotate180,
             arguments={}
         )
 
         self.assertTrue(document_page.generate_image().startswith('page'))
 
-        Transformation.objects.add_for_model(
+        Transformation.objects.add_to_object(
             obj=document_page, transformation=TransformationRotate270,
             arguments={}
         )

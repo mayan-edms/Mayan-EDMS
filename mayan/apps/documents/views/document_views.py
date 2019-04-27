@@ -515,7 +515,7 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
     def object_action(self, form, instance):
         try:
             for page in instance.pages.all():
-                Transformation.objects.get_for_model(page).delete()
+                Transformation.objects.get_for_object(obj=page).delete()
         except Exception as exception:
             messages.error(
                 self.request, _(
@@ -539,7 +539,7 @@ class DocumentTransformationsCloneView(FormView):
             )
 
             for page in target_pages:
-                Transformation.objects.get_for_model(page).delete()
+                Transformation.objects.get_for_object(obj=page).delete()
 
             Transformation.objects.copy(
                 source=form.cleaned_data['page'], targets=target_pages

@@ -388,7 +388,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 
@@ -400,7 +400,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 
@@ -413,7 +413,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             arguments=TEST_TRANSFORMATION_ARGUMENT
         )
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 
@@ -428,7 +428,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            Transformation.objects.get_for_model(document_page).count(), 0
+            Transformation.objects.get_for_object(obj=document_page).count(), 0
         )
 
     def _request_document_multiple_clear_transformations(self):
@@ -447,7 +447,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj==document_page),
             (repr(transformation),)
         )
 
@@ -456,7 +456,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         response = self._request_document_multiple_clear_transformations()
         self.assertEqual(response.status_code, 302)
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 
@@ -470,7 +470,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 
@@ -485,7 +485,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            Transformation.objects.get_for_model(document_page).count(), 0
+            Transformation.objects.get_for_object(obj=document_page).count(), 0
         )
 
     def _request_empty_trash_view(self):

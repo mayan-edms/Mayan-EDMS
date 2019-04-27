@@ -165,7 +165,7 @@ class DocumentPage(models.Model):
         transformation_list = []
 
         # Stored transformations first
-        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
+        for stored_transformation in Transformation.objects.get_for_object(self, as_classes=True):
             transformation_list.append(stored_transformation)
 
         # Interactive transformations second

@@ -18,8 +18,8 @@ logger = logging.getLogger(__name__)
 
 
 class TransformationManager(models.Manager):
-    def add_for_model(self, obj, transformation, arguments=None):
-        content_type = ContentType.objects.get_for_model(obj)
+    def add_to_object(self, obj, transformation, arguments=None):
+        content_type = ContentType.objects.get_for_model(model=obj)
 
         self.create(
             content_type=content_type, object_id=obj.pk,
@@ -32,7 +32,7 @@ class TransformationManager(models.Manager):
         """
         Copy transformation from source to all targets
         """
-        content_type = ContentType.objects.get_for_model(source)
+        content_type = ContentType.objects.get_for_model(model=source)
 
         # Get transformations
         transformations = self.filter(
@@ -67,7 +67,7 @@ class TransformationManager(models.Manager):
                 map(lambda entry: self.model(**entry), results),
             )
 
-    def get_for_model(self, obj, as_classes=False):
+    def get_for_object(self, obj, as_classes=False):
         """
         as_classes == True returns the transformation classes from .classes
         ready to be feed to the converter class
