@@ -9,7 +9,9 @@ from django.db.models import Q
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 
-from mayan.apps.common.utils import return_attrib, return_related
+from mayan.apps.common.utils import (
+    resolve_attribute, return_attrib, return_related
+)
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.models import StoredPermission
 
@@ -190,38 +192,59 @@ class AccessControlListManager(models.Manager):
         else:
             return queryset
 
-    def get_inherited_permissions(self, role, obj):
-        try:
-            instance = obj.first()
-        except AttributeError:
-            instance = obj
-        else:
-            if not instance:
-                return StoredPermission.objects.none()
+    def get_inherited_permissions(self, obj, role):
+        # Get permission inherited from a related object's ACLs
+        queryset = self._get_inherited_object_permissions(obj=obj, role=role)
+
+        # Get permission granted to the role
+        queryset = queryset | role.permissions.all()
+
+        # Filter the permissions to the ones that apply to the model
+        queryset = ModelPermission.get_for_instance(
+            instance=obj
+        ).filter(
+            pk__in=queryset
+        )
+
+        return queryset
+
+    def _get_inherited_object_permissions(self, obj, role):
+        queryset = StoredPermission.objects.none()
+
+        if not obj:
+            return queryset
 
         try:
-            parent_accessor = ModelPermission.get_inheritance(type(instance))
+            related_field = ModelPermission.get_inheritance(
+                model=type(obj)
+            )
         except KeyError:
-            return StoredPermission.objects.none()
+            pass
         else:
             try:
-                parent_object = return_attrib(
-                    obj=instance, attrib=parent_accessor
+                parent_object = resolve_attribute(
+                    obj=obj, attribute=related_field
                 )
             except AttributeError:
                 # Parent accessor is not an attribute, try it as a related
                 # field.
                 parent_object = return_related(
-                    instance=instance, related_field=parent_accessor
+                    instance=obj, related_field=related_field
                 )
-            content_type = ContentType.objects.get_for_model(parent_object)
+            content_type = ContentType.objects.get_for_model(model=parent_object)
             try:
-                return self.get(
-                    role=role, content_type=content_type,
-                    object_id=parent_object.pk
+                queryset = queryset | self.get(
+                    content_type=content_type, object_id=parent_object.pk,
+                    role=role
                 ).permissions.all()
             except self.model.DoesNotExist:
-                return StoredPermission.objects.none()
+                pass
+
+            queryset = queryset | self._get_inherited_object_permissions(
+                obj=parent_object, role=role
+            )
+
+        return queryset
 
     def grant(self, permission, role, obj):
         class_permissions = ModelPermission.get_for_class(klass=obj.__class__)

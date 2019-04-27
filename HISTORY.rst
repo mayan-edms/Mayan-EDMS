@@ -183,6 +183,7 @@
 * Convert title calculation form to a template tag.
 * Show the full title as a hover title even when truncated.
 * Increase default title truncation length to 120 characters.
+* Improve inherited permission computation.
 
 3.1.11 (2019-04-XX)
 ===================
