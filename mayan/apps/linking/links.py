@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_smart_link_condition_create, icon_smart_link_create,

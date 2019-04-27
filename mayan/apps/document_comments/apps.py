@@ -7,8 +7,8 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_object, menu_secondary
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.events import ModelEventType
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
     event_document_comment_create, event_document_comment_delete

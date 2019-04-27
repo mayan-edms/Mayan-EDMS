@@ -11,7 +11,7 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .links import (
     link_cabinet_list, link_document_cabinet_list,

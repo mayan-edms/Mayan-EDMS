@@ -1,22 +1,17 @@
 from __future__ import unicode_literals
 
-import itertools
-
 from django.contrib.auth.models import Group
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    AddRemoveView, AssignRemoveView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.user_management.permissions import permission_group_edit
 
-from .classes import Permission, PermissionNamespace
 from .icons import icon_role_list
 from .links import link_role_create
 from .models import Role, StoredPermission
@@ -144,7 +139,6 @@ class SetupRolePermissionsView(AddRemoveView):
             ),
             'title': _('Permissions for role: %s') % self.main_object,
         }
-
 
 
 class RoleListView(SingleObjectListView):

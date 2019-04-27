@@ -14,7 +14,7 @@ from mayan.apps.common.signals import post_initial_setup, post_upgrade
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.signals import post_version_upload
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import StagingFile

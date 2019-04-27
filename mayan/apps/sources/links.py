@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
 )
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .literals import (
     SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,

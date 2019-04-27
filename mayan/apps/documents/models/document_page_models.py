@@ -10,12 +10,12 @@ from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.converter import (
+from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
+from mayan.apps.converter.models import Transformation
+from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
-from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
-from mayan.apps.converter.models import Transformation
 from mayan.apps.converter.utils import get_converter_class
 
 from ..managers import DocumentPageCachedImage, DocumentPageManager

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .icons import icon_namespace_list
 from .permissions import permission_settings_edit, permission_settings_view

@@ -8,7 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 
 import qsstats
 
-from mayan.apps.mayan_statistics import StatisticLineChart, StatisticNamespace
+from mayan.apps.mayan_statistics.classes import (
+    StatisticLineChart, StatisticNamespace
+)
 
 from .permissions import permission_document_view
 

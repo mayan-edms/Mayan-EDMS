@@ -4,7 +4,7 @@ import logging
 
 from django.apps import apps
 
-from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.celery import app
 

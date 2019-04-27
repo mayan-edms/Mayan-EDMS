@@ -17,7 +17,7 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import DocumentStateHelper, WorkflowAction

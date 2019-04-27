@@ -173,6 +173,7 @@
 * Rename transformation manager method get_for_model to
   get_for_object.
 * Load the converter class on demand.
+* Remove app top level star imports.
 
 3.1.11 (2019-04-XX)
 ===================

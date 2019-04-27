@@ -8,7 +8,7 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_main, menu_object, menu_secondary, menu_tools, menu_user
 )
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .html_widgets import (
     ObjectLinkWidget, widget_event_actor_link, widget_event_type_link

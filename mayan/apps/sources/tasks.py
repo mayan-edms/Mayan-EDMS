@@ -11,7 +11,7 @@ from mayan.celery import app
 
 from mayan.apps.common.compressed_files import Archive
 from mayan.apps.common.exceptions import NoMIMETypeMatch
-from mayan.apps.lock_manager import LockError
+from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
 
 from .literals import (

@@ -12,7 +12,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_main, menu_secondary
 from mayan.apps.dashboards.dashboards import dashboard_main
-from mayan.apps.events import ModelEventType
+from mayan.apps.events.classes import ModelEventType
 from mayan.celery import app
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts

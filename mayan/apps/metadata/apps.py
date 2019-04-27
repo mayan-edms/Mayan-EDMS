@@ -20,13 +20,13 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_document_type_change
-from mayan.apps.events import ModelEventType
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.celery import app
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentMetadataHelper
 from .events import (

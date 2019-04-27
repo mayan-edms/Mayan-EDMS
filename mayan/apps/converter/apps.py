@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_object, menu_secondary
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .links import (
     link_transformation_create, link_transformation_delete,

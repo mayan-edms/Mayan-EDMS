@@ -25,7 +25,7 @@ from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
 )
 from mayan.apps.documents.tasks import task_upload_new_version
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .exceptions import SourceException
 from .forms import (

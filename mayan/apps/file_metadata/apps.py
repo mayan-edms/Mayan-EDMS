@@ -15,8 +15,8 @@ from mayan.apps.common.menus import (
 from mayan.apps.document_indexing.handlers import handler_index_document
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.documents.signals import post_version_upload
-from mayan.apps.events import ModelEventType
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .drivers import *  # NOQA

@@ -16,7 +16,7 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .handlers import (

@@ -14,11 +14,11 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_tools
 )
-from mayan.apps.events import ModelEventType
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import MailerBackend

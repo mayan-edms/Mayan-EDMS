@@ -2,7 +2,7 @@ from __future__ import unicode_literals, absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .icons import icon_comment_add, icon_comment_delete, icon_comments_for_document
 from .permissions import (

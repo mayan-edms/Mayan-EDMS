@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
-from mayan.apps.navigation import Link
+from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_clear_image_cache,

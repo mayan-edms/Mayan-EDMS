@@ -447,7 +447,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertQuerysetEqual(
-            Transformation.objects.get_for_object(obj==document_page),
+            Transformation.objects.get_for_object(obj=document_page),
             (repr(transformation),)
         )
 

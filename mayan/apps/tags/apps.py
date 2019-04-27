@@ -14,12 +14,12 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.events import ModelEventType
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
     event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove

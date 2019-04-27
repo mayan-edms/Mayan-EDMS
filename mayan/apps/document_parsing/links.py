@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.navigation import Link, get_cascade_condition
+from mayan.apps.navigation.classes import Link
+from mayan.apps.navigation.utils import get_cascade_condition
 
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,

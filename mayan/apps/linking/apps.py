@@ -11,7 +11,7 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,

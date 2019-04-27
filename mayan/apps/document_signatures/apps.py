@@ -13,7 +13,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_facet, menu_object, menu_secondary, menu_tools
 )
-from mayan.apps.navigation import SourceColumn
+from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .handlers import (
