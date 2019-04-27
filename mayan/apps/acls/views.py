@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import itertools
 import logging
 
 from django.contrib.contenttypes.models import ContentType
@@ -12,11 +11,10 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.generics import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from mayan.apps.permissions import Permission, PermissionNamespace
-from mayan.apps.permissions.models import Role, StoredPermission
+from mayan.apps.permissions.models import Role
 
 from .classes import ModelPermission
 from .forms import ACLCreateForm
@@ -96,6 +94,8 @@ class ACLDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
+            'acl': self.get_object(),
+            'navigation_object_list': ('object', 'acl'),
             'object': self.get_object().content_object,
             'title': _('Delete ACL: %s') % self.get_object(),
         }
@@ -161,102 +161,88 @@ class ACLListView(SingleObjectListView):
         )
 
 
-class ACLPermissionsView(AssignRemoveView):
-    grouped = True
-    left_list_title = _('Available permissions')
-    right_list_title = _('Granted permissions')
+class ACLPermissionsView(AddRemoveView):
+    action_add_method = 'permissions_add'
+    action_remove_method = 'permissions_remove'
+    main_object_model = AccessControlList
+    main_object_permission = permission_acl_edit
+    main_object_pk_url_kwarg = 'pk'
+    list_added_title = _('Granted permissions')
+    list_available_title = _('Available permissions')
+    related_field = 'permissions'
 
-    @staticmethod
-    def generate_choices(entries):
-        results = []
+    def generate_choices(self, queryset):
+        namespaces_dictionary = {}
 
         # Sort permissions by their translatable label
-        entries = sorted(
-            entries, key=lambda permission: permission.volatile_permission.label
+        object_list = sorted(
+            queryset, key=lambda permission: permission.volatile_permission.label
         )
 
         # Group permissions by namespace
-        for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
-            permission_options = [
-                (force_text(permission.pk), permission) for permission in permissions
-            ]
-            results.append(
-                (PermissionNamespace.get(name=namespace), permission_options)
+        for permission in object_list:
+            namespaces_dictionary.setdefault(
+                permission.volatile_permission.namespace.label,
+                []
+            )
+            namespaces_dictionary[permission.volatile_permission.namespace.label].append(
+                (permission.pk, force_text(permission))
             )
 
-        return results
+        # Sort permissions by their translatable namespace label
+        return sorted(namespaces_dictionary.items())
 
-    def add(self, item):
-        permission = get_object_or_404(klass=StoredPermission, pk=item)
-        self.get_object().permissions.add(permission)
-
-    def dispatch(self, request, *args, **kwargs):
-        acl = get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            permissions=permission_acl_edit, user=request.user,
-            obj=acl.content_object
-        )
-
-        return super(
-            ACLPermissionsView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_available_list(self):
-        return ModelPermission.get_for_instance(
-            instance=self.get_object().content_object
-        ).exclude(id__in=self.get_granted_list().values_list('pk', flat=True))
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_disabled_choices(self):
         """
-        Get permissions from a parent's acls but remove the permissions we
-        already hold for this object
+        Get permissions from a parent's ACLs or directly granted to the role.
+        We return a list since that is what the form widget's can process.
         """
-        return map(
-            str, set(
-                self.get_object().get_inherited_permissions().values_list(
-                    'pk', flat=True
-                )
-            ).difference(
-                self.get_object().permissions.values_list('pk', flat=True)
-            )
+        return self.main_object.get_inherited_permissions().values_list(
+            'pk', flat=True
         )
 
     def get_extra_context(self):
         return {
-            'object': self.get_object().content_object,
-            'title': _('Role "%(role)s" permission\'s for "%(object)s"') % {
-                'role': self.get_object().role,
-                'object': self.get_object().content_object,
-            },
+            'acl': self.main_object,
+            'object': self.main_object.content_object,
+            'navigation_object_list': ('object', 'acl'),
+            'title': _('Role "%(role)s" permission\'s for "%(object)s".') % {
+                'role': self.main_object.role,
+                'object': self.main_object.content_object,
+            }
         }
 
-    def get_granted_list(self):
-        """
-        Merge or permissions we hold for this object and the permissions we
-        hold for this object's parent via another ACL
-        """
-        merged_pks = self.get_object().permissions.values_list('pk', flat=True) | self.get_object().get_inherited_permissions().values_list('pk', flat=True)
-        return StoredPermission.objects.filter(pk__in=merged_pks)
-
-    def get_object(self):
-        return get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
-
-    def get_right_list_help_text(self):
-        if self.get_object().get_inherited_permissions():
+    def get_list_added_help_text(self):
+        if self.main_object.get_inherited_permissions():
             return _(
-                'Disabled permissions are inherited from a parent object.'
+                'Disabled permissions are inherited from a parent object or '
+                'directly granted to the role and can\'t be removed from this '
+                'view. Inherited permissions need to be removed from the '
+                'parent object\'s ACL or from them role via the Setup menu.'
             )
+        else:
+            return super(ACLPermissionsView, self).get_list_added_help_text()
 
-        return None
+    def get_list_added_queryset(self):
+        """
+        Merge of permissions we hold for this object and the permissions we
+        hold for this object's parents via another ACL. .distinct() is added
+        in case the permission was added to the ACL and then added to a
+        parent ACL's and thus inherited and would appear twice. If
+        order to remove the double permission from the ACL it would need to be
+        remove from the parent first to enable the choice in the form,
+        remove it from the ACL and then re-add it to the parent ACL.
+        """
+        queryset_acl = super(ACLPermissionsView, self).get_list_added_queryset()
 
-    def left_list(self):
-        Permission.refresh()
-        return ACLPermissionsView.generate_choices(self.get_available_list())
+        return (
+            queryset_acl | self.main_object.get_inherited_permissions()
+        ).distinct()
 
-    def remove(self, item):
-        permission = get_object_or_404(klass=StoredPermission, pk=item)
-        self.get_object().permissions.remove(permission)
-
-    def right_list(self):
-        return ACLPermissionsView.generate_choices(self.get_granted_list())
+    def get_secondary_object_source_queryset(self):
+        return ModelPermission.get_for_instance(
+            instance=self.main_object.content_object
+        )

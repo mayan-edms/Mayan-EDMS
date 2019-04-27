@@ -185,6 +185,8 @@
 * Increase default title truncation length to 120 characters.
 * Improve inherited permission computation.
 * Add test case mixin that produces ephimeral models.
+* Update ACL permissions view to use the new AddRemoveView class.
+* Add ACL created and edited events.
 
 3.1.11 (2019-04-XX)
 ===================

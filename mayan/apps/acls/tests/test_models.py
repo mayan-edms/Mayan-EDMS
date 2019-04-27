@@ -10,6 +10,7 @@ from mayan.apps.documents.tests import (
     TEST_DOCUMENT_TYPE_2_LABEL
 )
 
+from ..classes import ModelPermission
 from ..models import AccessControlList
 
 from .mixins import ACLTestMixin
@@ -148,3 +149,36 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
         self.assertTrue(self.document_1 in result)
         self.assertTrue(self.document_2 in result)
         self.assertTrue(self.document_3 in result)
+
+
+class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
+    def test_retrieve_inherited_role_permission_not_model_applicable(self):
+        self._create_test_model()
+        self.test_object = self.TestModel.objects.create()
+        self._create_test_acl()
+        self._create_test_permission()
+
+        self.test_role.grant(permission=self.test_permission)
+
+        queryset = AccessControlList.objects.get_inherited_permissions(
+            obj=self.test_object, role=self.test_role
+        )
+        self.assertTrue(self.test_permission.stored_permission not in queryset)
+
+    def test_retrieve_inherited_role_permission_model_applicable(self):
+        self._create_test_model()
+        self.test_object = self.TestModel.objects.create()
+        self._create_test_acl()
+        self._create_test_permission()
+
+        ModelPermission.register(
+            model=self.test_object._meta.model, permissions=(
+                self.test_permission,
+            )
+        )
+        self.test_role.grant(permission=self.test_permission)
+
+        queryset = AccessControlList.objects.get_inherited_permissions(
+            obj=self.test_object, role=self.test_role
+        )
+        self.assertTrue(self.test_permission.stored_permission in queryset)
