@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -9,45 +9,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:41-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:38
+#: apps.py:46
 msgid "Mailer"
 msgstr "Posta gönderici"
 
-#: apps.py:53
+#: apps.py:66
 msgid "Date and time"
 msgstr "Tarih ve saat"
 
-#: apps.py:56 models.py:25 models.py:168
+#: apps.py:69 models.py:26 models.py:222
 msgid "Message"
 msgstr "Mesaj"
 
-#: apps.py:59 apps.py:74 models.py:37
-msgid "Label"
-msgstr "Etiket"
+#: events.py:7 permissions.py:7 queues.py:7 settings.py:11
+msgid "Mailing"
+msgstr "Mail atma"
 
-#: apps.py:62
-msgid "Default?"
-msgstr "Varsayılan?"
-
-#: apps.py:68
-msgid "Enabled?"
-msgstr "Etkin mi?"
+#: events.py:10
+#, fuzzy
+#| msgid "Email document"
+msgid "Email sent"
+msgstr "E-posta belgesi"
 
 #: forms.py:60 forms.py:121
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Alıcının e-posta adresi. Virgülle veya noktalı virgülle ayrılmış birden çok adres olabilir."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Alıcının e-posta adresi. Virgülle veya noktalı virgülle ayrılmış birden çok "
+"adres olabilir."
 
 #: forms.py:62 forms.py:123
 msgid "Email address"
@@ -65,7 +66,7 @@ msgstr "Gövde"
 msgid "The email profile that will be used to send this email."
 msgstr "Bu e-postayı göndermek için kullanılacak e-posta profili."
 
-#: forms.py:71 views.py:234
+#: forms.py:71 views.py:238
 msgid "Mailing profile"
 msgstr "Posta profili"
 
@@ -73,43 +74,43 @@ msgstr "Posta profili"
 msgid "Backend"
 msgstr "Arka Ucu"
 
-#: links.py:20 links.py:27
+#: links.py:18 links.py:28
 msgid "Email document"
 msgstr "E-posta belgesi"
 
-#: links.py:24 links.py:30
+#: links.py:24 links.py:32
 msgid "Email link"
 msgstr "E-posta bağlantısı"
 
-#: links.py:35
+#: links.py:37
 msgid "System mailer error log"
 msgstr "Sistem postası hata günlüğü"
 
-#: links.py:40
+#: links.py:42
 msgid "User mailer create"
 msgstr "Kullanıcı postacısı oluştur"
 
-#: links.py:44
+#: links.py:48
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:48
+#: links.py:54
 msgid "Edit"
 msgstr "Düzenle"
 
-#: links.py:52
+#: links.py:58
 msgid "Log"
 msgstr "Günlük"
 
-#: links.py:57
+#: links.py:63
 msgid "Mailing profiles list"
 msgstr "Posta profilleri listesi"
 
-#: links.py:62
+#: links.py:68
 msgid "Mailing profiles"
 msgstr "Posta profilleri"
 
-#: links.py:66 views.py:253
+#: links.py:74 views.py:257
 msgid "Test"
 msgstr "Test"
 
@@ -120,7 +121,11 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Bu e-postaya şu belge eklenmiştir: {{document}}\n\n --------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
+msgstr ""
+"Bu e-postaya şu belge eklenmiştir: {{document}}\n"
+"\n"
+" --------\n"
+" Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
 
 #: literals.py:13
 #, python-format
@@ -129,142 +134,178 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Bu belgeye erişmek için şu bağlantıyı tıklayın: {{link}}\n\n--------\n Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
+msgstr ""
+"Bu belgeye erişmek için şu bağlantıyı tıklayın: {{link}}\n"
+"\n"
+"--------\n"
+" Bu e-posta, %(project_title)s (%(project_website)s) adresinden gönderildi."
 
-#: mailers.py:14
+#: mailers.py:23 mailers.py:112
+msgid "From"
+msgstr ""
+
+#: mailers.py:26 mailers.py:115
+msgid ""
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+
+#: mailers.py:32
 msgid "Host"
 msgstr "Sunucu"
 
-#: mailers.py:16
+#: mailers.py:34
 msgid "The host to use for sending email."
 msgstr "E-posta göndermek için kullanılacak sunucu."
 
-#: mailers.py:21
+#: mailers.py:39
 msgid "Port"
 msgstr "Port"
 
-#: mailers.py:23
+#: mailers.py:41
 msgid "Port to use for the SMTP server."
 msgstr "SMTP sunucusu için kullanılacak bağlantı noktası."
 
-#: mailers.py:26
+#: mailers.py:44
 msgid "Use TLS"
 msgstr "TLS kullanın"
 
-#: mailers.py:29
+#: mailers.py:47
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "SMTP sunucusuyla konuşurken bir TLS (güvenli) bağlantı kullanıp kullanmamak. Bu, genellikle 587 numaralı bağlantı noktasındaki açık TLS bağlantıları için kullanılır."
+msgstr ""
+"SMTP sunucusuyla konuşurken bir TLS (güvenli) bağlantı kullanıp kullanmamak. "
+"Bu, genellikle 587 numaralı bağlantı noktasındaki açık TLS bağlantıları için "
+"kullanılır."
 
-#: mailers.py:34
+#: mailers.py:52
 msgid "Use SSL"
 msgstr "SSL'yi kullan"
 
-#: mailers.py:37
+#: mailers.py:55
 msgid ""
 "Whether to use an implicit TLS (secure) connection when talking to the SMTP "
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "SMTP sunucusuyla konuşurken kapalı bir TLS (güvenli) bağlantı kullanıp kullanmamak. Çoğu e-posta belgelerinde bu TLS bağlantı tipine SSL adı verilir. Genellikle port 465'te kullanılır. Sorun yaşıyorsanız açık TLS ayarı \"TLS Kullan\" konusuna bakın. \"Use TLS\" (TLS Kullan) ve \"Use SSL\" (SSL Kullan) seçenekleri karşılıklı olarak hariçtir, bu nedenle bu ayarlardan birini yalnızca True olarak ayarlayın."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"SMTP sunucusuyla konuşurken kapalı bir TLS (güvenli) bağlantı kullanıp "
+"kullanmamak. Çoğu e-posta belgelerinde bu TLS bağlantı tipine SSL adı "
+"verilir. Genellikle port 465'te kullanılır. Sorun yaşıyorsanız açık TLS "
+"ayarı \"TLS Kullan\" konusuna bakın. \"Use TLS\" (TLS Kullan) ve \"Use SSL"
+"\" (SSL Kullan) seçenekleri karşılıklı olarak hariçtir, bu nedenle bu "
+"ayarlardan birini yalnızca True olarak ayarlayın."
 
-#: mailers.py:46
+#: mailers.py:64
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: mailers.py:49
+#: mailers.py:67
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "SMTP sunucusu için kullanılacak kullanıcı adı. Boş ise, kimlik doğrulama denenmeyecektir."
+msgstr ""
+"SMTP sunucusu için kullanılacak kullanıcı adı. Boş ise, kimlik doğrulama "
+"denenmeyecektir."
 
-#: mailers.py:55
+#: mailers.py:73
 msgid "Password"
 msgstr "Parola"
 
-#: mailers.py:58
+#: mailers.py:76
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "SMTP sunucusu için kullanılacak şifre. Bu ayar, SMTP sunucusuna kimlik doğrulaması yaparken kullanıcı adı ile birlikte kullanılır. Bu ayarlardan herhangi biri boşsa, kimlik doğrulama denenmeyecektir."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"SMTP sunucusu için kullanılacak şifre. Bu ayar, SMTP sunucusuna kimlik "
+"doğrulaması yaparken kullanıcı adı ile birlikte kullanılır. Bu ayarlardan "
+"herhangi biri boşsa, kimlik doğrulama denenmeyecektir."
 
-#: mailers.py:76
+#: mailers.py:85
 msgid "Django SMTP backend"
 msgstr "Django SMTP arka uç"
 
-#: mailers.py:83
+#: mailers.py:107
 msgid "File path"
 msgstr "Dosya yolu"
 
-#: mailers.py:89
+#: mailers.py:122
 msgid "Django file based backend"
 msgstr "Django dosya tabanlı arka uç"
 
-#: models.py:22 models.py:165
+#: models.py:23 models.py:219
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: models.py:31
+#: models.py:32
 msgid "Log entry"
 msgstr "Kayıt girişi"
 
-#: models.py:32
+#: models.py:33
 msgid "Log entries"
 msgstr "Kayıt girdileri"
 
-#: models.py:41
+#: models.py:44
+msgid "Label"
+msgstr "Etiket"
+
+#: models.py:48
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Varsayılan olarak, bu posta profili, belge posta formunda önceden seçilecektir."
+msgstr ""
+"Varsayılan olarak, bu posta profili, belge posta formunda önceden "
+"seçilecektir."
 
-#: models.py:43
+#: models.py:50
 msgid "Default"
 msgstr "Varsayılan"
 
-#: models.py:45
+#: models.py:52
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models.py:48
+#: models.py:55
 msgid "The dotted Python path to the backend class."
 msgstr "Arka plan sınıfının noktalı Python yolu."
 
-#: models.py:49
+#: models.py:56
 msgid "Backend path"
 msgstr "Arka plan yolu"
 
-#: models.py:52
+#: models.py:59
 msgid "Backend data"
 msgstr "Verileri yedekle"
 
-#: models.py:59 models.py:162
+#: models.py:66 models.py:216
 msgid "User mailer"
 msgstr "Kullanıcı postası"
 
-#: models.py:60
+#: models.py:67
 msgid "User mailers"
 msgstr "Kullanıcı postaları"
 
-#: models.py:156
+#: models.py:80
+#, fuzzy
+#| msgid "Backend path"
+msgid "Backend label"
+msgstr "Arka plan yolu"
+
+#: models.py:210
 msgid "Test email from Mayan EDMS"
 msgstr "e-postayı test edin"
 
-#: models.py:174
+#: models.py:228
 msgid "User mailer log entry"
 msgstr "Kullanıcı postacı günlük girişi"
 
-#: models.py:175
+#: models.py:229
 msgid "User mailer log entries"
 msgstr "Kullanıcı postacı günlük kaydı"
-
-#: permissions.py:7 queues.py:8 settings.py:11
-msgid "Mailing"
-msgstr "Mail atma"
 
 #: permissions.py:10
 msgid "Send document link via email"
@@ -298,7 +339,7 @@ msgstr ""
 msgid "Use a mailing profile"
 msgstr ""
 
-#: queues.py:12
+#: queues.py:9
 msgid "Send document"
 msgstr "Belgeyi gönder"
 
@@ -363,37 +404,43 @@ msgstr "%(count)d belge bağlantıları e-posta teslimatı için sıraya alınd�
 msgid "New mailing profile backend selection"
 msgstr "Yeni posta profili arka uç seçimi"
 
-#: views.py:147
+#: views.py:151
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "\"%s\" posta profili oluşturma"
 
-#: views.py:173
+#: views.py:177
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Posta profilini silin: %s"
 
-#: views.py:184
+#: views.py:188
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Posta profilini düzenleme: %s"
 
-#: views.py:207
+#: views.py:211
 #, python-format
 msgid "%s error log"
 msgstr "%s hata günlüğü"
 
-#: views.py:229
+#: views.py:233
 msgid ""
-"Mailing profiles are email configurations. Mailing profiles are used to send"
-" documents via email."
+"Mailing profiles are email configurations. Mailing profiles are used to send "
+"documents via email."
 msgstr ""
 
-#: views.py:233
+#: views.py:237
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views.py:254
+#: views.py:258
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test posta profili: %s"
+
+#~ msgid "Default?"
+#~ msgstr "Varsayılan?"
+
+#~ msgid "Enabled?"
+#~ msgstr "Etkin mi?"

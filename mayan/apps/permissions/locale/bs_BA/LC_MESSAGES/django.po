@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:32 models.py:28 models.py:78 permissions.py:7
+#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Dozvole"
 
@@ -27,81 +29,73 @@ msgstr "Dozvole"
 msgid "Insufficient permissions."
 msgstr "Nedovoljne dozvole."
 
-#: links.py:16 links.py:41 models.py:89 views.py:216
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
 msgstr "Role"
 
-#: links.py:20
-msgid "Grant"
-msgstr "Odobri"
-
-#: links.py:24
-msgid "Revoke"
-msgstr "Ukini"
-
-#: links.py:29
+#: links.py:23
 msgid "Create new role"
 msgstr "Kreirajte novu ulogu"
 
-#: links.py:33
+#: links.py:29
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:36
+#: links.py:34
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:44 models.py:81
+#: links.py:45 models.py:105
 msgid "Groups"
 msgstr "Grupe"
 
-#: links.py:50
+#: links.py:52
 msgid "Role permissions"
 msgstr "Dozvole za ulogu"
 
-#: models.py:19
+#: models.py:27
 msgid "Namespace"
 msgstr "Imenovani prostor"
 
-#: models.py:20
+#: models.py:28
 msgid "Name"
 msgstr "Ime"
 
-#: models.py:27
+#: models.py:35
 msgid "Permission"
 msgstr "Permisija"
 
-#: models.py:74 search.py:16
+#: models.py:98 search.py:16
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:88
+#: models.py:112
 msgid "Role"
 msgstr "Uloga"
 
 #: permissions.py:10
-msgid "View roles"
-msgstr "Pregledaj role"
-
-#: permissions.py:13
-msgid "Edit roles"
-msgstr "Izmjeni role"
-
-#: permissions.py:16
 msgid "Create roles"
 msgstr "Kreiraj role"
 
-#: permissions.py:19
+#: permissions.py:13
 msgid "Delete roles"
 msgstr "Izbriši role"
 
-#: permissions.py:22
-msgid "Grant permissions"
-msgstr "Odobri dozvole"
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "Izmjeni role"
 
-#: permissions.py:25
-msgid "Revoke permissions"
-msgstr "Ukini dozvole"
+#: permissions.py:19
+msgid "View roles"
+msgstr "Pregledaj role"
 
 #: search.py:20
 msgid "Group name"
@@ -111,11 +105,15 @@ msgstr "Ime grupe"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili zamjenu u ovoj ulozi."
+msgstr ""
+"Lista odvojenih odvojenih grupa primarnih ključeva grupa za dodavanje ili "
+"zamjenu u ovoj ulozi."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova za dodelu ove uloge."
+msgstr ""
+"Lista odvojenih odvojenih primarnih ključeva za odvajanje odvojenih dijelova "
+"za dodelu ove uloge."
 
 #: serializers.py:90
 #, python-format
@@ -130,49 +128,49 @@ msgstr "Dostupne uloge"
 msgid "Group roles"
 msgstr "Grupne uloge"
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Uloge grupe: %s"
 
-#: views.py:85
+#: views.py:79
 msgid "Available groups"
 msgstr "Dostupne grupe"
 
-#: views.py:86
+#: views.py:80
 msgid "Role groups"
 msgstr "Uloge grupa"
 
-#: views.py:96
+#: views.py:89
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupe uloge: %s"
 
-#: views.py:98
+#: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:123
+#: views.py:104
 msgid "Available permissions"
 msgstr "Dostupne dozvole"
 
-#: views.py:124
+#: views.py:105
 msgid "Granted permissions"
 msgstr "Dodjeljene dozvole"
 
-#: views.py:165
+#: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:168
+#: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Dozvole za ulogu: %s"
 
-#: views.py:208
+#: views.py:156
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +178,18 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:215
+#: views.py:163
 msgid "There are no roles"
 msgstr ""
+
+#~ msgid "Grant"
+#~ msgstr "Odobri"
+
+#~ msgid "Revoke"
+#~ msgstr "Ukini"
+
+#~ msgid "Grant permissions"
+#~ msgstr "Odobri dozvole"
+
+#~ msgid "Revoke permissions"
+#~ msgstr "Ukini dozvole"

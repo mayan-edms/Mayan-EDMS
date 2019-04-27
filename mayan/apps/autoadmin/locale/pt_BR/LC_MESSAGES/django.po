@@ -2,51 +2,53 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2019
 # Aline Freitas <aline@alinefreitas.com.br>, 2019
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-07 02:23-0400\n"
+"POT-Creation-Date: 2019-04-27 18:39-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, "
+"2019\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:16 settings.py:9
+#: apps.py:15 settings.py:9
 msgid "Auto administrator"
 msgstr ""
 
-#: auth/allauth.py:53
+#: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
 
-#: models.py:64
+#: models.py:15
 msgid "Account"
 msgstr "Conta"
 
-#: models.py:67
+#: models.py:18
 msgid "Password"
 msgstr "Senha"
 
-#: models.py:70
+#: models.py:21
 msgid "Password hash"
 msgstr "Senha hash"
 
-#: models.py:76
+#: models.py:27
 msgid "Autoadmin properties"
 msgstr ""
 
@@ -56,8 +58,8 @@ msgstr ""
 
 #: settings.py:20
 msgid ""
-"The password of the automatically created super user account. If it is equal"
-" to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal "
+"to None, the password is randomly generated."
 msgstr ""
 
 #: settings.py:27

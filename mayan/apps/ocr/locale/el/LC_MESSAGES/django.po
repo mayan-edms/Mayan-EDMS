@@ -1,38 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:73 apps.py:148 apps.py:152 events.py:7 links.py:19 links.py:24
+#: apps.py:53 apps.py:132 apps.py:136 events.py:7 links.py:15 links.py:21
 #: permissions.py:7 queues.py:7 settings.py:7
 msgid "OCR"
 msgstr "Οπτική Αναγνώριση Χαρακτήρων"
 
-#: apps.py:123
-msgid "Document"
-msgstr "Έγγραφο"
+#: apps.py:112
+msgid "Date and time"
+msgstr ""
 
-#: apps.py:127
-msgid "Added"
-msgstr "Προστέθηκε"
-
-#: apps.py:131 models.py:69
+#: apps.py:115 models.py:76
 msgid "Result"
 msgstr "Αποτέλεσμα"
+
+#: backends/tesseract.py:49
+msgid "Tesseract not found."
+msgstr ""
 
 #: events.py:10
 msgid "Document version submitted for OCR"
@@ -42,32 +43,32 @@ msgstr "Έκδοση εγγράφου υποβλήθηκε για οπτική �
 msgid "Document version OCR finished"
 msgstr "Η οπτική αναγνώριση του εγγράφου ολοκληρώθηκε"
 
-#: forms.py:17 forms.py:48
+#: forms.py:16 forms.py:47
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#: forms.py:77
+#: forms.py:76
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Σελίδα %(page_number)d"
 
-#: links.py:29 links.py:32
+#: links.py:27 links.py:32
 msgid "Submit for OCR"
 msgstr "Υποβολή προς οπτική αναγνώριση"
 
-#: links.py:36
+#: links.py:37
 msgid "Setup OCR"
 msgstr "Ρύθμιση οπτικής αναγνώρισης"
 
-#: links.py:41
+#: links.py:42
 msgid "OCR documents per type"
 msgstr "Έγγραφα OCR ανά τύπο"
 
-#: links.py:46 links.py:50 views.py:144
+#: links.py:47 links.py:53 views.py:154
 msgid "OCR errors"
 msgstr "Σφάλματα οπτικής αναγνώρισης"
 
-#: links.py:55
+#: links.py:59
 msgid "Download OCR text"
 msgstr "Κατέβασμα αναγνωρισμένου κειμένου"
 
@@ -77,7 +78,8 @@ msgstr "Τύπος εγγράφου"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
+msgstr ""
+"Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
 
 #: models.py:30
 msgid "Document type settings"
@@ -87,39 +89,39 @@ msgstr "Ρυθμίσεις τύπου εγγράφου"
 msgid "Document types settings"
 msgstr "Ρυθμίσεις τύπων εγγράφου."
 
-#: models.py:42
+#: models.py:45
 msgid "Document page"
 msgstr "Σελίδα εγγράφου"
 
-#: models.py:46
+#: models.py:49
 msgid "The actual text content extracted by the OCR backend."
 msgstr ""
 
-#: models.py:47
+#: models.py:50
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: models.py:53
+#: models.py:56
 msgid "Document page OCR content"
 msgstr "Περιεχόμενα αναγνωρισμένης σελίδας εγγράφου"
 
-#: models.py:54
+#: models.py:57
 msgid "Document pages OCR contents"
 msgstr "Περιεχόμενα αναγνωρισμένων σελίδων εγγράφου"
 
-#: models.py:64
+#: models.py:71
 msgid "Document version"
 msgstr "Έκδοση εγγράφου"
 
-#: models.py:67
+#: models.py:74
 msgid "Date time submitted"
 msgstr "Ημερομηνία και ώρα κατάθεσης"
 
-#: models.py:73
+#: models.py:80
 msgid "Document version OCR error"
 msgstr "Σφάλμα οπτικής αναγνώρισης έκδοσης εγγράφου"
 
-#: models.py:74
+#: models.py:81
 msgid "Document version OCR errors"
 msgstr "Σφάλματα οπτικής αναγνώρισης έκδοσης εγγράφου"
 
@@ -127,11 +129,11 @@ msgstr "Σφάλματα οπτικής αναγνώρισης έκδοσης ε
 msgid "Submit documents for OCR"
 msgstr "Υποβολή εγγάφων προς οπτική αναγνώριση"
 
-#: permissions.py:14
+#: permissions.py:13
 msgid "View the transcribed text from document"
 msgstr "Εμφάνιση του οπτικά αναγνωρισμένου κειμένου από το έγγραφο"
 
-#: permissions.py:18
+#: permissions.py:17
 msgid "Change document type OCR settings"
 msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OCR"
 
@@ -139,45 +141,58 @@ msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OC
 msgid "Document version OCR"
 msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
 
-#: settings.py:11
+#: settings.py:12
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
+msgstr ""
+"Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
 
-#: settings.py:20
+#: settings.py:21
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα οπτική αναγνώριση."
+msgstr ""
+"Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα "
+"οπτική αναγνώριση."
 
-#: views.py:44
+#: views.py:42
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Αποτελέσματα οπτικής αναγνώρισης του εγγράφου: %s"
 
-#: views.py:66
+#: views.py:64
 #, python-format
 msgid "OCR result for document page: %s"
 msgstr ""
 
-#: views.py:81
+#: views.py:79
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:95
+#: views.py:96
 msgid "Submit all documents of a type for OCR"
 msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς οπτικήαναγνώριση"
 
-#: views.py:107
-#, python-format
-msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr "%(count)d έγγραφα τύπου \"%(document_type)s\" προστέθηκαν στην λίστα προς οπτική αναγνώριση."
+#: views.py:110
+#, fuzzy, python-format
+#| msgid ""
+#| "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgid "%(count)d documents added to the OCR queue."
+msgstr ""
+"%(count)d έγγραφα τύπου \"%(document_type)s\" προστέθηκαν στην λίστα προς "
+"οπτική αναγνώριση."
 
-#: views.py:133
+#: views.py:143
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr "Τροποποίηση ρυθμίσεων οπτικής αναγνώρισης για τον τύπο εγγράφων: %s"
 
-#: views.py:162
+#: views.py:172
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Σφάλματα οπτικής αναγνώρισης του εγγράφου: %s"
+
+#~ msgid "Document"
+#~ msgstr "Έγγραφο"
+
+#~ msgid "Added"
+#~ msgstr "Προστέθηκε"

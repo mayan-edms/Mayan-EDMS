@@ -1,85 +1,88 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-27 18:40-0400\n"
 "PO-Revision-Date: 2019-03-16 22:54+0000\n"
 "Last-Translator: Yaman Sanobar <yman.snober@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:57 queues.py:8
-msgid "Document states"
+#: apps.py:59 links.py:39 links.py:132 links.py:159 models.py:60
+#: views/workflow_proxy_views.py:75 views/workflow_views.py:82
+msgid "Workflows"
 msgstr ""
 
-#: apps.py:95 apps.py:102
+#: apps.py:97 apps.py:104
 msgid "Current state of a workflow"
 msgstr ""
 
-#: apps.py:96
+#: apps.py:98
 msgid "Return the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:103
+#: apps.py:105
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:146 apps.py:211 forms.py:117 models.py:47 models.py:153
-#: models.py:224 models.py:287 workflow_actions.py:22
+#: apps.py:148 apps.py:211 forms.py:117 models.py:47 models.py:153
+#: models.py:234 models.py:297 workflow_actions.py:22
 msgid "Label"
 msgstr "العنوان"
 
-#: apps.py:149 models.py:44
+#: apps.py:151 models.py:44
 msgid "Internal name"
 msgstr ""
 
-#: apps.py:153
+#: apps.py:155
 msgid "Initial state"
 msgstr ""
 
-#: apps.py:154 apps.py:164 apps.py:174 apps.py:180
+#: apps.py:156 apps.py:166 apps.py:176 apps.py:182
 msgid "None"
 msgstr "لا شيء"
 
-#: apps.py:158
+#: apps.py:160
 msgid "Current state"
 msgstr ""
 
-#: apps.py:162 apps.py:189 models.py:454
+#: apps.py:164 apps.py:191 models.py:464
 msgid "User"
 msgstr "مستخدم"
 
-#: apps.py:168
+#: apps.py:170
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:172 apps.py:185
+#: apps.py:174 apps.py:187
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:178 apps.py:207 models.py:165
+#: apps.py:180 apps.py:207 models.py:165
 msgid "Completion"
 msgstr ""
 
-#: apps.py:192 forms.py:173 links.py:114 models.py:313 models.py:450
+#: apps.py:194 forms.py:173 links.py:144 models.py:323 models.py:460
 msgid "Transition"
 msgstr ""
 
-#: apps.py:196 forms.py:176 models.py:456
+#: apps.py:198 forms.py:176 models.py:466
 msgid "Comment"
 msgstr "تعليق"
 
-#: apps.py:201
+#: apps.py:203
 msgid "Is initial state?"
 msgstr ""
 
@@ -87,27 +90,27 @@ msgstr ""
 msgid "Enabled?"
 msgstr ""
 
-#: apps.py:220
+#: apps.py:218
 msgid "When?"
 msgstr ""
 
-#: apps.py:224
+#: apps.py:222
 msgid "Action type"
 msgstr ""
 
-#: apps.py:229 models.py:290
+#: apps.py:227 models.py:300
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:233 models.py:294
+#: apps.py:231 models.py:304
 msgid "Destination state"
 msgstr ""
 
-#: apps.py:237
+#: apps.py:235
 msgid "Triggers"
 msgstr ""
 
-#: error_logs.py:8 models.py:246
+#: error_logs.py:8 models.py:256
 msgid "Workflow state actions"
 msgstr ""
 
@@ -115,7 +118,7 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: forms.py:121 models.py:226
+#: forms.py:121 models.py:236
 msgid "Enabled"
 msgstr "مفعل"
 
@@ -127,77 +130,73 @@ msgstr "لا"
 msgid "Yes"
 msgstr "نعم"
 
-#: handlers.py:45
+#: handlers.py:54
 #, python-format
 msgid "Event trigger: %s"
 msgstr ""
 
-#: links.py:20 links.py:43 links.py:124 models.py:60 views.py:177 views.py:693
-msgid "Workflows"
-msgstr ""
-
-#: links.py:25
+#: links.py:16
 msgid "Create workflow"
 msgstr ""
 
-#: links.py:29 links.py:48 links.py:72 links.py:91
+#: links.py:22 links.py:46 links.py:76 links.py:97
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:34 models.py:51
+#: links.py:28 models.py:51
 msgid "Document types"
 msgstr ""
 
-#: links.py:39 links.py:53 links.py:77 links.py:96
+#: links.py:35 links.py:53 links.py:81 links.py:102
 msgid "Edit"
 msgstr "تحرير"
 
-#: links.py:57
+#: links.py:59
 msgid "Actions"
 msgstr "الإجراءات"
 
-#: links.py:62
+#: links.py:65
 msgid "Create action"
 msgstr ""
 
-#: links.py:67
+#: links.py:71
 msgid "Create state"
 msgstr ""
 
-#: links.py:81 links.py:133
+#: links.py:86 links.py:172
 msgid "States"
 msgstr ""
 
-#: links.py:86
+#: links.py:92
 msgid "Create transition"
 msgstr ""
 
-#: links.py:100
+#: links.py:107
 msgid "Transitions"
 msgstr ""
 
-#: links.py:106 queues.py:12
-msgid "Launch all workflows"
-msgstr ""
-
-#: links.py:111
-msgid "Detail"
-msgstr ""
-
-#: links.py:119
-msgid "Workflow documents"
-msgstr ""
-
-#: links.py:128
-msgid "State documents"
-msgstr ""
-
-#: links.py:137
+#: links.py:112
 msgid "Transition triggers"
 msgstr ""
 
-#: links.py:142
+#: links.py:119
 msgid "Preview"
+msgstr ""
+
+#: links.py:124 queues.py:12
+msgid "Launch all workflows"
+msgstr ""
+
+#: links.py:139
+msgid "Detail"
+msgstr ""
+
+#: links.py:153
+msgid "Workflow documents"
+msgstr ""
+
+#: links.py:165
+msgid "State documents"
 msgstr ""
 
 #: literals.py:9
@@ -214,7 +213,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:59 models.py:151 models.py:285 models.py:332
+#: models.py:59 models.py:151 models.py:295 models.py:342
 msgid "Workflow"
 msgstr ""
 
@@ -234,7 +233,7 @@ msgid ""
 "the workflow. Use numbers without the percent sign."
 msgstr ""
 
-#: models.py:171 models.py:220
+#: models.py:171 models.py:230
 msgid "Workflow state"
 msgstr ""
 
@@ -242,124 +241,128 @@ msgstr ""
 msgid "Workflow states"
 msgstr ""
 
-#: models.py:223
+#: models.py:233
 msgid "A simple identifier for this action."
 msgstr ""
 
-#: models.py:230
+#: models.py:240
 msgid "At which moment of the state this action will execute"
 msgstr ""
 
-#: models.py:231
+#: models.py:241
 msgid "When"
 msgstr ""
 
-#: models.py:235
+#: models.py:245
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr ""
 
-#: models.py:236
+#: models.py:246
 msgid "Entry action path"
 msgstr ""
 
-#: models.py:239
+#: models.py:249
 msgid "Entry action data"
 msgstr ""
 
-#: models.py:245
+#: models.py:255
 msgid "Workflow state action"
 msgstr ""
 
-#: models.py:302
+#: models.py:312
 msgid "Workflow transition"
 msgstr ""
 
-#: models.py:303
+#: models.py:313
 msgid "Workflow transitions"
 msgstr ""
 
-#: models.py:317
+#: models.py:327
 msgid "Event type"
 msgstr "Event type"
 
-#: models.py:321
+#: models.py:331
 msgid "Workflow transition trigger event"
 msgstr ""
 
-#: models.py:322
+#: models.py:332
 msgid "Workflow transitions trigger events"
 msgstr ""
 
-#: models.py:336
+#: models.py:346
 msgid "Document"
 msgstr ""
 
-#: models.py:342 models.py:443
+#: models.py:352 models.py:453
 msgid "Workflow instance"
 msgstr ""
 
-#: models.py:343
+#: models.py:353
 msgid "Workflow instances"
 msgstr ""
 
-#: models.py:446
+#: models.py:456
 msgid "Datetime"
 msgstr ""
 
-#: models.py:460
+#: models.py:470
 msgid "Workflow instance log entry"
 msgstr ""
 
-#: models.py:461
+#: models.py:471
 msgid "Workflow instance log entries"
 msgstr ""
 
-#: models.py:468
+#: models.py:478
 msgid "Not a valid transition choice."
 msgstr ""
 
-#: models.py:501
+#: models.py:511
 msgid "Workflow runtime proxy"
 msgstr ""
 
-#: models.py:502
+#: models.py:512
 msgid "Workflow runtime proxies"
 msgstr ""
 
-#: models.py:508
+#: models.py:518
 msgid "Workflow state runtime proxy"
 msgstr ""
 
-#: models.py:509
+#: models.py:519
 msgid "Workflow state runtime proxies"
 msgstr ""
 
-#: permissions.py:7
+#: permissions.py:8
 msgid "Document workflows"
 msgstr ""
 
-#: permissions.py:10
+#: permissions.py:12
 msgid "Create workflows"
 msgstr ""
 
-#: permissions.py:13
+#: permissions.py:15
 msgid "Delete workflows"
 msgstr ""
 
-#: permissions.py:16
+#: permissions.py:18
 msgid "Edit workflows"
 msgstr ""
 
-#: permissions.py:19
+#: permissions.py:21
 msgid "View workflows"
 msgstr ""
 
-#: permissions.py:25
+#: permissions.py:27
 msgid "Transition workflows"
 msgstr ""
 
-#: permissions.py:28
+#: permissions.py:30
 msgid "Execute workflow tools"
+msgstr ""
+
+#: queues.py:8
+msgid "Document states"
 msgstr ""
 
 #: serializers.py:22
@@ -400,217 +403,216 @@ msgstr ""
 msgid "Primary key of the transition to be added."
 msgstr ""
 
-#: views.py:71
+#: views/workflow_instance_views.py:42
 msgid ""
-"Assign workflows to the document type of this document to have this document"
-" execute those workflows. "
+"Assign workflows to the document type of this document to have this document "
+"execute those workflows. "
 msgstr ""
 
-#: views.py:75
+#: views/workflow_instance_views.py:46
 msgid "There are no workflow for this document"
 msgstr ""
 
-#: views.py:79
+#: views/workflow_instance_views.py:50
 #, python-format
 msgid "Workflows for document: %s"
 msgstr ""
 
-#: views.py:103
+#: views/workflow_instance_views.py:74
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr ""
 
-#: views.py:127
+#: views/workflow_instance_views.py:98
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
 msgstr ""
 
-#: views.py:136
+#: views/workflow_instance_views.py:107
 msgid "Submit"
 msgstr "ارسال"
 
-#: views.py:138
+#: views/workflow_instance_views.py:109
 #, python-format
 msgid "Do transition for workflow: %s"
 msgstr ""
 
-#: views.py:170
-msgid ""
-"Workflows store a series of states and keep track of the current state of a "
-"document. Transitions are used to change the current state to a new one."
-msgstr ""
-
-#: views.py:175
-msgid "No workflows have been defined"
-msgstr ""
-
-#: views.py:203
-msgid "Available document types"
-msgstr ""
-
-#: views.py:205
-msgid "Document types assigned this workflow"
-msgstr ""
-
-#: views.py:216
-msgid ""
-"Removing a document type from a workflow will also remove all running "
-"instances of that workflow for documents of the document type just removed."
-msgstr ""
-
-#: views.py:221
-#, python-format
-msgid "Document types assigned the workflow: %s"
-msgstr ""
-
-#: views.py:266
-#, python-format
-msgid "Create a \"%s\" workflow action"
-msgstr ""
-
-#: views.py:306
-#, python-format
-msgid "Delete workflow state action: %s"
-msgstr ""
-
-#: views.py:329
-#, python-format
-msgid "Edit workflow state action: %s"
-msgstr ""
-
-#: views.py:368
-msgid ""
-"Workflow state actions are macros that get executed when documents enters or"
-" leaves the state in which they reside."
-msgstr ""
-
-#: views.py:372
-msgid "There are no actions for this workflow state"
-msgstr ""
-
-#: views.py:376
-#, python-format
-msgid "Actions for workflow state: %s"
-msgstr ""
-
-#: views.py:410
-msgid "New workflow state action selection"
-msgstr ""
-
-#: views.py:428
-#, python-format
-msgid "Create states for workflow: %s"
-msgstr ""
-
-#: views.py:526 views.py:796
-msgid "Create states and link them using transitions."
-msgstr ""
-
-#: views.py:529
-msgid "This workflow doesn't have any states"
-msgstr ""
-
-#: views.py:532 views.py:802
-#, python-format
-msgid "States of workflow: %s"
-msgstr ""
-
-#: views.py:555
-msgid "Unable to save transition; integrity error."
-msgstr ""
-
-#: views.py:567
-#, python-format
-msgid "Create transitions for workflow: %s"
-msgstr ""
-
-#: views.py:653
-msgid ""
-"Create a transition and use it to move a workflow from  one state to "
-"another."
-msgstr ""
-
-#: views.py:657
-msgid "This workflow doesn't have any transitions"
-msgstr ""
-
-#: views.py:661
-#, python-format
-msgid "Transitions of workflow: %s"
-msgstr ""
-
-#: views.py:688
-msgid ""
-"Create some workflows and associated them with a document type. Active "
-"workflows will be shown here and the documents for which they are executing."
-msgstr ""
-
-#: views.py:692
-msgid "There are no workflows"
-msgstr ""
-
-#: views.py:723
+#: views/workflow_proxy_views.py:46
 msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
 msgstr ""
 
-#: views.py:727
+#: views/workflow_proxy_views.py:50
 msgid "There are no documents executing this workflow"
 msgstr ""
 
-#: views.py:730
+#: views/workflow_proxy_views.py:53
 #, python-format
 msgid "Documents with the workflow: %s"
 msgstr ""
 
-#: views.py:748
+#: views/workflow_proxy_views.py:70
+msgid ""
+"Create some workflows and associated them with a document type. Active "
+"workflows will be shown here and the documents for which they are executing."
+msgstr ""
+
+#: views/workflow_proxy_views.py:74
+msgid "There are no workflows"
+msgstr ""
+
+#: views/workflow_proxy_views.py:94
 msgid "There are documents in this workflow state"
 msgstr ""
 
-#: views.py:751
+#: views/workflow_proxy_views.py:97
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr ""
 
-#: views.py:799
+#: views/workflow_proxy_views.py:142 views/workflow_views.py:431
+msgid "Create states and link them using transitions."
+msgstr ""
+
+#: views/workflow_proxy_views.py:145
 msgid "This workflow doesn't have any state"
 msgstr ""
 
-#: views.py:837
+#: views/workflow_proxy_views.py:148 views/workflow_views.py:437
+#, python-format
+msgid "States of workflow: %s"
+msgstr ""
+
+#: views/workflow_views.py:75
+msgid ""
+"Workflows store a series of states and keep track of the current state of a "
+"document. Transitions are used to change the current state to a new one."
+msgstr ""
+
+#: views/workflow_views.py:80
+msgid "No workflows have been defined"
+msgstr ""
+
+#: views/workflow_views.py:108
+msgid "Available document types"
+msgstr ""
+
+#: views/workflow_views.py:110
+msgid "Document types assigned this workflow"
+msgstr ""
+
+#: views/workflow_views.py:121
+msgid ""
+"Removing a document type from a workflow will also remove all running "
+"instances of that workflow for documents of the document type just removed."
+msgstr ""
+
+#: views/workflow_views.py:126
+#, python-format
+msgid "Document types assigned the workflow: %s"
+msgstr ""
+
+#: views/workflow_views.py:171
+#, python-format
+msgid "Create a \"%s\" workflow action"
+msgstr ""
+
+#: views/workflow_views.py:211
+#, python-format
+msgid "Delete workflow state action: %s"
+msgstr ""
+
+#: views/workflow_views.py:234
+#, python-format
+msgid "Edit workflow state action: %s"
+msgstr ""
+
+#: views/workflow_views.py:273
+msgid ""
+"Workflow state actions are macros that get executed when documents enters or "
+"leaves the state in which they reside."
+msgstr ""
+
+#: views/workflow_views.py:277
+msgid "There are no actions for this workflow state"
+msgstr ""
+
+#: views/workflow_views.py:281
+#, python-format
+msgid "Actions for workflow state: %s"
+msgstr ""
+
+#: views/workflow_views.py:315
+msgid "New workflow state action selection"
+msgstr ""
+
+#: views/workflow_views.py:333
+#, python-format
+msgid "Create states for workflow: %s"
+msgstr ""
+
+#: views/workflow_views.py:434
+msgid "This workflow doesn't have any states"
+msgstr ""
+
+#: views/workflow_views.py:460
+msgid "Unable to save transition; integrity error."
+msgstr ""
+
+#: views/workflow_views.py:472
+#, python-format
+msgid "Create transitions for workflow: %s"
+msgstr ""
+
+#: views/workflow_views.py:558
+msgid ""
+"Create a transition and use it to move a workflow from  one state to another."
+msgstr ""
+
+#: views/workflow_views.py:562
+msgid "This workflow doesn't have any transitions"
+msgstr ""
+
+#: views/workflow_views.py:566
+#, python-format
+msgid "Transitions of workflow: %s"
+msgstr ""
+
+#: views/workflow_views.py:600
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr ""
 
-#: views.py:843
+#: views/workflow_views.py:606
 msgid "Workflow transition trigger events updated successfully"
 msgstr ""
 
-#: views.py:860
+#: views/workflow_views.py:623
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr ""
 
-#: views.py:864
+#: views/workflow_views.py:627
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr ""
 
-#: views.py:895
+#: views/workflow_views.py:658
 msgid "Launch all workflows?"
 msgstr ""
 
-#: views.py:897
+#: views/workflow_views.py:660
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
 msgstr ""
 
-#: views.py:906
+#: views/workflow_views.py:669
 msgid "Workflow launch queued successfully."
 msgstr ""
 
-#: views.py:931
+#: views/workflow_views.py:694
 #, python-format
 msgid "Preview of: %s"
 msgstr ""
@@ -650,10 +652,10 @@ msgstr ""
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow "
+"log entry instance as part of their context via the variable \"entry_log\". "
+"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:103
@@ -671,10 +673,10 @@ msgstr ""
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
+"\", and \"comment\" attributes."
 msgstr ""
 
 #: workflow_actions.py:125

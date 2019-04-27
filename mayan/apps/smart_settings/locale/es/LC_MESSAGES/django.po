@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
@@ -10,53 +10,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:21 permissions.py:7
+#: apps.py:22 permissions.py:8
 msgid "Smart settings"
 msgstr "Ajustes inteligentes"
 
-#: apps.py:29
+#: apps.py:30
 msgid "Setting count"
 msgstr "Conteo de ajustes"
 
-#: apps.py:33
+#: apps.py:34
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:37
+#: apps.py:38
 msgid "Value"
 msgstr "Valor"
 
-#: apps.py:40
+#: apps.py:41
 msgid "Overrided by environment variable?"
 msgstr ""
 
-#: apps.py:41
+#: apps.py:42
 msgid "Yes"
 msgstr "Si"
 
-#: apps.py:41
+#: apps.py:42
 msgid "No"
 msgstr "No"
 
-#: forms.py:12
+#: forms.py:17
 msgid "Enter the new setting value."
 msgstr "Ingrese el nuevo valor de configuración."
 
-#: forms.py:31
+#: forms.py:36
 msgid "Value must be properly quoted."
 msgstr "El valor debe ser citado correctamente."
 
-#: forms.py:40
+#: forms.py:45
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" no es una entrada válida."
@@ -73,39 +74,41 @@ msgstr "Espacios de nombres"
 msgid "Edit"
 msgstr "Editar"
 
-#: permissions.py:10
+#: permissions.py:12
 msgid "Edit settings"
 msgstr "Editar ajustes"
 
-#: permissions.py:13
+#: permissions.py:15
 msgid "View settings"
 msgstr "Ver configuraciones"
 
-#: views.py:18
-msgid "Setting namespaces"
-msgstr "Categoría de ajustes"
-
-#: views.py:34
+#: views.py:23
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr "La configuración heredada de una variable de entorno tiene prioridad y no se puede cambiar en esta vista."
+msgstr ""
+"La configuración heredada de una variable de entorno tiene prioridad y no se "
+"puede cambiar en esta vista."
 
-#: views.py:37
+#: views.py:26
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Ajustes en la categoría: %s"
 
-#: views.py:45
+#: views.py:34
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Categoría: %s, no encontrada"
+
+#: views.py:44
+msgid "Setting namespaces"
+msgstr "Categoría de ajustes"
 
 #: views.py:60
 msgid "Setting updated successfully."
 msgstr "Configuración actualizada con éxito."
 
-#: views.py:68
+#: views.py:69
 #, python-format
 msgid "Edit setting: %s"
 msgstr "Editar configuración: %s"

@@ -1,54 +1,58 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:38-0400\n"
 "PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:18 settings.py:9
+#: apps.py:21 settings.py:9
 msgid "Authentication"
 msgstr "Autentikacija"
 
-#: forms.py:18
+#: forms.py:17
 msgid "Email"
 msgstr "Email"
 
-#: forms.py:21
+#: forms.py:20
 msgid "Password"
 msgstr "Lozinka"
 
-#: forms.py:23 forms.py:72
+#: forms.py:22 forms.py:73
 msgid "Remember me"
 msgstr "Zapamti"
 
-#: forms.py:26
+#: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za lozinku osetljivo na slovo."
+msgstr ""
+"Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za "
+"lozinku osetljivo na slovo."
 
-#: forms.py:28
+#: forms.py:27
 msgid "This account is inactive."
 msgstr "Ovaj account nije aktivan."
 
-#: links.py:19
+#: links.py:22
 msgid "Logout"
 msgstr "Logout"
 
-#: links.py:23
+#: links.py:26
 msgid "Change password"
 msgstr "Promijeni lozinku"
 
@@ -56,22 +60,67 @@ msgstr "Promijeni lozinku"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije su: korisničko ime, e-pošta"
+msgstr ""
+"Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije "
+"su: korisničko ime, e-pošta"
 
 #: settings.py:20
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr "Uskoro će se prijaviti maksimalno vreme koje korisnik klikne na polje \"Zapamti me\". Vrednost je u sekundama."
+msgstr ""
+"Uskoro će se prijaviti maksimalno vreme koje korisnik klikne na polje "
+"\"Zapamti me\". Vrednost je u sekundama."
 
-#: views.py:79
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr ""
+
+#: templates/authentication/login.html:26
+#: templates/authentication/login.html:34
+msgid "Sign in"
+msgstr ""
+
+#: templates/authentication/login.html:39
+msgid "Forgot your password?"
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Password reset"
+msgstr "Lozinka"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr ""
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
+msgid "Submit"
+msgstr ""
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr ""
+
+#: views.py:69
+msgid "Your password has been successfully changed."
+msgstr "Vaš password je uspješno promjenjen"
+
+#: views.py:76
 msgid "Current user password change"
 msgstr "Promjeniti trenutni pasvord"
 
 #: views.py:84
 msgid "Changing the password is not allowed for this account."
 msgstr ""
-
-#: views.py:101
-msgid "Your password has been successfully changed."
-msgstr "Vaš password je uspješno promjenjen"

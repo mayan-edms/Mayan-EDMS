@@ -1,52 +1,53 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:39-0400\n"
 "PO-Revision-Date: 2018-09-27 02:30+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:31
+#: apps.py:33
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:46 apps.py:49 forms.py:17
+#: apps.py:48 apps.py:51 forms.py:17
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:47 apps.py:60 forms.py:19 models.py:52
-msgid "User ID"
-msgstr ""
-
-#: apps.py:50 forms.py:34 models.py:55
+#: apps.py:52 forms.py:34 models.py:55
 msgid "Type"
 msgstr ""
 
-#: apps.py:52 forms.py:23 models.py:36
+#: apps.py:54 forms.py:23 models.py:36
 msgid "Creation date"
 msgstr ""
 
-#: apps.py:55 forms.py:27 models.py:40
-msgid "Expiration date"
-msgstr ""
-
-#: apps.py:56
+#: apps.py:57
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:58 forms.py:32 models.py:47
+#: apps.py:58 forms.py:27 models.py:40
+msgid "Expiration date"
+msgstr ""
+
+#: apps.py:60 forms.py:32 models.py:47
 msgid "Length"
+msgstr ""
+
+#: apps.py:63 forms.py:19 models.py:52
+msgid "User ID"
 msgstr ""
 
 #: forms.py:28
@@ -97,11 +98,11 @@ msgstr ""
 msgid "Upload key"
 msgstr ""
 
-#: links.py:44 views.py:199
+#: links.py:44 views.py:176
 msgid "Private keys"
 msgstr ""
 
-#: links.py:48 views.py:176
+#: links.py:48 views.py:200
 msgid "Public keys"
 msgstr ""
 
@@ -165,11 +166,11 @@ msgstr ""
 msgid "Keys"
 msgstr ""
 
-#: models.py:71
+#: models.py:74
 msgid "Invalid key data"
 msgstr ""
 
-#: models.py:74
+#: models.py:77
 msgid "Key already exists."
 msgstr ""
 
@@ -201,19 +202,19 @@ msgstr ""
 msgid "Signatures"
 msgstr ""
 
-#: settings.py:15
+#: settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
 msgstr ""
 
-#: settings.py:21
+#: settings.py:22
 msgid "Path to the GPG binary."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:26
 msgid "Keyserver used to query for keys."
 msgstr ""
 
-#: views.py:41
+#: views.py:35
 #, python-format
 msgid "Delete key: %s"
 msgstr ""
@@ -237,54 +238,54 @@ msgstr ""
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:88
+#: views.py:89
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:110
-msgid "Search"
-msgstr ""
-
-#: views.py:112
-msgid "Query key server"
-msgstr ""
-
-#: views.py:127
+#: views.py:106
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
 
-#: views.py:131
+#: views.py:110
 msgid "No results returned"
 msgstr ""
 
-#: views.py:133
+#: views.py:112
 msgid "Key query results"
 msgstr ""
 
-#: views.py:152
+#: views.py:132
+msgid "Search"
+msgstr ""
+
+#: views.py:134
+msgid "Query key server"
+msgstr ""
+
+#: views.py:153
 msgid "Upload new key"
 msgstr ""
 
-#: views.py:168
+#: views.py:169
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
-"public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user.The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:174
-msgid "There no public keys"
+msgid "There no private keys"
 msgstr ""
 
 #: views.py:192
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user.The view to upload private and public keys is the same."
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
 msgstr ""
 
-#: views.py:197
-msgid "There no private keys"
+#: views.py:198
+msgid "There no public keys"
 msgstr ""

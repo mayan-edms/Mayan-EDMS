@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 models.py:28 models.py:78 permissions.py:7
+#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Δικαιώματα χρήσης"
 
@@ -25,81 +26,73 @@ msgstr "Δικαιώματα χρήσης"
 msgid "Insufficient permissions."
 msgstr "Ανεπαρκή δικαιώματα."
 
-#: links.py:16 links.py:41 models.py:89 views.py:216
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
 msgstr "Ρόλοι"
 
-#: links.py:20
-msgid "Grant"
-msgstr "Χορήγηση"
-
-#: links.py:24
-msgid "Revoke"
-msgstr "Ανάκληση"
-
-#: links.py:29
+#: links.py:23
 msgid "Create new role"
 msgstr "Δημιουργία νέου ρόλου"
 
-#: links.py:33
+#: links.py:29
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: links.py:36
+#: links.py:34
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: links.py:44 models.py:81
+#: links.py:45 models.py:105
 msgid "Groups"
 msgstr "Ομάδες"
 
-#: links.py:50
+#: links.py:52
 msgid "Role permissions"
 msgstr "Δικαιώματα ρόλου"
 
-#: models.py:19
+#: models.py:27
 msgid "Namespace"
 msgstr ""
 
-#: models.py:20
+#: models.py:28
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:27
+#: models.py:35
 msgid "Permission"
 msgstr "Δικαιώματα"
 
-#: models.py:74 search.py:16
+#: models.py:98 search.py:16
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: models.py:88
+#: models.py:112
 msgid "Role"
 msgstr "Ρόλος"
 
 #: permissions.py:10
-msgid "View roles"
-msgstr "Εμφάνηση ρόλων"
-
-#: permissions.py:13
-msgid "Edit roles"
-msgstr "Τροποποίηση ρόλων"
-
-#: permissions.py:16
 msgid "Create roles"
 msgstr "Δημιουργία ρόλων"
 
-#: permissions.py:19
+#: permissions.py:13
 msgid "Delete roles"
 msgstr "Διαγραφή ρόλων"
 
-#: permissions.py:22
-msgid "Grant permissions"
-msgstr "Εκχώρηση δικαιωμάτων"
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "Τροποποίηση ρόλων"
 
-#: permissions.py:25
-msgid "Revoke permissions"
-msgstr "Ανάκληση δικαιωμάτων"
+#: permissions.py:19
+msgid "View roles"
+msgstr "Εμφάνηση ρόλων"
 
 #: search.py:20
 msgid "Group name"
@@ -109,11 +102,15 @@ msgstr "Όνομα ομάδας"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών ομάδων όπου θα προστεθούν ή θα τροποποιηθούν σε αυτό τον ρόλο."
+msgstr ""
+"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών ομάδων όπου θα προστεθούν ή "
+"θα τροποποιηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών δικαιωμάτων που θα εκχωρηθούν σε αυτό τον ρόλο."
+msgstr ""
+"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών δικαιωμάτων που θα "
+"εκχωρηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:90
 #, python-format
@@ -128,49 +125,49 @@ msgstr ""
 msgid "Group roles"
 msgstr ""
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:85
+#: views.py:79
 msgid "Available groups"
 msgstr "Διαθέσιμες ομάδες"
 
-#: views.py:86
+#: views.py:80
 msgid "Role groups"
 msgstr "Ομάδες ρόλων"
 
-#: views.py:96
+#: views.py:89
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Ομάδες ρόλου: %s"
 
-#: views.py:98
+#: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:123
+#: views.py:104
 msgid "Available permissions"
 msgstr "Διαθέσιμα δικαιώματα"
 
-#: views.py:124
+#: views.py:105
 msgid "Granted permissions"
 msgstr "Χωρηγημένα δικαιώματα"
 
-#: views.py:165
+#: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:168
+#: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Δικαιώματα του ρόλου: %s"
 
-#: views.py:208
+#: views.py:156
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -178,6 +175,18 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:215
+#: views.py:163
 msgid "There are no roles"
 msgstr ""
+
+#~ msgid "Grant"
+#~ msgstr "Χορήγηση"
+
+#~ msgid "Revoke"
+#~ msgstr "Ανάκληση"
+
+#~ msgid "Grant permissions"
+#~ msgstr "Εκχώρηση δικαιωμάτων"
+
+#~ msgid "Revoke permissions"
+#~ msgstr "Ανάκληση δικαιωμάτων"

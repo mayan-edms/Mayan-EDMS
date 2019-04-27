@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
@@ -10,21 +10,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:38-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:12 settings.py:9
 msgid "Appearance"
 msgstr "Wygląd"
 
-#: settings.py:13
+#: settings.py:14
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr ""
 
@@ -50,9 +53,11 @@ msgstr "Błąd serwera"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i "
+"wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -83,7 +88,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 
@@ -91,7 +98,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is. We need all the help we can get!\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is. We need all the help we can get!\n"
 "            "
 msgstr ""
 
@@ -99,7 +107,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">consider making a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 
@@ -107,7 +118,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -115,7 +130,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki %(icon_wiki)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a> or "
+"the <a class=\"new_window\" href=\"https://wiki.mayan-edms.com\">Wiki "
+"%(icon_wiki)s</a>.\n"
 "            "
 msgstr ""
 
@@ -123,7 +141,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 
@@ -131,8 +153,13 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
-"                Follow us on <a class=\"new_window\" href=\"https://twitter.com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" href=\"https://www.facebook.com/MayanEDMS/\">Facebook %(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www.instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
+"                Follow us on <a class=\"new_window\" href=\"https://twitter."
+"com/mayanedms\">Twitter %(icon_social_twitter)s</a>, <a class=\"new_window\" "
+"href=\"https://www.facebook.com/MayanEDMS/\">Facebook "
+"%(icon_social_facebook)s</a>, or <a class=\"new_window\" href=\"https://www."
+"instagram.com/mayan_edms/\">Instagram %(icon_social_instagram)s</a>\n"
 "            "
 msgstr ""
 
@@ -140,37 +167,15 @@ msgstr ""
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: templates/appearance/base.html:61
-#: templates/navigation/generic_navigation.html:6
+#: templates/appearance/base.html:51
+#: templates/appearance/generic_list_items_subtemplate.html:104
 msgid "Actions"
 msgstr "Akcje"
 
-#: templates/appearance/base.html:63
+#: templates/appearance/base.html:53
+#: templates/appearance/generic_list_items_subtemplate.html:106
 msgid "Toggle Dropdown"
 msgstr "Rozwiń listę"
-
-#: templates/appearance/calculate_form_title.html:15
-msgid "Confirm delete"
-msgstr "Potwierdź usunięcie"
-
-#: templates/appearance/calculate_form_title.html:19
-#: templates/appearance/calculate_form_title.html:28
-#, python-format
-msgid "Edit: %(object)s"
-msgstr "Edytuj: %(object)s"
-
-#: templates/appearance/calculate_form_title.html:21
-msgid "Confirm"
-msgstr "Potwierdź"
-
-#: templates/appearance/calculate_form_title.html:25
-#, python-format
-msgid "Details for: %(object)s"
-msgstr "Szczegóły dla: %(object)s"
-
-#: templates/appearance/calculate_form_title.html:30
-msgid "Create"
-msgstr "Utwórz"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -184,75 +189,77 @@ msgstr "Tak"
 msgid "No"
 msgstr "Nie"
 
-#: templates/appearance/generic_form_instance.html:49
-#: templates/appearance/generic_form_instance.html:55
+#: templates/appearance/generic_form_instance.html:51
+#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:51
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
 msgstr "wymagane"
 
-#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_form_subtemplate.html:86
+#: templates/appearance/generic_form_subtemplate.html:99
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Save"
 msgstr "Zapisz"
 
-#: templates/appearance/generic_form_subtemplate.html:90
+#: templates/appearance/generic_form_subtemplate.html:86
+#: templates/appearance/generic_form_subtemplate.html:99
 #: templates/appearance/generic_multiform_subtemplate.html:59
-#: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Wykonaj"
 
-#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:90
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: templates/appearance/generic_list_items_subtemplate.html:12
-#: templates/appearance/generic_list_subtemplate.html:12
+#: templates/appearance/generic_list_items_subtemplate.html:17
+#: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(total_pages)s)"
+msgstr ""
+"Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z "
+"%(total_pages)s)"
 
-#: templates/appearance/generic_list_items_subtemplate.html:14
-#: templates/appearance/generic_list_items_subtemplate.html:17
-#: templates/appearance/generic_list_subtemplate.html:14
-#: templates/appearance/generic_list_subtemplate.html:17
+#: templates/appearance/generic_list_items_subtemplate.html:19
+#: templates/appearance/generic_list_items_subtemplate.html:22
+#: templates/appearance/generic_list_subtemplate.html:19
+#: templates/appearance/generic_list_subtemplate.html:22
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Razem: %(total)s"
 
-#: templates/appearance/generic_list_subtemplate.html:50
+#: templates/appearance/generic_list_subtemplate.html:55
 msgid "Identifier"
 msgstr "Identyfikator"
 
-#: templates/appearance/home.html:9
+#: templates/appearance/home.html:10
 msgid "Dashboard"
 msgstr "Strona główna"
 
-#: templates/appearance/home.html:25
+#: templates/appearance/home.html:26
 msgid "Getting started"
 msgstr "Rozpoczynamy"
 
-#: templates/appearance/home.html:28
+#: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Zanim w pełni zaczniesz używać Mayan EDMS musisz:"
 
-#: templates/appearance/home.html:49
+#: templates/appearance/home.html:50
 msgid "Search pages"
 msgstr "Przeszukaj strony"
 
-#: templates/appearance/home.html:51 templates/appearance/home.html:61
+#: templates/appearance/home.html:52 templates/appearance/home.html:62
 msgid "Search"
 msgstr "Szukaj"
 
-#: templates/appearance/home.html:52 templates/appearance/home.html:62
+#: templates/appearance/home.html:53 templates/appearance/home.html:63
 msgid "Advanced"
 msgstr "Zaawansowane"
 
-#: templates/appearance/home.html:59
+#: templates/appearance/home.html:60
 msgid "Search documents"
 msgstr "Przeszukaj dokumenty"
 
@@ -268,88 +275,83 @@ msgstr "Brak wyników"
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/appearance/root.html:77
+#: templates/appearance/root.html:66
 msgid "Server communication error"
 msgstr "Błąd komunikacji z serwerem"
 
-#: templates/appearance/root.html:79
+#: templates/appearance/root.html:68
 msgid "Check you network connection and try again in a few moments."
 msgstr "Sprawdź połączenie z siecią i spróbuj za chwilę."
-
-#: templates/authentication/login.html:11
-msgid "Login"
-msgstr "Logowanie"
-
-#: templates/authentication/login.html:22
-msgid "First time login"
-msgstr "Pierwsze logowanie"
-
-#: templates/authentication/login.html:26
-#, python-format
-msgid ""
-"You have just finished installing <strong>%(project_title)s</strong>, "
-"congratulations!"
-msgstr "Właśnie ukończyłeś instalację <strong>%(project_title)s</strong>. Gratulacje!"
-
-#: templates/authentication/login.html:27
-msgid "Login using the following credentials:"
-msgstr "Logowanie przy użyciu następujących poświadczeń:"
-
-#: templates/authentication/login.html:28
-#, python-format
-msgid "Username: <strong>%(account)s</strong>"
-msgstr "Nazwa użytkownika: <strong>%(account)s</strong>"
-
-#: templates/authentication/login.html:29
-#, python-format
-msgid "Email: <strong>%(email)s</strong>"
-msgstr "Email: <strong>%(email)s</strong>"
-
-#: templates/authentication/login.html:30
-#, python-format
-msgid "Password: <strong>%(password)s</strong>"
-msgstr "Hasło: <strong>%(password)s</strong>"
-
-#: templates/authentication/login.html:31
-msgid ""
-"Be sure to change the password to increase security and to disable this "
-"message."
-msgstr "Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić hasła."
-
-#: templates/authentication/login.html:47
-#: templates/authentication/login.html:55
-msgid "Sign in"
-msgstr "Zaloguj"
-
-#: templates/authentication/login.html:60
-msgid "Forgot your password?"
-msgstr "Zapomniałeś hasło?"
-
-#: templates/authentication/password_reset_complete.html:8
-#: templates/authentication/password_reset_confirm.html:8
-#: templates/authentication/password_reset_confirm.html:20
-#: templates/authentication/password_reset_done.html:8
-#: templates/authentication/password_reset_form.html:8
-#: templates/authentication/password_reset_form.html:20
-msgid "Password reset"
-msgstr "Reset hasła"
-
-#: templates/authentication/password_reset_complete.html:15
-msgid "Password reset complete! Click the link below to login."
-msgstr "Reset hasła wykonano pomyślnie! Kliknij na link poniżej i zaloguj się."
-
-#: templates/authentication/password_reset_complete.html:17
-msgid "Login page"
-msgstr "Strona logowania"
-
-#: templates/authentication/password_reset_done.html:15
-msgid "Password reset email sent!"
-msgstr "Wiadomość z nowym hasłem została wysłana!"
-
-#: templates/dashboard/numeric_widget.html:27
-msgid "View details"
-msgstr "Pokaż szczegóły"
 
 #: templatetags/appearance_tags.py:17
 msgid "None"
 msgstr "Brak"
+
+#~ msgid "Confirm delete"
+#~ msgstr "Potwierdź usunięcie"
+
+#~ msgid "Edit: %(object)s"
+#~ msgstr "Edytuj: %(object)s"
+
+#~ msgid "Confirm"
+#~ msgstr "Potwierdź"
+
+#~ msgid "Details for: %(object)s"
+#~ msgstr "Szczegóły dla: %(object)s"
+
+#~ msgid "Create"
+#~ msgstr "Utwórz"
+
+#~ msgid "Login"
+#~ msgstr "Logowanie"
+
+#~ msgid "First time login"
+#~ msgstr "Pierwsze logowanie"
+
+#~ msgid ""
+#~ "You have just finished installing <strong>%(project_title)s</strong>, "
+#~ "congratulations!"
+#~ msgstr ""
+#~ "Właśnie ukończyłeś instalację <strong>%(project_title)s</strong>. "
+#~ "Gratulacje!"
+
+#~ msgid "Login using the following credentials:"
+#~ msgstr "Logowanie przy użyciu następujących poświadczeń:"
+
+#~ msgid "Username: <strong>%(account)s</strong>"
+#~ msgstr "Nazwa użytkownika: <strong>%(account)s</strong>"
+
+#~ msgid "Email: <strong>%(email)s</strong>"
+#~ msgstr "Email: <strong>%(email)s</strong>"
+
+#~ msgid "Password: <strong>%(password)s</strong>"
+#~ msgstr "Hasło: <strong>%(password)s</strong>"
+
+#~ msgid ""
+#~ "Be sure to change the password to increase security and to disable this "
+#~ "message."
+#~ msgstr ""
+#~ "Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić "
+#~ "hasła."
+
+#~ msgid "Sign in"
+#~ msgstr "Zaloguj"
+
+#~ msgid "Forgot your password?"
+#~ msgstr "Zapomniałeś hasło?"
+
+#~ msgid "Password reset"
+#~ msgstr "Reset hasła"
+
+#~ msgid "Password reset complete! Click the link below to login."
+#~ msgstr ""
+#~ "Reset hasła wykonano pomyślnie! Kliknij na link poniżej i zaloguj się."
+
+#~ msgid "Login page"
+#~ msgstr "Strona logowania"
+
+#~ msgid "Password reset email sent!"
+#~ msgstr "Wiadomość z nowym hasłem została wysłana!"
+
+#~ msgid "View details"
+#~ msgstr "Pokaż szczegóły"

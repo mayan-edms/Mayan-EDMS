@@ -2,45 +2,37 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2017
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2018
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2018
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-27 18:40-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2018\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:72 events.py:8 permissions.py:7 settings.py:7
+#: apps.py:52 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:126
-msgid "Document"
-msgstr "Documento"
-
-#: apps.py:130
-msgid "Added"
-msgstr "Aggiunto"
-
-#: apps.py:134 models.py:66
+#: apps.py:118 models.py:78
 msgid "Result"
 msgstr "Risultato"
 
-#: apps.py:151 apps.py:155 links.py:19 links.py:24 models.py:22
+#: apps.py:135 apps.py:139 links.py:16 links.py:22 models.py:27
 msgid "Content"
 msgstr "Contenuto "
 
@@ -52,16 +44,16 @@ msgstr ""
 msgid "Document version parsing finished"
 msgstr ""
 
-#: forms.py:42
+#: forms.py:39
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Pagina %(page_number)d"
 
-#: forms.py:50 forms.py:62
+#: forms.py:47 forms.py:59
 msgid "Contents"
 msgstr "Contenuti"
 
-#: links.py:29 links.py:62 views.py:196
+#: links.py:28 links.py:66 views.py:194
 msgid "Parsing errors"
 msgstr ""
 
@@ -69,85 +61,85 @@ msgstr ""
 msgid "Download content"
 msgstr ""
 
-#: links.py:38 links.py:43
+#: links.py:39 links.py:46
 msgid "Submit for parsing"
 msgstr ""
 
-#: links.py:49
+#: links.py:52
 msgid "Setup parsing"
 msgstr ""
 
-#: links.py:57
+#: links.py:61
 msgid "Parse documents per type"
 msgstr ""
 
-#: models.py:16
+#: models.py:21
 msgid "Document page"
 msgstr "Pagina del documento"
 
-#: models.py:20
+#: models.py:25
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 
-#: models.py:28
+#: models.py:33
 msgid "Document page content"
 msgstr "Contenuto pagina del documento"
 
-#: models.py:29
+#: models.py:34
 msgid "Document pages contents"
 msgstr "Contenuti pagine documento"
 
-#: models.py:38
+#: models.py:46
 msgid "Document type"
 msgstr "Tipo documento "
 
-#: models.py:42
+#: models.py:50
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 
-#: models.py:53
+#: models.py:61
 msgid "Document type settings"
 msgstr "Impostazioni tipo documento"
 
-#: models.py:54
+#: models.py:62
 msgid "Document types settings"
 msgstr "Impostazioni tipi documento"
 
-#: models.py:61
+#: models.py:73
 msgid "Document version"
 msgstr "Versione documento"
 
-#: models.py:64
+#: models.py:76
 msgid "Date time submitted"
 msgstr "Data e ora di invio"
 
-#: models.py:70
+#: models.py:82
 msgid "Document version parse error"
 msgstr ""
 
-#: models.py:71
+#: models.py:83
 msgid "Document version parse errors"
 msgstr ""
 
-#: parsers.py:90
+#: parsers.py:91
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Eccezione durante il parsing della pagina: %s"
 
-#: parsers.py:116
+#: parsers.py:117
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Non trovo l'eseguibile pdftotext in: %s"
 
-#: permissions.py:10
+#: permissions.py:12
 msgid "View the content of a document"
 msgstr ""
 
-#: permissions.py:14
+#: permissions.py:15
 msgid "Change document type parsing settings"
 msgstr ""
 
-#: permissions.py:17
+#: permissions.py:19
 msgid "Parse the content of a document"
 msgstr ""
 
@@ -165,61 +157,64 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 "Percorso del programma poppler pdftotext.usato per estrarre il testo dai "
 "file PDF."
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Content for document: %s"
 msgstr ""
 
-#: views.py:78
+#: views.py:77
 #, python-format
 msgid "Content for document page: %s"
 msgstr ""
 
-#: views.py:93
+#: views.py:92
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr ""
 
-#: views.py:105
+#: views.py:104
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr ""
 
-#: views.py:108
+#: views.py:107
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr ""
 
-#: views.py:116
+#: views.py:115
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:129
+#: views.py:128
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr ""
 
-#: views.py:152
+#: views.py:151
 #, python-format
 msgid "Edit parsing settings for document type: %s"
 msgstr ""
 
-#: views.py:163
-msgid "Submit all documents of a type for parsing"
+#: views.py:161
+msgid "Submit all documents of a type for parsing."
 msgstr ""
 
-#: views.py:174
+#: views.py:182
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the parsing "
-"queue."
+msgid "%(count)d documents added to the parsing queue."
 msgstr ""
+
+#~ msgid "Document"
+#~ msgstr "Documento"
+
+#~ msgid "Added"
+#~ msgstr "Aggiunto"

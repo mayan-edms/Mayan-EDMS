@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2019-01-17 19:32+0000\n"
 "Last-Translator: Jiri Fait <fait@orkasolutions.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:32 models.py:28 models.py:78 permissions.py:7
+#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr ""
 
@@ -25,80 +27,72 @@ msgstr ""
 msgid "Insufficient permissions."
 msgstr ""
 
-#: links.py:16 links.py:41 models.py:89 views.py:216
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
 msgstr ""
 
-#: links.py:20
-msgid "Grant"
-msgstr ""
-
-#: links.py:24
-msgid "Revoke"
-msgstr ""
-
-#: links.py:29
+#: links.py:23
 msgid "Create new role"
 msgstr ""
 
-#: links.py:33
+#: links.py:29
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:36
+#: links.py:34
 msgid "Edit"
 msgstr "Editovat"
 
-#: links.py:44 models.py:81
+#: links.py:45 models.py:105
 msgid "Groups"
 msgstr ""
 
-#: links.py:50
+#: links.py:52
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:19
+#: models.py:27
 msgid "Namespace"
 msgstr ""
 
-#: models.py:20
+#: models.py:28
 msgid "Name"
 msgstr ""
 
-#: models.py:27
+#: models.py:35
 msgid "Permission"
 msgstr ""
 
-#: models.py:74 search.py:16
+#: models.py:98 search.py:16
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:88
+#: models.py:112
 msgid "Role"
 msgstr ""
 
 #: permissions.py:10
-msgid "View roles"
-msgstr ""
-
-#: permissions.py:13
-msgid "Edit roles"
-msgstr ""
-
-#: permissions.py:16
 msgid "Create roles"
 msgstr ""
 
-#: permissions.py:19
+#: permissions.py:13
 msgid "Delete roles"
 msgstr ""
 
-#: permissions.py:22
-msgid "Grant permissions"
+#: permissions.py:16
+msgid "Edit roles"
 msgstr ""
 
-#: permissions.py:25
-msgid "Revoke permissions"
+#: permissions.py:19
+msgid "View roles"
 msgstr ""
 
 #: search.py:20
@@ -128,49 +122,49 @@ msgstr ""
 msgid "Group roles"
 msgstr ""
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:85
+#: views.py:79
 msgid "Available groups"
 msgstr ""
 
-#: views.py:86
+#: views.py:80
 msgid "Role groups"
 msgstr ""
 
-#: views.py:96
+#: views.py:89
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:98
+#: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:123
+#: views.py:104
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:124
+#: views.py:105
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:165
+#: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:168
+#: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""
 
-#: views.py:208
+#: views.py:156
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -178,6 +172,6 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:215
+#: views.py:163
 msgid "There are no roles"
 msgstr ""

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014,2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:32 models.py:28 models.py:78 permissions.py:7
+#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "مجوزها"
 
@@ -27,81 +28,73 @@ msgstr "مجوزها"
 msgid "Insufficient permissions."
 msgstr "اجازه ناکافی"
 
-#: links.py:16 links.py:41 models.py:89 views.py:216
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
 msgstr "نقش ها"
 
-#: links.py:20
-msgid "Grant"
-msgstr "دادن"
-
-#: links.py:24
-msgid "Revoke"
-msgstr "لغو"
-
-#: links.py:29
+#: links.py:23
 msgid "Create new role"
 msgstr "ایجاد نقش role جدید"
 
-#: links.py:33
+#: links.py:29
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:36
+#: links.py:34
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:44 models.py:81
+#: links.py:45 models.py:105
 msgid "Groups"
 msgstr "گروه‌ها"
 
-#: links.py:50
+#: links.py:52
 msgid "Role permissions"
 msgstr "مجوزهای نقش"
 
-#: models.py:19
+#: models.py:27
 msgid "Namespace"
 msgstr "فضای نام"
 
-#: models.py:20
+#: models.py:28
 msgid "Name"
 msgstr "نام"
 
-#: models.py:27
+#: models.py:35
 msgid "Permission"
 msgstr "مجوز"
 
-#: models.py:74 search.py:16
+#: models.py:98 search.py:16
 msgid "Label"
 msgstr "برچسب"
 
-#: models.py:88
+#: models.py:112
 msgid "Role"
 msgstr "نقش"
 
 #: permissions.py:10
-msgid "View roles"
-msgstr "دیدن نقش ها"
-
-#: permissions.py:13
-msgid "Edit roles"
-msgstr "ویرایش نقش ها"
-
-#: permissions.py:16
 msgid "Create roles"
 msgstr "ایجاد نقش ها"
 
-#: permissions.py:19
+#: permissions.py:13
 msgid "Delete roles"
 msgstr "حذف نقش ها"
 
-#: permissions.py:22
-msgid "Grant permissions"
-msgstr "دادن مجوز"
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "ویرایش نقش ها"
 
-#: permissions.py:25
-msgid "Revoke permissions"
-msgstr "لغو مجوز"
+#: permissions.py:19
+msgid "View roles"
+msgstr "دیدن نقش ها"
 
 #: search.py:20
 msgid "Group name"
@@ -111,11 +104,14 @@ msgstr "اسم گروه"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "لیست کاملی از کلیدهای گروه اولیه برای اضافه کردن یا جایگزینی در این نقش جدا شده است."
+msgstr ""
+"لیست کاملی از کلیدهای گروه اولیه برای اضافه کردن یا جایگزینی در این نقش جدا "
+"شده است."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "لیست کلی از کلیدهای مجاز مجوز برای اعطای این نقش به یکدیگر جدا شده است."
+msgstr ""
+"لیست کلی از کلیدهای مجاز مجوز برای اعطای این نقش به یکدیگر جدا شده است."
 
 #: serializers.py:90
 #, python-format
@@ -130,49 +126,49 @@ msgstr ""
 msgid "Group roles"
 msgstr ""
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:85
+#: views.py:79
 msgid "Available groups"
 msgstr "گروه های موجود"
 
-#: views.py:86
+#: views.py:80
 msgid "Role groups"
 msgstr "گروه های مختلف"
 
-#: views.py:96
+#: views.py:89
 #, python-format
 msgid "Groups of role: %s"
 msgstr "گروه های نقش: %s"
 
-#: views.py:98
+#: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:123
+#: views.py:104
 msgid "Available permissions"
 msgstr "مجوزهای موجود"
 
-#: views.py:124
+#: views.py:105
 msgid "Granted permissions"
 msgstr "مجوزهای داده شده"
 
-#: views.py:165
+#: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:168
+#: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "مجوز برای نقش: %s"
 
-#: views.py:208
+#: views.py:156
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -180,6 +176,18 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:215
+#: views.py:163
 msgid "There are no roles"
 msgstr ""
+
+#~ msgid "Grant"
+#~ msgstr "دادن"
+
+#~ msgid "Revoke"
+#~ msgstr "لغو"
+
+#~ msgid "Grant permissions"
+#~ msgstr "دادن مجوز"
+
+#~ msgid "Revoke permissions"
+#~ msgstr "لغو مجوز"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Mathias Behrle <mathiasb@m9s.biz>, 2018
@@ -11,34 +11,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-27 18:40-0400\n"
 "PO-Revision-Date: 2019-03-31 21:38+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 events.py:8
+#: apps.py:31 events.py:8
 msgid "Document comments"
 msgstr "Kommentare"
 
-#: apps.py:54
-msgid "Date"
-msgstr "Datum"
-
-#: apps.py:56 models.py:27
-msgid "User"
-msgstr "Benutzer"
-
-#. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:59 models.py:30 models.py:39
-msgid "Comment"
-msgstr "Kommentar"
-
-#: apps.py:63 apps.py:67 links.py:24 models.py:40 permissions.py:7
+#: apps.py:64 apps.py:68 links.py:25 models.py:43 permissions.py:7
 msgid "Comments"
 msgstr "Kommentare"
 
@@ -54,15 +42,24 @@ msgstr "Kommentar gelöscht"
 msgid "Add comment"
 msgstr "Kommentar hinzufügen"
 
-#: links.py:20
+#: links.py:21
 msgid "Delete"
 msgstr "Löschen"
 
-#: models.py:23
+#: models.py:26
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:33
+#: models.py:30
+msgid "User"
+msgstr "Benutzer"
+
+#. Translators: Comment here is a noun and refers to the actual text stored
+#: models.py:33 models.py:42
+msgid "Comment"
+msgstr "Kommentar"
+
+#: models.py:36
 msgid "Date time submitted"
 msgstr "Erstellunsgdatum und -zeit"
 
@@ -83,22 +80,27 @@ msgstr "Kommentare ansehen"
 msgid "Add comment to document: %s"
 msgstr "Kommentar zu Dokument %s hinzufügen"
 
-#: views.py:81
+#: views.py:85
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Kommentar %s löschen?"
 
-#: views.py:101
+#: views.py:106
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
-msgstr "Kommentare bei Dokumenten sind zeitgestempelte Texteinträge von Benutzers. Sie eignen sich hervorragend für die Zusammenarbeit. "
+msgstr ""
+"Kommentare bei Dokumenten sind zeitgestempelte Texteinträge von Benutzers. "
+"Sie eignen sich hervorragend für die Zusammenarbeit. "
 
-#: views.py:107
+#: views.py:116
 msgid "There are no comments"
 msgstr "Keine Kommentare vorhanden"
 
-#: views.py:109
+#: views.py:118
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Kommentare für Dokument %s"
+
+#~ msgid "Date"
+#~ msgstr "Datum"

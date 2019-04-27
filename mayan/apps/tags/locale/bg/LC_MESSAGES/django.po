@@ -1,30 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:43-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:46 apps.py:108 apps.py:115 apps.py:136 apps.py:138 events.py:7
-#: forms.py:32 links.py:45 menus.py:15 models.py:38 permissions.py:7
-#: views.py:212 workflow_actions.py:19 workflow_actions.py:64
+#: apps.py:51 apps.py:109 apps.py:116 apps.py:138 apps.py:140 events.py:7
+#: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
+#: views.py:220 workflow_actions.py:19 workflow_actions.py:62
 msgid "Tags"
 msgstr "Етикети"
 
-#: apps.py:129 models.py:32
+#: apps.py:131 models.py:36
 msgid "Documents"
 msgstr "Документи"
 
@@ -44,63 +45,67 @@ msgstr ""
 msgid "Tag removed from document"
 msgstr ""
 
-#: links.py:17 workflow_actions.py:71
+#: links.py:16 workflow_actions.py:69
 msgid "Remove tag"
 msgstr ""
 
-#: links.py:20 links.py:28
+#: links.py:20 links.py:37
 msgid "Attach tags"
 msgstr ""
 
-#: links.py:24
+#: links.py:31
 msgid "Remove tags"
 msgstr ""
 
-#: links.py:33
+#: links.py:44
 msgid "Create new tag"
 msgstr ""
 
-#: links.py:37 links.py:55 views.py:148
+#: links.py:50 links.py:67 views.py:154
 msgid "Delete"
 msgstr ""
 
-#: links.py:40
+#: links.py:55
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:52
+#: links.py:63
 msgid "All"
 msgstr ""
 
-#: models.py:24
-msgid "A short text used as the tag name."
-msgstr ""
-
-#: models.py:25 search.py:16
-msgid "Label"
+#: methods.py:14
+msgid "Return a the tags attached to the document."
 msgstr ""
 
 #: models.py:28
+msgid "A short text used as the tag name."
+msgstr ""
+
+#: models.py:29 search.py:16
+msgid "Label"
+msgstr ""
+
+#: models.py:32
 msgid "The RGB color values for the tag."
 msgstr ""
 
-#: models.py:29 search.py:20
+#: models.py:33 search.py:20
 msgid "Color"
 msgstr "Цвят"
 
-#: models.py:37
+#: models.py:41
 msgid "Tag"
 msgstr ""
 
-#: models.py:61
+#: models.py:74
 msgid "Preview"
 msgstr ""
 
-#: models.py:86
+#: models.py:102
 msgid "Document tag"
 msgstr ""
 
-#: models.py:87
+#: models.py:103
 msgid "Document tags"
 msgstr ""
 
@@ -170,129 +175,129 @@ msgstr[1] ""
 msgid "Attach tags to document: %s"
 msgstr ""
 
-#: views.py:70 wizard_steps.py:28
+#: views.py:70 wizard_steps.py:30
 msgid "Tags to be attached."
 msgstr ""
 
-#: views.py:103
+#: views.py:110
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:114
+#: views.py:120
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 
-#: views.py:123
+#: views.py:129
 msgid "Create tag"
 msgstr ""
 
-#: views.py:137
+#: views.py:143
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
 msgstr ""
 
-#: views.py:139
+#: views.py:145
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
 msgstr ""
 
-#: views.py:146
+#: views.py:152
 msgid "Will be removed from all documents."
 msgstr "Ще бъде премахнат от всички документи."
 
-#: views.py:150
+#: views.py:156
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:160
+#: views.py:166
 #, python-format
 msgid "Delete tag: %s"
 msgstr ""
 
-#: views.py:170
+#: views.py:177
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Етикет \"%s\" е изтрит успешно."
 
-#: views.py:174
+#: views.py:182
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Грешка при изтриване на етикет \"%(tag)s\": %(error)s"
 
-#: views.py:189
+#: views.py:197
 #, python-format
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:208
+#: views.py:216
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
 msgstr ""
 
-#: views.py:211
+#: views.py:219
 msgid "No tags available"
 msgstr ""
 
-#: views.py:235
+#: views.py:243
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr ""
 
-#: views.py:259
+#: views.py:267
 msgid "Document has no tags attached"
 msgstr ""
 
-#: views.py:266
+#: views.py:274
 #, python-format
 msgid "Tags for document: %s"
 msgstr ""
 
-#: views.py:279
+#: views.py:287
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr ""
 
-#: views.py:281
+#: views.py:289
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:289
+#: views.py:297
 msgid "Remove"
 msgstr "Премахнете"
 
-#: views.py:291
+#: views.py:299
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:303
+#: views.py:311
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr ""
 
-#: views.py:312
+#: views.py:320
 msgid "Tags to be removed."
 msgstr ""
 
-#: views.py:345
+#: views.py:358
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr ""
 
-#: views.py:355
+#: views.py:367
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
 
-#: wizard_steps.py:16
+#: wizard_steps.py:18
 msgid "Select tags"
 msgstr ""
 
@@ -304,6 +309,6 @@ msgstr ""
 msgid "Attach tag"
 msgstr ""
 
-#: workflow_actions.py:66
+#: workflow_actions.py:64
 msgid "Tags to remove from the document"
 msgstr ""

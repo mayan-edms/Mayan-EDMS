@@ -1,75 +1,70 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:39-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:20 permissions.py:7 settings.py:12
+#: apps.py:22 permissions.py:7 settings.py:12
 msgid "Converter"
 msgstr "Конвертер"
 
-#: apps.py:27 models.py:39
-msgid "Order"
-msgstr "Порядок"
-
-#: apps.py:29 models.py:57
+#: apps.py:31 models.py:57
 msgid "Transformation"
 msgstr "Преобразование"
 
-#: apps.py:33 models.py:49
-msgid "Arguments"
-msgstr "Аргументы"
-
-#: backends/python.py:176 backends/python.py:182
+#: backends/python.py:186 backends/python.py:192
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Ошибка при определении числа страниц PDF; %s"
 
-#: backends/python.py:196
+#: backends/python.py:206
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr ""
 
-#: classes.py:98
+#: classes.py:105
 msgid "Not an office file format."
 msgstr "Не является файлом офисного формата."
 
-#: classes.py:119
+#: classes.py:126
 msgid "LibreOffice not installed or not found."
 msgstr ""
 
-#: forms.py:23
+#: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr ""
 
-#: links.py:37
+#: links.py:36
 msgid "Create new transformation"
 msgstr "Создать новое преобразование"
 
-#: links.py:41
+#: links.py:42
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:45
+#: links.py:48
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:50 models.py:58
+#: links.py:53 models.py:58
 msgid "Transformations"
 msgstr "Преобразования"
 
@@ -77,7 +72,13 @@ msgstr "Преобразования"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Порядок выполнения преобразований. Если оставить неизменным, будет установлен флаг автоматического выставления порядка."
+msgstr ""
+"Порядок выполнения преобразований. Если оставить неизменным, будет "
+"установлен флаг автоматического выставления порядка."
+
+#: models.py:39
+msgid "Order"
+msgstr "Порядок"
 
 #: models.py:43
 msgid "Name"
@@ -87,7 +88,13 @@ msgstr "Имя"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Введите аргументы для преобразования в формате YAML-словаря, например: {\"degrees\": 180}"
+msgstr ""
+"Введите аргументы для преобразования в формате YAML-словаря, например: "
+"{\"degrees\": 180}"
+
+#: models.py:49
+msgid "Arguments"
+msgstr "Аргументы"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -105,11 +112,11 @@ msgstr "Изменить преобразования"
 msgid "View existing transformations"
 msgstr "Просмотр существующих преобразований"
 
-#: settings.py:15
+#: settings.py:16
 msgid "Graphics conversion backend to use."
 msgstr "Бекенд, который будет использован для графических преобразований."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr ""
 
@@ -161,36 +168,38 @@ msgstr ""
 msgid "Zoom"
 msgstr "Увеличить"
 
-#: validators.py:21
+#: validators.py:26
 msgid "Enter a valid YAML value."
 msgstr "Введите допустимое YAML-значение."
 
-#: views.py:68
-#, python-format
-msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Удалить преобразование \"%(transformation)s\" для: %(content_object)s?"
-
-#: views.py:120
+#: views.py:72
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr "Создать новое преобразование для: %s"
 
-#: views.py:170
+#: views.py:127
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Удалить преобразование \"%(transformation)s\" для: %(content_object)s?"
+
+#: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Изменить преобразование \"%(transformation)s\" for: %(content_object)sjavascript:;"
+msgstr ""
+"Изменить преобразование \"%(transformation)s\" for: "
+"%(content_object)sjavascript:;"
 
-#: views.py:224
+#: views.py:227
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: views.py:228
+#: views.py:231
 msgid "No transformations"
 msgstr ""
 
-#: views.py:229
+#: views.py:232
 #, python-format
 msgid "Transformations for: %s"
 msgstr "Преобразования для: %s"

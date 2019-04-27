@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:15 links.py:37
+#: apps.py:18 links.py:37
 msgid "ACLs"
 msgstr ""
 
-#: apps.py:23 models.py:47
+#: forms.py:15 models.py:48
 msgid "Role"
 msgstr ""
 
-#: apps.py:26 links.py:46 models.py:43 workflow_actions.py:48
-msgid "Permissions"
-msgstr ""
-
-#: links.py:32
+#: links.py:33
 msgid "Delete"
 msgstr ""
 
@@ -37,26 +33,26 @@ msgstr ""
 msgid "New ACL"
 msgstr ""
 
-#: managers.py:57 managers.py:96
+#: links.py:46 models.py:44 workflow_actions.py:48
+msgid "Permissions"
+msgstr ""
+
+#: managers.py:61 managers.py:102
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
 
-#: models.py:55
+#: models.py:56
 msgid "Access entry"
 msgstr ""
 
-#: models.py:56
+#: models.py:57
 msgid "Access entries"
 msgstr ""
 
-#: models.py:60
+#: models.py:61 views.py:228
 #, python-format
-msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
-msgstr ""
-
-#: models.py:77
-msgid "None"
+msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
 #: permissions.py:7
@@ -101,45 +97,40 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr ""
 
-#: views.py:77
+#: views.py:64
 #, python-format
 msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:104
+#: views.py:100
 #, python-format
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:148
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr ""
 
-#: views.py:151
+#: views.py:150
 msgid ""
 "ACL stands for Access Control List and is a precise method  to control user "
 "access to objects in the system."
 msgstr ""
 
-#: views.py:155
+#: views.py:154
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:167
+#: views.py:166
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:168
+#: views.py:167
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:230
-#, python-format
-msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
-
-#: views.py:250
+#: views.py:248
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 

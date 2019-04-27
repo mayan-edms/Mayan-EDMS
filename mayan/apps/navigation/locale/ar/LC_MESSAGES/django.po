@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -22,6 +22,14 @@ msgstr ""
 
 #: apps.py:11
 msgid "Navigation"
+msgstr ""
+
+#: classes.py:669
+msgid "Unnamed function"
+msgstr ""
+
+#: templates/navigation/generic_navigation.html:7
+msgid "Actions"
 msgstr ""
 
 #~ msgid "Multi item action"

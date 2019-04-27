@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
@@ -10,49 +10,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:30-0400\n"
+"POT-Creation-Date: 2019-04-27 18:40-0400\n"
 "PO-Revision-Date: 2018-09-12 07:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:27 links.py:41 links.py:44 links.py:49 permissions.py:7 views.py:46
+#: apps.py:30 links.py:49 links.py:54 links.py:59 permissions.py:7 views.py:36
 msgid "Events"
 msgstr "Événements"
 
-#: apps.py:37 apps.py:62
-msgid "Timestamp"
-msgstr "Horodatage"
+#: apps.py:42 apps.py:68
+msgid "Date and time"
+msgstr ""
 
-#: apps.py:40 apps.py:66
+#: apps.py:45 apps.py:71
 msgid "Actor"
 msgstr "Acteur"
 
-#: apps.py:44 apps.py:69
+#: apps.py:48 apps.py:75
 msgid "Event"
 msgstr "Événement"
 
-#: apps.py:48
+#: apps.py:51
 msgid "Action object"
 msgstr "Objet de l'action"
 
-#: apps.py:55 forms.py:12 forms.py:69
-msgid "Namespace"
-msgstr "Espace de nommage"
-
-#: apps.py:58 forms.py:16 forms.py:73
-msgid "Label"
-msgstr "Libellé"
-
-#: apps.py:73 views.py:39 views.py:275 views.py:306
+#: apps.py:55 apps.py:79
 msgid "Target"
 msgstr "Cible"
 
-#: apps.py:77
+#: apps.py:60 forms.py:12 forms.py:69
+msgid "Namespace"
+msgstr "Espace de nommage"
+
+#: apps.py:63 forms.py:16 forms.py:73
+msgid "Label"
+msgstr "Libellé"
+
+#: apps.py:84
 msgid "Seen"
 msgstr "Vu"
 
@@ -73,144 +74,137 @@ msgstr "Non"
 msgid "Subscribed"
 msgstr "Souscrit"
 
-#: links.py:54 models.py:59 views.py:88
+#: html_widgets.py:50
+msgid "System"
+msgstr "Système"
+
+#: links.py:45
+#, fuzzy
+#| msgid "User events"
+msgid "My events"
+msgstr "Événements de l'utilisateur"
+
+#: links.py:63 models.py:66 views.py:80
 msgid "Event subscriptions"
 msgstr "Souscriptions aux événements"
 
-#: links.py:58
+#: links.py:67
 msgid "Mark as seen"
 msgstr "Marquer comme vu"
 
-#: links.py:62
+#: links.py:71
 msgid "Mark all as seen"
 msgstr "Tout marquer comme vu"
 
-#: links.py:67
+#: links.py:76
 msgid "Subscriptions"
 msgstr "Souscriptions"
 
-#: links.py:71
-msgid "User events"
-msgstr "Événements de l'utilisateur"
-
-#: models.py:21
+#: models.py:24
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:25
+#: models.py:28
 msgid "Stored event type"
 msgstr "Type d'événement enregistré"
 
-#: models.py:26
+#: models.py:29
 msgid "Stored event types"
 msgstr "Types d'événements enregistrés"
 
-#: models.py:48 models.py:70 models.py:100
+#: models.py:55 models.py:82 models.py:112
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:52 models.py:104
+#: models.py:59 models.py:116
 msgid "Event type"
 msgstr "Type d'évènement"
 
-#: models.py:58
+#: models.py:65
 msgid "Event subscription"
 msgstr "Souscription aux événements"
 
-#: models.py:74
+#: models.py:86
 msgid "Action"
 msgstr "Action"
 
-#: models.py:76
+#: models.py:88
 msgid "Read"
 msgstr "Lire"
 
-#: models.py:80
+#: models.py:92
 msgid "Notification"
 msgstr "Notification"
 
-#: models.py:81 views.py:129
+#: models.py:93 views.py:119
 msgid "Notifications"
 msgstr "Notifications"
 
-#: models.py:110
+#: models.py:122
 msgid "Object event subscription"
 msgstr "Souscription aux événements de l'objet"
 
-#: models.py:111
+#: models.py:123
 msgid "Object event subscriptions"
 msgstr "Souscriptions aux événements de l'objet"
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "Access the events of an object"
 msgstr "Accéder aux évènements de cet objet"
 
-#: views.py:69
+#: views.py:59
 #, python-format
 msgid "Error updating event subscription; %s"
 msgstr "Erreur de mise à jour de la souscription aux événements ; %s"
 
-#: views.py:73
+#: views.py:64
 msgid "Event subscriptions updated successfully"
 msgstr "Souscriptions aux événements mises à jour avec succès"
 
-#: views.py:124
+#: views.py:114
 msgid "Subscribe to global or object events to receive notifications."
 msgstr ""
 
-#: views.py:127
+#: views.py:117
 msgid "There are no notifications"
 msgstr ""
 
-#: views.py:185
+#: views.py:163
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
 msgstr ""
 
-#: views.py:188
+#: views.py:166
 msgid "There are no events for this object"
 msgstr ""
 
-#: views.py:190
+#: views.py:168
 #, python-format
 msgid "Events for: %s"
 msgstr "Évènements pour : %s"
 
-#: views.py:212
+#: views.py:207
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Erreur de mise à jour de souscription aux événements de l'objet ; %s"
 
-#: views.py:216
+#: views.py:213
 msgid "Object event subscriptions updated successfully"
 msgstr "Souscriptions aux événements de l'objet mises à jour avec succès"
 
-#: views.py:248
+#: views.py:246
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Souscriptions aux événements pour : %s"
 
-#: views.py:284
-msgid ""
-"Events are actions that have been performed to this user account or by this "
-"user account."
-msgstr ""
-
-#: views.py:287
-msgid "There are no events for this user"
-msgstr ""
-
-#: views.py:290
-#, python-format
-msgid "Events for user: %s"
-msgstr "Événements pour l'utilisateur : %s"
-
-#: views.py:314
+#: views.py:278
 #, python-format
 msgid "Events of type: %s"
 msgstr "Évènements de type : %s"
 
-#: widgets.py:42
-msgid "System"
-msgstr "Système"
+#~ msgid "Timestamp"
+#~ msgstr "Horodatage"
+
+#~ msgid "Events for user: %s"
+#~ msgstr "Événements pour l'utilisateur : %s"

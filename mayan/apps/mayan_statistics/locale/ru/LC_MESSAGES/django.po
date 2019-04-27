@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 # Sergey Glita <gsv70@mail.ru>, 2013
@@ -9,23 +9,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:41-0400\n"
 "PO-Revision-Date: 2018-04-10 08:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr "Статистика"
 
 #. Translators: Schedule here is a verb, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:35
+#: apps.py:36
 msgid "Schedule"
 msgstr "Запланировать"
 
@@ -71,7 +74,7 @@ msgstr ""
 msgid "View statistics"
 msgstr "Просмотр статистики"
 
-#: queues.py:13
+#: queues.py:12
 msgid "Execute statistic"
 msgstr ""
 
@@ -88,22 +91,22 @@ msgstr "Статистика пространств имён"
 msgid "Namespace details for: %s"
 msgstr "Детали пространства имён для: %s"
 
-#: views.py:54
+#: views.py:56
 #, python-format
 msgid "Results for: %s"
 msgstr "Результаты для: %s"
 
-#: views.py:61 views.py:86
+#: views.py:63 views.py:89
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Статистика \"%s\" не найдена."
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

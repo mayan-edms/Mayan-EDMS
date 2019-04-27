@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:41-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:10 settings.py:10
+#: apps.py:10 settings.py:9
 msgid "Lock manager"
 msgstr ""
 
-#: models.py:14
+#: models.py:17
 msgid "Creation datetime"
 msgstr ""
 
-#: models.py:17
+#: models.py:20
 msgid "Timeout"
 msgstr ""
 
-#: models.py:20
+#: models.py:23
 msgid "Name"
 msgstr ""
 
-#: models.py:26
+#: models.py:29
 msgid "Lock"
 msgstr ""
 
-#: models.py:27
+#: models.py:30
 msgid "Locks"
 msgstr ""
 
-#: settings.py:15
+#: settings.py:14
 msgid "Path to the class to use when to request and release resource locks."
 msgstr ""
 
-#: settings.py:23
+#: settings.py:22
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

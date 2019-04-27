@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:41-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:26 links.py:29 permissions.py:7 queues.py:8
+#: apps.py:27 links.py:29 permissions.py:7 queues.py:8
 msgid "Statistics"
 msgstr ""
 
 #. Translators: Schedule here is a verb, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:35
+#: apps.py:36
 msgid "Schedule"
 msgstr ""
 
@@ -69,7 +69,7 @@ msgstr ""
 msgid "View statistics"
 msgstr ""
 
-#: queues.py:13
+#: queues.py:12
 msgid "Execute statistic"
 msgstr ""
 
@@ -86,22 +86,22 @@ msgstr ""
 msgid "Namespace details for: %s"
 msgstr ""
 
-#: views.py:54
+#: views.py:56
 #, python-format
 msgid "Results for: %s"
 msgstr ""
 
-#: views.py:61 views.py:86
+#: views.py:63 views.py:89
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr ""
 
-#: views.py:78
+#: views.py:81
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

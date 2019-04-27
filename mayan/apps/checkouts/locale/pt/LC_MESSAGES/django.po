@@ -1,31 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:29-0400\n"
+"POT-Creation-Date: 2019-04-27 18:39-0400\n"
 "PO-Revision-Date: 2018-09-12 07:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 events.py:7 links.py:31
+#: apps.py:48 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr ""
 
 #: dashboard_widgets.py:16
-msgid "Checkedout documents"
+msgid "Checked out documents"
 msgstr ""
 
-#: events.py:11
+#: events.py:10
 msgid "Document automatically checked in"
 msgstr ""
 
@@ -37,7 +38,7 @@ msgstr ""
 msgid "Document checked out"
 msgstr ""
 
-#: events.py:21
+#: events.py:20
 msgid "Document forcefully checked in"
 msgstr ""
 
@@ -49,39 +50,39 @@ msgstr ""
 msgid "Document status"
 msgstr ""
 
-#: forms.py:37 models.py:41 views.py:88
+#: forms.py:39 models.py:41 views.py:90
 msgid "User"
 msgstr "Utilizador"
 
-#: forms.py:41
+#: forms.py:43
 msgid "Check out time"
 msgstr ""
 
-#: forms.py:46
+#: forms.py:48
 msgid "Check out expiration"
 msgstr ""
 
-#: forms.py:51
+#: forms.py:53
 msgid "New versions allowed?"
 msgstr ""
 
-#: forms.py:52
+#: forms.py:54
 msgid "Yes"
 msgstr "Sim"
 
-#: forms.py:52
+#: forms.py:54
 msgid "No"
 msgstr "Não"
 
-#: links.py:37
+#: links.py:41
 msgid "Check out document"
 msgstr ""
 
-#: links.py:42
+#: links.py:47
 msgid "Check in document"
 msgstr ""
 
-#: links.py:49
+#: links.py:52
 msgid "Check in/out"
 msgstr ""
 
@@ -93,7 +94,7 @@ msgstr ""
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:28 models.py:103
+#: models.py:28 models.py:110
 msgid "Document"
 msgstr ""
 
@@ -129,11 +130,11 @@ msgstr ""
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:109
+#: models.py:116
 msgid "New version block"
 msgstr ""
 
-#: models.py:110
+#: models.py:117
 msgid "New version blocks"
 msgstr ""
 
@@ -157,7 +158,7 @@ msgstr ""
 msgid "Checkouts periodic"
 msgstr ""
 
-#: queues.py:12
+#: queues.py:11
 msgid "Check expired checkouts"
 msgstr ""
 
@@ -165,70 +166,60 @@ msgstr ""
 msgid "Primary key of the document to be checked out."
 msgstr ""
 
-#: views.py:54
-#, python-format
-msgid "Error trying to check out document; %s"
-msgstr ""
-
-#: views.py:59
+#: views.py:56
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr ""
 
-#: views.py:67
+#: views.py:65
 #, python-format
 msgid "Check out document: %s"
 msgstr ""
 
-#: views.py:94
+#: views.py:96
 msgid "Checkout time and date"
 msgstr ""
 
-#: views.py:100
+#: views.py:102
 msgid "Checkout expiration"
 msgstr ""
 
-#: views.py:108
+#: views.py:110
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
 msgstr ""
 
-#: views.py:112
+#: views.py:114
 msgid "No documents have been checked out"
 msgstr ""
 
-#: views.py:113
+#: views.py:115
 msgid "Documents checked out"
 msgstr ""
 
-#: views.py:128
+#: views.py:130
 #, python-format
 msgid "Check out details for document: %s"
 msgstr ""
 
-#: views.py:146
+#: views.py:148
 #, python-format
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr ""
 
-#: views.py:150
+#: views.py:152
 #, python-format
 msgid "Check in the document: %s?"
 msgstr ""
 
-#: views.py:178
+#: views.py:185
 msgid "Document has not been checked out."
 msgstr ""
 
-#: views.py:183
-#, python-format
-msgid "Error trying to check in document; %s"
-msgstr ""
-
-#: views.py:188
+#: views.py:191
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr ""

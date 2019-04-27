@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -12,17 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:32-0400\n"
+"POT-Creation-Date: 2019-04-27 18:42-0400\n"
 "PO-Revision-Date: 2019-04-01 22:41+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 models.py:28 models.py:78 permissions.py:7
+#: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
 msgid "Permissions"
 msgstr "Berechtigungen"
 
@@ -30,81 +31,73 @@ msgstr "Berechtigungen"
 msgid "Insufficient permissions."
 msgstr "Unzureichende Berechtigungen."
 
-#: links.py:16 links.py:41 models.py:89 views.py:216
+#: events.py:12
+msgid "Role created"
+msgstr ""
+
+#: events.py:15
+msgid "Role edited"
+msgstr ""
+
+#: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
 msgstr "Rollen"
 
-#: links.py:20
-msgid "Grant"
-msgstr "Gewähren"
-
-#: links.py:24
-msgid "Revoke"
-msgstr "Widerrufen"
-
-#: links.py:29
+#: links.py:23
 msgid "Create new role"
 msgstr "Erstellen"
 
-#: links.py:33
+#: links.py:29
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:36
+#: links.py:34
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:44 models.py:81
+#: links.py:45 models.py:105
 msgid "Groups"
 msgstr "Gruppen"
 
-#: links.py:50
+#: links.py:52
 msgid "Role permissions"
 msgstr "Berechtigungen"
 
-#: models.py:19
+#: models.py:27
 msgid "Namespace"
 msgstr "Namensraum"
 
-#: models.py:20
+#: models.py:28
 msgid "Name"
 msgstr "Name"
 
-#: models.py:27
+#: models.py:35
 msgid "Permission"
 msgstr "Berechtigung"
 
-#: models.py:74 search.py:16
+#: models.py:98 search.py:16
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: models.py:88
+#: models.py:112
 msgid "Role"
 msgstr "Rolle"
 
 #: permissions.py:10
-msgid "View roles"
-msgstr "Rollen anzeigen"
-
-#: permissions.py:13
-msgid "Edit roles"
-msgstr "Rollen bearbeiten"
-
-#: permissions.py:16
 msgid "Create roles"
 msgstr "Rollen erstellen"
 
-#: permissions.py:19
+#: permissions.py:13
 msgid "Delete roles"
 msgstr "Rollen löschen"
 
-#: permissions.py:22
-msgid "Grant permissions"
-msgstr "Berechtigungen gewähren"
+#: permissions.py:16
+msgid "Edit roles"
+msgstr "Rollen bearbeiten"
 
-#: permissions.py:25
-msgid "Revoke permissions"
-msgstr "Berechtigungen widerrufen"
+#: permissions.py:19
+msgid "View roles"
+msgstr "Rollen anzeigen"
 
 #: search.py:20
 msgid "Group name"
@@ -114,11 +107,15 @@ msgstr "Gruppenname"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Kommagetrennte Liste von Primärschlüsseln der Gruppen, die zu dieser Rolle hinzugefügt oder ersetzt werden sollen."
+msgstr ""
+"Kommagetrennte Liste von Primärschlüsseln der Gruppen, die zu dieser Rolle "
+"hinzugefügt oder ersetzt werden sollen."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Durch Komma getrennte Liste von Berechtigungs-Primärschlüsseln die dieser Rolle zugewiesen werden sollen."
+msgstr ""
+"Durch Komma getrennte Liste von Berechtigungs-Primärschlüsseln die dieser "
+"Rolle zugewiesen werden sollen."
 
 #: serializers.py:90
 #, python-format
@@ -133,56 +130,78 @@ msgstr "Verfügbare Rollen"
 msgid "Group roles"
 msgstr "Gruppenrollen"
 
-#: views.py:43
+#: views.py:42
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Rollen von Gruppe %s"
 
-#: views.py:85
+#: views.py:79
 msgid "Available groups"
 msgstr "Verfügbare Gruppen"
 
-#: views.py:86
+#: views.py:80
 msgid "Role groups"
 msgstr "Rollengruppen"
 
-#: views.py:96
+#: views.py:89
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Gruppen für Rolle %s"
 
-#: views.py:98
+#: views.py:91
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr "Fügen Sie Gruppen hinzu um Rollenberechtigungen zu erlangen. Die Berechtigungen werden ererbt von den Berechtigungen und Zugriffsberechtigungen der Rolle."
+msgstr ""
+"Fügen Sie Gruppen hinzu um Rollenberechtigungen zu erlangen. Die "
+"Berechtigungen werden ererbt von den Berechtigungen und "
+"Zugriffsberechtigungen der Rolle."
 
-#: views.py:123
+#: views.py:104
 msgid "Available permissions"
 msgstr "Verfügbare Berechtigungen"
 
-#: views.py:124
+#: views.py:105
 msgid "Granted permissions"
 msgstr "Erteilte Berechtigungen"
 
-#: views.py:165
+#: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr "Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche Objekte."
+msgstr ""
+"Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche "
+"Objekte."
 
-#: views.py:168
+#: views.py:140
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Berechtigungen der Rolle %s"
 
-#: views.py:208
+#: views.py:156
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr "Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die die Rollenberechtigungen für das gesamte System erben. Rollen können auch Bestandteil von Zugriffsberechtigungslisten sein. Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische Objekte."
+msgstr ""
+"Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die "
+"die Rollenberechtigungen für das gesamte System erben. Rollen können auch "
+"Bestandteil von Zugriffsberechtigungslisten sein. "
+"Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische "
+"Objekte."
 
-#: views.py:215
+#: views.py:163
 msgid "There are no roles"
 msgstr "Keine Rolle vorhanden"
+
+#~ msgid "Grant"
+#~ msgstr "Gewähren"
+
+#~ msgid "Revoke"
+#~ msgstr "Widerrufen"
+
+#~ msgid "Grant permissions"
+#~ msgstr "Berechtigungen gewähren"
+
+#~ msgid "Revoke permissions"
+#~ msgstr "Berechtigungen widerrufen"

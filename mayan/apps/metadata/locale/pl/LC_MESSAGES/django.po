@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012
@@ -11,70 +11,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-02 14:31-0400\n"
+"POT-Creation-Date: 2019-04-27 18:41-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:67 apps.py:150 apps.py:155 events.py:7 links.py:42 permissions.py:7
+#: apps.py:70 apps.py:156 apps.py:161 events.py:7 links.py:48 permissions.py:7
 #: queues.py:8 settings.py:10
 msgid "Metadata"
 msgstr "Metadane"
 
-#: apps.py:97
+#: apps.py:102
 msgid "Return the value of a specific document metadata"
 msgstr "Zwróć wartość metadanej konkretnego dokumentu"
 
-#: apps.py:103
+#: apps.py:108
 msgid "Metadata type name"
 msgstr "Nazwa typu metadanych"
 
-#: apps.py:106
+#: apps.py:112
 msgid "Metadata type value"
 msgstr "Wartość typu metadanych"
 
-#: apps.py:162 forms.py:20 models.py:200
-msgid "Value"
-msgstr "Wartość"
-
-#: apps.py:166 forms.py:46 forms.py:182 models.py:283
-msgid "Required"
-msgstr "Wymagane"
-
-#: apps.py:188 apps.py:196 forms.py:123 models.py:91 models.py:281
+#: apps.py:202 apps.py:210 forms.py:123 models.py:93 models.py:296
 msgid "Metadata type"
 msgstr "Typ metadanych"
 
-#: apps.py:191 apps.py:200
+#: apps.py:205 apps.py:214
 msgid "Metadata value"
 msgstr "Wartość metadanych"
 
-#: events.py:11
+#: events.py:10
 msgid "Document metadata added"
 msgstr ""
 
-#: events.py:16
+#: events.py:13
 msgid "Document metadata edited"
 msgstr ""
 
-#: events.py:21
+#: events.py:16
 msgid "Document metadata removed"
 msgstr ""
 
-#: events.py:25
+#: events.py:19
 msgid "Metadata type created"
 msgstr ""
 
-#: events.py:28
+#: events.py:22
 msgid "Metadata type edited"
 msgstr ""
 
-#: events.py:32
+#: events.py:25
 msgid "Metadata type relationship updated"
 msgstr ""
 
@@ -82,13 +77,21 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:16 models.py:51 search.py:16
+#: forms.py:16 models.py:53 search.py:16
 msgid "Name"
 msgstr "Nazwa"
+
+#: forms.py:20 models.py:206
+msgid "Value"
+msgstr "Wartość"
 
 #: forms.py:25
 msgid "Update"
 msgstr "Aktualizacja"
+
+#: forms.py:46 forms.py:182 models.py:298
+msgid "Required"
+msgstr "Wymagane"
 
 #: forms.py:75
 #, python-format
@@ -100,7 +103,7 @@ msgstr "Błąd wartości wyszukiwania: %s"
 msgid "Default value error: %s"
 msgstr "Błąd dotyczący domyślnej wartości: %s"
 
-#: forms.py:104 models.py:161
+#: forms.py:104 models.py:167
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" jest wymagane dla tego typu dokumentu."
@@ -113,7 +116,7 @@ msgstr "Typy metadanych przeznaczone do dodania do wybranych dokumentów."
 msgid " Available template context variables: "
 msgstr "Dostępne zmienne kontekstowe szablonu:"
 
-#: forms.py:162 views.py:490
+#: forms.py:162 views.py:506
 msgid "Remove"
 msgstr "Usuń"
 
@@ -125,7 +128,7 @@ msgstr "Brak"
 msgid "Optional"
 msgstr "Opcjonalny"
 
-#: forms.py:186 models.py:53 search.py:19
+#: forms.py:186 models.py:55 search.py:19
 msgid "Label"
 msgstr "Etykieta"
 
@@ -133,174 +136,175 @@ msgstr "Etykieta"
 msgid "Relationship"
 msgstr "Związek"
 
-#: links.py:20 links.py:28
+#: links.py:18 links.py:29
 msgid "Add metadata"
 msgstr "Dodaj metadane"
 
-#: links.py:25 links.py:31
+#: links.py:25 links.py:33
 msgid "Edit metadata"
 msgstr "Edytuj metadane"
 
-#: links.py:34 links.py:38
+#: links.py:37 links.py:43
 msgid "Remove metadata"
 msgstr "Usuń metadane"
 
-#: links.py:47 links.py:68 models.py:92 views.py:641
+#: links.py:55 links.py:83 models.py:94 views.py:656
 msgid "Metadata types"
 msgstr "Typy metadanych"
 
-#: links.py:51
+#: links.py:61
 msgid "Document types"
 msgstr "Typy dokumentów"
 
-#: links.py:55
+#: links.py:65
 msgid "Create new"
 msgstr "Utwórz nowy"
 
-#: links.py:60
+#: links.py:72
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:64 views.py:301
+#: links.py:78 views.py:311
 msgid "Edit"
 msgstr "Edytuj"
 
-#: models.py:48
+#: models.py:50
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:57
+#: models.py:59
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:61 search.py:22
+#: models.py:63 search.py:22
 msgid "Default"
 msgstr "Domyślny"
 
-#: models.py:66
+#: models.py:68
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+"Django's default templating language (https://docs.djangoproject.com/en/1.11/"
+"ref/templates/builtins/)."
 msgstr ""
 
-#: models.py:71 search.py:25
+#: models.py:73 search.py:25
 msgid "Lookup"
 msgstr "Wyszukanie"
 
-#: models.py:76
+#: models.py:78
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym formatem."
+msgstr ""
+"Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym "
+"formatem."
 
-#: models.py:78 search.py:28
+#: models.py:80 search.py:28
 msgid "Validator"
 msgstr "Walidator"
 
-#: models.py:82
+#: models.py:84
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
+"The parser will reformat the value entered to conform to the expected format."
 msgstr "Parser zmieni format podanej wartości na format oczekiwany."
 
-#: models.py:84 search.py:31
+#: models.py:86 search.py:31
 msgid "Parser"
 msgstr "Parser"
 
-#: models.py:169
+#: models.py:175
 msgid "Value is not one of the provided options."
 msgstr "Wartość nie jest jedną z dostępnych opcji."
 
-#: models.py:191
+#: models.py:197
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:194
+#: models.py:200
 msgid "Type"
 msgstr "Typ"
 
-#: models.py:198
+#: models.py:204
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:206 models.py:207
+#: models.py:212 models.py:213
 msgid "Document metadata"
 msgstr "Metadane dokumentów"
 
-#: models.py:227
+#: models.py:234
 msgid "Metadata type is required for this document type."
 msgstr "Typ metadanych jest wymagany dla tego typu dokumentu."
 
-#: models.py:251
+#: models.py:262
 msgid "Metadata type is not valid for this document type."
 msgstr "Typ metadanej jest niewłaściwy dla tego typu dokumentu."
 
-#: models.py:277
+#: models.py:292
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:290
+#: models.py:305
 msgid "Document type metadata type options"
 msgstr "Opcje typu metadanych dla typu dokumentów"
 
-#: models.py:291
+#: models.py:306
 msgid "Document type metadata types options"
 msgstr "Opcje typów metadanych dla typu dokumentów"
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "Edit a document's metadata"
 msgstr "Edytuj metadane dokumentu"
 
-#: permissions.py:12
+#: permissions.py:13
 msgid "Add metadata to a document"
 msgstr "Dodaj metadane do dokumentu"
 
-#: permissions.py:15
+#: permissions.py:16
 msgid "Remove metadata from a document"
 msgstr "Usuń metadane z dokumentu"
 
-#: permissions.py:18
+#: permissions.py:20
 msgid "View metadata from a document"
 msgstr "Pokaż metadane z dokumentu"
 
-#: permissions.py:21
+#: permissions.py:24
 msgid "Metadata setup"
 msgstr "Ustawienia metadanych"
 
-#: permissions.py:23
+#: permissions.py:28
 msgid "Edit metadata types"
 msgstr "Edytuj typy metadanych"
 
-#: permissions.py:26
+#: permissions.py:31
 msgid "Create new metadata types"
 msgstr "Utwórz nowe typy metadanych"
 
-#: permissions.py:29
+#: permissions.py:34
 msgid "Delete metadata types"
 msgstr "Usuń typy metadanych"
 
-#: permissions.py:32
+#: permissions.py:37
 msgid "View metadata types"
 msgstr "Przeglądaj typy metadanych"
 
-#: queues.py:12
+#: queues.py:11
 msgid "Remove metadata type"
 msgstr "Usuń typ metadanych"
 
-#: queues.py:16
+#: queues.py:15
 msgid "Add required metadata type"
 msgstr "Dodaj wymagany typ metadanych"
 
-#: serializers.py:49
+#: serializers.py:51
 msgid "Primary key of the metadata type to be added."
 msgstr ""
 
-#: serializers.py:130
+#: serializers.py:132
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 
@@ -314,15 +318,15 @@ msgstr ""
 msgid "Metadata add request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:68 views.py:232 views.py:450
+#: views.py:69 views.py:237 views.py:461
 msgid "Selected documents must be of the same type."
 msgstr "Wybrane dokumenty muszą być tego samego typu."
 
-#: views.py:107
+#: views.py:113
 msgid "Add"
 msgstr "Dodaj"
 
-#: views.py:109
+#: views.py:115
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "Dodaj typy metadanych do dokumentu"
@@ -330,52 +334,55 @@ msgstr[1] "Dodaj typy metadanych do dokumentu"
 msgstr[2] "Dodaj typy metadanych do dokumentu"
 msgstr[3] "Dodaj typy metadanych do dokumentów"
 
-#: views.py:120
+#: views.py:126
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr "Dodaj typy metadanych do dokumentu: %s"
 
-#: views.py:174
+#: views.py:179
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Błąd dodawania typu metadanych \"%(metadata_type)s\" do dokumentu: %(document)s; %(exception)s"
+msgstr ""
+"Błąd dodawania typu metadanych \"%(metadata_type)s\" do dokumentu: "
+"%(document)s; %(exception)s"
 
-#: views.py:190
+#: views.py:194
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Typ metadanych: %(metadata_type)s dodano pomyślnie do dokumentu %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Typ metadanych: %(metadata_type)s dodano pomyślnie do dokumentu %(document)s."
 
-#: views.py:200
+#: views.py:204
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr "Typ metadanych: %(metadata_type)s już istnieje w dokumencie %(document)s."
+msgstr ""
+"Typ metadanych: %(metadata_type)s już istnieje w dokumencie %(document)s."
 
-#: views.py:214
+#: views.py:218
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr ""
 
-#: views.py:217
+#: views.py:221
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:296
+#: views.py:306
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
 
-#: views.py:299
+#: views.py:309
 msgid "There is no metadata to edit"
 msgstr ""
 
-#: views.py:303
+#: views.py:313
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Edytuj metadane dokumentu"
@@ -383,48 +390,48 @@ msgstr[1] "Edytuj metadane dokumentu"
 msgstr[2] "Edytuj metadane dokumentu"
 msgstr[3] "Edytuj metadane dokumentów"
 
-#: views.py:314
+#: views.py:324
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Edytuj metadane dokumentu: %s"
 
-#: views.py:372
+#: views.py:382
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
+msgstr ""
+"Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
 
-#: views.py:383
+#: views.py:392
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadane dla dokumentu %s zostały pomyślnie zmodyfikowane."
 
-#: views.py:414
+#: views.py:424
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 
-#: views.py:419
+#: views.py:429
 msgid "This document doesn't have any metadata"
 msgstr ""
 
-#: views.py:420
+#: views.py:430
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metadane dokumentu: %s"
 
-#: views.py:432
+#: views.py:442
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr ""
 
-#: views.py:435
+#: views.py:445
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr ""
 
-#: views.py:492
+#: views.py:508
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Usuń typy metadanych z dokumentu"
@@ -432,44 +439,40 @@ msgstr[1] "Usuń typy metadanych z dokumentu"
 msgstr[2] "Usuń typy metadanych z dokumentu"
 msgstr[3] "Usuń typy metadanych z dokumentów"
 
-#: views.py:503
+#: views.py:519
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Usuń typy metadanych z dokumentu: %s"
 
-#: views.py:552
+#: views.py:567
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
 
-#: views.py:562
+#: views.py:576
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr ""
 
-#: views.py:573
+#: views.py:587
 msgid "Create metadata type"
 msgstr "Utwórz typ metadanych"
 
-#: views.py:594
+#: views.py:612
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Usunąć typ metadanych: %s?"
 
-#: views.py:607
+#: views.py:627
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Edytuj typ metadanych: %s"
 
-#: views.py:623
-msgid "Internal name"
-msgstr "Nazwa wewnętrzna"
-
-#: views.py:633
+#: views.py:648
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -478,34 +481,34 @@ msgid ""
 "is provided."
 msgstr ""
 
-#: views.py:640
+#: views.py:655
 msgid "There are no metadata types"
 msgstr ""
 
-#: views.py:661
+#: views.py:676
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "Błąd uaktualnienia relacji; %s"
 
-#: views.py:665
+#: views.py:681
 msgid "Relationships updated successfully"
 msgstr "Relację uaktualniono pomyślnie"
 
-#: views.py:680
+#: views.py:697
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr ""
 
-#: views.py:683
+#: views.py:700
 msgid "There are no metadata types available"
 msgstr ""
 
-#: views.py:686
+#: views.py:703
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "Typy metadanych dla typu dokumentu: %s"
 
-#: views.py:737
+#: views.py:754
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "Typy dokumentów dla typu metadanych: %s"
@@ -513,3 +516,6 @@ msgstr "Typy dokumentów dla typu metadanych: %s"
 #: wizard_steps.py:15
 msgid "Enter document metadata"
 msgstr ""
+
+#~ msgid "Internal name"
+#~ msgstr "Nazwa wewnętrzna"
