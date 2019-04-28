@@ -202,8 +202,14 @@ class SmartLinkCondition(models.Model):
         verbose_name_plural = _('Link conditions')
 
     def __str__(self):
+        return self.get_full_label()
+
+    def get_full_label(self):
         return '%s foreign %s %s %s %s' % (
             self.get_inclusion_display(),
             self.foreign_document_data, _('not') if self.negated else '',
             self.get_operator_display(), self.expression
         )
+
+    get_full_label.short_description = _('Full label')
+

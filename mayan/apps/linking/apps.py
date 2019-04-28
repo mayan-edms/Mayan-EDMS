@@ -74,14 +74,23 @@ class LinkingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='dynamic_label', source=SmartLink
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=SmartLink
         )
         SourceColumn(
-            attribute='enabled', source=SmartLink, widget=TwoStateWidget
+            attribute='dynamic_label', is_sortable=True, source=SmartLink
+        )
+        SourceColumn(
+            attribute='enabled', is_sortable=True, source=SmartLink,
+            widget=TwoStateWidget
         )
 
         SourceColumn(
-            attribute='enabled', source=SmartLinkCondition,
+            attribute='get_full_label', is_identifier=True,
+            source=SmartLinkCondition
+        )
+        SourceColumn(
+            attribute='enabled', is_sortable=True, source=SmartLinkCondition,
             widget=TwoStateWidget
         )
 
