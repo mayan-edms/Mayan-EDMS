@@ -43,9 +43,11 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
 
         self.assertEqual(SmartLink.objects.count(), 1)
 
-    def test_smart_link_delete_view_with_permission(self):
+    def test_smart_link_delete_view_with_access(self):
         self._create_test_smart_link()
-        self.grant_permission(permission=permission_smart_link_delete)
+        self.grant_access(
+            obj=self.test_smart_link, permission=permission_smart_link_delete
+        )
 
         response = self._request_test_smart_link_delete_view()
         self.assertEqual(response.status_code, 302)
@@ -61,10 +63,12 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
         self.test_smart_link.refresh_from_db()
         self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL)
 
-    def test_smart_link_edit_view_with_permission(self):
+    def test_smart_link_edit_view_with_access(self):
         self._create_test_smart_link()
 
-        self.grant_permission(permission=permission_smart_link_edit)
+        self.grant_access(
+            obj=self.test_smart_link, permission=permission_smart_link_edit
+        )
 
         response = self._request_test_smart_link_edit_view()
         self.assertEqual(response.status_code, 302)
@@ -74,11 +78,9 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericV
 
 
 class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestCase):
-    def setup_smart_links(self):
-        self.test_smart_link = SmartLink.objects.create(
-            label=TEST_SMART_LINK_LABEL,
-            dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
-        )
+    def setUp(self):
+        super(SmartLinkDocumentViewTestCase, self).setUp()
+        self._create_test_smart_link()
         self.test_smart_link.document_types.add(self.test_document_type)
 
         self.test_smart_link_2 = SmartLink.objects.create(
@@ -94,8 +96,6 @@ class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestC
         )
 
     def test_document_smart_link_list_view_no_permission(self):
-        self.setup_smart_links()
-
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -109,8 +109,6 @@ class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestC
         )
 
     def test_document_smart_link_list_view_with_permission(self):
-        self.setup_smart_links()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )

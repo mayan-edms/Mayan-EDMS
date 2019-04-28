@@ -197,7 +197,8 @@
 * Update smart link document type selection view to use
   AddRemoveView class.
 * Add smart link created and edited events.
-  
+* Fix smart link ACL support.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

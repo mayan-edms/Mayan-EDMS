@@ -35,7 +35,9 @@ class SmartLinkTemplateEventsTestCase(DocumentTestMixin, SmartLinkTestMixin, Sma
     def test_smart_link_edit_event(self):
         self._create_test_smart_link()
 
-        self.grant_permission(permission=permission_smart_link_edit)
+        self.grant_access(
+            obj=self.test_smart_link, permission=permission_smart_link_edit
+        )
         Action.objects.all().delete()
 
         response = self._request_test_smart_link_edit_view()

@@ -229,6 +229,7 @@ Other changes
 * Update smart link document type selection view to use
   AddRemoveView class.
 * Add smart link created and edited events.
+* Fix smart link ACL support.
 
 Removals
 --------

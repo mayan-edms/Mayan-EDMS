@@ -203,10 +203,10 @@ class SmartLinkCreateView(SingleObjectCreateView):
 
 class SmartLinkDeleteView(SingleObjectDeleteView):
     model = SmartLink
+    object_permission = permission_smart_link_delete
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
-    view_permission = permission_smart_link_delete
 
     def get_extra_context(self):
         return {
@@ -218,10 +218,10 @@ class SmartLinkDeleteView(SingleObjectDeleteView):
 class SmartLinkEditView(SingleObjectEditView):
     form_class = SmartLinkForm
     model = SmartLink
+    object_permission = permission_smart_link_edit
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
-    view_permission = permission_smart_link_edit
 
     def get_extra_context(self):
         return {
@@ -234,7 +234,7 @@ class SmartLinkEditView(SingleObjectEditView):
 
 
 class SmartLinkConditionListView(SingleObjectListView):
-    view_permission = permission_smart_link_edit
+    object_permission = permission_smart_link_edit
 
     def get_extra_context(self):
         return {
