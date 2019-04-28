@@ -10,7 +10,8 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelAttribute, ModelField
 from mayan.apps.common.menus import (
-    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
+    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
+    menu_tools
 )
 from mayan.apps.document_indexing.handlers import handler_index_document
 from mayan.apps.documents.search import document_page_search, document_search
@@ -174,7 +175,7 @@ class FileMetadataApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_driver_list,), sources=(Document,)
         )
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_type_file_metadata_settings,),
             sources=(DocumentType,)
         )
