@@ -721,6 +721,8 @@ class SourceColumn(object):
             )
         elif self.func:
             result = self.func(context=context, **self.kwargs)
+        else:
+            result = context['object']
 
         if self.widget:
             widget_instance = self.widget()
