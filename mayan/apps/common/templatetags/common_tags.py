@@ -7,6 +7,7 @@ from django.template.defaultfilters import truncatechars
 from django.template.loader import get_template
 from django.utils.encoding import force_text
 from django.utils.six import string_types
+from django.utils.translation import ugettext_lazy as _
 
 import mayan
 from mayan.apps.appearance.settings import setting_max_title_length
@@ -27,7 +28,7 @@ def common_calculate_title(context):
         )
     else:
         if context.get('delete_view'):
-            title =  _('Confirm delete')
+            title = _('Confirm delete')
             title_full = title
         else:
             if context.get('form'):
