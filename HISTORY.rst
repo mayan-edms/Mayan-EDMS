@@ -192,6 +192,8 @@
 * Add index create and edit events.
 * Allow overloading the action_add and action_remove methods
   from the AddRemoveView.
+* Add view to link document type and indexes from the document
+  type side.
 
 3.1.11 (2019-04-XX)
 ===================

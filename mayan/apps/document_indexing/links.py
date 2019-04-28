@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_cascade_condition
 
@@ -21,6 +22,13 @@ link_document_index_instance_list = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_indexing.icons.icon_document_index_instance_list',
     text=_('Indexes'), view='indexing:document_index_list',
+)
+
+link_document_type_index_templates = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_indexing.icons.icon_document_type_index_templates',
+    permissions=(permission_document_type_edit,), text=_('Index templates'),
+    view='indexing:document_type_index_templates',
 )
 
 link_index_instance_menu = Link(

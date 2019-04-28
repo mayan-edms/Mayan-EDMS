@@ -12,6 +12,7 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.lock_manager.exceptions import LockError
@@ -48,7 +49,7 @@ class Index(models.Model):
         verbose_name=_('Enabled')
     )
     document_types = models.ManyToManyField(
-        to=DocumentType, verbose_name=_('Document types')
+        related_name='indexes', to=DocumentType, verbose_name=_('Document types')
     )
 
     objects = IndexManager()
@@ -66,14 +67,22 @@ class Index(models.Model):
             event_index_template_edited.commit(
                 actor=_user, target=self
             )
-            self.document_types.add(*queryset)
+            for obj in queryset:
+                self.document_types.add(obj)
+                event_document_type_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
 
     def document_types_remove(self, queryset, _user=None):
         with transaction.atomic():
             event_index_template_edited.commit(
                 actor=_user, target=self
             )
-            self.document_types.remove(*queryset)
+            for obj in queryset:
+                self.document_types.remove(*queryset)
+                event_document_type_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
 
     def get_absolute_url(self):
         try:

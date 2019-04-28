@@ -33,7 +33,8 @@ from .html_widgets import (
     get_instance_link, index_instance_item_link, node_level
 )
 from .links import (
-    link_document_index_instance_list, link_index_instance_menu, link_index_template_setup,
+    link_document_index_instance_list, link_document_type_index_templates,
+    link_index_instance_menu, link_index_template_setup,
     link_index_template_create, link_index_template_document_types,
     link_index_template_delete, link_index_template_edit, link_index_template_list,
     link_index_template_node_tree_view, link_index_instances_rebuild,
@@ -191,6 +192,10 @@ class DocumentIndexingApp(MayanAppConfig):
 
         menu_facet.bind_links(
             links=(link_document_index_instance_list,), sources=(Document,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_document_type_index_templates,),
+            sources=(DocumentType,)
         )
         menu_list_facet.bind_links(
             links=(

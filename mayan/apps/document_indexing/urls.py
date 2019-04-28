@@ -8,14 +8,19 @@ from .api_views import (
     APIIndexTemplateView, APIIndexView
 )
 from .views import (
-    DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
-    IndexesRebuildView, SetupIndexDocumentTypesView, SetupIndexCreateView,
-    SetupIndexDeleteView, SetupIndexEditView, SetupIndexListView,
-    SetupIndexTreeTemplateListView, TemplateNodeCreateView,
+    DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
+    IndexListView, IndexesRebuildView, SetupIndexDocumentTypesView,
+    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
+    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeCreateView,
     TemplateNodeDeleteView, TemplateNodeEditView
 )
 
 urlpatterns = [
+    url(
+        regex=r'^setup/document_types/(?P<pk>\d+)/index_templates/$',
+        view=DocumentTypeIndexesView.as_view(),
+        name='document_type_index_templates'
+    ),
     url(
         regex=r'^setup/index/list/$', view=SetupIndexListView.as_view(),
         name='index_setup_list'

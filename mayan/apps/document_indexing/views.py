@@ -12,12 +12,14 @@ from mayan.apps.common.generics import (
     AddRemoveView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
 from mayan.apps.documents.views import DocumentListView
 
+from .events import event_index_template_edited
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
 from .html_widgets import node_tree
 from .icons import icon_index
@@ -33,6 +35,51 @@ from .permissions import (
     permission_document_indexing_view
 )
 from .tasks import task_rebuild_index
+
+
+class DocumentTypeIndexesView(AddRemoveView):
+    main_object_permission = permission_document_indexing_edit
+    main_object_model = DocumentType
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = Index
+    secondary_object_permission = permission_document_type_edit
+    list_available_title = _('Available indexes')
+    list_added_title = _('Indexes linked')
+    related_field = 'indexes'
+
+    def action_add(self, queryset, _user):
+        event_document_type_edited.commit(
+            actor=_user, target=self.main_object
+        )
+        for obj in queryset:
+            self.main_object.indexes.add(obj)
+            event_index_template_edited.commit(
+                actor=_user, action_object=self.main_object, target=obj
+            )
+
+    def action_remove(self, queryset, _user):
+        event_document_type_edited.commit(
+            actor=_user, target=self.main_object
+        )
+        for obj in queryset:
+            self.main_object.indexes.remove(obj)
+            event_index_template_edited.commit(
+                actor=_user, action_object=self.main_object, target=obj
+            )
+
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
+
+    def get_extra_context(self):
+        return {
+            'object': self.main_object,
+            'subtitle': _(
+                'Documents of this type will appear in the indexes linked '
+                'when these are updated. Events of the documents of this type '
+                'will trigger updates in the linked indexes.'
+            ),
+            'title': _('Indexes linked to document type: %s') % self.main_object,
+        }
 
 
 # Setup views
@@ -104,16 +151,14 @@ class SetupIndexListView(SingleObjectListView):
 
 
 class SetupIndexDocumentTypesView(AddRemoveView):
-    action_add_method = 'document_types_add'
-    action_remove_method = 'document_types_remove'
+    main_object_method_add = 'document_types_add'
+    main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_document_indexing_edit
     main_object_model = Index
     main_object_pk_url_kwarg = 'pk'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
     list_available_title = _('Available document types')
-    # Translators: "User groups" here refer to the group list of a specific
-    # user.
     list_added_title = _('Document types linked')
     related_field = 'document_types'
 
