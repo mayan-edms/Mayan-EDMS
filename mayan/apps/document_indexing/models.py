@@ -79,7 +79,7 @@ class Index(models.Model):
                 actor=_user, target=self
             )
             for obj in queryset:
-                self.document_types.remove(*queryset)
+                self.document_types.remove(obj)
                 event_document_type_edited.commit(
                     actor=_user, action_object=self, target=obj
                 )
