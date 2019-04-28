@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.encoding import force_text
@@ -178,8 +179,8 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
     secondary_object_source_queryset = None
 
     # Main object methods to use to add and remove selections
-    action_add_method = None
-    action_remove_method = None
+    main_object_method_add = None
+    main_object_method_remove = None
 
     # If a method is not specified, use this related field to add and remove
     # selections
@@ -196,32 +197,42 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
 
         super(AddRemoveView, self).__init__(*args, **kwargs)
 
-    def action_add(self, queryset):
-        if self.action_add_method:
-            kwargs = {'queryset': queryset}
-            kwargs.update(self.get_action_add_extra_kwargs())
-            kwargs.update(self.get_actions_extra_kwargs())
-            getattr(self.main_object, self.action_add_method)(**kwargs)
+    def _action_add(self, queryset):
+        kwargs = {'queryset': queryset}
+        kwargs.update(self.get_action_add_extra_kwargs())
+        kwargs.update(self.get_actions_extra_kwargs())
+
+        if hasattr(self, 'action_add'):
+            with transaction.atomic():
+                self.action_add(**kwargs)
+        elif self.main_object_method_add:
+            getattr(self.main_object, self.main_object_method_add)(**kwargs)
         elif self.related_field:
             getattr(self.main_object, self.related_field).add(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View %s must be called with either an action_add_method, a '
-                'related_field.' % self.__class__.__name__
+                'View %s must be called with a main_object_method_add, a '
+                'related_field, or an action_add '
+                'method.' % self.__class__.__name__
             )
 
-    def action_remove(self, queryset):
-        if self.action_remove_method:
-            kwargs = {'queryset': queryset}
-            kwargs.update(self.get_action_remove_extra_kwargs())
-            kwargs.update(self.get_actions_extra_kwargs())
-            getattr(self.main_object, self.action_remove_method)(**kwargs)
+    def _action_remove(self, queryset):
+        kwargs = {'queryset': queryset}
+        kwargs.update(self.get_action_remove_extra_kwargs())
+        kwargs.update(self.get_actions_extra_kwargs())
+
+        if hasattr(self, 'action_remove'):
+            with transaction.atomic():
+                self.action_remove(**kwargs)
+        elif self.main_object_method_remove:
+            getattr(self.main_object, self.main_object_method_remove)(**kwargs)
         elif self.related_field:
             getattr(self.main_object, self.related_field).remove(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View %s must be called with either an action_remove_method, a '
-                'related_field.' % self.__class__.__name__
+                'View %s must be called with a main_object_method_remove, a '
+                'related_field, or an action_remove '
+                'method.' % self.__class__.__name__
             )
 
     def dispatch(self, request, *args, **kwargs):
@@ -237,7 +248,7 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
                 pk__in=forms['form_available'].cleaned_data['selection']
             )
 
-        self.action_add(queryset=selection_add)
+        self._action_add(queryset=selection_add)
 
         if 'added-remove_all' in self.request.POST:
             selection_remove = self.get_list_added_queryset()
@@ -246,7 +257,7 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
                 pk__in=forms['form_added'].cleaned_data['selection']
             )
 
-        self.action_remove(queryset=selection_remove)
+        self._action_remove(queryset=selection_remove)
 
         return super(AddRemoveView, self).forms_valid(forms=forms)
 

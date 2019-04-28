@@ -162,8 +162,8 @@ class ACLListView(SingleObjectListView):
 
 
 class ACLPermissionsView(AddRemoveView):
-    action_add_method = 'permissions_add'
-    action_remove_method = 'permissions_remove'
+    main_object_method_add = 'permissions_add'
+    main_object_method_remove = 'permissions_remove'
     main_object_model = AccessControlList
     main_object_permission = permission_acl_edit
     main_object_pk_url_kwarg = 'pk'

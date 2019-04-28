@@ -126,8 +126,8 @@ class GroupListView(SingleObjectListView):
 
 
 class GroupUsersView(AddRemoveView):
-    action_add_method = 'users_add'
-    action_remove_method = 'users_remove'
+    main_object_method_add = 'users_add'
+    main_object_method_remove = 'users_remove'
     main_object_model = Group
     main_object_permission = permission_group_edit
     main_object_pk_url_kwarg = 'pk'
@@ -260,8 +260,8 @@ class UserEditView(SingleObjectEditView):
 
 
 class UserGroupsView(AddRemoveView):
-    action_add_method = 'groups_add'
-    action_remove_method = 'groups_remove'
+    main_object_method_add = 'groups_add'
+    main_object_method_remove = 'groups_remove'
     main_object_permission = permission_user_edit
     main_object_source_queryset = get_user_queryset()
     main_object_pk_url_kwarg = 'pk'

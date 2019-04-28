@@ -190,6 +190,8 @@
 * Update index document types view to use the new AddRemoveView
   class.
 * Add index create and edit events.
+* Allow overloading the action_add and action_remove methods
+  from the AddRemoveView.
 
 3.1.11 (2019-04-XX)
 ===================
