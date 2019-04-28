@@ -198,6 +198,8 @@
   AddRemoveView class.
 * Add smart link created and edited events.
 * Fix smart link ACL support.
+* Update JavaScript downloader to work with Python 3.
+* Improve speed of the NPM package hash verification.
 
 3.1.11 (2019-04-XX)
 ===================

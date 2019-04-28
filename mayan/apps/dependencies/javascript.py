@@ -14,6 +14,7 @@ from semver import max_satisfying
 from django.apps import apps
 from django.utils.encoding import force_bytes, force_text
 from django.utils.functional import cached_property
+from django.utils.six import PY3
 
 from mayan.apps.storage.utils import mkdtemp
 
@@ -24,6 +25,64 @@ from .literals import (
 )
 
 
+class HashAlgorithm(object):
+    DEFAULT_BLOCK_SIZE = 65535
+    _registry = {}
+    hash_factory = None
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def register(cls, algorithm_class):
+        cls._registry[algorithm_class.name] = algorithm_class
+
+    def __init__(self, file_object, block_size=None):
+        self.block_size = block_size or self.DEFAULT_BLOCK_SIZE
+        self.file_object = file_object
+        self.hash_object = self.hash_factory()
+
+    def calculate(self):
+        while (True):
+            data = self.file_object.read(self.block_size)
+            if not data:
+                break
+
+            self.hash_object.update(data)
+
+    def get_digest(self):
+        return force_text(self._get_digest())
+
+
+class SHA1Algorithm(HashAlgorithm):
+    hash_factory = hashlib.sha1
+    name = 'sha1'
+
+    def _get_digest(self):
+        return self.hash_object.hexdigest()
+
+
+class SHA256Algorithm(HashAlgorithm):
+    hash_factory = hashlib.sha256
+    name = 'sha256'
+
+    def _get_digest(self):
+        return base64.b64encode(
+            self.hash_object.digest()
+        )
+
+
+class SHA512Algorithm(SHA256Algorithm):
+    hash_factory = hashlib.sha512
+    name = 'sha512'
+
+
+HashAlgorithm.register(algorithm_class=SHA1Algorithm)
+HashAlgorithm.register(algorithm_class=SHA256Algorithm)
+HashAlgorithm.register(algorithm_class=SHA512Algorithm)
+
+
 class NPMPackage(object):
     def __init__(self, registry, name, version):
         self.registry = registry
@@ -31,71 +90,57 @@ class NPMPackage(object):
         self.version = version
 
     def download(self):
-        algorithm_function = self.get_algorithm_function()
-        tar_file_path = self.get_tar_file_path()
+        path_tar_file = self.get_tar_file_path()
 
         with requests.get(self.version_metadata['dist']['tarball'], stream=True) as response:
-            with tar_file_path.open(mode='wb') as file_object:
+            response.raise_for_status()
+            with path_tar_file.open(mode='wb') as file_object:
                 shutil.copyfileobj(response.raw, file_object)
 
-        with tar_file_path.open(mode='rb') as file_object:
-            integrity_is_good = algorithm_function(file_object.read())
+        with path_tar_file.open(mode='rb') as file_object:
+            integrity_is_good = self.verify_package_data(file_object=file_object)
 
         if not integrity_is_good:
-            tar_file_path.unlink()
+            path_tar_file.unlink()
             raise DependenciesException(
                 'Hash of downloaded package doesn\'t match online version.'
             )
 
     def extract(self):
-        download_path = force_text(
-            Path(
-                self.registry.module_directory, self.name
-            )
+        path_download = Path(
+            self.registry.module_directory, self.name
         )
-        shutil.rmtree(path=download_path, ignore_errors=True)
+        shutil.rmtree(path=force_text(path_download), ignore_errors=True)
 
-        compressed_filepath = force_text(self.get_tar_file_path())
-        with tarfile.open(name=compressed_filepath, mode='r') as file_object:
+        path_compressed_file = self.get_tar_file_path()
+        with tarfile.open(name=force_text(path_compressed_file), mode='r') as file_object:
             file_object.extractall(
                 path=force_text(self.registry.module_directory)
             )
 
-        target_path = Path(self.registry.module_directory, self.name)
+        path_target = Path(self.registry.module_directory, self.name)
         # Scoped packages are nested under a parent directory
         # create it to avoid rename errors.
-        target_path.mkdir(parents=True)
+        path_target.mkdir(parents=True)
         Path(self.registry.module_directory, 'package').rename(
-            target=target_path
+            target=force_text(path_target)
         )
 
-    def get_algorithm_function(self):
-        try:
-            integrity = self.version_metadata['dist']['integrity']
-        except KeyError:
-            algorithm_name = 'sha1'
-            integrity_value = self.version_metadata['dist']['shasum']
-        else:
-            algorithm_name, integrity_value = integrity.split('-', 1)
-
-        algorithms = {
-            'sha1': lambda data: hashlib.sha1(data).hexdigest() == integrity_value,
-            'sha256': lambda data: base64.b64encode(hashlib.sha256(data).digest()) == integrity_value,
-            'sha512': lambda data: base64.b64encode(hashlib.sha512(data).digest()) == integrity_value,
-        }
-
-        try:
-            algorithm = algorithms[algorithm_name]
-        except KeyError:
-            raise DependenciesException(
-                'Unknown hash algorithm: {}'.format(algorithm_name)
-            )
-        else:
-            return algorithm
-
     def get_best_version(self):
+        # PY3
+        # node-semver does a direct str() comparison which means
+        # different things on PY2 and PY3
+        # Typecast to str in PY3 which is unicode and
+        # bytes in PY2 which is str to fool node-semver
+        if PY3:
+            versions = self.versions
+            version = self.version
+        else:
+            versions = [force_bytes(version) for version in self.versions]
+            version = force_bytes(self.version)
+
         return max_satisfying(
-            self.versions, force_bytes(self.version), loose=True
+            versions=versions, range_=version, loose=True
         )
 
     def get_tar_file_path(self):
@@ -132,15 +177,33 @@ class NPMPackage(object):
         f.path.segments = f.path.segments + [self.name]
         return f.tostr()
 
+    def verify_package_data(self, file_object):
+        try:
+            integrity = self.version_metadata['dist']['integrity']
+        except KeyError:
+            algorithm_name = 'sha1'
+            integrity_value = self.version_metadata['dist']['shasum']
+        else:
+            algorithm_name, integrity_value = integrity.split('-', 1)
+
+        try:
+            algorithm_class = HashAlgorithm.get(name=algorithm_name)
+        except KeyError:
+            raise DependenciesException(
+                'Unknown hash algorithm: {}'.format(algorithm_name)
+            )
+        else:
+            algorithm_object = algorithm_class(file_object=file_object)
+            algorithm_object.calculate()
+            return algorithm_object.get_digest() == integrity_value
+
     @property
     def version_metadata(self):
         return self.metadata['versions'][self.get_best_version()]
 
     @property
     def versions(self):
-        return [
-            force_bytes(version) for version in self.metadata['versions'].keys()
-        ]
+        return self.metadata['versions'].keys()
 
 
 class NPMRegistry(object):
