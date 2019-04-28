@@ -31,7 +31,7 @@ class StatisticsApp(MayanAppConfig):
 
         SourceColumn(
             source=StatisticLineChart,
-            # Translators: Schedule here is a verb, the 'schedule' at
+            # Translators: Schedule here is a noun, the 'schedule' at
             # which the statistic will be updated
             label=_('Schedule'),
             attribute='schedule',

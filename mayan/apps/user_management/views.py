@@ -268,6 +268,8 @@ class UserGroupsView(AddRemoveView):
     secondary_object_model = Group
     secondary_object_permission = permission_group_edit
     list_available_title = _('Available groups')
+    # Translators: "User groups" here refer to the group list of a specific
+    # user.
     list_added_title = _('User groups')
 
     def get_actions_extra_kwargs(self):

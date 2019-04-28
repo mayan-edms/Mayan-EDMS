@@ -29,7 +29,7 @@ settings_db_sync_task_delay = namespace.add_setting(
 setting_home_view = namespace.add_setting(
     global_name='COMMON_HOME_VIEW',
     default=DEFAULT_COMMON_HOME_VIEW, help_text=_(
-        'Name of the view attached to the branch anchor in the main menu. '
+        'Name of the view attached to the brand anchor in the main menu. '
         'This is also the view to which users will be redirected after '
         'log in.'
     ),
