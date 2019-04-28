@@ -20,10 +20,10 @@ from .literals import (
     TEST_INDEX_TEMPLATE_METADATA_EXPRESSION, TEST_METADATA_TYPE_LABEL,
     TEST_METADATA_TYPE_NAME
 )
-from .mixins import DocumentIndexingTestMixin
+from .mixins import IndexTestMixin
 
 
-class IndexTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
+class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
     def test_document_description_index(self):
         self._create_test_index()
 

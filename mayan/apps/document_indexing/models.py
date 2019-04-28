@@ -17,6 +17,7 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.lock_manager.runtime import locking_backend
 
+from .events import event_index_template_created, event_index_template_edited
 from .managers import (
     DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager
 )
@@ -59,6 +60,20 @@ class Index(models.Model):
 
     def __str__(self):
         return self.label
+
+    def document_types_add(self, queryset, _user=None):
+        with transaction.atomic():
+            event_index_template_edited.commit(
+                actor=_user, target=self
+            )
+            self.document_types.add(*queryset)
+
+    def document_types_remove(self, queryset, _user=None):
+        with transaction.atomic():
+            event_index_template_edited.commit(
+                actor=_user, target=self
+            )
+            self.document_types.remove(*queryset)
 
     def get_absolute_url(self):
         try:
@@ -131,11 +146,22 @@ class Index(models.Model):
             self.index_document(document=document)
 
     def save(self, *args, **kwargs):
-        """
-        Automatically create the root index template node
-        """
-        super(Index, self).save(*args, **kwargs)
-        IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+        _user = kwargs.pop('_user', None)
+
+        with transaction.atomic():
+            is_new = not self.pk
+            super(Index, self).save(*args, **kwargs)
+            if is_new:
+                # Automatically create the root index template node
+                IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+
+                event_index_template_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_index_template_edited.commit(
+                    actor=_user, target=self
+                )
 
     @property
     def template_root(self):

@@ -9,11 +9,13 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    AssignRemoveView, FormView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    AddRemoveView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.permissions import (
+    permission_document_type_edit, permission_document_view
+)
 from mayan.apps.documents.views import DocumentListView
 
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
@@ -42,6 +44,9 @@ class SetupIndexCreateView(SingleObjectCreateView):
         viewname='indexing:index_setup_list'
     )
     view_permission = permission_document_indexing_create
+
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class SetupIndexDeleteView(SingleObjectDeleteView):
@@ -72,6 +77,9 @@ class SetupIndexEditView(SingleObjectEditView):
             'title': _('Edit index: %s') % self.get_object(),
         }
 
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
+
 
 class SetupIndexListView(SingleObjectListView):
     model = Index
@@ -95,52 +103,33 @@ class SetupIndexListView(SingleObjectListView):
         }
 
 
-class SetupIndexDocumentTypesView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available document types')
-    object_permission = permission_document_indexing_edit
-    right_list_title = _('Document types linked')
+class SetupIndexDocumentTypesView(AddRemoveView):
+    action_add_method = 'document_types_add'
+    action_remove_method = 'document_types_remove'
+    main_object_permission = permission_document_indexing_edit
+    main_object_model = Index
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = DocumentType
+    secondary_object_permission = permission_document_type_edit
+    list_available_title = _('Available document types')
+    # Translators: "User groups" here refer to the group list of a specific
+    # user.
+    list_added_title = _('Document types linked')
+    related_field = 'document_types'
 
-    def add(self, item):
-        self.get_object().document_types.add(item)
-
-    def get_document_queryset(self):
-        return AccessControlList.objects.filter_by_access(
-            permission=permission_document_view,
-            queryset=DocumentType.objects.all(),
-            user=self.request.user
-        )
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _(
-                'Document types linked to index: %s'
-            ) % self.get_object(),
+            'object': self.main_object,
             'subtitle': _(
                 'Only the documents of the types selected will be shown '
                 'in the index when built. Only the events of the documents '
                 'of the types select will trigger updates in the index.'
             ),
+            'title': _('Document types linked to index: %s') % self.main_object,
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=Index, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_document_queryset().exclude(
-                id__in=self.get_object().document_types.all()
-            )
-        )
-
-    def remove(self, item):
-        self.get_object().document_types.remove(item)
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_document_queryset() & self.get_object().document_types.all()
-        )
 
 
 class SetupIndexTreeTemplateListView(SingleObjectListView):

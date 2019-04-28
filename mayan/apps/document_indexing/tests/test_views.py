@@ -10,22 +10,13 @@ from ..permissions import (
     permission_document_indexing_rebuild
 )
 
-from .literals import (
-    TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED, TEST_INDEX_SLUG
-)
-from .mixins import DocumentIndexingTestMixin
+from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
+from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
-class IndexViewTestCase(DocumentIndexingTestMixin, GenericDocumentViewTestCase):
-    def _request_index_create_view(self):
-        return self.post(
-            viewname='indexing:index_setup_create', data={
-                'label': TEST_INDEX_LABEL, 'slug': TEST_INDEX_SLUG
-            }
-        )
-
+class IndexViewTestCase(IndexTestMixin, IndexViewTestMixin, GenericDocumentViewTestCase):
     def test_index_create_view_no_permission(self):
-        response = self._request_index_create_view()
+        response = self._request_test_index_create_view()
         self.assertEquals(response.status_code, 403)
 
         self.assertEqual(Index.objects.count(), 0)
@@ -35,23 +26,16 @@ class IndexViewTestCase(DocumentIndexingTestMixin, GenericDocumentViewTestCase):
             permission=permission_document_indexing_create
         )
 
-        response = self._request_index_create_view()
+        response = self._request_test_index_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Index.objects.count(), 1)
         self.assertEqual(Index.objects.first().label, TEST_INDEX_LABEL)
 
-    def _request_index_delete_view(self):
-        return self.post(
-            viewname='indexing:index_setup_delete', kwargs={
-                'pk': self.test_index.pk
-            }
-        )
-
     def test_index_delete_view_no_permission(self):
         self._create_test_index()
 
-        response = self._request_index_delete_view()
+        response = self._request_test_index_delete_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(Index.objects.count(), 1)
@@ -61,24 +45,15 @@ class IndexViewTestCase(DocumentIndexingTestMixin, GenericDocumentViewTestCase):
 
         self.grant_permission(permission=permission_document_indexing_delete)
 
-        response = self._request_index_delete_view()
+        response = self._request_test_index_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Index.objects.count(), 0)
 
-    def _request_index_edit_view(self):
-        return self.post(
-            viewname='indexing:index_setup_edit', kwargs={
-                'pk': self.test_index.pk
-            }, data={
-                'label': TEST_INDEX_LABEL_EDITED, 'slug': TEST_INDEX_SLUG
-            }
-        )
-
     def test_index_edit_view_no_permission(self):
         self._create_test_index()
 
-        response = self._request_index_edit_view()
+        response = self._request_test_index_edit_view()
         self.assertEqual(response.status_code, 403)
 
         self.test_index.refresh_from_db()
@@ -91,7 +66,7 @@ class IndexViewTestCase(DocumentIndexingTestMixin, GenericDocumentViewTestCase):
             obj=self.test_index, permission=permission_document_indexing_edit
         )
 
-        response = self._request_index_edit_view()
+        response = self._request_test_index_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_index.refresh_from_db()

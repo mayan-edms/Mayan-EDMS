@@ -187,6 +187,9 @@
 * Add test case mixin that produces ephimeral models.
 * Update ACL permissions view to use the new AddRemoveView class.
 * Add ACL created and edited events.
+* Update index document types view to use the new AddRemoveView
+  class.
+* Add index create and edit events.
 
 3.1.11 (2019-04-XX)
 ===================

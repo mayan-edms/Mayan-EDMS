@@ -16,9 +16,14 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
+from .events import event_index_template_created, event_index_template_edited
 from .handlers import (
     handler_create_default_document_index, handler_delete_empty,
     handler_index_document, handler_remove_document,
@@ -55,6 +60,7 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
+        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -72,6 +78,12 @@ class DocumentIndexingApp(MayanAppConfig):
         IndexInstance = self.get_model(model_name='IndexInstance')
         IndexInstanceNode = self.get_model(model_name='IndexInstanceNode')
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
+
+        ModelEventType.register(
+            event_types=(
+                event_index_template_created, event_index_template_edited
+            ), model=Index
+        )
 
         ModelPermission.register(
             model=Index, permissions=(
@@ -182,8 +194,10 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_index_template_document_types,
+                link_acl_list, link_events_for_object,
+                link_index_template_document_types,
                 link_index_template_node_tree_view,
+                link_object_event_types_user_subcriptions_list
             ), sources=(Index,)
         )
         menu_object.bind_links(
@@ -233,3 +247,5 @@ class DocumentIndexingApp(MayanAppConfig):
             receiver=handler_remove_document,
             sender=Document
         )
+
+        registry.register(Index)

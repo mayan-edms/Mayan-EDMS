@@ -7,7 +7,7 @@ from fuse import FuseOSError
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests import DocumentTestMixin
-from mayan.apps.document_indexing.tests import DocumentIndexingTestMixin
+from mayan.apps.document_indexing.tests import IndexTestMixin
 
 from ..filesystems import IndexFilesystem
 
@@ -18,7 +18,7 @@ from .literals import (
 )
 
 
-class IndexFilesystemTestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseTestCase):
+class IndexFilesystemTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
 
     def test_document_access(self):

@@ -12,10 +12,10 @@ from ..permissions import (
 )
 
 from .literals import TEST_INDEX_LABEL, TEST_INDEX_SLUG
-from .mixins import DocumentIndexingTestMixin
+from .mixins import IndexTestMixin
 
 
-class DocumentIndexingAPITestCase(DocumentIndexingTestMixin, DocumentTestMixin, BaseAPITestCase):
+class DocumentIndexingAPITestCase(IndexTestMixin, DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
 
     def _request_index_create_api_view(self):
