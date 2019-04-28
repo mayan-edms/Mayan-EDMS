@@ -99,7 +99,7 @@ class EventTypeSubscriptionListView(FormView):
         return self.submodel.objects.filter(name__in=event_type_ids)
 
     def get_post_action_redirect(self):
-        return reverse('common:current_user_details')
+        return reverse(viewname='user_management:current_user_details')
 
 
 class NotificationListView(SingleObjectListView):
@@ -156,17 +156,19 @@ class ObjectEventListView(EventListView):
 
     def get_extra_context(self):
         context = super(ObjectEventListView, self).get_extra_context()
-        context.update({
-            'hide_object': True,
-            'no_results_icon': icon_events_list,
-            'no_results_text': _(
-                'Events are actions that have been performed to this object '
-                'or using this object.'
-            ),
-            'no_results_title': _('There are no events for this object'),
-            'object': self.object,
-            'title': _('Events for: %s') % self.object,
-        })
+        context.update(
+            {
+                'hide_object': True,
+                'no_results_icon': icon_events_list,
+                'no_results_text': _(
+                    'Events are actions that have been performed to this object '
+                    'or using this object.'
+                ),
+                'no_results_title': _('There are no events for this object'),
+                'object': self.object,
+                'title': _('Events for: %s') % self.object,
+            }
+        )
         return context
 
     def get_object(self):

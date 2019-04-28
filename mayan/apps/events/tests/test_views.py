@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 
+from mayan.apps.common.tests import GenericViewTestCase
 from mayan.apps.documents.tests import GenericDocumentViewTestCase
 
 from ..permissions import permission_events_view
@@ -42,3 +43,11 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         self.assertContains(
             response=response, text=self.test_object.label, status_code=200
         )
+
+
+class UserEventViewsTestCase(GenericViewTestCase):
+    def test_user_event_type_subscription_list_view(self):
+        response = self.get(
+            viewname='events:event_types_user_subcriptions_list'
+        )
+        self.assertEqual(response.status_code, 200)
