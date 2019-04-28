@@ -23,13 +23,14 @@ class IndexTemplateEventsTestCase(DocumentTestMixin, IndexTestMixin, IndexViewTe
         self.grant_permission(
             permission=permission_document_indexing_create
         )
-        self._request_test_index_create_view()
+        response = self._request_test_index_create_view()
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Action.objects.last().actor, self._test_case_user)
-        self.assertEqual(Action.objects.last().target, self.test_index)
-        self.assertEqual(
-            Action.objects.last().verb, event_index_template_created.id
-        )
+        action = Action.objects.last()
+
+        self.assertEqual(action.actor, self._test_case_user)
+        self.assertEqual(action.target, self.test_index)
+        self.assertEqual(action.verb, event_index_template_created.id)
 
     def test_index_template_edit_event(self):
         self._create_test_index()
@@ -39,9 +40,11 @@ class IndexTemplateEventsTestCase(DocumentTestMixin, IndexTestMixin, IndexViewTe
         )
         Action.objects.all().delete()
 
-        self._request_test_index_edit_view()
+        response = self._request_test_index_edit_view()
+        self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Action.objects.last().target, self.test_index)
-        self.assertEqual(
-            Action.objects.last().verb, event_index_template_edited.id
-        )
+        action = Action.objects.last()
+
+        self.assertEqual(action.actor, self._test_case_user)
+        self.assertEqual(action.target, self.test_index)
+        self.assertEqual(action.verb, event_index_template_edited.id)
