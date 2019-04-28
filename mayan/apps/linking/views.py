@@ -11,11 +11,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.permissions import (
+    permission_document_type_edit, permission_document_view
+)
 from mayan.apps.documents.views import DocumentListView
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
@@ -97,42 +99,28 @@ class ResolvedSmartLinkView(DocumentListView):
         return context
 
 
-class SetupSmartLinkDocumentTypesView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available document types')
-    object_permission = permission_smart_link_edit
-    right_list_title = _('Document types enabled')
+class SetupSmartLinkDocumentTypesView(AddRemoveView):
+    main_object_method_add = 'document_types_add'
+    main_object_method_remove = 'document_types_remove'
+    main_object_permission = permission_smart_link_edit
+    main_object_model = SmartLink
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = DocumentType
+    secondary_object_permission = permission_document_type_edit
+    list_available_title = _('Available document types')
+    list_added_title = _('Document types enabled')
+    related_field = 'document_types'
 
-    def add(self, item):
-        self.get_object().document_types.add(item)
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.main_object,
             'title': _(
                 'Document type for which to enable smart link: %s'
-            ) % self.get_object()
+            ) % self.main_object,
         }
-
-    def get_object(self):
-        return get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        # TODO: filter document type list by user ACL
-        return AssignRemoveView.generate_choices(
-            DocumentType.objects.exclude(
-                pk__in=self.get_object().document_types.all()
-            )
-        )
-
-    def remove(self, item):
-        self.get_object().document_types.remove(item)
-
-    def right_list(self):
-        # TODO: filter document type list by user ACL
-        return AssignRemoveView.generate_choices(
-            self.get_object().document_types.all()
-        )
 
 
 class SmartLinkListView(SingleObjectListView):
@@ -208,6 +196,23 @@ class SmartLinkCreateView(SingleObjectCreateView):
     )
     view_permission = permission_smart_link_create
 
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
+
+
+class SmartLinkDeleteView(SingleObjectDeleteView):
+    model = SmartLink
+    post_action_redirect = reverse_lazy(
+        viewname='linking:smart_link_list'
+    )
+    view_permission = permission_smart_link_delete
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete smart link: %s') % self.get_object()
+        }
+
 
 class SmartLinkEditView(SingleObjectEditView):
     form_class = SmartLinkForm
@@ -223,19 +228,8 @@ class SmartLinkEditView(SingleObjectEditView):
             'title': _('Edit smart link: %s') % self.get_object()
         }
 
-
-class SmartLinkDeleteView(SingleObjectDeleteView):
-    model = SmartLink
-    post_action_redirect = reverse_lazy(
-        viewname='linking:smart_link_list'
-    )
-    view_permission = permission_smart_link_delete
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Delete smart link: %s') % self.get_object()
-        }
+    def get_save_extra_data(self):
+        return {'_user': self.request.user}
 
 
 class SmartLinkConditionListView(SingleObjectListView):

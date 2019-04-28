@@ -226,6 +226,9 @@ Other changes
   from the AddRemoveView.
 * Add view to link document type and indexes from the document
   type side.
+* Update smart link document type selection view to use
+  AddRemoveView class.
+* Add smart link created and edited events.
 
 Removals
 --------

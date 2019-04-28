@@ -1,13 +1,15 @@
 from __future__ import unicode_literals
 
-from django.db import models
+from django.db import models, transaction
 from django.db.models import Q
 from django.template import Context, Template
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 
+from .events import event_smart_link_created, event_smart_link_edited
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
 )
@@ -46,6 +48,28 @@ class SmartLink(models.Model):
 
     def __str__(self):
         return self.label
+
+    def document_types_add(self, queryset, _user=None):
+        with transaction.atomic():
+            event_smart_link_edited.commit(
+                actor=_user, target=self
+            )
+            for obj in queryset:
+                self.document_types.add(obj)
+                event_document_type_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
+
+    def document_types_remove(self, queryset, _user=None):
+        with transaction.atomic():
+            event_smart_link_edited.commit(
+                actor=_user, target=self
+            )
+            for obj in queryset:
+                self.document_types.remove(obj)
+                event_document_type_edited.commit(
+                    actor=_user, action_object=self, target=obj
+                )
 
     def get_dynamic_label(self, document):
         """
@@ -110,6 +134,21 @@ class SmartLink(models.Model):
                 document=document
             )
         )
+
+    def save(self, *args, **kwargs):
+        _user = kwargs.pop('_user', None)
+
+        with transaction.atomic():
+            is_new = not self.pk
+            super(SmartLink, self).save(*args, **kwargs)
+            if is_new:
+                event_smart_link_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_smart_link_edited.commit(
+                    actor=_user, target=self
+                )
 
 
 class ResolvedSmartLink(SmartLink):

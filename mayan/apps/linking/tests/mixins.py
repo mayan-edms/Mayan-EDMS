@@ -6,7 +6,7 @@ from .literals import (
     TEST_SMART_LINK_CONDITION_FOREIGN_DOCUMENT_DATA,
     TEST_SMART_LINK_CONDITION_EXPRESSION,
     TEST_SMART_LINK_CONDITION_OPERATOR, TEST_SMART_LINK_DYNAMIC_LABEL,
-    TEST_SMART_LINK_LABEL
+    TEST_SMART_LINK_LABEL, TEST_SMART_LINK_LABEL_EDITED
 )
 
 
@@ -25,4 +25,36 @@ class SmartLinkTestMixin(object):
             foreign_document_data=TEST_SMART_LINK_CONDITION_FOREIGN_DOCUMENT_DATA,
             expression=TEST_SMART_LINK_CONDITION_EXPRESSION,
             operator=TEST_SMART_LINK_CONDITION_OPERATOR
+        )
+
+
+class SmartLinkViewTestMixin(object):
+    def _request_test_smart_link_create_view(self):
+        # Typecast to list to force queryset evaluation
+        values = list(SmartLink.objects.values_list('pk', flat=True))
+
+        response = self.post(
+            viewname='linking:smart_link_create', data={
+                'label': TEST_SMART_LINK_LABEL
+            }
+        )
+
+        self.test_smart_link = SmartLink.objects.exclude(pk__in=values).first()
+
+        return response
+
+    def _request_test_smart_link_delete_view(self):
+        return self.post(
+            viewname='linking:smart_link_delete', kwargs={
+                'pk': self.test_smart_link.pk
+            }
+        )
+
+    def _request_test_smart_link_edit_view(self):
+        return self.post(
+            viewname='linking:smart_link_edit', kwargs={
+                'pk': self.test_smart_link.pk
+            }, data={
+                'label': TEST_SMART_LINK_LABEL_EDITED
+            }
         )

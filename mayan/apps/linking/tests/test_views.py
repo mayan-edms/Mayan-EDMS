@@ -14,17 +14,10 @@ from .literals import (
     TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_LABEL_EDITED,
     TEST_SMART_LINK_LABEL
 )
-from .mixins import SmartLinkTestMixin
+from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
 
 
-class SmartLinkViewTestCase(SmartLinkTestMixin, GenericViewTestCase):
-    def _request_test_smart_link_create_view(self):
-        return self.post(
-            viewname='linking:smart_link_create', data={
-                'label': TEST_SMART_LINK_LABEL
-            }
-        )
-
+class SmartLinkViewTestCase(SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
     def test_smart_link_create_view_no_permission(self):
         response = self._request_test_smart_link_create_view()
         self.assertEquals(response.status_code, 403)
@@ -40,13 +33,6 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, GenericViewTestCase):
         self.assertEqual(SmartLink.objects.count(), 1)
         self.assertEqual(
             SmartLink.objects.first().label, TEST_SMART_LINK_LABEL
-        )
-
-    def _request_test_smart_link_delete_view(self):
-        return self.post(
-            viewname='linking:smart_link_delete', kwargs={
-                'pk': self.test_smart_link.pk
-            }
         )
 
     def test_smart_link_delete_view_no_permission(self):
@@ -65,15 +51,6 @@ class SmartLinkViewTestCase(SmartLinkTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(SmartLink.objects.count(), 0)
-
-    def _request_test_smart_link_edit_view(self):
-        return self.post(
-            viewname='linking:smart_link_edit', kwargs={
-                'pk': self.test_smart_link.pk
-            }, data={
-                'label': TEST_SMART_LINK_LABEL_EDITED
-            }
-        )
 
     def test_smart_link_edit_view_no_permission(self):
         self._create_test_smart_link()
@@ -124,10 +101,11 @@ class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestC
         )
 
         response = self._request_test_smart_link_document_instances_view()
-        # Text must appear 2 times, only for the windows title and template
+        # Text must appear 3 times, two for the title and one for the template
         # heading. The two smart links are not shown.
         self.assertContains(
-            response, text=self.test_document.label, count=2, status_code=200
+            response=response, text=self.test_document.label, count=3,
+            status_code=200
         )
 
     def test_document_smart_link_list_view_with_permission(self):
@@ -144,8 +122,8 @@ class SmartLinkDocumentViewTestCase(SmartLinkTestMixin, GenericDocumentViewTestC
         )
 
         response = self._request_test_smart_link_document_instances_view()
-        # Text must appear 4 times: 2 for the windows title and template
+        # Text must appear 5 times: 3 for the windows title and template
         # heading, plus 2 for the test.
         self.assertContains(
-            response, text=self.test_document.label, count=4, status_code=200
+            response, text=self.test_document.label, count=5, status_code=200
         )
