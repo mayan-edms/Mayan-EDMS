@@ -21,7 +21,7 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_FILENAME,
+    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
     TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME
@@ -192,7 +192,7 @@ class DocumentAPITestCase(DocumentTestMixin, BaseAPITestCase):
 
         # Check document file encoding
         self.assertEqual(document.file_mime_encoding, 'binary')
-        self.assertEqual(document.label, TEST_DOCUMENT_FILENAME)
+        self.assertEqual(document.label, TEST_PDF_DOCUMENT_FILENAME)
         self.assertEqual(
             document.checksum,
             'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'

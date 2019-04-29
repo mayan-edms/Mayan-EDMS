@@ -7,7 +7,7 @@ from django.test import override_settings, tag
 from mayan.apps.common.tests import BaseTestCase
 from mayan.apps.common.tests.literals import EXCLUDE_TEST_TAG
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests import DocumentTestMixin, TEST_DOCUMENT_FILENAME
+from mayan.apps.documents.tests import DocumentTestMixin, TEST_PDF_DOCUMENT_FILENAME
 
 # This constant may need tweaking as document upload code path changes.
 # The value is targeted at making the document upload process fail exactly
@@ -19,7 +19,7 @@ MAXIMUM_HEAP_MEMORY = 140000000
 @tag('memory', EXCLUDE_TEST_TAG)
 class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_document = False
-    test_document_filename = TEST_DOCUMENT_FILENAME
+    test_document_filename = TEST_PDF_DOCUMENT_FILENAME
 
     def setUp(self):
         super(MIMETypeTestCase, self).setUp()
