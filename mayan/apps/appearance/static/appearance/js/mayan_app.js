@@ -163,7 +163,7 @@ class MayanApp {
         this.setupNewWindowAnchor();
         $.each(this.ajaxMenusOptions, function(index, value) {
             value.app = self;
-            //app.doRefreshAJAXMenu(value);
+            app.doRefreshAJAXMenu(value);
         });
         partialNavigation.initialize();
     }
