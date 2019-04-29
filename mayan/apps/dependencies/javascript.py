@@ -95,7 +95,7 @@ class NPMPackage(object):
         with requests.get(self.version_metadata['dist']['tarball'], stream=True) as response:
             response.raise_for_status()
             with path_tar_file.open(mode='wb') as file_object:
-                shutil.copyfileobj(response.raw, file_object)
+                shutil.copyfileobj(fsrc=response.raw, fdst=file_object)
 
         with path_tar_file.open(mode='rb') as file_object:
             integrity_is_good = self.verify_package_data(file_object=file_object)
