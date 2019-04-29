@@ -223,18 +223,16 @@ class UserTestCaseMixin(object):
         self._test_case_user.cleartext_password = TEST_CASE_USER_PASSWORD
 
     def login(self, *args, **kwargs):
-        logged_in = self.client.login(*args, **kwargs)
-
-        return logged_in
+        return self.client.login(*args, **kwargs)
 
     def login_superuser(self):
-        self.login(
+        return self.login(
             username=TEST_CASE_SUPERUSER_USERNAME,
             password=TEST_CASE_SUPERUSER_PASSWORD
         )
 
     def login_user(self):
-        self.login(
+        return self.login(
             username=TEST_CASE_USER_USERNAME, password=TEST_CASE_USER_PASSWORD
         )
 

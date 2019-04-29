@@ -12,7 +12,7 @@ from ..permissions import (
 
 from ..events import (
     event_group_created, event_group_edited, event_user_created,
-    event_user_edited
+    event_user_edited, event_user_logged_in, event_user_logged_out
 )
 
 from .mixins import (
@@ -21,7 +21,7 @@ from .mixins import (
 )
 
 
-class GroupEventsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, GenericViewTestCase):
+class GroupEventsViewTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, GenericViewTestCase):
     def test_group_create_event(self):
         self.grant_permission(
             permission=permission_group_create
@@ -87,7 +87,46 @@ class GroupEventsAPITestCase(GroupAPITestMixin, GroupTestMixin, GroupViewTestMix
         self.assertEqual(action.verb, event_group_edited.id)
 
 
-class UserEventsTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):
+class UserEventsTestCase(UserTestMixin, GenericViewTestCase):
+    auto_login_user = False
+    create_test_case_user = False
+
+    def test_user_logged_in_event_from_view(self):
+        self._create_test_user()
+
+        Action.objects.all().delete()
+
+        result = self.login(
+            username=self.test_user.username,
+            password=self.test_user.cleartext_password
+        )
+        self.assertTrue(result)
+
+        action = Action.objects.order_by('timestamp').last()
+        self.assertEqual(action.actor, self.test_user)
+        self.assertEqual(action.target, self.test_user)
+        self.assertEqual(action.verb, event_user_logged_in.id)
+
+    def test_user_logged_out_event_from_view(self):
+        self._create_test_user()
+
+        result = self.login(
+            username=self.test_user.username,
+            password=self.test_user.cleartext_password
+        )
+        self.assertTrue(result)
+
+        Action.objects.all().delete()
+
+        self.logout()
+
+        action = Action.objects.order_by('timestamp').last()
+        self.assertEqual(action.actor, self.test_user)
+        self.assertEqual(action.target, self.test_user)
+        self.assertEqual(action.verb, event_user_logged_out.id)
+
+
+class UserEventsViewTestCase(UserAPITestMixin, UserTestMixin, UserViewTestMixin, GenericViewTestCase):
     def test_user_create_event_from_view(self):
         self.grant_permission(
             permission=permission_user_create
