@@ -97,7 +97,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         self._create_test_role()
 
         response = self._request_test_role_permissions_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_role_permissions_view_with_access(self):
         self._create_test_role()
@@ -112,7 +112,7 @@ class RoleViewsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         self._create_test_role()
 
         response = self._request_test_role_groups_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_role_groups_view_with_access(self):
         self._create_test_role()
