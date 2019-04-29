@@ -10,6 +10,8 @@ COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
 
 DOCUMENT_PARSING_AUTO_PARSING = False
 
+FILE_METADATA_AUTO_PROCESS = False
+
 INSTALLED_APPS += ('test_without_migrations',)
 
 INSTALLED_APPS = [
