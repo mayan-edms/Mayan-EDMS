@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import io
 import logging
-import os
+import shutil
 
 from PIL import Image
 import PyPDF2
@@ -16,7 +16,7 @@ except ImportError:
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.storage.utils import fs_cleanup, mkstemp
+from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..classes import ConverterBase
 from ..exceptions import PageCountError
@@ -85,13 +85,12 @@ class Python(ConverterBase):
         super(Python, self).convert(*args, **kwargs)
 
         if self.mime_type == 'application/pdf' and pdftoppm:
-
-            new_file_object, input_filepath = mkstemp()
+            new_file_object = NamedTemporaryFile()
+            input_filepath = new_file_object.name
             self.file_object.seek(0)
-            os.write(new_file_object, self.file_object.read())
+            shutil.copyfileobj(fsrc=self.file_object, fdst=new_file_object)
             self.file_object.seek(0)
-
-            os.close(new_file_object)
+            new_file_object.seek(0)
 
             image_buffer = io.BytesIO()
             try:
@@ -102,7 +101,7 @@ class Python(ConverterBase):
                 image_buffer.seek(0)
                 return Image.open(image_buffer)
             finally:
-                fs_cleanup(input_filepath)
+                new_file_object.close()
 
     def detect_orientation(self, page_number):
         # Default rotation: 0 degrees
