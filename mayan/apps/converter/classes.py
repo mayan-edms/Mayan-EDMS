@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from io import BytesIO
 import logging
 import os
+import shutil
 
 from PIL import Image
 import sh
@@ -17,7 +18,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.settings import setting_temporary_directory
-from mayan.apps.storage.utils import fs_cleanup, mkdtemp, mkstemp
+from mayan.apps.storage.utils import (
+    NamedTemporaryFile, fs_cleanup, mkdtemp
+)
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import (
@@ -126,12 +129,12 @@ class ConverterBase(object):
                 _('LibreOffice not installed or not found.')
             )
 
-        new_file_object, input_filepath = mkstemp()
+        new_file_object = NamedTemporaryFile()
+        input_filepath = new_file_object.name
         self.file_object.seek(0)
-        os.write(new_file_object, self.file_object.read())
+        shutil.copyfileobj(fsrc=self.file_object, fdst=new_file_object)
         self.file_object.seek(0)
-        os.lseek(new_file_object, 0, os.SEEK_SET)
-        os.close(new_file_object)
+        new_file_object.seek(0)
 
         libreoffice_filter = None
         if self.mime_type == 'text/plain':
@@ -155,12 +158,13 @@ class ConverterBase(object):
         try:
             LIBREOFFICE(*args, **kwargs)
         except sh.ErrorReturnCode as exception:
+            new_file_object.close()
             raise OfficeConversionError(exception)
         except Exception as exception:
+            new_file_object.close()
             logger.error('Exception launching Libre Office; %s', exception)
             raise
         finally:
-            fs_cleanup(input_filepath)
             fs_cleanup(libreoffice_home_directory)
 
         filename, extension = os.path.splitext(
@@ -183,7 +187,7 @@ class ConverterBase(object):
                     break
                 yield data
 
-        fs_cleanup(input_filepath)
+        new_file_object.close()
         fs_cleanup(converted_output)
 
     def get_page(self, output_format=None):
