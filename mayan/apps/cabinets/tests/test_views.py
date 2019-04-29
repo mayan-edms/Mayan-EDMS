@@ -10,7 +10,7 @@ from ..permissions import (
     permission_cabinet_remove_document, permission_cabinet_view
 )
 from .literals import TEST_CABINET_LABEL, TEST_CABINET_EDITED_LABEL
-from .mixins import CabinetTestMixin
+from .mixins import CabinetTestMixin, CabinetViewTestMixin
 
 
 class CabinetViewTestCase(CabinetTestMixin, GenericViewTestCase):
@@ -64,7 +64,9 @@ class CabinetViewTestCase(CabinetTestMixin, GenericViewTestCase):
 
     def test_cabinet_delete_view_with_access(self):
         self._create_test_cabinet()
-        self.grant_access(obj=self.test_cabinet, permission=permission_cabinet_delete)
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_delete
+        )
 
         response = self._request_delete_cabinet()
         self.assertEqual(response.status_code, 302)
@@ -92,13 +94,63 @@ class CabinetViewTestCase(CabinetTestMixin, GenericViewTestCase):
     def test_cabinet_edit_view_with_access(self):
         self._create_test_cabinet()
 
-        self.grant_access(obj=self.test_cabinet, permission=permission_cabinet_edit)
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_edit
+        )
 
         response = self._request_edit_cabinet()
         self.assertEqual(response.status_code, 302)
 
         self.test_cabinet.refresh_from_db()
         self.assertEqual(self.test_cabinet.label, TEST_CABINET_EDITED_LABEL)
+
+
+class CabinetChildViewTestCase(CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase):
+    def setUp(self):
+        super(CabinetChildViewTestCase, self).setUp()
+        self._create_test_cabinet()
+
+    def test_cabinet_child_create_view_no_permission(self):
+        cabinet_count = Cabinet.objects.count()
+
+        response = self._request_test_cabinet_child_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Cabinet.objects.count(), cabinet_count)
+
+    def test_cabinet_child_create_view_with_access(self):
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_edit
+        )
+        cabinet_count = Cabinet.objects.count()
+
+        response = self._request_test_cabinet_child_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Cabinet.objects.count(), cabinet_count + 1)
+
+    def test_cabinet_child_delete_view_no_permission(self):
+        self._create_test_cabinet_child()
+
+        cabinet_count = Cabinet.objects.count()
+
+        response = self._request_test_cabinet_child_delete_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Cabinet.objects.count(), cabinet_count)
+
+    def test_cabinet_child_delete_view_with_access(self):
+        self._create_test_cabinet_child()
+        self.grant_access(
+            obj=self.test_cabinet, permission=permission_cabinet_delete
+        )
+
+        cabinet_count = Cabinet.objects.count()
+
+        response = self._request_test_cabinet_child_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Cabinet.objects.count(), cabinet_count - 1)
 
 
 class CabinetDocumentViewTestCase(CabinetTestMixin, GenericDocumentViewTestCase):
