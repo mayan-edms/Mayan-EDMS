@@ -415,7 +415,6 @@ a i {
 .btn-outline {
     background-color: transparent;
     color: inherit;
-    /*transition: all .25s;*/
 }
 
 .btn-primary.btn-outline {
@@ -438,6 +437,7 @@ a i {
     color: #d9534f;
 }
 
+.btn-default.btn-outline:hover,
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
 .btn-info.btn-outline:hover,
