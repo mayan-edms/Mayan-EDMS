@@ -202,6 +202,9 @@
 * Improve speed of the NPM package hash verification.
 * Add view to enable smart links for documents types
   from the document type side.
+* Enable list link icons.
+* Add outline links CSS for facets.
+* Add a bottom margin to list links.
 
 3.1.11 (2019-04-XX)
 ===================
