@@ -4,11 +4,18 @@ import json
 import logging
 
 import sh
+import yaml
+
+try:
+    from yaml import CSafeLoader as SafeLoader
+except ImportError:
+    from yaml import SafeLoader
 
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.storage.utils import fs_cleanup, mkstemp
 
+from ..literals import DEFAULT_EXIF_PATH
 from ..classes import FileMetadataDriver
 from ..settings import setting_drivers_arguments
 
@@ -20,10 +27,16 @@ class EXIFToolDriver(FileMetadataDriver):
     internal_name = 'exiftool'
 
     def __init__(self, *args, **kwargs):
+        driver_arguments = yaml.load(
+            stream=setting_drivers_arguments.value, Loader=SafeLoader
+        )
+
+        exiftool_path = driver_arguments.get(
+            'exif_driver', {}
+        ).get('exiftool_path', DEFAULT_EXIF_PATH)
+
         try:
-            self.command_exiftool = sh.Command(
-                setting_drivers_arguments.value['exif_driver']['exiftool_path']
-            )
+            self.command_exiftool = sh.Command(path=exiftool_path)
         except sh.CommandNotFound:
             self.command_exiftool = None
         else:
@@ -36,13 +49,14 @@ class EXIFToolDriver(FileMetadataDriver):
             try:
                 document_version.save_to_file(filepath=temp_filename)
                 result = self.command_exiftool(temp_filename)
+
                 return json.loads(s=result.stdout)[0]
             finally:
                 fs_cleanup(filename=temp_filename)
         else:
             logger.warning(
-                'EXIFTool binary not found, not processing document version: %s',
-                document_version
+                'EXIFTool binary not found, not processing document '
+                'version: %s', document_version
             )
 
 

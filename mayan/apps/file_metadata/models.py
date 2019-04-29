@@ -42,31 +42,6 @@ class StoredDriver(models.Model):
         return self.driver_class.label
 
 
-@python_2_unicode_compatible
-class DocumentVersionDriverEntry(models.Model):
-    driver = models.ForeignKey(
-        related_name='driver_entries', to=StoredDriver,
-        verbose_name=_('Driver')
-    )
-    document_version = models.ForeignKey(
-        related_name='file_metadata_drivers', to=DocumentVersion,
-        verbose_name=_('Document version')
-    )
-
-    class Meta:
-        ordering = ('document_version', 'driver')
-        unique_together = ('driver', 'document_version')
-        verbose_name = _('Document version driver entry')
-        verbose_name_plural = _('Document version driver entries')
-
-    def __str__(self):
-        return force_text(self.driver)
-
-    def get_attribute_count(self):
-        return self.entries.count()
-    get_attribute_count.short_description = _('Attribute count')
-
-
 class DocumentTypeSettings(models.Model):
     """
     Model to store the file metadata settings for a document type.
@@ -90,6 +65,31 @@ class DocumentTypeSettings(models.Model):
     def natural_key(self):
         return self.document_type.natural_key()
     natural_key.dependencies = ['documents.DocumentType']
+
+
+@python_2_unicode_compatible
+class DocumentVersionDriverEntry(models.Model):
+    driver = models.ForeignKey(
+        related_name='driver_entries', to=StoredDriver,
+        verbose_name=_('Driver')
+    )
+    document_version = models.ForeignKey(
+        related_name='file_metadata_drivers', to=DocumentVersion,
+        verbose_name=_('Document version')
+    )
+
+    class Meta:
+        ordering = ('document_version', 'driver')
+        unique_together = ('driver', 'document_version')
+        verbose_name = _('Document version driver entry')
+        verbose_name_plural = _('Document version driver entries')
+
+    def __str__(self):
+        return force_text(self.driver)
+
+    def get_attribute_count(self):
+        return self.entries.count()
+    get_attribute_count.short_description = _('Attribute count')
 
 
 @python_2_unicode_compatible

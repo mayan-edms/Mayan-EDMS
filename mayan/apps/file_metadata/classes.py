@@ -5,11 +5,25 @@ import logging
 from django.apps import apps
 from django.db import transaction
 
+from mayan.apps.common.classes import PropertyHelper
+
 from .events import event_file_metadata_document_version_finish
 from .exceptions import FileMetadataDriverError
 from .signals import post_document_version_file_metadata_processing
 
 logger = logging.getLogger(__name__)
+
+
+class FileMetadataHelper(PropertyHelper):
+    @staticmethod
+    @property
+    def constructor(*args, **kwargs):
+        return FileMetadataHelper(*args, **kwargs)
+
+    def get_result(self, name):
+        name = name.replace('_', '.')
+        result = self.instance.get_file_metadata(dotted_name=name)
+        return result
 
 
 class FileMetadataDriver(object):

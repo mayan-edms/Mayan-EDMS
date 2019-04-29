@@ -16,17 +16,18 @@ class IndexingTestCase(DocumentTestMixin, BaseTestCase):
     def test_indexing(self):
         index = Index.objects.create(label=TEST_INDEX_LABEL)
 
-        index.document_types.add(self.document_type)
+        index.document_types.add(self.test_document_type)
 
         root = index.template_root
         index.node_templates.create(
             parent=root, expression=TEST_FILE_METADATA_INDEX_NODE_TEMPLATE,
             link_documents=True
         )
-        self.document = self.upload_document()
-        self.document.submit_for_file_metadata_processing()
+        self.upload_document()
+        self.test_document.submit_for_file_metadata_processing()
+        index.rebuild()
         self.assertTrue(
-            self.document in IndexInstanceNode.objects.get(
+            self.test_document in IndexInstanceNode.objects.get(
                 value=TEST_FILE_METADATA_VALUE
             ).documents.all()
         )

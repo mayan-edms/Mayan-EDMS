@@ -20,6 +20,7 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
+from .classes import FileMetadataHelper
 from .drivers import *  # NOQA
 from .events import (
     event_file_metadata_document_version_finish,
@@ -49,7 +50,7 @@ from .signals import post_document_version_file_metadata_processing
 class FileMetadataApp(MayanAppConfig):
     app_namespace = 'file_metadata'
     app_url = 'file_metadata'
-    has_test = True
+    has_tests = True
     name = 'mayan.apps.file_metadata'
     verbose_name = _('File metadata')
 
@@ -74,12 +75,15 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='submit_for_file_metadata_processing',
-            value=method_document_submit
+            name='file_metadata_value_of', value=FileMetadataHelper.constructor
         )
         Document.add_to_class(
             name='get_file_metadata',
             value=method_get_document_file_metadata
+        )
+        Document.add_to_class(
+            name='submit_for_file_metadata_processing',
+            value=method_document_submit
         )
         DocumentVersion.add_to_class(
             name='get_file_metadata',
@@ -90,7 +94,12 @@ class FileMetadataApp(MayanAppConfig):
             value=method_document_version_submit
         )
 
-        ModelAttribute(model=Document, name='get_file_metadata')
+        ModelAttribute(
+            model=Document, name='file_metadata_value_of',
+            description=_(
+                'Return the value of a specific file metadata.'
+            )
+        )
 
         ModelEventType.register(
             model=Document, event_types=(
@@ -116,7 +125,8 @@ class FileMetadataApp(MayanAppConfig):
         ModelPermission.register(
             model=DocumentType, permissions=(
                 permission_document_type_file_metadata_setup,
-                permission_file_metadata_submit
+                permission_file_metadata_submit,
+                permission_file_metadata_view
             )
         )
         ModelPermission.register_inheritance(

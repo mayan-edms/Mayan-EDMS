@@ -143,12 +143,12 @@ class DocumentTypeSubmitView(FormView):
                 count += 1
 
         messages.success(
-            self.request, _(
+            message=_(
                 '%(count)d documents added to the file metadata processing '
                 'queue.'
             ) % {
                 'count': count,
-            }
+            }, request=self.request
         )
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
