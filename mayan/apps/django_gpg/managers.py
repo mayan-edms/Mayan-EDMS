@@ -2,11 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 import io
 import logging
-import os
+import shutil
 
 from django.db import models
 
-from mayan.apps.storage.utils import mkstemp
+from mayan.apps.storage.utils import NamedTemporaryFile
 
 from .classes import KeyStub, SignatureVerification
 from .exceptions import (
@@ -98,9 +98,10 @@ class KeyManager(models.Manager):
         if signature_file:
             # Save the original data and invert the argument order
             # Signature first, file second
-            temporary_file_object, temporary_filename = mkstemp()
-            os.write(temporary_file_object, file_object.read())
-            os.close(temporary_file_object)
+            temporary_file_object = NamedTemporaryFile()
+            temporary_filename = temporary_file_object.name
+            shutil.copyfileobj(fsrc=file_object, fdst=temporary_file_object)
+            temporary_file_object.seek(0)
 
             signature_file_buffer = io.BytesIO()
             signature_file_buffer.write(signature_file.read())
@@ -111,7 +112,7 @@ class KeyManager(models.Manager):
                 data_filename=temporary_filename, keys=keys
             )
             signature_file_buffer.close()
-            os.unlink(temporary_filename)
+            temporary_file_object.close()
         else:
             verify_result = gpg_backend.verify_file(
                 file_object=file_object, keys=keys
