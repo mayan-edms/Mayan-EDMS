@@ -138,12 +138,14 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),
-            label=_('Level'), source=IndexInstanceNode
+            label=_('Level'), is_sortable=True, sort_field='value',
+            source=IndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
             label=_('Levels'), source=IndexInstanceNode
         )
+
         SourceColumn(
             func=lambda context: context[
                 'object'
@@ -155,7 +157,8 @@ class DocumentIndexingApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
-            ), label=_('Level'), source=DocumentIndexInstanceNode
+            ), label=_('Level'), is_sortable=True, sort_field='value',
+            source=DocumentIndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
