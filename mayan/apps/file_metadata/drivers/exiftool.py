@@ -13,7 +13,7 @@ except ImportError:
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.storage.utils import fs_cleanup, mkstemp
+from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..literals import DEFAULT_EXIF_PATH
 from ..classes import FileMetadataDriver
@@ -44,15 +44,15 @@ class EXIFToolDriver(FileMetadataDriver):
 
     def _process(self, document_version):
         if self.command_exiftool:
-            new_file_object, temp_filename = mkstemp()
+            temporary_fileobject = NamedTemporaryFile()
 
             try:
-                document_version.save_to_file(filepath=temp_filename)
-                result = self.command_exiftool(temp_filename)
+                document_version.save_to_file(file_object=temporary_fileobject)
+                result = self.command_exiftool(temporary_fileobject.name)
 
                 return json.loads(s=result.stdout)[0]
             finally:
-                fs_cleanup(filename=temp_filename)
+                temporary_fileobject.close()
         else:
             logger.warning(
                 'EXIFTool binary not found, not processing document '

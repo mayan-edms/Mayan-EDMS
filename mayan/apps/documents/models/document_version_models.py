@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import hashlib
 import logging
 import os
+import shutil
 import uuid
 
 from django.apps import apps
@@ -310,23 +311,13 @@ class DocumentVersion(models.Model):
                         sender=Document, instance=self.document
                     )
 
-    def save_to_file(self, filepath, buffer_size=1024 * 1024):
+    def save_to_file(self, file_object):
         """
         Save a copy of the document from the document storage backend
         to the local filesystem
         """
-        input_descriptor = self.open()
-        output_descriptor = open(filepath, 'wb')
-        while True:
-            copy_buffer = input_descriptor.read(buffer_size)
-            if copy_buffer:
-                output_descriptor.write(copy_buffer)
-            else:
-                break
-
-        output_descriptor.close()
-        input_descriptor.close()
-        return filepath
+        input_file_object = self.open()
+        shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
 
     @property
     def size(self):

@@ -205,6 +205,7 @@
 * Enable list link icons.
 * Add outline links CSS for facets.
 * Add a bottom margin to list links.
+* Use copyfileobj to save documents to files
 
 3.1.11 (2019-04-XX)
 ===================
