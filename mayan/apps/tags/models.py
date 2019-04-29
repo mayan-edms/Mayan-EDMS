@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -83,17 +83,18 @@ class Tag(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
+        _user = kwargs.pop('_user', None)
         created = not self.pk
 
-        result = super(Tag, self).save(*args, **kwargs)
+        with transaction.atomic():
+            result = super(Tag, self).save(*args, **kwargs)
 
-        if created:
-            event_tag_created.commit(actor=user, target=self)
-        else:
-            event_tag_edited.commit(actor=user, target=self)
+            if created:
+                event_tag_created.commit(actor=_user, target=self)
+            else:
+                event_tag_edited.commit(actor=_user, target=self)
 
-        return result
+            return result
 
 
 class DocumentTag(Tag):

@@ -4,7 +4,7 @@ import logging
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.timezone import now
@@ -65,9 +65,9 @@ class DocumentCheckout(models.Model):
             )
 
     def delete(self, *args, **kwargs):
-        # TODO: enclose in transaction
-        NewVersionBlock.objects.unblock(document=self.document)
-        super(DocumentCheckout, self).delete(*args, **kwargs)
+        with transaction.atomic():
+            NewVersionBlock.objects.unblock(document=self.document)
+            super(DocumentCheckout, self).delete(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(
@@ -81,25 +81,25 @@ class DocumentCheckout(models.Model):
     natural_key.dependencies = ['documents.Document']
 
     def save(self, *args, **kwargs):
-        # TODO: enclose in transaction
         new_checkout = not self.pk
         if not new_checkout or self.document.is_checked_out():
             raise DocumentAlreadyCheckedOut
 
-        result = super(DocumentCheckout, self).save(*args, **kwargs)
-        if new_checkout:
-            event_document_check_out.commit(
-                actor=self.user, target=self.document
-            )
-            if self.block_new_version:
-                NewVersionBlock.objects.block(self.document)
+        with transaction.atomic():
+            result = super(DocumentCheckout, self).save(*args, **kwargs)
+            if new_checkout:
+                event_document_check_out.commit(
+                    actor=self.user, target=self.document
+                )
+                if self.block_new_version:
+                    NewVersionBlock.objects.block(self.document)
 
-            logger.info(
-                'Document "%s" checked out by user "%s"',
-                self.document, self.user
-            )
+                logger.info(
+                    'Document "%s" checked out by user "%s"',
+                    self.document, self.user
+                )
 
-        return result
+            return result
 
 
 class NewVersionBlock(models.Model):

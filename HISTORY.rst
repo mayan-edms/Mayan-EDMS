@@ -207,6 +207,7 @@
 * Add a bottom margin to list links.
 * Use copyfileobj to save documents to files
 * Add user logged in and logged out events.
+* Add transaction handling in more places.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -250,9 +250,12 @@ class DocumentVersion(models.Model):
             self.document, self
         )
 
-        event_document_version_revert.commit(actor=_user, target=self.document)
-        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
-            version.delete()
+        with transaction.atomic():
+            event_document_version_revert.commit(
+                actor=_user, target=self.document
+            )
+            for version in self.document.versions.filter(timestamp__gt=self.timestamp):
+                version.delete()
 
     def save(self, *args, **kwargs):
         """

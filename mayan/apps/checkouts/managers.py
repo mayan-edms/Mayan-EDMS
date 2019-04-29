@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.apps import apps
-from django.db import models
+from django.db import models, transaction
 from django.utils.timezone import now
 
 from mayan.apps.documents.models import Document
@@ -33,17 +33,18 @@ class DocumentCheckoutManager(models.Manager):
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
         else:
-            if user:
-                if self.get_check_out_info(document=document).user != user:
-                    event_document_forceful_check_in.commit(
-                        actor=user, target=document
-                    )
+            with transaction.atomic():
+                if user:
+                    if self.get_check_out_info(document=document).user != user:
+                        event_document_forceful_check_in.commit(
+                            actor=user, target=document
+                        )
+                    else:
+                        event_document_check_in.commit(actor=user, target=document)
                 else:
-                    event_document_check_in.commit(actor=user, target=document)
-            else:
-                event_document_auto_check_in.commit(target=document)
+                    event_document_auto_check_in.commit(target=document)
 
-            document_check_out.delete()
+                document_check_out.delete()
 
     def check_in_expired_check_outs(self):
         for document in self.expired_check_outs():

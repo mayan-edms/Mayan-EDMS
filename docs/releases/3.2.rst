@@ -239,6 +239,8 @@ Other changes
 * Add a bottom margin to list links.
 * Use copyfileobj to save documents to files
 * Add user logged in and logged out events.
+* Add transaction handling in more places: Checkouts, documents,
+  metadata, tags.
 
 Removals
 --------
