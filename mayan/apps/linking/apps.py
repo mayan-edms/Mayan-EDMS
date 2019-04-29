@@ -19,12 +19,13 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_smart_link_created, event_smart_link_edited
 from .links import (
-    link_smart_link_create, link_smart_link_condition_create,
-    link_smart_link_condition_delete, link_smart_link_condition_edit,
-    link_smart_link_condition_list, link_smart_link_delete,
-    link_smart_link_document_types, link_smart_link_edit,
-    link_smart_link_instance_view, link_smart_link_instances_for_document,
-    link_smart_link_list, link_smart_link_setup
+    link_document_type_smart_links, link_smart_link_create,
+    link_smart_link_condition_create, link_smart_link_condition_delete,
+    link_smart_link_condition_edit, link_smart_link_condition_list,
+    link_smart_link_delete, link_smart_link_document_types,
+    link_smart_link_edit, link_smart_link_instance_view,
+    link_smart_link_instances_for_document, link_smart_link_list,
+    link_smart_link_setup
 )
 from .permissions import (
     permission_smart_link_delete, permission_smart_link_edit,
@@ -46,6 +47,9 @@ class LinkingApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
         )
 
         ResolvedSmartLink = self.get_model(model_name='ResolvedSmartLink')
@@ -105,6 +109,9 @@ class LinkingApp(MayanAppConfig):
                 link_object_event_types_user_subcriptions_list,
                 link_smart_link_condition_list,
             ), sources=(SmartLink,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_document_type_smart_links,), sources=(DocumentType,)
         )
         menu_object.bind_links(
             links=(

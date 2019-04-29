@@ -200,6 +200,8 @@
 * Fix smart link ACL support.
 * Update JavaScript downloader to work with Python 3.
 * Improve speed of the NPM package hash verification.
+* Add view to enable smart links for documents types
+  from the document type side.
 
 3.1.11 (2019-04-XX)
 ===================

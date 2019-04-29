@@ -2,18 +2,24 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.permissions import (
+    permission_document_type_edit, permission_document_view
+)
 from mayan.apps.navigation.classes import Link
 
-#from .icons import (
-#    icon_smart_link_condition_create, icon_smart_link_create,
-#    icon_smart_link_instances_for_document, icon_smart_link_setup
-#)
+
 from .permissions import (
     permission_smart_link_create, permission_smart_link_delete,
     permission_smart_link_edit, permission_smart_link_view
 )
 
+
+link_document_type_smart_links = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.linking.icons.icon_document_type_smart_links',
+    permissions=(permission_document_type_edit,), text=_('Smart links'),
+    view='linking:document_type_smart_links',
+)
 link_smart_link_condition_create = Link(
     args='object.pk',
     icon_class_path='mayan.apps.linking.icons.icon_smart_link_condition_create',

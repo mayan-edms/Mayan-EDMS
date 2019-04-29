@@ -36,7 +36,8 @@ class SmartLink(models.Model):
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(
-        to=DocumentType, verbose_name=_('Document types')
+        related_name='smart_links', to=DocumentType,
+        verbose_name=_('Document types')
     )
 
     objects = SmartLinkManager()
@@ -212,4 +213,3 @@ class SmartLinkCondition(models.Model):
         )
 
     get_full_label.short_description = _('Full label')
-

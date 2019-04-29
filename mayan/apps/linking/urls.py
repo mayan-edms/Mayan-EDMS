@@ -8,11 +8,12 @@ from .api_views import (
     APISmartLinkConditionListView, APISmartLinkConditionView
 )
 from .views import (
-    DocumentSmartLinkListView, ResolvedSmartLinkView,
-    SetupSmartLinkDocumentTypesView, SmartLinkConditionListView,
-    SmartLinkConditionCreateView, SmartLinkConditionEditView,
-    SmartLinkConditionDeleteView, SmartLinkCreateView, SmartLinkDeleteView,
-    SmartLinkEditView, SmartLinkListView
+    DocumentSmartLinkListView, DocumentTypeSmartLinksView,
+    ResolvedSmartLinkView, SetupSmartLinkDocumentTypesView,
+    SmartLinkConditionListView, SmartLinkConditionCreateView,
+    SmartLinkConditionEditView, SmartLinkConditionDeleteView,
+    SmartLinkCreateView, SmartLinkDeleteView, SmartLinkEditView,
+    SmartLinkListView
 )
 
 urlpatterns = [
@@ -25,7 +26,11 @@ urlpatterns = [
         regex=r'^document/(?P<document_pk>\d+)/(?P<smart_link_pk>\d+)/$',
         view=ResolvedSmartLinkView.as_view(), name='smart_link_instance_view'
     ),
-
+    url(
+        regex=r'^document_types/(?P<pk>\d+)/smart_links/$',
+        view=DocumentTypeSmartLinksView.as_view(),
+        name='document_type_smart_links'
+    ),
     url(
         regex=r'^setup/list/$', view=SmartLinkListView.as_view(),
         name='smart_link_list'

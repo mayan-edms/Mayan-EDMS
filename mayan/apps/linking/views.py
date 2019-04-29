@@ -14,12 +14,14 @@ from mayan.apps.common.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
 )
 from mayan.apps.documents.views import DocumentListView
 
+from .events import event_smart_link_edited
 from .forms import SmartLinkConditionForm, SmartLinkForm
 from .icons import icon_smart_link_setup, icon_smart_link_condition
 from .links import link_smart_link_create, link_smart_link_condition_create
@@ -30,6 +32,50 @@ from .permissions import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class DocumentTypeSmartLinksView(AddRemoveView):
+    main_object_method_add = 'smart_link_add'
+    main_object_method_remove = 'smart_link_remove'
+    main_object_permission = permission_document_type_edit
+    main_object_model = DocumentType
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = SmartLink
+    secondary_object_permission = permission_smart_link_edit
+    list_available_title = _('Available smart links')
+    list_added_title = _('Smart links enabled')
+    related_field = 'smart_links'
+
+    def action_add(self, queryset, _user):
+        event_document_type_edited.commit(
+            actor=_user, target=self.main_object
+        )
+        for obj in queryset:
+            self.main_object.smart_links.add(obj)
+            event_smart_link_edited.commit(
+                actor=_user, action_object=self.main_object, target=obj
+            )
+
+    def action_remove(self, queryset, _user):
+        event_document_type_edited.commit(
+            actor=_user, target=self.main_object
+        )
+        for obj in queryset:
+            self.main_object.smart_links.remove(obj)
+            event_smart_link_edited.commit(
+                actor=_user, action_object=self.main_object, target=obj
+            )
+
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
+
+    def get_extra_context(self):
+        return {
+            'object': self.main_object,
+            'title': _(
+                'Smart links to enable for document type: %s'
+            ) % self.main_object,
+        }
 
 
 class ResolvedSmartLinkView(DocumentListView):
