@@ -9,10 +9,6 @@ from .mixins import ACLTestMixin
 
 
 class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
-    def setUp(self):
-        super(AccessControlListViewTestCase, self).setUp()
-        self._setup_test_object()
-
     def _request_test_acl_create_get_view(self):
         return self.get(
             viewname='acls:acl_create',
@@ -22,6 +18,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         )
 
     def test_acl_create_get_view_no_permission(self):
+        self._setup_test_object()
+
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_get_view()
@@ -30,6 +28,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
     def test_acl_create_get_view_with_access(self):
+        self._setup_test_object()
+
         self.grant_access(
             obj=self.test_object, permission=permission_acl_edit
         )
@@ -49,6 +49,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         )
 
     def test_acl_create_view_post_no_permission(self):
+        self._setup_test_object()
+
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_post_view()
@@ -57,6 +59,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
     def test_acl_create_view_post_with_access(self):
+        self._setup_test_object()
+
         self.grant_access(
             obj=self.test_object, permission=permission_acl_edit
         )
@@ -73,9 +77,9 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         Test creating an ACL entry for an object with no model permissions.
         Result: Should display a blank permissions list (not optgroup)
         """
-        self.grant_permission(permission=permission_acl_edit)
+        self._setup_test_object(register_model_permissions=False)
 
-        self._clear_model_permissions()
+        self.grant_permission(permission=permission_acl_edit)
 
         response = self.post(
             viewname='acls:acl_create',
@@ -90,6 +94,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), 1)
 
     def test_acl_list_view_no_permission(self):
+        self._setup_test_object()
+
         self._create_test_acl()
 
         response = self.get(
@@ -99,6 +105,8 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 403)
 
     def test_acl_list_view_with_permission(self):
+        self._setup_test_object()
+
         self.grant_access(
             obj=self.test_object, permission=permission_acl_view
         )
