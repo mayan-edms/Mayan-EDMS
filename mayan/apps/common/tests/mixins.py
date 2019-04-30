@@ -20,6 +20,7 @@ from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
 from django.utils.encoding import force_bytes
+from django.utils.six import PY3
 
 from mayan.apps.storage.settings import setting_temporary_directory
 
@@ -323,9 +324,14 @@ class TestModelTestMixin(object):
         # but from another test module.
         apps.all_models[app_label].pop(model_name.lower(), None)
 
-        TestModel = type(
-            force_bytes(model_name), (models.Model,), attrs
-        )
+        if PY3:
+            TestModel = type(
+                model_name, (models.Model,), attrs
+            )
+        else:
+            TestModel = type(
+                force_bytes(model_name), (models.Model,), attrs
+            )
 
         setattr(self, model_name, TestModel)
 
