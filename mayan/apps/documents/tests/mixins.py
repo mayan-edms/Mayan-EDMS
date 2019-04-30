@@ -39,6 +39,7 @@ class DocumentTestMixin(object):
             )
 
         self.test_document = document
+        self.test_documents.append(document)
         return document
 
     def _calculate_test_document_path(self):
@@ -50,6 +51,7 @@ class DocumentTestMixin(object):
 
     def setUp(self):
         super(DocumentTestMixin, self).setUp()
+        self.test_documents = []
 
         if self.auto_create_document_type:
             self._create_document_type()
