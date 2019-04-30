@@ -11,7 +11,7 @@ from .literals import TEST_CABINET_LABEL
 from .mixins import CabinetTestMixin
 
 
-class CabinetTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
+class CabinetTestCase(CabinetTestMixin, BaseTestCase):
     def test_cabinet_creation(self):
         self._create_test_cabinet()
 
@@ -41,8 +41,13 @@ class CabinetTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
             Cabinet.objects.all(), map(repr, (self.test_cabinet, inner_cabinet))
         )
 
-    def test_addition_of_documents(self):
+
+class CabinetDocumentTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
+    def setUp(self):
+        super(CabinetDocumentTestCase, self).setUp()
         self._create_test_cabinet()
+
+    def test_addition_of_documents(self):
         self.test_cabinet.documents.add(self.test_document)
 
         self.assertEqual(self.test_cabinet.documents.count(), 1)
@@ -51,7 +56,6 @@ class CabinetTestCase(CabinetTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
     def test_addition_and_deletion_of_documents(self):
-        self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
 
         self.assertEqual(self.test_cabinet.documents.count(), 1)

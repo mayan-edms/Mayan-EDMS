@@ -15,22 +15,14 @@ from ..permissions import (
     permission_cabinet_remove_document, permission_cabinet_view
 )
 
-from .literals import TEST_CABINET_EDITED_LABEL, TEST_CABINET_LABEL
-from .mixins import CabinetTestMixin
+from .mixins import CabinetAPIViewTestMixin, CabinetTestMixin
 
 
-class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
-    def _request_cabinet_create_api_view(self):
-        return self.post(
-            viewname='rest_api:cabinet-list', data={
-                'label': TEST_CABINET_LABEL
-            }
-        )
-
+class CabinetAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, BaseAPITestCase):
     def test_cabinet_create_api_view_no_permission(self):
         cabinet_count = Cabinet.objects.count()
 
-        response = self._request_cabinet_create_api_view()
+        response = self._request_test_cabinet_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(cabinet_count, Cabinet.objects.count())
@@ -38,29 +30,20 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
     def test_cabinet_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_cabinet_create)
 
-        response = self._request_cabinet_create_api_view()
+        response = self._request_test_cabinet_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        cabinet = Cabinet.objects.first()
-        self.assertEqual(response.data['id'], cabinet.pk)
-        self.assertEqual(response.data['label'], TEST_CABINET_LABEL)
+        self.assertEqual(response.data['id'], self.test_cabinet.pk)
+        self.assertEqual(response.data['label'], self.test_cabinet.label)
 
         self.assertEqual(Cabinet.objects.count(), 1)
-        self.assertEqual(cabinet.label, TEST_CABINET_LABEL)
-
-    def _request_cabinet_delete_api_view(self):
-        return self.delete(
-            viewname='rest_api:cabinet-detail', kwargs={
-                'pk': self.test_cabinet.pk
-            }
-        )
 
     def test_cabinet_delete_api_view_no_permssions(self):
         self._create_test_cabinet()
 
         cabinet_count = Cabinet.objects.count()
 
-        response = self._request_cabinet_delete_api_view()
+        response = self._request_test_cabinet_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Cabinet.objects.count(), cabinet_count)
@@ -74,24 +57,17 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
 
         cabinet_count = Cabinet.objects.count()
 
-        response = self._request_cabinet_delete_api_view()
+        response = self._request_test_cabinet_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(Cabinet.objects.count(), cabinet_count - 1)
-
-    def _request_cabinet_edit_api_patch_view(self):
-        return self.patch(
-            data={'label': TEST_CABINET_EDITED_LABEL}, kwargs={
-                'pk': self.test_cabinet.pk
-            }, viewname='rest_api:cabinet-detail'
-        )
 
     def test_cabinet_edit_api_patch_view_no_pemission(self):
         self._create_test_cabinet()
 
         cabinet_label = self.test_cabinet.label
 
-        response = self._request_cabinet_edit_api_patch_view()
+        response = self._request_test_cabinet_edit_api_patch_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_cabinet.refresh_from_db()
@@ -106,25 +82,18 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
 
         cabinet_label = self.test_cabinet.label
 
-        response = self._request_cabinet_edit_api_patch_view()
+        response = self._request_test_cabinet_edit_api_patch_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_cabinet.refresh_from_db()
         self.assertNotEqual(cabinet_label, self.test_cabinet.label)
-
-    def _request_cabinet_edit_api_put_view(self):
-        return self.put(
-            data={'label': TEST_CABINET_EDITED_LABEL}, kwargs={
-                'pk': self.test_cabinet.pk
-            }, viewname='rest_api:cabinet-detail'
-        )
 
     def test_cabinet_edit_api_put_view_no_pemission(self):
         self._create_test_cabinet()
 
         cabinet_label = self.test_cabinet.label
 
-        response = self._request_cabinet_edit_api_put_view()
+        response = self._request_test_cabinet_edit_api_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_cabinet.refresh_from_db()
@@ -139,19 +108,16 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
 
         cabinet_label = self.test_cabinet.label
 
-        response = self._request_cabinet_edit_api_put_view()
+        response = self._request_test_cabinet_edit_api_put_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_cabinet.refresh_from_db()
         self.assertNotEqual(cabinet_label, self.test_cabinet.label)
 
-    def _request_cabinet_list_api_view(self):
-        return self.get(viewname='rest_api:cabinet-list')
-
     def test_cabinet_list_api_view_no_permission(self):
         self._create_test_cabinet()
 
-        response = self._request_cabinet_list_api_view()
+        response = self._request_test_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
@@ -162,23 +128,15 @@ class CabinetAPITestCase(CabinetTestMixin, BaseAPITestCase):
             obj=self.test_cabinet, permission=permission_cabinet_view
         )
 
-        response = self._request_cabinet_list_api_view()
+        response = self._request_test_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'], self.test_cabinet.label
         )
 
 
-class CabinetDocumentAPITestCase(CabinetTestMixin, DocumentTestMixin, BaseAPITestCase):
+class CabinetDocumentAPITestCase(CabinetAPIViewTestMixin, CabinetTestMixin, DocumentTestMixin, BaseAPITestCase):
     auto_upload_document = False
-
-    def _request_test_cabinet_create_api_view(self, extra_data=None):
-        data = {'label': TEST_CABINET_LABEL}
-
-        if extra_data:
-            data.update(extra_data)
-
-        return self.post(viewname='rest_api:cabinet-list', data=data)
 
     def test_cabinet_create_with_single_document(self):
         self.upload_document()
@@ -194,51 +152,37 @@ class CabinetDocumentAPITestCase(CabinetTestMixin, DocumentTestMixin, BaseAPITes
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        cabinet = Cabinet.objects.first()
-
-        self.assertEqual(response.data['id'], cabinet.pk)
-        self.assertEqual(response.data['label'], TEST_CABINET_LABEL)
+        self.assertEqual(response.data['id'], self.test_cabinet.pk)
+        self.assertEqual(response.data['label'], self.test_cabinet.label)
 
         self.assertQuerysetEqual(
-            cabinet.documents.all(), (repr(self.test_document),)
+            self.test_cabinet.documents.all(), (repr(self.test_document),)
         )
-        self.assertEqual(cabinet.label, TEST_CABINET_LABEL)
 
     def test_cabinet_create_with_multiple_documents(self):
         self.upload_document()
-        self.test_document_2 = self.upload_document()
+        self.upload_document()
+
+        documents_pk_list = ','.join(
+            [force_text(document.pk) for document in self.test_documents]
+        )
 
         self.grant_permission(permission=permission_cabinet_create)
 
         response = self._request_test_cabinet_create_api_view(
             extra_data={
-                'documents_pk_list': '{},{}'.format(
-                    self.test_document.pk, self.test_document_2.pk
-                )
+                'documents_pk_list': documents_pk_list
             }
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-        cabinet = Cabinet.objects.first()
-
-        self.assertEqual(response.data['id'], cabinet.pk)
-        self.assertEqual(response.data['label'], TEST_CABINET_LABEL)
+        self.assertEqual(response.data['id'], self.test_cabinet.pk)
+        self.assertEqual(response.data['label'], self.test_cabinet.label)
 
         self.assertEqual(Cabinet.objects.count(), 1)
 
-        self.assertEqual(cabinet.label, TEST_CABINET_LABEL)
-
         self.assertQuerysetEqual(
-            cabinet.documents.all(), map(
-                repr, (self.test_document, self.test_document_2)
-            )
-        )
-
-    def _request_test_cabinet_document_remove_api_view(self):
-        return self.delete(
-            viewname='rest_api:cabinet-document', kwargs={
-                'pk': self.test_cabinet.pk, 'document_pk': self.test_document.pk
-            }
+            qs=self.test_cabinet.documents.all(),
+            values=map(repr, self.test_documents)
         )
 
     def test_cabinet_document_remove_api_view(self):
@@ -322,16 +266,18 @@ class CabinetDocumentAPITestCase(CabinetTestMixin, DocumentTestMixin, BaseAPITes
 
     def test_cabinet_add_multiple_documents_api_view(self):
         self.upload_document()
-        self.test_document_2 = self.upload_document()
+        self.upload_document()
+
+        documents_pk_list = ','.join(
+            [force_text(document.pk) for document in self.test_documents]
+        )
 
         self._create_test_cabinet()
 
         self.grant_permission(permission=permission_cabinet_add_document)
         response = self.post(
             data={
-                'documents_pk_list': '{},{}'.format(
-                    self.test_document.pk, self.test_document_2.pk
-                ),
+                'documents_pk_list': documents_pk_list
             }, kwargs={
                 'pk': self.test_cabinet.pk
             }, viewname='rest_api:cabinet-document-list'
@@ -339,7 +285,6 @@ class CabinetDocumentAPITestCase(CabinetTestMixin, DocumentTestMixin, BaseAPITes
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
-            self.test_cabinet.documents.all(), map(
-                repr, (self.test_document, self.test_document_2)
-            )
+            qs=self.test_cabinet.documents.all(),
+            values=map(repr, self.test_documents)
         )
