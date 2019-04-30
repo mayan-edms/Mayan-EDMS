@@ -29,6 +29,13 @@ class ObjectLinkWidget(object):
             except AttributeError:
                 url = None
 
+            if getattr(value, 'is_staff', None) or getattr(value, 'is_superuser', None):
+                # Don't display a anchor to for the user details view for
+                # superusers and staff, the details view filters them. Staff
+                # and admin users are not manageable by the normal user views.
+                url = '#'
+                return '{}{}'.format(object_type, label)
+
         return self.template.render(
             context=Context(
                 {'label': label, 'object_type': object_type, 'url': url or '#'}

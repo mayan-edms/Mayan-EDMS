@@ -163,9 +163,11 @@ class GroupViewsTestCase(GroupTestMixin, GroupViewTestMixin, UserTestMixin, Gene
 
 
 class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCase):
-    def test_superuser_delete_view_with_access(self):
+    def setUp(self):
+        super(SuperUserViewTestCase, self).setUp()
         self._create_test_superuser()
 
+    def test_superuser_delete_view_with_access(self):
         superuser_count = get_user_model().objects.filter(is_superuser=True).count()
         self.grant_access(
             obj=self.test_superuser, permission=permission_user_delete
@@ -178,12 +180,26 @@ class SuperUserViewTestCase(UserTestMixin, UserViewTestMixin, GenericViewTestCas
         )
 
     def test_superuser_detail_view_with_access(self):
-        self._create_test_superuser()
-
         self.grant_access(
             obj=self.test_superuser, permission=permission_user_view
         )
         response = self._request_test_superuser_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+    def _request_test_user_detail_view(self):
+        return self.get(
+            viewname='user_management:user_details', kwargs={
+                'pk': self.test_user.pk
+            }
+        )
+
+    def test_superuser_normal_user_detail_view_with_access(self):
+        self.grant_access(
+            obj=self.test_superuser, permission=permission_user_view
+        )
+
+        self.test_user = self.test_superuser
+        response = self._request_test_user_detail_view()
         self.assertEqual(response.status_code, 404)
 
 
