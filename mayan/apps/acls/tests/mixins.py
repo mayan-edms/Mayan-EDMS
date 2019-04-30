@@ -34,6 +34,10 @@ class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
 
 class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
     auto_create_test_role = True
+    auto_create_test_object = False
+
+    def _clear_model_permissions(self):
+        ModelPermission.clear()
 
     def _create_test_acl(self):
         self.test_acl = AccessControlList.objects.create(
@@ -45,6 +49,9 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
         if self.auto_create_test_role:
             self._create_test_role()
 
+        if self.auto_create_test_object:
+            self._setup_test_object()
+
     def _inject_test_object_content_type(self):
         self.test_object_content_type = ContentType.objects.get_for_model(
             model=self.test_object
@@ -52,7 +59,7 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
 
         self.test_content_object_view_kwargs = {
             'app_label': self.test_object_content_type.app_label,
-            'model_name': self.test_object_content_type.model,
+            'model': self.test_object_content_type.model,
             'object_id': self.test_object.pk
         }
 

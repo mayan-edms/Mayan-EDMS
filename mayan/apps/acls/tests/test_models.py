@@ -1,14 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import PermissionDenied
+from django.db import models
 
 from mayan.apps.common.tests import BaseTestCase
-from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.tests import (
-    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL,
-    TEST_DOCUMENT_TYPE_2_LABEL
-)
 
 from ..classes import ModelPermission
 from ..models import AccessControlList
@@ -17,138 +12,154 @@ from .mixins import ACLTestMixin
 
 
 class PermissionTestCase(ACLTestMixin, BaseTestCase):
-    def setUp(self):
-        super(PermissionTestCase, self).setUp()
-        self.document_type_1 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
-        )
-
-        self.document_type_2 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_2_LABEL
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document_1 = self.document_type_1.new_document(
-                file_object=file_object
-            )
-
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document_2 = self.document_type_1.new_document(
-                file_object=file_object
-            )
-
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.document_3 = self.document_type_2.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
-        super(PermissionTestCase, self).tearDown()
+    auto_create_test_object = False
 
     def test_check_access_without_permissions(self):
+        self._setup_test_object()
+
         with self.assertRaises(PermissionDenied):
             AccessControlList.objects.check_access(
-                permissions=(permission_document_view,),
-                user=self._test_case_user, obj=self.document_1
+                obj=self.test_object,
+                permissions=(self.test_permission,),
+                user=self._test_case_user,
             )
 
     def test_filtering_without_permissions(self):
-        self.assertQuerysetEqual(
+        self._setup_test_object()
+
+        self.assertEqual(
             AccessControlList.objects.filter_by_access(
-                permission=permission_document_view, user=self._test_case_user,
-                queryset=Document.objects.all()
-            ), []
+                permission=self.test_permission,
+                queryset=self.test_object._meta.model._default_manager.all(),
+                user=self._test_case_user
+            ).count(), 0
         )
 
     def test_check_access_with_acl(self):
+        self._setup_test_object()
+
         self.grant_access(
-            obj=self.document_1, permission=permission_document_view
+            obj=self.test_object, permission=self.test_permission
         )
 
         try:
             AccessControlList.objects.check_access(
-                obj=self.document_1, permissions=(permission_document_view,),
+                obj=self.test_object, permissions=(self.test_permission,),
                 user=self._test_case_user,
             )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_permissions(self):
+        self._setup_test_object()
+
         self.grant_access(
-            obj=self.document_1, permission=permission_document_view
+            obj=self.test_object, permission=self.test_permission
         )
 
-        self.assertQuerysetEqual(
-            AccessControlList.objects.filter_by_access(
-                permission=permission_document_view,
-                queryset=Document.objects.all(), user=self._test_case_user
-            ), (repr(self.document_1),)
+        self.assertTrue(
+            self.test_object in AccessControlList.objects.filter_by_access(
+                permission=self.test_permission,
+                queryset=self.test_object._meta.model._default_manager.all(),
+                user=self._test_case_user
+            )
+        )
+
+    def _setup_child_parent_test_objects(self):
+        self._create_test_permission()
+        self._create_test_model(model_name='TestModelParent')
+        self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelParent, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='parent',
+        )
+
+        self.test_object_parent = self.TestModelParent.objects.create()
+        self.test_object_child = self.TestModelChild.objects.create(
+            parent=self.test_object_parent
         )
 
     def test_check_access_with_inherited_acl(self):
+        self._setup_child_parent_test_objects()
+
         self.grant_access(
-            obj=self.document_type_1, permission=permission_document_view
+            obj=self.test_object_parent, permission=self.test_permission
         )
 
         try:
             AccessControlList.objects.check_access(
-                obj=self.document_1, permissions=(permission_document_view,),
+                obj=self.test_object_child, permissions=(self.test_permission,),
                 user=self._test_case_user
             )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')
 
     def test_check_access_with_inherited_acl_and_local_acl(self):
+        self._setup_child_parent_test_objects()
+
         self.grant_access(
-            obj=self.document_type_1, permission=permission_document_view
+            obj=self.test_object_parent, permission=self.test_permission
         )
         self.grant_access(
-            obj=self.document_3, permission=permission_document_view
+            obj=self.test_object_child, permission=self.test_permission
         )
 
         try:
             AccessControlList.objects.check_access(
-                obj=self.document_3, permissions=(permission_document_view,),
+                obj=self.test_object_child, permissions=(self.test_permission,),
                 user=self._test_case_user
             )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_inherited_permissions(self):
+        self._setup_child_parent_test_objects()
+
         self.grant_access(
-            obj=self.document_type_1, permission=permission_document_view
+            obj=self.test_object_parent, permission=self.test_permission
         )
 
         result = AccessControlList.objects.filter_by_access(
-            permission=permission_document_view,
-            queryset=Document.objects.all(), user=self._test_case_user
+            permission=self.test_permission,
+            queryset=self.test_object_child._meta.model._default_manager.all(),
+            user=self._test_case_user
         )
-
-        # Since document_1 and document_2 are of document_type_1
-        # they are the only ones that should be returned
-
-        self.assertTrue(self.document_1 in result)
-        self.assertTrue(self.document_2 in result)
-        self.assertTrue(self.document_3 not in result)
+        self.assertTrue(self.test_object_child in result)
 
     def test_filtering_with_inherited_permissions_and_local_acl(self):
-        self.grant_permission(permission=permission_document_view)
+        self._setup_child_parent_test_objects()
+
+        self.grant_permission(permission=self.test_permission)
         self.grant_access(
-            obj=self.document_type_1, permission=permission_document_view
+            obj=self.test_object_parent, permission=self.test_permission
         )
         self.grant_access(
-            obj=self.document_3, permission=permission_document_view
+            obj=self.test_object_child, permission=self.test_permission
         )
 
         result = AccessControlList.objects.filter_by_access(
-            permission=permission_document_view,
-            queryset=Document.objects.all(), user=self._test_case_user,
+            permission=self.test_permission,
+            queryset=self.test_object_child._meta.model._default_manager.all(),
+            user=self._test_case_user,
         )
-        self.assertTrue(self.document_1 in result)
-        self.assertTrue(self.document_2 in result)
-        self.assertTrue(self.document_3 in result)
+        self.assertTrue(self.test_object_child in result)
 
 
 class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
@@ -181,4 +192,101 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
         queryset = AccessControlList.objects.get_inherited_permissions(
             obj=self.test_object, role=self.test_role
         )
+        self.assertTrue(self.test_permission.stored_permission in queryset)
+
+    def test_retrieve_inherited_related_parent_child_permission(self):
+        self._create_test_permission()
+
+        self._create_test_model(model_name='TestModelParent')
+        self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelParent, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='parent',
+        )
+
+        parent = self.TestModelParent.objects.create()
+        child = self.TestModelChild.objects.create(parent=parent)
+
+        AccessControlList.objects.grant(
+            obj=parent, permission=self.test_permission, role=self.test_role
+        )
+        queryset = AccessControlList.objects.get_inherited_permissions(
+            obj=child, role=self.test_role
+        )
+
+        self.assertTrue(self.test_permission.stored_permission in queryset)
+
+    def test_retrieve_inherited_related_grandparent_parent_child_permission(self):
+        self._create_test_permission()
+
+        self._create_test_model(model_name='TestModelGrandParent')
+        self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelGrandParent',
+                )
+            }, model_name='TestModelParent'
+        )
+        self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelGrandParent, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelParent, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='parent',
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelParent, related='parent',
+        )
+
+        grandparent = self.TestModelGrandParent.objects.create()
+        parent = self.TestModelParent.objects.create(parent=grandparent)
+        child = self.TestModelChild.objects.create(parent=parent)
+
+        AccessControlList.objects.grant(
+            obj=grandparent, permission=self.test_permission,
+            role=self.test_role
+        )
+
+        queryset = AccessControlList.objects.get_inherited_permissions(
+            obj=child, role=self.test_role
+        )
+
         self.assertTrue(self.test_permission.stored_permission in queryset)

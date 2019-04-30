@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.contenttypes.models import ContentType
-
-from mayan.apps.documents.tests import GenericDocumentViewTestCase
+from mayan.apps.common.tests import GenericViewTestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
@@ -10,25 +8,17 @@ from ..permissions import permission_acl_edit, permission_acl_view
 from .mixins import ACLTestMixin
 
 
-class AccessControlListViewTestCase(ACLTestMixin, GenericDocumentViewTestCase):
+class AccessControlListViewTestCase(ACLTestMixin, GenericViewTestCase):
     def setUp(self):
         super(AccessControlListViewTestCase, self).setUp()
-
-        content_type = ContentType.objects.get_for_model(self.test_document)
-
-        self.view_arguments = {
-            'app_label': content_type.app_label,
-            'model': content_type.model,
-            'object_id': self.test_document.pk
-        }
-
-        self.test_object = self.test_document
+        self._setup_test_object()
 
     def _request_test_acl_create_get_view(self):
         return self.get(
-            viewname='acls:acl_create', kwargs=self.view_arguments, data={
+            viewname='acls:acl_create',
+            kwargs=self.test_content_object_view_kwargs, data={
                 'role': self.test_role.pk
-            }, follow=True
+            }
         )
 
     def test_acl_create_get_view_no_permission(self):
@@ -41,22 +31,21 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericDocumentViewTestCase):
 
     def test_acl_create_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_acl_edit
+            obj=self.test_object, permission=permission_acl_edit
         )
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_get_view()
-        self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
-        )
+        self.assertEquals(response.status_code, 200)
 
         self.assertEqual(AccessControlList.objects.count(), acl_count)
 
     def _request_test_acl_create_post_view(self):
         return self.post(
-            viewname='acls:acl_create', kwargs=self.view_arguments, data={
+            viewname='acls:acl_create',
+            kwargs=self.test_content_object_view_kwargs, data={
                 'role': self.test_role.pk
-            }, follow=True
+            }
         )
 
     def test_acl_create_view_post_no_permission(self):
@@ -69,13 +58,14 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericDocumentViewTestCase):
 
     def test_acl_create_view_post_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_acl_edit
+            obj=self.test_object, permission=permission_acl_edit
         )
 
         acl_count = AccessControlList.objects.count()
 
         response = self._request_test_acl_create_post_view()
-        self.assertContains(response=response, text='created', status_code=200)
+        self.assertEquals(response.status_code, 302)
+
         self.assertEqual(AccessControlList.objects.count(), acl_count + 1)
 
     def test_orphan_acl_create_view_with_permission(self):
@@ -85,48 +75,36 @@ class AccessControlListViewTestCase(ACLTestMixin, GenericDocumentViewTestCase):
         """
         self.grant_permission(permission=permission_acl_edit)
 
-        recent_entry = self.test_document.add_as_recent_document_for_user(
-            self._test_case_user
-        )
-
-        content_type = ContentType.objects.get_for_model(recent_entry)
-
-        view_arguments = {
-            'app_label': content_type.app_label,
-            'model': content_type.model,
-            'object_id': recent_entry.pk
-        }
+        self._clear_model_permissions()
 
         response = self.post(
-            viewname='acls:acl_create', kwargs=view_arguments, data={
+            viewname='acls:acl_create',
+            kwargs=self.test_content_object_view_kwargs, data={
                 'role': self.test_role.pk
             }, follow=True
         )
-        self.assertNotContains(response, text='optgroup', status_code=200)
+        self.assertNotContains(
+            response=response, text='optgroup', status_code=200
+        )
+
         self.assertEqual(AccessControlList.objects.count(), 1)
 
     def test_acl_list_view_no_permission(self):
         self._create_test_acl()
 
         response = self.get(
-            viewname='acls:acl_list', kwargs=self.view_arguments
+            viewname='acls:acl_list',
+            kwargs=self.test_content_object_view_kwargs
         )
-
-        self.assertNotContains(
-            response=response, text=self.document.label, status_code=403
-        )
-        self.assertNotContains(
-            response=response, text='otal: 1', status_code=403
-        )
+        self.assertEqual(response.status_code, 403)
 
     def test_acl_list_view_with_permission(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_acl_view
+            obj=self.test_object, permission=permission_acl_view
         )
 
         response = self.get(
-            viewname='acls:acl_list', kwargs=self.view_arguments
+            viewname='acls:acl_list',
+            kwargs=self.test_content_object_view_kwargs
         )
-        self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
-        )
+        self.assertEqual(response.status_code, 200)

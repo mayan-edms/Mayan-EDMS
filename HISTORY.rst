@@ -208,6 +208,7 @@
 * Use copyfileobj to save documents to files
 * Add user logged in and logged out events.
 * Add transaction handling in more places.
+* Update ACLs tests to use ephimeral models.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -241,6 +241,7 @@ Other changes
 * Add user logged in and logged out events.
 * Add transaction handling in more places: Checkouts, documents,
   metadata, tags.
+* Update ACLs tests to use ephimeral models.
 
 Removals
 --------

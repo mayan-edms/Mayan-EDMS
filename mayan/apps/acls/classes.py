@@ -13,6 +13,12 @@ class ModelPermission(object):
     _registry = {}
 
     @classmethod
+    def clear(cls):
+        cls._inheritances = {}
+        cls._proxies = {}
+        cls._registry = {}
+
+    @classmethod
     def register(cls, model, permissions):
         from django.contrib.contenttypes.fields import GenericRelation
 
