@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33
@@ -142,9 +141,7 @@ msgstr "Errore di firma"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
-"verifica"
+msgstr "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la verifica"
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -208,9 +205,7 @@ msgstr "Firme"
 
 #: settings.py:16
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Home directory utilizzata per memorizzare le chiavi così come i file di "
-"configurazione."
+msgstr "Home directory utilizzata per memorizzare le chiavi così come i file di configurazione."
 
 #: settings.py:22
 msgid "Path to the GPG binary."
@@ -277,8 +272,8 @@ msgstr "Carica nuova chiave"
 
 #: views.py:169
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user.The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user.The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:174
@@ -287,8 +282,8 @@ msgstr ""
 
 #: views.py:192
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 

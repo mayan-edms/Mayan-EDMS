@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario, 2015-2018
+# Roberto Rosario, 2015-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: 2018-09-27 02:20+0000\n"
+"PO-Revision-Date: 2019-04-30 16:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48 events.py:7 links.py:34
@@ -24,8 +23,6 @@ msgid "Checkouts"
 msgstr "Reservaciones"
 
 #: dashboard_widgets.py:16
-#, fuzzy
-#| msgid "Checkedout documents"
 msgid "Checked out documents"
 msgstr "Documentos reservados"
 
@@ -191,9 +188,7 @@ msgstr "Expiración de la reservación"
 msgid ""
 "Checking out a document blocks certain document operations for a "
 "predetermined amount of time."
-msgstr ""
-"Reservar un documento bloquea ciertas operaciones del documento durante un "
-"período de tiempo predeterminado."
+msgstr "Reservar un documento bloquea ciertas operaciones del documento durante un período de tiempo predeterminado."
 
 #: views.py:114
 msgid "No documents have been checked out"
@@ -213,9 +208,7 @@ msgstr "Detalles de la reserva para el documento: %s"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
-"Usted no reservó inicialmente este documento. ¿Devolver forzosamente el "
-"documento: %s?"
+msgstr "Usted no reservó inicialmente este documento. ¿Devolver forzosamente el documento: %s?"
 
 #: views.py:152
 #, python-format
@@ -234,9 +227,3 @@ msgstr "Documento \"%s\" devuelto con éxito."
 #: widgets.py:22
 msgid "Period"
 msgstr "Periodo"
-
-#~ msgid "Error trying to check out document; %s"
-#~ msgstr "Error tratando de reservar documento; %s"
-
-#~ msgid "Error trying to check in document; %s"
-#~ msgstr "Error tratando de devolver documento: %s"

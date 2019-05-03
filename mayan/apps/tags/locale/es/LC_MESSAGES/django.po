@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2018
+# Roberto Rosario, 2015-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-11-05 22:20+0000\n"
+"PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
@@ -76,10 +75,8 @@ msgid "All"
 msgstr "Todos"
 
 #: methods.py:14
-#, fuzzy
-#| msgid "Tags to attach to the document"
 msgid "Return a the tags attached to the document."
-msgstr "Etiquetas para adjuntar al documento"
+msgstr "Devover las etiquetas adjuntas al documento."
 
 #: models.py:28
 msgid "A short text used as the tag name."
@@ -103,7 +100,7 @@ msgstr "Etiqueta"
 
 #: models.py:74
 msgid "Preview"
-msgstr "Presentación preliminar"
+msgstr "Muestra"
 
 #: models.py:103
 msgid "Document tag"
@@ -141,17 +138,13 @@ msgstr "Retirar etiquetas de los documentos"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Lista separada por comas de los ID primarios de documentos a los que se "
-"adjuntará esta etiqueta."
+msgstr "Lista separada por comas de los ID primarios de documentos a los que se adjuntará esta etiqueta."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"URL de la API  que apunta a una etiqueta en relación con el documento "
-"adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
+msgstr "URL de la API  que apunta a una etiqueta en relación con el documento adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -245,9 +238,7 @@ msgstr "Editar etiqueta: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
-"Las etiquetas son propiedades codificadas por colores que se pueden adjuntar "
-"o retirar de los documentos."
+msgstr "Las etiquetas son propiedades codificadas por colores que se pueden adjuntar o retirar de los documentos."
 
 #: views.py:219
 msgid "No tags available"
@@ -305,8 +296,7 @@ msgstr "Documento \"%(document)s\" no esta etiquetado con \"%(tag)s"
 #: views.py:367
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+msgstr "Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
 
 #: wizard_steps.py:18
 msgid "Select tags"

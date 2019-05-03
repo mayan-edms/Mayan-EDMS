@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:06-0400\n"
-"PO-Revision-Date: 2018-09-27 02:30+0000\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:42
 msgid "Linking"
@@ -35,16 +33,12 @@ msgid "Smart links"
 msgstr "Smart linkovi"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Smart link"
 msgid "Smart link created"
-msgstr "Pametni link"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Smart link"
 msgid "Smart link edited"
-msgstr "Pametni link"
+msgstr ""
 
 #: forms.py:36
 msgid "Foreign document field"
@@ -149,8 +143,8 @@ msgstr "je u regularnom izrazu (nije bitno velika ili mala slova)"
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:35
@@ -234,9 +228,7 @@ msgstr "Pogledati postojeće smart linkove"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"Lista odvojenih primarnih ključeva tipova dokumenata na koje se povezuje ova "
-"pametna veza."
+msgstr "Lista odvojenih primarnih ključeva tipova dokumenata na koje se povezuje ova pametna veza."
 
 #: serializers.py:141
 #, python-format
@@ -244,22 +236,17 @@ msgid "No such document type: %s"
 msgstr "Nema takve vrste dokumenta:%s"
 
 #: views.py:45
-#, fuzzy
-#| msgid "Delete smart links"
 msgid "Available smart links"
-msgstr "Obrisati smart linkove"
+msgstr ""
 
 #: views.py:46
-#, fuzzy
-#| msgid "Smart links"
 msgid "Smart links enabled"
-msgstr "Smart linkovi"
+msgstr ""
 
 #: views.py:76
-#, fuzzy, python-format
-#| msgid "Smart links for document: %s"
+#, python-format
 msgid "Smart links to enable for document type: %s"
-msgstr "Smart link za dokument:%s"
+msgstr ""
 
 #: views.py:119
 #, python-format
@@ -273,11 +260,8 @@ msgstr "Dokumenti u pametnom linku:%s"
 
 #: views.py:131
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"Dokumenti u pametnom linku \"%(smart_link)s\" koji se odnose na "
-"\"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Dokumenti u pametnom linku \"%(smart_link)s\" koji se odnose na \"%(document)s\""
 
 #: views.py:156
 msgid "Available document types"

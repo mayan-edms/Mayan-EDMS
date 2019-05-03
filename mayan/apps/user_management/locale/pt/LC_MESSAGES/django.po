@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Manuela Silva <inactive+h_manuela_rodsilva@transifex.com>, 2015
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-09-27 02:32+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"PO-Revision-Date: 2019-05-03 05:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
@@ -27,10 +26,8 @@ msgid "User management"
 msgstr "Gestão de utilizadores"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "Grupos"
+msgstr ""
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -49,10 +46,8 @@ msgid "Users"
 msgstr "Utilizadores"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "User management"
 msgid "Username"
-msgstr "Gestão de utilizadores"
+msgstr ""
 
 #: apps.py:110 search.py:19
 msgid "First name"
@@ -67,10 +62,8 @@ msgid "Email"
 msgstr "Correio eletrónico"
 
 #: apps.py:113
-#, fuzzy
-#| msgid "Active"
 msgid "Is active?"
-msgstr "Ativo"
+msgstr ""
 
 #: apps.py:116 apps.py:120
 msgid "Has usable password?"
@@ -105,14 +98,12 @@ msgid "User logged in"
 msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users"
 msgid "User logged out"
-msgstr "Utilizadores"
+msgstr ""
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "Detalhes do utilizador"
 
 #: links.py:20
 msgid "Edit details"
@@ -200,7 +191,7 @@ msgstr ""
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "Anónimo"
 
 #: views.py:41
 msgid "Current user details"
@@ -236,10 +227,8 @@ msgid "Available users"
 msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups of user: %s"
 msgid "Group users"
-msgstr "Grupos do utilizador: %s"
+msgstr ""
 
 #: views.py:145
 #, python-format
@@ -271,9 +260,7 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Não é permitida a eliminação de administradores ou membros da equipa, "
-"utilize a interface de administrador para estes casos."
+msgstr "Não é permitida a eliminação de administradores ou membros da equipa, utilize a interface de administrador para estes casos."
 
 #: views.py:216
 #, python-format
@@ -286,10 +273,9 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao eliminar o utilizador \"%(user)s\": %(error)s "
 
 #: views.py:240
-#, fuzzy, python-format
-#| msgid "Groups of user: %s"
+#, python-format
 msgid "Details of user: %s"
-msgstr "Grupos do utilizador: %s"
+msgstr ""
 
 #: views.py:255
 #, python-format
@@ -303,10 +289,8 @@ msgstr "Grupos disponíveis"
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users"
 msgid "User groups"
-msgstr "Utilizadores"
+msgstr ""
 
 #: views.py:281
 #, python-format
@@ -357,9 +341,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Não é permitido redefinir a senha de administradores ou de membros da "
-"equipa, utilize a interface de administrador para estes casos."
+msgstr "Não é permitido redefinir a senha de administradores ou de membros da equipa, utilize a interface de administrador para estes casos."
 
 #: views.py:392
 #, python-format
@@ -370,9 +352,3 @@ msgstr ""
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro ao redefinir a senha para o utilizador \"%(user)s\": %(error)s "
-
-#~ msgid "Full name"
-#~ msgstr "Nome completo"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "Utilizador \"%s\" criado com sucesso."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
@@ -9,26 +9,22 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:48 events.py:7 links.py:34
 msgid "Checkouts"
 msgstr "Odjave"
 
 #: dashboard_widgets.py:16
-#, fuzzy
-#| msgid "Checkedout documents"
 msgid "Checked out documents"
-msgstr "Odjavljeni dokumenti"
+msgstr ""
 
 #: events.py:10
 msgid "Document automatically checked in"
@@ -212,8 +208,7 @@ msgstr "Odjavni detalji za dokument: %s"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
-"niste prvobitno proverili ovaj dokument. Naporno proverite u dokumentu: %s?"
+msgstr "niste prvobitno proverili ovaj dokument. Naporno proverite u dokumentu: %s?"
 
 #: views.py:152
 #, python-format
@@ -232,9 +227,3 @@ msgstr "Dokument \"%s\" uspješno prijavljen."
 #: widgets.py:22
 msgid "Period"
 msgstr "Perioda"
-
-#~ msgid "Error trying to check out document; %s"
-#~ msgstr "Greška pokušaja odjave dokumenta; %s"
-
-#~ msgid "Error trying to check in document; %s"
-#~ msgstr "Greška pokušaja prijave dokumenta; %s"

@@ -2,81 +2,91 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2019
+# Lory977 <helga.carrero@gmail.com>, 2019
+# Roberto Rosario, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Roberto Rosario, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:29 links.py:43 permissions.py:7
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependencias"
 
 #: apps.py:35 apps.py:70 apps.py:78
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: apps.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Nombre interno"
 
 #: apps.py:41 apps.py:73 apps.py:82
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #: apps.py:45
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: apps.py:49
 msgid "Other data"
-msgstr ""
+msgstr "Otros datos"
 
 #: apps.py:53
 msgid "Declared by"
-msgstr ""
+msgstr "Declarado por"
 
 #: apps.py:57
 msgid "Version"
-msgstr ""
+msgstr "Versión"
 
 #: apps.py:61 classes.py:622
 msgid "Environment"
-msgstr ""
+msgstr "Ambiente"
 
 #: apps.py:65
 msgid "Check"
-msgstr ""
+msgstr "Comprobar"
 
 #: classes.py:60
 msgid ""
 "Normal environment for end users. A missing depedencies under this "
 "environment will result issues and error during normal use."
 msgstr ""
+"Ambiente normal para usuarios finales. Las dependencias faltantes en este "
+"entorno darán como resultado problemas y errores durante el uso normal."
 
 #: classes.py:62
 msgid "Production"
-msgstr ""
+msgstr "Producción"
 
 #: classes.py:66
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing depedencies under this environment."
 msgstr ""
+"Entorno utilizado para que los desarrolladores realicen cambios de código. "
+"Los usuarios finales pueden ignorar las dependencias que faltan en este "
+"entorno."
 
 #: classes.py:68
 msgid "Development"
-msgstr ""
+msgstr "Desarrollo"
 
 #: classes.py:72
 msgid ""
@@ -84,96 +94,103 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Entorno usado para la ejecución del conjunto de pruebas para verificar la "
+"funcionalidad del código. Las dependencias en este entorno no son necesarias"
+" para el uso normal de producción."
 
 #: classes.py:75
 msgid "Testing"
-msgstr ""
+msgstr "Pruebas"
 
 #: classes.py:232
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Es necesario especificar al menos uno: app_label o módulo."
 
 #: classes.py:237
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Dependencia \"%s\" ya registrada."
 
 #: classes.py:263
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Instalando el paquete: %s ..."
 
 #: classes.py:268
 msgid "Already installed."
-msgstr ""
+msgstr "Ya instalado."
 
 #: classes.py:271 classes.py:274
 msgid "Complete."
-msgstr ""
+msgstr "Completado."
 
 #: classes.py:296
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Versión instalada y correcta."
 
 #: classes.py:298
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Versión faltante o incorrecta"
 
 #: classes.py:327
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: classes.py:336
 msgid "Not specified"
-msgstr ""
+msgstr "No especificado"
 
 #: classes.py:351
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Ejecutables que son llamados directamente por el código."
 
 #: classes.py:353
 msgid "Binary"
-msgstr ""
+msgstr "Binario"
 
 #: classes.py:370
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
+"Las librerias de Javascript descargadas el registro de NPM y se usan para la"
+" funcionalidad de front-end."
 
 #: classes.py:373
 msgid "Javascript"
-msgstr ""
+msgstr "Javascript"
 
 #: classes.py:579
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Paquetes de Python descargados desde PyPI."
 
 #: classes.py:581
 msgid "Python"
-msgstr ""
+msgstr "Pitón"
 
 #: classes.py:604
 msgid "Declared in app"
-msgstr ""
+msgstr "Declarado en la aplicación"
 
 #: classes.py:605
 msgid "Show depedencies by the app that declared them."
-msgstr ""
+msgstr "Mostrar las dependencias por la aplicación que las declaró."
 
 #: classes.py:609
 msgid "Class"
-msgstr ""
+msgstr "Clase"
 
 #: classes.py:610
 msgid ""
 "Show the different classes of depedencies. Classes are usually divided by "
 "language or the file types of the depedency."
 msgstr ""
+"Mostrar las diferentes clases de dependencias. Las clases generalmente se "
+"dividen por lenguaje o por los tipos de archivos de la dependencia."
 
 #: classes.py:615
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: classes.py:616
 msgid ""
@@ -181,82 +198,87 @@ msgid ""
 "depedencies is installed and is of a correct version. False means the "
 "depedencies is missing or an incorrect version is present."
 msgstr ""
+"Mostrar los diferentes estados de las dependencias. \"Cierto\" significa que"
+" las dependencias están instaladas y son de una versión correcta. \"Falso\" "
+"significa que faltan las dependencias o que existe una versión incorrecta."
 
 #: classes.py:623
 msgid ""
 "Depedencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Las dependencias necesarias para un entorno pueden no ser necesarias para "
+"otro. Ejemplos de entornos: Producción, Desarrollo."
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Verificar actualizaciones"
 
 #: links.py:17
 msgid "Groups"
-msgstr ""
+msgstr "Grupos"
 
 #: links.py:25
 msgid "Entries"
-msgstr ""
+msgstr "Entradas"
 
 #: links.py:33
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 #: links.py:38
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Licencias de dependencias"
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Procesar una aplicación específica."
 
 #: management/commands/installjavascript.py:19
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Forzar la instalación incluso si ya está instalado."
 
 #: permissions.py:10
 msgid "View dependencies"
-msgstr ""
+msgstr "Ver dependencias"
 
 #: views.py:23
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "La versión que está utilizando está obsoleta. La última versión es %s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "No es posible determinar la última versión disponible."
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Su versión está al díá."
 
 #: views.py:49
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Entradas para el grupo de dependencia: %s"
 
 #: views.py:62 views.py:107
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Grupo %s no encontrado."
 
 #: views.py:75
 msgid "Dependency groups"
-msgstr ""
+msgstr "Grupos de dependencia"
 
 #: views.py:95
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Grupo de dependencia y entrada: %(group)s, %(entry)s"
 
 #: views.py:119
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Entrada %s no encontrada."
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Licencias de otros paquetes"

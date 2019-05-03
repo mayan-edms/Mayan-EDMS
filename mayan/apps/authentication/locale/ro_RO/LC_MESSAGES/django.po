@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: 2019-03-15 07:45+0000\n"
+"POT-Creation-Date: 2019-05-03 01:03-0400\n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:21 settings.py:9
 msgid "Authentication"
@@ -40,9 +38,7 @@ msgstr "Amintește-ți de mine"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Introduceți un e-mail și o parolă corecte. Rețineți!  Câmpul parolei este "
-"sensibil la minuscule."
+msgstr "Introduceți un e-mail și o parolă corecte. Rețineți!  Câmpul parolei este sensibil la minuscule."
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -60,30 +56,26 @@ msgstr "Schimbați parola"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
-"Controlează mecanismul utilizat pentru utilizatorul autentificat. Opțiunile "
-"sunt: numele de utilizator, e-mailul"
+msgstr "Controlează mecanismul utilizat pentru utilizatorul autentificat. Opțiunile sunt: numele de utilizator, e-mailul"
 
 #: settings.py:20
 msgid ""
 "Maximum time an user clicking the \"Remember me\" checkbox will remain "
 "logged in. Value is time in seconds."
-msgstr ""
-"Perioada maximă de timp în care un utilizator dă clic pe caseta de selectare "
-"\"Reține-mă\" va rămâne logat. Valoarea este timpul în secunde."
+msgstr "Perioada maximă de timp în care un utilizator dă clic pe caseta de selectare \"Reține-mă\" va rămâne logat. Valoarea este timpul în secunde."
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr ""
+msgstr "Conectare"
 
 #: templates/authentication/login.html:26
 #: templates/authentication/login.html:34
 msgid "Sign in"
-msgstr ""
+msgstr "Înscriere"
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Ați uitat parola?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -91,27 +83,25 @@ msgstr ""
 #: templates/authentication/password_reset_done.html:8
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
-#, fuzzy
-#| msgid "Password"
 msgid "Password reset"
-msgstr "Parola"
+msgstr "Reinițializarea parolei"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Reinițializarea parolei este finalizată! Faceți clic pe link-ul de mai jos pentru a vă conecta."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Pagina de conectare"
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29
 msgid "Submit"
-msgstr ""
+msgstr "Trimiteţi"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "Email-ul de reinițializare a parolei a fost trimis!"
 
 #: views.py:69
 msgid "Your password has been successfully changed."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:07-0400\n"
-"PO-Revision-Date: 2018-09-27 02:31+0000\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:54 apps.py:133 apps.py:137 events.py:7 links.py:15 links.py:21
@@ -31,7 +30,7 @@ msgstr "ROC - Reconnaissance de caractères"
 
 #: apps.py:113
 msgid "Date and time"
-msgstr ""
+msgstr "Date et heure"
 
 #: apps.py:116 models.py:76
 msgid "Result"
@@ -47,8 +46,8 @@ msgstr ""
 
 #: dependencies.py:36
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
-"Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
+" Cuneiform."
 msgstr ""
 
 #: events.py:10
@@ -94,8 +93,7 @@ msgstr "Type de document"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr ""
-"Ajouter automatiquement les nouveaux documents créés à la file d'attente ROC."
+msgstr "Ajouter automatiquement les nouveaux documents créés à la file d'attente ROC."
 
 #: models.py:30
 msgid "Document type settings"
@@ -186,13 +184,9 @@ msgid "Submit all documents of a type for OCR"
 msgstr "Soumettre tous les documents d'un type à la ROC"
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid ""
-#| "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+#, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
-"%(count)d documents de type \"%(document_type)s\" ajoutés à la file "
-"d'attente ROC"
 
 #: views.py:143
 #, python-format
@@ -203,9 +197,3 @@ msgstr "Modifier les paramètres ROC pour le type de document : %s"
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Erreurs ROC pour le document : %s"
-
-#~ msgid "Document"
-#~ msgstr "Document"
-
-#~ msgid "Added"
-#~ msgstr "Ajouté"

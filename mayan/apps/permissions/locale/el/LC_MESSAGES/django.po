@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:07-0400\n"
-"PO-Revision-Date: 2018-09-12 07:48+0000\n"
+"PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
@@ -102,15 +101,11 @@ msgstr "Όνομα ομάδας"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών ομάδων όπου θα προστεθούν ή "
-"θα τροποποιηθούν σε αυτό τον ρόλο."
+msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών ομάδων όπου θα προστεθούν ή θα τροποποιηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
-"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών δικαιωμάτων που θα "
-"εκχωρηθούν σε αυτό τον ρόλο."
+msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών δικαιωμάτων που θα εκχωρηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:90
 #, python-format
@@ -178,15 +173,3 @@ msgstr ""
 #: views.py:163
 msgid "There are no roles"
 msgstr ""
-
-#~ msgid "Grant"
-#~ msgstr "Χορήγηση"
-
-#~ msgid "Revoke"
-#~ msgstr "Ανάκληση"
-
-#~ msgid "Grant permissions"
-#~ msgstr "Εκχώρηση δικαιωμάτων"
-
-#~ msgid "Revoke permissions"
-#~ msgstr "Ανάκληση δικαιωμάτων"

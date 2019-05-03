@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"rosarior/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: admin.py:24
 msgid "None"
@@ -54,28 +52,20 @@ msgid "Documents"
 msgstr "Dokumenti"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index created"
-msgstr "Index template node"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Index instance"
 msgid "Index edited"
-msgstr "index instance"
+msgstr ""
 
 #: forms.py:19
-#, fuzzy
-#| msgid "Indexes to be queued for rebuilding."
 msgid "Index templates to be queued for rebuilding."
-msgstr "Indeksi će biti stavljeni u red za obnavljanje."
+msgstr ""
 
 #: forms.py:20 links.py:30
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index templates"
-msgstr "Index template node"
+msgstr ""
 
 #: handlers.py:20
 msgid "Creation date"
@@ -120,18 +110,16 @@ msgstr "Labela"
 
 #: models.py:40
 msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
+msgstr "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
 
 #: models.py:41
 msgid "Slug"
 msgstr "Slug"
 
 #: models.py:46
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci "
-"dokumenta."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci dokumenta."
 
 #: models.py:49 models.py:235
 msgid "Enabled"
@@ -161,17 +149,13 @@ msgstr "Izraz indeksiranja"
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci "
-"dokumenta."
+msgstr "Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci dokumenta."
 
 #: models.py:240
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao "
-"parent za buduće nodove."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao parent za buduće nodove."
 
 #: models.py:243
 msgid "Link documents"
@@ -194,9 +178,7 @@ msgstr "Koren"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;"
-"%(exception)s"
+msgstr "Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;%(exception)s"
 
 #: models.py:351
 msgid "Index template node"
@@ -267,16 +249,12 @@ msgid "Rebuild index"
 msgstr "Obnoviti indeks"
 
 #: views.py:46
-#, fuzzy
-#| msgid "Available document types"
 msgid "Available indexes"
-msgstr "Dostupni tipovi dokumenta"
+msgstr ""
 
 #: views.py:47
-#, fuzzy
-#| msgid "Indexes"
 msgid "Indexes linked"
-msgstr "Indeksi"
+msgstr ""
 
 #: views.py:77
 msgid ""
@@ -286,10 +264,9 @@ msgid ""
 msgstr ""
 
 #: views.py:81
-#, fuzzy, python-format
-#| msgid "Indexes nodes containing document: %s"
+#, python-format
 msgid "Indexes linked to document type: %s"
-msgstr "Indeksni čvorovi koji sadrže dokument:%s"
+msgstr ""
 
 #: views.py:109
 #, python-format
@@ -304,8 +281,8 @@ msgstr "Uredi indeks:%s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
@@ -394,6 +371,3 @@ msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-
-#~ msgid "Has document links?"
-#~ msgstr "Ima li dokumenat linkove?"

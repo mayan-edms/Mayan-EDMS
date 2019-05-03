@@ -2,20 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:29 links.py:43 permissions.py:7
@@ -24,19 +27,19 @@ msgstr ""
 
 #: apps.py:35 apps.py:70 apps.py:78
 msgid "Label"
-msgstr ""
+msgstr "Ετικέτα"
 
 #: apps.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Εσωτερικό όνομα"
 
 #: apps.py:41 apps.py:73 apps.py:82
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 #: apps.py:45
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: apps.py:49
 msgid "Other data"
@@ -48,7 +51,7 @@ msgstr ""
 
 #: apps.py:57
 msgid "Version"
-msgstr ""
+msgstr "Έκδοση"
 
 #: apps.py:61 classes.py:622
 msgid "Environment"
@@ -121,7 +124,7 @@ msgstr ""
 
 #: classes.py:327
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: classes.py:336
 msgid "Not specified"
@@ -137,8 +140,8 @@ msgstr ""
 
 #: classes.py:370
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
 
 #: classes.py:373
@@ -190,11 +193,11 @@ msgstr ""
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Έλεγχος για ενημερώσεις"
 
 #: links.py:17
 msgid "Groups"
-msgstr ""
+msgstr "Ομάδες"
 
 #: links.py:25
 msgid "Entries"
@@ -202,7 +205,7 @@ msgstr ""
 
 #: links.py:33
 msgid "Details"
-msgstr ""
+msgstr "Λεπτομέρειες"
 
 #: links.py:38
 msgid "Dependencies licenses"
@@ -224,6 +227,8 @@ msgstr ""
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
 msgstr ""
+"Η έκδοση που χρησιμοποιείτε είναι απαρχαιωμένη. Η πιο πρόσφατη έκδοση είναι "
+"%s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
@@ -231,7 +236,7 @@ msgstr ""
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Έχετε την πιο πρόσφατη έκδοση."
 
 #: views.py:49
 #, python-format
@@ -259,4 +264,4 @@ msgstr ""
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Άδειες χρήσης λοιπών πακέτων"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:07-0400\n"
-"PO-Revision-Date: 2019-02-07 11:49+0000\n"
+"PO-Revision-Date: 2019-04-09 09:39+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 permissions.py:8
@@ -39,7 +38,7 @@ msgstr "Wert"
 
 #: apps.py:41
 msgid "Overrided by environment variable?"
-msgstr ""
+msgstr "Durch Umgebungsvariable überschrieben"
 
 #: apps.py:42
 msgid "Yes"
@@ -51,11 +50,11 @@ msgstr "Nein"
 
 #: forms.py:17
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Den neuen Wert eingeben."
 
 #: forms.py:36
 msgid "Value must be properly quoted."
-msgstr ""
+msgstr "Der Wert muss korrekt in Anführungszeichen gesetzt sein."
 
 #: forms.py:45
 #, python-format
@@ -68,7 +67,7 @@ msgstr "Einstellungen"
 
 #: links.py:21
 msgid "Namespaces"
-msgstr ""
+msgstr "Namensräume"
 
 #: links.py:25
 msgid "Edit"
@@ -76,7 +75,7 @@ msgstr "Bearbeiten"
 
 #: permissions.py:12
 msgid "Edit settings"
-msgstr ""
+msgstr "Einstellungen bearbeiten"
 
 #: permissions.py:15
 msgid "View settings"
@@ -86,7 +85,7 @@ msgstr "Einstellungen anzeigen"
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Einstellungen die durch Umgebungsvariablen vorgenommen wurden sind vorrangig und können auf dieser Seite nicht geändert werden."
 
 #: views.py:26
 #, python-format
@@ -104,9 +103,9 @@ msgstr "Einstellungsbereiche"
 
 #: views.py:60
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Einstellung erfolgreich aktualisiert."
 
 #: views.py:69
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Einstellung %s bearbeiten"

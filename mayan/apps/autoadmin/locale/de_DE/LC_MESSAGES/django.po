@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Berny <berny@bernhard-marx.de>, 2019
-#
+# Mathias Behrle <mathiasb@m9s.biz>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,24 +14,25 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>, 2019\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 settings.py:9
 msgid "Auto administrator"
-msgstr ""
+msgstr "Automatischer Administrator"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Willkommen Adminstrator! Sie haben Superuser-Berechtigungen. Verwenden Sie "
+"sie mit Bedacht."
 
 #: models.py:15
 msgid "Account"
@@ -47,21 +48,24 @@ msgstr "Passworthash"
 
 #: models.py:27
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Auto-Admin Eigenschaften"
 
 #: settings.py:14
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
+"Setzt die E-Mailadresse für das automatisch erstellte Superuser-Konto."
 
 #: settings.py:20
 msgid ""
-"The password of the automatically created super user account. If it is equal "
-"to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
 msgstr ""
+"Das Passwort für das automatisch erstellte Superuser-Konto. Wenn Sie das "
+"Feld leer lassen, wird ein Zufallspasswort erstellt."
 
 #: settings.py:27
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "Der Benutzername für das automatisch erstellte Superuser-Konto."
 
 #: templates/autoadmin/credentials.html:11
 msgid "First time login"
@@ -78,7 +82,7 @@ msgstr ""
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr "Einloggen mit folgenden Zugangsdaten:"
+msgstr "Sie können sich mit den folgenden Zugangsdaten anmelden:"
 
 #: templates/autoadmin/credentials.html:18
 #, python-format

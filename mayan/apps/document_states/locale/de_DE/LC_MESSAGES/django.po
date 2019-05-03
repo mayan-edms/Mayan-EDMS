@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
-# Mathias Behrle <mathiasb@m9s.biz>, 2018
+# Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
-"PO-Revision-Date: 2019-03-31 19:15+0000\n"
+"PO-Revision-Date: 2019-04-19 09:34+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:60 links.py:39 links.py:132 links.py:159 models.py:60
@@ -37,8 +36,7 @@ msgstr "Den aktuellen Status des ausgewählten Workflows zurückgeben"
 #: apps.py:107
 msgid ""
 "Return the completion value of the current state of the selected workflow"
-msgstr ""
-"Den Ergebniswert des aktuellen Status des ausgewählten Workflows zurückgeben"
+msgstr "Den Ergebniswert des aktuellen Status des ausgewählten Workflows zurückgeben"
 
 #: apps.py:149 apps.py:212 forms.py:117 models.py:47 models.py:153
 #: models.py:234 models.py:297 workflow_actions.py:22
@@ -214,10 +212,7 @@ msgstr "Beim Verlassen"
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"Dieser Wert wird von anderen Programmteilen verwendet, um sich auf diesen "
-"Workflow zu beziehen. Es sind nur Buchstaben, Zahlen und Unterstriche "
-"erlaubt."
+msgstr "Dieser Wert wird von anderen Programmteilen verwendet, um sich auf diesen Workflow zu beziehen. Es sind nur Buchstaben, Zahlen und Unterstriche erlaubt."
 
 #: models.py:59 models.py:151 models.py:295 models.py:342
 msgid "Workflow"
@@ -227,9 +222,7 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein "
-"Status kann initial sein."
+msgstr "Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein Status kann initial sein."
 
 #: models.py:159
 msgid "Initial"
@@ -239,9 +232,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
-"Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der "
-"Fertigstellung in Bezug auf den Workflow angibt."
+msgstr "Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der Fertigstellung in Bezug auf den Workflow angibt."
 
 #: models.py:171 models.py:230
 msgid "Workflow state"
@@ -265,9 +256,7 @@ msgstr "Wann"
 
 #: models.py:245
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
-"Der punktierte Pythonpfad zu der Workflowaktionsklasse, die ausgeführt "
-"werden soll."
+msgstr "Der punktierte Pythonpfad zu der Workflowaktionsklasse, die ausgeführt werden soll."
 
 #: models.py:246
 msgid "Entry action path"
@@ -385,10 +374,7 @@ msgstr "Primärschlüssel des hinzuzufügenden Dokumententyps."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"API URL für den Dokumententyp, der auf den Workflow verweist, mit dem er "
-"verknüpft ist. Diese URL unterscheidet sich von der kanonischen "
-"Dokumententyp-URL."
+msgstr "API URL für den Dokumententyp, der auf den Workflow verweist, mit dem er verknüpft ist. Diese URL unterscheidet sich von der kanonischen Dokumententyp-URL."
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -402,9 +388,7 @@ msgstr "Primärschlüssel des hinzuzufügenden Herkunftsstatus."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL für den Workflow, der auf das Dokument verweist, mit dem er "
-"verknüpft ist. Diese URL unterscheidet sich von der kanonischen Workflow-URL."
+msgstr "API URL für den Workflow, der auf das Dokument verweist, mit dem er verknüpft ist. Diese URL unterscheidet sich von der kanonischen Workflow-URL."
 
 #: serializers.py:227
 msgid "A link to the entire history of this workflow."
@@ -414,9 +398,7 @@ msgstr "Ein Link zur kompletten Historie dieses Workflows."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"Kommagetrennte Liste von Primärschlüsseln von Dokumententypen, mit denen "
-"dieser Workflow verknüpft wird."
+msgstr "Kommagetrennte Liste von Primärschlüsseln von Dokumententypen, mit denen dieser Workflow verknüpft wird."
 
 #: serializers.py:319
 msgid "Primary key of the transition to be added."
@@ -424,11 +406,9 @@ msgstr "Primärschlüssel  des hinzuzufügenden Übergangs."
 
 #: views/workflow_instance_views.py:42
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
-msgstr ""
-"Weisen Sie Workflows zu dem Dokumententyp dieses Dokuments zu, damit sie für "
-"dieses Dokument durchgeführt werden."
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
+msgstr "Weisen Sie Workflows zu dem Dokumententyp dieses Dokuments zu, damit sie für dieses Dokument durchgeführt werden."
 
 #: views/workflow_instance_views.py:46
 msgid "There are no workflow for this document"
@@ -462,9 +442,7 @@ msgstr "Übergang für Workflow %s durchführen"
 msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
-msgstr ""
-"Verknüpfen Sie einen Workflow mit Dokumententypen, um die Dokumente dieser "
-"Typen hier anzuzeigen."
+msgstr "Verknüpfen Sie einen Workflow mit Dokumententypen, um die Dokumente dieser Typen hier anzuzeigen."
 
 #: views/workflow_proxy_views.py:50
 msgid "There are no documents executing this workflow"
@@ -479,9 +457,7 @@ msgstr "Dokumente mit Workflow %s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
-"Workflows erstellen und mit einem Dokumententyp verknüpfen. Aktive Workflows "
-"werden hier angezeigt und die Dokumente, für die sie ausgeführt werden."
+msgstr "Workflows erstellen und mit einem Dokumententyp verknüpfen. Aktive Workflows werden hier angezeigt und die Dokumente, für die sie ausgeführt werden."
 
 #: views/workflow_proxy_views.py:74
 msgid "There are no workflows"
@@ -494,11 +470,11 @@ msgstr "Keine Dokumente in diesem Workflowstatus"
 #: views/workflow_proxy_views.py:97
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr "Dokumente im Workflow \"%s\", Status \"%s\""
+msgstr "Dokumente im Workflow \"%s\" mit Status \"%s\""
 
 #: views/workflow_proxy_views.py:142 views/workflow_views.py:431
 msgid "Create states and link them using transitions."
-msgstr "Status erstellen und durch Übergänge verbinden"
+msgstr "Status erstellen und durch Übergänge verbinden."
 
 #: views/workflow_proxy_views.py:145
 msgid "This workflow doesn't have any state"
@@ -513,10 +489,7 @@ msgstr "Status für Workflow %s"
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
-"Workflows speichern eine Reihenfolge von Zuständen (Status) und verfolgen "
-"den aktuellen Status eines Dokuments. Übergänge werden dazu verwendet, vom "
-"aktuellen Status zu einem neuen zu wechseln."
+msgstr "Workflows speichern eine Reihenfolge von Zuständen (Status) und verfolgen den aktuellen Status eines Dokuments. Übergänge werden dazu verwendet, vom aktuellen Status zu einem neuen zu wechseln."
 
 #: views/workflow_views.py:80
 msgid "No workflows have been defined"
@@ -534,9 +507,7 @@ msgstr "Dokumententypen zugeordnet zu diesem Workflow"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr ""
-"Das Entfernen eines Dokumententyps von einem Workflow wird auch sämtliche "
-"laufenden Workflowinstanzen für andere Dokumente dieses Typs entfernen."
+msgstr "Das Entfernen eines Dokumententyps von einem Workflow wird auch sämtliche laufenden Workflowinstanzen für andere Dokumente dieses Typs entfernen."
 
 #: views/workflow_views.py:126
 #, python-format
@@ -560,11 +531,9 @@ msgstr "Workflowstatusaktion %s bearbeiten"
 
 #: views/workflow_views.py:273
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
-msgstr ""
-"Workflowstatusaktionen sind Makros, die bei Betreten oder Verlassen eines "
-"Dokumentenstatus ausgeführt werden."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
+msgstr "Workflowstatusaktionen sind Makros, die bei Betreten oder Verlassen eines Dokumentenstatus ausgeführt werden."
 
 #: views/workflow_views.py:277
 msgid "There are no actions for this workflow state"
@@ -590,7 +559,7 @@ msgstr "Keine Status für diesen Workflow definiert"
 
 #: views/workflow_views.py:460
 msgid "Unable to save transition; integrity error."
-msgstr "Integritätsfehler beim Speichern des Übergangs"
+msgstr "Integritätsfehler beim Speichern des Übergangs."
 
 #: views/workflow_views.py:472
 #, python-format
@@ -599,10 +568,9 @@ msgstr "Übergänge für Workflow %s erstellen"
 
 #: views/workflow_views.py:558
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
-msgstr ""
-"Einen Übergang erstellen und verwenden, um von einem Status in einen anderen "
-"zu wechseln."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
+msgstr "Einen Übergang erstellen und verwenden, um von einem Status in einen anderen zu wechseln."
 
 #: views/workflow_views.py:562
 msgid "This workflow doesn't have any transitions"
@@ -616,8 +584,7 @@ msgstr "Übergänge für Workflow %s"
 #: views/workflow_views.py:600
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr ""
-"Fehler bei der Aktualisierung von Workflowübergangstriggerereignissen; %s"
+msgstr "Fehler bei der Aktualisierung von Workflowübergangstriggerereignissen; %s"
 
 #: views/workflow_views.py:606
 msgid "Workflow transition trigger events updated successfully"
@@ -626,9 +593,7 @@ msgstr "Workflowübergangstriggerereignissen erfolgreich aktualisiert"
 #: views/workflow_views.py:623
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
-"Trigger sind Ereignisse, die für eine automatische Ausführung dieses "
-"Übergangs sorgen."
+msgstr "Trigger sind Ereignisse, die für eine automatische Ausführung dieses Übergangs sorgen."
 
 #: views/workflow_views.py:627
 #, python-format
@@ -643,9 +608,7 @@ msgstr "Alle Workflows starten?"
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
-msgstr ""
-"Dies wird alle Workflows anstoßen, die erst nach dem Upload von Dokumenten "
-"erstellt wurden."
+msgstr "Dies wird alle Workflows anstoßen, die erst nach dem Upload von Dokumenten erstellt wurden."
 
 #: views/workflow_views.py:669
 msgid "Workflow launch queued successfully."
@@ -659,9 +622,7 @@ msgstr "Vorschau von %s"
 #: workflow_actions.py:25
 msgid ""
 "The new label to be assigned to the document. Can be a string or a template."
-msgstr ""
-"Der neue Bezeichner, der dem Dokument zugewiesen werden soll. Kann eine "
-"Zeichenfolge oder eine Vorlage sein."
+msgstr "Der neue Bezeichner, der dem Dokument zugewiesen werden soll. Kann eine Zeichenfolge oder eine Vorlage sein."
 
 #: workflow_actions.py:30
 msgid "Description"
@@ -671,9 +632,7 @@ msgstr "Beschreibung"
 msgid ""
 "The new description to be assigned to the document. Can be a string or a "
 "template."
-msgstr ""
-"Die neue Beschreibung, die dem Dokument zugewiesen werden soll. Kann eine "
-"Zeichenfolge oder eine Vorlage sein."
+msgstr "Die neue Beschreibung, die dem Dokument zugewiesen werden soll. Kann eine Zeichenfolge oder eine Vorlage sein."
 
 #: workflow_actions.py:40
 msgid "Modify the properties of the document"
@@ -695,15 +654,11 @@ msgstr "URL"
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"Kann eine IP-Adresse, eine Domain oder eine Vorlage sein. Vorlagen erhalten "
-"die Workflowlog-Eingangsinstanz mit der Kontextvariable \"entry_log\". "
-"\"entry_log\" enthält die \"workflow_instance\", \"datetime\", \"transition"
-"\", \"user\" und \"comment\" Attribute."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "Kann eine IP-Adresse, eine Domain oder eine Vorlage sein. Vorlagen erhalten die Workflowlog-Eingangsinstanz mit der Kontextvariable \"entry_log\". \"entry_log\" enthält die \"workflow_instance\", \"datetime\", \"transition\", \"user\" und \"comment\" Attribute."
 
 #: workflow_actions.py:103
 msgid "Timeout"
@@ -711,7 +666,7 @@ msgstr "Timeout"
 
 #: workflow_actions.py:105
 msgid "Time in seconds to wait for a response."
-msgstr "Antwortwartezeit in Sekunden"
+msgstr "Antwortwartezeit in Sekunden."
 
 #: workflow_actions.py:109
 msgid "Payload"
@@ -720,16 +675,11 @@ msgstr "Payload"
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"Ein JSON-Dokument, das in den Request eingeschlossen werden soll. Kann auch "
-"eine Vorlage sein, die ein JSON-Dokument zurückgibt. Vorlagen erhalten die "
-"Workflowlog-Eingangsinstanz mit der Kontextvariable \"entry_log\". "
-"\"entry_log\" enthält die \"workflow_instance\", \"datetime\", \"transition"
-"\", \"user\" und \"comment\" Attribute."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "Ein JSON-Dokument, das in den Request eingeschlossen werden soll. Kann auch eine Vorlage sein, die ein JSON-Dokument zurückgibt. Vorlagen erhalten die Workflowlog-Eingangsinstanz mit der Kontextvariable \"entry_log\". \"entry_log\" enthält die \"workflow_instance\", \"datetime\", \"transition\", \"user\" und \"comment\" Attribute."
 
 #: workflow_actions.py:125
 msgid "Perform a POST request"

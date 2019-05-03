@@ -2,40 +2,47 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Roberto Rosario, 2019
+# Badea Gabriel <gcbadea@gmail.com>, 2019
+# Harald Ersch, 2019
+# Stefaniu Criste <gupi@hangar.ro>, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:04-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2019\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:29 links.py:43 permissions.py:7
 msgid "Dependencies"
-msgstr ""
+msgstr "Dependenţe"
 
 #: apps.py:35 apps.py:70 apps.py:78
 msgid "Label"
-msgstr ""
+msgstr "Conținut etichetă"
 
 #: apps.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Nume intern"
 
 #: apps.py:41 apps.py:73 apps.py:82
 msgid "Description"
-msgstr ""
+msgstr "Descriere"
 
 #: apps.py:45
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: apps.py:49
 msgid "Other data"
@@ -47,7 +54,7 @@ msgstr ""
 
 #: apps.py:57
 msgid "Version"
-msgstr ""
+msgstr "Versiune"
 
 #: apps.py:61 classes.py:622
 msgid "Environment"
@@ -120,7 +127,7 @@ msgstr ""
 
 #: classes.py:327
 msgid "None"
-msgstr ""
+msgstr "Nici unul"
 
 #: classes.py:336
 msgid "Not specified"
@@ -136,8 +143,8 @@ msgstr ""
 
 #: classes.py:370
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
 
 #: classes.py:373
@@ -189,11 +196,11 @@ msgstr ""
 
 #: links.py:11 views.py:35
 msgid "Check for updates"
-msgstr ""
+msgstr "Verifică pentru actualizări"
 
 #: links.py:17
 msgid "Groups"
-msgstr ""
+msgstr "Grupuri"
 
 #: links.py:25
 msgid "Entries"
@@ -201,7 +208,7 @@ msgstr ""
 
 #: links.py:33
 msgid "Details"
-msgstr ""
+msgstr "Detalii"
 
 #: links.py:38
 msgid "Dependencies licenses"
@@ -209,7 +216,7 @@ msgstr ""
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
-msgstr ""
+msgstr "Procesați o aplicație specifică."
 
 #: management/commands/installjavascript.py:19
 msgid "Force installation even if already installed."
@@ -222,15 +229,15 @@ msgstr ""
 #: views.py:23
 #, python-format
 msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
+msgstr "Versiunea pe care o utilizați este depășită. Ultima versiune este %s"
 
 #: views.py:28
 msgid "It is not possible to determine the latest version available."
-msgstr ""
+msgstr "Nu este posibil să se determine cea mai recentă versiune disponibilă."
 
 #: views.py:32
 msgid "Your version is up-to-date."
-msgstr ""
+msgstr "Versiunea dvs. este actualizată."
 
 #: views.py:49
 #, python-format
@@ -258,4 +265,4 @@ msgstr ""
 
 #: views.py:137
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Licențe pentru alte pachete"

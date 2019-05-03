@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2015-2018
+# Roberto Rosario, 2015-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:07-0400\n"
-"PO-Revision-Date: 2018-09-27 02:16+0000\n"
+"PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
@@ -31,11 +30,11 @@ msgstr "Permisos insuficientes."
 
 #: events.py:12
 msgid "Role created"
-msgstr ""
+msgstr "Rol creado"
 
 #: events.py:15
 msgid "Role edited"
-msgstr ""
+msgstr "Rol editado"
 
 #: links.py:16 links.py:40 models.py:113 views.py:164
 msgid "Roles"
@@ -59,11 +58,11 @@ msgstr "Grupos"
 
 #: links.py:52
 msgid "Role permissions"
-msgstr "Autorizaciones por rol"
+msgstr "Permisos del rol"
 
 #: models.py:27
 msgid "Namespace"
-msgstr "Espacio nombrado"
+msgstr "Categoría"
 
 #: models.py:28
 msgid "Name"
@@ -105,15 +104,11 @@ msgstr "Nombre del grupo"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Lista separada por comas de llaves primarias de grupos para agregar o "
-"reemplazar en este rol."
+msgstr "Lista separada por comas de llaves primarias de grupos para agregar o reemplazar en este rol."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
-"Separación por comas de las llaves primarias de permiso para otorgar a este "
-"rol."
+msgstr "Separación por comas de las llaves primarias de permiso para otorgar a este rol."
 
 #: serializers.py:90
 #, python-format
@@ -150,9 +145,7 @@ msgstr "Grupos del rol: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
-"Agregue grupos para ser parte de un rol. Ellos heredarán los permisos de la "
-"función y los controles de acceso."
+msgstr "Agregue grupos para ser parte de un rol. Ellos heredarán los permisos de la función y los controles de acceso."
 
 #: views.py:104
 msgid "Available permissions"
@@ -165,9 +158,7 @@ msgstr "Permisos otorgados"
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
-"Los permisos otorgados aquí se aplicarán a todo el sistema y a todos los "
-"objetos."
+msgstr "Los permisos otorgados aquí se aplicarán a todo el sistema y a todos los objetos."
 
 #: views.py:140
 #, python-format
@@ -180,25 +171,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
-"Los roles son unidades de autorización. Contienen grupos de usuarios que "
-"heredan los permisos de roles para todo el sistema. Los roles también pueden "
-"formar parte de las listas de control de acceso. La lista de controles de "
-"acceso son permisos otorgados por función para objetos específicos que "
-"heredan los miembros de su grupo."
+msgstr "Los roles son unidades de autorización. Contienen grupos de usuarios que heredan los permisos de roles para todo el sistema. Los roles también pueden formar parte de las listas de control de acceso. La lista de controles de acceso son permisos otorgados por función para objetos específicos que heredan los miembros de su grupo."
 
 #: views.py:163
 msgid "There are no roles"
 msgstr "No hay roles"
-
-#~ msgid "Grant"
-#~ msgstr "Otorgar"
-
-#~ msgid "Revoke"
-#~ msgstr "Revocar"
-
-#~ msgid "Grant permissions"
-#~ msgstr "Conceder permisos"
-
-#~ msgid "Revoke permissions"
-#~ msgstr "Revocar permisos"

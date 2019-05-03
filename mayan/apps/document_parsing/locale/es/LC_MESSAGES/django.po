@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2018
-#
+# Roberto Rosario, 2019
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -13,12 +13,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Roberto Rosario, 2018\n"
+"Last-Translator: Roberto Rosario, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 events.py:8 permissions.py:8 settings.py:7
@@ -34,15 +34,11 @@ msgid "Content"
 msgstr "Contenido"
 
 #: dependencies.py:11
-#, fuzzy
-#| msgid ""
-#| "File path to poppler's pdftotext program used to extract text from PDF "
-#| "files."
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
-"Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
-"extraer texto de archivos PDF."
+"Utilidad del paquete poppler-utils que se utiliza para enviar texto desde "
+"archivos PDF."
 
 #: events.py:12
 msgid "Document version submitted for parsing"
@@ -88,7 +84,8 @@ msgstr "Página del documento"
 #: models.py:25
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
-"El contenido de texto real extraído por el documento que analiza el servidor."
+"El contenido de texto real extraído por el documento que analiza el "
+"servidor."
 
 #: models.py:33
 msgid "Document page content"
@@ -104,7 +101,8 @@ msgstr "Tipo de documento"
 
 #: models.py:50
 msgid "Automatically queue newly created documents for parsing."
-msgstr "Cola automática de documentos recién creados para extracción de texto."
+msgstr ""
+"Someter automática de documentos recién creados para extracción de texto."
 
 #: models.py:61
 msgid "Document type settings"
@@ -168,7 +166,8 @@ msgstr ""
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
 "extraer texto de archivos PDF."
@@ -191,24 +190,24 @@ msgstr "Errores de análisis del documento: %s"
 #: views.py:104
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr "%(count)d documento añadido a la cola de análisis"
+msgstr "%(count)d documento añadido a la lista de análisis"
 
 #: views.py:107
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr "%(count)d documentos añadidos a la cola de análisis"
+msgstr "%(count)d documentos añadidos a la lista de análisis"
 
 #: views.py:115
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue"
 msgstr[0] "¿Enviar %(count)d documento a la cola de análisis?"
-msgstr[1] "Enviar %(count)d documentos a la cola de análisis"
+msgstr[1] "Enviar %(count)d documentos a la lista de análisis"
 
 #: views.py:128
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr "Enviar el documento \"%s\" a la cola de análisis"
+msgstr "Enviar el documento \"%s\" a la lista de análisis"
 
 #: views.py:151
 #, python-format
@@ -217,26 +216,10 @@ msgstr ""
 "Editar la configuración de extracción de texto para el tipo de documento: %s"
 
 #: views.py:161
-#, fuzzy
-#| msgid "Submit all documents of a type for parsing"
 msgid "Submit all documents of a type for parsing."
-msgstr "Enviar todos los documentos de un tipo para analizar"
+msgstr "Enviar todos los documentos de un tipo para su análisis."
 
 #: views.py:182
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr "%(count)d documentos añadidos a la cola de análisis"
-
-#~ msgid "Document"
-#~ msgstr "Documento"
-
-#~ msgid "Added"
-#~ msgstr "Añadido"
-
-#~ msgid ""
-#~ "%(count)d documents of type \"%(document_type)s\" added to the parsing "
-#~ "queue."
-#~ msgstr ""
-#~ "%(count)d documentos del tipo \"%(document_type)s\" añadidos a la cola de "
-#~ "análisis."
+msgstr "%(count)d documentos agregados a la lista de análisis."

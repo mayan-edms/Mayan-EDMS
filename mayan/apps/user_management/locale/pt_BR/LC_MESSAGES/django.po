@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2013
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-09-27 02:32+0000\n"
+"PO-Revision-Date: 2019-05-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
@@ -29,10 +28,8 @@ msgid "User management"
 msgstr "Gerenciar usuários"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "Grupos"
+msgstr ""
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -51,10 +48,8 @@ msgid "Users"
 msgstr "Usuários"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "User management"
 msgid "Username"
-msgstr "Gerenciar usuários"
+msgstr "Usuário"
 
 #: apps.py:110 search.py:19
 msgid "First name"
@@ -69,10 +64,8 @@ msgid "Email"
 msgstr "E-mail"
 
 #: apps.py:113
-#, fuzzy
-#| msgid "Active"
 msgid "Is active?"
-msgstr "Ativo"
+msgstr ""
 
 #: apps.py:116 apps.py:120
 msgid "Has usable password?"
@@ -87,16 +80,12 @@ msgid "All the users."
 msgstr "Todos os usuários."
 
 #: events.py:12
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group created"
-msgstr "Grupos ingressados"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group edited"
-msgstr "Grupos ingressados"
+msgstr ""
 
 #: events.py:19
 msgid "User created"
@@ -111,18 +100,16 @@ msgid "User logged in"
 msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users"
 msgid "User logged out"
-msgstr "Usuários"
+msgstr ""
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "Detalhes do usuário"
 
 #: links.py:20
 msgid "Edit details"
-msgstr ""
+msgstr "Editar Detalhes"
 
 #: links.py:24 views.py:60
 msgid "Create new group"
@@ -198,9 +185,7 @@ msgstr ""
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Lista separada por vírgulas de chaves primárias de grupo para atribuir esse "
-"usuário."
+msgstr "Lista separada por vírgulas de chaves primárias de grupo para atribuir esse usuário."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -208,15 +193,15 @@ msgstr "Lista de chaves primárias do grupo às quais adicionar o usuário."
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "Anônimo"
 
 #: views.py:41
 msgid "Current user details"
-msgstr ""
+msgstr "Detalhes do usuário atual"
 
 #: views.py:49
 msgid "Edit current user details"
-msgstr ""
+msgstr "Editar detalhes do usuário atual"
 
 #: views.py:82
 #, python-format
@@ -244,10 +229,8 @@ msgid "Available users"
 msgstr "Usuários disponíveis"
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups of user: %s"
 msgid "Group users"
-msgstr "Grupos de usuário:%s"
+msgstr ""
 
 #: views.py:145
 #, python-format
@@ -279,9 +262,7 @@ msgstr "Excluir usuário: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Excluir super usuário e usuário pessoal não é permitido, use a interface de "
-"administração para esses casos."
+msgstr "Excluir super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
 
 #: views.py:216
 #, python-format
@@ -294,10 +275,9 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao excluir usuário \"%(user)s\": %(error)s "
 
 #: views.py:240
-#, fuzzy, python-format
-#| msgid "Delete user: %s"
+#, python-format
 msgid "Details of user: %s"
-msgstr "Excluir usuário: %s"
+msgstr ""
 
 #: views.py:255
 #, python-format
@@ -311,10 +291,8 @@ msgstr "Grupos disponíveis"
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users"
 msgid "User groups"
-msgstr "Usuários"
+msgstr ""
 
 #: views.py:281
 #, python-format
@@ -365,9 +343,7 @@ msgstr "Alterar senha para o usuário: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Redefinir senha de super usuário e usuário pessoal não é permitido, use a "
-"interface de administração para esses casos."
+msgstr "Redefinir senha de super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
 
 #: views.py:392
 #, python-format
@@ -378,9 +354,3 @@ msgstr ""
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "
-
-#~ msgid "Full name"
-#~ msgstr "Nome Completo"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "Usuário \"%s\" criado com sucesso."

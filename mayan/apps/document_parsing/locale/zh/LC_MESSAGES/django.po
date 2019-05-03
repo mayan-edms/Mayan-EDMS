@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,10 +15,10 @@ msgstr ""
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>, 2019\n"
 "Language-Team: Chinese (https://www.transifex.com/rosarior/teams/13584/zh/)\n"
-"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:53 events.py:8 permissions.py:8 settings.py:7
@@ -34,13 +34,9 @@ msgid "Content"
 msgstr "内容"
 
 #: dependencies.py:11
-#, fuzzy
-#| msgid ""
-#| "File path to poppler's pdftotext program used to extract text from PDF "
-#| "files."
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
-msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
+msgstr ""
 
 #: events.py:12
 msgid "Document version submitted for parsing"
@@ -163,7 +159,8 @@ msgstr "设置新文档类型以默认自动执行解析。"
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
 
 #: views.py:42
@@ -208,24 +205,10 @@ msgid "Edit parsing settings for document type: %s"
 msgstr "编辑文档类型的解析设置：%s"
 
 #: views.py:161
-#, fuzzy
-#| msgid "Submit all documents of a type for parsing"
 msgid "Submit all documents of a type for parsing."
-msgstr "提交某类型的所有文档进行解析"
+msgstr ""
 
 #: views.py:182
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr "%(count)d文档已添加到解析队列中"
-
-#~ msgid "Document"
-#~ msgstr "文档"
-
-#~ msgid "Added"
-#~ msgstr "已添加"
-
-#~ msgid ""
-#~ "%(count)d documents of type \"%(document_type)s\" added to the parsing "
-#~ "queue."
-#~ msgstr "%(count)d个类型为“%(document_type)s”的文档已添加到解析队列中。"
+msgstr ""

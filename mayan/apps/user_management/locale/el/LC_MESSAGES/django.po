@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-09-27 02:32+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"PO-Revision-Date: 2019-05-03 05:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
@@ -23,10 +22,8 @@ msgid "User management"
 msgstr "Διαχείριση χρηστών"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "Ομάδες"
+msgstr ""
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -45,8 +42,6 @@ msgid "Users"
 msgstr "Χρήστες"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "username"
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
@@ -63,10 +58,8 @@ msgid "Email"
 msgstr "Λογαριασμός email"
 
 #: apps.py:113
-#, fuzzy
-#| msgid "Active"
 msgid "Is active?"
-msgstr "Ενεργό"
+msgstr ""
 
 #: apps.py:116 apps.py:120
 msgid "Has usable password?"
@@ -81,16 +74,12 @@ msgid "All the users."
 msgstr "Όλοι οι χρήστες."
 
 #: events.py:12
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group created"
-msgstr "Μέλος ομάδων"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group edited"
-msgstr "Μέλος ομάδων"
+msgstr ""
 
 #: events.py:19
 msgid "User created"
@@ -105,18 +94,16 @@ msgid "User logged in"
 msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users"
 msgid "User logged out"
-msgstr "Χρήστες"
+msgstr ""
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "Πληροφορίες χρήστη"
 
 #: links.py:20
 msgid "Edit details"
-msgstr ""
+msgstr "Τροποποίηση πληροφοριών"
 
 #: links.py:24 views.py:60
 msgid "Create new group"
@@ -200,15 +187,15 @@ msgstr "Λίστα πρωτευόντων κλειδιών ομάδων που �
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "Ανόνυμο"
 
 #: views.py:41
 msgid "Current user details"
-msgstr ""
+msgstr "Λεπτομέρειες τρέχοντος χρήστη"
 
 #: views.py:49
 msgid "Edit current user details"
-msgstr ""
+msgstr "Τροποποίηση λεπτομερειών τρέχοντος χρήστη."
 
 #: views.py:82
 #, python-format
@@ -236,10 +223,8 @@ msgid "Available users"
 msgstr "Διαθέσιμοι χρήστες"
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups of user: %s"
 msgid "Group users"
-msgstr "Ομάδες που ανήκει ο χρήστης: %s"
+msgstr ""
 
 #: views.py:145
 #, python-format
@@ -271,9 +256,7 @@ msgstr "Διαγραφή χρήστη: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Η διαγραφή υπερχρήστη και προσωπικού δενεπιτρέπεται. Χρησιμοποιήστε το "
-"περιβάλλον διαχείρησης γι' αυτές τις περιπτώσεις."
+msgstr "Η διαγραφή υπερχρήστη και προσωπικού δενεπιτρέπεται. Χρησιμοποιήστε το περιβάλλον διαχείρησης γι' αυτές τις περιπτώσεις."
 
 #: views.py:216
 #, python-format
@@ -286,10 +269,9 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Σφάλμα κατά την διαγραφή του χρήστη \"%(user)s\": %(error)s"
 
 #: views.py:240
-#, fuzzy, python-format
-#| msgid "Delete user: %s"
+#, python-format
 msgid "Details of user: %s"
-msgstr "Διαγραφή χρήστη: %s"
+msgstr ""
 
 #: views.py:255
 #, python-format
@@ -303,10 +285,8 @@ msgstr "Διαθέσιμες ομάδες"
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users"
 msgid "User groups"
-msgstr "Χρήστες"
+msgstr ""
 
 #: views.py:281
 #, python-format
@@ -357,9 +337,7 @@ msgstr "Αλλαγή κωδικού για τον χρήστη: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Η αρχικοποίηση κωδικών για τον υπερχρήστη και το προσωπικό δεν επιτρέπεται. "
-"Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις περιπτώσεις."
+msgstr "Η αρχικοποίηση κωδικών για τον υπερχρήστη και το προσωπικό δεν επιτρέπεται. Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις περιπτώσεις."
 
 #: views.py:392
 #, python-format
@@ -369,11 +347,4 @@ msgstr ""
 #: views.py:398
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Σφάλμακατά την αρχικοποίηση του κωδικού του χρήστη \"%(user)s\": %(error)s"
-
-#~ msgid "Full name"
-#~ msgstr "Πλήρες όνομα"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "Ο χρήστης \"%s\" δημιουργήθηκε επιτυχώς."
+msgstr "Σφάλμακατά την αρχικοποίηση του κωδικού του χρήστη \"%(user)s\": %(error)s"

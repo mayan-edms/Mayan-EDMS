@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:06-0400\n"
-"PO-Revision-Date: 2019-03-16 22:54+0000\n"
-"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:42
 msgid "Linking"
@@ -34,16 +32,12 @@ msgid "Smart links"
 msgstr "الروابط الذكية"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Smart links"
 msgid "Smart link created"
-msgstr "الروابط الذكية"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Smart links"
 msgid "Smart link edited"
-msgstr "الروابط الذكية"
+msgstr ""
 
 #: forms.py:36
 msgid "Foreign document field"
@@ -148,8 +142,8 @@ msgstr "is in regular expression (case insensitive)"
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:35
@@ -241,16 +235,12 @@ msgid "No such document type: %s"
 msgstr ""
 
 #: views.py:45
-#, fuzzy
-#| msgid "Delete smart links"
 msgid "Available smart links"
-msgstr "حذف الروابط الذكية"
+msgstr ""
 
 #: views.py:46
-#, fuzzy
-#| msgid "Smart links"
 msgid "Smart links enabled"
-msgstr "الروابط الذكية"
+msgstr ""
 
 #: views.py:76
 #, python-format
@@ -269,8 +259,7 @@ msgstr ""
 
 #: views.py:131
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 
 #: views.py:156

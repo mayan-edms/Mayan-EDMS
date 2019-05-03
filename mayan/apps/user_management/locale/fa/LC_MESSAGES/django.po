@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014,2018
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-09-27 02:32+0000\n"
+"PO-Revision-Date: 2019-05-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
@@ -24,10 +23,8 @@ msgid "User management"
 msgstr "مدیریت کاربر"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "گروه ها"
+msgstr "گروه"
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -46,8 +43,6 @@ msgid "Users"
 msgstr "کاربران"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "username"
 msgid "Username"
 msgstr "نام کاربری"
 
@@ -64,10 +59,8 @@ msgid "Email"
 msgstr "پست الکترونیک"
 
 #: apps.py:113
-#, fuzzy
-#| msgid "Active"
 msgid "Is active?"
-msgstr "فعال"
+msgstr ""
 
 #: apps.py:116 apps.py:120
 msgid "Has usable password?"
@@ -82,16 +75,12 @@ msgid "All the users."
 msgstr "تمام کاربران"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group created"
-msgstr "گروه ها پیوستند"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group edited"
-msgstr "گروه ها پیوستند"
+msgstr ""
 
 #: events.py:19
 msgid "User created"
@@ -106,18 +95,16 @@ msgid "User logged in"
 msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users"
 msgid "User logged out"
-msgstr "کاربران"
+msgstr ""
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "جزئیات کاربر"
 
 #: links.py:20
 msgid "Edit details"
-msgstr ""
+msgstr "ویرایش جزئیات"
 
 #: links.py:24 views.py:60
 msgid "Create new group"
@@ -201,15 +188,15 @@ msgstr "فهرست کلیدهای اولیه گروهی که برای اضافه
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "ناشناس"
 
 #: views.py:41
 msgid "Current user details"
-msgstr ""
+msgstr "جزئیاتا کاربر فعلی"
 
 #: views.py:49
 msgid "Edit current user details"
-msgstr ""
+msgstr "یرایش جزئیات کاربر کنونی"
 
 #: views.py:82
 #, python-format
@@ -237,10 +224,8 @@ msgid "Available users"
 msgstr "کاربران موجود"
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups of user: %s"
 msgid "Group users"
-msgstr "گروه کاربر: %s"
+msgstr ""
 
 #: views.py:145
 #, python-format
@@ -272,9 +257,7 @@ msgstr "حذف کاربر: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"حذف کاربر فوق العاده کاربر و کارکنان مجاز نیست، از رابط مدیر برای این موارد "
-"استفاده کنید."
+msgstr "حذف کاربر فوق العاده کاربر و کارکنان مجاز نیست، از رابط مدیر برای این موارد استفاده کنید."
 
 #: views.py:216
 #, python-format
@@ -287,10 +270,9 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "خطا در حذف کاربر \"%(user)s\": %(error)s"
 
 #: views.py:240
-#, fuzzy, python-format
-#| msgid "Delete user: %s"
+#, python-format
 msgid "Details of user: %s"
-msgstr "حذف کاربر: %s"
+msgstr ""
 
 #: views.py:255
 #, python-format
@@ -304,10 +286,8 @@ msgstr "گروه های موجود"
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users"
 msgid "User groups"
-msgstr "کاربران"
+msgstr ""
 
 #: views.py:281
 #, python-format
@@ -358,9 +338,7 @@ msgstr "تغییر رمز عبور برای کاربر: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری "
-"مدیریت برای این موارد استفاده کنید."
+msgstr "بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری مدیریت برای این موارد استفاده کنید."
 
 #: views.py:392
 #, python-format
@@ -371,9 +349,3 @@ msgstr ""
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطای بازنشانی گذرواژه کاربر «%(user)s»: %(error)s"
-
-#~ msgid "Full name"
-#~ msgstr "نام و نام خانوادگی"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "کاربر \"%s\" با موفقیت ایجاد شد"

@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2016-2018
+# Roberto Rosario, 2016-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2018-11-05 22:08+0000\n"
+"PO-Revision-Date: 2019-05-03 05:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
@@ -28,10 +27,8 @@ msgid "User management"
 msgstr "Administración de usuarios"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "Grupos"
+msgstr "Grupo"
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -50,8 +47,6 @@ msgid "Users"
 msgstr "Usuarios"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "username"
 msgid "Username"
 msgstr "Nombre de usuario"
 
@@ -68,10 +63,8 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #: apps.py:113
-#, fuzzy
-#| msgid "Active"
 msgid "Is active?"
-msgstr "Activo"
+msgstr "¿Está activo?"
 
 #: apps.py:116 apps.py:120
 msgid "Has usable password?"
@@ -86,46 +79,36 @@ msgid "All the users."
 msgstr "Todos los usuarios."
 
 #: events.py:12
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group created"
-msgstr "Grupos participados"
+msgstr "Grupo creado"
 
 #: events.py:15
-#, fuzzy
-#| msgid "Groups joined"
 msgid "Group edited"
-msgstr "Grupos participados"
+msgstr "Grupo editado"
 
 #: events.py:19
 msgid "User created"
-msgstr ""
+msgstr "Usuario creado"
 
 #: events.py:22
 msgid "User edited"
-msgstr ""
+msgstr "Usuario editado"
 
 #: events.py:25
-#, fuzzy
-#| msgid "User options"
 msgid "User logged in"
-msgstr "Opciones de usuario"
+msgstr "Usuario conectado"
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users in group"
 msgid "User logged out"
-msgstr "Usuarios en grupo"
+msgstr "Usuario desconectado"
 
 #: links.py:16
-#, fuzzy
-#| msgid "User settings"
 msgid "User details"
-msgstr "Ajustes de usuario"
+msgstr "Detalles del usuario"
 
 #: links.py:20
 msgid "Edit details"
-msgstr ""
+msgstr "Editar detalles"
 
 #: links.py:24 views.py:60
 msgid "Create new group"
@@ -201,9 +184,7 @@ msgstr "Nombre de usuario"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Lista separada por comas de llaves primarias de grupos a ser asignados a "
-"este usuario."
+msgstr "Lista separada por comas de llaves primarias de grupos a ser asignados a este usuario."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -211,15 +192,15 @@ msgstr "Lista de llaves primarias de grupos a los que agregar el usuario."
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "Anónimo"
 
 #: views.py:41
 msgid "Current user details"
-msgstr ""
+msgstr "Detalles del usuario actual"
 
 #: views.py:49
 msgid "Edit current user details"
-msgstr ""
+msgstr "Editar los detalles del usuario actual"
 
 #: views.py:82
 #, python-format
@@ -236,11 +217,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Los grupos de usuarios son unidades organizativas. Deben reflejar las "
-"unidades organizativas de su organización. Los grupos no pueden ser "
-"utilizados para el control de acceso. Use roles para permisos y control de "
-"acceso, agregue grupos a ellos."
+msgstr "Los grupos de usuarios son unidades organizativas. Deben reflejar las unidades organizativas de su organización. Los grupos no pueden ser utilizados para el control de acceso. Use roles para permisos y control de acceso, agregue grupos a ellos."
 
 #: views.py:123
 msgid "There are no user groups"
@@ -251,10 +228,8 @@ msgid "Available users"
 msgstr "Usuarios disponibles"
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups of user: %s"
 msgid "Group users"
-msgstr "Grupos de usuario: %s"
+msgstr "Usuarios del grupo"
 
 #: views.py:145
 #, python-format
@@ -286,9 +261,7 @@ msgstr "Borrar usuario: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:216
 #, python-format
@@ -301,10 +274,9 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
 
 #: views.py:240
-#, fuzzy, python-format
-#| msgid "Delete user: %s"
+#, python-format
 msgid "Details of user: %s"
-msgstr "Borrar usuario: %s"
+msgstr "Detalles del usuario: %s"
 
 #: views.py:255
 #, python-format
@@ -318,10 +290,8 @@ msgstr "Grupos disponibles."
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users in group"
 msgid "User groups"
-msgstr "Usuarios en grupo"
+msgstr "Grupos del usuario"
 
 #: views.py:281
 #, python-format
@@ -332,9 +302,7 @@ msgstr "Grupos de usuario: %s"
 msgid ""
 "User accounts can be create from this view. After creating an user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Las cuentas de usuario se pueden crear desde esta vista. Después de crear "
-"una cuenta de usuario, se le pedirá que establezca una contraseña para ella."
+msgstr "Las cuentas de usuario se pueden crear desde esta vista. Después de crear una cuenta de usuario, se le pedirá que establezca una contraseña para ella."
 
 #: views.py:305
 msgid "There are no user accounts"
@@ -374,9 +342,7 @@ msgstr "Cambiar contraseñas para el usuario: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y del usuario de "
-"personal. Use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:392
 #, python-format
@@ -386,11 +352,4 @@ msgstr "Restablecimiento de contraseña exitoso para el usuario: %s."
 #: views.py:398
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
-
-#~ msgid "Full name"
-#~ msgstr "Nombre completo"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "Usuario \"%s\" creado con éxito."
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "

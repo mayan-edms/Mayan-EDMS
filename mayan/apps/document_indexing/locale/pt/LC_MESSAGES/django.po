@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -53,26 +52,20 @@ msgid "Documents"
 msgstr "Documentos"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Indexes"
 msgid "Index created"
-msgstr "Índices"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Index instance"
 msgid "Index edited"
-msgstr "index instance"
+msgstr ""
 
 #: forms.py:19
 msgid "Index templates to be queued for rebuilding."
 msgstr ""
 
 #: forms.py:20 links.py:30
-#, fuzzy
-#| msgid "Indexes"
 msgid "Index templates"
-msgstr "Índices"
+msgstr ""
 
 #: handlers.py:20
 msgid "Creation date"
@@ -124,10 +117,9 @@ msgid "Slug"
 msgstr "Slug"
 
 #: models.py:46
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Faz com que este índice seja visível e atualizado quando os dados do "
-"documento forem alterados."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Faz com que este índice seja visível e atualizado quando os dados do documento forem alterados."
 
 #: models.py:49 models.py:235
 msgid "Enabled"
@@ -157,17 +149,13 @@ msgstr ""
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Faz com que este nó seja visível e atualizado quando os dados do documento "
-"forem alterados."
+msgstr "Faz com que este nó seja visível e atualizado quando os dados do documento forem alterados."
 
 #: models.py:240
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Escolha esta opção para que este nó atue como contentor para documentos e "
-"não como pai de outros nós."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Escolha esta opção para que este nó atue como contentor para documentos e não como pai de outros nós."
 
 #: models.py:243
 msgid "Link documents"
@@ -265,10 +253,8 @@ msgid "Available indexes"
 msgstr ""
 
 #: views.py:47
-#, fuzzy
-#| msgid "Indexes"
 msgid "Indexes linked"
-msgstr "Índices"
+msgstr ""
 
 #: views.py:77
 msgid ""
@@ -295,8 +281,8 @@ msgstr ""
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148

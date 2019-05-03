@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:05-0400\n"
-"PO-Revision-Date: 2018-09-12 07:46+0000\n"
+"PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:24
@@ -52,28 +51,20 @@ msgid "Documents"
 msgstr "اسناد"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index created"
-msgstr "نمایه گره فهرست "
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Index instance"
 msgid "Index edited"
-msgstr "مثال index"
+msgstr ""
 
 #: forms.py:19
-#, fuzzy
-#| msgid "Indexes to be queued for rebuilding."
 msgid "Index templates to be queued for rebuilding."
-msgstr "نمایه هایی که برای بازسازی در نظر گرفته می شوند."
+msgstr ""
 
 #: forms.py:20 links.py:30
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index templates"
-msgstr "نمایه گره فهرست "
+msgstr ""
 
 #: handlers.py:20
 msgid "Creation date"
@@ -125,9 +116,9 @@ msgid "Slug"
 msgstr "لاغر"
 
 #: models.py:46
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"این داده ها را وقتی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می کند."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "این داده ها را وقتی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می کند."
 
 #: models.py:49 models.py:235
 msgid "Enabled"
@@ -157,17 +148,13 @@ msgstr "عبارت نمایه سازی"
 
 #: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"علت این گره را هنگامی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می "
-"شود."
+msgstr "علت این گره را هنگامی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می شود."
 
 #: models.py:240
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"این گزینه را بررسی کنید تا این گره به عنوان یک ظرف برای اسناد عمل کند و نه "
-"به عنوان یک پدر برای گره های بیشتر."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "این گزینه را بررسی کنید تا این گره به عنوان یک ظرف برای اسناد عمل کند و نه به عنوان یک پدر برای گره های بیشتر."
 
 #: models.py:243
 msgid "Link documents"
@@ -190,8 +177,7 @@ msgstr "ریشه"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"خطای نمایه سازی سند: %(document)s؛ عبارت: %(expression)s؛ %(exception)s"
+msgstr "خطای نمایه سازی سند: %(document)s؛ عبارت: %(expression)s؛ %(exception)s"
 
 #: models.py:351
 msgid "Index template node"
@@ -262,16 +248,12 @@ msgid "Rebuild index"
 msgstr "بازسازی نمایه"
 
 #: views.py:46
-#, fuzzy
-#| msgid "Available document types"
 msgid "Available indexes"
-msgstr "نوع سند موجود"
+msgstr ""
 
 #: views.py:47
-#, fuzzy
-#| msgid "Indexes"
 msgid "Indexes linked"
-msgstr "نمایه ها"
+msgstr ""
 
 #: views.py:77
 msgid ""
@@ -281,10 +263,9 @@ msgid ""
 msgstr ""
 
 #: views.py:81
-#, fuzzy, python-format
-#| msgid "Indexes nodes containing document: %s"
+#, python-format
 msgid "Indexes linked to document type: %s"
-msgstr "گره های نمایه حاوی سند: %s"
+msgstr ""
 
 #: views.py:109
 #, python-format
@@ -299,8 +280,8 @@ msgstr "ویرایش نمایه: %s"
 #: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views.py:148
@@ -388,6 +369,3 @@ msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] ""
 msgstr[1] ""
-
-#~ msgid "Has document links?"
-#~ msgstr "پیوند سند دارد؟"

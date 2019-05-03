@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
@@ -9,26 +9,22 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 01:08-0400\n"
-"PO-Revision-Date: 2019-03-16 22:48+0000\n"
-"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"PO-Revision-Date: 2019-05-03 05:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
 msgid "User management"
 msgstr "إدارة المستخدم"
 
 #: apps.py:97
-#, fuzzy
-#| msgid "Groups"
 msgid "Group"
-msgstr "مجموعات"
+msgstr ""
 
 #: apps.py:98 links.py:41 links.py:52 links.py:75 search.py:25 views.py:124
 msgid "Groups"
@@ -47,10 +43,8 @@ msgid "Users"
 msgstr "Users"
 
 #: apps.py:109
-#, fuzzy
-#| msgid "User management"
 msgid "Username"
-msgstr "إدارة المستخدم"
+msgstr ""
 
 #: apps.py:110 search.py:19
 msgid "First name"
@@ -101,14 +95,12 @@ msgid "User logged in"
 msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Users"
 msgid "User logged out"
-msgstr "Users"
+msgstr ""
 
 #: links.py:16
 msgid "User details"
-msgstr ""
+msgstr "تفاصيل المستخدم"
 
 #: links.py:20
 msgid "Edit details"
@@ -196,7 +188,7 @@ msgstr ""
 
 #: utils.py:8
 msgid "Anonymous"
-msgstr ""
+msgstr "مجهول"
 
 #: views.py:41
 msgid "Current user details"
@@ -232,10 +224,8 @@ msgid "Available users"
 msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "Groups"
 msgid "Group users"
-msgstr "مجموعات"
+msgstr ""
 
 #: views.py:145
 #, python-format
@@ -271,9 +261,7 @@ msgstr ""
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
+msgstr "Super user and staff user deleting is not allowed, use the admin interface for these cases."
 
 #: views.py:216
 #, python-format
@@ -302,10 +290,8 @@ msgstr ""
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:273
-#, fuzzy
-#| msgid "Users"
 msgid "User groups"
-msgstr "Users"
+msgstr ""
 
 #: views.py:281
 #, python-format
@@ -360,9 +346,7 @@ msgstr ""
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
+msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
 
 #: views.py:392
 #, python-format
@@ -373,6 +357,3 @@ msgstr ""
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطأ أثناء إعادة تعيين كلمة المرور للمستخدم \"%(user)s\": %(error)s"
-
-#~ msgid "User \"%s\" created successfully."
-#~ msgstr "تم انشاء المستخدم \"%s\"  بنجاح."
