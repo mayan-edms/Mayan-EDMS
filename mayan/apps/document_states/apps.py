@@ -92,7 +92,6 @@ class DocumentStatesApp(MayanAppConfig):
 
         WorkflowAction.initialize()
 
-
         ModelAttribute(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state',

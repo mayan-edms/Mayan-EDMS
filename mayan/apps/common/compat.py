@@ -21,4 +21,4 @@ try:
 except NameError:
     FileNotFoundErrorException = IOError
 else:
-    FileNotFoundErrorException = FileNotFoundError
+    FileNotFoundErrorException = FileNotFoundError  # NOQA

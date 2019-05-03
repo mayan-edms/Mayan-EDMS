@@ -12,9 +12,8 @@ from django.utils.datastructures import MultiValueDict
 from django.utils.http import (
     urlencode as django_urlencode, urlquote as django_urlquote
 )
-from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
+from django.utils.six.moves import reduce as reduce_function
 
-import mayan
 from mayan.apps.common.compat import dict_type, dictionary_type
 
 from .literals import DJANGO_SQLITE_BACKEND

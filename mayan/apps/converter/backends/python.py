@@ -56,7 +56,7 @@ else:
 
     pdftoppm = pdftoppm.bake(pdftoppm_format, '-r', pdftoppm_dpi)
 
-pdfinfo_path=yaml.load(
+pdfinfo_path = yaml.load(
     stream=setting_graphics_backend_config.value, Loader=SafeLoader
 ).get(
     'pdfinfo_path', DEFAULT_PDFINFO_PATH

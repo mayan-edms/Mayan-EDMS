@@ -29,7 +29,7 @@ from mayan.celery import app
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DocumentMetadataHelper
-from .dependencies import *  #NOQA
+from .dependencies import *  # NOQA
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_edited,
@@ -152,7 +152,6 @@ class MetadataApp(MayanAppConfig):
                 permission_metadata_type_edit, permission_metadata_type_view
             )
         )
-
 
         SourceColumn(
             source=Document, label=_('Metadata'),
