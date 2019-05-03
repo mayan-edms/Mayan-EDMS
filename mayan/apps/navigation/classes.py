@@ -566,19 +566,23 @@ class SourceColumn(object):
                 result = cls._registry[source.__class__]
             except KeyError:
                 try:
-                    # Might be an inherited class insance, try its source class
-                    result = cls._registry[source.source_ptr.__class__]
-                except (KeyError, AttributeError):
+                    # Might be a subclass, try its root class
+                    result.extend(cls._registry[source.__class__.__mro__[-2]])
+                except KeyError:
                     try:
-                        # Try it as a queryset
-                        result = cls._registry[source.model]
-                    except AttributeError:
+                        # Might be an inherited class insance, try its source class
+                        result = cls._registry[source.source_ptr.__class__]
+                    except (KeyError, AttributeError):
                         try:
-                            # Special case for queryset items produced from
-                            # .defer() or .only() optimizations
-                            result = cls._registry[list(source._meta.parents.items())[0][0]]
-                        except (AttributeError, KeyError, IndexError):
-                            result = ()
+                            # Try it as a queryset
+                            result = cls._registry[source.model]
+                        except AttributeError:
+                            try:
+                                # Special case for queryset items produced from
+                                # .defer() or .only() optimizations
+                                result = cls._registry[list(source._meta.parents.items())[0][0]]
+                            except (AttributeError, KeyError, IndexError):
+                                result = ()
         except TypeError:
             # unhashable type: list
             result = ()
@@ -658,12 +662,15 @@ class SourceColumn(object):
                     )
                     self._label = getattr(attribute, 'short_description')
                 except AttributeError:
-                    name, model = SourceColumn.get_attribute_recursive(
-                        attribute=self.attribute, model=self.source._meta.model
-                    )
-                    self._label = label_for_field(
-                        name=name, model=model
-                    )
+                    try:
+                        name, model = SourceColumn.get_attribute_recursive(
+                            attribute=self.attribute, model=self.source._meta.model
+                        )
+                        self._label = label_for_field(
+                            name=name, model=model
+                        )
+                    except AttributeError:
+                        self._label = self.attribute
             else:
                 self._label = getattr(
                     self.func, 'short_description', _('Unnamed function')
