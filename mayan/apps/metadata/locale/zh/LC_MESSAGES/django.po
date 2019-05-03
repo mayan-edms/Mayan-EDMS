@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:07-0400\n"
 "PO-Revision-Date: 2019-02-02 01:21+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,28 +19,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:70 apps.py:156 apps.py:161 events.py:7 links.py:48 permissions.py:7
+#: apps.py:71 apps.py:158 apps.py:163 events.py:7 links.py:48 permissions.py:7
 #: queues.py:8 settings.py:10
 msgid "Metadata"
 msgstr "元数据"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Return the value of a specific document metadata"
 msgstr "返回特定文档元数据的值"
 
-#: apps.py:108
+#: apps.py:109
 msgid "Metadata type name"
 msgstr "元数据类型名称"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Metadata type value"
 msgstr "元数据类型值"
 
-#: apps.py:202 apps.py:210 forms.py:123 models.py:93 models.py:296
+#: apps.py:204 apps.py:212 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "元数据类型"
 
-#: apps.py:205 apps.py:214
+#: apps.py:207 apps.py:216
 msgid "Metadata value"
 msgstr "元数据值"
 
@@ -76,7 +76,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "名称"
 
-#: forms.py:20 models.py:206
+#: forms.py:20 models.py:211
 msgid "Value"
 msgstr "值"
 
@@ -84,7 +84,7 @@ msgstr "值"
 msgid "Update"
 msgstr "更新"
 
-#: forms.py:46 forms.py:182 models.py:298
+#: forms.py:46 forms.py:182 models.py:306
 msgid "Required"
 msgstr "需要的"
 
@@ -98,7 +98,7 @@ msgstr "查找值错误：%s"
 msgid "Default value error: %s"
 msgstr "默认值错误：%s"
 
-#: forms.py:104 models.py:167
+#: forms.py:104 models.py:172
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "此文档类型需要“%s”。"
@@ -213,43 +213,43 @@ msgstr "解析器将重新格式化输入的值以符合预期的格式。"
 msgid "Parser"
 msgstr "解析器"
 
-#: models.py:175
+#: models.py:180
 msgid "Value is not one of the provided options."
 msgstr "值不是提供的选项之一。"
 
-#: models.py:197
+#: models.py:202
 msgid "Document"
 msgstr "文档"
 
-#: models.py:200
+#: models.py:205
 msgid "Type"
 msgstr "类型"
 
-#: models.py:204
+#: models.py:209
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "存储在文档的元数据类型字段中的实际值。"
 
-#: models.py:212 models.py:213
+#: models.py:217 models.py:218
 msgid "Document metadata"
 msgstr "文档元数据"
 
-#: models.py:234
+#: models.py:239
 msgid "Metadata type is required for this document type."
 msgstr "此文档类型需要元数据类型。"
 
-#: models.py:262
+#: models.py:269
 msgid "Metadata type is not valid for this document type."
 msgstr "元数据类型对此文档类型无效。"
 
-#: models.py:292
+#: models.py:300
 msgid "Document type"
 msgstr "文件类型"
 
-#: models.py:305
+#: models.py:313
 msgid "Document type metadata type options"
 msgstr "文档类型元数据类型选项"
 
-#: models.py:306
+#: models.py:314
 msgid "Document type metadata types options"
 msgstr "文档类型元数据类型选项"
 

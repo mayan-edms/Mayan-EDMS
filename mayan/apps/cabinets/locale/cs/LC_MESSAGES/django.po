@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Sebastian Fait <seba.fait@gmail.com>, 2019\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:40 apps.py:85 apps.py:93 apps.py:96 events.py:7 forms.py:16
+#: apps.py:41 apps.py:86 apps.py:94 apps.py:97 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
 msgid "Cabinets"
 msgstr "Kabinety"

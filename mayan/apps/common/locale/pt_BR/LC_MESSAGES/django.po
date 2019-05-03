@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2018-12-22 00:56+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:91 permissions_runtime.py:7 settings.py:14
+#: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
 msgstr "Comum"
 
@@ -36,138 +36,146 @@ msgstr "Atributos disponíveis:\n"
 msgid "Available fields: \n"
 msgstr "Campos disponíveis:\n"
 
-#: forms.py:28
+#: dependencies.py:395
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:400
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:405
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:410
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
 msgid "Selection"
 msgstr "Seleção"
 
-#: forms.py:104
+#: forms.py:103
 msgid "None"
 msgstr ""
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:158
+#: generics.py:159
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:281
+#: generics.py:292
 msgid "Add all"
 msgstr ""
 
-#: generics.py:290 generics.py:503
+#: generics.py:301 generics.py:514
 msgid "Add"
 msgstr "Adicionar"
 
-#: generics.py:300
+#: generics.py:311
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove all"
 msgstr "Remover"
 
-#: generics.py:309 generics.py:514
+#: generics.py:320 generics.py:525
 msgid "Remove"
 msgstr "Remover"
 
-#: generics.py:479
+#: generics.py:490
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Não foi possível transferir a seleção: %s."
 
-#: generics.py:609
+#: generics.py:620
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s não criado, erro: %(error)s"
 
-#: generics.py:620
+#: generics.py:631
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s criado com sucesso."
 
-#: generics.py:649
+#: generics.py:660
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s não removido, erro: %(error)s."
 
-#: generics.py:660
+#: generics.py:671
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s removido com sucesso."
 
-#: generics.py:706
+#: generics.py:717
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s não atualizado, erro: %(error)s."
 
-#: generics.py:717
+#: generics.py:728
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s atualizado com sucesso."
 
-#: links.py:37
+#: links.py:36
 msgid "About this"
 msgstr "Sobre isso"
 
-#: links.py:40 views.py:59
-msgid "Check for updates"
-msgstr "Buscar atualizações"
-
-#: links.py:45
+#: links.py:40
 msgid "Locale profile"
 msgstr "Perfil Idioma"
 
-#: links.py:50
+#: links.py:45
 msgid "Edit locale profile"
 msgstr "Editar perfil Idioma"
 
-#: links.py:55
+#: links.py:50
 msgid "Documentation"
 msgstr "Documentação"
 
-#: links.py:59 links.py:70
+#: links.py:54 links.py:65
 msgid "Errors"
 msgstr "Erros"
 
-#: links.py:64
+#: links.py:59
 msgid "Clear all"
 msgstr "Limpar tudo"
 
-#: links.py:74
+#: links.py:69
 msgid "Forum"
 msgstr "Fórum"
 
-#: links.py:78 views.py:142
+#: links.py:73 views.py:114
 msgid "License"
 msgstr "Licença"
 
-#: links.py:81 views.py:218
-msgid "Other packages licenses"
-msgstr "Licenças de outros pacotes"
-
-#: links.py:85
+#: links.py:76
 msgid "Setup"
 msgstr "Configurações"
 
-#: links.py:88
+#: links.py:79
 msgid "Source code"
 msgstr "Código fonte"
 
-#: links.py:92
+#: links.py:83
 msgid "Support"
 msgstr "Suporte"
 
-#: links.py:96 queues.py:10 views.py:264
+#: links.py:87 queues.py:10 views.py:223
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: literals.py:10
+#: literals.py:9
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -176,15 +184,15 @@ msgstr ""
 "deve ser usado apenas em ambientes de desenvolvimento e testes, não de "
 "produção."
 
-#: literals.py:27
+#: literals.py:25
 msgid "Days"
 msgstr "Dia"
 
-#: literals.py:28
+#: literals.py:26
 msgid "Hours"
 msgstr "Hora"
 
-#: literals.py:29
+#: literals.py:27
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -263,7 +271,7 @@ msgstr "namespace"
 msgid "Date time"
 msgstr "Data e hora"
 
-#: models.py:41 views.py:188
+#: models.py:41 views.py:160
 msgid "Result"
 msgstr "resultado"
 
@@ -338,8 +346,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Name of the view attached to the branch anchor in the main menu."
 msgid ""
-"Name of the view attached to the branch anchor in the main menu. This is "
-"also the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr "Nome da vista associada à ancora de ramificações no menu principal."
 
 #: settings.py:41
@@ -726,33 +734,33 @@ msgstr ""
 "docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend. "
 
-#: templatetags/common_tags.py:30
+#: templatetags/common_tags.py:31
 msgid "Confirm delete"
 msgstr ""
 
-#: templatetags/common_tags.py:35
+#: templatetags/common_tags.py:36
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit %s"
 msgstr "Editar Detalhes"
 
-#: templatetags/common_tags.py:38
+#: templatetags/common_tags.py:39
 msgid "Confirm"
 msgstr ""
 
-#: templatetags/common_tags.py:42
+#: templatetags/common_tags.py:43
 #, fuzzy, python-format
 #| msgid "Error log entries for: %s"
 msgid "Details for: %s"
 msgstr "Entradas de registro de erros para: %s"
 
-#: templatetags/common_tags.py:46
+#: templatetags/common_tags.py:47
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit: %s"
 msgstr "Editar Detalhes"
 
-#: templatetags/common_tags.py:49
+#: templatetags/common_tags.py:50
 msgid "Create"
 msgstr ""
 
@@ -763,59 +771,45 @@ msgid ""
 msgstr ""
 "Insira um 'nome interno' válido que contenha letras, números e subtraços."
 
-#: views.py:35
+#: views.py:32
 msgid "About"
 msgstr "Sobre"
 
-#: views.py:47
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr ""
-"A versão que você está utilizando está desatualizada. A última versão é %s"
-
-#: views.py:52
-msgid "It is not possible to determine the latest version available."
-msgstr "Não é possível determinar a última versão disponível."
-
-#: views.py:56
-msgid "Your version is up-to-date."
-msgstr "Sua versão está atualizada."
-
-#: views.py:76
+#: views.py:48
 msgid "Current user locale profile details"
 msgstr "Detalhes do perfil de localidade do usuário atual"
 
-#: views.py:83
+#: views.py:55
 msgid "Edit current user locale profile details"
 msgstr "Editar detalhes do perfil de localização do usuário atual"
 
-#: views.py:133
+#: views.py:105
 msgid "Dashboard"
 msgstr "Painel de controle"
 
-#: views.py:151
+#: views.py:123
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Limpar entradas de registro de erros para: %s"
 
-#: views.py:168
+#: views.py:140
 msgid "Object error log cleared successfully"
 msgstr "O registro de erros do objeto foi apagado com sucesso."
 
-#: views.py:187
+#: views.py:159
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: views.py:192
+#: views.py:164
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Entradas de registro de erros para: %s"
 
-#: views.py:237
+#: views.py:196
 msgid "No setup options available."
 msgstr "Não há opções de configuração disponíveis."
 
-#: views.py:239
+#: views.py:198
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
@@ -823,25 +817,41 @@ msgstr ""
 "Nenhum resultado aqui significa que o usuário não possui as permissões "
 "necessárias para realizar tarefas administrativas."
 
-#: views.py:243
+#: views.py:202
 msgid "Setup items"
 msgstr "Itens da Configuração"
 
-#: views.py:245
+#: views.py:204
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:266
+#: views.py:225
 msgid "These modules are used to do system maintenance."
 msgstr ""
 
-#: views.py:294
+#: views.py:253
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:304
+#: views.py:263
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
+
+#~ msgid "Check for updates"
+#~ msgstr "Buscar atualizações"
+
+#~ msgid "Other packages licenses"
+#~ msgstr "Licenças de outros pacotes"
+
+#~ msgid "The version you are using is outdated. The latest version is %s"
+#~ msgstr ""
+#~ "A versão que você está utilizando está desatualizada. A última versão é %s"
+
+#~ msgid "It is not possible to determine the latest version available."
+#~ msgstr "Não é possível determinar a última versão disponível."
+
+#~ msgid "Your version is up-to-date."
+#~ msgstr "Sua versão está atualizada."
 
 #~ msgid "Main"
 #~ msgstr "Principal"

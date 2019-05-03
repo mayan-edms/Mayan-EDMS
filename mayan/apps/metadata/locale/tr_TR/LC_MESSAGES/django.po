@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:07-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -20,28 +20,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:70 apps.py:156 apps.py:161 events.py:7 links.py:48 permissions.py:7
+#: apps.py:71 apps.py:158 apps.py:163 events.py:7 links.py:48 permissions.py:7
 #: queues.py:8 settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Return the value of a specific document metadata"
 msgstr "Belge metadata sının değerini döndür"
 
-#: apps.py:108
+#: apps.py:109
 msgid "Metadata type name"
 msgstr "Meta veri türü adı"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Metadata type value"
 msgstr "Metadata tipi"
 
-#: apps.py:202 apps.py:210 forms.py:123 models.py:93 models.py:296
+#: apps.py:204 apps.py:212 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "Meta veri türü"
 
-#: apps.py:205 apps.py:214
+#: apps.py:207 apps.py:216
 msgid "Metadata value"
 msgstr "Meta veri değeri"
 
@@ -77,7 +77,7 @@ msgstr "İD"
 msgid "Name"
 msgstr "Ad"
 
-#: forms.py:20 models.py:206
+#: forms.py:20 models.py:211
 msgid "Value"
 msgstr "Değer"
 
@@ -85,7 +85,7 @@ msgstr "Değer"
 msgid "Update"
 msgstr "Güncelleştirme"
 
-#: forms.py:46 forms.py:182 models.py:298
+#: forms.py:46 forms.py:182 models.py:306
 msgid "Required"
 msgstr "Gereklidir"
 
@@ -99,7 +99,7 @@ msgstr "Arama değeri hatası: %s"
 msgid "Default value error: %s"
 msgstr "Varsayılan değer hatası: %s"
 
-#: forms.py:104 models.py:167
+#: forms.py:104 models.py:172
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "Bu belge türü için \"%s\" gerekiyor."
@@ -214,43 +214,43 @@ msgstr ""
 msgid "Parser"
 msgstr "Ayrıştırıcı"
 
-#: models.py:175
+#: models.py:180
 msgid "Value is not one of the provided options."
 msgstr "Değer, sağlanan seçeneklerden biri değildir."
 
-#: models.py:197
+#: models.py:202
 msgid "Document"
 msgstr "belge"
 
-#: models.py:200
+#: models.py:205
 msgid "Type"
 msgstr "tip"
 
-#: models.py:204
+#: models.py:209
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:212 models.py:213
+#: models.py:217 models.py:218
 msgid "Document metadata"
 msgstr "Belge meta verileri"
 
-#: models.py:234
+#: models.py:239
 msgid "Metadata type is required for this document type."
 msgstr "Bu belge türü için meta veri türü gerekiyor."
 
-#: models.py:262
+#: models.py:269
 msgid "Metadata type is not valid for this document type."
 msgstr "Meta veri türü, bu doküman türü için geçerli değil."
 
-#: models.py:292
+#: models.py:300
 msgid "Document type"
 msgstr "Belge Türü"
 
-#: models.py:305
+#: models.py:313
 msgid "Document type metadata type options"
 msgstr "Belge türü meta veri türü seçenekleri"
 
-#: models.py:306
+#: models.py:314
 msgid "Document type metadata types options"
 msgstr "Belge türü meta veri türleri seçenekleri"
 

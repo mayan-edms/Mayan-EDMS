@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,94 +18,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:59 links.py:39 links.py:132 links.py:159 models.py:60
+#: apps.py:60 links.py:39 links.py:132 links.py:159 models.py:60
 #: views/workflow_proxy_views.py:75 views/workflow_views.py:82
 msgid "Workflows"
 msgstr ""
 
-#: apps.py:97 apps.py:104
+#: apps.py:99 apps.py:106
 msgid "Current state of a workflow"
 msgstr ""
 
-#: apps.py:98
+#: apps.py:100
 msgid "Return the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:105
+#: apps.py:107
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr ""
 
-#: apps.py:148 apps.py:211 forms.py:117 models.py:47 models.py:153
+#: apps.py:149 apps.py:212 forms.py:117 models.py:47 models.py:153
 #: models.py:234 models.py:297 workflow_actions.py:22
 msgid "Label"
 msgstr ""
 
-#: apps.py:151 models.py:44
+#: apps.py:152 models.py:44
 msgid "Internal name"
 msgstr ""
 
-#: apps.py:155
+#: apps.py:156
 msgid "Initial state"
 msgstr ""
 
-#: apps.py:156 apps.py:166 apps.py:176 apps.py:182
+#: apps.py:157 apps.py:167 apps.py:177 apps.py:183
 msgid "None"
 msgstr ""
 
-#: apps.py:160
+#: apps.py:161
 msgid "Current state"
 msgstr ""
 
-#: apps.py:164 apps.py:191 models.py:464
+#: apps.py:165 apps.py:192 models.py:464
 msgid "User"
 msgstr "Pengguna"
 
-#: apps.py:170
+#: apps.py:171
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:174 apps.py:187
+#: apps.py:175 apps.py:188
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:180 apps.py:207 models.py:165
+#: apps.py:181 apps.py:208 models.py:165
 msgid "Completion"
 msgstr ""
 
-#: apps.py:194 forms.py:173 links.py:144 models.py:323 models.py:460
+#: apps.py:195 forms.py:173 links.py:144 models.py:323 models.py:460
 msgid "Transition"
 msgstr ""
 
-#: apps.py:198 forms.py:176 models.py:466
+#: apps.py:199 forms.py:176 models.py:466
 msgid "Comment"
 msgstr "Komentar"
 
-#: apps.py:203
+#: apps.py:204
 msgid "Is initial state?"
 msgstr ""
 
-#: apps.py:214
+#: apps.py:215
 msgid "Enabled?"
 msgstr ""
 
-#: apps.py:218
+#: apps.py:219
 msgid "When?"
 msgstr ""
 
-#: apps.py:222
+#: apps.py:223
 msgid "Action type"
 msgstr ""
 
-#: apps.py:227 models.py:300
+#: apps.py:228 models.py:300
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:231 models.py:304
+#: apps.py:232 models.py:304
 msgid "Destination state"
 msgstr ""
 
-#: apps.py:235
+#: apps.py:236
 msgid "Triggers"
 msgstr ""
 

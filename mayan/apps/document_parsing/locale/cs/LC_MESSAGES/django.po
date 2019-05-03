@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "Language: cs\n"
@@ -18,16 +18,21 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
 "<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:52 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:53 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr ""
 
-#: apps.py:118 models.py:78
+#: apps.py:119 models.py:78
 msgid "Result"
 msgstr ""
 
-#: apps.py:135 apps.py:139 links.py:16 links.py:22 models.py:27
+#: apps.py:136 apps.py:140 links.py:16 links.py:22 models.py:27
 msgid "Content"
+msgstr ""
+
+#: dependencies.py:11
+msgid ""
+"Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
 
 #: events.py:12

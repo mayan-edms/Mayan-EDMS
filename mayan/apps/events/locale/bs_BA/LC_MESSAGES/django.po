@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:06-0400\n"
 "PO-Revision-Date: 2018-09-12 07:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -73,7 +73,7 @@ msgstr "Ne"
 msgid "Subscribed"
 msgstr "Pretplaćen"
 
-#: html_widgets.py:50
+#: html_widgets.py:57
 msgid "System"
 msgstr "Sistem"
 
@@ -168,36 +168,36 @@ msgstr ""
 msgid "There are no notifications"
 msgstr ""
 
-#: views.py:163
+#: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
 msgstr ""
 
-#: views.py:166
+#: views.py:167
 msgid "There are no events for this object"
 msgstr ""
 
-#: views.py:168
+#: views.py:169
 #, python-format
 msgid "Events for: %s"
 msgstr "Događaji za:%s"
 
-#: views.py:207
+#: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Greška u ažuriranju pretplate događaja objekta; %s"
 
-#: views.py:213
+#: views.py:215
 msgid "Object event subscriptions updated successfully"
 msgstr "Pretplate za objekat događaja su uspešno ažurirane"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Pretplate za događaj:%s"
 
-#: views.py:278
+#: views.py:280
 #, python-format
 msgid "Events of type: %s"
 msgstr "Događaji tipa:%s"

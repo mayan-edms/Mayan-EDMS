@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2019-03-19 10:02+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: apps.py:91 permissions_runtime.py:7 settings.py:14
+#: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
 msgstr "Comune"
 
@@ -33,138 +33,146 @@ msgstr "Atributele disponibile:\n"
 msgid "Available fields: \n"
 msgstr "Câmpuri disponibile:\n"
 
-#: forms.py:28
+#: dependencies.py:395
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:400
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:405
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:410
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
 msgid "Selection"
 msgstr "Selecţie"
 
-#: forms.py:104
+#: forms.py:103
 msgid "None"
 msgstr ""
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:158
+#: generics.py:159
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:281
+#: generics.py:292
 msgid "Add all"
 msgstr ""
 
-#: generics.py:290 generics.py:503
+#: generics.py:301 generics.py:514
 msgid "Add"
 msgstr "Adăugți"
 
-#: generics.py:300
+#: generics.py:311
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove all"
 msgstr "Eliminați"
 
-#: generics.py:309 generics.py:514
+#: generics.py:320 generics.py:525
 msgid "Remove"
 msgstr "Eliminați"
 
-#: generics.py:479
+#: generics.py:490
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Imposibil de transferat selecția: %s."
 
-#: generics.py:609
+#: generics.py:620
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "Obiectul tip %(object)s nu a fost creat, eroare: %(error)s"
 
-#: generics.py:620
+#: generics.py:631
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "Obiectul tip %(object)s a fost creat cu succes."
 
-#: generics.py:649
+#: generics.py:660
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost șters, eroare: %(error)s."
 
-#: generics.py:660
+#: generics.py:671
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "Obiectul tip %(object)s a fost șters cu succes."
 
-#: generics.py:706
+#: generics.py:717
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
 
-#: generics.py:717
+#: generics.py:728
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
 
-#: links.py:37
+#: links.py:36
 msgid "About this"
 msgstr "Despre asta"
 
-#: links.py:40 views.py:59
-msgid "Check for updates"
-msgstr "Verifică pentru actualizări"
-
-#: links.py:45
+#: links.py:40
 msgid "Locale profile"
 msgstr "Profilul localizării"
 
-#: links.py:50
+#: links.py:45
 msgid "Edit locale profile"
 msgstr "Editați profilul localizării"
 
-#: links.py:55
+#: links.py:50
 msgid "Documentation"
 msgstr "Documentație"
 
-#: links.py:59 links.py:70
+#: links.py:54 links.py:65
 msgid "Errors"
 msgstr "Erori"
 
-#: links.py:64
+#: links.py:59
 msgid "Clear all"
 msgstr "Curăță tot"
 
-#: links.py:74
+#: links.py:69
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:78 views.py:142
+#: links.py:73 views.py:114
 msgid "License"
 msgstr "Licenţă"
 
-#: links.py:81 views.py:218
-msgid "Other packages licenses"
-msgstr "Licențe pentru alte pachete"
-
-#: links.py:85
+#: links.py:76
 msgid "Setup"
 msgstr "Configurare"
 
-#: links.py:88
+#: links.py:79
 msgid "Source code"
 msgstr "Cod sursă"
 
-#: links.py:92
+#: links.py:83
 msgid "Support"
 msgstr "Suport tehnic"
 
-#: links.py:96 queues.py:10 views.py:264
+#: links.py:87 queues.py:10 views.py:223
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:10
+#: literals.py:9
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -172,15 +180,15 @@ msgstr ""
 "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
 "folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:27
+#: literals.py:25
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:28
+#: literals.py:26
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:29
+#: literals.py:27
 msgid "Minutes"
 msgstr "Minute"
 
@@ -259,7 +267,7 @@ msgstr "Spațiu de nume"
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models.py:41 views.py:188
+#: models.py:41 views.py:160
 msgid "Result"
 msgstr "Rezultat"
 
@@ -334,8 +342,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Name of the view attached to the branch anchor in the main menu."
 msgid ""
-"Name of the view attached to the branch anchor in the main menu. This is "
-"also the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr "Numele vizualizării atașată la ancora de ramură din meniul principal."
 
 #: settings.py:41
@@ -725,33 +733,33 @@ msgstr ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend "
 
-#: templatetags/common_tags.py:30
+#: templatetags/common_tags.py:31
 msgid "Confirm delete"
 msgstr ""
 
-#: templatetags/common_tags.py:35
+#: templatetags/common_tags.py:36
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit %s"
 msgstr "Editează detaliile"
 
-#: templatetags/common_tags.py:38
+#: templatetags/common_tags.py:39
 msgid "Confirm"
 msgstr ""
 
-#: templatetags/common_tags.py:42
+#: templatetags/common_tags.py:43
 #, fuzzy, python-format
 #| msgid "Error log entries for: %s"
 msgid "Details for: %s"
 msgstr "Intrările de eroare pentru: %s"
 
-#: templatetags/common_tags.py:46
+#: templatetags/common_tags.py:47
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit: %s"
 msgstr "Editează detaliile"
 
-#: templatetags/common_tags.py:49
+#: templatetags/common_tags.py:50
 msgid "Create"
 msgstr ""
 
@@ -763,58 +771,45 @@ msgstr ""
 "Introduceți un \"nume intern\" valabil format din litere, numere și "
 "subliniere."
 
-#: views.py:35
+#: views.py:32
 msgid "About"
 msgstr "Despre"
 
-#: views.py:47
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr "Versiunea pe care o utilizați este depășită. Ultima versiune este %s"
-
-#: views.py:52
-msgid "It is not possible to determine the latest version available."
-msgstr "Nu este posibil să se determine cea mai recentă versiune disponibilă."
-
-#: views.py:56
-msgid "Your version is up-to-date."
-msgstr "Versiunea dvs. este actualizată."
-
-#: views.py:76
+#: views.py:48
 msgid "Current user locale profile details"
 msgstr "Detaliile  profilului locației utilizatorului curent"
 
-#: views.py:83
+#: views.py:55
 msgid "Edit current user locale profile details"
 msgstr "Editați detaliile profilului de localizare a utilizatorului actual"
 
-#: views.py:133
+#: views.py:105
 msgid "Dashboard"
 msgstr "Panou principal"
 
-#: views.py:151
+#: views.py:123
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Eliminați intrările din jurnalul de erori pentru: %s"
 
-#: views.py:168
+#: views.py:140
 msgid "Object error log cleared successfully"
 msgstr "Jurnalului erorilor de obiecte a fost curățat cu succes"
 
-#: views.py:187
+#: views.py:159
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: views.py:192
+#: views.py:164
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Intrările de eroare pentru: %s"
 
-#: views.py:237
+#: views.py:196
 msgid "No setup options available."
 msgstr "Nu sunt disponibile opțiuni de configurare."
 
-#: views.py:239
+#: views.py:198
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
@@ -822,25 +817,42 @@ msgstr ""
 "Niciun rezultat aici înseamnă că nu aveți permisiunile necesare pentru a "
 "efectua o sarcină administrativă."
 
-#: views.py:243
+#: views.py:202
 msgid "Setup items"
 msgstr "Configurați elemente"
 
-#: views.py:245
+#: views.py:204
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:266
+#: views.py:225
 msgid "These modules are used to do system maintenance."
 msgstr ""
 
-#: views.py:294
+#: views.py:253
 msgid "No action selected."
 msgstr "Nu a fost selectată nici o acţiune."
 
-#: views.py:304
+#: views.py:263
 msgid "Must select at least one item."
 msgstr "Trebuie sa selectaţi cel puţin un rând"
+
+#~ msgid "Check for updates"
+#~ msgstr "Verifică pentru actualizări"
+
+#~ msgid "Other packages licenses"
+#~ msgstr "Licențe pentru alte pachete"
+
+#~ msgid "The version you are using is outdated. The latest version is %s"
+#~ msgstr ""
+#~ "Versiunea pe care o utilizați este depășită. Ultima versiune este %s"
+
+#~ msgid "It is not possible to determine the latest version available."
+#~ msgstr ""
+#~ "Nu este posibil să se determine cea mai recentă versiune disponibilă."
+
+#~ msgid "Your version is up-to-date."
+#~ msgstr "Versiunea dvs. este actualizată."
 
 #~ msgid "Main"
 #~ msgstr "Principal"

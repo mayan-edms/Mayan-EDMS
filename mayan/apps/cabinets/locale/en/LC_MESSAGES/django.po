@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40 apps.py:85 apps.py:93 apps.py:96 events.py:7 forms.py:16
+#: apps.py:41 apps.py:86 apps.py:94 apps.py:97 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
 msgid "Cabinets"
 msgstr "Cabinets"

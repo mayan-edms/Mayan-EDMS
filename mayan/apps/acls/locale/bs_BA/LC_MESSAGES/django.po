@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:38-0400\n"
+"POT-Creation-Date: 2019-05-03 01:03-0400\n"
 "PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -20,47 +20,55 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:18 links.py:37
+#: apps.py:23 links.py:39
 msgid "ACLs"
 msgstr "ACLs"
 
-#: forms.py:15 models.py:48
+#: events.py:8 permissions.py:7
+msgid "Access control lists"
+msgstr "Liste kontrole pristupa (ACLs)"
+
+#: events.py:12
+msgid "ACL created"
+msgstr ""
+
+#: events.py:15
+msgid "ACL edited"
+msgstr ""
+
+#: forms.py:15 models.py:49
 msgid "Role"
 msgstr "Uloga"
 
-#: links.py:33
+#: links.py:35
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:41
+#: links.py:43
 msgid "New ACL"
 msgstr "Novi ACL"
 
-#: links.py:46 models.py:44 workflow_actions.py:48
+#: links.py:49 models.py:45 workflow_actions.py:48
 msgid "Permissions"
 msgstr "Dozvole"
 
-#: managers.py:61 managers.py:102
+#: managers.py:63 managers.py:104
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Nedovoljan pristup za:%s"
 
-#: models.py:56
+#: models.py:57
 msgid "Access entry"
 msgstr "Pristupni unos"
 
-#: models.py:57
+#: models.py:58
 msgid "Access entries"
 msgstr "Pristupni unosi"
 
-#: models.py:61 views.py:228
+#: models.py:62
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Uloga \"%(role)s\" dozvole za \"%(object)s\""
-
-#: permissions.py:7
-msgid "Access control lists"
-msgstr "Liste kontrole pristupa (ACLs)"
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -104,7 +112,7 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr "Primarni ključevi uloge na koje se ova lista kontrole pristupa vezuje."
 
-#: views.py:64
+#: views.py:62
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nove kontrole pristupa za:%s"
@@ -129,17 +137,27 @@ msgstr ""
 msgid "Access control lists for: %s"
 msgstr "Liste kontrole pristupa (ACL) za: %s"
 
-#: views.py:166
-msgid "Available permissions"
-msgstr "Dostupne dozvole"
-
-#: views.py:167
+#: views.py:170
 msgid "Granted permissions"
 msgstr "Dodjeljene dozvole"
 
-#: views.py:248
-msgid "Disabled permissions are inherited from a parent object."
-msgstr "Dozvole za onesposobljavanje su nasledjene od roditeljskog objekta."
+#: views.py:171
+msgid "Available permissions"
+msgstr "Dostupne dozvole"
+
+#: views.py:212
+#, fuzzy, python-format
+#| msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
+msgstr "Uloga \"%(role)s\" dozvole za \"%(object)s\""
+
+#: views.py:221
+msgid ""
+"Disabled permissions are inherited from a parent object or directly granted "
+"to the role and can't be removed from this view. Inherited permissions need "
+"to be removed from the parent object's ACL or from them role via the Setup "
+"menu."
+msgstr ""
 
 #: workflow_actions.py:25
 msgid "Object type"
@@ -178,6 +196,9 @@ msgstr "Dodjeljen pristup"
 #: workflow_actions.py:129
 msgid "Revoke access"
 msgstr "Opozvati pristup"
+
+#~ msgid "Disabled permissions are inherited from a parent object."
+#~ msgstr "Dozvole za onesposobljavanje su nasledjene od roditeljskog objekta."
 
 #~ msgid ""
 #~ "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""

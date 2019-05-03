@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:38-0400\n"
+"POT-Creation-Date: 2019-05-03 01:03-0400\n"
 "PO-Revision-Date: 2018-09-08 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,47 +19,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 links.py:37
+#: apps.py:23 links.py:39
 msgid "ACLs"
 msgstr "ACLs"
 
-#: forms.py:15 models.py:48
+#: events.py:8 permissions.py:7
+msgid "Access control lists"
+msgstr "Liste di controllo accessi"
+
+#: events.py:12
+msgid "ACL created"
+msgstr ""
+
+#: events.py:15
+msgid "ACL edited"
+msgstr ""
+
+#: forms.py:15 models.py:49
 msgid "Role"
 msgstr "Ruolo"
 
-#: links.py:33
+#: links.py:35
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:41
+#: links.py:43
 msgid "New ACL"
 msgstr "Nuova ACL"
 
-#: links.py:46 models.py:44 workflow_actions.py:48
+#: links.py:49 models.py:45 workflow_actions.py:48
 msgid "Permissions"
 msgstr "Permessi"
 
-#: managers.py:61 managers.py:102
+#: managers.py:63 managers.py:104
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr ""
 
-#: models.py:56
+#: models.py:57
 msgid "Access entry"
 msgstr "Voce di accesso"
 
-#: models.py:57
+#: models.py:58
 msgid "Access entries"
 msgstr "Voci di accesso"
 
-#: models.py:61 views.py:228
+#: models.py:62
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permessi del ruolo \"%(role)s\" per \"%(object)s\""
-
-#: permissions.py:7
-msgid "Access control lists"
-msgstr "Liste di controllo accessi"
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -104,7 +112,7 @@ msgstr ""
 msgid "Primary keys of the role to which this access control list binds to."
 msgstr "Chiavi primarie del ruolo a cui si lega la lista controllo accessi"
 
-#: views.py:64
+#: views.py:62
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nuova lista di controllo accesso per: %s"
@@ -129,17 +137,27 @@ msgstr ""
 msgid "Access control lists for: %s"
 msgstr "Lista dei permessi d'accesso per: %s"
 
-#: views.py:166
-msgid "Available permissions"
-msgstr "Autorizzazioni disponibili "
-
-#: views.py:167
+#: views.py:170
 msgid "Granted permissions"
 msgstr "Autorizzazioni concesse  "
 
-#: views.py:248
-msgid "Disabled permissions are inherited from a parent object."
-msgstr "Il permesso disabilita è ereditato dall'oggetto padre"
+#: views.py:171
+msgid "Available permissions"
+msgstr "Autorizzazioni disponibili "
+
+#: views.py:212
+#, fuzzy, python-format
+#| msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
+msgstr "Permessi del ruolo \"%(role)s\" per \"%(object)s\""
+
+#: views.py:221
+msgid ""
+"Disabled permissions are inherited from a parent object or directly granted "
+"to the role and can't be removed from this view. Inherited permissions need "
+"to be removed from the parent object's ACL or from them role via the Setup "
+"menu."
+msgstr ""
 
 #: workflow_actions.py:25
 msgid "Object type"
@@ -177,6 +195,9 @@ msgstr ""
 #: workflow_actions.py:129
 msgid "Revoke access"
 msgstr ""
+
+#~ msgid "Disabled permissions are inherited from a parent object."
+#~ msgstr "Il permesso disabilita è ereditato dall'oggetto padre"
 
 #~ msgid ""
 #~ "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""

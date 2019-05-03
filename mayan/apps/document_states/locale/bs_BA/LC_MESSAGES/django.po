@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -20,94 +20,94 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:59 links.py:39 links.py:132 links.py:159 models.py:60
+#: apps.py:60 links.py:39 links.py:132 links.py:159 models.py:60
 #: views/workflow_proxy_views.py:75 views/workflow_views.py:82
 msgid "Workflows"
 msgstr "Radni tok"
 
-#: apps.py:97 apps.py:104
+#: apps.py:99 apps.py:106
 msgid "Current state of a workflow"
 msgstr "Trenutno stanje toka posla"
 
-#: apps.py:98
+#: apps.py:100
 msgid "Return the current state of the selected workflow"
 msgstr "Vratite trenutno stanje odabranog toka posla"
 
-#: apps.py:105
+#: apps.py:107
 msgid ""
 "Return the completion value of the current state of the selected workflow"
 msgstr "Vratite završnu vrijednost trenutnog stanja izabranog toka posla"
 
-#: apps.py:148 apps.py:211 forms.py:117 models.py:47 models.py:153
+#: apps.py:149 apps.py:212 forms.py:117 models.py:47 models.py:153
 #: models.py:234 models.py:297 workflow_actions.py:22
 msgid "Label"
 msgstr "Labela"
 
-#: apps.py:151 models.py:44
+#: apps.py:152 models.py:44
 msgid "Internal name"
 msgstr "Interno ime"
 
-#: apps.py:155
+#: apps.py:156
 msgid "Initial state"
 msgstr "Početno stanje"
 
-#: apps.py:156 apps.py:166 apps.py:176 apps.py:182
+#: apps.py:157 apps.py:167 apps.py:177 apps.py:183
 msgid "None"
 msgstr "Nijedno"
 
-#: apps.py:160
+#: apps.py:161
 msgid "Current state"
 msgstr "Trenutna stanje"
 
-#: apps.py:164 apps.py:191 models.py:464
+#: apps.py:165 apps.py:192 models.py:464
 msgid "User"
 msgstr "Korisnik"
 
-#: apps.py:170
+#: apps.py:171
 msgid "Last transition"
 msgstr "Poslednja tranzicija"
 
-#: apps.py:174 apps.py:187
+#: apps.py:175 apps.py:188
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:180 apps.py:207 models.py:165
+#: apps.py:181 apps.py:208 models.py:165
 msgid "Completion"
 msgstr "Završetak"
 
-#: apps.py:194 forms.py:173 links.py:144 models.py:323 models.py:460
+#: apps.py:195 forms.py:173 links.py:144 models.py:323 models.py:460
 msgid "Transition"
 msgstr "Tranzicija"
 
-#: apps.py:198 forms.py:176 models.py:466
+#: apps.py:199 forms.py:176 models.py:466
 msgid "Comment"
 msgstr "Komentar"
 
-#: apps.py:203
+#: apps.py:204
 msgid "Is initial state?"
 msgstr "Da li je početno stanje?"
 
-#: apps.py:214
+#: apps.py:215
 msgid "Enabled?"
 msgstr "Omogućeno?"
 
-#: apps.py:218
+#: apps.py:219
 msgid "When?"
 msgstr "Kada?"
 
-#: apps.py:222
+#: apps.py:223
 msgid "Action type"
 msgstr "Vrsta akcije"
 
-#: apps.py:227 models.py:300
+#: apps.py:228 models.py:300
 msgid "Origin state"
 msgstr "Stanje porekla"
 
-#: apps.py:231 models.py:304
+#: apps.py:232 models.py:304
 msgid "Destination state"
 msgstr "Stanje destinacije"
 
-#: apps.py:235
+#: apps.py:236
 msgid "Triggers"
 msgstr "Uzroci"
 

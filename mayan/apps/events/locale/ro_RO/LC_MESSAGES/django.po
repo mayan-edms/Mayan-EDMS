@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:06-0400\n"
 "PO-Revision-Date: 2019-03-16 07:00+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -73,7 +73,7 @@ msgstr "Nu"
 msgid "Subscribed"
 msgstr "Sunteți abonat"
 
-#: html_widgets.py:50
+#: html_widgets.py:57
 msgid "System"
 msgstr "Sistem"
 
@@ -168,7 +168,7 @@ msgstr "Abonați-vă la evenimente globale sau obiect pentru a primi notificări
 msgid "There are no notifications"
 msgstr "Nu există nicio notificare"
 
-#: views.py:163
+#: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
@@ -176,31 +176,31 @@ msgstr ""
 "Evenimentele sunt acțiuni care au fost realizate pe acest obiect sau "
 "utilizând acest obiect."
 
-#: views.py:166
+#: views.py:167
 msgid "There are no events for this object"
 msgstr "Nu există evenimente pentru acest obiect"
 
-#: views.py:168
+#: views.py:169
 #, python-format
 msgid "Events for: %s"
 msgstr "Evenimente pentru: %s"
 
-#: views.py:207
+#: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Eroare la actualizarea abonamentului eveniment obiect; %s"
 
-#: views.py:213
+#: views.py:215
 msgid "Object event subscriptions updated successfully"
 msgstr ""
 "Obținerea abonamentelor evenimentului obiect a fost actualizată cu succes"
 
-#: views.py:246
+#: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Abonamente la eveniment pentru: %s"
 
-#: views.py:278
+#: views.py:280
 #, python-format
 msgid "Events of type: %s"
 msgstr "Evenimente de tip: %s"

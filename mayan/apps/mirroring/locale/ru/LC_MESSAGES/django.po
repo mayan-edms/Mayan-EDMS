@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:42-0400\n"
+"POT-Creation-Date: 2019-05-03 01:07-0400\n"
 "PO-Revision-Date: 2017-09-22 15:28+0000\n"
 "Last-Translator: lilo.panic\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:15 settings.py:7
+#: apps.py:16 settings.py:7
 msgid "Mirroring"
 msgstr "Зеркалирование"
 

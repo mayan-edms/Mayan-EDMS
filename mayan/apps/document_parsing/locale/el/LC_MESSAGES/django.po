@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,17 +21,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 events.py:8 permissions.py:8 settings.py:7
+#: apps.py:53 events.py:8 permissions.py:8 settings.py:7
 msgid "Document parsing"
 msgstr "Ανάλυση εγγράφου"
 
-#: apps.py:118 models.py:78
+#: apps.py:119 models.py:78
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
-#: apps.py:135 apps.py:139 links.py:16 links.py:22 models.py:27
+#: apps.py:136 apps.py:140 links.py:16 links.py:22 models.py:27
 msgid "Content"
 msgstr "Περιεχόμενο"
+
+#: dependencies.py:11
+#, fuzzy
+#| msgid ""
+#| "File path to poppler's pdftotext program used to extract text from PDF "
+#| "files."
+msgid ""
+"Utility from the poppler-utils package used to text content from PDF files."
+msgstr ""
+"Διαδρομή του προγράμματος pdftotext για την εξαγωγή κειμένου από αρχεία PDF."
 
 #: events.py:12
 msgid "Document version submitted for parsing"

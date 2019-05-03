@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:06-0400\n"
 "PO-Revision-Date: 2019-03-31 21:43+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -24,50 +24,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36
+#: apps.py:42
 msgid "Linking"
 msgstr "Verknüpfungen"
 
-#: apps.py:58 models.py:25
+#: apps.py:74 models.py:27
 msgid "Label"
 msgstr "Bezeichnung"
+
+#: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
+#: permissions.py:7 views.py:193
+msgid "Smart links"
+msgstr "Smart Links"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Smart link"
+msgid "Smart link created"
+msgstr "Smart Link"
+
+#: events.py:15
+#, fuzzy
+#| msgid "Smart link"
+msgid "Smart link edited"
+msgstr "Smart Link"
 
 #: forms.py:36
 msgid "Foreign document field"
 msgstr "Feld des anderen Dokuments"
 
-#: links.py:19
+#: links.py:26
 msgid "Create condition"
 msgstr "Erstellungsbedingung"
 
-#: links.py:24 links.py:42
+#: links.py:33 links.py:57
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:29 links.py:50
+#: links.py:40 links.py:69
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:33
+#: links.py:46
 msgid "Conditions"
 msgstr "Bedingungen"
 
-#: links.py:38 views.py:204
+#: links.py:51 views.py:239
 msgid "Create new smart link"
 msgstr "Smart Link erstellen"
 
-#: links.py:46 models.py:37
+#: links.py:63 models.py:40
 msgid "Document types"
 msgstr "Dokumententypen"
 
-#: links.py:54
+#: links.py:73
 msgid "Documents"
 msgstr "Dokumente"
-
-#: links.py:60 links.py:64 links.py:69 models.py:45 permissions.py:7
-#: views.py:158
-msgid "Smart links"
-msgstr "Smart Links"
 
 #: literals.py:9
 msgid "and"
@@ -137,7 +149,7 @@ msgstr "ist in regulärem Ausdruck"
 msgid "is in regular expression (case insensitive)"
 msgstr "ist in regulärem Ausdruck (ohne Groß/Kleinschreibung)"
 
-#: models.py:29 models.py:149
+#: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
@@ -147,62 +159,66 @@ msgstr ""
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Die "
 "{{ document }} Kontextvariable ist verfügbar."
 
-#: models.py:33
+#: models.py:35
 msgid "Dynamic label"
 msgstr "Dynamische Bezeichnung"
 
-#: models.py:35 models.py:159
+#: models.py:37 models.py:199
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:44 models.py:135
+#: models.py:47 models.py:175
 msgid "Smart link"
 msgstr "Smart Link"
 
-#: models.py:62
+#: models.py:87
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Fehler bei der Generierung des dynamischen Titels: %s"
 
-#: models.py:77
+#: models.py:102
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Dieser Smart Link ist nicht erlaubt für diesen Dokumententyp."
 
-#: models.py:139
+#: models.py:179
 msgid "The inclusion is ignored for the first item."
 msgstr "Die Einbeziehung wird für das erste Element ignoriert."
 
-#: models.py:143
+#: models.py:183
 msgid "This represents the metadata of all other documents."
 msgstr "Repräsentiert die Metadaten aller anderen Dokumente."
 
-#: models.py:144
+#: models.py:184
 msgid "Foreign document attribute"
 msgstr "Fremddokumentattribut"
 
-#: models.py:153
+#: models.py:193
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: models.py:156
+#: models.py:196
 msgid "Inverts the logic of the operator."
 msgstr "Kehrt die Logik der Operation um."
 
-#: models.py:157
+#: models.py:197
 msgid "Negated"
 msgstr "Verneint"
 
-#: models.py:162
+#: models.py:202
 msgid "Link condition"
 msgstr "Bedingung"
 
-#: models.py:163
+#: models.py:203
 msgid "Link conditions"
 msgstr "Bedingungen"
 
-#: models.py:168
+#: models.py:211
 msgid "not"
 msgstr "Nicht"
+
+#: models.py:215
+msgid "Full label"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new smart links"
@@ -233,37 +249,55 @@ msgstr ""
 msgid "No such document type: %s"
 msgstr "Kein Dokumententyp: %s"
 
-#: views.py:71
+#: views.py:45
+#, fuzzy
+#| msgid "Delete smart links"
+msgid "Available smart links"
+msgstr "Smart Links löschen"
+
+#: views.py:46
+#, fuzzy
+#| msgid "Smart links"
+msgid "Smart links enabled"
+msgstr "Smart Links"
+
+#: views.py:76
+#, fuzzy, python-format
+#| msgid "Smart links for document: %s"
+msgid "Smart links to enable for document type: %s"
+msgstr "Ähnliche Dokumente für Dokument %s"
+
+#: views.py:119
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Abfragefehler für Smart Link %s"
 
-#: views.py:80
+#: views.py:128
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "Ähnliche Dokumente für %s"
 
-#: views.py:83
+#: views.py:131
 #, python-format
 msgid ""
 "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "Dokumente in Smart Link \"%(smart_link)s\" verknüpft zu \"%(document)s\""
 
-#: views.py:102
+#: views.py:156
 msgid "Available document types"
 msgstr "Verfügbare Dokumententypen"
 
-#: views.py:104
+#: views.py:157
 msgid "Document types enabled"
 msgstr "Aktivierte Dokumententypen"
 
-#: views.py:113
+#: views.py:167
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Dokumententyp, für den Smart Link %s aktiviert werden soll"
 
-#: views.py:149
+#: views.py:184
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -274,11 +308,11 @@ msgstr ""
 "Definition von Beziehungen zwischen Dokumenten, auch wenn sie in "
 "verschiedenen Indices sind oder einen unterschiedlichen Typ aufweisen."
 
-#: views.py:156
+#: views.py:191
 msgid "There are no smart links"
 msgstr "Keine ähnlichen Dokumente vorhanden"
 
-#: views.py:188
+#: views.py:223
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -287,26 +321,26 @@ msgstr ""
 "auch wenn sie in verschiedenen Indices sind oder einen unterschiedlichen Typ "
 "aufweisen."
 
-#: views.py:193
+#: views.py:228
 msgid "There are no smart links for this document"
 msgstr "Keine ähnlichen Dokumente für dieses Dokument vorhanden"
 
-#: views.py:196
+#: views.py:231
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Ähnliche Dokumente für Dokument %s"
 
-#: views.py:223
-#, python-format
-msgid "Edit smart link: %s"
-msgstr "Smart Link %s bearbeiten"
-
-#: views.py:237
+#: views.py:260
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Smart Link %s wirklich löschen?"
 
-#: views.py:256
+#: views.py:275
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Smart Link %s bearbeiten"
+
+#: views.py:298
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
@@ -314,25 +348,25 @@ msgstr ""
 "Bedingungen sind kleine logische Einheiten, die in der Kombination "
 "definieren, wie der Smart Link funktionieren wird."
 
-#: views.py:260
+#: views.py:302
 msgid "There are no conditions for this smart link"
 msgstr "Keine Bedingungen für diesen Smart Link vorhanden"
 
-#: views.py:264
+#: views.py:306
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Bedingungen für Smart Link %s"
 
-#: views.py:291
+#: views.py:333
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Neue Bedingungen zu Smart Link \"%s\" hinzufügen"
 
-#: views.py:332
+#: views.py:374
 msgid "Edit smart link condition"
 msgstr "Bedingung für Smart Link bearbeiten"
 
-#: views.py:362
+#: views.py:404
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Bedingung für Smart Link \"%s\" wirklich löschen?"

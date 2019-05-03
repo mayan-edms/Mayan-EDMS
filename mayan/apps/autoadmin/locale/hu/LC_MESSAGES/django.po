@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2019\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:9
+#: apps.py:16 settings.py:9
 msgid "Auto administrator"
 msgstr ""
 

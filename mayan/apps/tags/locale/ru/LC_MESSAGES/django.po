@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:43-0400\n"
+"POT-Creation-Date: 2019-05-03 01:08-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,13 +21,13 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:51 apps.py:109 apps.py:116 apps.py:138 apps.py:140 events.py:7
+#: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
 #: views.py:220 workflow_actions.py:19 workflow_actions.py:62
 msgid "Tags"
 msgstr "Метки"
 
-#: apps.py:131 models.py:36
+#: apps.py:132 models.py:36
 msgid "Documents"
 msgstr "Документы"
 
@@ -103,11 +103,11 @@ msgstr "Метка"
 msgid "Preview"
 msgstr "Предварительный просмотр"
 
-#: models.py:102
+#: models.py:103
 msgid "Document tag"
 msgstr "Метка документа"
 
-#: models.py:103
+#: models.py:104
 msgid "Document tags"
 msgstr "Метки документов"
 

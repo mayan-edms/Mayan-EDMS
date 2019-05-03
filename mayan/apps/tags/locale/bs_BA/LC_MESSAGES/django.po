@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:43-0400\n"
+"POT-Creation-Date: 2019-05-03 01:08-0400\n"
 "PO-Revision-Date: 2018-09-27 02:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -21,13 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:51 apps.py:109 apps.py:116 apps.py:138 apps.py:140 events.py:7
+#: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
 #: views.py:220 workflow_actions.py:19 workflow_actions.py:62
 msgid "Tags"
 msgstr "Tagovi"
 
-#: apps.py:131 models.py:36
+#: apps.py:132 models.py:36
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -105,11 +105,11 @@ msgstr "Oznaka"
 msgid "Preview"
 msgstr "Pregled"
 
-#: models.py:102
+#: models.py:103
 msgid "Document tag"
 msgstr "Oznaka dokumenta"
 
-#: models.py:103
+#: models.py:104
 msgid "Document tags"
 msgstr "Oznake dokumenata"
 

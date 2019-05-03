@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:07-0400\n"
 "PO-Revision-Date: 2018-10-29 16:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,28 +20,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:70 apps.py:156 apps.py:161 events.py:7 links.py:48 permissions.py:7
+#: apps.py:71 apps.py:158 apps.py:163 events.py:7 links.py:48 permissions.py:7
 #: queues.py:8 settings.py:10
 msgid "Metadata"
 msgstr "Metadati"
 
-#: apps.py:102
+#: apps.py:103
 msgid "Return the value of a specific document metadata"
 msgstr "Ritorna il valore di un metadato specifico del documento"
 
-#: apps.py:108
+#: apps.py:109
 msgid "Metadata type name"
 msgstr "Nome tipo metadato"
 
-#: apps.py:112
+#: apps.py:113
 msgid "Metadata type value"
 msgstr "Valore del tipo metadato"
 
-#: apps.py:202 apps.py:210 forms.py:123 models.py:93 models.py:296
+#: apps.py:204 apps.py:212 forms.py:123 models.py:93 models.py:304
 msgid "Metadata type"
 msgstr "Tipo di metadato"
 
-#: apps.py:205 apps.py:214
+#: apps.py:207 apps.py:216
 msgid "Metadata value"
 msgstr "Valore metadata"
 
@@ -77,7 +77,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Nome"
 
-#: forms.py:20 models.py:206
+#: forms.py:20 models.py:211
 msgid "Value"
 msgstr "Valore"
 
@@ -85,7 +85,7 @@ msgstr "Valore"
 msgid "Update"
 msgstr "Aggiornato"
 
-#: forms.py:46 forms.py:182 models.py:298
+#: forms.py:46 forms.py:182 models.py:306
 msgid "Required"
 msgstr "Obbligatorio"
 
@@ -99,7 +99,7 @@ msgstr "Errore nel valore di ricerca: %s"
 msgid "Default value error: %s"
 msgstr "Valore di default errore: %s"
 
-#: forms.py:104 models.py:167
+#: forms.py:104 models.py:172
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" è richiesto per questo tipo di documento.."
@@ -214,43 +214,43 @@ msgstr ""
 msgid "Parser"
 msgstr "Parser"
 
-#: models.py:175
+#: models.py:180
 msgid "Value is not one of the provided options."
 msgstr "Il valore non è compreso tra i valori ammessi."
 
-#: models.py:197
+#: models.py:202
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:200
+#: models.py:205
 msgid "Type"
 msgstr "Tipo"
 
-#: models.py:204
+#: models.py:209
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:212 models.py:213
+#: models.py:217 models.py:218
 msgid "Document metadata"
 msgstr "Metadata documento"
 
-#: models.py:234
+#: models.py:239
 msgid "Metadata type is required for this document type."
 msgstr "Tipo di metadati è necessario per questo tipo di documento."
 
-#: models.py:262
+#: models.py:269
 msgid "Metadata type is not valid for this document type."
 msgstr "Il metadato non è valido per il tipo di documento"
 
-#: models.py:292
+#: models.py:300
 msgid "Document type"
 msgstr "Tipo documento "
 
-#: models.py:305
+#: models.py:313
 msgid "Document type metadata type options"
 msgstr "Opzione per tipo documento del tipo metadato"
 
-#: models.py:306
+#: models.py:314
 msgid "Document type metadata types options"
 msgstr "Opzioni per tipo documento del tipo metadato"
 

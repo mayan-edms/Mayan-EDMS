@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:06-0400\n"
 "PO-Revision-Date: 2018-04-11 08:33+0000\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Statistics"
 msgstr "Statistiques"
 
-#. Translators: Schedule here is a verb, the 'schedule' at
+#. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
 #: apps.py:36
 msgid "Schedule"

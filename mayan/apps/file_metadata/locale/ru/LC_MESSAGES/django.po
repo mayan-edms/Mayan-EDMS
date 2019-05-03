@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:41-0400\n"
+"POT-Creation-Date: 2019-05-03 01:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,19 +24,28 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: apps.py:53 events.py:8 links.py:18 permissions.py:7 queue.py:8 settings.py:9
+#: apps.py:56 events.py:8 links.py:18 permissions.py:7 queue.py:8 settings.py:9
 msgid "File metadata"
 msgstr ""
 
-#: apps.py:102 apps.py:106 apps.py:158 apps.py:167
+#: apps.py:101
+msgid "Return the value of a specific file metadata."
+msgstr ""
+
+#: apps.py:113 apps.py:117 apps.py:170 apps.py:179
 msgid "File metadata key"
 msgstr ""
 
-#: apps.py:162 apps.py:171
+#: apps.py:174 apps.py:183
 msgid "File metadata value"
 msgstr ""
 
-#: drivers/exiftool.py:19
+#: dependencies.py:14
+msgid ""
+"Library and program to read and write meta information in multimedia files."
+msgstr ""
+
+#: drivers/exiftool.py:26
 msgid "EXIF Tool"
 msgstr ""
 
@@ -84,7 +93,7 @@ msgstr ""
 msgid "Internal name"
 msgstr ""
 
-#: models.py:30 models.py:49
+#: models.py:30 models.py:74
 msgid "Driver"
 msgstr ""
 
@@ -92,36 +101,36 @@ msgstr ""
 msgid "Drivers"
 msgstr ""
 
-#: models.py:53
-msgid "Document version"
-msgstr ""
-
-#: models.py:59 models.py:99
-msgid "Document version driver entry"
-msgstr ""
-
-#: models.py:60
-msgid "Document version driver entries"
-msgstr ""
-
-#: models.py:67
-msgid "Attribute count"
-msgstr ""
-
-#: models.py:76
+#: models.py:51
 msgid "Document type"
 msgstr ""
 
-#: models.py:80
+#: models.py:55
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 
-#: models.py:87
+#: models.py:62
 msgid "Document type settings"
 msgstr ""
 
-#: models.py:88
+#: models.py:63
 msgid "Document types settings"
+msgstr ""
+
+#: models.py:78
+msgid "Document version"
+msgstr ""
+
+#: models.py:84 models.py:99
+msgid "Document version driver entry"
+msgstr ""
+
+#: models.py:85
+msgid "Document version driver entries"
+msgstr ""
+
+#: models.py:92
+msgid "Attribute count"
 msgstr ""
 
 #: models.py:103
@@ -165,13 +174,13 @@ msgid "Process document version"
 msgstr ""
 
 #: settings.py:14
-msgid "Arguments to pass to the drivers."
-msgstr ""
-
-#: settings.py:20
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
+msgstr ""
+
+#: settings.py:25
+msgid "Arguments to pass to the drivers."
 msgstr ""
 
 #: views.py:35

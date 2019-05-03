@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: 2019-02-01 08:59+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:91 permissions_runtime.py:7 settings.py:14
+#: apps.py:89 permissions_runtime.py:7 settings.py:14
 msgid "Common"
 msgstr "常用"
 
@@ -31,153 +31,161 @@ msgstr "可用属性：\n"
 msgid "Available fields: \n"
 msgstr "可用字段：\n"
 
-#: forms.py:28
+#: dependencies.py:395
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:400
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:405
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:410
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: forms.py:27
 msgid "Selection"
 msgstr "选择"
 
-#: forms.py:104
+#: forms.py:103
 msgid "None"
 msgstr ""
 
-#: generics.py:153
+#: generics.py:154
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:158
+#: generics.py:159
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:281
+#: generics.py:292
 msgid "Add all"
 msgstr ""
 
-#: generics.py:290 generics.py:503
+#: generics.py:301 generics.py:514
 msgid "Add"
 msgstr "添加"
 
-#: generics.py:300
+#: generics.py:311
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove all"
 msgstr "移除"
 
-#: generics.py:309 generics.py:514
+#: generics.py:320 generics.py:525
 msgid "Remove"
 msgstr "移除"
 
-#: generics.py:479
+#: generics.py:490
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "无法转移选择：%s。"
 
-#: generics.py:609
+#: generics.py:620
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s未创建，错误：%(error)s"
 
-#: generics.py:620
+#: generics.py:631
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s创建成功。"
 
-#: generics.py:649
+#: generics.py:660
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s未删除，错误：%(error)s。"
 
-#: generics.py:660
+#: generics.py:671
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s已成功删除。"
 
-#: generics.py:706
+#: generics.py:717
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s未更新，错误：%(error)s。"
 
-#: generics.py:717
+#: generics.py:728
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s已成功更新。"
 
-#: links.py:37
+#: links.py:36
 msgid "About this"
 msgstr "关于这个"
 
-#: links.py:40 views.py:59
-msgid "Check for updates"
-msgstr "检查更新"
-
-#: links.py:45
+#: links.py:40
 msgid "Locale profile"
 msgstr "区域配置文件"
 
-#: links.py:50
+#: links.py:45
 msgid "Edit locale profile"
 msgstr "编辑区域配置文件"
 
-#: links.py:55
+#: links.py:50
 msgid "Documentation"
 msgstr "文档"
 
-#: links.py:59 links.py:70
+#: links.py:54 links.py:65
 msgid "Errors"
 msgstr "错误"
 
-#: links.py:64
+#: links.py:59
 msgid "Clear all"
 msgstr "清除所有"
 
-#: links.py:74
+#: links.py:69
 msgid "Forum"
 msgstr "论坛"
 
-#: links.py:78 views.py:142
+#: links.py:73 views.py:114
 msgid "License"
 msgstr "许可"
 
-#: links.py:81 views.py:218
-msgid "Other packages licenses"
-msgstr "其他软件包许可证"
-
-#: links.py:85
+#: links.py:76
 msgid "Setup"
 msgstr "设置"
 
-#: links.py:88
+#: links.py:79
 msgid "Source code"
 msgstr "源代码"
 
-#: links.py:92
+#: links.py:83
 msgid "Support"
 msgstr "支持"
 
-#: links.py:96 queues.py:10 views.py:264
+#: links.py:87 queues.py:10 views.py:223
 msgid "Tools"
 msgstr "工具"
 
-#: literals.py:10
+#: literals.py:9
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 "您的数据库后端设置为使用SQLite。 SQLite只应用于开发和测试，而不能用于生产。"
 
-#: literals.py:27
+#: literals.py:25
 msgid "Days"
 msgstr "天"
 
-#: literals.py:28
+#: literals.py:26
 msgid "Hours"
 msgstr "时"
 
-#: literals.py:29
+#: literals.py:27
 msgid "Minutes"
 msgstr "分"
 
@@ -248,7 +256,7 @@ msgstr "命名空间"
 msgid "Date time"
 msgstr "日期时间"
 
-#: models.py:41 views.py:188
+#: models.py:41 views.py:160
 msgid "Result"
 msgstr "结果"
 
@@ -321,8 +329,8 @@ msgstr "是时候延迟依赖于数据库提交传播的后台任务了。"
 #, fuzzy
 #| msgid "Name of the view attached to the branch anchor in the main menu."
 msgid ""
-"Name of the view attached to the branch anchor in the main menu. This is "
-"also the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr "在主菜单中附加到分支锚点的视图的名称。"
 
 #: settings.py:41
@@ -659,33 +667,33 @@ msgstr ""
 "默认值：默认情况下未启用结果后端。后端用于存储任务结果（墓碑）。请参阅http://"
 "docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend"
 
-#: templatetags/common_tags.py:30
+#: templatetags/common_tags.py:31
 msgid "Confirm delete"
 msgstr ""
 
-#: templatetags/common_tags.py:35
+#: templatetags/common_tags.py:36
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit %s"
 msgstr "编辑详情"
 
-#: templatetags/common_tags.py:38
+#: templatetags/common_tags.py:39
 msgid "Confirm"
 msgstr ""
 
-#: templatetags/common_tags.py:42
+#: templatetags/common_tags.py:43
 #, fuzzy, python-format
 #| msgid "Error log entries for: %s"
 msgid "Details for: %s"
 msgstr "错误日志条目：%s"
 
-#: templatetags/common_tags.py:46
+#: templatetags/common_tags.py:47
 #, fuzzy, python-format
 #| msgid "Edit details"
 msgid "Edit: %s"
 msgstr "编辑详情"
 
-#: templatetags/common_tags.py:49
+#: templatetags/common_tags.py:50
 msgid "Create"
 msgstr ""
 
@@ -695,82 +703,84 @@ msgid ""
 "underscores."
 msgstr "输入由字母，数字和下划线组成的有效“内部名称”。"
 
-#: views.py:35
+#: views.py:32
 msgid "About"
 msgstr "关于"
 
-#: views.py:47
-#, python-format
-msgid "The version you are using is outdated. The latest version is %s"
-msgstr "您使用的版本已过时。最新版本为%s"
-
-#: views.py:52
-msgid "It is not possible to determine the latest version available."
-msgstr "无法确定最新版本。"
-
-#: views.py:56
-msgid "Your version is up-to-date."
-msgstr "您的版本是最新的。"
-
-#: views.py:76
+#: views.py:48
 msgid "Current user locale profile details"
 msgstr "当前用户区域配置文件详情"
 
-#: views.py:83
+#: views.py:55
 msgid "Edit current user locale profile details"
 msgstr "编辑当前用户区域配置文件"
 
-#: views.py:133
+#: views.py:105
 msgid "Dashboard"
 msgstr "仪表板"
 
-#: views.py:151
+#: views.py:123
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "清除错误日志条目：%s"
 
-#: views.py:168
+#: views.py:140
 msgid "Object error log cleared successfully"
 msgstr "对象错误日志已成功清除"
 
-#: views.py:187
+#: views.py:159
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: views.py:192
+#: views.py:164
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "错误日志条目：%s"
 
-#: views.py:237
+#: views.py:196
 msgid "No setup options available."
 msgstr "没有可用的设置选项。"
 
-#: views.py:239
+#: views.py:198
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "此处没有结果表示没有执行管理任务所需的权限。"
 
-#: views.py:243
+#: views.py:202
 msgid "Setup items"
 msgstr "设置项目"
 
-#: views.py:245
+#: views.py:204
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:266
+#: views.py:225
 msgid "These modules are used to do system maintenance."
 msgstr ""
 
-#: views.py:294
+#: views.py:253
 msgid "No action selected."
 msgstr "未选择任何操作。"
 
-#: views.py:304
+#: views.py:263
 msgid "Must select at least one item."
 msgstr "必须至少选择一个项目。"
+
+#~ msgid "Check for updates"
+#~ msgstr "检查更新"
+
+#~ msgid "Other packages licenses"
+#~ msgstr "其他软件包许可证"
+
+#~ msgid "The version you are using is outdated. The latest version is %s"
+#~ msgstr "您使用的版本已过时。最新版本为%s"
+
+#~ msgid "It is not possible to determine the latest version available."
+#~ msgstr "无法确定最新版本。"
+
+#~ msgid "Your version is up-to-date."
+#~ msgstr "您的版本是最新的。"
 
 #~ msgid "Main"
 #~ msgstr "重点"

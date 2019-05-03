@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:42-0400\n"
+"POT-Creation-Date: 2019-05-03 01:07-0400\n"
 "PO-Revision-Date: 2019-02-01 02:23+0000\n"
 "Last-Translator: yulin Gong <540538248@qq.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,16 +19,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:44 links.py:54 models/base.py:39 queues.py:8 settings.py:10
+#: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
 #: views.py:635
 msgid "Sources"
 msgstr "来源"
 
-#: apps.py:59
+#: apps.py:60
 msgid "Create a document source"
 msgstr "创建文档源"
 
-#: apps.py:61
+#: apps.py:62
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -37,25 +37,31 @@ msgstr ""
 "文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览"
 "器上传文档。"
 
-#: apps.py:74
+#: apps.py:75
 msgid "Type"
 msgstr "类型"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Created"
 msgstr "已创建"
 
-#: apps.py:90
+#: apps.py:91
 msgid "Thumbnail"
 msgstr "缩略图"
 
-#: apps.py:98 models/base.py:248
+#: apps.py:99 models/base.py:248
 msgid "Date time"
 msgstr "日期时间"
 
-#: apps.py:103 models/base.py:251
+#: apps.py:104 models/base.py:251
 msgid "Message"
 msgstr "信息"
+
+#: dependencies.py:13
+msgid ""
+"Utility provided by the SANE package. Used to control the scanner and "
+"obtained the scanned document image."
+msgstr ""
 
 #: forms.py:30
 msgid "Comment"

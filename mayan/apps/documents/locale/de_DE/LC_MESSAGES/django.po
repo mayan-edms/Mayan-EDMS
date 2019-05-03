@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2019-03-31 21:42+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -215,7 +215,7 @@ msgstr "Im Dateispeicher"
 msgid "File path in storage"
 msgstr "Pfad im Dateispeicher"
 
-#: forms/document_forms.py:181 models/document_version_models.py:109
+#: forms/document_forms.py:181 models/document_version_models.py:110
 #: search.py:24 search.py:48
 msgid "Checksum"
 msgstr "Prüfsumme"
@@ -321,7 +321,7 @@ msgid "Download version"
 msgstr "Version herunterladen"
 
 #: links.py:244 links.py:324 models/document_models.py:103
-#: models/document_version_models.py:72 models/misc_models.py:35
+#: models/document_version_models.py:73 models/misc_models.py:35
 #: models/misc_models.py:65 models/misc_models.py:94
 msgid "Document"
 msgstr "Dokument"
@@ -514,8 +514,8 @@ msgstr "Inkomplett"
 msgid "Document stub, id: %d"
 msgstr "Fragment, ID: %d"
 
-#: models/document_page_models.py:42 models/document_version_models.py:114
-#: models/document_version_models.py:115
+#: models/document_page_models.py:42 models/document_version_models.py:115
+#: models/document_version_models.py:116
 msgid "Document version"
 msgstr "Dokumentenversion"
 
@@ -600,27 +600,27 @@ msgstr "Aktiviert"
 msgid "Quick label"
 msgstr "Schnellbezeichner"
 
-#: models/document_version_models.py:76
+#: models/document_version_models.py:77
 msgid "The server date and time when the document version was processed."
 msgstr "Serverdatum und -zeit der Verarbeitung der Dokumentenversion."
 
-#: models/document_version_models.py:77
+#: models/document_version_models.py:78
 msgid "Timestamp"
 msgstr "Zeitstempel"
 
-#: models/document_version_models.py:81
+#: models/document_version_models.py:82
 msgid "An optional short text describing the document version."
 msgstr "Ein optionaler kurzer Text, der die Dokumentenversion beschreibt."
 
-#: models/document_version_models.py:82
+#: models/document_version_models.py:83
 msgid "Comment"
 msgstr "Kommentar"
 
-#: models/document_version_models.py:88
+#: models/document_version_models.py:89
 msgid "File"
 msgstr "Datei"
 
-#: models/document_version_models.py:92
+#: models/document_version_models.py:93
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document. "
@@ -630,11 +630,11 @@ msgstr ""
 "standardisierte Art zur Beschreibung des Dateiformats, in diesem Fall des "
 "Dokuments. Besipiele: \"text/plain\" oder \"image/jpeg\"."
 
-#: models/document_version_models.py:96 search.py:19 search.py:39
+#: models/document_version_models.py:97 search.py:19 search.py:39
 msgid "MIME type"
 msgstr "MIME Typ"
 
-#: models/document_version_models.py:100
+#: models/document_version_models.py:101
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
@@ -642,7 +642,7 @@ msgstr ""
 "Die Kodierung der Datei der Dokumentenversion. binary 7-bit, binary 8-bit, "
 "text, base64, etc."
 
-#: models/document_version_models.py:102
+#: models/document_version_models.py:103
 msgid "Encoding"
 msgstr "Kodierung"
 

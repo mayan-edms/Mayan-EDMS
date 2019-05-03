@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:40-0400\n"
+"POT-Creation-Date: 2019-05-03 01:05-0400\n"
 "PO-Revision-Date: 2019-03-15 21:34+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -25,33 +25,45 @@ msgstr ""
 msgid "None"
 msgstr "Nici unul"
 
-#: admin.py:26 links.py:71 models.py:50
+#: admin.py:26 links.py:79 models.py:52
 msgid "Document types"
 msgstr "Tipuri de documente"
 
-#: apps.py:54
+#: apps.py:59 events.py:8
 msgid "Document indexing"
 msgstr "Indexarea documentelor"
 
-#: apps.py:103
+#: apps.py:115
 msgid "Total levels"
 msgstr "Total niveluri"
 
-#: apps.py:111
+#: apps.py:123
 msgid "Total documents"
 msgstr "Total documente"
 
-#: apps.py:116 apps.py:128 apps.py:145
+#: apps.py:128 apps.py:140 apps.py:159
 msgid "Level"
 msgstr "Nivel"
 
-#: apps.py:132 apps.py:149
+#: apps.py:145 apps.py:164
 msgid "Levels"
 msgstr "Niveluri"
 
-#: apps.py:139 apps.py:156 models.py:323
+#: apps.py:153 apps.py:171 models.py:358
 msgid "Documents"
 msgstr "Documente"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Index template node"
+msgid "Index created"
+msgstr "Nodul șablonului de index"
+
+#: events.py:15
+#, fuzzy
+#| msgid "Index instance"
+msgid "Index edited"
+msgstr "Exemplu de index"
 
 #: forms.py:19
 #, fuzzy
@@ -60,7 +72,7 @@ msgid "Index templates to be queued for rebuilding."
 msgstr ""
 "Indexuri care urmează să fie în coada de așteptare pentru reconstrucție."
 
-#: forms.py:20
+#: forms.py:20 links.py:30
 #, fuzzy
 #| msgid "Index template node"
 msgid "Index templates"
@@ -70,76 +82,76 @@ msgstr "Nodul șablonului de index"
 msgid "Creation date"
 msgstr "Data creării"
 
-#: links.py:23 links.py:31 links.py:51 links.py:55 models.py:58 views.py:94
-#: views.py:260
+#: links.py:24 links.py:39 links.py:59 links.py:63 models.py:60 views.py:149
+#: views.py:294
 msgid "Indexes"
 msgstr "Indexuri"
 
-#: links.py:40
+#: links.py:48
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Șterge și creează de la zero toate indexurile de documente."
 
-#: links.py:42 views.py:384
+#: links.py:50 views.py:418
 msgid "Rebuild indexes"
 msgstr "Refaceți index-uri"
 
-#: links.py:59 views.py:38
+#: links.py:67 views.py:87
 msgid "Create index"
 msgstr "Creați index"
 
-#: links.py:66 links.py:96
+#: links.py:74 links.py:104
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:77 links.py:101
+#: links.py:85 links.py:109
 msgid "Edit"
 msgstr "Editează"
 
-#: links.py:84
+#: links.py:92
 msgid "Tree template"
 msgstr "Arborele șablon"
 
-#: links.py:90
+#: links.py:98
 msgid "New child node"
 msgstr "Nou nod copil"
 
-#: models.py:34
+#: models.py:36
 msgid "Label"
 msgstr "Etichetă"
 
-#: models.py:38
+#: models.py:40
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
 "Această valoare va fi utilizată de alte aplicații pentru a face referință la "
 "acest index."
 
-#: models.py:39
+#: models.py:41
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:44
+#: models.py:46
 msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Cauză pentru acest index să fie vizibil și actualizat când documentul suferă "
 "schimbări."
 
-#: models.py:47 models.py:200
+#: models.py:49 models.py:235
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:57 models.py:184
+#: models.py:59 models.py:219
 msgid "Index"
 msgstr "Index"
 
-#: models.py:156
+#: models.py:191
 msgid "Index instance"
 msgstr "Exemplu de index"
 
-#: models.py:157
+#: models.py:192
 msgid "Index instances"
 msgstr "Exemple de index-uri"
 
-#: models.py:188
+#: models.py:223
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
@@ -148,17 +160,17 @@ msgstr ""
 "implicit al lui Django (https://docs.djangoproject.com/en/1.11/ref/templates/"
 "builtins/)"
 
-#: models.py:192
+#: models.py:227
 msgid "Indexing expression"
 msgstr "Expresie de indexare"
 
-#: models.py:197
+#: models.py:232
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 "Va face ca acest nod să fie vizibil și actualizat la modificarea datelor "
 "documentului."
 
-#: models.py:205
+#: models.py:240
 msgid ""
 "Check this option to have this node act as a container for documents and not "
 "as a parent for further nodes."
@@ -166,23 +178,23 @@ msgstr ""
 "Bifați această opțiune pentru a avea acest nod ca un container pentru "
 "documente și nu ca un părinte pentru nodurile suplimentare."
 
-#: models.py:208
+#: models.py:243
 msgid "Link documents"
 msgstr "Leagă documente"
 
-#: models.py:212
+#: models.py:247
 msgid "Index node template"
 msgstr "Șablon pt. nod index"
 
-#: models.py:213
+#: models.py:248
 msgid "Indexes node template"
 msgstr "Șabloane pt. noduri index"
 
-#: models.py:217
+#: models.py:252
 msgid "Root"
 msgstr "Rădăcină"
 
-#: models.py:273
+#: models.py:308
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -191,27 +203,27 @@ msgstr ""
 "Eroare la indexarea ducumentuluir: %(document)s; expresie: %(expression)s; "
 "%(exception)s"
 
-#: models.py:316
+#: models.py:351
 msgid "Index template node"
 msgstr "Nodul șablonului de index"
 
-#: models.py:319
+#: models.py:354
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:329
+#: models.py:364
 msgid "Index node instance"
 msgstr "Instanță a  nodului index"
 
-#: models.py:330
+#: models.py:365
 msgid "Indexes node instances"
 msgstr "Instanțele nodurilor index"
 
-#: models.py:444
+#: models.py:479
 msgid "Document index node instance"
 msgstr "Exemplu de nod index document"
 
-#: models.py:445
+#: models.py:480
 msgid "Document indexes node instances"
 msgstr "Documentul indexează instanțele de noduri"
 
@@ -259,17 +271,50 @@ msgstr "Indexați documentul"
 msgid "Rebuild index"
 msgstr "Refaceți indexul"
 
-#: views.py:57
+#: views.py:46
+#, fuzzy
+#| msgid "Available document types"
+msgid "Available indexes"
+msgstr "Tipuri de documente disponibile"
+
+#: views.py:47
+#, fuzzy
+#| msgid "Indexes"
+msgid "Indexes linked"
+msgstr "Indexuri"
+
+#: views.py:77
+#, fuzzy
+#| msgid ""
+#| "Only the documents of the types selected will be shown in the index when "
+#| "built. Only the events of the documents of the types select will trigger "
+#| "updates in the index."
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+"Numai documentele tipurilor selectate vor fi afișate în index atunci când "
+"sunt construite. Doar evenimentele din documentele selectate vor declanșa "
+"actualizări ale indexului."
+
+#: views.py:81
+#, fuzzy, python-format
+#| msgid "Indexes nodes containing document: %s"
+msgid "Indexes linked to document type: %s"
+msgstr "Nodurile indexurilor care conțin documentul: %s"
+
+#: views.py:109
 #, python-format
 msgid "Delete the index: %s?"
 msgstr "Ștergeți indexul: %s?"
 
-#: views.py:72
+#: views.py:124
 #, python-format
 msgid "Edit index: %s"
 msgstr "Editați indexul: %s"
 
-#: views.py:88
+#: views.py:143
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
 "template whose markers are replaced with direct properties of documents like "
@@ -280,24 +325,19 @@ msgstr ""
 "ale unor documente, cum ar fi eticheta sau descrierea, sau cele ale unor "
 "proprietăți extinse precum metadatele."
 
-#: views.py:93
+#: views.py:148
 msgid "There are no indexes."
 msgstr "Nu există indexuri."
 
-#: views.py:100
+#: views.py:161
 msgid "Available document types"
 msgstr "Tipuri de documente disponibile"
 
-#: views.py:102
+#: views.py:162
 msgid "Document types linked"
 msgstr "Tipuri de documente legate"
 
-#: views.py:118
-#, python-format
-msgid "Document types linked to index: %s"
-msgstr "Tipuri de documente legate de index: %s"
-
-#: views.py:121
+#: views.py:172
 msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
@@ -307,27 +347,32 @@ msgstr ""
 "sunt construite. Doar evenimentele din documentele selectate vor declanșa "
 "actualizări ale indexului."
 
-#: views.py:154
+#: views.py:176
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "Tipuri de documente legate de index: %s"
+
+#: views.py:188
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr "Arborele nod șablon pentru index: %s"
 
-#: views.py:184
+#: views.py:218
 #, python-format
 msgid "Create child node of: %s"
 msgstr "Creați un nod copil al: %s"
 
-#: views.py:208
+#: views.py:242
 #, python-format
 msgid "Delete the index template node: %s?"
 msgstr "Ștergeți nodul șablon index: %s?"
 
-#: views.py:232
+#: views.py:266
 #, python-format
 msgid "Edit the index template node: %s?"
 msgstr "Editați nodul șablonului index: %s?"
 
-#: views.py:255
+#: views.py:289
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
@@ -335,21 +380,21 @@ msgstr ""
 "Acest lucru ar putea însemna că nu au fost create șabloane de index sau că "
 "există șabloane index, dar nu sunt definite în mod corespunzător."
 
-#: views.py:259
+#: views.py:293
 msgid "There are no index instances available."
 msgstr "Nu există instanțe index disponibile."
 
-#: views.py:304
+#: views.py:338
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigare: %s"
 
-#: views.py:309
+#: views.py:343
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Conținutul pentru index: %s"
 
-#: views.py:363
+#: views.py:397
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
@@ -357,16 +402,16 @@ msgstr ""
 "Atribuiți tipul de document al acestui document într-un index pentru a fi "
 "afișat în instanțele unităților de organizare a acestor indici."
 
-#: views.py:368
+#: views.py:402
 msgid "This document is not in any index"
 msgstr "Acest document nu este în nici un index"
 
-#: views.py:372
+#: views.py:406
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Nodurile indexurilor care conțin documentul: %s"
 
-#: views.py:398
+#: views.py:432
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
