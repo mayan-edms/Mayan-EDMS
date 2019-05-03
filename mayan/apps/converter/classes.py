@@ -31,14 +31,17 @@ from .settings import setting_graphics_backend_config
 CHUNK_SIZE = 1024
 logger = logging.getLogger(__name__)
 
+
+libreoffice_path = yaml.load(
+    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+).get(
+    'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
+)
+
 try:
-    LIBREOFFICE = sh.Command(
-        yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
-        ).get(
-            'libreoffice_path', DEFAULT_LIBREOFFICE_PATH
-        )
-    ).bake('--headless', '--convert-to', 'pdf:writer_pdf_Export')
+    LIBREOFFICE = sh.Command(libreoffice_path).bake(
+        '--headless', '--convert-to', 'pdf:writer_pdf_Export'
+    )
 except sh.CommandNotFound:
     LIBREOFFICE = None
 

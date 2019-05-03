@@ -209,7 +209,10 @@
 * Add user logged in and logged out events.
 * Add transaction handling in more places.
 * Update ACLs tests to use ephimeral models.
-
+* Add new app to handle all dependencies.
+* Remove the licenses.py module and replace
+  it with a dependencies.py module.
+  
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

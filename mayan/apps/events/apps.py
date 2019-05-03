@@ -10,6 +10,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
+from .dependencies import *  # NOQA
 from .html_widgets import (
     ObjectLinkWidget, widget_event_actor_link, widget_event_type_link
 )
@@ -18,7 +19,6 @@ from .links import (
     link_events_list, link_notification_mark_read,
     link_notification_mark_read_all, link_user_notifications_list,
 )
-from .licenses import *  # NOQA
 
 
 class EventsApp(MayanAppConfig):

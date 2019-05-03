@@ -19,6 +19,7 @@ from mayan.apps.documents.signals import post_version_upload
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
+from .dependencies import *  # NOQA
 from .handlers import (
     handler_index_document, handler_initialize_new_ocr_settings,
     handler_ocr_document_version,

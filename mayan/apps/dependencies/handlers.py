@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 
-from .javascript import JSDependencyManager
+from .classes import JavaScriptDependency
 
 
 def handler_install_javascript(sender, **kwargs):
-    js_manager = JSDependencyManager()
-    js_manager.install()
+    JavaScriptDependency.install_multiple(subclass_only=True)

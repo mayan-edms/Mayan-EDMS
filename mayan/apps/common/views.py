@@ -16,10 +16,8 @@ from django.views.generic import RedirectView, TemplateView
 
 from mayan.apps.acls.models import AccessControlList
 
-from .exceptions import NotLatestVersion, UnknownLatestVersion
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
-    PackagesLicensesForm
 )
 from .generics import (
     ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
@@ -28,37 +26,11 @@ from .icons import icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions_runtime import permission_error_log_view
 from .settings import setting_home_view
-from .utils import check_version
 
 
 class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
-
-
-class CheckVersionView(SimpleView):
-    template_name = 'appearance/generic_template.html'
-
-    def get_extra_context(self):
-        try:
-            check_version()
-        except NotLatestVersion as exception:
-            message = _(
-                'The version you are using is outdated. The latest version '
-                'is %s'
-            ) % exception.upstream_version
-        except UnknownLatestVersion:
-            message = _(
-                'It is not possible to determine the latest version '
-                'available.'
-            )
-        else:
-            message = _('Your version is up-to-date.')
-
-        return {
-            'title': _('Check for updates'),
-            'content': message
-        }
 
 
 class CurrentUserLocaleProfileDetailsView(TemplateView):
@@ -204,19 +176,6 @@ class ObjectErrorLogEntryListView(SingleObjectListView):
 
     def get_object_list(self):
         return self.get_object().error_logs.all()
-
-
-class PackagesLicensesView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-
-    def get_extra_context(self):
-        # Use a function so that PackagesLicensesForm get initialized at every
-        # request
-        return {
-            'form': PackagesLicensesForm(),
-            'read_only': True,
-            'title': _('Other packages licenses'),
-        }
 
 
 class RootView(SimpleView):

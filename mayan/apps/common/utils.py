@@ -17,24 +17,13 @@ from django.utils.six.moves import reduce as reduce_function, xmlrpc_client
 import mayan
 from mayan.apps.common.compat import dict_type, dictionary_type
 
-from .exceptions import NotLatestVersion, UnknownLatestVersion
-from .literals import DJANGO_SQLITE_BACKEND, MAYAN_PYPI_NAME, PYPI_URL
+from .literals import DJANGO_SQLITE_BACKEND
 
 logger = logging.getLogger(__name__)
 
 
 def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
-
-
-def check_version():
-    pypi = xmlrpc_client.ServerProxy(PYPI_URL)
-    versions = pypi.package_releases(MAYAN_PYPI_NAME)
-    if not versions:
-        raise UnknownLatestVersion
-    else:
-        if versions[0] != mayan.__version__:
-            raise NotLatestVersion(upstream_version=versions[0])
 
 
 def encapsulate(function):

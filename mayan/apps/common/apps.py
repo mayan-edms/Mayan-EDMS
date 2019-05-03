@@ -20,21 +20,20 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 
 from .classes import Template
+from .dependencies import *  # NOQA
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
     handler_user_locale_profile_session_config, handler_user_locale_profile_create
 )
 from .links import (
-    link_about, link_check_version, link_current_user_locale_profile_edit,
-    link_license, link_object_error_list_clear, link_packages_licenses,
-    link_setup, link_tools
+    link_about, link_current_user_locale_profile_edit, link_license,
+    link_object_error_list_clear, link_setup, link_tools
 )
 
 from .literals import DELETE_STALE_UPLOADS_INTERVAL, MESSAGE_SQLITE_WARNING
 from .menus import (
     menu_about, menu_main, menu_secondary, menu_user
 )
-from .licenses import *  # NOQA
 from .queues import *  # NOQA - Force queues registration
 from .settings import (
     setting_auto_logging, setting_production_error_log_path,
@@ -67,8 +66,7 @@ class MayanAppConfig(apps.AppConfig):
             urlpatterns += url(
                 regex=r'^{}'.format(top_url),
                 view=include(
-                    '{}.urls'.format(self.name),
-                    namespace=self.app_namespace or self.name
+                    '{}.urls'.format(self.name), namespace=self.app_namespace or self.name
                 )
             ),
         except ImportError as exception:
@@ -142,7 +140,6 @@ class CommonApp(MayanAppConfig):
         menu_about.bind_links(
             links=(
                 link_tools, link_setup, link_about, link_license,
-                link_packages_licenses, link_check_version
             )
         )
 

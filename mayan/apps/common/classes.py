@@ -242,19 +242,6 @@ class ModelProperty(object):
         cls._registry.append(klass)
 
 
-class Package(object):
-    _registry = []
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry
-
-    def __init__(self, label, license_text):
-        self.label = label
-        self.license_text = license_text
-        self.__class__._registry.append(self)
-
-
 class PropertyHelper(object):
     """
     Makes adding fields using __class__.add_to_class easier.

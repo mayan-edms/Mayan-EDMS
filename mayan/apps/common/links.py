@@ -6,11 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_about, icon_check_version, icon_current_user_locale_profile_details,
+    icon_about, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
     icon_forum, icon_license, icon_object_error_list_with_icon,
-    icon_packages_licenses, icon_setup, icon_source_code, icon_support,
-    icon_tools
+    icon_setup, icon_source_code, icon_support, icon_tools
 )
 from .permissions_runtime import permission_error_log_view
 
@@ -35,10 +34,6 @@ def get_kwargs_factory(variable_name):
 
 link_about = Link(
     icon_class=icon_about, text=_('About this'), view='common:about_view'
-)
-link_check_version = Link(
-    icon_class=icon_check_version, text=_('Check for updates'),
-    view='common:check_version_view'
 )
 link_current_user_locale_profile_details = Link(
     icon_class=icon_current_user_locale_profile_details,
@@ -76,10 +71,6 @@ link_forum = Link(
 )
 link_license = Link(
     icon_class=icon_license, text=_('License'), view='common:license_view'
-)
-link_packages_licenses = Link(
-    icon_class=icon_packages_licenses, text=_('Other packages licenses'),
-    view='common:packages_licenses_view'
 )
 link_setup = Link(
     icon_class=icon_setup, text=_('Setup'), view='common:setup_list'

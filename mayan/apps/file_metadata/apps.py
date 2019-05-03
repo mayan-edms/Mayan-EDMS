@@ -21,6 +21,7 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import FileMetadataHelper
+from .dependencies import *  # NOQA
 from .drivers import *  # NOQA
 from .events import (
     event_file_metadata_document_version_finish,

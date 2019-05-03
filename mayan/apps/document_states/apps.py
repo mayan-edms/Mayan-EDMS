@@ -21,6 +21,7 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import DocumentStateHelper, WorkflowAction
+from .dependencies import *  # NOQA
 from .handlers import (
     handler_index_document, handler_launch_workflow, handler_trigger_transition
 )
@@ -91,6 +92,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         WorkflowAction.initialize()
 
+
         ModelAttribute(
             model=Document,
             name='workflow.< workflow internal name >.get_current_state',
@@ -106,7 +108,6 @@ class DocumentStatesApp(MayanAppConfig):
                 'selected workflow'
             )
         )
-
         ModelPermission.register(
             model=Document, permissions=(permission_workflow_view,)
         )

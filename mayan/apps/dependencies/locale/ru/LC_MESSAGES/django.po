@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-27 18:39-0400\n"
+"POT-Creation-Date: 2019-05-03 01:04-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,245 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:17
+#: apps.py:29 links.py:43 permissions.py:7
 msgid "Dependencies"
+msgstr ""
+
+#: apps.py:35 apps.py:70 apps.py:78
+msgid "Label"
+msgstr ""
+
+#: apps.py:38
+msgid "Internal name"
+msgstr ""
+
+#: apps.py:41 apps.py:73 apps.py:82
+msgid "Description"
+msgstr ""
+
+#: apps.py:45
+msgid "Type"
+msgstr ""
+
+#: apps.py:49
+msgid "Other data"
+msgstr ""
+
+#: apps.py:53
+msgid "Declared by"
+msgstr ""
+
+#: apps.py:57
+msgid "Version"
+msgstr ""
+
+#: apps.py:61 classes.py:622
+msgid "Environment"
+msgstr ""
+
+#: apps.py:65
+msgid "Check"
+msgstr ""
+
+#: classes.py:60
+msgid ""
+"Normal environment for end users. A missing depedencies under this "
+"environment will result issues and error during normal use."
+msgstr ""
+
+#: classes.py:62
+msgid "Production"
+msgstr ""
+
+#: classes.py:66
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing depedencies under this environment."
+msgstr ""
+
+#: classes.py:68
+msgid "Development"
+msgstr ""
+
+#: classes.py:72
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+
+#: classes.py:75
+msgid "Testing"
+msgstr ""
+
+#: classes.py:232
+msgid "Need to specify at least one: app_label or module."
+msgstr ""
+
+#: classes.py:237
+#, python-format
+msgid "Dependency \"%s\" already registered."
+msgstr ""
+
+#: classes.py:263
+#, python-format
+msgid "Installing package: %s... "
+msgstr ""
+
+#: classes.py:268
+msgid "Already installed."
+msgstr ""
+
+#: classes.py:271 classes.py:274
+msgid "Complete."
+msgstr ""
+
+#: classes.py:296
+msgid "Installed and correct version"
+msgstr ""
+
+#: classes.py:298
+msgid "Missing or incorrect version"
+msgstr ""
+
+#: classes.py:327
+msgid "None"
+msgstr ""
+
+#: classes.py:336
+msgid "Not specified"
+msgstr ""
+
+#: classes.py:351
+msgid "Executables that are called directly by the code."
+msgstr ""
+
+#: classes.py:353
+msgid "Binary"
+msgstr ""
+
+#: classes.py:370
+msgid ""
+"Javascript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
+msgstr ""
+
+#: classes.py:373
+msgid "Javascript"
+msgstr ""
+
+#: classes.py:579
+msgid "Python packages downloaded from PyPI."
+msgstr ""
+
+#: classes.py:581
+msgid "Python"
+msgstr ""
+
+#: classes.py:604
+msgid "Declared in app"
+msgstr ""
+
+#: classes.py:605
+msgid "Show depedencies by the app that declared them."
+msgstr ""
+
+#: classes.py:609
+msgid "Class"
+msgstr ""
+
+#: classes.py:610
+msgid ""
+"Show the different classes of depedencies. Classes are usually divided by "
+"language or the file types of the depedency."
+msgstr ""
+
+#: classes.py:615
+msgid "State"
+msgstr ""
+
+#: classes.py:616
+msgid ""
+"Show the different states of the depedencies. True means that the "
+"depedencies is installed and is of a correct version. False means the "
+"depedencies is missing or an incorrect version is present."
+msgstr ""
+
+#: classes.py:623
+msgid ""
+"Depedencies required for an environment might not be required for another. "
+"Example environments: Production, Development."
+msgstr ""
+
+#: links.py:11 views.py:35
+msgid "Check for updates"
+msgstr ""
+
+#: links.py:17
+msgid "Groups"
+msgstr ""
+
+#: links.py:25
+msgid "Entries"
+msgstr ""
+
+#: links.py:33
+msgid "Details"
+msgstr ""
+
+#: links.py:38
+msgid "Dependencies licenses"
 msgstr ""
 
 #: management/commands/installjavascript.py:15
 msgid "Process a specific app."
+msgstr ""
+
+#: management/commands/installjavascript.py:19
+msgid "Force installation even if already installed."
+msgstr ""
+
+#: permissions.py:10
+msgid "View dependencies"
+msgstr ""
+
+#: views.py:23
+#, python-format
+msgid "The version you are using is outdated. The latest version is %s"
+msgstr ""
+
+#: views.py:28
+msgid "It is not possible to determine the latest version available."
+msgstr ""
+
+#: views.py:32
+msgid "Your version is up-to-date."
+msgstr ""
+
+#: views.py:49
+#, python-format
+msgid "Entries for dependency group: %s"
+msgstr ""
+
+#: views.py:62 views.py:107
+#, python-format
+msgid "Group %s not found."
+msgstr ""
+
+#: views.py:75
+msgid "Dependency groups"
+msgstr ""
+
+#: views.py:95
+#, python-format
+msgid "Dependency group and entry: %(group)s, %(entry)s"
+msgstr ""
+
+#: views.py:119
+#, python-format
+msgid "Entry %s not found."
+msgstr ""
+
+#: views.py:137
+msgid "Other packages licenses"
 msgstr ""

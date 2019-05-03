@@ -13,6 +13,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.search import document_page_search, document_search
 from mayan.apps.navigation.classes import SourceColumn
 
+from .dependencies import *  # NOQA
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
     link_document_cabinet_remove, link_document_cabinet_add,

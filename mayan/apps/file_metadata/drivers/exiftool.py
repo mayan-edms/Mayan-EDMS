@@ -27,20 +27,17 @@ class EXIFToolDriver(FileMetadataDriver):
     internal_name = 'exiftool'
 
     def __init__(self, *args, **kwargs):
-        driver_arguments = yaml.load(
-            stream=setting_drivers_arguments.value, Loader=SafeLoader
-        )
+        auto_initialize = kwargs.pop('auto_initialize', True)
 
-        exiftool_path = driver_arguments.get(
-            'exif_driver', {}
-        ).get('exiftool_path', DEFAULT_EXIF_PATH)
+        self.read_settings()
 
-        try:
-            self.command_exiftool = sh.Command(path=exiftool_path)
-        except sh.CommandNotFound:
-            self.command_exiftool = None
-        else:
-            self.command_exiftool = self.command_exiftool.bake('-j')
+        if auto_initialize:
+            try:
+                self.command_exiftool = sh.Command(path=self.exiftool_path)
+            except sh.CommandNotFound:
+                self.command_exiftool = None
+            else:
+                self.command_exiftool = self.command_exiftool.bake('-j')
 
     def _process(self, document_version):
         if self.command_exiftool:
@@ -58,6 +55,16 @@ class EXIFToolDriver(FileMetadataDriver):
                 'EXIFTool binary not found, not processing document '
                 'version: %s', document_version
             )
+
+    def read_settings(self):
+        driver_arguments = yaml.load(
+            stream=setting_drivers_arguments.value, Loader=SafeLoader
+        )
+
+        self.exiftool_path = driver_arguments.get(
+            'exif_driver', {}
+        ).get('exiftool_path', DEFAULT_EXIF_PATH)
+
 
 
 EXIFToolDriver.register(

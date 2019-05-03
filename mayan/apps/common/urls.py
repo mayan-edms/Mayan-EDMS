@@ -7,26 +7,17 @@ from .api_views import (
     APIContentTypeList, APITemplateDetailView, APITemplateListView
 )
 from .views import (
-    AboutView, CheckVersionView, CurrentUserLocaleProfileDetailsView,
+    AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
     LicenseView, ObjectErrorLogEntryListClearView, ObjectErrorLogEntryListView,
-    PackagesLicensesView, RootView, SetupListView, ToolsListView,
-    multi_object_action_view
+    RootView, SetupListView, ToolsListView, multi_object_action_view
 )
 
 urlpatterns = [
     url(regex=r'^$', view=RootView.as_view(), name='root'),
     url(regex=r'^home/$', view=HomeView.as_view(), name='home'),
     url(regex=r'^about/$', view=AboutView.as_view(), name='about_view'),
-    url(
-        regex=r'^check_version/$', view=CheckVersionView.as_view(),
-        name='check_version_view'
-    ),
     url(regex=r'^license/$', view=LicenseView.as_view(), name='license_view'),
-    url(
-        regex=r'^packages/licenses/$', view=PackagesLicensesView.as_view(),
-        name='packages_licenses_view'
-    ),
     url(
         regex=r'^object/multiple/action/$', view=multi_object_action_view,
         name='multi_object_action_view'

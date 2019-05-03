@@ -8,7 +8,7 @@
 {% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static 'cabinets/packages/jstree/dist/themes/default/style.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'cabinets/node_modules/jstree/dist/themes/default/style.min.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@
 
 {% block javascript %}
     <script>
-        $.getScript( "{% static 'cabinets/packages/jstree/dist/jstree.min.js' %}" )
+        $.getScript( "{% static 'cabinets/node_modules/jstree/dist/jstree.min.js' %}" )
             .done(function( script, textStatus ) {
             $(function () {
                 var jstreeElement = $('.jstree');

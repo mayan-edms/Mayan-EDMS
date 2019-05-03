@@ -10,11 +10,11 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import StatisticLineChart, StatisticNamespace
+from .dependencies import *  # NOQA
 from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view
 )
-from .licenses import *  # NOQA
 from .queues import *  # NOQA
 from .tasks import task_execute_statistic  # NOQA - Force registration of task
 

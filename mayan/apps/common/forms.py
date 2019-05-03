@@ -12,7 +12,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 
-from .classes import Package
 from .models import UserLocaleProfile
 from .utils import introspect_attribute, resolve_attribute
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
@@ -298,11 +297,3 @@ class LocaleProfileForm_view(DetailForm):
     class Meta:
         fields = ('language', 'timezone')
         model = UserLocaleProfile
-
-
-class PackagesLicensesForm(FileDisplayForm):
-    def __init__(self, *args, **kwargs):
-        super(PackagesLicensesForm, self).__init__(*args, **kwargs)
-        self.fields['text'].initial = '\n\n'.join(
-            ['{}\n{}'.format(package.label, package.license_text) for package in Package.get_all()]
-        )

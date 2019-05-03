@@ -242,6 +242,9 @@ Other changes
 * Add transaction handling in more places: Checkouts, documents,
   metadata, tags.
 * Update ACLs tests to use ephimeral models.
+* Add new app to handle all dependencies.
+* Remove the licenses.py module and replace
+  it with a dependencies.py module.
 
 Removals
 --------

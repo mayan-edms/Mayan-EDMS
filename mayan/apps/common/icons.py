@@ -11,7 +11,6 @@ icon_add_all = Icon(
 )
 icon_assign_remove_add = Icon(driver_name='fontawesome', symbol='plus')
 icon_assign_remove_remove = Icon(driver_name='fontawesome', symbol='minus')
-icon_check_version = Icon(driver_name='fontawesome', symbol='sync')
 icon_current_user_locale_profile_details = Icon(
     driver_name='fontawesome', symbol='globe'
 )
@@ -39,9 +38,6 @@ icon_object_error_list_with_icon = Icon(
 )
 icon_ok = Icon(
     driver_name='fontawesome', symbol='check'
-)
-icon_packages_licenses = Icon(
-    driver_name='fontawesome', symbol='certificate'
 )
 icon_remove_all = Icon(
     driver_name='fontawesome-layers', data=[

@@ -27,14 +27,14 @@ from ..literals import (
     DEFAULT_PDFINFO_PATH
 )
 
+pdftoppm_path = yaml.load(
+    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+).get(
+    'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
+)
+
 try:
-    pdftoppm = sh.Command(
-        yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
-        ).get(
-            'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
-        )
-    )
+    pdftoppm = sh.Command(pdftoppm_path)
 except sh.CommandNotFound:
     pdftoppm = None
 else:
@@ -56,14 +56,14 @@ else:
 
     pdftoppm = pdftoppm.bake(pdftoppm_format, '-r', pdftoppm_dpi)
 
+pdfinfo_path=yaml.load(
+    stream=setting_graphics_backend_config.value, Loader=SafeLoader
+).get(
+    'pdfinfo_path', DEFAULT_PDFINFO_PATH
+)
+
 try:
-    pdfinfo = sh.Command(
-        yaml.load(
-            stream=setting_graphics_backend_config.value, Loader=SafeLoader
-        ).get(
-            'pdfinfo_path', DEFAULT_PDFINFO_PATH
-        )
-    )
+    pdfinfo = sh.Command(pdfinfo_path)
 except sh.CommandNotFound:
     pdfinfo = None
 
