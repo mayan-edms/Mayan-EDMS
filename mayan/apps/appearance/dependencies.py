@@ -14,7 +14,7 @@ JavaScriptDependency(
 )
 JavaScriptDependency(
     label=_('Fancybox'), module=__name__, name='@fancyapps/fancybox',
-    version_string='=3.3.0'
+    version_string='=3.2.5'
 )
 JavaScriptDependency(
     label=_('FontAwesome'), module=__name__,
