@@ -35,8 +35,8 @@ class APIObjectACLListView(generics.ListCreateAPIView):
             permission_required = permission_acl_edit
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=content_object
+            obj=content_object, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return content_object
@@ -94,8 +94,8 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=content_object
+            obj=content_object, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return content_object
@@ -130,7 +130,8 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
             permission = permission_acl_edit
 
         AccessControlList.objects.check_access(
-            obj=content_object, permissions=permission, user=self.request.user
+            obj=content_object, permissions=(permission,),
+            user=self.request.user
         )
 
         return content_object
@@ -191,7 +192,8 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
             permission = permission_acl_edit
 
         AccessControlList.objects.check_access(
-            obj=content_object, permissions=permission, user=self.request.user
+            obj=content_object, permissions=(permission,),
+            user=self.request.user
         )
 
         return content_object

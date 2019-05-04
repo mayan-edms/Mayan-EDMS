@@ -65,6 +65,7 @@ class DocumentSignaturesApp(MayanAppConfig):
             app_label='django_gpg', model_name='Key'
         )
 
+        DetachedSignature = self.get_model(model_name='DetachedSignature')
         EmbeddedSignature = self.get_model(model_name='EmbeddedSignature')
 
         SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
@@ -85,6 +86,12 @@ class DocumentSignaturesApp(MayanAppConfig):
                 permission_document_version_signature_view,
                 permission_document_version_signature_upload,
             )
+        )
+        ModelPermission.register_inheritance(
+            model=SignatureBaseModel, related='document_version'
+        )
+        ModelPermission.register_inheritance(
+            model=DetachedSignature, related='document_version'
         )
 
         SourceColumn(

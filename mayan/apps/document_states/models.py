@@ -417,8 +417,9 @@ class WorkflowInstance(models.Model):
                     all transition options.
                     """
                     AccessControlList.objects.check_access(
-                        permissions=permission_workflow_transition,
-                        user=_user, obj=self.workflow
+                        obj=self.workflow,
+                        permissions=(permission_workflow_transition,),
+                        user=_user
                     )
                 except PermissionDenied:
                     """
@@ -427,7 +428,8 @@ class WorkflowInstance(models.Model):
                     """
                     queryset = AccessControlList.objects.filter_by_access(
                         permission=permission_workflow_transition,
-                        user=_user, queryset=queryset
+                        queryset=queryset,
+                        user=_user
                     )
             return queryset
         else:

@@ -29,23 +29,22 @@ def get_kwargs_factory(variable_name):
     return get_kwargs
 
 
-link_acl_delete = Link(
-    args='resolved_object.pk', icon_class=icon_acl_delete,
-    permissions=(permission_acl_edit,), permissions_related='content_object',
-    tags='dangerous', text=_('Delete'), view='acls:acl_delete',
-)
-link_acl_list = Link(
-    icon_class=icon_acl_list, kwargs=get_kwargs_factory('resolved_object'),
-    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
-)
 link_acl_create = Link(
     icon_class=icon_acl_new, kwargs=get_kwargs_factory('resolved_object'),
     permissions=(permission_acl_edit,), text=_('New ACL'),
     view='acls:acl_create'
 )
+link_acl_delete = Link(
+    args='resolved_object.pk', icon_class=icon_acl_delete,
+    permissions=(permission_acl_edit,), tags='dangerous', text=_('Delete'),
+    view='acls:acl_delete'
+)
+link_acl_list = Link(
+    icon_class=icon_acl_list, kwargs=get_kwargs_factory('resolved_object'),
+    permissions=(permission_acl_view,), text=_('ACLs'), view='acls:acl_list'
+)
 link_acl_permissions = Link(
     args='resolved_object.pk', icon_class=icon_acl_permissions,
     permissions=(permission_acl_edit,),
-    permissions_related='content_object', text=_('Permissions'),
-    view='acls:acl_permissions',
+    text=_('Permissions'), view='acls:acl_permissions'
 )

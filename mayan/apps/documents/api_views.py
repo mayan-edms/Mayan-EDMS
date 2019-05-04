@@ -16,7 +16,7 @@ from mayan.apps.rest_api.permissions import MayanPermission
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
-    Document, DocumentType, RecentDocument
+    DeletedDocument, Document, DocumentType, RecentDocument
 )
 from .permissions import (
     permission_document_create, permission_document_delete,
@@ -42,14 +42,14 @@ from .tasks import task_generate_document_page_image
 logger = logging.getLogger(__name__)
 
 
-class APIDeletedDocumentListView(generics.ListAPIView):
+class APITrashedDocumentListView(generics.ListAPIView):
     """
     Returns a list of all the trashed documents.
     """
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': (permission_document_view,)}
     permission_classes = (MayanPermission,)
-    queryset = Document.trash.all()
+    queryset = DeletedDocument.objects.all()
     serializer_class = DeletedDocumentSerializer
 
 
@@ -64,7 +64,7 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
         'GET': (permission_document_view,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Document.trash.all()
+    queryset = DeletedDocument.objects.all()
     serializer_class = DeletedDocumentSerializer
 
 
@@ -76,7 +76,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         'POST': (permission_document_restore,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Document.trash.all()
+    queryset = DeletedDocument.objects.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -143,8 +143,8 @@ class APIDocumentListView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         AccessControlList.objects.check_access(
-            permissions=(permission_document_create,), user=self.request.user,
-            obj=serializer.validated_data['document_type']
+            obj=serializer.validated_data['document_type'],
+            permissions=(permission_document_create,), user=self.request.user
         )
         serializer.save(_user=self.request.user)
 
@@ -164,7 +164,8 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         document = get_object_or_404(Document.passthrough, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permission_required, self.request.user, document
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
         )
         return document
 
@@ -231,7 +232,8 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permission_required, self.request.user, document
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
         )
         return document
 
@@ -309,8 +311,8 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=permission_document_type_view, user=self.request.user,
-            obj=document_type
+            obj=document_type, permissions=(permission_document_type_view,),
+            user=self.request.user
         )
 
         return document_type.documents.all()
@@ -326,8 +328,8 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=(permission_document_download,), user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_document_download,),
+            user=self.request.user
         )
         return document
 
@@ -420,7 +422,8 @@ class APIDocumentVersionPageListView(generics.ListAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permission_document_view, self.request.user, document
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
         )
         return document
 
@@ -442,7 +445,6 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
     mayan_object_permissions = {
         'GET': (permission_document_version_view,),
     }
-    mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
 
     def create(self, request, *args, **kwargs):
@@ -471,8 +473,8 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=(permission_document_new_version,),
-            user=self.request.user, obj=document
+            obj=document, permissions=(permission_document_new_version,),
+            user=self.request.user,
         )
         serializer.save(document=document, _user=self.request.user)
 
@@ -497,7 +499,8 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permission_required, self.request.user, document
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
         )
         return document
 

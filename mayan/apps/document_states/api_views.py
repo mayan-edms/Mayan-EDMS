@@ -40,8 +40,8 @@ class APIDocumentTypeWorkflowListView(generics.ListAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_type_view, user=self.request.user,
-            obj=document_type
+            obj=document_type, permissions=(permission_document_type_view,),
+            user=self.request.user
         )
 
         return document_type
@@ -105,8 +105,8 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -158,8 +158,8 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -261,8 +261,8 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -304,8 +304,8 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -357,8 +357,8 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -411,8 +411,8 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=workflow
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return workflow
@@ -435,8 +435,8 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_workflow_view,),
+            user=self.request.user
         )
 
         return document
@@ -460,8 +460,8 @@ class APIWorkflowInstanceView(generics.RetrieveAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_workflow_view,),
+            user=self.request.user
         )
 
         return document
@@ -488,9 +488,10 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
             Failing that, check for ACLs for any of the workflow's transitions.
             Failing that, then raise PermissionDenied
             """
+            # TODO: Improvement above
             AccessControlList.objects.check_access(
-                permissions=permission_workflow_view, user=self.request.user,
-                obj=document
+                obj=document, permissions=(permission_workflow_view,),
+                user=self.request.user
             )
 
         return document

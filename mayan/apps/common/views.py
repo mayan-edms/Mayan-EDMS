@@ -145,7 +145,7 @@ class ObjectErrorLogEntryListClearView(ConfirmView):
 class ObjectErrorLogEntryListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            obj=self.get_object(), permissions=permission_error_log_view,
+            obj=self.get_object(), permissions=(permission_error_log_view,),
             user=request.user
         )
 

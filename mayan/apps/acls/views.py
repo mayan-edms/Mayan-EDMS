@@ -44,7 +44,7 @@ class ACLCreateView(SingleObjectCreateView):
             raise Http404
 
         AccessControlList.objects.check_access(
-            obj=self.content_object, permissions=permission_acl_edit,
+            obj=self.content_object, permissions=(permission_acl_edit,),
             user=request.user
         )
 
@@ -86,7 +86,7 @@ class ACLDeleteView(SingleObjectDeleteView):
         acl = get_object_or_404(klass=AccessControlList, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=acl.content_object, permissions=permission_acl_edit,
+            obj=acl.content_object, permissions=(permission_acl_edit,),
             user=request.user
         )
 
@@ -126,7 +126,7 @@ class ACLListView(SingleObjectListView):
             raise Http404
 
         AccessControlList.objects.check_access(
-            obj=self.content_object, permissions=permission_acl_view,
+            obj=self.content_object, permissions=(permission_acl_view,),
             user=request.user
         )
 

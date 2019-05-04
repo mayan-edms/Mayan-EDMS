@@ -212,7 +212,17 @@
 * Add new app to handle all dependencies.
 * Remove the licenses.py module and replace
   it with a dependencies.py module.
-  
+* Backport ACL computation improvements.
+* Remove model permission proxy models.
+* Remove related access control argument. This is
+  now handled by the related field registration.
+* Allow nested access control checking.
+* check_access's permissions argument must now be
+  an interable.
+* Remove permissions_related from links.
+* Remove mayan_permission_attribute_check from
+  API permission.
+
 3.1.11 (2019-04-XX)
 ===================
 * Fix multiple tag selection wizard step.

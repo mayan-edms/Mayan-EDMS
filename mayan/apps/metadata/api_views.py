@@ -43,8 +43,8 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return document
@@ -103,8 +103,8 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return document
@@ -175,8 +175,8 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document_type
+            obj=document_type, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return document_type
@@ -232,8 +232,8 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_required, user=self.request.user,
-            obj=document_type
+            obj=document_type, permissions=(permission_required,),
+            user=self.request.user
         )
 
         return document_type

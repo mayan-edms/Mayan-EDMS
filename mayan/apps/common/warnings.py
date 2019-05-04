@@ -5,3 +5,9 @@ class DatabaseWarning(UserWarning):
     """
     Warning when using unsupported database backends
     """
+
+
+class InterfaceWarning(UserWarning):
+    """
+    Warning when using obsolete internal interfaces
+    """

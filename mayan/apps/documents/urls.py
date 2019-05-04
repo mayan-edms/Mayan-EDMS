@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .api_views import (
-    APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
+    APITrashedDocumentListView, APIDeletedDocumentRestoreView,
     APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentView,
     APIDocumentListView, APIDocumentVersionDownloadView,
     APIDocumentPageImageView, APIDocumentPageView,
@@ -13,31 +13,33 @@ from .api_views import (
     APIRecentDocumentListView
 )
 from .views import (
-    ClearImageCacheView, DeletedDocumentDeleteView,
-    DeletedDocumentDeleteManyView, DeletedDocumentListView,
-    DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    ClearImageCacheView, DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentDuplicatesListView, DocumentEditView,
     DocumentListView, DocumentPageListView, DocumentPageNavigationFirst,
     DocumentPageNavigationLast, DocumentPageNavigationNext,
     DocumentPageNavigationPrevious, DocumentPageRotateLeftView,
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
-    DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
-    DocumentTransformationsClearView, DocumentTransformationsCloneView,
-    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
+    DocumentPrint, DocumentTransformationsClearView,
+    DocumentTransformationsCloneView, DocumentTypeCreateView,
     DocumentTypeDeleteView, DocumentTypeDocumentListView,
     DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentUpdatePageCountView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentVersionView,
-    DocumentView, DuplicatedDocumentListView, EmptyTrashCanView,
+    DocumentView, DuplicatedDocumentListView,
     RecentAccessDocumentListView, RecentAddedDocumentListView,
     ScanDuplicatedDocuments
 )
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
 )
+from .views.trashed_document_views import (
+    DocumentTrashView, EmptyTrashCanView, TrashedDocumentDeleteView,
+    TrashedDocumentListView, TrashedDocumentRestoreView
+)
+
 
 urlpatterns_favorite_documents = [
     url(
@@ -62,6 +64,42 @@ urlpatterns_favorite_documents = [
         view=FavoriteRemoveView.as_view(),
         name='document_multiple_remove_from_favorites'
     ),
+    url(
+        regex=r'^trash_can/empty/$', view=EmptyTrashCanView.as_view(),
+        name='trash_can_empty'
+    ),
+]
+
+urlpatterns_trashed_documents = [
+    url(
+        regex=r'^(?P<pk>\d+)/trash/$', view=DocumentTrashView.as_view(),
+        name='document_trash'
+    ),
+    url(
+        regex=r'^multiple/trash/$', view=DocumentTrashView.as_view(),
+        name='document_multiple_trash'
+    ),
+    url(
+        regex=r'^list/deleted/$', view=TrashedDocumentListView.as_view(),
+        name='document_list_deleted'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/restore/$',
+        view=TrashedDocumentRestoreView.as_view(), name='document_restore'
+    ),
+    url(
+        regex=r'^multiple/restore/$', view=TrashedDocumentRestoreView.as_view(),
+        name='document_multiple_restore'
+    ),
+    url(
+        regex=r'^(?P<pk>\d+)/delete/$',
+        view=TrashedDocumentDeleteView.as_view(), name='document_delete'
+    ),
+    url(
+        regex=r'^multiple/delete/$',
+        view=TrashedDocumentDeleteView.as_view(),
+        name='document_multiple_delete'
+    ),
 ]
 
 urlpatterns = [
@@ -77,10 +115,6 @@ urlpatterns = [
         regex=r'^list/recent_added/$',
         view=RecentAddedDocumentListView.as_view(),
         name='document_list_recent_added'
-    ),
-    url(
-        regex=r'^list/deleted/$', view=DeletedDocumentListView.as_view(),
-        name='document_list_deleted'
     ),
     url(
         regex=r'^list/duplicated/$',
@@ -101,23 +135,6 @@ urlpatterns = [
         name='document_duplicates_list'
     ),
     url(
-        regex=r'^(?P<pk>\d+)/restore/$', view=DocumentRestoreView.as_view(),
-        name='document_restore'
-    ),
-    url(
-        regex=r'^multiple/restore/$', view=DocumentRestoreManyView.as_view(),
-        name='document_multiple_restore'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/delete/$',
-        view=DeletedDocumentDeleteView.as_view(), name='document_delete'
-    ),
-    url(
-        regex=r'^multiple/delete/$',
-        view=DeletedDocumentDeleteManyView.as_view(),
-        name='document_multiple_delete'
-    ),
-    url(
         regex=r'^(?P<pk>\d+)/type/$',
         view=DocumentDocumentTypeEditView.as_view(),
         name='document_document_type_edit'
@@ -125,14 +142,6 @@ urlpatterns = [
     url(
         regex=r'^multiple/type/$', view=DocumentDocumentTypeEditView.as_view(),
         name='document_multiple_document_type_edit'
-    ),
-    url(
-        regex=r'^(?P<pk>\d+)/trash/$', view=DocumentTrashView.as_view(),
-        name='document_trash'
-    ),
-    url(
-        regex=r'^multiple/trash/$', view=DocumentTrashManyView.as_view(),
-        name='document_multiple_trash'
     ),
     url(
         regex=r'^(?P<pk>\d+)/edit/$', view=DocumentEditView.as_view(),
@@ -218,11 +227,6 @@ urlpatterns = [
         regex=r'^cache/clear/$', view=ClearImageCacheView.as_view(),
         name='document_clear_image_cache'
     ),
-    url(
-        regex=r'^trash_can/empty/$', view=EmptyTrashCanView.as_view(),
-        name='trash_can_empty'
-    ),
-
     url(
         regex=r'^page/(?P<pk>\d+)/$', view=DocumentPageView.as_view(),
         name='document_page_view'
@@ -323,7 +327,7 @@ urlpatterns = [
     ),
 ]
 urlpatterns.extend(urlpatterns_favorite_documents)
-
+urlpatterns.extend(urlpatterns_trashed_documents)
 
 api_urls = [
     url(
@@ -384,7 +388,7 @@ api_urls = [
     ),
     url(
         regex=r'^trashed_documents/$',
-        view=APIDeletedDocumentListView.as_view(), name='trasheddocument-list'
+        view=APITrashedDocumentListView.as_view(), name='trasheddocument-list'
     ),
     url(
         regex=r'^trashed_documents/(?P<pk>[0-9]+)/$',

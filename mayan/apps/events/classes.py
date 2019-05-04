@@ -113,8 +113,9 @@ class EventType(object):
                         if result.target:
                             try:
                                 AccessControlList.objects.check_access(
-                                    permissions=permission_events_view,
-                                    user=user, obj=result.target
+                                    obj=result.target,
+                                    permissions=(permission_events_view,),
+                                    user=user
                                 )
                             except PermissionDenied:
                                 pass
@@ -139,8 +140,9 @@ class EventType(object):
                         if relationship.exists():
                             try:
                                 AccessControlList.objects.check_access(
-                                    permissions=permission_events_view,
-                                    user=user, obj=result.target
+                                    obj=result.target,
+                                    permissions=(permission_events_view,),
+                                    user=user
                                 )
                             except PermissionDenied:
                                 pass
@@ -161,8 +163,9 @@ class EventType(object):
                         if relationship.exists():
                             try:
                                 AccessControlList.objects.check_access(
-                                    permissions=permission_events_view,
-                                    user=user, obj=result.action_object
+                                    obj=result.action_object,
+                                    permissions=(permission_events_view,),
+                                    user=user
                                 )
                             except PermissionDenied:
                                 pass
@@ -191,7 +194,6 @@ class ModelEventType(object):
     Class to allow matching a model to a specific set of events.
     """
     _inheritances = {}
-    _proxies = {}
     _registry = {}
 
     @classmethod
@@ -210,11 +212,6 @@ class ModelEventType(object):
 
         if class_events:
             events.extend(class_events)
-
-        proxy = cls._proxies.get(type(instance))
-
-        if proxy:
-            events.extend(cls._registry.get(proxy))
 
         pks = [
             event.id for event in set(events)
@@ -237,7 +234,3 @@ class ModelEventType(object):
     @classmethod
     def register_inheritance(cls, model, related):
         cls._inheritances[model] = related
-
-    @classmethod
-    def register_proxy(cls, source, model):
-        cls._proxies[model] = source

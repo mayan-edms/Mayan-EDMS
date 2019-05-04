@@ -14,12 +14,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.checkouts.models import NewVersionBlock
-from mayan.apps.common.menus import menu_facet
-from mayan.apps.common.models import SharedUploadedFile
 from mayan.apps.common.generics import (
     ConfirmView, MultiFormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.common.menus import menu_facet
+from mayan.apps.common.mixins import ExternalObjectMixin
+from mayan.apps.common.models import SharedUploadedFile
 from mayan.apps.documents.models import DocumentType, Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -205,7 +206,7 @@ class UploadInteractiveView(UploadBaseView):
         )
 
         AccessControlList.objects.check_access(
-            obj=self.document_type, permissions=permission_document_create,
+            obj=self.document_type, permissions=(permission_document_create,),
             user=request.user
         )
 
@@ -386,7 +387,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             )
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=permission_document_new_version,
+            obj=self.document, permissions=(permission_document_new_version,),
             user=self.request.user
         )
 
@@ -474,26 +475,20 @@ class UploadInteractiveVersionView(UploadBaseView):
         return context
 
 
-class StagingFileDeleteView(SingleObjectDeleteView):
-    object_permission = permission_staging_file_delete
-    object_permission_related = 'staging_folder'
+class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
+    external_object_class = StagingFolderSource
+    external_object_permission = permission_staging_file_delete
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.object,
             'object_name': _('Staging file'),
-            'source': self.get_source(),
+            'title': _('Delete staging file "%s"?') % self.object,
         }
 
     def get_object(self):
-        source = self.get_source()
-        return source.get_file(
+        return self.external_object.get_file(
             encoded_filename=self.kwargs['encoded_filename']
-        )
-
-    def get_source(self):
-        return get_object_or_404(
-            klass=StagingFolderSource, pk=self.kwargs['pk']
         )
 
 

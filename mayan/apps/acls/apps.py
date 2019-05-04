@@ -10,6 +10,7 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.navigation.classes import SourceColumn
 
+from .classes import ModelPermission
 from .events import event_acl_created, event_acl_edited
 from .links import link_acl_create, link_acl_delete, link_acl_permissions
 
@@ -31,6 +32,10 @@ class ACLsApp(MayanAppConfig):
         ModelEventType.register(
             event_types=(event_acl_created, event_acl_edited),
             model=AccessControlList
+        )
+
+        ModelPermission.register_inheritance(
+            model=AccessControlList, related='content_object',
         )
 
         SourceColumn(

@@ -397,8 +397,9 @@ class DocumentMetadataEditView(MultipleObjectFormActionView):
 class DocumentMetadataListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_metadata_document_view,
-            user=self.request.user, obj=self.get_document()
+            obj=self.get_document(),
+            permissions=(permission_metadata_document_view,),
+            user=self.request.user
         )
 
         return super(DocumentMetadataListView, self).dispatch(
@@ -725,8 +726,8 @@ class SetupDocumentTypeMetadataTypes(FormView):
         obj = get_object_or_404(klass=self.model, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=(permission_metadata_type_edit,),
-            user=self.request.user, obj=obj
+            obj=obj, permissions=(permission_metadata_type_edit,),
+            user=self.request.user
         )
         return obj
 

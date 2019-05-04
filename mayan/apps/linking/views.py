@@ -88,12 +88,12 @@ class ResolvedSmartLinkView(DocumentListView):
         )
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=permission_document_view,
+            obj=self.document, permissions=(permission_document_view,),
             user=request.user
         )
 
         AccessControlList.objects.check_access(
-            obj=self.smart_link, permissions=permission_smart_link_view,
+            obj=self.smart_link, permissions=(permission_smart_link_view,),
             user=request.user
         )
 
@@ -109,8 +109,9 @@ class ResolvedSmartLinkView(DocumentListView):
 
             try:
                 AccessControlList.objects.check_access(
-                    obj=self.smart_link, permissions=permission_smart_link_edit,
-                    user=self.request.user,
+                    obj=self.smart_link,
+                    permissions=(permission_smart_link_edit,),
+                    user=self.request.user
                 )
             except PermissionDenied:
                 pass
@@ -205,7 +206,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=permission_document_view,
+            obj=self.document, permissions=(permission_document_view,),
             user=request.user
         )
 
@@ -319,7 +320,8 @@ class SmartLinkConditionCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            obj=self.get_smart_link(), permissions=permission_smart_link_edit,
+            obj=self.get_smart_link(),
+            permissions=(permission_smart_link_edit,),
             user=request.user
         )
 
@@ -359,7 +361,7 @@ class SmartLinkConditionEditView(SingleObjectEditView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_object().smart_link,
-            permissions=permission_smart_link_edit, user=request.user
+            permissions=(permission_smart_link_edit,), user=request.user
         )
 
         return super(
@@ -388,7 +390,7 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_object().smart_link,
-            permissions=permission_smart_link_edit, user=request.user
+            permissions=(permission_smart_link_edit,), user=request.user
         )
 
         return super(

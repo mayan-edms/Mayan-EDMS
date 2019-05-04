@@ -89,7 +89,7 @@ class APITagDocumentListView(generics.ListAPIView):
         tag = get_object_or_404(klass=Tag, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_tag_view, user=self.request.user, obj=tag
+            obj=tag, permissions=(permission_tag_view,), user=self.request.user
         )
 
         return tag.documents.all()
@@ -113,8 +113,8 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
         document = self.get_document()
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
         )
 
         return document.attached_tags().all()
@@ -165,8 +165,8 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
         )
         return document
 

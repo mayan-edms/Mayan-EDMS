@@ -32,8 +32,9 @@ logger = logging.getLogger(__name__)
 class DocumentVersionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_version_view, user=request.user,
-            obj=self.get_document()
+            obj=self.get_document(),
+            permissions=(permission_document_version_view,),
+            user=request.user
         )
 
         self.get_document().add_as_recent_document_for_user(request.user)

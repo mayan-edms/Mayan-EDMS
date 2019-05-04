@@ -9,7 +9,7 @@ from ..permissions import (
 from .base import GenericDocumentViewTestCase
 
 
-class DeletedDocumentTestCase(GenericDocumentViewTestCase):
+class TrashedDocumentTestCase(GenericDocumentViewTestCase):
     def _request_document_restore_view(self):
         return self.post(
             viewname='documents:document_restore', kwargs={
@@ -22,7 +22,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Document.objects.count(), 0)
 
         response = self._request_document_restore_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
@@ -50,7 +50,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
 
     def test_document_trash_no_permissions(self):
         response = self._request_document_trash_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
@@ -79,7 +79,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
         response = self._request_document_delete_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)

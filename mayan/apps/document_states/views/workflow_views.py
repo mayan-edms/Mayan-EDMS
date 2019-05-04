@@ -345,7 +345,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
     def get_workflow(self):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=(permission_workflow_edit,), obj=workflow,
+            obj=workflow, permissions=(permission_workflow_edit,),
             user=self.request.user
         )
         return workflow
@@ -380,7 +380,7 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     def get_workflow(self):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=(permission_workflow_edit,), obj=workflow,
+            obj=workflow, permissions=(permission_workflow_edit,),
             user=self.request.user
         )
         return workflow
@@ -410,8 +410,8 @@ class SetupWorkflowStateListView(SingleObjectListView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.get_workflow()
+            obj=self.get_workflow(), permissions=(permission_workflow_view,),
+            user=request.user
         )
 
         return super(
@@ -492,7 +492,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
     def get_workflow(self):
         workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=(permission_workflow_edit,), obj=workflow,
+            obj=workflow, permissions=(permission_workflow_edit,),
             user=self.request.user
         )
         return workflow
@@ -580,8 +580,9 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
 
     def dispatch(self, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_edit,
-            user=self.request.user, obj=self.get_object().workflow
+            obj=self.get_object().workflow,
+            permissions=(permission_workflow_edit,),
+            user=self.request.user
         )
 
         EventType.refresh()

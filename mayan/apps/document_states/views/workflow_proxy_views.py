@@ -27,8 +27,8 @@ class WorkflowDocumentListView(DocumentListView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.workflow
+            obj=self.workflow, permissions=(permission_workflow_view,),
+            user=request.user
         )
 
         return super(
@@ -111,8 +111,8 @@ class WorkflowStateDocumentListView(DocumentListView):
         )
 
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=self.request.user,
-            obj=workflow_state.workflow
+            obj=workflow_state.workflow,
+            permissions=(permission_workflow_view,), user=self.request.user
         )
 
         return workflow_state
@@ -121,8 +121,8 @@ class WorkflowStateDocumentListView(DocumentListView):
 class WorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_workflow_view, user=request.user,
-            obj=self.get_workflow()
+            obj=self.get_workflow(), permissions=(permission_workflow_view,),
+            user=request.user
         )
 
         return super(

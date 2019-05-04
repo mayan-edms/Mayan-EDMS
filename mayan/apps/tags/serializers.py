@@ -112,7 +112,7 @@ class NewDocumentTagSerializer(serializers.Serializer):
 
             try:
                 AccessControlList.objects.check_access(
-                    obj=tag, permissions=permission_tag_attach,
+                    obj=tag, permissions=(permission_tag_attach,),
                     user=self.context['request'].user
                 )
             except PermissionDenied:

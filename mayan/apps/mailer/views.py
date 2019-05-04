@@ -85,8 +85,8 @@ class MailDocumentView(MultipleObjectFormActionView):
 
     def object_action(self, form, instance):
         AccessControlList.objects.check_access(
-            permissions=permission_user_mailer_use, user=self.request.user,
-            obj=form.cleaned_data['user_mailer']
+            obj=form.cleaned_data['user_mailer'],
+            permissions=(permission_user_mailer_use,), user=self.request.user
         )
 
         task_send_document.apply_async(
@@ -261,8 +261,8 @@ class UserMailerTestView(FormView):
     def get_object(self):
         user_mailer = get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=permission_user_mailer_use, user=self.request.user,
-            obj=user_mailer
+            obj=user_mailer, permissions=(permission_user_mailer_use,),
+            user=self.request.user
         )
 
         return user_mailer

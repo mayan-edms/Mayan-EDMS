@@ -38,8 +38,8 @@ logger = logging.getLogger(__name__)
 class DocumentPageListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=self.get_document()
+            obj=self.get_document(), permissions=(permission_document_view,),
+            user=self.request.user
         )
 
         return super(
@@ -66,8 +66,8 @@ class DocumentPageNavigationBase(RedirectView):
         document_page = self.get_object()
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=document_page.document
+            obj=document_page.document,
+            permissions=(permission_document_view,), user=request.user
         )
 
         return super(DocumentPageNavigationBase, self).dispatch(
@@ -170,8 +170,8 @@ class DocumentPageView(SimpleView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=self.get_object().document
+            obj=self.get_object().document,
+            permissions=(permission_document_view,), user=request.user
         )
 
         return super(
@@ -214,11 +214,11 @@ class DocumentPageViewResetView(RedirectView):
 
 class DocumentPageInteractiveTransformation(RedirectView):
     def dispatch(self, request, *args, **kwargs):
-        object = self.get_object()
+        obj = self.get_object()
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=request.user,
-            obj=object
+            obj=obj, permissions=(permission_document_view,),
+            user=request.user
         )
 
         return super(DocumentPageInteractiveTransformation, self).dispatch(

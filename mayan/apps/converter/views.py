@@ -45,7 +45,7 @@ class TransformationCreateView(SingleObjectCreateView):
 
         AccessControlList.objects.check_access(
             obj=self.content_object,
-            permissions=permission_transformation_create, user=request.user
+            permissions=(permission_transformation_create,), user=request.user
         )
 
         return super(TransformationCreateView, self).dispatch(
@@ -96,7 +96,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
         AccessControlList.objects.check_access(
             obj=self.transformation.content_object,
-            permissions=permission_transformation_delete, user=request.user
+            permissions=(permission_transformation_delete,), user=request.user
         )
 
         return super(TransformationDeleteView, self).dispatch(
@@ -145,7 +145,7 @@ class TransformationEditView(SingleObjectEditView):
 
         AccessControlList.objects.check_access(
             obj=self.transformation.content_object,
-            permissions=permission_transformation_edit, user=request.user
+            permissions=(permission_transformation_edit,), user=request.user
         )
 
         return super(TransformationEditView, self).dispatch(
@@ -202,7 +202,7 @@ class TransformationListView(SingleObjectListView):
 
         AccessControlList.objects.check_access(
             obj=self.content_object,
-            permissions=permission_transformation_view, user=request.user
+            permissions=(permission_transformation_view,), user=request.user
         )
 
         return super(TransformationListView, self).dispatch(

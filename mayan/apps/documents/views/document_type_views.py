@@ -138,8 +138,9 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_type_edit, user=request.user,
-            obj=self.get_document_type()
+            obj=self.get_document_type(),
+            permissions=(permission_document_type_edit,),
+            user=request.user
         )
 
         return super(DocumentTypeFilenameCreateView, self).dispatch(

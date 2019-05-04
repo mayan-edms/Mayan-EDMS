@@ -248,7 +248,7 @@ class StagingFolderViewTestCase(GenericViewTestCase):
             }
         )
 
-    def test_staging_folder_delete_no_permission(self):
+    def test_staging_file_delete_no_permission(self):
         staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
             folder_path=self.temporary_directory,
@@ -263,11 +263,11 @@ class StagingFolderViewTestCase(GenericViewTestCase):
         response = self._request_staging_file_delete_view(
             staging_folder=staging_folder, staging_file=staging_file
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(list(staging_folder.get_files())), 1)
 
-    def test_staging_folder_delete_with_permission(self):
+    def test_staging_file_delete_with_permission(self):
         self.grant_permission(permission=permission_staging_file_delete)
 
         staging_folder = StagingFolderSource.objects.create(

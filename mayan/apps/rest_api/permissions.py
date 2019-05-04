@@ -12,14 +12,14 @@ from mayan.apps.permissions import Permission
 
 class MayanPermission(BasePermission):
     def has_permission(self, request, view):
-        required_permission = getattr(
+        required_permissions = getattr(
             view, 'mayan_view_permissions', {}
         ).get(request.method, None)
 
-        if required_permission:
+        if required_permissions:
             try:
-                Permission.check_permissions(
-                    permissions=required_permission, user=request.user
+                Permission.check_user_permissions(
+                    permissions=required_permissions, user=request.user
                 )
             except PermissionDenied:
                 return False
@@ -29,23 +29,16 @@ class MayanPermission(BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        required_permission = getattr(
+        required_permissions = getattr(
             view, 'mayan_object_permissions', {}
         ).get(request.method, None)
 
-        if required_permission:
+        if required_permissions:
             try:
-                if hasattr(view, 'mayan_permission_attribute_check'):
-                    AccessControlList.objects.check_access(
-                        permissions=required_permission,
-                        user=request.user, obj=obj,
-                        related=view.mayan_permission_attribute_check
-                    )
-                else:
-                    AccessControlList.objects.check_access(
-                        permissions=required_permission, user=request.user,
-                        obj=obj
-                    )
+                AccessControlList.objects.check_access(
+                    obj=obj, permissions=required_permissions,
+                    user=request.user
+                )
             except PermissionDenied:
                 return False
             else:

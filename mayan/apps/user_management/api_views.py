@@ -149,8 +149,7 @@ class APIUserGroupList(generics.ListCreateAPIView):
         user = get_object_or_404(klass=get_user_model(), pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=(permission,), user=self.request.user,
-            obj=user
+            obj=user, permissions=(permission,), user=self.request.user
         )
         return user
 

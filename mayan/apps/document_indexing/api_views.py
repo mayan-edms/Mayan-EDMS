@@ -67,7 +67,7 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         )
         AccessControlList.objects.check_access(
             obj=index_node_instance.index,
-            permissions=permission_document_indexing_view,
+            permissions=(permission_document_indexing_view,),
             user=self.request.user
         )
 
@@ -113,7 +113,7 @@ class APIDocumentIndexListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            obj=document, permissions=permission_document_view,
+            obj=document, permissions=(permission_document_view,),
             user=self.request.user
         )
 

@@ -48,7 +48,7 @@ class Link(object):
         conditional_disable=None, description=None, html_data=None,
         html_extra_classes=None, icon_class=None, icon_class_path=None,
         keep_query=False, kwargs=None, name=None, permissions=None,
-        permissions_related=None, remove_from_query=None, tags=None, url=None
+        remove_from_query=None, tags=None, url=None
     ):
         self.args = args or []
         self.badge_text = badge_text
@@ -62,7 +62,6 @@ class Link(object):
         self.kwargs = kwargs or {}
         self.name = name
         self.permissions = permissions or []
-        self.permissions_related = permissions_related
         self.remove_from_query = remove_from_query or []
         self.tags = tags
         self.text = text
@@ -117,13 +116,13 @@ class Link(object):
                 try:
                     AccessControlList.objects.check_access(
                         obj=resolved_object, permissions=self.permissions,
-                        related=self.permissions_related, user=request.user
+                        user=request.user
                     )
                 except PermissionDenied:
                     return None
             else:
                 try:
-                    Permission.check_permissions(
+                    Permission.check_user_permissions(
                         permissions=self.permissions, user=request.user
                     )
                 except PermissionDenied:
@@ -567,7 +566,7 @@ class SourceColumn(object):
             except KeyError:
                 try:
                     # Might be a subclass, try its root class
-                    result.extend(cls._registry[source.__class__.__mro__[-2]])
+                    result = cls._registry[source.__class__.__mro__[-2]]
                 except KeyError:
                     try:
                         # Might be an inherited class insance, try its source class

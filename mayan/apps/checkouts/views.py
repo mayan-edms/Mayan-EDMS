@@ -31,7 +31,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=permission_document_check_out,
+            obj=self.document, permissions=(permission_document_check_out,),
             user=request.user
         )
 
@@ -168,13 +168,13 @@ class DocumentCheckinView(ConfirmView):
 
         if document.get_check_out_info().user == self.request.user:
             AccessControlList.objects.check_access(
-                obj=document, permissions=permission_document_check_in,
+                obj=document, permissions=(permission_document_check_in,),
                 user=self.request.user
             )
         else:
             AccessControlList.objects.check_access(
                 obj=document,
-                permissions=permission_document_check_in_override,
+                permissions=(permission_document_check_in_override,),
                 user=self.request.user
             )
 

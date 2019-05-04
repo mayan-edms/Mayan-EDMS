@@ -286,8 +286,8 @@ class ObjectListPermissionFilterMixin(object):
     def dispatch(self, request, *args, **kwargs):
         if self.access_object_retrieve_method and self.object_permission:
             AccessControlList.objects.check_access(
-                permissions=(self.object_permission,), user=request.user,
-                obj=getattr(self, self.access_object_retrieve_method)()
+                obj=getattr(self, self.access_object_retrieve_method)(),
+                permissions=(self.object_permission,), user=request.user
             )
         return super(ObjectListPermissionFilterMixin, self).dispatch(request, *args, **kwargs)
 
@@ -296,7 +296,8 @@ class ObjectListPermissionFilterMixin(object):
 
         if not self.access_object_retrieve_method and self.object_permission:
             return AccessControlList.objects.filter_by_access(
-                self.object_permission, self.request.user, queryset=queryset
+                queryset=queryset, permission=self.object_permission,
+                user=self.request.user
             )
         else:
             return queryset
@@ -327,9 +328,10 @@ class ObjectPermissionCheckMixin(object):
     def dispatch(self, request, *args, **kwargs):
         if self.object_permission:
             AccessControlList.objects.check_access(
-                permissions=self.object_permission, user=request.user,
                 obj=self.get_permission_object(),
-                related=getattr(self, 'object_permission_related', None)
+                permissions=(self.object_permission,),
+                related=getattr(self, 'object_permission_related', None),
+                user=request.user
             )
 
         return super(
@@ -427,7 +429,7 @@ class ViewPermissionCheckMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if self.view_permission:
-            Permission.check_permissions(
+            Permission.check_user_permissions(
                 permissions=(self.view_permission,), user=self.request.user
             )
 

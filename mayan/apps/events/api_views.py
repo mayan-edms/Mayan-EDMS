@@ -42,8 +42,8 @@ class APIObjectEventListView(generics.ListAPIView):
         obj = self.get_object()
 
         AccessControlList.objects.check_access(
-            permissions=permission_events_view, user=self.request.user,
-            obj=obj
+            obj=obj, permissions=(permission_events_view,),
+            user=self.request.user
         )
 
         return any_stream(obj)

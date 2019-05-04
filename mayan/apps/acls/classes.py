@@ -8,8 +8,8 @@ logger = logging.getLogger(__name__)
 
 
 class ModelPermission(object):
+    _functions = {}
     _inheritances = {}
-    _proxies = {}
     _registry = {}
 
     @classmethod
@@ -63,24 +63,23 @@ class ModelPermission(object):
         if class_permissions:
             permissions.extend(class_permissions)
 
-        proxy = cls._proxies.get(type(instance))
-
-        if proxy:
-            permissions.extend(cls._registry.get(proxy))
-
         pks = [
             permission.stored_permission.pk for permission in set(permissions)
         ]
         return StoredPermission.objects.filter(pk__in=pks)
 
     @classmethod
-    def register_proxy(cls, source, model):
-        cls._proxies[model] = source
-
-    @classmethod
-    def register_inheritance(cls, model, related):
-        cls._inheritances[model] = related
+    def get_function(cls, model):
+        return cls._functions[model]
 
     @classmethod
     def get_inheritance(cls, model):
         return cls._inheritances[model]
+
+    @classmethod
+    def register_function(cls, model, function):
+        cls._functions[model] = function
+
+    @classmethod
+    def register_inheritance(cls, model, related):
+        cls._inheritances[model] = related

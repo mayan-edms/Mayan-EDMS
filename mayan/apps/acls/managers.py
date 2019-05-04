@@ -1,17 +1,23 @@
 from __future__ import absolute_import, unicode_literals
 
+from functools import reduce
 import logging
+import operator
+import warnings
 
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
-from django.db.models import Q
+from django.db.models import CharField, Value as V, Q
+from django.db.models.functions import Concat
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 
 from mayan.apps.common.utils import (
-    resolve_attribute, return_attrib, return_related
+    get_related_field, resolve_attribute, return_related
 )
+from mayan.apps.common.warnings import InterfaceWarning
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.models import StoredPermission
 
@@ -26,170 +32,235 @@ class AccessControlListManager(models.Manager):
     Implement a 3 tier permission system, involving a permissions, an actor
     and an object
     """
-    def check_access(self, permissions, user, obj, related=None):
-        if user.is_superuser or user.is_staff:
-            logger.debug(
-                'Permissions "%s" on "%s" granted to user "%s" as superuser '
-                'or staff', permissions, obj, user
+    def _get_acl_filters(self, queryset, stored_permission, user, related_field_name=None):
+        """
+        This method does the bulk of the work. It generates filters for the
+        AccessControlList model to determine if there are ACL entries for the
+        members of the queryset's model provided.
+        """
+        # Determine which of the cases we need to address
+        # 1: No related field
+        # 2: Related field
+        # 3: Related field that is Generic Foreign Key
+        # 4: No related field, but has an inherited related field, solved by
+        # recursion, branches to #2 or #3.
+        # 5: Inherited field of a related field
+        # -- Not addressed yet --
+        # 6: Inherited field of a related field that is Generic Foreign Key
+        # 7: Has a related function
+        result = []
+
+        if related_field_name:
+            related_field = get_related_field(
+                model=queryset.model, related_field_name=related_field_name
             )
-            return True
 
-        try:
-            return Permission.check_permissions(
-                permissions=permissions, user=user
-            )
-        except PermissionDenied:
-            try:
-                stored_permissions = [
-                    permission.stored_permission for permission in permissions
-                ]
-            except TypeError:
-                # Not a list of permissions, just one
-                stored_permissions = (permissions.stored_permission,)
+            if isinstance(related_field, GenericForeignKey):
+                # Case 3: Generic Foreign Key, multiple ContentTypes + object
+                # id combinations
+                content_type_object_id_queryset = queryset.annotate(
+                    ct_fk_combination=Concat(
+                        related_field.ct_field, V('-'), related_field.fk_field,
+                        output_field=CharField()
+                    )
+                ).values('ct_fk_combination')
 
-            if related:
-                obj = return_attrib(obj, related)
+                acl_filter = self.annotate(
+                    ct_fk_combination=Concat(
+                        'content_type', V('-'), 'object_id', output_field=CharField()
+                    )
+                ).filter(
+                    permissions=stored_permission, role__groups__user=user,
+                    ct_fk_combination__in=content_type_object_id_queryset
+                ).values('object_id')
 
-            try:
-                parent_accessor = ModelPermission.get_inheritance(
-                    model=obj._meta.model
+                field_lookup = 'object_id__in'
+
+                result.append(Q(**{field_lookup: acl_filter}))
+            else:
+                # Case 2: Related field of a single type, single ContentType,
+                # multiple object id
+                content_type = ContentType.objects.get_for_model(
+                    model=related_field.related_model
                 )
-            except AttributeError:
-                # AttributeError means non model objects: ie Statistics
-                # These can't have ACLs so we raise PermissionDenied
+                field_lookup = '{}_id__in'.format(related_field_name)
+                acl_filter = self.filter(
+                    content_type=content_type, permissions=stored_permission,
+                    role__groups__user=user
+                ).values('object_id')
+                # Don't add empty filters otherwise the default AND operator
+                # of the Q object will return an empty queryset when reduced
+                # and filter out objects that should be in the final queryset.
+                if acl_filter:
+                    result.append(Q(**{field_lookup: acl_filter}))
 
-                # Force object to text to avoid UnicodeDecodeError
-                raise PermissionDenied(
-                    ugettext('Insufficient access for: %s') % force_text(obj)
+                # Case 5: Related field, has an inherited related field itself
+                # Bubble up permssion check
+                # TODO: Add relationship support: OR or AND
+                # TODO: OR for document pages, version, doc, and types
+                # TODO: AND for new cabinet levels ACLs
+                try:
+                    related_field_model_related_fields = (
+                        ModelPermission.get_inheritance(
+                            model=related_field.related_model
+                        ),
+                    )
+                except KeyError:
+                    pass
+                else:
+                    relation_result = []
+                    for related_field_model_related_field_name in related_field_model_related_fields:
+                        related_field_name = '{}__{}'.format(related_field_name, related_field_model_related_field_name)
+                        related_field_inherited_acl_queries = self._get_acl_filters(
+                            queryset=queryset, stored_permission=stored_permission,
+                            user=user, related_field_name=related_field_name
+                        )
+                        if related_field_inherited_acl_queries:
+                            relation_result.append(reduce(operator.and_, related_field_inherited_acl_queries))
+
+                    if relation_result:
+                        result.append(reduce(operator.or_, relation_result))
+        else:
+            # Case 1: Original model, single ContentType, multiple object id
+            content_type = ContentType.objects.get_for_model(model=queryset.model)
+            field_lookup = 'id__in'
+            acl_filter = self.filter(
+                content_type=content_type, permissions=stored_permission,
+                role__groups__user=user
+            ).values('object_id')
+            result.append(Q(**{field_lookup: acl_filter}))
+
+            # Case 4: Original model, has an inherited related field
+            try:
+                related_fields = (
+                    ModelPermission.get_inheritance(
+                        model=queryset.model
+                    ),
                 )
             except KeyError:
                 pass
             else:
-                try:
-                    return self.check_access(
-                        obj=getattr(obj, parent_accessor),
-                        permissions=permissions, user=user
+                relation_result = []
+
+                for related_field_name in related_fields:
+                    inherited_acl_queries = self._get_acl_filters(
+                        queryset=queryset, stored_permission=stored_permission,
+                        related_field_name=related_field_name, user=user
                     )
-                except AttributeError:
-                    # Has no such attribute, try it as a related field
-                    try:
-                        return self.check_access(
-                            obj=return_related(
-                                instance=obj, related_field=parent_accessor
-                            ), permissions=permissions, user=user
-                        )
-                    except PermissionDenied:
-                        pass
-                except PermissionDenied:
-                    pass
+                    if inherited_acl_queries:
+                        relation_result.append(reduce(operator.and_, inherited_acl_queries))
 
-            user_roles = []
-            for group in user.groups.all():
-                for role in group.roles.all():
-                    if set(stored_permissions).intersection(set(self.get_inherited_permissions(role=role, obj=obj))):
-                        logger.debug(
-                            'Permissions "%s" on "%s" granted to user "%s" through role "%s" via inherited ACL',
-                            permissions, obj, user, role
-                        )
-                        return True
+                if relation_result:
+                    result.append(reduce(operator.or_, relation_result))
 
-                    user_roles.append(role)
-
-            if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
-                logger.debug(
-                    'Permissions "%s" on "%s" denied for user "%s"',
-                    permissions, obj, user
-                )
-                raise PermissionDenied(
-                    ugettext('Insufficient access for: %s') % force_text(obj)
-                )
-
-            logger.debug(
-                'Permissions "%s" on "%s" granted to user "%s" through roles "%s" by direct ACL',
-                permissions, obj, user, user_roles
-            )
-
-    def filter_by_access(self, permission, user, queryset):
-        if user.is_superuser or user.is_staff:
-            logger.debug(
-                'Unfiltered queryset returned to user "%s" as superuser or staff',
-                user
-            )
-            return queryset
-
-        try:
-            Permission.check_permissions(
-                permissions=(permission,), user=user
-            )
-        except PermissionDenied:
-            user_roles = []
-            for group in user.groups.all():
-                for role in group.roles.all():
-                    user_roles.append(role)
-
+            # Case 7: Has a function
             try:
-                parent_accessor = ModelPermission.get_inheritance(
+                field_query_function = ModelPermission.get_function(
                     model=queryset.model
                 )
             except KeyError:
-                parent_acl_query = Q()
+                pass
             else:
-                instance = queryset.first()
-                if instance:
-                    parent_object = return_related(
-                        instance=instance, related_field=parent_accessor
+                function_results = field_query_function()
+
+                # Filter by the model's content type
+                content_type = ContentType.objects.get_for_model(
+                    model=queryset.model
+                )
+                acl_filter = self.filter(
+                    content_type=content_type, permissions=stored_permission,
+                    role__groups__user=user
+                ).values('object_id')
+                # Obtain an queryset of filtered, authorized model instances
+                acl_queryset = queryset.model._meta.default_manager.filter(
+                    id__in=acl_filter
+                ).filter(**function_results['acl_filter'])
+
+                if 'acl_values' in function_results:
+                    acl_queryset = acl_queryset.values(
+                        *function_results['acl_values']
                     )
 
-                    try:
-                        # Try to see if parent_object is a function
-                        parent_object()
-                    except TypeError:
-                        # Is not a function, try it as a field
-                        parent_content_type = ContentType.objects.get_for_model(
-                            parent_object
-                        )
-                        parent_queryset = self.filter(
-                            content_type=parent_content_type, role__in=user_roles,
-                            permissions=permission.stored_permission
-                        )
-                        parent_acl_query = Q(
-                            **{
-                                '{}__pk__in'.format(
-                                    parent_accessor
-                                ): parent_queryset.values_list(
-                                    'object_id', flat=True
-                                )
-                            }
-                        )
-                    else:
-                        # Is a function. Can't perform Q object filtering.
-                        # Perform iterative filtering.
-                        result = []
-                        for entry in queryset:
-                            try:
-                                self.check_access(permissions=permission, user=user, obj=entry)
-                            except PermissionDenied:
-                                pass
-                            else:
-                                result.append(entry.pk)
+                # Get the final query using the filtered queryset as the
+                # reference
+                result.append(
+                    Q(**{function_results['field_lookup']: acl_queryset})
+                )
 
-                        return queryset.filter(pk__in=result)
-                else:
-                    parent_acl_query = Q()
+        return result
 
-            # Directly granted access
-            content_type = ContentType.objects.get_for_model(queryset.model)
-            acl_query = Q(pk__in=self.filter(
-                content_type=content_type, role__in=user_roles,
-                permissions=permission.stored_permission
-            ).values_list('object_id', flat=True))
-            logger.debug(
-                'Filtered queryset returned to user "%s" based on roles "%s"',
-                user, user_roles
+    def check_access(self, obj, permissions, user, related=None):
+        """
+        The `related` argument is ignored.
+        """
+        if related:
+            warnings.warn(
+                'Passing the argument `related` to check_access() is '
+                'deprecated. Use the ModelPermission\'s class '
+                '.register_inheritance() class method to register the access '
+                'relationship between two models. The registered relationship '
+                'will be automatically used by check_access().',
+                InterfaceWarning
             )
 
-            return queryset.filter(parent_acl_query | acl_query)
+        meta = getattr(obj, '_meta', None)
+
+        if not meta:
+            logger.debug(
+                ugettext(
+                    'Object "%s" is not a model and cannot be checked for '
+                    'access.'
+                ) % force_text(obj)
+            )
+            return True
         else:
+            source_queryset = obj._meta.default_manager.all()
+
+        restricted_queryset = obj._meta.default_manager.none()
+        for permission in permissions:
+            # Default relationship betweens permissions is OR
+            # TODO: Add support for AND relationship
+            restricted_queryset = restricted_queryset | self.restrict_queryset(
+                permission=permission, queryset=source_queryset, user=user
+            )
+
+        if restricted_queryset.filter(pk=obj.pk).exists():
+            return True
+        else:
+            raise PermissionDenied(
+                ugettext(message='Insufficient access for: %s') % force_text(
+                    s=obj
+                )
+            )
+
+    def filter_by_access(self, permission, user, queryset):
+        return self.restrict_queryset(
+            permission=permission, queryset=queryset, user=user
+        )
+
+    def restrict_queryset(self, permission, queryset, user):
+        # Check directly granted permission via a role
+        try:
+            Permission.check_user_permissions(
+                permissions=(permission,), user=user
+            )
+        except PermissionDenied:
+            acl_filters = self._get_acl_filters(
+                queryset=queryset,
+                stored_permission=permission.stored_permission, user=user
+            )
+
+            final_query = None
+            for acl_filter in acl_filters:
+                if final_query is None:
+                    final_query = acl_filter
+                else:
+                    final_query = final_query | acl_filter
+
+            return queryset.filter(final_query)
+        else:
+            # User has direct permission assignment via a role, is superuser or
+            # is staff. Return the entire queryset.
             return queryset
 
     def get_inherited_permissions(self, obj, role):

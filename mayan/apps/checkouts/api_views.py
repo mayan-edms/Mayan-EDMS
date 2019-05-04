@@ -79,12 +79,13 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
         if document.checkout_info().user == request.user:
             AccessControlList.objects.check_access(
-                obj=document, permissions=permission_document_check_in,
+                obj=document, permissions=(permission_document_check_in,),
                 user=request.user
             )
         else:
             AccessControlList.objects.check_access(
-                obj=document, permissions=permission_document_check_in_override,
+                obj=document,
+                permissions=(permission_document_check_in_override,),
                 user=request.user
             )
 

@@ -204,7 +204,7 @@ class TemplateNodeCreateView(SingleObjectCreateView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_parent_node().index,
-            permissions=permission_document_indexing_edit, user=request.user
+            permissions=(permission_document_indexing_edit,), user=request.user
         )
 
         return super(
@@ -311,7 +311,7 @@ class IndexInstanceNodeView(DocumentListView):
 
         AccessControlList.objects.check_access(
             obj=self.index_instance_node.index(),
-            permissions=permission_document_indexing_instance_view,
+            permissions=(permission_document_indexing_instance_view,),
             user=request.user
         )
 
@@ -378,7 +378,7 @@ class DocumentIndexNodeListView(SingleObjectListView):
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=permission_document_view,
+            obj=self.get_document(), permissions=(permission_document_view,),
             user=request.user
         )
 

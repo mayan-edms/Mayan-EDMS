@@ -35,8 +35,8 @@ class APIDocumentCabinetListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=document
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
         )
 
         queryset = document.get_cabinets()
@@ -189,8 +189,8 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
         instance = self.get_object()
 
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=instance
+            obj=instance, permissions=(permission_document_view,),
+            user=self.request.user
         )
 
         serializer = self.get_serializer(instance)

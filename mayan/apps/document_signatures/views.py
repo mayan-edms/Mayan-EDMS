@@ -54,7 +54,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         passphrase = form.cleaned_data['passphrase'] or None
 
         AccessControlList.objects.check_access(
-            obj=key, permissions=permission_key_sign, user=self.request.user
+            obj=key, permissions=(permission_key_sign,), user=self.request.user
         )
 
         try:
@@ -109,7 +109,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_document_version().document,
-            permissions=permission_document_version_sign_detached,
+            permissions=(permission_document_version_sign_detached,),
             user=request.user
         )
 
@@ -146,7 +146,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         passphrase = form.cleaned_data['passphrase'] or None
 
         AccessControlList.objects.check_access(
-            obj=key, permissions=permission_key_sign, user=self.request.user
+            obj=key, permissions=(permission_key_sign,), user=self.request.user
         )
 
         try:
@@ -206,7 +206,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_document_version().document,
-            permissions=permission_document_version_sign_embedded,
+            permissions=(permission_document_version_sign_embedded,),
             user=request.user
         )
 
@@ -283,8 +283,9 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
 class DocumentVersionSignatureListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_version_signature_view,
-            user=request.user, obj=self.get_document_version()
+            obj=self.get_document_version(),
+            permissions=(permission_document_version_signature_view,),
+            user=request.user
         )
 
         return super(
@@ -345,7 +346,7 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
             obj=self.get_document_version(),
-            permissions=permission_document_version_signature_upload,
+            permissions=(permission_document_version_signature_upload,),
             user=request.user
         )
 

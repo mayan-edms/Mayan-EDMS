@@ -35,7 +35,7 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=permission_document_view,
+            obj=document, permissions=(permission_document_view,),
             user=self.request.user
         )
 
@@ -48,7 +48,7 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         )
 
         AccessControlList.objects.check_access(
-            obj=smart_link, permissions=permission_smart_link_view,
+            obj=smart_link, permissions=(permission_smart_link_view,),
             user=self.request.user
         )
 
@@ -91,7 +91,7 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=permission_document_view,
+            obj=document, permissions=(permission_document_view,),
             user=self.request.user
         )
 
@@ -128,7 +128,7 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=permission_document_view,
+            obj=document, permissions=(permission_document_view,),
             user=self.request.user
         )
 
@@ -187,7 +187,7 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
         smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=smart_link, permissions=permission_required,
+            obj=smart_link, permissions=(permission_required,),
             user=self.request.user
         )
 
@@ -230,7 +230,7 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
         smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=smart_link, permissions=permission_required,
+            obj=smart_link, permissions=(permission_required,),
             user=self.request.user
         )
 

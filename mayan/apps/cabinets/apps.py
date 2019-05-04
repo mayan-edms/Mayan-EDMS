@@ -73,8 +73,16 @@ class CabinetsApp(MayanAppConfig):
                 permission_cabinet_remove_document
             )
         )
-        ModelPermission.register_inheritance(
-            model=Cabinet, related='get_root',
+
+        def get_root_filter():
+            return {
+                'acl_filter': {'level': 0},
+                'acl_values': ('tree_id',),
+                'field_lookup': 'tree_id__in'
+            }
+
+        ModelPermission.register_function(
+            model=Cabinet, function=get_root_filter
         )
 
         SourceColumn(

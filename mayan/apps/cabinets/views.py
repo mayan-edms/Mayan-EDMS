@@ -63,7 +63,7 @@ class CabinetChildAddView(SingleObjectCreateView):
         cabinet = super(CabinetChildAddView, self).get_object(*args, **kwargs)
 
         AccessControlList.objects.check_access(
-            obj=cabinet.get_root(), permissions=permission_cabinet_edit,
+            obj=cabinet.get_root(), permissions=(permission_cabinet_edit,),
             user=self.request.user
         )
 
@@ -142,7 +142,7 @@ class CabinetDetailView(DocumentListView):
             permission_object = cabinet.get_root()
 
         AccessControlList.objects.check_access(
-            obj=permission_object, permissions=permission_cabinet_view,
+            obj=permission_object, permissions=(permission_cabinet_view,),
             user=self.request.user
         )
 
@@ -193,7 +193,7 @@ class DocumentCabinetListView(CabinetListView):
         self.document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=permission_document_view,
+            obj=self.document, permissions=(permission_document_view,),
             user=request.user
         )
 
@@ -288,7 +288,7 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
 
         for cabinet in form.cleaned_data['cabinets']:
             AccessControlList.objects.check_access(
-                obj=cabinet, permissions=permission_cabinet_add_document,
+                obj=cabinet, permissions=(permission_cabinet_add_document,),
                 user=self.request.user
             )
             if cabinet in cabinet_membership:
@@ -376,7 +376,7 @@ class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
 
         for cabinet in form.cleaned_data['cabinets']:
             AccessControlList.objects.check_access(
-                obj=cabinet, permissions=permission_cabinet_remove_document,
+                obj=cabinet, permissions=(permission_cabinet_remove_document,),
                 user=self.request.user
             )
 

@@ -234,7 +234,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
             raise Http404
 
         AccessControlList.objects.check_access(
-            obj=content_object, permissions=permission_events_view,
+            obj=content_object, permissions=(permission_events_view,),
             user=self.request.user
         )
 

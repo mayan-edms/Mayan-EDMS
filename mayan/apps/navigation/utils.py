@@ -27,7 +27,7 @@ def get_cascade_condition(app_label, model_name, object_permission, view_permiss
 
         if view_permission:
             try:
-                Permission.check_permissions(
+                Permission.check_user_permissions(
                     permissions=(view_permission,), user=context.request.user
                 )
             except PermissionDenied:

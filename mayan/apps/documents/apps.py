@@ -220,10 +220,6 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
-        ModelPermission.register_proxy(
-            source=Document, model=DocumentType,
-        )
-
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
         )

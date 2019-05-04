@@ -318,8 +318,8 @@ class DocumentDownloadView(SingleObjectDownloadView):
 class DocumentDuplicatesListView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
-            permissions=permission_document_view, user=self.request.user,
-            obj=self.get_document()
+            obj=self.get_document(), permissions=(permission_document_view,),
+            user=self.request.user
         )
 
         return super(
@@ -582,8 +582,8 @@ class DocumentTransformationsCloneView(FormView):
         instance = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            permissions=permission_transformation_edit,
-            user=self.request.user, obj=instance
+            obj=instance, permissions=(permission_transformation_edit,),
+            user=self.request.user
         )
 
         instance.add_as_recent_document_for_user(self.request.user)
@@ -597,8 +597,8 @@ class DocumentPrint(FormView):
     def dispatch(self, request, *args, **kwargs):
         instance = self.get_object()
         AccessControlList.objects.check_access(
-            permissions=permission_document_print, user=self.request.user,
-            obj=instance
+            obj=instance, permissions=(permission_document_print,),
+            user=self.request.user
         )
 
         instance.add_as_recent_document_for_user(self.request.user)

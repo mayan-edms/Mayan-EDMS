@@ -89,7 +89,7 @@ class GrantAccessAction(WorkflowAction):
 
         try:
             AccessControlList.objects.check_access(
-                permissions=permission_acl_edit, user=request.user, obj=obj
+                obj=obj, permissions=(permission_acl_edit,), user=request.user
             )
         except Exception as exception:
             raise ValidationError(exception)

@@ -53,13 +53,13 @@ def task_clear_image_cache():
 
 
 @app.task(ignore_result=True)
-def task_delete_document(deleted_document_id):
+def task_delete_document(trashed_document_id):
     DeletedDocument = apps.get_model(
         app_label='documents', model_name='DeletedDocument'
     )
 
     logger.debug(msg='Executing')
-    deleted_document = DeletedDocument.objects.get(pk=deleted_document_id)
+    deleted_document = DeletedDocument.objects.get(pk=trashed_document_id)
     deleted_document.delete()
     logger.debug(msg='Finshed')
 

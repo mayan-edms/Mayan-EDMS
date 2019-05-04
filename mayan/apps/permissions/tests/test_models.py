@@ -26,7 +26,7 @@ class PermissionTestCase(GroupTestMixin, PermissionTestMixin, RoleTestMixin, Use
 
     def test_no_permissions(self):
         with self.assertRaises(PermissionDenied):
-            Permission.check_permissions(
+            Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=self.test_user
             )
 
@@ -36,7 +36,7 @@ class PermissionTestCase(GroupTestMixin, PermissionTestMixin, RoleTestMixin, Use
         self.test_role.groups.add(self.test_group)
 
         try:
-            Permission.check_permissions(
+            Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=self.test_user
             )
         except PermissionDenied:
