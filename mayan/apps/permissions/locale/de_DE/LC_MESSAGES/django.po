@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Jesaja Everling <jeverling@gmail.com>, 2017
@@ -15,12 +15,11 @@ msgstr ""
 "POT-Creation-Date: 2019-05-04 21:40-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 events.py:8 models.py:36 models.py:102 permissions.py:7
@@ -107,15 +106,11 @@ msgstr "Gruppenname"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Kommagetrennte Liste von Primärschlüsseln der Gruppen, die zu dieser Rolle "
-"hinzugefügt oder ersetzt werden sollen."
+msgstr "Kommagetrennte Liste von Primärschlüsseln der Gruppen, die zu dieser Rolle hinzugefügt oder ersetzt werden sollen."
 
 #: serializers.py:53
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
-"Durch Komma getrennte Liste von Berechtigungs-Primärschlüsseln die dieser "
-"Rolle zugewiesen werden sollen."
+msgstr "Durch Komma getrennte Liste von Berechtigungs-Primärschlüsseln die dieser Rolle zugewiesen werden sollen."
 
 #: serializers.py:90
 #, python-format
@@ -152,10 +147,7 @@ msgstr "Gruppen für Rolle %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
-"Fügen Sie Gruppen hinzu um Rollenberechtigungen zu erlangen. Die "
-"Berechtigungen werden ererbt von den Berechtigungen und "
-"Zugriffsberechtigungen der Rolle."
+msgstr "Fügen Sie Gruppen hinzu um Rollenberechtigungen zu erlangen. Die Berechtigungen werden ererbt von den Berechtigungen und Zugriffsberechtigungen der Rolle."
 
 #: views.py:104
 msgid "Available permissions"
@@ -168,9 +160,7 @@ msgstr "Erteilte Berechtigungen"
 #: views.py:137
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
-"Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche "
-"Objekte."
+msgstr "Hier erteilte Berechtigungen gelten für das gesamte System und sämtliche Objekte."
 
 #: views.py:140
 #, python-format
@@ -183,12 +173,7 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
-"Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die "
-"die Rollenberechtigungen für das gesamte System erben. Rollen können auch "
-"Bestandteil von Zugriffsberechtigungslisten sein. "
-"Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische "
-"Objekte."
+msgstr "Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die die Rollenberechtigungen für das gesamte System erben. Rollen können auch Bestandteil von Zugriffsberechtigungslisten sein. Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische Objekte."
 
 #: views.py:163
 msgid "There are no roles"

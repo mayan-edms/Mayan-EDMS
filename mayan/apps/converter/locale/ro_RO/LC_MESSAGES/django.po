@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-05-03 05:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:22 permissions.py:7 settings.py:12
 msgid "Converter"
@@ -82,9 +80,7 @@ msgstr "Transformări"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, "
-"va fi alocată o ordine automată."
+msgstr "Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, va fi alocată o ordine automată."
 
 #: models.py:39
 msgid "Order"
@@ -98,9 +94,7 @@ msgstr "Nume"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Introduceți argumentele pentru transformare ca dicționar YAML. adică: "
-"{\"grade\": 180}"
+msgstr "Introduceți argumentele pentru transformare ca dicționar YAML. adică: {\"grade\": 180}"
 
 #: models.py:49
 msgid "Arguments"
@@ -190,22 +184,18 @@ msgstr "Creați o nouă transformare pentru: %s"
 #: views.py:127
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
+msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
 
 #: views.py:171
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
+msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
 
 #: views.py:227
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
-"Transformările permit modificarea aspectului vizual al documentelor, fără a "
-"face modificări permanente ale fișierului documentului în sine."
+msgstr "Transformările permit modificarea aspectului vizual al documentelor, fără a face modificări permanente ale fișierului documentului în sine."
 
 #: views.py:231
 msgid "No transformations"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:38-0400\n"
-"PO-Revision-Date: 2019-04-14 03:24+0000\n"
-"Last-Translator: yulin Gong <540538248@qq.com>\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh/)\n"
-"Language: zh\n"
+"PO-Revision-Date: 2019-05-05 01:44+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:66 events.py:8 links.py:17 links.py:46 links.py:149 links.py:176
@@ -86,16 +85,12 @@ msgid "Workflow state actions"
 msgstr "工作流状态操作"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow created"
-msgstr "工作流状态"
+msgstr ""
 
 #: events.py:15
-#, fuzzy
-#| msgid "Workflow state"
 msgid "Workflow edited"
-msgstr "工作流状态"
+msgstr ""
 
 #: forms.py:22
 msgid "Action"
@@ -377,8 +372,7 @@ msgstr "要添加的文档类型的主键。"
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"API URL指向与其连接的工作流相关的文档类型。此URL与规范文档类型URL不同。"
+msgstr "API URL指向与其连接的工作流相关的文档类型。此URL与规范文档类型URL不同。"
 
 #: serializers.py:116
 msgid "Primary key of the destination state to be added."
@@ -410,8 +404,8 @@ msgstr "要添加的流转的主键。"
 
 #: views/workflow_instance_views.py:42
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr "将工作流分配给此文档的文档类型，以使此文档执行这些工作流。"
 
 #: views/workflow_instance_views.py:46
@@ -461,9 +455,7 @@ msgstr "具有工作流的文档：%s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
-"创建一些工作流并将其与文档类型相关联。此处将显示活动工作流以及它们正在执行的"
-"文档。"
+msgstr "创建一些工作流并将其与文档类型相关联。此处将显示活动工作流以及它们正在执行的文档。"
 
 #: views/workflow_proxy_views.py:74
 msgid "There are no workflows"
@@ -492,41 +484,29 @@ msgid "States of workflow: %s"
 msgstr "工作流状态：%s"
 
 #: views/workflow_views.py:73
-#, fuzzy
-#| msgid "View workflows"
 msgid "Available workflows"
-msgstr "查看工作流"
+msgstr ""
 
 #: views/workflow_views.py:74
-#, fuzzy
-#| msgid "Workflows for document: %s"
 msgid "Workflows assigned this document type"
-msgstr "文件：%s的工作流"
+msgstr ""
 
 #: views/workflow_views.py:84
-#, fuzzy
-#| msgid ""
-#| "Removing a document type from a workflow will also remove all running "
-#| "instances of that workflow for documents of the document type just "
-#| "removed."
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr ""
-"从工作流中删除文档类型还将删除属于其的文档的工作流中所有正在运行的实例。"
 
 #: views/workflow_views.py:88
-#, fuzzy, python-format
-#| msgid "Workflows for document: %s"
+#, python-format
 msgid "Workflows assigned the document type: %s"
-msgstr "文件：%s的工作流"
+msgstr ""
 
 #: views/workflow_views.py:133
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
-"工作流存储一系列状态并跟踪文档的当前状态。流转用于将当前状态更改为新状态。"
+msgstr "工作流存储一系列状态并跟踪文档的当前状态。流转用于将当前状态更改为新状态。"
 
 #: views/workflow_views.py:138
 msgid "No workflows have been defined"
@@ -544,8 +524,7 @@ msgstr "分配此工作流的文档类型"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr ""
-"从工作流中删除文档类型还将删除属于其的文档的工作流中所有正在运行的实例。"
+msgstr "从工作流中删除文档类型还将删除属于其的文档的工作流中所有正在运行的实例。"
 
 #: views/workflow_views.py:198
 #, python-format
@@ -569,8 +548,8 @@ msgstr "编辑工作流状态操作：%s"
 
 #: views/workflow_views.py:353
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr "工作流状态操作是在文档进入或离开它们所处的状态时执行的宏。"
 
 #: views/workflow_views.py:357
@@ -606,7 +585,8 @@ msgstr "为工作流：%s创建流转"
 
 #: views/workflow_views.py:643
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr "创建流转并使用它将工作流从一个状态移至另一个状态。"
 
 #: views/workflow_views.py:647
@@ -691,14 +671,11 @@ msgstr "网址"
 
 #: workflow_actions.py:93
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"可以是IP地址，域或模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上"
-"下文的一部分。 “entry_log”又提"
-"供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "可以是IP地址，域或模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
 
 #: workflow_actions.py:103
 msgid "Timeout"
@@ -715,14 +692,11 @@ msgstr "有效载荷"
 #: workflow_actions.py:112
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"要包含在请求中的JSON文档。也可以是返回JSON文档的模板。模板通过变"
-"量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提"
-"供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "要包含在请求中的JSON文档。也可以是返回JSON文档的模板。模板通过变量“entry_log”接收工作流日志条目实例作为其上下文的一部分。 “entry_log”又提供“workflow_instance”，“datetime”，“transition”，“user”和“comment”属性。"
 
 #: workflow_actions.py:125
 msgid "Perform a POST request"
@@ -742,9 +716,3 @@ msgstr "有效载荷模板错误：%s"
 #, python-format
 msgid "Payload JSON error: %s"
 msgstr "有效负载JSON错误：%s"
-
-#~ msgid "Is initial state?"
-#~ msgstr "是初始状态？"
-
-#~ msgid "Enabled?"
-#~ msgstr "启用？"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Ingo, 2013
@@ -16,14 +16,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-05 02:10-0400\n"
-"PO-Revision-Date: 2019-05-03 05:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2019-05-05 06:26+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
@@ -40,10 +39,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung "
-"in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist "
-"erforderlich."
+msgstr "Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist erforderlich."
 
 #: apps.py:75
 msgid "Type"
@@ -288,9 +284,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 "
-"für IMAP über SSL"
+msgstr "Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 für IMAP über SSL"
 
 #: models/email_sources.py:48
 msgid "Port"
@@ -309,10 +303,7 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr ""
-"Name des Anhangs, der die Metadatentypen (Paare von Namen und Werten) für "
-"die folgenden Anhänge enthält (Bemerkung: dieser Anhang muss der erste "
-"Anhang sein)."
+msgstr "Name des Anhangs, der die Metadatentypen (Paare von Namen und Werten) für die folgenden Anhänge enthält (Bemerkung: dieser Anhang muss der erste Anhang sein)."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -322,9 +313,7 @@ msgstr "Name Metadatenattachment"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr ""
-"Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Betreffs, der für den ausgewählten Dokumententyp zulässig ist"
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -334,9 +323,7 @@ msgstr "Metadatentyp des Betreffs"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr ""
-"Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für "
-"den ausgewählten Dokumententyp zulässig ist"
+msgstr "Wählen Sie einen Metadatentyp zur Speicherung des E-Mail-Absenders, der für den ausgewählten Dokumententyp zulässig ist"
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -363,18 +350,14 @@ msgstr "E-Mail Quellen"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp "
-"\"%(document_type)s\" nicht zulässig."
+msgstr "Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp \"%(document_type)s\" nicht zulässig."
 
 #: models/email_sources.py:198
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp "
-"\"%(document_type)s\" nicht zulässig."
+msgstr "Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp \"%(document_type)s\" nicht zulässig."
 
 #: models/email_sources.py:213
 msgid "IMAP Mailbox from which to check for messages."
@@ -404,9 +387,7 @@ msgstr "Gerätename"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Scanmodus auswählen (z.B. lineart, monochrom, oder farbig). Leer lassen, "
-"wenn diese Option von Ihrem Scanner nicht unterstützt wird."
+msgstr "Scanmodus auswählen (z.B. lineart, monochrom, oder farbig). Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -417,10 +398,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
-"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
-"nicht unterstützt wird."
+msgstr "Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -430,9 +408,7 @@ msgstr "Auflösung"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Setzt die Scanquelle (etwa wie Dokuemteneinzug). Leer lassen, wenn diese "
-"Option von Ihrem Scanner nicht unterstützt wird."
+msgstr "Setzt die Scanquelle (etwa wie Dokuemteneinzug). Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:54
 msgid "Paper source"
@@ -442,10 +418,7 @@ msgstr "Papierquelle"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
-"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
-"nicht unterstützt wird."
+msgstr "Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:61
 msgid "ADF mode"
@@ -586,23 +559,17 @@ msgstr "Dokument hochladen"
 
 #: settings.py:15
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern "
-"verwendet wird."
+msgstr "Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern verwendet wird."
 
 #: settings.py:22
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
-"Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte "
-"Dateien."
+msgstr "Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte Dateien."
 
 #: settings.py:31
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr ""
-"Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND "
-"weitergeleitet werden."
+msgstr "Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND weitergeleitet werden."
 
 #: tasks.py:46
 #, python-format
@@ -610,10 +577,8 @@ msgid "Error processing source: %s"
 msgstr "Fehler bei der Verarbeitung der Quelle %s"
 
 #: templates/sources/upload_multiform_subtemplate.html:84
-#, fuzzy
-#| msgid "Handle upload"
 msgid "Cancel upload"
-msgstr "Hochladen erledigen"
+msgstr ""
 
 #: templates/sources/upload_multiform_subtemplate.html:85
 msgid "Are you sure you want to cancel this upload?"
@@ -633,7 +598,7 @@ msgstr ""
 
 #: templates/sources/upload_multiform_subtemplate.html:89
 msgid "Clear"
-msgstr ""
+msgstr "Löschen"
 
 #: templates/sources/upload_multiform_subtemplate.html:90
 msgid "Server responded with {{statusCode}} code."
@@ -643,9 +608,7 @@ msgstr ""
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
-msgstr ""
-"Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird "
-"hier gelistet, um bei der Fehlerbehebung zu helfen."
+msgstr "Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird hier gelistet, um bei der Fehlerbehebung zu helfen."
 
 #: views.py:68
 msgid "No log entries available"
@@ -658,11 +621,9 @@ msgstr "Logeinträge für Quelle %s"
 
 #: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen "
-"oder aktivieren Sie eine bevor Sie fortsetzen."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen oder aktivieren Sie eine bevor Sie fortsetzen."
 
 #: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
@@ -680,20 +641,16 @@ msgstr "Scannen"
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
-msgstr ""
-"Fehler beim Hochladen von Dokumenten; %(exception)s, %(exception_class)s"
+msgstr "Fehler beim Hochladen von Dokumenten; %(exception)s, %(exception_class)s"
 
 #: views.py:293
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
-"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
-"verfügbar sein."
+msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
 
 #: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
+msgstr "Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
 
 #: views.py:378
 #, python-format
@@ -702,9 +659,7 @@ msgstr "Vom Dokument \"%s\" können keine neuen Versionen hochgeladen werden."
 
 #: views.py:431
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
-"verfügbar sein."
+msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
 
 #: views.py:472
 #, python-format
@@ -712,10 +667,9 @@ msgid "Upload a new version from source: %s"
 msgstr "Eine neue Version von Quelle %s hochladen"
 
 #: views.py:486
-#, fuzzy, python-format
-#| msgid "Delete staging files"
+#, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr "Staging-Datei löschen"
+msgstr ""
 
 #: views.py:507
 msgid ""
@@ -755,11 +709,7 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
-"Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige "
-"Quellen wie z.B. das Webformular sind interaktiv und erfordern "
-"Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und "
-"laufen ohne Benutzereingriff im Hintergrund."
+msgstr "Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige Quellen wie z.B. das Webformular sind interaktiv und erfordern Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und laufen ohne Benutzereingriff im Hintergrund."
 
 #: views.py:629
 msgid "No sources available"

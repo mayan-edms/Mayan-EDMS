@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-04 21:39-0400\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"PO-Revision-Date: 2019-05-05 01:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:118 apps.py:298 events.py:7 menus.py:10
@@ -33,9 +32,7 @@ msgstr "نوع سند را ایجاد کنید"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"هر سند آپلود شده باید یک نوع سند اختصاص داده شود، این شیوه اصلی Mayan EDMS "
-"اسناد را دسته بندی می کند."
+msgstr "هر سند آپلود شده باید یک نوع سند اختصاص داده شود، این شیوه اصلی Mayan EDMS اسناد را دسته بندی می کند."
 
 #: apps.py:160
 msgid "Versions comment"
@@ -136,13 +133,10 @@ msgstr "فشرده سازی"
 
 #: forms/document_forms.py:28
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"سند را در فرمت اصلی یا به صورت فشرده دانلود کنید. این گزینه فقط هنگام دانلود "
-"یک سند انتخاب می شود، برای چندین اسناد، بسته نرم افزاری همیشه به عنوان یک "
-"فایل فشرده در دسترس خواهد بود."
+msgstr "سند را در فرمت اصلی یا به صورت فشرده دانلود کنید. این گزینه فقط هنگام دانلود یک سند انتخاب می شود، برای چندین اسناد، بسته نرم افزاری همیشه به عنوان یک فایل فشرده در دسترس خواهد بود."
 
 #: forms/document_forms.py:35
 msgid "Compressed filename"
@@ -152,9 +146,7 @@ msgstr "نام فایل فشرده شده"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"اگر انتخاب قبلی انجام شده، نام فایل فشرده شده که شامل کلیه فایلهای که "
-"قراراست که دانلود شوند."
+msgstr "اگر انتخاب قبلی انجام شده، نام فایل فشرده شده که شامل کلیه فایلهای که قراراست که دانلود شوند."
 
 #: forms/document_forms.py:85
 msgid "Quick document rename"
@@ -219,8 +211,7 @@ msgstr "محدوده صفحات"
 msgid ""
 "Page number from which all the transformation will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"شماره صفحه که از آن همه تحول کلون می شود. تحولات موجود از بین خواهد رفت."
+msgstr "شماره صفحه که از آن همه تحول کلون می شود. تحولات موجود از بین خواهد رفت."
 
 #: forms/document_type_forms.py:42 models/document_models.py:55
 #: models/document_type_models.py:60 models/document_type_models.py:143
@@ -233,9 +224,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"فرمت فایل را می گیرد و آن را به انتهای نام فایل منتقل می کند تا سیستم عامل "
-"هایی را که بر روی پسوندهای فایل تکیه دارند، به درستی باز می کند."
+msgstr "فرمت فایل را می گیرد و آن را به انتهای نام فایل منتقل می کند تا سیستم عامل هایی را که بر روی پسوندهای فایل تکیه دارند، به درستی باز می کند."
 
 #: links.py:78
 msgid "Preview"
@@ -339,9 +328,7 @@ msgstr "سطل زباله می تواند"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"پاک کردن نحوه نمایش اسناد که در زمان سرعت بخشی به نمایش اسناد مورد استفاده "
-"قرار میگیرد."
+msgstr "پاک کردن نحوه نمایش اسناد که در زمان سرعت بخشی به نمایش اسناد مورد استفاده قرار میگیرد."
 
 #: links.py:286
 msgid "Clear document image cache"
@@ -430,8 +417,8 @@ msgstr "تمام صفحات"
 
 #: models/document_models.py:49
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for "
-"each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for"
+" each document."
 msgstr ""
 
 #: models/document_models.py:59
@@ -486,9 +473,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"یک مستند سند یک سند با یک ورودی در پایگاه داده است اما هیچ فایل آپلود نشده "
-"است. این می تواند آپلود متوقف شده یا آپلود معلق از طریق API باشد."
+msgstr "یک مستند سند یک سند با یک ورودی در پایگاه داده است اما هیچ فایل آپلود نشده است. این می تواند آپلود متوقف شده یا آپلود معلق از طریق API باشد."
 
 #: models/document_models.py:94
 msgid "Is stub?"
@@ -544,7 +529,8 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr "مقدار زمان که پس از آن اسناد این نوع به سطل زباله منتقل می شود."
 
 #: models/document_type_models.py:38
@@ -604,8 +590,8 @@ msgstr "فایل"
 #: models/document_version_models.py:93
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:97 search.py:19 search.py:39
@@ -780,17 +766,13 @@ msgstr ""
 msgid ""
 "Disables the first cache tier which stores high resolution, non transformed "
 "versions of documents's pages."
-msgstr ""
-"اولین سطر ذخیره سازی که نسخه های با وضوح بالا و بدون تغییرات صفحات اسناد را "
-"ذخیره می کند را غیرفعال می کند."
+msgstr "اولین سطر ذخیره سازی که نسخه های با وضوح بالا و بدون تغییرات صفحات اسناد را ذخیره می کند را غیرفعال می کند."
 
 #: settings.py:41
 msgid ""
 "Disables the second cache tier which stores medium to low resolution, "
 "transformed (rotated, zoomed, etc) versions of documents' pages."
-msgstr ""
-"محدوده دوم حافظه پنهان که محتویات نسخه های با وضوح متوسط ​​و پایین را تغییر "
-"داده (چرخش، زوم و ...) صفحات اسناد را غیرفعال می کند."
+msgstr "محدوده دوم حافظه پنهان که محتویات نسخه های با وضوح متوسط ​​و پایین را تغییر داده (چرخش، زوم و ...) صفحات اسناد را غیرفعال می کند."
 
 #: settings.py:55
 msgid "Maximum number of favorite documents to remember per user."
@@ -799,15 +781,15 @@ msgstr ""
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:70
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:77
@@ -854,17 +836,13 @@ msgstr ""
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"حداکثر درصد(%) اندازه بزرگنمایی بوسیله کاربر برروی یک صفحه از سند بصورت "
-"تعاملی"
+msgstr "حداکثر درصد(%) اندازه بزرگنمایی بوسیله کاربر برروی یک صفحه از سند بصورت تعاملی"
 
 #: settings.py:154
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"حداکثر درصد(%) اندازه کوچک نمایی بوسیله کاربر برروی یک صفحه از سند بصورت "
-"تعاملی"
+msgstr "حداکثر درصد(%) اندازه کوچک نمایی بوسیله کاربر برروی یک صفحه از سند بصورت تعاملی"
 
 #: settings.py:161
 msgid "Amount in percent zoom in or out a document page per user interaction."
@@ -989,8 +967,8 @@ msgstr "اسناد نوع: %s"
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1019,10 +997,8 @@ msgstr "برچسب سریع برای نوع سند را ایجاد کنید: %s"
 
 #: views/document_type_views.py:179
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"برچسب سریع \"%(filename)s\" را از نوع سند \"%(document_type)s\" ویرایش کنید"
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "برچسب سریع \"%(filename)s\" را از نوع سند \"%(document_type)s\" ویرایش کنید"
 
 #: views/document_type_views.py:204
 #, python-format
@@ -1232,8 +1208,8 @@ msgstr "چاپ : %s"
 #: views/document_views.py:674
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:681
@@ -1242,8 +1218,8 @@ msgstr ""
 
 #: views/document_views.py:699
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/document_views.py:703
@@ -1331,24 +1307,20 @@ msgid "Duplicated document scan queued successfully."
 msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
 
 #: views/trashed_document_views.py:37
-#, fuzzy, python-format
-#| msgid "Document: %(document)s moved to trash successfully."
+#, python-format
 msgid "%(count)d document moved to the trash."
-msgstr "سند: %(document)s با موفقیت به سطل زباله منتقل شد"
+msgstr ""
 
 #: views/trashed_document_views.py:40
-#, fuzzy, python-format
-#| msgid "Document: %(document)s moved to trash successfully."
+#, python-format
 msgid "%(count)d documents moved to the trash."
-msgstr "سند: %(document)s با موفقیت به سطل زباله منتقل شد"
+msgstr ""
 
 #: views/trashed_document_views.py:48
-#, fuzzy
-#| msgid "Move the selected documents to the trash?"
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
-msgstr[0] "اسناد انتخاب شده را به سطل زباله انتقال دهید؟"
-msgstr[1] "اسناد انتخاب شده را به سطل زباله انتقال دهید؟"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/trashed_document_views.py:62
 msgid "Empty trash?"
@@ -1359,24 +1331,20 @@ msgid "Trash emptied successfully"
 msgstr "سطل زباله با موفقیت حذف شد"
 
 #: views/trashed_document_views.py:83
-#, fuzzy, python-format
-#| msgid "Document: %(document)s deleted."
+#, python-format
 msgid "%(count)d trashed document deleted."
-msgstr "سند: %(document)s حذف شد"
+msgstr ""
 
 #: views/trashed_document_views.py:86
-#, fuzzy, python-format
-#| msgid "Document: %(document)s deleted."
+#, python-format
 msgid "%(count)d trashed documents deleted."
-msgstr "سند: %(document)s حذف شد"
+msgstr ""
 
 #: views/trashed_document_views.py:94
-#, fuzzy
-#| msgid "Delete the selected document?"
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
-msgstr[0] "سند انتخاب شده را حذف کنید"
-msgstr[1] "سند انتخاب شده را حذف کنید"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/trashed_document_views.py:125
 msgid ""
@@ -1390,35 +1358,22 @@ msgid "There are no documents in the trash can"
 msgstr ""
 
 #: views/trashed_document_views.py:143
-#, fuzzy, python-format
-#| msgid "Document: %(document)s restored."
+#, python-format
 msgid "%(count)d trashed document restored."
-msgstr "سند: %(document)s بازیابی شده است"
+msgstr ""
 
 #: views/trashed_document_views.py:146
-#, fuzzy, python-format
-#| msgid "Document: %(document)s restored."
+#, python-format
 msgid "%(count)d trashed documents restored."
-msgstr "سند: %(document)s بازیابی شده است"
+msgstr ""
 
 #: views/trashed_document_views.py:154
-#, fuzzy
-#| msgid "Restore the selected document?"
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
-msgstr[0] "بازگرداندن سند انتخاب شده؟"
-msgstr[1] "بازگرداندن سند انتخاب شده؟"
+msgstr[0] ""
+msgstr[1] ""
 
 #: widgets.py:81 widgets.py:85
 #, python-format
 msgid "Pages: %d"
 msgstr ""
-
-#~ msgid "Delete the selected documents?"
-#~ msgstr "اسناد انتخاب شده را حذف کنید"
-
-#~ msgid "Restore the selected documents?"
-#~ msgstr "بازگرداندن اسناد انتخاب شده"
-
-#~ msgid "Move \"%s\" to the trash?"
-#~ msgstr "\"%s\" را به سطل زباله انتقال دهید؟"
