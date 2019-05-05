@@ -266,6 +266,8 @@ Other changes
   transitions column sortable.
 * Show completion and intial state in the
   workflow proxy instance menu list.
+* Fix translation of the source upload forms
+  using dropzone.js
 
 Removals
 --------
@@ -339,5 +341,6 @@ Bugs fixed or issues closed
 * :gitlab-issue:`522` Office 365 SMTP
 * :gitlab-issue:`539` Setting for default email sender is missing
 * :gitlab-issue:`563` Recursive Watch Folder
+* :gitlab-issue:`579` Untranslated items
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

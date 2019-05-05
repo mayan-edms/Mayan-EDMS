@@ -47,10 +47,6 @@
 
 {% include 'appearance/generic_multiform_subtemplate.html' %}
 
-<script>
-    $.getScript( "{% url 'common:javascript_catalog' 'mayan.apps.sources' %}" );
-</script>
-
 <script type="text/x-template" id="previewTemplate">
     <div class="dz-preview dz-file-preview">
         <i class="far fa-file fa-10x"></i>
@@ -85,6 +81,14 @@
 </script>
 
 <script>
+    var messageCancelUpload = "{% trans 'Cancel upload' %}";
+    var messageCancelUploadConfirmation = "{% trans 'Are you sure you want to cancel this upload?' %}";
+    var messageDefaultMessage = "{% trans 'Drop files or click here to upload files' %}";
+    var messageFallbackMessage = "{% trans 'Your browser does not support drag and drop file uploads.' %}";
+    var messageFallbackText = "{% trans 'Please use the fallback form below to upload your files.' %}";
+    var messageRemoveFile = "{% trans 'Clear' %}";
+    var messageResponseError = "{% trans 'Server responded with {{statusCode}} code.' %}";
+
     $.getScript( "{% static 'sources/node_modules/dropzone/dist/dropzone.js' %}" )
         .done(function( script, textStatus ) {
             Dropzone.autoDiscover = false;
@@ -95,13 +99,13 @@
                     $('.dropzone').dropzone({
                         addRemoveLinks: true,
                         createImageThumbnails: false,
-                        dictCancelUpload: gettext('Cancel upload'),
-                        dictCancelUploadConfirmation: gettext('Are you sure you want to cancel this upload?'),
-                        dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + gettext('Drop files or click here to upload files'),
-                        dictFallbackMessage: gettext('Your browser does not support drag\'n\'drop file uploads.'),
-                        dictFallbackText: gettext('Please use the fallback form below to upload your files like in the olden days.'),
-                        dictRemoveFile: gettext('Clear'),
-                        dictResponseError: gettext('Server responded with {{statusCode}} code.'),
+                        dictCancelUpload: messageCancelUpload,
+                        dictCancelUploadConfirmation: messageCancelUploadConfirmation,
+                        dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + messageDefaultMessage,
+                        dictFallbackMessage: messageFallbackMessage,
+                        dictFallbackText: messageFallbackText,
+                        dictRemoveFile: messageRemoveFile,
+                        dictResponseError: messageResponseError,
                         paramName: 'source-file',
                         previewTemplate: previewTemplate,
                         timeout: 1200000

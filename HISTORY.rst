@@ -233,6 +233,8 @@
   transitions column sortable.
 * Show completion and intial state in the 
   workflow proxy instance menu list.
+* Fix translation of the source upload forms
+  using dropzone.js
 
 3.1.11 (2019-04-XX)
 ===================

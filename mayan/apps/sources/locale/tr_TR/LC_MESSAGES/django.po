@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-04 21:40-0400\n"
+"POT-Creation-Date: 2019-05-05 02:10-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -597,6 +597,36 @@ msgstr ""
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Kaynak işleme sırasında hata oluştu: %s"
+
+#: templates/sources/upload_multiform_subtemplate.html:84
+#, fuzzy
+#| msgid "Handle upload"
+msgid "Cancel upload"
+msgstr "Yüklemeyi yönet"
+
+#: templates/sources/upload_multiform_subtemplate.html:85
+msgid "Are you sure you want to cancel this upload?"
+msgstr ""
+
+#: templates/sources/upload_multiform_subtemplate.html:86
+msgid "Drop files or click here to upload files"
+msgstr ""
+
+#: templates/sources/upload_multiform_subtemplate.html:87
+msgid "Your browser does not support drag and drop file uploads."
+msgstr ""
+
+#: templates/sources/upload_multiform_subtemplate.html:88
+msgid "Please use the fallback form below to upload your files."
+msgstr ""
+
+#: templates/sources/upload_multiform_subtemplate.html:89
+msgid "Clear"
+msgstr ""
+
+#: templates/sources/upload_multiform_subtemplate.html:90
+msgid "Server responded with {{statusCode}} code."
+msgstr ""
 
 #: views.py:65
 msgid ""
