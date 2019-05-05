@@ -23,7 +23,7 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
-        <div class="row no-gutters">
+        <div class="row zero-margin">
             <div class="col-xs-12">
                 {% common_check_sqlite as check_sqlite %}
                 {% if common_check_sqlite %}
@@ -39,7 +39,7 @@
 
         {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
 
-        <div class="row no-gutters">
+        <div class="row zero-margin">
             <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
                 {% include 'appearance/calculate_form_title.html' %}
 

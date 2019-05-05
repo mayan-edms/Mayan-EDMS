@@ -351,7 +351,7 @@ a i {
 }
 
 /* Remove scroll bar caused by bootstraps -15px on .row margins */
-.no-gutters {
+.zero-margin {
     margin-right: 0;
     margin-left: 0;
 
@@ -406,7 +406,7 @@ a i {
     }
 
     .has-sidebar {
-        padding-right: 140px;
+        padding-right: 150px;
     }
 }
 
