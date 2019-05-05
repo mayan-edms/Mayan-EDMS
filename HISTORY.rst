@@ -223,6 +223,9 @@
 * Remove mayan_permission_attribute_check from
   API permission.
 * Update Bootstrap and Bootswatch to version 3.4.1.
+* Convert the workflow document types view to use
+  the new AddRemove view.
+* Add the workflow created and edited events.
 
 3.1.11 (2019-04-XX)
 ===================

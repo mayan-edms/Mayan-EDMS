@@ -17,10 +17,15 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.common.permissions_runtime import permission_error_log_view
+from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list
+)
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.celery import app
 
 from .classes import DocumentStateHelper, WorkflowAction
+from .events import event_workflow_created, event_workflow_edited
 from .dependencies import *  # NOQA
 from .handlers import (
     handler_index_document, handler_launch_workflow, handler_trigger_transition
@@ -61,6 +66,7 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
+        from actstream import registry
 
         Action = apps.get_model(
             app_label='actstream', model_name='Action'
@@ -107,6 +113,13 @@ class DocumentStatesApp(MayanAppConfig):
                 'selected workflow'
             )
         )
+
+        ModelEventType.register(
+            event_types=(
+                event_workflow_created, event_workflow_edited
+            ), model=Workflow
+        )
+
         ModelPermission.register(
             model=Document, permissions=(permission_workflow_view,)
         )
@@ -260,9 +273,11 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
                 link_setup_workflow_document_types,
                 link_setup_workflow_states, link_setup_workflow_transitions,
-                link_workflow_preview, link_acl_list
+                link_workflow_preview
             ), sources=(Workflow,)
         )
         menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
@@ -369,3 +384,5 @@ class DocumentStatesApp(MayanAppConfig):
             receiver=handler_trigger_transition,
             sender=Action
         )
+
+        registry.register(Workflow)

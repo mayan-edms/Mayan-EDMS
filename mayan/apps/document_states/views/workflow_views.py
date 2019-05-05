@@ -12,15 +12,19 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.generics import (
-    AssignRemoveView, ConfirmView, FormView, SingleObjectCreateView,
+    AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
+from mayan.apps.documents.events import event_document_type_edited
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.events.classes import EventType
 from mayan.apps.events.models import StoredEventType
 
 from ..classes import WorkflowAction
+from ..events import event_workflow_edited
 from ..forms import (
     WorkflowActionSelectionForm, WorkflowForm, WorkflowPreviewForm,
     WorkflowStateActionDynamicForm, WorkflowStateForm, WorkflowTransitionForm,
@@ -86,37 +90,51 @@ class SetupWorkflowListView(SingleObjectListView):
 class SetupWorkflowCreateView(SingleObjectCreateView):
     form_class = WorkflowForm
     model = Workflow
-    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy(
+        viewname='document_states:setup_workflow_list'
+    )
     view_permission = permission_workflow_create
+
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
     object_permission = permission_workflow_edit
-    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy(
+        viewname='document_states:setup_workflow_list'
+    )
+
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
     model = Workflow
     object_permission = permission_workflow_delete
-    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy(
+        viewname='document_states:setup_workflow_list'
+    )
 
 
-class SetupWorkflowDocumentTypesView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available document types')
-    object_permission = permission_workflow_edit
-    right_list_title = _('Document types assigned this workflow')
+class SetupWorkflowDocumentTypesView(AddRemoveView):
+    main_object_permission = permission_workflow_edit
+    main_object_model = Workflow
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = DocumentType
+    secondary_object_permission = permission_document_type_edit
+    list_available_title = _('Available document types')
+    list_added_title = _('Document types assigned this workflow')
+    related_field = 'document_types'
 
-    def add(self, item):
-        self.get_object().document_types.add(item)
-        # TODO: add task launching this workflow for all the document types
-        # of item
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
+            'object': self.main_object,
             'subtitle': _(
                 'Removing a document type from a workflow will also '
                 'remove all running instances of that workflow for '
@@ -124,28 +142,36 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
             ),
             'title': _(
                 'Document types assigned the workflow: %s'
-            ) % self.get_object(),
+            ) % self.main_object,
         }
 
-    def get_object(self):
-        return get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().get_document_types_not_in_workflow()
-        )
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().document_types.all()
-        )
-
-    def remove(self, item):
-        # When removing a document type to workflow association
-        # also remove all running workflows in documents of that type.
+    def action_add(self, queryset, _user):
         with transaction.atomic():
-            self.get_object().document_types.remove(item)
-            self.get_object().instances.filter(document__document_type=item).delete()
+            event_workflow_edited.commit(
+                actor=_user, target=self.main_object
+            )
+
+            for obj in queryset:
+                self.main_object.document_types.add(obj)
+                event_document_type_edited.commit(
+                    action_object=self.main_object, actor=_user, target=obj
+                )
+
+    def action_remove(self, queryset, _user):
+        with transaction.atomic():
+            event_workflow_edited.commit(
+                actor=_user, target=self.main_object
+            )
+
+            for obj in queryset:
+                self.main_object.document_types.remove(obj)
+                event_document_type_edited.commit(
+                    action_object=self.main_object, actor=_user,
+                    target=obj
+                )
+                self.main_object.instances.filter(
+                    document__document_type=obj
+                ).delete()
 
 
 # Workflow state actions
@@ -193,8 +219,8 @@ class SetupWorkflowStateActionCreateView(SingleObjectDynamicFormCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'document_states:setup_workflow_state_action_list',
-            args=(self.get_object().pk,)
+            viewname='document_states:setup_workflow_state_action_list',
+            kwargs={'pk': self.get_object().pk}
         )
 
 
@@ -215,8 +241,8 @@ class SetupWorkflowStateActionDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'document_states:setup_workflow_state_action_list',
-            args=(self.get_object().state.pk,)
+            viewname='document_states:setup_workflow_state_action_list',
+            kwargs={'pk': self.get_object().state.pk}
         )
 
 
@@ -249,8 +275,8 @@ class SetupWorkflowStateActionEditView(SingleObjectDynamicFormEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'document_states:setup_workflow_state_action_list',
-            args=(self.get_object().state.pk,)
+            viewname='document_states:setup_workflow_state_action_list',
+            kwargs={'pk': self.get_object().state.pk}
         )
 
 
@@ -300,9 +326,9 @@ class SetupWorkflowStateActionSelectionView(FormView):
     def form_valid(self, form):
         klass = form.cleaned_data['klass']
         return HttpResponseRedirect(
-            reverse(
-                'document_states:setup_workflow_state_action_create',
-                args=(self.get_object().pk, klass,),
+            redirect_to=reverse(
+                viewname='document_states:setup_workflow_state_action_create',
+                kwargs={'pk': self.get_object().pk, 'class_path': klass}
             )
         )
 
@@ -339,7 +365,9 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_state_list', args=(self.kwargs['pk'],)
+            viewname='document_states:setup_workflow_state_list', kwargs={
+                'pk': self.kwargs['pk']
+            }
         )
 
     def get_workflow(self):
@@ -373,8 +401,8 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_state_list',
-            args=(self.get_object().workflow.pk,)
+            viewname='document_states:setup_workflow_state_list',
+            kwargs={'pk': self.get_object().workflow.pk}
         )
 
     def get_workflow(self):
@@ -400,8 +428,8 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_state_list',
-            args=(self.get_object().workflow.pk,)
+            viewname='document_states:setup_workflow_state_list',
+            kwargs={'pk': self.get_object().workflow.pk}
         )
 
 
@@ -457,7 +485,8 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
             self.object.save()
         except IntegrityError:
             messages.error(
-                self.request, _('Unable to save transition; integrity error.')
+                message=_('Unable to save transition; integrity error.'),
+                request=self.request
             )
             return super(
                 SetupWorkflowTransitionCreateView, self
@@ -485,8 +514,8 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_transition_list',
-            args=(self.kwargs['pk'],)
+            viewname='document_states:setup_workflow_transition_list',
+            kwargs={'pk': self.kwargs['pk']}
         )
 
     def get_workflow(self):
@@ -511,8 +540,8 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_transition_list',
-            args=(self.get_object().workflow.pk,)
+            viewname='document_states:setup_workflow_transition_list',
+            kwargs={'pk': self.get_object().workflow.pk}
         )
 
 
@@ -537,8 +566,8 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_transition_list',
-            args=(self.get_object().workflow.pk,)
+            viewname='document_states:setup_workflow_transition_list',
+            kwargs={'pk': self.get_object().workflow.pk}
         )
 
 
@@ -596,16 +625,15 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
                 instance.save()
         except Exception as exception:
             messages.error(
-                self.request,
-                _(
+                message=_(
                     'Error updating workflow transition trigger events; %s'
-                ) % exception
+                ) % exception, request=self.request
             )
         else:
             messages.success(
-                self.request, _(
+                message=_(
                     'Workflow transition trigger events updated successfully'
-                )
+                ), request=self.request
             )
 
         return super(
@@ -649,8 +677,8 @@ class SetupWorkflowTransitionTriggerEventListView(FormView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'document_states:setup_workflow_transition_list',
-            args=(self.get_object().workflow.pk,)
+            viewname='document_states:setup_workflow_transition_list',
+            kwargs={'pk': self.get_object().workflow.pk}
         )
 
 
@@ -667,7 +695,8 @@ class ToolLaunchAllWorkflows(ConfirmView):
     def view_action(self):
         task_launch_all_workflows.apply_async()
         messages.success(
-            self.request, _('Workflow launch queued successfully.')
+            message=_('Workflow launch queued successfully.'),
+            request=self.request
         )
 
 

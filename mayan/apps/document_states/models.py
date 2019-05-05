@@ -7,7 +7,7 @@ from graphviz import Digraph
 
 from django.conf import settings
 from django.core.exceptions import PermissionDenied, ValidationError
-from django.db import IntegrityError, models
+from django.db import IntegrityError, models, transaction
 from django.db.models import F, Max, Q
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
@@ -20,6 +20,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.events.models import StoredEventType
 
 from .error_logs import error_log_state_actions
+from .events import event_workflow_created, event_workflow_edited
 from .literals import (
     WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
     WORKFLOW_ACTION_ON_EXIT
@@ -132,6 +133,21 @@ class Workflow(models.Model):
             diagram.edge(**transition)
 
         return diagram.pipe()
+
+    def save(self, *args, **kwargs):
+        _user = kwargs.pop('_user', None)
+
+        with transaction.atomic():
+            is_new = not self.pk
+            super(Workflow, self).save(*args, **kwargs)
+            if is_new:
+                event_workflow_created.commit(
+                    actor=_user, target=self
+                )
+            else:
+                event_workflow_edited.commit(
+                    actor=_user, target=self
+                )
 
 
 @python_2_unicode_compatible
