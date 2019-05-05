@@ -6,11 +6,11 @@ from mayan.apps.dependencies.classes import JavaScriptDependency
 
 JavaScriptDependency(
     label=_('Bootstrap'), module=__name__, name='bootstrap',
-    version_string='=3.3.7'
+    version_string='=3.4.1'
 )
 JavaScriptDependency(
     label=_('Bootswatch'), module=__name__, name='bootswatch',
-    version_string='=3.3.7'
+    version_string='=3.4.1'
 )
 JavaScriptDependency(
     label=_('Fancybox'), module=__name__, name='@fancyapps/fancybox',

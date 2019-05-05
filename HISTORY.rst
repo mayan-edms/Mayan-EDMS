@@ -222,6 +222,7 @@
 * Remove permissions_related from links.
 * Remove mayan_permission_attribute_check from
   API permission.
+* Update Bootstrap and Bootswatch to version 3.4.1.
 
 3.1.11 (2019-04-XX)
 ===================
