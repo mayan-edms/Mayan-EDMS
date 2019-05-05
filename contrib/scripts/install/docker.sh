@@ -16,7 +16,7 @@ set -e
 : ${DATABASE_USER:=mayan}
 : ${DATABASE_NAME:=mayan}
 : ${DATABASE_PASSWORD:=mayanuserpass}
-: ${DOCKER_POSTGRES_IMAGE:=postgres:9.5}
+: ${DOCKER_POSTGRES_IMAGE:=postgres:9.6}
 : ${DOCKER_POSTGRES_CONTAINER:=mayan-edms-postgres}
 : ${DOCKER_POSTGRES_VOLUME:=/docker-volumes/mayan-edms/postgres}
 : ${DOCKER_POSTGRES_PORT:=5432}

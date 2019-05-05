@@ -14,9 +14,9 @@ With Docker properly installed, proceed to download the Mayan EDMS image using t
 
     docker pull mayanedms/mayanedms:<version>
 
-Then download version 9.5 of the Docker PostgreSQL image::
+Then download version 9.6 of the Docker PostgreSQL image::
 
-    docker pull postgres:9.5
+    docker pull postgres:9.6
 
 Create and run a PostgreSQL container::
 
@@ -28,7 +28,7 @@ Create and run a PostgreSQL container::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.5
+    -d postgres:9.6
 
 The PostgreSQL container will have one database named ``mayan``, with an user
 named ``mayan`` too, with a password of ``mayanuserpass``. The container will
@@ -91,7 +91,7 @@ binding (``-p 5432:5432``)::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres:/var/lib/postgresql/data \
-    -d postgres:9.5
+    -d postgres:9.6
 
 Launch the Mayan EDMS container with the network option and change the
 database hostname to the PostgreSQL container name (``mayan-edms-postgres``)

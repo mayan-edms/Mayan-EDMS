@@ -59,7 +59,7 @@ Example::
     -e POSTGRES_DB=mayan \
     -e POSTGRES_PASSWORD=mayanuserpass \
     -v /docker-volumes/mayan-edms/postgres-new:/var/lib/postgresql/data \
-    -d postgres:9.5
+    -d postgres:9.6
 
     docker exec -i mayan-edms-pg-new pg_restore -U mayan -d mayan < 2018-06-07_17-09-34.dump
 
