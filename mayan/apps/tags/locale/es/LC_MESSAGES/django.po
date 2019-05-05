@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:08-0400\n"
+"POT-Creation-Date: 2019-05-04 21:41-0400\n"
 "PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
@@ -138,13 +139,17 @@ msgstr "Retirar etiquetas de los documentos"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Lista separada por comas de los ID primarios de documentos a los que se adjuntará esta etiqueta."
+msgstr ""
+"Lista separada por comas de los ID primarios de documentos a los que se "
+"adjuntará esta etiqueta."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "URL de la API  que apunta a una etiqueta en relación con el documento adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
+msgstr ""
+"URL de la API  que apunta a una etiqueta en relación con el documento "
+"adjunto a ella. Esta URL es diferente de la URL canónica de la etiqueta."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -238,65 +243,68 @@ msgstr "Editar etiqueta: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr "Las etiquetas son propiedades codificadas por colores que se pueden adjuntar o retirar de los documentos."
+msgstr ""
+"Las etiquetas son propiedades codificadas por colores que se pueden adjuntar "
+"o retirar de los documentos."
 
 #: views.py:219
 msgid "No tags available"
 msgstr "No hay etiquetas disponibles"
 
-#: views.py:243
+#: views.py:242
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documentos con la etiqueta: %s"
 
-#: views.py:267
+#: views.py:266
 msgid "Document has no tags attached"
 msgstr "El documento no tiene etiquetas adjuntas"
 
-#: views.py:274
+#: views.py:273
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Etiquetas del documento: %s"
 
-#: views.py:287
+#: views.py:286
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Solicitud de retiración de etiquetas realizada en %(count)d documento "
 
-#: views.py:289
+#: views.py:288
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Solicitud de retiración de etiquetas realizada en %(count)d documentos"
 
-#: views.py:297
+#: views.py:296
 msgid "Remove"
 msgstr "Retirar"
 
-#: views.py:299
+#: views.py:298
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Retirar etiquetas de %(count)d documento"
 msgstr[1] "Retirar etiquetas de %(count)ddocumentos"
 
-#: views.py:311
+#: views.py:310
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Retirar etiquetas de documento: %s"
 
-#: views.py:320
+#: views.py:319
 msgid "Tags to be removed."
 msgstr "Etiquetas a ser retiradas."
 
-#: views.py:358
+#: views.py:357
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Documento \"%(document)s\" no esta etiquetado con \"%(tag)s"
 
-#: views.py:367
+#: views.py:366
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
 
 #: wizard_steps.py:18
 msgid "Select tags"

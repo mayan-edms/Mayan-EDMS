@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
@@ -11,37 +11,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:05-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-30 16:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:51 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "Firmas de documentos"
 
-#: apps.py:91
+#: apps.py:98
 msgid "Date"
 msgstr "Fecha"
 
-#: apps.py:94 models.py:46
+#: apps.py:101 models.py:46
 msgid "Key ID"
 msgstr "Identificador de llave"
 
-#: apps.py:98 forms.py:64 models.py:50
+#: apps.py:105 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "ID de firma"
 
-#: apps.py:99 forms.py:76
+#: apps.py:106 forms.py:76
 msgid "None"
 msgstr "Ninguno"
 
-#: apps.py:102
+#: apps.py:109
 msgid "Type"
 msgstr "Tipo"
 
@@ -53,7 +54,9 @@ msgstr "Llave"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr "La frase de contraseña para desbloquear la llave y permitir que se use para firmar la versión del documento."
+msgstr ""
+"La frase de contraseña para desbloquear la llave y permitir que se use para "
+"firmar la versión del documento."
 
 #: forms.py:26
 msgid "Passphrase"
@@ -111,11 +114,11 @@ msgstr "Tipo de llave"
 msgid "Verify all documents"
 msgstr "Verificar todos los documents"
 
-#: links.py:39 links.py:59 queues.py:8
+#: links.py:39 links.py:58 queues.py:8
 msgid "Signatures"
 msgstr "Firma"
 
-#: links.py:46
+#: links.py:45
 msgid "Delete"
 msgstr "Borrar"
 
@@ -123,19 +126,19 @@ msgstr "Borrar"
 msgid "Details"
 msgstr "Detalles"
 
-#: links.py:65
+#: links.py:63
 msgid "Download"
 msgstr "Descargar"
 
-#: links.py:72
+#: links.py:69
 msgid "Upload signature"
 msgstr "Subir firma"
 
-#: links.py:79
+#: links.py:76
 msgid "Sign detached"
 msgstr "Firma aparte"
 
-#: links.py:86
+#: links.py:83
 msgid "Sign embedded"
 msgstr "Firma integrada"
 
@@ -237,7 +240,8 @@ msgstr "Verificar la firma integrada que falta"
 
 #: settings.py:15
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
+msgstr ""
+"Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
 
 #: settings.py:24
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
@@ -275,35 +279,41 @@ msgstr "Borrar firma aparte: %s"
 msgid "Details for signature: %s"
 msgstr "Detalles para la firma: %s"
 
-#: views.py:302
+#: views.py:303
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Las firmas ayudan a proporcionar evidencia de autoría y detección de manipulación. Son muy seguras y difíciles de falsificar. Una firma puede integrarse como parte del documento en sí o cargarse como un archivo separado."
+msgstr ""
+"Las firmas ayudan a proporcionar evidencia de autoría y detección de "
+"manipulación. Son muy seguras y difíciles de falsificar. Una firma puede "
+"integrarse como parte del documento en sí o cargarse como un archivo "
+"separado."
 
-#: views.py:330
+#: views.py:331
 msgid "There are no signatures for this document."
 msgstr "No hay firmas para este documento."
 
-#: views.py:333
+#: views.py:334
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Firmas para la versión de documento: %s"
 
-#: views.py:363
+#: views.py:364
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Subir firma aparte para la versión de documento: %s"
 
-#: views.py:380
-msgid "On large databases this operation may take some time to execute."
-msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
-
 #: views.py:381
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
+
+#: views.py:382
 msgid "Verify all document for signatures?"
 msgstr "¿Verificar todos los documentos para firmas?"
 
-#: views.py:391
+#: views.py:392
 msgid "Signature verification queued successfully."
 msgstr "Verificación de firmas colocada en la cola."

@@ -2,27 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2019
 # Roberto Rosario, 2019
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2019
 # Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:04-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:29 links.py:43 permissions.py:7
 msgid "Dependencies"
@@ -143,8 +145,8 @@ msgstr ""
 
 #: classes.py:370
 msgid ""
-"Javascript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"Javascript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
 
 #: classes.py:373

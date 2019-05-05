@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:06-0400\n"
+"POT-Creation-Date: 2019-05-04 21:39-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42
@@ -28,7 +29,7 @@ msgid "Label"
 msgstr "برچسب"
 
 #: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
-#: permissions.py:7 views.py:193
+#: permissions.py:7 views.py:197
 msgid "Smart links"
 msgstr "پیوند هوشمند"
 
@@ -60,7 +61,7 @@ msgstr "ویرایش"
 msgid "Conditions"
 msgstr "شرایط"
 
-#: links.py:51 views.py:239
+#: links.py:51 views.py:243
 msgid "Create new smart link"
 msgstr "ایجاد پیوند هوشمند جدید"
 
@@ -143,8 +144,8 @@ msgstr "موجود در عبارات منظم  (case insensitive)"
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
 msgstr ""
 
 #: models.py:35
@@ -228,115 +229,119 @@ msgstr "دیدن پیوندهای هوشمند موجود"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده است."
+msgstr ""
+"لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده "
+"است."
 
 #: serializers.py:141
 #, python-format
 msgid "No such document type: %s"
 msgstr "بدون نوع سند: %s"
 
-#: views.py:45
+#: views.py:46
 msgid "Available smart links"
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 msgid "Smart links enabled"
 msgstr ""
 
-#: views.py:76
+#: views.py:79
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr ""
 
-#: views.py:119
+#: views.py:123
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "خطای پرسش query از پیوند هوشمند : %s"
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "اسناد در لینک هوشمند: %s"
 
-#: views.py:131
+#: views.py:135
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
 
-#: views.py:156
+#: views.py:160
 msgid "Available document types"
 msgstr "نوع سند موجود"
 
-#: views.py:157
+#: views.py:161
 msgid "Document types enabled"
 msgstr "انواع سند فعال شده است"
 
-#: views.py:167
+#: views.py:171
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "نوع سند برای فعالسازی لینک هوشمند: %s"
 
-#: views.py:184
+#: views.py:188
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
 
-#: views.py:191
+#: views.py:195
 msgid "There are no smart links"
 msgstr ""
 
-#: views.py:223
+#: views.py:227
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr ""
 
-#: views.py:228
+#: views.py:232
 msgid "There are no smart links for this document"
 msgstr ""
 
-#: views.py:231
+#: views.py:235
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "ارتباطات هوشمند برای سند :%s"
 
-#: views.py:260
+#: views.py:264
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "حذف لینک هوشمند: %s"
 
-#: views.py:275
+#: views.py:279
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "ویرایش پیوند هوشمند %s"
 
-#: views.py:298
+#: views.py:302
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr ""
 
-#: views.py:302
+#: views.py:306
 msgid "There are no conditions for this smart link"
 msgstr ""
 
-#: views.py:306
+#: views.py:310
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "شرایط پیوند هوشمند : %s"
 
-#: views.py:333
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "اضافه کردن شرط جدید به پیوند هوشمند \"%s\""
 
-#: views.py:374
+#: views.py:379
 msgid "Edit smart link condition"
 msgstr "ویرایش شرط پیوند هوشمند \"%s\""
 
-#: views.py:404
+#: views.py:409
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "شرط ارتباط هوشمند را حذف کنید: \"%s\"؟"

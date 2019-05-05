@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:06-0400\n"
+"POT-Creation-Date: 2019-05-04 21:39-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42
@@ -30,7 +31,7 @@ msgid "Label"
 msgstr "Libellé"
 
 #: events.py:8 links.py:20 links.py:79 links.py:84 links.py:89 models.py:48
-#: permissions.py:7 views.py:193
+#: permissions.py:7 views.py:197
 msgid "Smart links"
 msgstr "Liens intelligents"
 
@@ -62,7 +63,7 @@ msgstr "Modifier"
 msgid "Conditions"
 msgstr "Conditions"
 
-#: links.py:51 views.py:239
+#: links.py:51 views.py:243
 msgid "Create new smart link"
 msgstr "Céer un nouveau lien intelligent"
 
@@ -145,8 +146,8 @@ msgstr "est une expression régulière (insensible à la casse)"
 #: models.py:31 models.py:189
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The {{ "
-"document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
 msgstr ""
 
 #: models.py:35
@@ -168,7 +169,8 @@ msgstr "Erreur de génération du libellé dynamique ; %s"
 
 #: models.py:102
 msgid "This smart link is not allowed for the selected document's type."
-msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
+msgstr ""
+"Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:179
 msgid "The inclusion is ignored for the first item."
@@ -230,115 +232,120 @@ msgstr "Afficher les liens intelligents existants"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr "Liste séparée par des virgules des clés primaires de type de document auxquelles ce lien intelligent sera attaché."
+msgstr ""
+"Liste séparée par des virgules des clés primaires de type de document "
+"auxquelles ce lien intelligent sera attaché."
 
 #: serializers.py:141
 #, python-format
 msgid "No such document type: %s"
 msgstr "Aucun type de document de ce type : %s"
 
-#: views.py:45
+#: views.py:46
 msgid "Available smart links"
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 msgid "Smart links enabled"
 msgstr ""
 
-#: views.py:76
+#: views.py:79
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr ""
 
-#: views.py:119
+#: views.py:123
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Erreur de requête sur lien intelligent :%s"
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Documents in smart link: %s"
 msgstr "Lien inetlligent du document : %s"
 
-#: views.py:131
+#: views.py:135
 #, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Documents du lien intelligent  \"%(smart_link)s\" en relation avec \"%(document)s\""
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
+"\"%(document)s\""
 
-#: views.py:156
+#: views.py:160
 msgid "Available document types"
 msgstr "Types de document disponibles"
 
-#: views.py:157
+#: views.py:161
 msgid "Document types enabled"
 msgstr "Types de documents actifs"
 
-#: views.py:167
+#: views.py:171
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Type de document sur lesquels activer les liens intelligents : %s"
 
-#: views.py:184
+#: views.py:188
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
 
-#: views.py:191
+#: views.py:195
 msgid "There are no smart links"
 msgstr ""
 
-#: views.py:223
+#: views.py:227
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr ""
 
-#: views.py:228
+#: views.py:232
 msgid "There are no smart links for this document"
 msgstr ""
 
-#: views.py:231
+#: views.py:235
 #, python-format
 msgid "Smart links for document: %s"
 msgstr "Liens intelligents pour le document : %s"
 
-#: views.py:260
+#: views.py:264
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Supprimer le lien intelligent : %s"
 
-#: views.py:275
+#: views.py:279
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Modifier le lien intelligent :%s"
 
-#: views.py:298
+#: views.py:302
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr ""
 
-#: views.py:302
+#: views.py:306
 msgid "There are no conditions for this smart link"
 msgstr ""
 
-#: views.py:306
+#: views.py:310
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Conditions sur le lien intelligent : %s"
 
-#: views.py:333
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Ajouter de nouvelles conditions au lien intelligent : \"%s\""
 
-#: views.py:374
+#: views.py:379
 msgid "Edit smart link condition"
 msgstr "Modifier la condition sur le lien intelligent"
 
-#: views.py:404
+#: views.py:409
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Supprimer la condition du lien intelligent : \"%s\" ?"

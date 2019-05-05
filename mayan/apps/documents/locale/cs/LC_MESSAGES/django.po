@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:05-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:118 apps.py:302 events.py:7 menus.py:10
+#: apps.py:118 apps.py:298 events.py:7 menus.py:10
 #: models/document_models.py:104 permissions.py:7 queues.py:18 settings.py:14
 #: statistics.py:233
 msgid "Documents"
@@ -49,19 +51,19 @@ msgstr ""
 msgid "Versions timestamp"
 msgstr ""
 
-#: apps.py:254 apps.py:279 apps.py:285 apps.py:322 apps.py:339
+#: apps.py:250 apps.py:275 apps.py:281 apps.py:318 apps.py:335
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:262 apps.py:344 forms/document_forms.py:182 links.py:95
+#: apps.py:258 apps.py:340 forms/document_forms.py:182 links.py:95
 msgid "Pages"
 msgstr ""
 
-#: apps.py:271 links.py:426
+#: apps.py:267 links.py:426
 msgid "Duplicates"
 msgstr ""
 
-#: apps.py:290
+#: apps.py:286
 msgid "Type"
 msgstr ""
 
@@ -73,7 +75,7 @@ msgstr ""
 msgid "Total documents"
 msgstr ""
 
-#: dashboard_widgets.py:65 views/trashed_document_views.py:96
+#: dashboard_widgets.py:65 views/trashed_document_views.py:132
 msgid "Documents in trash"
 msgstr ""
 
@@ -132,8 +134,8 @@ msgstr ""
 
 #: forms/document_forms.py:28
 msgid ""
-"Download the document in the original format or in a compressed manner. This"
-" option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This "
+"option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
@@ -416,8 +418,8 @@ msgstr ""
 
 #: models/document_models.py:49
 msgid ""
-"UUID of a document, universally Unique ID. An unique identifiergenerated for"
-" each document."
+"UUID of a document, universally Unique ID. An unique identifiergenerated for "
+"each document."
 msgstr ""
 
 #: models/document_models.py:59
@@ -528,8 +530,7 @@ msgstr ""
 
 #: models/document_type_models.py:36
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
+"Amount of time after which documents of this type will be moved to the trash."
 msgstr ""
 
 #: models/document_type_models.py:38
@@ -589,8 +590,8 @@ msgstr ""
 #: models/document_version_models.py:93
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document."
-" Some examples: \"text/plain\" or \"image/jpeg\". "
+"describe the format of a file, in this case the file format of the document. "
+"Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
 #: models/document_version_models.py:97 search.py:19 search.py:39
@@ -780,15 +781,15 @@ msgstr ""
 #: settings.py:61
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an"
-" experimental feature and it is disabled by default."
+"corresponding rotation transformation to display it rightside up. This is an "
+"experimental feature and it is disabled by default."
 msgstr ""
 
 #: settings.py:70
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value"
-" of 0 disables the block calculation and the entire file will be loaded into"
-" memory."
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
 msgstr ""
 
 #: settings.py:77
@@ -936,24 +937,24 @@ msgstr ""
 msgid "Unknown language \"%s\""
 msgstr ""
 
-#: views/document_page_views.py:57
+#: views/document_page_views.py:56
 #, python-format
 msgid "Pages for document: %s"
 msgstr ""
 
-#: views/document_page_views.py:112
+#: views/document_page_views.py:111
 msgid "Unknown view keyword argument schema, unable to redirect."
 msgstr ""
 
-#: views/document_page_views.py:144
+#: views/document_page_views.py:143
 msgid "There are no more pages in this document"
 msgstr ""
 
-#: views/document_page_views.py:161
+#: views/document_page_views.py:160
 msgid "You are already at the first page of this document"
 msgstr ""
 
-#: views/document_page_views.py:189
+#: views/document_page_views.py:188
 #, python-format
 msgid "Image of: %s"
 msgstr ""
@@ -966,8 +967,8 @@ msgstr ""
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -989,65 +990,66 @@ msgstr ""
 msgid "Edit document type: %s"
 msgstr ""
 
-#: views/document_type_views.py:157
+#: views/document_type_views.py:158
 #, python-format
 msgid "Create quick label for document type: %s"
 msgstr ""
 
-#: views/document_type_views.py:178
+#: views/document_type_views.py:179
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
-#: views/document_type_views.py:203
+#: views/document_type_views.py:204
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
 
-#: views/document_type_views.py:240
+#: views/document_type_views.py:241
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr ""
 
-#: views/document_type_views.py:246
+#: views/document_type_views.py:247
 msgid "There are no quick labels for this document type"
 msgstr ""
 
-#: views/document_type_views.py:249
+#: views/document_type_views.py:250
 #, python-format
 msgid "Quick labels for document type: %s"
 msgstr ""
 
-#: views/document_version_views.py:53
+#: views/document_version_views.py:54
 #, python-format
 msgid "Versions of document: %s"
 msgstr ""
 
-#: views/document_version_views.py:67
+#: views/document_version_views.py:68
 msgid "All later version after this one will be deleted too."
 msgstr ""
 
-#: views/document_version_views.py:70
+#: views/document_version_views.py:71
 msgid "Revert to this version?"
 msgstr ""
 
-#: views/document_version_views.py:80
+#: views/document_version_views.py:81
 msgid "Document version reverted successfully"
 msgstr ""
 
-#: views/document_version_views.py:85
+#: views/document_version_views.py:86
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr ""
 
-#: views/document_version_views.py:104
+#: views/document_version_views.py:105
 msgid "Download document version"
 msgstr ""
 
-#: views/document_version_views.py:170
+#: views/document_version_views.py:171
 #, python-format
 msgid "Preview of document version: %s"
 msgstr ""
@@ -1213,8 +1215,8 @@ msgstr ""
 #: views/document_views.py:674
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or"
-" were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views/document_views.py:681
@@ -1223,8 +1225,8 @@ msgstr ""
 
 #: views/document_views.py:699
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
 msgstr ""
 
 #: views/document_views.py:703
@@ -1315,64 +1317,78 @@ msgstr ""
 msgid "Duplicated document scan queued successfully."
 msgstr ""
 
-#: views/trashed_document_views.py:35
-msgid "Delete the selected document?"
-msgstr ""
-
-#: views/trashed_document_views.py:58
+#: views/trashed_document_views.py:37
 #, python-format
-msgid "Document: %(document)s deleted."
+msgid "%(count)d document moved to the trash."
 msgstr ""
 
-#: views/trashed_document_views.py:66
-msgid "Delete the selected documents?"
+#: views/trashed_document_views.py:40
+#, python-format
+msgid "%(count)d documents moved to the trash."
 msgstr ""
 
-#: views/trashed_document_views.py:89
+#: views/trashed_document_views.py:48
+msgid "Move the selected document to the trash?"
+msgid_plural "Move the selected documents to the trash?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views/trashed_document_views.py:62
+msgid "Empty trash?"
+msgstr ""
+
+#: views/trashed_document_views.py:75
+msgid "Trash emptied successfully"
+msgstr ""
+
+#: views/trashed_document_views.py:83
+#, python-format
+msgid "%(count)d trashed document deleted."
+msgstr ""
+
+#: views/trashed_document_views.py:86
+#, python-format
+msgid "%(count)d trashed documents deleted."
+msgstr ""
+
+#: views/trashed_document_views.py:94
+msgid "Delete the selected trashed document?"
+msgid_plural "Delete the selected trashed documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views/trashed_document_views.py:125
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr ""
 
-#: views/trashed_document_views.py:94
+#: views/trashed_document_views.py:130
 msgid "There are no documents in the trash can"
 msgstr ""
 
-#: views/trashed_document_views.py:104
-msgid "Restore the selected document?"
-msgstr ""
-
-#: views/trashed_document_views.py:127
+#: views/trashed_document_views.py:143
 #, python-format
-msgid "Document: %(document)s restored."
-msgstr ""
-
-#: views/trashed_document_views.py:135
-msgid "Restore the selected documents?"
+msgid "%(count)d trashed document restored."
 msgstr ""
 
 #: views/trashed_document_views.py:146
 #, python-format
-msgid "Move \"%s\" to the trash?"
+msgid "%(count)d trashed documents restored."
 msgstr ""
 
-#: views/trashed_document_views.py:169
-#, python-format
-msgid "Document: %(document)s moved to trash successfully."
-msgstr ""
-
-#: views/trashed_document_views.py:182
-msgid "Move the selected documents to the trash?"
-msgstr ""
-
-#: views/trashed_document_views.py:188
-msgid "Empty trash?"
-msgstr ""
-
-#: views/trashed_document_views.py:201
-msgid "Trash emptied successfully"
-msgstr ""
+#: views/trashed_document_views.py:154
+msgid "Restore the selected trashed document?"
+msgid_plural "Restore the selected trashed documents?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: widgets.py:81 widgets.py:85
 #, python-format

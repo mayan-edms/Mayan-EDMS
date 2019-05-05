@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -11,15 +11,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:08-0400\n"
+"POT-Creation-Date: 2019-05-04 21:41-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
 #: forms.py:17 links.py:25 menus.py:16 models.py:42 permissions.py:7
@@ -139,13 +142,17 @@ msgstr "Usuń tagi z dokumentów"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Rozdzielona przecinkami lista kluczy głównych dokumentu, do którego ten tag zostanie dołączony."
+msgstr ""
+"Rozdzielona przecinkami lista kluczy głównych dokumentu, do którego ten tag "
+"zostanie dołączony."
 
 #: serializers.py:86
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "API URL wskazujący na tag w relacji do dokumentu, do którego został dołączony. URL ten różni się od kanonicznego URL-a taga."
+msgstr ""
+"API URL wskazujący na tag w relacji do dokumentu, do którego został "
+"dołączony. URL ten różni się od kanonicznego URL-a taga."
 
 #: serializers.py:106
 msgid "Primary key of the tag to be added."
@@ -249,35 +256,35 @@ msgstr ""
 msgid "No tags available"
 msgstr ""
 
-#: views.py:243
+#: views.py:242
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumenty z tagiem: %s"
 
-#: views.py:267
+#: views.py:266
 msgid "Document has no tags attached"
 msgstr ""
 
-#: views.py:274
+#: views.py:273
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Tagi dla dokumentu: %s"
 
-#: views.py:287
+#: views.py:286
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Usunięto tag z %(count)d dokumentu"
 
-#: views.py:289
+#: views.py:288
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Usunięto tag %(count)d z dokumentów"
 
-#: views.py:297
+#: views.py:296
 msgid "Remove"
 msgstr "Usuń"
 
-#: views.py:299
+#: views.py:298
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
@@ -286,21 +293,21 @@ msgstr[1] "Usunięto tagi z %(count)d dokumentu"
 msgstr[2] "Usunięto tagi z %(count)d dokumentu"
 msgstr[3] "Usunięto tagi z %(count)d dokumentów"
 
-#: views.py:311
+#: views.py:310
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Usuń tagi z dokumentu: %s"
 
-#: views.py:320
+#: views.py:319
 msgid "Tags to be removed."
 msgstr "Tagi do usunięcia."
 
-#: views.py:358
+#: views.py:357
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Dokument \"%(document)s\" nie zawiera tagów \"%(tag)s\""
 
-#: views.py:367
+#: views.py:366
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" usunięty z dokumentu \"%(document)s\"."

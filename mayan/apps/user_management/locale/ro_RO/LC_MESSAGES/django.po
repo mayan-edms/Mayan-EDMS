@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
@@ -10,15 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:08-0400\n"
+"POT-Creation-Date: 2019-05-04 21:41-0400\n"
 "PO-Revision-Date: 2019-05-03 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:79 events.py:8 permissions.py:8
 msgid "User management"
@@ -182,7 +184,9 @@ msgstr "nume de utilizator"
 
 #: serializers.py:34
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Liste separate prin virgulă de chei primare de grup pentru a le atribui acestui utilizator."
+msgstr ""
+"Liste separate prin virgulă de chei primare de grup pentru a le atribui "
+"acestui utilizator."
 
 #: serializers.py:64
 msgid "List of group primary keys to which to add the user."
@@ -215,7 +219,11 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr "Grupurile de utilizatori sunt unități organizaționale. Ele ar trebui să reflecte unitățile organizaționale ale organizației dvs. Grupurile nu pot fi utilizate pentru controlul accesului. Utilizați roluri pentru permisiuni și control acces, adăugați grupuri la ele."
+msgstr ""
+"Grupurile de utilizatori sunt unități organizaționale. Ele ar trebui să "
+"reflecte unitățile organizaționale ale organizației dvs. Grupurile nu pot fi "
+"utilizate pentru controlul accesului. Utilizați roluri pentru permisiuni și "
+"control acces, adăugați grupuri la ele."
 
 #: views.py:123
 msgid "There are no user groups"
@@ -237,12 +245,14 @@ msgstr "Utilizatorii din grupul: %s"
 #: views.py:177
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)dutilizator "
+msgstr ""
+"Solicitarea de ștergere a utilizatorilor efectuată pe %(count)dutilizator "
 
 #: views.py:179
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)d utilizatori"
+msgstr ""
+"Solicitarea de ștergere a utilizatorilor efectuată pe %(count)d utilizatori"
 
 #: views.py:187
 msgid "Delete user"
@@ -260,7 +270,9 @@ msgstr "Ștergeți utilizatorul: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super-utilizator și personalul ștergerea utilizator nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
+msgstr ""
+"Super-utilizator și personalul ștergerea utilizator nu este permisă, "
+"utilizați interfata de administrare pentru aceste cazuri."
 
 #: views.py:216
 #, python-format
@@ -301,7 +313,9 @@ msgstr "Grupurile utilizatorului: %s"
 msgid ""
 "User accounts can be create from this view. After creating an user account "
 "you will prompted to set a password for it. "
-msgstr "Conturile de utilizator pot fi create din această vizualizare. După crearea unui cont de utilizator, vi se va solicita să setați o parolă pentru acesta."
+msgstr ""
+"Conturile de utilizator pot fi create din această vizualizare. După crearea "
+"unui cont de utilizator, vi se va solicita să setați o parolă pentru acesta."
 
 #: views.py:305
 msgid "There are no user accounts"
@@ -342,7 +356,9 @@ msgstr "Schimbați parola pentru utilizatorul: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super utilizator și parola de utilizator personalul resetarea nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
+msgstr ""
+"Super utilizator și parola de utilizator personalul resetarea nu este "
+"permisă, utilizați interfata de administrare pentru aceste cazuri."
 
 #: views.py:392
 #, python-format

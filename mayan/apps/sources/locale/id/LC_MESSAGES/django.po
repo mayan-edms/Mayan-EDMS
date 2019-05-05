@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sehat <sehat75@yahoo.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:07-0400\n"
+"POT-Creation-Date: 2019-05-04 21:40-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
-#: views.py:635
+#: views.py:630
 msgid "Sources"
 msgstr ""
 
@@ -70,9 +71,11 @@ msgstr "Kembangkan berkas-berkas terkompresi"
 
 #: forms.py:47
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-dokumen individual"
+msgstr ""
+"Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-"
+"dokumen individual"
 
-#: forms.py:68 views.py:484
+#: forms.py:68 views.py:485
 msgid "Staging file"
 msgstr ""
 
@@ -569,69 +572,74 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr ""
 
-#: views.py:64
+#: views.py:65
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:67
+#: views.py:68
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:69
+#: views.py:70
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:124 wizards.py:154
+#: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
-#: views.py:152 views.py:170 views.py:180
+#: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
 msgstr ""
 
-#: views.py:160
+#: views.py:161
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:171
+#: views.py:172
 msgid "Scan"
 msgstr ""
 
-#: views.py:281
+#: views.py:282
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:292
+#: views.py:293
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:377
+#: views.py:378
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:430
+#: views.py:431
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:471
+#: views.py:472
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:512
+#: views.py:486
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr ""
+
+#: views.py:507
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -639,31 +647,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:518
+#: views.py:513
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:535
+#: views.py:530
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:552
+#: views.py:547
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Membuat sumber baru dengan jenis: %s"
 
-#: views.py:574
+#: views.py:569
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:595
+#: views.py:590
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:629
+#: views.py:624
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -671,7 +679,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:634
+#: views.py:629
 msgid "No sources available"
 msgstr ""
 

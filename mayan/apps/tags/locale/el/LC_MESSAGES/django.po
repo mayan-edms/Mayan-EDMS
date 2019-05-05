@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:08-0400\n"
+"POT-Creation-Date: 2019-05-04 21:41-0400\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:110 apps.py:117 apps.py:139 apps.py:141 events.py:7
@@ -135,7 +136,9 @@ msgstr "Αφαίρεση ετικετών από έγγραφα"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κελιδιών εγγράφων στα οποία θα προσαρτηθεί αυτή η ετικέτα."
+msgstr ""
+"Λίστα (χωρισμένη με κόμμα) πρωτευόντων κελιδιών εγγράφων στα οποία θα "
+"προσαρτηθεί αυτή η ετικέτα."
 
 #: serializers.py:86
 msgid ""
@@ -185,7 +188,8 @@ msgstr "Έγγραφο \"%(document)s\" είναι ήδη σημασμένο ω�
 #: views.py:120
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Ετικέτα \"%(tag)s\" επικολήθηκε με επιτυχία στο έγγραφο \"%(document)s\"."
+msgstr ""
+"Ετικέτα \"%(tag)s\" επικολήθηκε με επιτυχία στο έγγραφο \"%(document)s\"."
 
 #: views.py:129
 msgid "Create tag"
@@ -241,59 +245,60 @@ msgstr ""
 msgid "No tags available"
 msgstr ""
 
-#: views.py:243
+#: views.py:242
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Έγγραφα με την ετικέτα: %s"
 
-#: views.py:267
+#: views.py:266
 msgid "Document has no tags attached"
 msgstr ""
 
-#: views.py:274
+#: views.py:273
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Ετικέτες για το έγγραφο: %s"
 
-#: views.py:287
+#: views.py:286
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Αίτημα αφαίρεσης ετικέτας πραγματοποιήθηκε για %(count)d έγγραφο"
 
-#: views.py:289
+#: views.py:288
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Αίτημα αφαίρεσης ετικέτας πραγματοποιήθηκε για %(count)d έγγραφα"
 
-#: views.py:297
+#: views.py:296
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: views.py:299
+#: views.py:298
 #, python-format
 msgid "Remove tags to %(count)d document"
 msgid_plural "Remove tags to %(count)d documents"
 msgstr[0] "Αφαίρεση επικετών από %(count)d έγγραφο"
 msgstr[1] "Αφαίρεση επικετών από %(count)d έγγραφα"
 
-#: views.py:311
+#: views.py:310
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Αφαίρεση ετικετών από το έγγραφο: %s"
 
-#: views.py:320
+#: views.py:319
 msgid "Tags to be removed."
 msgstr "Ετικέτες που θα αφαιρεθούν."
 
-#: views.py:358
+#: views.py:357
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Το έγγραφο \"%(document)s\" δεν ήταν σημασμένο ως \"%(tag)s\""
 
-#: views.py:367
+#: views.py:366
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Η ετικέτα \"%(tag)s\" αφαιρέθηκε επιτυχώς από το έγγραφο \"%(document)s\"."
+msgstr ""
+"Η ετικέτα \"%(tag)s\" αφαιρέθηκε επιτυχώς από το έγγραφο \"%(document)s\"."
 
 #: wizard_steps.py:18
 msgid "Select tags"

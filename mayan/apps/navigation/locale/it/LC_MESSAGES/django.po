@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:07-0400\n"
+"POT-Creation-Date: 2019-05-04 21:40-0400\n"
 "PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-#: classes.py:692
+#: classes.py:675
 msgid "Unnamed function"
 msgstr ""
 

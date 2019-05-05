@@ -1,44 +1,45 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:05-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:51 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "文档签名"
 
-#: apps.py:91
+#: apps.py:98
 msgid "Date"
 msgstr "日期"
 
-#: apps.py:94 models.py:46
+#: apps.py:101 models.py:46
 msgid "Key ID"
 msgstr "密钥ID"
 
-#: apps.py:98 forms.py:64 models.py:50
+#: apps.py:105 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "签名ID"
 
-#: apps.py:99 forms.py:76
+#: apps.py:106 forms.py:76
 msgid "None"
 msgstr "没有"
 
-#: apps.py:102
+#: apps.py:109
 msgid "Type"
 msgstr "类型"
 
@@ -108,11 +109,11 @@ msgstr "密钥类型"
 msgid "Verify all documents"
 msgstr "验证所有文档"
 
-#: links.py:39 links.py:59 queues.py:8
+#: links.py:39 links.py:58 queues.py:8
 msgid "Signatures"
 msgstr "签名"
 
-#: links.py:46
+#: links.py:45
 msgid "Delete"
 msgstr "删除"
 
@@ -120,19 +121,19 @@ msgstr "删除"
 msgid "Details"
 msgstr "细节"
 
-#: links.py:65
+#: links.py:63
 msgid "Download"
 msgstr "下载"
 
-#: links.py:72
+#: links.py:69
 msgid "Upload signature"
 msgstr "上传签名"
 
-#: links.py:79
+#: links.py:76
 msgid "Sign detached"
 msgstr "分离签署"
 
-#: links.py:86
+#: links.py:83
 msgid "Sign embedded"
 msgstr "嵌入签署"
 
@@ -272,35 +273,37 @@ msgstr "删除分离签名：%s"
 msgid "Details for signature: %s"
 msgstr "签名详情：%s"
 
-#: views.py:302
+#: views.py:303
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本身的一部分嵌入，也可以作为单独的文件上传。"
+msgstr ""
+"签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本"
+"身的一部分嵌入，也可以作为单独的文件上传。"
 
-#: views.py:330
+#: views.py:331
 msgid "There are no signatures for this document."
 msgstr "此文档没有签名。"
 
-#: views.py:333
+#: views.py:334
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "文档版本%s的签名"
 
-#: views.py:363
+#: views.py:364
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "上传文档版本%s的分离签名"
 
-#: views.py:380
+#: views.py:381
 msgid "On large databases this operation may take some time to execute."
 msgstr "在大型数据库上，此操作可能需要一些时间才能执行。"
 
-#: views.py:381
+#: views.py:382
 msgid "Verify all document for signatures?"
 msgstr "验证签名的所有文档？"
 
-#: views.py:391
+#: views.py:392
 msgid "Signature verification queued successfully."
 msgstr "签名验证成功排队。"

@@ -2,32 +2,45 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2017
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:04-0400\n"
+"POT-Creation-Date: 2019-05-04 21:37-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2019\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:41 apps.py:86 apps.py:94 apps.py:97 events.py:7 forms.py:16
+#: apps.py:41 apps.py:94 apps.py:102 apps.py:105 events.py:7 forms.py:16
 #: links.py:24 menus.py:16 models.py:44 permissions.py:7 views.py:172
 msgid "Cabinets"
 msgstr "Aktenschränke"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Document cabinet"
+msgid "Document added to cabinet"
+msgstr "Dokumenten-Aktenschrank"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Remove from cabinets"
+msgid "Document removed from cabinet"
+msgstr "Aus Aktenschrank entfernen"
 
 #: links.py:30 links.py:44
 msgid "Remove from cabinets"
@@ -60,6 +73,18 @@ msgstr "Alle"
 #: links.py:92
 msgid "Details"
 msgstr "Details"
+
+#: methods.py:18
+#, fuzzy
+#| msgid "Cabinets containing document: %s"
+msgid "Return a list of cabinets containing the document"
+msgstr "Aktenschränke mit Dokument %s"
+
+#: methods.py:20
+#, fuzzy
+#| msgid "Create cabinets"
+msgid "get_cabinets()"
+msgstr "Aktenschränke anlegen"
 
 #: models.py:32 search.py:16
 msgid "Label"
@@ -129,8 +154,7 @@ msgstr ""
 "Elemente."
 
 #: serializers.py:32
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "Die URL dieses API-Endpunkts zeigt eine Liste der Dokumente in diesem "
 "Aktenschrank."
@@ -147,8 +171,8 @@ msgid ""
 "URL is different than the canonical document URL."
 msgstr ""
 "Die auf ein Dokument zeigende API-URL im Verhältnis zum dem Aktenschrank, "
-"der das Dokument speichert. Diese URL unterscheidet sich von der kanonischen"
-" URL des Dokuments."
+"der das Dokument speichert. Diese URL unterscheidet sich von der kanonischen "
+"URL des Dokuments."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -227,6 +251,14 @@ msgstr "%(count)d Dokumente zu Aktenschrank hinzugefügt"
 msgid "Add"
 msgstr "Hinzufügen"
 
+#: views.py:244
+#, fuzzy, python-format
+#| msgid "Add documents to cabinets"
+msgid "Add %(count)d document to cabinets"
+msgid_plural "Add %(count)d documents to cabinets"
+msgstr[0] "Dokumente zu Aktenschrank hinzufügen"
+msgstr[1] "Dokumente zu Aktenschrank hinzufügen"
+
 #: views.py:257
 #, python-format
 msgid "Add document \"%s\" to cabinets"
@@ -263,6 +295,20 @@ msgstr "%(count)d Dokumente aus Aktenschrank entfernt"
 msgid "Remove"
 msgstr "Entfernen"
 
+#: views.py:334
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove %(count)d document from cabinets"
+msgid_plural "Remove %(count)d documents from cabinets"
+msgstr[0] "Dokumente aus Aktenschrank entfernen"
+msgstr[1] "Dokumente aus Aktenschrank entfernen"
+
+#: views.py:347
+#, fuzzy, python-format
+#| msgid "Remove documents from cabinets"
+msgid "Remove document \"%s\" from cabinets"
+msgstr "Dokumente aus Aktenschrank entfernen"
+
 #: views.py:358
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."
@@ -276,3 +322,15 @@ msgstr "Dokument %(document)s ist nicht im Aktenschrank %(cabinet)s."
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
 msgstr "Dokument %(document)s entfernt aus Aktenschrank %(cabinet)s."
+
+#: wizard_steps.py:18
+#, fuzzy
+#| msgid "Delete cabinets"
+msgid "Select cabinets"
+msgstr "Aktenschränke löschen"
+
+#: wizard_steps.py:32
+#, fuzzy
+#| msgid "Cabinets to which the selected documents will be added."
+msgid "Cabinets to which the document will be added."
+msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."

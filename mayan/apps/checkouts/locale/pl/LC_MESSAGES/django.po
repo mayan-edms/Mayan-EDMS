@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
@@ -9,15 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:04-0400\n"
+"POT-Creation-Date: 2019-05-04 21:37-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:48 events.py:7 links.py:34
 msgid "Checkouts"
@@ -105,7 +108,8 @@ msgstr "Data i czas blokady"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Liczba dni, godzin lub minut w trakcie których dokument będzie zablokowany."
+msgstr ""
+"Liczba dni, godzin lub minut w trakcie których dokument będzie zablokowany."
 
 #: models.py:37
 msgid "Check out expiration date and time"
@@ -209,7 +213,9 @@ msgstr "Szczegóły blokady dokumentu: %s"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr "Ten dokument nie został przez ciebie zablokowany. Czy wymusić odblokowanie dokumentu: %s?"
+msgstr ""
+"Ten dokument nie został przez ciebie zablokowany. Czy wymusić odblokowanie "
+"dokumentu: %s?"
 
 #: views.py:152
 #, python-format

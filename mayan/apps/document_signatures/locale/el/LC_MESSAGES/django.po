@@ -1,43 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:05-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:51 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "Υπογραφές εγγράφου"
 
-#: apps.py:91
+#: apps.py:98
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: apps.py:94 models.py:46
+#: apps.py:101 models.py:46
 msgid "Key ID"
 msgstr "Αναγνωριστικό κλειδιού"
 
-#: apps.py:98 forms.py:64 models.py:50
+#: apps.py:105 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "Αναγνωριστικό υπογραφής"
 
-#: apps.py:99 forms.py:76
+#: apps.py:106 forms.py:76
 msgid "None"
 msgstr "Κανένα"
 
-#: apps.py:102
+#: apps.py:109
 msgid "Type"
 msgstr "Τύπος"
 
@@ -107,11 +108,11 @@ msgstr "Τύπος κλειδιού"
 msgid "Verify all documents"
 msgstr "Απολήθευση όλων τωνεγγράφων"
 
-#: links.py:39 links.py:59 queues.py:8
+#: links.py:39 links.py:58 queues.py:8
 msgid "Signatures"
 msgstr "Υπογραφές"
 
-#: links.py:46
+#: links.py:45
 msgid "Delete"
 msgstr "Διαγραφή"
 
@@ -119,19 +120,19 @@ msgstr "Διαγραφή"
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
-#: links.py:65
+#: links.py:63
 msgid "Download"
 msgstr "Κατέβασμα"
 
-#: links.py:72
+#: links.py:69
 msgid "Upload signature"
 msgstr "Ανέβασμα υπογραφής"
 
-#: links.py:79
+#: links.py:76
 msgid "Sign detached"
 msgstr "Υπογραφή με αποσπασμένο κλειδί"
 
-#: links.py:86
+#: links.py:83
 msgid "Sign embedded"
 msgstr "Υπογαφή με συμπερίληψη του κελιδιού"
 
@@ -271,35 +272,37 @@ msgstr "Διαγραφή αποσπασμένης υπογραφής: %s"
 msgid "Details for signature: %s"
 msgstr "Λεπτομέρειες της υπογραφής: %s"
 
-#: views.py:302
+#: views.py:303
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:330
+#: views.py:331
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:333
+#: views.py:334
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Υπογραφές για την έκδοση του εγγράφου: %s"
 
-#: views.py:363
+#: views.py:364
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Ανέβασμα αποσπασμένης υπογραφής για την έκδοση του εγγράφου: %s"
 
-#: views.py:380
-msgid "On large databases this operation may take some time to execute."
-msgstr "Σε μεγάλες βάσεις δεδομένων αυτή η ενέργεια μπορεί να χρειαστεί αρκετό χρόνο για να ολοκληρωθεί."
-
 #: views.py:381
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"Σε μεγάλες βάσεις δεδομένων αυτή η ενέργεια μπορεί να χρειαστεί αρκετό χρόνο "
+"για να ολοκληρωθεί."
+
+#: views.py:382
 msgid "Verify all document for signatures?"
 msgstr "Επαλήθευση όλων των υπογρφών για έγγραφα;"
 
-#: views.py:391
+#: views.py:392
 msgid "Signature verification queued successfully."
 msgstr "Η ενέργεια επαλήθευσης υπογραφών προστέθηκε στην λίστα επιτυχώς."

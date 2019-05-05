@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,18 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:07-0400\n"
+"POT-Creation-Date: 2019-05-04 21:40-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
-#: views.py:635
+#: views.py:630
 msgid "Sources"
 msgstr "منابع"
 
@@ -33,7 +34,9 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
+msgstr ""
+"منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع "
+"فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
 #: apps.py:75
 msgid "Type"
@@ -73,7 +76,7 @@ msgstr "فایلهای فشرده را گسترش دهید"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "فایل های حاوی فایل فشرده را به عنوان اسناد شخصی بارگذاری کنید"
 
-#: forms.py:68 views.py:484
+#: forms.py:68 views.py:485
 msgid "Staging file"
 msgstr "مرحله گذاری فایل"
 
@@ -278,7 +281,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
+msgstr ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
 
 #: models/email_sources.py:48
 msgid "Port"
@@ -297,7 +302,9 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "نام پیوست که شامل نام های نوع فراداده و جفت های ارزش است که باید به سایر فایل های دانلود شده اختصاص داده شود. توجه: این پیوست باید اولین ضمیمه باشد."
+msgstr ""
+"نام پیوست که شامل نام های نوع فراداده و جفت های ارزش است که باید به سایر "
+"فایل های دانلود شده اختصاص داده شود. توجه: این پیوست باید اولین ضمیمه باشد."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -307,7 +314,9 @@ msgstr "نام دلبستگی متاداده"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره موضوع ایمیل انتخاب کنید."
+msgstr ""
+"نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره موضوع ایمیل "
+"انتخاب کنید."
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -317,7 +326,9 @@ msgstr "نوع Metadata موضوع"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره \"ایمیل\" از \"ارزش\" را انتخاب کنید."
+msgstr ""
+"نوع متادیتایی معتبر برای نوع سند انتخاب شده که در آن برای ذخیره \"ایمیل\" از "
+"\"ارزش\" را انتخاب کنید."
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -344,14 +355,18 @@ msgstr "ایمیل کردن سورسها"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
+msgstr ""
+"نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
+"%(document_type)s"
 
 #: models/email_sources.py:198
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
+msgstr ""
+"\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
+"%(document_type)s"
 
 #: models/email_sources.py:213
 msgid "IMAP Mailbox from which to check for messages."
@@ -381,7 +396,9 @@ msgstr "نام دستگاه"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این "
+"گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:41
 msgid "Mode"
@@ -392,7 +409,9 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 "
+"است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:48
 msgid "Resolution"
@@ -402,7 +421,9 @@ msgstr "وضوح"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما "
+"پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:54
 msgid "Paper source"
@@ -412,7 +433,9 @@ msgstr "منبع کاغذ"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر "
+"شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:61
 msgid "ADF mode"
@@ -570,69 +593,77 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr "خطای پردازش منبع: %s"
 
-#: views.py:64
+#: views.py:65
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:67
+#: views.py:68
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:69
+#: views.py:70
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "ورود به سیستم برای منبع: %s"
 
-#: views.py:124 wizards.py:154
+#: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
+"بسازید."
 
-#: views.py:152 views.py:170 views.py:180
+#: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
 msgstr "خواص سند"
 
-#: views.py:160
+#: views.py:161
 msgid "Files in staging path"
 msgstr "فایلهای درون راه مرحله ای"
 
-#: views.py:171
+#: views.py:172
 msgid "Scan"
 msgstr "اسکن کردن"
 
-#: views.py:281
+#: views.py:282
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:292
+#: views.py:293
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:377
+#: views.py:378
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "سند \"%s\" از آپلود نسخه های جدید مسدود شده است."
 
-#: views.py:430
+#: views.py:431
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:471
+#: views.py:472
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "آپلود نسخه ای جدید از اصل : %s"
 
-#: views.py:512
+#: views.py:486
+#, fuzzy, python-format
+#| msgid "Delete staging files"
+msgid "Delete staging file \"%s\"?"
+msgstr "حذف فایل های استقراری"
+
+#: views.py:507
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -640,31 +671,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:518
+#: views.py:513
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "برای اطمینان از منبع \"%s\" تکرار کنید؟"
 
-#: views.py:535
+#: views.py:530
 msgid "Source check queued."
 msgstr "بررسی منبع در صف."
 
-#: views.py:552
+#: views.py:547
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "ایجاد سورس جدید از نوع %s."
 
-#: views.py:574
+#: views.py:569
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "منبع را حذف کنید: %s؟"
 
-#: views.py:595
+#: views.py:590
 #, python-format
 msgid "Edit source: %s"
 msgstr "ویرایش اصل : %s"
 
-#: views.py:629
+#: views.py:624
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -672,7 +703,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:634
+#: views.py:629
 msgid "No sources available"
 msgstr ""
 

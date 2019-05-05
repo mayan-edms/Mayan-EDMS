@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # lilo.panic, 2016
 # Sergey Glita <gsv70@mail.ru>, 2012
@@ -9,37 +9,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:05-0400\n"
+"POT-Creation-Date: 2019-05-04 21:38-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:51 permissions.py:8 settings.py:10
 msgid "Document signatures"
 msgstr "Подписи документа"
 
-#: apps.py:91
+#: apps.py:98
 msgid "Date"
 msgstr "Дата"
 
-#: apps.py:94 models.py:46
+#: apps.py:101 models.py:46
 msgid "Key ID"
 msgstr "ID ключа"
 
-#: apps.py:98 forms.py:64 models.py:50
+#: apps.py:105 forms.py:64 models.py:50
 msgid "Signature ID"
 msgstr "ID подписи"
 
-#: apps.py:99 forms.py:76
+#: apps.py:106 forms.py:76
 msgid "None"
 msgstr "Ни один"
 
-#: apps.py:102
+#: apps.py:109
 msgid "Type"
 msgstr "Тип"
 
@@ -109,11 +112,11 @@ msgstr "Тип ключа"
 msgid "Verify all documents"
 msgstr "Проверить все документы"
 
-#: links.py:39 links.py:59 queues.py:8
+#: links.py:39 links.py:58 queues.py:8
 msgid "Signatures"
 msgstr "Подписи"
 
-#: links.py:46
+#: links.py:45
 msgid "Delete"
 msgstr "Удалить"
 
@@ -121,19 +124,19 @@ msgstr "Удалить"
 msgid "Details"
 msgstr "Детали"
 
-#: links.py:65
+#: links.py:63
 msgid "Download"
 msgstr "Скачать"
 
-#: links.py:72
+#: links.py:69
 msgid "Upload signature"
 msgstr "Вгрузить подпись"
 
-#: links.py:79
+#: links.py:76
 msgid "Sign detached"
 msgstr "Подпись отеделена"
 
-#: links.py:86
+#: links.py:83
 msgid "Sign embedded"
 msgstr "Подпись встроена"
 
@@ -273,35 +276,37 @@ msgstr "Удалить отделённую подпись: %s"
 msgid "Details for signature: %s"
 msgstr "Подробности для подписи: %s"
 
-#: views.py:302
+#: views.py:303
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:330
+#: views.py:331
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:333
+#: views.py:334
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи для документа версии: %s"
 
-#: views.py:363
+#: views.py:364
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Выгрузить отделённую подпись для версии документа: %s"
 
-#: views.py:380
-msgid "On large databases this operation may take some time to execute."
-msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
-
 #: views.py:381
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"В больших базах данных эта операция может занять некоторое время для "
+"выполнения."
+
+#: views.py:382
 msgid "Verify all document for signatures?"
 msgstr "Проверить подписи во всех документах?"
 
-#: views.py:391
+#: views.py:392
 msgid "Signature verification queued successfully."
 msgstr "Верификация сигнатуры добавлена в очередь."

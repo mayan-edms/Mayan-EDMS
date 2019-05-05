@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -10,18 +10,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-03 01:07-0400\n"
+"POT-Creation-Date: 2019-05-04 21:40-0400\n"
 "PO-Revision-Date: 2019-05-03 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:45 links.py:54 models/base.py:39 queues.py:8 settings.py:10
-#: views.py:635
+#: views.py:630
 msgid "Sources"
 msgstr "Sorgenti"
 
@@ -34,7 +35,9 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
+msgstr ""
+"Sorgenti documento è il mezzo con cui i nuovi documenti alimentano Mayan "
+"EDMS, crea almeno una modulo web per poter caricare documenti da un browser."
 
 #: apps.py:75
 msgid "Type"
@@ -74,7 +77,7 @@ msgstr "Espandi"
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Pubblicare un file compresso contenente singoli documenti"
 
-#: forms.py:68 views.py:484
+#: forms.py:68 views.py:485
 msgid "Staging file"
 msgstr "Mostra file"
 
@@ -279,7 +282,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 per IMAP su SSL."
+msgstr ""
+"Le scelte tipiche sono 110 per POP3, 995 per POP3 su SSL, 143 per IMAP, 993 "
+"per IMAP su SSL."
 
 #: models/email_sources.py:48
 msgid "Port"
@@ -298,7 +303,10 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Nome degli allegati che possono contenere i nomi dei tipi metadati e le coppie di valori che saranno assegnate al resto degli allegati caricati. Nota: Questo allegato sarà il primo degli allegati."
+msgstr ""
+"Nome degli allegati che possono contenere i nomi dei tipi metadati e le "
+"coppie di valori che saranno assegnate al resto degli allegati caricati. "
+"Nota: Questo allegato sarà il primo degli allegati."
 
 #: models/email_sources.py:59
 msgid "Metadata attachment name"
@@ -308,7 +316,9 @@ msgstr "Nome allegato metadati"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's subject."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare l'oggetto della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare l'oggetto della mail."
 
 #: models/email_sources.py:66
 msgid "Subject metadata type"
@@ -318,7 +328,9 @@ msgstr "Tipo metadato oggetto"
 msgid ""
 "Select a metadata type valid for the document type selected in which to "
 "store the email's \"from\" value."
-msgstr "Selezionare il tipo metadato valido per il documento selezionato dove impostare il mittente della mail."
+msgstr ""
+"Selezionare il tipo metadato valido per il documento selezionato dove "
+"impostare il mittente della mail."
 
 #: models/email_sources.py:73
 msgid "From metadata type"
@@ -345,14 +357,18 @@ msgstr "Email sorgenti"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"oggetto\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
 #: models/email_sources.py:198
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo documento: %(document_type)s"
+msgstr ""
+"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
+"documento: %(document_type)s"
 
 #: models/email_sources.py:213
 msgid "IMAP Mailbox from which to check for messages."
@@ -442,7 +458,8 @@ msgstr "Percorso cartella"
 
 #: models/staging_folder_sources.py:45
 msgid "Width value to be passed to the converter backend."
-msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models/staging_folder_sources.py:46
 msgid "Preview width"
@@ -450,7 +467,8 @@ msgstr "Larghezza anteprima"
 
 #: models/staging_folder_sources.py:50
 msgid "Height value to be passed to the converter backend."
-msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models/staging_folder_sources.py:51
 msgid "Preview height"
@@ -571,69 +589,77 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr "Errore processando la sorgente: %s"
 
-#: views.py:64
+#: views.py:65
 msgid ""
 "Any error produced during the usage of a source will be listed here to "
 "assist in debugging."
 msgstr ""
 
-#: views.py:67
+#: views.py:68
 msgid "No log entries available"
 msgstr ""
 
-#: views.py:69
+#: views.py:70
 #, python-format
 msgid "Log entries for source: %s"
 msgstr "Log per la sorgente: %s"
 
-#: views.py:124 wizards.py:154
+#: views.py:125 wizards.py:154
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Nessuna fonte interattiva dei documenti è stata definita o non ne sono state attivate."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
+"attivate."
 
-#: views.py:152 views.py:170 views.py:180
+#: views.py:153 views.py:171 views.py:181
 msgid "Document properties"
 msgstr "Proprietà documento"
 
-#: views.py:160
+#: views.py:161
 msgid "Files in staging path"
 msgstr "File nel percorso di stage"
 
-#: views.py:171
+#: views.py:172
 msgid "Scan"
 msgstr ""
 
-#: views.py:281
+#: views.py:282
 #, python-format
 msgid ""
 "Error executing document upload task; %(exception)s, %(exception_class)s"
 msgstr ""
 
-#: views.py:292
+#: views.py:293
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:377
+#: views.py:378
 #, python-format
 msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr "Il documento \"%s\" è bloccato per il caricamento di nuove versioni."
 
-#: views.py:430
+#: views.py:431
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:471
+#: views.py:472
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "Carica la nuova versione dalla sorgente: %s"
 
-#: views.py:512
+#: views.py:486
+#, fuzzy, python-format
+#| msgid "Delete staging files"
+msgid "Delete staging file \"%s\"?"
+msgstr "Cancella i file temporanei"
+
+#: views.py:507
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -641,31 +667,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:518
+#: views.py:513
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Controllo trigger per il sorgente \"%s\"?"
 
-#: views.py:535
+#: views.py:530
 msgid "Source check queued."
 msgstr "Controllo del sorgente in coda."
 
-#: views.py:552
+#: views.py:547
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Crea nuovo tipo di sorgente:%s"
 
-#: views.py:574
+#: views.py:569
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Cancellare la sorgente: %s?"
 
-#: views.py:595
+#: views.py:590
 #, python-format
 msgid "Edit source: %s"
 msgstr "Modifica sorgente: %s"
 
-#: views.py:629
+#: views.py:624
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -673,7 +699,7 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:634
+#: views.py:629
 msgid "No sources available"
 msgstr ""
 
