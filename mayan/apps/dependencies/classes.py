@@ -433,9 +433,14 @@ class JavaScriptDependency(Dependency):
 
         # Copy the content under the dependency's extracted content folder
         # 'package' to the final location.
-        Path(temporary_directory, 'package').rename(
-            target=force_text(path_install)
+        # We do a copy and delete instead of move because os.rename doesn't
+        # support renames across filesystems.
+        path_uncompressed_package = Path(temporary_directory, 'package')
+        shutil.rmtree(force_text(path_install))
+        shutil.copytree(
+            force_text(path_uncompressed_package), force_text(path_install)
         )
+        shutil.rmtree(force_text(path_uncompressed_package))
 
         # Clean up temporary directory used for download
         shutil.rmtree(path=temporary_directory, ignore_errors=True)
