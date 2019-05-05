@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import url
-from django.views.i18n import javascript_catalog, set_language
+from django.views.i18n import JavaScriptCatalog, set_language
 
 from .api_views import (
     APIContentTypeList, APITemplateDetailView, APITemplateListView
@@ -50,7 +50,7 @@ urlpatterns += [
         regex=r'^favicon\.ico$', view=FaviconRedirectView.as_view()
     ),
     url(
-        regex=r'^jsi18n/(?P<packages>\S+?)/$', view=javascript_catalog,
+        regex=r'^jsi18n/(?P<packages>\S+?)/$', view=JavaScriptCatalog.as_view(),
         name='javascript_catalog'
     ),
     url(
