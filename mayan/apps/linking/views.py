@@ -4,6 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
@@ -47,24 +48,26 @@ class DocumentTypeSmartLinksView(AddRemoveView):
     related_field = 'smart_links'
 
     def action_add(self, queryset, _user):
-        event_document_type_edited.commit(
-            actor=_user, target=self.main_object
-        )
-        for obj in queryset:
-            self.main_object.smart_links.add(obj)
-            event_smart_link_edited.commit(
-                actor=_user, action_object=self.main_object, target=obj
+        with transaction.atomic():
+            event_document_type_edited.commit(
+                actor=_user, target=self.main_object
             )
+            for obj in queryset:
+                self.main_object.smart_links.add(obj)
+                event_smart_link_edited.commit(
+                    actor=_user, action_object=self.main_object, target=obj
+                )
 
     def action_remove(self, queryset, _user):
-        event_document_type_edited.commit(
-            actor=_user, target=self.main_object
-        )
-        for obj in queryset:
-            self.main_object.smart_links.remove(obj)
-            event_smart_link_edited.commit(
-                actor=_user, action_object=self.main_object, target=obj
+        with transaction.atomic():
+            event_document_type_edited.commit(
+                actor=_user, target=self.main_object
             )
+            for obj in queryset:
+                self.main_object.smart_links.remove(obj)
+                event_smart_link_edited.commit(
+                    actor=_user, action_object=self.main_object, target=obj
+                )
 
     def get_actions_extra_kwargs(self):
         return {'_user': self.request.user}
