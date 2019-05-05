@@ -64,6 +64,60 @@ __all__ = (
 )
 
 
+class SetupDocumentTypeWorkflowsView(AddRemoveView):
+    main_object_permission = permission_document_type_edit
+    main_object_model = DocumentType
+    main_object_pk_url_kwarg = 'pk'
+    secondary_object_model = Workflow
+    secondary_object_permission = permission_workflow_edit
+    list_available_title = _('Available workflows')
+    list_added_title = _('Workflows assigned this document type')
+    related_field = 'workflows'
+
+    def get_actions_extra_kwargs(self):
+        return {'_user': self.request.user}
+
+    def get_extra_context(self):
+        return {
+            'object': self.main_object,
+            'subtitle': _(
+                'Removing a workflow from a document type will also '
+                'remove all running instances of that workflow.'
+            ),
+            'title': _(
+                'Workflows assigned the document type: %s'
+            ) % self.main_object,
+        }
+
+    def action_add(self, queryset, _user):
+        with transaction.atomic():
+            event_document_type_edited.commit(
+                actor=_user, target=self.main_object
+            )
+
+            for obj in queryset:
+                self.main_object.workflows.add(obj)
+                event_workflow_edited.commit(
+                    action_object=self.main_object, actor=_user, target=obj
+                )
+
+    def action_remove(self, queryset, _user):
+        with transaction.atomic():
+            event_document_type_edited.commit(
+                actor=_user, target=self.main_object
+            )
+
+            for obj in queryset:
+                self.main_object.workflows.remove(obj)
+                event_workflow_edited.commit(
+                    action_object=self.main_object, actor=_user,
+                    target=obj
+                )
+                obj.instances.filter(
+                    document__document_type=self.main_object
+                ).delete()
+
+
 class SetupWorkflowListView(SingleObjectListView):
     model = Workflow
     object_permission = permission_workflow_view
@@ -449,6 +503,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_workflow_state,
             'no_results_main_link': link_setup_workflow_state_create.resolve(
                 context=RequestContext(
@@ -577,6 +632,7 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_link': True,
+            'hide_object': True,
             'no_results_icon': icon_workflow_transition,
             'no_results_main_link': link_setup_workflow_transition_create.resolve(
                 context=RequestContext(

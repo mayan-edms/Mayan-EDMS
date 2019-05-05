@@ -31,10 +31,11 @@ from .handlers import (
     handler_index_document, handler_launch_workflow, handler_trigger_transition
 )
 from .links import (
-    link_document_workflow_instance_list, link_setup_workflow_document_types,
-    link_setup_workflow_create, link_setup_workflow_delete,
-    link_setup_workflow_edit, link_setup_workflow_list,
-    link_setup_workflow_states, link_setup_workflow_state_action_delete,
+    link_document_workflow_instance_list, link_setup_document_type_workflows,
+    link_setup_workflow_document_types, link_setup_workflow_create,
+    link_setup_workflow_delete, link_setup_workflow_edit,
+    link_setup_workflow_list, link_setup_workflow_states,
+    link_setup_workflow_state_action_delete,
     link_setup_workflow_state_action_edit,
     link_setup_workflow_state_action_list,
     link_setup_workflow_state_action_selection,
@@ -73,6 +74,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
         )
         ErrorLogEntry = apps.get_model(
             app_label='common', model_name='ErrorLogEntry'
@@ -158,15 +162,14 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Workflow, label=_('Label'), attribute='label'
+            attribute='label', is_sortable=True, source=Workflow
         )
         SourceColumn(
-            source=Workflow, label=_('Internal name'),
-            attribute='internal_name'
+            attribute='internal_name', is_sortable=True, source=Workflow
         )
         SourceColumn(
-            source=Workflow, label=_('Initial state'),
-            func=lambda context: context['object'].get_initial_state() or _('None')
+            attribute='get_initial_state', empty_value=_('None'),
+            source=Workflow
         )
 
         SourceColumn(
@@ -213,36 +216,42 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='initial', label=_('Is initial state?'),
-            source=WorkflowState, widget=TwoStateWidget
+            attribute='label', is_sortable=True, source=WorkflowState
         )
         SourceColumn(
-            source=WorkflowState, label=_('Completion'), attribute='completion'
-        )
-
-        SourceColumn(
-            source=WorkflowStateAction, label=_('Label'), attribute='label'
+            attribute='initial', is_sortable=True, source=WorkflowState,
+            widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='enabled', label=_('Enabled?'),
-            source=WorkflowStateAction, widget=TwoStateWidget
-        )
-        SourceColumn(
-            source=WorkflowStateAction, label=_('When?'),
-            attribute='get_when_display'
-        )
-        SourceColumn(
-            source=WorkflowStateAction, label=_('Action type'),
-            attribute='get_class_label'
+            attribute='completion', source=WorkflowState, is_sortable=True,
         )
 
         SourceColumn(
-            source=WorkflowTransition, label=_('Origin state'),
-            attribute='origin_state'
+            attribute='label', is_sortable=True, source=WorkflowStateAction
         )
         SourceColumn(
-            source=WorkflowTransition, label=_('Destination state'),
-            attribute='destination_state'
+            attribute='enabled', is_sortable=True, source=WorkflowStateAction,
+            widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='get_when_display', label=_('When?'),
+            source=WorkflowStateAction
+        )
+        SourceColumn(
+            attribute='get_class_label', label=_('Action type'),
+            source=WorkflowStateAction
+        )
+
+        SourceColumn(
+            attribute='label', is_sortable=True, source=WorkflowTransition,
+        )
+        SourceColumn(
+            attribute='origin_state', is_sortable=True,
+            source=WorkflowTransition
+        )
+        SourceColumn(
+            attribute='destination_state', is_sortable=True,
+            source=WorkflowTransition
         )
         SourceColumn(
             source=WorkflowTransition, label=_('Triggers'),
@@ -271,6 +280,7 @@ class DocumentStatesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_workflow_instance_list,), sources=(Document,)
         )
+
         menu_list_facet.bind_links(
             links=(
                 link_acl_list, link_events_for_object,
@@ -280,6 +290,12 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_preview
             ), sources=(Workflow,)
         )
+        menu_list_facet.bind_links(
+            links=(
+                link_setup_document_type_workflows,
+            ), sources=(DocumentType,)
+        )
+
         menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
         menu_object.bind_links(
             links=(

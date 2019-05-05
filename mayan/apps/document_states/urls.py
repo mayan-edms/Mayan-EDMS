@@ -25,6 +25,15 @@ from .views import (
     WorkflowImageView, WorkflowInstanceTransitionView, WorkflowListView,
     WorkflowPreviewView, WorkflowStateDocumentListView, WorkflowStateListView,
 )
+from .views.workflow_views import SetupDocumentTypeWorkflowsView
+
+urlpatterns_workflows = [
+    url(
+        regex=r'^document_type/(?P<pk>\d+)/workflows/$',
+        view=SetupDocumentTypeWorkflowsView.as_view(),
+        name='document_type_workflows'
+    ),
+]
 
 urlpatterns = [
     url(
@@ -174,6 +183,7 @@ urlpatterns = [
         name='workflow_state_document_list'
     ),
 ]
+urlpatterns.extend(urlpatterns_workflows)
 
 api_urls = [
     url(

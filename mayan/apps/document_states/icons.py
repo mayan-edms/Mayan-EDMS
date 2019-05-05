@@ -3,6 +3,11 @@ from __future__ import absolute_import, unicode_literals
 from mayan.apps.appearance.classes import Icon
 from mayan.apps.documents.icons import icon_document_type
 
+
+icon_workflow = Icon(driver_name='fontawesome', symbol='sitemap')
+
+icon_document_type_workflow_list = icon_workflow
+
 icon_document_workflow_instance_list = Icon(
     driver_name='fontawesome', symbol='sitemap'
 )

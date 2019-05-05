@@ -131,8 +131,8 @@ class WorkflowStateListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'hide_columns': True,
             'hide_link': True,
+            'hide_object': True,
             'no_results_main_link': link_setup_workflow_state_create.resolve(
                 context=RequestContext(
                     request=self.request, dict_={'object': self.get_workflow()}

@@ -71,6 +71,7 @@ class Workflow(models.Model):
             return self.states.get(initial=True)
         except self.states.model.DoesNotExist:
             return None
+    get_initial_state.short_description = _('Initial state')
 
     def launch_for(self, document):
         try:

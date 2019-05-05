@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.navigation.classes import Link
 
 from .permissions import (
@@ -10,6 +11,12 @@ from .permissions import (
     permission_workflow_view,
 )
 
+link_setup_document_type_workflows = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_document_type_workflow_list',
+    permissions=(permission_document_type_edit,), text=_('Workflows'),
+    view='document_states:document_type_workflows',
+)
 link_setup_workflow_create = Link(
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_create',
     permissions=(permission_workflow_create,),
@@ -67,17 +74,21 @@ link_setup_workflow_state_action_selection = Link(
 )
 link_setup_workflow_state_create = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.document_states.icons.icon_workflow_state',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_state_create',
     permissions=(permission_workflow_edit,), text=_('Create state'),
     view='document_states:setup_workflow_state_create',
 )
 link_setup_workflow_state_delete = Link(
-    args='object.pk', permissions=(permission_workflow_edit,),
+    args='object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_state_delete',
+    permissions=(permission_workflow_edit,),
     tags='dangerous', text=_('Delete'),
     view='document_states:setup_workflow_state_delete',
 )
 link_setup_workflow_state_edit = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_state_edit',
+    permissions=(permission_workflow_edit,),
     text=_('Edit'), view='document_states:setup_workflow_state_edit',
 )
 link_setup_workflow_states = Link(
@@ -88,17 +99,21 @@ link_setup_workflow_states = Link(
 )
 link_setup_workflow_transition_create = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_create',
     permissions=(permission_workflow_edit,), text=_('Create transition'),
     view='document_states:setup_workflow_transition_create',
 )
 link_setup_workflow_transition_delete = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_delete',
+    permissions=(permission_workflow_edit,),
     tags='dangerous', text=_('Delete'),
     view='document_states:setup_workflow_transition_delete',
 )
 link_setup_workflow_transition_edit = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_edit',
+    permissions=(permission_workflow_edit,),
     text=_('Edit'), view='document_states:setup_workflow_transition_edit',
 )
 link_setup_workflow_transitions = Link(
@@ -108,7 +123,9 @@ link_setup_workflow_transitions = Link(
     view='document_states:setup_workflow_transition_list',
 )
 link_workflow_transition_events = Link(
-    args='resolved_object.pk', permissions=(permission_workflow_edit,),
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_triggers',
+    permissions=(permission_workflow_edit,),
     text=_('Transition triggers'),
     view='document_states:setup_workflow_transition_events'
 )

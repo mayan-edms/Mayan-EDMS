@@ -227,6 +227,12 @@
   the new AddRemove view.
 * Add the workflow created and edited events.
 * Remove AssignRemove View.
+* Add view to setup workflows per document type
+  from the document type side.
+* Make workflows, workflows states, workflow
+  transitions column sortable.
+* Show completion and intial state in the 
+  workflow proxy instance menu list.
 
 3.1.11 (2019-04-XX)
 ===================
