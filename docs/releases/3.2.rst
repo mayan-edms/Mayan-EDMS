@@ -259,6 +259,7 @@ Other changes
 * Convert the workflow document types view to use
   the new AddRemove view.
 * Add the workflow created and edited events.
+* Remove AssignRemove View.
 
 Removals
 --------

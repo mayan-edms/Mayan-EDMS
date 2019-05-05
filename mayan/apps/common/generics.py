@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.http import HttpResponseRedirect
@@ -44,14 +42,6 @@ from .mixins import (
 )
 
 from .settings import setting_paginate_by
-
-__all__ = (
-    'AssignRemoveView', 'ConfirmView', 'FormView', 'MultiFormView',
-    'MultipleObjectConfirmActionView', 'MultipleObjectFormActionView',
-    'SingleObjectCreateView', 'SingleObjectDeleteView',
-    'SingleObjectDetailView', 'SingleObjectEditView', 'SingleObjectListView',
-    'SimpleView'
-)
 
 
 # Required by other views, moved to the top
@@ -392,145 +382,6 @@ class AddRemoveView(ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckM
             viewname=self.request.resolver_match.view_name,
             kwargs=self.request.resolver_match.kwargs
         )
-
-
-class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
-    decode_content_type = False
-    right_list_help_text = None
-    left_list_help_text = None
-    grouped = False
-    left_list_title = None
-    right_list_title = None
-    template_name = 'appearance/generic_form.html'
-
-    LEFT_LIST_NAME = 'left_list'
-    RIGHT_LIST_NAME = 'right_list'
-
-    @staticmethod
-    def generate_choices(choices):
-        results = []
-        for choice in choices:
-            ct = ContentType.objects.get_for_model(choice)
-            label = force_text(choice)
-
-            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
-
-        # Sort results by the label not the key value
-        return sorted(results, key=lambda x: x[1])
-
-    def left_list(self):
-        # Subclass must override
-        raise NotImplementedError
-
-    def right_list(self):
-        # Subclass must override
-        raise NotImplementedError
-
-    def add(self, item):
-        # Subclass must override
-        raise NotImplementedError
-
-    def remove(self, item):
-        # Subclass must override
-        raise NotImplementedError
-
-    def get_disabled_choices(self):
-        return ()
-
-    def get_left_list_help_text(self):
-        return self.left_list_help_text
-
-    def get_right_list_help_text(self):
-        return self.right_list_help_text
-
-    def get(self, request, *args, **kwargs):
-        self.unselected_list = ChoiceForm(
-            prefix=self.LEFT_LIST_NAME, choices=self.left_list()
-        )
-        self.selected_list = ChoiceForm(
-            prefix=self.RIGHT_LIST_NAME, choices=self.right_list(),
-            disabled_choices=self.get_disabled_choices(),
-            help_text=self.get_right_list_help_text()
-        )
-        return self.render_to_response(self.get_context_data())
-
-    def process_form(self, prefix, items_function, action_function):
-        if '%s-submit' % prefix in self.request.POST.keys():
-            form = ChoiceForm(
-                self.request.POST, prefix=prefix,
-                choices=items_function()
-            )
-
-            if form.is_valid():
-                for selection in form.cleaned_data['selection']:
-                    if self.grouped:
-                        flat_list = []
-                        for group in items_function():
-                            flat_list.extend(group[1])
-                    else:
-                        flat_list = items_function()
-
-                    label = dict(flat_list)[selection]
-                    if self.decode_content_type:
-                        model, pk = selection.split(',')
-                        selection_obj = ContentType.objects.get(
-                            model=model
-                        ).get_object_for_this_type(pk=pk)
-                    else:
-                        selection_obj = selection
-
-                    try:
-                        action_function(selection_obj)
-                    except Exception:
-                        if settings.DEBUG:
-                            raise
-                        else:
-                            messages.error(
-                                self.request,
-                                _('Unable to transfer selection: %s.') % label
-                            )
-
-    def post(self, request, *args, **kwargs):
-        self.process_form(
-            prefix=self.LEFT_LIST_NAME, items_function=self.left_list,
-            action_function=self.add
-        )
-        self.process_form(
-            prefix=self.RIGHT_LIST_NAME, items_function=self.right_list,
-            action_function=self.remove
-        )
-        return self.get(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        data = super(AssignRemoveView, self).get_context_data(**kwargs)
-        data.update({
-            'subtemplates_list': [
-                {
-                    'name': 'appearance/generic_form_subtemplate.html',
-                    'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
-                    'context': {
-                        'form': self.unselected_list,
-                        'title': self.left_list_title or ' ',
-                        'submit_label': _('Add'),
-                        'submit_icon_class': icon_assign_remove_add,
-                        'hide_labels': True,
-                    }
-                },
-                {
-                    'name': 'appearance/generic_form_subtemplate.html',
-                    'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
-                    'context': {
-                        'form': self.selected_list,
-                        'title': self.right_list_title or ' ',
-                        'submit_label': _('Remove'),
-                        'submit_icon_class': icon_assign_remove_remove,
-                        'hide_labels': True,
-                    }
-                },
-
-            ],
-        })
-        return data
 
 
 class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
