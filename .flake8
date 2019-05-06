@@ -1,2 +1,3 @@
 [flake8]
-ignore = E501
+exclude = node_modules
+ignore = E501, N801, N802, N804, N805, N806
