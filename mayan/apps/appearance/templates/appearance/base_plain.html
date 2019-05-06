@@ -20,7 +20,7 @@
             {% endblock base_title %}
         </title>
 
-        <link href="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/css/fa-svg-with-js.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
         {% block stylesheets %}{% endblock %}
@@ -45,7 +45,7 @@
 
         <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/vendors/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}" data-auto-replace-svg="nest" type="text/javascript"></script>
     </body>
 </html>
 {% endspaceless %}
