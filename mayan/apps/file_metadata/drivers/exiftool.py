@@ -45,8 +45,8 @@ class EXIFToolDriver(FileMetadataDriver):
 
             try:
                 document_version.save_to_file(file_object=temporary_fileobject)
+                temporary_fileobject.seek(0)
                 result = self.command_exiftool(temporary_fileobject.name)
-
                 return json.loads(s=result.stdout)[0]
             finally:
                 temporary_fileobject.close()
