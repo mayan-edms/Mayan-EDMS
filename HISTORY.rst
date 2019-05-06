@@ -241,6 +241,7 @@
 * Backport MultipleObjectMixin improvements.
 * Remove ObjectListPermissionFilterMixin.
 * Add deprecation warning to convertdb 
+* Add the preparestatic command.
 
 3.1.11 (2019-04-XX)
 ===================

@@ -274,6 +274,8 @@ Other changes
 * Backport MultipleObjectMixin improvements.
 * Remove ObjectListPermissionFilterMixin.
 * Add deprecation warning to convertdb 
+* Add the preparestatic command.
+
 
 Removals
 --------
