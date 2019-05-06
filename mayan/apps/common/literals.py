@@ -6,6 +6,9 @@ DEFAULT_COMMON_HOME_VIEW = 'common:home'
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
+MESSAGE_DEPRECATION_WARNING = _(
+    'This feature has been deprecated and will be removed in a future version.'
+)
 MESSAGE_SQLITE_WARNING = _(
     'Your database backend is set to use SQLite. SQLite should only be used '
     'for development and testing, not for production.'

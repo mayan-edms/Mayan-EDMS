@@ -273,6 +273,7 @@ Other changes
 * Remove MultipleInstanceActionMixin.
 * Backport MultipleObjectMixin improvements.
 * Remove ObjectListPermissionFilterMixin.
+* Add deprecation warning to convertdb 
 
 Removals
 --------

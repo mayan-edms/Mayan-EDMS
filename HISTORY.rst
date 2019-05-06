@@ -240,6 +240,7 @@
 * Remove MultipleInstanceActionMixin.
 * Backport MultipleObjectMixin improvements.
 * Remove ObjectListPermissionFilterMixin.
+* Add deprecation warning to convertdb 
 
 3.1.11 (2019-04-XX)
 ===================

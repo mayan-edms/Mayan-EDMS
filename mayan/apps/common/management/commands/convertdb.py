@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import errno
 import os
+import warnings
 
 from pathlib2 import Path
 
@@ -14,12 +15,23 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.storage.utils import fs_cleanup
 
+from ...literals import MESSAGE_DEPRECATION_WARNING
+from ...warnings import DeprecationWarning
+
 CONVERTDB_FOLDER = 'convertdb'
 CONVERTDB_OUTPUT_FILENAME = 'migrate.json'
 
 
 class Command(management.BaseCommand):
     help = 'Convert from a database backend to another one.'
+
+    def __init__(self, *args, **kwargs):
+        warnings.warn(
+            category=DeprecationWarning,
+            message=force_text(MESSAGE_DEPRECATION_WARNING)
+        )
+
+        super(Command, self).__init__(*args, **kwargs)
 
     def add_arguments(self, parser):
         parser.add_argument(
